@@ -30614,6 +30614,22 @@
             "source_path_from_root": "/articles/virtual-machines/windows/sql/virtual-machines-windows-sql-workgroup-availability-group.md",
             "redirect_url": "/azure-sql/virtual-machines/windows/availability-group-clusterless-workgroup-configure",
             "redirect_document_id": true
+        },
+        {
+            "source_path": "articles/dms/howto-sql-server-to-azure-sql-mi-powershell.md",
+            "redirect_url": "/dms/howto-sql-server-to-azure-sql-managed-instance-powershell-offline",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "articles/media-services/latest/media-services-v2-vs-v3.md",
+            "redirect_url": "/media-services/latest/migrate-v-2-v-3-migration-introduction",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "articles/media-services/latest/migrate-from-v2-to-v3.md",
+            "redirect_url": "/media-services/latest/migrate-v-2-v-3-migration-introduction",
+            "redirect_document_id": false
         }
+
     ]
 }
