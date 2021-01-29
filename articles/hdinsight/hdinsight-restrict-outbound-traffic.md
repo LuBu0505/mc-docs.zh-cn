@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.topic: howto
 origin.date: 04/17/2020
 ms.date: 06/22/2020
-ms.openlocfilehash: 69a139ae0e9e64a215835eb0f12a21095f4ece48
-ms.sourcegitcommit: 5f07189f06a559d5617771e586d129c10276539e
+ms.openlocfilehash: ad7dca86f677bb03acac4fca45091c40e7e722a6
+ms.sourcegitcommit: bb7497d5a11e8fb506907221ff65a18e6c523372
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94552244"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98692048"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>使用防火墙配置 Azure HDInsight 群集的出站网络流量
 
@@ -62,7 +62,7 @@ HDInsight 出站流量依赖项几乎完全都是使用 FQDN 进行定义的。 
 
     **顶部部分**
 
-    | 属性|  Value|
+    | properties|  值|
     |---|---|
     |名称| FwAppRule|
     |优先级|200|
@@ -84,7 +84,7 @@ HDInsight 出站流量依赖项几乎完全都是使用 FQDN 进行定义的。 
 
    ![标题：输入应用程序规则集合详细信息](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
-1. 选择“添加”  。
+1. 选择 **添加** 。
 ### <a name="configure-the-firewall-with-network-rules"></a>使用网络规则配置防火墙
 
 创建网络规则以正确配置 HDInsight 群集。
@@ -95,7 +95,7 @@ HDInsight 出站流量依赖项几乎完全都是使用 FQDN 进行定义的。 
 
     **顶部部分**
 
-    | 属性|  Value|
+    | properties|  值|
     |---|---|
     |名称| FwNetRule|
     |优先级|200|
@@ -105,12 +105,12 @@ HDInsight 出站流量依赖项几乎完全都是使用 FQDN 进行定义的。 
 
     | 名称 | 协议 | 源地址 | 服务标记 | 目标端口 | 注释 |
     | --- | --- | --- | --- | --- | --- |
-    | Rule_5 | TCP | * | SQL | 1433 | 如果使用的是 HDInsight 提供的默认 SQL 服务，请在“服务标记”部分为 SQL 配置网络规则，以便记录和审核 SQL 通信。 除非在 HDInsight 子网中为 SQL Server 配置了服务终结点，否则它将绕过防火墙。 如果对 Ambari、Oozie、Ranger 和 Hive metastroes 使用自定义 SQL Server，则只需允许流量发送到自己的自定义 SQL Server。|
+    | Rule_5 | TCP | * | SQL | 1433 | 如果使用的是 HDInsight 提供的默认 SQL 服务，请在“服务标记”部分为 SQL 配置网络规则，以便记录和审核 SQL 通信。 除非在 HDInsight 子网中为 SQL Server 配置了服务终结点，否则它将绕过防火墙。 如果对 Ambari、Oozie、Ranger 和 Hive 元存储使用自定义 SQL Server，则只需允许流量发送到自己的自定义 SQL Server 即可。|
     | Rule_6 | TCP | * | Azure Monitor | * | （可选）计划使用自动缩放功能的客户应添加此规则。 |
     
    ![标题：输入应用程序规则集合](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
-1. 选择“添加”  。
+1. 选择 **添加** 。
 
 ### <a name="create-and-configure-a-route-table"></a>创建并配置路由表
 
@@ -130,12 +130,12 @@ HDInsight 出站流量依赖项几乎完全都是使用 FQDN 进行定义的。 
 
 | 路由名称 | 地址前缀 | 下一跃点类型 | 下一跃点地址 |
 |---|---|---|---|
-| 168.61.49.99 | 168.61.49.99/32 | Internet | 不可用 |
-| 23.99.5.239 | 23.99.5.239/32 | Internet | 不可用 |
-| 168.61.48.131 | 168.61.48.131/32 | Internet | 不可用 |
-| 138.91.141.162 | 138.91.141.162/32 | Internet | 不可用 |
-| 13.82.225.233 | 13.82.225.233/32 | Internet | 不可用 |
-| 40.71.175.99 | 40.71.175.99/32 | Internet | 不可用 |
+| 168.61.49.99 | 168.61.49.99/32 | Internet | NA |
+| 23.99.5.239 | 23.99.5.239/32 | Internet | NA |
+| 168.61.48.131 | 168.61.48.131/32 | Internet | NA |
+| 138.91.141.162 | 138.91.141.162/32 | Internet | NA |
+| 13.82.225.233 | 13.82.225.233/32 | Internet | NA |
+| 40.71.175.99 | 40.71.175.99/32 | Internet | NA |
 | 0.0.0.0 | 0.0.0.0/0 | 虚拟设备 | 10.0.2.4 |
 
 完成路由表配置：
@@ -170,7 +170,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 首次运行应用程序时，将 Azure 防火墙与 Azure Monitor 日志集成会很有用。 尤其当你不知道所有应用程序依赖项时。 可以通过[在 Azure Monitor 中分析日志数据](../azure-monitor/log-query/log-query-overview.md)详细了解 Azure Monitor 日志
 
-若要了解 Azure 防火墙的缩放限制以及如何提高请求，请参阅[此文档](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)或参阅[常见问题解答](../firewall/firewall-faq.md)。
+若要了解 Azure 防火墙的缩放限制以及请求提高方式，请参阅[此文档](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)。
 
 ## <a name="access-to-the-cluster"></a>访问群集
 

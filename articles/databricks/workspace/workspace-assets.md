@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 07/15/2020
 title: 工作区资产 - Azure Databricks
 description: 概括性了解可在 Azure Databricks 工作区中操作的资产。
-ms.openlocfilehash: a3c217a4c0fc305ac544b052e0320daacf04e5ce
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: e1a8da90c878972d7bbf0cced5a9a1c4ac6ecd56
+ms.sourcegitcommit: bb7497d5a11e8fb506907221ff65a18e6c523372
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937733"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98692094"
 ---
 # <a name="workspace-assets"></a>工作区资产
 
@@ -49,22 +49,16 @@ Azure Databricks 群集为各种用例（如运行生产 ETL 管道、流分析�
 
 可以将数据导入一个装载到 Azure Databricks 工作区中的分布式文件系统，并在 Azure Databricks 笔记本和群集中使用。 还可以使用各种 Apache Spark 数据源来访问数据。
 
-有关如何管理和使用数据的详细信息，请参阅[数据](../data/index.md#data)。
+若要详细了解如何管理和使用数据，请查看[数据指南](../data/index.md#data)。
 
 ## <a name="models"></a><a id="models"> </a><a id="ws-models"> </a>模型
 
-模型注册表是一个集中式模型存储，可用于管理 MLflow 模型的完整生命周期。 它提供按时间顺序的模型世系、模型版本控制、阶段转换以及模型和模型版本批注和说明。
+模型是指在 MLflow 模型注册表中注册的模型。 模型注册表是一种集中式模型存储，可用于管理 MLflow 模型的完整生命周期。 它提供按时间顺序的模型世系、模型版本控制、阶段转换以及模型和模型版本批注和说明。
 
-有关更多详细信息，请参阅[在 MLflow 模型注册表中管理 MLflow 模型的生命周期](../applications/mlflow/model-registry.md)。
+若要详细了解如何管理和使用模型，请查看 [Azure Databricks 上的 MLflow 模型](../applications/mlflow/model-registry.md)。
 
 ## <a name="experiments"></a><a id="experiments"> </a><a id="ws-experiments"> </a>试验
 
 MLflow 试验是组织的基本构成单位和适用于 MLflow 机器学习模型训练运行的访问控制；所有 MLflow 运行都属于试验。 每个试验都允许可视化、搜索和比较运行，以及下载运行项目或元数据以便在其他工具中进行分析。
 
 有关如何管理和使用试验的详细信息，请参阅[试验](../applications/mlflow/tracking.md#mlflow-experiments)。
-
-## <a name="models"></a>模型
-
-模型指的是 MLflow 已注册的模型，你可使用它通过阶段转换和版本控制在生产中管理 MLflow 模型。 已注册的模型具有唯一的名称、版本、模型世系和其他元数据。
-
-有关如何管理和使用模型的详细信息，请参阅[在 MLflow 模型注册表中管理 MLflow 模型的生命周期](../applications/mlflow/model-registry.md)。

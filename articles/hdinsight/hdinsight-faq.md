@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 origin.date: 11/20/2019
 ms.date: 02/24/2020
-ms.openlocfilehash: 0ef83292554b52192525cf3c2f2be46f4ecf0ee4
-ms.sourcegitcommit: 1118dd532a865ae25a63cf3e7e2eec2d7bf18acc
+ms.openlocfilehash: 9b889c13b5db203a5d60d3c28b84ce4465cf9eb2
+ms.sourcegitcommit: bb7497d5a11e8fb506907221ff65a18e6c523372
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91394546"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98692036"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight：常见问题
 
@@ -88,9 +88,9 @@ ms.locfileid: "91394546"
 
 ## <a name="metastore"></a>元存储
 
-### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-server"></a>如何从现有的元存储迁移到 Azure SQL Server？ 
+### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-database"></a>如何从现有的元存储迁移到 Azure SQL 数据库？ 
 
-若要从 SQL Server 迁移到 Azure SQL Server，请参阅[教程：使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库中的单一数据库或共用数据库](../dms/tutorial-sql-server-to-azure-sql.md)。
+要从 SQL Server 迁移到 Azure SQL 数据库，请参阅[教程：使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库中的单一数据库或共用数据库](../dms/tutorial-sql-server-to-azure-sql.md)。
 
 ### <a name="is-the-hive-metastore-deleted-when-the-cluster-is-deleted"></a>删除群集时是否会删除 Hive 元存储？
 
@@ -130,7 +130,7 @@ Hive 元存储用于存储 Hive 服务器所用数据源的元数据。 其大�
 
 有关详细信息，请参阅以下文档：
 
-- [控制网络流量](/hdinsight-plan-virtual-network-deployment#networktraffic)
+- [HDInsight 上的 Apache Hadoop 服务所使用的端口](./hdinsight-hadoop-port-settings-for-services.md)
 
 - [使用专用终结点保护传入虚拟网络中 HDInsight 群集的流量](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
 
@@ -199,7 +199,7 @@ Clamscan 是在 HDInsight 群集上运行的防病毒软件，Azure 安全性服
 
 1. 使用以下命令禁用自动执行：
    
-   `/usr/local/vbin/azsecd config -s clamav -d Disabled`
+  sudo `usr/local/bin/azsecd config -s clamav -d Disabled` sudo service azsecd restart 
    
 1. 添加一个 Cron 作业，以便以 root 身份运行以下命令：
    
@@ -222,7 +222,7 @@ Clamscan 是在 HDInsight 群集上运行的防病毒软件，Azure 安全性服
 
 ### <a name="how-can-i-find-the-currently-linked-service-principal-for-a-data-lake-storage-account"></a>如何查找 Data Lake 存储帐户当前链接的服务主体？
 
-可以在 Azure 门户中群集属性下的“Data Lake Storage Gen1 访问”中找到相关设置。**** 
+可以在 Azure 门户中群集属性下的“Data Lake Storage Gen1 访问”中找到相关设置。 
  
 ### <a name="how-can-i-calculate-the-usage-of-storage-accounts-and-blob-containers-for-my-hdinsight-clusters"></a>如何计算 HDInsight 群集的存储帐户和 Blob 容器的用量？
 
@@ -259,7 +259,7 @@ done
 可以使用 Azure 存储资源管理器将数据访问策略分配到用户的安全组。 有关详细信息，请参阅：
 
 - [如何设置 Azure AD 用户的权限，以使用 Hive 或其他服务在 Data Lake Storage Gen2 中查询数据？](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
-- [使用 Azure 存储资源管理器和 Azure Data Lake Storage Gen2 设置文件和目录级别权限](/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
+- [使用 Azure 存储资源管理器和 Azure Data Lake Storage Gen2 设置文件和目录级别权限](../storage/blobs/data-lake-storage-explorer.md)
 
 ### <a name="can-i-increase-hdfs-storage-on-a-cluster-without-increasing-the-disk-size-of-worker-nodes"></a>是否可以在不增大工作器节点的磁盘大小的情况下增大群集上的 HDFS 存储？
 
@@ -285,8 +285,8 @@ done
 
 可使用以下 REST 终结点来提取 JSON 格式的所需信息。 使用基本身份验证标头发出请求。
 
-- Tez 查询视图：https:\//\<cluster name>.azurehdinsight.cn/ws/v1/timeline/HIVE_QUERY_ID/**
-- Tez Dag 视图：https:\//\<cluster name>.azurehdinsight.cn/ws/v1/timeline/TEZ_DAG_ID/**
+- Tez 查询视图：https:\//\<cluster name>.azurehdinsight.cn/ws/v1/timeline/HIVE_QUERY_ID/
+- Tez Dag 视图：https:\//\<cluster name>.azurehdinsight.cn/ws/v1/timeline/TEZ_DAG_ID/
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>如何以 Azure Active Directory 用户身份从 HDI 群集检索配置详细信息？
 

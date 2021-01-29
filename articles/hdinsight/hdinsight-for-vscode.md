@@ -10,12 +10,12 @@ ms.workload: big-data
 origin.date: 04/07/2020
 ms.date: 06/22/2020
 ms.author: v-yiso
-ms.openlocfilehash: 092e5c9e058bb486d3e919a58b3ac452829b834c
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: b271b5f6321bc7dad5723cea0c4279eb7c5972f0
+ms.sourcegitcommit: bb7497d5a11e8fb506907221ff65a18e6c523372
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829638"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98692096"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>使用适用于 Visual Studio Code 的 Spark 和 Hive 工具
 
@@ -274,7 +274,7 @@ ms.locfileid: "97829638"
 
 > [!NOTE]
 >
-> [“此扩展不支持 2020.5.78807 版及更高版本的 ms-python”](#issues-changed)问题已解决。 目前可以使用最新的 ms-python 版本。
+> [“此扩展不支持 2020.5.78807 版及更高版本的 ms-python”](#issues-changed)问题已解决。 请立即将 mspython 更新到最新版本 。
 
 ## <a name="submit-pyspark-batch-job"></a>提交 PySpark 批处理作业
 
@@ -492,7 +492,7 @@ ms.locfileid: "97829638"
 
 ## <a name="issues-changed"></a>改观的问题
 
-由于“此扩展不支持 2020.5.78807 版及更高版本的 ms-python”问题已解决，因此现在可以使用最新的 ms-python 版本。
+由于“此扩展不支持 2020.5.78807 版及更高版本的 ms-python”问题已解决，请立即将 ms-python 更新到最新版本 。
 
 
 ## <a name="next-steps"></a>后续步骤

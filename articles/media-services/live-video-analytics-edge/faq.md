@@ -4,12 +4,12 @@ description: 本文解答了有关 IoT Edge 上的实时视频分析的常见问
 ms.topic: conceptual
 origin.date: 12/01/2020
 ms.date: 01/11/2021
-ms.openlocfilehash: adee32cda1e50e0e59357c5e21d342202f92116d
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 378efa394e810beedc039152fa2c123b08136b06
+ms.sourcegitcommit: a978c5f2c6b53494d67e7c3c5a44b2aa648219a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023274"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629050"
 ---
 # <a name="live-video-analytics-on-iot-edge-faq"></a>IoT Edge 上的实时视频分析常见问题解答
 
@@ -82,7 +82,7 @@ ms.locfileid: "98023274"
 
 **对媒体图形资产进行流式处理存在哪些限制？**
 
-从媒体图流式处理实时资产或录制资产时会使用大规模基础结构和流式处理终结点，媒体服务支持相同的大规模基础结构和流式处理终结点，以便为媒体和娱乐客户、Over the Top (OTT) 客户以及广播客户进行按需和实时流式处理。 这意味着你可以快速轻松地启用 Azure 内容分发网络、Verizon 或 Akamai，以将你的内容传送给受众。受众规模可以少至几个观众，也可以多达数百万观众，具体取决于你的情况。
+从媒体图流式处理实时资产或录制资产时会使用大规模基础结构和流式处理终结点，媒体服务支持相同的大规模基础结构和流式处理终结点，以便为媒体和娱乐客户、Over the Top (OTT) 客户以及广播客户进行按需和实时流式处理。 这意味着你可快速轻松地启用 Verizon 或 Akamai，来将你的内容传递给受众，受众规模可以少至几名观众，也可多达数百万名观众，具体取决于你的场景。
 
 可以使用 Apple HLS 或 MPEG-DASH 来传送内容。
 

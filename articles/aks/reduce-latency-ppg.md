@@ -10,12 +10,12 @@ ms.date: 01/11/2021
 ms.testscope: yes|no
 ms.testdate: 01/11/2021null
 ms.author: v-yeche
-ms.openlocfilehash: f87575aa19e5ea99525aa31b8b47bd43f837b8cf
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: c32606d01c4ed7a7e4e22eaa576beeb9554ba073
+ms.sourcegitcommit: ab5613bd4ca33ff8eddd0b93de57a69835c0a951
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023990"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98626763"
 ---
 <!--Verified successfully on 01/04/2021-->
 # <a name="reduce-latency-with-proximity-placement-groups"></a>使用邻近放置组降低延迟
@@ -23,7 +23,9 @@ ms.locfileid: "98023990"
 > [!Note]
 > 在 AKS 上使用邻近放置组时，归置仅适用于代理节点。 节点到节点延迟以及相应的托管 Pod 到 Pod 延迟得到改善。 归置不会影响群集的控制平面的放置。
 
-在 Azure 中部署应用程序时，跨区域或可用性区域分布虚拟机 (VM) 实例会造成网络延迟，这可能会影响应用程序的总体性能。 邻近放置组是一种逻辑分组，用于确保 Azure 计算资源的物理位置彼此接近。 有些应用程序（如游戏、工程模拟和高频交易 (HFT)）需要低延迟和快速完成的任务。 对于这样的高性能计算 (HPC) 场景，请考虑为群集的节点池使用[邻近放置组](../virtual-machines/linux/co-location.md#proximity-placement-groups) (PPG)。
+在 Azure 中部署应用程序时，跨区域分布虚拟机 (VM) 实例会造成网络延迟，这可能会影响应用程序的总体性能。 邻近放置组是一种逻辑分组，用于确保 Azure 计算资源的物理位置彼此接近。 有些应用程序（如游戏、工程模拟和高频交易 (HFT)）需要低延迟和快速完成的任务。 对于这样的高性能计算 (HPC) 场景，请考虑为群集的节点池使用[邻近放置组](../virtual-machines/linux/co-location.md#proximity-placement-groups) (PPG)。
+
+<!--REMOVE or availability zones-->
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -42,15 +44,7 @@ ms.locfileid: "98023990"
 * 多个节点池可以与单个邻近放置组相关联。
 * 一个节点池只能与单个邻近放置组相关联。
 
-### <a name="configure-proximity-placement-groups-with-availability-zones"></a>通过可用性区域配置邻近放置组
-
-> [!NOTE]
-> 尽管邻近放置组要求一个节点池最多使用一个可用性区域，但对于单个区域中的 VM，[99.9% 的基线 Azure VM SLA](https://www.azure.cn/support/sla/virtual-machines/) 仍然有效。
-
-邻近放置组是一个节点池概念，与每个单独的节点池相关联。 使用 PPG 资源对 AKS 控制平面可用性没有影响， 可能会影响群集的区域设计方式。 若要确保群集跨多个区域分布，建议采用以下设计。
-
-* 预配一个群集，其中第一个系统池使用 3 个区域，并且不关联任何邻近放置组。 这可确保系统 Pod 位于专用节点池，该池将分布在多个区域中。
-* 添加额外用户节点池，其具有唯一区域和与每个池关联的邻近放置组。 例如区域 1 中的 nodepool1 和 PPG1、区域 2 中的 nodepool2 和 PPG2、区域 3 中的 nodepool3 和 PPG3。 这可确保在群集级别，节点跨多个区域分布，而每个单独的节点池归置于指定的区域中，具有专用的 PPG 资源。
+<!--Not Available on ### Configure proximity placement groups with availability zones-->
 
 ## <a name="create-a-new-aks-cluster-with-a-proximity-placement-group"></a>使用邻近放置组创建新的 AKS 群集
 

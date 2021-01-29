@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 09/29/2020
+ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: da3d587a91d9c63f660b77d4ed0a42f32c91005c
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: da536e39bc6646cff7ed616fcb93b063df095c7d
+ms.sourcegitcommit: bb7497d5a11e8fb506907221ff65a18e6c523372
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978366"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98692084"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>使用 Azure 门户创建 ExpressRoute Direct
 
@@ -21,7 +21,14 @@ ms.locfileid: "94978366"
 
 ## <a name="before-you-begin"></a><a name="before"></a>准备工作
 
-验证 **Microsoft.Network** 资源提供程序是否已在你的订阅中注册。 通过注册资源提供程序来配置订阅，以供资源提供程序使用。
+需要先注册订阅，然后才能使用 ExpressRoute Direct。 若要注册，请使用你的订阅 ID 向 <ExpressRouteDirect@microsoft.com> 发送一封电子邮件，其中包括以下详细信息：
+
+* 需通过 **ExpressRoute Direct** 完成的方案
+* 位置首选项 - 请参阅[合作伙伴和对等互连位置](expressroute-locations-providers.md)，获取包含所有位置的完整列表
+* 实现的时间线
+* 其他问题
+
+注册后，验证 Microsoft.Network 资源提供程序是否已在你的订阅中注册。 通过注册资源提供程序来配置订阅，以供资源提供程序使用。
 
 1. 按照 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)中所述访问你的订阅设置。
 1. 在你的订阅中，对于“资源提供程序”，请验证 **Microsoft.Network** 提供程序是否显示为“已注册”状态。 如果已注册的提供程序的列表中不存在 Microsoft.Network 资源提供程序，请添加该提供程序。

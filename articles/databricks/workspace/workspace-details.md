@@ -5,15 +5,15 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 10/05/2020
+ms.date: 10/20/2020
 title: 获取工作区、群集、笔记本、模型和作业标识符 - Azure Databricks
 description: 了解如何在 Azure Databricks 中获取工作区实例名称和 ID、群集 URL、笔记本 URL、模型 ID 和作业 URL。
-ms.openlocfilehash: 36a33aadcfe3be1a730e86c00668e4c062dae33b
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: 2589df23bbb3412eba27879307e5bbf3ee2f8384
+ms.sourcegitcommit: bb7497d5a11e8fb506907221ff65a18e6c523372
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937771"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98692080"
 ---
 # <a name="get-workspace-cluster-notebook-model-and-job-identifiers"></a>获取工作区、群集、笔记本、模型和作业标识符
 
@@ -21,18 +21,16 @@ ms.locfileid: "91937771"
 
 ## <a name="workspace-instance-names-urls-and-ids"></a><a id="workspace-instance-names-urls-and-ids"> </a><a id="workspace-url"> </a>工作区实例名称、URL 和 ID
 
-实例名称会分配给每个 Azure Databricks 部署，并由你登录 Azure Databricks 部署的 URL 中的完全限定域名表示。
+唯一的实例名称（也称为每工作区 URL）已分配给每个 Azure Databricks 部署 。 它是完全限定的域名，用于登录到 Azure Databricks 部署和发出 API 请求。
 
 Azure Databricks [工作区](index.md) 是运行 Azure Databricks 平台的位置，可在其中创建 Spark 群集和计划工作负载。 工作区具有唯一的数字工作区 ID。
 
-在 Azure 中，每个工作区都分配有两个 URL（每工作区和旧区域），并且获取实例名称和工作区 ID 的方式取决于 URL。
-
 ### <a name="per-workspace-url"></a>每工作区 URL
 
-此唯一的每工作区 URL 采用以下格式：`adb-<workspace-id>.<random-number>.databricks.azure.cn`。 工作区 ID 紧跟在 `adb-` 的后面，在圆点 (.) 的前面。 对于每工作区 URL `https://adb-5555555555555555.19.databricks.azure.cn/`：
+此唯一的每工作区 URL 采用以下格式：``adb-<workspace-id>.<random-number>.databricks.azure.cn``。 工作区 ID 紧跟在 `adb-` 的后面，在圆点 (.) 的前面。 对于每工作区 URL `https://adb-5555555555555555.19.databricks.azure.cn/`：
 
-* 实例名称为 `adb-5555555555555555.19.databricks.azure.cn`。
-* 工作区 ID 为 `5555555555555555`。
+* 实例名称为 ``adb-5555555555555555.19.databricks.azure.cn``。
+* 工作区 ID 为 ``5555555555555555``。
 
 #### <a name="determine-per-workspace-url"></a>确定每工作区 URL
 
@@ -48,26 +46,28 @@ Azure Databricks [工作区](index.md) 是运行 Azure Databricks 平台的位�
   > [!div class="mx-imgBorder"]
   > ![工作区 URL](../_static/images/workspace/azure-workspace-url.png)
 
+* 使用 Azure API。 请参阅[使用 Azure API 获取每工作区 URL](per-workspace-urls.md#get-a-per-workspace-url-using-the-azure-api)。
+
 ### <a name="legacy-regional-url"></a><a id="legacy-regional-url"> </a><a id="legacy-url"> </a>旧区域 URL
 
 > [!IMPORTANT]
 >
-> 新工作区不支持旧 URL。
+> 不要使用旧的区域 URL。 它们可能不适用于新的工作区、可靠性更低，而且性能比每工作区 URL 的低。
 
-旧区域 URL 由部署 Azure Databricks 工作区的区域和域 `databricks.azure.cn`（例如 `https://chinaeast2.databricks.azure.cn/`）组成。
+旧区域 URL 由部署 Azure Databricks 工作区的区域和域 ``databricks.azure.cn``（例如 ``https://chinaeast2.databricks.azure.cn/``）组成。
 
 * 如果登录到类似 `https://chinaeast2.databricks.azure.cn/` 的旧区域 URL，则实例名称为 `chinaeast2.databricks.azure.cn`。
-* 仅在使用旧区域 URL 登录之后，此 URL 中才会显示工作区 ID。 它显示在 `o=` 的后面。 在 URL `https://<databricks-instance>/?o=6280049833385130` 中，工作区 ID 为 `6280049833385130`。
+* 仅在使用旧区域 URL 登录之后，此 URL 中才会显示工作区 ID。 它显示在 ``o=`` 的后面。 在 URL ``https://<databricks-instance>/?o=6280049833385130`` 中，工作区 ID 为 ``6280049833385130``。
 
 ## <a name="cluster-url-and-id"></a>群集 URL 和 ID
 
 Azure Databricks [群集](../clusters/index.md)为运行生产 ETL 管道、流分析、临时分析和机器学习等各种用例提供了统一平台。 每个群集都有一个被称作群集 ID 的唯一 ID。 这既适用于通用群集，也适用于作业群集。 若要使用 REST API 获取群集的详细信息，必须使用群集 ID。
 
-若要获取群集 ID，请单击边栏中的“群集”选项卡，然后选择群集名称。 群集 ID 是此页面的 URL 中 `/clusters/` 组件后面的数字
+若要获取群集 ID，请单击边栏中的“群集”选项卡，然后选择群集名称。 群集 ID 是此页面的 URL 中 ``/clusters/`` 组件后面的数字
 
-`https://<databricks-instance>/#/settings/clusters/<cluster-id>`
+``https://<databricks-instance>/#/settings/clusters/<cluster-id>``
 
-在以下屏幕截图中，群集 ID 为：`0831-211914-clean632`。
+在以下屏幕截图中，群集 ID 为：``0831-211914-clean632``。
 
 > [!div class="mx-imgBorder"]
 > ![群集 URL](../_static/images/workspace/azure-cluster.png)

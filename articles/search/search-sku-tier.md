@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 12/15/2020
 ms.date: 01/14/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e828553928781773f6135d4301e5f25fdcf00194
-ms.sourcegitcommit: 01cd9148f4a59f2be4352612b0705f9a1917a774
+ms.openlocfilehash: 3900acd94a666036ef804ddfc895edd48c619076
+ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98194764"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611346"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>选择 Azure 认知搜索的定价层
 
@@ -94,7 +94,7 @@ ms.locfileid: "98194764"
 如果在数据所在的同一区域中创建 Azure 认知搜索服务，则可以完全消除数据流出费用。 下面是摘自[带宽定价页](https://www.azure.cn/pricing/details/bandwidth/)中的一些信息：
 
 + Microsoft 不会对 Azure 上的任何服务的入站数据收费，
-+ 也不会对 Azure 认知搜索的出站数据收费。 例如，如果你的搜索服务位于中国东部，而 Azure Web 应用位于美国东部，则 Microsoft 不会对来自中国东部的查询响应有效负载收费。
++ 也不会对 Azure 认知搜索的出站数据收费。 例如，如果你的搜索服务位于中国东部，而 Azure Web 应用位于中国东部 2，则 Microsoft 不会对来自中国东部的查询响应有效负载收费。
 + 在多服务解决方案中，如果所有服务都位于同一个区域，则不会对通过网络传输的数据收费。
 
 如果服务在不同的区域中，则会针对出站数据收费。 这些费用实际上不是 Azure 认知搜索帐单的一部分。 此处之所以提到这些费用，是因为如果你使用数据或 AI 扩充索引器从不同的区域提取数据，将会在总体帐单中看到这些费用。

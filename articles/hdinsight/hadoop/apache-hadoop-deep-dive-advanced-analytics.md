@@ -17,12 +17,12 @@ ms.workload: big-data
 origin.date: 01/01/2020
 ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 231546db7b689b98b580b4754f8f7e18a669246f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f80a2b19d44a91613615516a07915ea5ddf67345
+ms.sourcegitcommit: bb7497d5a11e8fb506907221ff65a18e6c523372
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77563518"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98692090"
 ---
 # <a name="deep-dive---advanced-analytics"></a>深入探讨 - 高级分析
 
@@ -82,11 +82,11 @@ HDInsight 提供多个适用于高级分析工作流的机器学习选项：
 
 ### <a name="azure-machine-learning-and-apache-hive"></a>Azure 机器学习和 Apache Hive
 
-[Azure 机器学习工作室](https://studio.azureml.net/)不仅提供预测分析建模工具，还提供完全托管的服务，可以通过此服务将预测模型部署为随时可用的 Web 服务。 Azure 机器学习提供可在云中创建完整预测分析解决方案的工具，用于快速创建、测试、操作和管理预测模型。 可以从大型算法库中进行选择、使用基于 Web 的工作室来构建模型，然后将模型轻松部署为 Web 服务。
+[Azure 机器学习工作室（经典）](https://studio.ml.azure.cn/)不仅提供预测分析建模工具，还提供完全托管的服务，你可通过此服务将预测模型部署为随时可用的 Web 服务。 Azure 机器学习提供可在云中创建完整预测分析解决方案的工具，用于快速创建、测试、操作和管理预测模型。 可以从大型算法库中进行选择、使用基于 Web 的工作室来构建模型，然后将模型轻松部署为 Web 服务。
 
 ### <a name="apache-spark-and-deep-learning"></a>Apache Spark 和深度学习
 
-[深度学习](https://www.microsoft.com/research/group/dltc/)是机器学习的一个分支，使用以人类大脑的生物学流程为灵感的*深度神经网络* (DNN)。 许多研究人员将深度学习视为有前景的人工智能方法。 深度学习的例子包括口译工具、图像识别系统和计算机推理。 为了帮助推进自身在深度学习方面的工作，Microsoft 开发了免费、易用的开源 [Microsoft 认知工具包](https://www.microsoft.com/cognitive-toolkit/)。 各种 Microsoft 产品、世界各地需要大规模部署深度学习的公司，以及对最新算法和技术感兴趣的学生都在广泛使用该工具包。 
+[深度学习](https://www.microsoft.com/research/group/dltc/)是机器学习的一个分支，使用以人类大脑的生物学流程为灵感的 *深度神经网络* (DNN)。 许多研究人员将深度学习视为有前景的人工智能方法。 深度学习的例子包括口译工具、图像识别系统和计算机推理。 为了帮助推进自身在深度学习方面的工作，Microsoft 开发了免费、易用的开源 [Microsoft 认知工具包](https://www.microsoft.com/cognitive-toolkit/)。 各种 Microsoft 产品、世界各地需要大规模部署深度学习的公司，以及对最新算法和技术感兴趣的学生都在广泛使用该工具包。 
 
 ## <a name="scenario---score-images-to-identify-patterns-in-urban-development"></a>方案 - 为图像评分以识别城市发展模式
 

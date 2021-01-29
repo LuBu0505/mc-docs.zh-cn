@@ -1,16 +1,16 @@
 ---
-ms.openlocfilehash: d3aa0c79721701e7b03deec8cf3360a12a9bc474
-ms.sourcegitcommit: 2eb5a2f53b4b73b88877e962689a47d903482c18
+ms.openlocfilehash: 36659d4454c7809ad76f07cc39cbd445e4be89c4
+ms.sourcegitcommit: a978c5f2c6b53494d67e7c3c5a44b2aa648219a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89413898"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633462"
 ---
 通过使用 OUTPUT_VIDEO_FOLDER_ON_DEVICE 密钥，将 MP4 文件写入在 .env 文件中配置的边缘设备上的目录中。 如果使用了默认值，则结果应位于 /var/media/ 文件夹中。
 
 播放 MP4 文件剪辑：
 
-1. 转到资源组，找到 VM，然后使用 Azure Bastion 进行连接。
+1. 转到资源组，找到 VM，然后进行连接。
 
     ![资源组](../../../media/quickstarts/resource-group.png)
     

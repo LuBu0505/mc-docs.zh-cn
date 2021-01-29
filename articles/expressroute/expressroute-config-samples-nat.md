@@ -2,22 +2,21 @@
 title: Azure ExpressRoute：路由器配置示例 - NAT
 description: 本页提供 Cisco 和 Juniper 路由器的路由器配置示例。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: article
-origin.date: 12/06/2018
-ms.date: 12/02/2019
+ms.date: 01/07/2021
 ms.author: v-yiso
-ms.openlocfilehash: 326194b1ff7d9752c9bf73d8d24217c40d2a6d7c
-ms.sourcegitcommit: 78c71698daffee3a6b316e794f5bdcf6d160f326
+ms.openlocfilehash: f09fe210212c838d11b0d0353145c81788e21d4d
+ms.sourcegitcommit: bb7497d5a11e8fb506907221ff65a18e6c523372
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90021393"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98692047"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>用于设置和管理 NAT 的路由器配置示例
 
-本页提供处理 ExpressRoute 时适用于 Cisco ASA 和 Juniper SRX 系列路由器的 NAT 配置示例。 这些示例仅供指导，不能按原样使用。 可以与供应商合作，以便为网络指定适当的配置。
+本文提供处理 ExpressRoute 时适用于 Cisco ASA 和 Juniper SRX 系列路由器的 NAT 配置示例。 这些路由器配置仅供指导，不能按原样使用。 需要与供应商合作，以便为网络指定适当的配置。
 
 > [!IMPORTANT]
 > 本页中的示例仅供指导。 必须与供应商的销售/技术团队和网络团队合作，以便指定符合需要的适当配置。 对于本页中所列配置的相关问题，Microsoft 不提供支持。 有关支持问题，必须与设备供应商联系。
@@ -363,5 +362,5 @@ nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT dest
 ```
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md) 。
+有关详细信息，请参阅 [ExpressRoute 常见问题解答](expressroute-faqs.md)。
 

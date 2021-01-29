@@ -18,12 +18,12 @@ ms.topic: article
 origin.date: 05/27/2019
 ms.date: 07/01/2019
 ms.author: v-yiso
-ms.openlocfilehash: 67b51c1e51a95d657d7f410f47b21d1403f4e016
-ms.sourcegitcommit: 1118dd532a865ae25a63cf3e7e2eec2d7bf18acc
+ms.openlocfilehash: 99cae9feef6da0b7a9f1e6f5fcf7c5eea260b62f
+ms.sourcegitcommit: bb7497d5a11e8fb506907221ff65a18e6c523372
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91394785"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98692066"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Spark 群集上的 Jupyter notebook 的内核 
 
@@ -64,7 +64,7 @@ HDInsight Spark 群集提供可在 [Apache Spark](./apache-spark-overview.md) �
 
 以下是在 Spark HDInsight 群集中的 Jupyter Notebook 上使用新内核的几个好处。
 
-- **预设上下文**。 使用 **PySpark**、**PySpark3** 或 **Spark** 内核时，无需首先显式设置 Spark 或 Hive 上下文，即可开始使用应用程序。 这些上下文默认可供使用。 这些上下文包括：
+- **预设上下文**。 使用 PySpark、PySpark3 或 Spark 内核时，无需先显式设置 Spark 或 Hive 上下文，即可开始使用应用程序  。 这些上下文默认可用。 这些上下文包括：
 
   * **sc** - 表示 Spark 上下文
   * **sqlContext** - 表示 Hive 上下文
@@ -86,7 +86,7 @@ HDInsight Spark 群集提供可在 [Apache Spark](./apache-spark-overview.md) �
    | --- | --- | --- |
    | help |`%%help` |生成所有可用 magic 的表，其中包含示例和说明 |
    | info |`%%info` |输出当前 Livy 终结点的会话信息 |
-   | 配置 |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |配置用于创建会话的参数。 如果已创建会话，则必须指定 force 标志 (-f)，确保删除再重新创建该会话。 有关有效参数的列表，请查看 [Livy's POST /sessions Request Body](https://github.com/cloudera/livy#request-body) （Livy 的 POST /sessions 请求正文）。 参数必须以 JSON 字符串传入，并且必须位于 magic 后面的下一行，如示例列中所示。 |
+   | 配置 |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |配置用于创建会话的参数。 如果已创建会话，则必须指定 force 标志 (`-f`)，确保删除再重新创建该会话。 有关有效参数的列表，请查看 [Livy's POST /sessions Request Body](https://github.com/cloudera/livy#request-body) （Livy 的 POST /sessions 请求正文）。 参数必须以 JSON 字符串传入，并且必须位于 magic 后面的下一行，如示例列中所示。 |
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |针对 sqlContext 执行 Hive 查询。 如果传递了 `-o` 参数，则查询的结果以 [Pandas](https://pandas.pydata.org/) 数据帧的形式保存在 %%local Python 上下文中。 |
    | local |`%%local`<br>`a=1` |后续行中的所有代码将在本地执行。 无论你使用哪个内核，代码都必须是有效的 Python2 代码。 因此，即使在创建 Notebook 时选择了“PySpark3”或“Spark”，但如果在单元中使用 `%%local` magic，该单元也只能包含有效的 Python2 代码。  |
    | 日志 |`%%logs` |输出当前 Livy 会话的日志。 |
@@ -120,10 +120,10 @@ SELECT * FROM hivesampletable
 
 上述语句执行以下操作：
 
-* 从 **hivesampletable**中选择所有记录。
-* 由于使用了 -q，因此将关闭自动可视化。
-* 由于使用了 `-m sample -r 0.1 -n 500` ，因此将从 hivesampletable 的行中随机采样 10%，并将结果集的大小限制为 500 行。
-* 最后，由于使用了 `-o query2` ，因此将输出保存到名为 **query2**的数据帧中。
+- 从 **hivesampletable** 中选择所有记录。
+- 由于使用了 -q，因此将关闭自动可视化。
+- 由于使用了 `-m sample -r 0.1 -n 500`，因此将从 hivesampletable 的行中随机采样 10%，并将结果集的大小限制为 500 行。
+- 最后，由于使用了 `-o query2` ，因此将输出保存到名为 **query2** 的数据帧中。
 
 ## <a name="considerations-while-using-the-new-kernels"></a>使用新内核时的注意事项
 
