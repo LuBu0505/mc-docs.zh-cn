@@ -3,16 +3,15 @@ title: 来自 Azure 流分析的 Azure Cosmos DB 输出
 description: 本文介绍如何将数据从 Azure 流分析输出到 Azure Cosmos DB。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 11/16/2020
-ms.openlocfilehash: bc28c9c26b2a20586248c2fbfaba6a65d79fb43c
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.date: 01/25/2021
+ms.openlocfilehash: 4ce5511ae6be2a2e11a56c78d64a038279d7c3e3
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978117"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060127"
 ---
 # <a name="azure-cosmos-db-output-from-azure-stream-analytics"></a>来自 Azure 流分析的 Azure Cosmos DB 输出
 

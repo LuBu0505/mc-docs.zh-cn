@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 03/04/2020
 title: 删除池 - Azure Databricks
 description: 了解如何删除 Azure Databricks 池。
-ms.openlocfilehash: f169b555e3194ef78466d33483c815517ea1839c
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: bd070bb9c62193ff5e7ef34409eaa4bab8168143
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121793"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058595"
 ---
 # <a name="delete-a-pool"></a><a id="delete-a-pool"> </a><a id="instance-pool-delete"> </a>删除池
 
@@ -23,7 +23,7 @@ ms.locfileid: "92121793"
 >
 > 不能撤消此操作。
 
-若要删除池，请单击[池](display.md#instance-pools-display)页上操作中的 ![“删除”图标](../../_static/images/clusters/delete-icon.png) 图标。
+若要删除池，请单击[池](display.md#instance-pools-display)页上操作中的 ![“删除”图标](../../_static/images/icons/delete-icon.png) 图标。
 
 > [!div class="mx-imgBorder"]
 > ![删除池](../../_static/images/instance-pools/delete-list.png)

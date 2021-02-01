@@ -4,16 +4,16 @@ description: 使用 Azure PowerShell 通过 Azure 资源管理器管理资源组
 ms.topic: conceptual
 origin.date: 09/01/2020
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 08/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 96a9ec9ee37cff226138f751342aa4d3d8e002db
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 18e3feeb0dcbe04d6680e9c84968297de4fae0c3
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97003959"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063656"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure 资源管理器资源组
 
@@ -72,7 +72,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 请参阅[将资源部署到现有的资源组](manage-resources-powershell.md#deploy-resources-to-an-existing-resource-group)。
 
-若要验证资源组部署，请参阅 [Test-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/Az.Resources/Test-AzResourceGroupDeployment?view=azps-1.3.0)。
+若要验证资源组部署，请参阅 [Test-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/Az.Resources/Test-AzResourceGroupDeployment)。
 
 ## <a name="deploy-a-resource-group-and-resources"></a>部署资源组和资源
 

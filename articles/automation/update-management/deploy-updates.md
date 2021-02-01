@@ -4,14 +4,14 @@ description: 本文介绍如何计划更新部署并查看其状态。
 services: automation
 ms.subservice: update-management
 origin.date: 12/09/2020
-ms.date: 01/04/2021
+ms.date: 02/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5396987a3ab78eecfb3d4ea1323d609f82abafdd
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 73859a9b2759d1c6a401f246a7e756136dadbe54
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829832"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059542"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>如何部署更新和查看结果
 
@@ -139,4 +139,5 @@ ms.locfileid: "97829832"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何创建警报来就更新部署结果进行通知，请参阅[为更新管理创建警报](configure-alerts.md)。
+* 若要了解如何创建警报来就更新部署结果进行通知，请参阅[为更新管理创建警报](configure-alerts.md)。
+* 若要对常规更新管理错误进行故障排除，请参阅[排查更新管理问题](../troubleshoot/update-management.md)。

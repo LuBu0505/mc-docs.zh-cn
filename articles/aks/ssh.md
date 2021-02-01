@@ -4,16 +4,17 @@ description: 了解如何与 Azure Kubernetes 服务 (AKS) 群集节点建立 SS
 services: container-service
 ms.topic: article
 origin.date: 07/31/2019
-ms.date: 08/10/2020
+author: rockboyfor
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2c19aea565a54f7dc333aef7f33d5036f2514702
-ms.sourcegitcommit: 78c71698daffee3a6b316e794f5bdcf6d160f326
+ms.openlocfilehash: d4bf066da9f691f9677864ab89a0119ffc560f9c
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90021248"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063627"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>使用 SSH 连接到 Azure Kubernetes 服务 (AKS) 群集节点以进行维护或故障排除
 
@@ -29,7 +30,7 @@ ms.locfileid: "90021248"
 
 本文假设你已有一个 SSH 密钥。 可以使用 [macOS 或 Linux][ssh-nix] 或 [Windows][ssh-windows] 创建 SSH 密钥。 如果使用 PuTTY Gen 来创建密钥对，请在保存密钥对时使用 OpenSSH 格式而不是默认的 PuTTy 私钥格式（.ppk 文件）。
 
-还需安装并配置 Azure CLI 2.0.64 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+还需安装并配置 Azure CLI 2.0.64 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
 ## <a name="configure-virtual-machine-scale-set-based-aks-clusters-for-ssh-access"></a>配置基于虚拟机规模集的 AKS 群集以进行 SSH 访问
 
@@ -39,7 +40,7 @@ ms.locfileid: "90021248"
 
 ```azurecli
 CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
-SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
+SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query '[0].name' -o tsv)
 ```
 
 以上示例将 *myResourceGroup* 中 *myAKSCluster* 的群集资源组名称分配到 *CLUSTER_RESOURCE_GROUP*。 然后，该示例使用 *CLUSTER_RESOURCE_GROUP* 列出规模集名称并将其分配到 *SCALE_SET_NAME*。
@@ -212,10 +213,10 @@ aks-nodepool1-79590246-0  10.240.0.4
 
 <!-- INTERNAL LINKS -->
 
-[az-aks-show]: https://docs.microsoft.com/cli/azure/aks#az_aks_show
-[az-vm-list]: https://docs.azure.cn/cli/vm#az-vm-list
-[az-vm-user-update]: https://docs.azure.cn/cli/vm/user#az-vm-user-update
-[az-vm-list-ip-addresses]: https://docs.azure.cn/cli/vm#az-vm-list-ip-addresses
+[az-aks-show]: https://docs.azure.cn/cli/aks#az_aks_show
+[az-vm-list]: https://docs.azure.cn/cli/vm#az_vm_list
+[az-vm-user-update]: https://docs.azure.cn/cli/vm/user#az_vm_user_update
+[az-vm-list-ip-addresses]: https://docs.azure.cn/cli/vm#az_vm_list_ip_addresses
 [view-kubelet-logs]: kubelet-logs.md
 [view-master-logs]: view-master-logs.md
 [aks-quickstart-cli]: kubernetes-walkthrough.md
@@ -224,8 +225,8 @@ aks-nodepool1-79590246-0  10.240.0.4
 [aks-windows-rdp]: rdp.md
 [ssh-nix]: ../virtual-machines/linux/mac-create-ssh-keys.md
 [ssh-windows]: ../virtual-machines/linux/ssh-from-windows.md
-[az-vmss-list]: https://docs.azure.cn/cli/vmss#az-vmss-list
-[az-vmss-extension-set]: https://docs.azure.cn/cli/vmss/extension#az-vmss-extension-set
-[az-vmss-update-instances]: https://docs.azure.cn/cli/vmss#az-vmss-update-instances
+[az-vmss-list]: https://docs.azure.cn/cli/vmss#az_vmss_list
+[az-vmss-extension-set]: https://docs.azure.cn/cli/vmss/extension#az_vmss_extension_set
+[az-vmss-update-instances]: https://docs.azure.cn/cli/vmss#az_vmss_update_instances
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

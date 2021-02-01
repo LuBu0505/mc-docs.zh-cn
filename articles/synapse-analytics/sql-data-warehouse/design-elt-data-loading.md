@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 origin.date: 11/20/2020
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 60f15a9f7d1a3d3f689c0971d59b515d931d68d4
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: bc846f4e5f2b2ba5ab9a4720a1cd3679c18d67e3
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023261"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059698"
 ---
 # <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>适用于 Azure Synapse Analytics 中的专用 SQL 池的数据加载策略
 
@@ -43,7 +43,7 @@ ms.locfileid: "98023261"
 5. 转换数据。
 6. 将数据插入生产表。
 
-有关加载教程，请参阅[从 Azure Blob 存储加载数据](load-data-from-azure-blob-storage-using-polybase.md)。
+有关加载教程，请参阅[从 Azure Blob 存储加载数据](./load-data-from-azure-blob-storage-using-copy.md)。
 
 ## <a name="1-extract-the-source-data-into-text-files"></a>1.将源数据提取到文本文件中
 
@@ -144,7 +144,7 @@ ms.locfileid: "98023261"
 若要加载数据，可以使用下列任一加载选项：
 
 - [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)是推荐使用的加载实用工具，因为它可以无缝且灵活地加载数据。 该语句具有许多 PolyBase 不提供的其他加载功能。 
-- [具有 T-SQL 的 PolyBase](load-data-from-azure-blob-storage-using-polybase.md) 要求定义外部数据对象。
+- [具有 T-SQL 的 PolyBase](./load-data-from-azure-blob-storage-using-copy.md) 要求定义外部数据对象。
 - [Azure 数据工厂 (ADF) 的 PolyBase 和 COPY 语句](../../data-factory/load-azure-sql-data-warehouse.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)是另一个业务流程工具。  它定义管道并计划作业。
 - 源数据位于 SQL Server 时，[具有 SSIS 的 PolyBase](https://docs.microsoft.com/sql/integration-services/load-data-to-sql-data-warehouse?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 运行良好。 SSIS 定义源到目标表的映射，同时可协调负载。 如果已有 SSIS 包，可将这些包修改为使用新的数据仓库目标。
 

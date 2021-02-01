@@ -7,13 +7,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.author: v-johya
 ms.topic: conceptual
-ms.date: 11/27/2020
-ms.openlocfilehash: c235cc80611998a5e61217d5a6aa51327e56cf9d
-ms.sourcegitcommit: f1d0f81918b8c6fca25a125c17ddb80c3a7eda7e
+ms.date: 01/19/2021
+ms.openlocfilehash: 9941d215c7952f548a88040f41019755f4e9347f
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96306547"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751263"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>认知服务和机器学习
 
@@ -44,7 +44,7 @@ ms.locfileid: "96306547"
 
 构建机器学习系统的过程需要一些机器学习或数据科学方面的知识。
 
-机器学习是使用 [Azure 机器学习 (AML) 产品和服务](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure%252fmachine-learning%252fstudio%252fcontext%252fml-context)提供的。
+机器学习是使用 [Azure 机器学习 (AML) 产品和服务](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure%2fmachine-learning%2fstudio%2fcontext%2fml-context)提供的。
 
 ## <a name="what-is-a-cognitive-service"></a>什么是认知服务？
 

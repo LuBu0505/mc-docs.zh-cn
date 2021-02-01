@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 04/29/2020
 title: GitHub 版本控制 - Azure Databricks
 description: 了解如何通过 UI 使用 GitHub 为笔记本设置版本控制。
-ms.openlocfilehash: 3d9e3cc99bce0102a42b070e4a66d73e4309534d
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 5bea56474de1500b7556c4d52130b88e845e0b94
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106747"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059873"
 ---
 # <a name="github-version-control"></a>GitHub 版本控制
 
@@ -21,7 +21,7 @@ ms.locfileid: "93106747"
 
 ## <a name="enable-and-disable-git-versioning"></a>启用和禁用 Git 版本控制
 
-默认情况下启用版本控制。 若要切换此设置，请参阅[管理 Git 中的笔记本版本控制功能](../administration-guide/workspace/notebooks.md#manage-git-versioning)。 如果禁用 Git 版本控制，则“用户设置”屏幕中的“Git 集成”选项卡将不可用 。
+默认情况下会启用版本控制。 若要切换此设置，请参阅[管理 Git 中的笔记本版本控制功能](../administration-guide/workspace/notebooks.md#manage-git-versioning)。 如果禁用 Git 版本控制，则“用户设置”屏幕中的“Git 集成”选项卡将不可用 。
 
 ## <a name="configure-version-control"></a>配置版本控制
 
@@ -47,7 +47,7 @@ ms.locfileid: "93106747"
 
 ### <a name="save-your-access-token-to-azure-databricks"></a>将访问令牌保存到 Azure Databricks
 
-1. 单击屏幕右上方的用户图标![帐户图标](../_static/images/account-settings/account-icon.png)，然后选择“用户设置”。
+1. 单击屏幕右上方的用户图标![帐户图标](../_static/images/icons/account-icon.png)，然后选择“用户设置”。
 
    > [!div class="mx-imgBorder"]
    > ![AccountSettings](../_static/images/account-settings/user-settings.png)
@@ -63,10 +63,10 @@ ms.locfileid: "93106747"
 
 ## <a name="work-with-notebook-revisions"></a><a id="git-notebook"> </a><a id="work-with-notebook-revisions"> </a>使用笔记本修订版本
 
-可以在“历史记录”面板中使用笔记本修订版本。 单击笔记本右上角的“修订版本历史记录”，以打开“历史记录”面板。
+可以在“历史记录”面板中使用笔记本修订版本。 单击笔记本右上角的“修订历史记录”，以打开历史记录面板。
 
 > [!div class="mx-imgBorder"]
-> ![修订版本历史记录](../_static/images/version-control/revision-history-open.png)
+> ![修订历史记录](../_static/images/version-control/revision-history-open.png)
 
 > [!NOTE]
 >
@@ -106,7 +106,7 @@ ms.locfileid: "93106747"
    > ![“历史记录”面板](../_static/images/version-control/save-now.png)
 
 2. 单击“立即保存”，将笔记本保存到 GitHub。 此时将显示“保存笔记本修订版本”对话框。
-3. 根据需要，输入一条消息来描述所做的更改。
+3. 根据需要，输入一条消息以对更改进行说明。
 4. 确保选中“另提交到 Git”。
 
    > [!div class="mx-imgBorder"]
@@ -125,17 +125,17 @@ ms.locfileid: "93106747"
 
 2. 在“历史记录”面板中选择一个条目。 Azure Databricks 会显示该版本。
 3. 单击“还原此版本”。
-4. 单击“确认”，以确认想要还原该版本。
+4. 单击“确认”，以确认是否要还原该版本。
 
 ### <a name="unlink-a-notebook"></a>取消链接笔记本
 
 1. 打开“历史记录”面板。
-2. Git 状态栏显示“Git：已同步”。
+2. Git 状态栏显示“Git:**已同步”。**
 
    > [!div class="mx-imgBorder"]
    > ![Git 状态](../_static/images/version-control/save-now.png)
 
-3. 单击“Git：已同步”。
+3. 单击“Git:**已同步”。**
 
    > [!div class="mx-imgBorder"]
    > ![Git 首选项](../_static/images/version-control/git-unlink.png)
@@ -204,7 +204,7 @@ ms.locfileid: "93106747"
 
 Azure Databricks 支持 Git 分支。
 
-* 可以将笔记本链接到自己的分支，然后选择分支。
+* 可以将笔记本链接到你自己的分支，然后选择一个分支。
 * 建议为每个笔记本使用单独的分支。
 * 对更改满意后，可以点击“Git 首选项”对话框中的“创建 PR”链接，转到 GitHub 的拉取请求页面。
 * 仅在不使用父存储库的默认分支时，才会显示“创建 PR”链接。

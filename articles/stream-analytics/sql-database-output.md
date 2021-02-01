@@ -3,16 +3,15 @@ title: Azure 流分析中的 Azure SQL 数据库输出
 description: 本文介绍作为 Azure 流分析的输出的 Azure SQL 数据库。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/07/2021
-ms.openlocfilehash: 5d9efd68e65dd6fb8cd574ace2222861d9abfa9c
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.date: 01/25/2021
+ms.openlocfilehash: 9f993b4a83c007ddac5b7f761aa017bc1e018290
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023163"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060000"
 ---
 # <a name="azure-sql-database-output-from-azure-stream-analytics"></a>Azure 流分析中的 Azure SQL 数据库输出
 

@@ -5,15 +5,15 @@ author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
 origin.date: 04/10/2020
-ms.date: 12/11/2020
+ms.date: 01/19/2021
 ms.author: v-tawe
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 72cf49c6f1b9aee2cf7e36e6d64825b2677f36c7
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: 977219e5986a4f44304382644885879c194e359e
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97105481"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060132"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Key Vault 的 Azure 安全基线
 
@@ -103,7 +103,9 @@ Azure 安全中心检测到异常活动时会显示警报。 它还会向订阅�
 
 为 Azure Key Vault 设置高级威胁防护：
 
-https://docs.azure.cn/security-center/defender-for-key-vault-introduction
+https://docs.azure.cn/azure/security-center/advanced-threat-protection-key-vault
+
+
 
 **Azure 安全中心监视**：是
 
@@ -112,6 +114,7 @@ https://docs.azure.cn/security-center/defender-for-key-vault-introduction
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
 **指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+
 
 **Azure 安全中心监视**：不适用
 
@@ -199,7 +202,7 @@ https://docs.azure.cn/azure-monitor/platform/alerts-activity-log
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
 
-**指导**：通过 Azure Monitor 引入日志来聚合 Azure Key Vault 生成的安全数据。 在 Azure Monitor 中，使用 Azure Log Analytics 工作区来查询和执行分析，并使用 Azure 存储帐户进行长期/存档存储。 或者，可以启用数据并将其加入第三方 SIEM。 
+**指导**：通过 Azure Monitor 引入日志来聚合 Azure Key Vault 生成的安全数据。 在 Azure Monitor 中，使用 Azure Log Analytics 工作区来查询和执行分析，并使用 Azure 存储帐户进行长期/存档存储。 或者，可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。 
 
 Azure Key Vault 日志记录：
 
@@ -208,6 +211,7 @@ https://docs.azure.cn/key-vault/key-vault-logging
 <!-- Quickstart: How to on-board Azure Sentinel:
 
 https://docs.azure.cn/sentinel/quickstart-onboard -->
+
 
 **Azure 安全中心监视**：是
 
@@ -248,7 +252,7 @@ https://docs.azure.cn/key-vault/key-vault-logging
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和审查日志
 
-**指导**：分析和监视日志中的异常行为，定期审查 Azure Key Vault 保护的资源的结果。 使用 Azure Monitor 的 Log Analytics 工作区查看日志并对日志数据执行查询。 也可以启用第三方 SIEM 并将数据载入其中。 
+**指导**：分析和监视日志中的异常行为，定期审查 Azure Key Vault 保护的资源的结果。 使用 Azure Monitor 的 Log Analytics 工作区查看日志并对日志数据执行查询。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方 SIEM。 
 
 <!-- Quickstart: On-board Azure Sentinel:
 
@@ -269,7 +273,7 @@ https://docs.azure.cn/azure-monitor/log-query/get-started-queries
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7：针对异常活动启用警报
 
-**指导**：在 Azure 安全中心，为 Key Vault 启用高级威胁防护 (ATP)。 在 Azure Key Vault 中启用诊断设置，并将日志发送到 Log Analytics 工作区。
+**指导**：在 Azure 安全中心，为 Key Vault 启用高级威胁防护 (ATP)。 在 Azure Key Vault 中启用诊断设置，并将日志发送到 Log Analytics 工作区。 将 Log Analytics 工作区加入 Azure Sentinel，因为它提供了安全业务流程自动化响应 (SOAR) 解决方案。 这样便可以创建 playbook（自动解决方案）并用于修正安全问题。
 
 <!-- Quickstart: On-board Azure Sentinel:
 
@@ -413,7 +417,7 @@ https://docs.azure.cn/security-center/security-center-identity-access
 
 部署 Azure AD Privileged Identity Management (PIM)： https://docs.azure.cn/active-directory/privileged-identity-management/pim-deployment-plan
 
-为 Azure Key Vault 设置高级威胁防护（预览）： https://docs.azure.cn/security-center/defender-for-key-vault-introduction
+为 Azure Key Vault 设置高级威胁防护（预览）： https://docs.azure.cn/azure/security-center/advanced-threat-protection-key-vault
 
 Azure Key Vault 的警报（预览）： https://docs.azure.cn/security-center/alerts-reference#alerts-azurekv
 
@@ -434,6 +438,7 @@ Azure Key Vault 的警报（预览）： https://docs.azure.cn/security-center/a
 Azure Active Directory 条件访问中的位置条件是什么？： https://docs.azure.cn/active-directory/reports-monitoring/quickstart-configure-named-locations
 
 
+
 **Azure 安全中心监视**：目前不可用
 
 **责任**：客户
@@ -443,6 +448,7 @@ Azure Active Directory 条件访问中的位置条件是什么？： https://doc
 **指导**：使用 Azure Active Directory (Azure AD) 作为 Key Vault 等 Azure 资源的中心身份验证和授权系统。 这样，就可使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理敏感资源。
 
  
+
 快速入门：在 Azure Active Directory 中创建新租户：
 
 https://docs.azure.cn/active-directory/fundamentals/active-directory-access-create-new-tenant
@@ -1054,7 +1060,7 @@ https://docs.azure.cn/key-vault/general/assign-access-policy-portal
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反恶意软件
 
-**指导**：不适用；此建议适用于计算资源。 Microsoft 会处理基础平台的反恶意软件。
+**指南**：不适用；此建议适用于计算资源。 Microsoft 会处理基础平台的反恶意软件。
 
 
 **Azure 安全中心监视**：不适用
@@ -1189,7 +1195,7 @@ https://docs.azure.cn/key-vault/key-vault-soft-delete-powershell
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。 这些流程应着重于保护敏感系统，例如使用 Key Vault 机密的系统。
+**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。 这些流程应着重于保护敏感系统，例如使用 Key Vault 机密的系统。
 
 如何在 Azure 安全中心配置工作流自动化： 
 
@@ -1246,7 +1252,7 @@ https://docs.azure.cn/security-center/security-center-provide-security-contact-d
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
-**指导**：使用连续导出功能导出 Azure 安全中心警报和建议，以便确定已启用 Azure Key Vault 的资源的风险。 使用连续导出可以手动导出或者持续导出警报和建议。
+**指导**：使用连续导出功能导出 Azure 安全中心警报和建议，以便确定已启用 Azure Key Vault 的资源的风险。 使用连续导出可以手动导出或者持续导出警报和建议。  可以使用 Azure 安全中心数据连接器将警报流式传输到 Azure Sentinel。 
 
  
 

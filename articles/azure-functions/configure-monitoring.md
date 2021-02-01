@@ -1,15 +1,15 @@
 ---
 title: 为 Azure Functions 配置监视
 description: 了解如何将函数应用连接到 Application Insights 以进行监视，以及如何配置数据收集。
-ms.date: 01/12/2021
+ms.date: 01/27/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 626d1c69722b8df223bfa213ede1de9e7ea67d33
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: ff528337233eb83902e742172643f9749b4caa43
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195266"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060110"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>如何为 Azure Functions 配置监视
 
@@ -233,15 +233,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 
 对于将数据发送到 Application Insights 的函数应用，它需要知道 Application Insights 资源的检测密钥。 该密钥必须位于名为 **APPINSIGHTS_INSTRUMENTATIONKEY** 的应用设置中。
 
-[在 Azure 门户中](functions-create-first-azure-function.md)创建函数应用时，请在命令行中使用 [Azure Functions Core Tools](./create-first-function-cli-csharp.md) 或 [Visual Studio Code](./create-first-function-vs-code-csharp.md)，默认情况下会启用 Application Insights 集成。 Application Insights 资源的名称与函数应用的相同，并且在同一区域或最接近的区域中创建。
-
-### <a name="new-function-app-in-the-portal"></a>门户中的新函数应用
-
-若要查看正在创建的 Application Insights 资源，请选择该资源，展开“Application Insights”窗口。 可以更改“新建资源名称”，或者在 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中选择另一个需要在其中存储数据的“位置” 。
-
-![在创建函数应用时启用 Application Insights](./media/functions-monitoring/enable-ai-new-function-app.png)
-
-选择“创建”时，Application Insights 资源通过函数应用创建，该函数应用在应用程序设置中设置了 `APPINSIGHTS_INSTRUMENTATIONKEY`。 一切准备就绪。
+[在 Azure 门户中](./functions-get-started.md)创建函数应用时，请在命令行中使用 [Azure Functions Core Tools](./create-first-function-cli-csharp.md) 或 [Visual Studio Code](./create-first-function-vs-code-csharp.md)，默认情况下会启用 Application Insights 集成。 Application Insights 资源的名称与函数应用的相同，并且在同一区域或最接近的区域中创建。
 
 <a id="manually-connect-an-app-insights-resource"></a>
 ### <a name="add-to-an-existing-function-app"></a>添加到现有函数应用 
@@ -288,4 +280,3 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 
 
 [host.json]: functions-host-json.md
-

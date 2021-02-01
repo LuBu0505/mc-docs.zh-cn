@@ -3,22 +3,20 @@ title: 使用 Azure 流分析实时检测欺诈行为
 description: 了解如何通过流分析创建实时欺诈行为检测解决方案。 使用事件中心进行实时事件处理。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: how-to
+ms.topic: tutorial
 origin.date: 12/07/2018
-ms.date: 11/16/2020
-ms.custom: seodec18
-ms.openlocfilehash: 69d0a7c5da49d4a9257063ed1c55b644db06f5a6
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.date: 01/25/2021
+ms.openlocfilehash: f015039369e52a14d309f2561932310ea330562c
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978295"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059118"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure 流分析入门：实时欺诈检测
 
-本教程提供了有关如何使用 Azure 流分析的端到端说明。 你将学习如何执行以下操作： 
+本教程提供了有关如何使用 Azure 流分析的端到端说明。 学习如何： 
 
 * 将流事件引入到 Azure 事件中心实例中。 本教程将使用一个应用来模拟移动电话元数据记录流。
 
@@ -82,7 +80,7 @@ ms.locfileid: "94978295"
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
-9. 单击 **创建**。
+9. 单击“创建”。
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>授予对事件中心的访问权限，并获取连接字符串
 
@@ -99,7 +97,7 @@ ms.locfileid: "94978295"
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4. 单击 **创建**。
+4. 单击“创建”。
 
 5. 部署策略后，在共享访问策略列表中单击该策略。
 
@@ -187,7 +185,7 @@ ms.locfileid: "94978295"
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
 
-3. 单击 **创建**。
+3. 单击“创建”。
 
     创建作业后，门户将显示作业详细信息。 尽管尚无任何应用正在运行，但必须先配置该作业，然后才能启动。
 
@@ -212,7 +210,7 @@ ms.locfileid: "94978295"
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
 
-4. 单击 **创建**。
+4. 单击“创建”。
 
 ## <a name="create-queries-to-transform-real-time-data"></a>创建查询以转换实时数据
 
@@ -381,7 +379,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
     <br/>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     
-5. 单击“保存” 。 
+5. 单击“ **保存**”。 
 
 
 ## <a name="start-the-streaming-analytics-job"></a>启动流分析作业
@@ -420,19 +418,10 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
 5. 删除事件中心。
 6. 删除事件中心命名空间。
 
-## <a name="get-support"></a>获取支持
-
-若要获得进一步的帮助，可前往 [Azure 流分析的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
-
 ## <a name="next-steps"></a>后续步骤
 
 可以继续阅读本教程的以下文章：
 
-<!-- Not Avaialble * [Stream Analytics and Power BI: A real-time analytics dashboard for streaming data](stream-analytics-power-bi-dashboard.md)-->
-有关常规流分析的详细信息，请查看以下文章：
-
-* [Azure 流分析简介](stream-analytics-introduction.md)
-* [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure 流分析管理 REST API 参考](https://docs.microsoft.com/rest/api/streamanalytics/)
+> [!div class="nextstepaction"]
+> [在流分析作业中运行 Azure Functions](stream-analytics-with-azure-functions.md)
 

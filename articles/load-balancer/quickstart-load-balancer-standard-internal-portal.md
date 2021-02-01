@@ -13,15 +13,15 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 07/30/2020
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.custom: mvc
-ms.openlocfilehash: e80851a5bb15e3ee90cc87f3c2ad4f8c2219b840
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 8c7bfe1f8f0c03ec00be1b1ebaae3c7336b8cfe8
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231110"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058631"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建内部负载均衡器以对 VM 进行负载均衡
 
@@ -47,6 +47,10 @@ ms.locfileid: "98231110"
 在本部分，你将创建一个负载均衡器来对虚拟机进行负载均衡。 
 
 创建内部负载均衡器时，虚拟网络配置为负载均衡器的网络。 
+
+下图显示在本快速入门中创建的资源：
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="在快速入门中创建的标准负载均衡器资源。" border="false":::
 
 虚拟网络中的专用 IP 地址配置为负载均衡器的前端（默认名称为 LoadBalancerFrontend）。 
 
@@ -109,7 +113,7 @@ ms.locfileid: "98231110"
 
 2. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息： 
 
-    | 设置                 | Value                                              |
+    | 设置                 | “值”                                              |
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择在上一步中创建的 CreateIntLBQS-rg。|
@@ -159,7 +163,7 @@ ms.locfileid: "98231110"
 
 2. 在“设置”下，依次选择“运行状况探测”、“添加”。
     
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 **myHealthProbe**。 |
     | 协议 | 选择“HTTP”。 |
@@ -187,7 +191,7 @@ ms.locfileid: "98231110"
 
 3. 使用以下值配置负载均衡规则：
     
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 **myHTTPRule**。 |
     | IP 版本 | 选择“IPv4” |
@@ -199,12 +203,8 @@ ms.locfileid: "98231110"
     | 运行状况探测 | 选择“myHealthProbe”。 |
     | 空闲超时（分钟） | 将滑块移动到 15 分钟。 |
     | TCP 重置 | 选择“启用”。  |
-    | 出站源网络地址转换 (SNAT) | 选择“(建议)使用出站规则为后端池成员提供对 Internet 的访问权限。” |
-
+    
 4. 将剩余的字段保留默认设置，然后选择“确定”。
-
->[!NOTE]
->后端池中的虚拟机将不含具有此配置的出站 Internet 连接。 </br> 有关提供出站连接的详细信息，请参阅： </br> **[Azure 中的出站连接](load-balancer-outbound-connections.md)**</br> 用于提供连接的选项： </br> **[仅出站的负载均衡器配置](egress-only.md)** </br> **[什么是虚拟网络 NAT？](../virtual-network/nat-overview.md)**
 
 ## <a name="create-backend-servers"></a>创建后端服务器
 
@@ -257,7 +257,7 @@ ms.locfileid: "98231110"
     | 选择负载均衡器 | 选择“myLoadBalancer” |
     | 选择后端池 | 选择“myBackendPool” |
 
-5. 选择“查看 + 创建”  。 
+5. 选择“查看 + 创建”。 
 
 6. 检查设置，然后选择“创建”。
 
@@ -273,11 +273,13 @@ ms.locfileid: "98231110"
 >[!NOTE]
 >对于生产型工作负载，建议使用标准 SKU 负载均衡器。  有关 sku 的详细信息，请参阅 [Azure 负载均衡器 SKU](skus.md)。
 
-:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="在快速入门中创建的基本负载均衡器资源。" border="false":::
-
 在本部分，你将创建一个负载均衡器来对虚拟机进行负载均衡。 
 
 创建内部负载均衡器时，虚拟网络配置为负载均衡器的网络。 
+
+下图显示在本快速入门中创建的资源：
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="在快速入门中创建的基本负载均衡器资源。" border="false":::
 
 虚拟网络中的专用 IP 地址配置为负载均衡器的前端（默认名称为 LoadBalancerFrontend）。 
 
@@ -339,7 +341,7 @@ ms.locfileid: "98231110"
 
 2. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息： 
 
-    | 设置                 | Value                                              |
+    | 设置                 | 值                                              |
     | --- | --- |
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择在上一步中创建的 CreateIntLBQS-rg。|
@@ -377,7 +379,7 @@ ms.locfileid: "98231110"
 
 3. 在“添加后端池”页上，输入或选择：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入“myBackendPool”。 |
     | 虚拟网络 | 选择“myVNet”。 |
@@ -397,7 +399,7 @@ ms.locfileid: "98231110"
 
 2. 在“设置”下，依次选择“运行状况探测”、“添加”。
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 **myHealthProbe**。 |
     | 协议 | 选择“HTTP”。 |
@@ -425,7 +427,7 @@ ms.locfileid: "98231110"
 
 3. 使用以下值配置负载均衡规则：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 **myHTTPRule**。 |
     | IP 版本 | 选择“IPv4” |
@@ -491,7 +493,7 @@ ms.locfileid: "98231110"
     | **负载均衡** |
     | 是否将此虚拟机置于现有负载均衡解决方案之后？ | 请选择“否” |
 
-5. 选择“查看 + 创建”  。 
+5. 选择“查看 + 创建”。 
 
 6. 检查设置，然后选择“创建”。
 
@@ -559,7 +561,7 @@ ms.locfileid: "98231110"
     | NIC 网络安全组 | 选择“高级”|
     | 配置网络安全组 | 选择在上一步中创建的 MyNSG。|
 
-5. 选择“查看 + 创建”  。 
+5. 选择“查看 + 创建”。 
 
 6. 检查设置，然后选择“创建”。
 

@@ -13,13 +13,13 @@ metadata:
   author: WenJason
   ms.author: v-jay
   origin.date: 07//2020
-  ms.date: 09/07/2020
-  ms.openlocfilehash: 691b2acb5f7e2cd348f8a01dbb6eff1bd743de68
-  ms.sourcegitcommit: 2eb5a2f53b4b73b88877e962689a47d903482c18
+  ms.date: 02/01/2021
+  ms.openlocfilehash: bbbdcf35a39dae534c2a5e9099ed2414aad642c5
+  ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/03/2020
-  ms.locfileid: "89413251"
+  ms.lasthandoff: 01/29/2021
+  ms.locfileid: "99059798"
 highlightedContent:
   items:
   - title: 关于 Azure 媒体服务 v3
@@ -36,7 +36,7 @@ highlightedContent:
     url: ./previous/media-services-overview.md
   - title: 将媒体服务 v2 迁移到 v3
     itemType: concept
-    url: ./latest/migrate-from-v2-to-v3.md
+    url: ./latest/migrate-v-2-v-3-migration-introduction.md
 conceptualContent:
   items:
   - title: 使用媒体服务 v3 API 进行开发
@@ -83,6 +83,14 @@ conceptualContent:
     - url: ./latest/protect-with-drm.md
       itemType: tutorial
       text: 通过 DRM 进行动态加密
+  - title: 分析内容
+    links:
+    - url: ./latest/analyzing-video-audio-files-concept.md
+      itemType: concept
+      text: 媒体分析
+    - url: ./latest/analyze-videos-tutorial-with-api.md
+      itemType: tutorial
+      text: 分析视频
   - title: 了解媒体服务规范
     links:
     - url: media-services-specifications-live-timed-metadata.md

@@ -3,18 +3,17 @@ title: Azure Cosmos DB 的 Azure 流分析输出
 description: 本文介绍如何使用 Azure 流分析保存 Azure Cosmos DB 的输出以进行 JSON 输出，从而实现对非结构化 JSON 数据进行数据存档和低延迟查询。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 02/2/2020
-ms.date: 01/07/2021
+ms.date: 01/25/2021
 ms.custom: seodec18
-ms.openlocfilehash: 99a548dd36c686f3b9c0c276761e7aeb0329eb3b
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 655b8d64d4e6f4023be03e529a459573701c3cc9
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023162"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059992"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB 的 Azure 流分析输出  
 Azure 流分析可以针对 [Azure Cosmos DB](https://docs.azure.cn/cosmos-db/) 进行 JSON 输出，从而支持对非结构化 JSON 数据进行数据存档和低延迟查询。 本文档包括用于实现此配置的一些最佳做法。 使用 Azure Cosmos DB 作为输出时，建议你将作业设置为兼容级别 1.2。

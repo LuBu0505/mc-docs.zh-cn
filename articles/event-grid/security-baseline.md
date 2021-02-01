@@ -4,15 +4,15 @@ description: 事件网格安全基线为实现 Azure 安全基准中指定的安
 author: Johnnytechn
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 12/11/2020
+ms.date: 01/18/2021
 ms.author: v-johya
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9bfacfe7cd0b7e6fadfba09fbe586d970e284347
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: 9c65d1aed4a27cbcdf2e52e153470d46efd28912
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97104617"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751142"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>事件网格的 Azure 安全基线
 
@@ -195,7 +195,7 @@ ms.locfileid: "97104617"
 
 - [如何在 Log Analytics 工作区中对 Azure 事件网格执行查询](diagnostic-logs.md)
 
-- [Log Analytics 查询入门](../azure-monitor/log-query/get-started-portal.md)
+- [Log Analytics 查询入门](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
@@ -553,7 +553,7 @@ ms.locfileid: "97104617"
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：监视计算资源中未批准的软件应用程序
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -594,7 +594,7 @@ ms.locfileid: "97104617"
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10：维护已获批软件的清单
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 

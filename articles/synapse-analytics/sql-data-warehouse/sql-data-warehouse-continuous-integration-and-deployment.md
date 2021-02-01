@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql-dw
 origin.date: 02/04/2020
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 7fcbdd241d47ebea97b3fafec8e278c375539022
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 87f7dcde236cd29c58514b27e77dce77044515b6
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021926"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059555"
 ---
 # <a name="continuous-integration-and-deployment-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>适用于 Azure Synapse Analytics 中专用 SQL 池的持续集成和部署
 
@@ -63,4 +63,4 @@ ms.locfileid: "98021926"
 
 - 探索[专用 SQL 池（以前称为 SQL DW）体系结构](massively-parallel-processing-mpp-architecture.md)
 - 快速[创建专用 SQL 池（以前称为 SQL DW）](create-data-warehouse-portal.md)
-- [加载示例数据](load-data-from-azure-blob-storage-using-polybase.md)
+- [加载示例数据](./load-data-from-azure-blob-storage-using-copy.md)

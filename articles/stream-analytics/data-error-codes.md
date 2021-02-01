@@ -4,14 +4,14 @@ description: 通过数据错误代码对 Azure 流分析进行故障排除。
 ms.author: v-johya
 author: Johnnytechn
 ms.topic: troubleshooting
-ms.date: 08/20/2020
+ms.date: 01/25/2021
 ms.service: stream-analytics
-ms.openlocfilehash: a1e86c8c39d753448d431ff057971e4fa297aa09
-ms.sourcegitcommit: 09c7071f4d0d9256b40a6bf700b38c6a25db1b26
+ms.openlocfilehash: 0c7f5912d6339c48e6a3fce6e90326f3d5e95ab0
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88715740"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060124"
 ---
 # <a name="azure-stream-analytics-data-error-codes"></a>Azure 流分析数据错误代码
 
@@ -80,5 +80,6 @@ ms.locfileid: "88715740"
 * [对输入连接进行故障排除](stream-analytics-troubleshoot-input.md)
 * [对 Azure 流分析输出进行故障排除](stream-analytics-troubleshoot-output.md)
 * [对 Azure 流分析查询进行故障排除](stream-analytics-troubleshoot-query.md)
+* [使用资源日志对 Azure 流分析进行故障排除](stream-analytics-job-diagnostic-logs.md)
 * [Azure 流分析数据错误](data-errors.md)
 

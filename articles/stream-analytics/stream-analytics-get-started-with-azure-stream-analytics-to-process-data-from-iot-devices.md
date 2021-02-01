@@ -3,17 +3,16 @@ title: 使用 Azure 流分析处理实时 IoT 数据流
 description: 带流分析和实时数据处理的 IoT 传感器标记和数据流
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 origin.date: 11/26/2019
-ms.date: 12/01/2020
-ms.openlocfilehash: 4d36f6384427b774474763876c30ac87c86d677d
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.date: 01/25/2021
+ms.openlocfilehash: 65f913f6754ec98322a43f55d7682999640748ae
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432458"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059122"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>使用 Azure 流分析处理实时 IoT 数据流
 

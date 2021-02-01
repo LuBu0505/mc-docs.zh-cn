@@ -3,16 +3,15 @@ title: 在 Azure 流分析中使用 Azure 机器学习工作室（经典）终�
 description: 本文介绍如何在 Azure 流分析中使用机器语言用户定义的函数。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 11/16/2020
-ms.openlocfilehash: f9c8a5890828469f9d1efe560225e2f81fd2c65e
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.date: 01/25/2021
+ms.openlocfilehash: 2d7f1ee372ecfcd5a3383a66d4ff2532c8ee94f1
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978347"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060117"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>流分析中的 Azure 机器学习工作室（经典）集成（预览）
 流分析支持调用 Azure 机器学习工作室（经典）终结点的用户定义函数。 [流分析 REST API 库](https://docs.microsoft.com/rest/api/streamanalytics/)中详细介绍了对此功能的 REST API 支持。 本文提供在流分析中成功实现此功能所需的补充信息。 也可在 [此处](stream-analytics-machine-learning-integration-tutorial.md)获取已发布的教程。

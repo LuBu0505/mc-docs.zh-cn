@@ -9,14 +9,14 @@ ms.subservice: general
 ms.topic: overview
 ms.custom: mvc
 origin.date: 10/01/2020
-ms.date: 11/27/2020
+ms.date: 01/14/2021
 ms.author: v-tawe
-ms.openlocfilehash: 2f5ce8c1d93bf237a68eff8044e1cc201cba299f
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: e580c4064b2fea0411f3341fb649d00267e8715d
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300935"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060015"
 ---
 # <a name="about-azure-key-vault"></a>关于 Azure Key Vault
 

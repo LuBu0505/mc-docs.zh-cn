@@ -4,13 +4,13 @@ description: 在 Azure Functions 中为 .NET 和 .NET Core 应用启用 Snapshot
 ms.topic: conceptual
 author: cweining
 ms.author: v-johya
-ms.date: 01/12/2021
-ms.openlocfilehash: a2db3b4e9138c42012b89e30cf0f3a3cdd973b01
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 01/27/2021
+ms.openlocfilehash: 36b499ad1bedebe276a2d6b2f73b5c8e634d97d2
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231181"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058510"
 ---
 # <a name="enable-snapshot-debugger-for-net-and-net-core-apps-in-azure-functions"></a>在 Azure Functions 中为 .NET 和 .NET Core 应用启用 Snapshot Debugger
 
@@ -22,7 +22,7 @@ Snapshot Debugger 当前适用于按 Windows 服务计划在 Azure Functions 上
 
 ## <a name="prerequisites"></a>先决条件
 
-* [在函数应用中启用 Application Insights 监视](/azure-functions/configure-monitoring#add-to-an-existing-function-app)
+* [在函数应用中启用 Application Insights 监视](../../azure-functions/configure-monitoring.md#add-to-an-existing-function-app)
 
 ## <a name="enable-snapshot-debugger"></a>启用快照调试器
 
@@ -147,6 +147,6 @@ namespace SnapshotCollectorAzureFunction
 
 - 为应用程序生成可触发异常的流量。 然后等待 10 到 15 分钟，这样快照就会发送到 Application Insights 实例。
 - 在 Azure 门户中[查看快照](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal)。
-- 根据函数应用上的用例自定义 Snapshot Debugger 配置。 有关详细信息，请参阅 [host.json 中的快照配置](/azure-functions/functions-host-json#applicationinsightssnapshotconfiguration)。
+- 根据函数应用上的用例自定义 Snapshot Debugger 配置。 有关详细信息，请参阅 [host.json 中的快照配置](../../azure-functions/functions-host-json.md#applicationinsightssnapshotconfiguration)。
 - 排查 Snapshot Debugger 问题时如需帮助，请参阅 [ Snapshot Debugger 故障排除](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json)。
 

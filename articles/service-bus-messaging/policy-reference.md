@@ -1,8 +1,8 @@
 ---
 title: Azure 服务总线消息传递的内置策略定义
 description: 列出 Azure 服务总线消息传递的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-origin.date: 11/20/2020
-ms.date: 01/18/2021
+origin.date: 01/25/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 10/19/2020
 ms.topic: reference
@@ -10,12 +10,12 @@ author: rockboyfor
 ms.author: v-yeche
 ms.service: service-bus-messaging
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 042cab0311356849db035920cc01344b3750ccb4
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: d99ce4fb5decad5dc6b3174b6ef95ed248345003
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230857"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059207"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-service-bus-messaging"></a>Azure 服务总线消息传递的 Azure Policy 内置定义
 

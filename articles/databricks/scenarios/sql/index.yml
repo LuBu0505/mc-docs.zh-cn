@@ -1,0 +1,71 @@
+### YamlMime:Landing
+title: Azure Databricks SQL Analytics 文档
+summary: 了解 Azure Databricks SQL Analytics（一种支持对数据湖运行快速临时 SQL 查询的环境）。 查询支持多种可视化类型，以便从不同角度探索查询结果。
+metadata:
+  title: Azure Databricks SQL Analytics 文档
+  description: 了解 Azure Databricks SQL Analytics（一种支持对数据湖运行快速临时 SQL 查询的环境）。 查询支持多种可视化类型，以便从不同角度探索查询结果。
+  services: azure-databricks
+  ms.service: azure-databricks
+  ms.subservice: databricks-sql-analytics
+  ms.topic: landing-page
+  ms.collection: collection
+  author: mamccrea
+  ms.author: mamccrea
+  ms.date: 09/11/2019
+  ms.openlocfilehash: 04f11e6727622373178ed62651e59dbed1dad2f7
+  ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 01/29/2021
+  ms.locfileid: "99061097"
+landingContent:
+- title: 关于 Azure Databricks SQL Analytics
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Databricks SQL Analytics？
+      url: ../what-is-azure-databricks-sqla.md
+  - linkListType: concept
+    links:
+    - text: SQL Analytics 概念
+      url: /azure/databricks/sql/get-started/concepts
+  - linkListType: reference
+    links:
+    - text: 发行说明
+      url: /azure/databricks/sql/release-notes/index
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 设置用户以运行查询
+      url: /azure/databricks/sql/admin/admin-quickstart
+    - text: 运行查询并将其可视化
+      url: /azure/databricks/sql/user/user-quickstart
+  - linkListType: how-to-guide
+    links:
+    - text: 添加用户
+      url: /azure/databricks/sql/admin/users-groups
+    - text: 创建 SQL 终结点
+      url: /azure/databricks/sql/admin/sql-endpoints
+    - text: 配置数据访问权限
+      url: /azure/databricks/sql/user/security/access-control/data-acl
+  - linkListType: how-to-guide
+    links:
+    - text: 创建查询
+      url: /azure/databricks/sql/user/queries/queries
+    - text: 创建可视化效果
+      url: /azure/databricks/sql/user/visualizations/visualizations
+    - text: 创建仪表板
+      url: /azure/databricks/sql/user/dashboards/dashboards
+- title: 面向开发人员的指南
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: SQL 参考
+      url: /azure/databricks/sql/language-manual/
+    - text: API 参考
+      url: /azure/databricks/sql/api/
+  - linkListType: how-to-guide
+    links:
+    - text: 商业智能工具
+      url: /azure/databricks/integrations/bi/

@@ -3,18 +3,17 @@ title: 了解 Azure 流分析中的作业监视
 description: 本文介绍如何在 Azure 门户中监视 Azure 流分析作业。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 origin.date: 06/21/2018
-ms.date: 11/16/2020
+ms.date: 01/25/2021
 ms.custom: seodec18
-ms.openlocfilehash: 70b617acf9766e1255ac2d7c0d5818165411ed7f
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 4997d05f929f98f5319783a6a93dce4e73c3f4a1
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977029"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059741"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>了解流分析作业监视以及如何监视查询
 
@@ -30,6 +29,7 @@ Azure 门户提供了可用于监视和排查查询和作业性能问题的关�
 ## <a name="metrics-available-for-stream-analytics"></a>可用于流分析的指标
 | 指标                 | 定义                               |
 | ---------------------- | ---------------------------------------- |
+| 积压的输入事件数       | 积压的输入事件的数量。 此指标的非零值意味着作业无法跟上传入事件的数量。 如果此值缓慢增长或始终为非零，则应横向扩展作业。 可以访问[了解和调整流单元](stream-analytics-streaming-unit-consumption.md)了解详细信息。 |
 | 数据转换错误数 | 无法转换为预期输出架构的输出事件的数量。 可以将错误策略更改为“删除”，以删除遇到此情况的事件。 |
 | 早期输入事件数       | 应用程序时间戳早于其到达时间超过 5 分钟的事件。 |
 | 失败的函数请求数 | 失败的 Azure 机器学习函数（如果存在）调用数。 |

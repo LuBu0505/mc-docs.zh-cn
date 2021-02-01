@@ -4,17 +4,17 @@ description: 了解开发 Azure Batch 解决方案的最佳做法和有用技巧
 ms.service: batch
 origin.date: 12/18/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 06/29/2020
 ms.author: v-yeche
 ms.topic: conceptual
-ms.openlocfilehash: ed8f627668249da6b7583b21db3ebb840cf700b8
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 89c1b13da83c7990a4cc88930daa4c1f0f769aed
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230388"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059289"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 

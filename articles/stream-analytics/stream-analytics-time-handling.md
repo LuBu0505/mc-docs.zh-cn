@@ -3,16 +3,15 @@ title: 了解 Azure 流分析中的时间处理
 description: 了解如何选择最佳开始时间、处理延迟和早期事件，以及有关 Azure 流分析中的时间处理指标。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 11/16/2020
-ms.openlocfilehash: 2590a2e7da778394d16a014373404d28f60525b0
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.date: 01/25/2021
+ms.openlocfilehash: ba9e49026df97be51a811e43fc5b6bd892895c4e
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978107"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059094"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>了解 Azure 流分析中的时间处理
 

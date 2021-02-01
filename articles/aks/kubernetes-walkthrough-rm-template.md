@@ -3,19 +3,19 @@ title: 快速入门 - 创建 Azure Kubernetes 服务 (AKS) 群集
 description: 了解如何使用 Azure 资源管理器模板快速创建 Kubernetes 群集，并在 Azure Kubernetes 服务 (AKS) 中部署应用程序
 services: container-service
 ms.topic: quickstart
-origin.date: 09/11/2020
+origin.date: 01/13/2021
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc,subject-armqs, devx-track-azurecli
-ms.openlocfilehash: ad3e380a97d992587200035d8d4207b5d14fa6b8
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: ddd63c62dca5f2b1e804c4f127dd56de07a4f379
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "98230209"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063566"
 ---
 <!--Verify successfully-->
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-arm-template"></a>快速入门：使用 ARM 模板部署 Azure Kubernetes 服务 (AKS) 群集
@@ -144,18 +144,6 @@ az ad sp create-for-rbac --skip-assignment
         "description": "Configure all linux machines with the SSH RSA public key string. Your key should include three parts, for example 'ssh-rsa AAAAB...snip...UcyupgH azureuser@linuxvm'"
       }
     },
-    "servicePrincipalClientId": {
-      "type": "securestring",
-      "metadata": {
-        "description": "Client ID (used by cloudprovider)"
-      }
-    },
-    "servicePrincipalClientSecret": {
-      "type": "securestring",
-      "metadata": {
-        "description": "The Service Principal Client Secret."
-      }
-    },
     "osType": {
       "type": "string",
       "defaultValue": "Linux",
@@ -194,11 +182,10 @@ az ad sp create-for-rbac --skip-assignment
               }
             ]
           }
-        },
-        "servicePrincipalProfile": {
-          "clientId": "[parameters('servicePrincipalClientId')]",
-          "Secret": "[parameters('servicePrincipalClientSecret')]"
         }
+      },
+      "identity": {
+          "type": "SystemAssigned"
       }
     }
   ],
@@ -468,4 +455,4 @@ az group delete --name myResourceGroup --yes --no-wait
 [ssh-keys]: ../virtual-machines/linux/create-ssh-keys-detailed.md
 [az-ad-sp-create-for-rbac]: https://docs.azure.cn/cli/ad/sp#az_ad_sp_create_for_rbac
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

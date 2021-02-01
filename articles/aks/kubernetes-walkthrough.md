@@ -3,9 +3,9 @@ title: 快速入门 - 使用 Azure CLI 部署 AKS 群集
 description: 了解如何使用 Azure CLI 快速创建 Kubernetes 群集、部署应用程序，以及监视 Azure Kubernetes 服务 (AKS) 中的性能。
 services: container-service
 ms.topic: quickstart
-origin.date: 09/11/2020
+origin.date: 01/12/2021
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
@@ -18,12 +18,12 @@ ms.custom:
 - seo-python-october2019
 - devx-track-azurecli
 - contperf-fy21q1
-ms.openlocfilehash: 1718f172ad572f99ad91fa7bd39ddf5c790e1167
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 99327cd1e0e4db3ecd99df52be498716d9edc3cd
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023123"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063686"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>快速入门：使用 Azure CLI 部署 Azure Kubernetes 服务群集
 
@@ -58,7 +58,7 @@ Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 创建
 az group create --name myResourceGroup --location chinaeast2
 ```
 
-以下示例输出显示已成功创建资源组：
+类似于以下示例的输出表明已成功创建资源组：
 
 ```json
 {
@@ -308,10 +308,10 @@ az group delete --name myResourceGroup --yes --no-wait
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [aks-monitor]: ../azure-monitor/insights/container-insights-onboard.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
-[az-aks-browse]: https://docs.azure.cn/cli/aks#az_aks_browse
-[az-aks-create]: https://docs.azure.cn/cli/aks#az_aks_create
-[az-aks-get-credentials]: https://docs.azure.cn/cli/aks#az_aks_get_credentials
-[az-aks-install-cli]: https://docs.azure.cn/cli/aks#az_aks_install_cli
+[az-aks-browse]: https://docs.azure.cn/cli/aks?view=azure-cli-latest&preserve-view=true#az_aks_browse
+[az-aks-create]: https://docs.azure.cn/cli/aks?view=azure-cli-latest&preserve-view=true#az_aks_create
+[az-aks-get-credentials]: https://docs.azure.cn/cli/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_credentials
+[az-aks-install-cli]: https://docs.azure.cn/cli/aks?view=azure-cli-latest&preserve-view=true#az_aks_install_cli
 [az-group-create]: https://docs.azure.cn/cli/group#az_group_create
 [az-group-delete]: https://docs.azure.cn/cli/group#az_group_delete
 [azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli
@@ -323,4 +323,4 @@ az group delete --name myResourceGroup --yes --no-wait
 [kubernetes-dashboard]: kubernetes-dashboard.md
 [windows-container-cli]: windows-container-cli.md
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

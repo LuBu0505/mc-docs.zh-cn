@@ -11,15 +11,15 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 origin.date: 05/16/2017
-ms.date: 09/02/2020
+ms.date: 02/01/2021
 ms.author: v-tawe
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8d15c026dec57d21f5802ccb0f2b227aa77349bb
-ms.sourcegitcommit: 4f936264ddb502ff61623892f57067e935ef6e42
+ms.openlocfilehash: e04b512520f9f089eb423ce3a6860dbbcccf186d
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89316392"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058574"
 ---
 # <a name="peer-two-virtual-networks"></a>对等互连两个虚拟网络
 

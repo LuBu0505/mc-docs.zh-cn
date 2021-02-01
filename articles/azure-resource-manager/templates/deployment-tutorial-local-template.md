@@ -1,20 +1,20 @@
 ---
 title: 教程 - 部署本地 Azure 资源管理器模板
 description: 了解如何从本地计算机部署 Azure 资源管理器模板（ARM 模板）
-origin.date: 05/20/2020
+origin.date: 01/12/2021
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 08/24/2020
 ms.topic: tutorial
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: 9a16e371ae3a0cf0edb09f8b459b3c52c708ffb4
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 4fd527c31428198eeddb9f46b0dcc79af0967e26
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023078"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063568"
 ---
 # <a name="tutorial-deploy-a-local-arm-template"></a>教程：部署本地 ARM 模板
 
@@ -88,7 +88,7 @@ ms.locfileid: "98023078"
   },
   "variables": {
     "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
-    "storageAccountName": "[concat(parameters('projectName'), 'store')]",
+    "storageAccountName": "[concat(parameters('projectName'), uniqueString(resourceGroup().id))]",
     "webAppName": "[concat(parameters('projectName'), 'WebApp')]",
     "appServicePlanName": "[concat(parameters('projectName'), 'Plan')]"
   },

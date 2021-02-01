@@ -4,16 +4,16 @@ description: 了解如何将 Azure Batch 服务用于大规模并发工作负载
 ms.service: batch
 ms.topic: overview
 origin.date: 07/30/2020
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 04/26/2020
 ms.author: v-yeche
-ms.openlocfilehash: c1cb47ae9f6dfdb0d8ae15905f5b185d3f14b10f
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: d1384d22e392127c507703214fa9a16fc785c308
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022228"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059191"
 ---
 # <a name="what-is-azure-batch"></a>什么是 Azure Batch？
 
@@ -85,6 +85,9 @@ Batch 的常用方案涉及在计算节点池中横向扩展本质并行工作�
 请记住，上述工作流只是使用 Batch 的其中一种方式，还有许多其他功能和选项。 例如，可以在每个计算节点上执行[多个并行任务](batch-parallel-node-tasks.md)。 或者，也可使用[作业准备和完成任务](batch-job-prep-release.md)为作业准备节点，用完后进行清理。
 
 有关池、节点、作业和任务等功能的概述，请参阅 [Batch 服务工作流和资源](batch-service-workflow-features.md)。 另请参阅最新的 [Batch 服务更新](https://www.azure.cn/what-is-new/)。
+
+## <a name="in-region-data-residency"></a>区域内数据驻留
+Azure Batch 不会将客户数据移出部署它的区域，也不会将其存储在该区域之外。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 origin.date: 06/02/2020
 ms.date: 01/13/2021
 ms.author: v-tawe
-ms.openlocfilehash: 0f4e24ba54b3e3cd0162fa96264481a3876711bc
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 6fe3603d302442e3bdbf9534d3a299dfb4b85e15
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98229865"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058572"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>将 Key Vault 与 DigiCert 证书颁发机构集成
 
@@ -71,7 +71,7 @@ Azure 密钥保管库用户可以直接从其 Key Vault 生成 DigiCert 证书�
 
 Azure PowerShell 用于通过命令或脚本创建和管理 Azure 资源。
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 键入 `$PSVersionTable.PSVersion` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 来创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 键入 `$PSVersionTable.PSVersion` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount-EnvironmentName AzureChinaCloud` 来创建与 Azure 的连接。
 
 ```azurepowershell
 Login-AzAccount -EnvironmentName AzureChinaCloud

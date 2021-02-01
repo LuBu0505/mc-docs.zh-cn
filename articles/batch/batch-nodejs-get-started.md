@@ -5,16 +5,16 @@ ms.service: batch
 ms.topic: how-to
 origin.date: 10/08/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 01/11/2021
 ms.author: v-yeche
-ms.openlocfilehash: 8cab8ef2175d7d398a7572bd3f3e5d9e02f58469
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: cae6c525accb305aaf2411c324c9263406f81e37
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023177"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059032"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>用于 Node.js 的 Batch SDK 入门
 
@@ -44,7 +44,7 @@ node.js 客户端通过一个准备任务（稍后详细介绍）和一系列其
 
 > [!TIP]
 > 指定链接中的 Node.js 客户端不包含可部署为 Azure Function App 的特定代码。 如需创建该应用的说明，可参阅以下链接。
-> - [创建 Function App](../azure-functions/functions-create-first-azure-function.md)
+> - [创建 Function App](../azure-functions/functions-get-started.md)
 > - [创建计时器触发器函数](../azure-functions/functions-bindings-timer.md)
 
 ## <a name="build-the-application"></a>构建应用程序

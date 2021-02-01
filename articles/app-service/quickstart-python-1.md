@@ -3,24 +3,23 @@ title: 快速入门：在 Linux 上创建 Python 应用
 description: 将 Python 应用部署到应用服务中的 Linux 容器即可开始使用 Azure 应用服务。
 ms.topic: quickstart
 origin.date: 09/22/2020
-ms.date: 01/11/2021
+ms.date: 02/08/2021
 ms.author: v-tawe
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 robots: noindex
-ms.openlocfilehash: fcb6e3ef299998c962d74547404656d19fdda743
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 38cc1ce45134a0a971154bd792ce523d772eebcc
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022957"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059081"
 ---
 <!--Verified Successfully-->
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>快速入门：在 Linux 上的 Azure 应用服务中创建 Python 应用
 
 在本快速入门中，需将 Python Web 应用部署到 [Linux 上的应用服务](overview.md#app-service-on-linux)，该版本提供了一项高度可缩放、自我修补的 Azure Web 托管服务。 在 Mac、Linux 或 Windows 计算机上，可使用本地 [Azure 命令行界面 (CLI)](https://docs.azure.cn/cli/install-azure-cli) 通过 Flask 或 Django 框架来部署示例。 配置的 Web 应用使用免费的应用服务层，因此本文中的操作不会产生任何费用。
 
-有关常见术语的定义，请参阅 [Azure 术语概述](https://docs.microsoft.com/azure/developer/python/cloud-azure-terminology?toc=/azure/app-service/toc.json)。
 
 > [!TIP]
 > 如果希望通过 IDE 部署应用，请参阅[从 Visual Studio Code 将 Python 应用部署到应用服务](https://docs.microsoft.com/azure/developer/python/tutorial-deploy-app-service-on-linux-01)。
@@ -109,13 +108,13 @@ cd python-docs-hello-django
 使用 `az webapp up` 命令在本地文件夹 (python-docs-hello-world) 中部署代码：
 
 ```azurecli
-az webapp up --sku F1 --name <app-name>
+az webapp up --sku B1 --name <app-name>
 ```
 
 - 如果无法识别 `az` 命令，请确保按照[设置初始环境](#set-up-your-initial-environment)中所述安装 Azure CLI。
 - 如果无法识别 `webapp` 命令，请确保 Azure CLI 版本为 2.0.80 或更高版本。 如果不是，请[安装最新版本](https://docs.azure.cn/cli/install-azure-cli)。
 - 将 `<app_name>` 替换为在整个 Azure 中均唯一的名称（有效字符为 `a-z`、`0-9` 和 `-`）。 良好的模式是结合使用公司名称和应用标识符。
-- `--sku F1` 参数在“免费”定价层上创建 Web 应用。 省略此参数可使用更快的高级层，这会按小时计费。
+- `--sku B1` 参数在基本定价层上创建 Web 应用，这样每小时产生的费用较低。 省略此参数可使用更快的高级层。
 - 可以选择包含参数 `--location <location-name>`，其中 `<location_name>` 是可用的 Azure 区域。 可以运行 [`az account list-locations`](https://docs.azure.cn/cli/appservice#az_appservice_list_locations) 命令来检索 Azure 帐户的允许区域列表。
 - 如果看到错误“无法自动检测应用的运行时堆栈”，请确保在包含 requirements.txt 文件的 python-docs-hello-world 文件夹 (Flask) 或 python-docs-hello-django 文件夹 (Django) 中运行该命令 。 （请参阅[通过 az webapp up 解决自动检测问题](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md) (GitHub)。）
 
@@ -285,7 +284,7 @@ az webapp log tail
 
 ## <a name="clean-up-resources"></a>清理资源
 
-在前面的步骤中，你在资源组中创建了 Azure 资源。 资源组根据位置得名，例如“appsvc_rg_Linux_chinanorth”。 如果使用 F1 免费层以外的应用服务 SKU，这些资源会持续产生费用（请参阅[应用服务定价](https://www.azure.cn/pricing/details/app-service/linux/)）。
+在前面的步骤中，你在资源组中创建了 Azure 资源。 资源组根据位置得名，例如“appsvc_rg_Linux_chinanorth”。 如果将 Web 应用保持运行状态，则会产生一些持续成本（请参阅[应用服务定价](https://www.azure.cn/pricing/details/app-service/linux/)）。
 
 如果你认为将来不再需要这些资源，请运行以下命令删除资源组：
 

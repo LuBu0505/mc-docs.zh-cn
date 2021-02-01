@@ -5,15 +5,15 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 04/29/2020
+ms.date: 10/23/2020
 title: 结构化流 - Azure Databricks
 description: 了解如何使用 Apache Spark 结构化流基于 Azure Databricks 中的流数据表达计算。
-ms.openlocfilehash: 96ba470a26e9006914f15c6539570ff9e6d07896
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+ms.openlocfilehash: 9b718cdf7d4b8789d4297a71cbf8a3726aca85b5
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472980"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060017"
 ---
 # <a name="structured-streaming"></a>结构化流式处理
 
@@ -39,15 +39,19 @@ ms.locfileid: "92472980"
   * [触发器](production.md#triggers)
   * [可视化效果](production.md#visualizations)
 * [结构化流示例](examples.md)
-  * [使用 Scala 中的 `foreachBatch()` 写入到 Cassandra](examples.md#write-to-cassandra-using-foreachbatch-in-scala)
-  * [使用 Python 中的 `foreachBatch()` 写入到 Azure Synapse Analytics](examples.md#write-to-azure-synapse-analytics-using-foreachbatch-in-python)
+  * [使用 Scala 中的 ``foreachBatch()`` 写入到 Cassandra](examples.md#write-to-cassandra-using-foreachbatch-in-scala)
+  * [使用 Python 中的 ``foreachBatch()`` 写入到 Azure Synapse Analytics](examples.md#write-to-azure-synapse-analytics-using-foreachbatch-in-python)
   * [流之间的联接](examples.md#stream-stream-joins)
+
+## <a name="api-reference"></a>API 参考
 
 有关结构化流的参考信息，Azure Databricks 建议参阅以下 Apache Spark API 参考文章：
 
 * [Python](https://spark.apache.org/docs/latest/api/python/pyspark.sql.html#module-pyspark.sql.streaming)
 * [Scala](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.streaming.package)
 * [Java](https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/package-summary.html)
+
+## <a name="blogs"></a>博客
 
 有关如何使用 Apache Spark 执行复杂流分析的详细信息，请参阅以下由多个部分组成的博客系列中的文章：
 
@@ -58,6 +62,8 @@ ms.locfileid: "92472980"
 * [将 Apache Spark 的结构化流投入生产](https://databricks.com/blog/2017/05/18/taking-apache-sparks-structured-structured-streaming-to-production.html)
 * [每天运行流式处理作业一次可实现 10 倍的成本节省：可缩放数据第 6 部分](https://databricks.com/blog/2017/05/22/running-streaming-jobs-day-10x-cost-savings.html)
 * [Apache Spark 结构化流中的任意有状态处理](https://databricks.com/blog/2017/10/17/arbitrary-stateful-processing-in-apache-sparks-structured-streaming.html)
+
+## <a name="legacy-spark-streaming"></a>旧版 Spark 流式处理
 
 有关旧版 Spark 流功能的信息，请参阅：
 

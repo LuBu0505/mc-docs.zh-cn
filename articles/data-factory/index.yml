@@ -11,13 +11,13 @@ metadata:
   author: WenJason
   ms.author: v-jay
   origin.date: 10/02/2019
-  ms.date: 11/23/2020
-  ms.openlocfilehash: 026c7f560885b89e8c35b57b762199f4ee69f366
-  ms.sourcegitcommit: c89f1adcf403f5845e785064350136698eed15b8
+  ms.date: 02/01/2021
+  ms.openlocfilehash: f3d54f1e15185ab4820638119701947c9a6eb169
+  ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/17/2020
-  ms.locfileid: "94680443"
+  ms.lasthandoff: 01/29/2021
+  ms.locfileid: "99060162"
 landingContent:
 - title: 关于 Azure 数据工厂
   linkLists:
@@ -79,6 +79,26 @@ landingContent:
       url: ./load-azure-sql-data-warehouse.md
     - text: 加载 SAP BW
       url: ./load-sap-bw-data.md
+- title: 数据转换
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 映射数据流是什么？
+      url: ./concepts-data-flow-overview.md
+  - linkListType: tutorial
+    links:
+    - text: 创建数据流
+      url: ./data-flow-create.md
+    - text: 数据流表达式语言
+      url: ./data-flow-expression-functions.md
+    - text: 调试数据流
+      url: ./concepts-data-flow-debug-mode.md
+    - text: 在管道内执行数据流活动
+      url: ./control-flow-execute-data-flow-activity.md
+    - text: 监视数据流
+      url: ./concepts-data-flow-monitoring.md
+    - text: 数据流性能
+      url: ./concepts-data-flow-performance.md
 - title: 直接迁移 SSIS 包
   linkLists:
   - linkListType: overview
@@ -136,7 +156,7 @@ landingContent:
     - text: .NET
       url: https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactory/
     - text: Python
-      url: https://docs.microsoft.com/python/api/overview/azure/datafactory?view=azure-python
+      url: https://docs.microsoft.com/python/api/overview/azure/datafactory
     - text: REST
       url: https://docs.microsoft.com/rest/api/datafactory/
     - text: 资源管理器模板

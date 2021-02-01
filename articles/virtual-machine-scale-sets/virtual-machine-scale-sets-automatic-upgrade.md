@@ -6,15 +6,15 @@ ms.author: v-junlch
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 12/28/2020
+ms.date: 01/26/2021
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 51113a018efed077463bb5b1fca3625ea415432a
-ms.sourcegitcommit: a37f80e7abcf3e42859d6ff73abf566efed783da
+ms.openlocfilehash: 482b61ea6a7079ceb6745b9be9be67d0363b5f7d
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829452"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060065"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 虚拟机规模集自动 OS 映像升级
 
@@ -49,7 +49,7 @@ ms.locfileid: "97829452"
 >自动 OS 升级不会升级规模集上的引用映像 SKU。 若要更改 SKU（例如将 Ubuntu 16.04-LTS 更改为 18.04-LTS），必须直接通过所需的映像 SKU 更新[规模集模型](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model)。 无法更改现有规模集的映像发布者和产品/服务。  
 
 ## <a name="supported-os-images"></a>支持的 OS 映像
-当前仅支持特定 OS 平台映像。 如果规模集通过[共享映像库](shared-image-galleries.md)使用自定义映像，则[支持](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images)自定义映像。
+当前仅支持特定 OS 平台映像。 如果规模集通过[共享映像库](../virtual-machines/shared-image-galleries.md)使用自定义映像，则[支持](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images)自定义映像。
 
 目前支持以下平台 SKU（我们会定期添加更多 SKU）：
 
@@ -89,11 +89,11 @@ ms.locfileid: "97829452"
 
 ## <a name="automatic-os-image-upgrade-for-custom-images"></a>自定义映像的 OS 映像自动升级
 
-通过[共享映像库](shared-image-galleries.md)部署的自定义映像支持 OS 映像自动升级。 OS 映像自动升级不支持其他自定义映像。
+通过[共享映像库](../virtual-machines/shared-image-galleries.md)部署的自定义映像支持 OS 映像自动升级。 OS 映像自动升级不支持其他自定义映像。
 
 ### <a name="additional-requirements-for-custom-images"></a>自定义映像的其他要求
 - 对于所有规模集，用于 OS 映像自动升级的安装和配置过程均相同，如此页的[配置部分](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade)中所述。
-- 发布新版本映像并将其[复制](shared-image-galleries.md#replication)到该规模集的区域时，为 OS 映像自动升级配置的规模集实例将升级到最新版本的共享映像库映像。 如果新映像未复制到部署规模的区域，则规模集实例将不会升级到最新版本。 区域映像复制使你可控制规模集的新映像的推出。
+- 发布新版本映像并将其[复制](../virtual-machines/shared-image-galleries.md#replication)到该规模集的区域时，为 OS 映像自动升级配置的规模集实例将升级到最新版本的共享映像库映像。 如果新映像未复制到部署规模的区域，则规模集实例将不会升级到最新版本。 区域映像复制使你可控制规模集的新映像的推出。
 - 新映像版本不应从该库映像的最新版本中排除。 从库映像的最新版本中排除的映像版本不会通过 OS 映像自动升级向规模集推出。
 
 > [!NOTE]

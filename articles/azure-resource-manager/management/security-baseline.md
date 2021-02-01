@@ -5,17 +5,17 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 origin.date: 10/30/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 11/16/2020
 ms.author: v-yeche
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e1cc18a50fd2f337c29a428d403b347cb1150c12
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 0e073a90526050eefa25b4f6ec13573411e2d3ba
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021222"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063638"
 ---
 <!--Verified successfully-->
 # <a name="azure-security-baseline-for-azure-resource-manager"></a>适用于 Azure 资源管理器的 Azure 安全基线
@@ -34,7 +34,7 @@ ms.locfileid: "98021222"
 **指导**：通过 Azure Monitor 引入 Azure Policy 活动日志。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，使用 Azure 存储帐户进行长期存储或存档存储。
 
 <!--Not Available on  Alternatively, you may enable and on-board data to Azure Sentinel or a third-party SIEM.-->
-<!--Not Avaialble on [How to onboard Azure Sentinel](../../sentinel/quickstart-onboard.md)-->
+<!--NOT AVAILABLE ON - [How to onboard Azure Sentinel](../../sentinel/quickstart-onboard.md)--> 
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/platform/diagnostic-settings.md) 
 
@@ -63,7 +63,7 @@ ms.locfileid: "98021222"
 **指导**：分析和监视日志中的异常行为，并定期查看结果。 使用 Azure Monitor 和 Log Analytics 工作区查看日志并对日志数据执行查询。 
 
 <!--Not Avaialble on Alternatively, you can enable and on-board data to Azure Sentinel or a third-party SIEM.-->
-<!--Not Avaialble on - [How to onboard Azure Sentinel](../../sentinel/quickstart-onboard.md)-->
+<!--NOT AVAILABLE ON - [How to onboard Azure Sentinel](../../sentinel/quickstart-onboard.md)--> 
 
 - [Log Analytics 查询入门](../../azure-monitor/log-query/log-analytics-tutorial.md) 
 
@@ -78,7 +78,7 @@ ms.locfileid: "98021222"
 **指导**：将 Azure 安全中心与 Log Analytics 配合使用，以便监视在活动日志中发现的异常活动并发出相关警报。
 
 <!--Not Avaialble on  Alternatively, you may enable and on-board data to Azure Sentinel.--> 
-<!--Not Avaialble on - [How to onboard Azure Sentinel](../../sentinel/quickstart-onboard.md)-->
+<!--NOT AVAILABLE ON - [How to onboard Azure Sentinel](../../sentinel/quickstart-onboard.md)--> 
 
 - [如何在 Azure 安全中心管理警报](../../security-center/security-center-managing-and-responding-alerts.md) 
 
@@ -128,7 +128,7 @@ ms.locfileid: "98021222"
 
 **指导**：请尽可能使用 Azure Active Directory SSO，而不是为每个服务配置单个独立凭据。 请使用 Azure 安全中心标识和访问建议。 
 
-<!--Not Available on - [Understand SSO with Azure AD](../../active-directory/manage-apps/what-is-single-sign-on.md)-->
+<!--NOT AVAILABLE ON - [Understand SSO with Azure AD](../../active-directory/manage-apps/what-is-single-sign-on.md)-->
 
 **Azure 安全中心监视**：不适用
 
@@ -150,7 +150,7 @@ ms.locfileid: "98021222"
 
 **指导**：对于需要提升的权限的管理任务，请使用安全的 Azure 托管工作站（也称为特权访问工作站，简称 PAW）。
 
-<!--Not Available on - [Understand secure, Azure-managed workstations](../../active-directory/devices/concept-azure-managed-workstation.md)-->
+- [了解安全的 Azure 托管工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何启用 Azure AD MFA](../../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -162,7 +162,7 @@ ms.locfileid: "98021222"
 
 **指导**：使用 Azure Active Directory 安全报告和监视来检测环境中何时发生可疑活动或不安全的活动。 使用 Azure 安全中心监视标识和访问活动。
 
-<!--Not Available on - [How to identify Azure AD users flagged for risky activity](../../active-directory/identity-protection/overview-identity-protection.md)-->
+<!--NOT AVAILABLE ON - [How to identify Azure AD users flagged for risky activity](../../active-directory/identity-protection/overview-identity-protection.md)-->
 
 - [如何在 Azure 安全中心内监视用户的标识和访问活动](../../security-center/security-center-identity-access.md)
 
@@ -216,9 +216,9 @@ ms.locfileid: "98021222"
 
 <!--Not Avaialble on### 3.12: Alert on account login behavior deviation-->
 <!--Not Avaialble on  You can also ingest data into Azure Sentinel for further investigation.-->
-<!--Not Avaialble on - [How to view Azure AD risky sign-ins](https://docs.azure.cn/active-directory/reports-monitoring/concept-risky-sign-ins)-->
-<!--Not Avaialble on - [How to configure and enable Identity Protection risk policies](../../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)-->
-<!--Not Avaialble on - [How to onboard Azure Sentinel](../../sentinel/quickstart-onboard.md)-->
+<!--NOT AVAILABLE ON - [How to view Azure AD risky sign-ins](../../active-directory/identity-protection/overview-identity-protection.md)-->
+<!--NOT AVAILABLE ON - [How to configure and enable Identity Protection risk policies](../../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)-->
+<!--NOT AVAILABLE ON - [How to onboard Azure Sentinel](../../sentinel/quickstart-onboard.md)-->
 
 ## <a name="data-protection"></a>数据保护
 
@@ -298,7 +298,7 @@ ms.locfileid: "98021222"
 
 下面提供了更多相关的详细信息：
 
-<!--Not Available on - [How to create additional Azure subscriptions](../../cost-management-billing/manage/create-subscription.md)-->
+<!--NOT AVAILABLE ON - [How to create additional Azure subscriptions](../../cost-management-billing/manage/create-subscription.md)-->
 
 - [如何创建管理组](../../governance/management-groups/create-management-group-portal.md)
 
@@ -515,7 +515,7 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 导出模板，
 
 - [如何配置连续导出](../../security-center/continuous-export.md)
 
-<!--Not Available on - [How to stream alerts into Azure Sentinel](../../sentinel/connect-azure-security-center.md)-->
+<!--NOT AVAILABLE ON - [How to stream alerts into Azure Sentinel](../../sentinel/connect-azure-security-center.md)-->
 
 **Azure 安全中心监视**：不适用
 
@@ -552,4 +552,4 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 导出模板，
 - 请参阅 [Azure 安全基准](../../security/benchmarks/overview.md)
 - 详细了解 [Azure 安全基线](../../security/benchmarks/security-baselines-overview.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

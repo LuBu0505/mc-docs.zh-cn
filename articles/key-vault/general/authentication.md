@@ -4,16 +4,16 @@ description: 了解如何对 Azure Key Vault 进行身份验证
 author: ShaneBala-keyvault
 ms.author: v-tawe
 origin.date: 08/27/2020
-ms.date: 11/27/2020
+ms.date: 01/14/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 902af1fa3d499a4829945bb89b5906f9be6f9c6c
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: d412c285d021139bbab53eaf1fbd12c080fa6ae2
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300855"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059943"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>对 Azure Key Vault 进行身份验证
 
@@ -71,7 +71,7 @@ ms.locfileid: "96300855"
     
 ## <a name="configure-the-key-vault-firewall"></a>配置密钥保管库防火墙
 
-默认情况下，密钥保管库允许通过公共 IP 地址访问资源。 为了提高安全性，还可以将访问限制为仅允许特定的 IP 范围、服务终结点、虚拟网络进行访问。
+默认情况下，密钥保管库允许通过公共 IP 地址访问资源。 为了提高安全性，还可以限制对特定 IP 范围、服务终结点、虚拟网络或专用终结点的访问。
 
 有关详细信息，请参阅[访问防火墙保护下的 Azure 密钥保管库](./access-behind-firewall.md)。
 
@@ -92,7 +92,7 @@ ms.locfileid: "96300855"
     * 防火墙已禁用，并且可以从公共 Internet 访问密钥保管库的公共终结点。
     * 调用方是[密钥保管库受信任的服务](./overview-vnet-service-endpoints.md#trusted-services)，因此允许其绕过防火墙。
     * 调用方按 IP 地址、虚拟网络或服务终结点在防火墙中列出。
-    <!-- * The caller can reach Key Vault over a configured private link connection.     -->
+    * 调用方可以通过配置的专用链接连接访问密钥保管库。    
 
 1. 如果防火墙允许该调用，则密钥保管库会调用 Azure AD 来验证服务主体的访问令牌。
 

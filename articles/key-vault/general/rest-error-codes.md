@@ -10,13 +10,13 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 origin.date: 12/16/2019
-ms.date: 11/27/2020
-ms.openlocfilehash: d05f6c6d6d4f42df5f4c9192de68b807ec64131e
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.date: 01/14/2021
+ms.openlocfilehash: b1b6d4fcb039240ef9efd6aa99ed1c77a56a8347
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300174"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059372"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API 错误代码
  

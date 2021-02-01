@@ -12,16 +12,16 @@ ms.devlang: ''
 ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 12/01/2020
+ms.date: 01/26/2021
 ms.author: v-junlch
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 4e912665f5fcf618477b1b617ba87efd277cd2b0
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: a4604562ffd10ddd6a17bce2d704c63c3867551a
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507976"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058537"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>使用 Azure 门户为外部来宾用户添加或删除 Azure 角色分配
 
@@ -29,9 +29,7 @@ ms.locfileid: "96507976"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要添加或删除角色分配，必须拥有以下权限：
-
-- `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 权限，例如[用户访问管理员](built-in-roles.md#user-access-administrator)或[所有者](built-in-roles.md#owner)
+[!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
 
 ## <a name="when-would-you-invite-guest-users"></a>你何时将邀请来宾用户？
 
@@ -217,4 +215,3 @@ ms.locfileid: "96507976"
 - [Azure Active Directory B2B 协作用户的属性](../active-directory/external-identities/user-properties.md)
 - [B2B 协作邀请电子邮件的元素 - Azure Active Directory](../active-directory/external-identities/invitation-email-elements.md)
 - [将来宾用户添加为共同管理员](classic-administrators.md#add-a-guest-user-as-a-co-administrator)
-

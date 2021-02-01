@@ -7,14 +7,14 @@ ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
 origin.date: 06/15/2018
-ms.date: 12/11/2020
+ms.date: 01/18/2021
 ms.author: v-johya
-ms.openlocfilehash: af0ddca42c3203f7e09a3adf211ce24d574eb663
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: b8859bce71a5525b12c03db1bb13fe9d3c3689fc
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97105260"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751090"
 ---
 # <a name="tutorial-monitor-published-apis"></a>教程：监视已发布的 API
 
@@ -27,6 +27,8 @@ ms.locfileid: "97105260"
 > * 设置警报规则 
 > * 查看活动日志
 > * 启用和查看资源日志
+
+你还可以使用 API 管理的内置[分析](howto-use-analytics.md)来监视 API 的使用和性能。
 
 ## <a name="prerequisites"></a>先决条件
 

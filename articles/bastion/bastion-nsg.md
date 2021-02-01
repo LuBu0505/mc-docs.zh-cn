@@ -6,16 +6,16 @@ ms.service: bastion
 ms.topic: conceptual
 origin.date: 12/09/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 01/25/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: a7a8f7aef0aa4b293a2beae6248b1a5d0b174c06
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: d7447ab335b11ad25ae69ec93eaff98b47ead2ba
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023004"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751078"
 ---
 <!--Verified succesfully for only charactors only-->
 # <a name="working-with-nsg-access-and-azure-bastion"></a>使用 NSG 访问和 Azure Bastion

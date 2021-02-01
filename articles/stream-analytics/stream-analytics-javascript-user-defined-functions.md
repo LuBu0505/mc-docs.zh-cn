@@ -5,16 +5,15 @@ author: Johnnytechn
 ms.author: v-johya
 ms.service: stream-analytics
 ms.topic: tutorial
-ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
 origin.date: 04/01/2018
-ms.date: 01/07/2021
-ms.openlocfilehash: 33b2090842051fff0b4fee462c025ed2eb7e59cb
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.date: 01/25/2021
+ms.openlocfilehash: 6a58e5fa346e0660bd7836a3c377892675c0284e
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023156"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059115"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure 流分析中 JavaScript 用户定义的函数
  
@@ -45,7 +44,7 @@ JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接
 
 然后，你必须提供以下属性并选择“保存”。
 
-|属性|说明|
+|properties|说明|
 |--------|-----------|
 |函数别名|输入一个名称以在查询中调用函数。|
 |输出类型|JavaScript 用户定义的函数将向流分析查询返回的类型。|
@@ -84,7 +83,7 @@ Azure 流分析 JavaScript 用户定义的函数支持标准的内置 JavaScript
 bigint | Number（JavaScript 只能精确呈现最大 2^53 的整数）
 DateTime | Date（JavaScript 仅支持毫秒）
 Double | Number
-nvarchar(MAX) | String
+nvarchar(MAX) | 字符串
 Record | 对象
 Array | Array
 Null | Null
@@ -95,7 +94,7 @@ JavaScript | 流分析
 --- | ---
 Number | 如果数字已舍入并介于 long.MinValue 和 long.MaxValue 之间，则为 Bigint；否则为 double
 Date | DateTime
-String | nvarchar(MAX)
+字符串 | nvarchar(MAX)
 对象 | Record
 Array | Array
 Null、Undefined | Null

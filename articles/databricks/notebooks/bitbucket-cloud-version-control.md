@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 04/29/2020
 title: Bitbucket 云版本控制 - Azure Databricks
 description: 了解如何通过 UI 使用 Bitbucket 云为笔记本设置版本控制。
-ms.openlocfilehash: 9ff4b549fda550d5842be72cc9fe1f93700a3c45
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 63eaec0c16fc328e5d10cda004d4014f0b21be04
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106722"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058585"
 ---
 # <a name="bitbucket-cloud-version-control"></a><a id="bitbucket-cloud"> </a><a id="bitbucket-cloud-version-control"> </a>Bitbucket 云版本控制
 
@@ -34,7 +34,7 @@ ms.locfileid: "93106722"
 
 ### <a name="save-your-app-password-and-username-to-azure-databricks"></a>将你的应用密码和用户名保存到 Azure Databricks
 
-1. 单击屏幕右上方的用户图标 ![帐户图标](../_static/images/account-settings/account-icon.png)，然后选择“用户设置”。
+1. 单击屏幕右上方的用户图标 ![帐户图标](../_static/images/icons/account-icon.png)，然后选择“用户设置”。
 
    > [!div class="mx-imgBorder"]
    > 帐户设置![](../_static/images/account-settings/user-settings.png)
@@ -117,12 +117,12 @@ ms.locfileid: "93106722"
 ### <a name="unlink-a-notebook"></a>取消链接笔记本
 
 1. 打开“历史记录”面板。
-2. Git 状态栏显示“Git: **已同步”。**
+2. Git 状态栏显示“Git:**已同步”。**
 
    > [!div class="mx-imgBorder"]
    > ![Git 状态](../_static/images/version-control/save-now.png)
 
-3. 单击“Git: **已同步”。**
+3. 单击“Git:**已同步”。**
 
    > [!div class="mx-imgBorder"]
    > ![Git 首选项](../_static/images/version-control/git-unlink.png)

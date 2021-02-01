@@ -36,6 +36,11 @@
               href: connectivty-interoperability-data-plane.md?toc=%2fnetworking%2ftoc.json
     - name: 概念
       items:
+        - name: 安全性
+          items:
+            - name: Azure Policy 的安全控件
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
         - name: 虚拟网络
           href: ../virtual-network/virtual-networks-overview.md?toc=%2fnetworking%2ftoc.json
         - name: 网络负载均衡
@@ -59,7 +64,7 @@
     - name: Internet 连接
       items:
         - name: 网络负载均衡公共服务器
-          href: ../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fnetworking%2ftoc.json
+          href: ../load-balancer/quickstart-load-balancer-standard-public-portal.md?toc=%2fnetworking%2ftoc.json
         - name: 应用程序负载均衡公共服务器
           href: ../application-gateway/quick-create-portal.md?toc=%2fnetworking%2ftoc.json
         - name: 保护 Web 应用程序
@@ -69,11 +74,11 @@
     - name: 内部连接
       items:
         - name: 网络负载均衡专用服务器
-          href: ../load-balancer/load-balancer-get-started-ilb-arm-portal.md?toc=%2fnetworking%2ftoc.json
+          href: ../load-balancer/quickstart-load-balancer-standard-internal-portal.md?toc=%2fnetworking%2ftoc.json
         - name: 应用程序负载均衡专用服务器
           href: ../application-gateway/application-gateway-ilb-arm.md?toc=%2fnetworking%2ftoc.json
         - name: 连接虚拟网络（在同一位置）
-          href: ../virtual-network/virtual-networks-create-vnetpeering-arm-portal.md?toc=%2fnetworking%2ftoc.json
+          href: ../virtual-network/tutorial-connect-virtual-networks-portal.md?toc=%2fnetworking%2ftoc.json
         - name: 连接虚拟网络（在不同位置）
           href: ../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fnetworking%2ftoc.json
     - name: 跨界连接
@@ -118,6 +123,9 @@
       href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
     - name: REST
       href: 'https://msdn.microsoft.com/library/mt163658.aspx'
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 资源
   items:
     - name: 创作模板

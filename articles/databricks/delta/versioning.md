@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 09/03/2020
 title: 表版本控制 - Azure Databricks
 description: 了解如何对 Delta 表进行版本控制。
-ms.openlocfilehash: f2bd28c90052508c17c6c21657e5b4a58e01631d
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: ac1990aadb46fccf88ea2571b52cb2c17b9f2032
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121813"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060185"
 ---
 # <a name="table-versioning"></a><a id="table-version"> </a><a id="table-versioning"> </a>表版本控制
 
@@ -25,8 +25,8 @@ Delta Lake 偶尔会破坏前向兼容性。 较低版本的 Databricks Runtime 
 
 创建表时，Delta Lake 会根据表的特征（如架构或表属性）选择所需的最低协议版本。 也可以通过设置 SQL 配置来设置默认协议版本：
 
-* `spark.databricks.delta.protocol.minWriterVersion = 2`（默认值）
-* `spark.databricks.delta.protocol.minReaderVersion = 1`（默认值）
+* ``spark.databricks.delta.properties.defaults.minWriterVersion = 2``（默认值）
+* ``spark.databricks.delta.properties.defaults.minReaderVersion = 1``（默认值）
 
 若要将表升级到更新的协议版本，请使用 `DeltaTable.upgradeTableProtocol` 方法：
 

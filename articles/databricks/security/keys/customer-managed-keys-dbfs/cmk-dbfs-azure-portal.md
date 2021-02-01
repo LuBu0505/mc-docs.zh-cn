@@ -5,21 +5,17 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 09/15/2020
+ms.date: 10/20/2020
 title: 使用 Azure 门户为 DBFS 配置客户管理的密钥 - Azure Databricks
 description: 了解如何使用 Azure 门户配置自己的加密密钥以加密 DBFS 存储帐户。
-ms.openlocfilehash: 1bcfe4de170b8e9e6d043d921108f351b6e529cf
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: 28887176506f616cb4cb12095c6b830a8b969582
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937706"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060141"
 ---
 # <a name="configure-customer-managed-keys-for-dbfs-using-the-azure-portal"></a>使用 Azure 门户为 DBFS 配置客户管理的密钥
-
-> [!IMPORTANT]
->
-> 此功能目前以[公共预览版](../../../release-notes/release-types.md)提供。
 
 > [!NOTE]
 >
@@ -43,7 +39,7 @@ ms.locfileid: "91937706"
 
    DBFS 根存储支持 2048、3072 和 4096 大小的 RSA 和 RSA-HSM 密钥。 有关密钥的详细信息，请参阅[关于 Key Vault 密钥](/key-vault/keys/about-keys)。
 
-3. 创建密钥后，将**密钥标识符**复制并粘贴到文本编辑器中。 为 Azure Databricks 配置密钥时将需要用到它。
+3. 创建密钥后，将 **密钥标识符** 复制并粘贴到文本编辑器中。 为 Azure Databricks 配置密钥时将需要用到它。
 
 ## <a name="encrypt-the-dbfs-root-storage-account-using-your-key"></a>使用密钥加密 DBFS 根存储帐户
 

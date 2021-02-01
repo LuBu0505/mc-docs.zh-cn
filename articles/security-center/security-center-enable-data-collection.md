@@ -6,15 +6,15 @@ author: Johnnytechn
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 01/06/2021
+ms.date: 01/20/2021
 ms.author: v-johya
 origin.date: 09/10/2019
-ms.openlocfilehash: 5c4c8f4be1db0a4c4112742c94935cdad617f307
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 8842bffaba3f54b495fac7a1138188c49520af38
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022128"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751322"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>从 Azure 安全中心自动预配代理和扩展
 
@@ -31,6 +31,17 @@ ms.locfileid: "98022128"
 > 随着安全中心的发展，可以监视的资源类型也在增加。 扩展的数量也有所增加。 自动预配工具已扩展，可通过利用 Azure Policy 的功能来支持更多资源类型。
 
 :::image type="content" source="./media/security-center-enable-data-collection/auto-provisioning-options.png" alt-text="安全中心的自动预配设置页":::
+
+
+## <a name="availability"></a>可用性
+
+| 方面                  | 详细信息                                                                                                                                                                                                                      |
+|-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 发布状态：          | **功能**：自动预配功能已正式发布 (GA)<br>**代理和扩展**：适用于 Azure VM 的 Log Analytics 代理已正式发布，Microsoft Dependency Agent 为预览版，适用于 Kubernetes 的策略加载项已正式发布                |
+| 定价：                | 免费                                                                                                                                                                                                                         |
+| 支持的目标： | ![是](./media/icons/yes-icon.png) Azure 计算机<br>![否](./media/icons/no-icon.png) Kubernetes 节点<br>![否](./media/icons/no-icon.png) 虚拟机规模集 |
+| 云：                 | ![是](./media/icons/yes-icon.png) 中国云                                                                                                      |
+|                         |                                                                                                                                                                                                                              |
 
 
 ## <a name="why-use-auto-provisioning"></a>为什么要使用自动预配？

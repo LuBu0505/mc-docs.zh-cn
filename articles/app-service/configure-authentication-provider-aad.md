@@ -4,15 +4,15 @@ description: 了解如何将 Azure Active Directory 身份验证配置为应用�
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 origin.date: 04/14/2020
-ms.date: 12/21/2020
+ms.date: 02/01/2021
 ms.author: v-tawe
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: d55df1d42132c137f35d8df29050b028536dd4bf
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 9616982bc7adfc8ca51d6e6557be2111d892bff0
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021499"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059543"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>将应用服务或 Azure Functions 应用配置为使用 Azure AD 登录
 
@@ -57,7 +57,7 @@ ms.locfileid: "98021499"
 1. 选择“Azure Active Directory” > “应用注册” > “新建注册”。  
 1. 在“注册应用”页上的“名称”中，输入应用注册的名称。
 1. 在“重定向 URI”中，选择“Web”并键入 `<app-url>/.auth/login/aad/callback`。 例如，`https://contoso.chinacloudsites.cn/.auth/login/aad/callback`。 
-1. 选择“创建”。
+1. 选择“注册”。
 1. 在应用注册创建后，复制“应用(客户端) ID”和“目录(租户) ID”，以供稍后使用。
 1. 选择“身份验证”。 在“隐式授权”下，启用“ID 令牌”以允许 OpenID Connect 用户从应用服务登录。
 1. （可选）选择“品牌”。 在“主页 URL”中，输入应用服务应用的 URL，然后选择“保存”。

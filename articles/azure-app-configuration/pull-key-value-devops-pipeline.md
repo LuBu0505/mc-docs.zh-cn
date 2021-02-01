@@ -6,14 +6,14 @@ author: drewbatgit
 ms.service: azure-app-configuration
 ms.topic: how-to
 origin.date: 11/17/2020
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.author: drewbat
-ms.openlocfilehash: 657468bf08a5b8104499bdf1e6595c80e2c5d72b
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: cf154a415e5d22a1f9097ab4745665b29d9964a3
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230943"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059058"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>使用 Azure Pipelines 从应用程序配置中拉取设置
 
@@ -48,7 +48,7 @@ ms.locfileid: "98230943"
 
 向任务中使用的服务连接分配正确的应用程序配置角色，以便任务可以访问应用程序配置存储。
 
-1. 导航到目标应用配置存储。 有关设置应用程序配置存储的演练，请参阅 Azure 应用程序配置快速入门之一中的[创建应用程序配置存储](https://docs.azure.cn/azure-app-configuration/quickstart-dotnet-core-app#create-an-app-configuration-store)。
+1. 导航到目标应用配置存储。 有关设置应用程序配置存储的演练，请参阅 Azure 应用程序配置快速入门之一中的[创建应用程序配置存储](./quickstart-dotnet-core-app.md#create-an-app-configuration-store)。
 1. 在左侧，选择“访问控制(IAM)”。
 1. 在顶部，选择“+ 添加”，然后选取“添加角色分配” 。
 1. 在“角色”下，选择“应用程序配置数据读取者” 。 此角色允许任务在应用程序配置存储中进行读取。 

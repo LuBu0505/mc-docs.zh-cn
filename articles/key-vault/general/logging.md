@@ -8,15 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-wacn.date: 08/12/2019
-ms.date: 11/27/2020
+ms.date: 01/27/2021
 ms.author: v-tawe
-ms.openlocfilehash: 2655764c5c2bfa452827331907bc8ee8f992536e
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 38ce18efbac728909c9fb90a1919e2b64f6965f1
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97003553"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059929"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 日志记录
 
@@ -24,7 +23,7 @@ ms.locfileid: "97003553"
 
 最多在执行 Key Vault 操作 10 分钟后，就能访问其日志记录信息。 但大多数情况下不用等待这么长时间。  存储帐户中的日志完全由你管理：
 
-* 请使用标准的 Azure 访问控制方法限制可访问日志的人员，以此保护日志。
+* 请在存储帐户中使用标准的 Azure 访问控制方法限制可访问日志的人员，以此保护日志。
 * 删除不想继续保留在存储帐户中的日志。
 
 有关 Key Vault的概述信息，请参阅[什么是 Azure Key Vault？](overview.md)。 有关 Key Vault 可用位置的信息，请参阅[定价页](https://www.azure.cn/pricing/details/key-vault/)。 有关[将 Azure Monitor 用于 Key Vault](../../azure-monitor/insights/key-vault-insights-overview.md) 的信息。
@@ -52,7 +51,7 @@ ms.locfileid: "97003553"
                 "callerIpAddress": "104.40.82.76",
                 "correlationId": "",
                 "identity": {"claim":{"http://schemas.microsoft.com/identity/claims/objectidentifier":"d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn":"live.com#username@outlook.com","appid":"1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},
-                "properties": {"clientInfo":"azure-resource-manager/2.0","requestUri":"https://control-prod-wus.vaultcore.azure.cn/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id":"https://contosokeyvault.vault.azure.cn/","httpStatusCode":200}
+                "properties": {"clientInfo":"azure-resource-manager/2.0","requestUri":"https://control-prod-wus.vaultcore.chinacloudapi.cn/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id":"https://contosokeyvault.vault.azure.cn/","httpStatusCode":200}
             }
         ]
     }
@@ -86,6 +85,8 @@ ms.locfileid: "97003553"
 
 ### <a name="operation-names-table"></a>操作名称表
 
+# <a name="vault"></a>[保管库](#tab/Vault)
+
 | operationName | REST API 命令 |
 | --- | --- |
 | **身份验证** |通过 Azure Active Directory 终结点进行身份验证 |
@@ -98,6 +99,12 @@ ms.locfileid: "97003553"
 | **VaultRecover** |恢复已删除的保管库|
 | **VaultGetDeleted** |[获取已删除的保管库](https://docs.microsoft.com/rest/api/keyvault/vaults/getdeleted) |
 | **VaultListDeleted** |[列出已删除的保管库](https://docs.microsoft.com/rest/api/keyvault/vaults/listdeleted) |
+| **VaultAccessPolicyChangedEventGridNotification** | 保管库访问策略更改事件已发布 |
+
+# <a name="keys"></a>[“键”](#tab/Keys)
+
+| operationName | REST API 命令 |
+| --- | --- |
 | **KeyCreate** |[创建密钥](https://docs.microsoft.com/rest/api/keyvault/createkey) |
 | **KeyGet** |[获取有关密钥的信息](https://docs.microsoft.com/rest/api/keyvault/getkey) |
 | **KeyImport** |[将密钥导入保管库](https://docs.microsoft.com/rest/api/keyvault/vaults) |
@@ -117,6 +124,32 @@ ms.locfileid: "97003553"
 | **KeyRecover** |[恢复密钥](https://docs.microsoft.com/rest/api/keyvault/recoverdeletedkey) |
 | **KeyGetDeleted** |[获取已删除的密钥](https://docs.microsoft.com/rest/api/keyvault/getdeletedkey) |
 | **KeyListDeleted** |[列出保管库中已删除的密钥](https://docs.microsoft.com/rest/api/keyvault/getdeletedkeys) |
+| **KeyNearExpiryEventGridNotification** |密钥即将过期事件已发布 |
+| **KeyExpiredEventGridNotification** |密钥已过期事件已发布 |
+
+# <a name="secrets"></a>[机密](#tab/Secrets)
+
+| operationName | REST API 命令 |
+| --- | --- |
+| **SecretSet** |[创建机密](https://docs.microsoft.com/rest/api/keyvault/updatecertificate) |
+| **SecretGet** |[获取机密](https://docs.microsoft.com/rest/api/keyvault/getsecret) |
+| **SecretUpdate** |[更新机密](https://docs.microsoft.com/rest/api/keyvault/updatesecret) |
+| **SecretDelete** |[删除机密](https://docs.microsoft.com/rest/api/keyvault/deletesecret) |
+| **SecretList** |[列出保管库中的机密](https://docs.microsoft.com/rest/api/keyvault/getsecrets) |
+| **SecretListVersions** |[列出机密的版本](https://docs.microsoft.com/rest/api/keyvault/getsecretversions) |
+| **SecretPurge** |[清除机密](https://docs.microsoft.com/rest/api/keyvault/purgedeletedsecret) |
+| **SecretBackup** |[备份机密](https://docs.microsoft.com/rest/api/keyvault/backupsecret) |
+| **SecretRestore** |[还原机密](https://docs.microsoft.com/rest/api/keyvault/restoresecret) |
+| **SecretRecover** |[恢复机密](https://docs.microsoft.com/rest/api/keyvault/recoverdeletedsecret) |
+| **SecretGetDeleted** |[获取已删除的机密](https://docs.microsoft.com/rest/api/keyvault/getdeletedsecret) |
+| **SecretListDeleted** |[列出保管库中已删除的机密](https://docs.microsoft.com/rest/api/keyvault/getdeletedsecrets) |
+| **SecretNearExpiryEventGridNotification** |机密即将过期事件已发布 |
+| **SecretExpiredEventGridNotification** |机密已过期事件已发布 |
+
+# <a name="certificates"></a>[证书](#tab/Cerificates)
+
+| operationName | REST API 命令 |
+| --- | --- |
 | **CertificateGet** |[获取有关证书的信息](https://docs.microsoft.com/rest/api/keyvault/getcertificate) |
 | **CertificateCreate** |[创建证书](https://docs.microsoft.com/rest/api/keyvault/createcertificate) |
 | **CertificateImport** |[将证书导入保管库](https://docs.microsoft.com/rest/api/keyvault/importcertificate) |
@@ -147,25 +180,10 @@ ms.locfileid: "97003553"
 | **CertificatePendingMerge** |挂起证书合并 |
 | **CertificatePendingUpdate** |挂起证书更新 |
 | **CertificatePendingDelete** |删除挂起的证书 |
-| **SecretSet** |[创建机密](https://docs.microsoft.com/rest/api/keyvault/updatecertificate) |
-| **SecretGet** |[获取机密](https://docs.microsoft.com/rest/api/keyvault/getsecret) |
-| **SecretUpdate** |[更新机密](https://docs.microsoft.com/rest/api/keyvault/updatesecret) |
-| **SecretDelete** |[删除机密](https://docs.microsoft.com/rest/api/keyvault/deletesecret) |
-| **SecretList** |[列出保管库中的机密](https://docs.microsoft.com/rest/api/keyvault/getsecrets) |
-| **SecretListVersions** |[列出机密的版本](https://docs.microsoft.com/rest/api/keyvault/getsecretversions) |
-| **SecretPurge** |[清除机密](https://docs.microsoft.com/rest/api/keyvault/purgedeletedsecret) |
-| **SecretBackup** |[备份机密](https://docs.microsoft.com/rest/api/keyvault/backupsecret) |
-| **SecretRestore** |[还原机密](https://docs.microsoft.com/rest/api/keyvault/restoresecret) |
-| **SecretRecover** |[恢复机密](https://docs.microsoft.com/rest/api/keyvault/recoverdeletedsecret) |
-| **SecretGetDeleted** |[获取已删除的机密](https://docs.microsoft.com/rest/api/keyvault/getdeletedsecret) |
-| **SecretListDeleted** |[列出保管库中已删除的机密](https://docs.microsoft.com/rest/api/keyvault/getdeletedsecrets) |
-| **VaultAccessPolicyChangedEventGridNotification** | 保管库访问策略更改事件已发布 |
-| **SecretNearExpiryEventGridNotification** |机密即将过期事件已发布 |
-| **SecretExpiredEventGridNotification** |机密已过期事件已发布 |
-| **KeyNearExpiryEventGridNotification** |密钥即将过期事件已发布 |
-| **KeyExpiredEventGridNotification** |密钥已过期事件已发布 |
 | **CertificateNearExpiryEventGridNotification** |证书即将过期事件已发布 |
 | **CertificateExpiredEventGridNotification** |证书已过期事件已发布 |
+
+---
 
 ## <a name="use-azure-monitor-logs"></a>使用 Azure Monitor 日志
 

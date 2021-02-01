@@ -1,27 +1,22 @@
 ---
 title: Azure VM 体系结构的工作流 | Microsoft Docs
 description: 本文概述部署服务时的工作流过程。
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 9f2af8dd-2012-4b36-9dd5-19bf6a67e47d
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 11/10/2020
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: 24bfa370e7a516639a2f74e6f305d99588ff289a
-ms.sourcegitcommit: 59810f8eba5e430d85a595e346d3b7fb6e4a0102
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: bef7b1840ee9688260d55f9f4a331b43d70c002d
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94501882"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058785"
 ---
-#    <a name="workflow-of-azure-classic-vm-architecture"></a>Azure 经典 VM 体系结构的工作流 
+# <a name="workflow-of-azure-classic-vm-architecture"></a>Azure 经典 VM 体系结构的工作流 
+
 本文概述当你部署或更新虚拟机等 Azure 资源时发生的工作流过程。 
 
 > [!NOTE]

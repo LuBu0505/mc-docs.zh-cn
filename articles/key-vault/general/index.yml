@@ -5,19 +5,19 @@ metadata:
   title: Azure Key Vault 文档
   description: 了解如何使用密钥保管库来创建及维护用于访问和加密云资源、应用和解决方案的密钥。 教程、API 参考和其他资源。
   services: key-vault
+  ms.subservice: general
   ms.service: key-vault
   ms.topic: landing-page
   author: msmbaldwin
   ms.author: v-tawe
   manager: rkarlin
-  origin.date: 09/19/2019
-  ms.date: 09/16/2020
-  ms.openlocfilehash: 9c38fa280b0afc7f522489ac0dc3e304f5b978a0
-  ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+  ms.date: 01/27/2021
+  ms.openlocfilehash: d4fbf762b17098a21f17f31fb2a01f959ffa49a4
+  ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/27/2020
-  ms.locfileid: "96300487"
+  ms.lasthandoff: 01/29/2021
+  ms.locfileid: "99059931"
 landingContent:
 - title: 关于 Azure Key Vault
   linkLists:
@@ -49,10 +49,12 @@ landingContent:
   linkLists:
   - linkListType: overview
     links:
+    - text: 安全概述
+      url: security-overview.md
     - text: 保护 Key Vault
       url: secure-your-key-vault.md
-    - text: 安全建议
-      url: security-recommendations.md
+    - text: 安全基线
+      url: security-baseline.md
   - linkListType: how-to-guide
     links:
     - text: 对 Key Vault 进行身份验证

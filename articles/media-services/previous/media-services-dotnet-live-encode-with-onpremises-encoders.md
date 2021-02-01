@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 origin.date: 03/18/2019
-ms.date: 09/28/2020
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7b1f5567f2aa5660c82ac36d2cc8ae9dff6fe401
-ms.sourcegitcommit: 7ad3bfc931ef1be197b8de2c061443be1cf732ef
+ms.openlocfilehash: fd15ac1313ef0b5bd8230a8ba9db45712db3fc31
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91245482"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059332"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>如何使用 .NET 通过本地编码器执行实时传送视频流
 
@@ -34,9 +34,9 @@ ms.locfileid: "91245482"
 > 
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 
-本教程会逐步演示如何使用 Azure 媒体服务 .NET SDK 创建为实现直通传送而配置的**频道**。 
+本教程会逐步演示如何使用 Azure 媒体服务 .NET SDK 创建为实现直通传送而配置的 **频道**。 
 
 ## <a name="prerequisites"></a>必备条件
 以下是完成本教程所需具备的条件：

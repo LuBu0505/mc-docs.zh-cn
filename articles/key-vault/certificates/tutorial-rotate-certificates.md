@@ -12,12 +12,12 @@ ms.custom: mvc
 origin.date: 04/16/2020
 ms.date: 01/13/2021
 ms.author: v-tawe
-ms.openlocfilehash: 8cfc26970c0d83c44e9180c492efde6eddcceec7
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: a3216c6b26ca066f3e362f0adec81f21ea1154cd
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231065"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059955"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>教程：配置 Key Vault 中的证书自动轮换
 
@@ -135,7 +135,7 @@ Set-AzureKeyVaultCertificatePolicy -VaultName $vaultName
 > }
 >  ```
 > 
-若要详细了解参数，请参阅 [az keyvault certificate](https://docs.microsoft.com/cli/azure/keyvault/certificate#az-keyvault-certificate-set-attributes)。
+若要详细了解参数，请参阅 [az keyvault certificate](/cli/keyvault/certificate#az-keyvault-certificate-set-attributes)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

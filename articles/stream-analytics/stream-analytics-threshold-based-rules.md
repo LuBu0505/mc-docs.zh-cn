@@ -1,19 +1,18 @@
 ---
 title: Azure 流分析中基于可配置阈值的规则
 description: 本文介绍如何使用参考数据实现在 Azure 流分析中拥有基于可配置阈值的规则的警报解决方案。
-author: lingliw
-ms.author: v-lingwu
-manager: digimobile
+author: enkrumah
+ms.author: v-johya
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 04/30/2018
-ms.date: 08/20/2018
-ms.openlocfilehash: 69ab9e16061df69d3652ce7a3f2b88f8b8b9ecd9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 01/25/2021
+ms.openlocfilehash: 0adf973cd174ebb68e9c786288d928fdec42c8ba
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155134"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059572"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>处理 Azure 流分析中基于可配置阈值的规则
 本文介绍如何使用参考数据实现在 Azure 流分析中使用基于可配置阈值的规则的警报解决方案。
@@ -45,6 +44,7 @@ ms.locfileid: "78155134"
 - 注意，规则有“operator”字段，稍后将在有关 `AVGGREATEROREQUAL` 上的查询语法中动态阐释。 
 - 规则筛选键/值对为 `2`/`C1` 的特定维度的数据。 其他字段为空字符串，指示不会按这些事件字段筛选输入流。 用户可以设置其他 CPU 规则来根据需要筛选其他匹配字段。
 - 并非所有列都包含在输出警报事件中。 在本例中，`includedDim` 键号 `2` 打开为 `TRUE`，表示流中事件数据的字段号 2 将包含在符合条件的输出事件中。 其他字段不包含在警报输出中，但可以调整字段列表。
+
 
 ```json
 {

@@ -4,15 +4,15 @@ description: 适用于 Azure 应用程序网关的 Azure 安全基线
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 01/11/2021
+ms.date: 01/27/2021
 ms.author: v-junlch
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 88ec69868d27a67edbed205b51f87b31b15b2cd0
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 72172824cd49303398e63c54415197d3d3653388
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195093"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059061"
 ---
 # <a name="azure-security-baseline-for-azure-application-gateway"></a>适用于 Azure 应用程序网关的 Azure 安全基线
 
@@ -395,6 +395,7 @@ Azure 应用程序网关还提供与 Azure Application Insights 的内置集成�
 
 **指南**：将 PAW（特权访问工作站）与为登录和配置 Azure 资源而配置的 MFA 结合使用。
 
+* [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -683,7 +684,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Azure 应用程序�
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
 
-使用 Azure Resource Graph 查询/发现订阅中的资源。 确保环境中存在的所有 Azure 资源已获得批准。
+使用 Azure Resource Graph 查询/发现订阅中的资源。 确保环境中的所有 Azure 资源均已获得批准。
 
 * [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -1068,4 +1069,3 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Azure 应用程序�
 
 - 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
 - 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)
-

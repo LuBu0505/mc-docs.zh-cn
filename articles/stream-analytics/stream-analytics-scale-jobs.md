@@ -3,17 +3,16 @@ title: Azure 流分析作业的纵向扩展和横向扩展
 description: 本文介绍如何通过分布输入数据、优化查询以及设置作业流单元来缩放流分析作业。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 06/22/2017
-ms.date: 11/16/2020
-ms.openlocfilehash: a685d3aa5d4724847824f77e8ec18ca8e6923d14
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.date: 01/25/2021
+ms.openlocfilehash: 7cbf73feacad48c654b8dab571ee1da95be825b3
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977019"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059098"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>扩展 Azure 流分析作业以增加吞吐量
 本文介绍如何优化流分析查询，增加流分析作业的吞吐量。 可以使用以下指南来扩展作业，以便处理较高负载并充分利用更多的系统资源（如更多带宽、更多 CPU 资源、更多内存）。
@@ -39,7 +38,7 @@ ms.locfileid: "94977019"
 
 ## <a name="case-2---if-your-query-is-not-embarrassingly-parallel"></a>案例 2 - 如果查询不是易并行。
 如果查询不是易并行，则可以执行以下步骤。
-1.  首先使用不带 PARTITION BY 的查询，以避免分区复杂性，然后使用 6 SU 运行查询，以度量最大负载，如案例 1 所示。
+1.  首先使用不带 PARTITION BY 的查询来避免分区复杂性，然后使用 6 SU 运行查询，以度量最大负载，如[案例 1](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions) 中所示。
 2.  如果能在吞吐量方面达到预期负载，则操作完成。 或者，你可以选择度量在 3 SU 和 1 SU 上运行的相同作业，以找到适用于你方案的 SU 的最小数目。
 3.  如果不能实现所需的吞吐量，请尝试尽可能地将查询分解为多个步骤（如果还没有多个步骤），并在查询中为每个步骤分配最多 6 个 SU。 例如，如果有 3 个步骤，则在“规模”选项中分配 18 个 SU。
 4.  在运行此类作业时，流分析会将各步骤分配到自己包含专用 6 SU 资源的节点上。 
@@ -68,7 +67,7 @@ ms.locfileid: "94977019"
 对于某些 ISV 用例，如果在单个作业中处理来自多个租户的数据更经济有效，则可为每个租户使用单独的输入和输出，最终在单个作业中运行相当多（例如 20 个）的独立查询。 假设条件是每个此类子查询的负载都相对较小。 在这种情况下，可以按照以下步骤操作。
 1.  在这种情况下，请勿在查询中使用 PARTITION BY
 2.  如果使用事件中心，则将输入分区计数减少到可能的最低值 2。
-3.  使用 6 SU 运行查询。 通过每个子查询的预期负载，尽可能多地添加此类子查询，直到作业达到系统资源上限。 有关发生这种情况时的症状，请参阅案例 1。
+3.  使用 6 SU 运行查询。 通过每个子查询的预期负载，尽可能多地添加此类子查询，直到作业达到系统资源上限。 有关发生这种情况时的症状，请参阅[案例 1](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions)。
 4.  一旦达到以上度量的子查询上限，可开始向新作业添加子查询。 作为独立查询数量的函数运行的作业数应是标准线性的，前提是没有任何负载偏移。 然后，可以预测你需要多少个 6 SU 作业，作为你想要提供的租户数的函数运行。
 5.  将引用数据联接与此类查询结合使用时，应在使用相同引用数据进行联接之前将输入合并在一起。 然后再根据需要拆分事件。 否则，每个引用数据联接会在内存中保留一份引用数据，可能导致不必要的内存使用。
 
@@ -79,7 +78,7 @@ ms.locfileid: "94977019"
 
 
 ## <a name="get-help"></a>获取帮助
-若要获得进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答问题页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
+如需获取进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

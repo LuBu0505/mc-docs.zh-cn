@@ -3,20 +3,19 @@ title: 来自 Azure 流分析的 Blob 存储和 Azure Data Lake Gen2 输出
 description: 本文介绍作为 Azure 流分析输出的 Blob 存储和 Azure Data Lake Gen 2。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/07/2021
-ms.openlocfilehash: 9aed043d742155c9920769363ccd6dff94cff6fa
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.date: 01/25/2021
+ms.openlocfilehash: 10e30bc71969d8bd176c4ffda4392be82e61b703
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023268"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060125"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>来自 Azure 流分析的 Blob 存储和 Azure Data Lake Gen2 输出
 
-Data Lake Storage Gen2 使 Azure 存储成为在 Azure 上构建企业 Data Lake 的基础。 Data Lake Storage Gen2 从一开始就设计为处理数千万亿字节的信息，同时保持数百千兆位的吞吐量，可让你轻松管理大量数据。Data Lake Storage Gen2 的一个基本特征是在 Blob 存储中添加分层命名空间。
+Data Lake Storage Gen2 使 Azure 存储成为在 Azure 上构建企业 Data Lake 的基础。 Data Lake Storage Gen2 从一开始就设计为存储数千万亿字节的信息，同时保持数百千兆位的吞吐量，允许你轻松管理大量数据。 Data Lake Storage Gen2 的一个基本部分是向 Blob 存储添加分层命名空间。
 
 Azure Blob 存储提供了一种经济高效且可扩展的解决方案，用于在云中存储大量非结构化数据。 有关 Blob 存储及其用法的简介，请参阅[使用 Azure 门户上传、下载和列出 blob](../storage/blobs/storage-quickstart-blobs-portal.md)。
 

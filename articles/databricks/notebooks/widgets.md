@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 08/04/2020
 title: 小组件 - Azure Databricks
 description: 了解如何使用输入小组件，以便将参数添加到笔记本和仪表板。
-ms.openlocfilehash: 6c22979559150c53ad98e7b6f539c96e2ec7bbea
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 434a966c47fef35882688f96ae6d05401a9cdb57
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106796"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060149"
 ---
 # <a name="widgets"></a>小组件
 
@@ -155,20 +155,20 @@ SELECT * FROM diamonds WHERE cut LIKE '%$cuts%'
 
 你可配置在选择新值时小组件的行为，以及小组件面板是否始终固定到笔记本顶部。
 
-1. 单击 ![gear](../_static/images/widgets/gear.png) 图标，其位于“小组件”面板的右端。
+1. 单击 ![齿轮图标](../_static/images/widgets/gear.png) 图标，其位于“小组件”面板的右端。
 2. 在弹出式“小组件面板设置”对话框中，选择小组件的执行行为。
 
    > [!div class="mx-imgBorder"]
    > ![小组件设置](../_static/images/widgets/widget-settings.png)
 
-   * **运行笔记本** ：每次选择新值时，整个笔记本都会重新运行。
-   * **运行已访问的命令** ：每次选择新值时，只有检索该特定小组件值的单元格会重新运行。 这是创建小组件时的默认设置。
+   * **运行笔记本**：每次选择新值时，整个笔记本都会重新运行。
+   * **运行已访问的命令**：每次选择新值时，只有检索该特定小组件值的单元格会重新运行。 这是创建小组件时的默认设置。
 
      > [!NOTE]
      >
      > SQL 单元格不会在此配置中重新运行。
 
-   * **不执行任何操作** ：每次选择新值时，任何内容都不会重新运行。
+   * **不执行任何操作**：每次选择新值时，任何内容都不会重新运行。
 
 ### <a name="notebook"></a>笔记本
 

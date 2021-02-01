@@ -11,12 +11,12 @@ ms.topic: overview
 origin.date: 07/20/2020
 ms.date: 01/13/2021
 ms.author: v-tawe
-ms.openlocfilehash: 118266ca28fd9001fc87972b79a6d485459d8ad2
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: c96d9978780f2e1f990d259c0c47066bea3bc4a8
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230051"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058564"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>续订 Azure Key Vault 证书
 
@@ -67,7 +67,7 @@ Azure Key Vault 处理由受信任的 Microsoft 证书颁发机构 DigiCert 和 
 > [!NOTE]
 > 将已签名的 CSR 与你创建的相同 CSR 请求合并，这点很重要。 否则，密钥将不匹配。
 
-有关创建新 CSR 的详细信息，请参阅[在 Key Vault 中创建和合并 CSR]( https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request#azure-portal)。
+有关创建新 CSR 的详细信息，请参阅[在 Key Vault 中创建和合并 CSR]( /key-vault/certificates/create-certificate-signing-request#azure-portal)。
 
 ## <a name="renew-a-self-signed-certificate"></a>续订自签名证书
 

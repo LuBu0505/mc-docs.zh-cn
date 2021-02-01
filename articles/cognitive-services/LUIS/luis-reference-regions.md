@@ -4,14 +4,14 @@ description: Azure 门户中指定的区域就是你将在其中发布 LUIS 应�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 11/19/2019
+ms.date: 01/19/2021
 ms.author: v-johya
-ms.openlocfilehash: 755f63e92dd08aaee18b6ff5d2c972fc0c81c1aa
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+ms.openlocfilehash: 589500bcfedfa8f76667fac89ca8c3a5304e9850
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472360"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751336"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>创作和发布区域及关联的密钥
 
@@ -26,7 +26,7 @@ ms.locfileid: "92472360"
 |--|--|--|
 |[luis.azure.cn][luis.azure.cn]|中国| `chinaeast2`|
 
-创作区域具有[配对故障转移区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
+创作区域具有[配对故障转移区域](../../best-practices-availability-paired-regions.md)。
 
 <a name="regions-and-azure-resources"></a>
 
@@ -54,7 +54,7 @@ ms.locfileid: "92472360"
 
 每个区域都有一个要故障转移到的次要区域。
 
-创作区域具有[配对故障转移区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
+创作区域具有[配对故障转移区域](../../best-practices-availability-paired-regions.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

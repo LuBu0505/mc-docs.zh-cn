@@ -11,13 +11,13 @@ author: WenJason
 manager: digimobile
 ms.custom: seo-lt-2019
 origin.date: 01/04/2019
-ms.date: 01/04/2020
-ms.openlocfilehash: 0fc041af8731473fe01bc70061f0e9987caddd51
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.date: 02/01/2021
+ms.openlocfilehash: 0419df7fe974add720edb51af843b34ec7c06e26
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830180"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058597"
 ---
 # <a name="templates"></a>模板
 
@@ -74,6 +74,10 @@ ms.locfileid: "97830180"
 -   SSIS 模板
 
     -   将 Azure-SSIS Integration Runtime 计划为执行 SSIS 包
+
+-   转换模板
+
+    -   [使用 Azure Databricks 的 ETL](solution-template-databricks-notebook.md)
 
 ### <a name="my-templates"></a>我的模板
 

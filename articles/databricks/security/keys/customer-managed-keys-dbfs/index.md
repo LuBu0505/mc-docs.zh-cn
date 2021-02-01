@@ -5,21 +5,17 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 09/15/2020
+ms.date: 10/20/2020
 title: 为 DBFS 根配置客户管理的密钥 - Azure Databricks
 description: 了解如何使用自己的加密密钥来加密 DBFS 存储帐户。
-ms.openlocfilehash: 16c0d2fedfdb63cbe0ca58524f44b47f609268f8
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: f11187c9208742b39b266982087a19955e3e939b
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937717"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060139"
 ---
 # <a name="configure-customer-managed-keys-for-dbfs-root"></a>为 DBFS 根配置客户管理的密钥
-
-> [!IMPORTANT]
->
-> 此功能目前以[公共预览版](../../../release-notes/release-types.md)提供。
 
 > [!NOTE]
 >

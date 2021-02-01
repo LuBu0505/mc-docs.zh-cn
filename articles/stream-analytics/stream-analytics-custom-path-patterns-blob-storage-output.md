@@ -3,18 +3,17 @@ title: Azure 流分析自定义 blob 输出分区
 description: 本文介绍了 Azure 流分析作业中 blob 存储输出的自定义 DateTime 路径模式和自定义字段或属性功能。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 02/07/2019
-ms.date: 01/07/2021
+ms.date: 01/25/2021
 ms.custom: seodec18
-ms.openlocfilehash: 4c9111ae02a62cc4bd9a2d026063047fff1bb5b7
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: fee8c521c69b77fd31cfd2b78d12a372784e9aef
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023165"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059995"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure 流分析自定义 blob 输出分区
 
@@ -32,7 +31,7 @@ Azure 流分析支持包含自定义字段或属性和自定义 DateTime 路径�
 SELECT name, id, CONCAT(name, "/", id) AS nameid
 ```
 
-分区键必须为 NVARCHAR(MAX)、BIGINT、FLOAT 或 BIT（1.2 兼容级别或更高级别）。 不支持 DateTime、Array 和 Records 类型，但是如果将它们转换为 String，则可将它们用作分区键。 有关详细信息，请参阅 [Azure 流分析数据类型](/stream-analytics-query/data-types-azure-stream-analytics)。
+分区键必须为 NVARCHAR(MAX)、BIGINT、FLOAT 或 BIT（1.2 兼容级别或更高级别）。 不支持 DateTime、Array 和 Records 类型，但是如果将它们转换为 String，则可将它们用作分区键。 有关详细信息，请参阅 [Azure 流分析数据类型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)。
 
 ### <a name="example"></a>示例
 

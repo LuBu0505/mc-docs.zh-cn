@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 origin.date: 08/27/2020
-ms.date: 11/27/2020
+ms.date: 01/14/2021
 ms.author: v-tawe
-ms.openlocfilehash: 55c3b943f5723e57190ae9402b78ab2ebd523e78
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 67301a03c369fc5928ba8a5ad6c71d098ff5596e
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300839"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059947"
 ---
 # <a name="assign-a-key-vault-access-policy-using-azure-powershell"></a>使用 Azure PowerShell 分配 Key Vault 访问策略
 
@@ -37,7 +37,7 @@ Key Vault 访问策略确定给定的服务主体（即应用程序或用户组�
     1. 登录 Azure：
 
         ```azurepowershell
-        Login-AzAccount
+        Connect-AzAccount -EnvironmentName AzureChinaCloud
         ```
     
 ## <a name="acquire-the-object-id"></a>获取对象 ID
@@ -78,7 +78,10 @@ Set-AzKeyVaultAccessPolicy -VaultName <key-vault-name> -ObjectId <Id> -Permissio
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Key Vault 安全性：标识和访问管理](overview-security.md#identity-and-access-management)
+
+- [Azure Key Vault 安全性：标识和访问管理](security-overview.md#identity-management)
 - [保护 Key Vault](secure-your-key-vault.md)
 - [Azure Key Vault 开发人员指南](developers-guide.md)
-- [Azure Key Vault 最佳做法](best-practices.md)
+<!--
+- [Azure Key Vault best practices](best-practices.md)
+-->

@@ -3,20 +3,21 @@ title: include 文件
 description: include 文件
 services: cognitive-services
 author: Johnnytechn
-manager: diberry
+manager: nitinme
 ms.service: cognitive-services
-ms.date: 12/28/2020
+ms.date: 01/19/2021
 origin.date: 06/04/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
 ms.author: v-johya
-ms.openlocfilehash: 90ba1324ffa6ab29e24e96bf2c990134b62fdf81
-ms.sourcegitcommit: ff20289adb80a6ab45e15fa5e196ff7af7e1c6b5
+ms.reviewer: roy-har
+ms.openlocfilehash: 3c79b24ac998ad9d00c2120183fac015907af1fd
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97874900"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98758146"
 ---
 创建披萨应用。
 

@@ -2,13 +2,13 @@
 title: 在门户中创建 Azure Functions 高级计划
 description: 了解如何使用 Azure 门户创建在高级计划中运行的函数应用。
 ms.topic: how-to
-ms.date: 01/12/2021
-ms.openlocfilehash: 999c437bddcb9542fb88cd72c22a9e41383ec780
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.date: 01/27/2021
+ms.openlocfilehash: 622ae15a871ff24f20035f28f8e2f70801572185
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195290"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060104"
 ---
 # <a name="create-a-premium-plan-function-app-in-the-azure-portal"></a>在 Azure 门户中创建高级计划函数应用
 
@@ -35,5 +35,4 @@ Azure Functions 提供了可缩放的高级计划，该计划提供虚拟网络�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [添加 HTTP 触发的函数](functions-create-first-azure-function.md#create-function)
-
+> [添加 HTTP 触发的函数](./functions-get-started.md)

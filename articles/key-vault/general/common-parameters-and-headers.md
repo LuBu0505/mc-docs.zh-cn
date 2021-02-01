@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 origin.date: 01/07/2019
-ms.date: 06/02/2020
+ms.date: 01/14/2021
 ms.author: v-tawe
-ms.openlocfilehash: 5ebfbf9aca185b2bc56ba889a4716dc5d2c8a4a5
-ms.sourcegitcommit: 9811bf312e0d037cb530eb16c8d85238fd276949
+ms.openlocfilehash: 7f615773b82646314b0abe183455f6b3b5976ae7
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84275557"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059938"
 ---
 # <a name="common-parameters-and-headers"></a>常见参数和标头
 

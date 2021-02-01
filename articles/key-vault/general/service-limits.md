@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 origin.date: 01/07/2019
-ms.date: 09/15/2020
+ms.date: 01/18/2021
 ms.author: v-tawe
-ms.openlocfilehash: e9dcb771a72e29822a479a4ec68c3faa8156acce
-ms.sourcegitcommit: 39410f3ed7bdeafa1099ba5e9ec314b4255766df
+ms.openlocfilehash: 6fb13b54b49ceee26c9d4d80276059e848103322
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90678489"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059366"
 ---
 # <a name="azure-key-vault-service-limits"></a>Azure Key Vault 服务限制
 

@@ -15,12 +15,12 @@ ms.date: 01/18/2021
 ms.testscope: no
 ms.testdate: 01/18/2021
 ms.author: v-yeche
-ms.openlocfilehash: 83640ce5d87977bc54ce947d605dd56facc6377e
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 302cdaf5b4aa6d93013f875e2d8aa44f0e3dc4eb
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231143"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063607"
 ---
 <!--Verified successfully-->
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>将 Azure 服务与虚拟网络集成以实现网络隔离
@@ -29,7 +29,7 @@ ms.locfileid: "98231143"
 
 VNet 集成可以为 Azure 服务提供网络隔离的优点，可通过以下一种或多种方法实现：
 - [将服务的专用实例部署到虚拟网络中](virtual-network-for-azure-services.md)。 随后即可在虚拟网络内以及从本地网络私密访问这些服务。
-- 使用专用终结点，它可以通过私密且安全的方式将你连接到由 [Azure 专用链接](../private-link/private-link-overview.md)提供支持的服务。 专用终结点使用 VNet 中的专用 IP 地址将服务有效地引入虚拟网络中。
+- 使用专用终结点，它可以通过私密且安全的方式将你连接到由 Azure 专用链接提供支持的服务。 专用终结点使用 VNet 中的专用 IP 地址将服务有效地引入虚拟网络中。
 
     <!--Not Available on [Private Endpoint](../private-link/private-endpoint-overview.md)-->
     

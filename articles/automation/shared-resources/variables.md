@@ -4,14 +4,14 @@ description: 本文介绍如何在 Runbook 和 DSC 配置中使用变量。
 services: automation
 ms.subservice: shared-capabilities
 origin.date: 12/01/2020
-ms.date: 01/04/2021
+ms.date: 02/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 031bbb33d1707dbec6375b43ac9ac3be4aa624a0
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: d0276d98646731d8b20cb85b6ae799720a84ea70
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830140"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058599"
 ---
 # <a name="manage-variables-in-azure-automation"></a>在 Azure 自动化中管理变量
 

@@ -4,15 +4,15 @@ description: 本文提供故障排除步骤和信息，帮助开发人员启用�
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 01/12/2021
+ms.date: 01/27/2021
 ms.reviewer: mbullwin
 origin.date: 03/07/2019
-ms.openlocfilehash: 4c9a1b06ac76bc11958b38e7fbaf21687d67a133
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 2a361606d48b5658b8ddaa98cb885e8ea4b9314e
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231029"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060190"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> 排查启用 Application Insights Snapshot Debugger 或查看快照时遇到的问题
 如果为应用程序启用了 Application Insights Snapshot Debugger，但未看到出现异常的快照，则可以使用以下说明进行故障排除。
@@ -273,5 +273,5 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
 
 如果应用程序通过代理或防火墙连接到 Internet，则可能需要更新规则以与 Snapshot Debugger 服务进行通信。
 
-Application Insights Snapshot Debugger 使用的 IP 包含在 Azure Monitor 服务标记中。 有关详细信息，请参阅[服务标记文档](/virtual-network/service-tags-overview)。
+Application Insights Snapshot Debugger 使用的 IP 包含在 Azure Monitor 服务标记中。 有关详细信息，请参阅[服务标记文档](../../virtual-network/service-tags-overview.md)。
 

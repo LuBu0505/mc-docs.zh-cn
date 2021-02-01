@@ -3,17 +3,16 @@ title: 通过 Azure 流分析提高 Azure SQL 数据库的吞吐量性能
 description: 了解如何将数据从 Azure 流分析输出到 SQL Azure，并实现更高的写入吞吐量速率。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 03/18/2019
-ms.date: 11/16/2020
-ms.openlocfilehash: 133698c5aa0904995d0425302e178a84ff6853df
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.date: 01/25/2021
+ms.openlocfilehash: 9285eaeefb723f694a834b2f52b55ede6aeaddac
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978287"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058419"
 ---
 # <a name="increase-throughput-performance-to-azure-sql-database-from-azure-stream-analytics"></a>通过 Azure 流分析提高 Azure SQL 数据库的吞吐量性能
 

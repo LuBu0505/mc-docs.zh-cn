@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 10/12/2020
-ms.date: 12/21/2020
-ms.openlocfilehash: 3c5c1370c51df60162714ea1b1eb0a9a4f0869ab
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.date: 02/01/2021
+ms.openlocfilehash: 7cb61b5223690a5f11032ee5029c7ae90bffe31f
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830196"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060085"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Azure SQL 托管实例中的时区
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "97830196"
 
 支持的时区集继承自托管实例的底层操作系统。 定期更新以获取新的时区定义，并反映对现有时区的更改。
 
-[夏时制/时区更改策略](https://aka.ms/time)保证了 2010 年以来的历史记录的准确性。
+[夏时制/时区更改策略](https://docs.microsoft.com/troubleshoot/windows-client/system-management-components/daylight-saving-time-help-support)保证了 2010 年以来的历史记录的准确性。
 
 包含受支持时区名称的列表通过 [sys.time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) 系统视图公开。
 

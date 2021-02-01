@@ -7,15 +7,15 @@ ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
 origin.date: 07/10/2020
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: bb9b8e8b9a7a022c5e373b76dce8f7510fb7a8df
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 1236603b3ee52475983c83d264cc5a3e83a3fbb9
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021654"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059700"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>使用 Synapse SQL 安全地加载数据
 
@@ -125,7 +125,7 @@ WITH (
 
     ![向 Azure RBAC 授予加载权限](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
-2. 按照以下[文档](/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#create-an-azure-ad-administrator-for-azure-sql-server)中的步骤配置 Azure AD 身份验证。 
+2. 按照以下[文档](../../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell)中的步骤配置 Azure AD 身份验证。 
 
 3. 使用 Active Directory 连接到 SQL 池，现在可以在其中运行 COPY 语句，而无需指定任何凭据：
 

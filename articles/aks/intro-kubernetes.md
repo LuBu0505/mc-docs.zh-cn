@@ -5,17 +5,17 @@ services: container-service
 ms.topic: overview
 origin.date: 05/06/2019
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 5a768361f5a852236ea447fa3ee0a44c7df33e92
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 41694bf0bc07ed4de1d75d06277387c7e6fd355e
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004096"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063695"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS)
 
@@ -27,7 +27,7 @@ ms.locfileid: "97004096"
 
 若要开始，请[通过 Azure 门户][aks-portal]或者[通过 Azure CLI][aks-cli] 完成 AKS 快速入门。
 
-<!--Not Available on [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]-->
+<!--NOT AVAILABLE ON [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)-->
 
 ## <a name="access-security-and-monitoring"></a>访问权限、安全性和监视
 
@@ -63,7 +63,7 @@ Azure Kubernetes 服务提供多个 Kubernetes 版本。 新版本在 AKS 中可
 
 若要详细了解生命周期版本，请参阅 [AKS 中支持的 Kubernetes 版本][aks-supported versions]。 有关升级步骤，请参阅[升级 Azure Kubernetes 服务 (AKS) 群集][aks-upgrade]。
 
-### <a name="gpu-enabled-nodes"></a>启用 GPU 的节点
+### <a name="gpu-enabled-nodes"></a>启用了 GPU 的节点
 
 AKS 支持创建启用了 GPU 的节点池。 Azure 目前提供单个或多个启用了 GPU 的 VM。 启用了 GPU 的 VM 是针对计算密集型、图形密集型和可视化工作负荷设计的。
 
@@ -82,7 +82,7 @@ AKS 支持创建启用了 GPU 的节点池。 Azure 目前提供单个或多个�
 
 ## <a name="virtual-networks-and-ingress"></a>虚拟网络和入口
 
-AKS 群集可以部署到现有的虚拟网络中。 在此配置中，群集中的每个 Pod 在虚拟网络中分配有一个 IP 地址，并可直接与群集中的其他 Pod 以及虚拟网络中的其他节点通信。 Pod 也可通过 ExpressRoute 或站点到站点 (S2S) VPN 连接与对等互连虚拟网络中的其他服务和本地网络建立连接。
+AKS 群集可以部署到现有的虚拟网络中。 在此配置中，群集中的每个 Pod 在虚拟网络中分配有一个 IP 地址，并可直接与群集中的其他 Pod 以及虚拟网络中的其他节点通信。 Pod 还可以连接到对等互连虚拟网络中的其他服务，通过 ExpressRoute 或站点到站点 (S2S) VPN 连接连接到本地网络。
 
 有关详细信息，请参阅 [AKS 中应用程序的网络概念][aks-networking]。
 
@@ -109,7 +109,7 @@ Kubernetes 有丰富的生态系统，其中包含各种开发和管理工具，
 
 AKS 支持 Docker 映像格式。 若要对 Docker 映像进行专用存储，可以将 AKS 与 Azure 容器注册表 (ACR) 集成。
 
-若要创建专用映像存储，请参阅 [Azure 容器注册表][acr-docs]。
+要创建专用映像存储，请参阅 [Azure 容器注册表][acr-docs]。
 
 ## <a name="kubernetes-certification"></a>Kubernetes 认证
 
@@ -139,7 +139,7 @@ Azure Kubernetes 服务 (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。 有
 [aks-cli]: ./kubernetes-walkthrough.md
 [aks-gpu]: ./gpu-cluster.md
 
-<!--Not Available on [aks-http-routing]: ./http-application-routing.md-->
+<!--NOT AVAILABLE ON [aks-http-routing]: ./http-application-routing.md-->
 
 [aks-networking]: ./concepts-network.md
 [aks-portal]: ./kubernetes-walkthrough-portal.md
@@ -147,7 +147,7 @@ Azure Kubernetes 服务 (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。 有
 [aks-upgrade]: ./upgrade-cluster.md
 
 <!--Not Available on [azure-dev-spaces]: ../dev-spaces/index.yml-->
-<!--Not Available on [azure-devops]: ../devops-project/overview.md-->
+<!--NOT AVAILABLE ON [azure-devops]: ../devops-project/overview.md-->
 
 [azure-disk]: ./azure-disks-dynamic-pv.md
 [azure-files]: ./azure-files-dynamic-pv.md
@@ -159,6 +159,6 @@ Azure Kubernetes 服务 (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。 有
 [concepts-identity]: concepts-identity.md
 [concepts-storage]: concepts-storage.md
 
-<!--Not Available on  [conf-com-node]: ../confidential-computing/confidential-nodes-aks-overview.md-->
+<!--NOT AVAILABLE ON [conf-com-node]: ../confidential-computing/confidential-nodes-aks-overview.md-->
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

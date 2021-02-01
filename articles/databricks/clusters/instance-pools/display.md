@@ -8,16 +8,16 @@ author: mssaperla
 ms.date: 03/04/2020
 title: 显示池 - Azure Databricks
 description: 了解如何显示 Azure Databricks 池。
-ms.openlocfilehash: 03516693254e76115e2c09c8570ba707e3f5da7a
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: 83d20c14cb28113d8dd9c2189288b266dffb70ac
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121868"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058987"
 ---
 # <a name="display-pools"></a><a id="display-pools"> </a><a id="instance-pools-display"> </a>显示池
 
-若要显示工作区中的池，请单击边栏中的“群集”图标 ![“群集”图标](../../_static/images/clusters/clusters-icon.png)，然后单击“池”选项卡：
+若要显示工作区中的池，请单击边栏中的“群集”图标 ![“群集”图标](../../_static/images/icons/clusters-icon.png)，然后单击“池”选项卡：
 
 > [!div class="mx-imgBorder"]
 > ![“池”选项卡](../../_static/images/instance-pools/tab.png)

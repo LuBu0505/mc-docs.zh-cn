@@ -8,18 +8,14 @@ author: mssaperla
 ms.date: 09/15/2020
 title: 使用 PowerShell 为 DBFS 配置客户管理的密钥 - Azure Databricks
 description: 了解如何使用 PowerShell 配置自己的加密密钥以加密 DBFS 存储帐户。
-ms.openlocfilehash: 94f9dec73d8b98ad4aafd14706a108b2f6a7e872
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: 470f84679b5ae7fe10555d57f89fbfa76ed13e86
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937719"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060140"
 ---
 # <a name="configure-customer-managed-keys-for-dbfs-using-powershell"></a>使用 PowerShell 为 DBFS 配置客户管理的密钥
-
-> [!IMPORTANT]
->
-> 此功能目前以[公共预览版](../../../release-notes/release-types.md)提供。
 
 > [!NOTE]
 >

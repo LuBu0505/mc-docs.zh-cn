@@ -10,15 +10,15 @@ ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
 origin.date: 11/21/2019
-ms.date: 12/30/2020
+ms.date: 01/19/2021
 ms.author: v-johya
 keywords: 本地, Docker, 容器, 情绪分析, 自然语言处理
-ms.openlocfilehash: 22ff4b2e52477dc9444529e7fbaa4c7a14467c91
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: db53e9fe1b3607d4868b6596b51019c3e8196a1b
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857117"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751110"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 <!--Customized in MC: Text Analytics for health is not available.-->
@@ -145,10 +145,6 @@ Microsoft 容器注册表中提供了文本分析的容器映像。
 [!INCLUDE [Container's Billing Settings](../../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 有关这些选项的详细信息，请参阅[配置容器](../text-analytics-resource-container-config.md)。
-
-<!--blogs/samples/video course -->
-
-[!INCLUDE [Discoverability of more container information](../../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>摘要
 

@@ -3,16 +3,15 @@ title: 来自 Azure 流分析的事件中心输出
 description: 本文介绍如何将数据从 Azure 流分析输出到 Azure 事件中心。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/07/2021
-ms.openlocfilehash: 3fde3edfea56aadd44fe75965b31e7dd4d635f4f
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.date: 01/25/2021
+ms.openlocfilehash: 1983bfb14f2ba52f5ba8bfabb0d16810d86d2be8
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023166"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060126"
 ---
 # <a name="event-hubs-output-from-azure-stream-analytics"></a>来自 Azure 流分析的事件中心输出
 

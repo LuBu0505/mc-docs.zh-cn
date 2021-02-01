@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 01/08/2020
-ms.date: 12/14/2020
-ms.openlocfilehash: a0f4ffa4f1c78b66a8de2e99bcd8bdd95e1900ce
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.date: 02/01/2021
+ms.openlocfilehash: 453e86b7f172f47462294ebf9d15d284e7dd5694
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830165"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059047"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>导入或导出 Azure SQL 数据库但不允许 Azure 服务访问服务器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -148,7 +148,7 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 
 若要降低成本，请使用成本低于高级 Azure 文件共享的 Azure Blob。 但是，如果使用 Azure Blob，在执行导入或导出操作之前，需要在 Blob 与本地文件系统之间复制 [.BACPAC 文件](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac)。 因此，该过程需要更长的时间。
 
-若要上传或下载 .BACPAC 文件，请参阅[使用 AzCopy 和 Blob 存储传输数据](../../storage/common/storage-use-azcopy-blobs.md)以及[使用 AzCopy 和文件存储传输数据](../../storage/common/storage-use-azcopy-files.md)。
+若要上传或下载 .BACPAC 文件，请参阅[使用 AzCopy 和 Blob 存储传输数据](../../storage/common/storage-use-azcopy-v10.md#transfer-data)以及[使用 AzCopy 和文件存储传输数据](../../storage/common/storage-use-azcopy-files.md)。
 
 根据具体的环境，可能需要[配置 Azure 存储防火墙和虚拟网络](../../storage/common/storage-network-security.md)。
 

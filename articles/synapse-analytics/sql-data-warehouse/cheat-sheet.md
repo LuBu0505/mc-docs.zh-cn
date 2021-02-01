@@ -8,15 +8,15 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql-dw
 origin.date: 11/04/2019
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: 9ace06fbd5d4775136a068ff15e4a2078850f872
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 8c2f03b46952fa781eeb9f4bc16a12751200bdc1
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023264"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058508"
 ---
 # <a name="cheat-sheet-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytic"></a>Azure Synapse Analytics 中的专用 SQL 池（之前称为 SQL DW）的速查表
 
@@ -47,7 +47,7 @@ ms.locfileid: "98023264"
 | 分区 | 无 |
 | 资源类 | largerc 或 xlargerc |
 
-详细了解[数据迁移](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/)、[数据加载](design-elt-data-loading.md)以及[提取、加载和转换 (ELT) 过程](design-elt-data-loading.md)。
+详细了解[数据迁移](https://docs.microsoft.com/archive/blogs/sqlcat/migrating-data-to-azure-sql-data-warehouse-in-practice)、[数据加载](design-elt-data-loading.md)以及[提取、加载和转换 (ELT) 过程](design-elt-data-loading.md)。
 
 ## <a name="distributed-or-replicated-tables"></a>分布式表或复制表
 
@@ -134,5 +134,5 @@ Azure Synapse 的一个重要功能是可以[管理计算资源](sql-data-wareho
 
 建议考虑在中心辐射型体系结构中使用 SQL 数据库和 Azure Analysis Services。 该解决方案可以在不同的用户组之间提供工作负荷隔离，同时还能使用 SQL 数据库和 Azure Analysis Services 的高级安全功能。 这也是一种向用户提供无限并发的方式。
 
-详细了解[可利用 Azure Synapse Analytics 中的专用 SQL 池（之前称为 SQL DW）的典型体系结构](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/)。
+详细了解[可利用 Azure Synapse Analytics 中的专用 SQL 池（之前称为 SQL DW）的典型体系结构](https://docs.microsoft.com/archive/blogs/sqlcat/common-isv-application-patterns-using-azure-sql-data-warehouse)。
 

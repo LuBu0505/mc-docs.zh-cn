@@ -4,17 +4,17 @@ description: 了解如何使用 Azure 命令行接口将容器组部署到新的
 ms.topic: article
 origin.date: 07/02/2020
 author: rockboyfor
-ms.date: 11/30/2020
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 07/27/2020
 ms.author: v-yeche
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: f5900569212c2ac300b095840683e9933a2f6c58
-ms.sourcegitcommit: ea52237124974eda84f8cef4bf067ae978d7a87d
+ms.openlocfilehash: 3b05b38b71c00b041b92e5e4a556edb32017f41d
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024413"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063520"
 ---
 <!--Verified successfully-->
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>将容器实例部署到 Azure 虚拟网络
@@ -26,7 +26,7 @@ ms.locfileid: "96024413"
 有关网络方案和限制，请参阅 [Azure 容器实例的虚拟网络方案和资源](container-instances-virtual-network-concepts.md)。
 
 > [!IMPORTANT]
-> 虚拟网络中的容器组部署通常适用于大多数同时可使用 Azure 容器实例的区域中的 Linux 容器。 有关详细信息，请参阅[区域和资源可用性](container-instances-virtual-network-concepts.md#where-to-deploy)。 
+> 虚拟网络中的容器组部署通常适用于大多数同时可使用 Azure 容器实例的区域中的 Linux 容器。 有关详细信息，请参阅[区域和资源可用性][container-regions]。 
 
 本文中的示例已针对 Bash shell 设置了格式。 若要使用其他 shell（例如 PowerShell 或命令提示符），请相应地调整续行符。
 
@@ -248,5 +248,6 @@ az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 [az-container-show]: https://docs.microsoft.com/cli/azure/container#az_container_show
 [az-network-vnet-create]: https://docs.azure.cn/cli/network/vnet#az_network_vnet_create
 [az-network-profile-list]: https://docs.azure.cn/cli/network/profile#az_network_profile_list
+[container-regions]: container-instances-region-availability.md
 
 <!-- Update_Description: update meta properties, wording update, update link -->

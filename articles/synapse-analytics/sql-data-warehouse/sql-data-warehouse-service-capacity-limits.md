@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 origin.date: 2/19/2020
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 9ade9218eccaafd0677ba2a1ce5db37ae2f10498
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 2d46e7ee4f64283a2a4899be4bd594d7056dc2a3
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022353"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060115"
 ---
 # <a name="capacity-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池的容量限制
 
@@ -28,7 +28,7 @@ Azure Synapse Analytics 中专用 SQL 池的各个组件所允许的最大值。
 | 类别 | 说明 | 最大值 |
 |:--- |:--- |:--- |
 | [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |单个专用 SQL 池的最大 DWU  | Gen1：DW6000<br></br>Gen2：DW30000c |
-| [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |每个服务器的默认 DTU |54,000<br></br>默认情况下，每个 SQL Server（例如 myserver.database.chinacloudapi.cn）的 DTU 配额为 54,000，最多可以允许 DW5000c。 此配额仅仅只是安全限制。 可以通过[创建支持票证](https://support.windowsazure.cn/support/support-azure)并选择“配额”  作为请求类型来增加配额。  若要计算 DTU 需求，请将所需的 DWU 总数乘以 7.5 或将所需的 cDWU 总数乘以 9。 例如：<br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW7500c x 9 = 67,500 DTU。<br></br>可以在门户中的 SQL Server 选项中查看当前 DTU 消耗量。 已暂停和未暂停的数据库都计入 DTU 配额。 |
+| [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |每个服务器的默认 DTU |54,000<br></br>默认情况下，每个 SQL Server（例如 myserver.database.chinacloudapi.cn）的 DTU 配额为 54,000，最多可以允许 DW6000c。 此配额仅仅只是安全限制。 可以通过[创建支持票证](https://support.windowsazure.cn/support/support-azure)并选择“配额”  作为请求类型来增加配额。  若要计算 DTU 需求，请将所需的 DWU 总数乘以 7.5 或将所需的 cDWU 总数乘以 9。 例如：<br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW7500c x 9 = 67,500 DTU。<br></br>可以在门户中的 SQL Server 选项中查看当前 DTU 消耗量。 已暂停和未暂停的数据库都计入 DTU 配额。 |
 | 数据库连接 |并发打开的最大会话数 |1024<br/><br/>并发打开的会话数因所选 DWU 而异。 DWU600c 及更高版本支持最多 1024 个打开的会话。 DWU500c 及更低版本支持最多 512 个并发打开的会话。 请注意，可并发执行的查询数量是有限制的。 当超出并发限制时，请求将进入内部队列等待处理。 |
 | 数据库连接 |预处理语句的最大内存 |20 MB |
 | [工作负荷管理](resource-classes-for-workload-management.md) |并发查询数上限 |128<br/><br/>  最多可执行 128 个并发查询，其余查询将排队。<br/><br/>将用户分配到更高的资源类或降低[数据仓库单位](memory-concurrency-limits.md)设置时，并发查询的数量可能会减少。 某些查询（例如 DMV 查询）始终允许运行，并且不会影响并发查询限制。 若要详细了解如何执行并发查询，请参阅[并发最大值](memory-concurrency-limits.md)一文。 |
@@ -44,7 +44,7 @@ Azure Synapse Analytics 中专用 SQL 池的各个组件所允许的最大值。
 | 表 |每个数据库的表数 | 100,000 |
 | 表 |每个表的列数 |1024 个列 |
 | 表 |每个列的字节数 |取决于列[数据类型](sql-data-warehouse-tables-data-types.md)。 char 数据类型的限制为 8000，nvarchar 数据类型的限制为 4000，MAX 数据类型的限制为 2 GB。 |
-| 表 |每行的字节数，定义的大小 |8060 字节<br/><br/>每行字节数的计算方式同于使用页面压缩的 SQL Server。 与 SQL Server 一样，支持行溢出存储，这样可以将 **可变长度列** 脱行推送。 对可变长度行进行拖行推送时，只将 24 字节的根存储在主记录中。 有关详细信息，请参阅[超过 8 KB 的行溢出数据](https://msdn.microsoft.com/library/ms186981.aspx)。 |
+| 表 |每行的字节数，定义的大小 |8060 字节<br/><br/>每行字节数的计算方式同于使用页面压缩的 SQL Server。 与 SQL Server 一样，支持行溢出存储，这样可以将 **可变长度列** 脱行推送。 对可变长度行进行拖行推送时，只将 24 字节的根存储在主记录中。 有关详细信息，请参阅[超过 8 KB 的行溢出数据](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186981(v=sql.105))。 |
 | 表 |每个表的分区数 |15,000<br/><br/>为了实现高性能，建议在满足业务需求的情况下尽量减少所需的分区数。 随着分区数目的增长，数据定义语言 (DDL) 和数据操作语言 (DML) 操作的开销也会增长，导致性能下降。 |
 | 表 |每个分区边界值的字符数。 |4000 |
 | 索引 |每个表的非聚集索引数。 |50<br/><br/>仅适用于行存储表。 |

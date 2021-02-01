@@ -3,14 +3,14 @@ title: Durable Functions 中的性能和缩放 - Azure
 description: 了解 Azure Functions 的 Durable Functions 扩展的独特缩放特征。
 author: cgillum
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 01/27/2021
 ms.author: v-junlch
-ms.openlocfilehash: 29955db59f66ec853f8cb9dcd3ddb9fbca6a5c46
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 9a54a9b6965166b359a03e69dd6e9f955268bdb9
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195138"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059517"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions 中的性能和缩放 (Azure Functions)
 
@@ -103,7 +103,7 @@ Durable Task 扩展实现了随机指数退让算法，以降低空闲队列轮�
   "extensions": {
     "durableTask": {
       "storageProvider": {
-          "partitionCount": 3
+        "partitionCount": 3
       }
     }
   }
@@ -281,4 +281,3 @@ Azure Functions 支持在单个应用实例中并发执行多个函数。 这种
 
 > [!div class="nextstepaction"]
 > [了解灾难恢复和异地分发](durable-functions-disaster-recovery-geo-distribution.md)
-

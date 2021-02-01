@@ -6,19 +6,16 @@ documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/11/2021
+ms.date: 01/26/2021
 ms.author: v-junlch
-ms.reviewer: bagovind
-ms.openlocfilehash: 77882c40f1aef5c14a751c865d6f184e0f17f542
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 681d73f88e089a904e8471083ebbfd19e8991b24
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195194"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058519"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板添加 Azure 角色分配
 
@@ -352,7 +349,6 @@ az deployment group create --resource-group ExampleGroup --template-file rbac-te
             "properties": {
                 "roleDefinitionId": "[variables('contributorRoleDefinitionId')]",
                 "principalId": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName')), '2018-11-30').principalId]",
-                "scope": "[resourceGroup().id]",
                 "principalType": "ServicePrincipal"
             }
         }
@@ -389,4 +385,3 @@ az deployment group create --resource-group ExampleGroup2 --template-file rbac-t
 - [了解 ARM 模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)
 - [在订阅级别创建资源组和资源](../azure-resource-manager/templates/deploy-to-subscription.md)
 - [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?term=rbac)
-

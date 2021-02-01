@@ -3,17 +3,16 @@ title: 为 Azure 流分析配置事件排序策略
 description: 本文介绍如何在流分析中配置事件排序设置
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 origin.date: 03/12/2019
-ms.date: 11/16/2020
-ms.openlocfilehash: 3698d23a444f6b66ee167da5a5cb8389ae16ce76
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.date: 01/25/2021
+ms.openlocfilehash: c0e1b9f5235d460cee3d78ddea7dcf1ff37869ba
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978112"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060122"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>为 Azure 流分析配置事件排序策略
 

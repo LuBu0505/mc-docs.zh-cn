@@ -1,4 +1,4 @@
-- name: 密钥
+- name: 键
   href: index.yml
 - name: 概述
   items:
@@ -13,12 +13,25 @@
       href: quick-create-powershell.md
     - name: 门户
       href: quick-create-portal.md
+    - name: .NET
+      href: quick-create-net.md
+    - name: Node.js
+      href: quick-create-node.md
     - name: Python
       href: quick-create-python.md
+    - name: Java
+      href: quick-create-java.md
+    - name: ARM 模板
+      displayName: Resource Manager
+      href: quick-create-template.md
 - name: 示例
   items:
     - name: Key Vault 代码示例
       href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
+- name: 概念
+  items:
+    - name: 密钥类型、算法和操作
+      href: about-keys-details.md
 - name: 参考
   items:
     - name: Azure PowerShell

@@ -3,18 +3,17 @@ title: Azure 流分析中 JavaScript 用户定义的聚合
 description: 本文介绍如何在 Azure 流分析中通过 JavaScript 用户定义的聚合执行高级查询机制。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 10/28/2017
-ms.date: 11/16/2020
+ms.date: 01/25/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: f552edbdca55b893fb568cfedc3709bf3983d6e7
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 357b6ebd00854934b947af07148bed5903334c48
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977413"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059743"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure 流分析 JavaScript 用户定义的聚合
  

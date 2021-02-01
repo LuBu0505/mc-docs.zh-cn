@@ -4,14 +4,14 @@ description: 追查到 Service Fabric、虚拟机、Web 应用和云服务中使
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 11/02/2020
+ms.date: 01/27/2021
 ms.subservice: autoscale
-ms.openlocfilehash: 10e46a87612411fee06ae52404140e7d32b046d9
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 6cee7e306ecbfb6631be1b1c5db54301b3073a40
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94327614"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060044"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>排查 Azure 自动缩放问题
  
@@ -89,7 +89,7 @@ _图 2 - 虚拟机规模集自动缩放指标图表示例_*
  - “观察到的容量”（紫色）显示自动缩放引擎看到的实例计数。 
  - “指标阈值”（浅绿色）设置为 10。 
 
-如果有多个缩放操作规则，则可以使用指标资源管理器图表中的“拆分”或“添加筛选器”选项，按特定的源或规则查看指标。 有关拆分指标图表的详细信息，请参阅[指标图表的高级功能 - 拆分](metrics-charts.md#apply-splitting-to-a-chart)
+如果有多个缩放操作规则，则可以使用指标资源管理器图表中的“拆分”或“添加筛选器”选项，按特定的源或规则查看指标。 有关拆分指标图表的详细信息，请参阅[指标图表的高级功能 - 拆分](metrics-charts.md#apply-splitting)
 
 ## <a name="example-3---understanding-autoscale-events"></a>示例 3 - 了解自动缩放事件
 

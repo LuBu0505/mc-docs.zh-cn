@@ -9,15 +9,15 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 10/27/2020
+ms.date: 01/19/2021
 ms.author: v-johya
 keywords: 本地, Docker, 容器, 标识
-ms.openlocfilehash: ccfbe307e1ef43c1924c0ea57028d94e637b8cc2
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 9e9402d6823fe99a5600fa14ac8506c522e63ba3
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105447"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751371"
 ---
 # <a name="install-and-run-face-containers-preview"></a>安装和运行人脸容器（预览版）
 
@@ -26,7 +26,7 @@ ms.locfileid: "93105447"
 
 Azure 认知服务人脸 API 提供 Linux Docker 容器，用于检测和分析图像中的人脸。 它还标识属性，其中包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，人脸还可以使用置信分数检查同一图像或不同图像中的两张人脸是否相同。 人脸还可以根据数据库比较人脸，查看是否已存在类似或相同的人脸。 它也可以使用共享视觉特征将类似人脸整理为许多组。
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/details/cognitive-services/)。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -137,10 +137,6 @@ ApiKey={API_KEY}
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 有关这些选项的详细信息，请参阅[配置容器](./face-resource-container-config.md)。
-
-<!--blogs/samples/video coures -->
-
-[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>摘要
 

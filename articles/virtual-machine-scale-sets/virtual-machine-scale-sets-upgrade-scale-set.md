@@ -6,15 +6,15 @@ ms.author: v-junlch
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 12/28/2020
+ms.date: 01/26/2021
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: af85a808ecb6361e6aba4e48ecee6b1c76c5a269
-ms.sourcegitcommit: a37f80e7abcf3e42859d6ff73abf566efed783da
+ms.openlocfilehash: 0ec57a122bb987791d814cce302c8b3b7c30ad46
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829439"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060047"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虚拟机规模集
 
@@ -349,7 +349,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 
 - **singlePlacementGroup** - 如果 singlePlacementGroup 为 true，则可将其修改为 false。 但是，如果 singlePlacementGroup 为 false，则 **不可** 将其修改为 true。
 - **subnet** - 修改规模集的子网的前提是，原始子网和新子网在同一虚拟网络中。
-- imageReferenceSku - 可以为已认可的 [Linux 发行版](/virtual-machines/linux/endorsed-distros)、Windows 服务器/客户端映像以及无[计划信息](/virtual-machines/linux/cli-ps-findimage#view-plan-properties)的映像更新映像参考 SKU。 
+- imageReferenceSku - 可以为已认可的 [Linux 发行版](../virtual-machines/linux/endorsed-distros.md)、Windows 服务器/客户端映像以及无[计划信息](../virtual-machines/linux/cli-ps-findimage.md#view-plan-properties)的映像更新映像参考 SKU。 
 
 ### <a name="properties-that-require-deallocation-to-change"></a>需要解除分配才能更改的属性
 某些属性只有在规模集中的 VM 已解除分配的情况下，才能更改为特定值。 这些属性包括：

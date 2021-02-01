@@ -3,16 +3,15 @@ title: 来自 Azure 流分析的表存储输出
 description: 本文介绍作为 Azure 流分析输出的 Azure 表存储。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/09/2020
-ms.openlocfilehash: c696bf0f982d339eb6c8c5009537470da91ab26c
-ms.sourcegitcommit: 465c166998f0c24405e573e6ec91e6da90e54f98
+ms.date: 01/25/2021
+ms.openlocfilehash: 4c79485bb71bd35082549766989c5137c679649c
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91936847"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058507"
 ---
 # <a name="table-storage-output-from-azure-stream-analytics"></a>来自 Azure 流分析的表存储输出
 

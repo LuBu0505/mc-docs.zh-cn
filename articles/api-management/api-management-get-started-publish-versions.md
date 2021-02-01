@@ -6,14 +6,14 @@ ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
 origin.date: 11/04/2019
-ms.date: 11/18/2020
+ms.date: 01/18/2021
 ms.author: v-johya
-ms.openlocfilehash: 3365d05eda5cd37d0db731413a83d27204ecdc30
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 5edb09553afd56f3964e5c733508ace4814a4388
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977878"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751160"
 ---
 # <a name="tutorial-publish-multiple-versions-of-your-api"></a>教程：发布 API 的多个版本 
 
@@ -112,5 +112,5 @@ ms.locfileid: "94977878"
 转到下一教程：
 
 > [!div class="nextstepaction"]
-> [自定义开发人员门户页面的样式](api-management-customize-styles.md)
+> [自定义开发人员门户页面的样式](api-management-howto-developer-portal-customize.md)
 

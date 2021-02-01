@@ -5,28 +5,31 @@ author: MikeDodaro
 ms.author: v-junlch
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 11/02/2020
+ms.date: 01/26/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 38468144defd1e30b692746a6f961c897f84bef2
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 0098c2883a695f88a923789e9f2205869e0e0006
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94327578"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060007"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>在 GitHub Actions 中使用密钥保管库对 Azure Spring Cloud 进行身份验证
+
+
 
 密钥保管库是存储密钥的安全位置。 企业用户需要在其控制的作用域内存储 CI/CD 环境的凭据。 用于在密钥保管库中获取凭据的密钥应限制到资源作用域。  它只能访问密钥保管库作用域，不能访问整个 Azure 作用域。 它类似于只能打开保险柜的钥匙，而不是可以打开建筑物内所有门的万能钥匙。 这是一种使用一个密钥获取另一个密钥的方法，适用于 CICD 工作流。 
 
 ## <a name="generate-credential"></a>生成凭据
 若要生成用于访问密钥保管库的密钥，请在本地计算机上执行以下命令：
-```
+
+```azurecli
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.KeyVault/vaults/<KEY_VAULT> --sdk-auth
 ```
 `--scopes` 参数指定的作用域限制了对资源的密钥访问。  它只能访问保险柜。
 
 结果如下：
-```
+```output
 {
     "clientId": "<GUID>",
     "clientSecret": "<GUID>",
@@ -57,12 +60,12 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
 ## <a name="generate-full-scope-azure-credential"></a>生成全作用域 Azure 凭据
 这是打开建筑物内所有门的万能钥匙。 该过程类似于上一步，但这里我们要更改作用域以生成主密钥：
 
-```
+```azurecli
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth
 ```
 
 同样，结果如下：
-```
+```output
 {
     "clientId": "<GUID>",
     "clientSecret": "<GUID>",
@@ -82,7 +85,7 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
 ## <a name="combine-credentials-in-github-actions"></a>合并 GitHub Actions 中的凭据
 设置 CICD 管道执行时使用的凭据：
 
-```
+```console
 on: [push]
 
 jobs:

@@ -11,15 +11,15 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 origin.date: 05/16/2017
-ms.date: 09/02/2020
+ms.date: 02/01/2021
 ms.author: v-tawe
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dbb36b0b09398e8997bc378b5058c2f91f3c6903
-ms.sourcegitcommit: 4f936264ddb502ff61623892f57067e935ef6e42
+ms.openlocfilehash: 36d25937b9137d7d3c3b6695a0be4b3a4db54b29
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89316414"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060075"
 ---
 # <a name="load-balance-traffic-to-vms-for-high-availability"></a>对传入 VM 的流量进行负载均衡以实现高可用性
 

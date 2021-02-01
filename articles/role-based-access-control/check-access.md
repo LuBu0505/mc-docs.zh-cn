@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 12/29/2020
+ms.date: 01/26/2021
 ms.author: v-junlch
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 31491217da3a11568bdb1ade1651a5cbaa2202d9
-ms.sourcegitcommit: a37f80e7abcf3e42859d6ff73abf566efed783da
+ms.openlocfilehash: a75cfad0af2df0be4f88f907c203ea2f529b8792
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829466"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059923"
 ---
 # <a name="quickstart-check-access-for-a-user-to-azure-resources"></a>快速入门：检查用户对 Azure 资源的访问权限
 
@@ -37,7 +37,7 @@ ms.locfileid: "97829466"
 
     下面展示了一个示例资源组。
 
-    ![资源组概述](./media/check-access/rg-overview.png)
+    ![资源组概述](./media/shared/rg-overview.png)
 
 ## <a name="step-2-check-access-for-a-user"></a>步骤 2：查看用户的访问权限
 
@@ -47,7 +47,7 @@ ms.locfileid: "97829466"
 
     下面显示了资源组的“访问控制(IAM)”页的示例。
 
-    ![资源组访问控制 - “检查访问权限”选项卡](./media/check-access/rg-access-control.png)
+    ![资源组访问控制 - “检查访问权限”选项卡](./media/shared/rg-access-control.png)
 
 1. 在“检查访问权限”选项卡上的“查找”列表中，选择要检查其访问权限的用户、组、服务主体或托管标识 。
 
@@ -81,4 +81,3 @@ ms.locfileid: "97829466"
 
 > [!div class="nextstepaction"]
 > [使用 Azure 门户列出 Azure 角色分配](role-assignments-list-portal.md)
-

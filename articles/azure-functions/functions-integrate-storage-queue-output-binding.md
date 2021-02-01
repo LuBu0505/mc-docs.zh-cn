@@ -3,14 +3,14 @@ title: 使用 Functions 将消息添加到 Azure 存储队列
 description: 使用 Azure Functions 创建一个无服务器函数，该函数通过 HTTP 请求调用，并在 Azure 存储队列中创建一条消息。
 ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 01/27/2021
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 316a65f9faf00c622a4c2b096a7fe800b73d3760
-ms.sourcegitcommit: f436acd1e2a0108918a6d2ee9a1aac88827d6e37
+ms.openlocfilehash: ab74cb07ff91a65be6a552ab145736b56d07b567
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508851"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060098"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>使用 Functions 将消息添加到 Azure 存储队列
 
@@ -22,13 +22,13 @@ ms.locfileid: "96508851"
 
 - Azure 订阅。 如果没有订阅，请在开始之前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
-- 按[通过 Azure 门户创建第一个函数](functions-create-first-azure-function.md)中的说明操作，请勿执行“清理资源”这一步。 该快速入门创建此处所用的函数应用和函数。
+- 按[通过 Azure 门户创建第一个函数](./functions-get-started.md)中的说明操作，请勿执行“清理资源”这一步。 该快速入门创建此处所用的函数应用和函数。
 
 ## <a name="add-an-output-binding"></a><a name="add-binding"></a>添加输出绑定
 
 在此部分，请使用门户 UI 将队列存储输出绑定添加到此前创建的函数。 有了此绑定，就可以在尽量减少代码编写工作的情况下在队列中创建消息。 不需为打开存储连接、创建队列、获取队列引用之类的任务编写代码。 Azure Functions 运行时和队列输出绑定为你处理这些任务。
 
-1. 在 Azure 门户中，打开在[通过 Azure 门户创建第一个函数](functions-create-first-azure-function.md)中创建的函数应用的函数应用页。 若要打开该页面，请搜索并选择“函数应用”。 然后，选择你的函数应用。
+1. 在 Azure 门户中，打开在[通过 Azure 门户创建第一个函数](./functions-get-started.md)中创建的函数应用的函数应用页。 若要打开该页面，请搜索并选择“函数应用”。 然后，选择你的函数应用。
 
 1. 选择你的函数应用，然后选择在前面的快速入门中创建的函数。
 
@@ -98,7 +98,7 @@ ms.locfileid: "96508851"
 
     请注意，**请求正文** 包含 `name` 值 *Azure*。 此值显示在队列消息中，该消息是在调用函数时创建的。
     
-    如果不想选择此处的“运行”，也可调用该函数，方法是在浏览器中输入 URL，然后在查询字符串中指定 `name` 值。 此浏览器方法在[以前的快速入门](functions-create-first-azure-function.md#test-the-function)中演示过。
+    如果不想选择此处的“运行”，也可调用该函数，方法是在浏览器中输入 URL，然后在查询字符串中指定 `name` 值。 此浏览器方法在[以前的快速入门](./functions-get-started.md)中演示过。
 
 1. 检查日志以确保该函数成功。 
 
@@ -136,4 +136,3 @@ ms.locfileid: "96508851"
 本快速入门介绍了如何将输出绑定添加到现有函数。 有关队列存储绑定的详细信息，请参阅 [Azure Functions 存储队列绑定](functions-bindings-storage-queue.md)。
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps-2.md)]
-

@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 origin.date: 10/22/2020
-ms.date: 11/27/2020
+ms.date: 01/14/2021
 ms.author: v-tawe
-ms.openlocfilehash: 7ea5170d41e726044d4fd63d7672f3938a2bd348
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: aa1d1bae04ed62b32ad772baaee3d0e2fb30a04d
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300812"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059945"
 ---
 # <a name="azure-key-vault-backup"></a>Azure Key Vault 备份
 

@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: Johnnytechn
   ms.author: v-johya
-  ms.date: 12/11/2020
-  ms.openlocfilehash: 4284f99f25fdcefe91181efa6660ac70a1648513
-  ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+  ms.date: 01/18/2021
+  ms.openlocfilehash: 09fcf3c5510cd53a37e360fa2503199dd8452168
+  ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/11/2020
-  ms.locfileid: "97104944"
+  ms.lasthandoff: 01/25/2021
+  ms.locfileid: "98751104"
 landingContent:
 - title: 关于 API 管理
   linkLists:
@@ -61,6 +61,8 @@ landingContent:
       url: api-management-get-started-publish-versions.md
     - text: 9. 自定义开发人员门户页面的样式
       url: api-management-howto-developer-portal-customize.md
+    - text: 10. 在 Visual Studio Code 中管理 API
+      url: visual-studio-code-tutorial.md
 - title: 示例
   linkLists:
   - linkListType: sample

@@ -2,18 +2,18 @@
 title: 没有 800 计数限制的资源
 description: 列出可以在一个资源组中有 800 多个实例的 Azure 资源类型。
 ms.topic: conceptual
-origin.date: 10/28/2020
+origin.date: 01/08/2021
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 01/25/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: cc59f041bd34881d2afbf01ec6676ceaf0c155a2
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 6746acdf2dcf70bc57cb31be495b8a89ee8c7dbc
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022921"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751385"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>没有每个资源组 800 个实例限制的资源
 
@@ -154,7 +154,6 @@ ms.locfileid: "98022921"
 * trafficmanagerprofiles
 
 <!--Not Available on * virtualNetworkTaps-->
-
 <!--Not Available on ## Microsoft.PortalSdk-->
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI

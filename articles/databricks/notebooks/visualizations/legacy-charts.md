@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 05/14/2020
 title: 旧版折线图 - Azure Databricks
 description: 了解 Azure Databricks 中的旧版折线图以及如何迁移到 Line。
-ms.openlocfilehash: b673f1e5916026ac1cfb1440bbfdd4581b89e692
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 224aa640e8b596436b9e61ea9160acec31b9d2f3
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106705"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060148"
 ---
 # <a name="legacy-line-charts"></a>旧版折线图
 
@@ -35,7 +35,7 @@ Line 具有自定义绘图选项：设置 Y 轴范围、显示或隐藏标记以
 
 若要从 Line (v1) 或 Line (v2) 迁移到 Line  ：
 
-1. 单击条形图![图表按钮](../../_static/images/notebooks/chart-button.png)旁边的![向下按钮](../../_static/images/button-down.png)，然后选择“Line”。
+1. 单击条形图![图表按钮](../../_static/images/notebooks/chart-button.png)旁边的![向下按钮](../../_static/images/icons/button-down.png)，然后选择“Line”。
 
    > [!div class="mx-imgBorder"]
    > ![图表类型](../../_static/images/notebooks/display-charts.png)

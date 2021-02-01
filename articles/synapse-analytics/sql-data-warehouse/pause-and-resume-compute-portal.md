@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
 origin.date: 11/23/2020
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: c743f9c7e68043793c93542a75da72c47b3e0138
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 02a548e5765c3dd6f509f780b15fb8606d4fc499
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022898"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059705"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-via-the-azure-portal"></a>快速入门：通过 Azure 门户暂停和恢复专用 SQL 池中的计算
 
@@ -99,5 +99,4 @@ ms.locfileid: "98022898"
 
 ## <a name="next-steps"></a>后续步骤
 
-现已暂停并恢复了专用 SQL 池的计算。 请继续阅读下一篇文章，详细了解如何[将数据加载到专用 SQL 池](load-data-from-azure-blob-storage-using-polybase.md)。 有关管理计算功能的其他信息，请参阅[管理计算概述](sql-data-warehouse-manage-compute-overview.md)一文。 
-
+现已暂停并恢复了专用 SQL 池的计算。 请继续阅读下一篇文章，详细了解如何[将数据加载到专用 SQL 池](./load-data-from-azure-blob-storage-using-copy.md)。 有关管理计算功能的其他信息，请参阅[管理计算概述](sql-data-warehouse-manage-compute-overview.md)一文。

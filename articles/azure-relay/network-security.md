@@ -4,24 +4,24 @@ description: 本文介绍如何将 IP 防火墙规则和专用终结点用于 Az
 ms.topic: conceptual
 origin.date: 06/23/2020
 author: rockboyfor
-ms.date: 10/12/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 07/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 081cd1d624d8b05994e9962c9b877e1c1bb78913
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: 942d2d6a14cb421d745df77958bd397c22017e58
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937230"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063585"
 ---
 <!--Verified successfully-->
 # <a name="network-security-for-azure-relay"></a>Azure 中继的网络安全性 
 本文介绍如何将以下安全功能与 Azure 中继配合使用： 
 
-- IP 防火墙规则（预览版）
+- IP 防火墙规则
 
-<!--Not Available on - Private endpoints (preview)-->
+<!--Not Available on - Private endpoints-->
 
 > [!NOTE]
 > Azure 中继不支持网络服务终结点。 
@@ -29,7 +29,7 @@ ms.locfileid: "91937230"
 ## <a name="ip-firewall"></a>IP 防火墙 
 默认情况下，只要请求附带有效的身份验证和授权，就可以从 Internet 访问中继命名空间。 使用 IP 防火墙，可以将其进一步限制为采用 CIDR（无类域间路由）表示法的一组 IPv4 地址或一个 IPv4 地址。
 
-<!--Blocked on [CIDR (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)-->
+<!--NOT AVAILABLE on [CIDR (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)-->
 
 在仅应从某些知名站点访问 Azure 中继的情况下，此功能很有用。 可以通过防火墙规则来配置规则，以便接受来自特定 IPv4 地址的流量。 例如，如果将中继与 [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) 配合使用，则可创建防火墙规则，仅允许来自本地基础结构 IP 地址的流量。 
 
@@ -44,6 +44,6 @@ IP 防火墙规则应用于中继命名空间级别。 因此，这些规则适�
 
 - [如何配置 IP 防火墙](ip-firewall-virtual-networks.md)
 
-<!--Not Available on - [How to configure private endpoints](private-link-service.md)-->
+<!--NOT AVAILABLE ON - [How to configure private endpoints](private-link-service.md)-->
 
 <!-- Update_Description: update meta properties, wording update, update link -->

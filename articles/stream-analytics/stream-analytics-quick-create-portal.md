@@ -3,17 +3,17 @@ title: 快速入门 - 使用 Azure 门户创建流分析作业
 description: 本快速入门介绍如何开始创建流分析作业、配置输入和输出，以及定义查询。
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 12/01/2020
+ms.date: 01/25/2021
 ms.topic: quickstart
 ms.service: stream-analytics
 origin.date: 06/21/2019
 ms.custom: mvc
-ms.openlocfilehash: 5de0d8bef1b5bb880dd9e7b9193c096fe2ffbfea
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: 1bb32947580d596707305f44979dded5247e230b
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432575"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059739"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建流分析作业
 

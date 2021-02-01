@@ -6,18 +6,18 @@ author: msmbaldwin
 ms.service: key-vault
 ms.topic: conceptual
 origin.date: 06/30/2019
-ms.date: 11/27/2020
+ms.date: 01/18/2021
 ms.author: v-tawe
-ms.openlocfilehash: 002f6299aa6dd7514ef79b1b60a389fd8cb544d8
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: ec77affd564f90582526a850ba5e6c580a40d2de
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300957"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059467"
 ---
 # <a name="key-vault-versions"></a>Key Vault 版本
 
-下面是 Azure Key Vault 的新增功能。 新增功能和改进也将在 [Azure 更新](https://updates.azure.cn)上公布。
+下面是 Azure Key Vault 的新增功能。 新增功能和改进也在 [Azure 更新 Key Vault 频道](https://azure.microsoft.com/updates/?category=security&query=Key%20vault)上进行了公布。
 
 <!-- ## June 2020
 
@@ -27,14 +27,14 @@ Azure Monitor for Key Vault is now in preview. Azure Monitor provides comprehens
 
 Key Vault "bring your own key" (BYOK) is now generally available. See the [Azure Key Vault BYOK specification](../keys/byok-specification.md), and learn how to [Import HSM-protected keys to Key Vault (BYOK)](../keys/hsm-protected-keys-byok.md). -->
 
-<!-- ## March 2020
+## <a name="march-2020"></a>2020 年 3 月
 
-Private endpoints now available in preview. Azure Private Link Service enables you to access Azure Key Vault and Azure hosted customer/partner services over a Private Endpoint in your virtual network. Learn how to [Integrate Key Vault with Azure Private Link](private-link-service.md). -->
+专用终结点现在提供预览版。 使用 Azure 专用链接服务，可以通过虚拟网络中的专用终结点访问 Azure Key Vault 和 Azure 托管的客户服务/合作伙伴服务。  了解如何[将 Key Vault 与 Azure 专用链接集成](private-link-service.md)。
 
 ## <a name="2019"></a>2019
 
-- 发布下一代 Azure Key Vault SDK。 有关其用法的示例，请参阅适用于 [Python](../secrets/quick-create-python.md)、[.NET](../secrets/quick-create-net.md)、[Java](../secrets/quick-create-java.md) 和 [Node.js](../secrets/quick-create-node.md) 的 Azure Key Vault 机密快速入门。
-- 用于管理密钥保管库证书的新 Azure 策略。 请参阅 [Key Vault 的 Azure Policy 内置定义](../policy-reference.md)。
+- 发布下一代 Azure Key Vault SDK。 有关其用法的示例，请参阅适用于 [Python](../secrets/quick-create-python.md)、[.NET](../secrets/quick-create-net.md)、[Java](../secrets/quick-create-java.md) 和 [Node.js](../secrets/quick-create-node.md) 的 Azure Key Vault 机密快速入门
+- 用于管理 Key Vault 证书的新 Azure 策略。 请参阅 [Key Vault 的 Azure Policy 内置定义](../policy-reference.md)。
 - Azure Key Vault 虚拟机扩展现已正式发布。  请参阅[适用于 Linux 的 Key Vault 虚拟机扩展](../../virtual-machines/extensions/key-vault-linux.md)和[适用于 Windows 的 Key Vault 虚拟机扩展](../../virtual-machines/extensions/key-vault-windows.md)。
 
 <!-- - Event-driven secrets management for Azure Key Vault now available in Azure Event Grid. For more information, see [the Event Grid schema for events in Azure Key Vault](../../event-grid/event-schema-key-vault.md], and learn how to [Receive and respond to key vault notifications with Azure Event Grid](event-grid-tutorial.md). -->
@@ -43,31 +43,30 @@ Private endpoints now available in preview. Azure Private Link Service enables y
 
 本年度发布的新功能和集成：
 
-- 与 Azure Functions 集成。 有关利用 [Azure Functions](../../azure-functions/index.yml) 进行密钥保管库操作的示例方案，请参阅[自动轮换机密](../secrets/tutorial-rotation.md)。 
+- 与 Azure Functions 集成。 有关利用 [Azure Functions](../../azure-functions/index.yml) 进行 Key Vault 操作的示例方案，请参阅[自动轮换机密](../secrets/tutorial-rotation.md)。 
+- [与 Azure Databricks 集成](https://docs.azure.cn/databricks/scenarios/store-secrets-azure-key-vault)。 借助此功能，Azure Databricks 现在支持两种类型的机密范围：Azure Key Vault 支持和 Databricks 支持。 有关详细信息，请参阅[创建 Azure Key Vault 支持的机密范围](https://docs.azure.cn/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope)
 - [Azure Key Vault 的虚拟网络服务终结点](overview-vnet-service-endpoints.md)。
-
-<!-- - [Integration with Azure Databricks](https://docs.microsoft.com/azure/databricks/scenarios/store-secrets-azure-key-vault). With this, Azure Databricks now supports two types of secret scopes: Azure Key Vault-backed and Databricks-backed. For more information, see [Create an Azure Key Vault-backed secret scope](https://docs.microsoft.com/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope) -->
 
 ## <a name="2016"></a>2016
 
 本年度发布的新功能：
 
 - 托管存储帐户密钥。 新增了存储帐户密钥功能，可更轻松地与 Azure 存储集成。 参阅概述主题[托管存储帐户密钥概述](../secrets/overview-storage-keys.md)，了解详细信息。
-- 软删除。 软删除功能增强了密钥保管库和密钥保管库对象的数据保护。 参阅概述主题[软删除概述](./soft-delete-overview.md)，了解详细信息。
+- 软删除。 软删除功能增强了 Key Vault 和 Key Vault 对象的数据保护。 参阅概述主题[软删除概述](./soft-delete-overview.md)，了解详细信息。
 
 ## <a name="2015"></a>2015
 
 本年度发布的新功能：
-- 证书管理。 于 2016 年 9 月 26 日添加为 2015-06-01 正式版中的功能。
+- 证书管理。 2016 年 9 月 26 日，作为一种功能添加到 2015-06-01 正式版中。
 
-于 2015 年 6 月 24 日发布了正式版（版本 2015-06-01）。 此版本进行了以下更改： 
+2015 年 6 月 24 日发布了 2015-06-01 正式版。 此版本进行了以下更改： 
 - 删除密钥 - 删除了“使用”字段。
 - 获取有关密钥的信息 - 删除了“使用”字段。
 - 将密钥导入保管库 - 删除了“使用”字段。
 - 还原密钥 - 删除了“使用”字段。     
 - 将“RSA_OAEP”改为 RSA 算法的“RSA-OAEP”。 请参阅[关于密钥、机密和证书](about-keys-secrets-certificates.md)。    
  
-2015 年 4 月 20 日发布了第二个预览版本（版本 2015-02-01-preview）。 有关详细信息，请参阅 [REST API 更新](https://docs.microsoft.com/archive/blogs/kv/rest-api-update) 博客文章。 更新了以下任务：
+2015 年 4 月 20 日发布了第二版预览版（版本 2015-02-01-preview）。 有关详细信息，请参阅 [REST API 更新](https://docs.microsoft.com/archive/blogs/kv/rest-api-update) 博客文章。 更新了以下任务：
  
 - 列出保管库中的密钥 - 向操作添加了分页支持。
 - 列出密钥版本 - 添加了列出密钥版本的操作。  
@@ -83,7 +82,7 @@ Private endpoints now available in preview. Azure Private Link Service enables y
  
 ## <a name="2014"></a>2014
  
-2015 年 1 月 8 日发布了第一个预览版本（版本 2014-12-08-preview）。  
+2015 年 1 月 8 日发布了第一版预览版（版本 2014-12-08-preview）。  
  
 ## <a name="next-steps"></a>后续步骤
 

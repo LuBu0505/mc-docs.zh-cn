@@ -3,16 +3,17 @@ title: 快速入门 - 使用 Azure PowerShell 创建流分析作业
 description: 本快速入门演示如何使用 Azure PowerShell 模块来部署并运行 Azure 流分析作业。
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 12/01/2020
+ms.date: 01/25/2021
 ms.topic: quickstart
 ms.service: stream-analytics
+ms.custom: mvc, devx-track-azurepowershell, devx-track-azurecli
 origin.date: 12/20/2018
-ms.openlocfilehash: 4aeaf1d84fe4f7debadd3449f752942c52461c56
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: 80e7d7093862e0433c8d3c0c8be330112ee2f8bf
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432574"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059733"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建流分析作业
 

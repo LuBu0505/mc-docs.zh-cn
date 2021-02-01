@@ -12,15 +12,15 @@ ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 10/07/2020
-ms.date: 01/04/2021
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ff0044f585cfdb33e76653eb9869908be272461f
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: fda41cfa51d922361254401d3b47ae60c5b6c6f5
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829763"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059404"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Azure VM 上的 SQL Server 的 Always On 可用性组
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -60,7 +60,7 @@ Azure 虚拟机上的 Always On 可用性组类似于[本地的 Always On 可用
 
 ### <a name="dnn-listener"></a>DNN 侦听器
 
-SQL Server 2019 CU8 引入了对分布式网络名称 (DNN) 侦听器的支持。 DNN 侦听器取代了传统的可用性组侦听器，消除了使用 Azure 负载均衡器在 Azure 网络上路由流量的需求。 
+SQL Server 2019 CU8 引入了对分布式网络名称 (DNN) 侦听器的支持。 DNN 侦听器取代了传统的可用性组侦听程序，消除了使用 Azure 负载均衡器在 Azure 网络上路由流量的需求。 
 
 DNN 侦听器是 Azure 中推荐的 HADR 连接解决方案，它可简化部署、减少维护量和成本，同时减少在出现故障时进行故障转移的时间。 
 

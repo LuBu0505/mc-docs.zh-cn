@@ -2,18 +2,18 @@
 title: 资源类型支持的移动操作
 description: 列出可移到新资源组或订阅的 Azure 资源类型。
 ms.topic: conceptual
-origin.date: 12/07/2020
+origin.date: 01/11/2021
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 08/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: dc9f494fc50e482d4bdbd8535d826f423f3454bf
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 24c5e19cc6c18839c13bf7e9e06045211934d2a2
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021872"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063654"
 ---
 <!--Verify Successfully-->
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
@@ -98,6 +98,7 @@ ms.locfileid: "98021872"
 > - [Microsoft.Sql](#microsoftsql)
 > - [Microsoft.Storage](#microsoftstorage)
 > - [Microsoft.StreamAnalytics](#microsoftstreamanalytics)
+> - [Microsoft.Synapse](#microsoftsynapse)
 > - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
 > - [Microsoft.Web](#microsoftweb)
 
@@ -1157,20 +1158,27 @@ ms.locfileid: "98021872"
 <!-- Not Available on ## Microsoft.StreamAnalyticsExplorer-->
 <!-- Not Available on ## Microsoft.Subscription-->
 <!-- Not Available on ## microsoft.support-->
-<!-- Not Available on ## Microsoft.Synapse->
 
-
-<a name="microsofttimeseriesinsights"></a>
-
-<a name="Microsoft.TimeSeriesInsights"></a>
-## Microsoft.TimeSeriesInsights
+## <a name="microsoftsynapse"></a>Microsoft.Synapse
 
 > [!div class="mx-tableFixed"]
-> | Resource type | Resource group | Subscription |
+> | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | environments | Yes | Yes |
-> | environments / eventsources | Yes | Yes |
-> | environments / referencedatasets | Yes | Yes |
+> | workspaces | 否 | 否 |
+> | workspaces / bigdatapools | 否 | 否 |
+> | workspaces / sqlpools | 否 | 否 |
+
+<a name="microsofttimeseriesinsights"></a>
+<a name="Microsoft.TimeSeriesInsights"></a>
+
+## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 资源组 | 订阅 |
+> | ------------- | ----------- | ---------- |
+> | environments | 是 | 是 |
+> | environments/eventsources | 是 | 是 |
+> | environments/referencedatasets | 是 | 是 |
 
 <!-- Not Available on ## Microsoft.Token-->
 <!-- Not Available on ## Microsoft.VirtualMachineImages-->

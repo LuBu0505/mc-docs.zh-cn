@@ -5,21 +5,17 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 09/15/2020
+ms.date: 10/20/2020
 title: 使用 Azure CLI 为 DBFS 配置客户管理的密钥 - Azure Databricks
 description: 了解如何使用 Azure CLI 配置自己的加密密钥以加密 DBFS 存储帐户。
-ms.openlocfilehash: 648bfcb504c8cbe17b944ace5ede915040d48740
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: 19f0b678d59ded2167256446b42ea7e5745722e4
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937703"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060142"
 ---
 # <a name="configure-customer-managed-keys-for-dbfs-using-the-azure-cli"></a>使用 Azure CLI 为 DBFS 配置客户管理的密钥
-
-> [!IMPORTANT]
->
-> 此功能目前以[公共预览版](../../../release-notes/release-types.md)提供。
 
 > [!NOTE]
 >

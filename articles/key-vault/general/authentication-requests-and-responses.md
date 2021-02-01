@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 origin.date: 09/15/2020
-ms.date: 11/27/2020
+ms.date: 01/14/2021
 ms.author: v-tawe
-ms.openlocfilehash: 3c06ec6cb98e5e83120eb6d776d845a480f20c90
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 2297cae39c19d715e6cb5d4841b95988cb09611f
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300762"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059941"
 ---
 # <a name="authentication-requests-and-responses"></a>身份验证、请求和响应
 

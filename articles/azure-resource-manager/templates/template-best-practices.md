@@ -4,16 +4,16 @@ description: 介绍创作 Azure 资源管理器模板（ARM 模板）的建议�
 ms.topic: conceptual
 origin.date: 12/01/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 08/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: f82548059c0a063c1a099e16410b5002026f9878
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 4aeb9d17653cd36692fcfcdbee4cd3f9f3dc3382
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021339"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063620"
 ---
 # <a name="arm-template-best-practices"></a>ARM 模板最佳做法
 
@@ -31,7 +31,7 @@ ms.locfileid: "98021339"
 * 64 个输出值
 * 模板表达式中不超过 24,576 个字符
 
-通过使用嵌套模板，可超出某些模板限制。 有关详细信息，请参阅[在部署 Azure 资源时使用链接模板和嵌套模板](linked-templates.md)。 若要减少参数、变量或输出的数量，可以将几个值合并为一个对象。 上获取。
+通过使用嵌套模板，可超出某些模板限制。 有关详细信息，请参阅[在部署 Azure 资源时使用链接模板和嵌套模板](linked-templates.md)。 若要减少参数、变量或输出的数量，可以将几个值合并为一个对象。
 
 <!--Not Available on [Objects as parameters](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters)-->
 
@@ -68,7 +68,7 @@ ms.locfileid: "98021339"
     }
     ```
 
-* 为不敏感的参数定义默认值。 通过指定默认值，可更轻松地部署模板，并同时为模板用户提供了一个合适值的示例。 默认参数值须对默认部署配置中的所有用户有效。 
+* 为不敏感的参数定义默认值。 通过指定默认值，可更轻松地部署模板，并同时为模板用户提供了一个合适值的示例。 默认参数值须对默认部署配置中的所有用户有效。
 
     ```json
     "parameters": {
@@ -162,6 +162,8 @@ ms.locfileid: "98021339"
 ## <a name="api-version"></a>API 版本
 
 将 `apiVersion` 属性设置为资源类型的硬编码 API 版本。 创建新模板时，建议使用资源类型的最新 API 版本。
+
+<!--Not Available on [template reference](https://docs.microsoft.com/azure/templates/)-->
 
 当模板按预期方式工作时，建议你继续使用同一个 API 版本。 使用同一个 API 版本，你无需担心可能会在更高版本中引入的中断性变更。
 
@@ -296,4 +298,4 @@ ARM 模板测试工具包是一个脚本，用于检查模板是否使用建议�
 * 有关模板文件结构的信息，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 * 有关如何生成在所有 Azure 云环境中工作的模板的建议，请参阅[开发用于实现云一致性的 ARM 模板](templates-cloud-consistency.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

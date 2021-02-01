@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: integration
 ms.topic: article
 origin.date: 10/18/2017
-ms.date: 12/11/2020
+ms.date: 01/18/2021
 ms.author: v-johya
-ms.openlocfilehash: 1dc7cad95e993126df84d764c6e14e10fdd33b39
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: b743882c4fa5c7427add76af7e9c7d23c17de12f
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97104682"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751083"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>在 Azure API 管理中使用托管标识
 
@@ -39,7 +39,6 @@ ms.locfileid: "97104682"
 3. 在“系统分配”选项卡中，将“状态”切换为“启用”  。 选择“保存” 。
 
     :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="用于启用系统分配的托管标识的选项" border="true":::
-
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -119,7 +118,6 @@ ms.locfileid: "97104682"
 ```
 
 `tenantId` 属性标识该标识所属的 Azure AD 租户。 `principalId` 属性是实例的新标识的唯一标识符。 在 Azure AD 中，服务主体的名称与你为 API 管理实例提供的名称相同。
-
 
 > [!NOTE]
 > API 管理实例可以同时具有系统分配的标识和用户分配的标识。 在这种情况下，`type` 属性将为 `SystemAssigned,UserAssigned`。
@@ -267,7 +265,6 @@ ms.locfileid: "97104682"
 
 可以使用系统分配的标识通过 [authentication-managed-identity](api-management-authentication-policies.md#ManagedIdentity) 策略向后端进行身份验证。
 
-
 ## <a name="create-a-user-assigned-managed-identity"></a>创建用户分配的托管标识
 
 > [!NOTE]
@@ -362,7 +359,7 @@ ms.locfileid: "97104682"
                 "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]": {}
              }
         },
-        "dependsOn": [       
+         "dependsOn": [       
           "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]"
         ]
     }]
@@ -416,7 +413,6 @@ ms.locfileid: "97104682"
 ### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>使用用户分配的标识向后端进行身份验证
 
 可以使用用户分配的标识通过 [authentication-managed-identity](api-management-authentication-policies.md#ManagedIdentity) 策略向后端进行身份验证。
-
 
 ## <a name="remove-an-identity"></a><a name="remove"></a>删除标识
 

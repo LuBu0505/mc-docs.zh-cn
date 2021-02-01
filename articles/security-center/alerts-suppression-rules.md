@@ -5,15 +5,15 @@ author: Johnnytechn
 manager: rkarlin
 services: security-center
 ms.author: v-johya
-ms.date: 01/06/2021
+ms.date: 01/19/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: de3f0f70f62fde1ed6cd1e9996f8f7076a6a1bbb
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 18018a363137afe028759aafd27033aafafa0a99
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023066"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751344"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>禁止来自 Azure Defender 的警报
 
@@ -137,11 +137,4 @@ REST API 中抑制规则的相关 HTTP 方法是：
 - **DELETE**：删除现有规则（但不会更改它已消除的警报的状态）。
 
 有关完整的详细信息和使用示例，请参阅 [API 文档](https://docs.microsoft.com/rest/api/securitycenter/)。 
-
-
-## <a name="next-steps"></a>后续步骤
-
-本文介绍了 Azure 安全中心中自动取消不需要的警报的抑制规则。
-
-有关 Azure Defender 安全警报的详细信息，请参阅以下页面：
 

@@ -4,14 +4,14 @@ description: 配置 Azure 容器注册表任务（ACR 任务）以使用 Azure �
 ms.topic: article
 origin.date: 07/06/2020
 author: rockboyfor
-ms.date: 11/30/2020
+ms.date: 02/01/2021
 ms.author: v-yeche
-ms.openlocfilehash: 9d1143a4d3c3b2bac404136b64b149287e1bfcea
-ms.sourcegitcommit: ea52237124974eda84f8cef4bf067ae978d7a87d
+ms.openlocfilehash: ad1e74db058e9cc35609d7218bcb30f9e013fd6b
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024557"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063519"
 ---
 <!--Verify successfully-->
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>使用 Azure 托管标识在 ACR 任务中进行跨注册表的身份验证 
@@ -47,8 +47,8 @@ ms.locfileid: "96024557"
 
 ```azurecli
 az acr import --name mybaseregistry \
-  --source dockerhub.azk8s.cn/library/node:9-alpine \
-  --image baseimages/node:9-alpine 
+  --source dockerhub.azk8s.cn/library/node:15-alpine \
+  --image baseimages/node:15-alpine 
 ```
 
 ## <a name="define-task-steps-in-yaml-file"></a>在 YAML 文件中定义任务步骤
@@ -194,8 +194,8 @@ Waiting for an agent...
 2019/06/14 22:47:45 Launching container with name: acb_step_0
 Sending build context to Docker daemon   25.6kB
 Step 1/6 : ARG REGISTRY_NAME
-Step 2/6 : FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
-9-alpine: Pulling from baseimages/node
+Step 2/6 : FROM ${REGISTRY_NAME}/baseimages/node:15-alpine
+15-alpine: Pulling from baseimages/node
 [...]
 Successfully built 41b49a112663
 Successfully tagged myregistry.azurecr.cn/hello-world:cf10
@@ -215,7 +215,7 @@ The push refers to repository [myregistry.azurecr.cn/hello-world]
   runtime-dependency:
     registry: mybaseregistry.azurecr.cn
     repository: baseimages/node
-    tag: 9-alpine
+    tag: 15-alpine
     digest: sha256:e8e92cffd464fce3be9a3eefd1b65dc9cbe2484da31c11e813a4effc6105c00f
   git:
     git-head-revision: 0f988779c97fe0bfc7f2f74b88531617f4421643
@@ -257,4 +257,4 @@ cf10
 [az-acr-task-credential-add]: https://docs.azure.cn/cli/acr/task/credential#az_acr_task_credential_add
 [az-group-create]: https://docs.azure.cn/cli/group?#az_group_create
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

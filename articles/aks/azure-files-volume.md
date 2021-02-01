@@ -6,16 +6,16 @@ services: container-service
 ms.topic: article
 origin.date: 03/01/2019
 author: rockboyfor
-ms.date: 11/30/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1da73ee9baaf6537f647c0a137a82a8183f07b54
-ms.sourcegitcommit: ea52237124974eda84f8cef4bf067ae978d7a87d
+ms.openlocfilehash: 2f4a03f278325580f83c2673e970b636c41f52de
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024620"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063597"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中通过 Azure 文件共享手动创建并使用卷
 
@@ -150,7 +150,6 @@ spec:
     storage: 5Gi
   accessModes:
     - ReadWriteMany
-  storageClassName: azurefile
   azureFile:
     secretName: azure-secret
     shareName: aksshare
@@ -178,7 +177,6 @@ spec:
     storage: 5Gi
   accessModes:
     - ReadWriteMany
-  storageClassName: azurefile
   azureFile:
     secretName: azure-secret
     shareName: aksshare
@@ -202,7 +200,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: azurefile
+  storageClassName: ""
   resources:
     requests:
       storage: 5Gi
@@ -244,7 +242,7 @@ azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 
 <!-- LINKS - external -->
 
-<!--Not Available on [kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create-->
+<!--NOT AVAILABLE ON [kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create-->
 
 [kubernetes-files]: https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_file/README.md
 [kubernetes-secret]: https://kubernetes.io/docs/concepts/configuration/secret/
@@ -264,4 +262,4 @@ azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

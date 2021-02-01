@@ -7,15 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
-origin.date: 10/01/2020
-ms.date: 11/27/2020
+ms.date: 01/27/2021
 ms.author: v-tawe
-ms.openlocfilehash: 8451e305f18cfe15ae78cb4068c105d167ae6758
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 462ca1bf8cc920adbc2b984b9ecb07bff9c8a11b
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300587"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058456"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>Azure Key Vault 的新增功能
 
@@ -52,9 +51,9 @@ Azure Monitor for Key Vault 现在为预览版。  Azure Monitor 提供 Key Vaul
 
 Key Vault "bring your own key" (BYOK) is now generally available. See the [Azure Key Vault BYOK specification](../keys/byok-specification.md), and learn how to [Import HSM-protected keys to Key Vault (BYOK)](../keys/hsm-protected-keys-byok.md). -->
 
-<!-- ## March 2020
+## <a name="march-2020"></a>2020 年 3 月
 
-Private endpoints now available in preview. Azure Private Link Service enables you to access Azure Key Vault and Azure hosted customer/partner services over a Private Endpoint in your virtual network.  Learn how to [Integrate Key Vault with Azure Private Link](private-link-service.md). -->
+专用终结点现在提供预览版。 使用 Azure 专用链接服务，可以通过虚拟网络中的专用终结点访问 Azure Key Vault 和 Azure 托管的客户服务/合作伙伴服务。  了解如何[将 Key Vault 与 Azure 专用链接集成](private-link-service.md)。
 
 ## <a name="2019"></a>2019
 
@@ -70,8 +69,6 @@ Private endpoints now available in preview. Azure Private Link Service enables y
 
 - 与 Azure Functions 集成。 有关利用 [Azure Functions](../../azure-functions/index.yml) 进行密钥保管库操作的示例方案，请参阅[自动轮换机密](../secrets/tutorial-rotation.md)。
 - [Azure Key Vault 的虚拟网络服务终结点](overview-vnet-service-endpoints.md)。
-
-<!-- - [Integration with Azure Databricks](https://docs.microsoft.com/azure/databricks/scenarios/store-secrets-azure-key-vault). With this, Azure Databricks now supports two types of secret scopes: Azure Key Vault-backed and Databricks-backed. For more information, see [Create an Azure Key Vault-backed secret scope](https://docs.microsoft.com/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope) -->
 
 ## <a name="2016"></a>2016
 

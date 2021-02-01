@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 origin.date: 05/04/2020
-ms.date: 11/23/2020
-ms.openlocfilehash: 2fc7b930d8c457b4a4b6da8d3a0d2035bc38c6d4
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.date: 02/01/2021
+ms.openlocfilehash: 82625ea67b75a1365a4a01beb0c0f66be55a7ad8
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431965"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059265"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>使用变更数据捕获 (CDC)，以增量方式将 Azure SQL 托管实例中的数据加载到 Azure 存储
 
@@ -76,7 +76,7 @@ ms.locfileid: "96431965"
 
     > [!NOTE]
     > - 将&lt;源架构名称&gt;替换为你的 Azure SQL MI 的架构，其中包含 customers 表。
-    > - 变更数据捕获在更改要跟踪的表的事务中不做任何事情。 而是将插入、更新和删除操作写入事务日志中。 如果没有定期系统地清除数据，更改表中存储的数据将会变得非常大。 有关详细信息，请参阅[对数据库启用变更数据捕获](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?enable-change-data-capture-for-a-database=&view=sql-server-ver15)
+    > - 变更数据捕获在更改要跟踪的表的事务中不做任何事情。 而是将插入、更新和删除操作写入事务日志中。 如果没有定期系统地清除数据，更改表中存储的数据将会变得非常大。 有关详细信息，请参阅[对数据库启用变更数据捕获](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server#enable-change-data-capture-for-a-database)
 
     ```sql
     EXEC sys.sp_cdc_enable_db 
@@ -119,7 +119,7 @@ ms.locfileid: "96431965"
 4. 选择要在其中创建数据工厂的 Azure **订阅**。
 5. 对于 **资源组**，请执行以下步骤之一：
 
-   1. 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
+   1. 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
    2. 选择“新建”，并输入资源组的名称。   
          
     若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
@@ -194,7 +194,7 @@ ms.locfileid: "96431965"
 3. 在“设置属性”选项卡中，设置数据集名称和连接信息：
  
    1. 对于“链接服务”，请选择“AzureSqlMI1”。
-   2. 对于“表名称”，请选择“[dbo].[dbo_customers_CT]”。  注意：对 customers 表启用 CDC 时，将自动创建此表。 更改的数据永远不会直接从该表查询获得，而是通过 [CDC 函数](https://docs.microsoft.com/sql/relational-databases/system-functions/change-data-capture-functions-transact-sql?view=sql-server-ver15)提取获得。
+   2. 对于“表名称”，请选择“[dbo].[dbo_customers_CT]”。  注意：对 customers 表启用 CDC 时，将自动创建此表。 更改的数据永远不会直接从该表查询获得，而是通过 [CDC 函数](https://docs.microsoft.com/sql/relational-databases/system-functions/change-data-capture-functions-transact-sql)提取获得。
 
    ![源连接](./media/tutorial-incremental-copy-change-data-capture-feature-portal/source-dataset-configuration.png)
 

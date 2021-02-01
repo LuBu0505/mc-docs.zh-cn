@@ -5,15 +5,15 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 09/16/2020
+ms.date: 11/17/2020
 title: 可视化效果 - Azure Databricks
 description: 了解 Azure Databricks 笔记本支持的各种类型的可视化效果。
-ms.openlocfilehash: 95f3fe809dd9bd101a650fb4a256fbe10b638d8c
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 13b5cbda8dc265d8fab5530aea98940cd2fd46b1
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106704"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060150"
 ---
 # <a name="visualizations"></a>可视化效果
 
@@ -88,9 +88,9 @@ diamonds_df.select("color","price").groupBy("color").agg(avg("price")).display()
 `display` 以富 HTML 的形式呈现包含图像数据类型的列。 `display` 尝试为匹配 Spark [ImageSchema](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.ml.image.ImageSchema$@columnSchema:org.apache.spark.sql.types.StructType) 的 `DataFrame` 列呈现图像缩略图。
 对于通过 [readImages](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.ml.image.ImageSchema$@readImages(path:String,sparkSession:org.apache.spark.sql.SparkSession,recursive:Boolean,numPartitions:Int,dropImageFailures:Boolean,sampleRatio:Double,seed:Long):org.apache.spark.sql.DataFrame) 函数成功读入的任何图像，可以正常运行缩略图呈现。 对于通过其他方式生成的图像值，Azure Databricks 支持呈现 1、3 或 4 通道图像（每个通道由一个字节组成），但存在以下约束：
 
-* **单通道图像** ：`mode` 字段必须等于 0。 `height`、`width` 和 `nChannels` 字段必须准确描述 `data` 字段中的二进制图像数据
-* **三通道图像** ：`mode` 字段必须等于 16。 `height`、`width` 和 `nChannels` 字段必须准确描述 `data` 字段中的二进制图像数据。 `data` 字段必须包含三字节区块形式的像素数据，每个像素的通道顺序为 `(blue, green, red)`。
-* **四通道图像** ：`mode` 字段必须等于 24。 `height`、`width` 和 `nChannels` 字段必须准确描述 `data` 字段中的二进制图像数据。 `data` 字段必须包含四字节区块形式的像素数据，每个像素的通道顺序为 `(blue, green, red, alpha)`。
+* **单通道图像**：`mode` 字段必须等于 0。 `height`、`width` 和 `nChannels` 字段必须准确描述 `data` 字段中的二进制图像数据
+* **三通道图像**：`mode` 字段必须等于 16。 `height`、`width` 和 `nChannels` 字段必须准确描述 `data` 字段中的二进制图像数据。 `data` 字段必须包含三字节区块形式的像素数据，每个像素的通道顺序为 `(blue, green, red)`。
+* **四通道图像**：`mode` 字段必须等于 24。 `height`、`width` 和 `nChannels` 字段必须准确描述 `data` 字段中的二进制图像数据。 `data` 字段必须包含四字节区块形式的像素数据，每个像素的通道顺序为 `(blue, green, red, alpha)`。
 
 ##### <a name="example"></a>示例
 
@@ -166,7 +166,7 @@ display(streaming_df.groupBy().count(), trigger = Trigger.ProcessingTime("5 seco
 > [!div class="mx-imgBorder"]
 > ![条形图图标](../../_static/images/notebooks/diamonds-bar-chart.png)
 
-若要选择其他绘图类型，请单击 ![下拉按钮](../../_static/images/button-down.png) （位于条形图 ![图表按钮](../../_static/images/notebooks/chart-button.png) 右侧），然后选择绘图类型。
+若要选择其他绘图类型，请单击 ![下拉按钮](../../_static/images/icons/button-down.png) （位于条形图 ![图表按钮](../../_static/images/notebooks/chart-button.png) 右侧），然后选择绘图类型。
 
 #### <a name="chart-toolbar"></a>图表工具栏
 
@@ -211,7 +211,7 @@ Azure Databricks 支持图表中的两种颜色一致性：系列集和全局。
 
 ##### <a name="residuals"></a>残差
 
-对于线性回归和逻辑回归，`display` 支持呈现[拟合与残差](https://en.wikipedia.org/wiki/Errors_and_residuals)绘图。 若要获取此绘图，请提供模型和数据帧。
+对于线性回归和逻辑回归，``display`` 支持呈现[拟合与残差](https://en.wikipedia.org/wiki/Errors_and_residuals)绘图。 若要获取此绘图，请提供模型和数据帧。
 
 以下示例对城市人口进行线性回归以容纳售价数据，然后显示残差与拟合数据。
 
@@ -220,14 +220,15 @@ Azure Databricks 支持图表中的两种颜色一致性：系列集和全局。
 pop_df = spark.read.csv("/databricks-datasets/samples/population-vs-price/data_geo.csv", header="true", inferSchema="true")
 
 # Drop rows with missing values and rename the feature and label columns, replacing spaces with _
-pop_df = data.dropna() # drop rows with missing values
-exprs = [col(column).alias(column.replace(' ', '_')) for column in data.columns]
+from pyspark.sql.functions import col
+pop_df = pop_df.dropna() # drop rows with missing values
+exprs = [col(column).alias(column.replace(' ', '_')) for column in pop_df.columns]
 
 # Register a UDF to convert the feature (2014_Population_estimate) column vector to a VectorUDT type and apply it to the column.
 from pyspark.ml.linalg import Vectors, VectorUDT
 
 spark.udf.register("oneElementVec", lambda d: Vectors.dense([d]), returnType=VectorUDT())
-tdata = data.select(*exprs).selectExpr("oneElementVec(2014_Population_estimate) as features", "2015_median_sales_price as label")
+tdata = pop_df.select(*exprs).selectExpr("oneElementVec(2014_Population_estimate) as features", "2015_median_sales_price as label")
 
 # Run a linear regression
 from pyspark.ml.regression import LinearRegression
@@ -244,47 +245,48 @@ display(modelA, tdata)
 
 ##### <a name="roc-curves"></a>ROC 曲线
 
-对于逻辑回归，`display` 支持呈现 [ROC](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) 曲线。 若要获取此绘图，请提供模型、用作 `fit` 方法的输入的已准备数据，以及参数 `"ROC"`。
+对于逻辑回归，``display`` 支持呈现 [ROC](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) 曲线。 若要获取此绘图，请提供模型、用作 ``fit`` 方法的输入的已准备数据，以及参数 ``"ROC"``。
 
 以下示例开发一个分类器，用于基于个人的各种属性预测此人在一年中的收入是 <=50K 还是 >50K。 成年人数据集派生自人口统计数据，包括有关 48842 个人及其每年收入的信息。
 
-```sql
-CREATE TABLE adult (
-  age DOUBLE,
-  workclass STRING,
-  fnlwgt DOUBLE,
-  education STRING,
-  education_num DOUBLE,
-  marital_status STRING,
-  occupation STRING,
-  relationship STRING,
-  race STRING,
-  sex STRING,
-  capital_gain DOUBLE,
-  capital_loss DOUBLE,
-  hours_per_week DOUBLE,
-  native_country STRING,
-  income STRING)
-USING CSV
-OPTIONS (path "/databricks-datasets/adult/adult.data", header "true")
-```
+本部分中的示例代码采用独热编码。 函数已重命名为 Apache Spark 3.0，因此代码会略有不同，具体取决于所使用的 Databricks Runtime 的版本。 如果使用的是 Databricks Runtime 6.x 或更低版本，则必须按照代码注释所述调整代码中的两行。
 
 ```python
-dataset = spark.table("adult")
 
-# Use One-Hot Encoding to convert all categorical variables into binary vectors.
+# This code uses one-hot encoding to convert all categorical variables into binary vectors.
+
+schema = """`age` DOUBLE,
+`workclass` STRING,
+`fnlwgt` DOUBLE,
+`education` STRING,
+`education_num` DOUBLE,
+`marital_status` STRING,
+`occupation` STRING,
+`relationship` STRING,
+`race` STRING,
+`sex` STRING,
+`capital_gain` DOUBLE,
+`capital_loss` DOUBLE,
+`hours_per_week` DOUBLE,
+`native_country` STRING,
+`income` STRING"""
+
+dataset = spark.read.csv("/databricks-datasets/adult/adult.data", schema=schema)
 
 from pyspark.ml import Pipeline
-from pyspark.ml.feature import OneHotEncoderEstimator, StringIndexer, VectorAssembler
+from pyspark.ml.feature import OneHotEncoder, StringIndexer, VectorAssembler
+# If you are using Databricks Runtime 6.x or below, comment out the preceding line and uncomment the following line.
+# from pyspark.ml.feature import OneHotEncoderEstimator, StringIndexer, VectorAssembler
 categoricalColumns = ["workclass", "education", "marital_status", "occupation", "relationship", "race", "sex", "native_country"]
 
-stages = [] # stages in our Pipeline
+stages = [] # stages in the Pipeline
 for categoricalCol in categoricalColumns:
     # Category Indexing with StringIndexer
     stringIndexer = StringIndexer(inputCol=categoricalCol, outputCol=categoricalCol + "Index")
     # Use OneHotEncoder to convert categorical variables into binary SparseVectors
-    # encoder = OneHotEncoderEstimator(inputCol=categoricalCol + "Index", outputCol=categoricalCol + "classVec")
-    encoder = OneHotEncoderEstimator(inputCols=[stringIndexer.getOutputCol()], outputCols=[categoricalCol + "classVec"])
+    encoder = OneHotEncoder(inputCols=[stringIndexer.getOutputCol()], outputCols=[categoricalCol + "classVec"])
+    # If you are using Databricks Runtime 6.x or below, comment out the preceding line and uncomment the following line.
+    # encoder = OneHotEncoderEstimator(inputCols=[stringIndexer.getOutputCol()], outputCols=[categoricalCol + "classVec"])
     # Add stages.  These are not run here, but will run all at once later on.
     stages += [stringIndexer, encoder]
 

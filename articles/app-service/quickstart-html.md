@@ -5,19 +5,19 @@ author: msangapu-msft
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.topic: quickstart
 origin.date: 08/23/2019
-ms.date: 10/19/2020
+ms.date: 02/01/2021
 ms.author: v-tawe
-ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 14f983f0aa4d6a9a4b006d43325dd1c649f596bd
-ms.sourcegitcommit: e2e418a13c3139d09a6b18eca6ece3247e13a653
+ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
+ms.openlocfilehash: fd181f9faec8eeacfe940c3d2ab23e5967a83f8d
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170534"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059086"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>在 Azure 中创建静态 HTML Web 应用
 
-[Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。  本快速入门演示如何将基本 HTML+CSS 站点部署到 Azure 应用服务。 你将使用 [Azure CLI](/cli/install-azure-cli) 在本地完成本快速入门
+[Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。 本快速入门演示如何将基本 HTML+CSS 站点部署到 Azure 应用服务。 你将使用 [Azure CLI](/cli/install-azure-cli) 在本地完成本快速入门
 
 ![示例应用主页](media/quickstart-html/hello-world-in-browser-az.png)
 
@@ -59,11 +59,11 @@ az webapp up --location chinaeast2 --name <app_name> --html
 
 - 创建一个采用指定名称的应用。
 
-- [使用 Zip](/app-service/deploy-zip) 将文件从当前工作目录部署到 Web 应用。
+- [使用 Zip](./deploy-zip.md) 将文件从当前工作目录部署到 Web 应用。
 
 此命令可能需要花费几分钟时间运行。 运行时，该命令会显示类似于以下示例的信息：
 
-<pre>
+```output
 {
   "app_url": "https://&lt;app_name&gt;.chinacloudsites.cn",
   "location": "China East",
@@ -75,7 +75,7 @@ az webapp up --location chinaeast2 --name <app_name> --html
   "src_path": "/home/&lt;username&gt;/quickstart/html-docs-hello-world ",
   &lt; JSON data removed for brevity. &gt;
 }
-</pre>
+```
 
 记下 `resourceGroup` 值。 需要在[清理资源](#clean-up-resources)部分使用它。
 
@@ -103,7 +103,7 @@ az webapp up --location chinaeast2 --name <app_name> --html
 az webapp up --location chinaeast2 --name <app_name> --html
 ```
 
-完成部署后，切换回**浏览到应用**步骤中打开的浏览器窗口，然后刷新页面。
+完成部署后，切换回 **浏览到应用** 步骤中打开的浏览器窗口，然后刷新页面。
 
 ![已更新的示例应用主页](media/quickstart-html/hello-azure-in-browser-az.png)
 

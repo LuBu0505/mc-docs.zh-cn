@@ -1,19 +1,19 @@
 ---
 title: Azure 云服务的虚拟机大小 | Microsoft 文档
 description: 列出 Azure 云服务 Web 角色和辅助角色的不同虚拟机大小（及 ID）。
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 05/25/2020
+ms.service: cloud-services
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: 2eb11cd28ce2a1174c1c001eff549e27da7f7168
-ms.sourcegitcommit: 7429daf26cff014b040f69cdae75bdeaea4f4e93
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: f857a3e9258f73354021faaafc9e862e15b0568c
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83991672"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058804"
 ---
 # <a name="sizes-for-cloud-services"></a>云服务的大小
 本主题介绍云服务角色实例（Web 角色和辅助角色）的可用大小和选项。 此外，还提供了在计划使用这些资源时要考虑的部署注意事项。 每个大小都具有会放入[服务定义文件](cloud-services-model-and-package.md#csdef)中的 ID。 [云服务定价](https://www.azure.cn/pricing/details/cloud-services/)页提供每种大小的价格。
@@ -187,7 +187,5 @@ Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceS
 
 ## <a name="next-steps"></a>后续步骤
 * 了解 [Azure 订阅和服务的限制、配额和约束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
-
-
 
 

@@ -8,15 +8,15 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 origin.date: 02/04/2020
-ms.date: 11/09/2020
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: d06aa042546b1cfd010cc2788db28daca3bc152e
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: 93a2a39e86f7c02b36627afd2a6c00d9ecb64fd0
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432019"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059097"
 ---
 # <a name="monitor-workload---azure-portal"></a>监视工作负荷 - Azure 门户
 
@@ -25,7 +25,7 @@ ms.locfileid: "96432019"
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅：如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
-- SQL 池：我们将收集 SQL 池的日志。 如果尚未预配 SQL 池，请参阅[创建 SQL 池](load-data-from-azure-blob-storage-using-polybase.md)中的说明。
+- SQL 池：我们将收集 SQL 池的日志。 如果尚未预配 SQL 池，请参阅[创建 SQL 池](./load-data-from-azure-blob-storage-using-copy.md)中的说明。
 
 ## <a name="create-a-log-analytics-workspace"></a>创建 Log Analytics 工作区
 
@@ -64,7 +64,7 @@ ms.locfileid: "96432019"
 - 创建日志警报
 - 将查询结果固定到仪表板
 
-有关日志查询功能的详细信息，请访问以下[文档](../../azure-monitor/log-query/query-language.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+有关日志查询功能的详细信息，请访问以下[文档](/data-explorer/kusto/query/)。
 
 ![Log Analytics 工作区编辑器](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspace_editor.png)
 

@@ -4,17 +4,17 @@ description: 本教程介绍如何使用 ASP.NET Core 前端和 Reliable Service
 ms.topic: tutorial
 origin.date: 07/10/2019
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 09/07/2020
 ms.author: v-yeche
 ms.custom: mvc, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 0664d50d54be5efc40f8fe2d93b775477144be6e
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: 126b2c0c40921750fdf117ebc93def71448b97b9
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97105191"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059432"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>教程：使用 ASP.NET Core Web API 前端服务和有状态后端服务创建并部署应用程序
 

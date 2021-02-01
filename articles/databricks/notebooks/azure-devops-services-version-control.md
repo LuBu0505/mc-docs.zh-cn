@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 08/12/2020
 title: Azure DevOps Services 版本控制 - Azure Databricks
 description: 了解如何将 Azure DevOps 设置为 Git 提供程序。
-ms.openlocfilehash: 7ccdeea3bebea261eae2df24541c6977631a2d24
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: da15577f64e629e11b3a862ee6a7e6058209d110
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106795"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058487"
 ---
 # <a name="azure-devops-services-version-control"></a>Azure DevOps Services 版本控制
 
@@ -25,7 +25,7 @@ Azure DevOps 是一系列服务，这些服务为 DevOps 的五个核心做法�
 
 ## <a name="enable-and-disable-git-versioning"></a>启用和禁用 Git 版本控制
 
-在默认情况下，版本控制处于启用状态。 若要切换此设置，请参阅[管理 Git 中的笔记本版本控制功能](../administration-guide/workspace/notebooks.md#manage-git-versioning)。 如果禁用了 Git 版本控制，则“用户设置”屏幕中不会有“Git 集成”选项卡 。
+默认情况下会启用版本控制。 若要切换此设置，请参阅[管理 Git 中的笔记本版本控制功能](../administration-guide/workspace/notebooks.md#manage-git-versioning)。 如果禁用了 Git 版本控制，则“用户设置”屏幕中不会有“Git 集成”选项卡 。
 
 ## <a name="get-started"></a>入门
 
@@ -33,7 +33,7 @@ Azure DevOps 是一系列服务，这些服务为 DevOps 的五个核心做法�
 
 在 Azure Databricks 中，在“用户设置”页上将 Git 提供程序设置为 Azure DevOps Services：
 
-1. 单击屏幕右上方的“用户”图标 ![帐户图标](../_static/images/account-settings/account-icon.png)，然后选择“用户设置”。
+1. 单击屏幕右上方的“用户”图标 ![帐户图标](../_static/images/icons/account-icon.png)，然后选择“用户设置”。
 
    > [!div class="mx-imgBorder"]
    > 帐户设置![](../_static/images/account-settings/user-settings.png)

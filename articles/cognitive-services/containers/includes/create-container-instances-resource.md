@@ -7,14 +7,14 @@ author: Johnnytechn
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 12/31/2020
+ms.date: 01/19/2021
 ms.author: v-johya
-ms.openlocfilehash: d7a4a63537a41c1bf23d939a659e395edeed11d5
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: ab3c57be806a1fea4bc09ff60a63585877fc59ce
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857603"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98758158"
 ---
 ## <a name="create-an-azure-container-instance-resource-using-the-azure-portal"></a>通过 Azure 门户创建 Azure 容器实例资源
 
@@ -28,8 +28,8 @@ ms.locfileid: "97857603"
     |资源组|选择可用的资源组，或者创建一个新的，例如 `cognitive-services`。|
     |容器名称|输入一个名称，例如 `cognitive-container-instance`。 此名称必须小写。|
     |位置|选择要部署的区域。|
-    |映像类型|如果容器映像存储在不需凭据的容器注册表中，请选择 `Public`。 如果访问容器映像时需要凭据，请选择 `Private`。 请参阅[容器存储库和映像](../../cognitive-services-container-support.md#container-repositories-and-images)，详细了解容器映像是 `Public` 还是 `Private`（“公共预览版”）。 |
-    |映像名称|输入认知服务容器位置。 位置是用作 `docker pull` 命令参数的项。 请参阅[容器存储库和映像](../../cognitive-services-container-support.md#container-repositories-and-images)，获取可用的映像名称及其相应的存储库。<br><br>映像名称必须完全限定，并指定三个部分。 首先是容器注册表，接着是存储库，最后是映像名称：`<container-registry>/<repository>/<image-name>`。<br><br>这是一个示例：`mcr.microsoft.com/azure-cognitive-services/keyphrase` 表示 Azure 认知服务存储库下 Microsoft 容器注册表中的“关键短语提取”映像。 另一示例：`containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` 表示“容器预览版”容器注册表的 Microsoft 存储库中的“语音转文本”映像。 |
+    |映像类型|如果容器映像存储在不需凭据的容器注册表中，请选择 `Public`。 如果访问容器映像时需要凭据，请选择 `Private`。 请参阅[容器存储库和映像](../container-image-tags.md)，详细了解容器映像是 `Public` 还是 `Private`（“公共预览版”）。 |
+    |映像名称|输入认知服务容器位置。 位置是用作 `docker pull` 命令参数的项。 请参阅[容器存储库和映像](../container-image-tags.md)，获取可用的映像名称及其相应的存储库。<br><br>映像名称必须完全限定，并指定三个部分。 首先是容器注册表，接着是存储库，最后是映像名称：`<container-registry>/<repository>/<image-name>`。<br><br>这是一个示例：`mcr.microsoft.com/azure-cognitive-services/keyphrase` 表示 Azure 认知服务存储库下 Microsoft 容器注册表中的“关键短语提取”映像。 另一示例：`containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` 表示“容器预览版”容器注册表的 Microsoft 存储库中的“语音转文本”映像。 |
     |OS 类型|`Linux`|
     |大小|对于特定的认知服务容器，请将大小更改为建议的设置：<br>2 个CPU 核心<br>4 GB
 

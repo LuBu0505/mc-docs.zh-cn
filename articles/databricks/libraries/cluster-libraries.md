@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 07/31/2020
 title: 群集库 - Azure Databricks
 description: 了解如何在 Azure Databricks 中使用和管理基于群集的库。
-ms.openlocfilehash: ffe37f3c7d43a407582b3a7eb0b436cceb38c607
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: 92a95b9ceda18bd638d2c36bb2639285a4d233ff
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937829"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060030"
 ---
 # <a name="cluster-libraries"></a>群集库
 
@@ -50,7 +50,7 @@ ms.locfileid: "91937829"
 
 #### <a name="cluster"></a>群集
 
-1. 单击“群集”图标 ![“群集”图标](../_static/images/clusters/clusters-icon.png) （在边栏中）。
+1. 单击“群集”图标 ![“群集”图标](../_static/images/icons/clusters-icon.png) （在边栏中）。
 2. 单击群集名称。
 3. 单击 **“库”** 选项卡。
 4. 单击“新安装”。
@@ -83,7 +83,7 @@ ms.locfileid: "91937829"
 
 若要在群集上安装库，请执行以下操作：
 
-1. 单击“群集”图标 ![“群集”图标](../_static/images/clusters/clusters-icon.png) （在边栏中）。
+1. 单击“群集”图标 ![“群集”图标](../_static/images/icons/clusters-icon.png) （在边栏中）。
 2. 单击群集名称。
 3. 单击 **“库”** 选项卡。
 4. 单击“新安装”。
@@ -114,7 +114,7 @@ conda install -y astropy
 
 ### <a name="cluster"></a>群集
 
-1. 单击“群集”图标 ![“群集”图标](../_static/images/clusters/clusters-icon.png) （在边栏中）。
+1. 单击“群集”图标 ![“群集”图标](../_static/images/icons/clusters-icon.png) （在边栏中）。
 2. 单击群集名称。
 3. 单击 **“库”** 选项卡。
 4. 选中要从中卸载库的群集旁边的复选框，然后依次单击“卸载”、“确认”。 状态将更改为“卸载等待重启”。
@@ -130,7 +130,7 @@ conda install -y astropy
 
 ## <a name="view-the-libraries-installed-on-a-cluster"></a>查看群集上安装的库
 
-1. 单击“群集”图标 ![“群集”图标](../_static/images/clusters/clusters-icon.png) （在边栏中）。
+1. 单击“群集”图标 ![“群集”图标](../_static/images/icons/clusters-icon.png) （在边栏中）。
 2. 单击群集名称。
 3. 单击“库”选项卡。对于每个库，该选项卡显示名称和版本、类型、[安装状态](../dev-tools/api/latest/libraries.md#managedlibrarieslibraryinstallstatus)以及源文件（如果已上传）。
 

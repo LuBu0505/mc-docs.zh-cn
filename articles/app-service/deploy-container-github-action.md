@@ -4,19 +4,19 @@ description: 了解如何使用 GitHub Actions 从 CI/CD 管道将自定义 Linu
 ms.devlang: na
 ms.topic: article
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 origin.date: 12/04/2020
 ms.testscope: yes
 ms.testdate: 01/11/2021
 ms.author: v-yeche
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: fd9b001bdeb757575ce8f95e320169fb24495360
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 491ea32a5ab9bfc912f07d2d592d227d9a85078d
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230568"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059920"
 ---
 <!--Verified Successfully-->
 <!--Pending for confirm-->
@@ -56,7 +56,7 @@ ms.locfileid: "98230568"
 1. 在“概述”页上，选择“获取发布配置文件” 。
 
     > [!NOTE]
-    > 从 2020 年 10 月起，Linux Web 应用在下载文件之前，需要将应用设置 `WEBSITE_WEBDEPLOY_USE_SCM` 设置为 `true`。 未来将删除此要求。 请参阅[在 Azure 门户中配置应用服务应用](https://docs.microsoft.com/azure/app-service/configure-common)，了解如何配置常用 Web 应用设置。  
+    > 从 2020 年 10 月起，Linux Web 应用在下载文件之前，需要将应用设置 `WEBSITE_WEBDEPLOY_USE_SCM` 设置为 `true`。 未来将删除此要求。 请参阅[在 Azure 门户中配置应用服务应用](./configure-common.md)，了解如何配置常用 Web 应用设置。  
 
 1. 保存下载的文件。 你将使用该文件的内容来创建 GitHub 机密。
 

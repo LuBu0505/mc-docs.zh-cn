@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 origin.date: 05/16/2017
-ms.date: 09/02/2020
+ms.date: 02/01/2021
 ms.author: v-tawe
-ms.openlocfilehash: ed219debcbb07665fd029231464d0fdda697806a
-ms.sourcegitcommit: 4f936264ddb502ff61623892f57067e935ef6e42
+ms.openlocfilehash: 749de4b6b87e858d7b35407c0123f07c98854c45
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89316411"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060073"
 ---
 # <a name="route-traffic-for-high-availability-of-applications---azure-powershell"></a>为实现应用程序的高可用性路由流量 - Azure PowerShell
 

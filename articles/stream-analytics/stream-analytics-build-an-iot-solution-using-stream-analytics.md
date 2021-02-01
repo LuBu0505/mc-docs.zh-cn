@@ -3,18 +3,17 @@ title: 使用 Azure 流分析生成 IoT 解决方案
 description: 使用收费站方案了解流分析 IoT 解决方案的入门教程
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 origin.date: 12/06/2018
-ms.date: 12/01/2020
+ms.date: 01/25/2021
 ms.custom: seodec18
-ms.openlocfilehash: f97770602b2fbfd2c093b798143386d27733111d
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: f13b0c889072d7d35027559955f8bb009788b238
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432573"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060001"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>使用流分析生成 IoT 解决方案
 

@@ -28,6 +28,8 @@
           href: overview-page.md
         - name: 安全建议
           href: recommendations-reference.md
+        - name: 安全警报和意向攻击链
+          href: alerts-reference.md
         - name: Microsoft 如何保护客户数据
           href: security-center-data-security.md
         - name: 权限
@@ -39,7 +41,7 @@
         - name: 适用于服务器的 Azure Defender
           displayName: VM
           href: defender-for-servers-introduction.md
-        - name: 适用于 SQL 的 Azure Defender
+        - name: Azure Defender for SQL
           displayName: database
           href: defender-for-sql-introduction.md
         - name: 适用于 Kubernetes 的 Azure Defender
@@ -72,6 +74,8 @@
       href: tutorial-security-incident.md
     - name: 提高合规性
       href: security-center-compliance-dashboard.md
+    - name: 管理安全策略
+      href: tutorial-security-policy.md
 - name: 概念
   items:
     - name: 云安全状态管理
@@ -82,11 +86,6 @@
           href: secure-score-security-controls.md
         - name: 安全性建议的概述
           href: security-center-recommendations.md
-        - name: 安全策略概述
-          href: tutorial-security-policy.md
-        - name: 内置安全策略
-          displayName: 'samples, policy'
-          href: ./policy-reference.md
         - name: 使用建议增强安全性
           href: security-center-using-recommendations.md
         - name: 安全基线
@@ -114,6 +113,8 @@
       items:
         - name: 安全警报概述
           href: security-center-alerts-overview.md
+        - name: 警报参考列表
+          href: alerts-reference.md
         - name: 警报架构
           href: alerts-schemas.md
         - name: 安全事件概述
@@ -188,6 +189,9 @@
           href: faq-vms.md
         - name: Azure Log Analytics 的现有用户
           href: faq-azure-monitor-logs.md
+    - name: 内置安全策略
+      displayName: 'samples, policy'
+      href: policy-reference.md
     - name: Azure 路线图博客
       href: 'https://updates.azure.cn/?product=security-center'
     - name: 终结点保护评估和建议

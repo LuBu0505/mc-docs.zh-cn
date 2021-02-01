@@ -6,13 +6,13 @@ origin.date: 08/12/2018
 ms.date: 12/21/2020
 ms.author: v-tawe
 ms.reviewer: sisirap
-ms.custom: seodec18
-ms.openlocfilehash: cbfbbc9a653c1c7b1d90eda7379edd24c0730b2b
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 8ee3fc060cd84e3604c355453d0d381c7bda3bf0
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022677"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059922"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>使用 ZIP 或 WAR 文件将应用部署到 Azure 应用服务
 

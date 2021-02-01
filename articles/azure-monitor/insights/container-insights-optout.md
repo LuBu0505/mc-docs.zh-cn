@@ -5,14 +5,14 @@ ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
 origin.date: 08/09/2019
-ms.date: 12/07/2020
+ms.date: 01/26/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: de5ca6d2ecc867f9845e961f3aea4b022ac1e2e2
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: 8267f2f80aea453d4ac5b2b979dd8693de4916a7
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97104880"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059901"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>如何停止使用用于容器的 Azure Monitor 监视 Azure Kubernetes 服务 (AKS)
 
@@ -139,7 +139,7 @@ az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMan
 az cloud set --name AzureChinaCloud
 az login   
 az account set --subscription "Subscription Name"
-az group deployment create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
+az deployment group create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
 ```
 
 配置更改可能需要几分钟才能完成。 完成后，系统会返回包含结果的消息，如下所示：

@@ -3,18 +3,17 @@ title: 使用 Azure 流分析作业避免服务中断
 description: 本文介绍有关生成流分析作业升级复原力的指南。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 origin.date: 06/21/2019
-ms.date: 11/16/2020
+ms.date: 01/25/2021
 ms.custom: seodec18
-ms.openlocfilehash: d8d5686ae123f9724d0c7e56ee2100ead6382ef8
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 6498f6bb90e7afc72b5bdf88912e2f7b97727644
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978293"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059105"
 ---
 # <a name="guarantee-stream-analytics-job-reliability-during-service-updates"></a>在服务更新期间保证流分析作业可靠性
 
@@ -26,6 +25,7 @@ ms.locfileid: "94978293"
 
 **同一组中** 多个区域中的部署可能会 **同时** 进行。
 <!-- Notice: Remove the India exception -->
+
 **[可用性和配对区域](../best-practices-availability-paired-regions.md)** 一文具有关于配对区域的最新信息。
 
 建议将相同的作业部署到这两个配对区域。 然后，应该[监视这些作业](./stream-analytics-set-up-alerts.md#scenarios-to-monitor)，以便在发生意外情况时收到通知。 如果其中一个作业在流分析服务更新后以[失败状态](./job-states.md)结束，则可以联系客户支持以帮助确定根本原因。 还应将任何下游使用者故障转移到正常作业输出。

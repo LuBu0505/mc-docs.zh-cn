@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 09/17/2020
 title: IP 访问列表 - Azure Databricks
 description: 了解如何将 Azure Databricks 工作区访问限制为仅限授权的 IP 地址。
-ms.openlocfilehash: f1925d26244f41a140bfdc67a807b9b3a40183ab
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: 26a7af58dfd9dfcda6de4a0df129a0fe6749d6c3
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937788"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060138"
 ---
 # <a name="ip-access-lists"></a>IP 访问列表
 
@@ -192,18 +192,9 @@ curl -X PUT -n \
 
 ## <a name="delete-an-ip-access-list"></a>删除 IP 访问列表
 
-若要删除 IP 访问列表，请调用[删除 IP 访问列表 API](../../_static/api-refs/ip-access-list-azure.yaml) (`DELETE /ip-access-lists/<list-id>`)。
+若要删除 IP 访问列表，请调用[删除 IP 访问列表 API](../../_static/api-refs/ip-access-list-azure.yaml) (``DELETE /ip-access-lists/<list-id>``)。 没有请求正文。
 
 ```bash
 curl -X DELETE -n \
   https://<databricks-instance>/api/2.0/ip-access-lists/<list-id>
-  -d '{
-    "label": "office",
-    "list_type": "ALLOW",
-    "ip_addresses": [
-        "1.1.1.1",
-        "2.2.2.2/21"
-      ],
-    "enabled": "false"
-    }'
 ```

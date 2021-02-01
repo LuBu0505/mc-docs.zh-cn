@@ -5,17 +5,17 @@ ms.service: firewall
 ms.topic: conceptual
 origin.date: 08/05/2020
 author: rockboyfor
-ms.date: 12/07/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 633dedd1d26dd853ffe870e3c2acefb88a96ecda
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 320445d3b19d15ef360064599975f92084ed5e32
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746714"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059601"
 ---
 <!--Verified successfully-->
 # <a name="azure-security-baseline-for-azure-firewall"></a>适用于 Azure 防火墙的 Azure 安全基线
@@ -278,7 +278,7 @@ Azure Monitor 日志可用于对应用程序进行常规实时监视或查看趋
 
 **指南**：使用配置了多重身份验证 (MFA) 的 PAW（特权访问工作站）来登录和配置 Azure 防火墙和相关资源。 
 
-- [了解特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) 
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
 - [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -369,7 +369,7 @@ Azure Monitor 日志可用于对应用程序进行常规实时监视或查看趋
 
 **指导**：使用单独的订阅和管理组对各个安全域（如环境类型和数据敏感度级别）实现隔离。 你可以限制对应用程序和企业环境所需 Azure 防火墙资源的访问级别。 可以通过 Azure 基于角色的访问控制来控制对 Azure 资源的访问。 
 
-<!--Not Available on - [How to create additional Azure subscriptions](/billing/billing-create-subscription)-->
+<!--Not Available on - [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)-->
 
 - [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
@@ -679,7 +679,7 @@ Azure Monitor 日志可用于对应用程序进行常规实时监视或查看趋
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。 
+**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。 
 
 - [关于建立自己的安全事件响应流程的指南](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -693,7 +693,7 @@ Azure Monitor 日志可用于对应用程序进行常规实时监视或查看趋
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。 
+**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。 
 
 此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。 
 

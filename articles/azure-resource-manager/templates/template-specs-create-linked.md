@@ -2,18 +2,18 @@
 title: 创建具有链接模板的模板规格
 description: 了解如何创建具有链接模板的模板规格。
 ms.topic: conceptual
-origin.date: 11/17/2020
+origin.date: 01/05/2021
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 01/25/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: d833a30eafdbd50e8d9df304ab9140663ceaa6fe
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: ee562c4ec620f325ffd4c3597202877ae7e51cd5
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021859"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751306"
 ---
 <!--Verified successfully-->
 <!--REASON: IS NOT PRIVATE PREVIEW TILL ON 01/06/2021-->
@@ -203,7 +203,7 @@ az ts create \
   --version "1.0.0.0" \
   --resource-group templateSpecRG \
   --location "chinanorth2" \
-  --template-file "c:\Templates\linkedTS\azuredeploy.json"
+  --template-file "<path-to-main-template>"
 ```
 
 ---
@@ -249,7 +249,7 @@ az group create \
   --name webRG \
   --location chinanorth2
 
-id = $(az template-specs show --name webSpec --resource-group templateSpecRG --version "1.0.0.0" --query "id")
+id = $(az ts show --name webSpec --resource-group templateSpecRG --version "1.0.0.0" --query "id")
 
 az deployment group create \
   --resource-group webRG \

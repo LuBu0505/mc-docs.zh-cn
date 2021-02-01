@@ -8,18 +8,18 @@ author: mssaperla
 ms.date: 09/09/2020
 title: 创建群集 - Azure Databricks
 description: 了解如何创建 Azure Databricks 群集。
-ms.openlocfilehash: 862f63eb37c24e85506978cabe39152a6c7ed07e
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: 81c94d1ea567721d06655be18ecc40503df743e2
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121808"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059973"
 ---
 # <a name="create-a-cluster"></a><a id="cluster-create"> </a><a id="create-a-cluster"> </a>创建群集
 
 可以通过两种方式使用 UI 创建群集：
 
-* 创建可由多个用户共享的 _通用群集_ 。 这些群集通常用于运行笔记本。 通用群集会保持活动状态，直到你终止它们为止。
+* 创建可由多个用户共享的 _通用群集_。 这些群集通常用于运行笔记本。 通用群集会保持活动状态，直到你终止它们为止。
 * 创建 _作业群集_ 以运行作业。 创建作业时，会创建作业群集。 作业完成后，此类群集会自动终止。
 
 本文介绍如何使用 UI 创建通用群集。 若要了解如何创建作业群集，请参阅[创建作业](../jobs.md#job-create)。
@@ -30,8 +30,8 @@ ms.locfileid: "92121808"
 
 若要使用 UI 创建群集，请执行以下操作：
 
-1. 单击“群集”图标 ![“群集”图标](../_static/images/clusters/clusters-icon.png) （在边栏中）。
-2. 单击“创建群集”按钮。 
+1. 单击“群集”图标 ![“群集”图标](../_static/images/icons/clusters-icon.png) （在边栏中）。
+2. 单击“创建群集”按钮。
 
    > [!div class="mx-imgBorder"]
    > ![创建群集](../_static/images/clusters/create.png)

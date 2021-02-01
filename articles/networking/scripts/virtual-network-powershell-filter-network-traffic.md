@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 origin.date: 05/16/2017
-ms.date: 09/02/2020
+ms.date: 02/01/2021
 ms.author: v-tawe
-ms.openlocfilehash: 487b89df4d86cc8a8c649924fbe03b7573d5d7ba
-ms.sourcegitcommit: 4f936264ddb502ff61623892f57067e935ef6e42
+ms.openlocfilehash: 3c0befa037ffc48cc93a4f509800399bc0919e5a
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89316398"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059588"
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic"></a>筛选入站和出站 VM 网络流量
 

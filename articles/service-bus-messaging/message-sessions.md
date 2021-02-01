@@ -1,19 +1,20 @@
 ---
-title: Azure 服务总线消息会话 | Azure
+title: Azure 服务总线消息会话 | Azure Docs
 description: 本文说明了如何使用会话实现对无限的相关消息序列的连贯有序处理。
+ms.service: service-bus-messaging
 ms.topic: article
 origin.date: 06/23/2020
 author: rockboyfor
-ms.date: 11/16/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: c6b811be426a4d8ac813a0abdec82b85b9fbb54b
-ms.sourcegitcommit: 39288459139a40195d1b4161dfb0bb96f5b71e8e
+ms.openlocfilehash: 42759816fb60fb0d1e7f3aa6a7f924653f2e7f5d
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94590514"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059581"
 ---
 # <a name="message-sessions"></a>消息会话
 使用 Azure 服务总线会话，可以连贯有序的方式处理一系列无限多的相关消息。 可以在“先进先出 (FIFO)”和“请求-响应”模式下使用会话。 本文展示了如何在使用服务总线时使用会话来实现这些模式。 

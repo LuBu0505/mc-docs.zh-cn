@@ -8,15 +8,15 @@ manager: rkarlin
 ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: conceptual
-ms.date: 11/13/2020
+ms.date: 01/19/2021
 ms.author: v-johya
 origin.date: 09/05/2019
-ms.openlocfilehash: bc4216b1ed68bbe197a724cea49f1fdffa4490e4
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: e603ce187c69b7bb94ec1df3b3afad3ebb0bc38a
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637841"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751137"
 ---
 # <a name="index-of-built-in-security-controls-articles-for-azure-services"></a>Azure 服务的“内置安全控制”文章索引
 
@@ -27,6 +27,6 @@ ms.locfileid: "94637841"
 
 - [Azure 应用服务](../../app-service/app-service-security-controls.md)
 - [Azure Resource Manager](../../azure-resource-manager/management/azure-resource-manager-security-controls.md)
-- [Azure 服务总线中继](../../service-bus-relay/service-bus-relay-security-controls.md)
+- [Azure 服务总线中继](../../azure-relay/service-bus-relay-security-controls.md)
 - [Azure Spring Cloud](../../spring-cloud/spring-cloud-concept-security-controls.md)
 

@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 07/22/2020
 title: 工作区库 - Azure Databricks
 description: 了解如何在 Azure Databricks 中使用和管理工作区库。
-ms.openlocfilehash: 123b28ba6f788d0c9d638b331306351a5f0bfb30
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: 584635d06978535e12de596efaea94997fbcb9f1
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937762"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058495"
 ---
 # <a name="workspace-libraries"></a>工作区库
 
@@ -114,7 +114,7 @@ ms.locfileid: "91937762"
 ## <a name="move-a-workspace-library"></a>移动工作区库
 
 1. 转到包含该库的工作区文件夹。
-2. 单击库名称右边的下拉箭头![菜单下拉箭头](../_static/images/menu-dropdown.png)，然后选择“移动”。 将显示文件夹浏览器。
+2. 单击库名称右边的下拉箭头![菜单下拉箭头](../_static/images/icons/menu-dropdown.png)，然后选择“移动”。 将显示文件夹浏览器。
 3. 单击目标文件夹。
 4. 单击“选择”。
 5. 单击“确认并移动”。

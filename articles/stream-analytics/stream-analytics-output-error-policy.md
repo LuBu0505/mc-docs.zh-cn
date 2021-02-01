@@ -3,18 +3,17 @@ title: Azure 流分析中的输出错误策略
 description: 了解 Azure 流分析中提供的输出错误处理策略。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 12/04/2018
-ms.date: 11/16/2020
+ms.date: 01/25/2021
 ms.custom: seodec18
-ms.openlocfilehash: fa28e4c5348362ee7a6a3a63215a27e5a3970e4f
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: cc8d9b84b40732283d358146ecae3ffa8eee979d
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978290"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059738"
 ---
 # <a name="azure-stream-analytics-output-error-policy"></a>Azure 流分析的输出错误策略
 本文介绍可在 Azure 流分析中配置的输出数据错误处理策略。

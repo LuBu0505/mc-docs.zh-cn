@@ -3,17 +3,16 @@ title: Azure 流分析的输出
 description: 本文介绍可用于 Azure 流分析的数据输出选项。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.custom: contperf-fy21q1
-ms.date: 01/07/2021
-ms.openlocfilehash: a329d5bc4f5ef19cdc7822eed12811c283288383
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.date: 01/25/2021
+ms.openlocfilehash: 306ad5811ad79443ac0b486306fa7f909bee0661
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023161"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059991"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Azure 流分析的输出
 

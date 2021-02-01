@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: overview
 origin.date: 09/15/2020
-ms.date: 11/27/2020
+ms.date: 01/18/2021
 ms.author: v-tawe
-ms.openlocfilehash: e32def09d4f50882b4c556e270f32bd35e9dcacd
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: e3fbd337f8f746fa88dae23d73e3333187119503
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300474"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058454"
 ---
 # <a name="about-keys"></a>关于密钥
 
@@ -47,10 +47,10 @@ Key Vault 支持 RSA、EC 和对称密钥。
 
 ### <a name="software-protected-keys"></a>受软件保护的密钥
 
-|密钥类型|保管库|托管 HSM 池|
-|--|--|--|--|
-**RSA**：“受软件保护的”RSA 密钥|FIPS 140-2 级别 1|不支持
-**EC**：“受软件保护的”椭圆曲线密钥|FIPS 140-2 级别 1|不支持
+|密钥类型|保管库|
+|--|--|
+**RSA**：“受软件保护的”RSA 密钥|FIPS 140-2 级别 1|
+**EC**：“受软件保护的”椭圆曲线密钥|FIPS 140-2 级别 1|
 ||||
 
 有关每种密钥类型、算法、操作、属性和标记的详细信息，请参阅[密钥类型、算法和操作](about-keys-details.md)。

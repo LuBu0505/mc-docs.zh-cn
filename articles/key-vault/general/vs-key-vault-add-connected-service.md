@@ -8,14 +8,14 @@ ms.service: key-vault
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: how-to
 origin.date: 08/07/2019
-ms.date: 11/27/2020
+ms.date: 01/18/2021
 ms.author: v-tawe
-ms.openlocfilehash: 2d777f5ffa1a9f17a1e906e0eecd1b5c566e3ac7
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.openlocfilehash: 11d03aa994c19baee38f8d971babe06fd611e9fb
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96430812"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058458"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>使用 Visual Studio 连接服务将 Key Vault 添加到 Web 应用程序
 

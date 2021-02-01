@@ -4,14 +4,14 @@ description: 本文提供了可帮助开发人员启用和使用 Application Ins
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 01/12/2021
+ms.date: 01/27/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 46f9c8eb448ee980b6c9280e8e694f8f69e3b490
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 894dc7ef2b06fa27fbc5f4f8c963a076104af40d
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231036"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059908"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>排查启用或查看 Application Insights Profiler 时遇到的问题
 
@@ -212,7 +212,7 @@ Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azur
 
 如果应用程序通过代理或防火墙连接到 Internet，则可能需要更新规则才能与 Profiler 服务通信。
 
-Application Insights Profiler 使用的 IP 包含在 Azure Monitor 服务标记中。 有关详细信息，请参阅[服务标记文档](/virtual-network/service-tags-overview)。
+Application Insights Profiler 使用的 IP 包含在 Azure Monitor 服务标记中。 有关详细信息，请参阅[服务标记文档](../../virtual-network/service-tags-overview.md)。
 
 
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png

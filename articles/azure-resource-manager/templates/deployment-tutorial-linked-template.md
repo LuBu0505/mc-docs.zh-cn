@@ -1,19 +1,19 @@
 ---
 title: 教程 - 部署链接模板
 description: 了解如何部署链接模板
-origin.date: 03/13/2020
+origin.date: 01/12/2021
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 08/24/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: ea8f802c7544619f5f9020585bdeab3f98c38a0d
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 538cb83942a0865f3df8099766a2d0c546daea80
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023079"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063564"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>教程：部署链接模板
 
@@ -70,7 +70,7 @@ ms.locfileid: "98023079"
   },
   "variables": {
     
-    "storageAccountName": "[concat(parameters('projectName'), 'store')]",
+    "storageAccountName": "[concat(parameters('projectName'), uniqueString(resourceGroup().id))]",
     "webAppName": "[concat(parameters('projectName'), 'WebApp')]",
     "appServicePlanName": "[concat(parameters('projectName'), 'Plan')]"
   },
@@ -232,7 +232,7 @@ ms.locfileid: "98023079"
   },
   "variables": {
     "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
-    "storageAccountName": "[concat(parameters('projectName'), 'store')]",
+    "storageAccountName": "[concat(parameters('projectName'), uniqueString(resourceGroup().id))]",
     "webAppName": "[concat(parameters('projectName'), 'WebApp')]",
     "appServicePlanName": "[concat(parameters('projectName'), 'Plan')]"
   },

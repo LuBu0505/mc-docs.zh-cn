@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: rest-api
 ms.topic: quickstart
-origin.date: 06/10/2019
-ms.date: 01/04/2021
+origin.date: 01/18/2021
+ms.date: 02/01/2021
 ms.author: v-jay
-ms.openlocfilehash: f4c1cd2049f816c980619af32aeaae105657c3cb
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 934997a6934a87841fc2cdc7bc114d33f2c1fbc6
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830295"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059810"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>快速入门：使用 REST API 创建 Azure 数据工厂和管道
 
@@ -95,7 +95,7 @@ $authHeader = @{
 $request = "https://management.chinacloudapi.cn/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}?api-version=${apiVersion}"
 $body = @"
 {
-    "name": "$dataFactoryName",
+    "name": "$factoryName",
     "location": "China East 2",
     "properties": {},
     "identity": {
@@ -300,7 +300,7 @@ $response | ConvertTo-Json
 ```
 ## <a name="create-pipeline"></a>创建管道
 
-在此示例中，此管道包含一个活动并采用两个参数 - 输入 blob 路径和输出 blob 路径。 这些参数的值是在触发/运行管道时设置的。 复制活动引用在上一步中创建的同一 blob 数据集作为输入和输出。 当该数据集用作输入数据集时，即指定了输入路径。 并且，当该数据集用作输出数据集时，即指定了输出路径。
+在本示例中，此管道包含一个“复制活动”。 复制活动引用在上一步中创建的“InputDataset”和“OutputDataset”作为输入和输出。
 
 ```powershell
 $request = "https://management.chinacloudapi.cn/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelines/Adfv2QuickStartPipeline?api-version=${apiVersion}"
@@ -380,10 +380,7 @@ $response | ConvertTo-Json
 
 ## <a name="create-pipeline-run"></a>创建管道运行
 
-在此步骤中，设置 **inputPath** 和 **outputPath** 参数的值（这些值是使用源和接收器 blob 路径的实际值在管道中指定的值），并触发管道运行。 响应正文中返回的管道运行 ID 将在后面的监视 API 中使用。
-
-在保存该文件之前，请将 **inputPath** 和 **outputPath** 的值替换为要从中复制数据和要将数据复制到的源和接收器 blob 路径。
-
+在此步骤中，将触发管道运行。 响应正文中返回的管道运行 ID 将在后面的监视 API 中使用。
 
 ```powershell
 $request = "https://management.chinacloudapi.cn/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/pipelines/Adfv2QuickStartPipeline/createRun?api-version=${apiVersion}"

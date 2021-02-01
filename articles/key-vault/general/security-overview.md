@@ -7,15 +7,15 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-origin.date: 09/30/2020
-ms.date: 01/15/2021
+origin.date: 01/05/2021
+ms.date: 01/18/2021
 ms.author: v-tawe
-ms.openlocfilehash: 035aff9f67fc7bea16ca3c256042bdaeb33bd899
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 1b360c04ecaca5ba0e90d10a8e60907d336ea2cc
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231171"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059360"
 ---
 # <a name="azure-key-vault-security-overview"></a>Azure Key Vault 安全性概述
 
@@ -95,16 +95,17 @@ Key Vault 访问策略单独授予对密钥、机密或证书的权限。 可以
 
 可以使用 [Azure 门户](assign-access-policy-portal.md)、[Azure CLI](assign-access-policy-cli.md)、[Azure PowerShell](assign-access-policy-powershell.md) 或[密钥保管库管理 REST API](https://docs.microsoft.com/rest/api/keyvault/) 为密钥保管库设置访问策略。
 
-可以通过使用[适用于 Azure 密钥保管库的虚拟网络服务终结点](overview-vnet-service-endpoints.md)来限制数据平面访问权限。 可以配置[防火墙和虚拟网络规则](network-security.md)以提供额外的安全层。
+
+可以通过使用[适用于 Azure 密钥保管库的虚拟网络服务终结点](overview-vnet-service-endpoints.md)来限制数据平面访问权限）。 可以配置[防火墙和虚拟网络规则](network-security.md)以提供额外的安全层。
 
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
 Key Vault 日志记录会保存保管库中所执行活动的相关信息。 有关完整详细信息，请参阅 [Key Vault 日志记录](logging.md)。
 
-你可以将 Key Vault 与事件网格集成，以便在密钥保管库中存储的密钥、证书或机密的状态发生更改时收到通知。
 
-<!-- For details, see [Monitoring Key Vault with Azure Event Grid](event-grid-overview.md) -->
+你可以将 Key Vault 与事件网格集成，以便在密钥保管库中存储的密钥、证书或机密的状态发生更改时收到通知。 
+
 
 还必须监视密钥保管库的运行状况，以确保服务按预期运行。 若要了解如何执行此操作，请参阅 [Azure Key Vault 的监视和警报](alert.md)。
 
@@ -131,3 +132,4 @@ Azure CLI 备份命令
 
 - [Azure Key Vault 的虚拟网络服务终结点](overview-vnet-service-endpoints.md)
 - [Azure RBAC：内置角色](../../role-based-access-control/built-in-roles.md)
+

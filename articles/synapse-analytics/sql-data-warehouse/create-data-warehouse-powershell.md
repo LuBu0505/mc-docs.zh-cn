@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
 origin.date: 4/11/2019
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse    , devx-track-azurepowershell
-ms.openlocfilehash: 730204d5ade845e142062aa88f907bce6e498f82
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 6d9e9de00ac9f0a9ab1d68d1e4c3aa34c6089581
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023263"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059709"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建专用 SQL 池（之前称为 SQL DW）
 
@@ -152,4 +152,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>后续步骤
 
-现已创建专用 SQL 池（之前称为 SQL DW），创建防火墙规则并连接到专用 SQL 池。 若要了解详细信息，请继续阅读[将数据加载到专用 SQL 池](load-data-from-azure-blob-storage-using-polybase.md)一文。
+现已创建专用 SQL 池（之前称为 SQL DW），创建防火墙规则并连接到专用 SQL 池。 若要了解详细信息，请继续阅读[将数据加载到专用 SQL 池](./load-data-from-azure-blob-storage-using-copy.md)一文。

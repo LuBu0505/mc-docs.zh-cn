@@ -6,17 +6,17 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 origin.date: 11/13/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 07/20/2020
 ms.author: v-yeche
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2d53af9860720bee581a63dc4db984fcc0b5f9c0
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 8138280d88312ced84ae8f5e6d5b2efe0f3115a4
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023292"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060054"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-net"></a>向 Azure 服务总线主题发送消息，并从该主题的订阅接收消息 (.NET)
 本教程介绍如何创建 .NET Core 控制台应用，该应用将消息发送到服务总线主题，并从该主题的订阅接收消息。 

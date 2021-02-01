@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 12/09/2020
-ms.date: 01/04/2021
+origin.date: 01/15/2021
+ms.date: 02/01/2021
 author: WenJason
 ms.author: v-jay
 manager: digimobile
-ms.openlocfilehash: 5446d5de33ab02cec7e0b1dd89a41863c9bf049e
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 0cc0d25c72989169f30839510375d430ce4d8502
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830158"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059816"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>参数化 Azure 数据工厂中的链接服务
 
@@ -39,6 +39,7 @@ ms.locfileid: "97830158"
 - Azure Cosmos DB (SQL API)
 - Azure Database for MySQL
 - Azure Databricks
+- Azure Key Vault
 - Azure SQL Database
 - Azure SQL 托管实例
 - Azure Synapse Analytics 

@@ -8,14 +8,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 origin.date: 08/30/2020
-ms.date: 11/27/2020
+ms.date: 01/14/2021
 ms.author: v-tawe
-ms.openlocfilehash: 20983201a1548c555f08d7cf8797eea7c6825ad6
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 471c60e758a71aebc469d44b99b5bb2407084114
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300984"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059377"
 ---
 # <a name="migrate-from-vault-access-policy-to-an-azure-role-based-access-control-preview-permission-model"></a>从保管库访问策略迁移到 Azure 基于角色的访问控制（预览）权限模型
 

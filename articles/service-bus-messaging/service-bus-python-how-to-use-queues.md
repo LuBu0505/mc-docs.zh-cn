@@ -7,17 +7,17 @@ ms.service: service-bus-messaging
 ms.topic: quickstart
 origin.date: 11/18/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 07/20/2020
 ms.author: v-yeche
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: cbaa37eae749ba49dc0219f693a6f06b95c2b88d
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: c32ce7c032b00363e465be8799de6bfad86f8f29
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023060"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059127"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-python"></a>向 Azure 服务总线队列发送消息并从中接收消息 (Python)
 本文介绍如何使用 Python 向 Azure 服务总线队列发送消息，并从中接收消息。 
@@ -213,6 +213,6 @@ Received: Message inside a ServiceBusMessageBatch
 - [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus/samples)。 
     - sync_samples 文件夹包含一些示例，这些示例演示如何以同步方式与服务总线交互。 本快速入门就使用了此方法。 
     - async_samples 文件夹包含一些示例，这些示例演示如何以异步方式与服务总线交互。 
-- [azure-servicebus 参考文档](https://docs.microsoft.com/python/api/azure-servicebus/azure.servicebus?preserve-view=true&view=azure-python-preview)
+- [azure-servicebus 参考文档](https://docs.microsoft.com/python/api/azure-servicebus/azure.servicebus?preserve-view=true)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

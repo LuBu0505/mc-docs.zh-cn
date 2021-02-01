@@ -12,13 +12,13 @@ metadata:
   author: WenJason
   ms.author: v-jay
   origin.date: 02/18/2020
-  ms.date: 09/07/2020
-  ms.openlocfilehash: cb62ff3e306221424da71514ca56edc1d2295b31
-  ms.sourcegitcommit: 2eb5a2f53b4b73b88877e962689a47d903482c18
+  ms.date: 02/01/2021
+  ms.openlocfilehash: a79c07100212ad7ac8156d5909d3e7fbb71d88ba
+  ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/03/2020
-  ms.locfileid: "89413683"
+  ms.lasthandoff: 01/29/2021
+  ms.locfileid: "99059860"
 landingContent:
 - title: 关于 Azure 媒体服务 v2
   linkLists:
@@ -27,7 +27,7 @@ landingContent:
     - text: Azure 媒体服务 v2 概述
       url: media-services-overview.md
     - text: 迁移到媒体服务 v3
-      url: ../latest/migrate-from-v2-to-v3.md
+      url: ../latest/migrate-v-2-v-3-migration-introduction.md
   - linkListType: whats-new
     links:
     - text: 媒体服务 v2 中有哪些新增功能？

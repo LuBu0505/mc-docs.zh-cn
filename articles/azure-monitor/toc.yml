@@ -97,8 +97,6 @@
   items:
     - name: 你可以监视什么？
       href: monitor-reference.md
-    - name: 持续监视
-      href: continuous-monitoring.md
     - name: 数据源
       href: platform/data-sources.md
     - name: 数据平台
@@ -174,6 +172,8 @@
               href: platform/metric-chart-samples.md
             - name: 排查指标图表问题
               href: platform/metrics-troubleshoot.md
+            - name: 了解指标聚合
+              href: platform/metrics-aggregation-explained.md
     - name: Azure Monitor 日志
       items:
         - name: 概述
@@ -396,7 +396,7 @@
           href: platform/autoscale-virtual-machine-scale-sets.md
         - name: 使用 Webhook 和电子邮件通知
           href: platform/autoscale-webhook-email.md
-        - name: 疑难解答
+        - name: 故障排除
           href: platform/autoscale-troubleshoot.md
         - name: 资源日志架构
           href: platform/autoscale-resource-log-schema.md
@@ -549,8 +549,12 @@
                   items:
                     - name: 响应插件
                       href: app/javascript-react-plugin.md
+                    - name: React Native 插件
+                      href: app/javascript-react-native-plugin.md
                     - name: Angular 插件
                       href: app/javascript-angular-plugin.md
+                    - name: 单击“分析自动收集”插件
+                      href: app/javascript-click-analytics-plugin.md
                 - name: 疑难解答
                   items:
                     - name: SDK 加载失败
@@ -586,7 +590,11 @@
                     - name: 配置选项
                       href: app/java-standalone-config.md
                     - name: 遥测处理器
-                      href: app/java-standalone-telemetry-processors.md
+                      items:
+                        - name: 概述
+                          href: app/java-standalone-telemetry-processors.md
+                        - name: 示例
+                          href: app/java-standalone-telemetry-processors-examples.md
                     - name: JVM 参数设置
                       href: app/java-standalone-arguments.md
                     - name: 从 2.x SDK 升级
@@ -604,7 +612,7 @@
                       href: app/status-monitor-v2-get-started.md
                     - name: 详细说明
                       href: app/status-monitor-v2-detailed-instructions.md
-                    - name: 疑难解答
+                    - name: 故障排除
                       href: app/status-monitor-v2-troubleshoot.md
                     - name: API 参考
                       href: app/status-monitor-v2-api-reference.md
@@ -850,6 +858,8 @@
           href: insights/container-insights-deployment-hpa-metrics.md
         - name: 监视永久性卷 (PV)
           href: insights/container-insights-persistent-volumes.md
+        - name: “报表”选项卡
+          href: insights/container-insights-reports.md
         - name: 查看实时数据
           items:
             - name: 实时数据（预览版）概述

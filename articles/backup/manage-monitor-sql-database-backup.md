@@ -4,14 +4,14 @@ description: 本文介绍如何管理和监视 Azure VM 上运行的 SQL Server 
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 09/11/2019
-ms.date: 09/28/2020
+ms.date: 01/21/2021
 ms.author: v-johya
-ms.openlocfilehash: ea37af7aa1085fc2a14ce44dfbd8ed42edbb8bcc
-ms.sourcegitcommit: 80567f1c67f6bdbd8a20adeebf6e2569d7741923
+ms.openlocfilehash: 4eb1344eca7ca7575f83ea00ec36e858a88624de
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91871251"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751355"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>管理和监视已备份的 SQL Server 数据库
 
@@ -23,7 +23,7 @@ ms.locfileid: "91871251"
 
 Azure 备份在门户的“备份作业”下显示了所有计划的和按需的操作，但计划的日志备份除外，因为它们可能会非常频繁地备份。 此门户中显示的作业包括数据库发现和注册、配置备份以及备份和还原操作。
 
-![“备份作业”门户](./media/backup-azure-sql-database/jobs-list.png)
+![“备份作业”门户](./media/backup-azure-sql-database/sql-backup-jobs-list.png)
 
 有关监视方案的详细信息，请参阅[在 Azure 门户中进行监视](backup-azure-monitoring-built-in-monitor.md)和[使用 Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。  
 
@@ -37,15 +37,11 @@ Azure 备份在门户的“备份作业”下显示了所有计划的和按需�
 
 若要监视数据库备份警报：
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 
-2. 在保管库仪表板中，选择“警报和事件”。
+2. 在保管库仪表板中，选择“备份警报”。
 
-   ![选择“警报和事件”](./media/backup-azure-sql-database/vault-menu-alerts-events.png)
-
-3. 在“警报和事件”中，选择“备份警报”。
-
-   ![选择“备份警报”](./media/backup-azure-sql-database/backup-alerts-dashboard.png)
+   ![选择“备份警报”](./media/backup-azure-sql-database/sql-backup-alerts-list.png)
 
 ## <a name="stop-protection-for-a-sql-server-database"></a>停止 SQL Server 数据库的保护
 
@@ -129,11 +125,11 @@ Azure 备份在门户的“备份作业”下显示了所有计划的和按需�
 
   ![修改备份策略](./media/backup-azure-sql-database/modify-backup-policy-impact.png)
 
-策略修改将影响所有关联的备份项，并触发相应的**配置保护**作业。
+策略修改将影响所有关联的备份项，并触发相应的 **配置保护** 作业。
 
 ### <a name="inconsistent-policy"></a>不一致的策略
 
-有时，修改策略操作可能导致某些备份项出现**不一致的**策略版本。 如果在触发修改策略操作后对备份项执行相应的**配置保护**作业失败，则会出现这种不一致。 它在备份项视图中显示如下：
+有时，修改策略操作可能导致某些备份项出现 **不一致的** 策略版本。 如果在触发修改策略操作后对备份项执行相应的 **配置保护** 作业失败，则会出现这种不一致。 它在备份项视图中显示如下：
 
   ![策略不一致](./media/backup-azure-sql-database/inconsistent-policy.png)
 

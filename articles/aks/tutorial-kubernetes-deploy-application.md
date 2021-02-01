@@ -3,19 +3,19 @@ title: Azure 上的 Kubernetes 教程 - 部署应用程序
 description: 在本 Azure Kubernetes 服务 (AKS) 教程中，请使用存储在 Azure 容器注册表中的自定义映像将多容器应用程序部署到群集。
 services: container-service
 ms.topic: tutorial
-origin.date: 09/30/2020
+origin.date: 01/12/2021
 author: rockboyfor
-ms.date: 10/26/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 0d9da4793646afe4281e770c508cdb74266af5f2
-ms.sourcegitcommit: 7b3c894d9c164d2311b99255f931ebc1803ca5a9
+ms.openlocfilehash: a077d534524a1c9c42657b2d879a271cb3aed763
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470193"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063674"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中运行应用程序
 
@@ -26,7 +26,7 @@ Kubernetes 为容器化应用程序提供一个分布式平台。 你生成自�
 > * 在 Kubernetes 中运行应用程序
 > * 测试应用程序
 
-在另外的教程中，此应用程序将进行横向扩展和更新。
+在后面的教程中，此应用程序将进行横向扩展和更新。
 
 本快速入门假设读者基本了解 Kubernetes 的概念。 有关详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念][kubernetes-concepts]。
 
@@ -48,13 +48,13 @@ Kubernetes 为容器化应用程序提供一个分布式平台。 你生成自�
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-在第一个教程中克隆的 git 存储库中的示例清单文件使用登录服务器名称 *microsoft* 。 确保位于所克隆的 *azure-voting-app-redis* 目录中，然后使用某个文本编辑器（例如 `vi`）打开清单文件：
+在第一个教程中克隆的 git 存储库中的示例清单文件使用登录服务器名称 *microsoft*。 确保位于所克隆的 *azure-voting-app-redis* 目录中，然后使用某个文本编辑器（例如 `vi`）打开清单文件：
 
 ```console
 vi azure-vote-all-in-one-redis.yaml
 ```
 
-将 *microsoft* 替换为 ACR 登录服务器名称。 映像名称位于清单文件的第 51 行。 以下示例展示了默认映像名称：
+将 *microsoft* 替换为 ACR 登录服务器名称。 映像名称位于清单文件的第 60 行。 以下示例展示了默认映像名称：
 
 ```yaml
 containers:
@@ -82,7 +82,7 @@ kubectl apply -f azure-vote-all-in-one-redis.yaml
 
 下面的示例输出表明已成功在 AKS 群集中创建了资源：
 
-```
+```console
 $ kubectl apply -f azure-vote-all-in-one-redis.yaml
 
 deployment "azure-vote-back" created
@@ -101,21 +101,21 @@ service "azure-vote-front" created
 kubectl get service azure-vote-front --watch
 ```
 
-最初， *azure-vote-front* 服务的 *EXTERNAL-IP* 显示为 *pending* ：
+最初，*azure-vote-front* 服务的 *EXTERNAL-IP* 显示为 *pending*：
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
 当 *EXTERNAL-IP* 地址从 *pending* 更改为实际公共 IP 地址时，请使用 `CTRL-C` 停止 `kubectl` 监视进程。 以下示例输出显示向服务分配了有效的公共 IP 地址：
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s
 ```
 
 若要查看应用程序的实际效果，请打开 Web 浏览器，以转到服务的外部 IP 地址：
 
-:::image type="content" source="media/container-service-kubernetes-tutorials/azure-vote.png" alt-text="Azure 上的 Kubernetes 群集映像":::
+:::image type="content" source="./media/container-service-kubernetes-tutorials/azure-vote.png" alt-text="显示容器映像 Azure 投票应用的屏幕截图，该应用在 AKS 群集中运行并在本地 Web 浏览器中打开" lightbox="./media/container-service-kubernetes-tutorials/azure-vote.png":::
 
 如果应用程序未加载，可能是因为映像注册表存在授权问题。 若要查看容器的状态，请使用 `kubectl get pods` 命令。 如果无法拉取容器映像，请参阅[使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证](cluster-container-registry-integration.md)。
 
@@ -148,4 +148,4 @@ azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   6
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [kubernetes-service]: concepts-network.md#services
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

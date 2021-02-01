@@ -5,17 +5,17 @@ ms.service: security
 ms.topic: conceptual
 origin.date: 05/27/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 07/20/2020
 ms.author: v-yeche
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3849ec39505dc8260b31816002ead95e0ce45c01
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 359a0592fce850c93865cf77cf7bb548d5c5dcd7
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022001"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063521"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>容器实例的 Azure 安全基线
 
@@ -25,7 +25,7 @@ ms.locfileid: "98022001"
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
-## <a name="network-security"></a>网络安全
+## <a name="network-security"></a>网络安全性
 
 有关详细信息，请参阅[安全控制：网络安全](../security/benchmarks/security-control-network-security.md)。
 
@@ -61,7 +61,7 @@ ms.locfileid: "98022001"
 
 **指导**：在 Azure 容器实例中托管的关键 Web 应用程序前部署 Azure Web 应用程序防火墙 (WAF)，以对传入的流量进行额外的检查。 启用 WAF 的诊断设置，并将日志引入存储帐户、事件中心或 Log Analytics 工作区。
 
-<!--Not Available on [How to deploy Azure WAF](../application-gateway/create-waf-policy-ag.md)-->
+<!--NOT AVAILABLE ON * [How to deploy Azure WAF](../application-gateway/create-waf-policy-ag.md)-->
 
 **Azure 安全中心监视**：是
 
@@ -75,7 +75,7 @@ ms.locfileid: "98022001"
 
 * [了解 Azure 安全中心集成的威胁情报](../security-center/azure-defender.md)
 
-<!--Not Available on * [Understand Azure Security Center Adaptive Network Hardening](../security-center/security-center-adaptive-network-hardening.md)-->
+<!--NOT AVAILABLE ON * [Understand Azure Security Center Adaptive Network Hardening](../security-center/security-center-adaptive-network-hardening.md)-->
 
 * [Azure 安全中心实时网络访问控制](../security-center/security-center-just-in-time.md)
 
@@ -155,7 +155,7 @@ ms.locfileid: "98022001"
 
 * [用于网络的 Azure Policy 示例](../governance/policy/samples/built-in-policies.md#network)
 
-<!--Not Available on * [How to create an Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)-->
+<!--NOT AVAILABLE ON * [How to create an Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)-->
 
 **Azure 安全中心监视**：不适用
 
@@ -347,7 +347,7 @@ ms.locfileid: "98022001"
 
 **指导**：请尽可能使用 Azure Active Directory SSO，而不是为每个服务配置单个独立凭据。 请使用 Azure 安全中心标识和访问管理建议。
 
-<!--Not Available on [Understand SSO with Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)-->
+<!--NOT AVAILABLE ON * [Understand SSO with Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)-->
 
 **Azure 安全中心监视**：不适用
 
@@ -369,7 +369,7 @@ ms.locfileid: "98022001"
 
 **指南**：将 PAW（特权访问工作站）与为登录和配置 Azure 资源而配置的 MFA 结合使用。
 
-<!--Not Avaialble on [Learn about Privileged Access Workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)-->
+* [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -381,7 +381,7 @@ ms.locfileid: "98022001"
 
 **指导**：当环境中出现可疑或不安全的活动时，请使用 Azure Active Directory (Azure AD) 安全报告来生成日志和警报。 使用 Azure 安全中心监视标识和访问活动。
 
-<!--Not Available on * [How to identify Azure AD users flagged for risky activity](../active-directory/identity-protection/overview-identity-protection.md)-->
+<!--NOT AVAILABLE ON * [How to identify Azure AD users flagged for risky activity](../active-directory/identity-protection/overview-identity-protection.md)-->
 
 * [如何在 Azure 安全中心内监视用户的标识和访问活动](../security-center/security-center-identity-access.md)
 
@@ -434,15 +434,15 @@ ms.locfileid: "98022001"
 **责任**：客户
 
 <!--Not Available on ### 3.12: Alert on account login behavior deviation-->
-<!--Not Available on [How to view Azure AD risky sign-ins](../active-directory/identity-protection/overview-identity-protection.md)-->
+<!--NOT AVAILABLE ON * [How to view Azure AD risky sign-ins](../active-directory/identity-protection/overview-identity-protection.md)-->
 
-<!--Not Available on [How to configure and enable Identity Protection risk policies](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)-->
+<!--NOT AVAILABLE ON * [How to configure and enable Identity Protection risk policies](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)-->
 
 ### <a name="313-provide-azure-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：在支持场合下为 Azure 提供对相关客户数据的访问权限
 
 **指导**：目前不可用；Azure 容器实例目前不支持客户密码箱。
 
-<!--Not available on * [List of Customer Lockbox supported services](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)-->
+<!--NOT AVAILABLE ON * [List of Customer Lockbox supported services](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)-->
 
 **Azure 安全中心监视**：不适用
 
@@ -472,7 +472,7 @@ ms.locfileid: "98022001"
 
 * [在正在运行的 Azure 容器实例中执行命令](./container-instances-exec.md)
 
-<!--Not Available on * [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)-->
+<!--NOT AVAILABLE ON * [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)-->
 
 * [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
@@ -583,7 +583,7 @@ ms.locfileid: "98022001"
 
 * [Azure 容器实例的安全注意事项](./container-instances-image-security.md)
 
-<!--Not Available on * [Azure Container Registry integration with Security Center](../security-center/defender-for-container-registries-introduction.md)-->
+<!--NOT AVAILABLE ON * [Azure Container Registry integration with Security Center](../security-center/defender-for-container-registries-introduction.md)-->
 
 **Azure 安全中心监视**：是
 
@@ -621,7 +621,7 @@ ms.locfileid: "98022001"
 
 * [Azure 容器实例的安全注意事项](./container-instances-image-security.md)
 
-<!--Not Available on * [Azure Container Registry integration with Security Center](../security-center/defender-for-container-registries-introduction.md)-->
+<!--NOT AVAILABLE ON * [Azure Container Registry integration with Security Center](../security-center/defender-for-container-registries-introduction.md)-->
 
 **Azure 安全中心监视**：是
 
@@ -633,7 +633,7 @@ ms.locfileid: "98022001"
 
 * [Azure 容器实例的安全注意事项](./container-instances-image-security.md)
 
-<!--Not Available on * [Azure Container Registry integration with Security Center](../security-center/defender-for-container-registries-introduction.md)-->
+<!--NOT AVAILABLE ON * [Azure Container Registry integration with Security Center](../security-center/defender-for-container-registries-introduction.md)-->
 
 **Azure 安全中心监视**：是
 
@@ -673,7 +673,7 @@ ms.locfileid: "98022001"
 
 **指导**：在适用的情况下，请使用标记、管理组和单独的订阅来组织和跟踪资产。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
-<!--Not Available on * [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)-->
+<!--NOT AVAILABLE ON * [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)-->
 
 * [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
@@ -717,13 +717,13 @@ ms.locfileid: "98022001"
 
 * [使用 Azure Monitor 日志进行容器组和实例日志记录](./container-instances-log-analytics.md)
 
-* [了解 Log Analytics 工作区](../azure-monitor/log-query/get-started-portal.md)
+* [了解 Log Analytics 工作区](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
 * [Azure 容器实例的安全注意事项](./container-instances-image-security.md)
 
-<!--Not Available on * [Azure Container Registry integration with Security Center](../security-center/defender-for-container-registries-introduction.md)-->
+<!--NOT AVAILABLE ON * [Azure Container Registry integration with Security Center](../security-center/defender-for-container-registries-introduction.md)-->
 
 **Azure 安全中心监视**：不适用
 
@@ -787,7 +787,7 @@ ms.locfileid: "98022001"
 
 * [在正在运行的 Azure 容器实例中执行命令](./container-instances-exec.md)
 
-<!--Not Available on * [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)-->
+<!--NOT AVAILABLE ON * [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)-->
 
 * [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
@@ -859,7 +859,7 @@ ms.locfileid: "98022001"
 
 * [Azure 容器实例的容器监视和扫描安全建议](./container-instances-image-security.md)
 
-<!--Not Available on * [Azure Container Registry integration with Security Center](../security-center/defender-for-container-registries-introduction.md)-->
+<!--NOT AVAILABLE ON * [Azure Container Registry integration with Security Center](../security-center/defender-for-container-registries-introduction.md)-->
 
 * [关于 Azure 容器注册表任务的基础映像更新](../container-registry/container-registry-tasks-base-images.md)
 
@@ -1116,7 +1116,7 @@ ms.locfileid: "98022001"
 
 * [如何配置连续导出](../security-center/continuous-export.md)
 
-<!--Not Available on * [How to stream alerts into Azure Sentinel](../sentinel/connect-azure-security-center.md)-->
+<!--NOT AVAILABLE ON * [How to stream alerts into Azure Sentinel](../sentinel/connect-azure-security-center.md)-->
 
 **Azure 安全中心监视**：不适用
 
@@ -1153,4 +1153,4 @@ ms.locfileid: "98022001"
 - 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
 - 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

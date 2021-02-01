@@ -3,17 +3,16 @@ title: Azure 流分析简介
 description: 了解 Azure 流分析，这是一种托管的服务，可以帮助你实时分析物联网 (IoT) 提供的流式数据。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q2
-ms.date: 01/07/2021
-ms.openlocfilehash: d568d310bfd223effb3e61a8482bf185f3770630
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.date: 01/25/2021
+ms.openlocfilehash: 55f8a56f6b8cad1150c3622811a9427fc6e7f0c0
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023157"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058511"
 ---
 # <a name="welcome-to-azure-stream-analytics"></a>欢迎使用 Azure 流分析
 

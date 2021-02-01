@@ -10,14 +10,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 10/27/2020
-ms.date: 12/14/2020
+ms.date: 02/01/2021
 ms.author: v-jay
-ms.openlocfilehash: 11a131c4165765b9ed3e396ec9cb87e544500d28
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: b8c5ee4198176e768ff45459e95ea7a740a5dc41
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97104683"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059361"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>使用见解监视和配置 Azure 负载均衡器
 
@@ -69,7 +69,7 @@ ms.locfileid: "97104683"
 ### <a name="flow-distribution"></a>流分发
 “流量分配”选项卡可帮助你直观了解和管理后端实例正在接收和产生的流量数量。 它显示入站和出站流量的流创建速率和流计数，以及每个 VM 和虚拟机规模集实例正在接收的网络流量。 
 
-这些视图可为你提供有关负载均衡器配置或流量模式是否导致流量不平衡的反馈。 例如，是否已配置会话关联，以及某个客户端发出的请求数量是否不成比例。 它还会告知你的计算机大小是否已达到[每个 VM 流量限制](../virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations)。
+这些视图可为你提供有关负载均衡器配置或流量模式是否导致流量不平衡的反馈。 例如，是否已配置会话关联，以及某个客户端发出的请求数量是否不成比例。 它还会告知你的计算机大小是否已达到[每个 VM 流量限制](../virtual-network/virtual-machine-network-throughput.md#flow-limits-and-active-connections-recommendations)。
 
 ### <a name="connection-monitors"></a>连接监视器
 “连接监视器”选项卡会在全局地图上显示已配置的所有[连接监视器](../network-watcher/connection-monitor.md)的往返延迟。 这些视觉对象为具有严格延迟要求的服务提供有用的信息。 为了满足自己的要求，你可能需要添加其他区域部署。

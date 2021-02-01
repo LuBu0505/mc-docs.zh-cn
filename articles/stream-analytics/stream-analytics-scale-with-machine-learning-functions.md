@@ -3,17 +3,16 @@ title: 在 Azure 流分析中缩放机器学习工作室（经典）函数
 description: 本文介绍了如何通过配置分区和流单元来缩放使用机器学习工作室（经典）函数的流分析作业。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 origin.date: 06/21/2019
-ms.date: 11/16/2020
-ms.openlocfilehash: c95ae8d79e1d4a2934539810df591a4a6dc16bf1
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.date: 01/25/2021
+ms.openlocfilehash: 0800c8299f1b1c04cab694eb08a64d309dfc8371
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94976979"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059099"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>使用 Azure 机器学习工作室（经典）函数缩放流分析作业
 <!--Not available in MC: [Azure Machine Learning UDFs](machine-learning-udf.md)-->

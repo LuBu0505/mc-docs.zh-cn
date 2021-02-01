@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 01/06/2020
-ms.date: 12/31/2020
+ms.date: 01/19/2021
 ms.author: v-johya
-ms.openlocfilehash: cf6cd52e17267c90d3d6aa06420757dbfc1c1404
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 90041f77a1820b5f6f46a5c26d219ed43e37291b
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857601"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98758157"
 ---
 ## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>在 Azure CLI 中创建 Azure 容器实例资源
 
@@ -81,7 +81,7 @@ az container create -g <resource-group> -f my-aci.yaml
 [azure-container-create]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-create
 [template-format]: https://docs.microsoft.com/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups#template-format
 [aci-yaml-ref]: ../../../container-instances/container-instances-reference-yaml.md
-[repositories-and-images]: ../../cognitive-services-container-support.md#container-repositories-and-images
+[repositories-and-images]: ../container-image-tags.md
 [location-to-resource]: ../../../container-instances/container-instances-region-availability.md
 [secure-values]: ../../../container-instances/container-instances-environment-variables.md#secure-values
 

@@ -6,14 +6,14 @@ author: Johnnytechn
 ms.author: v-johya
 ms.topic: conceptual
 origin.date: 01/29/2020
-ms.date: 11/16/2020
+ms.date: 01/25/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 990042e29f576eee56f478c53e6d2160a278d848
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: c6ac2eb5359ca876e89ee29386e6cb9f015ec047
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978289"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059731"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>在 Azure 流分析中分析 JSON 和 Avro 数据
 

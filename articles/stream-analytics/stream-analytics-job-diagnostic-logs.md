@@ -3,17 +3,16 @@ title: 使用资源日志排查 Azure 流分析问题
 description: 本文介绍如何分析 Azure 流分析中的资源日志。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.custom: contperf-fy21q1
-ms.date: 01/07/2021
-ms.openlocfilehash: 1608612c43955347c0cad18ba2e6466b71ad344e
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.date: 01/25/2021
+ms.openlocfilehash: 30edeae094024bc392e5538f6e1700365011a742
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023158"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059116"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>使用资源日志排查 Azure 流分析问题
 

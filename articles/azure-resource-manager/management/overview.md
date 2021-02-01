@@ -4,17 +4,17 @@ description: 介绍如何使用 Azure 资源管理器在 Azure 上部署和管�
 ms.topic: overview
 origin.date: 09/01/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 01/25/2021
 ms.testscope: yes
 ms.testdate: 08/24/2020
 ms.author: v-yeche
-ms.custom: contperfq1
-ms.openlocfilehash: 6a27cd47bfbc6789e287aa2b4eacfee7ed80636e
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 1b927930f0d953eb03180eb681e7f87dd91408b7
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022923"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751363"
 ---
 # <a name="what-is-azure-resource-manager"></a>什么是 Azure 资源管理器？
 
@@ -38,7 +38,7 @@ Azure 资源管理器是 Azure 的部署和管理服务。 它提供了一个管
 
 * **资源** - 可通过 Azure 获取的可管理项。 资源的示例包括虚拟机、存储帐户、Web 应用、数据库和虚拟网络。 资源组、订阅、管理组和标记也是资源的示例。
 * **资源组** — 一个容器，用于保存 Azure 解决方案的相关资源。 资源组包括你想要作为一个组进行管理的那些资源。 根据最适合组织的情况来决定哪些资源属于哪个资源组。 请参阅 [资源组](#resource-groups)。
-* **资源提供程序** - 提供 Azure 资源的服务。 例如，Microsoft.Compute 就是一个常见的资源提供程序，它提供虚拟机资源。 Microsoft.Storage 是另一个常见的资源提供程序。 请参阅[资源提供程序和类型](resource-providers-and-types.md)。
+* **资源提供程序** - 提供 Azure 资源的服务。 例如，`Microsoft.Compute` 就是一个常见的资源提供程序，它提供虚拟机资源。 `Microsoft.Storage` 也是一个常见的资源提供程序。 请参阅[资源提供程序和类型](resource-providers-and-types.md)。
 * 资源管理器模板 - 一个 JavaScript 对象表示法 (JSON) 文件，用于定义一个或多个要部署到资源组、订阅、管理组或租户的资源。 使用模板能够以一致方式反复部署资源。 请参阅[模板部署概述](../templates/overview.md)。
 * **声明性语法** — 一种语法，允许声明“以下是我想要创建的项目”，而不需要编写一系列编程命令来进行创建。 资源管理器模板便是声明性语法的其中一个示例。 在该文件中，可以定义要部署到 Azure 的基础结构的属性。  请参阅[模板部署概述](../templates/overview.md)。
 
@@ -66,7 +66,7 @@ Azure 提供四个级别的范围：[管理组](../../governance/management-grou
 
 :::image type="content" source="./media/overview/scope-levels.png" alt-text="管理级别":::
 
-将在上述任何级别的作用域中应用管理设置。 所选的级别确定应用设置的广泛程度。 较低级别继承较高级别的设置。 例如，将[策略](../../governance/policy/overview.md)应用于订阅时，该策略将应用于订阅中的所有资源组和资源。 在资源组上应用策略时，该策略将应用于资源组及其所有资源。 但是，其他资源组没有该策略分配。
+将在上述任何级别的作用域中应用管理设置。 所选的级别确定应用设置的广泛程度。 较低级别继承较高级别的设置。 例如，将[策略](../../governance/policy/overview.md)应用于订阅时，该策略将应用于订阅中的所有资源组和资源。 在资源组上应用策略时，该策略将应用于该资源组及其所有资源。 但是，其他资源组没有该策略分配。
 
 可以将模板部署到租户、管理组、订阅或资源组。
 
@@ -104,7 +104,7 @@ Azure 提供四个级别的范围：[管理组](../../governance/management-grou
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Azure 资源管理器的复原能力
 
-Azure 资源管理器服务旨在实现复原能力和持续可用性。 REST API 中的资源管理器和控制平面操作（发送到 management.chinacloudapi.cn 的请求）具有以下特性：
+Azure 资源管理器服务旨在实现复原能力和持续可用性。 REST API 中的资源管理器和控制平面操作（发送到 `management.chinacloudapi.cn` 的请求）具有以下特性：
 
 * 跨区域分布。 某些服务具有区域性。
 

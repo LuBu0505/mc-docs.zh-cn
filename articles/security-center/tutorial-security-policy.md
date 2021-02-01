@@ -13,16 +13,16 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 11/04/2019
-ms.date: 12/03/2020
+ms.date: 01/20/2021
 ms.author: v-johya
-ms.openlocfilehash: f9544f90399a04e72a9cd0625a959687aeb108a0
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: cffefb19638c2266faa511ffd1b252f53d9c5b13
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747240"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751343"
 ---
-# <a name="working-with-security-policies"></a>使用安全策略
+# <a name="manage-security-policies"></a>管理安全策略
 
 本文介绍如何配置安全策略，以及如何在安全中心查看这些策略。 
 

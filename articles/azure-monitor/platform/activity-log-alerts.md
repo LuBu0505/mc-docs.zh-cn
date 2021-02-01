@@ -5,14 +5,14 @@ ms.subservice: alerts
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 09/17/2018
-ms.date: 01/12/2021
+ms.date: 01/27/2021
 ms.author: v-johya
-ms.openlocfilehash: 5e340a00eb099dd5d5fed2854f0785914192527d
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 8519010732d99016805dff344234c18ff5939fd3
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230707"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059894"
 ---
 # <a name="alerts-on-activity-log"></a>根据活动日志发出警报
 
@@ -22,7 +22,7 @@ ms.locfileid: "98230707"
 
 > [!NOTE]
 > * **无法** 为活动日志的“警报”类别中的事件创建警报。
-> * “安全”类别的活动日志警报也可以在到 [ServiceNow](/security-center/export-to-siem) 的[新升级流](/security-center/continuous-export?tabs=azure-portal)中定义
+> * “安全”类别的活动日志警报也可以在到 [ServiceNow](../../security-center/export-to-siem.md) 的[新升级流](../../security-center/continuous-export.md?tabs=azure-portal)中定义
 
 通常，你会在以下情况下创建活动日志警报以接收通知：
 

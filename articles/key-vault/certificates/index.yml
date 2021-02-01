@@ -11,13 +11,13 @@ metadata:
   author: msmbaldwin
   ms.author: v-tawe
   origin.date: 04/07/2020
-  ms.date: 01/13/2021
-  ms.openlocfilehash: 26b37bffeb7184fddaf81ad5dea0e9e89d14c5ed
-  ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+  ms.date: 01/18/2021
+  ms.openlocfilehash: a12e3170ff6bafc36e3ea9064a8f9c564d239c1f
+  ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/15/2021
-  ms.locfileid: "98230056"
+  ms.lasthandoff: 01/29/2021
+  ms.locfileid: "99058565"
 landingContent:
 - title: 证书
   linkLists:

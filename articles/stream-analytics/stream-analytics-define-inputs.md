@@ -3,17 +3,16 @@ title: 将数据作为 Azure 流分析的输入进行流式传输
 description: 了解如何在 Azure 流分析中设置数据连接。 输入包括来自事件的数据流，也包括引用数据。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 01/17/2020
-ms.date: 11/16/2020
-ms.openlocfilehash: 8d3c83e20484714f3fadb711edccc42dc8ebbe07
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.date: 01/25/2021
+ms.openlocfilehash: 076c7de05badc7db8912e06f29ebd0d4457668bb
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978134"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059993"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>将数据作为流分析的输入进行流式传输
 

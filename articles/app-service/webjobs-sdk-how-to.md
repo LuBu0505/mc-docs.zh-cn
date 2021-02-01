@@ -6,14 +6,14 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp
 ms.topic: article
 origin.date: 02/18/2019
-ms.date: 12/21/2020
+ms.date: 02/01/2021
 ms.author: v-tawe
-ms.openlocfilehash: 4e2d6edfdf34d437c45739adda8b97ea4b257805
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 74d3e95e2c820363f7a4ac3fb1eb3dd6e49481bf
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023119"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058598"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>如何使用 Azure WebJobs SDK 进行事件驱动的后台处理
 
@@ -797,6 +797,8 @@ public static void RemoveItem([QueueTrigger("remove-item")] string message)
 ### <a name="viewing-lease-blobs"></a>查看租约 Blob
 
 WebJobs SDK 在幕后使用 [Azure Blob 租约](../storage/common/storage-concurrency.md#pessimistic-concurrency-for-blobs)来实现分布式锁定。 可以在 `AzureWebJobsStorage` 存储帐户的 `azure-webjobs-host` 容器中的路径“locks”下面找到单一实例使用的租约 Blob。 例如，前面演示的第一个 `ProcessImage` 示例的租约 Blob 路径可能是 `locks/061851c758f04938a4426aa9ab3869c0/WebJobs.Functions.ProcessImage`。 所有路径包含 JobHost ID，在本例中为 061851c758f04938a4426aa9ab3869c0。
+
+<!--Pending for storage/blobs/concurrency-manage.md#pessimistic-concurrency-for-blobs -->
 
 ## <a name="async-functions"></a>异步函数
 

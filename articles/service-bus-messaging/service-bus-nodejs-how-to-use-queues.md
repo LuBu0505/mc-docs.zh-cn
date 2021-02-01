@@ -6,17 +6,17 @@ ms.service: service-bus-messaging
 ms.topic: quickstart
 origin.date: 11/09/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 08/17/2020
 ms.author: v-yeche
 ms.custom: devx-track-js
-ms.openlocfilehash: 10eb9870338f9624bfbb9e8716b7092561d10ca3
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 195e427ab5671eaf1ab3eebf142af22f535cd7a6
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022742"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059575"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-javascript"></a>向 Azure 服务总线队列发送消息并从中接收消息 (JavaScript)
 本教程介绍如何使用 JavaScript 程序中的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 包向服务总线队列发送消息并从中接收消息。
@@ -78,7 +78,7 @@ npm install @azure/service-bus
             // create a batch object
             let batch = await sender.createMessageBatch(); 
             for (let i = 0; i < messages.length; i++) {
-                // for each message in the arry         
+                // for each message in the array            
 
                 // try to add the message to the batch
                 if (!batch.tryAddMessage(messages[i])) {            
@@ -87,7 +87,7 @@ npm install @azure/service-bus
                     await sender.sendMessages(batch);
 
                     // then, create a new batch 
-                    batch = await sender.createBatch();
+                    batch = await sender.createMessageBatch();
 
                     // now, add the message failed to be added to the previous batch to this batch
                     if (!batch.tryAddMessage(messages[i])) {

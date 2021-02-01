@@ -10,12 +10,12 @@ origin.date: 07/20/2020
 ms.date: 11/27/2020
 ms.author: v-tawe
 ms.custom: mvc, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 429e0e79f62847e3efe323128ea33f5fde63aa44
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.openlocfilehash: ed927f9c1e722e414f1efbfb6dae9f4ff50be731
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96430810"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058961"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>教程：将 Azure Key Vault 与通过 Python 编写的虚拟机配合使用
 
@@ -83,7 +83,7 @@ az vm create \
 
 ## <a name="assign-an-identity-to-the-vm"></a>为 VM 分配标识
 
-使用 Azure CLI [az vm identity assign](/cli/vm/identity#az-vm-identity-assign) 命令为虚拟机创建系统分配的标识：
+使用 Azure CLI [az vm identity assign](https://docs.microsoft.com/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) 命令为虚拟机创建系统分配的标识：
 
 ```azurecli
 az vm identity assign --name "myVM" --resource-group "myResourceGroup"

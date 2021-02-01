@@ -4,18 +4,17 @@ description: 本文介绍了在 Azure 流分析作业中很有用的多个常见
 services: stream-analytics
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 origin.date: 12/18/2019
-ms.date: 11/16/2020
+ms.date: 01/25/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 2e6936026bc9ec3e1d60c75e9c193611beba7996
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 0ef4110ea29ccd96429993139f4f80093aa52415
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977673"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058428"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Azure 流分析中的常见查询模式
 

@@ -3,20 +3,20 @@ title: 什么是 Azure Analysis Services | Azure
 description: 了解 Azure Analysis Services，它是一种可在云中提供企业级数据模型的完全托管平台即服务 (PaaS)。
 ms.service: azure-analysis-services
 ms.topic: overview
-origin.date: 12/01/2020
+origin.date: 01/20/2021
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 4714540b03ec2680336133213c36270a3deaebec
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 8b3418160e70b9e0750a626312965a6b602c5f3f
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022861"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063693"
 ---
 # <a name="what-is-azure-analysis-services"></a>什么是 Azure Analysis Services？
 
@@ -26,13 +26,13 @@ Azure Analysis Services 是一个完全托管的平台即服务 (PaaS)，它在�
 
 :::image type="content" source="./media/analysis-services-overview/aas-overview-overall.png" alt-text="数据源":::
 
-<!--Not Available VIDEO on [this video](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4)-->
+<!--Not Available VIDEO on [Azure Analysis Services Overview](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4)-->
 
 ## <a name="get-up-and-running-quickly"></a>快速启动和运行
 
 在 Azure 门户中，数分钟即可[创建服务器](analysis-services-create-server.md)。 借助 Azure 资源管理器[模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)和 PowerShell，可以使用声明性模板来创建服务器。 利用单个模板可以部署服务器资源及其他 Azure 组件，例如存储帐户和 Azure Functions。 
 
-<!-- Not Available VIDEO on [Automating deployent](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation)-->
+<!-- Not Available VIDEO on [Automating deployment](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation)-->
 
 Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的分析解决方案。 集成 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) 后可以对关键数据进行安全的基于角色的访问。 只需包括一项将数据加载到模型中的活动，即可集成 [Azure 数据工厂](../data-factory/introduction.md)管道。 可通过自定义代码将 [Azure 自动化](../automation/automation-intro.md)和 [Azure Functions](../azure-functions/functions-overview.md) 用于模型的轻型业务流程。 
 
@@ -141,7 +141,7 @@ Azure Analysis Services 中的表格模型支持各种数据源：从简单的�
 
 Azure Analysis Services 为多个级别的敏感数据提供安全性。
 
-<!--Not Available on [Azure DDoS Protection Standard overview](../virtual-network/ddos-protection-overview.md)-->
+<!--NOT AVAILABLE ON [Azure DDoS Protection Standard overview](../ddos-protection/ddos-protection-overview.md)-->
 
 在服务器级别：Analysis Services 提供防火墙、Azure 身份验证、服务器管理员角色和服务器端加密。 在数据模型级别，用户角色、行级和对象级安全性可确保数据的安全，只有有权的用户才能查看你的数据。
 
@@ -165,7 +165,7 @@ Analysis Services 使用[基于角色的授权](https://docs.microsoft.com/analy
 
 通过数据库角色向查询数据的非管理最终用户授予访问权限。 数据库角色作为数据库中的单独对象创建，并且仅适用于创建该角色的数据库。 数据库角色按（数据库）“管理员”、“读取”与“读取和处理”权限来定义。 使用 SSMS 或 PowerShell 添加用户和组帐户。
 
-### <a name="row-level-security"></a>行级安全性
+### <a name="row-level-security"></a>行级别安全性
 
 所有兼容级别的表格模型都支持行级安全性。 行级安全性的定义方式如下：在模型中使用 DAX 表达式，这些表达式可在表中定义行，以及在用户可查询的相关表的许多方向定义任何行。 为“读取”与“读取和处理”权限定义使用 DAX 表达式的行筛选器。 
 
@@ -249,4 +249,4 @@ Azure Analysis Services 还支持使用[动态管理视图 (DMV)](https://docs.m
 > [!div class="nextstepaction"]
 > [快速入门：创建服务器 - PowerShell](analysis-services-create-powershell.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

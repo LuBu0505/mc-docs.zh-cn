@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 门户使用更改跟踪以增量方式复制数据
-description: 在本教程中，请创建一个带管道的 Azure 数据工厂，该管道根据 Azure SQL 数据库的源数据库中的“更改跟踪”信息将增量数据加载到 Azure Blob 存储。
+description: 在本教程中，你将创建一个带管道的 Azure 数据工厂，该管道根据 Azure SQL 数据库的源数据库中的“更改跟踪”信息将增量数据加载到 Azure Blob 存储。
 services: data-factory
 ms.author: v-jay
 author: WenJason
@@ -11,19 +11,19 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 01/12/2018
-ms.date: 11/02/2020
-ms.openlocfilehash: 89bdb622c0469f43fdb7e676bea2b8746149b203
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.date: 02/01/2021
+ms.openlocfilehash: 53277a46f771a8f5199c0e80b6b3688512ad25c4
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431977"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059276"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>使用 Azure 门户根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-在本教程中，请创建一个带管道的 Azure 数据工厂，该管道根据 Azure SQL 数据库的源数据库中的“更改跟踪”信息将增量数据加载到 Azure Blob 存储。  
+在本教程中，你将创建一个带管道的 Azure 数据工厂，该管道根据 Azure SQL 数据库的源数据库中的“更改跟踪”信息将增量数据加载到 Azure Blob 存储。  
 
 在本教程中执行以下步骤：
 
@@ -171,13 +171,13 @@ ms.locfileid: "96431977"
 3. 选择要在其中创建数据工厂的 Azure **订阅**。
 4. 对于 **资源组**，请执行以下步骤之一：
 
-      - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
+      - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
       - 选择“新建”，并输入资源组的名称。   
          
         若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 4. 选择“V2 (预览)”作为 **版本**。
 5. 选择数据工厂的 **位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
-6. 选择“固定到仪表板”  。     
+6. 选择“固定到仪表板”。     
 7. 单击“创建”。      
 8. 在仪表板上，你会看状态如下的以下磁贴：“正在部署数据工厂”。
 
@@ -290,7 +290,7 @@ ms.locfileid: "96431977"
 2. 此时会显示用于配置管道的新选项卡。 树状视图中也会显示管道。 在“属性”窗口中，将管道的名称更改为 **FullCopyPipeline**。
 
     ![屏幕截图显示已输入名称的管道。](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-name.png)
-3. 在“活动”工具箱中搜索“复制”，将“复制”活动拖放到管道设计器图面，然后设置名称“FullCopyActivity”。  
+3. 在“活动”工具箱中展开“数据流”，将“复制”活动拖放到管道设计器图面，然后设置名称 **FullCopyActivity**。
 
     ![完整复制活动 - 名称](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-activity-name.png)
 4. 切换到“源”选项卡，为“源数据集”字段选择“SourceDataset”。
@@ -387,7 +387,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
        ```
 
       ![屏幕截图显示了已添加到“属性”窗口中的“设置”选项卡的查询。](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
-7. 在“活动”工具箱中搜索“复制”，将“复制”活动拖放到管道设计器图面  。 将活动的名称设置为 **IncrementalCopyActivity**。 此活动将上次跟踪版本与当前更改跟踪版本之间的数据复制到目标数据存储。
+7. 在“活动”工具箱中展开“数据流”，将“复制”活动拖放到管道设计器图面。 将活动的名称设置为 **IncrementalCopyActivity**。 此活动将上次跟踪版本与当前更改跟踪版本之间的数据复制到目标数据存储。
 
     ![复制活动 - 名称](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-activity-name.png)
 8. 在“属性”窗口中切换到“源”选项卡，然后执行以下步骤：

@@ -9,15 +9,15 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 origin.date: 03/30/2020
-ms.date: 11/27/2020
+ms.date: 01/18/2021
 ms.author: v-tawe
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e913fa5b2e70342d48406601436294210936e87e
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 32c2c2a0379f7e28df2348950f74b31a0520f94a
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300473"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058453"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure Key Vault 中设置和检索密钥
 
@@ -61,7 +61,7 @@ az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGrou
 
 只需再执行几个步骤便可向保管库中添加密钥。 此密钥可供应用程序使用。 
 
-键入以下命令，创建名为 ExampleKey  的密钥：
+键入以下命令，创建名为 ExampleKey 的密钥：
 
 ```azurecli
 az keyvault key create --vault-name "Contoso-Vault2" -n ExampleKey --protection software
@@ -92,5 +92,5 @@ az group delete --name ContosoResourceGroup
 在本快速入门中，你创建了 Key Vault 并在其中存储了一个密钥。 若要详细了解 Key Vault 以及如何将其与应用程序集成，请继续阅读以下文章。
 
 - 阅读 [Azure Key Vault 概述](../general/overview.md)
-- 请参阅 [Azure CLI az keyvault 命令](/cli/keyvault)参考
-- 查看 [Azure Key Vault 最佳做法](../general/best-practices.md)
+- 请参阅 [Azure CLI az keyvault 命令](/cli/keyvault?view=azure-cli-latest)参考
+- 请参阅 [Key Vault 安全性概述](../general/security-overview.md)

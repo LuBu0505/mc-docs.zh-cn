@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 origin.date: 02/10/2020
-ms.date: 12/30/2020
+ms.date: 01/19/2021
 ms.author: v-johya
-ms.openlocfilehash: d59819e27cbe9ec9c1f4fbd1e476696af5e80862
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 65860aedcba62d0d2c1e7d27f73d8934f33cfa83
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857043"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751232"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文本和语音翻译的语言和区域支持
 
@@ -155,7 +155,7 @@ ms.locfileid: "97857043"
 | 意大利语 | `it` |
 | 日语 | `ja` |
 | 克林贡语 | `tlh-Latn` |
-| 朝鲜语 | `ko` |
+| 韩语 | `ko` |
 | 库尔德语(中部) | `ku-Arab` |
 | 拉脱维亚语 | `lv` |
 | 立陶宛语 | `lt` |
@@ -256,7 +256,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 挪威语      | `nb`          |
 | 波斯语      | `fa`          |
 | 波兰语      | `pl`          |
-| 葡萄牙语(巴西)     | `pt-br`          |
+| 葡萄牙语(巴西)     | `pt`          |
 | 罗马尼亚语      | `ro`          |
 | 俄语      | `ru`          |
 | 塞尔维亚语（拉丁）      | `sr-Latn`          |

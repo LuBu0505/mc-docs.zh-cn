@@ -1,19 +1,20 @@
 ---
 title: 在虚拟网络中预配池
 description: 如何在 Azure 虚拟网络中创建 Batch 池，以便计算节点可以安全地与网络（例如文件服务器）中的其他 VM 通信。
+ms.service: batch
 ms.topic: how-to
-origin.date: 06/26/2020
-ms.date: 08/24/2020
+origin.date: 01/13/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 04/27/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 0c9f4a844c4fcd9f8dffc5fb944ae4336b3841b2
-ms.sourcegitcommit: e633c458126612223fbf7a8853dbf19acc7f0fa5
+ms.openlocfilehash: 73d032bbd57ce80f135a943811ef8d65900e0110
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654922"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059669"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>在虚拟网络中创建 Azure Batch 池
 
@@ -39,7 +40,7 @@ ms.locfileid: "88654922"
 
 ## <a name="create-a-pool-with-a-vnet-in-the-azure-portal"></a>在 Azure 门户中创建具有 VNet 的池
 
-在创建 VNet 并将一个子网分配给它后，可以使用该 VNet 创建 Batch 池。 请按照下列步骤在 Azure 门户中创建池： 
+在创建 VNet 并将一个子网分配给它后，可以使用该 VNet 创建 Batch 池。 请按照下列步骤在 Azure 门户中创建池： 
 
 1. 导航到 Azure 门户中的批处理帐户。 此帐户必须与要使用的 VNet 所在的资源组位于同一订阅和区域中。
 2. 在左侧的“设置”窗口中，选择“池”菜单项。

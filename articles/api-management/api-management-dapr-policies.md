@@ -3,15 +3,15 @@ title: Azure API 管理 Dapr 集成策略 | Microsoft Docs
 description: 了解用于与 Dapr 微服务扩展进行交互的 Azure API 管理策略。
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 11/18/2020
+ms.date: 01/18/2021
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: 23de0775ba4ee5cc5a93cc260811da77909e84cc
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 300760defb4540882979f5cdb2ab686fd588a7a8
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978129"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751200"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API 管理 Dapr 集成策略
 
@@ -83,13 +83,13 @@ template:
 
 ### <a name="elements"></a>元素
 
-| 元素             | 描述  | 必须 |
+| 元素             | 说明  | 必须 |
 |---------------------|--------------|----------|
 | set-backend-service | Root 元素 | 是      |
 
 ### <a name="attributes"></a>属性
 
-| 属性        | 描述                     | 必须 | 默认 |
+| 属性        | 说明                     | 必须 | 默认 |
 |------------------|---------------------------------|----------|---------|
 | backend-id       | 必须设置为“dapr”           | 是      | 不适用     |
 | dapr-app-id      | 目标微服务的名称。 映射到 Dapr 中的 [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) 参数。| 是 | 不适用 |
@@ -151,13 +151,13 @@ template:
 
 ### <a name="elements"></a>元素
 
-| 元素             | 描述  | 必需 |
+| 元素             | 说明  | 必需 |
 |---------------------|--------------|----------|
 | publish-to-dapr     | Root 元素 | 是      |
 
 ### <a name="attributes"></a>属性
 
-| 属性        | 描述                     | 必须 | 默认 |
+| 属性        | 说明                     | 必须 | 默认 |
 |------------------|---------------------------------|----------|---------|
 | pubsub-name      | 目标 PubSub 组件的名称。 映射到 Dapr 中的 [pubsubname](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) 参数。 如果不存在，则 topic 属性值必须采用 `pubsub-name/topic-name` 形式。    | 否       | 无    |
 | 主题            | 主题的名称。 映射到 Dapr 中的 [topic](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) 参数。               | 是      | 空值     |
@@ -234,7 +234,7 @@ template:
 
 ### <a name="elements"></a>元素
 
-| 元素             | 描述  | 必需 |
+| 元素             | 说明  | 必需 |
 |---------------------|--------------|----------|
 | invoke-dapr-binding | Root 元素 | 是      |
 | metadata            | 以键/值对的形式绑定特定的元数据。 映射到 Dapr 中的[元数据](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings)属性。 | 否 |
@@ -243,7 +243,7 @@ template:
 
 ### <a name="attributes"></a>属性
 
-| 属性        | 描述                     | 必须 | 默认 |
+| 属性        | 说明                     | 必须 | 默认 |
 |------------------|---------------------------------|----------|---------|
 | name            | 目标绑定名称。 必须与 Dapr 中的[已定义](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#bindings-structure)的绑定名称匹配。           | 是      | 不适用     |
 | operation       | 目标操作名称（特定于绑定）。 映射到 Dapr 中的[操作](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings)属性。 | 否 | 无 |

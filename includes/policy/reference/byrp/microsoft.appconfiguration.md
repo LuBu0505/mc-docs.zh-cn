@@ -3,15 +3,15 @@ author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
 origin.date: 01/08/2021
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 6bde6192702c746f612adf63842ff853f14846b4
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 8fd81e8f7fe4db54588e867a80ef2e2e9eaab8a2
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230262"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059063"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|

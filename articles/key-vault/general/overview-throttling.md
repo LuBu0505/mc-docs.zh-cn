@@ -8,14 +8,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 origin.date: 12/02/2019
-ms.date: 11/27/2020
+ms.date: 01/14/2021
 ms.author: v-tawe
-ms.openlocfilehash: cf66ca8624df71685414233262e6d136191d23ac
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 916d5539a5367cba05d173a6809cdeab89a9a7cb
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300939"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058968"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault 限制指南
 
@@ -40,9 +40,9 @@ Key Vault 最初是根据 [Azure Key Vault 服务限制](service-limits.md)中�
 1. 如果应用包含多个需要读取相同机密的节点，请考虑使用扇出模式，让一个实体从 Key Vault 读取机密，并扇出到所有节点。   仅在内存中缓存检索的机密。
 如果你发现上述方案仍不能满足需求，请填写下表并联系我们，以确定可以添加多少附加容量（例如，以下示例仅供演示目的）。
 
-| 保管库名称 | 保管库区域 | 对象类型（机密、密钥或证书） | 操作* | 键类型 | 密钥长度或曲线 | HSM 密钥？| 所需的稳定状态 RPS | 所需的峰值 RPS |
-|--|--|--|--|--|--|--|--|--|
-| https://mykeyvault.vault.azure.cn/ | | 键 | 签名 | EC | P-256 | 否 | 200 | 1000 |
+| 保管库名称 | 保管库区域 | 对象类型（机密、密钥或证书） | 操作* | 键类型 | 密钥长度或曲线 | 所需的稳定状态 RPS | 所需的峰值 RPS |
+|--|--|--|--|--|--|--|--|
+| https://mykeyvault.vault.azure.cn/ | | 键 | 签名 | EC | P-256 | 200 | 1000 |
 
 \* 有关可能值的完整列表，请参阅 [Azure Key Vault 操作](https://docs.microsoft.com/rest/api/keyvault/key-operations)。
 

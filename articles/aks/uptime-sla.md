@@ -3,28 +3,32 @@ title: Azure Kubernetes 服务 (AKS) 与运行时间 SLA
 description: 了解 Azure Kubernetes 服务 (AKS) API 服务器的可选运行时间 SLA 产品/服务。
 services: container-service
 ms.topic: conceptual
-origin.date: 06/24/2020
+origin.date: 01/08/2021
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 11/20/2020
 ms.author: v-yeche
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 2afb03af6d39ed7c7fda8b2eea636cf6ce69fbd6
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: aed5dc3671a280830e4c3474dc44737613eaaa91
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021688"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063659"
 ---
 <!--Verified successfully-->
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes 服务 (AKS) 运行时间 SLA
 
 运行时间 SLA 是一个可选功能，用于为群集启用具有财务支持的更高 SLA。 对于不使用可用性区域的群集，运行时间 SLA 可保证 Kubernetes API 服务器终结点 99.9% 的可用性。 AKS 跨更新域和容错域使用主节点副本，以确保满足 SLA 要求。
 
+<!--CORRECT ON 99.9% availability for clusters that don't use Availability Zones-->
 <!--Not Available on [Availability Zones][availability-zones]-->
 
-客户如果需要 SLA 以满足合规性要求或需要将 SLA 扩展到其最终用户，则应启用此功能。 具有将从更高的运行时间 SLA 中受益的关键工作负载的客户也可能受益。 将运行时间 SLA 功能与可用性区域结合使用可以提高 Kubernetes API 服务器运行时间的可用性。  
+客户如果需要 SLA 以满足合规性要求或需要将 SLA 扩展到其最终用户，则应启用此功能。 具有将从更高的运行时间 SLA 中受益的关键工作负载的客户也可能受益。
+
+<!--Not Available on  Using the Uptime SLA feature with Availability Zones enables a higher availability for the uptime of the Kubernetes API server.-->
+<!--Not Available on FEATURE Availability Zone-->
 
 客户仍可以创建服务级别目标 (SLO) 为 99.5% 的无限制免费群集，并根据需要选择首选 SLO 或 SLA 运行时间。
 
@@ -33,7 +37,7 @@ ms.locfileid: "98021688"
 
 ## <a name="region-availability"></a>上市区域
 
-* 运行时间 SLA 在[支持 AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service&regions=,china-non-regional,china-east,china-east-2,china-north,china-north-2,) 的 Azure 中国云区域提供。
+* 运行时间 SLA 在[支持 AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service&regions=china-non-regional,china-east,china-east-2,china-north,china-north-2) 的 Azure 中国云区域提供。
 * 在支持 AKS 的所有区域中，[专用 AKS 群集][private-clusters]都可以使用运行时间 SLA。
 
 ## <a name="sla-terms-and-conditions"></a>SLA 条款和条件
@@ -66,11 +70,11 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --uptime-sla 
 片刻之后，该命令将会完成，并返回有关群集的 JSON 格式信息。 下面的 JSON 片段显示了 SKU 的付费层，表明群集已启用了运行时间 SLA：
 
 ```output
-},
-"sku": {
-"name": "Basic",
-"tier": "Paid"
-},
+  },
+  "sku": {
+    "name": "Basic",
+    "tier": "Paid"
+  },
 ```
 
 ## <a name="modify-an-existing-cluster-to-use-uptime-sla"></a>修改现有群集以使用运行时间 SLA
@@ -98,7 +102,7 @@ az group create --name myResourceGroup --location chinaeast2
 az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1
 ```
 
-使用 [`az aks update`][az-aks-nodepool-update] 命令更新现有群集：
+使用 [`az aks update`][az-aks-update] 命令更新现有群集：
 
 ```azurecli
 # Update an existing cluster to use Uptime SLA
@@ -125,7 +129,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>后续步骤
 
-<!--Not Available on Use [Availability Zones][availability-zones]-->
+<!--NOT AVAILABLE ON [Availability Zones][availability-zones]-->
 
 将群集配置为[限制出口流量](limit-egress-traffic.md)。
 
@@ -140,14 +144,14 @@ az group delete --name myResourceGroup --yes --no-wait
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [faq]: ./faq.md
     
-<!--Not Available on [availability-zones]: ./availability-zones.md-->
+<!--NOT AVAILABLE ON [availability-zones]: ./availability-zones.md-->
 
 [az-aks-create]: https://docs.azure.cn/cli/aks#az_aks_create
 [limit-egress-traffic]: ./limit-egress-traffic.md
 [az-extension-add]: https://docs.azure.cn/cli/extension#az_extension_add
 [az-extension-update]: https://docs.azure.cn/cli/extension#az_extension_update
-[az-aks-nodepool-update]: https://docs.azure.cn/cli/aks/nodepool#az_aks_nodepool_update
+[az-aks-update]: https://docs.azure.cn/cli/aks?view=azure-cli-latest&preserve-view=true#az_aks_update
 [az-group-delete]: https://docs.azure.cn/cli/group#az_group_delete
 [private-clusters]: private-clusters.md
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

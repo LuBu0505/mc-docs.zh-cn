@@ -5,15 +5,15 @@ services: azure-monitor
 author: bwren
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 01/25/2021
 ms.author: v-junlch
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 14afba988b0adee7d79c2cbb40a76076d4fe404c
-ms.sourcegitcommit: 2eb5a2f53b4b73b88877e962689a47d903482c18
+ms.openlocfilehash: 619cfa7a7e9b9dadf56ce51b5db2511100d8f564
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89413273"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058782"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>在 Azure 存储中存储和查看诊断数据
 诊断数据不会永久存储，除非将其传输到 Azure 存储模拟器或 Azure 存储。 一旦位于存储空间中，诊断数据就可以使用提供的工具之一进行查看。

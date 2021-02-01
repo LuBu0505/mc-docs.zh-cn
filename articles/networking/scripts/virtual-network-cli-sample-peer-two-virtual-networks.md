@@ -11,15 +11,15 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 origin.date: 07/07/2017
-ms.date: 09/02/2020
+ms.date: 02/01/2021
 ms.author: v-tawe
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b64c55657b5dd78db6b9ce543ccc14a3d0a016b9
-ms.sourcegitcommit: 4f936264ddb502ff61623892f57067e935ef6e42
+ms.openlocfilehash: de359643cca75c0e2730ef0646204b25f3485641
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89316403"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060071"
 ---
 # <a name="use-an-azure-cli-sample-script-to-connect-two-virtual-networks"></a>使用 Azure CLI 示例脚本连接两个虚拟网络
 

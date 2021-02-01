@@ -3,19 +3,19 @@ title: Azure 上的 Kubernetes 教程 - 创建容器注册表
 description: 在本 Azure Kubernetes 服务 (AKS) 教程中，请创建 Azure 容器注册表实例并上传示例应用程序容器映像。
 services: container-service
 ms.topic: tutorial
-origin.date: 09/30/2020
+origin.date: 01/12/2021
 author: rockboyfor
-ms.date: 11/30/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 03/09/2020
 ms.author: v-yeche
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: e2151fd1a68da1c197b5b53adbb0f3b00c3827dc
-ms.sourcegitcommit: ea52237124974eda84f8cef4bf067ae978d7a87d
+ms.openlocfilehash: 044375b3c9125e60b26f722f0ef41643aff23a6d
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024481"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063671"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>教程：部署并使用 Azure 容器注册表
 
@@ -27,7 +27,7 @@ Azure 容器注册表 (ACR) 是容器映像的专用注册表。 可以通过专
 > * 向 ACR 上传映像
 > * 查看注册表中的映像
 
-在其他教程中，此 ACR 实例将与 AKS 中的 Kubernetes 群集集成，而应用程序则通过映像进行部署。
+在后面的教程中，此 ACR 实例将与 AKS 中的 Kubernetes 群集集成，而应用程序则通过映像进行部署。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -65,12 +65,12 @@ az acr login --name <acrName>
 
 若要查看当前的本地映像的列表，请使用 [docker images][docker-images] 命令：
 
-```azurecli
+```console
 $ docker images
 ```
 上述命令输出显示当前本地图像的列表：
 
-```
+```output
 REPOSITORY                                     TAG                 IMAGE ID            CREATED             SIZE
 mcr.microsoft.com/azuredocs/azure-vote-front   v1                  84b41c268ad9        7 minutes ago       944MB
 mcr.microsoft.com/oss/bitnami/redis            6.0.8               3a54a920bb6c        2 days ago          103MB
@@ -127,7 +127,7 @@ az acr repository list --name <acrName> --output table
 
 以下示例输出将 *azure-vote-front* 映像列为在注册表中可用：
 
-```
+```output
 Result
 ----------------
 azure-vote-front
@@ -141,7 +141,7 @@ az acr repository show-tags --name <acrName> --repository azure-vote-front --out
 
 以下示例输出显示在上一步标记的 *v1* 映像：
 
-```
+```output
 Result
 --------
 v1
@@ -182,4 +182,4 @@ v1
 [aks-tutorial-deploy-cluster]: ./tutorial-kubernetes-deploy-cluster.md
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

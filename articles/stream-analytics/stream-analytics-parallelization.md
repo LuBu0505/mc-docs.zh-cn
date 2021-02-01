@@ -3,17 +3,16 @@ title: 在 Azure 流分析中使用查询并行化和缩放功能
 description: 本文介绍如何通过配置输入分区、优化查询定义和设置作业流单元来缩放流分析作业。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 05/07/2018
-ms.date: 01/07/2021
-ms.openlocfilehash: c314a55e748bac3b34edcce615b8fb85e2efeff0
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.date: 01/25/2021
+ms.openlocfilehash: 9244cdd1adf33053d493dcb6e2e6f92adaec1151
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023154"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059732"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>利用 Azure 流分析中的查询并行化
 本文说明了如何利用 Azure 流分析中的并行化。 了解如何通过配置输入分区和调整分析查询定义来缩放流分析作业。

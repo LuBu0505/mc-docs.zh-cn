@@ -6,14 +6,14 @@ author: lisaguthrie
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: quickstart
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.author: lcozzens
-ms.openlocfilehash: ab7074493075a2cd97f5bd50661e748b7f657d57
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: bac49a7425624e02a46845fd87c888f33cbeefd7
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230269"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059068"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用程序配置创建 Azure Functions 应用
 
@@ -44,7 +44,7 @@ ms.locfileid: "98230269"
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
-此项目将使用 [.NET Azure Functions 中的依赖项注入](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-dependency-injection)，并将 Azure 应用程序配置添加为额外的配置源。
+此项目将使用 [.NET Azure Functions 中的依赖项注入](../azure-functions/functions-dotnet-dependency-injection.md)，并将 Azure 应用程序配置添加为额外的配置源。
 
 1. 右键单击项目，然后选择“管理 NuGet 包”  。 在“浏览”选项卡中，搜索以下 NuGet 包并将其添加到项目中。
    - [Microsoft.Extensions.Configuration.AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) 版本 4.1.0 或更高版本

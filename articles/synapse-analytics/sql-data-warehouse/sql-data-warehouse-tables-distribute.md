@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 origin.date: 04/17/2018
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: a7f2fe081c4b277d6a97a0e945ac704a6660afbc
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: c122d1438db4ea004a8617a1ee602be262cc0ab1
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022558"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060114"
 ---
 # <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用专用 SQL 池设计分布式表的指南
 
@@ -69,7 +69,7 @@ ms.locfileid: "98022558"
 - 该联接比查询中的其他联接更不重要时
 - 表是临时过渡表时
 
-教程[加载纽约出租车数据](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse)提供了将数据加载到轮循机制临时表的示例。
+教程[加载纽约出租车数据](./load-data-from-azure-blob-storage-using-copy.md#load-the-data-into-your-data-warehouse)提供了将数据加载到轮循机制临时表的示例。
 
 ## <a name="choosing-a-distribution-column"></a>选择分布列
 

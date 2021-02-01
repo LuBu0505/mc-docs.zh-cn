@@ -3,14 +3,14 @@ title: Azure Functions JavaScript 开发者参考
 description: 了解如何使用 JavaScript 开发函数。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 01/27/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 978c72592d0d02f6e93ea8e26a154864074dc052
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 9268fae1dac6fc63ab8a47b00a14d56a640d5ece
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195030"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060093"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
@@ -567,7 +567,7 @@ module.exports = function(context) {
 
 ### <a name="in-local-development-environment"></a>在本地开发环境中
 
-在本地运行时，函数项目包括一个 [`local.settings.json` 文件](/azure-functions/functions-run-local)，你可以在其中将环境变量存储到 `Values` 对象中。 
+在本地运行时，函数项目包括一个 [`local.settings.json` 文件](./functions-run-local.md)，你可以在其中将环境变量存储到 `Values` 对象中。 
 
 ```json
 {
@@ -814,4 +814,3 @@ module.exports = async function (context) {
 + [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 
 [`func azure functionapp publish`]: functions-run-local.md#project-file-deployment
-

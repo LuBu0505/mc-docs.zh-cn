@@ -3,17 +3,16 @@ title: Azure 流分析作业状态
 description: 本文介绍了流分析作业的四种不同状态：正在运行、已停止、已降级和失败。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 06/21/2019
-ms.date: 11/16/2020
-ms.openlocfilehash: 7077b99af69ed70ad39da70b6cd9642612c2b9e3
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.date: 01/25/2021
+ms.openlocfilehash: 12ce92e431b727c6ba455a8bdb7fccc609cd4ec8
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978109"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060119"
 ---
 # <a name="azure-stream-analytics-job-states"></a>Azure 流分析作业状态
 

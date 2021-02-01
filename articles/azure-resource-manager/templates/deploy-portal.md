@@ -2,17 +2,18 @@
 title: 使用 Azure 门户部署资源
 description: 使用 Azure 门户和 Azure 资源管理器将资源部署到订阅中的资源组。
 ms.topic: conceptual
+origin.date: 10/22/2020
 author: rockboyfor
-ms.date: 11/23/2020
+ms.date: 01/25/2021
 ms.testscope: yes
 ms.testdate: 07/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 67461ae72fbe886db4e5345c15a1850f902cbcce
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 5c885e40b18e15cd9ccc58a1beee9972285c6855
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978165"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751144"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>使用 ARM 模板和 Azure 门户部署资源
 
@@ -95,7 +96,7 @@ ms.locfileid: "94978165"
 
     - 在编辑器中生成自己的模板：在门户模板编辑器中创建自己的模板。
     - **常用模板**：从常见解决方案中进行选择。
-    - 加载 GitHub 快速启动模板：从[快速启动模板](https://azure.microsoft.com/resources/templates/)中进行选择。
+    - 加载 GitHub 快速启动模板：从[快速启动模板](https://github.com/Azure/azure-quickstart-templates/)中进行选择。
 
         :::image type="content" source="./media/deploy-portal/see-options.png" alt-text="视图选项":::
 
@@ -108,11 +109,11 @@ ms.locfileid: "94978165"
     - **选择模板**：部署模板。
     - **编辑模板**：在部署快速入门模板之前对其进行编辑。
 
-1. 选择“编辑模板”，浏览门户模板编辑器。 模板会加载到编辑器中。 请注意，有两个参数：**storageAccountType** 和 **location**。
+1. 选择“编辑模板”，浏览门户模板编辑器。 模板会加载到编辑器中。 请注意，有两个参数：`storageAccountType` 和 `location`。
 
     :::image type="content" source="./media/deploy-portal/show-json.png" alt-text="创建模板":::
 
-1. 对模板进行小的更改。 例如，将 **storageAccountName** 变量更新为：
+1. 对模板进行小的更改。 例如，将 `storageAccountName` 变量更新为：
 
     ```json
     "storageAccountName": "[concat('azstore', uniquestring(resourceGroup().id))]"

@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 title: Apache Spark 简介- Azure Databricks
 description: 了解如何开始使用 Apache Spark。
 toc-description: New to Apache Spark? Write your first Apache Spark application, create a DataFrame and Dataset, do some basic machine learning, and learn how to handle streaming data.
-ms.openlocfilehash: ecbc337f054c39c9228824c358298dbc297cbd7a
-ms.sourcegitcommit: 16af84b41f239bb743ddbc086181eba630f7f3e8
+ms.openlocfilehash: 56a8d8ba9d4d5f700dac00ff02468a309738defb
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94589640"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059961"
 ---
 # <a name="introduction-to-apache-spark"></a>Apache Spark 简介
 
@@ -40,7 +40,7 @@ ms.locfileid: "94589640"
   * [查看数据集](datasets.md#view-the-dataset)
   * [处理和可视化数据集](datasets.md#process-and-visualize-the-dataset)
   * [笔记本](datasets.md#notebook)
-* [开始使用 Apache Spark MLlib 进行机器学习](machine-learning.md)
+* [机器学习教程](machine-learning.md)
   * [笔记本](machine-learning.md#notebook)
 * [结构化流教程](streaming.md)
   * [加载示例数据](streaming.md#load-sample-data)

@@ -4,16 +4,16 @@ description: 解决 Key Vault 的常见专用链接问题并深入探讨配置
 author: msfcolombo
 ms.author: v-tawe
 origin.date: 09/30/2020
-ms.date: 12/11/2020
+ms.date: 01/14/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 24f9ae44957b34796a04548841017a0fb1c59c57
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: 357fb20a63bedc1e3c2e454de411b7ffb67e8644
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97105605"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058566"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>诊断 Azure Key Vault 上的专用链接配置问题
 
@@ -51,13 +51,13 @@ ms.locfileid: "97105605"
 
 <!-- By definition of private links, the application, script or portal must be running on machine, cluster, or environment connected to the Virtual Network where the [Private Endpoint resource](../../private-link/private-endpoint-overview.md) was deployed. -->
 
-如果应用程序、脚本或门户在连接 Internet 的任意网络上运行，则本指南不适用，并且专用链接可能无法使用。 此限制也适用于在 Azure Cloud Shell 中执行的命令，因为它们在按需提供的远程 Azure 计算机而不是用户浏览器中运行。
+如果应用程序、脚本或门户在连接 Internet 的任意网络上运行，则本指南不适用，并且专用链接可能无法使用。
 
 ### <a name="if-you-use-a-managed-solution-refer-to-specific-documentation"></a>如果使用托管解决方案，请参阅特定文档
 
 本指南不适用于 Microsoft 管理的解决方案，其中的密钥保管库由独立于客户虚拟网络而存在的 Azure 产品访问。 此类方案的示例包括：针对静态加密配置的 Azure 存储或 Azure SQL、使用客户提供的密钥来加密数据的 Azure 事件中心、访问在密钥保管库中存储的服务凭据的 Azure 数据工厂、从密钥保管库检索机密的 Azure Pipelines，以及其他类似方案。 在这些情况下，必须检查产品是否支持启用了防火墙的密钥保管库。 此支持通常与 Key Vault 防火墙的[受信任服务](overview-vnet-service-endpoints.md#trusted-services)功能一起执行。 不过，由于各种原因，许多产品并未包含在受信任服务的列表中。 在这种情况下，请联系特定于产品的支持人员。
 
-<!-- A small number of Azure products supports the concept of _vnet injection_. In simple terms, the product adds a network device into the customer Virtual Network, allowing it to send requests as if was deployed to the Virtual Network. A notable example is [Azure Databricks](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject). Products like this can make requests to the key vault using the private links, and this troubleshooting guide may help. -->
+<!-- A small number of Azure products supports the concept of _vnet injection_. In simple terms, the product adds a network device into the customer Virtual Network, allowing it to send requests as if was deployed to the Virtual Network. A notable example is [Azure Databricks](https://docs.azure.cn/databricks/administration-guide/cloud-configurations/azure/vnet-inject). Products like this can make requests to the key vault using the private links, and this troubleshooting guide may help. -->
 
 ## <a name="2-confirm-that-the-connection-is-approved-and-succeeded"></a>2.确认连接已获得批准并成功
 
@@ -151,8 +151,8 @@ C:\> nslookup fabrikam.vault.azure.cn
 Non-authoritative answer:
 Address:  52.168.109.101
 Aliases:  fabrikam.vault.azure.cn
-          data-prod-eus.vaultcore.azure.net
-          data-prod-eus-region.vaultcore.azure.net
+          data-prod-eus.vaultcore.chinacloudapi.cn
+          data-prod-eus-region.vaultcore.chinacloudapi.cn
 ```
 
 Linux：
@@ -162,9 +162,9 @@ joe@MyUbuntu:~$ host fabrikam.vault.azure.cn
 ```
 
 ```output
-fabrikam.vault.azure.cn is an alias for data-prod-eus.vaultcore.azure.net.
-data-prod-eus.vaultcore.azure.net is an alias for data-prod-eus-region.vaultcore.azure.net.
-data-prod-eus-region.vaultcore.azure.net has address 52.168.109.101
+fabrikam.vault.azure.cn is an alias for data-prod-eus.vaultcore.chinacloudapi.cn.
+data-prod-eus.vaultcore.chinacloudapi.cn is an alias for data-prod-eus-region.vaultcore.chinacloudapi.cn.
+data-prod-eus-region.vaultcore.chinacloudapi.cn has address 52.168.109.101
 ```
 
 可以看到名称解析为公共 IP 地址，没有 `privatelink` 别名。 稍后我们会对此别名进行说明，现在不用管它。
@@ -185,9 +185,9 @@ C:\> nslookup fabrikam.vault.azure.cn
 Non-authoritative answer:
 Address:  52.168.109.101
 Aliases:  fabrikam.vault.azure.cn
-          fabrikam.privatelink.vaultcore.azure.net
-          data-prod-eus.vaultcore.azure.net
-          data-prod-eus-region.vaultcore.azure.net
+          fabrikam.privatelink.vaultcore.chinacloudapi.cn
+          data-prod-eus.vaultcore.chinacloudapi.cn
+          data-prod-eus-region.vaultcore.chinacloudapi.cn
 ```
 
 Linux：
@@ -197,13 +197,13 @@ joe@MyUbuntu:~$ host fabrikam.vault.azure.cn
 ```
 
 ```output
-fabrikam.vault.azure.cn is an alias for fabrikam.privatelink.vaultcore.azure.net.
-fabrikam.privatelink.vaultcore.azure.net is an alias for data-prod-eus.vaultcore.azure.net.
-data-prod-eus.vaultcore.azure.net is an alias for data-prod-eus-region.vaultcore.azure.net.
-data-prod-eus-region.vaultcore.azure.net has address 52.168.109.101
+fabrikam.vault.azure.cn is an alias for fabrikam.privatelink.vaultcore.chinacloudapi.cn.
+fabrikam.privatelink.vaultcore.chinacloudapi.cn is an alias for data-prod-eus.vaultcore.chinacloudapi.cn.
+data-prod-eus.vaultcore.chinacloudapi.cn is an alias for data-prod-eus-region.vaultcore.chinacloudapi.cn.
+data-prod-eus-region.vaultcore.chinacloudapi.cn has address 52.168.109.101
 ```
 
-与上一方案明显不同的是，有一个值为 `{vaultname}.privatelink.vaultcore.azure.net` 的新别名。 这意味着密钥保管库数据平面已准备好接受来自专用链接的请求。
+与上一方案明显不同的是，有一个值为 `{vaultname}.privatelink.vaultcore.chinacloudapi.cn` 的新别名。 这意味着密钥保管库数据平面已准备好接受来自专用链接的请求。
 
 这并不意味着从虚拟网络之外的计算机执行的请求（例如刚才使用的请求）会使用专用链接 - 它们不会这样做。 可以从主机名仍解析为公共 IP 地址这一事实看到这一点。 只有连接到虚拟网络的计算机才能使用专用链接。 稍后会详述这一点。
 
@@ -223,7 +223,7 @@ C:\> nslookup fabrikam.vault.azure.cn
 Non-authoritative answer:
 Address:  10.1.2.3
 Aliases:  fabrikam.vault.azure.cn
-          fabrikam.privatelink.vaultcore.azure.net
+          fabrikam.privatelink.vaultcore.chinacloudapi.cn
 ```
 
 Linux：
@@ -233,11 +233,11 @@ joe@MyUbuntu:~$ host fabrikam.vault.azure.cn
 ```
 
 ```output
-fabrikam.vault.azure.cn is an alias for fabrikam.privatelink.vaultcore.azure.net.
-fabrikam.privatelink.vaultcore.azure.net has address 10.1.2.3
+fabrikam.vault.azure.cn is an alias for fabrikam.privatelink.vaultcore.chinacloudapi.cn.
+fabrikam.privatelink.vaultcore.chinacloudapi.cn has address 10.1.2.3
 ```
 
-有两个明显的区别。 首先，名称解析为专用 IP 地址。 该地址必须是在本文[相应部分](#find-the-key-vault-private-ip-address-in-the-virtual-network)找到的 IP 地址。 其次，`privatelink` 别名后面没有其他别名。 出现这种情况的原因是，虚拟网络 DNS 服务器会截获别名链，并直接从名称 `fabrikam.privatelink.vaultcore.azure.net` 返回专用 IP 地址。 该条目实际上是专用 DNS 区域中的 `A` 记录。 稍后会详述这一点。
+有两个明显的区别。 首先，名称解析为专用 IP 地址。 该地址必须是在本文[相应部分](#find-the-key-vault-private-ip-address-in-the-virtual-network)找到的 IP 地址。 其次，`privatelink` 别名后面没有其他别名。 出现这种情况的原因是，虚拟网络 DNS 服务器会截获别名链，并直接从名称 `fabrikam.privatelink.vaultcore.chinacloudapi.cn` 返回专用 IP 地址。 该条目实际上是专用 DNS 区域中的 `A` 记录。 稍后会详述这一点。
 
 > [!NOTE]
 > 上述结果仅发生在一台虚拟机上，该虚拟机已连接到在其中创建了专用终结点的虚拟网络。 如果没有在包含专用终结点的虚拟网络中部署 VM，请部署一台并通过远程方式连接到该 VM，然后执行上面的 `nslookup` 命令 (Windows) 或 `host` 命令 (Linux)。
@@ -252,13 +252,13 @@ fabrikam.privatelink.vaultcore.azure.net has address 10.1.2.3
 
 Azure 订阅必须有[专用 DNS 区域](../../dns/private-dns-privatednszone.md)资源，该资源必须有以下确切名称：
 
-`privatelink.vaultcore.azure.net`
+`privatelink.vaultcore.chinacloudapi.cn`
 
-可以通过转到门户中的订阅页并选择左侧菜单中的“资源”来检查该资源是否存在。 资源名称必须是 `privatelink.vaultcore.azure.net`，资源类型必须是“专用 DNS 区域”。
+可以通过转到门户中的订阅页并选择左侧菜单中的“资源”来检查该资源是否存在。 资源名称必须是 `privatelink.vaultcore.chinacloudapi.cn`，资源类型必须是“专用 DNS 区域”。
 
 通常情况下，当你使用通用过程创建专用终结点时，系统会自动创建该资源。 但在某些情况下，系统不会自动创建该资源，你必须手动创建它。 该资源也可能已被意外删除。
 
-如果没有该资源，请在订阅中创建新的专用 DNS 区域资源。 请记住，名称必须与 `privatelink.vaultcore.azure.net` 完全一致，不包含空格或其他点。 如果指定的名称不正确，则本文所述的名称解析将不起作用。 若要详细了解如何创建此资源，请参阅[使用 Azure 门户创建 Azure 专用 DNS 区域](../../dns/private-dns-getstarted-portal.md)。 如果按该页的要求操作，则可以跳过虚拟网络创建操作，因为你此时应该已经有一个虚拟网络。 还可以跳过通过虚拟机进行的验证过程。
+如果没有该资源，请在订阅中创建新的专用 DNS 区域资源。 请记住，名称必须与 `privatelink.vaultcore.chinacloudapi.cn` 完全一致，不包含空格或其他点。 如果指定的名称不正确，则本文所述的名称解析将不起作用。 若要详细了解如何创建此资源，请参阅[使用 Azure 门户创建 Azure 专用 DNS 区域](../../dns/private-dns-getstarted-portal.md)。 如果按该页的要求操作，则可以跳过虚拟网络创建操作，因为你此时应该已经有一个虚拟网络。 还可以跳过通过虚拟机进行的验证过程。
 
 ### <a name="confirm-that-the-private-dns-zone-is-linked-to-the-virtual-network"></a>确认专用 DNS 区域已链接到虚拟网络
 
@@ -273,7 +273,7 @@ Azure 订阅必须有[专用 DNS 区域](../../dns/private-dns-privatednszone.md
 
 ### <a name="confirm-that-the-private-dns-zone-contains-the-right-a-record"></a>确认专用 DNS 区域包含正确的 A 记录
 
-请使用门户打开名为 `privatelink.vaultcore.azure.net` 的专用 DNS 区域。 “概述”页会显示所有记录。 默认情况下，会有一条名称为 `@` 且类型 `SOA` 的记录，这表示“起始授权机构”。 请勿对其执行任何操作。
+请使用门户打开名为 `privatelink.vaultcore.chinacloudapi.cn` 的专用 DNS 区域。 “概述”页会显示所有记录。 默认情况下，会有一条名称为 `@` 且类型 `SOA` 的记录，这表示“起始授权机构”。 请勿对其执行任何操作。
 
 若要使密钥保管库名称解析生效，必须有一个 `A` 记录，该记录使用简单的保管库名称，不含后缀或点。 例如，如果主机名为 `fabrikam.vault.azure.cn`，则必须存在名称为 `fabrikam` 且不含任何后缀或点的 `A` 记录。
 
@@ -290,9 +290,9 @@ Azure 订阅必须有[专用 DNS 区域](../../dns/private-dns-privatednszone.md
 
 ### <a name="understand-that-you-have-control-over-dns-resolution"></a>明白你可以控制 DNS 解析
 
-如[上一部分](#key-vault-with-private-link-resolving-from-arbitrary-internet-machine)所述，具有专用链接的密钥保管库在其公共注册中的别名为 `{vaultname}.privatelink.vaultcore.azure.net`。 虚拟网络所用的 DNS 服务器使用公共注册，但会检查每个别名是否有专用注册，在找到专用注册的情况下不再遵循在公共注册中定义的别名。
+如[上一部分](#key-vault-with-private-link-resolving-from-arbitrary-internet-machine)所述，具有专用链接的密钥保管库在其公共注册中的别名为 `{vaultname}.privatelink.vaultcore.chinacloudapi.cn`。 虚拟网络所用的 DNS 服务器使用公共注册，但会检查每个别名是否有专用注册，在找到专用注册的情况下不再遵循在公共注册中定义的别名。
 
-此逻辑意味着，如果虚拟网络链接到名为 `privatelink.vaultcore.azure.net` 的专用 DNS 区域，并且密钥保管库的公共 DNS 注册别名为 `fabrikam.privatelink.vaultcore.azure.net`（注意，密钥保管库主机名后缀与专用 DNS 区域名称精确匹配），则 DNS 查询会在专用 DNS 区域中查找名称为 `fabrikam` 的 `A` 记录。 如果找到 `A` 记录，则会在 DNS 查询中返回其 IP 地址，不再在公共 DNS 注册中进一步查找。
+此逻辑意味着，如果虚拟网络链接到名为 `privatelink.vaultcore.chinacloudapi.cn` 的专用 DNS 区域，并且密钥保管库的公共 DNS 注册别名为 `fabrikam.privatelink.vaultcore.chinacloudapi.cn`（注意，密钥保管库主机名后缀与专用 DNS 区域名称精确匹配），则 DNS 查询会在专用 DNS 区域中查找名称为 `fabrikam` 的 `A` 记录。 如果找到 `A` 记录，则会在 DNS 查询中返回其 IP 地址，不再在公共 DNS 注册中进一步查找。
 
 可以看到，你可以控制名称解析。 之所以进行此设计，根本原因是：
 

@@ -4,15 +4,15 @@ description: 如何准备一个与 cloud-init 配合用来完成部署的现有 
 author: Johnnytechn
 ms.service: virtual-machines-linux
 ms.subservice: imaging
-ms.topic: article
-ms.date: 06/05/2020
+ms.topic: how-to
+ms.date: 01/21/2021
 ms.author: v-johya
-ms.openlocfilehash: 76986d1751e92737e461982a18c15d32b27d0077
-ms.sourcegitcommit: 285649db9b21169f3136729c041e4d04d323229a
+ms.openlocfilehash: 612b7f25c65186fdbc098e73696516122bea854e
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84683996"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751048"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>准备与 cloud-init 配合使用的现有 Linux Azure VM 映像
 本文介绍如何选择一个现有的 Azure 虚拟机，使其准备好重新部署并可使用 cloud-init。 生成的映像可用于部署新的虚拟机或虚拟机规模集 - 然后，可以在部署时通过 cloud-init 进一步对其进行自定义。  Azure 预配资源后，这些 cloud-init 脚本即会在第一次启动时运行。 有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)
@@ -29,7 +29,7 @@ ms.locfileid: "84683996"
 ```bash
 sudo yum makecache fast
 sudo yum install -y gdisk cloud-utils-growpart
-sudo yum install - y cloud-init 
+sudo yum install -y cloud-init 
 ```
 
 更新 `/etc/cloud/cloud.cfg` 中的 `cloud_init_modules` 节以包含以下模块：

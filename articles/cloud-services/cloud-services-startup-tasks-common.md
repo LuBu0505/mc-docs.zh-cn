@@ -1,19 +1,19 @@
 ---
 title: 云服务的常见启动任务 |Microsoft Docs
 description: 提供了一些可能需要在云服务 Web 角色或辅助角色中执行的常见启动任务示例。
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 10/20/2020
+ms.service: cloud-services
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: af02a2b27a7267e2d95fd1991f6f2a3e15cff6a5
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: e65f06811f3ee2f857b9d47223a192a0bfcbfd34
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472619"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058801"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>常见的云服务启动任务
 本文提供了一些可能需要在云服务中执行的常见启动任务示例。 角色启动之前，可以使用启动任务执行操作。 可能需要执行的操作包括安装组件、注册 COM 组件、设置注册表项或启动长时间运行的进程。 
@@ -52,13 +52,13 @@ ms.locfileid: "92472619"
 
 
 ## <a name="configure-iis-startup-with-appcmdexe"></a>使用 AppCmd.exe 配置 IIS 启动
-[AppCmd.exe](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj635852(v=ws.11)) 命令行工具在 Azure 上启动时可用于管理 IIS 设置。 AppCmd.exe 对要在 Azure 上的启动任务中使用的配置设置提供方便的命令行访问。 使用 *AppCmd.exe* ，可以为应用程序和站点添加、修改或删除网站设置。
+[AppCmd.exe](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj635852(v=ws.11)) 命令行工具在 Azure 上启动时可用于管理 IIS 设置。 AppCmd.exe 对要在 Azure 上的启动任务中使用的配置设置提供方便的命令行访问。 使用 *AppCmd.exe*，可以为应用程序和站点添加、修改或删除网站设置。
 
 但是，在使用 *AppCmd.exe* 作为启动任务时有几点需要注意：
 
 * 启动任务在重新启动之间可以运行多次。 例如，当角色回收时。
 * 如果多次执行 *AppCmd.exe* 操作，则可能会生成错误。 例如，尝试将某个节添加到 *Web.config* 中两次会生成错误。
-* 如果启动任务返回非零退出代码或 **errorlevel** ，则为失败。 例如，当 *AppCmd.exe* 生成了错误时。
+* 如果启动任务返回非零退出代码或 **errorlevel**，则为失败。 例如，当 *AppCmd.exe* 生成了错误时。
 
 比较明智的做法是在调用 AppCmd.exe 之后检查 errorlevel，如果使用 .cmd 文件包装对 AppCmd.exe 的调用，则很容易做到这一点  。 如果检测到已知的 **errorlevel** 响应，可以将其忽略，或将其返回。
 
@@ -383,7 +383,7 @@ Visual Studio 未提供用于单步调试批处理文件的调试器，因此最
 
 你可能会发现在每个启动任务的末尾都使用 `>> "%TEMP%\StartupLog.txt" 2>&1` 很是恼人。 可以通过创建一个包装器来处理日志记录以强制执行任务日志记录。 此包装器调用要运行的实际批处理文件。 来自目标批处理文件的任何输出都会重定向到 *Startuplog.txt* 文件。
 
-以下示例展示了如何重定向来自某个启动批处理文件的所有输出。 在此示例中，ServerDefinition.csdef 文件创建一个调用 *logwrap.cmd* 的启动任务。 logwrap.cmd 调用 Startup2.cmd，并将所有输出都重定向到 %TEMP% **\\StartupLog.txt** 。
+以下示例展示了如何重定向来自某个启动批处理文件的所有输出。 在此示例中，ServerDefinition.csdef 文件创建一个调用 *logwrap.cmd* 的启动任务。 logwrap.cmd 调用 Startup2.cmd，并将所有输出都重定向到 %TEMP% **\\StartupLog.txt**。
 
 ServiceDefinition.cmd：
 

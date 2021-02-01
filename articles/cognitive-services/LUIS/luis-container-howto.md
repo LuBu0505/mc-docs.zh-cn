@@ -10,15 +10,15 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 origin.date: 11/08/2019
-ms.date: 12/28/2020
+ms.date: 01/19/2021
 ms.author: v-johya
 keywords: 本地, Docker, 容器
-ms.openlocfilehash: bd0c976155cc3a61bc5944556644731ce916d1d0
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 54375cad94a0bdc943adf3135b8df4b2a172a33b
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856929"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751261"
 ---
 # <a name="install-and-run-docker-containers-for-luis"></a>安装并运行 LUIS 的 Docker 容器
 
@@ -374,9 +374,6 @@ LUIS 容器使用 Azure 帐户中的认知服务资源向 Azure 发送账单信�
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 有关这些选项的详细信息，请参阅[配置容器](luis-container-configuration.md)。
-
-<!--blogs/samples/video courses -->
-[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>摘要
 

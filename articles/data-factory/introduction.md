@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 origin.date: 09/30/2019
-ms.date: 01/04/2021
-ms.openlocfilehash: fb853b9f74c453611d66e567129620511aaf82ee
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.date: 02/01/2021
+ms.openlocfilehash: 6d1492775f13f01b769c3af6a4d4f19f23c92250
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830098"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060163"
 ---
 # <a name="what-is-azure-data-factory"></a>什么是 Azure 数据工厂？
 
@@ -31,7 +31,7 @@ ms.locfileid: "97830098"
 
 为了获取见解，它希望使用云中的 Spark 群集 (Azure HDInsight) 处理加入的数据，并将转换的数据发布到云数据仓库（如 Azure Synapse Analytics）以轻松地基于它生成报表。 公司的人员希望自动执行此工作流，并每天按计划对其进行监视和管理。 他们还希望在文件存储到 blob 存储容器中时执行该工作流。
 
-Azure 数据工厂是解决此类数据方案的平台。 它是基于云的 ETL 和数据集成服务，可让你创建数据驱动型工作流用于大规模协调数据移动和转换数据。 可以使用 Azure 数据工厂创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据。 可以构建复杂的 ETL 流程，用于通过 Azure HDInsight Hadoop、Azure Databricks 和 Azure SQL 数据库等计算服务直观转换数据。 
+Azure 数据工厂是解决此类数据方案的平台。 它是基于云的 ETL 和数据集成服务，可让你创建数据驱动型工作流用于大规模协调数据移动和转换数据。 可以使用 Azure 数据工厂创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据。 可以构建复杂的 ETL 流程，用于通过数据流或使用 Azure HDInsight Hadoop、Azure Databricks 和 Azure SQL 数据库等计算服务直观转换数据。 
 
 此外，还可以将转换的数据发布到数据存储（例如 Azure Synapse Analytics），供商业智能 (BI) 应用程序使用。 最终，通过 Azure 数据工厂，可将原始数据组织成有意义的数据存储和数据湖，以实现更好的业务决策。
 
@@ -66,6 +66,7 @@ Azure 数据工厂是解决此类数据方案的平台。 它是基于云的 ETL
 - 活动
 - 数据集
 - 链接服务
+- 数据流
 - Integration Runtime
 
 这些组件组合起来提供一个平台，供你在上面编写数据驱动型工作流（其中包含用来移动和转换数据的步骤）。
@@ -74,6 +75,9 @@ Azure 数据工厂是解决此类数据方案的平台。 它是基于云的 ETL
 数据工厂可以包含一个或多个管道。 管道是执行任务单元的活动的逻辑分组。 管道中的活动可以共同执行一项任务。 例如，一个管道可能包含一组活动，这些活动从 Azure Blob 引入数据，然后在 HDInsight 群集上运行 Hive 查询，以便对数据分区。 
 
 这样做的好处是，可以通过管道以集的形式管理活动，不必对每个活动单独进行管理。 管道中的活动可以链接在一起来按顺序执行，也可以独立并行执行。
+
+### <a name="mapping-data-flows"></a>映射数据流
+创建和管理可用于转换任意大小的数据的数据转换逻辑图。 可以构建可重用的数据转换例程库，并通过 ADF 管道以横向扩展方式执行这些流程。 数据工厂将在可按需扩展和缩减的 Spark 群集上执行逻辑。 你根据不需要管理或维护群集。
 
 ### <a name="activity"></a>活动
 活动表示管道中的处理步骤。 例如，可以使用复制活动将数据从一个数据存储复制到另一个数据存储。 同样，可以使用在 Azure HDInsight 群集上运行 Hive 查询的 Hive 活动来转换或分析数据。 数据工厂支持三种类型的活动：数据移动活动、数据转换活动和控制活动。
@@ -107,7 +111,7 @@ Azure 数据工厂是解决此类数据方案的平台。 它是基于云的 ETL
 控制流是管道活动的业务流程，包括将活动按顺序链接起来、设置分支。可以在管道级别定义参数，在按需或者通过触发器调用管道时传递自变量。 它还包括自定义状态传递和循环容器，即 For-each 迭代器。
 
 ### <a name="variables"></a>变量
-变量可用于在管道内存储临时值，也可以与参数结合使用，以实现在管道和其他活动之间传递值。
+可以在管道内部使用变量来存储临时值，还可以将这些变量与参数结合使用，以在管道、数据流和其他活动之间传递值。
 
 ## <a name="next-steps"></a>后续步骤
 请阅读以下重要后续步骤文档：
@@ -115,6 +119,7 @@ Azure 数据工厂是解决此类数据方案的平台。 它是基于云的 ETL
 - [数据集和链接服务](concepts-datasets-linked-services.md)
 - [管道和活动](concepts-pipelines-activities.md)
 - [集成运行时](concepts-integration-runtime.md)
+- [映射数据流](concepts-data-flow-overview.md)
 - [Azure 门户中的数据工厂 UI](quickstart-create-data-factory-portal.md)
 - [Azure 门户中的“复制数据”工具](quickstart-create-data-factory-copy-data-tool.md)
 - [PowerShell](quickstart-create-data-factory-powershell.md)

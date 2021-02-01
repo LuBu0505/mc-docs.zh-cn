@@ -6,13 +6,13 @@ ms.workload: integration
 author: Johnnytechn
 ms.author: v-johya
 ms.topic: quickstart
-ms.date: 12/01/2020
-ms.openlocfilehash: 3c1fa9d40a514a014809edbbc8e439dfc991c7c5
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.date: 01/18/2021
+ms.openlocfilehash: cdce77e536ee59340110d6aac60794c8129de5d9
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432219"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751149"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建新的 Azure API 管理服务实例
 
@@ -55,7 +55,7 @@ Azure API 管理 (APIM) 可帮助组织将 API 发布给外部、合作伙伴和
 >
 > 虽然“消耗”SKU 需要不到一分钟的时间就能完成预配，但其他 SKU 通常需要 30-40 分钟才能完成创建。
 
-此时，你已准备好导入并发布你的第一个 API。 你可以在 Visual Studio Code 的扩展中执行此操作，还可以执行常见的 API 管理操作。 有关详细信息，请参阅 [Visual Studio Code 的 API 管理扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview)文档。
+此时，你已准备好导入并发布你的第一个 API。 你可以在 Visual Studio Code 的扩展中执行此操作，还可以执行常见的 API 管理操作。 有关详细信息，请参阅[教程](visual-studio-code-tutorial.md)。
 
 ![VS Code API 管理扩展窗格中新创建的 API 管理实例](./media/vscode-create-service-instance/vscode-apim-instance.png)
 
@@ -70,5 +70,5 @@ Azure API 管理 (APIM) 可帮助组织将 API 发布给外部、合作伙伴和
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [导入和发布第一个 API](import-and-publish.md)
+> [使用 API 管理扩展导入和管理 API](visual-studio-code-tutorial.md)
 

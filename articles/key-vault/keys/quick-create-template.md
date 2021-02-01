@@ -9,14 +9,14 @@ ms.subservice: keys
 ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 origin.date: 10/14/2020
-ms.date: 11/27/2020
+ms.date: 01/18/2021
 ms.author: v-tawe
-ms.openlocfilehash: 82e9b1ff9d321381f7b0831029175ba4a1500b2d
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.openlocfilehash: 500ab8a837eb1b7f63f8b4ec1de3210bdf96c1a6
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431048"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058447"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template-preview"></a>快速入门：使用 ARM 模板（预览版）创建 Azure 密钥保管库和密钥
 
@@ -26,11 +26,11 @@ ms.locfileid: "96431048"
 
 若要完成本文，需要做好以下准备：
 
-- 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
-
+- 如果没有 Azure 订阅，请在开始之前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+- 用户需要分配的 RBAC 内置角色，例如 参与者。 [在此处了解详细信息](../../role-based-access-control/role-assignments-portal.md)
 - 模板需要使用你的 Azure AD 用户对象 ID 来配置权限。 以下过程获取对象 ID (GUID)。
 
-    1. 运行以下 Azure PowerShell 或 Azure CLI。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”。
+    1. 运行以下 Azure PowerShell 或 Azure CLI 命令：选择“试用”，然后在 shell 窗格中粘贴脚本。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”。
 
         # <a name="cli"></a>[CLI](#tab/CLI)
         ```azurecli
@@ -46,6 +46,8 @@ ms.locfileid: "96431048"
         (Get-AzADUser -UserPrincipalName $upn).Id
         Write-Host "Press [ENTER] to continue..."
         ```
+
+        ---
 
     1. 请记下对象 ID， 本快速入门的下一部分需要使用该 ID。
 
@@ -94,7 +96,7 @@ ms.locfileid: "96431048"
     },
     "keySize": {
       "type": "int",
-      "defaultValue": -1,
+      "defaultValue": 2048,
       "metadata": {
         "description": "The size in bits of the key to be created."
       }
@@ -142,7 +144,7 @@ ms.locfileid: "96431048"
       "properties": {
         "kty": "[parameters('keyType')]",
         "keyOps": "[parameters('keyOps')]",
-        "keySize": "[if(equals(parameters('keySize'), -1), json('null'), parameters('keySize'))]",
+        "keySize": "[parameters('keySize')]",
         "curveName": "[parameters('curveName')]"
       }
     }
@@ -184,6 +186,8 @@ Get-AzKeyVaultKey -vaultName $keyVaultName
 Write-Host "Press [ENTER] to continue..."
 ```
 
+---
+
 ## <a name="clean-up-resources"></a>清理资源
 
 其他 Key Vault 快速入门和教程是在本快速入门的基础上制作的。 如果打算继续使用后续的快速入门和教程，则可能需要保留这些资源。
@@ -206,10 +210,12 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."
 ```
 
+---
+
 ## <a name="next-steps"></a>后续步骤
 
 在本快速入门中，你使用 ARM 模板创建了密钥保管库和密钥，并验证了部署。 若要详细了解 Key Vault 和 Azure 资源管理器，请继续阅读以下文章。
 
 - 阅读 [Azure Key Vault 概述](../general/overview.md)
 - 了解有关 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)的详细信息
-- 查看 [Azure Key Vault 最佳做法](../general/best-practices.md)
+- 请参阅 [Key Vault 安全性概述](../general/security-overview.md)

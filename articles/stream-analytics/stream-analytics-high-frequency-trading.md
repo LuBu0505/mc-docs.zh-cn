@@ -3,18 +3,17 @@ title: 使用 Azure 流分析进行高频交易
 description: 如何在 Azure 流分析作业中进行线性回归模型训练和评分。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 origin.date: 12/07/2018
-ms.date: 10/09/2020
+ms.date: 01/25/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 43f89f31b6f9c52fa8012c0d460fefd5888dd443
-ms.sourcegitcommit: 465c166998f0c24405e573e6ec91e6da90e54f98
+ms.openlocfilehash: 5fb0fbdcefb87b671a63cda856f7de87fd50a17f
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91936810"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058514"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>使用流分析进行高频交易模拟
 用户可以在 Azure 流分析中结合使用 SQL 语言和 JavaScript 的用户定义函数 (UDF) 与用户定义聚合 (UDA) 进行高级分析。 高级分析可能包括在线机器学习训练和评分，以及有状态过程模拟。 本文介绍如何在 Azure 流分析作业中执行线性回归操作，该作业在高频交易方案中进行持续的训练和评分。

@@ -3,17 +3,17 @@ author: rockboyfor
 ms.service: azure-policy
 ms.topic: include
 origin.date: 01/08/2021
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 08/24/2020
 ms.author: v-yeche
 ms.custom: generated
-ms.openlocfilehash: 647d75b7a3f1a3b38215f703f69df8de011982b8
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 0b208a95ba8b6bb3315a06827ad994745b97c9c0
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231018"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059016"
 ---
 <!--Verified successfully-->
 ## <a name="azure-security-benchmark"></a>Azure 安全基准

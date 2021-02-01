@@ -6,13 +6,13 @@ ms.author: v-johya
 ms.subservice: metrics
 ms.topic: tutorial
 origin.date: 04/10/2019
-ms.date: 01/12/2021
-ms.openlocfilehash: 24d2cbbd6efa72aef3a3af448b8d2c56a85ef0b7
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 01/27/2021
+ms.openlocfilehash: 7b5c9201723d727b1111cd5252fc0a27017855d5
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230724"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059847"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>教程：在 Azure Monitor 中创建指标图表
 指标资源管理器是 Azure 门户中 Azure Monitor 的一项功能，通过它可以根据指标值创建图表，直观地关联趋势，以及调查指标值中的高峰和凹陷。 使用指标资源管理器调查 Azure 资源的运行状况和利用率，或根据自定义指标绘制图表。 
@@ -67,21 +67,21 @@ ms.locfileid: "98230724"
 ## <a name="apply-dimension-filters-and-splitting"></a>应用维度筛选器和拆分
 请参阅以下有关高级功能的参考资料，使用这些功能可以对指标进行其他分析并确定数据中的可能的异常值。
 
-- 通过[筛选](../platform/metrics-charts.md#apply-filters-to-charts)可以选择要包含在图表中的维度值。 例如，在为“服务器响应时间”指标绘制图表时，你可能希望仅显示成功的请求  。 
+- 通过[筛选](../platform/metrics-charts.md#filters)可以选择要包含在图表中的维度值。 例如，在为“服务器响应时间”指标绘制图表时，你可能希望仅显示成功的请求  。 
 
-- [拆分](../platform/metrics-charts.md#apply-splitting-to-a-chart)可以控制图表是针对维度的每个值显示单独行，还是将值聚合为一行。 例如，你可能希望看到针对所有服务器实例中的平均响应时间的一行，或者可能希望看到针对每个服务器的单独的行。 
+- [拆分](../platform/metrics-charts.md#apply-splitting)可以控制图表是针对维度的每个值显示单独行，还是将值聚合为一行。 例如，你可能希望看到针对所有服务器实例中的平均响应时间的一行，或者可能希望看到针对每个服务器的单独的行。 
 
 请参阅应用了筛选和拆分的[图表示例](../platform/metric-chart-samples.md)。
 
 ## <a name="advanced-chart-settings"></a>高级图表设置
 
-可以自定义图表样式和标题并修改高级图表设置。 完成自定义后，将其固定到仪表板以保存工作。 你还可以配置指标警报。 请参阅 [Azure 指标资源管理器的高级功能](../platform/metrics-charts.md#lock-boundaries-of-chart-y-axis)，了解 Azure Monitor 指标资源管理器的这些功能和其他高级功能。
+可以自定义图表样式和标题并修改高级图表设置。 完成自定义后，将其固定到仪表板以保存工作。 你还可以配置指标警报。 请参阅 [Azure 指标资源管理器的高级功能](../platform/metrics-charts.md#locking the-range-of-the-y-axis)，了解 Azure Monitor 指标资源管理器的这些功能和其他高级功能。
 
 
 ## <a name="next-steps"></a>后续步骤
 现在，你已了解如何在 Azure Monitor 中使用指标，接下来了解如何使用指标来发送主动警报。
 
 > [!div class="nextstepaction"]
-> [使用 Azure Monitor 创建、查看和管理指标警报](../platform/metrics-charts.md#create-alert-rules)
+> [使用 Azure Monitor 创建、查看和管理指标警报](../platform/metrics-charts.md#alert-rules)
 
 

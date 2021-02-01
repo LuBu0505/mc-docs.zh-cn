@@ -6,17 +6,17 @@ author: rockboyfor
 ms.service: service-bus-messaging
 ms.topic: conceptual
 origin.date: 06/23/2020
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 94e6e7316fc7e55681d90c6a984b5765b803f06d
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: f46924fc1b058feeb91904204d6bbdefb34eb0ed
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230853"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059573"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服务总线到事件网格的集成概述
 

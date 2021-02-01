@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 origin.date: 11/22/2019
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3c270283cc08fb0434e05a3fbcc2587f3c445f6f
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 54caeeb5b5c43e1b3a9142d06d56b6009b82207b
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230657"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058513"
 ---
 # <a name="data-warehouse-units-dwus-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的专用 SQL 池（以前称为 SQL DW）的数据仓库单位 (DWU)
 
@@ -77,7 +77,7 @@ DWU 和 cDWU 都支持增加或减少计算，以及在无需使用数据仓库�
 
 ## <a name="capacity-limits"></a>容量限制
 
-每个 SQL Server（例如 myserver.database.chinacloudapi.cn）都有一个[数据库事务单位 (DTU)](../../sql-database/sql-database-what-is-a-dtu.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json) 配额，允许使用特定的数据仓库单位数。 有关详细信息，请参阅[工作负荷管理容量限制](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json#workload-management)。
+每个 SQL Server（例如 myserver.database.chinacloudapi.cn）都有一个[数据库事务单位 (DTU)](../../azure-sql/database/service-tiers-dtu.md) 配额，允许使用特定的数据仓库单位数。 有关详细信息，请参阅[工作负荷管理容量限制](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json#workload-management)。
 
 ## <a name="how-many-data-warehouse-units-do-i-need"></a>我需要多少个数据仓库单位？
 

@@ -4,16 +4,16 @@ description: 提供常见的 Azure 订阅和服务限制、配额和约束的列
 ms.topic: conceptual
 origin.date: 09/02/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 01/25/2021
 ms.testscope: no
 ms.testdate: 08/03/2020
 ms.author: v-yeche
-ms.openlocfilehash: bc4abb49fbf1945acb16dd2fd8b383b388de9932
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 6d81edae2e23be0e211a19d03e5be7b6f4328131
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023217"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751296"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -152,6 +152,8 @@ ms.locfileid: "98023217"
 可在[“Azure 机器学习配额”页](../../machine-learning/how-to-manage-quotas.md)中找到 Azure 机器学习计算配额的最新值
 
 <!--Not Available on ## Azure Maps limits-->
+<!--NOT AVAILABLE ON [maps-limits](../../../includes/maps-limits.md)-->
+
 
 <a name="azure-monitor-limits"></a>
 ## <a name="azure-monitor-limits"></a>Azure Monitor 限制
@@ -163,6 +165,9 @@ ms.locfileid: "98023217"
 ### <a name="action-groups"></a>操作组
 
 [!INCLUDE [monitoring-limits](../../../includes/azure-monitor-limits-action-groups.md)]
+
+<!--NOT AVAILABLE ON ### Autoscale-->
+<!--NOT AVAILABLE ON [monitoring-limits](../../../includes/azure-monitor-limits-autoscale.md)-->
 
 ### <a name="log-queries-and-language"></a>日志查询和语言
 
@@ -217,8 +222,12 @@ ms.locfileid: "98023217"
 [!INCLUDE [azure-data-factory-limits](../../../includes/azure-data-factory-limits.md)]
 
 <!--Not Available on ## Data Lake Analytics limits-->
-<!--Not Available on ## Data Lake Store limits-->
+<!--NOT AVAILABLE ON [azure-data-lake-analytics-limits](../../../includes/azure-data-lake-analytics-limits.md)-->
+<!--Not Available on ## Data Lake Storage limits-->
+<!--NOT AVAILABLE ON [azure-data-lake-store-limits](../../../includes/azure-data-lake-store-limits.md)-->
 <!--Not Available on ## Data Share limits-->
+<!--NOT AVAILABLE ON ## Data Share limits-->
+<!--NOT AVAILABLE ON [azure-data-share-limits](../../../includes/azure-data-share-limits.md)-->
 
 ## <a name="database-migration-service-limits"></a>数据库迁移服务限制
 

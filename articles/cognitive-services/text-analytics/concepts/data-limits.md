@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 01/04/2021
+ms.date: 01/19/2021
 origin.date: 04/27/2020
 ms.author: v-johya
 ms.reviewer: chtufts
-ms.openlocfilehash: 395248b2273dfc87c1369e2b85d0b12ede8a0c53
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 7e4bb201b2f3ad399aa82bc25598f3329599342a
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022205"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751167"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>文本分析 API 的数据和速率限制
 <a name="data-limits"></a>
@@ -36,7 +36,8 @@ ms.locfileid: "98022205"
 | 整个请求的最大大小 | 1MB。|
 
 <!--Not available in MC: /analyze -->
-可以在单个请求中发送的最大文档数将取决于所使用的 API 版本和功能。 
+可以在单个请求中发送的最大文档数将取决于所使用的 API 版本和功能，如下表中所述。
+
 #### <a name="version-3"></a>[第 3 版](#tab/version-3)
 
 以下限制针对当前 v3 API。 超过以下限制将生成 HTTP 400 错误代码。

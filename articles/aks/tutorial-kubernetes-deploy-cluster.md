@@ -3,19 +3,19 @@ title: Azure 上的 Kubernetes 教程 - 部署群集
 description: 此 Azure Kubernetes 服务 (AKS) 教程介绍如何创建 AKS 群集并使用 kubectl 连接到 Kubernetes 主节点。
 services: container-service
 ms.topic: tutorial
-origin.date: 09/30/2020
+origin.date: 01/12/2021
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: a752135a7fe80812839554760c1ebcf40e3c25b9
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 537dadf251ad79ae1c3073d49ae4e6fc8a3b49c7
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004162"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063670"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>教程：部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -26,7 +26,7 @@ Kubernetes 为容器化应用程序提供一个分布式平台。 使用 AKS 可
 > * 安装 Kubernetes CLI (kubectl)
 > * 配置 kubectl，以便连接到 AKS 群集
 
-在其他教程中，Azure 投票应用程序将部署到群集，并进行缩放和更新。
+在后面的教程中，Azure 投票应用程序将部署到群集，并进行缩放和更新。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -38,9 +38,9 @@ Kubernetes 为容器化应用程序提供一个分布式平台。 使用 AKS 可
 
 AKS 群集可以使用 Kubernetes 基于角色的访问控制 (Kubernetes RBAC)。 可以使用这些控制根据分配给用户的角色定义资源访问权限。 权限可以组合（如果为用户分配了多个角色），可以局限于单个命名空间，也可以涵盖整个群集。 默认情况下，Azure CLI 会在你创建 AKS 群集时自动启用 Kubernetes RBAC。
 
-使用 [az aks create][] 创建 AKS 群集。 以下示例在名为 *myResourceGroup* 的资源组中创建名为 *myAKSCluster* 的群集。 此资源组是[上一教程][aks-tutorial-prepare-acr]中在 chinaeast2 区域中创建的。 下面的示例未指定区域，因此 AKS 群集也会在 chinaeast2 区域中创建。 请参阅 [Azure Kubernetes 服务 (AKS) 中的配额、虚拟机大小限制和区域可用性][quotas-skus-regions]，以了解有关 AKS 的资源限制和区域可用性的详细信息。
+使用 [az aks create][] 创建 AKS 群集。 以下示例在名为 *myResourceGroup* 的资源组中创建名为 *myAKSCluster* 的群集。 此资源组是[上一教程][aks-tutorial-prepare-acr]中在 chinaeast2 区域中创建的。 下面的示例未指定区域，因此 AKS 群集也会在 chinaeast2 区域中创建。 有关更多信息，请参阅 [Azure Kubernetes 服务 (AKS) 中的配额、虚拟机大小限制和区域可用性][quotas-skus-regions]，以了解有关 AKS 的资源限制和区域可用性的详细信息。
 
-为了允许 AKS 群集与其他 Azure 资源进行交互，将自动创建一个 Azure Active Directory 服务主体，因为未指定该主体。 在这里，此服务主体[被授予从上一教程中创建的 Azure 容器注册表 (ACR) 实例中拉取映像][container-registry-integration]的权限。 请注意，可以使用[托管标识](use-managed-identity.md)而不是服务主体，以便更轻松地进行管理。
+为了允许 AKS 群集与其他 Azure 资源进行交互，将自动创建一个 Azure Active Directory 服务主体，因为未指定该主体。 在这里，此服务主体[被授予从上一教程中创建的 Azure 容器注册表 (ACR) 实例中拉取映像][container-registry-integration]的权限。 若要成功执行该命令，需要在 Azure 订阅上拥有“所有者”或“Azure 帐户管理员”角色 。
 
 ```azurecli
 az aks create \
@@ -51,7 +51,7 @@ az aks create \
     --attach-acr <acrName>
 ```
 
-还可以手动将服务主体配置为从 ACR 中拉取映像。 有关详细信息，请参阅[使用服务主体进行 ACR 身份验证](../container-registry/container-registry-auth-service-principal.md)或[使用请求密码从 Kubernetes 进行身份验证](../container-registry/container-registry-auth-kubernetes.md)。
+为避免需要“所有者”或“Azure 帐户管理员”角色，还可以手动配置服务主体，以从 ACR 中提取映像 。 有关详细信息，请参阅[使用服务主体进行 ACR 身份验证](../container-registry/container-registry-auth-service-principal.md)或[使用请求密码从 Kubernetes 进行身份验证](../container-registry/container-registry-auth-kubernetes.md)。 或者，可以使用[托管标识](use-managed-identity.md)而不是服务主体，以便更轻松地进行管理。
 
 几分钟后，部署完成并返回有关 AKS 部署的 JSON 格式信息。
 
@@ -97,8 +97,9 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 $ kubectl get nodes
 
-NAME                       STATUS   ROLES   AGE   VERSION
-aks-nodepool1-12345678-0   Ready    agent   32m   v1.14.8
+NAME                                STATUS   ROLES   AGE     VERSION
+aks-nodepool1-37463671-vmss000000   Ready    agent   2m37s   v1.18.10
+aks-nodepool1-37463671-vmss000001   Ready    agent   2m28s   v1.18.10
 ```
 
 ## <a name="next-steps"></a>后续步骤
@@ -135,4 +136,4 @@ aks-nodepool1-12345678-0   Ready    agent   32m   v1.14.8
 [container-registry-integration]: ./cluster-container-registry-integration.md
 [quotas-skus-regions]: quotas-skus-regions.md
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

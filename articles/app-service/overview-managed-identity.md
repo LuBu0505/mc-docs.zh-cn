@@ -4,16 +4,16 @@ description: 了解托管标识在 Azure 应用服务和 Azure Functions 中的�
 author: mattchenderson
 ms.topic: article
 origin.date: 05/27/2020
-ms.date: 12/21/2020
+ms.date: 02/01/2021
 ms.author: v-tawe
 ms.reviewer: yevbronsh
-ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 06ee5987ab03fa8c822556e38cbce7a736e1813b
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 7f842cef9a9203409ebb9947aab533883e2e9baf
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022974"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059088"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
 
@@ -529,4 +529,4 @@ Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupNam
 - [使用托管标识安全地访问 Azure 存储](scenario-secure-app-access-storage.md)
 - [使用托管标识安全地调用 Azure Graph](scenario-secure-app-access-microsoft-graph-as-app.md)
 
-[Microsoft.Azure.Services.AppAuthentication 参考]: ../key-vault/general/service-to-service-authentication.md
+[Microsoft.Azure.Services.AppAuthentication 参考]: https://docs.microsoft.com/dotnet/api/overview/azure/service-to-service-authentication

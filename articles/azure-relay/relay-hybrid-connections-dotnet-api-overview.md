@@ -6,16 +6,16 @@ ms.topic: article
 ms.custom: devx-track-csharp
 origin.date: 06/23/2020
 author: rockboyfor
-ms.date: 09/21/2020
+ms.date: 02/01/2021
 ms.testscope: yes|no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 6dfdca624804d2ae138dcc5c99d7bbfd714c1953
-ms.sourcegitcommit: f3fee8e6a52e3d8a5bd3cf240410ddc8c09abac9
+ms.openlocfilehash: fd1d7e7211d2b160999e2a43eb9515951124a68b
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2020
-ms.locfileid: "91146776"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063580"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure 中继混合连接 .NET 标准 API 概述
 
@@ -89,7 +89,7 @@ var hybridConnectionStream = await client.CreateConnectionAsync();
 
 ### <a name="receiving-data"></a>接收数据
 
-[HybridConnectionStream][HCStream] 类允许进行双向通信。 在大多数情况下，都会持续地从流接收信息。 如果正在从流读取文本，则还需使用 [StreamReader](https://docs.microsoft.com/dotnet/api/system.io.streamreader?view=netcore-3.1) 对象，以便于分析数据。 例如，可以将数据读取为文本，而不能读取为 `byte[]`。
+[HybridConnectionStream][HCStream] 类允许进行双向通信。 在大多数情况下，都会持续地从流接收信息。 如果正在从流读取文本，则还需使用 [StreamReader](https://docs.microsoft.com/dotnet/api/system.io.streamreader) 对象，以便于分析数据。 例如，可以将数据读取为文本，而不能读取为 `byte[]`。
 
 以下代码可从流中读取各行文本，直到请求取消为止：
 
@@ -116,14 +116,14 @@ while (!cancellationToken.IsCancellationRequested)
 
 ### <a name="sending-data"></a>发送数据
 
-建立连接后，即可将消息发送到中继终结点。 由于连接对象继承 [Stream](https://docs.microsoft.com/dotnet/api/system.io.stream?view=netcore-3.1)，因此以 `byte[]` 形式发送数据。 以下示例介绍如何执行此操作：
+建立连接后，即可将消息发送到中继终结点。 由于连接对象继承 [Stream](https://docs.microsoft.com/dotnet/api/system.io.stream)，因此以 `byte[]` 形式发送数据。 以下示例介绍如何执行此操作：
 
 ```csharp
 var data = Encoding.UTF8.GetBytes("hello");
 await clientConnection.WriteAsync(data, 0, data.Length);
 ```
 
-但是，如果要直接发送文本，而无需每次都对字符串进行编码，则可以使用 [StreamWriter](https://docs.microsoft.com/dotnet/api/system.io.streamwriter?view=netcore-3.1) 对象包装 `hybridConnectionStream` 对象。
+但是，如果要直接发送文本，而无需每次都对字符串进行编码，则可以使用 [StreamWriter](https://docs.microsoft.com/dotnet/api/system.io.streamwriter) 对象包装 `hybridConnectionStream` 对象。
 
 ```csharp
 // The StreamWriter object only needs to be created once

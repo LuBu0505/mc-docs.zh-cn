@@ -4,18 +4,18 @@ description: 列出 Azure Batch 的 Azure Policy 内置策略定义。 这些内
 ms.service: batch
 origin.date: 01/08/2021
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 09/25/2020
 ms.author: v-yeche
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 7fcc718a2f640b179c9774a767919cbc59d2345d
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 560d0b2eb332058dc8b95d9a566991aafad57fc0
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231079"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059887"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-batch"></a>Azure Batch 的 Azure Policy 内置定义
 

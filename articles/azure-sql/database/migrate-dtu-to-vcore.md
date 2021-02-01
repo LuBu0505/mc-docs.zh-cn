@@ -11,12 +11,12 @@ ms.author: v-jay
 ms.reviewer: sashan, moslake, carlrab
 origin.date: 05/28/2020
 ms.date: 07/13/2020
-ms.openlocfilehash: 8779f15c2c69c8afd44fc741c9387fbe34df21d9
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+ms.openlocfilehash: 681e75c965093b72318c239b0b5849012b1729de
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86227366"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059845"
 ---
 # <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>将 Azure SQL 数据库从基于 DTU 的模型迁移到基于 vCore 的模型
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -81,12 +81,6 @@ SELECT dtu_logical_cpus,
        5.05 AS Gen5_memory_per_core_gb,
        CASE WHEN dtu_hardware_gen = 'Gen4' THEN dtu_logical_cpus
             WHEN dtu_hardware_gen = 'Gen5' THEN dtu_logical_cpus * 0.8
-       END AS Fsv2_vcores,
-       1.89 AS Fsv2_memory_per_core_gb,
-       CASE WHEN dtu_hardware_gen = 'Gen4' THEN dtu_logical_cpus * 1.4
-            WHEN dtu_hardware_gen = 'Gen5' THEN dtu_logical_cpus * 0.9
-       END AS M_vcores,
-       29.4 AS M_memory_per_core_gb
 FROM dtu_vcore_map;
 ```
 

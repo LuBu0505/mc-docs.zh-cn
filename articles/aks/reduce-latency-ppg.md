@@ -6,16 +6,16 @@ manager: gwallace
 ms.topic: article
 origin.date: 10/19/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: yes|no
 ms.testdate: 01/11/2021null
 ms.author: v-yeche
-ms.openlocfilehash: c32606d01c4ed7a7e4e22eaa576beeb9554ba073
-ms.sourcegitcommit: ab5613bd4ca33ff8eddd0b93de57a69835c0a951
+ms.openlocfilehash: 6405b94440f176f212472da0efc365302fc2a5fa
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98626763"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063676"
 ---
 <!--Verified successfully on 01/04/2021-->
 # <a name="reduce-latency-with-proximity-placement-groups"></a>使用邻近放置组降低延迟
@@ -33,7 +33,9 @@ ms.locfileid: "98626763"
 
 ### <a name="limitations"></a>限制
 
-* 邻近放置组最多只能映射到一个可用性区域。
+<!--Not Available on * A proximity placement group can map to at most one availability zone.-->
+<!--Not Available on FEATURE availability zone-->
+
 * 节点池必须使用虚拟机规模集来关联邻近放置组。
 * 节点池只能在节点池创建时关联邻近放置组。
 
@@ -134,7 +136,7 @@ az group delete --name myResourceGroup --yes --no-wait
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [az-extension-add]: https://docs.azure.cn/cli/extension#az_extension_add
 [az-extension-update]: https://docs.azure.cn/cli/extension#az_extension_update
-[proximity-placement-groups]: ../virtual-machines/linux/co-location.md#proximity-placement-groups
+[proximity-placement-groups]: ../virtual-machines/co-location.md#proximity-placement-groups
 [az-aks-create]: https://docs.azure.cn/cli/aks#az_aks_create
 [system-pool]: ./use-system-pools.md
 [az-aks-nodepool-add]: https://docs.azure.cn/cli/aks/nodepool#az_aks_nodepool_add
@@ -142,5 +144,4 @@ az group delete --name myResourceGroup --yes --no-wait
 [az-group-create]: https://docs.azure.cn/cli/group#az_group_create
 [az-group-delete]: https://docs.azure.cn/cli/group#az_group_delete
 
-<!-- Update_Description: new article about reduce latency ppg -->
-<!--NEW.date: 01/11/2021-->
+<!--Update_Description: update meta properties, wording update, update link-->

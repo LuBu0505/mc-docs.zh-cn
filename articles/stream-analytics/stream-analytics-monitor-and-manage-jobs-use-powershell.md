@@ -3,16 +3,15 @@ title: 使用 PowerShell 监视和管理 Azure 流分析作业
 description: 本文说明如何使用 Azure PowerShell 和 cmdlet 监视和管理 Azure 流分析作业。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 12/04/2020
-ms.openlocfilehash: 06fad3ae3d638614c76c14b2eb7642682713a714
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.date: 01/25/2021
+ms.openlocfilehash: 58d1fe6a27db38c35b2d3cc5627009d8fa5ff079
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97105032"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059742"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>使用 Azure PowerShell cmdlet 监视和管理流分析作业
 了解如何使用可执行基本流分析任务的 Azure PowerShell cmdlet 和 PowerShell 脚本来监视和管理流分析资源。
@@ -26,8 +25,7 @@ Azure PowerShell 0.9.8：
 
 ```powershell
 # Log in to your Azure account
-Connect-AzAccount -Environment AzureChinaCloud
-
+Add-AzureAccount -Environment AzureChinaCloud
 # Select the Azure subscription you want to use to create the resource group if you have more han one subscription on your account.
 Select-AzureSubscription -SubscriptionName <subscription name>
 # If Stream Analytics has not been registered to the subscription, remove remark symbol below (#)to run the Register-AzureProvider cmdlet to register the provider namespace.

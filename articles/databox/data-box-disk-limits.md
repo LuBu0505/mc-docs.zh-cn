@@ -7,14 +7,14 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 08/10/2020
+ms.date: 02/01/2021
 ms.author: v-jay
-ms.openlocfilehash: 548f18c861a482700ef44cea17af7519552fdef5
-ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
+ms.openlocfilehash: 5b763890a5de6d424e2e57581332647b4cec47cf
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87917350"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059225"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box 磁盘限制
 
@@ -65,7 +65,7 @@ ms.locfileid: "87917350"
 
 | 数据类型             | 默认限制          |
 |--------------------------|------------------------|
-| 块 Blob、页 Blob    | 有关这些限制的最新信息，请参阅 [Azure Blob 存储缩放目标](/storage/blobs/scalability-targets#scale-targets-for-blob-storage)、[Azure 标准存储缩放目标](/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)和 [Azure 文件存储缩放目标](/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets)。 <br /><br /> 这些限制包括来自所有源（包括 Data Box Disk）的数据。|
+| 块 Blob、页 Blob    | 有关这些限制的最新信息，请参阅 [Azure Blob 存储缩放目标](../storage/blobs/scalability-targets.md#scale-targets-for-blob-storage)、[Azure 标准存储缩放目标](../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)和 [Azure 文件存储缩放目标](../storage/files/storage-files-scale-targets.md#file-share-and-file-scale-targets)。 <br /><br /> 这些限制包括来自所有源（包括 Data Box Disk）的数据。|
 
 
 ## <a name="azure-object-size-limits"></a>Azure 对象大小限制

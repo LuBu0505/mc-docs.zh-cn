@@ -13,13 +13,13 @@ metadata:
   author: Johnnytechn
   ms.author: v-johya
   manager: rkarlin
-  ms.date: 10/14/2020
-  ms.openlocfilehash: 5fc0cd7c83b0677eed0d113e91057aeaee430496
-  ms.sourcegitcommit: 6f66215d61c6c4ee3f2713a796e074f69934ba98
+  ms.date: 01/19/2021
+  ms.openlocfilehash: d42b3683c27ca49f14c254ff4df15456897f7a4a
+  ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/16/2020
-  ms.locfileid: "92128306"
+  ms.lasthandoff: 01/25/2021
+  ms.locfileid: "98751221"
 highlightedContent:
   items:
   - title: Azure 安全性简介
@@ -30,7 +30,7 @@ highlightedContent:
     url: ./fundamentals/best-practices-and-patterns.md
   - title: 什么是 Azure 安全中心？
     itemType: overview
-    url: ../security-center/security-center-intro.md
+    url: ../security-center/security-center-introduction.md
 conceptualContent:
   items:
   - title: 基本
@@ -71,14 +71,14 @@ conceptualContent:
       text: 查看详细信息
   - title: 机密和密钥
     links:
-    - url: ../key-vault/key-vault-overview.md
+    - url: ../key-vault/general/overview.md
       itemType: overview
-      text: 什么是 Azure 密钥保管库？
-    - url: ../key-vault/quick-create-cli.md
+      text: 什么是 Azure Key Vault？
+    - url: ../key-vault/secrets/quick-create-cli.md
       itemType: quickstart
       text: 设置和检索机密
     footerLink:
-      url: /key-vault/
+      url: ../key-vault/index.yml
       text: 查看更多
   - title: 数据保护
     links:
@@ -114,14 +114,14 @@ conceptualContent:
       itemType: how-to-guide
       text: 使用安全策略
     footerLink:
-      url: /security-center/
+      url: ../security-center/index.yml
       text: 查看详细信息
   - title: 威胁防护
     links:
     - url: ../security-center/security-center-alerts-overview.md
       itemType: concept
       text: Azure 安全中心的安全警报
-    - url: ../sql-database/sql-database-threat-detection-overview.md
+    - url: ../azure-sql/database/threat-detection-overview.md
       itemType: concept
       text: Azure SQL 数据库的高级威胁防护
     footerLink:
@@ -185,5 +185,5 @@ conceptualContent:
       itemType: overview
       text: Azure Policy 服务
     footerLink:
-      url: /governance/
+      url: ../governance/index.yml
       text: 查看更多

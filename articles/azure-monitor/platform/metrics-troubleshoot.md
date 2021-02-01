@@ -5,15 +5,15 @@ author: Johnnytechn
 services: azure-monitor
 origin.date: 04/23/2019
 ms.topic: conceptual
-ms.date: 01/12/2021
+ms.date: 01/27/2021
 ms.author: v-johya
 ms.subservice: metrics
-ms.openlocfilehash: 1f2f20150be920529081691a3b65cc4bb2d44aac
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: ad98415f383de0a057a152e1393977b7668cc581
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98229880"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060088"
 ---
 # <a name="troubleshooting-metrics-charts"></a>排查指标图表问题
 
@@ -49,7 +49,7 @@ ms.locfileid: "98229880"
 
 ### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>所有指标值超过了已锁定的 y 轴范围
 
-[锁定图表 y 轴的边界](metrics-charts.md#lock-boundaries-of-chart-y-axis)时，你可能无意中造成图表显示区域不显示图表线条。 例如，如果 y 轴已锁定为 0% 到 50% 的范围，而指标包含 100% 的常量值，则线条始终会显示在可视区域的外部，使图表看上去是空白的。
+[锁定图表 y 轴的边界](metrics-charts.md#locking-the-range-of-the-y-axis)时，你可能无意中造成图表显示区域不显示图表线条。 例如，如果 y 轴已锁定为 0% 到 50% 的范围，而指标包含 100% 的常量值，则线条始终会显示在可视区域的外部，使图表看上去是空白的。
 
 **解决方案：** 确认图表的 y 轴边界是否未锁定在指标值的范围以外。 如果 y 轴边界已锁定，你可以暂时将其重置，以确保指标值不超过图表范围。 不建议使用 **sum**、**min** 和 **max** 聚合以自动粒度锁定图表的 y 轴范围，因为在调整浏览器窗口大小或者更改不同的屏幕分辨率时，图表值会随着粒度而变化。 切换粒度可能会使图表显示区域保持空白。
 

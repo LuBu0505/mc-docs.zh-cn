@@ -6,14 +6,14 @@ author: Johnnytechn
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/04/2021
+ms.date: 01/19/2021
 ms.author: v-johya
-ms.openlocfilehash: 295df26bea76936cfcd4ef60ed903f080c31b65a
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: ea6073d812b9b9c29968d178e44af146ee2c0eb9
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024337"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98758154"
 ---
 [参考文档](https://docs.microsoft.com/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable) | [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/mgmt-v2017_04_18/src/main/java/com/microsoft/azure/management/cognitiveservices/v2017_04_18) | [包 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-mgmt-cognitiveservices)
 
@@ -682,7 +682,7 @@ public class Quickstart {
 }
 ```
 
-## <a name="create-a-cognitive-services-resource"></a>创建认知服务资源
+## <a name="create-a-cognitive-services-resource-java"></a>创建认知服务资源 (Java)
 
 若要创建并订阅新的认知服务资源，请使用 create 方法。 此方法向传入的资源组添加新的可计费资源。 创建新资源时，需要知道要使用的服务的种类，以及其定价层（或 SKU）和 Azure 位置。 下面的方法使用所有这些参数并创建资源。
 

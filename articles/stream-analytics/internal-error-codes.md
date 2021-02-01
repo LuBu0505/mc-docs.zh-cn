@@ -4,14 +4,14 @@ description: 通过内部错误代码排查 Azure 流分析问题。
 ms.author: v-johya
 author: Johnnytechn
 ms.topic: troubleshooting
-ms.date: 08/20/2020
+ms.date: 01/25/2021
 ms.service: stream-analytics
-ms.openlocfilehash: 67e8c545214eb2fb2042262585ef19aff2d0788c
-ms.sourcegitcommit: 09c7071f4d0d9256b40a6bf700b38c6a25db1b26
+ms.openlocfilehash: cfce09ac996649249cafb330279b72c69ec9a15b
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88715729"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060121"
 ---
 # <a name="azure-stream-analytics-internal-error-codes"></a>Azure 流分析内部错误代码
 
@@ -27,5 +27,6 @@ ms.locfileid: "88715729"
 * [对输入连接进行故障排除](stream-analytics-troubleshoot-input.md)
 * [对 Azure 流分析输出进行故障排除](stream-analytics-troubleshoot-output.md)
 * [对 Azure 流分析查询进行故障排除](stream-analytics-troubleshoot-query.md)
+* [使用资源日志对 Azure 流分析进行故障排除](stream-analytics-job-diagnostic-logs.md)
 * [Azure 流分析数据错误](data-errors.md)
 

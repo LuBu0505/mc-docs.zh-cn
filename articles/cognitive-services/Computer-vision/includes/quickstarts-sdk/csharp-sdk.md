@@ -7,15 +7,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: include
-ms.date: 12/28/2020
+ms.date: 01/19/2021
 ms.author: v-johya
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ad0dad12fc2a63bd082923539151d94ca6a5a301
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 77ea2a2f399a483a08957a73f8b7ab21f99b5f5a
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856835"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98758149"
 ---
 <a name="HOLTop"></a>
 
@@ -48,7 +48,7 @@ ms.locfileid: "97856835"
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 `computer-vision-quickstart` 的新控制台应用。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：ComputerVisionQuickstart.cs。
+在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 `computer-vision-quickstart` 的新控制台应用。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：*Program.cs*。
 
 ```console
 dotnet new console -n (product-name)-quickstart
@@ -148,7 +148,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -161,7 +161,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -172,7 +172,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -411,12 +411,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -427,89 +430,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -711,7 +741,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -766,7 +796,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -845,7 +875,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -858,7 +888,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -869,7 +899,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -1108,12 +1138,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -1124,89 +1157,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -1408,7 +1468,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -1463,7 +1523,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -1548,7 +1608,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -1561,7 +1621,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -1572,7 +1632,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -1811,12 +1871,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -1827,89 +1890,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -2111,7 +2201,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -2166,7 +2256,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -2243,7 +2333,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -2256,7 +2346,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -2267,7 +2357,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -2506,12 +2596,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -2522,89 +2615,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -2806,7 +2926,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -2861,7 +2981,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -2938,7 +3058,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -2951,7 +3071,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -2962,7 +3082,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -3201,12 +3321,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -3217,89 +3340,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -3501,7 +3651,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -3556,7 +3706,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -3661,7 +3811,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -3674,7 +3824,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -3685,7 +3835,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -3924,12 +4074,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -3940,89 +4093,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -4224,7 +4404,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -4279,7 +4459,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -4370,7 +4550,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -4383,7 +4563,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -4394,7 +4574,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -4633,12 +4813,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -4649,89 +4832,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -4933,7 +5143,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -4988,7 +5198,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -5069,7 +5279,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -5082,7 +5292,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -5093,7 +5303,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -5332,12 +5542,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -5348,89 +5561,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -5632,7 +5872,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -5687,7 +5927,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -5774,7 +6014,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -5787,7 +6027,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -5798,7 +6038,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -6037,12 +6277,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -6053,89 +6296,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -6337,7 +6607,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -6392,7 +6662,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -6475,7 +6745,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -6488,7 +6758,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -6499,7 +6769,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -6738,12 +7008,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -6754,89 +7027,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -7038,7 +7338,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -7093,7 +7393,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -7174,7 +7474,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -7187,7 +7487,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -7198,7 +7498,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -7437,12 +7737,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -7453,89 +7756,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -7737,7 +8067,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -7792,7 +8122,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -7873,7 +8203,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -7886,7 +8216,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -7897,7 +8227,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -8136,12 +8466,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -8152,89 +8485,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -8436,7 +8796,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -8491,7 +8851,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -8572,7 +8932,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -8585,7 +8945,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -8596,7 +8956,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -8835,12 +9195,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -8851,89 +9214,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -9135,7 +9525,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -9190,7 +9580,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -9271,7 +9661,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -9284,7 +9674,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -9295,7 +9685,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -9534,12 +9924,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -9550,89 +9943,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -9834,7 +10254,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -9889,7 +10309,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -9970,7 +10390,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -9983,7 +10403,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -9994,7 +10414,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -10233,12 +10653,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -10249,89 +10672,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -10533,7 +10983,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -10588,7 +11038,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -10669,7 +11119,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -10682,7 +11132,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -10693,7 +11143,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -10932,12 +11382,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -10948,89 +11401,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -11232,7 +11712,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -11287,7 +11767,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -11368,7 +11848,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -11381,7 +11861,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -11392,7 +11872,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -11631,12 +12111,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -11647,89 +12130,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -11931,7 +12441,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -11986,7 +12496,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -12069,7 +12579,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -12082,7 +12592,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -12093,7 +12603,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -12332,12 +12842,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -12348,89 +12861,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -12632,7 +13172,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -12687,7 +13227,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -12766,7 +13306,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -12779,7 +13319,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -12790,7 +13330,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -13029,12 +13569,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -13045,89 +13588,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -13329,7 +13899,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -13384,7 +13954,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -13465,7 +14035,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -13478,7 +14048,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -13489,7 +14059,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -13728,12 +14298,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -13744,89 +14317,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -14028,7 +14628,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -14083,7 +14683,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -14174,7 +14774,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -14187,7 +14787,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -14198,7 +14798,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -14437,12 +15037,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -14453,89 +15056,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -14737,7 +15367,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -14792,7 +15422,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -14873,7 +15503,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -14886,7 +15516,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -14897,7 +15527,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -15136,12 +15766,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -15152,89 +15785,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -15436,7 +16096,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -15491,7 +16151,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -15572,7 +16232,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -15585,7 +16245,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -15596,7 +16256,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -15835,12 +16495,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -15851,89 +16514,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -16135,7 +16825,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -16190,7 +16880,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -16271,7 +16961,7 @@ namespace ComputerVisionQuickstart
         private const string ANALYZE_LOCAL_IMAGE = "celebrities.jpg";
         private const string DETECT_LOCAL_IMAGE = "objects.jpg";
         private const string DETECT_DOMAIN_SPECIFIC_LOCAL = "celebrities.jpg";
-        private const string READ_TEXT_LOCAL_IMAGE = "print_text.png";
+        private const string READ_TEXT_LOCAL_IMAGE = "printed_text.jpg";
 
         // <snippet_analyze_url>
         // URL image used for analyzing an image (image of puppy)
@@ -16284,7 +16974,7 @@ namespace ComputerVisionQuickstart
         // <snippet_readtext_url>
         private const string READ_TEXT_URL_IMAGE = "https://intelligentkioskstore.blob.core.chinacloudapi.cn/visionapi/suggestedphotos/3.png";
         // </snippet_readtext_url>
-       
+
         static void Main(string[] args)
         {
             Console.WriteLine("Azure Cognitive Services Computer Vision - .NET quickstart example");
@@ -16295,7 +16985,7 @@ namespace ComputerVisionQuickstart
             ComputerVisionClient client = Authenticate(endpoint, subscriptionKey);
             // </snippet_client>
 
-            
+
             // <snippet_analyzeinmain>
             // Analyze an image to get features and other properties.
             AnalyzeImageUrl(client, ANALYZE_URL_IMAGE).Wait();
@@ -16534,12 +17224,15 @@ namespace ComputerVisionQuickstart
                 ImageAnalysis results = await client.AnalyzeImageInStreamAsync(analyzeImageStream);
 
                 // Sunmarizes the image content.
-                Console.WriteLine("Summary:");
-                foreach (var caption in results.Description.Captions)
+                if (null != results.Description && null != results.Description.Captions)
                 {
-                    Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    Console.WriteLine("Summary:");
+                    foreach (var caption in results.Description.Captions)
+                    {
+                        Console.WriteLine($"{caption.Text} with confidence {caption.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Display categories the image is divided into.
                 Console.WriteLine("Categories:");
@@ -16550,89 +17243,116 @@ namespace ComputerVisionQuickstart
                 Console.WriteLine();
 
                 // Image tags and their confidence score
-                Console.WriteLine("Tags:");
-                foreach (var tag in results.Tags)
+                if (null != results.Tags)
                 {
-                    Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    Console.WriteLine("Tags:");
+                    foreach (var tag in results.Tags)
+                    {
+                        Console.WriteLine($"{tag.Name} {tag.Confidence}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Objects
-                Console.WriteLine("Objects:");
-                foreach (var obj in results.Objects)
+                if (null != results.Objects)
                 {
-                    Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
-                      $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    Console.WriteLine("Objects:");
+                    foreach (var obj in results.Objects)
+                    {
+                        Console.WriteLine($"{obj.ObjectProperty} with confidence {obj.Confidence} at location {obj.Rectangle.X}, " +
+                          $"{obj.Rectangle.X + obj.Rectangle.W}, {obj.Rectangle.Y}, {obj.Rectangle.Y + obj.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Detected faces, if any.
-                Console.WriteLine("Faces:");
-                foreach (var face in results.Faces)
+                if (null != results.Faces)
                 {
-                    Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
-                      $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    Console.WriteLine("Faces:");
+                    foreach (var face in results.Faces)
+                    {
+                        Console.WriteLine($"A {face.Gender} of age {face.Age} at location {face.FaceRectangle.Left}, {face.FaceRectangle.Top}, " +
+                          $"{face.FaceRectangle.Left + face.FaceRectangle.Width}, {face.FaceRectangle.Top + face.FaceRectangle.Height}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Adult or racy content, if any.
-                Console.WriteLine("Adult:");
-                Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
-                Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
-                Console.WriteLine();
+                if (null != results.Adult)
+                {
+                    Console.WriteLine("Adult:");
+                    Console.WriteLine($"Has adult content: {results.Adult.IsAdultContent} with confidence {results.Adult.AdultScore}");
+                    Console.WriteLine($"Has racy content: {results.Adult.IsRacyContent} with confidence {results.Adult.RacyScore}");
+                    Console.WriteLine();
+                }
 
                 // Well-known brands, if any.
-                Console.WriteLine("Brands:");
-                foreach (var brand in results.Brands)
+                if (null != results.Brands)
                 {
-                    Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
-                      $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    Console.WriteLine("Brands:");
+                    foreach (var brand in results.Brands)
+                    {
+                        Console.WriteLine($"Logo of {brand.Name} with confidence {brand.Confidence} at location {brand.Rectangle.X}, " +
+                          $"{brand.Rectangle.X + brand.Rectangle.W}, {brand.Rectangle.Y}, {brand.Rectangle.Y + brand.Rectangle.H}");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Celebrities in image, if any.
-                Console.WriteLine("Celebrities:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Celebrities != null)
+                    Console.WriteLine("Celebrities:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var celeb in category.Detail.Celebrities)
+                        if (category.Detail?.Celebrities != null)
                         {
-                            Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
-                              $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            foreach (var celeb in category.Detail.Celebrities)
+                            {
+                                Console.WriteLine($"{celeb.Name} with confidence {celeb.Confidence} at location {celeb.FaceRectangle.Left}, " +
+                                  $"{celeb.FaceRectangle.Top},{celeb.FaceRectangle.Height},{celeb.FaceRectangle.Width}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Popular landmarks in image, if any.
-                Console.WriteLine("Landmarks:");
-                foreach (var category in results.Categories)
+                if (null != results.Categories)
                 {
-                    if (category.Detail?.Landmarks != null)
+                    Console.WriteLine("Landmarks:");
+                    foreach (var category in results.Categories)
                     {
-                        foreach (var landmark in category.Detail.Landmarks)
+                        if (category.Detail?.Landmarks != null)
                         {
-                            Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            foreach (var landmark in category.Detail.Landmarks)
+                            {
+                                Console.WriteLine($"{landmark.Name} with confidence {landmark.Confidence}");
+                            }
                         }
                     }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
 
                 // Identifies the color scheme.
-                Console.WriteLine("Color Scheme:");
-                Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
-                Console.WriteLine("Accent color: " + results.Color.AccentColor);
-                Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
-                Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
-                Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
-                Console.WriteLine();
+                if (null != results.Color)
+                {
+                    Console.WriteLine("Color Scheme:");
+                    Console.WriteLine("Is black and white?: " + results.Color.IsBWImg);
+                    Console.WriteLine("Accent color: " + results.Color.AccentColor);
+                    Console.WriteLine("Dominant background color: " + results.Color.DominantColorBackground);
+                    Console.WriteLine("Dominant foreground color: " + results.Color.DominantColorForeground);
+                    Console.WriteLine("Dominant colors: " + string.Join(",", results.Color.DominantColors));
+                    Console.WriteLine();
+                }
 
                 // Detects the image types.
-                Console.WriteLine("Image Type:");
-                Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
-                Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
-                Console.WriteLine();
+                if (null != results.ImageType)
+                {
+                    Console.WriteLine("Image Type:");
+                    Console.WriteLine("Clip Art Type: " + results.ImageType.ClipArtType);
+                    Console.WriteLine("Line Drawing Type: " + results.ImageType.LineDrawingType);
+                    Console.WriteLine();
+                }
             }
         }
         /*
@@ -16834,7 +17554,7 @@ namespace ComputerVisionQuickstart
                     Console.WriteLine(line.Text);
                 }
             }
-        // </snippet_read_display>
+            // </snippet_read_display>
             Console.WriteLine();
         }
 
@@ -16889,7 +17609,7 @@ namespace ComputerVisionQuickstart
             {
                 foreach (Line line in page.Lines)
                 {
-                        Console.WriteLine(line.Text);
+                    Console.WriteLine(line.Text);
                 }
             }
             Console.WriteLine();
@@ -16928,7 +17648,7 @@ dotnet run
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 > [!div class="nextstepaction"]

@@ -5,15 +5,15 @@ author: WenJason
 ms.service: security
 ms.topic: conceptual
 origin.date: 06/22/2020
-ms.date: 12/07/2020
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b39f130bf809c9f10383feee80f59978ee6787f9
-ms.sourcegitcommit: a978c5f2c6b53494d67e7c3c5a44b2aa648219a2
+ms.openlocfilehash: 281274f19dca27a16dad4813f0c03ed8bce3ba12
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629067"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058596"
 ---
 # <a name="azure-security-baseline-for-automation"></a>适用于自动化的 Azure 安全基线
 
@@ -181,7 +181,7 @@ ms.locfileid: "98629067"
 
 * [链接的 Log Analytics 工作区支持的区域](./how-to/region-mappings.md)
 
-* [查询更新管理日志](./update-management/update-mgmt-query-logs.md)
+* [查询更新管理日志](./update-management/query-logs.md)
 
 **Azure 安全中心监视**：是
 
@@ -229,7 +229,7 @@ ms.locfileid: "98629067"
 
 或者，可以启用数据并将其加入第三方 SIEM。
 
-* [了解 Azure Monitor 中的日志查询](../azure-monitor/log-query/get-started-portal.md)
+* [了解 Azure Monitor 中的日志查询](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
@@ -337,18 +337,6 @@ ms.locfileid: "98629067"
 
 **责任**：客户
 
-### <a name="36-use-dedicated-machines-for-all-administrative-tasks"></a>3.6：为所有管理任务使用专用计算机
-
-**指导**：使用配置了多重身份验证的 PAW 来登录并配置生产环境中的 Azure 自动化帐户资源。
-
-* [了解特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
-
-* [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
-
-**Azure 安全中心监视**：不适用
-
-**责任**：客户
-
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8：仅从批准的位置管理 Azure 资源
 
 **指导**：建议使用条件访问命名位置，仅允许从 IP 地址范围或国家/地区的特定逻辑分组进行访问。
@@ -453,7 +441,7 @@ ms.locfileid: "98629067"
 
 * [了解 Azure 传输中的加密](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-* [Azure 自动化 TLS 1.2 强制实施](/active-directory/hybrid/reference-connect-tls-enforcement)
+* [Azure 自动化 TLS 1.2 强制实施](../active-directory/hybrid/reference-connect-tls-enforcement.md)
 
 **Azure 安全中心监视**：是
 
@@ -823,7 +811,7 @@ ms.locfileid: "98629067"
 
 对于大部分方案，Microsoft 基本 VM 模板与 Azure Automation State Configuration 相结合可以帮助满足和维护安全要求。
 
-* [有关如何下载 VM 模板的信息](../virtual-machines/windows/download-template.md)
+* [有关如何下载 VM 模板的信息](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [有关创建 ARM 模板的信息](../virtual-machines/windows/ps-template.md)
 
@@ -1107,7 +1095,7 @@ ms.locfileid: "98629067"
 
 **指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
-此外，请用标记明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
+此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 * [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 

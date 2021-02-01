@@ -10,12 +10,12 @@ ms.testscope: no
 ms.testdate: 11/09/2020
 ms.author: v-yeche
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 73cb29b528ad828c851f2e337fc9044603a62221
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: e75833f2a1a4f0f37c023e1e6a7a6abb271a6a50
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023010"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060175"
 ---
 <!--Verified Successfullt-->
 # <a name="azure-security-baseline-for-site-recovery"></a>Site Recovery 的 Azure 安全基线
@@ -219,7 +219,7 @@ ms.locfileid: "98023010"
 
 **指导**：将安全的、由 Azure 托管的工作站（也称为特权访问工作站 (PAW)）与 Azure 多重身份验证配合使用来执行管理任务，以及对 Site Recovery 资源执行特权操作。
 
-- [特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [规划基于云的 Azure AD 多重身份验证部署](../active-directory/authentication/howto-mfa-getstarted.md)
 

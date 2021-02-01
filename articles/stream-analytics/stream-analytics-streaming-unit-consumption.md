@@ -3,17 +3,16 @@ title: Azure 流分析中的流单元
 description: 本文介绍 Azure 流分析中的流单元设置和影响性能的其他因素。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 11/16/2020
+ms.date: 01/25/2021
 origin.date: 10/28/2019
-ms.openlocfilehash: ecf42703d1d456cb193d5128465ef9eb3ec68ef9
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: a9b0d87168e22780b9c7ba74f61bb01b74da4038
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977643"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060118"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>了解和调整流式处理单元
 

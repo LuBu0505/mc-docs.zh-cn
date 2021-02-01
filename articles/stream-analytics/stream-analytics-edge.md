@@ -4,17 +4,16 @@ description: 在 Azure 流分析中创建 edge 作业，并将其部署到运行
 ms.service: stream-analytics
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.topic: conceptual
 origin.date: 02/14/2020
-ms.date: 01/07/2021
+ms.date: 01/25/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 5a1ea14805af37100e997b04363f3cfccfca87bc
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: e9c0fdd79823247efa355aadeff84f85a3545d06
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023159"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059744"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure IoT Edge 流分析
  

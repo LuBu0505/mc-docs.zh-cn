@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: conceptual
 origin.date: 08/31/2020
-ms.date: 11/30/2020
+ms.date: 02/01/2021
 ms.author: v-jay
-ms.openlocfilehash: c69f1269fdd09b6184ec72c93e3deb4f5a64b960
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 4c22137b11ea02cde85ca6d2fe71dfc6176d33d6
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300607"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059367"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
 
@@ -123,4 +123,4 @@ ms.locfileid: "96300607"
 
 * [实时传送视频流快速入门](live-events-wirecast-quickstart.md)
 * [实时传送视频流教程](stream-live-tutorial-with-api.md)
-* [有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md)
+* [有关从媒体服务 v2 迁移到 v3 的指导](migrate-v-2-v-3-migration-introduction.md)

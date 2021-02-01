@@ -7,12 +7,12 @@ ms.topic: overview
 origin.date: 05/19/2020
 ms.date: 12/28/2020
 ms.author: v-johya
-ms.openlocfilehash: 155b15899cf51598c0624f7aa6ab9d2290088972
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 487668e5f279559293ce2b0b8054df9ac8ab7ad4
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856884"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751329"
 ---
 # <a name="whats-new-in-language-understanding"></a>语言理解中的新增功能
 
@@ -22,7 +22,7 @@ ms.locfileid: "97856884"
 
 ### <a name="december-2020"></a>2020 年 12 月
 
-* 所有 LUIS 用户都需要[迁移到 LUIS 创作资源](luis-migration-authoring.md)
+* 所有 LUIS 用户都必须[迁移到 LUIS 创作资源](luis-migration-authoring.md)
 
 ### <a name="june-2020"></a>2020 年 6 月
 

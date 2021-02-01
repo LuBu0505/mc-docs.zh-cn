@@ -2,14 +2,14 @@
 title: 用于容器的 Azure Monitor 中的日志警报 | Microsoft Docs
 description: 本文介绍如何从用于容器的 Azure Monitor 中创建内存和 CPU 使用率的自定义日志警报。
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 01/26/2021
 ms.author: v-johya
-ms.openlocfilehash: ff826ca9016343d5609a56035c54b7f81f54b1ea
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: 712591d73d72c7d621946c49f41bba020524d62a
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97104877"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059899"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>如何从用于容器的 Azure Monitor 中创建日志警报
 
@@ -225,7 +225,7 @@ KubePodInventory
         KubePodInventory
         | where TimeGenerated < endDateTime
         | where TimeGenerated >= startDateTime
-        | summarize PodStatus=any(PodStatus) by TimeGenerated, PodUid, ClusterId
+        | summarize PodStatus=any(PodStatus) by TimeGenerated, PodUid, ClusterName
         | summarize TotalCount = count(),
                     PendingCount = sumif(1, PodStatus =~ 'Pending'),
                     RunningCount = sumif(1, PodStatus =~ 'Running'),

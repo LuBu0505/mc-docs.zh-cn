@@ -5,13 +5,13 @@ author: msangapu-msft
 ms.author: v-tawe
 ms.topic: tutorial
 origin.date: 06/20/2020
-ms.date: 01/11/2021
-ms.openlocfilehash: a35f47cd9d3e6bcc9ca9078e009455f50157b50e
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.date: 02/01/2021
+ms.openlocfilehash: 3e9c8b92a56b8aeda5e448a9a8602db5ed0c153b
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021893"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058901"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>教程：使用 Azure Monitor 排查应用服务应用的问题
 
@@ -172,11 +172,11 @@ where ResultDescription  contains "error"
 
 在 `ResultDescription` 列中，将看到以下错误：
 
-<pre>
+```output
 PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted 
 (tried to allocate 16384 bytes) in /home/site/wwwroot/process.php on line 20, 
 referer: http://<app-name>.chinacloudsites.cn/
-</pre>
+```
 
 ### <a name="join-appservicehttplogs-and-appserviceconsolelogs"></a>联接 AppServiceHTTPLogs 和 AppServiceConsoleLogs
 
@@ -202,11 +202,11 @@ myHttp | join myConsole on TimeGen | project TimeGen, CsUriStem, ScStatus, Resul
 
 在 `ResultDescription` 列中，将会看到发生时间与 Web 服务器错误相同的以下错误：
 
-<pre>
+```output
 PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted 
 (tried to allocate 16384 bytes) in /home/site/wwwroot/process.php on line 20, 
 referer: http://<app-name>.chinacloudsites.cn/
-</pre>
+```
 
 消息在 `process.php` 的第 20 行指出内存已耗尽。 现已确认应用程序在出现 HTTP 500 错误期间生成了错误。 让我们查看代码以识别问题。
 

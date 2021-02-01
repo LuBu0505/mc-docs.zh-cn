@@ -8,15 +8,15 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 origin.date: 10/01/2020
-ms.date: 11/27/2020
+ms.date: 01/14/2021
 ms.author: v-tawe
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7aef6d877613922d7dceca833c38d6aebbd33aa3
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 208c7e57d37c6190f47dba41e922337e02de8a9b
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300940"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060016"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>配置 Azure Key Vault 防火墙和虚拟网络
 
@@ -176,4 +176,4 @@ To understand how to configure a private link connection on your key vault, plea
 ## <a name="next-steps"></a>后续步骤
 
 * [Key Vault 的虚拟网络服务终结点](overview-vnet-service-endpoints.md)
-* [保护密钥保管库](secure-your-key-vault.md)
+* [Azure Key Vault 安全性概述](security-overview.md)

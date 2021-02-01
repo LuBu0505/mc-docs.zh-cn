@@ -6,15 +6,15 @@ services: api-management
 author: Johnnytechn
 ms.service: api-management
 ms.topic: article
-ms.date: 11/18/2020
+ms.date: 01/18/2021
 ms.author: v-johya
-ms.custom: contperfq1
-ms.openlocfilehash: 3e16c3330b48a6eedee01775d2827da352cccafa
-ms.sourcegitcommit: f1d0f81918b8c6fca25a125c17ddb80c3a7eda7e
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: fae2015c21c43d4798d7f3dda6d8844d12d1522d
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96306224"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751313"
 ---
 # <a name="protect-a-web-api-backend-in-azure-api-management-by-using-oauth-20-authorization-with-azure-ad"></a>在 Azure API 管理中使用 OAuth 2.0 授权和 Azure AD 保护 Web API 后端 
 

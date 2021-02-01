@@ -14,15 +14,15 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 08/27/2020
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.author: v-jay
 ms:custom: seodec18
-ms.openlocfilehash: 78ae67f04442437ed0ff59f2b0e612865cecf7f1
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: ba0cf7d9206f3db12772b48af26120153bc3b3d9
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021308"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060131"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建内部负载均衡器以对 VM 进行负载均衡
 
@@ -194,7 +194,7 @@ $lbrule = @{
     FrontendIpConfiguration = $feip
     BackendAddressPool = $bePool
 }
-$rule = New-AzLoadBalancerRuleConfig @lbrule -EnableTcpReset -DisableOutboundSNAT
+$rule = New-AzLoadBalancerRuleConfig @lbrule -EnableTcpReset
 
 ## Create the load balancer resource. ##
 $loadbalancer = @{
@@ -210,8 +210,6 @@ $loadbalancer = @{
 New-AzLoadBalancer @loadbalancer
 
 ```
->[!NOTE]
->后端池中的虚拟机将不含具有此配置的出站 Internet 连接。 <br /> 有关提供出站连接的详细信息，请参阅： <br /> **[Azure 中的出站连接](load-balancer-outbound-connections.md)**<br /> 用于提供连接的选项： <br /> **[仅出站的负载均衡器配置](egress-only.md)** <br /> **[什么是虚拟网络 NAT？](../virtual-network/nat-overview.md)**
 
 ## <a name="create-virtual-machines---standard"></a>创建虚拟机 - 标准
 
@@ -308,6 +306,12 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 
 >[!NOTE]
 >对于生产型工作负载，建议使用标准 SKU 负载均衡器。 有关 sku 的详细信息，请参阅 [Azure 负载均衡器 SKU](skus.md)。
+
+在本部分，你将创建一个负载均衡器来对虚拟机进行负载均衡。 
+
+创建内部负载均衡器时，虚拟网络配置为负载均衡器的网络。 
+
+下图显示在本快速入门中创建的资源：
 
 :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="在快速入门中创建的基本负载均衡器资源。" border="false":::
 

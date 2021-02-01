@@ -53,6 +53,8 @@
               href: ./database/security-controls-policy.md
             - name: 安全基线
               href: database/security-baseline.md
+            - name: Always Encrypted
+              href: database/always-encrypted-landing.yml
             - name: Azure Defender for SQL
               href: database/azure-defender-for-sql.md
             - name: 高级威胁防护
@@ -167,6 +169,8 @@
               href: database/performance-guidance.md
             - name: 使用 DMV 监视性能
               href: database/monitoring-with-dmvs.md
+            - name: 了解和解决阻止问题
+              href: database/understand-resolve-blocking.md
             - name: 日志诊断遥测数据
               href: database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md
             - name: 内存中 OLTP
@@ -279,12 +283,12 @@
           items:
             - name: 配置安全性
               href: database/secure-database-tutorial.md
+            - name: 使用服务主体创建用户
+              href: database/authentication-aad-service-principal-tutorial.md
             - name: 轮换 TDE BYOK 密钥
               href: database/transparent-data-encryption-byok-key-rotation.md
             - name: 删除 TDE 保护器
               href: database/transparent-data-encryption-byok-remove-tde-protector.md
-            - name: 使用服务主体创建用户
-              href: database/authentication-aad-service-principal-tutorial.md
         - name: 移动数据
           items:
             - name: 使用 DMS 迁移
@@ -355,6 +359,8 @@
               href: database/sql-data-sync-troubleshoot.md
         - name: 安全性
           items:
+            - name: Always Encrypted
+              href: database/always-encrypted-landing.yml
             - name: Azure SQL 审核
               href: database/auditing-overview.md
             - name: 审核日志格式
@@ -559,7 +565,7 @@
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
-        - name: Azure Resource Manager
+        - name: Azure 资源管理器
           href: database/arm-templates-content-guide.md?tabs=single-database
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
@@ -664,10 +670,12 @@
               href: 'https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail?toc=%252fazure-sql%252ftoc.json'
         - name: 安全性
           items:
-            - name: 保护公共终结点
-              href: managed-instance/public-endpoint-overview.md
+            - name: Always Encrypted
+              href: database/always-encrypted-landing.yml
             - name: 审核
               href: managed-instance/auditing-configure.md
+            - name: 保护公共终结点
+              href: managed-instance/public-endpoint-overview.md
             - name: 服务器信任组
               href: managed-instance/server-trust-group-overview.md
     - name: 如何
@@ -694,6 +702,8 @@
           href: managed-instance/virtual-cluster-delete.md
         - name: 配置自定义 DNS
           href: managed-instance/custom-dns-configure.md
+        - name: 同步 DNS 配置
+          href: managed-instance/synchronize-vnet-dns-servers-setting-on-virtual-cluster.md
         - name: 同步网络配置
           href: managed-instance/azure-app-sync-network-configuration.md
         - name: 查找管理终结点 IP 地址
@@ -714,7 +724,7 @@
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance
-        - name: Azure Resource Manager
+        - name: Azure 资源管理器
           href: database/arm-templates-content-guide.md?tabs=managed-instance
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'

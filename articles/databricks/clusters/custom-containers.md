@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 10/01/2020
 title: 使用 Databricks 容器服务自定义容器 - Azure Databricks
 description: 了解如何使用自定义 Docker 映像创建 Azure Databricks 群集，以完全控制库自定义、环境锁定和 CI/CD 集成。
-ms.openlocfilehash: 4d2d734993c598188c0e1c1be37bfeecf857038c
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: 330ae503fb941960cbe104e3121284e3d4767192
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121809"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059972"
 ---
 # <a name="customize-containers-with-databricks-container-services"></a><a id="containers"> </a><a id="customize-containers-with-databricks-container-services"> </a>使用 Databricks 容器服务自定义容器
 
@@ -118,7 +118,7 @@ RUN /databricks/conda/envs/dcs-minimal/bin/pip install urllib3
          "password": "<docker-registry-password>"
        }
      },
-     "spark_version": "5.5.x-scala2.11",
+     "spark_version": "7.3.x-scala2.12",
    }'
    ```
 

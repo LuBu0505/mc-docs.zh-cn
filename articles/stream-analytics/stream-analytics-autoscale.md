@@ -3,16 +3,15 @@ title: 自动缩放流分析作业
 description: 本文介绍如何根据预定义计划或作业指标值自动缩放流分析作业
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 11/16/2020
-ms.openlocfilehash: 9c058b2af978946f640bc02e564a6a741f75dc70
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.date: 01/25/2021
+ms.openlocfilehash: 1d1550877d64d2e6a952a62f92442078ea0fd808
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978140"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060003"
 ---
 # <a name="autoscale-stream-analytics-jobs-using-azure-automation"></a>使用 Azure 自动化服务自动缩放流分析作业
 

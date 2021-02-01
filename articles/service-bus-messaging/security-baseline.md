@@ -5,17 +5,17 @@ ms.service: service-bus-messaging
 ms.topic: conceptual
 origin.date: 09/25/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 11/09/2020
 ms.author: v-yeche
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0e367e189417f2e9e71a79175126d0c1ea4bb6f6
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: b5f1b431d6f79f45b1d58e9694126664b203f86a
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021656"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059132"
 ---
 <!--Verified Successfully-->
 # <a name="azure-security-baseline-for-service-bus"></a>服务总线的 Azure 安全基线
@@ -295,7 +295,7 @@ ms.locfileid: "98021656"
 
 **指导**：使用配置了多重身份验证 (MFA) 的特权访问工作站 (PAW) 进行登录并配置启用了服务总线的资源。
 
-- [了解特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 

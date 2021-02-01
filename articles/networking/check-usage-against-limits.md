@@ -1,5 +1,5 @@
 ---
-title: 根据限制检查 Azure 资源使用情况 | Azure
+title: 根据限制检查 Azure 资源使用情况 | Azure Docs
 description: 了解如何根据 Azure 订阅限制检查 Azure 资源使用情况。
 services: networking
 documentationcenter: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/05/2018
-ms.date: 03/02/2020
-ms.openlocfilehash: 76efbad4dbeca9c29aa73c67d1359d0294bee4bd
-ms.sourcegitcommit: bbe4ee95604608448cf92dec46c5bfe4b4076961
+ms.date: 02/01/2020
+ms.openlocfilehash: 0211b08343e807be4f8c7eae4a595087e576b8b5
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96598698"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059755"
 ---
 # <a name="check-resource-usage-against-limits"></a>根据限制检查资源使用情况
 

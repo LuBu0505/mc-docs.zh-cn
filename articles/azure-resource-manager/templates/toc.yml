@@ -22,7 +22,7 @@
               href: ../../machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager.md?toc=/azure-resource-manager/templates/toc.json
             - name: 机器学习
               href: ../../machine-learning/how-to-create-workspace-template.md?toc=/azure-resource-manager/templates/toc.json
-        - name: 分析
+        - name: Analytics
           items:
             - name: Analysis Services
               href: ../../analysis-services/analysis-services-create-template.md?toc=/azure-resource-manager/templates/toc.json
@@ -159,7 +159,6 @@
             - name: Key Vault - 机密
               href: ../../key-vault/secrets/quick-create-template.md?toc=/azure-resource-manager/templates/toc.json
             - name: 安全中心
-              href: ../../security-center/quickstart-automation-alert.md?toc=/azure-resource-manager/templates/toc.json
         - name: 存储
           items:
             - name: 存储帐户
@@ -225,6 +224,9 @@
         - name: 设置资源部署顺序
           displayName: 'dependent resources, dependency'
           href: template-tutorial-create-templates-with-dependent-resources.md
+        - name: 使用部署脚本
+          displayName: custom script
+          href: template-tutorial-deployment-script.md
         - name: 使用条件
           href: template-tutorial-use-conditions.md
         - name: 集成 Key Vault
@@ -243,8 +245,6 @@
       href: template-best-practices.md
     - name: 常见问题
       href: frequently-asked-questions.md
-    - name: 模板规格
-      href: template-specs.md
     - name: 用于提供云一致性的模板
       href: templates-cloud-consistency.md
     - name: 部署模式
@@ -262,7 +262,7 @@
           href: template-syntax.md
         - name: 编写模板表达式
           href: template-expressions.md
-        - name: parameters
+        - name: 参数
           href: template-parameters.md
         - name: 变量
           href: template-variables.md
@@ -282,6 +282,11 @@
               href: add-resource-extensions.md
         - name: Outputs
           href: template-outputs.md
+        - name: 部署脚本
+          displayName: custom script
+          href: deployment-script-template.md
+        - name: 创建部署脚本开发环境
+          href: deployment-script-template-configure-dev.md
         - name: 将模板模块化
           displayName: 'linked templates, nested templates'
           href: linked-templates.md
@@ -353,6 +358,10 @@
           href: test-toolkit.md
         - name: 测试事例
           href: test-cases.md
+    - name: 模板规格
+      items:
+        - name: 创建和部署模板规格
+          href: template-specs.md
     - name: CI/CD
       items:
         - name: 带管道的 ARM 模板

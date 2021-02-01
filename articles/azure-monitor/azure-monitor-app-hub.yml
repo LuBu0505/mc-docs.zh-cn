@@ -9,12 +9,12 @@ metadata:
   ms.topic: hub-page
   manager: carmonm
   ms.date: 01/14/2021
-  ms.openlocfilehash: 07ac3f3b0730f814a66fe02551fc512ddce6a984
-  ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+  ms.openlocfilehash: cf06cb0c213e6594d982714e23dccb511b5be85c
+  ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/15/2021
-  ms.locfileid: "98231023"
+  ms.lasthandoff: 01/29/2021
+  ms.locfileid: "99058887"
 highlightedContent:
   items:
   - title: 什么是 Application Insights？
@@ -319,11 +319,6 @@ conceptualContent:
     - url: ./app/data-model-context.md
       itemType: how-to-guide
       text: 上下文
-  - title: Azure DevOps
-    links:
-    - url: ./app/continuous-monitoring.md
-      itemType: how-to-guide
-      text: 持续监视
   - title: 导出
     links:
     - url: ./app/export-telemetry.md

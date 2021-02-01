@@ -1,23 +1,23 @@
 ---
-title: 通过 Azure PowerShell 暂停和恢复 Synapse SQL 池中的计算
+title: 快速入门：通过 Azure PowerShell 暂停和恢复 Synapse SQL 池中的计算
 description: 可以使用 Azure PowerShell 暂停和恢复 Synapse SQL 池（数据仓库）。 计算资源。
 services: synapse-analytics
 author: WenJason
 manager: digimobile
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql-dw
 origin.date: 03/20/2019
-ms.date: 05/11/2020
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 744704451d19a27da190d986ce2ada8dbc5a096e
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.custom: seo-lt-2019, azure-synapse, devx-track-azurepowershell
+ms.openlocfilehash: 2b7bc7136ee71da565fee265d113fb40e86c2c5c
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432534"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059568"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>快速入门：通过 Azure PowerShell 暂停和恢复 Synapse SQL 池中的计算
 
@@ -137,4 +137,4 @@ Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlp
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 SQL 池，请继续阅读[将数据加载到 SQL 池](load-data-from-azure-blob-storage-using-polybase.md)一文。 有关管理计算功能的其他信息，请参阅[管理计算概述](sql-data-warehouse-manage-compute-overview.md)一文。
+若要详细了解 SQL 池，请继续阅读[将数据加载到 SQL 池](./load-data-from-azure-blob-storage-using-copy.md)一文。 有关管理计算功能的其他信息，请参阅[管理计算概述](sql-data-warehouse-manage-compute-overview.md)一文。

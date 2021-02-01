@@ -3,19 +3,19 @@ title: Azure 上的 Kubernetes 教程 - 更新应用程序
 description: 本 Azure Kubernetes 服务 (AKS) 教程介绍如何使用新版应用程序代码将现有应用程序部署更新到 AKS。
 services: container-service
 ms.topic: tutorial
-origin.date: 09/30/2020
+origin.date: 01/12/2021
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 029233f135beeb6ebf0a741dd794d84b1ff15fe2
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.custom: mvc
+ms.openlocfilehash: 7ee56963a9516eb8eb829091ea7fdbbf32c71873
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004164"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063675"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中更新应用程序
 
@@ -69,7 +69,7 @@ docker-compose up --build -d
 
 若要验证已更新的容器映像是否显示所做的更改，请打开一个本地 Web 浏览器并访问 `http://localhost:8080`。
 
-:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated.png" alt-text="一个屏幕截图，显示使用本地 Web 浏览器和本地主机打开的已更新容器映像 Azure 投票应用的示例。":::
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated.png" alt-text="屏幕截图，显示已更新的容器映像 Azure 投票应用的示例，该应用在本地运行并在本地 Web 浏览器中打开":::
 
 在 *config_file.cfg* 文件中提供的已更新值显示在正运行的应用程序中。
 
@@ -148,9 +148,9 @@ azure-vote-front-1297194256-zktw9  1/1       Terminating   0          1m
 kubectl get service azure-vote-front
 ```
 
-现在，请打开本地 Web 浏览器并访问服务的 IP 地址：
+现在，请打开 Web 浏览器并访问服务的 IP 地址：
 
-:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="一个屏幕截图，显示在本地 Web 浏览器中打开的已更新应用程序 Azure 投票应用的示例。":::
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="屏幕截图，显示已更新的映像 Azure 投票应用的示例，该应用在 AKS 群集中运行并在本地 Web 浏览器中打开。":::
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -182,4 +182,4 @@ kubectl get service azure-vote-front
 [az-acr-login]: https://docs.azure.cn/cli/acr
 [azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 01/04/2021
+ms.date: 01/27/2021
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 46e93992d1e48cca923bf51a09110667b39af8a5
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 6bddabe2b913781e56a657fca4f65c3b523c037f
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023032"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059707"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure 门户
 
@@ -78,7 +78,7 @@ ms.locfileid: "98023032"
    > [!NOTE]
    > 对于应用程序网关 v2 SKU，必须有一个 **公共** 前端 IP 配置。 你仍可以同时有公共和专用前端 IP 配置，但目前没有为 v2 SKU 启用仅专用前端 IP 配置（仅限 ILB 模式）。 
 
-2. 为“公共 IP 地址”选择“新建”，输入“myAGPublicIPAddress”作为公共 IP 地址名称，然后选择“确定” 。 
+2. 为“公共 IP 地址”选择“新增”，输入“myAGPublicIPAddress”作为公共 IP 地址名称，然后选择“确定” 。 
 
      ![新建应用程序网关：前端](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
 
@@ -86,9 +86,9 @@ ms.locfileid: "98023032"
 
 ### <a name="backends-tab"></a>“后端”选项卡
 
-后端池用于将请求路由到为请求提供服务的后端服务器。 后端池可以包含 NIC、虚拟机规模集、公共 IP、内部 IP、完全限定的域名 (FQDN) 和多租户后端（例如 Azure 应用服务）。 在此示例中，将使用应用程序网关创建空的后端池，然后将后端目标添加到后端池。
+后端池用于将请求路由到为请求提供服务的后端服务器。 后端池可以包含 NIC、虚拟机规模集、公共 IP 地址、内部 IP 地址、完全限定的域名 (FQDN) 和多租户后端（例如 Azure 应用服务）。 在此示例中，将使用应用程序网关创建空的后端池，然后将后端目标添加到后端池。
 
-1. 在“后端”选项卡上，选择“+添加后端池”   。
+1. 在“后端”选项卡上，选择“添加后端池” 。
 
 2. 在打开的“添加后端池”窗口中，输入以下值以创建空的后端池  ：
 
@@ -105,7 +105,7 @@ ms.locfileid: "98023032"
 
 在“配置”选项卡上，将连接使用传递规则创建的前端和后端池  。
 
-1. 选择“传递规则”列中的“添加规则”   。
+1. 选择“传递规则”列中的“添加传递规则” 。
 
 2. 在打开的“添加传递规则”窗口中，输入“myRoutingRule”作为规则名称    。
 
@@ -120,7 +120,7 @@ ms.locfileid: "98023032"
 
 4. 在“后端目标”选项卡上，为“后端目标”选择“myBackendPool”    。
 
-5. 对于“HTTP 设置”，选择“新建”以创建新的 HTTP 设置   。 HTTP 设置将决定传递规则的行为。 在打开的“添加 HTTP 设置”窗口中，为“HTTP 设置名称”输入“myHTTPSetting”，为“后端端口”输入“80”。 接受“添加 HTTP 设置”窗口中其他设置的默认值，然后选择“添加”以返回到“添加传递规则”窗口  。 
+5. 对于“HTTP 设置”，选择“新增”以添加新的 HTTP 设置 。 HTTP 设置将决定传递规则的行为。 在打开的“添加 HTTP 设置”窗口中，为“HTTP 设置名称”输入“myHTTPSetting”，为“后端端口”输入“80”。 接受“添加 HTTP 设置”窗口中其他设置的默认值，然后选择“添加”以返回到“添加传递规则”窗口  。 
 
      ![新建应用程序网关：HTTP 设置](./media/application-gateway-create-gateway-portal/application-gateway-create-httpsetting.png)
 
@@ -147,7 +147,7 @@ ms.locfileid: "98023032"
 ### <a name="create-a-virtual-machine"></a>创建虚拟机
 
 1. 在 Azure 门户菜单或“主页”页上，选择“创建资源” 。 此时会显示“新建”窗口。
-2. 在“常用”列表中选择“Windows Server 2016 Datacenter” 。 此时会显示“创建虚拟机”页。<br>应用程序网关可将流量路由到其后端池中使用的任何类型的虚拟机。 本示例使用 Windows Server 2016 Datacenter。
+2. 在“常用”列表中选择“Windows Server 2016 Datacenter” 。 此时会显示“创建虚拟机”页。<br>应用程序网关可将流量路由到其后端池中使用的任何类型的虚拟机。 在此示例中，可以使用 Windows Server 2016 Datacenter 虚拟机。
 3. 对于以下虚拟机设置，请在“基本信息”选项卡中输入相应值：
 
     - **资源组**：选择 **myResourceGroupAG** 作为资源组名称。
@@ -165,7 +165,7 @@ ms.locfileid: "98023032"
 
 ### <a name="install-iis-for-testing"></a>安装 IIS 用于测试
 
-本示例在虚拟机上安装 IIS，只为验证 Azure 是否已成功创建应用程序网关。
+本示例在虚拟机上安装 IIS，以验证 Azure 是否已成功创建应用程序网关。
 
 1. 在 PowerShell 中使用以下命令登录 Azure 门户：
 
@@ -204,13 +204,15 @@ ms.locfileid: "98023032"
    > [!div class="mx-imgBorder"]
    > ![添加后端服务器](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
 
-6. 选择“保存” 。
+6. 选择“保存”。
 
 7. 等待部署完成之后再继续下一步。
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-虽然不需 IIS 即可创建应用程序网关，但本快速入门中安装了它，用来验证 Azure 是否已成功创建应用程序网关。 使用 IIS 测试应用程序网关：
+虽然不需 IIS 即可创建应用程序网关，但本快速入门中安装了它，用来验证 Azure 是否已成功创建应用程序网关。 
+
+使用 IIS 测试应用程序网关：
 
 1. 在“概述”页面上查找应用程序网关的公共 IP 地址![记录应用程序网关公共 IP 地址](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png)或者，可以选择“所有资源”，在搜索框中输入“myAGPublicIPAddress”，然后在搜索结果中选择该地址 。 Azure 会在“概览”页上显示公共 IP 地址。
 2. 复制公共 IP 地址，然后将其粘贴到浏览器的地址栏中，以便浏览该 IP 地址。
@@ -229,10 +231,9 @@ ms.locfileid: "98023032"
 1. 在 Azure 门户菜单上，选择“资源组”，或搜索并选择“资源组”。
 2. 在“资源组”页的列表中搜索“myResourceGroupAG”，然后将其选中。 
 3. 在“资源组”页上，选择“删除资源组”   。
-4. 在“键入资源组名称”字段中输入“myResourceGroupAG”，然后选择“删除”
+4. 在“键入资源组名称”字段下输入“myResourceGroupAG”，然后选择“删除” 
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [教程：使用 Azure 门户配置带有 TLS 终止的应用程序网关](create-ssl-portal.md)
-

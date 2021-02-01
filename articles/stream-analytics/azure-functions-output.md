@@ -3,16 +3,15 @@ title: 从 Azure 流分析输出的 Azure Functions
 description: 本文介绍作为 Azure 流分析输出的 Azure Functions。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 11/16/2020
-ms.openlocfilehash: b7fd797a0ec13f94d1a265e5bd67a0e19bbcc31b
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.date: 01/25/2021
+ms.openlocfilehash: 401cf64819012244f9c8cd8711e89599e7ad2de0
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978116"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060128"
 ---
 # <a name="azure-functions-output-from-azure-stream-analytics"></a>从 Azure 流分析输出的 Azure Functions
 
@@ -41,7 +40,7 @@ Azure 流分析通过 HTTP 触发器调用 Azure Functions。 提供具有以下
 
 ## <a name="partitioning"></a>分区
 
-分区键基于查询中的 PARTITION BY 子句。 输出编写器的数量遵循[完全并行化的查询](stream-analytics-scale-jobs.md)的输入分区。
+分区键基于查询中的 PARTITION BY 子句。 输出编写器的数量与[完全并行化的查询](stream-analytics-scale-jobs.md)的输入分区一致。
 
 ## <a name="output-batch-size"></a>输出批大小
 

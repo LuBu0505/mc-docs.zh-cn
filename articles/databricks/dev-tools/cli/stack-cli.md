@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 07/30/2020
 title: 堆栈 CLI - Azure Databricks
 description: 了解如何使用 Databricks 堆栈命令行界面。
-ms.openlocfilehash: 9d70c7b1aa92093153a54c42f52debbb0499fc2c
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: 9f38364a1026c528f807750eef4b84acd1d523fa
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937780"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060153"
 ---
 # <a name="stack-cli"></a>Stack CLI
 
@@ -149,7 +149,7 @@ cat config.json
       "properties": {
         "name": "Example Stack CLI Job",
         "new_cluster": {
-          "spark_version": "5.0.x-scala2.11",
+          "spark_version": "7.3.x-scala2.12",
           "node_type_id": "Standard_DS3_v2",
           "num_workers": 3
         },
@@ -304,7 +304,7 @@ databricks stack deploy ./config.json
 
 一个 JSON 对象，其字段取决于服务。
 
-| 服务          | JSON 中的字段        | 类型             | 描述                                                                                                                                                 |
+| 服务          | JSON 中的字段        | 类型             | 说明                                                                                                                                                 |
 |------------------|----------------------|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 工作区        | path                 | STRING           | Azure Databricks 工作区中笔记本或目录的绝对路径。 命名与[工作区 API](../api/latest/workspace.md) 一致。 |
 | jobs             | job_id               | STRING           | 作业 ID，如 Azure Databricks 工作区中所示。 可用于更新已部署的作业。                                                     |

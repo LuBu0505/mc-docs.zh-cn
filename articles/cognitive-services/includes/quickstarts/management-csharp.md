@@ -6,14 +6,14 @@ author: Johnnytechn
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/04/2021
+ms.date: 01/19/2021
 ms.author: v-johya
-ms.openlocfilehash: 8a43b1d7906b1ed01474adbc5dffd709d78f39a7
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 115bfb43f873b941f497b648950b26ff46368b65
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024262"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98758152"
 ---
 [参考文档](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/management?view=azure-dotnet) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.CognitiveServices/) | [示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices/tests)
 
@@ -728,7 +728,7 @@ namespace ConsoleApp1
 }
 ```
 
-## <a name="create-a-cognitive-services-resource"></a>创建认知服务资源
+## <a name="create-a-cognitive-services-resource-c"></a>创建认知服务资源 (C#)
 
 若要创建并订阅新的认知服务资源，请使用 Create 方法。 此方法向传入的资源组添加新的可计费资源。 创建新资源时，需要知道要使用的服务的种类，以及其定价层（或 SKU）和 Azure 位置。 下面的方法使用所有这些参数并创建资源。
 

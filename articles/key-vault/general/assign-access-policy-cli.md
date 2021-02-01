@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 origin.date: 08/27/2020
-ms.date: 11/27/2020
+ms.date: 01/14/2021
 ms.author: v-tawe
-ms.openlocfilehash: 7e37823be0e5fbeb3bf8f5566b9b3f903f94b596
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: f337dddd9948da5cf8e8ff123842045d73b21e84
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300760"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059948"
 ---
 # <a name="assign-a-key-vault-access-policy"></a>分配 Key Vault 访问策略
 
@@ -75,7 +75,10 @@ az keyvault set-policy --name myKeyVault --object-id <object-id> --secret-permis
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Key Vault 安全性：标识和访问管理](overview-security.md#identity-and-access-management)
+
+- [Azure Key Vault 安全性：标识和访问管理](security-overview.md#identity-management)
 - [保护 Key Vault](secure-your-key-vault.md)
 - [Azure Key Vault 开发人员指南](developers-guide.md)
-- [Azure Key Vault 最佳做法](best-practices.md)
+<!--
+- [Azure Key Vault best practices](best-practices.md)
+-->

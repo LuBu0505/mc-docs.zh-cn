@@ -1,23 +1,23 @@
 ---
-title: 缩放 Synapse SQL 池的计算（Azure 门户）
+title: 快速入门：缩放 Synapse SQL 池的计算（Azure 门户）
 description: 可以使用 Azure 门户缩放 Synapse SQL 池（数据仓库）的计算。
 services: synapse-analytics
 author: WenJason
 manager: digimobile
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql-dw
 origin.date: 04/28/2018
-ms.date: 06/15/2020
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 288fefc9aaf1bc5ea0f00f6243ce824a74d6b4cd
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: 96e27389c8f21f4fbf3af5bd7ee22f5e31b64135
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432646"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059695"
 ---
 # <a name="quickstart-scale-compute-for-synapse-sql-pool-with-the-azure-portal"></a>快速入门：使用 Azure 门户缩放 Synapse SQL 池的计算
 
@@ -53,4 +53,4 @@ ms.locfileid: "96432646"
     ![移动滑块](./media/quickstart-scale-compute-portal/scale-dwu.png)
 
 ## <a name="next-steps"></a>后续步骤
-若要详细了解 SQL 池，请继续阅读[将数据加载到 SQL 池](load-data-from-azure-blob-storage-using-polybase.md)教程。 
+若要详细了解 SQL 池，请继续阅读[将数据加载到 SQL 池](./load-data-from-azure-blob-storage-using-copy.md)教程。

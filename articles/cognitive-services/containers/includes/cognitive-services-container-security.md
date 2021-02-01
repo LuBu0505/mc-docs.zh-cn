@@ -7,14 +7,14 @@ author: Johnnytechn
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/23/2020
+ms.date: 01/19/2021
 ms.author: v-johya
-ms.openlocfilehash: b45aecab828c46aa1d8a91eb4cd03cc3e5f7016c
-ms.sourcegitcommit: f1d0f81918b8c6fca25a125c17ddb80c3a7eda7e
+ms.openlocfilehash: ffdb824daf7dcedf420f11fb4141366b5c5d66a7
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96306262"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751380"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Azure 认知服务容器安全性
 
@@ -44,7 +44,7 @@ ms.locfileid: "96306262"
 
 #### <a name="disable-deep-packet-inspection"></a>禁用深度行数据包检查
 
-> 深度数据包检查 (DPI) 是一种数据处理，它会详细检查通过计算机网络发送的数据，并且通常会对其采取阻止、重新路由或日志记录等相应操作。
+深度数据包检查 (DPI) 是一种数据处理，它会详细检查通过计算机网络发送的数据，并且通常会对其采取阻止、重新路由或日志记录等相应操作。
 
 在认知服务容器创建的通往 Microsoft 服务器的安全通道上禁用 DPI。 如果不能这样做，则容器无法正常运行。
 

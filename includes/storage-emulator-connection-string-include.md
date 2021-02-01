@@ -5,12 +5,12 @@ ms.topic: include
 origin.date: 12/28/2020
 ms.date: 01/18/2021
 ms.author: v-jay
-ms.openlocfilehash: b67139f2526162d737e6df596960d1da66a59ce7
-ms.sourcegitcommit: f086abe8bd2770ed10a4842fa0c78b68dbcdf771
+ms.openlocfilehash: e8c6f1e8a066d94e1397fd70e2523ec72a96aa6f
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98163112"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99215352"
 ---
 模拟器支持单一固定的帐户和众所周知的用于共享密钥身份验证的身份验证密钥。 此帐户和密钥是允许用于模拟器的唯一共享密钥凭据。 它们分别是：
 
@@ -38,7 +38,7 @@ QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;
 TableEndpoint=http://127.0.0.1:10001/devstoreaccount1;
 ```
 
-下面的 .NET 代码片段显示了如何通过采用连接字符串的方法使用该快捷方式。 例如，[BlobContainerClient(String, String)](/dotnet/api/azure.storage.blobs.blobcontainerclient.-ctor#Azure_Storage_Blobs_BlobContainerClient__ctor_System_String_System_String_) 构造函数采用连接字符串。
+下面的 .NET 代码片段显示了如何通过采用连接字符串的方法使用该快捷方式。 例如，[BlobContainerClient(String, String)](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobcontainerclient.-ctor#Azure_Storage_Blobs_BlobContainerClient__ctor_System_String_System_String_) 构造函数采用连接字符串。
 
 ```csharp
 BlobContainerClient blobContainerClient = new BlobContainerClient("UseDevelopmentStorage=true", "sample-container");

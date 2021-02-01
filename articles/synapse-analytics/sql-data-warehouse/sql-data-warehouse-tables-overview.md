@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 origin.date: 03/15/2019
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 57fc8eca13232498e6c5adacea38c8d6e1727b32
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 2083b53476f5708cd770caa515f73f1248f2798e
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022554"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060113"
 ---
 # <a name="design-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用专用 SQL 池设计表
 
@@ -72,7 +72,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 外部表指向 Azure 存储 blob 中的数据。 与 CREATE TABLE AS SELECT 语句结合使用时，从外部表中选择数据即可将数据导入专用 SQL 池。
 
-因此，外部表可用于加载数据。 有关加载教程，请参阅[使用 PolyBase 从 Azure Blob 存储加载数据](load-data-from-azure-blob-storage-using-polybase.md)。
+因此，外部表可用于加载数据。 有关加载教程，请参阅[使用 PolyBase 从 Azure Blob 存储加载数据](./load-data-from-azure-blob-storage-using-copy.md)。
 
 ## <a name="data-types"></a>数据类型
 

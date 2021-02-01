@@ -6,14 +6,14 @@ ms.author: v-johya
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
-ms.date: 01/07/2021
+ms.date: 01/25/2021
 origin.date: 01/27/2020
-ms.openlocfilehash: 9ac0248e8512e01e91547ac9103542c88e20b717
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 4b88f2abd73056dadff0dd8497db9156017e9947
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023151"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059990"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>教程：从 Azure 流分析作业运行 Azure Functions 
 
@@ -53,8 +53,6 @@ ms.locfileid: "98023151"
    ![用于 Redis 的 Azure 缓存连接字符串的屏幕截图](./media/stream-analytics-with-azure-functions/image2.png)
 
 ## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-cache-for-redis"></a>在 Azure Functions 中创建可将数据写入到用于 Redis 的 Azure 缓存的函数
-
-1. 请参阅 Functions 文档的[创建函数应用](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)一节。 本部分演示如何使用 CSharp 语言[在 Azure Functions 中创建函数应用和 HTTP 触发的函数](../azure-functions/functions-create-first-azure-function.md#create-function)。  
 
 2. 浏览到 run.csx  函数。 将其更新为以下代码。 将“\<your Azure Cache for Redis connection string goes here\>”替换为上一节中检索到的 Azure Cache for Redis 主连接字符串。 
 

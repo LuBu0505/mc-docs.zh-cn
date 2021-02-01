@@ -6,20 +6,20 @@ tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 01/26/2021
 ms.author: v-junlch
 ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: 0c0e400383da869b712d333150c3b4042a3d299b
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: 4cc41609982baba5d3e23e69309942f36ccb0914
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937283"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060052"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-cli-20"></a>通过 Azure CLI 2.0 创建和使用虚拟机规模集的共享映像
 
-创建规模集时，需指定部署 VM 实例时要使用的映像。 [共享映像库](shared-image-galleries.md)大大简化了整个组织中的自定义映像共享。 自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动配置，例如预加载应用程序、应用程序配置和其他 OS 配置。 
+创建规模集时，需指定部署 VM 实例时要使用的映像。 [共享映像库](../virtual-machines/shared-image-galleries.md)大大简化了整个组织中的自定义映像共享。 自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动配置，例如预加载应用程序、应用程序配置和其他 OS 配置。 
 
 共享映像库可让你与他人共享映像。 选择要共享哪些映像，要在哪些区域中共享，以及希望与谁共享它们。 
 
@@ -31,5 +31,5 @@ ms.locfileid: "91937283"
 
 从 [VM](../virtual-machines/image-version-vm-cli.md) 或[托管映像](../virtual-machines/image-version-managed-image-cli.md)创建映像版本。
 
-有关共享映像库的详细信息，请参阅[概述](shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](../virtual-machines/troubleshooting-shared-images.md)。
+有关共享映像库的详细信息，请参阅[概述](../virtual-machines/shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](../virtual-machines/troubleshooting-shared-images.md)。
 

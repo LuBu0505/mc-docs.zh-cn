@@ -3,17 +3,16 @@ title: Azure 流分析输入故障排除
 description: 本文介绍对 Azure 流分析作业中的输入连接进行故障排除的技巧。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
-ms.date: 11/16/2020
+ms.date: 01/25/2021
 ms.custom: seodec18
-ms.openlocfilehash: 7c950d18874364ed0aba59e6dc1a54666ddf2f60
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: ae43ecdb36d78d6627caa55e63f8ce523701d1fc
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978106"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059722"
 ---
 # <a name="troubleshoot-input-connections"></a>排查输入连接问题
 

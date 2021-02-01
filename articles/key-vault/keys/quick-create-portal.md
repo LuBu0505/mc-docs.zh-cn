@@ -10,14 +10,14 @@ ms.subservice: keys
 ms.topic: quickstart
 ms.custom: mvc
 origin.date: 03/24/2020
-ms.date: 04/20/2020
+ms.date: 01/18/2021
 ms.author: v-tawe
-ms.openlocfilehash: 3117977428788d5db827db669afb31c955fc9279
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.openlocfilehash: 48e76b728d13260ee0ede7dab6a4febf60d2722a
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431069"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058451"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Key Vault 中设置和检索密钥
 
@@ -61,7 +61,7 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 3. 在“创建密钥”  屏幕上，选择以下值：
     - **选项**：生成。
     - **名称**：ExampleKey。
-    - 让其他值保留默认设置。 单击“创建”。 
+    - 让其他值保留默认设置。 单击 **创建**。
 
 收到密钥已成功创建的消息后，即可单击列表中的该密钥， 然后就可以看到某些属性。 如果单击当前版本，则可看到在上一步指定的值。
 
@@ -84,4 +84,4 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 
 - 阅读 [Azure Key Vault 概述](../general/overview.md)
 - 参阅 [Azure Key Vault 开发人员指南](../general/developers-guide.md)
-- 查看 [Azure Key Vault 最佳做法](../general/best-practices.md)
+- 请参阅 [Key Vault 安全性概述](../general/security-overview.md)

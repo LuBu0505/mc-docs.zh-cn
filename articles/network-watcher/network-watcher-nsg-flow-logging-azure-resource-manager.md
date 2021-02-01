@@ -17,12 +17,12 @@ ms.date: 01/18/2021
 ms.testscope: yes
 ms.testdate: 08/03/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0adea1520a0649f5f17f83d8ae9b31cd7078b767
-ms.sourcegitcommit: c987dd9e0d7aa87de933c5a915064c5ddafb8201
+ms.openlocfilehash: 49bc7a813eb0e97ae8f47987de377ed4cdcb1287
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541611"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751375"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>从 Azure 资源管理器模板部署 NSG 流日志
 
@@ -34,7 +34,7 @@ ms.locfileid: "98541611"
 > - [Azure 资源管理器](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 
-[Azure 资源管理器](https://azure.microsoft.com/services/azure-resource-manager/)是 Azure 的本机方法且功能强大，可以将基础结构作为代码进行管理。
+[Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/)是 Azure 的本机方法且功能强大，可以将基础结构作为代码进行管理。
 
 <!--Not Available on [infrastructure as code](https://docs.microsoft.com/azure/devops/learn/what-is-infrastructure-as-code)-->
 

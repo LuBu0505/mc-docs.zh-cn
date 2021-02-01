@@ -75,37 +75,37 @@
         - name: 高级数据安全
           items:
             - name: 概述
-              href: /sql-database/sql-database-advanced-data-security?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/azure-defender-for-sql.md
             - name: 数据发现和分类
-              href: /sql-database/sql-database-data-discovery-and-classification?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/data-discovery-and-classification-overview.md
             - name: 漏洞评估
-              href: /sql-database/sql-vulnerability-assessment?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/sql-vulnerability-assessment.md
             - name: 高级威胁防护
-              href: /sql-database/sql-database-threat-detection-overview?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/threat-detection-overview.md
         - name: 审核
-          href: /sql-database/sql-database-auditing?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+          href: ../../azure-sql/database/auditing-overview.md
         - name: 网络安全
           items:
             - name: 防火墙规则
-              href: /sql-database/sql-database-firewall-configure?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/firewall-configure.md
             - name: 专用链接
-              href: /sql-database/sql-database-private-endpoint-overview?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/private-endpoint-overview.md
             - name: 虚拟网络服务终结点
-              href: /sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/vnet-service-endpoint-rule-overview.md
         - name: 身份验证
           items:
             - name: 概述
               href: sql-data-warehouse-authentication.md
             - name: Azure Active Directory
-              href: /sql-database/sql-database-aad-authentication?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/authentication-aad-overview.md
             - name: 登录名和用户
-              href: /sql-database/sql-database-manage-logins?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/logins-create-manage.md
             - name: 多重身份验证
-              href: /sql-database/sql-database-ssms-mfa-authentication?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/authentication-mfa-ssms-overview.md
         - name: 访问控制
           items:
             - name: 概述
-              href: /sql-database/sql-database-manage-logins?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/logins-create-manage.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
             - name: 行级别安全性
               href: column-level-security.md
             - name: 行级别安全性
@@ -113,11 +113,11 @@
         - name: 数据保护
           items:
             - name: 动态数据屏蔽
-              href: /sql-database/sql-database-dynamic-data-masking-get-started?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/dynamic-data-masking-overview.md
             - name: 透明数据加密 (TDE) 概述
-              href: /sql-database/transparent-data-encryption-azure-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/transparent-data-encryption-tde-overview.md
             - name: 将 TDE 与自带密钥配合使用
-              href: /sql-database/transparent-data-encryption-byok-azure-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+              href: ../../azure-sql/database/transparent-data-encryption-byok-overview.md
     - name: 数据引入和准备
       items:
         - name: 概述
@@ -267,9 +267,9 @@
     - name: 安全
       items:
         - name: 配置 Azure AD 身份验证
-          href: /sql-database/sql-database-aad-authentication-configure?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+          href: ../../azure-sql/database/authentication-aad-configure.md
         - name: 通过 PowerShell 配置虚拟网络规则
-          href: /sql-database/sql-database-vnet-service-endpoint-rule-powershell?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+          href: ../../azure-sql/database/scripts/vnet-service-endpoint-rule-powershell-create.md
         - name: 启用加密 - 门户
           href: sql-data-warehouse-encryption-tde.md
         - name: 启用加密 - T-SQL
@@ -277,7 +277,7 @@
     - name: 加载和准备数据
       items:
         - name: 使用 Azure 数据工厂 (ADF)
-          href: /data-factory/load-azure-sql-data-warehouse?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+          href: ../../data-factory/load-azure-sql-data-warehouse.md
         - name: 使用 SQL Server Integration Services (SSIS)
           href: 'https://docs.microsoft.com/sql/integration-services/load-data-to-sql-data-warehouse?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json'
         - name: 示例
@@ -338,6 +338,8 @@
           href: sql-data-warehouse-restore-deleted-dw.md
         - name: 从异地备份进行还原
           href: sql-data-warehouse-restore-from-geo-backup.md
+        - name: 禁用异地备份
+          href: disable-geo-backup.md
     - name: 集成
       items:
         - name: 构建数据管道

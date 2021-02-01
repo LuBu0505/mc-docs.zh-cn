@@ -1,19 +1,20 @@
 ---
-title: Azure 服务总线和事件中心内的 AMQP 1.0 协议指南 | Azure
+title: Azure 服务总线和事件中心内的 AMQP 1.0 协议指南 | Azure Docs
 description: Azure 服务总线和事件中心内 AMQP 1.0 协议的表达与描述指南
+ms.service: service-bus-messaging
 ms.topic: article
 origin.date: 06/23/2020
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 8a438a1de0641e6c7526510f0da0fbaa61da8874
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: 185b78a6b60f4bb28b824ff91ae1ad3c18c6d042
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97105311"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059855"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure 服务总线和事件中心内的 AMQP 1.0 协议指南
 

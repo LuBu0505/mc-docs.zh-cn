@@ -3,19 +3,19 @@ title: Azure 上的 Kubernetes 教程 - 升级群集
 description: 此 Azure Kubernetes 服务 (AKS) 教程介绍如何将现有 AKS 群集升级到最新可用的 Kubernetes 版本。
 services: container-service
 ms.topic: tutorial
-origin.date: 09/30/2020
+origin.date: 01/12/2021
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 513fa80ba7b2a599742ca8bb451814b29dcdd7a3
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: cb71dcb1dc6dfbbebb30b5a4d02ed76bb5581ecd
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022883"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063663"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中升级 Kubernetes
 
@@ -42,22 +42,22 @@ ms.locfileid: "98022883"
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-在以下示例中，当前版本为 1.15.11，可用版本将显示在“升级”下 。
+在以下示例中，当前版本为 1.18.10，可用版本将显示在“升级”下 。
 
 ```json
 {
   "agentPoolProfiles": null,
   "controlPlaneProfile": {
-    "kubernetesVersion": "1.15.11",
+    "kubernetesVersion": "1.18.10",
     ...
     "upgrades": [
       {
         "isPreview": null,
-        "kubernetesVersion": "1.16.8"
+        "kubernetesVersion": "1.19.1"
       },
       {
         "isPreview": null,
-        "kubernetesVersion": "1.16.9"
+        "kubernetesVersion": "1.19.3"
       }
     ]
   },
@@ -87,7 +87,7 @@ az aks upgrade \
 > [!NOTE]
 > 一次只能升级一个次要版本。 例如，可以从 1.14.x 升级到 1.15.x，但不能从 1.14.x 直接升级到 1.16.x   。 若要从 1.14.x 升级到 1.16.x，请先从 1.14.x 升级到 1.15.x，然后再执行一次升级从 1.15.x 升级到 1.16.x     。
 
-以下精简示例输出显示升级到 1.16.8 的结果。 请注意，kubernetesVersion 现报告 1.16.8 ：
+以下精简示例输出显示升级到 1.19.1 的结果。 请注意，kubernetesVersion 现报告 1.19.1 ：
 
 ```json
 {
@@ -105,7 +105,7 @@ az aks upgrade \
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.chinaeast2.cx.prod.service.azk8s.cn",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.16.8",
+  "kubernetesVersion": "1.19.1",
   "location": "chinaeast2",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -120,12 +120,12 @@ az aks upgrade \
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-以下示例输出显示 AKS 群集运行 KubernetesVersion 1.16.8：
+以下示例输出显示 AKS 群集运行 KubernetesVersion 1.19.1：
 
-```
+```output
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  chinaeast2      myResourceGroup  1.16.8               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.chinaeast2.cx.prod.service.azk8s.cn
+myAKSCluster  chinaeast2      myResourceGroup  1.19.1               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.chinaeast2.cx.prod.service.azk8s.cn
 ```
 
 ## <a name="delete-the-cluster"></a>删除群集
@@ -169,4 +169,4 @@ az group delete --name myResourceGroup --yes --no-wait
 
 <!--Not Available on [aks-solution-guidance]: https://docs.microsoft.com/azure/architecture/reference-architectures/containers/aks-start-here-->
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

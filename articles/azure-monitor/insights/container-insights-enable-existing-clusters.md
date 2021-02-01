@@ -5,14 +5,14 @@ ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
 origin.date: 09/12/2019
-ms.date: 11/02/2020
+ms.date: 01/26/2021
 ms.custom: devx-track-terraform, devx-track-azurecli
-ms.openlocfilehash: ec4a2d03e451e01d5de9d3aecececd3f234d8007
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 04d5ef8f39f77fc5ccf4d0dda5abd7e1c2bd7860
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328786"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059907"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>启用对已部署的 Azure Kubernetes 服务 (AKS) 群集的监视
 
@@ -284,7 +284,7 @@ provisioningState       : Succeeded
        az cloud set --name AzureChinaCloud
        az login
        az account set --subscription "Subscription Name"
-       az group deployment create --resource-group <ResourceGroupName> --template-file ./existingClusterOnboarding.json --parameters @./existingClusterParam.json
+       az deployment group create --resource-group <ResourceGroupName> --template-file ./existingClusterOnboarding.json --parameters @./existingClusterParam.json
        ```
 
        配置更改可能需要几分钟才能完成。 完成后，系统会显示包含结果的消息，如下所示：

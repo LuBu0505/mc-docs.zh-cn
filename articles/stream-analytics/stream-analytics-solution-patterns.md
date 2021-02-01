@@ -3,17 +3,16 @@ title: Azure 流分析解决方案模式
 description: 了解 Azure 流分析的常见解决方案模式，如仪表板、事件消息、数据存储、参考数据扩充和监视。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 06/21/2019
-ms.date: 01/07/2021
-ms.openlocfilehash: b36002c02c3e69471fe138d581d72ee3067cc6e1
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.date: 01/25/2021
+ms.openlocfilehash: d94c760ebdcbaeff698d1e0e1d38ee0173a45475
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023155"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058436"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure 流分析解决方案模式
 

@@ -6,15 +6,15 @@ author: WenJason
 ms.service: data-factory
 ms.topic: include
 origin.date: 11/16/2020
-ms.date: 12/07/2020
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: b37a97fbdf94a3b662c18c5c54fea477fca7147a
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: f195612facaa4636dd4a240f2fb986ef4534e126
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96748225"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99215086"
 ---
 Azure 数据工厂是一项多租户服务，具有以下默认限制，目的是确保客户订阅不受彼此工作负荷的影响。 若要将限制提高到订阅的最高限制，请联系支持部门。
 
@@ -45,6 +45,10 @@ Azure 数据工厂是一项多租户服务，具有以下默认限制，目的�
 | 编写 API 调用 | 1,200/小时 | 1,200/小时<br/><br/> 此限制是由 Azure 资源管理器而不是 Azure 数据工厂所强加的。 |
 | 读取 API 调用 | 12,500/小时 | 12,500/小时<br/><br/> 此限制是由 Azure 资源管理器而不是 Azure 数据工厂所强加的。 |
 | 每分钟监视的查询数 | 1,000 | 1,000 |
+| 数据流调试会话最长时间 | 8 小时 | 8 小时 |
+| 每个集成运行时的数据流的并发数量 | 50 | 请[联系支持人员](https://support.azure.cn/zh-cn/support/contact/)。 |
+| 每个工厂每个用户的数据流调试会话的并发数量 | 3 | 3 |
+| 数据流 Azure IR TTL 限制 | 4 小时 |  4 小时 |
 
 <sup>1</sup> 数据集成单元 (DIU) 用于云到云复制操作，详见[数据集成单元（版本 2）](../articles/data-factory/copy-activity-performance.md#data-integration-units)。 有关计费的信息，请参阅 [Azure 数据工厂定价](https://www.azure.cn/pricing/details/data-factory/)。
 

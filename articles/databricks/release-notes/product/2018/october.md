@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 01/16/2020
 title: 2018 年 10 月 - Azure Databricks
 description: Azure Databricks 新功能和改进的 2018 年 10 月发行说明。
-ms.openlocfilehash: dcb049fcfab5b3e89fd24c54227d0e63cc71b93d
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: a5b8c8b0695d5dd844622ed7a4cb4b1e8d8c7fee
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329232"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058748"
 ---
 # <a name="october-2018"></a>2018 年 10 月
 
@@ -27,7 +27,7 @@ ms.locfileid: "94329232"
 
 **2018 年 10 月 23 日至 30 日：版本 2.83**
 
-现在，可以通过在文件浏览器中右键单击笔记本名称（或单击笔记本名称右侧的下拉箭头 ![下拉菜单](../../../_static/images/menu-dropdown.png)）并选择“复制文件路径”来复制笔记本文件路径。
+现在，可以通过在文件浏览器中右键单击笔记本名称（或单击笔记本名称右侧的下拉箭头 ![下拉菜单](../../../_static/images/icons/menu-dropdown.png)）并选择“复制文件路径”来复制笔记本文件路径。
 
 > [!div class="mx-imgBorder"]
 > ![笔记本复制路径](../../../_static/images/workspace/copy-file-path.png)

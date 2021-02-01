@@ -4,14 +4,14 @@ description: 介绍在使用 Azure 资源管理器部署资源时如何解决 SK
 ms.topic: troubleshooting
 origin.date: 02/18/2020
 author: rockboyfor
-ms.date: 10/26/2020
+ms.date: 02/01/2021
 ms.author: v-yeche
-ms.openlocfilehash: 09aa10eb90e13f60d63c7546fd39de96e4a29a1c
-ms.sourcegitcommit: 7b3c894d9c164d2311b99255f931ebc1803ca5a9
+ms.openlocfilehash: fd6d071e403a489be99dfa0b73b83d00356603cd
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470085"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063572"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>解决 SKU 不可用的错误
 
@@ -35,7 +35,7 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 
 当所选的资源 SKU（如 VM 大小）不可用于所选的位置时，会收到此错误。
 
-<!--Not Available on [Spot error messages](../../virtual-machines/error-codes-spot.md)-->
+<!--NOT AVAILABLE ON [Spot error messages](../../virtual-machines/error-codes-spot.md)-->
 
 ## <a name="solution-1---powershell"></a>解决方案 1 - PowerShell
 
@@ -97,7 +97,7 @@ virtualMachines  chinaeast  Standard_F4                ...             None
 
 可以筛选和滚动到可用的大小。
 
-:::image type="content" source="./media/error-sku-not-available/available-sizes.png" alt-text="创建 VM":::
+:::image type="content" source="./media/error-sku-not-available/available-sizes.png" alt-text="可用的 SKU":::
 
 ## <a name="solution-4---rest"></a>解决方案 4 - REST
 
@@ -133,4 +133,4 @@ virtualMachines  chinaeast  Standard_F4                ...             None
 }
 ```
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -4,20 +4,20 @@ description: 了解如何使用 PowerShell 创建弹性作业代理。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurepowershell
+ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: tutorial
 author: WenJason
 ms.author: v-jay
 ms.reviwer: sstein
-origin.date: 03/13/2019
-ms.date: 10/29/2020
-ms.openlocfilehash: 7ecb6d3095a7819fc5ea94984f1aff66d24aae77
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+origin.date: 10/21/2020
+ms.date: 02/01/2021
+ms.openlocfilehash: 2073879deffbf9961e041fed7a7951676603a0ec
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431628"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059681"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell-preview"></a>使用 PowerShell 创建弹性作业代理（预览版）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -122,14 +122,6 @@ $db1 = New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $targ
 $db1
 $db2 = New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $targetServerName -DatabaseName "database2"
 $db2
-```
-
-## <a name="use-elastic-jobs"></a>使用弹性作业
-
-若要使用弹性作业，请运行以下命令，在 Azure 订阅中注册此功能。 针对要在其中预配弹性作业代理的订阅运行此命令一次。 如果订阅只包含属于作业目标的数据库，则不需注册此类订阅。
-
-```powershell
-Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql
 ```
 
 ### <a name="create-the-elastic-job-agent"></a>创建弹性作业代理

@@ -15,14 +15,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 10/2/2019
-ms.date: 12/03/2020
+ms.date: 01/19/2021
 ms.author: v-johya
-ms.openlocfilehash: 879239285749241895d47071795074d44b1a2dd7
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: e7da55b42b4db2235ed61edb0a60eaf1a5508f7a
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747085"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751222"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虚拟机安全概述
 本文概述了可用于虚拟机的核心 Azure 安全功能。
@@ -107,7 +107,7 @@ Site Recovery：
 了解详细信息：
 
 * [什么是 Azure Site Recovery？](../../site-recovery/site-recovery-overview.md)
-* [Azure Site Recovery 的工作原理是什么？](/site-recovery/azure-to-azure-architecture.md)
+* [Azure Site Recovery 的工作原理是什么？](../../site-recovery/azure-to-azure-architecture.md)
 * [哪些工作负荷受 Azure Site Recovery 保护？](../../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>虚拟网络

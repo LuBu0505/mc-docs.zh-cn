@@ -7,14 +7,14 @@ tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 origin.date: 10/30/2018
-ms.date: 10/19/2020
+ms.date: 02/01/2021
 ms.author: v-tawe
-ms.openlocfilehash: f062c4d6ae82ec6dac7e2b62d02335e52a0e4aa0
-ms.sourcegitcommit: e2e418a13c3139d09a6b18eca6ece3247e13a653
+ms.openlocfilehash: 5b4c75c35bce2ae8fd93b5d3a862e7349373ef83
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170638"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059203"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure Web 应用配置及管理常见问题解答
 
@@ -79,7 +79,7 @@ ms.locfileid: "92170638"
 获取 Web 应用出站 IP 地址列表：
 
 1. 在 Azure 门户中的 Web 应用边栏选项卡上，转到“属性”菜单。
-2. 搜索 **出站 IP 地址** 。
+2. 搜索 **出站 IP 地址**。
 
 随即显示出站 IP 地址列表。
 
@@ -282,7 +282,7 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 
 ## <a name="how-do-i-redirect-the-default-chinacloudsitescn-domain-to-my-azure-web-apps-custom-domain"></a>如何将默认 *.chinacloudsites.cn 域重定向到 Azure Web 应用的自定义域？
 
-在 Azure 中使用 Web 应用创建新网站时，将向你的站点分配一个默认 *sitename* .chinacloudsites.cn 域。 如果将自定义主机名添加到站点，并且不希望用户能够访问默认 *.chinacloudsites.cn 域，可以将默认 URL 进行重定向。 若要了解如何将源自网站默认域的所有通信流重定向到自定义域，请参阅[将默认域重定向到 Azure Web 应用中的自定义域](http://zainrizvi.io/blog/block-default-azure-websites-domain/)。
+在 Azure 中使用 Web 应用创建新网站时，将向你的站点分配一个默认 *sitename*.chinacloudsites.cn 域。 如果将自定义主机名添加到站点，并且不希望用户能够访问默认 *.chinacloudsites.cn 域，可以将默认 URL 进行重定向。 若要了解如何将源自网站默认域的所有通信流重定向到自定义域，请参阅[将默认域重定向到 Azure Web 应用中的自定义域](http://zainrizvi.io/blog/block-default-azure-websites-domain/)。
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>如何确定应用服务中安装的 .NET 版本？
 
@@ -312,6 +312,9 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 
 还可以指定要压缩的特定动态和静态 MIME 类型。 有关详细信息，请参阅[简单 Azure 网站上的 httpCompression 设置](https://social.msdn.microsoft.com/Forums/azure/890b6d25-f7dd-4272-8970-da7798bcf25d/httpcompression-settings-on-a-simple-azure-website?forum=windowsazurewebsitespreview)，查看我们对一个论坛问题的回复。
 
-## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>如何从本地环境迁移到应用服务？
+<!--Not Support on [Azure App Service Migration Assistant](https://appmigration.microsoft.com/)-->
 
-若要将站点从 Windows 和 Linux Web 服务器迁移到应用服务，可以使用 Azure App Service 迁移助手。 该迁移工具会根据需要在 Azure 中创建 Web 应用和数据库，然后发布内容。 有关详细信息，请参阅 [Azure App Service 迁移助手](https://appmigration.microsoft.com/)。
+## <a name="why-is-my-certificate-issued-for-11-months-and-not-for-a-full-year"></a>为什么我的证书有效期为 11 个月，而不是一整年？
+
+对于 2020/9/1 之后颁发的所有证书，最大持续时间现在为 397天。 对于 2020/9/1 之前颁发的证书，最大有效期为 825 天，除非续订、重新生成密钥等。2020/9/1 之后续订的证书都将受此更改的影响，并且用户可能会注意到其续订证书的有效期会缩短。
+GoDaddy 已实现一个订阅服务，该服务既能满足新要求，又遵循现有客户证书。 新颁发的证书在到期前三十天，该服务会自动颁发第二个证书，将持续时间延长到原始到期日期。 应用服务正在与 GoDaddy 合作以解决此更改问题，确保客户获得其证书的完整持续时间。

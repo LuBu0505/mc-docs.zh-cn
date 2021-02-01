@@ -5,16 +5,16 @@ services: container-service
 ms.topic: article
 origin.date: 09/01/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 07/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: cdec0ca7faa55358f4744f52df9128d2aa5b6c62
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: b1cb345cea030c3a9aeb27946d25c316618fb07c
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023131"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063600"
 ---
 <!--Verified successfully-->
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>对 Azure Kubernetes Service (AKS) 中的 Azure 磁盘使用自带密钥 (BYOK)
@@ -125,7 +125,7 @@ someuser@Azure:~$ az account list
 ]
 ```
 
-创建一个名为 **byok-azure-disk.yaml** 的文件，在其中包含以下信息。  将 myAzureSubscriptionId、myResourceGroup 和 myDiskEncrptionSetName 替换为你的值并应用 yaml。  请确保使用在其中部署了 DiskEncryptionSet 的资源组。 
+创建一个名为 **byok-azure-disk.yaml** 的文件，在其中包含以下信息。 将 myAzureSubscriptionId、myResourceGroup 和 myDiskEncrptionSetName 替换为你的值并应用 yaml。 请确保使用在其中部署了 DiskEncryptionSet 的资源组。 
 
 <!--Not Available on  If you use the Azure Cloud Shell, this file can be created using vi or nano as if working on a virtual or physical system-->
 
@@ -164,6 +164,6 @@ kubectl apply -f byok-azure-disk.yaml
 [customer-managed-keys-windows]: ../virtual-machines/disk-encryption.md#customer-managed-keys
 [customer-managed-keys-linux]: ../virtual-machines/disk-encryption.md#customer-managed-keys
 [key-vault-generate]: ../key-vault/general/manage-with-cli2.md
-[supported-regions]: ../virtual-machines/windows/disk-encryption.md#supported-regions
+[supported-regions]: ../virtual-machines/disk-encryption.md#supported-regions
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

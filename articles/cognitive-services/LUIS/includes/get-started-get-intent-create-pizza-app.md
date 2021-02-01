@@ -2,21 +2,22 @@
 title: include 文件
 description: include 文件
 services: cognitive-services
-author: roy-har
-manager: diberry
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.date: 06/19/2020
+ms.date: 01/19/2021
 origin.date: 06/03/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
-ms.author: v-tawe
-ms.openlocfilehash: dbf4296099c2a902ed9d9f586af59370ea5455c7
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.author: v-johya
+ms.reviewer: roy-har
+ms.openlocfilehash: 90320aea14c62e34cdd1f5506c50b12909146e51
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "92472466"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98758148"
 ---
 1. 选择 [pizza-app-for-luis-v6.json](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-app-for-luis-v6.json)，打开 `pizza-app-for-luis.json` 文件的 GitHub 页面。
 1. 右键单击或长按“原始”按钮，然后选择“将链接另存为”，将 `pizza-app-for-luis.json` 保存到计算机 。

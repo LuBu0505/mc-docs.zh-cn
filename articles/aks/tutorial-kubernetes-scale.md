@@ -3,19 +3,19 @@ title: Kubernetes on Azure 教程 - 缩放应用程序
 description: 此 Azure Kubernetes 服务 (AKS) 教程介绍如何缩放 Kubernetes 中的节点和 Pod，以及如何实施水平 Pod 自动缩放。
 services: container-service
 ms.topic: tutorial
-origin.date: 09/30/2020
+origin.date: 01/12/2021
 author: rockboyfor
-ms.date: 11/30/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 1c45c1668f56b62978ed720bf7413ca3f33cf382
-ms.sourcegitcommit: ea52237124974eda84f8cef4bf067ae978d7a87d
+ms.custom: mvc
+ms.openlocfilehash: 8e37aaa5e74349939a6a7f20c2274ce6ab2b93c6
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024479"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063664"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中缩放应用程序
 
@@ -26,7 +26,7 @@ ms.locfileid: "96024479"
 > * 手动缩放运行应用程序的 Kubernetes Pod
 > * 配置运行应用前端的自动缩放 Pod
 
-在另外的教程中，Azure 投票应用程序将更新为新版本。
+在后面的教程中，Azure 投票应用程序将更新为新版本。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -44,7 +44,7 @@ kubectl get pods
 
 以下示例输出显示一个前端 Pod 和一个后端 Pod：
 
-```
+```output
 NAME                               READY     STATUS    RESTARTS   AGE
 azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
@@ -56,7 +56,7 @@ azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-再次运行 [kubectl get pods][kubectl-get]，验证 AKS 是否创建其他 Pod。 一分钟左右之后，其他 Pod 会在群集中提供：
+再次运行 [kubectl get pods][kubectl-get]，验证 AKS 是否成功创建其他 Pod。 大约一分钟后，即可在群集中使用 Pod：
 
 ```console
 kubectl get pods
@@ -136,7 +136,7 @@ spec:
 
 使用 `kubectl apply` 应用 `azure-vote-hpa.yaml` 清单文件中定义的自动缩放程序。
 
-```
+```console
 kubectl apply -f azure-vote-hpa.yaml
 ```
 
@@ -163,7 +163,7 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 
 当群集成功缩放时，输出类似于以下示例：
 
-```
+```output
 "agentPoolProfiles": [
   {
     "count": 3,
@@ -210,4 +210,4 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 [azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli
 [az-aks-show]: https://docs.azure.cn/cli/aks#az_aks_show
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

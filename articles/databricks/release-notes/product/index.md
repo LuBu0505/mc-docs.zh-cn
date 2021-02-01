@@ -5,22 +5,66 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 10/07/2020
+ms.date: 01/14/2021
 title: 平台发行说明 - Azure Databricks
 description: Azure Databricks 平台的发行说明索引。
-ms.openlocfilehash: 7c6f403ecaec60ecc58880b2c63adfbced942012
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 002453f57ee7bbe5449729e22386ffd1a891948a
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329021"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058710"
 ---
 # <a name="platform-release-notes"></a>平台发行说明
 
+* [2021 年 1 月](2021/january.md)
+  * [通过将 Docker 映像预加载到实例池，更快地启动群集](2021/january.md#start-clusters-faster-with-docker-images-preloaded-into-instance-pools)
+  * [笔记本查找和替换现在支持更改所有匹配项](2021/january.md#notebook-find-and-replace-now-supports-changing-all-occurrences-of-a-match)
+  * [单节点群集 (GA)](2021/january.md#single-node-clusters-ga)
+  * [自由格式的群集策略类型已重命名为“不受限制”](2021/january.md#free-form-cluster-policy-type-renamed-to-unrestricted)
+  * [如果用户仅有权访问一个策略，则不会显示群集策略字段](2021/january.md#cluster-policy-field-not-shown-if-a-user-only-has-access-to-one-policy)
+  * [Databricks Runtime 7.0 系列支持结束](2021/january.md#databricks-runtime-70-series-support-ends)
+* [2020 年 12 月](2020/december.md)
+  * [Databricks Runtime 7.5 正式版](2020/december.md#databricks-runtime-75-ga)
+  * [作业 API 现在支持更新现有作业](2020/december.md#jobs-api-now-supports-updating-existing-jobs)
+  * [新的全局初始化脚本框架现已发布](2020/december.md#new-global-init-script-framework-is-ga)
+  * [Databricks Runtime 7.5（Beta 版本）](2020/december.md#databricks-runtime-75-beta)
+  * [作业 API“end_time”字段现在使用纪元时间](2020/december.md#jobs-api-end_time-field-now-uses-epoch-time)
+  * [使用新的可视化浏览器查找 DBFS 文件](2020/december.md#find-dbfs-files-using-new-visual-browser)
+  * 现在，新的工作区默认启用[针对作业、群集、笔记本和其他工作区对象的可见性控件](2020/december.md#visibility-controls-for-jobs-clusters-notebooks-and-other-workspace-objects-are-now-enabled-by-default-on-new-workspaces)
+  * [在 MLflow 中改进了嵌套运行的显示](2020/december.md#improved-display-of-nested-runs-in-mlflow)
+  * [管理员现可锁定用户帐户（公共预览版）](2020/december.md#admins-can-now-lock-user-accounts-public-preview)
+  * [更新了 NVIDIA 驱动程序](2020/december.md#updated-nvidia-driver)
+* [2020 年 11 月](2020/november.md)
+  * [Databricks Runtime 6.6 系列支持结束](2020/november.md#databricks-runtime-66-series-support-ends)
+  * [MLflow 模型注册表正式版](2020/november.md#mlflow-model-registry-ga)
+  * [根据注册的模型是否关联来筛选试验运行](2020/november.md#filter-experiment-runs-based-on-whether-a-registered-model-is-associated)
+  * [现可通过“数据”选项卡获取合作伙伴集成库](2020/november.md#partner-integrations-gallery-now-available-through-the-data-tab)
+  * [群集策略现使用“允许列表”和“阻止列表”作为策略类型名称](2020/november.md#cluster-policies-now-use-allowlist-and-blocklist-as-policy-type-names) 
+  * [创建作业群集失败时自动重试](2020/november.md#automatic-retries-when-the-creation-of-a-job-cluster-fails)
+  * [使用目录导航笔记本](2020/november.md#navigate-notebooks-using-the-table-of-contents)
+  * [SQL Analytics（公共预览版）](2020/november.md#sql-analytics-public-preview)
+  * [单节点群集现支持 Databricks 容器服务](2020/november.md#single-node-clusters-now-support-databricks-container-services)
+  * [Databricks Runtime 7.4 正式版](2020/november.md#databricks-runtime-74-ga)
+  * [Databricks JDBC 驱动程序更新](2020/november.md#databricks-jdbc-driver-update)
+  * [Databricks Connect 7.3（beta 版本）](2020/november.md#databricks-connect-73-beta)
 * [2020 年 10 月](2020/october.md)
-  * [使用 matplotlib 在更高的“retina”分辨率下呈现图像](2020/october.md#render-images-at-higher-retina-resolution-using-matplotlib)
+  * [联机 Power BI 服务中提供的新的 Azure Databricks Power BI 连接器（公共预览版）](2020/october.md#new-azure-databricks-power-bi-connector-available-in-the-online-power-bi-service-public-preview)
+  * [Databricks Runtime 7.4（Beta 版本）](2020/october.md#databricks-runtime-74-beta)
+  * [为 DBFS 根使用客户管理的密钥 (GA)](2020/october.md#use-customer-managed-keys-for-dbfs-root-ga)
+  * [扩展的试验访问控制 (ACL)](2020/october.md#expanded-experiment-access-control-acls)
+  * [以高保真的形式导入和导出 Jupyter 笔记本 (ipynb) 文件](2020/october.md#high-fidelity-import-and-export-of-jupyter-notebook-ipynb-files)
+  * [SCIM API 改进：用户记录响应中既返回间接组，也返回直接组](2020/october.md#scim-api-improvement-both-indirect-and-direct-groups-returned-in-user-record-response)
+  * [Azure 请求 ID 现包含在异常消息中](2020/october.md#azure-request-id-is-now-included-in-exceptions)
+  * [Databricks Runtime 6.5 系列支持结束](2020/october.md#databricks-runtime-65-series-support-ends)
+  * [安全群集连接（无公共 IP）为公共预览版](2020/october.md#secure-cluster-connectivity-no-public-ips-is-public-preview)
+  * [SCIM API 改进：``$ref`` 字段响应](2020/october.md#scim-api-improvement-ref-field-response)
+  * [诊断（审核）日志现在以低延迟方式提供](2020/october.md#diagnostic-audit-logs-are-now-delivered-with-low-latency)
+  * [Databricks Runtime 7.3、7.3 ML 和 7.3 基因组学声明的长期支持 (LTS)](2020/october.md#databricks-runtime-73-73-ml-and-73-genomics-declared-long-term-support-lts)
+  * [使用 matplotlib 在更高的分辨率下呈现图像](2020/october.md#render-images-at-higher-resolution-using-matplotlib)
   * [使用 Databricks CLI 或 Databricks API 创建由 Azure Key Vault 提供支持的机密范围](2020/october.md#use-the-databricks-cli-or-the-databricks-api-to-create-azure-key-vault-backed-secret-scopes)
   * [使用 Azure AD 令牌向 Databricks CLI 进行身份验证](2020/october.md#use-azure-ad-tokens-to-authenticate-to-the-databricks-cli)
+  * [新的 Azure 区域（公共预览版）](2020/october.md#new-azure-regions-public-preview)
 * [2020 年 9 月](2020/september.md)
   * [Databricks Runtime 7.3、7.3 ML 和 7.3 基因组学现已正式发布](2020/september.md#databricks-runtime-73-73-ml-and-73-genomics-are-now-ga)
   * [单节点群集（公共预览版）](2020/september.md#single-node-clusters-public-preview)
@@ -31,6 +75,7 @@ ms.locfileid: "94329021"
   * [MLflow 可用性改进](2020/september.md#mlflow-usability-improvements)
   * [新的 Azure Databricks Power BI 连接器（公共预览版）](2020/september.md#new-azure-databricks-power-bi-connector-public-preview)
   * [为 DBFS 根使用客户管理的密钥（公共预览版）](2020/september.md#use-customer-managed-keys-for-dbfs-root-public-preview)
+  * [新的 JDBC 和 ODBC 驱动程序带来了速度更快、延迟更低的 BI](2020/september.md#new-jdbc-and-odbc-drivers-bring-faster-and-lower-latency-bi)
   * [MLflow 模型服务（公共预览版）](2020/september.md#mlflow-model-serving-public-preview)
   * [群集 UI 改进](2020/september.md#clusters-ui-improvements)
   * [针对作业、群集、笔记本和其他工作区对象的可见性控件](2020/september.md#visibility-controls-for-jobs-clusters-notebooks-and-other-workspace-objects)

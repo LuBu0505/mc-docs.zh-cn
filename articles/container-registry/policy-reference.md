@@ -1,8 +1,8 @@
 ---
 title: Azure 容器注册表的内置策略定义
 description: 列出 Azure 容器注册表的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-origin.date: 11/20/2020
-ms.date: 01/18/2021
+origin.date: 01/21/2021
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 09/21/2020
 ms.topic: reference
@@ -10,12 +10,12 @@ author: rockboyfor
 ms.author: v-yeche
 ms.service: container-registry
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 7c8454a7d29099f1372d91cbb986c0f3f07af81d
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 6f87ca7b8df378009e72c1021a770598f21c6f28
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230129"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063679"
 ---
 <!--Verified successfully on 09/18/2020-->
 # <a name="azure-policy-built-in-definitions-for-azure-container-registry"></a>Azure 容器注册表的 Azure Policy 内置定义
@@ -34,4 +34,4 @@ ms.locfileid: "98230129"
 - 查看 [Azure Policy 定义结构](../governance/policy/concepts/definition-structure.md)。
 - 查看[了解策略效果](../governance/policy/concepts/effects.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 origin.date: 05/02/2017
-ms.date: 09/15/2020
+ms.date: 01/14/2021
 ms.author: v-tawe
-ms.openlocfilehash: f134f0eb929b0bb925f66efadfb96644aaf16baa
-ms.sourcegitcommit: 39410f3ed7bdeafa1099ba5e9ec314b4255766df
+ms.openlocfilehash: 272fe11eeed8f548df1568ed8790bc955d10183a
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90678508"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059934"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure 密钥保管库 .NET 2.0 - 发行说明和迁移指南
 以下信息有助于迁移到 C# 和 .NET 的 Azure Key Vault 库版本 2.0。  针对早期版本所编写的应用需进行更新，以支持最新版本。  为完全支持新增和改进的功能（如 Key Vault 证书），这些更改是必需的  。
@@ -39,7 +39,7 @@ Key Vault 证书管理 x509 证书，并支持以下行为：
 
 ## <a name="namespaces"></a>命名空间
 
-* **模型**的命名空间从 **Microsoft.Azure.KeyVault** 更改为 **Microsoft.Azure.KeyVault.Models**。
+* **模型** 的命名空间从 **Microsoft.Azure.KeyVault** 更改为 **Microsoft.Azure.KeyVault.Models**。
 * **Microsoft.Azure.KeyVault.Internal** 命名空间被弃用。
 * 以下 Azure SDK 依赖项命名空间的更改 
 
@@ -55,7 +55,7 @@ Key Vault 证书管理 x509 证书，并支持以下行为：
 
 ## <a name="return-types"></a>返回类型
 
-* KeyList 和 SecretList 将返回 IPage\<T> 而不是 ListKeysResponseMessage************
+* KeyList 和 SecretList 将返回 IPage\<T> 而不是 ListKeysResponseMessage
 * 生成的 BackupKeyAsync 将返回 BackupKeyResult，其中包含“值”（备份 blob）    。 以前，此方法会包装且仅返回值。
 
 ## <a name="exceptions"></a>异常

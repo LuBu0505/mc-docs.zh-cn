@@ -65,7 +65,7 @@
               href: relay-hybrid-connections-node-ws-api-overview.md
     - name: 安全
       items:
-        - name: 配置 IP 防火墙（预览版）
+        - name: 配置 IP 防火墙
           href: ip-firewall-virtual-networks.md
     - name: 管理和监视
       items:
@@ -80,7 +80,7 @@
         - name: Microsoft.Azure.Relay
           href: 'https://docs.azure.cn/dotnet/api/microsoft.azure.relay'
         - name: Microsoft.ServiceBus
-          href: 'https://docs.azure.cn/dotnet/api/Microsoft.ServiceBus'
+          href: 'https://docs.microsoft.com/dotnet/api/Microsoft.ServiceBus'
     - name: 异常
       href: relay-exceptions.md
     - name: 端口设置

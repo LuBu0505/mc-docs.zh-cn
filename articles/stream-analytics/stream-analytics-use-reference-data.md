@@ -3,17 +3,16 @@ title: 使用参考数据在 Azure 流分析中查找
 description: 本文介绍如何使用参考数据在 Azure 流分析作业的查询设计中查找或关联数据。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 10/8/2019
-ms.date: 01/07/2021
-ms.openlocfilehash: 5fb63e0805a7a6547305b787b0a4716d8da4cea0
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.date: 01/25/2021
+ms.openlocfilehash: 40a941f0a2bf3d1f6e897fefeabf1c1eeb4999ef
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023150"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059725"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>使用参考数据在流分析中查找
 

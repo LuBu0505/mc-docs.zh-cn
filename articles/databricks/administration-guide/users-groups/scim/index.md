@@ -5,19 +5,19 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 04/29/2020
+ms.date: 12/03/2020
 title: 使用 SCIM 预配用户和组 - Azure Databricks
 description: 了解如何使用支持 SCIM 的 IdP 将用户预配到 Azure Databricks。
-ms.openlocfilehash: db4ecf3866dc59885241ab8c6b8c147ed25f4308
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 9819d6dc394dd72dde5f2f1b9dd4358ffac3b652
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106500"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059976"
 ---
 # <a name="provision-users-and-groups-using-scim"></a>使用 SCIM 预配用户和组
 
-Azure Databricks 支持 [SCIM](http://www.simplecloud.info/)（跨域身份管理系统，一种可用于将用户预配过程自动化的开放标准）。 借助 SCIM，你可以使用标识提供者 (IdP) 在 Azure Databricks 中创建用户并为他们提供适当的访问级别；当他们离开你的组织或不再需要访问 Azure Databricks 时，你还可以删除他们的访问权限（对他们进行取消预配）。 此外，还可以直接调用 [SCIM API](../../../dev-tools/api/latest/scim/index.md) 来管理预配。
+Azure Databricks 支持 [SCIM](http://www.simplecloud.info/)（跨域身份管理系统，一种可用于将用户预配过程自动化的开放标准）。 借助 SCIM，你可使用标识提供者 (IdP) 在 Azure Databricks 中创建用户，并为他们提供适当的访问级别，当他们离开你的组织或不再需要访问 Azure Databricks 时，你还可删除他们的访问权限（对其进行取消预配）。 此外，还可以直接调用 [SCIM API](../../../dev-tools/api/latest/scim/index.md) 来管理预配。 仅可使用 SCIM API 执行某些用户管理（例如[临时停用或重新激活](../../../dev-tools/api/latest/scim/scim-users.md#activate-and-deactivate-user-by-id)）。
 
 > [!IMPORTANT]
 >

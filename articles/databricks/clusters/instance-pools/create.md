@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 04/29/2020
 title: 创建池 - Azure Databricks
 description: 了解如何创建 Azure Databricks 池。
-ms.openlocfilehash: 670a71567bf1aa8b5058d579c8ef42ee67fc561a
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: 7da8d8d70140338fb055580ead9b4eeb2f323e66
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121798"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059968"
 ---
 # <a name="create-a-pool"></a><a id="create-a-pool"> </a><a id="instance-pools-create"> </a>创建池
 
@@ -28,7 +28,7 @@ ms.locfileid: "92121798"
 
 若要创建池，请执行以下操作：
 
-1. 单击“群集”图标 ![“群集”图标](../../_static/images/clusters/clusters-icon.png) （在边栏中）。
+1. 单击“群集”图标 ![“群集”图标](../../_static/images/icons/clusters-icon.png) （在边栏中）。
 2. 单击“池”选项卡。
 
    > [!div class="mx-imgBorder"]

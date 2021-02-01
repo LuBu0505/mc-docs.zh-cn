@@ -3,16 +3,15 @@ title: 服务总线队列：Azure 流分析输出
 description: 本文介绍作为 Azure 流分析输出的服务总线队列。
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 11/16/2020
-ms.openlocfilehash: 9c9e41c2ff258c4f6d2d2869dc9c9ecfdc421828
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.date: 01/25/2021
+ms.openlocfilehash: e3be5a06da897fbc5df8798cb85b845ec6d647c0
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978144"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059745"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>服务总线队列：Azure 流分析输出
 

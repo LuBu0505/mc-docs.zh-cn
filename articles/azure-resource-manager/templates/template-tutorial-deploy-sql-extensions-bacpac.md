@@ -1,19 +1,19 @@
 ---
 title: 使用模板导入 SQL BACPAC 文件
-description: 了解如何使用 Azure SQL 数据库扩展，以通过 Azure 资源管理器模板导入 SQL BACPAC 文件。
+description: 了解如何使用 Azure SQL 数据库扩展，以通过 Azure 资源管理器模板（ARM 模板）导入 SQL BACPAC 文件。
 origin.date: 12/09/2019
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 01/25/2021
 ms.testscope: yes
 ms.testdate: 08/24/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: fccb64b5bb2ca946d711aab92436ffabd686afa7
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: ba4a47d3dac0c7b1ef950b69eae0dfd546bd9456
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023027"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751308"
 ---
 <!--Verify successfully-->
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>教程：使用 ARM 模板导入 SQL BACPAC 文件

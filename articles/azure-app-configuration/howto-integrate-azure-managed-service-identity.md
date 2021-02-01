@@ -7,13 +7,13 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
-ms.date: 01/18/2021
-ms.openlocfilehash: c40aa30db1d98d7798e1cd919b1072bfc88b7212
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 02/01/2021
+ms.openlocfilehash: 6c09140a1c48d621ad85b177a5436609f1cab286
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231088"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059540"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>使用托管标识来访问应用程序配置
 
@@ -85,7 +85,7 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
 
 1. 添加对 Azure.Identity 包的引用：
 
-    ```cli
+    ```bash
     dotnet add package Azure.Identity
     ```
 
@@ -195,7 +195,7 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
     现在，你可以像访问任何其他应用程序配置键一样访问 Key Vault 引用。 配置提供程序将会使用 `ManagedIdentityCredential` 来向 Key Vault 进行身份验证并检索值。
 
     > [!NOTE]
-    > `ManagedIdentityCredential` 只适用于支持托管标识身份验证的服务的 Azure 环境。 它在本地环境中不起作用。 请使用 [`DefaultAzureCredential`](https://docs.azure.cn/dotnet/api/azure.identity.defaultazurecredential) 以使代码在本地和 Azure 环境中都能正常工作，因为它将会回退到包括托管标识在内的几个身份验证选项。
+    > `ManagedIdentityCredential` 只适用于支持托管标识身份验证的服务的 Azure 环境。 它在本地环境中不起作用。 请使用 [`DefaultAzureCredential`](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential) 以使代码在本地和 Azure 环境中都能正常工作，因为它将会回退到包括托管标识在内的几个身份验证选项。
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 

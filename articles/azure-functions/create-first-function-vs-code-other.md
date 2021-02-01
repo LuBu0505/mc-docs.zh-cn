@@ -2,13 +2,13 @@
 title: 使用 Visual Studio Code 创建 Go 或 Rust 函数 - Azure Functions
 description: 了解如何创建 Go 函数作为 Azure Functions 自定义处理程序，然后使用 Visual Studio Code 中的 Azure Functions 扩展将本地项目发布到 Azure Functions 中的无服务器托管。
 ms.topic: quickstart
-ms.date: 01/04/2021
-ms.openlocfilehash: 471d900bb77ae1df243045ec319c3a6bb66d48a2
-ms.sourcegitcommit: dfdb65cef6a6b089992644f075b9c3f444cb8e36
+ms.date: 01/27/2021
+ms.openlocfilehash: e438a98f6c94ccabaa247ce9285e3f2f5b3130a1
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98793976"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060111"
 ---
 # <a name="quickstart-create-a-go-or-rust-function-in-azure-using-visual-studio-code"></a>快速入门：在 Azure 中使用 Visual Studio Code 创建 Go 或 Rust 函数
 
@@ -58,7 +58,7 @@ ms.locfileid: "98793976"
 
     ![选择“创建新项目”](./media/functions-create-first-function-vs-code/create-new-project.png)
 
-1. 为项目工作区选择目录位置，然后选择“选择”。
+1. 为项目工作区选择目录位置，然后选择“选择”  。
 
     > [!NOTE]
     > 这些步骤已设计为在工作区之外完成。 在这种情况下，请不要选择属于工作区内的项目文件夹。
@@ -150,6 +150,7 @@ HttpExample 文件夹中的 function.json 文件声明 HTTP 触发器函数 。 
     ```rust
     use std::collections::HashMap;
     use std::env;
+    use std::net::Ipv4Addr;
     use warp::{http::Response, Filter};
 
     #[tokio::main]
@@ -169,7 +170,7 @@ HttpExample 文件夹中的 function.json 文件声明 HTTP 触发器函数 。 
             Err(_) => 3000,
         };
 
-        warp::serve(example1).run(([127, 0, 0, 1], port)).await
+        warp::serve(example1).run((Ipv4Addr::UNSPECIFIED, port)).await
     }
     ```
 
@@ -227,7 +228,7 @@ HttpExample 文件夹中的 function.json 文件声明 HTTP 触发器函数 。 
 
     ![浏览器 - localhost 示例输出](../../includes/media/functions-run-function-test-local-vs-code/functions-test-local-browser.png)
 
-1. 有关请求的信息将显示在“终端”面板中。
+1. 有关请求的信息将显示在“终端”  面板中。
 
     ![任务主机启动 - VS Code 终端输出](../../includes/media/functions-run-function-test-local-vs-code/function-execution-terminal.png)
 
@@ -336,7 +337,7 @@ HttpExample 文件夹中的 function.json 文件声明 HTTP 触发器函数 。 
 
     + **选择 Application Insights 资源**：选择`+ Create Application Insights resource`。 该名称在 Azure 中必须全局唯一。 可以使用提示中推荐的名称。
 
-    + **选择新资源的位置**：为了获得更好的性能，请选择你附近的[区域](https://azure.microsoft.com/regions/)。 
+    + **选择新资源的位置**：为了获得更好的性能，请选择你附近的 [区域](https://azure.microsoft.com/regions/)。 
 
 1. 完成后，将使用基于函数应用名称的名称在订阅中创建以下 Azure 资源：
 
@@ -360,4 +361,3 @@ HttpExample 文件夹中的 function.json 文件声明 HTTP 触发器函数 。 
 
 > [!div class="nextstepaction"]
 > [了解 Azure Functions 自定义处理程序](functions-custom-handlers.md)
-

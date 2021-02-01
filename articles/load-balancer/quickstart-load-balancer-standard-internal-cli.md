@@ -13,15 +13,15 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 12/19/2020
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: f47b08647af08c5279258245f3a242d0973bc5c5
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 20f4c120cc2763253b62433eaa7736b4951eeb8a
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231114"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058633"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>快速入门：使用 Azure CLI 创建内部负载均衡器以对 VM 进行负载均衡
 
@@ -56,6 +56,12 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 >[!NOTE]
 >对于生产型工作负载，建议使用标准 SKU 负载均衡器。 有关 SKU 的详细信息，请参阅 [Azure 负载均衡器 SKU](skus.md)。
 
+在本部分，你将创建一个负载均衡器来对虚拟机进行负载均衡。 
+
+创建内部负载均衡器时，虚拟网络配置为负载均衡器的网络。 
+
+下图显示在本快速入门中创建的资源：
+
 :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="在快速入门中创建的标准负载均衡器资源。" border="false":::
 
 ## <a name="configure-virtual-network---standard"></a>配置虚拟网络 - 标准
@@ -64,7 +70,7 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 
-使用 [az network vnet create](https://docs.azure.cn/cli/network/vnet#az_network_vnet_createt) 创建虚拟网络：
+使用 [az network vnet create](https://docs.azure.cn/cli/network/vnet#az_network_vnet_create) 创建虚拟网络：
 
 * 命名为“myVNet”。
 * 地址前缀为 10.1.0.0/16。
@@ -318,12 +324,9 @@ az network bastion create \
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool \
     --probe-name myHealthProbe \
-    --disable-outbound-snat true \
     --idle-timeout 15 \
     --enable-tcp-reset true
 ```
->[!NOTE]
->后端池中的虚拟机将不含具有此配置的出站 Internet 连接。 </br> 有关提供出站连接的详细信息，请参阅： </br> **[Azure 中的出站连接](load-balancer-outbound-connections.md)**</br> 用于提供连接的选项： </br> **[仅出站的负载均衡器配置](egress-only.md)** </br> **[什么是虚拟网络 NAT？](../virtual-network/nat-overview.md)**
 
 ### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>将虚拟机添加到负载均衡器后端池
 
@@ -352,6 +355,12 @@ az network bastion create \
 
 >[!NOTE]
 >对于生产型工作负载，建议使用标准 SKU 负载均衡器。 有关 SKU 的详细信息，请参阅 [Azure 负载均衡器 SKU](skus.md)。
+
+在本部分，你将创建一个负载均衡器来对虚拟机进行负载均衡。 
+
+创建内部负载均衡器时，虚拟网络配置为负载均衡器的网络。 
+
+下图显示在本快速入门中创建的资源：
 
 :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="在快速入门中创建的基本负载均衡器资源。" border="false":::
 

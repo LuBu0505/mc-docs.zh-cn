@@ -5,19 +5,19 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 03/12/2020
-title: 语言指南 - Azure Databricks
+ms.date: 11/17/2020
+title: 语言路线图 - Azure Databricks
 description: 了解如何使用 Azure Databricks 支持的语言执行协作式数据科学和数据分析。
-ms.openlocfilehash: 3f3a33ac08c79d61d9c5c1e82a4533ac85c7187c
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: 73d79fd643de31a9faee92f8c190a9e6a022045e
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937629"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058974"
 ---
-#  <a name="language-guides"></a>语言指南
+# <a name="language-roadmaps"></a>语言路线图
 
-本部分提供有关 Azure Databricks 笔记本和作业中支持的语言的信息：Python、R、Scala 和 SQL。
+本部分提供有关 Azure Databricks 笔记本和作业中支持的语言的路线图：Python、R、Scala 和 SQL。
 
 * [Python](python.md)
   * [Python API](python.md#python-apis)

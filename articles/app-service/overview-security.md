@@ -4,15 +4,15 @@ description: 了解应用服务如何帮助保护应用，以及如何进一步�
 keywords: azure 应用服务, web 应用, 移动应用, api 应用, 函数应用, 安全性, 保护, 受保护, 符合性, 符合, 证书, 证书, https, ftps, tls, 信任, 加密, 加密, 已加密, ip 限制, 身份验证, 授权, 身份验证, 授权, msi, 托管服务标识, 托管标识, 机密, 机密, 修补, 修补程序, 修补程序, 版本, 隔离, 网络隔离, ddos, mitm
 ms.topic: article
 origin.date: 08/24/2018
-ms.date: 10/19/2020
+ms.date: 02/01/2021
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: f002051099cd22ca6ba99a30ac44959d473ad810
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 783a4cde9d5b2979a8e35ae7d9591b8dddc9d452
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230946"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059082"
 ---
 # <a name="security-in-azure-app-service"></a>Azure 应用服务中的安全性
 
@@ -90,8 +90,8 @@ Azure 应用服务提供用户或客户端应用的统包身份验证和授权�
 可通过三种方式安全地访问本地资源（如数据库）： 
 
 - [混合连接](app-service-hybrid-connections.md)：通过 TCP 隧道建立到远程资源的点到点连接。 TCP 隧道是使用 TLS 1.2 通过共享访问签名 (SAS) 密钥建立的。
-- 通过站点到站点 VPN 建立的[虚拟网络集成](web-sites-integrate-with-vnet.md)：如 [Azure 虚拟网络中的资源](#resources-inside-an-azure-virtual-network)中所述，但虚拟网络可通过[站点到站点 VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) 连接到本地网络。 在这种网络拓扑中，应用可以像连接到虚拟网络中的其他资源一样连接到本地资源。
-- 带有站点到站点 VPN 的[应用服务环境](environment/intro.md)：如 [Azure 虚拟网络中的资源](#resources-inside-an-azure-virtual-network)中所述，但虚拟网络可通过[站点到站点 VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) 连接到本地网络。 在这种网络拓扑中，应用可以像连接到虚拟网络中的其他资源一样连接到本地资源。
+- 通过站点到站点 VPN 建立的[虚拟网络集成](web-sites-integrate-with-vnet.md)：如 [Azure 虚拟网络中的资源](#resources-inside-an-azure-virtual-network)中所述，但虚拟网络可通过[站点到站点 VPN](../vpn-gateway/tutorial-site-to-site-portal.md) 连接到本地网络。 在这种网络拓扑中，应用可以像连接到虚拟网络中的其他资源一样连接到本地资源。
+- 带有站点到站点 VPN 的[应用服务环境](environment/intro.md)：如 [Azure 虚拟网络中的资源](#resources-inside-an-azure-virtual-network)中所述，但虚拟网络可通过[站点到站点 VPN](../vpn-gateway/tutorial-site-to-site-portal.md) 连接到本地网络。 在这种网络拓扑中，应用可以像连接到虚拟网络中的其他资源一样连接到本地资源。
 
 ## <a name="application-secrets"></a>应用程序密钥
 

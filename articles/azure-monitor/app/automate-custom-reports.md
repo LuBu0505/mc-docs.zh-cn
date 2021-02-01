@@ -3,16 +3,16 @@ title: 使用 Azure Application Insights 数据自动化自定义报表
 description: 使用 Azure Application Insights 数据自动化自定义每日/每周/每月报表
 ms.topic: conceptual
 author: Johnnytechn
-ms.date: 12/07/2020
+ms.date: 01/27/2021
 origin.date: 05/20/2019
 ms.reviewer: sdash
 ms.author: v-johya
-ms.openlocfilehash: fab6e3013231d3c8b556b93f705b825acdb674f7
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: b01ed2b2cf793d15dc9cb5caaf8947f2d4ce32e3
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97104480"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060196"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>使用 Azure Application Insights 数据自动化自定义报表
 
@@ -35,7 +35,7 @@ ms.locfileid: "97104480"
 可以[采用编程方式查询 Application Insights](https://dev.applicationinsights.io/) 数据，按计划生成自定义报表。 以下选项有助于快速开始：
 
 * [使用 Power Automate 来自动完成报表](../platform/logicapp-flow-connector.md)
-* 在监视方案中使用“Application Insights 计划摘要”[Azure Function](../../azure-functions/functions-create-first-azure-function.md) 模板。 此函数使用 SendGrid 传递电子邮件。 
+* 在监视方案中使用“Application Insights 计划摘要”[Azure Function](../../azure-functions/functions-get-started.md) 模板。 此函数使用 SendGrid 传递电子邮件。 
 
     ![Azure Function 模板](./media/automate-custom-reports/azure-function-template.png)
 
@@ -74,7 +74,7 @@ availabilityResults
 
 1. 创建一个 Azure 函数应用。（仅当要使用 Application Insights 监视新的函数应用时，才需要启用 Application Insights）
 
-   请访问 Azure Functions 文档，了解如何[创建函数应用](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app)
+   请访问 Azure Functions 文档，了解如何[创建函数应用](../../azure-functions/functions-get-started.md)
 
 2. 在新的函数应用完成部署后，选择“转到资源”。
 
@@ -156,5 +156,4 @@ availabilityResults
 * 详细了解[采用编程方式查询 Application Insights 数据](https://dev.applicationinsights.io/)
 * 了解有关[逻辑应用](../../logic-apps/logic-apps-overview.md)的详细信息。
 * 详细了解 [Microsoft Power Automate](https://ms.flow.microsoft.com)。
-
 

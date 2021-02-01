@@ -24,6 +24,8 @@
       href: quickstart-create-data-factory-resource-manager-template.md
     - name: 安全性 - 启用客户管理的密钥加密
       href: enable-customer-managed-key.md
+    - name: 创建数据流
+      href: data-flow-create.md
 - name: 教程
   items:
     - name: 复制和引入数据
@@ -91,6 +93,10 @@
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
     - name: 转换数据
       items:
+        - name: 使用映射数据流转换数据
+          items:
+            - name: 使用映射数据流转换数据
+              href: tutorial-data-flow.md
         - name: 使用外部服务
           items:
             - name: HDInsight Spark
@@ -143,6 +149,28 @@
       items:
         - name: 安全基线
           href: security-baseline.md
+    - name: 数据流
+      items:
+        - name: 使用映射数据流转换数据
+          items:
+            - name: 映射数据流概述
+              href: concepts-data-flow-overview.md
+            - name: 调试模式
+              href: concepts-data-flow-debug-mode.md
+            - name: 架构偏差
+              href: concepts-data-flow-schema-drift.md
+            - name: 列模式
+              href: concepts-data-flow-column-pattern.md
+            - name: 数据流监视
+              href: concepts-data-flow-monitoring.md
+            - name: 数据流性能
+              href: concepts-data-flow-performance.md
+            - name: 管理数据流画布
+              href: concepts-data-flow-manage-graph.md
+            - name: 表达式生成器
+              href: concepts-data-flow-expression-builder.md
+            - name: 表达式语言
+              href: data-flow-expression-functions.md
     - name: 角色和权限
       href: concepts-roles-permissions.md
     - name: 命名规则
@@ -193,7 +221,7 @@
           href: connector-azure-databricks-delta-lake.md
         - name: Azure 文件存储
           href: connector-azure-file-storage.md
-        - name: Azure SQL 数据库
+        - name: Azure SQL Database
           href: connector-azure-sql-database.md
         - name: Azure SQL 托管实例
           href: connector-azure-sql-managed-instance.md
@@ -205,6 +233,8 @@
           href: format-binary.md
         - name: Cassandra
           href: connector-cassandra.md
+        - name: Common Data Model 格式
+          href: format-common-data-model.md
         - name: Common Data Service for Apps
           href: connector-dynamics-crm-office-365.md
         - name: Concur
@@ -215,6 +245,8 @@
           href: connector-db2.md
         - name: 带分隔符的文本格式
           href: format-delimited-text.md
+        - name: 增量格式
+          href: format-delta.md
         - name: 钻取
           href: connector-drill.md
         - name: Dynamics 365
@@ -390,6 +422,8 @@
     - name: 转换数据
       href: transform-data.md
       items:
+        - name: 执行数据流活动
+          href: control-flow-execute-data-flow-activity.md
         - name: Azure 函数活动
           href: control-flow-azure-function-activity.md
         - name: 自定义活动
@@ -448,6 +482,50 @@
           href: control-flow-web-activity.md
         - name: Webhook 活动
           href: control-flow-webhook-activity.md
+    - name: 数据流转换
+      items:
+        - name: 转换概述
+          href: data-flow-transformation-overview.md
+        - name: 聚合
+          href: data-flow-aggregate.md
+        - name: 更改行
+          href: data-flow-alter-row.md
+        - name: 有条件拆分
+          href: data-flow-conditional-split.md
+        - name: 派生列
+          href: data-flow-derived-column.md
+        - name: Exists
+          href: data-flow-exists.md
+        - name: 筛选器
+          href: data-flow-filter.md
+        - name: 平展
+          href: data-flow-flatten.md
+        - name: 联接
+          href: data-flow-join.md
+        - name: 查找
+          href: data-flow-lookup.md
+        - name: 新建分支
+          href: data-flow-new-branch.md
+        - name: 透视
+          href: data-flow-pivot.md
+        - name: 级别
+          href: data-flow-rank.md
+        - name: Select
+          href: data-flow-select.md
+        - name: 接收器
+          href: data-flow-sink.md
+        - name: 排序
+          href: data-flow-sort.md
+        - name: 源
+          href: data-flow-source.md
+        - name: 代理键
+          href: data-flow-surrogate-key.md
+        - name: Union
+          href: data-flow-union.md
+        - name: 逆透视
+          href: data-flow-unpivot.md
+        - name: 窗口
+          href: data-flow-window.md
     - name: 参数化
       items:
         - name: 将链接的服务参数化
@@ -458,6 +536,8 @@
           href: control-flow-expression-language-functions.md
         - name: 系统变量
           href: control-flow-system-variables.md
+        - name: 将映射数据流参数化
+          href: parameters-data-flow.md
     - name: 安全性
       items:
         - name: 数据移动安全注意事项
@@ -497,15 +577,19 @@
         - name: Azure 集成运行时
           href: create-azure-integration-runtime.md
         - name: 自承载集成运行时
-          href: create-self-hosted-integration-runtime.md
+          items:
+            - name: 创建和配置自承载集成运行时
+              href: create-self-hosted-integration-runtime.md
+            - name: 自承载集成运行时自动更新和过期通知
+              href: self-hosted-integration-runtime-auto-update.md
+            - name: 共享的自承载集成运行时
+              href: create-shared-self-hosted-integration-runtime-powershell.md
+            - name: 自承载集成运行时的自动化脚本
+              href: self-hosted-integration-runtime-automation-scripts.md
+            - name: 在 Windows 容器中运行自承载集成运行时
+              href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
         - name: Azure-SSIS 集成运行时
           href: create-azure-ssis-integration-runtime.md
-        - name: 共享的自承载集成运行时
-          href: create-shared-self-hosted-integration-runtime-powershell.md
-        - name: 自承载集成运行时的自动化脚本
-          href: self-hosted-integration-runtime-automation-scripts.md
-        - name: 在 Windows 容器中运行自承载集成运行时
-          href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
     - name: 在 Azure 中运行 SSIS 包
       items:
         - name: 使用 Azure SQL 托管实例代理运行 SSIS 包
@@ -570,6 +654,16 @@
               href: data-migration-guidance-hdfs-azure-storage.md
             - name: 将数据从本地 Netezza 服务器迁移到 Azure
               href: data-migration-guidance-netezza-azure-sqldw.md
+        - name: 使用映射数据流进行转换
+          items:
+            - name: 处理固定宽度的文本文件
+              href: how-to-fixed-width.md
+            - name: 行处理时出错
+              href: how-to-data-flow-error-rows.md
+            - name: Azure SQL DB 到 Azure Cosmos DB
+              href: how-to-sqldb-to-cosmosdb.md
+            - name: 对代码片段进行重复数据消除和 NULL 检查
+              href: how-to-data-flow-dedupe-nulls-snippets.md
         - name: 从本地进行 SSIS 迁移
           items:
             - name: SSIS 迁移概述
@@ -610,6 +704,8 @@
           href: connector-troubleshoot-guide.md
         - name: 管道触发器
           href: pipeline-trigger-troubleshoot-guide.md
+        - name: 数据流
+          href: data-flow-troubleshoot-guide.md
         - name: 自承载集成运行时
           href: self-hosted-integration-runtime-troubleshoot-guide.md
         - name: Azure-SSIS 集成运行时
@@ -620,6 +716,8 @@
           href: ssis-integration-runtime-diagnose-connectivity-faq.md
 - name: 参考
   items:
+    - name: 数据流脚本
+      href: data-flow-script.md
     - name: .NET
       href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactory'
     - name: PowerShell

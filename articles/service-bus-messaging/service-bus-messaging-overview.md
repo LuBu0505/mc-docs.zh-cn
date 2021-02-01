@@ -5,16 +5,16 @@ ms.service: service-bus-messaging
 ms.topic: overview
 origin.date: 11/20/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 6745e9fa6559de4e1e237df3ae7da38ab82ea811
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 5502e458d2eeab1f7e8670baa12ccf36e61b0839
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230049"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059580"
 ---
 # <a name="what-is-azure-service-bus"></a>什么是 Azure 服务总线？
 Azure 服务总线是一个完全托管的企业消息代理，其中包含消息队列和发布订阅主题。 服务总线用于分离应用程序和服务，提供以下优势：
@@ -149,10 +149,10 @@ Azure 服务总线是一个完全托管的企业消息代理，其中包含消�
 可通过 Azure SDK 使用完全受支持的服务总线客户端库。
 
 - [适用于 .NET 的 Azure 服务总线](https://docs.azure.cn/dotnet/api/overview/service-bus?preserve-view=true)
-- [适用于 Java 的 Azure 服务总线库](https://docs.azure.cn/java/api/overview/servicebus?view=azure-java-stable&preserve-view=true)
+- [适用于 Java 的 Azure 服务总线库](https://docs.azure.cn/java/api/overview/servicebus?preserve-view=true)
 - [适用于 Java JMS 2.0 的 Azure 服务总线提供程序](how-to-use-java-message-service-20.md)
-- [适用于 JavaScript 和 TypeScript 的 Azure 服务总线模块](https://docs.microsoft.com/javascript/api/overview/azure/service-bus?view=azure-node-latest&preserve-view=true)
-- [适用于 Python 的 Azure 服务总线库](https://docs.microsoft.com/python/api/overview/azure/servicebus?view=azure-python&preserve-view=true)
+- [适用于 JavaScript 和 TypeScript 的 Azure 服务总线模块](https://docs.microsoft.com/javascript/api/overview/azure/service-bus?preserve-view=true)
+- [适用于 Python 的 Azure 服务总线库](https://docs.microsoft.com/python/api/overview/azure/servicebus?preserve-view=true)
 
 [Azure 服务总线的主要协议是 AMQP 1.0](service-bus-amqp-overview.md)，可从兼容 AMQP 1.0 的任何协议客户端使用它。 若干开源 AMQP 客户端具有显式演示服务总线互操作性的示例。 查看 [AMQP 1.0 协议指南](service-bus-amqp-protocol-guide.md)，了解如何通过 AMQP 1.0 客户端直接使用服务总线功能。
 

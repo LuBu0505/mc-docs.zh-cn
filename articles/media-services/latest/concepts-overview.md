@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
 origin.date: 08/31/2020
-ms.date: 11/30/2020
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: ad5731689921eba68a0844a44efe8baafa309f99
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 47bd46fc9be456ee5e5a9585ff0da2e3c7faa9ac
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300361"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058448"
 ---
 # <a name="media-services-terminology-and-concepts"></a>媒体服务的术语和概念
 
@@ -42,14 +42,14 @@ ms.locfileid: "96300361"
 
 |术语|说明|
 |---|---|
-|实时事件|**实时事件** 表示用于引入、转码（可选）以及打包视频、音频和实时元数据的管道。<br/><br/>对于从媒体服务 v2 API 迁移的客户，**实时事件** 取代了 v2 中的 **频道** 实体。 有关详细信息，请参阅[从 v2 迁移到 v3](migrate-from-v2-to-v3.md)。|
+|实时事件|**实时事件** 表示用于引入、转码（可选）以及打包视频、音频和实时元数据的管道。<br/><br/>对于从媒体服务 v2 API 迁移的客户，**实时事件** 取代了 v2 中的 **频道** 实体。 有关详细信息，请参阅[从 v2 迁移到 v3](migrate-v-2-v-3-migration-introduction.md)。|
 |流式处理终结点/打包/源|流式处理终结点表示动态（即时）打包和源服务，该服务可直接将实时和按需内容发送到客户端播放器应用程序。 它使用常见流式处理媒体协议之一（HLS 或 DASH）。 此外，流式处理终结点还为行业领先的数字版权管理系统 (DRMs) 提供动态（实时）加密。<br/><br/>在媒体流行业，此服务通常称为 **打包器** 或 **来源**。  本行业对此功能使用的其他常见术语包括 JITP（实时打包器）或 JITE（实时加密）。
 
 ## <a name="media-services-v3-concepts"></a>媒体服务 v3 概念
 
 |概念|说明|链接|
 |---|---|---|
-|资产和上传内容|若要开始管理、加密、编码和流式处理 Azure 中的媒体内容，需要创建一个媒体服务帐户，并将数字文件上传到“资产”中。|[云上传和存储](storage-account-concept.md)<br/><br/>[资产的概念](assets-concept.md)|
+|资产和上传内容|若要开始管理、加密、编码、分析和流式处理 Azure 中的媒体内容，需要创建一个媒体服务帐户，并将数字文件上传到 **资产** 中。|[云上传和存储](storage-account-concept.md)<br/><br/>[资产的概念](assets-concept.md)|
 |对内容进行编码|将优质数字媒体文件上传到资产中后，可将其编码为可在各种浏览器和设备上播放的格式。 <br/><br/>若要使用媒体服务 v3 进行编码，需要创建 **转换** 和 **作业**。|[转换和作业](transforms-jobs-concept.md)<br/><br/>[使用媒体服务进行编码](encoding-concept.md)|
 |分析内容（视频索引器）|在媒体服务 v3 中，可以使用媒体服务 v3 预设从视频和音频文件中提取见解。 若要使用媒体服务 v3 预设来分析内容，需要创建 **转换** 和 **作业**。|[分析视频和音频文件](analyzing-video-audio-files-concept.md)|
 |打包和交付|将内容编码后，可以利用 **动态打包**。 在媒体服务中，**流式处理终结点** 是用于将媒体内容传送到客户端播放器的动态打包服务。 若要使输出资产中的视频可供客户端进行播放，必须创建 **流定位符**，然后生成流 URL。 <br/><br/>创建流式处理定位符时，除了资产名称之外，还需要指定流式处理策略。 使用 **流策略** 可为 **流定位符** 定义流式处理协议和加密选项（如果有）。 无论流式传输的是直播内容还是点播内容，都要使用动态打包。 <br/><br/>可以使用媒体服务 **动态清单** 来仅流式传输视频的特定再现内容或子剪辑。|[动态打包](dynamic-packaging-overview.md)<br/><br/>[流式处理终结点](streaming-endpoint-concept.md)<br/><br/>[流式处理定位符](streaming-locators-concept.md)<br/><br/>[流式处理策略](streaming-policy-concept.md)<br/><br/>[动态清单](filters-dynamic-manifest-overview.md)<br/><br/>[筛选器](filters-concept.md)|

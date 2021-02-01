@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/03/2020
+ms.date: 01/19/2021
 ms.author: v-johya
-ms.openlocfilehash: 42e2a2fff0262c4b4ac7ab27fc564183b3273364
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 701908095e11c77fa460f3a61ce2e4b4d1cda312
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747122"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751229"
 ---
 # <a name="data-encryption-models"></a>数据加密模型
 
@@ -159,7 +159,7 @@ Azure 中支持的加密模型分为两大类：“客户端加密”和“服�
 | 文本翻译                  | 是                | 是                | -                  |
 | Power BI                         | 是                | 是，RSA 4096 位  | -                  |
 | **分析**                    |                    |                    |                    |
-| Azure 流分析           | 是                | 暂无\*              | -                  |
+| Azure 流分析           | 是                | 是\*\*            | -                  |
 | 事件中心                       | 是                | 是                | -                  |
 | 函数                        | 是                | 是                | -                  |
 | Azure Analysis Services          | 是                | -                  | -                  |
@@ -214,7 +214,7 @@ Azure 中支持的加密模型分为两大类：“客户端加密”和“服�
 | Azure Site Recovery              | 是                | -                  | -                  |
 | Azure Migrate                    | 是                | 是                | -                  |
 | **介质**                        |                    |                    |                    |
-| 媒体服务                   | 是                | -                  | 是                |
+| 媒体服务                   | 是                | 是                | 是                |
 | **安全性**                     |                    |                    |                    |
 | 适用于 IoT 的 Azure 安全中心    | 是                | 是                | -                  |
 | **存储**                      |                    |                    |                    |

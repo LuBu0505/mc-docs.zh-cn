@@ -8,15 +8,15 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 origin.date: 11/04/2019
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: 278b1240d9be8e5913a82f81d02eb4cf9a516f4c
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: ba6d83171c0d6cad37587ab4525ed4ab87b576f1
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021096"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059984"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-architecture-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的专用 SQL 池（以前称为 SQL DW）体系结构
 
@@ -101,5 +101,5 @@ Azure Synapse Analytics 是一种分析服务，它将企业数据仓库和大�
 
 ## <a name="next-steps"></a>后续步骤
 
-对 Azure Synapse 有了初步的认识后，请学习如何快速[创建专用 SQL 池（以前称为 SQL DW）](create-data-warehouse-portal.md)和[加载示例数据](load-data-from-azure-blob-storage-using-polybase.md)。 如果不熟悉 Azure，遇到新术语时，[Azure 词汇表](../../azure-glossary-cloud-terminology.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 可以提供帮助。 或者，查看以下一些其他 Azure Synapse 资源。  
+对 Azure Synapse 有了初步的认识后，请学习如何快速[创建专用 SQL 池（以前称为 SQL DW）](create-data-warehouse-portal.md)和[加载示例数据](./load-data-from-azure-blob-storage-using-copy.md)。 如果不熟悉 Azure，遇到新术语时，[Azure 词汇表](../../azure-glossary-cloud-terminology.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 可以提供帮助。 或者，查看以下一些其他 Azure Synapse 资源。  
 

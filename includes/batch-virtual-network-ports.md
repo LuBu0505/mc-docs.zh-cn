@@ -9,18 +9,18 @@ ms.service: batch
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
-origin.date: 06/16/2020
-ms.date: 12/14/2020
+origin.date: 01/13/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 08/10/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: c5c668de0a893451066e6af1f216ec99d48dd495
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: b36519c91d32e0a9a16c50a1f841dbeb4d46fc05
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97105201"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059026"
 ---
 ### <a name="general-requirements"></a>一般要求
 
@@ -31,6 +31,8 @@ ms.locfileid: "97105201"
 * 为池指定的子网必须提供足够的未分配 IP 地址来容纳面向该池的 VM 的数量；即，池的 `targetDedicatedNodes` 和 `targetLowPriorityNodes` 属性的总和。 如果子网没有足够的未分配 IP 地址，池将分配部分计算节点，并发生调整大小错误。
 
 * 需要通过为 VNet 提供服务的自定义 DNS 服务器解析 Azure 存储终结点。 具体而言，`<account>.table.core.chinacloudapi.cn`、`<account>.queue.core.chinacloudapi.cn` 和 `<account>.blob.core.chinacloudapi.cn` 形式的 URL 应当是可以解析的。
+
+* 可在同一 VNet 或同一子网中创建多个池（前提是它有足够的地址空间）。 单个池不能跨多个 VNet 或子网存在。
 
 其他 VNet 要求会有所不同，具体取决于 Batch 池是使用“虚拟机”配置还是使用“云服务”配置。 若要进行新的池部署（部署到 VNet 中），建议使用“虚拟机”配置。
 
@@ -118,6 +120,6 @@ Any <br /><br />虽然这需要有效地“全部允许”，但 Batch 服务会
 
 | 源 | 源端口 | 目标 | 目标端口 | 协议 | 操作 |
 | --- | --- | --- | --- | --- | --- |
-| 任意 | * | 任意 | 443  | Any | Allow |
+| 任意 | * | Any | 443  | 任意 | Allow |
 
 <!-- Update_Description: update meta properties, wording update, update link -->

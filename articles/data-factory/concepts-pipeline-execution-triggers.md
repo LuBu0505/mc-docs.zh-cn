@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 07/05/2018
-ms.date: 12/07/2020
-ms.openlocfilehash: a4d27a3ac8d5a0a83bcdc74cded5982ccc4015bf
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.date: 02/01/2021
+ms.openlocfilehash: 2ecb27d2ef9faeef371bc82e955e43458b37516e
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747153"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060038"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器
 
@@ -379,7 +379,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | **可靠性** | 100% 的可靠性。 可以针对所有窗口（从指定的开始日期算起，没有间隔）来计划管道运行。 | 可靠性较低。 |
 | **重试功能** | 。 失败的管道运行的重试策略默认设置为 0，也可由用户在触发器定义中指定。 在管道运行因并发/服务器/限制值（即状态代码 400：用户错误；429：请求过多；500：内部服务器错误）而失败时自动重试。 | 不支持。 |
 | **并发** | 。 用户可以为触发器显式设置并发限制。 允许 1 到 50 个并发的触发管道运行。 | 不支持。 |
-| **系统变量** | 除了 @trigger().scheduledTime 和 @trigger().startTime 之外，它还支持使用 WindowStart 和 WindowEnd 系统变量。 用户可以访问在触发器定义中充当触发器系统变量的 `triggerOutputs().windowStartTime` 和 `triggerOutputs().windowEndTime`。 这两个值分别用作窗口开始时间和窗口结束时间。 例如，如果翻转窗口触发器每小时运行一次，则对于凌晨 1:00 到凌晨 2:00 这个窗口，相应的定义为 `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` 和 `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`。 | 仅支持默认的 @trigger().scheduledTime 和 @trigger().startTime 变量。 |
+| **系统变量** | 除了 @trigger().scheduledTime 和 @trigger().startTime 之外，它还支持使用 WindowStart 和 WindowEnd 系统变量。 用户可以访问在触发器定义中充当触发器系统变量的 `trigger().outputs.windowStartTime` 和 `trigger().outputs.windowEndTime`。 这两个值分别用作窗口开始时间和窗口结束时间。 例如，如果翻转窗口触发器每小时运行一次，则对于凌晨 1:00 到凌晨 2:00 这个窗口，相应的定义为 `trigger().outputs.windowStartTime = 2017-09-01T01:00:00Z` 和 `trigger().outputs.windowEndTime = 2017-09-01T02:00:00Z`。 | 仅支持默认的 @trigger().scheduledTime 和 @trigger().startTime 变量。 |
 | **管道-触发器关系** | 支持一对一关系。 只能触发一个管道。 | 支持多对多关系。 多个触发器可以启动单个管道。 单个触发器可以启动多个管道。 |
 
 ## <a name="next-steps"></a>后续步骤

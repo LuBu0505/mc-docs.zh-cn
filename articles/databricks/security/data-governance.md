@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 08/10/2020
 title: 最佳做法 - Azure Databricks 上的数据治理 - Azure Databricks
 description: 了解数据治理的需求以及可用于在组织中实现这些技术的策略。
-ms.openlocfilehash: 0baaccc76e23fbf9f68da6c8fcb04e698f620f85
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: 3159240acab93ad41b43b990ad6349a1bc54488c
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937722"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059623"
 ---
 # <a name="best-practices-data-governance-on-azure-databricks"></a>最佳做法：Azure Databricks 上的数据管理
 
@@ -156,7 +156,7 @@ spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.d
 
 #### <a name="provision-cluster"></a>设置群集
 
-终结点 - `https:///<databricks-instance>/api/2.0/clusters/create`
+终结点 - ``https:///<databricks-instance>/api/2.0/clusters/create``
 
 ```json
 
@@ -190,7 +190,7 @@ spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.d
 
 #### <a name="grant-cluster-permission"></a>授予群集权限
 
-终结点 - `https://<databricks-instance>/api/2.0/permissions/clusters/<cluster_id>`
+终结点 - ``https://<databricks-instance>/api/2.0/permissions/clusters/<cluster_id>``
 
 ```json
 {

@@ -3,14 +3,14 @@ author: WenJason
 ms.service: media-services
 ms.topic: include
 origin.date: 03/20/2019
-ms.date: 12/14/2020
+ms.date: 02/01/2021
 ms.author: v-jay
-ms.openlocfilehash: 9d5ae1194ac99036da6898212ec90112724d522f
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 413a1d0d42df61dad62afe11d34e67e4f72716d4
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97003732"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058431"
 ---
 ### <a name="media-services-v3-latest"></a>媒体服务 v3（最新版本）
 
@@ -19,7 +19,7 @@ ms.locfileid: "97003732"
 * [概述](../articles/media-services/latest/media-services-overview.md)
 * [概念](../articles/media-services/latest/concepts-overview.md)
 * [开始开发](../articles/media-services/latest/media-services-apis-overview.md)
-* [从 v2 到 v3 的迁移指南](../articles/media-services/latest/migrate-from-v2-to-v3.md)
+* [从 v2 到 v3 的迁移指南](../articles/media-services/latest/migrate-v-2-v-3-migration-introduction.md)
 
 ### <a name="media-services-v2-legacy"></a>媒体服务 v2（旧版）
 

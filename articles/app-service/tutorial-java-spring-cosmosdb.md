@@ -5,15 +5,15 @@ author: rloutlaw
 ms.devlang: java
 ms.topic: tutorial
 origin.date: 12/10/2018
-ms.date: 10/19/2020
+ms.date: 02/01/2021
 ms.author: v-tawe
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: aa24518653c7e5ec97777c9040355c8125148b6e
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: bc540e21a36445ff4a263a7f6e82527c95cc91be
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977091"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058902"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>教程：使用 Linux 上的 Azure 应用服务和 Azure Cosmos DB 生成 Java Spring Boot Web 应用
 
@@ -34,7 +34,7 @@ ms.locfileid: "94977091"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 已在自己的计算机上安装 [Azure CLI](https://docs.microsoft.com/cli/overview)。
+* 已在自己的计算机上安装 [Azure CLI](/cli/overview)。
 * [Git](https://git-scm.com/)
 * [Java JDK](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)
 * [Maven](https://maven.apache.org)
@@ -58,7 +58,7 @@ yes | cp -rf .prep/* .
 
 1. 登录到 Azure CLI；（可选）如果有多个订阅连接到登录凭据，请设置订阅。
 
-    ```bash
+    ```azurecli
     az cloud set -n AzureChinaCloud
     az login
     az account set -s <your-subscription-id>
@@ -66,7 +66,7 @@ yes | cp -rf .prep/* .
 
 2. 创建 Azure 资源组并记下资源组名称。
 
-    ```bash
+    ```azurecli
     az group create -n <your-azure-group-name> \
         -l <your-resource-group-region>
     ```
@@ -74,7 +74,7 @@ yes | cp -rf .prep/* .
 3. 创建 `GlobalDocumentDB` 类型的 Azure Cosmos DB。
 Cosmos DB 的名称只能使用小写字母。 记下命令响应中的 `documentEndpoint` 字段。
 
-    ```bash
+    ```azurecli
     az cosmosdb create --kind GlobalDocumentDB \
         -g <your-azure-group-name> \
         -n <your-azure-COSMOS-DB-name-in-lower-case-letters>
@@ -82,7 +82,7 @@ Cosmos DB 的名称只能使用小写字母。 记下命令响应中的 `documen
 
 4. 获取用于连接应用的 Azure Cosmos DB 密钥。 将 `primaryMasterKey` 和 `documentEndpoint` 保存在方便的位置，因为在下一步骤中需要用到。
 
-    ```bash
+    ```azurecli
     az cosmosdb list-keys -g <your-azure-group-name> -n <your-azure-COSMOSDB-name>
     ```
 
@@ -149,7 +149,7 @@ mvn package spring-boot:run
 
 输出应如下所示。
 
-```bash
+```output
 bash-3.2$ mvn package spring-boot:run
 [INFO] Scanning for projects...
 [INFO]
@@ -241,7 +241,7 @@ bash-3.2$ mvn package spring-boot:run
 
 ## <a name="deploy-to-app-service-on-linux"></a>部署到 Linux 上的应用服务
 
-使用 `azure-webapp:deploy` Maven 目标将 TODO 应用部署到 Linux 上的 Azure 应用服务。
+使用 `mvn azure-webapp:deploy` Maven 目标将 TODO 应用部署到 Linux 上的 Azure 应用服务。
 
 ```bash
 
@@ -278,7 +278,7 @@ bash-3.2$ mvn azure-webapp:deploy
 输出包含部署的应用程序的 URL（在本示例中为 `https://spring-todo-app.chinacloudsites.cn`）。 可将此 URL 复制到 Web 浏览器，或者在终端窗口中运行以下命令，以加载应用。
 
 ```bash
-open https://spring-todo-app.chinacloudsites.cn
+curl https://spring-todo-app.chinacloudsites.cn
 ```
 
 在地址栏中，应会看到正在使用远程 URL 运行的应用：
@@ -294,7 +294,7 @@ open https://spring-todo-app.chinacloudsites.cn
 
 通过添加另一个辅助角色来横向扩展应用程序：
 
-```bash
+```azurecli
 az appservice plan update --number-of-workers 2 \
    --name ${WEBAPP_PLAN_NAME} \
    --resource-group <your-azure-group-name>
@@ -304,7 +304,7 @@ az appservice plan update --number-of-workers 2 \
 
 如果不需要将这些资源用于其他教程（请参阅[后续步骤](#next)），则可通过在 Azure CLI 中运行以下命令将其删除： 
   
-```bash
+```azurecli
 az group delete --name <your-azure-group-name>
 ```
 
@@ -314,7 +314,7 @@ az group delete --name <your-azure-group-name>
 
 [面向 Java 开发人员的 Azure](https://docs.microsoft.com/java/)
 [Spring Boot](https://spring.io/projects/spring-boot)
-[Spring Data for Cosmos DB](https://docs.microsoft.com/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable)，[Azure Cosmos DB](../cosmos-db/introduction.md) 和 [Linux 版应用服务](overview.md)。
+[Spring Data for Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable)，[Azure Cosmos DB](../cosmos-db/introduction.md) 和 [Linux 版应用服务](overview.md)。
 
 在开发人员指南中详细了解在 Linux 上的应用服务中运行 Java 应用。
 

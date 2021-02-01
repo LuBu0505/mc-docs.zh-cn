@@ -1,18 +1,19 @@
 ---
 title: 云服务（经典）的资源运行状况
 description: 本文介绍了对 Azure 云服务（经典）的资源运行状况检查 (RHC) 支持
-services: cloud-services
-author: tanmaygore
-ms.service: cloud-services
 ms.topic: article
-ms.date: 10/20/2020
+ms.service: cloud-services
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: cac28c7a80c9a80d0bedf34beaa217bbec829248
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 59a9ec4fd5ebb69e5a7beeb1416421304f1cbb41
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472525"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059013"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>对 Azure 云服务（经典）的资源运行状况检查 (RHC) 支持
 本文介绍了对 [Azure 云服务（经典）](https://www.azure.cn/home/features/cloud-services)的资源运行状况检查 (RHC) 支持

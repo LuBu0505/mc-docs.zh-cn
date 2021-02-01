@@ -3,16 +3,16 @@ title: Azure Defender 和可用计划概述
 description: 了解 Azure Defender 的计划、保护和警报。 然后在订阅上针对高级安全启用 Azure Defender 。
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 11/13/2020
+ms.date: 01/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 653973d323599d26c17be4d96cb88129a0ab1a4b
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 261684296a98c35ccc048a3b72fe76baee88113f
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022745"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060055"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender 简介
 
@@ -33,7 +33,9 @@ Azure Defender 为虚拟机、SQL 数据库、容器等提供安全警报和高�
 从 Azure 安全中心的“定价和设置”区域启用 Azure Defender 时，将同时启用以下 Defender 计划，并为环境的计算、数据和服务层提供全面防护：
 
 - [适用于服务器的 Azure Defender](defender-for-servers-introduction.md)
+- [Azure Defender for SQL](defender-for-sql-introduction.md)
 - [适用于 Kubernetes 的 Azure Defender](defender-for-kubernetes-introduction.md)
+- [适用于容器注册表的 Azure Defender](defender-for-container-registries-introduction.md)
 
 安全中心的文档对其中每个计划单独进行了介绍。
 <!--Not available in MC: ## Hybrid cloud protection-->
@@ -64,6 +66,10 @@ Azure Defender 为你的虚拟机和容器注册表提供漏洞扫描，且无�
 
 查看这些漏洞扫描程序中的发现结果，并相应从安全中心内部作出全部响应。 这使安全中心更接近于用于集中了解所有云安全工作情况的统一视窗。
 
+通过以下页面了解详细信息：
+
+- [标识 Azure 容器注册表映像中的漏洞](defender-for-container-registries-usage.md#identify-vulnerabilities-in-images-in-other-container-registries)
+
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -72,4 +78,3 @@ Azure Defender 为你的虚拟机和容器注册表提供漏洞扫描，且无�
 
 > [!div class="nextstepaction"]
 > [启用 Azure Defender](security-center-pricing.md)
-

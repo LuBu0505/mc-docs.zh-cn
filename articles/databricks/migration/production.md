@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 04/29/2020
 title: 将生产工作负载迁移到 Azure Databricks - Azure Databricks
 description: 了解如何将生产 Apache Spark 作业迁移到 Azure Databricks。
-ms.openlocfilehash: ca47c4e27655b5b62ae0adc371da1e9ec0514afd
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: 345c9e8102062153e0e6ad1ea440f0e18afbb500
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937759"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058491"
 ---
 # <a name="migrate-production-workloads-to-azure-databricks"></a>将生产工作负荷迁移到 Azure Databricks
 
@@ -69,9 +69,9 @@ ms.locfileid: "91937759"
    {
      "run_name": "my spark job",
      "new_cluster": {
-       "spark_version": "5.0.x-scala2.11",
+       "spark_version": "7.3.x-scala2.12",
 
-       "instance_pool_id": "0313-121005-test123-pool-ABCD1234"**,**
+       "instance_pool_id": "0313-121005-test123-pool-ABCD1234",
        "num_workers": 10
        },
        "libraries": [
@@ -95,9 +95,9 @@ ms.locfileid: "91937759"
    {
      "name": "Nightly model training",
      "new_cluster": {
-        "spark_version": "5.0.x-scala2.11",
+        "spark_version": "7.3.x-scala2.12",
         ...
-        **"instance_pool_id": "0313-121005-test123-pool-ABCD1234",**
+        "instance_pool_id": "0313-121005-test123-pool-ABCD1234",
         "num_workers": 10
       },
       "libraries": [

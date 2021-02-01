@@ -4,17 +4,17 @@ description: 配置一个 GitHub 操作，用于自动执行生成容器映像�
 ms.topic: article
 origin.date: 08/20/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 01/25/2021
 ms.testscope: no
 ms.testdate: 05/06/2020
 ms.author: v-yeche
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 65c3df2143e9669e776788069006677543a8a8ea
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: c76bb9135c6fb1330d65b3f6dbdd09e365e4b6d4
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022178"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751347"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>配置 GitHub 操作以创建容器实例
 

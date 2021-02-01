@@ -8,14 +8,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 origin.date: 8/30/2020
-ms.date: 11/27/2020
+ms.date: 01/14/2021
 ms.author: v-tawe
-ms.openlocfilehash: f244afb3b2ce159aee4094e1838286506c122cf4
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.openlocfilehash: c165a0997476c415f63804720c07eb9ee1055399
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431173"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059389"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>使用 Azure 基于角色的访问控制提供对 Key Vault 密钥、证书和机密的访问权限（预览）
 
@@ -39,7 +39,7 @@ Azure RBAC 模型提供了在不同范围级别设置权限的功能：管理组
 
 有关 Azure Key Vault 管理指南的详细信息，请参阅：
 
-- [Azure Key Vault 最佳做法](best-practices.md)
+- [Azure Key Vault 安全性概述](security-overview.md)
 - [Azure Key Vault 服务限制](service-limits.md)
 
 ## <a name="azure-built-in-roles-for-key-vault-data-plane-operations-preview"></a>用于 Key Vault 数据平面操作的 Azure 内置角色（预览版）
@@ -67,7 +67,7 @@ Azure RBAC 模型提供了在不同范围级别设置权限的功能：管理组
 
 若要添加角色分配，必须具有：
 
-- 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+- 如果没有 Azure 订阅，请在开始之前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 - `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 权限，例如[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator)或[所有者](../../role-based-access-control/built-in-roles.md#owner)
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>对密钥保管库启用 Azure RBAC 权限

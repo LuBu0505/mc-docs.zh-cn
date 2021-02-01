@@ -4,16 +4,15 @@ description: 创建 Azure 流分析 Edge 作业，然后通过 IoT Edge 运行�
 ms.service: stream-analytics
 author: Johnnytechn
 ms.author: v-johya
-ms.reviewer: mamccrea
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 01/25/2021
 ms.custom: seodec18
-ms.openlocfilehash: 575abddd29908b679bccee7775dac85e654ada28
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 4886a8303fc7dc471ab224e9e6375db96b93abb3
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978335"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058518"
 ---
 # <a name="run-azure-stream-analytics-on-azure-stack-preview"></a>在 Azure Stack 上运行 Azure 流分析（预览版）
 

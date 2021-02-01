@@ -12,13 +12,13 @@ metadata:
   ms.author: v-tawe
   manager: mtillman
   origin.date: 09/28/2020
-  ms.date: 01/18/2021
-  ms.openlocfilehash: 677a414bb660457a76300fbd1789d0ffc6c2bec8
-  ms.sourcegitcommit: 01cd9148f4a59f2be4352612b0705f9a1917a774
+  ms.date: 02/01/2021
+  ms.openlocfilehash: 8346c573f88def101e5c8e7908ba1d84102134ee
+  ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/14/2021
-  ms.locfileid: "98194776"
+  ms.lasthandoff: 01/29/2021
+  ms.locfileid: "99060177"
 highlightedContent:
   items:
   - title: 什么是 Azure 网络？
@@ -139,7 +139,7 @@ conceptualContent:
     - url: ../application-gateway/quick-create-portal.md
       itemType: quickstart
       text: 使用门户定向 Web 流量
-    - url: ../application-gateway/application-gateway-faq.md
+    - url: ../application-gateway/application-gateway-faq.yml
       itemType: concept
       text: 常见问题
     - url: ../application-gateway/application-gateway-troubleshooting-502.md

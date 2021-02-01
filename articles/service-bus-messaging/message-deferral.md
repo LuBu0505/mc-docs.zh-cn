@@ -1,20 +1,21 @@
 ---
 title: Azure 服务总线 - 消息延迟
 description: 本文介绍如何延迟传送 Azure 服务总线消息。 该消息将保留在队列或订阅中，但会搁置处理。
+ms.service: service-bus-messaging
 ms.topic: article
 origin.date: 06/23/2020
 author: rockboyfor
-ms.date: 11/16/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 37a394cb527b7135fe96c7117173b329fe412de9
-ms.sourcegitcommit: 39288459139a40195d1b4161dfb0bb96f5b71e8e
+ms.openlocfilehash: a599c92cddb1bec37fd552f6ba744c9597c6e835
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94590753"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059312"
 ---
 # <a name="message-deferral"></a>消息延迟
 

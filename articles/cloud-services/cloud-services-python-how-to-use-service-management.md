@@ -1,26 +1,19 @@
 ---
 title: 使用服务管理 API (Python) - 功能指南
 description: 了解如何以编程方式执行 Python 提供的常见服务管理任务。
-services: cloud-services
-documentationcenter: python
-author: tanmaygore
-manager: vashan
-editor: ''
-ms.assetid: 61538ec0-1536-4a7e-ae89-95967fe35d73
-ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: python
 ms.topic: article
-ms.date: 10/20/2020
+ms.service: cloud-services
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.custom: devx-track-python
-ms.openlocfilehash: c9807c38f5723be17fbb80fd04aae85cfd715a4e
-ms.sourcegitcommit: f436acd1e2a0108918a6d2ee9a1aac88827d6e37
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 06f045f30cce48a2924a06cfab8d9918bef50393
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508625"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058817"
 ---
 # <a name="use-service-management-from-python"></a>从 Python 使用服务管理
 本指南说明如何以编程方式从 Python 执行常见服务管理任务。 [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) 中的 ServiceManagementService 类支持以编程方式访问 [Azure 门户][management-portal]中提供的众多与服务管理相关的功能  。 此功能可用于创建、更新和删除云服务、部署、数据管理服务和虚拟机。 此功能可用于构建需要以编程方式访问服务管理的应用程序。
@@ -28,7 +21,7 @@ ms.locfileid: "96508625"
 ## <a name="what-is-service-management"></a><a name="WhatIs"> </a>什么是服务管理？
 利用 Azure 服务管理 API，可通过编程方式访问通过 [Azure 门户][management-portal]提供的众多服务管理功能。 Azure SDK for Python 可用于管理云服务和存储帐户。
 
-若要使用服务管理 API，需要[创建 Azure 帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+若要使用服务管理 API，需要[创建 Azure 帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn/)。
 
 ## <a name="concepts"></a><a name="Concepts"> </a>概念
 Azure SDK for Python 可包装[服务管理 API][svc-mgmt-rest-api]，这是一个 REST API。 所有 API 操作都通过 TLS 执行，并使用 X.509 v3 证书互相进行身份验证。 可以从在 Azure 中运行的服务内访问管理服务。 还可以直接通过 Internet 从可发送 HTTPS 请求和接收 HTTPS 响应的任意应用程序访问管理服务。
@@ -441,7 +434,7 @@ sms.create_virtual_machine_deployment(service_name=name,
 要详细了解如何在经典部署模型中捕获 Windows 虚拟机，请参阅[捕获 Windows 虚拟机](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/capture-image-classic)。
 
 ## <a name="next-steps"></a><a name="What's Next"> </a>后续步骤
-现在，已学习了有关服务管理的基础知识，接下来可以访问 [Azure Python SDK 的完整 API 参考文档](https://azure-sdk-for-python.readthedocs.org/)，并轻松执行复杂的任务来管理 Python 应用程序。
+现在，已学习了有关服务管理的基础知识，接下来可以访问 Azure Python SDK 的完整 API 参考文档，并轻松执行复杂的任务来管理 Python 应用程序。
 
 有关详细信息，请参阅 [Python 开发人员中心](/develop/python/)。
 

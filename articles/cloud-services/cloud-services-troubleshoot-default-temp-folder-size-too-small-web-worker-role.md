@@ -1,25 +1,19 @@
 ---
 title: 角色的默认 TEMP 文件夹大小太小 | Microsoft Docs
 description: 云服务角色的 TEMP 文件夹的空间有限。 本文针对如何避免磁盘空间不足的问题提供了一些建议。
-services: cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 9f2af8dd-2012-4b36-9dd5-19bf6a67e47d
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 09/14/2020
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: 94bdc1cda4beedf9f6a2da010762b98d4941e873
-ms.sourcegitcommit: e1b6e7fdff6829040c4da5d36457332de33e0c59
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 33aaf09f1f45aa2777b4688678c99c78c243fd49
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90721169"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058802"
 ---
 # <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>云服务 Web 角色/辅助角色的默认 TEMP 文件夹大小太小
 云服务辅助角色或 Web 角色的默认临时目录的最大大小为 100 MB，该目录可能会在某个时候被填满。 本文介绍如何避免临时目录空间不足的问题。

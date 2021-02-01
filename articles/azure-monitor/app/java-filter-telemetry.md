@@ -2,17 +2,17 @@
 title: 在 Java Web 应用中筛选 Azure Application Insights 遥测
 description: 筛选出无需监视的事件，减少遥测流量。
 ms.topic: conceptual
-author: Johnnytechn
-ms.author: v-johya
 origin.date: 3/14/2019
-ms.date: 01/12/2021
+ms.date: 01/27/2021
+author: Johnnytechn
 ms.custom: devx-track-java
-ms.openlocfilehash: d20c6a049f167295ad09250ccf83ae036a8e4488
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.author: v-johya
+ms.openlocfilehash: 45a745e0dd1514909b87b5f72f83364b39b17b8f
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230563"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059914"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>在 Java Web 应用中筛选遥测
 
@@ -84,7 +84,7 @@ ms.locfileid: "98230563"
 
 ```
 
-[检查整套内置处理器](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal)。
+[检查整套内置处理器](https://github.com/microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal)。
 
 ## <a name="built-in-filters"></a>内置筛选器
 

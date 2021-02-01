@@ -3,15 +3,15 @@ title: 教程：将 Java 函数与 Azure Cosmos DB 和事件中心配合使用
 description: 本教程介绍如何使用事件中心的事件，通过以 Java 编写的函数在 Azure Cosmos DB 中进行更新。
 author: KarlErickson
 ms.topic: tutorial
-ms.date: 01/04/2021
+ms.date: 01/27/2021
 ms.author: v-junlch
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 0f07e8103e1c957be225b1af6161126059f4386c
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: c527d670dc40b8a27f12e3e338cf2f844064d762
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021464"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060099"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>教程：使用事件中心触发器和 Azure Cosmos DB 输出绑定在 Java 中创建函数
 
@@ -369,6 +369,7 @@ mvn archetype:generate --batch-mode \
     -DarchetypeArtifactId=azure-functions-archetype \
     -DappName=$FUNCTION_APP \
     -DresourceGroup=$RESOURCE_GROUP \
+    -DappRegion=$LOCATION \
     -DgroupId=com.example \
     -DartifactId=telemetry-functions
 ```
@@ -381,6 +382,7 @@ mvn archetype:generate --batch-mode ^
     -DarchetypeArtifactId=azure-functions-archetype ^
     -DappName=%FUNCTION_APP% ^
     -DresourceGroup=%RESOURCE_GROUP% ^
+    -DappRegion=%LOCATION% ^ 
     -DgroupId=com.example ^
     -DartifactId=telemetry-functions
 ```

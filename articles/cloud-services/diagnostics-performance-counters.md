@@ -1,19 +1,19 @@
 ---
 title: 在 Azure 云服务中收集性能计数器 | Microsoft Docs
 description: 了解如何使用 Azure 诊断和 Application Insights 在云服务中发现、使用和创建性能计数器。
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 10/20/2020
+ms.service: cloud-services
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: 314018b6d3ba6f7f41b0b58f9bcb845b11286fe4
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: e13772c0fc3c291f724b9a293240b73bf108d3f0
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472162"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059884"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>收集 Azure 云服务的性能计数器
 
@@ -125,7 +125,7 @@ Application Insights 会自动收集以下性能计数器：
 
 `sampleRate` 属性定义的时间段使用 XML 持续时间数据类型来指示轮询性能计数器的频率。 在以下示例中，频率设置为 `PT3M`，表示 `[P]eriod[T]ime[3][M]inutes`：每隔 3 分钟。
 
-有关 `sampleRate` 和 `scheduledTransferPeriod` 定义方式的详细信息，请参阅 
+有关 `sampleRate` 和 `scheduledTransferPeriod` 定义方式的详细信息，请参阅 [W3 XML 日期和时间日期类型](https://www.w3schools.com/XML/schema_dtypes_date.asp)教程中的“持续时间数据类型”部分。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

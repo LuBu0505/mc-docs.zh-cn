@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 09/24/2020
 title: 群集 - Azure Databricks
 description: 了解 Azure Databricks 群集及其创建和管理方式。
-ms.openlocfilehash: b5ce417de2c50a70b6af79277d60efb2f379b61d
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: 9fa8ec0f744e64e35d154ee7d71af323c0df5ee0
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121796"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059970"
 ---
 # <a name="clusters"></a>群集
 
@@ -78,10 +78,7 @@ Azure Databricks 群集是一组计算资源和配置，在其中可以运行数
   * [环境变量](init-scripts.md#environment-variables)
   * [Logging](init-scripts.md#logging)
   * [群集范围的初始化脚本](init-scripts.md#cluster-scoped-init-scripts)
-  * [全局初始化脚本（新）](init-scripts.md#global-init-scripts-new)
-  * [旧版全局初始化脚本（已弃用）](init-scripts.md#legacy-global-init-scripts-deprecated)
-  * [群集命名的初始化脚本（已弃用）](init-scripts.md#cluster-named-init-scripts-deprecated)
-  * [旧版全局和群集命名的初始化脚本日志（已弃用）](init-scripts.md#legacy-global-and-cluster-named-init-script-logs-deprecated)
+  * [全局初始化脚本](init-scripts.md#global-init-scripts)
 * [支持 GPU 的群集](gpu.md)
   * [概述](gpu.md#overview)
   * [创建 GPU 群集](gpu.md#create-a-gpu-cluster)

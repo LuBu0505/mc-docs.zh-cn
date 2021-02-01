@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 04/29/2020
 title: 2018 年 6 月 - Azure Databricks
 description: Azure Databricks 新增功能和改进的 2018 年 6 月发行说明。
-ms.openlocfilehash: 23b3bba8c3922a3aa66054f9cd452efeb23af458
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 0eb190c0f4502fb93cfc0a9d5c672c44ec4f8c40
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329439"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058584"
 ---
 # <a name="june-2018"></a>2018 年 6 月
 
@@ -55,7 +55,7 @@ RStudio 集成需要 [Azure Databricks 高级计划](https://databricks.com/prod
 
 **2018 年 6 月 7 日：版本 2.73**
 
-新的 ![回收站](../../../_static/images/workspace/trash-icon.png)“回收站”文件夹包含已删除的所有笔记本、库和文件夹。 30 天后，“回收站”文件夹会被自动清除。 可以通过将已删除的对象从“回收站”文件夹拖放到另一个文件夹中来还原该对象。
+新的 ![回收站](../../../_static/images/icons/trash-icon.png)“回收站”文件夹包含已删除的所有笔记本、库和文件夹。 30 天后，“回收站”文件夹会被自动清除。 可以通过将已删除的对象从“回收站”文件夹拖放到另一个文件夹中来还原该对象。
 
 有关详细信息，请参阅[删除对象](../../../workspace/workspace-objects.md#delete-object)。
 

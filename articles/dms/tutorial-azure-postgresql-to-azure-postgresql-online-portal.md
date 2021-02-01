@@ -13,12 +13,12 @@ ms.custom: seo-lt-2019
 ms.topic: tutorial
 origin.date: 07/21/2020
 ms.date: 01/04/2021
-ms.openlocfilehash: 1b5813b0544a625a4c046677a74daf5f663fe7bb
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: f303413a73e946d3bb506680d7b5a4e4299ca632
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856957"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059166"
 ---
 # <a name="tutorial-migrateupgrade-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>教程：通过 Azure 门户使用 DMS 以联机方式将 Azure DB for PostgreSQL 单一服务器迁移/升级到 Azure DB for PostgreSQL 单一服务器
 
@@ -101,7 +101,7 @@ ms.locfileid: "97856957"
     例如：
 
     ```
-    psql -h mypgserver-source.postgres.database.chinacloudapi.n  -U pguser@mypgserver-source -d dvdrental citus < dvdrentalSchema.sql
+    psql -h mypgserver-source.postgres.database.chinacloudapi.cn  -U pguser@mypgserver-source -d dvdrental citus < dvdrentalSchema.sql
     ```
 
 4. 若要提取 drop foreign key 脚本并将其添加到目标 (Azure Database for PostgreSQL) 中，请在 PgAdmin 或 psql 中运行以下脚本。

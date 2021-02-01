@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 09/14/2020
 title: 群集访问控制 - Azure Databricks
 description: 了解如何控制对 Azure Databricks 群集的访问。
-ms.openlocfilehash: 32e3e8f6dba0975d03527792ed374a1295dd41ec
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: 5fdca767ab06431e01447366991c2cab3939282f
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937710"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060024"
 ---
 # <a name="cluster-access-control"></a>群集访问控制
 
@@ -66,8 +66,8 @@ Azure Databricks 管理员必须先为工作区启用群集访问控制，然后
 
 群集访问控制必须[已启用](../../administration-guide/access-control/cluster-acl.md#cluster-acl-enable)，并且你必须具有针对群集的“可管理”权限。
 
-1. 单击“群集”图标 ![“群集”图标](../../_static/images/clusters/clusters-icon.png) （在边栏中）。
-2. 单击现有群集的“操作”列下的 ![“权限”图标](../../_static/images/access-control/permissions-icon.png) 图标。
+1. 单击“群集”图标 ![“群集”图标](../../_static/images/icons/clusters-icon.png) （在边栏中）。
+2. 单击现有群集的“操作”列下的 ![“权限”图标](../../_static/images/icons/permissions-icon.png) 图标。
 
    > [!div class="mx-imgBorder"]
    > ![ClusterACLsButton](../../_static/images/access-control/cluster-acls-button.png)
