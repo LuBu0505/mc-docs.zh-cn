@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.author: v-johya
 ms.topic: reference
-ms.date: 12/28/2020
+ms.date: 01/19/2021
 origin.date: 12/09/2019
-ms.openlocfilehash: f440e18c278ec7eed560ac57db5813145749eb6e
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: a5a0475f937f4d82df21e03a6459ed27d5339e87
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857057"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751064"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 的语言和区域支持
 
@@ -32,12 +32,12 @@ LUIS 理解以下语言：
 
 | 语言 |Locale  |  预生成域 | 预生成实体 | 短语列表建议 | \**[文本分析](../text-analytics/language-support.md)<br>（情绪和<br>关键字）|
 |--|--|:--:|:--:|:--:|:--:|
-| 英语（美国） |`en-US` | ✔ | ✔  |✔|✔|
 | 阿拉伯语（预览版 - 现代标准阿拉伯语） |`ar-AR`|-|-|-|-|
 | *[中文](#chinese-support-notes) |`zh-cn` | ✔ | ✔ |✔|-|
 | 荷兰语 |`nl-NL` |✔|-|-|✔|
-| 法语（法国） |`fr-FR` |✔| ✔ |✔ |✔|
+| 英语（美国） |`en-US` | ✔ | ✔  |✔|✔|
 | 法语（加拿大） |`fr-CA` |-|-|-|✔|
+| 法语（法国） |`fr-FR` |✔| ✔ |✔ |✔|
 | 德语 |`de-DE` |✔| ✔ |✔ |✔|
 | 古吉拉特语 | `gu-IN`|-|-|-|-|
 | Hindi | `hi-IN`|-|✔|-|-|
@@ -46,8 +46,8 @@ LUIS 理解以下语言：
 | 朝鲜语 |`ko-KR` |✔|-|-|仅关键短语|
 | 马拉地语 | `mr-IN`|-|-|-|-|
 | 葡萄牙语（巴西） |`pt-BR` |✔| ✔ |✔ |并非所有亚区域性|
-| 西班牙语(西班牙) |`es-ES` |✔| ✔ |✔|✔|
 | 西班牙语（墨西哥）|`es-MX` |-|-|✔|✔|
+| 西班牙语(西班牙) |`es-ES` |✔| ✔ |✔|✔|
 | 泰米尔语 | `ta-IN`|-|-|-|-|
 | 泰卢固语 | `te-IN`|-|-|-|-|
 | 土耳其语 | `tr-TR` |✔|✔|-|仅情绪|

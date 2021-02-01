@@ -6,16 +6,16 @@ services: container-service
 ms.topic: article
 origin.date: 08/17/2020
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 07/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5540a502b21ece920db141da5c62512ddf429af2
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 2d4315eb3239f385bf64d359293807d476dbdd0b
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004101"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063699"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建内部虚拟网络的入口控制器
 
@@ -79,7 +79,8 @@ helm install nginx-ingress ingress-nginx/ingress-nginx \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set controller.image.registry=usgcr.azk8s.cn \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
-    --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64
+    --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64 \
+    --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
 <!--MOONCAKE: Add --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-->
@@ -377,7 +378,7 @@ kubectl delete namespace ingress-basic
 [aks-ingress-tls]: ingress-tls.md
 [aks-ingress-static-tls]: ingress-static-ip.md
 
-<!--Not Available on [aks-http-app-routing]: http-application-routing.md-->
+<!--NOT AVAILABLE ON [aks-http-app-routing]: http-application-routing.md-->
 
 [aks-ingress-own-tls]: ingress-own-tls.md
 [client-source-ip]: concepts-network.md#ingress-controllers

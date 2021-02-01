@@ -3,13 +3,13 @@ title: Azure Functions 中的部署技术
 description: 了解将代码部署到 Azure Functions 的不同方式。
 ms.custom: vs-azure
 ms.topic: conceptual
-ms.date: 01/13/2021
-ms.openlocfilehash: 63f0fe9b6396efef4dfd1e449c5f926914b01d2f
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.date: 01/27/2021
+ms.openlocfilehash: bb64ae9753b1739f38c23541c6c784e73139c740
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195033"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060101"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技术
 
@@ -166,7 +166,7 @@ Web 部署可打包 Windows 应用程序（包括 Azure 中的 Windows 上运行
 
 在基于门户的编辑器中，可以直接编辑函数应用中的文件（基本上每次保存更改都要进行部署）。
 
->__如何使用：__ 若要在 Azure 门户中编辑函数，必须事先 [在门户中创建函数](functions-create-first-azure-function.md)。 若要保留单一事实源，使用任何其他部署方法会使函数变为只读，并会阻止在门户中继续编辑。 若要恢复到可在 Azure 门户中编辑文件的状态，可以手动将编辑模式改回 `Read/Write`，并删除与部署相关的任何应用程序设置（例如 `WEBSITE_RUN_FROM_PACKAGE`）。
+>__如何使用：__ 若要在 Azure 门户中编辑函数，必须事先 [在门户中创建函数](./functions-get-started.md)。 若要保留单一事实源，使用任何其他部署方法会使函数变为只读，并会阻止在门户中继续编辑。 若要恢复到可在 Azure 门户中编辑文件的状态，可以手动将编辑模式改回 `Read/Write`，并删除与部署相关的任何应用程序设置（例如 `WEBSITE_RUN_FROM_PACKAGE`）。
 
 >__何时使用：__ 在门户中可以十分方便地开始使用 Azure Functions。 对于更密集的开发工作，我们建议使用以下客户端工具之一：
 >
@@ -204,4 +204,3 @@ Web 部署可打包 Windows 应用程序（包括 Azure 中的 Windows 上运行
 + [Azure Functions 的压缩部署](deployment-zip-push.md)
 + [从包文件运行 Azure Functions](run-functions-from-deployment-package.md)
 + [为 Azure Functions 中的函数应用自动执行资源部署](functions-infrastructure-as-code.md)
-

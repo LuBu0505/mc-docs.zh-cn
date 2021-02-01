@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
 origin.date: 08/31/2020
-ms.date: 09/28/2020
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: 0a79d0bb52ed8a5b97d8d06ee6dd3467bfadbcfb
-ms.sourcegitcommit: 7ad3bfc931ef1be197b8de2c061443be1cf732ef
+ms.openlocfilehash: 3b99f68957dce4b2b3ed8a3695490e0e9105361f
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91245005"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059797"
 ---
 # <a name="assets-in-azure-media-services-v3"></a>Azure 媒体服务 v3 中的资产
 
@@ -29,9 +29,9 @@ ms.locfileid: "91245005"
 
 资产将映射到 [Azure 存储帐户](storage-account-concept.md)中的 Blob 容器，资产中的文件作为块 Blob 存储在该容器中。 资产包含有关 Azure 存储中存储的数字文件（包括视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件）的信息。
 
-当帐户使用常规用途 v2 (GPv2) 存储时，媒体服务支持 Blob 层。 使用 GPv2 可将文件移到[冷存储或存档存储](../../storage/blobs/storage-blob-storage-tiers.md)。 **存档**存储适合存档不再需要的源文件（例如，编码后的源文件）。
+当帐户使用常规用途 v2 (GPv2) 存储时，媒体服务支持 Blob 层。 使用 GPv2 可将文件移到[冷存储或存档存储](../../storage/blobs/storage-blob-storage-tiers.md)。 **存档** 存储适合存档不再需要的源文件（例如，编码后的源文件）。
 
-建议仅将**存档**存储用于已编码的，并且其编码作业输出已放入输出 Blob 容器中的极大型源文件。 要与资产关联的、用于流式传输内容的输出容器中的 Blob 必须位于热或冷存储层中 。
+建议仅将 **存档** 存储用于已编码的，并且其编码作业输出已放入输出 Blob 容器中的极大型源文件。 要与资产关联的、用于流式传输或分析内容的输出容器中的 Blob 必须位于 **热** 或 **冷** 存储层中。
 
 ## <a name="naming"></a>命名 
 
@@ -49,4 +49,4 @@ ms.locfileid: "91245005"
 
 ## <a name="see-also"></a>另请参阅
 
-[媒体服务 v2 与 v3 之间的差别](migrate-from-v2-to-v3.md)
+[媒体服务 v2 与 v3 之间的差别](migrate-v-2-v-3-migration-introduction.md)

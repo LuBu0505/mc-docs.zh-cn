@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/06/2021
+ms.date: 01/20/2021
 ms.author: v-johya
 origin.date: 03/01/2020
-ms.openlocfilehash: bae58f7a55224cf43700965e4a9c36d8821831ec
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 385b900195d025f8e246d733a694346560e32062
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023167"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751277"
 ---
 # <a name="feature-coverage-for-machines"></a>适用于计算机的功能覆盖范围
 
@@ -31,8 +31,8 @@ ms.locfileid: "98023167"
 
 |**功能**|**Azure 虚拟机**|**Azure 虚拟机规模集**|**已启用 Azure Arc 的计算机**|**需要 Azure Defender**
 |----|:----:|:----:|:----:|:----:|
-|虚拟机行为分析和安全警报|✔|✔|✔|是|
-|无文件安全警报|✔|✔|✔|是|
+|[虚拟机行为分析（和安全警报）](alerts-reference.md)|✔|✔|✔|是|
+|[无文件安全警报](alerts-reference.md#alerts-windows)|✔|✔|✔|是|
 |[恰时 VM 访问](security-center-just-in-time.md)|✔|-|-|是|
 |[自适应应用程序控制](security-center-adaptive-application.md)|✔|-|✔|是|
 |[网络映射](security-center-network-recommendations.md#network-map)|✔|✔|-|是|
@@ -51,7 +51,7 @@ ms.locfileid: "98023167"
 |**功能**|**Azure 虚拟机**|**Azure 虚拟机规模集**|**已启用 Azure Arc 的计算机**|**需要 Azure Defender**
 |----|:----:|:----:|:----:|:----:|
 |[虚拟机行为分析（和安全警报）](./azure-defender.md)|✔</br>（在支持的版本上）|✔</br>（在支持的版本上）|✔|是|
-|无文件安全警报|-|-|-|是|
+|[无文件安全警报](alerts-reference.md#alerts-windows)|-|-|-|是|
 |[恰时 VM 访问](security-center-just-in-time.md)|✔|-|-|是|
 |[自适应应用程序控制](security-center-adaptive-application.md)|✔|-|✔|是|
 |[网络映射](security-center-network-recommendations.md#network-map)|✔|✔|-|是|
@@ -99,7 +99,6 @@ ms.locfileid: "98023167"
 
 <!--Customized in MC-->
 ## <a name="feature-support"></a>功能支持
-
 
 | 服务/功能 | 中国 |
 |------|:----:|:----:|
