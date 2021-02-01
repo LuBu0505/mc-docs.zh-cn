@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
 origin.date: 12/18/2019
-ms.date: 01/04/2021
+ms.date: 01/19/2021
 ms.author: v-johya
-ms.openlocfilehash: adca192090ce255cc9ca6dac7b4f5cebc20f3117
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: af182f0fc4dc876651c4a8749d5133fbd2ac1670
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022194"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751100"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>文本分析 API v3 语言支持 
 
@@ -62,9 +62,9 @@ ms.locfileid: "98022194"
 | 语言               | 语言代码 | v2.1 支持 | v3 支持 | 从 v3 模型版本开始： |       注释        |
 |:-----------------------|:-------------:|:----------:|:----------:|:-------------------------------:|:------------------:|
 | 阿拉伯语                |     `ar`      |     ✓      |            |                                 |                    |
-| 捷克语                 |     `cs`      |     ✓      |            |                                 |                    |
 | 简体中文     |   `zh-hans`   |     ✓      |            |                                 | `zh` 也接受 |
 | 繁体中文   |   `zh-hant`   |     ✓      |            |                                 |                    |
+| 捷克语                 |     `cs`      |     ✓      |            |                                 |                    |
 | 丹麦语                |     `da`      |     ✓      |            |                                 |                    |
 | 荷兰语                 |     `nl`      |     ✓      |            |                                 |                    |
 | 英语                |     `en`      |     ✓      |     ✓      |           2019-10-01            |                    |
@@ -78,8 +78,8 @@ ms.locfileid: "98022194"
 | 韩语                |     `ko`      |     ✓      |            |                                 |                    |
 | 挪威语(博克马尔语)   |     `no`      |     ✓      |            |                                 | `nb` 也接受 |
 | 波兰语                |     `pl`      |     ✓      |            |                                 |                    |
-| 葡萄牙语(葡萄牙) |    `pt-PT`    |     ✓      |            |                                 | `pt` 也接受 |
 | 葡萄牙语（巴西）   |    `pt-BR`    |     ✓      |            |                                 |                    |
+| 葡萄牙语(葡萄牙) |    `pt-PT`    |     ✓      |            |                                 | `pt` 也接受 |
 | 俄语              |     `ru`      |     ✓      |            |                                 |                    |
 | 西班牙语               |     `es`      |     ✓      |     ✓       |              2020-04-01                   |                    |
 | 瑞典语               |     `sv`      |     ✓      |            |                                 |                    |
@@ -102,8 +102,8 @@ ms.locfileid: "98022194"
 | 韩语                |     `ko`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | 挪威语(博克马尔语)   |     `no`      |     ✓      |     ✓      |                2019-10-01                 | `nb` 也接受 |
 | 波兰语                |     `pl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| 葡萄牙语(葡萄牙) |    `pt-PT`    |     ✓      |     ✓      |                2019-10-01                 | `pt` 也接受 |
 | 葡萄牙语（巴西）   |    `pt-BR`    |     ✓      |     ✓      |                2019-10-01                 |                    |
+| 葡萄牙语(葡萄牙) |    `pt-PT`    |     ✓      |     ✓      |                2019-10-01                 | `pt` 也接受 |
 | 俄语               |     `ru`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | 西班牙语               |     `es`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | 瑞典语               |     `sv`      |     ✓      |     ✓      |                2019-10-01                 |                    |

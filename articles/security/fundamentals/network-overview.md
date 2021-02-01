@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 10/29/2018
-ms.date: 12/03/2020
+ms.date: 01/19/2021
 ms.author: v-johya
-ms.openlocfilehash: a0762387de85524aac7dd55867b37e00ef91c1ff
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 78802444732d8dfd8b9df0bfc393ab1e7af1daf0
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746952"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751271"
 ---
 # <a name="azure-network-security-overview"></a>Azure 网络安全概述
 
@@ -193,6 +193,7 @@ Azure 网络支持以下安全远程访问方案：
 了解详细信息：
 
 * [ExpressRoute 技术概述](../../expressroute/expressroute-introduction.md)
+* [ExpressRoute Direct](../../expressroute/expressroute-erdirect-about.md)
 
 ### <a name="connect-virtual-networks-to-each-other"></a>将虚拟网络相互连接
 
@@ -363,9 +364,4 @@ Azure 安全中心帮助你预防、检测和响应威胁，同时提高 Azure �
 * [活动日志](../../azure-monitor/platform/platform-logs-overview.md)。 使用这些日志查看提交到 Azure 订阅的所有操作。 默认情况下，这些日志已启用并可在 Azure 门户中使用。 这些日志以前称为审核或操作日志。
 * 事件日志。 这些日志提供有关应用了哪些 NSG 规则的信息。
 * 计数器日志。 通过这些日志，可知道所应用每个 NSG 规则拒绝或允许流量的次数。
-
-还可以使用功能强大的数据可视化工具 [Power BI](https://powerbi.microsoft.com/what-is-power-bi/) 来查看和分析这些日志。
-了解详细信息：
-
-* [网络安全组 (NSG) 的 Azure Monitor 日志](../../virtual-network/virtual-network-nsg-manage-log.md)
 
