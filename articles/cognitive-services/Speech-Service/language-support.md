@@ -47,7 +47,7 @@ https://cris.azure.cn -> Click on Adaptation Data -> scroll down to section "Pro
 | 阿拉伯语(科威特)                    | `ar-KW` | 语言模型                                   |
 | 阿拉伯语（黎巴嫩）                   | `ar-LB` | 语言模型                                   |
 | 阿拉伯语（阿曼）                      | `ar-OM` | 语言模型                                   |
-| 阿拉伯语（卡塔尔）                     | `ar-QA` | 语言模型                                   |
+| 阿拉伯语(卡塔尔)                     | `ar-QA` | 语言模型                                   |
 | 阿拉伯语（沙特阿拉伯）              | `ar-SA` | 语言模型                                   |
 | 阿拉伯语（巴勒斯坦）        | `ar-PS` | 语言模型                                   |
 | 阿拉伯语（叙利亚）                     | `ar-SY` | 语言模型                                   |
@@ -116,26 +116,26 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 
 | 语言 | Locale | 性别 | 语音名称 | 风格支持 |
 |---|---|---|---|---|
-| 中文（粤语，繁体） | `zh-HK` | Female | `zh-HK-HiuGaaiNeural` | 常规 |
-| 中文（粤语，繁体） | `zh-HK` | Female | `zh-HK-HiuMaanNeural` <sup>新建</sup> | 常规 |
-| 中文(粤语，繁体) | `zh-HK` | 男 | `zh-HK-WanLungNeural` <sup>新建</sup> | 常规 |
-| 中文（普通话，简体） | `zh-CN` | Female | `zh-CN-XiaoxiaoNeural` | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles) 提供多种语音风格  |
+| 中文(粤语，繁体) | `zh-HK` | 女 | `zh-HK-HiuGaaiNeural` | 常规 |
+| 中文(粤语，繁体) | `zh-HK` | 女 | `zh-HK-HiuMaanNeural` <sup>新增内容</sup> | 常规 |
+| 中文(粤语，繁体) | `zh-HK` | 男 | `zh-HK-WanLungNeural` <sup>新增内容</sup> | 常规 |
+| 中文（普通话，简体） | `zh-CN` | 女 | `zh-CN-XiaoxiaoNeural` | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles) 提供多种语音风格  |
 | 中文（普通话，简体） | `zh-CN` | 女 | `zh-CN-XiaoyouNeural` | 儿童语音，针对讲故事进行了优化 |
 | 中文（普通话，简体） | `zh-CN` | 男 | `zh-CN-YunyangNeural` | 针对新闻阅读进行了优化，<br /> [使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles) 提供多种语音风格 |
 | 中文（普通话，简体） | `zh-CN` | 男 | `zh-CN-YunyeNeural` | 针对讲故事进行了优化  |
-| 中文(台湾普通话) | `zh-TW` | Female | `zh-TW-HsiaoChenNeural` <sup>新建</sup> | 常规 |
-| 中文(台湾普通话) | `zh-TW` | Female | `zh-TW-HsiaoYuNeural` | 常规 |
-| 中文(台湾普通话) | `zh-TW` | 男 | `zh-TW-YunJheNeural` <sup>新建</sup> | 常规 |
-| 英语（澳大利亚） | `en-AU` | Female | `en-AU-NatashaNeural` | 常规 |
+| 中文(台湾普通话) | `zh-TW` | 女 | `zh-TW-HsiaoChenNeural` <sup>新增内容</sup> | 常规 |
+| 中文(台湾普通话) | `zh-TW` | 女 | `zh-TW-HsiaoYuNeural` | 常规 |
+| 中文(台湾普通话) | `zh-TW` | 男 | `zh-TW-YunJheNeural` <sup>新增内容</sup> | 常规 |
+| 英语（澳大利亚） | `en-AU` | 女 | `en-AU-NatashaNeural` | 常规 |
 | 英语（澳大利亚） | `en-AU` | 男 | `en-AU-WilliamNeural` | 常规 |
-| 英语（加拿大） | `en-CA` | Female | `en-CA-ClaraNeural` | 常规 |
-| 英语（加拿大） | `en-CA` | 男 | `en-CA-LiamNeural` <sup>新建</sup> | 常规 |
-| 英语（印度） | `en-IN` | Female | `en-IN-NeerjaNeural` | 常规 |
-| 英语（印度） | `en-IN` | 男 | `en-IN-PrabhatNeural` <sup>新建</sup> | 常规 |
+| 英语（加拿大） | `en-CA` | 女 | `en-CA-ClaraNeural` | 常规 |
+| 英语（加拿大） | `en-CA` | 男 | `en-CA-LiamNeural` <sup>新增内容</sup> | 常规 |
+| 英语（印度） | `en-IN` | 女 | `en-IN-NeerjaNeural` | 常规 |
+| 英语（印度） | `en-IN` | 男 | `en-IN-PrabhatNeural` <sup>新增内容</sup> | 常规 |
 | 英语（爱尔兰） | `en-IE` | 女 | `en-IE-EmilyNeural` | 常规 |
-| 英语（爱尔兰） | `en-IE` | 男 | `en-IE-ConnorNeural` <sup>新建</sup> | 常规 |
-| 英语(英国) | `en-GB` | Female | `en-GB-LibbyNeural` | 常规 |
-| 英语(英国) | `en-GB` | 女 | `en-GB-MiaNeural` | 常规 |
+| 英语（爱尔兰） | `en-IE` | 男 | `en-IE-ConnorNeural` <sup>新增内容</sup> | 常规 |
+| 英语（英国） | `en-GB` | 女 | `en-GB-LibbyNeural` | 常规 |
+| 英语（英国） | `en-GB` | 女 | `en-GB-MiaNeural` | 常规 |
 | 英语（英国） | `en-GB` | 男 | `en-GB-RyanNeural` | 常规 |
 | 英语（美国） | `en-US` | 女 | `en-US-AriaNeural` | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles) 提供多种语音风格  |
 | 英语（美国） | `en-US` | 女 | `en-US-JennyNeural` | 常规 |
@@ -154,49 +154,49 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 
 | 语言 | 区域设置 (BCP-47) | 性别 | 语音名称 |
 |--|--|--|--|
-| 阿拉伯语（阿拉伯） | `ar-EG` | Female | `ar-EG-Hoda`|
+| 阿拉伯语（阿拉伯） | `ar-EG` | 女 | `ar-EG-Hoda`|
 | 阿拉伯语（沙特阿拉伯） | `ar-SA` | 男 | `ar-SA-Naayf`|
-| 保加利亚语(保加利亚) | `bg-BG` | 男 | `bg-BG-Ivan`|
+| 保加利亚语（保加利亚） | `bg-BG` | 男 | `bg-BG-Ivan`|
 | 中文(粤语，繁体) | `zh-HK` | 男 | `zh-HK-Danny`|
-| 中文（粤语，繁体） | `zh-HK` | Female | `zh-HK-TracyRUS`|
+| 中文(粤语，繁体) | `zh-HK` | 女 | `zh-HK-TracyRUS`|
 | 中文（普通话，简体） | `zh-CN` | 女 | `zh-CN-HuihuiRUS`|
 | 中文（普通话，简体） | `zh-CN` | 男 | `zh-CN-Kangkang`|
 | 中文（普通话，简体） | `zh-CN` | 女 | `zh-CN-Yaoyao`|
-| 中文(台湾普通话) |  `zh-TW` | Female | `zh-TW-HanHanRUS`|
-| 中文(台湾普通话) |  `zh-TW` | Female | `zh-TW-Yating`|
+| 中文(台湾普通话) |  `zh-TW` | 女 | `zh-TW-HanHanRUS`|
+| 中文(台湾普通话) |  `zh-TW` | 女 | `zh-TW-Yating`|
 | 中文(台湾普通话) |  `zh-TW` | 男 | `zh-TW-Zhiwei`|
-| 英语（澳大利亚） | `en-AU` | Female | `en-AU-Catherine`|
-| 英语（澳大利亚） | `en-AU` | Female | `en-AU-HayleyRUS`|
-| 英语（加拿大） | `en-CA` | Female | `en-CA-HeatherRUS`|
-| 英语（加拿大） | `en-CA` | Female | `en-CA-Linda`|
-| 英语（印度） | `en-IN` | Female | `en-IN-Heera`|
-| 英语（印度） | `en-IN` | Female | `en-IN-PriyaRUS`|
+| 英语（澳大利亚） | `en-AU` | 女 | `en-AU-Catherine`|
+| 英语（澳大利亚） | `en-AU` | 女 | `en-AU-HayleyRUS`|
+| 英语（加拿大） | `en-CA` | 女 | `en-CA-HeatherRUS`|
+| 英语（加拿大） | `en-CA` | 女 | `en-CA-Linda`|
+| 英语（印度） | `en-IN` | 女 | `en-IN-Heera`|
+| 英语（印度） | `en-IN` | 女 | `en-IN-PriyaRUS`|
 | 英语（印度） | `en-IN` | 男 | `en-IN-Ravi`|
 | 英语（爱尔兰） | `en-IE` | 男 | `en-IE-Sean`|
 | 英语（英国） | `en-GB` | 男 | `en-GB-George`|
-| 英语（英国） | `en-GB` | Female | `en-GB-HazelRUS`|
-| 英语（英国） | `en-GB` | Female | `en-GB-Susan`|
+| 英语（英国） | `en-GB` | 女 | `en-GB-HazelRUS`|
+| 英语（英国） | `en-GB` | 女 | `en-GB-Susan`|
 | 英语（美国） | `en-US` | 男 | `en-US-BenjaminRUS`|
 | 英语（美国） | `en-US` | 男 | `en-US-GuyRUS`|
-| 英语（美国） | `en-US` | Female | `en-US-AriaRUS`|
+| 英语（美国） | `en-US` | 女 | `en-US-AriaRUS`|
 | 英语（美国） | `en-US` | 女 | `en-US-ZiraRUS`|
-| 法语（加拿大） | `fr-CA` | Female | `fr-CA-Caroline`|
-| 法语（加拿大） | `fr-CA` | Female | `fr-CA-HarmonieRUS`|
-| 法语（法国） | `fr-FR` | Female | `fr-FR-HortenseRUS`|
-| 法语（法国） | `fr-FR` | Female | `fr-FR-Julie`|
+| 法语（加拿大） | `fr-CA` | 女 | `fr-CA-Caroline`|
+| 法语（加拿大） | `fr-CA` | 女 | `fr-CA-HarmonieRUS`|
+| 法语（法国） | `fr-FR` | 女 | `fr-FR-HortenseRUS`|
+| 法语（法国） | `fr-FR` | 女 | `fr-FR-Julie`|
 | 法语（法国） | `fr-FR` | 男 | `fr-FR-Paul`|
 | 法语（瑞士） | `fr-CH` | 男 | `fr-CH-Guillaume`|
 | 德语（奥地利） | `de-AT` | 男 | `de-AT-Michael`|
-| 德语（德国） | `de-DE` | Female | `de-DE-HeddaRUS`|
+| 德语（德国） | `de-DE` | 女 | `de-DE-HeddaRUS`|
 | 德语（德国） | `de-DE` | 男 | `de-DE-Stefan`|
 | 德语（瑞士） | `de-CH` | 男 | `de-CH-Karsten`|
 | 印地语（印度） | `hi-IN` | 男 | `hi-IN-Hemant`|
-| 印地语（印度） | `hi-IN` | Female | `hi-IN-Kalpana`|
-| 韩语(韩国) | `ko-KR` | Female | `ko-KR-HeamiRUS`|
-| 俄语（俄罗斯） | `ru-RU` | Female | `ru-RU-EkaterinaRUS`|
-| 俄语（俄罗斯） | `ru-RU` | Female | `ru-RU-Irina`|
+| 印地语（印度） | `hi-IN` | 女 | `hi-IN-Kalpana`|
+| 韩语(韩国) | `ko-KR` | 女 | `ko-KR-HeamiRUS`|
+| 俄语（俄罗斯） | `ru-RU` | 女 | `ru-RU-EkaterinaRUS`|
+| 俄语（俄罗斯） | `ru-RU` | 女 | `ru-RU-Irina`|
 | 俄语（俄罗斯） | `ru-RU` | 男 | `ru-RU-Pavel`|
-| 西班牙语（墨西哥） | `es-MX` | Female | `es-MX-HildaRUS`|
+| 西班牙语（墨西哥） | `es-MX` | 女 | `es-MX-HildaRUS`|
 | 西班牙语（墨西哥） | `es-MX` | 男 | `es-MX-Raul`|
 | 西班牙语(西班牙) | `es-ES` | 女 | `es-ES-HelenaRUS`|
 | 西班牙语(西班牙) | `es-ES` | 女 | `es-ES-Laura`|
@@ -229,8 +229,8 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 英语             |     `en`      |
 | 法语              |     `fr`      |
 | 德语              |     `de`      |
-| Hindi               |     `hi`      |
-| 朝鲜语              |     `ko`      |
+| 印地语               |     `hi`      |
+| 韩语              |     `ko`      |
 | 俄语             |     `ru`      |
 | 西班牙语             |     `es`      |
 
