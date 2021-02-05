@@ -30629,6 +30629,36 @@
             "source_path": "articles/media-services/latest/migrate-from-v2-to-v3.md",
             "redirect_url": "/media-services/latest/migrate-v-2-v-3-migration-introduction",
             "redirect_document_id": false
+        },
+        {
+            "source_path": "articles/virtual-machines/linux/disk-performance-linux.md",
+            "redirect_url": "/virtual-machines/disks-performance",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "articles/virtual-machines/linux/disk-scalability-targets.md",
+            "redirect_url": "/virtual-machines/disks-scalability-targets",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "articles/virtual-machines/linux/disks-benchmarks.md",
+            "redirect_url": "/virtual-machines/disks-benchmarks",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "articles/virtual-machines/linux/disks-incremental-snapshots-portal.md",
+            "redirect_url": "/virtual-machines/disks-incremental-snapshots",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "articles/virtual-machines/linux/disks-incremental-snapshots.md",
+            "redirect_url": "/virtual-machines/disks-incremental-snapshots",
+            "redirect_document_id": false
+        },
+        {
+            "source_path": "articles/virtual-machines/linux/tutorial-backup-vms.md",
+            "redirect_url": "/backup/quick-backup-vm-portal",
+            "redirect_document_id": false
         }
 
     ]
