@@ -3,33 +3,25 @@ title: 使用 SSH 连接到 SFTP 服务器
 description: 使用 SSH 和 Azure 逻辑应用自动完成用于监视、创建、管理、发送和接收 SFTP 服务器文件的任务
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-origin.date: 11/03/2020
+origin.date: 01/07/2021
 author: rockboyfor
-ms.date: 11/30/2020
+ms.date: 01/25/2021
 ms.testscope: no
 ms.testdate: 06/08/2020
 ms.author: v-yeche
 tags: connectors
-ms.openlocfilehash: f541e08c2f0cc8994541c2d5661567c92e813760
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: 35a27aee6150569420fd65406e2d2500b06d2198
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432714"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751348"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
 若要使用[安全外壳 (SSH)](https://www.ssh.com/ssh/protocol/) 协议自动完成用于在[安全文件传输协议 (SFTP)](https://www.ssh.com/ssh/sftp/) 服务器上监视、创建、发送和接收文件的任务，可以使用 Azure 逻辑应用和 SFTP-SSH 连接器来生成并自动完成集成工作流。 SFTP 是通过任何可靠数据流提供文件访问、文件传输和文件管理的网络协议。
-
-> [!NOTE]
-> SFTP-SSH 连接器目前不支持以下 SFTP 服务器：
-> 
-> * IBM DataPower
-> * MessageWay
-> * OpenText Secure MFT
-> * OpenText GXS
 
 下面是可以自动完成的一些示例任务：
 
@@ -45,13 +37,20 @@ ms.locfileid: "96432714"
 
 ## <a name="limits"></a>限制
 
+* SFTP-SSH 连接器目前不支持以下 SFTP 服务器：
+
+  * IBM DataPower
+  * MessageWay
+  * OpenText Secure MFT
+  * OpenText GXS
+
 * SFTP-SSH 连接器支持私钥身份验证或密码身份验证，但不支持同时使用这两种身份验证。
 
 * 支持[分块](../logic-apps/logic-apps-handle-large-messages.md)的 SFTP-SSH 操作最多可以处理 1 GB 的文件，而不支持分块的 SFTP-SSH 操作最多可以处理 50 MB 的文件。 尽管默认的区块大小为 15 MB，但此大小可以根据网络延迟、服务器响应时间等因素动态变化，从 5 MB 开始逐渐增加到最大值 50 MB。
 
     <!--Not Available on [integration service environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)-->
 
-    当改用[指定固定区块大小](#change-chunk-size)时，可以重写此自适应行为。 此大小的范围为 5 MB 到 50 MB。 例如，假设你有一个 45 MB 的文件，以及可以支持该文件大小而没有延迟的网络。 自适应分块会导致多次调用，而不是一次调用。 若要减少调用次数，可以尝试设置 50 MB 的区块大小。 在不同情况下，如果逻辑应用超时（例如，当使用 15 MB 的块时），可以尝试将大小减小到 5 MB。
+    当改用[指定固定区块大小](#change-chunk-size)时，可以重写此自适应行为。 此大小的范围为 5 MB 到 50 MB。 例如，假设你有一个 45 MB 的文件，以及一个可以支持该文件大小且没有延迟的网络。 自适应分块会导致多次调用，而不是一次调用。 若要减少调用次数，可以尝试设置 50 MB 的区块大小。 在不同情况下，如果逻辑应用超时（例如，当使用 15 MB 的块时），可以尝试将该大小减小到 5 MB。
 
     区块大小与连接相关，这意味着你可以对支持分块的操作以及不支持分块的操作使用相同的连接。 在这种情况下，不支持分块的操作的区块大小范围为 5 MB 到 50 MB。 下表显示了哪些 SFTP-SSH 操作支持分块：
 
@@ -93,7 +92,7 @@ ms.locfileid: "96432714"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请[注册试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+* Azure 订阅。 如果没有 Azure 订阅，请[注册试用版 Azure 订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 * SFTP 服务器地址和帐户凭据，可让逻辑应用访问 SFTP 帐户。 还需要有权访问 SSH 私钥和 SSH 私钥密码。 若要在上传大文件时使用分块，你需要对 SFTP 服务器上的根文件夹具有读写权限。 否则，你将收到“401 未授权”错误。
 
@@ -116,15 +115,25 @@ ms.locfileid: "96432714"
 
 ## <a name="how-sftp-ssh-triggers-work"></a>SFTP-SSH 触发器的工作原理
 
-SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次轮询后已更改的任何文件。 某些工具允许保留文件更改时的时间戳。 在这种情况下，必须禁用此功能才能让触发器正常工作。 下面是一些常见设置：
+<a name="polling-behavior"></a>
+
+### <a name="polling-behavior"></a>轮询行为
+
+SFTP-SSH 触发器会轮询 SFTP 文件系统并查找自上次轮询以来已更改的任何文件。 某些工具允许保留文件更改时的时间戳。 在这种情况下，必须禁用此功能才能让触发器正常工作。 下面是一些常见设置：
 
 | SFTP 客户端 | 操作 |
 |-------------|--------|
-| Winscp | 转到“选项” > “首选项” > “传输” > “编辑” > “保留时间戳” > “禁用” |
-| FileZilla | 转到“传输” > “保留已传输文件的时间戳” > “禁用” |
+| Winscp | 转到“选项” > “首选项” > “传输” > “编辑” > “保留时间戳” > “禁用”      |
+| FileZilla | 转到“传输” > “保留已传输文件的时间戳” > “禁用”   |
 |||
 
 当触发器找到新文件时，会检查该新文件是否完整，以及是否未部分写入。 例如，当触发器检查文件服务器时，可能正在更改某个文件。 为了避免返回部分写入的文件，该触发器会记录具有最近更改的文件的时间戳，但不会立即返回该文件。 仅当再次轮询服务器时，触发器才会返回该文件。 有时，此行为可能会导致延迟，长达触发器轮询间隔的两倍。
+
+<a name="trigger-recurrence-shift-drift"></a>
+
+### <a name="trigger-recurrence-shift-and-drift"></a>触发器重复周期移动和偏移
+
+你需要首先为其创建连接的基于连接的触发器（例如 SFTP SSH 触发器）不同于在 Azure 逻辑应用中以原生方式运行的内置触发器，如[重复周期触发器](../connectors/connectors-native-recurrence.md)。 在基于连接的周期性触发器中，重复周期计划不是控制执行的唯一驱动因素，并且时区只确定初始开始时间。 后续运行取决于重复周期计划、上一次触发器执行以及其他可能导致运行时间发生偏差或产生意外行为的因素，例如，在夏令时 (DST) 开始和结束时未维护指定的计划。 若要确保重复周期时间在 DST 生效时不会移动，请手动调整重复周期，使逻辑应用继续按预期时间运行。 否则，开始时间将在 DST 开始时向前移动 1 小时，在 DST 结束时向后移动 1 小时。 有关详细信息，请参阅[基于连接的触发器的重复周期](../connectors/apis-list.md#recurrence-connection-based)。
 
 <a name="convert-to-openssh"></a>
 
@@ -242,21 +251,9 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
 <a name="troubleshooting-errors"></a>
 
-## <a name="troubleshoot-errors"></a>排查错误
+## <a name="troubleshoot-problems"></a>排查问题
 
 本部分介绍常见错误或问题的可能解决方案。
-
-<a name="file-does-not-exist"></a>
-
-### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404 错误：“引用了不存在的文件或文件夹”
-
-当逻辑应用通过 SFTP-SSH“创建文件”操作在 SFTP 服务器上创建新文件，但在逻辑应用服务可以获取文件的元数据之前，新创建的文件被立即移动时，可能会发生此错误。 当逻辑应用运行“创建文件”操作时，逻辑应用服务也会自动调用 SFTP 服务器来获取文件的元数据。 但是，如果移动了文件，逻辑应用服务将无法再找到该文件，因此你将收到 `404` 错误消息。
-
-如果无法避免或延迟移动文件，则可以在创建文件后跳过读取文件元数据的操作，方法是执行以下步骤：
-
-1. 在“创建文件”操作中，打开“添加新参数”列表，选择“获取所有文件元数据”属性，并将值设置为“否”   。
-
-1. 如果以后需要此文件元数据，可以使用“获取文件元数据”操作。
 
 <a name="connection-attempt-failed"></a>
 
@@ -275,6 +272,18 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 * 若要降低建立连接的成本，请在 SFTP 服务器的 SSH 配置中，将 [ClientAliveInterval](https://man.openbsd.org/sshd_config#ClientAliveInterval) 属性增加到大约一小时。
 
 * 请查看 SFTP 服务器日志，以检查来自逻辑应用的请求是否已到达 SFTP 服务器。 若要获取有关连接问题的详细信息，还可以在防火墙和 SFTP 服务器上运行网络跟踪。
+
+<a name="file-does-not-exist"></a>
+
+### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404 错误：“引用了不存在的文件或文件夹”
+
+如果逻辑应用通过 SFTP-SSH“创建文件”操作在 SFTP 服务器上创建新文件，但在逻辑应用服务可以获取该文件的元数据之前立即移动了新创建的文件，则可能会发生此错误。 当逻辑应用运行“创建文件”操作时，逻辑应用服务也会自动调用 SFTP 服务器来获取文件的元数据。 但是，如果逻辑应用移动了该文件，逻辑应用服务将无法再找到该文件，因此你将收到 `404` 错误消息。
+
+如果无法避免或延迟移动文件，则可以在创建文件后跳过读取文件元数据的操作，方法是执行以下步骤：
+
+1. 在“创建文件”操作中，打开“添加新参数”列表，选择“获取所有文件元数据”属性，并将值设置为“否”   。
+
+1. 如果以后需要此文件元数据，可以使用“获取文件元数据”操作。
 
 ## <a name="connector-reference"></a>连接器参考
 

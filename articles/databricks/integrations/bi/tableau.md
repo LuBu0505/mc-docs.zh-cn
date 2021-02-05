@@ -5,22 +5,19 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 09/11/2020
+ms.date: 01/19/2021
 title: Tableau - Azure Databricks
 description: 了解如何将 Tableau 与 Azure Databricks 配合使用。
-ms.openlocfilehash: 23147d5cfd8f0dbe88b0a8ff612fc07b6659b01b
-ms.sourcegitcommit: 16af84b41f239bb743ddbc086181eba630f7f3e8
+ms.openlocfilehash: 028187f66b8c4323f9142f4e2015305ca69b8cd7
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94589947"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058977"
 ---
 # <a name="tableau"></a>Tableau
 
-将 Azure Databricks 作为数据源与 Tableau 配合使用时，你可以提供强大的交互式分析功能，通过 Databricks Runtime 将数据集扩展为巨大的数据集，使业务分析师受益于数据科学家和数据工程师的贡献。 可以通过两个选项将 Tableau 连接到 Azure Databricks 群集，具体取决于 Tableau 版本：
-
-* [Tableau 2019.3 及更高版本](#tableau-20193)：Databricks 建议使用此版本。 请使用由 Databricks 通过 Tableau 连接器 SDK 开发的 Databricks 连接器。 Databricks 连接器完全符合 Tableau 数据源验证工具 (TDVT) 测试套件的要求，为你提供一个更简单的用于连接到 Azure Databricks 群集的用户界面。 此连接器还包含若干内置的连接优化。
-* [Tableau 2019.2 及更低版本](#tableau-20192)：使用由 Tableau 提供并维护的 Spark 连接器。
+将 Azure Databricks 作为数据源与 [Tableau](https://www.tableau.com/) 配合使用时，你可以提供强大的交互式分析功能，通过将数据集扩展为巨大的数据集，使业务分析师受益于数据科学家和数据工程师的贡献。
 
 Tableau 提供四种工具：
 
@@ -31,23 +28,20 @@ Tableau 提供四种工具：
 
 有关 Tableau 的详细信息，请观看这些 [Tableau 教程视频](https://www.tableau.com/learn/tutorials/on-demand/introduction-tableau)。
 
-本文介绍如何将 Tableau 与 Azure Databricks 配合使用。
+有多个选项可用于从 Tableau 连接到 Azure Databricks。 本文重点介绍 Tableau Desktop 和 Tableau Online。
 
-## <a name="connect-tableau-20193-and-above-with-azure-databricks"></a><a id="connect-tableau-20193-and-above-with-azure-databricks"> </a><a id="tableau-20193"> </a>将 Tableau 2019.3 及更高版本与 Azure Databricks 连接
+## <a name="connect-to-azure-databricks-from-tableau-desktop-20193-and-above"></a><a id="connect-to-azure-databricks-from-tableau-desktop-20193-and-above"> </a><a id="tableau-20193"> </a>从 Tableau Desktop（2019.3 及更高版本）连接到 Azure Databricks
 
-### <a name="step-1-download-and-install-software"></a>步骤 1：下载并安装软件
+### <a name="step-1-download-the-latest-databricks-odbc-driver"></a>步骤 1：下载最新的 Databricks ODBC 驱动程序
 
-下载并安装以下项：
-
-* Tableau 2019.3（Desktop、Server 或 Online）或更高版本
-* Simba [Spark ODBC 驱动程序](https://databricks.com/spark/odbc-driver-download) 2.6.4 或更高版本。 如果你未运行受支持的驱动程序，Tableau 会在连接对话框中显示一条消息，其中包含指向驱动程序下载页的链接，你可以在该页中找到驱动程序链接和安装说明。
+如果你未运行受支持的驱动程序，Tableau 会在连接对话框中显示一条消息，其中包含指向驱动程序下载页的链接，你可以在该页中找到驱动程序链接和安装说明。 下载 [Databricks ODBC 驱动程序](jdbc-odbc-bi.md#driver)版本 2.6.15 或更高版本。
 
 ### <a name="step-2-get-azure-databricks-connection-information"></a>步骤 2：获取 Azure Databricks 连接信息
 
-1. 获取[个人访问令牌](../../dev-tools/api/latest/authentication.md#token-management)。
-2. 按照[服务器主机名、端口、HTTP 路径和 JDBC URL](jdbc-odbc-bi.md#jdbc-odbc-params) 中的说明获取服务器主机名、端口和 HTTP 路径。
+1. 获取[个人访问令牌](jdbc-odbc-bi.md#authentication)。
+2. 获取服务器[主机名、端口和 HTTP 路径](jdbc-odbc-bi.md#get-server-hostname-port-http-path-and-jdbc-url)。
 
-### <a name="step-3-configure-connection-in-tableau-to-an-azure-databricks-cluster"></a>步骤 3：在 Tableau 中配置与 Azure Databricks 群集的连接
+### <a name="step-3-configure-azure-databricks-connection-in-tableau"></a>步骤 3：在 Tableau 中配置 Azure Databricks 连接
 
 1. 启动 Tableau。
 2. 请转到“连接”>“连接到服务器”菜单，选择 Databricks 连接器。
@@ -56,46 +50,36 @@ Tableau 提供四种工具：
    > ![选择 Databricks 连接器](../../_static/images/third-party-integrations/tableau/tableau-databricks-connector.png)
 
 3. 在“Databricks”对话框中，输入来自步骤 2 的服务器主机名和 HTTP 路径。
-4. 使用 `token` 作为用户名并使用步骤 2 中的令牌作为密码进行身份验证。
+4. 使用 ``token`` 作为用户名并使用步骤 2 中的令牌作为密码进行身份验证。
 5. 单击“登录”  。
 
-## <a name="connect-tableau-20192-and-below-with-azure-databricks"></a><a id="connect-tableau-20192-and-below-with-azure-databricks"> </a><a id="tableau-20192"> </a>将 Tableau 2019.2 及更低版本与 Azure Databricks 连接
+## <a name="connect-to-azure-databricks-from-tableau-online"></a>从 Tableau Online 连接到 Azure Databricks
 
-### <a name="step-1-download-and-install-software"></a>步骤 1：下载并安装软件
+### <a name="step-1-get-azure-databricks-connection-information"></a>步骤 1：获取 Azure Databricks 连接信息
 
-* Tableau 2019.2（Desktop、Server 或 Online）或更低版本
-* Simba [Spark ODBC 驱动程序](https://databricks.com/spark/odbc-driver-download) 1.2.0 或更高版本
+1. 获取[个人访问令牌](jdbc-odbc-bi.md#authentication)。
+2. 获取服务器[主机名、端口和 HTTP 路径](jdbc-odbc-bi.md#get-server-hostname-port-http-path-and-jdbc-url)。
 
-默认情况下，Tableau 在 Tableau 2018.1 及更高版本中安装此驱动程序。 如果计算机上未安装正确的驱动程序，Tableau 会在连接对话框中显示一条消息，其中包含指向驱动程序下载页的链接，你可以在该页中找到驱动程序链接和安装说明。
+### <a name="step-2-configure-azure-databricks-connection-in-tableau"></a>步骤 2：在 Tableau 中配置 Azure Databricks 连接
 
-> [!NOTE]
->
-> 如果你同时使用 Tableau Desktop 和 Tableau Server，那么它们必须使用相同的 Spark ODBC 驱动程序版本。
+1. 在 Tableau Online 中，打开工作簿（或创建一个新的工作簿）。
+2. 选择“数据”>“新建数据源”。
 
-### <a name="step-2-get-azure-databricks-connection-information"></a>步骤 2：获取 Azure Databricks 连接信息
+   > [!div class="mx-imgBorder"]
+   > ![Tableau Online 数据源](../../_static/images/third-party-integrations/tableau/tableau-online-ds.png)
 
-1. 获取[个人访问令牌](../../dev-tools/api/latest/authentication.md#token-management)。
-2. 按照[服务器主机名、端口、HTTP 路径和 JDBC URL](jdbc-odbc-bi.md#jdbc-odbc-params) 中的说明获取服务器主机名、端口和 HTTP 路径。
+3. 在“连接到数据”对话框中，选择“Databricks”。
 
-### <a name="step-3-configure-connection-in-tableau-to-an-azure-databricks-cluster"></a>步骤 3：在 Tableau 中配置与 Azure Databricks 群集的连接
+   > [!div class="mx-imgBorder"]
+   > ![Tableau Online Databricks](../../_static/images/third-party-integrations/tableau/tableau-online-databricks.png)
 
-1. 启动 Tableau。
-2. 转到“连接”菜单，单击“连接到服务器”>“更多...”，然后选择“Spark SQL”。
-3. 输入你的服务器主机名和端口。
-4. 在“类型”下拉列表中选择“SparkThriftServer”。 
-5. 在“身份验证”下拉列表中，选择“用户名和密码”。
-6. 在“传输”下拉列表中，选择“HTTP”。 
-7. 使用 `token` 作为用户名并使用步骤 2 中的令牌作为密码进行身份验证。
-8. 输入步骤 2 中的 HTTP 路径。
-9. 选择“需要 SSL”。
-10. 单击“登录”。
-
-    > [!div class="mx-imgBorder"]
-    > ![Tableau](../../_static/images/third-party-integrations/tableau/tableau-azure.png)
+4. 在 Databricks 连接对话框中，输入来自步骤 1 的“服务器主机名” 和“HTTP 路径”。
+5. 使用 ``token`` 作为用户名并使用步骤 1 中的令牌作为密码进行身份验证。
+6. 单击“登录”。
 
 ## <a name="tableau-server-on-linux"></a>Linux 上的 Tableau Server
 
-编辑 `/etc/odbcinst.ini`，使之包括以下内容：
+编辑 ``/etc/odbcinst.ini``，使之包括以下内容：
 
 ```
 [Simba Spark ODBC Driver 64-bit]
@@ -147,15 +131,15 @@ Driver=/opt/simba/spark/lib/64/libsparkodbc_sb64.so
 
 默认情况下，连接 URL 中的参数会替代 Simba ODBC DSN 中的参数。 可以通过两种方式自定义 Tableau 中的 ODBC 配置：
 
-* 单个数据源的 `.tds` 文件：
-  1. 按照[保存数据源](https://help.tableau.com/current/pro/desktop/en-us/export_connection.htm)中的说明导出数据源的 `.tds` 文件。
-  2. 查找 `.tds` 文件中的属性行 `odbc-connect-string-extras=''` 并设置参数。 例如，若要启用 `AutoReconnect` 和 `UseNativeQuery`，可以将行更改为 `odbc-connect-string-extras='AutoReconnect=1,UseNativeQuery=1'`。
-  3. 通过对此连接进行重新连接，重新加载 `.tds` 文件。
+* 单个数据源的 ``.tds`` 文件：
+  1. 按照[保存数据源](https://help.tableau.com/current/pro/desktop/en-us/export_connection.htm)中的说明导出数据源的 ``.tds`` 文件。
+  2. 查找 ``.tds`` 文件中的属性行 ``odbc-connect-string-extras=''`` 并设置参数。 例如，若要启用 ``AutoReconnect`` 和 ``UseNativeQuery``，可以将行更改为 ``odbc-connect-string-extras='AutoReconnect=1,UseNativeQuery=1'``。
+  3. 通过对此连接进行重新连接，重新加载 ``.tds`` 文件。
 
-  群集驱动程序经过优化，可使用较少的堆内存来收集大型结果，因此与 Simba ODBC 的默认值相比，可以为每个提取块处理更多行。 将 `RowsFetchedPerBlock=100000'` 追加到 `odbc-connect-string-extras` 属性的值。
+  计算资源经过优化，可使用较少的堆内存来收集大型结果，因此与 Simba ODBC 的默认值相比，它可以为每个提取块处理更多行。 将 ``RowsFetchedPerBlock=100000'`` 追加到 ``odbc-connect-string-extras`` 属性的值。
 
-* 所有数据源的 `.tdc` 文件：
-  1. 如果从未创建过 `.tdc` 文件，则可将 [TableauTdcExample.tdc](../../_static/examples/TableauTdcExample.tdc) 添加到文件夹 `Document/My Tableau Repository/Datasources`。
+* 所有数据源的 ``.tdc`` 文件：
+  1. 如果从未创建过 ``.tdc`` 文件，则可将 [TableauTdcExample.tdc](../../_static/examples/TableauTdcExample.tdc) 添加到文件夹 ``Document/My Tableau Repository/Datasources``。
   2. 将此文件添加到所有开发人员的 Tableau Desktop 安装，以便在共享仪表板时此文件可以发挥作用。
 
 ### <a name="optimize-charts-worksheets"></a>优化图表（工作表）
@@ -163,7 +147,7 @@ Driver=/opt/simba/spark/lib/64/libsparkodbc_sb64.so
 可以通过很多战术性图表优化来提高 Tableau 工作表的性能。
 
 对于不经常更改且不应与之交互的筛选器，请使用上下文筛选器，这会缩短执行时间。
-根据经验，另一种好的做法是在查询中使用 `if/else` 语句而非 `case/when` 语句。
+根据经验，另一种好的做法是在查询中使用 ``if/else`` 语句而非 ``case/when`` 语句。
 
 Tableau 可以将筛选器向下推送到数据源中，这可以显著提高查询速度。 请参阅[使用参数跨多个数据源进行筛选](https://kb.tableau.com/articles/howto/filter-multiple-data-sources-using-parameter)和[跨多个数据源筛选数据](https://help.tableau.com/current/pro/desktop/en-us/filter_across_datasources.htm)，详细了解数据源向下推送筛选器。
 
@@ -173,7 +157,7 @@ Tableau 可以将筛选器向下推送到数据源中，这可以显著提高查
 
 下面是一些提示和故障排除练习，你可以应用这些练习来改善 Tableau 仪表板的性能。
 
-连接到 Azure Databricks 的 Tableau 仪表板的常见问题来源是，在各个仪表板上使用了快速筛选器为许多不同的用户、函数或段提供服务。 可以将全局快速筛选器附加到仪表板上的所有图表。 这是一项很好的功能，但它引发问题的速度也很快。 如果一个仪表板有五个图表和一个全局快速筛选器，则会导致至少 10 个查询发送到 Azure Databricks。 添加更多筛选器后，此数字可能会螺旋式上升，导致巨大的性能问题，因为 Spark 不适合处理多个同一时刻开始的并发查询。 如果使用的群集不够大，无法处理大量查询，则问题会更严重。
+连接到 Azure Databricks 的 Tableau 仪表板的常见问题来源是，在各个仪表板上使用了快速筛选器为许多不同的用户、函数或段提供服务。 可以将全局快速筛选器附加到仪表板上的所有图表。 这是一项很好的功能，但它引发问题的速度也很快。 如果一个仪表板有五个图表和一个全局快速筛选器，则会导致至少 10 个查询发送到 Azure Databricks。 添加更多筛选器后，此数字可能会螺旋式上升，导致巨大的性能问题，因为 Spark 不适合处理多个同一时刻开始的并发查询。 如果使用的群集或 SQL 终结点不够大，无法处理大量查询，则问题会更严重。
 
 建议你首先使用 Tableau 性能记录来排查问题原因。
 
@@ -217,6 +201,6 @@ Tableau 的管理设置可用于管理缓存频率。 如果将服务器设置�
 
 可以在用户使用 Tableau 仪表板之前缓存常用表或关键表，以减少 Azure Databricks 将结果返回到 Tableau 所用的时间。
 
-可以在早上运行脚本，以便对那些在已进行缓存优化的虚拟机上进行 [Delta 缓存](../../delta/optimizations/delta-cache.md#use-delta-caching)的特定表执行 `SELECT CACHE`。
+可以在早上运行脚本，以便对那些在已进行缓存优化的虚拟机上进行 [Delta 缓存](../../delta/optimizations/delta-cache.md#use-delta-caching)的特定表执行 ``SELECT CACHE``。
 
 甚至可以缓存 Azure Databricks 从驱动程序获取的特定查询。

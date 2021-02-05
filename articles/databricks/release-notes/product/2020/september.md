@@ -5,15 +5,15 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 10/02/2020
+ms.date: 12/01/2020
 title: 2020 年 9 月 - Azure Databricks
 description: 新 Azure Databricks 功能和改进的 2020 年 9 月发行说明。
-ms.openlocfilehash: dd47e883f9d1dbecd721e49115f65e2d19f28de6
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: f129f52ca42339d50bb15aabba312874b09194a8
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329329"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058711"
 ---
 # <a name="september-2020"></a>2020 年 9 月
 
@@ -27,7 +27,7 @@ ms.locfileid: "94329329"
 
 **2020 年 9 月 24 日**
 
-Databricks Runtime 7.3、Databricks Runtime 7.3 ML 和用于基因组学的 Databricks Runtime 7.3 现已正式发布。 它们带来了许多功能和改进，包括：
+Databricks Runtime 7.3、用于机器学习的 Databricks Runtime 7.3 和用于基因组学的 Databricks Runtime 7.3 现已正式发布。 它们带来了许多功能和改进，包括：
 
 * Delta Lake 性能优化大大减少了开销
 * 克隆指标
@@ -44,7 +44,7 @@ Databricks Runtime 7.3、Databricks Runtime 7.3 ML 和用于基因组学的 Data
 * （仅限基因组学）支持读取具有未压缩或 zstd 压缩基因型的 BGEN 文件
 * 库升级
 
-有关详细信息，请参阅 [Databricks Runtime 7.3](../../runtime/7.3.md)、[Databricks Runtime 7.3 ML](../../runtime/7.3ml.md) 和[用于基因组学的 Databricks Runtime 7.3](../../runtime/7.3genomics.md) 发行说明。
+有关详细信息，请参阅 [Databricks Runtime 7.3 LTS](../../runtime/7.3.md)、[用于机器学习的 Databricks Runtime 7.3 LTS](../../runtime/7.3ml.md) 和[用于基因组学的 Databricks Runtime 7.3 LTS](../../runtime/7.3genomics.md) 发行说明。
 
 ## <a name="single-node-clusters-public-preview"></a>单节点群集（公共预览版）
 
@@ -102,12 +102,12 @@ Databricks Runtime 7.3、Databricks Runtime 7.3 ML 和用于基因组学的 Data
 
 **2020 年 9 月 22 日**
 
-Power BI Desktop 版本 2.85.681.0 包括一个更新的 Azure Databricks Power BI 连接器，它使 Azure Databricks 与 Power BI 之间的集成较之以前要无缝和可靠得多。 新连接器具有以下改进：
+Power BI Desktop 版本 2.85.681.0 包括一个新的 Azure Databricks Power BI 连接器，它使 Azure Databricks 与 Power BI 之间的集成较之以前要无缝和可靠得多。 新连接器具有以下改进：
 
 * 简单的连接配置：新的 Power BI Azure Databricks 连接器已集成到 Power BI 中，你只需要单击几下鼠标，即可使用简单的对话框对其进行配置。
-* 使用 Azure Active Directory 身份验证的安全且无缝的身份验证。
+* 基于 Azure Active Directory 凭据进行身份验证，管理员无需再配置 PAT 令牌。
 * 由于新的 Azure Databricks ODBC 驱动程序提供了显著的性能改进，因此导入操作和优化的元数据调用操作速度更快。
-* 通过 Power BI 访问 Azure Databricks 数据时，将遵守 Azure Databricks 表访问控制以及与你的 Azure AD 标识关联的 Azure 存储帐户权限。
+* 通过 Power BI 访问 Azure Databricks 数据时，将遵守 Azure Databricks [表访问控制](../../../security/access-control/table-acls/index.md)以及与你的 Azure AD 标识关联的 Azure 存储帐户权限。
 
 有关详细信息，请参阅 [Power BI](../../../integrations/bi/power-bi.md)。
 
@@ -116,6 +116,18 @@ Power BI Desktop 版本 2.85.681.0 包括一个更新的 Azure Databricks Power 
 **2020 年 9 月 15 日**
 
 现在，你可以在 Azure Key Vault 中使用自己的加密密钥来加密 DBFS 存储帐户。 请参阅[为 DBFS 根配置客户管理的密钥](../../../security/keys/customer-managed-keys-dbfs/index.md)。
+
+## <a name="new-jdbc-and-odbc-drivers-bring-faster-and-lower-latency-bi"></a>新的 JDBC 和 ODBC 驱动程序带来了速度更快、延迟更低的 BI
+
+**2020 年 9 月 15 日**
+
+我们发布了新版本的 Databricks JDBC 和 ODBC 驱动程序[（下载）](https://databricks.com/spark/odbc-driver-download)，其中包含以下改进：
+
+* 性能：降低了连接和查询延迟，提高了基于 Apache Arrow 序列化的结果传输速度，改进了元数据检索性能。
+* 用户体验：使用 Azure AD OAuth2 访问令牌进行身份验证、改进了在连接到已关闭群集时的错误消息和自动重试，在发生间歇性网络错误时更可靠地处理重试。
+* 支持使用 HTTP 代理进行连接。
+
+有关使用 JDBC 和 ODBC 连接到 BI 工具的详细信息，请参阅 [JDBC 和 ODBC 驱动程序以及配置参数](../../../integrations/bi/jdbc-odbc-bi.md)。
 
 ## <a name="mlflow-model-serving-public-preview"></a>MLflow 模型服务（公共预览版）
 
@@ -151,7 +163,7 @@ MLflow 模型服务目前以公共预览版提供。 使用 MLflow 模型服务�
 
 **2020 年 9 月 9-15 日：版本 3.28**
 
-对于在发布 Azure Databricks 平台 3.28 版之后创建的工作区，默认情况下，用户将不再能够生成个人访问令牌。 管理员必须显式授予这些权限，无论是向整个 `users` 组授予还是按用户或按组授予。 在 3.28 发布之前创建的工作区会保留已有的权限。
+对于在发布 Azure Databricks 平台 3.28 版之后创建的工作区，默认情况下，用户将不再能够生成个人访问令牌。 管理员必须显式授予这些权限，无论是向整个 ``users`` 组授予还是按用户或按组授予。 在 3.28 发布之前创建的工作区会保留已有的权限。
 
 请参阅[管理个人访问令牌](../../../administration-guide/access-control/tokens.md)。
 
@@ -159,7 +171,7 @@ MLflow 模型服务目前以公共预览版提供。 使用 MLflow 模型服务�
 
 **2020 年 9 月 9 日**
 
-Azure Databricks 现在支持从多个工作区访问模型注册表。 你现在可以跨工作区注册模型、跟踪模型运行以及加载模型。 现在，多个团队可以共享对模型的访问权限，组织可以使用多个工作区来处理不同的开发阶段。 有关详细信息，请参阅[跨工作区共享模型](../../../applications/mlflow/multiple-workspaces.md)。
+Azure Databricks 现在支持从多个工作区访问模型注册表。 你现在可以跨工作区注册模型、跟踪模型运行以及加载模型。 现在，多个团队可以共享对模型的访问权限，组织可以使用多个工作区来处理不同的开发阶段。 有关详细信息，请参阅[跨工作区共享模型](../../../applications/machine-learning/manage-model-lifecycle/multiple-workspaces.md)。
 
 此功能需要 MLflow Python 客户端版本 1.11.0 或更高版本。
 
@@ -167,9 +179,9 @@ Azure Databricks 现在支持从多个工作区访问模型注册表。 你现�
 
 **2020 年 9 月 3 日**
 
-Databricks Runtime 7.3、Databricks Runtime 7.3 ML 和用于基因组学的 Databricks Runtime 7.3 现已作为 Beta 版本发布。
+Databricks Runtime 7.3、用于机器学习的 Databricks Runtime 7.3 和用于基因组学的 Databricks Runtime 7.3 现以 Beta 版提供。
 
-有关信息，请参阅 [Databricks Runtime 7.3](../../runtime/7.3.md)、[Databricks Runtime 7.3 ML](../../runtime/7.3ml.md) 和[用于基因组学的 Databricks Runtime 7.3](../../runtime/7.3genomics.md) 发行说明。
+有关信息，请参阅 [Databricks Runtime 7.3 LTS](../../runtime/7.3.md)、[用于机器学习的 Databricks Runtime 7.3 LTS](../../runtime/7.3ml.md) 和[用于基因组学的 Databricks Runtime 7.3 LTS](../../runtime/7.3genomics.md) 发行说明。
 
 ## <a name="azure-databricks-workload-type-name-change"></a>Azure Databricks 工作负载类型名称变更
 

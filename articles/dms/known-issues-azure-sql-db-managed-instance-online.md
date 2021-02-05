@@ -9,15 +9,15 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
-ms.topic: article
+ms.topic: troubleshooting
 origin.date: 02/20/2020
-ms.date: 07/20/2020
-ms.openlocfilehash: 49907845c06eb9d27b28b63d9cf7458628cfe7fa
-ms.sourcegitcommit: 403db9004b6e9390f7fd1afddd9e164e5d9cce6a
+ms.date: 02/01/2021
+ms.openlocfilehash: c390fdbf91275cfdbc280857b065fa58d563de38
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86440425"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058627"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-managed-instance"></a>联机迁移到 Azure SQL 托管实例时存在的已知问题/迁移限制
 
@@ -66,3 +66,29 @@ ms.locfileid: "86440425"
     SQL 托管实例是一种具有自动修补和版本更新功能的 PaaS 服务。 迁移 SQL 托管实例期间，非关键更新最多保留 36 小时。 之后（对于关键更新），如果迁移中断，此过程将重置为完全还原状态。
 
     仅在完整备份还原完成且与所有日志备份一致后才能调用迁移切换。
+
+## <a name="smb-file-share-connectivity"></a>SMB 文件共享连接
+
+连接到 SMB 文件共享时出现的问题可能是由权限问题导致的。 
+
+若要测试 SMB 文件共享连接，请执行以下步骤： 
+
+1. 将备份保存到 SMB 文件共享。 
+1. 验证 Azure 数据库迁移服务的子网与源 SQL Server 之间的网络连接。 执行此操作的最简单方法是将 SQL Server 虚拟机部署到 DMS 子网，并使用 SQL Server Management Studio 连接到源 SQL Server。 
+1. 从文件共享上的备份中还原源 SQL Server 上的标头： 
+
+   ```sql
+   RESTORE HEADERONLY   
+   FROM DISK = N'\\<SMB file share path>\full.bak'
+   ```
+
+如果无法连接到该文件共享，请按照以下步骤配置权限： 
+
+1. 使用文件资源管理器导航到该文件共享。 
+1. 右键单击该文件共享并选择“属性”。 
+1. 选择“共享”选项卡，然后选择“高级共享”。  
+1. 添加用于迁移的 Windows 帐户，并为其分配“完全控制”访问权限。 
+1. 添加 SQL Server 服务帐户，并为其分配“完全控制”访问权限。 请在 SQL Server 配置管理器中查找 SQL Server 服务帐户（如果你不确定要使用哪个帐户）。 
+
+   :::image type="content" source="media/known-issues-azure-sql-db-managed-instance-online/assign-fileshare-permissions.png" alt-text="对用于迁移的 Windows 帐户和 SQL Server 服务帐户授予“完全控制”权限。":::
+

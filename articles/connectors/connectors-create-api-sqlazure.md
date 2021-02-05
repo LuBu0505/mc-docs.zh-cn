@@ -3,21 +3,21 @@ title: 连接到 SQL Server、Azure SQL 数据库或 Azure SQL 托管实例
 description: 使用 Azure 逻辑应用自动完成本地或云中的 SQL 数据库的任务
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-origin.date: 10/22/2020
+origin.date: 01/07/2021
 author: rockboyfor
-ms.date: 11/30/2020
+ms.date: 01/25/2021
 ms.testscope: no
 ms.testdate: 06/08/2020
 ms.author: v-yeche
 tags: connectors
-ms.openlocfilehash: a2520beb5a511d99a7cad625979e89a866dcaf1f
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: d99e4ff90bfd22921b4ae5efc82151f92971b24b
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431870"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751337"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用自动完成 SQL 数据库的工作流
 
@@ -29,7 +29,7 @@ ms.locfileid: "96431870"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请[注册试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+* Azure 订阅。 如果没有订阅，请[注册试用版 Azure 订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 * 一个 [SQL Server 数据库](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database)、[Azure SQL 数据库](../azure-sql/database/single-database-create-quickstart.md)或 [Azure SQL 托管实例](../azure-sql/managed-instance/instance-create-quickstart.md)。
 
@@ -193,6 +193,12 @@ ms.locfileid: "96431870"
 
     尽管此步骤会在 Azure 中自动地实时启用并发布你的逻辑应用，但你的逻辑应用当前所采取的唯一操作是根据指定的时间间隔和频率检查你的数据库。
 
+<a name="trigger-recurrence-shift-drift"></a>
+
+### <a name="trigger-recurrence-shift-and-drift"></a>触发器重复周期移动和偏移
+
+你需要首先为其创建连接的基于连接的触发器（例如 SQL 触发器）不同于在 Azure 逻辑应用中以原生方式运行的内置触发器，如[重复周期触发器](../connectors/connectors-native-recurrence.md)。 在基于连接的周期性触发器中，重复周期计划不是控制执行的唯一驱动因素，并且时区只确定初始开始时间。 后续运行取决于重复周期计划、上一次触发器执行以及其他可能导致运行时间发生偏差或产生意外行为的因素，例如，在夏令时 (DST) 开始和结束时未维护指定的计划。 若要确保重复周期时间在 DST 生效时不会移动，请手动调整重复周期，使逻辑应用继续按预期时间运行。 否则，开始时间将在 DST 开始时向前移动 1 小时，在 DST 结束时向后移动 1 小时。 有关详细信息，请参阅[基于连接的触发器的重复周期](../connectors/apis-list.md#recurrence-connection-based)。
+
 <a name="add-sql-action"></a>
 
 ## <a name="add-a-sql-action"></a>添加 SQL 操作
@@ -267,13 +273,17 @@ ms.locfileid: "96431870"
 
 ## <a name="troubleshoot-problems"></a>排查问题
 
-* 连接问题可能经常发生，因此为了排查和解决这类问题，请查看[解决连接到 SQL Server 的错误](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)。 下面是一些示例：
+<a name="connection-problems"></a>
 
-    * `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+### <a name="connection-problems"></a>连接问题
 
-    * `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+连接问题可能经常发生，因此为了排查和解决这类问题，请查看[解决连接到 SQL Server 的错误](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)。 下面是一些示例：
 
-    * `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
+* `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+
+* `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+
+* `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
 
 ## <a name="connector-specific-details"></a>特定于连接器的详细信息
 
