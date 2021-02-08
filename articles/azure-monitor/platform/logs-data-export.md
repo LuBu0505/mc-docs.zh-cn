@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.custom: references_regions, devx-track-azurecli
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 01/27/2021
-ms.openlocfilehash: 0a91631ef93cb46fa3f846cd8a48e7f5a919ab5d
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 02/02/2021
+ms.openlocfilehash: 5b134eabb86561c3d2f176797e80bd26445b2dd8
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060186"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579373"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）
 使用 Azure Monitor 中的 Log Analytics 工作区数据导出功能，可以在收集 Log Analytics 工作区中所选表的数据时，将数据持续导出到 Azure 存储帐户或 Azure 事件中心。 本文提供了有关此功能的详细信息以及在工作区中配置数据导出的步骤。
@@ -723,9 +723,4 @@ GET https://management.chinacloudapi.cn/subscriptions/<subscription-id>/resource
 | WVDErrors | |
 | WVDFeeds | |
 | WVDManagement | |
-
-
-## <a name="next-steps"></a>后续步骤
-
-- [从 Azure 数据资源管理器查询导出的数据](azure-data-explorer-query-storage.md)。
 

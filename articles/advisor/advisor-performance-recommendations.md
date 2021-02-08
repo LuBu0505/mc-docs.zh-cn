@@ -3,14 +3,14 @@ title: 使用顾问提高 Azure 应用的性能
 description: 使用 Azure 顾问中的性能建议可提高业务关键型应用程序的速度和响应能力。
 ms.topic: article
 origin.date: 01/29/2019
-ms.date: 01/19/2021
+ms.date: 02/03/2021
 ms.author: v-johya
-ms.openlocfilehash: 50bb144caa575533bb363bd5b789a24b9336994c
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: 420c80df07d37cd3aca7294836a9d3829218e7f6
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751084"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579610"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>使用 Azure 顾问提高 Azure 应用程序的性能
 
@@ -169,9 +169,6 @@ Azure 顾问会分析过去 7 天内的系统日志，并识别群集是否遇�
 
 ## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>在服务器组中分布数据，以在节点间分布工作负载
 顾问可识别数据未进行分布，而是仍保留在协调器中的服务器组。 基于这一点，顾问建议在服务器组中的工作器节点上分布数据，以获得完整的超大规模 (Citus) 权益。 这将通过利用服务器组中每个节点的资源来提高查询性能。 [了解详细信息](https://go.microsoft.com/fwlink/?linkid=2135201) 
-
-## <a name="upgrade-to-the-latest-version-of-the-immersive-reader-sdk"></a>升级到沉浸式阅读器 SDK 的最新版本
-我们已使用沉浸式阅读器 SDK 的已过时版本识别了此订阅下的资源。 使用沉浸式阅读器 SDK 的最新版本，你可以获取更新的安全性、性能及扩展的一组功能，可用于自定义和增强集成体验。
 
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>如何访问顾问中的性能建议

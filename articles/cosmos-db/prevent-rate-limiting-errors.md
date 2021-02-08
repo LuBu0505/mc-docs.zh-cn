@@ -6,16 +6,16 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 origin.date: 01/13/2021
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 02/08/2021
 ms.testscope: yes
 ms.testdate: 02/01/2021
 ms.author: v-yeche
-ms.openlocfilehash: 0abd6f346d3f37f329bb4bb7f9cfc735d6e8633d
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 9dd5f595ca0d5c766fd0bfd5fa0c68b628071559
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064538"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580586"
 ---
 <!--Verified successfully-->
 # <a name="prevent-rate-limiting-errors-for-azure-cosmos-db-api-for-mongodb-operations"></a>防止 Azure Cosmos DB API for MongoDB 操作的速率限制错误

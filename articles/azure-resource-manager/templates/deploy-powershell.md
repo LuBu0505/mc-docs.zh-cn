@@ -2,18 +2,18 @@
 title: 使用 PowerShell 和模板部署资源
 description: 使用 Azure Resource Manager 和 Azure PowerShell 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 ms.topic: conceptual
-origin.date: 09/08/2020
+origin.date: 01/15/2021
 author: rockboyfor
-ms.date: 11/23/2020
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 08/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: c87cbace6bb632e1bf2213e69207f3298e080f64
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 5d52e3098d11f4344da9104b2b87aa5c5f520bab
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978164"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063523"
 ---
 <!--Verify Successfully-->
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>使用 ARM 模板和 Azure PowerShell 部署资源
@@ -22,26 +22,26 @@ ms.locfileid: "94978164"
 
 ## <a name="prerequisites"></a>先决条件
 
-你需要使用模板进行部署。 如果还没有模板，请从 Azure 快速入门模板存储库下载并保存一个[示例模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json)。 本文中使用的本地文件名称为 **c:\MyTemplates\azuredeploy.json**。
+你需要使用模板进行部署。 如果还没有模板，请从 Azure 快速入门模板存储库下载并保存一个[示例模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json)。 本文中使用的本地文件名为 C:\MyTemplates\azuredeploy.json。
 
 需安装 Azure PowerShell 并连接到 Azure：
 
 - **在本地计算机上安装 Azure PowerShell cmdlet。** 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 - **使用 [Connect-AZAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) 连接到 Azure**。 如果有多个 Azure 订阅，则可能还需要运行 [Set-AzContext](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)。 有关详细信息，请参阅[使用多个 Azure 订阅](https://docs.microsoft.com/powershell/azure/manage-subscriptions-azureps)。
 
-<!--Not Available on [Deploy ARM templates from local Shell](deploy-cloud-shell.md)-->
+<!--NOT AVAILABLE ON [Deploy ARM templates from Azure local Shell](deploy-cloud-shell.md)-->
 
 ## <a name="deployment-scope"></a>部署范围
 
 可将部署目标设定为资源组、订阅、管理组或租户。 根据部署范围使用不同的命令。
 
-* 若要部署到 **资源组**，请使用 [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment)：
+- 若要部署到 **资源组**，请使用 [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment)：
 
     ```azurepowershell
     New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
     ```
 
-* 若要部署到订阅，请使用 New-AzSubscriptionDeployment：
+- 若要部署到订阅，请使用 [New-AzSubscriptionDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azdeployment)（`New-AzDeployment` cmdlet 的别名）：
 
     ```azurepowershell
     New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template>
@@ -49,7 +49,7 @@ ms.locfileid: "94978164"
 
     有关订阅级部署的详细信息，请参阅[在订阅级别创建资源组和资源](deploy-to-subscription.md)。
 
-* 若要部署到管理组，请使用 [New-AzManagementGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/New-AzManagementGroupDeployment)。
+- 若要部署到管理组，请使用 [New-AzManagementGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/New-AzManagementGroupDeployment)。
 
     ```azurepowershell
     New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template>
@@ -57,7 +57,7 @@ ms.locfileid: "94978164"
 
     有关管理组级部署的详细信息，请参阅[在管理组级别创建资源](deploy-to-management-group.md)。
 
-* 若要部署到租户，请使用 [New-AzTenantDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-aztenantdeployment)。
+- 若要部署到租户，请使用 [New-AzTenantDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-aztenantdeployment)。
 
     ```azurepowershell
     New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template>
@@ -109,11 +109,7 @@ New-AzResourceGroupDeployment `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-前面的示例要求模板的 URI 可公开访问，它适用于大多数情况，因为模板应该不会包含敏感数据。 如果需要指定敏感数据（如管理员密码），请以安全参数的形式传递该值。
-
-<!--Not Available on  However, if you want to manage access to the template, consider using template specs-->
-<!--Not Available on  [template specs](#deploy-template-spec)-->
-
+前面的示例要求模板的 URI 可公开访问，它适用于大多数情况，因为模板应该不会包含敏感数据。 如果需要指定敏感数据（如管理员密码），请以安全参数的形式传递该值。 但是，如果想要管理对模板的访问权限，请考虑使用[模板规格](#deploy-template-spec)。
 
 ## <a name="deployment-name"></a>部署名称
 
@@ -143,14 +139,38 @@ $deploymentName="ExampleDeployment"+"$today"
 
 为避免与并发部署冲突并确保部署历史记录中的条目是唯一的，请为每个部署指定唯一的名称。
 
+## <a name="deploy-template-spec"></a>部署模板规格
 
-<!--Not Available on ## Deploy template spec-->
-<!--REASON: TEMPLATE SPEC IS PRIVATE PREVIEW-->
+你可以创建[模板规格](template-specs.md)，而不是部署本地或远程模板。模板规格是 Azure 订阅中包含 ARM 模板的资源。 这使你可以轻松地与组织中的用户安全地共享模板。 可使用 Azure 基于角色的访问控制 (Azure RBAC) 来授予对模板规格的访问权限。此功能目前以预览版提供。
+
+下面的示例演示如何创建和部署模板规格。
+
+首先，通过提供 ARM 模板创建模板规格。
+
+```azurepowershell
+New-AzTemplateSpec `
+  -Name storageSpec `
+  -Version 1.0 `
+  -ResourceGroupName templateSpecsRg `
+  -Location chinanorth2 `
+  -TemplateJsonFile ./mainTemplate.json
+```
+
+然后，获取模板规格的 ID 并部署它。
+
+```azurepowershell
+$id = (Get-AzTemplateSpec -Name storageSpec -ResourceGroupName templateSpecsRg -Version 1.0).Version.Id
+
+New-AzResourceGroupDeployment `
+  -ResourceGroupName demoRG `
+  -TemplateSpecId $id
+```
+
+有关详细信息，请参阅 [Azure 资源管理器模板规格（预览版）](template-specs.md)。
+
 ## <a name="preview-changes"></a>预览更改
 
 在部署模板之前，可以预览模板将对环境做出的更改。 使用[假设操作](template-deploy-what-if.md)验证模板是否进行了预期的更改。 模拟操作还验证模板是否有错误。
-
-<!--Not Available on ## Deploy from Azure Cloud shell-->
 
 ## <a name="pass-parameter-values"></a>粘贴参数值
 
@@ -197,7 +217,7 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
 
 有关参数文件的详细信息，请参阅[创建资源管理器参数文件](parameter-files.md)。
 
-若要传递本地参数文件，请使用 TemplateParameterFile 参数：
+若要传递本地参数文件，请使用 `TemplateParameterFile` 参数：
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -205,7 +225,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
   -TemplateParameterFile c:\MyTemplates\storage.parameters.json
 ```
 
-若要传递外部参数文件，请使用 TemplateParameterUri 参数：
+若要传递外部参数文件，请使用 `TemplateParameterUri` 参数：
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -218,6 +238,6 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
 - 若要在出错时回退到成功的部署，请参阅[出错时回退到成功的部署](rollback-on-error.md)。
 - 若要指定如何处理存在于资源组中但未在模板中定义的资源，请参阅 [Azure 资源管理器部署模式](deployment-modes.md)。
 - 若要了解如何在模板中定义参数，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
-- 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用模板](secure-template-with-sas-token.md)。
+- 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用 ARM 模板](secure-template-with-sas-token.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

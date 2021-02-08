@@ -4,15 +4,15 @@ description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 03/01/2019
-ms.date: 01/22/2021
+ms.date: 02/02/2021
 ms.custom: references_regions
 ms.author: v-johya
-ms.openlocfilehash: 68a87785933a79a65406c01603f30b678e552bd5
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: 8658e29615f7b97d7a7aa4eb539ee6a6a8926eb3
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751332"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579421"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -186,7 +186,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 如果文件恢复进程在运行文件还原脚本后挂起（例如，如果磁盘从未装载或装载后未显示卷），请执行以下步骤：
 
 1. 在文件 /etc/iscsi/iscsid.conf 中，将设置从
-    - `node.conn[0].timeo.noop_out_timeout = 5` 更改为 `node.conn[0].timeo.noop_out_timeout = 30`
+    - `node.conn[0].timeo.noop_out_timeout = 5` 更改为 `node.conn[0].timeo.noop_out_timeout = 120`
 2. 进行上述更改之后，重新运行脚本。 如果发生暂时性故障，请确保等待 20 到 30 分钟再重新运行，以避免连续突发的请求影响目标准备。 重新运行之间的间隔时间可确保目标已准备好从脚本进行连接。
 3. 在执行文件恢复后，请务必返回门户并为无法装载卷的恢复点选择“卸载磁盘”。 从本质上来说，此步骤将清理所有现有进程/会话并提高恢复的可能性。
 

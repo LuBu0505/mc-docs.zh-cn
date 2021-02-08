@@ -4,15 +4,15 @@ description: Azure 安全基准 V2 特权访问
 author: Johnnytechn
 ms.service: security
 ms.topic: conceptual
-ms.date: 01/19/2021
+ms.date: 02/03/2021
 ms.author: v-johya
 ms.custom: security-benchmark
-ms.openlocfilehash: 74f1dffcc5bae6d2adc415e30ee3b8f6a1a17aef
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: 635278a5bf177a79198473ef1ae23e5a5e2efad1
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751054"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579436"
 ---
 # <a name="security-control-v2-privileged-access"></a>安全控制 V2：特权访问
 
@@ -154,6 +154,8 @@ ms.locfileid: "98751054"
 | PA-6 | 4.6、11.6、12.12 | AC-2、SC-3、SC-7 |
 
 受保护的独立工作站对于机密角色（如管理员、开发人员和关键服务操作员）的安全性至关重要。 使用高度安全的用户工作站和/或 Azure Bastion 执行管理任务。 使用 Azure Active Directory、Microsoft Defender 高级威胁防护 (ATP) 和/或 Microsoft Intune 部署安全的托管用户工作站，用于执行管理任务。 可集中管理安全工作站，强制实施安全配置，包括强身份验证、软件和硬件基线，以及受限制的逻辑和网络访问。 
+
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 **责任**：客户
 

@@ -7,18 +7,17 @@ author: Johnnytechn
 manager: erikre
 editor: ''
 ms.service: api-management
-ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/18/2021
+ms.date: 02/04/2021
 ms.author: v-johya
 ms.custom: references_regions
-ms.openlocfilehash: e48f95b500a0769a15f5113aff028f6ccb59f0fb
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: 88a89cdec3811dfe12a9d12507c11d0051366ba5
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751087"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579570"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何将 Azure API 管理与虚拟网络配合使用
 使用 Azure 虚拟网络 (VNET) 可将你的任何 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，可以使用各种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
@@ -171,7 +170,7 @@ ms.locfileid: "98751087"
 ## <a name="troubleshooting"></a><a name="troubleshooting"> </a>疑难解答
 * **初始设置**：如果在某个子网中初次部署 API 管理服务未成功，建议首先在同一子网中部署一个虚拟机。 接下来，在虚拟机中部署远程桌面，并验证是否与 Azure 订阅中的以下每个资源建立了连接
     * Azure 存储 Blob
-    * Azure SQL Database
+    * Azure SQL 数据库
     * Azure 存储表
 
   > [!IMPORTANT]

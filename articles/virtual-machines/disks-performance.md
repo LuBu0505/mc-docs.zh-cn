@@ -5,17 +5,17 @@ origin.date: 10/12/2020
 author: rockboyfor
 ms.date: 02/01/2021
 ms.testscope: yes
-ms.testdate: 02/01/2021
+ms.testdate: 02/08/2021
 ms.author: v-yeche
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: d3cee2c167fb10f4a726703751053d6e8ceb373c
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 69fe56ea77c29342af6a1f3ec79d698a671b39bb
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064544"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580542"
 ---
 <!--Verified successfully from rename article-->
 # <a name="virtual-machine-and-disk-performance"></a>虚拟机和磁盘性能

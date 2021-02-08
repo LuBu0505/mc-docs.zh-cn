@@ -5,14 +5,14 @@ author: Johnnytechn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 02/01/2021
 ms.author: v-johya
-ms.openlocfilehash: 376a0a2fede8dfa28ef83926be5e616881a8a9b1
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: b6e7a5ce79ff98bc6645ed8bb3de8eb196500593
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751156"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579612"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>为 Azure 准备 Oracle Linux 虚拟机
 
@@ -24,7 +24,7 @@ ms.locfileid: "98751156"
 * Hyper-V 和 Azure 不支持 Oracle 的 UEK2，因为它不包括所需的驱动程序。
 * Azure 不支持 VHDX 格式，仅支持 **固定大小的 VHD**。  可使用 Hyper-V 管理器或 convert-vhd cmdlet 将磁盘转换为 VHD 格式。
 * **需要装载 UDF 文件系统的内核支持。** 在 Azure 上首次启动时，预配配置将通过附加到来宾的 UDF 格式媒体传递到 Linux VM。 Azure Linux 代理必须能够装载 UDF 文件系统才能读取其配置和预配 VM。
-* 在安装 Linux 系统时，建议使用标准分区而不是 LVM（通常是许多安装的默认值）。 这会避免 LVM 与克隆 VM 发生名称冲突，特别是在 OS 磁盘需要连接到另一台 VM 以进行故障排除的情况下。 如果需要，可以在数据磁盘上使用 [LVM](configure-lvm.md?toc=%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](configure-raid.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
+* 在安装 Linux 系统时，建议使用标准分区而不是 LVM（通常是许多安装的默认值）。 这会避免 LVM 与克隆 VM 发生名称冲突，特别是在 OS 磁盘需要连接到另一台 VM 以进行故障排除的情况下。 如果需要，可以在数据磁盘上使用 [LVM](configure-lvm.md) 或 [RAID](configure-raid.md)。
 * 低于 2.6.37 的 Linux 内核版本不支持具有更大 VM 大小的 Hyper-V 上的 NUMA。 此问题主要影响使用上游 Red Hat 2.6.32 内核的旧分发版，并已在 Oracle Linux 6.6 及更高版本中修复
 * 不要在操作系统磁盘上配置交换分区。 可以在下面的步骤中找到有关此内容的详细信息。
 * Azure 上的所有 VHD 必须已将虚拟大小调整为 1MB。 从原始磁盘转换为 VHD 时，必须确保在转换前原始磁盘大小是 1MB 的倍数。 有关详细信息，请参阅 [Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)。
@@ -256,7 +256,7 @@ ms.locfileid: "98751156"
 
     ```
 
-14. 交换配置  不要在操作系统磁盘上创建交换空间。
+14. 交换配置：不要在操作系统磁盘上创建交换空间。
 
     以前，Azure Linux 代理用于使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 但是，现在这由 cloud-init 处理，你不能使用 Linux 代理来格式化资源磁盘以创建交换文件，请在 `/etc/waagent.conf` 中相应地修改以下参数：
 

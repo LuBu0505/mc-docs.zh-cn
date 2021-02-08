@@ -9,14 +9,14 @@ ms.service: virtual-network
 ms.topic: article
 ms.workload: infrastructure-services
 origin.date: 10/18/2018
-ms.date: 04/20/2020
+ms.date: 02/01/2021
 ms.author: v-tawe
-ms.openlocfilehash: a2591fb3b51f816cbbb925b042bbbeeb8f61c237
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 9bbca7d0e541942849e2d1ccf5076228ec98f569
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588781"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059756"
 ---
 # <a name="interoperability-in-azure--control-plane-analysis"></a>Azure 中的互操作性：控制平面分析
 
@@ -64,7 +64,7 @@ VNet 的 ExpressRoute 网关的 ASN 不同于 Microsoft Enterprise Edge 路由�
 
 ExpressRoute 充当冗余的线路对，可确保高可用性。 可在不同的 Azure 区域配置异地冗余的 ExpressRoute 连接。 另外，如测试设置中所示，在 Azure 区域中，可以使用站点到站点 VPN 为 ExpressRoute 连接创建故障转移路径。 通过 ExpressRoute 和站点到站点 VPN 播发相同的前缀时，Azure 会优先使用 ExpressRoute。 为了避免 ExpressRoute 与站点到站点 VPN 之间的非对称路由，本地网络配置同样应该优先使用 ExpressRoute 连接，然后再使用站点到站点 VPN 连接。
 
-有关如何配置 ExpressRoute 和站点到站点 VPN 共存连接的详细信息，请参阅 [ExpressRoute 和站点到站点共存][ExR-S2S-CoEx]。
+若要深入了解如何配置 ExpressRoute 和站点到站点 VPN 共存连接，请参阅 [ExpressRoute 和站点到站点共存][ExR-S2S-CoEx]。
 
 ## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>将后端连接扩展到辐射 VNet 和分支位置
 
@@ -98,19 +98,17 @@ ExpressRoute 充当冗余的线路对，可确保高可用性。 可在不同的
 [5]: ./media/backend-interoperability/ExR1-RouteTable.png "ExpressRoute 1 路由表"
 
 <!--Link References-->
-[Setup]: https://docs.azure.cn/networking/connectivty-interoperability-preface
-[Configuration]: https://docs.azure.cn/networking/connectivty-interoperability-config
-[ExpressRoute]: https://docs.azure.cn/expressroute/expressroute-introduction
-[VPN]: https://docs.azure.cn/vpn-gateway/vpn-gateway-about-vpngateways
-[VNet]: https://docs.azure.cn/virtual-network/tutorial-connect-virtual-networks-portal
-[Configuration]: https://docs.azure.cn/networking/connectivty-interoperability-configuration
+[Setup]: ./connectivty-interoperability-preface.md
+[Configuration]: ./connectivty-interoperability-configuration.md
+[ExpressRoute]: ../expressroute/expressroute-introduction.md
+[VPN]: ../vpn-gateway/vpn-gateway-about-vpngateways.md
+[VNet]: ../virtual-network/tutorial-connect-virtual-networks-portal.md
+[Configuration]: ./connectivty-interoperability-configuration.md
 [Control-Analysis]:https://docs.azure.cn/networking/connectivty-interoperability-control-plane
-[Data-Analysis]: https://docs.azure.cn/networking/connectivty-interoperability-data-plane
-[ExR-FAQ]: https://docs.azure.cn/expressroute/expressroute-faqs
-
-[ExR-S2S-CoEx]: https://docs.azure.cn/expressroute/expressroute-howto-coexist-resource-manager
+[Data-Analysis]: ./connectivty-interoperability-data-plane.md
+[ExR-FAQ]: ../expressroute/expressroute-faqs.md
+<!--[S2S-Over-ExR]: ../expressroute/site-to-site-vpn-over-microsoft-peering.md-->
+[ExR-S2S-CoEx]: ../expressroute/expressroute-howto-coexist-resource-manager.md
 <!-- [Hub-n-Spoke]: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke -->
 <!-- [Deploy-NVA]: https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha -->
-[VNet-Config]： https://docs.azure.cn/virtual-network/virtual-network-manage-peering
-
-
+[VNet-Config]: ../virtual-network/virtual-network-manage-peering.md
