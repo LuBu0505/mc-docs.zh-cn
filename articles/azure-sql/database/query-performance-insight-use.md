@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: how-to
 author: WenJason
 ms.author: v-jay
-ms.reviewer: jrasnik, sstein
-origin.date: 03/10/2020
-ms.date: 12/14/2020
-ms.openlocfilehash: 7c3000908245d5903790d5e4758823471b4def89
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.reviewer: wiassaf, sstein
+origin.date: 1/14/2021
+ms.date: 02/01/2021
+ms.openlocfilehash: 704ac39aa40a8bf91a446153a6c8ffc07a26110c
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830271"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059209"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 Query Performance Insight
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -154,7 +154,7 @@ Query Performance Insight 很容易使用：
 
 Query Performance Insight 中的两个指标可帮助你查找潜在的瓶颈：持续时间和执行计数。
 
-长时间运行的查询长时间锁定资源、阻止其他用户和限制可伸缩性的可能性最大。 它们也非常适合进行优化。
+长时间运行的查询长时间锁定资源、阻止其他用户和限制可伸缩性的可能性最大。 它们也非常适合进行优化。 有关详细信息，请参阅[了解并解决 Azure SQL 阻塞问题](understand-resolve-blocking.md)。
 
 识别长时间运行的查询：
 

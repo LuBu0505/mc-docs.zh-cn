@@ -4,14 +4,14 @@ description: Azure Monitor 指标警报的常见问题和可能的解决方案�
 author: Johnnytechn
 ms.author: v-johya
 ms.topic: troubleshooting
-ms.date: 01/12/2021
+ms.date: 01/27/2021
 ms.subservice: alerts
-ms.openlocfilehash: a3c5ce12166feea6290bcc9be8a273d3b44b6503
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 6b301f25bc88890a52df9bfc3b45d1bab9cbb27f
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230788"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060042"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>排查 Azure Monitor 指标警报的问题 
 
@@ -24,8 +24,9 @@ ms.locfileid: "98230788"
 如果你认为某个指标警报应当已触发但未触发且在 Azure 门户中找不到该警报，则请尝试执行以下步骤：
 
 1. **配置** - 检查指标警报规则配置以确保它正确配置：
-    - 检查是否按预期配置了“聚合类型”、“聚合粒度(周期)”和“阈值”或“敏感度”   
-    - 对于使用“动态阈值”的警报规则，请检查是否配置了高级设置，因为“冲突的数量”可能会筛选警报，而“忽略之前的数据”会影响阈值的计算方式 
+    - 检查是否按预期配置了“聚合类型”和“聚合粒度(周期)” 。 “聚合类型”可确定指标值的聚合方式（详情请参见[此处](./metrics-aggregation-explained.md#aggregation-types)），“聚合粒度(周期)”可控制每次运行警报规则时，评估聚合度量值的时间间隔 。
+    -  检查“阈值”或“敏感度”是否按预期方式配置 。
+    - 对于使用“动态阈值”的警报规则，请检查是否配置了高级设置，因为“冲突的数量”可能会筛选警报，而“忽略之前的数据”会影响阈值的计算方式 。
 
        > [!NOTE] 
        > 动态阈值在变为活动状态之前至少需要 3 天和 30 个指标示例。
@@ -78,9 +79,9 @@ ms.locfileid: "98230788"
 如果希望对[指标的特定维度值](./alerts-metric-overview.md#using-dimensions)发出警报，但找不到这些值，请注意以下事项：
 
 1. 维度值可能需要几分钟时间才能显示在“维度值”列表下
-1. 显示的维度值基于在过去三天内收集到的指标数据
-1. 如果未发出此维度值，请单击“+”符号以添加自定义值
-1. 如果要对某个维度的所有可能值（包括将来的值）发出警报，请选中“选择 *”复选框
+1. 显示的维度值基于在前一天收集到的指标数据
+1. 如果维度值尚未发出或未显示，可以使用“添加自定义值”选项添加自定义维度值
+1. 如果要对某个维度所有的可能值（包括将来的值）发出警报，请选中“选择所有当前和将来的值”选项
 
 ## <a name="metric-alert-rules-still-defined-on-a-deleted-resource"></a>在已删除资源上仍然会定义指标警报规则 
 
@@ -97,6 +98,7 @@ ms.locfileid: "98230788"
 
 > [!NOTE] 
 > 将指标警报规则设为无状态会妨碍已触发警报的解决，因此即使在不再满足条件后，触发的警报也会在 30 天的保留期内保持已触发状态。
+<!--Not available in MC: ## Define an alert rule on a custom metric that isn't emitted yet-->
 
 ## <a name="export-the-azure-resource-manager-template-of-a-metric-alert-rule-via-the-azure-portal"></a>通过 Azure 门户导出指标警报规则的 Azure 资源管理器模板
 

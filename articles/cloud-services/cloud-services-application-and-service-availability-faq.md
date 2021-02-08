@@ -1,28 +1,21 @@
 ---
 title: 应用程序和服务可用性常见问题解答
-titleSuffix: Azure Cloud Services
 description: 本文列出 Azure 云服务的常见应用程序和服务可用性问题。
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/14/2020
+ms.service: cloud-services
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: 0b15c1a0a255af03cd43a303a6ed56f5bd12f6ae
-ms.sourcegitcommit: e1b6e7fdff6829040c4da5d36457332de33e0c59
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: bf131cf79caddeb18b803aaac3e3dc0a505683b3
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90721156"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058872"
 ---
-# <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务的应用程序和服务可用性问题：常见问题 (FAQ)
+# <a name="application-and-service-availability-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Azure 云服务（经典）的应用程序和服务可用性问题：常见问题 (FAQ)
 
 本文包含 [Azure 云服务](https://www.azure.cn/home/features/cloud-services)的常见应用程序和服务可用性问题。 还可以参阅[云服务 VM 大小页面](cloud-services-sizes-specs.md)，了解大小信息。
 

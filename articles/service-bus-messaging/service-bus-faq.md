@@ -1,19 +1,20 @@
 ---
-title: Azure 服务总线常见问题 (FAQ) | Azure
+title: Azure 服务总线常见问题解答 (FAQ) | Azure Docs
 description: 本文提供了一些有关 Azure 服务总线的常见问题解答 (FAQ)。
+ms.service: service-bus-messaging
 ms.topic: article
-origin.date: 09/16/2020
+origin.date: 01/20/2021
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 08/17/2020
 ms.author: v-yeche
-ms.openlocfilehash: fe7294456758b20fdf7cf4c107c3c576a41a5a63
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: 401767cb268d39900b972db20c86e817973b7e4c
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97104809"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059316"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure 服务总线 - 常见问题解答 (FAQ)
 
@@ -40,8 +41,11 @@ ms.locfileid: "97104809"
  [高级 SKU](service-bus-premium-messaging.md) 中不再支持分区实体。 
 
 <a name="in-region-data-residency"></a>
-### <a name="where-does-azure-service-bus-store-customer-data"></a>Azure 服务总线将客户数据存储在何处？
-Azure 服务总线存储客户数据。 服务总线会自动将此数据存储在单个区域中，因此此服务会自动满足区域内数据驻留要求，包括[信任中心](https://azuredatacentermap.azurewebsites.net/)内指定的要求。
+### <a name="where-does-azure-service-bus-store-data"></a>Azure 服务总线将数据存储在何处？
+
+<!--Not Suitable on Brazil South and Southeast Asia-->
+
+Azure 服务总线高级层在你选择的区域中存储元数据和数据。 为 Azure 服务总线高级命名空间设置异地灾难恢复时，会将元数据复制到你选择的次要区域。
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>需要在防火墙上打开哪些端口？ 
 可以将以下协议与 Azure 服务总线配合使用，以便发送和接收消息：
@@ -173,6 +177,8 @@ Select-AzSubscription -SubscriptionId 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
 $res = Find-AzResource -ResourceNameContains mynamespace -ResourceType 'Microsoft.ServiceBus/namespaces'
 Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
 ```
+## <a name="is-it-possible-to-disable-tls-10-or-11-on-service-bus-namespaces"></a>是否可以在服务总线命名空间上禁用 TLS 1.0 或 TLS 1.1？
+否。 不能在服务总线命名空间上禁用 TLS 1.0 或 TLS 1.1。 在连接到服务总线的客户端应用程序中，使用 TLS 1.2 或更高版本。 有关详细信息，请参阅[强制将 TLS 1.2 用于 Azure 服务总线 - Azure 技术社区](https://techcommunity.microsoft.com/t5/messaging-on-azure/enforcing-tls-1-2-use-with-azure-service-bus/ba-p/370912)。
 
 ## <a name="next-steps"></a>后续步骤
 若要了解有关服务总线的详细信息，请参阅以下文章：

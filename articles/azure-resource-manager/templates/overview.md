@@ -2,18 +2,18 @@
 title: 模板概述
 description: 介绍使用 Azure 资源管理器模板（ARM 模板）部署资源的好处。
 ms.topic: conceptual
-origin.date: 12/17/2020
+origin.date: 01/20/2021
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 0b2a30bfada56b5fd1f1a39bd7738d2f6e781cad
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: b67041838cde30b171b22b5fd7adcd0a080ea078
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022850"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063685"
 ---
 <!--Verify successfully-->
 # <a name="what-are-arm-templates"></a>什么是 ARM 模板？
@@ -40,7 +40,7 @@ ms.locfileid: "98022850"
 
 * **创建任何 Azure 资源**：可以立即在模板中使用新的 Azure 服务和功能。 一旦资源提供程序引入了新资源，你就可以通过模板立即部署这些资源。 在使用新服务之前，无需等待工具或模块完成更新。
 
-    <!--Not Available on * **Extensibility**: With [deployment scripts](deployment-script-template.md)-->
+* **扩展性**：使用 [部署脚本](deployment-script-template.md)时，可以将 PowerShell 或 Bash 脚本添加到模板。 使用部署脚本可扩展在部署过程中设置资源的功能。 脚本可以包含在模板中，也可存储在外部源中并在模板中引用。 使用部署脚本可以在单个 ARM 模板中完成端到端环境设置。
 
 * **测试**：可以使用 ARM 模板工具包 (arm-ttk) 对模板进行测试，确保模板符合建议的准则。 此测试工具包是一个 PowerShell 脚本，可从 [GitHub](https://github.com/Azure/arm-ttk) 下载。 使用此工具包，可以更轻松地使用模板语言开发专门技术。
 
@@ -131,6 +131,12 @@ REQUEST BODY
 :::image type="content" source="./media/overview/tier-templates.png" alt-text="层模板":::
 
 有关嵌套模板的信息，请参阅[将链接模板与 Azure 资源管理器配合使用](linked-templates.md)。
+
+## <a name="share-templates"></a>共享模板
+
+创建模板后，你可能希望与组织中的其他用户共享此模板。 [模板规格](template-specs.md)使你能够将模板存储为资源类型。 可使用基于角色的访问控制来管理对模板规格的访问。具有对模板规格的读取访问权限的用户可以部署它，但无法更改模板。
+
+此方法意味着可以安全地共享符合组织标准的模板。
 
 ## <a name="next-steps"></a>后续步骤
 

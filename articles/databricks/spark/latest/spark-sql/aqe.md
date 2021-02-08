@@ -5,15 +5,15 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 10/03/2020
+ms.date: 12/01/2020
 title: 自适应查询执行 - Azure Databricks
 description: 了解如何在 Azure Databricks 中使用自适应查询执行。
-ms.openlocfilehash: e9f439d627bdb7b4aaa33d32ad1d11384452afd7
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+ms.openlocfilehash: 02dc04148989dee0cdb617e7d9ad35260ffa922a
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472886"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060078"
 ---
 # <a name="adaptive-query-execution"></a>自适应查询执行
 
@@ -25,7 +25,7 @@ ms.locfileid: "92472886"
 
 ## <a name="capabilities"></a>功能
 
-在 Databricks Runtime 7.3 中，会默认启用 AQE。 它有 4 个主要功能：
+在 Databricks Runtime 7.3 LTS 中，AQE 已默认启用。 它有 4 个主要功能：
 
 * 将排序合并联接动态更改为广播哈希联接。
 * 在随机交换后将分区进行动态联合（将小分区合并为大小合理的分区）。 非常小的任务具有较差的 I/O 吞吐量，并且往往会产生更多计划开销和任务设置开销。 合并小型任务可节省资源并提高群集吞吐量。
@@ -48,15 +48,15 @@ AQE 适用于以下所有查询：
 ### <a name="in-this-section"></a>本节内容：
 
 * [Spark UI](#spark-ui)
-* [`DataFrame.explain()`](#dataframeexplain)
-* [`SQL EXPLAIN`](#sql-explain)
+* [``DataFrame.explain()``](#dataframeexplain)
+* [``SQL EXPLAIN``](#sql-explain)
 
 ### <a name="spark-ui"></a>Spark UI
 
-#### <a name="adaptivesparkplan-node"></a>`AdaptiveSparkPlan` 节点
+#### <a name="adaptivesparkplan-node"></a>``AdaptiveSparkPlan`` 节点
 
-应用了 AQE 的查询包含一个或多个 `AdaptiveSparkPlan` 节点，通常作为每个主查询或子查询的根节点。
-在查询运行之前或运行时，相应的 `AdaptiveSparkPlan` 节点的 `isFinalPlan` 标志将显示为 `false`；查询执行完成后，`isFinalPlan` 标志变为 `true.`
+应用了 AQE 的查询包含一个或多个 ``AdaptiveSparkPlan`` 节点，通常作为每个主查询或子查询的根节点。
+在查询运行之前或运行时，相应的 ``AdaptiveSparkPlan`` 节点的 ``isFinalPlan`` 标志将显示为 ``false``；查询执行完成后，``isFinalPlan`` 标志变为 ``true.``
 
 #### <a name="evolving-plan"></a>不断发展的计划
 
@@ -67,25 +67,25 @@ AQE 适用于以下所有查询：
 > [!div class="mx-imgBorder"]
 > ![查询计划图](../../../_static/images/spark/aqe/query-plan-diagram.png)
 
-### `DataFrame.explain()`
+### ``DataFrame.explain()``
 
-#### <a name="adaptivesparkplan-node"></a>`AdaptiveSparkPlan` 节点
+#### <a name="adaptivesparkplan-node"></a>``AdaptiveSparkPlan`` 节点
 
-应用了 AQE 的查询包含一个或多个 `AdaptiveSparkPlan` 节点，通常作为每个主查询或子查询的根节点。 在查询运行之前或运行时，相应的 `AdaptiveSparkPlan` 节点的 `isFinalPlan` 标志将显示为 `false`；查询执行完成后，`isFinalPlan` 标志变为 `true`。
+应用了 AQE 的查询包含一个或多个 ``AdaptiveSparkPlan`` 节点，通常作为每个主查询或子查询的根节点。 在查询运行之前或运行时，相应的 ``AdaptiveSparkPlan`` 节点的 ``isFinalPlan`` 标志将显示为 ``false``；查询执行完成后，``isFinalPlan`` 标志变为 ``true``。
 
 #### <a name="current-and-initial-plan"></a>当前和初始计划
 
-在每个 `AdaptiveSparkPlan` 节点下，将同时出现初始计划（应用任何 AQE 优化之前的计划）和当前或最终计划，具体取决于执行是否已完成。 当前计划将随执行的进展而不断变化。
+在每个 ``AdaptiveSparkPlan`` 节点下，将同时出现初始计划（应用任何 AQE 优化之前的计划）和当前或最终计划，具体取决于执行是否已完成。 当前计划将随执行的进展而不断变化。
 
 #### <a name="runtime-statistics"></a>运行时统计信息
 
 每个随机和广播阶段都包含数据统计信息。
 
-在此阶段运行之前或运行时，统计信息是编译时估计值，标志 `isRuntime` 为 `false`，例如 `Statistics(sizeInBytes=1024.0 KiB, rowCount=4, isRuntime=false);`
+在此阶段运行之前或运行时，统计信息是编译时估计值，标志 ``isRuntime`` 为 ``false``，例如 ``Statistics(sizeInBytes=1024.0 KiB, rowCount=4, isRuntime=false);``
 
-阶段执行完成后，统计信息则是在运行时收集的，标志 `isRuntime` 将变成 `true`，例如 `Statistics(sizeInBytes=658.1 KiB, rowCount=2.81E+4, isRuntime=true)`
+阶段执行完成后，统计信息则是在运行时收集的，标志 ``isRuntime`` 将变成 ``true``，例如 ``Statistics(sizeInBytes=658.1 KiB, rowCount=2.81E+4, isRuntime=true)``
 
-下面是一个 `DataFrame.explain` 示例：
+下面是一个 ``DataFrame.explain`` 示例：
 
 * 执行之前
 
@@ -102,15 +102,15 @@ AQE 适用于以下所有查询：
   > [!div class="mx-imgBorder"]
   > ![执行之后](../../../_static/images/spark/aqe/after-execution.png)
 
-### `SQL EXPLAIN`
+### ``SQL EXPLAIN``
 
-#### <a name="adaptivesparkplan-node"></a>`AdaptiveSparkPlan` 节点
+#### <a name="adaptivesparkplan-node"></a>``AdaptiveSparkPlan`` 节点
 
 应用 AQE 的查询包含一个或多个 AdaptiveSparkPlan 节点，通常作为每个主查询或子查询的根节点。
 
 #### <a name="no-current-plan"></a>无当前计划
 
-由于 `SQL EXPLAIN` 不执行查询，当前计划始终与初始计划相同，并且不反映 AQE 最终将执行什么计划。
+由于 ``SQL EXPLAIN`` 不执行查询，当前计划始终与初始计划相同，并且不反映 AQE 最终将执行什么计划。
 
 下面是一个 SQL 说明示例：
 
@@ -126,7 +126,7 @@ AQE 适用于以下所有查询：
   > [!div class="mx-imgBorder"]
   > ![联接策略字符串](../../../_static/images/spark/aqe/join-strategy-string.png)
 
-* 动态联合分区：带有 `Coalesced` 属性的 `CustomShuffleReader` 节点
+* 动态联合分区：带有 ``Coalesced`` 属性的 ``CustomShuffleReader`` 节点
 
   > [!div class="mx-imgBorder"]
   > ![CustomShuffleReader](../../../_static/images/spark/aqe/custom-shuffle-reader.png)
@@ -134,7 +134,7 @@ AQE 适用于以下所有查询：
   > [!div class="mx-imgBorder"]
   > ![CustomShuffleReader 字符串](../../../_static/images/spark/aqe/custom-shuffle-reader-string.png)
 
-* 动态处理倾斜联接：`isSkew` 字段为 true 的 `SortMergeJoin` 节点。
+* 动态处理倾斜联接：``isSkew`` 字段为 true 的 ``SortMergeJoin`` 节点。
 
   > [!div class="mx-imgBorder"]
   > ![倾斜联接计划](../../../_static/images/spark/aqe/skew-join-plan.png)
@@ -152,7 +152,7 @@ AQE 适用于以下所有查询：
 
 ## <a name="configuration"></a>配置
 
-在此部分的属性中，将 `<prefix>` 替换为 `spark.sql.adaptive`。
+在此部分的属性中，将 ``<prefix>`` 替换为 ``spark.sql.adaptive``，并将 ``<db_prefix>`` 替换为 ``spark.databricks.adaptive``。
 
 ### <a name="in-this-section"></a>本节内容：
 
@@ -164,40 +164,40 @@ AQE 适用于以下所有查询：
 
 ### <a name="enable-and-disable-adaptive-query-execution"></a>启用和禁用自适应查询执行
 
-| 属性           | 默认 | 说明                                            |
-|--------------------|---------|--------------------------------------------------------|
-| `<prefix>.enabled` | 是    | 是启用还是禁用自适应查询执行。 |
+| 属性             | 默认 | 说明                                            |
+|----------------------|---------|--------------------------------------------------------|
+| ``<prefix>.enabled`` | 是    | 是启用还是禁用自适应查询执行。 |
 
 ### <a name="dynamically-change-sort-merge-join-into-broadcast-hash-join"></a>将排序合并联接动态更改为广播哈希联接
 
-| 属性                              | 默认 | 说明                                                      |
-|---------------------------------------|---------|------------------------------------------------------------------|
-| `<prefix>.autoBroadcastJoinThreshold` | 30MB    | 运行时切换操作（切换到广播联接）的触发阈值。 |
+| 属性                                   | 默认 | 说明                                                      |
+|--------------------------------------------|---------|------------------------------------------------------------------|
+| ``<db_prefix>.autoBroadcastJoinThreshold`` | 30MB    | 运行时切换操作（切换到广播联接）的触发阈值。 |
 
 ### <a name="dynamically-coalesce-partitions"></a>动态联合分区
 
-| 属性                                       | 默认                 | 说明                                                                                                                                              |
-|------------------------------------------------|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `<prefix>.coalescePartitions.enabled`          | 是                    | 是启用还是禁用分区联合。                                                                                                       |
-| `<prefix>.advisoryPartitionSizeInBytes`        | 64MB                    | 联合后的目标大小。 联合后的分区大小将接近但不大于此目标大小。                                    |
-| `<prefix>.coalescePartitions.minPartitionSize` | 1MB                     | 联合后的最小分区大小。 联合后的分区大小将不小于此大小。                                        |
-| `<prefix>.coalescePartitions.minPartitionNum`  | 2x 群集核心数 | 联合后的最小分区数。 不建议，因为显式设置会覆盖 `<prefix>.coalescePartitions.minPartitionSize`。 |
+| 属性                                         | 默认                 | 说明                                                                                                                                                |
+|--------------------------------------------------|-------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ``<prefix>.coalescePartitions.enabled``          | 是                    | 是启用还是禁用分区联合。                                                                                                         |
+| ``<prefix>.advisoryPartitionSizeInBytes``        | 64MB                    | 联合后的目标大小。 联合后的分区大小将接近但不大于此目标大小。                                      |
+| ``<prefix>.coalescePartitions.minPartitionSize`` | 1MB                     | 联合后的最小分区大小。 联合后的分区大小将不小于此大小。                                          |
+| ``<prefix>.coalescePartitions.minPartitionNum``  | 2x 群集核心数 | 联合后的最小分区数。 不建议，因为显式设置会覆盖 ``<prefix>.coalescePartitions.minPartitionSize``。 |
 
 ### <a name="dynamically-handle-skew-join"></a>动态处理倾斜联接
 
-| 属性                                            | 默认 | 说明                                                                                                          |
-|-----------------------------------------------------|---------|----------------------------------------------------------------------------------------------------------------------|
-| `<prefix>.skewJoin.enabled`                         | 是    | 设置 true/false 来启用/禁用倾斜联接处理。                                                                 |
-| `<prefix>.skewJoin.skewedPartitionFactor`           | 5       | 一个系数，乘以分区大小中值时有助于确定分区是否倾斜。 |
-| `<prefix>.skewJoin.skewedPartitionThresholdInBytes` | 256 MB   | 有助于确定分区是否倾斜的阈值。                                           |
+| 属性                                              | 默认 | 说明                                                                                                          |
+|-------------------------------------------------------|---------|----------------------------------------------------------------------------------------------------------------------|
+| ``<prefix>.skewJoin.enabled``                         | 是    | 设置 true/false 来启用/禁用倾斜联接处理。                                                                 |
+| ``<prefix>.skewJoin.skewedPartitionFactor``           | 5       | 一个系数，乘以分区大小中值时有助于确定分区是否倾斜。 |
+| ``<prefix>.skewJoin.skewedPartitionThresholdInBytes`` | 256 MB   | 有助于确定分区是否倾斜的阈值。                                           |
 
-当 `(partition size > skewedPartitionFactor * median partition size)` 和 `(partition size > skewedPartitionThresholdInBytes)` 均为 `true` 时，可认为分区倾斜。
+当 ``(partition size > skewedPartitionFactor * median partition size)`` 和 ``(partition size > skewedPartitionThresholdInBytes)`` 均为 ``true`` 时，可认为分区倾斜。
 
 ### <a name="dynamically-detect-and-propagate-empty-relations"></a>动态检测并传播空关系
 
-| 属性                                    | 默认 | 说明                                                      |
-|---------------------------------------------|---------|------------------------------------------------------------------|
-| `<prefix>.emptyRelationPropagation.enabled` | 是    | 是启用还是禁用动态空关系传播。 |
+| 属性                                         | 默认 | 说明                                                      |
+|--------------------------------------------------|---------|------------------------------------------------------------------|
+| ``<db_prefix>.emptyRelationPropagation.enabled`` | 是    | 是启用还是禁用动态空关系传播。 |
 
 ## <a name="frequently-asked-questions-faqs"></a>常见问题 (FAQ)
 
@@ -216,15 +216,15 @@ AQE 不会更改初始分区数。 建议为随机分区数设置合理的高值
 
 如果在作业中看到溢出，可以尝试执行以下操作：
 
-* 增加随机分区数配置：`spark.sql.shuffle.partitions`
-* 通过将 `<prefix>.autoOptimizeShuffle.enabled` 设置为 `true` 来启用自动随机优化
+* 增加随机分区数配置：``spark.sql.shuffle.partitions``
+* 通过将 ``<db_prefix>.autoOptimizeShuffle.enabled`` 设置为 ``true`` 来启用自动随机优化
 
 ### <a name="why-didnt-aqe-broadcast-a-small-join-table"></a>为什么 AQE 未广播小型联接表？
 
 如果预期要广播的关系的大小确实低于此阈值，但仍未广播：
 
-* 检查联接类型。 某些联接类型不支持广播，例如，`LEFT OUTER JOIN` 的左关系无法广播。
-* 也可能是因为该关系包含大量空分区，在这种情况下，大部分任务都可使用排序合并联接来快速完成，或者可使用倾斜联接处理进行优化。 如果非空分区的百分比低于 `<prefix>.nonEmptyPartitionRatioForBroadcastJoin`，AQE 会避免将此类排序合并联接更改为广播哈希联接。
+* 检查联接类型。 某些联接类型不支持广播，例如，``LEFT OUTER JOIN`` 的左关系无法广播。
+* 也可能是因为该关系包含大量空分区，在这种情况下，大部分任务都可使用排序合并联接来快速完成，或者可使用倾斜联接处理进行优化。 如果非空分区的百分比低于 ``<prefix>.nonEmptyPartitionRatioForBroadcastJoin``，AQE 会避免将此类排序合并联接更改为广播哈希联接。
 
 ### <a name="should-i-still-use-a-broadcast-join-strategy-hint-with-aqe-enabled"></a>我是否仍应使用已启用 AQE 的广播联接策略提示？
 
@@ -236,16 +236,16 @@ AQE 不会更改初始分区数。 建议为随机分区数设置合理的高值
 
 ### <a name="why-didnt-aqe-adjust-my-join-ordering-automatically"></a>为什么 AQE 没有自动调整我的联接顺序？
 
-从 Databricks Runtime 7.3 开始，动态联接重新排序不再是 AQE 的一部分。
+从 Databricks Runtime 7.3 LTS 开始，动态联接重新排序不再是 AQE 的一部分。
 
 ### <a name="why-didnt-aqe-detect-my-data-skew"></a>为什么 AQE 没有检测到数据歪斜？
 
 要使 AQE 将分区检测为倾斜分区，必须满足两个有关大小的条件：
 
-* 分区大小大于 `<prefix>.skewJoin.skewedPartitionThresholdInBytes`（默认为 256MB）
-* 分区大小大于所有分区大小的中值与倾斜分区系数 `<prefix>.skewJoin.skewedPartitionFactor`（默认值为 5）的乘积
+* 分区大小大于 ``<prefix>.skewJoin.skewedPartitionThresholdInBytes``（默认为 256MB）
+* 分区大小大于所有分区大小的中值与倾斜分区系数 ``<prefix>.skewJoin.skewedPartitionFactor``（默认值为 5）的乘积
 
-此外，对倾斜处理的支持对于某些联接类型是有限的，例如在 `LEFT OUTER JOIN` 中，只能优化左侧的倾斜。
+此外，对倾斜处理的支持对于某些联接类型是有限的，例如在 ``LEFT OUTER JOIN`` 中，只能优化左侧的倾斜。
 
 ## <a name="legacy"></a>旧的
 

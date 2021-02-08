@@ -1,24 +1,28 @@
 ---
 title: 自动转发 Azure 服务总线消息实体
 description: 本文介绍如何将 Azure 服务总线队列或订阅链接到另一个队列或主题。
+ms.service: service-bus-messaging
 ms.topic: article
-origin.date: 06/23/2020
+origin.date: 01/20/2021
 author: rockboyfor
-ms.date: 11/16/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c7ce1bbe43ebdf02054d6a7886c76131b6f4a8d8
-ms.sourcegitcommit: 39288459139a40195d1b4161dfb0bb96f5b71e8e
+ms.openlocfilehash: 860db3471d33ce1460ef77e568cf0dbcb9d18494
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94590882"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059852"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>使用自动转发链接服务总线实体
 
 通过服务总线自动转发功能可将队列或订阅链接到作为相同命名空间组成部分的另一个队列或主题。 启用自动转发时，服务总线会自动删除放置在第一个队列或订阅（源）中的消息，并将其放入第二个队列或主题（目标）中。 仍可将消息直接发送到目标实体。
+
+> [!NOTE]
+> 基本层的服务总线不支持自动转发功能。 标准层和高级层支持该功能。 有关这些层之间的差异，请参阅[服务总线定价](https://www.azure.cn/pricing/details/service-bus/)。
 
 ## <a name="using-autoforwarding"></a>使用自动转发
 

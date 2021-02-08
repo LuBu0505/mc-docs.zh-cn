@@ -5,20 +5,20 @@ ms.service: service-bus
 ms.topic: article
 origin.date: 06/23/2020
 author: rockboyfor
-ms.date: 09/21/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: c4fbb5044c043c4d8cb514d9af367f50d37ec853
-ms.sourcegitcommit: f3fee8e6a52e3d8a5bd3cf240410ddc8c09abac9
+ms.openlocfilehash: 6ccea1d6c4e2bb1555e1516a8c5ffd9ec680ec97
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2020
-ms.locfileid: "91146780"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063584"
 ---
 # <a name="azure-relay-faqs"></a>Azure 中继常见问题解答
 
-本文解答一些关于 [Azure 中继](https://www.azure.cn/home/features/service-bus/)的常见问题 (FAQ)。 若要了解一般的 Azure 定价和支持信息，请参阅 [Azure 支持常见问题解答](https://www.azure.cn/support/faq/)。
+本文解答一些关于 [Azure 中继](https://azure.microsoft.com/services/service-bus/)的常见问题 (FAQ)。 若要了解一般的 Azure 定价和支持信息，请参阅 [Azure 支持常见问题解答](https://www.azure.cn/support/faq/)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -55,8 +55,6 @@ ms.locfileid: "91146780"
     * 在该月通过连接 B 发送了 6 GB 的数据。
     * 总费用是 10.50 美元。 其中 5 美元是针对连接 A 的收费，5 美元是针对连接 B 的收费，还有 0.50 美元是针对连接 B 额外的 1 GB 数据的收费。
 
-请注意，示例中所使用的价格仅适用于混合连接预览期。 在公开发布混合连接后，价格可能会变化。
-
 ### <a name="how-are-hours-calculated-for-relay"></a>如何计算中继小时数？
 
 WCF 中继仅适用于标准层命名空间。 其他中继的定价和[连接配额](../service-bus-messaging/service-bus-quotas.md)保持不变。 这意味着中继将继续根据消息数（而不是操作数）和中继小时数计费。 有关详细信息，请参阅定价详细信息页上的[混合连接和 WCF 中继](https://www.azure.cn/pricing/details/service-bus/)表。
@@ -74,9 +72,9 @@ WCF 中继仅适用于标准层命名空间。 其他中继的定价和[连接�
 使用 **netTCPRelay** WCF 绑定打开的中继不将消息视为单条消息，而视为流经系统的数据流。 使用此绑定时，只有发送方和侦听器可以识别发送和接收的单条分帧消息。 对于使用 **netTCPRelay** 绑定的中继，所有数据都会被视为用于计算可计费消息的数据流。 在这种情况下，服务总线每隔 5 分钟计算一次通过单个中继发送或接收的数据总量。 然后会将该数据总量除以 64 KB，得出该中继在该时段的计费消息数。
 
 ## <a name="quotas"></a>配额
-| 配额名称 | 作用域 |  注释 | Value |
+| 配额名称 | 作用域 |  说明 | Value |
 | --- | --- | --- | --- |
-| 中继上的并发侦听器数 |实体 |系统会拒绝后续的附加连接请求，且调用代码会收到异常。 |25 |
+| 中继上的并发侦听器数 |实体（混合连接或 WCF 中继） |系统会拒绝后续的附加连接请求，且调用代码会收到异常。 |25 |
 | 服务命名空间中所有中继终结点的并发中继连接数 |命名空间 |- |5,000 |
 | 每个服务命名空间的中继终结点数 |命名空间 |- |10,000 |
 | [NetOnewayRelayBinding](https://docs.azure.cn/dotnet/api/microsoft.servicebus.netonewayrelaybinding) 和 [NetEventRelayBinding](https://docs.azure.cn/dotnet/api/microsoft.servicebus.neteventrelaybinding) 中继的消息大小 |命名空间 |会拒绝超过这些配额的传入消息，且调用代码会收到异常。 |64 KB |
@@ -136,4 +134,4 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 [Relay exceptions]: relay-exceptions.md
 [Shared Access Signatures]: ../service-bus-messaging/service-bus-sas.md
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

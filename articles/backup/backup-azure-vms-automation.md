@@ -4,14 +4,14 @@ description: 介绍如何使用 Azure 备份与 PowerShell 来备份和恢复 Az
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 09/11/2019
-ms.date: 11/17/2020
+ms.date: 01/22/2021
 ms.author: v-johya
-ms.openlocfilehash: 651d7012db76d6775541b286a3b3924bcc123929
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: fdc777988d7c7d7c24609fb8fe9d2c422a2113ed
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977201"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751370"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>使用 PowerShell 备份和恢复 Azure VM
 
@@ -339,6 +339,10 @@ $bkpPol.AzureBackupRGNameSuffix="ForVMs"
 Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
 
+### <a name="exclude-disks-for-a-protected-vm"></a>排除受保护的 VM 的磁盘
+
+Azure VM 备份提供了一项有选择地排除或包括磁盘的功能，这在[这些方案](selective-disk-backup-restore.md#scenarios)中很有用。 如果虚拟机已经受 Azure VM 备份保护，并且所有磁盘都已备份，则可以修改保护以有选择地包括或排除磁盘，如[此处](selective-disk-backup-restore.md#modify-protection-for-already-backed-up-vms-with-powershell)所述。
+
 ### <a name="trigger-a-backup"></a>触发备份
 
 请使用 [Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem) 来触发备份作业。 如果它是初始备份，则是一个完整备份。 后续备份将创建增量副本。 以下示例将 VM 备份保留 60 天。
@@ -511,6 +515,13 @@ Wait-AzRecoveryServicesBackupJob -Job $restorejob -Timeout 43200
 $restorejob = Get-AzRecoveryServicesBackupJob -Job $restorejob -VaultId $targetVault.ID
 $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $targetVault.ID
 ```
+
+#### <a name="restore-selective-disks"></a>还原选择性磁盘
+
+用户可以有选择地还原少数磁盘，而不是整个备份集。 提供所需的磁盘 LUN 作为参数，以便仅还原这些磁盘，而不是整个磁盘集，如[此处](selective-disk-backup-restore.md#restore-selective-disks-with-powershell)所述。
+
+> [!IMPORTANT]
+> 若要有选择地还原磁盘，必须有选择地备份磁盘。 [此处](selective-disk-backup-restore.md#selective-disk-restore)提供了详细信息。
 
 还原磁盘以后，转到下一部分来了解如何创建 VM。
 

@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 08/10/2020
 title: 2019 年 7 月 - Azure Databricks
 description: 新 Azure Databricks 功能和改进的 2019 年 7 月发行说明。
-ms.openlocfilehash: a217b428e96e2593b36065a789d71397d56b09bc
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: ddf4a14d5f838ea0156bf3265b6c559464ff83a9
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329227"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058738"
 ---
 # <a name="july-2019"></a>2019 年 7 月
 
@@ -116,14 +116,14 @@ Databricks Runtime 5.5 ML 是基于 [Databricks Runtime 5.5 LTS](../../runtime/5
 
 此版本包含以下新功能和改进：
 
-* 添加了 [MLflow](../../../applications/mlflow/index.md#mlflow-guide) 1.0 Python 包
+* 添加了 [MLflow](../../../applications/mlflow/index.md) 1.0 Python 包
 * 升级了机器学习库
   * Tensorflow 已从 1.12.0 升级到 1.13.1
   * PyTorch 已从 0.4.1 升级到 1.1.0
   * scikit-learn 已从 0.19.1 升级到 0.20.3
 * [HorovodRunner](../../../applications/machine-learning/train-model/distributed-training/horovod-runner.md#horovodrunner) 的单节点操作
 
-有关详细信息，请参阅 [Databricks Runtime 5.5 LTS ML](../../runtime/5.5ml.md)。
+有关详细信息，请参阅[用于机器学习的 Databricks Runtime 5.5 LTS](../../runtime/5.5ml.md)。
 
 ## <a name="databricks-runtime-55"></a>Databricks Runtime 5.5
 

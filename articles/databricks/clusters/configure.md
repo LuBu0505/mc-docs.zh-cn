@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 09/24/2020
 title: 配置群集 - Azure Databricks
 description: 了解如何配置 Azure Databricks 群集，包括配置群集模式、运行时、实例类型、大小、池、自动缩放首选项、终止计划、Apache Spark 选项、自定义标记、日志传送等。
-ms.openlocfilehash: 446d69a3cd21cdb248ae4e0f7620c03ec5a2116d
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: 849a54bf957c13f449438602ac58952c5d299c65
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121811"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059974"
 ---
 # <a name="configure-clusters"></a><a id="cluster-configurations"> </a><a id="configure-clusters"> </a>配置群集
 
@@ -37,8 +37,8 @@ ms.locfileid: "92121811"
 
 如果你有以下权限，则可执行相应的操作：
 
-* 如果有 [群集创建权限](../administration-guide/access-control/cluster-acl.md#cluster-create-permission)，则可选择 **自由形式** 的策略，创建可以充分配置的群集。 **自由形式** 的策略不限制任何群集属性或属性值。
-* 如果有群集创建权限和群集策略访问权限，则可选择 **自由形式** 的策略和你有权访问的策略。
+* 如果有[群集创建权限](../administration-guide/access-control/cluster-acl.md#cluster-create-permission)，则可选择“无限制”策略，并创建可以充分配置的群集。 “无限制”策略不限制任何群集属性或属性值。
+* 如果有群集创建权限和群集策略访问权限，则可选择“无限制”策略和你有权访问的策略。
 * 如果只有群集策略访问权限，则可选择你有权访问的策略。
 
 ## <a name="cluster-mode"></a>群集模式
@@ -246,6 +246,7 @@ Azure Databricks 提供两种类型的群集节点自动缩放：标准和优化
 * 按当前节点数的某个百分比进行纵向缩减。
 * 在作业群集上，如果在过去的 40 秒内群集未得到充分利用，则进行纵向缩减。
 * 在全用途群集上，如果在过去的 150 秒内群集未得到充分利用，则进行纵向缩减。
+* ``spark.databricks.aggressiveWindowDownS`` Spark 配置属性以秒为单位指定群集做出纵向缩减决策的频率。 增大此值会导致群集更缓慢地纵向缩减。 最大值为 600。
 
 #### <a name="standard-autoscaling"></a>标准自动缩放
 
@@ -326,9 +327,9 @@ dbutils.fs.put("dbfs:/databricks/init/set_spark_params.sh","""
 
 ## <a name="enable-local-disk-encryption"></a>启用本地磁盘加密
 
-> [!NOTE]
+> [!IMPORTANT]
 >
-> 此功能并非适用于所有 Azure Databricks 订阅。 请联系 Microsoft 或 Databricks 客户代表，以申请访问权限。
+> 此功能目前以[公共预览版](../release-notes/release-types.md)提供。
 
 用于运行群集的某些实例类型可能有本地附加的磁盘。 Azure Databricks 可以在这些本地附加的磁盘上存储 shuffle 数据或临时数据。 为了确保针对所有存储类型加密所有静态数据（包括在群集的本地磁盘上暂时存储的 shuffle 数据），可以启用本地磁盘加密。
 
@@ -353,7 +354,7 @@ dbutils.fs.put("dbfs:/databricks/init/set_spark_params.sh","""
 ```json
 {
   "cluster_name": "my-cluster",
-  "spark_version": "6.6.x-scala2.11",
+  "spark_version": "7.3.x-scala2.12",
   "node_type_id": "Standard_D3_v2",
   "enable_local_disk_encryption": true,
   "spark_conf": {

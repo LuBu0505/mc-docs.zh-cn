@@ -4,15 +4,15 @@ description: Azure 安全基准 V2 事件响应
 author: Johnnytechn
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 01/19/2021
 ms.author: v-johya
 ms.custom: security-benchmark
-ms.openlocfilehash: 7f69a01cc6d5d721197f0b8e12ff0aa93d116a49
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 9d6378c4c0ffba12d1b4bc27474c51a3ea2f074a
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747095"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751374"
 ---
 # <a name="security-control-v2-incident-response"></a>安全控制 V2：事件响应
 
@@ -20,7 +20,7 @@ ms.locfileid: "96747095"
 
 ## <a name="ir-1-preparation---update-incident-response-process-for-azure"></a>IR-1：准备 - 更新 Azure 的事件响应流程
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | IR-1 | 19 | IR-4、IR-8 |
 
@@ -42,7 +42,7 @@ ms.locfileid: "96747095"
 
 ## <a name="ir-2-preparation---setup-incident-notification"></a>IR-2：准备 - 设置事件通知
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | IR-2 | 19.5 | IR-4、IR-5、IR-6、IR-8 |
 
@@ -60,7 +60,7 @@ ms.locfileid: "96747095"
 
 ## <a name="ir-3-detection-and-analysis---create-incidents-based-on-high-quality-alerts"></a>IR-3：检测和分析 - 基于高质量警报创建事件
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | IR-3 | 19.6 | IR-4、IR-5 |
 
@@ -86,7 +86,7 @@ Azure 安全中心可跨许多 Azure 资产提供高质量的警报。
 
 ## <a name="ir-4-detection-and-analysis---investigate-an-incident"></a>IR-4：检测和分析 - 调查事件
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | IR-4 | 19 | IR-4 |
 
@@ -120,7 +120,7 @@ Azure 安全中心可跨许多 Azure 资产提供高质量的警报。
 
 ## <a name="ir-5-detection-and-analysis---prioritize-incidents"></a>IR-5：检测和分析 - 确定事件的优先级
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | IR-5 | 19.8 | CA-2、IR-4 |
 
@@ -146,7 +146,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 ## <a name="ir-6-containment-eradication-and-recovery---automate-the-incident-handling"></a>IR-6：遏制、根除和恢复 - 自动执行事件处理
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | IR-6 | 19 | IR-4、IR-5、IR-6 |
 

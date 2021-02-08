@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/06/2021
+ms.date: 01/20/2021
 ms.author: v-johya
 origin.date: 03/10/2020
-ms.openlocfilehash: b000bc36881371a3748749f75360549f7985c565
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 96b403f5ccc7a111955dd544bf7a21beb9bf1eb5
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98229843"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751305"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure 安全中心的安全评分
 
@@ -73,7 +73,7 @@ Azure 门户页面显示的安全功能分数为百分比值，但原值也一�
 
 ### <a name="get-your-secure-score-from-the-rest-api"></a>从 REST API 获取安全功能分数
 
-可以通过安全功能分数 API（当前为预览版）访问分数。 通过 API 方法，可灵活地查询数据，久而久之构建自己的安全功能分数报告机制。 例如，你可以使用[安全功能分数 API](https://docs.microsoft.com/rest/api/securitycenter/securescores) 来获取特定订阅的分数。 此外，你可以使用 [ API](https://docs.microsoft.com/rest/api/securitycenter/securescorecontrols) 列出订阅的安全控件和当前分数。
+可以通过安全功能分数 API 访问分数。 通过 API 方法，可灵活地查询数据，久而久之构建自己的安全功能分数报告机制。 例如，你可以使用[安全功能分数 API](https://docs.microsoft.com/rest/api/securitycenter/securescores) 来获取特定订阅的分数。 此外，你可以使用 [ API](https://docs.microsoft.com/rest/api/securitycenter/securescorecontrols) 列出订阅的安全控件和当前分数。
 
 ![正在通过 API 检索单个安全功能分数](./media/secure-score-security-controls/single-secure-score-via-api.png)
 
@@ -179,7 +179,7 @@ Azure 门户页面显示的安全功能分数为百分比值，但原值也一�
 
 下表列出了 Azure 安全中心的安全控制。 对于每个控制，可以看到为所有资源修正该控制中列出的所有建议后，安全评分可以增加的最高分数。 
 
-安全中心提供的安全建议是针对每个组织环境中的可用资源量身定制的。 可以通过[禁用策略](tutorial-security-policy.md#disable-security-policies-and-disable-recommendations)并从建议中排除特定资源来进一步自定义建议。 
+安全中心提供的安全建议是针对每个组织环境中的可用资源量身定制的。 可以通过[禁用策略](tutorial-security-policy.md#disable-security-policies-and-disable-recommendations)来进一步自定义建议。 
  
 建议每个组织仔细检查其分配的 Azure Policy 计划。 
 
@@ -270,7 +270,7 @@ Azure 门户页面显示的安全功能分数为百分比值，但原值也一�
 ## <a name="secure-score-faq"></a>安全评分 FAQ
 
 ### <a name="if-i-address-only-three-out-of-four-recommendations-in-a-security-control-will-my-secure-score-change"></a>如果仅处理某个安全控制四分之三的建议，安全评分是否会变化？
-不是。 为单个资源修正所有建议后，安全评分才会变化。 若要获得某个控制的最高分，必须为所有资源修正所有建议。
+否。 为单个资源修正所有建议后，安全评分才会变化。 若要获得某个控制的最高分，必须为所有资源修正所有建议。
 
 ### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>如果某个建议对我不适用，我在策略中禁用它，我能否达到安全控制的要求，我的安全评分是否会更新？
 是的。 如果建议不适用于你的环境，建议禁用它们。 有关如何禁用特定建议的说明，请参阅[禁用安全策略](./tutorial-security-policy.md#disable-security-policies-and-disable-recommendations)。

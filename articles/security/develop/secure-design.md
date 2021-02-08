@@ -4,7 +4,7 @@ description: 本文讨论了在 Web 应用程序项目的要求和设计阶段�
 author: Johnnytechn
 manager: barbkess
 ms.author: v-johya
-ms.date: 12/03/2020
+ms.date: 01/19/2021
 ms.topic: article
 ms.service: security
 ms.subservice: security-develop
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 06/11/2019
-ms.openlocfilehash: 129acafd7f66585150eb27d3020b350bd5c659a5
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: af9d8055c42237436613325e652da96da99a7efa
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97104307"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751352"
 ---
 # <a name="design-secure-applications-on-azure"></a>在 Azure 上设计安全的应用程序
 本文介绍了在为云设计应用程序时需要考虑的安全活动和控制措施。 介绍了在 Microsoft [安全开发生命周期 (SDL)](https://docs.microsoft.com/previous-versions/windows/desktop/cc307891(v=msdn.10)) 的要求和设计阶段需要考虑的培训资源以及安全问题和概念。 目标是帮助你定义可用于设计更安全应用程序的活动和 Azure 服务。
@@ -39,7 +39,7 @@ ms.locfileid: "97104307"
 
   - [Azure 开发人员入门指南](../../guides/developer/azure-developer-guide.md)为希望使用 Azure 平台进行开发的开发人员提供了基本信息。
 
-  - [SDK 和工具](../../index.md?pivot=sdkstools)介绍了 Azure 上提供的工具。
+  - [SDK 和工具](https://docs.azure.cn/#pivot=sdkstools)介绍了 Azure 上提供的工具。
 
 
   - [在推送到生产环境前要考虑的前 5 个安全事项](https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider/index?WT.mc_id=Learn-Blog-tajanca)介绍了如何在 Azure 上帮助保护你的 Web 应用程序，并保护你的应用免受最常见和最危险的 Web 应用程序攻击。
@@ -125,12 +125,12 @@ ms.locfileid: "97104307"
 请确保使用框架及其提供的所有安全功能的最新版本。 Microsoft 为使用任何平台或语言的所有开发人员提供了一套全面的、用于交付云应用程序的[开发工具](https://azure.microsoft.com/product-categories/developer-tools/)。 你可以从各种 [SDK](https://www.azure.cn/downloads/) 中进行选择，以便使用所选语言进行编码。
 你可以利用功能齐全的集成开发环境 (IDE) 和具有高级调试功能和内置 Azure 支持的编辑器。
 
-Microsoft 提供了各种[语言、框架和工具](../../index.md?panel=sdkstools-all&pivot=sdkstools)，你可以使用它们在 Azure 上开发应用程序。 一个示例是[面向 .NET 和 .NET Core 开发人员的 Azure](https://docs.azure.cn/dotnet/)。 对于我们提供的每种语言和框架，你可以通过快速入门、教程和 API 参考来快速入门。
+Microsoft 提供了各种[语言、框架和工具](/)，你可以使用它们在 Azure 上开发应用程序。 一个示例是[面向 .NET 和 .NET Core 开发人员的 Azure](https://docs.azure.cn/dotnet/)。 对于我们提供的每种语言和框架，你可以通过快速入门、教程和 API 参考来快速入门。
 
 Azure 提供了各种可用来托管网站和 Web 应用程序的服务。 这些服务允许你使用自己喜欢的语言进行开发，无论该语言是 .NET、NET Core、Java、Ruby、Node.js、PHP 还是 Python。
 [Azure 应用服务 Web 应用](../../app-service/overview.md)（Web 应用）是其中的服务之一。
 
-Web 应用将 Microsoft Azure 的功能添加到了应用程序中。 它包括安全性、负载均衡、自动缩放和自动化管理。 <!--DevOps not available -->
+Web 应用将 Azure 的功能添加到了应用程序中。 它包括安全性、负载均衡、自动缩放和自动化管理。 <!--DevOps not available -->
 
 Azure 提供了可用来托管网站和 Web 应用程序的其他服务。 大多数情况下，Web 应用是最佳选择。 对于微服务体系结构，请考虑使用 [Azure Service Fabric](https://docs.azure.cn/service-fabric/)。
 如果需要更好地控制运行代码的 VM，请考虑使用 [Azure 虚拟机](/virtual-machines/)。

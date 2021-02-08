@@ -5,16 +5,16 @@ author: Johnnytechn
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 01/19/2021
 ms.author: v-johya
 ms.custom: security-benchmark
 origin.date: 12/16/2019
-ms.openlocfilehash: 69645036297cf8d19c9f139ad1a278855a14a06d
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: c63df05f17e20c9a2ff1e10566e2b4a56ce31e0a
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747155"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751056"
 ---
 # <a name="overview-of-the-azure-security-benchmark-v2"></a>Azure 安全基准 (V2) 概述
 
@@ -22,11 +22,11 @@ Azure 安全基准 (ASB) 提供了说明性的最佳做法和建议，以帮助�
 
 此基准属于一组全面的安全指南，这组指南还包括：
 
-- **云采用框架** -安全方面的指导，包括[策略](https://docs.microsoft.com/azure/cloud-adoption-framework/strategy/define-security-strategy)、[角色和责任](https://docs.microsoft.com/azure/cloud-adoption-framework/organize/cloud-security)、[Azure 十大安全最佳做法](https://docs.microsoft.com/azure/cloud-adoption-framework/get-started/security#step-1-establish-essential-security-practices)和[参考实现](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/)。
-- **Azure 架构良好的框架** -有关在 Azure 上[保护工作负载](https://docs.microsoft.com/assessments/?mode=pre-assessment&session=local)的指导。
-- **Microsoft 安全最佳做法** - 通过 Azure 上的示例提供的[建议](https://docs.microsoft.com/security/compass/microsoft-security-compass-introduction)。
+- **云采用框架** -安全方面的指导，包括 [策略](https://docs.microsoft.com/azure/cloud-adoption-framework/strategy/define-security-strategy)、[角色和责任](https://docs.microsoft.com/azure/cloud-adoption-framework/organize/cloud-security)、[Azure 十大安全最佳做法](https://docs.microsoft.com/azure/cloud-adoption-framework/get-started/security#step-1-establish-essential-security-practices)和 [参考实现](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/)。
+- **Azure 架构良好的框架** -有关在 Azure 上 [保护工作负载](https://docs.microsoft.com/assessments/?mode=pre-assessment&session=local)的指导。
+- **Microsoft 安全最佳做法** - 通过 Azure 上的示例提供的 [建议](https://docs.microsoft.com/security/compass/microsoft-security-compass-introduction)。
 
- Azure 安全基准侧重于以云为中心的控制领域。 这些控制与众所周知的安全基准（例如 Internet 安全中心 (CIS) Controls 版本 7.1 和美国国家标准与技术研究院 (NIST) SP800-53 所述基准）一致。
+ Azure 安全基准侧重于以云为中心的控制领域。 这些控制与众所周知的安全基准（例如 Internet 安全中心 (CIS) Controls 版本 7.1 和美国国家标准与技术研究院 (NIST) SP 800-53 所述基准）一致。
 Azure 安全基准包含以下控制：
 
 | ASB 控制领域 | 说明 
@@ -49,10 +49,10 @@ Azure 安全基准包含以下控制：
 
 - **Azure ID**：与建议对应的 Azure 安全基准检验 ID。
 - **CIS Controls v7.1 ID**：与此建议对应的 CIS Controls v7.1 控制措施。
-- **NIST SP800-53 r4 ID**：与此建议对应的 NIST SP800-53 r4（中等）控制措施。
+- **NIST SP 800-53 r4 ID**：与此建议对应的 NIST SP 800-53 r4（中等）控制措施。
 - **详细信息**：此建议的原理阐述，以及关于如何实现建议的指南的链接。 如果 Azure 安全中心支持此建议，这些信息也会列出。
 - **责任**：是由客户还是服务提供商负责（或二者共同负责）实现此建议。 安全责任将在公有云中共同分担。 某些安全控制仅适用于云服务提供商，因此该提供商负责处理相关事项。 这些是通常的看法 - 某些单独服务的责任不同于 Azure 安全基准中列出的责任。 单个服务的基线建议中介绍了这些差异。
-- **客户安全利益干系人**：可就相应控制措施进行追究、问责、或咨询的客户组织的[安全功能](https://docs.microsoft.com/azure/cloud-adoption-framework/organize/cloud-security#security-functions)。 它在各组织中可能有所不同，具体取决于公司的安全组织结构，以及你设置的与 Azure 安全性相关的角色和职责。
+- **客户安全利益干系人**：可就相应控制措施进行追究、问责、或咨询的客户组织的 [安全功能](https://docs.microsoft.com/azure/cloud-adoption-framework/organize/cloud-security#security-functions)。 它在各组织中可能有所不同，具体取决于公司的安全组织结构，以及你设置的与 Azure 安全性相关的角色和职责。
 
 > [!NOTE]
 > ASB 和行业基准（如 NIST 和 CI）之间的控制映射仅指示特定的 Azure 功能可用于完全或部分解决 NIST 或 CIS 中定义的控制要求。 应注意，此类实现不一定意味着完全符合 CIS 或 NIST 中的相应控制措施。

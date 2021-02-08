@@ -4,18 +4,18 @@ description: 可以为 SNAT 配置 IP 地址范围。
 services: firewall
 ms.service: firewall
 ms.topic: how-to
-origin.date: 11/16/2020
+origin.date: 01/11/2021
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 08/03/2020
 ms.author: v-yeche
-ms.openlocfilehash: ca3a345a4a0735ecc247dfe583981aa9870dd69d
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: b8126c2e93d7a6943208c5daf8785af99c7d75fc
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021325"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059210"
 ---
 <!--Verified successfully-->
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure 防火墙 SNAT 专用 IP 地址范围
@@ -31,6 +31,9 @@ ms.locfileid: "98021325"
 - 若要将 Azure 防火墙配置为无论目标 IP 地址为何都不会执行 SNAT，请使用“0.0.0.0/0”作为专用 IP 地址范围 。 通过此配置，Azure 防火墙永远不能将流量直接路由到 Internet。 
 
 - 若要将防火墙配置为无论目标地址为何都始终执行 SNAT，请使用“255.255.255.255/32”作为专用 IP 地址范围 。
+
+> [!IMPORTANT]
+> 指定的专用地址范围仅适用于网络规则。 目前，应用程序规则始终为 SNAT。
 
 > [!IMPORTANT]
 > 若要指定自己的专用 IP 地址范围，并保留默认的 IANA RFC 1918 地址范围，请确保自定义列表仍包含 IANA RFC 1918 范围。 

@@ -3,14 +3,14 @@ title: 自动将函数应用资源部署到 Azure
 description: 了解如何生成用于部署函数应用的 Azure 资源管理器模板。
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 01/27/2021
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a3ab76eea093591ea2eddc79ec9b2587860f96b2
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: ad7e4e73b722ca79a90aba5359284097b055d9f0
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195237"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060096"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 
@@ -214,7 +214,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 #### <a name="windows"></a>Windows
 
-在 Windows 上，消耗计划还需要站点配置中的两个附加设置：`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE`。 这些属性用于配置存储函数应用代码和配置的存储帐户和文件路径。
+在 Windows 上，消耗计划还需要站点配置中的一个附加设置：[`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring)。 此属性配置用于存储函数应用代码和配置的存储帐户。
 
 ```json
 {
@@ -238,10 +238,6 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
                     "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';EndpointSuffix=core.chinacloudapi.cn;AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
-                    "name": "WEBSITE_CONTENTSHARE",
-                    "value": "[toLower(variables('functionAppName'))]"
-                },
-                {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
                     "value": "node"
                 },
@@ -259,9 +255,10 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 }
 ```
 
+> [!IMPORTANT]
+> 请勿设置 [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) 设置，因为它是在第一次创建站点时为你生成的。  
 
 <a name="premium"></a>
-
 ## <a name="deploy-on-premium-plan"></a>在高级计划上部署
 
 高级计划提供与消耗计划相同的缩放，但包括专用资源和附加功能。 若要了解详细信息，请参阅 [Azure Functions 高级计划](./functions-premium-plan.md)。
@@ -293,7 +290,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 ### <a name="create-a-function-app"></a>创建函数应用
 
-高级计划的函数应用必须将 `serverFarmId` 属性设置为之前创建的计划的资源 ID。 此外，高级计划还需要站点配置中的两个附加设置：`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE`。 这些属性用于配置存储函数应用代码和配置的存储帐户和文件路径。
+高级计划的函数应用必须将 `serverFarmId` 属性设置为之前创建的计划的资源 ID。 此外，高级计划还需要站点配置中的一个附加设置：[`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring)。 此属性配置用于存储函数应用代码和配置的存储帐户。
 
 ```json
 {
@@ -319,10 +316,6 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
                     "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
-                    "name": "WEBSITE_CONTENTSHARE",
-                    "value": "[toLower(variables('functionAppName'))]"
-                },
-                {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
                     "value": "node"
                 },
@@ -339,6 +332,8 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
     }
 }
 ```
+> [!IMPORTANT]
+> 请勿设置 [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) 设置，因为它是在第一次创建站点时为你生成的。  
 
 <a name="app-service-plan"></a>
 
@@ -532,10 +527,9 @@ New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile
 
 * [Azure Functions 开发人员参考](functions-reference.md)
 * [如何配置 Azure 函数应用设置](functions-how-to-use-azure-function-app-settings.md)
-* [创建第一个 Azure 函数](functions-create-first-azure-function.md)
+* [创建第一个 Azure 函数](./functions-get-started.md)
 
 <!-- LINKS -->
 
 [基于消耗计划的函数应用]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dynamic/azuredeploy.json
 [基于 Azure 应用服务计划的函数应用]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dedicated/azuredeploy.json
-

@@ -6,14 +6,14 @@ author: rambk
 ms.service: virtual-network
 ms.topic: article
 origin.date: 03/26/2020
-ms.date: 04/20/2020
+ms.date: 02/01/2021
 ms.author: v-tawe
-ms.openlocfilehash: 076ed6e75dca49e696c8c30badd5878b84725de4
-ms.sourcegitcommit: bfbd6694da33f703481386f2a3f16850c4e94bfa
+ms.openlocfilehash: bebbc351e64612db96034f7dd83374381ce8da3a
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83417711"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059583"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>使用 Azure 网络服务远程进行工作
 
@@ -48,6 +48,7 @@ Azure VPN 网关支持点到站点 (P2S) 和站点到站点 (S2S) VPN 连接。 
 
 如果使用安全套接字隧道协议 (SSTP)，并发连接数将限制为 128。 若要获得更多的连接，我们建议转换到 OpenVPN 或 IKEv2。 有关详细信息，请参阅[从 SSTP 转换到 OpenVPN 协议或 IKEv2](../vpn-gateway/ikev2-openvpn-from-sstp.md)。
 
+若要访问部署在 Azure 中的资源，远程开发人员可以使用 Azure Bastion 解决方案而不是 VPN 连接来获得安全的外壳访问（RDP 或 SSH），而无需访问 VM 上的公共 IP。 有关详细信息，请参阅[使用 Azure Bastion 远程工作](../bastion/work-remotely-support.md)。
 
 若要聚合大规模 VPN 连接，以支持不同本地全局位置和不同区域性中心辐射型虚拟网络中的资源之间的任意点到任意点连接，并优化多个家庭宽带网络的利用率，可以使用 Azure 虚拟 WAN。 有关详细信息，请参阅[正在奋力满足在家工作的需求？Azure 虚拟 WAN 可以提供帮助](../virtual-wan/work-remotely-support.md)。
 
@@ -84,15 +85,17 @@ Azure VPN 网关支持点到站点 (P2S) 和站点到站点 (S2S) VPN 连接。 
 | [如何使用户能够远程工作](../vpn-gateway/work-remotely-support.md) | 查看可用选项，以便为用户设置远程访问权限，或使用组织的额外容量对其现有解决方案进行补充。|
 | [正在奋力满足在家工作的需求？Azure 虚拟 WAN 可以提供帮助](../virtual-wan/work-remotely-support.md) | 使用 Azure 虚拟 WAN 满足组织的远程连接需求。|
 | [应用程序网关高流量支持](../application-gateway/high-traffic-support.md) | 使用启用了 Web 应用程序防火墙 (WAF) 的应用程序网关，以一种可缩放且安全的方式管理到 Web 应用程序的流量。 |
-| [从 SSTP 转换到 OpenVPN 协议或 IKEv2](https://docs.azure.cn/vpn-gateway/ikev2-openvpn-from-sstp) | 通过转换为 OpenVPN 协议或 IKEv2，克服 SSTP 的 128 个并发连接的限制。|
+| [从 SSTP 转换到 OpenVPN 协议或 IKEv2](../vpn-gateway/ikev2-openvpn-from-sstp.md) | 通过转换为 OpenVPN 协议或 IKEv2，克服 SSTP 的 128 个并发连接的限制。|
+| [使用 Azure Bastion 进行远程工作](../bastion/work-remotely-support.md) | 直接在 Azure 门户中为 Azure 虚拟网络中的虚拟机提供安全无缝的 RDP/SSH 连接，而无需使用公共 IP 地址。 |
 | [使用 Azure ExpressRoute 创建混合连接以支持远程用户](../expressroute/work-remotely-support.md) | 使用 ExpressRoute 进行混合连接，使组织中的用户能够远程工作。|
 | [Azure 防火墙远程工作支持](../firewall/remote-work-support.md)|使用 Azure 防火墙保护 Azure 虚拟网络资源。 |
 
-<!--Link References-->
-[VNet-peer]: https://docs.azure.cn/virtual-network/virtual-network-peering-overview
-[S2S]: https://docs.azure.cn/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal
-[ExR]: https://docs.azure.cn/expressroute/expressroute-introduction
-[ExR-eco]: https://docs.azure.cn/expressroute/expressroute-locations
+<!--[Network Virtual Appliance (NVA) considerations for remote work](../vpn-gateway/nva-work-remotely-support.md)-->
 
-<!-- [ExR-D]: https://docs.azure.cn/expressroute/expressroute-erdirect-about
-[Az-OCI]: https://docs.azure.cn/virtual-machines/workloads/oracle/configure-azure-oci-networking -->
+<!--Link References-->
+[VNet-peer]: ../virtual-network/virtual-network-peering-overview.md
+[S2S]: ../vpn-gateway/tutorial-site-to-site-portal.md
+[ExR]: ../expressroute/expressroute-introduction.md
+[ExR-eco]: ../expressroute/expressroute-locations.md
+[ExR-D]: ../expressroute/expressroute-erdirect-about.md
+[Az-OCI]: ../virtual-machines/workloads/oracle/configure-azure-oci-networking.md

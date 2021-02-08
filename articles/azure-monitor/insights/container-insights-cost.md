@@ -2,14 +2,14 @@
 title: 用于容器的 Azure Monitor 的监视成本 | Azure Docs
 description: 本文介绍用于容器的 Azure Monitor 收集的指标和清单数据的监视成本，以帮助客户管理其使用情况和相关成本。
 ms.topic: conceptual
-ms.date: 12/10/2020
+ms.date: 01/26/2021
 ms.author: v-johya
-ms.openlocfilehash: e26f21c4e6943c05d4e8f719f4c19476dd1fb064
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: 75ea3c6940f39420dc5d7bce9df5c5aa7443cc38
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97105430"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059687"
 ---
 # <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>了解用于容器的 Azure Monitor 的监视成本
 
@@ -128,19 +128,21 @@ Azure Monitor 定价模型主要基于 Log Analytics 工作区中每天引入的
 
 ## <a name="controlling-ingestion-to-reduce-cost"></a>控制引入以降低成本
 
-假设组织的不同业务部门共享 Kubernetes 基础结构和 Log Analytics 工作区。 各业务部门由 Kubernetes 命名空间分隔。 你可以使用最近发布的工作簿直观显示每个工作区中引入的数据量。 “容器见解使用情况”工作簿（位于[工作簿库](../platform/workbooks-overview.md#getting-started)中）可帮助你直观显示数据源，而不必根据我们在文档中分享的内容构建自己的查询库。 此工作簿包含一些图表，通过这些图表，你可以从以下角度查看计费数据：
+假设组织的不同业务部门共享 Kubernetes 基础结构和 Log Analytics 工作区。 各业务部门由 Kubernetes 命名空间分隔。 可以使用“数据使用情况” runbook（可从“查看工作簿”下拉菜单中获得）来可视化每个工作区中引入的数据量。
+
+[![“查看工作簿”下拉列表](./media/container-insights-cost/workbooks-dropdown.png)](./media/container-insights-cost/workbooks-dropdown.png#lightbox)
+
+
+此工作簿可帮助你直观显示数据源，而不必根据我们在文档中分享的内容构建自己的查询库。 此工作簿包含一些图表，通过这些图表，你可以从以下角度查看计费数据：
 
 - 按“解决方案”查看引入的总计费数据
-
 - 按“容器日志(应用程序日志)”查看引入的计费数据
-
 - 按“Kubernetes 命名空间”查看引入的计费容器日志数据
-
 - 按“群集名称”查看引入并分隔的计费容器日志数据
-
 - 按“日志源条目”查看引入的计费容器日志数据
-
 - 按“诊断主节点日志”查看引入的计费诊断数据
+
+[![数据使用情况工作簿](./media/container-insights-cost/data-usage-workbook.png)](./media/container-insights-cost/data-usage-workbook.png#lightbox)
 
 若要了解如何管理工作簿的权限，请查看[访问控制](../platform/workbooks-access-control.md)。
 

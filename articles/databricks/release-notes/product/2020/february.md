@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 03/26/2020
 title: 2020 年 2 月 - Azure Databricks
 description: Azure Databricks 新功能和改进的 2020 年 2 月发行说明。
-ms.openlocfilehash: 2a6f17083f12731e4a1e9f10c682e9acffaf887a
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: a37b8c6c187ae89d91137cabfa88d9e53eb26dcd
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329090"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058728"
 ---
 # <a name="february-2020"></a>2020 年 2 月
 
@@ -45,7 +45,7 @@ Databricks Runtime 6.4 ML 正式版引入了库升级，其中包括：
 * PyTorch：1.3.1 到 1.4.0
 * Horovod：0.18.2 到 1.19.0
 
-有关详细信息，请参阅完整的 [Databricks Runtime 6.4 ML](../../runtime/6.4ml.md) 发行说明。
+有关详细信息，请参阅完整的[用于机器学习的 Databricks Runtime 6.4](../../runtime/6.4ml.md) 发行说明。
 
 ## <a name="databricks-runtime-64-ga"></a>Databricks Runtime 6.4 正式版
 

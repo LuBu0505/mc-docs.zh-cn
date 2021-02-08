@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure DNS 和流量管理器进行灾难恢复 | Azure
+title: 使用 Azure DNS 和流量管理器进行灾难恢复 | Azure Docs
 description: 概述了使用 Azure DNS 和流量管理器的灾难恢复解决方案。
 services: dns
 documentationcenter: na
@@ -14,33 +14,33 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/08/2018
-ms.date: 12/09/2019
+ms.date: 02/01/2021
 ms.author: v-tawe
-ms.openlocfilehash: 328c1708baad84a8bb010adbc342f654d52b83bd
-ms.sourcegitcommit: 6f66215d61c6c4ee3f2713a796e074f69934ba98
+ms.openlocfilehash: 1c212786dff12c62931824304c85d740b2fac367
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127646"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059754"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>使用 Azure DNS 和流量管理器进行灾难恢复
 
 灾难恢复侧重于从严重的应用程序功能丧失中恢复。 若要选择灾难恢复解决方案，业务和技术所有者必须先确定必需的灾难期间功能级别，如不可用、精简功能后部分可用、延迟可用或完全可用。
 大多数企业客户选择多区域体系结构，以通过应用程序级或基础结构级故障转移复原。 客户可以选择多种方法，以通过冗余体系结构实现故障转移和高可用性。 下面是一些常用方法：
 
-- **使用冷备用的主动/被动** ：在此故障转移解决方案中，在需要故障转移前，VM 和备用区域中运行的其他设备未处于活动状态。 不过，生产环境是以备份、VM 映像或资源管理器模板的形式复制到其他区域。 这种故障转移机制经济高效，但需要较长时间才能完成整个故障转移。
+- **使用冷备用的主动/被动**：在此故障转移解决方案中，在需要故障转移前，VM 和备用区域中运行的其他设备未处于活动状态。 不过，生产环境是以备份、VM 映像或资源管理器模板的形式复制到其他区域。 这种故障转移机制经济高效，但需要较长时间才能完成整个故障转移。
  
     ![使用冷备用的主动/被动](./media/disaster-recovery-dns-traffic-manager/active-passive-with-cold-standby.png)
     
     图：使用冷备用的主动/被动灾难恢复配置 
 
-- **使用指示灯的主动/被动** ：在此故障转移解决方案中，备用环境采用最简配置。 只配置运行必要的服务，就能支持关键的最简应用程序集。 在本机形式下，此方案只能执行最简功能，但如果发生故障转移，可以纵向扩展并生成附加服务来处理大量生产负载。
+- **使用指示灯的主动/被动**：在此故障转移解决方案中，备用环境采用最简配置。 只配置运行必要的服务，就能支持关键的最简应用程序集。 在本机形式下，此方案只能执行最简功能，但如果发生故障转移，可以纵向扩展并生成附加服务来处理大量生产负载。
     
     ![使用指示灯的主动/被动](./media/disaster-recovery-dns-traffic-manager/active-passive-with-pilot-light.png)
     
     图：使用指示灯的主动/被动灾难恢复配置 
 
-- **使用热备用的主动/被动** ：在此故障转移解决方案中，备用区域会进行预热并能处理基础负载，自动缩放已启用，并且所有实例都正常运行。 此解决方案不会通过缩放来处理全部生产负载，但是有用的，且所有服务都正常运行。 此解决方案是指示灯方法的增强型版本。
+- **使用热备用的主动/被动**：在此故障转移解决方案中，备用区域会进行预热并能处理基础负载，自动缩放已启用，并且所有实例都正常运行。 此解决方案不会通过缩放来处理全部生产负载，但是有用的，且所有服务都正常运行。 此解决方案是指示灯方法的增强型版本。
     
     ![使用热备用的主动/被动](./media/disaster-recovery-dns-traffic-manager/active-passive-with-warm-standby.png)
     
@@ -55,7 +55,7 @@ ms.locfileid: "92127646"
 -  使用部署机制在主环境和备用环境之间复制实例、数据和配置。 这种灾难恢复可通过 Microsoft Azure 合作伙伴设备/服务（如 Veritas 或 NetApp）使用 Azure Site Recovery 在本机完成。 
 - 开发一种将网络/Web 流量从主站点转移到备用站点的解决方案。 这种灾难恢复可通过 Azure DNS、Azure 流量管理器 (DNS) 或第三方全局负载均衡器实现。
 
-本文只介绍了网络和 Web 流量重定向方法。 若要了解如何设置 Azure Site Recovery，请参阅 [Azure Site Recovery 文档](https://docs.azure.cn/site-recovery/)。
+本文只介绍了网络和 Web 流量重定向方法。 若要了解如何设置 Azure Site Recovery，请参阅 [Azure Site Recovery 文档](../site-recovery/index.yml)。
 DNS 是转移网络流量的最高效机制之一，因为 DNS 通常是全局的，位于数据中心外部，且不受任何区域级或可用性区域 (AZ) 级故障影响。 可以使用基于 DNS 的故障转移机制。在 Azure 中，有两个 DNS 服务可以某种方式完成相同任务，即 Azure DNS（权威 DNS）和 Azure 流量管理器（基于 DNS 的智能流量路由）。 
 
 请务必了解本文为介绍解决方案而广泛使用的一些 DNS 概念：
@@ -89,7 +89,7 @@ DNS 是转移网络流量的最高效机制之一，因为 DNS 通常是全局�
 
 ### <a name="step-2-create-dns-zone-records"></a>第 2 步：创建 DNS 区域记录
 
-在此区域内，创建三条记录（例如 www\.contoso.com、prod.contoso.com 和 dr.contoso.com），如下所示。
+在此区域内，创建三条记录（例如，www\.contoso.com、prod.contoso.com 和 dr.consoto.com），如下所示。
 
 ![创建 DNS 区域记录](./media/disaster-recovery-dns-traffic-manager/create-dns-zone-records.png)
 
@@ -171,12 +171,3 @@ Azure 流量管理器自动故障转移的配置步骤如下：
 ## <a name="next-steps"></a>后续步骤
 - 详细了解 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)。
 - 详细了解 [Azure DNS](../dns/dns-overview.md)。
-
-
-
-
-
-
-
-
-

@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 09/11/2020
 title: Azure Blob 存储 - Azure Databricks
 description: 了解如何使用 Azure Databricks 读取数据并将数据写入 Azure Blob 存储。
-ms.openlocfilehash: d3e71af553ff502e2dc4b5b46ade54acb621e721
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: 595feee0e66dfc6522c7c2c9fd460baac8bb1092
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121869"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059169"
 ---
 # <a name="azure-blob-storage"></a><a id="azure-blob-storage"> </a><a id="azure-storage"> </a>Azure Blob 存储
 
@@ -29,7 +29,7 @@ ms.locfileid: "92121869"
 >
 > Azure Databricks 还支持以下 Azure 数据源：[Azure Data Lake Storage Gen2](azure-datalake-gen2.md)、[Azure Cosmos DB](cosmosdb-connector.md) 和 [Azure Synapse Analytics](synapse-analytics.md)。
 
-本文介绍如何通过使用 DBFS 安装存储或直接使用 API 来访问 Azure Blob 存储。
+本文介绍了如何通过以下方式访问 Azure Blob 存储：使用 [Databricks 文件系统 (DBFS)](../../databricks-file-system.md) 来装载存储，或直接使用 API。
 
 ## <a name="requirements"></a>要求
 
@@ -37,7 +37,7 @@ ms.locfileid: "92121869"
 
 ## <a name="mount-azure-blob-storage-containers-to-dbfs"></a><a id="mount-azure-blob-storage"> </a><a id="mount-azure-blob-storage-containers-to-dbfs"> </a>将 Azure Blob 存储容器装载至 DBFS
 
-可将 Blob 存储容器或容器中的某个文件夹装载到 [Databricks 文件系统 (DBFS)](../../databricks-file-system.md)。 此装载是指向一个 Blob 存储容器的指针，因此数据永远不会在本地同步。
+可将 Blob 存储容器或容器中的某个文件夹装载到 DBFS。 此装载是指向一个 Blob 存储容器的指针，因此数据永远不会在本地同步。
 
 > [!IMPORTANT]
 >
@@ -72,6 +72,8 @@ DBFS 使用在创建装入点时提供的凭据来访问已装载的 Blob 存储
 
    where
 
+   * ``<storage-account-name>`` 是你的 Azure Blob 存储帐户的名称。
+   * ``<container-name>`` 是你的 Azure Blob 存储帐户中某个容器的名称。
    * `<mount-name>` 是一个 DBFS 路径，表示 Blob 存储容器或该容器中的某个文件夹（在 `source` 中指定）要装载到 DBFS 中的什么位置。
    * `<conf-key>` 可以是 `fs.azure.account.key.<storage-account-name>.blob.core.chinacloudapi.cn` 或 `fs.azure.sas.<container-name>.<storage-account-name>.blob.core.chinacloudapi.cn`
    * `dbutils.secrets.get(scope = "<scope-name>", key = "<key-name>")` 获取在[机密范围](../../../security/secrets/secret-scopes.md)中存储为[机密](../../../security/secrets/secrets.md)的密钥。
@@ -93,6 +95,14 @@ DBFS 使用在创建装入点时提供的凭据来访问已装载的 Blob 存储
    val df = spark.read.text("dbfs:/<mount-name>/...")
    ```
 
+   #### <a name="sql"></a>SQL
+
+   ```sql
+   -- SQL
+   CREATE DATABASE <db-name>
+   LOCATION "/mnt/<mount-name>"
+   ```
+
 ### <a name="unmount-a-mount-point"></a>卸载装入点
 
 若要卸载装入点，请使用以下命令：
@@ -103,11 +113,13 @@ dbutils.fs.unmount("/mnt/<mount-name>")
 
 ## <a name="access-azure-blob-storage-directly"></a>直接访问 Azure Blob 存储
 
-本部分介绍如何使用 Spark 数据帧和 RDD API 访问 Azure Blob 存储。
+本部分介绍了如何使用 Spark 数据帧 API、RDD API 和 Hive 客户端访问 Azure Blob 存储。
 
 ### <a name="access-azure-blob-storage-using-the-dataframe-api"></a>使用数据帧 API 访问 Azure Blob 存储
 
-可使用 Spark API 和 Databricks API 读取 Azure Blob 存储中的数据：
+你需要先配置凭据（会话凭据或群集凭据），然后才能访问 Azure Blob 存储中的数据。
+
+在笔记本中运行以下命令来配置会话凭据：
 
 * 设置帐户访问密钥：
 
@@ -125,7 +137,25 @@ dbutils.fs.unmount("/mnt/<mount-name>")
     "<complete-query-string-of-sas-for-the-container>")
   ```
 
-在笔记本中设置帐户访问密钥或 SAS 后，可使用标准 Spark 和 Databricks API 读取存储帐户中的内容：
+若要配置群集凭据，请在创建群集时设置 [Spark 配置](../../../clusters/configure.md#spark-config)属性：
+
+* 配置帐户访问密钥：
+
+  ```ini
+  fs.azure.account.key.<storage-account-name>.blob.core.windows.net <storage-account-access-key>
+  ```
+
+* 为容器配置 SAS：
+
+  ```ini
+  fs.azure.sas.<container-name>.<storage-account-name>.blob.core.windows.net <complete-query-string-of-sas-for-the-container>
+  ```
+
+> [!WARNING]
+>
+> 这些凭据可供访问群集的所有用户使用。
+
+在笔记本或群集配置中设置帐户访问密钥或 SAS 后，可使用标准 Spark 和 Databricks API 读取存储帐户中的内容：
 
 ```scala
 val df = spark.read.parquet("wasbs://<container-name>@<storage-account-name>.blob.core.chinacloudapi.cn/<directory-name>")
@@ -135,34 +165,55 @@ dbutils.fs.ls("wasbs://<container-name>@<storage-account-name>.blob.core.chinacl
 
 ### <a name="access-azure-blob-storage-using-the-rdd-api"></a>使用 RDD API 访问 Azure Blob 存储
 
-不能通过 `SparkContext` 访问使用 `spark.conf.set(...)` 设置的 Hadoop 配置选项。 也就是说，当这些内容对数据帧和数据集 API 可见时，就对 RDD API 不可见。 如果使用 RDD API 读取 Azure Blob 存储中的内容，必须使用以下方法之一来设置凭据：
+不能通过 ``SparkContext`` 访问 Hadoop 配置选项。 如果使用 RDD API 从 Azure Blob 存储读取数据，则必须在创建群集时将 Hadoop 凭据配置属性设置为 [Spark 配置](../../../clusters/configure.md#spark-config)选项，并将 ``spark.hadoop.`` 前缀添加到相应的 Hadoop 配置密钥，以便将其传播到用于 RDD 作业的 Hadoop 配置：
 
-* 创建群集时，将 Hadoop 凭据配置选项指定为 Spark 选项。 必须将 `spark.hadoop.` 前缀添加到相应的 Hadoop 配置键，以便让 Spark 将它们传播到用于 RDD 作业的 Hadoop 配置：
+* 配置帐户访问密钥：
 
-  ```python
-  # Using an account access key
+  ```ini
   spark.hadoop.fs.azure.account.key.<storage-account-name>.blob.core.chinacloudapi.cn <storage-account-access-key>
-
-  # Using a SAS token
-  spark.hadoop.fs.azure.sas.<container-name>.<storage-account-name>.blob.core.chinacloudapi.cn <complete-query-string-of-sas-for-the-container>
   ```
 
-* Scala 用户可在 `spark.sparkContext.hadoopConfiguration` 中设置凭据：
+* 为容器配置 SAS：
 
-  ```scala
-  // Using an account access key
-  spark.sparkContext.hadoopConfiguration.set(
-    "fs.azure.account.key.<storage-account-name>.blob.core.chinacloudapi.cn",
-    "<storage-account-access-key>"
-  )
-
-  // Using a SAS token
-  spark.sparkContext.hadoopConfiguration.set(
-    "fs.azure.sas.<container-name>.<storage-account-name>.blob.core.chinacloudapi.cn",
-    "<complete-query-string-of-sas-for-the-container>"
-  )
+  ```ini
+  spark.hadoop.fs.azure.sas.<container-name>.<storage-account-name>.blob.core.chinacloudapi.cn <complete-query-string-of-sas-for-the-container>
   ```
 
 > [!WARNING]
 >
 > 这些凭据可供访问群集的所有用户使用。
+
+### <a name="access-azure-blob-storage-from-the-hive-client"></a>从 Hive 客户端访问 Azure Blob 存储
+
+Hive 客户端无法访问在笔记本的会话配置中设置的凭据。 若要将凭据传播到 Hive 客户端，必须在创建群集时将 Hadoop 凭据配置属性设置为 [Spark 配置](../../../clusters/configure.md#spark-config)选项：
+
+* 配置帐户访问密钥：
+
+  ```ini
+  spark.hadoop.fs.azure.account.key.<storage-account-name>.blob.core.windows.net <storage-account-access-key>
+  ```
+
+* 为容器配置 SAS：
+
+  ```ini
+  # Using a SAS token
+  spark.hadoop.fs.azure.sas.<container-name>.<storage-account-name>.blob.core.chinacloudapi.cn <complete-query-string-of-sas-for-the-container>
+  ```
+
+> [!WARNING]
+>
+> 这些凭据可供访问群集的所有用户使用。
+
+在群集配置中设置帐户访问密钥或 SAS 后，可以对 Azure Blob 存储使用标准 Hive 查询：
+
+```sql
+-- SQL
+CREATE DATABASE <db-name>
+LOCATION "wasbs://<container-name>@<storage-account-name>.blob.core.chinacloudapi.cn/";
+```
+
+以下笔记本演示了如何通过 Spark API、Databricks API 和 Hive 装载 Azure Blob 存储并访问数据。
+
+#### <a name="azure-blob-storage-notebook"></a>Azure Blob 存储笔记本
+
+[获取笔记本](../../../_static/notebooks/data-sources/mount-azure-blob-storage.html)

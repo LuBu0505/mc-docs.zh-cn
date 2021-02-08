@@ -1,19 +1,20 @@
 ---
 title: 渲染功能
 description: 标准 Azure Batch 功能用于运行渲染工作负荷与应用。 Batch 包含用于支持渲染工作负荷的特定功能。
-origin.date: 08/02/2018
+origin.date: 01/14/2021
 author: rockboyfor
-ms.date: 08/24/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 09/07/2018
 ms.author: v-yeche
 ms.topic: how-to
-ms.openlocfilehash: 32c1c430a97a99853958270308e0365f4d755146
-ms.sourcegitcommit: e633c458126612223fbf7a8853dbf19acc7f0fa5
+ms.service: batch
+ms.openlocfilehash: dfd735bb63b20961e15e2fa36b38524da12f6fb6
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654970"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059510"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch 的渲染功能
 
@@ -21,7 +22,15 @@ ms.locfileid: "88654970"
 
 有关 Batch 概念的概述，包括池、作业和任务，请参阅[此文](./batch-service-workflow-features.md)。
 
-## <a name="batch-pools"></a>Batch 池
+## <a name="batch-pools-using-custom-vm-images-and-standard-application-licensing"></a>使用自定义 VM 映像和标准应用程序许可的 Batch 池
+
+与其他工作负荷和其他类型的应用程序一样，可以使用所需的渲染应用程序和插件创建自定义 VM 映像。自定义 VM 映像位于[共享映像库](../virtual-machines/shared-image-galleries.md)中并且[可用于创建 Batch 池](batch-sig-images.md)。
+
+任务命令行字符串将需要引用创建自定义 VM 映像时使用的应用程序和路径。
+
+大多数渲染应用程序都需要从许可证服务器获取的许可证。 如果存在现有的本地许可证服务器，则池和许可证服务器都需要位于同一[虚拟网络](../virtual-network/virtual-networks-overview.md)上。 还可以在 Azure VM 上运行许可证服务器，将 Batch 池和许可证服务器 VM 置于同一虚拟网络中。
+
+## <a name="batch-pools-using-rendering-vm-images"></a>使用渲染 VM 映像的 Batch 池
 
 ### <a name="rendering-application-installation"></a>渲染应用程序安装
 
@@ -74,13 +83,13 @@ ms.locfileid: "88654970"
 |Arnold 2018 命令行|kick.exe|ARNOLD_2018_EXEC|
 |Blender|blender.exe|BLENDER_2018_EXEC|
 
-### <a name="azure-vm-families"></a>Azure VM 系列
+## <a name="azure-vm-families"></a>Azure VM 系列
 
 与其他工作负荷一样，渲染应用程序的系统要求和性能要求根据作业与项目的不同而异。  Azure 中根据要求提供了多种不同的 VM 系列 - 最低成本、最高性价比、最佳性能，等等。
 有些渲染应用程序（例如 Arnold）基于 CPU，而有些（例如 V-Ray 和 Blender Cycles）则可以使用 CPU 和/或 GPU。
-有关可用 VM 系列和 VM 大小的说明，请参阅 [VM 类型和大小](../virtual-machines/windows/sizes.md)。
+有关可用 VM 系列和 VM 大小的说明，请参阅 [VM 类型和大小](../virtual-machines/sizes.md)。
 
-<!--Not Available on ### Low-priority VMs-->
+<!--Not Available on ## Low-priority VMs-->
 
 ## <a name="jobs-and-tasks"></a>作业和任务
 

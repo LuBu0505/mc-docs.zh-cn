@@ -1,27 +1,21 @@
 ---
-title: 什么是 Azure 云服务 | Microsoft Docs
-description: 了解什么是 Azure 云服务。
-services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-ms.assetid: ed7ad348-6018-41bb-a27d-523accd90305
-ms.service: multiple
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: 什么是 Azure 云服务（经典）| Microsoft Docs
+description: 了解什么是 Azure 云服务，特别是它旨在支持可缩放、可靠且运营成本低廉的应用程序。
 ms.topic: article
-origin.date: 04/19/2017
-ms.author: v-yiso
-ms.date: 01/21/2019
-ms.openlocfilehash: 59b3e20758db898127e0d8bd19d0104119470737
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.service: cloud-services
+ms.date: 01/25/2021
+ms.author: v-junlch
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: a189b9085897bd1a9f89cf82b237dabab24d6c53
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63859078"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058869"
 ---
-# <a name="overview-of-azure-cloud-services"></a>Azure 云服务的概述
+# <a name="overview-of-azure-cloud-services-classic"></a>Azure 云服务（经典）概述 
 Azure 云服务是[平台即服务](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 的一个示例。 与 [Azure 应用服务](../app-service/overview.md)一样，此技术设计用于支持可缩放、可靠且运营成本低廉的应用程序。 同样，应用服务托管在虚拟机 (VM) 上，Azure 云服务也是如此。 但是，你对 VM 有更多的控制。 可以在使用 Azure 云服务的 VM 上安装自己的软件，并且可以远程访问它们。
 
 ![Azure 云服务关系图](./media/cloud-services-choose-me/diagram.png)
@@ -51,7 +45,14 @@ Azure 云服务还提供监视功能。 像虚拟机一样，它将检测发生�
 Azure 云服务的 PaaS 特性还具有其他含义。 其中一个最重要的含义是，应编写基于此技术构建的应用程序以在任何 Web 角色或辅助角色实例出现故障时正确运行。 要实现这一目标，Azure 云服务应用程序不应该在它自己的 VM 的文件系统中维持状态。 与通过“虚拟机”创建的 VM 不同，对 Azure 云服务 VM 所做的写入不是持久的。 这与虚拟机数据磁盘不同。 相反，Azure 云服务应用程序应将所有状态明确写入到 Azure SQL 数据库、blob、表或其他某种外部存储中。 以这种方式构建应用程序会使它们更易于扩展、抵抗故障的能力更强，这是 Azure 云服务的两个重要目标。
 
 ## <a name="next-steps"></a>后续步骤
-[在 .NET 中创建云服务应用](./cloud-services-dotnet-get-started.md)  
-[在 Node.js 中创建云服务应用](./cloud-services-nodejs-develop-deploy-app.md)  
-[在 PHP 中创建云服务应用](../cloud-services-php-create-web-role.md)  
-[在 Python 中创建云服务应用](./cloud-services-python-ptvs.md)
+* [在 .NET 中创建云服务应用](cloud-services-dotnet-get-started.md) 
+* [在 Node.js 中创建云服务应用](cloud-services-nodejs-develop-deploy-app.md) 
+* [在 PHP 中创建云服务应用](../cloud-services-php-create-web-role.md) 
+* [在 Python 中创建云服务应用](cloud-services-python-ptvs.md)
+
+
+
+
+
+
+

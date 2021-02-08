@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 04/29/2020
 title: 2018 年 7 月 - Azure Databricks
 description: Azure Databricks 新增功能和改进的 2018 年 7 月发行说明。
-ms.openlocfilehash: 4c2d600bff2d17f74cef8855a185e65e3e461132
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: aa065cec2c7755cc71bc8478fe674f8ec85418b6
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329238"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058582"
 ---
 # <a name="july-2018"></a>2018 年 7 月
 
@@ -81,7 +81,7 @@ Azure Databricks R 笔记本可以导出到 R Markdown 格式，R Markdown 文�
 
 2018 年 7 月 3 日 - 10 日：版本 2.75
 
-新主页添加了更加清晰简洁的界面，其中有指向改进后的入门教程的链接，并且提供了通过拖放文件来导入数据的功能。 请参阅[数据概述](../../../data/data.md#access-data)。
+新主页添加了更加清晰简洁的界面，其中有指向改进后的入门教程的链接，并且提供了通过拖放文件来导入数据的功能。 请参阅[导入、读取和修改数据简介](../../../data/data.md#access-data)。
 
 ## <a name="widget-default-behavior"></a>小组件默认行为
 

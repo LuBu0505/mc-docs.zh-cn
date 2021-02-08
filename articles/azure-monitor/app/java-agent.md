@@ -2,17 +2,17 @@
 title: Java Web 应用性能监视 - Azure Application Insights
 description: 使用 Application Insights 监视 Java 网站的扩展性能和使用情况。
 ms.topic: conceptual
-author: Johnnytechn
 origin.date: 01/10/2019
-ms.date: 01/14/2021
-ms.author: v-johya
+ms.date: 01/27/2021
+author: Johnnytechn
 ms.custom: devx-track-java
-ms.openlocfilehash: 55ad8d6b82a2cfa97c59e3926231df67fa2e0e0e
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.author: v-johya
+ms.openlocfilehash: b337eaa16e5fc11ceb044fbdae8692001e0f266a
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230567"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059916"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>监视 Java Web 应用中的依赖项、捕获的异常和方法执行时间
 
@@ -38,7 +38,7 @@ ms.locfileid: "98230567"
 若要使用 Java 代理，请在服务器上安装该代理。 必须使用 [Application Insights Java SDK][java] 检测 Web 应用。 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>安装适用于 Java 的 Application Insights 代理
-1. 在运行 Java 服务器的计算机上[下载该代理](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)。 请确保下载与 Application Insights Java SDK 核心和 Web 程序包版本相同的 Java 代理版本。
+1. 在运行 Java 服务器的计算机上[下载 2.x 代理](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/2.6.2)。 请确保所使用的 2.x Java 代理版本与所使用的 2.x Application Insights Java SDK 版本相匹配。
 2. 编辑应用程序服务器启动脚本，并添加以下 JVM 参数：
    
     `-javaagent:<full path to the agent JAR file>`
@@ -90,10 +90,7 @@ ms.locfileid: "98230567"
 * 选择“设置”>“应用程序设置”
 * 在“应用设置”下添加新的键/值对：
 
-注册表项：`JAVA_OPTS` 值：`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
-
-有关 Java 代理的最新版本，请在[此处](https://github.com/Microsoft/ApplicationInsights-Java/releases
-)查看版本。 
+注册表项：`JAVA_OPTS` 值：`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.6.2.jar`
 
 代理必须打包为项目中的资源，以便它最终位于 D:/home/site/wwwroot/ 目录中。 可以通过转到“开发工具” > “高级工具” > “调试控制台”并查看站点目录的内容，确认你的代理处于正确的应用服务目录中。    
 

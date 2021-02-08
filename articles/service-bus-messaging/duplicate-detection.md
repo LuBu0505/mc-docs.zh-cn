@@ -1,19 +1,20 @@
 ---
-title: Azure 服务总线重复消息检测 | Azure
+title: Azure 服务总线重复消息检测 | Azure Docs
 description: 本文介绍如何检测 Azure 服务总线消息中的重复项。 可以忽略并丢弃重复消息。
+ms.service: service-bus-messaging
 ms.topic: article
-origin.date: 06/23/2020
+origin.date: 01/13/2021
 author: rockboyfor
-ms.date: 11/16/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 923903470fe7e3224f3d9a3d5cb83034a570cc8b
-ms.sourcegitcommit: 39288459139a40195d1b4161dfb0bb96f5b71e8e
+ms.openlocfilehash: 74780e504cee608fb8a48889c2257672477439c7
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94590832"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060053"
 ---
 # <a name="duplicate-detection"></a>重复检测
 
@@ -23,6 +24,10 @@ ms.locfileid: "94590832"
 
 重复检测支持发送程序重新发送相同的消息，并让队列或主题放弃任何重复的副本，从而消除了这些情况下的各种怀疑。
 
+> [!NOTE]
+> 基本层的服务总线不支持重复检测。 标准层和高级层支持重复检测。 有关这些层之间的差异，请参阅[服务总线定价](https://www.azure.cn/pricing/details/service-bus/)。
+
+## <a name="how-it-works"></a>工作原理： 
 启用重复检测，有助于跟踪在指定时间范围内发送到队列或主题的所有消息的 MessageId（由应用程序控制）。 如果使用已在相应时间范围内记录的 MessageId 发送任何新消息，则将该消息报告为“已接受”（即发送操作成功），但将立即忽略和删除新发送的消息。 除了 MessageId 之外，不会检查消息的其他任何部分。
 
 应用程序控制的此标识符至关重要，因为只有它才能让应用程序将 MessageId 绑定到业务流程上下文，从中可以在发生故障时预见性地重新构造消息。
@@ -31,8 +36,11 @@ ms.locfileid: "94590832"
 
 虽然 MessageId 可以始终是某 GUID，但将标识符绑定到业务流程可以预测重复消息，这更有利于有效使用重复检测功能。
 
-> [!NOTE]
-> 如果启用了重复检测，并且未设置会话 ID 或分区键，则消息 ID 将用作分区键。 如果消息 ID 也未设置，.NET 和 AMQP 库将自动为消息生成消息 ID。 有关详细信息，请参阅[使用分区键](service-bus-partitioning.md#use-of-partition-keys)。
+> [!IMPORTANT]
+>- 启用分区时，使用 `MessageId+PartitionKey` 来确定唯一性 。 启用会话时，分区键和会话 ID 必须相同。 
+>- 禁用分区（默认设置）时，仅使用 `MessageId` 来确定唯一性 。
+>- 有关 SessionId、PartitionKey 和 MessageId 的信息，请参阅[使用分区键](service-bus-partitioning.md#use-of-partition-keys)。
+>- [高级层](service-bus-premium-messaging.md)不支持分区，因此建议在应用程序中使用唯一的消息 ID，而不依赖分区键进行重复检测。 
 
 ## <a name="enable-duplicate-detection"></a>启用重复检测
 

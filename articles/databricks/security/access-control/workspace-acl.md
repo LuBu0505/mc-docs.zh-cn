@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 09/23/2020
 title: 工作区对象访问控制 - Azure Databricks
 description: 了解如何控制对 Azure Databricks 工作区对象（例如文件夹、笔记本、MLflow 试验和 MLflow 模型）的访问。
-ms.openlocfilehash: b2896a002dcc6ec1cd0d1281ca10134a3378f5e5
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: 9e9326867b7a7b2f6a3bc163590b533790958f0d
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937711"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058481"
 ---
 # <a name="workspace-object-access-control"></a>工作区对象访问控制
 
@@ -43,14 +43,14 @@ Azure Databricks 管理员必须先为工作区启用工作区对象访问控制
 ### <a name="default-folder-permissions"></a>默认的文件夹权限
 
 * 以下权限独立于工作区对象访问控制而存在：
-  * 对于 **Workspace** > ![共享图标](../../_static/images/workspace/shared-icon.png) **Shared** 文件夹中的项，所有用户都有“管理”权限。 可以授予针对笔记本和文件夹的“管理”权限，方法是将笔记本和文件夹移到 ![共享图标](../../_static/images/workspace/shared-icon.png) **Shared** 文件夹。
+  * 对于 **Workspace** > ![共享图标](../../_static/images/icons/shared-icon.png) **Shared** 文件夹中的项，所有用户都有“管理”权限。 可以授予针对笔记本和文件夹的“管理”权限，方法是将笔记本和文件夹移到 ![共享图标](../../_static/images/icons/shared-icon.png) **Shared** 文件夹。
   * 所有用户对自己创建的对象都有“管理”权限。
 * 在禁用工作区对象访问控制的情况下，存在以下权限：
   * 对于 **Workspace** 文件夹中的项，所有用户都有“编辑”权限。
 * 在[启用工作区对象访问控制](../../administration-guide/access-control/workspace-acl.md#enable-workspace-acl)的情况下，存在以下权限：
   * **Workspace** 文件夹
     * 只有管理员才能在 **Workspace** 文件夹中创建新项目。
-    * **Workspace** 文件夹中的现有项 -“管理”。 例如，如果 **Workspace** 文件夹包含 ![Folder](../../_static/images/access-control/folder.png) **Documents** 和 ![Folder](../../_static/images/access-control/folder.png) **Temp** 文件夹，则所有用户都会继续拥有针对这些文件夹的“管理”权限。
+    * **Workspace** 文件夹中的现有项 -“管理”。 例如，如果 Workspace 文件夹包含![“文件夹”图标](../../_static/images/icons/folder.png)“Documents”和![“文件夹”图标](../../_static/images/icons/folder.png)“Temp”文件夹，则所有用户都会继续拥有这些文件夹的“管理”权限。
     * **Workspace** 文件夹中的新项 -“无权限”。
   * 用户对文件夹中的所有项（包括在设置权限后创建到或移动到文件夹中的项）的权限与用户对该文件夹的权限相同。
   * 用户主目录 - 用户有“管理”权限。 所有其他用户的权限为“无权限”。
@@ -76,7 +76,7 @@ Azure Databricks 管理员必须先为工作区启用工作区对象访问控制
 > 此部分介绍如何使用 UI 来管理权限。 你还可以使用[权限 API](../../_static/api-refs/permissions-azure.yaml)。
 
 1. 打开“权限”对话框：
-   * 笔记本 - 在笔记本上下文栏中单击“ ![权限](../../_static/images/access-control/permissions.png) ”。
+   * 笔记本 - 在笔记本上下文栏中单击“ ![“权限”图标](../../_static/images/access-control/permissions.png) ”。
    * 文件夹 - 在文件夹的下拉菜单中选择“权限”：
 
    > [!div class="mx-imgBorder"]
@@ -140,11 +140,11 @@ Azure Databricks 管理员必须先为工作区启用工作区对象访问控制
 ### <a name="mlflow-artifact-permissions"></a>MLflow 项目权限
 
 每个 [MLflow 试验](../../applications/mlflow/tracking.md#experiments)都有一个“项目位置”，用于存储记录到 MLflow 运行的项目。 从 MLflow 1.11 开始，项目默认会存储在 [Databricks 文件系统 (DBFS)](../../data/databricks-file-system.md) 的由 MLflow 管理的子目录中。
-[MLflow 试验权限](#mlflow-experiment-permissions)适用于存储在这些托管位置中的项目，其前缀为 `dbfs:/databricks/mlflow-tracking`。 若要下载或记录项目，必须对其关联的 MLflow 试验具有相应级别的访问权限。
+[MLflow 试验权限](#mlflow-experiment-permissions)适用于存储在这些托管位置中的项目，其前缀为 ``dbfs:/databricks/mlflow-tracking``。 若要下载或记录项目，必须对其关联的 MLflow 试验具有相应级别的访问权限。
 
 > [!NOTE]
 >
-> * 只能使用 MLflow 客户端（`1.9.1` 或更高版本）访问存储在 MLflow 所管理的位置中的项目。该 MLflow 客户端适用于 [Python](https://pypi.org/project/mlflow/)、[Java](https://mvnrepository.com/artifact/org.mlflow/mlflow-client) 和 [R](https://cran.r-project.org/web/packages/mlflow/index.html)。MLflow 管理的位置不支持其他访问机制，例如 [dbutils](../../dev-tools/databricks-utils.md#dbutils-fs) 和 [DBFS API](../../dev-tools/api/latest/dbfs.md)。
+> * 只能使用 MLflow 客户端（``1.9.1`` 或更高版本）访问存储在 MLflow 所管理的位置中的项目。该 MLflow 客户端适用于 [Python](https://pypi.org/project/mlflow/)、[Java](https://mvnrepository.com/artifact/org.mlflow/mlflow-client) 和 [R](https://cran.r-project.org/web/packages/mlflow/index.html)。MLflow 管理的位置不支持其他访问机制，例如 [dbutils](../../dev-tools/databricks-utils.md#dbutils-fs) 和 [DBFS API](../../dev-tools/api/latest/dbfs.md)。
 > * 创建 MLflow 试验时，还可以指定自己的项目位置。 对于存储在默认的由 MLflow 管理的 DBFS 目录之外的项目，不会强制执行试验访问控制。
 
 ## <a name="mlflow-model-permissions"></a>MLflow 模型权限
@@ -186,15 +186,15 @@ Azure Databricks 管理员必须先为工作区启用工作区对象访问控制
 
 ### <a name="configure-mlflow-model-permissions"></a>配置 MLflow 模型权限
 
-你的帐户中的所有用户都属于“`all users`”组。 管理员属于“`admins`”组，该组对所有对象具有“管理”权限。
+你的帐户中的所有用户都属于“``all users``”组。 管理员属于“``admins``”组，该组对所有对象具有“管理”权限。
 
 > [!NOTE]
 >
 > 此部分介绍如何使用 UI 来管理权限。 你还可以使用[权限 API](../../_static/api-refs/permissions-azure.yaml)。
 
-1. 单击边栏中的 ![“模型”图标](../../_static/images/mlflow/models-icon.png) 图标。
+1. 单击边栏中的 ![侧栏中的](../../_static/images/icons/models-icon.png) “模型”图标。
 2. 单击模型名称。
-3. 单击模型名称右侧的![下拉按钮](../../_static/images/button-down.png)，然后选择“权限”。
+3. 单击模型名称右侧的![下拉按钮](../../_static/images/icons/button-down.png)，然后选择“权限”。
 
    > [!div class="mx-imgBorder"]
    > ![“权限”下拉菜单](../../_static/images/access-control/model-permission.png)
@@ -214,18 +214,18 @@ Azure Databricks 管理员必须先为工作区启用工作区对象访问控制
 
 ### <a name="mlflow-model-artifact-permissions"></a>MLflow 模型项目权限
 
-每个 [MLflow 模型版本](../../applications/mlflow/model-registry.md#model-registry-concepts)的模型文件都存储在一个由 MLflow 管理的位置，其前缀为 `dbfs:/databricks/model-registry/`。
+每个 [MLflow 模型版本](../../applications/mlflow/model-registry.md#model-registry-concepts)的模型文件都存储在一个由 MLflow 管理的位置，其前缀为 ``dbfs:/databricks/model-registry/``。
 
-若要获取模型版本的文件的确切位置，你必须对模型具有“读取”访问权限。 使用 [REST API](../../dev-tools/api/latest/mlflow.md) 终结点 `/api/2.0/mlflow/model-versions/get-download-uri`。 获取 URI 后，可以使用 [DBFS API](../../dev-tools/api/latest/dbfs.md) 来下载文件。
+若要获取模型版本的文件的确切位置，你必须对模型具有“读取”访问权限。 使用 [REST API](../../dev-tools/api/latest/mlflow.md) 终结点 ``/api/2.0/mlflow/model-versions/get-download-uri``。 获取 URI 后，可以使用 [DBFS API](../../dev-tools/api/latest/dbfs.md) 来下载文件。
 
-MLflow 客户端（适用于 [Python](https://pypi.org/project/mlflow/)、[Java](https://mvnrepository.com/artifact/org.mlflow/mlflow-client) 和 [R](https://cran.r-project.org/web/packages/mlflow/index.html)）提供了几个简便方法，这些方法可以包装此工作流以下载和加载模型，例如 `mlflow.<flavor>.load_model()`。
+MLflow 客户端（适用于 [Python](https://pypi.org/project/mlflow/)、[Java](https://mvnrepository.com/artifact/org.mlflow/mlflow-client) 和 [R](https://cran.r-project.org/web/packages/mlflow/index.html)）提供了几个简便方法，这些方法可以包装此工作流以下载和加载模型，例如 ``mlflow.<flavor>.load_model()``。
 
 > [!NOTE]
 >
-> MLflow 管理的文件位置不支持其他访问机制，例如 [dbutils](../../dev-tools/databricks-utils.md#dbutils-fs) 和 `%fs`。
+> MLflow 管理的文件位置不支持其他访问机制，例如 [dbutils](../../dev-tools/databricks-utils.md#dbutils-fs) 和 ``%fs``。
 
 ## <a name="library-and-jobs-access-control"></a>库和作业访问控制
 
-![库](../../_static/images/access-control/library.png) 所有用户均可查看库。 若要控制谁可以将库附加到群集，请参阅[群集访问控制](cluster-acl.md)。
+![“库”图标](../../_static/images/icons/library.png) 所有用户均可查看库。 若要控制谁可以将库附加到群集，请参阅[群集访问控制](cluster-acl.md)。
 
-![作业](../../_static/images/access-control/jobs.png) 若要控制谁可以运行作业并查看作业运行结果，请参阅[作业访问控制](jobs-acl.md)。
+![“作业”图标](../../_static/images/icons/jobs.png) 若要控制谁可以运行作业并查看作业运行结果，请参阅[作业访问控制](jobs-acl.md)。

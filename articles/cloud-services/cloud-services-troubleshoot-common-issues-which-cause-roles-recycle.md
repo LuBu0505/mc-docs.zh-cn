@@ -1,27 +1,22 @@
 ---
 title: 云服务角色回收的常见原因 | Microsoft Docs
 description: 突然回收云服务角色可能会导致严重停机。 以下是导致角色回收的一些常见问题，解决这些问题将有助于减少停机。
-services: cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 533930d1-8035-4402-b16a-cf887b2c4f85
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 10/20/2020
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: c84b26a79bfaf0e3b444fd81f50e160e7a0d0f12
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 2e0a7dcb1d14f53989a1a9b8aab8041efe79db94
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472618"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058803"
 ---
-# <a name="common-issues-that-cause-roles-to-recycle"></a>导致角色回收的常见问题
+# <a name="common-issues-that-cause-azure-cloud-service-roles-to-recycle"></a>导致 Azure 云服务角色回收的常见问题
+
 本文讨论部署问题的一些常见原因，并提供故障排除技巧以帮助你解决这些问题。 角色实例无法启动，或者在“正在初始化”、“忙”和“正在停止”状态之间循环时，即指示应用程序存在问题。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]

@@ -3,14 +3,14 @@ title: 使用顾问提高 Azure 应用的性能
 description: 使用 Azure 顾问中的性能建议可提高业务关键型应用程序的速度和响应能力。
 ms.topic: article
 origin.date: 01/29/2019
-ms.date: 11/13/2020
+ms.date: 01/19/2021
 ms.author: v-johya
-ms.openlocfilehash: 9e6db95c165e9220961974525ea3ecda59d1da21
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: 50bb144caa575533bb363bd5b789a24b9336994c
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637893"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751084"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>使用 Azure 顾问提高 Azure 应用程序的性能
 
@@ -110,7 +110,7 @@ Azure 顾问可检测 Azure Synapse Analytics 表是否具有较高的缓存利�
 
 ## <a name="co-locate-the-storage-account-in-the-same-region-to-minimize-latency-when-loading"></a>将存储帐户归置到同一区域，以在加载时最大程度地减少延迟
 
-顾问可检测是否从不同于 SQL 池的区域进行加载。 考虑从与 SQL 池位于同一区域内的存储帐户进行加载，以最大程度地减少加载数据时的延迟。 此更改将有助于最大程度地减少延迟并提高负载性能。
+顾问会检测是否正在从专用 SQL 池以外的区域进行加载。 考虑从与专用 SQL 池位于同一区域内的存储帐户进行加载，以最大程度地减少加载数据时的延迟。 此更改将有助于最大程度地减少延迟并提高负载性能。
 
 ## <a name="use-a-supported-kubernetes-version"></a>使用受支持的 Kubernetes 版本
 
@@ -148,7 +148,7 @@ CPU 利用率长时间处于较高状态可能导致工作负荷的查询性能�
 
 ## <a name="configure-your-azure-cosmos-db-indexing-policy-by-using-custom-included-or-excluded-paths"></a>使用自定义的已包括或已排除路径配置 Azure Cosmos DB 索引编制策略
 
-顾问可识别使用默认索引编制策略，但可从自定义索引编制策略受益的 Azure Cosmos DB 容器。 此判断基于工作负荷模式。 默认索引编制策略为所有属性编制索引。 在查询筛选器中使用显式已包括或已排除路径的自定义索引策略可减少进行索引编制时使用的 RU 和存储。 [了解有关如何修改索引编制策略的详细信息。](/cosmos-db/index-policy)
+顾问可识别使用默认索引编制策略，但可从自定义索引编制策略受益的 Azure Cosmos DB 容器。 此判断基于工作负荷模式。 默认索引编制策略为所有属性编制索引。 在查询筛选器中使用显式已包括或已排除路径的自定义索引策略可减少进行索引编制时使用的 RU 和存储。 [了解有关如何修改索引编制策略的详细信息。](../cosmos-db/index-policy.md)
 
 ## <a name="set-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>将 Azure Cosmos DB 查询页大小 (MaxItemCount) 设置为 -1 
 

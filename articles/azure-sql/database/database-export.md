@@ -9,15 +9,15 @@ author: WenJason
 ms.custom: sqldbrb=2
 ms.author: v-jay
 ms.reviewer: ''
-origin.date: 07/16/2019
-ms.date: 12/14/2020
+origin.date: 01/11/2021
+ms.date: 02/01/2021
 ms.topic: how-to
-ms.openlocfilehash: 2dd7f27ee737dc63d80048a62b8f1565f861eb77
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 8a65b7ce8243a7efb1654223713f659db05fa889
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830166"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060170"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>导出到 BACPAC 文件 - Azure SQL 数据库和 Azure SQL 托管实例
 
@@ -31,6 +31,7 @@ ms.locfileid: "97830166"
 - 如果是导出到 Blob 存储，则 BACPAC 文件的最大大小为 200 GB。 若要存档更大的 BACPAC 文件，请导出到本地存储。
 - 不支持使用本文所述方法将 BACPAC 文件导出到 Azure 高级存储。
 - 目前不支持有防火墙的存储。
+- 存储文件名或 StorageURI 的输入值的长度应少于 128 个字符，并且不能以“.”结尾，也不能包含特殊字符，如空格字符或“<、>、*、%、&、:、\,/、?”。 
 - 如果导出操作超过 20 个小时，可能会取消操作。 为提高导出过程中的性能，可以进行如下操作：
 
   - 暂时提高计算大小。

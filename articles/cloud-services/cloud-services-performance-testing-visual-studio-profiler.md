@@ -1,27 +1,21 @@
 ---
-title: 在计算模拟器中本地分析云服务 | Microsoft Docs
-services: cloud-services
+title: 在计算模拟器中本地分析云服务（经典）| Microsoft Docs
 description: 使用 Visual Studio 探查器调查云服务中的性能问题
-documentationcenter: ''
-author: mikejo
-manager: jillfra
-editor: ''
-tags: ''
-ms.assetid: 25e40bf3-eea0-4b0b-9f4a-91ffe797f6c3
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/20/2020
+ms.service: cloud-services
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: 90fe59ff67fc7538529085f3d6a3793676bab796
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 5eb073ec95775c844ce44f8064e3951bb9ca6336
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472625"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058833"
 ---
-# <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>在 Azure 计算模拟器中使用 Visual Studio 探查器来本地测试云服务的性能
+# <a name="testing-the-performance-of-a-cloud-service-classic-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>在 Azure 计算模拟器中使用 Visual Studio 探查器来本地测试云服务（经典）的性能
 可通过各种工具和技术来测试云服务的性能。
 在将云服务发布到 Azure 后，可以让 Visual Studio 收集分析数据，并在本地进行分析，如[分析 Azure 应用程序][1]中所述。
 也可以使用诊断来跟踪各种性能计数器，如[在 Azure 中使用性能计数器][2]中所述。

@@ -1,19 +1,19 @@
 ---
 title: 为云服务配置 TLS | Microsoft Docs
 description: 了解如何为 Web 角色指定 HTTPS 终结点以及如何上传 TLS/SSL 证书来保护应用程序。 这些示例使用 Azure 门户。
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 05/25/2020
+ms.service: cloud-services
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: 69a0ed005c6268d13a08e87bfc79f39be802ef85
-ms.sourcegitcommit: 7429daf26cff014b040f69cdae75bdeaea4f4e93
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 086a1bf82b5116c9fab3f62d9d29107850f45649
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83991596"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058871"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>为 Azure 中的应用程序配置 TLS
 
@@ -34,7 +34,7 @@ ms.locfileid: "83991596"
 
 * 证书必须包含公钥。
 * 必须为密钥交换创建证书，并且该证书可导出到个人信息交换 (.pfx) 文件。
-* 证书的使用者名称必须与用于访问云服务的域匹配。 无法从证书颁发机构 (CA) 处获取针对 chinacloudapp.cn 域的 TLS/SSL 证书。 必须获取在访问服务时要使用的自定义域名。 在从 CA 请求证书时，该证书的使用者名称必须与用于访问应用程序的自定义域名匹配。 例如，如果自定义域名为 contoso.com，则续从 CA 请求用于 *.contoso.com 或 www\.contoso.com 的证书。
+* 证书的使用者名称必须与用于访问云服务的域匹配。 无法从证书颁发机构 (CA) 处获取针对 chinacloudapp.cn 域的 TLS/SSL 证书。 必须获取在访问服务时要使用的自定义域名。 在从 CA 请求证书时，该证书的使用者名称必须与用于访问应用程序的自定义域名匹配。 例如，如果自定义域名为 contoso.com，则会从 CA 请求用于“*.contoso.com”或“www\.contoso.com”的证书。
 * 该证书必须使用至少 2048 位加密。
 
 出于测试目的，可以[创建](cloud-services-certs-create.md)和使用自签名的证书。 自签名证书不通过 CA 进行身份验证，并且可以使用 chinacloudapp.cn 域作为网站 URL。 例如，以下任务使用公用名 (CN) 为 sslexample.chinacloudapp.cn 的自签名证书。

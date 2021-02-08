@@ -11,25 +11,26 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 08/28/2020
-ms.date: 01/04/2021
-ms.openlocfilehash: 34b6deb384fa51a9cbdf6a25c5a2c21e7f2c6f5a
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.date: 02/01/2021
+ms.openlocfilehash: 75c07d1ef96fc10da4ec8e392e8d504bdeddcda8
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829713"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059255"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Snowflake 中复制和转换数据
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述如何使用 Azure 数据工厂中的复制活动从/向 Snowflake 复制数据。 有关数据工厂的详细信息，请参阅[介绍性文章](introduction.md)。
+本文概述了如何使用 Azure 数据工厂中的复制活动从/向 Snowflake 复制数据，并使用数据流转换 Snowflake 中的数据。 有关数据工厂的详细信息，请参阅[介绍性文章](introduction.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
 以下活动支持此 Snowflake 连接器：
 
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)表的[复制活动](copy-activity-overview.md)
+- [映射数据流](concepts-data-flow-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
 对于复制活动，此 Snowflake 连接器支持以下功能：
@@ -47,7 +48,7 @@ ms.locfileid: "97829713"
 
 Snowflake 链接服务支持以下属性。
 
-| 属性         | 说明                                                  | 必须 |
+| 属性         | 说明                                                  | 必需 |
 | :--------------- | :----------------------------------------------------------- | :------- |
 | type             | type 属性必须设置为 **Snowflake**。              | 是      |
 | connectionString | 指定连接到 Snowflake 实例所需的信息。 可以选择将密码或整个连接字符串置于 Azure Key Vault。 如需更多详细信息，请参阅表下面的示例和[将凭据存储在 Azure Key Vault 中](store-credentials-in-key-vault.md)一文。<br><br>部分典型设置：<br>- 帐户名称：Snowflake 帐户的[完整帐户名称](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name)（包括用于标识区域和云平台的其他段）<br/>- 用户名：用于连接的用户登录名。<br>- 密码：用户的密码。<br>- 数据库：要在连接后使用的默认数据库。 它应为指定角色具有权限的现有数据库。<br>- 仓库：要在连接后使用的虚拟仓库。 它应为指定角色具有权限的现有仓库。<br>- 角色：要在 Snowflake 会话中使用的默认访问控制角色。 指定角色应为已分配给指定用户的现有角色。 默认角色为 PUBLIC。 | 是      |
@@ -400,6 +401,83 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [table]](https://docs.snowfla
 ]
 ```
 
+## <a name="mapping-data-flow-properties"></a>映射数据流属性
+
+在映射数据流中转换数据时，可以从 Snowflake 中的表读取数据以及将数据写入表中。 有关详细信息，请参阅映射数据流中的[源转换](data-flow-source.md)和[接收器转换](data-flow-sink.md)。 可以选择使用 Snowflake 数据集或[内联数据集](data-flow-source.md#inline-datasets)作为源和接收器类型。
+
+### <a name="source-transformation"></a>源转换
+
+下表列出了 Snowflake 源支持的属性。 你可以在“源选项”选项卡中编辑这些属性。该连接器利用 Snowflake [内部数据传输](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer)。
+
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| 表 | 如果选择“表”作为输入，则在使用内联数据集时，数据流会从在 Snowflake 数据集或源选项中指定的表中获取所有数据。 | 否 | 字符串 | （仅适用于内联数据集）<br>tableName<br>schemaName |
+| 查询 | 如果选择“查询”作为输入，请输入用于从 Snowflake 中提取数据的查询。 此设置会替代在数据集中选择的任何表。<br>如果架构、表和列的名称包含小写字母，请在查询中引用对象标识符，例如 `select * from "schema"."myTable"`。 | 否 | 字符串 | query |
+
+#### <a name="snowflake-source-script-examples"></a>Snowflake 源脚本示例
+
+使用 Snowflake 数据集作为源类型时，关联的数据流脚本为：
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    query: 'select * from MYTABLE',
+    format: 'query') ~> SnowflakeSource
+```
+
+如果使用内联数据集，则关联的数据流脚本为：
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    format: 'query',
+    query: 'select * from MYTABLE',
+    store: 'snowflake') ~> SnowflakeSource
+```
+
+### <a name="sink-transformation"></a>接收器转换
+
+下表列出了 Snowflake 接收器支持的属性。 可以在“设置”选项卡中编辑这些属性。使用内联数据集时，你会看到其他设置，这些设置与[数据集属性](#dataset-properties)部分描述的属性相同。 该连接器利用 Snowflake [内部数据传输](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer)。
+
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Update 方法 | 指定 Snowflake 目标上允许哪些操作。<br>若要更新、更新插入或删除行，需要进行[“更改行”转换](data-flow-alter-row.md)才能标记这些操作的行。 | 是 | `true` 或 `false` | deletable <br/>insertable <br/>updateable <br/>upsertable |
+| 键列 | 对于更新、更新插入和删除操作，必须设置一个或多个键列，以确定要更改的行。 | 否 | Array | 密钥 |
+| 表操作 | 确定在写入之前是否从目标表重新创建或删除所有行。<br>- **无**：不会对表进行任何操作。<br>- 重新创建：将删除表并重新创建表。 如果以动态方式创建表，则是必需的。<br>- 截断：将删除目标表中的所有行。 | 否 | `true` 或 `false` | recreate<br/>truncate |
+
+#### <a name="snowflake-sink-script-examples"></a>Snowflake 接收器脚本示例
+
+使用 Snowflake 数据集作为接收器类型时，关联的数据流脚本为：
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    deletable:true,
+    insertable:true,
+    updateable:true,
+    upsertable:false,
+    keys:['movieId'],
+    format: 'table',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> SnowflakeSink
+```
+
+如果使用内联数据集，则关联的数据流脚本为：
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    format: 'table',
+    tableName: 'table',
+    schemaName: 'schema',
+    deletable: true,
+    insertable: true,
+    updateable: true,
+    upsertable: false,
+    store: 'snowflake',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> SnowflakeSink
+```
 
 ## <a name="lookup-activity-properties"></a>查找活动属性
 

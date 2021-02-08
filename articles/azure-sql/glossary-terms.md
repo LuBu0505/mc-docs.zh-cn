@@ -7,18 +7,18 @@ ms.service: sql-database
 ms.subservice: service
 ms.custom: sqldbrb=4
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
-origin.date: 01/22/2020
-ms.date: 07/13/2020
-ms.openlocfilehash: 04a32a98a5f099c6abba13b90778a59ed12c8925
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+origin.date: 12/09/2020
+ms.date: 02/01/2021
+ms.openlocfilehash: eb7987771d364338c56f2dcb5df364d9c502796f
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86228034"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059835"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL 数据库术语表
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "86228034"
 |服务层|基本、标准、高级、常规用途、超大规模、业务关键|有关 vCore 模型中的服务层，请参阅 [SQL 数据库服务层级](database/service-tiers-vcore.md#service-tiers)。 有关 DTU 模型中的服务层级，请参阅 [DTU 模型](database/service-tiers-dtu.md#compare-the-dtu-based-service-tiers)。|
 |计算层|无服务器计算|[无服务器计算](database/service-tiers-vcore.md#compute-tiers)
 ||预配计算|[预配计算](database/service-tiers-vcore.md#compute-tiers)
-|计算的代|Gen5、M 系列、Fsv2 系列|[硬件代系](database/service-tiers-vcore.md#hardware-generations)
+|计算的代|Gen5|[硬件代系](database/service-tiers-vcore.md#hardware-generations)
 |服务器实体| 服务器 |[逻辑 SQL 服务器](database/logical-servers.md)|
 |资源类型|vCore|提供给单一数据库、弹性池的计算资源的 CPU 核心。 |
 ||计算大小和存储量|计算大小是可用于单一数据库、弹性池的最大 CPU、内存和其他非存储相关资源量。  存储大小是可用于单一数据库、弹性池的最大存储量。 有关 vCore 模型中的大小选项，请参阅 [vCore 单一数据库](database/resource-limits-vcore-single-databases.md)和 [vCore 弹性池](database/resource-limits-vcore-elastic-pools.md)。  (../managed-instance/resource-limits.md).  有关 DTU 模型中的大小选项，请参阅 [DTU 单一数据库](database/resource-limits-dtu-single-databases.md)和 [DTU 弹性池](database/resource-limits-dtu-elastic-pools.md)。
@@ -53,7 +53,3 @@ ms.locfileid: "86228034"
 |服务器实体|托管实例或实例| 不适用，因为 SQL 托管实例本身就是服务器 |
 |资源类型|vCore|提供给 SQL 托管实例计算资源的 CPU 核心。|
 ||计算大小和存储量|计算大小是 SQL 托管实例的最大 CPU、内存和其他非存储相关的资源量。  存储大小是可用于 SQL 托管实例的最大存储量。  对于大小调整选项，请参阅 [SQL 托管实例](managed-instance/resource-limits.md)。 |
-
-## <a name="sql-on-azure-vm"></a>Azure VM 中的 SQL
-
-此处需更多信息

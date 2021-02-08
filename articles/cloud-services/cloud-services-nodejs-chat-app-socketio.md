@@ -1,23 +1,21 @@
 ---
 title: 使用 Socket.io 构建 Node.js 应用程序 - Azure
 description: 使用本教程了解如何在 Azure 上托管一个基于 socket.IO 的聊天应用程序。 Socket.IO 为 node.js 服务器和客户端提供实时通信。
-services: cloud-services
-documentationcenter: nodejs
-author: tgore03
-ms.service: cloud-services
-ms.devlang: nodejs
 ms.topic: article
-ms.date: 10/20/2020
+ms.service: cloud-services
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.custom: devx-track-js
-ms.openlocfilehash: 2fd36ff44514094f7a646f8aaf33a3bfe4336cba
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 60c06afb53d9673e26e0a064f4daa7c6cc63b8f5
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472576"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058836"
 ---
-# <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>在 Azure 云服务中使用 Socket.IO 生成 Node.js 聊天应用程序
+# <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service-classic"></a>在 Azure 云服务（经典）中使用 Socket.IO 生成 Node.js 聊天应用程序
 
 Socket.IO 在 node.js 服务器和客户端之间提供实时通信。 本教程指导你在 Azure 上托管一个基于 socket.IO 的聊天应用程序。 有关 Socket.IO 的详细信息，请参阅 [socket.io](https://socket.io)。
 
@@ -50,7 +48,7 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。 本教程
     PS C:\> cd node
     ```
 
-4. 输入以下命令，创建一个名为 chatapp 的新解决方案和一个名为 WorkerRole1 的辅助角色   ：
+4. 输入以下命令，创建一个名为 `chatapp` 的新解决方案和一个名为 `WorkerRole1` 的辅助角色：
 
     ```powershell
     PS C:\node> New-AzureServiceProject chatapp

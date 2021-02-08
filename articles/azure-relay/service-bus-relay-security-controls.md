@@ -3,17 +3,17 @@ title: Azure 中继的安全控制
 description: 本文提供了用于评估 Azure 中继的内置安全控制清单。
 ms.topic: conceptual
 origin.date: 06/23/2020
-ms.date: 07/27/2020
+author: rockboyfor
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-author: rockboyfor
-ms.openlocfilehash: 7b05b0838292a7ed64048ce66984acbd2be25957
-ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
+ms.openlocfilehash: 575e0ede5c96afdb5c4322c36229923af1ed241b
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87162408"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063582"
 ---
 # <a name="security-controls-for-azure-relay"></a>Azure 中继的安全控制
 
@@ -25,7 +25,7 @@ ms.locfileid: "87162408"
 
 | 安全控制 | Yes/No | 注释 | 文档 |
 |---|---|--|--|
-| 服务终结点支持| 否 |  |   |
+| 专用终结点支持| 否 |  |   |
 | 网络隔离和防火墙支持| 否 |  |   |
 | 强制隧道支持| 空值 | 中继是 TLS 隧道  |   |
 
@@ -64,4 +64,4 @@ ms.locfileid: "87162408"
 
 - 详细了解[跨 Azure 服务的内置安全控制](../security/fundamentals/security-controls.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

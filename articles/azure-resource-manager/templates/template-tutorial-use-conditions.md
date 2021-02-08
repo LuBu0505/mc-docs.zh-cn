@@ -3,17 +3,17 @@ title: 在模板中使用条件
 description: 了解如何根据条件部署 Azure 资源。 演示如何部署新资源或使用现有资源。
 origin.date: 04/23/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 08/24/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 3303800367731e27258ebbfab721055b96410019
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 5d802db1ff3a9c5c4c485b25a3527a988b62934a
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022257"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063692"
 ---
 <!--Verify sucessfully-->
 # <a name="tutorial-use-condition-in-arm-templates"></a>教程：在 ARM 模板中使用条件
@@ -79,12 +79,12 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
     * `Microsoft.Network/networkInterfaces`.
     * `Microsoft.Compute/virtualMachines`.
     
-        <!-- Not Available on  [template reference](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)-->
-        <!-- Not Available on  [template reference](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)-->
-        <!-- Not Available on  [template reference](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups)-->
-        <!-- Not Available on  [template reference](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)-->
-        <!-- Not Available on  [template reference](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)-->
-        <!-- Not Available on  [template reference](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)-->
+    <!-- Not Available on  [template reference](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)-->
+    <!-- Not Available on  [template reference](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)-->
+    <!-- Not Available on  [template reference](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups)-->
+    <!-- Not Available on  [template reference](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)-->
+    <!-- Not Available on  [template reference](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)-->
+    <!-- Not Available on  [template reference](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)-->
     
     在自定义模板之前查看模板参考会很有帮助。
 
@@ -208,4 +208,4 @@ Write-Host "Press [ENTER] to continue ..."
 > [!div class="nextstepaction"]
 > [在模板部署中集成 Key Vault](./template-tutorial-use-key-vault.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

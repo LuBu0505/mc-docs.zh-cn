@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 09/16/2020
 title: 通过缓存优化性能 - Azure Databricks
 description: 了解增量缓存如何通过使用快速中间数据格式在节点的本地存储中创建远程文件的副本来加快数据读取。
-ms.openlocfilehash: f9e00f99dc961c32ec5a5775bfbf153e86da2e46
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: ad31878ab99a804f96c75483fe8371e01d82716c
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121877"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060031"
 ---
 # <a name="optimize-performance-with-caching"></a>通过缓存优化性能
 
@@ -29,10 +29,10 @@ ms.locfileid: "92121877"
 
 Azure Databricks 中提供了两种类型的缓存：增量缓存和 Apache Spark 缓存。 以下是每个类型的特征：
 
-* **存储数据的类型** ：增量缓存包含远程数据的本地副本。 它可以提高各种查询的性能，但不能用于存储任意子查询的结果。 Spark 缓存可以存储任何子查询数据的结果，以及以非 Parquet 格式（例如 CSV、JSON 和 ORC）存储的数据。
-* **性能** ：与 Spark 缓存中的数据相比，读取和操作增量缓存中的数据速度更快。 原因在于，增量缓存使用的是高效的解压缩算法，并以最佳格式输出数据，从而使用全阶段代码生成进行进一步处理。
-* **自动和手动控制** ：启用增量缓存后，必须从远程源提取的数据会自动添加到该缓存。 此过程完全透明，无需任何操作。 但若要预先将数据预加载到缓存，可以使用 `CACHE` 命令（请参阅[缓存数据子集](#cache-a-subset-of-the-data)）。 使用 Spark 缓存时，必须手动指定要缓存的表和查询。
-* **磁盘和基于内存** ：增量缓存完全存储在本地磁盘上，因此 Spark 中的其他操作不会占用内存。 由于新式 SSD 读取速度较快，因此增量缓存可以完全驻留于磁盘，并且不会对其性能产生负面影响。 相反，Spark 缓存使用内存。
+* **存储数据的类型**：增量缓存包含远程数据的本地副本。 它可以提高各种查询的性能，但不能用于存储任意子查询的结果。 Spark 缓存可以存储任何子查询数据的结果，以及以非 Parquet 格式（例如 CSV、JSON 和 ORC）存储的数据。
+* **性能**：与 Spark 缓存中的数据相比，读取和操作增量缓存中的数据速度更快。 原因在于，增量缓存使用的是高效的解压缩算法，并以最佳格式输出数据，从而使用全阶段代码生成进行进一步处理。
+* **自动和手动控制**：启用增量缓存后，必须从远程源提取的数据会自动添加到该缓存。 此过程完全透明，无需任何操作。 但若要预先将数据预加载到缓存，可以使用 `CACHE` 命令（请参阅[缓存数据子集](#cache-a-subset-of-the-data)）。 使用 Spark 缓存时，必须手动指定要缓存的表和查询。
+* **磁盘和基于内存**：增量缓存完全存储在本地磁盘上，因此 Spark 中的其他操作不会占用内存。 由于新式 SSD 读取速度较快，因此增量缓存可以完全驻留于磁盘，并且不会对其性能产生负面影响。 相反，Spark 缓存使用内存。
 
 > [!NOTE]
 >
@@ -79,7 +79,10 @@ CACHE SELECT column_name[, column_name, ...] FROM [db_name.]table_name [ WHERE b
 
 无需使用此命令即可正常使用增量缓存（首次访问时会自动缓存数据）。 但如果需要查询性能保持一致，它可能会有所帮助。
 
-有关示例和详细信息，请参阅[缓存](../../spark/latest/spark-sql/language-manual/cache-dbio.md)。
+有关示例和详细信息，请参阅
+
+* Databricks Runtime 7.x：[缓存（Azure Databricks 上的 Delta Lake）](../../spark/latest/spark-sql/language-manual/delta-cache.md)
+* Databricks Runtime 5.5 LTS 和 6.x：[缓存（Azure Databricks 上的 Delta Lake）](../../spark/2.x/spark-sql/language-manual/cache-dbio.md)
 
 ## <a name="monitor-the-delta-cache"></a>监视增量缓存
 

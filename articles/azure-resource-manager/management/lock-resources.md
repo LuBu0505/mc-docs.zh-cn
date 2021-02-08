@@ -4,17 +4,17 @@ description: 通过对所有用户和角色应用锁，来防止用户更新或�
 ms.topic: conceptual
 origin.date: 11/11/2020
 author: rockboyfor
-ms.date: 11/23/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8f2a2355dd3a977f60380fc4a44a18d4e0698c9f
-ms.sourcegitcommit: 7a5c52be6a673649ce3c845d19a9fc9b0c508734
+ms.openlocfilehash: 1d770a03423b2a8b312e111888670fe84478374f
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94915113"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063668"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源，以防止意外更改
 
@@ -33,7 +33,7 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 
 ## <a name="considerations-before-applying-locks"></a>应用锁之前的注意事项
 
-应用锁可能会导致意外结果，因为某些操作看似不会修改资源，但实际上需要执行被锁阻止的操作。 被锁阻止的一些常见操作的示例包括：
+应用锁可能会导致意外结果，因为某些操作看似不会修改资源，但实际上需要执行被锁阻止的操作。 锁会阻止需要向 Azure 资源管理器 API 发出 POST 请求的任何操作。 被锁阻止的一些常见操作的示例包括：
 
 * **存储帐户** 上的只读锁将阻止所有用户列出密钥。 列出密钥操作通过 POST 请求进行处理，因为返回的密钥可用于写入操作。
 
@@ -51,8 +51,25 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 
 若要创建或删除管理锁，必须有权执行 `Microsoft.Authorization/*` 或 `Microsoft.Authorization/locks/*` 操作。 在内置角色中，只有“所有者”和“用户访问管理员”有权执行这些操作。 
 
-<!--Not Available on ## Managed Applications and locks-->
-<!--Not Available on Azure Databricks-->
+## <a name="managed-applications-and-locks"></a>托管应用程序和锁
+
+某些 Azure 服务（如 Azure Databricks）使用[托管应用程序](../managed-applications/overview.md)来实现该服务。 在这种情况下，该服务将创建两个资源组。 一个资源组包含服务的概述，且未锁定。 另一个资源组包含服务的基础结构，且已锁定。
+
+如果尝试删除基础结构资源组，将会收到一条错误消息，指出资源组已锁定。 如果尝试删除基础结构资源组的锁，将会收到一条错误消息，指出无法删除该锁，因为它由系统应用程序所拥有。
+
+应该删除服务，这样也会删除基础结构资源组。
+
+对于托管应用程序，请选择你部署的服务。
+
+:::image type="content" source="./media/lock-resources/select-service.png" alt-text="选择服务":::
+
+请注意，服务包含 **托管资源组** 的链接。 该资源组包含基础结构且已锁定。 无法直接将其删除。
+
+:::image type="content" source="./media/lock-resources/show-managed-group.png" alt-text="显示托管组":::
+
+若要删除服务的所有内容（包括锁定的基础结构资源组），请选择该服务对应的“删除”。
+
+:::image type="content" source="./media/lock-resources/delete-service.png" alt-text="删除服务":::
 
 ## <a name="configure-locks"></a>配置锁定
 
@@ -242,10 +259,17 @@ Get-AzResourceLock -ResourceName examplesite -ResourceType Microsoft.Web/sites -
 Get-AzResourceLock -ResourceGroupName exampleresourcegroup
 ```
 
-若要删除锁，请使用：
+若要删除某个资源的锁，请使用：
 
 ```powershell
 $lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup -ResourceName examplesite -ResourceType Microsoft.Web/sites).LockId
+Remove-AzResourceLock -LockId $lockId
+```
+
+若要删除某个资源组的锁，请使用：
+
+```powershell
+$lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup).LockId
 Remove-AzResourceLock -LockId $lockId
 ```
 
@@ -283,10 +307,17 @@ az lock list --resource-group exampleresourcegroup --resource-name examplesite -
 az lock list --resource-group exampleresourcegroup
 ```
 
-若要删除锁，请使用：
+若要删除某个资源的锁，请使用：
 
 ```azurecli
 lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup --resource-type Microsoft.Web/sites --resource-name examplesite --output tsv --query id)
+az lock delete --ids $lockid
+```
+
+若要删除某个资源组的锁，请使用：
+
+```azurecli
+lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup  --output tsv --query id)
 az lock delete --ids $lockid
 ```
 

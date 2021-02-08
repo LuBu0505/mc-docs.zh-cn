@@ -2,18 +2,19 @@
 title: 什么是 Azure 中继？
 description: 本文提供 Azure 中继服务的概述。借助该服务，无需打开防火墙连接或者对网络基础设施进行彻底的改造，就能开发使用企业网络中运行的本地服务的云应用程序。
 ms.topic: conceptual
+ms.service: service-bus
 origin.date: 06/23/2020
-ms.date: 07/27/2020
+author: rockboyfor
+ms.date: 01/25/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-author: rockboyfor
-ms.openlocfilehash: 03d62514f9c5724d91c8d18a5b73f7d0e11754f3
-ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
+ms.openlocfilehash: b2e6202a36c4a992a5f27672bbbe63c17a8ab17c
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87162411"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751107"
 ---
 # <a name="what-is-azure-relay"></a>什么是 Azure 中继？
 使用 Azure 中继服务可以安全地在公有云中公开企业网络中运行的服务。 无需打开防火墙上的端口或者对企业网络基础设施进行彻底的改造就能实现此目的。 
@@ -22,7 +23,7 @@ ms.locfileid: "87162411"
 
 - 传统的单向请求/响应式通信和对等通信 
 - Internet 范围的事件分发，实现发布/订阅方案 
-- 跨网络边界的双向无缓冲套接字通信。
+- 跨网络边界的双向无缓冲套接字通信
 
 Azure 中继不同于 VPN 等网络级集成技术。 Azure 中继的范围可以限定于一台计算机上的单个应用程序终结点。 VPN 技术的侵入性更强，因为它依赖于对网络环境的改造。 
 
@@ -40,7 +41,7 @@ Azure 中继具有两项功能：
 - [混合连接](#hybrid-connections) - 使用开放标准 Web 套接字，实现多平台方案。
 - WCF 中继 - 使用 Windows Communication Foundation (WCF) 实现远程过程调用。 WCF 中继是传统的中继产品，很多客户已在其 WCF 编程模型中使用。
 
-## <a name="hybrid-connections"></a>混合连接
+## <a name="hybrid-connections"></a><a name="hybrid-connections"></a>混合连接
 
 Azure 中继的混合连接功能是以往的中继功能的安全开放协议演进。 可在任何平台中以任何语言使用此功能。 Azure 中继的混合连接功能基于 HTTP 和 WebSocket 协议。 此功能允许通过 Web 套接字或 HTTP(S) 发送请求和接收响应。 此功能与常用 Web 浏览器中的 WebSocket API 兼容。 
 
@@ -60,14 +61,14 @@ WCF 中继适用于整个 .NET Framework 和 WCF。 可以使用一套 WCF“中
 | **WCF** |x | |
 | **.NET Core** | |x |
 | **.NET framework** |x |x |
-| **Java script/Node.JS** | |x |
+| **JavaScript/Node.js** | |x |
 | **基于标准的开放协议** | |x |
 | **RPC 编程模型** | |x |
 
 ## <a name="architecture-processing-of-incoming-relay-requests"></a>体系结构：处理传入中继请求
 下图演示了 Azure 中继服务如何处理传入的中继请求：
 
-![处理传入 WCF 中继请求](./media/relay-what-is-it/ic690645.png)
+:::image type="content" source="./media/relay-what-is-it/ic690645.png" alt-text="处理传入 WCF 中继请求":::
 
 1. 侦听方客户端将侦听请求发送到 Azure 中继服务。 Azure 负载均衡器将请求路由到某个网关节点。 
 2. Azure 中继服务在网关存储中创建中继。 

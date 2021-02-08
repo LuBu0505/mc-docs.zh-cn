@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 09/11/2020
 title: 使用 JDBC 的 SQL 数据库 - Azure Databricks
 description: 了解如何使用 Azure Databricks 读取数据并将数据写入 Microsoft SQL Server、MariaDB、mySQL 和其他与 JDBC 兼容的数据库。
-ms.openlocfilehash: a5bf88332dd2a647ca96e33612018b7957c74f9e
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: 39a622b4f15076e5238e821a75a402183110d5f8
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121936"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060080"
 ---
 # <a name="sql-databases-using-jdbc"></a><a id="sql-databases-using-jdbc"> </a><a id="sql-jdbc"> </a>使用 JDBC 的 SQL 数据库
 
@@ -239,7 +239,10 @@ display(df)
 
 ## <a name="spark-sql-example"></a>Spark SQL 示例
 
-可定义一个使用 JDBC 连接的 Spark SQL 表或视图。 有关详细信息，请参阅[创建表](../../spark/latest/spark-sql/language-manual/create-table.md)和[创建视图](../../spark/latest/spark-sql/language-manual/create-view.md)。
+可定义一个使用 JDBC 连接的 Spark SQL 表或视图。 有关详细信息，请参阅：
+
+* Databricks Runtime 7.x：[CREATE TABLE USING](../../spark/latest/spark-sql/language-manual/sql-ref-syntax-ddl-create-table-datasource.md) 和 [CREATE VIEW](../../spark/latest/spark-sql/language-manual/sql-ref-syntax-ddl-create-view.md)
+* Databricks Runtime 5.5 LTS 和 6.x：[Create Table](../../spark/2.x/spark-sql/language-manual/create-table.md) 和 [Create View](../../spark/2.x/spark-sql/language-manual/create-view.md)
 
 ```sql
 CREATE TABLE <jdbcTable>

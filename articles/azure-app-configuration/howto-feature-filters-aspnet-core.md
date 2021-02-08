@@ -7,13 +7,13 @@ ms.custom: devx-track-csharp
 author: lisaguthrie
 ms.author: lcozzens
 ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: 3c4ca25cc69a0121a065848d6035c49aecc31775
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.date: 02/01/2021
+ms.openlocfilehash: cb5090663d66047e0b72352bdf8e3c97d1b025e1
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97104993"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059418"
 ---
 # <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>使用功能筛选器启用条件功能标志
 
@@ -31,7 +31,7 @@ ms.locfileid: "97104993"
 
 ## <a name="registering-a-feature-filter"></a>注册功能筛选器
 
-可以通过调用 `AddFeatureFilter` 方法并指定功能筛选器名称来注册功能筛选器。 例如，以下代码将注册 `PercentageFilter`：
+可以通过调用 `AddFeatureFilter` 方法并指定所需功能筛选器的类型名称来注册功能筛选器。 例如，以下代码将注册 `PercentageFilter`：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -56,29 +56,29 @@ public void ConfigureServices(IServiceCollection services)
     > [!div class="mx-imgBorder"]
     > ![编辑 Beta 功能标志](./media/edit-beta-feature-flag.png)
 
-1. 在“编辑”屏幕上，选择“开”单选按钮（如果它尚未处于选中状态）。 然后单击“添加筛选器”按钮。 （“开”单选按钮的标签将更改为显示“条件”。） 
+1. 在“编辑”屏幕中，选中“启用功能标志”复选框（如果尚未启用）。 然后选中“使用功能筛选器”复选框，并选择“自定义”。 
 
-1. 在“键”字段中，输入“Microsoft.Percentage”。
+1. 在“名称”字段中，选择“Microsoft.Percentage”。
 
     > [!div class="mx-imgBorder"]
     > ![添加功能筛选器](./media/feature-flag-add-filter.png)
 
-1. 单击功能筛选键旁边的上下文菜单。 单击“编辑参数”。
+1. 单击功能筛选器名称旁边的上下文菜单。 单击“编辑筛选器参数”。
 
     > [!div class="mx-imgBorder"]
     > ![编辑功能筛选器参数](./media/feature-flag-edit-filter-parameters.png)
 
-1. 将鼠标悬停在“名称”标题上，使文本框显示在网格中。 输入“值”作为“名称”，并输入“50”作为“值”。 “值”字段指示要启用功能筛选器的请求的百分比。
+1. 输入“值”作为“名称”，并输入“50”作为“值”。 “值”字段指示要启用功能筛选器的请求的百分比。
 
     > [!div class="mx-imgBorder"]
     > ![设置功能筛选器参数](./media/feature-flag-set-filter-parameters.png)
 
 1. 单击“应用”以返回到“编辑功能标志”屏幕。 然后再次单击“应用”以保存功能标志设置。
 
-1. 功能标志的状态现在显示为“条件”。 此状态指示，功能标志将根据功能筛选器强制实施的条件，基于每个请求而被启用或禁用。
+1. 现在，在“功能管理器”页上，功能标志的“功能筛选器”值为“自定义”。 
 
     > [!div class="mx-imgBorder"]
-    > ![条件功能标志](./media/feature-flag-filter-enabled.png)
+    > ![使用功能筛选器值“自定义”列出的功能标志](./media/feature-flag-filter-custom.png)
 
 ## <a name="feature-filters-in-action"></a>正在起作用的功能筛选器
 

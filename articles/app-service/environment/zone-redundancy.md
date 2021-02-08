@@ -5,15 +5,15 @@ author: ccompy
 ms.assetid: 24e3e7eb-c160-49ff-8d46-e947818ef186
 ms.topic: article
 origin.date: 07/15/2020
-ms.date: 10/09/2020
+ms.date: 02/01/2021
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 47de3ad52d90bf7f445354a78d55172ca607ed30
-ms.sourcegitcommit: 6f66215d61c6c4ee3f2713a796e074f69934ba98
+ms.openlocfilehash: 262fc9dce37d45d272708bea07618192de2f5554
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92128406"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059204"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>应用服务环境的可用性区域支持
 
@@ -79,7 +79,7 @@ ms.locfileid: "92128406"
 <!-- 
 Customers can validate that an App Service Environment is properly configured to store data in a single region by following these steps: 
 
-1. Using [Resource Explorer](https://resources.azure.com), navigate to the ARM resource for the App Service Environment.  ASEs are listed under *providers/Microsoft.Web/hostingEnvironments*.
+1. Using [Resource Explorer](https://resources.azure.com), navigate to the ARM resource for the App Service Environment.  ASEs are listed under _providers/Microsoft.Web/hostingEnvironments*.
 2. If a *zones* property exists in the view of the ARM JSON syntax, and it contains a single valued JSON array with a value of "1", "2", or "3", then the ASE is zonally deployed and customer data remains in the same region.
 2. If a *zones* property does not exist, or the property does not have valid zone value as specified earlier, then the ASE is not zonally deployed, and customer data is not exclusively stored in the same region.
 -->

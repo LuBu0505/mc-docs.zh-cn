@@ -1,28 +1,21 @@
 ---
-title: 监视 Azure 云服务
+title: 监视 Azure 云服务（经典）| Microsoft Docs
 description: 介绍监视 Azure 云服务需要涉及到哪些操作，以及可以选择哪些选项。
-services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 01/29/2018
-ms.date: 02/17/2020
-ms.author: v-yiso
-ms.openlocfilehash: 5c10a5b5cc86bf74e4e0643126696fbe6ae4f233
-ms.sourcegitcommit: 753c74533aca0310dc7acb621cfff5b8993c1d20
+ms.service: cloud-services
+ms.date: 01/25/2021
+ms.author: v-junlch
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 22a5347310ff3d1006f81bcbe39fce2f66d994fb
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92211470"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058840"
 ---
-# <a name="introduction-to-cloud-service-monitoring"></a>云服务监视简介
+# <a name="introduction-to-cloud-service-classic-monitoring"></a>云服务（经典）监视简介
 
 可以监视任何云服务的关键性能指标。 每个云服务角色收集极少量的数据：CPU 使用率、网络使用率和磁盘利用率。 如果云服务已将 `Microsoft.Azure.Diagnostics` 扩展应用到某个角色，则该角色可以收集其他数据点。 本文介绍适用于云服务的 Azure 诊断。
 
@@ -37,11 +30,11 @@ ms.locfileid: "92211470"
 
 基本监视不需要存储帐户。 
 
-![基本云服务监视磁贴](media/cloud-services-how-to-monitor/basic-tiles.png)
+![基本云服务监视磁贴](./media/cloud-services-how-to-monitor/basic-tiles.png)
 
 ## <a name="advanced-monitoring"></a>高级监视
 
-高级监视涉及到对想要监视的角色使用 **Azure 诊断** 扩展（和可选的 Application Insights SDK）。 该诊断扩展使用名为 **diagnostics.wadcfgx** 的配置文件（按角色）来配置所监视的诊断指标。 Azure 诊断扩展收集数据，并将数据存储在 Azure 存储帐户中。 在 **.wadcfgx** 、 [.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) 和 [.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) 文件中配置这些设置。 这意味着，高级监视会产生额外的成本。
+高级监视涉及到对想要监视的角色使用 **Azure 诊断** 扩展（和可选的 Application Insights SDK）。 该诊断扩展使用名为 **diagnostics.wadcfgx** 的配置文件（按角色）来配置所监视的诊断指标。 Azure 诊断扩展收集数据，并将数据存储在 Azure 存储帐户中。 在 **.wadcfgx**、[.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) 和 [.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) 文件中配置这些设置。 这意味着，高级监视会产生额外的成本。
 
 创建每个角色时，Visual Studio 会将 Azure 诊断扩展添加到其中。 此诊断扩展可收集以下类型的信息：
 
@@ -59,11 +52,11 @@ ms.locfileid: "92211470"
 
 ## <a name="setup-diagnostics-extension"></a>设置诊断扩展
 
-首先，如果你没有 **经典** 存储帐户，请 [创建一个](../storage/common/storage-account-create.md)。 确保为创建的存储帐户指定 **经典部署模型** 。
+首先，如果你没有 **经典** 存储帐户，请 [创建一个](../storage/common/storage-account-create.md)。 确保为创建的存储帐户指定 **经典部署模型**。
 
 接下来，导航到“存储帐户(经典)”资源。  选择“设置” > “访问密钥”，并复制“主连接字符串”值。 云服务需要此值。 
 
-必须更改两个配置文件才能启用高级诊断： **ServiceDefinition.csdef** 和 **ServiceConfiguration.cscfg** 。
+必须更改两个配置文件才能启用高级诊断：**ServiceDefinition.csdef** 和 **ServiceConfiguration.cscfg**。
 
 ### <a name="servicedefinitioncsdef"></a>ServiceDefinition.csdef
 
@@ -78,7 +71,7 @@ ms.locfileid: "92211470"
 
 此代码定义必须添加到每个 **ServiceConfiguration.cscfg** 文件的新设置。 
 
-很可能有两个 **.cscfg** 文件，一个名为 **ServiceConfiguration.cloud.cscfg** ，用于部署到 Azure；另一个名为 **ServiceConfiguration.local.cscfg** ，用于在模拟环境中进行本地部署。 打开并更改每个 **.cscfg** 文件。 添加名为 `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` 的设置。 将值设置为经典存储帐户的 **主连接字符串** 。 如果想要在开发计算机上使用本地存储，请使用 `UseDevelopmentStorage=true`。
+很可能有两个 **.cscfg** 文件，一个名为 **ServiceConfiguration.cloud.cscfg**，用于部署到 Azure；另一个名为 **ServiceConfiguration.local.cscfg**，用于在模拟环境中进行本地部署。 打开并更改每个 **.cscfg** 文件。 添加名为 `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` 的设置。 将值设置为经典存储帐户的 **主连接字符串**。 如果想要在开发计算机上使用本地存储，请使用 `UseDevelopmentStorage=true`。
 
 ```xml
 <ServiceConfiguration serviceName="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
@@ -86,20 +79,25 @@ ms.locfileid: "92211470"
     <Instances count="1" />
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=mystorage;AccountKey=KWwkdfmskOIS240jnBOeeXVGHT9QgKS4kIQ3wWVKzOYkfjdsjfkjdsaf+sddfwwfw+sdffsdafda/w==" />
-
-<!-- or use the local development machine for storage
+      
+      <!-- or use the local development machine for storage
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
--->
+      -->
 ```
 
 ## <a name="use-application-insights"></a>使用 Application Insights
 
 从 Visual Studio 发布云服务时，可以选择将诊断数据发送到 Application Insights。 可以在那时创建 Application Insights Azure 资源，或者将数据发送到现有 Azure 资源。 Application Insights 可以监视云服务的可用性、性能、故障和使用情况。 可将自定义图表添加到 Application Insights，以便查看最重要的数据。 在云服务项目中使用 Application Insights SDK 可以收集角色实例数据。 有关如何集成 Application Insights 的详细信息，请参阅[包含云服务的 Application Insights](../azure-monitor/app/cloudservices.md)。
 
-请注意，尽管可以使用 Application Insights 来显示通过 Windows Azure 诊断扩展指定的性能计数器（和其他设置），但是只有将 Application Insights SDK 集成到辅助角色和 Web 角色，才能获得更丰富的体验。
+请注意，尽管可以使用 Application Insights 来显示通过 Azure 诊断扩展指定的性能计数器（和其他设置），但是只有将 Application Insights SDK 集成到辅助角色和 Web 角色，才能获得更丰富的体验。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 - [了解包含云服务的 Application Insights](../azure-monitor/app/cloudservices.md)
 - [设置性能计数器](diagnostics-performance-counters.md)
+
+
+
+
+

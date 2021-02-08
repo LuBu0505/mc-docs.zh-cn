@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ab16d6fa930210424caba95d0daec1c96b67064d
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.openlocfilehash: 7230aac4d7fdd1559761ce6e395c644451acfc9f
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611613"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059954"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-net-sdk-v4"></a>快速入门：适用于 .NET 的 Azure Key Vault 证书客户端库 (SDK v4)
 
@@ -22,7 +22,7 @@ ms.locfileid: "98611613"
 
 Key Vault 客户端库资源：
 
-[API 参考文档](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.certificates) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [包 (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Certificates/)
+[API 参考文档](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.certificates?view=azure-dotnet) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [包 (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Certificates/)
 
 有关 Key Vault 和证书的详细信息，请参阅：
 - [Key Vault 概述](../general/overview.md)
@@ -30,7 +30,7 @@ Key Vault 客户端库资源：
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅 - [免费创建订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)
+* Azure 订阅 - [试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)
 * [.NET Core 3.1 SDK 或更高版本](https://dotnet.microsoft.com/download/dotnet-core)
 * [Azure CLI](/cli/install-azure-cli)
 * Key Vault - 可以使用 [Azure 门户](../general/quick-create-portal.md)、[Azure CLI](../general/quick-create-cli.md) 或 [Azure PowerShell](../general/quick-create-powershell.md) 进行创建。
@@ -39,7 +39,7 @@ Key Vault 客户端库资源：
 
 ## <a name="setup"></a>设置
 
-本快速入门结合使用 Azure Identity 库和 Azure CLI，向 Azure 服务验证用户身份。 开发人员还可以使用 Visual Studio 或 Visual Studio Code 来验证其调用。有关详细信息，请参阅[使用 Azure Identity 客户端库对客户端进行身份验证](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme?#authenticate-the-client&preserve-view=true)。
+本快速入门结合使用 Azure Identity 库和 Azure CLI，向 Azure 服务验证用户身份。 开发人员还可以使用 Visual Studio 或 Visual Studio Code 来验证其调用。有关详细信息，请参阅[使用 Azure Identity 客户端库对客户端进行身份验证](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/identity-readme?#authenticate-the-client&preserve-view=true)。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -136,9 +136,9 @@ using Azure.Security.KeyVault.Certificates;
 
 ### <a name="authenticate-and-create-a-client"></a>进行身份验证并创建客户端
 
-本快速入门使用登录用户向 Key Vault 进行身份验证，这是本地开发的首选方法。 对于部署到 Azure 的应用程序，应将托管标识分配给应用服务或虚拟机。有关详细信息，请参阅[托管标识概述](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
+本快速入门使用登录用户向 Key Vault 进行身份验证，这是本地开发的首选方法。 对于部署到 Azure 的应用程序，应将托管标识分配给应用服务或虚拟机。有关详细信息，请参阅[托管标识概述](https://docs.azure.cn/active-directory/managed-identities-azure-resources/overview)。
 
-在下面的示例中，密钥保管库的名称将扩展为密钥保管库 URI，格式为“https://\<your-key-vault-name\>.vault.azure.cn”。 此示例使用 [Azure 标识库](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)的[“DefaultAzureCredential()”](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential)类，该类允许在具有不同选项的不同环境中使用相同代码提供标识。 有关向密钥保管库进行身份验证的详细信息，请参阅[开发人员指南](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)。
+在下面的示例中，密钥保管库的名称将扩展为密钥保管库 URI，格式为“https://\<your-key-vault-name\>.vault.azure.cn”。 此示例使用 [Azure 标识库](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)的[“DefaultAzureCredential()”](https://docs.microsoft.com/zh-cn/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet)类，该类允许在具有不同选项的不同环境中使用相同代码提供标识。 有关向密钥保管库进行身份验证的详细信息，请参阅[开发人员指南](https://docs.azure.cn/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)。
 
 ```csharp
 string keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
@@ -149,7 +149,7 @@ var client = new CertificateClient(new Uri(kvUri), new DefaultAzureCredential())
 
 ### <a name="save-a-certificate"></a>保存证书
 
-在此示例中，为简单起见，可以将自签名证书与默认颁发策略一起使用。 对于此任务，请使用 [StartCreateCertificateAsync](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.certificates.certificateclient.startcreatecertificateasync) 方法。 该方法的参数接受证书名和证书策略[证书策略](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.certificates.certificatepolicy)。
+在此示例中，为简单起见，可以将自签名证书与默认颁发策略一起使用。 对于此任务，请使用 [StartCreateCertificateAsync](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.certificates.certificateclient.startcreatecertificateasync?view=azure-dotnet) 方法。 该方法的参数接受证书名和证书策略[证书策略](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.certificates.certificatepolicy?view=azure-dotnet)。
 
 ```csharp
 var operation = await client.StartCreateCertificateAsync("myCertificate", CertificatePolicy.Default);
@@ -161,7 +161,7 @@ var certificate = await operation.WaitForCompletionAsync();
 
 ### <a name="retrieve-a-certificate"></a>检索证书
 
-现在，可以使用 [GetCertificateAsync](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.certificates.certificateclient.getcertificateasync) 方法检索以前创建的证书。
+现在，可以使用 [GetCertificateAsync](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.certificates.certificateclient.getcertificateasync?view=azure-dotnet) 方法检索以前创建的证书。
 
 ```csharp
 var certificate = await client.GetCertificateAsync("myCertificate");
@@ -169,7 +169,7 @@ var certificate = await client.GetCertificateAsync("myCertificate");
 
 ### <a name="delete-a-certificate"></a>删除证书
 
-最后，让我们使用 [StartDeleteCertificateAsync](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.certificates.certificateclient.startdeletecertificateasync) 和 [PurgeDeletedCertificateAsync](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.certificates.certificateclient.purgedeletedcertificateasync) 方法从密钥保管库中删除并清除证书。
+最后，让我们使用 [StartDeleteCertificateAsync](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.certificates.certificateclient.startdeletecertificateasync?view=azure-dotnet) 和 [PurgeDeletedCertificateAsync](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.certificates.certificateclient.purgedeletedcertificateasync?view=azure-dotnet) 方法从密钥保管库中删除并清除证书。
 
 ```csharp
 var operation = await client.StartDeleteCertificateAsync("MyCertificate");
@@ -269,11 +269,11 @@ Remove-AzKeyVault -VaultName <your-unique-keyvault-name>
 ### <a name="purge-a-key-vault"></a>清除 Key Vault
 
 ```azurecli
-az keyvault purge --location chinaeast2 --name <your-unique-keyvault-name>
+az keyvault purge --location chinanorth --name <your-unique-keyvault-name>
 ```
 
 ```azurepowershell
-Remove-AzKeyVault -VaultName <your-unique-keyvault-name> -InRemovedState -Location chinaeast2
+Remove-AzKeyVault -VaultName <your-unique-keyvault-name> -InRemovedState -Location chinanorth
 ```
 
 ### <a name="delete-a-resource-group"></a>删除资源组

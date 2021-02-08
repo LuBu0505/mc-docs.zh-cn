@@ -5,15 +5,15 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 06/03/2020
+ms.date: 11/03/2020
 title: 2019 年 11 月 - Azure Databricks
 description: 新 Azure Databricks 功能和改进的 2019 年 11 月发行说明。
-ms.openlocfilehash: 8825a3b4c90022fee898110c8fccf83b23dcbbd4
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: a06b059c43cdcd03de7a3e2edbc7b9b3519609d2
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329328"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058735"
 ---
 # <a name="november-2019"></a>2019 年 11 月
 
@@ -36,7 +36,7 @@ Databricks Runtime 6.2 ML Beta 引入了许多库升级，其中包括：
 * Hyperopt：0.2-db1 与 Azure Databricks MLflow 集成。
 * mleap-databricks-runtime 到 0.15.0，包括 mleap-xgboost-runtime。
 
-有关详细信息，请参阅完整的 [Databricks Runtime 6.2 ML（不受支持）](../../runtime/6.2ml.md)发行说明。
+有关详细信息，请参阅完整的[用于机器学习的 Databricks Runtime 6.2（不受支持）](../../runtime/6.2ml.md)发行说明。
 
 ## <a name="databricks-runtime-62-beta"></a>Databricks Runtime 6.2 Beta
 
@@ -56,7 +56,7 @@ Databricks Runtime 6.2 Beta 引入了新功能、改进和许多 bug 修复，�
 
 2019 年 11 月 19 日 - 12 月 3 日：版本 3.6
 
-使用 JDBC/ODBC 将 BI 工具连接到 Azure Databricks 时，应使用 HTTP 路径的群集 ID 变体，因为它是唯一的。 群集详细信息页上的 [JDBC/ODBC 选项卡](../../../integrations/bi/jdbc-odbc-bi.md#jdbc-odbc-params)上不再显示群集名称选项。
+使用 JDBC 或 ODBC 将 BI 工具连接到 Azure Databricks 时，应使用 HTTP 路径的群集 ID 变体，因为它是唯一的。 群集详细信息页上的 [JDBC/ODBC 选项卡](../../../integrations/bi/jdbc-odbc-bi.md#get-server-hostname-port-http-path-and-jdbc-url)上不再显示群集名称选项。
 
 ## <a name="secrets-referenced-by-spark-configuration-properties-and-environment-variables-public-preview"></a>Spark 配置属性和环境变量引用的机密（公共预览版）
 

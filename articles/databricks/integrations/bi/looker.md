@@ -5,32 +5,26 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 05/22/2020
+ms.date: 11/03/2020
 title: Looker - Azure Databricks
 description: 了解如何将 Looker 与 Azure Databricks 配合使用。
-ms.openlocfilehash: 7d67d207fa5b9c8a35299fb9c71dba44ceb45498
-ms.sourcegitcommit: 16af84b41f239bb743ddbc086181eba630f7f3e8
+ms.openlocfilehash: d80c54aaeca7839fd127b112236171b610279f3f
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94589623"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058981"
 ---
 # <a name="looker"></a>Looker
 
-本文介绍如何将 Looker 与 Azure Databricks 配合使用。
+本文介绍如何将 [Looker](https://looker.com/) 与 Azure Databricks 配合使用。
 
-## <a name="step-1-download-and-install-software"></a>步骤 1：下载并安装软件
-
-下载并安装以下项：
-
-[Simba Spark JDBC 驱动程序](jdbc-odbc-bi.md#jdbc-driver)。
-
-## <a name="step-2-get-azure-databricks-connection-information"></a>步骤 2：获取 Azure Databricks 连接信息
+## <a name="step-1-get-azure-databricks-connection-information"></a>步骤 1：获取 Azure Databricks 连接信息
 
 1. 获取[个人访问令牌](../../dev-tools/api/latest/authentication.md#token-management)。
-2. 按照[服务器主机名、端口、HTTP 路径和 JDBC URL](jdbc-odbc-bi.md#jdbc-odbc-params) 中的说明，获取群集的服务器主机名、端口和 HTTP 路径。
+2. 获取服务器[主机名、端口和 HTTP 路径](jdbc-odbc-bi.md#get-server-hostname-port-http-path-and-jdbc-url)。
 
-## <a name="step-3-configure-connection-in-looker-to-an-azure-databricks-cluster"></a>步骤 3：在 Looker 中配置到 Azure Databricks 群集的连接
+## <a name="step-2-configure--azure-databricks-cluster-connection-in-looker"></a>步骤 2：在 Looker 中配置 Azure Databricks 群集连接
 
 1. 在 Looker 中，转到“管理员”>“连接”>“新数据库连接”。
 
@@ -38,10 +32,10 @@ ms.locfileid: "94589623"
    > ![群集连接参数](../../_static/images/third-party-integrations/looker/looker-spark-2-x.png)
 
 2. 输入名称和 Apache Spark 方言。
-3. 在“主机”和“端口”字段中，输入在步骤 2 中检索到的信息。
-4. 在“用户名”字段中输入 `token`，在“密码”字段中输入步骤 2 中的令牌。
+3. 在“主机”和“端口”字段中，输入在步骤 1 中检索到的信息。
+4. 在“用户名”字段中输入 ``token``，在“密码”字段中输入步骤 2 中的令牌。
 5. 如果要将查询转换为其他时区，请调整“查询时区”。
-6. 将其他参数设置为 `;transportMode=http;ssl=true;httpPath=`，并追加步骤 2 中的 HTTP 路径。
+6. 将其他参数设置为 ``looker_db;AuthMech=3;transportMode=http;ssl=1;httpPath=``，并追加步骤 1 中的 HTTP 路径。
 7. 对于剩余字段，保留默认值：
    * 不要启用持久性派生表。
    * 保持“最大连接”和“连接池超时”默认值。
@@ -49,7 +43,7 @@ ms.locfileid: "94589623"
 
 有关详细信息，请参阅 [Looker 文档](https://docs.looker.com/)。
 
-## <a name="step-4-begin-modeling-your-database-in-looker-by-creating-a-project-and-running-the-generator"></a>步骤 4：通过创建项目和运行生成器，开始在 Looker 中构建数据库模型
+## <a name="step-3-begin-modeling-your-database-in-looker-by-creating-a-project-and-running-the-generator"></a>步骤 3：通过创建项目和运行生成器，开始在 Looker 中构建数据库模型
 
 此步骤假定群集的默认数据库中存储了永久表。
 

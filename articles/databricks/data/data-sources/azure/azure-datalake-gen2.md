@@ -5,26 +5,27 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 09/11/2020
+ms.date: 01/20/2021
 title: Azure Data Lake Storage Gen2 - Azure Databricks
 description: 了解如何通过使用 Azure Databricks 来进行身份验证、读取数据以及将数据写入 Azure Data Lake Storage Gen2。
-ms.openlocfilehash: 66f3253c972930c5618c108235b3d11891befec3
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: b5727e2c592e0bd39ca1b43848f8e0452e0ab592
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121884"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059170"
 ---
 # <a name="azure-data-lake-storage-gen2"></a><a id="adls-gen2"> </a><a id="azure-data-lake-storage-gen2"> </a>Azure Data Lake Storage Gen2
 
 [Azure Data Lake Storage Gen2](/storage/data-lake-storage/introduction)（也称为 ADLS Gen2）是用于大数据分析的下一代 [data lake](https://databricks.com/discover/data-lakes/introduction) 解决方案。 Azure Data Lake Storage Gen2 将 Azure Data Lake Storage Gen1 功能（文件系统语义、文件级安全性和扩展）构建到 Azure Blob 存储中，并具有低成本分层存储、高可用性和灾难恢复功能。
 
-有四种方法可以访问 Azure Data Lake Storage Gen2：
+有多种方式可用来访问 Azure Data Lake Storage Gen2：
 
-1. 传递 Azure Active Directory 凭据，也称为[凭据传递](#adls2-aad-credentials)。
-2. 使用服务主体和 OAuth 2.0 将 Azure Data Lake Storage Gen2 文件系统装载到 DBFS。
-3. 直接使用服务主体。
-4. 直接使用 Azure Data Lake Storage Gen2 存储帐户访问密钥。
+* 传递 Azure Active Directory 凭据，也称为[凭据传递](#adls2-aad-credentials)。
+* 使用服务主体和 OAuth 2.0 将 Azure Data Lake Storage Gen2 文件系统装载到 DBFS。
+* 直接使用服务主体。
+* 使用 Azure 存储共享访问签名 (SAS) 令牌提供程序。
+* 直接使用 Azure Data Lake Storage Gen2 存储帐户访问密钥。
 
 本文介绍如何通过使用 Databricks Runtime 内置 [Azure Blob File System (ABFS) 驱动程序](/storage/data-lake-storage/abfs-driver)来访问 Azure Data Lake Storage Gen2。 还涵盖可以访问 Azure Data Lake Storage Gen2 的所有方式、常见问题和已知问题。
 
@@ -39,29 +40,26 @@ ms.locfileid: "92121884"
    > * 启用分层命名空间时，Azure Blob 存储 API 不可用。 请参阅此[已知问题说明](/storage/data-lake-storage/known-issues#blob-storage-apis)。 例如，不能使用 `wasb` 和 `wasbs` 方案来访问 `blob.core.chinacloudapi.cn` 终结点。
    > * 如果启用分层命名空间，则 Azure Blob 存储和 Azure Data Lake Storage Gen2 REST API 之间将不存在数据或操作的互操作性。
 
-2. 必须先初始化文件系统，然后才能访问它。 如果尚未从 Azure 门户中初始化文件系统，请在笔记本的第一个单元格中输入以下内容（使用帐户值）：
+2. 必须先初始化文件系统，然后才能访问它。 如果尚未从 Azure 门户中初始化文件系统，请在笔记本的第一个单元格中输入以下内容：
 
    ```scala
+    spark.conf.set(
+      "fs.azure.account.key.<storage-account-name>.dfs.core.chinacloudapi.cn",
+      dbutils.secrets.get(scope="<scope-name>",key="<storage-account-access-key-name>"))
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
    dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.chinacloudapi.cn/")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
-   每个文件系统只需运行一次，而不需每次都运行笔记本或附加到新群集。
+   其中，``<storage-account-name>`` 是你的存储帐户的名称，``dbutils.secrets.get(scope="<scope-name>",key="<storage-account-access-key-name>")`` 检索你的存储帐户访问密钥，该密钥存储为[机密作用域](../../../security/secrets/secret-scopes.md)中的一个[机密](../../../security/secrets/secrets.md)，``<file-system-name>`` 是要在 Azure Data Lake Storage Gen2 文件系统中创建的文件系统的名称。
 
-   还可以使用 OAuth 2 对文件系统初始化进行身份验证。
+   此示例使用 Azure 存储帐户访问密钥向存储帐户进行身份验证。 如果你使用其他身份验证方法（例如凭据直通），请删除第一个语句。
 
-   ```scala
-   spark.conf.set(
-     "fs.azure.account.key.<storage-account-name>.dfs.core.chinacloudapi.cn",
-     dbutils.secrets.get(scope="<scope-name>",key="<storage-account-access-key-name>"))
-   ```
-
-   其中 `<storage-account-name>` 是存储帐户的名称，`dbutils.secrets.get(scope="<scope-name>",key="<storage-account-access-key-name>")` 用于检索存储帐户访问密钥，该密钥已作为[机密](../../../security/secrets/secrets.md)存储在[机密范围](../../../security/secrets/secret-scopes.md)中）。
+    每个文件系统只需运行一次，而不需每次都运行笔记本或附加到新群集。
 
    > [!IMPORTANT]
    >
-   > Azure Data Lake Storage Gen2 文件系统验证所有提供的配置密钥，无论它们是否将用于装载或直接访问。
+   > Azure Data Lake Storage Gen2 文件系统会验证所有提供的配置密钥，无论它们是用于装载还是用于直接访问。
 
 ## <a name="access-automatically-with-your-azure-active-directory-credentials"></a><a id="access-automatically-with-your-azure-active-directory-credentials"> </a><a id="adls2-aad-credentials"> </a><a id="gen2-service-principal"> </a>使用你的 Azure Active Directory 凭据自动访问
 
@@ -215,6 +213,78 @@ val df = spark.read.parquet("abfss://<file-system-name>@<storage-account-name>.d
 dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.chinacloudapi.cn/<directory-name>")
 ```
 
+## <a name="access-directly-using-sas-token-provider"></a>使用 SAS 令牌提供程序直接进行访问
+
+你可以使用存储[共享访问签名 (SAS)](/storage/common/storage-sas-overview) 直接访问 Azure Data Lake Storage Gen2 存储帐户。 使用 SAS，你可以通过具有细粒度访问控制的临时令牌来限制对存储帐户的访问。
+
+你可以添加多个存储帐户，并在同一 Spark 会话中配置各自的 SAS 令牌提供程序。
+
+> [!IMPORTANT]
+>
+> Databricks Runtime 7.5 及更高版本中提供了 SAS 支持。 这是适用于高级用户的[试验性](../../../release-notes/release-types.md#runtime-releases)功能。
+
+### <a name="set-credentials"></a>设置凭据
+
+若要使用 SAS 访问 Azure Data Lake Storage Gen2，你需要提供 ``SASTokenProvider`` 接口的 Java 或 Scala 实现，这是 ABFS 提供的扩展点之一。 有关扩展点的详细信息，请参阅 Hadoop Azure 文档的[扩展性](https://hadoop.apache.org/docs/r3.3.0/hadoop-azure/abfs.html#extensibility)部分。
+
+此接口具有以下方法：
+
+```java
+package org.apache.hadoop.fs.azurebfs.extensions;
+
+import java.io.IOException;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.security.AccessControlException;
+
+public interface SASTokenProvider {
+  /**
+   * Initialize authorizer for Azure Blob File System.
+   * @param configuration Configuration object.
+   * @param accountName Account Name.
+   * @throws IOException network problems or similar.
+   */
+  void initialize(Configuration configuration, String accountName)
+      throws IOException;
+
+  /**
+   * Invokes the authorizer to obtain a SAS token.
+   *
+   * @param account the name of the storage account.
+   * @param fileSystem the name of the fileSystem.
+   * @param path the file or directory path.
+   * @param operation the operation to be performed on the path.
+   * @return a SAS token to perform the request operation.
+   * @throws IOException if there is a network error.
+   * @throws AccessControlException if access is denied.
+   */
+  String getSASToken(String account, String fileSystem, String path, String operation)
+      throws IOException, AccessControlException;
+}
+```
+
+有关 ``SasTokenProvider`` 接口的示例实现，请参阅 Apache Hadoop 存储库中的 [MockSASTokenProvider.java](https://github.com/apache/hadoop/blob/a89ca56a1b0eb949f56e7c6c5c25fdf87914a02f/hadoop-tools/hadoop-azure/src/test/java/org/apache/hadoop/fs/azurebfs/extensions/MockSASTokenProvider.java) 类。
+
+实现 ``SASTokenProvider`` 接口的类需要在运行时可用。 为此，可以直接在笔记本中将该实现作为[包单元格](../../../notebooks/package-cells.md)提供，也可以[附加包含该类的 jar](https://docs.databricks.com/libraries/cluster-libraries.html)。
+
+然后，可以使用以下群集配置选项注册该实现：
+
+```ini
+spark.hadoop.fs.azure.account.auth.type.<storage-account-name>.dfs.core.windows.net SAS
+spark.hadoop.fs.azure.sas.token.provider.type.<storage-account-name>.dfs.core.windows.net <class-name>
+```
+
+其中，``<class-name>`` 是 ``SASTokenProvider`` 实现的完全限定的类名。
+
+#### <a name="dataframe-or-dataset-api"></a>数据帧或数据集 API
+
+如果你使用的是 Spark 数据帧或数据集 API，建议你在笔记本的会话配置中设置 SAS 配置：
+
+```scala
+spark.conf.set("fs.azure.account.auth.type.<storage-account-name>.dfs.core.windows.net", "SAS")
+spark.conf.set("fs.azure.sas.token.provider.type.<storage-account-name>.dfs.core.windows.net", "<class-name>")
+```
+
 ## <a name="access-directly-using-the-storage-account-access-key"></a><a id="access-directly-using-the-storage-account-access-key"> </a><a id="adls-gen2-access-key"> </a>直接使用存储帐户访问密钥进行访问
 
 可使用存储帐户访问密钥访问 Azure Data Lake Storage Gen2 存储帐户。
@@ -278,9 +348,9 @@ dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.chinac
 
 ## <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
 
-**ABFS 是否支持共享访问签名 (SAS) 令牌身份验证** ？
+ABFS 是否支持 Azure 存储共享访问签名 (SAS) 令牌身份验证？
 
-ABFS 不支持 SAS 令牌身份验证，但 Azure Data Lake Storage Gen2 服务本身确实支持 SAS 密钥。
+是的，ABFS 在 Databricks Runtime 7.5 及更高版本中支持 SAS 令牌身份验证。
 
 **我可以使用 `abfs` 方案访问 Azure Data Lake Storage Gen2 吗？**
 

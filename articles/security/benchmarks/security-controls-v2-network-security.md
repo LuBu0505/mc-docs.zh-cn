@@ -4,15 +4,15 @@ description: Azure 安全基准 V2 网络安全
 author: Johnnytechn
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 01/19/2021
 ms.author: v-johya
 ms.custom: security-benchmark
-ms.openlocfilehash: 36820b98fd00c6e7c3c5de698d212af5c790cc63
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 7019c5ac141fdf8208f1e79318be077d1a859f25
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747092"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751047"
 ---
 # <a name="security-control-v2-network-security"></a>安全控制 V2：网络安全
 
@@ -20,7 +20,7 @@ ms.locfileid: "96747092"
 
 ## <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1：实现内部流量的安全性
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | NS-1 | 9.2、9.4、14.1、14.2、14.3 | AC-4、CA-3、SC-7 |
 
@@ -46,7 +46,7 @@ ms.locfileid: "96747092"
 
 ## <a name="ns-2-connect-private-networks-together"></a>NS-2：将专用网络连接在一起
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | NS-2 | 空值 | CA-3、AC-17、MA-4 |
 
@@ -72,7 +72,7 @@ ms.locfileid: "96747092"
 
 ## <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3：建立对 Azure 服务的专用网络访问
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | NS-3 | 14.1 | AC-4、CA-3、SC-7 |
 
@@ -94,7 +94,7 @@ ms.locfileid: "96747092"
 
 ## <a name="ns-4-protect-applications-and-services-from-external-network-attacks"></a>NS-4：保护应用程序和服务不受外部网络攻击
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | NS-4 | 9.5、12.3、12.9 | SC-5、SC-7 |
 
@@ -112,11 +112,13 @@ ms.locfileid: "96747092"
 
 客户安全利益干系人（[了解详细信息](https://docs.microsoft.com/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
 
-无
+- [安全体系结构](https://docs.microsoft.com/azure/cloud-adoption-framework/organize/cloud-security-architecture)
+
+- [状况管理](https://docs.microsoft.com/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
 
 ## <a name="ns-5-deploy-intrusion-detectionintrusion-prevention-systems-idsips"></a>NS-5：部署入侵检测/入侵防护系统 (IDS/IPS)
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | NS-5 | 12.6、12.7 | SI-4 |
 
@@ -142,7 +144,7 @@ ms.locfileid: "96747092"
 
 ## <a name="ns-6-simplify-network-security-rules"></a>NS-6：简化网络安全规则
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | NS-6 | 1.5 | IA-4 |
 
@@ -168,7 +170,7 @@ ms.locfileid: "96747092"
 
 ## <a name="ns-7-secure-domain-name-service-dns"></a>NS-7：安全域名服务 (DNS)
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | NS-7 | 空值 | SC-20、SC-21 |
 

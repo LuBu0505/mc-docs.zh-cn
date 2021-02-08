@@ -14,13 +14,13 @@ ms.reviewer: douglasl
 manager: digimobile
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 origin.date: 07/20/2020
-ms.date: 11/23/2020
-ms.openlocfilehash: 2ae9235b48ea74bf433f242c1c7138fb730c6804
-ms.sourcegitcommit: c89f1adcf403f5845e785064350136698eed15b8
+ms.date: 02/01/2021
+ms.openlocfilehash: 1fb6462b9540e5875278807cd5d25a3fd7c17ff3
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94680522"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060194"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用“执行 SSIS 包”活动运行 SSIS 包
 
@@ -249,8 +249,10 @@ ms.locfileid: "94680522"
       可以获取任何连接管理器的正确 SCOPE、NAME 和 PROPERTY 名称，具体方法是在 SSDT 上打开包含相应连接管理器的包。 打开包之后，选择相关连接管理器，以在 SSDT 的“属性”窗口中显示其所有属性的名称和值。 利用此信息，可以在运行时重写任何连接管理器属性的值。 
 
       ![从 SSDT 获取连接管理器属性](media/how-to-invoke-ssis-package-ssis-activity/ssdt-connection-manager-properties.png)
+
+      例如，在不修改 SSDT 上的原始包的情况下，可以通过在运行时覆盖现有连接管理器中的 ConnectByProxy、ConnectionString 和 ConnectUsingManagedIdentity 属性的值，将其在 SQL Server 上运行的本地到本地数据流转换为在 ADF 中的 SSIS IR 上运行的本地到云数据流  。
       
-      这些运行时重写可以在本地访问数据时启用自承载 IR (SHIR) 作为 SSIS IR 的代理（请参阅[将 SHIR 配置为 SSIS IR 的代理](./self-hosted-integration-runtime-proxy-ssis.md)），以及启用使用最新 MSOLEDBSQL 驱动程序、进而允许使用 ADF 托管标识进行 Azure Active Directory (AAD) 身份验证的 Azure SQL 数据库/托管实例连接（请参阅[为 OLEDB 连接配置使用 ADF 托管标识的 AAD 身份验证](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)）。
+      这些运行时重写可以在本地访问数据时启用自承载 IR (SHIR) 作为 SSIS IR 的代理（请参阅[将 SHIR 配置为 SSIS IR 的代理](./self-hosted-integration-runtime-proxy-ssis.md)），以及启用使用最新 MSOLEDBSQL 驱动程序、进而允许使用 ADF 托管标识进行 Azure Active Directory (AAD) 身份验证的 Azure SQL 数据库/托管实例连接（请参阅[为 OLEDB 连接配置使用 ADF 托管标识的 AAD 身份验证](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager#managed-identities-for-azure-resources-authentication)）。
 
       ![在“连接管理器”选项卡上通过 SSDT 设置属性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers2.png)
    

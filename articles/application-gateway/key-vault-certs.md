@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 01/27/2021
 ms.author: v-junlch
-ms.openlocfilehash: b816fd476a3ca9b5e957a2139bc4c79a266fdfbe
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: efb9cba67d546c0e51739d87490f98b5e5eb7f95
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507800"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059304"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>使用 Key Vault 证书进行 TLS 终止
 
@@ -80,4 +80,3 @@ Key Vault 集成提供了两种用于 TLS 终止的模型：
 ## <a name="next-steps"></a>后续步骤
 
 [通过 Azure PowerShell 配置使用 Key Vault 证书的 TLS 终止](configure-keyvault-ps.md)
-

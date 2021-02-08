@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 08/10/2020
 title: 2018 年 5 月 - Azure Databricks
 description: Azure Databricks 新功能和改进的 2018 年 5 月发行说明。
-ms.openlocfilehash: 8fd8daae09ddd183684f6d953c0160021c59f44b
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 29f73b97d42853c58f1dbf3c13f058c61505602e
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329233"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058749"
 ---
 # <a name="may-2018"></a>2018 年 5 月
 
@@ -87,7 +87,7 @@ Databricks Runtime ML (Beta) 为机器学习和数据科学提供了随时可用
 >
 > Databricks Runtime 4.1 ML 仅适用于高级 SKU。
 
-请参阅 [Databricks Runtime 4.1 ML (Beta)](../../runtime/4.1ml.md) 的完整发行说明。
+请参阅 [Databricks Runtime 4.1 ML（不受支持）](../../runtime/4.1ml.md)的完整发行说明。
 
 ## <a name="databricks-delta"></a>Databricks Delta
 
@@ -95,13 +95,13 @@ Databricks Runtime ML (Beta) 为机器学习和数据科学提供了随时可用
 
 Databricks Delta 现在面向 Azure Databricks 用户推出个人预览版。  请联系你的帐户管理员或在 [https://databricks.com/product/databricks-delta](https://databricks.com/product/databricks-delta) 进行注册。 此版本表示即将正式发布的正式版的候选版本。
 
-有关详细信息，请参阅 [Databricks Runtime 4.1](../../runtime/4.1.md) 和 [Delta Lake](../../../delta/index.md)。
+有关详细信息，请参阅 [Databricks Runtime 4.1（不受支持）](../../runtime/4.1.md)和 [Delta Lake 和 Delta Engine 指南](../../../delta/index.md)。
 
 ## <a name="display-support-for-image-data-types"></a>图像数据类型的 Display() 支持
 
 2018 年 5 月 17 日
 
-在 Databricks Runtime 4.1 中，`display()` 现以富 HTML 的形式呈现包含图像数据类型的列。
+在 Databricks Runtime 4.1 中，``display()`` 现以富 HTML 的形式呈现包含图像数据类型的列。
 
 请参阅[图像](../../../notebooks/visualizations/index.md#display-image-type)。
 
@@ -116,7 +116,7 @@ Azure Databricks 还提供为 GPU 配置的预安装 NVIDIA 驱动程序和库�
 另请参阅：
 
 * [支持 GPU 的群集](../../../clusters/gpu.md#gpu-clusters)
-* [机器学习和深度学习](../../../applications/machine-learning/index.md)
+* [机器学习和深度学习指南](../../../applications/machine-learning/index.md)
 
 ## <a name="secret-management-ga"></a>机密管理正式版
 
@@ -161,7 +161,7 @@ Databricks CLI 0.7.1 包括对机密命令的更新，以与这些更新的 API 
 
 2018 年 5 月 15 日：版本 2.71
 
-在此版本之前，计划在 `Terminated` 群集上运行的作业失败。 对于在 Azure Databricks 版本 2.71 及以上版本中创建的群集，来自 JDBC/ODBC 接口的命令或分配给现有终止群集的作业运行会自动重启该群集。  请参阅 [JDBC 连接](../../../integrations/bi/jdbc-odbc-bi.md#cluster-requirements)和[创建作业](../../../jobs.md#job-create)。
+在此版本之前，计划在 ``Terminated`` 群集上运行的作业失败。 对于在 Azure Databricks 版本 2.71 及以上版本中创建的群集，来自 JDBC/ODBC 接口的命令或分配给现有终止群集的作业运行会自动重启该群集。  请参阅 [JDBC 连接](../../../integrations/bi/jdbc-odbc-bi.md#workspace-cluster)和[创建作业](../../../jobs.md#job-create)。
 
 通过自动启动，可以将群集配置为自动终止，而无需手动干预来为计划的作业重启群集。 此外，还可以通过计划在指定的时间重启已终止的群集的作业来计划群集初始化。
 

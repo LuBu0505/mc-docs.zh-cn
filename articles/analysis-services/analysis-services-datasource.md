@@ -3,19 +3,19 @@ title: Azure Analysis Services 中支持的数据源 | Azure
 description: 介绍 Azure Analysis Services 中的表格 1200 和更高版本数据模型所支持的数据源和连接器。
 ms.service: azure-analysis-services
 ms.topic: conceptual
-origin.date: 08/21/2020
+origin.date: 01/21/2021
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 03/23/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: f0b90385f419e5cec78ac5f8fd2c2d194b360321
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 93abf84b967941d81c186578e4fc69d8f0193a46
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022876"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063694"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
 
@@ -122,6 +122,14 @@ ms.locfileid: "98022876"
 对于云数据源：
 
 * 如果使用 SQL 身份验证，则模拟应为服务帐户。
+
+## <a name="service-principal-authentication"></a>服务主体身份验证
+
+当 Azure Analysis Services 被指定为提供程序数据源时，它支持对 Azure SQL 数据库和 Azure Synapse 数据源使用 [MSOLEDBSQL](https://docs.microsoft.com/sql/connect/oledb/release-notes-for-oledb-driver-for-sql-server) Azure Active Directory 服务主体身份验证。
+
+```
+Provider=MSOLEDBSQL;Data Source=[server];Initial Catalog=[database];Authentication=ActiveDirectoryServicePrincipal;User ID=[Application (client) ID];Password=[Application (client) secret];Use Encryption for Data=true
+```
 
 ## <a name="oauth-credentials"></a>OAuth 凭据
 

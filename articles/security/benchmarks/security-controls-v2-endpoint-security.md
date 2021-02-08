@@ -4,15 +4,15 @@ description: Azure 安全基准 V2 终结点安全性
 author: Johnnytechn
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 01/19/2021
 ms.author: v-johya
 ms.custom: security-benchmark
-ms.openlocfilehash: c3aefc18f0d83c1e110d5e5382b46262de19504d
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 35256806aebe0147ccb34973bc862556f05cdec8
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747099"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751356"
 ---
 # <a name="security-control-v2-endpoint-security"></a>安全控制 V2：终结点安全性
 
@@ -20,7 +20,7 @@ ms.locfileid: "96747099"
 
 ## <a name="es-1-use-endpoint-detection-and-response-edr"></a>ES-1：使用终结点检测和响应 (EDR)
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | ES-1 | 8.1 | SI-2、SI-3、SC-3 |
 
@@ -48,7 +48,7 @@ Microsoft Defender 高级威胁防护在企业终结点安全平台中提供了 
 
 ## <a name="es-2-use-centrally-managed-modern-anti-malware-software"></a>ES-2：使用集中管理的新式反恶意软件
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | ES-2 | 8.1 | SI-2、SI-3、SC-3 |
 
@@ -76,7 +76,7 @@ Azure 安全中心可以自动识别针对虚拟机的多种常用反恶意软�
 
 ## <a name="es-3-ensure-anti-malware-software-and-signatures-are-updated"></a>ES-3：确保反恶意软件和签名已更新
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | ES-3 | 8.2 | SI-2、SI-3 |
 

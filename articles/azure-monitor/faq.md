@@ -7,13 +7,13 @@ ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
 origin.date: 01/23/2020
-ms.date: 01/14/2021
-ms.openlocfilehash: e802ec8af615227fd8992f93a71369593cc1a9e6
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 01/27/2021
+ms.openlocfilehash: 2b69aef6f5d7ecf08360be9e883e63b62deb412c
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230906"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059511"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题解答
 
@@ -341,7 +341,9 @@ WireData
 
 **所有** 八进制数的客户端 web 地址始终设置为 0，查找异地位置属性。
 
-### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>可在网页源中查看检测密钥。 
+默认情况下，[Application Insights JavaScript SDK](app/javascript.md) 不会在其自动完成中包含任何个人数据。 但是，应用程序中使用的一些个人数据可能会被 SDK 获取（例如，`window.title` 中的全名或 XHR URL 查询参数中的帐户 ID）。 对于自定义个人数据掩码，请添加[遥测初始化表达式](app/api-filtering-sampling.md#javascript-web-applications)。
+
+### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>可在网页源中查看检测密钥。
 
 * 这是监视解决方案的常见做法。
 * 它不能用于窃取数据。

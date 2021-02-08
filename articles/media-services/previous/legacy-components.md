@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 10/21/2020
-ms.date: 11/30/2020
+ms.date: 02/01/2021
 ms.author: v-jay
-ms.openlocfilehash: 3d516e32b4699ce787e76922a6e659e28866649d
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: ab2c584e105158a43254e795d0ad8990b7d26f24
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300852"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060184"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure 媒体服务旧组件
 
@@ -34,6 +34,16 @@ Windows Azure 媒体编码器 (WAME) 和 Azure 媒体编码器 (AME) 媒体处�
 * [从 Windows Azure 媒体编码器迁移到 Media Encoder Standard](migrate-windows-azure-media-encoder.md)
 * [从 Azure 媒体编码器迁移到 Media Encoder Standard](migrate-azure-media-encoder.md)
 
+以下媒体分析媒体处理器已弃用或即将弃用：
+
+  
+ 
+| **媒体处理器名称** | **停用日期** | **其他说明** |
+| --- | --- | ---|
+| Azure Media Indexer | 2023 年 3 月 1 日 | 此媒体处理器将替换为[媒体服务 v3 AudioAnalyzerPreset 基本模式](../latest/analyzing-video-audio-files-concept.md)。 |
+| 动作检测 | 2020 年 6 月 1 日|目前无替换计划。 |
+| 视频摘要 |2020 年 6 月 1 日|目前无替换计划。|
+
 ## <a name="next-steps"></a>后续步骤
 
-[有关从媒体服务 v2 迁移到 v3 的指导](../latest/migrate-from-v2-to-v3.md)
+[有关从媒体服务 v2 迁移到 v3 的指导](../latest/migrate-v-2-v-3-migration-introduction.md)

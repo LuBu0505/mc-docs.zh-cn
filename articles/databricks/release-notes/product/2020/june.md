@@ -5,15 +5,15 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 09/01/2020
+ms.date: 10/08/2020
 title: 2020 年 6 月 - Azure Databricks
 description: Azure Databricks 新增功能和改进的 2020 年 6 月发行说明。
-ms.openlocfilehash: 637ca94ce659749f0818c837fc03b053c1580564
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 8c3a067c771f168ffce44c3f61442ffc0a946582
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329159"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058717"
 ---
 # <a name="june-2020"></a>2020 年 6 月
 
@@ -40,7 +40,7 @@ Databricks Runtime 7.0 ML 基于 Databricks Runtime 7.0 构建，包含以下新
 * 新添加的 Python 包 lightgbm、nltk、petastorm 和 plotly。
 * RStudio Server 开源版 v1.2。
 
-有关详细信息，请参阅完整的 [Databricks Runtime 7.0 ML](../../runtime/7.0ml.md) 发行说明。
+有关详细信息，请参阅完整的 [Databricks Runtime 7.0 ML（不受支持）](../../runtime/7.0ml.md)发行说明。
 
 ## <a name="databricks-runtime-70-ga-powered-by-apache-spark-30"></a>Databricks Runtime 7.0 正式版，由 Apache Spark 3.0 提供支持
 
@@ -59,10 +59,10 @@ Spark 3.0 引入了许多其他功能和改进，包括：
 Databricks Runtime 7.0 添加了以下内容：
 
 * 经过改进的[自动加载程序](../../../spark/latest/structured-streaming/auto-loader.md)，用于在 ETL 过程中新的数据文件到达云 Blob 存储时以增量方式处理这些文件。
-* 经过改进的 [COPY INTO 命令](../../../spark/latest/spark-sql/language-manual/copy-into.md)，用于通过幂等重试将数据加载到 Delta Lake 中。
+* 经过改进的 [COPY INTO 命令](../../../spark/latest/spark-sql/language-manual/delta-copy-into.md)，用于通过幂等重试将数据加载到 Delta Lake 中。
 * 许多改进、库添加件和升级以及 bug 修复。
 
-有关详细信息，请参阅完整的 [Databricks Runtime 7.0](../../runtime/7.0.md) 发行说明。
+有关详细信息，请参阅完整的 [Databricks Runtime 7.0（不受支持）](../../runtime/7.0.md)发行说明。
 
 ## <a name="databricks-runtime-70-for-genomics-ga"></a>用于基因组学的 Databricks Runtime 7.0 正式版
 
@@ -73,7 +73,7 @@ Databricks Runtime 7.0 添加了以下内容：
 * ADAM 库已从版本 0.30.0 更新到 0.32.0。
 * Hail 库未包含在用于基因组学 Databricks Runtime 7.0 中，原因是没有基于 Apache Spark 3.0 的版本。
 
-有关详细信息，请参阅[用于基因组学的 Databricks Runtime 7.0](../../runtime/7.0genomics.md) 的完整发行说明。
+有关详细信息，请参阅完整的[用于基因组学的 Databricks Runtime 7.0（不受支持）](../../runtime/7.0genomics.md)发行说明。
 
 ## <a name="stage-dependent-access-controls-for-mlflow-models"></a>用于 MLflow 模型的依赖于阶段的访问控制
 
@@ -87,7 +87,7 @@ Databricks Runtime 7.0 添加了以下内容：
 
 **2020 年6月 16日 - 23 日：版本 3.22**
 
-使用 shift + enter [运行笔记本单元格](../../../notebooks/notebooks-use.md#run-a-cell)时，默认的笔记本行为是在单元格不可见时自动滚动到下一个单元格。 现在，可以在 ![“帐户”图标](../../../_static/images/account-settings/account-icon.png) >“用户设置”>“笔记本设置”中禁用自动滚动。 如果禁用自动滚动，则在使用 shift + enter 时焦点将移到下一个单元格，但笔记本不滚动到该单元格。
+使用 shift + enter [运行笔记本单元格](../../../notebooks/notebooks-use.md#run-a-cell)时，默认的笔记本行为是在单元格不可见时自动滚动到下一个单元格。 现在，可以在 ![“帐户”图标](../../../_static/images/icons/account-icon.png) >“用户设置”>“笔记本设置”中禁用自动滚动。 如果禁用自动滚动，则在使用 shift + enter 时焦点将移到下一个单元格，但笔记本不滚动到该单元格。
 
 ## <a name="metastore-ip-addresses-to-change-on-june-30-2020"></a>将于 2020 年 6 月 30 日更改元存储 IP 地址
 

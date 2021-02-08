@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 08/31/2020
 title: 简介 - Azure Databricks
 description: 了解 Delta Lake 的功能和资源以了解 Delta Lake。
-ms.openlocfilehash: db85bba91f6fd78ee041e869db9fb83fcfaa7c36
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: f36456c895c83a62446ef0bb486dbaecf5c54860
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121889"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059965"
 ---
 # <a name="introduction"></a>简介
 
@@ -41,5 +41,5 @@ Delta Lake 快速入门概述了使用 Delta Lake 的基础知识。 本[快速�
 ## <a name="resources"></a>资源
 
 * 有关常见问题的解答，请参阅[常见问题 (FAQ)](delta-faq.md)。
-* 有关 Delta Lake SQL 命令的参考信息，请参阅[适用于 SQL 开发人员的 Azure Databricks](../spark/latest/spark-sql/index.md)。
+* 有关 Delta Lake SQL 命令的参考信息，请参阅 [Delta Lake 语句](../spark/latest/spark-sql/language-manual/index.md#delta-lake-statements)。
 * 有关更多资源（包括博客文章、讨论和示例），请参阅[资源](delta-resources.md)。

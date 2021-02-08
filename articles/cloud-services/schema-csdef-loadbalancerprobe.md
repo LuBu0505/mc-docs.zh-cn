@@ -1,25 +1,19 @@
 ---
 title: Azure 云服务定义LoadBalancerProbe 架构 | Microsoft Docs
-ms.custom: ''
-origin.date: 04/14/2015
-ms.date: 11/06/2017
-ms.prod: azure
-ms.reviewer: ''
+description: 客户定义的 LoadBalancerProbe 是角色实例中终结点的运行状况探测。 它与服务定义文件中的 Web 角色或辅助角色组合使用。
+ms.topic: article
 ms.service: cloud-services
-ms.suite: ''
-ms.tgt_pltfrm: ''
-ms.topic: reference
-ms.assetid: 113374a8-8072-4994-9d99-de391a91e6ea
-caps.latest.revision: 14
-author: thraka
-ms.author: v-yiso
-manager: timlt
-ms.openlocfilehash: 3e2508ad7f767af468fdd3d9322b11c8678a809f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 01/25/2021
+ms.author: v-junlch
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 056dbede29c3468fed804a2d11e2c1948d01e18d
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63847853"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058781"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure 云服务定义 LoadBalancerProbe 架构
 负载均衡器探测是由客户定义的，用于探测 UDP 终结点和角色实例中的终结点的运行状况。 `LoadBalancerProbe` 不是一个独立的元素；它在服务定义文件中与 Web 角色或辅助角色结合。 `LoadBalancerProbe` 可由多个角色使用。
@@ -60,9 +54,9 @@ Azure 负载均衡器负责将传入流量路由到角色实例。 负载均衡�
 
 下表描述 `LoadBalancerProbe` 元素的属性：
 
-|属性|类型|说明|
+|Attribute|类型|说明|
 | ------------------- | -------- | -----------------|
-| `name`              | `string` | 必需。 负载均衡器探测的名称。 此名称必须唯一。|
+| `name`              | `string` | 必需。 负载均衡器探测的名称。 该名称必须是唯一的。|
 | `protocol`          | `string` | 必需。 指定终结点的协议。 可能的值为 `http` 或 `tcp`。 如果已指定 `tcp`，则需要接收到的 ACK 才可完成进行探测。 如果已指定 `http`，则需要来自指定 URI 的 200 正常响应才可成功完成探测。|
 | `path`              | `string` | 用于从 VM 请求运行状况的 URI。 如果 `protocol` 设置为 `http`，则需要 `path`。 否则，不允许使用该属性。<br /><br /> 没有默认值。|
 | `port`              | `integer` | 可选。 用于传达探测的端口。 这对任何终结点都是可选的，因为相同的端口之后会用于探测。 还可为探测配置其他端口。 可能的值介于 1 和 65535（含）之间。<br /><br /> 默认值由终结点设置。|

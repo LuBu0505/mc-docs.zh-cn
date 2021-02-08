@@ -3,15 +3,15 @@ title: Azure Functions HTTP 触发器
 description: 了解如何通过 HTTP 调用 Azure 函数。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 09/28/2020
+ms.date: 01/27/2021
 ms.author: v-junlch
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 59688ab28cb1aca2db481e0b570ab3826fea3951
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: dafc5d193d047da3bd7717c191ef6b5426ac3c08
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937427"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059696"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 触发器
 
@@ -43,11 +43,15 @@ public static async Task<IActionResult> Run(
     log.LogInformation("C# HTTP trigger function processed a request.");
 
     string name = req.Query["name"];
-
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    
+    string requestBody = String.Empty;
+    using (StreamReader streamReader =  new  StreamReader(req.Body))
+    {
+        requestBody = await streamReader.ReadToEndAsync();
+    }
     dynamic data = JsonConvert.DeserializeObject(requestBody);
     name = name ?? data?.name;
-
+    
     return name != null
         ? (ActionResult)new OkObjectResult($"Hello, {name}")
         : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
@@ -100,11 +104,15 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
     log.LogInformation("C# HTTP trigger function processed a request.");
 
     string name = req.Query["name"];
-
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    
+    string requestBody = String.Empty;
+    using (StreamReader streamReader =  new  StreamReader(req.Body))
+    {
+        requestBody = await streamReader.ReadToEndAsync();
+    }
     dynamic data = JsonConvert.DeserializeObject(requestBody);
     name = name ?? data?.name;
-
+    
     return name != null
         ? (ActionResult)new OkObjectResult($"Hello, {name}")
         : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
@@ -476,17 +484,17 @@ PowerShell 不支持特性。
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 function.json 文件和 `HttpTrigger` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `HttpTrigger` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-| **type** | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
+| type  | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
 | **direction** | 不适用| 必需 - 必须设置为 `in`。 |
-| name | 不适用| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
+| **name** | 不适用| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
 | <a name="http-auth"></a>**authLevel** |  AuthLevel |确定请求中需要提供的密钥（如果有），以便调用此函数。 授权级别可以是以下值之一： <ul><li><code>anonymous</code>&mdash;无需 API 密钥。</li><li><code>function</code>&mdash;特定于函数的 API 密钥是必需的。 如果未提供任何值，该值为默认值。</li><li><code>admin</code>&mdash;无需主密钥。</li></ul> 有关详细信息，请参阅有关[授权密钥](#authorization-keys)的部分。 |
 | methods |**方法** | HTTP 方法的数组，该函数将响应此方法。 如果未指定，该函数将响应所有 HTTP 方法。 请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
 | route | **Route** | 定义路由模板，控制函数将响应的请求 URL。 如果未提供任何值，则默认值为 `<functionname>`。 有关详细信息，请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
-| webHookType | WebHookType | 仅支持 1.x 版运行时。<br/><br/>将 HTTP 触发器配置为充当指定提供程序的 `webhook` 接收器。 如果未设置此属性，请不要设置 `methods` 属性。 Webhook 类型可以是以下值之一：<ul><li><code>genericJson</code>&mdash;不包含特定提供程序逻辑的常规用途 webhook 终结点。 此设置会将请求限制为仅请求使用 HTTP POST 以及内容类型为 `application/json`。</li><li><code>github</code>&mdash;该函数响应 `GitHub webhooks`。 不要对 GitHub Webhook 使用 authLevel 属性。 有关详细信息，请参阅本文后面的“GitHub Webhook”部分。</li><li><code>slack</code>&mdash;该函数响应 [Slack Webhook](https://api.slack.com/outgoing-webhooks)。 不要对 Slack Webhook 使用 authLevel 属性。 有关详细信息，请参阅本文后面的“Slack Webhook”部分。</li></ul>|
+| webHookType | WebHookType | 仅支持 1.x 版运行时。<br/><br/>将 HTTP 触发器配置为充当指定提供程序的 `webhook` 接收器。 如果未设置此属性，请不要设置 `methods` 属性。 Webhook 类型可以是以下值之一：<ul><li><code>genericJson</code>&mdash;不包含特定提供程序逻辑的常规用途 webhook 终结点。 此设置会将请求限制为仅请求使用 HTTP POST 以及内容类型为 `application/json`。</li><li><code>github</code>&mdash;该函数响应 [GitHub Webhook](https://developer.github.com/webhooks/)。 不要对 GitHub Webhook 使用 authLevel 属性。 有关详细信息，请参阅本文后面的“GitHub Webhook”部分。</li><li><code>slack</code>&mdash;该函数响应 [Slack Webhook](https://api.slack.com/outgoing-webhooks)。 不要对 Slack Webhook 使用 authLevel 属性。 有关详细信息，请参阅本文后面的“Slack Webhook”部分。</li></ul>|
 
 ## <a name="payload"></a>有效负载
 
@@ -658,6 +666,10 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 }
 ```
 
+使用路由参数时，会自动为函数创建 `invoke_URL_template`。 你的客户端可以使用 URL 模板来了解在使用 URL 调用函数时需要在 URL 中传递的参数。 在 [Azure 门户](https://portal.azure.cn)中导航到某个 HTTP 触发的函数，然后选择“获取函数 URL”。
+
+可以通过用于[列出函数](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctions)或[获取函数](https://docs.microsoft.com/rest/api/appservice/webapps/getfunction)的 Azure 资源管理器 API 以编程方式访问 `invoke_URL_template`。
+
 ## <a name="working-with-client-identities"></a>使用客户端标识
 
 如果函数应用使用[应用服务身份验证/授权](../app-service/overview-authentication-authorization.md)，则可通过代码查看有关已验证身份的客户端的信息。 此信息以[平台注入的请求标头](../app-service/app-service-authentication-how-to.md#access-user-claims)的形式提供。
@@ -751,11 +763,17 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 ## <a name="obtaining-keys"></a>获取密钥
 
-密钥作为 Function App 的一部分存储在 Azure 中，并进行了静态加密。 若要查看密钥，请创建新的密钥或将密钥滚动到新值，在 [Azure 门户](https://portal.azure.cn)中导航到某个 HTTP 触发的函数，然后选择“管理”。
+密钥作为 Function App 的一部分存储在 Azure 中，并进行了静态加密。 若要查看密钥，请创建新的密钥或将密钥滚动更新到新值，在 [Azure 门户](https://portal.azure.cn)中导航到某个 HTTP 触发的函数，然后选择“函数密钥”。
 
-![在门户中管理函数密钥。](./media/functions-bindings-http-webhook/manage-function-keys.png)
+你还可以管理主机密钥。 在 [Azure 门户](https://portal.azure.cn)中导航到函数应用，并选择“应用密钥”。
 
-可以使用[密钥管理 API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) 以编程方式获取函数密钥。
+可以使用 Azure 资源管理器 API 以编程方式获取函数和主机密钥。 存在[列出函数密钥](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctionkeys)和[列出主机密钥](https://docs.microsoft.com/rest/api/appservice/webapps/listhostkeys)的 API，使用部署槽时，等效的 API 是[列出函数密钥槽](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctionkeysslot)和[列出主机密钥槽](https://docs.microsoft.com/rest/api/appservice/webapps/listhostkeysslot)。
+
+你还可以使用[创建或更新函数机密](https://docs.microsoft.com/rest/api/appservice/webapps/createorupdatefunctionsecret)、[创建或更新函数机密槽](https://docs.microsoft.com/rest/api/appservice/webapps/createorupdatefunctionsecretslot)、[创建或更新主机机密](https://docs.microsoft.com/rest/api/appservice/webapps/createorupdatehostsecret)和[创建或更新主机机密槽](https://docs.microsoft.com/rest/api/appservice/webapps/createorupdatehostsecretslot) API 以编程方式创建新的函数和主机密钥。
+
+可以使用[删除函数机密](https://docs.microsoft.com/rest/api/appservice/webapps/deletefunctionsecret)、[删除函数机密槽](https://docs.microsoft.com/rest/api/appservice/webapps/deletefunctionsecretslot)、[删除主机机密](https://docs.microsoft.com/rest/api/appservice/webapps/deletehostsecret)和[删除主机机密槽](https://docs.microsoft.com/rest/api/appservice/webapps/deletehostsecretslot) API 以编程方式删除函数和主机密钥。
+
+你也可以使用[旧的密钥管理 API 来获取函数密钥](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)，但建议改用 Azure 资源管理器 API。
 
 ## <a name="api-key-authorization"></a>API 密钥的授权
 
@@ -825,4 +843,3 @@ HTTP 请求长度限制为 100 MB（104,857,600 字节），并且 URL 长度限
 ## <a name="next-steps"></a>后续步骤
 
 - [从函数返回 HTTP 响应](./functions-bindings-http-webhook-output.md)
-

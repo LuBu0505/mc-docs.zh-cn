@@ -5,18 +5,18 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 04/29/2020
+ms.date: 11/17/2020
 title: 访问管理控制台 - Azure Databricks
 description: 了解如何访问 Azure Databricks 管理控制台。
-ms.openlocfilehash: c8559c9d7f93dcdad0e53a1877fd874b787b9e04
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: edde823f8916024542f582603d1788f1ea36755d
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106738"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060154"
 ---
 # <a name="access-the-admin-console"></a>访问管理控制台
 
-若要访问管理控制台，请转到工作区 UI 的右上方，单击 ![“帐户”图标](../_static/images/account-settings/account-icon.png) 用户帐户图标，然后选择“管理控制台”。
+若要访问管理控制台，请转到工作区 UI 的右上方，单击 ![“帐户”图标](../_static/images/icons/account-icon.png) 用户帐户图标，然后选择“管理控制台”。
 
-你必须是具有[管理员权限](users-groups/users.md)的用户才能访问管理控制台。
+只有 Azure Databricks [管理员](users-groups/users.md)可访问管理控制台。

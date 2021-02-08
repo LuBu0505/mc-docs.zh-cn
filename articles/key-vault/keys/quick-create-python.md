@@ -1,20 +1,20 @@
 ---
-title: 快速入门 – Azure Key Vault Python 客户端库 – 管理密钥
+title: 快速入门 - Azure Key Vault Python 客户端库 - 管理密钥
 description: 了解如何使用 Python 客户端库在 Azure Key Vault 中创建、检索和删除密钥
 author: msmbaldwin
 ms.author: v-tawe
 origin.date: 09/03/2020
-ms.date: 11/27/2020
+ms.date: 01/18/2021
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: af6f1842eeb06a4d9178e3044d06fd9fe4bb163a
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: d5abd1a709a34b691e24714c5256c632b6c152ee
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97105110"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058450"
 ---
 # <a name="quickstart-azure-key-vault-keys-client-library-for-python"></a>快速入门：适用于 Python 的 Azure Key Vault 客户端密钥库
 
@@ -24,7 +24,7 @@ ms.locfileid: "97105110"
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅 - [免费创建订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+- Azure 订阅 - [创建一个](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 - [Python 2.7+ 或 3.5.3+](https://docs.microsoft.com/azure/developer/python/configure-local-development-environment)
 - [Azure CLI](/cli/install-azure-cli)
 
@@ -32,7 +32,7 @@ ms.locfileid: "97105110"
 
 ## <a name="set-up-your-local-environment"></a>设置本地环境
 
-本快速入门结合使用 Azure Identity 库和 Azure CLI，向 Azure 服务验证用户身份。 开发人员还可以使用 Visual Studio 或 Visual Studio Code 来验证其调用。有关详细信息，请参阅[使用 Azure Identity 客户端库对客户端进行身份验证](https://docs.microsoft.com/java/api/overview/azure/identity-readme)。
+本快速入门结合使用 Azure Identity 库和 Azure CLI，向 Azure 服务验证用户身份。 开发人员还可以使用 Visual Studio 或 Visual Studio Code 来验证其调用。有关详细信息，请参阅[使用 Azure Identity 客户端库对客户端进行身份验证](https://docs.microsoft.com/en-us/java/api/overview/azure/identity-readme?view=azure-java-stable)。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -88,7 +88,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS 或 Linux
@@ -181,7 +181,7 @@ rsa_key = client.create_rsa_key(keyName, size=2048)
 retrieved_key = client.get_key(keyName)
  ```
 
-还可以使用 Azure CLI 命令 [az keyvault key show](/cli/keyvault/key#az-keyvault-key-show) 来验证是否设置了密钥。
+还可以使用 Azure CLI 命令 [az keyvault key show](/cli/keyvault/key?#az-keyvault-key-show) 来验证是否设置了密钥。
 
 ### <a name="delete-a-key"></a>删除密钥
 

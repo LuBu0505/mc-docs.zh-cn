@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 09/24/2020
 title: 数据库和表 - Azure Databricks
 description: 了解如何在 Azure Databricks 中查看、创建和管理表和数据库。
-ms.openlocfilehash: bf1eb51b50fc94b875856477f9a9bb8c8636f85b
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: 39c1e28881bbf774e3fa148bc877f2ce5457eb6e
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121950"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060033"
 ---
 # <a name="databases-and-tables"></a><a id="databases-and-tables"> </a><a id="tables"> </a>数据库和表
 
@@ -29,14 +29,14 @@ Azure Databricks 数据库是表的集合。 Azure Databricks 表是结构化数
 
 ## <a name="view-databases-and-tables"></a>查看数据库和表
 
-单击边栏中的![数据图标](../_static/images/tables/data-icon.png)。  Azure Databricks 选择一个你有权访问的正在运行的群集。 “数据库”文件夹显示已选定 `default` 数据库的数据库的列表。 “表”文件夹显示 `default` 数据库中的表列表。
+单击边栏中的![数据图标](../_static/images/icons/data-icon.png)。  Azure Databricks 选择一个你有权访问的正在运行的群集。 “数据库”文件夹显示已选定 ``default`` 数据库的数据库的列表。 “表”文件夹显示 ``default`` 数据库中的表列表。
 
 > [!div class="mx-imgBorder"]
 > ![创建表列表](../_static/images/tables/default-database.png)
 
 可从“数据库”菜单更改群集，[创建表 UI](#create-table-ui) 或[查看表 UI](#view-table-ui)。 例如，在“数据库”菜单中：
 
-1. 单击 ![“数据库”文件夹顶部的](../_static/images/down-caret.png) 向下脱字号。
+1. 单击 ![“数据库”文件夹顶部的](../_static/images/icons/down-caret.png) 向下脱字号。
 2. 选择一个群集。
 
    > [!div class="mx-imgBorder"]
@@ -50,7 +50,10 @@ Azure Databricks 数据库是表的集合。 Azure Databricks 表是结构化数
 CREATE DATABASE <database-name> ...
 ```
 
-有关更多选项，请参阅[创建数据库](../spark/latest/spark-sql/language-manual/create-database.md)。
+有关更多选项，请参阅
+
+* Databricks Runtime 7.x：[CREATE DATABASE](../spark/latest/spark-sql/language-manual/sql-ref-syntax-ddl-create-database.md)
+* Databricks Runtime 5.5 LTS 和 6.x：[创建数据库](../spark/2.x/spark-sql/language-manual/create-database.md)
 
 ## <a name="create-a-table"></a>创建表
 
@@ -63,15 +66,11 @@ CREATE DATABASE <database-name> ...
 > 使用 UI 创建表时，无法
 >
 > * 在使用[高并发群集](../clusters/configure.md#high-concurrency)时上传文件。 相反，请使用 [Databricks 文件系统 (DBFS)](databricks-file-system.md) 将数据加载到 Azure Databricks 中。
-> * 稍后更新该表。 相反，[以编程方式](#create-table-programmatically)创建表。
-
-> [!NOTE]
->
-> 管理员用户可禁用此功能。 请查看[管理数据上传](../administration-guide/workspace/dbfs-ui-upload.md)。
+> * 更新该表。 相反，[以编程方式](#create-table-programmatically)创建表。
 
 使用 UI 创建表时，将创建一个全局表。
 
-1. 单击 ![边栏中的](../_static/images/tables/data-icon.png) 数据图标。 显示“数据库”和“表”文件夹。
+1. 单击 ![边栏中的](../_static/images/icons/data-icon.png) 数据图标。 显示“数据库”和“表”文件夹。
 2. 在“数据库”文件夹中，选择一个数据库。
 3. 在“表”文件夹的上方，单击“添加数据”。
 
@@ -79,9 +78,7 @@ CREATE DATABASE <database-name> ...
 
 4. 选择一个数据源，然后按照步骤配置该表。
 
-   > [!IMPORTANT]
-   >
-   > 表名只能包含小写字母数字字符和下划线，且必须以小写字母或下划线开头。
+   默认情况下启用“上传文件”选项。 如果 Azure Databricks 管理员已[禁用此功能](../administration-guide/workspace/dbfs-ui-upload.md)，你将没有上传文件的选项，但可以使用其他数据源中的文件创建表。
 
    > [!div class="mx-imgBorder"]
    > ![配置表](../_static/images/tables/import-table-azure.png)
@@ -102,8 +99,8 @@ CREATE DATABASE <database-name> ...
    1. 单击“使用 UI 创建表”。
    1. 在群集下拉列表中，选择一个群集。
 5. 单击“预览表”以查看表。
-6. 在“表名称”字段中，可选择性地替代默认表名称。
-7. 在“在数据库中创建”字段中，可选择性地替代所选的 `default` 数据库。
+6. 在“表名称”字段中，可选择性地替代默认表名称。 表名只能包含小写字母数字字符和下划线，且必须以小写字母或下划线开头。
+7. 在“在数据库中创建”字段中，可选择性地替代所选的 ``default`` 数据库。
 8. 在“文件类型”字段中，可选择性地替代推断得到的文件类型。
 9. 如果文件类型为 CSV：
    1. 在“列分隔符”字段中，选择是否要替代推断得到的分隔符。
@@ -131,7 +128,7 @@ CREATE DATABASE <database-name> ...
 CREATE TABLE <table-name> ...
 ```
 
-有关更多选项，请参阅[创建表](../spark/latest/spark-sql/language-manual/create-table.md)。
+有关更多选项，请参阅[创建表](../spark/2.x/spark-sql/language-manual/create-table.md)。
 
 用 Python 或 Scala 从数据帧创建全局表：
 
@@ -164,7 +161,7 @@ spark.read.format("csv").option("header","true")\
 
 表详细信息视图显示了表架构和示例数据。
 
-1. 单击 ![边栏中的](../_static/images/tables/data-icon.png) 数据图标。
+1. 单击 ![边栏中的](../_static/images/icons/data-icon.png) 数据图标。
 2. 在“数据库”文件夹中单击数据库。
 3. 在“表”文件夹中单击表名称。
 4. 在“群集”下拉列表中，可另外选择一个要呈现表预览的群集。
@@ -234,8 +231,8 @@ REFRESH TABLE <table-name>
 
 ###  <a name="delete-a-table-using-the-ui"></a>使用 UI 删除表
 
-1. 单击 ![边栏中的](../_static/images/tables/data-icon.png) 数据图标。
-2. 单击表名称旁边的![菜单下拉列表](../_static/images/menu-dropdown.png)，然后选择“删除”。
+1. 单击 ![边栏中的](../_static/images/icons/data-icon.png) 数据图标。
+2. 单击表名称旁边的![菜单下拉列表](../_static/images/icons/menu-dropdown.png)，然后选择“删除”。
 
 ### <a name="delete-a-table-programmatically"></a>以编程方式删除表
 

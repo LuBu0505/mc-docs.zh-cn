@@ -1,23 +1,21 @@
 ---
-title: 处理影响 Azure 云服务的 Azure 服务中断
-titleSuffix: Azure Cloud Services
+title: 处理影响 Azure 云服务（经典）的 Azure 服务中断
 description: 了解发生影响 Azure 云服务的 Azure 服务中断时该怎么办。
-services: cloud-services
-documentationcenter: ''
-author: mmccrory
-ms.service: cloud-services
-ms.workload: cloud-services
 ms.topic: article
-ms.date: 10/20/2020
+ms.service: cloud-services
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: d874c1558eecaf15b27efb4bd3500a7f67c042ee
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 78eefaa18ad5be3d62c97a12f318640379129dcd
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92471806"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059288"
 ---
-# <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>发生影响 Azure 云服务的 Azure 服务中断时该怎么办
+# <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services-classic"></a>发生影响 Azure 云服务（经典）的 Azure 服务中断时该怎么办 
 Microsoft 的同仁兢兢业业，只为确保在任何时候都能提供需要的服务。 但有时候会因为不可抗力的影响，造成服务意外中断。
 
 Microsoft 为其服务提供服务级别协议 (SLA)，作为运行时间和连接承诺。 可以在 [Azure 服务级别协议](https://www.azure.cn/support/legal/sla/)中找到各种 Azure 服务的 SLA。

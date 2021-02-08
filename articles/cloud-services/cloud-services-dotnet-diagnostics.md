@@ -1,31 +1,29 @@
 ---
-title: 如何将 Azure 诊断 (.NET) 与云服务配合使用 | Microsoft Docs
+title: 如何将 Azure 诊断 (.NET) 与云服务（经典）配合使用 | Microsoft Docs
 description: 使用 Azure 诊断从 Azure 云服务收集数据，以用于调试、衡量性能、监视和流量分析等目的。
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-manager: carmonm
-ms.service: cloud-services
-ms.devlang: dotnet
-ms.custom: devx-track-csharp
 ms.topic: article
-ms.date: 10/20/2020
+ms.service: cloud-services
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: ce141dd06954fbec20c96895a74cc4f137182300
-ms.sourcegitcommit: f436acd1e2a0108918a6d2ee9a1aac88827d6e37
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 4c366908564f5af871b08b34d504da5017275e88
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96509036"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059281"
 ---
-# <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>在 Azure 云服务中启用 Azure 诊断
-有关 Azure 诊断的背景信息，请参阅 [Azure 诊断概述](../azure-monitor/platform/diagnostics-extension-overview.md)。
+# <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>在 Azure 云服务（经典）中启用 Azure 诊断 
+
+有关 Azure 诊断的背景信息，请参阅 [Azure 诊断概述](../azure-diagnostics.md)。
 
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>如何在辅助角色中启用诊断
 本演练介绍如何实现使用 .NET EventSource 类发出遥测数据的 Azure 辅助角色。 Azure Diagnostics 用于收集遥测数据，并将其存储在一个 Azure 存储帐户中。 创建辅助角色时，Visual Studio 将在适用于 .NET 2.4 和更低版本的 Azure SDK 中，自动启用 Diagnostics 1.0 作为解决方案的一部分。 以下说明介绍了创建辅助角色、从解决方案禁用 Diagnostics 1.0，以及在辅助角色中部署 Diagnostics 1.2 或 1.3 的过程。
 
 ### <a name="prerequisites"></a>先决条件
-本文假定你具有 Azure 订阅，并要将 Visual Studio 与 Azure SDK 配合使用。 如果没有 Azure 订阅，可以注册[试用帐户][trial account]。 请确保[安装并配置 Azure PowerShell 0.8.7 或更高版本][Install and configure Azure PowerShell version 0.8.7 or later]。
+本文假定你具有 Azure 订阅，并要将 Visual Studio 与 Azure SDK 配合使用。 如果没有 Azure 订阅，可以注册[试用版][trial]。 请确保[安装并配置 Azure PowerShell 0.8.7 或更高版本][Install and configure Azure PowerShell version 0.8.7 or later]。
 
 ### <a name="step-1-create-a-worker-role"></a>步骤 1：创建辅助角色
 1. 启动 **Visual Studio**。
@@ -200,6 +198,6 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -Diagnostic
 
 [Debugging an Azure Application]: https://msdn.microsoft.com/library/windowsazure/ee405479.aspx   
 [Collect Logging Data by Using Azure Diagnostics]: https://docs.microsoft.com/previous-versions/azure/gg433048(v=azure.100)
-[trial account]: https://www.microsoft.com/china/azure/index.html?fromtype=cn
+[trial]: https://www.microsoft.com/china/azure/index.html?fromtype=cn/
 [Install and configure Azure PowerShell version 0.8.7 or later]: https://docs.microsoft.com/powershell/azure/
 

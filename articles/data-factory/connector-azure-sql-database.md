@@ -10,26 +10,27 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-origin.date: 12/18/2020
-ms.date: 01/04/2021
-ms.openlocfilehash: 49daddc73398a5cb01ac2352c4f1886248cf3d5d
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+origin.date: 01/11/2021
+ms.date: 02/01/2021
+ms.openlocfilehash: 12bd079d3028fc7fe4196c11ad9a760742bd8fbe
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830124"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058789"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure SQL 数据库中复制和转换数据
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从/向 Azure SQL 数据库复制数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
+本文概述了如何使用 Azure 数据工厂中的“复制活动”功能从/向 Azure SQL 数据库复制数据，并使用数据流转换 Azure SQL 数据库中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
 以下活动支持此 Azure SQL 数据库连接器：
 
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)表的[复制活动](copy-activity-overview.md)
+- [映射数据流](concepts-data-flow-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 - [GetMetadata 活动](control-flow-get-metadata-activity.md)
 
@@ -382,7 +383,7 @@ GO
 | storedProcedureParameters |存储过程的参数。<br/>允许的值为名称和值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 | 否 |
 | writeBatchSize | 每批要插入到 SQL 表中的行数。<br/> 允许的值为 **integer**（行数）。 默认情况下，Azure 数据工厂会根据行大小动态确定适当的批大小。 | 否 |
 | writeBatchTimeout | 超时前等待批插入操作完成的时间。<br/> 允许的值为 **timespan**。 例如“00:30:00”（30 分钟）。 | 否 |
-| disableMetricsCollection | 数据工厂收集指标（如 Azure SQL 数据库 DTU），以获取复制性能优化和建议。 如果你担心此行为，请指定 `true` 将其关闭。 | 否（默认值为 `false`） |
+| disableMetricsCollection | 数据工厂收集指标（如 Azure SQL 数据库 DTU），以获取复制性能优化和建议，从而引入额外的主数据库访问权限。 如果你担心此行为，请指定 `true` 将其关闭。 | 否（默认值为 `false`） |
 
 **示例 1：追加数据**
 
@@ -569,13 +570,15 @@ END
 
 选项 2：可选择[在复制活动中调用存储过程](#invoke-a-stored-procedure-from-a-sql-sink)。 这种方法运行源表中的每个批（由 `writeBatchSize` 属性控制），而不是在复制活动中使用批量插入作为默认方法。
 
+选项 3：可以使用[映射数据流](#sink-transformation)，它提供了内置的插入/更新插入/更新方法。
+
 ### <a name="overwrite-the-entire-table"></a>覆盖整个表
 
 可以在复制活动接收器中配置 **preCopyScript** 属性。 在此情况下，对于运行的每个复制活动，Azure 数据工厂会先运行脚本。 然后，运行复制来插入数据。 例如，若要使用最新数据覆盖整个表，请指定一个脚本，以先删除所有记录，然后从源批量加载新数据。
 
 ### <a name="write-data-with-custom-logic"></a>使用自定义逻辑写入数据
 
-使用自定义逻辑写入数据的步骤与[更新插入数据](#upsert-data)部分中的描述类似。 如果在将源数据最终插入目标表之前需要应用额外的处理，则可先将数据加载到临时表，然后再调用存储过程活动，或者在复制活动接收器中调用存储过程来应用数据。
+使用自定义逻辑写入数据的步骤与[更新插入数据](#upsert-data)部分中的描述类似。 如果在将源数据最终插入目标表之前需要应用额外的处理，则可先将数据加载到临时表，然后再调用存储过程活动，或者在复制活动接收器中调用存储过程来应用数据，或者使用映射数据流。
 
 ## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a><a name="invoke-a-stored-procedure-from-a-sql-sink"></a> 调用 SQL 接收器的存储过程
 
@@ -628,6 +631,78 @@ END
     }
     ```
 
+## <a name="mapping-data-flow-properties"></a>映射数据流属性
+
+在映射数据流的过程中转换数据时，可以在 Azure SQL 数据库中读取表以及将数据写入表。 有关详细信息，请参阅映射数据流中的[源转换](data-flow-source.md)和[接收器转换](data-flow-sink.md)。
+
+### <a name="source-transformation"></a>源转换
+
+特定于 Azure SQL 数据库的设置可在源转换的“源选项”选项卡中找到。
+
+**输入：** 选择将源指向某个表（等效于 ```Select * from <table-name>```），还是输入自定义 SQL 查询。
+
+**查询**：如果在“输入”字段中选择“查询”，请为源输入 SQL 查询。 此设置会替代在数据集中选择的任何表。 此处不支持 Order By 子句，但你可以设置完整的 SELECT FROM 语句。 还可以使用用户定义的表函数。 select * from udfGetData() 是 SQL 中可返回表的 UDF。 此查询将生成可以在数据流中使用的源表。 使用查询也是减少进行测试或查找的行的好方法。
+
+- SQL 示例：```Select * from MyTable where customerId > 1000 and customerId < 2000```
+
+**批大小**：输入批大小，以将大型数据分成多个读取操作。
+
+**隔离级别：** 映射数据流中 SQL 源的默认设置为“读取未提交的内容”。 你可以将此处的隔离级别更改为以下值之一：
+
+- 读取已提交的内容
+- 读取未提交的内容
+- 可重复的读取
+- 可序列化
+- 无（忽略隔离级别）
+
+![隔离级别](media/data-flow/isolationlevel.png "隔离级别")
+
+### <a name="sink-transformation"></a>接收器转换
+
+特定于 Azure SQL 数据库的设置可在接收器转换的“设置”选项卡中找到。
+
+**更新方法：** 确定数据库目标上允许哪些操作。 默认设置为仅允许插入。 若要更新、更新插入或删除行，需要进行 alter-row 转换才能标记这些操作的行。 对于更新、更新插入和删除操作，必须设置一个或多个键列，以确定要更改的行。
+
+![键列](media/data-flow/keycolumn.png "键列")
+
+ADF 在后续的更新、更新插入和删除中会使用你在此处将其选取为密钥的列名称。 因此，你必须选取存在于接收器映射中的列。 如果你不希望将值写入此键列，请单击“跳过写入键列”。
+
+你可以将此处用于更新目标 Azure SQL 数据库表的键列参数化。 如果你使用多个列作为组合键，则单击“自定义表达式”后，你将能够使用 ADF 数据流表达式语言添加动态内容。该内容可以包含一个字符串数组，其中有用于组合键的列名称。
+
+**表操作：** 确定在写入之前是否从目标表重新创建或删除所有行。
+
+- 无：不会对表进行任何操作。
+- 重新创建：将删除表并重新创建表。 如果以动态方式创建表，则是必需的。
+- 截断：将删除目标表中的所有行。
+
+**批大小**：控制每个 Bucket 中写入的行数。 较大的批大小可提高压缩比并改进内存优化，但在缓存数据时可能会导致内存不足异常。
+
+使用 TempDB：默认情况下，在加载过程中，数据工厂会使用一个全局临时表来存储数据。 你也可以取消选中“使用 TempDB”选项，改为要求数据工厂将临时保存表存储在用于此接收器的数据库中的用户数据库中。
+
+![使用临时数据库](media/data-flow/tempdb.png "使用临时数据库")
+
+**预处理和后处理 SQL 脚本**：输入将在数据写入接收器数据库之前（预处理）和之后（后处理）执行的多行 SQL 脚本
+
+![预处理和后处理 SQL 脚本](media/data-flow/prepost1.png "SQL 处理脚本")
+
+### <a name="error-row-handling"></a>行处理时出错
+
+写入到 Azure SQL DB 时，某些数据行可能会由于目标设置的约束而发生故障。 一些常见错误包括：
+
+*    字符串或二进制数据在表中会被截断
+*    无法在列中插入 NULL 值
+*    INSERT 语句与 CHECK 约束冲突
+
+默认情况下，遇到第一个错误时，数据流运行会失败。 你可以选择“出错时继续”，确保即使各行存在错误，也可以完成数据流。 Azure 数据工厂提供了不同的选项来处理这些错误行。
+
+事务提交：选择是在单个事务中写入数据，还是分批写入数据。 单个事务将提供较差的性能，但在事务完成之前，其他人将看不到任何写入的数据。  
+
+输出已拒绝的数据：如果已启用，则可将错误行输出到 Azure Blob 存储或所选 Azure Data Lake Storage Gen2 帐户中的 csv 文件。 这会写入包含三个附加列的错误行：SQL 操作（例如插入或更新）、数据流错误代码，以及有关行的错误消息。
+
+出错时报告成功：如果已启用，则即使发现了错误行，也会将数据流标记为成功。 
+
+![行处理时出错](media/data-flow/sql-error-row-handling.png "行处理时出错")
+
 
 ## <a name="data-type-mapping-for-azure-sql-database"></a>Azure SQL 数据库的数据类型映射
 
@@ -646,7 +721,7 @@ END
 | 小数 |小数 |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
-| 图像 |Byte[] |
+| image |Byte[] |
 | int |Int32 |
 | money |小数 |
 | nchar |String, Char[] |

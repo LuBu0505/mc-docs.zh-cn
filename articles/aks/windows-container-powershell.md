@@ -4,16 +4,17 @@ description: 了解如何使用 PowerShell 在 Azure Kubernetes 服务 (AKS) 中
 services: container-service
 ms.topic: article
 origin.date: 05/26/2020
-ms.date: 08/10/2020
+author: rockboyfor
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 07/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: ca56540ec40bc996611ec64cf43b74f8df1f872b
-ms.sourcegitcommit: a9aa7d358cd2bef2e4e35b2b720487cb22b2c461
+ms.openlocfilehash: 817b629f46fb7d16050a437628a3b7981936a851
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592791"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063701"
 ---
 <!--Verified successfully-->
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>使用 PowerShell 在 Azure Kubernetes 服务 (AKS) 群集上创建 Windows Server 容器
@@ -28,7 +29,11 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://www.microsoft.com/china/azure/index.html?fromtype=cn)帐户。
 
-如果选择在本地使用 PowerShell，执行本文操作就需要安装 Az PowerShell 模块，并使用 [Connect-AzAccount -Environment AzureChinaCloud](https://docs.microsoft.com/powershell/module/az.accounts/Connect-AzAccount) cmdlet 连接到 Azure 帐户。 有关安装 Az PowerShell 模块的详细信息，请参阅[安装 Azure PowerShell][install-azure-powershell]。
+如果选择在本地使用 PowerShell，执行本文操作就需要安装 Az PowerShell 模块，并使用 [Connect-AzAccount -Environment AzureChinaCloud](https://docs.microsoft.com/powershell/module/az.accounts/Connect-AzAccount) cmdlet 连接到 Azure 帐户。 有关安装 Az PowerShell 模块的详细信息，请参阅[安装 Azure PowerShell][install-azure-powershell]。 还必须安装 Az.Aks PowerShell 模块： 
+
+```powershell
+Install-Module Az.Aks
+```
 
 <!--Not Avaialble on [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]-->
 
@@ -83,7 +88,7 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ```powershell
 $Password = Read-Host -Prompt 'Please enter your password' -AsSecureString
-New-AzAKS -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 2 -KubernetesVersion 1.16.7 -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets -WindowsProfileAdminUserName akswinuser -WindowsProfileAdminUserPassword $Password
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 2 -KubernetesVersion 1.16.7 -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets -WindowsProfileAdminUserName akswinuser -WindowsProfileAdminUserPassword $Password
 ```
 
 > [!Note]
@@ -98,7 +103,7 @@ New-AzAKS -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 2 -Ku
 <!--MOONCAKE: APPEND -VmSetType VirtualMachineScaleSets ON New-AzAksNodePool-->
 
 ```powershell
-New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -OsType Windows -Name npwin -KubernetesVersion 1.16.7 -VmSetType VirtualMachineScaleSets
+New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -VmSetType VirtualMachineScaleSets -OsType Windows -Name npwin -KubernetesVersion 1.16.7
 ```
 
 <!--MOONCAKE: APPEND -VmSetType VirtualMachineScaleSets ON New-AzAksNodePool-->
@@ -282,4 +287,4 @@ Remove-AzResourceGroup -Name myResourceGroup
 [kubernetes-dashboard]: kubernetes-dashboard.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

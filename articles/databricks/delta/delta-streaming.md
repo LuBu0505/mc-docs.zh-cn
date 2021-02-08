@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 09/15/2020
 title: 表流式读取和写入 - Azure Databricks
 description: 了解如何将 Delta 表用作流式处理源和接收器。
-ms.openlocfilehash: 33201abb0d6a31747402b7cee5bb28476a3c4186
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: 463b5fd6cdbf70c132fddd0b03da41f2bc7740d1
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121900"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059963"
 ---
 # <a name="table-streaming-reads-and-writes"></a>表流读取和写入
 
@@ -44,6 +44,10 @@ spark.readStream.format("delta").table("events")
 
 * 通过设置 `maxFilesPerTrigger` 选项，控制 Delta Lake 提供以进行流式处理的任何微批处理的最大大小。 这会指定每个触发器中要考虑的新文件的最大数量。 默认值为 1000。
 * 通过设置 `maxBytesPerTrigger` 选项来限制每个微批处理中处理多少数据的速率。 这会设置“软最大值”，即批处理大约可以处理这一数量的数据，并且可能处理超出该限制的数据量。 如果将 `Trigger.Once` 用于流式处理，此选项将被忽略。 如果将此选项与 `maxFilesPerTrigger` 结合使用，则微批处理将处理数据，直到达到 `maxFilesPerTrigger` 或 `maxBytesPerTrigger` 限制。
+
+> [!NOTE]
+>
+> 如果源表事务由于 ``logRetentionDuration`` [配置](delta-batch.md#data-retention)而被清除，并且流在处理中滞后，则 Delta Lake 会处理与源表的最新可用事务历史记录相对应的数据，但不会使流失败。 这可能会导致数据被丢弃。
 
 ### <a name="ignore-updates-and-deletes"></a>忽略更新和删除
 
@@ -82,16 +86,17 @@ events.readStream
 
 > [!NOTE]
 >
-> 此功能在 Databricks Runtime 7.3 及更高版本上可用。
+> 此功能在 Databricks Runtime 7.3 LTS 及更高版本上可用。
 
 可以使用以下选项来指定 Delta Lake 流式处理源的起点，而无需处理整个表。
 
-* `startingVersion`：要从其开始的 Delta Lake 版本。 从此版本（含）开始的所有表更改都将由流式处理源读取。 可以从命令 [`DESCRIBE HISTORY events`](delta-utility.md#delta-history) 输出的 `version` 列中获取提交版本。
-* `startingTimestamp`：要从其开始的时间戳。 在该时间戳（含）或之后提交的所有表更改都将由流式处理源读取。 它可以是以下任一项：
-  * `'2018-10-18T22:15:12.013Z'`，即可以强制转换为时间戳的字符串
-  * `cast('2018-10-18 13:36:32 CEST' as timestamp)`
-  * `'2018-10-18'`，即日期字符串
-  * 本身就是时间戳或可强制转换为时间戳的任何其他表达式，例如 `current_timestamp() - interval 12 hours`、`date_sub(current_date(), 1)`。
+* ``startingVersion``：要从其开始的 Delta Lake 版本。 从此版本（含）开始的所有表更改都将由流式处理源读取。 可以从命令 [`DESCRIBE HISTORY events`](delta-utility.md#delta-history) 输出的 ``version`` 列中获取提交版本。
+  * 若要仅返回 Databricks Runtime 7.4 及更高版本中的最新更改，请指定 ``latest``。
+* ``startingTimestamp``：要从其开始的时间戳。 在该时间戳（含）或之后提交的所有表更改都将由流式处理源读取。 它可以是以下任一项：
+  * ``'2018-10-18T22:15:12.013Z'``，即可以强制转换为时间戳的字符串
+  * ``cast('2018-10-18 13:36:32 CEST' as timestamp)``
+  * ``'2018-10-18'``，即日期字符串
+  * 本身就是时间戳或可强制转换为时间戳的任何其他表达式，例如 ``current_timestamp() - interval 12 hours``、``date_sub(current_date(), 1)``。
 
 不能同时设置这两个选项，只需使用其中一个选项即可。 这两个选项仅在启动新的流式处理查询时才生效。 如果流式处理查询已启动且已在其检查点中记录进度，这些选项将被忽略。
 

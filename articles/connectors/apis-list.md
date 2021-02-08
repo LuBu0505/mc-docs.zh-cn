@@ -3,20 +3,20 @@ title: 适用于 Azure 逻辑应用的连接器
 description: 使用 Azure 逻辑应用的连接器（例如内置、托管、本地集成帐户、ISE 和企业连接器）自动执行工作流
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-origin.date: 06/11/2020
+origin.date: 01/07/2021
 author: rockboyfor
-ms.date: 11/30/2020
+ms.date: 01/25/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: dc9e6f95c35bc7363e0f80d745189e5ecfecda2e
-ms.sourcegitcommit: ea52237124974eda84f8cef4bf067ae978d7a87d
+ms.openlocfilehash: 9cdb9b881dcf367198f58b99598306ed86a9e1cd
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024489"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751128"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>适用于 Azure 逻辑应用的连接器
 
@@ -33,7 +33,7 @@ ms.locfileid: "96024489"
 
 <a name="built-in"></a>
 
-* [**内置**](#built-ins)：内置触发器和操作是 Azure 逻辑应用“原有的”，可帮助你针对逻辑应用执行以下任务：
+* [**内置**](#built-ins)：内置触发器和操作以原生方式在 Azure 逻辑应用中运行，因此它们不要求你在使用它们之前创建连接，并且可帮助你为逻辑应用执行以下任务：
 
     * 按自定义计划和高级计划运行。
 
@@ -49,7 +49,7 @@ ms.locfileid: "96024489"
 
 * [**托管连接器**](#managed-api-connectors)：这些连接器由 Microsoft 部署和管理，提供触发器与操作用于访问云服务和/或本地系统，包括 Office 365、Azure Blob 存储、SQL Server、Dynamics、Salesforce、SharePoint 等等。 某些连接器专门支持企业到企业 (B2B) 通信方案，需要一个与逻辑应用链接的[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。 在使用某些连接器之前，可能需要先创建由 Azure 逻辑应用管理的连接。
 
-    例如，如果你使用 Microsoft BizTalk Server，则逻辑应用可以使用 [BizTalk Server 本地连接器](#on-premises-connectors)连接到 BizTalk Server 并与其通信。 然后，可以使用[集成帐户连接器](#integration-account-connectors)在逻辑应用中扩展或执行类似于 BizTalk 的操作。
+    例如，如果你使用 Azure BizTalk Server，则逻辑应用可以使用 [BizTalk Server 本地连接器](#on-premises-connectors)连接到 BizTalk Server 并与其通信。 然后，可以使用[集成帐户连接器](#integration-account-connectors)在逻辑应用中扩展或执行类似于 BizTalk 的操作。
 
     连接器分类为“标准”或“企业”连接器。 [企业连接器](#enterprise-connectors)提供对 SAP、IBM MQ 和 IBM 3270 等企业系统的访问，但会产生额外的费用。 若要确定某个连接器是标准还是企业连接器，请参阅[连接器概述](https://docs.microsoft.com/connectors)下每个连接器的参考页中的技术详细信息。
 
@@ -151,24 +151,10 @@ ms.locfileid: "96024489"
 
 ## <a name="on-premises-connectors"></a>本地连接器
 
-在创建与本地系统的连接之前，必须先[下载、安装并设置本地数据网关][gateway-doc]。 此网关提供安全信道，无需设置所需的网络基础结构。
+在创建与本地系统的连接之前，必须先[下载、安装并设置本地数据网关][gateway-doc]。 此网关提供安全信道，无需设置所需的网络基础结构。 
 
 逻辑应用提供了下面这些常用的标准连接器，用于访问本地系统中的数据和资源。 对于本地连接器列表，请参阅[支持的数据源](../logic-apps/logic-apps-gateway-connection.md#supported-connections)。
 
-:::row:::
-    :::column:::
-        [![BizTalk Server 连接器][biztalk-server-icon]<br />BizTalk <br />Server][biztalk-server-doc]
-    :::column-end:::
-    :::column:::
-        [![SQL Server 连接器][sql-server-icon]<br />SQL <br />Server][sql-server-doc]
-    :::column-end:::
-    :::column:::
-        [![Teradata 连接器][teradata-icon]<br />Teradata][teradata-doc]
-    :::column-end:::
-        :::column:::
-        [![SharePoint Server 连接器][sharepoint-server-icon]<br />SharePoint <br />Server][sharepoint-server-doc]
-    :::column-end:::
-:::row-end:::
 :::row:::
     :::column:::
         [![MySQL 连接器][mysql-icon]<br />MySQL][mysql-doc]
@@ -180,9 +166,24 @@ ms.locfileid: "96024489"
         [![PostgreSQL 连接器][postgre-sql-icon]<br />PostgreSQL][postgre-sql-doc]
     :::column-end:::
     :::column:::
+        [![SharePoint Server 连接器][sharepoint-server-icon]<br />SharePoint <br />Server][sharepoint-server-doc]
     :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![SQL Server 连接器][sql-server-icon]<br />SQL <br />Server][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![Teradata 连接器][teradata-icon]<br />Teradata][teradata-doc]
+    :::column-end:::
+    :::column:::
+        [![BizTalk Server 连接器][biztalk-server-icon]<br />BizTalk <br />Server][biztalk-server-doc]
+    :::column-end:::
+    :::column:::
 
-<!--We align the SQL Server, **Teradata**, on FIRST ROW-->
+    :::column-end:::
+:::row-end:::
+
 <!--Not Available on [ibm-db2-icon]-->
 <!--Not Available on [ibm-informix-icon]-->
 
@@ -243,10 +244,10 @@ ms.locfileid: "96024489"
 
 :::row:::
     :::column:::
-        [![MQ 连接器][ibm-mq-icon]<br>IBM MQ][ibm-mq-doc]
+        [![MQ 连接器][ibm-mq-icon]<br />IBM MQ][ibm-mq-doc]
     :::column-end:::
     :::column:::
-        [![SAP 连接器][sap-icon]<br>SAP][sap-connector-doc]
+        [![SAP 连接器][sap-icon]<br />SAP][sap-connector-doc]
     :::column-end:::
     :::column:::
         
@@ -257,8 +258,8 @@ ms.locfileid: "96024489"
 
 
 <!--Not Available on ## ISE connectors-->
-<!--Not Available on * [Access to Azure virtual network resources from Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)-->
-<!--Not Available on * [Connect to Azure virtual networks from Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)-->
+<!--NOT AVAILABLE ON * [Access to Azure virtual network resources from Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)-->
+<!--NOT AVAILABLE ON * [Connect to Azure virtual networks from Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)-->
 
 <a name="triggers-actions"></a>
 
@@ -285,6 +286,62 @@ ms.locfileid: "96024489"
 对于使用 Azure Active Directory (Azure AD) OAuth 的连接器，创建连接意味着要登录到服务（例如 Office 365、Salesforce 或 GitHub），其中的访问令牌[已加密](../security/fundamentals/encryption-overview.md)并安全存储在 Azure 机密存储中。 其他连接器（例如 FTP 和 SQL）需要提供包含服务器地址、用户名和密码等配置详细信息的连接。 这些连接配置详细信息同样加密并安全存储。 详细了解 [Azure 中的加密](../security/fundamentals/encryption-overview.md)。
 
 只要目标服务或系统允许，连接就可以访问该服务或系统。 对于使用 Azure AD OAuth 连接的服务（例如 Office 365 和 Dynamics），Azure 逻辑应用会无限期地刷新访问令牌。 其他服务可能会限制在不刷新令牌的情况下，Azure 逻辑应用能够使用该令牌多长时间。 一般情况下，某些操作（例如更改密码）会使所有访问令牌失效。
+
+<a name="recurrence-behavior"></a>
+
+## <a name="recurrence-behavior"></a>定期触发行为
+
+以原生方式在 Azure 逻辑应用中运行的定期内置触发器（例如此[定期触发器](../connectors/connectors-native-recurrence.md)）的行为与基于连接的定期触发器（需要先创建连接，例如 SQL 连接器触发器）的行为不同。
+
+但是，对于这两种类型的触发器，如果定期未指定具体的开始日期和时间，则在保存或部署逻辑应用时，会立即运行第一次定期触发，而不管触发器的定期设置如何。 若要避免此行为，请提供你希望运行第一次定期触发的开始日期和时间。
+
+<a name="recurrence-built-in"></a>
+
+### <a name="recurrence-for-built-in-triggers"></a>内置触发器的定期触发
+
+定期内置触发器遵循你设置的计划，包括你指定的任何时区。 但是，如果某个定期触发未指定任何其他高级计划选项（例如具体时间）来运行将来的定期触发，则这些将来的定期触发会以上一次触发器执行为基础。 因此，这些定期触发的开始时间可能会因存储调用期间的延迟等因素而发生偏移。
+
+<!--Not Available on DST Also, if you don't select a time zone, daylight saving time (DST) might affect when triggers run, for example, shifting the start time one hour forward when DST starts and one hour backward when DST ends.-->
+
+为了确保逻辑应用在你指定的开始时间运行并且不会错过定期触发（特别是在频率为几天（或更长时间）一次的情况下），请尝试以下解决方案：
+
+* 确保选择一个时区，以便逻辑应用在你指定的开始时间运行。
+
+    <!--NOT AVAILABLE ON  Otherwise, DST might affect when triggers run, for example, shifting the start time one hour forward when DST starts and one hour backward when DST ends.-->
+
+    计划作业时，逻辑应用会将要处理的消息放入队列中，并指定该消息何时变得可用，具体取决于运行上次作业的 UTC 时间和计划运行下次作业的 UTC 时间。 指定时区后，逻辑应用的 UTC 时间也会发生偏移以应对季节性时间变化。
+    
+    <!--NOT AVAILABLE ON However, some time windows might cause problems when the time shifts. For more information and examples, see [Recurrence for daylight saving time and standard time](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time)-->
+
+* 使用定期触发器，并提供定期触发的开始日期和时间，以及运行后续定期触发的具体时间，这可以通过“在这些小时”和“在这些分钟”属性来进行，仅适用于“日”和“周”频率。
+
+* 使用[滑动窗口触发器](../connectors/connectors-native-sliding-window.md)，而不是使用重复触发器。
+
+<a name="recurrence-connection-based"></a>
+
+### <a name="recurrence-for-connection-based-triggers"></a>基于连接的触发器的定期触发
+
+在基于连接的定期触发器（例如 SQL 或 SFTP-SSH）中，计划不是控制执行的唯一驱动因素，并且时区只决定最初的开始时间。 后续运行取决于定期计划、上一次触发器执行以及其他可能导致运行时间发生偏差或产生意外行为的因素，例如：
+
+* 触发器是否访问具有更多数据的服务器（触发器会立即尝试获取这些数据）。
+
+* 触发器引发的任何故障或重试。
+
+* 调用存储期间的延迟。
+
+<!--Not Available on * Not maintaining the specified schedule when daylight saving time (DST) starts and ends.-->
+
+* 可能影响下次运行时的出现时间的其他因素。
+
+若要解决或绕过这些问题，请尝试以下解决方案：
+
+<!--Not Availableon DST * To make sure that the recurrence time doesn't shift when DST takes effect, manually adjust the recurrence so that your logic app continues to run at the expected time. Otherwise, the start time shifts one hour forward when DST starts and one hour backward when DST ends.-->
+
+* 使用定期触发器，以便指定时区、开始日期和时间，以及运行后续定期触发的具体时间，这可以通过“在这些小时”和“在这些分钟”属性来进行，仅适用于“日”和“周”频率。   
+
+    <!--NOT AVAILABLE ON  However, some time windows might still cause problems when the time shifts. For more information and examples, see [Recurrence for daylight saving time and standard time](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time)-->
+
+* 为了避免错过定期触发，请使用[滑动窗口触发器](../connectors/connectors-native-sliding-window.md)，而不是使用定期触发器。
 
 <a name="custom"></a>
 
@@ -454,7 +511,7 @@ ms.locfileid: "96024489"
 [http-swagger-doc]: ./connectors-native-http-swagger.md "从逻辑应用调用 REST 终结点"
 [http-webhook-doc]: ./connectors-native-webhook.md "等待来自 HTTP 或 HTTPS 终结点的特定事件"
 
-<!--Not Avaialble on [inline-code-doc]: ../logic-apps/logic-apps-add-run-inline-code.md-->
+<!--NOT AVAILABLE ON [inline-code-doc]: ../logic-apps/logic-apps-add-run-inline-code.md-->
 
 [nested-logic-app-doc]: ../logic-apps/logic-apps-http-endpoint.md "将逻辑应用与嵌套工作流集成"
 [query-doc]: ../logic-apps/logic-apps-perform-data-operations.md#filter-array-action "通过查询操作选择和筛选数组"
@@ -464,7 +521,7 @@ ms.locfileid: "96024489"
 [schedule-recurrence-doc]:  ./connectors-native-recurrence.md "按重复计划运行逻辑应用"
 [schedule-sliding-window-doc]: ./connectors-native-sliding-window.md "运行需要处理连续区块中的数据的逻辑应用"
 
-<!--Not Available on [scope-doc]: ../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md-->
+<!--NOT AVAILABLE ON [scope-doc]: ../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md-->
 
 [switch-doc]: ../logic-apps/logic-apps-control-flow-switch-statement.md "将操作组织成分配有唯一值的案例。仅运行其值与表达式、对象或令牌的结果相匹配的案例。如果不存在任何匹配项，则运行默认案例"
 [terminate-doc]: ../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action "停止或取消逻辑应用的正在运行的工作流"
@@ -478,7 +535,7 @@ ms.locfileid: "96024489"
 [azure-blob-storage-doc]: ./connectors-create-api-azureblobstorage.md "使用 Azure Blob 存储连接器管理 Blob 容器中的文件"
 [azure-cosmos-db-doc]: https://docs.microsoft.com/connectors/documentdb/ "连接到 Azure Cosmos DB，以便访问文档和存储过程"
 
-<!--Not Available on [azure-event-grid-doc]: ../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md-->
+<!--NOT AVAILABLE ON [azure-event-grid-doc]: ../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md-->
 
 [azure-event-hubs-doc]: ./connectors-create-api-azure-event-hubs.md "连接到 Azure 事件中心，以便在逻辑应用与事件中心之间接收和发送事件"
 [azure-file-storage-doc]: https://docs.microsoft.com/connectors/azurefile/ "连接到 Azure 存储帐户，以便创建、更新、获取和删除文件"
@@ -490,23 +547,25 @@ ms.locfileid: "96024489"
 [azure-table-storage-doc]: https://docs.microsoft.com/connectors/azuretables/ "连接到 Azure 存储帐户，以便创建、更新和查询表与其他对象"
 [biztalk-server-doc]: https://docs.microsoft.com/connectors/biztalk/ "连接到 BizTalk Server，以便将基于 BizTalk 的应用程序与 Azure 逻辑应用一起运行"
 
-<!--Not Available on [file-system-doc]: ../logic-apps/logic-apps-using-file-connector.md-->
+<!--NOT AVAILABLE ON [file-system-doc]: ../logic-apps/logic-apps-using-file-connector.md-->
 
 [ftp-doc]: ./connectors-create-api-ftp.md "连接到 FTP/FTPS 服务器以执行 FTP 任务，例如上传、获取、删除文件，等等"
 
-<!--Not Available on [github-doc]: ./connectors-create-api-github.md-->
+<!--NOT AVAILABLE ON [github-doc]: ./connectors-create-api-github.md-->
 
-<!--Not Available on [google-calendar-doc]: ./connectors-create-api-googlecalendar.md-->
-<!--Not Available on [google-sheets-doc]: ./connectors-create-api-googlesheet.md-->
-<!--Not Available on [google-tasks-doc]: ./connectors-create-api-googletasks.md-->
-<!--Not Available on [ibm-3270-doc]: ./connectors-run-3270-apps-ibm-mainframe-create-api-3270.md-->
-<!--Not Available on [ibm-db2-doc]: ./connectors-create-api-db2.md-->
-<!--Not Available on [ibm-informix-doc]: ./connectors-create-api-informix.md-->
+<!--NOT AVAILABLE ON [google-calendar-doc]: ./connectors-create-api-googlecalendar.md-->
+<!--NOT AVAILABLE ON [google-sheets-doc]: ./connectors-create-api-googlesheet.md-->
+<!--NOT AVAILABLE ON [google-tasks-doc]: ./connectors-create-api-googletasks.md-->
+<!--NOT AVAILABLE ON [ibm-3270-doc]: ./connectors-run-3270-apps-ibm-mainframe-create-api-3270.md-->
+
+[ibm-db2-doc]: ./connectors-create-api-db2.md "连接到云中或本地的 IBM DB2。更新行、获取表，等等"
+
+<!--NOT AVAILABLE ON [ibm-informix-doc]: ./connectors-create-api-informix.md-->
 
 [ibm-mq-doc]: ./connectors-create-api-mq.md "连接到本地或 Azure 中的 IBM MQ 以发送和接收消息"
 
-<!--Not Available on [instagram-doc]: ./connectors-create-api-instagram.md-->
-<!--Not Available on [mandrill-doc]: ./connectors-create-api-mandrill.md-->
+<!--NOT AVAILABLE ON [instagram-doc]: ./connectors-create-api-instagram.md-->
+<!--NOT AVAILABLE ON [mandrill-doc]: ./connectors-create-api-mandrill.md-->
 
 [mysql-doc]: https://docs.microsoft.com/connectors/mysql/ "连接到本地 MySQL 数据库，以便读取和写入数据"
 [office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "连接到工作或学校帐户，以便发送和接收电子邮件、管理日历和联系人，以及执行其他操作"
@@ -518,23 +577,23 @@ ms.locfileid: "96024489"
 [salesforce-doc]: ./connectors-create-api-salesforce.md "连接到 Salesforce 帐户。管理帐户、潜在客户、商机等"
 [sap-connector-doc]: ../logic-apps/logic-apps-using-sap-connector.md "连接到本地 SAP 系统"
 
-<!--Not Available on [sendgrid-doc]: ./connectors-create-api-sendgrid.md-->
+<!--NOT AVAILABLE ON [sendgrid-doc]: ./connectors-create-api-sendgrid.md-->
 
 [sftp-ssh-doc]: ./connectors-sftp-ssh.md "使用 SSH 连接到 SFTP 帐户。上传、获取、删除文件，等等"
 [sharepoint-server-doc]: ./connectors-create-api-sharepoint.md "连接到 SharePoint 本地服务器。管理文档、列出项，等等"
 [sharepoint-online-doc]: ./connectors-create-api-sharepoint.md "连接到 SharePoint Online。管理文档、列出项，等等"
 
-<!--Not Available on [slack-doc]: ./connectors-create-api-slack.md-->
+<!--NOT AVAILABLE ON [slack-doc]: ./connectors-create-api-slack.md-->
 
 [smtp-doc]: ./connectors-create-api-smtp.md "连接到 SMTP 服务器并发送带附件的电子邮件"
 
-<!--Not Available on [sparkpost-doc]: ./connectors-create-api-sparkpost.md-->
+<!--NOT AVAILABLE ON [sparkpost-doc]: ./connectors-create-api-sparkpost.md-->
 
 [sql-server-doc]: ./connectors-create-api-sqlazure.md "连接到 Azure SQL 数据库或 SQL Server。在 SQL 数据库表中创建、更新、获取和删除条目"
 [teradata-doc]: https://docs.microsoft.com/connectors/teradata/ "连接到 Teradata 数据库以从表中读取数据"
 
-<!--Not Available on [twilio-doc]: ./connectors-create-api-twilio.md-->
-<!--Not Available on [youtube-doc]: ./connectors-create-api-youtube.md-->
+<!--NOT AVAILABLE ON [twilio-doc]: ./connectors-create-api-twilio.md-->
+<!--NOT AVAILABLE ON [youtube-doc]: ./connectors-create-api-youtube.md-->
 
 <!--Enterprise Intregation Pack doc links-->
 

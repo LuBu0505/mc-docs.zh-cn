@@ -4,16 +4,16 @@ description: 了解密钥保管库的身份验证模式的工作原理
 author: ShaneBala-keyvault
 ms.author: v-tawe
 origin.date: 09/25/2020
-ms.date: 11/27/2020
+ms.date: 01/14/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 7292dcc085e494aa9c4a7515afed273e221ced1d
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 1071d230caa69c712a8370612756204ee686d2a5
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301010"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059944"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault 身份验证基础知识
 
@@ -135,7 +135,7 @@ Azure Active Directory 角色分配授予对密钥保管库执行管理平面操
 
 * 将虚拟网络添加到密钥保管库防火墙。 此选项最适用于具有动态 IP 地址的 Azure 资源（例如虚拟机）。 你可以将 Azure 资源添加到虚拟网络，并将虚拟网络添加到密钥保管库防火墙允许列表中。 此选项使用的服务终结点是虚拟网络内的专用 IP 地址。 这将提供一层额外的保护，因此密钥保管库与虚拟网络之间的流量不会通过公共 Internet 进行路由。 若要详细了解服务终结点，请查看以下文档。 [链接](./network-security.md)
 
-<!-- * Add a private link connection to the key vault. This option connects your virtual network directly to a particular instance of key vault, effectively bringing your key vault inside your virtual network. To learn more about configuring a private endpoint connection to key vault, see the following [link](./private-link-service.md) -->
+* 向密钥保管库添加专用链接连接。 此选项可将虚拟网络直接连接到密钥保管库的特定实例，从而有效地将密钥保管库放在虚拟网络中。 若要详细了解如何配置密钥保管库的专用终结点连接，请参阅以下[链接](./private-link-service.md)
 
 ## <a name="test-your-service-principals-ability-to-access-key-vault"></a>测试你的服务主体访问密钥保管库的权限
 

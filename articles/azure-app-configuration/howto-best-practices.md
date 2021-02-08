@@ -9,15 +9,15 @@ editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 02/01/2021
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 7925d292bfc75654b23756c4837c9ac301d5a7cd
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: 574b01526ec1da78cdca40b470e6379cde844d37
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97104990"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059416"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure 应用程序配置最佳做法
 
@@ -90,6 +90,10 @@ configBuilder.AddAzureAppConfiguration(options => {
 ## <a name="multi-region-deployment-in-app-configuration"></a>应用程序配置中的多区域部署
 
 应用程序配置是一种区域服务。 对于在每个区域设有不同配置的应用程序，将这些配置存储在一个实例中可能会导致单一故障点。 跨多个区域为每个区域部署一个应用程序配置实例可能是一个更好的选择。 它可帮助实现区域性灾难恢复、提高性能以及实现安全孤岛。 按区域配置还可以减少延迟并使用单独的限制配额，因为限制是按实例执行的。 若要应用灾难恢复缓解，可以使用[多个配置存储](./concept-disaster-recovery.md)。 
+
+## <a name="client-applications-in-app-configuration"></a>应用配置中的客户端应用程序 
+
+对应用程序配置的请求过多可能会导致限制或超额费用。 应用程序利用当前可用的高速缓存和智能刷新来优化其发送的请求数。 通过避免直接连接到配置存储，可以在大量客户端应用程序中镜像此进程。 但是，客户端应用程序会连接到一个自定义服务，该服务与配置存储进行通信。 此代理解决方案可以确保客户端应用程序不会接近配置存储上的限制。 有关限制的详细信息，请参阅[常见问题解答](./faq.md#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration)。  
 
 ## <a name="next-steps"></a>后续步骤
 

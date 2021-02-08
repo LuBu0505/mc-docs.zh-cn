@@ -2,18 +2,18 @@
 title: 使用 REST API 和模板部署资源
 description: 使用 Azure 资源管理器和资源管理器 REST API 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 ms.topic: conceptual
-origin.date: 07/21/2020
+origin.date: 10/22/2020
 author: rockboyfor
-ms.date: 11/23/2020
+ms.date: 01/25/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 4d49699d252c97d72ca6f7c3208b7efd944e10c2
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: c0da042ecd084c2b327d4fd1ad277bba18cf5279
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978160"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751122"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-resource-manager-rest-api"></a>使用 ARM 模板和 Azure 资源管理器 REST API 来部署资源
 
@@ -25,13 +25,13 @@ ms.locfileid: "94978160"
 
 可将部署目标设定为资源组、Azure 订阅、管理组或租户。 你将根据部署范围使用不同的命令。
 
-* 若要部署到资源组，请使用[部署 - 创建](https://docs.microsoft.com/rest/api/resources/deployments/createorupdate)。 请求发送到：
+- 若要部署到资源组，请使用[部署 - 创建](https://docs.microsoft.com/rest/api/resources/deployments/createorupdate)。 请求发送到：
 
     ```HTTP
     PUT https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
     ```
 
-* 若要部署到订阅，请使用[部署 - 在订阅范围内创建](https://docs.microsoft.com/rest/api/resources/deployments/createorupdateatsubscriptionscope)。 请求发送到：
+- 若要部署到订阅，请使用[部署 - 在订阅范围内创建](https://docs.microsoft.com/rest/api/resources/deployments/createorupdateatsubscriptionscope)。 请求发送到：
 
     ```HTTP
     PUT https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
@@ -39,7 +39,7 @@ ms.locfileid: "94978160"
 
     有关订阅级部署的详细信息，请参阅[在订阅级别创建资源组和资源](deploy-to-subscription.md)。
 
-* 若要部署到管理组，请使用[部署 - 在管理组范围内创建](https://docs.microsoft.com/rest/api/resources/deployments/createorupdateatmanagementgroupscope)。 请求发送到：
+- 若要部署到管理组，请使用[部署 - 在管理组范围内创建](https://docs.microsoft.com/rest/api/resources/deployments/createorupdateatmanagementgroupscope)。 请求发送到：
 
     ```HTTP
     PUT https://management.chinacloudapi.cn/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
@@ -47,7 +47,7 @@ ms.locfileid: "94978160"
 
     有关管理组级别部署的详细信息，请参阅[在管理组级别创建资源](deploy-to-management-group.md)。
 
-* 若要部署到租户，请使用[部署 - 在租户范围内创建或更新](https://docs.microsoft.com/rest/api/resources/deployments/createorupdateattenantscope)。 请求发送到：
+- 若要部署到租户，请使用[部署 - 在租户范围内创建或更新](https://docs.microsoft.com/rest/api/resources/deployments/createorupdateattenantscope)。 请求发送到：
 
     ```HTTP
     PUT https://management.chinacloudapi.cn/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
@@ -88,7 +88,7 @@ ms.locfileid: "94978160"
 
     在请求正文中，提供指向模板和参数文件的链接。 有关参数文件的详细信息，请参阅[创建资源管理器参数文件](parameter-files.md)。
 
-    请注意，**mode** 设置为 **Incremental**。 要运行完整部署，请将 **mode** 设置为 **Complete**。 使用完整模式时要小心，因为可能会无意中删除不在模板中的资源。
+    请注意，`mode` 设置为 **Incremental**。 要运行完整部署，请将 `mode` 设置为 **Complete**。 使用完整模式时要小心，因为可能会无意中删除不在模板中的资源。
 
     ```json
     {
@@ -127,9 +127,9 @@ ms.locfileid: "94978160"
     }
     ```
 
-    可以将存储帐户设置为使用共享访问签名 (SAS) 令牌。 有关详细信息，请参阅[使用共享访问签名委托访问权限](https://docs.microsoft.com/rest/api/storageservices/delegating-access-with-a-shared-access-signature)。
+    可以将存储帐户设置为使用共享访问签名 (SAS) 令牌。 有关详细信息，请参阅[使用共享访问签名委托访问权限](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature)。
 
-    如果需要为参数（如密码）提供敏感值，请将该值添加到密钥保管库。 在部署过程中检索密钥保管库，如前面的示例所示。 有关详细信息，请参阅[在部署期间传递安全值](key-vault-parameter.md)。
+    如果需要为参数（如密码）提供敏感值，请将该值添加到密钥保管库。 在部署过程中检索密钥保管库，如前面的示例所示。 有关详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](key-vault-parameter.md)。
 
 1. 可以将模板和参数包含在请求正文中，而不是链接到模板和参数的文件。 以下示例显示了内联模板和参数的请求正文：
 

@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 09/11/2020
 title: 外部 Apache Hive 元存储 - Azure Databricks
 description: 了解如何连接到 Azure Databricks 中的外部 Apache Hive 元存储。
-ms.openlocfilehash: d70cfd00d993074fcf1d1f45971846c0417eaa96
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: 84720f8849bf6155f7c5fa925d5989d361610ed0
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121836"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060034"
 ---
 # <a name="external-apache-hive-metastore"></a><a id="external-apache-hive-metastore"> </a><a id="external-hive-metastore"> </a>外部 Apache Hive 元存储
 
@@ -60,8 +60,8 @@ where
 
 将 `spark.sql.hive.metastore.version` 设置为你的 Hive 元存储的版本，并将 `spark.sql.hive.metastore.jars` 设置如下：
 
-* Hive 0.13：不设置 `spark.sql.hive.metastore.jars`。
-* Hive 1.2.0 或 1.2.1（低于 7.0 的 Databricks Runtime 版本）：将 `spark.sql.hive.metastore.jars` 设置为 `builtin`。
+* Hive 0.13：不设置 ``spark.sql.hive.metastore.jars``。
+* Hive 1.2.0 或 1.2.1（Databricks Runtime 6.6 及更低版本）：将 ``spark.sql.hive.metastore.jars`` 设置为 ``builtin``。
 
   > [!NOTE]
   >
@@ -132,7 +132,7 @@ where
 若要使用 Azure Databricks UI 设置外部元存储，请执行以下操作：
 
 1. 单击边栏中的“群集”按钮。
-2. 单击“创建群集”。 
+2. 单击“创建群集”。
 3. 输入以下 [Spark 配置选项](../../clusters/configure.md#spark-config)：
 
    ```ini

@@ -4,16 +4,16 @@ description: 列出 Azure 资源管理器的所有资源提供程序命名空间
 ms.topic: conceptual
 origin.date: 12/01/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 08/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: eb3a142d7d5749ac397fc06dc2db662b705af724
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 233aeb1cd22df38b5be860bc1a519a2c0d6e5631
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021349"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063641"
 ---
 <!--Verify sucessfully on 2020/08/17 by harris-->
 # <a name="resource-providers-for-azure-services"></a>Azure 服务的资源提供程序
@@ -21,6 +21,8 @@ ms.locfileid: "98021349"
 本文介绍资源提供程序命名空间如何映射到 Azure 服务。
 
 ## <a name="match-resource-provider-to-service"></a>将资源提供程序匹配到服务
+
+默认情况下，标记为“- 已注册”的资源提供程序已针对你的订阅注册。 有关详细信息，请参阅[注册](#registration)。
 
 | 资源提供程序命名空间 | Azure 服务 |
 | --------------------------- | ------------- |
@@ -114,6 +116,7 @@ ms.locfileid: "98021349"
 ## <a name="registration"></a><a name="registration"></a>注册
 
 默认情况下，上面标记为“- 已注册”的资源提供程序已针对你的订阅注册。 若要使用其他资源提供程序，必须[进行注册](resource-providers-and-types.md)。 但是，当你执行某些操作时，系统会为你注册许多资源提供程序。 例如，如果你通过门户创建资源，门户会自动注册所需的尚未注册的资源提供程序。 通过 [Azure 资源管理器模板](../templates/overview.md)部署资源时，也会注册任何所需的资源提供程序。
+
 > [!IMPORTANT]
 > 仅在准备好使用资源提供程序时注册该程序。 注册步骤使你能够在订阅中保留最小特权。 恶意用户无法使用未注册的资源提供程序。
 
@@ -121,4 +124,4 @@ ms.locfileid: "98021349"
 
 有关资源提供程序的详细信息（包括如何注册资源提供程序），请参阅 [Azure 资源提供程序和类型](resource-providers-and-types.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

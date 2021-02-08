@@ -1,21 +1,21 @@
 ---
-title: 云服务和管理证书 | Microsoft Docs
+title: 云服务（经典）和管理证书 | Microsoft Docs
 description: 了解如何创建和部署证书以用于云服务以及在 Azure 中对管理 API 进行身份验证。
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 10/20/2020
+ms.service: cloud-services
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: 0fa448a8e4dcf48d6fd9ce4c0eaafb03d1ca760a
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: e7e63b0c18303a7eb6792516c0bf36fefe9287d9
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472574"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058868"
 ---
-# <a name="certificates-overview-for-azure-cloud-services"></a>Azure 云服务证书概述
+# <a name="certificates-overview-for-azure-cloud-services-classic"></a>Azure 云服务（经典）证书概述 
 证书在 Azure 中用于云服务（[服务证书](#what-are-service-certificates)）以及用于通过管理 API 进行身份验证（[管理证书](#what-are-management-certificates)）。 本主题同时提供了有关这两种证书类型的一般概述，并说明了如何[创建](#create)并将其部署到 Azure。
 
 Azure 中使用的证书是 x.509 v3 证书，可自签名或由另一个受信任的证书签名。 自签名证书由其创建者签名，因此，默认情况下不受信任。 大多数浏览器可以忽略此问题。 自签名证书应仅在开发和测试云服务时使用。 
@@ -58,7 +58,7 @@ Azure 使用的证书可以包含一个公钥。 证书具有指纹，它提供�
     > 你无法获取 chinacloudapp.cn 域（或与 Azure 相关的任何域）的 TLS/SSL 证书；证书的使用者名称必须与用于访问应用程序的自定义域名匹配。 例如，contoso.net 而不是 contoso.chinacloudapp.cn 。
 
 * 至少采用 2048 位加密。
-* **仅服务证书** ：客户端证书必须驻留在“个人”证书存储中。
+* **仅服务证书**：客户端证书必须驻留在“个人”证书存储中。
 
 在 Windows 上有两种简单方法可以创建证书，分别是使用 `makecert.exe` 实用程序或 IIS。
 

@@ -3,24 +3,24 @@ title: 使用 Azure Pipelines 进行持续集成
 description: 了解如何持续构建、测试和部署 Azure 资源管理器模板（ARM 模板）。
 origin.date: 08/24/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 06/22/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 48fd2cf7a51ba6290fd793ca72f417e4ce5cbba8
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 4f29a3bdf99fb5f831e9d5d9cbba6ffec8900bc5
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023077"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063631"
 ---
 <!--Verified successfully on 04/30/2020-->
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>教程：使用 Azure Pipelines 持续集成 ARM 模板
 
 在[上一篇教程](./deployment-tutorial-linked-template.md)中，你部署了一个链接模板。  本教程介绍如何使用 Azure Pipelines 持续生成和部署 Azure 资源管理器模板（ARM 模板）项目。
 
-Azure DevOps 提供开发人员服务，以支持团队规划工作、协作开发代码以及构建和部署应用程序。 通过使用 Azure DevOps Services，开发人员能够在云中工作。 Azure DevOps 提供了一组集成的功能，可以通过 Web 浏览器或 IDE 客户端访问这些功能。 Azure Pipelines 是这些功能中的一项。 Azure Pipelines 是一项别具特色的持续集成 (CI) 和持续交付 (CD) 服务。 它适用于你喜欢的 Git 提供程序，并且可以部署到大多数主要云服务。 然后，可以自动执行代码的生成、测试并将其部署到世纪互联 Azure 或 Amazon Web Services。
+Azure DevOps 提供开发人员服务，以支持团队规划工作、协作开发代码以及构建和部署应用程序。 通过使用 Azure DevOps Services，开发人员能够在云中工作。 Azure DevOps 提供了一组集成的功能，可以通过 Web 浏览器或 IDE 客户端访问这些功能。 Azure Pipelines 是这些功能中的一项。 Azure Pipelines 是一项别具特色的持续集成 (CI) 和持续交付 (CD) 服务。 它适用于你喜欢的 Git 提供程序，并且可以部署到大多数主要云服务。 然后，可以自动执行代码的生成、测试并将其部署到 Azure 中国世纪互联或 Amazon Web Services。
 
 <!--MOONCAKE: Not Available on  Google Cloud Platform-->
 
@@ -49,7 +49,7 @@ Azure DevOps 提供开发人员服务，以支持团队规划工作、协作开�
     <!--Not Available on [Build GitHub repositories](https://docs.microsoft.com/azure/devops/pipelines/repos/github)-->
     
 * **安装 Git**。 本教程说明使用 Git Bash 或 Git Shell 。 如需说明，请参阅[安装 Git](https://www.atlassian.com/git/tutorials/install-git)。
-* **Azure DevOps 组织**。 如果没有组织，可以免费创建一个组织。 请参阅[创建组织或项目集合](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops)。
+* **Azure DevOps 组织**。 如果没有组织，可以免费创建一个组织。 请参阅[创建组织或项目集合](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization)。
     
     <!--CORRECT ON URL on https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops-->
     
@@ -57,7 +57,7 @@ Azure DevOps 提供开发人员服务，以支持团队规划工作、协作开�
 
 ## <a name="prepare-a-github-repository"></a>准备 GitHub 存储库
 
-GitHub 用于存储项目源代码，包括资源管理器模板。 有关其他受支持的存储库，请参阅 [Azure DevOps 支持的存储库](https://docs.microsoft.com/azure/devops/pipelines/repos/?view=azure-devops)。
+GitHub 用于存储项目源代码，包括资源管理器模板。 有关其他受支持的存储库，请参阅 [Azure DevOps 支持的存储库](https://docs.microsoft.com/azure/devops/pipelines/repos/)。
 
 ### <a name="create-a-github-repository"></a>创建 GitHub 存储库
 

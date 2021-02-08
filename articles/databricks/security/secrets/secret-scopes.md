@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 10/07/2020
 title: 机密范围 - Azure Databricks
 description: 了解如何创建和管理 Azure Databricks 的两种机密范围类型（Azure Key Vault 支持的范围和 Databricks 支持的范围），并对机密范围使用最佳做法。
-ms.openlocfilehash: 6b05a28a5caed31a66db3e82514781e43f4754ab
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: a9ae2beee2f5c2dbb93c6442f11a61e36e1e78b1
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937741"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059222"
 ---
 # <a name="secret-scopes"></a>机密范围
 
@@ -96,20 +96,22 @@ Databricks 支持的机密范围存储在 Azure Databricks 拥有并管理的加
 
 ### <a name="create-an-azure-key-vault-backed-secret-scope-using-the-databricks-cli"></a>使用 Databricks CLI 创建 Azure Key Vault 支持的机密范围
 
-1. 安装 Databricks CLI 并将其配置为使用 Azure Active Directory (Azure AD) 令牌进行身份验证。
+1. [安装 CLI](../../dev-tools/cli/index.md#install-the-cli) 并将其配置为使用 [Azure Active Directory (Azure AD) 令牌](../../dev-tools/api/latest/aad/app-aad-token.md)进行身份验证。
 
-   请参阅[安装 CLI](../../dev-tools/cli/index.md#install-the-cli)。
+   > [!IMPORTANT]
+   >
+   > 需要 Azure AD 用户令牌，才能使用 Databricks CLI 创建支持 Azure Key Vault 的机密范围。 不能使用 Azure Databricks 个人访问令牌或属于服务主体的 Azure AD 应用程序令牌。
 
 2. 创建 Azure Key Vault 范围：
 
    ```bash
-   databricks secrets create-scope --scope <scope-name>    --scope-backend-type AZURE_KEYVAULT --subscription-id <azure-keyvault-subscription-id> --dns-name <azure-keyvault-dns-name>
+   databricks secrets create-scope --scope <scope-name> --scope-backend-type AZURE_KEYVAULT --resource-id <azure-keyvault-resource-id> --dns-name <azure-keyvault-dns-name>
    ```
 
-   默认情况下，使用创建范围的用户的 `MANAGE` 权限创建范围。 如果你的帐户没有 [Azure Databricks 高级计划](https://databricks.com/product/azure-pricing)，则必须替代此默认值，并在创建范围时向 `users`（所有用户）组显式授予 `MANAGE` 权限：
+   默认情况下，使用创建范围的用户的 ``MANAGE`` 权限创建范围。 如果你的帐户没有 [Azure Databricks 高级计划](https://databricks.com/product/azure-pricing)，则必须替代此默认值，并在创建范围时向 ``users``（所有用户）组显式授予 ``MANAGE`` 权限：
 
    ```bash
-    databricks secrets create-scope --scope <scope-name>    --scope-backend-type AZURE_KEYVAULT --subscription-id <azure-keyvault-subscription-id> --dns-name <azure-keyvault-dns-name> --initial-manage-principal users
+    databricks secrets create-scope --scope <scope-name> --scope-backend-type AZURE_KEYVAULT --resource-id <azure-keyvault-resource-id> --dns-name <azure-keyvault-dns-name> --initial-manage-principal users
    ```
 
    如果你的帐户具有 Azure Databricks 高级计划，则可以在创建范围后随时更改权限。 有关详细信息，请参阅[机密访问控制](../access-control/secret-acl.md)。

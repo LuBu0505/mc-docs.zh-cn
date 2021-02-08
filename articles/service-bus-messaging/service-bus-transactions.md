@@ -1,24 +1,28 @@
 ---
 title: Azure 服务总线中事务处理概述
 description: 本文概要介绍了 Azure 服务总线中的事务处理和“发送方式”功能。
+ms.service: service-bus-messaging
 ms.topic: article
 origin.date: 10/28/2020
 author: rockboyfor
-ms.date: 11/16/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 54bc214ce6100069187c736676ce3205a27c0057
-ms.sourcegitcommit: 39288459139a40195d1b4161dfb0bb96f5b71e8e
+ms.openlocfilehash: 419d02c0371233b9b7ee72f67a576dc2a23b012f
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94590852"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059433"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>服务总线事务处理概述
 
 本文将讨论 Azure 服务总线的事务功能。 很多讨论已在[服务总线中的 AMQP 事务示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia)中进行了说明。 本文仅限于概述服务总线中的事务处理和发送方式  功能，虽然原子事务示例在作用域内更广泛且更复杂。
+
+> [!NOTE]
+> 基本层的服务总线不支持事务。 标准层和高级层支持事务。 有关这些层之间的差异，请参阅[服务总线定价](https://www.azure.cn/pricing/details/service-bus/)。
 
 ## <a name="transactions-in-service-bus"></a>服务总线中的事务
 

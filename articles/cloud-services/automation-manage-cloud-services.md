@@ -1,23 +1,21 @@
 ---
-title: 使用 Azure 自动化管理 Azure 云服务 | Microsoft Docs
+title: 使用 Azure 自动化管理 Azure 云服务（经典）| Microsoft Docs
 description: 了解如何使用 Azure 自动化服务管理大规模 Azure 云服务。
-services: cloud-services, automation
-author: jodoglevy
-manager: timlt
-editor: ''
-ms.assetid: 3789810a-2892-4eef-bf29-c781c1b5af48
-ms.service: cloud-services
 ms.topic: article
-ms.date: 10/20/2020
+ms.service: cloud-services
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: 52d7d5c688b1a3b583632107d1962ae2e58c7330
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 2ee4bfcdb29434a8031123f942106daf45a0cd04
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92471825"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059657"
 ---
-# <a name="managing-azure-cloud-services-using-azure-automation"></a>使用 Azure 自动化管理 Azure 云服务
+# <a name="managing-azure-cloud-services-classic-using-azure-automation"></a>使用 Azure 自动化管理 Azure 云服务（经典）
 本指南介绍 Azure 自动化服务，以及如何使用它来简化 Azure 云服务的管理。
 
 ## <a name="what-is-azure-automation"></a>什么是 Azure 自动化？

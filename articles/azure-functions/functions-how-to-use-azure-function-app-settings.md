@@ -3,14 +3,14 @@ title: 配置 Azure Functions 中的函数应用设置
 description: 了解如何配置 Azure Functions 中的函数应用设置。
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 01/27/2021
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 3ed1516fa176e8cb8710abb2b1dcdc2f99eb1dc0
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: eb2a424004c7e7fd9bda2dc9cd4532d5176102f0
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195248"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060100"
 ---
 # <a name="manage-your-function-app"></a>管理函数应用 
 
@@ -19,11 +19,6 @@ ms.locfileid: "98195248"
 函数应用中的各个函数一起部署并一起缩放。 同一函数应用中的所有函数在函数应用缩放时共享每个实例的资源。 
 
 将为每个函数应用单独定义连接字符串、环境变量以及其他应用程序设置。 必须在函数应用之间共享的任何数据都应该以外部方式存储在持久存储中。
-
-本文介绍如何配置和管理函数应用。 
-
-> [!TIP]  
-> 许多配置选项也可通过 [Azure CLI] 进行管理。 
 
 ## <a name="get-started-in-the-azure-portal"></a>在 Azure 门户中开始
 
@@ -37,15 +32,17 @@ ms.locfileid: "98195248"
 
 ## <a name="work-with-application-settings"></a><a name="settings"></a>使用应用程序设置
 
-“应用程序设置”选项卡维护函数应用使用的设置。 这些设置是加密存储的，必须选择“显示值”才能查看门户中的值。 也可使用 Azure CLI 访问应用程序设置。
+可以通过 [Azure 门户](functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings)以及 [Azure CLI](functions-how-to-use-azure-function-app-settings.md?tabs=azurecli#settings) 和 [Azure PowerShell](functions-how-to-use-azure-function-app-settings.md?tabs=powershell#settings) 管理应用程序设置。 还可以通过 [Visual Studio Code](functions-develop-vs-code.md#application-settings-in-azure) 和 [Visual Studio](functions-develop-vs.md#function-app-settings) 管理应用程序设置。 
 
-### <a name="portal"></a>门户
+这些设置是加密存储的。 若要了解详细信息，请参阅[应用程序设置安全](security-concepts.md#application-settings)。
 
-若要在门户中添加设置，请选择“新建应用程序设置”并添加新的键值对。
+# <a name="portal"></a>[门户](#tab/portal)
+
+“应用程序设置”选项卡维护函数应用使用的设置。 你必须选择“显示值”才能在门户中查看值。 若要在门户中添加设置，请选择“新建应用程序设置”并添加新的键值对。
 
 ![Azure 门户中的函数应用设置。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-### <a name="azure-cli"></a>Azure CLI
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 [`az functionapp config appsettings list`](/cli/functionapp/config/appsettings#az-functionapp-config-appsettings-list) 命令返回现有的应用程序设置，如以下示例所示：
 
@@ -63,6 +60,22 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 --settings CUSTOM_FUNCTION_APP_SETTING=12345
 ```
 
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+[`Get-AzFunctionAppSetting`](https://docs.microsoft.com/powershell/module/az.functions/get-azfunctionappsetting) cmdlet 返回现有的应用程序设置，如以下示例所示： 
+
+```azurepowershell
+Get-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME>
+```
+
+[`Update-AzFunctionAppSetting`](https://docs.microsoft.com/powershell/module/az.functions/update-azfunctionappsetting) 命令添加或更新某个应用程序设置。 以下示例创建的设置包含的键其名称为 `CUSTOM_FUNCTION_APP_SETTING`，其值为 `12345`：
+
+```azurepowershell
+Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME> -AppSetting @{"CUSTOM_FUNCTION_APP_SETTING" = "12345"}
+```
+
+---
+
 ### <a name="use-application-settings"></a>使用应用程序设置
 
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
@@ -71,7 +84,7 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 
 ## <a name="hosting-plan-type"></a>托管计划类型
 
-创建函数应用时也会创建应用服务托管计划，应用将在该计划中运行。 一个计划可以有一个或多个函数应用。 函数的功能、缩放和定价取决于计划的类型。 要了解详细信息，请参阅 [Azure Functions 定价页](https://www.azure.cn/pricing/details/azure-functions/)。
+创建函数应用时，你还需要创建托管计划，应用将在其中运行。 一个计划可以有一个或多个函数应用。 函数的功能、缩放和定价取决于计划的类型。 若要了解详细信息，请参阅 [Azure Functions 托管选项](functions-scale.md)。
 
 可以从 Azure 门户中或通过使用 Azure CLI 或 Azure PowerShell API 确定函数应用所使用的计划类型。 
 
@@ -118,6 +131,75 @@ $PlanID = (Get-AzFunctionApp -ResourceGroupName $ResourceGroup -Name $FunctionAp
 
 ---
 
+## <a name="plan-migration"></a>计划迁移
+
+你可以使用 Azure CLI 命令在 Windows 上的消耗计划和高级计划之间迁移函数应用。 具体的命令取决于迁移方向。 当前不支持直接迁移到专用（应用服务）计划。
+
+Linux 不支持此迁移。
+
+### <a name="consumption-to-premium"></a>从消耗计划到高级计划
+
+可以使用以下过程从 Windows 上的消耗计划迁移到高级计划：
+
+1. 运行以下命令，在与现有函数应用相同的区域和资源组中创建一个新的应用服务计划（弹性高级）。  
+
+    ```azurecli
+    az functionapp plan create --name <NEW_PREMIUM_PLAN_NAME> --resource-group <MY_RESOURCE_GROUP> --location <REGION> --sku EP1
+    ```
+
+1. 运行以下命令，将现有函数应用迁移到新的高级计划
+
+    ```azurecli
+    az functionapp update --name <MY_APP_NAME> --resource-group <MY_RESOURCE_GROUP> --plan <NEW_PREMIUM_PLAN>
+    ```
+
+1. 如果不再需要以前的消耗函数应用计划，请在确认已成功迁移到新的计划后，删除原始的函数应用计划。 运行以下命令来获取资源组中所有消耗计划的列表。
+
+    ```azurecli
+    az functionapp plan list --resource-group <MY_RESOURCE_GROUP> --query "[?sku.family=='Y'].{PlanName:name,Sites:numberOfSites}" -o table
+    ```
+
+    你可以放心地删除没有站点的计划，这是你从其进行迁移的计划。
+
+1. 运行以下命令来删除从其进行迁移的消耗计划。
+
+    ```azurecli
+    az functionapp plan delete --name <CONSUMPTION_PLAN_NAME> --resource-group <MY_RESOURCE_GROUP>
+    ```
+
+### <a name="premium-to-consumption"></a>从高级计划到消耗计划
+
+可以使用以下过程从 Windows 上的高级计划迁移到消耗计划：
+
+1. 运行以下命令，在与现有函数应用相同的区域和资源组中创建一个新的函数应用（消耗）。 此命令还会创建一个将在其中运行函数应用的新消耗计划。
+
+    ```azurecli
+    az functionapp create --resource-group <MY_RESOURCE_GROUP> --name <NEW_CONSUMPTION_APP_NAME> --consumption-plan-location <REGION> --runtime dotnet --functions-version 3 --storage-account <STORAGE_NAME>
+    ```
+
+1. 运行以下命令，将现有函数应用迁移到新的消耗计划。
+
+    ```azurecli
+    az functionapp update --name <MY_APP_NAME> --resource-group <MY_RESOURCE_GROUP> --plan <NEW_CONSUMPTION_PLAN>
+    ```
+
+1. 删除你在步骤 1 中创建的函数应用，因为你只需要为运行现有函数应用而创建的计划。
+
+    ```azurecli
+    az functionapp delete --name <NEW_CONSUMPTION_APP_NAME> --resource-group <MY_RESOURCE_GROUP>
+    ```
+
+1. 如果不再需要以前的高级函数应用计划，请在确认已成功迁移到新计划后，删除原始函数应用计划。 请注意，如果未删除该计划，则仍按高级计划收费。 运行以下命令来获取资源组中所有高级计划的列表。
+
+    ```azurecli
+    az functionapp plan list --resource-group <MY_RESOURCE_GROUP> --query "[?sku.family=='EP'].{PlanName:name,Sites:numberOfSites}" -o table
+    ```
+
+1. 运行以下命令来删除从其进行迁移的高级计划。
+
+    ```azurecli
+    az functionapp plan delete --name <PREMIUM_PLAN> --resource-group <MY_RESOURCE_GROUP>
+    ```
 
 ## <a name="platform-features"></a>平台功能
 
@@ -200,4 +282,3 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 
 [Azure CLI]: /cli/
 [Azure 门户]: https://portal.azure.cn
-

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 07/14/2020
-ms.date: 11/23/2020
-ms.openlocfilehash: c9000aaaa29aa4cce931b8095664dd33f6e63b1d
-ms.sourcegitcommit: c89f1adcf403f5845e785064350136698eed15b8
+ms.date: 02/01/2021
+ms.openlocfilehash: 7912cb4e4e2ca080bfcc3c08b9626ddb455450a2
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94680530"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060039"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时 
 
@@ -25,13 +25,14 @@ ms.locfileid: "94680530"
 
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供以下数据集成功能的计算基础结构：
 
+- **数据流**：在托管的 Azure 计算环境中执行[数据流](concepts-data-flow-overview.md)。  
 - **数据移动**：跨公用网络中的数据存储和专用网络（本地或虚拟专用网络）中的数据存储复制数据。 它提供对内置连接器、格式转换、列映射以及性能和可扩展数据传输的支持。
 - **活动分派**：分派和监视在各种计算服务（如 Azure Databricks、Azure HDInsight、Azure SQL 数据库、SQL Server 等）上运行的转换活动。
 - **SSIS 包执行**：在托管的 Azure 计算环境中本机执行 SQL Server 集成服务 (SSIS) 包。
 
 在数据工厂中，活动定义要执行的操作。 链接服务定义目标数据存储或计算服务。 集成运行时提供活动和链接服务之间的桥梁。  它被链接服务或活动引用，提供运行或分派活动的计算环境。 这样一来，可以在最接近目标数据存储的区域中执行活动，或者，以最优性能计算服务的同时满足安全和合规性需求。
 
-可以在 Azure 数据工厂 UX 中通过[管理中心](author-management-hub.md)创建集成运行时以及可引用它们的任何活动或数据集。
+可在 Azure 数据工厂 UX 中通过[管理中心](author-management-hub.md)创建集成运行时，以及可引用它们的任何活动、数据集或数据流。
 
 ## <a name="integration-runtime-types"></a>集成运行时类型
 
@@ -45,7 +46,7 @@ ms.locfileid: "94680530"
 
 IR 类型 | 公用网络 | 专用网络
 ------- | -------------- | ---------------
-Azure | 数据移动<br/>活动分派 | 数据移动<br/>活动分派
+Azure | 数据流<br/>数据移动<br/>活动分派 | 数据流<br/>数据移动<br/>活动分派
 自承载 | 数据移动<br/>活动分派 | 数据移动<br/>活动分派
 Azure-SSIS | SSIS 包执行 | SSIS 包执行
 
@@ -70,6 +71,9 @@ Azure 集成运行时提供了使用安全、可靠和高性能的方式在云�
 活动分派是将活动路由到目标计算服务的轻型操作，因此，无需纵向扩展此方案的计算大小。
 
 有关创建和配置 Azure IR 的信息，请参阅[如何创建和配置 Azure Integration Runtime](create-azure-integration-runtime.md)。 
+
+> [!NOTE] 
+> Azure 集成运行时具有与数据流运行时相关的属性，该运行时定义将用来运行数据流的基础计算基础结构。 
 
 ## <a name="self-hosted-integration-runtime"></a>自承载集成运行时
 
@@ -136,6 +140,11 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 
 - 对于查找/获取元数据/删除活动执行（也称为管道活动）、转换活动调度（也称为外部活动）和创作操作（测试连接、浏览文件夹列表和表列表、预览数据），ADF 会使用数据工厂区域中的 IR。
 
+- 对于数据流，ADF 会使用数据工厂区域中的 IR。 
+
+  > [!TIP] 
+  > 最好是确保数据流在相应数据存储所在的区域中运行（若可行）。 要实现此目的，你可自动解析 Azure IR（如果数据存储位置与数据工厂位置相同），也可在数据存储所属的区域中创建新的 Azure IR 实例，然后在其中执行数据流。 
+
 如果为自动解析 Azure IR 启用托管虚拟网络，则 ADF 会在数据工厂区域中使用 IR。 
 
 可以在 UI 或活动监视有效负载的管道活动监视视图中监视哪个 IR 位置在活动执行期间生效。
@@ -175,6 +184,10 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 ### <a name="external-transformation-activity"></a>外部转换活动
 
 每个使用外部计算引擎的外部转换活动都有一个目标计算链接服务，该服务指向一个集成运行时。 此集成运行时实例确定外部手动编码转换活动的调度位置。
+
+### <a name="data-flow-activity"></a>数据流活动
+
+数据流活动是在与其关联的 Azure 集成运行时上执行的。 数据流使用的 Spark 计算由 Azure Integration Runtime 中的数据流属性决定，且完全由 ADF 托管。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,19 +1,19 @@
 ---
 title: 模板函数 - 资源
-description: 介绍可在 Azure Resource Manager 模板中用于检索资源相关值的函数。
+description: 介绍可在 Azure 资源管理器模板（ARM 模板）中用于检索资源相关值的函数。
 ms.topic: conceptual
-origin.date: 11/18/2020
+origin.date: 01/04/2021
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 01/25/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: dfdb948e7bae53b6b5b6cb365090d49b568f3253
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 9f55d732f270994f13539b1bec9ef4e4ed12c39f
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022846"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751201"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 模板的资源函数
 
@@ -348,7 +348,7 @@ resource myAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
 | Microsoft.ServiceBus/namespaces/authorizationRules | [listkeys](https://docs.microsoft.com/rest/api/servicebus/stable/namespaces%20-%20authorization%20rules/listkeys) |
 | Microsoft.ServiceBus/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](https://docs.microsoft.com/rest/api/servicebus/stable/disasterrecoveryconfigs/listkeys) |
 | Microsoft.ServiceBus/namespaces/queues/authorizationRules | [listkeys](https://docs.microsoft.com/rest/api/servicebus/stable/queues%20-%20authorization%20rules/listkeys) |
-| Microsoft.ServiceBus/namespaces/topics/authorizationRules | [listkeys](https://docs.microsoft.com/rest/api/servicebus/stable/topics%20-%20authorization%20rules/listkeys) |
+| Microsoft.ServiceBus/namespaces/topics/authorizationRules | [listkeys](https://docs.microsoft.com/rest/api/servicebus/stable/topics%20–%20authorization%20rules/listkeys) |
 | Microsoft.SignalRService/SignalR | [listkeys](https://docs.microsoft.com/rest/api/signalr/signalr/listkeys) |
 | Microsoft.Storage/storageAccounts | [listAccountSas](https://docs.microsoft.com/rest/api/storagerp/storageaccounts/listaccountsas) |
 | Microsoft.Storage/storageAccounts | [listkeys](https://docs.microsoft.com/rest/api/storagerp/storageaccounts/listkeys) |
@@ -371,6 +371,7 @@ resource myAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
 | Microsoft.Web/sites/slots/config | [list](https://docs.microsoft.com/rest/api/appservice/webapps/listconfigurationsslot) |
 | microsoft.web/sites/slots/functions | [listsecrets](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctionsecretsslot) |
 
+<!--CORRECT ON https://docs.microsoft.com/rest/api/servicebus/stable/topics%20–%20authorization%20rules/listkeys-->
 <!--MOONCAKE: THE FOUR LINK ABOUT Microsoft.ServiceBus IS NOT AVAILABLE ON GLOBAL LINK-->
 <!--Not available on BatchAI and BlockChain on line 135 + 3-->
 <!--Not available on DateShare on line 148 + 5-->

@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/01/2020
-ms.openlocfilehash: 084cfdd7537a9c8264e64181fc3314fc5bd11f1a
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.date: 01/26/2021
+ms.openlocfilehash: 98f8d810ac5abc06d7391a89d4dfbae09ededb54
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507393"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059085"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure 时序见解第 2 代事件源
 
@@ -45,13 +45,25 @@ ms.locfileid: "96507393"
 
 - 请勿超出环境的[吞吐量速率限制](./concepts-streaming-ingress-throughput-limits.md)或每个分区的限制。
 
-- 配置一个当你的环境在处理数据的过程中遇到问题时要发送的延迟[警报](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)。
+- 配置一个当你的环境在处理数据的过程中遇到问题时要发送的延迟[警报](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)。 请参阅下面的[生产工作负荷](./concepts-streaming-ingestion-event-sources.md#production-workloads)，了解建议的警报条件。
 
 - 流式传输引入仅限用于近实时数据和最新数据，不支持流式传输历史数据。
 
 - 了解如何对属性进行转义以及 JSON [数据如何平展和存储。](./concepts-json-flattening-escaping-rules.md)
 
 - 提供事件源连接字符串时，请遵循最低权限原则。 对于事件中心，请配置仅包含“发送”声明的共享访问策略；对于 IoT 中心，请仅使用“服务连接”权限。
+
+## <a name="production-workloads"></a>生产工作负荷
+
+除了上述最佳做法，我们建议你为业务关键型工作负荷实现以下各项。
+
+- 将 IoT 中心或事件中心的数据保留时间增加到最大值 7 天。
+
+- 在 Azure 门户中创建环境警报。 基于平台[指标](how-to-monitor-tsi-reference.md#metrics)的警报使你可以验证端到端管道行为。 [此处](/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts)是有关创建和管理警报的说明。 建议的警报条件：
+
+  - IngressReceivedMessagesTimeLag 大于 5 分钟
+  - IngressReceivedBytes 为 0
+- 请在 IoT 中心分区或事件中心分区之间保持引入负载均衡。
 
 ### <a name="historical-data-ingestion"></a>历史数据引入
 

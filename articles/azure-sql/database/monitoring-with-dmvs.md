@@ -11,19 +11,19 @@ ms.topic: how-to
 author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein
-origin.date: 04/19/2020
-ms.date: 12/14/2020
-ms.openlocfilehash: 1181c2b51587a6f3a539e718504aa7112692d93e
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+origin.date: 1/14/2021
+ms.date: 02/01/2021
+ms.openlocfilehash: 089f5f97b25c931978c5326786a795e2801b8dd9
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830282"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059675"
 ---
 # <a name="monitoring-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>使用动态管理视图监视 Azure SQL 数据库和 Azure SQL 托管实例的性能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure SQL 数据库和 Azure SQL 托管实例支持通过一部分动态管理视图来诊断性能问题，这些问题可能由查询受阻或长时间运行、资源瓶颈、不良查询计划等原因造成。 本主题提供有关如何通过使用动态管理视图检测常见性能问题的信息。
+Azure SQL 数据库和 Azure SQL 托管实例支持通过一部分动态管理视图来诊断性能问题，这些问题可能由查询受阻或长时间运行、资源瓶颈、不良查询计划等原因造成。 本文介绍有关如何通过使用动态管理视图检测常见性能问题。
 
 Azure SQL 数据库和 Azure SQL 托管实例（在一定程度上）支持三种动态管理视图：
 
@@ -255,12 +255,12 @@ GO
 
 识别 IO 性能问题时，与 `tempdb` 问题最相关的等待类型是 `PAGELATCH_*`（而不是 `PAGEIOLATCH_*`）。 但是，出现 `PAGELATCH_*` 等待并不总是意味着发生了 `tempdb` 争用。  这种等待可能还意味着，由于并发请求面向相同的数据页面，发生了用户对象数据页面争用。 若要进一步确认 `tempdb` 争用，请使用 [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 确认 wait_resource 值是否以 `2:x:y` 开头，其中，`tempdb` 是数据库 ID，`x` 是文件 ID，`y` 是页 ID。  
 
-对于 tempdb 争用，常用的方法是减少依赖于 `tempdb` 的重写应用程序代码。  常见的 `tempdb` 使用区域包括：
+对于 tempdb 争用，常用的方法是减少或重写依赖于 `tempdb` 的应用程序代码。  常见的 `tempdb` 使用区域包括：
 
 - 临时表
 - 表变量
 - 表值参数
-- 版本存储使用（特别是与长时间运行的事务关联的用法）
+- 版本存储使用（与长时间运行的事务关联的用法）
 - 包含使用排序、哈希联接和 spool 的查询计划的查询
 
 ### <a name="top-queries-that-use-table-variables-and-temporary-tables"></a>使用表变量和临时表的最相关查询
@@ -564,7 +564,7 @@ SELECT resource_name, AVG(avg_cpu_percent) AS Average_Compute_Utilization
 FROM sys.server_resource_stats
 WHERE start_time BETWEEN @s AND @e  
 GROUP BY resource_name  
-HAVING AVG(avg_cpu_percent) >= 80
+HAVING AVG(avg_cpu_percent) >= 80;
 ```
 
 ### <a name="sysresource_stats"></a>sys.resource_stats
@@ -590,7 +590,7 @@ master 数据库中的 [sys.resource_stats](https://docs.microsoft.com/sql/relat
 SELECT TOP 10 *
 FROM sys.resource_stats
 WHERE database_name = 'resource1'
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 ```
 
 ![sys.resource_stats 目录视图](./media/monitoring-with-dmvs/sys_resource_stats.png)
@@ -700,7 +700,7 @@ AND D.name = 'MyDatabase';
 
 ```sql
 SELECT COUNT(*) AS [Sessions]
-FROM sys.dm_exec_connections
+FROM sys.dm_exec_connections;
 ```
 
 若要分析 SQL Server 工作负荷，可以对查询进行修改，使之专注于特定的数据库。 此查询有助于确定数据库可能的会话需求（如果考虑将其移至 Azure）。
@@ -710,7 +710,7 @@ SELECT COUNT(*) AS [Sessions]
 FROM sys.dm_exec_connections C
 INNER JOIN sys.dm_exec_sessions S ON (S.session_id = C.session_id)
 INNER JOIN sys.databases D ON (D.database_id = S.database_id)
-WHERE D.name = 'MyDatabase'
+WHERE D.name = 'MyDatabase';
 ```
 
 同样，这些查询返回时间点计数。 如果在一段时间内收集多个样本，则可更好地了解会话使用情况。
@@ -744,7 +744,7 @@ ORDER BY 2 DESC;
 
 ### <a name="monitoring-blocked-queries"></a>监视受阻的查询
 
-缓慢或长时间运行的查询会造成过多的资源消耗并会导致查询受阻。 受阻的原因可能是应用程序设计欠佳、查询计划不良、缺乏有用的索引等。 可以使用 sys.dm_tran_locks 视图来获取有关数据库中当前锁定活动的信息。 有关示例代码，请参阅 [sys.dm_tran_locks (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql)。
+缓慢或长时间运行的查询会造成过多的资源消耗并会导致查询受阻。 受阻的原因可能是应用程序设计欠佳、查询计划不良、缺乏有用的索引等。 可以使用 sys.dm_tran_locks 视图来获取有关数据库中当前锁定活动的信息。 有关示例代码，请参阅 [sys.dm_tran_locks (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql)。 有关故障排除阻塞的详细信息，请参阅[了解并解决 Azure SQL 阻塞问题](understand-resolve-blocking.md)。
 
 ### <a name="monitoring-query-plans"></a>监视查询计划
 

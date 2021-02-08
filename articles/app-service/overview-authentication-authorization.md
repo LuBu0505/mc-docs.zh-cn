@@ -8,12 +8,12 @@ ms.date: 12/21/2020
 ms.author: v-tawe
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 6d75ac1a26ff39dbf0e08474b134dba501fd4c95
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: d297b6a636a255911f4245addf39412126ab8841
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022976"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060174"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure 应用服务和 Azure Functions 中的身份验证和授权
 
@@ -166,10 +166,12 @@ The authentication and authorization module runs in a separate container, isolat
 * [How to configure your app to use Azure Active Directory login][AAD]
 * [How to configure your app to use Microsoft Account login][MSA]
 * [如何将应用配置为使用 OpenID Connect 提供程序（预览版）进行登录][OIDC]
+* [如何将应用配置为使用“Apple 登录”（预览版）][Apple]
 
 [AAD]: configure-authentication-provider-aad.md
 [MSA]: configure-authentication-provider-microsoft.md
 [OIDC]: configure-authentication-provider-openid-connect.md
+[Apple]: configure-authentication-provider-apple.md
 
 [custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
 

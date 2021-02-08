@@ -3,18 +3,17 @@ title: 与 Azure 专用链接服务集成
 description: 了解如何将 Azure Key Vault 与 Azure 专用链接服务集成
 author: ShaneBala-keyvault
 ms.author: v-tawe
-origin.date: 11/17/2020
-ms.date: 12/11/2020
+ms.date: 01/27/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c4a550d8255df10eb859d97e28430afbab2206f2
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: 1c955e1d7145a77e3173043ae44626b9f3bb8b4b
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97105604"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060134"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>将 Key Vault 与 Azure 专用链接集成
 
@@ -54,18 +53,17 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 1. 在“网络”选项卡中选中“专用终结点”单选按钮。
 1. 单击“+ 添加”按钮添加专用终结点。
 
-   ![映像](../media/private-link-service-1.png)
-
-1. 在“创建专用终结点”边栏选项卡的“位置”字段中，选择虚拟网络所在的区域。
-1. 在“名称”字段中创建一个描述性的名称，用于标识此专用终结点。
-1. 从下拉菜单中，选择要在其中创建此专用终结点的虚拟网络和子网。
-1. 将“与专用区域 DNS 集成”选项保留不变。
+    ![屏幕截图显示了“创建密钥保管库”页上的“网络”选项卡。](../media/private-link-service-1.png)
+ 
+1. 在“创建专用终结点”边栏选项卡的“位置”字段中，选择虚拟网络所在的区域。 
+1. 在“名称”字段中创建一个描述性的名称，用于标识此专用终结点。 
+1. 从下拉菜单中，选择要在其中创建此专用终结点的虚拟网络和子网。 
+1. 将“与专用区域 DNS 集成”选项保留不变。  
 1. 选择“确定”。
 
-   ![映像](../media/private-link-service-8.png)
-
-现在可以看到配置的专用终结点。 可以使用相应的选项来删除和编辑此专用终结点。
-选择“查看 + 创建”按钮并创建 Key Vault。 完成部署需要 5-10 分钟。
+    ![屏幕截图显示了“创建专用终结点”页，其中选中了一些设置。](../media/private-link-service-8.png)
+ 
+现在可以看到配置的专用终结点。 可以使用相应的选项来删除和编辑此专用终结点。 选择“查看 + 创建”按钮并创建 Key Vault。 完成部署需要 5-10 分钟。 
 
 ### <a name="establish-a-private-link-connection-to-an-existing-key-vault"></a>与现有的 Key Vault 建立专用链接连接
 
@@ -78,13 +76,13 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 1. 选择页面顶部的“专用终结点连接”选项卡
 1. 选择页面顶部的“+ 专用终结点”按钮。
 
-   ![插图](../media/private-link-service-3.png)
-   ![插图](../media/private-link-service-4.png)
+    ![屏幕截图显示了“网络”页上的“+ 专用终结点”按钮。](../media/private-link-service-3.png)
+    ![屏幕截图显示了“创建专用终结点(预览)”页上的“基本信息”选项卡。](../media/private-link-service-4.png)
 
 可以使用此边栏选项卡选择为任何 Azure 资源创建专用终结点。 可以使用下拉菜单选择资源类型并在目录中选择资源，或者使用资源 ID 连接到任何 Azure 资源。 将“与专用区域 DNS 集成”选项保留不变。
 
-![插图](../media/private-link-service-3.png)
-![插图](../media/private-link-service-4.png)
+![屏幕截图显示了使用当前边栏选项卡添加专用终结点的情况。](../media/private-link-service-3.png)
+![屏幕截图显示了“创建专用终结点(预览)”页的示例。](../media/private-link-service-4.png)
 
 创建专用终结点时，必须批准连接。 如果要为其创建专用终结点的资源位于你的目录中，则你可以批准连接请求（前提是你有足够的权限）；如果连接到另一个目录中的 Azure 资源，则必须等待该资源的所有者批准连接请求。
 
@@ -114,7 +112,7 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 
 ## <a name="establish-a-private-link-connection-to-key-vault-using-cli-initial-setup"></a>使用 CLI 建立到 Key Vault 的专用链接连接（初始设置）
 
-```console
+```azurecli
 az login                                                         # Login to Azure CLI
 az account set --subscription {SUBSCRIPTION ID}                  # Select your Azure Subscription
 az group create -n {RESOURCE GROUP} -l {REGION}                  # Create a new Resource Group
@@ -130,49 +128,46 @@ az network vnet subnet create -g {RG} --vnet-name {vNet NAME} --name {subnet NAM
 az network vnet subnet update --name {subnet NAME} --resource-group {RG} --vnet-name {vNet NAME} --disable-private-endpoint-network-policies true
 
     # Create a Private DNS Zone
-az network private-dns zone create --resource-group {RG} --name privatelink.vaultcore.azure.net
+az network private-dns zone create --resource-group {RG} --name privatelink.vaultcore.chinacloudapi.cn
 
     # Link the Private DNS Zone to the Virtual Network
-az network private-dns link vnet create --resource-group {RG} --virtual-network {vNet NAME} --zone-name privatelink.vaultcore.azure.net --name {dnsZoneLinkName} --registration-enabled true
+az network private-dns link vnet create --resource-group {RG} --virtual-network {vNet NAME} --zone-name privatelink.vaultcore.chinacloudapi.cn --name {dnsZoneLinkName} --registration-enabled true
 
 ```
 
 ### <a name="add-private-dns-records"></a>添加专用 DNS 记录
-
-```console
-# https://docs.microsoft.com/en-us/azure/dns/private-dns-getstarted-cli#create-an-additional-dns-record
+```azurecli
+# /dns/private-dns-getstarted-cli#create-an-additional-dns-record
 az network private-dns zone list -g $rg_name
-az network private-dns record-set a add-record -g $rg_name -z "privatelink.vaultcore.azure.net" -n $vault_name -a $kv_network_interface_private_ip
-az network private-dns record-set list -g $rg_name -z "privatelink.vaultcore.azure.net"
+az network private-dns record-set a add-record -g $rg_name -z "privatelink.vaultcore.chinacloudapi.cn" -n $vault_name -a $kv_network_interface_private_ip
+az network private-dns record-set list -g $rg_name -z "privatelink.vaultcore.chinacloudapi.cn"
 
 # From home/public network, you wil get a public IP. If inside a vnet with private zone, nslookup will resolve to the private ip.
 nslookup $vault_name.vault.azure.cn
-nslookup $vault_name.privatelink.vaultcore.azure.net
+nslookup $vault_name.privatelink.vaultcore.chinacloudapi.cn
 ```
 
-### <a name="create-a-private-endpoint-automatically-approve"></a>创建专用终结点（自动批准）
-
-```console
+### <a name="create-a-private-endpoint-automatically-approve"></a>创建专用终结点（自动批准） 
+```azurecli
 az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION}
 ```
 
-### <a name="create-a-private-endpoint-manually-request-approval"></a>创建专用终结点（手动请求批准）
-
-```console
+### <a name="create-a-private-endpoint-manually-request-approval"></a>创建专用终结点（手动请求批准） 
+```azurecli
 az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION} --manual-request
 ```
 
 ### <a name="manage-private-link-connections"></a>管理专用链接连接
 
-```console
+```azurecli
 # Show Connection Status
 az network private-endpoint show --resource-group {RG} --name {Private Endpoint Name}
 
 # Approve a Private Link Connection Request
-az keyvault private-endpoint-connection approve --approval-description {"OPTIONAL DESCRIPTION"} --resource-group {RG} --vault-name {KEY VAULT NAME} –name {PRIVATE LINK CONNECTION NAME}
+az keyvault private-endpoint-connection approve --approval-description {"OPTIONAL DESCRIPTION"} --resource-group {RG} --vault-name {KEY VAULT NAME} -name {PRIVATE LINK CONNECTION NAME}
 
 # Deny a Private Link Connection Request
-az keyvault private-endpoint-connection reject --rejection-description {"OPTIONAL DESCRIPTION"} --resource-group {RG} --vault-name {KEY VAULT NAME} –name {PRIVATE LINK CONNECTION NAME}
+az keyvault private-endpoint-connection reject --rejection-description {"OPTIONAL DESCRIPTION"} --resource-group {RG} --vault-name {KEY VAULT NAME} -name {PRIVATE LINK CONNECTION NAME}
 
 # Delete a Private Link Connection Request
 az keyvault private-endpoint-connection delete --resource-group {RG} --vault-name {KEY VAULT NAME} --name {PRIVATE LINK CONNECTION NAME}
@@ -219,40 +214,40 @@ Non-authoritative answer:
 Name:
 Address:  10.1.0.5 (private IP address)
 Aliases:  <your-key-vault-name>.vault.azure.cn
-          <your-key-vault-name>.privatelink.vaultcore.azure.net
+          <your-key-vault-name>.privatelink.vaultcore.chinacloudapi.cn
 ```
 
 ## <a name="troubleshooting-guide"></a>故障排除指南
 
-- 检查以确保专用终结点处于已批准状态。
+* 检查以确保专用终结点处于已批准状态。 
+    1. 可以在 Azure 门户中检查并修复此问题。 打开 Key Vault 资源，然后单击“网络”选项。 
+    2. 然后选择“专用终结点连接”选项卡。 
+    3. 请确保连接状态为“已批准”并且预配状态为“成功”。 
+    4. 还可以导航到专用终结点资源并在其中查看相同属性，然后仔细检查虚拟网络是否与所使用的网络匹配。
 
-  1. 可以在 Azure 门户中检查并修复此问题。 打开 Key Vault 资源，然后单击“网络”选项。
-  2. 然后选择“专用终结点连接”选项卡。
-  3. 请确保连接状态为“已批准”并且预配状态为“成功”。
-  4. 还可以导航到专用终结点资源并在其中查看相同属性，然后仔细检查虚拟网络是否与所使用的网络匹配。
+* 请检查以确保具有专用 DNS 区域资源。 
+    1. 必须具有名称恰好是 privatelink.vaultcore.chinacloudapi.cn 的专用 DNS 区域资源。 
+    2. 若要了解如何对此进行设置，请参阅以下链接。 [专用 DNS 区域](../../dns/private-dns-privatednszone.md)
+    
+* 请检查以确保专用 DNS 区域未链接到虚拟网络。 如果仍在返回公共 IP 地址，则可能存在该问题。 
+    1. 如果专用区域 DNS 未链接到虚拟网络，则从虚拟网络发起的 DNS 查询会返回 Key Vault 的公共 IP 地址。 
+    2. 在 Azure 门户中导航到专用 DNS 区域资源，然后单击虚拟网络链接选项。 
+    4. 必须列出将对 Key Vault 执行调用的虚拟网络。 
+    5. 如果它不存在，请添加它。 
+    6. 有关详细步骤，请参阅以下文档[将虚拟网络链接到专用 DNS 区域](../../dns/private-dns-getstarted-portal.md#link-the-virtual-network)
 
-- 请检查以确保具有专用 DNS 区域资源。
-  1. 必须具有名称准确的专用 DNS 区域资源：privatelink.vaultcore.azure.net。
-  2. 若要了解如何对此进行设置，请参阅以下链接。 [专用 DNS 区域](https://docs.azure.cn/dns/private-dns-getstarted-cli#create-an-additional-dns-record)
-- 请检查以确保专用 DNS 区域未链接到虚拟网络。 如果仍在返回公共 IP 地址，则可能存在该问题。
-
-  1. 如果专用区域 DNS 未链接到虚拟网络，则从虚拟网络发起的 DNS 查询会返回 Key Vault 的公共 IP 地址。
-  2. 在 Azure 门户中导航到专用 DNS 区域资源，然后单击虚拟网络链接选项。
-  3. 必须列出将对 Key Vault 执行调用的虚拟网络。
-  4. 如果它不存在，请添加它。
-  5. 有关详细步骤，请参阅以下文档[将虚拟网络链接到专用 DNS 区域](https://docs.azure.cn/dns/private-dns-getstarted-portal#link-the-virtual-network)
-
-- 请检查以确保专用 DNS 区域不缺少 Key Vault 的 A 记录。
-  1. 导航到专用 DNS 区域页。
-  2. 单击“概述”，并检查是否存在具有 Key Vault 的简单名称（即 fabrikam）的 A 记录。 不要指定任何后缀。
-  3. 请务必检查拼写，创建或修复 A 记录。 可以使用 3600（1小时）的 TTL。
-  4. 确保指定了正确的专用 IP 地址。
-- 检查以确保 A 记录具有正确的 IP 地址。
-  1. 可在 Azure 门户中打开专用终结点资源来确认 IP 地址。
-  2. 在 Azure 门户（而不是 Key Vault 资源）中导航到 Microsoft.Network/privateEndpoints 资源
-  3. 在概述页中，查找网络接口，然后单击该链接。
-  4. 该链接显示 NIC 资源的概述，其中包含专用 IP 地址属性。
-  5. 验证这是否为在 A 记录中指定的正确 IP 地址。
+* 请检查以确保专用 DNS 区域不缺少 Key Vault 的 A 记录。 
+    1. 导航到专用 DNS 区域页。 
+    2. 单击“概述”，并检查是否存在具有 Key Vault 的简单名称（即 fabrikam）的 A 记录。 不要指定任何后缀。
+    3. 请务必检查拼写，创建或修复 A 记录。 可以使用 3600（1小时）的 TTL。 
+    4. 确保指定了正确的专用 IP 地址。 
+    
+* 检查以确保 A 记录具有正确的 IP 地址。 
+    1. 可在 Azure 门户中打开专用终结点资源来确认 IP 地址。
+    2. 在 Azure 门户（而不是 Key Vault 资源）中导航到 Microsoft.Network/privateEndpoints 资源
+    3. 在概述页中，查找网络接口，然后单击该链接。 
+    4. 该链接显示 NIC 资源的概述，其中包含专用 IP 地址属性。 
+    5. 验证这是否为在 A 记录中指定的正确 IP 地址。
 
 ## <a name="limitations-and-design-considerations"></a>限制和设计注意事项
 
@@ -261,15 +256,15 @@ Aliases:  <your-key-vault-name>.vault.azure.cn
 
 **定价**：有关定价信息，请参阅 [Azure 专用链接定价](https://www.azure.cn/pricing/details/private-link/)。
 
-**限制**：Azure Key Vault 的专用终结点仅在 Azure 公共区域提供。
+<!--**Limitations**: Private Endpoint for Azure Key Vault is only available in Azure public regions.-->
 
 **每个 Key Vault 的专用终结点数目上限**：64。
 
 每个订阅的包含专用终结点的默认 Key Vault 数目：400。
 
-<!-- For more, see [Azure Private Link service: Limitations](../../private-link/private-link-service-overview.md#limitations) -->
+有关详细信息，请参阅 [Azure 专用链接服务：限制](../../private-link/private-link-service-overview.md#limitations)
 
 ## <a name="next-steps"></a>后续步骤
 
-<!-- - Learn more about [Azure Private Link](../../private-link/private-link-service-overview.md) -->
+- 详细了解 [Azure 专用链接](../../private-link/private-link-service-overview.md)
 - 详细了解 [Azure Key Vault](overview.md)

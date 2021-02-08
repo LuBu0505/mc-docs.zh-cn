@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 08/20/2020
 title: FileStore - Azure Databricks
 description: 了解 FileStore，这是 DBFS 中的一个特殊文件夹，可在其中保存文件并使其可供 Web 浏览器访问。
-ms.openlocfilehash: e098949cbe4e77e23d2b3fa3527b4fda4cdc53b6
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: 05335ede46f8090c889cf6697977cea028c6a8c0
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121952"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059497"
 ---
 # <a name="filestore"></a>FileStore
 
@@ -42,6 +42,10 @@ dbutils.fs.put("/FileStore/my-stuff/my-file.txt", "Contents of my file")
 
 可通过 Web 浏览器 (`https://<databricks-instance>/files/<path-to-file>?o=######`) 访问 `/FileStore` 中存储的文件。 例如，可在 `https://<databricks-instance>/files/my-stuff/my-file.txt?o=######` 访问 `/FileStore/my-stuff/my-file.txt` 中存储的文件，其中 `o=` 后面的数字与 URL 中的数字相同。
 
+> [!NOTE]
+>
+> 你还可以使用 DBFS 文件上传接口将文件放入 ``/FileStore`` 目录中。 请参阅[文件上传接口](databricks-file-system.md#file-upload-interface)。
+
 ## <a name="embed-static-images-in-notebooks"></a><a id="embed-static-images-in-notebooks"> </a><a id="static-images"> </a>在笔记本中嵌入静态图像
 
 可使用 `files/` 位置将静态图像嵌入到笔记本中：
@@ -57,7 +61,7 @@ displayHTML("<img src ='files/image.jpg/'>")
 ![my_test_image](files/image.jpg)
 ```
 
-可使用 DBFS [Databricks REST API](../dev-tools/api/index.md) 和 [requests](https://requests.readthedocs.io/en/master/) Python HTTP 库上传静态图像。 如下示例中：
+可使用 DBFS [API 参考](../dev-tools/api/index.md)和[请求](https://requests.readthedocs.io/en/master/) Python HTTP 库上传静态图像。 如下示例中：
 
 * （将 `<databricks-instance>` 替换为 Azure Databricks 部署的[工作区 URL](../workspace/workspace-details.md#workspace-url)）。
 * 将 `<token>` 替换为[个人访问令牌](../dev-tools/api/latest/authentication.md#token-management)的值。

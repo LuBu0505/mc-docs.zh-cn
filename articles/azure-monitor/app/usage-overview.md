@@ -4,14 +4,14 @@ description: 了解用户，以及他们将应用用于哪些目的。
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 09/19/2019
-ms.date: 10/29/2020
+ms.date: 01/27/2021
 ms.author: v-johya
-ms.openlocfilehash: f8147d9e4c6da40cbfd6722941219359ac54d2c0
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 3b05fb58e914d9f7dda83694abeede2df758c897
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105202"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060049"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights 使用分析
 
@@ -21,11 +21,11 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 通过在应用服务器代码和网页中安装 Application Insights 来获得最佳体验。 应用的客户端和服务器组件将遥测发送回 Azure 门户进行分析。
 
-1. **服务器代码：** 为 [ASP.NET](./asp-net.md)、 [Azure](./app-insights-overview.md)、 [Java](./java-get-started.md)、 [Node.js](./nodejs.md) 或 [其他](./platforms.md)应用安装适当的模块。
+1. **服务器代码：** 为 [ASP.NET](./asp-net.md)、[Azure](./app-insights-overview.md)、[Java](./java-get-started.md)、[Node.js](./nodejs.md) 或 [其他](./platforms.md)应用安装适当的模块。
 
     * 不想安装服务器代码？只需[创建 Azure Application Insights 资源](./create-new-resource.md)。
 
-2. **网页代码** ：将以下脚本添加到网页的结束标记 ``</head>`` 之前。 将检测密钥替换为 Application Insights 资源的相应值：
+2. **网页代码**：将以下脚本添加到网页的结束标记 ``</head>`` 之前。 将检测密钥替换为 Application Insights 资源的相应值：
     
     ```html
     <script type="text/javascript">
@@ -85,7 +85,9 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 ## <a name="custom-business-events"></a>自定义业务事件
 
-要明确了解用户将应用用于什么目的，可以插入代码行来记录自定义事件。 这些事件可以跟踪任何活动，包括详细的用户操作（例如单击特定的按钮），以及更重要的业务活动（例如购买活动或游戏获胜）。 
+要明确了解用户将应用用于什么目的，可以插入代码行来记录自定义事件。 这些事件可以跟踪任何活动，包括详细的用户操作（例如单击特定的按钮），以及更重要的业务活动（例如购买活动或游戏获胜）。
+
+你还可以使用[单击分析自动收集插件](javascript-click-analytics-plugin.md)来收集自定义事件。
 
 尽管在某些情况下页面视图可呈现有用的事件，但一般情况下这些事件并不真实。 用户无需购买产品即可打开产品页面。 
 

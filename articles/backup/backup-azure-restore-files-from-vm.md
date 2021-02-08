@@ -4,15 +4,15 @@ description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 03/01/2019
-ms.date: 01/07/2021
+ms.date: 01/22/2021
 ms.custom: references_regions
 ms.author: v-johya
-ms.openlocfilehash: 0e673befa65f6b71f1b221a58d61d9929984749b
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 68a87785933a79a65406c01603f30b678e552bd5
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023028"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751332"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -119,6 +119,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 | --------------- | ---- |
 | bash | 4 及更高版本 |
 | Python | 2.6.6 及更高版本  |
+| .NET | 4.6.2 及更高版本 |
 | TLS | 应支持 1.2  |
 
 ## <a name="step-4-access-requirements-to-successfully-run-the-script"></a>步骤 4：成功运行脚本的访问要求

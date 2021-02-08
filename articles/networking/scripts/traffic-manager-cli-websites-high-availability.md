@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本示例 - 为实现应用程序的高可用性路由流量 | Azure
+title: Azure CLI 脚本示例 - 为实现应用程序的高可用性路由流量 | Azure Docs
 description: Azure CLI 脚本示例 - 为实现应用程序的高可用性路由流量
 services: traffic-manager
 documentationcenter: traffic-manager
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 origin.date: 06/26/2018
-ms.date: 12/09/2019
+ms.date: 02/01/2021
 ms.author: v-tawe
-ms.openlocfilehash: 0c195da79410aa98f8b7532f8463f891349e30cc
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 18cae8466591c559cccf31ef0f8e8897518e95fd
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300947"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060074"
 ---
 # <a name="route-traffic-for-high-availability-of-applications---azure-cli"></a>为实现应用程序的高可用性路由流量 - Azure CLI
 

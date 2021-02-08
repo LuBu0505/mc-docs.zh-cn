@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 11/17/2020
-ms.date: 12/07/2020
+ms.date: 02/01/2021
 ms.author: v-jay
-ms.openlocfilehash: daa666d44880de8b00d27c77f9cf9b5e9e7859ab
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: b3a13cadca412416290ef173ddc39be353335dff
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747172"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059200"
 ---
 # <a name="copy-and-transform-data-from-hive-using-azure-data-factory"></a>使用 Azure 数据工厂从 Hive 复制和转换数据 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -69,6 +69,7 @@ Hive 链接的服务支持以下属性：
 | allowHostNameCNMismatch | 指定通过 TLS 进行连接时是否要求 CA 颁发的 TLS/SSL 证书名称与服务器的主机名相匹配。 默认值为 false。  | 否 |
 | allowSelfSignedServerCert | 指定是否允许来自服务器的自签名证书。 默认值为 false。  | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 在[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+| storageReference | 对映射数据流中用于暂存数据的存储帐户的链接服务的引用。 仅当在映射数据流中使用 Hive 链接服务时，才需要此项 | 否 |
 
 **示例：**
 
@@ -97,10 +98,10 @@ Hive 链接的服务支持以下属性：
 
 要从 Hive 复制数据，请将数据集的 type 属性设置为 **HiveObject**。 支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**HiveObject** | 是 |
-| schema | 架构的名称。 |否（如果指定了活动源中的“query”）  |
+| 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
 | 表 | 表的名称。 |否（如果指定了活动源中的“query”）  |
 | tableName | 包含架构部分的表的名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
 
@@ -129,7 +130,7 @@ Hive 链接的服务支持以下属性：
 
 要从 Hive 复制数据，请将复制活动中的源类型设置为 **HiveSource**。 复制活动 **source** 部分支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**HiveSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
@@ -165,6 +166,53 @@ Hive 链接的服务支持以下属性：
     }
 ]
 ```
+
+## <a name="mapping-data-flow-properties"></a>映射数据流属性
+
+支持将 hive 连接器用作映射数据流中的[内联数据集](data-flow-source.md#inline-datasets)源。 使用查询进行读取，或直接从 HDInsight 中的 Hive 表进行读取。 在转换为数据流的一部分之前，Hive 数据作为 parquet 文件暂存在存储帐户中。 
+
+### <a name="source-properties"></a>源属性
+
+下表列出了 hive 源支持的属性。 你可以在“源选项”选项卡中编辑这些属性。
+
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| 存储 | 存储必须是 `hive` | 是 |  `hive` | store | 
+| 格式 | 是从表中还是从查询中读取 | 是 | `table` 或 `query` | format |
+| 架构名称 | 如果从表中读取，则为源表的架构 |  如果格式为 `table`，则此项是必需的 | 字符串 | schemaName |
+| 表名 | 如果从表中读取，则为表名 |   如果格式为 `table`，则此项是必需的 | 字符串 | tableName |
+| 查询 | 如果格式为 `query`，则为 Hive 链接服务上的源查询 | 如果格式为 `query`，则此项是必需的 | 字符串 | query |
+| 暂存 | 将始终暂存 Hive 表。 | 是 | `true` | staged |
+| 存储容器 | 从 Hive 中读取或写入到 Hive 之前用于暂存数据的存储容器。 Hive 群集必须有权访问此容器。 | 是 | 字符串 | storageContainer |
+| 临时数据库 | 在链接服务中指定的用户帐户有权访问的架构/数据库。 它用于在暂存过程中创建外部表，在之后将被删除 | 否 | `true` 或 `false` | stagingDatabaseName |
+| 预处理 SQL 脚本 | 在读取数据之前要在 Hive 表上运行的 SQL 代码 | 否 | 字符串 | preSQLs |
+
+#### <a name="source-example"></a>源示例
+
+下面是 Hive 源配置的示例：
+
+![Hive 源示例](media/data-flow/hive-source.png "[Hive 源示例")
+
+这些设置将转换为以下数据流脚本：
+
+```
+source(
+    allowSchemaDrift: true,
+    validateSchema: false,
+    ignoreNoFilesFound: false,
+    format: 'table',
+    store: 'hive',
+    schemaName: 'default',
+    tableName: 'hivesampletable',
+    staged: true,
+    storageContainer: 'khive',
+    storageFolderPath: '',
+    stagingDatabaseName: 'default') ~> hivesource
+```
+### <a name="known-limitations"></a>已知限制
+
+* 不支持将复杂类型（例如数组、映射、结构和联合）用于读取。 
+* Hive 连接器仅支持 4.0 或更高版本的 Azure HDInsight 中的 Hive 表 (Apache Hive 3.1.0)
 
 ## <a name="lookup-activity-properties"></a>Lookup 活动属性
 

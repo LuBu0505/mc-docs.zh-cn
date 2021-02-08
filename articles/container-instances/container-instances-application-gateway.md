@@ -2,17 +2,17 @@
 title: 容器组的静态 IP 地址
 description: 在虚拟网络中创建容器组，并使用 Azure 应用程序网关向容器化 Web 应用公开静态前端 IP 地址
 ms.topic: article
-origin.date: 03/16/2020
+author: rockboyfor
 ms.date: 07/27/2020
 ms.testscope: yes
 ms.testdate: 07/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: dccfdc21a964ebd66c41ac33566406d947974adf
-ms.sourcegitcommit: 5726d3b2e694f1f94f9f7d965676c67beb6ed07c
+ms.openlocfilehash: a78259fbbd927a6106a6d78d15c03fdcf39c1ef4
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/21/2020
-ms.locfileid: "86863105"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751346"
 ---
 <!--Verified successfull-->
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>公开容器组的静态 IP 地址
@@ -106,9 +106,12 @@ ACI_IP=$(az container show \
   --query ipAddress.ip --output tsv)
 ```
 
+> [!IMPORTANT]
+> 如果容器组停止、启动或重启，容器组的专用 IP 可能会发生更改。 如果发生这种情况，你将需要更新应用程序网关配置。
+
 ## <a name="create-application-gateway"></a>创建应用程序网关
 
-按照[应用程序网关快速入门](../application-gateway/quick-create-cli.md)中的步骤，在虚拟网络中创建应用程序网关。 以下 [az network application-gateway create][az-network-application-gateway-create] 命令创建一个网关，该网关使用某个公共前端 IP 地址以及用于连接后端容器组的路由。 有关网关设置的详细信息，请参阅[应用程序网关文档](/application-gateway/)。
+按照[应用程序网关快速入门](../application-gateway/quick-create-cli.md)中的步骤，在虚拟网络中创建应用程序网关。 以下 [az network application-gateway create][az-network-application-gateway-create] 命令创建一个网关，该网关使用某个公共前端 IP 地址以及用于连接后端容器组的路由。 有关网关设置的详细信息，请参阅[应用程序网关文档](../application-gateway/index.yml)。
 
 ```azurecli
 az network application-gateway create \
@@ -144,7 +147,7 @@ az network public-ip show \
 
 若要在成功配置后查看正在运行的 Web 应用，请在浏览器中导航到该网关的公共 IP 地址。 成功访问后，会显示如下所示的界面：
 
-![浏览器屏幕截图，显示应用程序在 Azure 容器实例中运行](./media/container-instances-application-gateway/aci-app-app-gateway.png)
+:::image type="content" source="./media/container-instances-application-gateway/aci-app-app-gateway.png" alt-text="浏览器屏幕截图，显示应用程序在 Azure 容器实例中运行":::
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -152,13 +155,13 @@ az network public-ip show \
 * 还可以使用用于 SSL 终止的证书来配置应用程序网关。 请参阅[概述](../application-gateway/ssl-overview.md)和[教程](../application-gateway/create-ssl-portal.md)。
 * 根据你的方案，请考虑将其他 Azure 负载均衡解决方案与 Azure 容器实例配合使用。 例如，使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)在多个容器实例和多个区域之间分配流量。 请参阅此 [博客文章](https://aaronmsft.com/posts/azure-container-instances/)。
 
-[az-network-vnet-create]:  https://docs.azure.cn/cli/network/vnet?view=azure-cli-latest#az-network-vnet-create
-[az-network-vnet-subnet-create]: https://docs.azure.cn/cli/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-create
-[az-network-public-ip-create]: https://docs.azure.cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-create
-[az-network-public-ip-show]: https://docs.azure.cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-show
-[az-network-application-gateway-create]: https://docs.azure.cn/cli/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-create
-[az-container-create]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-create
-[az-container-show]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-show
+[az-network-vnet-create]:  https://docs.azure.cn/cli/network/vnet#az_network_vnet_create
+[az-network-vnet-subnet-create]: https://docs.azure.cn/cli/network/vnet/subnet#az_network_vnet_subnet_create
+[az-network-public-ip-create]: https://docs.azure.cn/cli/network/public-ip#az_network_public_ip_create
+[az-network-public-ip-show]: https://docs.azure.cn/cli/network/public-ip#az_network_public_ip_show
+[az-network-application-gateway-create]: https://docs.azure.cn/cli/network/application-gateway#az_network_application_gateway_create
+[az-container-create]: https://docs.microsoft.com/cli/azure/container#az_container_create
+[az-container-show]: https://docs.microsoft.com/cli/azure/container#az_container_show
 
-<!-- Update_Description: new article about container instances application gateway -->
-<!--NEW.date: 07/20/2020-->
+
+<!-- Update_Description: update meta properties, wording update, update link-->

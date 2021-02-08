@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 04/07/2020
 title: 2020 年 3 月 - Azure Databricks
 description: Azure Databricks 新增功能和改进功能的 2020 年 3 月发行说明。
-ms.openlocfilehash: 45f50e99f74e5465118ed8750ce25e3d6a24db02
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 19bc73c87f27ed20587626888bc828364ac16c6a
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329158"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058718"
 ---
 # <a name="march-2020"></a>2020 年 3 月
 
@@ -27,7 +27,7 @@ ms.locfileid: "94329158"
 
 **2020 年 3 月 26 日至 31 日：版本 3.16**
 
-MLflow 模型注册表是一个协作中心，团队可以在其中共享机器学习模型，在从试验到过渡和生产的整个阶段进行协作，将模型与审批和治理工作流集成，并跟踪模型部署。 托管 MLflow 模型注册表现在可供所有 Azure Databricks 客户公开预览。 请参阅[在 MLflow 模型注册表中管理 MLflow 模型的生命周期](../../../applications/mlflow/model-registry.md)。
+MLflow 模型注册表是一个协作中心，团队可以在其中共享机器学习模型，在从试验到过渡和生产的整个阶段进行协作，将模型与审批和治理工作流集成，并跟踪模型部署。 托管 MLflow 模型注册表现在可供所有 Azure Databricks 客户公开预览。 请参阅 [Azure Databricks 上的 MLflow 模型注册表](../../../applications/mlflow/model-registry.md)。
 
 ## <a name="workspace-pool-and-cluster-tags-propagate-to-dbu-usage-details-and-azure-vms-for-better-cost-management-reporting"></a>工作区、池和群集标记将传播到 DBU 使用情况详细信息和 Azure VM，以便改进成本管理报告
 
@@ -41,7 +41,7 @@ MLflow 模型注册表是一个协作中心，团队可以在其中共享机器�
 
 Databricks Runtime 7.0 (Beta) 提供了包含 Scala 2.12 的 Apache Spark 3.0 预览版。 请使用非生产工作负荷对它进行尝试，并向我们提供反馈。
 
-有关详细信息，请参阅完整的 [Databricks Runtime 7.0](../../runtime/7.0.md) 发行说明。
+有关详细信息，请参阅完整的 [Databricks Runtime 7.0（不受支持）](../../runtime/7.0.md)发行说明。
 
 ## <a name="databricks-runtime-65-ml-beta"></a>Databricks Runtime 6.5 ML（Beta 版本）
 
@@ -51,7 +51,7 @@ Databricks Runtime 6.5 ML (Beta) 引入了以下库升级：
 
 * MLflow 已从 1.5.0 升级到 1.7.0
 
-有关详细信息，请参阅完整的 [Databricks Runtime 6.5 ML](../../runtime/6.5ml.md) 发行说明。
+有关详细信息，请参阅完整的[用于机器学习的 Databricks Runtime 6.5（不受支持）](../../runtime/6.5ml.md)发行说明。
 
 ## <a name="databricks-runtime-65-beta"></a>Databricks Runtime 6.5（Beta 版本）
 
@@ -63,7 +63,7 @@ Databricks Runtime 6.5 (Beta) 引入了许多库升级和新功能，其中包�
 * 你可以对在 Delta Lake 流式传输微批中处理的数据进行速率限制
 * Snowflake 连接器已更新为 2.5.9
 
-有关详细信息，请参阅完整的 [Databricks Runtime 6.5](../../runtime/6.5.md) 发行说明。
+有关详细信息，请参阅完整的 [Databricks Runtime 6.5（不受支持）](../../runtime/6.5.md)发行说明。
 
 ## <a name="azure-databricks-feedback-now-goes-directly-to-azure-databricks-feedback-portal"></a>Azure Databricks 反馈现在直接进入 Azure Databricks 反馈门户
 

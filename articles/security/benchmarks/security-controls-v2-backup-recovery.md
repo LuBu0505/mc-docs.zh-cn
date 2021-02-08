@@ -4,15 +4,15 @@ description: Azure 安全基准 V2 备份和恢复
 author: Johnnytechn
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 01/19/2021
 ms.author: v-johya
 ms.custom: security-benchmark
-ms.openlocfilehash: 5dc89f2d9f5ab649793991c54645660108f7ff7f
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: dd6ff51ce6a6b727b861793da038808a1e0efc26
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747101"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751358"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>安全控制 V2：备份和恢复
 
@@ -20,7 +20,7 @@ ms.locfileid: "96747101"
 
 ## <a name="br-1-ensure-regular-automated-backups"></a>BR-1：确保定期执行自动备份
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | BR-1 | 10.1 | CP-2、CP4、CP-6、CP-9 |
 
@@ -50,7 +50,7 @@ ms.locfileid: "96747101"
 
 ## <a name="br-2-encrypt-backup-data"></a>BR-2：加密备份数据
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | BR-2 | 10.2 | CP-9 |
 
@@ -78,7 +78,7 @@ ms.locfileid: "96747101"
 
 ## <a name="br-3-validate-all-backups-including-customer-managed-keys"></a>BR-3：验证所有备份，包括客户管理的密钥
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | BR-3 | 10.3 | CP-4、CP-9 |
 
@@ -98,7 +98,7 @@ ms.locfileid: "96747101"
 
 ## <a name="br-4-mitigate-risk-of-lost-keys"></a>BR-4：减少密钥丢失风险
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | BR-4 | 10.4 | CP-9 |
 

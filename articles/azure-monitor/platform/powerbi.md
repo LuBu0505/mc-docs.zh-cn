@@ -1,17 +1,17 @@
 ---
-title: 将 Azure Log Analytics 数据导入 Power BI | Microsoft 文档
+title: 将 Azure Log Analytics 数据导入 Power BI | Azure Docs
 description: Power BI 是 Microsoft 的一种基于云的业务分析服务，它为不同数据集的分析提供了丰富的可视化功能和报告。  本文介绍如何配置并将 Log Analytics 数据导入 Power BI 且将其配置为自动刷新。
 ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 12/08/2020
-ms.openlocfilehash: 25016936672d687e73de41f649028e29953db541
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.date: 01/27/2021
+ms.openlocfilehash: ff3724d6d64e638a138640222cb92d0c6cd613ab
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97104397"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059692"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>将 Azure Monitor 日志数据导入到 Power BI 中
 
@@ -27,6 +27,9 @@ ms.locfileid: "97104397"
 
 ## <a name="export-query"></a>导出查询
 首先创建一个[日志查询](../log-query/log-query-overview.md)，该查询返回要填充 Power BI 数据集的数据。  随后将该查询导出为 Power BI Desktop 可以使用的 [Power Query (M) 语言](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification)。
+
+> [!WARNING]
+> 请注意[优化查询](../log-query/query-optimization.md)，以免花费太长时间来运行或可能会超时。 请注意，导出的查询中的 timespan 值定义了查询将检索的数据的时间跨度。 使用所需的最小 timespan 来限制查询返回的数据量。
 
 1. [在 Log Analytics 中创建日志查询](../log-query/log-analytics-tutorial.md)以提取数据集的数据。
 2. 选择“导出” > “Power BI 查询(M)”。  这会将查询导出到名为 **PowerBIQuery.txt** 的文本文件中。 

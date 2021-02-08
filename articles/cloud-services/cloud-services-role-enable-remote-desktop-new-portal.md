@@ -1,22 +1,21 @@
 ---
 title: 使用门户为角色启用远程桌面
-titleSuffix: Azure Cloud Services
 description: 如何配置 Azure 云服务应用程序以允许远程桌面连接
-services: cloud-services
-documentationcenter: ''
-author: mmccrory
-ms.service: cloud-services
 ms.topic: article
-ms.date: 11/10/2020
+ms.service: cloud-services
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: 98d2dc8650602aa50ea97e49a77756ab03230fff
-ms.sourcegitcommit: 59810f8eba5e430d85a595e346d3b7fb6e4a0102
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 547c672247a70181adad6623dd659214464c4b5a
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94501885"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058819"
 ---
-# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>为 Azure 云服务中的角色设置远程桌面连接
+# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-classic"></a>为 Azure 云服务（经典）中的角色启用远程桌面连接
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](cloud-services-role-enable-remote-desktop-new-portal.md)
@@ -33,7 +32,7 @@ Azure 门户使用远程桌面扩展方法，即使在部署应用程序之后�
 
 1. 单击“云服务”，再选择云服务的名称，然后选择“远程桌面”   。
 
-    ![突出显示“远程桌面”选项的屏幕截图。](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop.png)
+    ![此图显示了云服务远程桌面](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop.png)
 
 2. 选择想要为单个角色还是所有角色启用远程桌面，然后将切换器的值更改为“已启用”  。
 
@@ -56,7 +55,7 @@ Azure 门户使用远程桌面扩展方法，即使在部署应用程序之后�
 2. 选择一个配置了远程桌面的角色实例。
 3. 单击“连接”  ，下载角色实例的 RDP 文件。
 
-    ![突出显示“连接”按钮的屏幕截图。](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop_Connect.png)
+    ![云服务远程桌面图像](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop_Connect.png)
 
 4. 依次单击“**打开**”和“**连接**”，以启动远程桌面连接。
 

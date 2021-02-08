@@ -4,14 +4,14 @@ description: 使用 Application Insights 监视 Node.js 服务的性能并诊断
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 03/14/2019
-ms.date: 01/12/2021
+ms.date: 01/27/2021
 ms.author: v-johya
-ms.openlocfilehash: b7ca3cf62dd8a76c92e25d17408d7687e56b5838
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: ef358d68f399bb8faba0f9e8211d63cfc3d34d0c
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231048"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060087"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>使用 Application Insights 监视 Node.js 服务和应用
 
@@ -339,6 +339,12 @@ server.on("listening", () => {
   appInsights.defaultClient.trackMetric({name: "server startup time", value: duration});
 });
 ```
+
+### <a name="flush"></a>刷新
+
+默认情况下，遥测数据在发送到引入服务器之前会缓冲 15 秒。 如果应用程序的生存期较短（例如 CLI 工具），则可能需要在应用程序终止时手动刷新缓冲的遥测数据 (`appInsights.defaultClient.flush()`)。
+
+如果 SDK 检测到应用程序正在崩溃，它将为你调用刷新 (`appInsights.defaultClient.flush({ isAppCrashing: true })`)。 如果使用刷新选项 `isAppCrashing`，应用程序会被认为处于异常状态，不适合发送遥测数据。 但是，SDK 会把所有缓冲的遥测数据保存到[持久存储](./data-retention-privacy.md#nodejs)，并让应用程序终止。 当应用程序重新启动时，它会尝试发送任何已保存到持久存储中的遥测数据。
 
 ### <a name="preprocess-data-with-telemetry-processors"></a>使用遥测处理器预处理数据
 

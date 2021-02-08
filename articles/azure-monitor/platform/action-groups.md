@@ -4,15 +4,15 @@ description: 了解如何在 Azure 门户中创建和管理操作组。
 author: Johnnytechn
 ms.topic: conceptual
 origin.date: 2/18/2020
-ms.date: 01/12/2021
+ms.date: 01/27/2021
 ms.author: v-johya
 ms.subservice: alerts
-ms.openlocfilehash: 684d0ef3a370270c8b033c64fbd1d8dd5712cd3c
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 4389a05291cf77582a2bd7fa83e5c1f34ecbb2b5
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230749"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059898"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 
@@ -150,7 +150,7 @@ ms.locfileid: "98230749"
 操作组中的电子邮件操作数可能有限。 请参阅[速率限制信息](./alerts-rate-limiting.md)一文。
 
 ### <a name="function"></a>函数
-调用 [Azure Functions](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app) 中的现有 HTTP 触发器终结点。
+调用 [Azure Functions](../../azure-functions/functions-get-started.md) 中的现有 HTTP 触发器终结点。
 
 一个操作组中可以存在有限数量的 Function 操作。
 
@@ -159,6 +159,11 @@ ms.locfileid: "98230749"
 操作组中的逻辑应用操作数可能有限。
 
 ### <a name="secure-webhook"></a>安全 Webhook
+
+> [!NOTE]
+> 使用 webhook 操作要求目标 webhook 终结点不需要警报的详细信息即可成功运行，或者能够分析在 POST 操作中提供的警报上下文信息。
+> 用户应是 webhook 服务主体的所有者，以确保不会违反安全性。 由于任何 Azure 客户都可以通过门户访问所有对象 ID，而无需检查所有者，因此任何人都可以将安全的 Webhook 添加到自己的操作组中，以获取违反安全性的 Azure Monitor 警报通知。
+
 操作组 Webhook 操作使你能够利用 Azure Active Directory 来保护操作组和受保护的 Web API（Webhook 终结点）之间的连接。 下面介绍了利用此功能的整个工作流。 有关 Azure AD 应用程序和服务主体的概述，请参阅 [Microsoft 标识平台 (v2.0) 概述](../../active-directory/develop/v2-overview.md)。
 
 1. 针对受保护的 Web API 创建 Azure AD 应用程序。 请参阅[受保护的 Web API：应用注册](../../active-directory/develop/scenario-protected-web-api-app-registration.md)中的说明进行操作。
@@ -310,6 +315,10 @@ Write-Host $myApp.AppRoles
 受支持国家/地区的定价在 [Azure Monitor 定价页](https://www.azure.cn/pricing/details/monitor/)中列出。
 
 ### <a name="webhook"></a>Webhook
+
+> [!NOTE]
+> 使用 webhook 操作要求目标 webhook 终结点不需要警报的详细信息即可成功运行，或者能够分析在 POST 操作中提供的警报上下文信息。 
+
 Webhook 使用以下规则进行处理
 - 最多尝试三次 Webhook 调用。
 - 如果在超时期限内未收到响应，或者返回以下 HTTP 状态代码之一，将重试此调用：408、429、503 或 504。

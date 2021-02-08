@@ -3,14 +3,14 @@ title: Azure 备份术语表
 description: 本文定义了有助于 Azure 备份使用的术语。
 ms.topic: conceptual
 ms.author: v-johya
-ms.date: 01/07/2021
+ms.date: 01/22/2021
 origin.date: 01/07/2021
-ms.openlocfilehash: 24ef85b2c93fbd1b7328f21a9a366c4088a3dfc9
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 1649f0a75352467967e3840f5681a8db23d51d70
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023607"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751218"
 ---
 # <a name="azure-backup-glossary"></a>Azure 备份术语表
 
@@ -164,7 +164,7 @@ GFS（祖父-父-子）备份策略使你能够定义每周、每月和每年的
 
 ## <a name="instant-restore"></a>即时还原
 
-即时还原涉及直接从计算机的备份快照还原计算机，而不是从保管库中的快照副本还原计算机。 即时还原比从保管库还原快。 可用的即时还原点数取决于为快照配置的保留持续时间。
+（特定于工作负载的术语）即时还原涉及直接从计算机的备份快照还原计算机（而不是从保管库中的快照副本还原计算机）。 即时还原比从保管库还原快。 可用的即时还原点数取决于为快照配置的保留持续时间。 目前仅适用于 Azure VM 备份。
 
 ## <a name="iops"></a>IOPS
 
@@ -218,19 +218,15 @@ GFS（祖父-父-子）备份策略使你能够定义每周、每月和每年的
 
 使用 MARS 代理向/从 Azure 备份或还原本地计算机时，通行短语用于加密和解密数据。
 
-## <a name="point-in-time-restore"></a>时间点还原
-
-在特定时间点 (PIT) 将项还原到其状态。
-
 ## <a name="protected-instance"></a>受保护的实例
 
-受保护的实例是指用于配置 Azure 备份的计算机、物理或虚拟服务器。  从计费角度来看，计算机的受保护的实例计数是计算机前端大小的函数。 [了解详细信息](https://www.azure.cn/pricing/details/backup/)。
+受保护的实例是指用于配置 Azure 备份的计算机、物理或虚拟服务器。  从计费角度来看，计算机的受保护的实例计数是计算机前端大小的函数。 因此，一个备份实例（例如，一个备份到 Azure 的 VM）可以与多个受保护的实例相对应，具体取决于其前端大小。 [了解详细信息](https://www.azure.cn/pricing/details/backup/)。
 
 ## <a name="rbac-role-based-access-control"></a>RBAC（基于角色的访问控制）
 
 请参阅 [RBAC 文档](/role-based-access-control/overview)。
 
-## <a name="recovery-point-restore-point-retention-point"></a>恢复点/还原点/保留点
+## <a name="recovery-point-restore-point-retention-point--point-in-time-pit"></a>恢复点/还原点/保留点/时间点 (PIT)
 
 要备份的原始数据的副本。 保留点与时间戳关联，因此你可以使用该点将项目还原到特定时间点。
 
@@ -252,11 +248,11 @@ GFS（祖父-父-子）备份策略使你能够定义每周、每月和每年的
 
 ## <a name="rpo-recovery-point-objective"></a>RPO（恢复点目标）
 
-RPO 表示在数据丢失情况下可接受的最大数据丢失。 这取决于备份频率。
+RPO 表示在数据丢失情况下可能的最大数据丢失量。 这取决于备份频率。
 
 ## <a name="rto-recovery-time-objective"></a>RTO（恢复时间目标）
 
-RTO 指示数据在数据丢失后可恢复到上一个可用时间点的最大可接受时间。
+RTO 表示数据在数据丢失后可恢复到上一个可用时间点的最大可能时间。
 
 ## <a name="scheduled-backup"></a>计划内备份
 
@@ -272,7 +268,7 @@ RTO 指示数据在数据丢失后可恢复到上一个可用时间点的最大�
 
 ## <a name="snapshot"></a>快照
 
-快照是虚拟硬盘 (VHD) 的完整只读副本。 [了解详细信息](/virtual-machines/windows/snapshot-copy-managed-disk)。
+快照是虚拟硬盘 (VHD) 的完整只读副本。 详细了解[磁盘快照](/virtual-machines/windows/snapshot-copy-managed-disk)和[文件快照](/storage/files/storage-snapshots-files)。
 
 ## <a name="storage-account"></a>存储帐户
 
@@ -302,7 +298,7 @@ Azure 中包含备份数据的存储实体。 也是 RBAC 和计费的单位。 
 
 ## <a name="vault-credentials"></a>保管库凭据
 
-保管库凭据文件是门户为每个保管库生成的证书。 将服务器注册到保管库时使用此文件。 [了解详细信息](backup-azure-dpm-introduction.md)。
+保管库凭据文件是门户为每个保管库生成的证书。 将本地服务器注册到保管库时使用此文件。 [了解详细信息](backup-azure-dpm-introduction.md)。
 
 ## <a name="vnet-virtual-network"></a>VNET（虚拟网络）
 

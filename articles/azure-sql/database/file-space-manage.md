@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
-ms.reviewer: jrasnick, carlrab
-origin.date: 03/12/2019
-ms.date: 07/13/2020
-ms.openlocfilehash: b4d94b174b3ec40e169f2dee3d09ba2b8a98b34c
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+ms.reviewer: jrasnick, sstein
+origin.date: 12/22/2020
+ms.date: 02/01/2021
+ms.openlocfilehash: 8e26b1cb9996e5fbace24c8148379f4e1bc7f65e
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86227553"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059846"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>管理 Azure SQL 数据库中的数据库的文件空间
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -85,7 +85,7 @@ Azure 门户和以下 API 中显示的大多数存储空间指标仅度量已用
 SELECT TOP 1 storage_in_megabytes AS DatabaseDataSpaceUsedInMB
 FROM sys.resource_stats
 WHERE database_name = 'db1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ### <a name="database-data-space-allocated-and-unused-allocated-space"></a>已分配的，以及已分配但未使用的数据库数据空间
@@ -99,7 +99,7 @@ SELECT SUM(size/128.0) AS DatabaseDataSpaceAllocatedInMB,
 SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS int)/128.0) AS DatabaseDataSpaceAllocatedUnusedInMB
 FROM sys.database_files
 GROUP BY type_desc
-HAVING type_desc = 'ROWS'
+HAVING type_desc = 'ROWS';
 ```
 
 ### <a name="database-data-max-size"></a>数据库数据最大大小
@@ -109,7 +109,7 @@ HAVING type_desc = 'ROWS'
 ```sql
 -- Connect to database
 -- Database data max size in bytes
-SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
+SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes;
 ```
 
 ## <a name="understanding-types-of-storage-space-for-an-elastic-pool"></a>了解弹性池存储空间的类型
@@ -122,6 +122,9 @@ SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
 |**已分配的数据空间**|弹性池中所有数据库已分配的数据空间总和。||
 |**已分配但未使用的数据空间**|弹性池中所有数据库已分配的数据空间量与已使用的数据空间量之间的差值。|此数量表示弹性池通过收缩数据库数据文件可回收的最大空间量。|
 |**数据最大大小**|可由弹性池用于其所有数据库的最大数据空间量。|为弹性池分配的空间不应超过弹性池最大大小。  如果发生这种情况，可通过收缩数据库数据文件来回收未使用的空间。|
+
+> [!NOTE]
+> “弹性池已达到其存储限制”错误消息表示数据库对象已分配足够的空间来满足弹性池存储上限，但分配的数据空间中可能存在未使用的空间。 请考虑增加弹性池的存储上限，或者采用短期的解决办法，即使用下面的[回收已分配但未使用的空间](#reclaim-unused-allocated-space)部分来释放数据空间。 还应注意删减数据库文件对性能造成的潜在负面影响，请参阅下面的[重新生成索引](#rebuild-indexes)部分。
 
 ## <a name="query-an-elastic-pool-for-storage-space-information"></a>查询弹性池的存储空间信息
 
@@ -137,7 +140,7 @@ SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
 SELECT TOP 1 avg_storage_percent / 100.0 * elastic_pool_storage_limit_mb AS ElasticPoolDataSpaceUsedInMB
 FROM sys.elastic_pool_resource_stats
 WHERE elastic_pool_name = 'ep1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>已分配的，以及已分配但未使用的弹性池数据空间
@@ -147,7 +150,7 @@ ORDER BY end_time DESC
 将查询结果（确定分配给池中每个数据库的空间）相加，可以确定为弹性池分配的总空间。 分配的弹性池空间不应超过弹性池最大大小。  
 
 > [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 AzureRM 模块至少在 2020 年 12 月之前将继续接收 bug 修补程序。  Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 若要详细了解其兼容性，请参阅[新 Azure PowerShell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)。
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 AzureRM 模块至少在 2020 年 12 月之前将继续接收 bug 修补程序。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 若要详细了解其兼容性，请参阅[新 Azure PowerShell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)。
 
 PowerShell 脚本需要 SQL Server PowerShell 模块 - 请参阅[下载 PowerShell 模块](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module)进行安装。
 
@@ -188,7 +191,7 @@ Write-Output $databaseStorageMetrics | Sort -Property DatabaseDataSpaceAllocated
 
 ### <a name="elastic-pool-data-max-size"></a>弹性池数据最大大小
 
-修改以下 T-SQL 查询，返回弹性池数据最大大小。  查询结果以 MB 为单位。
+修改以下 T-SQL 查询，返回上次记录的弹性池数据最大大小。  查询结果以 MB 为单位。
 
 ```sql
 -- Connect to master
@@ -196,13 +199,13 @@ Write-Output $databaseStorageMetrics | Sort -Property DatabaseDataSpaceAllocated
 SELECT TOP 1 elastic_pool_storage_limit_mb AS ElasticPoolMaxSizeInMB
 FROM sys.elastic_pool_resource_stats
 WHERE elastic_pool_name = 'ep1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ## <a name="reclaim-unused-allocated-space"></a>回收已分配但未使用的空间
 
 > [!NOTE]
-> 此命令在运行时可能会影响数据库的性能，请尽量在使用率较低的时候运行它。
+> Shrink 命令在运行时可能会影响数据库的性能，请尽量在使用率较低的时候运行它。
 
 ### <a name="dbcc-shrink"></a>DBCC 收缩
 
@@ -210,24 +213,28 @@ ORDER BY end_time DESC
 
 ```sql
 -- Shrink database data space allocated.
-DBCC SHRINKDATABASE (N'db1')
+DBCC SHRINKDATABASE (N'db1');
 ```
 
-此命令在运行时可能会影响数据库的性能，请尽量在使用率较低的时候运行它。  
+Shrink 命令在运行时可能会影响数据库的性能，请尽量在使用率较低的时候运行它。  
+
+还应注意删减数据库文件对性能造成的潜在负面影响，请参阅下面的[重新生成索引](#rebuild-indexes)部分。
 
 有关此命令的详细信息，请参阅 [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql)。
 
 ### <a name="auto-shrink"></a>自动收缩
 
 或者，可以为数据库启用自动收缩。  自动收缩可降低文件管理的复杂性，并且与 `SHRINKDATABASE` 或 `SHRINKFILE` 相比，对数据库性能的影响更小。  在管理包含多个数据库的弹性池时，自动收缩可能特别有用。  但是，与 `SHRINKDATABASE` 和 `SHRINKFILE` 相比，自动收缩在回收文件空间方面的效率更低。
+默认情况下，建议为大多数数据库禁用“自动收缩”。 有关详细信息，请参阅 [AUTO_SHRINK 注意事项](https://docs.microsoft.com/troubleshoot/sql/admin/considerations-autogrow-autoshrink#considerations-for-auto_shrink)。
+
 若要启用自动收缩，请修改以下命令中的数据库名称。
 
 ```sql
 -- Enable auto-shrink for the database.
-ALTER DATABASE [db1] SET AUTO_SHRINK ON
+ALTER DATABASE [db1] SET AUTO_SHRINK ON;
 ```
 
-有关此命令的详细信息，请参阅 [DATABASE SET](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) 选项。
+有关此命令的详细信息，请参阅 [DATABASE SET](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options) 选项。
 
 ### <a name="rebuild-indexes"></a>重建索引
 

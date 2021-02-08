@@ -4,16 +4,16 @@ description: 介绍 Azure 资源管理器模板（ARM 模板）的声明性 JSON
 ms.topic: conceptual
 origin.date: 03/17/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 01/25/2021
 ms.author: v-yeche
-ms.openlocfilehash: f7a294fa2d7e8b56787c66708bfaeef6b13e668d
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 4018f55a93d4e76bf4b4ad4436d26495ade8eaed
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022654"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751312"
 ---
-# <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的语法和表达式
+# <a name="syntax-and-expressions-in-arm-templates"></a>ARM 模板中的语法和表达式
 
 Azure 资源管理器模板（ARM 模板）的基本语法是 JavaScript 对象表示法 (JSON)。 但是，可以使用表达式来扩展模板中可用的 JSON 值。  表达式分别以方括号 `[` 与 `]` 开头和结尾。 部署模板时会计算表达式的值。 表达式可以返回字符串、整数、布尔值、数组或对象。
 

@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 07/14/2020
 title: 仪表板 - Azure Databricks
 description: 了解如何发布从笔记本输出派生的图和可视化效果，以及如何将其以演示格式与组织共享。
-ms.openlocfilehash: 9f747dad1942391921ac0c9e942bdac3d6e6dd5c
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: f0ba43d8ad9a9d655010393a9c67827cebbd26ed
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106696"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058583"
 ---
 # <a name="dashboards"></a>仪表板
 
@@ -29,7 +29,7 @@ ms.locfileid: "93106696"
 
 ## <a name="view-a-specific-dashboard-version"></a>查看特定的仪表板版本
 
-1. 单击 ![计划](../_static/images/notebooks/schedule.png) 按钮。
+1. 单击 ![计划图标](../_static/images/notebooks/schedule.png) 按钮。
 2. 单击计划按所需时间间隔运行的笔记本作业的“上次成功运行”链接。
 
    > [!div class="mx-imgBorder"]

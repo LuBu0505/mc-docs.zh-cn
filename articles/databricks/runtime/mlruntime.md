@@ -5,26 +5,26 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 09/23/2020
+ms.date: 01/20/2021
 title: 用于机器学习的 Databricks Runtime - Azure Databricks
 description: 了解 Databricks Runtime ML，它是基于 Databricks Runtime 的运行时，为机器学习和数据科学提供随时可用的环境。
 toc-description: Databricks Runtime ML is a variant of Databricks Runtime that adds multiple popular machine learning libraries, including TensorFlow, Keras, PyTorch, and XGBoost.
-ms.openlocfilehash: 5e41c02e332420168946422f129979cb8bfb2be5
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: d24c1d11b8a7d73d60330e3c6783710a4c4ab224
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937712"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060144"
 ---
 # <a name="databricks-runtime-for-machine-learning"></a><a id="databricks-runtime-for-machine-learning"> </a><a id="mlruntime"> </a>用于机器学习的 Databricks Runtime
 
 用于机器学习的 Databricks Runtime (Databricks Runtime ML) 是一个针对机器学习而优化的现成环境。 Databricks Runtime ML 群集包括最常见的机器学习库，例如 TensorFlow、PyTorch、Keras 和 XGBoost，还包括分布式训练所需的库，如 Horovod。 使用 Databricks Runtime ML 可以加快群集创建速度，并确保已安装的库版本兼容。
 
-有关使用 Azure Databricks 进行机器学习和深度学习的完整信息，请参阅[机器学习和深度学习](../applications/machine-learning/index.md)。
+有关使用 Azure Databricks 进行机器学习和深度学习的完整信息，请参阅[机器学习和深度学习指南](../applications/machine-learning/index.md)。
 
 有关每个 Databricks Runtime ML 版本的内容的信息，请参阅[发行说明](../release-notes/runtime/releases.md)。
 
-Databricks Runtime ML 基于 Databricks Runtime 构建。 例如，Databricks Runtime 7.3 ML 基于 Databricks Runtime 7.3 构建。
+Databricks Runtime ML 基于 Databricks Runtime 构建。 例如，用于机器学习的 Databricks Runtime 7.3 LTS 是基于 Databricks Runtime 7.3 LTS 构建的。
 Databricks Runtime [发行说明](../release-notes/runtime/releases.md)中列出了基本 Databricks Runtime 中包含的库。
 
 ## <a name="introduction-to-databricks-runtime-for-machine-learning"></a><a id="introduction-to-databricks-runtime-for-machine-learning"> </a><a id="mlversions"> </a>用于机器学习的 Databricks Runtime 的简介
@@ -37,24 +37,20 @@ Databricks Runtime [发行说明](../release-notes/runtime/releases.md)中列出
 
 ## <a name="libraries-included-in-databricks-runtime-ml"></a><a id="libraries-included-in-databricks-runtime-ml"> </a><a id="mllibraries"> </a>Databricks Runtime ML 中已包含库
 
-> [!NOTE]
->
-> [库实用程序](../dev-tools/databricks-utils.md#dbutils-library)在 Databricks Runtime ML 中不可用。
-
 Databricks Runtime ML 包含各种常见的 ML 库。 该库使用每个发行版进行更新，以包括新功能和修复。
 
 Azure Databricks 已将受支持的库的子集指定为顶层库。 对于这些库，Azure Databricks 提供了更快的更新节奏，并使用每个运行时版本更新到最新的包版本（禁止依赖项冲突）。 Azure Databricks 还为顶层库提供高级支持、测试以及嵌入式优化。
 
 有关顶层库和其他提供的库的完整列表，请参阅以下有关每个可用运行时的文章：
 
-* [Databricks Runtime 7.3 ML](../release-notes/runtime/7.3ml.md)
-* [Databricks Runtime 7.2 ML](../release-notes/runtime/7.2ml.md)
-* [Databricks Runtime 7.1 ML](../release-notes/runtime/7.1ml.md)
-* [Databricks Runtime 7.0 ML](../release-notes/runtime/7.0ml.md)
-* [Databricks Runtime 6.6 ML](../release-notes/runtime/6.6ml.md)
-* [Databricks Runtime 6.5 ML](../release-notes/runtime/6.5ml.md)
-* [Databricks Runtime 6.4 ML](../release-notes/runtime/6.4ml.md)
-* [Databricks Runtime 5.5 LTS ML](../release-notes/runtime/5.5ml.md)
+* [用于机器学习的 Databricks Runtime 7.6 Beta 版](../release-notes/runtime/7.6ml.md)
+* [用于机器学习的 Databricks Runtime 7.5](../release-notes/runtime/7.5ml.md)
+* [用于机器学习的 Databricks Runtime 7.4](../release-notes/runtime/7.4ml.md)
+* [用于机器学习的 Databricks Runtime 7.3 LTS](../release-notes/runtime/7.3ml.md)
+* [用于机器学习的 Databricks Runtime 7.2](../release-notes/runtime/7.2ml.md)
+* [用于机器学习的 Databricks Runtime 7.1](../release-notes/runtime/7.1ml.md)
+* [用于机器学习的 Databricks Runtime 6.4](../release-notes/runtime/6.4ml.md)
+* [用于机器学习的 Databricks Runtime 5.5 LTS](../release-notes/runtime/5.5ml.md)
 
 ## <a name="how-to-use-databricks-runtime-ml"></a>如何使用 Databricks Runtime ML
 

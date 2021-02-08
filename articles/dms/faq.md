@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 origin.date: 02/20/2020
-ms.date: 01/18/2021
-ms.openlocfilehash: 1c014deb2f50619da902f055c7ec0db408575b53
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 02/01/2021
+ms.openlocfilehash: e26ce206917d15affe8540f63c539ae91e4aa81b
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230593"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059154"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>有关使用 Azure 数据库迁移服务的常见问题解答
 
@@ -110,7 +110,7 @@ Azure 迁移服务可以帮助将本地虚拟机迁移到 Azure IaaS。 该服�
 ## <a name="troubleshooting-and-optimization"></a>故障排除和优化
 
 **问：我正在 DMS 中设置一个迁移项目，在连接到源数据库时遇到问题。**
-如果在迁移过程中连接到源数据库系统时遇到问题，请在虚拟网络中创建一个虚拟机，通过其设置 DMS 实例。 在该虚拟机中，应该能够运行连接测试，例如，使用 UDL 文件测试连接到 SQL Server，或下载 Robo 3T 以测试 MongoDB 连接。 如果连接测试成功，则在连接到源数据库时应该不会遇到问题。 如果连接测试失败，请与网络管理员联系。
+如果在迁移过程中连接到源数据库系统时遇到问题，请在用于设置 DMS 实例的虚拟网络的同一子网中创建一个虚拟机。 在该虚拟机中，应该能够运行连接测试，例如，使用 UDL 文件测试连接到 SQL Server，或下载 Robo 3T 以测试 MongoDB 连接。 如果连接测试成功，则在连接到源数据库时应该不会遇到问题。 如果连接测试失败，请与网络管理员联系。
 
 **问：为什么 Azure 数据库迁移服务不可用或已停止？**
 如果用户显式停止 Azure 数据库迁移服务 (DMS)，或者如果服务处于非活动状态已有 24 小时，则服务将处于已停止或自动暂停状态。 在上述每种情况下，服务将不可用并处于已停止状态。  若要恢复活动迁移，请重启该服务。

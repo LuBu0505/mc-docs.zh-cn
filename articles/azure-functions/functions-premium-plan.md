@@ -3,18 +3,18 @@ title: Azure Functions 高级计划
 description: Azure Functions 高级计划的详细信息和配置选项（VNet、无冷启动、无限制执行持续时间）。
 author: jeffhollan
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 01/27/2021
 ms.author: v-junlch
 ms.custom:
 - references_regions
 - fasttrack-edit
 - devx-track-azurecli
-ms.openlocfilehash: 620b94f6cb0aef08df02fe11ceba58ca50366baa
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: dc8d6777e52469399da47f303ce22385969a6917
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195278"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060097"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions 高级计划
 
@@ -152,6 +152,8 @@ az functionapp plan update -g <resource_group> -n <premium_plan_name> --min-inst
 
 例如，JavaScript 函数应用受 Node.js 中的默认内存限制约束。 若要增大此固定内存限制，请添加值为 `--max-old-space-size=<max memory in MB>` 的应用设置 `languageWorkers:node:arguments`。
 
+对于内存超过 4GB 的计划，请确保“位数”平台设置在[常规设置](/app-service/configure-common#configure-general-settings)下设置为 `64 Bit`。
+
 ## <a name="region-max-scale-out"></a>区域最大横向扩展
 
 下面是每个区域和 OS 配置中单个计划当前支持的最大横向扩展值。 若要请求增加，可以创建支持票证。
@@ -202,4 +204,3 @@ az functionapp plan update -g <resource_group> -n <premium_plan_name> --min-inst
 
 > [!div class="nextstepaction"]
 > [了解 Azure Functions 托管选项](functions-scale.md)
-

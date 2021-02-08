@@ -5,15 +5,15 @@ services: dns
 author: WenJason
 ms.service: dns
 ms.topic: article
-origin.date: 10/05/2019
-ms.date: 02/17/2020
+origin.date: 01/15/2021
+ms.date: 02/01/2021
 ms.author: v-jay
-ms.openlocfilehash: a6cb44294ad488ef0d3489ebd3879a7b61c76894
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 66201f8b9d5c6db1ab21312b46d962bd257edf89
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428747"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060056"
 ---
 # <a name="azure-private-dns-faq"></a>Azure 专用 DNS 常见问题解答
 
@@ -35,7 +35,7 @@ ms.locfileid: "77428747"
 
 ## <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>是否可将同一专用区域用于解析多个虚拟网络？
 
-是的。 可以将专用 DNS 区域链接到成千上万个虚拟网络。 有关详细信息，请参阅 [Azure DNS 限制](/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)
+是的。 可以将专用 DNS 区域链接到成千上万个虚拟网络。 有关详细信息，请参阅 [Azure DNS 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits)
 
 ## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>删除虚拟机后，是否会自动删除在专用区域中自动注册的虚拟机 DNS 记录？
 
@@ -64,11 +64,15 @@ ms.locfileid: "77428747"
 ## <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>链接的虚拟网络中虚拟机上的 DNS 后缀是否会更改为专用区域的 DNS 后缀？
 
 不是。 链接的虚拟网络中虚拟机的 DNS 后缀将保留为 Azure 提供的默认后缀（“*.internal.chinacloudapp.cn”）。 可以手动将虚拟机上的此 DNS 后缀更改为专用区域的 DNS 后缀。
-有关如何更改此后缀的指导，请参阅 [使用动态 DNS 在自己的 DNS 服务器中注册主机名](/virtual-network/virtual-networks-name-resolution-ddns#windows-clients)
+有关如何更改此后缀的指导，请参阅 [使用动态 DNS 在自己的 DNS 服务器中注册主机名](../virtual-network/virtual-networks-name-resolution-ddns.md#windows-clients)
 
 ## <a name="what-are-the-usage-limits-for-azure-dns-private-zones"></a>Azure DNS 专用区域有哪些使用限制？
 
-请参阅 [Azure DNS 限制](/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)，详细了解 Azure DNS 专用区域的使用限制。
+请参阅 [Azure DNS 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits)，详细了解 Azure DNS 专用区域的使用限制。
+
+### <a name="does-azure-dns-private-zones-store-any-customer-content"></a>Azure DNS 专用区域是否存储一些客户内容？
+
+否，Azure DNS 专用区域不存储任何客户内容。
 
 ## <a name="next-steps"></a>后续步骤
 

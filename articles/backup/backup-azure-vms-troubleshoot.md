@@ -5,14 +5,14 @@ ms.reviewer: srinathv
 author: Johnnytechn
 ms.topic: troubleshooting
 origin.date: 08/30/2019
-ms.date: 01/07/2021
+ms.date: 01/21/2021
 ms.author: v-johya
-ms.openlocfilehash: f173d836223954ad031be5d5c15c295180e111eb
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 95241a5caa4dcae7c487df4a480958018b88c5b5
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023183"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751366"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上的备份失败问题
 
@@ -76,6 +76,16 @@ ms.locfileid: "98023183"
 * 使用 umount 命令卸载未清除文件系统状态的设备。
 * 使用 **fsck** 命令在这些设备上运行文件系统一致性检查。
 * 再次装载设备，并重试备份操作。</ol>
+
+如果无法卸载设备，则可以更新 VM 备份配置以忽略某些装入点。 例如，如果“/mnt/resource”装入点无法卸载并导致 VM 备份失败，则可按如下所示使用 ```MountsToSkip``` 属性更新 VM 备份配置文件。
+
+```bash
+cat /var/lib/waagent/Microsoft.Azure.RecoveryServices.VMSnapshotLinux-1.0.9170.0/main/tempPlugin/vmbackup.conf[SnapshotThread]
+fsfreeze: True
+MountsToSkip = /mnt/resource
+SafeFreezeWaitInSeconds=600
+```
+
 
 ### <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM / ExtensionInstallationFailedCOM / ExtensionInstallationFailedMDTC - COM+ 错误导致扩展安装/操作失败
 

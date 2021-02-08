@@ -8,12 +8,12 @@ ms.date: 01/18/2021
 ms.testscope: yes|no
 ms.testdate: 01/11/2021null
 ms.author: v-yeche
-ms.openlocfilehash: 70fcb6f882f8d6114cce4a7475895512a6276fdd
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: a249074d1db2703fbd7848173bd4a5b54b257660
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230929"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063696"
 ---
 <!--Verified Successfully-->
 # <a name="message-replication-and-cross-region-federation"></a>消息复制和跨区域联合
@@ -32,8 +32,9 @@ ms.locfileid: "98230929"
 
 与[事件中心](../service-bus-messaging/service-bus-federation-overview.md)的类似模式相比，类似队列的实体的联合更复杂，因为消息队列承诺其使用者对任何单个消息具有独占所有权，且应在消息传递中保持到达顺序，并使代理在[竞争性使用者](https://docs.microsoft.com/azure/architecture/patterns/competing-consumers)之间协调消息的公平分发。 
 
-存在一些实际的障碍，包括 [CAP 定理]（ https://en.wikipedia.org ）（Azure 中国云不提供此网站）/wiki/CAP_theorem）的约束，因而很难提供在多个区域同时可用的队列的统一视图，并且允许区域分布式[竞争性使用者](https://docs.microsoft.com/azure/architecture/patterns/competing-consumers)获得消息的独占所有权。 此类异地分布式队列不仅要求对消息进行完全一致的复制，而且要求对每个消息的传递状态进行完全一致的复制，然后才能将消息提供给使用者。 假设的区域分布式队列的完全一致性目标与所有 Azure 服务总线客户在考虑联合场景时的关键目标存在直接冲突：其解决方案的最大可用性和可靠性。 
+存在一些实际的障碍，包括 CAP 定理的约束，因而很难提供在多个区域同时可用的队列的统一视图，并且允许区域分布式[竞争性使用者](https://docs.microsoft.com/azure/architecture/patterns/competing-consumers)获得消息的独占所有权。 此类异地分布式队列不仅要求对消息进行完全一致的复制，而且要求对每个消息的传递状态进行完全一致的复制，然后才能将消息提供给使用者。 假设的区域分布式队列的完全一致性目标与所有 Azure 服务总线客户在考虑联合场景时的关键目标存在直接冲突：其解决方案的最大可用性和可靠性。 
 
+<!--Not Available on [CAP theorem](https://en.wikipedia.org/wiki/CAP_theorem)-->
 <!--Not Available on [Azure IoT Hub](../iot-fundamentals/iot-introduction.md)-->
  
 此处所示的模式侧重于可用性和可靠性，同时也旨在最好地避免信息丢失和消息的重复处理。 

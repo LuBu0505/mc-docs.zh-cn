@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 origin.date: 07/24/2019
-ms.date: 11/23/2020
+ms.date: 01/19/2021
 ms.author: v-johya
-ms.openlocfilehash: 9e5a2952bb2243e57fd90b63a4f34e6bbb549622
-ms.sourcegitcommit: f1d0f81918b8c6fca25a125c17ddb80c3a7eda7e
+ms.openlocfilehash: c238b20e1949fcf9ae27af1f9cd9ad746c1d8115
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96306256"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751378"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>认知服务的自定义子域名
 
@@ -38,9 +38,6 @@ ms.locfileid: "96306256"
 否。 区域终结点仍旧适用于新的和现有的认知服务，而自定义子域名是可选的。 即使添加了自定义子域名，区域终结点也仍适用于该资源。
 
 ## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>如果 SDK 要求提供资源的区域，该怎么办？
-
-> [!WARNING]
-> 语音服务目前 **不** 支持自定义子域。 在使用语音服务和关联的 SDK 时，请使用区域终结点。
 
 区域终结点和自定义子域名均受支持，且可换用。 但是，必须提供完整的终结点。
 
@@ -67,7 +64,7 @@ ms.locfileid: "96306256"
 是的。 下面提供了可用于 Azure 认知服务资源的区域终结点列表。
 
 > [!NOTE]
-> 文本翻译 API 使用全局终结点。
+> 翻译器服务 API 使用全局终结点。
 
 | 终结点类型 | 区域 | 终结点 |
 |---------------|--------|----------|

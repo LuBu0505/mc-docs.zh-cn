@@ -2,16 +2,16 @@
 title: 配置选项 - 适用于 Java 的 Azure Monitor Application Insights
 description: 如何配置适用于 Java 的 Azure Monitor Application Insights
 ms.topic: conceptual
+ms.date: 01/27/2021
 author: Johnnytechn
-ms.author: v-johya
-ms.date: 01/12/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 4e4650941f9b5043bbf416ef027cb6da5df76e90
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.author: v-johya
+ms.openlocfilehash: 38b404ac4a8ad7d74d4b067a384f2e846ab00514
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231051"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059912"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>配置选项 - 适用于 Java 的 Azure Monitor Application Insights
 
@@ -39,14 +39,14 @@ ms.locfileid: "98231051"
 
 ## <a name="configuration-file-path"></a>配置文件路径
 
-默认情况下，Application Insights Java 3.0 要求将配置文件命名为 `applicationinsights.json` 并置于 `applicationinsights-agent-3.0.0.jar` 所在的目录中。
+默认情况下，Application Insights Java 3.0 要求将配置文件命名为 `applicationinsights.json` 并置于 `applicationinsights-agent-3.0.2.jar` 所在的目录中。
 
 可以使用以下任一方法指定你自己的配置文件路径：
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE` 环境变量，或者
 * `applicationinsights.configuration.file` Java 系统属性
 
-如果你指定相对路径，系统会相对于 `applicationinsights-agent-3.0.0.jar` 所在的目录对其进行解析。
+如果你指定相对路径，系统会相对于 `applicationinsights-agent-3.0.2.jar` 所在的目录对其进行解析。
 
 ## <a name="connection-string"></a>连接字符串
 
@@ -170,7 +170,7 @@ ms.locfileid: "98231051"
 `${...}` 可用于在启动时从指定的环境变量中读取值。
 
 > [!NOTE]
-> 从 3.0.1-BETA 版开始，如果你添加名为 `service.version` 的自定义维度，该值将存储在 Application Insights 日志表的 `application_Version` 列中，而不是作为自定义维度。
+> 从 3.0.2 版开始，如果你添加名为 `service.version` 的自定义维度，该值将存储在 Application Insights 日志表的 `application_Version` 列中，而不是作为自定义维度。
 
 ## <a name="telemetry-processors-preview"></a>遥测处理器（预览版）
 
@@ -239,6 +239,35 @@ ms.locfileid: "98231051"
 }
 ```
 
+## <a name="suppressing-specific-auto-collected-telemetry"></a>取消特定的自动收集遥测
+
+从版本 3.0.2 开始，可使用以下配置选项取消特定的自动收集遥测：
+
+```json
+{
+  "instrumentation": {
+    "cassandra": {
+      "enabled": false
+    },
+    "jdbc": {
+      "enabled": false
+    },
+    "kafka": {
+      "enabled": false
+    },
+    "micrometer": {
+      "enabled": false
+    },
+    "mongo": {
+      "enabled": false
+    },
+    "redis": {
+      "enabled": false
+    }
+  }
+}
+```
+
 ## <a name="heartbeat"></a>检测信号
 
 默认情况下，Application Insights Java 3.0 每 15 分钟发送一个检测信号指标。 如果使用检测信号指标来触发警报，则可增加此检测信号的频率：
@@ -267,7 +296,9 @@ ms.locfileid: "98231051"
 }
 ```
 
-[//]: # "请注意，在我们支持 0.10.0 之前，不会播发 OpenTelemetry 支持，0.10.0 与 0.9.0 相比有巨大的突破性变化"
+Application Insights Java 3.0 还沿用全局 `-Dhttps.proxyHost` 和 `-Dhttps.proxyPort`（如果已设置）。
+
+[//]: # "请注意，在 OpenTelemetry API 达到 1.0 之前，OpenTelemetry 支持以个人预览版提供"
 
 [//]: # "## 对 OpenTelemetry API 1.0 之前的版本的支持"
 
@@ -309,11 +340,13 @@ ms.locfileid: "98231051"
 
 `level` 可以为 `OFF`、`ERROR`、`WARN`、`INFO`、`DEBUG` 或 `TRACE` 中的一个。
 
-`path` 可以是绝对或相对路径。 相对路径根据 `applicationinsights-agent-3.0.0.jar` 所在的目录进行解析。
+`path` 可以是绝对或相对路径。 相对路径根据 `applicationinsights-agent-3.0.2.jar` 所在的目录进行解析。
 
 `maxSizeMb` 是日志文件滚动更新之前的最大大小。
 
 `maxHistory` 是保留的滚动更新日志文件的数目（除当前日志文件外）。
+
+从版本 3.0.2 开始，还可以使用环境变量 `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` 设置自我诊断 `level`。
 
 ## <a name="an-example"></a>示例
 

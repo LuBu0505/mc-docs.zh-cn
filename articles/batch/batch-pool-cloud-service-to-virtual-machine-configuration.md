@@ -5,18 +5,17 @@ ms.service: batch
 ms.topic: how-to
 author: rockboyfor
 origin.date: 01/06/2021
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 425b2d4feeeca6e47428a43715f2ae1d2ae51324
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: ad0d2468785ffb545441358917e25f30cc908c75
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231179"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059029"
 ---
-<!--Verified Successfully: Character Only-->
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>将 Batch 池配置从云服务迁移到虚拟机
 
 可以使用 [cloudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) 或 [virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) 创建 Batch 池。 “virtualMachineConfiguration”是建议的配置，因为它支持所有 Batch 功能。 “cloudServiceConfiguration”池不能支持所有功能，也没有规划任何新功能。
@@ -50,5 +49,4 @@ ms.locfileid: "98231179"
 - 详细了解[池最佳做法](best-practices.md#pools)。
 - 有关[添加池](https://docs.microsoft.com/rest/api/batchservice/pool/add)和 [virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) 的 REST API 参考。
 
-<!-- Update_Description: new article about batch pool cloud service to virtual machine configuration -->
-<!--NEW.date: 01/18/2021-->
+<!-- Update_Description: Update link, Update ms.date, Update Content -->

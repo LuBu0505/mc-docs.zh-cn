@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 01/12/2021
-ms.openlocfilehash: dee635a4a328e7a86f985a2e03ef0cac54fe3b68
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 01/27/2021
+ms.openlocfilehash: 224c3ab98d14b5f405dcd09202f20914a5618fc6
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230036"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059895"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor 日志专用群集
 
@@ -35,6 +35,7 @@ Azure Monitor 日志专用群集是一个部署选项，可为 Azure Monitor 日
 创建群集后，可以对其进行配置并将工作区链接到该群集。 当工作区链接到群集时，发送到工作区的新数据都将驻留在群集上。 只有与群集位于同一区域中的工作区才能链接到群集。 可从群集中取消工作区的链接，但有一些限制。 本文将详细介绍这些限制。 
 
 引入到专用群集的数据进行两次加密 — 一次在服务级别使用 Microsoft 管理的密钥或[客户管理的密钥](../platform/customer-managed-keys.md)，一次在基础结构级别使用两种不同的加密算法和两个不同的密钥。
+
 群集级别的所有操作都需要群集上的 `Microsoft.OperationalInsights/clusters/write` 操作权限。 可以通过包含 `*/write` 操作的所有者或参与者或包含 `Microsoft.OperationalInsights/*` 操作的 Log Analytics 参与者角色授予此权限。 有关 Log Analytics 权限的更多信息，请参阅[管理对 Azure Monitor 中的日志数据和工作区的访问](../platform/manage-access.md)。 
 
 
@@ -56,7 +57,7 @@ Log Analytics 专用群集使用产能预留定价模型，该模型至少为 10
 
 ## <a name="asynchronous-operations-and-status-check"></a>异步操作和状态检查
 
-某些配置步骤是异步运行的，因为它们无法快速完成。 响应中的状态可能包含以下项之一：“InProgress”、“Updating”、“Deleting”、“Succeeded”或“Failed”，包括错误代码。 使用 REST 时，响应在被接受时最初返回 HTTP 状态代码 200 (OK) 和包含 Azure-AsyncOperation 属性的标头：
+某些配置步骤是异步运行的，因为它们无法快速完成。 响应中的状态可能包含以下项之一：“InProgress”、“Updating”、“Deleting”、“Succeeded”或“Failed”，包括错误代码。 使用 REST 时，响应最初返回 HTTP 状态代码 202（已接受）和包含 Azure-AsyncOperation 属性的标头：
 
 ```JSON
 "Azure-AsyncOperation": "https://management.chinacloudapi.cn/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
@@ -123,7 +124,7 @@ Content-type: application/json
 
 *响应*
 
-应为 200（正常）和一个标头。
+应为 202（已接受）和一个标头。
 
 ### <a name="check-cluster-provisioning-status"></a>检查群集预配状态
 
@@ -228,7 +229,7 @@ Content-type: application/json
 
 *响应*
 
-200 OK 和标头。
+202（已接受）和标头。
 
 ### <a name="check-workspace-link-status"></a>检查工作区链接状态
   
@@ -511,22 +512,20 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-nam
 
 - 你可以将工作区链接到群集，然后将其取消链接。 在 30 天内，工作区与特定工作区的链接数限制为 2。
 
-- 验证是否完成 Log Analytics 群集预配之后，工作区才能与群集链接。  完成预配之前发送到工作区的数据将被删除，并且无法恢复。
-
 - 目前不支持将群集移动到另一个资源组或订阅。
-
-- 将工作区链接到群集时，如果是链接到其他群集，则链接会失败。
 
 
 ## <a name="troubleshooting"></a>疑难解答
 
 - 如果创建群集时出现冲突错误，原因可能是你在过去 14 天内删除了群集，并且它处于软删除状态。 软删除期间，群集名称保持为预留，并且无法新建同名群集。 永久删除群集时，名称将在软删除期结束后释放。
 
-- 如果在操作过程中更新群集，则该操作将失败。
+- 如果在群集处于预配或更新状态时对其进行更新，则更新将失败。
 
 - 部分操作较为耗时，可能需要一段时间才能完成 - 包括群集创建、群集密钥更新和群集删除。 可以通过两种方式检查操作状态：
   - 使用 REST 时，从响应中复制 Azure-AsyncOperation URL 值，并进行[异步操作状态检查](#asynchronous-operations-and-status-check)。
   - 将 GET 请求发送到群集或工作区，然后观察响应。 例如，未链接的工作区在“功能”下没有 clusterResourceId 。
+
+- 将工作区链接到群集时，如果是链接到其他群集，则链接会失败。
 
 - 错误消息
   

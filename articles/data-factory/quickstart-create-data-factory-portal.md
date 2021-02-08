@@ -10,20 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
 origin.date: 12/14/2020
-ms.date: 01/04/2021
+ms.date: 02/01/2021
 ms.author: v-jay
-ms.openlocfilehash: b0e65148955e91766d7ad040546ff454f3ffff6e
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 0098624078e0ff3fc3a01769ece35b27c767a9b4
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830297"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059823"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>快速入门：使用 Azure 数据工厂 UI 创建数据工厂 
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-本快速入门介绍如何使用 Azure 数据工厂 UI 创建和监视数据工厂。 在此数据工厂中创建的管道会将数据从 Azure Blob 存储中的一个文件夹复制到另一个文件夹。 若要使用 Azure 数据工厂转换数据，请参阅[教程：使用 Spark 转换数据](tutorial-transform-data-spark-portal.md)。
+本快速入门介绍如何使用 Azure 数据工厂 UI 创建和监视数据工厂。 在此数据工厂中创建的管道会将数据从 Azure Blob 存储中的一个文件夹复制到另一个文件夹。 若要使用 Azure 数据工厂转换数据，请参阅[映射数据流](concepts-data-flow-overview.md)。
 
 > [!NOTE]
 > 如果你对 Azure 数据工厂不太熟悉，请在学习本快速入门之前参阅 [Azure 数据工厂简介](introduction.md)。 

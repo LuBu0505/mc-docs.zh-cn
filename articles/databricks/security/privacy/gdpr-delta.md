@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 08/04/2020
 title: 最佳做法 - 使用 Delta Lake 的 GDPR 和 CCPA 合规性 - Azure Databricks
 description: 了解如何使用 Delta Lake 来满足数据湖的 GDPR 和 CCPA 要求。
-ms.openlocfilehash: 9ea7050f14d39b2f45151fc8c965e9f24839459b
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: 81e5b0d6dbb8e7fab99f6c8ba572d71e6f033f29
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937740"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060137"
 ---
 # <a name="best-practices-gdpr-and-ccpa-compliance-using-delta-lake"></a>最佳做法：使用 Delta Lake 实现 GDPR 和 CCPA 符合性
 
@@ -242,7 +242,7 @@ UPDATE gdpr.customers_lookup SET c_email_address_pseudonym = sha2(c_email_addres
 
 ## <a name="learn-more"></a>了解详细信息
 
-若要详细了解 Azure Databricks 上的 Delta Lake，请参阅 [Delta Lake](../../delta/index.md)。
+若要详细了解 Azure Databricks 上的 Delta Lake，请参阅 [Delta Lake 和 Delta Engine 指南](../../delta/index.md)。
 
 有关由 Databricks 专家撰写的介绍使用 Delta Lake 实现 GDPR 和 CCPA 合规性的博客，请参阅：
 

@@ -1,19 +1,20 @@
 ---
-title: 服务总线异步消息传送 | Azure
+title: 服务总线异步消息传送 | Azure Docs
 description: 了解 Azure 服务总线如何通过存储和转发机制对队列、主题和订阅支持异步。
+ms.service: service-bus-messaging
 ms.topic: article
 origin.date: 06/23/2020
 author: rockboyfor
-ms.date: 11/16/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: a9c1e36073957d3cf01bda6952e6f08526f11c70
-ms.sourcegitcommit: 39288459139a40195d1b4161dfb0bb96f5b71e8e
+ms.openlocfilehash: 6876592b2d20e4c014aa5a5db254c3f33165e3a3
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94590884"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059853"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>异步消息传送模式和高可用性
 
@@ -62,7 +63,7 @@ Azure 中的其他组件可能偶尔会发生服务问题。 例如，当服务�
 了解服务总线中的异步消息传送的基础知识后，可阅读有关[处理中断和灾难问题][handling outages and disasters]的详细信息。
 
 [ServerBusyException]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.serverbusyexception
-[System.TimeoutException]: https://docs.microsoft.com/dotnet/api/system.timeoutexception?view=netcore-3.1
+[System.TimeoutException]: https://docs.microsoft.com/dotnet/api/system.timeoutexception
 [MessagingException]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.messagingexception
 [Best practices for insulating applications against Service Bus outages and disasters]: service-bus-outages-disasters.md
 [Microsoft.ServiceBus.Messaging.MessagingFactory]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.messagingfactory
@@ -75,9 +76,9 @@ Azure 中的其他组件可能偶尔会发生服务问题。 例如，当服务�
 [NamespaceManager]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.namespacemanager
 [PairNamespaceAsync]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.messagingfactory
 [EnableSyphon]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions
-[System.TimeSpan.Zero]: https://docs.microsoft.com/dotnet/api/system.timespan.zero?view=netcore-3.1
+[System.TimeSpan.Zero]: https://docs.microsoft.com/dotnet/api/system.timespan.zero
 [IsTransient]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.messagingexception
-[UnauthorizedAccessException]: https://docs.microsoft.com/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1
+[UnauthorizedAccessException]: https://docs.microsoft.com/dotnet/api/system.unauthorizedaccessexception
 [BacklogQueueCount]: https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions?redirectedfrom=MSDN
 [handling outages and disasters]: service-bus-outages-disasters.md
 

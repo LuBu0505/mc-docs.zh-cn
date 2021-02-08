@@ -1,24 +1,21 @@
 ---
-title: Azure 云服务和 ASP.NET 入门 | Microsoft Docs
+title: Azure 云服务（经典）和 ASP.NET 入门 | Microsoft Docs
 description: 了解如何使用 ASP.NET MVC 和 Azure 创建多层应用程序。 该应用程序运行在云服务中，带有 web 角色和辅助角色。 它使用实体框架、SQL 数据库和 Azure 存储队列和 Blob。
-services: cloud-services, storage
-documentationcenter: .net
-author: tgore03
-manager: carmonm
+ms.topic: article
 ms.service: cloud-services
-ms.devlang: dotnet
-ms.custom: devx-track-csharp
-ms.topic: conceptual
-ms.date: 12/28/2020
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: 22b643749f28d2e230f56f3bf9177a69388ac781
-ms.sourcegitcommit: a37f80e7abcf3e42859d6ff73abf566efed783da
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 49af2ef1c8913a42cae3b170a30d8b739023e0c6
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829447"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059300"
 ---
-# <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure 云服务和 ASP.NET 入门
+# <a name="get-started-with-azure-cloud-services-classic-and-aspnet"></a>Azure 云服务（经典）和 ASP.NET 入门
 
 ## <a name="overview"></a>概述
 本教程演示如何使用 ASP.NET MVC 前端创建多层 .NET 应用程序，并将其部署到 [Azure 云服务](cloud-services-choose-me.md)。 应用程序使用 [Azure SQL 数据库](https://docs.microsoft.com/previous-versions/azure/ee336279(v=azure.100))、[Azure Blob 服务](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)和 [Azure 队列服务](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)。 可以从 MSDN 代码库 [下载 Visual Studio 项目](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4)。
@@ -28,7 +25,7 @@ ms.locfileid: "97829447"
 ## <a name="contoso-ads-application"></a>Contoso 广告应用程序
 该应用程序是广告公告板。 用户通过输入文本和上传图像创建一个广告。 用户可以通过缩略图查看广告列表，并在选择一个广告以查看其详细信息时，查看完整尺寸的图像。
 
-![广告列表](./media/cloud-services-dotnet-get-started/list.png)
+![图像显示广告列表](./media/cloud-services-dotnet-get-started/list.png)
 
 应用程序使用 [以队列为中心的工作模式](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) 来减轻创建缩略图到后端进程的 CPU 密集型工作。
 
@@ -60,7 +57,7 @@ ms.locfileid: "97829447"
 ## <a name="application-architecture"></a>应用程序体系结构
 该应用程序将广告存储在 SQL 数据库中，通过使用实体框架 Code First 创建表和访问数据。 对于每个广告，数据库存储两个 URL：一个用于全尺寸图像，另一个用于缩略图。
 
-![广告表](./media/cloud-services-dotnet-get-started/adtable.png)
+![这是一个广告表的图像](./media/cloud-services-dotnet-get-started/adtable.png)
 
 当用户上传一个图像时，Web 角色中运行的前端在 [Azure Blob](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) 中存储图像，并将广告信息存储在带有指向 Blob 的 URL 的数据库中。 同时，它将一条消息写入 Azure 队列。 在辅助角色中定期运行的后端进程轮询队列是否有新消息。 显示新消息时，辅助角色会创建该图像的缩略图，并为该广告更新缩略图 URL 数据库字段。 下图演示了应用程序各部分之间如何交互：
 
@@ -83,11 +80,11 @@ ms.locfileid: "97829447"
 
     首次运行云服务项目时，模拟器会花费大约一分钟来启动。 模拟器完成启动后，默认浏览器中会打开应用程序的主页。
 
-    ![Contoso 广告体系结构](./media/cloud-services-dotnet-get-started/home.png)
+    ![Contoso 广告体系结构 1](./media/cloud-services-dotnet-get-started/home.png)
 8. 单击“创建广告”。
 9. 输入一些测试数据并选择一个要上传的 *.jpg* 图像，并单击“创建”。
 
-    ![创建页面](./media/cloud-services-dotnet-get-started/create.png)
+    ![图像显示创建页面](./media/cloud-services-dotnet-get-started/create.png)
 
     该应用程序转到索引页，但它不显示新广告的缩略图，因为该处理尚未发生。
 10. 稍等片刻，并刷新该索引页查看缩略图。
@@ -129,7 +126,7 @@ Azure 云服务是该应用程序的运行环境。
 
     在下图中，使用 URL CSvccontosoads.chinacloudapp.cn 创建了一个云服务。
 
-    ![新的云服务](./media/cloud-services-dotnet-get-started/newcs.png)
+    ![图像显示“新建云服务”](./media/cloud-services-dotnet-get-started/newcs.png)
 
 ### <a name="create-a-database-in-azure-sql-database"></a>在 Azure SQL 数据库中创建数据库
 在云中运行应用程序时，它会使用基于云的数据库。
@@ -230,7 +227,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 
 1. 在“解决方案资源管理器”中，右键单击“ContosoAdsCloudService”项目中“角色”下的“ContosoAdsWeb”，并单击“属性”。
 
-    ![角色属性](./media/cloud-services-dotnet-get-started/roleproperties.png)
+    ![图像显示角色属性](./media/cloud-services-dotnet-get-started/roleproperties.png)
 2. 单击“设置”选项卡 。在“服务配置”下拉列表框中，选择“云”。
 
     ![云配置](./media/cloud-services-dotnet-get-started/sccloud.png)
@@ -378,7 +375,8 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 2. 保存所做更改。
 3. 在 ContosoAdsCloudService 项目中，右键单击“角色”下的 ContosoAdsWeb，并单击“属性”。
 
-    ![突出显示“角色”下的“属性”菜单选项的屏幕截图。](./media/cloud-services-dotnet-get-started/roleproperties.png)
+    ![角色属性图像](./media/cloud-services-dotnet-get-started/roleproperties.png)
+
 4. 在“ContosoAdsWeb [角色]”属性窗口中，单击“设置”选项卡，并单击“添加设置”。
 
     将“服务配置”保留设置为“所有配置”。
@@ -736,7 +734,7 @@ private void ProcessQueueMessage(CloudQueueMessage msg)
 此代码读取数据库以获取图像 URL、将图像转换为一个缩略图、在 blob 中保存缩略图、用缩略图 blob URL 更新数据库并删除队列消息。
 
 > [!NOTE]
-> 为简单起见，`ConvertImageToThumbnailJPG` 方法中的代码使用 System.Drawing 命名空间中的类。 但是，此命名空间中的类已设计用于 Windows 窗体。 不支持在 Windows 或 ASP.NET 服务中使用。 有关图像处理选项的详细信息，请参阅[动态图像生成](https://www.hanselman.com/blog/BackToBasicsDynamicImageGenerationASPNETControllersRoutingIHttpHandlersAndRunAllManagedModulesForAllRequests.aspx)和[深入学习图像大小调整](https://www.hanselminutes.com/313/deep-inside-image-resizing-and-scaling-with-aspnet-and-iis-with-imageresizingnet-author-na)。
+> 为简单起见，`ConvertImageToThumbnailJPG` 方法中的代码使用 System.Drawing 命名空间中的类。 但是，此命名空间中的类已设计用于 Windows 窗体。 不支持在 Windows 或 ASP.NET 服务中使用。 有关图像处理选项的详细信息，请参阅[深入学习图像大小重设](https://www.hanselminutes.com/313/deep-inside-image-resizing-and-scaling-with-aspnet-and-iis-with-imageresizingnet-author-na)。
 >
 >
 

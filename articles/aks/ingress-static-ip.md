@@ -6,16 +6,16 @@ services: container-service
 ms.topic: article
 origin.date: 08/17/2020
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: fb9f0201cff291e0dd910697407949972015cfee
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: da2d6ac1f9f99e4beee0f53977d30ca4184b5939
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004100"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063606"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用静态公共 IP 地址创建入口控制器
 
@@ -96,6 +96,7 @@ helm install nginx-ingress ingress-nginx/ingress-nginx \
     --set controller.image.registry=usgcr.azk8s.cn \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64 \
+    --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set controller.service.loadBalancerIP="STATIC_IP" \
     --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"="DNS_LABEL"
 ```
@@ -116,7 +117,7 @@ nginx-ingress-ingress-nginx-controller   LoadBalancer   10.0.74.133   EXTERNAL_I
 你可以通过查询公共 IP 地址上的 FQDN 来验证是否已应用 DNS 名称标签，如下所示：
 
 ```azurecli
-az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_chinaeast2 --query "[?name=='myAKSPublicIP'].[dnsSettings.fqdn]" -o tsv
+az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_chinaeast2 --query "[?ipAddress=='myAKSPublicIP'].[dnsSettings.fqdn]" -o tsv
 ```
 
 现在可以通过 IP 地址或 FQDN 访问入口控制器。
@@ -182,8 +183,12 @@ spec:
 若要创建证书颁发者，请使用 `kubectl apply` 命令。
 
 ```
-$ kubectl apply -f cluster-issuer.yaml --namespace ingress-basic
+kubectl apply -f cluster-issuer.yaml --namespace ingress-basic
+```
 
+输出应类似于以下示例：
+
+```
 clusterissuer.cert-manager.io/letsencrypt-staging created
 ```
 
@@ -320,8 +325,12 @@ spec:
 使用 `kubectl apply` 命令创建入口资源。
 
 ```
-$ kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
+kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
+```
 
+输出应类似于以下示例：
+
+```
 ingress.extensions/hello-world-ingress created
 ```
 
@@ -495,7 +504,7 @@ az network public-ip delete --resource-group MC_myResourceGroup_myAKSCluster_chi
 [aks-ingress-basic]: ingress-basic.md
 [aks-ingress-tls]: ingress-tls.md
 
-<!--Not Available on [aks-http-app-routing]: http-application-routing.md-->
+<!--NOT AVAILABLE ON [aks-http-app-routing]: http-application-routing.md-->
 
 [aks-ingress-own-tls]: ingress-own-tls.md
 [aks-quickstart-cli]: kubernetes-walkthrough.md
@@ -504,4 +513,4 @@ az network public-ip delete --resource-group MC_myResourceGroup_myAKSCluster_chi
 [install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli
 [aks-static-ip]: static-ip.md
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

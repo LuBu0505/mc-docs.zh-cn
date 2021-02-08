@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 10/05/2020
 title: 表删除、更新和合并 - Azure Databricks
 description: 了解如何在 Delta 表中删除数据和更新数据。
-ms.openlocfilehash: 2b2f56190371858f698c63cf1c54a2980bc769aa
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: a82d2c6b2848f32270783411fdf2c310dfab5dd2
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121876"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059875"
 ---
 # <a name="table-deletes-updates-and-merges"></a>表删除、更新和合并
 
@@ -198,7 +198,10 @@ WHEN NOT MATCHED
   THEN INSERT (date, eventId, data) VALUES (date, eventId, data)
 ```
 
-有关语法的详细信息，请参阅 [MERGE INTO SQL 命令](../spark/latest/spark-sql/language-manual/merge-into.md)。
+有关语法的详细信息，请参阅
+
+* Databricks Runtime 7.x：[MERGE INTO（Azure Databricks 上的 Delta Lake）](../spark/latest/spark-sql/language-manual/delta-merge-into.md)
+* Databricks Runtime 5.5 LTS 和 6.x：[合并到（Azure Databricks 上的 Delta Lake）](../spark/2.x/spark-sql/language-manual/merge-into.md)
 
 ### <a name="python"></a>Python
 
@@ -327,35 +330,38 @@ DeltaTable.forPath(spark, "/data/events/")
 
 > [!IMPORTANT]
 >
-> 如果源数据集的多行匹配并尝试更新目标 Delta 表的相同行，则 `merge` 操作可能会失败。 根据合并的 SQL 语义，这种更新操作模棱两可，因为尚不清楚应使用哪个源行来更新匹配的目标行。 你可以预处理源表来消除出现多个匹配项的可能性。 请参阅[变更数据捕获示例](#write-change-data-into-a-delta-table) - 它对变更数据集（即源数据集）进行预处理，以仅保留每键的最新更改，然后再将更改应用到目标 Delta 表中。
+> 如果源数据集的多行匹配并尝试更新目标 Delta 表的相同行，则 ``merge`` 操作可能会失败。 根据合并的 SQL 语义，这种更新操作模棱两可，因为尚不清楚应使用哪个源行来更新匹配的目标行。 你可以预处理源表来消除出现多个匹配项的可能性。 请参阅[变更数据捕获示例](#write-change-data-into-a-delta-table) - 它对变更数据集（即源数据集）进行预处理，以仅保留每键的最新更改，然后再将更改应用到目标 Delta 表中。
 
 > [!NOTE]
 >
-> 在 Databricks Runtime 7.3 中，无条件删除匹配项时允许多个匹配项（因为即使有多个匹配项，无条件删除也非常明确）。
+> 在 Databricks Runtime 7.3 LTS 及更高版本中，无条件删除匹配项时允许多个匹配项（因为即使有多个匹配项，无条件删除也非常明确）。
 
 ### <a name="schema-validation"></a>架构验证
 
-`merge` 自动验证通过插入和更新表达式生成的数据的架构是否与表的架构兼容。 它使用以下规则来确定 `merge` 操作是否兼容：
+``merge`` 自动验证通过插入和更新表达式生成的数据的架构是否与表的架构兼容。 它使用以下规则来确定 ``merge`` 操作是否兼容：
 
-* 对于 `update` 和 `insert` 操作，指定的目标列必须存在于目标 Delta 表中。
-* 对于 `updateAll` 和 `insertAll` 操作，源数据集必须具有目标 Delta 表的所有列。 源数据集可以包含额外的列，它们将被忽略。
-* 对于所有操作，如果由生成目标列的表达式生成的数据类型与目标 Delta 表中的对应列不同，则 `merge` 会尝试将其转换为表中的类型。
+* 对于 ``update`` 和 ``insert`` 操作，指定的目标列必须存在于目标 Delta 表中。
+* 对于 ``updateAll`` 和 ``insertAll`` 操作，源数据集必须具有目标 Delta 表的所有列。 源数据集可以包含额外的列，它们将被忽略。
+* 对于所有操作，如果由生成目标列的表达式生成的数据类型与目标 Delta 表中的对应列不同，则 ``merge`` 会尝试将其转换为表中的类型。
 
 ### <a name="automatic-schema-evolution"></a><a id="automatic-schema-evolution"> </a><a id="merge-schema-evolution"> </a>自动架构演变
 
 > [!NOTE]
 >
-> `merge` 中的架构演变在 Databricks Runtime 6.6 及更高版本中可用。
+> ``merge`` 中的架构演变在 Databricks Runtime 6.6 及更高版本中可用。
 
-默认情况下，`updateAll` 和 `insertAll` 使用来自源数据集的同名列来分配目标 Delta 表中的所有列。 而忽略源数据集中与目标表中的列不匹配的任何列。 但是，在某些用例中，需要自动将源列添加到目标 Delta 表中。 若要在使用 `updateAll` 和 `insertAll`（至少其中一个）执行 `merge` 操作期间自动更新表架构，可以在运行 `merge` 操作之前将 Spark 会话配置 `spark.databricks.delta.schema.autoMerge.enabled` 设置为 `true`。
+默认情况下，``updateAll`` 和 ``insertAll`` 使用来自源数据集的同名列来分配目标 Delta 表中的所有列。 而忽略源数据集中与目标表中的列不匹配的任何列。 但是，在某些用例中，需要自动将源列添加到目标 Delta 表中。 若要在使用 ``updateAll`` 和 ``insertAll``（至少其中一个）执行 ``merge`` 操作期间自动更新表架构，可以在运行 ``merge`` 操作之前将 Spark 会话配置 ``spark.databricks.delta.schema.autoMerge.enabled`` 设置为 ``true``。
 
 > [!NOTE]
 >
-> * 架构演变仅在存在 `updateAll` 或 `insertAll` 操作时（或者两者都存在时）才发生。
-> * 在合并中的架构演变期间，仅顶级列（即非嵌套字段）会被更改。
-> * `update` 和 `insert` 操作不能显式引用目标表中尚不存在的目标列（即使有 `updateAll` 或 `insertAll` 作为子句之一）。 请参下面的示例。
+> * 架构演变仅在存在 ``updateAll`` 或 ``insertAll`` 操作时（或者两者都存在时）才发生。
+> * ``update`` 和 ``insert`` 操作不能显式引用目标表中尚不存在的目标列（即使有 ``updateAll`` 或 ``insertAll`` 作为子句之一）。 请参下面的示例。
 
-以下示例展示了在有架构演变和没有架构演变的情况下 `merge` 操作的效果。
+> [!NOTE]
+>
+> 在 Databricks Runtime 7.4 及更低版本中，``merge`` 仅支持顶级列的架构演变，而不支持嵌套列的架构演变。
+
+以下示例展示了在有架构演变和没有架构演变的情况下 ``merge`` 操作的效果。
 
 | 列                                                                    | 查询（在 Scala 中）                                                                                                                                                                                                                                                                | 无架构演变的行为（默认值）                                                                   | 有架构演变的行为                                                                                                                                                                                                               |
 |----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

@@ -5,15 +5,15 @@ author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
 origin.date: 10/18/2020
-ms.date: 11/30/2020
+ms.date: 02/01/2021
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: c3786ea42fef32809e81e167bf11d9056e26937f
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 78d861744b93eb5159c2489795ecf278b1c1ace8
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023083"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060176"
 ---
 # <a name="app-service-networking-features"></a>应用服务网络功能
 
@@ -55,6 +55,8 @@ Azure 应用服务是一种分布式系统。 处理传入 HTTP 或 HTTPS 请求
 | 使用 Web 应用程序防火墙 (WAF) 保护应用 | 应用程序网关和 ILB ASE </br> 包含服务终结点的应用程序网关 </br> 提供访问限制的 Azure Front Door |
 | 对发往不同区域中的应用的流量进行负载均衡 | 具有访问限制的 Azure Front Door | 
 | 对同一区域中的流量进行负载均衡 | [包含服务终结点的应用程序网关][appgwserviceendpoints] | 
+
+<!-- | Private endpoints || -->
 
 以下出站用例演示如何使用应用服务网络功能来解决应用的出站访问需求：
 
@@ -112,11 +114,27 @@ Azure 应用服务缩放单元为每个部署中的多个客户提供支持。 �
 
 要限制可用于访问应用的 IP 地址时，基于 IP 的访问限制功能非常有用。 IPv4 和 IPv6 均受支持。 此功能的一些用例：
 * 从一组定义完善的地址限制对应用的访问。 
-* 限制对通过负载均衡服务（例如 Azure Front Door）进入的流量的访问。 若要将入站流量锁定为 Azure Front Door，请创建规则以允许来自 147.243.0.0/16 和 2a01:111:2050::/44 的流量。 
+* 仅允许通过外部负载均衡服务或其他具有已知出站 IP 地址的网络设备的流量访问。 
 
 若要了解如何启用此功能，请参阅[配置访问限制][iprestrictions]。
 
 <!--#### Access restriction rules based on service endpoints -->
+
+
+#### <a name="access-restriction-rules-based-on-service-tags-preview"></a>基于服务标记的访问限制规则（预览版）
+[Azure 服务标记][servicetags]是一组明确定义的 Azure 服务 IP 地址。 服务标记负责将各种 Azure 服务中使用的 IP 范围进行分组，通常还会将范围进一步限定到特定的区域。 这样你就可以筛选来自特定 Azure 服务的入站流量。 
+
+有关标记的完整列表和详细信息，请访问上面的服务标记链接。 若要了解如何启用此功能，请参阅[配置访问限制][iprestrictions]。
+#### <a name="http-header-filtering-for-access-restriction-rules-preview"></a>访问限制规则的 http 标头筛选（预览版）
+对于每个访问限制规则，都可以添加额外的 http 标头筛选。 这样你可以进一步检查传入的请求并根据特定的 http 标头值进行筛选。 每个规则最多可以有 8 个标头值。 目前支持下面列出的 http 标头： 
+* X-Forwarded-For
+* X-Forwarded-Host
+* X-Azure-FDID
+* X-FD-HealthProbe
+
+http 标头筛选的一些用例包括：
+* 仅允许转发主机名的代理服务器的流量访问
+* 仅允许具有服务标记规则和 X-Azure-FDID 标头限制的特定 Azure Front Door 实例访问
 
 <!--### Private Endpoint-->
 
@@ -280,5 +298,6 @@ ASE 提供最佳的隔离和专用应用托管，但它确实涉及了一些管�
 [vnetintegration]: ./web-sites-integrate-with-vnet.md
 [networkinfo]: ./environment/network-info.md
 [appgwserviceendpoints]: ./networking/app-gateway-with-service-endpoints.md
+[servicetags]: ../virtual-network/service-tags-overview.md
 
 <!--[privateendpoints]: ./networking/private-endpoint.md-->

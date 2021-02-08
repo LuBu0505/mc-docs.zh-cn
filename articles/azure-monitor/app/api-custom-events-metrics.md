@@ -4,15 +4,15 @@ description: 在设备、桌面应用、网页或服务中插入几行代码，�
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 03/27/2019
-ms.date: 01/12/2021
+ms.date: 01/27/2021
 ms.author: v-johya
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d401d0038746976d54595632cdbe7b97c69cc0a4
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: b0d5330c086a372c633b0ba7518f6b923086b166
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230841"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059918"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -150,7 +150,9 @@ telemetry.trackEvent({name: "WinGame"});
 
 ### <a name="custom-events-in-analytics"></a>Analytics 中的自定义事件
 
-[Application Insights Analytics](../log-query/log-query-overview.md) 的 `customEvents` 表格提供了遥测。 每行表示对应用中 `trackEvent(..)` 的调用。
+[“Application Insights 日志”选项卡](../log-query/log-query-overview.md)或[使用体验](usage-overview.md)中的 `customEvents` 表格提供了遥测。 事件可能来自 `trackEvent(..)` 或[单击“分析自动收集”插件](javascript-click-analytics-plugin.md)。
+
+ 
 
 如果正在进行[采样](./sampling.md)，那么 itemCount 属性将显示大于 1 的值。 例如，itemCount==10 表明对 trackEvent() 调用了 10 次，采样进程只传输其中一次。 若要获取自定义事件的正确计数，应使用 `customEvents | summarize sum(itemCount)` 之类的代码。
 
@@ -536,7 +538,7 @@ telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties
 可使用 TrackDependency 调用跟踪响应时间以及调用外部代码片段的成功率。 结果会显示在门户上的依赖项图表中。 需要在进行依赖项调用的任何位置添加以下代码片段。
 
 > [!NOTE]
-> 对于 .NET 和 .NET Core，也可使用 `TelemetryClient.StartOperation`（扩展）方法，它会填充关联所需的 `DependencyTelemetry` 属性以及其他一些属性（例如开始时间和持续时间），因此你无需像下例那样创建自定义计时器。 有关详细信息，请查看本文[有关传出依赖项跟踪的部分](/azure-monitor/app/custom-operations-tracking#outgoing-dependencies-tracking)。
+> 对于 .NET 和 .NET Core，也可使用 `TelemetryClient.StartOperation`（扩展）方法，它会填充关联所需的 `DependencyTelemetry` 属性以及其他一些属性（例如开始时间和持续时间），因此你无需像下例那样创建自定义计时器。 有关详细信息，请查看本文[有关传出依赖项跟踪的部分](./custom-operations-tracking.md#outgoing-dependencies-tracking)。
 
 *C#*
 
@@ -1133,5 +1135,4 @@ telemetry.Context.Operation.Name = "MyOperationName";
 
 * [搜索事件和日志](./diagnostic-search.md)
 * [故障排除](../faq.md)
-
 

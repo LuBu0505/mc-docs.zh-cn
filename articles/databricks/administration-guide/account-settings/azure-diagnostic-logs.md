@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 03/04/2020
 title: Azure Databricks 中的诊断日志记录 - Azure Databricks
 description: 了解如何配置由 Azure Databricks 用户执行的活动的诊断日志记录，使你的企业可以监视详细的 Azure Databricks 使用模式。
-ms.openlocfilehash: f2db8b8a8c1e87278168987258062eba8efe3cf9
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 914b1ea87b7cde9739f5057fa50fb06701812a69
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106657"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060156"
 ---
 # <a name="diagnostic-logging-in-azure-databricks"></a><a id="azure-diagnostic-logging"> </a><a id="diagnostic-logging-in-azure-databricks"> </a>Azure Databricks 中的诊断日志记录
 
@@ -168,7 +168,11 @@ PUT https://management.azure.com/{resourceUri}/providers/microsoft.insights/diag
 
 ## <a name="diagnostic-log-delivery"></a>诊断日志传送
 
-为帐户启用日志记录后，Azure Databricks 会自动开始定期将诊断日志发送到你的传送位置。 日志会在激活后的 24 到 72 小时内可用。 在任何给定的日期，Azure Databricks 都将在前 24 小时内提供至少 99% 的诊断日志，剩余的 1% 将在 72 小时内提供。
+为帐户启用日志记录后，Azure Databricks 会自动开始将诊断日志发送到你的传送位置。 日志会在激活后的 15 分钟内可用。 在 Azure 商业区域中，Azure Databricks 可审核事件通常会在 15 分钟内显示在诊断日志中。
+
+> [!NOTE]
+>
+> SSH 登录日志的传送延迟很高。
 
 ## <a name="diagnostic-log-schema"></a>诊断日志架构
 
@@ -181,12 +185,12 @@ PUT https://management.azure.com/{resourceUri}/providers/microsoft.insights/diag
 | **properties.sourceIPAddress**          | 源请求的 IP 地址。                                                                                                                                                                                                  |
 | **properties.userAgent**                | 用于发出请求的浏览器或 API 客户端。                                                                                                                                                                                    |
 | **properties.sessionId**                | 操作的会话 ID。                                                                                                                                                                                                              |
-| **identities**                          | 有关发出请求的用户的信息：<br><br>* **email** ：用户电子邮件地址。                                                                                                                                            |
+| **identities**                          | 有关发出请求的用户的信息：<br><br>* **email**：用户电子邮件地址。                                                                                                                                            |
 | **category**                            | 记录了请求的服务。                                                                                                                                                                                                   |
 | **operationName**                       | 操作，例如登录、注销、读取、写入，等等。                                                                                                                                                                                   |
 | **properties.requestId**                | 唯一的请求 ID。                                                                                                                                                                                                                     |
 | **properties.requestParams**            | 事件中使用的参数键值对。                                                                                                                                                                                           |
-| **properties.response**                 | 对请求的响应：<br><br>* **errorMessage** ：错误消息（如果有错误）。<br>* **result** ：请求的结果。<br>* **statusCode** ：指示请求是否成功的 HTTP 状态代码。 |
+| **properties.response**                 | 对请求的响应：<br><br>* **errorMessage**：错误消息（如果有错误）。<br>* **result**：请求的结果。<br>* **statusCode**：指示请求是否成功的 HTTP 状态代码。 |
 | **properties.logId**                    | 日志消息的唯一标识符。                                                                                                                                                                                            |
 
 ## <a name="events"></a>事件
@@ -250,9 +254,9 @@ PUT https://management.azure.com/{resourceUri}/providers/microsoft.insights/diag
 
 ## <a name="analyze-diagnostic-logs"></a>分析诊断日志
 
-如果在启用诊断日志记录时选择了“发送到 Log Analytics”选项，则容器中的诊断数据会在 24 到 72 小时内转发到 Azure Monitor 日志。
+如果在启用诊断日志记录时选择了“发送到 Log Analytics”选项，则容器中的诊断数据通常会在 15 分钟内转发到 Azure Monitor 日志。
 
-在查看日志之前，请验证 **Log Analytics** 工作区是否已升级为使用新的 Kusto 查询语言。 若要检查，请打开 [Azure 门户](https://portal.azure.com/)并选择最左侧的“Log Analytics”。 然后选择你的 Log Analytics 工作区。 如果收到要升级的消息，请参阅[将 Azure Log Analytics 工作区升级到新的日志搜索](/log-analytics/log-analytics-log-search-upgrade)。
+在查看日志之前，请验证 **Log Analytics** 工作区是否已升级为使用新的 Kusto 查询语言。 若要检查，请打开 [Azure 门户](https://portal.azure.cn/)并选择最左侧的“Log Analytics”。 然后选择你的 Log Analytics 工作区。 如果收到要升级的消息，请参阅[将 Azure Log Analytics 工作区升级到新的日志搜索](/log-analytics/log-analytics-log-search-upgrade)。
 
 若要查看 Azure Monitor 日志中的诊断数据，请打开左侧菜单中的“日志搜索”页或该页的“管理”区域。 然后，将查询输入到“日志搜索”框中。
 

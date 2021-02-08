@@ -1,12 +1,14 @@
 ---
-ms.openlocfilehash: 166a95f303cc9e9f726dd04533f332588dbbf41d
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: b50639906b92eefd88bb1f294e646d22980b5bf1
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96478115"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99214170"
 ---
-* 具有活动订阅的 Azure 帐户。 如果没有帐户，可[创建试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+* 具有活动订阅的 Azure 帐户。 如果没有帐户，可以[创建试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+  > [!NOTE]
+  > 你将需要一个具有服务主体创建权限（所有者角色提供此权限）的 Azure 订阅。 如果你没有正确的权限，请联系帐户管理员，让其授予你适当的权限。 
 * 包含以下扩展的 [Visual Studio Code](https://code.visualstudio.com/)：
     * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
     * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)

@@ -1,17 +1,17 @@
 ---
 title: 模板中的参数
-description: 介绍如何在 Azure 资源管理器模板中定义参数。
+description: 介绍如何在 Azure 资源管理器模板（ARM 模板）中定义参数。
 ms.topic: conceptual
 origin.date: 11/24/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 01/25/2021
 ms.author: v-yeche
-ms.openlocfilehash: 2e177d83c1d0fabe323954880fcccb91ef6d36a1
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 3f1bfce676f75b7779d2d56c5fb44f8230c6f33d
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021861"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751309"
 ---
 # <a name="parameters-in-arm-templates"></a>ARM 模板中的参数
 
@@ -23,7 +23,7 @@ ms.locfileid: "98021861"
 
 ## <a name="define-parameter"></a>定义参数
 
-以下示例展示了一个简单的参数定义。 它定义名为 **storageSKU** 的参数。 此参数为字符串值，仅接受适合其预期用途的值。 如果在部署过程中未提供任何值时，则此参数使用默认值。
+以下示例展示了一个简单的参数定义。 它定义名为 `storageSKU` 的参数。 此参数为字符串值，仅接受适合其预期用途的值。 如果在部署过程中未提供任何值时，则此参数使用默认值。
 
 <!--Not Available on "Standard_ZRS"-->
 

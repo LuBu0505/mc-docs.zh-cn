@@ -1,23 +1,21 @@
 ---
-title: 在 Azure 云服务角色上安装 .NET | Microsoft Docs
+title: 在 Azure 云服务（经典）角色上安装 .NET | Microsoft Docs
 description: 本文介绍如何在云服务 Web 角色和辅助角色上手动安装 .NET Framework
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-manager: carmonm
-ms.service: cloud-services
-ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/17/2020
+ms.service: cloud-services
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: ef5e11a1720f6eea58010ff9d4915d32b645036e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 18c68059b03d3c1d6d5c13a68759ea729488a4b1
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79497298"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059275"
 ---
-# <a name="install-net-on-azure-cloud-services-roles"></a>在 Azure 云服务角色上安装 .NET
+# <a name="install-net-on-azure-cloud-services-classic-roles"></a>在 Azure 云服务（经典）角色上安装 .NET
 本文介绍如何安装不随 Azure 来宾 OS 一起提供的 .NET Framework 版本。 可使用来宾 OS 上的 .NET 配置云服务 web 角色和辅助角色。
 
 例如，可在来宾 OS 系列 4（它不随 .NET Framework 4.6 的任何版本一起提供）上安装 .NET Framework 4.6.2。 （来宾 OS 系列 5 随 .NET Framework 4.6 一起提供。）有关最新的 Azure 来宾 OS 版本信息，请参阅 [Azure 来宾 OS 发行动态](cloud-services-guestos-update-matrix.md)。 

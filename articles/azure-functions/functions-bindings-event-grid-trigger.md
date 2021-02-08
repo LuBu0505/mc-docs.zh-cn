@@ -3,15 +3,15 @@ title: Azure Functions 的 Azure 事件网格触发器
 description: 了解如何在调度 Azure Functions 中的事件网格事件时运行代码。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 01/04/2021
+ms.date: 01/27/2021
 ms.author: v-junlch
-ms.custom: devx-track-csharp, fasttrack-edit, devx-track-azurecli
-ms.openlocfilehash: c9b7f97849a3a06f4ef31d622d586e5483cb25bf
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.custom: devx-track-csharp, fasttrack-edit
+ms.openlocfilehash: f68cd09e23f9c2c634247c39426983cf2bf48838
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022927"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059048"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions 的 Azure 事件网格触发器
 
@@ -556,7 +556,7 @@ http://{functionappname}.chinacloudsites.cn/admin/host/systemkeys/eventgridexten
 
 ### <a name="manually-post-the-request"></a>手动发布请求
 
-在本地运行事件网格函数。
+在本地运行事件网格函数。 需要手动设置 `Content-Type` 和 `aeg-event-type` 标头，而其他所有值都可以保留为默认值。
 
 使用 [Postman](https://www.getpostman.com/) 或 [curl](https://curl.haxx.se/docs/httpscripting.html) 等工具创建 HTTP POST 请求：
 
@@ -591,4 +591,3 @@ http://{functionappname}.chinacloudsites.cn/admin/host/systemkeys/eventgridexten
 ## <a name="next-steps"></a>后续步骤
 
 * [调度事件网格事件](./functions-bindings-event-grid-output.md)
-

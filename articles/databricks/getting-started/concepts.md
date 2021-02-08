@@ -5,19 +5,19 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 08/14/2020
-title: Azure Databricks 概念 - Azure Databricks
+ms.date: 11/17/2020
+title: Azure Databricks 工作区概念 - Azure Databricks
 description: 了解工作区、数据对象、群集、机器学习模型和访问权限等基本 Azure Databricks 概念。
-ms.openlocfilehash: abc02118c6287f15c014469507dfda542e02d464
-ms.sourcegitcommit: 16af84b41f239bb743ddbc086181eba630f7f3e8
+ms.openlocfilehash: fd9d7fdfbce0bf66d8468d26d505d35e27c49e47
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94589643"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058754"
 ---
-# <a name="azure-databricks-concepts"></a><a id="azure-databricks-concepts"> </a><a id="concepts"> </a>Azure Databricks 概念
+# <a name="azure-databricks-workspace-concepts"></a><a id="azure-databricks-workspace-concepts"> </a><a id="concepts"> </a>Azure Databricks 工作区概念
 
-本文介绍为有效地使用 Azure Databricks，你需要了解的一组基本概念。
+本文介绍为有效地使用 Azure Databricks 工作区，你需要了解的一组基本概念。
 
 ## <a name="workspace"></a>工作区
 

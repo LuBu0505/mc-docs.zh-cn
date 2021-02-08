@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 07/22/2020
 title: 2020 年 5 月 - Azure Databricks
 description: Azure Databricks 新功能和改进的 2020 年 5 月发行说明。
-ms.openlocfilehash: 852ac06ce60e613f9b5f4dc5758dd86525ba84d1
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 4dc1bca6e07db6cbf6ce3297e95edfaf1581c894
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329209"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058716"
 ---
 # <a name="may-2020"></a>2020 年 5 月
 
@@ -41,7 +41,7 @@ Azure Databricks 现在为 [Easv4 系列](/virtual-machines/eav4-easv4-series) �
 * BAM 导出选项
 * 清单 Blob
 
-有关详细信息，请参阅[用于基因组学的 Databricks Runtime 6.6](../../runtime/6.6genomics.md) 的完整发行说明。
+有关详细信息，请参阅完整的[用于基因组学的 Databricks Runtime 6.6（不受支持）](../../runtime/6.6genomics.md)发行说明。
 
 ## <a name="databricks-runtime-66-ml-ga"></a>Databricks Runtime 6.6 ML 正式版
 
@@ -51,7 +51,7 @@ Databricks Runtime 6.6 ML 基于 Databricks Runtime 6.6 构建，包含以下新
 
 * mlflow 已升级：1.7.0 到 1.8.0
 
-有关详细信息，请参阅完整的 [Databricks Runtime 6.6 ML](../../runtime/6.6ml.md) 发行说明。
+有关详细信息，请参阅完整的 [Databricks Runtime 6.6 ML（不受支持）](../../runtime/6.6ml.md)发行说明。
 
 ## <a name="databricks-runtime-66-ga"></a>Databricks Runtime 6.6 正式版
 
@@ -61,10 +61,10 @@ Databricks Runtime 6.6 引入了许多库升级和新功能，其中包括以下
 
 * 现可通过 `merge` 操作自动提升表的架构。 如果你想要将更改数据更新插入到一个表中，而且数据架构会随时间推移而变化，那么此功能非常有用。
   `merge` 可同时改进架构和更新插入更改，而不是在更新插入之前检测和应用架构更改。 请参阅[自动架构演变](../../../delta/delta-update.md#merge-schema-evolution)。
-* 仅包含匹配子句的合并操作（即仅有 `update` 和 `delete` 操作，没有 `insert` 操作）的性能已得到改进。
-* Hive 元存储中引用的 Parquet 表现可使用 `CONVERT TO DELTA` 通过其表识别符转换为 Delta Lake。
+* 仅包含匹配子句的合并操作（即仅包含 `update` 和 `delete` 操作，未包含 `insert` 操作）的性能已得到改进。
+* 现在，Hive 元存储中引用的 Parquet 表可以使用 `CONVERT TO DELTA` 通过其表识别符转换为 Delta Lake。
 
-有关详细信息，请参阅完整的 [Databricks Runtime 6.6](../../runtime/6.6.md) 发行说明。
+有关详细信息，请参阅完整的 [Databricks Runtime 6.6（不受支持）](../../runtime/6.6.md)发行说明。
 
 ## <a name="dbfs-rest-api-delete-endpoint-size-limit"></a>DBFS REST API 删除终结点大小限制
 
@@ -101,7 +101,7 @@ MLflow 模型注册表现支持对已注册模型进行服务器端搜索和分�
 * ADAM 库已从版本 0.30.0 更新为 0.32.0.
 * Hail 库未包含在用于基因组学 Databricks Runtime 7.0 中，原因是没有基于 Apache Spark 3.0 的版本。
 
-有关详细信息，请参阅[用于基因组学的 Databricks Runtime 7.0](../../runtime/7.0genomics.md) 的完整发行说明。
+有关详细信息，请参阅完整的[用于基因组学的 Databricks Runtime 7.0（不受支持）](../../runtime/7.0genomics.md)发行说明。
 
 ## <a name="databricks-runtime-70-ml-beta"></a>Databricks Runtime 7.0 ML（Beta 版本）
 
@@ -109,12 +109,12 @@ MLflow 模型注册表现支持对已注册模型进行服务器端搜索和分�
 
 Databricks Runtime 7.0 ML 基于 Databricks Runtime 7.0 构建，包含以下新功能：
 
-* 笔记本范围的 Python 库和自定义环境，由 conda 和 pip 命令进行管理。
+* 笔记本范围内的 Python 库和自定义环境，通过 conda 和 pip 命令进行管理。
 * 主要 Python 包的更新，包括 tensorflow、tensorboard、pytorch、xgboost、sparkdl 和 hyperopt。
 * 新添加的 Python 包 lightgbm、nltk、petastorm 和 plotly。
 * RStudio Server 开源版 v1.2。
 
-有关详细信息，请参阅完整的 [Databricks Runtime 7.0 ML](../../runtime/7.0ml.md) 发行说明。
+有关详细信息，请参阅完整的 [Databricks Runtime 7.0 ML（不受支持）](../../runtime/7.0ml.md)发行说明。
 
 ## <a name="databricks-runtime-66-for-genomics-beta"></a>用于基因组学的 Databricks Runtime 6.6（Beta 版本）
 
@@ -128,7 +128,7 @@ Databricks Runtime 7.0 ML 基于 Databricks Runtime 7.0 构建，包含以下新
 * BAM 导出选项
 * 清单 Blob
 
-有关详细信息，请参阅[用于基因组学的 Databricks Runtime 6.6](../../runtime/6.6genomics.md) 的完整发行说明。
+有关详细信息，请参阅完整的[用于基因组学的 Databricks Runtime 6.6（不受支持）](../../runtime/6.6genomics.md)发行说明。
 
 ## <a name="databricks-runtime-66-ml-beta"></a>Databricks Runtime 6.6 ML（Beta 版本）
 
@@ -138,7 +138,7 @@ Databricks Runtime 6.6 ML 基于 Databricks Runtime 6.6 构建，包含以下新
 
 * mlflow 已升级：1.7.0 到 1.8.0
 
-有关详细信息，请参阅完整的 [Databricks Runtime 6.6 ML](../../runtime/6.6ml.md) 发行说明。
+有关详细信息，请参阅完整的 [Databricks Runtime 6.6 ML（不受支持）](../../runtime/6.6ml.md)发行说明。
 
 ## <a name="databricks-runtime-66-beta"></a>Databricks Runtime 6.6（Beta 版本）
 
@@ -148,10 +148,10 @@ Databricks Runtime 6.6（Beta 版本）引入了许多库升级和新功能，�
 
 * 现可通过 `merge` 操作自动提升表的架构。 如果你想要将更改数据更新插入到一个表中，而且数据架构会随时间推移而变化，那么此功能非常有用。
   `merge` 可同时改进架构和更新插入更改，而不是在更新插入之前检测和应用架构更改。 请参阅[自动架构演变](../../../delta/delta-update.md#merge-schema-evolution)。
-* 仅包含匹配子句的合并操作（即仅有 `update` 和 `delete` 操作，没有 `insert` 操作）的性能已得到改进。
-* Hive 元存储中引用的 Parquet 表现可使用 `CONVERT TO DELTA` 通过其表识别符转换为 Delta Lake。
+* 仅包含匹配子句的合并操作（即仅包含 `update` 和 `delete` 操作，未包含 `insert` 操作）的性能已得到改进。
+* 现在，Hive 元存储中引用的 Parquet 表可以使用 `CONVERT TO DELTA` 通过其表识别符转换为 Delta Lake。
 
-有关详细信息，请参阅完整的 [Databricks Runtime 6.6](../../runtime/6.6.md) 发行说明。
+有关详细信息，请参阅完整的 [Databricks Runtime 6.6（不受支持）](../../runtime/6.6.md)发行说明。
 
 ## <a name="job-clusters-now-tagged-with-job-name-and-id"></a>作业群集现已用作业名称和 ID 进行标记
 

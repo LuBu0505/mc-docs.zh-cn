@@ -5,13 +5,13 @@ author: WenJason
 ms.topic: how-to
 ms.author: v-jay
 origin.date: 12/14/2020
-ms.date: 01/18/2021
-ms.openlocfilehash: e7034e58f80e72e757559339eeb1d70dc0d136f6
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 02/01/2021
+ms.openlocfilehash: 989aa2ead23bf2f91aedd7bcaf6efefaa1a642aa
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231059"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060129"
 ---
 # <a name="upgrading-live-video-analytics-on-iot-edge-from-10-to-20"></a>将 IoT Edge 上的实时视频分析从 1.0 升级为 2.0
 
@@ -22,7 +22,7 @@ ms.locfileid: "98231059"
 > [!div class="mx-tdCol4BreakAll"]
 > |标题|实时视频分析 1.0|实时视频分析 2.0|说明|
 > |-------------|----------|---------|---------|
-> |容器映像|mcr.microsoft.com/media/live-video-analytics：1.0.0|mcr.microsoft.com/media/live-video-analytics：2.0.0|Microsoft 发布的适用于 Azure IoT Edge 上的实时视频分析的 docker 映像|
+> |容器映像|mcr.microsoft.com/media/live-video-analytics:1|mcr.microsoft.com/media/live-video-analytics:2|Microsoft 发布的适用于 Azure IoT Edge 上的实时视频分析的 docker 映像|
 > |**MediaGraph 节点** |    |   |   |
 > |源|:::image type="icon" source="./././media/upgrading-lva/check.png"::: RTSP 源 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: IoT 中心消息源 |:::image type="icon" source="./././media/upgrading-lva/check.png"::: RTSP 源 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: IoT 中心消息源 | 充当媒体引入源和消息源的 MediaGraph 节点。|
 > |Processors|:::image type="icon" source="./././media/upgrading-lva/check.png"::: 运动检测处理器 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: 帧速率筛选器处理器 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: HTTP 扩展处理器 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Grpc 扩展处理器 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: 信号门处理器 |:::image type="icon" source="./././media/upgrading-lva/check.png"::: 运动检测处理器 </br>:::image type="icon" source="./././media/upgrading-lva/remove.png"::: **帧速率筛选器处理器**</br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: HTTP 扩展处理器 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Grpc 扩展处理器 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: 信号门处理器 | 能够实现在发送到 AI 推理服务器之前格式化媒体的 MediaGraph 节点。|

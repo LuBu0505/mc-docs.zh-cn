@@ -1,28 +1,21 @@
 ---
 title: 配置和管理问题常见问题解答
-titleSuffix: Azure Cloud Services
 description: 本文列出了有关 Azure 云服务的配置和管理的常见问题解答。
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/20/2020
+ms.service: cloud-services
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: feba8fb28dc709a224c0a92b8512e53e82b61cda
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: bf2886feed6173b2fc79470e4f1469eaeaa8914d
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472573"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058870"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题 (FAQ)
+# <a name="configuration-and-management-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Azure 云服务（经典）的配置和管理问题：常见问题 (FAQ)
 
 本文包含有关 [Azure 云服务](https://www.azure.cn/home/features/cloud-services)的配置和管理的常见问题。 还可以参阅[云服务 VM 大小页面](cloud-services-sizes-specs.md)，了解大小信息。
 
@@ -62,7 +55,7 @@ ms.locfileid: "92472573"
 
 **常规**
 
-- [如何将“nosniff”添加到网站？](#how-do-i-add-nosniff-to-my-website)
+- [如何将 `nosniff` 添加到网站？](#how-do-i-add-nosniff-to-my-website)
 - [如何为 Web 角色自定义 IIS？](#how-do-i-customize-iis-for-a-web-role)
 - [什么是云服务配额限制？](#what-is-the-quota-limit-for-my-cloud-service)
 - [云服务 VM 上的驱动器为何显示可用磁盘空间不足？](#why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space)
@@ -128,7 +121,7 @@ $cert = New-SelfSignedCertificate -DnsName yourdomain.chinacloudapp.cn -CertStor
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
-选择 blob 或本地作为 csdef 和 cscfg 上传位置的功能即将推出。 使用 [New-AzureDeployment](https://docs.microsoft.com/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-4.0.0)，可以设置每个位置值。
+选择 blob 或本地作为 csdef 和 cscfg 上传位置的功能即将推出。 使用 [New-AzureDeployment](https://docs.microsoft.com/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-4.0.0&preserve-view=true)，可以设置每个位置值。
 
 能够监视实例级别的指标。 其他监视功能在[如何监视云服务](cloud-services-how-to-monitor.md)中提供。
 
@@ -146,9 +139,9 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 可以通过以下选项启用 Azure 诊断 (WAD) 日志记录：
 1. [从 Visual Studio 启用](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 2. [通过 .NET 代码启用](./cloud-services-dotnet-diagnostics.md)
-3. [通过 Powershell 启用](./cloud-services-diagnostics-powershell.md)
+3. [通过 PowerShell 启用](./cloud-services-diagnostics-powershell.md)
 
-若要获取云服务的当前 WAD 设置，可以使用 [Get-AzureServiceDiagnosticsExtensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) ps cmd，也可以通过门户从“云服务 - > 扩展”边栏选项卡查看它。
+若要获取云服务的当前 WAD 设置，可以使用 [Get-AzureServiceDiagnosticsExtensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) PowerShell cmd，也可以通过门户从“云服务 - > 扩展”边栏选项卡查看它。
 
 
 ## <a name="network-configuration"></a>网络配置
@@ -231,7 +224,7 @@ Microsoft 遵循严格的流程，未经所有者或其被委派者书面许可�
 如果在已加入 Azure Active Directory 的计算机上使用 RDP 文件，则可能会发生此错误。 若要解决此问题，请执行以下步骤：
 
 1. 右键单击下载的 RDP 文件，然后选择“编辑”。
-2. 在用户名的前面添加“&#92;”前缀。 例如，使用 **.\username** 而不要使用 **username** 。
+2. 在用户名的前面添加“&#92;”前缀。 例如，使用 **.\username** 而不要使用 **username**。
 
 ## <a name="scaling"></a>扩展
 
@@ -254,7 +247,7 @@ Azure 订阅对可以使用的内核数存在限制。 如果已使用所有可�
 
 ## <a name="generic"></a>泛型
 
-### <a name="how-do-i-add-nosniff-to-my-website"></a>如何将“nosniff”添加到网站？
+### <a name="how-do-i-add-nosniff-to-my-website"></a>如何将 `nosniff` 添加到网站？
 若要防止客户端探查 MIME 类型，请在 *web.config* 文件中添加设置。
 
 ```xml
@@ -284,11 +277,11 @@ Azure 订阅对可以使用的内核数存在限制。 如果已使用所有可�
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>云服务 VM 上的驱动器为何显示可用磁盘空间不足？
 这是预期的行为，不会导致应用程序出现任何问题。 为 Azure PaaS VM 中的 %approot% 驱动器启用了日记，因此，占用的空间量在实际上是文件平时占用的空间量的两倍。 但是，有几个因素会在本质上消除此状态造成的问题。
 
-%approot% 驱动器大小计算为 \<size of .cspkg + max journal size + a margin of free space> 或 1.5 GB（取两者中较大的一个）。 VM 大小对于计算结果没有任何影响。 （VM 大小只会影响临时 C: 驱动器的大小。） 
+%approot% 驱动器大小的计算方法是 <.cspkg 的大小 + 日记最大大小 + 备用可用空间> 或 1.5 GB 两者中较大的一个。 VM 大小对于计算结果没有任何影响。 （VM 大小只会影响临时 C: 驱动器的大小。） 
 
 不支持写入 %approot% 驱动器。 如果要写入 Azure VM，必须在临时 LocalStorage 资源中执行此操作（或使用其他选项，例如 Blob 存储、Azure 文件，等等）。 因此，%approot% 文件夹的可用空间量没有意义。 如果不确定应用程序是否写入 %approot% 驱动器，始终可以让服务运行数日，然后比较“之前”和“之后”的大小。 
 
-Azure 不会将任何数据写入 %approot% 驱动器。 从 .cspkg 创建 VHD 并将其装载到 Azure VM 之后，就只有你的应用程序可能会写入此驱动器。 
+Azure 不会将任何数据写入 %approot% 驱动器。 从 `.cspkg` 创建 VHD 并将其装载到 Azure VM 之后，就只有你的应用程序可能会写入此驱动器。 
 
 日记设置不可配置，因此无法将其禁用。
 
@@ -297,7 +290,7 @@ Azure 不会将任何数据写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
 可在启动任务中使用 PowerShell 脚本启用反恶意软件扩展。 请遵循以下文章中的步骤实现此目的： 
  
 - [创建 PowerShell 启动任务](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
-- [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
+- [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0&preserve-view=true)
 
 有关反恶意软件部署方案以及如何在门户中启用此类方案的详细信息，请参阅[反恶意软件部署方案](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)。
 

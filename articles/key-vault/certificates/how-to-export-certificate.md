@@ -7,16 +7,15 @@ tags: azure-key-vault
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: how-to
-ms.custom: mvc, devx-track-azurecli
-origin.date: 08/11/2020
-ms.date: 01/13/2021
+ms.custom: mvc
+ms.date: 01/27/2021
 ms.author: v-tawe
-ms.openlocfilehash: dd28982ce2b1dd1456822136379e612c31d181f6
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: ddfd4062617c0ce164e5a33414eccf23f5bacf2d
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231066"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058589"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>从 Azure Key Vault 中导出证书
 
@@ -37,7 +36,7 @@ ms.locfileid: "98231066"
 - **可导出**：用于创建证书的策略指示密钥可导出。
 - **不可导出**：用于创建证书的策略指示密钥不可导出。 在这种情况下，当以机密的形式进行检索时，私钥不是值的一部分。
 
-支持的 KeyType：RSA、RSA-HSM、EC、EC-HSM 等（参见[此处](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)）“可导出”状态仅与 RSA 和 EC 一起使用。 HSM 密钥不可导出。
+支持的 KeyType：RSA、EC、oct 等（参见[此处](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)）“可导出”状态仅可与 RSA 和 EC 一起使用。 
 
 有关详细信息，请参阅[关于 Azure Key Vault 证书](./about-certificates.md#exportable-or-non-exportable-key)。
 
@@ -62,12 +61,12 @@ az keyvault certificate download --file
                                  [--version]
 ```
 
-有关详细信息，请查看[示例和参数定义](https://docs.microsoft.com/cli/azure/keyvault/certificate#az-keyvault-certificate-download)。
+有关详细信息，请查看[示例和参数定义](/cli/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-download)。
 
 作为证书下载意味着获取公共部分。 如果同时需要私钥和公共元数据，可以将其作为机密下载。
 
 ```azurecli
-az keyvault secret download -–file {nameofcert.pfx}
+az keyvault secret download --file {nameofcert.pfx}
                             [--encoding {ascii, base64, hex, utf-16be, utf-16le, utf-8}]
                             [--id]
                             [--name]
@@ -76,7 +75,7 @@ az keyvault secret download -–file {nameofcert.pfx}
                             [--version]
 ```
 
-有关详细信息，请参阅[参数定义](https://docs.microsoft.com/cli/azure/keyvault/secret#az-keyvault-secret-download)。
+有关详细信息，请参阅[参数定义](/cli/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-download)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

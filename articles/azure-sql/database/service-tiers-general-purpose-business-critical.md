@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sashan, moslake
 origin.date: 12/14/2020
-ms.date: 01/04/2021
-ms.openlocfilehash: 2352495a30d3786959eb7803150125ea684904bc
-ms.sourcegitcommit: a978c5f2c6b53494d67e7c3c5a44b2aa648219a2
+ms.date: 02/01/2021
+ms.openlocfilehash: 8b6d1161f1ef7d25ff47dd61a09d39dede713b7e
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629078"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059843"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL 数据库和 Azure SQL 托管实例服务层级
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -78,6 +78,7 @@ Azure SQL 数据库还有一个服务层级：
   - 对于“高级”或“业务关键”服务层级中的存储，按 250 GB 增量增减大小。
 - 在“常规用途”服务层级中，`tempdb` 使用附加的 SSD，此存储成本包含在 vCore 价格中。
 - 在“业务关键”服务层级中，`tempdb` 与 MDF 和 LDF 文件共享附加的 SSD，`tempdb` 存储成本已包含在 vCore 价格中。
+- 在 DTU 高级服务层级中，`tempdb` 与 MDF 和 LDF 文件共享附加的 SSD。
 - SQL 托管实例的存储大小必须指定为 32 GB 的倍数。
 
 

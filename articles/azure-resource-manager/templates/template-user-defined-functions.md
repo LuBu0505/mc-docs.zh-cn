@@ -1,17 +1,17 @@
 ---
 title: 模板中的用户定义函数
-description: 介绍如何在 Azure 资源管理器模板中定义和使用用户定义函数。
+description: 介绍如何在 Azure 资源管理器模板（ARM 模板）中定义和使用用户定义函数。
 ms.topic: conceptual
 origin.date: 03/09/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 01/25/2021
 ms.author: v-yeche
-ms.openlocfilehash: ab56bd31589236e531d66c16e3fc427226295350
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: b3a3217cadf02d02dd1ba20d93cdfab507678bbd
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022251"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751292"
 ---
 # <a name="user-defined-functions-in-arm-template"></a>ARM 模板中用户定义的函数
 
@@ -47,7 +47,7 @@ ms.locfileid: "98022251"
 
 ## <a name="use-the-function"></a>使用函数
 
-下面的示例演示一个包含用户定义函数的模板。 它使用该函数获取存储帐户的唯一名称。 此模板有一个名为 **storageNamePrefix** 的参数，它将作为参数传递给该函数。
+下面的示例演示一个包含用户定义函数的模板。 它使用该函数获取存储帐户的唯一名称。 此模板有一个名为 `storageNamePrefix` 的参数，它将作为参数传递给该函数。
 
 ```json
 {

@@ -4,17 +4,17 @@ description: 了解控制 Azure Kubernetes Service (AKS) 中的出口流量所�
 services: container-service
 ms.topic: article
 origin.date: 11/09/2020
-ms.date: 12/14/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
 author: rockboyfor
-ms.openlocfilehash: 15af8dce5e0c6ec7134a75d5e48791e8fbc20cef
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 4a80f14dfe53f0c9a5c52b321c24a32b3d3ede16
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004122"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063697"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes 服务 (AKS) 中群集节点的出口流量
 
@@ -45,33 +45,8 @@ _ IP 地址依赖项适用于非 HTTP/S 流量（TCP 和 UDP 流量）
 * 在极少数情况下，如果存在维护操作，则 API 服务器 IP 可能更改。 始终会提前传达可以更改 API 服务器 IP 的计划内维护操作。
 
 <!--FOLLOW GLOABLE DOCUMENT UPDATE CAREFULLY-->
-
-### <a name="azure-global-required-network-rules"></a>Azure 全球的必需网络规则
-
-必需的网络规则和 IP 地址依赖项如下：
-
-| 目标终结点                                                             | 协议 | 端口    | 用途  |
-|----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.<Region>:1194` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:1194` <br/> *Or* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | 用于节点与控制平面之间的隧道安全通信。 这不是[专用群集](private-clusters.md)所必需的|
-| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.<Region>:9000` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:9000` <br/> *Or* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | 用于节点与控制平面之间的隧道安全通信。 这不是[专用群集](private-clusters.md)所必需的 |
-| `*:123` 或 `ntp.ubuntu.com:123`（如果使用 Azure 防火墙网络规则）   | UDP      | 123     | 在 Linux 节点上进行网络时间协议 (NTP) 时间同步时需要。                 |
-| **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | 如果使用的是自定义 DNS 服务器，必须确保群集节点可以访问这些服务器。 |
-| **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | 运行访问 API 服务器的 Pod/部署时需要，这些 Pod/部署将使用 API IP。 这不是[专用群集](private-clusters.md)所必需的  |
-
-### <a name="azure-global-required-fqdn--application-rules"></a>Azure 全球的必需 FQDN/应用程序规则 
-
-必须具有以下 FQDN/应用程序规则：
-
-| 目标 FQDN                 | 端口            | 用途      |
-|----------------------------------|-----------------|----------|
-| **`*.hcp.<location>.azmk8s.io`** | **`HTTPS:443`** | Node <-> API 服务器通信时需要。 将 \<location\> 替换为部署 AKS 群集的区域。 |
-| **`mcr.microsoft.com`**          | **`HTTPS:443`** | 访问 Microsoft 容器注册表 (MCR) 中的映像时需要。 此注册表包含第一方映像/图表（例如 coreDNS 等）。 这些映像是正确创建和正常运行群集所必需的，包括缩放和升级操作。  |
-| **`*.data.mcr.microsoft.com`**   | **`HTTPS:443`** | 对于 Azure 内容分发网络 (CDN) 支持的 MCR 存储是必需的。 |
-| **`management.azure.com`**       | **`HTTPS:443`** | 对于针对 Azure API 的 Kubernetes 操作是必需的。 |
-| **`login.microsoftonline.com`**  | **`HTTPS:443`** | 对于 Azure Active Directory 身份验证是必需的。 |
-| **`packages.microsoft.com`**     | **`HTTPS:443`** | Microsoft 包存储库使用此地址缓存 apt-get 操作。  示例包包括 Moby、PowerShell 和 Azure CLI。 |
-| **`acs-mirror.azureedge.net`**   | **`HTTPS:443`** | 此地址用于下载和安装所需二进制文件（如 kubenet 和 Azure CNI）所需的存储库。 |
-
+<!--Not Available on ### Azure Global required network rules-->
+<!--Not Available on ### Azure Global required FQDN / application rules-->
 <!--FOLLOW GLOABLE DOCUMENT UPDATE CAREFULLY-->
 <!--FOLLOW CHINA 21Vianet DOCUMENT UPDATE CAREFULLY-->
 
@@ -96,43 +71,19 @@ _ IP 地址依赖项适用于非 HTTP/S 流量（TCP 和 UDP 流量）
 |------------------------------------------------|-----------------|----------|
 | **`*.hcp.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | Node <-> API 服务器通信时需要。 将 \<location\> 替换为部署 AKS 群集的区域。 |
 | **`*.tun.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | Node <-> API 服务器通信时需要。 将 \<location\> 替换为部署 AKS 群集的区域。 |
-| **`mcr.microsoft.com`**                        | **`HTTPS:443`** | 访问 Microsoft 容器注册表 (MCR) 中的映像时需要。 此注册表包含第一方映像/图表（例如 coreDNS 等）。 这些映像是正确创建和正常运行群集所必需的，包括缩放和升级操作。 |
-| **`.data.mcr.microsoft.com`**                  | **`HTTPS:443`** | 对于 Azure 内容分发网络 (CDN) 支持的 MCR 存储是必需的。 |
-| **`management.chinacloudapi.cn`**              | **`HTTPS:443`** | 对于针对 Azure API 的 Kubernetes 操作是必需的。 |
-| **`login.chinacloudapi.cn`**                   | **`HTTPS:443`** | 对于 Azure Active Directory 身份验证是必需的。 |
-| **`packages.microsoft.com`**                   | **`HTTPS:443`** | Microsoft 包存储库使用此地址缓存 apt-get 操作。  示例包包括 Moby、PowerShell 和 Azure CLI。 |
-| **`*.azk8s.cn`**                               | **`HTTPS:443`** | 此地址用于下载和安装所需二进制文件（如 kubenet 和 Azure CNI）所需的存储库。 |
+| **`mcr.microsoft.com`** | **`HTTPS:443`** | 访问 Microsoft 容器注册表 (MCR) 中的映像时需要。 此注册表包含第一方映像/图表（例如 coreDNS 等）。 这些映像是正确创建和正常运行群集所必需的，包括缩放和升级操作。 |
+| **`.data.mcr.microsoft.com`** | **`HTTPS:443`** | 对于 Azure 内容分发网络 (CDN) 支持的 MCR 存储是必需的。 |
+| **`management.chinacloudapi.cn`** | **`HTTPS:443`** | 对于针对 Azure API 的 Kubernetes 操作是必需的。 |
+| **`login.chinacloudapi.cn`** | **`HTTPS:443`** | 对于 Azure Active Directory 身份验证是必需的。 |
+| **`packages.microsoft.com`** | **`HTTPS:443`** | Microsoft 包存储库使用此地址缓存 apt-get 操作。  示例包包括 Moby、PowerShell 和 Azure CLI。 |
+| **`*.azk8s.cn`** | **`HTTPS:443`** | 此地址用于下载和安装所需二进制文件（如 kubenet 和 Azure CNI）所需的存储库。 |
 
 <!--FOLLOW CHINA 21Vianet DOCUMENT UPDATE CAREFULLY-->
 
 <!--FOLLOW US Government DOCUMENT UPDATE CAREFULLY-->
 
-### <a name="azure-us-government-required-network-rules"></a>Azure 美国政府的必需网络规则
-
-必需的网络规则和 IP 地址依赖项如下：
-
-| 目标终结点                                                             | 协议 | 端口    | 用途  |
-|----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.<Region>:1194` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:1194` <br/> *Or* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | 用于节点与控制平面之间的隧道安全通信。 |
-| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - `AzureCloud.<Region>:9000` <br/> *Or* <br/> [区域 CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - `RegionCIDRs:9000` <br/> *Or* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | 用于节点与控制平面之间的隧道安全通信。 |
-| `*:123` 或 `ntp.ubuntu.com:123`（如果使用 Azure 防火墙网络规则）   | UDP      | 123     | 在 Linux 节点上进行网络时间协议 (NTP) 时间同步时需要。                 |
-| **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | 如果使用的是自定义 DNS 服务器，必须确保群集节点可以访问这些服务器。 |
-| **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | 运行访问 API 服务器的 Pod/部署时需要，这些 Pod/部署将使用 API IP。  |
-
-### <a name="azure-us-government-required-fqdn--application-rules"></a>Azure 美国政府的必需 FQDN/应用程序规则 
-
-必须具有以下 FQDN/应用程序规则：
-
-| 目标 FQDN                                        | 端口            | 用途      |
-|---------------------------------------------------------|-----------------|----------|
-| **`*.hcp.<location>.cx.aks.containerservice.azure.us`** | **`HTTPS:443`** | Node <-> API 服务器通信时需要。 将 \<location\> 替换为部署 AKS 群集的区域。|
-| **`mcr.microsoft.com`**                                 | **`HTTPS:443`** | 访问 Microsoft 容器注册表 (MCR) 中的映像时需要。 此注册表包含第一方映像/图表（例如 coreDNS 等）。 这些映像是正确创建和正常运行群集所必需的，包括缩放和升级操作。 |
-| **`*.data.mcr.microsoft.com`**                          | **`HTTPS:443`** | 对于 Azure 内容分发网络 (CDN) 支持的 MCR 存储是必需的。 |
-| **`management.usgovcloudapi.net`**                      | **`HTTPS:443`** | 对于针对 Azure API 的 Kubernetes 操作是必需的。 |
-| **`login.microsoftonline.us`**                          | **`HTTPS:443`** | 对于 Azure Active Directory 身份验证是必需的。 |
-| **`packages.microsoft.com`**                            | **`HTTPS:443`** | Microsoft 包存储库使用此地址缓存 apt-get 操作。  示例包包括 Moby、PowerShell 和 Azure CLI。 |
-| **`acs-mirror.azureedge.net`**                          | **`HTTPS:443`** | 此地址用于安装所需二进制文件（如 kubenet 和 Azure CNI）所需的存储库。 |
-
+<!--Not Available on ### Azure US Government required network rules-->
+<!--Not Available on ### Azure US Government required FQDN / application rules-->
 <!--FOLLOW US Government DOCUMENT UPDATE CAREFULLY-->
 
 ## <a name="optional-recommended-fqdn--application-rules-for-aks-clusters"></a>适用于 AKS 群集的可选的推荐 FQDN/应用程序规则
@@ -141,7 +92,7 @@ _ IP 地址依赖项适用于非 HTTP/S 流量（TCP 和 UDP 流量）
 
 | 目标 FQDN                                                               | 端口          | 用途      |
 |--------------------------------------------------------------------------------|---------------|----------|
-| **`security.ubuntu.com`、`azure.archive.ubuntu.com`、`changelogs.ubuntu.com`** | **`HTTP:80`** | 此地址允许 Linux 群集节点下载必需的安全修补程序和更新。 |
+| **`security.ubuntu.com`, `azure.archive.ubuntu.com`, `changelogs.ubuntu.com`** | **`HTTP:80`** | 此地址允许 Linux 群集节点下载必需的安全修补程序和更新。 |
 
 如果选择阻止/不允许这些 FQDN，则仅当进行[节点映像升级](node-image-upgrade.md)或[群集升级](upgrade-cluster.md)时，节点才会接收 OS 更新。
 
@@ -155,9 +106,9 @@ _ IP 地址依赖项适用于非 HTTP/S 流量（TCP 和 UDP 流量）
 
 | 目标 FQDN                        | 端口      | 用途      |
 |-----------------------------------------|-----------|----------|
-| **`nvidia.github.io`**                  | **`HTTPS:443`** | 此地址用于在基于 GPU 的节点上进行正确的驱动程序安装和操作。 |
-| **`us.download.nvidia.com`**            | **`HTTPS:443`** | 此地址用于在基于 GPU 的节点上进行正确的驱动程序安装和操作。 |
-| **`apt.dockerproject.org`**             | **`HTTPS:443`** | 此地址用于在基于 GPU 的节点上进行正确的驱动程序安装和操作。 |
+| **`nvidia.github.io`** | **`HTTPS:443`** | 此地址用于在基于 GPU 的节点上进行正确的驱动程序安装和操作。 |
+| **`us.download.nvidia.com`** | **`HTTPS:443`** | 此地址用于在基于 GPU 的节点上进行正确的驱动程序安装和操作。 |
+| **`apt.dockerproject.org`** | **`HTTPS:443`** | 此地址用于在基于 GPU 的节点上进行正确的驱动程序安装和操作。 |
 
 ## <a name="windows-server-based-node-pools"></a>基于 Windows Server 的节点池 
 
@@ -167,8 +118,8 @@ _ IP 地址依赖项适用于非 HTTP/S 流量（TCP 和 UDP 流量）
 
 | 目标 FQDN                                                           | 端口      | 用途      |
 |----------------------------------------------------------------------------|-----------|----------|
-| **`onegetcdn.azureedge.net, go.microsoft.com`**                            | **`HTTPS:443`** | 安装与 windows 相关的二进制文件 |
-| **`*.mp.microsoft.com, www.msftconnecttest.com, ctldl.windowsupdate.com`** | **`HTTP:80`**   | 安装与 windows 相关的二进制文件 |
+| **`onegetcdn.azureedge.net, go.microsoft.com`** | **`HTTPS:443`** | 安装与 windows 相关的二进制文件 |
+| **`*.mp.microsoft.com, www.msftconnecttest.com, ctldl.windowsupdate.com`** | **`HTTP:80`** | 安装与 windows 相关的二进制文件 |
 
 ## <a name="aks-addons-and-integrations"></a>AKS 加载项和集成
 
@@ -197,7 +148,9 @@ _ IP 地址依赖项适用于非 HTTP/S 流量（TCP 和 UDP 流量）
 
 ### <a name="azure-dev-spaces"></a>Azure Dev Spaces
 
-更新防火墙或安全配置，以允许去到/来自以下所有 FQDN 和 [Azure Dev Spaces 基础结构服务][dev-spaces-service-tags] 的网络流量。
+更新防火墙或安全配置，以允许去到/来自以下所有 FQDN 和 Azure Dev Spaces 基础结构服务的网络流量。
+
+<!--Not Available on [Azure Dev Spaces infrastructure services][dev-spaces-service-tags]-->
 
 #### <a name="required-network-rules"></a>必需的网络规则
 
@@ -758,7 +711,7 @@ voting-storage     ClusterIP      10.41.221.201   <none>        3306/TCP       9
 
 运行以下内容来获取服务 IP：
 ```bash
-SERVICE_IP=$(k get svc voting-app -o jsonpath='{.status.loadBalancer.ingress[*].ip}')
+SERVICE_IP=$(kubectl get svc voting-app -o jsonpath='{.status.loadBalancer.ingress[*].ip}')
 ```
 
 运行以下内容来添加 NAT 规则：
@@ -804,6 +757,6 @@ az group delete -g $RG
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
 
-<!--Not Avaiable on [dev-spaces-service-tags]: ../dev-spaces/configure-networking.md#virtual-network-or-subnet-configurations-->
+<!--NOT AVAILABLE ON [dev-spaces-service-tags]: ../dev-spaces/configure-networking.md#virtual-network-or-subnet-configurations-->
 
 <!-- Update_Description: update meta properties, wording update, update link -->

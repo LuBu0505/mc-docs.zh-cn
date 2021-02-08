@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 06/03/2020
 title: 2019 年 12 月 - Azure Databricks
 description: 新 Azure Databricks 功能和改进的 2019 年 12 月发行说明。
-ms.openlocfilehash: 7d957690b740530302d7ad4916e5514a230e61b6
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 52a272aba7f1fbc311cf62ca3ae8226d8d47d372
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329229"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058741"
 ---
 # <a name="december-2019"></a>2019 年 12 月
 
@@ -39,7 +39,7 @@ Databricks 容器服务已在 Databricks Runtime 6.1 和 Azure Databricks 平台
 * 黄金容器环境 - 你的 Docker 映像是锁定的环境，永远不会更改
 * Docker CI/CD 集成 - 可以将 Azure Databricks 与 Docker CI/CD 管道集成
 
-还有许多其他用例，涵盖从“指定配置”到“安装机器学习包”等多种方案。
+还有许多其他用例，涵盖从“指定配置”到“安装机器学习包”等许多方面。
 
 有关详细信息，请参阅[使用 Databricks 容器服务自定义容器](../../../clusters/custom-containers.md#containers)。
 
@@ -84,7 +84,7 @@ Databricks Runtime 6.2 ML 的正式发布引入了许多库升级，其中包括
 * Hyperopt：0.2-db1 与 Azure Databricks MLflow 集成。
 * mleap-databricks-runtime 到 0.15.0，包括 mleap-xgboost-runtime。
 
-有关详细信息，请参阅完整的 [Databricks Runtime 6.2 ML（不受支持）](../../runtime/6.2ml.md)发行说明。
+有关详细信息，请参阅完整的[用于机器学习的 Databricks Runtime 6.2（不受支持）](../../runtime/6.2ml.md)发行说明。
 
 ## <a name="databricks-runtime-62-ga"></a>Databricks Runtime 6.2 正式版
 

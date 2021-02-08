@@ -1,33 +1,167 @@
 ---
-title: Azure 服务总线管理库 | Azure
-description: 本文介绍如何使用 Azure 服务总线管理库动态预配服务总线命名空间和实体。
+title: 以编程方式创建 Azure 服务总线实体 | Azure Docs
+description: 本文介绍如何以动态或编程方式预配服务总线命名空间和实体。
 ms.devlang: dotnet
+ms.service: service-bus-messaging
 ms.topic: article
-origin.date: 06/23/2020
-ms.date: 08/31/2020
+origin.date: 01/13/2021
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 07/20/2020
 ms.author: v-yeche
 author: rockboyfor
-ms.openlocfilehash: f083eccb43d6f5767237da1c783bffee3d9bbaaa
-ms.sourcegitcommit: b5ea35dcd86ff81a003ac9a7a2c6f373204d111d
+ms.openlocfilehash: ff7b6c471ee15eb41f1d2e1d243083af01d681fd
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88947064"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059578"
 ---
-# <a name="service-bus-management-libraries"></a>服务总线管理库
-
+# <a name="dynamically-provision-service-bus-namespaces-and-entities"></a>动态预配服务总线命名空间和实体 
 Azure 服务总线管理库可以动态预配服务总线命名空间和实体。 这样可以实现复杂的部署和消息方案，并能以编程方式确定要预配的实体。 这些库目前可用于 .NET。
 
-## <a name="supported-functionality"></a>受支持的功能
+## <a name="overview"></a>概述
+目前有 3 个管理库可用于创建和管理服务总线实体。 它们是：
 
-* 创建、更新、删除命名空间
-* 创建、更新、删除队列
-* 创建、更新、删除主题
-* 创建、更新、删除订阅
+- [Azure.Messaging.ServiceBus.Administration](#azuremessagingservicebusadministration)
+- [Microsoft.Azure.ServiceBus.Management](#microsoftazureservicebusmanagement)
+- [Microsoft.Azure.Management.ServiceBus](#microsoftazuremanagementservicebus)
 
-## <a name="prerequisites"></a>先决条件
+这些包都支持对队列、主题和订阅执行创建、获取、列出、删除和更新操作。 但只有 [Microsoft.Azure.Management.ServiceBus](#microsoftazuremanagementservicebus) 支持对命名空间执行创建、更新、列出、获取和删除操作，这会列出和重新生成 SAS 密钥等。 
+
+Microsoft.Azure.Management.ServiceBus 库仅支持 Azure Active Directory (Azure AD) 身份验证，不支持使用连接字符串。 其他两个库（Azure.Messaging.ServiceBus 和 Microsoft.Azure.ServiceBus）支持使用连接字符串对服务进行身份验证，而且更易于使用。 在这些库中，Azure.Messaging.ServiceBus 是最新的，建议使用该库。
+
+以下各部分更详细地介绍了这些库。 
+
+## <a name="azuremessagingservicebusadministration"></a>Azure.Messaging.ServiceBus.Administration
+可使用 [Azure.Messaging.ServiceBus.Administration](https://docs.azure.cn/dotnet/api/azure.messaging.servicebus.administration) 命名空间中的 [ServiceBusAdministrationClient](https://docs.azure.cn/dotnet/api/azure.messaging.servicebus.administration.servicebusadministrationclient) 类来管理命名空间、队列、主题和订阅。 下面是示例代码。 如需查看完整示例，请参阅 [CRUD 示例](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/tests/Samples/Sample07_CrudOperations.cs)。
+
+```csharp
+using System;
+using System.Threading.Tasks;
+
+using Azure.Messaging.ServiceBus.Administration;
+
+namespace adminClientTrack2
+{
+    class Program
+    {
+        public static void Main()
+        {
+            MainAsync().GetAwaiter().GetResult();
+        }
+
+        private static async Task MainAsync()
+        {
+            string connectionString = "SERVICE BUS NAMESPACE CONNECTION STRING";
+            string QueueName = "QUEUE NAME";
+            string TopicName = "TOPIC NAME";
+            string SubscriptionName = "SUBSCRIPTION NAME";
+
+            var adminClient = new ServiceBusAdministrationClient(connectionString);
+            bool queueExists = await adminClient.QueueExistsAsync(QueueName);
+            if (!queueExists)
+            {
+                var options = new CreateQueueOptions(QueueName)
+                {
+                    MaxDeliveryCount = 3                    
+                };
+                await adminClient.CreateQueueAsync(options);
+            }
+
+
+            bool topicExists = await adminClient.TopicExistsAsync(TopicName);
+            if (!topicExists)
+            {
+                var options = new CreateTopicOptions(TopicName)
+                {
+                    MaxSizeInMegabytes = 1024
+                };
+                await adminClient.CreateTopicAsync(options);
+            }
+
+            bool subscriptionExists = await adminClient.SubscriptionExistsAsync(TopicName, SubscriptionName);
+            if (!subscriptionExists)
+            {
+                var options = new CreateSubscriptionOptions(TopicName, SubscriptionName)
+                {
+                    DefaultMessageTimeToLive = new TimeSpan(2, 0, 0, 0)
+                };
+                await adminClient.CreateSubscriptionAsync(options);
+            }
+        }
+    }
+}
+
+```
+
+
+## <a name="microsoftazureservicebusmanagement"></a>Microsoft.Azure.ServiceBus.Management 
+可使用 [Microsoft.Azure.ServiceBus.Management](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management) 命名空间中的 [ManagementClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.managementclient) 类来管理命名空间、队列、主题和订阅。 下面是示例代码： 
+
+> [!NOTE]
+> 建议使用 `Azure.Messaging.ServiceBus.Administration` 库中的 `ServiceBusAdministrationClient` 类，这是最新的 SDK。 有关详细信息，请参阅[第一部分](#azuremessagingservicebusadministration)。 
+
+```csharp
+using System;
+using System.Threading.Tasks;
+
+using Microsoft.Azure.ServiceBus.Management;
+
+namespace SBusManagementClient
+{
+    class Program
+    {
+        public static void Main()
+        {
+            MainAsync().GetAwaiter().GetResult();
+        }
+
+        private static async Task MainAsync()
+        {
+            string connectionString = "SERVICE BUS NAMESPACE CONNECTION STRING";
+            string QueueName = "QUEUE NAME";
+            string TopicName = "TOPIC NAME";
+            string SubscriptionName = "SUBSCRIPTION NAME";
+
+            var managementClient = new ManagementClient(connectionString);
+            bool queueExists = await managementClient.QueueExistsAsync(QueueName);
+            if (!queueExists)
+            {
+                QueueDescription qd = new QueueDescription(QueueName);
+                qd.MaxSizeInMB = 1024;
+                qd.MaxDeliveryCount = 3;
+                await managementClient.CreateQueueAsync(qd);
+            }
+
+
+            bool topicExists = await managementClient.TopicExistsAsync(TopicName);
+            if (!topicExists)
+            {
+                TopicDescription td = new TopicDescription(TopicName);
+                td.MaxSizeInMB = 1024;
+                td.DefaultMessageTimeToLive = new TimeSpan(2, 0, 0, 0);
+                await managementClient.CreateTopicAsync(td);
+            }
+
+            bool subscriptionExists = await managementClient.SubscriptionExistsAsync(TopicName, SubscriptionName);
+            if (!subscriptionExists)
+            {
+                SubscriptionDescription sd = new SubscriptionDescription(TopicName, SubscriptionName);
+                sd.DefaultMessageTimeToLive = new TimeSpan(2, 0, 0, 0);
+                sd.MaxDeliveryCount = 3;
+                await managementClient.CreateSubscriptionAsync(sd);
+            }
+        }
+    }
+}
+```
+
+
+## <a name="microsoftazuremanagementservicebus"></a>Microsoft.Azure.Management.ServiceBus 
+此库是基于 Azure 资源管理器的控制平面 SDK 的一部分。 
+
+### <a name="prerequisites"></a>先决条件
 
 若要开始使用服务总线管理库，必须使用 Azure Active Directory (Azure AD) 服务进行身份验证。 Azure AD 要求身份验证为服务主体，并且该主体提供对 Azure 资源的访问权限。 有关创建服务主体的信息，请参阅以下文章之一：  
 

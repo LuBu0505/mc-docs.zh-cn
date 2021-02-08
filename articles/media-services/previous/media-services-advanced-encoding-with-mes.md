@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/14/2019
-ms.date: 09/28/2020
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4cc4e187a5db943231f9cee05442fbdbddd820ef
-ms.sourcegitcommit: 7ad3bfc931ef1be197b8de2c061443be1cf732ef
+ms.openlocfilehash: a31d8e5b424bcba0cace963524977bea8b771f5c
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91245559"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059150"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>通过自定义 MES 预设执行高级编码
 
@@ -34,7 +34,7 @@ ms.locfileid: "91245559"
 如果使用的是 XML 预设，请务必保留元素顺序，如下面的 XML 示例所示（例如，KeyFrameInterval 应在 SceneChangeDetection 前面）。
 
 > [!NOTE] 
-> Media Encoder Standard 的许多高级媒体服务 v2 功能目前在 v3 中不可用。 有关详细信息，请参阅[功能差距](../latest/media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis)。
+> Media Encoder Standard 的许多高级媒体服务 v2 功能目前在 v3 中不可用。 有关详细信息，请参阅[迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)。
 
 ## <a name="support-for-relative-sizes"></a>支持相对大小
 
@@ -265,7 +265,7 @@ ms.locfileid: "91245559"
 ## <a name="trim-a-video-clipping"></a><a id="trim_video"></a>剪裁视频（剪切）
 本部分说明如何修改编码器预设，以裁剪或修剪其输入为所谓的夹层文件或按需文件的输入视频。 也可以使用编码器来剪切或剪裁从实时流捕获或存档的资产 - [此博客](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)提供了详细信息。
 
-若要裁剪视频，可以使用[此部分](media-services-mes-presets-overview.md)所述的任何 MES 预设，并修改 **Sources** 元素（如下所示）。 StartTime 的值需与输入视频的绝对时间戳匹配。 例如，如果输入视频第一帧的时间戳为 12:00:10.000，则 StartTime 应大于或等于 12:00:10.000。 在以下示例中，假设输入视频的起始时间戳为零。 **Sources** 应位于预设的开始处。
+若要裁剪视频，可以使用 [此部分](media-services-mes-presets-overview.md)所述的任何 MES 预设，并修改 **Sources** 元素（如下所示）。 StartTime 的值需与输入视频的绝对时间戳匹配。 例如，如果输入视频第一帧的时间戳为 12:00:10.000，则 StartTime 应大于或等于 12:00:10.000。 在以下示例中，假设输入视频的起始时间戳为零。 **Sources** 应位于预设的开始处。
 
 ### <a name="json-preset"></a><a id="json"></a>JSON 预设
 
@@ -390,7 +390,7 @@ ms.locfileid: "91245559"
 ```
 
 ### <a name="xml-preset"></a>XML 预设
-若要剪裁视频，可以使用[此处](media-services-mes-presets-overview.md)所述的任何 MES 预设，并修改 **Sources** 元素（如下所示）。
+若要剪裁视频，可以使用 [此处](media-services-mes-presets-overview.md)所述的任何 MES 预设，并修改 **Sources** 元素（如下所示）。
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>
@@ -513,7 +513,7 @@ ms.locfileid: "91245559"
 
 Media Encoder Standard 允许在现有视频上覆盖图像。 目前支持以下格式：png、jpg、gif 和 bmp。 下面定义的预设是视频覆盖层的基本示例。
 
-除了定义预设文件外，还必须让媒体服务知道资产中的哪个文件是覆盖层图像，哪个文件是你要在其上覆盖图像的源视频。 视频文件必须是**主**文件。
+除了定义预设文件外，还必须让媒体服务知道资产中的哪个文件是覆盖层图像，哪个文件是你要在其上覆盖图像的源视频。 视频文件必须是 **主** 文件。
 
 如果使用 .NET，请将以下两个函数添加到[此主题](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet)中定义的 .NET 示例。 **UploadMediaFilesFromFolder** 函数从文件夹上传文件（例如 BigBuckBunny.mp4 和 Image001.png），并将 mp4 文件设置为资产中的主文件。 **EncodeWithOverlay** 函数使用传递给它的自定义预设文件（例如，下面的预设）来创建编码任务。
 
@@ -1054,7 +1054,7 @@ job.GetExecutionProgressTask(CancellationToken.None).Wait();
 ```
 
 ## <a name="rotate-a-video"></a><a id="rotate_video"></a>旋转视频
-[Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) 支持旋转 0/90/180/270 度。 默认行为是“自动”，即尝试在传入的视频文件中检测旋转元数据并对其进行补偿。 将以下 **Sources** 元素包含在[此部分](media-services-mes-presets-overview.md)定义的其中一个预设中：
+[Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) 支持旋转 0/90/180/270 度。 默认行为是“自动”，即尝试在传入的视频文件中检测旋转元数据并对其进行补偿。 将以下 **Sources** 元素包含在 [此部分](media-services-mes-presets-overview.md)定义的其中一个预设中：
 
 ### <a name="json-preset"></a>JSON 预设
 

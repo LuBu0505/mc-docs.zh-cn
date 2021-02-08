@@ -4,14 +4,14 @@ description: 本文介绍 Azure 备份服务如何备份 Azure 虚拟机，以�
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 09/13/2019
-ms.date: 01/07/2021
+ms.date: 01/21/2021
 ms.author: v-johya
-ms.openlocfilehash: eecc65cacfff37e8351934471b814c37cf450cf0
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 08f3b591aaa29f316d46247ba4ecb328b3285a2e
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022013"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751367"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>概要了解 Azure VM 备份
 
@@ -124,6 +124,7 @@ Azure 备份根据备份计划创建快照。
 - 如果从单个保管库还原 VM，强烈建议你使用不同的[常规用途 v2 存储帐户](../storage/common/storage-account-upgrade.md)，以确保目标存储帐户不会受到限制。 例如，每个 VM 必须具有不同的存储帐户。 例如，如果还原 10 个 VM，请使用 10 个不同的存储帐户。
 - 若要通过“即时还原”对使用高级存储的 VM 进行备份，建议从总的已分配存储空间中分配 50% 的可用空间，这只在首次备份时是必需的。 首次备份完成后，50% 的可用空间不再是备份的要求
 - 每个存储帐户的磁盘数量限制与在基础结构即服务 (IaaS) VM 上运行的应用程序访问磁盘的频率有关。 通常情况下，如果单个存储帐户上存在 5 至 10 个或以上磁盘，则通过将一些磁盘移动到单独的存储帐户以均衡负载。
+- 若要使用 PowerShell 还原具有托管磁盘的 VM，请提供附加参数 *TargetResourceGroupName 指定要将托管磁盘还原到的资源组，[请在此处了解更多信息](/backup/backup-azure-vms-automation#restore-managed-disks)。
 
 ## <a name="backup-costs"></a>备份成本
 

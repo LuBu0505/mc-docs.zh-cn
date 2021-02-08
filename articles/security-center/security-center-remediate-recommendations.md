@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 安全中心修正建议 | Azure
-description: 本文介绍如何在 Azure 安全中心修正建议，以保护资源并遵守安全策略。
+description: 本文介绍如何在 Azure 安全中心响应建议，以保护资源并符合安全策略。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/03/2020
+ms.date: 01/20/2021
 ms.author: v-johya
 origin.date: 11/04/2019
-ms.openlocfilehash: 3bcb75948cf6a3d63c8ec7a456ac5bf5a8e09f0e
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 3245b46ef3bdbb08280a26c534806c0d20023d75
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746646"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751320"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>在 Azure 安全中心修正建议
 
@@ -27,41 +27,41 @@ ms.locfileid: "96746646"
 
 ## <a name="remediation-steps"></a>修正步骤<a name="remediation-steps"></a>
 
-在查看完所有建议后，决定先修正哪一建议。 建议使用[安全分数影响](security-center-recommendations.md#monitor-recommendations)来帮助确定首先要执行的操作。
+在查看完所有建议后，决定先修正哪一建议。 我们建议你优先考虑最有可能增加安全功能分数的安全控制措施。
 
-1. 从列表中单击建议。
+1. 从列表中选择一条建议。
 
 1. 按照“修正步骤”部分中的说明进行操作。 每个建议都有其自己的一组指令。 以下屏幕截图显示了一些修正步骤，这些步骤用于将应用程序配置为仅允许通过 HTTPS 传输的流量。
 
-    ![建议详细信息](./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png)
+    :::image type="content" source="./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png" alt-text="建议的手动修正步骤" lightbox="./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png":::
 
-1. 完成后，将显示一条通知，告知你修正是否成功。
+1. 完成后，将显示一条通知，告知你问题是否已解决。
 
-## <a name="quick-fix-remediation"></a>“快速修复”修正<a name="one-click"></a>
+## <a name="quick-fix-remediation"></a>快速修复修正
 
-快速修复可简化修正，使你能够快速增加安全分数，提高环境的安全性。
+为了简化修正并提高环境的安全性（并增加安全功能分数），许多建议都包括一个快速修复选项。
 
-快速修复使你能够针对多个资源快速修正某个建议。 
+快速修复可帮助你针对多个资源快速修正某个建议。
 
 > [!TIP]
-> 快速修复仅可用于特定的建议。 若要查找具有快速修复选项的建议，请使用建议列表顶部的专用筛选器：
+> 快速修复解决方案仅可用于特定的建议。 若要查找具有可用快速修复的建议，请对建议列表使用“响应操作”筛选器：
 > 
 > :::image type="content" source="media/security-center-remediate-recommendations/quick-fix-filter.png" alt-text="使用建议列表上方的筛选器查找具有快速修复选项的建议":::
 
-若要实现“快速修复”修正，请执行以下操作：
+若要实现“快速修复”解决方案，请执行以下操作：
 
-1. 在带有“快速修复!”标签的建议的列表中， 单击建议。
+1. 在带有“快速修复!”标签的建议的列表中， 选择一条建议。
 
-    [![选择“快速修复!”](./media/security-center-remediate-recommendations/security-center-one-click-fix-select.png)](./media/security-center-remediate-recommendations/security-center-one-click-fix-select.png#lightbox)
+    [![选择“快速修复!”](./media/security-center-remediate-recommendations/security-center-quick-fix-select.png)](./media/security-center-remediate-recommendations/security-center-quick-fix-select.png#lightbox)
 
-1. 从“不正常的资源”选项卡上，选择要对其实施建议的资源，然后单击“修正”。
+1. 从“不正常的资源”选项卡上，选择要对其实施建议的资源，然后选择“修正”。
 
     > [!NOTE]
     > 列出的某些资源可能已禁用，因为你没有相应的权限，无法修改它们。
 
 1. 在确认框中，阅读修正详细信息和影响。
 
-    ![快速修复](./media/security-center-remediate-recommendations/security-center-one-click-fix-view.png)
+    ![快速修复](./media/security-center-remediate-recommendations/security-center-quick-fix-view.png)
 
     > [!NOTE]
     > 影响在单击“修正”后打开的“修正资源”窗口的灰色框中列出。 其中列出了在继续进行“快速修复”修正时会发生哪些更改。
@@ -80,7 +80,7 @@ ms.locfileid: "96746646"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文档中，已向你介绍了如何在安全中心修正建议。 若要了解有关安全中心的详细信息，请参阅以下主题：
+在本文档中，已向你介绍了如何在安全中心修正建议。 若要了解有关安全中心的详细信息，请参阅以下页面：
 
 * [在 Azure 安全中心设置安全策略](tutorial-security-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
 * [Azure 安全中心的安全运行状况监视](security-center-monitoring.md) - 了解如何监视 Azure 资源的运行状况。

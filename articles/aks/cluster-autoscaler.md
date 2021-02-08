@@ -5,16 +5,16 @@ services: container-service
 ms.topic: article
 origin.date: 07/18/2019
 author: rockboyfor
-ms.date: 11/30/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 07/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7bc4307435590719b0efec2f4b8e0a66cd4e8642
-ms.sourcegitcommit: ea52237124974eda84f8cef4bf067ae978d7a87d
+ms.openlocfilehash: ffd66683e250aa72e7fb8ac22d399461db853f33
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024618"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063599"
 ---
 <!--Verified successfully-->
 <!--PG team have confirm the issue have been fixed-->
@@ -137,14 +137,15 @@ az aks update \
 | scale-down-unneeded-time         | 在节点符合纵向缩减的条件之前应有多长时间不需要它                  | 10 分钟    |
 | scale-down-unready-time          | 在未准备就绪的节点符合纵向缩减的条件之前应有多长时间不需要它         | 20 分钟    |
 | scale-down-utilization-threshold | 节点利用率级别，定义为所请求资源的总和除以容量，低于计算结果的节点可被视为符合纵向缩减的条件 | 0.5 |
-| max-graceful-termination-sec     | 群集自动缩放程序在尝试纵向缩减节点时等待 Pod 终止的最大秒数。 | 600 秒   |
+| max-graceful-termination-sec     | 群集自动缩放程序在尝试纵向缩减节点时等待 Pod 终止的最大秒数 | 600 秒   |
 | balance-similar-node-groups      | 检测类似节点池并在各池之间均衡节点数                 | false         |
-| 扩展器                         | 要在纵向扩展中使用的节点池[扩展器](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders)的类型。 可能的值：`most-pods`、`random`、`least-waste` | random | 
+| 扩展器                         | 要在纵向扩展中使用的节点池[扩展器](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders)的类型。 可能的值：`most-pods`、`random`、`least-waste`、`priority` | random | 
 | skip-nodes-with-local-storage    | 如果为 true，则群集自动缩放程序将永远不会删除具有包含本地存储的 Pod 的节点，例如 EmptyDir 或 HostPath | true |
 | skip-nodes-with-system-pods      | 如果为 true，则群集自动缩放程序将永远不会从 kube-system 中删除具有 Pod 的节点（DaemonSet 或 mirror Pod 除外） | true | 
-| max-empty-bulk-delete            | 可同时删除的空节点的最大数目。                      | 10 个节点      |
-| new-pod-scale-up-delay           | 对于突发/批量缩放场景，如果你希望 CA 在 kubernetes 计划程序计划所有 Pod 之后再进行操作，可以指示 CA 忽略未达到一定存在时间的计划外 Pod。                                                                                                                | 10 秒    |
-| max-total-unready-percentage     | 群集中未就绪节点的最大百分比。 超过此百分比后，CA 将暂停操作 | 45% | 
+| max-empty-bulk-delete            | 可同时删除的空节点的最大数目                       | 10 个节点      |
+| new-pod-scale-up-delay           | 对于突发/批量缩放场景，如果你希望 CA 在 kubernetes 计划程序计划所有 Pod 之后再进行操作，可以指示 CA 忽略未达到一定存在时间的计划外 Pod。                                                                                                                | 0 秒    |
+| max-total-unready-percentage     | 群集中未就绪节点的最大百分比。 超过此百分比后，CA 将暂停操作 | 45% |
+| max-node-provision-time          | 自动缩放程序等待节点预配的最长时间                           | 15 分钟    |   
 | ok-total-unready-count           | 允许的未就绪节点数，与 max-total-unready-percentage 无关            | 3 个节点       |
 
 > [!IMPORTANT]
@@ -313,4 +314,4 @@ az aks nodepool update \
 [autoscaler-parameters]: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-the-parameters-to-ca
 [kubernetes-faq]: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#ca-doesnt-work-but-it-used-to-work-yesterday-why
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

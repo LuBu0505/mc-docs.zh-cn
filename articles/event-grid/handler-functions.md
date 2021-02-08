@@ -1,23 +1,23 @@
 ---
-title: Azure Functions 作为 Azure 事件网格事件的事件处理程序
-description: 介绍如何将 Azure Functions 用作事件网格事件的事件处理程序。
+title: 将 Azure 中的函数用作 Azure 事件网格事件的事件处理程序
+description: 介绍如何将在 Azure Functions 中创建并托管的函数用作事件网格事件的事件处理程序。
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 11/18/2020
-ms.openlocfilehash: bf9a159743f25dd711994c947e1511249a9b57b1
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.date: 01/18/2021
+ms.openlocfilehash: 58848691a7404714cf0fd482619c7adad355532d
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977842"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751186"
 ---
-# <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Azure Functions 作为事件网格事件的事件处理程序
+# <a name="use-a-function-as-an-event-handler-for-event-grid-events"></a>将函数用作事件网格事件的事件处理程序
 
 事件处理程序是发送事件的位置。 处理程序将通过一个操作来处理事件。 几个 Azure 服务已自动配置为处理事件，Azure Functions 就是其中之一。 
 
 
-若要使用 Azure 函数作为事件的处理程序，请遵循以下其中一种方法： 
+若要使用 Azure 中的函数作为事件的处理程序，请遵循以下一种方法： 
 
 -   使用[事件网格触发器](../azure-functions/functions-bindings-event-grid-trigger.md)。  将“Azure 函数”指定为“终结点类型” 。 然后，指定将处理事件的 Azure 函数应用和函数。 
 -   使用 [HTTP 触发器](../azure-functions/functions-bindings-http-webhook.md)。  将“Web Hook”指定为“终结点类型” 。 然后，指定将处理事件的 Azure 函数的 URL。 
@@ -27,7 +27,7 @@ ms.locfileid: "94977842"
 -   事件网格根据函数处理事件的感知速率自动调整事件传递到事件网格事件触发的函数的速率。 这种速率匹配功能可避免由于函数无法处理事件而导致的传递错误，因为函数的事件处理速率可能会随时间而改变。 若要在高吞吐量下提高效率，请在事件订阅上启用批处理。 有关详细信息，请参阅[启用批处理](#enable-batching)。
 
     > [!NOTE]
-    > 目前，在以 CloudEvents 架构传递事件时，无法为 Azure Functions 应用使用事件网格触发器。 应转而使用 HTTP 触发器。
+    > 目前，在以 CloudEvents 架构传递事件时，无法对函数应用使用事件网格触发器。 应转而使用 HTTP 触发器。
 
 ## <a name="tutorials"></a>教程
 

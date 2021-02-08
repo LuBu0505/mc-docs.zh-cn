@@ -8,14 +8,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 10/29/2020
-ms.date: 11/23/2020
+ms.date: 02/01/2021
 ms.author: v-jay
-ms.openlocfilehash: b3f3e1fa24d07d22b2189bf8f19e602dd84db6fe
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: f8dd8e6310480466659a7db6666125baf5413e50
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830311"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059190"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure 数据工厂中的 JSON 格式
 
@@ -35,7 +35,7 @@ ms.locfileid: "97830311"
 | location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。 **请在连接器文章 -> 数据集属性部分中查看详细信息**。 | 是      |
 | encodingName     | 用于读取/写入测试文件的编码类型。 <br>可用的值如下："UTF-8"、"UTF-16"、"UTF-16BE"、"UTF-32"、"UTF-32BE"、"US-ASCII"、"UTF-7"、"BIG5"、"EUC-JP"、"EUC-KR"、"GB2312"、"GB18030"、"JOHAB"、"SHIFT-JIS"、"CP875"、"CP866"、"IBM00858"、"IBM037"、"IBM273"、"IBM437"、"IBM500"、"IBM737"、"IBM775"、"IBM850"、"IBM852"、"IBM855"、"IBM857"、"IBM860"、"IBM861"、"IBM863"、"IBM864"、"IBM865"、"IBM869"、"IBM870"、"IBM01140"、"IBM01141"、"IBM01142"、"IBM01143"、"IBM01144"、"IBM01145"、"IBM01146"、"IBM01147"、"IBM01148"、"IBM01149"、"ISO-2022-JP"、"ISO-2022-KR"、"ISO-8859-1"、"ISO-8859-2"、"ISO-8859-3"、"ISO-8859-4"、"ISO-8859-5"、"ISO-8859-6"、"ISO-8859-7"、"ISO-8859-8"、"ISO-8859-9"、"ISO-8859-13"、"ISO-8859-15"、"WINDOWS-874"、"WINDOWS-1250"、"WINDOWS-1251"、"WINDOWS-1252"、"WINDOWS-1253"、"WINDOWS-1254"、"WINDOWS-1255"、"WINDOWS-1256"、"WINDOWS-1257"、"WINDOWS-1258"。| 否       |
 | compression | 用来配置文件压缩的属性组。 如果需要在活动执行期间进行压缩/解压缩，请配置此部分。 | 否 |
-| type<br/>（在 `compression` 下） | 用来读取/写入 JSON 文件的压缩编解码器。 <br>允许的值为 bzip2、gzip、deflate、ZipDeflate、TarGzip、Tar、snappy 或 lz4       。 默认设置是不压缩。<br>注意，复制活动当前不支持“snappy”和“lz4”。<br>注意，使用复制活动解压缩 ZipDeflate/TarGzip/Tar 文件并将其写入基于文件的接收器数据存储时，默认情况下文件将提取到 `<path specified in dataset>/<folder named as source compressed file>/` 文件夹，对[复制活动源](#json-as-source)使用 `preserveZipFileNameAsFolder`/`preserveCompressionFileNameAsFolder` 来控制是否以文件夹结构形式保留压缩文件名   。| 否。  |
+| type<br/>（在 `compression` 下） | 用来读取/写入 JSON 文件的压缩编解码器。 <br>允许的值为 bzip2、gzip、deflate、ZipDeflate、TarGzip、Tar、snappy 或 lz4       。 默认设置是不压缩。<br>**注意** 当前，复制活动不支持“snappy”和“lz4”，映射数据流不支持“ZipDeflate”、“TarGzip”和“Tar”。<br>注意，使用复制活动解压缩 ZipDeflate/TarGzip/Tar 文件并将其写入基于文件的接收器数据存储时，默认情况下文件将提取到 `<path specified in dataset>/<folder named as source compressed file>/` 文件夹，对[复制活动源](#json-as-source)使用 `preserveZipFileNameAsFolder`/`preserveCompressionFileNameAsFolder` 来控制是否以文件夹结构形式保留压缩文件名   。| 否。  |
 | level<br/>（在 `compression` 下） | 压缩率。 <br>允许的值为 **Optimal** 或 **Fastest**。<br>- **Fastest**：尽快完成压缩操作，不过，无法以最佳方式压缩生成的文件。<br>- **Optimal**：以最佳方式完成压缩操作，不过，需要耗费更长的时间。 有关详细信息，请参阅 [Compression Level](https://docs.microsoft.com/dotnet/api/system.io.compression.compressionlevel)（压缩级别）主题。 | 否       |
 
 下面是 Azure Blob 存储上的 JSON 数据集的示例：
@@ -93,7 +93,7 @@ ms.locfileid: "97830311"
 
 复制活动的 **\_sink\*** 节支持以下属性。
 
-| 属性      | 说明                                                  | 必需 |
+| properties      | 说明                                                  | 必需 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为 **JSONSink**。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“JSON 写入设置”表。 | 否       |
@@ -197,8 +197,184 @@ ms.locfileid: "97830311"
     ]
     ```
 
+## <a name="mapping-data-flow-properties"></a>映射数据流属性
+
+在映射数据流中，你可以在下列数据存储中以 JSON 格式进行读取和写入：[Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties)和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。
+
+### <a name="source-properties"></a>源属性
+
+下表列出了 json 源支持的属性。 你可以在“源选项”选项卡中编辑这些属性。
+
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| 通配符路径 | 将处理与通配符路径匹配的所有文件。 替代在数据集中设置的文件夹和文件路径。 | 否 | String[] | wildcardPaths |
+| 分区根路径 | 对于已分区的文件数据，你可以输入分区根路径，以便将已分区的文件夹作为列读取 | 否 | 字符串 | partitionRootPath |
+| 文件列表 | 源是否指向列出了要处理的文件的文本文件 | 否 | `true` 或 `false` | fileList |
+| 用于存储文件名的列 | 使用源文件名称和路径创建一个新列 | 否 | 字符串 | rowUrlColumn |
+| 完成后 | 在处理后删除或移动文件。 文件路径从容器根目录开始 | 否 | Delete：`true` 或 `false` <br> Move：`['<from>', '<to>']` | purgeFiles <br> moveFiles |
+| 按上次修改时间筛选 | 选择根据上次更改时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore |
+| 单个文档 | 映射数据流从每个文件中读取一个 JSON 文档 | 否 | `true` 或 `false` | singleDocument |
+| 不带引号的列名称 | 如果选择了“不带引号的列名称”，则映射数据流会读取不在引号中的 JSON 列。 | 否 | `true` 或 `false` |  unquotedColumnNames |
+| 具有注释 | 如果 JSON 数据具有 C 或 C++ 样式的注释，请选择“具有注释” | 否 | `true` 或 `false` | asComments |
+| 带单引号 | 读取不在引号中的 JSON 列 | 否 | `true` 或 `false` | singleQuoted |
+| 使用反斜杠转义 | 如果使用反斜杠对 JSON 数据中的字符进行转义，请选择“使用反斜杠转义” | 否 | `true` 或 `false` | backslashEscape |
+| 允许找不到文件 | 如果为 true，则找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
+
+### <a name="source-format-options"></a>源格式选项
+
+在数据流中使用 JSON 数据集作为源时，你可以设置五个额外的设置。 可以在“源选项”选项卡的“JSON 设置”可折叠列表下找到这些设置。 。  
+
+![JSON 设置](media/data-flow/json-settings.png "JSON 设置")
+
+#### <a name="default"></a>默认
+
+默认情况下，将使用以下格式读取 JSON 数据。
+
+```
+{ "json": "record 1" }
+{ "json": "record 2" }
+{ "json": "record 3" }
+```
+
+#### <a name="single-document"></a>单个文档
+
+如果选择了“单个文档”，则映射数据流会从每个文件中读取一个 JSON 文档。 
+
+``` json
+File1.json
+{
+    "json": "record 1"
+}
+File2.json
+{
+    "json": "record 2"
+}
+File3.json
+{
+    "json": "record 3"
+}
+```
+> [!NOTE]
+> 如果预览你的 JSON 数据时数据流引发了“corrupt_record”错误，则你的数据可能在 JSON 文件中包含单个文档。 设置“单个文档”应当能够清除该错误。
+
+#### <a name="unquoted-column-names"></a>不带引号的列名称
+
+如果选择了“不带引号的列名称”，则映射数据流会读取不在引号中的 JSON 列。 
+
+```
+{ json: "record 1" }
+{ json: "record 2" }
+{ json: "record 3" }
+```
+
+#### <a name="has-comments"></a>具有注释
+
+如果 JSON 数据具有 C 或 C++ 样式的注释，请选择“具有注释”。
+
+``` json
+{ "json": /** comment **/ "record 1" }
+{ "json": "record 2" }
+{ /** comment **/ "json": "record 3" }
+```
+
+#### <a name="single-quoted"></a>带单引号
+
+如果 JSON 字段和值使用单引号而非双引号，请选择“带单引号”。
+
+```
+{ 'json': 'record 1' }
+{ 'json': 'record 2' }
+{ 'json': 'record 3' }
+```
+
+#### <a name="backslash-escaped"></a>使用反斜杠转义
+
+如果使用反斜杠对 JSON 数据中的字符进行转义，请选择“使用反斜杠转义”。
+
+```
+{ "json": "record 1" }
+{ "json": "\} \" \' \\ \n \\n record 2" }
+{ "json": "record 3" }
+```
+
+### <a name="sink-properties"></a>接收器属性
+
+下表列出了 json 接收器支持的属性。 可以在“设置”选项卡中编辑这些属性。
+
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| 清除文件夹 | 在写入之前是否清除目标文件夹 | 否 | `true` 或 `false` | truncate |
+| 文件名选项 | 写入的数据的命名格式。 默认情况下，每个分区有一个 `part-#####-tid-<guid>` 格式的文件 | 否 | 模式：String <br> 按分区：String[] <br> 作为列中的数据：String <br> 输出到单个文件：`['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
+
+### <a name="creating-json-structures-in-a-derived-column"></a>在派生列中创建 JSON 结构
+
+你可以通过派生列表达式生成器将复杂的列添加到数据流中。 在派生列转换中，添加一个新列并通过单击蓝色框打开表达式生成器。 若要使列成为复杂列，可以手动输入 JSON 结构，或者使用 UX 以交互方式添加子列。
+
+#### <a name="using-the-expression-builder-ux"></a>使用表达式生成器 UX
+
+在输出架构侧窗格中，将鼠标指针悬停在某个列上，并单击加号图标。 选择“添加子列”，使列成为复杂类型。
+
+![添加子列](media/data-flow/derive-add-subcolumn.png "添加子列")
+
+你可以通过相同的方式添加更多的列和子列。 对于每个非复杂字段，可以在右侧的表达式编辑器中添加表达式。
+
+![添加复杂列](media/data-flow/derive-complex-column.png "添加列")
+
+#### <a name="entering-the-json-structure-manually"></a>手动输入 JSON 结构
+
+若要手动添加 JSON 结构，请添加一个新列，然后在编辑器中输入表达式。 表达式采用以下常规格式：
+
+```
+@(
+    field1=0,
+    field2=@(
+        field1=0
+    )
+)
+```
+
+如果为名为“complexColumn”的列输入了此表达式，则会将其作为以下 JSON 写入到接收器：
+
+```
+{
+    "complexColumn": {
+        "field1": 0,
+        "field2": {
+            "field1": 0
+        }
+    }
+}
+```
+
+#### <a name="sample-manual-script-for-complete-hierarchical-definition"></a>完整分层定义的示例手动脚本
+```
+@(
+    title=Title,
+    firstName=FirstName,
+    middleName=MiddleName,
+    lastName=LastName,
+    suffix=Suffix,
+    contactDetails=@(
+        email=EmailAddress,
+        phone=Phone
+    ),
+    address=@(
+        line1=AddressLine1,
+        line2=AddressLine2,
+        city=City,
+        state=StateProvince,
+        country=CountryRegion,
+        postCode=PostalCode
+    ),
+    ids=[
+        toString(CustomerID), toString(AddressID), rowguid
+    ]
+)
+```
+
 ## <a name="next-steps"></a>后续步骤
 
 - [复制活动概述](copy-activity-overview.md)
+- [映射数据流](concepts-data-flow-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 - [GetMetadata 活动](control-flow-get-metadata-activity.md)

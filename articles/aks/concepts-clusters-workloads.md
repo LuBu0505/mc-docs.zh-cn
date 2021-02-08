@@ -5,16 +5,16 @@ services: container-service
 ms.topic: conceptual
 origin.date: 06/03/2019
 author: rockboyfor
-ms.date: 11/30/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 85e03d3e8314fe8dd17434717b3f5f4b933585fa
-ms.sourcegitcommit: ea52237124974eda84f8cef4bf067ae978d7a87d
+ms.openlocfilehash: e19c279ee2bf0788e4d3e7af73b7edc2753211ca
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024410"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063598"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念
 
@@ -85,7 +85,6 @@ AKS 利用节点资源，以使节点作为群集的一部分发挥作用。 这
 若要查找节点的可分配资源，运行：
 ```kubectl
 kubectl describe node [NODE_NAME]
-
 ```
 
 为了保持节点性能和功能，AKS 在每个节点上预留资源。 随着节点资源的增加，由于需要管理的用户部署的 Pod 数量增加，资源预留也会增加。
@@ -93,22 +92,24 @@ kubectl describe node [NODE_NAME]
 >[!NOTE]
 > 使用容器见解 (OMS) 等 AKS 附加产品将消耗更多节点资源。
 
+保留两种类型的资源：
+
 - **CPU** - 预留的 CPU 取决于节点类型和群集配置，这可能会由于运行其他功能而导致可分配的 CPU 较少
 
-| 主机上的 CPU 核心数 | 1    | 2    | 4    | 8    | 16 | 32|64|
-|---|---|---|---|---|---|---|---|
-|Kube 预留 (millicore)|60|100|140|180|260|420|740|
+   | 主机上的 CPU 核心数 | 1    | 2    | 4    | 8    | 16 | 32|64|
+   |---|---|---|---|---|---|---|---|
+   |Kube 预留 (millicore)|60|100|140|180|260|420|740|
 
 - **内存** - AKS 使用的内存包含两个值的和。
 
-1. Kubelet 守护程序安装在所有 Kubernetes 代理节点上，用于管理容器的创建和停止使用。 在 AKS 上，此守护程序默认具有逐出规则 *memory.available<750Mi*，也就是说一个节点必须始终具有至少 750 Mi 的可分配内存。  主机低于该可用内存阈值时，kubelet 将终止某个正在运行的 pod，以释放主机上的内存并对其进行保护。 当可用内存下降到 750Mi 阈值以下时，会触发此操作。
+    1. Kubelet 守护程序安装在所有 Kubernetes 代理节点上，用于管理容器的创建和停止使用。 在 AKS 上，此守护程序默认具有逐出规则 *memory.available<750Mi*，也就是说一个节点必须始终具有至少 750 Mi 的可分配内存。  主机低于该可用内存阈值时，kubelet 将终止某个正在运行的 pod，以释放主机上的内存并对其进行保护。 当可用内存下降到 750Mi 阈值以下时，会触发此操作。
 
-2. 第二个值是为 kubelet 守护程序正常运行而预留（kube 预留）的内存的递减速率。
-    - 前 4 GB 内存的 25%
-    - 下一个 4 GB 内存的 20%（最多 8 GB）
-    - 下一个 8 GB 内存的 10%（最多 16 GB）
-    - 下一个 112 GB 内存的 6%（最多 128 GB）
-    - 128 GB 以上任何内存的 2%
+    2. 第二个值是为 kubelet 守护程序正常运行而预留（kube 预留）的内存的递减速率。
+        - 前 4 GB 内存的 25%
+        - 下一个 4 GB 内存的 20%（最多 8 GB）
+        - 下一个 8 GB 内存的 10%（最多 16 GB）
+        - 下一个 112 GB 内存的 6%（最多 128 GB）
+        - 128 GB 以上任何内存的 2%
 
 上述内存和 CPU 分配规则用于保持代理节点正常运行，包括一些对群集运行状况至关重要的托管系统 Pod。 这些分配规则还会使节点报告的可分配内存和 CPU 少于它不属于 Kubernetes 群集时的正常分配量。 上述资源预留无法更改。
 
@@ -244,7 +245,7 @@ Deployment 控制器使用 Kubernetes 计划程序在具有可用资源的任何
 
 有关详细信息，请参阅 [Kubernetes DaemonSet][kubernetes-daemonset]。
 
-<!--Not Available on [Virtual Nodes add-on](virtual-nodes-cli.md#enable-virtual-nodes-addon)-->
+<!--NOT AVAILABLE ON [Virtual Nodes add-on](virtual-nodes-cli.md#enable-virtual-nodes-addon)-->
 
 ## <a name="namespaces"></a>命名空间
 
@@ -297,5 +298,5 @@ Kubernetes 资源（如 Pod 和部署）以逻辑方式分组到命名空间中�
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 
-<!--Not Available on [reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md-->
+<!--NOT AVAILABLE ON [reservation-discounts]: ../cost-management-billing/reservations/save-compute-costs-reservations.md-->
 <!-- Update_Description: wording update, update link -->

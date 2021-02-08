@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 01/05/2021
+ms.date: 01/26/2021
 ms.custom: seodec18
-ms.openlocfilehash: e4cdfbc6ddb38d38c6293e58c7635f7f942221b7
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 927f1923bc0c7e2ab3ea3c32b16b0c2e117b049a
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023254"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059988"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>诊断和排查 Azure 时序见解第 2 代环境的问题
 
@@ -71,7 +71,7 @@ ms.locfileid: "98023254"
 - 可能因环境受限而发生此问题。
 
     > [!NOTE]
-    > 目前，时序见解支持的最大引入速率为 6 Mbps。
+    > 目前，时序见解支持的最大引入速率为 1 Mbps。
 
 ## <a name="problem-data-was-showing-but-now-ingestion-has-stopped"></a>问题：以前可以显示数据，但引入现已停止
 

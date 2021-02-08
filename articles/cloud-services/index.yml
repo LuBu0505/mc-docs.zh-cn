@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: tgore03
   ms.author: v-junlch
-  ms.date: 03/17/2020
-  ms.openlocfilehash: 0ffc1edcabbce46031d98728720e5172174b499c
-  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+  ms.date: 01/25/2021
+  ms.openlocfilehash: 16768d3adc73858cdfb84dcbd203dc7182eb5318
+  ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "79497409"
+  ms.lasthandoff: 01/29/2021
+  ms.locfileid: "99059883"
 landingContent:
 - title: 关于云服务
   linkLists:

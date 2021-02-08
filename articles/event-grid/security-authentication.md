@@ -4,13 +4,13 @@ description: 本文介绍在 Azure 事件网格中通过不同方式对目标为
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 08/10/2020
-ms.openlocfilehash: 09c887ea9905d7b5541f385976070a88fa9bbc76
-ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
+ms.date: 01/18/2021
+ms.openlocfilehash: 833eca47e68996072038ce9f0176618be260f1ce
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227989"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751178"
 ---
 # <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>对目标为事件处理程序的事件传递进行身份验证（Azure 事件网格）
 本文介绍如何对目标为事件处理程序的事件传递进行身份验证。 本文还介绍如何使用 Azure Active Directory (Azure AD) 或共享机密保护用于从事件网格接收事件的 Webhook 终结点。
@@ -35,7 +35,7 @@ ms.locfileid: "88227989"
 可以使用 Azure AD 保护用于从事件网格接收事件的 Webhook 终结点。 需要创建 Azure AD 应用程序，并在授权事件网格的应用程序中创建角色和服务主体，同时还需要将事件订阅配置为使用 Azure AD 应用程序。 了解如何[使用事件网格配置 Azure Active Directory](secure-webhook-delivery.md)。
 
 ### <a name="using-client-secret-as-a-query-parameter"></a>使用客户端密码作为查询参数
-还可以通过向在创建事件订阅时指定的 Webhook 目标 URL 添加查询参数来保护 Webhook 终结点。 将其中一个查询参数设置为客户端密码，如[访问令牌](https://en.wikipedia.org/wiki/Access_token)或共享密码。 事件网格服务会在发往 Webhook 的每个事件传递请求中加入所有查询参数。 Webhook 服务可以检索和验证密码。 如果更新了客户端密码，还需要更新事件订阅。 为了避免在此密码轮换期间出现传递失败，让 Webhook 在有限的时间内同时接受新旧密码，然后再使用新密码更新事件订阅。 
+还可以通过向在创建事件订阅时指定的 Webhook 目标 URL 添加查询参数来保护 Webhook 终结点。 将其中一个查询参数设置为客户端密码，如访问令牌或共享密码。 事件网格服务会在发往 Webhook 的每个事件传递请求中加入所有查询参数。 Webhook 服务可以检索和验证密码。 如果更新了客户端密码，还需要更新事件订阅。 为了避免在此密码轮换期间出现传递失败，让 Webhook 在有限的时间内同时接受新旧密码，然后再使用新密码更新事件订阅。 
 
 由于查询参数可能包含客户端密码，因此需要格外小心地处理它们。 它们以加密的形式存储，并且服务操作员无法访问。 它们不作为服务日志/跟踪的一部分进行记录。 检索事件订阅属性时，默认情况下不会返回目标查询参数。 例如：[--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/ext/eventgrid/eventgrid/event-subscription?view=azure-cli-latest#ext-eventgrid-az-eventgrid-event-subscription-show) 参数将用于 Azure [CLI](/cli?view=azure-cli-latest)。
 <!--Correct in MC: https://docs.microsoft.com/cli/azure/ext/eventgrid/eventgrid/event-subscription?view=azure-cli-latest#ext-eventgrid-az-eventgrid-event-subscription-show-->
@@ -44,6 +44,9 @@ ms.locfileid: "88227989"
 
 > [!IMPORTANT]
 Azure 事件网格只支持 HTTPS Webhook 终结点。 
+
+## <a name="endpoint-validation-with-cloudevents-v10"></a>使用 CloudEvents v1.0 验证终结点
+如果熟悉事件网格，你可能会了解用于防止滥用的终结点验证握手。 CloudEvents v1.0 使用 HTTP OPTIONS 方法来实现自己的[滥用防护语义](webhook-event-delivery.md)。 若要了解有关详细信息，请参阅[适用于事件传递的 HTTP 1.1 Webhook - 版本 1.0](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)。 使用 CloudEvents 架构进行输出时，事件网格将使用 CloudEvents v1.0 滥用防护取代事件网格验证事件机制。 有关详细信息，请参阅[将 CloudEvents v1.0 架构与事件网格配合使用](cloudevents-schema.md)。 
 
 
 ## <a name="next-steps"></a>后续步骤

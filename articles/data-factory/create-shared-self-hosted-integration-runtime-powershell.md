@@ -11,19 +11,23 @@ author: WenJason
 manager: digimobile
 ms.custom: seo-lt-2019
 origin.date: 06/10/2018
-ms.date: 09/21/2020
-ms.openlocfilehash: acc4a15c68e5fffe7e1fe66ff669d27b19cd0d98
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.date: 02/01/2021
+ms.openlocfilehash: f8b73e26c5c9cdea723922e42ddc34141346cbf7
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432540"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060041"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建共享自承载集成运行时
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本指南介绍如何在 Azure 数据工厂中创建共享自承载集成运行时。 然后可在另一个数据工厂中使用共享自托管集成运行时。
+
+## <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建共享自承载集成运行时
+
+可以重复使用已在数据工厂中设置的现有自承载集成运行时基础结构。 这种重复使用可以通过引用现有的共享自承载 IR，在不同的数据工厂中创建链接的自承载集成运行时。
 
 ## <a name="create-a-shared-self-hosted-ir-using-azure-data-factory-ui"></a>使用 Azure 数据工厂 UI 创建共享自承载 IR
 
@@ -156,7 +160,7 @@ Get-AzDataFactoryV2IntegrationRuntimeKey `
 #### <a name="create-another-data-factory"></a>创建另一个数据工厂
 
 > [!NOTE]  
-> 此步骤是可选的。 若已拥有要共享的数据工厂，请跳过此步骤。 但若要向/从其他数据工厂添加或删除角色分配，你必须具有 `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 权限，例如[用户访问管理员](/role-based-access-control/built-in-roles#user-access-administrator)或[所有者](/role-based-access-control/built-in-roles#owner)。
+> 此步骤是可选的。 若已拥有要共享的数据工厂，请跳过此步骤。 但若要向/从其他数据工厂添加或删除角色分配，你必须具有 `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 权限，例如[用户访问管理员](../role-based-access-control/built-in-roles.md#user-access-administrator)或[所有者](../role-based-access-control/built-in-roles.md#owner)。
 
 ```powershell
 $factory = Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `
@@ -215,8 +219,35 @@ Remove-AzDataFactoryV2IntegrationRuntime `
     -LinkedDataFactoryName $LinkedDataFactoryName
 ```
 
+### <a name="monitoring"></a>监视
+
+#### <a name="shared-ir"></a>共享 IR
+
+![用于查找共享集成运行时的选项](media/create-self-hosted-integration-runtime/Contoso-shared-IR.png)
+
+![监视共享的集成运行时](media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png)
+
+#### <a name="linked-ir"></a>链接 IR
+
+![用于查找链接集成运行时的选项](media/create-self-hosted-integration-runtime/Contoso-linked-ir.png)
+
+![监视链接的集成运行时](media/create-self-hosted-integration-runtime/Contoso-linked-ir-monitoring.png)
+
+
+### <a name="known-limitations-of-self-hosted-ir-sharing"></a>自承载 IR 共享的已知限制
+
+* 要在其中创建链接 IR 的数据工厂必须有一个[托管标识](../active-directory/managed-identities-azure-resources/overview.md)。 默认情况下，在 Azure 门户或 PowerShell cmdlet 中创建的数据工厂已隐式创建了托管标识。 但是，如果数据工厂是通过 Azure 资源管理器模板或 SDK 创建的，则必须显式设置 **Identity** 属性。 此设置确保资源管理器创建包含托管标识的数据工厂。
+
+* 支持此功能的数据工厂 .NET SDK 必须是 1.1.0 或更高版本。
+
+* 若要授予权限，需要在共享 IR 所在的数据工厂中拥有“所有者”角色或继承的“所有者”角色。
+
+* 共享功能仅适用于同一 Azure AD 租户中的数据工厂。
+
+* 对于 Azure AD [来宾用户](../active-directory/governance/manage-guest-access-with-access-reviews.md)，UI 中的搜索功能（通过使用搜索关键字列出所有数据工厂）将不起作用。 但只要来宾用户是数据工厂的所有者，你就可以在不使用搜索功能的情况下共享 IR。 对于需要共享 IR 的数据工厂的托管标识，请在“分配权限”框中输入该托管标识，然后在数据工厂 UI 中选择“添加”。
+
 ### <a name="next-steps"></a>后续步骤
 
-- 查看 [Azure 数据工厂中的集成运行时概念](/data-factory/concepts-integration-runtime)。
+- 查看 [Azure 数据工厂中的集成运行时概念](./concepts-integration-runtime.md)。
 
-- 了解如何[在 Azure 门户中创建自承载集成运行时](/data-factory/create-self-hosted-integration-runtime)。
+- 了解如何[在 Azure 门户中创建自承载集成运行时](./create-self-hosted-integration-runtime.md)。

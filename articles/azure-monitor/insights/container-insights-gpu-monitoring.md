@@ -4,13 +4,13 @@ description: 本文介绍如何使用用于容器的 Azure Monitor 配置具有 
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 11/02/2020
-ms.openlocfilehash: 8ab95fe6c6c71a41ef363c6140264fad774ace05
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.date: 01/26/2021
+ms.openlocfilehash: ae593a4bd306896b6ef7a35dfb52bb2402b9a49d
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328477"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059906"
 ---
 # <a name="configure-gpu-monitoring-with-azure-monitor-for-containers"></a>使用用于容器的 Azure Monitor 配置 GPU 监视
 
@@ -41,7 +41,7 @@ ms.locfileid: "94328477"
 
 ## <a name="gpu-performance-charts"></a>GPU 性能图表 
 
-用于容器的 Azure Monitor 包含表中先前列出的指标的预配置图表，作为每个集群的 GPU 工作簿。 可以通过在左侧窗格中选择“工作簿”直接从 AKS 群集中找到 GPU 工作簿“节点 GPU”，也可以通过 Insight 中的“查看工作簿”下拉列表找到  。
+用于容器的 Azure Monitor 包含表中先前列出的指标的预配置图表，作为每个集群的 GPU 工作簿。 请参阅[用于容器的 Azure Monitor 中的工作簿](container-insights-reports.md)，获取有关适用于用于容器的 Azure Monitor 的工作簿的说明。
 
 ## <a name="next-steps"></a>后续步骤
 

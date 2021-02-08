@@ -3,10 +3,10 @@ title: Azure AD 中面向管理员的安全访问做法 | Microsoft Docs
 description: 确保组织的管理访问权限和管理员帐户是安全的。 适用于配置 Azure AD、Azure 和 Microsoft Online Services 的系统架构师和 IT 专业人员。
 services: active-directory
 keywords: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.author: v-junlch
-ms.date: 01/07/2021
+ms.date: 02/04/2021
 ms.topic: conceptual
 ms.service: active-directory
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ead7617d9eb8d65b620c9dea6066364049f8e61
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: d245575ce98c3bec28ad5cbb46d68e2cc20c5a06
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021897"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540851"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -251,7 +251,7 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 * 模拟攻击
 * 凭据盗窃攻击，例如按键日志记录、哈希传递和票证传递
 
-部署特权访问工作站可以降低管理员在未经过强化的桌面环境中输入凭据时遇到的风险。 
+部署特权访问工作站可以降低管理员在未经过强化的桌面环境中输入凭据时遇到的风险。 有关详细信息，请参阅[特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)。
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>查看美国国家标准与技术协会提供的有关如何处理事件的建议
 
@@ -441,4 +441,3 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 * [Microsoft Intune 安全性](https://www.trustcenter.cn/zh-cn/security/default.html/intune-security) - Intune 从云端提供移动设备管理、移动应用程序管理和电脑管理功能。
 
 * [Microsoft Dynamics 365 安全性](https://www.trustcenter.cn/zh-cn/security/default.html/dynamics365-security) - Dynamics 365 是 Azure 的基于云的解决方案，该方案将客户关系管理 (CRM) 和企业资源规划 (ERP) 功能统合在一起。
-

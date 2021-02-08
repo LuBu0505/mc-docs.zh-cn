@@ -1,5 +1,5 @@
 ---
-title: 快速入门 – Azure Key Vault Python 客户端库 – 管理证书
+title: 快速入门 - Azure Key Vault Python 客户端库 - 管理证书
 description: 了解如何使用 Python 客户端库在 Azure Key Vault 中创建、检索和删除证书
 author: msmbaldwin
 ms.author: v-tawe
@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: a18a8a3ef1a1786f8d7902e8f67315152a077bfd
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 81e528466586859cbbf5e38d688955ea62d6bd2f
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98229858"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059953"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-python"></a>快速入门：适用于 Python 的 Azure Key Vault 证书客户端库
 
@@ -24,7 +24,7 @@ ms.locfileid: "98229858"
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅 - [免费创建订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+- Azure 订阅 - [试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 - [Python 2.7+ 或 3.5.3+](https://docs.microsoft.com/azure/developer/python/configure-local-development-environment)
 - [Azure CLI](/cli/install-azure-cli)
 
@@ -32,7 +32,7 @@ ms.locfileid: "98229858"
 
 ## <a name="set-up-your-local-environment"></a>设置本地环境
 
-本快速入门结合使用 Azure Identity 库和 Azure CLI，向 Azure 服务验证用户身份。 开发人员还可以使用 Visual Studio 或 Visual Studio Code 来验证其调用。有关详细信息，请参阅[使用 Azure Identity 客户端库对客户端进行身份验证](https://docs.microsoft.com/java/api/overview/azure/identity-readme)
+本快速入门结合使用 Azure Identity 库和 Azure CLI，向 Azure 服务验证用户身份。 开发人员还可以使用 Visual Studio 或 Visual Studio Code 来验证其调用。有关详细信息，请参阅[使用 Azure Identity 客户端库对客户端进行身份验证](https://docs.microsoft.com/java/api/overview/azure/identity-readme?view=azure-java-stable)
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 

@@ -4,15 +4,15 @@ description: Azure 安全基准 V2 治理和策略
 author: Johnnytechn
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 01/19/2021
 ms.author: v-johya
 ms.custom: security-benchmark
-ms.openlocfilehash: f291e58946e99e87fe8c99e5eee492f632eaf6dd
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 0b549f79d4890742eacf5571fa2f9ce41b531867
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747097"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751138"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>安全控制 V2：治理和策略
 
@@ -20,7 +20,7 @@ ms.locfileid: "96747097"
 
 ## <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1：定义资产管理和数据保护策略
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-1 | 2、13 | SC、AC |
 
@@ -45,11 +45,11 @@ ms.locfileid: "96747097"
 - 合适的加密标准
 
 有关详细信息，请参阅以下资源：
-- [Azure 安全体系结构建议 - 存储、数据和加密](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
+- [Azure 安全体系结构建议 - 存储、数据和加密](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
 
 - [Azure 安全基础知识 - Azure 数据安全、加密和存储](../fundamentals/encryption-overview.md)
 
-- [云采用框架 - Azure 数据安全和加密最佳做法](../fundamentals/data-encryption-best-practices.md?amp;bc=%252fcloud-adoption-framework%252f_bread%252ftoc.json&toc=%252fcloud-adoption-framework%252ftoc.json)
+- [云采用框架 - Azure 数据安全和加密最佳做法](../fundamentals/data-encryption-best-practices.md?bc=%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fcloud-adoption-framework%2ftoc.json)
 
 - [Azure 安全基准 - 资产管理](security-controls-v2-asset-management.md)
 
@@ -63,7 +63,7 @@ ms.locfileid: "96747097"
 
 ## <a name="gs-2-define-enterprise-segmentation-strategy"></a>GS-2：定义企业分段策略
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-2 | 4、9、16 | AC、CA、SC |
 
@@ -87,7 +87,7 @@ ms.locfileid: "96747097"
 
 ## <a name="gs-3-define-security-posture-management-strategy"></a>GS-3：定义安全状况管理策略
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-3 | 20、3、5 | RA、CM、SC |
 
@@ -103,7 +103,7 @@ ms.locfileid: "96747097"
 
 ## <a name="gs-4-align-organization-roles-responsibilities-and-accountabilities"></a>GS-4：协调组织角色、职责和责任
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-4 | 空值 | PL、PM |
 
@@ -123,7 +123,7 @@ ms.locfileid: "96747097"
 
 ## <a name="gs-5-define-network-security-strategy"></a>GS-5：定义网络安全策略
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-5 | 9 | CA、SC |
 
@@ -161,7 +161,7 @@ ms.locfileid: "96747097"
 
 ## <a name="gs-6-define-identity-and-privileged-access-strategy"></a>GS-6：定义标识和特权访问策略
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-6 | 16、4 | AC、AU、SC |
 
@@ -197,7 +197,7 @@ ms.locfileid: "96747097"
 
 ## <a name="gs-7-define-logging-and-threat-response-strategy"></a>GS-7：定义日志记录和威胁响应策略
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-7 | 19 | IR、AU、RA、SC |
 
@@ -238,7 +238,7 @@ ms.locfileid: "96747097"
 
 ## <a name="gs-8-define-backup-and-recovery-strategy"></a>GS-8：定义备份和恢复策略
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-8 | 10 | CP |
 

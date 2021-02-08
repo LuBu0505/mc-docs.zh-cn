@@ -4,16 +4,16 @@ description: 有关 Azure 容器实例服务的常见问题解答
 ms.topic: article
 origin.date: 06/02/2020
 author: rockboyfor
-ms.date: 11/30/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: a75b09f28141f0bc8915b987cabc869e8920dc5b
-ms.sourcegitcommit: ea52237124974eda84f8cef4bf067ae978d7a87d
+ms.openlocfilehash: b60858a6470a7c0b6e9bb129f4748c6a26e831c3
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024543"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063562"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>有关 Azure 容器实例的常见问题解答
 
@@ -57,6 +57,10 @@ ms.locfileid: "96024543"
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>应在容器中使用哪个 .NET 或 .NET Core 映像层？ 
 
 使用符合要求的最小映像。 对于 Linux，可以使用 *runtime-alpine* .NET Core 映像，从 .NET Core 2.1 版本开始就已支持此映像。 对于 Windows，如果使用完整的 .NET Framework，则需要使用 Windows Server Core 映像（仅限运行时的映像，例如 *4.7.2-windowsservercore-ltsc2016*）。 仅限运行时的映像较小，但不支持需要 .NET SDK 的工作负荷。
+
+### <a name="what-types-of-container-registries-are-compatible-with-aci"></a>哪些类型的容器注册表与 ACI 兼容？
+
+ACI 支持从 ACR 和其他第三方容器注册表（如 DockerHub）拉取映像。 ACI 还支持从本地注册表拉取映像，只要这些注册表与 OCR 兼容，并且具有向 Internet 公开的终结点。
 
 ## <a name="availability-and-quotas"></a>可用性和配额
 
@@ -110,4 +114,4 @@ Azure 容器实例旨在用作无服务器按需容器服务，因此，我们�
 * [详细了解](container-instances-overview.md) Azure 容器实例。
 * [排查 Azure 容器实例中的常见问题](container-instances-troubleshooting.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

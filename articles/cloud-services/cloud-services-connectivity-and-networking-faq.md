@@ -1,28 +1,21 @@
 ---
 title: 连接和网络问题
-titleSuffix: Azure Cloud Services
 description: 本文列出了有关 Azure 云服务的连接和网络的常见问题解答。
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/20/2020
+ms.service: cloud-services
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: 8759e4a57d36591ee82f052fd45a185c629047c1
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: e0761602eb39a9bd803b00310159eeec4c1d259f
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472623"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058863"
 ---
-# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务连接性和网络问题：常见问题解答 (FAQ)
+# <a name="connectivity-and-networking-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Azure 云服务（经典）的连接和网络问题：常见问题 (FAQ)
 
 本文包括一些关于 [Azure 云服务](https://www.azure.cn/home/features/cloud-services)连接性和网络问题的常见问题解答。 有关大小信息，请参阅[云服务 VM 大小页](cloud-services-sizes-specs.md)。
 
@@ -32,7 +25,7 @@ ms.locfileid: "92472623"
 首先，请确保已打开想要为其保留 IP 的虚拟机实例。 其次，请确保为过渡和生产部署使用保留的 IP。 *请勿* 在部署升级过程中更改设置。
 
 ## <a name="how-do-i-use-remote-desktop-when-i-have-an-nsg"></a>设置了 NSG 时，如何使用远程桌面？
-将规则添加到 NSG，允许端口 **3389** 和 **20000** 上的流量。 远程桌面使用端口 **3389** 。 云服务实例经过负载均衡，因此无法直接控制要连接到哪个实例。 *RemoteForwarder* 和 *RemoteAccess* 代理管理远程桌面协议 (RDP) 流量，允许客户端发送 RDP cookie 和指定要连接到的单个实例。 *RemoteForwarder* 和 *RemoteAccess* 代理要求打开端口 **20000** （如果你具有 NSG，此端口可能已被阻止）。
+将规则添加到 NSG，允许端口 **3389** 和 **20000** 上的流量。 远程桌面使用端口 **3389**。 云服务实例经过负载均衡，因此无法直接控制要连接到哪个实例。 *RemoteForwarder* 和 *RemoteAccess* 代理管理远程桌面协议 (RDP) 流量，允许客户端发送 RDP cookie 和指定要连接到的单个实例。 *RemoteForwarder* 和 *RemoteAccess* 代理要求打开端口 **20000**（如果你具有 NSG，此端口可能已被阻止）。
 
 ## <a name="can-i-ping-a-cloud-service"></a>是否可以 ping 云服务？
 

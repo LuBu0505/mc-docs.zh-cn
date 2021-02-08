@@ -1,33 +1,26 @@
 ---
-title: 云服务中的角色通信
+title: 云服务（经典）中的角色通信 | Microsoft Docs
 description: 云服务中的角色实例可以定义其终结点（http、https、tcp、udp），以便与外界通信或在其他角色实例之间进行通信。
-services: cloud-services
-documentationcenter: ''
-author: Thraka
-manager: timlt
-editor: ''
-ms.assetid: 7008a083-acbe-4fb8-ae60-b837ef971ca1
-ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 12/14/2017
-ms.date: 02/26/2018
-ms.author: v-yiso
-ms.openlocfilehash: 52b1c1391ab1ab4eae54adbdb3aac0c801a3d557
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.service: cloud-services
+ms.date: 01/25/2021
+ms.author: v-junlch
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 07c456b6dc08b315128df1bf2f772fb1db3c2a52
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63826008"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059268"
 ---
-# <a name="enable-communication-for-role-instances-in-azure"></a>为 Azure 中的角色实例启用通信
+# <a name="enable-communication-for-role-instances-in-azure-cloud-services-classic"></a>为 Azure 云服务（经典）中的角色实例启用通信 
 
-云服务角色通过内部和外部连接进行通信。 外部连接称为“输入终结点”  ，而内部连接称为“内部终结点”  。 本主题介绍如何修改[服务定义](./cloud-services-model-and-package.md#csdef)来创建终结点。
+云服务角色通过内部和外部连接进行通信。 外部连接称为“输入终结点”  ，而内部连接称为“内部终结点”  。 本主题介绍如何修改[服务定义](cloud-services-model-and-package.md#csdef)来创建终结点。
 
 ## <a name="input-endpoint"></a>输入终结点
-想要向外部公开某个端口时，使用输入终结点。 可以指定该终结点的协议类型和端口，然后，这些指定值将同时应用到该终结点的外部和内部端口。 如果需要，可以使用 [localPort](https://msdn.microsoft.com/zh-cn/library/azure/gg557552.aspx#InputEndpoint) 属性为终结点指定不同的内部端口。
+想要向外部公开某个端口时，使用输入终结点。 可以指定该终结点的协议类型和端口，然后，这些指定值将同时应用到该终结点的外部和内部端口。 如果需要，可以使用 [localPort](https://docs.microsoft.com/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint) 属性为终结点指定不同的内部端口。
 
 输入终结点可以使用以下协议： **http、https、tcp、udp**。
 
@@ -79,8 +72,8 @@ ms.locfileid: "63826008"
 </Endpoints>
 ```
 
-## <a name="worker-roles-vs-web-roles"></a>辅助角色与Web 角色
 
+## <a name="worker-roles-vs-web-roles"></a>辅助角色与Web 角色
 使用辅助角色和 web 角色时，在终结点方面需要注意一个细微的差别。 Web 角色必须至少有一个使用 **HTTP** 协议的输入终结点。
 
 ```xml
@@ -98,7 +91,7 @@ Azure 托管库提供了角色实例在运行时用来通信的方法。 可以�
 > 
 > 
 
-可以使用 [Instances](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.serviceruntime.role.instances.aspx) 属性检索角色的实例。 首先，使用 [CurrentRoleInstance](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.currentroleinstance.aspx) 返回对当前角色实例的引用，然后使用 [Role](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.role.aspx) 属性返回对角色本身的引用。
+可以使用 [Instances](https://docs.microsoft.com/previous-versions/azure/reference/ee741904(v=azure.100)) 属性检索角色的实例。 首先，使用 [CurrentRoleInstance](https://docs.microsoft.com/previous-versions/azure/reference/ee741907(v=azure.100)) 返回对当前角色实例的引用，然后使用 [Role](https://docs.microsoft.com/previous-versions/azure/reference/ee741918(v=azure.100)) 属性返回对角色本身的引用。
 
 通过 .NET SDK 以编程方式连接到角色实例时，可以相对较容易地访问终结点信息。 例如，在连接到特定的角色环境后，可以使用以下代码获取特定终结点的端口：
 
@@ -113,7 +106,7 @@ Instances  属性将返回一个 RoleInstance  对象集合。 此集合始终�
 > 
 > 
 
-要确定角色实例上的内部终结点的端口号，可以使用 [InstanceEndpoints](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.instanceendpoints.aspx) 属性来返回 Dictionary 对象，该对象中包含终结点名称及其对应的 IP 地址和端口。 [IPEndpoint](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.serviceruntime.roleinstanceendpoint.ipendpoint.aspx) 属性返回指定终结点的 IP 地址和端口。 **PublicIPEndpoint** 属性返回负载均衡终结点的端口。 不使用 **PublicIPEndpoint** 属性的 IP 地址部分。
+要确定角色实例上的内部终结点的端口号，可以使用 [`InstanceEndpoints`](https://docs.microsoft.com/previous-versions/azure/reference/ee741917(v=azure.100)) 属性来返回 Dictionary 对象，该对象中包含终结点名称及其对应的 IP 地址和端口。 [`IPEndpoint`](https://docs.microsoft.com/previous-versions/azure/reference/ee741919(v=azure.100)) 属性返回指定终结点的 IP 地址和端口。 `PublicIPEndpoint` 属性返回负载均衡终结点的端口。 不使用 `PublicIPEndpoint` 属性的 IP 地址部分。
 
 下面是一个循环访问角色实例的示例。
 
@@ -136,86 +129,86 @@ foreach (RoleInstance roleInst in RoleEnvironment.CurrentRoleInstance.Role.Insta
 > 
 
 ```csharp
-using System;
-using System.Diagnostics;
-using System.Linq;
-using System.Net;
-using System.Net.Sockets;
-using System.Threading;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Diagnostics;
-using Microsoft.WindowsAzure.ServiceRuntime;
-using Microsoft.WindowsAzure.StorageClient;
+using System;
+using System.Diagnostics;
+using System.Linq;
+using System.Net;
+using System.Net.Sockets;
+using System.Threading;
+using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Diagnostics;
+using Microsoft.WindowsAzure.ServiceRuntime;
+using Microsoft.WindowsAzure.StorageClient;
 
-namespace WorkerRole1
+namespace WorkerRole1
 {
-  public class WorkerRole : RoleEntryPoint
-  {
-    public override void Run()
-    {
-      try
-      {
-        // Initialize method-wide variables
-        var epName = "Endpoint1";
-        var roleInstance = RoleEnvironment.CurrentRoleInstance;
-        
-        // Identify direct communication port
-        var myPublicEp = roleInstance.InstanceEndpoints[epName].PublicIPEndpoint;
-        Trace.TraceInformation("IP:{0}, Port:{1}", myPublicEp.Address, myPublicEp.Port);
+  public class WorkerRole : RoleEntryPoint
+  {
+    public override void Run()
+    {
+      try
+      {
+        // Initialize method-wide variables
+        var epName = "Endpoint1";
+        var roleInstance = RoleEnvironment.CurrentRoleInstance;
 
-        // Identify public endpoint
-        var myInternalEp = roleInstance.InstanceEndpoints[epName].IPEndpoint;
-                
-        // Create socket listener
-        var listener = new Socket(
-          myInternalEp.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-                
-        // Bind socket listener to internal endpoint and listen
-        listener.Bind(myInternalEp);
-        listener.Listen(10);
-        Trace.TraceInformation("Listening on IP:{0},Port: {1}",
-          myInternalEp.Address, myInternalEp.Port);
+        // Identify direct communication port
+        var myPublicEp = roleInstance.InstanceEndpoints[epName].PublicIPEndpoint;
+        Trace.TraceInformation("IP:{0}, Port:{1}", myPublicEp.Address, myPublicEp.Port);
 
-        while (true)
-        {
-          // Block the thread and wait for a client request
-          Socket handler = listener.Accept();
-          Trace.TraceInformation("Client request received.");
+        // Identify public endpoint
+        var myInternalEp = roleInstance.InstanceEndpoints[epName].IPEndpoint;
 
-          // Define body of socket handler
-          var handlerThread = new Thread(
-            new ParameterizedThreadStart(h =>
-            {
-              var socket = h as Socket;
-              Trace.TraceInformation("Local:{0} Remote{1}",
-                socket.LocalEndPoint, socket.RemoteEndPoint);
+        // Create socket listener
+        var listener = new Socket(
+          myInternalEp.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
-              // Shut down and close socket
-              socket.Shutdown(SocketShutdown.Both);
-              socket.Close();
-            }
-          ));
+        // Bind socket listener to internal endpoint and listen
+        listener.Bind(myInternalEp);
+        listener.Listen(10);
+        Trace.TraceInformation("Listening on IP:{0},Port: {1}",
+          myInternalEp.Address, myInternalEp.Port);
 
-          // Start socket handler on new thread
-          handlerThread.Start(handler);
-        }
-      }
-      catch (Exception e)
-      {
-        Trace.TraceError("Caught exception in run. Details: {0}", e);
-      }
-    }
+        while (true)
+        {
+          // Block the thread and wait for a client request
+          Socket handler = listener.Accept();
+          Trace.TraceInformation("Client request received.");
 
-    public override bool OnStart()
-    {
-      // Set the maximum number of concurrent connections 
-      ServicePointManager.DefaultConnectionLimit = 12;
+          // Define body of socket handler
+          var handlerThread = new Thread(
+            new ParameterizedThreadStart(h =>
+            {
+              var socket = h as Socket;
+              Trace.TraceInformation("Local:{0} Remote{1}",
+                socket.LocalEndPoint, socket.RemoteEndPoint);
 
-      // For information on handling configuration changes
-      // see the MSDN topic at http://go.microsoft.com/fwlink/?LinkId=166357.
-      return base.OnStart();
-    }
-  }
+              // Shut down and close socket
+              socket.Shutdown(SocketShutdown.Both);
+              socket.Close();
+            }
+          ));
+
+          // Start socket handler on new thread
+          handlerThread.Start(handler);
+        }
+      }
+      catch (Exception e)
+      {
+        Trace.TraceError("Caught exception in run. Details: {0}", e);
+      }
+    }
+
+    public override bool OnStart()
+    {
+      // Set the maximum number of concurrent connections 
+      ServicePointManager.DefaultConnectionLimit = 12;
+
+      // For information on handling configuration changes
+      // see the MSDN topic at https://go.microsoft.com/fwlink/?LinkId=166357.
+      return base.OnStart();
+    }
+  }
 }
 ```
 
@@ -370,7 +363,12 @@ namespace WorkerRole1
 </ServiceDefinition>
 ```
 
-可在 [此处](https://msdn.microsoft.com/zh-cn/library/azure/gg557551.aspx)找到上面所用元素的 XML 架构参考。
+可在 [此处](https://docs.microsoft.com/previous-versions/azure/reference/gg557551(v=azure.100))找到上面所用元素的 XML 架构参考。
 
 ## <a name="next-steps"></a>后续步骤
-阅读有关云服务[模型](./cloud-services-model-and-package.md)的详细信息。
+阅读有关云服务[模型](cloud-services-model-and-package.md)的详细信息。
+
+
+
+
+

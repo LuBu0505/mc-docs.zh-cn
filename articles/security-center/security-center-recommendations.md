@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 07/29/2019
-ms.date: 11/12/2020
+ms.date: 01/20/2021
 ms.author: v-johya
-ms.openlocfilehash: 59ff1053dc33d27bbd699c8c311c59c0ffc87833
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: 5f435183371875c8607863037d3be199e3651f98
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637975"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751284"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure 安全中心的安全建议 
 本主题说明如何查看和了解 Azure 安全中心内的建议，以帮助你保护 Azure 资源。
@@ -43,7 +43,11 @@ ms.locfileid: "94637975"
 
 1. 在安全中心的菜单中，打开“建议”页，查看适用于你的环境的建议。 建议会被分组到各项安全控制中。
 
-      ![建议会按安全控制分组](./media/security-center-recommendations/view-recommendations.png)
+    :::image type="content" source="./media/security-center-recommendations/view-recommendations.png" alt-text="建议会按安全控制分组" lightbox="./media/security-center-recommendations/view-recommendations.png":::
+
+1. 若要查找特定于资源类型、严重性、环境或其他对你很重要的条件的建议，请使用建议列表上方的可选筛选器。
+
+    :::image type="content" source="media/security-center-recommendations/recommendation-list-filters.png" alt-text="用于优化 Azure 安全中心建议列表的筛选器":::
 
 1. 展开一项控制并选择特定的建议，以查看建议详细信息页。
 

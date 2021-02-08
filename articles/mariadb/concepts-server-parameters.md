@@ -3,16 +3,15 @@ title: 服务器参数 - Azure Database for MariaDB
 description: 本主题提供在 Azure Database for MariaDB 中配置服务器参数的指南。
 author: WenJason
 ms.author: v-jay
-ms.service: mariadb
 ms.topic: conceptual
 origin.date: 6/25/2020
-ms.date: 10/29/2020
-ms.openlocfilehash: 008f82f5e591387120b07f3dc656e14591824cb4
-ms.sourcegitcommit: 7b3c894d9c164d2311b99255f931ebc1803ca5a9
+ms.date: 02/08/2021
+ms.openlocfilehash: 60757708fb45c8f32ed2a5f20e59fcab658ea39b
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470216"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99504002"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的服务器参数
 
@@ -83,7 +82,7 @@ Azure Database for MariaDB 提供了通过 [Azure 门户](./howto-server-paramet
 
 MariaDB 根据你在创建表期间提供的配置，将 InnoDB 表存储在不同的表空间中。 [系统表空间](https://mariadb.com/kb/en/innodb-system-tablespaces/)是 InnoDB 数据字典的存储区域。 [file-per-table 表空间](https://mariadb.com/kb/en/innodb-file-per-table-tablespaces/)包含单个 InnoDB 表的数据和索引，并存储在文件系统内它自己的数据文件中。 此行为由 `innodb_file_per_table` 服务器参数控制。 将 `innodb_file_per_table` 设置为 `OFF` 会导致 InnoDB 在系统表空间中创建表。 否则，InnoDB 将在 file-per-table 表空间中创建表。
 
-在单个数据文件中，Azure Database for MariaDB 支持最大 **1 TB** 。 如果数据库大小超过 1 TB，应在 [innodb_file_per_table](https://mariadb.com/kb/en/innodb-system-variables/#innodb_file_per_table) 表空间中创建表。 如果单个表的大小超过 1 TB，应使用分区表。
+在单个数据文件中，Azure Database for MariaDB 支持最大 **1 TB**。 如果数据库大小超过 1 TB，应在 [innodb_file_per_table](https://mariadb.com/kb/en/innodb-system-variables/#innodb_file_per_table) 表空间中创建表。 如果单个表的大小超过 1 TB，应使用分区表。
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 
@@ -91,8 +90,8 @@ MariaDB 根据你在创建表期间提供的配置，将 InnoDB 表存储在不�
 
 |**定价层**|**vCore(s)**|**默认值（字节）**|**最小值（字节）**|**最大值（字节）**|
 |---|---|---|---|---|
-|基本|1|在基本层中不可配置|空值|空值|
-|基本|2|在基本层中不可配置|空值|空值|
+|基本|1|在基本层中不可配置|不适用|不适用|
+|基本|2|在基本层中不可配置|不适用|不适用|
 |常规用途|2|262144|128|268435455|
 |常规用途|4|262144|128|536870912|
 |常规用途|8|262144|128|1073741824|
@@ -140,8 +139,8 @@ MariaDB 根据你在创建表期间提供的配置，将 InnoDB 表存储在不�
 
 |**定价层**|**vCore(s)**|**默认值（字节）**|**最小值（字节）**|**最大值（字节）**|
 |---|---|---|---|---|
-|基本|1|在基本层中不可配置|空值|空值|
-|基本|2|在基本层中不可配置|空值|空值|
+|基本|1|在基本层中不可配置|不适用|不适用|
+|基本|2|在基本层中不可配置|不适用|不适用|
 |常规用途|2|16777216|16384|268435455|
 |常规用途|4|16777216|16384|536870912|
 |常规用途|8|16777216|16384|1073741824|
@@ -160,10 +159,10 @@ MariaDB 根据你在创建表期间提供的配置，将 InnoDB 表存储在不�
 
 查看 [MariaDB 文档](https://mariadb.com/kb/en/server-system-variables/#query_cache_size)详细了解此参数。
 
-|**定价层**|**vCore(s)**|**默认值（字节）**|**最小值（字节）**|**最大值 **|
+|**定价层**|**vCore(s)**|**默认值（字节）**|**最小值（字节）**|**最大值（字节）**|
 |---|---|---|---|---|
-|基本|1|在基本层中不可配置|空值|空值|
-|基本|2|在基本层中不可配置|空值|空值|
+|基本|1|在基本层中不可配置|不适用|不适用|
+|基本|2|在基本层中不可配置|不适用|不适用|
 |常规用途|2|0|0|16777216|
 |常规用途|4|0|0|33554432|
 |常规用途|8|0|0|67108864|
@@ -182,8 +181,8 @@ MariaDB 根据你在创建表期间提供的配置，将 InnoDB 表存储在不�
 
 |**定价层**|**vCore(s)**|**默认值（字节）**|**最小值（字节）**|**最大值（字节）**|
 |---|---|---|---|---|
-|基本|1|在基本层中不可配置|空值|空值|
-|基本|2|在基本层中不可配置|空值|空值|
+|基本|1|在基本层中不可配置|不适用|不适用|
+|基本|2|在基本层中不可配置|不适用|不适用|
 |常规用途|2|524288|32768|4194304|
 |常规用途|4|524288|32768|8388608|
 |常规用途|8|524288|32768|16777216|
@@ -202,8 +201,8 @@ MariaDB 根据你在创建表期间提供的配置，将 InnoDB 表存储在不�
 
 |**定价层**|**vCore(s)**|**默认值（字节）**|**最小值（字节）**|**最大值（字节）**|
 |---|---|---|---|---|
-|基本|1|在基本层中不可配置|空值|空值|
-|基本|2|在基本层中不可配置|空值|空值|
+|基本|1|在基本层中不可配置|不适用|不适用|
+|基本|2|在基本层中不可配置|不适用|不适用|
 |常规用途|2|16777216|1024|67108864|
 |常规用途|4|16777216|1024|134217728|
 |常规用途|8|16777216|1024|268435456|

@@ -4,14 +4,14 @@ description: 介绍如何在 Azure 资源管理器模板（ARM 模板）中有�
 ms.topic: conceptual
 origin.date: 12/17/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 01/25/2021
 ms.author: v-yeche
-ms.openlocfilehash: f63a1e7317e18141e1fbc55980a00a634c65e56b
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: c00e15101f952d49aed3c481340acf338853e2d5
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022304"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751135"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>使用 ARM 模板进行条件部署
 
@@ -22,7 +22,7 @@ ms.locfileid: "98022304"
 
 ## <a name="new-or-existing-resource"></a>新资源或现有资源
 
-可以使用条件部署来创建新资源或使用现有资源。 以下示例演示如何使用条件部署新的存储帐户或使用现有存储帐户。
+可以使用条件部署来创建新资源或使用现有资源。 以下示例演示如何使用 `condition` 部署新的存储帐户或使用现有存储帐户。
 
 ```json
 {
@@ -39,7 +39,7 @@ ms.locfileid: "98022304"
 }
 ```
 
-当参数 **newOrExisting** 设置为 **new** 时，条件的计算结果为 true。 将部署存储帐户。 但是，当 **newOrExisting** 设置为 **existing** 时，条件的计算结果为 false，并且不部署存储帐户。
+当参数 `newOrExisting` 设置为 **new** 时，条件的计算结果为 true。 将部署存储帐户。 但是，当 `newOrExisting` 设置为 **existing** 时，条件的计算结果为 false，并且不部署存储帐户。
 
 有关使用 `condition` 元素的完整示例模板，请参阅[具有新的或现有虚拟网络、存储和公共 IP 的 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions)。
 
@@ -83,13 +83,13 @@ ms.locfileid: "98022304"
 
 如果对条件性部署的资源使用 [reference](template-functions-resource.md#reference) 或 [list](template-functions-resource.md#list) 函数，则会对该函数进行评估，即使资源尚未部署。 如果该函数引用某个不存在的资源，则会出现错误。
 
-请使用 [if](template-functions-logical.md#if) 函数，以确保仅当资源已部署时，才根据条件评估函数。 请查看示例模板的 [if 函数](template-functions-logical.md#if)，该模板将 if 和 reference 用于进行条件部署的资源。
+请使用 [if](template-functions-logical.md#if) 函数，以确保仅当资源已部署时，才根据条件评估函数。 请查看示例模板的 [if 函数](template-functions-logical.md#if)，该模板将 `if` 和 `reference` 用于进行条件部署的资源。
 
 [将资源设置为依赖于](define-resource-dependency.md)条件资源，这与设置任何其他资源完全一样。 条件资源未部署时，Azure 资源管理器会自动将其从所需依赖项中删除。
 
 ## <a name="complete-mode"></a>完整模式
 
-如果以[完整模式](deployment-modes.md)部署模板并且由于条件的计算结果为 false 而未部署资源，则结果取决于用于部署模板的 REST API 版本。 如果使用 2019-05-10 之前的版本，则 **不会删除** 该资源。 如果使用 2019-05-10 或更高版本，则 **会删除** 该资源。 最新版本的 Azure PowerShell 和 Azure CLI 在条件为 false 时会删除该资源。
+如果以[完整模式](deployment-modes.md)部署模板并且由于 `condition` 的计算结果为 false 而未部署资源，则结果取决于用于部署模板的 REST API 版本。 如果使用 2019-05-10 之前的版本，则 **不会删除** 该资源。 如果使用 2019-05-10 或更高版本，则 **会删除** 该资源。 最新版本的 Azure PowerShell 和 Azure CLI 在条件为 false 时会删除该资源。
 
 ## <a name="next-steps"></a>后续步骤
 

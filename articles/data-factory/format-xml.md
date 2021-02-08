@@ -8,14 +8,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 10/29/2020
-ms.date: 01/04/2021
+ms.date: 02/01/2021
 ms.author: v-jay
-ms.openlocfilehash: 146a7f63ffd0bcb47521842d6c21187b8dd707d9
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 16277518f8e362c0959c761a40ad49bab9eeace6
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830308"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059180"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>Azure 数据工厂中的 XML 格式
 
@@ -36,7 +36,7 @@ ms.locfileid: "97830308"
 | encodingName     | 用于读取/写入测试文件的编码类型。 <br>可用的值如下："UTF-8"、"UTF-16"、"UTF-16BE"、"UTF-32"、"UTF-32BE"、"US-ASCII"、"UTF-7"、"BIG5"、"EUC-JP"、"EUC-KR"、"GB2312"、"GB18030"、"JOHAB"、"SHIFT-JIS"、"CP875"、"CP866"、"IBM00858"、"IBM037"、"IBM273"、"IBM437"、"IBM500"、"IBM737"、"IBM775"、"IBM850"、"IBM852"、"IBM855"、"IBM857"、"IBM860"、"IBM861"、"IBM863"、"IBM864"、"IBM865"、"IBM869"、"IBM870"、"IBM01140"、"IBM01141"、"IBM01142"、"IBM01143"、"IBM01144"、"IBM01145"、"IBM01146"、"IBM01147"、"IBM01148"、"IBM01149"、"ISO-2022-JP"、"ISO-2022-KR"、"ISO-8859-1"、"ISO-8859-2"、"ISO-8859-3"、"ISO-8859-4"、"ISO-8859-5"、"ISO-8859-6"、"ISO-8859-7"、"ISO-8859-8"、"ISO-8859-9"、"ISO-8859-13"、"ISO-8859-15"、"WINDOWS-874"、"WINDOWS-1250"、"WINDOWS-1251"、"WINDOWS-1252"、"WINDOWS-1253"、"WINDOWS-1254"、"WINDOWS-1255"、"WINDOWS-1256"、"WINDOWS-1257"、"WINDOWS-1258"。| 否       |
 | nullValue | 指定 null 值的字符串表示形式。<br/>默认值为 **空字符串**。 | 否 |
 | compression | 用来配置文件压缩的属性组。 如果需要在活动执行期间进行压缩/解压缩，请配置此部分。 | 否 |
-| type<br>（在 `compression` 下） | 用来读取/写入 XML 文件的压缩编解码器。 <br>允许的值为 bzip2、gzip、deflate、ZipDeflate、TarGzip、Tar、snappy 或 lz4       。 默认设置是不压缩。<br>注意，复制活动当前不支持“snappy”和“lz4”。<br>注意，使用复制活动解压缩 ZipDeflate/TarGzip/Tar 文件并将其写入基于文件的接收器数据存储时，默认情况下文件将提取到 `<path specified in dataset>/<folder named as source compressed file>/` 文件夹，对[复制活动源](#xml-as-source)使用 `preserveZipFileNameAsFolder`/`preserveCompressionFileNameAsFolder` 来控制是否以文件夹结构形式保留压缩文件名   。 | 否。  |
+| type<br>（在 `compression` 下） | 用来读取/写入 XML 文件的压缩编解码器。 <br>允许的值为 bzip2、gzip、deflate、ZipDeflate、TarGzip、Tar、snappy 或 lz4       。 默认设置是不压缩。<br>注意，复制活动目前不支持“snappy”和“lz4”，映射数据流不支持“ZipDeflate”、“TarGzip”和“Tar”。<br>注意，使用复制活动解压缩 ZipDeflate/TarGzip/Tar 文件并将其写入基于文件的接收器数据存储时，默认情况下文件将提取到 `<path specified in dataset>/<folder named as source compressed file>/` 文件夹，对[复制活动源](#xml-as-source)使用 `preserveZipFileNameAsFolder`/`preserveCompressionFileNameAsFolder` 来控制是否以文件夹结构形式保留压缩文件名   。 | 否。  |
 | level<br/>（在 `compression` 下） | 压缩率。 <br>允许的值为 **Optimal** 或 **Fastest**。<br>- **Fastest**：尽快完成压缩操作，不过，无法以最佳方式压缩生成的文件。<br>- **Optimal**：以最佳方式完成压缩操作，不过，需要耗费更长的时间。 有关详细信息，请参阅 [Compression Level](https://docs.microsoft.com/dotnet/api/system.io.compression.compressionlevel)（压缩级别）主题。 | 否       |
 
 下面是 Azure Blob 存储上的 XML 数据集的示例：
@@ -93,6 +93,50 @@ ms.locfileid: "97830308"
 | preserveZipFileNameAsFolder<br>（在 `compressionProperties`->`type` 下为 `ZipDeflateReadSettings`）  | 当输入数据集配置了 ZipDeflate 压缩时适用。 指示是否在复制过程中以文件夹结构形式保留源 zip 文件名。<br>- 当设置为 true（默认值）时，数据工厂会将已解压缩的文件写入 `<path specified in dataset>/<folder named as source zip file>/`。<br>- 当设置为 false 时，数据工厂会直接将未解压缩的文件写入 `<path specified in dataset>`。 请确保不同的源 zip 文件中没有重复的文件名，以避免产生冲突或出现意外行为。  | 否 |
 | preserveCompressionFileNameAsFolder<br>（在 `compressionProperties`->`type` 下为 `TarGZipReadSettings` 或 `TarReadSettings`） | 当输入数据集配置了 TarGzip/Tar 压缩时适用 。 指示是否在复制过程中以文件夹结构形式保留源压缩文件名。<br>- 当设置为 true（默认值）时，数据工厂会将已解压缩的文件写入 `<path specified in dataset>/<folder named as source compressed file>/`。 <br>- 当设置为 false 时，数据工厂会直接将已解压缩的文件写入 `<path specified in dataset>`。 请确保不同的源文件中没有重复的文件名，以避免产生冲突或出现意外行为。 | 否 |
 
+## <a name="mapping-data-flow-properties"></a>映射数据流属性
+
+在映射数据流中，可以在以下数据存储中读取和写入 XML 格式：[Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。 可以使用 XML 数据集或使用[内联数据集](data-flow-source.md#inline-datasets)来指向 XML 文件。
+
+### <a name="source-properties"></a>源属性
+
+下表列出了 XML 源支持的属性。 可以在“源选项”选项卡中编辑这些属性。详细了解 [XML 连接器行为](#xml-connector-behavior)。 在使用内联数据集时，你将看到其他文件设置，这些设置与[数据集属性](#dataset-properties)部分中描述的属性相同。 
+
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| 通配符路径 | 所有匹配通配符路径的文件都会得到处理。 重写数据集中设置的文件夹和文件路径。 | 否 | String[] | wildcardPaths |
+| 分区根路径 | 对于已分区的文件数据，可以输入分区根路径，以便将已分区的文件夹读取为列 | 否 | 字符串 | partitionRootPath |
+| 文件列表 | 源是否指向某个列出待处理文件的文本文件 | 否 | `true` 或 `false` | fileList |
+| 用于存储文件名的列 | 使用源文件名称和路径创建新列 | 否 | 字符串 | rowUrlColumn |
+| 完成后 | 在处理后删除或移动文件。 文件路径从容器根开始 | 否 | 删除：`true` 或 `false` <br> 移动：`['<from>', '<to>']` | purgeFiles <br>moveFiles |
+| 按上次修改时间筛选 | 选择根据上次更改文件的时间来筛选文件 | 否 | 时间戳 | ModifiedAfter <br>modifiedBefore |
+| 验证模式 | 指定是否要验证 XML 架构。 | 否 | `None`（默认值，无验证）<br>`xsd`（使用 XSD 进行验证）<br>`dtd`（使用 DTD 进行验证）。 | validationMode |
+| 命名空间 | 分析 XML 文件时是否启用命名空间。 | 否 | `true`（默认值）或 `false` | namespaces |
+| 命名空间前缀对 | 命名空间 URI 到前缀的映射，用于在分析 xml 文件时为字段命名。<br/>如果 XML 文件具有命名空间，且已启用命名空间，则默认情况下，字段名称与 XML 文档中的名称相同。<br>如果在此映射中为命名空间 URI 定义了一个项，则字段名称为 `prefix:fieldName`。 | 否 | 使用模式 `['URI1'->'prefix1','URI2'->'prefix2']` 的数组 | namespacePrefixes |
+| 允许找不到文件 | 如果为 true，在找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
+
+### <a name="xml-source-script-example"></a>XML 源脚本示例
+
+下面的脚本是使用数据集模式的映射数据流中 XML 源配置的示例。
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    validationMode: 'xsd',
+    namespaces: true) ~> XMLSource
+```
+
+下面的脚本是使用内联数据集模式的 XML 源配置的示例。
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    format: 'xml',
+    fileSystem: 'filesystem',
+    folderPath: 'folder',
+    validationMode: 'xsd',
+    namespaces: true) ~> XMLSource
+```
+
 ## <a name="xml-connector-behavior"></a>XML 连接器行为
 
 使用 XML 作为源时，请注意以下事项。
@@ -109,6 +153,7 @@ ms.locfileid: "97830308"
 
 - 命名空间处理：
 
+    - 在使用数据流时，可以禁用命名空间，在这种情况下，用于定义命名空间的属性将会被分析为普通属性。
     - 启用命名空间后，默认情况下，元素和属性的名称将遵循模式 `namespaceUri,elementName` 和 `namespaceUri,@attributeName`。 可以为源中的每个命名空间 URI 定义命名空间前缀，在此情况下，元素和属性的名称将遵循模式 `definedPrefix:elementName` 或 `definedPrefix:@attributeName`。
 
 - 值列：
@@ -118,5 +163,6 @@ ms.locfileid: "97830308"
 ## <a name="next-steps"></a>后续步骤
 
 - [复制活动概述](copy-activity-overview.md)
+- [映射数据流](concepts-data-flow-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 - [GetMetadata 活动](control-flow-get-metadata-activity.md)

@@ -3,13 +3,13 @@ title: IoT Edge 上的实时视频分析发行说明 - Azure
 description: 本主题提供 IoT Edge 上的实时视频分析版本的发行说明、改进、bug 修复和已知问题。
 ms.topic: conceptual
 origin.date: 08/19/2020
-ms.date: 01/18/2021
-ms.openlocfilehash: b66cf177b19130e9c2e832e9e8cb6ed8adb3a5e8
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 02/01/2021
+ms.openlocfilehash: 73603cb8f05da4a92742cb43ffad66aee91acf3d
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230989"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060014"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge 上的实时视频分析发行说明
 
@@ -19,6 +19,23 @@ ms.locfileid: "98230989"
 * 已知问题
 * Bug 修复
 * 已弃用的功能
+
+<hr width=100%>
+
+## <a name="january-12-2021"></a>2021 年 1 月 12 日
+
+该模块 2021 年 1 月刷新的此版本标记为：
+
+```
+mcr.microsoft.com/media/live-video-analytics:2.0.1
+```
+
+> [!NOTE]
+> 在快速入门和教程中，部署清单使用标记 2 (live-video-analytics:2)。 因此，只需重新部署此类清单，即可在“边缘”>“设备”上更新该模块。
+### <a name="bug-fixes"></a>Bug 修复 
+
+* 信号门处理器中的 `ActivationSignalOffset`、`MinimumActivationTime` 和 `MaximumActivationTime` 字段被错误地设置为必需属性。 它们现在是可选属性。
+* 修复了一个用法 bug，该 bug 会导致 IoT Edge 模块上的实时视频分析在部署到某些区域时崩溃。
 
 <hr width=100%>
 
@@ -33,9 +50,12 @@ ms.locfileid: "98230989"
 * 添加了对接收器节点的磁盘空间管理的支持。
 * `MediaGraphGrpcExtension` 节点现在支持 [extensionConfiguration](grpc-extension-protocol.md) 属性，允许在单个 gRPC 服务器中使用多个 AI 模型。
 * 添加了对以 [Prometheus 格式](https://prometheus.io/docs/practices/naming/)收集实时视频分析模块指标的支持。 详细了解如何[收集指标并在 Azure Monitor 中查看。](monitoring-logging.md#azure-monitor-collection-via-telegraf) 
+* 添加了筛选输出选择的功能。 在 `outputSelectors` 的帮助下，可以将单纯的音频、单纯的视频或音频和视频一起传递给任何图节点  。 
 * 帧速率筛选器处理器已弃用。  
     * 帧速率管理现在在图形扩展处理器节点本身中可用。
 
+### <a name="visual-studio-code-extension"></a>Visual Studio Code 扩展
+* 发布了 [IoT Edge 上的实时视频分析](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge)（一个 Visual Studio Code 扩展），用于帮助你管理 LVA 媒体图。 此扩展与 LVA 2.0 模块一起使用，并提供了一个非常精美且易用的图形界面来编辑和管理媒体图。
 ## <a name="september-22-2020"></a>2020 年 9 月 22 日
 
 此模块 2020 年 9 月刷新的此版本标记为：

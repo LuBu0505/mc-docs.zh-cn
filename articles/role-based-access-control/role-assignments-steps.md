@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 01/11/2021
+ms.date: 01/26/2021
 ms.author: v-junlch
-ms.openlocfilehash: f1b6f1e92e908a37f477eaf9d5144ae3b7797e65
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 3a1842931d40fbaab918e4707c52f780f99148f3
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195274"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058520"
 ---
 # <a name="steps-to-add-a-role-assignment"></a>角色分配的添加步骤
 
@@ -31,7 +31,7 @@ ms.locfileid: "98195274"
 - 服务主体 - 应用程序或服务用来访问特定 Azure 资源的安全标识。 可将服务主体视为应用程序的用户标识（用户名和密码或证书）。
 - 托管标识 - Azure Active Directory 中由 Azure 自动托管的标识。 在开发云应用程序时，通常使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)来管理用于向 Azure 服务进行身份验证的凭据。
 
-## <a name="step-2-find-the-appropriate-role"></a>步骤 2：查找适当的角色
+## <a name="step-2-select-the-appropriate-role"></a>步骤 2：选择合适的角色
 
 权限将组合到角色定义中。 它通常直接称为“角色”。 可以从多个内置角色的列表中选择。 如果内置角色不能满足组织的特定需求，则可自行创建自定义角色。
 
@@ -93,4 +93,3 @@ ms.locfileid: "98195274"
 ## <a name="next-steps"></a>后续步骤
 
 - [教程：使用 Azure 门户授予用户对 Azure 资源的访问权限](quickstart-assign-role-user-portal.md)
-

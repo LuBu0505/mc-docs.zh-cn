@@ -3,15 +3,15 @@ title: 在专用主机上部署
 description: 使用专用主机为 Azure 容器实例工作负载实现真正的主机级隔离
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/02/2020
+ms.date: 01/25/2021
 author: rockboyfor
 ms.author: v-yeche
-ms.openlocfilehash: 08b59a99c952ed8ce7dda9b1fd8db239e9c2a3c1
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 5a18164129a87b5b70088a2ee57c11ff7ee34149
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106277"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751345"
 ---
 <!--Verified successfully on DEDICATED HOSTS-->
 <!-- API deployment with 2019-12-01 ON MOONCAKE-->
@@ -22,6 +22,9 @@ ms.locfileid: "93106277"
 专用 SKU 适用于需要从物理服务器角度隔离工作负载的容器工作负载。
 
 ## <a name="prerequisites"></a>先决条件
+
+> [!NOTE]
+> 由于当前的一些限制，并非所有限制增加请求都可以保证得到批准。
 
 * 使用专用 SKU 的任何订阅的默认限制均为 0。 如果要将此 SKU 用于生产容器部署，请创建 [Azure 支持请求][azure-support]以增加限制。
 

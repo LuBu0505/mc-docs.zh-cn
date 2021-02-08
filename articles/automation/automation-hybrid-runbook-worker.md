@@ -3,23 +3,21 @@ title: Azure 自动化混合 Runbook 辅助角色概述
 description: 本文概述了混合 Runbook 辅助角色，可以使用这些辅助角色在本地数据中心或云提供商的计算机上运行 Runbook。
 services: automation
 ms.subservice: process-automation
-origin.date: 11/23/2020
-ms.date: 01/04/2021
+origin.date: 01/11/2021
+ms.date: 02/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 92705b71c69aca694954ad868a3403feb3cb8cd6
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 0e8939fcd8155835a65f7e2528950ab8f3b7707b
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830274"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059305"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>混合 Runbook 辅助角色概述
 
 Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的资源，因为它们在 Azure 云平台中运行。 利用 Azure 自动化的混合 Runbook 辅助角色功能，既可以直接在托管角色的计算机上运行 Runbook，也可以对环境中的资源运行 Runbook，从而管理这些本地资源。 Runbook 在 Azure 自动化中进行存储和管理，然后发送到一台或多台指定的计算机。
 
-下图说明了此功能：
-
-![混合 Runbook 辅助角色概述](media/automation-hybrid-runbook-worker/automation.png)
+## <a name="runbook-worker-types"></a>Runbook 辅助角色类型
 
 有两种类型的 Runbook 辅助角色 - 系统和用户。 下表描述了它们之间的差异。
 
@@ -30,18 +28,19 @@ Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的�
 
 混合 Runbook 辅助角色可在 Windows 或 Linux 操作系统上运行，并且此角色依赖于向 Azure Monitor [Log Analytics 工作区](../azure-monitor/platform/design-logs-deployment.md)进行报告的 [Log Analytics 代理](../azure-monitor/platform/log-analytics-agent.md)。 该工作区不仅用于监视计算机是否运行支持的操作系统，还可以用于下载安装混合 Runbook 辅助角色所需的组件。
 
-启用 Azure 自动化[更新管理](./update-management/overview.md)后，连接到 Log Analytics 工作区的任何计算机都会自动配置为系统混合 Runbook 辅助角色。
+启用 Azure 自动化[更新管理](./update-management/overview.md)后，连接到 Log Analytics 工作区的任何计算机都会自动配置为系统混合 Runbook 辅助角色。 若要将其配置为用户 Windows 混合 Runbook 辅助角色，请参阅[部署 Windows 混合 Runbook 辅助角色](automation-windows-hrw-install.md)；对于 Linux，请参阅[部署 Linux 混合Runbook 辅助角色](automation-linux-hrw-install.md)。
 
-每个用户混合 Runbook 辅助角色都是你在安装该辅助角色时指定的混合 Runbook 辅助角色组的成员。 一个组可以只包含一个辅助角色，但也可以在一个组中包含多个辅助角色，以实现高可用性。 每台计算机都可以托管一个向单个自动化帐户报告的混合 Runbook 辅助角色；你无法跨多个自动化帐户注册混合辅助角色。 这是因为混合辅助角色只能侦听单个自动化帐户中的作业。 对于托管系统混合 Runbook 辅助角色（由更新管理进行管理）的计算机，可以将其添加到混合 Runbook 辅助角色组。 但必须对更新管理和混合 Runbook 辅助角色组成员身份使用同一自动化帐户。
+## <a name="how-does-it-work"></a>它是如何工作的？
+
+![混合 Runbook 辅助角色概述](media/automation-hybrid-runbook-worker/automation.png)
+
+每个用户混合 Runbook 辅助角色都是你在安装该辅助角色时指定的混合 Runbook 辅助角色组的成员。 一个组可以只包含一个辅助角色，但也可以在一个组中包含多个辅助角色，以实现高可用性。 每台计算机都可以托管一个向单个自动化帐户报告的混合 Runbook 辅助角色；你无法跨多个自动化帐户注册混合辅助角色。 混合辅助角色只能侦听单个自动化帐户中的作业。 对于托管系统混合 Runbook 辅助角色（由更新管理进行管理）的计算机，可以将其添加到混合 Runbook 辅助角色组。 但必须对更新管理和混合 Runbook 辅助角色组成员身份使用同一自动化帐户。
 
 在用户混合 Runbook 辅助角色中启动 Runbook 时，可以指定该辅助角色会在其中运行的组。 组中的每个辅助角色都会轮询 Azure 自动化以查看是否有可用作业。 如果作业可用，获取作业的第一个辅助角色将执行该作业。 作业队列的处理时间取决于混合辅助角色硬件配置文件和负载。 不能指定特定的辅助角色。 混合辅助角色使用轮询机制（每 30 秒一次），并遵循先到先服务的顺序。 根据推送作业的时间，无论哪个混合辅助角色对自动化服务执行 ping 操作，都可提取该作业。 通常，一个混合辅助角色在每次执行 ping 操作时（即每隔 30 秒）可提取四个作业。 如果推送作业的速率高于每 30 秒四个，则混合 Runbook 辅助角色组中的另一个混合辅助角色极有可能提取了该作业。
 
+对于磁盘空间、内存或网络套接字，混合 Runbook 辅助角色没有许多 [Azure 沙盒](automation-runbook-execution.md#runbook-execution-environment)资源[限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)。 对混合辅助角色的限制仅与辅助角色自己的资源有关，并且它们不受 Azure 沙盒的[公平共享](automation-runbook-execution.md#fair-share)时间限制的约束。
+
 若要控制如何在混合 Runbook 辅助角色上分发 Runbook 以及何时或如何触发作业，可以针对自动化帐户中不同的混合 Runbook 辅助角色组注册混合辅助角色。 针对特定组或组指定目标作业，以支持执行排列。
-
-使用混合 Runbook 辅助角色（而不是 [Azure 沙箱](automation-runbook-execution.md#runbook-execution-environment)），因为它对磁盘空间、内存或网络套接字没有许多沙盒[限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)。 对混合辅助角色的限制仅与辅助角色自己的资源相关。
-
-> [!NOTE]
-> 混合 Runbook 辅助角色不受[公平份额](automation-runbook-execution.md#fair-share)时间限制，而 Azure 沙盒受限于此限制。
 
 ## <a name="hybrid-runbook-worker-installation"></a>混合 Runbook 辅助角色安装
 
@@ -95,7 +94,7 @@ Azure 自动化服务的服务标记仅提供用于以下场景的 IP：
 
 ## <a name="runbook-worker-limits"></a>Runbook 辅助角色限制
 
-每个自动化帐户的混合辅助角色组的数量上限为 4000，适用于系统和用户混合辅助角色。 如果要管理的计算机超过 4000 台，建议创建其他自动化帐户。
+每个自动化帐户的混合辅助角色组的数量上限为 4000，适用于系统和用户混合辅助角色。 如果要管理的计算机超过 4,000 台，建议创建其他自动化帐户。
 
 ## <a name="runbooks-on-a-hybrid-runbook-worker"></a>混合 Runbook 辅助角色上的 Runbook
 

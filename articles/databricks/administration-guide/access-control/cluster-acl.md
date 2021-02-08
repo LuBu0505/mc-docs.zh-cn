@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 09/14/2020
 title: 为工作区启用群集访问控制 - Azure Databricks
 description: 了解如何为 Azure Databricks 群集启用和禁用访问控制功能。
-ms.openlocfilehash: d28d9e7f69c1cd8563533804c9bc0427ecc7b517
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: f70505004b432cd68c293210c1ba087e37f8a9b0
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106459"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060161"
 ---
 # <a name="enable-cluster-access-control-for-your-workspace"></a>为工作区启用群集访问控制
 
@@ -34,16 +34,22 @@ ms.locfileid: "93106459"
    > ![“访问控制”选项卡](../../_static/images/admin-settings/access-control-tab-azure.png)
 
 3. 单击“群集和作业访问控制”旁边的“启用”按钮 。
-4. 单击“确认”以确认更改。
+4. 单击“确认”  。
 
 ## <a name="prevent-users-from-seeing-clusters-they-do-not-have-access-to"></a><a id="cluster-visibility"> </a><a id="prevent-users-from-seeing-clusters-they-do-not-have-access-to"> </a>防止用户看到他们无权访问的群集
+
+> [!NOTE]
+>
+> 默认情况下，发布 Azure Databricks 平台 3.34 版（于 2020 年 12 月发布）之后创建的工作区的群集可见性控制处于启用状态。 如果工作区是在此之前创建的，则管理员必须启用该功能。
 
 群集访问控制本身不会阻止用户看到 Azure Databricks UI 中显示的群集，即使用户没有这些群集的权限。 若要防止用户看到这些群集，请执行以下操作：
 
 1. 转到[管理控制台](../admin-console.md)。
 2. 选择“访问控制”选项卡。
 3. 单击“群集可见性控制”旁边的“启用”按钮 。
-4. 单击“确认”以确认更改。
+4. 单击“确认”  。
+
+若要禁用群集可见性控制，请使用相同的过程，在第三步中单击“禁用”。
 
 ## <a name="configure-cluster-creation-permission"></a><a id="cluster-create-permission"> </a><a id="configure-cluster-creation-permission"> </a>配置群集创建权限
 
@@ -56,7 +62,7 @@ ms.locfileid: "93106459"
 3. 选中用户所在行的“允许创建群集”复选框。
 
    > [!div class="mx-imgBorder"]
-   > ![用户所在行](../../_static/images/admin-settings/users-list.png)
+   > ![用户所在行](../../_static/images/admin-settings/add-user.png)
 
 4. 单击“确认”以确认更改。
 

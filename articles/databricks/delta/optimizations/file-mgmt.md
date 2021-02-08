@@ -5,15 +5,15 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 09/23/2020
+ms.date: 12/04/2020
 title: 通过文件管理优化性能 - Azure Databricks
 description: 了解 Azure Databricks 上的 Delta Lake 可用的文件管理机制以提高性能。
-ms.openlocfilehash: f9d16cd1aa6bfccb5dfafda07235019cff85feb4
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: cf12166d09521d48513eb5db29d25ea85bf2a766
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121941"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058592"
 ---
 # <a name="optimize-performance-with-file-management"></a>通过文件管理优化性能
 
@@ -23,7 +23,9 @@ ms.locfileid: "92121941"
 
 * [常见问题解答](#optimize-faq)阐释了为什么优化不是自动进行的，并提供了有关运行优化命令的频率的建议。
 * 有关演示优化优点的笔记本，请参阅[优化示例](optimization-examples.md)。
-* 有关 Azure Databricks SQL 上的 Delta Lake 优化命令的参考信息，请参阅[优化（Azure Databricks 上的 Delta Lake）](../../spark/latest/spark-sql/language-manual/optimize.md)。
+* 有关 Azure Databricks 上的 Delta Lake SQL 优化命令的参考信息，请参阅
+  * Databricks Runtime 7.x：[OPTIMIZE（Azure Databricks 上的 Delta Lake）](../../spark/latest/spark-sql/language-manual/delta-optimize.md)
+  * Databricks Runtime 5.5 LTS 和 6.x：[优化（Azure Databricks 上的 Delta Lake）](../../spark/2.x/spark-sql/language-manual/optimize.md)
 
 ## <a name="compaction-bin-packing"></a><a id="compaction-bin-packing"> </a> <a id="delta-optimize"> </a>压缩（二进制打包）
 
@@ -62,9 +64,14 @@ Delta 表的读取器使用快照隔离，这意味着，当 `OPTIMIZE` 从事�
 
 向 Delta 表中写入数据时，会自动收集跳过数据信息。 Azure Databricks 上的 Delta Lake 会在查询时利用此信息（最小值和最大值）来提供更快的查询。 不需要配置跳过的数据；此功能会在适用时激活。 但其有效性取决于数据的布局。 为了获取最佳结果，请应用 [Z 排序](#delta-zorder)。
 
-详细了解 Azure Databricks 上的 Delta Lake 跳过数据和 Z 排序的优点，请参阅[优化示例](optimization-examples.md)中的笔记本。 默认情况下，Azure Databricks 上的 Delta Lake 收集你的表架构中定义的前 32 列的统计信息。 你可以使用[表属性](../delta-batch.md#table-properties) `dataSkippingNumIndexedCols` 来更改此值。 在写入文件时，添加更多的列来收集统计信息会增加额外的开销。
+详细了解 Azure Databricks 上的 Delta Lake 跳过数据和 Z 排序的优点，请参阅[优化示例](optimization-examples.md)中的笔记本。 默认情况下，Azure Databricks 上的 Delta Lake 收集你的表架构中定义的前 32 列的统计信息。 你可以使用[表属性](../delta-batch.md#table-properties) ``dataSkippingNumIndexedCols`` 来更改此值。 在写入文件时，添加更多的列来收集统计信息会增加额外的开销。
 
-收集长字符串的统计信息成本高昂。 若要避免收集长字符串的统计信息，可以将表属性 `dataSkippingNumIndexedCols` 配置为避免包含长字符串的列，或使用 `ALTER TABLE CHANGE COLUMN` 将包含长字符串的列移动到大于 `dataSkippingNumIndexedCols` 的列。 为了收集统计信息，嵌套列中的每个字段都被视为单独的列。
+收集长字符串的统计信息成本高昂。 若要避免收集长字符串的统计信息，可以将表属性 ``dataSkippingNumIndexedCols`` 配置为避免包含长字符串的列，或使用 ``ALTER TABLE CHANGE COLUMN`` 将包含长字符串的列移动到大于 ``dataSkippingNumIndexedCols`` 的列。 请参阅
+
+* Databricks Runtime 7.x：[CHANGE COLUMN](../../spark/latest/spark-sql/language-manual/sql-ref-syntax-ddl-alter-table.md#change-column)
+* Databricks Runtime 5.5 LTS 和 6.x：[Change columns](../../spark/2.x/spark-sql/language-manual/alter-table-or-view.md#change-columns)
+
+为了收集统计信息，嵌套列中的每个字段都被视为单独的列。
 
 有关详细信息，请参阅博客文章：[通过 Databricks Delta 以在数秒内处理数 PB 的数据](https://databricks.com/blog/2018/07/31/processing-petabytes-of-data-in-seconds-with-databricks-delta.html)。
 
@@ -128,7 +135,7 @@ Delta Lake 写入[检查点](https://github.com/delta-io/delta/blob/master/PROTO
 使用表属性 `delta.checkpoint.writeStatsAsJson` 和 `delta.checkpoint.writeStatsAsStruct` 来管理如何在检查点中写入统计信息。
 如果两个表属性都为 `false`，则 Delta Lake 无法执行跳过数据。
 
-在 Databricks Runtime 7.3 及更高版本中：
+在 Databricks Runtime 7.3 LTS 及更高版本中：
 
 * 批处理以 JSON 格式和结构格式编写写入统计信息。 `delta.checkpoint.writeStatsAsJson` 上声明的默认值为 `true`。
 * 流式处理以 JSON 格式写入写入统计信息（以最大程度地减少检查点对写入延迟的影响）。 若要同时编写结构格式，请参阅[为结构化流查询启用增强的检查点](#enhanced-ss)。
@@ -143,7 +150,7 @@ Delta Lake 写入[检查点](https://github.com/delta-io/delta/blob/master/PROTO
 
 #### <a name="trade-offs-with-statistics-in-checkpoints"></a>检查点中统计信息的权衡
 
-由于在检查点中写入统计信息会产生成本（通常小于一分钟，即使是对大表），因此需要权衡编写检查点所花的时间和与 Databricks Runtime 7.2 及更旧版本的兼容性。 如果能够将所有工作负载升级到 Databricks Runtime 7.3 或更高版本，则可以通过禁用旧版 JSON 统计信息来降低写入检查点的成本。 下表汇总了此权衡。
+由于在检查点中写入统计信息会产生成本（通常小于一分钟，即使是对大表），因此需要权衡编写检查点所花的时间和与 Databricks Runtime 7.2 及更旧版本的兼容性。 如果能够将所有工作负载升级到 Databricks Runtime 7.3 LTS 或更高版本，则可以通过禁用旧版 JSON 统计信息来降低写入检查点的成本。 下表汇总了此权衡。
 
 如果跳过数据不适用于你的应用程序，可以将这两个属性都设置为 false，这样就不会收集或写入任何统计信息。
 我们不建议此配置。
@@ -172,8 +179,8 @@ ALTER TABLE [<table-name>|delta.`<path-to-table>`] SET TBLPROPERTIES
 
 #### <a name="disable-writes-from-clusters-that-write-checkpoints-without-the-stats-struct"></a>禁用写入无统计结构的检查点的群集写入
 
-Databricks Runtime 7.2 及更旧版本的编写器会写入无统计结构的检查点，这会阻止优化 Databricks Runtime 7.3 读取器。
-若要阻止运行 Databricks Runtime 7.2 及更旧版本的群集写入 Delta 表，你可以使用 `upgradeTableProtocol` 方法升级 Delta 表：
+Databricks Runtime 7.2 及更旧版本的写入器会写入无统计结构的检查点，这会阻止优化 Databricks Runtime 7.3 LTS 读取器。
+若要阻止运行 Databricks Runtime 7.2 及更旧版本的群集写入 Delta 表，你可以使用 ``upgradeTableProtocol`` 方法升级 Delta 表：
 
 ##### <a name="python"></a>Python
 
@@ -193,15 +200,42 @@ delta.upgradeTableProtocol(1, 3)
 
 > [!WARNING]
 >
-> 应用 `upgradeTableProtocol` 方法可阻止运行 Databricks Runtime 7.2 及更旧版本的群集写入表，此更改不可逆。
-> 建议仅在提交到新格式后才升级表。 可以通过使用 Databricks Runtime 7.3 创建表的浅层[克隆](../../spark/latest/spark-sql/language-manual/clone.md)来尝试这些优化。
+> 应用 ``upgradeTableProtocol`` 方法可阻止运行 Databricks Runtime 7.2 及更旧版本的群集写入表，此更改不可逆。
+> 建议仅在提交到新格式后才升级表。 可以通过使用 Databricks Runtime 7.3 LTS 创建表的浅层[克隆](../../spark/latest/spark-sql/language-manual/delta-clone.md)来尝试这些优化。
 
-升级表编写器版本后，编写器必须遵循 `'delta.checkpoint.writeStatsAsStruct'` 和 `'delta.checkpoint.writeStatsAsJson'` 的设置。
+升级表编写器版本后，编写器必须遵循 ``'delta.checkpoint.writeStatsAsStruct'`` 和 ``'delta.checkpoint.writeStatsAsJson'`` 的设置。
 
 下表总结了如何在各种版本的 Databricks Runtime、表协议版本和编写器类型中利用增强的检查点。
 
 > [!div class="mx-imgBorder"]
 > ![增强的检查点](../../_static/images/delta/enhanced-checkpoints.png)
+
+#### <a name="disable-writes-from-clusters-using-old-checkpoint-formats"></a>禁止从使用旧检查点格式的群集写入
+
+Databricks Runtime 7.2 及更低版本的写入器可以写入旧格式的检查点，这将阻止对 Databricks Runtime 7.3 LTS 编写器进行优化。 若要阻止运行 Databricks Runtime 7.2 及更旧版本的群集写入 Delta 表，你可以使用 ``upgradeTableProtocol`` 方法升级 Delta 表：
+
+##### <a name="python"></a>Python
+
+```python
+from delta.tables import DeltaTable
+delta = DeltaTable.forPath(spark, "path_to_table") # or DeltaTable.forName
+delta.upgradeTableProtocol(1, 3)
+```
+
+##### <a name="scala"></a>Scala
+
+```scala
+import io.delta.tables.DeltaTable
+val delta = DeltaTable.forPath(spark, "path_to_table") // or DeltaTable.forName
+delta.upgradeTableProtocol(1, 3)
+```
+
+> [!WARNING]
+>
+> 应用 ``upgradeTableProtocol`` 方法可阻止运行 Databricks Runtime 7.2 及更低版本的群集写入到你的表。 此更改不可逆。 因此，建议仅在提交到新格式后才升级表。 可以通过使用 Databricks Runtime 7.3 LTS 创建表的浅层克隆来尝试这些优化：
+>
+> * Databricks Runtime 7.x：[CLONE（Azure Databricks 上的 Delta Lake）](../../spark/latest/spark-sql/language-manual/delta-clone.md)
+> * Databricks Runtime 5.5 LTS 和 6.x：[克隆（Azure Databricks 上的 Delta Lake）](../../spark/2.x/spark-sql/language-manual/clone.md)
 
 ## <a name="frequently-asked-questions-faq"></a><a id="frequently-asked-questions-faq"> </a><a id="optimize-faq"> </a>常见问题解答 (FAQ)
 

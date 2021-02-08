@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-origin.date: 12/09/2020
-ms.date: 01/04/2021
-ms.openlocfilehash: 1848989d6475b7ce6924368d7ec48196d1524662
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+origin.date: 01/12/2021
+ms.date: 02/01/2021
+ms.openlocfilehash: b9eae9dd6ce6eba5db02d98ced89456c0d0527ef
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829685"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059630"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>在 Azure 门户中使用 Azure 数据工厂批量复制多个表
 
@@ -52,20 +52,8 @@ ms.locfileid: "97829685"
 
 ## <a name="prerequisites"></a>先决条件
 * **Azure 存储帐户**。 Azure 存储帐户用作批量复制操作中的过渡 Blob 存储。 
-* **Azure SQL 数据库**。 此数据库包含源数据。 
-* **Azure Synapse Analytics**。 此数据仓库包含从 SQL 数据库复制的数据。 
-
-### <a name="prepare-sql-database-and-azure-synapse-analytics"></a>准备 SQL 数据库和 Azure Synapse Analytics 
-
-**准备源 Azure SQL 数据库**：
-
-按照[在 Azure SQL 数据库中创建数据库](../azure-sql/database/single-database-create-quickstart.md)一文，使用 Adventure Works LT 示例数据在 SQL 数据库中创建一个数据库。 本教程将此示例数据库中的所有表复制到 Azure Synapse Analytics。
-
-**准备接收器 Azure Synapse Analytics**：
-
-1. 如果没有 Azure Synapse Analytics 工作区，请参阅 [Azure Synapse Analytics 入门](/synapse-analytics/sql-data-warehouse/create-data-warehouse-portal)一文了解创建步骤。
-
-1. 在 Azure Synapse Analytics 中创建相应的表架构。 后面的步骤使用 Azure 数据工厂迁移/复制数据。
+* **Azure SQL 数据库**。 此数据库包含源数据。 按照[在 Azure SQL 数据库中创建数据库](../azure-sql/database/single-database-create-quickstart.md)一文，使用 Adventure Works LT 示例数据在 SQL 数据库中创建一个数据库。 本教程将此示例数据库中的所有表复制到 Azure Synapse Analytics。
+* **Azure Synapse Analytics**。 此数据仓库包含从 SQL 数据库复制的数据。 如果没有 Azure Synapse Analytics 工作区，请参阅 [Azure Synapse Analytics 入门](/synapse-analytics/sql-data-warehouse/create-data-warehouse-portal)一文了解创建步骤。
 
 ## <a name="azure-services-to-access-sql-server"></a>Azure 服务访问 SQL 服务器
 
@@ -96,7 +84,7 @@ ms.locfileid: "97829685"
      若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 1. 选择“V2”作为“版本”。
 1. 选择数据工厂的 **位置**。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
-1. 单击 **创建**。
+1. 单击“创建”。
 1. 创建完成后，选择“转到资源”导航到“数据工厂”页。 
    
 1. 单击“创作和监视”磁贴，在单独的选项卡中启动数据工厂 UI 应用程序。
@@ -242,6 +230,7 @@ ms.locfileid: "97829685"
     ![Foreach 参数生成器](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
     
     d. 切换到“活动”选项卡，单击 **铅笔图标** 向 **ForEach** 活动添加子活动。
+    
     ![Foreach 活动生成器](./media/tutorial-bulk-copy-portal/for-each-activity-builder.png)
 
 1. 在“活动”工具箱中，展开“移动并传输”，将“复制数据”活动拖放到管道设计器图面中。 请注意顶部的痕迹导航菜单。 **IterateAndCopySQLTable** 是管道名称，**IterateSQLTables** 是 ForEach 活动名称。 设计器处于活动范围内。 若要从 ForEach 编辑器切换回管道编辑器，可单击痕迹导航菜单中的链接。 
@@ -258,7 +247,6 @@ ms.locfileid: "97829685"
         SELECT * FROM [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
         ``` 
 
-
 1. 切换到“接收器”选项卡，然后执行以下步骤： 
 
     1. 选择 **AzureSqlDWDataset** 作为 **接收器数据集**。
@@ -266,6 +254,7 @@ ms.locfileid: "97829685"
     1. 单击 DWSchema 参数的“值”输入框，选择下方的“添加动态内容”，输入 `@item().TABLE_SCHEMA` 表达式作为脚本，然后选择“完成” 。
     1. 对于“复制方法”，请选择“PolyBase”。 
     1. 清除“使用类型默认值”选项。 
+    1. 对于“表”选项，默认设置为“无”。 如果没有在接收器 Azure Synapse Analytics 中预先创建表，请启用“自动创建表”选项，然后复制活动将基于源数据自动创建表。 有关详细信息，请参阅[自动创建接收器表](copy-activity-overview.md#auto-create-sink-tables)。 
     1. 单击“复制前脚本”输入框，选择下方的“添加动态内容”，输入以下表达式作为脚本，然后选择“完成”。 
 
         ```sql
@@ -273,6 +262,8 @@ ms.locfileid: "97829685"
         ```
 
         ![复制接收器设置](./media/tutorial-bulk-copy-portal/copy-sink-settings.png)
+
+
 1. 切换到“设置”选项卡，然后执行以下步骤： 
 
     1. 选中“启用暂存”对应的复选框。

@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 08/04/2020
 title: 2020 年 1 月 - Azure Databricks
 description: 新 Azure Databricks 功能和改进的 2020 年 1 月发行说明。
-ms.openlocfilehash: ccb84875e0421c0381e34a463ec4041abfa04a17
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 6c9e274234175840a53a4648c6e4d743d3903fc1
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329161"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058723"
 ---
 # <a name="january-2020"></a>2020 年 1 月
 
@@ -61,7 +61,7 @@ Databricks Runtime 6.3 ML 的正式发布引入了许多库升级，其中包括
 * MLflow：1.4.0 到 1.5.0
 * Hyperopt：0.2.1 到 0.2.2
 
-有关详细信息，请参阅完整的 [Databricks Runtime 6.3 ML（不支持）](../../runtime/6.3ml.md)发行说明。
+有关详细信息，请参阅完整的[用于机器学习的 Databricks Runtime 6.3（不受支持）](../../runtime/6.3ml.md)发行说明。
 
 ## <a name="databricks-runtime-63-ga"></a>Databricks Runtime 6.3 正式版
 

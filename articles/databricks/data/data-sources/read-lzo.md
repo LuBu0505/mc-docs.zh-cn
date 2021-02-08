@@ -5,15 +5,15 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 04/29/2020
+ms.date: 11/19/2020
 title: LZO 压缩文件 - Azure Databricks
 description: 了解如何使用 Azure Databricks 读取 LZO 压缩文件中的数据。
-ms.openlocfilehash: e25b52452cb73952c0ba53b8b16630f5ee2ca204
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: 33853f989fda2ae8686c2796c045c8f007e083f1
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121917"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059878"
 ---
 # <a name="lzo-compressed-files"></a><a id="lzo"> </a><a id="lzo-compressed-files"> </a>LZO 压缩文件
 

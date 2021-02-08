@@ -5,16 +5,16 @@ author: Johnnytechn
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 01/19/2021
 ms.author: v-johya
 ms.custom: security-benchmark
 origin.date: 12/16/2019
-ms.openlocfilehash: 3e16c159f6cd957fb1c87e31921249296143499e
-ms.sourcegitcommit: 6f66215d61c6c4ee3f2713a796e074f69934ba98
+ms.openlocfilehash: 7fd7fee3786cf9a7176483cbb4e00682c52e34c6
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92128094"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751057"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Azure 安全基准简介
 
@@ -28,7 +28,7 @@ Azure 安全基准包含一系列具有重要影响的安全建议，可用于�
 - 服务基线：这些基线将控制应用于单个 Azure 服务，以提供有关该服务的安全配置的建议。
 
 ## <a name="implement-the-azure-security-benchmark"></a>实现 Azure 安全基准
-- 通过查看有关企业控制机制的[文档](overview.md)和特定于服务的基线来规划你的 Azure 安全基准实现，以规划控制框架，以及该框架映射到 CIS (Controls v7.1) 和 NIST (SP800-53) 框架等指南的方式。
+- 通过查看有关企业控制机制的[文档](overview.md)和特定于服务的基线来规划你的 Azure 安全基准实现，以规划控制框架，以及该框架映射到 CIS (Controls v7.1) 和 NIST (SP 800-53) 框架等指南的方式。
 - 使用 Azure 安全中心[合规性仪表板](../../security-center/security-center-compliance-dashboard.md)来监视符合 Azure 安全基准状态（和其他控制集）的程度。
 - 建立规范措施，以通过 Azure 蓝图和 Azure Policy 自动执行安全配置，并强制符合 Azure 安全基准（以及组织中的其他要求）。
  

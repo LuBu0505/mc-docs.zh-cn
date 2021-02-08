@@ -6,17 +6,17 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 origin.date: 10/12/2020
 author: rockboyfor
-ms.date: 01/18/2021
-ms.testscope: yes|no
-ms.testdate: 11/09/2020null
+ms.date: 02/01/2021
+ms.testscope: yes
+ms.testdate: 11/09/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: cb608ddfc460c4a8b00a58deaa9bbdb7adfa3477
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 262c7f4547111ef19d4a6eb6c711e6da9cfe4d6f
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230111"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063682"
 ---
 <!--Verified successfully-->
 # <a name="apache-cassandra-and-azure-cosmos-db-cassandra-api-consistency-levels"></a>Apache Cassandra 和 Azure Cosmos DB Cassandra API 一致性级别
@@ -33,11 +33,19 @@ ms.locfileid: "98230111"
 
 默认情况下，Apache Cassandra 数据库是一个多主系统，不提供使用单区域进行写入并使用多区域复制进行读取的现成选项。 但是，Azure Cosmos DB 提供了允许单区域或[多区域](how-to-multi-master.md)写入配置的全包式功能。 能够跨多个区域选择单区域写入配置的优点之一是可以避免跨区域冲突情况，并且可以选择跨多个区域保持强一致性。 
 
-使用单区域写入，你可以保持强一致性，同时可以通过[自动故障转移](high-availability.md#multi-region-accounts-with-a-single-write-region-write-region-outage)跨区域保持一定级别的高可用性。 在此配置中，你仍然可以利用数据局部性，通过将每个请求降级到最终一致性来减少读取延迟。 除了这些功能以外，Azure Cosmos DB 平台还提供了在选择区域时启用[区域冗余](high-availability.md#availability-zone-support)的功能。 因此，与原生 Apache Cassandra 不同，Azure Cosmos DB 允许你以更细的粒度浏览 CAP 定理[权衡范围](consistency-levels.md#rto)。
+使用单区域写入，你可以保持强一致性，同时可以通过[自动故障转移](high-availability.md#multi-region-accounts-with-a-single-write-region-write-region-outage)跨区域保持一定级别的高可用性。 在此配置中，你仍然可以利用数据局部性，通过将每个请求降级到最终一致性来减少读取延迟。 因此，与原生 Apache Cassandra 不同，Azure Cosmos DB 允许你以更细的粒度浏览 CAP 定理[权衡范围](consistency-levels.md#rto)。
+
+<!--Not Avaialble on [zone redundancy](high-availability.md#availability-zone-support)-->
+<!--Not Avaialble on In addition to these capabilities, the Azure Cosmos DB platform also provides the ability to enable [zone redundancy](high-availability.md#availability-zone-support)-->
 
 ## <a name="mapping-consistency-levels"></a>映射一致性级别
 
-Azure Cosmos DB 平台提供了一组五个明确定义的、面向业务用例的一致性设置，这些设置涉及复制以及由 [CAP 定理](https://en.wikipedia.org /wiki/CAP_theorem)（此网站在 Azure 中国云中不可用）和 [PACLC 定理](https://en.wikipedia.org /wiki/PACELC_theorem)（此网站在 Azure 中国云中不可用）阐述的权衡。 由于此方法与 Apache Cassandra 有很大的不同，因此建议你花时间查看并了解我们的[文档](consistency-levels.md)中的 Azure Cosmos DB 一致性设置，或者观看这个简短的[视频](https://www.youtube.com /watch?v=t1--kZjrG-o)（此网站在 Azure 中国云中不可用）指南，以了解 Azure Cosmos DB 平台中的一致性设置。
+Azure Cosmos DB 平台提供了一组包含五个明确定义、面向业务用例的一致性设置，这些设置与复制和 CAP 定理及 PACLC 定理定义的权衡相关。 由于此方法与 Apache Cassandra 有很大不同，因此建议花时间查看并了解[文档](consistency-levels.md)中的 Azure Cosmos DB 一致性设置。
+
+<!--Not Available on [CAP theorem](https://en.wikipedia.org/wiki/CAP_theorem)-->
+<!--Not Available on [PACLC theorem](https://en.wikipedia.org/wiki/PACELC_theorem)-->
+<!--Not Available on [video](https://www.youtube.com/watch?v=t1--kZjrG-o)-->
+<!--Not Available on video guide to understanding consistency settings in the Azure Cosmos DB platform.-->
 
 下表说明了使用 Cassandra API 时 Apache Cassandra 与 Azure Cosmos DB 一致性级别之间的可能映射。 这显示了针对单区域读取、多区域读取以及单区域写入和多区域写入的配置。
 

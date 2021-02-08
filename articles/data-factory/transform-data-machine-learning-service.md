@@ -10,13 +10,13 @@ ms.author: v-jay
 author: WenJason
 manager: digimobile
 origin.date: 07/16/2020
-ms.date: 09/21/2020
-ms.openlocfilehash: 785dcd29a3a7bb9a183cf0f5bd0cf5a6e34f7bd3
-ms.sourcegitcommit: f5d53d42d58c76bb41da4ea1ff71e204e92ab1a7
+ms.date: 02/01/2021
+ms.openlocfilehash: 02c89cbf07c5191f71a68932c14d15171f7ecc93
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532876"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060035"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>在 Azure 数据工厂中执行 Azure 机器学习管道
 
@@ -64,6 +64,7 @@ continueOnStepFailure | 当某个步骤失败时，继续执行机器学习管�
 ## <a name="next-steps"></a>后续步骤
 参阅以下文章了解如何以其他方式转换数据：
 
+* [执行数据流活动](control-flow-execute-data-flow-activity.md)
 * [Hive 活动](transform-data-using-hadoop-hive.md)
 * [Pig 活动](transform-data-using-hadoop-pig.md)
 * [MapReduce 活动](transform-data-using-hadoop-map-reduce.md)

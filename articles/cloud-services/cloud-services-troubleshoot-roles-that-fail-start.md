@@ -1,27 +1,22 @@
 ---
 title: 对未能启动的角色进行故障排除 | Microsoft Docs
 description: 以下是云服务角色无法启动的一些常见原因。 此外还提供了这些问题的解决方案。
-services: cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 674b2faf-26d7-4f54-99ea-a9e02ef0eb2f
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 11/30/2020
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: a82a3401721ef4c9948b70f881723d133a680ce0
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 50afdece38e4955fd67a1134f2de5b89d04ab4f5
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508049"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058797"
 ---
-# <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>对无法启动的云服务角色进行故障排除
+# <a name="troubleshoot-azure-cloud-service-roles-that-fail-to-start"></a>对无法启动的 Azure 云服务角色进行故障排除
+
 以下是一些与无法启动的 Azure 云服务角色相关的常见问题和解决方案。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]

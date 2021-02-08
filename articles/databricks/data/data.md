@@ -5,17 +5,17 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 07/29/2020
-title: 数据概述 - Azure Databricks
+ms.date: 12/22/2020
+title: 导入、读取和修改数据简介 - Azure Databricks
 description: 了解如何使用 Apache Spark 和本地 API 导入和读取数据，以及如何使用 Azure Databricks 中的 DBFS 命令编辑和删除数据。
-ms.openlocfilehash: 8202c9a7b019471bbb1cf4bfaf2a63a47bcf4409
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: 77d2a4799f363d1da76dd2b45d29ce2bd8f902e7
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121931"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059876"
 ---
-# <a name="data-overview"></a><a id="access-data"> </a><a id="data-overview"> </a>数据概述
+# <a name="introduction-to-importing-reading-and-modifying-data"></a><a id="access-data"> </a><a id="introduction-to-importing-reading-and-modifying-data"> </a>导入、读取和修改数据简介
 
 本文介绍如何使用 UI 将数据导入 Azure Databricks，使用 Spark 和本地 API 读取导入的数据，以及如何使用 [Databricks 文件系统 (DBFS)](databricks-file-system.md) 命令修改导入的数据。
 

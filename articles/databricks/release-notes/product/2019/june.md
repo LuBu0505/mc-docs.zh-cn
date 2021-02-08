@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 01/02/2020
 title: 2019 年 6 月 - Azure Databricks
 description: 新 Azure Databricks 功能和改进的 2019 年 6 月发行说明。
-ms.openlocfilehash: ba31a51c103fccf15d46657948d0acfee972c73a
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 0837876067c3c82e096296bff386914f9e22f04f
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329402"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058736"
 ---
 # <a name="june-2019"></a>2019 年 6 月
 
@@ -64,7 +64,7 @@ Azure Databricks 现在为 [Lsv2 VM 系列](https://azure.microsoft.com/blog/ann
 
 很高兴引入带有 Conda 的 Databricks Runtime 5.4，它可以让你利用 Conda 来管理 Python 库和环境。 此运行时在创建群集时提供两个 Conda 根环境选项：
 
-* Databricks Standard 环境包括许多常用 Python 包的更新版本。 此环境旨在替代在 Databricks Runtime 上运行的现有笔记本。 这是基于 Databricks Conda 的默认运行时环境。
+* **Databricks 标准** 环境包括许多常用 Python 包的更新版本。 此环境旨在替代在 Databricks Runtime 上运行的现有笔记本。 这是基于 Databricks Conda 的默认运行时环境。
 * **Databricks Minimal** 环境包含 PySpark 和 Databricks Python 笔记本功能所需的最小数量的包。 这个环境非常适合使用各种 Python 包进行运行时自定义。
 
 请参阅[带有 Conda 的 Databricks Runtime 5.4（beta 版本）](../../runtime/5.4conda.md) 的完整发行说明。
@@ -82,7 +82,7 @@ Databricks Runtime 5.4 ML 是基于 [Databricks Runtime 5.4（不受支持）](.
 * 从 Horovod 发送到 Spark 驱动程序节点的 HorovodRunner 输出现在显示在笔记本单元中。
 * 已预安装的 XGBoost Python 包。
 
-有关详细信息，请参阅 [Databricks Runtime 5.4 ML（不受支持）](../../runtime/5.4ml.md)。
+有关详细信息，请参阅[用于机器学习的 Databricks Runtime 5.4（不受支持）](../../runtime/5.4ml.md)。
 
 ## <a name="databricks-runtime-54"></a>Databricks Runtime 5.4
 

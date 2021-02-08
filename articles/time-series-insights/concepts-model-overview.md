@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 01/26/2021
 ms.custom: seodec18
-ms.openlocfilehash: 0554d64e0b01e1aa73069030e23063806830dc7e
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: 7c8e9a564a9890837c0933ddd369c7d64cdf8819
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508097"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059091"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure 时序见解第 2 代中的时序模型
 
@@ -89,6 +89,8 @@ ms.locfileid: "96508097"
 
 为 Azure 时序见解第 2 代环境配置事件源后，会在时序模型中自动发现和创建实例。 可以使用时序模型查询通过 Azure 时序见解资源管理器来创建或更新实例。
 
+[Contoso 风力发电厂演示](https://insights.timeseries.azure.com/preview/samples)提供了多个实时实例示例。
+
 [![时序模型实例示例](./media/v2-update-tsm/time-series-model-instance.png)](./media/v2-update-tsm/time-series-model-instance.png#lightbox)
 
 ### <a name="instance-properties"></a>实例属性
@@ -134,6 +136,8 @@ ms.locfileid: "96508097"
 时序模型层次结构通过指定属性名称及其关系来组织实例。
 
 可以在给定的 Azure 时序见解第 2 代环境中配置多个层次结构。 一个时序模型实例可以映射到一个或多个层次结构（多对多的关系）。
+
+[Contoso 风力发电厂演示](https://insights.timeseries.azure.com/preview/samples)显示了标准实例和类型层次结构。
 
 [![时序模型层次结构示例](./media/v2-update-tsm/time-series-model-hierarchies.png)](./media/v2-update-tsm/time-series-model-hierarchies.png#lightbox)
 
@@ -212,7 +216,7 @@ ms.locfileid: "96508097"
 | ID4 | "building" = "1000", "floor" = "10"  |
 | ID5 | “building”、“floor”和“room”均未设置。 |
 
-时序 ID1 和 ID4 在 Azure 时序见解 TSI 资源管理器中显示为层次结构 H1 的一部分，因为它们包含已完全定义且正确排序的 building、floor 和 room 参数    。
+时序 ID1 和 ID4 在 Azure 时序见解资源管理器中显示为层次结构 H1 的一部分，因为它们包含已完全定义且正确排序的 building、floor 和 room 参数。
 
 其他 ID 分类到“无父实例”下，因为它们不符合指定的数据层次结构。
 
@@ -221,6 +225,8 @@ ms.locfileid: "96508097"
 时序模型类型可帮助你定义用于执行计算的变量或公式。 类型与某个特定实例关联。
 
 一个类型可以包含一个或多个变量。 例如，某个时序模型实例的类型为“温度传感器”，其中包括变量“平均温度”、“最小温度”和“最大温度”。   
+
+[Contoso 风力发电厂演示](https://insights.timeseries.azure.com/preview/samples)可视化了与相应实例关联的多个时序模型类型。
 
 [![时序模型类型示例](./media/v2-update-tsm/time-series-model-types.png)](./media/v2-update-tsm/time-series-model-types.png#lightbox)
 

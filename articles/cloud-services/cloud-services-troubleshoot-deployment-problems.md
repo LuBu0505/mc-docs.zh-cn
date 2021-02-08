@@ -1,27 +1,22 @@
 ---
 title: 解决云服务部署问题 | Microsoft Docs
 description: 将云服务部署到 Azure 时，可能会遇到几个常见问题。 本文提供了部分问题的解决方案。
-services: cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: a18ae415-0d1c-4bc4-ab6c-c1ddea02c870
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 10/20/2020
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: 086c5451d980cfe1d5e9866f01183294d50100e3
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: fa8ba3a740f38b91303bf21133bee59ad349a737
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472170"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058799"
 ---
-# <a name="troubleshoot-cloud-service-deployment-problems"></a>排查云服务部署问题
+# <a name="troubleshoot-azure-cloud-services-deployment-problems"></a>排查 Azure 云服务部署问题
+
 将云服务应用程序包部署到 Azure 时，可通过 Azure 门户中的“属性”  窗格获取有关部署的信息。 可以使用此窗格中的详细信息来帮助你解决云服务的问题，还可以在提交新的支持请求时将此信息提供给 Azure 支持人员。
 
 可按如下所述找到“属性”  窗格：

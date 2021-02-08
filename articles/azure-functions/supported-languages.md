@@ -2,13 +2,13 @@
 title: Azure Functions 中支持的语言
 description: 了解支持哪些语言 (GA)，哪些是预览语言，以及将 Functions 开发扩展到其他语言的方法。
 ms.topic: conceptual
-ms.date: 07/02/2020
-ms.openlocfilehash: cb05aa9c6114ea12383ecc7144a7f50499caed23
-ms.sourcegitcommit: 1008ad28745709e8d666f07a90e02a79dbbe2be5
+ms.date: 01/27/2021
+ms.openlocfilehash: 1455bd9b432e9bbe1f3747540ac7ce1c46ec8cd4
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85945234"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059919"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Azure Functions 中支持的语言
 
@@ -27,9 +27,9 @@ ms.locfileid: "85945234"
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-## <a name="custom-handlers-preview"></a>自定义处理程序（预览版） 
+## <a name="custom-handlers"></a>自定义处理程序
 
-自定义处理程序是可以从 Azure Functions 主机接收事件的轻型 Web 服务器。 支持 HTTP 基元的任何语言都可以实现自定义处理程序。 这意味着可以使用自定义处理程序以不受官方支持的语言创建函数。 有关详细信息，请参阅 [Azure Functions 自定义处理程序（预览版）](functions-custom-handlers.md)。
+自定义处理程序是可以从 Azure Functions 主机接收事件的轻型 Web 服务器。 支持 HTTP 基元的任何语言都可以实现自定义处理程序。 这意味着可以使用自定义处理程序以不受官方支持的语言创建函数。 有关详细信息，请参阅 [Azure Functions 自定义处理程序](functions-custom-handlers.md)。
 
 ## <a name="language-extensibility"></a>语言扩展性
 
@@ -43,6 +43,5 @@ ms.locfileid: "85945234"
 + [C# 脚本开发人员参考](functions-reference-csharp.md)
 + [Java 开发人员参考](functions-reference-java.md)
 + [JavaScript 开发人员参考](functions-reference-node.md)
++ [PowerShell 开发人员参考](functions-reference-powershell.md)
 + [TypeScript 开发人员参考](functions-reference-node.md#typescript)
-
-<!-- Update_Description: wording update -->

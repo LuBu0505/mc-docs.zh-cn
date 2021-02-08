@@ -6,18 +6,18 @@ ms.service: sql-database
 ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: WenJason
 ms.author: v-jay
 ms.reviewer: sashan,moslake,josack
-origin.date: 06/10/2020
-ms.date: 07/13/2020
-ms.openlocfilehash: 047b79d969c6c8c68b44297c3233c6db96fb7d13
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+origin.date: 1/14/2021
+ms.date: 02/01/2021
+ms.openlocfilehash: ded825c58172096001bb4da50f269db22c85fbfe
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86227920"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059201"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL 数据库和 Azure Synapse Analytics 服务器的资源限制
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -81,7 +81,7 @@ ms.locfileid: "86227920"
 - 提高数据库或弹性池的服务层级或计算大小。 请参阅[缩放单一数据库资源](single-database-scale.md)和[缩放弹性池资源](elastic-pool-scale.md)。
 - 如果争用计算资源造成了辅助角色使用率上升，请优化查询，以降低每项查询的资源使用率。 有关详细信息，请参阅[查询优化/提示](performance-guidance.md#query-tuning-and-hinting)。
 - 减小 [MAXDOP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines)（最大并行度）设置。
-- 优化查询工作负荷，以减少查询受阻的发生次数和持续时间。
+- 优化查询工作负荷，以减少查询受阻的发生次数和持续时间。 有关详细信息，请参阅[了解并解决 Azure SQL 阻塞问题](understand-resolve-blocking.md)。
 
 ### <a name="memory"></a>内存
 
@@ -99,18 +99,18 @@ ms.locfileid: "86227920"
 
 |解决方案|说明|
 | :----- | :----- |
-|减少内存授予的大小|有关内存授予的详细信息，请参阅[了解 SQL Server 内存授予](https://techcommunity.microsoft.com/t5/sql-server/understanding-sql-server-memory-grant/ba-p/383595)博客文章。 避免过大内存授予的一个常见解决方案是使[统计信息](https://docs.microsoft.com/sql/relational-databases/statistics/statistics)保持最新状态。 这可使查询引擎更准确地估计内存消耗，从而避免内存授予过大。</br></br>在使用兼容级别 140 及更高级别的数据库中，数据库引擎可使用[批处理模式内存授予反馈](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?view=sql-server-ver15#batch-mode-memory-grant-feedback)自动调整内存授予大小。 在使用兼容级别 150 及更高级别的数据库中，数据库引擎类似地使用[行模式内存授予反馈](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?view=sql-server-ver15#row-mode-memory-grant-feedback)，用于更常见的行模式查询。 此内置功能有助于避免由于内存授予过大而导致的内存不足错误。|
+|减少内存授予的大小|有关内存授予的详细信息，请参阅[了解 SQL Server 内存授予](https://techcommunity.microsoft.com/t5/sql-server/understanding-sql-server-memory-grant/ba-p/383595)博客文章。 避免过大内存授予的一个常见解决方案是使[统计信息](https://docs.microsoft.com/sql/relational-databases/statistics/statistics)保持最新状态。 这可使查询引擎更准确地估计内存消耗，从而避免内存授予过大。</br></br>在使用兼容级别 140 及更高级别的数据库中，数据库引擎可使用[批处理模式内存授予反馈](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-memory-grant-feedback)自动调整内存授予大小。 在使用兼容级别 150 及更高级别的数据库中，数据库引擎类似地使用[行模式内存授予反馈](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)，用于更常见的行模式查询。 此内置功能有助于避免由于内存授予过大而导致的内存不足错误。|
 |减小查询计划缓存的大小|数据库引擎在内存中缓存查询计划，以避免为每次查询执行编译查询计划。 若要避免由于仅使用一次的缓存计划而导致的查询计划缓存膨胀，请启用 OPTIMIZE_FOR_AD_HOC_WORKLOADS [数据库范围内的配置](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql)。|
 |减小锁定内存的大小|数据库引擎将内存用于[锁定](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-locking-and-row-versioning-guide#Lock_Engine)。 如果可能，请避免可能获取大量锁定并导致高锁定内存消耗的大型事务。|
 
 
 ## <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>用户工作负荷和内部进程的资源消耗量
 
-将在 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) 和 [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) 视图的 `avg_cpu_percent` 和 `avg_memory_usage_percent` 列中报告每个数据库中的用户工作负荷的 CPU 和内存消耗量。 对于弹性池，将在 [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) 视图中报告池级别的资源消耗量。 对于池级别的[单一数据库](/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases)和[弹性池](/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)，还会通过 Azure Monitor 指标 `cpu_percent` 报告用户工作负荷的 CPU 消耗量。
+将在 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 和 [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 视图的 `avg_cpu_percent` 和 `avg_memory_usage_percent` 列中报告每个数据库中的用户工作负荷的 CPU 和内存消耗量。 对于弹性池，将在 [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) 视图中报告池级别的资源消耗量。 对于池级别的[单一数据库](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserversdatabases)和[弹性池](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserverselasticpools)，还会通过 Azure Monitor 指标 `cpu_percent` 报告用户工作负荷的 CPU 消耗量。
 
 Azure SQL 数据库需要使用计算资源来实现核心服务功能，例如高可用性和灾难恢复、数据库备份和还原、监视、查询存储、自动优化，等等。对于这些内部进程，系统会从总体资源中为其留出有限的一部分特定资源，使剩余的资源可供用户工作负荷使用。 当内部进程不使用计算资源时，系统会将其提供给用户工作负载使用。
 
-将在 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) 和 [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) 视图的 `avg_instance_cpu_percent` 和 `avg_instance_memory_percent` 列中报告用户工作负载和内部进程的总 CPU 和内存消耗量。 对于池级别的[单一数据库](/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases)和[弹性池](/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)，还会通过 Azure Monitor 指标 `sqlserver_process_core_percent` 和 `sqlserver_process_memory_percent` 报告此数据。
+将在 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 和 [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 视图的 `avg_instance_cpu_percent` 和 `avg_instance_memory_percent` 列中报告用户工作负载和内部进程的总 CPU 和内存消耗量。 对于池级别的[单一数据库](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserversdatabases)和[弹性池](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserverselasticpools)，还会通过 Azure Monitor 指标 `sqlserver_process_core_percent` 和 `sqlserver_process_memory_percent` 报告此数据。
 
 在性能监视和故障排除上下文中，必须考虑用户 CPU 消耗量（`avg_cpu_percent`、`cpu_percent`），以及用户工作负载和内部进程的 CPU 总消耗量（`avg_instance_cpu_percent`、`sqlserver_process_core_percent`） 。
 
@@ -123,4 +123,3 @@ Azure SQL 数据库需要使用计算资源来实现核心服务功能，例如�
 - 有关常规 Azure 限制的相关信息，请参阅 [Azure 订阅和服务限制、配额和约束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
 - 有关 DTU 和 eDTU 的信息，请参阅 [DTU 和 eDTU](purchasing-models.md#dtu-based-purchasing-model)。
 - 有关 tempdb 大小限制的信息，请参阅 [Azure SQL 数据库中的 TempDB](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)。
- 

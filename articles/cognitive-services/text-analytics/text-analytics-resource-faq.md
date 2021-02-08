@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
 origin.date: 02/13/2019
-ms.date: 11/23/2020
+ms.date: 01/19/2021
 ms.author: v-johya
-ms.openlocfilehash: 8c92725015699655ab87eb37c1e0062216e69c20
-ms.sourcegitcommit: f1d0f81918b8c6fca25a125c17ddb80c3a7eda7e
+ms.openlocfilehash: f7c53dc63351b8551c84e293adad254ae32b314a
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96306434"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751162"
 ---
-# <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>有关文本分析认知服务的常见问题解答 (FAQ)
+# <a name="frequently-asked-questions-faq-about-the-text-analytics-api"></a>有关文本分析 API 的常见问题解答 (FAQ)
 
- 查找与 Azure 上认知服务文本分析 API 有关的概念、代码和方案相关的常见问题解答。
+ 查找与 Azure 认知服务中文本分析 API 有关的概念、代码和方案相关的常见问题解答。
 
 ## <a name="can-text-analytics-identify-sarcasm"></a>文本分析能否识别嘲讽？
 
@@ -54,6 +54,6 @@ ms.locfileid: "96306434"
 
 ## <a name="see-also"></a>另请参阅
 
- [StackOverflow：文本分析 API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [StackOverflow：认知服务](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ * [StackOverflow：文本分析 API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ * [StackOverflow：认知服务](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
 

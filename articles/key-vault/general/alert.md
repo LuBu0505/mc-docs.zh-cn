@@ -9,15 +9,15 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 origin.date: 04/06/2020
-ms.date: 11/27/2020
+ms.date: 01/14/2021
 ms.author: v-tawe
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 8e0b323d0f2c110c8ac784ded9bf775eab19ba53
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: ddf30c8e6e9a160c4f1f52718612d731fd704522
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300763"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059956"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Azure Key Vault 的监视和警报
 
@@ -41,7 +41,7 @@ ms.locfileid: "96300763"
 
 **保管库饱和** 密钥保管库每秒可服务的请求数取决于正在执行的操作类型。 某些保管库操作具有较低的每秒请求数阈值。 此指标聚合了跨所有操作类型密钥保管库的总使用量，得出一个百分比值，用来指示当前密钥保管库的使用情况。 有关密钥保管库服务限制的完整列表，请参阅以下文档。 [Azure Key Vault 服务限制](service-limits.md)
 
-**服务 API 延迟** - 此指标显示调用密钥保管库的平均延迟。 尽管密钥保管库可能未超过服务限制，但其高利用率可能会因下游的应用程序出现故障而导致延迟。 
+**服务 API 延迟** - 此指标显示调用密钥保管库的平均延迟（在服务中测量）。 它不包括客户端或客户端与服务之间的网络所使用的时间。
 
 **API 命中总计** 此指标显示对密钥保管库进行的所有调用。 这将帮助你识别哪些应用程序正在调用密钥保管库。 
 

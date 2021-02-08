@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/29/2020
+ms.date: 01/26/2021
 ms.author: v-junlch
-ms.openlocfilehash: 8f8a79c08d39475d19a3b8601d384308fcf94b9d
-ms.sourcegitcommit: a37f80e7abcf3e42859d6ff73abf566efed783da
+ms.openlocfilehash: 25327fa07571b5f8989c7e86c9b9e1173b563ada
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829454"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058516"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>将 Azure 订阅转移到其他 Azure AD 目录
 

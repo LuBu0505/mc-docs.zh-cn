@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein
 origin.date: 06/17/2020
-ms.date: 01/04/2020
-ms.openlocfilehash: 677b3df883153ef97295773b784f99222b444531
-ms.sourcegitcommit: 3f54ab515b784c9973eb00a5c9b4afbf28a930a9
+ms.date: 02/01/2021
+ms.openlocfilehash: 0b3a2b2bf88802d9405465fd5e27ee13fabafaee
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894423"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059848"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL 数据库和 Azure Synapse IP 防火墙规则
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -44,6 +44,9 @@ ms.locfileid: "97894423"
 
 - 只有订阅所有者或订阅参与者才能使用门户或 PowerShell。
 - 若要使用 Transact-SQL，必须以服务器级别主体登录名或 Azure Active Directory 管理员的身份连接到 master 数据库。 （必须先由拥有 Azure 级权限的用户创建服务器级 IP 防火墙规则。）
+
+> [!NOTE]
+> 默认情况下，在从 Azure 门户创建新的逻辑 SQL 服务器期间，“允许 Azure 服务和资源访问此服务器”设置将设置为“否” 。
 
 ### <a name="database-level-ip-firewall-rules"></a>数据库级 IP 防火墙规则
 
@@ -99,7 +102,9 @@ IP 地址用户是否需要访问所有数据库？
 
 ### <a name="connections-from-inside-azure"></a>从 Azure 内部连接
 
-若要允许 Azure 内部托管的应用程序连接到 SQL 服务器，必须启用 Azure 连接。 当 Azure 中的应用程序尝试连接到你的服务器时，防火墙将验证是否允许 Azure 连接。 若要直接从 Azure 门户边栏选项卡中将其打开，可以设置防火墙规则，也可以在“防火墙和虚拟网络”设置中将“允许 Azure 服务和资源访问此服务器”切换为“启用”。   如果不允许该连接，则该请求将不会访问服务器。
+若要允许 Azure 内部托管的应用程序连接到 SQL 服务器，必须启用 Azure 连接。 若要启用 Azure 连接，必须有一条将起始和结束 IP 地址设置为 0.0.0.0 的防火墙规则。
+
+在应用程序尝试从 Azure 连接到服务器时，防火墙将通过验证此防火墙规则是否存在来检查是否允许 Azure 连接。 若要直接从 Azure 门户边栏选项卡中将其打开，可以在“防火墙和虚拟网络”设置中将“允许 Azure 服务和资源访问此服务器”切换为“启用”  。 设置为“启用”时，会创建一个名为 AllowAllWindowsIP 并将起始和结束 IP 地址均设置为 0.0.0.0 的入站防火墙规则。 如果不使用门户，请使用 PowerShell 或 Azure CLI 来创建将起始和结束 IP 地址设置为 0.0.0.0 的防火墙规则。 
 
 > [!IMPORTANT]
 > 该选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。 如果选择此选项，请确保登录名和用户权限将访问权限限制为仅已授权用户使用。
@@ -271,7 +276,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 ## <a name="next-steps"></a>后续步骤
 
 - 确认公司网络环境允许来自 Azure 数据中心使用的计算 IP 地址范围（包括 SQL 范围）的入站通信。 可能需要将这些 IP 地址添加到允许列表。 请参阅 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=57062)。  
-- 有关创建服务器级 IP 防火墙规则的快速入门，请参阅[在 Azure SQL 数据库中创建单一数据库](single-database-create-quickstart.md)。
+- 请参阅本教程，了解如何[在 Azure SQL 数据库中创建单一数据库](single-database-create-quickstart.md)。
 - 有关从开源或第三方应用程序连接到 Azure SQL 数据库时的帮助信息，请参阅 [Azure SQL 数据库的客户端快速入门代码示例](connect-query-content-reference-guide.md#libraries)。
 - 有关可能需要打开的其他端口的信息，请参阅[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](adonet-v12-develop-direct-route-ports.md)中的“SQL 数据库：外部与内部”部分
 - 有关 Azure SQL 数据库安全概述，请参阅[保护数据库](security-overview.md)。

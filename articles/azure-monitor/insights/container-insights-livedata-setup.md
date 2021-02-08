@@ -4,14 +4,14 @@ description: 本文介绍在不将 kubectl 与适用于容器的 Azure Monitor �
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 12/07/2020
+ms.date: 01/26/2021
 ms.custom: references_regions
-ms.openlocfilehash: 395311ec40c31aa89f320f8633f557ce836db64f
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: e529da06a41acd2597d0d7fbe433f10e140bf3b4
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97104881"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059900"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>如何设置实时数据（预览版）功能
 
@@ -31,8 +31,6 @@ ms.locfileid: "97104881"
 - 启用了 Kubernetes 基于角色的访问控制 (Kubernetes RBAC) 的 AKS 群集
 - 集成了 Azure Active Directory 的 AKS 群集。
 
->[!NOTE]
->此功能不支持以[专用群集](https://azure.microsoft.com/updates/aks-private-cluster/)形式启用的 AKS 群集。 此功能依赖于从浏览器通过代理服务器直接访问 Kubernetes API。 启用网络安全以阻止通过此代理访问 Kubernetes API 会阻止此流量。
 
 ## <a name="authentication-model"></a>身份验证模型
 
@@ -50,7 +48,7 @@ Azure 门户会提示你验证你用于 Azure Active Directory 群集的登录�
 
 AKS 添加了一个名为 clusterMonitoringUser 的新的 Kubernetes 群集角色绑定，这样就不需要在进行[启用 Kubernetes RBAC](#configure-kubernetes-rbac-authorization) 的授权后应用额外的配置更改来允许 Kubernetes 用户角色绑定 clusterUser 对实时数据（预览版）功能进行访问。 此群集角色绑定具有现成的所有必需权限，可以访问 Kubernetes API 和用于使用实时数据（预览版）功能的终结点。
 
-为了通过此新用户使用实时数据（预览版）功能，你需要是 AKS 群集资源上的[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色的成员。 当启用了适用于容器的 Azure Monitor 时，默认情况下，它配置为使用此用户进行身份验证。 如果群集中不存在 clusterMonitoringUser 角色绑定，则会改用 **clusterUser** 进行身份验证。
+为了通过此新用户使用实时数据（预览版）功能，你需要是 AKS 群集资源上的 [Azure Kubernetes 服务群集用户](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role)或[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色的成员。 当启用了用于容器的 Azure Monitor 时，默认情况下，它配置为使用 clusterMonitoringUser 进行身份验证。 如果群集中不存在 clusterMonitoringUser 角色绑定，则会改用 **clusterUser** 进行身份验证。 参与者可让你访问 clusterMonitoringUser（如果存在），而 Azure Kuberenetes 服务群集用户可让你访问 clusterUser。 这两个角色中的任何一个都授予使用此功能的足够访问权限。
 
 AKS 在 2020 年 1 月发布了此新的角色绑定，因此在 2020 年 1 月之前创建的群集没有此项。 如果你有一个在 2020 年 1 月之前创建的群集，可以通过在该现有群集上执行 PUT 操作将新的 clusterMonitoringUser 添加到该群集，也可以通过在群集上执行任何会在群集上执行 PUT 操作的其他操作（例如更新群集版本）来这样做。
 

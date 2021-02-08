@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sashan, moslake
 origin.date: 11/13/2019
-ms.date: 01/04/2021
-ms.openlocfilehash: 7883924a38bd8d2097839745b2f782293947e713
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.date: 02/01/2021
+ms.openlocfilehash: b0b9d82ede4335ead30d1955ad71a985568f101f
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829803"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059892"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure 混合权益 - Azure SQL 数据库和 SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -90,8 +90,8 @@ SQL 数据库客户将获得与面向 SQL Server 的 Azure 混合权益相关的
 
 |许可证足迹|面向 SQL Server 的 Azure 混合权益可带来哪些好处？|
 |---|---|
-|具有 SA 的 SQL Server Enterprise Edition 核心客户|<li>可以根据“常规用途”或“业务关键”SKU 支付基准费率</li><br><li>1 个本地核心 =“常规用途”SKU 中的 4 个核心</li><br><li>1 个本地核心 =“业务关键”SKU 中的 1 个核心</li>|
-|具有 SA 的 SQL Server Standard Edition 核心客户|<li>只能根据“常规用途”SKU 支付基准费率</li><br><li>1 个本地核心 =“常规用途”SKU 中的 1 个核心</li>|
+|具有 SA 的 SQL Server Enterprise Edition 核心客户|<li>可以根据“超大规模”、“常规用途”或“业务关键”SKU 支付基准费率</li><br><li>1个本地核心 =“超大规模”SKU 中的 4 个核心</li><br><li>1 个本地核心 =“常规用途”SKU 中的 4 个核心</li><br><li>1 个本地核心 =“业务关键”SKU 中的 1 个核心</li>|
+|具有 SA 的 SQL Server Standard Edition 核心客户|<li>只能根据“超大规模”和“常规用途”SKU 支付基准费率</li><br><li>1 个本地核心 =“超大规模”SKU 中的 1 个核心</li><br><li>1 个本地核心 =“常规用途”SKU 中的 1 个核心</li>|
 |||
 
 

@@ -6,14 +6,14 @@ author: Johnnytechn
 ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 01/05/2021
+ms.date: 01/21/2021
 ms.author: v-johya
-ms.openlocfilehash: cee33401d7fc9d81af6d6bc1ec40763874356a5d
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 78a95d9dea6c8572df9f17a7b44200c61f469177
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023145"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751096"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>在运行 Linux 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序
 
@@ -53,7 +53,7 @@ lspci | grep -i NVIDIA
    ```bash
    CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
 
-   wget -O /tmp/${CUDA_REPO_PKG} http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
+   wget -O /tmp/${CUDA_REPO_PKG} https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
 
    sudo dpkg -i /tmp/${CUDA_REPO_PKG}
 
@@ -111,6 +111,10 @@ sudo reboot
 
 如果计划使用 CentOS 7.8（或更高版本），请跳过此步骤，因为这些版本不再需要 LIS。
 
+请注意，LIS 适用于 Red Hat Enterprise Linux、CentOS 和 Oracle Linux Red Hat 兼容内核 5.2-5.11、6.0-6.10 和 7.0-7.7。 有关更多详细信息，请参阅 [Linux Integration Services 文档] (https://www.microsoft.com/en-us/download/details.aspx?id=55106) 。 
+
+如果未使用上面列出的内核版本，请跳过此步骤。
+
    ```bash
    wget https://aka.ms/lis
  
@@ -132,7 +136,7 @@ sudo reboot
 
    CUDA_REPO_PKG=cuda-repo-rhel7-10.0.130-1.x86_64.rpm
 
-   wget http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
+   wget https://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
 
    sudo rpm -ivh /tmp/${CUDA_REPO_PKG}
 

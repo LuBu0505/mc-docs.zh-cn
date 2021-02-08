@@ -5,17 +5,17 @@ ms.service: container-service
 ms.topic: conceptual
 origin.date: 10/01/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 10/26/2020
 ms.author: v-yeche
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 84d765806e0df89a436b353724be1ae1dbc37011
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 3592c961075ba8c9775557c0acb2aa430a8f405f
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023036"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063703"
 ---
 <!--Verified successfully-->
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>适用于 Azure Kubernetes 服务的 Azure 安全基线
@@ -90,7 +90,7 @@ Azure Kubernetes 服务的 Azure 安全基线包含有助于你改进部署安�
 
 - [在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod 之间的流量](use-network-policies.md)
 
-<!--Not Available on  [How to configure DDoS protection](../ddos-protection/manage-ddos-protection.md)-->
+<!--NOT AVAILABLE ON - [How to configure DDoS protection](../ddos-protection/manage-ddos-protection.md)-->
 
 **Azure 安全中心监视**：不适用
 
@@ -317,7 +317,7 @@ Azure 会管理服务标记包含的地址前缀，并会在地址发生更改�
 
 - [如何启用和查看 AKS 中 Kubernetes 主节点的日志](view-master-logs.md)
 
-<!--Not Available on [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
+<!--NOT AVAILABLE ON - [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
 
 - [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
@@ -343,9 +343,9 @@ Azure 会管理服务标记包含的地址前缀，并会在地址发生更改�
 
 - [适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件](../security/fundamentals/antimalware.md)
 
-<!--Not Available on - [Security alerts reference guide](../security-center/alerts-reference.md)-->
+- [安全警报参考指南](../security-center/alerts-reference.md)
 
-<!--Not Available on  - [Alerts for containers - Azure Kubernetes Service clusters](../security-center/alerts-reference.md#alerts-akscluster)-->
+- [容器的警报 - Azure Kubernetes 服务群集](../security-center/alerts-reference.md#alerts-akscluster)
 
 **Azure 安全中心监视**：是
 
@@ -454,8 +454,7 @@ Azure 会管理服务标记包含的地址前缀，并会在地址发生更改�
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
 
 **指导**：使用配置了多重身份验证 (MFA) 的特权访问工作站 (PAW) 登录到指定的 Azure Kubernetes 服务 (AKS) 群集和相关资源。
-
-<!--Not Avaialble on [Learn about Privileged Access Workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)-->
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -467,7 +466,7 @@ Azure 会管理服务标记包含的地址前缀，并会在地址发生更改�
 
 **指导**：对 Azure Kubernetes 服务 (AKS) 使用带有 Azure AD 集成身份验证的 Azure Active Directory (Azure AD) 安全报告。 当环境中发生可疑或不安全活动时，可以生成警报。 使用安全中心监视标识和访问活动。
 
-<!--Not Available on [How to identify Azure AD users flagged for risky activity](../active-directory/identity-protection/overview-identity-protection.md)-->
+<!--NOT AVAILABLE ON - [How to identify Azure AD users flagged for risky activity](../active-directory/identity-protection/overview-identity-protection.md)-->
 
 - [如何在 Azure 安全中心监视用户的标识和访问活动](../security-center/security-center-identity-access.md)
 
@@ -537,15 +536,14 @@ Azure 会管理服务标记包含的地址前缀，并会在地址发生更改�
 **责任**：客户
 
 <!--Not Available on ### 3.12: Alert on account login behavior deviation-->
-<!--Not Available on [How to view Azure AD risky sign-ins](../active-directory/identity-protection/overview-identity-protection.md)-->
-<!--Not Available on [How to configure and enable Identity Protection risk policies](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)-->
-<!--Not Available on [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
-
+<!--NOT AVAILABLE ON - [How to view Azure AD risky sign-ins](../active-directory/identity-protection/overview-identity-protection.md)-->
+<!--NOT AVAILABLE ON - [How to configure and enable Identity Protection risk policies](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)-->
+<!--NOT AVAILABLE ON - [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
 ### <a name="313-provide-azure-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：在支持场合下为 Azure 提供对相关客户数据的访问权限
 
 **指导**：不适用于 Azure Kubernetes 服务 (AKS)，因为它不受客户密码箱支持。
 
-<!--Not Available on - [List of Customer Lockbox supported services](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)-->
+<!--NOT AVAILABLE ON - [List of Customer Lockbox supported services](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)-->
 
 **Azure 安全中心监视**：不适用
 
@@ -577,7 +575,7 @@ Azure 会管理服务标记包含的地址前缀，并会在地址发生更改�
 
 - [了解 AKS 中群集隔离的最佳做法](operator-best-practices-cluster-isolation.md)
 
-<!--Not Available  on [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)-->
+<!--NOT AVAILABLE ON - [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)-->
 
 - [了解 AKS 中的网络连接和安全的最佳做法](operator-best-practices-network.md)
 
@@ -746,7 +744,7 @@ Azure 管理底层平台，并将所有客户内容视为敏感数据，竭尽�
 
 使用 PowerShell cmdlet“Get-AzSecurityTask”自动检索安全中心建议执行的安全任务，以加强安全状况并修复漏洞扫描结果。
 
-- [如何使用 PowerShell 查看 Azure 安全中心发现的漏洞](https://docs.microsoft.com/powershell/module/az.security/get-azsecuritytask?view=azps-3.3.0)
+- [如何使用 PowerShell 查看 Azure 安全中心发现的漏洞](https://docs.microsoft.com/powershell/module/az.security/get-azsecuritytask)
 
 **Azure 安全中心监视**：是
 
@@ -774,7 +772,7 @@ Azure 管理底层平台，并将所有客户内容视为敏感数据，竭尽�
 
 - [如何使用 Azure Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-- [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -800,7 +798,7 @@ Azure 管理底层平台，并将所有客户内容视为敏感数据，竭尽�
 
 排斥、标签或标记可用于定期核对清单，并确保及时从订阅中删除未经授权的资源。
 
-<!--Not Available  on [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)-->
+<!--NOT AVAILABLE ON - [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)-->
 
 - [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
@@ -847,16 +845,16 @@ Azure 管理底层平台，并将所有客户内容视为敏感数据，竭尽�
 
 跟踪计算机的配置，以帮助查明整个环境中的操作问题，并更好地了解计算机的状态。
 
-<!--Not Available  on [How to enable Azure virtual machine Inventory](../automation/automation-tutorial-installed-software.md)-->
+<!--NOT AVAILABLE ON - [How to enable Azure virtual machine Inventory](../automation/automation-tutorial-installed-software.md)-->
 
 **Azure 安全中心监视**：不适用
 
 **责任**：客户
 
 <!--Not Available on ### 6.7: Remove unapproved Azure resources and software applications-->
-<!--Not Available  on [How to enable Azure virtual machine Inventory](../automation/automation-tutorial-installed-software.md)-->
-<!--Not Available on [How to use File Integrity Monitoring](../security-center/security-center-file-integrity-monitoring.md)-->
-<!--Not Available  on  [Understand Azure Change Tracking](../automation/change-tracking/overview.md)-->
+<!--NOT AVAILABLE ON - [How to enable Azure virtual machine Inventory](../automation/automation-tutorial-installed-software.md)-->
+<!--NOT AVAILABLE ON - [How to use File Integrity Monitoring](../security-center/security-center-file-integrity-monitoring.md)-->
+<!--NOT AVAILABLE ON - [Understand Azure Change Tracking](../automation/change-tracking/overview.md)-->
 
 ### <a name="68-use-only-approved-applications"></a>6.8：仅使用已批准的应用程序
 
@@ -868,7 +866,7 @@ Azure 管理底层平台，并将所有客户内容视为敏感数据，竭尽�
 
 在安全中心中为环境中存在的应用程序启用自适应应用程序分析。
 
-<!--Not Available  on  [How to enable Azure virtual machine Inventory](../automation/automation-tutorial-installed-software.md)-->
+<!--NOT AVAILABLE ON - [How to enable Azure virtual machine Inventory](../automation/automation-tutorial-installed-software.md)-->
 
 如何使用 Azure 安全中心自适应应用程序
 - [控件](../security-center/security-center-adaptive-application.md)
@@ -953,7 +951,7 @@ Azure 管理底层平台，并将所有客户内容视为敏感数据，竭尽�
 
 - [了解 AKS 中群集隔离的最佳做法](operator-best-practices-cluster-isolation.md)
 
-<!--Not Available  on [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)-->
+<!--NOT AVAILABLE ON - [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)-->
 
 - [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
@@ -983,7 +981,7 @@ AKS 的内置策略定义示例包括：
 
 使用 Azure 资源管理器以 JavaScript 对象表示法 (JSON) 导出 AKS 配置的模板。 定期检查以确保这些配置符合组织的安全要求。 使用来自 Azure 安全中心的建议作为 Azure 资源的安全配置基线。 
 
-<!--Not Available on - [How to configure and manage AKS pod security policies](use-pod-security-policies.md)-->
+<!--NOT AVAILABLE ON - [How to configure and manage AKS pod security policies](use-pod-security-policies.md)-->
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -1015,9 +1013,9 @@ Azure 对 AKS 虚拟机主机应用每日修补程序（包括安全修补程序
 
 使用以下命名空间中的别名创建自定义 Azure Policy 定义： 
 
-•   Microsoft.ContainerService
+• Microsoft.ContainerService
 
-•   Microsoft.Network
+• Microsoft.Network
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -1049,7 +1047,7 @@ Azure 对 AKS 虚拟机主机应用每日修补程序（包括安全修补程序
 
 实现第三方解决方案（如 Terraform）创建一个配置文件，该文件用于声明 Kubernetes 群集的资源。 可以通过实现安全性最佳做法来加强 AKS 部署，并将配置作为代码存储在安全的位置。
 
-<!--Not Available on [Define a Kubernetes cluster](https://docs.microsoft.com/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks#define-a-kubernetes-cluster)-->
+<!--NOT AVAILABLE ON - [Define a Kubernetes cluster](https://docs.azure.cn/developer/terraform/create-k8s-cluster-with-tf-and-aks#define-a-kubernetes-cluster)-->
 
 AKS 代理节点主机 OS 的安全强化
 
@@ -1173,9 +1171,9 @@ security-hardened-vm-host-image.md
 
 **指导**：AKS 代表你管理代理节点的生命周期和操作 - 不支持修改与该代理节点关联的 IaaS 资源。 但是，对于 Linux 节点，你可以使用守护程序集来安装自定义软件，例如反恶意软件解决方案。
 
-<!--Not Available on - [Security alerts reference guide](../security-center/alerts-reference.md)-->
+- [安全警报参考指南](../security-center/alerts-reference.md)
 
-<!--Not Available on - [Alerts for containers - Azure Kubernetes Service clusters](../security-center/alerts-reference.md#alerts-akscluster)-->
+- [容器的警报 - Azure Kubernetes 服务群集](../security-center/alerts-reference.md#alerts-akscluster)
 
 - [AKS 共担责任和守护程序集](support-policies.md#shared-responsibility)
 
@@ -1197,9 +1195,9 @@ security-hardened-vm-host-image.md
 
 **指导**：AKS 代表你管理代理节点的生命周期和操作 - 不支持修改与该代理节点关联的 IaaS 资源。 但是，对于 Linux 节点，你可以使用守护程序集来安装自定义软件，例如反恶意软件解决方案。
 
-<!--Not Available on  - [Security alerts reference guide](../security-center/alerts-reference.md)-->
+- [安全警报参考指南](../security-center/alerts-reference.md)
 
-<!--Not Available on  - [Alerts for containers - Azure Kubernetes Service clusters](../security-center/alerts-reference.md#alerts-akscluster)-->
+- [容器的警报 - Azure Kubernetes 服务群集](../security-center/alerts-reference.md#alerts-akscluster)
 
 - [AKS 共担责任和守护程序集](support-policies.md#shared-responsibility)
 
@@ -1346,7 +1344,7 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 - [如何配置连续导出](../security-center/continuous-export.md)
 
-<!--Not Avaialble on  [How to stream alerts into Azure Sentinel](../sentinel/connect-azure-security-center.md)-->
+<!--NOT AVAILABLE ON - [How to stream alerts into Azure Sentinel](../sentinel/connect-azure-security-center.md)-->
 
 **Azure 安全中心监视**：不适用
 
@@ -1381,4 +1379,4 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 - 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
 - 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -5,16 +5,16 @@ services: container-service
 ms.topic: article
 origin.date: 12/16/2020
 author: rockboyfor
-ms.date: 01/25/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 07/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 356c3d5ac065017a6c67e45d5e7684006e80226b
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: 8b86bab2bd6ba47dba8ad4c14699bc666f76870d
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570666"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063658"
 ---
 <!--Verified successfully-->
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes 服务中使用托管标识
@@ -35,7 +35,7 @@ ms.locfileid: "98570666"
 <!--Not Available on az feature register --namespace Microsoft.ContainerService -n MigrateToMSIClusterPreview-->
 <!--Not Available on az feature register --namespace Microsoft.ContainerService -n UserAssignedIdentityPreview-->
 
-* 只有在 Azure 中国云上创建群集时，才能启用具有托管标识的 AKS 群集。
+* 在 Azure 中国云上，只有在创建群集时才能启用具有托管标识的 AKS 群集。
 
     <!--MOONCAKE CUSTOMIZE on 01/11/2021-->
     
@@ -127,9 +127,9 @@ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 
 <!-- LINKS - external -->
 
-<!--Not Available on [aks-arm-template]: https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters-->
+<!--NOT AVAILABLE ON [aks-arm-template]: /templates/microsoft.containerservice/managedclusters-->
 
 [az-identity-create]: https://docs.microsoft.com/cli/azure/identity#az_identity_create
 [az-identity-list]: https://docs.microsoft.com/cli/azure/identity#az_identity_list
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

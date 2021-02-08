@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 origin.date: 08/31/2020
-ms.date: 11/30/2020
+ms.date: 02/01/2021
 ms.author: v-jay
-ms.openlocfilehash: b8e62314ff6d955c16eeb3fb7b6c5c08594c41a1
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: f31698f6500e533aedcc5bd42e43807e38608169
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300617"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058442"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>媒体服务 v3 常见问题解答
 
@@ -32,9 +32,9 @@ ms.locfileid: "96300617"
 
 ### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>Azure 门户针对媒体服务 v3 有哪些限制？
 
-可以使用 [Azure 门户](https://portal.azure.cn/)执行以下操作：管理 v3 实时事件、查看 v3 资产和作业、获取有关访问 API 的信息以及加密内容。 <br/>对于其他所有管理任务（例如，管理转换和作业），请使用 [REST API](https://docs.microsoft.com/rest/api/media/accountfilters)、[CLI](https://docs.microsoft.com/cli/azure/ams) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
+可以使用 [Azure 门户](https://portal.azure.cn/)执行以下操作：管理 v3 实时事件、查看 v3 资产和作业、获取有关访问 API 的信息以及加密内容。 <br/>对于其他所有管理任务（例如，管理转换和作业或分析 v3 内容），请使用 [REST API](https://docs.microsoft.com/rest/api/media/accountfilters)、[CLI](https://docs.microsoft.com/cli/azure/ams) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
 
-如果视频以前是使用媒体服务 v3 API 上传到媒体服务帐户的，或者内容是基于实时输出生成的，则 Azure 门户中不会显示“编码”或“加密”按钮 。 使用媒体服务 v3 API 来执行这些任务。  
+如果视频以前是使用媒体服务 v3 API 上传到媒体服务帐户的，或者该内容是基于实时输出生成的，则 Azure 门户中不会显示“编码”、“分析”或“加密”按钮  。 使用媒体服务 v3 API 来执行这些任务。  
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Azure 角色可对 Azure 媒体服务资源执行哪些操作？ 
 
@@ -46,11 +46,13 @@ ms.locfileid: "96300617"
 
 ### <a name="how-do-i-configure-media-reserved-units"></a>如何配置媒体预留单位？
 
+对于由媒体服务 v3 触发的音频分析和视频分析作业，建议你为你的帐户预配 10 个 S3 媒体预留单位 (MRU)。 如果需要超过 10 S3 MRU 的数量，请使用 [Azure 门户](https://portal.azure.cn/)创建支持票证。
+
 有关详细信息，请参阅[调整媒体处理的规模](media-reserved-units-cli-how-to.md)。
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>什么是处理视频的建议方法？
 
-[转换](https://docs.microsoft.com/rest/api/media/transforms)可用来配置对视频进行编码的常见任务。 每个转换描述了用于处理视频或音频文件的脚本或任务工作流。 [作业](https://docs.microsoft.com/rest/api/media/jobs)是针对媒体服务的实际请求，目的是将转换应用到输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 有关详细信息，请参阅[转换和作业](transforms-jobs-concept.md)。
+[转换](https://docs.microsoft.com/rest/api/media/transforms)可用来配置对视频进行编码或分析的常见任务。 每个转换描述了用于处理视频或音频文件的脚本或任务工作流。 [作业](https://docs.microsoft.com/rest/api/media/jobs)是针对媒体服务的实际请求，目的是将转换应用到输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 有关详细信息，请参阅[转换和作业](transforms-jobs-concept.md)。
 
 ### <a name="i-uploaded-encoded-and-published-a-video-why-wont-the-video-play-when-i-try-to-stream-it"></a>我已经上传、编码并发布了视频。 为什么在我尝试对视频进行流式处理时，它不播放？
 
@@ -62,7 +64,7 @@ ms.locfileid: "96300617"
 
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>目前有哪些功能在 Azure 媒体服务 v3 中不可用？
 
-有关详细信息，请参阅[与 v2 API 之间的功能差距](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis)。
+有关详细信息，请参阅[迁移指南](migrate-v-2-v-3-migration-introduction.md)。
 
 ### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>如何在订阅之间移动媒体服务帐户？  
 
@@ -168,7 +170,7 @@ ms.locfileid: "96300617"
 
 已从媒体服务 API 中删除了 `AssetFile` 概念，以便将媒体服务与存储 SDK 依赖项分开。 现在由 Azure 存储而非媒体服务来保存属于存储 SDK 的信息。 
 
-有关详细信息，请参阅[迁移到媒体服务 v3](media-services-v2-vs-v3.md)。
+有关详细信息，请参阅[迁移到媒体服务 v3](migrate-v-2-v-3-migration-introduction.md)。
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>客户端存储加密在哪里进行？
 

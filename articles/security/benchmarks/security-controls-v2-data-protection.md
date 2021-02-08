@@ -4,15 +4,15 @@ description: Azure 安全基准 V2 数据保护
 author: Johnnytechn
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 01/19/2021
 ms.author: v-johya
 ms.custom: security-benchmark
-ms.openlocfilehash: d0b39fa52dc15537d65be3b00132c030068c4800
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: b8e945f9d1b8a0e581029feb5b7a33feb8d6a1d3
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747100"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751357"
 ---
 # <a name="security-control-v2-data-protection"></a>安全控制 V2：数据保护
 
@@ -20,7 +20,7 @@ ms.locfileid: "96747100"
 
 ## <a name="dp-1-discovery-classify-and-label-sensitive-data"></a>DP-1：对敏感数据进行发现、分类和标记
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | DP-1 | 13.1、14.5、14.7 | SC-28 |
 
@@ -44,7 +44,7 @@ ms.locfileid: "96747100"
 
 ## <a name="dp-2-protect-sensitive-data"></a>DP-2：保护敏感数据
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | DP-2 | 13.2、2.10 | SC-7、AC-4 |
 
@@ -70,7 +70,7 @@ ms.locfileid: "96747100"
 
 ## <a name="dp-3-monitor-for-unauthorized-transfer-of-sensitive-data"></a>DP-3：监视未经授权的敏感数据传输
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | DP-3 | 13.3 | AC-4、SI-4 |
 
@@ -96,7 +96,7 @@ Azure 信息保护 (AIP) 提供的监视功能针对已分类并标记的信息�
 
 ## <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4：加密传输中的敏感信息
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | DP-4 | 14.4 | SC-8 |
 
@@ -126,7 +126,7 @@ Azure 信息保护 (AIP) 提供的监视功能针对已分类并标记的信息�
 
 ## <a name="dp-5-encrypt-sensitive-data-at-rest"></a>DP-5：加密静态敏感数据
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | DP-5 | 14.8 | SC-28、SC-12 |
 

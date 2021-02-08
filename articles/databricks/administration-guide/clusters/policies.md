@@ -5,27 +5,21 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 09/24/2020
+ms.date: 01/20/2021
 title: 管理群集策略 - Azure Databricks
 description: 了解如何根据一组预定义的规则，使用策略来限制用户和用户组的群集创建功能。
-ms.openlocfilehash: 53643d5d77ccf645bbdf613870340d25720b4bf9
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: acb9e3b03bbdb7c91886911ac0935460556f02a8
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106510"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059980"
 ---
 # <a name="manage-cluster-policies"></a>管理群集策略
 
 > [!IMPORTANT]
 >
 > 此功能目前以[公共预览版](../../release-notes/release-types.md)提供。
-
-> [!IMPORTANT]
->
-> ## <a name="bias-free-communication"></a>无偏差通信
->
-> Microsoft 支持多样化的包容性环境。 本文包含对单词 blacklist 的引用。 Microsoft 的[无偏差通信风格指南](https://docs.microsoft.com/style-guide/bias-free-communication)将其视为排他性单词。 本文使用该单词旨在保持一致性，因为目前软件中使用的是该单词。 如果软件更新后删除了该单词，则本文也将更新以保持一致。
 
 [群集策略](../../clusters/configure.md)基于一组规则限制配置群集的能力。
 策略规则会限制可用于创建群集的属性或属性值。
@@ -39,8 +33,8 @@ ms.locfileid: "93106510"
 
 群集策略权限在用户创建群集时会限制用户可以在“策略”下拉列表中选择的策略：
 
-* 具有[群集创建权限](../access-control/cluster-acl.md#cluster-create-permission)的用户可以选择[自由形式](../../clusters/configure.md#cluster-policy)的策略，并创建可以充分配置的群集。
-* 具有群集创建权限和群集策略访问权限的用户可以选择“自由形式”的策略和他们有权访问的策略。
+* 具有[群集创建权限](../access-control/cluster-acl.md#cluster-create-permission)的用户可以选择[无限制](../../clusters/configure.md#cluster-policy)策略，并创建可以充分配置的群集。
+* 具有群集创建权限和群集策略访问权限的用户可以选择“无限制”策略和他们有权访问的策略。
 * 只有群集策略访问权限的用户可以选择他们有权访问的策略。
 
 > [!NOTE]
@@ -61,7 +55,7 @@ ms.locfileid: "93106510"
 
 * 固定值且已禁用控制元素
 * 固定值且控件隐藏在 UI 中（值在 JSON 视图中可见）
-* 属性值限制为一组值（允许列表或阻止列表）
+* 限制为一组值的属性值（允许列表或阻止列表）
 * 属性值与给定正则表达式匹配
 * 数值属性限定在特定范围内
 * 默认值启用控件的 UI 使用
@@ -92,7 +86,7 @@ ms.locfileid: "93106510"
 
 可以使用群集策略 UI 或[群集策略 API](../../dev-tools/api/latest/policies.md) 创建群集策略。 若要使用 UI 创建群集策略，请执行以下操作：
 
-1. 单击“群集”图标 ![“群集”图标](../../_static/images/clusters/clusters-icon.png) （在边栏中）。
+1. 单击“群集”图标 ![“群集”图标](../../_static/images/icons/clusters-icon.png) （在边栏中）。
 2. 单击“群集策略”选项卡。
 
    > [!div class="mx-imgBorder"]
@@ -105,7 +99,7 @@ ms.locfileid: "93106510"
 
 4. 为策略命名。 策略名称不区分大小写。
 5. 在“定义”选项卡中，粘贴[策略定义](#policy-def)。
-6. 单击 **创建** 。
+6. 单击 **创建**。
 
 ## <a name="manage-cluster-policy-permissions"></a>管理群集策略权限
 
@@ -115,7 +109,7 @@ ms.locfileid: "93106510"
 
 若要使用 UI 添加群集策略权限，请执行以下操作：
 
-1. 单击“群集”图标 ![“群集”图标](../../_static/images/clusters/clusters-icon.png) （在边栏中）。
+1. 单击“群集”图标 ![“群集”图标](../../_static/images/icons/clusters-icon.png) （在边栏中）。
 2. 单击“群集策略”选项卡。
 3. 单击“权限”选项卡。
 4. 在“名称”列中，选择一个主体。
@@ -128,22 +122,22 @@ ms.locfileid: "93106510"
    > [!div class="mx-imgBorder"]
    > ![策略权限](../../_static/images/admin-cluster-management/policy-permission.png)
 
-6. 单击 **添加** 。
+6. 单击 **添加**。
 
 ### <a name="delete-a-cluster-policy-permission"></a>删除群集策略权限
 
 若要使用 UI 删除群集策略权限，请执行以下操作：
 
-1. 单击“群集”图标 ![“群集”图标](../../_static/images/clusters/clusters-icon.png) （在边栏中）。
+1. 单击“群集”图标 ![“群集”图标](../../_static/images/icons/clusters-icon.png) （在边栏中）。
 2. 单击“群集策略”选项卡。
 3. 单击“权限”选项卡。
-4. 单击 ![“删除”图标](../../_static/images/clusters/delete-icon.png) 权限行中的图标。
+4. 单击 ![“删除”图标](../../_static/images/icons/delete-icon.png) 权限行中的图标。
 
 ## <a name="edit-a-cluster-policy-using-the-ui"></a>使用 UI 编辑群集策略
 
 可以使用群集策略 UI 或[群集策略 API](../../dev-tools/api/latest/policies.md) 编辑群集策略。 若要使用 UI 编辑群集策略，请执行以下操作：
 
-1. 单击“群集”图标 ![“群集”图标](../../_static/images/clusters/clusters-icon.png) （在边栏中）。
+1. 单击“群集”图标 ![“群集”图标](../../_static/images/icons/clusters-icon.png) （在边栏中）。
 2. 单击“群集策略”选项卡。
 
    > [!div class="mx-imgBorder"]
@@ -158,7 +152,7 @@ ms.locfileid: "93106510"
 
 可以使用群集策略 UI 或[群集策略 API](../../dev-tools/api/latest/policies.md) 删除群集策略。 若要使用 UI 删除群集策略，请执行以下操作：
 
-1. 单击“群集”图标 ![“群集”图标](../../_static/images/clusters/clusters-icon.png) （在边栏中）。
+1. 单击“群集”图标 ![“群集”图标](../../_static/images/icons/clusters-icon.png) （在边栏中）。
 2. 单击“群集策略”选项卡。
 
    > [!div class="mx-imgBorder"]
@@ -199,7 +193,7 @@ interface Policy {
 
 ```
 type PolicyElement = FixedPolicy | ForbiddenPolicy | (LimitingPolicyBase & LimitingPolicy);
-type LimitingPolicy = WhitelistPolicy | BlacklistPolicy | RegexPolicy | RangePolicy | UnlimitedPolicy;
+type LimitingPolicy = AllowlistPolicy | BlocklistPolicy | RegexPolicy | RangePolicy | UnlimitedPolicy;
 ```
 
 本部分介绍策略类型：
@@ -207,8 +201,8 @@ type LimitingPolicy = WhitelistPolicy | BlacklistPolicy | RegexPolicy | RangePol
 * [固定策略](#fixed-policy)
 * [禁止的策略](#forbidden-policy)
 * [限制策略：通用字段](#limiting-policies-common-fields)
-* [允许列表策略](#whitelist-policy)
-* [阻止列表策略](#blacklist-policy)
+* [允许列表策略](#allow-list-policy)
+* [阻止列表策略](#block-list-policy)
 * [正则表达式策略](#regex-policy)
 * [范围策略](#range-policy)
 * [无限制策略](#unlimited-policy)
@@ -230,7 +224,7 @@ interface FixedPolicy {
 
 ```json
 {
-  "spark_version": { "type": "fixed", "value": "6.2", "hidden": true }
+  "spark_version": { "type": "fixed", "value": "7.3.x-scala2.12", "hidden": true }
 }
 ```
 
@@ -276,13 +270,13 @@ interface LimitedPolicyBase {
 
 此示例策略将“池”字段指定为默认值 `id1`但将其设为可选字段。
 
-#### <a name="whitelist-policy"></a>允许列表策略
+#### <a name="allow-list-policy"></a>允许列表策略
 
 允许值的列表。
 
 ```
-interface WhitelistPolicy {
-  type: "whitelist";
+interface AllowlistPolicy {
+  type: "allowlist";
   values: (string | number | boolean)[];
 }
 ```
@@ -291,17 +285,17 @@ interface WhitelistPolicy {
 
 ```json
 {
-  "spark_version":  { "type": "whitelist", "values": [ "6.2", "6.3" ] }
+  "spark_version":  { "type": "allowlist", "values": [ "7.2.x-scala2.12", "7.3.x-scala2.12" ] }
 }
 ```
 
-#### <a name="blacklist-policy"></a>阻止列表策略
+#### <a name="block-list-policy"></a>阻止列表策略
 
 禁止值的列表。 由于值必须完全匹配，因此当属性在值的表示方式上较为宽松时（例如允许前导空格和尾随空格），此策略可能无法达到预期效果。
 
 ```
-interface BlacklistPolicy {
-  type: "blacklist";
+interface BlocklistPolicy {
+  type: "blocklist";
   values: (string | number | boolean)[];
 }
 ```
@@ -310,7 +304,7 @@ interface BlacklistPolicy {
 
 ```json
 {
-  "spark_version":  { "type": "blacklist", "values": [ "4.0" ] }
+  "spark_version":  { "type": "blocklist", "values": [ "4.0.x-scala2.11" ] }
 }
 ```
 
@@ -412,7 +406,7 @@ interface UnlimitedPolicy {
 | 属性路径                    | 类型                              | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |-----------------------------------|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `dbus_per_hour`                   | 数字                            | 计算的属性，表示包括驱动程序节点在内的群集的 DBU 开销（在自动缩放群集的情况下为最大值）。 与范围限制配合使用。                                                                                                                                                                                                                                                                                                            |
-| `cluster_type`                    | string                            | 表示可以创建的群集类型：<br><br>* `all-purpose` 用于 Azure Databricks 通用群集<br>* `job` 用于作业计划程序创建的作业群集<br><br>将根据策略创建的某些类型的群集加入允许列表或阻止列表。 如果不允许使用 `all-purpose` 值，则在通用群集创建窗体中不会显示该策略。 如果不允许使用 `job` 值，则在作业新群集窗体中不会显示该策略。 |
+| ``cluster_type``                  | string                            | 表示可以创建的群集类型：<br><br>* ``all-purpose`` 用于 Azure Databricks 通用群集<br>* ``job`` 用于作业计划程序创建的作业群集<br><br>允许或阻止从策略创建指定类型的群集。 如果不允许使用 ``all-purpose`` 值，则在通用群集创建窗体中不会显示该策略。 如果不允许使用 ``job`` 值，则在作业新群集窗体中不会显示该策略。 |
 
 ### <a name="array-attributes"></a>数组特性
 
@@ -523,10 +517,10 @@ interface UnlimitedPolicy {
   },
   "spark_version": {
     "type": "regex",
-    "pattern": "6\\.[0-9]+\\.x-scala.*"
+    "pattern": "7\\.[0-9]+\\.x-scala.*"
   },
   "node_type_id": {
-    "type": "whitelist",
+    "type": "allowlist",
     "values": [
       "Standard_L4s",
       "Standard_L8s",
@@ -602,7 +596,7 @@ interface UnlimitedPolicy {
   },
   "spark_version": {
     "type": "fixed",
-    "value": "7.x-scala2.11",
+    "value": "7.3-scala2.12",
     "hidden": true
   },
   "custom_tags.team": {
@@ -644,7 +638,7 @@ interface UnlimitedPolicy {
   },
   "spark_version": {
     "type": "regex",
-    "pattern": "6\\.[0-9]+\\.x-scala.*"
+    "pattern": "7\\.[0-9]+\\.x-scala.*"
   },
   "custom_tags.team": {
     "type": "fixed",

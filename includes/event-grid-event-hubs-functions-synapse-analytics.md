@@ -6,15 +6,15 @@ author: spelluru
 ms.service: event-grid
 ms.topic: include
 origin.date: 12/07/2020
-ms.date: 01/05/2021
-ms.author: v-tawe
+ms.date: 01/18/2021
+ms.author: v-johya
 ms.custom: include file
-ms.openlocfilehash: e994ad17c1c14563c262500bf017925fa7ff949a
-ms.sourcegitcommit: ff20289adb80a6ab45e15fa5e196ff7af7e1c6b5
+ms.openlocfilehash: c9307ed405804adc36a55e66b6d3d37692cc0b8b
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97874850"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751236"
 ---
 :::image type="content" source="media/event-grid-event-hubs-functions-synapse-analytics/overview.png" alt-text="应用概览":::
 
@@ -38,11 +38,11 @@ ms.locfileid: "97874850"
 ## <a name="prerequisites"></a>先决条件
 若要完成本教程，必须满足以下先决条件：
 
-- Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn#azurefreeform)。
+- Azure 订阅。 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 - [Visual Studio 2019](https://www.visualstudio.com/vs/)，并包含适用于以下用途的工作负载：.NET 桌面开发、Azure 开发、ASP.NET 和 Web 开发、Node.js 开发和 Python 开发。
 - 将 [EventHubsCaptureEventGridDemo 示例项目](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)下载到计算机上。
-    - WindTurbineDataGenerator – 一个简单的发布服务器，可以将示例风力涡轮机数据发送到启用了捕获功能的事件中心
-    - FunctionDWDumper – 一个 Azure Function，可以在 Avro 文件捕获到 Azure 存储 Blob 时接收事件网格通知。 它接收 Blob 的 URI 路径、读取其内容并将该数据推送到 Azure Synapse Analytics（专用 SQL 池）。
+    - WindTurbineDataGenerator - 一个简单的发布服务器，可以将示例性的风力涡轮机数据发送到启用了捕获功能的事件中心
+    - FunctionDWDumper - 一个 Azure Function，可以在 Avro 文件捕获到 Azure 存储 Blob 时接收事件网格通知。 它接收 Blob 的 URI 路径、读取其内容并将该数据推送到 Azure Synapse Analytics（专用 SQL 池）。
 
 ## <a name="deploy-the-infrastructure"></a>部署基础结构
 在此步骤中，使用[资源管理器模板](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json)部署所需的基础结构。 部署模板时，将创建以下资源：
@@ -249,7 +249,7 @@ ms.locfileid: "97874850"
     select * from [dbo].[Fact_WindTurbineMetrics]    
     ```
 
-    ![查询结果](media/event-grid-event-hubs-functions-synapse-analytics/query-results.png)
+    ![查询结果](./media/event-grid-event-hubs-functions-synapse-analytics/query-results.png)
 
 ## <a name="monitor-the-solution"></a>监视解决方案
 本部分可帮助你监视解决方案或对解决方案进行故障排除。 
@@ -307,5 +307,6 @@ ms.locfileid: "97874850"
 ### <a name="verify-that-the-data-is-stored-in-the-dedicated-sql-pool"></a>验证数据是否存储在专用的 SQL 池中
 在打开了查询窗口的浏览器选项卡中，查询专用 SQL 池中的表以获取已迁移的数据。
 
-![查询结果](media/event-grid-event-hubs-functions-synapse-analytics/query-results.png)
+![查询结果](./media/event-grid-event-hubs-functions-synapse-analytics/query-results.png)
+
 

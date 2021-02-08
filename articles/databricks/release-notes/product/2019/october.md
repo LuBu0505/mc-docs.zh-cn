@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 06/03/2020
 title: 2019 年 10 月 - Azure Databricks
 description: Azure Databricks 新功能和改进的 2019 年 10 月发行说明。
-ms.openlocfilehash: fa2485790e1ff8922d7c5ba0441cae4c557e938d
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 62636430148eae910ca4e294ecbdf68399543b93
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329099"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058733"
 ---
 # <a name="october-2019"></a>2019 年 10 月
 
@@ -54,7 +54,7 @@ Databricks Runtime 6.1 ML 已正式发布。 它包括对 GPU 群集的支持和
 * Torchvision 到 0.4.0
 * MLflow 到 1.3.0
 
-有关详细信息，请参阅完整的 [Databricks Runtime 6.1 ML（不受支持）](../../runtime/6.1ml.md)发行说明。
+有关详细信息，请参阅完整的[用于机器学习的 Databricks Runtime 6.1（不受支持）](../../runtime/6.1ml.md)发行说明。
 
 ## <a name="mlflow-api-calls-are-now-rate-limited"></a>MLflow API 调用现在受速率限制
 
@@ -63,7 +63,7 @@ Databricks Runtime 6.1 ML 已正式发布。 它包括对 GPU 群集的支持和
 为了确保在负载较高的情况下也能提供高质量的服务，Azure Databricks 现在正针对所有 MLflow API 调用强制实施 API 速率限制。
 限制是按帐户设置的，以确保共享工作区的所有组织具有公平的使用量和高可用性。
 
-具有自动重试的 MLflow 客户端在 MLflow 1.3.0 和 [Databricks Runtime 6.1 ML（不受支持）](../../runtime/6.1ml.md)中提供。
+具有自动重试功能的 MLflow 客户端在 MLflow 1.3.0 和[用于机器学习的 Databricks Runtime 6.1（不受支持）](../../runtime/6.1ml.md)中提供。
 建议所有客户切换到最新的 MLflow 客户端版本。
 
 有关详细信息，请参阅 [MLflow API](../../../dev-tools/api/latest/mlflow.md)。
@@ -159,7 +159,7 @@ Databricks Runtime 6.0 ML 包括以下更新：
 >
 > 此版本仅支持 CPU 群集。
 
-有关详细信息，请参阅完整的 [Databricks Runtime 6.0 ML（不受支持）](../../runtime/6.0ml.md)发行说明。
+有关详细信息，请参阅完整的[用于机器学习的 Databricks Runtime 6.0（不受支持）](../../runtime/6.0ml.md)发行说明。
 
 ## <a name="new-regions-brazil-south-and-france-central"></a>新区域：巴西南部和法国中部
 

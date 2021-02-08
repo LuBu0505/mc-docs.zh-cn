@@ -1,27 +1,21 @@
 ---
-title: 排除云服务分配故障 | Microsoft Docs
+title: 排除云服务（经典）分配故障 | Microsoft Docs
 description: 对部署 Azure 云服务时的分配失败进行故障排除。 了解分配的工作原理以及分配失败的原因。
-services: azure-service-management, cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 529157eb-e4a1-4388-aa2b-09e8b923af74
+ms.topic: article
 ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: ibiza
-ms.topic: troubleshooting
-ms.date: 10/20/2020
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: db8490552c9800baa9258ca020d5c30d43dc769b
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 2901100681ea01d0a4c41dfd6ac52a44ed9f045a
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472577"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058876"
 ---
-# <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>对在 Azure 中部署云服务时的分配失败进行故障排除
+# <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-classic-in-azure"></a>对在 Azure 中部署云服务（经典）时的分配失败进行故障排除
 ## <a name="summary"></a>总结
 将实例部署到云服务或者添加新的 Web 角色或辅助角色实例时，Azure 会分配计算资源。 在执行这些操作时，甚至在达到 Azure 订阅限制之前，有时可能会收到错误。 本文说明一些常见分配故障的原因，并建议可能的补救方法。 规划服务的部署时，本信息可能也有用。
 

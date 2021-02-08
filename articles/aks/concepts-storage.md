@@ -5,16 +5,16 @@ services: container-service
 ms.topic: conceptual
 origin.date: 08/17/2020
 author: rockboyfor
-ms.date: 11/30/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: a879845eb329a80f382b39048f42de8f8393fdcf
-ms.sourcegitcommit: ea52237124974eda84f8cef4bf067ae978d7a87d
+ms.openlocfilehash: f67c84d184ee3c12b8a409c65b52cbc974d774aa
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024565"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063588"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的应用程序存储选项
 
@@ -132,6 +132,18 @@ spec:
         claimName: azure-managed-disk
 ```
 
+若要在 Windows 容器中装载卷，请指定驱动器号和路径。 例如：
+
+```yaml
+...      
+       volumeMounts:
+        - mountPath: "d:"
+          name: volume
+        - mountPath: "c:\k"
+          name: k-dir
+...
+```
+
 ## <a name="next-steps"></a>后续步骤
 
 如需相关的最佳做法，请参阅 [AKS 中的存储和备份最佳做法][operator-best-practices-storage]。
@@ -166,4 +178,4 @@ spec:
 [aks-concepts-network]: concepts-network.md
 [operator-best-practices-storage]: operator-best-practices-storage.md
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

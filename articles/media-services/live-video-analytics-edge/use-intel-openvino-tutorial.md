@@ -3,14 +3,14 @@ title: 使用 OpenVINO™ Model Server（由 Intel 提供的 AI 扩展）来分�
 description: 在本教程中，将使用由 Intel 提供的 AI 模型服务器来分析（模拟的） IP 相机中的实时视频源。
 ms.topic: tutorial
 origin.date: 09/08/2020
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 titleSuffix: Azure
-ms.openlocfilehash: 2e4adc4f57e024f7d0a42959cfa62c383da0ee02
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: e34fe60118862893b13d2d4ba850f2171d00edeb
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230977"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059864"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>教程：使用 OpenVINO™ Model Server（由 Intel 提供的 AI 扩展）来分析实时视频 
 
@@ -24,6 +24,8 @@ ms.locfileid: "98230977"
 ## <a name="prerequisites"></a>先决条件
 
 * 包含活动订阅的 Azure 帐户。 如果没有帐户，可[创建试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+  > [!NOTE]
+  > 你将需要一个具有服务主体创建权限（所有者角色提供此权限）的 Azure 订阅。 如果你没有正确的权限，请联系帐户管理员，让其授予你适当的权限。 
 * 包含以下扩展的 [Visual Studio Code](https://code.visualstudio.com/)：
     * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
     * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)

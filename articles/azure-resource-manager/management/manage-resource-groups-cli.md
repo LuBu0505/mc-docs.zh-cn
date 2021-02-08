@@ -2,19 +2,19 @@
 title: 管理资源组 - Azure CLI
 description: 使用 Azure CLI 通过 Azure 资源管理器管理资源组。 说明如何创建、列出和删除资源组。
 ms.topic: conceptual
-origin.date: 09/01/2020
+origin.date: 01/05/2021
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 01/25/2021
 ms.testscope: yes
 ms.testdate: 08/24/2020
 ms.author: v-yeche
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d77c68b8d92c022e7cb31bd42726a4177bc11393
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: c196bd99b7af66eb74df21158f980d4c47f1ce27
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004130"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751219"
 ---
 <!--Verfiy successfully-->
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>使用 Azure CLI 管理 Azure 资源管理器资源组
@@ -88,14 +88,14 @@ az group delete --name $resourceGroupName
 
 ## <a name="lock-resource-groups"></a>锁定资源组
 
-锁定可以防止组织中的其他用户意外删除或修改关键资源，例如 Azure 订阅、资源组或资源。 
+锁定可以防止组织中的其他用户意外删除或修改关键资源，例如 Azure 订阅、资源组或资源。
 
 以下脚本锁定了一个资源组，因此无法删除该资源组。
 
 ```azurecli
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
-az lock create --name LockGroup --lock-type CanNotDelete --resource-group $resourceGroupName  
+az lock create --name LockGroup --lock-type CanNotDelete --resource-group $resourceGroupName
 ```
 
 以下脚本获取资源组的所有锁：
@@ -103,7 +103,7 @@ az lock create --name LockGroup --lock-type CanNotDelete --resource-group $resou
 ```azurecli
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
-az lock list --resource-group $resourceGroupName  
+az lock list --resource-group $resourceGroupName
 ```
 
 以下脚本将删除锁：
@@ -129,13 +129,88 @@ az lock delete --name $lockName --resource-group $resourceGroupName
 - 由于模板包含整个基础结构，因此将来可以自动完成解决方案的部署。
 - 通过查看代表解决方案的 JavaScript 对象表示法 (JSON)，了解模板语法。
 
+若要导出资源组中的所有资源，请使用 [az group export](https://docs.azure.cn/cli/group#az_group_export) 并提供资源组名称。
+
 ```azurecli
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
-az group export --name $resourceGroupName  
+az group export --name $resourceGroupName
 ```
 
-该脚本在控制台上显示模板。  复制 JSON，并将其另存为文件。
+该脚本在控制台上显示模板。 复制 JSON，并将其另存为文件。
+
+可以选择要导出的资源，而不是导出资源组中的所有资源。
+
+若要导出一个资源，请传递该资源 ID。
+
+```azurecli
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+echo "Enter the storage account name:" &&
+read storageAccountName &&
+storageAccount=$(az resource show --resource-group $resourceGroupName --name $storageAccountName --resource-type Microsoft.Storage/storageAccounts --query id --output tsv) &&
+az group export --resource-group $resourceGroupName --resource-ids $storageAccount
+```
+
+若要导出多个资源，请传递以空格分隔的资源 ID。 若要导出所有资源，请不要指定此参数或提供“*”。
+
+```azurecli
+az group export --resource-group <resource-group-name> --resource-ids $storageAccount1 $storageAccount2
+```
+
+导出模板时，可以指定是否在模板中使用参数。 默认情况下，包含资源名称的参数，但它们没有默认值。 在部署过程中必须传递该参数值。
+
+```json
+"parameters": {
+  "serverfarms_demoHostPlan_name": {
+    "type": "String"
+  },
+  "sites_webSite3bwt23ktvdo36_name": {
+    "type": "String"
+  }
+}
+```
+
+在资源中，参数用于名称。
+
+```json
+"resources": [
+  {
+    "type": "Microsoft.Web/serverfarms",
+    "apiVersion": "2016-09-01",
+    "name": "[parameters('serverfarms_demoHostPlan_name')]",
+    ...
+  }
+]
+```
+
+如果在导出模板时使用 `--include-parameter-default-value` 参数，则模板参数包括设置为当前值的默认值。 可以使用该默认值，也可以通过传入不同的值来覆盖默认值。
+
+```json
+"parameters": {
+  "serverfarms_demoHostPlan_name": {
+    "defaultValue": "demoHostPlan",
+    "type": "String"
+  },
+  "sites_webSite3bwt23ktvdo36_name": {
+    "defaultValue": "webSite3bwt23ktvdo36",
+    "type": "String"
+  }
+}
+```
+
+如果在导出模板时使用 `--skip-resource-name-params` 参数，则模板中不包括资源名称的参数。 而是，资源名称直接在资源上设置为其当前值。 无法在部署过程中自定义该名称。
+
+```json
+"resources": [
+  {
+    "type": "Microsoft.Web/serverfarms",
+    "apiVersion": "2016-09-01",
+    "name": "demoHostPlan",
+    ...
+  }
+]
+```
 
 导出模板功能不支持导出 Azure 数据工厂资源。 若要了解如何导出数据工厂资源，请参阅[在 Azure 数据工厂中复制或克隆数据工厂](../../data-factory/copy-clone-data-factory.md)。
 

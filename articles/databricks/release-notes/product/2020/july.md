@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 07/31/2020
 title: 2020 年 7 月 - Azure Databricks
 description: 新 Azure Databricks 功能和改进的 2020 年 7 月发行说明。
-ms.openlocfilehash: 12d24264b1ba3f35f7de4b64be9b984c410a0632
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: c2510a2e7cf7354f2ce2f8e0baca5c1bef88b7ba
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329160"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058721"
 ---
 # <a name="july-2020"></a>2020 年 7 月
 
@@ -45,7 +45,7 @@ Web 终端为具有群集上的“可附加到”权限的用户提供一种便�
 
 Databricks 建议[将现有的旧版全局 init 脚本迁移到新框架](../../../clusters/init-scripts.md#migrate-legacy-scripts)，以利用这些改进。
 
-有关详细信息，请参阅[全局 init 脚本（新）](../../../clusters/init-scripts.md#global-init-script)。
+有关详细信息，请参阅[全局 init 脚本](../../../clusters/init-scripts.md#global-init-script)。
 
 ## <a name="ip-access-lists-now-ga"></a>IP 访问列表现已正式发布
 
@@ -118,7 +118,7 @@ SCIM API 现在包含以下筛选和排序改进：
 * horovod 0.19.1 -> 0.19.5
 * mlflow 1.8.0 -> 1.9.1
 
-有关详细信息，请参阅完整的 [Databricks Runtime 7.1 ML](../../runtime/7.1ml.md) 发行说明。
+有关详细信息，请参阅完整的[用于机器学习的 Databricks Runtime 7.1](../../runtime/7.1ml.md) 发行说明。
 
 ## <a name="databricks-runtime-71-genomics-ga"></a>Databricks Runtime 7.1 基因组学正式版
 

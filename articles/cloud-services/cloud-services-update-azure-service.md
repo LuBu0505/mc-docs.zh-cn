@@ -1,20 +1,21 @@
 ---
 title: 如何更新云服务 | Microsoft Docs
 description: 了解如何在 Azure 中更新云服务。 了解如何云服务上进行更新以确保可用性。
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 10/20/2020
+ms.service: cloud-services
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: 05006df9bf7e649be13445bfe7f5de1c1cc5b081
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 4dd9cc2f1202a1e9637a40056922d23cd5d0feae
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472171"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058791"
 ---
-# <a name="how-to-update-a-cloud-service"></a>如何更新云服务
+# <a name="how-to-update-an-azure-cloud-service"></a>如何更新 Azure 云服务
 
 三步操作进行云服务更新（包括其角色和来宾 OS）。 首先，必须上传新云服务或 OS 版本的二进制文件和配置文件。 其次，Azure 会根据新云服务版本的要求，保留云服务的计算资源和网络资源。 最后，Azure 执行滚动升级，以增量方式将租户更新到新版本或来宾 OS，同时保留可用性。 本文详细介绍最后一个步骤 - 滚动升级。
 
@@ -128,7 +129,7 @@ Azure 将角色实例划分为称为升级域 (UD) 的逻辑组。 升级域 (UD
 
 此功能是由以下功能提供的：
 
-* [回滚更新或升级](https://docs.microsoft.com/previous-versions/azure/reference/hh403977(v=azure.100))操作；只要服务中至少有一个实例尚未更新为新版本，就可以在配置更新上调用该操作（通过调用[更改部署配置](https://docs.microsoft.com/previous-versions/azure/reference/ee460809(v=azure.100))触发），或者在升级上调用该操作（通过调用[升级部署](https://docs.microsoft.com/previous-versions/azure/reference/ee460793(v=azure.100))触发）。
+* [回退更新或升级](https://docs.microsoft.com/previous-versions/azure/reference/hh403977(v=azure.100))操作；只要服务中至少有一个实例尚未更新为新版本，就可以在配置更新上调用该操作（通过调用[更改部署配置](https://docs.microsoft.com/previous-versions/azure/reference/ee460809(v=azure.100))触发），或者在升级上调用该操作（通过调用[升级部署](https://docs.microsoft.com/previous-versions/azure/reference/ee460793(v=azure.100))触发）。
 * Locked 和 RollbackAllowed 元素；这是作为[获取部署](https://docs.microsoft.com/previous-versions/azure/reference/ee460804(v=azure.100))和[获取云服务属性](https://docs.microsoft.com/previous-versions/azure/reference/ee460806(v=azure.100))操作响应正文的一部分返回的：
 
   1. Locked 元素用于检测何时可以在给定部署上调用变动操作。
@@ -149,7 +150,7 @@ Azure 将角色实例划分为称为升级域 (UD) 的逻辑组。 升级域 (UD
 <a name="multiplemutatingoperations"></a>
 
 ## <a name="initiating-multiple-mutating-operations-on-an-ongoing-deployment"></a>在进行的部署上启动多个变动操作
-在某些情况下，可能需要在进行的部署上启动多个同时的变动操作。 例如，你可能执行一个服务更新，并在服务中部署该更新的同时希望进行一些更改，例如，回滚更新，应用不同的更新，甚至删除部署。 一种可能需要执行此操作的情况是，服务升级包含错误的代码，而导致升级的角色实例反复崩溃。 在这种情况下，Azure 结构控制器无法继续应用该升级，因为升级域中的正常实例数不足。 这种状态称为 *卡住的部署* 。 可以回滚更新或应用全新的更新以覆盖失败的更新，从而纠正卡住的部署状态。
+在某些情况下，可能需要在进行的部署上启动多个同时的变动操作。 例如，你可能执行一个服务更新，并在服务中部署该更新的同时希望进行一些更改，例如，回滚更新，应用不同的更新，甚至删除部署。 一种可能需要执行此操作的情况是，服务升级包含错误的代码，而导致升级的角色实例反复崩溃。 在这种情况下，Azure 结构控制器无法继续应用该升级，因为升级域中的正常实例数不足。 这种状态称为 *卡住的部署*。 可以回滚更新或应用全新的更新以覆盖失败的更新，从而纠正卡住的部署状态。
 
 在 Azure 结构控制器收到更新或升级服务的初始请求后，可以启动后续的变动操作。 也就是说，不必等待初始操作完成，即可启动其他变动操作。
 

@@ -6,16 +6,16 @@ services: container-service
 ms.topic: article
 origin.date: 11/27/2020
 author: rockboyfor
-ms.date: 01/11/2021
-ms.testscope: yes|no
-ms.testdate: 01/11/2021null
+ms.date: 02/01/2021
+ms.testscope: yes
+ms.testdate: 01/11/2021
 ms.author: v-yeche
-ms.openlocfilehash: 2f84720f78a9e2736a1b16d786ab1a7de3126850
-ms.sourcegitcommit: ab5613bd4ca33ff8eddd0b93de57a69835c0a951
+ms.openlocfilehash: d7cbb5691124dd5df4abfb7eba09b18a0d8b133d
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98626764"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063704"
 ---
 <!--Pending PM Review-->
 # <a name="apply-security-updates-to-azure-kubernetes-service-aks-nodes-automatically-using-github-actions"></a>使用 GitHub Actions 自动将安全更新应用于 Azure Kubernetes 服务 (AKS) 节点
@@ -171,7 +171,7 @@ ms.locfileid: "98626764"
     > 可针对 Azure 中国云和 Azure Stack Hub 利用此 Azure 登录操作（使用环境参数）。
     > 
     > * Azure 中国云：`environment: 'AzureChinaCloud'`
-    > * Azure Statck：`environment: 'AzureStack'`
+    > * Azure Stack：`environment: 'AzureStack'`
     
     > [!TIP]
     > 可以通过将 `-g` 和 `-n` 参数添加到机密来将其与命令分离，这与前面的步骤类似。 将 `{resourceGroupName}` 和 `{aksClusterName}` 占位符替换为其机密对应项，例如 `${{secrets.RESOURCE_GROUP_NAME}}` 和 `${{secrets.AKS_CLUSTER_NAME}}`
@@ -237,9 +237,8 @@ jobs:
 [cluster-upgrades-article]: upgrade-cluster.md
 [system-pools]: use-system-pools.md
 
-<!--Not Avaialble on [spot-pools]: spot-node-pool.md-->
+<!--NOT AVAILABLE ON [spot-pools]: spot-node-pool.md-->
 
 [use-multiple-node-pools]: use-multiple-node-pools.md
 
-<!-- Update_Description: new article about node upgrade github actions -->
-<!--NEW.date: 01/11/2021-->
+<!--Update_Description: update meta properties, wording update, update link-->

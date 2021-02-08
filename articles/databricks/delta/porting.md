@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 10/05/2020
 title: 迁移指南 - Azure Databricks
 description: 了解如何将现有工作负载迁移到 Azure Databricks 上的 Delta Lake。
-ms.openlocfilehash: 731e0ae0db930f8e4c209bb9492e38f7a6a4bad0
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: 543ac000d8391df67787a4a05b83f156380fb7ab
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121937"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058588"
 ---
 # <a name="migration-guide"></a>迁移指南
 
@@ -32,7 +32,7 @@ Delta Lake 会自动处理以下操作，不应手动执行：
 
 * 手动修改数据：Delta Lake 使用事务日志自动提交对表的更改。 由于日志是事实的来源，因此 Spark 不会读取已写出但未添加到事务日志的文件。 同样，即使你手动删除了某个文件，指向该文件的指针仍会出现在事务日志中。 请始终使用本指南中所述的命令，而不是手动修改 Delta 表中存储的文件。
 
-* 外部读取器：Delta Lake 中存储的数据被编码为 Parquet 文件。 但是，使用外部读取器访问这些文件并不安全。 你将看到重复和未提交的数据，并且当某人运行 [Vacuum](delta-utility.md#delta-vacuum) 时，读取可能会失败。
+* 外部读取器：Delta Lake 中存储的数据被编码为 Parquet 文件。 但是，使用外部读取器访问这些文件并不安全。 你将看到重复和未提交的数据，并且当某人运行[删除 Delta 表不再引用的文件](delta-utility.md#delta-vacuum)时，读取可能会失败。
 
   > [!NOTE]
   >
@@ -75,4 +75,4 @@ Delta Lake 会自动处理以下操作，不应手动执行：
   CONVERT TO DELTA events
   ```
 
-有关详细信息，请参阅[转换为 Delta](delta-utility.md#convert-to-delta)。
+有关详细信息，请参阅[将 Parquet 表转换为 Delta 表](delta-utility.md#convert-to-delta)。

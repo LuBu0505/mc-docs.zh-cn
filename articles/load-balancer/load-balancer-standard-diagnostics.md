@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 08/14/2019
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.author: v-jay
-ms.openlocfilehash: 05d9083cfbd47c1f53a758edcf6677824b9b4840
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: c1ed501fe39698d1045088f64ae1ea6f6af5f959
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230995"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059156"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>通过指标、警报和资源运行状况进行标准负载均衡器诊断
 
@@ -40,16 +40,19 @@ Azure 负载均衡器通过 Azure 门户中的 Azure 指标来提供多维指标
 | --- | --- | --- | --- |
 | 数据路径可用性 | 公共和内部负载均衡器 | 标准负载均衡器持续运用从区域内部到负载均衡器前端，直到支持 VM 的 SDN 堆栈的数据路径。 只要保留正常实例，这种度量就会遵循应用程序负载均衡的流量所用的相同路径。 此外，还会验证客户使用的数据路径。 度量对于应用程序不可见，且不会干扰其他操作。| 平均值 |
 | 运行状况探测状态 | 公共和内部负载均衡器 | 标准负载均衡器使用分布式运行状况探测服务，根据配置设置监视应用程序终结点的运行状况。 此指标提供负载均衡器池中每个实例终结点的聚合视图或按终结点筛选的视图。 可以查看负载均衡器如何根据运行状况探测配置的指示了解应用程序的运行状况。 |  平均值 |
-| SYN（同步）数据包 | 公共和内部负载均衡器 | 标准负载均衡器不会终止传输控制协议 (TCP) 连接，也不会与 TCP 或 UDP 数据包流交互。 流及其握手始终位于源和 VM 实例之间。 若要更好地排查 TCP 协议方案的问题，可以使用 SYN 数据包计数器了解进行了多少次 TCP 连接尝试。 该指标将报告接收到的 TCP SYN 数据包数目。| 平均值 |
-| SNAT 连接 | 公共负载均衡器 |标准负载均衡器报告公共 IP 地址前端上伪装的出站流数。 源网络地址转换 (SNAT) 端口是消耗性资源。 此指标可以指出应用程序依赖于 SNAT 获取出站发起流的程度有多高。 将报告成功和失败的出站 SNAT 流的计数器，可使用这些计数器排查和了解出站流的运行状况。| 平均值 |
+| SYN（同步）计数 | 公共和内部负载均衡器 | 标准负载均衡器不会终止传输控制协议 (TCP) 连接，也不会与 TCP 或 UDP 数据包流交互。 流及其握手始终位于源和 VM 实例之间。 若要更好地排查 TCP 协议方案的问题，可以使用 SYN 数据包计数器了解进行了多少次 TCP 连接尝试。 该指标将报告接收到的 TCP SYN 数据包数目。| SUM |
+| SNAT 连接计数 | 公共负载均衡器 |标准负载均衡器报告公共 IP 地址前端上伪装的出站流数。 源网络地址转换 (SNAT) 端口是消耗性资源。 此指标可以指出应用程序依赖于 SNAT 获取出站发起流的程度有多高。 将报告成功和失败的出站 SNAT 流的计数器，可使用这些计数器排查和了解出站流的运行状况。| SUM |
 | 已分配的 SNAT 端口数 | 公共负载均衡器 | 标准负载均衡器报告每个后端实例分配的 SNAT 端口数 | 平均值。 |
 | 已用 SNAT 端口数 | 公共负载均衡器 | 标准负载均衡器报告每个后端实例使用的 SNAT 端口数。 | 平均值 | 
-| 字节计数器 |  公共和内部负载均衡器 | 标准负载均衡器按前端报告处理的数据。 你可能会注意到，这些字节并没有均匀地分布在后端实例中。 这是正常的，因为 Azure 的负载均衡器算法基于流 | 平均值 |
-| 数据包计数器 |  公共和内部负载均衡器 | 标准负载均衡器按前端报告处理的数据包。| 平均值 |
+| 字节计数 |  公共和内部负载均衡器 | 标准负载均衡器按前端报告处理的数据。 你可能会注意到，这些字节并没有均匀地分布在后端实例中。 这是正常的，因为 Azure 的负载均衡器算法基于流 | SUM |
+| 数据包计数 |  公共和内部负载均衡器 | 标准负载均衡器按前端报告处理的数据包。| SUM |
 
   >[!NOTE]
-  >通过 NVA 或防火墙使用来自内部负载均衡器的分发流量时，Syn 数据包、字节计数器和数据包计数器指标不可用，并将显示为零。 
-
+  >通过 NVA 或防火墙使用来自内部负载均衡器的分发流量时，Syn 数据包、字节计数和数据包计数指标不可用，并将显示为零。 
+  
+  >[!NOTE]
+  >最大和最小聚合不适用于 SYN 计数、数据包计数、SNAT 连接计数和字节计数指标 
+  
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>在 Azure 门户中查看负载均衡器指标
 
 Azure 门户通过“指标”页公开负载均衡器指标，可在特定资源的负载均衡器资源页以及 Azure Monitor 页中访问该页。 
@@ -90,6 +93,7 @@ Azure 标准负载均衡器支持易于配置的针对多维指标的警报。 �
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>常见诊断场景和建议的视图
 
 #### <a name="is-the-data-path-up-and-available-for-my-load-balancer-frontend"></a>数据路径是否正常可用并适用于我的负载均衡器前端？
+<details><summary>展开</summary>
 
 “数据路径可用性”指标描述区域中用于 VM 所在计算主机的数据路径的运行状况。 此指标反映了 Azure 基础结构的运行状况。 使用此指标可以：
 - 监视服务的外部可用性
@@ -117,8 +121,11 @@ Azure 标准负载均衡器支持易于配置的针对多维指标的警报。 �
 可以[结合使用“数据路径可用性”指标和运行状况探测状态](#vipavailabilityandhealthprobes)进行诊断。
 
 在大多数情况下，可以使用“平均值”作为聚合。 
+</details>
 
 #### <a name="are-the-backend-instances-for-my-load-balancer-responding-to-probes"></a>我的负载均衡器的后端实例是否正在响应探测？
+<details>
+  <summary>展开</summary>
 运行状况探测状态指标描述在配置负载均衡器的运行状况探测时，由你配置的应用程序部署的运行状况。 负载均衡器使用运行状况探测的状态来确定要将新流量发送到何处。 运行状况探测源自某个 Azure 基础结构地址，并会显示在 VM 的来宾 OS 中。
 
 若要获取标准负载均衡器资源的运行状况探测状态，请执行以下操作：
@@ -130,8 +137,11 @@ Azure 标准负载均衡器支持易于配置的针对多维指标的警报。 �
 - 网络安全组、VM 的来宾 OS 防火墙或应用层筛选器不允许你的探测。
 
 在大多数情况下，可以使用“平均值”作为聚合。 
+</details>
 
 #### <a name="how-do-i-check-my-outbound-connection-statistics"></a>如何检查出站连接统计信息？ 
+<details>
+  <summary>展开</summary>
 “SNAT 连接”指标描述适用于[出站流](./load-balancer-outbound-connections.md)的成功和失败连接的数量。
 
 如果失败连接数量大于零，则表示 SNAT 端口已耗尽。 必须进一步调查，确定失败的可能原因。 SNAT 端口耗尽的表现形式是无法建立[出站流](./load-balancer-outbound-connections.md)。 请查看有关出站连接的文章，以了解相关的场景和运行机制，并了解如何缓解并尽量避免 SNAT 端口耗尽的情况。 
@@ -143,9 +153,12 @@ Azure 标准负载均衡器支持易于配置的针对多维指标的警报。 �
 ![SNAT 连接](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
 
 图：  负载均衡器 SNAT 连接计数
+</details>
 
 
 #### <a name="how-do-i-check-my-snat-port-usage-and-allocation"></a>如何检查 SNAT 端口用量和分配？
+<details>
+  <summary>展开</summary>
 “使用的 SNAT 端口数”指标跟踪使用的 SNAT 端口数来维护出站流。 它指示在 Internet 源与负载均衡器后面的没有公共 IP 地址的后端 VM 或虚拟机规模集之间建立了多少个唯一流。 通过将你使用的 SNAT 端口数与“分配的 SNAT 端口数”指标进行比较，可以确定服务是否因为遇到了 SNAT 耗尽问题或者面临着这种风险而导致出站流失败。 
 
 如果指标指出了[出站流](./load-balancer-outbound-connections.md)失败的风险，请参考相应的文章并采取缓解措施，以确保服务正常运行。
@@ -167,8 +180,11 @@ Azure 标准负载均衡器支持易于配置的针对多维指标的警报。 �
 ![按后端实例列出的 SNAT 用量](./media/load-balancer-standard-diagnostics/snat-usage-split.png)
 
 图：  每个后端实例的 TCP SNAT 端口用量
+</details>
 
 #### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>如何检查服务的入站/出站连接尝试？
+<details>
+  <summary>展开</summary>
 “SYN 数据包”指标描述收到或发送的、与特定前端关联的 TCP SYN 数据包数量（适用于[出站流](./load-balancer-outbound-connections.md)）。 可以使用此指标了解对服务发起的 TCP 连接尝试。
 
 在大多数情况下，可以使用“总计”作为聚合。 
@@ -176,9 +192,12 @@ Azure 标准负载均衡器支持易于配置的针对多维指标的警报。 �
 ![SYN 连接](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
 
 图：  负载均衡器 SYN 计数
+</details>
 
 
 #### <a name="how-do-i-check-my-network-bandwidth-consumption"></a>如何检查网络带宽消耗？ 
+<details>
+  <summary>展开</summary>
 字节和数据包计数器指标描述服务发送或收到的字节和数据包数量，根据前端显示信息。
 
 在大多数情况下，可以使用“总计”作为聚合。 
@@ -192,8 +211,11 @@ Azure 标准负载均衡器支持易于配置的针对多维指标的警报。 �
 ![字节计数](./media/load-balancer-standard-diagnostics/LBMetrics-ByteCount.png)
 
 图：  负载均衡器字节计数
+</details>
 
 #### <a name="how-do-i-diagnose-my-load-balancer-deployment"></a><a name = "vipavailabilityandhealthprobes"></a>如何诊断负载均衡器部署？
+<details>
+  <summary>展开</summary>
 在单个图表中结合使用数据路径可用性和运行状况探测状态指标可以识别查找和解决问题的位置。 可以确定 Azure 是否正常工作，并据此最终确定配置或应用程序是否为问题的根本原因。
 
 可以使用运行状况探测指标来了解 Azure 如何根据提供的配置查看部署的运行状况。 在监视或确定原因时，查看运行状况探测始终是合理的第一个动作。
@@ -209,10 +231,11 @@ Azure 标准负载均衡器支持易于配置的针对多维指标的警报。 �
 - 图表开头紫色轨迹所示的运行状况探测状态为 0%。 绿色圆圈突出显示了运行状况探测状态变为正常的位置，以及客户部署可以接受新流量的位置。
 
 客户可以使用该图表来自行排查部署问题，而无需猜测或询问支持部门是否发生了其他问题。 此服务之所以不可用，是因为配置不当或应用程序故障导致运行状况探测失败。
+</details>
 
 ## <a name="resource-health-status"></a><a name = "ResourceHealth"></a>资源运行状况
 
-可以通过“Monitor”>“服务运行状况”下面的现有“资源运行状况”公开标准负载均衡器资源的运行状况。
+可以通过“Monitor”>“服务运行状况”下面的现有“资源运行状况”公开标准负载均衡器资源的运行状况。 每两分钟对其进行一次评估，方法是测量数据路径可用性，从而确定前端负载均衡终结点是否可用。
 
 | 资源运行状况 | 说明 |
 | --- | --- |

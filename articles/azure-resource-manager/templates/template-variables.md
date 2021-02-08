@@ -1,17 +1,17 @@
 ---
 title: 模板中的变量
-description: 介绍如何在 Azure 资源管理器模板中定义变量。
+description: 介绍如何在 Azure 资源管理器模板（ARM 模板）中定义变量。
 ms.topic: conceptual
 origin.date: 11/24/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 01/25/2021
 ms.author: v-yeche
-ms.openlocfilehash: 0b3bc8f32446c6167fc3918e3ea9f1c02e6e0958
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 892f0d50eff1a1eafa5cfec192cf6aad379a2509
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021855"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751290"
 ---
 # <a name="variables-in-arm-template"></a>ARM 模板中的变量
 
@@ -31,7 +31,7 @@ ms.locfileid: "98021855"
 },
 ```
 
-不能在 variables 节中使用 [reference](template-functions-resource.md#reference) 函数或任何 [list](template-functions-resource.md#list) 函数。 在解析变量时，这些函数获取资源的运行时状态，不能在部署之前执行。
+不能在 `variables` 节中使用 [reference](template-functions-resource.md#reference) 函数或任何 [list](template-functions-resource.md#list) 函数。 在解析变量时，这些函数获取资源的运行时状态，不能在部署之前执行。
 
 ## <a name="use-variable"></a>使用变量
 
@@ -66,7 +66,7 @@ ms.locfileid: "98021855"
 },
 ```
 
-在参数中，可以创建一个值，用于指示要使用的配置值。
+在 `parameters` 中创建一个值，用于指示要使用的配置值。
 
 ```json
 "parameters": {

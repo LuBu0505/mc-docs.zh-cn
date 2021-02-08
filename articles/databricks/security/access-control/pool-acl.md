@@ -5,15 +5,15 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 08/19/2020
+ms.date: 11/10/2020
 title: 池访问控制 - Azure Databricks
 description: 了解如何管理对 Azure Databricks 池的访问，这些池是可用于启动群集的一组空闲的现成可用实例。
-ms.openlocfilehash: 0eeb4a1731ce6693c1a6da1fb7653512c94ebdbf
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: e4d85bf9ba519d3b6aae5a696f85928594136a98
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937789"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060022"
 ---
 # <a name="pool-access-control"></a>池访问控制
 
@@ -54,4 +54,4 @@ Azure Databricks 管理员必须先为工作区启用池访问控制，然后你
 >
 > 还可以使用[权限 API](../../_static/api-refs/permissions-azure.yaml) 授予用户或组管理池或将群集附加到池的权限。
 
-只能通过 SCIM API 授予用户或组创建池的权限。 请遵循 [SCIM API](../../dev-tools/api/latest/scim/index.md) 文档并向用户授予 `allow-instance-pool-create` 权限。
+只能通过 SCIM API 授予用户或组创建池的权限。 请遵循 [SCIM API](../../dev-tools/api/latest/scim/index.md) 文档并向用户授予 ``allow-instance-pool-create`` 权限。

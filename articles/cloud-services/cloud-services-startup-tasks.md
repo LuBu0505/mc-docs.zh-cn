@@ -1,20 +1,22 @@
 ---
 title: 在 Azure 云服务中运行启动任务 | Microsoft Docs
 description: 启动任务可帮助为应用准备云服务环境。 这会讲授启动任务的工作方式以及如何生成启动任务
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 10/20/2020
+ms.service: cloud-services
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: 65c4e847d202df2f952aeb25293c90a2240208fe
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 742417929f233702be0b59a80e4b18772806543c
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472572"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058800"
 ---
-# <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>如何配置和运行云服务的启动任务
+# <a name="how-to-configure-and-run-startup-tasks-for-an-azure-cloud-service"></a>如何配置和运行 Azure 云服务的启动任务
+
 在角色启动之前，可以使用启动任务执行操作。 可能需要执行的操作包括安装组件、注册 COM 组件、设置注册表项或启动长时间运行的进程。
 
 > [!NOTE]
@@ -31,12 +33,12 @@ ms.locfileid: "92472572"
 
 此外，启动任务还可以在重新启动之间执行多次。 例如，每次角色回收时都会运行启动任务，但角色回收可能并非始终包括重新启动。 应以这样的方式编写启动任务：使其能够多次运行而不会出现问题。
 
-启动任务必须以为零的 **errorlevel** （或退出代码）结束，才能完成启动过程。 如果启动任务以非零的 **errorlevel** 结束，则角色将不会启动。
+启动任务必须以为零的 **errorlevel**（或退出代码）结束，才能完成启动过程。 如果启动任务以非零的 **errorlevel** 结束，则角色将不会启动。
 
 ## <a name="role-startup-order"></a>角色启动顺序
 下面列出了 Azure 中的角色启动过程：
 
-1. 实例将标记为“ **正在启动** ”并且不接收流量。
+1. 实例将标记为“**正在启动**”并且不接收流量。
 2. 所有启动任务均根据其 **taskType** 属性执行。
    
    * **simple** 任务以同步方式执行（一次一个任务）。
@@ -48,15 +50,15 @@ ms.locfileid: "92472572"
      > 
 3. 将启动角色主机进程并在 IIS 中创建站点。
 4. 将调用 [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](https://docs.microsoft.com/previous-versions/azure/reference/ee772851(v=azure.100)) 方法。
-5. 实例将标记为“ **就绪** ”，并且流量将路由到实例。
+5. 实例将标记为“**就绪**”，并且流量将路由到实例。
 6. 将调用 [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.Run](https://docs.microsoft.com/previous-versions/azure/reference/ee772746(v=azure.100)) 方法。
 
 ## <a name="example-of-a-startup-task"></a>启动任务的示例
-启动任务在 [ServiceDefinition.csdef] 文件的 **任务** 元素中定义。 **commandLine** 属性指定启动批处理文件或控制台命令的名称和参数， **executionContext** 属性指定启动任务的权限级别， **taskType** 属性指定将如何执行该任务。
+启动任务在 [ServiceDefinition.csdef] 文件的 **任务** 元素中定义。 **commandLine** 属性指定启动批处理文件或控制台命令的名称和参数，**executionContext** 属性指定启动任务的权限级别，**taskType** 属性指定将如何执行该任务。
 
 在本示例中，将为启动任务创建环境变量 MyVersionNumber  ，并将该变量设为值“1.0.0.0”  。
 
-**ServiceDefinition.csdef** ：
+**ServiceDefinition.csdef**：
 
 ```xml
 <Startup>
@@ -123,7 +125,7 @@ EXIT /B 0
 
 启动任务有两种类型的环境变量；静态环境变量和基于 [RoleEnvironment] 类的成员的环境变量。 这两种环境变量都在 [ServiceDefinition.csdef] 文件的 [ServiceDefinition.csdef] 节中，并且都使用 [变量] 元素和 **name** 属性。
 
-静态环境变量使用 [变量] 元素的 **value** 属性。 上面的示例创建了环境变量 **MyVersionNumber** ，该变量具有静态值“ **1.0.0.0** ”。 另一个示例就是创建 **StagingOrProduction** 环境变量，可以手动将该变量设置为值“ **staging** ”或“ **production** ”，以根据 **StagingOrProduction** 环境变量的值执行不同的启动操作。
+静态环境变量使用 [变量] 元素的 **value** 属性。 上面的示例创建了环境变量 **MyVersionNumber**，该变量具有静态值“**1.0.0.0**”。 另一个示例就是创建 **StagingOrProduction** 环境变量，可以手动将该变量设置为值“**staging**”或“**production**”，以根据 **StagingOrProduction** 环境变量的值执行不同的启动操作。
 
 基于 RoleEnvironment 类的成员的环境变量不使用 [变量] 元素的 **value** 属性。 而是使用具有相应 **XPath** 属性值的 [RoleInstanceValue] 子元素基于 [RoleEnvironment] 类的特定成员创建环境变量。 用于访问各种 [RoleEnvironment] 值的 **XPath** 属性值可以在 [此处](cloud-services-role-config-xpath.md)找到。
 

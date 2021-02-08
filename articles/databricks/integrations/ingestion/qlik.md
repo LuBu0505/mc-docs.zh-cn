@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 04/20/2020
 title: Qlik 集成 - Azure Databricks
 description: 了解如何设置 Azure Databricks 来使其与 Qlik 进行集成。
-ms.openlocfilehash: 7007eaa8ed95b310a98182d8673a6ee5866e6c08
-ms.sourcegitcommit: 16af84b41f239bb743ddbc086181eba630f7f3e8
+ms.openlocfilehash: 0ba821420708b43cf72e2a9fc225ed9f86400c8c
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94589924"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058751"
 ---
 # <a name="qlik-integration"></a>Qlik 集成
 
@@ -60,7 +60,7 @@ Qlik 会将数据写入 Azure Data Lake Storage 路径，而 Azure Databricks �
 
 有关群集配置的详细信息，请参阅[配置群集](../../clusters/configure.md)。
 
-有关获取 JDBC URL 和 HTTP 路径的步骤，请参阅[服务器主机名、端口、HTTP 路径和 JDBC URL](../bi/jdbc-odbc-bi.md#jdbc-odbc-params)。
+有关获取 JDBC URL 和 HTTP 路径的步骤，请参阅[获取服务器主机名、端口、HTTP 路径和 JDBC URL](../bi/jdbc-odbc-bi.md#get-server-hostname-port-http-path-and-jdbc-url)。
 
 ## <a name="step-3-obtain-jdbc-and-odbc-connection-details-to-connect-to-a-cluster"></a><a id="connection"> </a><a id="step-3-obtain-jdbc-and-odbc-connection-details-to-connect-to-a-cluster"> </a>步骤 3：获取 JDBC 和 ODBC 连接详细信息以连接到群集
 

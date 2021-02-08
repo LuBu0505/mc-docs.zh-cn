@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.custom: references_regions, devx-track-azurecli
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 01/12/2021
-ms.openlocfilehash: 044c2de7a6e02de0ffd268782e823495aa1959dc
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 01/27/2021
+ms.openlocfilehash: 0a91631ef93cb46fa3f846cd8a48e7f5a919ab5d
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230980"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060186"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）
 使用 Azure Monitor 中的 Log Analytics 工作区数据导出功能，可以在收集 Log Analytics 工作区中所选表的数据时，将数据持续导出到 Azure 存储帐户或 Azure 事件中心。 本文提供了有关此功能的详细信息以及在工作区中配置数据导出的步骤。
@@ -33,11 +33,13 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
 - 使用 PowerShell 脚本一次性导出到本地计算机。 请参阅 [Invoke-AzOperationalInsightsQueryExport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport)。
 
 
-## <a name="current-limitations"></a>当前限制
+## <a name="limitations"></a>限制
 
-- 当前只能使用 CLI 或 REST 请求执行配置， 无法使用 Azure 门户或 PowerShell。
+- 当前只能使用 CLI 或 REST 请求执行配置。 尚不支持 Azure 门户或 PowerShell。
 - CLI 和 REST 中的 ```--export-all-tables``` 选项不受支持，将被删除。 你应在导出规则中显式提供表的列表。
-- 受支持的表当前仅限于下面[受支持的表](#supported-tables)部分中指定的那些。 如果数据导出规则包含不受支持的表，操作不会失败，但不会导出该表的任何数据。 如果数据导出规则包含不存在的表，操作会失败并出现错误 ```Table <tableName> does not exist in the workspace.```
+- 受支持的表当前仅限于下面[受支持的表](#supported-tables)部分中指定的那些。 
+- 如果数据导出规则包含不受支持的表，操作不会失败，但在表受到支持之前，不会导出该表的任何数据。 
+- 如果数据导出规则包含不存在的表，操作会失败并出现错误 ```Table <tableName> does not exist in the workspace```。
 - Log Analytics 工作区可以位于任何区域。
 - 目标存储帐户或事件中心必须与 Log Analytics 工作区位于同一区域。
 - 对于存储帐户，要导出的表的名称不能超过 60 个字符，而对于事件中心，不能超过 47 个字符。 名称较长的表将不会被导出。

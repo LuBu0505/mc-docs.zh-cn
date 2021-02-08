@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
+title: 快速入门 - 使用 Azure 门户在 Azure Databricks 工作区上运行 Spark 作业
 description: 本快速入门介绍如何使用 Azure 门户创建 Azure Databricks 工作区和 Apache Spark 群集，以及如何运行 Spark 作业。
 services: azure-databricks
 ms.service: azure-databricks
@@ -10,14 +10,14 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 03/23/2020
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: da7a876b72af17490fa77e7e766c134c500cecc9
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 6c66fddb910232af5ef535bf35a98994c1a3d57e
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106563"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059865"
 ---
-# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
+# <a name="quickstart-run-a-spark-job-on-azure-databricks-workspace-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 工作区上运行 Spark 作业
 
 在本快速入门中，将使用 Azure 门户创建一个具有 Apache Spark 群集的 Azure Databricks 工作区。 你在群集上运行作业，并使用自定义图表根据波士顿安全数据生成实时报告。
 
@@ -25,42 +25,14 @@ ms.locfileid: "93106563"
 
 #### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-- Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)。 不能使用 Azure 免费试用订阅完成本教程。 如果你有免费帐户，请转到个人资料并将订阅更改为“即用即付”。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/free/)。 然后，[移除支出限制](/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)，并为你所在区域的 vCPU [请求增加配额](/azure-portal/supportability/resource-manager-core-quotas-request)。 创建 Azure Databricks 工作区时，可以选择“试用版(高级 - 14天免费 DBU)”定价层，让工作区访问免费的高级 Azure Databricks DBU 14 天。
+- Azure 订阅 - [创建一个](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。 不能使用 Azure 免费试用订阅完成本教程。 如果你有免费帐户，请转到个人资料并将订阅更改为“即用即付”。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/free/)。 然后，[移除支出限制](/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)，并为你所在区域的 vCPU [请求增加配额](/azure-portal/supportability/resource-manager-core-quotas-request)。 创建 Azure Databricks 工作区时，可以选择“试用版(高级 - 14天免费 DBU)”定价层，让工作区访问免费的高级 Azure Databricks DBU 14 天。
 
 - 登录 [Azure 门户](https://portal.azure.com)。
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-如果还没有 Azure 订阅，请[免费创建一个](https://azure.microsoft.com/free/)。 不能使用 Azure 免费试用订阅完成本教程。 如果你有免费帐户，请转到个人资料并将订阅更改为“即用即付”。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/free/)。 然后，[移除支出限制](/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)，并为你所在区域的 vCPU [请求增加配额](/azure-portal/supportability/resource-manager-core-quotas-request)。 创建 Azure Databricks 工作区时，可以选择“试用版(高级 - 14天免费 DBU)”定价层，让工作区访问免费的高级 Azure Databricks DBU 14 天。
+如果还没有 Azure 订阅，请[创建一个](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。 不能使用 Azure 免费试用订阅完成本教程。 如果你有免费帐户，请转到个人资料并将订阅更改为“即用即付”。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/free/)。 然后，[移除支出限制](/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)，并为你所在区域的 vCPU [请求增加配额](/azure-portal/supportability/resource-manager-core-quotas-request)。 创建 Azure Databricks 工作区时，可以选择“试用版(高级 - 14天免费 DBU)”定价层，让工作区访问免费的高级 Azure Databricks DBU 14 天。
 
-## <a name="use-azure-cloud-shell"></a>使用 Azure Cloud Shell
-
-Azure 托管 Azure Cloud Shell（一个可通过浏览器使用的交互式 shell 环境）。 可以将 Bash 或 PowerShell 与 Cloud Shell 配合使用来使用 Azure 服务。 可以使用 Azure Cloud Shell 预安装的命令来运行本文中的代码，而不必在本地环境中安装任何内容。
-
-若要启动 Azure Cloud Shell，请执行以下操作：
-
-| 选项 | 示例/链接 |
-|-----------------------------------------------|---|
-| 选择代码块右上角的“试用”。 选择“试用”不会自动将代码复制到 Cloud Shell。 | ![Azure Cloud Shell 的“试用”示例](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
-| 转到 [https://shell.azure.com](https://shell.azure.com) 或选择“启动 Cloud Shell”按钮可在浏览器中打开 Cloud Shell。 | [![在新窗口中启动 Cloud Shell](./media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
-| 选择 [Azure 门户](https://portal.azure.com)右上角菜单栏上的 **Cloud Shell** 按钮。 | ![Azure 门户中的“Cloud Shell”按钮](./media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
-
-若要在 Azure Cloud Shell 中运行本文中的代码，请执行以下操作：
-
-1. 启动 Cloud Shell。
-
-1. 选择代码块上的“复制”按钮以复制代码。
-
-1. 在 Windows 和 Linux 上选择 **Ctrl**+**Shift**+**V** 将代码粘贴到 Cloud Shell 会话中，或在 macOS 上选择 **Cmd**+**Shift**+**V** 将代码粘贴到 Cloud Shell 会话中。
-
-1. 选择 **Enter** 运行此代码。
-
-Databricks 需要 Azure CLI 2.3.1 或更高版本。 运行 `az --version` 查看安装的版本和依赖库。 若要安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
-
----
-
-> [!Note]
-> 如果要在持有美国政府合规性认证（如 FedRAMP High）的 Azure 商业云中创建 Azure Databricks 工作区，请联系你的 Microsoft 代表或 Databricks 代表以获得这种体验的访问权限。
 
 ## <a name="create-an-azure-databricks-workspace"></a>创建 Azure Databricks 工作区
 
@@ -78,13 +50,13 @@ Databricks 需要 Azure CLI 2.3.1 或更高版本。 运行 `az --version` 查�
 
     提供以下值：
     
-    |属性  |说明  |
+    |properties  |说明  |
     |---------|---------|
     |**工作区名称**     | 提供 Databricks 工作区的名称        |
     |**订阅**     | 从下拉列表中选择自己的 Azure 订阅。        |
     |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](/azure-resource-manager/management/overview)。 |
     |**位置**     | 选择“美国西部 2”  。 有关其他可用区域，请参阅[各区域推出的 Azure 服务](https://azure.microsoft.com/regions/services/)。        |
-    |**定价层**     |  在“标准”、“高级”和“试用”之间进行选择。 有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。       |
+    |**定价层**     |  在“标准”、“高级”和“试用”之间进行选择。   有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。       |
 
 3. 选择“查看 + 创建”，然后选择“创建” 。 创建工作区需要几分钟时间。 创建工作区时，可以在“通知”中查看部署状态。 完成此过程后，你的用户帐户将自动添加为工作区的管理员用户。
 
@@ -110,7 +82,7 @@ Databricks 需要 Azure CLI 2.3.1 或更高版本。 运行 `az --version` 查�
 
    使用 Azure CLI 的扩展引用时，必须先安装该扩展。  借助 Azure CLI 扩展，可访问尚未在核心 CLI 中提供的试验性和预发布的命令。  若要详细了解包含更新和卸载的扩展，请参阅[使用 Azure CLI 的扩展](/cli/azure/azure-cli-extensions-overview)。
 
-   运行以下命令，安装 [Databricks 扩展](/cli/azure/ext/databricks/databricks)：
+   运行以下命令，安装 [Databricks 扩展](/cli/ext/databricks/databricks)：
 
     ```azurecli
     az extension add --name databricks
@@ -127,7 +99,7 @@ Databricks 需要 Azure CLI 2.3.1 或更高版本。 运行 `az --version` 查�
 
 ### <a name="create-an-azure-databricks-workspace"></a>创建 Azure Databricks 工作区
 
-使用 [az databricks workspace create](/cli/azure/ext/databricks/databricks/workspace?view=azure-cli-latest) 创建 Azure Databricks 工作区。
+使用 [az databricks workspace create](/cli/ext/databricks/databricks/workspace?view=azure-cli-latest) 创建 Azure Databricks 工作区。
 
 ```azurecli
 az databricks workspace create 
@@ -142,7 +114,7 @@ az databricks workspace create
 ## <a name="create-a-spark-cluster-in-databricks"></a>在 Databricks 中创建 Spark 群集
 
 > [!NOTE]
-> 若要使用免费帐户创建 Azure Databricks 群集，请在创建群集前转到你的配置文件并将订阅更改为 **即用即付** 。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/free/)。
+> 若要使用免费帐户创建 Azure Databricks 群集，请在创建群集前转到你的配置文件并将订阅更改为 **即用即付**。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/free/)。
 
 1. 在 Azure 门户中，转到所创建的 Databricks 工作区，然后单击“启动工作区”。
 
@@ -150,7 +122,7 @@ az databricks workspace create
 
     ![Azure 上的 Databricks](./media/quickstart-create-databricks-workspace-portal/databricks-on-azure.png "Azure 上的 Databricks")
 
-3. 在“新建群集”页中，提供用于创建群集的值。
+3. 在“新建群集”页中，提供用于创建群集的值。 
 
     ![在 Azure 上创建 Databricks Spark 群集](./media/quickstart-create-databricks-workspace-portal/create-databricks-spark-cluster.png "在 Azure 上创建 Databricks Spark 群集")
 
@@ -160,7 +132,7 @@ az databricks workspace create
    * 对于本文，请通过（5.X、6.X、7.X）运行时创建群集。  
    * 请务必选中 **在不活动超过 \_\_ 分钟后终止** 复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
     
-     选择“创建群集”。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
+     选择“创建群集”。  群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
 
 有关创建群集的详细信息，请参阅[在 Azure Databricks 中创建 Spark 群集](/databricks/clusters/create)。
 
@@ -192,7 +164,7 @@ az databricks workspace create
    以下命令允许 Spark 以远程方式从 Blob 存储读取数据。 将此 PySpark 代码粘贴到下一个单元格中，然后使用 **Shift+Enter** 来运行代码。
 
    ```python
-   wasbs_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
+   wasbs_path = 'wasbs://%s@%s.blob.core.chinacloudapi.cn/%s' % (blob_container_name, blob_account_name, blob_relative_path)
    spark.conf.set('fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name, blob_account_name), blob_sas_token)
    print('Remote blob path: ' + wasbs_path)
    ```

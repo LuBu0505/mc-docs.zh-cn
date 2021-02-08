@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 04/20/2020
 title: Stitch 集成 - Azure Databricks
 description: 了解如何设置 Azure Databricks 来使其与 Stitch 进行集成。
-ms.openlocfilehash: 7dc3bb60cb00473d926007550d6f02be8892f7ee
-ms.sourcegitcommit: 16af84b41f239bb743ddbc086181eba630f7f3e8
+ms.openlocfilehash: 0296b18bd14c463111a63f0937ee08e01215e19c
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94589923"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058498"
 ---
 # <a name="stitch-integration"></a>Stitch 集成
 
@@ -60,7 +60,7 @@ Stitch 会将数据写入 Azure Data Lake Storage 路径，而 Azure Databricks 
 
 有关群集配置的详细信息，请参阅[配置群集](../../clusters/configure.md)。
 
-有关获取 JDBC URL 和 HTTP 路径的步骤，请参阅[服务器主机名、端口、HTTP 路径和 JDBC URL](../bi/jdbc-odbc-bi.md#jdbc-odbc-params)。
+有关获取 JDBC URL 和 HTTP 路径的步骤，请参阅[获取服务器主机名、端口、HTTP 路径和 JDBC URL](../bi/jdbc-odbc-bi.md#get-server-hostname-port-http-path-and-jdbc-url)。
 
 ## <a name="step-3-configure-stitch-with-azure-databricks"></a>步骤 3：使用 Azure Databricks 配置 Stitch
 

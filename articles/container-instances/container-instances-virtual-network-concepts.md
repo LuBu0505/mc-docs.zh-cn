@@ -4,16 +4,16 @@ description: 将容器组部署到 Azure 虚拟网络的方案、资源和限制
 ms.topic: article
 origin.date: 08/11/2020
 author: rockboyfor
-ms.date: 10/05/2020
+ms.date: 01/25/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 893c1c70919614c3c3b5a54758f12cc43af61c67
-ms.sourcegitcommit: 29a49e95f72f97790431104e837b114912c318b4
+ms.openlocfilehash: ee5298bf5b8772575e68b667b772bff93ed38221
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91564274"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751333"
 ---
 <!--Verified successfully-->
 # <a name="virtual-network-scenarios-and-resources"></a>虚拟网络方案和资源
@@ -39,6 +39,7 @@ ms.locfileid: "91564274"
 * **Azure 负载均衡器** - 不支持在网络容器组中将 Azure 负载均衡器置于容器实例之前
 * **全球虚拟网络对等互连** - 不支持全球对等互连（跨 Azure 区域连接虚拟网络）
 * **公共 IP 或 DNS 标签** - 部署到虚拟网络的容器组目前不支持使用公共 IP 地址或完全限定的域名直接向 Internet 公开容器
+* **虚拟网络 NAT** - 部署到虚拟网络的容器组目前不支持使用 NAT 网关资源进行出站 Internet 连接。
 
 ## <a name="other-limitations"></a>其他限制
 
@@ -47,6 +48,7 @@ ms.locfileid: "91564274"
 * 不能在部署到虚拟网络的容器组中使用[托管标识](container-instances-managed-identity.md)。
 * 不能在部署到虚拟网络的容器组中启用[运行情况探测](container-instances-liveness-probe.md)或[就绪情况探测](container-instances-readiness-probe.md)。
 * 由于涉及到其他网络资源，部署到虚拟网络通常比部署标准容器实例要慢。
+* 如果要将容器组连接到 Azure 存储帐户，则必须向该资源添加[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。
 
 [!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
@@ -93,6 +95,6 @@ ms.locfileid: "91564274"
 <!-- LINKS - Internal -->
 
 [az-container-create]: https://docs.microsoft.com/cli/azure/container#az_container_create
-[az-network-profile-list]: https://docs.azure.cn/cli/network/profile#az-network-profile-list
+[az-network-profile-list]: https://docs.azure.cn/cli/network/profile#az_network_profile_list
 
 <!-- Update_Description: update meta properties, wording update, update link -->

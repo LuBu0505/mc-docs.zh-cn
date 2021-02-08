@@ -9,15 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 11/26/2020
-ms.date: 12/07/2020
+origin.date: 01/22/2021
+ms.date: 02/01/2021
 ms.author: v-jay
-ms.openlocfilehash: a49e1e0bee9222141863ffccfdfffd867beb7732
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 0de7240f9124b2e2fca9a6874bae6860790256d4
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747244"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059650"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Teradata Vantage 复制数据
 
@@ -37,7 +37,7 @@ ms.locfileid: "96747244"
 具体而言，此 Teradata 连接器支持：
 
 - Teradata **版本 14.10、15.0、15.10、16.0、16.10 和 16.20**。
-- 使用 **基本** 或 **Windows** 身份验证复制数据。
+- 使用“基本”、“Windows”或“LDAP”身份验证复制数据。
 - 从 Teradata 源进行并行复制。 有关详细信息，请参阅[从 Teradata 进行并行复制](#parallel-copy-from-teradata)部分。
 
 ## <a name="prerequisites"></a>先决条件
@@ -68,9 +68,11 @@ Teradata 链接服务支持以下属性：
 
 | 属性 | 说明 | 默认值 |
 |:--- |:--- |:--- |
+| TdmstPortNumber | 用于访问 Teradata 数据库的端口号。<br>除非技术支持指示，否则请勿更改此值。 | 1025 |
 | UseDataEncryption | 指定是否对 Teradata 数据库的所有通信进行加密。 允许的值为 0 或 1。<br><br/>- **0（已禁用，为默认值）** ：仅加密身份验证信息。<br/>- **1（已启用）** ：对驱动程序和数据库之间传递的所有数据进行加密。 | `0` |
 | CharacterSet | 要用于会话的字符集。 例如，`CharacterSet=UTF16`。<br><br/>此值可以是用户定义的字符集，也可以是以下预定义的字符集之一： <br/>- ASCII<br/>- UTF8<br/>- UTF16<br/>- LATIN1252_0A<br/>- LATIN9_0A<br/>- LATIN1_0A<br/>- Shift-JIS（Windows、兼容 DOS、KANJISJIS_0S）<br/>- EUC（兼容 Unix、KANJIEC_0U）<br/>- IBM Mainframe (KANJIEBCDIC5035_0I)<br/>- KANJI932_1S0<br/>- BIG5 (TCHBIG5_1R0)<br/>- GB (SCHGB2312_1T0)<br/>- SCHINESE936_6R0<br/>- TCHINESE950_8R0<br/>- NetworkKorean (HANGULKSC5601_2R4)<br/>- HANGUL949_7R0<br/>- ARABIC1256_6A0<br/>- CYRILLIC1251_2A0<br/>- HEBREW1255_5A0<br/>- LATIN1250_1A0<br/>- LATIN1254_7A0<br/>- LATIN1258_8A0<br/>- THAI874_4A0 | `ASCII` |
 | MaxRespSize |SQL 请求的响应缓冲区的最大大小，以千字节 (KB) 为单位。 例如，`MaxRespSize=‭10485760‬`。<br/><br/>对于 Teradata 数据库版本 16.00 或更高版本，最大值为 7361536。 对于使用较早版本的连接，最大值为 1048576。 | `65536` |
+| MechanismName | 若要使用 LDAP 协议对连接进行身份验证，请指定 `MechanismName=LDAP`。 | 不适用 |
 
 **示例：使用基本身份验证**
 
@@ -101,6 +103,24 @@ Teradata 链接服务支持以下属性：
             "connectionString": "DBCName=<server>",
             "username": "<username>",
             "password": "<password>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**示例：使用 LDAP 身份验证**
+
+```json
+{
+    "name": "TeradataLinkedService",
+    "properties": {
+        "type": "Teradata",
+        "typeProperties": {
+            "connectionString": "DBCName=<server>;MechanismName=LDAP;Uid=<username>;Pwd=<password>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -144,7 +164,7 @@ Teradata 链接服务支持以下属性：
 
 从 Teradata 复制数据时，支持以下属性：
 
-| 属性 | 描述 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 `TeradataTable`。 | 是 |
 | database | Teradata 实例的名称。 | 否（如果指定了活动源中的“query”） |
@@ -198,7 +218,7 @@ Teradata 链接服务支持以下属性：
 
 从 Teradata 复制数据时，复制活动的 **source** 节支持以下属性：
 
-| 属性 | 描述 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为 `TeradataSource`。 | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。<br>启用分区加载时，需要在查询中挂接任何相应的内置分区参数。 有关示例，请参阅[从 Teradata 进行并行复制](#parallel-copy-from-teradata)部分。 | 否（如果指定了数据集中的表） |
@@ -298,8 +318,8 @@ Teradata 链接服务支持以下属性：
 | Blob |Byte[] |
 | Byte |Byte[] |
 | ByteInt |Int16 |
-| Char |String |
-| Clob |String |
+| Char |字符串 |
+| Clob |字符串 |
 | Date |DateTime |
 | Decimal |小数 |
 | Double |Double |
@@ -330,7 +350,7 @@ Teradata 链接服务支持以下属性：
 | 时间戳 |DateTime |
 | Timestamp With Time Zone |DateTime |
 | VarByte |Byte[] |
-| VarChar |String |
+| VarChar |字符串 |
 | VarGraphic |不支持。 在源查询中应用显式强制转换。 |
 | Xml |不支持。 在源查询中应用显式强制转换。 |
 

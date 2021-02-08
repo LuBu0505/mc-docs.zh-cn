@@ -4,15 +4,15 @@ description: Azure 安全基准 V2 特权访问
 author: Johnnytechn
 ms.service: security
 ms.topic: conceptual
-ms.date: 11/13/2020
+ms.date: 01/19/2021
 ms.author: v-johya
 ms.custom: security-benchmark
-ms.openlocfilehash: 51d53bd80336e0dc6a498cf6deac08035175c7dc
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: 74f1dffcc5bae6d2adc415e30ee3b8f6a1a17aef
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637791"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751054"
 ---
 # <a name="security-control-v2-privileged-access"></a>安全控制 V2：特权访问
 
@@ -20,7 +20,7 @@ ms.locfileid: "94637791"
 
 ## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1：保护和限制具有较高权限的用户
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | PA-1 | 4.3、4.8 | AC-2 |
 
@@ -54,7 +54,7 @@ ms.locfileid: "94637791"
 
 ## <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2：限制对关键业务型系统的管理访问权限
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | PA-2 | 13.2、2.10 | AC-2、SC-3、SC-7 |
 
@@ -80,7 +80,7 @@ ms.locfileid: "94637791"
 
 ## <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3：定期审查和协调用户访问权限
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | PA-3 | 4.1、16.9、16.10 | AC-2 |
 
@@ -105,7 +105,7 @@ ms.locfileid: "94637791"
 
 ## <a name="pa-4-set-up-emergency-access-in-azure-ad"></a>PA-4：在 Azure AD 中设置紧急访问
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | PA-4 | 16 | AC-2、CP-2 |
 
@@ -128,7 +128,7 @@ ms.locfileid: "94637791"
 
 ## <a name="pa-5-automate-entitlement-management"></a>PA-5：将权利管理自动化
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | PA-5 | 16 | AC-2、AC-5、PM-10 |
 
@@ -149,7 +149,7 @@ ms.locfileid: "94637791"
 
 ## <a name="pa-6-use-privileged-access-workstations"></a>PA-6：使用特权访问工作站
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | PA-6 | 4.6、11.6、12.12 | AC-2、SC-3、SC-7 |
 
@@ -167,7 +167,7 @@ ms.locfileid: "94637791"
 
 ## <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7：遵循 Just Enough Administration（最小特权原则）
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | PA-7 | 14.6 | AC-2、AC-3、SC-3 |
 
@@ -191,15 +191,4 @@ ms.locfileid: "94637791"
 - [状况管理](https://docs.microsoft.com/azure/cloud-adoption-framework/organize/cloud-security-posture-management)    
 
 - [标识和密钥管理](https://docs.microsoft.com/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
-
-**责任**：客户
-
-客户安全利益干系人（[了解详细信息](https://docs.microsoft.com/azure/cloud-adoption-framework/organize/cloud-security#security-functions)）：
-
-- [应用程序安全性和 DevSecOps](https://docs.microsoft.com/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
-
-- [安全合规性管理](https://docs.microsoft.com/azure/cloud-adoption-framework/organize/cloud-security-compliance-management) 
-
-- [标识和密钥管理](https://docs.microsoft.com/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
-
 

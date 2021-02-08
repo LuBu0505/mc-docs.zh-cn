@@ -6,16 +6,16 @@ services: container-service
 ms.topic: article
 origin.date: 08/17/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: d93d7511e6d20726783c4eb8790a42f3893ec833
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 692b0d93244895508a5a1a1b7973ebd1c6f7df0e
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022324"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063698"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建 HTTPS 入口控制器
 
@@ -73,7 +73,8 @@ helm install nginx-ingress ingress-nginx/ingress-nginx \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set controller.image.registry=usgcr.azk8s.cn \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
-    --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64
+    --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64 \
+    --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
 <!--MOONCAKE: Add --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64-->
@@ -82,7 +83,7 @@ helm install nginx-ingress ingress-nginx/ingress-nginx \
 
 若要获取公共 IP 地址，请使用 `kubectl get service` 命令。 将 IP 地址分配给服务需要几分钟时间。
 
-```
+```console
 $ kubectl --namespace ingress-basic get services -o wide -w nginx-ingress-ingress-nginx-controller
 
 NAME                                     TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)                      AGE   SELECTOR
@@ -106,7 +107,7 @@ az network dns record-set a add-record \
 > [!NOTE]
 > （可选）可以为入口控制器 IP 地址而不是自定义域配置 FQDN。 请注意，此示例适用于 Bash shell。
 > 
-> ```azurecli
+> ```bash
 > # Public IP address of your ingress controller
 > IP="MY_EXTERNAL_IP"
 > 
@@ -140,13 +141,13 @@ helm repo add jetstack https://charts.jetstack.io
 helm repo update
 
 # Install the cert-manager Helm chart
-helm install \
-  cert-manager \
+helm install cert-manager jetstack/cert-manager \
   --namespace ingress-basic \
   --version v0.16.1 \
   --set installCRDs=true \
-  --set nodeSelector."beta\.kubernetes\.io/os"=linux \
-  jetstack/cert-manager
+  --set nodeSelector."kubernetes\.io/os"=linux \
+  --set webhook.nodeSelector."kubernetes\.io/os"=linux \
+  --set cainjector.nodeSelector."kubernetes\.io/os"=linux
 ```
 
 若要详细了解证书管理器配置，请参阅[证书管理器项目][cert-manager]。
@@ -277,7 +278,7 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 
 两个应用程序现在都在 Kubernetes 群集中运行。 但是，它们使用类型为 `ClusterIP` 的服务进行配置，并且无法从 Internet 进行访问。 若要公开发布这两个应用程序，请创建 Kubernetes 入口资源。 该入口资源配置将流量路由到这两个应用程序之一的规则。
 
-在以下示例中，到地址 *hello-world-ingress.MY_CUSTOM_DOMAIN* 的流量会路由到 *aks-helloworld* 服务。 到地址 *hello-world-ingress.MY_CUSTOM_DOMAIN/hello-world-two* 的流量会路由到 *aks-helloworld-two* 服务。 到 *hello-world-ingress.MY_CUSTOM_DOMAIN/static* 的流量会路由到静态资产的名为 *aks-helloworld* 的服务。
+在以下示例中，到地址 hello-world-ingress.MY_CUSTOM_DOMAIN 的流量会路由到 aks-helloworld-one 服务 。 到地址 *hello-world-ingress.MY_CUSTOM_DOMAIN/hello-world-two* 的流量会路由到 *aks-helloworld-two* 服务。 到 hello-world-ingress.MY_CUSTOM_DOMAIN/static 的流量会路由到静态资产的名为 aks-helloworld-one 的服务 。
 
 > [!NOTE]
 > 如果为入口控制器 IP 地址（而不是自定义域）配置了 FQDN，请使用 FQDN 而不是 hello-world-ingress.MY_CUSTOM_DOMAIN。 例如，如果 FQDN 为“demo-aks-ingress.chinaeast2.cloudapp.chinacloudapi.cn”，则在 `hello-world-ingress.yaml` 中将“hello-world-ingress.MY_CUSTOM_DOMAIN”替换为“demo-aks-ingress.chinaeast2.cloudapp.chinacloudapi.cn”。
@@ -352,7 +353,7 @@ kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
 
 若要验证证书是否已成功创建，请使用 `kubectl get certificate --namespace ingress-basic` 命令，并验证 *READY* 是否为 *True*，这可能需要数分钟。
 
-```
+```console
 $ kubectl get certificate --namespace ingress-basic
 
 NAME         READY   SECRET       AGE
@@ -385,7 +386,7 @@ kubectl delete -f cluster-issuer.yaml --namespace ingress-basic
 
 使用 `helm list` 命令列出 Helm 版本。 查找名为“nginx”和“cert-manager”的图表，如以下示例输出中所示 ：
 
-```
+```console
 $ helm list --namespace ingress-basic
 
 NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
@@ -395,7 +396,7 @@ nginx                   ingress-basic   1               2020-01-15 10:09:45.9826
 
 使用 `helm uninstall` 命令卸载这些版本。 以下示例将卸载 NGINX 入口和证书管理器部署。
 
-```
+```console
 $ helm uninstall cert-manager nginx --namespace ingress-basic
 
 release "cert-manager" uninstalled
@@ -441,9 +442,9 @@ kubectl delete namespace ingress-basic
 
 <!-- LINKS - external -->
 
-[az-network-dns-record-set-a-add-record]: https://docs.azure.cn/cli/network/dns/record-set/a#az_network_dns_record_set_a_add_record
+[az-network-dns-record-set-a-add-record]: https://docs.azure.cn/cli/network/dns/record-set/#az_network_dns_record_set_a_add_record
 
-<!--Not Available on [custom-domain]: ../app-service/manage-custom-dns-buy-domain.md#buy-the-domain-->
+<!--NOT AVAILABLE ON [custom-domain]: ../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain-->
 
 [dns-zone]: ../dns/dns-getstarted-cli.md
 [helm]: https://helm.sh/
@@ -467,7 +468,7 @@ kubectl delete namespace ingress-basic
 [aks-ingress-static-tls]: ingress-static-ip.md
 [aks-ingress-basic]: ingress-basic.md
 
-<!--Not Available on [aks-http-app-routing]: http-application-routing.md-->
+<!--NOT AVAILABLE ON [aks-http-app-routing]: http-application-routing.md-->
 
 [aks-ingress-own-tls]: ingress-own-tls.md
 [aks-quickstart-cli]: kubernetes-walkthrough.md
@@ -475,4 +476,4 @@ kubectl delete namespace ingress-basic
 [client-source-ip]: concepts-network.md#ingress-controllers
 [install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

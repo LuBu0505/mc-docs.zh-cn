@@ -5,30 +5,27 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 09/16/2020
+ms.date: 12/01/2020
 title: Azure Synapse Analytics - Azure Databricks
 description: 了解如何使用 Azure Databricks 在 Azure Synapse Analytics（以前称为 SQL 数据仓库）中读取和写入数据。
-ms.openlocfilehash: f5f0829517a29c70f3eeb67894a0b50815b88737
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: 4ac19bcce9b441701dc477f23d15b17cfefcc5f4
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121827"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059881"
 ---
 # <a name="azure-synapse-analytics"></a><a id="azure-synapse-analytics"> </a><a id="synapse-analytics"> </a>Azure Synapse Analytics
 
 [Azure Synapse Analytics](/synapse-analytics/)（以前称为 SQL 数据仓库）是基于云的企业数据仓库，可利用大规模并行处理 (MPP) 对多达数 PB 的数据快速运行复杂的查询。 将 Azure 用作大数据解决方案的关键组件。 使用简单的 [PolyBase](/synapse-analytics/sql-data-warehouse/load-data-wideworldimportersdw) T-SQL 查询或 [COPY](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql) 语句将大数据导入 Azure，然后利用 MPP 的能力运行高性能分析。 进行集成和分析时，数据仓库是企业获取见解能够依赖的唯一事实来源。
 
-你可以使用 Azure Synapse 连接器（称为 Synapse 连接器）从 Azure Databricks 访问 Azure Synapse，该连接器是 Apache Spark 的数据源实现，它使用 [Azure Blob 存储](/storage/blobs/)、PolyBase 或 Azure Synapse 中的 `COPY` 语句在 Azure Databricks 群集和 Azure Synapse 实例之间有效地传输大量数据。
+你可以使用 Azure Synapse 连接器从 Azure Databricks 访问 Azure Synapse，该连接器是 Apache Spark 的数据源实现，它使用 [Azure Blob 存储](/storage/blobs/)、PolyBase 或 Azure Synapse 中的 `COPY` 语句在 Azure Databricks 群集和 Azure Synapse 实例之间有效地传输大量数据。
 
 Azure Databricks 群集和 Azure Synapse 实例都访问公共 Blob 存储容器，以便在这两个系统之间交换数据。 在 Azure Databricks 中，Apache Spark 作业由 Azure Synapse 连接器触发，以便在 Blob 存储容器中读取和写入数据。 在 Azure Synapse 端，PolyBase 执行的数据加载和卸载操作由 Azure Synapse 连接器通过 JDBC 触发。 在 Databricks Runtime 7.0 及更高版本中，`COPY` 在默认情况下会通过 JDBC 由 Azure Synapse 连接器用来将数据加载到 Azure Synapse 中。
 
 > [!NOTE]
 >
-> `COPY`
->
-> * 为[公共预览版](../../../release-notes/release-types.md)。
-> * 仅在 ADLS Gen2 上可用，后者提供[更好的性能](/sql-data-warehouse/upgrade-to-latest-generation)。 建议将数据库迁移到 ADLS Gen2。
+> ``COPY`` 仅适用于 Azure Synapse Gen2 实例，这类实例提供[更好的性能](/sql-data-warehouse/upgrade-to-latest-generation)。 
 
 Azure Synapse 连接器更适合 ETL 而不是交互式查询，因为每次执行查询都可以将大量数据提取到 Blob 存储中。 如果计划对同一 Azure Synapse 表执行多个查询，建议你以 Parquet 之类的格式保存提取的数据。
 
@@ -45,36 +42,48 @@ Azure Synapse 连接器使用三种类型的网络连接：
 * Azure Synapse 到 Azure 存储帐户
 
 ```
-                           ┌─────────┐
-      ┌───────────────────>│ STORAGE │<──────────────────┐
-      │ Storage acc key /  │ ACCOUNT │ Storage acc key / │
-      │ Managed Service ID └─────────┘ OAuth 2.0         │
-      │                         │                        │
-      │                         │ Storage acc key /      │
-      │                         │ OAuth 2.0              │
-      v                         v                 ┌──────v────┐
-┌──────────┐              ┌──────────┐            │┌──────────┴┐
-│ Synapse  │              │  Spark   │            ││ Spark     │
-│ Analytics│<────────────>│  Driver  │<───────────>| Executors │
-└──────────┘  JDBC with   └──────────┘ Configured  └───────────┘
-              username &               in Spark
-              password
+                                 ┌─────────┐
+      ┌─────────────────────────>│ STORAGE │<────────────────────────┐
+      │   Storage acc key /      │ ACCOUNT │  Storage acc key /      │
+      │   Managed Service ID /   └─────────┘  OAuth 2.0 /            │
+      │                               │                              │
+      │                               │                              │
+      │                               │ Storage acc key /            │
+      │                               │ OAuth 2.0 /                  │
+      │                               │                              │
+      v                               v                       ┌──────v────┐
+┌──────────┐                      ┌──────────┐                │┌──────────┴┐
+│ Synapse  │                      │  Spark   │                ││ Spark     │
+│ Analytics│<────────────────────>│  Driver  │<───────────────>│ Executors │
+└──────────┘  JDBC with           └──────────┘    Configured   └───────────┘
+              username & password /                in Spark
 ```
 
 以下部分介绍每个连接的身份验证配置选项。
 
 ### <a name="spark-driver-to-azure-synapse"></a>Spark 驱动程序到 Azure Synapse
 
-Spark 驱动程序使用 JDBC 以及用户名和密码连接到 Azure Synapse。
-建议你使用 Azure 门户提供的连接字符串，该字符串使得通过 JDBC 连接在 Spark 驱动程序和 Azure Synapse 实例之间发送的所有数据都可以进行安全套接字层 (SSL) 加密。 若要验证是否已启用 SSL 加密，可以在连接字符串中搜索 `encrypt=true`。 为了使 Spark 驱动程序能够访问 Azure Synapse，建议你通过 Azure 门户在 Azure Synapse 服务器的防火墙窗格上将“允许访问 Azure 服务”设置为“打开”。 
+Spark 驱动程序可以使用以下项通过 JDBC 连接到 Azure Synapse：
+
+* 用户名和密码
+
+对于这两种身份验证类型，我们建议你都使用 Azure 门户提供的连接字符串，该字符串使得通过 JDBC 连接在 Spark 驱动程序和 Azure Synapse 实例之间发送的所有数据都可以进行安全套接字层 (SSL) 加密。 若要验证是否已启用 SSL 加密，可以在连接字符串中搜索 ``encrypt=true``。
+
+为了使 Spark 驱动程序能够访问 Azure Synapse，建议你通过 Azure 门户在 Azure Synapse 服务器的防火墙窗格上将“允许访问 Azure 服务”设置为“打开”。 
 此设置允许来自所有 Azure IP 地址和所有 Azure 子网的通信，使 Spark 驱动程序能够访问 Azure Synapse 实例。
 
 ### <a name="spark-driver-and-executors-to-azure-storage-account"></a>Spark 驱动程序和执行程序到 Azure 存储帐户
 
-Azure 存储容器充当中介，用于在 Azure Synapse 中进行读取或写入操作时存储批量数据。 Spark 使用以下内置连接器之一连接到存储容器：[Azure Blob 存储](azure-storage.md#azure-storage)或 [Azure Data Lake Storage (ADLS) Gen2](azure-datalake-gen2.md#adls-gen2)。 因此，只有 `wasbs` 和 `abfss` 是受支持的 URI 方案。
+Azure 存储容器充当中介，用于在 Azure Synapse 中进行读取或写入操作时存储批量数据。 Spark 使用以下内置连接器之一连接到存储容器：[Azure Blob 存储](azure-storage.md#azure-storage)或 [Azure Data Lake Storage (ADLS) Gen2](azure-datalake-gen2.md#adls-gen2)。  不支持 [Azure Data Lake Storage Gen1](azure-datalake.md#adls-gen1)，仅允许 SSL 加密的 HTTPS 访问。 因此，只有 ``wasbs`` 和 ``abfss`` 是受支持的 URI 方案。
 
-用于设置此连接的凭据必须是存储帐户访问密钥和机密（Blob 和 ADLS Gen2）或 OAuth 2.0 令牌（仅 ADLS Gen2，请参阅[使用服务主体直接通过 OAuth 2.0 访问 Azure Data Lake Storage Gen2 帐户](azure-datalake-gen2.md#adls-gen2-oauth-2)）。
-提供这些凭据的方式有两种：笔记本会话配置和全局 Hadoop 配置。
+有以下身份验证选项可用：
+
+* Azure Blob 存储 (``wasbs``)
+  * 存储帐户访问密钥和机密
+* Azure Data Lake Storage Gen2 (``abfss``)
+  * 存储帐户访问密钥和机密
+  * OAuth 2.0 身份验证。 有关 OAuth 2.0 和服务主体的详细信息，请参阅[直接通过 OAuth 2.0 使用服务主体访问 Azure Data Lake Storage Gen2 帐户](azure-datalake-gen2.md#adls-gen2-oauth-2)。
+
 以下示例使用存储帐户访问密钥方法演示了这两种方式。 这同样适用于 OAuth 2.0 配置。
 
 #### <a name="notebook-session-configuration-preferred"></a>笔记本会话配置（首选）
@@ -111,18 +120,19 @@ sc._jsc.hadoopConfiguration().set(
 
 ### <a name="azure-synapse-to-azure-storage-account"></a>Azure Synapse 到 Azure 存储帐户
 
-在加载和卸载临时数据的过程中，Azure Synapse 还会连接到存储帐户。 若要在连接的 Azure Synapse 实例中设置存储帐户的凭据，可以将 `forwardSparkAzureStorageCredentials` 设置为 `true`，这样 Azure Synapse 连接器就会自动发现笔记本会话配置或全局 Hadoop 配置中设置的帐户访问密钥，并通过 JDBC 将存储帐户访问密钥转发到连接的 Azure Synapse 实例。
-转发的存储访问密钥由 Azure Synapse 实例中的临时[数据库范围的凭据](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql)表示。 Azure Synapse 连接器会在请求 Azure Synapse 加载或卸载数据之前创建数据库范围的凭据。 在加载或卸载操作完成后，连接器接着会删除数据库范围的凭据。
+在加载和卸载临时数据的过程中，Azure Synapse 还会连接到存储帐户。
 
-或者，如果你使用 ADLS Gen2 + OAuth 2.0 身份验证，或将 Azure Synapse 实例配置为具有一个托管服务标识（通常与 [VNet + 服务终结点设置](https://azure.microsoft.com/blog/general-availability-of-vnet-service-endpoints-for-azure-sql-data-warehouse/)配合使用），则必须将 `useAzureMSI` 设置为 `true`。 在这种情况下，连接器会为数据库范围的凭据指定 `IDENTITY = 'Managed Service Identity'`，并且不指定 `SECRET`。
+如果你为存储帐户设置了帐户密钥和机密，则可以将 ``forwardSparkAzureStorageCredentials`` 设置为 ``true``，这样 Azure Synapse 连接器就会自动发现笔记本会话配置或全局 Hadoop 配置中设置的帐户访问密钥，并通过创建临时的[以 Azure 数据库为作用域的凭据](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql)将存储帐户访问密钥转发到连接的 Azure Synapse 实例。
+
+或者，如果你使用 ADLS Gen2 + OAuth 2.0 身份验证，或将 Azure Synapse 实例配置为具有一个托管服务标识（通常与 [VNet + 服务终结点设置](https://azure.microsoft.com/blog/general-availability-of-vnet-service-endpoints-for-azure-sql-data-warehouse/)配合使用），则必须将 ``useAzureMSI`` 设置为 ``true``。 在这种情况下，连接器会为数据库范围的凭据指定 ``IDENTITY = 'Managed Service Identity'``，并且不指定 ``SECRET``。
+
+> [!NOTE]
+>
+> 将数据加载到 Azure Synapse 中以及从中卸载数据时，不支持使用服务凭据进行身份验证。
 
 ## <a name="streaming-support"></a><a id="streaming-support"> </a><a id="streaming_support"> </a>流式处理支持
 
-Azure Synapse 连接器为 Azure Synapse 提供高效且可缩放的结构化流式写入支持，以便提供对批量写入一致的用户体验，并使用 PolyBase 
-
-<!--or `COPY`--> 在 Azure Databricks 群集和 Azure Synapse 实例之间进行大型数据传输。 与批量写入类似，流式处理主要用于 ETL，其延迟较高，因此在某些情况下可能不适合实时数据处理。
-
-Azure Synapse 连接器支持用于记录追加和聚合的 `Append` 和 `Complete` 输出模式。 请参阅[结构化流式处理指南](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#output-modes)，详细了解输出模式和兼容性矩阵。
+Azure Synapse 连接器为 Azure Synapse 提供了高效且可缩放的结构化流式写入支持，它通过批量写入提供一致的用户体验，并使用 PolyBase 或 ``COPY`` 在 Azure Databricks 群集与 Azure Synapse 实例之间进行大型数据传输。 与批量写入类似，流式处理主要用于 ETL，其延迟较高，因此在某些情况下可能不适合实时数据处理。
 
 ### <a name="fault-tolerance-semantics"></a>容错语义
 
@@ -136,7 +146,8 @@ Azure Synapse 连接器支持用于记录追加和聚合的 `Append` 和 `Comple
 ### <a name="scala"></a>Scala
 
 ```scala
-// Set up the Blob storage account access key in the notebook session conf.
+
+// Otherwise, set up the Blob storage account access key in the notebook session conf.
 spark.conf.set(
   "fs.azure.account.key.<your-storage-account-name>.blob.core.chinacloudapi.cn",
   "<your-storage-account-access-key>")
@@ -147,7 +158,7 @@ val df: DataFrame = spark.read
   .option("url", "jdbc:sqlserver://<the-rest-of-the-connection-string>")
   .option("tempDir", "wasbs://<your-container-name>@<your-storage-account-name>.blob.core.chinacloudapi.cn/<your-directory-name>")
   .option("forwardSparkAzureStorageCredentials", "true")
-  .option("dbTable", "my_table_in_dw")
+  .option("dbTable", "<your-table-name>")
   .load()
 
 // Load data from an Azure Synapse query.
@@ -156,7 +167,7 @@ val df: DataFrame = spark.read
   .option("url", "jdbc:sqlserver://<the-rest-of-the-connection-string>")
   .option("tempDir", "wasbs://<your-container-name>@<your-storage-account-name>.blob.core.chinacloudapi.cn/<your-directory-name>")
   .option("forwardSparkAzureStorageCredentials", "true")
-  .option("query", "select x, count(*) as cnt from my_table_in_dw group by x")
+  .option("query", "select x, count(*) as cnt from table group by x")
   .load()
 
 // Apply some transformations to the data, then use the
@@ -166,7 +177,7 @@ df.write
   .format("com.databricks.spark.sqldw")
   .option("url", "jdbc:sqlserver://<the-rest-of-the-connection-string>")
   .option("forwardSparkAzureStorageCredentials", "true")
-  .option("dbTable", "my_table_in_dw_copy")
+  .option("dbTable", "<your-table-name>")
   .option("tempDir", "wasbs://<your-container-name>@<your-storage-account-name>.blob.core.chinacloudapi.cn/<your-directory-name>")
   .save()
 ```
@@ -174,7 +185,8 @@ df.write
 ### <a name="python"></a>Python
 
 ```python
-# Set up the Blob storage account access key in the notebook session conf.
+
+# Otherwise, set up the Blob storage account access key in the notebook session conf.
 spark.conf.set(
   "fs.azure.account.key.<your-storage-account-name>.blob.core.chinacloudapi.cn",
   "<your-storage-account-access-key>")
@@ -185,7 +197,7 @@ df = spark.read \
   .option("url", "jdbc:sqlserver://<the-rest-of-the-connection-string>") \
   .option("tempDir", "wasbs://<your-container-name>@<your-storage-account-name>.blob.core.chinacloudapi.cn/<your-directory-name>") \
   .option("forwardSparkAzureStorageCredentials", "true") \
-  .option("dbTable", "my_table_in_dw") \
+  .option("dbTable", "<your-table-name>") \
   .load()
 
 # Load data from an Azure Synapse query.
@@ -194,7 +206,7 @@ df = spark.read \
   .option("url", "jdbc:sqlserver://<the-rest-of-the-connection-string>") \
   .option("tempDir", "wasbs://<your-container-name>@<your-storage-account-name>.blob.core.chinacloudapi.cn/<your-directory-name>") \
   .option("forwardSparkAzureStorageCredentials", "true") \
-  .option("query", "select x, count(*) as cnt from my_table_in_dw group by x") \
+  .option("query", "select x, count(*) as cnt from table group by x") \
   .load()
 
 # Apply some transformations to the data, then use the
@@ -204,7 +216,7 @@ df.write \
   .format("com.databricks.spark.sqldw") \
   .option("url", "jdbc:sqlserver://<the-rest-of-the-connection-string>") \
   .option("forwardSparkAzureStorageCredentials", "true") \
-  .option("dbTable", "my_table_in_dw_copy") \
+  .option("dbTable", "<your-table-name>") \
   .option("tempDir", "wasbs://<your-container-name>@<your-storage-account-name>.blob.core.chinacloudapi.cn/<your-directory-name>") \
   .save()
 ```
@@ -212,28 +224,28 @@ df.write \
 ### <a name="sql"></a>SQL
 
 ```sql
--- Set up the Blob storage account access key in the notebook session conf.
+-- Otherwise, set up the Blob storage account access key in the notebook session conf.
 SET fs.azure.account.key.<your-storage-account-name>.blob.core.chinacloudapi.cn=<your-storage-account-access-key>;
 
 -- Read data using SQL.
-CREATE TABLE my_table_in_spark_read
+CREATE TABLE example_table_in_spark_read
 USING com.databricks.spark.sqldw
 OPTIONS (
   url 'jdbc:sqlserver://<the-rest-of-the-connection-string>',
   forwardSparkAzureStorageCredentials 'true',
-  dbTable 'my_table_in_dw',
+  dbTable '<your-table-name>',
   tempDir 'wasbs://<your-container-name>@<your-storage-account-name>.blob.core.chinacloudapi.cn/<your-directory-name>'
 );
 
 -- Write data using SQL.
 -- Create a new table, throwing an error if a table with the same name already exists:
 
-CREATE TABLE my_table_in_spark_write
+CREATE TABLE example_table_in_spark_write
 USING com.databricks.spark.sqldw
 OPTIONS (
   url 'jdbc:sqlserver://<the-rest-of-the-connection-string>',
   forwardSparkAzureStorageCredentials 'true',
-  dbTable 'my_table_in_dw_copy',
+  dbTable '<your-table-name>',
   tempDir 'wasbs://<your-container-name>@<your-storage-account-name>.blob.core.chinacloudapi.cn/<your-directory-name>'
 )
 AS SELECT * FROM table_to_save_in_spark;
@@ -245,7 +257,7 @@ AS SELECT * FROM table_to_save_in_spark;
 # Load SparkR
 library(SparkR)
 
-# Set up the Blob storage account access key in the notebook session conf.
+# Otherwise, set up the Blob storage account access key in the notebook session conf.
 conf <- sparkR.callJMethod(sparkR.session(), "conf")
 sparkR.callJMethod(conf, "set", "fs.azure.account.key.<your-storage-account-name>.blob.core.chinacloudapi.cn", "<your-storage-account-access-key>")
 
@@ -254,7 +266,7 @@ df <- read.df(
    source = "com.databricks.spark.sqldw",
    url = "jdbc:sqlserver://<the-rest-of-the-connection-string>",
    forward_spark_azure_storage_credentials = "true",
-   dbTable = "my_table_in_dw",
+   dbTable = "<your-table-name>",
    tempDir = "wasbs://<your-container-name>@<your-storage-account-name>.blob.core.chinacloudapi.cn/<your-directory-name>")
 
 # Load data from an Azure Synapse query.
@@ -262,7 +274,7 @@ df <- read.df(
    source = "com.databricks.spark.sqldw",
    url = "jdbc:sqlserver://<the-rest-of-the-connection-string>",
    forward_spark_azure_storage_credentials = "true",
-   query = "select x, count(*) as cnt from my_table_in_dw group by x",
+   query = "select x, count(*) as cnt from table group by x",
    tempDir = "wasbs://<your-container-name>@<your-storage-account-name>.blob.core.chinacloudapi.cn/<your-directory-name>")
 
 # Apply some transformations to the data, then use the
@@ -273,7 +285,7 @@ write.df(
   source = "com.databricks.spark.sqldw",
   url = "jdbc:sqlserver://<the-rest-of-the-connection-string>",
   forward_spark_azure_storage_credentials = "true",
-  dbTable = "my_table_in_dw_copy",
+  dbTable = "<your-table-name>",
   tempDir = "wasbs://<your-container-name>@<your-storage-account-name>.blob.core.chinacloudapi.cn/<your-directory-name>")
 ```
 
@@ -301,10 +313,10 @@ val df: DataFrame = spark.readStream
 
 df.writeStream
   .format("com.databricks.spark.sqldw")
-  .option("url", <azure-sqldw-jdbc-url>)
+  .option("url", "jdbc:sqlserver://<the-rest-of-the-connection-string>")
   .option("tempDir", "wasbs://<your-container-name>@<your-storage-account-name>.blob.core.chinacloudapi.cn/<your-directory-name>")
   .option("forwardSparkAzureStorageCredentials", "true")
-  .option("dbTable", <table-name>)
+  .option("dbTable", "<your-table-name>")
   .option("checkpointLocation", "/tmp_checkpoint_location")
   .start()
 ```
@@ -329,10 +341,10 @@ df = spark.readStream \
 
 df.writeStream \
   .format("com.databricks.spark.sqldw") \
-  .option("url", <azure-sqldw-jdbc-url>) \
+  .option("url", "jdbc:sqlserver://<the-rest-of-the-connection-string>") \
   .option("tempDir", "wasbs://<your-container-name>@<your-storage-account-name>.blob.core.chinacloudapi.cn/<your-directory-name>") \
   .option("forwardSparkAzureStorageCredentials", "true") \
-  .option("dbTable", <table-name>) \
+  .option("dbTable", "<your-table-name>") \
   .option("checkpointLocation", "/tmp_checkpoint_location") \
   .start()
 ```
@@ -343,6 +355,8 @@ df.writeStream \
 
 ### <a name="in-this-section"></a>本节内容：
 
+* [批量写入支持的保存模式](#supported-save-modes-for-batch-writes)
+* [流式写入支持的输出模式](#supported-output-modes-for-streaming-writes)
 * [写入语义](#write-semantics)
 * [PolyBase 所需的 Azure Synapse 权限](#required-azure-synapse-permissions-for-polybase)
 * [`COPY` 语句所需的 Azure Synapse 权限](#required-azure-synapse-permissions-for-the-copy-statement)
@@ -352,11 +366,21 @@ df.writeStream \
 * [临时对象管理](#temporary-object-management)
 * [流式处理检查点表管理](#streaming-checkpoint-table-management)
 
+### <a name="supported-save-modes-for-batch-writes"></a>批量写入支持的保存模式
+
+Azure Synapse 连接器支持 ``ErrorIfExists``、``Ignore``、``Append`` 和 ``Overwrite`` 保存模式，默认模式为 ``ErrorIfExists``。
+有关 Apache Spark 中支持的保存模式的详细信息，请参阅[有关保存模式的 Spark SQL 文档](https://spark.apache.org/docs/latest/sql-data-sources-load-save-functions.html#save-modes)。
+
+### <a name="supported-output-modes-for-streaming-writes"></a>流式写入支持的输出模式
+
+Azure Synapse 连接器支持用于记录追加和聚合的 ``Append`` 和 ``Complete`` 输出模式。
+有关输出模式和兼容性矩阵的更多详细信息，请参阅[结构化流式处理指南](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#output-modes)。
+
 ### <a name="write-semantics"></a>写入语义
 
 除 PolyBase 外，Azure Synapse 连接器还支持 `COPY` 语句。 `COPY` 语句提供了一种更方便的将数据加载到 Azure Synapse 中的方法，无需创建外部表。另外，此语句只需较少的权限即可加载数据，并且提高了性能，可以将数据以高吞吐量的方式引入到 Azure Synapse 中。
 
-你可以使用以下配置来强制执行写入语义：
+默认情况下，连接器会自动发现相应的写入语义；但是，可以使用以下配置来强制执行写入语义行为：
 
 #### <a name="scala"></a>Scala
 
@@ -440,9 +464,7 @@ sparkR.callJMethod(conf, "set", "spark.databricks.sqldw.writeSemantics", "<write
 
 ### <a name="parameters"></a>parameters
 
-<!--There are docs for other options in https://github.com/databricks/universe/commit/58c664971b51eaacd1fd4c286fb292b8b7625143-->
-
-Spark SQL 中提供的参数映射或 `OPTIONS` 支持以下设置：
+Spark SQL 中提供的参数映射或 ``OPTIONS`` 支持以下设置：
 
 | 参数                             | 必须                           | 默认                                                     | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |---------------------------------------|------------------------------------|-------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

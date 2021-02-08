@@ -4,15 +4,15 @@ description: 了解如何使用 Azure 门户或 CLI 来创建、查看和管理�
 author: Johnnytechn
 ms.author: v-johya
 ms.topic: conceptual
-ms.date: 11/02/2020
+ms.date: 01/27/2021
 ms.subservice: alerts
 origin.date: 02/16/2020
-ms.openlocfilehash: 9236ab2c9e76310a6f261ef9e5f3e327150cae55
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 7c2a81cde3035b752dc0a79d134264bb72890963
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328450"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060045"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理指标警报
 
@@ -42,13 +42,13 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 7. 随后会该指标在显示过去 6 小时的图表。 可以使用“图表期间”  下拉框进行选择以查看更长时间的指标历史记录。
 
 8. 如果指标包含维度，则会显示一个维度表。 为每个维度选择一个或多个值。
-    - 显示的维度值基于在过去 3 天内的指标数据。
-    - 如果你要查看的维度值没有显示，请单击“+”来添加自定义值。
-    - 还可以针对任一维度选择 \*。 选择 \* 会将选择范围动态调整为某个维度的所有当前和未来值。
+    - 显示的维度值基于前一天的指标数据。
+    - 如果你要查看的维度值没有显示，请单击“添加自定义值”来添加自定义维度值。
+    - 还可为任何维度选择所有当前和未来值。 这会将选择范围动态调整为某个维度的所有当前和未来值。
 
     指标警报规则将会针对所选值的所有组合对条件进行评估。 [详细了解如何针对多维指标发出警报](alerts-metric-overview.md)。
 
-9. 选择“阈值”类型、“运算符”和“聚合类型” 。 这将确定指标警报规则将评估的逻辑。
+9. 选择“阈值”  类型、“运算符”  和“聚合类型”  。 这将确定指标警报规则将评估的逻辑。
     - 如果使用“静态”  阈值，请继续定义“阈值”  。 指标图表可以帮助你确定可能合理的阈值。
     - 如果使用“动态”  阈值，请继续定义“阈值敏感度”  。 指标图表将显示基于最新数据计算得出的阈值。 [详细了解动态阈值条件类型和敏感度选项](alerts-dynamic-thresholds.md)。
 

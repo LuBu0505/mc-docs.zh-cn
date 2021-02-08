@@ -8,14 +8,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 origin.date: 10/07/2020
-ms.date: 11/27/2020
+ms.date: 01/14/2021
 ms.author: v-tawe
-ms.openlocfilehash: 02afd0873348e1ed26bfca0a1c5376d3fad851a8
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: f2b7facbe1bfd5b9e193eb6802586ffc4a9f8140
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300914"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059362"
 ---
 # <a name="secure-access-to-a-key-vault"></a>保护对密钥保管库的访问
 
@@ -37,7 +37,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 * 组安全主体标识在 Azure Active Directory 中创建的一组用户。 分配给组的任何角色或权限都将授予组内的所有用户。
 
-* 服务主体是一类安全主体，它标识应用程序或服务，即一段代码，而不是用户或组。 服务主体的对象 ID 称为其客户端 ID，作用类似于其用户名。 服务主体的客户端密码或证书的作用类似于其密码 。 许多 Azure 服务支持分配带有 **客户端 ID** 和 **证书** 自动管理功能的[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 对于在 Azure 中进行身份验证而言，托管标识是最安全的，建议选择这种方式。
+* 服务主体是一类安全主体，它标识应用程序或服务，即一段代码，而不是用户或组。 服务主体的对象 ID 称为其客户端 ID，作用类似于其用户名。 服务主体的客户端密码或证书的作用类似于其密码 。 许多 Azure 服务支持分配带有 **客户端 ID** 和 **证书** 自动管理功能的 [托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 对于在 Azure 中进行身份验证而言，托管标识是最安全的，建议选择这种方式。
 
 若要详细了解如何对 Key Vault 进行身份验证，请参阅[对 Azure Key Vault 进行身份验证](authentication.md)
 
@@ -189,8 +189,8 @@ For more information about private endpoints, see [Key Vault with Azure Private 
 | --- | --- | --- | --- |
 | 安全团队 | [密钥保管库参与者](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | 证书：所有操作 <br> 密钥：所有操作 <br> 机密：所有操作 | [密钥保管库管理员（预览版）](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) |
 | 开发人员和&nbsp;操作人员 | 密钥保管库部署权限<br><br> **注意**：此权限允许已部署的 VM 从密钥保管库提取机密。 | 无 | 无 |
-| 审核人员 | 无 | 证书：list <br> 密钥：列出<br>机密：列出<br><br> **注意**：此权限让审核员能够检查日志中未发出的密钥和机密的属性（标记、激活日期、到期日期）。 | [密钥保管库读取者（预览版）]https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview |
-| Azure 存储帐户 | None | 密钥：get、list、wrapKey、unwrapKey <br> | [密钥保管库加密服务加密](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-preview) |
+| 审核人员 | 无 | 证书：list <br> 密钥：列出<br>机密：列出<br><br> **注意**：此权限让审核员能够检查日志中未发出的密钥和机密的属性（标记、激活日期、到期日期）。 | [密钥保管库读取者（预览版）](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) |
+| Azure 存储帐户 | None | 密钥：get、list、wrapKey、unwrapKey <br> | [密钥保管库加密服务加密用户](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user-preview) |
 | 应用程序 | 无 | 机密：get、list <br> 证书：get、list | [密钥保管库读取者（预览版）](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview)、[密钥保管库机密用户（预览版）](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
 
 三个团队角色需要访问其他资源的权限以及密钥保管库权限。 若要部署 VM（或 Azure 应用服务的 Web 应用功能），开发人员和操作人员需要部署访问权限。 审核员需要具有对存储密钥保管库日志的存储帐户的“读取”访问权限。

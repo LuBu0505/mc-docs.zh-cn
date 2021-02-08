@@ -1,26 +1,27 @@
 ---
 title: 使用共享访问签名进行 Azure 服务总线访问控制
 description: 根据如何使用共享访问签名进行服务总线访问控制，并详细介绍如何使用 Azure 服务总线进行 SAS 授权。
+ms.service: service-bus-messaging
 ms.topic: article
-origin.date: 11/03/2020
+origin.date: 01/19/2021
 author: rockboyfor
-ms.date: 11/23/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f9ffed677920af71a740e5acb18bddbcc4f20ae9
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 60f55f5e5d133be53bc0f3659acd4ae2c97c3b01
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977035"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059123"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>使用共享访问签名进行服务总线访问控制
 
-共享访问签名  (SAS) 是服务总线消息传送的主要安全机制。 本文介绍 SAS、其工作原理以及如何以平台无关的方式使用它们。
+本文介绍共享访问签名 (SAS)、其工作原理以及如何以平台无关的方式使用它们。
 
-SAS 可以根据授权规则来保护对服务总线的访问。 可以在命名空间或消息传递实体（中继、队列或主题）中配置这些保护。 授权规则具有与特定权限关联的名称，并包含一个加密密钥对。 通过服务总线 SDK 或者在自己的代码中使用规则名称和密钥可以生成 SAS 令牌。 然后，客户端可将令牌传递给服务总线，以证明请求的操作获得授权。
+SAS 可以根据授权规则来保护对服务总线的访问。 可以在命名空间或消息传递实体（队列或主题）中配置这些保护。 授权规则具有与特定权限关联的名称，并包含一个加密密钥对。 通过服务总线 SDK 或者在自己的代码中使用规则名称和密钥可以生成 SAS 令牌。 然后，客户端可将令牌传递给服务总线，以证明请求的操作获得授权。
 
 > [!NOTE]
 > Azure 服务总线支持使用 Azure Active Directory (Azure AD) 授予对服务总线命名空间及其实体的访问权限。 使用 Azure AD 返回的 OAuth 2.0 令牌授权用户或应用程序可提供比共享访问签名 (SAS) 更高的安全性和易用性。 使用 Azure AD，不需要在代码中存储令牌，也不需要冒潜在的安全漏洞风险。
@@ -46,7 +47,7 @@ SAS 可以根据授权规则来保护对服务总线的访问。 可以在命名
 策略规则授予的权限可以是以下各项的组合：
 
 * “发送”- 授予向实体发送消息的权限
-* “侦听”- 授予侦听（中继）或接收（队列、订阅）和所有相关消息处理的权限
+* “侦听”- 授予接收（队列、订阅）和所有相关消息处理的权限
 * “管理”- 授予管理命名空间的拓扑的权限，包括创建和删除实体
 
 “管理”权限包括“发送”和“接收”权限。
@@ -60,7 +61,7 @@ SAS 可以根据授权规则来保护对服务总线的访问。 可以在命名
 ## <a name="best-practices-when-using-sas"></a>使用 SAS 的最佳实践
 在应用程序中使用共享访问签名时，需要知道以下两个可能的风险：
 
-- 如果 SAS 泄露，则获取它的任何人都可以使用它，这可能会使事件中心资源遭到入侵。
+- 如果 SAS 泄露，则获取它的任何人都可以使用它，这可能会使服务总线资源遭到入侵。
 - 如果提供给客户端应用程序的 SAS 到期并且应用程序无法从服务检索新 SAS，则可能会影响该应用程序的功能。
 
 下面这些针对使用共享访问签名的建议可帮助降低这些风险：
@@ -87,18 +88,34 @@ SAS
 SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-encoded-resourceURI>
 ```
 
-* **`se`** - 令牌即时过期时间。 一个整数，反映自 1970 年 1 月 1 日令牌过期的时期 `00:00:00 UTC`（UNIX 时期）以来的秒数。
-* **`skn`** - 授权规则的名称。
-* **`sr`** - 所访问资源的 URI。
-* **`sig`** - 签名。
+- `se` - 令牌即时过期时间。 一个整数，反映自 1970 年 1 月 1 日令牌过期的时期 `00:00:00 UTC`（UNIX 时期）以来的秒数。
+- `skn` - 授权规则的名称。
+- `sr` - 要访问的资源的 URL 编码 URI。
+- `sig` - URL 编码的 HMACSHA256 签名。 哈希计算类似于以下伪代码，并返回原始二进制输出的 base64。
 
-`signature-string` 是基于资源 URI 计算的 SHA-256 哈希（上一部分中所述的 **范围**），以及令牌即时过期时间的字符串表示形式，以 LF 分隔。
+    ```
+    urlencode(base64(hmacsha256(urlencode('https://<yournamespace>.servicebus.chinacloudapi.cn/') + "\n" + '<expiry instant>', '<signing key>')))
+    ```
 
-哈希计算方式如以下虚拟代码所示，返回 256 位/32 字节哈希值。
+下面是用于生成 SAS 令牌的示例 C# 代码：
 
+```csharp
+private static string createToken(string resourceUri, string keyName, string key)
+{
+    TimeSpan sinceEpoch = DateTime.UtcNow - new DateTime(1970, 1, 1);
+    var week = 60 * 60 * 24 * 7;
+    var expiry = Convert.ToString((int)sinceEpoch.TotalSeconds + week);
+    string stringToSign = HttpUtility.UrlEncode(resourceUri) + "\n" + expiry;
+    HMACSHA256 hmac = new HMACSHA256(Encoding.UTF8.GetBytes(key));
+    var signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(stringToSign)));
+    var sasToken = String.Format(CultureInfo.InvariantCulture, "SharedAccessSignature sr={0}&sig={1}&se={2}&skn={3}", HttpUtility.UrlEncode(resourceUri), HttpUtility.UrlEncode(signature), expiry, keyName);
+    return sasToken;
+}
 ```
-SHA-256('https://<yournamespace>.servicebus.chinacloudapi.cn/'+'\n'+ 1438205742)
-```
+
+> [!IMPORTANT]
+> 有关使用不同编程语言生成 SAS 令牌的示例，请参阅[生成 SAS 令牌](https://docs.microsoft.com/rest/api/eventhub/generate-sas-token)。 
+
 
 令牌包含非哈希值，使接收方可以使用相同的参数重新计算哈希，并验证颁发者是否拥有有效的签名密钥。
 
@@ -110,8 +127,6 @@ URI 必须采用[百分比编码格式](https://docs.microsoft.com/dotnet/api/sy
 
 SAS 令牌对于以 `signature-string` 中使用的 `<resourceURI>` 为前缀的所有资源有效。
 
-> [!NOTE]
-> 有关使用不同编程语言生成 SAS 令牌的示例，请参阅[生成 SAS 令牌](https://docs.microsoft.com/rest/api/eventhub/generate-sas-token)。 
 
 ## <a name="regenerating-keys"></a>重新生成密钥
 

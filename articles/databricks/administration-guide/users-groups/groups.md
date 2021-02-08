@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 04/29/2020
 title: 管理组 - Azure Databricks
 description: 了解如何在 Azure Databricks 中管理组。
-ms.openlocfilehash: 664d02972ec6ff0ce88dcc634944d30a02bb3e7b
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 630ec38caf142519f03027fbc509d2fe39d07ba9
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106503"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059978"
 ---
 # <a name="manage-groups"></a>管理组
 
@@ -54,14 +54,13 @@ ms.locfileid: "93106503"
 4. 在“添加用户或组”对话框中，单击向下箭头以显示用户和组的下拉列表，然后选择要添加的用户和组。
 5. 单击向下箭头以隐藏下拉列表，然后单击“确认”。
 
-## <a name="add-entitlements-to-a-group"></a>向组添加权利
+## <a name="add-an-entitlement-to-a-group"></a>向组添加权利
 
 1. 转到[管理控制台](../admin-console.md)，然后单击“组”选项卡。
 2. 选择要更新的组。
-3. 在“权利”选项卡上，选择要向组中的所有用户授予的权利。
-
-   “允许创建群集”是唯一可授予的权利，但将来会添加其他权利。 向用户授予此权利后，将允许用户创建和启动新群集。 你可以使用[群集级权限](../../security/access-control/cluster-acl.md)限制对现有群集的访问。
-
+3. 在“权利”选项卡上，选择要向组中的所有用户授予的权利：
+   * **允许群集创建**：允许组成员创建和启动新群集。 你可以使用[群集级权限](../../security/access-control/cluster-acl.md)限制对现有群集的访问。
+   * **SQL Analytics 访问**：允许组成员访问 [SQL Analytics](../../sql/index.md)。
 4. 在确认对话框中，单击“确认”。
 
 ## <a name="view-parent-groups"></a>查看父组
@@ -74,10 +73,10 @@ ms.locfileid: "93106503"
 
 1. 转到[管理控制台](../admin-console.md)，然后单击“组”选项卡。
 2. 选择要更新的组。
-3. 在“成员”选项卡上，找到要删除的用户或组，然后单击“操作”列中的 **X** 。
+3. 在“成员”选项卡上，找到要删除的用户或组，然后单击“操作”列中的 **X**。
 4. 单击“删除成员”以进行确认。
 
-用户或子组将丢失此组中的成员身份所授予的所有权利和子组成员身份。 但请注意，他们可能会通过其他组或用户级别的授予中的成员身份保留这些权利。
+用户或子组将丢失此组中的成员身份所授予的所有子组成员身份和权利。 但是，他们可能会通过其他组或用户级别的授予中的成员身份保留这些权利。
 
 ## <a name="remove-an-entitlement"></a>删除权利
 
@@ -92,7 +91,7 @@ ms.locfileid: "93106503"
 
 1. 转到[管理控制台](../admin-console.md)，然后单击“组”选项卡。
 2. 选择要更新的组。
-3. 在“父级”选项卡上，找到你要从中脱离的父组，然后单击“操作”列中的 **X** 。
+3. 在“父级”选项卡上，找到你要从中脱离的父组，然后单击“操作”列中的 **X**。
 4. 在确认对话框中，单击“删除父级”。
 
-分配给父组的所有权利将从组的成员中删除。 但请注意，他们可能会通过其他组或用户级别的授予中的成员身份保留这些权利。
+分配给父组的所有权利将从组的成员中删除。 但是，他们可能会通过其他组或用户级别的授予中的成员身份保留这些权利。

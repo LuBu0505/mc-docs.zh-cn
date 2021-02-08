@@ -1,5 +1,5 @@
 ---
-title: 在 Visual Studio Code 中调试 Azure API 管理策略 | Microsoft Docs
+title: 在 Visual Studio Code 中调试 Azure API 管理策略 | Azure Docs
 description: 了解如何使用 Azure API 管理 Visual Studio Code 扩展调试 Azure API 管理策略
 services: api-management
 documentationcenter: ''
@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/29/2020
+ms.date: 01/18/2021
 ms.author: v-johya
-ms.openlocfilehash: 24489834cb1bf9f7b9d2541348ebce86fd6e5d4d
-ms.sourcegitcommit: 80567f1c67f6bdbd8a20adeebf6e2569d7741923
+ms.openlocfilehash: fdce0da4ed84ba93f9fa6fe6a2722170d77fb8aa
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91871549"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751204"
 ---
 # <a name="debug-azure-api-management-policies-in-visual-studio-code"></a>在 Visual Studio Code 中调试 Azure API 管理策略
 
@@ -30,9 +30,11 @@ Azure API 管理中的[策略](api-management-policies.md)提供强大的功能�
 
 ## <a name="prerequisites"></a>先决条件
 
-首先请按照此[教程](get-started-create-service-instance.md)创建 API 管理开发人员层实例。
+* 首先请按照此[快速入门](get-started-create-service-instance.md)创建 API 管理开发人员层实例。
 
-安装 [Visual Studio Code](https://code.visualstudio.com/) 和最新版本的[适用于 Visual Studio Code 的 Azure API 管理扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement)。 
+* 安装 [Visual Studio Code](https://code.visualstudio.com/) 和最新版本的[适用于 Visual Studio Code 的 Azure API 管理扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement)。 
+
+* 将 API 导入到 API 管理实例。 有关示例步骤，请参阅[教程：使用 Visual Studio Code 的 API 管理扩展来导入和管理 API](visual-studio-code-tutorial.md)。
 
 ## <a name="restrictions-and-limitations"></a>限制和局限
 

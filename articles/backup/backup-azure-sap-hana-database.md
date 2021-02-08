@@ -4,14 +4,14 @@ description: 本文介绍如何使用 Azure 备份服务将 SAP HANA 数据库�
 author: Johnnytechn
 ms.topic: conceptual
 origin.date: 11/7/2019
-ms.date: 12/10/2020
+ms.date: 01/22/2021
 ms.author: v-johya
-ms.openlocfilehash: d2973790de5ec14591e3f4ee06c20b476d1e704e
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: 071a2164ecf8d06c1432ecd043120742e173b1bb
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97105346"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751335"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>备份 Azure VM 中的 SAP HANA 数据库
 
@@ -93,6 +93,9 @@ SAP HANA 数据库是关键工作负荷，要求较低的恢复点目标 (RPO) �
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>使用 HTTP 代理服务器路由流量
 
 备份在 Azure VM 上运行的 SAP HANA 数据库时，该 VM 上的备份扩展将使用 HTTPS API 将管理命令发送到 Azure 备份，并将数据发送到 Azure 存储。 备份扩展还使用 Azure AD 进行身份验证。 通过 HTTP 代理路由这三个服务的备份扩展流量。 使用上面提到的 IP 和 FQDN 列表，以允许访问所需的服务。 不支持已经过身份验证的代理服务器。
+
+> [!NOTE]
+> 没有服务级代理支持。 也就是说，不支持从少数或所选服务（Azure 备份服务）通过代理的流量。 整个数据或流量可以通过代理路由，也可以不通过代理路由。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

@@ -5,14 +5,14 @@ ms.topic: conceptual
 author: Johnnytechn
 origin.date: 09/12/2019
 ms.author: v-johya
-ms.date: 01/12/2021
+ms.date: 01/27/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 8565840e2ac1fdde210b1da784c60f6dce11a14d
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 69d92087884a5cfa284dfff8a5d13f8d4d1d280b
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230338"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060191"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -199,7 +199,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | correlationHeaderDomains |  | 启用特定域的关联标头 |
 | disableFlushOnBeforeUnload | false | 默认值为 false。 如果为 true，则触发 onBeforeUnload 事件时不会调用 flush 方法 |
 | enableSessionStorageBuffer | 是 | 默认值为 true。 如果为 true，则会将包含所有未发送的遥测数据的缓冲区存储在会话存储中。 加载页面时会还原该缓冲区 |
-| isCookieUseDisabled | false | 默认值为 false。 如果为 true，则 SDK 不会存储或读取 Cookie 中的任何数据。|
+| isCookieUseDisabled | false | 默认值为 false。 如果为 true，则 SDK 不会存储或读取 Cookie 中的任何数据。 请注意，这会禁用用户和会话 Cookie，令使用情况边栏选项卡和体验无效。 |
 | cookieDomain | Null | 自定义 Cookie 域。 若要跨子域共享 Application Insights Cookie，此字段会有帮助。 |
 | isRetryDisabled | false | 默认值为 false。 如果为 false，则出现代码 206（部分成功）、408（超时）、429（请求过多）、500（内部服务器错误）、503（服务不可用）和 0（脱机，仅当已检测到此状态时）时会重试 |
 | isStorageUseDisabled | false | 如果为 true，则 SDK 不会存储或读取本地和会话存储中的任何数据。 默认值为 false。 |
@@ -268,7 +268,9 @@ Access-Control-Allow-Headers：`Request-Id`、`Request-Context`、`<your header>
 | 扩展 |
 |---------------|
 | [React](javascript-react-plugin.md)|
-| [Angular](javascript-angular-plugin.md) |
+| [React Native](javascript-react-native-plugin.md)|
+| [Angular](javascript-angular-plugin.md)|
+| [单击“分析自动收集”](javascript-click-analytics-plugin.md)|
 
 ## <a name="explore-browserclient-side-data"></a>浏览浏览器/客户端数据
 

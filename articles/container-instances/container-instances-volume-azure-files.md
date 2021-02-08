@@ -4,26 +4,29 @@ description: 了解如何装载 Azure 文件卷以保持 Azure 容器实例的�
 ms.topic: article
 origin.date: 07/02/2020
 author: rockboyfor
-ms.date: 11/30/2020
+ms.date: 01/25/2021
 ms.author: v-yeche
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 02c1595268a5855c95c5cc1f110bc9f76d0d87c5
-ms.sourcegitcommit: ea52237124974eda84f8cef4bf067ae978d7a87d
+ms.openlocfilehash: 492a3f265e2798f2fdf6b591232ad4aa787deb3f
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024404"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751330"
 ---
 <!--Verified successfully-->
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>在 Azure 容器实例中装载 Azure 文件共享
 
-默认情况下，Azure 容器实例是无状态的。 如果容器崩溃或停止，其所有状态都会丢失。 若要将状态保持至超过容器寿命，必须从外部存储装载卷。 如本文中所示，Azure 容器实例可以装载使用 [Azure 文件](../storage/files/storage-files-introduction.md)创建的 Azure 文件共享。 Azure 文件提供了承载在 Azure 存储中的完全托管的文件共享，这些共享项可通过行业标准的服务器消息块 (SMB) 协议进行访问。 将 Azure 文件共享与 Azure 容器实例配合使用可以提供文件共享功能，类似于将 Azure 文件共享与 Azure 虚拟机配合使用。
+默认情况下，Azure 容器实例是无状态的。 如果容器重启、崩溃或停止，其所有状态都会丢失。 若要将状态保持至超过容器寿命，必须从外部存储装载卷。 如本文中所示，Azure 容器实例可以装载使用 [Azure 文件](../storage/files/storage-files-introduction.md)创建的 Azure 文件共享。 Azure 文件提供了承载在 Azure 存储中的完全托管的文件共享，这些共享项可通过行业标准的服务器消息块 (SMB) 协议进行访问。 将 Azure 文件共享与 Azure 容器实例配合使用可以提供文件共享功能，类似于将 Azure 文件共享与 Azure 虚拟机配合使用。
 
 > [!NOTE]
 > 当前只有 Linux 容器能装载 Azure 文件共享。 可以在[概述](container-instances-overview.md#linux-and-windows-containers)中找到当前的平台差异。
 >
 > 将 Azure 文件共享装载到容器实例类似于 Docker [绑定装载](https://docs.docker.com/storage/bind-mounts/)。 请注意，如果将共享装载到其中存在文件或目录的容器目录中，则这些文件或目录会被装载遮盖，在容器运行时将无法访问。
 >
+
+> [!IMPORTANT]
+> 如果要将容器组部署到 Azure 虚拟网络中，则必须将[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)添加到 Azure 存储帐户。
 
 ## <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
 
@@ -49,7 +52,7 @@ az storage share create \
   --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME
 ```
 
-## <a name="get-storage-credentials"></a>获取存储凭据
+## <a name="get-storage-credentials"></a>获取存储凭证
 
 若要在 Azure 容器实例中将 Azure 文件共享装载为卷，需要 3 个值：存储帐户名、共享名和存储访问密钥。
 
@@ -85,7 +88,7 @@ az container create \
     --azure-file-volume-mount-path /aci/logs/
 ```
 
-`--dns-name-label` 值在创建容器实例的 Azure 区域中必须是唯一的。 如果在执行命令时收到 DNS 名称标签错误消息，请更新前一命令中的值  。
+`--dns-name-label` 值在创建容器实例的 Azure 区域中必须是唯一的。 如果在执行命令时收到 DNS 名称标签错误消息，请更新前一命令中的值。
 
 ## <a name="manage-files-in-mounted-volume"></a>管理已装载卷中的文件
 
@@ -269,7 +272,7 @@ az deployment group create --resource-group myResourceGroup --template-file depl
 }]
 ```
 
-接下来，针对容器组中希望装载卷的每个容器，在容器定义的 `properties` 部分填充 `volumeMounts` 数组。 例如，填充以下内容将装载之前定义的两个卷：myvolume1 和 myvolume2：  
+接下来，针对容器组中希望装载卷的每个容器，在容器定义的 `properties` 部分填充 `volumeMounts` 数组。 例如，填充以下内容将装载之前定义的两个卷：myvolume1 和 myvolume2：
 
 ```JSON
 "volumeMounts": [{

@@ -4,16 +4,16 @@ description: 查找有关 Azure Kubernetes 服务 (AKS) 的某些常见问题的
 ms.topic: conceptual
 origin.date: 08/06/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 07/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2577cae8a2af90216eb15e157195f14a8737d98a
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 4f010766bbc7f4b35159e72588b0e4e9cb4b2c17
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022338"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063603"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -72,7 +72,7 @@ AKS 在多个 Azure 基础结构资源之上构建，包括虚拟机规模集、
 
 是的。 默认情况下，AKS 将节点资源组命名为 MC_resourcegroupname_clustername_location，但你也可以提供自己的名称。
 
-若要自行指定一个资源组名称，请安装 [aks-preview][aks-preview-cli] Azure CLI 扩展版本 0.3.2 或更高版本。 使用 [az aks create][az-aks-create] 命令创建 AKS 群集时，请使用 *--node-resource-group* 参数并指定资源组的名称。 如果使用 Azure 资源管理器模板部署 AKS 群集，则可以使用 nodeResourceGroup 属性定义资源组名称。
+若要自行指定一个资源组名称，请安装 [aks-preview][aks-preview-cli] Azure CLI 扩展版本 0.3.2 或更高版本。 使用 [az aks create][az-aks-create] 命令创建 AKS 群集时，请使用 `--node-resource-group` 参数并指定资源组的名称。 如果使用 Azure 资源管理器模板部署 AKS 群集，则可以使用 nodeResourceGroup 属性定义资源组名称。
 
 <!--Not Avaialble on [use an Azure Resource Manager template][aks-rm-template]-->
 
@@ -93,7 +93,7 @@ AKS 在多个 Azure 基础结构资源之上构建，包括虚拟机规模集、
 
 如果修改或删除节点资源组中 Azure 创建的标记和其他资源属性，可能会出现意外的结果，例如缩放和升级错误。 使用 AKS，可以创建和修改由最终用户创建的自定义标记，还可以在[创建节点池](use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool)时添加这些标记。 例如，可以创建或修改标记，以分配业务单位或成本中心。 这也可以通过在托管资源组上创建具有作用域的 Azure 策略来实现。
 
-但是，在 AKS 群集中的节点资源组下修改任何 Azure 在资源中创建的标记是不受支持的操作，会中断服务级别目标 (SLO)。 有关详细信息，请参阅 [AKS 是否提供服务级别协议？](#does-aks-offer-a-service-level-agreement)
+但是，在 AKS 群集中的节点资源组下修改任何 Azure 在资源中创建的标记是不受支持的操作，这会中断服务级别目标 (SLO)。 有关详细信息，请参阅 [AKS 是否提供服务级别协议？](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>AKS 支持哪些 Kubernetes 许可控制器？ 是否可以添加或删除许可控制器？
 
@@ -115,7 +115,7 @@ AKS 支持以下[许可控制器][admission-controllers]：
 
 ## <a name="can-i-use-admission-controller-webhooks-on-aks"></a>是否可以在 AKS 上使用许可控制器 Webhook？
 
-是的，可以在 AKS 上使用许可控制器 Webhook。 建议你不要使用标记有 **控制平面标签** 的内部 AKS 命名空间。 例如，可以将以下内容添加到 Webhook 配置：
+是的，可以在 AKS 上使用许可控制器 Webhook。 建议排除带有 control-plane 标记的内部 AKS 命名空间。 例如，可以将以下内容添加到 Webhook 配置：
 
 ```
 namespaceSelector:
@@ -149,7 +149,6 @@ Windows Server 对节点池的支持具有一些限制，Kubernetes 项目中的
 
 AKS 通过[运行时间 SLA][uptime-sla] 提供 SLA 保障（可选的附加功能）。
 
-
 <!--Not Available on  ## Can I apply Azure reservation discounts to my AKS agent nodes?-->
 <!--Not Available on   [Azure reservations][reservation-discounts]-->
 
@@ -161,7 +160,7 @@ AKS 通过[运行时间 SLA][uptime-sla] 提供 SLA 保障（可选的附加功�
 
 目前不支持跨订阅移动群集。
 
-## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>是否可以将 AKS 群集从当前的 Azure 订阅移到另一个订阅？ 
+## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>是否可以将 AKS 群集从当前的 Azure 订阅移到另一个订阅？
 
 不支持在 Azure 订阅之间移动 AKS 群集及其关联的资源。
 
@@ -169,7 +168,7 @@ AKS 通过[运行时间 SLA][uptime-sla] 提供 SLA 保障（可选的附加功�
 
 不支持移动或重命名 AKS 群集及其关联的资源。
 
-## <a name="why-is-my-cluster-delete-taking-so-long"></a>为何群集删除需要如此长的时间？ 
+## <a name="why-is-my-cluster-delete-taking-so-long"></a>为何群集删除需要如此长的时间？
 
 大多数群集是按用户请求删除的；某些情况下，尤其是在客户引入自己的资源组或执行跨 RG 任务的情况下，删除操作可能需要更多的时间，或者可能会失败。 如果在删除时出现问题，请仔细检查，确保没有在 RG 上进行锁定、RG 之外的任何资源均已取消与 RG 的关联，等等。
 
@@ -181,7 +180,7 @@ AKS 通过[运行时间 SLA][uptime-sla] 提供 SLA 保障（可选的附加功�
 
 否。请删除/移除任何处于故障状态的节点或因为其他原因从群集中移除的节点，然后再进行升级。
 
-## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>我运行了群集删除操作，但出现错误：`[Errno 11001] getaddrinfo failed` 
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>我运行了群集删除操作，但出现错误：`[Errno 11001] getaddrinfo failed`
 
 这种情况最可能的原因是用户有一个或多个网络安全组 (NSG) 仍在使用并与群集相关联。  请将其移除，然后再次尝试删除操作。
 
@@ -189,7 +188,7 @@ AKS 通过[运行时间 SLA][uptime-sla] 提供 SLA 保障（可选的附加功�
 
 请确认你的服务主体尚未过期。  请参阅：[AKS 服务主体](./kubernetes-service-principal.md)和 [AKS 更新凭据](./update-credentials.md)。
 
-## <a name="my-cluster-was-working-but-suddenly-cant-provision-loadbalancers-mount-pvcs-etc"></a>我的群集在运行，但突然不能预配 LoadBalancer，不能装载 PVC，等等。 
+## <a name="my-cluster-was-working-but-suddenly-cant-provision-loadbalancers-mount-pvcs-etc"></a>我的群集在运行，但突然不能预配 LoadBalancer，不能装载 PVC，等等。
 
 请确认你的服务主体尚未过期。  请参阅：[AKS 服务主体](./kubernetes-service-principal.md)和 [AKS 更新凭据](./update-credentials.md)。
 
@@ -207,7 +206,7 @@ AKS 通过[运行时间 SLA][uptime-sla] 提供 SLA 保障（可选的附加功�
 
 ## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-zero-nodes"></a>是否可以使用虚拟机规模集手动缩放为 0 个节点？
 
-否。使用虚拟机规模集 API 进行的缩放操作不受支持。
+否。使用虚拟机规模集 API 进行的缩放操作不受支持。 可以使用 AKS API 缩放到零个非系统节点池。
 
 <!--Not Available on [stop your cluster](start-stop-cluster.md)-->
 
@@ -280,6 +279,25 @@ root@k8s-agentpool1-20465682-1:/#
 - 提供了更好的 UDP 流量处理，并且在 ARP 超时时可以缓解 UDP 数据风暴。在桥模式下，当桥在 VM 内部 Pod 到 Pod 通信中不知道目标 Pod 的 MAC 地址时，按照设计，这会导致所有端口都出现数据包风暴。 此问题在透明模式下得到解决，因为路径中没有 L2 设备。 在[此处](https://github.com/Azure/azure-container-networking/issues/704)了解详细信息。
 - 与桥模式相比，在内部 VM Pod 到 Pod 通信中，透明模式在吞吐量和延迟方面的性能更佳。
 
+## <a name="how-to-avoid-permission-ownership-setting-slow-issues-when-the-volume-has-a-lot-of-files"></a>当卷中有很多文件时，如何避免权限所有权设置缓慢问题？
+
+通常情况下，如果 Pod 以非根用户（应为根用户）身份运行，则必须在 Pod 的安全上下文中指定一个 `fsGroup`，才能使该卷可供 Pod 读取和写入。 [此处](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)将更详细地介绍此要求。
+
+但是设置 `fsGroup` 的一个影响是，每次装载卷时，Kubernetes 都必须通过 `chown()` 和 `chmod()` 递归卷内的所有文件和目录（下面提到的一些情况例外）。 即使卷的组所有权已经与请求的 `fsGroup` 匹配，也会发生这种情况，而对于包含大量小文件的较大卷来说，价格可能会非常高昂，这会导致 Pod 需要花费很长时间才能启动。 在 v1.20 之前，这种情况是一个已知问题，解决方法是将 Pod 设置为以根用户身份运行：
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo
+spec:
+  securityContext:
+    runAsUser: 0
+    fsGroup: 0
+```
+
+此问题已由 Kubernetes v1.20 解决，有关详细信息，请参阅 [Kubernetes 1.20：批量许可更改的粒度控制](https://kubernetes.io/blog/2020/12/14/kubernetes-release-1.20-fsgroupchangepolicy-fsgrouppolicy/)。
+
 <!-- LINKS - internal -->
 
 [aks-upgrade]: ./upgrade-cluster.md
@@ -290,25 +308,25 @@ root@k8s-agentpool1-20465682-1:/#
 [aks-preview-cli]: https://docs.azure.cn/cli/ext/aks-preview/aks
 [az-aks-create]: https://docs.azure.cn/cli/aks#az_aks_create
 
-<!--Not Avaialble on [aks-rm-template]: /templates/microsoft.containerservice/2019-06-01/managedclusters-->
+<!--NOT AVAILABLE ON [aks-rm-template]: /templates/microsoft.containerservice/2019-06-01/managedclusters-->
 
 [aks-cluster-autoscaler]: cluster-autoscaler.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [aks-windows-cli]: windows-container-cli.md
 [aks-windows-limitations]: ./windows-faq.md
 
-<!--Not Avaialble on [reservation-discounts]: ../cost-management-billing/reservations/save-compute-costs-reservations.md-->
+<!--NOT AVAILABLE ON [reservation-discounts]: ../cost-management-billing/reservations/save-compute-costs-reservations.md-->
 
 [api-server-authorized-ip-ranges]: ./api-server-authorized-ip-ranges.md
 [multi-node-pools]: ./use-multiple-node-pools.md
 
-<!--Not Avaialble on [availability-zones]: ./availability-zones.md-->
+<!--NOT AVAILABLE ON [availability-zones]: ./availability-zones.md-->
 
 [private-clusters]: ./private-clusters.md
 [bcdr-bestpractices]: ./operator-best-practices-multi-region.md#plan-for-multiregion-deployment
 
-<!--Not Avaialble on [availability-zones]: ./availability-zones.md-->
-<!--Not Avaialble on [az-regions]: ../availability-zones/az-region.md-->
+<!--NOT AVAILABLE ON [availability-zones]: ./availability-zones.md-->
+<!--NOT AVAILABLE ON [az-regions]: ../availability-zones/az-region.md-->
 
 [uptime-sla]: ./uptime-sla.md
 
@@ -322,4 +340,4 @@ root@k8s-agentpool1-20465682-1:/#
 [csi-driver]: https://github.com/Azure/secrets-store-csi-driver-provider-azure
 [vm-sla]: https://www.azure.cn/support/sla/virtual-machines/
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 09/23/2020
 title: 2020 年 8 月 - Azure Databricks
 description: 新 Azure Databricks 功能和改进的 2020 年 8 月发行说明。
-ms.openlocfilehash: 39378b511f51521d3b3546854ee7ac33a29e1484
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 4442800a36cdc5e943404ffdfc65a4ddce6f61a0
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328989"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059959"
 ---
 # <a name="august-2020"></a>2020 年 8 月
 
@@ -86,7 +86,7 @@ Shiny 应用的最大应用程序大小已从 10 MB 增加到 20 MB。 如果应
 
 2020 年 8 月 20 日
 
-用于机器学习的 Databricks Runtime 7.2 基于 Databricks Runtime 7.2 构建，并引入了已改进的全新 Python 和系统库。 有关详细信息，请参阅完整的 [Databricks Runtime 7.2 ML](../../runtime/7.2ml.md) 发行说明。
+用于机器学习的 Databricks Runtime 7.2 基于 Databricks Runtime 7.2 构建，并引入了已改进的全新 Python 和系统库。 有关详细信息，请参阅完整的[用于机器学习的 Databricks Runtime 7.2](../../runtime/7.2ml.md) 发行说明。
 
 ## <a name="databricks-runtime-72-genomics-ga"></a>Databricks Runtime 7.2 Genomics 正式版
 
@@ -130,7 +130,7 @@ Databricks 很高兴地宣布推出权限 API 的公共预览版，你可以使�
 
 2020 年 8 月 12 日至 25 日：版本 3.26
 
-现在可以从 MLflow 注册模型页中创建新模型。 有关详细信息，请参阅[在模型注册表中注册模型](../../../applications/mlflow/model-registry.md#register-a-model-in-the-model-registry)。
+现在可以从 MLflow 注册模型页中创建新模型。 有关详细信息，请参阅[创建新的注册模型并向其分配已记录的模型](../../../applications/machine-learning/manage-model-lifecycle/index.md#create-a-new-registered-model-and-assign-a-logged-model-to-it)。
 
 ## <a name="databricks-container-services-supports-gpu-images"></a>Databricks 容器服务支持 GPU 图像
 

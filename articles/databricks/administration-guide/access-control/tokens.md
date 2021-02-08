@@ -5,19 +5,21 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 09/17/2020
+ms.date: 12/22/2020
 title: 管理个人访问令牌 - Azure Databricks
 description: 为 Azure Databricks REST API 客户端管理基于令牌的身份验证。
-ms.openlocfilehash: 5f8d2a335f4e07620fc614b04d646fa6d68f7e6d
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 5ead2d790ae659d0e15d380c4f6e777b8512d1a4
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106489"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059882"
 ---
 # <a name="manage-personal-access-tokens"></a>管理个人访问令牌
 
 若要向 Azure Databricks REST API 进行身份验证，用户可以创建个人访问令牌并在其 REST API 请求中使用它。 令牌有一个可选的到期日期，可以被撤销。 请参阅[使用 Azure Databricks 个人访问令牌进行身份验证](../../dev-tools/api/latest/authentication.md)。
+
+每个用户的个人访问令牌数限制为每个[工作区](../../workspace/index.md) 600 个。
 
 默认情况下，将为在 2018 年或之后创建的所有 Azure Databricks 工作区启用使用个人访问令牌的功能。 工作区管理员可以为所有工作区启用或禁用个人令牌访问权限，不管创建日期是什么时候。
 
@@ -56,7 +58,7 @@ ms.locfileid: "93106489"
 1. 转到[管理控制台](../admin-console.md)。
 2. 选择“访问控制”选项卡。
 3. 若要启用访问权限，请单击 **个人访问令牌** 旁边的“启用”按钮。 若要禁用访问权限，请单击“禁用”按钮。
-4. 单击“确认”以确认更改。 此更改可能需要几秒钟的时间才能生效。
+4. 单击“确认”  。 此更改可能需要几秒钟的时间才能生效。
 
 若要为 REST API 请求使用基于令牌的身份验证，请参阅[使用 Azure Databricks 个人访问令牌进行身份验证](../../dev-tools/api/latest/authentication.md)。
 
@@ -126,7 +128,7 @@ curl -X PATCH -n \
    >
    > 对于在 Azure Databricks 平台版本 3.28 发布之后（2020 年 9 月 9 日至 15 日）创建的工作区，默认设置是没有用户有“可以使用”权限。 管理员必须显式授予这些权限，无论是向整个 `users` 组授予还是按用户或按组授予。 在 3.28 发布之前创建的工作区保留已有的权限。 默认情况下，所有用户都有“可以使用”权限。 管理员可以撤销该组权限分配，并将其授予其他组或单独的非管理员用户。
 
-   如果 `users` 组有“可以使用”权限，并且你想要对非管理员用户应用更精细的访问权限，则可以通过单击“用户”行中“权限”下拉列表旁边的 **X** ，从“用户”组中删除“可以使用”权限。  
+   如果 `users` 组有“可以使用”权限，并且你想要对非管理员用户应用更精细的访问权限，则可以通过单击“用户”行中“权限”下拉列表旁边的 **X**，从“用户”组中删除“可以使用”权限。  
 
    若要向其他实体授予权限，请选择你要向其授予访问权限的每个用户或组。 从“选择用户或组…”下拉列表中选择一个用户或组， 选择“可以使用”，然后单击“+ 添加”按钮。 在以下示例中，管理员已删除“用户”组的访问权限，并向“数据科学 B2”组授予访问权限。
 

@@ -4,16 +4,16 @@ description: 使用此按钮从 GitHub 存储库部署 Azure 资源管理器模�
 ms.topic: conceptual
 origin.date: 11/10/2020
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 01/25/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 61d198eac14b5ba2ab683022f1092dc22c70be9d
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 3d01f1ff7b8c86bf8523dae7271342510eaae868
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97003745"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751250"
 ---
 <!--Verified successfully-->
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>使用部署按钮从 GitHub 存储库部署模板
@@ -22,10 +22,10 @@ ms.locfileid: "97003745"
 
 部署范围由模板架构确定。 有关详细信息，请参阅：
 
-* [resource groups](deploy-to-resource-group.md)
-* [subscriptions](deploy-to-subscription.md)
-* [管理组](deploy-to-management-group.md)
-* [tenants](deploy-to-tenant.md)
+- [resource groups](deploy-to-resource-group.md)
+- [subscriptions](deploy-to-subscription.md)
+- [管理组](deploy-to-management-group.md)
+- [tenants](deploy-to-tenant.md)
 
 ## <a name="use-common-image"></a>使用常用图像
 
@@ -128,6 +128,6 @@ https://dev.azure.com/{organization-name}/{project-name}/_apis/git/repositories/
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解模板，请参阅[了解 Azure 资源管理器模板的结构和语法](template-syntax.md)。
+- 若要详细了解模板，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

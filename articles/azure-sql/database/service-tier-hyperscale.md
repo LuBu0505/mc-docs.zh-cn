@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
-origin.date: 10/19/2020
-ms.date: 01/04/2021
-ms.openlocfilehash: 158bdfb4056df0987435d5ea9b27430930b72cf2
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+origin.date: 1/13/2021
+ms.date: 02/01/2021
+ms.openlocfilehash: 852cfaa6527479c4c1f4421a8ce6d06c19f11670
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830261"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059844"
 ---
 # <a name="hyperscale-service-tier"></a>“超大规模”服务层级
 
@@ -169,7 +169,7 @@ Server=tcp:<myserver>.database.chinacloudapi.cn;Database=<mydatabase>;Applicatio
 2. 请遵照有关从自动备份还原 Azure SQL 数据库中数据库的页面上的[异地还原](./recovery-using-backups.md#geo-restore)主题中的说明操作。
 
 > [!NOTE]
-> 由于源与目标位于不同的区域，数据库不能与非异地还原方案中一样来与源数据库共享存储快照，因此异地还原可以极快地完成。 异地还原超大规模数据库属于一种与数据大小相关的操作，即使目标位于异地复制存储的配对区域中。  这意味着，执行异地还原所需的时间与所要还原的数据库的大小成比例。  如果目标位于配对区域中，则副本将位于某个区域，这比跨区域复制要快得多，但它仍是与数据大小相关的操作。
+> 由于源与目标位于不同的区域，因此数据库无法像在非异地还原方案中一样与源数据库共享快照存储，而非异地还原可以快速完成，无论数据库大小如何。 异地还原超大规模数据库属于一种与数据大小相关的操作，即使目标位于异地复制存储的配对区域中。 因此，异地还原需要的时间与所要还原的数据库的大小成正比。 如果目标位于配对区域中，数据传输将会位于某个区域内，这将会比跨区域数据传输快得多，但它仍将是与数据大小相关的操作。
 
 ## <a name="available-regions"></a><a name=regions></a>可用区域
 
@@ -184,12 +184,12 @@ Server=tcp:<myserver>.database.chinacloudapi.cn;Database=<mydatabase>;Applicatio
 | 问题 | 说明 |
 | :---- | :--------- |
 | 服务器的“管理备份”窗格不显示“超大规模”数据库。 视图中会将它们筛选掉。  | “超大规模”服务层级具有单独的备份管理方法，因此“长期保留”和“时间点备份保留”设置不适用。 相应地，“超大规模”数据库不会显示在“管理备份”窗格中。<br><br>对于从其他 Azure SQL 数据库服务层级迁移到超大规模的数据库，预迁移备份会在源数据库的[备份保持期](automated-backups-overview.md#backup-retention)持续时间内保留。 这些备份可以用于将源数据库[还原](recovery-using-backups.md#programmatic-recovery-using-automated-backups)到迁移之前的某个时间点。|
-| 时间点还原 | 无法将非超大规模数据库还原到超大规模数据库，也无法将超大规模数据库还原到非超大规模数据库。 对于已通过更改服务层迁移到超大规模层级的非超大规模数据库，可以[以编程方式](recovery-using-backups.md#programmatic-recovery-using-automated-backups)还原到迁移之前以及数据库备份保留期内的某个时间点。 还原后的数据库是非超大规模的。 |
-| 如果数据库中的一个或多个数据文件大于 1 TB，迁移将会失败 | 在某些情况下，可以通过将大文件缩小为 1 TB 以下来解决此问题。 如果在迁移过程中迁移正在使用的数据库，请确保没有任何文件大于 1 TB。 使用以下查询来确定数据库文件的大小。 `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
+| 时间点还原 | 无法将非超大规模数据库还原到超大规模数据库，也无法将超大规模数据库还原到非超大规模数据库。 对于已通过更改服务层级迁移到“超大规模”层级的非超大规模数据库，支持[以编程方式](recovery-using-backups.md#programmatic-recovery-using-automated-backups)还原到迁移之前且在数据库备份保留期内的某个时间点。 还原后的数据库是非超大规模的。 |
+| 在将 Azure SQL 数据库服务层级更改为“超大规模”时，如果数据库中有任何大于 1 TB 的数据文件，更改操作就会失败 | 有些情况下，在尝试将服务层级更改为“超大规模”之前，先将大文件[收缩](file-space-manage.md#shrinking-data-files)至 1 TB 以下，或许可以解决此问题。 使用以下查询来确定数据库文件的当前大小。 `SELECT file_id, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | SQL 托管实例 | 超大规模数据库目前不支持 Azure SQL 托管实例。 |
 | 弹性池 |  超大规模目前不支持弹性池。|
 | 迁移到“超大规模”服务层级目前是单向操作 | 将数据库迁移到“超大规模”层级后，它不能直接迁移到非“超大规模”服务层级。 目前，将数据库从“超大规模”迁移到非“超大规模”的唯一方法是，使用 bacpac 文件或其他数据移动技术（大容量复制、Azure 数据工厂、Azure Databricks、SSIS 等）进行导出/导入。不支持从 Azure 门户、PowerShell（使用 [New-AzSqlDatabaseExport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport) 或 [New-AzSqlDatabaseImport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport)）、Azure CLI（使用 [az sql db export](/cli/sql/db#az-sql-db-export) 和 [az sql db import](/cli/sql/db#az-sql-db-import)）以及从 [REST API](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export) 进行 bacpac 导出/导入。 支持使用 SSMS 和 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) 版本 18.4 及更高版本对较小的超大规模数据库（最多 200 GB）进行 bacpac 导入/导出。 对于较大的数据库，bacpac 导出/导入可能需要很长时间，并且可能会因各种原因失败。|
-| 迁移包含内存中 OLTP 对象的数据库 | 超大规模支持内存中 OLTP 对象的子集，包括内存优化表类型、表变量和本机编译模块。 但是，如果要迁移的数据库中存在任何类型的内存中 OLTP 对象，则不支持从“高级”和“业务关键”服务层级迁移到“超大规模”。 若要将此类数据库迁移到“超大规模”，必须删除所有内存中 OLTP 对象及其依赖项。 迁移数据库之后，可以重新创建这些对象。 “超大规模”目前不支持持久的和非持久的内存优化表，必须将这些表重新创建为磁盘表。|
+| 迁移包含内存中 OLTP 对象的数据库 | 超大规模支持内存中 OLTP 对象的子集，包括内存优化表类型、表变量和本机编译模块。 但是，如果要迁移的数据库中存在任何类型的内存中 OLTP 对象，则不支持从“高级”和“业务关键”服务层级迁移到“超大规模”。 若要将此类数据库迁移到“超大规模”，必须删除所有内存中 OLTP 对象及其依赖项。 迁移数据库之后，可以重新创建这些对象。 “超大规模”目前不支持持久的和非持久的内存优化表，必须将这些表更改为为磁盘表。|
 | 异地复制  | 目前无法为超大规模 Azure SQL 数据库配置异地复制。 |
 | 数据库复制 | 超大规模上的数据库复制现为公共预览版。 |
 | 智能数据库功能 | 除了“强制计划”选项外，所有其他“自动优化”选项在“超大规模”中尚不受支持：这些选项可能看上去已启用，但不会提出任何建议或执行任何操作。 |

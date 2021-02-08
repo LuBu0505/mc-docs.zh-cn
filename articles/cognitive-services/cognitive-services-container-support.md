@@ -8,33 +8,22 @@ manager: nitinme
 ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 11/23/2020
+ms.date: 01/19/2021
 ms.author: v-johya
 keywords: 本地, Docker, 容器, Kubernetes
-ms.openlocfilehash: 55e1edb62a2a6c70626d05b417a2e6590e514ea4
-ms.sourcegitcommit: f1d0f81918b8c6fca25a125c17ddb80c3a7eda7e
+ms.openlocfilehash: d28f69335cf6772e01d2ef65a5e63809d71fe97d
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96306263"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751381"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure 认知服务容器
 
-<!--Not available in MC-->
-
-Azure 认知服务提供了多个 [Docker 容器](https://www.docker.com/what-container)，可让你在本地使用 Azure 中提供的相同 API。 借助这些容器，你能够灵活地将认知服务移至更接近你的数据的位置，以满足合规性、安全性或其他操作目的。 
-
-容器支持目前适用于部分 Azure 认知服务，包括以下部分：
-
-> [!div class="checklist"]
-> * [人脸][fa-containers]
-> * [语言理解 (LUIS)][lu-containers]
-> * [文本分析][ta-containers]
+Azure 认知服务提供了多个 [Docker 容器](https://www.docker.com/what-container)，可让你在本地使用 Azure 中提供的相同 API。 借助这些容器，你能够灵活地将认知服务移至更接近你的数据的位置，以满足合规性、安全性或其他操作目的。 容器支持目前适用于部分 Azure 认知服务。
 
 <!--Video removed-->
 容器化是一种软件分发方法，其中应用程序或服务（包括其依赖关系和配置）被一起打包为容器映像。 如果几乎不进行修改，可将容器映像部署在容器主机上。 容器彼此隔离并与基础操作系统隔离，内存占用小于虚拟机。 容器可以从容器映像中实例化以用于短期任务，并在不再需要时将其删除。
-
-认知服务资源可在 [Azure](https://azure.microsoft.com) 上获得。 登录到 [Azure 门户](https://portal.azure.cn/)，创建和浏览适用于这些服务的 Azure 资源。
 
 ## <a name="features-and-benefits"></a>功能和优势
 
@@ -47,29 +36,28 @@ Azure 认知服务提供了多个 [Docker 容器](https://www.docker.com/what-co
 
 ## <a name="containers-in-azure-cognitive-services"></a>Azure 认知服务中的容器
 
-Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都包含 Azure 认知服务中的服务的功能子集：
+Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都包含 Azure 认知服务中的服务的功能子集。 可以在下表中找到说明和映像位置。 还提供了[容器映像](containers/container-image-tags.md)的列表。
 
-| 服务 | 支持的定价层 | 容器 | 描述 |
+### <a name="language-containers"></a>语言容器
+
+| 服务 |  容器 | 说明 | 可用性 |
 |--|--|--|--|
-| [人脸][fa-containers] | F0、S0 | **人脸** | 检测图像中的人脸并标识属性，包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，“人脸”还可以使用置信评分检查同一/不同图像中的两张人脸，或根据数据库比较人脸，以查看是否已存在类似或相同的人脸。 还可以使用共享视觉特征将类似人脸整理为许多组。 |
-| [LUIS][lu-containers] | F0、S0 | **LUIS**（[映像](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)） | 可将已训练或已发布的语言理解模型（也称为 LUIS 应用）加载到 docker 容器中并提供对容器的 API 终结点中的查询预测的访问权限。 可以从容器中收集查询日志并将这些日志上传回 [LUIS 门户](https://luis.azure.cn)以提高应用的预测准确性。 |
-| [文本分析][ta-containers-keyphrase] | F0、S | 关键短语提取（[映像](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)） | 提取关键短语，以标识要点。 例如，针对输入文本“The food was delicious and there were wonderful staff”，该 API 会返回谈话要点：“food”和“wonderful staff”。 |
-| [文本分析][ta-containers-language] | F0、S | 语言检测（[映像](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)） | 针对多达 120 种语言，检测输入文本是使用哪种语言编写的，并报告请求中提交的每个文档的单个语言代码。 语言代码与表示评分强度的评分相搭配。 |
-| [文本分析][ta-containers-sentiment] | F0、S | 情绪分析 v3（[映像](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)） | 分析原始文本，获取正面或负面情绪的线索。 此版本的情绪分析为每个文档以及其中的句子返回情绪标签（例如正面或负面） 。 |
-| [文本分析][ta-containers-health] | F0、S | **运行状况文本分析** | 从非结构化临床文本中提取医疗信息并进行标记。 |
+| [LUIS][lu-containers] |  **LUIS**（[映像](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)） | 可将已训练或已发布的语言理解模型（也称为 LUIS 应用）加载到 docker 容器中并提供对容器的 API 终结点中的查询预测的访问权限。 可以从容器中收集查询日志并将这些日志上传回 [LUIS 门户](https://luis.azure.cn)以提高应用的预测准确性。 | 正式发布 |
+| [文本分析][ta-containers-keyphrase] | 关键短语提取（[映像](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)） | 提取关键短语，以标识要点。 例如，针对输入文本“The food was delicious and there were wonderful staff”，该 API 会返回谈话要点：“food”和“wonderful staff”。 | 预览 |
+| [文本分析][ta-containers-language] |  文本语言检测（[映像](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)） | 针对多达 120 种语言，检测输入文本是使用哪种语言编写的，并报告请求中提交的每个文档的单个语言代码。 语言代码与表示评分强度的评分相搭配。 | 预览 |
+| [文本分析][ta-containers-sentiment] | 情绪分析 v3（[映像](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)） | 分析原始文本，获取正面或负面情绪的线索。 此版本的情绪分析为每个文档以及其中的句子返回情绪标签（例如正面或负面） 。 |  正式发布 |
+### <a name="vision-containers"></a>视觉容器
 
-此外，认知服务 [**一体化产品/服务**](https://portal.azure.cn/#create/Microsoft.CognitiveServicesAllInOne)资源密钥支持某些容器。 可以为以下服务创建单个认知服务一体化资源，并在支持的服务之间使用相同的计费密钥：
+| 服务 |  容器 | 说明 | 可用性 |
+|--|--|--|--|
+| [人脸][fa-containers] | **人脸** | 检测图像中的人脸并标识属性，包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，“人脸”还可以使用置信评分检查同一/不同图像中的两张人脸，或根据数据库比较人脸，以查看是否已存在类似或相同的人脸。 还可以使用共享视觉特征将类似人脸整理为许多组。 | 不可用 |
+
+此外，认知服务[多服务资源](cognitive-services-apis-create-account.md)产品/服务支持某些容器。 可以为以下服务创建单个认知服务一体化资源，并在支持的服务之间使用相同的计费密钥：
 
 * 计算机视觉
 * 人脸
 * LUIS
 * 文本分析
-
-## <a name="container-availability-in-azure-cognitive-services"></a>Azure 认知服务中的容器可用性
-
-Azure 认知服务容器通过 Azure 订阅公开发布，并可以从 Microsoft 容器注册表或 Docker 中心拉取 Docker 容器映像。 可以使用 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) 命令从相应注册表下载容器映像。
-
-[!INCLUDE [Container repositories and images](containers/includes/cognitive-services-container-images.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -87,7 +75,9 @@ Azure 认知服务容器通过 Azure 订阅公开发布，并可以从 Microsoft
 
 [!INCLUDE [Cognitive Services container security](containers/includes/cognitive-services-container-security.md)]
 
-[!INCLUDE [Discoverability of more container information](../../includes/cognitive-services-containers-discoverability.md)]
+## <a name="developer-samples"></a>开发人员示例
+
+可在 [GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-containers-samples)中查看开发人员示例。
 
 ## <a name="next-steps"></a>后续步骤
 

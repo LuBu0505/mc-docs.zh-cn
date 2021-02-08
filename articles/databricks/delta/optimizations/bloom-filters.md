@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 08/11/2020
 title: Bloom 筛选器索引 - Azure Databricks
 description: 了解如何在 Azure Databricks 中使用 Bloom 筛选器索引。
-ms.openlocfilehash: 9349cf2e1949e042140ae57bfdb3f1b35068c4e2
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: 72c6e8881d717bcbc1c41a4c66db131d658bdfac
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121887"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060082"
 ---
 # <a name="bloom-filter-indexes"></a>Bloom 筛选器索引
 
@@ -41,7 +41,8 @@ ON TABLE bloom_test
 FOR COLUMNS(sha OPTIONS (fpp=0.1, numItems=50000000))
 ```
 
-请参阅[创建 Bloom 筛选器索引](../../spark/latest/spark-sql/language-manual/create-bloomfilter-index.md)。
+* Databricks Runtime 7.x：[CREATE BLOOM FILTER INDEX（Azure Databricks 上的 Delta Lake）](../../spark/latest/spark-sql/language-manual/delta-create-bloomfilter-index.md)
+* Databricks Runtime 5.5 LTS 和 6.x：[创建布隆筛选器索引（Azure Databricks 上的 Delta Lake）](../../spark/2.x/spark-sql/language-manual/create-bloomfilter-index.md)
 
 ## <a name="drop-a-bloom-filter-index"></a>删除 Bloom 筛选器索引
 
@@ -51,7 +52,8 @@ FOR COLUMNS(sha OPTIONS (fpp=0.1, numItems=50000000))
 DROP BLOOMFILTER INDEX ON TABLE bloom_test FOR COLUMNS(sha);
 ```
 
-请参阅[删除 Bloom 筛选器索引](../../spark/latest/spark-sql/language-manual/drop-bloomfilter-index.md)。
+* Databricks Runtime 7.x：[DROP BLOOM FILTER INDEX（Azure Databricks 上的 Delta Lake）](../../spark/latest/spark-sql/language-manual/delta-drop-bloomfilter-index.md)
+* Databricks Runtime 5.5 LTS 和 6.x：[删除 Bloom 筛选器索引（Azure Databricks 上的 Delta Lake）](../../spark/2.x/spark-sql/language-manual/drop-bloomfilter-index.md)
 
 ## <a name="notebook"></a>笔记本
 

@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 08/10/2020
 title: 将虚拟网络对等互连 - Azure Databricks
 description: 了解如何配置虚拟网络对等互连。
-ms.openlocfilehash: ee9ad086b020ef5a2d7f590ffba763ce1fa475cb
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 2fa49ea0c059a1447d9a62ca46053c29789c5b83
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106516"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058991"
 ---
 # <a name="peer-virtual-networks"></a><a id="peer-virtual-networks"> </a><a id="vnet-peering"> </a>将虚拟网络对等互连
 
@@ -21,13 +21,17 @@ ms.locfileid: "93106516"
 
 本文介绍如何将 Azure Databricks VNet 与 Azure VNet 对等互连，并提供有关如何将本地 VNet 连接到 Azure VNet 的参考信息。
 
+> [!NOTE]
+>
+> [将 Azure Databricks 工作区部署到自己的虚拟网络](vnet-inject.md)（也称为“VNet 注入”）时，不支持 VNet 对等互连。
+
 有关如何管理 Azure VNet 对等互连的信息，请参阅[创建、更改或删除虚拟网络对等互连](/virtual-network/virtual-network-manage-peering)。 但是，请不要按照该文中的步骤在 Azure Databricks VNet 和 Azure VNet 之间创建 VNet 对等互连；请按本文中提供的说明进行操作。
 
 ## <a name="peer-an-azure-databricks-virtual-network-to-a-remote-virtual-network"></a>将 Azure Databricks 虚拟网络对等互连到远程虚拟网络
 
 将 Databricks 虚拟网络对等互连到 Azure VNet 涉及两个步骤：将远程虚拟网络对等互连添加到 Azure Databricks 虚拟网络，并将 Azure Databricks 虚拟网络对等互连添加到远程虚拟网络。
 
-### <a name="step-1-add-remote-virtual-network-peering-to-azure-databricks-virtual-network"></a>步骤 1：将远程虚拟网络对等互连添加到 Azure Databricks 虚拟网络
+### <a name="step-1-add-remote-virtual-network-peering-to-the-azure-databricks-virtual-network"></a>步骤 1：将远程虚拟网络对等互连添加到 Azure Databricks 虚拟网络
 
 1. 在 Azure 门户中，单击 Azure Databricks 服务资源。
 2. 在边栏的“设置”部分中，单击“虚拟网络对等互连”选项卡。
@@ -54,9 +58,9 @@ ms.locfileid: "93106516"
 
 6. 在“配置”部分，指定对等互连的配置。 参阅[创建对等互连](/virtual-network/virtual-network-manage-peering#create-a-peering)，获取配置字段的相关信息。
 7. 在“Databricks 虚拟网络资源 Id”部分中，复制“资源 ID”。
-8. 单击 **添加** 。 已部署虚拟网络对等互连。
+8. 单击 **添加**。 已部署虚拟网络对等互连。
 
-### <a name="step-2-add-azure-databricks-virtual-network-peer-to-remote-virtual-network"></a>步骤 2：将 Azure Databricks 虚拟网络对等互连添加到远程虚拟网络
+### <a name="step-2-add-the-azure-databricks-virtual-network-peer-to-the-remote-virtual-network"></a>步骤 2：将 Azure Databricks 对等虚拟网络添加到远程虚拟网络
 
 1. 在 Azure 门户边栏中，单击“虚拟网络”。
 2. 搜索要与 Databricks 虚拟网络对等互连的虚拟网络资源，然后单击资源名称。

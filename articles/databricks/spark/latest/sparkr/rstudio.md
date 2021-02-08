@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 09/11/2020
 title: Azure Databricks 上的 RStudio - Azure Databricks
 description: 了解如何将 Azure Databricks 上的 RStudio 与 R 配合使用。
-ms.openlocfilehash: b2b26713e5298ec79240bd892fa32d1a5286cc17
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+ms.openlocfilehash: bbdb0091865b1f4acd83810e3326a90a44777c25
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92473065"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060076"
 ---
 # <a name="rstudio-on-azure-databricks"></a>Azure Databricks 上的 RStudio
 
@@ -74,8 +74,8 @@ dbutils.fs.mkdirs("/databricks/rstudio")
 dbutils.fs.put("/databricks/rstudio/rstudio-install.sh", script, True)
 ```
 
-1. 在一个笔记本中运行此代码以安装 `dbfs:/databricks/rstudio/rstudio-install.sh` 处的脚本
-2. 在启动群集之前，请将 `dbfs:/databricks/rstudio/rstudio-install.sh` 添加为初始化脚本。 有关详细信息，请参阅[诊断日志](../../../clusters/init-scripts.md#cluster-scoped-init-script)。
+1. 在一个笔记本中运行此代码以安装 ``dbfs:/databricks/rstudio/rstudio-install.sh`` 处的脚本
+2. 在启动群集之前，请将 ``dbfs:/databricks/rstudio/rstudio-install.sh`` 添加为初始化脚本。 有关详细信息，请参阅[群集范围内的初始化脚本](../../../clusters/init-scripts.md#cluster-scoped-init-scripts)。
 3. 启动群集。
 
 ### <a name="use-rstudio-server-open-source"></a>使用 RStudio Server 开源版
@@ -182,9 +182,9 @@ dbutils.fs.mkdirs("/databricks/rstudio")
 dbutils.fs.put("/databricks/rstudio/rstudio-install.sh", script, True)
 ```
 
-1. 将 `<domain>` 替换为你的 Azure Databricks URL，并将 `<license-server-url>` 替换为你的浮动许可证服务器的 URL。
-2. 在一个笔记本中运行此代码以安装 `dbfs:/databricks/rstudio/rstudio-install.sh` 处的脚本
-3. 在启动群集之前，请将 `dbfs:/databricks/rstudio/rstudio-install.sh` 添加为初始化脚本。 有关详细信息，请参阅[诊断日志](../../../clusters/init-scripts.md#cluster-scoped-init-script)。
+1. 将 ``<domain>`` 替换为你的 Azure Databricks URL，并将 ``<license-server-url>`` 替换为你的浮动许可证服务器的 URL。
+2. 在一个笔记本中运行此代码以安装 ``dbfs:/databricks/rstudio/rstudio-install.sh`` 处的脚本
+3. 在启动群集之前，请将 ``dbfs:/databricks/rstudio/rstudio-install.sh`` 添加为初始化脚本。 有关详细信息，请参阅[诊断日志](../../../clusters/init-scripts.md#cluster-scoped-init-script)。
 4. 启动群集。
 
 ### <a name="use-rstudio-server-pro"></a>使用 RStudio Server 专业版
@@ -223,7 +223,7 @@ dbutils.fs.put("/databricks/rstudio/rstudio-install.sh", script, True)
 
 ## <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
 
-**RStudio Server 开源版与 RStudio Server 专业版之间的区别是什么？**
+### <a name="what-is-the-difference-between-rstudio-server-open-source-and-rstudio-server-pro"></a>RStudio Server 开源版与 RStudio Server 专业版之间的区别是什么？
 
 RStudio Server 专业版支持各种企业功能，这些功能在开源版上不可用。 可以在 [RStudio Inc 网站](https://www.rstudio.com/products/rstudio/#Server)上查看功能比较情况。
 
@@ -231,55 +231,61 @@ RStudio Server 专业版支持各种企业功能，这些功能在开源版上�
 
 最后，RStudio Server 专业版享受 RStudio Inc. 提供的专业和企业支持，而 RStudio Server 开源版没有这些支持。
 
-**是否可以在 Azure Databricks 上使用我的 RStudio Server 专业版许可证？**
+### <a name="can-i-use-my-rstudio-server-pro-license-on-azure-databricks"></a>是否可以在 Azure Databricks 上使用我的 RStudio Server 专业版许可证？
 
 可以。如果你已有 RStudio Server 的专业版或企业版许可证，则可以在 Azure Databricks 上使用该许可证。 若要了解如何在 Azure Databricks 上安装 RStudio Server 专业版，请参阅[开始使用 RStudio Server 专业版](#rsp)。
 
-**RStudio Server 在何处运行？我是否需要管理任何其他服务/服务器？**
+### <a name="where-does-rstudio-server-run-do-i-need-to-manage-any-additional-servicesservers"></a>RStudio Server 在何处运行？ 我是否需要管理任何其他服务/服务器？
 
 正如 [RStudio 集成体系结构](#rsf)中的关系图所示，RStudio Server 守护程序在 Azure Databricks 群集的驱动程序节点（主节点）上运行。 使用 RStudio Server 开源版，无需运行任何其他服务器/服务。 但是，对于 RStudio Server 专业版，你必须管理一个运行 RStudio 许可证服务器的单独实例。
 
-**是否可以在标准群集上使用 RStudio Server？**
+### <a name="can-i-use-rstudio-server-on-a-standard-cluster"></a>是否可以在标准群集上使用 RStudio Server？
 
 可以。 最初，你需要使用[高并发](../../../clusters/configure.md#high-concurrency)群集，但该限制已不再存在。
 
-**我应该如何在 RStudio 上持久保存我的工作？**
+### <a name="can-i-use-rstudio-server-on-a-cluster-with-auto-termination"></a><a id="auto-termination"> </a><a id="can-i-use-rstudio-server-on-a-cluster-with-auto-termination"> </a>是否可以在具有自动终止功能的群集上使用 RStudio Server？
+
+否。启用自动终止功能后，不能使用 RStudio。 自动终止功能可以清除 RStudio 会话中未保存的用户脚本和数据。 为了使用户免受这种意外数据丢失情况的影响，默认情况下，RStudio 在此类群集上已禁用。
+
+对于需要在不使用群集资源时对其进行清理的客户，Databricks 建议使用[群集 API](/dev-tools/api/latest/clusters.html) 根据计划来清理 RStudio 群集。
+
+### <a name="how-should-i-persist-my-work-on-rstudio"></a>我应该如何在 RStudio 上持久保存我的工作？
 
 我们强烈建议你使用 RStudio 中的版本控制系统来持久保存工作。 RStudio 对各种版本控制系统提供了很大的支持，允许你签入和管理你的项目。
 
-你还可以在 [Databricks 文件系统 (DBFS)](../../../data/databricks-file-system.md) 上保存文件（代码或数据）。 例如，如果你将文件保存在 `/dbfs/` 下，则在群集终止或重启时不会删除这些文件。
+你还可以在 [Databricks 文件系统 (DBFS)](../../../data/databricks-file-system.md) 上保存文件（代码或数据）。 例如，如果你将文件保存在 ``/dbfs/`` 下，则在群集终止或重启时不会删除这些文件。
 
 > [!IMPORTANT]
 >
 > 如果你不通过版本控制或 DBFS 来持久保存代码，则在管理员重启或终止群集时，你可能会丢失工作。
 
-另一种方法是将 R 笔记本作为 `Rmarkdown` 导出以将其保存到你的本地文件系统，然后将该文件导入到 RStudio 实例中。
+另一种方法是将 R 笔记本作为 ``Rmarkdown`` 导出以将其保存到你的本地文件系统，然后将该文件导入到 RStudio 实例中。
 
 [Sharing R Notebooks using RMarkdown](https://databricks.com/blog/2018/07/06/sharing-r-notebooks-using-rmarkdown.html)（使用 RMarkdown 共享 R 笔记本）这一博客文章更详细地介绍了这些步骤。
 
-**如何启动 `SparkR` 会话？**
+### <a name="how-do-i-start-a-sparkr-session"></a>如何启动 ``SparkR`` 会话？
 
-`SparkR` 包含在 Databricks Runtime 中，但你必须将其加载到 RStudio 中。 在 RStudio 中运行以下代码以初始化 `SparkR` 会话。
+``SparkR`` 包含在 Databricks Runtime 中，但你必须将其加载到 RStudio 中。 在 RStudio 中运行以下代码以初始化 ``SparkR`` 会话。
 
 ```r
 library(SparkR)
 sparkR.session()
 ```
 
-如果导入 `SparkR` 包时出错，请运行 `.libPaths()` 并验证结果中是否包含 `/home/ubuntu/databricks/spark/R/lib`。
+如果导入 ``SparkR`` 包时出错，请运行 ``.libPaths()`` 并验证结果中是否包含 ``/home/ubuntu/databricks/spark/R/lib``。
 
-如果未包含此内容，请检查 `/usr/lib/R/etc/Rprofile.site` 的内容。
-列出驱动程序上的 `/home/ubuntu/databricks/spark/R/lib/SparkR`，以验证是否安装了 `SparkR` 包。
+如果未包含此内容，请检查 ``/usr/lib/R/etc/Rprofile.site`` 的内容。
+列出驱动程序上的 ``/home/ubuntu/databricks/spark/R/lib/SparkR``，以验证是否安装了 ``SparkR`` 包。
 
-**如何启动 `sparklyr` 会话？**
+### <a name="how-do-i-start-a-sparklyr-session"></a>如何启动 ``sparklyr`` 会话？
 
-必须在群集上安装 `sparklyr` 包。 使用以下方法之一安装 `sparklyr` 包：
+必须在群集上安装 ``sparklyr`` 包。 使用以下方法之一安装 ``sparklyr`` 包：
 
 * 作为 Azure Databricks 库
-* `install.packages()` 命令
+* ``install.packages()`` 命令
 * RStudio 包管理 UI
 
-`SparkR` 包含在 Databricks Runtime 中，但你必须将其加载到 RStudio 中。 在 RStudio 中运行以下代码以初始化 `sparklyr` 会话。
+``SparkR`` 包含在 Databricks Runtime 中，但你必须将其加载到 RStudio 中。 在 RStudio 中运行以下代码以初始化 ``sparklyr`` 会话。
 
 ```r
 SparkR::sparkR.session()
@@ -287,29 +293,29 @@ library(sparklyr)
 sc <- spark_connect(method = “databricks”)
 ```
 
-如果 `sparklyr` 命令失败，请确认 `SparkR::sparkR.session()` 是否成功。
+如果 ``sparklyr`` 命令失败，请确认 ``SparkR::sparkR.session()`` 是否成功。
 
-**RStudio 如何与 Azure Databricks R 笔记本集成？**
+### <a name="how-does-rstudio-integrate-with-azure-databricks-r-notebooks"></a>RStudio 如何与 Azure Databricks R 笔记本集成？
 
 你可以通过版本控制在笔记本与 RStudio 之间移动你的工作。
 
-**什么是工作目录？**
+### <a name="what-is-the-working-directory"></a>什么是工作目录？
 
 当你在 RStudio 中启动项目时，你选择了一个工作目录。 默认情况下，这是在其中运行 RStudio Server 的驱动程序容器（主容器）中的主目录。 如果需要，你可以更改此目录。
 
-**是否可以从 Azure Databricks 上运行的 RStudio 启动 Shiny 应用？**
+### <a name="can-i-launch-shiny-apps-from-rstudio-running-on-azure-databricks"></a>是否可以从 Azure Databricks 上运行的 RStudio 启动 Shiny 应用？
 
-非常遗憾，Azure Databricks 尚不支持 Shiny 应用和 RStudio Connect 的集成。
+是的，可以[在 Databricks 上的 RStudio Server 内开发和查看 Shiny 应用程序](shiny.md)。
 
-**无法在 Azure Databricks 上的 RStudio 中使用终端/git。如何解决此问题？**
+### <a name="i-cant-use-terminal-or-git-inside-rstudio-on-azure-databricks-how-can-i-fix-that"></a>无法在 Azure Databricks 上的 RStudio 内使用终端或 git， 如何解决此问题？
 
 请确保已禁用 WebSocket。 在 RStudio Server 开源版中，你可以从 UI 执行此操作。
 
 > [!div class="mx-imgBorder"]
 > ![RStudio 会话](../../../_static/images/clusters/rstudio-terminal-options.png)
 
-在 RStudio Server 专业版中，你可以将 `allow-terminal-websockets=0` 添加到 `/etc/rstudio/rsession.conf`，以便对所有用户禁用 Websocket。
+在 RStudio Server 专业版中，你可以将 ``allow-terminal-websockets=0`` 添加到 ``/etc/rstudio/rsession.conf``，以便对所有用户禁用 Websocket。
 
-**我在群集详细信息下看不到“应用”选项卡。**
+### <a name="i-dont-see-the-apps-tab-under-cluster-details"></a>我在群集详细信息下看不到“应用”选项卡。
 
 此功能并非可供所有客户使用。 你必须已参加 [Azure Databricks 高级计划](https://databricks.com/product/azure-pricing)。

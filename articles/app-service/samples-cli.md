@@ -5,15 +5,15 @@ tags: azure-service-management
 ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
 origin.date: 07/07/2020
-ms.date: 08/13/2020
+ms.date: 02/01/2021
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: c02b577624a9cc7a1119d974905b358ad67681fe
-ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
+ms.openlocfilehash: 5cb9fbbd5867fee93cac17428d0e67e54a69d493
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88228057"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059071"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>针对 Azure 应用服务的 CLI 示例
 

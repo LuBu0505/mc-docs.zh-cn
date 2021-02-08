@@ -4,14 +4,14 @@ description: 本文介绍如何使用用于容器的 Azure Monitor 查看和分�
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 10/15/2019
-ms.date: 11/02/2020
+ms.date: 01/27/2021
 ms.author: v-johya
-ms.openlocfilehash: 6b038d3cb9ed52676a143df427b9c3545b271582
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 3ff50227cccd0dd1955e316affc8e5661ca4d0e1
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94327978"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059854"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>使用适用于容器的 Azure Monitor 监视 Kubernetes 群集性能
 
@@ -133,7 +133,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 | insights.container/pods | |
 | | PodCount | Kubernetes 中的 Pod 计数。|
 
-可以[拆分](../platform/metrics-charts.md#apply-splitting-to-a-chart)指标，以便按维度来查看它，并以可视化方式表现其片段相互之间的不同之处。 对于节点，可以按主机维度将图表分段。 对于 Pod，可按以下维度将其分段：
+可以[拆分](../platform/metrics-charts.md#apply-splitting)指标，以便按维度来查看它，并以可视化方式表现其片段相互之间的不同之处。 对于节点，可以按主机维度将图表分段。 对于 Pod，可按以下维度将其分段：
 
 * 控制器
 * Kubernetes 命名空间
@@ -231,7 +231,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 选择特定控制器的“节点”列下的值。
 
-![性能视图中从节点到控制器的示例向下钻取](./media/container-insights-analyze/drill-down-controller-node.png)
+![性能视图中从控制器到节点的示例向下钻取](./media/container-insights-analyze/drill-down-controller-node.png)
 
 下表描述了查看控制器时显示的信息：
 
@@ -300,31 +300,8 @@ Azure 网络策略管理器包含信息丰富的 Prometheus 指标，可用于�
 
 ## <a name="workbooks"></a>工作簿
 
-工作簿可将文本、 [日志查询](/data-explorer/kusto/query/)、[指标](../platform/data-platform-metrics.md)和参数合并到丰富的交互式报表中。 有权访问相同 Azure 资源的其他团队成员都可编辑工作簿。
+工作簿可将文本、日志查询、指标和参数合并到丰富的交互式报表中，使你能够分析群集性能。 有关适用于容器的 Azure Monitor 可使用的工作簿的说明，请参阅[用于容器的 Azure Monitor 中的工作簿](container-insights-reports.md)。
 
-用于容器的 Azure Monitor 包含四个用于入门的工作簿：
-
-- **磁盘容量**：在容器中为每个提供给节点的磁盘提供包含以下方面内容的交互式磁盘使用情况图表：
-
-    - 所有磁盘的磁盘使用率百分比。
-    - 所有磁盘的可用磁盘空间。
-    - 一个网格，显示每个节点磁盘的已使用空间百分比、已使用空间趋势百分比、可用磁盘空间 (GiB)，以及可用磁盘空间趋势 (GiB)。 选择表中的某个行时，会在该行下面显示已使用空间百分比和可用磁盘空间 (GiB)。
-
-- **磁盘 IO**：在容器中为每个提供给节点的磁盘提供包含以下方面内容的交互式磁盘使用率图表：
-
-    - 跨所有磁盘按读取字节数/秒、写入字节数/秒以及读取和写入字节数/秒趋势汇总的磁盘 I/O。
-    - 八个显示关键性能指标的性能图表，用于度量和标识磁盘 I/O 瓶颈。
-
-- **Kubelet**：包括两个显示关键节点操作统计信息的网格：
-
-    - 节点网格的概览汇总了每个节点的总操作数、总错误数、成功的操作数（按百分比），以及趋势。
-    - 操作类型概览汇总了每个操作的总操作数、总错误数、成功的操作数（按百分比），以及趋势。
-
-- **网络**：提供每个节点网络适配器的交互式网络使用率图表，并提供一个表示关键性能指标的网格，用于度量网络适配器的性能。
-
-访问这些工作簿的方法是从“查看工作簿”下拉列表中选择每个工作簿。
-
-![“查看工作簿”下拉列表](./media/container-insights-analyze/view-workbooks-dropdown-list.png)
 
 ## <a name="next-steps"></a>后续步骤
 

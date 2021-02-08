@@ -2,15 +2,16 @@
 title: 遥测处理器（预览版）- 适用于 Java 的 Azure Monitor Application Insights
 description: 如何在适用于 Java 的 Azure Monitor Application Insights 中配置遥测处理器
 ms.topic: conceptual
-ms.date: 01/12/2021
+ms.date: 01/27/2021
+author: Johnnytechn
 ms.custom: devx-track-java
 ms.author: v-johya
-ms.openlocfilehash: 9b73a819216e41c0f3845027ae081fdb8f79eb71
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 57926050e5643accac797f1cc8f0054d116f6def
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98229926"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059911"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>遥测处理器（预览版）- 适用于 Java 的 Azure Monitor Application Insights
 
@@ -19,18 +20,51 @@ ms.locfileid: "98229926"
 
 适用于 Application Insights 的 Java 3.0 代理现在具有在导出遥测数据之前处理该数据的功能。
 
-### <a name="some-use-cases"></a>下面是一些用例：
+下面是遥测处理器的一些用例：
  * 屏蔽敏感数据
  * 有条件地添加自定义维度
- * 更新用于聚合和显示的遥测名称
+ * 更新在 Azure 门户中用于聚合和显示的名称
+ * 删除范围属性以控制引入成本
 
-### <a name="supported-processors"></a>支持的处理器：
- * 属性处理器
- * 范围处理器
+## <a name="terminology"></a>术语
 
-## <a name="to-get-started"></a>入门指南
+在讨论遥测处理器之前，请务必了解术语“范围”所指的内容。
 
-使用以下模板创建一个名为 `applicationinsights.json` 的配置文件，并将其置于 `applicationinsights-agent-***.jar` 所在的目录中。
+范围是一个表示下列三个事项中的任意一项的通用术语：
+
+* 传入请求
+* 传出依赖项（例如，对另一个服务的远程调用）
+* 进程内依赖项（例如，由服务的子组件所做的工作）
+
+对于遥测处理器而言，范围的重要组件包括：
+
+* 名称
+* 特性
+
+范围名称是 Azure 门户中用于请求和依赖项的主显示名称。
+
+范围属性表示给定请求或依赖项的标准属性和自定义属性。
+
+## <a name="telemetry-processor-types"></a>遥测处理器类型
+
+目前有两种类型的遥测处理器。
+
+#### <a name="attribute-processor"></a>属性处理器
+
+属性处理器能够插入、更新、删除或哈希化属性。
+它还可以从现有属性提取一个或多个新属性（通过正则表达式）。
+
+#### <a name="span-processor"></a>范围处理器
+
+范围处理器能够更新遥测名称。
+它还可以从范围名称提取一个或多个新属性（通过正则表达式）。
+
+> [!NOTE]
+> 请注意，遥测处理器当前仅处理字符串类型的属性，不处理布尔或数字类型的属性。
+
+## <a name="getting-started"></a>入门
+
+使用以下模板创建一个名为 `applicationinsights.json` 的配置文件，并将其置于 `applicationinsights-agent-*.jar` 所在的目录中。
 
 ```json
 {
@@ -54,9 +88,14 @@ ms.locfileid: "98229926"
 }
 ```
 
-## <a name="includeexclude-spans"></a>包括/排除范围
+## <a name="includeexclude-criteria"></a>包括/排除条件
 
-属性处理器和范围处理器公开了相关选项来提供某个范围的要用作匹配依据的一组属性，以确定应将该范围包括在处理器中还是排除在处理器外。 若要配置此选项，则在 `include` 和/或 `exclude` 下至少必须有一个 `matchType` 以及 `spanNames` 和 `attributes` 中的一个。 允许包括/排除配置有多个指定的条件。 所有指定条件的评估结果都必须为 true 才会被视为匹配。 
+属性处理器和范围处理器都支持可选的 `include` 和 `exclude` 条件。
+处理器将仅应用于与其 `include` 条件（如果有）匹配且与其 `exclude` 条件（如果有）不匹配的那些范围。
+
+若要配置此选项，则在 `include` 和/或 `exclude` 下至少必须有一个 `matchType` 以及 `spanNames` 和 `attributes` 中的一个。
+允许包括/排除配置具有多个指定的条件。
+所有指定条件的评估结果都必须为 true 才会被视为匹配。 
 
 必填字段： 
 * `matchType` 控制如何解释 `spanNames` 和 `attributes` 数组中的项。 可能的值包括 `regexp` 或 `strict`。 
@@ -70,183 +109,164 @@ ms.locfileid: "98229926"
 
 #### <a name="sample-usage"></a>示例用法
 
-下面的示例演示了如何指定范围属性组，以指示此处理器应当应用于哪些范围。 属性的 `include` 指示应该包括哪些属性，而 `exclude` 属性则进一步筛选掉不应处理的范围。
-
 ```json
-{
-  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
-  "preview": {
-    "processors": [
+
+"processors": [
+  {
+    "type": "attribute",
+    "include": {
+      "matchType": "strict",
+      "spanNames": [
+        "spanA",
+        "spanB"
+      ]
+    },
+    "exclude": {
+      "matchType": "strict",
+      "attributes": [
+        {
+          "key": "redact_trace",
+          "value": "false"
+        }
+      ]
+    },
+    "actions": [
       {
-        "type": "attribute",
-        "include": {
-          "matchType": "strict",
-          "spanNames": [
-            "svcA",
-            "svcB"
-          ]
-        },
-        "exclude": {
-          "matchType": "strict",
-          "attributes": [
-            {
-              "key": "redact_trace",
-              "value": "false"
-            }
-          ]
-        },
-        "actions": [
-          {
-            "key": "credit_card",
-            "action": "delete"
-          },
-          {
-            "key": "duplicate_key",
-            "action": "delete"
-          }
-        ]
+        "key": "credit_card",
+        "action": "delete"
+      },
+      {
+        "key": "duplicate_key",
+        "action": "delete"
       }
     ]
   }
-}
+]
 ```
+若要更深入地进行了解，请查看[遥测处理器示例](./java-standalone-telemetry-processors-examples.md)文档。
 
-使用以上配置时，以下范围与属性匹配，处理器操作得到应用：
+## <a name="attribute-processor"></a>属性处理器
 
-* Span1 Name: 'svcB' Attributes: {env: production, test_request:123, credit_card:1234, redact_trace: "false"}
+属性处理器修改范围的属性。 它还可以支持用于包括/排除范围的功能。 它接受一个操作列表，这些操作按配置文件中指定的顺序执行。 支持的操作有：
 
-* Span2 Name: 'svcA' Attributes: {env: staging, test_request: false, redact_trace: true}
+### `insert`
 
-以下范围与 include 属性不匹配，处理器操作得不到应用：
-
-* Span3 Name: 'svcB' Attributes: {env: production, test_request: true, credit_card:1234, redact_trace: false}
-
-* Span4 Name: 'svcC' Attributes: {env: dev, test_request: false}
-
-## <a name="attribute-processor"></a>属性处理器 
-
-属性处理器修改范围的属性。 它还可以支持用于包括/排除范围的功能。
-它接受一个操作列表，这些操作按配置文件中指定的顺序执行。 支持的操作有：
-
-* `insert`：在不存在键的范围中插入新属性
-* `update`：更新存在键的范围中的属性
-* `delete`：从范围中删除属性
-* `hash`：将现有属性值哈希化 (SHA1)
-
-对于 `insert` 和 `update` 操作，
-* `key` 是必需的
-* 需要 `value` 和 `fromAttribute` 中的一个
-* 需要 `action`。
-
-对于 `delete` 操作，
-* `key` 是必需的
-* `action`：`delete` 是必需的。
-
-对于 `hash` 操作，
-* `key` 是必需的
-* `action`：`hash` 是必需的。
-
-可以编写操作列表来创建丰富的方案，例如回填属性、将值复制到新键、编修敏感信息。
-
-#### <a name="sample-usage"></a>示例用法
-
-以下示例演示了如何在范围中插入键/值：
+在不存在键的范围中插入新属性   
 
 ```json
-{
-  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
-  "preview": {
-    "processors": [
+"processors": [
+  {
+    "type": "attribute",
+    "actions": [
       {
-        "type": "attribute",
-        "actions": [
-          {
-            "key": "attribute1",
-            "value": "value1",
-            "action": "insert"
-          },
-          {
-            "key": "key1",
-            "fromAttribute": "anotherkey",
-            "action": "insert"
-          }
-        ]
+        "key": "attribute1",
+        "value": "value1",
+        "action": "insert"
       }
     ]
   }
-}
+]
 ```
+对于 `insert` 操作，以下项是必需的
+  * `key`
+  * `value` 或 `fromAttribute` 中的一个
+  * `action`:`insert`
 
-以下示例演示了如何将处理器配置为仅更新属性中的现有键：
+### `update`
+
+更新存在键的范围中的属性
 
 ```json
-{
-  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
-  "preview": {
-    "processors": [
+"processors": [
+  {
+    "type": "attribute",
+    "actions": [
       {
-        "type": "attribute",
-        "actions": [
-          {
-            "key": "piiattribute",
-            "value": "redacted",
-            "action": "update"
-          },
-          {
-            "key": "credit_card",
-            "action": "delete"
-          },
-          {
-            "key": "user.email",
-            "action": "hash"
-          }
-        ]
+        "key": "attribute1",
+        "value": "newValue",
+        "action": "update"
       }
     ]
   }
-}
+]
 ```
+对于 `update` 操作，以下项是必需的
+  * `key`
+  * `value` 或 `fromAttribute` 中的一个
+  * `action`:`update`
 
-以下示例演示了如何处理范围名称与正则表达式模式匹配的范围。
-此处理器会删除“token”属性，并在范围名称与“auth.\*”匹配但与“login.\*”不匹配的范围中对“password”属性进行模糊处理。
+
+### `delete` 
+
+从范围中删除属性
 
 ```json
-{
-  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
-  "preview": {
-    "processors": [
+"processors": [
+  {
+    "type": "attribute",
+    "actions": [
       {
-        "type": "attribute",
-        "include": {
-          "matchType": "regexp",
-          "spanNames": [
-            "auth.*"
-          ]
-        },
-        "exclude": {
-          "matchType": "regexp",
-          "spanNames": [
-            "login.*"
-          ]
-        },
-        "actions": [
-          {
-            "key": "password",
-            "value": "obfuscated",
-            "action": "update"
-          },
-          {
-            "key": "token",
-            "action": "delete"
-          }
-        ]
+        "key": "attribute1",
+        "action": "delete"
       }
     ]
   }
-}
+]
 ```
+对于 `delete` 操作，以下项是必需的
+  * `key`
+  * `action`: `delete`
 
-## <a name="span-processors"></a>范围处理器
+### `hash`
+
+将现有属性值哈希化 (SHA1)
+
+```json
+"processors": [
+  {
+    "type": "attribute",
+    "actions": [
+      {
+        "key": "attribute1",
+        "action": "hash"
+      }
+    ]
+  }
+]
+```
+对于 `hash` 操作，以下项是必需的
+* `key`
+* `action` : `hash`
+
+### `extract`
+
+> [!NOTE]
+> 此功能仅在 3.0.2 及更高版本中提供
+
+使用正则表达式规则将值从输入键提取到规则中指定的目标键。 如果目标键已存在，则会将其替代。 它的行为类似于以现有属性作为源的[范围处理器](#extract-attributes-from-span-name) `toAttributes` 设置。
+
+```json
+"processors": [
+  {
+    "type": "attribute",
+    "actions": [
+      {
+        "key": "attribute1",
+        "pattern": "<regular pattern with named matchers>",
+        "action": "extract"
+      }
+    ]
+  }
+]
+```
+对于 `extract` 操作，以下项是必需的
+* `key`
+* `pattern`
+* `action` : `extract`
+
+若要更深入地进行了解，请查看[遥测处理器示例](./java-standalone-telemetry-processors-examples.md)文档。
+
+## <a name="span-processor"></a>范围处理器
 
 范围处理器修改范围名称或根据范围名称修改范围的属性。 它还可以支持用于包括/排除范围的功能。
 
@@ -262,28 +282,19 @@ ms.locfileid: "98229926"
 > [!NOTE]
 > 如果重命名依赖于属性处理器修改的属性，请确保在管道规范中的属性处理器之后指定范围处理器。
 
-#### <a name="sample-usage"></a>示例用法
-
-以下示例指定属性“db.svc”、“operation”和“id”的值将按该顺序形成范围的新名称，以值“::”作为分隔符。
 ```json
-{
-  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
-  "preview": {
-    "processors": [
-      {
-        "type": "span",
-        "name": {
-          "fromAttributes": [
-            "db.svc",
-            "operation",
-            "id"
-          ],
-          "separator": "::"
-        }
-      }
-    ]
+"processors": [
+  {
+    "type": "span",
+    "name": {
+      "fromAttributes": [
+        "attributeKey1",
+        "attributeKey2",
+      ],
+      "separator": "::"
+    }
   }
-}
+] 
 ```
 
 ### <a name="extract-attributes-from-span-name"></a>从范围名称中提取属性
@@ -294,61 +305,46 @@ ms.locfileid: "98229926"
 
 `rules`：用于从范围名称中提取属性值的规则列表。 范围名称中的值将替换为提取的属性名称。 列表中的每项规则都是一个正则表达式模式字符串。 将依据正则表达式来检查范围名称。 如果正则表达式匹配，则正则表达式的所有已命名子表达式都会被提取为属性并添加到范围中。 每个子表达式名称会成为一个属性名称，子表达式匹配部分会成为属性值。 范围名称中的匹配部分会替换为提取的属性名称。 如果属性已存在于范围中，则会被覆盖。 将按指定顺序为所有规则重复此过程。 每项后续规则都应用于处理上一规则后输出的范围名称。
 
-#### <a name="sample-usage"></a>示例用法
-
-让我们假设输入范围名称为 /api/v1/document/12345678/update。 将以下结果应用于输出范围名称 /api/v1/document/{documentId}/update 会将新属性 "documentId"="12345678" 添加到范围。
 ```json
-{
-  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
-  "preview": {
-    "processors": [
-      {
-        "type": "span",
-        "name": {
-          "toAttributes": {
-            "rules": [
-              "^/api/v1/document/(?<documentId>.*)/update$"
-            ]
-          }
-        }
+
+"processors": [
+  {
+    "type": "span",
+    "name": {
+      "toAttributes": {
+        "rules": [
+          "rule1",
+          "rule2",
+          "rule3"
+        ]
       }
-    ]
+    }
   }
-}
+]
+
 ```
 
-下面演示了如何在范围具有以下属性时将范围名称重命名为“{operation_website}”并添加属性 {Key: operation_website, Value: oldSpanName }：
-- 范围名称在字符串中的任意位置包含“/”。
-- 范围名称不是“donot/change”。
-```json
-{
-  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
-  "preview": {
-    "processors": [
-      {
-        "type": "span",
-        "include": {
-          "matchType": "regexp",
-          "spanNames": [
-            "^(.*?)/(.*?)$"
-          ]
-        },
-        "exclude": {
-          "matchType": "strict",
-          "spanNames": [
-            "donot/change"
-          ]
-        },
-        "name": {
-          "toAttributes": {
-            "rules": [
-              "(?<operation_website>.*?)$"
-            ]
-          }
-        }
-      }
-    ]
-  }
-}
-```
+## <a name="list-of-attributes"></a>属性列表
+
+下面列出了可以在遥测处理器中使用的一些常见范围属性。
+
+### <a name="http-spans"></a>HTTP 范围
+
+| Attribute  | 类型 | 说明 | 
+|---|---|---|
+| `http.method` | string | HTTP 请求方法。|
+| `http.url` | string | 完整的 HTTP 请求 URL（采用 `scheme://host[:port]/path?query[#fragment]` 格式）。 通常情况下，片段不通过 HTTP 传输，但如果它是已知的，则应包括它。|
+| `http.status_code` | 数值 | [HTTP 响应状态代码](https://tools.ietf.org/html/rfc7231#section-6)。|
+| `http.flavor` | string | 使用的 HTTP 协议类型 |
+| `http.user_agent` | string | 客户端发送的 [HTTP User-Agent](https://tools.ietf.org/html/rfc7231#section-5.5.3) 标头的值。 |
+
+### <a name="jdbc-spans"></a>JDBC 范围
+
+| Attribute  | 类型 | 说明  |
+|---|---|---|
+| `db.system` | string | 正在使用的数据库管理系统 (DBMS) 产品的标识符。 |
+| `db.connection_string` | string | 用于连接到数据库的连接字符串。 建议删除嵌入的凭据。|
+| `db.user` | string | 用于访问数据库的用户名。 |
+| `db.name` | string | 此属性用于报告正在访问的数据库的名称。 对于用于切换数据库的命令，应当将此项设置为目标数据库（即使该命令失败）。|
+| `db.statement` | string | 正在执行的数据库语句。|
 

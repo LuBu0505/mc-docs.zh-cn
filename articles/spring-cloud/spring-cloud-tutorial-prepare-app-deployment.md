@@ -4,15 +4,15 @@ description: 了解如何准备要部署到 Azure Spring Cloud 中的应用程�
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 12/28/2020
+ms.date: 01/26/2021
 ms.author: v-junlch
 ms.custom: devx-track-java
-ms.openlocfilehash: c2cde7a15b0a199685f13c70a75c057847f6417a
-ms.sourcegitcommit: a37f80e7abcf3e42859d6ff73abf566efed783da
+ms.openlocfilehash: 9e5b0b6be9d30d45d01f4170322af1bb2cf6e9b8
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829344"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058909"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>准备要部署到 Azure Spring Cloud 中的应用程序
 
@@ -40,40 +40,14 @@ Azure Spring Cloud 仅支持使用 Spring Boot 版本2.1 或 2.2 的 Spring Boot
 
 Spring Boot 版本 | Spring Cloud 版本
 ---|---
-2.1 | Greenwich.RELEASE
 2.2 | Hoxton.SR8
 2.3 | Hoxton.SR8
+2.4.1+ | 2020.0.0
 
 > [!NOTE]
-> 我们已经确认，Spring Boot 2.4 在应用与 Eureka 之间进行 TLS 身份验证时出现问题，我们目前正在与 Spring 社区协作，以解决此问题。 请参阅我们的[常见问题解答](/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development)以获取解决方法。
+> 我们发现 Spring Boot 2.4.0 在应用和 Eureka 之间的 TLS 身份验证存在问题，请使用 2.4.1 版或更高版本。 如果坚持使用 2.4.0，请参阅我们的[常见问题解答](/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development)以获取解决方法。
 
-### <a name="dependencies-for-spring-boot-version-21"></a>Spring Boot 版本 2.1 的依赖项
-
-对于 Spring Boot 版本 2.1，请将以下依赖项添加到应用程序 POM 文件中。
-
-```xml
-    <!-- Spring Boot dependencies -->
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.12.RELEASE</version>
-    </parent>
-
-    <!-- Spring Cloud dependencies -->
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Greenwich.RELEASE</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-```
-
-### <a name="dependencies-for-spring-boot-version-22"></a>Spring Boot 版本 2.2 的依赖项
+### <a name="dependencies-for-spring-boot-version-2223"></a>Spring Boot 版本 2.2/2.3 的依赖项
 
 对于 Spring Boot 版本 2.2，请将以下依赖项添加到应用程序 POM 文件中。
 
@@ -98,16 +72,17 @@ Spring Boot 版本 | Spring Cloud 版本
         </dependencies>
     </dependencyManagement>
 ```
-### <a name="dependencies-for-spring-boot-version-23"></a>Spring Boot 版本 2.3 的依赖项
 
-对于 Spring Boot 版本 2.3，请将以下依赖项添加到应用程序 POM 文件中。
+### <a name="dependencies-for-spring-boot-version-24"></a>Spring Boot 版本 2.4 的依赖项
+
+对于 Spring Boot 版本 2.2，请将以下依赖项添加到应用程序 POM 文件中。
 
 ```xml
     <!-- Spring Boot dependencies -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.0.RELEASE</version>
+        <version>2.4.1.RELEASE</version>
     </parent>
 
     <!-- Spring Cloud dependencies -->
@@ -116,34 +91,14 @@ Spring Boot 版本 | Spring Cloud 版本
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR8</version>
+                <version>2020.0.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
 ```
-## <a name="azure-spring-cloud-client-dependency"></a>Azure Spring Cloud 客户端依赖项
 
-Azure Spring Cloud 将会托管和管理 Spring Cloud 组件。 组件包括 Spring Cloud 服务注册表和 Spring Cloud 配置服务器。 建议使用 Spring Boot 2.2 或 2.3。 对于 Spring Boot 2.1，需要在依赖项中包括 Azure Spring Cloud 客户端库，以便与 Azure Spring Cloud 服务实例通信。
-
-下表列出了正确的 Azure Spring Cloud 版本，针对使用 Spring Boot 和 Spring Cloud 的应用。
-
-Spring Boot 版本 | Spring Cloud 版本 | Azure Spring Cloud 客户端入门版
----|---|---
-2.1.x | Greenwich.RELEASE | 2.1.2
-2.2.x | Hoxton.SR8 | 不需要
-2.3.x | Hoxton.SR8 | 不需要
-
-如果使用的是 Spring Boot 2.1，请在 pom.xml 文件中包括以下依赖项。
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.2</version>
-</dependency>
-```
 > [!WARNING]
 > 请勿在配置中指定 `server.port`。 Azure Spring Cloud 会将此设置重写为固定端口号。 也请遵从此设置，不要在代码中指定服务器端口。
 
@@ -223,6 +178,9 @@ public class GatewayApplication {
 
 ### <a name="distributed-tracing"></a>分布式跟踪
 
+还需让 Azure Application Insights 实例能够兼容 Azure Spring Cloud 服务实例。 若要了解如何将 Application Insights 与 Azure Spring Cloud 配合使用，请参阅[有关分布式跟踪的文档](spring-cloud-tutorial-distributed-tracing.md)。
+
+#### <a name="spring-boot-2223"></a>Spring Boot 2.2/2.3
 在 pom.xml 文件的 dependencies 节中包括下面的 `spring-cloud-starter-sleuth` 和 `spring-cloud-starter-zipkin` 依赖项：
 
 ```xml
@@ -236,7 +194,15 @@ public class GatewayApplication {
 </dependency>
 ```
 
- 还需让 Azure Application Insights 实例能够兼容 Azure Spring Cloud 服务实例。 若要了解如何将 Application Insights 与 Azure Spring Cloud 配合使用，请参阅[有关分布式跟踪的文档](spring-cloud-tutorial-distributed-tracing.md)。
+#### <a name="spring-boot-24"></a>Spring Boot 2.4
+在 pom.xml 文件的 dependencies 节中包括下面的 `spring-cloud-sleuth-zipkin` 依赖项：
+
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+</dependency>
+```
 
 ## <a name="see-also"></a>另请参阅
 * [分析应用程序日志和指标](./diagnostic-services.md)

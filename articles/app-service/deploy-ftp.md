@@ -4,15 +4,15 @@ description: 了解如何使用 FTP 或 FTPS 将应用部署到 Azure 应用服�
 ms.assetid: ae78b410-1bc0-4d72-8fc4-ac69801247ae
 ms.topic: article
 origin.date: 09/18/2019
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: c078d16117a24bf070272478f1928f575df5a98f
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 54fc02224e4973a9a2009a9c89017d1a87a0ec8f
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022689"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059924"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 将应用部署到 Azure 应用服务
 
@@ -112,7 +112,7 @@ ms.locfileid: "98022689"
 ### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>我无法通过 FTP 来发布代码。 如何解决此问题？
 检查是否输入了正确的主机名和[凭据](#open-ftp-dashboard)。 另请检查计算机上的以下 FTP 端口是否未被防火墙阻止：
 
-- FTP 控制连接端口：21
+- FTP 控制连接端口：21、990
 - FTP 数据连接端口：989、10001-10300
  
 ### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>如何在 Azure 应用服务中通过被动模式连接到 FTP？

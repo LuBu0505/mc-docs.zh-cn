@@ -1,19 +1,20 @@
 ---
 title: 使用 Azure 服务总线资源管理器在服务总线上执行数据操作（预览版）
 description: 本文介绍如何使用基于门户的 Azure 服务总线资源管理器访问 Azure 服务总线数据。
+ms.service: service-bus-messaging
 ms.topic: conceptual
 origin.date: 06/23/2020
 author: rockboyfor
-ms.date: 10/19/2020
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 07/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: a491c26c044a5fb67a6d0d35555f16391aba3535
-ms.sourcegitcommit: a9aa7d358cd2bef2e4e35b2b720487cb22b2c461
+ms.openlocfilehash: 3be795f42a7fe000831084dac12b616c96dd5134
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592793"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059589"
 ---
 <!--Verified successfully-->
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>使用服务总线资源管理器在服务总线上执行数据操作（预览版）
@@ -36,12 +37,17 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 
 ## <a name="prerequisites"></a>先决条件
 
-若要使用服务总线资源管理器工具，需要预配一个 Azure 服务总线命名空间。 
+若要使用 Service Bus Explorer 工具，你将需要执行以下任务： 
 
-预配服务总线命名空间后，需要创建一个队列用于发送和接收消息，或者创建一个包含订阅的主题用于测试功能。
+- 预配 Azure 服务总线命名空间。
+- 创建一个队列用于从中发送和接收消息，或者创建一个包含订阅的主题用于测试功能。 若要了解如何创建队列、主题和订阅，请参阅以下文章： 
+    - [快速入门 - 创建队列](service-bus-quickstart-portal.md)
+    - [快速入门 - 创建主题](service-bus-quickstart-topics-subscriptions-portal.md)
+- 确保你是命名空间上以下角色之一的成员： 
+    - [服务总线数据所有者](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) 
+    - [参与者](../role-based-access-control/built-in-roles.md#contributor) 
+    - [所有者](../role-based-access-control/built-in-roles.md#owner)
 
-若要详细了解如何创建队列、主题和订阅，请参阅以下链接：[快速入门 - 创建队列](service-bus-quickstart-portal.md)
-   * [快速入门 - 创建主题](service-bus-quickstart-topics-subscriptions-portal.md)
 
 ## <a name="using-the-service-bus-explorer"></a>使用服务总线资源管理器
 
@@ -49,7 +55,7 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 
 如果想要对队列执行操作，请从导航菜单中选择“队列”。 如果想要对主题（及其相关订阅）执行操作，请选择“主题”。 
 
-:::image type="content" source="./media/service-bus-explorer/queue-topics-left-navigation.png" alt-text="实体选择":::
+:::image type="content" source="./media/service-bus-explorer/queue-topics-left-navigation.png"alt-text="实体选择":::
 
 选择“队列”或“主题”后，选择特定的队列或主题。 
 

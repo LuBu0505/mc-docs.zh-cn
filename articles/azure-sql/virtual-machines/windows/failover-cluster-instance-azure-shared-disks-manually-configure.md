@@ -12,14 +12,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 06/26/2020
-ms.date: 01/04/2021
+ms.date: 02/01/2021
 ms.author: v-jay
-ms.openlocfilehash: 8a73bea12f5cc8b922e7ccb1bbddf1e4d1e870a5
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 2d523b43df89c04b7e901b27fb9c44f87190d0b8
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830386"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059402"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>使用 Azure 共享磁盘创建 FCI（Azure VM 上的 SQL Server）
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,22 +28,19 @@ ms.locfileid: "97830386"
 
 若要了解详细信息，请参阅对 [Azure VM 上的 SQL Server 的 FCI](failover-cluster-instance-overview.md) 和[群集最佳做法](hadr-cluster-best-practices.md)的概述。 
 
-
 ## <a name="prerequisites"></a>先决条件 
 
 在按本文中的说明操作之前，你应已具备以下条件：
 
 - Azure 订阅。 可以从[试用版](https://www.microsoft.com/china/azure/index.html?fromtype=cn)开始。 
-- 两个或更多个 Windows Azure 虚拟机。 [可用性集](../../../virtual-machines/windows/tutorial-availability-sets.md)和[邻近放置组](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (PPG) 都受支持。 如果使用 PPG，则所有节点必须存在于同一个组中。
+- 两个或更多个 Windows Azure 虚拟机。 高级 SSD 支持的[可用性集](../../../virtual-machines/windows/tutorial-availability-sets.md)和[邻近放置组](../../../virtual-machines/co-location.md#proximity-placement-groups) (PPG)。 如果使用 PPG，则所有节点必须存在于同一个组中。
 - 有权限在 Azure 虚拟机和 Active Directory 中创建对象的帐户。
 - 最新版本的 [PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)。 
-
 
 ## <a name="add-azure-shared-disk"></a>添加 Azure 共享磁盘
 在启用共享磁盘功能的情况下部署托管型高级 SSD 磁盘。 将 `maxShares` 设置为与群集节点的数目一致，以使磁盘可在所有 FCI 节点之间共享。 
 
 通过执行以下操作添加一个 Azure 共享磁盘： 
-
 
 1. 将以下脚本保存为 SharedDiskConfig.json： 
 
@@ -86,7 +83,6 @@ ms.locfileid: "97830386"
    }
    ```
 
-
 2. 使用 PowerShell 运行 SharedDiskConfig.json： 
 
    ```powershell
@@ -98,20 +94,19 @@ ms.locfileid: "97830386"
 
 3. 对于每个 VM，请通过运行以下命令将附加的共享磁盘初始化为 GUID 分区表 (GPT)，并将其格式化为新技术文件系统 (NTFS)： 
 
-   ```powershell
-   $resourceGroup = "<your resource group name>"
-       $location = "<region of your shared disk>"
-       $ppgName = "<your proximity placement groups name>"
-       $vm = Get-AzVM -ResourceGroupName "<your resource group name>" `
-           -Name "<your VM node name>"
-       $dataDisk = Get-AzDisk -ResourceGroupName $resourceGroup `
-           -DiskName "<your shared disk name>"
-       $vm = Add-AzVMDataDisk -VM $vm -Name "<your shared disk name>" `
-           -CreateOption Attach -ManagedDiskId $dataDisk.Id `
-           -Lun <available LUN - check disk setting of the VM>
-    update-AzVm -VM $vm -ResourceGroupName $resourceGroup
-   ```
-
+    ```powershell
+    $resourceGroup = "<your resource group name>"
+    $location = "<region of your shared disk>"
+    $ppgName = "<your proximity placement groups name>"
+    $vm = Get-AzVM -ResourceGroupName "<your resource group name>" `
+        -Name "<your VM node name>"
+    $dataDisk = Get-AzDisk -ResourceGroupName $resourceGroup `
+        -DiskName "<your shared disk name>"
+    $vm = Add-AzVMDataDisk -VM $vm -Name "<your shared disk name>" `
+        -CreateOption Attach -ManagedDiskId $dataDisk.Id `
+        -Lun <available LUN - check disk setting of the VM>
+    Update-AzVm -VM $vm -ResourceGroupName $resourceGroup
+    ```
 
 ## <a name="create-failover-cluster"></a>创建故障转移群集
 
@@ -120,7 +115,6 @@ ms.locfileid: "97830386"
 - 将成为群集节点的虚拟机的名称。
 - 故障转移群集的名称。
 - 故障转移群集的 IP 地址。 可以使用群集节点所在的同一 Azure 虚拟网络和子网中未使用的 IP 地址。
-
 
 # <a name="windows-server-2012-2016"></a>[Windows Server 2012-2016](#tab/windows2012)
 
@@ -141,7 +135,6 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 有关详细信息，请参阅[故障转移群集：群集网络对象](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97)。
 
 ---
-
 
 ## <a name="configure-quorum"></a>配置仲裁
 
@@ -203,6 +196,7 @@ FCI 数据目录需位于 Azure 共享磁盘上。
 ```powershell
 Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "2.0" -Location $Location
 ```
+
 ## <a name="configure-connectivity"></a>配置连接 
 
 若要将流量正确路由到当前主节点，请配置适用于你的环境的连接选项。 你可以创建 [Azure 负载均衡器](failover-cluster-instance-vnn-azure-load-balancer-configure.md)，也可以在使用 SQL Server 2019 CU2（或更高版本）和 Windows Server 2016（或更高版本）的情况下改用[分布式网络名称](failover-cluster-instance-distributed-network-name-dnn-configure.md)功能。 
@@ -210,7 +204,6 @@ Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName
 ## <a name="next-steps"></a>后续步骤
 
 使用[虚拟网络名称和 Azure 负载均衡器](failover-cluster-instance-vnn-azure-load-balancer-configure.md)或[分布式网络名称 (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md) 配置到 FCI 的连接（如果尚未执行此操作）。 
-
 
 如果 Azure 共享磁盘不是适合你的 FCI 存储解决方案，请考虑改用[高级文件共享](failover-cluster-instance-premium-file-share-manually-configure.md)或[存储空间直通](failover-cluster-instance-storage-spaces-direct-manually-configure.md)来创建 FCI。 
 

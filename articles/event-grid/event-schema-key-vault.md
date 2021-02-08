@@ -3,14 +3,14 @@ title: 充当事件网格源的 Azure Key Vault
 description: 介绍针对 Azure 事件网格中的 Azure Key Vault 事件提供的属性和架构
 ms.topic: conceptual
 author: Johnnytechn
-ms.date: 10/10/2020
+ms.date: 01/18/2021
 ms.author: v-johya
-ms.openlocfilehash: f256252c6f0ded67c64c417c6d2e002c6b83b4ba
-ms.sourcegitcommit: 753c74533aca0310dc7acb621cfff5b8993c1d20
+ms.openlocfilehash: c34c1df2dbda37227841ad376fb9e616600755a2
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92211394"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751182"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>充当事件网格源的 Azure Key Vault
 
@@ -81,6 +81,6 @@ Azure Key Vault 帐户生成以下事件类型：
 
 * 有关 Azure 事件网格的简介，请参阅[什么是事件网格？](overview.md)。
 * 有关如何创建 Azure 事件网格订阅的详细信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)。
-* 有关 Key VAult 的详细信息，请参阅[什么是 Azure Key Vault？](../key-vault/general/overview.md)
+* 有关 Key Vault 的详细信息，请参阅[什么是 Azure Key Vault？](../key-vault/general/overview.md)
 
 

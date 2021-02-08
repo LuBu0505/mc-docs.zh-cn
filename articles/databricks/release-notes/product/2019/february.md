@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 04/29/2020
 title: 2019 年 2 月 - Azure Databricks
 description: 新 Azure Databricks 功能和改进的 2019 年 2 月发行说明。
-ms.openlocfilehash: 3307a7c19e243cadf27ecb694c4869df3ac0ee3c
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 80f6c9ec0e85ecb6efea89b02b80f4b2f5197c67
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329437"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058737"
 ---
 # <a name="february-2019"></a>2019 年 2 月
 
@@ -75,4 +75,4 @@ Azure Databricks 现提供与企业安全性功能、高可用性和其他 Azure
 
 **2019 年 2 月 1 日**
 
-现在，每个人都可以从 Databricks Delta 强大的事务性存储层和超快速读取中受益：从 2 月 1 日开始，Delta Lake 正式发布，并且适用于所有支持的 Databricks Runtime 版本。  有关 Delta 的详细信息，请参阅 [Delta Lake](../../../delta/index.md)。
+现在，每个人都可以从 Databricks Delta 强大的事务性存储层和超快速读取中受益：从 2 月 1 日开始，Delta Lake 正式发布，并且适用于所有支持的 Databricks Runtime 版本。  有关 Delta 的详细信息，请参阅 [Delta Lake 和 Delta Engine 指南](../../../delta/index.md)。

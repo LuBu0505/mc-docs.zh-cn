@@ -1,28 +1,21 @@
 ---
-title: 在 Windows PowerShell 中缩放 Azure 云服务 | Azure
+title: 在 Windows PowerShell 中缩放 Azure 云服务（经典）| Microsoft Docs
 description: （经典）了解如何使用 PowerShell 在 Azure 中缩放 web 角色或辅助角色。
-services: cloud-services
-documentationcenter: ''
-author: seanmck
-manager: timlt
-editor: ''
-ms.assetid: ee37dd8c-6714-4c61-adb8-03d6bbf76c9a
-ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-origin.date: 12/01/2016
-ms.date: 01/03/2017
-ms.author: v-yiso
-ms.openlocfilehash: be88f1d3fd90b5d96ca53f44cc813922df4092e0
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.service: cloud-services
+ms.date: 01/25/2021
+ms.author: v-junlch
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 37551718572d81f9d004ff48b574e95e43456fbc
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63853511"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058837"
 ---
-# <a name="how-to-scale-a-cloud-service-in-powershell"></a>如何在 PowerShell 中缩放云服务
+# <a name="how-to-scale-an-azure-cloud-service-classic-in-powershell"></a>如何在 PowerShell 中缩放 Azure 云服务（经典）
 
 可以使用 Windows PowerShell 通过添加或删除实例来缩放 web 角色或辅助角色。  
 
@@ -31,7 +24,7 @@ ms.locfileid: "63853511"
 若希望通过 PowerShell 对订阅执行任何操作，必须首先登录：
 
 ```powershell
-Add-AzureAccount
+Add-AzureAccount -Environment AzureChinaCloud
 ```
 
 如果有多个订阅与帐户关联，可能需要根据云服务的所在位置更改当前订阅。 若要查看当前订阅，请运行：
@@ -80,4 +73,5 @@ Set-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>' -S
 
 ## <a name="next-steps"></a>后续步骤
 
-不能从 PowerShell 为云服务配置自动缩放。 若要实现此操作，请参阅[如何自动缩放云服务](./cloud-services-how-to-scale-portal.md)。
+不能从 PowerShell 为云服务配置自动缩放。 若要实现此操作，请参阅[如何自动缩放云服务](cloud-services-how-to-scale-portal.md)。
+

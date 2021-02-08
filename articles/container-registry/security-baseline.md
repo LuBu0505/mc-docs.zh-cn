@@ -5,15 +5,15 @@ ms.service: security
 ms.topic: conceptual
 origin.date: 03/16/2020
 author: rockboyfor
-ms.date: 10/05/2020
+ms.date: 02/01/2021
 ms.author: v-yeche
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1a17e49b35367cf91f3cb1bf5d9c2be17dba8011
-ms.sourcegitcommit: 29a49e95f72f97790431104e837b114912c318b4
+ms.openlocfilehash: 21d36274b084390972cc845106d51465863c8d53
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91564502"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063614"
 ---
 <!--Verified successfully-->
 # <a name="azure-security-baseline-for-azure-container-registry"></a>Azure 容器注册表的 Azure 安全基线
@@ -32,7 +32,7 @@ Azure 容器注册表的 Azure 安全基线包含可帮助你改善部署安全�
 
 **指导**：Azure 虚拟网络为 Azure 资源和本地资源提供安全的专用网络。 通过施加限制措施，只允许从 Azure 虚拟网络访问专用 Azure 容器注册表，可以确保只有该虚拟网络中的资源可以访问该注册表。 对于跨界方案，你还可以配置防火墙规则，只允许从特定 IP 地址访问注册表。 配置防火墙访问规则和服务标记，以便从防火墙后面访问你的容器注册表。
 
-<!--Not Available on  [](https://docs.azure.cn/container-registry/container-registry-vnet)-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/container-registry/container-registry-vnet-->
 
 配置规则以访问防火墙后面的 Azure 容器注册表： https://docs.azure.cn/container-registry/container-registry-firewall-access-rules
 
@@ -66,13 +66,13 @@ Azure 容器注册表的 Azure 安全基线包含可帮助你改善部署安全�
 
 可以使用 Azure 安全中心实时网络访问，将 NSG 配置为只能在有限时间内将终结点公开给已批准的 IP 地址。 另请使用 Azure 安全中心自适应网络强化，推荐基于实际流量和威胁情报限制端口和源 IP 的 NSG 配置。
 
-<!--Not Avaialble on [](https://docs.azure.cn/virtual-network/manage-ddos-protection)-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/virtual-network/manage-ddos-protection-->
 
 如何部署 Azure 防火墙： https://docs.azure.cn/firewall/tutorial-firewall-deploy-portal
 
 了解 Azure 安全中心集成的威胁情报： https://docs.azure.cn/security-center/security-center-alerts-service-layer
 
-了解 Azure 安全中心自适应网络强化： https://docs.azure.cn/security-center/security-center-adaptive-network-hardening
+<!--NOT AVAILABLE ON https://docs.azure.cn/security-center/security-center-adaptive-network-hardening-->
 
 Azure 安全中心实时网络访问控制： https://docs.azure.cn/security-center/security-center-just-in-time
 
@@ -134,7 +134,7 @@ Azure 市场： https://market.azure.cn/marketplace/apps/filter?search=Firewall
 
 使用 Azure Policy 审核 Azure 容器注册表的合规性： https://docs.azure.cn/container-registry/container-registry-azure-policy
 
-<!--Not Avaialble on [](https://docs.azure.cn/governance/blueprints/create-blueprint-portal)-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/governance/blueprints/create-blueprint-portal-->
 
 **Azure 安全中心监视**：不适用
 
@@ -144,7 +144,7 @@ Azure 市场： https://market.azure.cn/marketplace/apps/filter?search=Firewall
 
 **指导**：客户可以使用 Azure 蓝图，通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、Azure RBAC 控制措施和策略），来简化大规模的 Azure 部署。 轻松将蓝图应用到新的订阅，并通过版本控制来微调控制措施和管理。
 
-<!--Not Avaialble on [](https://docs.azure.cn/governance/blueprints/create-blueprint-portal)-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/governance/blueprints/create-blueprint-portal-->
 
 **Azure 安全中心监视**：不适用
 
@@ -206,7 +206,7 @@ Azure 市场： https://market.azure.cn/marketplace/apps/filter?search=Firewall
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
-**指南**：在 Azure Monitor 中，根据组织的合规性规章设置 Log Analytics 工作区保留期。 使用 Azure 存储帐户进行长期/存档存储。
+**指导**：在 Azure Monitor 中，根据组织的合规性规章设置 Log Analytics 工作区保留期。 使用 Azure 存储帐户进行长期/存档存储。
 
 如何为 Log Analytics 工作区设置日志保留参数： https://docs.azure.cn/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
@@ -316,7 +316,7 @@ Azure 容器注册表管理员帐户： https://docs.azure.cn/container-registry
 
 若要单独访问容器注册表，请使用与 Azure Active Directory 集成的单个登录名。
 
-<!--Not Available on [](https://docs.azure.cn/active-directory/manage-apps/what-is-single-sign-on)-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/active-directory/manage-apps/what-is-single-sign-on-->
 
 到容器注册表的单独登录： https://docs.azure.cn/container-registry/container-registry-authentication#individual-login-with-azure-ad
 
@@ -340,7 +340,7 @@ Azure 容器注册表管理员帐户： https://docs.azure.cn/container-registry
 
 **指导**：使用配置了 MFA 的 PAW（特权访问工作站）来登录并配置 Azure 资源。
 
-了解特权访问工作站： https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+了解特权访问工作站： https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/
 
 如何在 Azure 中启用 MFA： https://docs.azure.cn/active-directory/authentication/howto-mfa-getstarted
 
@@ -352,7 +352,7 @@ Azure 容器注册表管理员帐户： https://docs.azure.cn/container-registry
 
 **指导**：当环境中出现可疑或不安全的活动时，请使用 Azure Active Directory (Azure AD) 安全报告来生成日志和警报。 使用 Azure 安全中心监视标识和访问活动。
 
-<!--Not Available on [](https://docs.azure.cn/active-directory/reports-monitoring/concept-user-at-risk)-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/active-directory/reports-monitoring/concept-user-at-risk-->
 
 如何在 Azure 安全中心监视用户的标识和访问活动： https://docs.azure.cn/security-center/security-center-identity-access
 
@@ -362,9 +362,9 @@ Azure 容器注册表管理员帐户： https://docs.azure.cn/container-registry
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8：仅从批准的位置管理 Azure 资源
 
-**指导**：使用条件访问命名位置，仅允许从 IP 地址范围或国家/地区的特定逻辑分组进行访问。
+**指南**：使用条件访问命名位置，仅允许从 IP 地址范围或国家/地区的特定逻辑分组进行访问。
 
-<!--Not Available on [](https://docs.azure.cn/active-directory/reports-monitoring/quickstart-configure-named-locations)-->
+如何在 Azure 中配置命名位置： https://docs.azure.cn/active-directory/reports-monitoring/quickstart-configure-named-locations
 
 **Azure 安全中心监视**：目前不可用
 
@@ -398,7 +398,7 @@ Azure 容器注册表管理员帐户： https://docs.azure.cn/container-registry
 
 可以通过为 Azure Active Directory 用户帐户创建诊断设置，并将审核日志和登录日志发送到 Log Analytics 工作区，来简化此过程。 你可以在 Log Analytics 工作区中配置所需的警报。
 
-<!--Not Available on [](https://docs.azure.cn/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)-->
+如何将 Azure 活动日志集成到 Azure Monitor 中： https://docs.azure.cn/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
 **Azure 安全中心监视**：目前不可用
 
@@ -408,9 +408,9 @@ Azure 容器注册表管理员帐户： https://docs.azure.cn/container-registry
 
 **指导**：使用 Azure Active Directory (Azure AD) 风险和标识保护功能配置对检测到的与用户标识相关的可疑操作的自动响应。 
 
-<!--Not Available on [](https://docs.azure.cn/active-directory/reports-monitoring/concept-risky-sign-ins)-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/active-directory/reports-monitoring/concept-risky-sign-ins-->
 
-<!--Not Available on [](https://docs.azure.cn/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/active-directory/identity-protection/howto-identity-protection-configure-risk-policies-->
 
 **Azure 安全中心监视**：目前不可用
 
@@ -420,7 +420,7 @@ Azure 容器注册表管理员帐户： https://docs.azure.cn/container-registry
 
 **指导**：不可用；Azure 容器注册表当前不支持客户密码箱。
 
-<!--Not Available on [](https://docs.azure.cn/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability-->
 
 **Azure 安全中心监视**：不适用
 
@@ -452,13 +452,13 @@ Azure 容器注册表管理员帐户： https://docs.azure.cn/container-registry
 
 资源应当按虚拟网络或子网进行分隔，相应地进行标记，并由网络安全组 (NSG) 或 Azure 防火墙提供保护。
 
-<!--Not Available on  [](https://docs.azure.cn/billing/billing-create-subscription)-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/billing/billing-create-subscription-->
 
 如何创建管理组： https://docs.azure.cn/governance/management-groups/create
 
 如何创建和使用标记： https://docs.azure.cn/azure-resource-manager/resource-group-using-tags
 
-<!--Not Available on  [](https://docs.azure.cn/container-registry/container-registry-vnet)-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/container-registry/container-registry-vnet-->
 
 如何创建采用某个安全配置的 NSG： https://docs.azure.cn/virtual-network/tutorial-filter-network-traffic
 
@@ -560,17 +560,10 @@ Azure 容器注册表中客户管理的密钥： https://aka.ms/acr/cmk
 
 有关详细信息，请参阅[安全控制：漏洞管理。](../security/benchmarks/security-control-vulnerability-management.md)
 
-### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：运行自动漏洞扫描工具
+<!--NOT AVAILABLE ON ### 5.1: Run automated vulnerability scanning tools-->
 
-**指导**：遵循 Azure 安全中心的在容器映像上执行漏洞评估的建议。 （可选）从 Azure 市场部署第三方解决方案，用于执行映像漏洞评估。
-
-如何实施 Azure 安全中心漏洞评估建议： https://docs.azure.cn/security-center/security-center-vulnerability-assessment-recommendations
-
-Azure 容器注册表与安全中心的集成（预览版）： https://docs.azure.cn/security-center/azure-container-registry-integration
-
-**Azure 安全中心监视**：是
-
-**责任**：客户
+<!--NOT AVAILABLE ON https://docs.azure.cn/security-center/security-center-vulnerability-assessment-recommendations-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/security-center/azure-container-registry-integration-->
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自动操作系统修补管理解决方案
 
@@ -594,25 +587,11 @@ Azure 容器注册表与安全中心的集成（预览版）： https://docs.azu
 
 **责任**：客户
 
-### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4：比较连续进行的漏洞扫描
+<!--NOT AVAILABLE ON ### 5.4: Compare back-to-back vulnerability scans-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/security-center/azure-container-registry-integration-->
 
-**指导**：将 Azure 容器注册表 (ACR) 与 Azure 安全中心集成，以便定期扫描容器映像中的漏洞。 （可选）从 Azure 市场部署第三方解决方案，用于执行定期的映像漏洞扫描。
-
-Azure 容器注册表与安全中心的集成（预览版）： https://docs.azure.cn/security-center/azure-container-registry-integration
-
-**Azure 安全中心监视**：是
-
-**责任**：客户
-
-### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用风险评级过程来确定已发现漏洞的修正措施的优先级
-
-**指导**：将 Azure 容器注册表 (ACR) 与 Azure 安全中心集成，以便定期扫描容器映像中的漏洞并对风险进行分类。 （可选）从 Azure 市场部署第三方解决方案，用于执行定期的映像漏洞扫描和风险分类。
-
-Azure 容器注册表与安全中心的集成（预览版）： https://docs.azure.cn/security-center/azure-container-registry-integration
-
-**Azure 安全中心监视**：空值
-
-**责任**：客户
+<!--NOT AVAILABLE ON ### 5.5: Use a risk-rating process to prioritize the remediation of discovered vulnerabilities-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/security-center/azure-container-registry-integration-->
 
 ## <a name="inventory-and-asset-management"></a>清单和资产管理
 
@@ -684,7 +663,7 @@ Azure 容器注册表与安全中心的集成（预览版）： https://docs.azu
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：监视计算资源中未批准的软件应用程序
 
-**指导**：分析和监视 Azure 容器注册表日志，看其是否存在异常行为，可以定期查看结果。 使用 Azure Monitor Log Analytics 工作区查看日志并对日志数据执行查询。
+**指导**：分析和监视 Azure 容器注册表日志，看其是否存在异常行为，可以定期查看结果。 使用 Azure Monitor 的 Log Analytics 工作区来查看日志并执行针对日志数据的查询。
 
 用于诊断评估和审核的 Azure 容器注册表日志： https://docs.azure.cn/container-registry/container-registry-diagnostics-audit-logs
 
@@ -874,13 +853,13 @@ Azure 容器注册表与安全中心的集成（预览版）： https://docs.azu
 
 **指导**：将托管服务标识与 Azure Key Vault 结合使用，以便简化和保护云应用程序的机密管理。
 
-<!--Not Available on [](https://docs.azure.cn/azure-app-configuration/howto-integrate-azure-managed-service-identity)-->
+如何与 Azure 托管标识集成： https://docs.azure.cn/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-<!--Not Available on How to create a Key Vault:  [](https://docs.azure.cn/key-vault/general/quick-create-portal)-->
+如何创建 Key Vault： https://docs.azure.cn/key-vault/general/quick-create-portal
 
 如何对 Key Vault 进行身份验证： https://docs.azure.cn/key-vault/general/authentication
 
-<!--Not Available on How to assign a Key Vault access policy: [](https://docs.azure.cn/key-vault/general/assign-access-policy-portal)-->
+如何分配 Key Vault 访问策略： https://docs.azure.cn/key-vault/general/assign-access-policy-portal
 
 在 Azure 容器注册表任务中使用 Azure 托管标识： https://docs.azure.cn/container-registry/container-registry-tasks-authentication-managed-identity
 
@@ -1042,12 +1021,27 @@ Microsoft 安全响应中心的事件剖析： https://msrc-blog.microsoft.com/2
 
 **责任**：客户
 
-<!--Not Available on ### 10.5: Incorporate security alerts into your incident response system-->
-<!--Not Available on [](https://docs.azure.cn/security-center/continuous-export)-->
-<!--Not Available on [](https://docs.azure.cn/sentinel/connect-azure-security-center)-->
+### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
-<!--Not Available on ### 10.6: Automate the response to security alerts-->
-<!--Not Available on [](https://docs.azure.cn/security-center/workflow-automation)-->
+**指导**：使用连续导出功能导出 Azure 安全中心警报和建议。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Sentinel。
+
+如何配置连续导出： https://docs.azure.cn/security-center/continuous-export
+
+<!--NOT AVAILABLE ON https://docs.azure.cn/sentinel/connect-azure-security-center-->
+
+**Azure 安全中心监视**：不适用
+
+**责任**：客户
+
+### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自动响应安全警报
+
+**指导**：使用 Azure 安全中心内的工作流自动化功能可以通过“逻辑应用”针对安全警报和建议自动触发响应。
+
+如何配置工作流自动化和逻辑应用： https://docs.azure.cn/security-center/workflow-automation
+
+**Azure 安全中心监视**：不适用
+
+**责任**：客户
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
@@ -1068,4 +1062,4 @@ Microsoft 安全响应中心的事件剖析： https://msrc-blog.microsoft.com/2
 - 参阅 [Azure 安全基准](../security/benchmarks/overview.md)
 - 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

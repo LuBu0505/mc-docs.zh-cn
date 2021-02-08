@@ -1,17 +1,17 @@
 ---
-title: Azure Application Insights 标准指标 | Microsoft Docs
+title: Azure Application Insights 标准指标 | Azure Docs
 description: 本文列出了 Azure Application Insights 指标以及支持的聚合与维度。
 services: azure-monitor
 ms.topic: reference
 ms.author: v-johya
-ms.date: 01/12/2021
+ms.date: 01/27/2021
 ms.subservice: application-insights
-ms.openlocfilehash: 7f141518e1dd58c81ad87f077f6afd1d8d4b5f93
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: eecd1fbb2d9bb3a245f557b037c700475f97dabb
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231146"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058891"
 ---
 # <a name="application-insights-standard-metrics"></a>Application Insights 标准指标
 
@@ -273,6 +273,6 @@ ms.locfileid: "98231146"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解[基于日志的指标和预聚合的指标](/azure-monitor/app/pre-aggregated-metrics-log-metrics)。
-* [基于日志的指标查询和定义](/azure-monitor/platform/app-insights-metrics)。
+* 了解[基于日志的指标和预聚合的指标](./pre-aggregated-metrics-log-metrics.md)。
+* [基于日志的指标查询和定义](../platform/app-insights-metrics.md)。
 

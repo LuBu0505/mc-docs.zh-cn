@@ -2,14 +2,14 @@
 title: 使用用于容器的 Azure Monitor 配置 PV 监视 | Microsoft Docs
 description: 本文介绍如何使用用于容器的 Azure Monitor 对具有永久性卷的 Kubernetes 群集配置监视。
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 01/27/2021
 ms.author: v-johya
-ms.openlocfilehash: 6bbe12197d5adb742841b3a1251c9208beed6541
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: fb4415d87fa4a8b19ea520287860dda11d741f01
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97104876"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059897"
 ---
 # <a name="configure-pv-monitoring-with-azure-monitor-for-containers"></a>使用用于容器的 Azure Monitor 配置 PV 监视
 

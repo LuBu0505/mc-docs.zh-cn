@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 04/20/2020
 title: Infoworks 集成 - Azure Databricks
 description: 了解如何设置 Azure Databricks 以与 Infoworks 集成。
-ms.openlocfilehash: c109848200c4b60412653d67ef2a3f0db90839b3
-ms.sourcegitcommit: 16af84b41f239bb743ddbc086181eba630f7f3e8
+ms.openlocfilehash: fde85fcb6c28242c599985361f05ee32c4a49b35
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94589926"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058499"
 ---
 # <a name="infoworks-integration"></a>Infoworks 集成
 
@@ -66,7 +66,7 @@ Infoworks 会将数据写入 Azure Data Lake Storage 路径，而 Azure Databric
 
 有关群集配置的详细信息，请参阅[配置群集](../../clusters/configure.md)。
 
-有关获取 JDBC URL 和 HTTP 路径的步骤，请参阅[服务器主机名、端口、HTTP 路径和 JDBC URL](../bi/jdbc-odbc-bi.md#jdbc-odbc-params)。
+有关获取 JDBC URL 和 HTTP 路径的步骤，请参阅[获取服务器主机名、端口、HTTP 路径和 JDBC URL](../bi/jdbc-odbc-bi.md#get-server-hostname-port-http-path-and-jdbc-url)。
 
 ## <a name="step-3-obtain-jdbc-and-odbc-connection-details-to-connect-to-a-cluster"></a><a id="connection"> </a><a id="step-3-obtain-jdbc-and-odbc-connection-details-to-connect-to-a-cluster"> </a>步骤 3：获取 JDBC 和 ODBC 连接详细信息以连接到群集
 

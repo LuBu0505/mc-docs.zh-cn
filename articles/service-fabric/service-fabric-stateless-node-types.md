@@ -4,16 +4,16 @@ description: 了解如何在 Azure Service Fabric 群集中创建和部署无状
 ms.topic: conceptual
 author: rockboyfor
 origin.date: 09/25/2020
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 306504c7f0aafeee4032fa73efa5fa1ee341f409
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: cd8dae7a197905edfa2856fbbc28c5b55b51c975
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230919"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060005"
 ---
 <!--Verified Successfuly Character Only-->
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>使用纯无状态节点类型部署 Azure Service Fabric 群集（预览版）
@@ -257,6 +257,8 @@ ms.locfileid: "98230919"
 
 资源完成部署后，你就可以开始禁用要从原始群集中删除的节点类型中的节点。
 
+>[!NOTE]
+> 对具有青铜级持久性的无状态节点类型使用自动缩放时，在执行纵向缩减操作后，节点状态不会自动清除。 若要在自动缩放期间清除已关闭节点的节点状态，建议使用 [Service Fabric 自动缩放帮助程序](https://github.com/Azure/service-fabric-autoscale-helper)。
 
 ## <a name="next-steps"></a>后续步骤 
 * [Reliable Services](service-fabric-reliable-services-introduction.md)

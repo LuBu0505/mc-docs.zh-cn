@@ -1,21 +1,21 @@
 ---
-title: 如何配置云服务（门户）| Microsoft Docs
+title: 如何配置云服务（经典）| Microsoft Docs
 description: 了解如何在 Azure 中配置云服务。 了解如何更新云服务配置以及配置对角色实例的远程访问。 这些示例使用 Azure 门户。
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 10/20/2020
+ms.service: cloud-services
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: 8e59770b7fcf177911e74a0ec4848a3dab959788
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 2e32276ce6522ad178078b57e73bc83ecd024100
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472626"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058861"
 ---
-# <a name="how-to-configure-cloud-services"></a>如何配置云服务
+# <a name="how-to-configure-and-azure-cloud-service-classic"></a>如何配置 Azure 云服务（经典） 
 
 可以在 Azure 门户中配置最常使用的云服务设置。 或者，如果希望直接更新配置文件，可下载要更新的服务配置文件，并上传更新文件并通过配置更改更新云服务。 无论使用哪种方法，配置更新都会应用于所有角色实例。
 

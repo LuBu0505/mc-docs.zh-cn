@@ -4,19 +4,19 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何使用 Azure 门户快速创建 Kubernetes 群集、部署应用程序，以及监视 Azure Kubernetes 服务 (AKS) 中的性能。
 services: container-service
 ms.topic: quickstart
-origin.date: 10/06/2020
+origin.date: 01/13/2021
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.custom: mvc, seo-javascript-october2019, devx-track-azurecli
-ms.openlocfilehash: f7f074845610233e96224da9ed263aef6dcf198a
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.custom: mvc, seo-javascript-october2019
+ms.openlocfilehash: a31372b6f26ce06df2718faf4ce458fdaea67a2f
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004138"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063678"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -26,7 +26,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 本快速入门假设读者基本了解 Kubernetes 的概念。 有关详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念][kubernetes-concepts]。
 
-如果没有 Azure 订阅，请在开始前创建一个[试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+如果没有 Azure 订阅，请在开始前创建一个[试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -38,7 +38,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 <!--MOONCAKE: Custmize for MC-->
 
-1. 在 Azure 门户菜单或 **主页** 上，选择“创建资源”，键入“Kubernetes 服务”并在“新建”页中选择 Enter 键，然后在“市场”页中选择“Kubernetes 服务”。
+1. 在 Azure 门户菜单或主页上，选择“创建资源”，键入“Kubernetes 服务”并在“新建”页中选择 Enter 键，然后在“市场”页中选择“Kubernetes 服务”项   。
 
     <!--MOONCAKE: Custmize for MC-->
     
@@ -59,7 +59,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 5. 在“身份验证”页上，配置以下选项：
     - 将“服务主体”字段保留为“(新)默认服务主体”以创建新的服务主体。 或者，可以选择“配置服务主体”以使用现有的服务主体。 如果使用现有的服务主体，则需要提供 SPN 客户端 ID 和机密。
-    - 启用 Kubernetes 基于角色的访问控制 (Kubernetes RBAC) 所对应的选项。 这样可以对部署在 AKS 群集中的 Kubernetes 资源进行更精细的访问控制。
+    - 启用 Kubernetes 基于角色的访问控制 (Kubernetes RBAC) 所对应的选项。 这样可以更精细地控制对部署在 AKS 群集中的 Kubernetes 资源的访问权限。
 
     或者，可以使用托管标识而不是服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
 
@@ -293,17 +293,17 @@ az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 <!-- LINKS - internal -->
 
 [kubernetes-concepts]: concepts-clusters-workloads.md
-[az-aks-get-credentials]: https://docs.azure.cn/cli/aks#az_aks_get_credentials
+[az-aks-get-credentials]: https://docs.azure.cn/cli/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_credentials
 [az-aks-delete]: https://docs.azure.cn/cli/aks#az_aks_delete
 [aks-monitor]: ../azure-monitor/insights/container-insights-overview.md
 [aks-network]: ./concepts-network.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 
-<!--Not Available on [http-routing]: ./http-application-routing.md-->
+<!--NOT AVAILABLE ON [http-routing]: ./http-application-routing.md-->
 
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
 
-<!--Not Available on [azure-dev-spaces]: ../dev-spaces/index.yml-->
+<!--NOT AVAILABLE ON [azure-dev-spaces]: ../dev-spaces/index.yml-->
 
 [kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
 [kubernetes-service]: concepts-network.md#services

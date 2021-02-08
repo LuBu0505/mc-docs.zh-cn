@@ -2,20 +2,20 @@
 title: Azure Bastion 疑难解答 | Azure
 description: 在本文中，学习如何对 Azure Bastion 进行排除故障。
 services: bastion
-author: rockboyfor
 ms.service: bastion
 ms.topic: troubleshooting
 origin.date: 10/16/2019
-ms.date: 07/27/2020
+author: rockboyfor
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 07/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9a00d74a4eefdaebeee100d34d7dcc124b1b0f5b
-ms.sourcegitcommit: 4d9846bb03ac24bd98b0c9a781bb8912ff6d2f61
+ms.openlocfilehash: f9e1ea0cf795fc15b7ac6c03e10538d1f579c641
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2020
-ms.locfileid: "86926993"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063687"
 ---
 <!--Character contents only-->
 # <a name="troubleshoot-azure-bastion"></a>Azure Bastion 疑难解答
@@ -27,11 +27,7 @@ ms.locfileid: "86926993"
 
 **问：** 我尝试在 Azure Bastion 子网上创建 NSG 时，遇到以下错误：“网络安全组 <NSG name> 没有 Azure Bastion 子网 AzureBastionSubnet 必需的规则”。
 
-**答:** 如果要创建 NSG 并将其应用到 AzureBastionSubnet，请确保已在 NSG 中添加以下规则。 如果未添加它们，则 NSG 创建/更新操作将失败。
-
-1. 控制平面连接 - 在端口 443 上从 GatewayManager 入站
-2. 诊断日志记录和其他 - 在端口 443 上出站到 AzureCloud（尚不支持此服务标记中的区域标记。）
-3. 目标 VM - 端口 3389 和 22 上出站到 VirtualNetwork
+**答:** 如果要创建 NSG 并将其应用到 AzureBastionSubnet，请确保已在 NSG 中添加所需规则。 有关所需规则的列表，请参阅[使用 NSG 访问和 Azure Bastion](./bastion-nsg.md)。 如果未添加它们，则 NSG 创建/更新操作将失败。
 
 [快速启动模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)中提供了 NSG 规则的示例以供参考。
 有关详细信息，请参阅 [Azure 服务的 NSG 指南](bastion-nsg.md)。
@@ -90,7 +86,7 @@ The key's randomart image is:
 <a name="blackscreen"></a>
 ## <a name="black-screen-in-the-azure-portal"></a>Azure 门户中出现黑屏
 
-**问：** 我在尝试使用 Azure Bastion 进行连接时，Azure 门户中出现黑屏现象。
+**问**：我在尝试使用 Azure Bastion 进行连接时，无法连接到目标 VM，并且 Azure 门户中出现黑屏现象。
 
 **答:** 如果 Web 浏览器与 Azure Bastion 之间出现网络连接问题（诸如客户端 Internet 防火墙可能正在阻止 WebSockets 流量之类的），或者 Azure Bastion 与目标 VM 之间出现网络连接问题，则会出现此情况。 大多数情况是 AzureBastionSubnet 或目标 VM 子网上应用了一个 NSG 来阻止你的虚拟机中的 RDP/SSH 流量。 请允许客户端 Internet 防火墙上的 WebSockets 流量，并检查目标 VM 子网上的 NSG。
 
@@ -98,5 +94,4 @@ The key's randomart image is:
 
 有关详细信息，请参阅 [Bastion 常见问题解答](bastion-faq.md)。
 
-<!-- Update_Description: new article about troubleshoot -->
-<!--NEW.date: 07/27/2020-->
+<!--Update_Description: update meta properties, wording update, update link-->

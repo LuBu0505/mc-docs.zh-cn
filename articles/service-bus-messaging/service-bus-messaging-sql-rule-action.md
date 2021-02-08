@@ -5,20 +5,20 @@ ms.service: service-bus-messaging
 ms.topic: article
 origin.date: 11/24/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 5980294c434fd6624984fbd60a8a7ae9bb9feaac
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 734eb4284018ff99cbd245c196807616027d6b0a
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022993"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059576"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>订阅规则 SQL 操作语法
 
-“SQL 操作”用于在订阅规则的筛选器选择消息后操作消息元数据。 它是一个依赖于 SQL-92 标准子集的文本表达式。 操作表达式与 [Azure 资源管理器模板](service-bus-resource-manager-namespace-topic-with-rule.md)中服务总线 `Rule` 的“action”属性的 `sqlExpression` 元素一起使用，或者与 Azure CLI `az servicebus topic subscription rule create` 命令的 [`--action-sql-expression`](https://docs.azure.cn/cli/servicebus/topic/subscription/rule?view=azure-cli-latest&preserve-view=true#az_servicebus_topic_subscription_rule_create) 参数以及几个允许管理订阅规则的 SDK 函数一起使用。
+“SQL 操作”用于在订阅规则的筛选器选择消息后操作消息元数据。 它是一个依赖于 SQL-92 标准子集的文本表达式。 操作表达式与 [Azure 资源管理器模板](service-bus-resource-manager-namespace-topic-with-rule.md)中服务总线 `Rule` 的“action”属性的 `sqlExpression` 元素一起使用，或者与 Azure CLI `az servicebus topic subscription rule create` 命令的 [`--action-sql-expression`](https://docs.azure.cn/cli/servicebus/topic/subscription/rule#az_servicebus_topic_subscription_rule_create) 参数以及几个允许管理订阅规则的 SDK 函数一起使用。
 
 ```  
 <statements> ::=
@@ -62,7 +62,7 @@ ms.locfileid: "98022993"
 
 ### <a name="remarks"></a>备注  
 
-访问不存在的系统属性的尝试是错误，访问不存在的用户属性的尝试不是错误。 相反，不存在的用户属性在内部作为未知值进行求值。 运算符求值期间会对未知值进行特殊处理。  
+尝试访问不存在的系统属性属于错误，而尝试访问不存在的用户属性不属于错误。 相反，不存在的用户属性在内部作为未知值进行求值。 运算符求值期间会对未知值进行特殊处理。  
 
 ## <a name="property_name"></a>property_name  
 
@@ -200,17 +200,19 @@ ms.locfileid: "98022993"
 
 ### <a name="remarks"></a>备注  
 
-`newid()` 函数返回 `System.Guid.NewGuid()` 方法生成的 **System.Guid**。  
+`newid()` 函数返回 `System.Guid.NewGuid()` 方法生成的 `System.Guid`。  
 
 `property(name)` 函数返回 `name` 所引用的属性的值。 `name` 值可以是返回字符串值的任何有效表达式。  
 
+[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
+  
 ## <a name="considerations"></a>注意事项
 
 - SET 用于创建新属性或更新现有属性的值。
 - REMOVE 用于删除属性。
 - 当表达式类型和现有的属性类型不同时，SET 会尽可能执行隐式转换。
 - 如果引用了不存在的系统属性，操作会失败。
-- 如果引用了不存在的用户属性，操作不会失败。
+- 如果引用不存在的用户属性，操作不会失败。
 - 不存在的用户属性在内部的求值为“未知”，其遵循的语义与 [SQLFilter](https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.sqlfilter) 相同（在对运算符求值时）。
 
 ## <a name="next-steps"></a>后续步骤
@@ -219,7 +221,7 @@ ms.locfileid: "98022993"
 - [SQLRuleAction 类 (.NET Standard)](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.sqlruleaction)
 - [SqlRuleAction 类 (Java)](https://docs.azure.cn/java/api/com.microsoft.azure.servicebus.rules.sqlruleaction)
 - [SqlRuleAction (JavaScript)](https://docs.microsoft.com/javascript/api/@azure/service-bus/sqlruleaction)
-- [az servicebus topic subscription rule](https://docs.azure.cn/cli/servicebus/topic/subscription/rule#az-servicebus-topic-subscription-rule)
+- [`az servicebus topic subscription rule`](https://docs.azure.cn/cli/servicebus/topic/subscription/rule)
 - [New-AzServiceBusRule](https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusrule)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

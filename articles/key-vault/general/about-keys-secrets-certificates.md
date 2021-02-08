@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: overview
 origin.date: 04/17/2020
-ms.date: 11/27/2020
+ms.date: 01/14/2021
 ms.author: v-tawe
-ms.openlocfilehash: 99bae0e8781981ca2b2b8954f9da9f7789183ef7
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 8ad39f4d796f4adabc3a88aefac1494853e02c05
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300761"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059951"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Azure Key Vault 密钥、机密和证书概述
 
@@ -60,9 +60,9 @@ Key Vault 中的对象通过 URL 唯一标识。 不管地理位置如何，系�
 
 其中：  
 
-| 元素 | 描述 |  
+| 元素 | 说明 |  
 |-|-|  
-|`vault-name`|Microsoft Azure Key Vault 服务中的保管库名称。<br /><br />保管库名称由用户选择，并且全局独一无二。<br /><br />保管库名称必须是 3-24 个字符且仅包含 0-9、a-z、A-Z 和 - 的字符串。|  
+|`vault-name`|Azure Key Vault 服务中的保管库名称。<br /><br />保管库名称由用户选择，并且全局独一无二。<br /><br />保管库名称必须是 3-24 个字符且仅包含 0-9、a-z、A-Z 和 - 的字符串。|  
 |`object-type`|对象的类型（“密钥”、“机密”或“证书”）。|  
 |`object-name`|`object-name` 是用户提供名称，在 Key Vault 中必须保持唯一。 该名称必须是 1-127 个字符的字符串，以字母开头且仅包含 0-9、a-z、A-Z 和 -。|  
 |`object-version`|`object-version` 是系统生成的 32 个字符的字符串标识符，可以选择用来对某个对象的唯一版本进行寻址。|  

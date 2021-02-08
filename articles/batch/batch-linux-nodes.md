@@ -2,19 +2,20 @@
 title: 在虚拟机计算节点上运行 Linux
 description: 了解如何在 Azure Batch 中处理 Linux 虚拟机池中的并行计算工作负荷。
 ms.topic: how-to
-origin.date: 11/10/2020
+ms.service: batch
+origin.date: 01/21/2021
 author: rockboyfor
-ms.date: 11/23/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 11/23/2020
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017, devx-track-python, devx-track-csharp
-ms.openlocfilehash: c44bbfa06b5e5f4e7a908f9294698da11f713707
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 44293815e043f845b7228058d5cb4a1b48f9f4ca
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977590"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059824"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>在 Batch 池中预配 Linux 计算节点
 
@@ -22,9 +23,7 @@ ms.locfileid: "94977590"
 
 ## <a name="virtual-machine-configuration"></a>虚拟机配置
 
-在 Batch 中创建计算节点池时，可以使用两个选项来选择节点大小和操作系统：“云服务配置”和“虚拟机配置”。 大多数 Windows 计算节点池使用[云服务配置](nodes-and-pools.md#cloud-services-configuration)，该配置指定池由 Azure 云服务节点组成。这些池只提供 Windows 计算节点。
-
-相比之下，[虚拟机配置](nodes-and-pools.md#virtual-machine-configuration)则指定池由 Azure VM 组成，这些 VM 可以从 Linux 或 Windows 映像中创建。 在使用虚拟机配置创建池时，必须指定[可用的计算节点大小](../virtual-machines/sizes.md)、虚拟机映像引用和 Batch 节点代理 SKU（一个程序，它在每个节点上运行并在节点与 Batch 服务之间提供接口），以及将会安装在节点上的虚拟机映像引用。
+在 Batch 中创建计算节点池时，可以使用两个选项来选择节点大小和操作系统：“云服务配置”和“虚拟机配置”。 [虚拟机配置](nodes-and-pools.md#virtual-machine-configuration)池由 Azure VM 组成，这些 VM 可以从 Linux 或 Windows 映像中创建。 使用虚拟机配置创建池时，请指定[可用的计算节点大小](../virtual-machines/sizes.md)、要安装在节点上的虚拟机映像引用以及 Batch 节点代理 SKU（在每个节点上运行并提供节点和 Batch 服务之间接口的程序）。
 
 ### <a name="virtual-machine-image-reference"></a>虚拟机映像引用
 
@@ -40,7 +39,13 @@ Batch 服务使用[虚拟机规模集](../virtual-machine-scale-sets/overview.md
 | 版本 |最新 |
 
 > [!TIP]
-> 可以在[使用 Azure CLI 在 Azure 市场中查找 Linux VM 映像](../virtual-machines/linux/cli-ps-findimage.md)中详细了解这些属性以及如何指定市场映像。 请注意，目前并非所有市场映像都与 Batch 兼容。
+> 可以在[使用 Azure CLI 在 Azure 市场中查找 Linux VM 映像](../virtual-machines/linux/cli-ps-findimage.md)中详细了解这些属性以及如何指定市场映像。 请注意，某些市场映像当前不与 Batch 兼容。
+
+### <a name="list-of-virtual-machine-images"></a>虚拟机映像列表
+
+并非所有市场映像都与当前可用的 Batch 节点代理兼容。 若要列出 Batch 服务及其相应节点代理 SKU 支持的所有市场虚拟机映像，请使用 [list_supported_images](https://docs.microsoft.com/python/api/azure-batch/azure.batch.operations.AccountOperations#list-supported-images-account-list-supported-images-options-none--custom-headers-none--raw-false----operation-config-) (Python)、[ListSupportedImages](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages) (Batch .NET) 或其他语言 SDK 的相应 API。
+
+<!--MOONCAKE: CORRECT ON [ListSupportedImages]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages-->
 
 ### <a name="node-agent-sku"></a>节点代理 SKU
 
@@ -49,12 +54,6 @@ Batch 服务使用[虚拟机规模集](../virtual-machine-scale-sets/overview.md
 - batch.node.ubuntu 18.04
 - batch.node.centos 7
 - batch.node.windows amd64
-
-### <a name="list-of-virtual-machine-images"></a>虚拟机映像列表
-
-并非所有市场映像都与当前可用的 Batch 节点代理兼容。 若要列出 Batch 服务及其相应节点代理 SKU 支持的所有市场虚拟机映像，请使用 [list_supported_images](https://docs.microsoft.com/python/api/azure-batch/azure.batch.operations.AccountOperations#list-supported-images-account-list-supported-images-options-none--custom-headers-none--raw-false----operation-config-) (Python)、[ListSupportedImages](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages) (Batch .NET) 或其他语言 SDK 的相应 API。
-
-<!--MOONCAKE: CORRECT ON [ListSupportedImages]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages-->
 
 ## <a name="create-a-linux-pool-batch-python"></a>创建 Linux 池：Batch Python
 

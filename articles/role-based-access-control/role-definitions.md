@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/29/2020
+ms.date: 01/26/2021
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: a74c97ae8df84853314d0f7b7b03153207e07830
-ms.sourcegitcommit: a37f80e7abcf3e42859d6ff73abf566efed783da
+ms.openlocfilehash: 3edd60eebfe7956e2511b341733a0c32fde5f7b8
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829435"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058517"
 ---
 # <a name="understand-azure-role-definitions"></a>了解 Azure 角色定义
 
@@ -291,11 +291,27 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 
 ## <a name="notactions"></a>NotActions
 
-`NotActions` 权限指定从允许的 `Actions` 中排除的管理操作。 如果排除受限制的操作可以更方便地定义希望允许的操作集，则使用 `NotActions` 权限。 通过从 `Actions` 操作中减去 `NotActions` 操作可以计算出角色授予的访问权限（有效权限）。
+`NotActions` 权限指定从允许的包含通配符 (`*`) 的 `Actions` 中减去或排除的管理操作。 如果通过从包含通配符 (`*`) 的 `Actions` 中减去操作可更方便地定义要允许的操作集，请使用 `NotActions` 权限。 通过从 `Actions` 操作中减去 `NotActions` 操作可以计算出角色授予的访问权限（有效权限）。
+
+`Actions - NotActions = Effective management permissions`
+
+下表显示了 [Microsoft.CostManagement](resource-provider-operations.md#microsoftcostmanagement) 通配符操作的有效权限的两个示例：
+
+> [!div class="mx-tableFixed"]
+> | Actions | NotActions | 有效管理权限 |
+> | --- | --- | --- |
+> | `Microsoft.CostManagement/exports/*` | *无* | `Microsoft.CostManagement/exports/action`</br>`Microsoft.CostManagement/exports/read`</br>`Microsoft.CostManagement/exports/write`</br>`Microsoft.CostManagement/exports/delete`</br>`Microsoft.CostManagement/exports/run/action` |
+> | `Microsoft.CostManagement/exports/*` | `Microsoft.CostManagement/exports/delete` | `Microsoft.CostManagement/exports/action`</br>`Microsoft.CostManagement/exports/read`</br>`Microsoft.CostManagement/exports/write`</br>`Microsoft.CostManagement/exports/run/action` |
 
 > [!NOTE]
 > 如果用户分配到的一个角色排除了 `NotActions` 中的一个操作，而分配到的第二个角色向同一操作授予访问权限，则用户可以执行该操作。 `NotActions` 不是拒绝规则 - 它只是一个简便方法，可在需要排除特定操作时创建一组允许的操作。
 >
+
+### <a name="differences-between-notactions-and-deny-assignments"></a>NotActions 和拒绝分配之间的区别
+
+`NotActions` 和拒绝分配并不相同，并且具有不同的用途。 `NotActions` 是从通配符 (`*`) 操作中减去特定操作的一种简便方法。
+
+即使角色分配向用户授予了访问权限，拒绝分配也会阻止用户执行特定的操作。 有关详细信息，请参阅[了解 Azure 拒绝分配](deny-assignments.md)。
 
 ## <a name="dataactions"></a>DataActions
 
@@ -311,7 +327,17 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 
 ## <a name="notdataactions"></a>NotDataActions
 
-`NotDataActions` 权限指定从允许的 `DataActions` 中排除的数据操作。 通过从 `DataActions` 操作中减去 `NotDataActions` 操作可以计算出角色授予的访问权限（有效权限）。 每个资源提供程序提供相应的一组 API 用于实现数据操作。
+`NotDataActions` 权限指定从允许的包含通配符 (`*`) 的 `DataActions` 中减去或排除的数据操作。 如果通过从包含通配符 (`*`) 的 `DataActions` 中减去操作可更方便地定义要允许的操作集，请使用 `NotDataActions` 权限。 通过从 `DataActions` 操作中减去 `NotDataActions` 操作可以计算出角色授予的访问权限（有效权限）。 每个资源提供程序提供相应的一组 API 用于实现数据操作。
+
+`DataActions - NotDataActions = Effective data permissions`
+
+下表显示了 [Microsoft.Storage](resource-provider-operations.md#microsoftstorage) 通配符操作的有效权限的两个示例：
+
+> [!div class="mx-tableFixed"]
+> | DataActions | NotDataActions | 有效数据权限 |
+> | --- | --- | --- |
+> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/*` | *无* | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/read`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/write`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action` |
+> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/*` | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete`</br> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/read`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/write`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action` |
 
 > [!NOTE]
 > 如果用户分配到的一个角色排除了 `NotDataActions` 中的某个数据操作，而分配到的第二个角色向同一数据操作授予访问权限，则该用户可以执行该数据操作。 `NotDataActions` 不是拒绝规则 - 它只是一个简便方法，可在需要排除特定数据操作时创建一组允许的数据操作。
@@ -340,4 +366,3 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 * [Azure 内置角色](built-in-roles.md)
 * [Azure 自定义角色](custom-roles.md)
 * [Azure 资源提供程序操作](resource-provider-operations.md)
-

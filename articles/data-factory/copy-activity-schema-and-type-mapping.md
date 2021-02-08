@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 origin.date: 06/22/2020
-ms.date: 01/25/2021
+ms.date: 02/01/2021
 ms.author: v-jay
-ms.openlocfilehash: 88aaedc8f0411f8927c65d2e006af23ca25b4853
-ms.sourcegitcommit: e1edc6ef84dbbda1da4e0a42efa3fd62eee033d1
+ms.openlocfilehash: 6af39a09df8c5d7e3ae59481c77ebd441672c7c2
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541867"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059649"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>复制活动中的架构和数据类型映射
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -142,6 +142,8 @@ ms.locfileid: "98541867"
 - 从对象和数组中提取数据。
 - 从数组中交叉应用具有相同模式的多个对象，在这种情况下，可以将一个 JSON 对象转换为表格结果中的多个记录。
 
+对于更高级的分层式到表格式的转换，可以使用[数据流](concepts-data-flow-overview.md)。 
+
 例如，如果源 MongoDB 文档的内容如下：
 
 ```json
@@ -184,6 +186,9 @@ ms.locfileid: "98541867"
 2. 选择要从中遍历和提取数据的数组。 它将自动填充为“集合引用”。 请注意，此类操作只支持单个数组。
 
 3. 将所需字段映射到接收器。 数据工厂自动确定分层端对应的 JSON 路径。
+
+> [!NOTE]
+> 对于标记为集合引用的数组为空且选中此复选框的记录，将跳过整个记录。
 
 ![使用 UI 从分层映射到表格](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-ui.png)
 
@@ -239,6 +244,8 @@ ms.locfileid: "98541867"
 将数据从表格源复制到分层接收器时，不支持写入到对象内的数组。
 
 将数据从分层源复制到分层接收器时，还可以通过选择对象/数组并映射到接收器而不触及内部字段，来保留整个层的分层结构。
+
+对于更高级的数据重塑转换，可以使用[数据流](concepts-data-flow-overview.md)。 
 
 ### <a name="parameterize-mapping"></a>参数化映射
 

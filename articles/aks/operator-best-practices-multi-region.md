@@ -5,17 +5,17 @@ services: container-service
 ms.topic: conceptual
 origin.date: 11/28/2018
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 01/25/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2d7d84e3c44ca8a8ec55547df4a43cdbcf2a7937
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 7dcfbe192d7b1e7837cda18643673b7e17b5f18c
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022318"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751369"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中实现业务连续性和灾难恢复的最佳做法
 
@@ -61,7 +61,7 @@ AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部�
 有关如何设置终结点和路由的信息，请参阅[使用流量管理器配置地理流量路由方法](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)。
 
 <!--Not Available on Preview content ### Application routing with Azure Front Door Service-->
-<!--Not Avaialble on [Azure Front Door (currently in preview)](/frontdoor/front-door-overview)-->
+<!--NOT AVAILABLE ON [Azure Front Door Service](../frontdoor/front-door-overview.md)-->
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>使用虚拟网络对等互连将区域互连
 
@@ -117,14 +117,13 @@ AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部�
 
 使用的复制策略取决于存储解决方案。 常见的存储解决方案（例如 [Gluster](https://docs.gluster.org/en/latest/Administrator-Guide/Geo-Replication/)、[Ceph](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/)、[Rook](https://rook.io/docs/rook/v1.2/ceph-disaster-recovery.html) 和 [Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps)）在灾难恢复和复制方面都提供了自身的指导。
 
+<!--CORRECT ON [Gluster](https://docs.gluster.org/en/latest/Administrator-Guide/Geo-Replication/)-->
+
 典型的策略是提供一个通用存储点，应用程序可在其中写入其数据。 然后跨区域复制此数据，在本地访问。
 
 :::image type="content" source="media/operator-best-practices-bc-dr/aks-infra-based-async-repl.png" alt-text="基于基础结构的异步复制":::
 
-如果使用 Azure 托管磁盘，可以选择如下所述的复制和 DR 解决方案：
-
-* [Azure 上的 Velero](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
-* [Azure 备份](../backup/backup-overview.md)
+如果使用 Azure 托管磁盘，则可以使用几个选项来处理复制和灾难恢复。 [Azure 上的 Velero][velero] 和 [Kasten][kasten] 是 Kubernetes 的本机备份解决方案，但不受支持。
 
 ### <a name="application-based-asynchronous-replication"></a>基于应用程序的异步复制
 
@@ -143,5 +142,8 @@ AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部�
 
 [aks-best-practices-scheduler]: operator-best-practices-scheduler.md
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
+
+[velero]: https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md
+[kasten]: https://www.kasten.io/
 
 <!-- Update_Description: update meta properties, wording update, update link -->

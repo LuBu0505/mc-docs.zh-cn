@@ -1,19 +1,19 @@
 ---
-title: 模板规格概述
+title: 创建和部署模板规格
 description: 介绍如何创建模板规格并与组织中的其他用户共享。
 ms.topic: conceptual
-origin.date: 10/02/2020
-ms.date: 10/29/2020
-ms.testscope: yes|no
-ms.testdate: 08/24/2020null
+origin.date: 01/14/2021
+ms.date: 02/01/2021
+ms.testscope: yes
+ms.testdate: 08/24/2020
 ms.author: v-yeche
 author: rockboyfor
-ms.openlocfilehash: c3cb527f7a05ef0f2de79a07b6c24489de212b1e
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: bb8c18e4b38083c2ecea3bba6e41a6efa91d6e06
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021858"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063522"
 ---
 <!--Verified successfully-->
 <!--REASON: IS NOT PRIVATE PREVIEW TILL ON 01/06/2021-->
@@ -348,4 +348,4 @@ az deployment group create \
 
 * 有关将模板规格部署为链接模板的详细信息，请参阅[教程：将模板规格部署为链接模板](template-specs-deploy-linked-template.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

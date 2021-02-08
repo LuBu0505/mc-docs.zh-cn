@@ -11,12 +11,12 @@ ms.date: 01/18/2021
 ms.testscope: no
 ms.testdate: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: aff4cf2152ec903da4e7161fcda17601e021d534
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 6871072f626f977e35231176bf3b87f3d9e562a6
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230053"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063646"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -129,8 +129,10 @@ ms.locfileid: "98230053"
 | Foreach 数组项 | 100,000 | 此限制描述“for each”循环可以处理的最大数组项数。 <p><p>可以使用[查询操作](logic-apps-perform-data-operations.md#filter-array-action)筛选更大数组。 |
 | Foreach 并发 | 并发关闭：20 <p><p>并发启用： <p><p>- 默认值：20 <br />- 最小值：1 <br />- 最大值：50 | 此限制是可同时或并行运行的最大“for each”循环迭代数。 <p><p>若要更改此限制，请参阅[更改“for each”并发限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency)或[按顺序运行“for each”循环](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)。 |
 | Until 迭代 | - 默认值：60 <br />- 最小值：1 <br />- 最大值：5,000 | 逻辑应用运行期间“Until”循环可以具有的最大周期数。 <p><p>若要更改此限制，请在“Until”循环形状中选择“更改限制”，并指定 Count 属性的值 。 |
-| Until 超时 | - 默认值：PT1H（1 小时） | “Until”循环在退出前可以运行的最长时间，以 [ISO 8601 格式] 指定（ https://en.wikipedia.org （AZURE 中国云上不提供此网站）/wiki/ISO_8601）。 将针对每个循环周期评估超时值。 如果循环中的任何操作花费的时间超过超时限制，当前循环便不会停止。 但是，由于不满足限制条件，因此下一个循环不会启动。 <p><p>若要更改此限制，请在“Until”循环形状中选择“更改限制”，并指定 Timeout 属性的值 。 |
+| Until 超时 | - 默认值：PT1H（1 小时） | “Until”循环在退出前可以运行的最长时间，以 ISO 8601 格式指定。 将针对每个循环周期评估超时值。 如果循环中的任何操作花费的时间超过超时限制，当前循环便不会停止。 但是，由于不满足限制条件，因此下一个循环不会启动。 <p><p>若要更改此限制，请在“Until”循环形状中选择“更改限制”，并指定 Timeout 属性的值 。 |
 ||||
+
+<!--Not Available on [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601)-->
 
 ### <a name="concurrency-and-debatching"></a>并发和取消批处理
 

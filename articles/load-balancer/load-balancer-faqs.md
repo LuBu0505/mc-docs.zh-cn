@@ -6,14 +6,14 @@ author: WenJason
 ms.service: load-balancer
 ms.topic: article
 origin.date: 04/22/2020
-ms.date: 12/14/2020
+ms.date: 02/01/2021
 ms.author: v-jay
-ms.openlocfilehash: 4adfdc2fdf6b64bfc1a082f825eb5ad0a49e0e21
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: be16f1efe695be88a16185ae2945caadbbb2f41d
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97104688"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059921"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>负载均衡器常见问题解答
 
@@ -37,7 +37,7 @@ NAT 规则用于指定要将流量路由到其中的后端资源。 例如，将
 ## <a name="what-is-ip-1686312916"></a>IP 168.63.129.16 是什么？
 标记为 Azure 基础结构负载均衡器的主机的虚拟 IP 地址，从其进行 Azure 运行状况探测。 配置后端实例时，这些实例必须允许来自此 IP 地址的流量才能成功响应运行状况探测。 此规则不与负载均衡器前端的访问交互。 如果不使用 Azure 负载均衡器，则可重写此规则。 可在[此处](../virtual-network/service-tags-overview.md#available-service-tags)详细了解服务标记。
 
-## <a name="can-i-use-global-vnet-peering-with-basic-load-balancer"></a>是否可以将全局 VNET 对等互连用于基本负载均衡器？
+## <a name="can-i-use-global-vnet-peering-with-basic-load-balancer"></a>是否可以将全局 VNet 对等互连用于基本负载均衡器？
 否。 基本负载均衡器不支持全局 VNET 对等互连。 可改用标准负载均衡器。 有关无缝升级，请参阅[从“基本”升级到“标准”](upgrade-basic-standard.md)一文。
 
 ## <a name="how-can-i-discover-the-public-ip-that-an-azure-vm-uses"></a>如何发现 Azure VM 使用的公共 IP？
@@ -46,6 +46,9 @@ NAT 规则用于指定要将流量路由到其中的后端资源。 例如，将
 使用 nslookup 命令，可以将名称 myip.opendns.com 的 DNS 查询发送到 OpenDNS 解析程序。 该服务返回用于发送此查询的源 IP 地址。 在 VM 中运行以下查询时，返回的是用于该 VM 的公共 IP。
 
  ```nslookup myip.opendns.com resolver1.opendns.com```
+ 
+## <a name="can-i-add-a-vm-from-the-same-availability-set-to-different-backend-pools-of-a-load-balancer"></a>是否可以将同一可用性集中的 VM 添加到负载均衡器的不同后端池？
+不，这不可能。
 
 ## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>如何连接到同一区域中的 Azure 存储？
 通过上述方案进行出站连接时不一定要连接到与 VM 位于同一区域的存储。 如果不想这样做，请按上述说明使用网络安全组 (NSG)。 若要连接到其他区域的存储，则需要使用出站连接。 请注意，当从同一区域中的虚拟机连接到存储时，存储诊断日志中的源 IP 地址将是内部提供程序地址，而不是虚拟机的公共 IP 地址。 如果要将对存储帐户的访问限制至同一区域中一个或多个虚拟网络子网中的 VM，请在配置存储帐户防火墙时使用[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)，而不是公共 IP 地址。 配置了服务终结点后，将在存储诊断日志中看到虚拟网络专用 IP 地址，而不是内部提供程序地址。

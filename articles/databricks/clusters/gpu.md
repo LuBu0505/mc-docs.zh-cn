@@ -8,18 +8,18 @@ author: mssaperla
 ms.date: 09/11/2020
 title: 启用了 GPU 的群集 - Azure Databricks
 description: 了解启用了 GPU 的 Azure Databricks 群集、何时使用它们、它们的要求以及如何创建它们。
-ms.openlocfilehash: 1111a14d539ce3c6fe550893f453c27c803641af
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: 41928f18a7becd4e64f8d39ac55692868dd3ac11
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121797"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059971"
 ---
 # <a name="gpu-enabled-clusters"></a><a id="gpu-clusters"> </a><a id="gpu-enabled-clusters"> </a>启用了 GPU 的群集
 
 > [!NOTE]
 >
-> 某些启用了 GPU 的实例类型为 **Beta 版本** 。当你在群集创建过程中选择驱动程序和工作器类型时，这些类型将在下拉列表中如此标记。
+> 某些启用了 GPU 的实例类型为 **Beta 版本**。当你在群集创建过程中选择驱动程序和工作器类型时，这些类型将在下拉列表中如此标记。
 
 ## <a name="overview"></a>概述
 
@@ -37,7 +37,7 @@ Azure Databricks 支持通过图形处理单元 (GPU) 加速的群集。
 * **工作器类型** 和 **驱动程序类型** 必须为 GPU 实例类型。
 * 对于没有 Spark 的单计算机工作流，可以将工作器数目设置为零。
 
-Azure Databricks 支持 NC 实例类型系列： **NC12** 和 **NC24** 以及 NCv3 实例类型系列： **NC6s_v3** 、 **NC12s_v3** 和 **NC24s_v3** 。 有关支持的 GPU 实例类型及其可用性区域的最新列表，请参阅 [Azure Databricks 定价](https://www.azure.cn/pricing/details/databricks/#instances)。
+Azure Databricks 支持 NC 实例类型系列：**NC12** 和 **NC24** 以及 NCv3 实例类型系列：**NC6s_v3**、**NC12s_v3** 和 **NC24s_v3**。 有关支持的 GPU 实例类型及其可用性区域的最新列表，请参阅 [Azure Databricks 定价](https://www.azure.cn/pricing/details/databricks/#instances)。
 你的 Azure Databricks 部署必须位于受支持的区域内，才能启动启用了 GPU 的群集。
 
 ## <a name="gpu-scheduling"></a>GPU 调度
@@ -65,7 +65,7 @@ Azure Databricks 在 Spark 驱动程序和工作器实例上安装使用 GPU 所
 * [cuDNN](https://developer.nvidia.com/cudnn)：NVIDIA CUDA 深度神经网络库。
 * [NCCL](https://developer.nvidia.com/nccl)：NVIDIA 集体通信库。
 
-包含的 NVIDIA 驱动程序的版本为 440.64。
+包含的 NVIDIA 驱动程序的版本为 450.80.02。
 有关所包含的库的版本，请参阅你使用的特定 Databricks Runtime 版本的[发行说明](../release-notes/runtime/index.md#runtime-release-notes)。
 
 > [!NOTE]
@@ -82,7 +82,9 @@ Azure Databricks 在 Spark 驱动程序和工作器实例上安装使用 GPU 所
 >
 > 此功能目前以[公共预览版](../release-notes/release-types.md)提供。
 
-[Databricks 容器服务](custom-containers.md)可在具有 GPU 的群集上用来通过自定义库创建可移植的深度学习环境。 有关说明，请参阅 [Databricks 容器服务的文档](custom-containers.md)。
+可以在具有 GPU 的群集上使用 [Databricks 容器服务](custom-containers.md)来通过自定义库创建可移植的深度学习环境。 有关说明，请参阅[使用 Databricks 容器服务自定义容器](custom-containers.md)。
+
+若要为 GPU 群集创建自定义映像，必须选择标准运行时版本，而不是 Databricks Runtime ML for GPU。 选择“使用自己的 Docker 容器”时，可以选择具有标准运行时版本的 GPU 群集。 GPU 群集的自定义映像基于[正式版 CUDA 容器](https://hub.docker.com/r/nvidia/cuda/)，这与 Databricks Runtime ML for GPU 不同。
 
 Databricks Runtime [Docker Hub](https://hub.docker.com/u/databricksruntime) 包含具有 GPU 功能的示例基础映像。 用于生成这些映像的 Dockerfile 位于[示例容器 GitHub 存储库](https://github.com/databricks/containers/tree/master/ubuntu/gpu)，其中还详细介绍了示例图像提供的内容以及如何对其进行自定义。
 

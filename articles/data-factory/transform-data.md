@@ -10,17 +10,18 @@ ms.author: v-jay
 manager: digimobile
 ms.custom: seo-lt-2019
 origin.date: 07/31/2018
-ms.date: 01/04/2021
-ms.openlocfilehash: d1446db2f2c04bcb9f6127ed4197a67477166fa2
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.date: 02/01/2021
+ms.openlocfilehash: 2fa497c4c85417d4fc25c178a68a52bc60cb88a3
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829681"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059885"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>在 Azure 数据工厂中转换数据
 
 > [!div class="op_single_selector"]
+> * [映射数据流](data-flow-create.md)
 > * [Hive](transform-data-using-hadoop-hive.md)  
 > * [Pig](transform-data-using-hadoop-pig.md)  
 > * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
@@ -39,9 +40,15 @@ ms.locfileid: "97829681"
 
 数据工厂支持以下数据转换活动，这些活动可单独添加到[管道](concepts-pipelines-activities.md)，还可与其他活动关联在一起。
 
+## <a name="transform-natively-in-azure-data-factory-with-data-flows"></a>使用数据流在 Azure 数据工厂中进行本机转换
+
+### <a name="mapping-data-flows"></a>映射数据流
+
+映射数据流是 Azure 数据工厂中以可视方式设计的数据转换。 使用数据流，数据工程师可以开发图形化数据转换逻辑，无需编写代码。 生成的数据流将作为使用横向扩展 Spark 群集的 Azure 数据工厂管道中的活动执行。 可以通过现有的数据工厂计划、控制、流和监视功能，将数据流活动操作化。 有关详细信息，请参阅[映射数据流](concepts-data-flow-overview.md)。
+
 ## <a name="external-transformations"></a>外部转换
 
-可以手动编写代码转换并自行管理外部计算环境。
+（可选）可以手动编写代码转换并自行管理外部计算环境。
 
 ### <a name="hdinsight-hive-activity"></a>HDInsight Hive 活动
 数据工厂管道中的 HDInsight Hive 活动会在自己的或基于 Windows/Linux 的按需 HDInsight 群集上执行 Hive 查询。 有关此活动的详细信息，请参阅 [Hive 活动](transform-data-using-hadoop-hive.md)一文。 

@@ -2,18 +2,18 @@
 title: 将资源部署到管理组
 description: 介绍如何通过 Azure 资源管理器模板在管理组范围部署资源。
 ms.topic: conceptual
-origin.date: 11/24/2020
+origin.date: 01/13/2021
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 08/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8c06de11c56b034903b898ff4240bcb5b32ec90e
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: d0608184d65bd84c7021f5a41ce38a6bfc459c07
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97003744"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063524"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>使用 ARM 模板进行管理组部署
 
@@ -51,6 +51,8 @@ ms.locfileid: "97003744"
 若要管理资源，请使用：
 
 * tags
+
+管理组是租户级资源。 但你可以将新管理组的范围设置为租户，从而在管理组部署中创建管理组。 请参阅[管理组](#management-group)。
 
 <!--Mooncake Customization on ## Supported resources-->
 
@@ -114,7 +116,7 @@ New-AzManagementGroupDeployment `
 * [使用 ARM 模板和 Azure 资源管理器 REST API 部署资源](deploy-rest.md)
 * [使用部署按钮从 GitHub 存储库部署模板](deploy-to-azure-button.md)
     
-    <!--Not Available on * [Deploy ARM templates from local Shell](deploy-cloud-shell.md)-->
+    <!--NOT AVAILABLE ON * [Deploy ARM templates from local Shell](deploy-cloud-shell.md)-->
 
 ## <a name="deployment-location-and-name"></a>部署位置和名称
 
@@ -133,7 +135,8 @@ New-AzManagementGroupDeployment `
 * 管理组中的订阅
 * 管理组中的资源组
 * 资源组的租户
-* [扩展资源](scope-extension-resources.md)可应用于资源
+
+可以将[扩展资源](scope-extension-resources.md)的范围设置为与部署目标不同的范围。
 
 部署模板的用户必须有权访问指定的作用域。
 
@@ -261,9 +264,9 @@ New-AzManagementGroupDeployment `
 
 ### <a name="scope-to-tenant"></a>将范围设定为租户
 
-可以通过将 `scope` 设置为 `/`，在租户中创建资源。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
+可通过将 `scope` 设置为 `/`，在租户中创建资源。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
 
-可以使用设置了 `scope` 和 `location` 的嵌套部署。
+可使用设置了 `scope` 和 `location` 的嵌套部署。
 
 ```json
 {
@@ -288,7 +291,13 @@ New-AzManagementGroupDeployment `
 }
 ```
 
-或者，可以将某些资源类型（如管理组）的 scope 设置为 `/`。
+或者，可将某些资源类型（如管理组）的范围设置为 `/`。 下一部分将介绍如何创建新的管理组。
+
+## <a name="management-group"></a>管理组
+
+若要在管理组部署中创建管理组，则必须将管理组的范围设置为 `/`。
+
+下面的示例在根管理组中创建了一个新的管理组。
 
 ```json
 {
@@ -308,6 +317,46 @@ New-AzManagementGroupDeployment `
             "scope": "/",
             "location": "chinaeast",
             "properties": {}
+        }
+    ],
+    "outputs": {
+        "output": {
+            "type": "string",
+            "value": "[parameters('mgName')]"
+        }
+    }
+}
+```
+
+下一个示例将在指定为父级的管理组中创建一个新管理组。 请注意，范围设置为 `/`。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "mgName": {
+            "type": "string",
+            "defaultValue": "[concat('mg-', uniqueString(newGuid()))]"
+        },
+        "parentMG": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "name": "[parameters('mgName')]",
+            "type": "Microsoft.Management/managementGroups",
+            "apiVersion": "2020-05-01",
+            "scope": "/",
+            "location": "chinaeast",
+            "properties": {
+                "details": {
+                    "parent": {
+                        "id": "[tenantResourceId('Microsoft.Management/managementGroups', parameters('parentMG'))]"
+                    }
+                }
+            }
         }
     ],
     "outputs": {

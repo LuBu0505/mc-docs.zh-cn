@@ -4,15 +4,15 @@ description: Azure 安全基准 V2 日志记录和威胁检测
 author: Johnnytechn
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 01/19/2021
 ms.author: v-johya
 ms.custom: security-benchmark
-ms.openlocfilehash: 882ad39fc7e2181a0136fe8b0b6c11bee62dc8d7
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 8800ea1b84eb55b637e1e4fb97b7ead01116bf9a
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747093"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751055"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>安全控制 V2：日志记录和威胁检测
 
@@ -20,7 +20,7 @@ ms.locfileid: "96747093"
 
 ## <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1：为 Azure 资源启用威胁检测
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | LT-1 | 6.7 | AU-3、AU-6、AU-12、SI-4 |
 
@@ -30,6 +30,7 @@ ms.locfileid: "96747093"
 
 - [Azure 安全中心的威胁防护](../../security-center/azure-defender.md)
 
+- [Azure 安全中心安全警报参考指南](../../security-center/alerts-reference.md)
 
 **责任**：客户
 
@@ -47,7 +48,7 @@ ms.locfileid: "96747093"
 
 ## <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2：启用 Azure 标识和访问管理的威胁检测
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | LT-2 | 6.8 | AU-3、AU-6、AU-12、SI-4 |
 
@@ -82,7 +83,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 ## <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3：为 Azure 网络活动启用日志记录
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | LT-3 | 9.3、12.2、12.5、12.8 | AU-3、AU-6、AU-12、SI-4 |
 
@@ -112,7 +113,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 ## <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4：为 Azure 资源启用日志记录
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | LT-4 | 6.2、6.3、8.8 | AU-3、AU-12 |
 
@@ -138,7 +139,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 ## <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5：集中管理和分析安全日志
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | LT-5 | 6.5、6.6 | AU-3、SI-4 |
 
@@ -162,7 +163,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 ## <a name="lt-6-configure-log-storage-retention"></a>LT-6：配置日志存储保留期
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | LT-6 | 6.4 | AU-3、AU-11 |
 
@@ -190,7 +191,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 ## <a name="lt-7-use-approved-time-synchronization-sources"></a>LT-7：使用批准的时间同步源
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | LT-7 | 6.1 | AU-8 |
 

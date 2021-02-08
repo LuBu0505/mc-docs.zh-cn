@@ -2,21 +2,22 @@
 title: Azure AD 域服务的具有作用域的同步 | Microsoft Docs
 description: 了解如何使用 Azure 门户来配置从 Azure AD 到 Azure Active Directory 域服务托管域的区分范围的同步
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 9389cf0f-0036-4b17-95da-80838edd2225
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 01/26/2021
 ms.author: v-junlch
-ms.openlocfilehash: da1a68feb283b11726e593546a29d98cf52d36a7
-ms.sourcegitcommit: f436acd1e2a0108918a6d2ee9a1aac88827d6e37
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e944e8be96445451e6d9472d4f4d590cca9d741f
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508755"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058612"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-the-azure-portal"></a>使用 Azure 门户配置从 Azure AD 到 Azure Active Directory 域服务的区分范围的同步
 
@@ -42,15 +43,14 @@ ms.locfileid: "96508755"
 
 默认情况下，Azure AD 目录中的所有用户和组都同步到托管域。 如果只有几个用户需要访问托管域，则可以仅同步这些用户帐户。 此具有作用域的同步基于组。 配置基于组的具有作用域的同步时，只有属于指定组的用户帐户才会同步到托管域。 不同步嵌套组，只同步所选的特定组。
 
-可以在创建托管域时或完成部署后更改同步范围。 现在还可以更改现有托管域上同步的范围，而无需进行重新创建。
+可以在创建托管域之前或之后更改同步范围。 同步范围由应用程序标识符为 2565bd9d-da50-47d4-8b85-4c97f669dc36 的服务主体定义。 为了防止范围丢失，请不要删除或更改服务主体。 如果意外删除了服务主体，则无法恢复同步范围。 
+
+如果更改同步范围，请记住以下注意事项：
+
+- 进行完全同步。
+- 托管域中不再需要的对象会被删除。 托管域中会新建对象。
 
 若要详细了解同步过程，请参阅[了解 Azure AD 域服务中的同步][concepts-sync]。
-
-> [!WARNING]
-> 更改同步作用域会导致托管域重新同步所有数据。 请注意以下事项：
->
->  * 如果你更改托管域的同步范围，便会发生完全重新同步。
->  * 托管域中不再需要的对象会被删除。 托管域中会新建对象。
 
 ## <a name="enable-scoped-synchronization"></a>启用区分范围的同步
 

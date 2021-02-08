@@ -12,14 +12,14 @@ ms.workload: ''
 ms.topic: conceptual
 ms.custom: ''
 origin.date: 08/31/2020
-ms.date: 11/30/2020
+ms.date: 02/01/2021
 ms.author: v-jay
-ms.openlocfilehash: 507aea03f6d1c9cd7af9da7bb23acb8d511e8eaa
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: a3f8920e9e2e383c57996d8010590a9e2c4b9559
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300737"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058638"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>媒体服务和视频点播 (VOD) 的高可用性
 
@@ -39,7 +39,7 @@ Azure 体系结构文档中有一个名为 Geodes 的高可用性设计模式。
 
 | 图标 | “属性” | 说明 |
 | :--: | ---- | ----------- |
-|![这是媒体服务帐户图标。](media/media-services-high-availability-encoding/azure-media-services.svg)| 媒体服务帐户 | **描述：**<br>可以从媒体服务帐户着手，对 Azure 中的媒体内容进行管理、加密、编码和流式处理。 它与某个 Azure 存储帐户资源相关联。 该帐户和所有关联的存储必须位于同一 Azure 订阅中。<br><br>**VOD 使用：**<br>可以使用这些服务对视频和音频资产进行编码和传送操作。  为实现高可用性，你需要设置至少两个媒体服务帐户，每个帐户在不同的区域中。 [详细了解 Azure 媒体服务](media-services-overview.md)。 |
+|![这是媒体服务帐户图标。](media/media-services-high-availability-encoding/azure-media-services.svg)| 媒体服务帐户 | **描述：**<br>可以从媒体服务帐户着手，对 Azure 中的媒体内容进行管理、加密、编码、分析和流式处理。 它与某个 Azure 存储帐户资源相关联。 该帐户和所有关联的存储必须位于同一 Azure 订阅中。<br><br>**VOD 使用：**<br>可以使用这些服务对视频和音频资产进行编码和传送操作。  为实现高可用性，你需要设置至少两个媒体服务帐户，每个帐户在不同的区域中。 [详细了解 Azure 媒体服务](media-services-overview.md)。 |
 |![这是存储帐户图标。](media/media-services-high-availability-encoding/storage-account.svg)| 存储帐户 | **描述：**<br>Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列、表和磁盘。 可以通过 HTTP 或 HTTPS 从世界上的任何位置访问数据。<br><br>每个区域中的每个媒体服务帐户在同一区域中都有一个存储帐户。<br><br>**VOD 使用：**<br>可以存储用于 VOD 处理和流式处理的输入和输出数据。 [详细了解 Azure 存储](../../storage/common/storage-introduction.md)。 |
 |![这是 Azure 存储队列图标。](media/media-services-high-availability-encoding/storage-account-queue.svg)| Azure 存储队列 | **描述：**<br>Azure 队列存储是一项可存储大量消息的服务，用户可以通过经验证的呼叫，使用 HTTP 或 HTTPS 从世界任何地方访问这些消息。<br><br>**VOD 使用：**<br>队列可用来发送和接收消息，以协调不同模块中的活动。 该示例使用 Azure 存储队列，但 Azure 提供其他类型的队列（例如服务总线和 Service Fabric Reliable Queues），它们可能更适合你的需求。 [详细了解 Azure 队列](../../storage/queues/storage-queues-introduction.md)。 |
 |![这是 Azure Cosmos DB 图标。](media/media-services-high-availability-encoding/azure-cosmos-db.svg)| Azure Cosmos DB  | **描述：**<br>Azure Cosmos DB 是 Azure 的全球分布式多模型数据库服务，可跨任意数量的 Azure 区域独立地缩放吞吐量和存储。<br><br>**VOD 使用：**<br>可以使用表来存储作业输出状态记录并跟踪每个媒体服务实例的运行状况状态。 还可以跟踪/记录对媒体服务 API 的每个调用的状态。 [详细了解 Azure Cosmos DB](../../cosmos-db/introduction.md)。  |

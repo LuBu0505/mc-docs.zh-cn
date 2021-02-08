@@ -9,14 +9,14 @@ ms.custom: seo-lt-2019, OKR 11/2019, sqldbrb=1
 author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein,vanto
-origin.date: 01/14/2020
-ms.date: 12/14/2020
-ms.openlocfilehash: 82189d09b519e2f7e3b3adc0b5206e9bf158c115
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+origin.date: 01/14/2021
+ms.date: 02/01/2021
+ms.openlocfilehash: 4b35d28988e61b12e727ba4e68d8cf097dec17bb
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830109"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058880"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>排查 Azure SQL 数据库和 Azure SQL 托管实例的连接问题和其他问题
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -43,7 +43,7 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 ### <a name="steps-to-resolve-transient-connectivity-issues"></a>解决暂时性连接问题的步骤
 
 1. 检查 [Azure 服务仪表板](https://status.azure.com/zh-cn/status)在由应用程序报告错误期间是否发生任何已知的服务中断。
-2. 连接到云服务的应用程序（如 Azure SQL 数据库）应期望定期重新配置事件并实施重试逻辑来处理这些错误，而不是将它们作为应用程序错误展现给用户。
+2. 连接到云服务的应用程序（如 Azure SQL 数据库）应预期会有定期重新配置事件并实施重试逻辑来处理这些错误，而不是向用户呈现应用程序错误。
 3. 由于数据库即将达到其资源限制，因此错误看起来像是暂时性连接问题。 请参阅[资源限制](resource-limits-logical-server.md#what-happens-when-database-resource-limits-are-reached)。
 4. 如果连接问题继续存在，或者应用程序发生错误的持续时间超过 60 秒或在特定的一天中看到错误多次发生，请通过在 [Azure 支持](https://support.azure.cn/zh-cn/support/contact/)网站上选择“**获取支持**”提出 Azure 支持请求。
 
@@ -105,49 +105,46 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 服务管理员通常可使用以下步骤添加登录凭据：
 
 1. 使用 SQL Server Management Studio (SSMS) 登录到服务器。
-2. 运行以下 SQL 查询，以检查是否已禁用登录名：
+2. 在 master 数据库中运行以下 SQL 查询，以检查是否已禁用登录名：
 
    ```sql
-   SELECT name, is_disabled FROM sys.sql_logins
+   SELECT name, is_disabled FROM sys.sql_logins;
    ```
 
 3. 如果禁用了相应的名称，请使用以下语句来启用它：
 
    ```sql
-   Alter login <User name> enable
+   ALTER LOGIN <User name> ENABLE;
    ```
 
-4. 如果该 SQL 登录用户名不存在，请执行以下步骤创建该用户名：
-
-   1. 在 SSMS 中，双击“安全性”将其展开。
-   2. 右键单击“登录”，然后选择“新建登录名”。
-   3. 在生成的带占位符的脚本中，编辑并运行以下 SQL 查询：
+4. 如果 SQL 登录用户名不存在，请编辑并运行以下 SQL 查询，以创建新的 SQL 登录名：
 
    ```sql
    CREATE LOGIN <SQL_login_name, sysname, login_name>
-   WITH PASSWORD = '<password, sysname, Change_Password>'
+   WITH PASSWORD = '<password, sysname, Change_Password>';
    GO
    ```
 
-5. 双击“数据库”。
+5. 在“SSMS 对象资源管理器”中，展开“数据库”。
 6. 选择要授予用户权限的数据库。
-7. 双击“安全性”。
-8. 右键单击“用户”，然后选择“新建用户”。
-9. 在生成的带占位符的脚本中，编辑并运行以下 SQL 查询：
+7. 右键单击“安全性”，然后选择“新建”、“用户”  。
+8. 在生成的带占位符的脚本中，编辑并运行以下 SQL 查询：
 
    ```sql
    CREATE USER <user_name, sysname, user_name>
    FOR LOGIN <login_name, sysname, login_name>
-   WITH DEFAULT_SCHEMA = <default_schema, sysname, dbo>
+   WITH DEFAULT_SCHEMA = <default_schema, sysname, dbo>;
    GO
-   -- Add user to the database owner role
 
-   EXEC sp_addrolemember N’db_owner’, N’<user_name, sysname, user_name>’
+   -- Add user to the database owner role
+   EXEC sp_addrolemember N'db_owner', N'<user_name, sysname, user_name>';
    GO
    ```
 
+   也可使用 `sp_addrolemember` 将特定的用户映射到特定的数据库角色。
+
    > [!NOTE]
-   > 也可使用 `sp_addrolemember` 将特定的用户映射到特定的数据库角色。
+   > 在 Azure SQL 数据库中，考虑使用更新的 [ALTER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql) 语法来管理数据库角色成员身份。  
 
 有关详细信息，请参阅[在 Azure SQL 数据库中管理数据库和登录名](./logins-create-manage.md)。
 
@@ -179,8 +176,8 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 
 | 错误代码 | 严重性 | 说明 | 纠正措施 |
 |:--- |:--- |:--- |:--- |
-| 1132 | 17 |弹性池已达到其存储限制。 弹性池的存储使用不能超过 (%d) MB。 到达弹性池的存储限制时，尝试向数据库写入数据。 有关资源限制的信息，请参阅： <br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](resource-limits-vcore-elastic-pools.md)。 <br/> |在可能的情况下，考虑增加弹性池的 DTU 数并/或将存储添加到弹性池，以便提高其存储限制、减少弹性池中各数据库使用的存储，或者从弹性池中删除数据库。 有关弹性池缩放的信息，请参阅[缩放弹性池资源](elastic-pool-scale.md)。|
-| 10929 | 16 |%s 最小保证为 %d，最大限制为 %d，数据库的当前使用率为 %d。 但是，服务器当前太忙，无法支持针对该数据库的数目大于 %d 的请求。 有关资源限制的信息，请参阅： <br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](resource-limits-vcore-elastic-pools.md)。 <br/> 否则，请稍后再试。 每个数据库的 DTU/vCore 最小值；每个数据库的 DTU/vCore 最大值。 弹性池中所有数据库上尝试的并发辅助进程（请求）总数超过池限制。 |在可能的情况下，考虑增加弹性池的 DTU 数或 vCores 数，以便提高其辅助角色限制，或者从弹性池中删除数据库。 |
+| 1132 | 17 |弹性池已达到其存储限制。 弹性池的存储使用不能超过 (%d) MB。 到达弹性池的存储限制时，尝试向数据库写入数据。 有关资源限制的信息，请参阅： <br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](resource-limits-vcore-elastic-pools.md)。 <br/> |在可能的情况下，考虑增加弹性池的 DTU 数并/或将存储添加到弹性池，以便提高其存储限制、减少弹性池中各数据库使用的存储，或者从弹性池中删除数据库。 有关弹性池缩放的信息，请参阅[缩放弹性池资源](elastic-pool-scale.md)。 有关从数据库中删除未使用的空间的详细信息，请参阅[管理 Azure SQL 数据库中数据库的文件空间](file-space-manage.md)。|
+| 10929 | 16 |%s 最小保证为 %d，最大限制为 %d，数据库的当前使用率为 %d。 但是，服务器当前太忙，无法支持针对该数据库的数目大于 %d 的请求。 有关资源限制的信息，请参阅： <br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](resource-limits-vcore-elastic-pools.md)。 <br/> 否则，请稍后重试。 每个数据库的 DTU/vCore 最小值；每个数据库的 DTU/vCore 最大值。 弹性池中所有数据库上尝试的并发辅助进程（请求）总数超过池限制。 |在可能的情况下，考虑增加弹性池的 DTU 数或 vCores 数，以便提高其辅助角色限制，或者从弹性池中删除数据库。 |
 | 40844 | 16 |弹性池中数据库“%ls”（位于服务器“%ls”上）是“%ls”版本的数据库，不能有连续的复制关系。  |空值 |
 | 40857 | 16 |找不到服务器“%ls”的弹性池，弹性池名称:“%ls”。 指定的弹性池在指定的服务器中不存在。 | 提供有效的弹性池名称。 |
 | 40858 | 16 |弹性池“%ls”已存在于服务器“%ls”中。 指定的弹性池已存在于指定的服务器中。 | 提供新弹性池名称。 |
@@ -241,20 +238,20 @@ ClientConnectionId:<Client connection ID>
 
 1. 确保已在应用程序服务器上启用 TCP/IP 作为客户端协议。 有关详细信息，请参阅[配置客户端协议](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-client-protocols)。 在未安装 SQL 工具的应用程序服务器上，运行 cliconfg.exe（SQL Server 客户端网络实用工具）来验证是否已启用 TCP/IP。
 2. 检查应用程序的连接字符串，确保配置正确。 例如，确保连接字符串指定了正确的端口 (1433) 和完全限定的服务器名称。
-请参阅[获取连接信息](/sql-database/sql-database-connect-query-ssms#get-sql-server-connection-information)。
+请参阅[获取连接信息](./connect-query-ssms.md#get-server-connection-information)。
 3. 尝试增大连接超时值。 我们建议至少使用 30 秒连接超时。
-4. 使用 [SQL Server Management Studio (SSMS)](/sql-database/sql-database-connect-query-ssms)、UDL 文件、ping 或 telnet 来测试应用程序服务器与 Azure SQL 数据库之间的连接。 有关详细信息，请参阅[排查连接问题](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)和[连接问题的诊断](/sql-database/sql-database-connectivity-issues#diagnostics)。
+4. 使用 [SQL Server Management Studio (SSMS)](./connect-query-ssms.md)、UDL 文件、ping 或 telnet 来测试应用程序服务器与 Azure SQL 数据库之间的连接。 有关详细信息，请参阅[排查连接问题](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)和[连接问题的诊断](./troubleshoot-common-connectivity-issues.md#diagnostics)。
 
    > [!NOTE]
    > 作为故障排除步骤，还可以在不同的客户端计算机上测试连接。
 
-5. 最佳做法是确保实施重试逻辑。 有关重试逻辑的详细信息，请参阅[排查 SQL 数据库的暂时性故障和连接错误](/sql-database/sql-database-connectivity-issues)。
+5. 最佳做法是确保实施重试逻辑。 有关重试逻辑的详细信息，请参阅[排查 SQL 数据库的暂时性故障和连接错误](./troubleshoot-common-connectivity-issues.md)。
 
 如果这些步骤无法解决问题，请尝试收集更多的数据，然后联系支持人员。 如果应用程序是云服务，请启用日志记录。 此步骤会返回发生失败时的 UTC 时间戳。 此外，SQL 数据库会返回跟踪 ID。 [Azure 客户支持服务](https://support.azure.cn/zh-cn/support/contact/)可使用此信息。
 
-有关如何启用日志记录的详细信息，请参阅[为 Azure 应用服务中的应用启用诊断日志记录](/app-service/troubleshoot-diagnostic-logs)。
+有关如何启用日志记录的详细信息，请参阅[为 Azure 应用服务中的应用启用诊断日志记录](../../app-service/troubleshoot-diagnostic-logs.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure SQL 数据库连接体系结构](/sql-database/sql-database-connectivity-architecture)
-- [Azure SQL 数据库和 Azure Synapse Analytics 网络访问控制](/sql-database/sql-database-networkaccess-overview)
+- [Azure SQL 数据库连接体系结构](./connectivity-architecture.md)
+- [Azure SQL 数据库和 Azure Synapse Analytics 网络访问控制](./network-access-controls-overview.md)

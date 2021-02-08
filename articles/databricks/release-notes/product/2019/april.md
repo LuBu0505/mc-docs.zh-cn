@@ -5,15 +5,15 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 08/13/2020
+ms.date: 11/17/2020
 title: 2019 年 4 月 - Azure Databricks
 description: 新 Azure Databricks 功能和改进的 2019 年 4 月发行说明。
-ms.openlocfilehash: 05727efb921f36837234e5c458772f5b57e4cc21
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 51178609fe9b91242f80e1b39adc41ce516a6274
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329230"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058745"
 ---
 # <a name="april-2019"></a>2019 年 4 月
 
@@ -27,7 +27,7 @@ ms.locfileid: "94329230"
 
 2019 年 4 月 25 日
 
-Azure Databricks 上托管的 MLflow 现已正式发布。 Azure Databricks 上的 MLflow 提供了一个 MLflow 的托管版本，该版本与 Databricks 安全模型和交互式工作区完全集成。 请参阅 [MLflow](../../../applications/mlflow/index.md#mlflow-guide)。
+Azure Databricks 上托管的 MLflow 现已正式发布。 Azure Databricks 上的 MLflow 提供了一个 MLflow 的托管版本，该版本与 Databricks 安全模型和交互式工作区完全集成。 请参阅 [MLflow 指南](../../../applications/mlflow/index.md)。
 
 ## <a name="delta-lake-on-azure-databricks"></a>Azure Databricks 上的 Delta Lake
 
@@ -37,7 +37,7 @@ Databricks 已经开放了 [Delta Lake](https://delta.io) 项目的源代码。 
 
 > [!NOTE]
 >
-> 以前称为 Databricks Delta 的产品现在是 Delta Lake 开放源代码项目，还包括可用于 Azure Databricks 的优化。 请参阅 [Delta Lake](../../../delta/index.md)。
+> 以前称为 Databricks Delta 的产品现在是 Delta Lake 开放源代码项目，还包括可用于 Azure Databricks 的优化。 请参阅 [Delta Lake 和 Delta Engine 指南](../../../delta/index.md)。
 
 ## <a name="mlflow-runs-sidebar"></a>MLflow 运行边栏
 

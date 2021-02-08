@@ -11,12 +11,12 @@ ms.topic: overview
 origin.date: 09/04/2019
 ms.date: 01/13/2021
 ms.author: v-tawe
-ms.openlocfilehash: 5152df914d97da654cd0526359a30dd46c1710e3
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 5d75529c601db1daa25c4fb58b519d44056bc581
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230876"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060133"
 ---
 # <a name="about-azure-key-vault-certificates"></a>关于 Azure Key Vault 证书
 
@@ -120,8 +120,8 @@ Key Vault 证书对象包含与所选证书颁发者提供者进行通信的配�
 
 |提供者名称|**位置**|
 |----------|--------|
-|DigiCert|公有云和 Azure 政府中的所有密钥保管库服务位置均支持|
-|GlobalSign|公有云和 Azure 政府中的所有密钥保管库服务位置均支持|
+|DigiCert|公有云中的所有密钥保管库服务位置均支持 |
+|GlobalSign|公有云中的所有密钥保管库服务位置均支持 |
 
 可以在 Key Vault 中创建的证书颁发者之前，必须成功完成以下必需的步骤 1 和 2。  
 

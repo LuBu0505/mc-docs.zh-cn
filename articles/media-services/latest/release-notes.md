@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: na
 ms.topic: article
 origin.date: 10/21/2020
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.author: v-jay
-ms.openlocfilehash: 230c6b09d41d489bce0377e228e9f017f7f5c045
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 65f0d9c942e513a73388b8cf6b75af74fd267502
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023017"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059351"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -41,7 +41,15 @@ ms.locfileid: "98023017"
 
 ## <a name="october-2020"></a>2020 年 10 月
 
-## <a name="live-events"></a>直播活动
+### <a name="basic-audio-analysis"></a>基本音频分析
+
+音频分析预设现在包含基本模式定价层。 新的基本音频分析器模式提供了一个低成本的选项，用于提取语音口述文本并设置输出隐藏式字幕和字幕的格式。 此模式执行语音转文本听录并生成 VTT 字幕文件。 此模式的输出包括一个见解 JSON 文件，该文件仅包含关键字、听录和计时信息。 此模式不包括自动语言检测和说话人分割聚类。 请参阅[支持的语言](analyzing-video-audio-files-concept.md#built-in-presets)的列表。
+
+使用索引器 v1 的客户应该迁移到基本音频分析预设。
+
+有关基本音频分析器模式的详细信息，请参阅[分析视频和音频文件](analyzing-video-audio-files-concept.md)。  若要了解如何在 REST API 中使用基本音频分析器模式，请参阅[如何创建基本音频转换](how-to-create-basic-audio-transform.md)。
+
+### <a name="live-events"></a>直播活动
 
 现在允许实时事件停止时对大多数属性进行更新。 此外，允许用户为实时事件的输入和预览 URL 指定静态主机名的前缀。 VanityUrl 现在称为 `useStaticHostName`，以更好地反映属性的意向。
 
@@ -51,7 +59,7 @@ ms.locfileid: "98023017"
 
 实时编码现在增加了在 0.5 到 20 秒之间输出固定关键帧间隔片段的功能。
 
-## <a name="accounts"></a>帐户
+### <a name="accounts"></a>帐户
 
 > [!WARNING]
 > 如果使用 2020-05-01 API 版本创建媒体服务帐户，它将不适用于 RESTv2 
@@ -85,6 +93,7 @@ IoT Edge 上的实时视频分析是媒体服务系列的扩展。 通过它，�
 
 ### <a name="improvements-in-media-processors"></a>媒体处理器中的改进
 
+- 改进了对视频分析中隔行扫描源的支持 - 现在，在将此类内容发送到推理引擎之前，会对其正确取消隔行扫描。
 - 使用“最佳”模式生成缩略图时，编码器现在会搜索超过 30 秒的时间，以选择不是单色的帧。
 
 
@@ -106,7 +115,11 @@ IoT Edge 上的实时视频分析是媒体服务系列的扩展。 通过它，�
 - 现在可以使用新的内容感知编码预设。 它使用内容感知编码生成一组符合 GOP 标准的 MP4。 不管输入内容是什么，该服务都会对输入内容执行初始的轻型分析。 它使用这些结果来确定最佳层数，以及适当的比特率和分辨率设置，方便通过自适应流式处理进行传递。 此预设特别适用于低复杂性和中复杂性的视频，其中的输出文件比特率较低，但其质量仍会为观众提供良好的体验。 输出将包含带有交错式视频和音频的 MP4 文件。 有关详细信息，请参阅[开放式 API 规范](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)。
 - 改善了标准编码器中大小重设器的性能和多线程处理。 在特定条件下，客户应看到 5-40% 的 VOD 编码获得性能提升。 编码成多比特率的低复杂性内容会显示最高的性能提升。 
 - 现在，在使用基于时间的 GOP 设置时，标准编码会在 VOD 编码期间针对可变帧速率 (VFR) 内容维持常规 GOP 节奏。  这意味着，如果提交的混合帧速率内容存在差异（例如 15-30 fps），客户现在会看到常规的 GOP 距离，此类距离根据自适应比特率流式处理 MP4 文件的输出进行计算。 这会提高通过 HLS 或 DASH 进行交付时在跟踪之间无缝切换的功能。 
--  改善了可变帧速率 (VFR) 源内容的 AV 同步
+-  改进了可变帧速率 (VFR) 源内容的 AV 同步
+
+### <a name="video-indexer-video-analytics"></a>视频索引器，视频分析
+
+- 使用 VideoAnalyzer 预设提取的关键帧现在采用视频的原始分辨率，而不是重设大小。 高分辨率关键帧提取可为你提供原始质量的图像，并允许你利用 Microsoft 计算机视觉和自定义视觉服务提供的基于图像的人工智能模型，从视频中获得更多见解。
 
 ## <a name="september-2019"></a>2019 年 9 月
 
@@ -164,6 +177,7 @@ IoT Edge 上的实时视频分析是媒体服务系列的扩展。 通过它，�
 
 ### <a name="new-presets"></a>新增预设
 
+* [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) 已添加到内置分析器预设中。
 * 向内置编码器预设添加了 [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)。 有关详细信息，请参阅[内容感知型编码](content-aware-encoding.md)。 
 
 ## <a name="march-2019"></a>2019 年 3 月
@@ -318,7 +332,7 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 
 .NET SDK 中提供了以下功能：
 
-* 转换和作业，用于对媒体内容进行编码 。 有关示例，请参阅[流式传输文件](stream-files-tutorial-with-api.md)。
+* 转换和作业，用于对媒体内容来进行编码或分析 。 有关示例，请参阅[流式传输文件](stream-files-tutorial-with-api.md)和[分析](analyze-videos-tutorial-with-api.md)。
 * **流式处理定位符**，用于发布内容并将其流式传输到最终用户设备
 * **流式处理策略** 和 **内容密钥策略**，用于在传送内容时配置密钥传递和内容保护 (DRM)。
 * **直播活动** 和 **实时输出**，用于配置实时传送视频流内容的引入和归档。
@@ -328,6 +342,10 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 ### <a name="known-issues"></a>已知问题
 
 * 提交作业时，可以指定使用 HTTPS URL、SAS URL 或位于 Azure Blob 存储中的文件路径引入源视频。 媒体服务 v3 目前不支持基于 HTTPS URL 的块式传输编码。
+
+## <a name="see-also"></a>请参阅
+
+[有关从媒体服务 v2 迁移到 v3 的迁移指南](migrate-v-2-v-3-migration-introduction.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

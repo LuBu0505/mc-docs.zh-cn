@@ -5,14 +5,14 @@ services: application-gateway
 author: surajmb
 ms.service: application-gateway
 ms.topic: troubleshooting
-ms.date: 01/11/2021
+ms.date: 01/27/2021
 ms.author: v-junlch
-ms.openlocfilehash: 4f71d4d5178c70bc924a7b3d190df886bed24df6
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: c95e571256be3930a21141e081c728749868e357
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98194963"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059315"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>排查应用程序网关中的后端运行状况问题
 ==================================================
@@ -21,9 +21,6 @@ ms.locfileid: "98194963"
 --------
 
 默认情况下，Azure 应用程序网关会探测后端服务器，以检查其运行状态，以及它们是否已准备好为请求提供服务。 用户还可以创建自定义探测，并指定主机名、要探测的路径，以及表示正常的状态代码。 在每种情况下，如果后端服务器未成功响应，则应用程序网关会将该服务器标记为“不正常”，并停止向其转发请求。 服务器成功开始响应后，应用程序网关将继续转发请求。
-
-> [!NOTE]
-> 本文包含对术语“白名单”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 ### <a name="how-to-check-backend-health"></a>如何检查后端运行状况
 
@@ -245,7 +242,7 @@ BackendAddressPoolsText : [
 
 #### <a name="trusted-root-certificate-mismatch"></a>受信任的根证书不匹配
 
-**消息：** 后端使用的服务器证书的根证书与添加到应用程序网关的受信任根证书不匹配。 请确保添加正确的根证书，以将后端列入允许列表
+**消息：** 后端使用的服务器证书的根证书与添加到应用程序网关的受信任根证书不匹配。 请确保添加正确的根证书，以将后端列入允许列表。
 
 **原因：** 带应用程序网关 v2 的端到端 SSL 必须验证后端服务器的证书，才能断定服务器是否正常运行。
 要信任某个 TLS/SSL 证书，后端服务器证书必须由应用程序网关受信任存储中包含的 CA 颁发。 如果证书不是由受信任的 CA 颁发的（例如，使用自签名证书），则用户应将证书颁发者的证书上传到应用程序网关。
@@ -402,4 +399,3 @@ OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ----------
 
 详细了解[应用程序网关诊断和日志记录](./application-gateway-diagnostics.md)。
-

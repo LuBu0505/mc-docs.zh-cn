@@ -5,15 +5,15 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 06/15/2020
+ms.date: 11/24/2020
 title: 管理笔记本 - Azure Databricks
 description: 了解如何通过使用 UI、CLI 以及通过调用工作区 API 来管理笔记本。
-ms.openlocfilehash: 86e748280e58b8a3243541bc007ec4671ed595d3
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 2a6cde39b65ec5570fd101ab0a71d55c2a39c0ea
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106672"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060028"
 ---
 # <a name="manage-notebooks"></a>管理笔记本
 
@@ -21,20 +21,20 @@ ms.locfileid: "93106672"
 
 ## <a name="create-a-notebook"></a>创建笔记本
 
-1. 单击边栏中的“工作区”按钮 ![“工作区”图标](../_static/images/workspace/workspace-icon.png) 或“主页”按钮 ![“主页”图标](../_static/images/workspace/home-icon.png)。 执行下列操作之一：
-   * 在任何文件夹旁边，单击文本右侧的 ![菜单下拉列表](../_static/images/menu-dropdown.png)，然后选择“创建”>“笔记本”。
+1. 单击边栏中的“工作区”按钮 ![“工作区”图标](../_static/images/icons/workspace-icon.png) 或“主页”按钮 ![“主页”图标](../_static/images/icons/home-icon.png)。 执行下列操作之一：
+   * 在任何文件夹旁边，单击文本右侧的 ![菜单下拉列表](../_static/images/icons/menu-dropdown.png)，然后选择“创建”>“笔记本”。
 
      > [!div class="mx-imgBorder"]
      > ![创建笔记本](../_static/images/notebooks/create-notebook.png)
 
-   * 在工作区或用户文件夹中，单击 ![向下的脱字号](../_static/images/down-caret.png)，然后选择“创建”>“笔记本”。
+   * 在工作区或用户文件夹中，单击 ![向下的脱字号](../_static/images/icons/down-caret.png)，然后选择“创建”>“笔记本”。
 2. 在“创建笔记本”对话框中输入一个名称，然后选择笔记本的默认语言。
 3. 如果有正在运行的群集，则会显示“群集”下拉列表。 选择要将笔记本[附加](#attach)到的群集。
-4. 单击 **创建** 。
+4. 单击 **创建**。
 
 ## <a name="open-a-notebook"></a>打开笔记本
 
-在工作区中，单击一个 ![笔记本](../_static/images/access-control/notebook.png). 将鼠标指针悬停在笔记本标题上时，会显示笔记本路径。
+在工作区中，单击一个 ![笔记本图标](../_static/images/icons/notebook.png). 将鼠标指针悬停在笔记本标题上时，会显示笔记本路径。
 
 ## <a name="delete-a-notebook"></a>删除笔记本
 
@@ -42,7 +42,7 @@ ms.locfileid: "93106672"
 
 ## <a name="copy-notebook-path"></a>复制笔记本路径
 
-若要在不打开笔记本的情况下复制笔记本文件路径，请右键单击笔记本名称，或者单击笔记本名称右侧的 ![菜单下拉列表](../_static/images/menu-dropdown.png)，然后选择“复制文件路径”。
+若要在不打开笔记本的情况下复制笔记本文件路径，请右键单击笔记本名称，或者单击笔记本名称右侧的 ![菜单下拉列表](../_static/images/icons/menu-dropdown.png)，然后选择“复制文件路径”。
 
 > [!div class="mx-imgBorder"]
 > ![复制笔记本路径](../_static/images/workspace/copy-file-path.png)
@@ -74,9 +74,9 @@ Azure Databricks 支持多种笔记本外部格式：
 
 可以从 URL 或文件导入外部笔记本。
 
-1. 单击边栏中的“工作区”按钮 ![“工作区”图标](../_static/images/workspace/workspace-icon.png) 或“主页”按钮 ![“主页”图标](../_static/images/workspace/home-icon.png)。 执行下列操作之一：
-   * 在任意文件夹旁边，单击文本右侧的 ![菜单下拉列表](../_static/images/menu-dropdown.png)，然后选择“导入”。
-   * 在工作区或用户文件夹中，单击 ![向下的脱字号](../_static/images/down-caret.png)，然后选择“导入”。
+1. 单击边栏中的“工作区”按钮 ![“工作区”图标](../_static/images/icons/workspace-icon.png) 或“主页”按钮 ![“主页”图标](../_static/images/icons/home-icon.png)。 执行下列操作之一：
+   * 在任意文件夹旁边，单击文本右侧的 ![菜单下拉列表](../_static/images/icons/menu-dropdown.png)，然后选择“导入”。
+   * 在工作区或用户文件夹中，单击 ![向下的脱字号](../_static/images/icons/down-caret.png)，然后选择“导入”。
 
      > [!div class="mx-imgBorder"]
      > ![导入笔记本](../_static/images/notebooks/import-notebook.png)
@@ -138,7 +138,7 @@ Azure Databricks 支持多种笔记本外部格式：
 
 若要将笔记本附加到群集，请执行以下操作：
 
-1. 在笔记本工具栏中，单击 ![“群集”图标](../_static/images/clusters/clusters-icon.png)“已分离”![群集下拉列表](../_static/images/down-arrow.png)。
+1. 在笔记本工具栏中，单击 ![“群集”图标](../_static/images/icons/clusters-icon.png)“已分离”![群集下拉列表](../_static/images/icons/down-arrow.png)。
 2. 从下拉列表中选择一个[群集](../clusters/index.md)。
 
 > [!IMPORTANT]
@@ -181,7 +181,7 @@ spark.conf.get("spark.databricks.clusterUsageTags.sparkVersion")
 
 ### <a name="detach-a-notebook-from-a-cluster"></a><a id="detach"> </a><a id="detach-a-notebook-from-a-cluster"> </a>从群集中拆离笔记本
 
-1. 在笔记本工具栏中，单击 ![“群集”图标](../_static/images/clusters/clusters-icon.png)“已附加 <cluster-name>”![群集下拉列表](../_static/images/down-arrow.png)。
+1. 在笔记本工具栏中，单击 ![“群集”图标](../_static/images/icons/clusters-icon.png)“已附加 <cluster-name>”![群集下拉列表](../_static/images/icons/down-arrow.png)。
 2. 选择“拆离”。
 
    > [!div class="mx-imgBorder"]
@@ -206,22 +206,22 @@ spark.conf.get("spark.databricks.clusterUsageTags.sparkVersion")
 
 若要计划一个需定期运行的笔记本作业，请执行以下操作：
 
-1. 在笔记本工具栏中，单击右上方的 ![计划](../_static/images/notebooks/schedule.png) 按钮。
+1. 在笔记本工具栏中，单击右上方的 ![日程表图标](../_static/images/notebooks/schedule.png) 按钮。
 2. 单击“+ 新建”。
 3. 选择该计划。
 4. 单击“确定”。
 
 ## <a name="distribute-notebooks"></a><a id="databricks-archive"> </a><a id="distribute-notebooks"> </a>分发笔记本
 
-为了让你能够轻松地分发 Azure Databricks [笔记本](#notebook-formats)，Azure Databricks 支持了 Databricks 存档（一个包，其中可以包含笔记本的文件夹或单个笔记本）。 Databricks 存档是一个具有额外元数据的 JAR 文件，其扩展名为 `.dbc`。 存档中包含的笔记本采用 Azure Databricks 内部格式。
+为了让你能够轻松地分发 Azure Databricks [笔记本](#notebook-formats)，Azure Databricks 支持了 Databricks 存档（一个包，其中可以包含笔记本的文件夹或单个笔记本）。 Databricks 存档是一个具有额外元数据的 JAR 文件，其扩展名为 ``.dbc``。 存档中包含的笔记本采用 Azure Databricks 内部格式。
 
 ### <a name="import-an-archive"></a>导入存档
 
-1. 单击文件夹或笔记本右侧的 ![向下的脱字号](../_static/images/down-caret.png) 或 ![菜单下拉菜单](../_static/images/menu-dropdown.png)，然后选择“导入”。
+1. 单击文件夹或笔记本右侧的 ![向下的脱字号](../_static/images/icons/down-caret.png) 或 ![菜单下拉菜单](../_static/images/icons/menu-dropdown.png)，然后选择“导入”。
 2. 选择“文件”或“URL”。
 3. 转到放置区中的 Databricks 存档，或在放置区中放置一个该存档。
 4. 单击“导入”。 存档会导入到 Azure Databricks 中。 如果存档包含文件夹，Azure Databricks 会重新创建该文件夹。
 
 ### <a name="export-an-archive"></a>导出存档
 
-单击文件夹或笔记本右侧的 ![向下的脱字号](../_static/images/down-caret.png) 或 ![菜单下拉菜单](../_static/images/menu-dropdown.png)，然后选择“导出”>“DBC 存档”。 此时 Azure Databricks 会下载名为 `<[folder|notebook]-name>.dbc` 的文件。
+单击文件夹或笔记本右侧的 ![向下的脱字号](../_static/images/icons/down-caret.png) 或 ![菜单下拉菜单](../_static/images/icons/menu-dropdown.png)，然后选择“导出”>“DBC 存档”。 此时 Azure Databricks 会下载名为 ``<[folder|notebook]-name>.dbc`` 的文件。

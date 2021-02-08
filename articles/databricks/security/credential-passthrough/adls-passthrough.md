@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 09/16/2020
 title: 使用 Azure Active Directory 凭据直通身份验证保护对 Azure Data Lake Storage 的访问 - Azure Databricks
 description: 了解如何使用直通身份验证通过 Azure Databricks 从 Azure Data Lake Storage 读取数据以及将数据写入 Azure Data Lake Storage。
-ms.openlocfilehash: 766fe315803eb781a82431a41eb9ca182d0ce696
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: c51cb52c441c6b1bab47c1e6e09b380047649da3
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937813"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059619"
 ---
 # <a name="secure-access-to-azure-data-lake-storage-using-azure-active-directory-credential-passthrough"></a>使用 Azure Active Directory 凭据直通身份验证保护对 Azure Data Lake Storage 的访问
 
@@ -88,9 +88,9 @@ spark.read.csv("abfss://<my-file-system-name>@<my-storage-account-name>.dfs.core
 
 可以将 Azure Data Lake Storage 帐户或其中的文件夹装载到 [Databricks 文件系统 (DBFS)](../../data/databricks-file-system.md)。 此装载是指向一个数据湖存储的指针，因此数据永远不会在本地同步。
 
-使用启用了 Azure data Lake Storage 凭据直通身份验证的群集装载数据时，对装入点的任何读取或写入操作都将使用 Azure AD 凭据。 此装入点对其他用户可见，但只有以下用户具有读取和写入访问权限：
+使用启用了 Azure data Lake Storage 凭据传递的群集装载数据时，对装入点的任何读取或写入操作都将使用 Azure AD 凭据。 此装入点对其他用户可见，但只有具有读写访问权限的用户可以执行以下操作：
 
-* 有权访问基础 Azure Data Lake Storage 存储帐户的用户
+* 有权访问基础 Azure Data Lake Storage 存储帐户
 * 正在使用已启用 Azure Data Lake Storage 凭据直通身份验证的群集的用户
 
 若要装载 Azure Data Lake Storage 帐户或其中的文件夹，请使用[装载 Azure Data Lake Storage Gen1 资源或文件夹](../../data/data-sources/azure/azure-datalake.md#mount-adls)或[装载 Azure Data Lake Storage Gen2 文件系统](../../data/data-sources/azure/azure-datalake-gen2.md#mount-adls-gen2)中所述的 Python 命令，并且将 `configs` 替换为以下内容：
@@ -143,27 +143,27 @@ configs = {
 | [笔记本工作流](../../notebooks/notebook-workflows.md)                      | 6.1                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | PySpark ML API                                                                   | 6.1                                | 所有 PySpark ML 类都受支持。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | [Ganglia UI](../../clusters/clusters-manage.md#ganglia-metrics)                  | 6.1                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| [Databricks Connect](/dev-tools/databricks-connect)                              | 7.3                                | 标准群集支持直通身份验证。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
 ## <a name="limitations"></a>限制
 
 Azure Data Lake Storage 凭据直通身份验证不支持以下功能：
 
-* `%fs`（请改用等效的 [dbutils.fs](../../dev-tools/databricks-utils.md#dbutils-fs) 命令）。
+* ``%fs``（请改用等效的 [dbutils.fs](../../dev-tools/databricks-utils.md#dbutils-fs) 命令）。
 * [作业](../../jobs.md)。
 * [REST API](../../dev-tools/api/index.md)。
 * [表访问控制](../access-control/table-acls/object-privileges.md)。 Azure Data Lake Storage 凭据直通身份验证所授予的功能可用于绕过表 ACL 的细化权限，而表 ACL 的额外限制会限制你通过 Azure Data Lake Storage 凭据直通身份验证获得的某些能力。 具体而言：
   * 如果你的 Azure AD 权限允许你访问特定表所基于的数据文件，那么你可以通过 RDD API 获取对该表的完全权限（无论通过表 ACL 对其施加的限制如何）。
-  * 只有在使用数据帧 API 时，才会受到表 ACL 权限的约束。 如果你尝试直接通过数据帧 API 读取文件，则即使你可以直接通过 RDD API 读取那些文件，也会看到警告，指出你在任何文件上都没有 `SELECT` 权限。
+  * 只有在使用数据帧 API 时，才会受到表 ACL 权限的约束。 如果你尝试直接通过数据帧 API 读取文件，则即使你可以直接通过 RDD API 读取那些文件，也会看到警告，指出你在任何文件上都没有 ``SELECT`` 权限。
   * 你将无法从 Azure Data Lake Storage 以外的文件系统所支持的表进行读取，即使你具有读取表的表 ACL 权限。
-* SparkContext (`sc`) 和 SparkSession (`spark`) 对象上的以下方法：
+* SparkContext (``sc``) 和 SparkSession (``spark``) 对象上的以下方法：
   * 已弃用的方法。
-  * 允许非管理员用户调用 Scala 代码的方法，例如 `addFile()` 和 `addJar()`。
+  * 允许非管理员用户调用 Scala 代码的方法，例如 ``addFile()`` 和 ``addJar()``。
   * 访问 Azure Data Lake Storage Gen1 或 Gen2 以外的文件系统的任何方法（若要访问启用了 Azure Data Lake Storage 凭据直通身份验证的群集上的其他文件系统，请使用另一方法来指定凭据，并参阅[故障排除](#aad-passthrough-troubleshoot)下关于受信任文件系统的部分）。
-  * 旧的 Hadoop API（`hadoopFile()` 和 `hadoopRDD()`）。
+  * 旧的 Hadoop API（``hadoopFile()`` 和 ``hadoopRDD()``）。
   * 流式处理 API，因为直通凭据会在流仍在运行时过期。
-* [FUSE 装载](../../data/databricks-file-system.md#fuse) (/dbfs)。
+* [FUSE 装载](../../data/databricks-file-system.md#fuse) (/dbfs) 仅在 Databricks Runtime 7.3 LTS 及更高版本中可用。 FUSE 装载不支持配置了凭据直通身份验证的装入点。
 * Azure 数据工厂。
-* [高并发性](../../clusters/configure.md#high-concurrency)群集上的 [Databricks Connect](../../dev-tools/databricks-connect.md)。
 * 高并发性群集上的 [MLflow](../../applications/mlflow/index.md)。
 * 高并发性群集上的 [azureml-sdk[databricks]](https://pypi.org/project/azureml-sdk/) Python 包。
 * 不能使用 Azure Active Directory 令牌生存期策略来延长 Azure Active Directory 直通令牌的生存期。 因此，如果向群集发送耗时超过一小时的命令，并在 1 小时标记期过后访问 Azure Data Lake Storage 资源，该命令会失败。
@@ -190,17 +190,4 @@ Azure Data Lake Storage 凭据直通身份验证不支持以下功能：
 
 如果你尝试访问了一个文件系统，而 Azure Data Lake Storage 凭据直通身份验证群集不知道该文件系统是否安全，则会引发此异常。 使用不受信任的文件系统可能会使 Azure Data Lake Storage 凭据直通身份验证群集上的用户能够访问其他用户的凭据，因此我们禁用了我们无法确信其会被用户安全使用的所有文件系统。
 
-若要在 Azure Data Lake Storage 凭据直通身份验证群集上配置一组受信任的文件系统，请将该群集上的 Spark conf 键 `spark.databricks.pyspark.trustedFilesystems` 设置为以逗号分隔的类名称列表，这些名称是 `org.apache.hadoop.fs.FileSystem` 的受信任实现。
-
-<!--comment-out https://databricks.atlassian.net/browse/SC-20253
-To get the list of trusted file systems on a cluster enabled for |Passthrough|, run this command:
-
-```python
-
-  spark.conf.get("spark.databricks.pyspark.trustedFilesystems")
-
-.. note::
-
-  - In <DBR> 5.1, Azure Blob storage is *not* trusted by default. To trust Azure Blob storage in <DBR> 5.1, you must manually configure it to be trusted.
-
-  - In <DBR> 5.2 and above, Azure Blob storage is trusted by default, and you do not need to configure it to be trusted.-->
+若要在 Azure Data Lake Storage 凭据直通身份验证群集上配置一组受信任的文件系统，请将该群集上的 Spark conf 键 ``spark.databricks.pyspark.trustedFilesystems`` 设置为以逗号分隔的类名称列表，这些名称是 ``org.apache.hadoop.fs.FileSystem`` 的受信任实现。

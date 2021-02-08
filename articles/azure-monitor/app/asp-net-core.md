@@ -3,15 +3,15 @@ title: 适用于 ASP.NET Core 应用程序的 Azure Application Insights | Azure
 description: 监视 ASP.NET Core Web 应用程序的可用性、性能和使用情况。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 01/12/2021
+ms.date: 01/27/2021
 ms.author: v-johya
 origin.date: 05/22/2019
-ms.openlocfilehash: 7a593450f7255772e15e63c4a9d72dcfe1a0563c
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: d604e264292982d2c635557faa7fd030367473a3
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230839"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99060091"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights
 
@@ -71,7 +71,7 @@ ms.locfileid: "98230839"
 
     ```xml
         <ItemGroup>
-          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.13.1" />
+          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.16.0" />
         </ItemGroup>
     ```
 

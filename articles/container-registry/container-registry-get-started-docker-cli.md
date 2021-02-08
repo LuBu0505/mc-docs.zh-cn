@@ -6,15 +6,15 @@ ms.service: container-registry
 ms.topic: article
 origin.date: 01/23/2019
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.author: v-yeche
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: a72e07bcc94836190b38802086c759d849e6815b
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 47bf51744f50fdbe68401aebbf5a9118b35bbd8a
+ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230187"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063700"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>使用 Docker CLI 将第一个映像推送到专用 Docker 容器注册表
 
@@ -42,6 +42,9 @@ docker login myregistry.azurecr.cn
 ```
 
 完成后，这两个命令将返回 `Login Succeeded`。
+
+> [!NOTE]
+>* 你可能需要将 Visual Studio Code 与 Docker 扩展配合使用，以更快、更方便地登录。
 
 > [!TIP]
 > 使用 `docker login` 以及标记要推送到注册表的映像时，请始终指定完全限定的注册表名称（全部小写）。 在本文的示例中，完全限定的名称为 *myregistry.azurecr.cn*。
@@ -140,4 +143,4 @@ az acr repository delete --name myregistry --image samples/nginx:latest
 [docker-mac]: https://docs.docker.com/docker-for-mac/
 [docker-windows]: https://docs.docker.com/docker-for-windows/
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

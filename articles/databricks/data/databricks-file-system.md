@@ -5,15 +5,15 @@ ms.reviewer: mamccrea
 ms.custom: databricksmigration
 ms.author: saperla
 author: mssaperla
-ms.date: 09/16/2020
+ms.date: 12/16/2020
 title: Databricks 文件系统 (DBFS) - Azure Databricks
 description: 了解 Databricks 文件系统 (DBFS)。
-ms.openlocfilehash: 5ef571420862660378469b76afda066fb93651f2
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: 3e18ad1b5b46fc66847f42f0ec4468754816f819
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121859"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059498"
 ---
 # <a name="databricks-file-system-dbfs"></a>Databricks 文件系统 (DBFS)
 
@@ -27,11 +27,11 @@ Databricks 文件系统 (DBFS) 是一个装载到 Azure Databricks 工作区的�
 
 DBFS 中的默认存储位置称为 _DBFS 根_。 以下 DBFS 根位置中存储了几种类型的数据：
 
-* `/FileStore`：导入的数据文件、生成的绘图以及上传的库。 请参阅 [FileStore](filestore.md#filestore)。
-* `/databricks-datasets`：示例[公共数据集](databricks-datasets.md#databricks-datasets)。
-* `/databricks-results`：通过下载查询的[完整结果](../notebooks/notebooks-use.md#download-full-results)生成的文件。
-* `/databricks/init`：全局和群集命名的（已弃用）[init 脚本](../clusters/init-scripts.md)。
-* `/user/hive/warehouse`：非外部 Hive 表的数据和元数据。
+* ``/FileStore``：导入的数据文件、生成的绘图以及上传的库。 请参阅[特殊的 DBFS 根位置](#special-dbfs-root-locations)。
+* ``/databricks-datasets``：示例公共数据集。 请参阅[特殊的 DBFS 根位置](#special-dbfs-root-locations)。
+* ``/databricks-results``：通过下载查询的[完整结果](../notebooks/notebooks-use.md#download-full-results)生成的文件。
+* ``/databricks/init``：全局和群集命名的（已弃用）[init 脚本](../clusters/init-scripts.md)。
+* ``/user/hive/warehouse``：非外部 Hive 表的数据和元数据。
 
 在新的工作区中，DBFS 根具有以下默认文件夹：
 
@@ -42,7 +42,32 @@ DBFS 根还包含不可见且无法直接访问的数据，包括装入点元数
 
 > [!IMPORTANT]
 >
-> 已写入[装入点路径](#mount-storage) (`/mnt`) 的数据存储在 DBFS 根的外部。 尽管 DBFS 根是可写的，仍建议你将数据存储在装载的对象存储中，而不是存储在 DBFS 根中。
+> 已写入[装入点路径](#mount-storage) (``/mnt``) 的数据存储在 DBFS 根的外部。 尽管 DBFS 根是可写的，仍建议你将数据存储在装载的对象存储中，而不是存储在 DBFS 根中。
+
+### <a name="special-dbfs-root-locations"></a>特殊的 DBFS 根位置
+
+以下文章提供了有关特殊的 DBFS 根位置的更多详细信息：
+
+* [FileStore](filestore.md)
+* [Azure Databricks 数据集](databricks-datasets.md)
+
+## <a name="browse-dbfs-using-the-ui"></a>使用 UI 浏览 DBFS
+
+可以使用 DBFS 文件浏览器浏览和搜索 DBFS 对象。
+
+> [!NOTE]
+>
+> 管理员用户必须先启用 DBFS 浏览器界面，然后你才能使用该界面。 请参阅[管理 DBFS 文件浏览器](../administration-guide/workspace/dbfs-browser.md)。
+
+1. 单击 ![边栏中的](../_static/images/icons/data-icon.png) 数据图标。
+2. 单击页面顶部的 DBFS 按钮。
+
+浏览器将以垂直泳道的层次结构显示 DBFS 对象。 选择一个对象以展开层次结构。 在任意泳道中使用“前缀搜索”来查找 DBFS 对象。
+
+> [!div class="mx-imgBorder"]
+> ![浏览 DBFS](../_static/images/dbfs/browse.png)
+
+还可以使用 [DBFS CLI](../dev-tools/cli/dbfs-cli.md)、[DBFS API](../dev-tools/api/latest/dbfs.md)、[Databricks 文件系统实用工具 (dbutils.fs)](../dev-tools/databricks-utils.md#dbutils-fs)、[Spark API](#dbfs-spark) 和[本地文件 API](#fuse) 来列出 DBFS 对象。 请参阅[访问 DBFS](#access-dbfs)。
 
 ## <a name="mount-object-storage-to-dbfs"></a><a id="mount-object-storage-to-dbfs"> </a><a id="mount-storage"> </a>将对象存储装载到 DBFS
 
@@ -64,29 +89,167 @@ DBFS 根还包含不可见且无法直接访问的数据，包括装入点元数
 
 ## <a name="access-dbfs"></a>访问 DBFS
 
-可使用[文件上传接口](#user-interface)将数据上传到 DBFS，并使用 [DBFS CLI](../dev-tools/cli/dbfs-cli.md)、[DBFS API](../dev-tools/api/latest/dbfs.md)、[Databricks 文件系统实用工具 (dbutils.fs)](../dev-tools/databricks-utils.md#dbutils-fs)、[Spark API](#dbfs-spark) 和[本地文件 API](#fuse) 来上传和访问 DBFS 对象。 在 Spark 群集中，使用 Databricks 文件系统实用工具、Spark API 或本地文件 API 访问 DBFS 对象。 在本地计算机上，使用 Databricks CLI 或 DBFS API 访问 DBFS 对象。
+可使用[文件上传接口](#user-interface)将数据上传到 DBFS，并使用 [DBFS CLI](../dev-tools/cli/dbfs-cli.md)、[DBFS API](../dev-tools/api/latest/dbfs.md)、[Databricks 文件系统实用工具 (dbutils.fs)](../dev-tools/databricks-utils.md#dbutils-fs)、[Spark API](#dbfs-spark) 和[本地文件 API](#fuse) 来上传和访问 DBFS 对象。
+
+在 Azure Databricks 群集中，使用 Databricks 文件系统实用工具、Spark API 或本地文件 API 访问 DBFS 对象。 在本地计算机上，使用 Databricks CLI 或 DBFS API 访问 DBFS 对象。
 
 ### <a name="in-this-section"></a>本节内容：
 
+* [DBFS 和本地驱动程序节点路径](#dbfs-and-local-driver-node-paths)
 * [文件上传接口](#file-upload-interface)
 * [Databricks CLI](#databricks-cli)
-* [`dbutils`](#dbutils)
+* [``dbutils``](#dbutils)
 * [DBFS API](#dbfs-api)
 * [Spark API](#spark-apis)
 * [本地文件 API](#local-file-apis)
 * [用于深度学习的本地文件 API](#local-file-apis-for-deep-learning)
 
+### <a name="dbfs-and-local-driver-node-paths"></a>DBFS 和本地驱动程序节点路径
+
+你可以使用 DBFS 上的文件或群集的本地驱动程序节点上的文件。 你可以使用 [magic 命令](../notebooks/notebooks-use.md#language-magic)（例如 ``%fs`` 或 ``%sh``）来访问文件系统。 你还可以使用 [Databricks 文件系统实用工具 (dbutils.fs)](../dev-tools/databricks-utils.md#dbutils-fs)。
+
+Azure Databricks 使用 FUSE 装载来提供对存储在云中的文件的本地访问权限。 FUSE 装载是一个安全的虚拟文件系统。
+
+#### <a name="access-files-on-dbfs"></a>访问 DBFS 上的文件
+
+默认的博客存储（根）路径为 ``dbfs:/``。
+
+``%fs`` 和 ``dbutils.fs`` 的默认位置是根。 因此，若要从根或外部存储 Bucket 进行读取或向其中进行写入，请使用以下命令：
+
+```bash
+%fs <command> /<path>
+```
+
+```bash
+dbutils.fs.<command> ("/<path>/")
+```
+
+``%sh`` 默认情况下从本地文件系统进行读取。 若要使用 ``%sh`` 访问根中的根路径或装载的路径，请在路径前面加上 ``/dbfs/``。 典型的用例是：你使用 TensorFlow 或 scikit-learn 等单节点库，希望从云存储读取数据以及将数据写入云存储。
+
+```bash
+%sh <command> /dbfs/<path>/
+```
+
+你还可以使用单节点文件系统 API：
+
+```bash
+import os
+os.<command>('/dbfs/tmp')
+```
+
+##### <a name="examples"></a>示例
+
+```bash
+# Default location for %fs is root
+%fs ls /tmp/
+%fs mkdirs /tmp/my_cloud_dir
+%fs cp /tmp/test_dbfs.txt /tmp/file_b.txt
+```
+
+```bash
+# Default location for dbutils.fs is root
+dbutils.fs.ls ("/tmp/")
+dbutils.fs.put("/tmp/my_new_file", "This is a file in cloud storage.")
+```
+
+```bash
+# Default location for %sh is the local filesystem
+%sh ls /dbfs/tmp/
+```
+
+```bash
+# Default location for os commands is the local filesystem
+import os
+os.listdir('/dbfs/tmp')
+```
+
+#### <a name="access-files-on-the-local-filesystem"></a>访问本地文件系统上的文件
+
+``%fs`` 和 ``dbutils.fs`` 默认情况下从根 (``dbfs:/``) 进行读取。 若要从本地文件系统进行读取，必须使用 ``file:/``。
+
+```bash
+%fs <command> file:/<path>
+dbutils.fs.<command> ("file:/<path>/")
+```
+
+``%sh`` 默认情况下从本地文件系统进行读取，因此不要使用 ``file:/``：
+
+```bash
+%sh <command> /<path>
+```
+
+##### <a name="examples"></a>示例
+
+```bash
+# With %fs and dbutils.fs, you must use file:/ to read from local filesystem
+%fs ls file:/tmp
+%fs mkdirs file:/tmp/my_local_dir
+dbutils.fs.ls ("file:/tmp/")
+dbutils.fs.put("file:/tmp/my_new_file", "This is a file on the local driver node.")
+```
+
+```bash
+# %sh reads from the local filesystem by default
+%sh ls /tmp
+```
+
+#### <a name="access-files-on-mounted-object-storage"></a>访问装载的对象存储上的文件
+
+通过将对象存储装载到 DBFS，可访问对象存储中的对象，就像它们在本地文件系统中一样。
+
+##### <a name="examples"></a>示例
+
+```bash
+dbutils.fs.ls("/mnt/mymount")
+df = spark.read.text("dbfs:/mymount/my_file.txt")
+```
+
+#### <a name="summary-table-and-diagram"></a>汇总表和图示
+
+表和图示汇总并阐释了本部分所述的命令，以及何时使用每种语法。
+
+| Command          | 默认位置  | 从根进行读取     | 从本地文件系统进行读取 |
+|------------------|-------------------|-----------------------|-------------------------------|
+| ``%fs``          | Root              |                       | 将 ``file:/`` 添加到路径        |
+| ``%sh``          | 本地驱动程序节点 | 将 ``/dbfs`` 添加到路径 |                               |
+| ``dbutils.fs``   | Root              |                       | 将 ``file:/`` 添加到路径        |
+| ``os.<command>`` | 本地驱动程序节点 | 将 ``/dbfs`` 添加到路径 |                               |
+
+> [!div class="mx-imgBorder"]
+> ![文件路径图示](../_static/images/data-import/dbfs-and-local-file-paths.png)
+
 ### <a name="file-upload-interface"></a><a id="file-upload-interface"> </a><a id="user-interface"> </a>文件上传接口
 
-如果本地计算机上有要使用 Azure Databricks 进行分析的小型数据文件，可使用文件上传接口将其轻松导入 [Databricks 文件系统 (DBFS)]()。
+如果本地计算机上有要使用 Azure Databricks 进行分析的小型数据文件，可使用以下两个文件上传界面之一将其轻松导入 [Databricks 文件系统 (DBFS)]()：DBFS 文件浏览器或笔记本。
+
+文件上传到 [FileStore](filestore.md) 目录。
+
+#### <a name="upload-data-to-dbfs-from-the-file-browser"></a>从文件浏览器将数据上传到 DBFS
 
 > [!NOTE]
 >
-> 管理员用户可禁用文件上传接口。 请查看[管理数据上传](../administration-guide/workspace/dbfs-ui-upload.md)。
+> 默认情况下，该功能被禁用。 管理员必须先启用 DBFS 浏览器界面，然后你才能使用该界面。 请参阅[管理 DBFS 文件浏览器](../administration-guide/workspace/dbfs-browser.md)。
 
-如果要使用 UI 创建[表](tables.md)，请参阅[使用 UI 创建表](tables.md#create-a-table-using-the-ui)。
+1. 单击 ![边栏中的](../_static/images/icons/data-icon.png) 数据图标。
+2. 单击页面顶部的 DBFS 按钮。
+3. 单击页面顶部的“上传”按钮。
+4. 在“将数据上传到 DBFS”对话框中，根据需要选择一个目标目录或输入一个新目录。
+5. 在“文件”框中，通过拖放或文件浏览器方式选择要上传的本地文件。
 
-如果要上传在笔记本中使用的数据，请执行以下步骤。
+   > [!div class="mx-imgBorder"]
+   > ![从浏览器上传到 DBFS](../_static/images/dbfs/upload.png)
+
+具有工作区访问权限的用户都可访问已上传的文件。
+
+#### <a name="upload-data-to-dbfs-from-a-notebook"></a>将数据从笔记本上传到 DBFS
+
+> [!NOTE]
+>
+> 此功能默认启用。 如果管理员已[禁用此功能](../administration-guide/workspace/dbfs-ui-upload.md)，你将无法上传文件。
+
+若要使用 UI 创建[表](tables.md)，请参阅[使用 UI 创建表](tables.md#create-a-table-using-the-ui)。
+
+若要上传在笔记本中使用的数据，请执行以下步骤。
 
 1. 创建新笔记本或打开现有笔记本，然后单击“文件”>“上传数据”
 
@@ -222,12 +385,12 @@ for (line <- Source.fromFile(filename).getLines()) {
 
 #### <a name="local-file-api-limitations"></a><a id="local-file-api-limitations"> </a><a id="local-limitations"> </a>本地文件 API 限制
 
-下面列举了适用于 Databricks Runtime 各版本的本地文件 API 使用限制。
+下面枚举了应用于每个 FUSE 和相应的 Databricks Runtime 版本的本地文件 API 使用限制。
 
 * **全部**：不支持凭据传递。
 
-* **6.0**
-  * 不支持随机写入。   对于需要随机写入的工作负载，请先在本地磁盘上执行 I/O，然后将结果复制到 `/dbfs`。 例如： 。
+* **FUSE V2**（Databricks Runtime 6.x 和 7.x 的默认设置）
+  * 不支持随机写入。   对于需要随机写入的工作负载，请先在本地磁盘上执行 I/O，然后将结果复制到 ``/dbfs``。 例如： 。
 
     ```python
     # python
@@ -251,9 +414,14 @@ for (line <- Source.fromFile(filename).getLines()) {
     $ cp --sparse=never sparse.file /dbfs/sparse.file
     ```
 
-* **5.5**
-  * 仅支持小于 2 GB 的文件。 如果使用本地文件 I/O API 读取或写入大于 2 GB 的文件，则可能会导致文件损坏。 相反，请使用 [DBFS CLI](../dev-tools/cli/dbfs-cli.md)、[dbutils.fs](../dev-tools/databricks-utils.md#dbutils-fs) 或 Spark API 来访问大于 2 GB 的文件，或使用[用于深度学习的本地文件 API](#mlfuse) 中所述的 `/dbfs/ml` 文件夹。
-  * 如果使用本地文件 I/O API 来写入文件，然后立即尝试使用 [DBFS CLI](../dev-tools/cli/dbfs-cli.md)、[dbutils.fs](#dbfs-dbutils) 或 Spark API 来访问它，则可能会遇到 `FileNotFoundException`、文件大小为 0 或文件内容陈旧的情况。 这是预料之中的，因为 OS 默认情况下会缓存写入。 若要强制将这些写入刷新到持久存储（在我们的示例中为 DBFS）中，请使用标准的 Unix 系统调用[同步](https://en.wikipedia.org/wiki/Sync_(Unix))。例如：
+* **FUSE V1**（Databricks Runtime 5.5 LTS 的默认设置）
+
+  > [!IMPORTANT]
+  >
+  > 如果你在 ``<DBR>`` 5.5 LTS 上使用 FUSE V1 时遇到问题，Databricks 建议你改用 FUSE V2。 可以通过设置[环境变量](../clusters/configure.md#environment-variables) ``DBFS_FUSE_VERSION=2`` 来替代 ``<DBR>`` 5.5 LTS 中的默认 FUSE 版本。
+
+  * 仅支持小于 2 GB 的文件。 如果使用本地文件 I/O API 读取或写入大于 2 GB 的文件，则可能会导致文件损坏。 相反，请使用 [DBFS CLI](../dev-tools/cli/dbfs-cli.md)、[dbutils.fs](../dev-tools/databricks-utils.md#dbutils-fs) 或 Spark API 来访问大于 2 GB 的文件，或使用[用于深度学习的本地文件 API](#mlfuse) 中所述的 ``/dbfs/ml`` 文件夹。
+  * 如果使用本地文件 I/O API 来写入文件，然后立即尝试使用 [DBFS CLI](../dev-tools/cli/dbfs-cli.md)、[dbutils.fs](#dbfs-dbutils) 或 Spark API 来访问它，则可能会遇到 ``FileNotFoundException``、文件大小为 0 或文件内容陈旧的情况。 这是预料之中的，因为 OS 默认情况下会缓存写入。 若要强制将这些写入刷新到持久存储（在我们的示例中为 DBFS）中，请使用标准的 Unix 系统调用[同步](https://en.wikipedia.org/wiki/Sync_(Unix))。例如：
 
     ```scala
     // scala

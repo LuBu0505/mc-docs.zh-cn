@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 05/28/2020
 title: 将“VNet 注入”预览版工作区升级到正式发布版 - Azure Databricks
 description: 如果已经在自己的 Azure 虚拟网络中部署了 Azure Databricks 的预览实例（这一功能有时称为 VNet 注入），则可以使用这些说明升级到正式发布版实例。
-ms.openlocfilehash: 29d2b45b95778ce52c28a38c3e707893d7e1b896
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 8f101f44ffc9150e804fead7eb3a2e54e88f951f
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106517"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99058994"
 ---
 # <a name="upgrade-your-vnet-injection-preview-workspace-to-ga"></a><a id="upgrade-your-vnet-injection-preview-workspace-to-ga"></a><a id="vnet-inject-upgrade"></a>将“VNet 注入”预览版工作区升级到正式发行版
 
@@ -137,7 +137,7 @@ ms.locfileid: "93106517"
 
 > [!IMPORTANT]
 >
-> 如果在预览期间使用 Azure 资源管理器 (ARM) 模板将 Azure Databricks 工作区部署到自己的虚拟网络，并且想要继续使用 Azure 资源管理器模板来创建虚拟网络和部署工作区，则应使用“升级的 Azure 资源管理器模板”。 请参阅[配置虚拟网络](vnet-inject.md#vnet-inject-advanced)。
+> 如果在预览期间使用 Azure 资源管理器 (ARM) 模板将 Azure Databricks 工作区部署到自己的虚拟网络，并且想要继续使用 Azure 资源管理器模板来创建虚拟网络和部署工作区，则应使用“升级的 Azure 资源管理器模板”。 请参阅[使用 Azure 资源管理器模板的高级配置](vnet-inject.md#vnet-inject-advanced)。
 
 ## <a name="post-upgrade-steps"></a>升级后的步骤
 

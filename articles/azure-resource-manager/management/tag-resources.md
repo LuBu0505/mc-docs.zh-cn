@@ -2,19 +2,19 @@
 title: 标记资源、资源组和订阅以便对其进行逻辑组织
 description: 演示如何应用标记来组织 Azure 资源进行计费和管理。
 ms.topic: conceptual
-origin.date: 12/03/2020
+origin.date: 01/04/2021
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 01/25/2021
 ms.testscope: yes
 ms.testdate: 07/13/2020
 ms.author: v-yeche
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4df6c9f1d164c89bbfb84cf402bed62ca9dccea0
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: d3e59d3f1dba1e7701781f6b43ad384d13f5710f
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021236"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751193"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>使用标记对 Azure 资源和管理层次结构进行组织
 
@@ -443,9 +443,12 @@ az tag delete --resource-id $resource
 az tag update --resource-id $group --operation Merge --tags "Cost Center"=Finance-1222 Location="China North"
 ```
 
-## <a name="templates"></a>模板
+## <a name="arm-templates"></a>ARM 模板
 
-可以在使用资源管理器模板进行部署期间标记资源、资源组和订阅。
+可以在使用 Azure 资源管理器模板（ARM 模板）进行部署期间标记资源、资源组和订阅。
+
+> [!NOTE]
+> 通过 ARM 模板应用的标记会覆盖任何现有标记。
 
 ### <a name="apply-values"></a>应用值
 
@@ -453,7 +456,7 @@ az tag update --resource-id $group --operation Merge --tags "Cost Center"=Financ
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "utcShort": {
@@ -492,7 +495,7 @@ az tag update --resource-id $group --operation Merge --tags "Cost Center"=Financ
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
@@ -530,7 +533,7 @@ az tag update --resource-id $group --operation Merge --tags "Cost Center"=Financ
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
@@ -563,7 +566,7 @@ az tag update --resource-id $group --operation Merge --tags "Cost Center"=Financ
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
@@ -701,8 +704,8 @@ az deployment sub create --name tagresourcegroup --location chinanorth2 --templa
 
 可以通过使用情况逗号分隔值 (CSV) 文件检索有关标记的信息。 可以从 [Azure 帐户门户](https://account.windowsazure.cn/Subscriptions)下载使用情况文件。
 
-<!-- Not Available [Azure Billing REST API Reference](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)-->
-<!-- Not Available [Azure Resource Usage and RateCard APIs](../billing/billing-usage-rate-card-overview.md) -->
+<!--NOT AVAILABLE ON [Azure Resource Usage and Rate Card APIs](../../cost-management-billing/manage/usage-rate-card-overview.md)-->
+<!--NOT AVAILABLE ON [Download or view your Azure billing invoice and daily usage data](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)-->
 <!-- Not Available on portal-->
 
 有关 REST API 操作，请参阅 [Azure 计费 REST API 参考](https://docs.microsoft.com/rest/api/billing/)。

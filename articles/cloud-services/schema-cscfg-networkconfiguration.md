@@ -1,20 +1,20 @@
 ---
 title: Azure 云服务 NetworkConfiguration 架构 | Microsoft Docs
 description: 了解服务配置文件的 NetworkConfiguration 元素的子元素，该元素指定虚拟网络和 DNS 值。
-ms.custom: ''
-ms.date: 10/20/2020
-services: cloud-services
+ms.topic: article
 ms.service: cloud-services
-ms.topic: reference
-caps.latest.revision: 28
-author: tgore03
+ms.date: 01/25/2021
 ms.author: v-junlch
-ms.openlocfilehash: c35d187413d9082c187494e7957dcf1cacc070be
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+'---thor': tagore
+ms.openlocfilehash: 4e6f159868a9908671f6c4b6fd974776606d8226
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472523"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059002"
 ---
 # <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Azure 云服务的配置 NetworkConfiguration 架构
 
@@ -22,8 +22,8 @@ ms.locfileid: "92472523"
 
 可以通过以下资源深入了解虚拟网络和关联的架构：
 
-- [云服务（经典）配置架构](schema-cscfg-file.md)
-- [云服务（经典）定义架构](schema-csdef-file.md)
+- [云服务配置架构](schema-cscfg-file.md)
+- [云服务定义架构](schema-csdef-file.md)
 - [创建虚拟网络（经典）](https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal)
 
 ## <a name="networkconfiguration-element"></a>NetworkConfiguration 元素
@@ -74,5 +74,5 @@ ms.locfileid: "92472523"
 | ReservedIP | 可选。 指定应与部署关联的保留 IP 地址。 必须使用“创建保留 IP 地址”创建保留的 IP 地址。 云服务中的每个部署均可与一个保留 IP 地址相关联。 保留 IP 地址的名称由 `name` 属性的字符串定义。|
 
 ## <a name="see-also"></a>另请参阅
-[云服务（经典）配置架构](schema-cscfg-file.md)
+[云服务配置架构](schema-cscfg-file.md)
 

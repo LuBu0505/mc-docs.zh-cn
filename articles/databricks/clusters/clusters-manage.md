@@ -8,12 +8,12 @@ author: mssaperla
 ms.date: 09/11/2020
 title: 管理群集 - Azure Databricks
 description: 了解如何管理 Azure Databricks 群集，包括显示、编辑、启动、终止、删除、控制访问权限以及监视性能和日志。
-ms.openlocfilehash: cbbccce24e06ca11f68bd5e3704f8fb4698acce0
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: 70e15463ccdc4e573d1ffaf2a5ff6e3d6ef7d79e
+ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121953"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99059172"
 ---
 # <a name="manage-clusters"></a>管理群集
 
@@ -21,7 +21,7 @@ ms.locfileid: "92121953"
 
 ## <a name="display-clusters"></a>显示分类
 
-若要在工作区中显示群集，请单击群集图标 ![“群集”图标](../_static/images/clusters/clusters-icon.png) （在边栏中）。
+若要在工作区中显示群集，请单击群集图标 ![“群集”图标](../_static/images/icons/clusters-icon.png) （在边栏中）。
 
 “群集”页在以下两个选项卡中显示群集：“通用群集”和“作业群集” 。
 
@@ -156,7 +156,7 @@ ms.locfileid: "92121953"
    > [!div class="mx-imgBorder"]
    > ![群集创建权限](../_static/images/clusters/acl-allow-user.png)
 
-2. 群集级别权限：具有某群集的“可管理”权限的用户可配置其他用户是否能够通过单击群集操作中的 ![权限图标](../_static/images/access-control/permissions-icon.png) 图标来附加到、重启、管理该群集并调整其大小。
+2. 群集级别权限：具有某群集的“可管理”权限的用户可配置其他用户是否能够通过单击群集操作中的 ![权限图标](../_static/images/icons/permissions-icon.png) 图标来附加到、重启、管理该群集并调整其大小。
 
    > [!div class="mx-imgBorder"]
    > ![群集权限](../_static/images/clusters/acl-list.png)
@@ -246,6 +246,7 @@ Azure Databricks 标识具有唯一[群集 ID](../dev-tools/api/latest/clusters.
 >
 > * 群集不会报告使用 DStreams 时产生的活动。 这意味着自动终止的群集在运行 DStreams 时可能会被终止。 请关闭针对运行 DStreams 的群集的自动终止功能，或考虑使用结构化流式处理。
 > * 自动终止功能仅监视 Spark 作业，不监视用户定义的本地进程。 因此，如果所有 Spark 作业都已完成，则即使本地进程正在运行，也可能终止群集。
+> * 空闲群集在终止之前的不活动期间会继续累积 DBU 和云实例费用。
 
 #### <a name="configure-automatic-termination"></a>配置自动终止
 
@@ -324,14 +325,14 @@ Azure Databricks 提供以下三种与群集相关的活动日志记录：
 
 #### <a name="view-a-cluster-event-log"></a>查看群集事件日志
 
-1. 单击“群集”图标 ![“群集”图标](../_static/images/clusters/clusters-icon.png) （在边栏中）。
+1. 单击“群集”图标 ![“群集”图标](../_static/images/icons/clusters-icon.png) （在边栏中）。
 2. 单击群集名称。
 3. 单击“事件日志”选项卡。
 
    > [!div class="mx-imgBorder"]
    > ![事件日志](../_static/images/clusters/cluster-event-log.png)
 
-若要筛选事件，请单击“按事件类型筛选…”字段中的 ![下拉菜单](../_static/images/menu-dropdown.png)， 然后选中一个或多个事件类型复选框。
+若要筛选事件，请单击“按事件类型筛选…”字段中的 ![下拉菜单](../_static/images/icons/menu-dropdown.png)， 然后选中一个或多个事件类型复选框。
 
 使用“全选”可通过排除特定事件类型来简化筛选。
 

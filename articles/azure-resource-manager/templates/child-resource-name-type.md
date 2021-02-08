@@ -1,17 +1,17 @@
 ---
 title: 模板中的子资源
-description: 介绍如何在 Azure 资源管理器模板中设置子资源的名称和类型。
+description: 介绍如何在 Azure 资源管理器模板（ARM 模板）中设置子资源的名称和类型。
 ms.topic: conceptual
 origin.date: 12/21/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 01/25/2021
 ms.author: v-yeche
-ms.openlocfilehash: c386bdb38a79058470b4c905b364979a0d21ac8f
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 04cf1ec4ada8454a12db80b5f9f53c41f4916a99
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021224"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751382"
 ---
 <!--Verify Successfully-->
 # <a name="set-name-and-type-for-child-resources"></a>设置子资源的名称和类型
@@ -96,7 +96,7 @@ ms.locfileid: "98021224"
 ]
 ```
 
-完整的资源类型仍然为 **Microsoft.Network/virtualNetworks/subnets**。 可不提供 **Microsoft.Network/virtualNetworks/** ，因为假设它继承父资源类型。
+完整的资源类型仍然为 `Microsoft.Network/virtualNetworks/subnets`。 可不提供 `Microsoft.Network/virtualNetworks/`，因为假设它继承父资源类型。
 
 子资源名称设置为 **Subnet1**，但完整名称包含父名称。 可不提供 **VNet1**，因为假设它继承父资源。
 
@@ -109,7 +109,7 @@ ms.locfileid: "98021224"
 "name": "{parent-resource-name}/{child-resource-name}",
 ```
 
-以下示例显示一个虚拟网络和子网，二者都在根级别进行定义。 请注意，子网不包含在虚拟网络的资源数组中。 名称设置为 **VNet1/Subnet1**，类型设置为 **Microsoft.Network/virtualNetworks/subnets**。 子资源被标记为依赖父资源，因为在部署子资源之前，必须存在父资源。
+以下示例显示一个虚拟网络和子网，二者都在根级别进行定义。 请注意，子网不包含在虚拟网络的资源数组中。 名称设置为 **VNet1/Subnet1**，类型设置为 `Microsoft.Network/virtualNetworks/subnets`。 子资源被标记为依赖父资源，因为在部署子资源之前，必须存在父资源。
 
 ```json
 "resources": [
@@ -143,8 +143,7 @@ ms.locfileid: "98021224"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关创建 ARM 模板的信息，请参阅[创作模板](template-syntax.md)。
-
+* 若要了解如何创建 ARM 模板，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 * 若要了解引用资源时的资源名称格式，请参阅[引用函数](template-functions-resource.md#reference)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

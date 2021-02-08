@@ -4,13 +4,13 @@ description: 介绍如何在创建 Azure 事件网格订阅时筛选事件。
 author: Johnnytechn
 ms.topic: conceptual
 origin.date: 01/21/2019
-ms.date: 08/10/2020
-ms.openlocfilehash: cc0fce325a0acce09b2cf154262ba9276483aa92
-ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
+ms.date: 01/18/2021
+ms.openlocfilehash: 4ef747756ec52a32f018890af67087f821cda3b3
+ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88228038"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751185"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解事件网格订阅的事件筛选
 
@@ -74,7 +74,7 @@ ms.locfileid: "88228038"
 ]
 ```
 
-如果指定多个不同的筛选器，则将执行 **AND** 操作，因此必须满足每个筛选器条件。 以下是示例： 
+如果指定多个不同的筛选器，则将执行 **AND** 操作，因此必须满足每个筛选器条件。 下面是一个示例： 
 
 ```json
 "advancedFilters": [
@@ -97,7 +97,7 @@ ms.locfileid: "88228038"
 
 ### <a name="operators"></a>运算符
 
-可用的数字**** 运算符为：
+可用的数字运算符为：
 
 * NumberGreaterThan
 * NumberGreaterThanOrEquals
@@ -106,10 +106,10 @@ ms.locfileid: "88228038"
 * NumberIn
 * NumberNotIn
 
-可用的布尔值**** 运算符为： 
+可用的布尔值运算符为： 
 - BoolEquals
 
-可用的字符串**** 运算符为：
+可用的字符串运算符为：
 
 * StringContains
 * StringBeginsWith
@@ -117,7 +117,24 @@ ms.locfileid: "88228038"
 * StringIn
 * StringNotIn
 
-所有字符串比较均不**** 区分大小写。
+所有字符串比较均不区分大小写。
+
+> [!NOTE]
+> 如果事件 JSON 不包含高级筛选键，则对于以下运算符，筛选器将计算为“不匹配”： 
+> - NumberGreaterThan
+> - NumberGreaterThanOrEquals
+> - NumberLessThan
+> - NumberLessThanOrEquals
+> - NumberIn
+> - BoolEquals
+> - StringContains
+> - StringBeginsWith
+> - StringEndsWith
+> - StringIn
+> 
+>对于以下运算符，筛选器将计算为“匹配”：
+> - NumberNotIn
+> - StringNotIn
 
 ### <a name="key"></a>键
 
@@ -155,8 +172,8 @@ ms.locfileid: "88228038"
 
 * 每个事件网格订阅的所有筛选器都有 5 个高级筛选器和 25 个筛选器值
 * 每个字符串值有 512 个字符
-* “in”和“not in”运算符有 5 个值**** ****
-* 具有 `.`（点）**** 字符的键。 例如： `http://schemas.microsoft.com/claims/authnclassreference` 或 `john.doe@contoso.com` 。 目前不支持键中使用转义字符。 
+* “in”和“not in”运算符有 5 个值 
+* 具有 `.`（点）字符的键。 例如： `http://schemas.microsoft.com/claims/authnclassreference` 或 `john.doe@contoso.com` 。 目前不支持键中使用转义字符。 
 
 可以在多个筛选器中使用相同的键。
 
