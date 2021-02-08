@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 02/04/2021
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fb3d85af2f22eedc6ad0eebb03c40deedb94d9b
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: f3e1c5a808d3480c53c17ce0f4f97636512084d3
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023555"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540735"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>如何管理已加入 Azure AD 的设备上的本地管理员组
 
@@ -32,8 +32,7 @@ ms.locfileid: "98023555"
 - Azure AD 设备管理员角色 
 - 执行 Azure AD 联接的用户   
 
-通过将 Azure AD 角色添加到本地管理员组，可以在 Azure AD 中随时更新可管理设备的用户，而无需修改设备上的任何内容。 目前，无法将组分配到管理员角色。
-Azure AD 还会将 Azure AD 设备管理员角色添加到本地管理员组，以支持最小特权原则 (PoLP)。 除全局管理员之外，还可启用仅分配了设备管理员角色的用户来管理设备。 
+通过将 Azure AD 角色添加到本地管理员组，可以在 Azure AD 中随时更新可管理设备的用户，而无需修改设备上的任何内容。 Azure AD 还会将 Azure AD 设备管理员角色添加到本地管理员组，以支持最小特权原则 (PoLP)。 除全局管理员之外，还可启用仅分配了设备管理员角色的用户来管理设备。 
 
 ## <a name="manage-the-global-administrators-role"></a>管理全局管理员角色
 
@@ -117,4 +116,3 @@ Azure AD 还会将 Azure AD 设备管理员角色添加到本地管理员组，�
 
 - 若要大致了解如何在 Azure 门户中管理设备，请参阅[使用 Azure 门户管理设备](device-management-azure-portal.md)
 - 若要详细了解基于设备的条件访问，请参阅[配置 Azure Active Directory 基于设备的条件访问策略](../conditional-access/require-managed-devices.md)。
-

@@ -5,14 +5,14 @@ author: Johnnytechn
 ms.service: virtual-machines-linux
 origin.date: 05/24/2017
 ms.topic: how-to
-ms.date: 12/01/2020
+ms.date: 02/01/2021
 ms.author: v-johya
-ms.openlocfilehash: e37565a4f5cbfba7647389c59503c9d9901d6b73
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: 5ee07199c829896185f646f5fefd02935965939c
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432447"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579395"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>创建 OpenBSD 磁盘映像并将其上传到 Azure
 本文介绍如何创建和上传包含 OpenBSD 操作系统的虚拟硬盘 (VHD)。 上传后，可将其用作自己的映像，通过 Azure CLI 在 Azure 中创建虚拟机 (VM)。
@@ -143,7 +143,7 @@ az storage blob upload \
 
 
 ## <a name="create-vm-from-your-vhd"></a>从 VHD 创建 VM
-可使用[示例脚本](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md)或直接使用 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 创建 VM。 若要指定上传的 OpenBSD VHD，请使用 `--image` 参数，如下所示：
+可使用[示例脚本](https://docs.microsoft.com/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-vhd)或直接使用 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 创建 VM。 若要指定上传的 OpenBSD VHD，请使用 `--image` 参数，如下所示：
 
 ```azurecli
 az vm create \

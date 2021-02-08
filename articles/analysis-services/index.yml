@@ -10,16 +10,16 @@ metadata:
   manager: mtillman
   origin.date: 10/30/2019
   author: rockboyfor
-  ms.date: 10/26/2020
+  ms.date: 02/08/2021
   ms.testscope: no
   ms.testdate: 
   ms.author: v-yeche
-  ms.openlocfilehash: 8a1f6a8d089fc1f13605a4b3a93ea5cf5825d543
-  ms.sourcegitcommit: 7b3c894d9c164d2311b99255f931ebc1803ca5a9
+  ms.openlocfilehash: 558246c759eb26347bee8ea5ceaecff9365a7482
+  ms.sourcegitcommit: fda47fe846d47f30e65a048251402d873e416650
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/23/2020
-  ms.locfileid: "92470094"
+  ms.lasthandoff: 02/02/2021
+  ms.locfileid: "99426660"
 landingContent:
 - title: 关于 Azure Analysis Services
   linkLists:

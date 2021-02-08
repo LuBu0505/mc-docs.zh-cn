@@ -1,25 +1,28 @@
 ---
-title: Azure CLI 脚本 - 缩放 Azure Database for MariaDB 服务器
+title: CLI 脚本 - 缩放服务器 - Azure Database for MariaDB
 description: 此示例 CLI 脚本在查询指标后将 Azure Database for MariaDB 服务器缩放为不同的性能级别。
 author: WenJason
 ms.author: v-jay
-ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 origin.date: 12/02/2019
-ms.date: 04/13/2020
-ms.openlocfilehash: 256edba30e4ffe3a9e568ba505701184090e66ef
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.date: 02/08/2021
+ms.openlocfilehash: 1990c9ac3bed053eb95fed4640bdb0ffc33e7dc7
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126918"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503870"
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mariadb-server-using-azure-cli"></a>使用 Azure CLI 监视和缩放 Azure Database for MariaDB 服务器
 此示例 CLI 脚本在查询指标后为单个 Azure Database for MariaDB 服务器缩放计算和存储。 计算可以增加或减少。 存储只能增加。
 
-本文需要 Azure CLI 2.0 或更高版本。 通过运行 `az --version` 来查看版本。 请参阅[安装 Azure CLI]( /cli/install-azure-cli)，了解如何安装或升级 Azure CLI 的版本。 
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
+
+- 本文需要 Azure CLI 版本 2.0 或更高版本。
 
 ## <a name="sample-script"></a>示例脚本
 使用你的订阅 ID 更新脚本。

@@ -7,12 +7,12 @@ author: rockboyfor
 ms.date: 12/14/2020
 ms.author: v-yeche
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 5f60d9a3782e83afd28d63518d28288e09c7cced
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: c7cf730f1cbf1a2b99c5c53bddf1e184c6ab958e
+ms.sourcegitcommit: fda47fe846d47f30e65a048251402d873e416650
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004032"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99426619"
 ---
 <!--Verify sucessfully-->
 <!--Part content of released articles-->
@@ -53,6 +53,12 @@ ms.locfileid: "97004032"
 ### <a name="configure-the-environment"></a>配置环境
 
 使用适用于环境的值填充这些 shell 环境变量。 此步骤并非必须执行的步骤，但它能让在此教程中执行多个 Azure CLI 命令更容易。 如果未填充这些环境变量，则每当示例命令中出现每个值，都必须手动替换该值。
+
+<!--MOONCAKE CUSTOMIZE-->
+
+[!INCLUDE [container-registry-acr-build-valid-regions-chenye.md](../../includes/container-registry-acr-build-valid-regions-chenye.md)]
+
+<!--MOONCAKE CUSTOMIZE-->
 
 ```azurecli
 BASE_ACR=<base-registry-name>   # The name of your Azure container registry for base images

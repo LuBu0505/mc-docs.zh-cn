@@ -7,14 +7,14 @@ origin.date: 06/13/2018
 ms.subservice: monitoring
 ms.custom: REST
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 02/01/2021
 ms.author: v-johya
-ms.openlocfilehash: 2882ed91e15eac0cd389923d45a0bf2665443596
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 8d81a2b115c10d225ef82c8b88d1066fdfcbcd12
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022341"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579391"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>使用 REST API 获取虚拟机使用情况指标
 
@@ -43,7 +43,7 @@ GET https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceG
 
 | 名称 | 说明 |
 | :--- | :---------- |
-| subscriptionId | 用于标识 Azure 订阅的订阅 ID。 如果拥有多个订阅，请参阅[使用多个订阅](/cli/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
+| subscriptionId | 用于标识 Azure 订阅的订阅 ID。 如果拥有多个订阅，请参阅[使用多个订阅](/cli/manage-azure-subscriptions-azure-cli)。 |
 | resourceGroupName | 与资源相关的 Azure 资源组的名称。 可以从 Azure 资源管理器 API、CLI 或门户获取此值。 |
 | vmname | Azure 虚拟机的名称。 |
 | metricnames | 以逗号分隔的有效[负载均衡器指标](../../load-balancer/load-balancer-standard-diagnostics.md)列表。 |

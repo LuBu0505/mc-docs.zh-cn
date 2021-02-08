@@ -7,16 +7,16 @@ ms.devlang: go
 ms.topic: quickstart
 origin.date: 04/24/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/08/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6049039f33b32c60a3e77018dd17149a1ef7f0bb
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 4d5d183c69f3cbba9f8ec0673e048b7cd0bc7540
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98229870"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580613"
 ---
 <!--Verified successfully-->
 # <a name="quickstart-connect-a-go-application-to-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：将 Go 应用程序连接到 Azure Cosmos DB 的 API for MongoDB
@@ -345,7 +345,7 @@ Azure CLI 输出类似于以下示例的信息。
 ### <a name="export-the-connection-string-mongodb-database-and-collection-names-as-environment-variables"></a>将连接字符串、MongoDB 数据库和集合名称导出为环境变量。 
 
 ```bash
-export MONGODB_CONNECTION_STRING="mongodb://<COSMOSDB_ACCOUNT_NAME>:<COSMOSDB_PASSWORD>@<COSMOSDB_ACCOUNT_NAME>.mongo.cosmos.azure.cn:10255/?ssl=true&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@<COSMOSDB_ACCOUNT_NAME>@"
+export MONGODB_CONNECTION_STRING="mongodb://<COSMOSDB_ACCOUNT_NAME>:<COSMOSDB_PASSWORD>@<COSMOSDB_ACCOUNT_NAME>.documents.azure.cn:10255/?ssl=true&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@<COSMOSDB_ACCOUNT_NAME>@"
 ```
 
 > [!NOTE] 
@@ -472,4 +472,4 @@ Azure Cosmos DB 中存储的数据可用于在 Azure 门户中查看和查询。
 > [!div class="nextstepaction"]
 > [将 MongoDB 数据导入 Azure Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fcosmos-db%2ftoc.json%253ftoc%253d%2fcosmos-db%2ftoc.json)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

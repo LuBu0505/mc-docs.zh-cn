@@ -8,15 +8,15 @@ ms.subservice: workloads
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
-ms.date: 12/01/2020
+ms.date: 02/01/2021
 ms.author: v-johya
 origin.date: 07/11/2018
-ms.openlocfilehash: a7d3d5de1b9b09c4cb30a4c0defed4296c61e902
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: db521a6fd1425673f7740880faec76090d72ea68
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747039"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579615"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>在 Azure 中运行 OpenSUSE Linux 的虚拟机上安装 MySQL
 
@@ -39,7 +39,7 @@ az group create --name mySQLSUSEResourceGroup --location chinaeast
 ```azurecli
 az vm create --resource-group mySQLSUSEResourceGroup \
    --name myVM \
-   --image openSUSE-Leap \
+   --image SUSE:openSUSE-Leap:15-2:latest \
    --size Standard_D2s_v3 \
    --generate-ssh-keys
 ```

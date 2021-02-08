@@ -184,8 +184,6 @@
               href: ../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fvirtual-network%2ftoc.json
             - name: VNet (Resource Manager) 到 VNet（经典）
               href: ../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md?toc=%2fvirtual-network%2ftoc.json
-            - name: VNet 到本地网络 (VPN)
-              href: ../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fvirtual-network%2ftoc.json
             - name: VNet 到本地网络 (ExpressRoute)
               href: ../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fvirtual-network%2ftoc.json
         - name: 部署容器网络
@@ -234,6 +232,8 @@
               href: virtual-network-public-ip-address.md
             - name: 管理公共 IP 前缀
               href: manage-public-ip-address-prefix.md
+            - name: 升级公共 IP 地址
+              href: virtual-network-public-ip-address-upgrade.md
             - name: 在 NIC 中添加或删除 IP 地址
               href: virtual-network-network-interface-addresses.md
     - name: 安全性
@@ -246,8 +246,6 @@
               href: tutorial-filter-network-traffic-powershell.md
             - name: Azure CLI
               href: tutorial-filter-network-traffic-cli.md
-        - name: 网络隔离
-          items:
             - name: 使用服务终结点
               items:
                 - name: Azure 门户
@@ -321,18 +319,20 @@
           href: virtual-machine-network-throughput.md
     - name: 跨区域移动
       items:
-        - name: 网络安全组 - 门户
-          href: move-across-regions-nsg-portal.md
-        - name: 网络安全组 - PowerShell
-          href: move-across-regions-nsg-powershell.md
-        - name: 虚拟网络 - 门户
-          href: move-across-regions-vnet-portal.md
-        - name: 虚拟网络 - PowerShell
-          href: move-across-regions-vnet-powershell.md
-        - name: 公共 IP - 门户
-          href: move-across-regions-publicip-portal.md
-        - name: 公共 IP - PowerShell
-          href: move-across-regions-publicip-powershell.md
+        - name: 手动移动
+          items:
+            - name: 网络安全组 - 门户
+              href: move-across-regions-nsg-portal.md
+            - name: 网络安全组 - PowerShell
+              href: move-across-regions-nsg-powershell.md
+            - name: 虚拟网络 - 门户
+              href: move-across-regions-vnet-portal.md
+            - name: 虚拟网络 - PowerShell
+              href: move-across-regions-vnet-powershell.md
+            - name: 公共 IP - 门户
+              href: move-across-regions-publicip-portal.md
+            - name: 公共 IP - PowerShell
+              href: move-across-regions-publicip-powershell.md
     - name: NAT
       items:
         - name: 创建 NAT 网关 - PowerShell

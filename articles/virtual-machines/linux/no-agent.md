@@ -6,15 +6,15 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 01/05/2021
+ms.date: 02/01/2021
 ms.author: v-johya
 ms.reviewer: cynthn
-ms.openlocfilehash: 6476e04a91881b2e45add59faae63391644f5803
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 301ed227888ea88e332fff9d4f693796f1ec1d12
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023142"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579614"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>创建不含预配代理的通用映像
 
@@ -180,7 +180,7 @@ wireserver_conn.close()
 
 此演示使用 systemd，这是新式 Linux 发行版中最常见的初始化系统。 因此，要确保报告就绪状态的此机制在正确的时间运行，最简单且最原始的方法是创建一个 systemd 服务单元。 你可以将以下单元文件添加到 `/etc/systemd/system`（此示例将单元文件命名为 `azure-provisioning.service`）：
 
-```
+```bash
 [Unit]
 Description=Azure Provisioning
 
@@ -204,7 +204,7 @@ WantedBy=multi-user.target
 
 将此单元添加到文件系统后，运行以下命令来启用它：
 
-```
+```bash
 $ sudo systemctl enable azure-provisioning.service
 ```
 
@@ -214,14 +214,14 @@ $ sudo systemctl enable azure-provisioning.service
 
 返回到开发计算机，运行以下命令，准备通过基本 VM 创建映像：
 
-```
+```bash
 $ az vm deallocate --resource-group demo1 --name demo1
 $ az vm generalize --resource-group demo1 --name demo1
 ```
 
 基于此 VM 创建映像：
 
-```
+```bash
 $ az image create \
     --resource-group demo1 \
     --source demo1 \
@@ -231,7 +231,7 @@ $ az image create \
 
 现在，我们已准备好基于映像创建一个新的 VM（或多个 VM）：
 
-```
+```bash
 $ IMAGE_ID=$(az image show -g demo1 -n demo1img --query id -o tsv)
 $ az vm create \
     --resource-group demo12 \
@@ -249,7 +249,7 @@ $ az vm create \
 
 此 VM 应当会成功预配。 登录到新预配的 VM 后，应该能够看到报告就绪状态的 systemd 服务的输出：
 
-```
+```bash
 $ sudo journalctl -u azure-provisioning.service
 -- Logs begin at Thu 2020-06-11 20:28:45 UTC, end at Thu 2020-06-11 20:31:24 UTC. --
 Jun 11 20:28:49 thstringnopa systemd[1]: Starting Azure Provisioning...

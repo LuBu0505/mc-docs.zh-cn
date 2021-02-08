@@ -5,14 +5,14 @@ ms.service: virtual-machines-linux
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 11/11/2020
+ms.date: 02/01/2021
 ms.custom: seodec18
-ms.openlocfilehash: 4fd08c6563683883139feb9ffd973c309c6c6a33
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: 67b2f1b6d9e3ed4420f741c62f07b01428f08b02
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94638107"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579605"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>创建和配置用于 Azure 磁盘加密的密钥保管库
 
@@ -45,7 +45,7 @@ Azure Disk Encryption 使用 Azure Key Vault 来控制和管理磁盘加密密�
 
 ### <a name="connect-to-your-azure-account"></a>连接到 Azure 帐户
 
-使用 Azure CLI 或 Azure PowerShell 之前，必须先连接到 Azure 订阅。 为此，可以[使用 Azure CLI 登录](/cli/authenticate-azure-cli?view=azure-cli-latest)、[使用 Azure Powershell 登录](https://docs.microsoft.com/powershell/azure/authenticate-azureps?view=azps-2.5.0)，或在出现提示时向 Azure 门户提供凭据。
+使用 Azure CLI 或 Azure PowerShell 之前，必须先连接到 Azure 订阅。 为此，可以[使用 Azure CLI 登录](/cli/authenticate-azure-cli)、[使用 Azure Powershell 登录](https://docs.microsoft.com/powershell/azure/authenticate-azureps)，或在出现提示时向 Azure 门户提供凭据。
 
 ```azurecli
 az login

@@ -10,14 +10,13 @@ metadata:
   author: kgremban
   ms.author: v-tawe
   manager: philmea
-  origin.date: 08/05/2019
-  ms.date: 11/13/2020
-  ms.openlocfilehash: f140ddc0e2503a2e0e2e2b9a6594b7159d194948
-  ms.sourcegitcommit: 9438c9db77338cecacf37d2fc178e757df9de83d
+  ms.date: 02/02/2021
+  ms.openlocfilehash: 96e10e40502d4981986b16e43d155fd118a076ae
+  ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/13/2020
-  ms.locfileid: "94595208"
+  ms.lasthandoff: 02/05/2021
+  ms.locfileid: "99579377"
 landingContent:
 - title: 针对 Linux 设备进行开发
   linkLists:
@@ -51,12 +50,14 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 安装 IoT Edge 运行时
-      url: how-to-install-iot-edge.md
-    - text: 注册并预配单个设备
-      url: how-to-manual-provision-symmetric-key.md
+    - text: 注册单台设备
+      url: how-to-register-device.md
     - text: 大规模注册并预配设备
       url: how-to-auto-provision-symmetric-keys.md
+    - text: 在 Linux 设备上安装 IoT Edge 运行时
+      url: how-to-install-iot-edge.md
+    - text: 在 Windows 设备上安装 IoT Edge 运行时
+      url: how-to-install-iot-edge-on-windows.md
 - title: 参与开放源代码社区活动
   linkLists:
   - linkListType: get-started

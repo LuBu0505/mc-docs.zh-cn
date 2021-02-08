@@ -7,16 +7,16 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 origin.date: 09/14/2020
 author: rockboyfor
-ms.date: 12/07/2020
+ms.date: 02/08/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: bf83d73e215519e94439c056ed3efff83665254e
-ms.sourcegitcommit: bbe4ee95604608448cf92dec46c5bfe4b4076961
+ms.openlocfilehash: 63056d5358f533ab103db6875b849f8b5964a7fe
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96598673"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580616"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -86,10 +86,11 @@ Azure Cosmos DB Cassandra API 支持以下 CQL 函数：
 | 标记 * | 是 |
 | ttl | 是 |
 | writetime | 是 |
-| 强制转换 | 否 |
+| cast ** | 是 |
 
-> [!NOTE]
-> \* Cassandra API 支持作为投影/选择器的标记，但只允许在 where 子句的左侧使用标记(pk)。 例如，支持 `WHERE token(pk) > 1024`，但不支持 `WHERE token(pk) > token(100)`。
+> [!NOTE] 
+> \* Cassandra API 支持作为投影/选择器的标记，但只允许在 where 子句的左侧使用标记(pk)。 例如，支持 `WHERE token(pk) > 1024`，但不支持 `WHERE token(pk) > token(100)`。  
+> \*\* `cast()` 函数不可嵌套在 Cassandra API 中。 例如，支持 `SELECT cast(count as double) FROM myTable`，但不支持 `SELECT avg(cast(count as double)) FROM myTable`。
 
 聚合函数：
 
@@ -180,6 +181,29 @@ Azure Cosmos DB 在 Cassandra API 帐户上支持以下数据库命令。
 | TRUNCATE | 否 |
 | USE | 是 |
 
+## <a name="cql-shell-commands"></a>CQL Shell 命令
+
+Azure Cosmos DB 在 Cassandra API 帐户上支持以下数据库命令。
+
+|Command  |支持 |
+|---------|---------|
+| 捕获 | 是 |
+| CLEAR | 是 |
+| CONSISTENCY * | 不适用 |
+| 复制 | 否 |
+| DESCRIBE | 是 |
+| cqlshExpand | 否 |
+| EXIT | 是 |
+| LOGIN | 不适用（不支持 CQL 函数 `USER`，因此 `LOGIN` 是冗余的） |
+| PAGING | 是 |
+| SERIAL CONSISTENCY * | 不适用 |
+| SHOW | 是 |
+| 源 | 是 |
+| TRACING | 不适用（Cassandra API 由 Azure Cosmos DB 提供支持 - 使用[诊断日志记录](cosmosdb-monitor-resource-logs.md)进行故障排除） |
+
+> [!NOTE] 
+> \* 一致性在 Azure Cosmos DB 中的工作方式不同，请参阅[此处](cassandra-consistency.md)获取详细信息。  
+
 ## <a name="json-support"></a>JSON 支持
 |Command  |支持 |
 |---------|---------|
@@ -200,11 +224,13 @@ Azure Cosmos DB Cassandra API 是一个托管的服务平台。 它不需要任�
 
 ## <a name="hosted-cql-shell-preview"></a>托管 CQL shell（预览版）
 
-<!--Not Available on Enable Notebook feature on Azure portal-->
+<!--NOT AVAILABLE ON [Azure portal](data-explorer.md)-->
+<!--NOT AVAILABLE ON [enable the Notebooks](enable-notebooks.md)-->
+<!--NOT AVAILABLE ON Enable Notebook feature on Azure portal-->
 
-可以使用安装在本地计算机上的 CQLSH 连接到 Azure Cosmos DB 中的 Cassandra API。 它随 Apache Cassandra 3.1.1 一起提供，设置一些环境变量即可直接使用。 以下部分包括使用 CQLSH 在 Windows 或 Linux 上的 Azure Cosmos DB 中安装、配置和连接到 Cassandra API 的说明。
 
 <!--Not Available on also-->
+可以使用安装在本地计算机上的 CQLSH 连接到 Azure Cosmos DB 中的 Cassandra API。 它随 Apache Cassandra 3.1.1 一起提供，设置一些环境变量即可直接使用。 以下部分包括使用 CQLSH 在 Windows 或 Linux 上的 Azure Cosmos DB 中安装、配置和连接到 Cassandra API 的说明。
 
 > [!NOTE]
 > 与 Azure Cosmos DB Cassandra API 的连接将不适用于 CQLSH 的 DataStax Enterprise (DSE) 版本。 连接到 Cassandra API 时，请确保只使用 CQLSH 的开源 Apache Cassandra 版本。 
@@ -290,4 +316,4 @@ Azure Cosmos DB 是一种资源治理系统。 这意味着，你可以根据操
 
 - 通过使用 Java 应用程序开始[创建 Cassandra API 帐户、数据库和表](create-cassandra-api-account-java.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

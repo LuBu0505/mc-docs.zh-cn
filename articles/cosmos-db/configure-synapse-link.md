@@ -3,19 +3,19 @@ title: 配置和使用 Azure Synapse Link for Azure Cosmos DB
 description: 了解如何为 Azure Cosmos DB 帐户启用 Synapse Link，创建启用了分析存储的容器，将 Azure Cosmos 数据库连接到 Synapse 工作区，并运行查询。
 ms.service: cosmos-db
 ms.topic: how-to
-origin.date: 08/31/2020
+origin.date: 11/30/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/08/2021
 ms.testscope: yes
 ms.testdate: 09/28/2020
 ms.author: v-yeche
 ms.custom: references_regions
-ms.openlocfilehash: f23e895477fce312f258eefa2244c08858d7026b
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: d054f493d8f84640b835d91a24443ce32318656e
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231009"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580615"
 ---
 <!--Verified successfully-->
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>配置和使用 Azure Synapse Link for Azure Cosmos DB
@@ -69,7 +69,7 @@ Azure Synapse Link 可用于 Azure Cosmos DB SQL API 容器或 Azure Cosmos DB A
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 
-    <!--Not Avaialble on [Azure Cosmos explorer](https://cosmos.azure.com/)-->
+    <!--NOT AVAILABLE ON [Azure Cosmos DB Explorer](https://cosmos.azure.com/)-->
 
 1. 导航到你的 Azure Cosmos DB 帐户，打开“数据资源管理器”选项卡。
 
@@ -88,16 +88,15 @@ Azure Synapse Link 可用于 Azure Cosmos DB SQL API 容器或 Azure Cosmos DB A
 以下代码使用 .NET SDK 创建具有分析存储的容器。 将分析 TTL 属性设置为所需的值。 有关允许值的列表，请参阅[分析 TTL 支持的值](analytical-store-introduction.md#analytical-ttl)一文：
 
 ```csharp
-// Create a container with a partition key, and analytical TTL configured to  -1 (infinite retention)
-string containerId = "myContainerName";
-int analyticalTtlInSec = -1;
-ContainerProperties cpInput = new ContainerProperties()
-            {
-Id = containerId,
-PartitionKeyPath = "/id",
-AnalyticalStorageTimeToLiveInSeconds = analyticalTtlInSec,
+// Create a container with a partition key, and analytical TTL configured to -1 (infinite retention)
+ContainerProperties properties = new ContainerProperties()
+{
+    Id = "myContainerId",
+    PartitionKeyPath = "/id",
+    AnalyticalStoreTimeToLiveInSeconds = -1,
 };
- await this. cosmosClient.GetDatabase("myDatabase").CreateContainerAsync(cpInput);
+CosmosClient cosmosClient = new CosmosClient("myConnectionString");
+await cosmosClient.GetDatabase("myDatabase").CreateContainerAsync(properties);
 ```
 
 ### <a name="java-v4-sdk"></a>Java V4 SDK
@@ -184,7 +183,7 @@ except exceptions.CosmosResourceExistsError:
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 
-    <!--Not Avaialble on [Azure Cosmos explorer](https://cosmos.azure.com/)-->
+    <!--NOT AVAILABLE ON [Azure Cosmos DB Explorer](https://cosmos.azure.com/)-->
 
 1. 导航到你的 Azure Cosmos DB 帐户，打开“数据资源管理器”选项卡。
 
@@ -221,19 +220,14 @@ containerProperties.setAnalyticalStoreTimeToLiveInSeconds (60 * 60 * 24 * 180 );
 container.replace(containerProperties).block();
 ```
 
-<!--Not Available on ## Connect to a Synapse workspace-->
-
-<!--Not Available on [Connect to Azure Synapse Link](../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md)-->
-
-<!--Not Available on ## Query analytical store using Apache Spark for Azure Synapse Analytics-->
-<!--Not Available on [Query Azure Cosmos DB analytical store](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md)-->
-<!--Not Available on ## Query the analytical store using Synapse SQL serverless-->
-
-<!--Not Available on [Query analytical store using Synapse SQL serverless](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)-->
-<!--Not Available on Use the instructions in the [Query Azure Cosmos DB analytical store](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md)-->
-
-<!--Not Available on ## Use Synapse SQL serverless to analyze and visualize data in Power BI-->
-<!--Not Available on [Synapse SQL serverless to analyze Azure Cosmos DB data with Synapse Link](synapse-link-power-bi.md)-->
+<!--NOT AVAILABLE ON ## Connect to a Synapse workspace-->
+<!--NOT AVAILABLE ON [Connect to Azure Synapse Link](../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md)-->
+<!--NOT AVAILABLE ON ## Query analytical store using Apache Spark for Azure Synapse Analytics-->
+<!--NOT AVAILABLE ON [Query Azure Cosmos DB analytical store](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md)-->
+<!--NOT AVAILABLE ON ## Query the analytical store using serverless SQL pool in Azure Synapse Analytics-->
+<!--NOT AVAILABLE ON [Query analytical store using serverless SQL pool](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)-->
+<!--NOT AVAILABLE ON ## Use serverless SQL pool to analyze and visualize data in Power BI-->
+<!--NOT AVAILABLE ON [Serverless SQL pool to analyze Azure Cosmos DB data with Synapse Link](synapse-link-power-bi.md)-->
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
 
@@ -254,8 +248,6 @@ container.replace(containerProperties).block();
 
 * [有关 Azure Synapse Link for Azure Cosmos 的常见问题。](synapse-link-frequently-asked-questions.md)
 
-<!--Not Available on * [Apache Spark in Azure Synapse Analytics](../synapse-analytics/spark/apache-spark-concepts.md)-->
-
-<!--Not Available on * [SQL serverless runtime support in Azure Synapse Analytics](../synapse-analytics/sql/on-demand-workspace-overview.md)-->
-
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--NOT AVAILABLE ON * [Apache Spark in Azure Synapse Analytics](../synapse-analytics/spark/apache-spark-concepts.md)-->
+<!--NOT AVAILABLE ON * [Serverless SQL pool runtime support in Azure Synapse Analytics](../synapse-analytics/sql/on-demand-workspace-overview.md)-->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -6,15 +6,15 @@ ms.service: virtual-machines-linux
 ms.subservice: security
 ms.topic: how-to
 ms.author: v-johya
-ms.date: 11/11/2020
+ms.date: 02/01/2021
 origin.date: 03/11/2020
 ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: f70a8c4592093bb9d69ddece5182be255b260743
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: 64c25977b3bc472f0bc4eaaf1cc8281efad9080d
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637912"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579410"
 ---
 <!--Verified successfully-->
 <!--Extension AzureDiskEncryptionForLinux exist-->
@@ -74,7 +74,7 @@ ms.locfileid: "94637912"
 ### <a name="single-pass"></a>单次传递
 在单次传递中，将在每个磁盘（OS 和数据）上标记加密设置。 可以按如下方式在单次传递中捕获 OS 磁盘的加密设置：
 
-``` powershell
+```powershell
 $RGNAME = "RGNAME"
 $VMNAME = "VMNAME"
 
@@ -164,7 +164,7 @@ Write-Host "====================================================================
 
 可以使用以下 Azure CLI 命令验证已加密 VM 的“常规”加密状态：
 
-```bash
+```azurecli
 VMNAME="VMNAME"
 RGNAME="RGNAME"
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "substatus"
@@ -174,7 +174,7 @@ az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "subst
 ### <a name="single-pass"></a>单次传递
 可以使用以下 Azure CLI 命令验证每个磁盘的加密设置：
 
-```bash
+```azurecli
 az vm encryption show -g ${RGNAME} -n ${VMNAME} --query "disks[*].[name, statuses[*].displayStatus]"  -o table
 ```
 
@@ -207,7 +207,7 @@ done
 
 数据磁盘：
 
-```bash
+```azurecli
 RGNAME="RGNAME"
 VMNAME="VMNAME"
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "substatus"
@@ -227,7 +227,7 @@ done
 
 ### <a name="dual-pass"></a>双重传递
 
-``` bash
+```azurecli
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} -o table
 ```
 
@@ -280,7 +280,7 @@ echo "==========================================================================
 
 此命令可列出所有存储帐户的所有 ID：
 
-```bash
+```azurecli
 az storage account list --query [].[id] -o tsv
 ```
 存储帐户 ID 采用以下格式列出：
@@ -299,7 +299,7 @@ ConnectionString=$(az storage account show-connection-string --ids $id --query c
 ```
 
 以下命令可列出存储帐户下的所有容器：
-```bash
+```azurecli
 az storage container list --connection-string $ConnectionString --query [].[name] -o tsv
 ```
 用于磁盘的容器通常命名为“vhds”。
@@ -310,7 +310,7 @@ ContainerName="name of the container"
 ```
 
 此命令可列出特定容器上的所有 blob：
-```bash 
+```azurecli 
 az storage blob list -c ${ContainerName} --connection-string $ConnectionString --query [].[name] -o tsv
 ```
 选择要查询的磁盘，并将其名称存储在变量上：
@@ -318,7 +318,7 @@ az storage blob list -c ${ContainerName} --connection-string $ConnectionString -
 DiskName="diskname.vhd"
 ```
 查询磁盘加密设置：
-```bash
+```azurecli
 az storage blob show -c ${ContainerName} --connection-string ${ConnectionString} -n ${DiskName} --query metadata.DiskEncryptionSettings
 ```
 
@@ -327,7 +327,7 @@ az storage blob show -c ${ContainerName} --connection-string ${ConnectionString}
 
 如果分区或磁盘已加密，它将显示为 crypt 类型。 如果未加密，它将显示为 part/disk 类型。
 
-``` bash
+```bash
 lsblk
 ```
 
@@ -344,11 +344,11 @@ lsblk -o NAME,TYPE,FSTYPE,LABEL,SIZE,RO,MOUNTPOINT
 
 作为额外步骤，可以验证数据磁盘是否已加载任何密钥：
 
-``` bash
+```bash
 cryptsetup luksDump /dev/VGNAME/LVNAME
 ```
 
-``` bash
+```bash
 cryptsetup luksDump /dev/sdd1
 ```
 

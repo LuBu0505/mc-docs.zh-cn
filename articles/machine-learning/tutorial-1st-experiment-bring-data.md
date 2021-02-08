@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 54639fb2d7740badc9538183bd3ee45c71fb4cfe
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 4966aa8436e4ffd86560e91ba026da79e8c1487b
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023220"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804372"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>教程：使用你自己的数据（第 4 部分，共 4 部分）
 
@@ -40,11 +40,9 @@ ms.locfileid: "98023220"
 ## <a name="prerequisites"></a>先决条件
 
 * 完成本系列的[第 3 部分](tutorial-1st-experiment-sdk-train.md)。
-* Python 语言和机器学习工作流的入门知识。
-* 本地开发环境，如 Visual Studio Code、Jupyter 或 PyCharm。
-* Python（版本 3.5 至 3.7）。
 
 ## <a name="adjust-the-training-script"></a>调整训练脚本
+
 现在，你的训练脚本 (tutorial/src/train.py) 已在 Azure 机器学习中运行，并且你可以监视模型性能。 让我们通过引入参数来将训练脚本参数化。 使用参数可轻松比较不同的超参数。
 
 我们的训练脚本现在设置为在每次运行时下载 CIFAR10 数据集。 以下 Python 代码已调整为从某个目录中读取数据。
@@ -176,6 +174,20 @@ tutorial
 
 如果在上一教程中未在本地运行 `train.py`，将不会有 `data/` 目录。 在此示例中，请在 `train.py` 脚本中在 `download=True` 的情况下在本地运行 `torchvision.datasets.CIFAR10` 方法。
 
+此外，若要在本地运行，请确保退出教程环境并激活新的 Conda 环境：
+
+```bash
+conda deactivate                # If you are still using the tutorial environment, exit it
+```
+
+```bash
+conda env create -f .azureml/pytorch-env.yml    # create the new conda environment with updated dependencies
+```
+
+```bash
+conda activate pytorch-aml-env          # activate new conda environment
+```
+
 若要在本地运行修改后的训练脚本，请调用：
 
 ```bash
@@ -209,7 +221,7 @@ datastore.upload(src_dir='./data', target_path='datasets/cifar10', overwrite=Tru
 >[!TIP] 
 > 在使用 Azure 机器学习上传数据时，可以使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)来上传临时文件。 如果需要 ETL 工具，可以使用 [Azure 数据工厂](/data-factory/introduction)将数据引入 Azure。
 
-运行该 Python 文件来上传数据。 （上传速度应该会很快，时间应短于 60 秒。）
+在已激活 tutorial1 conda 环境的窗口中，运行 Python 文件以上传数据。 （上传速度应该会很快，时间应短于 60 秒。）
 
 ```bash
 python 05-upload-data.py

@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 01/14/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: e1f2fbb1ec189c544c4ff3ff781f25922f2c932a
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: a7b7f20974d5d3944f884eff50bfd75db40d1522
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195122"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540838"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>教程：从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API
 
@@ -50,7 +50,7 @@ ms.locfileid: "98195122"
 
 |库|说明|
 |---|---|
-|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft 身份验证库|
+|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)| Microsoft 身份验证库|
 |[Microsoft.Graph](https://www.nuget.org/packages/Microsoft.Graph)|Microsoft Graph 客户端库|
 
 ## <a name="set-up-your-project"></a>设置项目
@@ -59,8 +59,8 @@ ms.locfileid: "98195122"
 
 本指南创建的应用程序显示用来查询 Microsoft Graph API 的按钮和用来注销的按钮。它还显示包含调用结果的文本框。
 
-> [!NOTE]
-> 想要下载此示例的 Visual Studio 项目而不是创建它？ 请[下载项目](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)，并跳到[应用程序注册](#register-your-application "应用程序注册步骤")步骤，在代码示例运行前对其进行配置。
+> [!Tip]
+> 若要查看在本教程中生成的项目的完整版本，可以从 [GitHub](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip) 下载。
 
 ### <a name="create-your-application"></a>创建应用程序
 
@@ -71,7 +71,7 @@ ms.locfileid: "98195122"
 
    ![最低版本和目标版本](./media/tutorial-v2-windows-uwp/select-uwp-target-minimum.png)
 
-### <a name="add-microsoft-authentication-library-to-your-project"></a>向项目添加 Microsoft 身份验证库
+### <a name="add-the-microsoft-authentication-library-to-your-project"></a>向项目添加 Microsoft 身份验证库
 
 1. 在 Visual Studio 中，选择“工具” > “NuGet 包管理器” > “包管理器控制台”  。
 1. 在“包管理器控制台”窗口中复制并粘贴以下命令：
@@ -103,7 +103,7 @@ Visual Studio 创建 *MainPage.xaml* 作为项目模板的一部分。 打开此
 </Grid>
 ```
 
-### <a name="use-microsoft-authentication-library-to-get-a-token-for-the-microsoft-graph-api"></a>使用 Microsoft 身份验证库获取用于 Microsoft Graph API 的令牌
+### <a name="use-the-microsoft-authentication-library-to-get-a-token-for-the-microsoft-graph-api"></a>使用 Microsoft 身份验证库获取用于 Microsoft Graph API 的令牌
 
 本部分介绍如何使用 Microsoft 身份验证库获取用于 Microsoft Graph API 的令牌。 更改 *MainPage.xaml.cs* 文件。
 
@@ -292,8 +292,7 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
     }
 ```
 
-> [!NOTE]
-> MSAL.NET 使用异步方法来获取令牌或操作帐户。 你需要在 UI 线程中支持 UI 操作。 因此，需要进行 `Dispatcher.RunAsync` 调用，并在调用 `ConfigureAwait(false)` 之前采取预防措施。
+MSAL.NET 使用异步方法来获取令牌或操作帐户。 你需要在 UI 线程中支持 UI 操作。 因此，需要进行 `Dispatcher.RunAsync` 调用，并在调用 `ConfigureAwait(false)` 之前采取预防措施。
 
 #### <a name="more-information-about-signing-out"></a>有关注销的详细信息<a name="more-information-on-sign-out"></a>
 
@@ -466,10 +465,10 @@ private async Task DisplayMessageAsync(string message)
 
 “令牌信息”框中还会显示通过 `AcquireTokenInteractive` 或 `AcquireTokenSilent` 获得的令牌的相关基本信息：
 
-|properties  |格式  |说明 |
+|属性  |格式  |说明 |
 |---------|---------|---------|
 |`Username` |`user@domain.com` |用于标识用户的用户名。|
-|`Token Expires` |`DateTime` |令牌的过期时间。 Microsoft 身份验证库通过根据需要续订令牌来延长到期日期。|
+|`Token Expires` |`DateTime` |令牌的过期时间。 Microsoft 身份验证库根据需要通过续订令牌来延长到期日期。|
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>有关作用域和委派权限的详细信息
 
@@ -477,8 +476,7 @@ Microsoft Graph API 需要 `user.read` 作用域来读取用户的配置文件�
 
 若要在应用程序上下文中访问用户的日历，请将 `Calendars.Read` 委托权限添加到应用程序注册信息。 然后，将 `Calendars.Read` 作用域添加到 `acquireTokenSilent` 调用。
 
-> [!NOTE]
-> 增加作用域数量时，用户可能会收到接受其他许可的提示。
+增加作用域数量时，用户可能会收到接受其他许可的提示。
 
 ## <a name="known-issues"></a>已知问题
 
@@ -510,4 +508,3 @@ Microsoft Graph API 需要 `user.read` 作用域来读取用户的配置文件�
 
 > [!div class="nextstepaction"]
 > [Microsoft 身份验证库 (MSAL) 的概述](msal-overview.md)
-

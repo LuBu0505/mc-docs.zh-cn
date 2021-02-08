@@ -5,15 +5,15 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 origin.date: 05/19/2020
-ms.date: 12/28/2020
+ms.date: 02/04/2021
 ms.author: v-johya
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 955d9a5b815e257605d312a88b387072cfd9e8b9
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 667a311fad318551f2fe78773e043382614b1610
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856819"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579414"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>用于语言理解 (LUIS) 的 SDK、REST 和 CLI 开发人员资源
 
@@ -90,7 +90,7 @@ LUIS 目前有 2 种类型的终结点：
 
 |语言 |参考文档|程序包|快速入门|
 |--|--|--|--|
-|C#|[创作](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[预测](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet 创作](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet 预测](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[创作](azure-sdk-quickstart.md?pivots=programming-language-csharp)<br>[查询预测](azure-sdk-quickstart.md?pivots=programming-language-csharp)|
+|C#|[创作](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[预测](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet 创作](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet 预测](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[创作](./client-libraries-rest-api.md?pivots=rest-api)<br>[查询预测](./client-libraries-rest-api.md?pivots=rest-api)|
 |Go|[创作和预测](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)||
 |Java|[创作和预测](https://docs.microsoft.com/java/api/overview/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven 创作](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven 预测](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|
 |Javascript|[创作](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[预测](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM 创作](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM 预测](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[创作](azure-sdk-quickstart.md?pivots=programming-language-javascript)<br>[预测](azure-sdk-quickstart.md?pivots=programming-language-javascript)|
@@ -117,17 +117,14 @@ LUIS 目前有 2 种类型的终结点：
 Bot Framework 在多种语言中以 [SDK](https://github.com/Microsoft/botframework) 形式提供。
 
 Bot Framework 提供有助于语言理解的[多种工具](https://github.com/microsoft/botbuilder-tools)，其中包括：
-
-* [LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown) - 使用 Markdown 文件构建 LUIS 语言理解模型
-* [LUIS CLI](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUIS) - 创建并管理 LUIS.ai 应用程序
-* [Dispatch](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch)- 管理父应用和子应用
-* [LUISGen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) - 为 LUIS 意向和实体自动生成 C#/Typescript 支持类。
 * [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases) - 一款桌面应用程序，可让机器人开发人员测试和调试使用 Bot Framework SDK 构建的机器人。
 * [Bot Framework Composer](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md) - 一个集成开发工具，供开发人员和多学科团队通过 Microsoft Bot Framework 构建机器人和聊天体验
 * [Bot Framework 示例](https://github.com/microsoft/botbuilder-samples) - 使用 #C、JavaScript、TypeScript 和 Python 编写
+
 ## <a name="next-steps"></a>后续步骤
 
 * 了解常见的 [HTTP 错误代码](luis-reference-response-codes.md)
+* 所有 API 和 SDK 的[参考文档](../../index.md)
 * [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) 和 [Azure 机器人服务](https://dev.botframework.com/)
 * [LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)
 * [认知容器](../cognitive-services-container-support.md)

@@ -126,6 +126,8 @@
           href: node-upgrade-github-actions.md
         - name: 处理节点 OS 更新
           href: node-updates-kured.md
+        - name: 配置 AKS 群集
+          href: cluster-configuration.md
         - name: 将 ACR 与 AKS 群集集成
           href: cluster-container-registry-integration.md
         - name: 使用群集自动缩放程序
@@ -293,7 +295,7 @@
       items:
         - name: 适用于 Kubernetes 的 GitHub 操作
           href: ../aks/kubernetes-action.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 常见问题
           href: troubleshooting.md
@@ -325,7 +327,7 @@
 - name: 资源
   items:
     - name: 上市区域
-      href: 'https://azure.microsoft.com/regions/services/'
+      href: 'https://status.azure.com/status/'
     - name: 支持策略
       href: support-policies.md
     - name: AKS 路线图

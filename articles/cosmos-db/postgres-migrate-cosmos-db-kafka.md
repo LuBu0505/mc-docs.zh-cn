@@ -4,18 +4,19 @@ description: 了解如何使用 Kafka Connect 将数据从 PostgreSQL 实时同�
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
+origin.date: 01/05/2021
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/15/2021
 ms.testscope: yes|no
-ms.testdate: 01/18/2021null
+ms.testdate: 01/18/2021
 ms.author: v-yeche
 ms.reviewer: abhishgu
-ms.openlocfilehash: f6974f90e4869f089e7cf258d3a697590312ef81
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: f5bf7ceb4fe957134dfd9064f6a60b1959e3bcc3
+ms.sourcegitcommit: eac6a51d5193c8a36e99ea1f824bf62743edea33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231130"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99817567"
 ---
 <!--PM REVIEW MANDATORY-->
 # <a name="migrate-data-from-postgresql-to-azure-cosmos-db-cassandra-api-account-using-apache-kafka"></a>使用 Apache Kafka 将数据从 PostgreSQL 迁移到 Azure Cosmos DB Cassandra API 帐户
@@ -110,13 +111,9 @@ bin/kafka-server-start.sh config/server.properties
 
 ### <a name="setup-connectors"></a>设置连接器
 
-<!--CORRECT ON debezium-connector-postgres-1.3.0.Final-plugin.tar.gz-->
-<!--CORRECT ON 1.3.0.Final-->
-
 安装 Debezium PostgreSQL 和 DataStax Apache Kafka 连接器。 下载 Debezium PostgreSQL 连接器插件存档。 例如，若要下载连接器的版本 1.3.0（撰写本文时的最新版本），请使用[此链接](https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/1.3.0.Final/debezium-connector-postgres-1.3.0.Final-plugin.tar.gz)。 从[此链接](https://downloads.datastax.com/#akc)下载 DataStax Apache Kafka 连接器。
 
 解压缩两个连接器存档并将 JAR 文件复制到 [Kafka Connect plugin.path](https://kafka.apache.org/documentation/#connectconfigs)。
-
 
 ```bash
 cp <path_to_debezium_connector>/*.jar <KAFKA_HOME>/libs
@@ -215,7 +212,7 @@ cd <KAFKA_HOME>/bin
         "tasks.max": "1",
         "topics": "myserver.retail.orders_info",
         "contactPoints": "<Azure Cosmos DB account name>.cassandra.cosmos.azure.cn",
-        "loadBalancing.localDc": "<Azure Cosmos DB region e.g. Southeast Asia>",
+        "loadBalancing.localDc": "<Azure Cosmos DB region e.g. China East 2>",
         "datastax-java-driver.advanced.connection.init-query-timeout": 5000,
         "ssl.hostnameValidation": true,
         "ssl.provider": "JDK",
@@ -266,6 +263,9 @@ select * from retail.orders_by_customer where customer_id = 10;
 ## <a name="next-steps"></a>后续步骤
 
 * [使用 Kafka Connect 集成 Apache Kafka 和 Azure Cosmos DB Cassandra API](cassandra-kafka-connect.md)
+
+    <!--NOT AVAILABLE ON * [Integrate Apache Kafka and Azure Cosmos DB Cassandra API using Kafka Connect](cassandra-kafka-connect.md)-->
+
 * [将 Azure 事件中心（预览版）上的 Apache Kafka Connect 与 Debezium 集成进行变更数据捕获](../event-hubs/event-hubs-kafka-connect-debezium.md)
 * [使用 Blitzz 将数据从 Oracle 迁移到 Azure Cosmos DB Cassandra API](oracle-migrate-cosmos-db-blitzz.md)
 * [在容器和数据库上预配吞吐量](set-throughput.md) 

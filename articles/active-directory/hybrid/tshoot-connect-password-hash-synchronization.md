@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/12/2020
+ms.date: 02/04/2021
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c4f08ca4e96260d4a147bd197184a1a95781e81
-ms.sourcegitcommit: 4d06a5e0f48472f5eadd731e43afb1e9fbba5787
+ms.openlocfilehash: 54385b4e2c643b4c869a4532a06dd69deb9f985d
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92041604"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540844"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步解决密码哈希同步问题
 
@@ -346,7 +346,7 @@ ms.locfileid: "92041604"
 
     ![Metaverse 信息](./media/tshoot-connect-password-hash-synchronization/mvconnectors.png)  
 
-    k. 选择表示 Azure AD 的行，单击“属性”，然后单击“沿袭”选项卡 。连接器空间对象应存在一个“密码同步”列设置为“True”的出站规则 。 在默认配置中，同步规则的名称为 **Out to AAD - User Join** 。  
+    k. 选择表示 Azure AD 的行，单击“属性”，然后单击“沿袭”选项卡 。连接器空间对象应存在一个“密码同步”列设置为“True”的出站规则 。 在默认配置中，同步规则的名称为 **Out to AAD - User Join**。  
 
     ![连接器空间对象属性对话框](./media/tshoot-connect-password-hash-synchronization/cspasswordsync2.png)  
 
@@ -380,7 +380,7 @@ if ($aadConnectors -ne $null -and $adConnectors -ne $null)
 {
     if ($aadConnectors.Count -eq 1)
     {
-        $features = Get-ADSyncAADCompanyFeature -ConnectorName $aadConnectors[0].Name
+        $features = Get-ADSyncAADCompanyFeature
         Write-Host
         Write-Host "Password sync feature enabled in your Azure AD directory: "  $features.PasswordHashSync
         foreach ($adConnector in $adConnectors)
@@ -450,4 +450,3 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 * [使用 Azure AD Connect 同步实现密码哈希同步](how-to-connect-password-hash-synchronization.md)
 * [Azure AD Connect 同步：自定义同步选项](how-to-connect-sync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
-

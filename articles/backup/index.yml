@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: Johnnytechn
   ms.author: v-johya
-  ms.date: 11/17/2020
-  ms.openlocfilehash: 238eb6c80596ad86daf0f33f77ba9a3870c1a633
-  ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+  ms.date: 02/02/2021
+  ms.openlocfilehash: df769d7551c16c2b6abaf9c8275161e0b0e20fae
+  ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/20/2020
-  ms.locfileid: "94977728"
+  ms.lasthandoff: 02/05/2021
+  ms.locfileid: "99579429"
 landingContent:
 - title: 了解 Azure 备份
   linkLists:
@@ -40,8 +40,6 @@ landingContent:
       url: quick-backup-vm-cli.md
     - text: 使用资源管理器模板备份 VM
       url: quick-backup-vm-template.md
-- title: 尝试这些分步教程
-  linkLists:
   - linkListType: tutorial
     links:
     - text: 备份 Azure VM

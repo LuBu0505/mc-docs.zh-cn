@@ -5,16 +5,16 @@ author: WenJason
 services: storage
 ms.service: storage
 ms.topic: how-to
-origin.date: 01/23/2017
-ms.date: 09/28/2020
+origin.date: 01/19/2021
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 4873e47c6efd2d9351aeee67e92192323d17b78f
-ms.sourcegitcommit: 5f07189f06a559d5617771e586d129c10276539e
+ms.openlocfilehash: a7b21aae99610594d41d89fa65a8bf2154313643
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94552248"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503986"
 ---
 # <a name="repairing-an-import-job"></a>修复导入作业
 Azure 导入/导出服务可能无法将某些文件或某个文件的部分内容复制到 Azure Blob 服务。 失败的部分原因包括：  
@@ -101,6 +101,6 @@ WAImportExport.exe RepairImport /r:C:\WAImportExport\9WM35C2V.rep /d:C:\Users\bo
 ## <a name="next-steps"></a>后续步骤
  
 * [设置 Azure 导入/导出工具](storage-import-export-tool-setup-v1.md)   
-* [为导入作业准备硬盘驱动器](https://docs.microsoft.com/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import-v1)   
+* [为导入作业准备硬盘驱动器](storage-import-export-data-to-blobs.md#step-1-prepare-the-drives)   
 * [使用复制日志文件查看作业状态](storage-import-export-tool-reviewing-job-status-v1.md)   
 * [修复导出作业](./storage-import-export-tool-repairing-an-export-job-v1.md)

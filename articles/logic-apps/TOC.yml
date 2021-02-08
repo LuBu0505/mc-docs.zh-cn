@@ -22,13 +22,8 @@
       href: tutorial-process-email-attachments-workflow.md
 - name: 示例
   items:
-    - name: Azure 代码示例
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-logic-apps'
     - name: 资源管理器快速启动模板
       href: 'https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.Logic'
-    - name: Azure Policy 内置策略定义
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 适用于逻辑应用的连接器
@@ -41,8 +36,10 @@
       href: logic-apps-enterprise-integration-overview.md
     - name: 业务连续性和灾难恢复
       href: business-continuity-disaster-recovery-guidance.md
-    - name: 安全基线
-      href: security-baseline.md
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
 - name: 操作指南
   items:
     - name: 开发
@@ -75,7 +72,9 @@
           href: logic-apps-exceed-default-page-size-with-pagination.md
         - name: 对消息进行批处理
           href: logic-apps-batch-process-send-receive-messages.md
-        - name: 创作 JSON 定义
+        - name: 按顺序发送消息 - 顺序保护
+          href: send-related-messages-sequential-convoy.md
+        - name: 以 JSON 格式创作工作流定义
           href: logic-apps-author-definitions.md
         - name: 处理内容类型
           href: logic-apps-content-type.md
@@ -83,6 +82,8 @@
           href: logic-apps-exception-handling.md
         - name: 处理大型消息
           href: logic-apps-handle-large-messages.md
+        - name: 处理 SQL 连接器长时间运行的存储过程
+          href: handle-long-running-stored-procedures-sql-connector.md
         - name: 处理限制问题或 429 错误
           href: handle-throttling-problems-429-errors.md
         - name: 开发自定义连接器
@@ -107,6 +108,7 @@
       items:
         - name: 创建集成帐户
           href: logic-apps-enterprise-integration-create-integration-account.md
+          displayName: 'Azure CLI, az logic integration-account create, integration-account'
         - name: 贸易合作伙伴
           href: logic-apps-enterprise-integration-partners.md
         - name: 协议
@@ -134,8 +136,8 @@
               href: logic-apps-enterprise-integration-edifact-decode.md
             - name: 处理包含 UNH2.5 段的 EDIFACT 文件
               href: logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md
-        - name: 交换 RosettaNet 消息
-          href: logic-apps-enterprise-integration-rosettanet.md
+            - name: 交换 RosettaNet 消息
+              href: logic-apps-enterprise-integration-rosettanet.md
         - name: 交换 X12 消息
           href: logic-apps-enterprise-integration-x12.md
           items:
@@ -193,6 +195,8 @@
           href: ../connectors/connectors-native-http-swagger.md
         - name: HTTP Webhook
           href: ../connectors/connectors-native-webhook.md
+        - name: IBM DB2
+          href: ../connectors/connectors-create-api-db2.md
         - name: IBM MQ
           href: ../connectors/connectors-create-api-mq.md
         - name: 集成帐户
@@ -250,7 +254,7 @@
         - name: 管理逻辑应用 - Visual Studio
           href: manage-logic-apps-with-visual-studio.md
         - name: 管理集成帐户
-          href: logic-apps-enterprise-integration-accounts.md
+          href: logic-apps-enterprise-integration-create-integration-account.md
         - name: 移动逻辑应用资源
           href: move-logic-app-resources.md
         - name: 迁移到最新架构
@@ -282,6 +286,8 @@
           href: logic-apps-scenario-error-and-exception-handling.md
         - name: B2B 处理
           href: logic-apps-enterprise-integration-b2b.md
+- name: 参考
+  items:
     - name: 连接器 - 完整详细信息
       href: 'https://docs.microsoft.com/connectors/'
     - name: 服务限制和配置
@@ -289,7 +295,7 @@
     - name: 定价模型与用量计量
       href: logic-apps-pricing.md
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/ext/logic/logic?view=azure-cli-latest?view=azure-cli-latest'
+      href: 'https://docs.azure.cn/cli/ext/logic/logic'
     - name: Azure PowerShell
       href: 'https://docs.microsoft.com/powershell/module/az.logicapp'
     - name: REST API
@@ -311,6 +317,9 @@
           href: logic-apps-track-integration-account-x12-tracking-schema.md
         - name: 自定义跟踪架构
           href: logic-apps-track-integration-account-custom-tracking-schema.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 资源
   items:
     - name: 定价
@@ -321,5 +330,9 @@
       href: 'https://www.azure.cn/video-center/'
     - name: Azure Q&A 问题页
       href: 'https://docs.microsoft.com/answers/topics/azure-logic-apps.html'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-logic-apps'
+    - name: 提供产品反馈
+      href: 'https://support.azure.cn/support/contact/'
     - name: 服务更新
       href: 'https://updates.azure.cn/'

@@ -589,26 +589,6 @@
   items:
     - name: Microsoft 标识平台开发人员博客
       href: 'https://developer.microsoft.com/en-us/identity/blogs/'
-    - name: Azure 门户帮助文章
-      items:
-        - name: 发现终结点
-          href: registration-config-how-to.md
-        - name: 为给定 API 选择权限
-          href: perms-for-given-api.md
-        - name: 身份验证协议
-          href: active-directory-authentication-protocols.md
-        - name: 委派权限与应用程序权限之间的差异
-          href: delegated-and-app-perms.md
-        - name: 应用程序同意操作的工作原理
-          href: consent-framework-links.md
-        - name: 为自定义开发的应用程序查找所需的特定 API
-          href: api-find-an-api-how-to.md
-        - name: 自定义开发应用的 Azure 门户注册字段
-          href: registration-config-specific-application-property-how-to.md
-        - name: 配置新的多租户应用程序
-          href: setup-multi-tenant-app.md
-        - name: 与 Azure Active Directory 集成
-          href: active-directory-how-to-integrate.md
     - name: Azure AD 博客
       href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
     - name: Azure 路线图

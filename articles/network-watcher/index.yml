@@ -8,18 +8,18 @@ metadata:
   ms.service: network-watcher
   ms.topic: landing-page
   ms.collection: collection
-  author: rockboyfor
   origin.date: 08/29/2019
-  ms.date: 08/10/2020
+  author: rockboyfor
+  ms.date: 02/08/2021
   ms.testscope: no
   ms.testdate: 
   ms.author: v-yeche
-  ms.openlocfilehash: 49720ed4dfa5ec36b1153698b0f8034d3b724a30
-  ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
+  ms.openlocfilehash: 24b875da64cfa217f5f120b2f39ebc425ed5127c
+  ms.sourcegitcommit: fda47fe846d47f30e65a048251402d873e416650
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/04/2020
-  ms.locfileid: "87547967"
+  ms.lasthandoff: 02/02/2021
+  ms.locfileid: "99426657"
 landingContent:
 - title: 关于网络观察程序
   linkLists:

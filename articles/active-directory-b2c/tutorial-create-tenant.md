@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: f70eeb88a35ea68f969afffe6d3c317aa97b1405
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: 7ee4129481a42e2f937d0f2d853e64f28db0bab5
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570614"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540609"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>教程：创建 Azure Active Directory B2C 租户
 
@@ -68,7 +68,7 @@ ms.locfileid: "98570614"
     ![在 Azure 门户中创建包含示例值的租户窗体](./media/tutorial-create-tenant/review-and-create-tenant.png)
 
 1. 选择“查看 + 创建”。
-1. 查看目录设置。 然后选择“创建”。
+1. 查看目录设置。 然后选择“创建”。 有关[排查部署问题](/azure-resource-manager/templates/common-deployment-errors)。
 
 可以将多个 Azure AD B2C 租户链接到单个 Azure 订阅以进行计费。 若要链接租户，你必须是 Azure AD B2C 租户中的管理员，并且在 Azure 订阅中分配有至少一个参与者角色。 请参阅[将 Azure AD B2C 租户链接到订阅](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription)。
 
@@ -111,4 +111,3 @@ ms.locfileid: "98570614"
 
 > [!div class="nextstepaction"]
 > [注册应用程序 >](tutorial-register-applications.md)
-

@@ -5,17 +5,17 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 01/09/2020
-ms.date: 11/16/2020
+ms.date: 02/01/2021
 ms.author: v-jay
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: de9aecf896f03b0d8ff36105332179c973386416
-ms.sourcegitcommit: 5f07189f06a559d5617771e586d129c10276539e
+ms.openlocfilehash: c5053111bc2a9bfdfdaa5fda9b0cb87fa8992f22
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94552851"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503833"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>监视 Azure 门户中的存储帐户
 
@@ -32,6 +32,8 @@ ms.locfileid: "94552851"
 >
 > 有关使用存储分析及其他工具来识别、诊断和排查 Azure 存储相关问题的深入指导，请参阅[监视、诊断和排查 Azure 存储问题](storage-monitoring-diagnosing-troubleshooting.md)。
 >
+
+<a id="modify-retention-policy"></a>
 
 ## <a name="configure-monitoring-for-a-storage-account"></a>为存储帐户配置监视
 

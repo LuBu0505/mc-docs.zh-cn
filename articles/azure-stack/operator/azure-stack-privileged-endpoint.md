@@ -3,18 +3,18 @@ title: 使用 Azure Stack Hub 中的特权终结点
 description: 了解如何以操作员身份使用 Azure Stack Hub 中的特权终结点 (PEP)。
 author: WenJason
 ms.topic: article
-origin.date: 04/28/2020
-ms.date: 01/11/2021
+origin.date: 12/16/2020
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/28/2020
 ms.custom: conteperfq4
-ms.openlocfilehash: c1f69a6ba86037d09334a66716b2b0e3bd5ab9c0
-ms.sourcegitcommit: 3f54ab515b784c9973eb00a5c9b4afbf28a930a9
+ms.openlocfilehash: e886f7788df416a90610bc20725572271bc39bf3
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894431"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503992"
 ---
 # <a name="use-the-privileged-endpoint-in-azure-stack-hub"></a>使用 Azure Stack Hub 中的特权终结点
 
@@ -252,5 +252,5 @@ PEP 支持授权响应令牌由两个对象组成：
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Stack Hub 诊断工具](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002)
+- [Azure Stack Hub 诊断工具](./diagnostic-log-collection.md)
 - [Azure Stack Hub 特权终结点参考](../reference/pep-2002/index.md)

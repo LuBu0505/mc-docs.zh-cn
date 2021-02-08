@@ -5,14 +5,14 @@ author: Johnnytechn
 origin.date: 11/13/2018
 ms.service: virtual-machines-linux
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 02/01/2021
 ms.author: v-johya
-ms.openlocfilehash: c1bec56313c805a26f0d8e369af65749dab2d078
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 9b872c05b5d841356820496c764b51b3897f4dd9
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022891"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579394"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>为 Azure 准备 Debian VHD
 ## <a name="prerequisites"></a>必备条件
@@ -21,7 +21,7 @@ ms.locfileid: "98022891"
 ## <a name="installation-notes"></a>安装说明
 * 另请参阅[常规 Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)，获取更多有关如何为 Azure 准备 Linux 的提示。
 * Azure 不支持更新的 VHDX 格式。 可使用 Hyper-V 管理器或 **convert-vhd** cmdlet 将磁盘转换为 VHD 格式。
-* 在安装 Linux 系统时，建议使用标准分区而不是 LVM（通常是许多安装的默认值）。 这会避免 LVM 与克隆 VM 发生名称冲突，特别是在 OS 磁盘需要连接到另一台 VM 以进行故障排除的情况下。 如果需要，可以在数据磁盘上使用 [LVM](https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+* 在安装 Linux 系统时，建议使用标准分区而不是 LVM（通常是许多安装的默认值）。 这会避免 LVM 与克隆 VM 发生名称冲突，特别是在 OS 磁盘需要连接到另一台 VM 以进行故障排除的情况下。 如果需要，可以在数据磁盘上使用 [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) 或 [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid)。
 * 不要在操作系统磁盘上配置交换分区。 可以配置 Azure Linux 代理，以在临时资源磁盘上创建交换文件。 可以在下面的步骤中找到更多信息。
 * Azure 上的所有 VHD 必须已将虚拟大小调整为 1MB。 从原始磁盘转换为 VHD 时，必须确保在转换前原始磁盘大小是 1MB 的倍数。 有关详细信息，请参阅 [Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)。
 

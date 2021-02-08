@@ -7,16 +7,16 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 origin.date: 09/24/2018
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/15/2021
 ms.testscope: yes|no
 ms.testdate: 12/14/2020null
 ms.author: v-yeche
-ms.openlocfilehash: ce8c54e757ed976afd0c5689e4eac2cfc7b48e1c
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 0ff484c39f32c92f7f578a07adbcb1e5c28b6227
+ms.sourcegitcommit: eac6a51d5193c8a36e99ea1f824bf62743edea33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230098"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99817568"
 ---
 <!--Pending form PM review-->
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>从 Azure Databricks 访问 Azure Cosmos DB Cassandra API 数据

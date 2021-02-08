@@ -4,16 +4,16 @@ description: Azure 安全控制标识和访问控制
 author: Johnnytechn
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 02/03/2021
 ms.author: v-johya
 ms.custom: security-benchmark
 origin.date: 04/14/2020
-ms.openlocfilehash: 079f27b7d3c997aa7b5ca0447504353eab4b759c
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: f4c3056f9bfbedcc1efbead693cbc209d199a733
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747127"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579477"
 ---
 # <a name="security-control-identity-and-access-control"></a>安全控制：标识和访问控制
 
@@ -71,7 +71,7 @@ Azure AD 没有默认密码。 其他需要密码的 Azure 资源会强制创建
 
 使用配置了 MFA 的 PAW（特权访问工作站）来登录并配置 Azure 资源。
 
-- [了解特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何在 Azure 中启用 MFA](../../active-directory/authentication/howto-mfa-getstarted.md)
 

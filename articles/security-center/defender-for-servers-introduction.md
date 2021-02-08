@@ -3,16 +3,16 @@ title: 用于存储的 Azure Defender - 优点和功能
 description: 了解适用于服务器的 Azure Defender 的优点和功能。
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 12/04/2020
+ms.date: 01/29/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d50a38c6591e3812ef55f07258365bfa686513a1
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 4b271c9671a939111056665c9be258caf553aae1
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747158"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579359"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>适用于服务器的 Azure Defender 简介
 
@@ -33,10 +33,6 @@ ms.locfileid: "96747158"
 
     > [!IMPORTANT]
     > 使用安全中心的 Windows 服务器上已自动启用用于终结点的 Microsoft Defender 传感器。
-
-- **VM 漏洞评估扫描** - Azure 安全中心随附的漏洞扫描程序由 Qualys 提供支持。 
-
-    Qualys 的扫描程序是一种用于实时识别 Azure 虚拟机中的漏洞的领先工具。 你无需具备 Qualys 许可证，甚至还不需要 Qualys 帐户 - 所有操作都在安全中心内无缝执行。
 
 - **实时 (JIT) 虚拟机 (VM) 访问** - 威胁制造者会主动搜寻设有开放管理端口（如 RDP 或 SSH）的可访问计算机。 你的所有虚拟机都是潜在的攻击目标。 VM 在被成功入侵后将会用作进一步攻击环境中资源的入口点。
 

@@ -6,15 +6,15 @@ ms.author: v-jay
 ms.service: azure-stack
 ms.topic: how-to
 origin.date: 12/09/2019
-ms.date: 01/11/2021
+ms.date: 02/08/2021
 ms.reviewer: jfggdl
 ms.lastreviewed: 12/09/2019
-ms.openlocfilehash: 9097ad9bb07cf52536fe0e8e8a5336a16a69e9ee
-ms.sourcegitcommit: 3f54ab515b784c9973eb00a5c9b4afbf28a930a9
+ms.openlocfilehash: 0cb70501fa58ed42f88b2ca9a1fc55ff13732247
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894419"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503888"
 ---
 # <a name="how-to-manage-event-hubs-on-azure-stack-hub"></a>如何管理 Azure Stack Hub 上的事件中心
 
@@ -51,8 +51,8 @@ ms.locfileid: "97894419"
 |----------|-------|------|-----------|
 | 性能 | | | |
 | | EventHub-CpuUsage | 警告 | 过去 6 小时内，事件中心群集的平均 CPU 使用率百分比大于 50%。 |
-| | EventHub-MemoryUsage | 警告 | 过去 6 小时内，事件中心群集的平均数据磁盘(E:) 使用率百分比大于 50%。 |
-| | EventHub-DiskUsage | 警告 | 过去 6 小时内，事件中心群集的平均可用内存空间百分比小于 50%。 |
+| | EventHub-MemoryUsage | 警告 | 过去 6 小时内，事件中心群集的平均可用内存空间百分比小于 50%。 |
+| | EventHub-DiskUsage | 警告 | 过去 6 小时内，事件中心群集的平均数据磁盘(E:) 使用率百分比大于 50%。 |
 | 使用情况/配额 | | | |
 | | EventHub-QuotaExceeded | 警告 | 过去 6 小时内发生了超出配额错误。 |
 | | EventHub-NamespaceCreditUsage | 警告 | 过去 6 小时内，命名空间的额度使用量总和大于 10000.0。 |
@@ -73,7 +73,7 @@ ms.locfileid: "97894419"
 
 [![管理事件中心 - 警报详细信息](media/event-hubs-rp-manage/2-alerts-detail.png)](media/event-hubs-rp-manage/2-alerts-detail.png#lightbox)
 
-有关 Azure Stack Hub 监视功能（包括警报）的详细信息，请参阅[监视运行状况和警报](azure-stack-monitor-health.md)。 有关收集日志的详细信息，请参阅 [Azure Stack 诊断日志收集概述](azure-stack-diagnostic-log-collection-overview.md)。
+有关 Azure Stack Hub 监视功能（包括警报）的详细信息，请参阅[监视运行状况和警报](azure-stack-monitor-health.md)。 有关收集日志的详细信息，请参阅 [Azure Stack 诊断日志收集概述](./diagnostic-log-collection.md)。
 
 ## <a name="event-hubs-clusters"></a>事件中心群集
 
@@ -102,17 +102,4 @@ ms.locfileid: "97894419"
 
 - 为事件中心定义的配额类型，请参阅[配额类型](azure-stack-quota-types.md#event-hubs-quota-types)。
 - Azure Stack Hub 监视功能（包括警报），请参阅[监视运行状况和警报](azure-stack-monitor-health.md)。 
-- Azure Stack Hub 日志收集，请参阅 [Azure Stack 诊断日志收集概述](azure-stack-diagnostic-log-collection-overview.md)。
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Azure Stack Hub 日志收集，请参阅 [Azure Stack 诊断日志收集概述](./diagnostic-log-collection.md)。

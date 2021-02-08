@@ -7,41 +7,48 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: include
-ms.date: 10/28/2020
+ms.date: 02/04/2021
 ms.author: v-johya
-ms.openlocfilehash: cf056d58a84cfdcd752f38cf06af7b73b9326d94
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 11c84d0192c749f1511b963030c3992c1d0c1309
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105458"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579823"
 ---
 开始使用适用于 Python 的人脸客户端库进行人脸识别。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过人脸服务，可以访问用于检测和识别图像中的人脸的高级算法。
 
 使用适用于 Python 的人脸客户端库可以：
 
-* 在图像中检测人脸
-* 查找相似人脸
-* 创建和训练人员组
-* 识别人脸
-* 验证人脸
+* [检测图像中的人脸](#detect-faces-in-an-image)
+* [查找相似人脸](#find-similar-faces)
+* [创建和训练人员组](#create-and-train-a-person-group)
+* [识别人脸](#identify-a-face)
+* [验证人脸](#verify-faces)
 
 [参考文档](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [包 (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [示例](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>先决条件
 
+* Azure 订阅 - [创建试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)
 * [Python 3.x](https://www.python.org/)
-* Azure 订阅 - [免费创建订阅](https://www.azure.cn/pricing/details/cognitive-services/)
 * 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.cn/#create/Microsoft.CognitiveServicesFace"  title="创建人脸资源"  target="_blank">创建人脸资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
     * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到人脸 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
     * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
-* 获取密钥和终结点后，请为该密钥和终结点[创建环境变量](/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别命名为 `FACE_SUBSCRIPTION_KEY` 和 `FACE_ENDPOINT`。
 
 ## <a name="setting-up"></a>设置
  
+### <a name="install-the-client-library"></a>安装客户端库
+
+在安装 Python 后，可以通过以下命令安装客户端库：
+
+```console
+pip install --upgrade azure-cognitiveservices-vision-face
+```
+
 ### <a name="create-a-new-python-application"></a>创建新的 Python 应用程序
 
-创建新的 Python 脚本 &mdash; 例如 *quickstart-file.py* 。 在喜好的编辑器或 IDE 中打开该文件，并导入以下库。
+创建新的 Python 脚本 &mdash; 例如 *quickstart-file.py*。 在喜好的编辑器或 IDE 中打开该文件，并导入以下库。
 
 ```python
 # <snippet_imports>
@@ -141,8 +148,8 @@ print()
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -161,8 +168,8 @@ first_image_face_ID = detected_faces[0].face_id
 # Each detected face gets assigned a new ID
 multi_face_image_url = "http://www.historyplace.com/kennedy/president-family-portrait-closeup.jpg"
 multi_image_name = os.path.basename(multi_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detection_model='detection_03')
 # </snippet_detectgroup>
 
 print('Detected face IDs from', multi_image_name, ':')
@@ -180,8 +187,8 @@ Print image and draw rectangles around faces
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -229,26 +236,27 @@ print()
 second_image_face_IDs = list(map(lambda x: x.face_id, detected_faces2))
 # Next, find similar face IDs like the one detected in the first image.
 similar_faces = face_client.face.find_similar(face_id=first_image_face_ID, face_ids=second_image_face_IDs)
-if not similar_faces[0]:
+if not similar_faces:
     print('No similar faces found in', multi_image_name, '.')
 # </snippet_findsimilar>
 
 # <snippet_findsimilar_print>
 # Print the details of the similar faces detected
-print('Similar faces found in', multi_image_name + ':')
-for face in similar_faces:
-    first_image_face_ID = face.face_id
-    # The similar face IDs of the single face image and the group image do not need to match, 
-    # they are only used for identification purposes in each image.
-    # The similar faces are matched using the Cognitive Services algorithm in find_similar().
-    face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
-    if face_info:
-        print('  Face ID: ', first_image_face_ID)
-        print('  Face rectangle:')
-        print('    Left: ', str(face_info.face_rectangle.left))
-        print('    Top: ', str(face_info.face_rectangle.top))
-        print('    Width: ', str(face_info.face_rectangle.width))
-        print('    Height: ', str(face_info.face_rectangle.height))
+else:
+    print('Similar faces found in', multi_image_name + ':')
+    for face in similar_faces:
+        first_image_face_ID = face.face_id
+        # The similar face IDs of the single face image and the group image do not need to match, 
+        # they are only used for identification purposes in each image.
+        # The similar faces are matched using the Cognitive Services algorithm in find_similar().
+        face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
+        if face_info:
+            print('  Face ID: ', first_image_face_ID)
+            print('  Face rectangle:')
+            print('    Left: ', str(face_info.face_rectangle.left))
+            print('    Top: ', str(face_info.face_rectangle.top))
+            print('    Width: ', str(face_info.face_rectangle.width))
+            print('    Height: ', str(face_info.face_rectangle.height))
 # </snippet_findsimilar_print>
 print()
 '''
@@ -275,14 +283,14 @@ source_image_file_name2 = 'Family1-Son1.jpg'
 
 # <snippet_verify_detect>
 # Detect face(s) from source image 1, returns a list[DetectedFaces]
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detection_model='detection_03')
 # Add the returned face's face ID
 source_image1_id = detected_faces1[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces1), source_image_file_name1))
 
 # Detect face(s) from source image 2, returns a list[DetectedFaces]
-detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detectionModel='detection_02')
+detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detection_model='detection_03')
 # Add the returned face's face ID
 source_image2_id = detected_faces2[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_image_file_name2))
@@ -291,8 +299,8 @@ print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_i
 detected_faces_ids = []
 # Detect faces from target image url list, returns a list[DetectedFaces]
 for image_file_name in target_image_file_names:
-    # We use detection model 2 because we are not retrieving attributes.
-    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detectionModel='detection_02')
+    # We use detection model 3 to get better performance.
+    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detection_model='detection_03')
     # Add the returned face's face ID
     detected_faces_ids.append(detected_faces[0].face_id)
     print('{} face(s) detected from image {}.'.format(len(detected_faces), image_file_name))
@@ -405,8 +413,8 @@ time.sleep (60)
 
 # Detect faces
 face_ids = []
-# We use detection model 2 because we are not retrieving attributes.
-faces = face_client.face.detect_with_stream(image, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+faces = face_client.face.detect_with_stream(image, detection_model='detection_03')
 for face in faces:
     face_ids.append(face.face_id)
 # </snippet_identify_testimage>
@@ -659,6 +667,9 @@ print('-----------------------------')
 print()
 print('End of quickstart.')
 ```
+
+> [!TIP]
+> 想要立即查看整个快速入门代码文件？ 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py) 上找到它，其中包含此快速入门中的代码示例。
 
 然后，为该资源的 Azure 终结点和密钥创建变量。
 
@@ -760,8 +771,8 @@ print()
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -780,8 +791,8 @@ first_image_face_ID = detected_faces[0].face_id
 # Each detected face gets assigned a new ID
 multi_face_image_url = "http://www.historyplace.com/kennedy/president-family-portrait-closeup.jpg"
 multi_image_name = os.path.basename(multi_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detection_model='detection_03')
 # </snippet_detectgroup>
 
 print('Detected face IDs from', multi_image_name, ':')
@@ -799,8 +810,8 @@ Print image and draw rectangles around faces
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -848,26 +859,27 @@ print()
 second_image_face_IDs = list(map(lambda x: x.face_id, detected_faces2))
 # Next, find similar face IDs like the one detected in the first image.
 similar_faces = face_client.face.find_similar(face_id=first_image_face_ID, face_ids=second_image_face_IDs)
-if not similar_faces[0]:
+if not similar_faces:
     print('No similar faces found in', multi_image_name, '.')
 # </snippet_findsimilar>
 
 # <snippet_findsimilar_print>
 # Print the details of the similar faces detected
-print('Similar faces found in', multi_image_name + ':')
-for face in similar_faces:
-    first_image_face_ID = face.face_id
-    # The similar face IDs of the single face image and the group image do not need to match, 
-    # they are only used for identification purposes in each image.
-    # The similar faces are matched using the Cognitive Services algorithm in find_similar().
-    face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
-    if face_info:
-        print('  Face ID: ', first_image_face_ID)
-        print('  Face rectangle:')
-        print('    Left: ', str(face_info.face_rectangle.left))
-        print('    Top: ', str(face_info.face_rectangle.top))
-        print('    Width: ', str(face_info.face_rectangle.width))
-        print('    Height: ', str(face_info.face_rectangle.height))
+else:
+    print('Similar faces found in', multi_image_name + ':')
+    for face in similar_faces:
+        first_image_face_ID = face.face_id
+        # The similar face IDs of the single face image and the group image do not need to match, 
+        # they are only used for identification purposes in each image.
+        # The similar faces are matched using the Cognitive Services algorithm in find_similar().
+        face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
+        if face_info:
+            print('  Face ID: ', first_image_face_ID)
+            print('  Face rectangle:')
+            print('    Left: ', str(face_info.face_rectangle.left))
+            print('    Top: ', str(face_info.face_rectangle.top))
+            print('    Width: ', str(face_info.face_rectangle.width))
+            print('    Height: ', str(face_info.face_rectangle.height))
 # </snippet_findsimilar_print>
 print()
 '''
@@ -894,14 +906,14 @@ source_image_file_name2 = 'Family1-Son1.jpg'
 
 # <snippet_verify_detect>
 # Detect face(s) from source image 1, returns a list[DetectedFaces]
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detection_model='detection_03')
 # Add the returned face's face ID
 source_image1_id = detected_faces1[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces1), source_image_file_name1))
 
 # Detect face(s) from source image 2, returns a list[DetectedFaces]
-detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detectionModel='detection_02')
+detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detection_model='detection_03')
 # Add the returned face's face ID
 source_image2_id = detected_faces2[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_image_file_name2))
@@ -910,8 +922,8 @@ print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_i
 detected_faces_ids = []
 # Detect faces from target image url list, returns a list[DetectedFaces]
 for image_file_name in target_image_file_names:
-    # We use detection model 2 because we are not retrieving attributes.
-    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detectionModel='detection_02')
+    # We use detection model 3 to get better performance.
+    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detection_model='detection_03')
     # Add the returned face's face ID
     detected_faces_ids.append(detected_faces[0].face_id)
     print('{} face(s) detected from image {}.'.format(len(detected_faces), image_file_name))
@@ -1024,8 +1036,8 @@ time.sleep (60)
 
 # Detect faces
 face_ids = []
-# We use detection model 2 because we are not retrieving attributes.
-faces = face_client.face.detect_with_stream(image, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+faces = face_client.face.detect_with_stream(image, detection_model='detection_03')
 for face in faces:
     face_ids.append(face.face_id)
 # </snippet_identify_testimage>
@@ -1279,16 +1291,10 @@ print()
 print('End of quickstart.')
 ```
 
-> [!NOTE]
-> 如果在启动应用程序后创建了环境变量，则需要关闭再重新打开运行该应用程序的编辑器、IDE 或 shell 才能访问该变量。
-
-### <a name="install-the-client-library"></a>安装客户端库
-
-可使用以下方式安装客户端库：
-
-```console
-pip install --upgrade azure-cognitiveservices-vision-face
-```
+> [!IMPORTANT]
+> 转到 Azure 门户。 如果你在“先决条件”部分创建的人脸资源部署成功，请单击“后续步骤”下的“转到资源”按钮  。 在资源的“密钥和终结点”页的“资源管理”下可以找到密钥和终结点 。 
+>
+> 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 例如，[Azure 密钥保管库](../../../../key-vault/general/overview.md)。
 
 ## <a name="object-model"></a>对象模型
 
@@ -1316,9 +1322,6 @@ pip install --upgrade azure-cognitiveservices-vision-face
 * [验证人脸](#verify-faces)
 
 ## <a name="authenticate-the-client"></a>验证客户端
-
-> [!NOTE]
-> 本快速入门假设你已为人脸密钥[创建了名为 `FACE_SUBSCRIPTION_KEY` 的环境变量](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)。
 
 使用终结点和密钥实例化某个客户端。 使用密钥创建 [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) 对象，然后在终结点上使用该对象创建 [FaceClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) 对象。
 
@@ -1420,8 +1423,8 @@ print()
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -1440,8 +1443,8 @@ first_image_face_ID = detected_faces[0].face_id
 # Each detected face gets assigned a new ID
 multi_face_image_url = "http://www.historyplace.com/kennedy/president-family-portrait-closeup.jpg"
 multi_image_name = os.path.basename(multi_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detection_model='detection_03')
 # </snippet_detectgroup>
 
 print('Detected face IDs from', multi_image_name, ':')
@@ -1459,8 +1462,8 @@ Print image and draw rectangles around faces
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -1508,26 +1511,27 @@ print()
 second_image_face_IDs = list(map(lambda x: x.face_id, detected_faces2))
 # Next, find similar face IDs like the one detected in the first image.
 similar_faces = face_client.face.find_similar(face_id=first_image_face_ID, face_ids=second_image_face_IDs)
-if not similar_faces[0]:
+if not similar_faces:
     print('No similar faces found in', multi_image_name, '.')
 # </snippet_findsimilar>
 
 # <snippet_findsimilar_print>
 # Print the details of the similar faces detected
-print('Similar faces found in', multi_image_name + ':')
-for face in similar_faces:
-    first_image_face_ID = face.face_id
-    # The similar face IDs of the single face image and the group image do not need to match, 
-    # they are only used for identification purposes in each image.
-    # The similar faces are matched using the Cognitive Services algorithm in find_similar().
-    face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
-    if face_info:
-        print('  Face ID: ', first_image_face_ID)
-        print('  Face rectangle:')
-        print('    Left: ', str(face_info.face_rectangle.left))
-        print('    Top: ', str(face_info.face_rectangle.top))
-        print('    Width: ', str(face_info.face_rectangle.width))
-        print('    Height: ', str(face_info.face_rectangle.height))
+else:
+    print('Similar faces found in', multi_image_name + ':')
+    for face in similar_faces:
+        first_image_face_ID = face.face_id
+        # The similar face IDs of the single face image and the group image do not need to match, 
+        # they are only used for identification purposes in each image.
+        # The similar faces are matched using the Cognitive Services algorithm in find_similar().
+        face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
+        if face_info:
+            print('  Face ID: ', first_image_face_ID)
+            print('  Face rectangle:')
+            print('    Left: ', str(face_info.face_rectangle.left))
+            print('    Top: ', str(face_info.face_rectangle.top))
+            print('    Width: ', str(face_info.face_rectangle.width))
+            print('    Height: ', str(face_info.face_rectangle.height))
 # </snippet_findsimilar_print>
 print()
 '''
@@ -1554,14 +1558,14 @@ source_image_file_name2 = 'Family1-Son1.jpg'
 
 # <snippet_verify_detect>
 # Detect face(s) from source image 1, returns a list[DetectedFaces]
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detection_model='detection_03')
 # Add the returned face's face ID
 source_image1_id = detected_faces1[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces1), source_image_file_name1))
 
 # Detect face(s) from source image 2, returns a list[DetectedFaces]
-detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detectionModel='detection_02')
+detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detection_model='detection_03')
 # Add the returned face's face ID
 source_image2_id = detected_faces2[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_image_file_name2))
@@ -1570,8 +1574,8 @@ print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_i
 detected_faces_ids = []
 # Detect faces from target image url list, returns a list[DetectedFaces]
 for image_file_name in target_image_file_names:
-    # We use detection model 2 because we are not retrieving attributes.
-    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detectionModel='detection_02')
+    # We use detection model 3 to get better performance.
+    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detection_model='detection_03')
     # Add the returned face's face ID
     detected_faces_ids.append(detected_faces[0].face_id)
     print('{} face(s) detected from image {}.'.format(len(detected_faces), image_file_name))
@@ -1684,8 +1688,8 @@ time.sleep (60)
 
 # Detect faces
 face_ids = []
-# We use detection model 2 because we are not retrieving attributes.
-faces = face_client.face.detect_with_stream(image, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+faces = face_client.face.detect_with_stream(image, detection_model='detection_03')
 for face in faces:
     face_ids.append(face.face_id)
 # </snippet_identify_testimage>
@@ -2041,8 +2045,8 @@ print()
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -2061,8 +2065,8 @@ first_image_face_ID = detected_faces[0].face_id
 # Each detected face gets assigned a new ID
 multi_face_image_url = "http://www.historyplace.com/kennedy/president-family-portrait-closeup.jpg"
 multi_image_name = os.path.basename(multi_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detection_model='detection_03')
 # </snippet_detectgroup>
 
 print('Detected face IDs from', multi_image_name, ':')
@@ -2080,8 +2084,8 @@ Print image and draw rectangles around faces
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -2129,26 +2133,27 @@ print()
 second_image_face_IDs = list(map(lambda x: x.face_id, detected_faces2))
 # Next, find similar face IDs like the one detected in the first image.
 similar_faces = face_client.face.find_similar(face_id=first_image_face_ID, face_ids=second_image_face_IDs)
-if not similar_faces[0]:
+if not similar_faces:
     print('No similar faces found in', multi_image_name, '.')
 # </snippet_findsimilar>
 
 # <snippet_findsimilar_print>
 # Print the details of the similar faces detected
-print('Similar faces found in', multi_image_name + ':')
-for face in similar_faces:
-    first_image_face_ID = face.face_id
-    # The similar face IDs of the single face image and the group image do not need to match, 
-    # they are only used for identification purposes in each image.
-    # The similar faces are matched using the Cognitive Services algorithm in find_similar().
-    face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
-    if face_info:
-        print('  Face ID: ', first_image_face_ID)
-        print('  Face rectangle:')
-        print('    Left: ', str(face_info.face_rectangle.left))
-        print('    Top: ', str(face_info.face_rectangle.top))
-        print('    Width: ', str(face_info.face_rectangle.width))
-        print('    Height: ', str(face_info.face_rectangle.height))
+else:
+    print('Similar faces found in', multi_image_name + ':')
+    for face in similar_faces:
+        first_image_face_ID = face.face_id
+        # The similar face IDs of the single face image and the group image do not need to match, 
+        # they are only used for identification purposes in each image.
+        # The similar faces are matched using the Cognitive Services algorithm in find_similar().
+        face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
+        if face_info:
+            print('  Face ID: ', first_image_face_ID)
+            print('  Face rectangle:')
+            print('    Left: ', str(face_info.face_rectangle.left))
+            print('    Top: ', str(face_info.face_rectangle.top))
+            print('    Width: ', str(face_info.face_rectangle.width))
+            print('    Height: ', str(face_info.face_rectangle.height))
 # </snippet_findsimilar_print>
 print()
 '''
@@ -2175,14 +2180,14 @@ source_image_file_name2 = 'Family1-Son1.jpg'
 
 # <snippet_verify_detect>
 # Detect face(s) from source image 1, returns a list[DetectedFaces]
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detection_model='detection_03')
 # Add the returned face's face ID
 source_image1_id = detected_faces1[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces1), source_image_file_name1))
 
 # Detect face(s) from source image 2, returns a list[DetectedFaces]
-detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detectionModel='detection_02')
+detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detection_model='detection_03')
 # Add the returned face's face ID
 source_image2_id = detected_faces2[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_image_file_name2))
@@ -2191,8 +2196,8 @@ print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_i
 detected_faces_ids = []
 # Detect faces from target image url list, returns a list[DetectedFaces]
 for image_file_name in target_image_file_names:
-    # We use detection model 2 because we are not retrieving attributes.
-    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detectionModel='detection_02')
+    # We use detection model 3 to get better performance.
+    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detection_model='detection_03')
     # Add the returned face's face ID
     detected_faces_ids.append(detected_faces[0].face_id)
     print('{} face(s) detected from image {}.'.format(len(detected_faces), image_file_name))
@@ -2305,8 +2310,8 @@ time.sleep (60)
 
 # Detect faces
 face_ids = []
-# We use detection model 2 because we are not retrieving attributes.
-faces = face_client.face.detect_with_stream(image, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+faces = face_client.face.detect_with_stream(image, detection_model='detection_03')
 for face in faces:
     face_ids.append(face.face_id)
 # </snippet_identify_testimage>
@@ -2560,7 +2565,8 @@ print()
 print('End of quickstart.')
 ```
 
-有关更多检测方案，请参阅 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py) 上的示例代码。
+> [!TIP]
+> 还可以检测本地图像中的人脸。 请参阅 [FaceOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python) 方法，如 detect_with_stream。
 
 ### <a name="display-and-frame-faces"></a>显示和定格人脸
 
@@ -2664,8 +2670,8 @@ print()
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -2684,8 +2690,8 @@ first_image_face_ID = detected_faces[0].face_id
 # Each detected face gets assigned a new ID
 multi_face_image_url = "http://www.historyplace.com/kennedy/president-family-portrait-closeup.jpg"
 multi_image_name = os.path.basename(multi_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detection_model='detection_03')
 # </snippet_detectgroup>
 
 print('Detected face IDs from', multi_image_name, ':')
@@ -2703,8 +2709,8 @@ Print image and draw rectangles around faces
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -2752,26 +2758,27 @@ print()
 second_image_face_IDs = list(map(lambda x: x.face_id, detected_faces2))
 # Next, find similar face IDs like the one detected in the first image.
 similar_faces = face_client.face.find_similar(face_id=first_image_face_ID, face_ids=second_image_face_IDs)
-if not similar_faces[0]:
+if not similar_faces:
     print('No similar faces found in', multi_image_name, '.')
 # </snippet_findsimilar>
 
 # <snippet_findsimilar_print>
 # Print the details of the similar faces detected
-print('Similar faces found in', multi_image_name + ':')
-for face in similar_faces:
-    first_image_face_ID = face.face_id
-    # The similar face IDs of the single face image and the group image do not need to match, 
-    # they are only used for identification purposes in each image.
-    # The similar faces are matched using the Cognitive Services algorithm in find_similar().
-    face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
-    if face_info:
-        print('  Face ID: ', first_image_face_ID)
-        print('  Face rectangle:')
-        print('    Left: ', str(face_info.face_rectangle.left))
-        print('    Top: ', str(face_info.face_rectangle.top))
-        print('    Width: ', str(face_info.face_rectangle.width))
-        print('    Height: ', str(face_info.face_rectangle.height))
+else:
+    print('Similar faces found in', multi_image_name + ':')
+    for face in similar_faces:
+        first_image_face_ID = face.face_id
+        # The similar face IDs of the single face image and the group image do not need to match, 
+        # they are only used for identification purposes in each image.
+        # The similar faces are matched using the Cognitive Services algorithm in find_similar().
+        face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
+        if face_info:
+            print('  Face ID: ', first_image_face_ID)
+            print('  Face rectangle:')
+            print('    Left: ', str(face_info.face_rectangle.left))
+            print('    Top: ', str(face_info.face_rectangle.top))
+            print('    Width: ', str(face_info.face_rectangle.width))
+            print('    Height: ', str(face_info.face_rectangle.height))
 # </snippet_findsimilar_print>
 print()
 '''
@@ -2798,14 +2805,14 @@ source_image_file_name2 = 'Family1-Son1.jpg'
 
 # <snippet_verify_detect>
 # Detect face(s) from source image 1, returns a list[DetectedFaces]
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detection_model='detection_03')
 # Add the returned face's face ID
 source_image1_id = detected_faces1[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces1), source_image_file_name1))
 
 # Detect face(s) from source image 2, returns a list[DetectedFaces]
-detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detectionModel='detection_02')
+detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detection_model='detection_03')
 # Add the returned face's face ID
 source_image2_id = detected_faces2[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_image_file_name2))
@@ -2814,8 +2821,8 @@ print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_i
 detected_faces_ids = []
 # Detect faces from target image url list, returns a list[DetectedFaces]
 for image_file_name in target_image_file_names:
-    # We use detection model 2 because we are not retrieving attributes.
-    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detectionModel='detection_02')
+    # We use detection model 3 to get better performance.
+    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detection_model='detection_03')
     # Add the returned face's face ID
     detected_faces_ids.append(detected_faces[0].face_id)
     print('{} face(s) detected from image {}.'.format(len(detected_faces), image_file_name))
@@ -2928,8 +2935,8 @@ time.sleep (60)
 
 # Detect faces
 face_ids = []
-# We use detection model 2 because we are not retrieving attributes.
-faces = face_client.face.detect_with_stream(image, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+faces = face_client.face.detect_with_stream(image, detection_model='detection_03')
 for face in faces:
     face_ids.append(face.face_id)
 # </snippet_identify_testimage>
@@ -3291,8 +3298,8 @@ print()
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -3311,8 +3318,8 @@ first_image_face_ID = detected_faces[0].face_id
 # Each detected face gets assigned a new ID
 multi_face_image_url = "http://www.historyplace.com/kennedy/president-family-portrait-closeup.jpg"
 multi_image_name = os.path.basename(multi_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detection_model='detection_03')
 # </snippet_detectgroup>
 
 print('Detected face IDs from', multi_image_name, ':')
@@ -3330,8 +3337,8 @@ Print image and draw rectangles around faces
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -3379,26 +3386,27 @@ print()
 second_image_face_IDs = list(map(lambda x: x.face_id, detected_faces2))
 # Next, find similar face IDs like the one detected in the first image.
 similar_faces = face_client.face.find_similar(face_id=first_image_face_ID, face_ids=second_image_face_IDs)
-if not similar_faces[0]:
+if not similar_faces:
     print('No similar faces found in', multi_image_name, '.')
 # </snippet_findsimilar>
 
 # <snippet_findsimilar_print>
 # Print the details of the similar faces detected
-print('Similar faces found in', multi_image_name + ':')
-for face in similar_faces:
-    first_image_face_ID = face.face_id
-    # The similar face IDs of the single face image and the group image do not need to match, 
-    # they are only used for identification purposes in each image.
-    # The similar faces are matched using the Cognitive Services algorithm in find_similar().
-    face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
-    if face_info:
-        print('  Face ID: ', first_image_face_ID)
-        print('  Face rectangle:')
-        print('    Left: ', str(face_info.face_rectangle.left))
-        print('    Top: ', str(face_info.face_rectangle.top))
-        print('    Width: ', str(face_info.face_rectangle.width))
-        print('    Height: ', str(face_info.face_rectangle.height))
+else:
+    print('Similar faces found in', multi_image_name + ':')
+    for face in similar_faces:
+        first_image_face_ID = face.face_id
+        # The similar face IDs of the single face image and the group image do not need to match, 
+        # they are only used for identification purposes in each image.
+        # The similar faces are matched using the Cognitive Services algorithm in find_similar().
+        face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
+        if face_info:
+            print('  Face ID: ', first_image_face_ID)
+            print('  Face rectangle:')
+            print('    Left: ', str(face_info.face_rectangle.left))
+            print('    Top: ', str(face_info.face_rectangle.top))
+            print('    Width: ', str(face_info.face_rectangle.width))
+            print('    Height: ', str(face_info.face_rectangle.height))
 # </snippet_findsimilar_print>
 print()
 '''
@@ -3425,14 +3433,14 @@ source_image_file_name2 = 'Family1-Son1.jpg'
 
 # <snippet_verify_detect>
 # Detect face(s) from source image 1, returns a list[DetectedFaces]
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detection_model='detection_03')
 # Add the returned face's face ID
 source_image1_id = detected_faces1[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces1), source_image_file_name1))
 
 # Detect face(s) from source image 2, returns a list[DetectedFaces]
-detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detectionModel='detection_02')
+detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detection_model='detection_03')
 # Add the returned face's face ID
 source_image2_id = detected_faces2[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_image_file_name2))
@@ -3441,8 +3449,8 @@ print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_i
 detected_faces_ids = []
 # Detect faces from target image url list, returns a list[DetectedFaces]
 for image_file_name in target_image_file_names:
-    # We use detection model 2 because we are not retrieving attributes.
-    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detectionModel='detection_02')
+    # We use detection model 3 to get better performance.
+    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detection_model='detection_03')
     # Add the returned face's face ID
     detected_faces_ids.append(detected_faces[0].face_id)
     print('{} face(s) detected from image {}.'.format(len(detected_faces), image_file_name))
@@ -3555,8 +3563,8 @@ time.sleep (60)
 
 # Detect faces
 face_ids = []
-# We use detection model 2 because we are not retrieving attributes.
-faces = face_client.face.detect_with_stream(image, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+faces = face_client.face.detect_with_stream(image, detection_model='detection_03')
 for face in faces:
     face_ids.append(face.face_id)
 # </snippet_identify_testimage>
@@ -3910,8 +3918,8 @@ print()
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -3930,8 +3938,8 @@ first_image_face_ID = detected_faces[0].face_id
 # Each detected face gets assigned a new ID
 multi_face_image_url = "http://www.historyplace.com/kennedy/president-family-portrait-closeup.jpg"
 multi_image_name = os.path.basename(multi_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detection_model='detection_03')
 # </snippet_detectgroup>
 
 print('Detected face IDs from', multi_image_name, ':')
@@ -3949,8 +3957,8 @@ Print image and draw rectangles around faces
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -3998,26 +4006,27 @@ print()
 second_image_face_IDs = list(map(lambda x: x.face_id, detected_faces2))
 # Next, find similar face IDs like the one detected in the first image.
 similar_faces = face_client.face.find_similar(face_id=first_image_face_ID, face_ids=second_image_face_IDs)
-if not similar_faces[0]:
+if not similar_faces:
     print('No similar faces found in', multi_image_name, '.')
 # </snippet_findsimilar>
 
 # <snippet_findsimilar_print>
 # Print the details of the similar faces detected
-print('Similar faces found in', multi_image_name + ':')
-for face in similar_faces:
-    first_image_face_ID = face.face_id
-    # The similar face IDs of the single face image and the group image do not need to match, 
-    # they are only used for identification purposes in each image.
-    # The similar faces are matched using the Cognitive Services algorithm in find_similar().
-    face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
-    if face_info:
-        print('  Face ID: ', first_image_face_ID)
-        print('  Face rectangle:')
-        print('    Left: ', str(face_info.face_rectangle.left))
-        print('    Top: ', str(face_info.face_rectangle.top))
-        print('    Width: ', str(face_info.face_rectangle.width))
-        print('    Height: ', str(face_info.face_rectangle.height))
+else:
+    print('Similar faces found in', multi_image_name + ':')
+    for face in similar_faces:
+        first_image_face_ID = face.face_id
+        # The similar face IDs of the single face image and the group image do not need to match, 
+        # they are only used for identification purposes in each image.
+        # The similar faces are matched using the Cognitive Services algorithm in find_similar().
+        face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
+        if face_info:
+            print('  Face ID: ', first_image_face_ID)
+            print('  Face rectangle:')
+            print('    Left: ', str(face_info.face_rectangle.left))
+            print('    Top: ', str(face_info.face_rectangle.top))
+            print('    Width: ', str(face_info.face_rectangle.width))
+            print('    Height: ', str(face_info.face_rectangle.height))
 # </snippet_findsimilar_print>
 print()
 '''
@@ -4044,14 +4053,14 @@ source_image_file_name2 = 'Family1-Son1.jpg'
 
 # <snippet_verify_detect>
 # Detect face(s) from source image 1, returns a list[DetectedFaces]
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detection_model='detection_03')
 # Add the returned face's face ID
 source_image1_id = detected_faces1[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces1), source_image_file_name1))
 
 # Detect face(s) from source image 2, returns a list[DetectedFaces]
-detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detectionModel='detection_02')
+detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detection_model='detection_03')
 # Add the returned face's face ID
 source_image2_id = detected_faces2[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_image_file_name2))
@@ -4060,8 +4069,8 @@ print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_i
 detected_faces_ids = []
 # Detect faces from target image url list, returns a list[DetectedFaces]
 for image_file_name in target_image_file_names:
-    # We use detection model 2 because we are not retrieving attributes.
-    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detectionModel='detection_02')
+    # We use detection model 3 to get better performance.
+    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detection_model='detection_03')
     # Add the returned face's face ID
     detected_faces_ids.append(detected_faces[0].face_id)
     print('{} face(s) detected from image {}.'.format(len(detected_faces), image_file_name))
@@ -4174,8 +4183,8 @@ time.sleep (60)
 
 # Detect faces
 face_ids = []
-# We use detection model 2 because we are not retrieving attributes.
-faces = face_client.face.detect_with_stream(image, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+faces = face_client.face.detect_with_stream(image, detection_model='detection_03')
 for face in faces:
     face_ids.append(face.face_id)
 # </snippet_identify_testimage>
@@ -4531,8 +4540,8 @@ print()
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -4551,8 +4560,8 @@ first_image_face_ID = detected_faces[0].face_id
 # Each detected face gets assigned a new ID
 multi_face_image_url = "http://www.historyplace.com/kennedy/president-family-portrait-closeup.jpg"
 multi_image_name = os.path.basename(multi_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detection_model='detection_03')
 # </snippet_detectgroup>
 
 print('Detected face IDs from', multi_image_name, ':')
@@ -4570,8 +4579,8 @@ Print image and draw rectangles around faces
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -4619,26 +4628,27 @@ print()
 second_image_face_IDs = list(map(lambda x: x.face_id, detected_faces2))
 # Next, find similar face IDs like the one detected in the first image.
 similar_faces = face_client.face.find_similar(face_id=first_image_face_ID, face_ids=second_image_face_IDs)
-if not similar_faces[0]:
+if not similar_faces:
     print('No similar faces found in', multi_image_name, '.')
 # </snippet_findsimilar>
 
 # <snippet_findsimilar_print>
 # Print the details of the similar faces detected
-print('Similar faces found in', multi_image_name + ':')
-for face in similar_faces:
-    first_image_face_ID = face.face_id
-    # The similar face IDs of the single face image and the group image do not need to match, 
-    # they are only used for identification purposes in each image.
-    # The similar faces are matched using the Cognitive Services algorithm in find_similar().
-    face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
-    if face_info:
-        print('  Face ID: ', first_image_face_ID)
-        print('  Face rectangle:')
-        print('    Left: ', str(face_info.face_rectangle.left))
-        print('    Top: ', str(face_info.face_rectangle.top))
-        print('    Width: ', str(face_info.face_rectangle.width))
-        print('    Height: ', str(face_info.face_rectangle.height))
+else:
+    print('Similar faces found in', multi_image_name + ':')
+    for face in similar_faces:
+        first_image_face_ID = face.face_id
+        # The similar face IDs of the single face image and the group image do not need to match, 
+        # they are only used for identification purposes in each image.
+        # The similar faces are matched using the Cognitive Services algorithm in find_similar().
+        face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
+        if face_info:
+            print('  Face ID: ', first_image_face_ID)
+            print('  Face rectangle:')
+            print('    Left: ', str(face_info.face_rectangle.left))
+            print('    Top: ', str(face_info.face_rectangle.top))
+            print('    Width: ', str(face_info.face_rectangle.width))
+            print('    Height: ', str(face_info.face_rectangle.height))
 # </snippet_findsimilar_print>
 print()
 '''
@@ -4665,14 +4675,14 @@ source_image_file_name2 = 'Family1-Son1.jpg'
 
 # <snippet_verify_detect>
 # Detect face(s) from source image 1, returns a list[DetectedFaces]
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detection_model='detection_03')
 # Add the returned face's face ID
 source_image1_id = detected_faces1[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces1), source_image_file_name1))
 
 # Detect face(s) from source image 2, returns a list[DetectedFaces]
-detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detectionModel='detection_02')
+detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detection_model='detection_03')
 # Add the returned face's face ID
 source_image2_id = detected_faces2[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_image_file_name2))
@@ -4681,8 +4691,8 @@ print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_i
 detected_faces_ids = []
 # Detect faces from target image url list, returns a list[DetectedFaces]
 for image_file_name in target_image_file_names:
-    # We use detection model 2 because we are not retrieving attributes.
-    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detectionModel='detection_02')
+    # We use detection model 3 to get better performance.
+    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detection_model='detection_03')
     # Add the returned face's face ID
     detected_faces_ids.append(detected_faces[0].face_id)
     print('{} face(s) detected from image {}.'.format(len(detected_faces), image_file_name))
@@ -4795,8 +4805,8 @@ time.sleep (60)
 
 # Detect faces
 face_ids = []
-# We use detection model 2 because we are not retrieving attributes.
-faces = face_client.face.detect_with_stream(image, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+faces = face_client.face.detect_with_stream(image, detection_model='detection_03')
 for face in faces:
     face_ids.append(face.face_id)
 # </snippet_identify_testimage>
@@ -5052,7 +5062,7 @@ print('End of quickstart.')
 
 ## <a name="create-and-train-a-person-group"></a>创建和训练人员组
 
-以下代码创建包含三个不同 **Person** 对象的 **PersonGroup** 。 它将每个 **Person** 与一组示例图像相关联，然后进行训练以便能够识别每个人。 
+以下代码创建包含三个不同 **Person** 对象的 **PersonGroup**。 它将每个 **Person** 与一组示例图像相关联，然后进行训练以便能够识别每个人。 
 
 ### <a name="create-persongroup"></a>创建 PersonGroup
 
@@ -5160,8 +5170,8 @@ print()
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -5180,8 +5190,8 @@ first_image_face_ID = detected_faces[0].face_id
 # Each detected face gets assigned a new ID
 multi_face_image_url = "http://www.historyplace.com/kennedy/president-family-portrait-closeup.jpg"
 multi_image_name = os.path.basename(multi_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detection_model='detection_03')
 # </snippet_detectgroup>
 
 print('Detected face IDs from', multi_image_name, ':')
@@ -5199,8 +5209,8 @@ Print image and draw rectangles around faces
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -5248,26 +5258,27 @@ print()
 second_image_face_IDs = list(map(lambda x: x.face_id, detected_faces2))
 # Next, find similar face IDs like the one detected in the first image.
 similar_faces = face_client.face.find_similar(face_id=first_image_face_ID, face_ids=second_image_face_IDs)
-if not similar_faces[0]:
+if not similar_faces:
     print('No similar faces found in', multi_image_name, '.')
 # </snippet_findsimilar>
 
 # <snippet_findsimilar_print>
 # Print the details of the similar faces detected
-print('Similar faces found in', multi_image_name + ':')
-for face in similar_faces:
-    first_image_face_ID = face.face_id
-    # The similar face IDs of the single face image and the group image do not need to match, 
-    # they are only used for identification purposes in each image.
-    # The similar faces are matched using the Cognitive Services algorithm in find_similar().
-    face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
-    if face_info:
-        print('  Face ID: ', first_image_face_ID)
-        print('  Face rectangle:')
-        print('    Left: ', str(face_info.face_rectangle.left))
-        print('    Top: ', str(face_info.face_rectangle.top))
-        print('    Width: ', str(face_info.face_rectangle.width))
-        print('    Height: ', str(face_info.face_rectangle.height))
+else:
+    print('Similar faces found in', multi_image_name + ':')
+    for face in similar_faces:
+        first_image_face_ID = face.face_id
+        # The similar face IDs of the single face image and the group image do not need to match, 
+        # they are only used for identification purposes in each image.
+        # The similar faces are matched using the Cognitive Services algorithm in find_similar().
+        face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
+        if face_info:
+            print('  Face ID: ', first_image_face_ID)
+            print('  Face rectangle:')
+            print('    Left: ', str(face_info.face_rectangle.left))
+            print('    Top: ', str(face_info.face_rectangle.top))
+            print('    Width: ', str(face_info.face_rectangle.width))
+            print('    Height: ', str(face_info.face_rectangle.height))
 # </snippet_findsimilar_print>
 print()
 '''
@@ -5294,14 +5305,14 @@ source_image_file_name2 = 'Family1-Son1.jpg'
 
 # <snippet_verify_detect>
 # Detect face(s) from source image 1, returns a list[DetectedFaces]
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detection_model='detection_03')
 # Add the returned face's face ID
 source_image1_id = detected_faces1[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces1), source_image_file_name1))
 
 # Detect face(s) from source image 2, returns a list[DetectedFaces]
-detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detectionModel='detection_02')
+detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detection_model='detection_03')
 # Add the returned face's face ID
 source_image2_id = detected_faces2[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_image_file_name2))
@@ -5310,8 +5321,8 @@ print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_i
 detected_faces_ids = []
 # Detect faces from target image url list, returns a list[DetectedFaces]
 for image_file_name in target_image_file_names:
-    # We use detection model 2 because we are not retrieving attributes.
-    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detectionModel='detection_02')
+    # We use detection model 3 to get better performance.
+    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detection_model='detection_03')
     # Add the returned face's face ID
     detected_faces_ids.append(detected_faces[0].face_id)
     print('{} face(s) detected from image {}.'.format(len(detected_faces), image_file_name))
@@ -5424,8 +5435,8 @@ time.sleep (60)
 
 # Detect faces
 face_ids = []
-# We use detection model 2 because we are not retrieving attributes.
-faces = face_client.face.detect_with_stream(image, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+faces = face_client.face.detect_with_stream(image, detection_model='detection_03')
 for face in faces:
     face_ids.append(face.face_id)
 # </snippet_identify_testimage>
@@ -5779,8 +5790,8 @@ print()
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -5799,8 +5810,8 @@ first_image_face_ID = detected_faces[0].face_id
 # Each detected face gets assigned a new ID
 multi_face_image_url = "http://www.historyplace.com/kennedy/president-family-portrait-closeup.jpg"
 multi_image_name = os.path.basename(multi_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detection_model='detection_03')
 # </snippet_detectgroup>
 
 print('Detected face IDs from', multi_image_name, ':')
@@ -5818,8 +5829,8 @@ Print image and draw rectangles around faces
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -5867,26 +5878,27 @@ print()
 second_image_face_IDs = list(map(lambda x: x.face_id, detected_faces2))
 # Next, find similar face IDs like the one detected in the first image.
 similar_faces = face_client.face.find_similar(face_id=first_image_face_ID, face_ids=second_image_face_IDs)
-if not similar_faces[0]:
+if not similar_faces:
     print('No similar faces found in', multi_image_name, '.')
 # </snippet_findsimilar>
 
 # <snippet_findsimilar_print>
 # Print the details of the similar faces detected
-print('Similar faces found in', multi_image_name + ':')
-for face in similar_faces:
-    first_image_face_ID = face.face_id
-    # The similar face IDs of the single face image and the group image do not need to match, 
-    # they are only used for identification purposes in each image.
-    # The similar faces are matched using the Cognitive Services algorithm in find_similar().
-    face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
-    if face_info:
-        print('  Face ID: ', first_image_face_ID)
-        print('  Face rectangle:')
-        print('    Left: ', str(face_info.face_rectangle.left))
-        print('    Top: ', str(face_info.face_rectangle.top))
-        print('    Width: ', str(face_info.face_rectangle.width))
-        print('    Height: ', str(face_info.face_rectangle.height))
+else:
+    print('Similar faces found in', multi_image_name + ':')
+    for face in similar_faces:
+        first_image_face_ID = face.face_id
+        # The similar face IDs of the single face image and the group image do not need to match, 
+        # they are only used for identification purposes in each image.
+        # The similar faces are matched using the Cognitive Services algorithm in find_similar().
+        face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
+        if face_info:
+            print('  Face ID: ', first_image_face_ID)
+            print('  Face rectangle:')
+            print('    Left: ', str(face_info.face_rectangle.left))
+            print('    Top: ', str(face_info.face_rectangle.top))
+            print('    Width: ', str(face_info.face_rectangle.width))
+            print('    Height: ', str(face_info.face_rectangle.height))
 # </snippet_findsimilar_print>
 print()
 '''
@@ -5913,14 +5925,14 @@ source_image_file_name2 = 'Family1-Son1.jpg'
 
 # <snippet_verify_detect>
 # Detect face(s) from source image 1, returns a list[DetectedFaces]
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detection_model='detection_03')
 # Add the returned face's face ID
 source_image1_id = detected_faces1[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces1), source_image_file_name1))
 
 # Detect face(s) from source image 2, returns a list[DetectedFaces]
-detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detectionModel='detection_02')
+detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detection_model='detection_03')
 # Add the returned face's face ID
 source_image2_id = detected_faces2[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_image_file_name2))
@@ -5929,8 +5941,8 @@ print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_i
 detected_faces_ids = []
 # Detect faces from target image url list, returns a list[DetectedFaces]
 for image_file_name in target_image_file_names:
-    # We use detection model 2 because we are not retrieving attributes.
-    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detectionModel='detection_02')
+    # We use detection model 3 to get better performance.
+    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detection_model='detection_03')
     # Add the returned face's face ID
     detected_faces_ids.append(detected_faces[0].face_id)
     print('{} face(s) detected from image {}.'.format(len(detected_faces), image_file_name))
@@ -6043,8 +6055,8 @@ time.sleep (60)
 
 # Detect faces
 face_ids = []
-# We use detection model 2 because we are not retrieving attributes.
-faces = face_client.face.detect_with_stream(image, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+faces = face_client.face.detect_with_stream(image, detection_model='detection_03')
 for face in faces:
     face_ids.append(face.face_id)
 # </snippet_identify_testimage>
@@ -6400,8 +6412,8 @@ print()
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -6420,8 +6432,8 @@ first_image_face_ID = detected_faces[0].face_id
 # Each detected face gets assigned a new ID
 multi_face_image_url = "http://www.historyplace.com/kennedy/president-family-portrait-closeup.jpg"
 multi_image_name = os.path.basename(multi_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detection_model='detection_03')
 # </snippet_detectgroup>
 
 print('Detected face IDs from', multi_image_name, ':')
@@ -6439,8 +6451,8 @@ Print image and draw rectangles around faces
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -6488,26 +6500,27 @@ print()
 second_image_face_IDs = list(map(lambda x: x.face_id, detected_faces2))
 # Next, find similar face IDs like the one detected in the first image.
 similar_faces = face_client.face.find_similar(face_id=first_image_face_ID, face_ids=second_image_face_IDs)
-if not similar_faces[0]:
+if not similar_faces:
     print('No similar faces found in', multi_image_name, '.')
 # </snippet_findsimilar>
 
 # <snippet_findsimilar_print>
 # Print the details of the similar faces detected
-print('Similar faces found in', multi_image_name + ':')
-for face in similar_faces:
-    first_image_face_ID = face.face_id
-    # The similar face IDs of the single face image and the group image do not need to match, 
-    # they are only used for identification purposes in each image.
-    # The similar faces are matched using the Cognitive Services algorithm in find_similar().
-    face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
-    if face_info:
-        print('  Face ID: ', first_image_face_ID)
-        print('  Face rectangle:')
-        print('    Left: ', str(face_info.face_rectangle.left))
-        print('    Top: ', str(face_info.face_rectangle.top))
-        print('    Width: ', str(face_info.face_rectangle.width))
-        print('    Height: ', str(face_info.face_rectangle.height))
+else:
+    print('Similar faces found in', multi_image_name + ':')
+    for face in similar_faces:
+        first_image_face_ID = face.face_id
+        # The similar face IDs of the single face image and the group image do not need to match, 
+        # they are only used for identification purposes in each image.
+        # The similar faces are matched using the Cognitive Services algorithm in find_similar().
+        face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
+        if face_info:
+            print('  Face ID: ', first_image_face_ID)
+            print('  Face rectangle:')
+            print('    Left: ', str(face_info.face_rectangle.left))
+            print('    Top: ', str(face_info.face_rectangle.top))
+            print('    Width: ', str(face_info.face_rectangle.width))
+            print('    Height: ', str(face_info.face_rectangle.height))
 # </snippet_findsimilar_print>
 print()
 '''
@@ -6534,14 +6547,14 @@ source_image_file_name2 = 'Family1-Son1.jpg'
 
 # <snippet_verify_detect>
 # Detect face(s) from source image 1, returns a list[DetectedFaces]
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detection_model='detection_03')
 # Add the returned face's face ID
 source_image1_id = detected_faces1[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces1), source_image_file_name1))
 
 # Detect face(s) from source image 2, returns a list[DetectedFaces]
-detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detectionModel='detection_02')
+detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detection_model='detection_03')
 # Add the returned face's face ID
 source_image2_id = detected_faces2[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_image_file_name2))
@@ -6550,8 +6563,8 @@ print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_i
 detected_faces_ids = []
 # Detect faces from target image url list, returns a list[DetectedFaces]
 for image_file_name in target_image_file_names:
-    # We use detection model 2 because we are not retrieving attributes.
-    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detectionModel='detection_02')
+    # We use detection model 3 to get better performance.
+    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detection_model='detection_03')
     # Add the returned face's face ID
     detected_faces_ids.append(detected_faces[0].face_id)
     print('{} face(s) detected from image {}.'.format(len(detected_faces), image_file_name))
@@ -6664,8 +6677,8 @@ time.sleep (60)
 
 # Detect faces
 face_ids = []
-# We use detection model 2 because we are not retrieving attributes.
-faces = face_client.face.detect_with_stream(image, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+faces = face_client.face.detect_with_stream(image, detection_model='detection_03')
 for face in faces:
     face_ids.append(face.face_id)
 # </snippet_identify_testimage>
@@ -6919,9 +6932,12 @@ print()
 print('End of quickstart.')
 ```
 
+> [!TIP]
+> 还可以从 URL 引用的远程图像创建 PersonGroup。 请参阅 [PersonGroupPersonOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongrouppersonoperations?view=azure-python) 方法，例如 add_face_from_url。
+
 ### <a name="train-persongroup"></a>训练 PersonGroup
 
-分配人脸后，必须训练 **PersonGroup** ，使其能够识别与其每个 **Person** 对象关联的视觉特征。 以下代码调用异步 **train** 方法并轮询结果，然后将状态输出到控制台。
+分配人脸后，必须训练 **PersonGroup**，使其能够识别与其每个 **Person** 对象关联的视觉特征。 以下代码调用异步 **train** 方法并轮询结果，然后将状态输出到控制台。
 
 ```python
 # <snippet_imports>
@@ -7021,8 +7037,8 @@ print()
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -7041,8 +7057,8 @@ first_image_face_ID = detected_faces[0].face_id
 # Each detected face gets assigned a new ID
 multi_face_image_url = "http://www.historyplace.com/kennedy/president-family-portrait-closeup.jpg"
 multi_image_name = os.path.basename(multi_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detection_model='detection_03')
 # </snippet_detectgroup>
 
 print('Detected face IDs from', multi_image_name, ':')
@@ -7060,8 +7076,8 @@ Print image and draw rectangles around faces
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -7109,26 +7125,27 @@ print()
 second_image_face_IDs = list(map(lambda x: x.face_id, detected_faces2))
 # Next, find similar face IDs like the one detected in the first image.
 similar_faces = face_client.face.find_similar(face_id=first_image_face_ID, face_ids=second_image_face_IDs)
-if not similar_faces[0]:
+if not similar_faces:
     print('No similar faces found in', multi_image_name, '.')
 # </snippet_findsimilar>
 
 # <snippet_findsimilar_print>
 # Print the details of the similar faces detected
-print('Similar faces found in', multi_image_name + ':')
-for face in similar_faces:
-    first_image_face_ID = face.face_id
-    # The similar face IDs of the single face image and the group image do not need to match, 
-    # they are only used for identification purposes in each image.
-    # The similar faces are matched using the Cognitive Services algorithm in find_similar().
-    face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
-    if face_info:
-        print('  Face ID: ', first_image_face_ID)
-        print('  Face rectangle:')
-        print('    Left: ', str(face_info.face_rectangle.left))
-        print('    Top: ', str(face_info.face_rectangle.top))
-        print('    Width: ', str(face_info.face_rectangle.width))
-        print('    Height: ', str(face_info.face_rectangle.height))
+else:
+    print('Similar faces found in', multi_image_name + ':')
+    for face in similar_faces:
+        first_image_face_ID = face.face_id
+        # The similar face IDs of the single face image and the group image do not need to match, 
+        # they are only used for identification purposes in each image.
+        # The similar faces are matched using the Cognitive Services algorithm in find_similar().
+        face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
+        if face_info:
+            print('  Face ID: ', first_image_face_ID)
+            print('  Face rectangle:')
+            print('    Left: ', str(face_info.face_rectangle.left))
+            print('    Top: ', str(face_info.face_rectangle.top))
+            print('    Width: ', str(face_info.face_rectangle.width))
+            print('    Height: ', str(face_info.face_rectangle.height))
 # </snippet_findsimilar_print>
 print()
 '''
@@ -7155,14 +7172,14 @@ source_image_file_name2 = 'Family1-Son1.jpg'
 
 # <snippet_verify_detect>
 # Detect face(s) from source image 1, returns a list[DetectedFaces]
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detection_model='detection_03')
 # Add the returned face's face ID
 source_image1_id = detected_faces1[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces1), source_image_file_name1))
 
 # Detect face(s) from source image 2, returns a list[DetectedFaces]
-detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detectionModel='detection_02')
+detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detection_model='detection_03')
 # Add the returned face's face ID
 source_image2_id = detected_faces2[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_image_file_name2))
@@ -7171,8 +7188,8 @@ print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_i
 detected_faces_ids = []
 # Detect faces from target image url list, returns a list[DetectedFaces]
 for image_file_name in target_image_file_names:
-    # We use detection model 2 because we are not retrieving attributes.
-    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detectionModel='detection_02')
+    # We use detection model 3 to get better performance.
+    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detection_model='detection_03')
     # Add the returned face's face ID
     detected_faces_ids.append(detected_faces[0].face_id)
     print('{} face(s) detected from image {}.'.format(len(detected_faces), image_file_name))
@@ -7285,8 +7302,8 @@ time.sleep (60)
 
 # Detect faces
 face_ids = []
-# We use detection model 2 because we are not retrieving attributes.
-faces = face_client.face.detect_with_stream(image, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+faces = face_client.face.detect_with_stream(image, detection_model='detection_03')
 for face in faces:
     face_ids.append(face.face_id)
 # </snippet_identify_testimage>
@@ -7540,16 +7557,19 @@ print()
 print('End of quickstart.')
 ```
 
+> [!TIP]
+> 人脸 API 在一组预构建的模型呢上运行，这些模型在本质上是静态的（模型的性能不会因为运行服务而提高或降低）。 如果 Microsoft 更新模型的后端，但不迁移整个新模型版本，那么模型生成的结果可能会变化。 若要使用更新的模型版本，可重新训练 PersonGroup，将更新的模型指定为具有相同注册映像的参数。
+
 ## <a name="identify-a-face"></a>识别人脸
 
-识别操作采用一个（或多个）人员的图像，并在图像中查找每个人脸的标识（人脸识别搜索）。 它将每个检测到的人脸与某个 **PersonGroup** （面部特征已知的不同 **Person** 对象的数据库）进行比较。
+识别操作采用一个（或多个）人员的图像，并在图像中查找每个人脸的标识（人脸识别搜索）。 它将每个检测到的人脸与某个 **PersonGroup**（面部特征已知的不同 **Person** 对象的数据库）进行比较。
 
 > [!IMPORTANT]
 > 若要运行此示例，必须先运行[创建和训练人员组](#create-and-train-a-person-group)中的代码。
 
 ### <a name="get-a-test-image"></a>获取测试图像
 
-以下代码在项目根目录中查找图像 _test-image-person-group.jpg_ ，并检测该图像中的人脸。 可以使用用于 **PersonGroup** 管理的图像查找此图像： https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images 。
+以下代码在项目根目录中查找图像 _test-image-person-group.jpg_，并检测该图像中的人脸。 可以使用用于 **PersonGroup** 管理的图像查找此图像： https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images 。
 
 ```python
 # <snippet_imports>
@@ -7649,8 +7669,8 @@ print()
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -7669,8 +7689,8 @@ first_image_face_ID = detected_faces[0].face_id
 # Each detected face gets assigned a new ID
 multi_face_image_url = "http://www.historyplace.com/kennedy/president-family-portrait-closeup.jpg"
 multi_image_name = os.path.basename(multi_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detection_model='detection_03')
 # </snippet_detectgroup>
 
 print('Detected face IDs from', multi_image_name, ':')
@@ -7688,8 +7708,8 @@ Print image and draw rectangles around faces
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -7737,26 +7757,27 @@ print()
 second_image_face_IDs = list(map(lambda x: x.face_id, detected_faces2))
 # Next, find similar face IDs like the one detected in the first image.
 similar_faces = face_client.face.find_similar(face_id=first_image_face_ID, face_ids=second_image_face_IDs)
-if not similar_faces[0]:
+if not similar_faces:
     print('No similar faces found in', multi_image_name, '.')
 # </snippet_findsimilar>
 
 # <snippet_findsimilar_print>
 # Print the details of the similar faces detected
-print('Similar faces found in', multi_image_name + ':')
-for face in similar_faces:
-    first_image_face_ID = face.face_id
-    # The similar face IDs of the single face image and the group image do not need to match, 
-    # they are only used for identification purposes in each image.
-    # The similar faces are matched using the Cognitive Services algorithm in find_similar().
-    face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
-    if face_info:
-        print('  Face ID: ', first_image_face_ID)
-        print('  Face rectangle:')
-        print('    Left: ', str(face_info.face_rectangle.left))
-        print('    Top: ', str(face_info.face_rectangle.top))
-        print('    Width: ', str(face_info.face_rectangle.width))
-        print('    Height: ', str(face_info.face_rectangle.height))
+else:
+    print('Similar faces found in', multi_image_name + ':')
+    for face in similar_faces:
+        first_image_face_ID = face.face_id
+        # The similar face IDs of the single face image and the group image do not need to match, 
+        # they are only used for identification purposes in each image.
+        # The similar faces are matched using the Cognitive Services algorithm in find_similar().
+        face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
+        if face_info:
+            print('  Face ID: ', first_image_face_ID)
+            print('  Face rectangle:')
+            print('    Left: ', str(face_info.face_rectangle.left))
+            print('    Top: ', str(face_info.face_rectangle.top))
+            print('    Width: ', str(face_info.face_rectangle.width))
+            print('    Height: ', str(face_info.face_rectangle.height))
 # </snippet_findsimilar_print>
 print()
 '''
@@ -7783,14 +7804,14 @@ source_image_file_name2 = 'Family1-Son1.jpg'
 
 # <snippet_verify_detect>
 # Detect face(s) from source image 1, returns a list[DetectedFaces]
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detection_model='detection_03')
 # Add the returned face's face ID
 source_image1_id = detected_faces1[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces1), source_image_file_name1))
 
 # Detect face(s) from source image 2, returns a list[DetectedFaces]
-detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detectionModel='detection_02')
+detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detection_model='detection_03')
 # Add the returned face's face ID
 source_image2_id = detected_faces2[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_image_file_name2))
@@ -7799,8 +7820,8 @@ print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_i
 detected_faces_ids = []
 # Detect faces from target image url list, returns a list[DetectedFaces]
 for image_file_name in target_image_file_names:
-    # We use detection model 2 because we are not retrieving attributes.
-    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detectionModel='detection_02')
+    # We use detection model 3 to get better performance.
+    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detection_model='detection_03')
     # Add the returned face's face ID
     detected_faces_ids.append(detected_faces[0].face_id)
     print('{} face(s) detected from image {}.'.format(len(detected_faces), image_file_name))
@@ -7913,8 +7934,8 @@ time.sleep (60)
 
 # Detect faces
 face_ids = []
-# We use detection model 2 because we are not retrieving attributes.
-faces = face_client.face.detect_with_stream(image, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+faces = face_client.face.detect_with_stream(image, detection_model='detection_03')
 for face in faces:
     face_ids.append(face.face_id)
 # </snippet_identify_testimage>
@@ -8270,8 +8291,8 @@ print()
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -8290,8 +8311,8 @@ first_image_face_ID = detected_faces[0].face_id
 # Each detected face gets assigned a new ID
 multi_face_image_url = "http://www.historyplace.com/kennedy/president-family-portrait-closeup.jpg"
 multi_image_name = os.path.basename(multi_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detection_model='detection_03')
 # </snippet_detectgroup>
 
 print('Detected face IDs from', multi_image_name, ':')
@@ -8309,8 +8330,8 @@ Print image and draw rectangles around faces
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -8358,26 +8379,27 @@ print()
 second_image_face_IDs = list(map(lambda x: x.face_id, detected_faces2))
 # Next, find similar face IDs like the one detected in the first image.
 similar_faces = face_client.face.find_similar(face_id=first_image_face_ID, face_ids=second_image_face_IDs)
-if not similar_faces[0]:
+if not similar_faces:
     print('No similar faces found in', multi_image_name, '.')
 # </snippet_findsimilar>
 
 # <snippet_findsimilar_print>
 # Print the details of the similar faces detected
-print('Similar faces found in', multi_image_name + ':')
-for face in similar_faces:
-    first_image_face_ID = face.face_id
-    # The similar face IDs of the single face image and the group image do not need to match, 
-    # they are only used for identification purposes in each image.
-    # The similar faces are matched using the Cognitive Services algorithm in find_similar().
-    face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
-    if face_info:
-        print('  Face ID: ', first_image_face_ID)
-        print('  Face rectangle:')
-        print('    Left: ', str(face_info.face_rectangle.left))
-        print('    Top: ', str(face_info.face_rectangle.top))
-        print('    Width: ', str(face_info.face_rectangle.width))
-        print('    Height: ', str(face_info.face_rectangle.height))
+else:
+    print('Similar faces found in', multi_image_name + ':')
+    for face in similar_faces:
+        first_image_face_ID = face.face_id
+        # The similar face IDs of the single face image and the group image do not need to match, 
+        # they are only used for identification purposes in each image.
+        # The similar faces are matched using the Cognitive Services algorithm in find_similar().
+        face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
+        if face_info:
+            print('  Face ID: ', first_image_face_ID)
+            print('  Face rectangle:')
+            print('    Left: ', str(face_info.face_rectangle.left))
+            print('    Top: ', str(face_info.face_rectangle.top))
+            print('    Width: ', str(face_info.face_rectangle.width))
+            print('    Height: ', str(face_info.face_rectangle.height))
 # </snippet_findsimilar_print>
 print()
 '''
@@ -8404,14 +8426,14 @@ source_image_file_name2 = 'Family1-Son1.jpg'
 
 # <snippet_verify_detect>
 # Detect face(s) from source image 1, returns a list[DetectedFaces]
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detection_model='detection_03')
 # Add the returned face's face ID
 source_image1_id = detected_faces1[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces1), source_image_file_name1))
 
 # Detect face(s) from source image 2, returns a list[DetectedFaces]
-detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detectionModel='detection_02')
+detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detection_model='detection_03')
 # Add the returned face's face ID
 source_image2_id = detected_faces2[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_image_file_name2))
@@ -8420,8 +8442,8 @@ print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_i
 detected_faces_ids = []
 # Detect faces from target image url list, returns a list[DetectedFaces]
 for image_file_name in target_image_file_names:
-    # We use detection model 2 because we are not retrieving attributes.
-    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detectionModel='detection_02')
+    # We use detection model 3 to get better performance.
+    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detection_model='detection_03')
     # Add the returned face's face ID
     detected_faces_ids.append(detected_faces[0].face_id)
     print('{} face(s) detected from image {}.'.format(len(detected_faces), image_file_name))
@@ -8534,8 +8556,8 @@ time.sleep (60)
 
 # Detect faces
 face_ids = []
-# We use detection model 2 because we are not retrieving attributes.
-faces = face_client.face.detect_with_stream(image, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+faces = face_client.face.detect_with_stream(image, detection_model='detection_03')
 for face in faces:
     face_ids.append(face.face_id)
 # </snippet_identify_testimage>
@@ -8897,8 +8919,8 @@ print()
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -8917,8 +8939,8 @@ first_image_face_ID = detected_faces[0].face_id
 # Each detected face gets assigned a new ID
 multi_face_image_url = "http://www.historyplace.com/kennedy/president-family-portrait-closeup.jpg"
 multi_image_name = os.path.basename(multi_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detection_model='detection_03')
 # </snippet_detectgroup>
 
 print('Detected face IDs from', multi_image_name, ':')
@@ -8936,8 +8958,8 @@ Print image and draw rectangles around faces
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -8985,26 +9007,27 @@ print()
 second_image_face_IDs = list(map(lambda x: x.face_id, detected_faces2))
 # Next, find similar face IDs like the one detected in the first image.
 similar_faces = face_client.face.find_similar(face_id=first_image_face_ID, face_ids=second_image_face_IDs)
-if not similar_faces[0]:
+if not similar_faces:
     print('No similar faces found in', multi_image_name, '.')
 # </snippet_findsimilar>
 
 # <snippet_findsimilar_print>
 # Print the details of the similar faces detected
-print('Similar faces found in', multi_image_name + ':')
-for face in similar_faces:
-    first_image_face_ID = face.face_id
-    # The similar face IDs of the single face image and the group image do not need to match, 
-    # they are only used for identification purposes in each image.
-    # The similar faces are matched using the Cognitive Services algorithm in find_similar().
-    face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
-    if face_info:
-        print('  Face ID: ', first_image_face_ID)
-        print('  Face rectangle:')
-        print('    Left: ', str(face_info.face_rectangle.left))
-        print('    Top: ', str(face_info.face_rectangle.top))
-        print('    Width: ', str(face_info.face_rectangle.width))
-        print('    Height: ', str(face_info.face_rectangle.height))
+else:
+    print('Similar faces found in', multi_image_name + ':')
+    for face in similar_faces:
+        first_image_face_ID = face.face_id
+        # The similar face IDs of the single face image and the group image do not need to match, 
+        # they are only used for identification purposes in each image.
+        # The similar faces are matched using the Cognitive Services algorithm in find_similar().
+        face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
+        if face_info:
+            print('  Face ID: ', first_image_face_ID)
+            print('  Face rectangle:')
+            print('    Left: ', str(face_info.face_rectangle.left))
+            print('    Top: ', str(face_info.face_rectangle.top))
+            print('    Width: ', str(face_info.face_rectangle.width))
+            print('    Height: ', str(face_info.face_rectangle.height))
 # </snippet_findsimilar_print>
 print()
 '''
@@ -9031,14 +9054,14 @@ source_image_file_name2 = 'Family1-Son1.jpg'
 
 # <snippet_verify_detect>
 # Detect face(s) from source image 1, returns a list[DetectedFaces]
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detection_model='detection_03')
 # Add the returned face's face ID
 source_image1_id = detected_faces1[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces1), source_image_file_name1))
 
 # Detect face(s) from source image 2, returns a list[DetectedFaces]
-detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detectionModel='detection_02')
+detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detection_model='detection_03')
 # Add the returned face's face ID
 source_image2_id = detected_faces2[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_image_file_name2))
@@ -9047,8 +9070,8 @@ print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_i
 detected_faces_ids = []
 # Detect faces from target image url list, returns a list[DetectedFaces]
 for image_file_name in target_image_file_names:
-    # We use detection model 2 because we are not retrieving attributes.
-    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detectionModel='detection_02')
+    # We use detection model 3 to get better performance.
+    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detection_model='detection_03')
     # Add the returned face's face ID
     detected_faces_ids.append(detected_faces[0].face_id)
     print('{} face(s) detected from image {}.'.format(len(detected_faces), image_file_name))
@@ -9161,8 +9184,8 @@ time.sleep (60)
 
 # Detect faces
 face_ids = []
-# We use detection model 2 because we are not retrieving attributes.
-faces = face_client.face.detect_with_stream(image, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+faces = face_client.face.detect_with_stream(image, detection_model='detection_03')
 for face in faces:
     face_ids.append(face.face_id)
 # </snippet_identify_testimage>
@@ -9514,8 +9537,8 @@ print()
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -9534,8 +9557,8 @@ first_image_face_ID = detected_faces[0].face_id
 # Each detected face gets assigned a new ID
 multi_face_image_url = "http://www.historyplace.com/kennedy/president-family-portrait-closeup.jpg"
 multi_image_name = os.path.basename(multi_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detection_model='detection_03')
 # </snippet_detectgroup>
 
 print('Detected face IDs from', multi_image_name, ':')
@@ -9553,8 +9576,8 @@ Print image and draw rectangles around faces
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -9602,26 +9625,27 @@ print()
 second_image_face_IDs = list(map(lambda x: x.face_id, detected_faces2))
 # Next, find similar face IDs like the one detected in the first image.
 similar_faces = face_client.face.find_similar(face_id=first_image_face_ID, face_ids=second_image_face_IDs)
-if not similar_faces[0]:
+if not similar_faces:
     print('No similar faces found in', multi_image_name, '.')
 # </snippet_findsimilar>
 
 # <snippet_findsimilar_print>
 # Print the details of the similar faces detected
-print('Similar faces found in', multi_image_name + ':')
-for face in similar_faces:
-    first_image_face_ID = face.face_id
-    # The similar face IDs of the single face image and the group image do not need to match, 
-    # they are only used for identification purposes in each image.
-    # The similar faces are matched using the Cognitive Services algorithm in find_similar().
-    face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
-    if face_info:
-        print('  Face ID: ', first_image_face_ID)
-        print('  Face rectangle:')
-        print('    Left: ', str(face_info.face_rectangle.left))
-        print('    Top: ', str(face_info.face_rectangle.top))
-        print('    Width: ', str(face_info.face_rectangle.width))
-        print('    Height: ', str(face_info.face_rectangle.height))
+else:
+    print('Similar faces found in', multi_image_name + ':')
+    for face in similar_faces:
+        first_image_face_ID = face.face_id
+        # The similar face IDs of the single face image and the group image do not need to match, 
+        # they are only used for identification purposes in each image.
+        # The similar faces are matched using the Cognitive Services algorithm in find_similar().
+        face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
+        if face_info:
+            print('  Face ID: ', first_image_face_ID)
+            print('  Face rectangle:')
+            print('    Left: ', str(face_info.face_rectangle.left))
+            print('    Top: ', str(face_info.face_rectangle.top))
+            print('    Width: ', str(face_info.face_rectangle.width))
+            print('    Height: ', str(face_info.face_rectangle.height))
 # </snippet_findsimilar_print>
 print()
 '''
@@ -9648,14 +9672,14 @@ source_image_file_name2 = 'Family1-Son1.jpg'
 
 # <snippet_verify_detect>
 # Detect face(s) from source image 1, returns a list[DetectedFaces]
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detection_model='detection_03')
 # Add the returned face's face ID
 source_image1_id = detected_faces1[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces1), source_image_file_name1))
 
 # Detect face(s) from source image 2, returns a list[DetectedFaces]
-detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detectionModel='detection_02')
+detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detection_model='detection_03')
 # Add the returned face's face ID
 source_image2_id = detected_faces2[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_image_file_name2))
@@ -9664,8 +9688,8 @@ print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_i
 detected_faces_ids = []
 # Detect faces from target image url list, returns a list[DetectedFaces]
 for image_file_name in target_image_file_names:
-    # We use detection model 2 because we are not retrieving attributes.
-    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detectionModel='detection_02')
+    # We use detection model 3 to get better performance.
+    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detection_model='detection_03')
     # Add the returned face's face ID
     detected_faces_ids.append(detected_faces[0].face_id)
     print('{} face(s) detected from image {}.'.format(len(detected_faces), image_file_name))
@@ -9778,8 +9802,8 @@ time.sleep (60)
 
 # Detect faces
 face_ids = []
-# We use detection model 2 because we are not retrieving attributes.
-faces = face_client.face.detect_with_stream(image, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+faces = face_client.face.detect_with_stream(image, detection_model='detection_03')
 for face in faces:
     face_ids.append(face.face_id)
 # </snippet_identify_testimage>
@@ -10135,8 +10159,8 @@ print()
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -10155,8 +10179,8 @@ first_image_face_ID = detected_faces[0].face_id
 # Each detected face gets assigned a new ID
 multi_face_image_url = "http://www.historyplace.com/kennedy/president-family-portrait-closeup.jpg"
 multi_image_name = os.path.basename(multi_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detection_model='detection_03')
 # </snippet_detectgroup>
 
 print('Detected face IDs from', multi_image_name, ':')
@@ -10174,8 +10198,8 @@ Print image and draw rectangles around faces
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -10223,26 +10247,27 @@ print()
 second_image_face_IDs = list(map(lambda x: x.face_id, detected_faces2))
 # Next, find similar face IDs like the one detected in the first image.
 similar_faces = face_client.face.find_similar(face_id=first_image_face_ID, face_ids=second_image_face_IDs)
-if not similar_faces[0]:
+if not similar_faces:
     print('No similar faces found in', multi_image_name, '.')
 # </snippet_findsimilar>
 
 # <snippet_findsimilar_print>
 # Print the details of the similar faces detected
-print('Similar faces found in', multi_image_name + ':')
-for face in similar_faces:
-    first_image_face_ID = face.face_id
-    # The similar face IDs of the single face image and the group image do not need to match, 
-    # they are only used for identification purposes in each image.
-    # The similar faces are matched using the Cognitive Services algorithm in find_similar().
-    face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
-    if face_info:
-        print('  Face ID: ', first_image_face_ID)
-        print('  Face rectangle:')
-        print('    Left: ', str(face_info.face_rectangle.left))
-        print('    Top: ', str(face_info.face_rectangle.top))
-        print('    Width: ', str(face_info.face_rectangle.width))
-        print('    Height: ', str(face_info.face_rectangle.height))
+else:
+    print('Similar faces found in', multi_image_name + ':')
+    for face in similar_faces:
+        first_image_face_ID = face.face_id
+        # The similar face IDs of the single face image and the group image do not need to match, 
+        # they are only used for identification purposes in each image.
+        # The similar faces are matched using the Cognitive Services algorithm in find_similar().
+        face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
+        if face_info:
+            print('  Face ID: ', first_image_face_ID)
+            print('  Face rectangle:')
+            print('    Left: ', str(face_info.face_rectangle.left))
+            print('    Top: ', str(face_info.face_rectangle.top))
+            print('    Width: ', str(face_info.face_rectangle.width))
+            print('    Height: ', str(face_info.face_rectangle.height))
 # </snippet_findsimilar_print>
 print()
 '''
@@ -10269,14 +10294,14 @@ source_image_file_name2 = 'Family1-Son1.jpg'
 
 # <snippet_verify_detect>
 # Detect face(s) from source image 1, returns a list[DetectedFaces]
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detection_model='detection_03')
 # Add the returned face's face ID
 source_image1_id = detected_faces1[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces1), source_image_file_name1))
 
 # Detect face(s) from source image 2, returns a list[DetectedFaces]
-detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detectionModel='detection_02')
+detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detection_model='detection_03')
 # Add the returned face's face ID
 source_image2_id = detected_faces2[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_image_file_name2))
@@ -10285,8 +10310,8 @@ print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_i
 detected_faces_ids = []
 # Detect faces from target image url list, returns a list[DetectedFaces]
 for image_file_name in target_image_file_names:
-    # We use detection model 2 because we are not retrieving attributes.
-    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detectionModel='detection_02')
+    # We use detection model 3 to get better performance.
+    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detection_model='detection_03')
     # Add the returned face's face ID
     detected_faces_ids.append(detected_faces[0].face_id)
     print('{} face(s) detected from image {}.'.format(len(detected_faces), image_file_name))
@@ -10399,8 +10424,8 @@ time.sleep (60)
 
 # Detect faces
 face_ids = []
-# We use detection model 2 because we are not retrieving attributes.
-faces = face_client.face.detect_with_stream(image, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+faces = face_client.face.detect_with_stream(image, detection_model='detection_03')
 for face in faces:
     face_ids.append(face.face_id)
 # </snippet_identify_testimage>
@@ -10756,8 +10781,8 @@ print()
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -10776,8 +10801,8 @@ first_image_face_ID = detected_faces[0].face_id
 # Each detected face gets assigned a new ID
 multi_face_image_url = "http://www.historyplace.com/kennedy/president-family-portrait-closeup.jpg"
 multi_image_name = os.path.basename(multi_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detection_model='detection_03')
 # </snippet_detectgroup>
 
 print('Detected face IDs from', multi_image_name, ':')
@@ -10795,8 +10820,8 @@ Print image and draw rectangles around faces
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -10844,26 +10869,27 @@ print()
 second_image_face_IDs = list(map(lambda x: x.face_id, detected_faces2))
 # Next, find similar face IDs like the one detected in the first image.
 similar_faces = face_client.face.find_similar(face_id=first_image_face_ID, face_ids=second_image_face_IDs)
-if not similar_faces[0]:
+if not similar_faces:
     print('No similar faces found in', multi_image_name, '.')
 # </snippet_findsimilar>
 
 # <snippet_findsimilar_print>
 # Print the details of the similar faces detected
-print('Similar faces found in', multi_image_name + ':')
-for face in similar_faces:
-    first_image_face_ID = face.face_id
-    # The similar face IDs of the single face image and the group image do not need to match, 
-    # they are only used for identification purposes in each image.
-    # The similar faces are matched using the Cognitive Services algorithm in find_similar().
-    face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
-    if face_info:
-        print('  Face ID: ', first_image_face_ID)
-        print('  Face rectangle:')
-        print('    Left: ', str(face_info.face_rectangle.left))
-        print('    Top: ', str(face_info.face_rectangle.top))
-        print('    Width: ', str(face_info.face_rectangle.width))
-        print('    Height: ', str(face_info.face_rectangle.height))
+else:
+    print('Similar faces found in', multi_image_name + ':')
+    for face in similar_faces:
+        first_image_face_ID = face.face_id
+        # The similar face IDs of the single face image and the group image do not need to match, 
+        # they are only used for identification purposes in each image.
+        # The similar faces are matched using the Cognitive Services algorithm in find_similar().
+        face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
+        if face_info:
+            print('  Face ID: ', first_image_face_ID)
+            print('  Face rectangle:')
+            print('    Left: ', str(face_info.face_rectangle.left))
+            print('    Top: ', str(face_info.face_rectangle.top))
+            print('    Width: ', str(face_info.face_rectangle.width))
+            print('    Height: ', str(face_info.face_rectangle.height))
 # </snippet_findsimilar_print>
 print()
 '''
@@ -10890,14 +10916,14 @@ source_image_file_name2 = 'Family1-Son1.jpg'
 
 # <snippet_verify_detect>
 # Detect face(s) from source image 1, returns a list[DetectedFaces]
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detection_model='detection_03')
 # Add the returned face's face ID
 source_image1_id = detected_faces1[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces1), source_image_file_name1))
 
 # Detect face(s) from source image 2, returns a list[DetectedFaces]
-detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detectionModel='detection_02')
+detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detection_model='detection_03')
 # Add the returned face's face ID
 source_image2_id = detected_faces2[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_image_file_name2))
@@ -10906,8 +10932,8 @@ print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_i
 detected_faces_ids = []
 # Detect faces from target image url list, returns a list[DetectedFaces]
 for image_file_name in target_image_file_names:
-    # We use detection model 2 because we are not retrieving attributes.
-    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detectionModel='detection_02')
+    # We use detection model 3 to get better performance.
+    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detection_model='detection_03')
     # Add the returned face's face ID
     detected_faces_ids.append(detected_faces[0].face_id)
     print('{} face(s) detected from image {}.'.format(len(detected_faces), image_file_name))
@@ -11020,8 +11046,8 @@ time.sleep (60)
 
 # Detect faces
 face_ids = []
-# We use detection model 2 because we are not retrieving attributes.
-faces = face_client.face.detect_with_stream(image, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+faces = face_client.face.detect_with_stream(image, detection_model='detection_03')
 for face in faces:
     face_ids.append(face.face_id)
 # </snippet_identify_testimage>
@@ -11287,8 +11313,8 @@ python quickstart-file.py
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [门户](/cognitive-services/cognitive-services-apis-create-account#clean-up-resources)
-* [Azure CLI](/cognitive-services/cognitive-services-apis-create-account-cli#clean-up-resources)
+* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 如果你在本快速入门中创建了 **PersonGroup** 并想要删除它，请在脚本中运行以下代码：
 
@@ -11390,8 +11416,8 @@ print()
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -11410,8 +11436,8 @@ first_image_face_ID = detected_faces[0].face_id
 # Each detected face gets assigned a new ID
 multi_face_image_url = "http://www.historyplace.com/kennedy/president-family-portrait-closeup.jpg"
 multi_image_name = os.path.basename(multi_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces2 = face_client.face.detect_with_url(url=multi_face_image_url, detection_model='detection_03')
 # </snippet_detectgroup>
 
 print('Detected face IDs from', multi_image_name, ':')
@@ -11429,8 +11455,8 @@ Print image and draw rectangles around faces
 # Detect a face in an image that contains a single face
 single_face_image_url = 'https://raw.githubusercontent.com/Microsoft/Cognitive-Face-Windows/master/Data/detection1.jpg'
 single_image_name = os.path.basename(single_face_image_url)
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces = face_client.face.detect_with_url(url=single_face_image_url, detection_model='detection_03')
 if not detected_faces:
     raise Exception('No face detected from image {}'.format(single_image_name))
 
@@ -11478,26 +11504,27 @@ print()
 second_image_face_IDs = list(map(lambda x: x.face_id, detected_faces2))
 # Next, find similar face IDs like the one detected in the first image.
 similar_faces = face_client.face.find_similar(face_id=first_image_face_ID, face_ids=second_image_face_IDs)
-if not similar_faces[0]:
+if not similar_faces:
     print('No similar faces found in', multi_image_name, '.')
 # </snippet_findsimilar>
 
 # <snippet_findsimilar_print>
 # Print the details of the similar faces detected
-print('Similar faces found in', multi_image_name + ':')
-for face in similar_faces:
-    first_image_face_ID = face.face_id
-    # The similar face IDs of the single face image and the group image do not need to match, 
-    # they are only used for identification purposes in each image.
-    # The similar faces are matched using the Cognitive Services algorithm in find_similar().
-    face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
-    if face_info:
-        print('  Face ID: ', first_image_face_ID)
-        print('  Face rectangle:')
-        print('    Left: ', str(face_info.face_rectangle.left))
-        print('    Top: ', str(face_info.face_rectangle.top))
-        print('    Width: ', str(face_info.face_rectangle.width))
-        print('    Height: ', str(face_info.face_rectangle.height))
+else:
+    print('Similar faces found in', multi_image_name + ':')
+    for face in similar_faces:
+        first_image_face_ID = face.face_id
+        # The similar face IDs of the single face image and the group image do not need to match, 
+        # they are only used for identification purposes in each image.
+        # The similar faces are matched using the Cognitive Services algorithm in find_similar().
+        face_info = next(x for x in detected_faces2 if x.face_id == first_image_face_ID)
+        if face_info:
+            print('  Face ID: ', first_image_face_ID)
+            print('  Face rectangle:')
+            print('    Left: ', str(face_info.face_rectangle.left))
+            print('    Top: ', str(face_info.face_rectangle.top))
+            print('    Width: ', str(face_info.face_rectangle.width))
+            print('    Height: ', str(face_info.face_rectangle.height))
 # </snippet_findsimilar_print>
 print()
 '''
@@ -11524,14 +11551,14 @@ source_image_file_name2 = 'Family1-Son1.jpg'
 
 # <snippet_verify_detect>
 # Detect face(s) from source image 1, returns a list[DetectedFaces]
-# We use detection model 2 because we are not retrieving attributes.
-detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+detected_faces1 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name1, detection_model='detection_03')
 # Add the returned face's face ID
 source_image1_id = detected_faces1[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces1), source_image_file_name1))
 
 # Detect face(s) from source image 2, returns a list[DetectedFaces]
-detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detectionModel='detection_02')
+detected_faces2 = face_client.face.detect_with_url(IMAGE_BASE_URL + source_image_file_name2, detection_model='detection_03')
 # Add the returned face's face ID
 source_image2_id = detected_faces2[0].face_id
 print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_image_file_name2))
@@ -11540,8 +11567,8 @@ print('{} face(s) detected from image {}.'.format(len(detected_faces2), source_i
 detected_faces_ids = []
 # Detect faces from target image url list, returns a list[DetectedFaces]
 for image_file_name in target_image_file_names:
-    # We use detection model 2 because we are not retrieving attributes.
-    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detectionModel='detection_02')
+    # We use detection model 3 to get better performance.
+    detected_faces = face_client.face.detect_with_url(IMAGE_BASE_URL + image_file_name, detection_model='detection_03')
     # Add the returned face's face ID
     detected_faces_ids.append(detected_faces[0].face_id)
     print('{} face(s) detected from image {}.'.format(len(detected_faces), image_file_name))
@@ -11654,8 +11681,8 @@ time.sleep (60)
 
 # Detect faces
 face_ids = []
-# We use detection model 2 because we are not retrieving attributes.
-faces = face_client.face.detect_with_stream(image, detectionModel='detection_02')
+# We use detection model 3 to get better performance.
+faces = face_client.face.detect_with_stream(image, detection_model='detection_03')
 for face in faces:
     face_ids.append(face.face_id)
 # </snippet_identify_testimage>

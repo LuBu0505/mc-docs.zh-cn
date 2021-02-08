@@ -8,14 +8,14 @@ metadata:
   ms.service: logic-apps
   ms.topic: landing-page
   author: rockboyfor
-  ms.date: 10/12/2020
+  ms.date: 02/08/2021
   ms.author: v-yeche
-  ms.openlocfilehash: efd3ae5a4b01fe798ca6950b9e295bce0116b547
-  ms.sourcegitcommit: 7320277f4d3c63c0b1ae31ba047e31bf2fe26bc6
+  ms.openlocfilehash: 822e959eb00278ba0a983853c3b199837b8372d3
+  ms.sourcegitcommit: fda47fe846d47f30e65a048251402d873e416650
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/16/2020
-  ms.locfileid: "92118595"
+  ms.lasthandoff: 02/02/2021
+  ms.locfileid: "99426652"
 landingContent:
 - title: 关于 Azure 逻辑应用
   linkLists:

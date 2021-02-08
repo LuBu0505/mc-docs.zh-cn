@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 01/14/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 3424f2575955dd95f423e136be91f52b7cb92c89
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 7686de6ec7732954003860dc397cf15594e6d4d8
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195134"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540823"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>教程：向 ASP.NET Web 应用添加 Microsoft 登录功能
 
@@ -361,7 +361,7 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
 
 若要快速注册应用程序，请执行以下步骤：
 
-1. 转到新的 [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs)窗格。
+1. 转到 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入门体验。  
 1. 输入应用程序的名称并选择“注册”。
 1. 遵照说明下载内容，并单击一下自动配置新应用程序。
 
@@ -427,7 +427,7 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
 
 浏览到控制器视图后，应当会显示包含用户基本属性的表格：
 
-|properties |值 |说明 |
+|属性 |值 |说明 |
 |---|---|---|
 |**名称** |用户全名 | 用户的名字和姓氏
 |**用户名** |user<span>@domain.com</span> | 用于标识用户的用户名|
@@ -488,4 +488,3 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 > [!div class="nextstepaction"]
 > [调用 Web API 的 Web 应用](scenario-web-app-sign-user-overview.md)
-

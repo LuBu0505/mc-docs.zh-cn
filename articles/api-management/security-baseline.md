@@ -4,15 +4,15 @@ description: API 管理的 Azure 安全基线
 author: Johnnytechn
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/11/2020
+ms.date: 02/04/2021
 ms.author: v-johya
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 508329605a6c82fc2f4767f730cfe668ca1dd87e
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: fd234805ab3665e33c030d3650bd39f8187b80c3
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97104408"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579378"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API 管理的 Azure 安全基线
 
@@ -22,7 +22,7 @@ API 管理的 Azure 安全基线包含可帮助你改善部署安全状态的建
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
-## <a name="network-security"></a>网络安全
+## <a name="network-security"></a>网络安全性
 
 有关详细信息，请参阅[安全控制：网络安全](../security/benchmarks/security-control-network-security.md)。
 
@@ -46,7 +46,7 @@ API 管理的 Azure 安全基线包含可帮助你改善部署安全状态的建
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2：监视和记录 VNet、子网和 NIC 的配置与流量
 
-**指南**：可以使用网络安全组 (NSG) 控制其中部署了 API 管理的子网的入站和出站流量。 将 NSG 部署到 API 管理子网，启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来提供对 Azure 云中的流量流的见解。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
+**指南**：可以使用网络安全组 (NSG) 控制其中部署了 API 管理的子网的入站和出站流量。 将 NSG 部署到 API 管理子网，启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
 警告：在 API 管理子网上配置 NSG 时，需要打开一组端口。 如果其中的任一端口不可用，API 管理可能无法正常工作且不可访问。
 
@@ -106,7 +106,7 @@ API 管理的 Azure 安全基线包含可帮助你改善部署安全状态的建
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1.5：记录网络数据包和流日志
 
-**指南**：可以使用网络安全组 (NSG) 控制其中部署了 API 管理的子网的入站和出站流量。 将 NSG 部署到 API 管理子网，启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来提供对 Azure 云中的流量流的见解。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
+**指南**：可以使用网络安全组 (NSG) 控制其中部署了 API 管理的子网的入站和出站流量。 将 NSG 部署到 API 管理子网，启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
 警告：在 API 管理子网上配置 NSG 时，需要打开一组端口。 如果其中的任一端口不可用，API 管理可能无法正常工作且不可访问。
 
@@ -273,7 +273,7 @@ API 管理的 Azure 安全基线包含可帮助你改善部署安全状态的建
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
-**指南**：在 Azure Monitor 中，根据组织的合规性规则设置 Log Analytics 工作区保持期。 使用 Azure 存储帐户进行长期/存档存储。
+**指导**：在 Azure Monitor 中，根据组织的合规性规章设置 Log Analytics 工作区保留期。 使用 Azure 存储帐户进行长期/存档存储。
 
 * [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -369,7 +369,7 @@ Azure Active Directory (AD) 具有必须显式分配且可查询的内置角色�
 
 * [如何使用 PowerShell 获取 Azure AD 中目录角色定义](https://docs.microsoft.com/powershell/module/az.resources/get-azroledefinition)
 
-* [了解 Azure 安全中心提供的标识和访问管理建议](../security-center/recommendations-reference.md#recs-identity)
+* [了解 Azure 安全中心提供的标识和访问管理建议](../security-center/recommendations-reference.md#recs-identityandaccess)
 
 **Azure 安全中心监视**：是
 
@@ -434,7 +434,7 @@ Azure API 管理订阅是保护对 API 的访问的一种方法，但会附带�
 
 **指南**：使用配置了多重身份验证 (MFA) 的特权访问工作站 (PAW) 来登录并配置 Azure 资源。
 
-* [了解特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -552,7 +552,7 @@ Azure API 管理订阅是保护对 API 的访问的一种方法，但会附带�
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指导**：为开发、测试和生产实施单独的订阅和/或管理组。 Azure API 管理实例应由虚拟网络 (VNet)/子网分隔并正确标记。
+**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 Azure API 管理实例应由虚拟网络 (VNet)/子网分隔并正确标记。
 
 * [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
@@ -596,7 +596,7 @@ Microsoft 管理 Azure API 管理的底层基础结构，并实施了严格的�
 
 **指南**：目前不可用；数据标识、分类和丢失防护功能尚不适用于 Azure API 管理。 标记可能正在处理敏感信息的 Azure API 管理服务，如果需要出于合规性目的使用这些功能，请实施第三方解决方案。
 
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 * [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
@@ -1074,7 +1074,7 @@ API 管理的服务备份和还原功能为实现灾难恢复策略提供必要�
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
+**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
 
 * [关于建立自己的安全事件响应流程的指南](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -1090,7 +1090,7 @@ API 管理的服务备份和还原功能为实现灾难恢复策略提供必要�
 
 **指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
-此外，请用标记明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
+此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 * [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 

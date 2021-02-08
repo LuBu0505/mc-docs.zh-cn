@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/23/2020
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: 913125e470c4d92e72a59d98390ac4e454b40647
-ms.sourcegitcommit: 883daddafe881e5f8a9f347df2880064d2375b6d
+ms.openlocfilehash: 9580bbdb41e530bf9bf0cffb2104bff6209ac5eb
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95918397"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540831"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>配置调用 Web API 的移动应用
 
@@ -246,8 +246,8 @@ MSAL.NET 使用 URL 调用中介，然后将中介响应返回到应用。 若�
 
    此处，`BundleId` 用于唯一标识设备。 例如，如果 `BundleId` 是 `yourcompany.xforms`，则 URL 方案是 `msauth.com.yourcompany.xforms`。
 
-   > [!NOTE]
-   > 接收中介的响应时，此 URL 方案将成为用于唯一标识应用的重定向 URI 的一部分。
+  
+      接收中介的响应时，此 URL 方案将成为用于唯一标识应用的重定向 URI 的一部分。
 
    ```XML
     <key>CFBundleURLTypes</key>
@@ -307,10 +307,9 @@ MSAL 使用 `-canOpenURL:` 来检查是否在设备上安装了中介。 在 iOS
     }
 ```
 
-> [!NOTE]
-> 如果在 iOS 13 或更高版本中采用了 `UISceneDelegate`，请改为将 MSAL 回调放入 `UISceneDelegate` 的 `scene:openURLContexts:` 中。 只能对每个 URL 调用 MSAL `handleMSALResponse:sourceApplication:` 一次。
->
-> 有关详细信息，请参阅 [Apple 文档](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)。
+如果在 iOS 13 或更高版本中采用了 `UISceneDelegate`，请改为将 MSAL 回调放入 `UISceneDelegate` 的 `scene:openURLContexts:` 中。 只能对每个 URL 调用 MSAL `handleMSALResponse:sourceApplication:` 一次。
+
+有关详细信息，请参阅 [Apple 文档](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)。
 
 #### <a name="step-2-register-a-url-scheme"></a>步骤 2：注册 URL 方案
 
@@ -326,8 +325,7 @@ MSAL 使用 `-canOpenURL:` 来检查是否在设备上安装了中介。 在 iOS
 
    此处，`BundleId` 用于唯一标识设备。 例如，如果 `BundleId` 是 `yourcompany.xforms`，则 URL 方案是 `msauth.com.yourcompany.xforms`。
 
-   > [!NOTE]
-   > 接收中介的响应时，此 URL 方案将成为用于唯一标识应用的重定向 URI 的一部分。 确保在 [Azure 门户](https://portal.azure.cn)中为应用程序注册 `msauth.(BundleId)://auth` 格式的重定向 URI。
+    接收中介的响应时，此 URL 方案将成为用于唯一标识应用的重定向 URI 的一部分。 确保在 [Azure 门户](https://portal.azure.cn)中为应用程序注册 `msauth.(BundleId)://auth` 格式的重定向 URI。
 
    ```XML
    <key>CFBundleURLTypes</key>
@@ -365,4 +363,3 @@ MSAL 使用 `-canOpenURL:` 来检查是否在设备上安装了中介。 在 iOS
 ## <a name="next-steps"></a>后续步骤
 
 转到此方案中的下一篇文章：[获取令牌](scenario-mobile-acquire-token.md)。
-

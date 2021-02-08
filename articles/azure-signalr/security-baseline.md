@@ -1,19 +1,19 @@
 ---
 title: 适用于 Azure SignalR 服务的 Azure 安全基线
 description: Azure SignalR 服务安全基线为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
-author: msmbaldwin
+author: WenJason
 ms.service: signalr
 ms.topic: conceptual
 origin.date: 11/25/2020
-ms.date: 12/30/2020
-ms.author: v-tawe
+ms.date: 02/08/2021
+ms.author: v-jay
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 844cf5032dd75dfb73316ad882883c76a35dc3cc
-ms.sourcegitcommit: eb742dcade404c9909d01e2570188f0bc4076992
+ms.openlocfilehash: 0a9d53d9c9155eca3040b4b5374fc0fd3b9160a2
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97820325"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99504009"
 ---
 # <a name="azure-security-baseline-for-azure-signalr-service"></a>适用于 Azure SignalR 服务的 Azure 安全基线
 
@@ -231,7 +231,7 @@ Azure SignalR 服务具有内置的高特权角色。 请限制高特权帐户�
 
 - [SignalR 参与者](../role-based-access-control/built-in-roles.md#signalr-contributor)
 
-- [Azure AD 中的管理角色权限](/active-directory/users-groups-roles/directory-assign-admin-roles)
+- [Azure AD 中的管理角色权限](../active-directory/roles/permissions-reference.md)
 
 - [使用 Azure Privileged Identity Management 安全警报](../active-directory/privileged-identity-management/pim-how-to-configure-security-alerts.md)
 
@@ -439,7 +439,7 @@ SignalR 服务中的内置角色：
 
 ## <a name="logging-and-threat-detection"></a>日志记录和威胁检测
 
-有关详细信息，请参阅 [Azure 安全基准：日志记录和威胁检测](/security/benchmarks/security-controls-v2-logging-threat-protection)。
+有关详细信息，请参阅 [Azure 安全基准：日志记录和威胁检测](../security/benchmarks/security-controls-v2-logging-threat-detection.md)。
 
 ### <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2：启用 Azure 标识和访问管理的威胁检测
 
@@ -458,7 +458,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 <!-- - [Enable Azure Identity Protection](../active-directory/identity-protection/overview-identity-protection.md) -->
 
-- [Azure 安全中心的威胁防护](/security-center/threat-protection)
+- [Azure 安全中心的威胁防护](../security-center/azure-defender.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -596,7 +596,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 - [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 
-- [使用标记整理 Azure 资源](/azure-resource-manager/resource-group-using-tags)
+- [使用标记整理 Azure 资源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -689,7 +689,7 @@ You can use Azure Blueprints to automate deployment and configuration of service
 
 **指导**：确保你有适当的措施来防止和恢复丢失的密钥。 在 Azure Key Vault 中启用软删除和清除保护，以防止意外删除或恶意删除密钥。
 
-- [如何在 Key Vault 中启用软删除和清除保护](https://docs.azure.cn/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [如何在 Key Vault 中启用软删除和清除保护](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 安全中心监视**：不适用
 

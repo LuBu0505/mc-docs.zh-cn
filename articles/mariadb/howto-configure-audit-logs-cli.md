@@ -3,21 +3,22 @@ title: 访问审核日志 - Azure CLI - Azure Database for MariaDB
 description: 本文介绍如何从 Azure CLI 配置和访问 Azure Database for MariaDB 中的审核日志。
 author: WenJason
 ms.author: v-jay
-ms.service: mariadb
 ms.topic: how-to
 origin.date: 6/24/2020
-ms.date: 11/23/2020
+ms.date: 02/08/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 26e9a65859d367e284122bd162bb450f5907908e
-ms.sourcegitcommit: db15d6cc591211c0e531d636f45e9cbe24cfb15b
+ms.openlocfilehash: 6aa0df534749d1a1515fc6a7ad2f7fce0e7f9237
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94908976"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503990"
 ---
 # <a name="configure-and-access-azure-database-for-maria-db-audit-logs-in-the-azure-cli"></a>在 Azure CLI 中配置和访问 Azure Database for Maria DB 审核日志
 
 可以从 Azure CLI 配置 [Azure Database for MariaDB 审核日志](concepts-audit-logs.md)。
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -25,8 +26,9 @@ ms.locfileid: "94908976"
 
 - 需要 [Azure Database for MariaDB 服务器](quickstart-create-mariadb-server-database-using-azure-portal.md)。
 
-> [!IMPORTANT]
-> 本操作方法指南要求使用 Azure CLI 版本 2.0 或更高版本。 若要确认版本，请在 Azure CLI 命令提示符下输入 `az --version`。 若要安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- 本文需要 Azure CLI 版本 2.0 或更高版本。
 
 ## <a name="configure-audit-logging"></a>配置审核日志记录
 

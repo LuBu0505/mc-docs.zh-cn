@@ -204,6 +204,8 @@
               href: container-registry-tasks-authentication-key-vault.md
         - name: 使用资源管理器模板快速运行任务
           href: container-registry-task-run-template.md
+        - name: 使用和维护公共内容
+          href: tasks-consume-public-content.md
         - name: 使用 Buildpacks 生成映像（预览版）
           href: container-registry-tasks-pack-build.md
         - name: 查看任务日志
@@ -238,7 +240,7 @@
   expanded: false
   items:
     - name: 上市区域
-      href: 'https://azure.microsoft.com/regions/services/'
+      href: 'https://status.azure.com/status/'
     - name: 定价
       href: 'https://www.azure.cn/pricing/details/container-registry/'
     - name: 提供产品反馈

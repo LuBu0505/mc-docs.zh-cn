@@ -10,19 +10,19 @@ author: gargi-sinha
 ms.author: v-junlch
 manager: martinco
 ms.reviewer: ''
-ms.date: 12/02/2020
+ms.date: 02/02/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efba96d3ae79a5d98b7417c18c197fd68b311bb1
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: f8dfdb893a2be6dd5fde4cb43535d33e178b4042
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004343"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540816"
 ---
 # <a name="build-resilience-in-your-customer-identity-and-access-management-with-azure-active-directory-b2c"></a>在使用 Azure Active Directory B2C 的客户标识和访问管理中构建复原能力
 
-[Azure Active Directory (AD) B2C](/active-directory-b2c/overview) 是一个客户标识和访问管理 (CIAM) 平台，旨在帮助你成功发布面向客户的关键应用程序。 我们有很多内置功能来实现[复原能力](https://azure.microsoft.com/blog/advancing-azure-active-directory-availability/)，它们旨在帮助我们的服务根据你的需求进行缩放，并提高在遇到潜在服务中断情况时的复原能力。 此外，在发布任务关键型应用程序时，有必要考虑到你的应用程序中的各种设计和配置元素，还要考虑如何在 Azure AD B2C 中配置应用程序，确保你在响应服务中断或故障情况时获得可复原的行为。 在本文中，我们将介绍一些可帮助你提高复原能力的最佳做法。
+[Azure Active Directory (AD) B2C](../../active-directory-b2c/overview.md) 是一个客户标识和访问管理 (CIAM) 平台，旨在帮助你成功发布面向客户的关键应用程序。 我们有很多内置功能来实现[复原能力](https://azure.microsoft.com/blog/advancing-azure-active-directory-availability/)，它们旨在帮助我们的服务根据你的需求进行缩放，并提高在遇到潜在服务中断情况时的复原能力。 此外，在发布任务关键型应用程序时，有必要考虑到你的应用程序中的各种设计和配置元素，还要考虑如何在 Azure AD B2C 中配置应用程序，确保你在响应服务中断或故障情况时获得可复原的行为。 在本文中，我们将介绍一些可帮助你提高复原能力的最佳做法。
 
 可复原的服务是指遇到中断也能继续正常运行的服务。 你可通过以下方式，帮助提高服务中的复原能力：
 

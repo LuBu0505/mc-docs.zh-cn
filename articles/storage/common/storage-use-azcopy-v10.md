@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: how-to
 origin.date: 12/08/2020
-ms.date: 01/18/2021
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 54cd956fc6e54c0f259c6c597340ddb53cfdb8b6
-ms.sourcegitcommit: f086abe8bd2770ed10a4842fa0c78b68dbcdf771
+ms.openlocfilehash: 8c3746800ada536b92c00bf2f48df05d27c85357
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98163114"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503985"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -106,7 +106,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.chinacloudapi.cn/mycontai
 
 | 服务 | 文章 |
 |--------|-----------|
-|Azure Blob 存储 |[将文件上传到 Azure Blob 存储](storage-use-azcopy-blobs-upload.md)<br><br>[从 Azure Blob 存储下载 Blob](storage-use-azcopy-blobs-download.md)<br><br>[在 Azure 存储帐户之间复制 Blob](storage-use-azcopy-blobs-download.md)<br><br>[与 Azure Blob 存储同步](storage-use-azcopy-blobs-download.md)|
+|Azure Blob 存储 |[将文件上传到 Azure Blob 存储](storage-use-azcopy-blobs-upload.md)<br><br>[从 Azure Blob 存储下载 Blob](storage-use-azcopy-blobs-download.md)<br><br>[在 Azure 存储帐户之间复制 Blob](storage-use-azcopy-blobs-copy.md)<br><br>[与 Azure Blob 存储同步](storage-use-azcopy-blobs-synchronize.md)|
 |Azure 文件 |[使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)|
 |Amazon S3|[使用 AzCopy 和 Amazon S3 Bucket 传输数据](storage-use-azcopy-s3.md)|
 |Azure Stack 存储|[使用 AzCopy 和 Azure Stack 存储传输数据](/azure-stack/user/azure-stack-storage-transfer#azcopy)|

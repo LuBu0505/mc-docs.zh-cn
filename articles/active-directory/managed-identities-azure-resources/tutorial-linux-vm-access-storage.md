@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 02/04/2021
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a64b0179e623aab1c8f2dca15a6a4475f2e50737
-ms.sourcegitcommit: 59810f8eba5e430d85a595e346d3b7fb6e4a0102
+ms.openlocfilehash: 1b57b03ff3910c2deef1d96a55556cba2ba8bea0
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94501876"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540858"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>教程：使用 Linux VM 系统分配的托管标识访问 Azure 存储 
 
@@ -33,9 +33,6 @@ ms.locfileid: "94501876"
 > * 在存储帐户中创建 Blob 容器
 > * 向 Linux VM 的托管标识授予对 Azure 存储容器的访问权限
 > * 获取访问令牌并使用它来调用 Azure 存储
-
-> [!NOTE]
-> 适用于 Azure 存储的 Azure Active Directory 身份验证当前处于公共预览版。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -122,4 +119,3 @@ Azure 存储原生支持 Azure AD 身份验证，因此可以直接接受使用�
 
 > [!div class="nextstepaction"]
 > [Azure 存储](../../storage/common/storage-introduction.md)
-

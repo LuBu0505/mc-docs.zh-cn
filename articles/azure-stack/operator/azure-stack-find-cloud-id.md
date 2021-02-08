@@ -4,16 +4,16 @@ description: 如何在 Azure Stack Hub 的“帮助 + 支持”中查找云 ID�
 author: WenJason
 ms.topic: article
 origin.date: 10/08/2019
-ms.date: 11/09/2020
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.reviewer: shisab
 ms.lastreviewed: 10/08/2019
-ms.openlocfilehash: 3f4f72e129d67fadeee49c5a1950fd1ab0c45f89
-ms.sourcegitcommit: f187b1a355e2efafea30bca70afce49a2460d0c7
+ms.openlocfilehash: d295b48b1a99db815e42dc8eb83b4738c52261de
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93330453"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503996"
 ---
 # <a name="find-your-cloud-id"></a>查找云 ID
 
@@ -52,5 +52,5 @@ ms.locfileid: "93330453"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [主动发送日志](./azure-stack-diagnostic-log-collection-overview.md#send-logs-proactively)
-* [立即发送日志](./azure-stack-diagnostic-log-collection-overview.md#send-logs-now)
+* [主动发送日志](./diagnostic-log-collection.md#send-logs-proactively)
+* [立即发送日志](./diagnostic-log-collection.md#send-logs-now)

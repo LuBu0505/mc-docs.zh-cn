@@ -4,24 +4,24 @@ description: 获取 Azure PowerShell 示例以在用于 MongoDB 的 Azure Cosmos
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-origin.date: 10/13/2020
+origin.date: 01/20/2021
 author: rockboyfor
-ms.date: 12/07/2020
+ms.date: 02/08/2021
 ms.testscope: yes
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 41a3c1cce1f448d4392ba365e7fcbf3dede9b2cd
-ms.sourcegitcommit: bbe4ee95604608448cf92dec46c5bfe4b4076961
+ms.openlocfilehash: 577ac9a7b1f13c0bb33d3882d20183e912cad8ea
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96598647"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580578"
 ---
 <!--Verified successfully-->
 # <a name="azure-powershell-samples-for-azure-cosmos-db-api-for-mongodb"></a>用于 MongoDB 的 Azure Cosmos DB API 的 Azure PowerShell 示例
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
-下表包含常用于 Azure Cosmos DB 的 Azure PowerShell 脚本的链接。 使用右侧的链接可导航到 API 特定示例。 常见示例在所有 API 间是相同的。 [Azure PowerShell 参考](https://docs.microsoft.com/powershell/module/az.cosmosdb)中收录了所有 Azure Cosmos DB PowerShell cmdlet 的参考页。 请定期检查 `Az.CosmosDB` 是否有更新。 还可以从我们的 GitHub 存储库 [GitHub 上的 Cosmos DB PowerShell 示例](https://github.com/Azure/azure-docs-powershell-samples/tree/master/cosmosdb)创建这些适用于 Cosmos DB 的 PowerShell 示例的分支。
+下表包含常用于 Azure Cosmos DB 的 Azure PowerShell 脚本的链接。 使用右侧的链接可导航到 API 特定示例。 常见示例在所有 API 间是相同的。 [Azure PowerShell 参考](https://docs.microsoft.com/powershell/module/az.cosmosdb)中收录了所有 Azure Cosmos DB PowerShell cmdlet 的参考页。 `Az.CosmosDB` 模块现在是 `Az` 模块的一部分。 [下载并安装](https://docs.microsoft.com/powershell/azure/install-az-ps?preserve-view=true&view=azps-5.4.0) Az 模块的最新版本，以获取 Azure Cosmos DB cmdlet。 还可从 [PowerShell 库](https://www.powershellgallery.com/packages/Az/5.4.0)中获取最新版本。 还可以从我们的 GitHub 存储库 [GitHub 上的 Cosmos DB PowerShell 示例](https://github.com/Azure/azure-docs-powershell-samples/tree/master/cosmosdb)创建这些适用于 Cosmos DB 的 PowerShell 示例的分支。
 
 ## <a name="common-samples"></a>常见示例
 
@@ -45,4 +45,4 @@ ms.locfileid: "96598647"
 |[锁定资源以防止将其删除](scripts/powershell/mongodb/lock.md)| 通过资源锁防止资源遭到删除。 |
 |||
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

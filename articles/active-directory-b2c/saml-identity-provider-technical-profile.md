@@ -8,21 +8,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 0c938a46ca7f2acd66bd2e5bd7cbf50052982eda
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: 6300d4b0b77a74110e0ae015c34570ef67efe494
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570630"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540619"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 SAML 标识提供者技术配置文件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) 为 SAML 2.0 标识提供者提供支持。 本文介绍了与支持此标准化协议的声明提供程序进行交互的技术配置文件的详细信息。 使用 SAML 技术配置文件，可以与基于 SAML 的标识提供者（例如 [Salesforce](identity-provider-salesforce-saml.md)）联合， 这样用户就可以使用其现有的社交或企业标识登录。
+Azure Active Directory B2C (Azure AD B2C) 为 SAML 2.0 标识提供者提供支持。 本文介绍了与支持此标准化协议的声明提供程序进行交互的技术配置文件的详细信息。 使用 SAML 技术配置文件，可以与基于 SAML 的标识提供者（例如 [ADFS](./identity-provider-adfs.md) 和 [Salesforce](identity-provider-salesforce-saml.md)）联合， 这样用户就可以使用其现有的社交或企业标识登录。
 
 ## <a name="metadata-exchange"></a>元数据交换
 
@@ -218,4 +218,3 @@ SAML 断言：
 
 - [使用自定义策略将 ADFS 添加为 SAML 身份提供程序](identity-provider-adfs.md)
 - [通过 SAML 使用 Salesforce 帐户登录](identity-provider-salesforce-saml.md)
-

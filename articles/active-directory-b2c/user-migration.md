@@ -8,19 +8,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 3370b4b01d870f3c3186c89e156adaf5c24fc55b
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: 1b98a435cdaa61299ff4879f9af8803b5418e9fa
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570607"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540605"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>将用户迁移到 Azure AD B2C
 
-从另一标识提供者迁移到 Azure Active Directory B2C (Azure AD B2C) 可能还需要迁移现有的用户帐户。 本文介绍两种迁移方法：预迁移和无缝迁移。  无论使用哪种方法，都需要编写一个应用程序或脚本，以使用 [Microsoft Graph API](manage-user-accounts-graph-api.md) 在 Azure AD B2C 中创建用户帐户。
+从另一标识提供者迁移到 Azure Active Directory B2C (Azure AD B2C) 可能还需要迁移现有的用户帐户。 本文介绍两种迁移方法：预迁移和无缝迁移。  无论使用哪种方法，都需要编写一个应用程序或脚本，以使用 [Microsoft Graph API](microsoft-graph-operations.md) 在 Azure AD B2C 中创建用户帐户。
 
 ## <a name="pre-migration"></a>预迁移
 
@@ -34,7 +34,7 @@ ms.locfileid: "98570607"
 - 你有权访问用户的纯文本凭据（用户名和密码）。
 - 凭据已加密，但可将其解密。
 
-有关以编程方式创建用户帐户的信息，请参阅[使用 Microsoft Graph 管理 Azure AD B2C 用户帐户](manage-user-accounts-graph-api.md)。
+有关以编程方式创建用户帐户的信息，请参阅[使用 Microsoft Graph 管理 Azure AD B2C 用户帐户](microsoft-graph-operations.md)。
 
 ## <a name="seamless-migration"></a>无缝迁移
 
@@ -97,11 +97,10 @@ ms.locfileid: "98570607"
 
 ### <a name="password-policy"></a>密码策略
 
-如果与 Azure AD B2C 强制实施的[强密码强度](../active-directory/authentication/concept-sspr-policy.md)相比，所要迁移的帐户的密码强度更弱，你可以禁用强密码要求。 有关详细信息，请参阅[密码策略属性](manage-user-accounts-graph-api.md#password-policy-property)。
+如果与 Azure AD B2C 强制实施的[强密码强度](../active-directory/authentication/concept-sspr-policy.md)相比，所要迁移的帐户的密码强度更弱，你可以禁用强密码要求。 有关详细信息，请参阅[密码策略属性](user-profile-attributes.md#password-policy-attribute)。
 
 ## <a name="next-steps"></a>后续步骤
 
 GitHub 上的 [azure-ad-b2c/user-migration](https://github.com/azure-ad-b2c/user-migration) 存储库包含了无缝迁移自定义策略示例和 REST API 代码示例：
 
 [无缝用户迁移自定义策略和 REST API 代码示例](https://aka.ms/b2c-account-seamless-migration)
-

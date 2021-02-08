@@ -12,14 +12,14 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 12/13/2019
-ms.date: 01/06/2021
+ms.date: 02/02/2021
 ms.author: v-johya
-ms.openlocfilehash: 5c05d1fad98ec53cdcc4030cc6f5ded6fd454e9b
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 58e530f93afe9bc60e70abe2f53a79695ff73877
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022571"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579383"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure 安全中心定价
 Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供统一的安全管理和高级威胁防护功能。 它可以提供针对混合云工作负载的可见性和可控性、可减小在威胁下的曝光面的积极防御功能以及有助于随时响应快速演变的网络风险的智能检测功能。
@@ -33,7 +33,6 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 
 - **Azure Defender 打开** - 启用 Azure Defender 后，会将免费模式的功能扩展到私有云和其他公有云中运行的工作负载，并在混合云工作负载中提供了统一的安全管理和威胁防护。 Azure Defender 的一些主要功能：
 
-    - **虚拟机和容器注册表的漏洞扫描** - 轻松将扫描程序部署到所有虚拟机，这是业界最先进的漏洞管理解决方案。 直接在安全中心内查看、调查和修复扫描到的漏洞。 
     - **混合安全性** - 在所有本地和云工作负荷上获得统一的安全视图。 应用安全策略并持续评估混合云工作负载的安全性，确保符合安全标准。 收集、搜索并分析来自多个源（包括防火墙和其他合作伙伴解决方案）的安全数据。
     - **威胁防护警报** - 高级行为分析和 Microsoft Intelligent Security Graph 针对不断演变的网络攻击提供防护边界。 内置行为分析和机器学习可识别攻击和零时差攻击。 监视网络、计算机和云服务是否出现有即将来袭的攻击和攻破后活动。 使用交互工具和上下文威胁智能简化调查。
     - **访问和应用程序控件** (AAC) - 通过应用适合特定工作负载且由机器学习提供支持的建议来创建允许和拒绝列表，阻止恶意软件和其他不需要的应用程序。 实时减小网络受攻击面，控制对 Azure VM 上的管理端口的访问。 AAC 显著降低了遭受暴力攻击和其他网络攻击的风险。
@@ -91,7 +90,7 @@ Azure 订阅可能具有多个管理员，这些管理员有权更改定价设�
 ### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>如何为订阅启用 Azure Defender？ 
 可以使用以下任一方法启用订阅的 Azure Defender： 
 
-|方法  |说明  |
+|方法  |Instructions  |
 |---------|---------|
 |Azure 门户的 Azure 安全中心页面|[启用 Azure Defender](#enable-azure-defender)|
 |REST API|[定价 API](https://docs.microsoft.com/rest/api/securitycenter/pricings)|

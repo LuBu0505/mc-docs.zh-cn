@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: overview
-ms.date: 01/07/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperf-fy20q4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 734c9d9040b7cf92f7c989943302a41a04dcab4a
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: a57eeb529b119b74215b92f6531121827d438aa3
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022468"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540691"
 ---
 # <a name="what-is-azure-active-directory"></a>什么是 Azure Active Directory？
 
@@ -85,4 +85,3 @@ Microsoft Online 业务服务（例如 Microsoft 365 或 Azure）要求通过 Az
 - [将 Azure 订阅关联到 Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
 
 - [Azure Active Directory Premium P2 功能部署清单](active-directory-deployment-checklist-p2.md)
-

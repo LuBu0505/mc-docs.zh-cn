@@ -6,16 +6,16 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
 origin.date: 06/24/2020
-ms.date: 12/14/2020
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.reviewer: dineshm
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 412b448804de3ad93b9a06759645157ee1d986d9
-ms.sourcegitcommit: a8afac9982deafcf0652c63fe1615ba0ef1877be
+ms.openlocfilehash: 294b5beba4822ec769848e19ec2f9c4634a27315
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96850767"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503838"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>教程：使用 Azure 存储在云中上传图像数据
 
@@ -50,7 +50,7 @@ ms.locfileid: "96850767"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。  
+使用“[az group create](/cli/group)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。  
 
 以下示例创建名为 `myResourceGroup` 的资源组。
 
@@ -129,7 +129,7 @@ az storage container create --name thumbnails `
 
 以下示例在免费定价层中创建名为 `myAppServicePlan` 的应用服务计划：
 
-```bash
+```azurecli
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku Free
 ```
 
@@ -143,7 +143,7 @@ Web 应用为从 GitHub 示例存储库部署的示例应用代码提供承载�
 
 在以下命令中，将 `<web_app>` 替换为唯一名称。 有效的字符是 `a-z`、`0-9` 和 `-`。 如果 `<web_app>` 不唯一，你将收到错误消息：*具有给定名称 `<web_app>` 的网站已存在。* Web 应用的默认 URL 为 `https://<web_app>.chinacloudsites.cn`。  
 
-```bash
+```azurecli
 webapp="<web_app>"
 
 az webapp create --name $webapp --resource-group myResourceGroup --plan myAppServicePlan
@@ -163,7 +163,7 @@ az webapp create --name $webapp --resource-group myResourceGroup --plan myAppSer
 
 示例项目包含一个 [ASP.NET MVC](https://www.asp.net/mvc) 应用。 该应用接受一个图像，将其保存到存储帐户，然后从缩略图容器显示图像。 此 Web 应用使用 [Azure.Storage](https://docs.microsoft.com/dotnet/api/azure.storage)、[Azure.Storage.Blobs](https://docs.microsoft.com/dotnet/api/azure.storage.blobs) 和 [Azure.Storage.Blobs.Models](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models) 命名空间与 Azure 存储服务交互。
 
-```bash
+```azurecli
 az webapp deployment source config --name $webapp --resource-group myResourceGroup \
   --branch master --manual-integration \
   --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
@@ -179,7 +179,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 应用服务支持通过多种方式将内容部署到 Web 应用。 在本教程中，将从[公共 GitHub 示例存储库](https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-stream-nodejs)部署 Web 应用。 使用 [az webapp deployment source config](/cli/webapp/deployment/source) 命令配置 Web 应用的 GitHub 部署。
 
-```bash
+```azurecli
 az webapp deployment source config --name $webapp --resource-group myResourceGroup \
   --branch master --manual-integration \
   --repo-url https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-stream-nodejs
@@ -199,7 +199,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 示例 Web 应用使用[适用于 .NET 的 Azure 存储 API](/dotnet/api/overview/storage) 上传图像。 存储帐户凭据在 Web 应用的应用设置中进行设置。 使用 [az webapp config appsettings set](/cli/webapp/config/appsettings) 命令将应用设置添加到已部署的应用。
 
-```bash
+```azurecli
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
   --settings AzureStorageConfig__AccountName=$blobStorageAccount \
     AzureStorageConfig__ImageContainer=images \
@@ -219,7 +219,7 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
 
 示例 Web 应用使用[适用于 JavaScript 的 Azure 存储客户端库](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage)来上传图像。 存储帐户凭据是在 Web 应用的应用设置中设置的。 使用 [az webapp config appsettings set](/cli/webapp/config/appsettings) 命令将应用设置添加到已部署的应用。
 
-```bash
+```azurecli
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
   --settings AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount \
     AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey
@@ -394,7 +394,7 @@ module.exports = router;
 
 ## <a name="verify-the-image-is-shown-in-the-storage-account"></a>验证图像是否显示在存储帐户中
 
-登录 [Azure 门户](https://portal.azure.cn)。 从左侧菜单中，选择“存储帐户”，然后选择你的存储帐户的名称。 选择“容器”，然后选择“图像”容器 。
+登录到 [Azure 门户](https://portal.azure.cn)。 从左侧菜单中，选择“存储帐户”，然后选择你的存储帐户的名称。 选择“容器”，然后选择“图像”容器 。
 
 验证图像是否显示在该容器中。
 
@@ -404,7 +404,7 @@ module.exports = router;
 
 为了测试缩略图查看，你将把图像上传到 **thumbnails** 容器，以检查应用可以读取 **thumbnails** 容器。
 
-登录 [Azure 门户](https://portal.azure.cn)。 从左侧菜单中，选择“存储帐户”，然后选择你的存储帐户的名称。 选择“容器”，然后选择“缩略图”容器 。 选择“上传”以打开“上传 blob”窗格。
+登录到 [Azure 门户](https://portal.azure.cn)。 从左侧菜单中，选择“存储帐户”，然后选择你的存储帐户的名称。 选择“容器”，然后选择“缩略图”容器 。 选择“上传”以打开“上传 blob”窗格。
 
 使用文件选取器选择文件，然后选择“上传”。
 

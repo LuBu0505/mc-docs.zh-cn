@@ -220,6 +220,12 @@
       href: vhd-not-supported-vm-azure.md
     - name: 使用嵌套虚拟化
       href: troubleshoot-vm-by-use-nested-virtualization.md
+- name: VM 性能问题
+  items:
+    - name: 排查 Azure VM 性能问题
+      items:
+        - name: Linux 或 Windows 中的性能问题
+          href: troubleshoot-performance-virtual-machine-linux-windows.md
 - name: 排查共享映像库问题
   items:
     - name: 排查共享映像库问题 - Windows
@@ -260,7 +266,7 @@
       items:
         - name: 概述
           href: ../windows/disk-encryption-overview.md
-        - name: 疑难解答
+        - name: 故障排除
           href: ../windows/disk-encryption-troubleshooting.md
         - name: 常见问题解答
           href: ../windows/disk-encryption-faq.md
@@ -268,7 +274,7 @@
       items:
         - name: 概述
           href: ../linux/disk-encryption-overview.md
-        - name: 疑难解答
+        - name: 故障排除
           href: ../linux/disk-encryption-troubleshooting.md
         - name: 常见问题
           href: ../linux/disk-encryption-faq.md

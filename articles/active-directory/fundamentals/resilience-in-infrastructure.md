@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 01/07/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 592e65c41f4de9673f5ad8682370b63737391526
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: cb293974c45bb6136c854f0f667f2afdd2c81d72
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021574"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540805"
 ---
 # <a name="build-resilience-in-your-identity-and-access-management-infrastructure"></a>在标识和访问管理基础结构中构建复原能力
 
@@ -32,7 +32,7 @@ Azure Active Directory 是一个全局云标识和访问管理系统，可为组
 
 * 标识运营团队
 
-另请参阅面向[应用程序开发人员](resilience-app-development-overview.md)和 [Azure AD B2C 系统](resilience-b2c.md)的文档。
+另请参阅面向[应用程序开发人员](./resilience-app-development-overview.md)和 [Azure AD B2C 系统](resilience-b2c.md)的文档。
 
 ## <a name="what-is-resilience"></a>什么是复原能力？
 
@@ -67,4 +67,3 @@ Azure Active Directory 是一个全局云标识和访问管理系统，可为组
 * [在应用程序中构建 IAM 复原能力](resilience-app-development-overview.md)
 
 * [在 CIAM 系统中构建复原能力](resilience-b2c.md)
-

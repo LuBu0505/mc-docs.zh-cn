@@ -10,13 +10,13 @@ metadata:
   ms.topic: landing-page
   author: Johnnytechn
   ms.author: v-johya
-  ms.date: 01/04/2021
-  ms.openlocfilehash: e874a818cf3783e278044859952972ebfc49a1c4
-  ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+  ms.date: 02/04/2021
+  ms.openlocfilehash: b7435d699dec9fbe444e5e4c9b7c0d346784e865
+  ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/08/2021
-  ms.locfileid: "98022808"
+  ms.lasthandoff: 02/05/2021
+  ms.locfileid: "99579433"
 landingContent:
 - title: 关于人脸服务
   linkLists:
@@ -87,7 +87,7 @@ landingContent:
   - linkListType: deploy
     links:
     - text: 使用容器实例
-      url: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
+      url: ../containers/azure-container-instance-recipe.md
 - title: 参考
   linkLists:
   - linkListType: reference

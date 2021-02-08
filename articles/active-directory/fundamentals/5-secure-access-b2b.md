@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 01/05/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec89a48a80878e09636c8e3aad3e3a4a4bebd764
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 43da077882942ba0c55f566422d2c0b5252f372b
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023743"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540719"
 ---
 # <a name="transition-to-governed-collaboration-with-azure-active-directory-b2b-collaboration"></a>通过 Azure Active Directory B2B 协作转换到受管控的协作 
 
@@ -130,7 +130,7 @@ ms.locfileid: "98023743"
 
 * 阻止访问 Azure 门户。可以设置罕见但必要的例外。 
 
-   * 创建一项包含所有来宾和外部用户的条件访问策略，然后[实施一项用于阻止访问的策略](/role-based-access-control/conditional-access-azure-management)。
+   * 创建一项包含所有来宾和外部用户的条件访问策略，然后[实施一项用于阻止访问的策略](../../role-based-access-control/conditional-access-azure-management.md)。
 
  
 
@@ -219,4 +219,3 @@ ms.locfileid: "98023743"
 8. [通过敏感度标签实现安全访问](8-secure-access-sensitivity-labels.md)
 
 9. [实现对 Microsoft Teams、OneDrive 和 SharePoint 的安全访问](9-secure-access-teams-sharepoint.md)
-

@@ -8,16 +8,16 @@ metadata:
   ms.service: virtual-machines-linux
   ms.topic: landing-page
   author: rockboyfor
-  ms.date: 09/07/2020
+  ms.date: 02/08/2021
   ms.testscope: yes
   ms.testdate: 08/31/2020
   ms.author: v-yeche
-  ms.openlocfilehash: e952c923593af4337041c191a78aab0a8fb63e61
-  ms.sourcegitcommit: 42d0775781f419490ceadb9f00fb041987b6b16d
+  ms.openlocfilehash: f52b99a07d855c347bc658607eb147f2385e81d0
+  ms.sourcegitcommit: fda47fe846d47f30e65a048251402d873e416650
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/04/2020
-  ms.locfileid: "89456743"
+  ms.lasthandoff: 02/02/2021
+  ms.locfileid: "99426571"
 landingContent:
 - title: 排查部署失败问题
   linkLists:
@@ -68,7 +68,7 @@ landingContent:
     - text: 如何使用启动诊断排查 Azure 中 Linux 虚拟机的故障
       url: ./boot-diagnostics.md
     - text: 了解 FSTAB 错误和缓解步骤
-      url: https://docs.azure.cn/zh-cn/virtual-machines/troubleshooting/linux-virtual-machine-cannot-start-fstab-errors
+      url: https://docs.azure.cn/virtual-machines/troubleshooting/linux-virtual-machine-cannot-start-fstab-errors
 - title: 无法启动或停止 VM
   linkLists:
   - linkListType: how-to-guide

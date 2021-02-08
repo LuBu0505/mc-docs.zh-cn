@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 01/14/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 554a17b8f4bed1f7e7ddad2aca2173735fdb05ba
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: dfd55336f71963c21d55539467fec256fe130554
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98194993"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540595"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入门：从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph API
 
@@ -46,7 +46,7 @@ ms.locfileid: "98194993"
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-the-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 > 若要注册应用，请执行以下操作：
-> 1. 转到新的 [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/IosQuickstartPage/sourceType/docs)窗格。
+> 1. 转到 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/IosQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入门体验。
 > 1. 输入应用程序的名称并选择“注册”。
 > 1. 遵照说明下载内容，并只需单击一下自动配置新应用程序。
 >
@@ -118,7 +118,7 @@ ms.locfileid: "98194993"
 >     ```
 > 1. 打开项目设置。 在“标识”部分，输入以前在门户中输入的 **捆绑标识符**。
 > 1. 右键单击“Info.plist”，然后选择“打开为” > “源代码”。
-> 1. 在 dict 根节点下，将 `Enter_the_bundle_Id_Here` 替换为你在门户中使用的“捆绑 ID”。
+> 1. 在 dict 根节点下，将 `Enter_the_bundle_Id_Here` 替换为你在门户中使用的 ***捆绑 ID***。
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -180,7 +180,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 
 > |其中： | 说明 |
 > |---------|---------|
-> | `clientId` | 在 portal.azure.cn 中注册的应用程序的应用程序 ID |
+> | `clientId` | 在 *portal.azure.cn* 中注册的应用程序的应用程序 ID |
 > | `authority` | Microsoft 标识平台终结点。 在大多数情况下，这是 `https://login.partner.microsoftonline.cn/common` |
 > | `redirectUri` | 应用程序的重定向 URI。 可以传递“nil”以使用默认值，也可以使用自定义重定向 URI。 |
 
@@ -214,7 +214,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
     }
  ```
 
-最后，应用必须在 Info.plist 中有一个与 `CFBundleURLTypes` 一起的 `LSApplicationQueriesSchemes` 条目。 示例包含此条目。
+最后，应用必须在 ***Info.plist*** 中有一个与 `CFBundleURLTypes` 一起的 `LSApplicationQueriesSchemes` 条目。 示例包含此条目。
 
    ```xml
    <key>LSApplicationQueriesSchemes</key>
@@ -232,7 +232,7 @@ MSAL 有两种用来获取令牌的方法：`acquireToken` 和 `acquireTokenSile
 
 有些情况下，需要用户与 Microsoft 标识平台交互。 在这些情况下，最终用户可能需要选择其帐户、输入其凭据，或者同意应用的权限。 例如，
 
-用户首次登录应用程序
+* 用户首次登录应用程序
 * 用户在重置其密码时需输入其凭据。
 * 应用程序首次请求访问资源时
 * 需要 MFA 或其他条件访问策略时
@@ -275,4 +275,3 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 
 > [!div class="nextstepaction"]
 > [教程：从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph](tutorial-v2-ios.md)
-

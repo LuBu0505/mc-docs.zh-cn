@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: e0cb8485a9dd82f2645dd706bd9b92a7ddcbd77d
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 5029adf686f7b0281429fd642cf92df3eda23c74
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023330"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804340"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure 机器学习训练模型
 
@@ -109,7 +109,6 @@ R SDK 使你能够将 R 语言与 Azure 机器学习结合使用。 SDK 使用�
 
 有关详细信息，请参阅以下文章：
 
-* [教程：创建逻辑回归模型](tutorial-1st-r-experiment.md)
 * [R 参考的 Azure 机器学习 SDK](https://azure.github.io/azureml-sdk-for-r/index.html)
 
 ## <a name="azure-machine-learning-designer"></a>Azure 机器学习设计器

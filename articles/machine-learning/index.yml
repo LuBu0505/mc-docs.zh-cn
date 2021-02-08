@@ -9,16 +9,16 @@ metadata:
   ms.subservice: core
   ms.topic: landing-page
   ms.collection: collection
-  author: j-martens
-  ms.author: jmartens
+  ms.author: larryfr
+  author: BlackMist
   ms.date: 09/21/2020
-  ms.custom: contperfq1
-  ms.openlocfilehash: f0e716c8ba8d0a7abbe146da3214899f316fd2e2
-  ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+  ms.custom: contperf-fy21q1
+  ms.openlocfilehash: 41c778c3f27246742da0ff37fe55b137a831fce0
+  ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/08/2021
-  ms.locfileid: "98022416"
+  ms.lasthandoff: 02/07/2021
+  ms.locfileid: "99804307"
 landingContent:
 - title: 入门：代码优先
   linkLists:
@@ -30,8 +30,6 @@ landingContent:
       url: tutorial-1st-experiment-sdk-setup.md
     - text: 使用 ML 管道的批量推理 (Python)
       url: tutorial-pipeline-batch-scoring-classification.md
-    - text: R 入门
-      url: tutorial-1st-r-experiment.md
 - title: 入门：低代码或无代码
   linkLists:
   - linkListType: overview
@@ -58,7 +56,7 @@ landingContent:
     links:
     - text: 将模型部署到云
       url: how-to-deploy-existing-model.md
-    - text: 跟踪和部署 MLflow 模型
+    - text: 跟踪 MLflow 模型
       url: how-to-use-mlflow.md
 - title: 部署和管理模型 (MLOps)
   linkLists:
@@ -68,6 +66,8 @@ landingContent:
       url: concept-model-management-and-deployment.md
     - text: 部署方式和位置
       url: how-to-deploy-and-where.md
+    - text: 部署 MLflow 模型
+      url: how-to-deploy-mlflow-models.md
   - linkListType: reference
     links:
     - text: Python SDK

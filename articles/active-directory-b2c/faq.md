@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 2f7d2baa22984eb6e85456d3dafe7393b0bb0dd8
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: e7a83d66ee989c82078669bd63088344167a5211
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570543"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540644"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常见问题 (FAQ)
 
@@ -82,7 +82,7 @@ Azure AD B2C 还支持[自定义策略](custom-policy-overview.md)。 自定义�
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>我可以使用 Azure AD Connect 将存储在本地 Active Directory 中的使用者标识迁移到 Azure AD B2C 吗？
 
-不可以，Azure AD Connect 不是为与 Azure AD B2C 一起使用而设计的。 请考虑使用 [Microsoft Graph API](manage-user-accounts-graph-api.md) 进行用户迁移。 有关详细信息，请参阅[用户迁移指南](user-migration.md)。
+不可以，Azure AD Connect 不是为与 Azure AD B2C 一起使用而设计的。 请考虑使用 [Microsoft Graph API](microsoft-graph-operations.md) 进行用户迁移。 有关详细信息，请参阅[用户迁移指南](user-migration.md)。
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>我的应用是否可在 iFrame 中打开 Azure AD B2C 页？
 
@@ -171,4 +171,3 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 ### <a name="how-do-i-report-issues-with-azure-ad-b2c"></a>如何报告 Azure AD B2C 存在的问题？
 
 请参阅[提出针对 Azure Active Directory B2C 的支持请求](support-options.md)。
-

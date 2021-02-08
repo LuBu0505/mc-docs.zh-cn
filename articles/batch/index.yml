@@ -8,16 +8,16 @@ metadata:
   ms.topic: landing-page
   origin.date: 10/09/2020
   author: rockboyfor
-  ms.date: 02/01/2021
+  ms.date: 02/08/2021
   ms.testscope: no
   ms.testdate: 
   ms.author: v-yeche
-  ms.openlocfilehash: 81bef8658433001df8f99fa197678de0362220eb
-  ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+  ms.openlocfilehash: 68de5cc8b41fedc907e9267a2f21d0faaf46be92
+  ms.sourcegitcommit: fda47fe846d47f30e65a048251402d873e416650
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/29/2021
-  ms.locfileid: "99058875"
+  ms.lasthandoff: 02/02/2021
+  ms.locfileid: "99426655"
 landingContent:
 - title: 关于 Azure Batch
   linkLists:

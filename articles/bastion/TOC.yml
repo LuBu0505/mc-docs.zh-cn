@@ -21,7 +21,7 @@
       href: work-remotely-support.md
     - name: Bastion 和 VNet 对等互连
       href: vnet-peering.md
-    - name: 安全性
+    - name: 安全
       items:
         - name: 安全基线
           href: security-baseline.md
@@ -53,7 +53,7 @@
       href: bastion-nsg.md
     - name: 监视和管理会话
       href: session-monitoring.md
-    - name: 疑难解答
+    - name: 故障排除
       href: troubleshoot.md
 - name: 参考
   items:

@@ -6,14 +6,14 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: article
 origin.date: 12/02/2020
-ms.date: 01/04/2021
+ms.date: 02/08/2021
 ms.author: v-jay
-ms.openlocfilehash: 8fbefaf06cf28ed2c82af7c7436ce507ef109df4
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 5cd348b557d9c094e612198f90922e76aee13b10
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856916"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503869"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>关于用于站点到站点 VPN 网关连接的 VPN 设备和 IPsec/IKE 参数
 
@@ -68,7 +68,7 @@ ms.locfileid: "97856916"
 | Sophos | XG 下一代防火墙 | XG v17 | （未测试） | [配置指南](https://community.sophos.com/kb/127546)<br><br>[配置指南 - 多个 SA](https://community.sophos.com/kb/en-us/133154) |
 | Synology | MR2200ac <br>RT2600ac <br>RT1900ac | SRM1.1.5/VpnPlusServer-1.2.0 | （未测试） | [配置指南](https://www.synology.com/en-global/knowledgebase/SRM/tutorial/VPN/How_to_set_up_Site_to_Site_VPN_between_Synology_Router_and_MS_Azure) |
 | Ubiquiti | EdgeRouter | EdgeOS v1.10 | （未测试） | [基于 IKEv2/IPsec 的BGP](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[基于 IKEv2/IPsec 的 VTI](https://help.ubnt.com/hc/en-us/articles/115012305347) |
-| 超高性能 | 3E-636L3 | 5.2.0.T3 Build-13  | （未测试） | [配置指南](https://ultra-3eti.com/wp-content/uploads/2020/07/Azure-VPN-636L3-Site-to-Site-Test-Notes.pdf) |
+| 超高性能 | 3E-636L3 | 5.2.0.T3 Build-13  | （未测试） | 配置指南 |
 | WatchGuard |全部 |Fireware XTM<br> PolicyBased：v11.11.x<br>RouteBased：v11.12.x |[配置指南](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[配置指南](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 | Zyxel |ZyWALL USG 系列<br>ZyWALL ATP 系列<br>ZyWALL VPN 系列 | ZLD v4.32+ | （未测试） | [基于 IKEv2/IPsec 的 VTI](https://businessforum.zyxel.com/discussion/2648/)<br><br>[基于 IKEv2/IPsec 的BGP](https://businessforum.zyxel.com/discussion/2650/)|
 

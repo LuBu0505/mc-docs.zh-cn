@@ -5,15 +5,15 @@ author: Johnnytechn
 ms.service: virtual-machines-linux
 ms.topic: how-to
 origin.date: 06/13/2018
-ms.date: 01/05/2021
+ms.date: 02/01/2021
 ms.author: v-johya
 ms.subservice: disks
-ms.openlocfilehash: acf30a48542e95c25cd26156d4c0c65489b1d890
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 1a11a786f1f215640d8ef76e7dd338e9f349830e
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022348"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579619"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>将磁盘添加到 Linux VM
 
@@ -38,7 +38,7 @@ az vm disk attach \
 
 ## <a name="attach-an-existing-disk"></a>附加现有磁盘
 
-若要附加现有磁盘，请查找磁盘 ID 并将该 ID 传递到 [az vm disk attach](https://docs.azure.cn/cli/vm/disk?view=azure-cli-latest#az-vm-disk-attach) 命令。 以下示例查询 *myResourceGroup* 中名为 *myDataDisk* 的磁盘，然后将其附加到名为 *myVM* 的 VM：
+若要附加现有磁盘，请查找磁盘 ID 并将该 ID 传递到 [az vm disk attach](https://docs.azure.cn/cli/vm/disk?view=azure-cli-latest#az_vm_disk_attach) 命令。 以下示例查询 *myResourceGroup* 中名为 *myDataDisk* 的磁盘，然后将其附加到名为 *myVM* 的 VM：
 
 ```azurecli
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)

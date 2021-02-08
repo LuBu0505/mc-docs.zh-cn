@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.custom: project-no-code
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 8efe5da756904f656d9d4aea653fae25b668e2a4
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: 7675e7bb8f05a27af39af3a918292db46576224a
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570928"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540610"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>使用 Application Insights 收集 Azure Active Directory B2C 日志
 
@@ -26,7 +26,7 @@ ms.locfileid: "98570928"
 只能在自定义策略的开发期间启用此处所述的详细活动日志。
 
 > [!WARNING]
-> 请勿在生产环境中将 `DeploymentMode` 设置为 `Developer`。 日志会收集发送给以及发送自标识提供者的所有声明。 你作为开发人员对 Application Insights 日志中收集的所有个人数据负责。 仅当策略处于“开发人员模式”时才会收集这些详细日志。
+> 请勿在生产环境中将 `DeploymentMode` 设置为 `Development`。 日志会收集发送给以及发送自标识提供者的所有声明。 你作为开发人员对 Application Insights 日志中收集的所有个人数据负责。 仅当策略处于“开发人员模式”时才会收集这些详细日志。
 
 ## <a name="set-up-application-insights"></a>设置 Application Insights
 
@@ -137,4 +137,3 @@ Microsoft 不支持用户旅程播放器，它严格按原样提供。
 可在 GitHub 上的 Application Insights 中找到读取事件的查看器版本，具体网址是：
 
 [Azure-Samples/active-directory-b2c-advanced-policies](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/wingtipgamesb2c/src/WingTipUserJourneyPlayerWebApplication)
-

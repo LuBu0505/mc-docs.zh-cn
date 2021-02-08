@@ -6,21 +6,21 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure
 ms.topic: how-to
 origin.date: 07/12/2017
-ms.date: 09/03/2020
+ms.date: 02/01/2021
 ms.author: v-johya
 ms.subservice: disks
-ms.openlocfilehash: fd76bfe1a9205c5ca040b389b858bbb7b980c3a3
-ms.sourcegitcommit: f45809a2120ac7a77abe501221944c4482673287
+ms.openlocfilehash: 23d812da0f34c61181e35b6e385e5d2baab4dfa7
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057633"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579594"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>使用 SCP 将文件移到 Linux VM 和从 Linux VM 移动文件
 
 本文说明如何使用安全复制 (SCP) 将文件从工作站向上移到 Azure Linux VM，或从 Azure Linux VM 向下移到工作站。 在工作站和 Linux VM 之间快速安全地移动文件是管理 Azure 基础结构的关键。 
 
-对于本文，需要使用 [SSH 公钥和私钥文件](mac-create-ssh-keys.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)在 Azure 中部署的 Linux VM。 还需要用于本地计算机的 SCP 客户端。 它基于 SSH 生成，包括在大多数 Linux 和 Mac 计算机以及部分 Windows Shell 的默认 Bash Shell 中。
+对于本文，需要使用 [SSH 公钥和私钥文件](mac-create-ssh-keys.md)在 Azure 中部署的 Linux VM。 还需要用于本地计算机的 SCP 客户端。 它基于 SSH 生成，包括在大多数 Linux 和 Mac 计算机以及部分 Windows Shell 的默认 Bash Shell 中。
 
 ## <a name="quick-commands"></a>快速命令
 
@@ -44,7 +44,7 @@ scp azureuser@azurehost:directory/file targetfile
 
 SCP 将 SSH 用于传输层。 SSH 处理目标主机上的身份验证，同时还在 SSH 默认提供的加密隧道中移动文件。 对于 SSH 身份验证，可以使用用户名和密码。 但是，建议将 SSH 公钥和私钥身份验证作为安全性最佳做法。 SSH 对连接进行身份验证后，SCP 会开始复制文件。 借助正确配置的 `~/.ssh/config` 以及 SSH 公钥和私钥，仅使用服务器名称（或 IP 地址）即可建立 SCP 连接。 如果只有一个 SSH 密钥，SCP 会在 `~/.ssh/` 目录中查找它，并在默认情况下使用它登录到 VM。
 
-有关配置 `~/.ssh/config` 以及 SSH 公钥和私钥的详细信息，请参阅[创建 SSH 密钥](mac-create-ssh-keys.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
+有关配置 `~/.ssh/config` 以及 SSH 公钥和私钥的详细信息，请参阅[创建 SSH 密钥](mac-create-ssh-keys.md)。
 
 ## <a name="scp-a-file-to-a-linux-vm"></a>通过 SCP 将文件复制到 Linux VM
 

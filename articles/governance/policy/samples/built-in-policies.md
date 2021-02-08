@@ -1,17 +1,18 @@
 ---
 title: 内置策略定义列表
 description: 列出 Azure Policy 的内置策略定义。 类别包括“标记”、“合规性”、“Key Vault”、“Kubernetes”、“来宾配置”等。
-origin.date: 01/08/2021
-ms.date: 01/14/2021
-ms.author: v-tawe
+origin.date: 01/21/2021
+author: rockboyfor
+ms.date: 02/08/2021
+ms.author: v-yeche
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 84e4c5fff5483c8472fba9a057c23b10b9584820
-ms.sourcegitcommit: 93063f9b8771b8e895c3bcdf218f5e3af14ef537
+ms.openlocfilehash: 8b0930bdc072a136659737428b79271ad69c1e1a
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98193273"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580606"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy 内置策略定义
 
@@ -19,29 +20,26 @@ ms.locfileid: "98193273"
 
 每个内置链接（指向Azure 门户中的策略定义）的名称。 使用“源”列中的链接查看 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)上的源。 这些内置项按 **元数据** 中的 **category** 属性进行分组。 若要跳转到特定的 **类别**，请使用页面右侧的菜单。 否则，请按 <kbd>Ctrl</kbd>-<kbd>F</kbd> 来使用浏览器的搜索功能。
 
-<!-- ## API for FHIR -->
-
-<!-- [!INCLUDE [azure-policy-reference-policies-api-for-fhir](../../../../includes/policy/reference/bycat/policies-api-for-fhir.md)] -->
+<!--NOT AVAILABLE ON 02/08/2021## API for FHIR-->
+<!--NOT AVAILABLE ON [azure-policy-reference-policies-api-for-fhir](../../../../includes/policy/reference/bycat/policies-api-for-fhir.md)-->
 
 ## <a name="api-management"></a>API 管理
 
 [!INCLUDE [azure-policy-reference-policies-api-management](../../../../includes/policy/reference/bycat/policies-api-management.md)]
 
-<!-- ## App Configuration
+## <a name="app-configuration"></a>应用程序配置
 
-[!INCLUDE [azure-policy-reference-policies-app-configuration](../../../../includes/policy/reference/bycat/policies-app-configuration.md)] -->
+[!INCLUDE [azure-policy-reference-policies-app-configuration](../../../../includes/policy/reference/bycat/policies-app-configuration.md)]
 
-<!-- ## App Platform
-
-[!INCLUDE [azure-policy-reference-policies-app-platform](../../../../includes/policy/reference/bycat/policies-app-platform.md)] -->
+<!--NOT AVAILABLE ON 02/08/2021 ## App Platform-->
+<!--NOT AVAILABLE ON [azure-policy-reference-policies-app-platform](../../../../includes/policy/reference/bycat/policies-app-platform.md)-->
 
 ## <a name="app-service"></a>应用服务
 
 [!INCLUDE [azure-policy-reference-policies-app-service](../../../../includes/policy/reference/bycat/policies-app-service.md)]
 
-<!-- ## Automanage
-
-[!INCLUDE [azure-policy-reference-policies-automanage](../../../../includes/policy/reference/bycat/policies-automanage.md)] -->
+<!--NOT AVAILABLE ON 02/08/2021 ## Automanage-->
+<!--NOT AVAILABLE ON [azure-policy-reference-policies-automanage](../../../../includes/policy/reference/bycat/policies-automanage.md)-->
 
 ## <a name="automation"></a>自动化
 
@@ -51,13 +49,18 @@ ms.locfileid: "98193273"
 
 [!INCLUDE [azure-policy-reference-policies-azure-data-explorer](../../../../includes/policy/reference/bycat/policies-azure-data-explorer.md)]
 
-## <a name="backup"></a>备份
+<!--NOT AVAILABLE ON 02/08/2021 ## Azure Stack Edge-->
+<!--NOT AVAILABLE ON [azure-policy-reference-policies-azure-stack-edge](../../../../includes/policy/reference/bycat/policies-azure-stack-edge.md)-->
+## <a name="backup"></a>Backup
 
 [!INCLUDE [azure-policy-reference-policies-backup](../../../../includes/policy/reference/bycat/policies-backup.md)]
 
 ## <a name="batch"></a>Batch
 
 [!INCLUDE [azure-policy-reference-policies-batch](../../../../includes/policy/reference/bycat/policies-batch.md)]
+
+<!--NOT AVAILABLE ON 02/08/2021 ## Bot Services-->
+<!--NOT AVAILABLE ON [azure-policy-reference-policies-bot-services](../../../../includes/policy/reference/bycat/policies-bot-services.md)-->
 
 ## <a name="cache"></a>缓存
 
@@ -75,22 +78,25 @@ ms.locfileid: "98193273"
 
 [!INCLUDE [azure-policy-reference-policies-container-registry](../../../../includes/policy/reference/bycat/policies-container-registry.md)]
 
-<!-- ## Cosmos DB
+## <a name="cosmos-db"></a>Cosmos DB
 
-[!INCLUDE [azure-policy-reference-policies-cosmos-db](../../../../includes/policy/reference/bycat/policies-cosmos-db.md)] -->
+[!INCLUDE [azure-policy-reference-policies-cosmos-db](../../../../includes/policy/reference/bycat/policies-cosmos-db.md)]
 
-<!-- ## Custom Provider
+<!--NOT AVAILABLE ON 02/08/2021 ## Custom Provider-->
 
-[!INCLUDE [azure-policy-reference-policies-custom-provider](../../../../includes/policy/reference/bycat/policies-custom-provider.md)] -->
+<!--NOT AVAILABLE ON [azure-policy-reference-policies-custom-provider](../../../../includes/policy/reference/bycat/policies-custom-provider.md)-->
+## <a name="data-box"></a>Data Box
 
-<!-- ## Data Lake
+[!INCLUDE [azure-policy-reference-policies-data-box](../../../../includes/policy/reference/bycat/policies-data-box.md)]
 
-[!INCLUDE [azure-policy-reference-policies-data-lake](../../../../includes/policy/reference/bycat/policies-data-lake.md)] -->
+## <a name="data-factory"></a>数据工厂
 
-<!-- ## Event Grid -->
+[!INCLUDE [azure-policy-reference-policies-data-factory](../../../../includes/policy/reference/bycat/policies-data-factory.md)]
 
-<!-- [!INCLUDE [azure-policy-reference-policies-event-grid](../../../../includes/policy/reference/bycat/policies-event-grid.md)] -->
-
+<!--NOT AVAILABLE ON 02/08/2021 ## Data Lake-->
+<!--NOT AVAILABLE ON [azure-policy-reference-policies-data-lake](../../../../includes/policy/reference/bycat/policies-data-lake.md)-->
+<!--NOT AVAILABLE ON 02/08/2021 ## Event Grid -->
+<!--NOT AVAILABLE ON [azure-policy-reference-policies-event-grid](../../../../includes/policy/reference/bycat/policies-event-grid.md)-->
 ## <a name="event-hub"></a>事件中心
 
 [!INCLUDE [azure-policy-reference-policies-event-hub](../../../../includes/policy/reference/bycat/policies-event-hub.md)]
@@ -99,37 +105,32 @@ ms.locfileid: "98193273"
 
 [!INCLUDE [azure-policy-reference-policies-general](../../../../includes/policy/reference/bycat/policies-general.md)]
 
-<!-- ## Guest Configuration
-
-[!INCLUDE [azure-policy-reference-policies-guest-configuration](../../../../includes/policy/reference/bycat/policies-guest-configuration.md)] -->
-
-<!-- ## Internet of Things
-
-[!INCLUDE [azure-policy-reference-policies-internet-of-things](../../../../includes/policy/reference/bycat/policies-internet-of-things.md)] -->
+<!--NOT AVAILABLE ON 02/08/2021 ## Guest Configuration-->
+<!--NOT AVAILABLE ON [azure-policy-reference-policies-guest-configuration](../../../../includes/policy/reference/bycat/policies-guest-configuration.md)-->
+<!--NOT AVAILABLE ON 02/08/2021 ## Internet of Things-->
+<!--NOT AVAILABLE ON [azure-policy-reference-policies-internet-of-things](../../../../includes/policy/reference/bycat/policies-internet-of-things.md)-->
 
 ## <a name="key-vault"></a>密钥保管库
 
 [!INCLUDE [azure-policy-reference-policies-key-vault](../../../../includes/policy/reference/bycat/policies-key-vault.md)]
 
-<!-- ## Kubernetes
+<!--NOT AVAILABLE ON 02/08/2021 ## Kubernetes-->
+<!--NOT AVAILABLE ON [azure-policy-reference-policies-kubernetes](../../../../includes/policy/reference/bycat/policies-kubernetes.md)-->
 
-[!INCLUDE [azure-policy-reference-policies-kubernetes](../../../../includes/policy/reference/bycat/policies-kubernetes.md)] -->
-
-<!-- ## Lighthouse
-
-[!INCLUDE [azure-policy-reference-policies-lighthouse](../../../../includes/policy/reference/bycat/policies-lighthouse.md)] -->
+<!--NOT AVAILABLE ON 02/08/2021 ## Lighthouse-->
+<!--NOT AVAILABLE ON [azure-policy-reference-policies-lighthouse](../../../../includes/policy/reference/bycat/policies-lighthouse.md)-->
 
 ## <a name="logic-apps"></a>逻辑应用
 
 [!INCLUDE [azure-policy-reference-policies-logic-apps](../../../../includes/policy/reference/bycat/policies-logic-apps.md)]
 
-<!-- ## Machine Learning -->
+## <a name="machine-learning"></a>机器学习
 
-<!-- [!INCLUDE [azure-policy-reference-policies-machine-learning](../../../../includes/policy/reference/bycat/policies-machine-learning.md)] -->
+[!INCLUDE [azure-policy-reference-policies-machine-learning](../../../../includes/policy/reference/bycat/policies-machine-learning.md)]
 
-<!-- ## Managed Application
+## <a name="managed-application"></a>托管应用程序
 
-[!INCLUDE [azure-policy-reference-policies-managed-application](../../../../includes/policy/reference/bycat/policies-managed-application.md)] -->
+[!INCLUDE [azure-policy-reference-policies-managed-application](../../../../includes/policy/reference/bycat/policies-managed-application.md)]
 
 ## <a name="monitoring"></a>监视
 
@@ -159,9 +160,9 @@ ms.locfileid: "98193273"
 
 [!INCLUDE [azure-policy-reference-policies-service-fabric](../../../../includes/policy/reference/bycat/policies-service-fabric.md)]
 
-<!-- ## SignalR -->
+## <a name="signalr"></a>SignalR
 
-<!-- [!INCLUDE [azure-policy-reference-policies-signalr](../../../../includes/policy/reference/bycat/policies-signalr.md)] -->
+[!INCLUDE [azure-policy-reference-policies-signalr](../../../../includes/policy/reference/bycat/policies-signalr.md)]
 
 ## <a name="sql"></a>SQL
 
@@ -183,12 +184,13 @@ ms.locfileid: "98193273"
 
 [!INCLUDE [azure-policy-reference-policies-tags](../../../../includes/policy/reference/bycat/policies-tags.md)]
 
-<!-- ## VM Image Builder -->
-
-<!-- [!INCLUDE [azure-policy-reference-policies-vm-image-builder](../../../../includes/policy/reference/bycat/policies-vm-image-builder.md)] -->
+<!--NOT AVAILABLE ON 02/08/2021 ## VM Image Builder-->
+<!--NOT AVAILABLE ON [azure-policy-reference-policies-vm-image-builder](../../../../includes/policy/reference/bycat/policies-vm-image-builder.md)-->
 
 ## <a name="next-steps"></a>后续步骤
 
 - 在 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)中查看这些内置项。
 - 查看 [Azure Policy 定义结构](../concepts/definition-structure.md)。
 - 查看[了解策略效果](../concepts/effects.md)。
+
+<!--Update_Description: update meta properties, wording update, update link-->

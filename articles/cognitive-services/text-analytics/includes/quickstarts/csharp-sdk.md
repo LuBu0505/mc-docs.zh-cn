@@ -6,45 +6,46 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 10/26/2020
+ms.date: 02/04/2021
 ms.author: v-johya
 ms.reviewer: assafi
-ms.openlocfilehash: 25efdd536d6a6a9f1c69cdedb4587734bded1fc5
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: c7a03ea0d847221ff42208f7836d5f003e4e37d8
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93103580"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580172"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
-[v3.1 参考文档](https://docs.microsoft.com/dotnet/api/azure.ai.textanalytics?view=azure-dotnet-previews&preserve-view=true) | [v3.1 库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3.1 包 (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.1) | [v3.1 示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+[v3.1 参考文档](https://docs.microsoft.com/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-previews) | [v3.1 库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3.1 包 (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.3) | [v3.1 示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
-[v3 参考文档](https://aka.ms/azsdk-net-textanalytics-ref-docs) | [v3 库源代码](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3 包(NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics) | [v3 示例](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+[v3 参考文档](https://docs.microsoft.com/dotnet/api/azure.ai.textanalytics) | [v3 库源代码](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3 包(NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics) | [v3 示例](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
 # <a name="version-21"></a>[版本 2.1](#tab/version-2)
 
-[v2 参考文档](https://docs.microsoft.com/dotnet/api/overview/cognitiveservices/client/textanalytics) | [v2 库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics) | [v2 包(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/) | [v2 示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
+[v2 参考文档](https://docs.microsoft.com/dotnet/api/overview//cognitiveservices/client?view=azure-dotnet) | [v2 库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics) | [v2 包(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/) | [v2 示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
 
 ---
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅 - [创建试用订阅](https://www.azure.cn/pricing/details/cognitive-services/)
+* Azure 订阅 - [创建试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)
 * [Visual Studio IDE](https://visualstudio.microsoft.com/vs/)
 * 你有了 Azure 订阅后，<a href="https://portal.azure.cn/#create/Microsoft.CognitiveServicesTextAnalytics"  title="创建文本分析资源"  target="_blank">将在 Azure 门户中创建文本分析资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，以获取你的密钥和终结点。  部署后，单击“转到资源”。
     * 你需要从创建的资源获取密钥和终结点，以便将应用程序连接到文本分析 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
     * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+* 若要使用“分析”功能，需要标准 (S) 定价层的“文本分析”资源。
 
 ## <a name="setting-up"></a>设置
 
 ### <a name="create-a-new-net-core-application"></a>创建新的 .NET Core 应用程序
 
-使用 Visual Studio IDE 创建新的 .NET Core 控制台应用。 这会创建包含单个 C# 源文件的“Hello World”项目： *program.cs* 。
+使用 Visual Studio IDE 创建新的 .NET Core 控制台应用。 这会创建包含单个 C# 源文件的“Hello World”项目：*program.cs*。
 
 # <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
@@ -60,7 +61,7 @@ ms.locfileid: "93103580"
 
 # <a name="version-21"></a>[版本 2.1](#tab/version-2)
 
-右键单击 **解决方案资源管理器** 中的解决方案，然后选择“管理 NuGet 包”  ，以便安装客户端库。 在打开的包管理器中选择“浏览”，搜索 `Microsoft.Azure.CognitiveServices.Language.TextAnalytics`。 单击它，然后进行 **安装** 。 也可使用[包管理器控制台](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)。
+右键单击 **解决方案资源管理器** 中的解决方案，然后选择“管理 NuGet 包”  ，以便安装客户端库。 在打开的包管理器中选择“浏览”，搜索 `Microsoft.Azure.CognitiveServices.Language.TextAnalytics`。 单击它，然后进行 **安装**。 也可使用[包管理器控制台](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)。
 
 > [!TIP]
 > 想要立即查看整个快速入门代码文件？ 可以[在 GitHub 上](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/samples/TextAnalytics/synchronous/Program.cs)找到它，其中包含此快速入门中的代码示例。 
@@ -762,37 +763,38 @@ static void SentimentAnalysisWithOpinionMiningExample(TextAnalyticsClient client
 {
     var documents = new List<string>
     {
-        "The food and service were unacceptable, but the concierge were nice.",
-        "The rooms were beautiful. The AC was good and quiet.",
-        "The breakfast was good, but the toilet was smelly.",
-        "Loved this hotel - good breakfast - nice shuttle service - clean rooms.",
-        "I had a great unobstructed view of the Microsoft campus.",
-        "Nice rooms but bathrooms were old and the toilet was dirty when we arrived.",
-        "We changed rooms as the toilet smelled."
+        "The food and service were unacceptable, but the concierge were nice."
     };
 
     AnalyzeSentimentResultCollection reviews = client.AnalyzeSentimentBatch(documents, options: new AnalyzeSentimentOptions()
     {
-        AdditionalSentimentAnalyses = AdditionalSentimentAnalyses.OpinionMining
+        IncludeOpinionMining = true
     });
 
     foreach (AnalyzeSentimentResult review in reviews)
     {
         Console.WriteLine($"Document sentiment: {review.DocumentSentiment.Sentiment}\n");
+        Console.WriteLine($"\tPositive score: {review.DocumentSentiment.ConfidenceScores.Positive:0.00}");
+        Console.WriteLine($"\tNegative score: {review.DocumentSentiment.ConfidenceScores.Negative:0.00}");
+        Console.WriteLine($"\tNeutral score: {review.DocumentSentiment.ConfidenceScores.Neutral:0.00}\n");
         foreach (SentenceSentiment sentence in review.DocumentSentiment.Sentences)
         {
             Console.WriteLine($"\tText: \"{sentence.Text}\"");
             Console.WriteLine($"\tSentence sentiment: {sentence.Sentiment}");
-            Console.WriteLine($"\tPositive score: {sentence.ConfidenceScores.Positive:0.00}");
-            Console.WriteLine($"\tNegative score: {sentence.ConfidenceScores.Negative:0.00}");
-            Console.WriteLine($"\tNeutral score: {sentence.ConfidenceScores.Neutral:0.00}\n");
+            Console.WriteLine($"\tSentence positive score: {sentence.ConfidenceScores.Positive:0.00}");
+            Console.WriteLine($"\tSentence negative score: {sentence.ConfidenceScores.Negative:0.00}");
+            Console.WriteLine($"\tSentence neutral score: {sentence.ConfidenceScores.Neutral:0.00}\n");
 
             foreach (MinedOpinion minedOpinion in sentence.MinedOpinions)
             {
                 Console.WriteLine($"\tAspect: {minedOpinion.Aspect.Text}, Value: {minedOpinion.Aspect.Sentiment}");
+                Console.WriteLine($"\tAspect positive score: {minedOpinion.Aspect.ConfidenceScores.Positive:0.00}");
+                Console.WriteLine($"\tAspect negative score: {minedOpinion.Aspect.ConfidenceScores.Negative:0.00}");
                 foreach (OpinionSentiment opinion in minedOpinion.Opinions)
                 {
                     Console.WriteLine($"\t\tRelated Opinion: {opinion.Text}, Value: {opinion.Sentiment}");
+                    Console.WriteLine($"\t\tRelated Opinion positive score: {opinion.ConfidenceScores.Positive:0.00}");
+                    Console.WriteLine($"\t\tRelated Opinion negative score: {opinion.ConfidenceScores.Negative:0.00}");
                 }
             }
         }
@@ -806,117 +808,37 @@ static void SentimentAnalysisWithOpinionMiningExample(TextAnalyticsClient client
 ```console
 Document sentiment: Positive
 
-        Text: "The food and service were unacceptable, but the concierge were nice."
-        Sentence sentiment: Positive
         Positive score: 0.84
         Negative score: 0.16
         Neutral score: 0.00
 
+        Text: "The food and service were unacceptable, but the concierge were nice."
+        Sentence sentiment: Positive
+        Sentence positive score: 0.84
+        Sentence negative score: 0.16
+        Sentence neutral score: 0.00
+
         Aspect: food, Value: Negative
+        Aspect positive score: 0.01
+        Aspect negative score: 0.99
                 Related Opinion: unacceptable, Value: Negative
+                Related Opinion positive score: 0.01
+                Related Opinion negative score: 0.99
         Aspect: service, Value: Negative
+        Aspect positive score: 0.01
+        Aspect negative score: 0.99
                 Related Opinion: unacceptable, Value: Negative
+                Related Opinion positive score: 0.01
+                Related Opinion negative score: 0.99
         Aspect: concierge, Value: Positive
+        Aspect positive score: 1.00
+        Aspect negative score: 0.00
                 Related Opinion: nice, Value: Positive
+                Related Opinion positive score: 1.00
+                Related Opinion negative score: 0.00
 
 
-Document sentiment: Positive
-
-        Text: "The rooms were beautiful."
-        Sentence sentiment: Positive
-        Positive score: 1.00
-        Negative score: 0.00
-        Neutral score: 0.00
-
-        Aspect: rooms, Value: Positive
-                Related Opinion: beautiful, Value: Positive
-        Text: "The AC was good and quiet."
-        Sentence sentiment: Positive
-        Positive score: 1.00
-        Negative score: 0.00
-        Neutral score: 0.00
-
-        Aspect: AC, Value: Positive
-                Related Opinion: good, Value: Positive
-                Related Opinion: quiet, Value: Positive
-
-
-Document sentiment: Negative
-
-        Text: "The breakfast was good, but the toilet was smelly."
-        Sentence sentiment: Negative
-        Positive score: 0.01
-        Negative score: 0.99
-        Neutral score: 0.00
-
-        Aspect: breakfast, Value: Positive
-                Related Opinion: good, Value: Positive
-        Aspect: toilet, Value: Negative
-                Related Opinion: smelly, Value: Negative
-
-
-Document sentiment: Positive
-
-        Text: "Loved this hotel - good breakfast - nice shuttle service - clean rooms."
-        Sentence sentiment: Positive
-        Positive score: 1.00
-        Negative score: 0.00
-        Neutral score: 0.00
-
-        Aspect: hotel, Value: Positive
-                Related Opinion: good, Value: Positive
-        Aspect: breakfast, Value: Positive
-                Related Opinion: nice, Value: Positive
-        Aspect: shuttle service, Value: Positive
-                Related Opinion: loved, Value: Positive
-        Aspect: rooms, Value: Positive
-                Related Opinion: good, Value: Positive
-                Related Opinion: nice, Value: Positive
-                Related Opinion: clean, Value: Positive
-                Related Opinion: loved, Value: Positive
-
-
-Document sentiment: Positive
-
-        Text: "I had a great unobstructed view of the Microsoft campus."
-        Sentence sentiment: Positive
-        Positive score: 1.00
-        Negative score: 0.00
-        Neutral score: 0.00
-
-        Aspect: view, Value: Positive
-                Related Opinion: great, Value: Positive
-                Related Opinion: unobstructed, Value: Positive
-
-
-Document sentiment: Negative
-
-        Text: "Nice rooms but bathrooms were old and the toilet was dirty when we arrived."
-        Sentence sentiment: Negative
-        Positive score: 0.00
-        Negative score: 1.00
-        Neutral score: 0.00
-
-        Aspect: rooms, Value: Positive
-                Related Opinion: nice, Value: Positive
-        Aspect: bathrooms, Value: Negative
-                Related Opinion: old, Value: Negative
-        Aspect: toilet, Value: Negative
-                Related Opinion: dirty, Value: Negative
-
-
-Document sentiment: Neutral
-
-        Text: "We changed rooms as the toilet smelled."
-        Sentence sentiment: Neutral
-        Positive score: 0.01
-        Negative score: 0.03
-        Neutral score: 0.96
-
-        Aspect: rooms, Value: Negative
-                Related Opinion: smelled, Value: Negative
-        Aspect: toilet, Value: Negative
-                Related Opinion: smelled, Value: Negative
+Press any key to exit.
 ```
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)

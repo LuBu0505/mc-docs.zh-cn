@@ -1,18 +1,18 @@
 ---
 title: Azure SignalR 服务中的上游设置
 description: 介绍了上游设置和上游消息的协议。
-author: chenyl
+author: WenJason
 ms.service: signalr
 ms.topic: conceptual
 origin.date: 06/11/2020
-ms.date: 12/30/2020
-ms.author: v-tawe
-ms.openlocfilehash: 4c39ce22c08aacd557cac66f3bbe17bcd5f28821
-ms.sourcegitcommit: eb742dcade404c9909d01e2570188f0bc4076992
+ms.date: 02/08/2021
+ms.author: v-jay
+ms.openlocfilehash: 51de0fd8a30f768a44f8ee7a2681be0e221fdb86
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97820257"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99504005"
 ---
 # <a name="upstream-settings"></a>上游设置
 
@@ -60,7 +60,7 @@ http://host.com/chat/api/messages/broadcast
 
 1. 添加系统分配的标识或用户分配的标识。 请参阅[如何在 Azure 门户中添加托管标识](./howto-use-managed-identity.md#add-a-system-assigned-identity)
 
-2. 在 Key Vault 的访问策略中授予对托管标识的机密读取权限。 请参阅[使用 Azure 门户分配 Key Vault 访问策略](https://docs.azure.cn/key-vault/general/assign-access-policy-portal)
+2. 在 Key Vault 的访问策略中授予对托管标识的机密读取权限。 请参阅[使用 Azure 门户分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-portal.md)
 
 3. 在上游 URL 模式中将敏感文本替换为语法 `{@Microsoft.KeyVault(SecretUri=<secret-identity>)}`。
 
@@ -75,7 +75,7 @@ http://host.com/chat/api/messages/broadcast
 - 使用完整的事件名称来匹配事件。 例如，`connected` 匹配“已连接”事件。
 
 > [!NOTE]
-> 如果使用 Azure Functions 和 [SignalR 触发器](../azure-functions/functions-bindings-signalr-service-trigger.md)，则 SignalR 触发器将按以下格式公开单个终结点：`https://<APP_NAME>.chinacloudsites.cn/runtime/webhooks/signalr?code=<API_KEY>`。
+> 如果使用 Azure Functions 和 [SignalR 触发器](../azure-functions/functions-bindings-signalr-service-trigger.md)，则 SignalR 触发器将按以下格式公开单个终结点：`<Function_App_URL>/runtime/webhooks/signalr?code=<API_KEY>`。
 > 只需为此 URL 配置“URL 模板设置”，并将“规则设置”保留为默认值 。 有关如何查找 `<Function_App_URL>` 和 `<API_KEY>` 的详细信息，请参阅 [SignalR 服务集成](../azure-functions/functions-bindings-signalr-service-trigger.md#signalr-service-integration)。
 
 ### <a name="authentication-settings"></a>身份验证设置

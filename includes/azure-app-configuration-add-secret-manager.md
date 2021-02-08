@@ -1,14 +1,35 @@
 ---
-ms.openlocfilehash: fe1d6cf0d12ad25be8bdf401037a4ad2f299298c
-ms.sourcegitcommit: a6aca2f2d1295cd5ed07e38bf9f18f8c345ba409
+ms.openlocfilehash: 8725e4d3e74db14e96886bb04c53e302dbd12529
+ms.sourcegitcommit: 7fc72b8afbdf9ad5e53922f489229e54282214b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96437392"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99541013"
 ---
 ## <a name="add-secret-manager"></a>添加机密管理器
 
 一个称为“机密管理器”的工具会存储敏感数据，以用于项目树之外的开发工作。 此方法有助于防止意外共享源代码中的应用密码。 完成以下步骤可在 ASP.NET Core 项目中启用机密管理器：
+
+#### <a name="net-5x"></a>[.NET 5.x](#tab/core5x)
+
+导航到项目的根目录，并运行以下命令以在项目中启用机密存储：
+
+```dotnetcli
+dotnet user-secrets init
+```
+
+包含 GUID 的 `UserSecretsId` 元素将添加到 .csproj 文件中：
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk.Web">
+    
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
+    </PropertyGroup>
+
+</Project>
+```
 
 #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 

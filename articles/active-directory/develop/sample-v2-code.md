@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: sample
 ms.workload: identity
-ms.date: 01/06/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6ff4bb765927dd22e9f975c976c2f8c61b1787f3
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: cb05bd250bc78549cf74c6bb5f72ad65addc4317
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022534"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540716"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft 标识平台代码示例（v2.0 终结点）
 
@@ -140,7 +140,7 @@ ms.locfileid: "98022534"
 | ![此图显示了 ASP.NET Core 徽标](./media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [dotnet-native-aspnetcore-v2](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions) 的 ASP.NET Core Web API（服务）Azure Functions  |
 | ![此图显示了 Python 徽标](./media/sample-v2-code/logo_python.png)</p>Python | [Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions) 的 Web API（服务） |
 | ![此图显示了 Node.js 徽标](./media/sample-v2-code/logo_nodejs.png)</p>Node.js | [Node.js 和 passport-azure-ad](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions) 的 Web API（服务） |
-| ![此图显示了 Node.js 徽标](./media/sample-v2-code/logo_nodejs.png)</p>NodeJS | [使用代理流的 NodeJS 和 passport-azure-ad](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions) 的 Web API（服务） |
+| ![此图显示了 Node.js 徽标](./media/sample-v2-code/logo_nodejs.png)</p>Node.js | [使用 on behalf of 的 Node.js 和 passport-azure-ad](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions) 的 Web API（服务） |
 
 ## <a name="other-microsoft-graph-samples"></a>其他 Microsoft Graph 示例
 
@@ -149,4 +149,3 @@ ms.locfileid: "98022534"
 ## <a name="see-also"></a>另请参阅
 
 [Microsoft Graph API 概念和参考](https://docs.microsoft.com/graph/use-the-api?context=graph%2fapi%2fbeta&view=graph-rest-beta&preserve-view=true)
-

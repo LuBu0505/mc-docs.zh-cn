@@ -11,13 +11,13 @@ metadata:
   ms.author: v-johya
   manager: nitinme
   ms.custom: custom-portals-hub
-  ms.date: 11/23/2020
-  ms.openlocfilehash: d6d450889811812f4ce42431fa92cd4daca4c14d
-  ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+  ms.date: 02/04/2021
+  ms.openlocfilehash: a7d2995f234ecf3b77208ada1fc910280ace0a8d
+  ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/25/2021
-  ms.locfileid: "98751285"
+  ms.lasthandoff: 02/05/2021
+  ms.locfileid: "99579503"
 highlightedContent:
   items:
   - title: 什么是认知服务？
@@ -66,7 +66,7 @@ conceptualContent:
       text: 语音服务
     - url: https://speech.microsoft.cn/
       itemType: overview
-      text: " - 通过 Speech Studio 自定义"
+      text: 通过 Speech Studio 自定义
   - title: 决策
     summary: 构建应用，用于呈现有助于做出明智和高效决策的建议。
     links:

@@ -5,17 +5,17 @@ ms.service: security
 ms.topic: conceptual
 origin.date: 06/22/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/08/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.custom: security-benchmark
-ms.openlocfilehash: 56d29a8bdd658ac7d06814aa1e1557dc12468a7b
-ms.sourcegitcommit: c987dd9e0d7aa87de933c5a915064c5ddafb8201
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 432fa21eaf5b4d73cc582de09677b65882ec45f7
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541613"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580502"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>网络观察程序的 Azure 安全基线
 
@@ -296,7 +296,7 @@ ms.locfileid: "98541613"
 
 **指导**：使用启用了 Azure AD 多重身份验证 (MFA) 的特权访问工作站 (PAW) 来登录和配置 Azure Sentinel 相关的资源。
 
-<!--Not Available on 01/14 [Privileged Access Workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)-->
+* [特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [规划基于云的 Azure AD 多重身份验证部署](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -312,7 +312,7 @@ ms.locfileid: "98541613"
 
 * [如何部署 Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-<!--Not Available on 01/14 * [Understand Azure AD risk detections](../active-directory/identity-protection/overview-identity-protection.md)-->
+<!--NOT AVAILABLE ON * [Understand Azure AD risk detections](../active-directory/identity-protection/overview-identity-protection.md)-->
 
 **Azure 安全中心监视**：是
 
@@ -360,19 +360,18 @@ ms.locfileid: "98541613"
 
 * [如何将 Azure 活动日志集成到 Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-<!--Not Available on 01/14 * [How to on-board Azure Sentinel](/sentinel/quickstart-onboard)-->
-
+<!--NOT AVAILABLE ON * [How to on-board Azure Sentinel](../sentinel/quickstart-onboard.md)-->
 **Azure 安全中心监视**：不适用
 
 **责任**：客户
 
-<!--Not Available on ### 3.12: Alert on account login behavior deviation-->
-<!--Not Available on 01/14  [How to view Azure AD risky sign-in](../active-directory/identity-protection/overview-identity-protection.md)-->
-<!--Not Available on 01/14  * [How to configure and enable Identity Protection risk policies](/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)-->
-<!--Not Available on 01/14 * [How to onboard Azure Sentinel](/sentinel/quickstart-onboard)-->
-<!--Not Available on ### 3.13: Provide Azure with access to relevant customer data during support scenarios-->
+<!--NOT AVAILABLE ON ### 3.12: Alert on account login behavior deviation-->
+<!--NOT AVAILABLE ON * [How to view Azure AD risky sign-in](../active-directory/identity-protection/overview-identity-protection.md)-->
+<!--NOT AVAILABLE ON * [How to configure and enable Identity Protection risk policies](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)-->
+<!--NOT AVAILABLE ON * [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
+<!--NOT AVAILABLE ON ### 3.13: Provide Azure with access to relevant customer data during support scenarios-->
 
-<!--Not Available on 01/14 * [List of Customer Lockbox-supported services](/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)-->
+<!--NOT AVAILABLE ON * [List of Customer Lockbox-supported services](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)-->
 
 ## <a name="data-protection"></a>数据保护
 
@@ -392,7 +391,7 @@ ms.locfileid: "98541613"
 
 **指导**：为开发、测试和生产实现单独的订阅和/或管理组。
 
-<!--Not Available on 01/14 * [How to create additional Azure subscriptions](/billing/billing-create-subscription)-->
+<!--NOT AVAILABLE ON * [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)-->
 
 * [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
@@ -554,7 +553,7 @@ ms.locfileid: "98541613"
 - 不允许的资源类型
 - 允许的资源类型
 
-<!--Not Available on * [How to create additional Azure subscriptions](/billing/billing-create-subscription)-->
+<!--NOT AVAILABLE ON * [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)-->
 
 * [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
@@ -914,7 +913,7 @@ ms.locfileid: "98541613"
 
 * [如何配置连续导出](../security-center/continuous-export.md)
 
-<!--Not Available on  01/14 [How to stream alerts into Azure Sentinel](../sentinel/connect-azure-security-center.md)-->
+<!--NOT AVAILABLE ON * [How to stream alerts into Azure Sentinel](../sentinel/connect-azure-security-center.md)-->
 
 **Azure 安全中心监视**：不适用
 
@@ -949,4 +948,4 @@ ms.locfileid: "98541613"
 - 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
 - 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

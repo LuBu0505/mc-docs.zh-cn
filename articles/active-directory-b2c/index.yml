@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: msmimart
   ms.author: v-junlch
-  ms.date: 01/18/2021
-  ms.openlocfilehash: bb40751d295cb3efb4313dd419bd1fc3c67a7236
-  ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+  ms.date: 02/01/2021
+  ms.openlocfilehash: 7f4a74b770ef22aa8e72f42f086ca7c30d2863f5
+  ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/19/2021
-  ms.locfileid: "98570537"
+  ms.lasthandoff: 02/04/2021
+  ms.locfileid: "99540631"
 landingContent:
 - title: Azure AD B2C
   linkLists:
@@ -91,7 +91,7 @@ landingContent:
       url: overview.md
     - text: 用户访问和使用条款
       url: manage-user-access.md
-- title: Operations
+- title: 操作
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -100,7 +100,7 @@ landingContent:
     - text: 适用于管理员的基于角色的访问控制
       url: ../active-directory/roles/permissions-reference.md
     - text: 用户管理
-      url: manage-user-accounts-graph-api.md
+      url: microsoft-graph-operations.md
     - text: 疑难解答
       url: troubleshoot-custom-policies.md?tabs-app-reg-ga
     - text: 最佳做法

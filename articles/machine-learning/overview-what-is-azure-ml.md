@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 origin.date: 11/04/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: b72622ba96dcdc2bd642b80ae446a8da7772a7c3
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: dc7cabfffcde4a66f2b9937e0a42835f9d3a2a0a
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98229976"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804309"
 ---
 # <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
 
@@ -25,8 +25,6 @@ Azure 机器学习可用于任何类型的机器学习，从传统 ml 到深度�
 开始在本地计算机上训练，然后横向扩展到云。 
 
 此服务还与常用的深度学习和强化学习开放源代码工具（如 PyTorch、TensorFlow、scikit-learn 和 Ray RLlib）进行互操作。 
-
-> [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
 
 > [!Tip]
 > **免费试用！**  如果没有 Azure 订阅，请在开始前创建一个试用帐户。 立即试用 [Azure 机器学习的试用版](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。 你将获得可用于 Azure 服务的赠送额度。 额度用完后，可以保留该帐户并继续使用[免费的 Azure 服务](https://azure.microsoft.com/free/)。 除非显式更改设置并要求付费，否则不会对信用卡收取任何费用。
@@ -130,7 +128,6 @@ Azure 存储帐户、计算目标和其他资源可在虚拟网络内安全地�
 - 通过首选方法创建首个试验：
 - + [在自己的开发环境开始使用](tutorial-1st-experiment-sdk-setup-local.md)
   + [在计算实例上使用 Jupyter 笔记本来训练和部署 ML 模型](tutorial-1st-experiment-sdk-setup.md)
-  + [使用 R Markdown 训练和部署 ML 模型](tutorial-1st-r-experiment.md) 
   + [使用自动化机器学习训练和部署 ML 模型](tutorial-first-experiment-automated-ml.md) 
   + [使用设计器的拖放功能进行训练和部署](tutorial-designer-automobile-price-train-score.md) 
   + [使用机器学习 CLI 训练和部署模型](tutorial-train-deploy-model-cli.md)

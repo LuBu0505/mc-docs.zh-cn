@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
-ms.date: 01/14/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: a006c2a2ada28339a6a711a841bbf5623b5fe20f
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 42ef3514b6140d7ee380c2fab2cad9613705265e
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98194986"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540702"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 应用清单
 
@@ -107,22 +107,11 @@ ms.locfileid: "98194986"
     "allowPublicClient": false,
 ```
 
-### <a name="availabletoothertenants-attribute"></a>availableToOtherTenants 属性
-
-| 键 | 值类型 |
-| :--- | :--- |
-| availableToOtherTenants | 布尔 |
-
-如果应用程序与其他租户共享，则设为 true；否则为 false。
-
-> [!NOTE]
-> 此属性仅在应用注册（旧版）体验中可用。 在[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验中替换为了 `signInAudience`。
-
 ### <a name="appid-attribute"></a>appId 属性
 
 | 键 | 值类型 |
 | :--- | :--- |
-| appId | String |
+| appId | 字符串 |
 
 指定由 Azure AD 分配给应用的应用唯一标识符。
 
@@ -134,7 +123,7 @@ ms.locfileid: "98194986"
 
 ### <a name="approles-attribute"></a>appRoles 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | appRoles | 集合 |
 
@@ -157,30 +146,19 @@ ms.locfileid: "98194986"
     ],
 ```
 
-### <a name="displayname-attribute"></a>displayName 属性
-
-| 键 | 值类型 |
-| :--- | :--- |
-| displayName | String |
-
-应用的显示名称。
-
-> [!NOTE]
-> 此属性仅在应用注册（旧版）体验中可用。 在[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验中替换为了 `name`。
-
 ### <a name="errorurl-attribute"></a>errorUrl 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| errorUrl | String |
+| errorUrl | 字符串 |
 
 不受支持。
 
 ### <a name="groupmembershipclaims-attribute"></a>groupMembershipClaims 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-|groupMembershipClaims | String |
+|groupMembershipClaims | 字符串 |
 
 配置应用所需的用户访问令牌或 OAuth 2.0 访问令牌中颁发的 `groups` 声明。 若要设置此属性，请使用以下有效的字符串值之一：
 
@@ -192,33 +170,6 @@ ms.locfileid: "98194986"
 
 ```json
     "groupMembershipClaims": "SecurityGroup",
-```
-
-### <a name="homepage-attribute"></a>homepage 属性
-
-| 键 | 值类型 |
-| :--- | :--- |
-| homepage |String |
-
-应用程序主页的 URL。
-
-> [!NOTE]
-> 此属性仅在应用注册（旧版）体验中可用。 在[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验中替换为了 `signInUrl`。
-
-### <a name="objectid-attribute"></a>objectId 属性
-
-| 键 | 值类型 |
-| :--- | :--- |
-|objectId | String |
-
-应用在目录中的唯一标识符。
-
-这仅在应用注册（旧版）体验中可用。 在[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验中替换为了 `id`。
-
-示例：
-
-```json
-    "objectId": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
 ```
 
 ### <a name="optionalclaims-attribute"></a>optionalClaims 属性
@@ -238,10 +189,9 @@ ms.locfileid: "98194986"
 ```
 
 
-
 ### <a name="identifieruris-attribute"></a>identifierUris 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | identifierUris | String Array |
 
@@ -255,9 +205,9 @@ ms.locfileid: "98194986"
 
 ### <a name="informationalurls-attribute"></a>informationalUrls 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| informationalUrls | String |
+| informationalUrls | 字符串 |
 
 指定应用服务条款和隐私声明的链接。 服务条款和隐私声明通过用户同意体验展示给用户。 有关详细信息，请参阅[如何：为已注册的 Azure AD 应用添加服务条款和隐私声明](howto-add-terms-of-service-privacy-statement.md)。
 
@@ -274,7 +224,7 @@ ms.locfileid: "98194986"
 
 ### <a name="keycredentials-attribute"></a>keyCredentials 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | keyCredentials | 集合 |
 
@@ -298,7 +248,7 @@ ms.locfileid: "98194986"
 
 ### <a name="knownclientapplications-attribute"></a>knownClientApplications 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | knownClientApplications | String Array |
 
@@ -312,9 +262,9 @@ ms.locfileid: "98194986"
 
 ### <a name="logourl-attribute"></a>logoUrl 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| logoUrl | String |
+| logoUrl | 字符串 |
 
 只读值，指向已在门户中上传的徽标的 CDN URL。
 
@@ -326,9 +276,9 @@ ms.locfileid: "98194986"
 
 ### <a name="logouturl-attribute"></a>logoutUrl 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| logoutUrl | String |
+| logoutUrl | 字符串 |
 
 用于注销应用的 URL。
 
@@ -342,7 +292,7 @@ ms.locfileid: "98194986"
 
 | 键 | 值类型 |
 | :--- | :--- |
-| name | String |
+| name | 字符串 |
 
 应用的显示名称。
 
@@ -354,11 +304,11 @@ ms.locfileid: "98194986"
 
 ### <a name="oauth2allowimplicitflow-attribute"></a>oauth2AllowImplicitFlow 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | oauth2AllowImplicitFlow | 布尔 |
 
-指定此 Web 应用是否可以请求 OAuth2.0 隐式流访问令牌。 默认值为 false。 此标志用于基于浏览器的应用，例如 Javascript 单页应用。 若要了解详细信息，请在目录中输入 `OAuth 2.0 implicit grant flow`，并查看有关隐式流的主题。
+指定此 Web 应用是否可以请求 OAuth2.0 隐式流访问令牌。 默认值为 false。 此标志用于基于浏览器的应用，例如 JavaScript 单页应用。 若要了解详细信息，请在目录中输入 `OAuth 2.0 implicit grant flow`，并查看有关隐式流的主题。
 
 示例：
 
@@ -368,7 +318,7 @@ ms.locfileid: "98194986"
 
 ### <a name="oauth2allowidtokenimplicitflow-attribute"></a>oauth2AllowIdTokenImplicitFlow 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | oauth2AllowIdTokenImplicitFlow | 布尔 |
 
@@ -407,7 +357,7 @@ ms.locfileid: "98194986"
 
 ### <a name="oauth2requiredpostresponse-attribute"></a>oauth2RequiredPostResponse 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | oauth2RequiredPostResponse | 布尔 |
 
@@ -421,9 +371,9 @@ ms.locfileid: "98194986"
 
 ### <a name="parentalcontrolsettings-attribute"></a>parentalControlSettings 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| parentalControlSettings | String |
+| parentalControlSettings | 字符串 |
 
 - `countriesBlockedForMinors` 指定禁止未成年人使用该应用的国家/地区。
 - `legalAgeGroupRule` 指定适用于应用用户的法定年龄组规则。 可设置为 `Allow`、`RequireConsentForPrivacyServices`、`RequireConsentForMinors`、`RequireConsentForKids` 或 `BlockMinors`。
@@ -439,7 +389,7 @@ ms.locfileid: "98194986"
 
 ### <a name="passwordcredentials-attribute"></a>passwordCredentials 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | passwordCredentials | 集合 |
 
@@ -461,7 +411,7 @@ ms.locfileid: "98194986"
 
 ### <a name="preauthorizedapplications-attribute"></a>preAuthorizedApplications 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | preAuthorizedApplications | 集合 |
 
@@ -480,21 +430,11 @@ ms.locfileid: "98194986"
     ],
 ```
 
-### <a name="publicclient-attribute"></a>publicClient 属性
-
-| 键 | 值类型 |
-| :--- | :--- |
-| publicClient | 布尔|
-
-指定此应用程序是否是公共客户端（例如在移动设备上运行的已安装应用程序）。
-
-此属性仅在应用注册（旧版）体验中可用。 在[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验中替换为了 `allowPublicClient`。
-
 ### <a name="publisherdomain-attribute"></a>publisherDomain 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| publisherDomain | String |
+| publisherDomain | 字符串 |
 
 应用程序的已验证发布者域。 只读。
 
@@ -502,21 +442,11 @@ ms.locfileid: "98194986"
 
 ```json
     "publisherDomain": "https://www.contoso.com",
-````
-
-### <a name="replyurls-attribute"></a>replyUrls 属性
-
-| 键 | 值类型 |
-| :--- | :--- |
-| replyUrls | 字符串数组 |
-
-此多值属性保存 Azure AD 在返回令牌时接受用作目标的已注册 redirect_uri 值列表。
-
-此属性仅在应用注册（旧版）体验中可用。 在[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验中替换为了 `replyUrlsWithType`。
+```
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | replyUrlsWithType | 集合 |
 
@@ -541,7 +471,7 @@ ms.locfileid: "98194986"
 
 ### <a name="requiredresourceaccess-attribute"></a>requiredResourceAccess 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | requiredResourceAccess | 集合 |
 
@@ -568,9 +498,9 @@ ms.locfileid: "98194986"
 
 ### <a name="samlmetadataurl-attribute"></a>samlMetadataUrl 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| samlMetadataUrl | String |
+| samlMetadataUrl | 字符串 |
 
 应用的 SAML 元数据 URL。
 
@@ -582,9 +512,9 @@ ms.locfileid: "98194986"
 
 ### <a name="signinurl-attribute"></a>signInUrl 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| signInUrl | String |
+| signInUrl | 字符串 |
 
 指定应用主页的 URL。
 
@@ -596,7 +526,7 @@ ms.locfileid: "98194986"
 
 ### <a name="signinaudience-attribute"></a>signInAudience 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | signInAudience | String |
 

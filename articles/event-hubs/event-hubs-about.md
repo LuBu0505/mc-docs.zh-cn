@@ -2,15 +2,13 @@
 title: 什么是 Azure 事件中心？ - 大数据引入服务 | Microsoft Docs
 description: 了解 Azure 事件中心 - 每秒可引入数百万个事件的大数据流式处理服务。
 ms.topic: overview
-origin.date: 06/23/2020
-ms.date: 01/14/2021
-ms.author: v-tawe
-ms.openlocfilehash: 767851ca1f1923c90e52bb5d1c4203bb2954b1b9
-ms.sourcegitcommit: 93063f9b8771b8e895c3bcdf218f5e3af14ef537
+ms.date: 01/29/2021
+ms.openlocfilehash: fe9ab936fbb90704360a888e032c65e6be095e04
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98193272"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579624"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure 事件中心 — 大数据流式处理平台和事件引入服务
 Azure 事件中心是大数据流式处理平台和事件引入服务。 它可以每秒接收和处理数百万个事件。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到事件中心的数据。
@@ -38,7 +36,7 @@ Azure 事件中心是大数据流式处理平台和事件引入服务。 它可�
 
 ## <a name="fully-managed-paas"></a>完全托管的 PaaS
 
-事件中心是完全托管的平台即服务 (PaaS)，其配置或管理开销极低，因此你可以专注于业务解决方案。 [Apache Kafka 生态系统的事件中心](event-hubs-for-kafka-ecosystem-overview.md)提供 PaaS Kafka 体验，使用户无需管理、配置或运行群集。
+事件中心是完全托管的平台即服务 (PaaS)，其配置或管理开销极低，因此你可以专注于业务解决方案。
 
 ## <a name="support-for-real-time-and-batch-processing"></a>支持实时处理和批处理
 
@@ -56,7 +54,6 @@ Azure 事件中心还能与 [Azure Functions](../azure-functions/index.yml) 集�
 
 借助基于行业标准 AMQP 1.0 协议并提供各种语言（[.NET](https://github.com/Azure/azure-sdk-for-net/)、[Java](https://github.com/Azure/azure-sdk-for-java/)、[Python](https://github.com/Azure/azure-sdk-for-python/)、[JavaScript](https://github.com/Azure/azure-sdk-for-js/)）的广泛生态系统，可以轻松地从事件中心开始处理流。 所有支持的客户端语言提供低级别集成。 该生态系统还为你提供了与 Azure 服务（如 Azure 流分析和 Azure Functions）的无缝集成，使你能够构建无服务器体系结构。
 
-[Apache Kafka 生态系统的事件中心](event-hubs-for-kafka-ecosystem-overview.md)还可让 [Apache Kafka（1.0 和更高版本）](https://kafka.apache.org/)客户端和应用程序与事件中心通信。 无需设置、配置或管理你自己的 Kafka 和 Zookeeper 群集，也不需要使用某些不属于 Azure 的 Kafka 即服务产品/服务。
 ## <a name="key-architecture-components"></a>重要的体系结构组件
 事件中心包含以下[关键组件](event-hubs-features.md)：
 

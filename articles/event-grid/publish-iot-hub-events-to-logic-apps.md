@@ -6,15 +6,15 @@ author: Johnnytechn
 ms.service: iot-hub
 ms.topic: tutorial
 origin.date: 11/21/2019
-ms.date: 12/01/2020
+ms.date: 02/04/2021
 ms.author: v-johya
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9f1db8c5392d57251c832f1bcaffc484cdb06546
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: 4426c2c8833fd2cf890806a3c54d05dbde55ee76
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432569"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579510"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>教程：使用事件网格和逻辑应用发送有关 Azure IoT 中心事件的电子邮件通知
 
@@ -233,5 +233,8 @@ ms.locfileid: "96432569"
 * [了解如何订阅设备已连接和已断开连接事件](../iot-hub/iot-hub-how-to-order-connection-state-events.md)
 * 了解[事件网格](overview.md)的其他作用。
 
-有关支持的逻辑应用连接器的完整列表，请参阅[连接器概述](/connectors/)。
+有关支持的逻辑应用连接器的完整列表，请参阅 
+
+> [!div class="nextstepaction"]
+> [连接器概述](/connectors/)。
 

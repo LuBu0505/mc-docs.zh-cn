@@ -3,17 +3,17 @@ title: 使用 ASDK 验证 Azure Stack 备份
 description: 了解如何使用 ASDK 验证 Azure Stack 集成系统备份。
 author: WenJason
 ms.topic: article
-origin.date: 07/31/2019
-ms.date: 05/18/2020
+origin.date: 1/15/2020
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.reviewer: hectorl
-ms.lastreviewed: 03/11/2020
-ms.openlocfilehash: 0bea917ef8a414bf9f723d9f6a276a1277a83ebf
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.lastreviewed: 1/15/2020
+ms.openlocfilehash: 92b19256b85e62c525043011453a9f3add186128
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422443"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503837"
 ---
 # <a name="use-the-asdk-to-validate-an-azure-stack-backup"></a>使用 ASDK 验证 Azure Stack 备份
 在部署 Azure Stack 并预配用户资源（例如套餐、计划、配额和订阅）以后，应[启用 Azure Stack 基础结构备份](../operator/azure-stack-backup-enable-backup-console.md)。 计划并运行定期基础结构备份可确保在硬件或服务出现灾难性故障时基础结构管理数据不会丢失。
@@ -31,7 +31,7 @@ Azure Stack 基础结构备份包含有关云的重要数据，这些数据可�
 |了解端到端恢复工作流。|使用 ASDK 验证整个备份和还原体验。|
 |     |     |
 
-在 ASDK 上验证备份时，以下方案**不**受支持：
+在 ASDK 上验证备份时，以下方案 **不** 受支持：
 
 |方案|目的|
 |-----|-----|
@@ -163,7 +163,7 @@ $decryptioncertpassword  = Read-Host -AsSecureString -Prompt "Password for the d
 
 ```powershell
 $decryptioncertpassword = Read-Host -AsSecureString -Prompt "Password for the decryption certificate"
-Restore-AzsBackup -ResourceId "<BackupID>" `
+Restore-AzsBackup -Name "<BackupID>" `
  -DecryptionCertPath "<path to decryption certificate with file name (.pfx)>" `
  -DecryptionCertPassword $decryptioncertpassword
 ```

@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 01/14/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: b3d094155081777588879c3676a2c397fc9ee082
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 1e7e05807ddbf72f6e36bcfe7ffa2b722a528e61
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195236"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540846"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入门：在 JavaScript SPA 中登录用户并获得访问令牌
 
@@ -37,9 +37,7 @@ ms.locfileid: "98195236"
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1（快速）：注册并自动配置应用，然后下载代码示例
 >
-> 1. 使用工作或学校帐户登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
-> 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，然后将门户会话设置为要使用的 Azure Active Directory (Azure AD) 租户。
-> 1. 转到新的 [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs)窗格。
+> 1. 转到 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入门体验。
 > 1. 输入应用程序的名称。
 > 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户”。 
 > 1. 选择“注册”  。
@@ -115,7 +113,6 @@ ms.locfileid: "98195236"
 > - \<Enter_the_Tenant_info_here> 设置为以下选项之一：
 >    - 如果应用程序支持“此组织目录中的帐户”，请将此值替换为“租户 ID”或“租户名称”（例如，*contoso.microsoft.com*）。
 >    - 如果应用程序支持“任何组织目录中的帐户”，请将此值替换为 **organizations**。
->    - 如果应用程序支持“任何组织目录中的帐户”，请将此值替换为“common”
 >
 > > [!TIP]
 > > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用的“概述”页。   
@@ -301,4 +298,3 @@ myMSALObj.acquireTokenPopup(requestObj)
 
 > [!div class="nextstepaction"]
 > [教程：从 JavaScript 单页应用程序 (SPA) 将用户登录并调用 Microsoft Graph API](tutorial-v2-javascript-spa.md)
-

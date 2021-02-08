@@ -10,14 +10,14 @@ metadata:
   ms.collection: collection
   origin.date: 09/25/2019
   author: rockboyfor
-  ms.date: 10/05/2020
+  ms.date: 02/08/2021
   ms.author: v-yeche
-  ms.openlocfilehash: 1177e6ef6d4d18c4c13965c9acc7a05ccdefd820
-  ms.sourcegitcommit: a9aa7d358cd2bef2e4e35b2b720487cb22b2c461
+  ms.openlocfilehash: aa4dba779c107392744d42f51f605996a6584de6
+  ms.sourcegitcommit: fda47fe846d47f30e65a048251402d873e416650
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/16/2020
-  ms.locfileid: "97592789"
+  ms.lasthandoff: 02/02/2021
+  ms.locfileid: "99426615"
 landingContent:
 - title: 关于 Azure 容器实例
   linkLists:

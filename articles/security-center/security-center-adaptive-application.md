@@ -12,14 +12,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 12/23/2019
-ms.date: 12/03/2020
+ms.date: 02/02/2021
 ms.author: v-johya
-ms.openlocfilehash: 130928fb62f03c154841d75b95f4c3da159c97c4
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 329b64ede092c0537c53f1d1c1f858108deb3ff6
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746928"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579485"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用自适应应用程序控制来减少计算机的攻击面
 
@@ -158,11 +158,6 @@ ms.locfileid: "96746928"
     此窗格显示组名称（可修改）、OS 类型、位置和其他相关详细信息。
 
     :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="自适应应用程序控制的“组设置”页" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
-
-    > [!IMPORTANT]
-    > 文件类型保护模式设置中的“强制”选项在所有方案中灰显 。 此时无强制选项可用。 
-    >
-    > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="文件保护的强制模式将永久灰显。无强制选项可用。":::
 
 1. （可选）修改组名称或文件类型保护模式。
 

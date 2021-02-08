@@ -2,16 +2,14 @@
 title: 可用性和一致性 - Azure 事件中心 | Microsoft Docs
 description: 如何使用分区为 Azure 事件中心提供最大程度的可用性和一致性。
 ms.topic: article
-origin.date: 06/23/2020
-ms.date: 01/05/2021
-ms.author: v-tawe
+ms.date: 01/29/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ca50969a832e216d5c37a84eb011d4dbd0dc017e
-ms.sourcegitcommit: ff20289adb80a6ab45e15fa5e196ff7af7e1c6b5
+ms.openlocfilehash: 7bf3ef49441a54c2cb55e43bd03b26d526dd5807
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97874818"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579621"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>事件中心内的可用性和一致性
 
@@ -35,7 +33,7 @@ Brewer 的定理按如下所示定义一致性和可用性：
 如果新建 [EventHubProducerClient](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient)  对象并使用 [SendAsync](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync)  方法，则事件将自动分布在事件中心的分区之间。 此行为可实现最大运行时间量。
 
 #### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft.Azure.EventHubs（4.1.0 或更早版本）](#tab/old)
-如果创建新的 **[EventHubClient](https://docs.microsoft.com/dotnetapi/microsoft.azure.eventhubs.eventhubclient)** 对象并使用 **[Send](https://docs.microsoft.com/dotnetapi/microsoft.azure.eventhubs.eventhubclient.sendasync#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** 方法，会自动在事件中心内的各个分区之间分发这些事件。 此行为可实现最大运行时间量。
+如果创建新的 **[EventHubClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** 对象并使用 **[Send](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** 方法，会自动在事件中心内的各个分区之间分发这些事件。 此行为可实现最大运行时间量。
 
 ---
 

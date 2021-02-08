@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 01/13/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: aada05dfe0fafe8c9b76edc4f17ec1376bb299a3
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: cbd31bfb17323ca567ef0bed73dba659c82e4c77
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195217"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540751"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入门：向 ASP.NET Core Web 应用添加 Microsoft 登录功能
 
@@ -38,7 +38,7 @@ ms.locfileid: "98195217"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
-> 1. 访问 [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)。
+> 1. 转到 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview/" target="_blank">Azure 门户 - 应用注册<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入门体验。
 > 1. 输入应用程序的名称并选择“注册”。
 > 1. 遵照说明下载内容，并一键式自动配置新应用程序。
 >
@@ -52,11 +52,11 @@ ms.locfileid: "98195217"
 > 1. 搜索并选择“Azure Active Directory”  。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 > 1. 输入应用程序的名称（例如 `AspNetCore-Quickstart`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
-> 1. 输入 `https://localhost:44321/` 的“重定向 URI”
+> 1. 输入 `https://localhost:44321/` 的“重定向 URI”。
 > 1. 选择“注册”  。
 > 1. 在“管理”下，选择“身份验证”。 
-> 1. 在“重定向 URI”下，选择“添加 URI”，然后输入 `https://localhost:44321/signin-oidc` 
-> 1. 输入 `https://localhost:44321/signout-oidc` 的“注销 URL”
+> 1. 在“重定向 URI”下，选择“添加 URI”，然后输入 `https://localhost:44321/signin-oidc` 。
+> 1. 输入 `https://localhost:44321/signout-oidc` 的“注销 URL”。
 > 1. 选择“隐式授权”下的“ID 令牌”。
 > 1. 选择“保存”。
 
@@ -188,4 +188,3 @@ app.UseEndpoints(endpoints =>
 
 > [!div class="nextstepaction"]
 > [GitHub 上的 ASP.NET Core Web 应用教程](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
-

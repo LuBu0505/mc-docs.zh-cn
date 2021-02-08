@@ -3,18 +3,18 @@ title: 快速入门：使用 Azure PowerShell 创建共享查询
 description: 本快速入门介绍如何使用 Azure PowerShell 创建 Resource Graph 共享查询。
 origin.date: 01/11/2021
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 02/08/2021
 ms.testscope: yes|no
 ms.testdate: 02/01/2021null
 ms.author: v-yeche
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4a85d63394db18ca0dcb3f34ab67729795a93d06
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 7d95facf7efc8966ee3b32667b49ccbdfc5703b2
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064547"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580562"
 ---
 <!--Verified successfully-->
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 Resource Graph 共享查询

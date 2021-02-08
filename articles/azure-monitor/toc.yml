@@ -256,8 +256,6 @@
               href: platform/logs-data-export.md
             - name: 使用逻辑应用进行导出
               href: platform/logs-export-logic-app.md
-            - name: 使用 Azure 数据资源管理器查询数据
-              href: platform/azure-data-explorer-query-storage.md
             - name: 发送到 Excel
               href: log-query/log-excel.md
             - name: 发送到 Power BI
@@ -363,7 +361,7 @@
               items:
                 - name: 概述
                   href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure-monitor/toc.json
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: Log Analytics VM 扩展
               displayname: 'troubleshoot, troubleshooting'
@@ -396,7 +394,7 @@
           href: platform/autoscale-virtual-machine-scale-sets.md
         - name: 使用 Webhook 和电子邮件通知
           href: platform/autoscale-webhook-email.md
-        - name: 故障排除
+        - name: 疑难解答
           href: platform/autoscale-troubleshoot.md
         - name: 资源日志架构
           href: platform/autoscale-resource-log-schema.md
@@ -612,7 +610,7 @@
                       href: app/status-monitor-v2-get-started.md
                     - name: 详细说明
                       href: app/status-monitor-v2-detailed-instructions.md
-                    - name: 故障排除
+                    - name: 疑难解答
                       href: app/status-monitor-v2-troubleshoot.md
                     - name: API 参考
                       href: app/status-monitor-v2-api-reference.md

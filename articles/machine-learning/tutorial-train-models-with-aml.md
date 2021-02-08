@@ -11,12 +11,12 @@ ms.author: sgilley
 origin.date: 03/18/2020
 ms.date: 10/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: fe137caecc5096c5eae25a40c6dfa7755984f923
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 2b5d312886e2eae71c98eced141d9261cac6d852
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021659"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804381"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>教程：使用 MNIST 数据和 scikit-learn 训练图像分类模型 
 
@@ -99,7 +99,7 @@ print(ws.name, ws.location, ws.resource_group, sep='\t')
 
 ```python
 from azureml.core import Experiment
-experiment_name = 'sklearn-mnist'
+experiment_name = 'Tutorial-sklearn-mnist'
 
 exp = Experiment(workspace=ws, name=experiment_name)
 ```

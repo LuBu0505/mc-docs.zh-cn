@@ -4,16 +4,16 @@ description: 了解 Azure Stack Hub 存储数据传输工具。
 author: WenJason
 ms.topic: conceptual
 origin.date: 11/22/2020
-ms.date: 12/07/2020
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/22/2020
-ms.openlocfilehash: 235f402be4ac97e6147aa9a221047d9a3c9278af
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: abf0a56a658e3ba1d7c4bbde91d42cb3179a22d5
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507325"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503975"
 ---
 # <a name="use-data-transfer-tools-in-azure-stack-hub-storage"></a>在 Azure Stack Hub 存储中使用数据传输工具
 
@@ -164,17 +164,17 @@ New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageAccount
 Set-AzCurrentStorageAccount -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName 
 
 # Create a new container.
-New-AzureStorageContainer -Name $ContainerName -Permission Off
+New-AzStorageContainer -Name $ContainerName -Permission Off
 
 # Upload a blob into a container.
-Set-AzureStorageBlobContent -Container $ContainerName -File $ImageToUpload
+Set-AzStorageBlobContent -Container $ContainerName -File $ImageToUpload
 
 # List all blobs in a container.
-Get-AzureStorageBlob -Container $ContainerName
+Get-AzStorageBlob -Container $ContainerName
 
 # Download blobs from the container:
 # Get a reference to a list of all blobs in a container.
-$blobs = Get-AzureStorageBlob -Container $ContainerName
+$blobs = Get-AzStorageBlob -Container $ContainerName
 
 # Create the destination directory.
 New-Item -Path $DestinationFolder -ItemType Directory -Force  

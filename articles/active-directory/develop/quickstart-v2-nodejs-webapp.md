@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 01/14/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 7d5ec76443ffdb33a8e7e738bb9435e2d361c629
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 773ddc7341f7867d9fa1a5053addce559706ee0e
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195161"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540842"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>快速入门：向 Node.js Web 应用添加使用 OpenID Connect 登录功能
 
@@ -42,7 +42,7 @@ ms.locfileid: "98195161"
 1. 选择“注册”以创建应用。
 1. 在应用的“概述”页上，找到“应用程序(客户端) ID”值，并记下该值供稍后使用。  稍后需要在此项目中使用此值来配置应用程序。
 1. 在“管理”下，选择“身份验证”。 
-1. 选择“添加平台” > “Web”  
+1. 选择“添加平台” > “Web” 。 
 1. 在“重定向 URI”部分中，输入 `http://localhost:3000/auth/openid/return`。
 1. 输入注销 URL `https://localhost:3000`。
 1. 在隐式授权部分，选中“ID 令牌”，因为该示例需要启用[隐式授权流](./v2-oauth2-implicit-grant-flow.md)才能让用户登录。
@@ -117,4 +117,3 @@ $ node app.js | bunyan
 详细了解 Microsoft 标识平台支持的 Web 应用方案：
 > [!div class="nextstepaction"]
 > [可将用户登录的 Web 应用方案](scenario-web-app-sign-user-overview.md)
-

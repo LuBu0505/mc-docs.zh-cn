@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 01/19/2021
+ms.date: 02/04/2021
 origin.date: 04/27/2020
 ms.author: v-johya
 ms.reviewer: chtufts
-ms.openlocfilehash: 7e4bb201b2f3ad399aa82bc25598f3329599342a
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: 839c08f8411c4d619fda996b75fa8de60fa22ff3
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751167"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579533"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>文本分析 API 的数据和速率限制
 <a name="data-limits"></a>
 
-使用本文查找将数据发送到文本分析 API 的大小和速率限制。 
+使用本文查找将数据发送到文本分析 API 的大小和速率限制。 请注意，定价不受数据限制或速率限制的影响。 定价受限于文本分析资源的[定价详细信息](https://www.azure.cn/pricing/details/cognitive-services/)。
 
 ## <a name="data-limits"></a>数据限制
 
@@ -86,3 +86,4 @@ ms.locfileid: "98751167"
 
 * [什么是文本分析 API](../overview.md)
 * [定价详细信息](https://www.azure.cn/pricing/details/cognitive-services/)
+

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 11/23/2020
+ms.date: 02/04/2021
 ms.author: v-johya
 ms.custom: cog-serv-seo-aug-2020
 keywords: translator, translator 服务, 翻译文本, 音译文本, 语言检测
-ms.openlocfilehash: d2253a36a9ae27eae5d66eddb5605b62f978c2dc
-ms.sourcegitcommit: f1d0f81918b8c6fca25a125c17ddb80c3a7eda7e
+ms.openlocfilehash: 95ec233ca102a44f88109602f4d76f58f446bbfb
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96306456"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579517"
 ---
 # <a name="quickstart-get-started-with-translator"></a>快速入门：Translator 入门
 
@@ -31,7 +31,7 @@ ms.locfileid: "96306456"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅 - [创建试用订阅](https://www.azure.cn/pricing/details/cognitive-services/)
+* Azure 订阅 - [创建试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)
 * 有了 Azure 订阅后，请在 Azure 门户中[创建 Translator 资源](https://portal.azure.cn/#create/Microsoft.CognitiveServicesTextTranslation)，以获取密钥和终结点。 部署后，选择”转到资源”。
   * 你需要从资源获取密钥和终结点，以便将应用程序连接到 Translator 服务。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
   * 可以使用免费定价层 (F0) 试用该服务，然后再升级到付费层进行生产。
@@ -968,7 +968,8 @@ print(json.dumps(response, sort_keys=True, ensure_ascii=False, indent=4, separat
 
 若要从 `translate` 终结点获取音译，请使用 `toScript` 参数。
 
-> ![NOTE] 有关可用语言和音译选项的完整列表，请参阅[语言支持](language-support.md)。
+> [!NOTE]
+> 有关可用语言和音译选项的完整列表，请参阅[语言支持](language-support.md)。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -1247,7 +1248,8 @@ print(json.dumps(response, sort_keys=True, ensure_ascii=False, indent=4, separat
 
 你还可以使用 `transliterate` 终结点来获取音译。 使用音译终结点时，必须提供源语言 (`language`)、源脚本/字母表 (`fromScript`) 以及输出脚本/字母表 (`toScript`) 作为参数。 在此示例中，我们将获取 สวัสดี 的音译。 
 
-> ![NOTE] 有关可用语言和音译选项的完整列表，请参阅[语言支持](language-support.md)。
+> [!NOTE]
+> 有关可用语言和音译选项的完整列表，请参阅[语言支持](language-support.md)。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -2674,7 +2676,7 @@ print(json.dumps(response, sort_keys=True, ensure_ascii=False, indent=4, separat
 
 * [了解 API 如何对字符计数](character-counts.md)
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [Translator v3 API 参考](reference/v3-0-reference.md)
 * [语言支持](language-support.md)

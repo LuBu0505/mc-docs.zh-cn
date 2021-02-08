@@ -9,16 +9,16 @@ metadata:
   ms.collection: na
   origin.date: 01/02/2020
   author: rockboyfor
-  ms.date: 01/11/2021
+  ms.date: 02/08/2021
   ms.testscope: yes
   ms.testdate: 08/24/2020
   ms.author: v-yeche
-  ms.openlocfilehash: c2b641ec584280f243225effc5e3281b8171103c
-  ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+  ms.openlocfilehash: 95bd8596bcf872bf59958b39b84dc32c4429f9b9
+  ms.sourcegitcommit: fda47fe846d47f30e65a048251402d873e416650
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/08/2021
-  ms.locfileid: "98023186"
+  ms.lasthandoff: 02/02/2021
+  ms.locfileid: "99426648"
 landingContent:
 - title: 关于托管应用程序
   linkLists:

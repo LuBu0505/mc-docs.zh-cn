@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/18/2020
+ms.date: 02/04/2021
 ms.author: v-johya
-ms.openlocfilehash: b8045d11795c040ccb49a7f0d0d5ef04622e1e79
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 471aa431ca92e100abc0f516ba6216ec81a1291b
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978105"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579633"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>在 Azure API 管理中将 Azure Function App 作为 API 导入
 
@@ -38,7 +38,7 @@ Azure API 管理支持将 Azure Function App 作为新 API 导入或将其追加
 ## <a name="prerequisites"></a>先决条件
 
 * 完成快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
-* 确保订阅中有 Azure Functions 应用。 有关详细信息，请参阅[创建 Azure Function App](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)。 它必须包含 Functions 并将 HTTP 触发器和授权级别设置设为“匿名”或“函数”。 
+* 确保订阅中有 Azure Functions 应用。 有关详细信息，请参阅[创建 Azure Function App](../azure-functions/functions-get-started.md)。 它必须包含 Functions 并将 HTTP 触发器和授权级别设置设为“匿名”或“函数”。 
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 

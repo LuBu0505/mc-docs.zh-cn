@@ -10,13 +10,13 @@ ms.topic: how-to
 author: knicholasa
 ms.author: v-junlch
 manager: martinco
-ms.date: 01/07/2021
-ms.openlocfilehash: 0f90fdfb38c2e0fa0ad014982d1dccfd1a363391
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.date: 02/02/2021
+ms.openlocfilehash: 59224662b6eefdb297d66a8827784550ce8c6ccd
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021583"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540819"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-client-applications-you-develop"></a>提高你开发的客户端应用程序中身份验证和授权的复原能力
 
@@ -24,13 +24,13 @@ ms.locfileid: "98021583"
 
 ## <a name="use-the-microsoft-authentication-library-msal"></a>使用 Microsoft 身份验证库 (MSAL)
 
-[Microsoft 身份验证库 (MSAL)](/active-directory/develop/msal-overview) 是 [Microsoft 标识平台](/active-directory/develop)的关键部分。 它简化并管理令牌的获取、管理、缓存和刷新，并使用最佳做法来实现复原能力。 MSAL 设计用来提供安全的解决方案，使开发人员无需担心实现细节。
+[Microsoft 身份验证库 (MSAL)](../develop/msal-overview.md) 是 [Microsoft 标识平台](../develop/index.yml)的关键部分。 它简化并管理令牌的获取、管理、缓存和刷新，并使用最佳做法来实现复原能力。 MSAL 设计用来提供安全的解决方案，使开发人员无需担心实现细节。
 
-MSAL 缓存令牌并使用无提示令牌获取模式。 它还会自动序列化本身提供安全存储的平台（例如 Windows UWP、iOS 和 Android）上的令牌缓存。 当使用 [Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization)、[MSAL.NET](/active-directory/develop/msal-net-token-cache-serialization)、[MSAL for Java](/active-directory/develop/msal-java-token-cache-serialization) 和 [MSAL for Python](/active-directory/develop/msal-python-token-cache-serialization) 时，开发人员可以自定义序列化行为。
+MSAL 缓存令牌并使用无提示令牌获取模式。 它还会自动序列化本身提供安全存储的平台（例如 Windows UWP、iOS 和 Android）上的令牌缓存。 当使用 [Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization)、[MSAL.NET](../develop/msal-net-token-cache-serialization.md)、[MSAL for Java](../develop/msal-java-token-cache-serialization.md) 和 [MSAL for Python](../develop/msal-python-token-cache-serialization.md) 时，开发人员可以自定义序列化行为。
 
 ![使用 MSAL 来调用 Microsoft 标识的设备和应用程序的图像](./media/resilience-client-app/resilience-with-microsoft-authentication-library.png)
 
-在使用 MSAL 时，会自动支持令牌缓存、刷新和无提示获取。 可以使用简单模式来获取新式身份验证所需的令牌。 我们支持很多语言，你可以在[示例](/active-directory/develop/sample-v2-code)页上找到与你的语言和方案相匹配的示例。
+在使用 MSAL 时，会自动支持令牌缓存、刷新和无提示获取。 可以使用简单模式来获取新式身份验证所需的令牌。 我们支持很多语言，你可以在[示例](../develop/sample-v2-code.md)页上找到与你的语言和方案相匹配的示例。
 
 ## <a name="c"></a>[C#](#tab/csharp)
 
@@ -105,7 +105,7 @@ return myMSALObj.acquireTokenSilent(request).catch(error => {
 
 ### <a name="serialize-and-persist-tokens"></a>将令牌序列化和持久化
 
-应用会安全地序列化其令牌缓存，以便在应用实例之间持久保存令牌。 令牌在其有效生存期内可以重复使用。 [刷新令牌](/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token)，[访问令牌](/active-directory/develop/access-tokens)在颁发后就可以使用越来越长的时间。 在此有效时间内还允许用户多次启动你的应用程序。 当应用启动时，它会检查是否存在可以使用的有效访问令牌或刷新令牌。 这会增加应用的复原能力和性能，因为这可以避免任何不必要的 Microsoft 标识调用。
+应用会安全地序列化其令牌缓存，以便在应用实例之间持久保存令牌。 令牌在其有效生存期内可以重复使用。 [刷新令牌](../develop/v2-oauth2-auth-code-flow.md#refresh-the-access-token)，[访问令牌](../develop/access-tokens.md)在颁发后就可以使用越来越长的时间。 在此有效时间内还允许用户多次启动你的应用程序。 当应用启动时，它会检查是否存在可以使用的有效访问令牌或刷新令牌。 这会增加应用的复原能力和性能，因为这可以避免任何不必要的 Microsoft 标识调用。
 
 ![应用程序调用 Microsoft 标识，但该调用会通过运行此应用程序的设备上的令牌缓存和令牌存储来进行](./media/resilience-client-app/token-store.png)
 
@@ -136,14 +136,14 @@ return myMSALObj.acquireTokenSilent(request).catch(error => {
 
 ### <a name="tokens"></a>令牌
 
-标识 (ID) 令牌和访问令牌包含标准声明，这些声明提供关于主题的信息。 [Microsoft 标识平台 ID 令牌](/active-directory/develop/id-tokens)和 [Microsoft 标识平台访问令牌](/active-directory/develop/access-tokens)中介绍了这些令牌。 如果你的应用需要的信息已在令牌中，则检索该数据的最有效方法是使用令牌声明，因为这样不需要单独检索该信息，从而节省额外网络调用的开销。 网络调用越少意味着应用程序的总体复原能力越高。
+标识 (ID) 令牌和访问令牌包含标准声明，这些声明提供关于主题的信息。 [Microsoft 标识平台 ID 令牌](../develop/id-tokens.md)和 [Microsoft 标识平台访问令牌](../develop/access-tokens.md)中介绍了这些令牌。 如果你的应用需要的信息已在令牌中，则检索该数据的最有效方法是使用令牌声明，因为这样不需要单独检索该信息，从而节省额外网络调用的开销。 网络调用越少意味着应用程序的总体复原能力越高。
 
 > [!NOTE]
 > 某些应用程序调用 UserInfo 终结点来检索关于已进行身份验证的用户的声明。 应用可以接收的 ID 令牌中提供的信息是它可以从 UserInfo 终结点获取的信息的超集。 你的应用应使用 ID 令牌来获取关于用户的信息，而不是调用 UserInfo 终结点。
 
-应用开发人员可以使用[可选声明](/active-directory/develop/active-directory-optional-claims)来补充标准令牌声明。 一个常见的可选声明是 [groups](/active-directory/develop/active-directory-optional-claims#configuring-groups-optional-claims)。 可以通过若干种方式来添加组声明。 “ApplicationGroup”选项仅包括分配给应用程序的组。 “All”或“SecurityGroup”选项包括同一租户的所有应用中的组，这些选项可用来向令牌中添加许多组。 请务必在你的案例中评估影响，因为它可能导致令牌膨胀甚至需要额外的调用来获取组的完整列表，从而可能抵消通过在令牌中请求组而提高的效率。
+应用开发人员可以使用[可选声明](../develop/active-directory-optional-claims.md)来补充标准令牌声明。 一个常见的可选声明是 [groups](../develop/active-directory-optional-claims.md#configuring-groups-optional-claims)。 可以通过若干种方式来添加组声明。 “ApplicationGroup”选项仅包括分配给应用程序的组。 “All”或“SecurityGroup”选项包括同一租户的所有应用中的组，这些选项可用来向令牌中添加许多组。 请务必在你的案例中评估影响，因为它可能导致令牌膨胀甚至需要额外的调用来获取组的完整列表，从而可能抵消通过在令牌中请求组而提高的效率。
 
-你可以不在令牌中使用组，而是改为使用并包括应用角色。 开发人员可以为其应用和 API 定义[应用角色](/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)，客户可以使用门户或 API 从其目录管理这些角色。 然后，IT 专业人员可以将角色分配给不同的用户和组，以便控制特定用户对特定内容和功能的访问。 当为应用程序或 API 颁发令牌时，分配给用户的角色将出现在令牌的角色声明中。 直接在令牌中获取此信息可避免额外的 API 调用。
+你可以不在令牌中使用组，而是改为使用并包括应用角色。 开发人员可以为其应用和 API 定义[应用角色](../develop/howto-add-app-roles-in-azure-ad-apps.md)，客户可以使用门户或 API 从其目录管理这些角色。 然后，IT 专业人员可以将角色分配给不同的用户和组，以便控制特定用户对特定内容和功能的访问。 当为应用程序或 API 颁发令牌时，分配给用户的角色将出现在令牌的角色声明中。 直接在令牌中获取此信息可避免额外的 API 调用。
 
 最后，IT 管理员还可以基于租户中的特定信息添加声明。 例如，可以让企业的一个扩展使用特定于企业的用户 ID。
 
@@ -169,7 +169,7 @@ MSAL 自动支持代理身份验证。
 
 ## <a name="adopt-continuous-access-evaluation"></a>采用连续访问评估
 
-[连续访问评估 (CAE)](/active-directory/conditional-access/concept-continuous-access-evaluation) 是最新开发的一项功能，它可以使用长期生存的令牌提高应用程序的安全性和复原能力。 CAE 是在 OpenID Foundation 的共享信号和事件工作组中开发的新兴行业标准。 使用 CAE，可以根据[严重事件](/active-directory/conditional-access/concept-continuous-access-evaluation#critical-event-evaluation)和[策略评估](/active-directory/conditional-access/concept-continuous-access-evaluation#conditional-access-policy-evaluation-preview)而不是依赖令牌生存期短的特性来撤销访问令牌。 对于某些资源 API，由于风险和策略是实时评估的，因此 CAE 实际上可以将令牌生存期提高到最多 28 小时。 当资源 API 和应用程序采用 CAE 时，Microsoft 标识将能够颁发可撤销并在长时间内有效的访问令牌。 MSAL 会主动刷新这些生存期长的令牌。
+[连续访问评估 (CAE)](../conditional-access/concept-continuous-access-evaluation.md) 是最新开发的一项功能，它可以使用长期生存的令牌提高应用程序的安全性和复原能力。 CAE 是在 OpenID Foundation 的共享信号和事件工作组中开发的新兴行业标准。 使用 CAE，可以根据[严重事件](../conditional-access/concept-continuous-access-evaluation.md#critical-event-evaluation)和[策略评估](../conditional-access/concept-continuous-access-evaluation.md#conditional-access-policy-evaluation-preview)而不是依赖令牌生存期短的特性来撤销访问令牌。 对于某些资源 API，由于风险和策略是实时评估的，因此 CAE 实际上可以将令牌生存期提高到最多 28 小时。 当资源 API 和应用程序采用 CAE 时，Microsoft 标识将能够颁发可撤销并在长时间内有效的访问令牌。 MSAL 会主动刷新这些生存期长的令牌。
 
 尽管 CAE 处于早期阶段，但目前可以[开发将从 CAE 受益的客户端应用程序](../develop/app-resilience-continuous-access-evaluation.md)，前提是应用程序使用的资源 (API) 采用 CAE。 随着越来越多的资源采用 CAE，应用程序也将能够为这些资源获取启用了 CAE 的令牌。 Microsoft Graph API 和 [Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview) 将在 2021 年初提供 CAE 功能预览版。 如果你想参与包含 CAE 的 Microsoft Graph 的公共预览版，可以在此处告知我们你感兴趣：[https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwl2bVHBxhlMhvLc-sgAWPdUOUpRMDAyWExSWjhEQ0NVV1IyNjBWSFc4Ui4u](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwl2bVHBxhlMhvLc-sgAWPdUOUpRMDAyWExSWjhEQ0NVV1IyNjBWSFc4Ui4u)。
 
@@ -181,4 +181,3 @@ MSAL 自动支持代理身份验证。
 - [为守护程序应用程序构建复原能力](resilience-daemon-app.md)
 - [在标识和访问管理基础结构中构建复原能力](resilience-in-infrastructure.md)
 - [在 CIAM 系统中构建复原能力](resilience-b2c.md)
-

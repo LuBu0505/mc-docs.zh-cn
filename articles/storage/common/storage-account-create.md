@@ -7,16 +7,16 @@ author: WenJason
 ms.service: storage
 ms.topic: how-to
 origin.date: 12/11/2020
-ms.date: 01/18/2021
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 9e3895b0fa3a5bf723867fa2fd63bcba29a8fb44
-ms.sourcegitcommit: f086abe8bd2770ed10a4842fa0c78b68dbcdf771
+ms.openlocfilehash: 645396ac3c1cdcb55aecdf9cfc64960e71d1cad2
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98163201"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99504007"
 ---
 # <a name="create-a-storage-account"></a>创建存储帐户
 
@@ -195,7 +195,7 @@ read resourceGroupName &&
 echo "Enter the location (i.e. centralus):" &&
 read location &&
 az group create --name $resourceGroupName --location "$location" &&
-az deployment group create --resource-group $resourceGroupName --template-file "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
+az deployment group create --resource-group $resourceGroupName --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 ```
 
 > [!NOTE]

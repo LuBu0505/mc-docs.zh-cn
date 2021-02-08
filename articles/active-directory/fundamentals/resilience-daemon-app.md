@@ -10,13 +10,13 @@ ms.topic: how-to
 author: knicholasa
 ms.author: v-junlch
 manager: martinco
-ms.date: 12/02/2020
-ms.openlocfilehash: a40742b386b7909c4cac4241e9efc44ad5e4465a
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.date: 02/02/2021
+ms.openlocfilehash: 4518f28dda3437837452ea2856eb86d75ec78712
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004302"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540814"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-daemon-applications-you-develop"></a>提高你开发的守护程序应用程序中身份验证和授权的复原能力
 
@@ -26,7 +26,7 @@ ms.locfileid: "97004302"
 
 ## <a name="use-managed-identities-for-azure-resources"></a>使用 Azure 资源的托管标识
 
-在 Azure 上构建守护程序应用的开发人员可以使用 [Azure 资源的托管标识](/active-directory/managed-identities-azure-resources/overview)。 托管标识使开发人员无需管理机密和凭据。 通过避免在证书过期、轮换或信任方面出现错误，此功能提高了复原能力。 它还具有一些专门用于提高复原能力的内置功能。
+在 Azure 上构建守护程序应用的开发人员可以使用 [Azure 资源的托管标识](../managed-identities-azure-resources/overview.md)。 托管标识使开发人员无需管理机密和凭据。 通过避免在证书过期、轮换或信任方面出现错误，此功能提高了复原能力。 它还具有一些专门用于提高复原能力的内置功能。
 
 托管标识使用生存期较长的访问令牌和 Microsoft 标识中的信息，在现有令牌过期之前的较大时间范围内主动获取新令牌。 尝试获取新令牌时，应用可以继续运行。
 
@@ -34,11 +34,11 @@ ms.locfileid: "97004302"
 
 ## <a name="use-the-microsoft-authentication-library"></a>使用 Microsoft 身份验证库
 
-不使用托管标识的守护程序应用开发人员可以使用 [Microsoft 身份验证库 (MSAL)](/active-directory/develop/msal-overview)，该库使得实现身份验证和授权变得简单，并会自动使用用于复原的最佳做法。 MSAL 将使提供所需客户端凭据的过程变得更简单。 例如，在使用基于证书的凭据时，应用程序不需要实现创建 JSON Web 令牌断言以及对其进行签名。
+不使用托管标识的守护程序应用开发人员可以使用 [Microsoft 身份验证库 (MSAL)](../develop/msal-overview.md)，该库使得实现身份验证和授权变得简单，并会自动使用用于复原的最佳做法。 MSAL 将使提供所需客户端凭据的过程变得更简单。 例如，在使用基于证书的凭据时，应用程序不需要实现创建 JSON Web 令牌断言以及对其进行签名。
 
 ### <a name="use-microsoftidentityweb-for-net-developers"></a>使用面向 .NET 开发人员的 Microsoft.Identity.Web
 
-在 ASP.NET Core 上构建守护程序应用的开发人员可以使用 [Microsoft.Identity.Web](/active-directory/develop/microsoft-identity-web) 库。 此库在 MSAL 的基础上构建，使得为 ASP.NET Core 应用实现授权更加容易。 它包括了多个[分布式令牌缓存](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization#distributed-token-cache)策略，以用于可在多个区域运行的分布式应用。
+在 ASP.NET Core 上构建守护程序应用的开发人员可以使用 [Microsoft.Identity.Web](../develop/microsoft-identity-web.md) 库。 此库在 MSAL 的基础上构建，使得为 ASP.NET Core 应用实现授权更加容易。 它包括了多个[分布式令牌缓存](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization#distributed-token-cache)策略，以用于可在多个区域运行的分布式应用。
 
 ## <a name="cache-and-store-tokens"></a>缓存和存储令牌
 
@@ -59,4 +59,3 @@ ms.locfileid: "97004302"
 - [在将用户登录的应用程序中构建复原能力](resilience-client-app.md)
 - [在标识和访问管理基础结构中构建复原能力](resilience-in-infrastructure.md)
 - [在 CIAM 系统中构建复原能力](resilience-b2c.md)
-

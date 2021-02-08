@@ -4,17 +4,17 @@ description: 了解如何从 Azure 下载市场项并发布到 Azure Stack Hub�
 author: WenJason
 ms.topic: conceptual
 origin.date: 12/16/2020
-ms.date: 01/11/2021
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.reviewer: avishwan
 ms.lastreviewed: 12/16/2020
 zone_pivot_groups: state-connected-disconnected
-ms.openlocfilehash: 5a434df2e681bf55417c85c9e00c49d556b20575
-ms.sourcegitcommit: 3f54ab515b784c9973eb00a5c9b4afbf28a930a9
+ms.openlocfilehash: 2192fddda311a7b9b6ef6fc4eb290d49b9944e85
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894456"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99504001"
 ---
 # <a name="download-marketplace-items-to-azure-stack-hub"></a>将市场项下载到 Azure Stack Hub
 
@@ -128,7 +128,7 @@ Azure Stack Hub 受限或未建立 Internet 连接时，可以使用 PowerShell 
    系统会提示输入 Azure 帐户凭据。根据帐户的配置，可能需要使用双因素身份验证。
 
    > [!NOTE]
-   > 如果会话过期、密码已更改或你需要切换帐户，请在使用 `Add-AzRmAccount` 登录之前先运行以下 cmdlet：`RemoveAzAccount -Scope Process`。
+   > 如果会话过期、密码已更改或你需要切换帐户，请在使用 `Add-AzAccount` 登录之前先运行以下 cmdlet：`Remove-AzAccount -Scope Process`。
 
 3. 如果有多个订阅，请运行以下命令，以选择已用于注册的订阅：
 
@@ -187,7 +187,7 @@ Azure Stack Hub 受限或未建立 Internet 连接时，可以使用 PowerShell 
 
 1. 在已建立 Internet 连接的计算机上，以管理员身份打开 PowerShell 控制台。
 
-2. 使用已用于注册 Azure Stack Hub 的 Azure 帐户登录到相应的 Azure 云和 AzureAD 目录租户。 若要添加该帐户，请在 PowerShell 中运行 `Add-AzureRmAccount`：
+2. 使用已用于注册 Azure Stack Hub 的 Azure 帐户登录到相应的 Azure 云和 AzureAD 目录租户。 若要添加该帐户，请在 PowerShell 中运行 `Add-AzureRMAccount`：
 
    ```powershell  
    Login-AzureRMAccount -Environment AzureChinaCloud -Tenant '<mydirectory>.partner.onmschina.cn'
@@ -196,7 +196,7 @@ Azure Stack Hub 受限或未建立 Internet 连接时，可以使用 PowerShell 
    系统会提示输入 Azure 帐户凭据。根据帐户的配置，可能需要使用双因素身份验证。
 
    > [!NOTE]
-   > 如果会话过期、密码已更改或你需要切换帐户，请在使用 `Add-AzureRmAccount` 登录之前先运行以下 cmdlet：`RemoveAzAccount -Scope Process`。
+   > 如果会话过期、密码已更改或你需要切换帐户，请在使用 `Add-AzureRMAccount` 登录之前先运行以下 cmdlet：`Remove-AzureRMAccount -Scope Process`。
 
 3. 如果有多个订阅，请运行以下命令，以选择已用于注册的订阅：
 
@@ -213,7 +213,7 @@ Azure Stack Hub 受限或未建立 Internet 连接时，可以使用 PowerShell 
 5. 若要选择要下载的市场项（如 VM 映像、扩展或解决方案模板），请运行以下命令：
 
    ```powershell
-   $products = Select-AzureRMsMarketplaceItem
+   $products = Select-AzsMarketplaceItem
    ```
 
    随后会显示一个表格，其中列出了所选订阅中可用的所有 Azure Stack 注册。 选择与要下载其市场项的 Azure Stack 环境相匹配的注册，然后选择“确定”。

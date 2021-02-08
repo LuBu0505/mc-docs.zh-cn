@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.author: v-junlch
-ms.date: 01/14/2021
+ms.date: 02/01/2021
 ms.custom: mvc
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 69c252f1869f20bf0aa6b0a9faed90c8d86b048f
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: 7f634b62818a7106f3c4bb25e4acb1f124fb262c
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570905"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540641"
 ---
 # <a name="add-an-identity-provider-to-your-azure-active-directory-b2c-tenant"></a>向 Azure Active Directory B2C 租户添加标识提供者
 
@@ -34,6 +34,7 @@ ms.locfileid: "98570905"
 * [AD FS](identity-provider-adfs.md)
 * [Azure AD（单租户）](identity-provider-azure-ad-single-tenant.md)
 * [Azure AD（多租户）](identity-provider-azure-ad-multi-tenant.md)
+* [Azure AD B2C](identity-provider-azure-ad-b2c.md)
 * [一般标识提供者](identity-provider-generic-openid-connect.md)
 * [GitHub](identity-provider-github.md)
 * [ID.me](identity-provider-id-me.md)
@@ -42,4 +43,3 @@ ms.locfileid: "98570905"
 * [Salesforce（SAML 协议）](identity-provider-salesforce-saml.md)
 * [微信](identity-provider-wechat.md)
 * [微博](identity-provider-weibo.md)
-

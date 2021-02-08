@@ -5,14 +5,14 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
 origin.date: 05/19/2020
-ms.date: 12/28/2020
+ms.date: 02/04/2021
 ms.author: v-johya
-ms.openlocfilehash: 487668e5f279559293ce2b0b8054df9ac8ab7ad4
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: e5471be060d9ad87230df655c1d872d2eab308e2
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751329"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579630"
 ---
 # <a name="whats-new-in-language-understanding"></a>语言理解中的新增功能
 
@@ -23,6 +23,7 @@ ms.locfileid: "98751329"
 ### <a name="december-2020"></a>2020 年 12 月
 
 * 所有 LUIS 用户都必须[迁移到 LUIS 创作资源](luis-migration-authoring.md)
+* 新的[评估终结点](luis-how-to-batch-test.md#batch-testing-using-the-rest-api)，你可通过它们使用 REST API 提交批处理测试，并获得意向和实体的准确性结果。 随 v3.0-preview LUIS 终结点开始提供。
 
 ### <a name="june-2020"></a>2020 年 6 月
 

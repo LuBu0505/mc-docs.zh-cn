@@ -10,14 +10,14 @@ metadata:
   ms.topic: landing-page
   author: MicrosoftGuyJFlo
   ms.author: v-junlch
-  ms.date: 01/05/2021
+  ms.date: 02/04/2021
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 54bfdb841a5a43abf66b8935691520d03018ec62
-  ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+  ms.openlocfilehash: 91c9d079da3ef5d4d6ce1b0ebf510244e31380d6
+  ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/08/2021
-  ms.locfileid: "98023745"
+  ms.lasthandoff: 02/04/2021
+  ms.locfileid: "99540590"
 landingContent:
 - title: 关于设备标识
   linkLists:
@@ -25,6 +25,8 @@ landingContent:
     links:
     - text: 什么是设备标识？
       url: overview.md
+    - text: 规划 Azure AD 设备部署
+      url: plan-device-deployment.md
   - linkListType: concept
     links:
     - text: Azure AD 注册设备

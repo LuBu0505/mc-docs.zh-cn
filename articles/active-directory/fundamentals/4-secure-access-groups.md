@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 01/05/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48cc0f9f92369bd899b82ce282e2eb1192e8fe0f
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: ca158aa42f18a7fa29009b1ee456cde8caa13f21
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023848"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540722"
 ---
 # <a name="securing-external-access-with-groups"></a>使用组保护外部访问 
 
@@ -50,7 +50,7 @@ ms.locfileid: "98023848"
 
       * 你可[限制非管理员对门户的访问权限](../develop/howto-restrict-your-app-to-a-set-of-users.md)，并在 [PowerShell](../enterprise-users/groups-troubleshooting.md) 中禁用组创建功能。 
 
-      * 还可[在 Azure Active Directory 中设置自助服务组管理](../users-groups-roles/groups-self-service-management.md)。 
+      * 还可[在 Azure Active Directory 中设置自助服务组管理](../enterprise-users/groups-self-service-management.md)。 
 
    * 默认情况下，所有用户均可创建 M365 组，并且组对租户中的所有（内部和外部）用户开放，以便加入。 
 
@@ -117,7 +117,7 @@ Azure AD 安全组和 Microsoft 365 组均可从 Azure AD 门户或 M365 管理�
 
 ## <a name="azure-ad-security-groups"></a>Azure AD 安全组 
 
-[Azure AD 安全组](/active-directory/fundamentals/active-directory-manage-groups)可以包含用户或设备，并可用于管理对 Azure 资源的访问权限， 
+[Azure AD 安全组](./active-directory-manage-groups.md)可以包含用户或设备，并可用于管理对 Azure 资源的访问权限， 
 
 * 例如 Microsoft 365 应用、自定义应用和软件即服务 (SaaS) 应用（如 Dropbox 的 ServiceNow）。
 
@@ -127,11 +127,11 @@ Azure AD 安全组和 Microsoft 365 组均可从 Azure AD 门户或 M365 管理�
 
 Azure AD 安全组还可用于：
 
-* 为 M365、Dynamics 365 和企业移动性和安全性等服务分配许可证。 有关详细信息，请参阅[基于组的许可](/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal)。
+* 为 M365、Dynamics 365 和企业移动性和安全性等服务分配许可证。 有关详细信息，请参阅[基于组的许可](./active-directory-licensing-whatis-azure-portal.md)。
 
-* 分配提升的权限。 有关详细信息，请参阅[使用云组来管理角色分配（预览版）](/active-directory/users-groups-roles/roles-groups-concept)。 
+* 分配提升的权限。 有关详细信息，请参阅[使用云组来管理角色分配（预览版）](../roles/groups-concept.md)。 
 
-若要[在 Azure 门户中](/active-directory/fundamentals/active-directory-groups-create-azure-portal)创建组，请导航到 Azure Active Directory，然后转到“组”。 还可使用 [PowerShell cmdlet](/active-directory/users-groups-roles/groups-settings-v2-cmdlets) 创建 Azure AD 安全组。 
+若要[在 Azure 门户中](./active-directory-groups-create-azure-portal.md)创建组，请导航到 Azure Active Directory，然后转到“组”。 还可使用 [PowerShell cmdlet](../enterprise-users/groups-settings-v2-cmdlets.md) 创建 Azure AD 安全组。 
 
 > [!NOTE]
 > 一个安全组可用于分配多达 1500 个应用程序，但不能超过此数量。 
@@ -146,7 +146,7 @@ Azure AD 安全组还可用于：
 
 混合组织同时具有本地基础结构和 Azure AD 云基础结构。 许多使用 Active Directory 的混合组织在本地创建安全组，并将其同步到云。 使用此方法时，只能将本地环境中的用户添加到安全组。
 
-保护本地基础结构免遭破坏，因为本地安全漏洞可被利用以访问你的 Microsoft 365 租户。 有关指导，请参阅[保护 Microsoft 365 免受本地攻击](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/protecting-microsoft-365-from-on-premises-attacks/ba-p/1751754)。
+保护本地基础结构免遭破坏，因为本地安全漏洞可被利用以访问你的 Microsoft 365 租户。 
 
 ## <a name="microsoft-365-groups"></a>Microsoft 365 组
 
@@ -176,7 +176,7 @@ M365 组在角色方面有以下细微差别
 
 1. [确定外部访问所需的安全状况](1-secure-access-posture.md)
 
-2. [了解当前状态](2-secure-access-current-state.md)
+2. [了解当前状况](2-secure-access-current-state.md)
 
 3. [创建治理计划](3-secure-access-plan.md)
 
@@ -191,4 +191,3 @@ M365 组在角色方面有以下细微差别
 8. [通过敏感度标签实现安全访问](8-secure-access-sensitivity-labels.md)
 
 9. [实现对 Microsoft Teams、OneDrive 和 SharePoint 的安全访问](9-secure-access-teams-sharepoint.md)
-

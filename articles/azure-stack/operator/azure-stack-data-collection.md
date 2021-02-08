@@ -4,16 +4,16 @@ description: 了解 Azure Stack Hub 如何收集客户数据和信息。
 author: WenJason
 ms.topic: article
 origin.date: 02/24/2020
-ms.date: 08/31/2020
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.reviewer: chengwei
 ms.lastreviewed: 02/24/2020
-ms.openlocfilehash: 49eece60454955f78b5c76ece80b701c0945aa99
-ms.sourcegitcommit: 4e2d781466e54e228fd1dbb3c0b80a1564c2bf7b
+ms.openlocfilehash: 24d139d1e30ef7e9ffd76b7a32e4bca48e40f1e5
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88868076"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99504000"
 ---
 # <a name="azure-stack-hub-log-and-customer-data-handling"></a>Azure Stack Hub 日志和客户数据处理 
 
@@ -22,7 +22,7 @@ ms.locfileid: "88868076"
 - [联机服务条款](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)的“数据保护条款”部分中的“个人数据的处理；GDPR”条款。
 - [联机服务条款](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)附件 4 中的“欧盟一般数据保护条例条款”。
 
-由于 Azure Stack Hub 驻留在客户数据中心，因此，对于通过[诊断](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002)和[遥测](azure-stack-telemetry.md)与 Azure 共享的数据，Azure 是唯一的数据控制方。  
+由于 Azure Stack Hub 驻留在客户数据中心，因此，对于通过[诊断](./diagnostic-log-collection.md)和[遥测](azure-stack-telemetry.md)与 Azure 共享的数据，Azure 是唯一的数据控制方。  
 
 ## <a name="data-access-controls"></a>数据访问控制 
 Azure 员工受派调查特定的支持案例时，将获得加密数据的只读访问权限。 如果需要，Azure 员工还有权访问用于删除数据的工具。 对客户数据的所有访问都会受到审核和记录。  
@@ -42,7 +42,7 @@ Azure 根据客户请求提供按需删除数据的支持。 客户可以请求�
 对于按需删除数据操作，Azure 支持工程师有权访问相应的工具进行按需数据删除。 他们可以在完成删除后通过电话向客户提供确认。
 
 ## <a name="diagnostic-data"></a>诊断数据
-在支持过程中，Azure Stack Hub 操作员可与 Azure Stack Hub 支持和工程团队[共享诊断日志](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002)，以方便进行故障排除。
+在支持过程中，Azure Stack Hub 操作员可与 Azure Stack Hub 支持和工程团队[共享诊断日志](./diagnostic-log-collection.md)，以方便进行故障排除。
 
 Azure 为客户提供所需的工具和脚本用于收集及上传请求的诊断日志文件。 收集日志文件后，这些文件将通过 HTTPS 保护的加密连接发送到 Azure。 由于 HTTPS 提供在线加密，因此传输中加密无需密码。 Azure 收到日志后，会加密并存储日志，在关闭支持案例 90 天后自动将其删除。
 
@@ -52,4 +52,4 @@ Azure 为客户提供所需的工具和脚本用于收集及上传请求的诊�
 Azure 无意收集敏感数据，例如信用卡号、用户名和密码、电子邮件地址等。 如果我们确定敏感信息是无意中收集到的，我们会予以删除。
 
 ## <a name="next-steps"></a>后续步骤 
-[详细了解 Azure Stack Hub 安全性](azure-stack-security-foundations.md) 
+[详细了解 Azure Stack Hub 安全性](azure-stack-security-foundations.md)

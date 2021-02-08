@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 02/04/2021
 ms.author: v-junlch
 author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25e2d4fef794af49a9fb55dd72b2a3d6263586ab
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 9b1beebc94174c1b25dcac30cda66c7b73b04ed6
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195020"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540762"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>计划条件访问部署
 
@@ -209,13 +209,6 @@ Microsoft 提供了标准的条件策略（称为[安全默认值](../fundamenta
 
 * 创建专用于策略管理并从所有策略中排除的用户帐户。
 
-* 混合环境的不受限方案：
-
-  * 创建一个本地安全组，并将其同步到 Azure AD。 安全组应包含专用的策略管理帐户。 
-
-   * 在所有条件访问策略中豁免此安全组。
-
-   * 发生服务中断时，请根据需要将其他管理员添加到本地组，并强制执行同步。这会激活其条件访问策略豁免。
 
 ### <a name="plan-for-disruption"></a>为应对中断做好计划
 
@@ -443,5 +436,4 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 
 [详细了解多重身份验证](../authentication/concept-mfa-howitworks.md)
 
-[使用 Microsoft Graph API 管理条件访问策略](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)
-
+[使用 Microsoft Graph API 管理条件访问策略](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy)

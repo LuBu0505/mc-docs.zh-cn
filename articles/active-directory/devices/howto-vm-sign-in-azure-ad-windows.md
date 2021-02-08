@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 02/04/2021
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cb36889956f986c2f8682664003a96f25c8291f
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: a71be415f4533ebb33ee262287a7dd4c5a214932
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023760"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540727"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Windows 虚拟机
 
@@ -329,7 +329,7 @@ AADLoginForWindows 扩展必须成功安装，VM 才能完成 Azure AD 联接过
 请验证是否已为授予用户虚拟机管理员登录或虚拟机用户登录角色的 VM 配置 Azure RBAC 策略：
 
 > [!NOTE]
-> 如果在 Azure 角色分配方面遇到问题，请参阅[排查 Azure RBAC 的问题](/role-based-access-control/troubleshooting#azure-role-assignments-limit)。
+> 如果在 Azure 角色分配方面遇到问题，请参阅[排查 Azure RBAC 的问题](../../role-based-access-control/troubleshooting.md#azure-role-assignments-limit)。
  
 #### <a name="unauthorized-client"></a>未经授权的客户端
 
@@ -368,4 +368,3 @@ AADLoginForWindows 扩展必须成功安装，VM 才能完成 Azure AD 联接过
 ## <a name="next-steps"></a>后续步骤
 
 有关 Azure Active Directory 的详细信息，请参阅[什么是 Azure Active Directory](../fundamentals/active-directory-whatis.md)
-

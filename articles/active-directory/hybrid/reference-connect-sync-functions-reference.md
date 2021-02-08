@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/08/2021
+ms.date: 02/04/2021
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88d9e90143fbda2db74e317006f1c5e7b52d0f59
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: d68b1ba93411f65c2e1befa2d3baee3fe1d880ab
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021755"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540856"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同步：函数引用
 在 Azure AD Connect 中，函数用于在同步期间操作属性值。  
@@ -664,7 +664,7 @@ FormatDateTime 函数用于为具有指定格式的字符串设置 DateTime 格�
 
 **示例：**  
 
-`FormatDateTime(CDate("12/25/2007"),"yyyy-mm-dd")`  
+`FormatDateTime(CDate("12/25/2007"),"yyyy-MM-dd")`  
 结果是 "2007-12-25"。
 
 `FormatDateTime(DateFromNum([pwdLastSet]),"yyyyMMddHHmmss.0Z")`  
@@ -1397,4 +1397,3 @@ UCase 函数将字符串中的所有字符都转换为大写形式。
 * [了解声明性预配表达式](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)
 * [Azure AD Connect 同步：自定义同步选项](how-to-connect-sync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
-

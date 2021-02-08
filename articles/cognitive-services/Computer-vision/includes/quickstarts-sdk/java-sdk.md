@@ -7,15 +7,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: include
-ms.date: 12/28/2020
+ms.date: 02/04/2021
 ms.custom: devx-track-java
 ms.author: v-johya
-ms.openlocfilehash: 4fac57638077c6fa9c992dcfd58f91ea2223d2bb
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 910aeec6c02a1426cdf3b354b37fed3dca4fb9dd
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856832"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579766"
 ---
 <a name="HOLTop"></a>
 
@@ -1164,7 +1164,7 @@ public class ComputerVisionQuickstart {
 
 
 > [!IMPORTANT]
-> 转到 Azure 门户。 如果在“先决条件”部分中创建的 [产品名称] 资源已成功部署，请单击“后续步骤”下的“转到资源”按钮  。 在资源的“密钥和终结点”页的“资源管理”下可以找到密钥和终结点 。 
+> 转到 Azure 门户。 如果在“先决条件”部分中创建的计算机视觉资源已成功部署，请单击“后续步骤”下的“转到资源”按钮  。 在资源的“密钥和终结点”页的“资源管理”下可以找到密钥和终结点 。 
 >
 > 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 有关详细信息，请参阅认知服务[安全性](../../../cognitive-services-security.md)文章。
 
@@ -1728,7 +1728,6 @@ public class ComputerVisionQuickstart {
 * [读取印刷体文本和手写文本](#read-printed-and-handwritten-text)
 
 ## <a name="authenticate-the-client"></a>验证客户端
-
 
 在新方法中，使用终结点和密钥实例化客户端 [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) 对象。
 
@@ -12567,7 +12566,7 @@ gradle run
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 > [!div class="nextstepaction"]

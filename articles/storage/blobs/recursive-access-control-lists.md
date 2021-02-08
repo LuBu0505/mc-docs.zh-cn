@@ -5,17 +5,17 @@ author: WenJason
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-origin.date: 11/17/2020
-ms.date: 01/18/2021
+origin.date: 01/22/2021
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.reviewer: prishet
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 53cfba62ab7c68f2887261a241462a2c65b11fcc
-ms.sourcegitcommit: f086abe8bd2770ed10a4842fa0c78b68dbcdf771
+ms.openlocfilehash: 22510b024abf14113d6a7ba5a3b140be39a7724b
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98163080"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503871"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>以递归方式为 Azure Data Lake Storage Gen2 设置访问控制列表 (ACL)
 
@@ -127,7 +127,7 @@ import com.azure.storage.file.datalake.options.PathSetAccessControlRecursiveOpti
 
 ### <a name="python"></a>[Python](#tab/python)
 
-1. 下载[适用于 Python 的 Azure Data Lake Storage 客户端库](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2Fazure_storage_file_datalake-12.1.0b99-py2.py3-none-any.whl%3Fsv%3D2019-02-02%26st%3D2020-08-24T07%253A47%253A01Z%26se%3D2021-08-25T07%253A47%253A00Z%26sr%3Db%26sp%3Dr%26sig%3DH1XYw4FTLJse%252BYQ%252BfamVL21UPVIKRnnh2mfudA%252BfI0I%253D&data=02%7C01%7Cnormesta%40microsoft.com%7C95a5966d938a4902560e08d84912fe32%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637339693209725909&sdata=acv4KWZdzkITw1lP0%2FiA3lZuW7NF5JObjY26IXttfGI%3D&reserved=0)。
+1. 下载[适用于 Python 的 Azure Data Lake Storage 客户端库](https://recursiveaclpr.blob.core.windows.net/privatedrop/azure_storage_file_datalake-12.1.0b99-py2.py3-none-any.whl?sv=2019-02-02&st=2020-08-24T07%3A47%3A01Z&se=2021-08-25T07%3A47%3A00Z&sr=b&sp=r&sig=H1XYw4FTLJse%2BYQ%2BfamVL21UPVIKRnnh2mfudA%2BfI0I%3D)。
 
 2. 安装使用 [pip](https://pypi.org/project/pip/) 下载的库。
 
@@ -367,14 +367,16 @@ def initialize_storage_account_ad(storage_account_name, client_id, client_secret
 此示例使用帐户密钥创建 DataLakeServiceClient 实例。
 
 ```python
-try:  
-    global service_client
-        
-    service_client = DataLakeServiceClient(account_url="{}://{}.dfs.core.chinacloudapi.cn".format(
-        "https", storage_account_name), credential=storage_account_key)
+def initialize_storage_account(storage_account_name, storage_account_key):
     
-except Exception as e:
-    print(e)
+    try:  
+        global service_client
+
+        service_client = DataLakeServiceClient(account_url="{}://{}.dfs.core.chinacloudapi.cn".format(
+            "https", storage_account_name), credential=storage_account_key)
+    
+    except Exception as e:
+        print(e)
 ```
  
 - 将 `storage_account_name` 占位符值替换为存储帐户的名称。
@@ -482,7 +484,7 @@ new PathAccessControlItem(AccessControlType.User,
 此示例设置名为 `my-parent-directory` 的目录的 ACL。 此方法接受一个名为 `isDefaultScope` 的布尔参数，该参数指定是否设置默认 ACL。 该参数在每次调用 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) 的 **setDefaultScope** 方法时使用。 ACL 的条目为所有者用户提供读取、写入和执行权限，仅为负责人组授予读取和执行权限，不为所有其他用户提供任何访问权限。 此示例中的最后一个 ACL 条目为对象 ID 为“xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx”的特定用户提供读取和执行权限。
 
 ```java
-static public void SetACLRecursively(DataLakeFileSystemClient fileSystemClient, Boolean isDefaultScope){
+public void SetACLRecursively(DataLakeFileSystemClient fileSystemClient, Boolean isDefaultScope){
     
     DataLakeDirectoryClient directoryClient =
         fileSystemClient.getDirectoryClient("my-parent-directory");
@@ -563,7 +565,7 @@ def set_permission_recursively(is_default_scope):
         file_system_client = service_client.get_file_system_client(file_system="my-container")
 
         directory_client = file_system_client.get_directory_client("my-parent-directory")
-              
+
         acl = 'user::rwx,group::rwx,other::rwx,user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:r--'   
 
         if is_default_scope:
@@ -571,6 +573,10 @@ def set_permission_recursively(is_default_scope):
 
         directory_client.set_access_control_recursive(acl=acl)
         
+        acl_props = directory_client.get_access_control()
+        
+        print(acl_props['permissions'])
+
     except Exception as e:
      print(e)
 ```
@@ -664,7 +670,7 @@ new PathAccessControlItem(AccessControlType.User,
 此示例以写入权限更新某个 ACL 条目。 此方法接受一个名为 `isDefaultScope` 的布尔参数，该参数指定是否更新默认 ACL。 该参数在调用 [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) 的 **setDefaultScope** 方法时使用。 
 
 ```java
-static public void UpdateACLRecursively(DataLakeFileSystemClient fileSystemClient, Boolean isDefaultScope){
+public void UpdateACLRecursively(DataLakeFileSystemClient fileSystemClient, Boolean isDefaultScope){
 
     DataLakeDirectoryClient directoryClient =
     fileSystemClient.getDirectoryClient("my-parent-directory");
@@ -685,7 +691,8 @@ static public void UpdateACLRecursively(DataLakeFileSystemClient fileSystemClien
     
     pathAccessControlEntries.add(userEntry);
     
-    directoryClient.updateAccessControlRecursive(pathAccessControlEntries);          
+    directoryClient.updateAccessControlRecursive(pathAccessControlEntries);        
+
 }
 ```
 
@@ -704,7 +711,7 @@ def update_permission_recursively(is_default_scope):
         file_system_client = service_client.get_file_system_client(file_system="my-container")
 
         directory_client = file_system_client.get_directory_client("my-parent-directory")
-
+              
         acl = 'user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:rwx'   
 
         if is_default_scope:
@@ -803,29 +810,29 @@ public async Task RemoveACLsRecursively(DataLakeServiceClient serviceClient, boo
 
 
 ```java
-static public void RemoveACLRecursively(DataLakeFileSystemClient fileSystemClient, Boolean isDefaultScope){
+public void RemoveACLRecursively(DataLakeFileSystemClient fileSystemClient, Boolean isDefaultScope){
 
-    DataLakeDirectoryClient directoryClient =
-    fileSystemClient.getDirectoryClient("my-parent-directory");
+      DataLakeDirectoryClient directoryClient =
+      fileSystemClient.getDirectoryClient("my-parent-directory");
 
-    List<PathRemoveAccessControlEntry> pathRemoveAccessControlEntries = 
-        new ArrayList<PathRemoveAccessControlEntry>();
+      List<PathRemoveAccessControlEntry> pathRemoveAccessControlEntries = 
+          new ArrayList<PathRemoveAccessControlEntry>();
 
-    // Create named user entry.
-    PathRemoveAccessControlEntry userEntry = new PathRemoveAccessControlEntry();
+      // Create named user entry.
+      PathRemoveAccessControlEntry userEntry = new PathRemoveAccessControlEntry();
 
-    RolePermissions userPermission = new RolePermissions();
-    userPermission.setExecutePermission(true).setReadPermission(true).setWritePermission(true);
+      RolePermissions userPermission = new RolePermissions();
+      userPermission.setExecutePermission(true).setReadPermission(true).setWritePermission(true);
 
-    userEntry.setDefaultScope(isDefaultScope);
-    userEntry.setAccessControlType(AccessControlType.USER);
-    userEntry.setEntityId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"); 
-    
-    pathRemoveAccessControlEntries.add(userEntry);
-    
-    directoryClient.removeAccessControlRecursive(pathRemoveAccessControlEntries);      
-
-}
+      userEntry.setDefaultScope(isDefaultScope);
+      userEntry.setAccessControlType(AccessControlType.USER);
+      userEntry.setEntityId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"); 
+      
+      pathRemoveAccessControlEntries.add(userEntry);
+      
+      directoryClient.removeAccessControlRecursive(pathRemoveAccessControlEntries);      
+  
+  }
 ```
 
 ### <a name="python"></a>[Python](#tab/python)
@@ -929,26 +936,26 @@ public async Task<string> ResumeAsync(DataLakeServiceClient serviceClient,
 此示例在失败时返回一个继续标记。 应用程序可以在错误得到解决后再次调用此示例方法，并传入继续标记。 如果是第一次调用此示例方法，则应用程序可以为继续标记参数传入 `null` 值。 
 
 ```java
-static public String ResumeSetACLRecursively(DataLakeFileSystemClient fileSystemClient,
-DataLakeDirectoryClient directoryClient,
-List<PathAccessControlEntry> accessControlList, 
-String continuationToken){
+public String ResumeSetACLRecursively(DataLakeFileSystemClient fileSystemClient,
+    DataLakeDirectoryClient directoryClient,
+    List<PathAccessControlEntry> accessControlList, 
+    String continuationToken){
 
     try{
         PathSetAccessControlRecursiveOptions options = new PathSetAccessControlRecursiveOptions(accessControlList);
         
         options.setContinuationToken(continuationToken);
     
-        Response<AccessControlChangeResult> accessControlChangeResult =  
-            directoryClient.setAccessControlRecursiveWithResponse(options, null, null);
+       Response<AccessControlChangeResult> accessControlChangeResult =  
+          directoryClient.setAccessControlRecursiveWithResponse(options, null, null);
 
-        if (accessControlChangeResult.getValue().getCounters().getFailedChangesCount() > 0)
-        {
-            continuationToken =
-                accessControlChangeResult.getValue().getContinuationToken();
-        }
+       if (accessControlChangeResult.getValue().getCounters().getFailedChangesCount() > 0)
+       {
+          continuationToken =
+              accessControlChangeResult.getValue().getContinuationToken();
+       }
     
-        return continuationToken;
+       return continuationToken;
 
     }
     catch(Exception ex){
@@ -956,6 +963,8 @@ String continuationToken){
         System.out.println(ex.toString());
         return continuationToken;
     }
+
+
 }
 ```
 
@@ -971,7 +980,7 @@ def resume_set_acl_recursive(continuation_token):
 
         directory_client = file_system_client.get_directory_client("my-parent-directory")
               
-        acl = 'user::rwx,group::rwx,other::rwx,user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:r-x'
+        acl = 'user::rwx,group::rwx,other::rwx,user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:r--'
 
         acl_change_result = directory_client.set_access_control_recursive(acl=acl, continuation=continuation_token)
 
@@ -1052,12 +1061,12 @@ public async Task ContinueOnFailureAsync(DataLakeServiceClient serviceClient,
 此示例以递归方式设置 ACL 条目。 如果此代码遇到权限错误，它会记录该故障并继续执行。 此示例将故障数输出到控制台。 
 
 ```java
-static public void ContinueOnFailure(DataLakeFileSystemClient fileSystemClient,
-DataLakeDirectoryClient directoryClient,
-List<PathAccessControlEntry> accessControlList){
+public void ContinueOnFailure(DataLakeFileSystemClient fileSystemClient,
+    DataLakeDirectoryClient directoryClient,
+    List<PathAccessControlEntry> accessControlList){
     
     PathSetAccessControlRecursiveOptions options = 
-        new PathSetAccessControlRecursiveOptions(accessControlList);
+       new PathSetAccessControlRecursiveOptions(accessControlList);
         
     options.setContinueOnFailure(true);
     

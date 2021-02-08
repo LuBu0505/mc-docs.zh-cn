@@ -1,18 +1,18 @@
 ---
 title: 正常停止应用服务器。
 description: 本文提供有关正常关闭 SignalR 应用服务器的信息
-author: terencefan
-ms.author: v-tawe
+author: WenJason
+ms.author: v-jay
 origin.date: 11/12/2020
-ms.date: 12/30/2020
+ms.date: 02/08/2021
 ms.service: signalr
 ms.topic: conceptual
-ms.openlocfilehash: b30947389ea08e84fb9b45702bc572ff05a89833
-ms.sourcegitcommit: eb742dcade404c9909d01e2570188f0bc4076992
+ms.openlocfilehash: 0e33fd1eebaed2b6331d14d9adcc6363c5cd0141
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97820420"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99504008"
 ---
 # <a name="server-graceful-shutdown"></a>服务器正常关闭
 Microsoft Azure SignalR 服务提供正常关闭服务器的两种模式。 
@@ -44,7 +44,7 @@ Microsoft Azure SignalR 服务提供正常关闭服务器的两种模式。
 
     你需要设计一种方法，例如向所有客户端广播关闭消息，然后让你的客户端决定何时自行关闭/重新连接。
 
-    阅读 [ChatSample](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample/ChatSample) 了解示例用法，我们会广播“退出”消息来触发关闭挂钩中的客户端关闭。
+    阅读 [ChatSample](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample) 了解示例用法，我们会广播“退出”消息来触发关闭挂钩中的客户端关闭。
 
     **模式设置为 MigrateClients**
 

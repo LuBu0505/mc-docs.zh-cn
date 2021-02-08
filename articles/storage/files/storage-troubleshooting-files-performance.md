@@ -5,15 +5,15 @@ author: WenJason
 ms.service: storage
 ms.topic: troubleshooting
 origin.date: 11/16/2020
-ms.date: 01/18/2021
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: 682a9606634da2b818e748b05303dbff18c994b5
-ms.sourcegitcommit: f086abe8bd2770ed10a4842fa0c78b68dbcdf771
+ms.openlocfilehash: d6bea5fd333ce749a3d211c9fb7f05d01e0e3f73
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98163154"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503932"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>排查 Azure 文件共享性能问题
 
@@ -47,7 +47,7 @@ ms.locfileid: "98163154"
 ### <a name="solution"></a>解决方案
 
 - 如果使用的是标准文件共享，请在存储帐户上启用[大型文件共享](./storage-files-how-to-create-large-file-share.md?tabs=azure-portal)。 大型文件共享支持每个共享最多 10,000 IOPS。
-- 如果使用的是高级文件共享，请增加预配的文件共享大小，以便提高 IOPS 限制。 若要了解详细信息，请参阅[了解高级文件共享的预配](./understanding-billing.md#provisioned-billing)。
+- 如果使用的是高级文件共享，请增加预配的文件共享大小，以便提高 IOPS 限制。 若要了解详细信息，请参阅[了解高级文件共享的预配](./understanding-billing.md#provisioned-model)。
 
 ### <a name="cause-2-metadata-or-namespace-heavy-workload"></a>原因 2：元数据或命名空间工作负载繁重
 

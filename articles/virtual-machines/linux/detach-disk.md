@@ -5,16 +5,16 @@ author: Johnnytechn
 ms.service: virtual-machines-linux
 ms.topic: how-to
 origin.date: 07/18/2018
-ms.date: 09/03/2020
+ms.date: 02/01/2021
 ms.author: v-johya
 ms.subservice: disks
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1bdd415078fdfd01febf961b7a496761034df69f
-ms.sourcegitcommit: f45809a2120ac7a77abe501221944c4482673287
+ms.openlocfilehash: 1e1297ecd965ee9b74c052742ae12cd00cc5524f
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057595"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579608"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>如何从 Linux 虚拟机中分离数据磁盘
 
@@ -120,6 +120,6 @@ az vm disk detach \
 
 
 ## <a name="next-steps"></a>后续步骤
-要重新使用数据磁盘，只需[将其附加到其他 VM](add-disk.md?toc=%2fvirtual-machines%2flinux%2ftoc.json) 即可。
+要重新使用数据磁盘，只需[将其附加到其他 VM](add-disk.md) 即可。
 
 <!--Update_Description: wording update, update meta properties -->

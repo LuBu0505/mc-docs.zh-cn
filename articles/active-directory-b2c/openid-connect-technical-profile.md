@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 2a0bc1c01db1e9b67934d1d9c9970a7fc483cb37
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: ff61b5e12aff6f4dbe1ac50eea854a5bca045440
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570632"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540617"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OpenID Connect 技术配置文件
 
@@ -81,7 +81,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 [OpenID Connect](https://openid.ne
 | IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false`（默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
 | token_endpoint_auth_method | 否 | 指定 Azure AD B2C 如何向令牌终结点发送身份验证标头。 可能的值：`client_secret_post`（默认值）和 `client_secret_basic`（公共预览版）。 有关详细信息，请参阅 [OpenID Connect 客户端身份验证部分](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)。 |
 | token_signing_algorithm | 否 | 当 token_endpoint_auth_method 元数据设置为 `private_key_jwt` 时，用于客户端断言的签名算法。 可能的值：`RS256`（默认值）。 |
-| SingleLogoutEnabled | 否 | 指示在登录过程中技术配置文件是否尝试从联合标识提供者注销。 有关详细信息，请参阅 [Azure AD B2C 会话注销](session-overview.md#sign-out)。可能的值为 `true`（默认）或 `false`。 |
+| SingleLogoutEnabled | 否 | 指示在登录过程中技术配置文件是否尝试从联合标识提供者注销。 有关详细信息，请参阅 [Azure AD B2C 会话注销](./session-behavior.md#sign-out)。可能的值为 `true`（默认）或 `false`。 |
 
 ```xml
 <Metadata>
@@ -123,4 +123,3 @@ Azure Active Directory B2C (Azure AD B2C) 为 [OpenID Connect](https://openid.ne
 
 - [使用 Azure AD 帐户登录](identity-provider-azure-ad-single-tenant.md)
 - [让用户使用自定义策略登录到多租户 Azure AD 标识提供者](identity-provider-azure-ad-multi-tenant.md)
-

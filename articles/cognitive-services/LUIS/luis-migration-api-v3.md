@@ -4,15 +4,15 @@ description: 查询预测终结点 V3 API 已更改。 请使用本指南了解�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 12/28/2020
+ms.date: 02/04/2021
 ms.author: v-johya
 origin.date: 05/15/2020
-ms.openlocfilehash: 9a6fa3fc37d1aeab36b04f25f2fc41cb65fe21d2
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 3eb43facf4c9b6fd6e837802e7ffb56888d1d8c0
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857053"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579470"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 的预测终结点更改
 
@@ -63,9 +63,6 @@ V3 在从预览版过渡到正式版的过程中进行了以下更改：
 
 请继续使用 V2 API 预测终结点，直到 Bot Framework V4.7 发布。
 
-## <a name="v2-api-deprecation"></a>弃用 V2 API
-
-在 2020 年 6 月 8 日发布 V3 预览版后至少 9 个月内不会弃用 V2 预测 API。
 
 ## <a name="endpoint-url-changes"></a>终结点 URL 更改
 
@@ -265,9 +262,6 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 
 了解关于如何在预测运行时扩展应用的[概念](schema-change-prediction-runtime.md)。
 
-## <a name="deprecation"></a>弃用
-
-在 V3 预览后至少 9 个月内不会弃用 V2 API。
 
 ## <a name="next-steps"></a>后续步骤
 

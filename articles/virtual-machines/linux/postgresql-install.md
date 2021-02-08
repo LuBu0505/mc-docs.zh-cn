@@ -7,14 +7,14 @@ ms.subservice: workloads
 ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/11/2020
+ms.date: 02/01/2021
 ms.author: v-johya
-ms.openlocfilehash: 61946f51ae396483c6f7c5593b3ee19241f0dd8e
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: d33ae11a1bbe23e689c3746d3a2e3cd2f58375fd
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637768"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579617"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>在 Azure 上安装和配置 PostgreSQL
 PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库。 它包含许多企业级功能，比如完整的 ACID 合规性、可靠的事务处理和多版本并发控制。 它还支持 ANSI SQL 和 SQL/MED（包括 Oracle、MySQL、MongoDB 等等的外来数据包装器）等标准。 它具有高度的可扩展性，支持超过 12 种程序语言，并支持 GIN 和 GiST 索引、空间数据，以及面向 JSON 或基于键值的应用程序的多款类似于 NoSQL 的功能。
@@ -24,18 +24,18 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
 ## <a name="install-postgresql"></a>安装 PostgreSQL
 > [!NOTE]
-> 你必须已经有一个运行 Linux 的 Azure 虚拟机，才能完成本教程。 在继续操作前，若要创建并设置 Linux VM，请参阅 [Azure Linux VM 教程](quick-create-cli.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
+> 你必须已经有一个运行 Linux 的 Azure 虚拟机，才能完成本教程。 在继续操作前，若要创建并设置 Linux VM，请参阅 [Azure Linux VM 教程](quick-create-cli.md)。
 > 
 > 
 
 在此示例中，使用端口 1999 作为 PostgreSQL 端口。  
 
-通过 PuTTY 连接到你创建的 Linux VM。 如果这是你首次使用 Azure Linux VM，请参阅[如何在 Azure 上将 SSH 用于 Linux](mac-create-ssh-keys.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)，了解如何使用 PuTTY 连接到 Linux VM。
+通过 PuTTY 连接到你创建的 Linux VM。 如果这是你首次使用 Azure Linux VM，请参阅[如何在 Azure 上将 SSH 用于 Linux](mac-create-ssh-keys.md)，了解如何使用 PuTTY 连接到 Linux VM。
 
 1. 运行以下命令切换成根用户（管理员）：
 
     ```console
-    # sudo su -
+    sudo su -
     ```
 
 2. 某些发行版具有在安装 PostgreSQL 之前必须安装的依赖项。 查看此列表中的发行版并运行相应的命令：
@@ -45,27 +45,27 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
    * 基于 CentOS 的 Linux：
        
         ```console
-        # yum install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
+        yum install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
         ```
 
    * 基于 Debian 的 Linux：
 
         ```console
-        # apt-get install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam libxslt-devel tcl-devel python-devel -y
+        apt-get install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam libxslt-devel tcl-devel python-devel -y
         ```
 
    * SUSE Linux：
 
         ```console
-        # zypper install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
+        zypper install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
         ```
 
 3. 将 PostgreSQL 下载到根目录中，然后对包进行解压缩：
 
     ```console
-    # wget https://ftp.postgresql.org/pub/source/v9.3.5/postgresql-9.3.5.tar.bz2 -P /root/
+    wget https://ftp.postgresql.org/pub/source/v9.3.5/postgresql-9.3.5.tar.bz2 -P /root/
 
-    # tar jxvf  postgresql-9.3.5.tar.bz2
+    tar jxvf  postgresql-9.3.5.tar.bz2
     ```
 
     上面是一个示例： 可以在 [/pub/source/ 的索引](https://ftp.postgresql.org/pub/source/)中找到更详细的下载地址。
@@ -73,15 +73,15 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 4. 若要启动生成，请运行这些命令：
 
     ```console
-    # cd postgresql-9.3.5
+    cd postgresql-9.3.5
 
-    # ./configure --prefix=/opt/postgresql-9.3.5
+    ./configure --prefix=/opt/postgresql-9.3.5
     ```
 
 5. 如果希望生成所有能生成的内容，包括文档（HTML 和手册页）和其他模块 (`contrib`)，则改为运行以下命令：
 
     ```console
-    # gmake install-world
+    gmake install-world
     ```
 
     你应该会收到以下确认消息：
@@ -94,23 +94,23 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 1. （可选）创建一个符号链接以便将 PostgreSQL 引用缩短为不包含版本号：
 
     ```console
-    # ln -s /opt/postgresql-9.3.5 /opt/pgsql
+    ln -s /opt/postgresql-9.3.5 /opt/pgsql
     ```
 
 2. 为数据库创建一个目录：
 
     ```console
-    # mkdir -p /opt/pgsql_data
+    mkdir -p /opt/pgsql_data
     ```
 
 3. 创建一个非根用户并修改该用户的配置文件。 然后，切换到该新用户（本例中称为 *postgres*）：
 
     ```console
-    # useradd postgres
+    useradd postgres
    
-    # chown -R postgres.postgres /opt/pgsql_data
+    chown -R postgres.postgres /opt/pgsql_data
    
-    # su - postgres
+    su - postgres
     ```
    
    > [!NOTE]
@@ -137,13 +137,13 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 5. 执行 *bash_profile* 文件：
 
     ```console
-    $ source .bash_profile
+    source .bash_profile
     ```
 
 6. 使用以下命令验证你的安装：
 
     ```console
-    $ which psql
+    which psql
     ```
 
     如果安装成功，你将看到以下响应：
@@ -155,13 +155,13 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 7. 你还可以检查 PostgreSQL 版本：
 
     ```sql
-    $ psql -V
+    psql -V
     ```
 
 8. 初始化数据库：
 
     ```console
-    $ initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W
+    initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W
     ```
 
     你应该会收到以下输出：
@@ -174,17 +174,17 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 运行以下命令：
 
 ```console
-# cd /root/postgresql-9.3.5/contrib/start-scripts
+cd /root/postgresql-9.3.5/contrib/start-scripts
 
-# cp linux /etc/init.d/postgresql
+cp linux /etc/init.d/postgresql
 ```
 
 修改 /etc/init.d/postgresql 文件中的两个变量。 前缀设置为 PostgreSQL 的安装路径： **/opt/pgsql**。 PGDATA 设置为 PostgreSQL 的数据存储路径： **/opt/pgsql_data**。
 
 ```config
-# sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
+sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
 
-# sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
+sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
 ```
 
 ![显示安装前缀和数据目录的屏幕截图。](./media/postgresql-install/no2.png)
@@ -192,19 +192,19 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 更改文件以使其成为可执行文件：
 
 ```console
-# chmod +x /etc/init.d/postgresql
+chmod +x /etc/init.d/postgresql
 ```
 
 启动 PostgreSQL：
 
 ```console
-# /etc/init.d/postgresql start
+/etc/init.d/postgresql start
 ```
 
 检查 PostgreSQL 的终结点是否已打开：
 
 ```console
-# netstat -tunlp|grep 1999
+netstat -tunlp|grep 1999
 ```
 
 你应该会看到以下输出：
@@ -215,19 +215,19 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 再次切换成 postgres 用户：
 
 ```console
-# su - postgres
+su - postgres
 ```
 
 创建一个 Postgres 数据库：
 
 ```console
-$ createdb events
+createdb events
 ```
 
 连接到刚创建的事件数据库：
 
 ```console
-$ psql -d events
+psql -d events
 ```
 
 ## <a name="create-and-delete-a-postgres-table"></a>创建和删除 Postgres 表

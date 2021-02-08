@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/07/2021
+ms.date: 02/04/2021
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de9618fbcd4a5b5102e5b6e9880c7bcea8aa8b5d
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 0a31cd22931fcc0e5849e6145cac365376897f68
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021906"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540694"
 ---
 # <a name="continuous-access-evaluation"></a>连续访问评估
 
@@ -28,7 +28,7 @@ ms.locfileid: "98021906"
 
 连续访问评估的初始实现侧重于 Exchange、Teams 和 SharePoint Online。
 
-若要准备应用程序以使用 CAE，请参阅[如何在应用程序中使用启用了连续访问评估的 API](/active-directory/develop/app-resilience-continuous-access-evaluation)。
+若要准备应用程序以使用 CAE，请参阅[如何在应用程序中使用启用了连续访问评估的 API](../develop/app-resilience-continuous-access-evaluation.md)。
 
 ### <a name="key-benefits"></a>主要优点
 
@@ -187,4 +187,3 @@ Exchange 和 SharePoint 能够同步关键的条件访问策略，因此可以�
 ## <a name="next-steps"></a>后续步骤
 
 [宣布连续访问评估](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)
-

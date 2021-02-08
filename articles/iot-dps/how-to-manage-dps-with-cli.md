@@ -3,18 +3,17 @@ title: 使用 Azure CLI 和 IoT 扩展管理 IoT 中心设备预配服务
 description: 了解如何使用 Azure CLI 和 IoT 扩展来管理 IoT 中心设备预配服务 (DPS)
 author: chrissie926
 ms.author: v-tawe
-origin.date: 01/17/2018
-ms.date: 08/27/2020
+ms.date: 01/29/2021
 ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: devx-track-azurecli
 services: iot-dps
-ms.openlocfilehash: b2f18ebbebb48663dbc804a1a5e687176ccc2bb6
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.openlocfilehash: 215c4eac115a106479831c69898649ed578c75b3
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96430947"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579372"
 ---
 # <a name="how-to-use-azure-cli-and-the-iot-extension-to-manage-the-iot-hub-device-provisioning-service"></a>如何使用 Azure CLI 和 IoT 扩展来管理 IoT 中心设备预配服务
 
@@ -26,20 +25,13 @@ IoT 扩展丰富了 Azure CLI 的功能，例如设备管理和完整的 IoT Edg
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="installation"></a>安装 
+## <a name="prerequisites"></a>先决条件
 
-### <a name="install-python"></a>安装 Python
+- 需要 [Python 2.7x 或 Python 3.x](https://www.python.org/downloads/)。
 
-需要 [Python 2.7x 或 Python 3.x](https://www.python.org/downloads/)。
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-### <a name="install-the-azure-cli"></a>安装 Azure CLI
-
-按照[安装说明](https://docs.azure.cn/cli/install-azure-cli)在环境中安装 Azure CLI。 Azure CLI 版本必须至少是 2.0.70 或更高版本。 请使用 `az –version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。 在 Windows 上，一种简单的安装方法是下载并安装 [MSI](https://aka.ms/InstallAzureCliWindows)。
-
-### <a name="install-iot-extension"></a>安装 IoT 扩展
-
-[IoT 扩展自述文件](https://github.com/Azure/azure-iot-cli-extension)介绍了该扩展的多种安装方法。 最简单的方法是运行 `az extension add --name azure-iot`。 安装完成后，可以使用 `az extension list` 验证当前安装的扩展，或使用 `az extension show --name azure-iot` 查看有关 IoT 扩展的详细信息。 若要删除该扩展，可以使用 `az extension remove --name azure-iot`。
-
+- 本文需要 Azure CLI 版本 2.0.70 或更高版本。
 
 ## <a name="basic-device-provisioning-service-operations"></a>基本的设备预配服务操作
 
@@ -103,7 +95,7 @@ az iot dps linked-hub create --resource-group IoTHubBlogDemo --dps-name demodps 
 ![链接中心](./media/how-to-manage-dps-with-cli/create-hub.jpg)
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已学习了如何执行以下操作：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 注册设备

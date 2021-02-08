@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79656e41c178ba2727ccce7d23480e7f2ac1203d
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: ea91ee1c8db00edb17d1d6cfd70a434b5ac771c7
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004317"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540807"
 ---
 # <a name="build-resilience-with-credential-management"></a>通过凭据管理来构建复原能力
 
@@ -62,7 +62,9 @@ ms.locfileid: "97004317"
 ## <a name="next-steps"></a>后续步骤
 适用于管理员和架构师的复原能力资源
  
-* [通过使用连续访问评估 (CAE) 来构建复原能力](resilience-with-continuous-access-evaluation.md)
+* [使用设备状态构建复原能力](resilience-with-device-states.md)
+
+* [使用连续访问评估 (CAE) 构建复原能力](resilience-with-continuous-access-evaluation.md)
 
 * [在混合身份验证中构建复原能力](resilience-in-hybrid.md)
 
@@ -71,4 +73,3 @@ ms.locfileid: "97004317"
 * [在应用程序中构建 IAM 复原能力](resilience-app-development-overview.md)
 
 * [在 CIAM 系统中构建复原能力](resilience-b2c.md)
-

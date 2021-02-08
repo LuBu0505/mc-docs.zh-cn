@@ -10,16 +10,16 @@ metadata:
   ms.topic: landing-page
   ms.collection: collection
   author: rockboyfor
-  ms.date: 07/27/2020
+  ms.date: 02/08/2021
   ms.testscope: no
   ms.testdate: 
   ms.author: v-yeche
-  ms.openlocfilehash: 62df9326e70f1728048b18cdb196ba3c8fe34fad
-  ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
+  ms.openlocfilehash: 3e0afe5abe3a84b87492c21da9a635a75dd9dcb9
+  ms.sourcegitcommit: fda47fe846d47f30e65a048251402d873e416650
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/24/2020
-  ms.locfileid: "87162159"
+  ms.lasthandoff: 02/02/2021
+  ms.locfileid: "99426645"
 landingContent:
 - title: 关于 Azure 中继
   linkLists:
@@ -62,6 +62,6 @@ landingContent:
   - linkListType: reference
     links:
     - text: .NET
-      url: https://docs.azure.cn/dotnet/api/microsoft.azure.relay?view=azure-dotnet
+      url: https://docs.azure.cn/dotnet/api/microsoft.azure.relay
     - text: REST
       url: https://docs.microsoft.com/rest/api/relay/

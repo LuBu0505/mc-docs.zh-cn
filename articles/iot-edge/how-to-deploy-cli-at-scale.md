@@ -5,18 +5,17 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-origin.date: 10/13/2020
-ms.date: 11/13/2020
+ms.date: 02/02/2021
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 1bf5f590d926c096f4148c9a4a2f5dc5991f5cc2
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: f1ab55f9c1cc2ecf8a453d8823ea7cbf3dc67173
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300738"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579626"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>使用 Azure CLI 大规模部署并监视 IoT Edge 模块
 
@@ -192,7 +191,7 @@ ms.locfileid: "96300738"
 
 使用 [az iot edge deployment create](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-create) 命令创建部署：
 
-```cli
+```azurecli
 az iot edge deployment create --deployment-id [deployment id] --hub-name [hub name] --content [file path] --labels "[labels]" --target-condition "[target query]" --priority [int]
 ```
 
@@ -225,7 +224,7 @@ deployment create 命令采用以下参数：
 
 使用 [az iot edge deployment update](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-update) 命令更新部署：
 
-```cli
+```azurecli
 az iot edge deployment update --deployment-id [deployment id] --hub-name [hub name] --set [property1.property2='value']
 ```
 
@@ -246,7 +245,7 @@ deployment update 命令采用以下参数：
 
 使用 [az iot edge deployment delete](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-delete) 命令删除部署：
 
-```cli
+```azurecli
 az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub name]
 ```
 

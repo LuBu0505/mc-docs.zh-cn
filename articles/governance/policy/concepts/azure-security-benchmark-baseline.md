@@ -1,28 +1,27 @@
 ---
 title: Azure 安全基准的 Azure Policy 安全基准
 description: Azure Policy 安全基准为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
-author: msmbaldwin
 ms.service: azure-policy
 ms.topic: conceptual
 origin.date: 07/02/2020
-ms.date: 11/06/2020
-ms.author: v-tawe
+author: rockboyfor
+ms.date: 02/08/2021
+ms.author: v-yeche
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 91de6115c8c72da7b11a1763f3fa60107b0e6c34
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 551be8e8201d39d6dd717c30490d5874ec2dbaee
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328676"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580531"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Azure 安全基准的 Azure Policy 安全基准
 
 此安全基准将指南从 [Azure 安全基准](../../../security/benchmarks/overview.md)应用到 Azure Policy。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容按“合规性域”进行分组，“安全控件”由 Azure 安全基准定义，且相关指南适用于 Azure Policy 。 排除了不适用于 Azure Policy 的“控件”。 若要查看 Azure Policy 如何完全映射到 Azure 安全基准，请参阅[完整的 Azure Policy 安全基准映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
-<!-- For a mapping of the Azure Security Benchmark controls to built-in policy definitions via the built-in initiative, see [Regulatory Compliance: Azure Security Benchmark](../samples/azure-security-benchmark.md). -->
+<!--NOT AVAILABLE ON ../samples/azure-security-benchmark.md-->
 
 Azure Policy 使用术语“所有权”来代替“责任” 。 如需了解“所有权”的详细信息，请参阅 [Azure Policy 策略定义](./definition-structure.md#type)和[云中责任共享](../../../security/fundamentals/shared-responsibility.md)。
-
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
@@ -35,7 +34,6 @@ Azure Policy 使用术语“所有权”来代替“责任” 。 如需了解�
 * [如何使用 Azure Monitor 收集平台日志和指标](../../../azure-monitor/platform/diagnostic-settings.md)
 
 * [了解 Azure 中的日志记录和不同的日志类型](../../../azure-monitor/platform/platform-logs-overview.md)
-
 
 **Azure 安全中心监视**：目前不可用
 
@@ -51,7 +49,6 @@ Azure Policy 使用术语“所有权”来代替“责任” 。 如需了解�
 
 还可以通过使用 [Azure AD Privileged Identity Management](../../../active-directory/privileged-identity-management/pim-configure.md) 特权角色或 [Azure 资源管理器](../../../azure-resource-manager/management/overview.md)来启用实时/足够访问权限。
 
-
 **Azure 安全中心监视**：目前不可用
 
 **责任**：客户
@@ -60,10 +57,9 @@ Azure Policy 使用术语“所有权”来代替“责任” 。 如需了解�
 
 **指南**：将 PAW（特权访问工作站）与为登录和配置 Azure 资源而配置的 MFA 结合使用。
 
-* [了解特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [如何在 Azure 中启用 MFA](../../../active-directory/authentication/howto-mfa-getstarted.md)
-
 
 **Azure 安全中心监视**：不适用
 
@@ -81,7 +77,6 @@ Azure Policy 使用术语“所有权”来代替“责任” 。 如需了解�
 
 * [如何配置 Azure RBAC](../../../role-based-access-control/role-assignments-portal.md)
 
-
 **Azure 安全中心监视**：目前不可用
 
 **责任**：客户
@@ -91,7 +86,6 @@ Azure Policy 使用术语“所有权”来代替“责任” 。 如需了解�
 **指导**：Azure Policy 发生更改时使用 Azure Monitor 与活动日志创建警报。
 
 * [如何针对 Azure 活动日志事件创建警报](../../../azure-monitor/platform/alerts-activity-log.md)
-
 
 **Azure 安全中心监视**：目前不可用
 
@@ -108,7 +102,6 @@ Azure Policy 使用术语“所有权”来代替“责任” 。 如需了解�
 * [教程：创建和管理策略](../tutorials/create-and-manage.md)
 
 * [教程：管理标记治理](../tutorials/govern-tags.md)
-
 
 **Azure 安全中心监视**：目前不可用
 
@@ -128,7 +121,6 @@ Azure Policy 使用术语“所有权”来代替“责任” 。 如需了解�
 
 * [如何配置和管理 Azure Policy](../tutorials/create-and-manage.md)
 
-
 **Azure 安全中心监视**：不适用
 
 **责任**：客户
@@ -137,3 +129,5 @@ Azure Policy 使用术语“所有权”来代替“责任” 。 如需了解�
 
 - 请参阅 [Azure 安全基准](../../../security/benchmarks/overview.md)
 - 详细了解 [Azure 安全基线](../../../security/benchmarks/security-baselines-overview.md)
+
+<!--Update_Description: update meta properties, wording update, update link-->

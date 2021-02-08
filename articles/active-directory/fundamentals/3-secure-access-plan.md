@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff637bcf6e33da83d7e2085d0d81fc13537fb747
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 26a7d7d6f21b0f09e43376d7fb3900c26dd14121
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195211"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540718"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3.为外部访问创建安全性计划 
 
@@ -93,7 +93,7 @@ ms.locfileid: "98195211"
 | 高风险| 要求对外部用户始终执行多重身份验证 |
 
 
-现在，你可以[对租户中的 B2B 用户强制实施多重身份验证](/active-directory/external-identities/b2b-tutorial-require-mfa)。 
+现在，你可以[对租户中的 B2B 用户强制实施多重身份验证](../external-identities/b2b-tutorial-require-mfa.md)。 
 
 **基于用户和设备的登录条件**。
 
@@ -105,9 +105,9 @@ ms.locfileid: "98195211"
 
 现在，若要将设备状态用作策略的输入，必须将设备注册或加入到你的租户。 
 
-对于[网络位置](/active-directory/conditional-access/howto-conditional-access-policy-location)，可以对你拥有的任何 IP 地址范围进行访问权限限制。 如果只希望外部合作伙伴在你组织的现场访问应用程序，则可以使用此功能。
+对于[网络位置](../conditional-access/howto-conditional-access-policy-location.md)，可以对你拥有的任何 IP 地址范围进行访问权限限制。 如果只希望外部合作伙伴在你组织的现场访问应用程序，则可以使用此功能。
 
-[详细了解条件访问策略](/active-directory/conditional-access/overview)。
+[详细了解条件访问策略](../conditional-access/overview.md)。
 
 ## <a name="document-access-review-policies"></a>记录访问评审策略
 
@@ -123,11 +123,11 @@ ms.locfileid: "98195211"
 
 * **权利管理访问评审**。 使用权利管理中的功能可以
 
-   * [自动使访问包过期](/active-directory/governance/entitlement-management-access-package-lifecycle-policy)，从而使外部用户访问所包含的资源。
+   * [自动使访问包过期](../governance/entitlement-management-access-package-lifecycle-policy.md)，从而使外部用户访问所包含的资源。
 
-   * 设置访问评审的[必需评审频率](/active-directory/governance/entitlement-management-access-reviews-create)。
+   * 设置访问评审的[必需评审频率](../governance/entitlement-management-access-reviews-create.md)。
 
-   * 如果使用[连接的组织](/active-directory/governance/entitlement-management-organization)对来自单个合作伙伴的所有用户进行分组，请安排与企业主和合作伙伴代表进行定期评审。
+   * 如果使用[连接的组织](../governance/entitlement-management-organization.md)对来自单个合作伙伴的所有用户进行分组，请安排与企业主和合作伙伴代表进行定期评审。
 
 * **Microsoft 365 组**。 为外部用户被邀请到的 Microsoft 365 组设置[组过期策略](https://docs.microsoft.com/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide)。 
 
@@ -143,7 +143,7 @@ ms.locfileid: "98195211"
 
 你已了解哪些内容要控制访问权限、如何将这些资产分组以进行常见访问，以及要求的登录和访问评审策略，现在可以决定如何实现计划。 
 
-某些功能（例如[权利管理](/active-directory/governance/entitlement-management-overview)）仅适用于 Azure AD Premium 2 (P2) 许可证。 Microsoft 365 E5 和 Office 365 E5 许可证包括 Azure AD P2 许可证。 
+某些功能（例如[权利管理](../governance/entitlement-management-overview.md)）仅适用于 Azure AD Premium 2 (P2) 许可证。 Microsoft 365 E5 和 Office 365 E5 许可证包括 Azure AD P2 许可证。 
 
 Microsoft 365、Office 365 和 Azure AD 的其他组合也能实现一些用于管理外部用户的功能。 有关详细信息，请参阅[信息保护](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-365-security-compliance-licensing-guidance)。
 
@@ -177,7 +177,7 @@ Azure AD P2 和 Microsoft 365 E5 具有全套安全性和治理工具。
 
 ### <a name="entitlement-management"></a>权利管理 
 
-[权利管理访问包](/active-directory/governance/entitlement-management-access-package-create)支持预配和取消预配对组和团队、应用程序，以及 SharePoint 站点的访问权限。 你可以定义允许哪些连接的组织访问、是否允许自助服务请求，以及授予访问权限所需的审批工作流（如果有）。 为确保访问权限存在的时间超过所需时间，你可以为每个访问包定义过期策略和访问评审。 
+[权利管理访问包](../governance/entitlement-management-access-package-create.md)支持预配和取消预配对组和团队、应用程序，以及 SharePoint 站点的访问权限。 你可以定义允许哪些连接的组织访问、是否允许自助服务请求，以及授予访问权限所需的审批工作流（如果有）。 为确保访问权限存在的时间超过所需时间，你可以为每个访问包定义过期策略和访问评审。 
 
  
 
@@ -226,4 +226,3 @@ Azure AD P2 和 Microsoft 365 E5 具有全套安全性和治理工具。
 8. [通过敏感度标签实现安全访问](8-secure-access-sensitivity-labels.md)
 
 9. [实现对 Microsoft Teams、OneDrive 和 SharePoint 的安全访问](9-secure-access-teams-sharepoint.md)
-

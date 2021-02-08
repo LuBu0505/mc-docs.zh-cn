@@ -5,24 +5,22 @@ ms.service: virtual-network
 ms.topic: conceptual
 origin.date: 10/01/2020
 author: rockboyfor
-ms.date: 11/16/2020
+ms.date: 02/08/2021
 ms.testscope: yes
 ms.testdate: 10/26/2020
 ms.author: v-yeche
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5c80f9dd2610a3bdb7c0b012377642b446b15d6b
-ms.sourcegitcommit: 39288459139a40195d1b4161dfb0bb96f5b71e8e
+ms.openlocfilehash: b0b93bb86d325c301730944cc7e8e58fad80163a
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94590691"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580529"
 ---
 <!--Verified Successfully-->
 # <a name="azure-security-baseline-for-virtual-network"></a>虚拟网络的 Azure 安全基线
 
-此安全基线将 Azure 安全基准版本 1.0 中的指南应用于 Azure 虚拟网络。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容按“安全控制”分组，这些控制根据适用于 Azure 虚拟网络的 Azure 安全基准和相关指南进行定义。 排除了不适用于 Azure 虚拟网络的控制。
-
-<!--Pending on (../security/benchmarks/overview-v1.md)-->
+此安全基线将 [Azure 安全基准版本 1.0](../security/benchmarks/overview-v1.md) 中的指南应用于 Azure 虚拟网络。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容按“安全控制”分组，这些控制根据适用于 Azure 虚拟网络的 Azure 安全基准和相关指南进行定义。 排除了不适用于 Azure 虚拟网络的控制。
 
 若要查看 Azure 虚拟网络如何完全映射到 Azure 安全基准，请参阅[完整的 Azure 虚拟网络安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
@@ -60,13 +58,13 @@ ms.locfileid: "94590691"
 
 应用 Azure 安全中心针对网络安全组配置的自适应网络强化建议，这些配置基于实际流量和威胁情报限制端口和源 IP。 
 
-<!--Not Available on - [Manage Azure DDoS Protection Standard using the Azure portal](manage-ddos-protection.md)-->
+<!--NOT AVAILABLE ON - [Manage Azure DDoS Protection Standard using the Azure portal](../ddos-protection/manage-ddos-protection.md)-->
 
 - [基于 Azure 防火墙威胁智能的筛选](../firewall/threat-intel.md)
 
-- [安全中心的威胁防护](https://docs.azure.cn/security-center/threat-protection)
+- [安全中心的威胁防护](../security-center/azure-defender.md)
 
-<!--Not Available on [Adaptive Network Hardening in Azure Security Center](../security-center/security-center-adaptive-network-hardening.md)-->
+<!--NOT AVAILABLE ON - [Adaptive Network Hardening in Azure Security Center](../security-center/security-center-adaptive-network-hardening.md)-->
 
 **Azure 安全中心监视**：是
 
@@ -112,7 +110,7 @@ ms.locfileid: "94590691"
 
 - [了解并使用服务标记](service-tags-overview.md)
 
-- [了解并使用应用程序安全组](/virtual-network/security-overview#application-security-groups)
+- [了解并使用应用程序安全组](./network-security-groups-overview.md#application-security-groups)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -130,7 +128,7 @@ ms.locfileid: "94590691"
 
 - [用于网络的 Azure Policy 示例](../governance/policy/samples/built-in-policies.md#network) 
 
-<!--Not Available on - [How to create an Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)-->
+<!--NOT AVAILABLE ON - [How to create an Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)-->
 
 - [在 Azure 安全中心启用监视](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Security%20Center/AzureSecurityCenter.json)
 
@@ -145,7 +143,7 @@ ms.locfileid: "94590691"
 
 选择 Azure PowerShell 或 Azure CLI，基于资源的标记查找资源或对其执行操作。
 
-- [如何创建和使用标记](https://docs.azure.cn/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 - [如何创建虚拟网络](quick-create-portal.md)
 
@@ -159,7 +157,7 @@ ms.locfileid: "94590691"
 
 **指导**：使用 Azure 活动日志监视网络资源配置，并检测虚拟网络的更改。 在 Azure Monitor 中创建当关键资源发生更改时触发的警报。
 
-<!--Not Available on - [How to view and retrieve Azure Activity Log events](https://docs.azure.cn/azure-monitor/activity-log-view)-->
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -180,9 +178,9 @@ ms.locfileid: "94590691"
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
 
-<!--Not Available on - [View and retrieve Azure Activity log events](https://docs.azure.cn/azure-monitor/activity-log-view)-->
+- [查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-<!--Not Available on - [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
+<!--NOT AVAILABLE ON - [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
 
 **Azure 安全中心监视**：是
 
@@ -194,7 +192,7 @@ ms.locfileid: "94590691"
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
 
-<!--Not Available on - [View and retrieve Azure Activity log events](https://docs.azure.cn/azure-monitor/activity-log-view)-->
+- [查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 **Azure 安全中心监视**：是
 
@@ -218,11 +216,11 @@ ms.locfileid: "94590691"
 
 或者，可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。 
 
-- [了解 Log Analytics 工作区](../azure-monitor/log-query/get-started-portal.md)
+- [了解 Log Analytics 工作区](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
-<!--Not Available on - [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
+<!--NOT AVAILABLE ON - [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
 
 - [如何开始使用 Azure Monitor 和第三方 SIEM 集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -240,7 +238,7 @@ ms.locfileid: "94590691"
 
 - [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/learn/tutorial-response.md)
 
-<!--Not Available on - [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
+<!--NOT AVAILABLE ON - [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
 
 **Azure 安全中心监视**：是
 
@@ -278,7 +276,7 @@ ms.locfileid: "94590691"
 
 通过使用 Azure 服务的 Azure AD Privileged Identity Management 特权角色和 Azure 资源管理器来启用实时/足够访问权限。 
 
-- [详细了解 Privileged Identity Management](/active-directory/privileged-identity-management/)
+- [详细了解 Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 **Azure 安全中心监视**：是
 
@@ -288,7 +286,7 @@ ms.locfileid: "94590691"
 
 **指导**：使用 Azure Active Directory (Azure AD) SSO，而不是为每个服务配置单个独立凭据。 使用安全中心的标识和访问管理建议。
 
-<!--Not Available on - [Single sign-on to applications in Azure Active Directory](../active-directory/manage-apps/what-is-single-sign-on.md)-->
+<!--NOT AVAILABLE ON - [Single sign-on to applications in Azure Active Directory](../active-directory/manage-apps/what-is-single-sign-on.md)-->
 
 - [如何在 Azure 安全中心监视标识和访问](../security-center/security-center-identity-access.md)
 
@@ -312,7 +310,7 @@ ms.locfileid: "94590691"
 
 **指导**：使用配置了多重身份验证 (MFA) 的特权访问工作站 (PAW) 来登录并访问 Azure 网络资源。
 
-- [了解特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) 
+- [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
 - [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -326,7 +324,7 @@ ms.locfileid: "94590691"
 
 请将 Azure 安全中心风险检测警报引入 Azure Monitor 中，并使用操作组配置自定义警报/通知。
 
-<!--Not Available on - [Understanding Security Center risk detections (suspicious activity)](https://docs.azure.cn/active-directory/concept-risk-events)-->
+<!--NOT AVAILABLE ON - [Understanding Security Center risk detections (suspicious activity)](../active-directory/identity-protection/overview-identity-protection.md)-->
 
 - [如何将 Azure 活动日志集成到 Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) 
 
@@ -362,7 +360,7 @@ ms.locfileid: "94590691"
 
 可以执行 Azure 标识访问评审来高效地管理组成员身份、对企业应用程序的访问和角色分配。 应定期评审用户的访问权限，确保只有活动用户才持续拥有访问权限。
 
-- [了解 Azure AD 报告](/active-directory/reports-monitoring/)
+- [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
 
 - [如何使用 Azure 标识访问评审](../active-directory/governance/access-reviews-overview.md)
 
@@ -382,9 +380,10 @@ ms.locfileid: "94590691"
 
 **责任**：客户
 
-<!--Not Available on - [How to view Azure AD risky sign-ins](https://docs.azure.cn/active-directory/concept-risky-sign-ins)-->
-<!--Not Available on - [How to configure and enable Identity Protection risk policies](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)-->
-<!--Not Available on - [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
+<!--NOT AVAILABLE ON ### 3.12: Alert on account sign-in behavior deviation-->
+<!--NOT AVAILABLE ON - [How to view Azure AD risky sign-ins](../active-directory/identity-protection/overview-identity-protection.md)-->
+<!--NOT AVAILABLE ON - [How to configure and enable Identity Protection risk policies](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)-->
+<!--NOT AVAILABLE ON - [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
 
 ## <a name="data-protection"></a>数据保护
 
@@ -424,7 +423,7 @@ Azure 提供了许多选项，客户可使用它们保护在 Azure 网络内部�
 
 **指导**：结合使用 Azure Monitor 和 Azure 活动日志，创建在关键 Azure 资源（例如虚拟网络和网络安全组）发生更改时发出的警报。
 
-<!--Not Available on - [Diagnostic logging for a network security group](virtual-network-nsg-manage-log.md)-->
+<!--NOT AVAILABLE ON - [Diagnostic logging for a network security group](virtual-network-nsg-manage-log.md)-->
 
 - [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -454,7 +453,7 @@ Azure 提供了许多选项，客户可使用它们保护在 Azure 网络内部�
 
 **指导**：将标记应用于 Azure 资源，从而将元数据按逻辑组织到分类中。
 
-- [如何创建和使用标记](https://docs.azure.cn/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -464,11 +463,11 @@ Azure 提供了许多选项，客户可使用它们保护在 Azure 网络内部�
 
 **指导**：使用标记、管理组和单独订阅（如果适用）来组织和跟踪虚拟网络和相关资源。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
-<!--Not Available on - [How to create additional Azure subscriptions](https://docs.azure.cn/billing/billing-create-subscription)-->
+<!--NOT AVAILABLE ON - [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)-->
 
-<!--Not Available on - [How to create Management Groups](https://docs.azure.cn/governance/create)-->
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md) 
 
-- [如何创建和使用标记](https://docs.azure.cn/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -495,7 +494,7 @@ Azure 提供了许多选项，客户可使用它们保护在 Azure 网络内部�
 
 - [如何使用 Azure Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-- [适用于虚拟网络的 Azure Policy 内置示例](https://docs.azure.cn/virtual-network/policy-samples)
+- [适用于虚拟网络的 Azure Policy 内置示例](./policy-reference.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -520,9 +519,9 @@ Azure 提供了许多选项，客户可使用它们保护在 Azure 网络内部�
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
-<!--Not Available on - [How to deny a specific resource type with Azure Policy](https://docs.azure.cn/governance/not-allowed-resource-types)-->
+- [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/index.md)
 
-- [适用于虚拟网络的 Azure Policy 内置示例](https://docs.azure.cn/virtual-network/policy-samples)
+- [适用于虚拟网络的 Azure Policy 内置示例](./policy-reference.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -554,7 +553,7 @@ Azure 提供了许多选项，客户可使用它们保护在 Azure 网络内部�
 
 - [教程：创建和管理策略以强制实施符合性](../governance/policy/tutorials/create-and-manage.md)
 
-- [适用于虚拟网络的 Azure Policy 内置示例](https://docs.azure.cn/virtual-network/policy-samples)
+- [适用于虚拟网络的 Azure Policy 内置示例](./policy-reference.md)
 
 - [在 Azure 门户中将单资源和多资源导出到模板](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -578,7 +577,7 @@ Azure 提供了许多选项，客户可使用它们保护在 Azure 网络内部�
 
 - [适用于虚拟网络的 Azure 资源管理器模板示例](template-samples.md)
 
-- [适用于虚拟网络的 Azure Policy 内置示例](https://docs.azure.cn/virtual-network/policy-samples)
+- [适用于虚拟网络的 Azure Policy 内置示例](./policy-reference.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -606,7 +605,7 @@ Azure 提供了许多选项，客户可使用它们保护在 Azure 网络内部�
 
 - [如何使用别名](../governance/policy/concepts/definition-structure.md#aliases)
 
-- [适用于虚拟网络的 Azure Policy 内置示例](https://docs.azure.cn/virtual-network/policy-samples)
+- [适用于虚拟网络的 Azure Policy 内置示例](./policy-reference.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -620,7 +619,7 @@ Azure 提供了许多选项，客户可使用它们保护在 Azure 网络内部�
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [适用于虚拟网络的 Azure Policy 内置示例](https://docs.azure.cn/virtual-network/policy-samples)
+- [适用于虚拟网络的 Azure Policy 内置示例](./policy-reference.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -630,11 +629,11 @@ Azure 提供了许多选项，客户可使用它们保护在 Azure 网络内部�
 
 **指导**：将托管服务标识与 Azure Key Vault 结合使用，以便简化和保护托管在 Azure 虚拟网络中的 Azure 资源的机密管理。
 
-<!--Not Available on - [How to integrate with Azure Managed Identities](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)-->
+- [如何与 Azure 托管标识集成](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md) 
 
-- [如何创建 Key Vault](https://docs.azure.cn/key-vault/quick-create-portal) 
+- [如何创建 Key Vault](../key-vault/secrets/quick-create-portal.md) 
 
-- [如何使用托管标识提供 Key Vault 身份验证](https://docs.azure.cn/key-vault/managed-identity)
+- [如何使用托管标识提供 Key Vault 身份验证](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -716,9 +715,9 @@ Azure 提供了许多选项，客户可使用它们保护在 Azure 网络内部�
 
 - [关于 Azure DevOps 中的权限和组](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
 
-- [如何在密钥保管库中启用软删除和清除保护](/storage/blobs/storage-blob-soft-delete?tabs=azure-portal) 
+- [如何在密钥保管库中启用软删除和清除保护](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal) 
 
-- [Azure 存储 Blob 的软删除](/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Azure 存储 Blob 的软删除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 安全中心监视**：不适用
 
@@ -744,13 +743,13 @@ Azure 提供了许多选项，客户可使用它们保护在 Azure 网络内部�
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
+**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
 使用标记清楚地标记订阅（例如生产或非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。  你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
 - [安全中心的“安全警报”](../security-center/security-center-alerts-overview.md)
 
-- [使用标记整理 Azure 资源](https://docs.azure.cn/azure-resource-manager/resource-group-using-tags)
+- [使用标记整理 Azure 资源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：是
 
@@ -784,7 +783,7 @@ Azure 提供了许多选项，客户可使用它们保护在 Azure 网络内部�
 
 - [如何配置连续导出](../security-center/continuous-export.md)
 
-<!--Not Available on - [How to stream alerts into Azure Sentinel](../sentinel/connect-azure-security-center.md)-->
+<!--NOT AVAILABLE ON - [How to stream alerts into Azure Sentinel](../sentinel/connect-azure-security-center.md)-->
 
 **Azure 安全中心监视**：是
 
@@ -816,9 +815,9 @@ Azure 提供了许多选项，客户可使用它们保护在 Azure 网络内部�
 
 **责任**：共享
 
-<!--Not Available on ## Next steps-->
+## <a name="next-steps"></a>后续步骤
 
-<!--Not Available on - See the [Azure security benchmark](https://docs.azure.cn/security/overview)-->
-<!--Not Available on - Learn more about [Azure security baselines](https://docs.azure.cn/security/security-baselines-overview)-->
+- 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

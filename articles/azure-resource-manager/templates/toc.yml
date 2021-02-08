@@ -22,7 +22,7 @@
               href: ../../machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager.md?toc=/azure-resource-manager/templates/toc.json
             - name: 机器学习
               href: ../../machine-learning/how-to-create-workspace-template.md?toc=/azure-resource-manager/templates/toc.json
-        - name: Analytics
+        - name: 分析
           items:
             - name: Analysis Services
               href: ../../analysis-services/analysis-services-create-template.md?toc=/azure-resource-manager/templates/toc.json
@@ -112,7 +112,7 @@
           items:
             - name: 自动化
               href: ../../automation/quickstart-create-automation-account-template.md?toc=/azure-resource-manager/templates/toc.json
-            - name: 备份
+            - name: Backup
               href: ../../backup/quick-backup-vm-template.md?toc=/azure-resource-manager/templates/toc.json
             - name: 托管应用程序
               href: ../managed-applications/publish-service-catalog-app.md?toc=/azure-resource-manager/templates/toc.json
@@ -158,7 +158,6 @@
               href: ../../key-vault/keys/quick-create-template.md?toc=/azure-resource-manager/templates/toc.json
             - name: Key Vault - 机密
               href: ../../key-vault/secrets/quick-create-template.md?toc=/azure-resource-manager/templates/toc.json
-            - name: 安全中心
         - name: 存储
           items:
             - name: 存储帐户

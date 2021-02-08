@@ -3,20 +3,21 @@ title: 发布应用 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 当完成生成和测试活动 LUIS 应用时，可通过将其发布到终结点使其可用于客户端应用程序。
 services: cognitive-services
+author: Johnnytechn
 manager: nitinme
+ms.author: v-johya
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 02/04/2021
 origin.date: 05/17/2020
-ms.author: v-johya
-ms.openlocfilehash: d4b79f5108fc032584fba8d37df9ed68cf65b10b
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+ms.openlocfilehash: 9763107126bfa6f5487241d5b6e8d076ac6ddd36
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472430"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579523"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>将活动的已训练应用发布到过渡或生产终结点
 
@@ -57,7 +58,7 @@ ms.locfileid: "92472430"
 在选择槽后，为以下项配置发布设置：
 
 * 情绪分析
-* 拼写更正 - 仅限 v2 预测终结点
+* 拼写更正
 <!--speech not avaiable-->
 
 发布以后，即可在“发布设置”页的“管理”部分查看这些设置。  可以在每次发布时更改设置。 如果取消发布，则在发布过程中所做的任何更改也会被取消。
@@ -81,8 +82,6 @@ ms.locfileid: "92472430"
 若要详细了解使用情绪分析时的 JSON 终结点响应，请参阅[情绪分析](luis-reference-prebuilt-sentiment.md)
 
 ## <a name="spelling-correction"></a>拼写更正
-
-[!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
 在 LUIS 用户话语预测之前纠正拼写错误。 可以在响应中查看对原始话语所做的任何更改，包括拼写方面的更改。
 

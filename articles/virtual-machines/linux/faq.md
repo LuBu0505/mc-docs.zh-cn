@@ -5,24 +5,24 @@ author: Johnnytechn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 02/01/2021
 ms.author: v-johya
 origin.date: 05/08/2019
-ms.openlocfilehash: f5af04f25c1ffafc84d2ebb059a6a88b2415f42c
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: f12a79933171ace7ff8a48d7921b43a36f1f1d99
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94638195"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579435"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>有关 Linux 虚拟机的常见问题
-本文讨论有关在 Azure 中使用 Resource Manager 部署模型创建的 Linux 虚拟机的一些常见问题。 有关本主题的 Windows 版本，请参阅[有关 Windows 虚拟机的常见问题](../windows/faq.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)
+本文讨论有关在 Azure 中使用 Resource Manager 部署模型创建的 Linux 虚拟机的一些常见问题。 有关本主题的 Windows 版本，请参阅[有关 Windows 虚拟机的常见问题](../windows/faq.md)
 
 ## <a name="what-can-i-run-on-an-azure-vm"></a>我可以在 Azure VM 上运行什么程序？
-所有订户都可以在 Azure 虚拟机上运行服务器软件。 有关详细信息，请参阅 [Azure 认可的分发版本中的 Linux](endorsed-distros.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)
+所有订户都可以在 Azure 虚拟机上运行服务器软件。 有关详细信息，请参阅 [Azure 认可的分发版本中的 Linux](endorsed-distros.md)
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>使用虚拟机时，我可以使用多少存储？
-每个数据磁盘的容量高达 32,767 GiB。 可以使用的数据磁盘数取决于虚拟机大小。 有关详细信息，请参阅[虚拟机大小](../sizes.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
+每个数据磁盘的容量高达 32,767 GiB。 可以使用的数据磁盘数取决于虚拟机大小。 有关详细信息，请参阅[虚拟机大小](../sizes.md)。
 
 <!--MOONCAKE: Max size P80 32767GiB-->
 
@@ -31,7 +31,7 @@ Azure 托管磁盘是推荐用于 Azure 虚拟机的磁盘存储产品，方便�
 Azure 存储帐户还可为操作系统磁盘和任何数据磁盘提供存储空间。 每个磁盘都是一个 .vhd 文件，以页 blob 形式存储。 有关定价详细信息，请参阅 [Storage Pricing Details](https://www.azure.cn/pricing/details/storage/)（存储定价详细信息）。
 
 ## <a name="how-can-i-access-my-virtual-machine"></a>如何访问我的虚拟机？
-使用安全外壳 (SSH) 建立远程连接，以登录到虚拟机。 请参阅如何[从 Windows](ssh-from-windows.md?toc=%2fvirtual-machines%2flinux%2ftoc.json) 或[从 Linux 和 Mac](mac-create-ssh-keys.md?toc=%2fvirtual-machines%2flinux%2ftoc.json) 进行连接的相关说明。 默认情况下，SSH 允许的并发连接最多为 10 个。 通过编辑配置文件，可以增加此数量。
+使用安全外壳 (SSH) 建立远程连接，以登录到虚拟机。 请参阅如何[从 Windows](ssh-from-windows.md) 或[从 Linux 和 Mac](mac-create-ssh-keys.md) 进行连接的相关说明。 默认情况下，SSH 允许的并发连接最多为 10 个。 通过编辑配置文件，可以增加此数量。
 
 如果遇到问题，请查阅[排查安全外壳 (SSH) 连接问题](../troubleshooting/troubleshoot-ssh-connection.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
 
@@ -39,7 +39,7 @@ Azure 存储帐户还可为操作系统磁盘和任何数据磁盘提供存储�
 不要使用临时磁盘 (/dev/sdb1) 存储数据。 它只是用于临时存储。 有丢失无法恢复的数据的风险。
 
 ## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>我是否可以复制或克隆现有的 Azure VM？
-是的。 有关说明，请参阅[如何在 Resource Manager 部署模型中创建 Linux 虚拟机的副本](copy-vm.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
+是的。 有关说明，请参阅[如何在 Resource Manager 部署模型中创建 Linux 虚拟机的副本](copy-vm.md)。
 
 <!-- Not Available ## Why am I not seeing Canada Central and Canada East regions through Azure Resource Manager? -->
 

@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec5dd33d1501151a4a915bd3db4bb58956681b19
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: a9c32cee73c648995a28dc3348f55e953dd2c603
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004313"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540810"
 ---
 # <a name="build-resilience-in-your-hybrid-architecture"></a>在混合体系结构中构建复原能力
 
@@ -56,7 +56,7 @@ Azure AD 最简单、最易复原的混合身份验证选项是[密码哈希同�
 
 * [启用密码哈希同步](../hybrid/how-to-connect-password-hash-synchronization.md)
 
-## <a name="federation"></a>联合
+ ## <a name="federation"></a>联合
 
 联合身份验证涉及在 Azure AD 与联合身份验证服务之间创建信任关系，其中包括终结点、令牌签名证书和其他元数据的交换。 请求进入 Azure AD 时，它会读取配置，并将用户重定向到配置的终结点。 此时，用户将与联合身份验证服务进行交互，后者会发出由 Azure AD 验证的 SAML 断言。 
 
@@ -86,11 +86,12 @@ Azure AD 最简单、最易复原的混合身份验证选项是[密码哈希同�
  
 * [利用凭据管理构建复原能力](resilience-in-credentials.md)
 
-* [通过使用连续访问评估 (CAE) 来构建复原能力](resilience-with-continuous-access-evaluation.md)
+* [使用设备状态构建复原能力](resilience-with-device-states.md)
+
+* [使用连续访问评估 (CAE) 构建复原能力](resilience-with-continuous-access-evaluation.md)
 
 面向开发人员的复原能力资源
 
 * [在应用程序中构建 IAM 复原能力](resilience-app-development-overview.md)
 
 * [在 CIAM 系统中构建复原能力](resilience-b2c.md)
-

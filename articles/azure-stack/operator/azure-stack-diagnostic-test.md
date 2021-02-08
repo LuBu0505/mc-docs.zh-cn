@@ -4,16 +4,16 @@ description: 了解如何使用 Azure Stack Hub 验证工具验证系统状态�
 author: WenJason
 ms.topic: article
 origin.date: 01/10/2020
-ms.date: 12/07/2020
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.reviewer: adshar
 ms.lastreviewed: 01/10/2020
-ms.openlocfilehash: fa79e438b168f2ac55b82f11016237935a282328
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: 0f164e0e9c1d80bc0924b4315c304e9047f663bc
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508085"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503995"
 ---
 # <a name="validate-azure-stack-hub-system-state"></a>验证 Azure Stack Hub 系统状态
 
@@ -235,6 +235,6 @@ Test-AzureStack -Include AzsNetworkInfra -Debug
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 Azure Stack Hub 诊断工具和问题日志记录，请参阅 [Azure Stack Hub 诊断工具](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002)。
+若要详细了解 Azure Stack Hub 诊断工具和问题日志记录，请参阅 [Azure Stack Hub 诊断工具](./diagnostic-log-collection.md?view=azs-2002)。
 
 若要了解有关故障排除的详细信息，请参阅 [Azure Stack Hub 故障排除](azure-stack-troubleshooting.md)。

@@ -3,20 +3,20 @@ ms.service: azure-policy
 ms.topic: include
 origin.date: 01/08/2021
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 08/17/2020
 ms.author: v-yeche
 ms.custom: generated
-ms.openlocfilehash: b52b8844926353ea068cf5f9057e224d840ca27a
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 6e8e867b0334170f609ad6c27cdbf0b2f18e53e2
+ms.sourcegitcommit: 7fc72b8afbdf9ad5e53922f489229e54282214b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230855"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99541180"
 ---
 <!--Verify Successfully-->
-## <a name="azure-security-benchmark"></a>Azure 安全基准
+## <a name="azure-security-benchmark-v1"></a>Azure 安全基准 v1
 
 [Azure 安全基准](../../../../articles/security/benchmarks/overview.md)提供有关如何在 Azure 上保护云解决方案的建议。 若要查看此服务如何完全映射到 Azure 安全基准，请参阅 [Azure 安全基准映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 

@@ -113,6 +113,10 @@
               href: ../common/last-sync-time-get.md?toc=%2fstorage%2ffiles%2ftoc.json
             - name: 启动帐户故障转移
               href: ../common/storage-initiate-account-failover.md?toc=%2fstorage%2ffiles%2ftoc.json
+    - name: 提高性能
+      items:
+        - name: 启用大型文件共享
+          href: storage-files-how-to-create-large-file-share.md
     - name: 开发
       items:
         - name: 配置连接字符串

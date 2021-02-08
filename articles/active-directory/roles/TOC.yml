@@ -11,9 +11,10 @@
     - name: 创建无限次应用注册
       href: quickstart-app-registration-limits.md
 - name: 教程
+  expanded: true
   items:
-    - name: 创建动态组
-      href: ../enterprise-users/users-revoke-access.md
+    - name: 将用户分配到管理员角色
+      href: ../fundamentals/active-directory-users-assign-role-azure-portal.md
 - name: 概念
   expanded: true
   items:
@@ -28,18 +29,6 @@
 - name: 操作指南
   expanded: true
   items:
-    - name: 用户和角色
-      items:
-        - name: 将用户分配到管理员角色
-          href: ../fundamentals/active-directory-users-assign-role-azure-portal.md
-        - name: 撤消用户的访问权限
-          href: ../enterprise-users/users-revoke-access.md
-        - name: 向来宾用户分配角色
-          href: ../external-identities/add-guest-to-role.md
-        - name: 限制来宾用户访问权限
-          href: ../enterprise-users/users-restrict-guest-permissions.md
-        - name: 动态组和来宾
-          href: ../external-identities/use-dynamic-groups.md
     - name: 角色和权限
       expanded: true
       items:

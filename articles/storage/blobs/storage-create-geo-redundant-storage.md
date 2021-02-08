@@ -7,17 +7,17 @@ author: WenJason
 ms.service: storage
 ms.topic: tutorial
 origin.date: 04/16/2020
-ms.date: 11/16/2020
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.reviewer: artek
 ms.custom: mvc, devx-track-python, devx-track-js, devx-track-csharp
 ms.subservice: blobs
-ms.openlocfilehash: 42f8a8804be0eceed131136849d71f1fbaf87812
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: a49eee94954ef9cb877beb24569cebb12d41973c
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432486"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503991"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>教程：使用 Blob 存储构建高度可用的应用程序
 
@@ -185,11 +185,11 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 ![正在运行的控制台应用](media/storage-create-geo-redundant-storage/figure3.png)
 
-在示例代码中，使用了 `circuitbreaker.py` 文件中的 `run_circuit_breaker` 方法通过 [get_blob_to_path](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.baseblobservice.baseblobservice?view=azure-python-previous#get-blob-to-path-container-name--blob-name--file-path--open-mode--wb---snapshot-none--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--lease-id-none--if-modified-since-none--if-unmodified-since-none--if-match-none--if-none-match-none--timeout-none-) 方法来下载存储帐户中的映像。
+在示例代码中，使用了 `circuitbreaker.py` 文件中的 `run_circuit_breaker` 方法通过 [get_blob_to_path](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.baseblobservice.baseblobservice#get-blob-to-path-container-name--blob-name--file-path--open-mode--wb---snapshot-none--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--lease-id-none--if-modified-since-none--if-unmodified-since-none--if-match-none--if-none-match-none--timeout-none-) 方法来下载存储帐户中的映像。
 
 存储对象重试函数设置为线性重试策略。 重试函数决定了是否重试某个请求，并指定了在重试该请求之前需要等待的秒数。 如果应该在针对主终结点的初始请求失败以后重试针对次要终结点的请求，请将 **retry\_to\_secondary** 值设置为 true。 在示例应用程序的存储对象的 `retry_callback` 函数中，定义了自定义重试策略。
 
-在下载之前，定义了服务对象的 [retry_callback](https://docs.microsoft.com/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient?view=azure-python) 和 [response_callback](https://docs.microsoft.com/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient?view=azure-python) 函数。 这些函数定义了在下载成功完成或下载失败并重试时触发的事件处理程序。
+在下载之前，定义了服务对象的 [retry_callback](https://docs.microsoft.com/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient) 和 [response_callback](https://docs.microsoft.com/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient) 函数。 这些函数定义了在下载成功完成或下载失败并重试时触发的事件处理程序。
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
@@ -277,7 +277,7 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 
 ### <a name="retry-event-handler"></a>Retry 事件处理程序
 
-当映像下载失败并设置为重试时，将调用 `retry_callback` 事件处理程序。 如果达到应用程序中定义的重试次数上限，请求的 [LocationMode](https://docs.microsoft.com/python/api/azure-storage-common/azure.storage.common.models.locationmode?view=azure-python) 会变为 `SECONDARY`。 此设置强制应用程序从辅助终结点尝试下载该图像。 此配置可减少请求图像所花的时间，因为不会无限重试主终结点。
+当映像下载失败并设置为重试时，将调用 `retry_callback` 事件处理程序。 如果达到应用程序中定义的重试次数上限，请求的 [LocationMode](https://docs.microsoft.com/python/api/azure-storage-common/azure.storage.common.models.locationmode) 会变为 `SECONDARY`。 此设置强制应用程序从辅助终结点尝试下载该图像。 此配置可减少请求图像所花的时间，因为不会无限重试主终结点。
 
 ```python
 def retry_callback(retry_context):
@@ -301,7 +301,7 @@ def retry_callback(retry_context):
 
 ### <a name="request-completed-event-handler"></a>RequestCompleted 事件处理程序
 
-当图像下载成功时，会调用 `response_callback` 事件处理程序。 如果应用程序使用的是辅助终结点，则应用程序会继续使用该终结点，最多 20 次。 20 次以后，应用程序会将 [LocationMode](https://docs.microsoft.com/python/api/azure-storage-common/azure.storage.common.models.locationmode?view=azure-python) 重新设置为 `PRIMARY` 并重试主终结点。 如果请求成功，应用程序会继续从主终结点读取。
+当图像下载成功时，会调用 `response_callback` 事件处理程序。 如果应用程序使用的是辅助终结点，则应用程序会继续使用该终结点，最多 20 次。 20 次以后，应用程序会将 [LocationMode](https://docs.microsoft.com/python/api/azure-storage-common/azure.storage.common.models.locationmode) 重新设置为 `PRIMARY` 并重试主终结点。 如果请求成功，应用程序会继续从主终结点读取。
 
 ```python
 def response_callback(response):

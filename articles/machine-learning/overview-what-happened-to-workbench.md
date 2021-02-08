@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 03/05/2020
-ms.openlocfilehash: aa5b9cec3697775c339b4a1822bc428b698ae957
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 4d2be25faafc0478ff0b7465a2b0047bd18b3fbf
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977884"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804379"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 有何遭遇？
 
@@ -67,7 +67,7 @@ ms.locfileid: "94977884"
 
 不会丢失任何代码或工作。 在旧版本中，项目是包含本地目录的云实体。 在最新版本中，可使用本地配置文件将本地目录附加到 Azure 机器学习工作区。 请参阅[最新体系结构的关系图](concept-azure-machine-learning-architecture.md)。
 
-大部分项目内容已存在于本地计算机上。 因此，只需在相应目录中创建配置文件，并在代码中引用它，即可连接到工作区。 要继续使用包含文件和脚本的本地目录，请在[“experiment.submit”](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true)Python 命令中指定该目录的名称或使用 `az ml project attach` CLI 命令。  例如：
+大部分项目内容已存在于本地计算机上。 因此，只需在相应目录中创建配置文件，并在代码中引用它，即可连接到工作区。 要继续使用包含文件和脚本的本地目录，请在[“experiment.submit”](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py)Python 命令中指定该目录的名称或使用 `az ml project attach` CLI 命令。  例如：
 ```python
 run = exp.submit(source_directory=script_folder,
                  script='train.py', run_config=run_config_system_managed)
@@ -101,7 +101,7 @@ run = exp.submit(source_directory=script_folder,
 
   + [使用你自己的环境](tutorial-1st-experiment-sdk-setup-local.md)
   + [使用 Python 笔记本](tutorial-1st-experiment-sdk-setup.md)
-  + [使用 R Markdown](tutorial-1st-r-experiment.md) 
+  + [使用 R Markdown](https://github.com/Azure/azureml-sdk-for-r) 
   + [使用自动化机器学习](tutorial-designer-automobile-price-train-score.md) 
   + [使用设计器的拖放功能](tutorial-first-experiment-automated-ml.md) 
   + [将 ML 扩展用于 CLI](tutorial-train-deploy-model-cli.md)

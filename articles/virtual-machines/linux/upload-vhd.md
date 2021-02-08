@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 02/01/2021
 ms.author: v-johya
-ms.openlocfilehash: b8a5ff4421ac6713bdbb3b3dee3a4b71d1c9f5e7
-ms.sourcegitcommit: f45809a2120ac7a77abe501221944c4482673287
+ms.openlocfilehash: a404397e6c60164fe12bc38fbe24767498e4de67
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057647"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579542"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>使用 Azure CLI 从自定义磁盘创建 Linux VM
 
@@ -38,12 +38,12 @@ ms.locfileid: "90057647"
 若要完成以下步骤，需要：
 
 - 已准备好在 Azure 中使用的 Linux 虚拟机。 本文的[准备 VM](#prepare-the-vm) 部分介绍了如何查找有关安装 Azure Linux 代理 (waagent) 的特定于分发版的信息，通过 SSH 连接到 VM 时需要用到该代理。
-- 用于将 [Azure 认可的 Linux 分发版](endorsed-distros.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)（或参阅[关于未认可分发版的信息](create-upload-generic.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)）安装到采用 VHD 格式的虚拟磁盘的 VHD 文件。 可使用多种工具创建 VM 和 VHD：
+- 用于将 [Azure 认可的 Linux 分发版](endorsed-distros.md)（或参阅[关于未认可分发版的信息](create-upload-generic.md)）安装到采用 VHD 格式的虚拟磁盘的 VHD 文件。 可使用多种工具创建 VM 和 VHD：
   - 安装并配置 [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) 或 [KVM](https://www.linux-kvm.org/page/RunningKVM)，并注意使用 VHD 作为映像格式。 如果需要，可以使用 `qemu-img convert`[转换映像](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats)。
   - 也可以在 [Windows 10](https://docs.microsoft.com//virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) 或 [Windows Server 2012/2012 R2](https://docs.microsoft.com//previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)) 上使用 Hyper-V。
 
 > [!NOTE]
-> Azure 不支持更新的 VHDX 格式。 创建 VM 时，请将 VHD 指定为映像格式。 如果需要，可以使用 [qemu-img convert](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) 或 [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd?view=win10-ps) PowerShell cmdlet 将 VHDX 磁盘转换为 VHD。 Azure 不支持上传动态 VHD，因此，上传之前，你需要将此类磁盘转换为静态 VHD。 可以使用 [Azure VHD Utilities for GO](https://github.com/Microsoft/azure-vhd-utils-for-go) 等工具在将动态磁盘上传到 Azure 的过程中转换磁盘。
+> Azure 不支持更新的 VHDX 格式。 创建 VM 时，请将 VHD 指定为映像格式。 如果需要，可以使用 [qemu-img convert](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) 或 [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) PowerShell cmdlet 将 VHDX 磁盘转换为 VHD。 Azure 不支持上传动态 VHD，因此，上传之前，你需要将此类磁盘转换为静态 VHD。 可以使用 [Azure VHD Utilities for GO](https://github.com/Microsoft/azure-vhd-utils-for-go) 等工具在将动态磁盘上传到 Azure 的过程中转换磁盘。
 > 
 > 
 
@@ -57,20 +57,20 @@ ms.locfileid: "90057647"
 
 ## <a name="prepare-the-vm"></a>准备 VM
 
-Azure 支持各种 Linux 分发（请参阅 [Endorsed Distributions](endorsed-distros.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)（认可的分发））。 以下文章介绍了如何准备 Azure 支持的各种 Linux 分发版：
+Azure 支持各种 Linux 分发（请参阅 [Endorsed Distributions](endorsed-distros.md)（认可的分发））。 以下文章介绍了如何准备 Azure 支持的各种 Linux 分发版：
 
-* [基于 CentOS 的分发版](create-upload-centos.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)
-* [Debian Linux](debian-create-upload-vhd.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)
-* [Oracle Linux](oracle-create-upload-vhd.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)
-* [Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)
-* [SLES 和 openSUSE](suse-create-upload-vhd.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)
-* [Ubuntu](create-upload-ubuntu.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)
-* [其他：非认可的分发版](create-upload-generic.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)
+* [基于 CentOS 的分发版](create-upload-centos.md)
+* [Debian Linux](debian-create-upload-vhd.md)
+* [Oracle Linux](oracle-create-upload-vhd.md)
+* [Red Hat Enterprise Linux](redhat-create-upload-vhd.md)
+* [SLES 和 openSUSE](suse-create-upload-vhd.md)
+* [Ubuntu](create-upload-ubuntu.md)
+* [其他：非认可的分发版](create-upload-generic.md)
 
 另请参阅 [Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)，获取更多有关如何为 Azure 准备 Linux 映像的一般提示。
 
 > [!NOTE]
-> 只有在使用某个认可的分发的时候也使用 [Azure 认可的分发中的 Linux](endorsed-distros.md?toc=%2fvirtual-machines%2flinux%2ftoc.json) 中“支持的版本”下指定的配置详细信息时，[Azure 平台 SLA](https://www.azure.cn/support/sla/virtual-machines/) 才适用于运行 Linux 的 VM。
+> 只有在使用某个认可的分发的时候也使用 [Azure 认可的分发中的 Linux](endorsed-distros.md) 中“支持的版本”下指定的配置详细信息时，[Azure 平台 SLA](https://www.azure.cn/support/sla/virtual-machines/) 才适用于运行 Linux 的 VM。
 > 
 > 
 
@@ -134,6 +134,6 @@ az vm create \
 现在，应该可以使用凭据通过 SSH 从源 VM 连接到该 VM。 
 
 ## <a name="next-steps"></a>后续步骤
-准备好并上传自定义虚拟磁盘之后，可以阅读有关使用 [Resource Manager](../../azure-resource-manager/management/overview.md) 和模板的详细信息。 可能还需要向新 VM [添加数据磁盘](add-disk.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。 如果需要访问在 VM 上运行的应用程序，请务必[打开端口和终结点](nsg-quickstart.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
+准备好并上传自定义虚拟磁盘之后，可以阅读有关使用 [Resource Manager](../../azure-resource-manager/management/overview.md) 和模板的详细信息。 可能还需要向新 VM [添加数据磁盘](add-disk.md)。 如果需要访问在 VM 上运行的应用程序，请务必[打开端口和终结点](nsg-quickstart.md)。
 
 <!-- Update_Description: wording update, update meta properties, update link -->

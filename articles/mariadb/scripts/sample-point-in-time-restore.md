@@ -1,25 +1,28 @@
 ---
-title: Azure CLI 脚本 - 还原 Azure Database for MariaDB 服务器
+title: CLI 脚本 - 还原服务器 - Azure Database for MariaDB
 description: 此示例 Azure CLI 脚本演示如何将 Azure Database for MariaDB 服务器及其数据库还原到前一个时间点。
 author: WenJason
 ms.author: v-jay
-ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 origin.date: 12/02/2019
-ms.date: 04/13/2020
-ms.openlocfilehash: 76df980a6cbd0c845b3203b4daf412e5e5b57381
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.date: 02/08/2021
+ms.openlocfilehash: 5150fa82c778eeb7077b976173a5e46b9e57b26d
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126919"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503848"
 ---
 # <a name="restore-an-azure-database-for-mariadb-server-using-azure-cli"></a>使用 Azure CLI 还原 Azure Database for MariaDB 服务器
 此示例 CLI 脚本可将单个 Azure Database for MariaDB 服务器还原到前一个时间点。
 
-本文需要 Azure CLI 2.0 或更高版本。 通过运行 `az --version` 来查看版本。 请参阅[安装 Azure CLI]( /cli/install-azure-cli)，了解如何安装或升级 Azure CLI 的版本。 
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
+
+- 本文需要 Azure CLI 版本 2.0 或更高版本。
 
 ## <a name="sample-script"></a>示例脚本
 在此示例脚本中，编辑突出显示的行，将管理员用户名和密码更新为你自己的。 将 `az monitor` 命令中使用的订阅 ID 替换为自己的订阅 ID。
@@ -71,4 +74,4 @@ az group delete --name myresourcegroup
 
 ## <a name="next-steps"></a>后续步骤
 - 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/)。
-- 尝试其他脚本：[Azure Database for MariaDB 的 Azure CLI 示例](../sample-scripts-azure-cli.md)
+- 请尝试其他脚本：[Azure Database for MariaDB 的 Azure CLI 示例](../sample-scripts-azure-cli.md)

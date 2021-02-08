@@ -4,15 +4,15 @@ description: 事件网格安全基线为实现 Azure 安全基准中指定的安
 author: Johnnytechn
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/18/2021
+ms.date: 02/04/2021
 ms.author: v-johya
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9c65d1aed4a27cbcdf2e52e153470d46efd28912
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: 146ff9cbdab4fbdd81da58f462b6d8628bf30471
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751142"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579502"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>事件网格的 Azure 安全基线
 
@@ -257,9 +257,9 @@ ms.locfileid: "98751142"
 
 - [授权访问事件网格资源](security-authorization.md)
 
-- [如何使用 PowerShell 获取 Azure AD 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Azure 安全中心监视**：是
 
@@ -638,7 +638,7 @@ ms.locfileid: "98751142"
 
 Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 格式导出模板，应该对其进行检查，以在部署前确保配置满足组织的安全要求。
 
-- [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias)
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 

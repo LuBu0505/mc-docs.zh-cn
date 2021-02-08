@@ -4,19 +4,19 @@ description: Azure 容器实例服务的计算和内存资源在不同 Azure 区
 ms.topic: article
 origin.date: 04/27/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/08/2021
 ms.author: v-yeche
 ms.custom: references_regions
-ms.openlocfilehash: 9d66ebd319f2035dec492b712f6a44cf7a0f2f0d
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 08d9fb1d0306b2748937c72ffb80368b92e26598
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021678"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580618"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure 容器实例在 Azure 区域的资源可用性
 
-本文按目标操作系统详细介绍了 Azure 容器实例计算、内存和存储资源在 Azure 区域中的可用性。 有关 Azure 容器实例常规可用区域的列表，请参阅[可用区域](https://azure.microsoft.com/global-infrastructure/services/?products=container-instances)。
+本文按目标操作系统详细介绍了 Azure 容器实例计算、内存和存储资源在 Azure 区域中的可用性。 有关 Azure 容器实例常规可用区域的列表，请参阅[可用区域](https://azure.microsoft.com/global-infrastructure/services/?products=container-instances&regions=china-non-regional,china-east,china-east-2,china-north,china-north-2)。
 
 提供的值是指部署一个[容器组](container-instances-container-groups.md)时可以使用的最大资源。 在本文发布时，值是最新的。
 
@@ -91,4 +91,4 @@ ms.locfileid: "98021678"
 
 [azure-support]: https://support.azure.cn/support/support-azure/
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -5,17 +5,17 @@ ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 11/04/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/08/2021
 ms.testscope: yes
 ms.testdate: 09/28/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 7ca1efacf6cb7eec5adfc4c9c07b44600d0ed308
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 58a77338a5acefbe4b80552a555dc3d04bee828a
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230239"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580513"
 ---
 <!--VERIFIED SUCCESSFULLY-->
 <!--UPDATE CAREFULLY-->
@@ -140,7 +140,7 @@ Azure Cosmos DB 是完全托管的云原生数据库服务，仅针对数据库�
 |**项目** |**使用情况（月）**|**费率** |**每月成本** |
 |---------|---------|---------|-------|
 |中国北部容器的吞吐量帐单（所有区域都可写入）       | 10K RU/秒 * 24 * 31    |每 100 RU/秒每小时 0.102 元    |7589 元 |
-|3 个其他区域 - 中国东部、中国北部 2 和中国东部 2（所有区域均可写入）的吞吐量帐单        | （3 * 10K RU/秒 * 24 * 31    |每 100 RU/秒每小时 0.102 元   |22,766.4 元 |
+|3 个其他区域 - 中国东部、中国北部 2 和中国东部 2（所有区域均可写入）的吞吐量帐单        | 3 * 10K RU/秒 * 24 * 31    |每 100 RU/秒每小时 0.102 元   |22,766.4 元 |
 |中国北部容器的存储帐单      | 250 GB    |2\.576 元/GB  |644 元|
 |3 个其他区域 - 中国东部、中国北部 2 和中国东部 2 的存储帐单      | 3 * 250 GB    |2\.576 元/GB  |1,932 元|
 |**总计**     |     |  |**32,931.4 元**|
@@ -307,4 +307,4 @@ Azure Cosmos DB 是完全托管的云原生数据库服务，仅针对数据库�
 * 详细了解如何[优化查询成本](./optimize-cost-reads-writes.md)
 * 详细了解[优化多区域 Azure Cosmos 帐户的成本](optimize-cost-regions.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

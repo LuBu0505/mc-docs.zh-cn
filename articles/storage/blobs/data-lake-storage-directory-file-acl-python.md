@@ -3,19 +3,19 @@ title: 用于文件和 ACL 的 Azure Data Lake Storage Gen2 Python SDK
 description: 在启用了分层命名空间 (HNS) 的存储帐户中使用 Python 来管理目录和文件以及目录访问控制列表 (ACL)。
 author: WenJason
 ms.service: storage
-origin.date: 09/10/2020
-ms.date: 12/14/2020
+origin.date: 01/22/2021
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
-ms.openlocfilehash: 40bdfeea37add4fb2d634eae5677aa3daef911c2
-ms.sourcegitcommit: a8afac9982deafcf0652c63fe1615ba0ef1877be
+ms.openlocfilehash: f2d7a85e96f16fe8cb81f59a76d9a7addad4c6da
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96850809"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503904"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Python 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
 
@@ -57,14 +57,16 @@ from azure.storage.filedatalake._models import ContentSettings
 此示例使用帐户密钥创建 DataLakeServiceClient 实例。
 
 ```python
-try:  
-    global service_client
-        
-    service_client = DataLakeServiceClient(account_url="{}://{}.dfs.core.chinacloudapi.cn".format(
-        "https", storage_account_name), credential=storage_account_key)
+def initialize_storage_account(storage_account_name, storage_account_key):
     
-except Exception as e:
-    print(e)
+    try:  
+        global service_client
+
+        service_client = DataLakeServiceClient(account_url="{}://{}.dfs.core.chinacloudapi.cn".format(
+            "https", storage_account_name), credential=storage_account_key)
+    
+    except Exception as e:
+        print(e)
 ```
  
 - 将 `storage_account_name` 占位符值替换为存储帐户的名称。
@@ -125,7 +127,7 @@ def create_directory():
         file_system_client.create_directory("my-directory")
     
     except Exception as e:
-     print(e) 
+     print(e)
 ```
 
 ## <a name="rename-or-move-a-directory"></a>重命名或移动目录
@@ -145,7 +147,7 @@ def rename_directory():
        directory_client.rename_directory(rename_destination=directory_client.file_system_name + '/' + new_dir_name)
 
     except Exception as e:
-     print(e) 
+     print(e)
 ```
 
 ## <a name="delete-a-directory"></a>删除目录
@@ -162,7 +164,7 @@ def delete_directory():
 
         directory_client.delete_directory()
     except Exception as e:
-     print(e) 
+     print(e)
 ```
 
 
@@ -181,7 +183,7 @@ def upload_file_to_directory():
         directory_client = file_system_client.get_directory_client("my-directory")
         
         file_client = directory_client.create_file("uploaded-file.txt")
-        local_file = open("C:\\file-to-upload.txt",'rb')
+        local_file = open("C:\\file-to-upload.txt",'r')
 
         file_contents = local_file.read()
 
@@ -190,7 +192,7 @@ def upload_file_to_directory():
         file_client.flush_data(len(file_contents))
 
     except Exception as e:
-      print(e) 
+      print(e)
 ```
 
 > [!TIP]
@@ -210,14 +212,14 @@ def upload_file_to_directory_bulk():
         
         file_client = directory_client.get_file_client("uploaded-file.txt")
 
-        local_file = open("C:\\file-to-upload.txt",'rb')
+        local_file = open("C:\\file-to-upload.txt",'r')
 
         file_contents = local_file.read()
 
         file_client.upload_data(file_contents, overwrite=True)
 
     except Exception as e:
-      print(e) 
+      print(e)
 ```
 
 ## <a name="download-from-a-directory"></a>从目录下载 
@@ -246,6 +248,7 @@ def download_file_from_directory():
     except Exception as e:
      print(e)
 ```
+
 ## <a name="list-directory-contents"></a>列出目录内容
 
 通过调用 **FileSystemClient.get_paths** 方法列出目录内容，然后枚举结果。
@@ -264,7 +267,7 @@ def list_directory_contents():
             print(path.name + '\n')
 
     except Exception as e:
-     print(e) 
+     print(e)
 ```
 
 ## <a name="manage-access-control-lists-acls"></a>管理访问控制列表 (ACL)
@@ -303,7 +306,7 @@ def manage_directory_permissions():
         print(acl_props['permissions'])
     
     except Exception as e:
-     print(e) 
+     print(e)
 ```
 
 还可以获取和设置容器根目录的 ACL。 若要获取根目录，请调用 **FileSystemClient._get_root_directory_client** 方法。
@@ -339,7 +342,7 @@ def manage_file_permissions():
         print(acl_props['permissions'])
 
     except Exception as e:
-     print(e) 
+     print(e)
 ```
 
 ### <a name="set-an-acl-recursively"></a>以递归方式设置 ACL

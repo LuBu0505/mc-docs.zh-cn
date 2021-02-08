@@ -4,19 +4,18 @@ description: 高级监视，包括 edgeHub 和 edgeAgent 报告属性及自动�
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-origin.date: 04/21/2020
-ms.date: 11/13/2020
+ms.date: 02/02/2021
 ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: a28a8807b3cfcd953322f7b8cb1a16f93dc621e9
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 86c0038f38dc23e2297bd01784faa2f5c33e7da1
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300618"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579625"
 ---
 # <a name="monitor-iot-edge-deployments"></a>监视 IoT Edge 部署
 

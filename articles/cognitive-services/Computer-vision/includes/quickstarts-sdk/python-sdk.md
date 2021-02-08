@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: include
-ms.date: 12/28/2020
+ms.date: 02/04/2021
 ms.author: v-johya
-ms.openlocfilehash: c9574535ac32df3cf87c2d4c5203c1af3a13b644
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 3295e05f2276373be5abd860968a449e43283745
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856834"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579832"
 ---
 <a name="HOLTop"></a>
 
@@ -41,6 +41,12 @@ ms.locfileid: "97856834"
 
 ```console
 pip install --upgrade azure-cognitiveservices-vision-computervision
+```
+
+同时，安装 Pillow 库。
+
+```console
+pip install pillow
 ```
 
 ### <a name="create-a-new-python-application"></a>创建新的 Python 应用程序
@@ -13585,7 +13591,7 @@ python quickstart-file.py
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 > [!div class="nextstepaction"]

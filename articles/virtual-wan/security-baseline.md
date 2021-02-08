@@ -5,17 +5,17 @@ ms.service: virtual-wan
 ms.topic: conceptual
 origin.date: 11/24/2020
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 12/14/2020
 ms.author: v-yeche
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 27cc7c7b2a500ce44c53de4780497735fb1b5762
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: a20b7efdc003a81e78150e29de2e56506b4e419a
+ms.sourcegitcommit: 7fc72b8afbdf9ad5e53922f489229e54282214b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97105585"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540356"
 ---
 # <a name="azure-security-baseline-for-virtual-wan"></a>适用于虚拟 WAN 的 Azure 安全基线
 
@@ -69,7 +69,7 @@ ms.locfileid: "97105585"
 
 <!--Not Available on - [Manage Azure DDoS Protection Standard using the Azure portal](https://docs.azure.cn/virtual-network/manage-ddos-protection)-->
 
-- [Azure 安全中心建议](../security-center/recommendations-reference.md#recs-network)
+- [Azure 安全中心建议](../security-center/recommendations-reference.md#recs-networking)
 
 **Azure 安全中心监视**：是
 

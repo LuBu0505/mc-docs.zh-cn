@@ -4,16 +4,16 @@ description: 排查在 Microsoft Azure Stack Hub 中使用网络虚拟设备 (NV
 author: WenJason
 ms.author: v-jay
 origin.date: 11/22/2020
-ms.date: 12/07/2020
+ms.date: 02/08/2021
 ms.topic: article
 ms.reviewer: sranthar
 ms.lastreviewed: 11/22/2020
-ms.openlocfilehash: f2a5fb618ba1b27ba56fdaa27a829ff69b862f62
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: 4be8e685d22da146e2db9b3608faf5b1943eeb88
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507445"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503910"
 ---
 # <a name="troubleshoot-network-virtual-appliance-problems"></a>排查网络虚拟设备问题
 
@@ -188,4 +188,4 @@ NVA 的供应商为 NVA 及其与 Azure Stack Hub 平台的集成提供技术支
 
 ### <a name="create-a-support-ticket"></a>创建支持票证
 
-如果前面的步骤无法解决问题，请创建[支持票证](../operator/azure-stack-manage-basics.md#where-to-get-support)并使用[按需日志收集工具](../operator/azure-stack-diagnostic-log-collection-overview.md)来提供日志。
+如果前面的步骤无法解决问题，请创建[支持票证](../operator/azure-stack-manage-basics.md#where-to-get-support)并使用[按需日志收集工具](../operator/diagnostic-log-collection.md)来提供日志。

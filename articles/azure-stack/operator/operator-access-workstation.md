@@ -3,17 +3,17 @@ title: Azure Stack Hub 操作员访问工作站
 description: 了解如何下载和配置 Azure Stack Hub 操作员访问工作站。
 author: WenJason
 ms.topic: article
-origin.date: 11/04/2020
-ms.date: 12/07/2020
+origin.date: 1/15/2021
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.reviewer: asganesh
-ms.lastreviewed: 11/04/2020
-ms.openlocfilehash: 26a5770b7cbb5f9ec1a5d9327fd14071b09f68b7
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.lastreviewed: 1/15/2021
+ms.openlocfilehash: 56ab5588e21a75425c53152bb5b81e66d84e756f
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507176"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503983"
 ---
 # <a name="azure-stack-hub-operator-access-workstation"></a>Azure Stack Hub 操作员访问工作站 
 
@@ -49,7 +49,7 @@ param(
     $DownloadedOAWZipFilePath
 )
 
-$expectedHash = '459D8BA232E4315372FCE7CDD705057D051C1BD60772FC36E0136C741C27A273'
+$expectedHash = '73E16995B79433E79F9EFA9A292443296D112B24B4D86A060FCB4C9403B8D014'
 $actualHash = (Get-FileHash -Path $DownloadedOAWZipFilePath).Hash
 
 Write-Host "Expected hash: $expectedHash"

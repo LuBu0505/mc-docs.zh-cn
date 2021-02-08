@@ -12,10 +12,6 @@
 - name: 概念
   expanded: true
   items:
-    - name: 计划云应用集成
-      items:
-        - name: 开发人员指南
-          href: developer-guidance-for-integrating-applications.md
     - name: 应用程序安全性
       items:
         - name: 云应用可见性和控制

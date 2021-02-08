@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 01/14/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 5b331454d81d2353ab67cebf64a10a549fe8f4fa
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 0ee5b114872a14f1b4a9b8b1add99d242bf36aad
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195235"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540843"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>快速入门：使用应用的标识获取令牌并从 Python 控制台应用中调用 Microsoft Graph API
 
@@ -42,7 +42,7 @@ ms.locfileid: "98195235"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
-> 1. 转到新的 [Azure 门户 - 应用注册](https://portal.azure.cn/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonDaemonQuickstartPage/sourceType/docs)窗格。
+> 1. 转到 <a href="https://portal.azure.cn/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonDaemonQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入门体验。
 > 1. 输入应用程序的名称并选择“注册”。
 > 1. 遵照说明下载内容，并只需单击一下自动配置新应用程序。
 >
@@ -225,4 +225,3 @@ if not result:
 
 > [!div class="nextstepaction"]
 > [调用 Web API 的守护程序应用程序](scenario-daemon-overview.md)
-

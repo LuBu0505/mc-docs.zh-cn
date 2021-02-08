@@ -4,15 +4,15 @@ description: 备份的 Azure 安全基线
 author: Johnnytechn
 ms.service: security
 ms.topic: conceptual
-ms.date: 01/07/2021
+ms.date: 02/02/2021
 ms.author: v-johya
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 70cdb87c7d1b3127eb8887de054dc885b6dee826
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 66bc0c2dc9bbc6c8cf487bd9f78ea41dd1309eb9
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023024"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579567"
 ---
 # <a name="azure-security-baseline-for-backup"></a>备份的 Azure 安全基线
 
@@ -166,7 +166,7 @@ ms.locfileid: "98023024"
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2.4：从操作系统收集安全日志
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -232,7 +232,7 @@ ms.locfileid: "98023024"
 
 ### <a name="210-enable-command-line-audit-logging"></a>2.10：启用命令行审核日志记录
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -308,7 +308,7 @@ ms.locfileid: "98023024"
 
 **指导**：使用配置了 Azure AD 多重身份验证 (MFA) 的特权访问工作站 (PAW) 来登录和配置启用了 Azure 备份的资源。
 
-- [特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [规划基于云的 Azure AD 多重身份验证部署](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -527,7 +527,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自动操作系统修补管理解决方案
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -535,7 +535,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3：部署第三方自动软件修补管理解决方案
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -543,7 +543,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4：比较连续进行的漏洞扫描
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -627,7 +627,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：监视计算资源中未批准的软件应用程序
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -635,7 +635,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：删除未批准的 Azure 资源和软件应用程序
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -643,7 +643,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 ### <a name="68-use-only-approved-applications"></a>6.8：仅使用已批准的应用程序
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -663,7 +663,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 ### <a name="610-implement-approved-application-list"></a>6.10：实施已批准的应用程序列表
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -681,7 +681,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制用户在计算资源中执行脚本的功能
 
-**指导**：不适用；此建议适用于计算资源。
+**指南**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 

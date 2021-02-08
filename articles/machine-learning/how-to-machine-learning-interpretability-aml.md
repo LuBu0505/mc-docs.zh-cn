@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 26363a5f371f9712ebfedfcd67bc4fd8ba478abf
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 0c2cba91683c3a74504c86c8c6973897156c0cf6
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021810"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804348"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>使用可解释性包通过 Python 解释 ML 模型和预测（预览版）
 
@@ -491,7 +491,7 @@ ExplanationDashboard(global_explanation, model, datasetX=x_test)
 
          # WARNING: to install this, g++ needs to be available on the Docker image and is not by default (look at the next cell)
 
-         azureml_pip_packages = ['azureml-defaults', 'azureml-contrib-interpret', 'azureml-core', 'azureml-telemetry', 'azureml-interpret']
+         azureml_pip_packages = ['azureml-defaults', 'azureml-core', 'azureml-telemetry', 'azureml-interpret']
  
 
          # specify CondaDependencies obj

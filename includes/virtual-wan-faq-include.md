@@ -6,17 +6,17 @@ ms.service: virtual-wan
 ms.topic: include
 origin.date: 09/02/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 08/03/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 7c45c3d48cf0d3a1661fc2e6be47057c80c38b1b
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 22a2aaa2e271573613fc4348bf62fe4b9deaf8cb
+ms.sourcegitcommit: 7fc72b8afbdf9ad5e53922f489229e54282214b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024249"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99541052"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure 虚拟 WAN 是否已正式发布 (GA)？
 
@@ -202,6 +202,9 @@ ms.locfileid: "98024249"
 ### <a name="what-is-the-total-vpn-throughput-of-a-vpn-tunnel-and-a-connection"></a>一个 VPN 隧道和一个连接的总 VPN 吞吐量是多少？
 
 一个中心的总 VPN 吞吐量最多为 20 Gbps，具体取决于为 VPN 网关选择的缩放单元。 吞吐量由所有现有连接共享。 连接中的每个隧道最多可以支持 1 Gbps。
+
+### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>可在 VPN 连接上使用 NAT-T 吗？
+可以，支持 NAT 遍历 (NAT-T)。 虚拟 WAN VPN 网关将不再指向/来自 IPsec 隧道的内部数据包上执行任何类似 NAT 的功能。 在此配置中，请确保本地设备启动 IPSec 隧道。
 
 ### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-portal-how-do-i-configure-that"></a>我在门户中看不到虚拟中心的 20 Gbps 设置。 我该如何配置它？
 

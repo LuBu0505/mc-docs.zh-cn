@@ -3,19 +3,19 @@ title: 用于文件和 ACL 的 Azure Data Lake Storage Gen2 Java SDK
 description: 使用用于 Java 的 Azure 存储库在启用了分层命名空间 (HNS) 的存储帐户中管理目录和文件以及目录访问控制列表 (ACL)。
 author: WenJason
 ms.service: storage
-origin.date: 09/10/2020
-ms.date: 12/14/2020
+origin.date: 01/11/2021
+ms.date: 02/08/2021
 ms.custom: devx-track-java
 ms.author: v-jay
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: c3a02f6518329c5d3489133bb46f1e62802e759d
-ms.sourcegitcommit: a8afac9982deafcf0652c63fe1615ba0ef1877be
+ms.openlocfilehash: 6c08dd63588ebd855ad190d44c2322f988e90844
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96850813"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99504010"
 ---
 # <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Java 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
 
@@ -38,7 +38,6 @@ ms.locfileid: "96850813"
 接下来，将这些 import 语句添加到代码文件。
 
 ```java
-import com.azure.core.credential.TokenCredential;
 import com.azure.storage.common.StorageSharedKeyCredential;
 import com.azure.storage.file.datalake.DataLakeDirectoryClient;
 import com.azure.storage.file.datalake.DataLakeFileClient;
@@ -46,11 +45,16 @@ import com.azure.storage.file.datalake.DataLakeFileSystemClient;
 import com.azure.storage.file.datalake.DataLakeServiceClient;
 import com.azure.storage.file.datalake.DataLakeServiceClientBuilder;
 import com.azure.storage.file.datalake.models.ListPathsOptions;
+import com.azure.storage.file.datalake.models.PathItem;
+import com.azure.storage.file.datalake.models.AccessControlChangeCounters;
+import com.azure.storage.file.datalake.models.AccessControlChangeResult;
+import com.azure.storage.file.datalake.models.AccessControlType;
 import com.azure.storage.file.datalake.models.PathAccessControl;
 import com.azure.storage.file.datalake.models.PathAccessControlEntry;
-import com.azure.storage.file.datalake.models.PathItem;
 import com.azure.storage.file.datalake.models.PathPermissions;
+import com.azure.storage.file.datalake.models.PathRemoveAccessControlEntry;
 import com.azure.storage.file.datalake.models.RolePermissions;
+import com.azure.storage.file.datalake.options.PathSetAccessControlRecursiveOptions;
 ```
 
 ## <a name="connect-to-the-account"></a>连接到帐户 
@@ -114,7 +118,7 @@ static public DataLakeServiceClient GetDataLakeServiceClient
 此示例创建一个名为 `my-file-system` 的容器。 
 
 ```java
-static public DataLakeFileSystemClient CreateFileSystem
+public DataLakeFileSystemClient CreateFileSystem
 (DataLakeServiceClient serviceClient){
 
     return serviceClient.createFileSystem("my-file-system");
@@ -128,16 +132,16 @@ static public DataLakeFileSystemClient CreateFileSystem
 此示例向容器添加名为 `my-directory` 的目录，然后添加名为 `my-subdirectory` 的子目录。 
 
 ```java
-static public DataLakeDirectoryClient CreateDirectory
+public DataLakeDirectoryClient CreateDirectory
 (DataLakeServiceClient serviceClient, String fileSystemName){
-    
+
     DataLakeFileSystemClient fileSystemClient =
     serviceClient.getFileSystemClient(fileSystemName);
 
     DataLakeDirectoryClient directoryClient =
         fileSystemClient.createDirectory("my-directory");
 
-    return directoryClient.createSubDirectory("my-subdirectory");
+    return directoryClient.createSubdirectory("my-subdirectory");
 }
 ```
 
@@ -148,28 +152,26 @@ static public DataLakeDirectoryClient CreateDirectory
 此示例将某个子目录重命名为名称 `my-subdirectory-renamed`。
 
 ```java
-static public DataLakeDirectoryClient
+public DataLakeDirectoryClient
     RenameDirectory(DataLakeFileSystemClient fileSystemClient){
 
     DataLakeDirectoryClient directoryClient =
         fileSystemClient.getDirectoryClient("my-directory/my-subdirectory");
 
-    return directoryClient.rename(
-        fileSystemClient.getFileSystemName(),"my-subdirectory-renamed");
+    return directoryClient.rename(fileSystemClient.getFileSystemName(),"my-subdirectory-renamed");
 }
 ```
 
 此示例将名为 `my-subdirectory-renamed` 的目录移到名为 `my-directory-2` 的目录的子目录中。 
 
 ```java
-static public DataLakeDirectoryClient MoveDirectory
+public DataLakeDirectoryClient MoveDirectory
 (DataLakeFileSystemClient fileSystemClient){
 
     DataLakeDirectoryClient directoryClient =
         fileSystemClient.getDirectoryClient("my-directory/my-subdirectory-renamed");
 
-    return directoryClient.rename(
-        fileSystemClient.getFileSystemName(),"my-directory-2/my-subdirectory-renamed");                
+    return directoryClient.rename(fileSystemClient.getFileSystemName(),"my-directory-2/my-subdirectory-renamed");                
 }
 ```
 
@@ -180,8 +182,8 @@ static public DataLakeDirectoryClient MoveDirectory
 此示例删除名为 `my-directory` 的目录。   
 
 ```java
-static public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient){
-        
+public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient){
+    
     DataLakeDirectoryClient directoryClient =
         fileSystemClient.getDirectoryClient("my-directory");
 
@@ -196,16 +198,17 @@ static public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient){
 此示例将文本文件上传到名为 `my-directory` 的目录。
 
 ```java
-static public void UploadFile(DataLakeFileSystemClient fileSystemClient) 
+public void UploadFile(DataLakeFileSystemClient fileSystemClient) 
     throws FileNotFoundException{
-        
+    
     DataLakeDirectoryClient directoryClient =
         fileSystemClient.getDirectoryClient("my-directory");
 
     DataLakeFileClient fileClient = directoryClient.createFile("uploaded-file.txt");
 
-    File file = new File("C:\\mytestfile.txt");
+    File file = new File("C:\\Users\\constoso\\mytestfile.txt");
 
+ //   InputStream targetStream = new FileInputStream(file);
     InputStream targetStream = new BufferedInputStream(new FileInputStream(file));
 
     long fileSize = file.length();
@@ -226,18 +229,17 @@ static public void UploadFile(DataLakeFileSystemClient fileSystemClient)
 使用 DataLakeFileClient.uploadFromFile 方法上传大型文件，无需多次调用 DataLakeFileClient.append 方法 。
 
 ```java
-static public void UploadFileBulk(DataLakeFileSystemClient fileSystemClient) 
+public void UploadFileBulk(DataLakeFileSystemClient fileSystemClient) 
     throws FileNotFoundException{
-        
+    
     DataLakeDirectoryClient directoryClient =
         fileSystemClient.getDirectoryClient("my-directory");
 
     DataLakeFileClient fileClient = directoryClient.getFileClient("uploaded-file.txt");
 
-    fileClient.uploadFromFile("C:\\mytestfile.txt");
+    fileClient.uploadFromFile("C:\\Users\\contoso\\mytestfile.txt");
 
-    }
-
+}
 ```
 
 ## <a name="download-from-a-directory"></a>从目录下载
@@ -245,8 +247,8 @@ static public void UploadFileBulk(DataLakeFileSystemClient fileSystemClient)
 首先，创建表示要下载的文件的一个 **DataLakeFileClient** 实例。 使用 **DataLakeFileClient.read** 方法读取该文件。 使用任何 .NET 文件处理 API 将来自流的字节保存到文件。 
 
 ```java
-static public void DownloadFile(DataLakeFileSystemClient fileSystemClient)
-    throws FileNotFoundException, java.io.IOException{
+public void DownloadFile(DataLakeFileSystemClient fileSystemClient)
+  throws FileNotFoundException, java.io.IOException{
 
     DataLakeDirectoryClient directoryClient =
         fileSystemClient.getDirectoryClient("my-directory");
@@ -254,14 +256,16 @@ static public void DownloadFile(DataLakeFileSystemClient fileSystemClient)
     DataLakeFileClient fileClient = 
         directoryClient.getFileClient("uploaded-file.txt");
 
-    File file = new File("C:\\downloadedFile.txt");
+    File file = new File("C:\\Users\\contoso\\downloadedFile.txt");
 
     OutputStream targetStream = new FileOutputStream(file);
-
+    
     fileClient.read(targetStream);
 
     targetStream.close();
-      
+
+    fileClient.flush(file.length());
+    
 }
 
 ```
@@ -271,16 +275,17 @@ static public void DownloadFile(DataLakeFileSystemClient fileSystemClient)
 此示例输出名为 `my-directory` 的目录中每个文件的路径。
 
 ```java
-static public void ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient){
-        
+public void ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient){
+    
     ListPathsOptions options = new ListPathsOptions();
     options.setPath("my-directory");
-     
+ 
     PagedIterable<PathItem> pagedIterable = 
     fileSystemClient.listPaths(options, null);
 
     java.util.Iterator<PathItem> iterator = pagedIterable.iterator();
-       
+
+   
     PathItem item = iterator.next();
 
     while (item != null)
@@ -292,7 +297,7 @@ static public void ListFilesInDirectory(DataLakeFileSystemClient fileSystemClien
         {
             break;
         }
-            
+        
         item = iterator.next();
     }
 
@@ -314,40 +319,40 @@ static public void ListFilesInDirectory(DataLakeFileSystemClient fileSystemClien
 > 如果你的应用程序通过使用 Azure Active Directory (Azure AD) 来授予访问权限，请确保已向应用程序用来授权访问的安全主体分配了[存储 Blob 数据所有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改它们所带来的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](./data-lake-storage-access-control.md)。
 
 ```java
-static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient){
+public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient){
 
-    DataLakeDirectoryClient directoryClient =
-        fileSystemClient.getDirectoryClient("my-directory");
+      DataLakeDirectoryClient directoryClient =
+        fileSystemClient.getDirectoryClient("");
 
-    PathAccessControl directoryAccessControl =
-        directoryClient.getAccessControl();
+      PathAccessControl directoryAccessControl =
+          directoryClient.getAccessControl();
 
-    List<PathAccessControlEntry> pathPermissions = directoryAccessControl.getAccessControlList();
-       
-    System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
-             
-    RolePermissions groupPermission = new RolePermissions();
-    groupPermission.setExecutePermission(true).setReadPermission(true);
-  
-    RolePermissions ownerPermission = new RolePermissions();
-    ownerPermission.setExecutePermission(true).setReadPermission(true).setWritePermission(true);
-  
-    RolePermissions otherPermission = new RolePermissions();
-    otherPermission.setReadPermission(true);
-  
-    PathPermissions permissions = new PathPermissions();
-  
-    permissions.setGroup(groupPermission);
-    permissions.setOwner(ownerPermission);
-    permissions.setOther(otherPermission);
-
-    directoryClient.setPermissions(permissions, null, null);
-
-    pathPermissions = directoryClient.getAccessControl().getAccessControlList();
+      List<PathAccessControlEntry> pathPermissions = directoryAccessControl.getAccessControlList();
      
-    System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
+      System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
+           
+      RolePermissions groupPermission = new RolePermissions();
+      groupPermission.setExecutePermission(true).setReadPermission(true);
 
-}
+      RolePermissions ownerPermission = new RolePermissions();
+      ownerPermission.setExecutePermission(true).setReadPermission(true).setWritePermission(true);
+
+      RolePermissions otherPermission = new RolePermissions();
+      otherPermission.setReadPermission(true);
+
+      PathPermissions permissions = new PathPermissions();
+
+      permissions.setGroup(groupPermission);
+      permissions.setOwner(ownerPermission);
+      permissions.setOther(otherPermission);
+
+      directoryClient.setPermissions(permissions, null, null);
+
+      pathPermissions = directoryClient.getAccessControl().getAccessControlList();
+   
+      System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
+
+  }
 
 ```
 
@@ -361,43 +366,43 @@ static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient
 > 如果你的应用程序通过使用 Azure Active Directory (Azure AD) 来授予访问权限，请确保已向应用程序用来授权访问的安全主体分配了[存储 Blob 数据所有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改它们所带来的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](./data-lake-storage-access-control.md)。
 
 ```java
-static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
+public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
 
-    DataLakeDirectoryClient directoryClient =
-        fileSystemClient.getDirectoryClient("my-directory");
+     DataLakeDirectoryClient directoryClient =
+       fileSystemClient.getDirectoryClient("my-directory");
 
-    DataLakeFileClient fileClient = 
-        directoryClient.getFileClient("uploaded-file.txt");
+     DataLakeFileClient fileClient = 
+       directoryClient.getFileClient("uploaded-file.txt");
 
-    PathAccessControl fileAccessControl =
-        fileClient.getAccessControl();
+     PathAccessControl fileAccessControl =
+         fileClient.getAccessControl();
 
-    List<PathAccessControlEntry> pathPermissions = fileAccessControl.getAccessControlList();
-     
-    System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
-           
-    RolePermissions groupPermission = new RolePermissions();
-    groupPermission.setExecutePermission(true).setReadPermission(true);
+   List<PathAccessControlEntry> pathPermissions = fileAccessControl.getAccessControlList();
+  
+   System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
+        
+   RolePermissions groupPermission = new RolePermissions();
+   groupPermission.setExecutePermission(true).setReadPermission(true);
 
-    RolePermissions ownerPermission = new RolePermissions();
-    ownerPermission.setExecutePermission(true).setReadPermission(true).setWritePermission(true);
+   RolePermissions ownerPermission = new RolePermissions();
+   ownerPermission.setExecutePermission(true).setReadPermission(true).setWritePermission(true);
 
-    RolePermissions otherPermission = new RolePermissions();
-    otherPermission.setReadPermission(true);
+   RolePermissions otherPermission = new RolePermissions();
+   otherPermission.setReadPermission(true);
 
-    PathPermissions permissions = new PathPermissions();
+   PathPermissions permissions = new PathPermissions();
 
-    permissions.setGroup(groupPermission);
-    permissions.setOwner(ownerPermission);
-    permissions.setOther(otherPermission);
+   permissions.setGroup(groupPermission);
+   permissions.setOwner(ownerPermission);
+   permissions.setOther(otherPermission);
 
-    fileClient.setPermissions(permissions, null, null);
+   fileClient.setPermissions(permissions, null, null);
 
-    pathPermissions = fileClient.getAccessControl().getAccessControlList();
-   
-    System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
+   pathPermissions = fileClient.getAccessControl().getAccessControlList();
 
-}
+   System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
+
+ }
 ```
 
 ### <a name="set-an-acl-recursively"></a>以递归方式设置 ACL

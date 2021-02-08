@@ -5,14 +5,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 12/11/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/08/2021
 ms.author: v-yeche
-ms.openlocfilehash: 83199d24d07ce8a1451816d328f112b75a1f8095
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 639a35b7bb90b9cdf313f324e4e9e3c2a2d8c571
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230116"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580619"
 ---
 <!--Verified successfully-->
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB 中自动缩放预配吞吐量的常见问题解答
@@ -44,10 +44,12 @@ ms.locfileid: "98230116"
 
 在具有多个写入区域的帐户中，每 100 RU/s 的自动缩放速率与标准（手动）预配的多写入区域吞吐量速率相同。 在帐单上，你可看到现有的多写入区域计量。 由于速率相同，因此如果你使用自动缩放，你可看到与标准吞吐量相同的数量。
 
-<!--Not Available on ### Does autoscale work with reserved capacity?-->
+<!--NOT AVAILABLE ON ### Does autoscale work with reserved capacity?-->
+<!--NOT AVAILABLE ON [ratio of the specific region](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)-->
+<!--NOT AVAILABLE ON [Azure Cosmos DB reserved capacity](cosmos-db-reserved-capacity.md)-->
 
 ### <a name="does-autoscale-work-with-free-tier"></a>自动缩放是否适用于免费层？
-是的。 在免费层，可以对容器使用自动缩放吞吐量。 尚不支持具有自定义最大 RU/s 的自动缩放共享吞吐量数据库。 查看[免费层计费与自动缩放一起工作](understand-your-bill.md#billing-examples-with-free-tier-accounts)的方式。
+是的。 在免费层，可以对容器使用自动缩放吞吐量。 尚不支持具有自定义最大 RU/s 的自动缩放共享吞吐量数据库。 查看[免费层计费与自动缩放一起工作](understand-your-bill.md#azure-free-tier)的方式。
 
 ### <a name="is-autoscale-supported-for-all-apis"></a>是否所有 API 都支持自动缩放？
 是的，所有 API 都支持自动缩放：Core (SQL)、Gremlin、Table、Cassandra 以及 MongoDB API。
@@ -151,4 +153,4 @@ Azure Cosmos DB 在一个共享吞吐量数据库中最多可实施 25 个容器
 * 了解[使用自动缩放预配吞吐量的优势](provision-throughput-autoscale.md#benefits-of-autoscale)。
 * 详细了解[逻辑和物理分区](partitioning-overview.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

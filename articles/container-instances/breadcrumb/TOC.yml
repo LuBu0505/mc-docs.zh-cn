@@ -1,0 +1,7 @@
+- name: Azure
+  tocHref: /
+  topicHref: /index
+  items:
+    - name: 容器实例
+      tocHref: /connectors/
+      topicHref: /container-instances/index

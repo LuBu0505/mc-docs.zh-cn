@@ -4,17 +4,16 @@ description: 了解如何在 IoT 中心对下游设备（叶设备）进行身�
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-origin.date: 10/15/2020
-ms.date: 11/13/2020
+ms.date: 01/29/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 134be01e6a8304ce2a5fa7d60db42ddda2832dbe
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: aeb3470e4b05094627d723acef1e229c8160d4d0
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300481"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579505"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>通过 Azure IoT 中心对下游设备进行身份验证
 
@@ -72,7 +71,7 @@ ms.locfileid: "96300481"
 
 还可以使用[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)来完成相同的操作。 以下示例使用 [az iot hub device-identity](/cli/ext/azure-iot/iot/hub/device-identity) 命令创建具有对称密钥身份验证的新 IoT 设备，并分配父设备：
 
-```cli
+```azurecli
 az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {existing gateway device ID}
 ```
 
@@ -127,7 +126,7 @@ az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {exis
 
 还可以使用[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)来完成相同的设备创建操作。 以下示例使用 [az iot hub device-identity](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity) 命令创建具有 X.509 自签名身份验证的新 IoT 设备，并分配父设备：
 
-```cli
+```azurecli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
 ```
 
@@ -171,7 +170,7 @@ az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway 
 
 还可以使用[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)来完成相同的设备创建操作。 以下示例使用 [az iot hub device-identity](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity) 命令创建具有 X.509 CA 签名身份验证的新 IoT 设备，并分配父设备：
 
-```cli
+```azurecli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
 ```
 
@@ -192,19 +191,19 @@ az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway 
 
 所有这些组成部分共同构成了如下所示的完整连接字符串：
 
-```
+```console
 HostName=myiothub.azure-devices.cn;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz;GatewayHostName=myGatewayDevice
 ```
 
 或：
 
-```
+```console
 HostName=myiothub.azure-devices.cn;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
 得益于父/子关系，可以通过直接调用充当连接主机的网关来简化连接字符串。 例如：
 
-```
+```console
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz
 ```
 

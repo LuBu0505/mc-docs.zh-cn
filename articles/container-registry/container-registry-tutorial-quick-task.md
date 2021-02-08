@@ -7,12 +7,12 @@ author: rockboyfor
 ms.date: 12/14/2020
 ms.author: v-yeche
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: 8cfd5fe7365276f263bba41c9f5b6386ccf07eaa
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 1e65dc19f25e0e55bbe467329b8da5e4a2702983
+ms.sourcegitcommit: fda47fe846d47f30e65a048251402d873e416650
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004035"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99426609"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>教程：使用 Azure 容器注册表任务在云中生成并部署容器映像
 
@@ -77,6 +77,12 @@ cd acr-build-helloworld-node
 
 <!--Not Avaialble on https://shell.azure.com-->
 
+<!--MOONCAKE CUSTOMIZE-->
+
+[!INCLUDE [container-registry-acr-build-valid-regions-chenye.md](../../includes/container-registry-acr-build-valid-regions-chenye.md)]
+
+<!--MOONCAKE CUSTOMIZE-->
+
 ```console
 ACR_NAME=<registry-name>
 ```
@@ -86,8 +92,8 @@ ACR_NAME=<registry-name>
 ```azurecli
 RES_GROUP=$ACR_NAME # Resource Group name
 
-az group create --resource-group $RES_GROUP --location chinanorth
-az acr create --resource-group $RES_GROUP --name $ACR_NAME --sku Standard --location chinanorth
+az group create --resource-group $RES_GROUP --location chinaeast2
+az acr create --resource-group $RES_GROUP --name $ACR_NAME --sku Standard --location chinaeast2
 ```
 
 创建注册表后，使用 ACR 任务从示例代码生成容器映像。 执行 [az acr build][az-acr-build] 命令以执行快速任务：
@@ -249,7 +255,7 @@ az container create \
 ```output
 FQDN
 ----------------------------------------------
-acr-tasks-myregistry.chinanorth.azurecontainer.console.azure.cn
+acr-tasks-myregistry.chinaeast2.azurecontainer.console.azure.cn
 ```
 
 记下容器的 FQDN，后续部分将会用到它。

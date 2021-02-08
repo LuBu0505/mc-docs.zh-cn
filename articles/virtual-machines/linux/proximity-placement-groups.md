@@ -5,14 +5,14 @@ author: Johnnytechn
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 09/03/2020
+ms.date: 02/01/2021
 ms.author: v-johya
-ms.openlocfilehash: 25b3c247a2129e2784e2b9dd3973b9812eed6c19
-ms.sourcegitcommit: f45809a2120ac7a77abe501221944c4482673287
+ms.openlocfilehash: e55d5ec9cd28866e81333f9c3c14f791049fc5f5
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057677"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579611"
 ---
 <!--Verified successfully-->
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>使用 Azure CLI 将 VM 部署到邻近放置组
@@ -23,7 +23,7 @@ ms.locfileid: "90057677"
 
 
 ## <a name="create-the-proximity-placement-group"></a>创建邻近放置组
-使用 [`az ppg create`](https://docs.microsoft.com/cli/azure/ppg?view=azure-cli-latest#az-ppg-create) 创建邻近放置组。 
+使用 [`az ppg create`](/cli/ppg#az-ppg-create) 创建邻近放置组。 
 
 ```azurecli
 az group create --name myPPGGroup --location chinanorth
@@ -36,7 +36,7 @@ az ppg create \
 
 ## <a name="list-proximity-placement-groups"></a>列出邻近放置组
 
-可以使用 [az ppg list](https://docs.microsoft.com/cli/azure/ppg?view=azure-cli-latest#az-ppg-list) 来列出所有邻近放置组。
+可以使用 [az ppg list](/cli/ppg#az-ppg-list) 来列出所有邻近放置组。
 
 ```azurecli
 az ppg list -o table
@@ -44,7 +44,7 @@ az ppg list -o table
 
 ## <a name="create-a-vm"></a>创建 VM
 
-使用 [new az vm](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 在邻近放置组中创建 VM。
+使用 [new az vm](/cli/vm#az-vm-create) 在邻近放置组中创建 VM。
 
 ```azurecli
 az vm create \
@@ -57,21 +57,21 @@ az vm create \
    -l chinanorth
 ```
 
-可以使用 [az ppg show](https://docs.microsoft.com/cli/azure/ppg?view=azure-cli-latest#az-ppg-show) 查看邻近放置组中的 VM。
+可以使用 [az ppg show](/cli/ppg#az-ppg-show) 查看邻近放置组中的 VM。
 
 ```azurecli
 az ppg show --name myppg --resource-group myppggroup --query "virtualMachines"
 ```
 
 ## <a name="availability-sets"></a>可用性集
-还可以在邻近放置组中创建可用性集。 将同一 `--ppg` 参数与 [az vm availability-set create](https://docs.azure.cn/cli/vm/availability-set?view=azure-cli-latest#az-vm-availability-set-create) 一起使用来创建一个可用性集，并且也将在同一邻近放置组中创建该可用性集中的所有 VM。
+还可以在邻近放置组中创建可用性集。 将同一 `--ppg` 参数与 [az vm availability-set create](/cli/vm/availability-set#az-vm-availability-set-create) 一起使用来创建一个可用性集，并且也将在同一邻近放置组中创建该可用性集中的所有 VM。
 
 ## <a name="scale-sets"></a>规模集
 
-还可以在邻近放置组中创建规模集。 将同一 `--ppg` 参数与 [az vmss create](https://docs.azure.cn/cli/vmss?view=azure-cli-latest#az-vmss-create) 一起使用来创建规模集，并且将在同一邻近放置组中创建所有实例。
+还可以在邻近放置组中创建规模集。 将同一 `--ppg` 参数与 [az vmss create](/cli/vmss#az_vmss_create) 一起使用来创建规模集，并且将在同一邻近放置组中创建所有实例。
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解用于邻近放置组的 [Azure CLI](https://docs.microsoft.com/cli/azure/ppg?view=azure-cli-latest) 命令。
+详细了解用于邻近放置组的 [Azure CLI](/cli/ppg) 命令。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

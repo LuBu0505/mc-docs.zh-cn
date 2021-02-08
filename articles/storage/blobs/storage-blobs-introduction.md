@@ -7,15 +7,15 @@ author: WenJason
 ms.service: storage
 ms.topic: overview
 origin.date: 06/24/2020
-ms.date: 12/14/2020
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.subservice: blobs
-ms.openlocfilehash: a046cda4bf98bfa6bfea1008742ddff78d74f0d9
-ms.sourcegitcommit: a8afac9982deafcf0652c63fe1615ba0ef1877be
+ms.openlocfilehash: efe5a390355d1e221190faf3cd5f9ce466082ee8
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96850750"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503945"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob 存储简介
 
@@ -58,7 +58,7 @@ Azure 存储支持三种类型的 Blob：
 
 - 块 Blob 存储文本和二进制数据。 块 Blob 由可以分别管理的数据块构成。 块 blob 最多可存储约 4.75 TiB 的数据。 预览中提供了更大的块 blob，最多可存储约 190.7 TiB 的数据
 - 与块 Blob 一样，追加 Blob 也由块构成，但针对追加操作进行了优化。 追加 Blob 非常适用于诸如记录来自虚拟机的数据之类的场景。
-- 页 Blob 用于存储最大 8 TB 的随机访问文件。 页 blob 存储虚拟硬盘 (VHD) 文件并作为 Azure 虚拟机的磁盘。 有关页 Blob 的更多信息，请参阅 [Azure 页 Blob 概述](storage-blob-pageblob-overview.md)
+- 页 Blob 用于存储最大 8 TiB 的随机访问文件。 页 blob 存储虚拟硬盘 (VHD) 文件并作为 Azure 虚拟机的磁盘。 有关页 Blob 的更多信息，请参阅 [Azure 页 Blob 概述](storage-blob-pageblob-overview.md)
 
 有关不同类型 Blob 的详细信息，请参阅 [Understanding Block Blobs, Append Blobs, and Page Blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)（了解块 Blob、追加 Blob 和页 Blob）。
 

@@ -3,19 +3,18 @@ title: 启动和停止
 titleSuffix: Azure Stack Hub
 description: 了解如何启动和停止 Azure Stack Hub。
 author: WenJason
-ms.service: azure-stack
 ms.topic: how-to
 origin.date: 03/04/2020
-ms.date: 10/12/2020
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2019
-ms.openlocfilehash: ea40f6aa2554d698865c532475c11b506a3b1733
-ms.sourcegitcommit: bc10b8dd34a2de4a38abc0db167664690987488d
+ms.openlocfilehash: f1f5472272d553a960f2dad0ee9af1c97d4e338a
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91437762"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503891"
 ---
 # <a name="start-and-stop-azure-stack-hub"></a>启动和停止 Azure Stack Hub
 
@@ -86,4 +85,4 @@ ms.locfileid: "91437762"
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 [Azure Stack Hub 诊断工具](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002)
+详细了解 [Azure Stack Hub 诊断工具](./diagnostic-log-collection.md)

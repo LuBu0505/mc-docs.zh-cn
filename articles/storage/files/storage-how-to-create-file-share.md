@@ -6,16 +6,16 @@ author: WenJason
 ms.service: storage
 ms.topic: how-to
 origin.date: 2/22/2020
-ms.date: 01/18/2021
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: af5447940c036b7e42fcba5a1d63198b4f724774
-ms.sourcegitcommit: f086abe8bd2770ed10a4842fa0c78b68dbcdf771
+ms.openlocfilehash: 835fb948db619d9db06d2b9d818456b48f68b378
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98163099"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503878"
 ---
 # <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
 若要创建 Azure 文件共享，需要回答有关你将如何使用它的三个问题：
@@ -91,7 +91,7 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 
 为了简化存储帐户和后续文件共享的创建，我们将在变量中存储多个参数。 可将变量内容替换为所需的任何值，但请注意，存储帐户名称必须全局唯一。
 
-```azurepowershell
+```powershell
 $resourceGroupName = "myResourceGroup"
 $storageAccountName = "mystorageacct$(Get-Random)"
 $region = "chinaeast2"
@@ -99,7 +99,7 @@ $region = "chinaeast2"
 
 我们将使用以下命令创建能够存储标准 Azure 文件共享的存储帐户。 `-SkuName` 参数与所需的冗余类型相关；如果需要异地冗余存储帐户，则还必须删除 `-EnableLargeFileShare` 参数。
 
-```azurepowershell
+```powershell
 $storAcct = New-AzStorageAccount `
     -ResourceGroupName $resourceGroupName `
     -Name $storageAccountName `
@@ -111,7 +111,7 @@ $storAcct = New-AzStorageAccount `
 
 我们将使用以下命令创建能够存储高级 Azure 文件共享的存储帐户。 请注意，`-SkuName` 参数已更改为包含 `Premium` 和所需的冗余级别：本地冗余 (`LRS`)。 `-Kind` 参数是 `FileStorage` 而不是 `StorageV2`，因为必须在 FileStorage 存储帐户（而不是 GPv2 存储帐户）中创建高级文件共享。
 
-```azurepowershell
+```powershell
 $storAcct = New-AzStorageAccount `
     -ResourceGroupName $resourceGroupName `
     -Name $storageAccountName `
@@ -125,7 +125,7 @@ $storAcct = New-AzStorageAccount `
 
 为了简化存储帐户和后续文件共享的创建，我们将在变量中存储多个参数。 可将变量内容替换为所需的任何值，但请注意，存储帐户名称必须全局唯一。
 
-```bash
+```azurecli
 resourceGroupName="myResourceGroup"
 storageAccountName="mystorageacct$RANDOM"
 region="chinaeast2"
@@ -133,7 +133,7 @@ region="chinaeast2"
 
 我们将使用以下命令创建能够存储标准 Azure 文件共享的存储帐户。 `--sku` 参数与所需的冗余类型相关；如果需要异地冗余存储帐户，则还必须删除 `--enable-large-file-share` 参数。
 
-```bash
+```azurecli
 az storage account create \
     --resource-group $resourceGroupName \
     --name $storageAccountName \
@@ -145,7 +145,7 @@ az storage account create \
 
 我们将使用以下命令创建能够存储高级 Azure 文件共享的存储帐户。 请注意，`--sku` 参数已更改为包含 `Premium` 和所需的冗余级别：本地冗余 (`LRS`)。 `--kind` 参数是 `FileStorage` 而不是 `StorageV2`，因为必须在 FileStorage 存储帐户（而不是 GPv2 存储帐户）中创建高级文件共享。
 
-```bash
+```azurecli
 az storage account create \
     --resource-group $resourceGroupName \
     --name $storageAccountName \
@@ -163,7 +163,7 @@ az storage account create \
 
 - 标准文件共享是 Azure 文件共享的上限，最终用户不能超越此上限。 针对标准文件共享指定配额的主要目的是便于预算：“我不希望此文件共享增长到此临界点以外”。 如果未指定配额，则标准文件共享最多可以涵盖 100 TiB 的空间（如果未为存储帐户设置大型文件共享属性，则最多可以涵盖 5 TiB）。
 
-- 对于高级文件共享，配额会重载以表示预配的大小。 预配的大小是将要对你计费的数量，与实际使用情况无关。 预配高级文件共享时，需要考虑两个因素：1) 需要从空间使用率角度考虑该共享的未来增长情况；2) 需要考虑工作负载所需的 IOPS。 每个预配的 GiB 都允许你使用额外的保留 IOPS 和突发 IOPS。 有关如何规划高级文件共享的详细信息，请参阅[预配高级文件共享](understanding-billing.md#provisioned-billing)。
+- 对于高级文件共享，配额会重载以表示预配的大小。 预配的大小是将要对你计费的数量，与实际使用情况无关。 预配高级文件共享时，需要考虑两个因素：1) 需要从空间使用率角度考虑该共享的未来增长情况；2) 需要考虑工作负载所需的 IOPS。 每个预配的 GiB 都允许你使用额外的保留 IOPS 和突发 IOPS。 有关如何规划高级文件共享的详细信息，请参阅[预配高级文件共享](understanding-billing.md#provisioned-model)。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 如果你刚刚创建了存储帐户，可以在部署屏幕中选择“转到资源”导航到该存储帐户。 如果以前已创建了存储帐户，可以通过它所在的资源组导航到该存储帐户。 进入存储帐户后，选择标有“文件共享”的磁贴（也可以通过存储帐户的目录导航到“文件共享”）。 
@@ -211,10 +211,12 @@ New-AzRmStorageShare `
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 可以使用 [`az storage share-rm create`](/cli/storage/share-rm?preserve-view=true&view=azure-cli-latest#az_storage_share_rm_create) 命令创建 Azure 文件共享。 以下 Azure CLI 命令假设你已根据前面“使用 Azure CLI 创建存储帐户”部分中的定义，设置了变量 `$resourceGroupName` 和 `$storageAccountName`。
 
+最新的 Azure CLI 更新中提供了在特定层中创建文件共享或将文件共享移动到特定层的功能。 更新 Azure CLI 的操作特定于你使用的操作系统/Linux 发行版。 有关如何在你的系统上更新 Azure CLI 的说明，请参阅[安装 Azure CLI](/cli/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
+
 > [!Important]  
 > 对于高级文件共享，`--quota` 参数指的是文件共享的预配大小。 文件共享的预配大小是将要对你计费的数量，与使用情况无关。 标准文件共享按使用情况计费，而不是按预配大小计费。
 
-```bash
+```azurecli
 shareName="myshare"
 
 az storage share-rm create \

@@ -9,16 +9,16 @@ metadata:
   ms.topic: landing-page
   ms.collection: collection
   author: rockboyfor
-  ms.date: 11/16/2020
+  ms.date: 02/08/2021
   ms.testscope: no
   ms.testdate: 09/28/2020
   ms.author: v-yeche
-  ms.openlocfilehash: 40263020c590cfa02071adb9d4eedf288e7d204e
-  ms.sourcegitcommit: 5f07189f06a559d5617771e586d129c10276539e
+  ms.openlocfilehash: e564a69a2e83438650212e90d252a80378a7330d
+  ms.sourcegitcommit: fda47fe846d47f30e65a048251402d873e416650
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/12/2020
-  ms.locfileid: "94551745"
+  ms.lasthandoff: 02/02/2021
+  ms.locfileid: "99426598"
 landingContent:
 - title: 关于 Azure Cosmos DB
   linkLists:

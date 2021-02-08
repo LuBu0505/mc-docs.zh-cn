@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 01/14/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 58fca56d99ca70aeded252678647b98bf68da348
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: e063273e3795a2d1c98b4e24726f2a5aa87d1532
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195208"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540845"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>快速入门：使用控制台应用的标识获取令牌并调用 Microsoft Graph API
 
@@ -39,7 +39,7 @@ ms.locfileid: "98195208"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
-> 1. 转到新的 [Azure 门户 - 应用注册](https://portal.azure.cn/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/DotNetCoreDaemonQuickstartPage/sourceType/docs)窗格。
+> 1. 转到 <a href="https://portal.azure.cn/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/DotNetCoreDaemonQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入门体验。
 > 1. 输入应用程序的名称并选择“注册”。
 > 1. 遵照说明下载内容，并只需单击一下自动配置新应用程序。
 >
@@ -229,4 +229,3 @@ result = await app.AcquireTokenForClient(scopes)
 
 > [!div class="nextstepaction"]
 > [调用 Web API 的守护程序应用程序](scenario-daemon-overview.md)
-

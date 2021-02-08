@@ -4,15 +4,15 @@ description: 安全中心安全基线为实现 Azure 安全基准中指定的安
 author: Johnnytechn
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 01/06/2021
+ms.date: 02/02/2021
 ms.author: v-johya
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2d510ac5ffe762cf79585640b79827a1382b7fa4
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 3b1ac6c16f125caff002bf59ceef1dcdee85d6d4
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022124"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579581"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>Azure 安全中心安全基线
 
@@ -227,6 +227,8 @@ ms.locfileid: "98022124"
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
 
 **指导**：对于需要提升的权限的管理任务，请使用安全的 Azure 托管工作站（也称为特权访问工作站，简称 PAW）。
+
+- [了解安全的 Azure 托管工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何启用 Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 

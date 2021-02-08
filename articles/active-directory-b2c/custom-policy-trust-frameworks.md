@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 46bbc670ffb822c7989e9fb23918856b60faa767
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: da0e37502c40ecbea27b96059c7abccdb707c918
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570505"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540650"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Azure AD B2C 自定义策略概述
 
@@ -133,7 +133,7 @@ Azure AD B2C 自定义策略[新手包](custom-policy-get-started.md#get-the-sta
 
 - 在“扩展策略”或“中继方策略”中创建逻辑 。 可添加新元素，这将引用相同的 ID 来覆盖基本策略。 这样，你就可横向扩展项目，同时使得稍后在 Microsoft 发布新的新手包时能轻松地升级基本策略。
 - 在“基本策略”中，强烈建议避免进行任何更改。  必要时，在作出更改的位置提供注释。
-- 重写元素（例如技术配置文件元数据）时，请不要从基本策略复制整个技术配置文件。 相反，只复制元素的必需部分。 有关如何进行更改的示例，请参阅[禁用电子邮件验证](disable-email-verification.md)。
+- 重写元素（例如技术配置文件元数据）时，请不要从基本策略复制整个技术配置文件。 相反，只复制元素的必需部分。 有关如何进行更改的示例，请参阅[禁用电子邮件验证](./disable-email-verification.md)。
 - 若要减少共享核心功能的技术配置文件出现重复的情况，请使用[技术配置文件包含](technicalprofiles.md#include-technical-profile)。
 - 不要在登录期间写入 Azure AD 目录，这可能会导致限制问题。
 - 如果策略具有外部依赖项（如 REST API），请确保这些依赖项高度可用。
@@ -169,7 +169,6 @@ Azure AD B2C 自定义策略入门：
 设置并测试 Azure AD B2C 策略后，可开始自定义策略。 阅读以下文章了解如何：
 
 - 使用自定义策略[自定义应用程序的用户界面](customize-ui-with-html.md)。 了解如何创建自己的 HTML 内容并自定义内容定义。
-- 使用自定义策略[本地化应用程序的用户界面](custom-policy-localization.md)。 了解如何添加本地化资源元素来设置支持的语言列表并提供特定于语言的标签。
-- 在策略开发和测试期间，可[禁用电子邮件验证](disable-email-verification.md)。 了解如何覆盖技术配置文件元数据。
+- 使用自定义策略[本地化应用程序的用户界面](./language-customization.md)。 了解如何添加本地化资源元素来设置支持的语言列表并提供特定于语言的标签。
+- 在策略开发和测试期间，可[禁用电子邮件验证](./disable-email-verification.md)。 了解如何覆盖技术配置文件元数据。
 - 若要诊断自定义策略的问题，可[使用 Application Insights 收集 Azure Active Directory B2C 日志](troubleshoot-with-application-insights.md)。 了解如何添加新的技术配置文件和配置中继方策略。
-

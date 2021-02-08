@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 01/05/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ad8caff5e6aeb63546414909deebbe81f3511e5
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 7486a02c9923f913967b82f62b96c2a7db1d3333
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023733"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540707"
 ---
 # <a name="secure-external-access-to-microsoft-teams-sharepoint-and-onedrive-for-business"></a>安全地从外部访问 Microsoft Teams、SharePoint 和 OneDrive for Business 
 
@@ -75,7 +75,7 @@ Microsoft 365 中的共享有一部分是通过 Azure Active Directory (Azure AD
 
 ## <a name="govern-access-in-teams"></a>在 Teams 中治理访问权限
 
-[Teams 区分外部用户（组织外部的任何人）和来宾用户（具有来宾帐户的用户）](https://docs.microsoft.com/microsoftteams/communicate-with-users-from-other-organizations?WT.mc_id=TeamsAdminCenterCSH)。 可以在 [Teams 管理门户](https://admin.teams.microsoft.com/company-wide-settings/external-communications)中的组织级设置下管理协作设置。 
+[Teams 区分外部用户（组织外部的任何人）和来宾用户（具有来宾帐户的用户）](https://docs.microsoft.com/microsoftteams/communicate-with-users-from-other-organizations?WT.mc_id=TeamsAdminCenterCSH%e2%80%8b)。 可以在 [Teams 管理门户](https://admin.teams.microsoft.com/company-wide-settings/external-communications)中的组织级设置下管理协作设置。 
 
 > [!NOTE]
 > Azure Active Directory 中的外部标识协作设置控制生效的权限。 你可以在 Teams 中增加限制，但不要从 Azure AD 中设置的限制中减少限制。
@@ -194,4 +194,3 @@ SharePoint 与 Azure AD B2B 的集成更改了控件与帐户进行交互的方�
 8. [通过敏感度标签实现安全访问](8-secure-access-sensitivity-labels.md)
 
 9. [实现对 Microsoft Teams、OneDrive 和 SharePoint 的安全访问](9-secure-access-teams-sharepoint.md)（本文）
-

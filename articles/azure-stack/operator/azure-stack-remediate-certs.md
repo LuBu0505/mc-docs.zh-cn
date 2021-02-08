@@ -5,16 +5,16 @@ description: 使用 Azure Stack Hub 就绪性检查器解决 Azure Stack Hub PKI
 author: WenJason
 ms.topic: how-to
 origin.date: 11/10/2020
-ms.date: 01/11/2021
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 10/19/2020
-ms.openlocfilehash: 9e1ae69c65b19bcbf7cce52810507d12eb49b26d
-ms.sourcegitcommit: 3f54ab515b784c9973eb00a5c9b4afbf28a930a9
+ms.openlocfilehash: 897eaea94fe452d2d57e70f53a7f0f82964aecbe
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894421"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503930"
 ---
 # <a name="fix-common-issues-with-azure-stack-hub-pki-certificates"></a>解决 Azure Stack Hub PKI 证书的常见问题
 
@@ -24,13 +24,13 @@ ms.locfileid: "97894421"
 
 **问题** - 证书未包含 CDP 扩展中的 HTTP CRL。
 
-**修复** - 这是一个非阻塞性问题。 根据 [Azure Stack Hub 公钥基础结构 (PKI) 证书要求](/azure-stack/operator/azure-stack-pki-certs)，Azure Stack 需要 HTTP CRL 来进行吊销检查。  在证书上未检测到 HTTP CRL。  为了确保证书吊销检查正常进行，证书颁发机构应颁发一个包含 CDP 扩展中的 HTTP CRL 的证书。
+**修复** - 这是一个非阻塞性问题。 根据 [Azure Stack Hub 公钥基础结构 (PKI) 证书要求](./azure-stack-pki-certs.md)，Azure Stack 需要 HTTP CRL 来进行吊销检查。  在证书上未检测到 HTTP CRL。  为了确保证书吊销检查正常进行，证书颁发机构应颁发一个包含 CDP 扩展中的 HTTP CRL 的证书。
 
 ## <a name="http-crl---fail"></a>HTTP CRL - 失败
 
 **问题** - 无法连接到 CDP 扩展中的 HTTP CRL。
 
-**修复** - 这是一个阻塞性问题。 根据[发布 Azure Stack Hub 端口和 URL（出站）](/azure-stack/operator/azure-stack-integrate-endpoints#ports-and-urls-outbound)，Azure Stack 需要连接到 HTTP CRL 进行吊销检查。
+**修复** - 这是一个阻塞性问题。 根据[发布 Azure Stack Hub 端口和 URL（出站）](./azure-stack-integrate-endpoints.md#ports-and-urls-outbound)，Azure Stack 需要连接到 HTTP CRL 进行吊销检查。
 
 ## <a name="pfx-encryption"></a>PFX 加密
 

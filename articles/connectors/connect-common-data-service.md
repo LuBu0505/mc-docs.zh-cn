@@ -7,17 +7,17 @@ ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
 origin.date: 12/11/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/15/2021
 ms.testscope: yes|no
-ms.testdate: 01/11/2021null
+ms.testdate: 01/11/2021
 ms.author: v-yeche
 tags: connectors
-ms.openlocfilehash: 3d60c282993edf5056ca2c4be352eac3d3235b73
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: ddc7c892047fd70ac74117a0d97cbb8132832472
+ms.sourcegitcommit: eac6a51d5193c8a36e99ea1f824bf62743edea33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023709"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99817569"
 ---
 <!--Pending for VM Review-->
 <!--Common Data Service connect exists on Mooncake-->

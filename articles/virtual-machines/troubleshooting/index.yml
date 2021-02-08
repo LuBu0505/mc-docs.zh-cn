@@ -8,16 +8,16 @@ metadata:
   ms.service: virtual-machines-windows
   ms.topic: landing-page
   author: rockboyfor
-  ms.date: 01/04/2021
+  ms.date: 02/08/2021
   ms.testscope: yes
   ms.testdate: 08/31/2020
   ms.author: v-yeche
-  ms.openlocfilehash: 13f7dd2a759283939c65dbf1c013d2adf5da5db1
-  ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+  ms.openlocfilehash: 3adf0eeed9ecfcca5cf62ee4d844d02cc885882b
+  ms.sourcegitcommit: fda47fe846d47f30e65a048251402d873e416650
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/04/2021
-  ms.locfileid: "97857085"
+  ms.lasthandoff: 02/02/2021
+  ms.locfileid: "99426579"
 landingContent:
 - title: 排查部署失败问题
   linkLists:

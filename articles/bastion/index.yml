@@ -9,16 +9,16 @@ metadata:
   ms.topic: landing-page
   origin.date: 10/20/2020
   author: rockboyfor
-  ms.date: 11/30/2020
+  ms.date: 02/08/2021
   ms.testscope: no
   ms.testdate: 
   ms.author: v-yeche
-  ms.openlocfilehash: e86f1d6ad18a16665b06eee32248bcb766e28c04
-  ms.sourcegitcommit: ea52237124974eda84f8cef4bf067ae978d7a87d
+  ms.openlocfilehash: 8c9005c57b9410459d83adf53239e6e668b66311
+  ms.sourcegitcommit: fda47fe846d47f30e65a048251402d873e416650
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/25/2020
-  ms.locfileid: "96024621"
+  ms.lasthandoff: 02/02/2021
+  ms.locfileid: "99426654"
 landingContent:
 - title: 关于 Azure Bastion
   linkLists:

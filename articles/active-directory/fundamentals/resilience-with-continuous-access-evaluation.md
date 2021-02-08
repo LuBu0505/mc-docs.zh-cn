@@ -8,21 +8,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebde6caad22023f32f71ec6032472cf49fa8916e
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 01ceef83354e19bf4ff9b265179bdc994ab141a5
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004315"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540801"
 ---
 # <a name="build-resilience-by-using-continuous-access-evaluation"></a>通过使用连续访问评估来构建复原能力
 
-利用[连续访问评估](/active-directory/conditional-access/concept-continuous-access-evaluation) (CAE)，Azure AD 应用程序可以订阅严重事件，然后，这些事件可以被评估，并且相应的措施可以被强制执行。 其中包括对以下事件进行评估：
+利用[连续访问评估](../conditional-access/concept-continuous-access-evaluation.md) (CAE)，Azure AD 应用程序可以订阅严重事件，然后，这些事件可以被评估，并且相应的措施可以被强制执行。 其中包括对以下事件进行评估：
 
 * 删除或禁用用户帐户
 
@@ -48,20 +48,21 @@ Microsoft 正在与业界合作构建[标准](https://openid.net/wg/sse/)，这�
 
 ## <a name="how-do-i-implement-cae"></a>如何实现 CAE？
 
-* 在 Azure AD 安全配置中[启用 CAE](/active-directory/conditional-access/concept-continuous-access-evaluation)。
+* 在 Azure AD 安全配置中[启用 CAE](../conditional-access/concept-continuous-access-evaluation.md)。
 
-* 请确保你的组织使用的是 Microsoft Office 本机应用程序的[兼容版本](/active-directory/conditional-access/concept-continuous-access-evaluation)。
+* 请确保你的组织使用的是 Microsoft Office 本机应用程序的[兼容版本](../conditional-access/concept-continuous-access-evaluation.md)。
 
 ## <a name="next-steps"></a>后续步骤
 面向管理员和架构师的复原能力资源
  
 * [通过凭据管理来构建复原能力](resilience-in-credentials.md)
 
+* [使用设备状态构建复原能力](resilience-with-device-states.md)
+
 * [在混合身份验证中构建复原能力](resilience-in-hybrid.md)
 
-面向开发人员的复原能力资源
+适用于开发人员的复原能力资源
 
-* [在应用程序中构建标识和访问管理复原能力](resilience-app-development-overview.md)
+* [在应用程序中构建 IAM 复原能力](resilience-app-development-overview.md)
 
 * [在 CIAM 系统中构建复原能力](resilience-b2c.md)
-

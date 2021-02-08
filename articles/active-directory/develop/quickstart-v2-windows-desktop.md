@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 01/14/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 39368df40ee2fced7b3f2e4cce0dc79bc62e6dda
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: a48653b35b157f90178acb028950b24cdff1d4cf
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98194964"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540839"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>快速入门：获取令牌并从 Windows 桌面应用中调用 Microsoft Graph API
 
@@ -36,7 +36,7 @@ ms.locfileid: "98194964"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
-> 1. 转到新的 [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs)。
+> 1. 转到 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入门体验。
 > 1. 输入应用程序的名称并选择“注册”。
 > 1. 遵照说明下载内容，并只需单击一下自动配置新应用程序。
 >
@@ -184,4 +184,3 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 
 > [!div class="nextstepaction"]
 > [调用 Graph API 教程](./tutorial-v2-windows-desktop.md)
-

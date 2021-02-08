@@ -11,12 +11,12 @@ ms.author: trbye
 ms.reviewer: trbye
 origin.date: 08/14/2020
 ms.date: 09/07/2020
-ms.openlocfilehash: 91bc97780c1d4911fcc02aa5718e043ebefcc4de
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 6c237dfab6749243a10c3dcb883025fee24ecee4
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021140"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804324"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>教程：使用自动化机器学习预测出租车费
 
@@ -255,7 +255,7 @@ automl_config = AutoMLConfig(task='regression',
 
 ```python
 from azureml.core.experiment import Experiment
-experiment = Experiment(ws, "taxi-experiment")
+experiment = Experiment(ws, "Tutorial-NYCTaxi")
 local_run = experiment.submit(automl_config, show_output=True)
 ```
 

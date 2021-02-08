@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 122baf45492f678855bf8e43402fbdc98082954e
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: f315a68b1145d3c3f9361034d15da271d24fc564
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977913"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804286"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>将托管标识与 Azure 机器学习结合使用（预览版）
 
@@ -59,7 +59,7 @@ ms.locfileid: "94977913"
 [从 Azure CLI 创建 ACR](/container-registry/container-registry-get-started-azure-cli)，无需设置 ```--admin-enabled``` 参数，或从 Azure 门户创建，无需启用管理员用户。 然后，在创建 Azure 机器学习工作区时，指定 ACR 的 Azure 资源 ID。 下面的示例演示如何创建使用现有 ACR 的新 Azure ML 工作区：
 
 > [!TIP]
-> 若要获取 `--container-registry` 参数的值，请使用 [az acr show](/cli/acr?view=azure-cli-latest#az_acr_show) 命令显示 ACR 的信息。 `id` 字段包含 ACR 的资源 ID。
+> 若要获取 `--container-registry` 参数的值，请使用 [az acr show](/cli/azure/acr#az_acr_show) 命令显示 ACR 的信息。 `id` 字段包含 ACR 的资源 ID。
 
 ```azurecli
 az ml workspace create -w <workspace name> \
@@ -90,7 +90,7 @@ az ml workspace create -w <workspace name> \
 
     此命令返回类似于以下文本的值。 只需要文本的最后一部分，即 ACR 实例名称：
 
-    ```text
+    ```output
     /subscriptions/<subscription id>/resourceGroups/<my resource group>/providers/MicrosoftContainerReggistry/registries/<ACR instance name>
     ```
 

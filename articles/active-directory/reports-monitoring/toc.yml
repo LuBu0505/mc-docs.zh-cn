@@ -6,7 +6,7 @@
       href: overview-reports.md
     - name: 什么是 Azure AD 监视？
       href: overview-monitoring.md
-    - name: 什么是登录诊断？
+    - name: 什么是“登录诊断”？
       href: overview-sign-in-diagnostics.md
 - name: 快速入门
   expanded: true
@@ -64,7 +64,7 @@
           href: howto-integrate-activity-logs-with-splunk.md
         - name: 将活动日志与 SumoLogic 集成
           href: howto-integrate-activity-logs-with-sumologic.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 缺少审核数据
           href: troubleshoot-missing-audit-data.md

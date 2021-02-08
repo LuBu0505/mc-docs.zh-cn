@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
-ms.date: 12/07/2020
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: b54aded3ea773245dfdef925032d2e3cc3883a12
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: d4d3cfae7b46db266eba6ad81537eac02a0f2cdb
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97003789"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540717"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft 标识平台身份验证库
 
@@ -80,7 +80,7 @@ Microsoft 标识平台终结点使用两种类型的库：
 | Swift <br> Objective-C |            |            | [适用于 iOS 和 macOS 的 MSAL](msal-overview.md) | [适用于 iOS 和 macOS 的 MSAL](msal-overview.md) |            |
 | ![Java](./media/sample-v2-code/logo_java.png) Java | msal4j | msal4j | msal4j | | MSAL Android |
 | ![Python](./media/sample-v2-code/logo_python.png) Python | MSAL Python | MSAL Python | MSAL Python |
-| ![Node.Js](./media/sample-v2-code/logo_nodejs.png) Node.JS | Passport.node | Passport.node | Passport.node |
+| ![Node.js](./media/sample-v2-code/logo_nodejs.png) Node.js | Passport.node | Passport.node | Passport.node |
 
 另请参阅[按支持的平台和语言划分的方案](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages)
 

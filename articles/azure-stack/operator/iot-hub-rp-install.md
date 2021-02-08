@@ -6,14 +6,14 @@ ms.author: v-jay
 ms.service: azure-stack
 ms.topic: how-to
 origin.date: 1/6/2020
-ms.date: 11/09/2020
+ms.date: 02/08/2021
 zone_pivot_groups: state-connected-disconnected
-ms.openlocfilehash: 7ea7e1f2bea3863ff896f78c795403a0a8114e3d
-ms.sourcegitcommit: f187b1a355e2efafea30bca70afce49a2460d0c7
+ms.openlocfilehash: 5f2ab308dede76b190cfece1087e3f0f7069fa84
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93330720"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503897"
 ---
 # <a name="how-to-install-iot-hub-on-azure-stack-hub"></a>如何在 Azure Stack Hub 上安装 IoT 中心
 
@@ -105,7 +105,7 @@ ms.locfileid: "93330720"
 
 已成功安装 IoT 中心资源提供程序！ 若要开始操作，请完成以下步骤：
 
-1. 如有必要，请按照说明[创建计划、套餐和订阅](azure-stack-plan-offer-quota-overview.md)。
+1. 如有必要，请按照说明[创建计划、套餐和订阅](./service-plan-offer-subscription-overview.md)。
 
 2. 如果订阅已存在，请更新关联的套餐/计划以包括 Microsoft.Devices 服务。 转到“计划” -> “选择要更新的计划” -> “添加服务和配额”  。
 

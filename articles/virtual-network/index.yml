@@ -8,16 +8,16 @@ metadata:
   ms.service: virtual-network
   ms.topic: landing-page
   ms.collection: collection
-  author: rockboyfor
   origin.date: 08/28/2019
-  ms.date: 07/06/2020
+  author: rockboyfor
+  ms.date: 02/08/2021
   ms.author: v-yeche
-  ms.openlocfilehash: 0ee13b9c98e1e3bca2914a0fe7aa69ed3217b62d
-  ms.sourcegitcommit: af71b9199d47fb81e85d70da0cfb265cc814a644
+  ms.openlocfilehash: 198175883a18e357846f9562263885b66f972076
+  ms.sourcegitcommit: fda47fe846d47f30e65a048251402d873e416650
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/06/2020
-  ms.locfileid: "85969040"
+  ms.lasthandoff: 02/02/2021
+  ms.locfileid: "99426644"
 landingContent:
 - title: 关于虚拟网络
   linkLists:
@@ -46,9 +46,9 @@ landingContent:
   - linkListType: concept
     links:
     - text: 网络安全组
-      url: security-overview.md
+      url: ./network-security-groups-overview.md
     - text: 应用程序安全组
-      url: security-overview.md#application-security-groups
+      url: ./network-security-groups-overview.md#application-security-groups
     - text: 虚拟网络服务终结点
       url: virtual-network-service-endpoints-overview.md
     - text: 虚拟网络安全常见问题解答
@@ -98,7 +98,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: IP 地址类型和分配方法
-      url: virtual-network-ip-addresses-overview-arm.md
+      url: ./public-ip-addresses.md
   - linkListType: how-to-guide
     links:
     - text: 创建、更改或删除公共 IP 地址
@@ -128,10 +128,10 @@ landingContent:
   - linkListType: concept
     links:
     - text: IP 地址类型和分配方法
-      url: virtual-network-ip-addresses-overview-arm.md
+      url: ./public-ip-addresses.md
     - text: Azure 虚拟网络的 IPv6 是什么？
       url: ipv6-overview.md
-    - text: 公共 IP 地址前缀
+    - text: 公共 IP 前缀
       url: public-ip-address-prefix.md
   - linkListType: how-to-guide
     links:
@@ -139,5 +139,5 @@ landingContent:
       url: virtual-network-public-ip-address.md
     - text: 部署 IPV6 双堆栈应用程序
       url: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
-    - text: 创建、更改或删除公共 IP 地址前缀
+    - text: 创建、更改或删除公共 IP 前缀
       url: manage-public-ip-address-prefix.md

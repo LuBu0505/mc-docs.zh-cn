@@ -5,17 +5,18 @@ services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: include
-ms.date: 11/11/2020
+ms.date: 02/01/2021
 ms.author: lcozzens
 ms.custom: include file
-ms.openlocfilehash: 4ba9cf4231f19675a12a8c12e8119620cef888d1
-ms.sourcegitcommit: a6aca2f2d1295cd5ed07e38bf9f18f8c345ba409
+ms.openlocfilehash: cd6c2e8a448f949d8b057289a31b6efe3b622449
+ms.sourcegitcommit: 7fc72b8afbdf9ad5e53922f489229e54282214b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96437397"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99541296"
 ---
 ```html
+ //...
 <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
     <div class="container">
         <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TestFeatureFlags</a>
@@ -40,4 +41,5 @@ ms.locfileid: "96437397"
         </div>
     </div>
 </nav>
+//...
 ```

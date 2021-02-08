@@ -55,15 +55,15 @@
       tocHref: /virtual-network/
       topicHref: /cosmos-db/index
 - name: Azure
-  tocHref: /java/
+  tocHref: 'https://docs.azure.cn/java/'
   topicHref: /index
   items:
     - name: Cosmos DB
-      tocHref: 'https://docs.azure.cn/java/?view=azure-java-stable'
+      tocHref: 'https://docs.azure.cn/java/'
       topicHref: /cosmos-db/index
       items:
         - name: Cosmos DB
-          tocHref: 'https://docs.azure.cn/java/spring-framework/?view=azure-java-stable'
+          tocHref: 'https://docs.azure.cn/java/spring-framework/'
           topicHref: /cosmos-db/index
 - name: Azure
   tocHref: /

@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: azure-stack
 ms.topic: how-to
 origin.date: 1/6/2020
-ms.date: 11/09/2020
-ms.openlocfilehash: 810d03e59dd3d4f6beeca6119858a19726cca3e0
-ms.sourcegitcommit: f187b1a355e2efafea30bca70afce49a2460d0c7
+ms.date: 02/08/2021
+ms.openlocfilehash: dcc555fcfc04cba4cdaacd9654707a18947afb89
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93330784"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503890"
 ---
 # <a name="how-to-manage-iot-hub-on-azure-stack-hub"></a>如何管理 Azure Stack Hub 上的 IoT 中心
 
@@ -105,5 +105,4 @@ IoT 中心只有一个 VM 类型。 在 IoT 中心的部署过程中，系统会
 
 Azure Stack Hub 监视功能（包括警报），请参阅[监视运行状况和警报](azure-stack-monitor-health.md)。
 
-Azure Stack Hub 日志收集，请参阅 [Azure Stack 诊断日志收集概述](azure-stack-diagnostic-log-collection-overview.md)。
-
+Azure Stack Hub 日志收集，请参阅 [Azure Stack 诊断日志收集概述](./diagnostic-log-collection.md)。

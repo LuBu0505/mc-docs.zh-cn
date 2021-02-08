@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 01/14/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d2fa6b1094b29fef9c4a4f0d06000e0b0430e42d
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: b10b6a5eed659b1c8a14cf48ec18d1f9428c6f1a
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195130"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540705"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>教程：从 Windows 桌面应用调用 Microsoft Graph API
 
@@ -97,7 +97,7 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
 ### <a name="option-1-express-mode"></a>选项 1：快速模式
 
 可以通过执行以下操作快速注册应用程序：
-1. 访问 [Azure 门户 - 应用程序注册](https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs)。
+1. 转到 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入门体验。
 1. 输入应用程序的名称并选择“注册”。
 1. 遵照说明下载内容，并只需单击一下自动配置新应用程序。
 
@@ -381,4 +381,3 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 
 > [!div class="nextstepaction"]
 > [方案：用于调用 Web API 的 桌面应用](scenario-desktop-overview.md)
-

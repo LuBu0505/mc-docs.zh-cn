@@ -7,13 +7,13 @@ ms.author: v-junlch
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
-ms.date: 12/07/2020
-ms.openlocfilehash: 1c3db2a93d74fa51a2fd27d30e5087bf12047c4c
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.date: 02/02/2021
+ms.openlocfilehash: 105df297272c06c39097a54b87b53eb681402a98
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97003965"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540825"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>教程：创建使用 Microsoft 标识平台进行身份验证的 Blazor Server 应用
 
@@ -71,7 +71,7 @@ dotnet new blazorserver2 --auth SingleOrg --calls-graph -o {APP NAME} --client-i
 现在，在编辑器中导航到你的新 Blazor 应用，并在 appsettings.json 文件中添加客户端机密，替换文本“secret-from-app-registration”。
 
 ```json
-"ClientSecret": "xkAlNiG70000000_UI~d.OS4Dl.-Cy-1m3",
+"ClientSecret": "secret-from-app-registration",
 ```
 
 ## <a name="test-the-app"></a>测试应用
@@ -207,4 +207,3 @@ else
 
 > [!div class="nextstepaction"]
 > [场景：可将用户登录的 Web 应用](scenario-web-app-sign-user-overview.md)
-

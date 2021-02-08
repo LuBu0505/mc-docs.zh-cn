@@ -6,17 +6,17 @@ ms.service: virtual-machines
 ms.topic: include
 origin.date: 01/04/2021
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 02/08/2021
 ms.testscope: no
 ms.testdate: 11/02/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 7eb28da2d98297895aac50c038dc2606c1d940bd
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: a0ed32769cfd7b24285c220f624a08aa6766322e
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857156"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580543"
 ---
 <!--Verified Successfully-->
 ![突出显示了 r=22.8k 的 f i o 输出屏幕截图。](media/vm-disk-performance/utilization-metrics-example/fio-output.jpg)

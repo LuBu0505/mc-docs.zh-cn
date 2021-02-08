@@ -11,16 +11,16 @@ metadata:
   ms.collection: na
   origin.date: 11/06/2020
   author: rockboyfor
-  ms.date: 01/11/2021
+  ms.date: 02/08/2021
   ms.testscope: no
   ms.testdate: 
   ms.author: v-yeche
-  ms.openlocfilehash: c42731c1ead11642b85d340607bbbf8c9ff5c1b7
-  ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+  ms.openlocfilehash: a06acb461ca716b1d7c7be977c6145f69ccd3f72
+  ms.sourcegitcommit: fda47fe846d47f30e65a048251402d873e416650
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/08/2021
-  ms.locfileid: "98023184"
+  ms.lasthandoff: 02/02/2021
+  ms.locfileid: "99426627"
 landingContent:
 - title: 关于 ARM 模板
   linkLists:

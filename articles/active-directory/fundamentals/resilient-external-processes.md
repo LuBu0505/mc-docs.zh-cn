@@ -10,15 +10,15 @@ author: gargi-sinha
 ms.author: v-junlch
 manager: martinco
 ms.reviewer: ''
-ms.date: 12/02/2020
+ms.date: 02/02/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f116bbf10541720d377ebf7b1005e66eee66c93a
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: fd34a36365af2b3637760708e08d4b769d2eb3de
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004299"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540793"
 ---
 # <a name="resilient-interfaces-with-external-processes"></a>与外部进程建立可复原接口
 
@@ -28,7 +28,7 @@ ms.locfileid: "97004299"
 
 ## <a name="ensure-correct-placement-of-the-apis"></a>确保正确放置 API
 
-Identity Experience Framework (IEF) 策略允许你使用 [RESTful API 技术配置文件](/active-directory-b2c/restful-technical-profile)来调用外部系统。 外部系统不受 IEF 运行时环境的控制，并且是潜在的故障点。
+Identity Experience Framework (IEF) 策略允许你使用 [RESTful API 技术配置文件](../../active-directory-b2c/restful-technical-profile.md)来调用外部系统。 外部系统不受 IEF 运行时环境的控制，并且是潜在的故障点。
 
 ### <a name="how-to-manage-external-systems-using-apis"></a>如何使用 API ​​管理外部系统
 
@@ -38,9 +38,9 @@ Identity Experience Framework (IEF) 策略允许你使用 [RESTful API 技术配
 
 - 尽可能从预验证路径中删除 API 调用。 如果不能，则必须在 API 前面设置严格的保护措施，以防拒绝服务 (DoS) 分布式拒绝服务 (DDoS) 攻击。 攻击者可以加载登录页面，试图用 DoS 攻击淹没 API，并使应用程序瘫痪。 例如，通过在登录中使用 CAPTCHA，注册流可以提供帮助。
 
-- Azure AD RESTFul API [技术配置文件](/active-directory-b2c/restful-technical-profile)不提供任何缓存行为。 相反，RESTFul API 配置文件实现了策略中内置的重试逻辑和超时。
+- Azure AD RESTFul API [技术配置文件](../../active-directory-b2c/restful-technical-profile.md)不提供任何缓存行为。 相反，RESTFul API 配置文件实现了策略中内置的重试逻辑和超时。
 
-- 对于需要写入数据的 API，可将任务排入队列，让后台辅助角色执行此类任务。 可以使用诸如 [Azure 队列](/storage/queues/storage-queues-introduction)之类的服务。 这将使 API 高效返回，从而提高策略执行性能。  
+- 对于需要写入数据的 API，可将任务排入队列，让后台辅助角色执行此类任务。 可以使用诸如 [Azure 队列](../../storage/queues/storage-queues-introduction.md)之类的服务。 这将使 API 高效返回，从而提高策略执行性能。  
 
 ## <a name="api-error-handling"></a>API 错误处理
 
@@ -48,11 +48,11 @@ Identity Experience Framework (IEF) 策略允许你使用 [RESTful API 技术配
 
 ### <a name="how-to-gracefully-handle-api-errors"></a>如何妥善处理 API 错误
 
-- API 可能会因各种原因而失败，让你的应用程序能够应对此类故障。 如果 API 无法完成请求，则[返回 HTTP 4XX 错误消息](/active-directory-b2c/restful-technical-profile#returning-validation-error-message)。 在 Azure AD B2C 策略中，尝试妥善处理 API 不可用的问题，可能会呈现更精简的体验。
+- API 可能会因各种原因而失败，让你的应用程序能够应对此类故障。 如果 API 无法完成请求，则[返回 HTTP 4XX 错误消息](../../active-directory-b2c/restful-technical-profile.md#returning-validation-error-message)。 在 Azure AD B2C 策略中，尝试妥善处理 API 不可用的问题，可能会呈现更精简的体验。
 
-- [妥善处理暂时性错误](/active-directory-b2c/restful-technical-profile#error-handling)。 RESTFul API 配置文件允许你为各种断路器配置错误消息。
+- [妥善处理暂时性错误](../../active-directory-b2c/restful-technical-profile.md#error-handling)。 RESTFul API 配置文件允许你为各种断路器配置错误消息。
 
-- 主动监视并使用持续集成/持续交付 (CICD)，轮换[技术配置文件引擎](/active-directory-b2c/restful-technical-profile)使用的 API 访问凭据，例如密码和证书。
+- 主动监视并使用持续集成/持续交付 (CICD)，轮换[技术配置文件引擎](../../active-directory-b2c/restful-technical-profile.md)使用的 API 访问凭据，例如密码和证书。
 
 ## <a name="api-management---best-practices"></a>API 管理 - 最佳做法
 
@@ -62,7 +62,7 @@ Identity Experience Framework (IEF) 策略允许你使用 [RESTful API 技术配
 
 - API 管理 (APIM) 可发布、管理和分析 API。 APIM 还可处理身份验证，以提供对后端服务和微服务的安全访问。 使用 API 网关可横向扩展 API 部署、缓存和负载均衡。
 
-- 建议在用户旅程开始时获取正确的令牌（而不是为每个 API 调用多次），并[保护 Azure APIM API](/active-directory-b2c/secure-api-management?tabs=app-reg-ga)。
+- 建议在用户旅程开始时获取正确的令牌（而不是为每个 API 调用多次），并[保护 Azure APIM API](../../active-directory-b2c/secure-api-management.md?tabs=app-reg-ga)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -72,4 +72,3 @@ Identity Experience Framework (IEF) 策略允许你使用 [RESTful API 技术配
   - [通过监视和分析实现复原能力](resilience-with-monitoring-alerting.md)
 - [在身份验证基础结构中构建复原能力](resilience-in-infrastructure.md)
 - [提高应用程序中身份验证和授权的复原能力](resilience-app-development-overview.md)
-

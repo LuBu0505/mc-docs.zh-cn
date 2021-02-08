@@ -6,14 +6,14 @@ ms.author: v-jay
 ms.service: mariadb
 ms.topic: how-to
 origin.date: 6/10/2020
-ms.date: 10/29/2020
+ms.date: 02/08/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f6c32b5e037eda4fd3a169a661129a4fe34ad3fd
-ms.sourcegitcommit: 7b3c894d9c164d2311b99255f931ebc1803ca5a9
+ms.openlocfilehash: 24dd28803209890190cc85494adcac24e86670e9
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470493"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503968"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-powershell"></a>如何使用 PowerShell 在 Azure Database for MariaDB 中创建和管理只读副本
 
@@ -41,7 +41,7 @@ ms.locfileid: "92470493"
 ### <a name="create-a-read-replica"></a>创建只读副本
 
 > [!IMPORTANT]
-> 如果为没有现有副本的源服务器创建副本，源服务器将首先重启，以便为复制做准备。 请考虑这一点并在非高峰期执行这些操作。
+> 如果为没有现有副本的源服务器创建副本，源服务器将首先重启，以便为复制做好准备。 请考虑这一点并在非高峰期执行这些操作。
 
 可以使用以下命令创建只读副本服务器：
 
