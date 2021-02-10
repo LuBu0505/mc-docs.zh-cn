@@ -4,17 +4,16 @@ description: 了解可以运行 Azure IoT Edge 守护程序和运行时的操作
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-origin.date: 10/12/2020
-ms.date: 01/05/2021
+ms.date: 02/02/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2023501ba7c6dde04335caafefe93ccbcb15679d
-ms.sourcegitcommit: 40db5a4b9ab8b5877e307ff7a567fd930ca81c72
+ms.openlocfilehash: bf9780bfb59bc147c326046b6f8c689f021dbb4b
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894305"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579453"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge 支持的系统
 
@@ -22,11 +21,11 @@ ms.locfileid: "97894305"
 
 如果在使用 Azure IoT Edge 服务时遇到问题，可以通过多种方式来寻求支持。 请尝试通过以下某个渠道来寻求支持：
 
-**报告 bug** – 涉及 Azure IoT Edge 产品的大多数开发都是在 IoT Edge 开放源代码项目中进行的。 可以在项目的[问题页面](https://github.com/azure/iotedge/issues)上报告 bug。 修复很快就会从项目实施到产品更新中。
+**报告 bug** - 涉及 Azure IoT Edge 产品的大多数开发都在 IoT Edge 开放源代码项目中进行。 可以在项目的[问题页面](https://github.com/azure/iotedge/issues)上报告 bug。 修复很快就会从项目实施到产品更新中。
 
 **Microsoft 客户支持团队** – 拥有 [支持计划](https://azure.microsoft.com/support/plans/)的用户可以通过直接从 [Azure 门户]( https://portal.azure.cn/signin/index/?feature.settingsportalinstance=mpac)创建支持票证来与 Microsoft 客户支持团队进行沟通。
 
-**功能请求** – Azure IoT Edge 产品通过产品的 [User Voice 页面](https://feedback.azure.com/forums/907045-azure-iot-edge)跟踪功能请求。
+**功能请求** - Azure IoT Edge 产品通过产品的[“用户之声”页面](https://feedback.azure.com/forums/907045-azure-iot-edge)跟踪功能请求。
 
 ## <a name="container-engines"></a>容器引擎
 
@@ -51,15 +50,19 @@ Azure IoT Edge 在大多数可以运行容器的操作系统上运行；但是�
 
 主机 OS 系列必须始终与模块容器内部使用的来宾 OS 系列相匹配。 换言之，在 Linux 上只能使用 Linux 容器，在 Windows 上只能使用 Windows 容器。 使用 Windows 时，仅支持进程隔离容器，而不支持 Hyper-V 隔离容器。  
 
-<br>
-<center>
-
-![主机 OS 与来宾 OS 相匹配](./media/support/edge-on-device.png)
-</center>
+IoT Edge for Linux on Windows 使用 Windows 主机上运行的 Linux 虚拟机中的 IoT Edge。 通过这种方式，可以在 Windows 设备上运行 Linux 模块。
 
 ### <a name="tier-1"></a>第 1 层
 
-下表中列出的系统（不管是公开发布版还是公共预览版）受 Microsoft 的支持，并在每个新版本中进行了测试。 
+下表中列出的系统（不管是公开发布版还是公共预览版）受 Microsoft 的支持，并在每个新版本中进行了测试。
+
+Azure IoT Edge 支持构建为 Linux 或 Windows 容器的模块。 可以将 Linux 容器部署到 Linux 设备，或使用 IoT Edge for Linux on Windows 将 Linux 容器部署到 Windows 设备。 Windows 容器只能部署到 Windows 设备。
+
+#### <a name="linux-containers"></a>Linux 容器
+
+构建为 Linux 容器的模块可以部署到 Linux 或 Windows 设备。 对于 Linux 设备，IoT Edge 运行时会直接安装在主机设备上。 对于 Windows 设备，使用 IoT Edge 运行时预生成的 Linux 虚拟机会在主机设备上运行。
+
+IoT Edge for Linux on Windows 目前为公共预览版，但我们建议通过它在 Windows 设备上运行 IoT Edge。
 
 | 操作系统 | AMD64 | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
@@ -71,7 +74,22 @@ Azure IoT Edge 在大多数可以运行容器的操作系统上运行；但是�
 | [Windows Server 2019](https://docs.microsoft.com/windows-server/get-started-19/rel-notes-19) 内部版本 17763 | ![Windows Server 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Windows Server IoT 2019](https://docs.microsoft.com/windows/iot-core/windows-server) 内部版本 17763 | ![Windows Server IoT 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 
-上面列出的 Windows 操作系统是在 Windows 上运行 Windows 容器的设备的要求，这是受支持的唯一生产配置。 适用于 Windows 的 Azure IoT Edge 安装包允许在 Windows 上使用 Linux 容器；但是，只能将此配置用于开发和测试。 
+所有 Windows 操作系统都必须是 1809 版（内部版本 17763）或更高版本。
+
+#### <a name="windows-containers"></a>Windows 容器
+
+构建为 Windows 容器的模块只能部署到 Windows 设备。
+
+| 操作系统 | AMD64 | ARM32v7 | ARM64 |
+| ---------------- | ----- | ------- | ----- |
+| Windows 10 IoT 企业版 | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows 10 IoT Core<sup>1</sup><br> | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows Server 2019  | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows Server IoT 2019<br> | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
+
+<sup>1</sup> 在版本 1.0.10 后将不支持 Windows 10 IoT Core
+
+所有 Windows 操作系统都必须是 1809 版（内部版本 17763）。 Windows 的这一特定内部版本是 Windows 上的 IoT Edge 所必需的，因为 Windows 容器的版本必须与主机 Windows 设备的版本完全匹配。 Windows 容器当前只使用内部版本 17763。
 
 ### <a name="tier-2"></a>第 2 层
 
@@ -92,12 +110,6 @@ Azure IoT Edge 在大多数可以运行容器的操作系统上运行；但是�
 | [Yocto](https://www.yoctoproject.org/) | ![Yocto + AMD64](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM64](./media/tutorial-c-module/green-check.png) |
 | Raspberry Pi OS Buster <sup>1</sup> |  | ![Raspberry Pi OS Buster + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Raspberry Pi OS Buster + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Ubuntu 20.04 <sup>2</sup>](https://wiki.ubuntu.com/FocalFossa/ReleaseNotes) | ![Ubuntu 20.04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20.04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20.04 + ARM64](./media/tutorial-c-module/green-check.png) |
-
-<sup>1</sup> Debian 10 系统（包括 Raspberry Pi OS Buster）使用了 IoT Edge 不支持的 OpenSSL 版本。 在安装 IoT Edge 之前，请使用以下命令安装较低版本：
-
-```bash
-sudo apt-get install libssl1.1
-```
 
 <sup>2</sup> [Azure IoT Edge 版本存储库](https://github.com/Azure/azure-iotedge/releases)中的 Debian 9 包应该可以直接与 Ubuntu 20.04 配合使用。
 

@@ -6,14 +6,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 02/01/2021
 ms.author: v-johya
-ms.openlocfilehash: bc0ba98e5c831301c396a5154095914600e72f4f
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: b1a85299fc9c11cf81851103d689ea8f032e2bf6
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751046"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579525"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>为 Azure 准备基于 Red Hat 的虚拟机
 在本文中，将了解如何准备 Red Hat Enterprise Linux (RHEL) 虚拟机，以供在 Azure 中使用。 本文介绍的 RHEL 版本为 6.7+ 和 7.1+。 本文所述的用于准备工作的虚拟机监控程序为 Hyper-V、基于内核的虚拟机 (KVM) 和 VMware。 有关参与 Red Hat 云访问计划的资格要求的详细信息，请参阅 [Red Hat 的云访问网站](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)和[在 Azure 上运行 RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)。
@@ -31,7 +31,7 @@ ms.locfileid: "98751046"
 * Azure 不支持 VHDX 格式。 Azure 仅支持固定 VHD。 可使用 Hyper-V 管理器将磁盘转换为 VHD 格式，也可以使用 convert-vhd cmdlet。 如果使用 VirtualBox，则选择“固定大小”，而不是在创建磁盘时默认动态分配选项。
 * Azure 支持 Gen1（BIOS 引导）和Gen2（UEFI 引导）虚拟机。
 * VHD 允许的最大大小为 1,023 GB。
-* 支持逻辑卷管理器 (LVM)，该管理器可以在 Azure 虚拟机中的 OS 磁盘或数据磁盘上使用。 但是，通常建议在 OS 磁盘上使用标准分区而不是 LVM。 这种做法可以避免 LVM 名称与克隆的虚拟机冲突，尤其是当需要将操作系统磁盘附加到另一台相同的虚拟机进行故障排除时。 另请参阅 [LVM](configure-lvm.md?toc=%2fvirtual-machines%2flinux%2ftoc.json) 和 [RAID](configure-raid.md?toc=%2fvirtual-machines%2flinux%2ftoc.json) 文档。
+* 支持逻辑卷管理器 (LVM)，该管理器可以在 Azure 虚拟机中的 OS 磁盘或数据磁盘上使用。 但是，通常建议在 OS 磁盘上使用标准分区而不是 LVM。 这种做法可以避免 LVM 名称与克隆的虚拟机冲突，尤其是当需要将操作系统磁盘附加到另一台相同的虚拟机进行故障排除时。 另请参阅 [LVM](configure-lvm.md) 和 [RAID](configure-raid.md) 文档。
 * 对装载通用磁盘格式 (UDF) 文件系统的内核支持是必需的。 在 Azure 上首次启动时，附加到来宾的 UDF 格式媒体会将预配配置传递到 Linux 虚拟机。 Azure Linux 代理必须能够装载 UDF 文件系统以读取其配置并预配虚拟机，如果没有此支持，预配将失败！
 * 不要在操作系统磁盘上配置交换分区。 可以在以下步骤中找到有关此内容的详细信息。
 
@@ -201,11 +201,14 @@ ms.locfileid: "98751046"
 
 1. 在 grub 配置中修改内核引导行，使其包含 Azure 的其他内核参数。 若要执行此修改，请在文本编辑器中打开 `/etc/default/grub` 并编辑 `GRUB_CMDLINE_LINUX` 参数。 例如：
 
+    
     ```config-grub
-    GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
+    GRUB_CMDLINE_LINUX="rootdelay=300 console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0"
+    GRUB_TERMINAL_OUTPUT="serial console"
+    GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1
     ```
    
-   这还可确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。 此配置还会关闭 NIC 的新 RHEL 7 命名约定。 除此之外，建议删除以下参数：
+    这还可确保所有控制台消息都发送到第一个串行端口并启用与串行控制台的交互，从而可以协助 Azure 支持人员针对问题进行调试。 此配置还会关闭 NIC 的新 RHEL 7 命名约定。
 
     ```config
     rhgb quiet crashkernel=auto
@@ -218,6 +221,8 @@ ms.locfileid: "98751046"
     ```console
     # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
+    > [!NOTE]
+    > 如果要上传已启用 UEFI 的 VM，则用于更新 grub 的命令会是 `grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg`。
 
 1. 请确保 SSH 服务器已安装且已配置为在引导时启动（默认采用此配置）。 修改 `/etc/ssh/sshd_config` 以包含以下行：
 
@@ -231,31 +236,40 @@ ms.locfileid: "98751046"
     # subscription-manager repos --enable=rhel-7-server-extras-rpms
     ```
 
-1. 通过运行以下命令来安装 Azure Linux 代理：
+1. 通过运行以下命令安装 Azure Linux 代理、cloud-init 和其他必需的实用程序：
 
     ```console
-    # sudo yum install WALinuxAgent
+    # sudo yum install -y WALinuxAgent cloud-init cloud-utils-growpart gdisk hyperv-daemons
 
     # sudo systemctl enable waagent.service
+    # sudo systemctl enable cloud-init.service
     ```
 
-1. 安装 cloud-init 来处理预配
+1. 配置 cloud-init 来处理预配：
+
+    1. 为 cloud-init 配置 waagent：
 
     ```console
-    yum install -y cloud-init cloud-utils-growpart gdisk hyperv-daemons
-
-    # Configure waagent for cloud-init
-    sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
-    sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
+    sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=cloud-init/g' /etc/waagent.conf
     sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
     sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+    ```
+    > [!NOTE]
+    > 如果要迁移特定的虚拟机，但不希望创建通用化映像，请在 `/etc/waagent.conf` config 上设置 `Provisioning.Agent=disabled`。
+    
+    1. 配置装载：
 
+    ```console
     echo "Adding mounts and disk_setup to init stage"
     sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
     sed -i '/ - disk_setup/d' /etc/cloud/cloud.cfg
     sed -i '/cloud_init_modules/a\\ - mounts' /etc/cloud/cloud.cfg
     sed -i '/cloud_init_modules/a\\ - disk_setup' /etc/cloud/cloud.cfg
+    ```
+    
+    1. 配置 Azure 数据源：
 
+    ```console
     echo "Allow only Azure datasource, disable fetching network setting via IMDS"
     cat > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg <<EOF
     datasource_list: [ Azure ]
@@ -263,13 +277,206 @@ ms.locfileid: "98751046"
     Azure:
         apply_network_config: False
     EOF
+    ```
 
+    1. 如果已配置，则删除现有的交换文件：
+
+    ```console
     if [[ -f /mnt/resource/swapfile ]]; then
-    echo Removing swapfile - RHEL uses a swapfile by default
+    echo "Removing swapfile" #RHEL uses a swapfile by defaul
     swapoff /mnt/resource/swapfile
     rm /mnt/resource/swapfile -f
     fi
+    ```
+    1. 配置 cloud-init 日志记录：
+    ```console
+    echo "Add console log file"
+    cat >> /etc/cloud/cloud.cfg.d/05_logging.cfg <<EOF
 
+    # This tells cloud-init to redirect its stdout and stderr to
+    # 'tee -a /var/log/cloud-init-output.log' so the user can see output
+    # there without needing to look on the console.
+    output: {all: '| tee -a /var/log/cloud-init-output.log'}
+    EOF
+
+    ```
+
+1. 交换配置  不要在操作系统磁盘上创建交换空间。
+
+    以前，Azure Linux 代理用于使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 但是，现在这由 cloud-init 处理，你不能使用 Linux 代理来格式化资源磁盘以创建交换文件，请在 `/etc/waagent.conf` 中相应地修改以下参数：
+
+    ```console
+    ResourceDisk.Format=n
+    ResourceDisk.EnableSwap=n
+    ```
+
+    如果需要装载、格式化和创建交换文件，可以使用以下任一方法：
+    * 每次创建 VM 时，将此代码作为 cloud-init 配置传入
+    * 使用融入到映像的 cloud-init 指令，从而在每次创建 VM 时执行此操作：
+
+        ```console
+        cat > /etc/cloud/cloud.cfg.d/00-azure-swap.cfg << EOF
+        #cloud-config
+        # Generated by Azure cloud image build
+        disk_setup:
+          ephemeral0:
+            table_type: mbr
+            layout: [66, [33, 82]]
+            overwrite: True
+        fs_setup:
+          - device: ephemeral0.1
+            filesystem: ext4
+          - device: ephemeral0.2
+            filesystem: swap
+        mounts:
+          - ["ephemeral0.1", "/mnt"]
+          - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
+        EOF
+        ```
+1. 如果想要取消注册订阅，运行以下命令：
+
+    ```console
+    # sudo subscription-manager unregister
+    ```
+
+1. 预配
+
+    运行以下命令可取消对虚拟机的预配并且对其进行准备以便在 Azure 上进行预配：
+
+    > [!CAUTION]
+    > 如果要迁移特定的虚拟机，但不希望创建通用化映像，请跳过“取消预配”步骤。 运行命令 `waagent -force -deprovision` 将导致源计算机无法使用，此步骤仅用于创建通用化映像。
+    ```console
+    # sudo waagent -force -deprovision
+
+    # export HISTSIZE=0
+
+    # logout
+    ```
+    
+
+1. 在 Hyper-V 管理器中单击“操作” > “关闭”。 现在，准备将 Linux VHD 上传到 Azure。
+
+### <a name="rhel-8-using-hyper-v-manager"></a>RHEL 8（使用 Hyper-V 管理器）
+
+1. 在 Hyper-V 管理器中，选择虚拟机。
+
+1. 单击“连接”  以打开该虚拟机的控制台窗口。
+
+1. 通过运行以下命令，确保网络管理器服务会在引导时启动：
+
+    ```console
+    # sudo systemctl enable NetworkManager.service
+    ```
+
+1. 将网络接口配置为在启动时自动启动，并使用 DHCP：
+
+    ```console
+    # nmcli con mod eth0 connection.autoconnect yes ipv4.method auto
+    ```
+
+
+1. 注册 Red Hat 订阅，以通过运行以下命令来启用来自 RHEL 存储库中的包的安装：
+
+    ```console
+    # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
+    ```
+
+1. 在 grub 配置中修改内核引导行，使其包含 Azure 的其他内核参数并启用串行控制台。 
+
+    1. 删除当前的 GRUB 参数：
+    ```console
+    # grub2-editenv - unset kernelopts
+    ```
+
+    1. 在文本编辑器中编辑 `/etc/default/grub`，并添加以下参数：
+
+    ```config-grub
+    GRUB_CMDLINE_LINUX="rootdelay=300 console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0"
+    GRUB_TERMINAL_OUTPUT="serial console"
+    GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
+    ```
+   
+   这还可确保所有控制台消息都发送到第一个串行端口并启用与串行控制台的交互，从而可以协助 Azure 支持人员针对问题进行调试。 此配置还会关闭 NIC 的新 RHEL 7 命名约定。
+   
+   1. 另外，还建议删除以下参数：
+
+    ```config
+    rhgb quiet crashkernel=auto
+    ```
+   
+    图形界面式引导和安静引导在云环境中不适用，在云环境中，我们希望所有日志都发送到串行端口。 如果需要，可以保留配置的 `crashkernel` 选项。 请注意，此参数可以将虚拟机中的可用内存量减少 128 MB 或更多，遇到较小的虚拟机大小时，此配置可能会有问题。
+
+1. 完成 `/etc/default/grub` 编辑后，运行以下命令以重新生成 grub 配置：
+
+    ```console
+    # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```
+    对于启用了 UEFI 的 VM，请运行以下命令：
+
+    ```console
+    # sudo grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+    ```
+
+1. 请确保 SSH 服务器已安装且已配置为在引导时启动（默认采用此配置）。 修改 `/etc/ssh/sshd_config` 以包含以下行：
+
+    ```config
+    ClientAliveInterval 180
+    ```
+
+1. 通过运行以下命令安装 Azure Linux 代理、cloud-init 和其他必需的实用程序：
+
+    ```console
+    # sudo yum install -y WALinuxAgent cloud-init cloud-utils-growpart gdisk hyperv-daemons
+
+    # sudo systemctl enable waagent.service
+    # sudo systemctl enable cloud-init.service
+    ```
+
+1. 配置 cloud-init 来处理预配：
+
+    1. 为 cloud-init 配置 waagent：
+
+    ```console
+    sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=cloud-init/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+    ```
+    > [!NOTE]
+    > 如果要迁移特定的虚拟机，但不希望创建通用化映像，请在 `/etc/waagent.conf` config 上设置 `Provisioning.Agent=disabled`。
+    
+    1. 配置装载：
+
+    ```console
+    echo "Adding mounts and disk_setup to init stage"
+    sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
+    sed -i '/ - disk_setup/d' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - mounts' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - disk_setup' /etc/cloud/cloud.cfg
+    ```
+    
+    1. 配置 Azure 数据源：
+
+    ```console
+    echo "Allow only Azure datasource, disable fetching network setting via IMDS"
+    cat > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg <<EOF
+    datasource_list: [ Azure ]
+    datasource:
+    Azure:
+        apply_network_config: False
+    EOF
+    ```
+
+    1. 如果已配置，则删除现有的交换文件：
+
+    ```console
+    if [[ -f /mnt/resource/swapfile ]]; then
+    echo "Removing swapfile" #RHEL uses a swapfile by defaul
+    swapoff /mnt/resource/swapfile
+    rm /mnt/resource/swapfile -f
+    fi
+    ```
+    1. 配置 cloud-init 日志记录：
+    ```console
     echo "Add console log file"
     cat >> /etc/cloud/cloud.cfg.d/05_logging.cfg <<EOF
 
@@ -324,14 +531,15 @@ ms.locfileid: "98751046"
     运行以下命令可取消对虚拟机的预配并且对其进行准备以便在 Azure 上进行预配：
 
     ```console
-    # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
-    # skip the deprovision step
     # sudo waagent -force -deprovision
 
     # export HISTSIZE=0
 
     # logout
     ```
+    > [!CAUTION]
+    > 如果要迁移特定的虚拟机，但不希望创建通用化映像，请跳过“取消预配”步骤。 运行命令 `waagent -force -deprovision` 将导致源计算机无法使用，此步骤仅用于创建通用化映像。
+
 
 1. 在 Hyper-V 管理器中单击“操作” > “关闭”。 现在，准备将 Linux VHD 上传到 Azure。
 

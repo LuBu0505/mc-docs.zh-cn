@@ -2,15 +2,13 @@
 title: Azure 事件中心功能概述 | Microsoft Docs
 description: 本文详细介绍 Azure 事件中心的功能和术语。
 ms.topic: article
-origin.date: 06/23/2020
-ms.date: 01/05/2021
-ms.author: v-tawe
-ms.openlocfilehash: d370952955ea59ac2c55228cfe47449b14faf05d
-ms.sourcegitcommit: 93063f9b8771b8e895c3bcdf218f5e3af14ef537
+ms.date: 01/29/2021
+ms.openlocfilehash: c978190f74eb1fc0ac125db3f2b5855cbaa1f704
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98193279"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579424"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中心的功能和术语
 
@@ -19,27 +17,21 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 本文基于[概述文章](./event-hubs-about.md)中的信息编写，并提供有关事件中心组件和功能的技术和实现详细信息。
 
 ## <a name="namespace"></a>命名空间
-事件中心命名空间提供唯一的作用域容器，可以通过其完全限定的域名进行引用，而在该容器中，可以创建一个或多个事件中心或 Kafka 主题。 
-
-## <a name="event-hubs-for-apache-kafka"></a>用于 Apache Kafka 的事件中心
-
-[此功能](event-hubs-for-kafka-ecosystem-overview.md)提供了一个终结点，该终结点允许客户使用 Kafka 协议与事件中心进行通信。 此集成为客户提供了一个 Kafka 终结点。 这允许客户将其现有 Kafka 应用程序配置为与事件中心进行通信，提供了运行其自己的 Kafka 群集的替代方式。 Apache Kafka 的事件中心支持 Kafka 协议 1.0 和更高版本。 
-
-有了此集成，你不需要使用 Zookeeper 便可运行 Kafka 群集或管理它们。 这还允许你使用事件中心的一些要求最严苛的功能，例如“捕获”、“自动扩展”和“异地灾难恢复”。
-
-使用此集成，只需要进行配置更改，便可允许应用程序（例如 Mirror Maker）或框架（例如 Kafka Connect）以非群集方式工作。 
+事件中心命名空间提供 DNS 集成网络终结点与一系列的访问控制和网络集成管理功能（例如 [IP 筛选](event-hubs-ip-filtering.md)、虚拟网络服务终结点和专用链接），并且是用于多个事件中心实例（或 Kafka 用语中的“主题”）之一的管理容器。
 
 ## <a name="event-publishers"></a>事件发布者
 
-向事件中心发送数据的任何实体都是事件生成者或事件发布者。 事件发布者可以使用 HTTPS、AMQP 1.0 或 Kafka 1.0 和更高版本发布事件。 事件发布者通过共享访问签名 (SAS) 令牌向事件中心表明其身份，可以使用唯一的标识，也可以使用通用的 SAS 令牌。
+任何向事件中心发送数据的实体都是事件发布者（与“事件生成者”同义） 。 事件发布者可以使用 HTTPS、AMQP 1.0 或 Kafka 协议发布事件。 事件发布者会将基于 Azure Active Directory 的授权与 OAuth2 颁发的 JWT 令牌或特定于事件中心的共享访问签名 (SAS) 令牌配合使用，从而获取发布访问权限。
 
 ### <a name="publishing-an-event"></a>发布事件
 
-可以通过 AMQP 1.0、Kafka 1.0（和更高版本）或 HTTPS 发布事件。 事件中心服务提供 [REST API](https://docs.microsoft.com/rest/api/eventhub/)、[.NET](event-hubs-dotnet-standard-getstarted-send.md)、[Java](event-hubs-java-get-started-send.md)、[Python](event-hubs-python-get-started-send.md)、[JavaScript](event-hubs-node-get-started-send.md) 和 [Go](event-hubs-go-get-started-send.md) 客户端库，用于将事件发布到事件中心。 对于其他运行时和平台，可以使用任何 AMQP 1.0 客户端，例如 [Apache Qpid](https://qpid.apache.org/)。 
+可以通过 AMQP 1.0、Kafka 协议或 HTTPS 发布事件。 事件中心服务提供 [REST API](https://docs.microsoft.com/rest/api/eventhub/)、[.NET](event-hubs-dotnet-standard-getstarted-send.md)、[Java](event-hubs-java-get-started-send.md)、[Python](event-hubs-python-get-started-send.md)、[JavaScript](event-hubs-node-get-started-send.md) 和 [Go](event-hubs-go-get-started-send.md) 客户端库，用于将事件发布到事件中心。 对于其他运行时和平台，可以使用任何 AMQP 1.0 客户端，例如 [Apache Qpid](https://qpid.apache.org/)。 
 
-可以逐个或者批量发送事件。 单个发布（事件数据实例）限制为 1 MB，不管它是单个事件还是事件批。 发布大于此限制的事件将导致出错。 发布者最好是不知道事件中心内的分区数，而只是通过其 SAS 令牌指定“分区键”（如下一部分所述）或其标识。
+是要使用 AMQP 还 HTTPS 根据具体的使用方案而定。 AMQP 除了需要使用传输级别安全 (TLS) 或 SSL/TLS 以外，还需要建立持久的双向套接字。 初始化会话时，AMQP 具有较高的网络成本，但是 HTTPS 需要为每个请求使用额外的 TLS 开销。 对于频繁进行发布的发布者，AMQP 的性能明显更高，并且，在将 AMQP 与异步发布代码配合使用时，延迟时间可能会大大降低。
 
-是要使用 AMQP 还 HTTPS 根据具体的使用方案而定。 AMQP 除了需要使用传输级别安全 (TLS) 或 SSL/TLS 以外，还需要建立持久的双向套接字。 初始化会话时，AMQP 具有较高的网络成本，但是 HTTPS 需要为每个请求使用额外的 TLS 开销。 对于活动频繁的发布者，AMQP 的性能更高。
+可以逐个或者成批发送事件。 单个发布的限制为 1 MB，不管它是单个事件还是一批事件。 发布大于此阈值的事件将被拒绝。 
+
+事件中心吞吐量是通过使用分区和吞吐量单位分配进行缩放的（请参阅下文）。 发布者最好是不知道为事件中心选择的特定分区模型，而只是指定用于始终如一地将相关事件分配给同一分区的分区键。
 
 ![分区键](./media/event-hubs-features/partition_keys.png)
 

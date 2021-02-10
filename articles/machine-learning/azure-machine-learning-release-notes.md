@@ -9,16 +9,33 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 6668d2e138a7f6748b5caa4652be46c2877d7df9
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 86055ddc787d25f62b3e9c7168b855bfc1969c73
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230692"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804386"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
 本文介绍 Azure 机器学习的版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[适用于 Python 的主要 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 参考页。
+ ## <a name="2021-01-11"></a>2021-01-11
+
+### <a name="azure-machine-learning-sdk-for-python-v1200"></a>用于 Python 的 Azure 机器学习 SDK v1.20.0
++ **Bug 修复与改进**
+  + **azure-cli-ml**
+    + 已在 OptimizationConfig 中添加了 framework_version。 在将模型注册到框架 MULTI 时会使用它。
+  + **azureml-contrib-optimization**
+    + 已在 OptimizationConfig 中添加了 framework_version。 在将模型注册到框架 MULTI 时会使用它。
+  + **azureml-pipeline-steps**
+    + 引入将接受待处理命令的 CommandStep。 命令可以包含可执行文件、shell 命令、脚本等。
+  + **azureml-core**
+    + 现在，工作区创建操作支持用户分配的标识。 从 SDK/CLI 添加 uai 支持
+    + 修复了 service.reload() 上的问题，以便选取本地部署中 score.py 上的更改。
+    + `run.get_details()` 具有一个名为“submittedBy”的额外字段，该字段显示此运行的作者名称。
+    + 已编辑了 Model.register 方法文档，以说明如何直接从运行中注册模型
+    + 修复了 IOT-Server 连接状态更改处理问题。
+   
 
 ## <a name="2020-12-31"></a>2020-12-31
 ### <a name="azure-machine-learning-studio-notebooks-experience-december-update"></a>Azure 机器学习工作室笔记本体验（12 月更新）
@@ -95,7 +112,19 @@ ms.locfileid: "98230692"
     + 不再使用 Nccl 和 Gloo 作为估算器类的有效输入类型，改为将 PyTorchConfiguration 和 ScriptRunConfig 配合使用。 
     + 不再使用 Mpi 作为估算器类的有效输入类型，改为将 MpiConfiguration 和 ScriptRunConfig 配合使用。
 
+## <a name="2020-11-30"></a>2020-11-30
+### <a name="azure-machine-learning-studio-notebooks-experience-november-update"></a>Azure 机器学习工作室笔记本体验（11 月更新）
++ **新功能**
+   + 本机终端。 用户现在可以访问集成终端，并可以通过[集成终端](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal)访问 Git 操作。
+  + 复制文件夹 
+  + “计算的成本”下拉列表 
+  + 脱机计算 Pylance 
 
++ **Bug 修复与改进**
+  + 改进了页面加载时间
+  + 提高了性能 
+  + 提高了速度和内核可靠性
+  + 大型文件上传。 你现在可以上传大于 95MB 的文件
 
 ## <a name="2020-11-09"></a>2020-11-09
 
@@ -121,12 +150,6 @@ ms.locfileid: "98230692"
     + 已优化链接服务 API。 我们没有提供资源 Id，而是在配置中定义了 3 个独立的参数 sub_id、rg 和 name。
     + 为了使客户能够自行解决令牌损坏问题，可使工作区令牌同步成作为一种公共方法。
     + 此更改允许将空字符串用作 script_param 的值
-  + **azureml-pipeline-core**
-    + 支持 SynapseCompute 类型和 SynapseSparkStep 的 SDK。 客户可以在 Synapse Spark 池上运行试验和管道运行。
-  + **azureml-pipeline-steps**
-    + 支持 SynapseCompute 类型和 SynapseSparkStep 的 SDK。 客户可以在 Synapse Spark 池上运行试验和管道运行。
-  + azureml-synapse
-    + 添加 Synapse magic 和 SparkMonitor，允许用户提交 Syanpse 作业并在笔记本中查看作业进度。
   + **azureml-train-automl-client**
     +  通过允许使用高斯噪声填充短时序来改进其处理。
   + **azureml-train-automl-runtime**
@@ -164,7 +187,6 @@ ms.locfileid: "98230692"
     + 修复了在重新拟合模型后 VotingRegressor 预测可能不准确的问题。
   + **azureml-core**
     + 添加了有关 AKS 部署配置和 Azure Kubernetes 服务概念之间关系的其他详细信息。
-    + 客户可以使用链接服务 SDK 将 synapse 工作区链接到 AML 工作区。 支持 CRUD。
     + 环境客户端标签支持。 用户可以标记环境并通过标签引用它们。
   + **azureml-dataprep**
     + 完善了在 Scala 2.12 中使用当前不受支持的 Spark 时出现的错误消息。
@@ -284,7 +306,7 @@ ms.locfileid: "98230692"
     + 已更新 AzureML MLflow 文档和笔记本示例 
     + 对带有 AzureML 后端的 MLflow 项目的新支持
     + MLflow 模型注册表支持
-    + 为 AzureML-MLflow 操作添加了 RBAC 支持 
+    + 为 AzureML-MLflow 操作添加了 Azure RBAC 支持 
     
   + **azureml-pipeline-core**
     + 改进了 PipelineOutputFileDataset.parse_* 方法的文档。
@@ -305,7 +327,7 @@ ms.locfileid: "98230692"
 
 ### <a name="azure-machine-learning-sdk-for-python-v1130"></a>用于 Python 的 Azure 机器学习 SDK v1.13.0
 + **预览功能**
-  + **azureml-core** 使用新的输出数据集功能，可以写回云存储（包括 Blob、ADLS Gen 1、ADLS Gen 2 和文件共享）。 用户可以配置数据输出位置，数据输出方法（通过装载或上传），是否注册输出数据以供将来重用和共享，以及在管道步骤之间无缝传递中间数据。 这样可以实现可再现性和共享，防止数据重复，并提高成本效益和工作效率。 [了解其用法](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true)
+  + **azureml-core** 使用新的输出数据集功能，可以写回到云存储（包括 Blob、ADLS Gen 2 和文件共享）。 用户可以配置数据输出位置，数据输出方法（通过装载或上传），是否注册输出数据以供将来重用和共享，以及在管道步骤之间无缝传递中间数据。 这样可以实现可再现性和共享，防止数据重复，并提高成本效益和工作效率。 [了解其用法](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true)
     
 + **Bug 修复与改进**
   + **azureml-automl-core**
