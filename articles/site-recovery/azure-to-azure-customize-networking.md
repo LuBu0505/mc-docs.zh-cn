@@ -1,5 +1,5 @@
 ---
-title: 为故障转移 VM 自定义网络配置 | Azure
+title: 为故障转移 VM 自定义网络配置 | Azure Docs
 description: 概述了在使用 Azure Site Recovery 复制 Azure VM 时，如何为故障转移 VM 自定义网络配置。
 services: site-recovery
 manager: rochakm
@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: article
 origin.date: 10/21/2019
 author: rockboyfor
-ms.date: 10/19/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: a73ed2a599628fa254b6b100dd031c15c41ea0cc
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 20b24f7801cc3bb753e944a937eb7e1c411ba69d
+ms.sourcegitcommit: 7fc72b8afbdf9ad5e53922f489229e54282214b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978229"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540363"
 ---
 <!--Verify sucessfully-->
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>自定义目标 Azure VM 的网络配置
@@ -48,7 +48,7 @@ ms.locfileid: "94978229"
 
     :::image type="content" source="media/azure-to-azure-customize-networking/edit-networking-properties.png" alt-text="自定义故障转移网络配置":::
 
-4. 选择一个测试故障转移虚拟网络。 你可以选择将其留空，并在测试故障转移时选择一个。
+4. 选择一个测试故障转移虚拟网络。
 5. 选择要配置的 NIC 旁边的“编辑”。  在接下来打开的边栏选项卡中，在测试故障转移和故障转移位置中选择已预先创建的相应资源。
 
     :::image type="content" source="media/azure-to-azure-customize-networking/nic-drilldown.png" alt-text="编辑 NIC 配置"::: 

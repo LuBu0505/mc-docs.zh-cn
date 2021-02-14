@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/12/2020
+ms.date: 02/02/2021
 ms.author: v-johya
 origin.date: 04/05/2019
-ms.openlocfilehash: 0a56edfed416cdd197f97576eb380cf5753c4dc6
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: 03d49c80c2b9aebedb19b969292ae972cd2956a5
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637978"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579587"
 ---
 # <a name="protect-your-network-resources"></a>保护你的网络资源
 Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安全最佳做法。 在安全中心识别出潜在的安全漏洞时，它会创建一些建议，指导完成配置所需控件以强化和保护资源的过程。
 
-有关网络建议的完整列表，请参阅[网络建议](recommendations-reference.md#recs-network)。
+有关网络建议的完整列表，请参阅[网络建议](recommendations-reference.md#recs-networking)。
 
 本文从网络安全角度介绍适用于 Azure 资源的建议。 网络建议以下一代防火墙、网络安全组、JIT VM 访问过度宽容的入站流量规则等为中心。 有关网络建议和修复操作的列表，请参阅[管理 Azure 安全中心的安全建议](security-center-recommendations.md)。
 

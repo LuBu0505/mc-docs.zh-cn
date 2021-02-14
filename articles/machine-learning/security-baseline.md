@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3e7f554a67615ca56cce2b6a943a2e6fea0a2181
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: c2a0d728d49fa12c50422ce7d2bbf0cad0f898cf
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978009"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804378"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure 机器学习的 Azure 安全基线
 
@@ -231,7 +231,7 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 
 
-- [Log Analytics 查询入门](../azure-monitor/log-query/get-started-portal.md)
+- [Log Analytics 查询入门](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
 
@@ -293,9 +293,9 @@ Azure 机器学习为各种计算资源甚至为你自己的计算资源提供�
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
-**指导**：可以使用 Azure 门户中资源的“标识和访问管理”选项卡配置基于角色的访问控制 (RBAC)，并维护有关 Azure 机器学习资源的库存。 角色将应用到 Active Directory 中的用户、组、服务主体和托管标识。 对于个人和组，可使用内置角色或自定义角色。
+**指导**：可以使用 Azure 门户中资源的“标识和访问管理”选项卡配置 Azure 基于角色的访问控制 (Azure RBAC)，并维护有关 Azure 机器学习资源的库存。 角色将应用到 Active Directory 中的用户、组、服务主体和托管标识。 对于个人和组，可使用内置角色或自定义角色。
 
-Azure 机器学习为 Azure 机器学习中的常见管理方案提供了内置的 RBAC。 在 Azure Active Directory (Azure AD) 中创建了配置文件的个人可将这些 RBAC 角色分配给用户、组、服务主体或托管标识，以授予或拒绝对资源和 Azure 机器学习资源操作的访问权限。
+Azure 机器学习为 Azure 机器学习中的常见管理方案提供了内置角色。 在 Azure Active Directory (Azure AD) 中创建了配置文件的个人可将这些角色分配给用户、组、服务主体或托管标识，以授予或拒绝对资源和 Azure 机器学习资源操作的访问权限。
 
 还可以使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组的成员的帐户。
 

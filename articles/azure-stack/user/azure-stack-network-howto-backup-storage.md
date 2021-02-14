@@ -3,17 +3,17 @@ title: 在 Azure Stack Hub 上备份存储帐户
 description: 了解如何在 Azure Stack Hub 上备份存储帐户。
 author: WenJason
 ms.topic: how-to
-origin.date: 5/27/2020
-ms.date: 12/07/2020
+origin.date: 12/2/2020
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.reviewer: sijuman
-ms.lastreviewed: 10/19/2019
-ms.openlocfilehash: 5688e81ef1992fa105e5900352633cc035b2b514
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.lastreviewed: 12/2/2020
+ms.openlocfilehash: 12ba2b09f09eca16687287eeb79932d75e961a8f
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508001"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503977"
 ---
 # <a name="back-up-your-storage-accounts-on-azure-stack-hub"></a>在 Azure Stack Hub 上备份存储帐户
 
@@ -33,7 +33,7 @@ ms.locfileid: "96508001"
 
 AzCopy 是一个极佳的工具，可用于复制本地文件系统、Azure 云存储、Azure Stack Hub 存储和 s3 中的数据。 目前，AzCopy 无法在两个 Azure Stack Hub 存储帐户之间复制数据。 将对象从源 Azure Stack Hub 存储帐户复制到目标 Azure Stack Hub 存储帐户需有一个中间本地文件系统。
 
-有关详细信息，请参阅[在 Azure Stack Hub 存储中使用数据传输工具](./azure-stack-storage-transfer.md?view=azs-1908#azcopy)一文中的“AzCopy”。
+有关详细信息，请参阅[在 Azure Stack Hub 存储中使用数据传输工具](./azure-stack-storage-transfer.md#azcopy)一文中的“AzCopy”。
 
 ### <a name="azure-stack-hub-source"></a>Azure Stack Hub（源）
 
@@ -87,7 +87,7 @@ AzCopy 是一个极佳的工具，可用于复制本地文件系统、Azure 云�
     azcopy sync "https:/<storagaccount>/<container>?<SAS Key>" "C:\\myFolder" --recursive=true --delete-destination=true
     ```
 
-5.  输入 **存储帐户**、**SAS 密钥**和**本地目录路径。  稍后将使用此信息以增量方式将数据复制到 **目标** 存储帐户
+5.  输入“存储帐户”、“SAS 密钥”和“本地目录路径”。  稍后将使用此信息以增量方式将数据复制到 **目标** 存储帐户
     
     ```
     azcopy sync "C:\\myFolder" "https:// <storagaccount>/<container>?<SAS Key>" --recursive=true --delete-destination=true

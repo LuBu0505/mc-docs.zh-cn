@@ -7,17 +7,17 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 origin.date: 07/22/2020
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 02/08/2021
 ms.testscope: yes
 ms.testdate: 09/28/2020
 ms.author: v-yeche
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c8ce528e4bd6113188a4e61946975236fdcc0bc2
-ms.sourcegitcommit: a8afac9982deafcf0652c63fe1615ba0ef1877be
+ms.openlocfilehash: c7bf81839769a9896f1c0f64240526d04d1c0962
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96850864"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580514"
 ---
 <!--Verify sucessfully-->
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的指标进行监视和调试
@@ -81,7 +81,7 @@ Azure Cosmos DB 提供吞吐量、存储、一致性、可用性和延迟的指�
 
 ## <a name="compare-data-size-against-index-size"></a>比较数据与索引的大小
 
-在 Azure Cosmos DB 中，所用存储空间总量是指数据大小和索引大小的总和。 索引大小通常只是数据大小的一小部分。 在 [Azure 门户](https://portal.azure.cn)的“指标”边栏选项卡，“存储”选项卡显示基于数据和索引的存储空间使用量详情。
+在 Azure Cosmos DB 中，所用存储空间总量是指数据大小和索引大小的总和。 索引大小通常只是数据大小的一小部分。 若要了解详细信息，请参阅[索引大小](index-policy.md#index-size)一文。 在 [Azure 门户](https://portal.azure.cn)的“指标”边栏选项卡，“存储”选项卡显示基于数据和索引的存储空间使用量详情。
 
 ```csharp
 // Measure the document size usage (which includes the index size)  
@@ -122,4 +122,4 @@ QueryMetrics 提供执行各查询组件所用时长的详细信息  。 导致�
 * [执行 Azure Cosmos DB 缩放和性能测试](performance-testing.md)
 * [Azure Cosmos DB 性能提示](performance-tips.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/18/2020
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 4545a4dfd1e925ee4ebbe2d4b8fc55a72c61cd6e
-ms.sourcegitcommit: 7646936d018c4392e1c138d7e541681c4dfd9041
+ms.openlocfilehash: ced13961495319724d436f1c9e05aa1a9be0408e
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88647702"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540672"
 ---
-# <a name="differences-between-msal-js-and-adal-js"></a>MSAL JS 与 ADAL JS 的差异
+# <a name="differences-between-msaljs-and-adaljs"></a>MSAL.js 与 ADAL.js 的差异
 
 适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 与适用于 JavaScript 的 Azure AD 身份验证库 (ADAL.js) 用于对 Azure AD 实体进行身份验证，以及从 Azure AD 请求令牌。 截止目前，大多数开发人员都是通过 ADAL 来请求令牌，使用面向开发人员的 Azure AD (v1.0) 来对 Azure AD 标识（工作和学校帐户）进行身份验证。 现在，使用 MSAL.js 可以通过 Microsoft 标识平台 (v2.0) 对更广泛的 Microsoft 标识（Azure AD 标识以及通过 Azure AD B2C 使用的社交和本地帐户）进行身份验证。
 
@@ -97,4 +97,3 @@ ms.locfileid: "88647702"
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请阅读 [v1.0 与 v2.0 的比较](../azuread-dev/azure-ad-endpoint-comparison.md)。
-

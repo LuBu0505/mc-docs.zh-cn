@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 8ddc7f2911e2788c86266261c16901407e48b6f0
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 9cc088b8965ec4f0a76e01a70d999b2f1ff886d1
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022918"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804365"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure 机器学习中的安全数据访问
 
@@ -105,7 +105,7 @@ Azure 机器学习数据集不是你的数据的副本。 创建数据集时，�
 
 <a name="label"></a>
 
-## <a name="data-labeling"></a>数据标记
+## <a name="label-data-with-data-labeling-projects"></a>使用数据标记项目标记数据
 
 在机器学习项目中，标记大量数据通常是一件很麻烦的事情。 这些包含计算机视觉组件（如图像分类或对象检测）的项目通常需要数千个图像和对应的标签。
 
@@ -115,7 +115,7 @@ Azure 机器学习提供了一个中心位置，用于创建、管理和监视�
 
 <a name="drift"></a>
 
-## <a name="data-drift"></a>数据偏移
+## <a name="monitor-model-performance-with-data-drift"></a>利用数据偏移监视模型性能
 
 在机器学习的上下文中，数据偏移是指模型输入数据中导致模型性能下降的变化。 这是模型准确度在一段时间后下降的最主要原因之一，因此，监视数据偏移有助于检测模型性能问题。
 

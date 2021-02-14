@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 12/16/2020
-ms.openlocfilehash: cd58f47eabfcc556fed2507d195d16d4340f8c24
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 01/14/2020
+ms.openlocfilehash: 391c5ea28827737099b92b0850bd37545bc3af8e
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98229992"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804339"
 ---
 # <a name="open-source-integration-with-azure-machine-learning-projects"></a>与 Azure 机器学习项目的开源集成
 
@@ -42,11 +42,11 @@ ms.locfileid: "98229992"
 
 开源深度学习框架和操作指南包括：
 
- *  [PyTorch](https://github.com/pytorch/pytorch)：[在 PyTorch 中使用迁移学习训练深度学习图像分类模型](how-to-train-pytorch.md) 
+ *  [PyTorch](https://github.com/pytorch/pytorch)：[使用迁移学习训练深度学习图像分类模型](how-to-train-pytorch.md) 
  *  [TensorFlow](https://github.com/tensorflow/tensorflow)：[使用 TensorFlow 识别手写数字](how-to-train-tensorflow.md)
  *  [Keras](https://github.com/keras-team/keras)：[使用 Keras 构建用于分析图像的神经网络](how-to-train-keras.md)
 
-从头开始训练深度学习模型通常需要大量的时间、数据和计算资源。 你可以通过使用迁移学习来加快训练过程。 迁移学习是一种将解决某个问题时获得的知识应用于虽然不同但却相关的问题的技术。 这意味着，可以使用现有模型来重新设置其用途。 有关迁移学习的详细信息，请参阅[深度学习文章](concept-deep-learning-vs-machine-learning.md#transfer-learning)。
+从头开始训练深度学习模型通常需要大量的时间、数据和计算资源。 你可以通过使用迁移学习来加快训练过程。 迁移学习是一种将解决某个问题时获得的知识应用于虽然不同但却相关的问题的技术。 这意味着，可以使用现有模型来重新设置其用途。 有关迁移学习的详细信息，请参阅[深度学习与机器学习](concept-deep-learning-vs-machine-learning.md#what-is-transfer-learning)一文。
 
 ### <a name="reinforcement-learning-ray-rllib"></a>强化学习：Ray RLLib
 

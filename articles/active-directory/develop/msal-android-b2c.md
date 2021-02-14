@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/06/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.openlocfilehash: b087454102bf846bc4698cf3ad71534e1bd91fc1
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: bc564b358b4243a3ddb9b336f02aeb1fc8557360
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021776"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540674"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>将适用于 Android 的 MSAL 与 B2C 配合使用
 
@@ -36,11 +36,14 @@ ms.locfileid: "98021776"
 
 应用的配置文件将声明两个 `authorities`。 对每个策略各声明一个。 每个颁发机构的 `type` 属性为 `B2C`。
 
+>注意：对于 B2C 应用程序，必须将 `account_mode` 设置为“MULTIPLE”。 请参阅文档，详细了解[多帐户公共客户端应用](./single-multi-account.md#multiple-account-public-client-application)。
+
 ### `app/src/main/res/raw/msal_config.json`
 ```json
 {
     "client_id": "<your_client_id_here>",
     "redirect_uri": "<your_redirect_uri_here>",
+    "account_mode" : "MULTIPLE",
     "authorities": [{
             "type": "B2C",
             "authority_url": "https://contoso.b2clogin.cn/tfp/contoso.partner.onmschina.cn/B2C_1_SISOPolicy/",
@@ -240,4 +243,3 @@ B2C 将每个策略视为单独的颁发机构。 因此，从每个策略返回
 ## <a name="next-steps"></a>后续步骤
 
 若要详细了解 Azure Active Directory B2C (Azure AD B2C)，请参阅[什么是 Azure Active Directory B2C？](../../active-directory-b2c/overview.md)
-

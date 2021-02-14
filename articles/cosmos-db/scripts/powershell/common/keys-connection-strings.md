@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.topic: sample
 origin.date: 03/18/2020
 author: rockboyfor
-ms.date: 11/09/2020
+ms.date: 02/08/2021
 ms.testscope: yes|no
 ms.testdate: 08/17/2020null
 ms.author: v-yeche
-ms.openlocfilehash: 7624465132da912ade0ad1dba6a46dfd4d643e4a
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 7b0a3ce5f0cd55d21a12921fb5abb537a598686e
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328844"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580481"
 ---
 <!--Verified successfully-->
 # <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-db-account-using-powershell"></a>使用 PowerShell 的 Azure Cosmos DB 帐户的连接字符串和帐户密钥操作
@@ -22,7 +22,10 @@ ms.locfileid: "94328844"
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
-[!INCLUDE [sample-powershell-install](../../../../../includes/sample-powershell-install-no-ssh.md)]
+本示例需要 Azure PowerShell Az 5.4.0 或更高版本。 运行 `Get-Module -ListAvailable Az`，查看已安装哪些版本。
+如果需要安装，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+
+运行 [Connect-AzAccount -Environment AzureChinaCloud](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) 以登录到 Azure。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -80,4 +83,4 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 有关 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

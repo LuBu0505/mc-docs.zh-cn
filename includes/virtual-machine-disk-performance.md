@@ -6,17 +6,17 @@ ms.service: virtual-machines
 ms.topic: include
 origin.date: 09/25/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 02/08/2021
 ms.testscope: no
 ms.testdate: 11/02/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 5be6805594f9488877346001928d6b00465921a1
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: a05d3017e672c1fc93273475d6731e41056136f2
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857158"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580541"
 ---
 本文阐述了磁盘性能，以及在将 Azure 虚拟机和 Azure 磁盘组合使用时磁盘性能的工作原理。 此外还介绍了如何诊断磁盘 IO 的瓶颈，以及可以进行哪些更改以优化性能。
 
@@ -33,7 +33,7 @@ Azure 虚拟机具有每秒输入/输出操作数 (IOPS) 和吞吐量性能限�
     - 未缓存的 IOPS：12,800
 - E30 OS 磁盘
     - IOPS：500
-- 两个 E30 数据磁盘  2
+- 两个 E30 数据磁盘 × 2
     - IOPS：500
 
 ![示意图中显示了磁盘级上限。](media/vm-disk-performance/disk-level-throttling.jpg)
@@ -55,7 +55,7 @@ Azure 虚拟机具有每秒输入/输出操作数 (IOPS) 和吞吐量性能限�
     - 未缓存的 IOPS：12,800
 - P30 OS 磁盘
     - IOPS：5,000
-- 两个 P30 数据磁盘  2
+- 两个 P30 数据磁盘 × 2
     - IOPS：5,000
 
 ![示意图中显示了虚拟机级上限。](media/vm-disk-performance/vm-level-throttling.jpg)

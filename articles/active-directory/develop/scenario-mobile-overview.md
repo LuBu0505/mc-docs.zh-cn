@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/23/2020
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 3cde9b754976a1ef291423a32d8ab3d74142819a
-ms.sourcegitcommit: 883daddafe881e5f8a9f347df2880064d2375b6d
+ms.openlocfilehash: 582b3016f070217dd684cd5ab63d553c17659016
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95918388"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540829"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>方案：用于调用 Web API 的移动应用程序
 
@@ -60,4 +60,3 @@ ms.locfileid: "95918388"
 ## <a name="next-steps"></a>后续步骤
 
 转到此方案中的下一篇文章，[应用注册](scenario-mobile-app-registration.md)。
-

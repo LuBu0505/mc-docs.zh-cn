@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/03/2020
+ms.date: 02/03/2021
 ms.author: v-johya
 origin.date: 10/28/2019
-ms.openlocfilehash: 4b598f1fada3bf0211d0e16d98a6fe702a74ded5
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: b4395d808326a5530ece24ed3998e1cee4348502
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746542"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579620"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 
@@ -153,10 +153,16 @@ ms.locfileid: "96746542"
 
 此方法可用于所有许可层，但不能与现有的条件访问策略混合使用。 你可以在 [Azure AD 安全默认值](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)中找到更多信息
 
-<!-- not available-->
+**选项 2**：[通过更改用户状态启用多重身份验证](../../active-directory/authentication/howto-mfa-userstates.md)。   
+**优势**：这是要求进行双重验证的传统方法。 它适用于[云中的 Azure AD 多重身份验证和 Azure 多重身份验证服务器](../../active-directory/authentication/concept-mfa-howitworks.md)。 使用此方法要求用户在每次登录时都执行双重验证，并且会替代条件访问策略。
 
+若要确定需要在哪里启用多重身份验证，请参阅 [Azure AD MFA 的哪个版本适合我的组织？](../../active-directory/authentication/concept-mfa-howitworks.md)。
 
-<!-- not available-->
+**选项 3**：[使用条件访问策略启用多重身份验证](../../active-directory/authentication/howto-mfa-getstarted.md)。
+**优势**：借助此选项，可以使用 [条件访问](../../active-directory/conditional-access/concept-conditional-access-policy-common.md)在特定条件下提示进行双重验证。 特定条件可以是用户从不同位置、不受信任的设备或你认为存在风险的应用程序登录。 定义要求双重验证的特定条件可以避免不断提示用户这种令人不快的用户体验。
+
+这是为用户启用双重验证最灵活的方式。 启用条件访问策略的功能只适用于云中的 Azure AD 多重身份验证，是 Azure AD 的一项高级功能。 有关此方法的详细信息，可参阅[部署基于云的 Azure AD 多重身份验证](../../active-directory/authentication/howto-mfa-getstarted.md)。
+
 
 
 ## <a name="use-role-based-access-control"></a>使用基于角色的访问控制
@@ -189,7 +195,86 @@ ms.locfileid: "96746542"
 
 未使用 Azure RBAC 之类的功能实施数据访问控制的组织可能会给其用户分配不必要的权限。 允许用户访问他们不应该有权访问的数据类型（例如，对业务有重大影响的数据）可能会导致数据泄露。
 
-<!--Lower exposure not available -->
+## <a name="lower-exposure-of-privileged-accounts"></a>降低特权帐户的泄露风险
+
+保护特权访问是保护业务资产的首要步骤。 减少拥有访问权限的人员以保护信息或资源安全，这样可以减小恶意用户获得访问权限，或者已授权用户无意中影响敏感资源的可能性。
+
+特权帐户是指掌控和管理 IT 系统的帐户。 网络攻击者会攻击这些帐户来获取组织数据和系统的访问权限。 为了保护特权访问，应隔离此类帐户和系统，使其免受恶意用户的威胁。
+
+建议制定并遵循一个路线图，防止特权访问受到网络攻击者的攻击。 若要了解如何创建详细路线图以保护在 Azure AD、Azure、Microsoft 365 和其他云服务中托管或报告的标识和访问，请查看[保护 Azure AD 中混合部署和云部署的特权访问](../../active-directory/roles/security-planning.md)。
+
+以下内容总结了[确保 Azure AD 中混合部署和云部署的特权访问安全性](../../active-directory/roles/security-planning.md)中介绍的最佳做法：
+
+**最佳做法**：管理、控制和监视对特权帐户的访问。   
+**详细信息**：启用 [Azure AD Privileged Identity Management](../../active-directory/roles/security-planning.md)。 启用 Privileged Identity Management 以后，会收到有关特权访问角色更改的通知电子邮件。 向目录中的高特权角色添加更多用户时，这些通知相当于早期警告。
+
+**最佳做法**：确保所有关键管理员帐户都是托管的 Azure AD 帐户。
+**详细信息**：从关键管理员角色中删除所有使用者帐户（例如，hotmail.com、live.com 和 outlook.com 等 Microsoft 帐户）。
+
+**最佳做法**：确保所有关键管理员角色都有一个单独的帐户来执行管理任务，以免发生网络钓鱼和其他入侵管理权限的攻击。
+**详细信息**：创建一个单独的管理员帐户，向其分配执行管理任务所需的权限。 禁止将这些管理帐户用于日常效率提升工具（如 Microsoft 365 电子邮件）或任意 Web 浏览。
+
+**最佳做法**：对特许权限高的角色中的帐户进行标识和分类。   
+**详细信息**：启用 Azure AD Privileged Identity Management 后，请查看角色为全局管理员、特权角色管理员和其他高特权角色的用户。 请删除在这些角色中不再需要的任何帐户，并对剩余的分配给管理员角色的帐户分类：
+
+* 单独分配给管理用户，可用于非管理性目的（例如，个人电子邮件）
+* 单独分配给管理用户，按规定只能用于管理目的
+* 跨多个用户共享
+* 适用于紧急访问情况
+* 适用于自动化脚本
+* 适用于外部用户
+
+**最佳做法**：实行“实时”(JIT) 访问可进一步降低特权的曝光时间，并提高对特权帐户使用情况的可见性。   
+**详细信息**：利用 Azure AD Privileged Identity Management，可以：
+
+* 限制用户只接受他们的权限 JIT。
+* 分配时限更短的角色，确信权限会自动撤消。
+
+**最佳做法**：定义至少两个紧急访问帐户。   
+**详细信息**：可以使用紧急访问帐户来帮助组织限制现有 Azure Active Directory 环境中的特权访问。 这些帐户拥有极高的特权，不要将其分配给特定的个人。 紧急访问帐户只能用于不能使用正常管理帐户的情况。 组织必须将紧急账户的使用限制在必要时间范围内。
+
+评估已经获得或有资格获得全局管理员角色的帐户。 如果使用 `*.partner.onmschina.cn` 域（用于紧急访问）看不到任何仅限云的帐户，请创建此类帐户。 有关详细信息，请参阅[在 Azure AD 中管理紧急访问管理帐户](../../active-directory/roles/security-emergency-access.md)。
+
+**最佳做法**：准备“破窗”流程，以备紧急情况时使用。
+**详细信息**：按照 [确保 Azure AD 中混合部署和云部署的特权访问安全性](../../active-directory/roles/security-planning.md)中的步骤操作。
+
+对于为其永久分配了一个或多个 Azure AD 管理员角色的所有个人用户，要求其在登录时进行 Azure AD 多重身份验证：全局管理员、特权角色管理员、Exchange Online 管理员和 SharePoint Online 管理员。 [为管理员帐户启用多重身份验证](../../active-directory/authentication/howto-mfa-userstates.md)，并确保管理员帐户用户已注册。
+
+**最佳做法**：对于关键管理员帐户，需要有不允许执行生产任务（例如，浏览和电子邮件）的管理工作站。 这会保护你的管理员帐户免受使用浏览和电子邮件的攻击途径的侵害，并大大降低发生重大事件的风险。
+**详细信息**：使用管理工作站。 选择工作站安全级别：
+
+- 高度安全的效率提升设备为浏览和其他效率提升任务提供高级安全性。
+- [特权访问工作站 (PAW)](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 为敏感任务提供免受 Internet 攻击和威胁攻击途径侵害的专用操作系统。
+
+**最佳做法**：在员工离开组织时，取消设置管理员帐户。
+**详细信息**：准备一个流程，在员工离开组织时禁用或删除管理员帐户。
+
+**最佳做法**：使用最新的攻击技术定期测试管理员帐户。
+**详细信息**：使用 Microsoft 365 攻击模拟器或第三方产品/服务在组织中运行逼真的攻击方案。 这样有助于在真正攻击发生之前发现易受攻击的用户。
+
+**最佳做法**：采取措施来缓解最常用的攻击技术的冲击。  
+**详细信息**：[确定管理角色中那些需要切换到工作或学校帐户的 Microsoft 帐户](../../active-directory/roles/security-planning.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
+
+[对于全局管理员帐户，请确保使用单独的用户帐户和邮件转发功能](../../active-directory/roles/security-planning.md)  
+
+[确保最近更改过管理帐户的密码](../../active-directory/roles/security-planning.md#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
+
+[启用密码哈希同步](../../active-directory/roles/security-planning.md#turn-on-password-hash-synchronization)  
+
+[要求对所有特权角色用户和公开的用户进行多重身份验证](../../active-directory/roles/security-planning.md#require-multi-factor-authentication-for-users-in-privileged-roles-and-exposed-users)  
+
+[获取 Microsoft 365 安全分数（如果使用 Microsoft 365）](../../active-directory/roles/security-planning.md#obtain-your-microsoft-365-secure-score-if-using-microsoft-365)  
+
+[查看 Microsoft 365 安全指南（如果使用 Microsoft 365）](../../active-directory/roles/security-planning.md#review-the-microsoft-365-security-and-compliance-guidance-if-using-microsoft-365)  
+
+[配置 Microsoft 365 活动监视（如果使用 Microsoft 365）](../../active-directory/roles/security-planning.md#configure-microsoft-365-activity-monitoring-if-using-microsoft-365)  
+
+[确定事件/紧急情况响应计划所有者](../../active-directory/roles/security-planning.md#establish-incidentemergency-response-plan-owners)  
+
+[保护本地特权管理帐户](../../active-directory/roles/security-planning.md#turn-on-password-hash-synchronization)
+
+如果不保护特权访问，你可能会拥有过多高特权角色用户，并且更易受到攻击。 恶意操作者（包括网络攻击者）通常会以管理员帐户和特权访问的其他元素为目标，通过凭据窃取获得敏感数据和系统的访问权限。
+
 ## <a name="control-locations-where-resources-are-created"></a>控制创建资源的位置
 
 非常重要的一点是，既要允许云操作员执行任务，同时又要防止他们违反管理组织资源所需的惯例。 想要控制创建资源的位置的组织应该对这些位置进行硬编码。

@@ -6,17 +6,17 @@ author: rockboyfor
 ms.service: virtual-wan
 ms.topic: include
 origin.date: 10/07/2019
-ms.date: 08/03/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 06/15/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: a3defebe801d1d40ed74c6d579a733b9efa84959
-ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
+ms.openlocfilehash: 0a722fabd34f8aa6759a8fecee3df0304f4db375
+ms.sourcegitcommit: 7fc72b8afbdf9ad5e53922f489229e54282214b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87427546"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99541233"
 ---
 使用自定义 IPsec 策略时，请记住以下要求：
 
@@ -37,5 +37,6 @@ ms.locfileid: "87427546"
 | IPsec 加密 | GCMAES256、GCMAES128、AES256、AES128、None |
 | IPsec 完整性 | GCMAES256、GCMAES128、SHA256 |
 | PFS 组 | ECP384、ECP256、PFS24、PFS14、None |
+| SA 生存期 |整数；至少为 300 秒/默认为 27000 秒 |
 
 <!-- Update_Description: update meta properties, wording update, update link -->

@@ -1,20 +1,20 @@
 ---
 title: 执行 R 脚本：模块参考
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习中的“执行 R 脚本”模块来运行 R 代码。
+description: 了解如何在 Azure 机器学习设计器中使用“执行 R 脚本”模块来运行自定义 R 代码。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: v-yiso
-ms.date: 07/27/2020
-ms.openlocfilehash: cc93578cdc83a67ab1e8d583a326cf0bf3d91319
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.date: 12/17/2020
+ms.openlocfilehash: d106a6ebf7f938c6ed64605be5ab87e0b86e0224
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022631"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804293"
 ---
 # <a name="execute-r-script-module"></a>“执行 R 脚本”模块
 
@@ -49,10 +49,12 @@ azureml_main <- function(dataframe1, dataframe2){
 若要安装其他 R 包，请使用 `install.packages()` 方法。 包是针对每一个“执行 R 脚本”模块分别安装的。 它们不在其他“执行 R 脚本”模块之间共享。
 
 > [!NOTE]
+> 建议不要从脚本包安装 R 包。 建议直接在脚本编辑器中安装包。
 > 在安装包时，请指定 CRAN 存储库，例如 `install.packages("zoo",repos = "http://cran.us.r-project.org")`。
 
 > [!WARNING]
 > “执行 R 脚本”模块不支持安装需要本机编译的包，例如，`qdap` 包需要 JAVA，`drc` 包需要 C++。 这是因为，此模块是在具有非管理员权限的预安装环境中执行的。
+> 不要安装在 Windows 上/针对 Windows 预建的包，因为设计器模块在 Ubuntu 上运行。 若要检查一个包是否是在 windows 上预建的包，可以转到 [CRAN](https://cran.r-project.org/) 并搜索该包，根据 OS 下载一个二进制文件，然后检查 DESCRIPTION 文件中的“Built:”部分。 下面是一个示例：:::image type="content" source="media/module/r-package-description.png" alt-text="R 包说明" lightbox="media/module/r-package-page.png":::
 
 此示例演示如何安装 Zoo：
 ```R

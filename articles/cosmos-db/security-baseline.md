@@ -5,17 +5,17 @@ ms.service: security
 ms.topic: conceptual
 origin.date: 03/16/2020
 author: rockboyfor
-ms.date: 12/07/2020
+ms.date: 02/08/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8a1ec9501ada87a46314b8fa7f72d294b43d720c
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 16bd0b62f3b07cf85e6b5ff1bcea807d5fdf3426
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747271"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580621"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Cosmos DB 的 Azure 安全基线
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -38,7 +38,7 @@ Cosmos DB 的 Azure 安全基线包含可帮助你改善部署安全态势的建
 
 还可以使用 IP 防火墙保护存储在 Azure Cosmos 帐户中的数据。 Azure Cosmos DB 支持使用基于 IP 的访问控制来提供入站防火墙支持。 可以使用 Azure 门户、Azure 资源管理器模板、Azure CLI 或 Azure PowerShell 在 Azure Cosmos 帐户上设置 IP 防火墙。
 
-<!--Not Available on https://docs.azure.cn/private-link/private-link-overview-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/private-link/private-link-overview-->
 
 如何为 Azure Cosmos DB 配置专用终结点： https://docs.azure.cn/cosmos-db/how-to-configure-private-endpoints 
 
@@ -84,8 +84,8 @@ Cosmos DB 的 Azure 安全基线包含可帮助你改善部署安全态势的建
 
 根据 Azure 安全中心集成的威胁情报进行判断，拒绝与已知恶意的或未使用过的 Internet IP 地址通信。
 
-<!--Not Available on How to configure Azure Cosmos DB Advanced Threat Protection: https://docs.azure.cn/cosmos-db/cosmos-db-advanced-threat-protection-->
-<!--Not Available on How to configure DDoS protection: https://docs.azure.cn/virtual-network/manage-ddos-protection-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/cosmos-db/cosmos-db-advanced-threat-protection-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/virtual-network/manage-ddos-protection-->
 
 了解 Azure 安全中心集成的威胁情报： https://docs.azure.cn/security-center/security-center-alerts-service-layer
 
@@ -106,7 +106,7 @@ Cosmos DB 的 Azure 安全基线包含可帮助你改善部署安全态势的建
 **责任**：客户
 
 <!--Not Available on ### 1.6: Deploy network based intrusion detection/intrusion prevention systems (IDS/IPS)-->
-<!--Not Available on https://docs.azure.cn/cosmos-db/cosmos-db-advanced-threat-protection-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/cosmos-db/cosmos-db-advanced-threat-protection-->
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
@@ -138,7 +138,7 @@ Cosmos DB 的 Azure 安全基线包含可帮助你改善部署安全态势的建
 
 如何配置和管理 Azure Policy： https://docs.azure.cn/governance/policy/tutorials/create-and-manage
 
-<!--Not Available on https://docs.azure.cn/governance/blueprints/create-blueprint-portal-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/governance/blueprints/create-blueprint-portal-->
 
 **Azure 安全中心监视**：不适用
 
@@ -178,8 +178,17 @@ Cosmos DB 的 Azure 安全基线包含可帮助你改善部署安全态势的建
 
 **责任**：Azure
 
-<!--Not Available on ### 2.2: Configure central security log management-->
-<!--Not Available on https://docs.azure.cn/sentinel/quickstart-onboard-->
+### <a name="22-configure-central-security-log-management"></a>2.2：配置中心安全日志管理
+
+**指导**：通过 Azure Monitor 引入日志来聚合 Azure Cosmos DB 生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用存储帐户进行长期/存档存储。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方安全事件和事件管理 (SIEM)。 
+
+如何为 Azure Cosmos DB 启用诊断日志： https://docs.azure.cn/cosmos-db/logging
+
+<!--NOT AVAILABLE ON https://docs.azure.cn/sentinel/quickstart-onboard-->
+
+**Azure 安全中心监视**：目前不可用
+
+**责任**：客户
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：为 Azure 资源启用审核日志记录
 
@@ -221,8 +230,19 @@ Cosmos DB 的 Azure 安全基线包含可帮助你改善部署安全态势的建
 
 **责任**：客户
 
-<!--Not Available on ### 2.7: Enable alerts for anomalous activity-->
-<!--Not Available on https://docs.azure.cn/sentinel/quickstart-onboard-->
+### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7：针对异常活动启用警报
+
+**指导**：在 Azure 安全中心，为 Azure Cosmos DB 启用高级威胁防护，以监视安全日志和事件中的异常活动。 在 Azure Cosmos DB 中启用诊断设置，并将日志发送到 Log Analytics 工作区。
+
+Azure Cosmos DB 的威胁防护警报列表： https://docs.azure.cn/security-center/alerts-reference#alerts-azurecosmos
+
+<!--NOT AVAILABLE ON https://docs.azure.cn/sentinel/quickstart-onboard-->
+
+使用 Azure Monitor 创建、查看和管理日志警报： https://docs.azure.cn/azure-monitor/platform/alerts-log
+
+**Azure 安全中心监视**：是
+
+**责任**：客户
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8：集中管理反恶意软件日志记录
 
@@ -301,7 +321,7 @@ Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的 Azur
 **责任**：客户
 
 <!--Not Available on ### 3.4: Use single sign-on (SSO) with Azure Active Directory-->
-<!--Not Available on https://docs.azure.cn/active-directory/manage-apps/what-is-single-sign-on-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/active-directory/manage-apps/what-is-single-sign-on-->
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：对所有基于 Azure Active Directory 的访问使用多重身份验证
 
@@ -319,7 +339,7 @@ Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的 Azur
 
 **指导**：使用配置了多重身份验证的特权访问工作站 (PAW) 来登录并配置 Azure 资源。
 
-了解特权访问工作站： https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+了解特权访问工作站： https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/
 
 如何在 Azure 中启用 MFA： https://docs.azure.cn/active-directory/authentication/howto-mfa-getstarted
 
@@ -337,7 +357,7 @@ Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的 Azur
 
 如何部署 Privileged Identity Management (PIM)： https://docs.azure.cn/active-directory/privileged-identity-management/pim-deployment-plan
 
-<!--Not Available on https://docs.azure.cn/active-directory/reports-monitoring/concept-risk-events-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/active-directory/reports-monitoring/concept-risk-events-->
 
 **Azure 安全中心监视**：是
 
@@ -386,12 +406,12 @@ Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的 Azur
 **责任**：客户
 
 <!--Not Available on ### 3.12: Alert on account login behavior deviation-->
-<!--Not Available on  https://docs.azure.cn/active-directory/reports-monitoring/concept-risky-sign-ins-->
-<!--Not Available on https://docs.azure.cn/active-directory/identity-protection/howto-identity-protection-configure-risk-policies-->
-<!--Not Available on https://docs.azure.cn/sentinel/quickstart-onboard-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/active-directory/reports-monitoring/concept-risky-sign-ins-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/active-directory/identity-protection/howto-identity-protection-configure-risk-policies-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/sentinel/quickstart-onboard-->
 
 <!--Not Available on ### 3.13: Provide Azure with access to relevant customer data during support scenarios-->
-<!--Not Available on https://docs.azure.cn/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability-->
 
 ## <a name="data-protection"></a>数据保护
 
@@ -411,7 +431,7 @@ Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的 Azur
 
 **指导**：为开发、测试和生产实施单独的订阅和/或管理组。 Azure Cosmos DB 实例按虚拟网络/子网进行分隔，进行了相应的标记，并在网络安全组 (NSG) 或 Azure 防火墙中受到保护。 应该隔离存储敏感数据的 Azure Cosmos DB 实例。 使用 Azure 专用链接可以通过专用终结点连接到 Azure Cosmos DB 实例帐户。 专用终结点是虚拟网络中某个子网内的一组专用 IP 地址。 然后，可以将访问限制为只能从选定的专用 IP 地址进行。 
 
-<!--Not Available on https://docs.azure.cn/billing/billing-create-subscription-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/billing/billing-create-subscription-->
 
 如何创建管理组： https://docs.azure.cn/governance/management-groups/create
 
@@ -435,7 +455,7 @@ Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的 Azur
 
 此外，在使用虚拟机访问 Azure Cosmos DB 实例时，请使用专用链接、防火墙、网络安全组和服务标记来降低数据外泄的可能性。 Azure 管理 Azure Cosmos DB 的底层基础结构，并实施了严格的控制措施来防止客户数据丢失或泄露。
 
-<!--Not Available on  https://docs.azure.cn/cosmos-db/cosmos-db-advanced-threat-protection-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/cosmos-db/cosmos-db-advanced-threat-protection-->
 
 了解 Azure 中的客户数据保护： https://docs.azure.cn/security/fundamentals/protection-customer-data
 
@@ -601,7 +621,7 @@ Azure 安全中心提供的支持功能： https://docs.azure.cn/security-center
 
 **指导**：在适用的情况下，使用标记、管理组与单独的订阅来组织和跟踪资产（包括但不限于 Azure Cosmos DB 资源）。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
-<!--Not Available on https://docs.azure.cn/billing/billing-create-subscription-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/billing/billing-create-subscription-->
 
 如何创建管理组： https://docs.azure.cn/governance/management-groups/create
 
@@ -948,7 +968,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：创建事件响应指导
 
-**指导**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
+**指南**：为组织制定事件响应指南。 确保在书面的事件响应计划中定义人员职责，以及事件处理/管理从检测到事件后审查的各个阶段。
 
 你还可以利用 NIST 的计算机安全事件处理指南来帮助创建自己的事件响应计划： https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
@@ -998,7 +1018,7 @@ Microsoft 安全响应中心的事件剖析： https://msrc-blog.microsoft.com/2
 
 如何配置连续导出： https://docs.azure.cn/security-center/continuous-export
 
-<!--Not Available on  https://docs.azure.cn/sentinel/connect-azure-security-center-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/sentinel/connect-azure-security-center-->
 
 **Azure 安全中心监视**：不适用
 
@@ -1033,4 +1053,4 @@ Microsoft 安全响应中心的事件剖析： https://msrc-blog.microsoft.com/2
 - 参阅 [Azure 安全基准](../security/benchmarks/overview.md)
 - 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

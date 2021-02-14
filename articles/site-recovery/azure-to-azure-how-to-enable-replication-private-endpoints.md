@@ -5,17 +5,17 @@ ms.service: site-recovery
 ms.topic: article
 origin.date: 07/14/2020
 author: rockboyfor
-ms.date: 11/09/2020
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 11/09/2020
 ms.author: v-yeche
 ms.custom: references_regions
-ms.openlocfilehash: 6fe1ef72d8e84881ee15b5105a477ba2224be62f
-ms.sourcegitcommit: b9d0091aebc506af49b7cfcd44593711df0d04a5
+ms.openlocfilehash: 08c4511cf88b042fa264fe98ec14def1de442137
+ms.sourcegitcommit: 7fc72b8afbdf9ad5e53922f489229e54282214b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94373975"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540365"
 ---
 <!--Verified Successsfully-->
 # <a name="replicate-machines-with-private-endpoints"></a>复制具有专用终结点的计算机
@@ -141,6 +141,11 @@ Azure Site Recovery 支持使用 Azure 专用链接专用终结点从隔离的�
 - 重新保护恢复网络中进行了故障转移的计算机时，需要第二个专用终结点。 此专用终结点用于在目标区域中创建的新存储帐户。
 
 > [!NOTE]
+> 如果未在存储帐户上启用专用终结点，保护仍会成功。 但是，复制流量会传输到 Azure Site Recovery 的公共终结点。
+
+<!--To ensure replication traffic flows via private links-->
+
+> [!NOTE]
 > 只能在“常规用途 v2”存储帐户上为存储创建专用终结点。 有关定价信息，请参阅[标准页 Blob 价格](https://www.azure.cn/pricing/details/storage/page-blobs/)。
 
 创建采用专用终结点的存储帐户。 请确保选择“是”，以便与专用 DNS 区域集成。 选择一个已创建的 DNS 区域或创建一个新区域。
@@ -238,5 +243,3 @@ Azure Site Recovery 支持使用 Azure 专用链接专用终结点从隔离的�
 - [将 Azure VM 复制到另一个 Azure 区域](./azure-to-azure-how-to-enable-replication.md)
 - [教程：为 Azure VM 设置灾难恢复](./azure-to-azure-tutorial-enable-replication.md)
 
-<!-- Update_Description: new article about azure to azure how to enable replication private endpoints -->
-<!--NEW.date: 11/09/2020-->

@@ -3,18 +3,18 @@ title: Azure Cosmos DB 服务配额
 description: Azure Cosmos DB 服务配额和不同资源类型的默认限制。
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 11/19/2020
+origin.date: 01/19/2021
 author: rockboyfor
 ms.date: 01/18/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 9daff1900789f8c551ac783a03151386799fa074
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: ffbe67b9a3a12456b57db004cd682aa981db37ba
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230965"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580614"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -40,7 +40,7 @@ ms.locfileid: "98230965"
 | 每个容器的最大存储 | 无限制 |
 | 每个数据库的最大存储 | 无限制 |
 | 每个帐户的最大附件大小（附件功能即将弃用） | 2 GB |
-| 每 1 GB 需要的最小 RU 数 | 10 RU/秒<br />**注意：** 如果你的容器或数据库中有超过 1TB 的数据，你的帐户可能有资格加入我们的 [“高存储/低吞吐量”计划](set-throughput.md#high-storage-low-throughput-program) |
+| 每 1 GB 需要的最小 RU 数 | 10 RU/秒<br />注意：如果你的帐户符合我们的[“高存储/低吞吐量”计划](set-throughput.md#high-storage-low-throughput-program)的条件，这个最小值可以降低 |
 
 > [!NOTE]
 > 若要了解有关管理其分区键需要更高存储或吞吐量限制的工作负荷的最佳做法，请参阅[创建合成分区键](synthetic-partition-keys.md)。
@@ -63,7 +63,7 @@ Cosmos 容器（或共享吞吐量数据库）的最小吞吐量必须为 400 RU
 
 示例：假设你有一个预配了 400 RU/s 和 0 GB 存储的容器。 你将吞吐量提高到 50,000 RU/s，并导入 20 GB 数据。 现在，最小 RU/s 为 `MAX(400, 20 * 10 RU/s per GB, 50,000 RU/s / 100)` = 500 RU/s。 随着时间的推移，存储会增长到 200 GB。 现在，最小 RU/s 为 `MAX(400, 200 * 10 RU/s per GB, 50,000 / 100)` = 2000 RU/s。 
 
-注意：如果你的容器或数据库中有超过 1 TB 的数据，你的帐户可能有资格加入我们的[“高存储/低吞吐量”计划](set-throughput.md#high-storage-low-throughput-program)。
+注意：如果你的帐户符合我们的[“高存储/低吞吐量”计划](set-throughput.md#high-storage-low-throughput-program)的条件，这个每 GB 存储每秒 10 RU 的最小吞吐量可以降低。
 
 #### <a name="minimum-throughput-on-shared-throughput-database"></a>共享吞吐量数据库的最小吞吐量 
 若要估算具有手动吞吐量的共享吞吐量数据库所需的最小吞吐量，请找到以下项的最大值：
@@ -75,7 +75,7 @@ Cosmos 容器（或共享吞吐量数据库）的最小吞吐量必须为 400 RU
 
 示例：假设你有一个预配了 400 RU/s、15 GB 存储和 10 个容器的数据库。 最小 RU/s 为 `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 RU/s。 如果数据库中有 30 个容器，则最小 RU/s 将为 `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 RU/s。 
 
-注意：如果你的容器或数据库中有超过 1 TB 的数据，你的帐户可能有资格加入我们的[“高存储/低吞吐量”计划](set-throughput.md#high-storage-low-throughput-program)。
+注意：如果你的帐户符合我们的[“高存储/低吞吐量”计划](set-throughput.md#high-storage-low-throughput-program)的条件，这个每 GB 存储每秒 10 RU 的最小吞吐量可以降低。
 
 总之，最小预配 RU 限制如下所示。 
 
@@ -239,14 +239,17 @@ Cosmos DB 支持针为 MongoDB 编写的应用程序使用 MongoDB 线路协议�
 | 资源 | 默认限制 |
 | --- | --- |
 | 最大 MongoDB 查询内存大小（此限制仅适用于 3.2 服务器版本） | 40 MB |
-| MongoDB 操作的最长执行时间| 30 秒 |
+|MongoDB 操作的最长执行时间（适用于 3.2 服务器版本）| 15 秒|
+|MongoDB 操作的最长执行时间（适用于 3.6 服务器版本）| 60 秒|
 | 导致服务器端连接关闭的空闲连接超时值* | 30 分钟 |
 
 \* 我们建议客户端应用程序将驱动程序设置中的空闲连接超时值设为 2-3 分钟，因为 [Azure LoadBalancer 的默认超时值为 4 分钟](../load-balancer/load-balancer-tcp-idle-timeout.md)。  此超时值可确保客户端计算机与 Azure Cosmos DB 之间的中间负载均衡器不会关闭空闲连接。
 
 <!--Not Available on ## Try Cosmos DB Free limits-->
+<!--NOT AVAILABLE ON [Try Azure Cosmos DB for Free](https://www.azure.cn/try/cosmosdb/)-->
 
-## <a name="free-tier-account-limits"></a>免费层帐户限制
+## <a name="azure-cosmos-db-free-tier-account-limits"></a>Azure Cosmos DB 免费层帐户的限制
+
 下表列出了 [Azure Cosmos DB 免费层帐户](optimize-dev-test.md#azure-cosmos-db-free-tier)的限制。
 
 | 资源 | 默认限制 |
@@ -258,7 +261,10 @@ Cosmos DB 支持针为 MongoDB 编写的应用程序使用 MongoDB 线路协议�
 | 最大共享吞吐量数据库数 | 5 |
 | 共享吞吐量数据库中的最大容器数 | 25 <br />在免费层帐户中，最多包含 25 个容器的共享吞吐量数据库的最小 RU/s 为 400 RU/s。 |
 
-  除上述限制外，[每个帐户的限制](#per-account-limits)也适用于免费层帐户。
+除上述限制外，[每个帐户的限制](#per-account-limits)也适用于免费层帐户。
+
+> [!NOTE]
+> Azure Cosmos DB 免费层不同于 Azure 试用版订阅。 Azure 试用版订阅在有限时间内免费提供 Azure 额度和资源。 Azure Cosmos DB 作为此试用版订阅的一部分，在你使用它时会提供 25 GB 的存储和 400 RU/秒的预配吞吐量，使用期限为 12个月。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -273,4 +279,4 @@ Cosmos DB 支持针为 MongoDB 编写的应用程序使用 MongoDB 线路协议�
 * [Azure Cosmos DB 表 API 入门](create-table-dotnet.md)
 
 <!--Not Available on [Try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)-->
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

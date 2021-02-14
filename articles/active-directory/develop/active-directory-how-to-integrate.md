@@ -9,16 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/26/2020
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: d13e50df0e6886548496e64dc18afa1b45d1c7f0
-ms.sourcegitcommit: ca5e5792f3c60aab406b7ddbd6f6fccc4280c57e
+ROBOTS: NOINDEX
+ms.openlocfilehash: 88fdfbaddf7f55dec89c9c9ee2813aed46c5a51e
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92749991"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540750"
 ---
 # <a name="integrating-with-microsoft-identity-platform"></a>与 Microsoft 标识平台集成
 
@@ -93,4 +94,3 @@ ms.locfileid: "92749991"
 [开始编写代码](v2-overview.md#getting-started)。
 
 [使用 Microsoft 标识平台将用户登录](./authentication-vs-authorization.md)
-

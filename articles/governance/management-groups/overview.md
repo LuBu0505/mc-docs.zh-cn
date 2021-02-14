@@ -1,18 +1,20 @@
 ---
 title: 使用管理组来组织资源 - Azure 治理
 description: 了解管理组、其权限的工作方式以及如何使用它们。
-ms.author: v-tawe
-origin.date: 11/17/2020
-ms.date: 01/05/2021
+origin.date: 01/22/2021
+author: rockboyfor
+ms.date: 02/08/2021
+ms.author: v-yeche
 ms.topic: overview
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 659c9584a326891a52ef51c263af08b16bc74d62
-ms.sourcegitcommit: ff20289adb80a6ab45e15fa5e196ff7af7e1c6b5
+ms.openlocfilehash: e5070d0995f53cc57c4852c965609f747ac85c76
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97874882"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580525"
 ---
+<!--Verified successfully-->
 # <a name="what-are-azure-management-groups"></a>什么是 Azure 管理组？
 
 如果你的组织有多个订阅，则可能需要一种方法来高效地管理这些订阅的访问权限、策略和符合性。 Azure 管理组提供订阅上的作用域级别。 可将订阅组织到名为“管理组”的容器中，并将管理条件应用到管理组。 管理组中的所有订阅都将自动继承应用于管理组的条件。 不管使用什么类型的订阅，管理组都能提供大规模的企业级管理。
@@ -28,7 +30,9 @@ ms.locfileid: "97874882"
    同时包含管理组和订阅的根管理组的图。 有些子管理组包含管理组，有些包含订阅，而有些两者均包含。 示例层次结构中的一个示例是四个级别的管理组（其子级别是所有订阅）。
 :::image-end:::
 
-例如，可以创建应用一个策略的层次结构，该策略将 VM 位置限制到名为“生产”的组中的“美国西部”区域。 此策略将继承到作为该管理组后代的所有企业协议 (EA) 订阅，并将应用于这些订阅下的所有 VM。 此安全策略不能由资源或订阅所有者更改，因此增强了治理效果。
+<!--CORRECT 02/05/2021 ON China East region-->
+
+例如，可以创建应用某个策略的层次结构，该策略将 VM 位置限制到名为“Production”的组中的“中国东部”区域。 此策略将继承到作为该管理组后代的所有企业协议 (EA) 订阅，并将应用于这些订阅下的所有 VM。 此安全策略不能由资源或订阅所有者更改，因此增强了治理效果。
 
 使用管理组的另一个场景是向用户提供对多个订阅的访问权限。 通过移动该管理组下的多个订阅，可对该管理组创建一个 [Azure 角色分配](../../role-based-access-control/overview.md)，该分配将这种访问权限继承到所有订阅。 管理组的一个分配就能让用户访问所需的一切内容，而无需基于不同订阅编写 Azure RBAC 的脚本。
 
@@ -83,8 +87,8 @@ ms.locfileid: "97874882"
   - 目录中的任何客户都可以调用 TenantBackfillStatusRequest 或 StartTenantBackfillRequest API 。 调用 StartTenantBackfillRequest API 时，它会启动将所有订阅移到层次结构中的初始设置过程。 此过程还会开始强制所有新订阅成为根管理组的子级。
     无需更改根级别上的任何分配即可完成此过程。 通过调用该 API，可使根上的任何策略或访问权限分配应用到所有订阅。
 
-如果对此回填过程有疑问，请联系：`managementgroups@microsoft.com`
-  
+如果对此回填过程有疑问，请联系：`https://support.azure.cn/support/contact/`
+
 ## <a name="management-group-access"></a>访问管理组
 
 Azure 管理组支持使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 来访问所有资源和定义角色。
@@ -97,7 +101,7 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (Azure RBAC)](../
 |所有者                       | X      | X      | X        | X      | X             | X             | X     |
 |参与者                 | X      | X      | X        | X      |               |               | X     |
 |MG 参与者\*            | X      | X      | X        | X      |               |               | X     |
-|读者                      |        |        |          |        |               |               | X     |
+|读取器                      |        |        |          |        |               |               | X     |
 |MG 读者\*                 |        |        |          |        |               |               | X     |
 |资源策略参与者 |        |        |          |        |               | X             |       |
 |用户访问管理员   |        |        |          |        | X             | X             |       |
@@ -153,10 +157,10 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (Azure RBAC)](../
 例如，让我们看看某个视觉对象的层次结构的一小部分。
 
 :::image type="complex" source="./media/subtree.png" alt-text="部分示例管理组层次结构的图。" border="false":::
-   该图重点介绍了具有子 IT 和营销管理组的根管理组。 IT 管理组具有一个名为“生产”的子管理组，而营销管理组则具有两个免费试用版子订阅。
+   该图重点介绍了具有子 IT 和营销管理组的根管理组。 IT 管理组具有一个名为“Production”的子管理组，而营销管理组则具有两个试用版子订阅。
 :::image-end:::
 
-假设在营销管理组上定义了一个自定义角色。 然后，在两个免费的试用版订阅上分配了该自定义角色。  
+假设在营销管理组上定义了一个自定义角色。 然后，该自定义角色会分配到两个试用版订阅上。  
 
 如果我们尝试移动这些将要成为生产管理组子项的订阅之一，则会断开从订阅角色分配到营销管理组角色定义的路径。 在这种情况下，会出现一条错误，指出系统不允许该移动，因为它会破坏此关系。  
 
@@ -164,20 +168,20 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (Azure RBAC)](../
 - 在将订阅移到新的父 MG 之前，从订阅中删除角色分配。
 - 将订阅添加到角色定义的可分配范围。
 - 在角色定义中更改可分配范围。 在上面的示例中，可以将可分配范围从“营销”更新为“根管理组”，这样，层次结构的两个分支就都可以访问定义。  
-- 创建另一个将在其他分支中定义的自定义角色。 此新角色会要求也可在订阅上更改角色分配。  
+- 另外创建一个在其他分支中定义的自定义角色。 这个新角色还要求在订阅上更改角色分配。  
 
 ### <a name="limitations"></a>限制  
 
 在管理组上使用自定义角色时存在限制。 
 
  - 在新角色的可分配范围中，只能定义一个管理组。 设置此限制是为了减少出现角色定义和角色分配不关联的情况的次数。 将进行了角色分配的订阅或管理组移到另一个没有该角色定义的父项时，会出现此情况。  
- - 不能在管理组自定义角色中定义资源提供程序数据平面操作。 存在此限制是因为，在更新数据平面资源提供程序时存在延迟问题。
-   我们会解决此延迟问题，并会在角色定义中禁用这些操作以降低风险。
+ - 不能在管理组自定义角色中定义资源提供程序数据平面操作。 存在此限制是因为，在更新数据平面资源提供程序时存在延迟问题。 我们会解决此延迟问题，并会在角色定义中禁用这些操作以降低风险。
  - Azure 资源管理器不验证管理组是否存在于角色定义的可分配范围中。 即使存在拼写错误或者列出的管理组 ID 不正确，仍会创建角色定义。
+ - 对于具有 dataActions 的角色，不支持进行角色分配。 请改为在订阅范围内创建角色分配。
 
 > [!IMPORTANT]
 > 将管理组添加到 `AssignableScopes` 的功能目前为预览版。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。
-> 某些功能可能不受支持或者受限。
+> 某些功能可能不受支持或者受限。 有关详细信息，请参阅[适用于 Azure 预览版的补充使用条款](https://www.azure.cn/support/legal/subscription-agreement/)。
 
 ## <a name="moving-management-groups-and-subscriptions"></a>移动管理组和订阅 
 
@@ -211,3 +215,5 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (Azure RBAC)](../
 - [创建管理组来组织 Azure 资源](./create-management-group-portal.md)
 - [如何更改、删除或管理管理组](./manage.md)
 - 请参阅[如何保护资源层次结构](./how-to/protect-resource-hierarchy.md)的选项
+
+<!--Update_Description: update meta properties, wording update, update link-->

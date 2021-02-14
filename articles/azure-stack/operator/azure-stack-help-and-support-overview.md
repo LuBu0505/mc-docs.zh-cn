@@ -3,17 +3,17 @@ title: Azure Stack Hub 帮助和支持
 description: 获取 Microsoft Azure Stack Hub 的支持。
 author: WenJason
 ms.topic: article
-origin.date: 02/26/2020
-ms.date: 12/07/2020
+origin.date: 01/19/2021
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.reviewer: shisab
-ms.lastreviewed: 02/26/2020
-ms.openlocfilehash: 4a60c414d68f7985cddf249dbe18866022d1f0f9
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.lastreviewed: 01/19/2021
+ms.openlocfilehash: a9fff0a19fcb05595faac5887dc4aaa4f9fc9ea5
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508110"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503997"
 ---
 # <a name="azure-stack-hub-help-and-support"></a>Azure Stack Hub 帮助和支持
 
@@ -31,7 +31,7 @@ Azure Stack Hub 操作员可以使用“帮助 + 支持”收集诊断日志并�
 
 ![Azure Stack Hub 中的自助服务支持](media/azure-stack-help-and-support/get-support-tiles.png)
 
-- **文档** [Azure Stack Hub 操作员文档](index.yml)包含介绍如何提供 Azure Stack Hub 服务的概念、操作指南主题和教程。 这些服务包括虚拟机、SQL 数据库、Web 应用等。
+- **文档** [Azure Stack Hub 操作员文档](index.yml)包含介绍如何提供 Azure Stack Hub 服务的概念、操作方法说明和教程。 这些服务包括虚拟机、SQL 数据库、Web 应用等。
 
 - **了解计费**。 获取有关[用量和计费](azure-stack-billing-and-chargeback.md)的提示。
 
@@ -65,8 +65,8 @@ Azure Stack Hub 操作员可以使用“帮助 + 支持”收集诊断日志并�
 
 可以通过两种方式将诊断日志发送到 Microsoft：
 
-- [主动发送日志](./azure-stack-diagnostic-log-collection-overview.md#send-logs-proactively)：如果启用，日志收集将由特定的运行状况警报触发。
-- [立即发送日志](./azure-stack-diagnostic-log-collection-overview.md#send-logs-now)：可以手动选择特定滑动窗口作为日志收集的时间范围。
+- [主动发送日志](./diagnostic-log-collection.md#send-logs-proactively)：如果启用，日志收集将由特定的运行状况警报触发。
+- [立即发送日志](./diagnostic-log-collection.md#send-logs-now)：可以手动选择特定滑动窗口作为日志收集的时间范围。
 
 ![此屏幕截图显示了如何开始收集诊断日志。](media/azure-stack-help-and-support/banner-enable-automatic-log-collection.png)
 
@@ -79,7 +79,7 @@ Azure Stack Hub 操作员可以使用“帮助 + 支持”收集诊断日志并�
 
 ![诊断日志收集选项](media/azure-stack-automatic-log-collection/azure-stack-log-collection-overview.png)
 
-集成系统可以与 Azure 支持共享诊断日志。 由于 Azure Stack 开发工具包 (ASDK) 是一个评估环境，因此 Azure 支持不为它提供支持。 有关详细信息，请参阅 [Azure Stack 诊断日志收集概述](azure-stack-diagnostic-log-collection-overview.md)。
+集成系统可以与 Azure 支持共享诊断日志。 由于 Azure Stack 开发工具包 (ASDK) 是一个评估环境，因此 Azure 支持不为它提供支持。 有关详细信息，请参阅 [Azure Stack 诊断日志收集概述](./diagnostic-log-collection.md)。
 
 ## <a name="help-and-support-for-earlier-releases-azure-stack-hub-pre-1905"></a>旧版 Azure Stack Hub（1905 之前）的帮助和支持
 
@@ -99,6 +99,6 @@ Azure Stack Hub 操作员可以使用“帮助 + 支持”收集诊断日志并�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[诊断日志收集](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002)。
+- 了解[诊断日志收集](./diagnostic-log-collection.md)。
 - 了解如何[查找云 ID](azure-stack-find-cloud-id.md)。
 - 了解如何[排查 Azure Stack Hub 问题](azure-stack-troubleshooting.md)。

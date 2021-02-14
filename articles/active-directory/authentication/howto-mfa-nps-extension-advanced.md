@@ -5,25 +5,22 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 01/07/2021
+ms.date: 02/04/2021
 ms.author: v-junlch
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a7dd23795bb869a97b8c500a93fabc8ec8d9234
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: bdd7b87f02f594e2eeb369922bd656e679153cb0
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022073"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540597"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>用于多重身份验证的 NPS 扩展的高级配置选项
 
 网络策略服务器 (NPS) 扩展可将基于云的 Azure AD 多重身份验证功能扩展至本地基础结构。 本文假设你已安装扩展，并想了解如何为自身需求自定义扩展。
-
-> [!NOTE]
-> 本文包含对术语“白名单”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 ## <a name="alternate-login-id"></a>备用登录 ID
 
@@ -54,9 +51,8 @@ ms.locfileid: "98022073"
 > [!NOTE]
 > 此注册表项不是由安装程序默认创建的，并且在重启该服务时，AuthZOptCh 日志中会出现错误。 可能会忽略日志中的此错误，但如果创建了此注册表项并在不需要时将其保留为空，则不会返回错误消息。
 
-当发出请求的 IP 地址来自 `IP_WHITELIST` 时，将跳过双重验证。 将 IP 列表与 RADIUS 请求的 ratNASIPAddress 属性中提供的 IP 地址相比较。 如果收到的 RADIUS 请求不包含 ratNASIPAddress 属性，则将记录以下警告：“P_WHITE_LIST_WARNING::IP 允许列表被忽略，因为 RADIUS 请求中的 NasIpAddress 属性缺少源 IP。”
+当发出请求的 IP 地址来自 `IP_WHITELIST` 时，将跳过双重验证。 将 IP 列表与 RADIUS 请求的 ratNASIPAddress 属性中提供的 IP 地址相比较。 如果传入的 RADIUS 请求不包含 ratNASIPAddress 属性，则会记录以下警告：“IP_WHITE_LIST_WARNING::IP 允许列表被忽略，因为 RADIUS 请求的 NasIpAddress 属性缺少源 IP。”
 
 ## <a name="next-steps"></a>后续步骤
 
 [解决 Azure AD 多重身份验证的 NPS 扩展出现的错误消息](howto-mfa-nps-extension-errors.md)
-

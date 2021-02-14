@@ -5,15 +5,15 @@ ms.devlang: azurecli
 ms.topic: quickstart
 author: Johnnytechn
 origin.date: 04/16/2019
-ms.date: 09/28/2020
+ms.date: 02/02/2021
 ms.custom: mvc, devx-track-azurepowershell
 ms.author: v-johya
-ms.openlocfilehash: 9f1f809cee5f7adab036b9da3f4902b6476e2681
-ms.sourcegitcommit: 80567f1c67f6bdbd8a20adeebf6e2569d7741923
+ms.openlocfilehash: ca9e63808bc72b4a1bac82e112d19fd3592ab97a
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91871397"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579603"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>使用 PowerShell 在 Azure 中备份虚拟机
 
@@ -21,7 +21,7 @@ ms.locfileid: "91871397"
 
 [Azure 备份](backup-overview.md)可备份本地计算机和应用以及 Azure VM。 本文说明如何使用 AZ 模块备份 Azure VM。 或者，可以使用 [Azure CLI](quick-backup-vm-cli.md) 或在 [Azure 门户](quick-backup-vm-portal.md)中备份 VM。
 
-参考本快速入门可在现有的 Azure VM 上备份。 如果需要创建 VM，可以[使用 Azure PowerShell 创建 VM](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json)。
+参考本快速入门可在现有的 Azure VM 上备份。 如果需要创建 VM，可以[使用 Azure PowerShell 创建 VM](https://docs.microsoft.com/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fpowershell%2fmodule%2ftoc.json)。
 
 本快速入门需要 Azure PowerShell AZ 模块 1.0.0 版或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
@@ -48,7 +48,7 @@ ms.locfileid: "91871397"
 创建保管库时：
 
 - 对于资源组和位置，指定要备份的 VM 的资源组和位置。
-- 如果使用此[示例脚本](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json)创建 VM，则资源组为 myResourceGroup，VM 为 *myVM，资源位于 chinanorth 区域。
+- 如果已使用此[示例脚本](https://docs.microsoft.com/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fpowershell%2fmodule%2ftoc.json)创建了 VM，则资源组为 myResourceGroup，VM 为“myVM”，资源位于 chinanorth 区域中。
 - Azure 备份会自动处理备份数据的存储。 默认情况下，保管库使用[异地冗余存储 (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)。 异地冗余可确保将备份数据复制到距主区域数百英里以外的辅助 Azure 区域。
 
 现在创建保管库：

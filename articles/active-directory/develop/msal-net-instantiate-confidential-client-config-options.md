@@ -1,29 +1,24 @@
 ---
-title: 使用选项（适用于 .NET 的 Microsoft 身份验证库）实例化机密客户端应用 | Azure
+title: 实例化机密客户端应用 (MSAL.NET) | Azure
+titleSuffix: Microsoft identity platform
 description: 了解如何通过适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 使用配置选项实例化机密客户端应用程序。
 services: active-directory
-documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
-origin.date: 04/30/2019
-ms.date: 08/23/2019
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c39015d3d82e93de19575cb654bab0497e045bcc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 5237806e9f5ac49e52fb3c21a772c5da697d2ab5
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "69993259"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540773"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>通过 MSAL.NET 使用配置选项实例化机密客户端应用程序
 
@@ -96,5 +91,3 @@ app = ConfidentialClientApplicationBuilder.CreateWithApplicationOptions(_applica
 TokenCache userTokenCache = _tokenCacheProvider.SerializeCache(app.UserTokenCache,httpContext, claimsPrincipal);
 ```
 
-
-<!-- Update_Description: wording update -->

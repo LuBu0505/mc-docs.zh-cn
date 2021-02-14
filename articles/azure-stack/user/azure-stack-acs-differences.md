@@ -4,17 +4,17 @@ titleSuffix: Azure Stack Hub
 description: 了解 Azure Stack Hub 存储与 Azure 存储之间的差异，以及 Azure Stack Hub 部署注意事项。
 author: WenJason
 ms.topic: conceptual
-origin.date: 5/27/2020
-ms.date: 01/11/2021
+origin.date: 12/16/2020
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.reviwer: jiahan
 ms.lastreviewed: 08/12/2020
-ms.openlocfilehash: 13af5a1f637994e0dbcd53e8f11ff241329dcace
-ms.sourcegitcommit: 3f54ab515b784c9973eb00a5c9b4afbf28a930a9
+ms.openlocfilehash: 580c221ce97a8c8dd325e5630cc10834952716e3
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894446"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503976"
 ---
 # <a name="azure-stack-hub-storage-differences-and-considerations"></a>Azure Stack Hub 存储：差异和注意事项
 
@@ -44,7 +44,7 @@ Azure Stack Hub 存储是 Azure Stack Hub 中的一组存储云服务。 Azure S
 |表分区键和行键大小|1,024 个字符（2,048 个字节）。|400 个字符（800 个字节）。
 |Blob 快照|一个 blob 的最大快照数不受限制。|一个 blob 的最大快照数为 1,000。
 |用于存储的 Azure AD 身份验证|处于预览状态。 |尚不支持。
-|不可变 Blob|正式发布版。 |尚不支持。
+|不可变 Blob|正式发布版。 |使用版本 2008 或更高版本时支持。
 |针对存储的防火墙和虚拟网络规则|正式发布版。 |尚不支持。|
 
 存储指标也有一些差异：

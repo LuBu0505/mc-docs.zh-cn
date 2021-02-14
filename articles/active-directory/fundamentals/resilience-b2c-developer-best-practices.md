@@ -10,15 +10,15 @@ author: gargi-sinha
 ms.author: v-junlch
 manager: martinco
 ms.reviewer: ''
-ms.date: 12/02/2020
+ms.date: 02/02/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acc5f21af9d7d2d5d23c3fbf8a535d5c0f716adc
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 4f1b2a366ff74991b04dff19bc3eedc9a3dc2d74
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004260"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540817"
 ---
 # <a name="resilience-through-developer-best-practices"></a>通过开发人员最佳做法实现复原能力
 
@@ -28,7 +28,7 @@ ms.locfileid: "97004260"
 
 ## <a name="use-the-microsoft-authentication-library-msal"></a>使用 Microsoft 身份验证库 (MSAL)
 
-[Microsoft 身份验证库 (MSAL)](/active-directory/develop/msal-overview) 和[适用于 ASP.NET 的 Microsoft 标识 Web 身份验证库](/active-directory/develop/reference-v2-libraries)简化了应用程序所需令牌的获取、管理、缓存和刷新。 这些库经过专门优化，可支持 Microsoft 标识，其中包括可改进应用程序复原能力的功能。
+[Microsoft 身份验证库 (MSAL)](../develop/msal-overview.md) 和[适用于 ASP.NET 的 Microsoft 标识 Web 身份验证库](../develop/reference-v2-libraries.md)简化了应用程序所需令牌的获取、管理、缓存和刷新。 这些库经过专门优化，可支持 Microsoft 标识，其中包括可改进应用程序复原能力的功能。
 
 开发人员应采用最新版本的 MSAL 并了解最新信息。 请参阅[如何提高应用程序中身份验证和授权的复原能力](resilience-app-development-overview.md)。 如果可能，请避免实现自己的身份验证堆栈，使用构建良好的库。
 
@@ -40,7 +40,7 @@ Azure AD B2C 目录服务支持一天进行数十亿次身份验证。 其设计
 
 - 避免在登录时将函数写入目录：切勿在自定义策略中执行无前提条件（if 子句）的登录时写入。 需要进行登录时写入的一个用例是[用户密码的实时迁移](https://github.com/azure-ad-b2c/user-migration/tree/master/seamless-account-migration)。 避免任何在每次登录时都需要写入的方案。
 
-  - 用户旅程中的[前提条件](/active-directory-b2c/userjourneys)类似于下面这样：
+  - 用户旅程中的[前提条件](../../active-directory-b2c/userjourneys.md)类似于下面这样：
 
   ``
   <Precondition Type="ClaimEquals" ExecuteActionsIf="true"> 
@@ -50,7 +50,7 @@ Azure AD B2C 目录服务支持一天进行数十亿次身份验证。 其设计
   ``
   - [通过与 CAPTCHA 系统集成](https://github.com/azure-ad-b2c/samples/tree/master/policies/captcha-integration)，阻止机器人驱动的登录。
 
-  - 使用[负载测试示例](/active-directory-b2c/best-practices#testing)模拟注册和登录。 
+  - 使用[负载测试示例](../../active-directory-b2c/best-practices.md#testing)模拟注册和登录。 
 
 - 了解限制：目录实现应用程序和租户级别限制规则。 Read/GET、Write/POST、Update/PUT 和 Delete/DELETE 操作有进一步的速率限制，并且每个操作有不同的限制。
 
@@ -66,7 +66,7 @@ Azure AD B2C 目录服务支持一天进行数十亿次身份验证。 其设计
   
 ## <a name="extend-token-lifetimes"></a>延长令牌生存期
 
-在极少数情况下，当 Azure AD B2C 身份验证服务无法完成新的注册和登录时，你仍然可以为已登录的用户提供缓解措施。 借助[配置](/active-directory-b2c/configure-tokens)，可以允许已登录的用户继续使用应用程序，而没有任何明显的中断，直到用户从应用程序中注销或[会话](/active-directory-b2c/session-behavior)由于处于不活动状态而超时。
+在极少数情况下，当 Azure AD B2C 身份验证服务无法完成新的注册和登录时，你仍然可以为已登录的用户提供缓解措施。 借助[配置](../../active-directory-b2c/configure-tokens.md)，可以允许已登录的用户继续使用应用程序，而没有任何明显的中断，直到用户从应用程序中注销或[会话](../../active-directory-b2c/session-behavior.md)由于处于不活动状态而超时。
 
 业务要求和所需的最终用户体验将决定你为 Web 和单页应用程序 (SPA) 进行令牌刷新的频率。
 
@@ -82,7 +82,7 @@ Azure AD B2C 目录服务支持一天进行数十亿次身份验证。 其设计
 
   - 构建应用程序，以使用 API 网关作为身份验证代理。 在此配置中，SPA 加载时不进行任何身份验证，会对 API 网关进行 API 调用。 API 网关使用基于策略的[授权代码授予](https://oauth.net/2/grant-types/authorization-code/)，通过登录过程发送用户，并对用户进行身份验证。 随后使用身份验证 Cookie 维护 API 网关与客户端之间的身份验证会话。 使用 API 网关获取的令牌或其他一些直接身份验证方法（如证书、客户端凭据或 API 密钥），从 API 网关为 API 提供服务。
 
-  - 借助用于代码交换的证明密钥 (PKCE) 和跨域资源共享 (CORS) 支持，[将 SPA 从隐式授予迁移](https://developer.microsoft.com/identity/blogs/msal-js-2-0-supports-authorization-code-flow-is-now-generally-available/)到[授权代码授予流](/active-directory-b2c/implicit-flow-single-page-application)。 将应用程序从 MSAL.js 1.x 迁移到 MSAL.js 2.x 以实现 Web 应用程序的复原能力。
+  - 借助用于代码交换的证明密钥 (PKCE) 和跨域资源共享 (CORS) 支持，[将 SPA 从隐式授予迁移](https://developer.microsoft.com/identity/blogs/msal-js-2-0-supports-authorization-code-flow-is-now-generally-available/)到[授权代码授予流](../../active-directory-b2c/implicit-flow-single-page-application.md)。 将应用程序从 MSAL.js 1.x 迁移到 MSAL.js 2.x 以实现 Web 应用程序的复原能力。
 
   - 对于移动应用程序，建议同时延长刷新和访问令牌生存期。
 
@@ -98,9 +98,9 @@ Azure AD B2C 对应用程序、API、策略和加密使用机密。 机密可保
 
 ### <a name="how-to-implement-secret-rotation"></a>如何实现机密轮换
 
-- 使用受支持资源的[托管标识](/active-directory/managed-identities-azure-resources/overview)向支持 Azure AD 身份验证的任何服务验证身份。 使用托管标识时，可以自动管理资源，包括凭据轮换。
+- 使用受支持资源的[托管标识](../managed-identities-azure-resources/overview.md)向支持 Azure AD 身份验证的任何服务验证身份。 使用托管标识时，可以自动管理资源，包括凭据轮换。
 
-- 清点 Azure AD B2C 中配置的所有密钥和证书。 此列表可能包括的自定义策略、API、签名 ID 令牌和 SAML 证书中使用的密钥。
+- 清点 Azure AD B2C 中[配置的所有密钥和证书](../../active-directory-b2c/policy-keys-overview.md)。 此列表可能包括的自定义策略、[API](../../active-directory-b2c/secure-rest-api.md)、签名 ID 令牌和 SAML 证书中使用的密钥。
 
 - 使用 CICD，可轮换将在预期旺季两个月内到期的机密。 与证书关联的私钥的建议最大加密期为一年。
 
@@ -112,7 +112,7 @@ Azure AD B2C 对应用程序、API、策略和加密使用机密。 机密可保
 
 ### <a name="how-to-test-apis"></a>如何测试 API
 
-建议测试计划包括[综合 API 测试](/active-directory-b2c/best-practices#testing)。 如果为即将到来的流量激增（由于促销或假日流量）进行规划，则需要使用新估计来修订负载测试。 在开发人员环境而不在生产环境中执行 API 和内容交付网络 (CDN) 的负载测试。
+建议测试计划包括[综合 API 测试](../../active-directory-b2c/best-practices.md#testing)。 如果为即将到来的流量激增（由于促销或假日流量）进行规划，则需要使用新估计来修订负载测试。 在开发人员环境而不在生产环境中执行 API 和内容交付网络 (CDN) 的负载测试。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -122,4 +122,3 @@ Azure AD B2C 对应用程序、API、策略和加密使用机密。 机密可保
   - [通过监视和分析实现复原能力](resilience-with-monitoring-alerting.md)
 - [在身份验证基础结构中构建复原能力](resilience-in-infrastructure.md)
 - [提高应用程序中身份验证和授权的复原能力](resilience-app-development-overview.md)
-

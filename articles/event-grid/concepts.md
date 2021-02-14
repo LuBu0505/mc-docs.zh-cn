@@ -3,14 +3,14 @@ title: Azure 事件网格概念
 description: 介绍 Azure 事件网格及其概念。 定义事件网格的几个关键组件。
 author: Johnnytechn
 ms.topic: conceptual
-ms.date: 11/18/2020
+ms.date: 02/04/2021
 ms.author: v-johya
-ms.openlocfilehash: 2df7310774117a1280c0e9e7fbc80a0d8a3f83eb
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: c695614bf4023b503e03a7365e40619ca245e0a7
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977847"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579427"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure 事件网格中的概念
 
@@ -20,10 +20,7 @@ ms.locfileid: "94977847"
 
 事件是完全描述系统中所发生情况的最小信息量。 每个事件都具有通用信息，如事件源、事件发生的时间和唯一标识符。 此外，每个事件还具有仅与特定事件类型相关的特定信息。 例如，与在 Azure 存储中创建的有关新文件的事件将包含有关该文件的详细信息，如 `lastTimeModified` 值。 再如，事件中心事件具有 Capture 文件的 URL。 
 
-正式版服务级别协议 (GA) 涵盖了大小高达 64 KB 的事件。 预览版中目前支持最大为 1 MB 的事件。 超过 64 KB 的事件以 64 KB 为增量计费。 
-
-
-至于在事件中发送的属性，请参阅 [Azure 事件网格事件架构](event-schema.md)。
+一个事件允许的最大大小为 1 MB。 超过 64 KB 的事件以 64 KB 为增量计费。 至于在事件中发送的属性，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
 ## <a name="publishers"></a>发布服务器
 
@@ -77,10 +74,7 @@ ms.locfileid: "94977847"
 
 ## <a name="batching"></a>批处理
 
-使用自定义主题时，必须始终在数组中发布事件。 对于低吞吐量方案，可采用单批；但对于大容量用例，建议在每次发布时对多个事件进行批处理，以实现更高的效率。 批的大小最大可达 1 MB。 每个事件仍不应大于 64 KB（正式版）或 1 MB（预览版）。
-
-> [!NOTE]
-> 正式版服务级别协议 (GA) 涵盖了大小高达 64 KB 的事件。 预览版中目前支持最大为 1 MB 的事件。 超过 64 KB 的事件以 64 KB 为增量收费。 
+使用自定义主题时，必须始终在数组中发布事件。 对于低吞吐量方案，可采用单批；但对于大容量用例，建议在每次发布时对多个事件进行批处理，以实现更高的效率。 批最大可以为 1 MB，事件的最大大小为 1 MB。 
 
 ## <a name="next-steps"></a>后续步骤
 

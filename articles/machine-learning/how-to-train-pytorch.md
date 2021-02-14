@@ -1,28 +1,28 @@
 ---
 title: 训练深度学习 PyTorch 模型
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习 PyTorch 估算器类在企业范围内运行 PyTorch 训练脚本。  示例脚本对鸡和火鸡图像进行分类，以基于 PyTorch 的迁移学习教程构建深度学习神经网络。
+description: 了解如何使用 Azure 机器学习在企业范围内运行 PyTorch 训练脚本。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: peterlu
 author: mx-iao
 ms.reviewer: peterlu
-ms.date: 09/28/2020
+ms.date: 01/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 1db5d640b4fa3c90aa25ec6a3efb09f745b4f9da
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 11b29d6ec3c491dd8698a045ed0d152287fcfedc
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98229985"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804320"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练 PyTorch 模型
 
 本文介绍了如何使用 Azure 机器学习在企业范围内运行 [PyTorch](https://pytorch.org/) 训练脚本。
 
-本文中的示例脚本用来对鸡和火鸡图像进行分类，以基于 PyTorch 的迁移学习[教程](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)构建深度学习神经网络 (DNN)。 迁移学习是一种将解决某个问题时获得的知识应用于虽然不同但却相关的问题的技术。 与从头开始训练相比，这需要较少的数据、时间和计算资源，从而简化了训练过程。
+本文中的示例脚本用来对鸡和火鸡图像进行分类，以基于 PyTorch 的迁移学习[教程](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)构建深度学习神经网络 (DNN)。 迁移学习是一种将解决某个问题时获得的知识应用于虽然不同但却相关的问题的技术。 与从头开始训练相比，这需要较少的数据、时间和计算资源，从而简化了训练过程。 有关迁移学习的详细信息，请参阅[深度学习与机器学习](./concept-deep-learning-vs-machine-learning.md#what-is-transfer-learning)一文。
 
 无论是从头开始训练深度学习 PyTorch 模型，还是将现有模型引入云中，都可以通过 Azure 机器学习使用弹性云计算资源来横向扩展开源训练作业。 你可以通过 Azure 机器学习来构建、部署和监视生产级模型以及对其进行版本控制。 
 

@@ -6,17 +6,17 @@ services: azure-stack
 documentationcenter: ''
 author: WenJason
 ms.topic: article
-origin.date: 05/01/2020
-ms.date: 08/31/2020
+origin.date: 01/14/2021
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.reviewer: alfredop
 ms.lastreviewed: 02/26/2019
-ms.openlocfilehash: 5e479ecf975ea5722d609d3d02bbb853e4004068
-ms.sourcegitcommit: 4e2d781466e54e228fd1dbb3c0b80a1564c2bf7b
+ms.openlocfilehash: 102b7d6e41db5dcc63b18514d44fd3eb734490b7
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88867817"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503885"
 ---
 # <a name="frequently-asked-questions-about-azure-stack-hub-usage"></a>有关 Azure Stack Hub 用量的常见问题解答
 
@@ -148,15 +148,15 @@ ms.locfileid: "88867817"
 
 **计量 ID**：06bde724-9f94-43c0-84c3-d0fc54538369 **计量名称**：P30 **单位**：磁盘计数\*月 **备注**：高级托管磁盘 - 1024 GB
 
-**计量 ID**：7ba084ec-ef9c-4d64-a179-7732c6cb5e28 **计量名称**：ActualStandardDiskSize **单位**：GB\*月**说明**：标准托管磁盘的磁盘实际大小。
+**计量 ID**：7ba084ec-ef9c-4d64-a179-7732c6cb5e28 **计量名称**：ActualStandardDiskSize **单位**：GB\*月 **说明**：标准托管磁盘的磁盘实际大小。
 
 **计量 ID**：daef389a-06e5-4684-a7f7-8813d9f792d5  
-**计量名称**：ActualPremiumDiskSize **单位**：GB\*月**说明**：高级托管磁盘的磁盘实际大小。
+**计量名称**：ActualPremiumDiskSize **单位**：GB\*月 **说明**：高级托管磁盘的磁盘实际大小。
 
 **计量 ID**：108fa95b-be0d-4cd9-96e8-5b0d59505df1  
-**计量名称**：ActualStandardSnapshotSize **单位**：GB\*月**说明**：托管标准快照的磁盘实际大小。  
+**计量名称**：ActualStandardSnapshotSize **单位**：GB\*月 **说明**：托管标准快照的磁盘实际大小。  
 
-**计量 ID**：578ae51d-4ef9-42f9-85ae-42b52d3d83ac **计量名称**：ActualPremiumSnapshotSize **单位**：GB\*月**说明**：高级托管磁盘的实际大小快照。
+**计量 ID**：578ae51d-4ef9-42f9-85ae-42b52d3d83ac **计量名称**：ActualPremiumSnapshotSize **单位**：GB\*月 **说明**：高级托管磁盘的实际大小快照。
 
 **计量 ID**：5d76e09f-4567-452a-94cc-7d1f097761f0 **计量名称**：S4 **单位**：磁盘计数\*小时 **备注**：标准托管磁盘 - 32 GB（已弃用）
 
@@ -193,9 +193,9 @@ ms.locfileid: "88867817"
 
 **计量 ID**：95b0c03f-8a82-4524-8961-ccfbf575f536 **计量名称**：ActualPremiumSnapshotSize **单位**：字节\*小时 **备注**：高级托管磁盘的实际大小（已弃用）快照。
 
-**计量 ID**：75d4b707-1027-4403-9986-6ec7c05579c8 **计量名称**：ActualStandardSnapshotSize **单位**：GB\*月**说明**：托管标准快照的磁盘实际大小（已弃用）。
+**计量 ID**：75d4b707-1027-4403-9986-6ec7c05579c8 **计量名称**：ActualStandardSnapshotSize **单位**：GB\*月 **说明**：托管标准快照的磁盘实际大小（已弃用）。
 
-**计量 ID**：5ca1cbb9-6f14-4e76-8be8-1ca91547965e **计量名称**：ActualPremiumSnapshotSize **单位**：GB\*月**说明**：高级托管磁盘的实际大小（已弃用）快照。
+**计量 ID**：5ca1cbb9-6f14-4e76-8be8-1ca91547965e **计量名称**：ActualPremiumSnapshotSize **单位**：GB\*月 **说明**：高级托管磁盘的实际大小（已弃用）快照。
 
 ### <a name="sql-rp"></a>Sql RP
   
@@ -210,6 +210,18 @@ ms.locfileid: "88867817"
 **计量名称**：DatabaseSizeHourMySqlMeter  
 **单元**：MB\*小时  
 **注释**：创建时的总数据库容量。 如果以每日粒度调用用量 API，计量器会返回 MB 乘以小时数。
+
+### <a name="event-hubs"></a>事件中心
+
+**计量 ID**：d3a257e7-cf59-43bd-82c0-cf29ca8f7da0（付费计量）  
+**计量名称**：1 核    
+**单元**：核\*小时  
+**注释**：部署的事件中心群集使用的核心数。 核心数是 10 的倍数。
+
+**计量 ID**：29ea0bfc-6780-4711-98fc-2c7db191e1a4（管理计量）  
+**计量名称**：1 核管理   
+**单元**：核\*小时  
+**注释**：部署的事件中心群集使用的核心数。 核心数是 10 的倍数。
 
 ### <a name="key-vault"></a>密钥保管库
   
@@ -241,7 +253,7 @@ ms.locfileid: "88867817"
 **计量 ID**：D1D04836-075C-4F27-BF65-0A1130EC60ED  
 **计量名称**：Functions - 计算  
 **单元**：GB-s  
-**注释**：以千兆字节/秒 (GB/s) 计量的资源消耗量。 **观察到的资源消耗**的计算方式是：将平均内存大小 (GB) 乘以执行函数所需的时间（毫秒）。 在衡量函数使用的内存时，会向上舍入到最接近的 128 MB，最大内存大小为 1,536 MB，而在计算执行时间时，则向上舍入到最接近的 1 毫秒。 执行一次函数的最短执行时间和最小内存分别为 100 毫秒和 128 MB。  
+**注释**：以千兆字节/秒 (GB/s) 计量的资源消耗量。 **观察到的资源消耗** 的计算方式是：将平均内存大小 (GB) 乘以执行函数所需的时间（毫秒）。 在衡量函数使用的内存时，会向上舍入到最接近的 128 MB，最大内存大小为 1,536 MB，而在计算执行时间时，则向上舍入到最接近的 1 毫秒。 执行一次函数的最短执行时间和最小内存分别为 100 毫秒和 128 MB。  
   
 **计量 ID**：957E9F36-2C14-45A1-B6A1-1723EF71A01D  
 **计量名称**：共享应用服务小时数  

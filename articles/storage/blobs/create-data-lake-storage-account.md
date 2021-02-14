@@ -5,16 +5,16 @@ author: WenJason
 ms.topic: how-to
 ms.author: v-jay
 origin.date: 08/31/2020
-ms.date: 11/16/2020
+ms.date: 02/08/2021
 ms.service: storage
 ms.reviewer: stewu
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: d8d432d11bf883773d026b04a14771d874190569
-ms.sourcegitcommit: 16af84b41f239bb743ddbc086181eba630f7f3e8
+ms.openlocfilehash: 7ca11a3cfd30ee589bd1c917e2874ceaff4d83c4
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94589428"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99504012"
 ---
 # <a name="create-a-storage-account-to-use-with-azure-data-lake-storage-gen2"></a>创建与 Azure Data Lake Storage Gen2 配合使用的存储帐户
 
@@ -41,6 +41,9 @@ ms.locfileid: "94589428"
 > ![分层命名空间设置](./media/create-data-lake-storage-account/hierarchical-namespace-feature.png)
 
 如果你有一个要与 Data Lake Storage 配合使用的现有存储帐户，并且已禁用了分层命名空间设置，则必须将数据迁移到启用了该设置的新存储帐户。
+
+> [!NOTE]
+> 无法同时启用数据保护和分层命名空间 。
 
 ## <a name="next-steps"></a>后续步骤
 

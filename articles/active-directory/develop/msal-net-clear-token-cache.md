@@ -1,29 +1,24 @@
 ---
-title: 使用适用于 .NET 的 Microsoft 身份验证库清除令牌缓存 - Azure
+title: 清除令牌缓存 (MSAL.NET) | Azure
+titleSuffix: Microsoft identity platform
 description: 了解如何使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 清除令牌缓存。
 services: active-directory
-documentationcenter: dev-center-name
-author: rwike77
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
-origin.date: 05/07/2019
-ms.date: 06/18/2019
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 221cf8dac63d5e596c0a1845a4cea49333e40379
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 82eeadff09bda228a8b9e767d000838ece877564
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67305870"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540778"
 ---
 # <a name="clear-the-token-cache-using-msalnet"></a>使用 MSAL.NET 清除令牌缓存
 
@@ -52,4 +47,3 @@ while (accounts.Any())
 ```
 
 若要详细了解如何获取和缓存令牌，请阅读[获取访问令牌](msal-acquire-cache-tokens.md)。
-

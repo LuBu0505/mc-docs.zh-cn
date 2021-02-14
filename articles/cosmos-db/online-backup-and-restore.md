@@ -5,17 +5,17 @@ ms.service: cosmos-db
 ms.topic: how-to
 origin.date: 10/13/2020
 author: rockboyfor
-ms.date: 11/16/2020
+ms.date: 02/08/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: eee280d7227b008fc8d48ce07c95c86dc89223dd
-ms.sourcegitcommit: 5f07189f06a559d5617771e586d129c10276539e
+ms.openlocfilehash: 2c767259123709f6f829b0066e4acc378c29c19c
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94552808"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580626"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB 中的联机备份和按需数据还原
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -119,6 +119,12 @@ Azure Cosmos DB 每 4 小时自动对数据库执行一次完整备份，而且�
 
 如果在数据库级别预配吞吐量，那么在这种情况下，将对整个数据库，而不是单个容器进行备份和还原。 在这种情况下，无法选择还原容器子集。
 
+## <a name="required-permissions-to-change-retention-or-restore-from-the-portal"></a>从门户中更改保留期或还原所需的权限
+属于 [CosmosdbBackupOperator](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)、所有者或参与者角色的主体可以请求还原或更改保留期。
+
+## <a name="understanding-costs-of-extra-backups"></a>了解额外备份的成本
+免费提供 2 个备份，额外备份需要根据[备份存储定价](https://www.azure.cn/pricing/details/cosmos-db/)中介绍的基于区域的备份存储定价付费。 例如，如果将“备份保留期”配置为 240 小时，即 10 天，并将“备份间隔”设置为 24 小时， 则意味着备份数据会有 10 个副本。 假定在中国北部 2 中有 1 TB 数据，那么对于给定月份中的备份存储，费用就会是 1000 * 0.12 ~ 120 美元。 
+
 ## <a name="options-to-manage-your-own-backups"></a>管理自己的备份的选项
 
 通过 Azure Cosmos DB SQL API 帐户，还可采用以下某一方法维护备份：
@@ -152,4 +158,4 @@ Azure Cosmos DB 每 4 小时自动对数据库执行一次完整备份，而且�
 * [使用 Cosmos DB 更改源](change-feed.md)将数据移动到 Azure Cosmos DB。
 * [使用 Azure 数据工厂](../data-factory/connector-azure-cosmos-db.md)将数据移动到 Azure Cosmos DB。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

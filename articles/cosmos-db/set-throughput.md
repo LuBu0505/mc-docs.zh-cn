@@ -3,18 +3,18 @@ title: 在 Azure Cosmos 容器和数据库上预配吞吐量
 description: 了解如何为 Azure Cosmos 容器和数据库设置预配的吞吐量。
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 11/10/2020
+origin.date: 01/19/2021
 author: rockboyfor
-ms.date: 11/16/2020
+ms.date: 02/08/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: ef337219267367fd20fe691cddbf262e225abd31
-ms.sourcegitcommit: a8afac9982deafcf0652c63fe1615ba0ef1877be
+ms.openlocfilehash: 1d3c61bdd518764d1de96b65ac2b2018a9b8db90
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96850848"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580472"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB 中的预配吞吐量简介
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -95,7 +95,7 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 ## <a name="update-throughput-on-a-database-or-a-container"></a>更新数据库或容器的吞吐量
 
-创建 Azure Cosmos 容器或数据库后，可以更新预配的吞吐量。 可对数据库或容器配置的最大预配吞吐量没有限制。 
+创建 Azure Cosmos 容器或数据库后，可以更新预配的吞吐量。 可对数据库或容器配置的最大预配吞吐量没有限制。
 
 <a name="current-provisioned-throughput"></a>
 ### <a name="current-provisioned-throughput"></a>当前的预配的吞吐量
@@ -115,7 +115,7 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 实际的最小 RU/s 可能因帐户配置而异。 但一般情况下，它为最大值：
 
 * 400 RU/s 
-* 当前存储以 GB * 10 RU/s 为单位（除非容器或数据库包含超过 1 TB 的数据，请参阅我们的[“高存储/低吞吐量”计划](#high-storage-low-throughput-program)）
+* 当前存储空间 (GB) * 10 RU/s（这种限制在某些情况下可以放宽，请参阅我们的[高存储/低吞吐量计划](#high-storage-low-throughput-program)）
 * 数据库或容器上预配的最高 RU/s / 100
 
 ### <a name="changing-the-provisioned-throughput"></a>更改预配吞吐量
@@ -146,7 +146,7 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 如果需要存储大量数据，但吞吐量要求相对较低，则这可能是个问题。 为了更好地适应这些方案，Azure Cosmos DB 引入了一个“高存储/低吞吐量”计划，该计划降低了合格帐户上的每 GB RU/s 约束。
 
-目前，你若要获得资格，你的帐户中至少需要有 1 个包含 1 TB 以上数据的容器或共享吞吐量数据库。 若要加入此计划并评估你是否完全符合资格，只需填写[此调查](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u)即可。 然后，Azure Cosmos DB 团队会跟进处理你的加入事宜。
+若要加入此计划并评估你是否完全符合资格，只需填写[此调查](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u)即可。 然后，Azure Cosmos DB 团队会跟进处理你的加入事宜。
 
 ## <a name="comparison-of-models"></a>模型比较
 下表显示了对数据库与容器预配标准（手动）吞吐量时的差异比较。 
@@ -168,4 +168,4 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 * 了解[如何对 Azure Cosmos 数据库预配标准（手动）吞吐量](how-to-provision-database-throughput.md)。
 * 了解[如何对 Azure Cosmos 数据库或容器预配自动缩放吞吐量](how-to-provision-autoscale-throughput.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

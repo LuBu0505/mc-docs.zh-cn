@@ -10,15 +10,15 @@ author: gargi-sinha
 ms.author: v-junlch
 manager: martinco
 ms.reviewer: ''
-ms.date: 12/02/2020
+ms.date: 02/02/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6765ea1e959ce5bd7826a56e6bd3c6bb8d6f9136
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 2f5cf8f080c214b293c01cecc668f8847365158c
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004308"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540797"
 ---
 # <a name="resilient-end-user-experience"></a>可复原的最终用户体验
 
@@ -34,19 +34,19 @@ ms.locfileid: "97004308"
 
 ## <a name="choose-between-user-flow-and-custom-policy"></a>在用户流和自定义策略之间进行选择  
 
-为帮助你设置最常见的标识任务，Azure AD B2C 提供了内置的可配置[用户流](/active-directory-b2c/user-flow-overview)。 你还可以构建你自己的[自定义策略](/active-directory-b2c/custom-policy-overview)，这些策略为你提供最大的灵活性。 但是，建议你仅使用自定义策略来处理复杂的情况。
+为帮助你设置最常见的标识任务，Azure AD B2C 提供了内置的可配置[用户流](../../active-directory-b2c/user-flow-overview.md)。 你还可以构建你自己的[自定义策略](../../active-directory-b2c/custom-policy-overview.md)，这些策略为你提供最大的灵活性。 但是，建议你仅使用自定义策略来处理复杂的情况。
 
 ### <a name="how-to-decide-between-user-flow-and-custom-policy"></a>如何在用户流与自定义策略之间做出选择
 
 如果内置用户流可以满足你的业务需求，请选择内置用户流。 由于 Microsoft 进行了广泛的测试，因此你可以最大限度地减少验证这些标识用户流的策略级功能、性能或缩放所需的测试。 你仍需测试应用程序的功能、性能和缩放。
 
-如果你由于业务需求而选择自定义策略，则除了应用程序级测试外，还请确保对功能、性能或缩放执行策略级测试。
+如果你由于业务需求而[选择自定义策略](../../active-directory-b2c/custom-policy-get-started.md)，则除了应用程序级测试外，还请确保对功能、性能或缩放执行策略级测试。
 
-请参阅[比较用户流和自定义策略](/active-directory-b2c/custom-policy-overview#comparing-user-flows-and-custom-policies)一文来做出决定。
+请参阅[比较用户流和自定义策略](../../active-directory-b2c/custom-policy-overview.md#comparing-user-flows-and-custom-policies)一文来做出决定。
 
 ## <a name="choose-multiple-idps"></a>选择多个 IDP
 
-使用[外部标识提供者](/active-directory-b2c/technical-overview#external-identity-providers)时，请务必在外部提供者变得不可用的情况下使用回退计划。
+使用[外部标识提供者](../../active-directory-b2c/technical-overview.md#external-identity-providers)时，请务必在外部提供者变得不可用的情况下使用回退计划。
 
 ### <a name="how-to-set-up-multiple-idps"></a>如何设置多个 IDP
 
@@ -58,7 +58,8 @@ ms.locfileid: "97004308"
 
  2. 配置一个配置文件策略，以允许用户在登录后[将其他标识关联到帐户](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/account-linking)。
 
- 3. 通知并允许用户在中断期间切换到备用 IDP。
+ 3. 通知并允许用户在中断期间[切换到备用 IDP](../../active-directory-b2c/customize-ui-with-html.md#configure-dynamic-custom-page-content-uri)。
+
 
 ## <a name="use-a-content-delivery-network"></a>使用内容分发网络
 
@@ -75,4 +76,3 @@ ms.locfileid: "97004308"
   - [通过监视和分析实现复原能力](resilience-with-monitoring-alerting.md)
 - [在身份验证基础结构中构建复原能力](resilience-in-infrastructure.md)
 - [提高应用程序中身份验证和授权的复原能力](resilience-app-development-overview.md)
-

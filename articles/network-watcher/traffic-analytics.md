@@ -10,18 +10,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 01/04/2021
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/08/2021
 ms.testscope: yes
 ms.testdate: 08/03/2020
 ms.author: v-yeche
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: 4f9a4e13435c6276ba17ba8fe8123e60e0552cbe
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: b27fbfd766bf411830e067711de7cc1a387fdc14
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230607"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580516"
 ---
 <!--Verify Successfully-->
 <!--TRAFFIC ANALYTICS ONLY AVAILABLE ON "CHINA EAST 2" SITE -->
@@ -63,11 +63,16 @@ Azure 虚拟网络提供 NSG 流日志，其中提供了传入和传出与单个
 
 ## <a name="supported-regions-nsg"></a>支持的区域：NSG 
 
+<!--MOONCAKE 02/05/2021 : NSG SUPPORT ON China East 2 and China North 2-->
+
 可以在以下任何受支持的区域中对 NSG 使用流量分析：
 
 * 中国东部 2
+* 中国北部 2
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>支持的区域：Log Analytics 工作区
+
+<!--MOONCAKE 02/05/2021 : Log Analytics Workspaces SUPPORT ON China East 2 only-->
 
 Log Analytics 工作区必须存在于以下区域中：
 * 中国东部 2
@@ -146,10 +151,10 @@ New-AzStorageAccount `
 6. 选择处理时间间隔。 根据你的选择，流量分析将从存储帐户收集流日志并进行处理。 你可以选择每 1 个小时或每 10 分钟的处理间隔。 
 7. 选择现有的 Log Analytics (OMS) 工作区，或选择“创建新工作区”来创建一个新工作区。 流量分析使用 Log Analytics 工作区来存储聚合数据和索引数据，然后，这些数据用于生成分析。 如果选择现有的工作区，该工作区必须位于某个[受支持区域](#supported-regions-log-analytics-workspaces)，并且已升级为新查询语言。 如果不希望升级现有工作区，或者受支持区域中没有工作区，请创建一个新工作区。 有关查询语言的详细信息，请参阅[将 Azure Log Analytics 升级到新的日志搜索](../azure-monitor/log-query/log-query-overview.md?toc=%2fnetwork-watcher%2ftoc.json)。
 
-    <!--CORRECT ON China East 2 region-->
+    <!--CORRECT ON China East 2 region, NSG on China East 2 and China North 2-->
     
     > [!NOTE]
-    >托管流量分析解决方案和 NSG 的 Log Analytics 工作区不一定要位于同一个区域。 例如，可将流量分析部署在 `China East 2` 区域的某个工作区中，同时将 NSG 部署在中国东部和中国北部。 可在同一工作区中配置多个 NSG。
+    >托管流量分析解决方案和 NSG 的 Log Analytics 工作区不一定要位于同一个区域。 例如，可将流量分析部署在 `China East 2` 区域的某个工作区中，而将 NSG 部署在 `China East 2` 和 `China North 2`。 可在同一工作区中配置多个 NSG。
 
 8. 选择“保存”。
 
@@ -183,7 +188,7 @@ New-AzStorageAccount `
 - 阻止的流量统计信息。
     - 主机为何阻止大量良性流量？ 对于此行为，需要进一步进行调查，并且可能需要对配置进行优化。
 - 允许/阻止的恶意流量统计信息
-    - 主机为何在接收恶意流量以及为何允许来自恶意源的流？ 对于此行为，需要进一步进行调查，并且可能需要对配置进行优化。
+    - 主机为何接收恶意流量，为何允许来自恶意源的流？ 对于此行为，需要进一步进行调查，并且可能需要对配置进行优化。
 
         在“主机”下选择“查看全部”，如下图所示 ：
 
@@ -345,4 +350,4 @@ New-AzStorageAccount `
 - 要了解如何启用流日志，请参阅[启用 NSG 流日志记录](network-watcher-nsg-flow-logging-portal.md)。
 - 要了解流量分析的架构和处理详细信息，请参阅[流量分析架构](traffic-analytics-schema.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

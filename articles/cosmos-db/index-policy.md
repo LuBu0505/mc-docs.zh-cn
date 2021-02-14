@@ -4,18 +4,18 @@ description: 了解如何配置和更改默认索引策略，以便自动编制�
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-origin.date: 11/03/2020
+origin.date: 01/21/2021
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/08/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 7677788639b6d17bfcd8e68a0d9f4ee8fbb0b3e0
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 517ab94de718fe53daa563c87d7684b3fa5e9bf8
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230386"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580600"
 ---
 <!--Verified successfully-->
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
@@ -36,9 +36,21 @@ Azure Cosmos DB 支持两种索引模式：
 - **无**：针对该容器禁用索引。 将容器用作单纯的键-值存储时，通常会使用此设置，在此情况下无需使用辅助索引。 它还可用于改善批量操作的性能。 批量操作完成后，可将索引模式设置为“一致”，然后使用 [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) 进行监视，直到完成。
 
 > [!NOTE]
-> Azure Cosmos DB 还支持延迟索引模式。 当引擎未执行任何其他工作时，延迟索引将以低得多的优先级对索引执行更新。 这可能导致查询结果 **不一致或不完整**。 如果计划查询 Cosmos 容器，则不应选择“延迟索引”。 新容器不能选择“延迟索引”。 可以通过联系 [Azure 支持](https://portal.azure.cn/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)来请求豁免（在不支持延迟索引的[无服务器](serverless.md)模式下使用 Azure Cosmos 帐户的情况除外）。
+> Azure Cosmos DB 还支持延迟索引模式。 当引擎未执行任何其他工作时，延迟索引将以低得多的优先级对索引执行更新。 这可能导致查询结果 **不一致或不完整**。 如果计划查询 Cosmos 容器，则不应选择“延迟索引”。 新容器不能选择“延迟索引”。 可以通过联系 [Azure 支持](https://support.azure.cn/support/support-azure/)来请求豁免（在不支持延迟索引的[无服务器](serverless.md)模式下使用 Azure Cosmos 帐户的情况除外）。
 
 默认情况下，索引策略设置为 `automatic`。 为此，可将索引策略中的 `automatic` 属性设置为 `true`。 将此属性设置为 `true` 可让 Azure CosmosDB 在写入文档时自动为文档编制索引。
+
+<a name="index-size"></a>
+## <a name="index-size"></a>索引大小
+
+在 Azure Cosmos DB 中，所用存储空间总量是指数据大小和索引大小的总和。 下面是索引大小的一些特性：
+
+* 索引大小取决于索引策略。 如果所有属性都已编制索引，则索引大小可能会大于数据大小。
+* 当删除数据时，索引将近乎连续地进行压缩。 但是，对于较小的数据删除，你可能不会立即观察到索引大小的减小。
+* 索引大小在下列情况下可能会增大：
+
+    * 分区拆分持续时间 - 索引空间将在分区拆分完成后释放。
+    * 拆分分区时，索引空间将在分区拆分期间临时增加。 
 
 <a name="include-exclude-paths"></a>
 ## <a name="including-and-excluding-property-paths"></a>包含和排除属性路径
@@ -305,4 +317,4 @@ SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.time
 - [索引概述](index-overview.md)
 - [如何管理索引策略](how-to-manage-indexing-policy.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

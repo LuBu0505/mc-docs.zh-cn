@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/23/2020
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 40836460f66402b44519713848d204fe2491ed8d
-ms.sourcegitcommit: 883daddafe881e5f8a9f347df2880064d2375b6d
+ms.openlocfilehash: cbd70618459f270f56ceed8f2e8fc64b69b99185
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95918391"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540828"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>从移动应用调用 Web API
 
-应用登录某个用户并接收令牌后，Microsoft 身份验证库 (MSAL) 会公开有关用户、用户环境和已颁发令牌的信息。 应用可以使用这些值来调用 web API 或向用户显示欢迎消息。
+在你的应用将用户登录并收到令牌以后，Microsoft 身份验证库 (MSAL) 会公开有关用户、用户的环境以及所颁发令牌的信息。 应用可以使用这些值来调用 web API 或向用户显示欢迎消息。
 
 本文首先介绍 MSAL 结果。 然后介绍如何使用 `AuthenticationResult` 或 `result` 中的访问令牌来调用受保护的 Web API。
 
@@ -160,4 +160,3 @@ catch(MsalUiRequiredException ex)
 ## <a name="next-steps"></a>后续步骤
 
 转到此方案中的下一篇文章：[移到生产环境](scenario-mobile-production.md)。
-

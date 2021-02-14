@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/18/2020
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: f6b992a20279a5c5c1a1213ffcee5add1fba19d9
-ms.sourcegitcommit: 7646936d018c4392e1c138d7e541681c4dfd9041
+ms.openlocfilehash: 2d628e23cdb0a45c9dafb52ed39d10502da0c7cc
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88647739"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540834"
 ---
-# <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>将应用程序迁移到 Microsoft 身份验证库 (MSAL)
+# <a name="migrate-applications-to-the-microsoft-authentication-library-msal"></a>将应用程序迁移到 Microsoft 身份验证库 (MSAL)
 
 许多开发人员都使用 Azure Active Directory 身份验证库 (ADAL) 来构建和部署应用程序。 我们现在建议使用 Microsoft 身份验证库 (MSAL) 对 Azure AD 实体进行身份验证和授权。
 
@@ -79,4 +79,3 @@ __问：如何获取有关迁移应用程序的帮助？__
 - [更新应用程序以使用 Microsoft 身份验证库和 Microsoft Graph API](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363)
 - [Microsoft 标识平台概述](v2-overview.md)
 - [查看我们的 MSAL 代码示例](sample-v2-code.md)
-

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 02/01/2021
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 7bd45bf26bf369e502a733f92df45ddd4eaaf462
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: eb08b4c465c1bb9203c23f276fe417318c0935f8
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570921"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540622"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>在 Azure AD B2C 中通过自定义策略设置手机注册和登录
 
@@ -39,12 +39,12 @@ ms.locfileid: "98570921"
 >
 > &lt;插入：指向隐私声明的链接&gt;<br/>&lt;插入：指向服务条款的链接&gt;
 
-若要添加你自己的同意信息，请自定义以下示例，并将其包含在带有显示控件（手机注册和登录入门包中的 Phone-Email-Base.xml 文件）的自断言页面所使用的 ContentDefinition 的 LocalizedResources 中：
+若要添加你自己的同意信息，请自定义以下示例。 将其包含在带有显示控件（[手机注册和登录入门包][starter-pack-phone]中的 Phone_Email_Base.xml 文件）的自断言页面所使用的 ContentDefinition 的 `LocalizedResources` 中：
 
 ```xml
 <LocalizedResources Id="phoneSignUp.en">        
     <LocalizedStrings>
-    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_msg_intro">By providing your phone number, you consent to receiving a one-time passcode sent by text message to help you sign into {insert your application name}. Standard messsage and data rates may apply.</LocalizedString>          
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_msg_intro">By providing your phone number, you consent to receiving a one-time passcode sent by text message to help you sign into {insert your application name}. Standard message and data rates may apply.</LocalizedString>          
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_text">Privacy Statement</LocalizedString>                
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_url">{insert your privacy statement URL}</LocalizedString>          
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_2_text">Terms and Conditions</LocalizedString>             
@@ -64,7 +64,7 @@ ms.locfileid: "98570921"
 
 ![用户在手机注册期间验证代码](./media/phone-authentication/phone-signup-verify-code.png)
 
- 用户在注册页面上输入任何其他所需的信息，例如“显示名称”、“给定名称”和“姓氏”（“国家/地区”和电话号码保持填写状态）  。 如果用户想使用其他电话号码，则可以选择“更改号码”重新开始注册。 完成后，用户选择“继续”。
+用户输入注册页面上要求的任何其他信息。 例如，“显示名称”、“名字”和“姓氏”（国家/地区和电话号码保持已填充）。 如果用户想使用其他电话号码，则可以选择“更改号码”重新开始注册。 完成后，用户选择“继续”。
 
 ![用户提供其他信息](./media/phone-authentication/phone-signup-additional-info.png)
 
@@ -100,8 +100,6 @@ ms.locfileid: "98570921"
 
 首先更新手机注册和登录自定义策略文件以与 Azure AD B2C 租户一起使用。
 
-以下步骤假定你已完成[先决条件](#prerequisites)，并且已将[自定义策略入门包][starter-pack]存储库克隆到本地计算机。
-
 1. 在入门包存储库的本地克隆中找到[手机注册和登录自定义策略文件][starter-pack-phone]，或直接下载它们。 XML 策略文件位于以下目录中：
 
     `active-directory-b2c-custom-policy-starterpack/scenarios/`**`phone-number-passwordless`**
@@ -136,9 +134,9 @@ ms.locfileid: "98570921"
 
 ## <a name="get-user-account-by-phone-number"></a>通过电话号码获取用户帐户
 
-使用电话号码注册但不提供恢复电子邮件地址的用户会被记录在你的 Azure AD B2C 目录中，其电话号码作为他们的登录名。 如果用户随后希望更改其电话号码，则支持人员或支持团队必须首先找到其帐户，然后更新其电话号码。
+使用电话号码注册但未提供恢复电子邮件地址的用户会被记录在你的 Azure AD B2C 目录中，其电话号码将作为他们的登录名。 若要更改电话号码，你的支持人员或支持团队必须首先找到其帐户，然后更新其电话号码。
 
-可以使用 [Microsoft Graph](manage-user-accounts-graph-api.md) 通过用户的电话号码（登录名）找到用户：
+可以使用 [Microsoft Graph](microsoft-graph-operations.md) 通过用户的电话号码（登录名）找到用户：
 
 ```http
 GET https://microsoftgraph.chinacloudapi.cn/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.partner.onmschina.cn')
@@ -159,4 +157,3 @@ GET https://microsoftgraph.chinacloudapi.cn/v1.0/users?$filter=identities/any(c:
 <!-- LINKS - External -->
 [starter-pack]: https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack
 [starter-pack-phone]: https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/phone-number-passwordless
-

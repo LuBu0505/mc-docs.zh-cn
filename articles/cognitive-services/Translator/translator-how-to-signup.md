@@ -9,20 +9,20 @@ ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 origin.date: 05/26/2020
-ms.date: 10/22/2020
+ms.date: 02/04/2021
 ms.author: v-johya
-ms.openlocfilehash: 6de2a4c9eb79ef585d02993455e47ec57ed2bf68
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+ms.openlocfilehash: 071f7bbae33d4104646cf8ba795abc0e137232f6
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472687"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579509"
 ---
 # <a name="how-to-sign-up-for-translator"></a>如何注册翻译器
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-- 没有帐户？ 可以创建[试用帐户](https://www.azure.cn/pricing/details/cognitive-services)进行试验，无需支付任何费用。
+- 没有帐户？ 可以创建[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)进行试验，无需支付任何费用。
 - 已有帐户？ [登录](https://portal.azure.cn/)
 
 ## <a name="create-a-subscription-for-translator"></a>为翻译器创建订阅
@@ -42,7 +42,7 @@ ms.locfileid: "92472687"
 注册翻译器时，将获得你的订阅所特有的个性化访问密钥。 每次调用翻译器时都需要此密钥。
 
 1. 通过先选择相应的订阅检索身份验证密钥。
-1. 在订阅详细信息的“资源管理”部分中选择“密钥” 。
+1. 在订阅详细信息的“资源管理”部分中选择“密钥和终结点” 。
 1. 复制订阅所列出的任一密钥。
 
 ## <a name="learn-test-and-get-support"></a>了解、测试和获取支持

@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 10/26/2020
-ms.date: 01/11/2021
-ms.openlocfilehash: 418edc86ac5ddf288b89920a201cfd8335bf4792
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+origin.date: 01/14/2021
+ms.date: 02/08/2021
+ms.openlocfilehash: 45c729d5a2d73dad60f45fdb562632d367fe096e
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023898"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503834"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL 灵活服务器中的只读副本
 
@@ -28,6 +28,10 @@ MySQL 是一种常用的数据库引擎，用于运行 Internet 规模的 Web �
 副本是新的服务器，可像管理源 Azure Database for MySQL 灵活服务器一样对其进行管理。 每个只读副本按照预配计算资源的 vCore 数量以及每月 GB 存储量计费。 有关详细信息，请参阅[定价](./concepts-compute-storage.md#pricing)。
 
 如需了解有关 MySQL 复制功能和问题的详细信息，请参阅 [MySQL 复制文档](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)。
+
+> [!NOTE]
+> 本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
+>
 
 ## <a name="common-use-cases-for-read-replica"></a>只读副本的常见用例
 
@@ -88,24 +92,24 @@ Azure Database for MySQL 灵活服务器在 Azure Monitor 中提供“复制滞�
 
 ## <a name="failover"></a>故障转移
 
-在源服务器和副本服务器之间无法自动进行故障转移。 
+在源服务器和副本服务器之间无法自动进行故障转移。
 
 只读副本适用于扩展读取密集型工作负载，但并不用于满足服务器的高可用性需求。 在源服务器和副本服务器之间无法自动进行故障转移。 执行这种手动故障转移的方式是，停止只读副本上的复制以使其在读写模式下处于联机状态。
 
-由于复制是异步的，因此在源和副本之间存在滞后时间。 滞后时间量会受到多种因素影响，例如，在源服务器上运行的工作负荷有多大，以及数据中心之间的延迟有多严重。 大多数情况下，副本验证在几秒钟到几分钟之间。 可以使用“副本延迟”指标来跟踪实际的副本延迟，该指标适用于每个副本。 该指标显示的是自上次重播事务以来所经历的时间。 建议观察一段时间的副本延迟，以便确定平均延迟。 可以针对副本延迟设置警报，这样，当它超出预期范围时，你就可以采取行动。
+由于复制是异步的，因此在源和副本之间存在滞后时间。 滞后时间量会受到许多因素影响，例如，在源服务器上运行的工作负载有多大，以及数据中心之间的延迟有多严重。 大多数情况下，副本验证在几秒钟到几分钟之间。 可以使用“副本延迟”指标来跟踪实际的副本延迟，该指标适用于每个副本。 该指标显示的是自上次重播事务以来所经历的时间。 建议观察一段时间的副本延迟，以便确定平均延迟。 可以针对副本延迟设置警报，这样，当它超出预期范围时，你就可以采取行动。
 
 > [!Tip]
 > 如果你故障转移到副本，在取消副本与源的链接时的滞后时间将表明会丢失多少数据。
 
-一旦决定要故障转移到某个副本， 
+决定要故障转移到某个副本后，请执行以下操作：
 
 1. 请停止将数据复制到副本<br/>
-   此步骤是使副本服务器能够接受写入所必需的。 在此过程中，副本服务器会取消与源的链接。 启动停止复制的操作后，后端进程通常需要大约 2 分钟才能完成。 请参阅本文的[停止复制](#stop-replication)部分，了解此操作的潜在影响。
-    
+   此步骤是使副本服务器能够接受写入所必需的。 在此过程中，副本服务器会取消与源的链接。 在启动了停止复制操作之后，后端进程通常需要大约 2 分钟才能完成。 请参阅本文的[停止复制](#stop-replication)部分，了解此操作的潜在影响。
+
 2. 将应用程序指向（以前的）副本<br/>
    每个服务器都有唯一的连接字符串。 更新应用程序，使之指向（以前的）副本而不是源。
-    
-如果应用程序成功处理了读取和写入操作，则表明故障转移已完成。 应用程序经历的停机时间取决于何时检测到问题并完成上面的步骤 1 和 2。
+
+在应用程序成功处理了读取和写入操作之后，故障转移即已完成。 应用程序经历的停机时间取决于何时检测到问题并完成上面的步骤 1 和 2。
 
 ## <a name="considerations-and-limitations"></a>注意事项和限制
 
@@ -124,5 +128,5 @@ Azure Database for MySQL 灵活服务器在 Azure Monitor 中提供“复制滞�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[使用 Azure 门户创建和管理只读副本](how-to-read-replicas-portal.md)
-- 了解如何[使用 Azure CLI 创建和管理只读副本](how-to-read-replicas-cli.md)
+* 了解如何[使用 Azure 门户创建和管理只读副本](how-to-read-replicas-portal.md)
+* 了解如何[使用 Azure CLI 创建和管理只读副本](how-to-read-replicas-cli.md)

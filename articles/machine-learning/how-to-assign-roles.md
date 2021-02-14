@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: e71527da02b885ae0e4cfb409d7f8975522e12b6
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: bbafc7628af76f467df22055729824050304a912
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021995"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804385"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问权限
 
@@ -26,7 +26,7 @@ ms.locfileid: "98021995"
 > 虽然本文着重介绍的是 Azure 机器学习，但 Azure ML 依赖的单个服务也提供了它们自己的 RBAC 设置。 例如，使用本文中的信息，可以配置谁能向 Azure Kubernetes 服务上部署为 Web 服务的模型提交评分请求。 但 Azure Kubernetes 服务具有它自己的一组 Azure 角色。 有关对于 Azure 机器学习可能有用的服务特定的 RBAC 信息，请参阅以下链接：
 >
 > * [控制对 Azure Kubernetes 群集资源的访问权限](../aks/azure-ad-rbac.md)
-> * [使用 Azure RBAC 来管理对 blob 数据的访问权限](/storage/common/storage-auth-aad-rbac-portal.md)
+> * [使用 Azure RBAC 来管理对 blob 数据的访问权限](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!WARNING]
 > 应用某些角色可能会限制 Azure 机器学习工作室中针对其他用户的 UI 功能。 例如，如果用户的角色无法创建计算实例，工作室中就不会提供创建计算实例的选项。 此行为是正常的，可以防止用户尝试会返回“拒绝访问”错误的操作。
@@ -159,6 +159,10 @@ az role definition update --role-definition update_def.json --subscription <sub-
 
 > [!NOTE]
 > 角色更新可能需要花费 15 分钟到一小时才能应用于该作用域中的所有角色分配。
+
+## <a name="use-azure-resource-manager-templates-for-repeatability"></a>使用 Azure 资源管理器模板实现可重复性
+
+如果预计需要重新创建复杂的角色分配，则使用 Azure 资源管理器模板可能会很有帮助。 [201-machine-learning-dependencies-role-assignment 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment)显示了如何在源代码中指定角色分配以供重用。 
 
 ## <a name="common-scenarios"></a>常见方案
 

@@ -11,16 +11,16 @@ ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 12/21/2020
-ms.openlocfilehash: e8d26400bec4b840c511847eee8f3f51d47bddc2
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 56f130a36dcbef12c63c41ff17da5bb869119d77
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022611"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804338"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>在 Azure 机器学习（预览版）中使用差分隐私
 
-了解如何使用 SmartNoise Python 包将有关差分隐私的最佳做法应用于 Azure 机器学习模型。
+了解如何使用 SmartNoise Python 开放源代码库将有关差分隐私的最佳做法应用于 Azure 机器学习模型。
 
 差分隐私是隐私的最高标准定义。 遵守此隐私定义的系统可针对各种数据重建和重新识别攻击（包括拥有辅助信息的攻击者发起的攻击）提供强大的防护保障。 详细了解[差分隐私的工作原理](./concept-differential-privacy.md)。
 
@@ -30,7 +30,7 @@ ms.locfileid: "98022611"
 - 如果没有 Azure 订阅，请在开始前创建一个试用帐户。 立即试用 [Azure 机器学习的试用版](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 - [Python 3](https://www.python.org/downloads/)
 
-## <a name="install-smartnoise-packages"></a>安装 SmartNoise 包
+## <a name="install-smartnoise-python-libraries"></a>安装 SmartNoise Python 库
 
 ### <a name="standalone-installation"></a>独立安装
 
@@ -51,7 +51,7 @@ import opendp.smartnoise.sql
 
 如果导入成功，则表示这些库已安装且可供使用。
 
-### <a name="docker-image"></a>Docker 映像
+### <a name="docker-image-installation"></a>Docker 映像安装
 
 还可以将 SmartNoise 包与 Docker 配合使用。
 

@@ -5,19 +5,20 @@ services: active-directory
 author: curtand
 ms.author: v-junlch
 manager: daveba
-ms.date: 12/07/2020
+ms.date: 02/04/2021
 ms.topic: how-to
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99d13e1c2289419ffeee5352b4202bb12206ed32
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: bfb4cb38bf49808074d4ea369f6903a13841071a
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004054"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540700"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>在 Azure Active Directory 中限制来宾访问权限（预览版）
 
@@ -138,14 +139,15 @@ PS C:\WINDOWS\system32> Set-AzureADMSAuthorizationPolicy -GuestUserRoleId '2af84
 - Teams
 - Outlook (OWA)
 - SharePoint
+- Teams 中的 Planner
+- Planner Web 应用
 
 ### <a name="services-currently-not-supported"></a>当前不支持的服务
 
 目前不受支持的服务可能与新的来宾限制设置存在兼容性问题。
 
 - 窗体
-- Teams 中的 Planner
-- Planner 应用
+- Planner 移动应用
 - Project
 - Yammer
 
@@ -157,7 +159,7 @@ PS C:\WINDOWS\system32> Set-AzureADMSAuthorizationPolicy -GuestUserRoleId '2af84
 受限权限如何影响来宾可以查看的组？ | 无论是默认来宾权限还是受限来宾权限，来宾都不能枚举组或用户列表。 来宾可以在 Azure 门户和“我的应用”门户中查看他们所属的组，具体取决于相关权限：<li>**默认权限**：要在 Azure 门户中查找自己所属的组，来宾必须在“所有用户”列表中搜索其对象 ID，然后选择“组”。 来宾可在其中查看其所属的组的列表，包括名称和电子邮件等所有组详细信息。 在“我的应用”门户中，他们可以看到自己拥有的组及所属的组的列表。</li><li>**受限来宾权限**：在 Azure 门户中，来宾仍可查找其所属的组的列表，方法是在“所有用户”列表中搜索其对象 ID，然后选择“组”。 它们只能看到有关组（特别是对象 ID）的非常有限的详细信息。 按照设计，“名称”和“电子邮件”列是空白的，并且“组类型”无法识别。 在“我的应用”门户中，来宾无法访问自己拥有的组及所属的组的列表。</li><br>有关来自图形 API 的目录权限的更详细比较，请参阅[默认用户权限](../fundamentals/users-default-permissions.md#member-and-guest-users)。
 此功能影响“我的应用”门户的哪些部分？ | “我的应用”门户中的组功能会认可这些新权限。 这包括用来在“我的应用”中查看组列表和组成员身份的所有路径。 未对组磁贴可用性进行任何更改。 组磁贴可用性仍由 Azure 门户中的现有组设置控制。
 这些权限是否替代了 SharePoint 或 Microsoft Teams 来宾设置？ | 否。 这些现有设置仍然会控制这些应用程序中的体验和访问权限。 例如，如果你在 SharePoint 中看到问题，请仔细检查你的外部共享设置。
-Planner 和 Yammer 中有哪些已知的兼容性问题？ | <li>当权限设置为“受限制”时，已登录到 Planner 应用或访问 Microsoft Teams 中的 Planner 的来宾将无法访问其计划或任何任务。<li>当权限设置为“受限制”时，登录到 Yammer 的来宾将无法离开组。
+Planner 和 Yammer 中有哪些已知的兼容性问题？ | <li>权限设置为“受限”后，登录到 Planner 移动应用的来宾将无法访问其计划或任何任务。<li>权限设置为“受限”后，登录到 Yammer 的来宾将无法离开组。
 我在租户中的现有来宾权限是否会更改？ | 你的当前设置未进行任何更改。 我们保留了与现有设置的后向兼容性。 你可以决定何时进行更改。
 是否会默认设置这些权限？ | 否。 现有的默认权限保持不变。 你可以选择将权限设置得更为严格。
 此功能是否有任何许可要求？ | 没有，此功能没有新的许可要求。
@@ -167,4 +169,3 @@ Planner 和 Yammer 中有哪些已知的兼容性问题？ | <li>当权限设置
 - 若要详细了解 Azure AD 中的现有来宾权限，请参阅 [Azure Active Directory 中的默认用户权限是什么？](../fundamentals/users-default-permissions.md)
 - 若要查看用于限制来宾访问的 Microsoft Graph API 方法，请参阅 [authorizationPolicy 资源类型](https://docs.microsoft.com/graph/api/resources/authorizationpolicy)
 - 若要撤销用户的所有访问权限，请参阅[在 Azure AD 中撤销用户访问权限](users-revoke-access.md)
-

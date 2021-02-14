@@ -3,16 +3,15 @@ title: 配置数据传入复制 - Azure Database for MariaDB
 description: 本文介绍如何在 Azure Database for MariaDB 中设置数据传入复制。
 author: WenJason
 ms.author: v-jay
-ms.service: mariadb
 ms.topic: how-to
-origin.date: 9/29/2020
-ms.date: 01/11/2021
-ms.openlocfilehash: ca4600fa95236c6348ed825411e61a39779cd350
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+origin.date: 01/18/2021
+ms.date: 02/08/2021
+ms.openlocfilehash: a6fba3623d77b49dc88589b268ff39a76f1119bd
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021110"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503946"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中配置数据传入复制
 
@@ -25,6 +24,8 @@ ms.locfileid: "98021110"
 > [!NOTE]
 > 如果源服务器的版本为 10.2 或更高版本，我们建议使用[全局事务 ID](https://mariadb.com/kb/en/library/gtid/) 设置数据传入复制。
 
+> [!NOTE]
+> 本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 ## <a name="create-a-mariadb-server-to-use-as-a-replica"></a>创建用作副本的 MariaDB 服务器
 
@@ -36,7 +37,7 @@ ms.locfileid: "98021110"
    > 必须在“常规用途”或“内存优化”定价层中创建 Azure Database for MariaDB 服务器。
 
 2. 创建相同的用户帐户和相应的特权。
-    
+
     用户帐户不会从源服务器复制到副本服务器。 若要为用户提供副本服务器的访问权限，必须在新建的 Azure Database for MariaDB 服务器上创建所有帐户和对应的特权。
 
 3. 将源服务器的 IP 地址添加到副本的防火墙规则。 
@@ -50,31 +51,38 @@ ms.locfileid: "98021110"
 1. 请先查看[主服务器要求](concepts-data-in-replication.md#requirements)，然后再继续。 
 
 2. 请确保源服务器允许端口 3306 上的入站和出站流量，并且源服务器具有公共 IP 地址，DNS 可公开访问，或者 DNS 具有完全限定的域名 (FQDN)。 
-   
+
    尝试从另一台计算机上托管的工具（如 MySQL 命令行）进行连接，以测试与源服务器的连接。
 
-   如果你的组织有严格的安全策略，并且不允许源服务器上的所有 IP 地址实现从 Azure 到源服务器的通信，那么你可能可以使用以下命令来确定 Azure Database for MariaDB 服务器的 IP 地址。
-    
+   如果你的组织有严格的安全策略，并且不允许源服务器上的所有 IP 地址都能进行从 Azure 到源服务器的通信，那么你可能可以使用以下命令来确定 Azure Database for MariaDB 服务器的 IP 地址。
+
    1. 使用 MySQL 命令行之类的工具登录 Azure Database for MariaDB。
    2. 执行下面的查询。
+
       ```bash
       mysql> SELECT @@global.redirect_server_host;
       ```
+
       下面是一些示例输出：
-      ```bash 
+
+      ```bash
       +-----------------------------------------------------------+
       | @@global.redirect_server_host                             |
       +-----------------------------------------------------------+
       | e299ae56f000.tr1830.chinaeast2-a.worker.database.chinacloudapi.cn |
        +-----------------------------------------------------------+
       ```
+
    3. 退出 MySQL 命令行。
    4. 在 ping 实用工具中执行以下命令以获取 IP 地址。
+
       ```bash
       ping <output of step 2b>
-      ``` 
-      例如： 。 
-      ```bash      
+      ```
+
+      例如： 。
+
+      ```bash
       C:\Users\testuser> ping e299ae56f000.tr1830.chinaeast2-a.worker.database.chinacloudapi.cn
       Pinging tr1830.chinaeast2-a.worker.database.chinacloudapi.cn (**11.11.111.111**) 56(84) bytes of data.
       ```
@@ -84,8 +92,8 @@ ms.locfileid: "98021110"
    > [!NOTE]
    > 此 IP 地址可能因维护/部署操作而发生更改。 这种连接方法仅适用于无法承受在 3306 端口上允许所有 IP 地址的客户。
 
-2. 启用二进制日志记录。
-    
+3. 启用二进制日志记录。
+
     若要查看是否已在主服务器上启用二进制日志记录，请输入以下命令：
 
    ```sql
@@ -96,7 +104,7 @@ ms.locfileid: "98021110"
 
    如果 `log_bin` 返回了值 `OFF`，请编辑 **my.cnf** 文件，使 `log_bin=ON` 启用二进制日志记录。 重启服务器，使更改生效。
 
-3. 配置源服务器设置。
+4. 配置源服务器设置。
 
     “数据传入复制”要求参数 `lower_case_table_names` 在源服务器与副本服务器之间保持一致。 在 Azure Database for MariaDB 中，`lower_case_table_names` 参数默认设置为 `1`。
 
@@ -104,14 +112,14 @@ ms.locfileid: "98021110"
    SET GLOBAL lower_case_table_names = 1;
    ```
 
-4. 创建新的复制角色并设置权限。
+5. 创建新的复制角色并设置权限。
 
    在源服务器上创建一个配置有复制特权的用户帐户。 可以使用 SQL 命令或 MySQL Workbench 创建帐户。 如果你打算使用 SSL 进行复制，则必须在创建用户帐户时指定此设置。
-   
+
    若要了解如何在源服务器上添加用户帐户，请参阅 [MariaDB 文档](https://mariadb.com/kb/en/library/create-user/)。
 
    如果使用以下命令，则新的复制角色可从任何计算机访问源服务器，而不仅仅可从托管源服务器本身的计算机进行访问。 若要进行这种访问，可在用于创建用户的命令中指定 **syncuser\@'%'** 。
-   
+
    若要详细了解如何[指定帐户名称](https://mariadb.com/kb/en/library/create-user/#account-names)，请参阅 MariaDB 文档。
 
    **SQL 命令**
@@ -128,7 +136,7 @@ ms.locfileid: "98021110"
    - 在不使用 SSL 的情况下进行复制
 
        如果所有用户连接都不要求 SSL，请输入以下命令来创建用户：
-    
+
        ```sql
        CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword';
        GRANT REPLICATION SLAVE ON *.* TO ' syncuser'@'%';
@@ -137,19 +145,18 @@ ms.locfileid: "98021110"
    **MySQL Workbench**
 
    若要在 MySQL Workbench 中创建复制角色，请在“管理”窗格中选择“用户和特权”。  然后选择“添加帐户”。
- 
+
    ![用户和特权](./media/howto-data-in-replication/users_privileges.png)
 
    在“登录名”字段中输入用户名。
 
    ![同步用户](./media/howto-data-in-replication/syncuser.png)
- 
+
    选择“管理角色”面板，然后在“全局特权”列表中选择“复制从属实例”。   选择“应用”以创建复制角色。
 
    ![复制从属实例](./media/howto-data-in-replication/replicationslave.png)
 
-
-5. 将源服务器设置为只读模式。
+6. 将源服务器设置为只读模式。
 
    在开始转储数据库之前，必须将服务器置于只读模式。 在只读模式下，源服务器无法处理任何写入事务。 为帮助避免对业务造成影响，请将只读时段安排在非高峰期。
 
@@ -158,27 +165,27 @@ ms.locfileid: "98021110"
    SET GLOBAL read_only = ON;
    ```
 
-6. 获取当前的二进制日志文件名和偏移量。
+7. 获取当前的二进制日志文件名和偏移量。
 
    若要确定当前的二进制日志文件名和偏移量，请运行 [`show master status`](https://mariadb.com/kb/en/library/show-master-status/) 命令。
-    
+
    ```sql
    show master status;
    ```
+
    结果应类似于下表中的内容：
-   
+
    ![主机状态结果](./media/howto-data-in-replication/masterstatus.png)
 
-   请记下二进制文件名，因为后面的步骤中需要用到。
-   
-7. 获取 GTID 位置（可选，使用 GTID 复制时需要用到）。
+   请记下二进制文件名，因为后面的步骤中将要用到它。
+
+8. 获取 GTID 位置（可选，使用 GTID 复制时需要用到）。
 
    运行函数 [`BINLOG_GTID_POS`](https://mariadb.com/kb/en/library/binlog_gtid_pos/) 获取相应 binlog 文件名和偏移量的 GTID 位置。
   
     ```sql
     select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);
     ```
- 
 
 ## <a name="dump-and-restore-the-source-server"></a>转储并还原源服务器
 
@@ -214,9 +221,9 @@ ms.locfileid: "98021110"
    ```sql
    CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
    ```
-   
+
    或
-   
+
    ```sql
    CALL mysql.az_replication_change_master_with_gtid('<master_host>', '<master_user>', '<master_password>', 3306, '<master_gtid_pos>', '<master_ssl_ca>');
    ```
@@ -228,8 +235,8 @@ ms.locfileid: "98021110"
    - master_log_pos：正在运行的 `show master status` 中的二进制日志位置
    - master_gtid_pos：正在运行的 `select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);` 中的 GTID 位置
    - master_ssl_ca：CA 证书的上下文。 如果未使用 SSL，请传入空字符串。*
-    
-    
+
+
     \* 建议在 master_ssl_ca 参数中以变量形式传入此字符串。 有关详细信息，请参阅以下示例。
 
    **示例**
@@ -245,10 +252,11 @@ ms.locfileid: "98021110"
        ```
 
        在域 companya.com 中托管的源服务器与 Azure Database for MariaDB 中托管的副本服务器之间设置了使用 SSL 进行复制的功能。 将在副本上运行此存储过程。
-    
+
        ```sql
        CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mariadb-bin.000016', 475, @cert);
        ```
+
    - 在不使用 SSL 的情况下进行复制
 
        在域 companya.com 中托管的源服务器与 Azure Database for MariaDB 中托管的副本服务器之间设置了在不使用 SSL 的情况下进行复制的功能。 将在副本上运行此存储过程。
@@ -268,7 +276,7 @@ ms.locfileid: "98021110"
 3. 检查复制状态。
 
    在副本服务器上调用 [`show slave status`](https://mariadb.com/kb/en/library/show-slave-status/) 命令查看复制状态。
-    
+
    ```sql
    show slave status;
    ```
@@ -276,11 +284,11 @@ ms.locfileid: "98021110"
    如果 `Slave_IO_Running` 和 `Slave_SQL_Running` 的状态为 `yes`，并且 `Seconds_Behind_Master` 的值为 `0`，则表示复制正常运行。 `Seconds_Behind_Master` 指示副本的陈旧状态。 如果值不是 `0`，则表示副本正在处理更新。
 
 4. 更新相应的服务器变量，使数据传入复制更安全（仅当不使用 GTID 进行复制时才需要这样做）。
-    
+
     由于 MariaDB 中的本机复制限制，在不使用 GTID 方案进行复制时，必须设置 [`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) 和 [`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) 变量。
 
     检查副本服务器的 `sync_master_info` 和 `sync_relay_log_info` 变量，确保数据传入复制稳定，并将这些变量设置为 `1`。
-    
+
 ## <a name="other-stored-procedures"></a>其他存储过程
 
 ### <a name="stop-replication"></a>停止复制
@@ -302,10 +310,11 @@ CALL mysql.az_replication_remove_master;
 ### <a name="skip-the-replication-error"></a>跳过复制错误
 
 若要跳过复制错误并允许复制，请使用以下存储过程：
-    
+
 ```sql
 CALL mysql.az_replication_skip_counter;
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
 详细了解 Azure Database for MariaDB 的[数据传入复制](concepts-data-in-replication.md)。

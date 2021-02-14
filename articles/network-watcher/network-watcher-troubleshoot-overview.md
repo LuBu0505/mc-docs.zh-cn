@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/19/2017
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/08/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: c02c5bfff4c9cbe6bd3356e7e665a2a61427bd5f
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 9d52c91585c236568ac96965a860bc4813534ed6
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230860"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580523"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>在 Azure 网络观察程序中进行资源故障排除简介
 
@@ -212,6 +212,7 @@ Elapsed Time            330 sec
 ```
 
 ## <a name="considerations"></a>注意事项 
+* 每个订阅一次只能运行一个故障排除操作。 若要运行其他故障排除操作，请等待前一个操作完成。 在上一个操作未完成的情况下触发更多操作会导致后续操作失败。 
 * CLI Bug：如果使用 Azure CLI 运行命令，则 VPN 网关和存储帐户必须位于同一资源组中。 具有不同资源组中资源的客户可以改为使用 PowerShell 或 Azure 门户。  
 
 ## <a name="next-steps"></a>后续步骤
@@ -223,4 +224,4 @@ Elapsed Time            330 sec
 [1]: ./media/network-watcher-troubleshoot-overview/GatewayTenantWorkerLogs.png
 [2]: ./media/network-watcher-troubleshoot-overview/portal.png
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

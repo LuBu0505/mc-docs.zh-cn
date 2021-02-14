@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 01/05/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6576af016e4feed31c70b179b3966471af6a303e
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: f3fc3eeea41350f9ada997d9b685e1c82524d32e
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023471"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540711"
 ---
 # <a name="control-access-with-sensitivity-labels"></a>通过敏感度标签控制访问 
 
@@ -66,7 +66,7 @@ ms.locfileid: "98023471"
 
 * 对于 HBI 数据、站点或 Microsoft 365 组，应采用哪些默认值？
 
-* 你将在何处使用敏感度标签[进行标记和监视](https://docs.microsoft.com/microsoft-365/compliance/label-analytics?view=o365-worldwide)，而不是[强制执行加密](https://docs.microsoft.com/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide)或[强制执行容器访问限制](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)？
+* 你将在何处使用敏感度标签进行标记和监视，而不是[强制执行加密](https://docs.microsoft.com/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide)或[强制执行容器访问限制](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)？
 
 **对于电子邮件和内容**
 
@@ -157,4 +157,3 @@ ms.locfileid: "98023471"
 8. [通过敏感度标签实现安全访问](8-secure-access-sensitivity-labels.md)（本文）
 
 9. [实现对 Microsoft Teams、OneDrive 和 SharePoint 的安全访问](9-secure-access-teams-sharepoint.md)
-

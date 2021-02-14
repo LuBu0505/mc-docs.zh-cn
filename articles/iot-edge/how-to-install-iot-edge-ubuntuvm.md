@@ -7,16 +7,15 @@ ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-origin.date: 06/29/2020
-ms.date: 11/13/2020
+ms.date: 02/02/2021
 ms.author: v-tawe
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4ba61d24db70132307687236f446124bb1f551ca
-ms.sourcegitcommit: 9438c9db77338cecacf37d2fc178e757df9de83d
+ms.openlocfilehash: 9f66c202fe39444170b6772e5db1bbc2694ee8c1
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94595175"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579628"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>在 Ubuntu 虚拟机上运行 Azure IoT Edge
 
@@ -51,7 +50,7 @@ ms.locfileid: "94595175"
 
     **管理员用户名**：一个用户名，将为其提供对部署的 root 特权。
 
-    **设备连接字符串**：在所需 [IoT 中心](../iot-hub/about-iot-hub.md)内创建的设备的 [设备连接字符串](./how-to-manual-provision-symmetric-key.md)。
+    **设备连接字符串**：在所需 [IoT 中心](../iot-hub/about-iot-hub.md)内创建的设备的[设备连接字符串](./how-to-register-device.md)。
 
     **VM 大小**：要部署的虚拟机的 [大小](../cloud-services/cloud-services-sizes-specs.md)
 
@@ -98,7 +97,7 @@ ms.locfileid: "94595175"
 
    1. 使用复制的 ID 设置工作订阅：
 
-      ```azurecli 
+      ```azurecli
       az account set -s <SubscriptionId>
       ```
 
@@ -125,7 +124,7 @@ ms.locfileid: "94595175"
 
     若要使用 SSH 密钥进行身份验证，可为 authenticationType 指定 `sshPublicKey`，然后在 adminPasswordOrKey 参数中提供 SSH 密钥的值。    下面显示了一个示例。
 
-   ```azurecli
+    ```azurecli
     #Generate the SSH Key
     ssh-keygen -m PEM -t rsa -b 4096 -q -f ~/.ssh/iotedge-vm-key -N ""  
 

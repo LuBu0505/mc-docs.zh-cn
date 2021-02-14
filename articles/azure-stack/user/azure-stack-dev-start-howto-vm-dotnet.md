@@ -1,19 +1,19 @@
 ---
-title: 将 C# ASP.NET Web 应用部署到 Azure Stack Hub 中的虚拟机
+title: 将 C# ASP.NET Web 应用部署到 Azure Stack Hub 中的 VM
 description: 将 C# ASP.NET Web 应用部署到 Azure Stack Hub 中的 VM。
 author: WenJason
 ms.topic: overview
-origin.date: 04/20/2020
-ms.date: 08/31/2020
+origin.date: 1/19/2021
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.reviewer: sijuman
-ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: 412cf1aab7e58aee329d42cf513bb569f6616061
-ms.sourcegitcommit: 4e2d781466e54e228fd1dbb3c0b80a1564c2bf7b
+ms.lastreviewed: 1/19/2021
+ms.openlocfilehash: 4910d0492895451dcda375e127a3188907dde16b
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88867978"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503978"
 ---
 # <a name="deploy-a-c-aspnet-web-app-to-a-vm-in-azure-stack-hub"></a>将 C# ASP.NET Web 应用部署到 Azure Stack Hub 中的 VM
 
@@ -40,7 +40,7 @@ ms.locfileid: "88867978"
 
 1. 下载 [Web 部署 v3.6](https://www.microsoft.com/download/details.aspx?id=43717)。 从 MSI 文件完成安装，然后启用所有功能。
 
-1. 在服务器上安装 .NET Core 2.2 Hosting Bundle。 有关说明，请参阅 [.NET Core 安装程序](https://dotnet.microsoft.com/download/dotnet-core/2.2)。 确保在开发计算机和目标服务器上使用相同版本的 .NET Core。
+1. 在服务器上安装 .NET Core 5.0 Hosting Bundle。 有关说明，请参阅 [.NET Core 安装程序](https://dotnet.microsoft.com/download/dotnet/5.0)。 确保在开发计算机和目标服务器上使用相同版本的 .NET Core。
 
 1. 在 Azure Stack Hub 门户中，打开 VM 的网络设置中列出的端口。
 
@@ -78,7 +78,7 @@ ms.locfileid: "88867978"
 
     g. 对于“优先级”，请保留默认选项。 
 
-    h. 输入**名称**和**说明**，以帮助记住打开端口的原因。
+    h. 输入 **名称** 和 **说明**，以帮助记住打开端口的原因。
 
     i. 选择 **添加** 。
 
@@ -129,7 +129,7 @@ ms.locfileid: "88867978"
 1. 转到新服务器。 应会看到你的 Web 应用程序正在运行。
 
     ```http  
-        mywebapp.local.cloudapp.azurestack.external
+    mywebapp.local.cloudapp.azurestack.external
     ```
 
 ## <a name="next-steps"></a>后续步骤

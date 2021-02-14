@@ -12,14 +12,14 @@ ms.reviewer: nibaccam
 origin.date: 11/04/2019
 ms.date: 03/16/2020
 ms.custom: ''
-ms.openlocfilehash: faca720b96548d052339d3264809b31281069a23
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 254e39b3de36db0c2799f3a4b1aec1320b7e2c84
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022429"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804311"
 ---
-# <a name="version-and-track-datasets-in-experiments"></a>在试验中对数据集进行版本控制和跟踪
+# <a name="version-and-track-azure-machine-learning-datasets"></a>对 Azure 机器学习数据集进行版本控制和跟踪
 
 在本文中，你将了解如何对 Azure 机器学习数据集进行版本控制和跟踪，以实现可再现性。 数据集版本控制是为数据状态设置书签的一种方法，方便为将来的试验应用数据集的特定版本。
 
@@ -167,9 +167,7 @@ Azure 机器学习在整个试验过程中跟踪数据作为输入和输出数�
 以下是将数据作为输出数据集进行跟踪的场景。  
 
 * 提交试验运行时，通过 `outputs` 或 `arguments` 参数传递 `OutputFileDatasetConfig` 对象。 `OutputFileDatasetConfig` 对象也可用于在管道步骤之间保留数据。 请参阅[在 ML 管道步骤之间移动数据。](how-to-move-data-in-out-of-pipelines.md)
-    > [!TIP]
-    > [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) 是一个公共预览类，包含可能会随时更改的[试验性](https://docs.microsoft.com/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental)预览功能。
-
+  
 * 在脚本中注册数据集。 对于此场景，将数据集注册到工作区时分配给它的名称就是显示的名称。 在以下示例中，`training_ds` 是将显示的名称。
 
     ```Python

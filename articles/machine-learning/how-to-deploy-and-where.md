@@ -1,26 +1,26 @@
 ---
 title: 部署模型的方式和位置
 titleSuffix: Azure Machine Learning
-description: 了解部署 Azure 机器学习模型（包括 Azure 容器实例、Azure Kubernetes 服务、Azure IoT Edge 和 FPGA）的方式和位置。
+description: 了解如何以及在哪里部署机器学习模型。 部署到 Azure 容器实例、Azure Kubernetes 服务、Azure IoT Edge 和 FPGA。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
 ms.reviewer: larryfr
-ms.date: 12/11/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 9a1a35c3c13ae7a195afa4b6d4bd27f85c53958f
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: d58f0176ad639b1aa89fe68ab506bb43c7c0785f
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021824"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804388"
 ---
-# <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure 机器学习部署模型
+# <a name="deploy-machine-learning-models-to-azure"></a>将机器学习模型部署到 Azure
 
-了解如何将机器学习模型作为 Web 服务部署在 Azure 云或 Azure IoT Edge 设备中。
+了解如何将机器学习或深度学习模型作为 Web 服务部署在 Azure 云中。 也可以部署到 Azure IoT Edge 设备。
 
 无论你在何处部署模型，工作流都是类似的：
 
@@ -31,7 +31,7 @@ ms.locfileid: "98021824"
 1. 将模型部署到计算目标。
 1. 测试生成的 Web 服务。
 
-有关部署工作流涉及的概念的详细信息，请参阅[使用 Azure 机器学习管理、部署和监视模型](concept-model-management-and-deployment.md)。
+若要详细了解机器学习部署工作流中涉及的概念，请参阅[使用 Azure 机器学习来管理、部署和监视模型](concept-model-management-and-deployment.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -198,7 +198,7 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
 }
 ```
 
-这指定部署将使用 `./working_dir` 目录中的 `score.py` 文件来处理传入请求。
+这样就指定了机器学习部署将会使用 `./working_dir` 目录中的 `score.py` 文件来处理传入请求。
 
 有关推理配置的更详细讨论，[请参阅此文](./reference-azure-machine-learning-cli.md#inference-configuration-schema)。 
 
@@ -270,9 +270,7 @@ from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservic
 
 ---
 
-
-
-## <a name="deploy-your-model"></a>部署模型
+## <a name="deploy-your-machine-learning-model"></a>部署机器学习模型
 
 现在已准备好部署模型。 
 
@@ -325,6 +323,8 @@ print(service.state)
 | 已失败 | 由于出现错误或崩溃，服务未能部署。 | 是 |
 | 正常 | 服务正常，终结点可用。 | 是 |
 
+> [!TIP]
+> 在部署时，会从 Azure 容器注册表 (ACR) 生成并加载用于计算目标的 Docker 映像。 在默认情况下，Azure 机器学习会创建一个使用“基本”服务层级的 ACR。 将工作区的 ACR 更改为“标准”或“高级”层级可能会减少生成映像并将其部署到计算目标所花费的时间。 有关详细信息，请参阅 [Azure 容器注册表服务层级](../container-registry/container-registry-skus.md)。
 
 ### <a name="batch-inference"></a><a id="azuremlcompute"></a> 批量推理
 Azure 机器学习计算目标由 Azure 机器学习创建和管理。 它们可用于 Azure 机器学习管道中的批量预测。

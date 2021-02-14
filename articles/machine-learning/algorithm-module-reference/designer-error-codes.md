@@ -1,7 +1,7 @@
 ---
 title: 对设计器模块错误进行故障排除
 titleSuffix: Azure Machine Learning
-description: 对 Azure 机器学习设计器中的模块错误代码进行故障排除
+description: 了解如何在 Azure 机器学习设计器中读取自动化模块错误代码并进行故障排除。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: troubleshooting
 author: likebupt
 ms.author: zhanxia
-ms.date: 04/16/2020
-ms.openlocfilehash: 59f220e2647394a4a53bc71854f06aa78b5bb369
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.date: 11/25/2020
+ms.openlocfilehash: f2a3718996da0b19fefcfb50372249c584b02cdc
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022630"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804291"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>设计器的异常和错误代码
 
@@ -1533,3 +1533,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |库异常: {exception}。|
 |未知库异常: {exception}。 {customer_support_guidance}。|
 
+
+## <a name="execute-python-script-module"></a>执行 Python 脚本模块
+
+在“执行 Python 脚本模块”的 70_driver_logs 中搜索“in azureml_main”，可能会发现哪一行发生了错误。 例如，“File "/tmp/tmp01_ID/user_script.py", line 17, in azureml_main”表示错误发生在 python 脚本的第 17 行。

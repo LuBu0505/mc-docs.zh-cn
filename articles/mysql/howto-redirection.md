@@ -4,15 +4,15 @@ description: 本文介绍了如何将应用程序配置为使用重定向连接�
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 origin.date: 6/8/2020
-ms.date: 06/29/2020
-ms.openlocfilehash: bdab81eb4c7ffd0ffaa9cc0c190da8dedb01bfdb
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.date: 02/08/2021
+ms.openlocfilehash: 8bcc5c262593156ed213f7d1b9524a4e3b9ef96b
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516439"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503962"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>使用重定向连接到 Azure Database for MySQL
 
@@ -25,6 +25,9 @@ ms.locfileid: "85516439"
 登录到 [Azure 门户](https://portal.azure.cn)。 使用引擎版本 5.6、5.7 或 8.0 创建 Azure Database for MySQL 服务器。 
 
 有关详细信息，请参阅如何使用 [Azure 门户](quickstart-create-mysql-server-database-using-azure-portal.md)或 [Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md) 创建 Azure Database for MySQL 服务器。
+
+> [!IMPORTANT]
+> [Azure Database for MySQL 的专用链接](concepts-data-access-security-private-link.md)当前不支持重定向。
 
 ## <a name="enable-redirection"></a>启动重定向
 

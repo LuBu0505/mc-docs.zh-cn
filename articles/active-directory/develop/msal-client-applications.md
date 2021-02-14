@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 43c1cec14216a055d5bdbfa277d1809f65a53b66
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: dc2ef7e94822ae3a4add63cfc785bca6da0c71cb
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126517"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540682"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>公共客户端和机密客户端应用程序
 Microsoft 身份验证库 (MSAL) 定义两种类型的客户端：公共客户端和机密客户端。 这两种客户端的区分方式是，它们能否在授权服务器上安全地完成身份验证，以及能否维持客户端凭据的保密性。 相比之下，Azure AD 身份验证库 (ADAL) 使用所谓的“身份验证上下文”（与 Azure AD 建立的连接）。 
@@ -28,7 +28,7 @@ Microsoft 身份验证库 (MSAL) 定义两种类型的客户端：公共客户�
     机密客户端应用 <BR>
     ![Web 应用](./media/msal-client-applications/web-app.png) ![Web API](./media/msal-client-applications/web-api.png) ![守护程序/服务](./media/msal-client-applications/daemon-service.png)
 
-- **公共客户端应用程序**是在设备、台式计算机或 Web 浏览器中运行的应用。 我们并不确信这些应用程序能够安全保守应用程序的机密，因此，它们只是代表用户访问 Web API。 （它们仅支持公共客户端流。）公共客户端无法保存配置时机密，因此它们没有客户端机密。
+- **公共客户端应用程序** 是在设备、台式计算机或 Web 浏览器中运行的应用。 我们并不确信这些应用程序能够安全保守应用程序的机密，因此，它们只是代表用户访问 Web API。 （它们仅支持公共客户端流。）公共客户端无法保存配置时机密，因此它们没有客户端机密。
 
     公共客户端应用 <BR>
     ![桌面应用](./media/msal-client-applications/desktop-app.png) ![无浏览器 API](./media/msal-client-applications/browserless-app.png) ![移动应用](./media/msal-client-applications/mobile-app.png)
@@ -50,4 +50,3 @@ Microsoft 身份验证库 (MSAL) 定义两种类型的客户端：公共客户�
 - [客户端应用程序配置选项](msal-client-application-configuration.md)
 - [使用 MSAL.NET 实例化客户端应用程序](msal-net-initializing-client-applications.md)
 - [使用 MSAL.js 实例化客户端应用程序](msal-js-initializing-client-applications.md)
-

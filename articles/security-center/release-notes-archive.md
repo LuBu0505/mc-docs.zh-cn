@@ -7,17 +7,17 @@ author: Johnnytechn
 manager: rkarlin
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2020
+ms.date: 02/02/2021
 ms.author: v-johya
-ms.openlocfilehash: d3d5a076a07008b167bf77e428681b1a3e0258e8
-ms.sourcegitcommit: cdb7228e404809c930b7709bcff44b89d63304ec
+ms.openlocfilehash: 69dffb245fb15ac8752f93b0c1bb02df3cc92cef
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91402353"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579452"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能存档
 
@@ -35,7 +35,6 @@ ms.locfileid: "91402353"
 3 月的更新包括：
 
 - [工作流自动化现已正式发布](#workflow-automation-is-now-generally-available)
-- [Azure 安全中心与 Windows Admin Center 的集成](#integration-of-azure-security-center-with-windows-admin-center)
 - [Azure Kubernetes 服务保护](#protection-for-azure-kubernetes-service)
 - [改进了实时体验](#improved-just-in-time-experience)
 - [弃用了两项针对 Web 应用的安全建议](#two-security-recommendations-for-web-applications-deprecated)
@@ -49,17 +48,7 @@ Azure 安全中心现已正式发布工作流自动化功能。 它可用于在�
 
 若要详细了解用于运行工作流的自动和手动安全中心功能，请参阅[工作流自动化](workflow-automation.md)。
 
-详细了解如何[创建逻辑应用](/logic-apps/logic-apps-overview)。
-
-
-### <a name="integration-of-azure-security-center-with-windows-admin-center"></a>Azure 安全中心与 Windows Admin Center 的集成
-
-现可将本地 Windows 服务器从 Windows Admin Center 直接移动到 Azure 安全中心。 安全中心然后变成你的单一管理界面，可在这里查看 Windows Admin Center 各项资源（包括本地服务器、虚拟机和其他 PaaS 工作负载）的安全信息。
-
-在将服务器从 Windows Admin Center 直接移动到 Azure 安全中心后，你将能够：
-
-- 在 Windows Admin Center 的安全中心扩展中查看安全警报和建议。
-- 在 Azure 门户的安全中心内（或通过 API）查看安全状态和检索 Windows Admin Center 托管服务器的其他详细信息。
+详细了解如何[创建逻辑应用](../logic-apps/logic-apps-overview.md)。
 
 
 ### <a name="protection-for-azure-kubernetes-service"></a>Azure Kubernetes 服务保护
@@ -74,7 +63,7 @@ Azure 安全中心正在扩展其容器安全功能，现可保护 Azure Kuberne
 - **安全建议** - 帮助你遵守 AKS 安全最佳做法的可操作建议。 这些建议包含在安全功能分数中，确保被视为组织的安全状态的一部分。 你可能会看到的一个与 AKS 相关的建议示例是，“应使用基于角色的访问控制来限制对 Kubernetes 服务群集的访问”。
 - **威胁防护** - 通过对 AKS 部署的持续分析，Azure 安全中心会提醒你注意在主机和 AKS 群集级别检测到的威胁和恶意活动。
 
-详细了解 [Azure Kubernetes 服务与安全中心的集成](azure-kubernetes-service-integration.md)。
+详细了解 [Azure Kubernetes 服务与安全中心的集成](defender-for-kubernetes-introduction.md)。
 
 详细了解[安全中心内的容器安全功能](container-security.md)。
 
@@ -165,7 +154,7 @@ Azure 安全中心对 Azure Key Vault 的威胁防护的支持提供额外的安
 
 若要详细了解用于运行工作流的自动和手动安全中心功能，请参阅[工作流自动化](workflow-automation.md)。
 
-若要了解如何创建逻辑应用，请参阅 [Azure 逻辑应用](/logic-apps/logic-apps-overview)。
+若要了解如何创建逻辑应用，请参阅 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)。
 
 
 ### <a name="quick-fix-for-bulk-resources-generally-available"></a>批量资源快速修复功能已推出正式版
@@ -204,7 +193,7 @@ Kubernetes 很快就成了在云中部署和管理软件的新标准。 只有�
 此公共预览版中的新功能包括：
 
 - **发现和可见性** - 在安全中心的已注册订阅中持续发现 AKS 托管实例。
-- **安全评分建议** - 提供可操作的项来帮助客户遵循 AKS 中的安全最佳做法（以客户安全评分提供评估结果），例如“应使用基于角色的访问控制来限制对 Kubernetes 服务群集的访问”。
+- **安全功能分数建议** - 可操作的项目，用于帮助客户遵守 AKS 的安全最佳做法，并提高其安全功能分数。 建议包括诸如“应使用基于角色的访问控制来限制对 Kubernetes 服务群集的访问”之类的项目。
 - **威胁检测** - 基于主机和群集的分析，例如“检测到特权容器”。
 
 
@@ -280,7 +269,7 @@ JIT VM 访问使用 NSG 和 Azure 防火墙规则，仅在需要时才提供对 
 
 请求将记录在 Azure 活动日志中，因此你可以轻松监视和审核访问。 此实时页面还可帮助你快速识别已启用 JIT 的现有 VM，以及建议启用 JIT 的 VM。
 
-[详细了解 Azure 防火墙](https://docs.azure.cn/firewall/overview)。
+[详细了解 Azure 防火墙](../firewall/overview.md)。
 
 
 ### <a name="single-click-remediation-to-boost-your-security-posture-preview"></a>提升安全态势的一键式修正（预览版）
@@ -301,7 +290,7 @@ JIT VM 访问使用 NSG 和 Azure 防火墙规则，仅在需要时才提供对 
 
 Azure 安全中心 (ASC) 已推出新的网络建议，并改进了一些现有的建议。 现在，使用安全中心可以确保进一步为资源提供更好的网络保护。 
 
-[详细了解网络建议](recommendations-reference.md#recs-network)。
+[详细了解网络建议](recommendations-reference.md#recs-networking)。
 
 
 ## <a name="june-2019"></a>2019 年 6 月

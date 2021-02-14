@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: d58803d56f709c7837f45c3f7fe15e6fdedef4e6
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: 306a3abf637f1075fa06163db36878609bb5a058
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570563"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540611"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -46,7 +46,7 @@ ms.locfileid: "98570563"
 | PolicyId | 是 | 策略的唯一标识符。 此标识符必须带有 *B2C_1A_* 前缀 |
 | PublicPolicyUri | 是 | 策略的 URI，它是租户 ID 和策略 ID 的组合。 |
 | DeploymentMode | 否 | 可能的值：`Production` 或 `Development`。 `Production` 为默认值。 使用此属性来调试策略。 有关详细信息，请参阅[收集日志](troubleshoot-with-application-insights.md)。 |
-| UserJourneyRecorderEndpoint | 否 | 当 **DeploymentMode** 设置为 `Development` 时使用的终结点。 值必须是 `urn:journeyrecorder:applicationinsights`。 有关详细信息，请参阅[收集日志](troubleshoot-with-application-insights.md)。 |
+| UserJourneyRecorderEndpoint | 否 | 用于日志记录的终结点。 如果此属性存在，则值必须设置为 `urn:journeyrecorder:applicationinsights`。 有关详细信息，请参阅[收集日志](troubleshoot-with-application-insights.md)。 |
 
 
 以下示例演示如何指定 **TrustFrameworkPolicy** 元素：
@@ -101,5 +101,4 @@ ms.locfileid: "98570563"
   ...
 </TrustFrameworkPolicy>
 ```
-
 

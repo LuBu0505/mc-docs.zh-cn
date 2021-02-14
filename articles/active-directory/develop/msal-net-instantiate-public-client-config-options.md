@@ -1,29 +1,24 @@
 ---
-title: 使用选项（适用于 .NET 的 Microsoft 身份验证库）实例化公共客户端应用 | Azure
+title: 实例化公共客户端应用 (MSAL.NET) | Azure
+titleSuffix: Microsoft identity platform
 description: 了解如何通过适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 使用配置选项实例化公共客户端应用程序。
 services: active-directory
-documentationcenter: dev-center-name
-author: rwike77
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
-origin.date: 04/30/2019
-ms.date: 06/18/2019
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b77ed5c1dc37eaa97704e5edbcb17b8cffb7dfd3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: da2a0fc64351bd5ec0ca1f3e8f9292ce9399f4c0
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67305839"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540770"
 ---
 # <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>通过 MSAL.NET 使用配置选项实例化公共客户端应用程序
 
@@ -102,5 +97,4 @@ SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.j
 var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.PublicClientApplicationOptions)
            .Build();
 ```
-
 

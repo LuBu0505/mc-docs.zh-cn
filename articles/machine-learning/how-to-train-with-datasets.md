@@ -12,19 +12,21 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 24033cc6f202dc04c9c46cfb42ac59796963261a
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: f103da36aca4e348863bfa2a8e716113bb2e1f16
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021791"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804318"
 ---
-# <a name="train-with-datasets-in-azure-machine-learning"></a>使用 Azure 机器学习中的数据集进行训练
+# <a name="train-models-with-azure-machine-learning-datasets"></a>使用 Azure 机器学习数据集来训练模型 
 
 
-本文介绍如何在训练实验中使用 [Azure 机器学习数据集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py)。  可以在本地或远程计算目标中使用数据集，而不必考虑连接字符串或数据路径。
+本文介绍如何使用 [Azure 机器学习数据集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py)来训练机器学习模型。  可以在本地或远程计算目标中使用数据集，而不必考虑连接字符串或数据路径。
 
 Azure 机器学习数据集提供了与 Azure 机器学习训练功能（如 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)、[HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) 和 [Azure 机器学习管道](how-to-create-machine-learning-pipelines.md)）的无缝集成。
+
+如果尚未准备好为模型训练提供数据，但需要将数据加载到笔记本进行数据浏览，请了解如何[浏览数据集中的数据](how-to-create-register-datasets.md#explore-data)。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,7 +41,7 @@ Azure 机器学习数据集提供了与 Azure 机器学习训练功能（如 [Sc
 > [!Note]
 > 某些数据集类依赖于 [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?preserve-view=true&view=azure-ml-py) 包。 对于 Linux 用户，只有以下分发版支持这些类：Red Hat Enterprise Linux、Ubuntu、Fedora 和 CentOS。
 
-## <a name="use-datasets-directly-in-training-scripts"></a>直接在训练脚本中使用数据集
+## <a name="consume-datasets-in-machine-learning-training-scripts"></a>在机器学习训练脚本中使用数据集
 
 如果有尚未注册为数据集的结构化数据，请创建一个 TabularDataset，并在训练脚本中直接使用它进行本地或远程实验。
 
@@ -65,7 +67,7 @@ TabularDataset 对象提供将 TabularDataset 中的数据加载到 pandas 或 S
 > [!Note]
 > 如果原始数据源包含 NaN、空字符串或空值，则当你使用 `to_pandas_dataframe()` 时，这些值会被替换为“Null”值。
 
-如果需要从内存中的 pandas 数据帧将准备好的数据加载到新数据集中，请将这些数据写入到一个本地文件（如 parquet），然后从该文件创建新数据集。 你还可以从数据存储中的本地文件或路径创建数据集。 详细了解[如何创建数据集](how-to-create-register-datasets.md)。
+如果需要从内存中的 pandas 数据帧将准备好的数据加载到新数据集中，请将这些数据写入到一个本地文件（如 parquet），然后从该文件创建新数据集。 详细了解[如何创建数据集](how-to-create-register-datasets.md)。
 
 ```Python
 %%writefile $script_folder/train_titanic.py
@@ -158,7 +160,7 @@ run = experiment.submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
-### <a name="retrieve-the-data-in-your-training-script"></a>在训练脚本中检索数据
+### <a name="retrieve-data-in-your-training-script"></a>在训练脚本中检索数据
 
 下面的代码展示了如何在脚本中检索数据。
 
@@ -220,9 +222,9 @@ print(os.listdir(mounted_path))
 print (mounted_path)
 ```
 
-## <a name="directly-access-datasets-in-your-script"></a>在脚本中直接访问数据集
+## <a name="get-datasets-in-machine-learning-scripts"></a>在机器学习脚本中获取数据集
 
-可以在本地以及在 Azure 机器学习计算等计算群集上远程访问已注册的数据集。 若要跨试验访问已注册的数据集，请使用以下代码按名称访问工作区和已注册的数据集。 默认情况下，`Dataset` 类中的 [`get_by_name()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) 方法返回已注册到工作区的数据集的最新版本。
+可以在本地以及在 Azure 机器学习计算等计算群集上远程访问已注册的数据集。 若要跨试验访问已注册的数据集，请使用以下代码来访问工作区并获取在以前提交的运行中使用过的数据集。 默认情况下，`Dataset` 类中的 [`get_by_name()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) 方法返回已注册到工作区的数据集的最新版本。
 
 ```Python
 %%writefile $script_folder/train.py
@@ -241,7 +243,7 @@ titanic_ds = Dataset.get_by_name(workspace=workspace, name=dataset_name)
 df = titanic_ds.to_pandas_dataframe()
 ```
 
-## <a name="accessing-source-code-during-training"></a>在训练期间访问源代码
+## <a name="access-source-code-during-training"></a>在训练期间访问源代码
 
 Azure Blob 存储具有比 Azure 文件共享更快的吞吐速度，并将扩展到大量并行启动的作业。 出于此原因，我们建议配置运行以使用 Blob 存储来传输源代码文件。
 
@@ -268,7 +270,7 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 
 如果收到 `Unable to upload project files to working directory in AzureFile because the storage is overloaded` 错误，请应用以下解决方法。
 
-如果对其他工作负载（例如数据传输）使用文件共享，则我们建议使用 Blob，以便可以自由使用文件共享来提交运行。 还可以在两个不同的工作区之间拆分工作负荷。
+如果对其他工作负荷（例如数据传输）使用文件共享，则我们建议使用 Blob，以便可以自由使用文件共享来提交运行。 还可以在两个不同的工作区之间拆分工作负荷。
 
 ### <a name="passing-data-as-input"></a>作为输入传递数据
 

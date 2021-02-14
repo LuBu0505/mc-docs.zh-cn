@@ -4,15 +4,15 @@ description: 了解如何在 Azure Stack Hub 中监视运行状况和警报。
 author: WenJason
 ms.topic: how-to
 origin.date: 03/04/2020
-ms.date: 03/23/2020
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 4dc2749a914b6ea35eb6e4065e84379dcb95c5a2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e1f7f1a2b534cdb181997af71ac98f5c97266453
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79547048"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503998"
 ---
 # <a name="monitor-health-and-alerts-in-azure-stack-hub"></a>在 Azure Stack Hub 中监视运行状况和警报
 
@@ -26,7 +26,7 @@ Azure Stack Hub 包含基础结构监视功能，有助于查看 Azure Stack Hub
 
 ## <a name="alert-severity-definition"></a>警报严重性定义
 
-Azure Stack Hub 引发的警报只有两个严重级别：**警告**和**严重**。
+Azure Stack Hub 引发的警报只有两个严重级别：**警告** 和 **严重**。
 
 - **警告**  
   操作员可以按计划方式处理警告警报。 该警报通常不会影响用户工作负荷。
@@ -46,7 +46,7 @@ Azure Stack Hub 引发的警报只有两个严重级别：**警告**和**严重*
 可以单击资源提供程序或基础结构角色来查看更详细的信息。
 
 > [!WARNING]  
-> 如果单击基础结构角色，然后单击角色实例，则会看到“启动”、“重启”或“关机”选项。    对集成系统应用更新时，请勿使用这些操作。 此外，**请勿**在 Azure Stack 开发工具包 (ASDK) 环境中使用这些选项。 这些选项是针对每个基础结构角色具有多个角色实例的集成系统环境设计的。 在 ASDK 中重启角色实例（特别是 AzS-Xrp01）会导致系统不稳定。 如需故障排除方面的帮助，请在 [Azure Stack Hub 论坛](https://social.msdn.microsoft.com/Forums/azure/zh-CN/home)中提问。
+> 如果单击基础结构角色，然后单击角色实例，则会看到“启动”、“重启”或“关机”选项。    对集成系统应用更新时，请勿使用这些操作。 此外，**请勿** 在 Azure Stack 开发工具包 (ASDK) 环境中使用这些选项。 这些选项是针对每个基础结构角色具有多个角色实例的集成系统环境设计的。 在 ASDK 中重启角色实例（特别是 AzS-Xrp01）会导致系统不稳定。 如需故障排除方面的帮助，请在 [Azure Stack Hub 论坛](https://social.msdn.microsoft.com/Forums/azure/zh-CN/home)中提问。
 >
 
 ## <a name="view-alerts"></a>查看警报
@@ -70,19 +70,27 @@ Azure Stack Hub 引发的警报只有两个严重级别：**警告**和**严重*
 
 ![Azure Stack Hub 管理员门户中的“警报详细信息”边栏选项卡](media/azure-stack-monitor-health/alert-detail.png)
 
-## <a name="repair-alerts"></a>修复警报
+## <a name="alert-remediation"></a>警报修正
 
-可以在某些警报中选择“修复”。 
+### <a name="automated-remediation"></a>自动修正
 
-选中以后，“修复”操作会执行特定于警报的步骤来尝试解决问题。  选中以后，“修复”操作的状态会以门户通知的形式提供。 
+一些警报支持“修复”选项，如上图所示。 选中以后，“修复”操作会执行特定于警报的步骤来尝试解决问题。 选中以后，“修复”操作的状态会以门户通知的形式提供。
 
 ![正在进行的“修复警报”操作](media/azure-stack-monitor-health/repair-in-progress.png)
 
-“修复”操作会在同一门户通知边栏选项卡中报告成功完成了操作或无法完成操作。   如果某项“修复”操作因出现警报而失败，则可在警报详细信息中重新运行“修复”操作。  如果“修复”操作成功完成，**请勿**重新运行“修复”操作。 
+“修复”操作会在同一门户通知边栏选项卡中报告成功完成了操作或无法完成操作。  如果某项“修复”操作因出现警报而失败，则可在警报详细信息中重新运行“修复”操作。 如果“修复”操作成功完成，**请勿** 重新运行“修复”操作。 基础结构角色实例重新联机后，会自动关闭此警报。
 
 ![“修复”操作成功完成](media/azure-stack-monitor-health/repair-completed.png)
 
-基础结构角色实例重新联机后，会自动关闭此警报。 在根本问题得到解决后，许多（但并非所有）警报会自动关闭。 如果 Azure Stack Hub 解决了问题，提供“修复”操作按钮的警报会自动关闭。 对于所有其他警报，请在执行补救步骤之后选择“关闭警报”。  如果问题仍然存在，Azure Stack Hub 会生成新警报。 如果解决了问题，警报将保持关闭，无需采取其他步骤。
+### <a name="manual-remediation"></a>手动修正
+
+如果“修复”选项不受支持，请确保按照警报中提供的一组完整修正说明进行操作。 例如，内部证书到期修正步骤将指导你完成机密轮换过程：
+
+![证书到期修正](media/azure-stack-monitor-health/certificate-expiration.png)
+
+### <a name="alert-closure"></a>警报关闭
+
+在根本问题得到解决后，许多（但并非所有）警报会自动关闭。 如果 Azure Stack Hub 解决了问题，提供“修复”操作按钮的警报会自动关闭。 对于所有其他警报，请在执行补救步骤之后选择“关闭警报”。 如果问题仍然存在，Azure Stack Hub 会生成新警报。 如果解决了问题，警报将保持关闭，无需采取其他步骤。
 
 ## <a name="next-steps"></a>后续步骤
 

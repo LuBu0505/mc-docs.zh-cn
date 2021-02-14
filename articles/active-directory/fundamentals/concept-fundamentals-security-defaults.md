@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 02/02/2021
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.custom: contperfq4
-ms.openlocfilehash: c1b4fa878b98a94b7335f9c821667ba5010bc75f
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: 464df2c86fa20b5413d4e139126d9d21dcfcd31e
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97003883"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540820"
 ---
 # <a name="what-are-security-defaults"></a>什么是安全默认值？
 
@@ -76,7 +76,7 @@ Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组
 
 这些攻击者获得访问权限后，可以代表原始帐户持有者请求对特权信息的访问权限。 他们甚至可以下载整个目录，对整个组织进行网络钓鱼攻击。 
 
-提高对所有用户保护的一种常用方法是，要求对所有用户进行更强形式的帐户验证，如多重身份验证。 用户完成多重身份验证注册后，将在必要时提示用户进行其他身份验证。 此功能可保护注册到 Azure AD 的所有应用程序。
+提高对所有用户保护的一种常用方法是，要求对所有用户进行更强形式的帐户验证，如多重身份验证。 用户完成多重身份验证注册后，将在必要时提示用户进行其他身份验证。 系统主要在用户使用新设备或应用程序进行身份验证时，或者在用户执行关键角色和任务时提示用户。 此功能可保护注册到 Azure AD 的所有应用程序，包括 SaaS 应用程序。
 
 ### <a name="blocking-legacy-authentication"></a>阻止旧式身份验证
 
@@ -128,14 +128,14 @@ Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组
 | 移动应用或硬件标志提供的验证码 | X** | X |
 | 向手机发送短信 |   | X |
 | 拨打电话 |   | X |
-| 应用密码 |   | X**_ |
+| 应用密码 |   | X*** |
 
-- _* 用户可以使用来自 Microsoft Authenticator 应用的验证码，但只能使用通知选项进行注册。
-- **_ 仅当管理员启用了应用密码时，应用密码才可在旧身份验证场景中的每用户 MFA 中使用。
+- ** 用户可以使用来自 Microsoft Authenticator 应用的验证码，但只能使用通知选项进行注册。
+- *** 仅当管理员启用了应用密码时，应用密码才可在旧身份验证场景中的每用户 MFA 中使用。
 
 ### <a name="disabled-mfa-status"></a>禁用的 MFA 状态
 
-如果贵组织以前是基于每用户的 Azure AD 多重身份验证的用户，则你在查看多重身份验证状态页时，若没有看到处于“启用”或“已强制实施”状态的用户，请不必担心。 “已禁用”是使用安全默认值或基于条件访问的 Azure AD 多重身份验证的用户的相应状态。
+如果贵组织以前是基于每用户的 Azure AD 多重身份验证的用户，则在你查看多重身份验证状态页时，若没有看到处于“已启用”或“已强制实施”状态的用户，请不必担心。 “已禁用”是使用安全默认值或基于条件访问的 Azure AD 多重身份验证的用户的相应状态。
 
 ### <a name="conditional-access"></a>条件性访问
 
@@ -177,4 +177,3 @@ Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组
 ## <a name="next-steps"></a>后续步骤
 
 [常见条件访问策略](../conditional-access/concept-conditional-access-policy-common.md)
-

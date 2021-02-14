@@ -2,18 +2,18 @@
 title: Azure Site Recovery 中的新增功能
 description: 提供 Azure Site Recovery 服务中的新功能和最新更新的摘要。
 ms.topic: conceptual
-origin.date: 10/22/2020
+origin.date: 01/26/2021
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: e6303b8dbde3217339dd5624d861e8e77019878b
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: cffd286f4e6462c6c124ddf395596809dc1bfde9
+ms.sourcegitcommit: 7fc72b8afbdf9ad5e53922f489229e54282214b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023059"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540364"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
 
@@ -29,13 +29,41 @@ ms.locfileid: "98023059"
 
 **更新** |  **统一安装程序** | **配置服务器 ova** | **移动服务代理** | **Site Recovery 提供程序** | **恢复服务代理**
 --- | --- | --- | --- | --- | ---
+[汇总 53](https://support.microsoft.com/help/4602881/)  | 9.40.5850.1 | 5.1.6537.0 | 9.40.5850.1 | 5.1.6537.0  | 2.0.9202.0
+[汇总 52](https://support.microsoft.com/help/4597409/)  | 9.39.5796.1 | 5.1.6458.0 | 9.39.5796.1 | 5.1.6458.0  | 2.0.9196.0
 [汇总 51](https://support.microsoft.com/help/4590304)  | 9.38.5761.1 | 5.1.6400.0 | 9.38.5761.1 | 5.1.6400.0  | 2.0.9193.0
 [汇总 50](https://support.microsoft.com/help/4582666/) | 9.37.5724.1 | 5.1.6347.0 | 9.37.5724.1 | 5.1.6347.0  | 2.0.9192.0
 [汇总 49](https://support.microsoft.com/help/4578241/) | 9.36.5696.1 | 5.1.6315.0 | 9.36.5696.1 | 5.1.6315.0 | 2.0.9188.0
-[汇总 48](https://support.microsoft.com/help/4573888/) | 9.35.5659.1 | 5.1.6200.0 | 9.35.5659.1 | 5.1.6200.0 | 2.0.9186.0
+
 
 [详细了解](service-updates-how-to.md)更新安装和支持。
-<!--**VMware VM/physical disaster recovery to Azure** | Now supported for VMs running RHEL 8.3, Oracle Linux 7.9/8.3.-->
+
+## <a name="updates-january-2021"></a>更新（2021 年 1 月）
+
+### <a name="update-rollup-53"></a>更新汇总 53
+
+[更新汇总 53](https://support.microsoft.com/help/4602881/update-rollup-53-for-azure-site-recovery) 提供以下更新：
+
+**更新** | **详细信息**
+--- | ---
+**提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）。
+**问题修复/改进** | 汇总中详细说明的一些修复和改进。 
+**Azure VM 灾难恢复** | 现在支持标记复制。 为源区域中的 Azure VM、磁盘和 NIC 添加的所有标记都将复制到目标区域中的计算机。<br/><br/> 运行 Debian 10 的 Azure VM 现在支持复制。
+**VMware VM/物理计算机到 Azure 的灾难恢复** | 此更新包括用于将 VMware VM 复制到 Azure 的日志记录增强功能，以及改进的错误消息传递。<br/><br/> 运行 Debian 10 的 VMware VM 和物理计算机现在支持复制。
+
+
+## <a name="updates-november-2020"></a>更新（2020 年 11 月）
+
+### <a name="update-rollup-52"></a>更新汇总 52
+
+[更新汇总 52](https://support.microsoft.com/help/4597409/update-rollup-52-for-azure-site-recovery) 提供以下更新：
+
+**更新** | **详细信息**
+--- | ---
+**提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）。
+**问题修复/改进** | 汇总中详细介绍了许多修复程序和改进，包括对出行服务的新 Linux 支持。
+
+<!-- RHEL 8.3, Oracle Linux 7.9/8.3.-->
 
 ## <a name="updates-october-2020"></a>更新（2020 年 10 月）
 

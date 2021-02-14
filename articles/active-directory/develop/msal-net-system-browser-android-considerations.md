@@ -9,17 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/24/2020
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac0ecf599616438646be2cdd73dd13542e5ddd45
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 9da063b813900a6cd4d90ca12f3e2c594412bc8f
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653438"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540767"
 ---
 #  <a name="xamarin-android-system-browser-considerations-for-using-msalnet"></a>Xamarin Android 系统浏览器的 MSAL.NET 使用注意事项
 
@@ -74,5 +73,3 @@ ms.locfileid: "77653438"
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息和代码示例，请参阅[在 Xamarin Android 上的嵌入式 Web 浏览器与系统浏览器之间选择](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/MSAL.NET-uses-web-browser#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid)和[嵌入式 Web UI 与系统 Web UI](msal-net-web-browsers.md#embedded-vs-system-web-ui)。  
-
-<!-- Update_Description: wording update -->

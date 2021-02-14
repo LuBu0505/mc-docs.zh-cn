@@ -5,21 +5,21 @@ services: active-directory
 author: msaburnley
 ms.service: active-directory
 ms.topic: include
-ms.date: 10/10/2020
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.custom: include file
-ms.openlocfilehash: e38fbc968e7ade7a9117e30382835077cb93bb30
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: 8deeebdcb3c30b987ba63db319542aa925627812
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937589"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99541218"
 ---
 ## <a name="for-users-in-your-directory"></a>适用于目录中的用户
 
-如果你希望目录中的用户可请求此访问包，请执行以下步骤。 定义请求策略时，可以指定单个用户，也可以指定用户组（通常做法）。 例如，组织可能已经有一个组（例如“所有员工”）。****  如果将该组添加到可以请求访问权限的用户的策略中，则该组的任何成员都可以请求访问权限。
+如果你希望目录中的用户可请求此访问包，请执行以下步骤。 定义请求策略时，可以指定单个用户，也可以指定用户组（通常做法）。 例如，组织可能已经有一个组（例如“所有员工”）。  如果将该组添加到可以请求访问权限的用户的策略中，则该组的任何成员都可以请求访问权限。
 
-1. 在“可以请求访问的用户”部分，单击“你目录中的用户”。********
+1. 在“可以请求访问的用户”部分，单击“你目录中的用户”。
 
     选择此选项后，会出现新的选项以进一步优化目录中哪些用户可以请求此访问包。
 
@@ -33,7 +33,7 @@ ms.locfileid: "91937589"
     | **所有成员（不包括来宾）** | 如果希望目录中的所有成员用户都可以请求此访问包，请选择此选项。 此选项不包括你可能已邀请到目录中的任何来宾用户。 |
     | **所有用户（包括来宾）** | 如果希望目录中的所有成员用户和来宾用户都可以请求此访问包，请选择此选项。 |
 
-    来宾用户是指通过 [Azure AD B2B](../articles/active-directory/b2b/what-is-b2b.md) 邀请到目录中的外部用户。 有关成员用户和来宾用户之间差异的详细信息，请参阅 [Azure Active Directory 中的默认用户权限是什么？](../articles/active-directory/fundamentals/users-default-permissions.md)。
+    来宾用户是指通过 [Azure AD B2B](../articles/active-directory/external-identities/what-is-b2b.md) 邀请到目录中的外部用户。 有关成员用户和来宾用户之间差异的详细信息，请参阅 [Azure Active Directory 中的默认用户权限是什么？](../articles/active-directory/fundamentals/users-default-permissions.md)。
 
 1. 如果已选择“特定用户和组”，请单击“添加用户和组” 。
 
@@ -41,16 +41,16 @@ ms.locfileid: "91937589"
 
     ![访问包 - 请求 - 选择用户和组](./media/active-directory-entitlement-management-request-policy/select-users-groups.png)
 
-1. 单击“选择”以添加用户和组。****
+1. 单击“选择”以添加用户和组。
 
 1. 跳到[审批](#approval)部分。
 
 ## <a name="for-users-not-in-your-directory"></a>适用于不在目录中的用户
 
- “不在目录中的用户”是指位于其他 Azure AD 目录或域中的用户。 这些用户可能尚未被邀请到目录中。 Azure AD 目录必须配置为允许”协作限制”中的邀请。 有关详细信息，请参阅[启用 B2B 外部协作并管理谁可以邀请来宾](../articles/active-directory/b2b/delegate-invitations.md)。
+ “不在目录中的用户”是指位于其他 Azure AD 目录或域中的用户。 这些用户可能尚未被邀请到目录中。 Azure AD 目录必须配置为允许”协作限制”中的邀请。 有关详细信息，请参阅[启用 B2B 外部协作并管理谁可以邀请来宾](../articles/active-directory/external-identities/delegate-invitations.md)。
 
 > [!NOTE]
-> 将为不是目录中的其请求已审批或自动审批的用户创建来宾用户帐户。 将邀请来宾，但他们不会收到邀请电子邮件。 传递其访问包分配时，他们将收到电子邮件。 默认情况下，当来宾用户不再有任何访问包分配时（因为他们的上次分配已过期或已取消），将会阻止该来宾用户帐户登录并随后将其删除。 如果希望无限期地在目录中保留来宾用户（即使他们没有任何访问包分配），可以更改权利管理配置的设置。 有关来宾用户对象的详细信息，请参阅 [Azure Active Directory B2B 协作用户的属性](../articles/active-directory/b2b/user-properties.md)。
+> 将为不是目录中的其请求已审批或自动审批的用户创建来宾用户帐户。 将邀请来宾，但他们不会收到邀请电子邮件。 传递其访问包分配时，他们将收到电子邮件。 默认情况下，当来宾用户不再有任何访问包分配时（因为他们的上次分配已过期或已取消），将会阻止该来宾用户帐户登录并随后将其删除。 如果希望无限期地在目录中保留来宾用户（即使他们没有任何访问包分配），可以更改权利管理配置的设置。 有关来宾用户对象的详细信息，请参阅 [Azure Active Directory B2B 协作用户的属性](../articles/active-directory/external-identities/user-properties.md)。
 
 如果要允许不在目录中的用户请求此访问包，请执行以下步骤：
 
@@ -81,7 +81,7 @@ ms.locfileid: "91937589"
 1. 选择所有已连接的组织后，单击“选择”。
 
     > [!NOTE]
-    > 来自选定已连接的组织的所有用户都将可以请求此访问包。 这包括来自与组织关联的所有子域的 Azure AD 中的用户，除非这些域被 Azure B2B 允许或拒绝列表阻止。 有关详细信息，请参阅[允许或阻止向特定组织中的 B2B 用户发送邀请](../articles/active-directory/b2b/allow-deny-list.md)。
+    > 来自选定已连接的组织的所有用户都将可以请求此访问包。 这包括来自与组织关联的所有子域的 Azure AD 中的用户，除非这些域被 Azure B2B 允许或拒绝列表阻止。 有关详细信息，请参阅[允许或阻止向特定组织中的 B2B 用户发送邀请](../articles/active-directory/external-identities/allow-deny-list.md)。
 
 1. 跳到[审批](#approval)部分。
 
@@ -107,17 +107,10 @@ ms.locfileid: "91937589"
 - 单阶段或两阶段审批不需要每个选定审批者的批准。
 - 审批决定以第一个评审请求的审批者为准。
 
-有关如何向请求策略添加审批者的演示，请观看以下视频：
-
->[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4cZfg]
-
-有关如何向请求策略添加多阶段审批的演示，请观看以下视频：
-
->[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4d1Jw]
 
 请按照以下步骤指定请求访问包的审批设置：
 
-1. 若要要求对所选用户发起的请求进行审批，请将“需要审批”切换开关设置为“是”。******** 或者，若要自动审批请求，请将切换开关设置为“否”。
+1. 若要要求对所选用户发起的请求进行审批，请将“需要审批”切换开关设置为“是”。 或者，若要自动审批请求，请将切换开关设置为“否”。
 
 1. 如果需要用户提供对请求访问包的论证，请将“需要请求者论证”切换开关设置为“是”。 。
     
@@ -192,6 +185,8 @@ ms.locfileid: "91937589"
 
     ![访问包 - 策略 - 添加后备审批者](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
 
+    如果对于第一位审批者，选择“管理员”作为审批者，你将具有一个可在后备审批者字段中进行选择的额外选项“将二级管理员作为后备审批者”。 如果选择此选项，则需要添加后备审批者，以便在系统找不到二级管理员的情况下将请求转发给该审批者。
+
 1. 在“多少天后转发给后备审批者？”框中，输入审批者批准或拒绝请求的允许天数。 如果在请求持续期间没有审批者批准或拒绝请求，则请求将过期（超时），用户必须再提交一个访问包请求。 
 
     只有在请求持续时间已过一半后，请求才会被转发给后备审批者，主审批者的决策必须在至少 4 天后超时。 如果请求超时小于或等于 3，则没有足够的时间将请求转发给后备审批者。 在本例中，请求的持续时间为 14 天。 因此，请求持续时间在第 7 天已达到一半。 所以请求不能早于第 8 天转发。 此外，请求不能在请求持续时间的最后一天转发。 因此，在本例中，可以转发请求的最晚时间是第 13 天。
@@ -204,7 +199,7 @@ ms.locfileid: "91937589"
 
     如果选择了“无（仅限管理员直接分配）”，并且将“启用”设置为“否”，则管理员无法直接分配此访问包 。
 
-    ![访问包 - 策略 - 启用策略设置](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
+    ![此屏幕截图显示了用于启用新请求和分配的选项。](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
 1. 单击“下一步”  。
 
@@ -237,4 +232,3 @@ ms.locfileid: "91937589"
 1. 若要要求请求者在请求访问某个访问包时回答此问题，请单击“必需”下的复选框。
 
 1. 单击“下一步”
-

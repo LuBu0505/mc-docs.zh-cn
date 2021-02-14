@@ -10,14 +10,14 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 origin.date: 11/19/2019
-ms.date: 12/28/2020
+ms.date: 02/04/2021
 ms.author: v-johya
-ms.openlocfilehash: 5b6367465684f78c31dd5124532252db9e79574c
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: ef23d74e612030449809ff190421dac2fc89f139
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857073"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579511"
 ---
 # <a name="add-contributors-to-your-app"></a>向应用添加参与者
 
@@ -69,9 +69,7 @@ LUIS 使用标准的 Azure Active Directory (Azure AD) 许可流程。
 租户管理员直接处理需要访问权限才能在 Azure AD 中使用 LUIS 的用户。
 
 * 用户首先要登录 LUIS，此时看到需要管理员批准的弹出对话框。 继续操作之前，用户需联系租户管理员。
-* 然后，租户管理员登录 LUIS，并看到一个“同意流”弹出对话框。 管理员需在此对话框中向用户授予权限。 管理员接受权限后，用户才能够继续使用 LUIS。 如果租户管理员不登录 LUIS，还可访问 LUIS 的[同意](https://account.activedirectory.azure.cn/r#/applications)部分，如以下屏幕截图中所示。 请注意，列表已经过筛选，仅显示包括名称 `LUIS` 的项。
-
-![应用网站授予的 Azure Active Directory 权限](./media/luis-how-to-collaborate/tenant-permissions.png)
+* 然后，租户管理员登录 LUIS，并看到一个“同意流”弹出对话框。 管理员需在此对话框中向用户授予权限。 管理员接受权限后，用户才能够继续使用 LUIS。 如果租户管理员不登录 LUIS，还可访问 LUIS 的[同意](https://account.activedirectory.azure.cn/r#/applications)部分。 在此页上，可以将列表筛选到包含名称 `LUIS` 的项。
 
 如果租户管理员只希望某些用户使用 LUIS，则有几种可能的解决方案：
 * 给予“管理员同意”（同意 Azure AD 的所有用户），但随后在“企业应用程序属性”下将“需要进行用户分配”设置为“是”，最后仅将所需用户分配/添加到应用程序。 使用此方法，管理员仍然向应用提供“管理员同意”，但是，可以控制可以访问应用的用户。

@@ -10,12 +10,12 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 09/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: ab21fc91e74ac706c1ec606e1547014d7787a0ff
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 1d14084af48e7db66e2a58418a2d58c405f51862
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022917"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804363"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Azure 机器学习中的深度学习与机器学习
 
@@ -57,7 +57,7 @@ ms.locfileid: "98022917"
 |  **执行时间** | 花费几秒到几小时的相对较少时间进行训练。 | 通常需要很长的时间才能完成训练，因为深度学习算法涉及到许多层。 |
 |  **输出** | 输出通常是一个数值，例如评分或分类。 | 输出可以采用多种格式，例如文本、评分或声音。 |
 
-## <a name="transfer-learning"></a>迁移学习
+## <a name="what-is-transfer-learning"></a>什么是迁移学习
 
 训练深度学习模型通常需要大量的训练数据、高端计算资源（GPU、TPU）和较长的训练时间。 在你不具备上述任何条件的情况下，可以使用一种称为“迁移学习”的技术来缩短训练过程。
 
@@ -65,7 +65,7 @@ ms.locfileid: "98022917"
 
 由于神经网络结构的原因，第一组层通常包含较低层次的特征，而最后一组层则包含更接近所讨论领域的较高层次的特征。 通过重新调整最终层在新领域或问题中的用途，可以显著减少训练新模型所需的时间、数据和计算资源量。 例如，如果已有一个识别汽车的模型，则可使用迁移学习重新调整该模型的用途，使之也识别卡车、摩托车和其他类型的车辆。
 
-了解如何使用 Azure 机器学习中的开源框架将迁移学习应用于图像分类：[使用 Pytorch 模型将图像分类](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)。
+了解如何使用 Azure 机器学习中的开源框架将迁移学习应用于图像分类：[使用迁移学习训练深度学习 PyTorch 模型](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)
 
 ## <a name="deep-learning-use-cases"></a>深度学习用例
 

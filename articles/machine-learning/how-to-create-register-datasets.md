@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: nibaccam
 origin.date: 07/31/2020
 ms.date: 08/27/2020
-ms.openlocfilehash: ddb4a3e575ade1e1393d89e8ea7b2dba00c1fd60
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: f04b6cb465a5151551650d4aab9a2b2a2565cefb
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021825"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804282"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
 
@@ -175,6 +175,38 @@ titanic_ds.take(3).to_pandas_dataframe()
 2|3|True|3|Heikkinen, Miss. Laina|女|26.0|0|0|STON/O2. 3101282|7.9250||S
 
 若要在工作区的不同试验中重用和共享数据集，请[注册数据集](#register-datasets)。
+
+## <a name="explore-data"></a>浏览数据
+
+创建并[注册](#register-datasets)数据集之后，可以在模型训练之前将其加载到笔记本中以进行数据浏览。 如果不需要进行任何数据浏览，请参阅[使用数据集进行训练](how-to-train-with-datasets.md)，了解如何在训练脚本中使用数据集，以便提交 ML 试验。
+
+对于 FileDataset，可以装载或下载数据集，并应用通常用于数据浏览的 python 库。 [详细了解如何装载和下载](how-to-train-with-datasets.md#mount-vs-download)。
+
+```python
+# download the dataset 
+dataset.download(target_path='.', overwrite=False) 
+
+# mount dataset to the temp directory at `mounted_path`
+
+import tempfile
+mounted_path = tempfile.mkdtemp()
+mount_context = dataset.mount(mounted_path)
+
+mount_context.start()
+```
+
+对于 TabularDataset，请使用 [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) 方法来查看数据帧中的数据。 
+
+```python
+# preview the first 3 rows of titanic_ds
+titanic_ds.take(3).to_pandas_dataframe()
+```
+
+|（索引）|PassengerId|Survived|Pclass|名称|Sex|Age|SibSp|Parch|Ticket|Fare|Cabin|Embarked
+-|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
+0|1|False|3|Braund, Mr. Owen Harris|男|22.0|1|0|A/5 21171|7.2500||S
+1|2|True|1|Cumings, Mrs. John Bradley (Florence Briggs Th...|女|38.0|1|0|PC 17599|71.2833|C85|C
+2|3|True|3|Heikkinen, Miss. Laina|女|26.0|0|0|STON/O2. 3101282|7.9250||S
 
 ## <a name="create-a-dataset-from-pandas-dataframe"></a>从 pandas 数据帧创建数据集
 

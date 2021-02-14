@@ -4,16 +4,16 @@ description: 本文讨论有关 Azure Site Recovery 的常见问题。
 ms.topic: conceptual
 origin.date: 07/14/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: f3a38b80695b1d8d9a9350ff7856db2d1f0e7c5c
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: dbd96cb6964f5cb3a68d279a8918f7864705962d
+ms.sourcegitcommit: 7fc72b8afbdf9ad5e53922f489229e54282214b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023283"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540345"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>有关 Azure Site Recovery 的一般问题
 
@@ -342,6 +342,14 @@ Azure 具有复原能力。 Site Recovery 已能够根据 Azure SLA 故障转移
 
 * [对于 VMware 虚拟机](concepts-types-of-failback.md#alternate-location-recovery-alr)
 * [针对 Hyper-V 虚拟机](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
+
+### <a name="what-is-the-difference-between-complete-migration-commit-and-disable-replication"></a>完成迁移、提交和禁用复制之间有何区别？
+
+在从源位置将计算机故障转移到目标位置后，会有三个选项可供选择。 这三个选项的作用各不相同：
+
+1. “完成迁移”意味着你将不会再返回到源位置。 你已经迁移到目标区域，现在已经完成操作了。 单击“完成迁移”，会在内部触发“提交”，然后会触发“禁用复制”。 
+2. “提交”意味着这并不是复制过程的结束。 复制项和所有配置将会保留，并且你可以在以后某个时间点击“重新保护”，以便让计算机复制能够返回到源区域。 
+3. “禁用复制”会禁用复制并删除所有相关配置。 此选项不会影响目标区域中已经存在的计算机。
 
 ## <a name="automation"></a>自动化
 

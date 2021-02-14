@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 01/07/2021
+ms.date: 02/04/2021
 ms.author: v-junlch
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: a270d20e0410751e59d6fa6b342dd3cebf07a6ce
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: f73f9d816ce4e573e371e41c86d9a2d6666c5e84
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022076"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540699"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>将现有网络策略服务器 (NPS) 基础结构与 Azure AD 多重身份验证集成
 
@@ -116,6 +116,8 @@ NPS 服务器必须能够通过端口 80 和 443 与以下 URL 通信：
 * https:\//login.partner.microsoftonline.cn
 * https:\//provisioningapi.partner.microsoftonline.cn
 * https:\//aadcdn.msauth.net
+* https:\//www.powershellgallery.com
+* https:\//aadcdn.msftauthimages.net
 
 ## <a name="prepare-your-environment"></a>准备环境
 
@@ -396,4 +398,3 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 - 在[适用于多重身份验证 NPS 扩展的高级配置选项](howto-mfa-nps-extension-advanced.md)中配置登录名的备用 ID 或设置不应执行双重验证的 IP 的异常列表
 
 - [解决 Azure AD 多重身份验证的 NPS 扩展出现的错误消息](howto-mfa-nps-extension-errors.md)
-

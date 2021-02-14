@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 10/21/2020
-ms.date: 11/09/2020
-ms.openlocfilehash: ca8461eb3e24a75b99b2724f73073fff6c8c52e6
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.date: 02/08/2021
+ms.openlocfilehash: 2fded04f9d36e949e8d7e66754f7862a30c134e6
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329170"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503947"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的计划内维护通知
 
@@ -26,7 +26,7 @@ Azure Database for PostgreSQL 服务执行基础硬件、OS 和数据库引擎�
 
 ## <a name="planned-maintenance---duration-and-customer-impact"></a>计划内维护 - 持续时间和客户影响
 
-给定 Azure 区域的计划内维护通常会运行 15 小时。 此时段包括必要时执行回滚计划的缓冲时间。 在计划内维护期间，可能会发生数据库服务器重启或故障转移，这可能会导致最终用户的数据库服务器暂时不可用。 Azure Database for PostgreSQL 服务器在容器中运行，因此数据库服务器重启通常很快，预计一般会在 60-120 秒内完成。 工程团队会认真监视包括每个服务器重启在内的整个计划内维护事件。 服务器故障转移时间取决于数据库恢复时间，如果在故障转移时服务器上有大量的事务活动，这可能会导致数据库需要更长的时间才能联机。 若要避免重启时间延长，建议在计划内维护事件期间避免任何长时间运行的事务（大容量加载）。
+给定 Azure 区域的计划内维护通常应在 15 小时内完成。 此时间范围还包括在必要时执行回退计划的缓冲时间。 Azure Database for PostgreSQL 服务器在容器中运行，因此数据库服务器重启通常需要 60-120 秒才能完成，但你的服务器在此 15 小时的范围内何时会受到影响是无法确定的。 工程团队会认真监视包括每个服务器重启在内的整个计划内维护事件。 服务器故障转移时间取决于数据库恢复时间，如果在故障转移时服务器上有大量的事务活动，这可能会导致数据库需要更长的时间才能联机。 若要避免重启时间延长，建议在计划内维护事件期间避免任何长时间运行的事务（大容量加载）。
 
 总之，虽然计划内维护事件运行 15 小时，但单个服务器的影响通常只持续 60 秒，具体取决于服务器上的事务活动。 一个通知会在计划内维护开始前的 72 个日历小时内发送，另一个通知将在给定区域正在维护时发送。
 

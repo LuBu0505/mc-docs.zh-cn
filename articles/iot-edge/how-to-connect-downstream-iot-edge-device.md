@@ -4,8 +4,7 @@ description: 如何将 IoT Edge 设备配置为连接到 Azure IoT Edge 网关�
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-origin.date: 11/10/2020
-ms.date: 01/05/2021
+ms.date: 02/02/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
@@ -13,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 954b8a2efa393ba18788e7050f304f963f62f298
-ms.sourcegitcommit: 40db5a4b9ab8b5877e307ff7a567fd930ca81c72
+ms.openlocfilehash: 1920a5fd548edbf5bf2f694ad022c26b0a7bf846
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894320"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579627"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>将下游 IoT Edge 设备连接到 Azure IoT Edge 网关（预览版）
 
@@ -46,7 +45,6 @@ ms.locfileid: "97894320"
 * 至少两个 IoT Edge 设备，一个要作为顶层设备，另外一个或多个要作为下层设备。 如果没有可用的 IoT Edge 设备，则可[在 Ubuntu 虚拟机上运行 Azure IoT Edge](how-to-install-iot-edge-ubuntuvm.md)。
 * 如果使用 Azure CLI 来创建和管理设备，则必须安装了带有 Azure IoT 扩展 v0.10.6 或更高版本的 Azure CLI v2.3.1。
 
-本文提供详细的步骤和选项，以便帮助你创建适用于你的方案的网关层次结构。 如需引导式教程，请参阅[使用网关创建 IoT Edge 设备的层次结构](tutorial-nested-iot-edge.md)。
 
 ## <a name="create-a-gateway-hierarchy"></a>创建网关层次结构
 
@@ -119,7 +117,7 @@ Azure CLI 的 [azure-iot](https://docs.microsoft.com/cli/azure/ext/azure-iot) �
 
 若要启用安全连接，需要为网关方案中的每个 IoT Edge 设备配置独一无二的设备 CA 证书以及由网关层次结构中的所有设备共享的根 CA 证书的副本。
 
-你应该已在设备上安装了 IoT Edge。 否则，请执行相关步骤来[安装 Azure IoT Edge 运行时](how-to-install-iot-edge.md)，然后为设备预配[对称密钥身份验证](how-to-manual-provision-symmetric-key.md)或 [X.509 证书身份验证](how-to-manual-provision-x509.md)。
+你应该已在设备上安装了 IoT Edge。 如果没有，请按照以下步骤[在 IoT 中心内注册 IoT Edge 设备](how-to-register-device.md)，然后[安装 Azure IoT Edge 运行时](how-to-install-iot-edge.md)。
 
 本部分的步骤引用了本文前面讨论的根 CA 证书与设备 CA 证书和私钥。 如果已在其他设备上创建了这些证书，请让这些证书在此设备上可用。 可通过物理方式（例如使用 U 盘）传输这些文件，还可以通过服务（例如 [Azure Key Vault](../key-vault/general/overview.md)）或功能（例如[安全文件复制](https://www.ssh.com/ssh/scp/)）这样做。
 

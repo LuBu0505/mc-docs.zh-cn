@@ -5,17 +5,17 @@ ms.service: site-recovery
 ms.topic: conceptual
 origin.date: 10/26/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 11/09/2020
 ms.author: v-yeche
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e75833f2a1a4f0f37c023e1e6a7a6abb271a6a50
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 8e65ac970cf6cde8b84d0140fec966cd35d2ce1a
+ms.sourcegitcommit: 7fc72b8afbdf9ad5e53922f489229e54282214b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060175"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540349"
 ---
 <!--Verified Successfullt-->
 # <a name="azure-security-baseline-for-site-recovery"></a>Site Recovery 的 Azure 安全基线
@@ -267,7 +267,7 @@ ms.locfileid: "99060175"
 
 创建一个流程来定期评审用户访问权限，以确保只有经历过完整访问评审的用户才能继续访问。 
 
-- [了解 Azure AD 报告](/active-directory/reports-monitoring/)
+- [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
 
 - [如何使用 Azure 标识访问评审](../active-directory/governance/access-reviews-overview.md)
 
@@ -476,7 +476,7 @@ Site Recovery 支持数据的静态加密。 对于 Azure IaaS 工作负荷，�
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Policy 拒绝特定的资源类型](https://docs.azure.cn/governance/policy/samples)
+- [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/index.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -484,7 +484,7 @@ Site Recovery 支持数据的静态加密。 对于 Azure IaaS 工作负荷，�
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11：限制用户与 Azure 资源管理器进行交互的能力
 
-**指导**：通过为“Azure 管理”应用配置“阻止访问”，使用 Azure 条件访问来限制用户与 Azure 资源管理器交互的功能。 这可防止在高度安全的环境中创建和更改资源。
+**指导**：通过为“世纪互联 Azure 管理”应用配置“阻止访问”，使用 Azure 条件访问来限制用户与 Azure 资源管理器交互的能力。 这可防止在高度安全的环境中创建和更改资源。
 
 - [如何配置条件访问以阻止访问 Azure 资源管理器](../role-based-access-control/conditional-access-azure-management.md)
 
@@ -579,7 +579,7 @@ Site Recovery 支持数据的静态加密。 对于 Azure IaaS 工作负荷，�
 
 使用托管标识可以向支持 Azure AD 身份验证的任何服务（包括 Key Vault）进行身份验证，无需在代码中放入任何凭据。
 
-- [如何与 Azure 托管标识集成](https://docs.azure.cn/azure-app-configuration/howto-integrate-azure-managed-service-identity?tabs=core2x)
+- [如何与 Azure 托管标识集成](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md?tabs=core2x)
 
 - [如何在恢复服务保管库上启用系统托管标识](azure-to-azure-how-to-enable-replication-private-endpoints.md#enable-the-managed-identity-for-the-vault)
 
@@ -749,7 +749,7 @@ Site Recovery 服务元数据使用的所有存储资源，其配置的类型为
 
 ## <a name="next-steps"></a>后续步骤
 
-- 参阅 [Azure 安全基准 V2 概述](https://docs.azure.cn/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](https://docs.azure.cn/security/benchmarks/security-baselines-overview)
+- 参阅 [Azure 安全基准 V2 概述](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

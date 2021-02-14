@@ -5,16 +5,16 @@ ms.service: site-recovery
 ms.topic: article
 origin.date: 07/14/2020
 author: rockboyfor
-ms.date: 11/09/2020
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 09/14/2020
 ms.author: v-yeche
-ms.openlocfilehash: 217e9ac5604cb0e36e2e062f109008466b8c764e
-ms.sourcegitcommit: b9d0091aebc506af49b7cfcd44593711df0d04a5
+ms.openlocfilehash: ac55a3f5ffef71e9d2552b48451c6b620991a9a8
+ms.sourcegitcommit: 7fc72b8afbdf9ad5e53922f489229e54282214b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94373971"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540357"
 ---
 <!--Verified successfully on Mooncake-->
 # <a name="replicate-on-premises-machines-by-using-private-endpoints"></a>使用专用终结点复制本地计算机
@@ -136,6 +136,11 @@ Azure Site Recovery 支持使用 Azure 专用链接专用终结点将本地计�
 ### <a name="optional-create-private-endpoints-for-the-cache-storage-account"></a>（可选）为缓存存储帐户创建专用终结点
 
 可以使用 Azure 存储的专用终结点。 对于 Azure Site Recovery 复制，为存储访问创建专用终结点是可选的。 如果为存储创建专用终结点，则需要为旁路虚拟网络中的缓存/日志存储帐户提供专用终结点。
+
+> [!NOTE]
+> 如果未在存储帐户上启用专用终结点，保护仍会成功。 但是，复制流量会通过 Internet 传输到 Azure Site Recovery 的公共终结点。
+
+<!--To ensure replication traffic flows via private links-->
 
 > [!NOTE]
 > 只能在常规用途 v2 存储帐户上为存储创建专用终结点。 有关定价信息，请参阅 [Azure 页 Blob 定价](https://www.azure.cn/pricing/details/storage/page-blobs/)。

@@ -7,22 +7,22 @@ author: WenJason
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-origin.date: 06/17/2020
-ms.date: 01/18/2021
+origin.date: 01/13/2021
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.custom: security-recommendations
-ms.openlocfilehash: d41e9903f4f714e570ea15ed951a679166a113e2
-ms.sourcegitcommit: a978c5f2c6b53494d67e7c3c5a44b2aa648219a2
+ms.openlocfilehash: 81ec924bcbc10ac89a22aea419f3246fcf76cb06
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629062"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503934"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>适用于 Blob 存储的安全建议
 
-本文包含适用于 Blob 存储的安全建议。 实施执行建议将有助于你履行我们的共享职责模型中描述的安全职责。 若要详细了解 Microsoft 采取哪些措施来履行服务提供商责任，请阅读[云计算的责任分担](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225366/1/Shared%20Responsibility%20for%20Cloud%20Computing-2019-10-25.pdf)。
+本文包含适用于 Blob 存储的安全建议。 实施执行建议将有助于你履行我们的共享职责模型中描述的安全职责。 若要详细了解 Microsoft 如何履行服务提供商责任，请阅读[云计算的责任分担](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225366/1/Shared%20Responsibility%20for%20Cloud%20Computing-2019-10-25.pdf)。
 
-包含在本文中的某些建议可能受 Azure 安全中心的自动监视。 在保护你在 Azure 中的资源方面，Azure 安全中心是第一道防线。 有关 Azure 安全中心的信息，请参阅[什么是 Azure 安全中心？](../../security-center/security-center-introduction.md)。
+包含在本文中的某些建议可能受 Azure 安全中心的自动监视。 在保护你在 Azure 中的资源方面，Azure 安全中心是第一道防线。 有关 Azure 安全中心的信息，请参阅[什么是 Azure 安全中心？](../../security-center/security-center-introduction.md)
 
 Azure 安全中心会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后向你提供有关如何解决这些安全漏洞的建议。 有关 Azure 安全中心建议的详细信息，请参阅 [Azure 安全中心的安全性建议](../../security-center/security-center-recommendations.md)。
 
@@ -31,9 +31,10 @@ Azure 安全中心会定期分析 Azure 资源的安全状态，以识别潜在�
 | 建议 | 注释 | 安全中心 |
 |-|----|--|
 | 使用 Azure 资源管理器部署模型 | 使用 Azure 资源管理器部署模型创建新的存储帐户，以用于重要的安全增强功能，包括高级的 Azure 基于角色的访问控制 (Azure RBAC) 和审核、基于资源管理器的部署和治理、托管标识访问权限、用于存储机密的 Azure Key Vault 访问权限、用于访问 Azure 存储数据和资源的基于 Azure AD 的身份验证和授权。 如果可能，请迁移使用经典部署模型的现有存储帐户以使用 Azure 资源管理器。 有关 Azure 资源管理器的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)。 | - |
-| 启用适用于 Blob 数据的软删除 | 软删除允许在删除 Blob 数据后将其恢复。 有关软删除的详细信息，请参阅[Azure 存储 Blob 的软删除](./soft-delete-blob-overview.md)。 | - |
-| 锁定存储帐户以防止意外删除 | 可以锁定订阅、资源组或资源，以防止组织中的其他用户对其进行意外删除或修改。 有关详细信息，请参阅[锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。
+| 为 Blob 启用软删除 | Blob 的软删除允许在删除 Blob 数据后将其恢复。 若要详细了解 Blob 的软删除，请参阅 [Azure 存储 Blob 的软删除](./soft-delete-blob-overview.md)。 | - |
+| 锁定存储帐户以防止意外删除帐户 | 可以锁定 Azure 资源管理器资源（如订阅、资源组或存储帐户），以防止组织中的其他用户意外删除或修改该资源。 锁定存储帐户并不会阻止删除该帐户中的数据。 此操作只阻止删除帐户本身。 有关详细信息，请参阅[锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。
 | 在不可变 Blob 中存储业务关键数据 | 配置法定保留和基于时间的保留策略，以 WORM（一次写入，多次读取）状态存储 Blob 数据。 在保留时间间隔期间内，可以读取即时存储的 Blob，但不能对其进行修改或删除。 有关详细信息，请参阅[使用不可变的存储来存储业务关键型 Blob 数据](storage-blob-immutable-storage.md)。 | - |
+| 需要安全传输 (HTTPS) 到存储帐户 | 在需要针对存储帐户进行安全传输时，必须通过 HTTPS 向存储帐户发出所有请求。 任何通过 HTTP 发出的请求都会被拒绝。 Microsoft 建议始终对所有存储帐户都要求采用安全传输。 有关详细信息，请参阅[要求采用安全传输以确保安全连接](../common/storage-require-secure-transfer.md)。 | - |
 | 将共享访问签名 (SAS) 令牌限制为仅用于 HTTPS 连接 | 当客户端使用 SAS 令牌访问 Blob 数据时要求使用 HTTPS 有助于最大程度地降低被窃听的风险。 有关详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md)。 | - |
 
 ## <a name="identity-and-access-management"></a>标识和访问管理

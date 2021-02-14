@@ -1,19 +1,19 @@
 ---
 title: Azure SignalR 服务客户端身份验证指南
 description: 按照 e2e 示例，了解如何实现自己的身份验证和将其与 Azure SignalR 服务集成。
-author: sffamily
+author: WenJason
 ms.service: signalr
 ms.topic: conceptual
 origin.date: 11/13/2019
-ms.date: 12/30/2020
-ms.author: v-tawe
+ms.date: 02/08/2021
+ms.author: v-jay
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: a257b876b58368dedeffbfa2c3b06246dac12eeb
-ms.sourcegitcommit: eb742dcade404c9909d01e2570188f0bc4076992
+ms.openlocfilehash: efae8eb953e01eb3cec755588f4eba606b55ee95
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97820328"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99504011"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR 服务身份验证
 
@@ -46,10 +46,10 @@ ms.locfileid: "97820328"
 
 若要完成本教程，必须满意以下先决条件：
 
-* 在 [GitHub](https://github.com/) 上创建的帐户
-* [Git](https://git-scm.com/)
-* [.NET Core SDK](https://www.microsoft.com/net/download/windows)
-* 下载或克隆 [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) GitHub 存储库。
+- 在 [GitHub](https://github.com/) 上创建的帐户
+- [Git](https://git-scm.com/)
+- [.NET Core SDK](https://www.microsoft.com/net/download/windows)
+- 下载或克隆 [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) GitHub 存储库。
 
 ## <a name="create-an-oauth-app"></a>创建 OAuth 应用
 
@@ -386,13 +386,11 @@ ms.locfileid: "97820328"
 
 ## <a name="deploy-the-app-to-azure"></a>将应用部署到 Azure
 
-在本部分中，将使用 Azure CLI 的 Azure 命令行接口 (CLI) 在 [Azure 应用服务](../app-service/index.yml)中创建新的 Web 应用，以便在 Azure 中托管 ASP.NET 应用程序。 Web 应用将配置为使用本地 Git 部署。 还将使用 SignalR 连接字符串、GitHub OAuth 应用密码和部署用户配置 Web 应用。
+为 Azure CLI 准备环境：
 
-本部分中的步骤使用 Azure CLI 的 signalr 扩展。 执行以下命令，安装 Azure CLI 的 signalr 扩展：
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-```azurecli
-az extension add -n signalr
-```
+在本部分中，将使用 Azure 命令行接口 (CLI) 在 [Azure 应用服务](../app-service/index.yml)中创建新的 Web 应用，以便在 Azure 中托管 ASP.NET 应用程序。 Web 应用将配置为使用本地 Git 部署。 还将使用 SignalR 连接字符串、GitHub OAuth 应用密码和部署用户配置 Web 应用。
 
 创建以下资源时，请确保使用的资源组与 SignalR 服务资源驻留的资源组相同。 通过此方法，稍后若要删除所有资源，可更轻松地进行清理。 给定示例假定使用之前教程中建议的组名称 SignalRTestResources。
 
@@ -539,7 +537,7 @@ az webapp deployment source config-local-git --name $WebAppName \
 4. 将代码部署到 Azure 中的 Web 应用。
 
     ```bash
-    git push Azure master
+    git push Azure main
     ```
 
     系统将提示进行身份验证以便将代码部署到 Azure。 输入上面创建的部署用户的用户名和密码。

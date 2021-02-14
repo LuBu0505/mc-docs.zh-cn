@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/03/2020
+ms.date: 02/02/2021
 ms.author: v-johya
 origin.date: 03/16/2020
-ms.openlocfilehash: dfcf1aaeb65124c54f53937b49668c3fcfc3f927
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: bd3d39cefff69f20461f266cf3a66302427885e7
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746903"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579583"
 ---
 # <a name="monitor-identity-and-access"></a>监视标识和访问
 
@@ -45,7 +45,7 @@ Azure 安全中心具有两个专用的安全控件，用于确保满足组织�
 - 应从订阅中删除弃用的帐户（弃用的帐户是不再需要且被 Azure Active Directory 阻止登录的帐户）
 
 > [!TIP]
-> 有关这些建议以及可能会在这些控件中看到其他建议的详细信息，请参阅[标识和访问建议](recommendations-reference.md#recs-identity)。
+> 有关这些建议以及可能会在这些控件中看到其他建议的详细信息，请参阅[标识和访问建议](recommendations-reference.md#recs-identityandaccess)。
 
 ### <a name="limitations"></a>限制
 

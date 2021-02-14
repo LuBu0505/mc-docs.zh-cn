@@ -11,15 +11,15 @@ ms.subservice: core
 ms.topic: conceptual
 origin.date: 03/30/2020
 ms.date: 09/07/2020
-ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 96b9d0a50951a0d38e3208cabb8555aeb01128d2
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.custom: how-to, devx-track-python, contperf-fy21q1
+ms.openlocfilehash: 766fe4b6d5537d62e4b7f94ba5e0301992d898ca
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977449"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804370"
 ---
-# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>使用 Azure 机器学习优化模型的超参数
+# <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>使用 Azure 机器学习对模型进行超参数优化
 
 
 使用 Azure 机器学习 [HyperDrive 程序包](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py)自动执行高效的超参数优化。 了解如何完成通过 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) 优化超参数所需的步骤：
@@ -32,11 +32,11 @@ ms.locfileid: "94977449"
 1. 将训练运行可视化
 1. 为模型选择最佳配置
 
-## <a name="what-are-hyperparameters"></a>什么是超参数？
+## <a name="what-is-hyperparameter-tuning"></a>什么是超参数优化？
 
 **超参数** 是可调整的参数，可用于控制模型训练过程。 例如，使用神经网络时，你决定隐藏层的数目以及每个层中的节点数。 模型性能很大程度上取决于超参数。
 
- **超参数优化** 是确定能够获得最佳性能的超参数配置的过程。 通常，该过程在计算方面成本高昂，并且是手动的。
+ “超参数优化”（也称为“hyperparameter optimization”）是找到用于获得最佳性能的超参数配置的过程。 通常，该过程在计算方面成本高昂，并且是手动的。
 
 Azure 机器学习使你能够自动执行超参数优化，并且并行运行试验以有效地优化超参数。
 
@@ -296,7 +296,7 @@ max_concurrent_runs=4
 
 此代码会将超参数优化试验配置为总共最多使用 20 个运行，每次运行四个配置。
 
-## <a name="configure-experiment"></a>配置试验
+## <a name="configure-hyperparameter-tuning-experiment"></a>配置超参数优化试验
 
 若要[配置超参数优化](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?preserve-view=true&view=azure-ml-py)试验，请提供以下信息：
 * 所定义的超参数搜索空间
@@ -323,7 +323,7 @@ hd_config = HyperDriveConfig(run_config=src,
                              max_concurrent_runs=4)
 ```
 
-## <a name="submit-experiment"></a>提交试验
+## <a name="submit-hyperparameter-tuning-experiment"></a>提交超参数优化试验
 
 定义超参数优化配置后，请[提交试验](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-)：
 
@@ -333,7 +333,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hd_config)
 ```
 
-## <a name="warm-start-your-hyperparameter-tuning-experiment-optional"></a>热启动超参数优化试验（可选）
+## <a name="warm-start-hyperparameter-tuning-optional"></a>热启动超参数优化（可选）
 
 确定模型的最佳超参数值可能是一个迭代过程。 你可以重复使用从前五个运行中获得的知识来加速超参数优化。
 
@@ -380,7 +380,7 @@ hd_config = HyperDriveConfig(run_config=src,
                              max_concurrent_runs=4)
 ```
 
-## <a name="visualize-experiment"></a>将实验可视化
+## <a name="visualize-hyperparameter-tuning-runs"></a>可视化超参数优化运行
 
 使用 [Notebook 小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets.rundetails?preserve-view=true&view=azure-ml-py)来可视化你的训练运行的进度。 以下代码片段可在 Jupyter 笔记本中的一个位置可视化所有的超参数优化运行：
 

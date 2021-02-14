@@ -4,15 +4,15 @@ description: Linux 虚拟机安全基线为实现 Azure 安全基准中指定的
 author: Johnnytechn
 ms.service: virtual-machines-linux
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 02/01/2021
 ms.author: v-johya
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 301a343fda90625c6d548e121b5fdfd72f025ffb
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: 32feeab492c5578e7b0e3bc9e2b40cfe7c7ed76f
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751340"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579392"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>适用于 Linux 虚拟机的 Azure 安全基线
 
@@ -326,6 +326,8 @@ ms.locfileid: "98751340"
 
 **指导**：虽然建议使用 Azure Active Directory 管理用户访问，但 Azure 虚拟机可能具有本地帐户。 通常应以最少使用量原则来查看和管理本地帐户及域帐户。 此外，对用于访问虚拟机资源的管理帐户使用 Azure Privileged Identity Management。
 
+* [如何在已加入 Azure AD 的设备上管理本地管理员组](../../active-directory/devices/assign-local-admin.md#manage-the-device-administrator-role)
+
 * [有关 Privileged Identity Manager 的信息](../../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
 **Azure 安全中心监视**：是
@@ -378,7 +380,7 @@ Azure 安全中心监视：不可用
 
 **指南**：将 PAW（特权访问工作站）与为登录和配置 Azure 资源而配置的 MFA 结合使用。
 
-* [了解特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [了解特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [如何在 Azure 中启用 MFA](../../active-directory/authentication/howto-mfa-getstarted.md)
 

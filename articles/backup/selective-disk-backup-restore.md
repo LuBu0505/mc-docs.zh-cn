@@ -3,15 +3,15 @@ title: 适用于 Azure 虚拟机的选择性磁盘备份和还原
 description: 本文介绍如何使用 Azure 虚拟机备份解决方案进行选择性磁盘备份和还原。
 ms.topic: conceptual
 author: Johnnytechn
-ms.date: 11/17/2020
+ms.date: 02/02/2021
 ms.custom: references_regions , devx-track-azurecli
 ms.author: v-johya
-ms.openlocfilehash: c04e54d823d7352312edad3fda51a61c858ee500
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: f42d43a2bb9775bc0385877747bda015284ebd9b
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977601"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579575"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>适用于 Azure 虚拟机的选择性磁盘备份和还原
 
@@ -191,14 +191,25 @@ az backup item show -c {vmname} -n {vmname} --vault-name {vaultname} --resource-
 
 确保使用 Azure PowerShell 3.7.0 或更高版本。
 
+在配置保护操作期间，需要使用 inclusion/exclusion 参数指定磁盘列表设置，以提供要在备份中包含或排除的磁盘的 LUN 编号。
+
 ### <a name="enable-backup-with-powershell"></a>使用 PowerShell 启用备份
 
+例如：
+
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -InclusionDisksList[Strings] -VaultId $targetVault.ID
+$disks = ("0","1")
+$targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "rg-p-recovery_vaults" -Name "rsv-p-servers"
+Get-AzRecoveryServicesBackupProtectionPolicy
+$pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "P-Servers"
 ```
 
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -ExclusionDisksList[Strings] -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -InclusionDisksList $disks -VaultId $targetVault.ID
+```
+
+```azurepowershell
+Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -ExclusionDisksList $disks -VaultId $targetVault.ID
 ```
 
 ### <a name="backup-only-os-disk-during-configure-backup-with-powershell"></a>在配置备份期间使用 PowerShell 仅备份 OS 磁盘

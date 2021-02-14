@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/20/2021
+ms.date: 02/02/2021
 ms.author: v-johya
 origin.date: 03/01/2020
-ms.openlocfilehash: 385b900195d025f8e246d733a694346560e32062
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: fe4f6e624b8c5a61deaa6148a3c40e0bd4c86e23
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751277"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579563"
 ---
 # <a name="feature-coverage-for-machines"></a>适用于计算机的功能覆盖范围
 
@@ -87,10 +87,10 @@ ms.locfileid: "98751277"
 | Trend Micro - Deep Security | Windows Server 系列  | 否 | 是 |
 | Symantec v12.1.1100+| Windows Server 系列  | 否 | 是 |
 | McAfee v10+ | Windows Server 系列  | 否 | 是 |
-| McAfee v10+ | Linux 服务器系列  | 否 | 是 * *\** _ |
-| Sophos V9+| Linux 服务器系列  | 否 | 是 _*\**_  |
+| McAfee v10+ | Linux 服务器系列  | 否 | 是 **\*** |
+| Sophos V9+| Linux 服务器系列  | 否 | 是  **\***  |
 
- _*\**_ 覆盖率状态和支持数据目前仅在与受保护订阅关联的 Log Analytics 工作区中可用。 这些数据不会在 Azure 安全中心门户中反映。
+ **\*** 覆盖状态和支持数据目前仅在与受保护订阅关联的 Log Analytics 工作区中提供。 这些数据不会在 Azure 安全中心门户中反映。
 
 > [!NOTE]
 > 在 Windows Server 2008 R2 虚拟机上检测 System Center Endpoint Protection (SCEP) 需要在 PowerShell（v3.0 或更高版本）之后安装 SCEP。
@@ -121,13 +121,13 @@ ms.locfileid: "98751277"
 |适用于存储的 Azure Defender|-|
 |[Azure Defender for SQL](defender-for-sql-introduction.md)|✔ (2)|
 |适用于 Key Vault 的 Azure Defender|-|
-|适用于资源管理器的 Azure Defender|-|
-|适用于 DNS 的 Azure Defender|-|
 |[适用于 Kubernetes 的 Azure Defender](defender-for-kubernetes-introduction.md)|✔|
 |适用于容器注册表的 Azure Defender|-|
+|[适用于 Kubernetes 的 Azure Defender](defender-for-kubernetes-introduction.md)|✔|
+|[适用于容器注册表的 Azure Defender](defender-for-container-registries-introduction.md)|✔ (2)|
 |||
 
-(1) 需要用于服务器的 Azure Defender*
+(1) 需要用于服务器的 Azure Defender
 
 (2) 部分完成
 

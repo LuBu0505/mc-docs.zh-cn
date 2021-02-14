@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 01/13/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: da921734826ae8a4259e76ec15ca45e69759b15a
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 60f977d38a206134bbc5496117ea8d7f3740e8a9
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195162"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540681"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>将 JavaScript 单页应用从隐式授权迁移到授权代码流
 
-适用于 JavaScript (MSAL.js) v2.0 的 Microsoft 身份验证库为 Microsoft 标识平台上的单页面应用程序提供了对具有 PKCE 和 CORS 的授权代码流的支持。 按照以下部分中的步骤，将使用隐式授权的 MSAL.js 1.x 迁移到 MSAL.js 2.0+（以下称为 2.x）和授权代码流。
+适用于 JavaScript (MSAL.js) v2.0 的 Microsoft 身份验证库为 Microsoft 标识平台上的单页应用程序提供了对具有 PKCE 和 CORS 的授权代码流的支持。 按照以下部分中的步骤，将使用隐式授权的 MSAL.js 1.x 迁移到 MSAL.js 2.0+（以下称为 2.x）和授权代码流。
 
 MSAL.js 2.x 支持浏览器中的授权代码流（而不是隐式授权流），从而在 MSAL.js 1.x 的基础上进行了改进。 MSAL.js 2.x 不支持隐式流。
 
@@ -58,7 +58,7 @@ MSAL.js 2.x 支持浏览器中的授权代码流（而不是隐式授权流）�
 
 ## <a name="update-your-code-to-msaljs-2x"></a>将代码更新为 MSAL.js 2.x
 
-在 MSAL 1.x 中，你通过初始化 [UserAgentApplication][msal-js-useragentapplication] 创建了一个应用程序实例，如下所示：
+在 MSAL 1.x 中，你通过初始化 UserAgentApplication 创建了一个应用程序实例，如下所示：
 
 ```javascript
 // MSAL 1.x
@@ -67,7 +67,7 @@ import * as msal from "msal";
 const msalInstance = new msal.UserAgentApplication(config);
 ```
 
-在 MSAL 2.x 中，请改为初始化 [PublicClientApplication][msal-js-publicclientapplication]：
+在 MSAL 2.x 中，请改为初始化 PublicClientApplication：
 
 ```javascript
 // MSAL 2.x
@@ -84,7 +84,7 @@ const msalInstance = new msal.PublicClientApplication(config);
 
 在应用注册中取消选中隐式授权设置后，将对使用注册及其客户端 ID 的所有应用程序禁用隐式流。
 
-在将所有应用程序更新为 MSAL.js 2.x 和 [PublicClientApplication][msal-js-publicclientapplication] 之前，请勿禁用隐式授权流。
+在将所有应用程序更新为 MSAL.js 2.x 和 PublicClientApplication 之前，请勿禁用隐式授权流。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -93,6 +93,3 @@ const msalInstance = new msal.PublicClientApplication(config);
 如果你想要更深入了解 Microsoft 标识平台上的 JavaScript 单页应用程序开发，由多部分组成的[方案：单页应用程序](scenario-spa-overview.md)系列文章可以帮助你入门。
 
 <!-- LINKS - external -->
-[msal-js-useragentapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/modules/_useragentapplication_.html
-[msal-js-publicclientapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-browser/classes/_src_app_publicclientapplication_.publicclientapplication.html
-

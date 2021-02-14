@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/03/2020
+ms.date: 02/03/2021
 ms.author: v-johya
 origin.date: 11/21/2017
-ms.openlocfilehash: b9881c52b4f9cabe957cf3547a04626355b4370a
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 3aea9453f67654cfafe09e98f834f820624b17af
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747098"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579574"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure 高级威胁检测
 
@@ -136,21 +136,25 @@ Azure 自动化通过基于 PowerShell 并在云中运行的 Runbook 自动执�
 
 ## <a name="azure-security-center"></a>Azure 安全中心
 
-Azure 安全中心可帮助保护 Azure 资源。 它为 Azure 订阅提供集成的安全监控和策略管理。 在服务中，可以同时针对 Azure 订阅和[资源组](../../azure-resource-manager/management/manage-resources-portal.md)定义策略，以提供更大粒度。
+Azure 安全中心有助于保护混合云环境。 通过对连接的资源执行持续的安全评估，可以针对发现的漏洞提供详细的安全建议。
 
-![Azure 安全中心示意图](./media/threat-detection/azure-threat-detection-fig8.png)
+安全中心的建议是基于 [Azure 安全基准](../benchmarks/introduction.md)提出的，该基准是 Microsoft 创作的一组特定于 Azure 的准则，针对基于常见合规性框架的安全与合规最佳做法。 此基准受到广泛认可，以 [Internet 安全中心 (CIS)](https://www.cisecurity.org/benchmark/azure/) 和[国家标准与技术研究院 (NIST)](https://www.nist.gov/) 的控制措施为基础构建，重点关注以云为中心的安全。
+
+Azure Defender 是安全中心集成的云工作负载保护平台 (CWPP)，可为 Azure 和混合资源及工作负载提供高级智能保护。 启用 Azure Defender 可获得一系列其他安全功能（请参阅 [Azure Defender 简介](../../security-center/azure-defender.md)）。 可在你的环境中使用安全中心的 Azure Defender 仪表板显示和控制 CWP 功能：
+
+:::image type="content" source="../../security-center/media/azure-defender/sample-defender-dashboard.png" alt-text="Azure Defender 仪表板示例" lightbox="../../security-center/media/azure-defender/sample-defender-dashboard.png":::
 
 Microsoft 安全研究人员始终在不断地寻找威胁。 得益于 Microsoft 在云中和本地的广泛存在，他们可以访问大量的遥测数据。 由于能够广泛访问和收集各种数据集，Microsoft 可以通过本地消费者产品和企业产品以及联机服务发现新的攻击模式和趋势。
 
 因此，攻击者发布新的越来越复杂的方式时，安全中心就可以快速更新其检测算法。 此方法可帮助你始终与变化莫测的威胁环境保持同步。
 
-![安全中心威胁检测](./media/threat-detection/azure-threat-detection-fig9.jpg)
+:::image type="content" source="../../security-center/media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Azure 安全中心的安全警报列表":::
 
-安全中心可以自动从 Azure 资源、网络以及连接的合作伙伴解决方案收集安全信息，对威胁进行检测。 分析该信息（需将多个来源的信息关联起来）即可确定威胁。
+Azure Defender 自动从你的资源、网络和连接的合作伙伴解决方案中收集安全信息。 分析该信息（需将多个来源的信息关联起来）即可确定威胁。
 
-安全中心会对安全警报进行重要性分类，并提供威胁处置建议。
+安全中心会对 Azure Defender 警报进行重要性分类，并提供威胁处置建议。
 
-安全中心使用各种高级安全分析，远不止几种基于攻击特征的方法。 使用大数据的突破性技术和[机器学习](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/)技术对整个云结构中的事件进行评估。 高级分析可检测那些通过手动方式不可能发现的威胁，并预测攻击的演变方式。 接下来的部分会介绍这些安全分析类型。
+安全中心使用各种高级安全分析，远不止几种基于攻击特征的方法。 使用大数据的突破性技术和[机器学习](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/)技术对整个云中的事件进行评估。 高级分析可以检测到那些通过手动方式不可能发现的威胁，并预测攻击的演变方式。 接下来的部分会介绍这些安全分析类型。
 
 ### <a name="threat-intelligence"></a>威胁情报
 

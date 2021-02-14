@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/23/2020
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 2aed9ad66d9fae797df226eafcc83a1f76bb85ef
-ms.sourcegitcommit: 883daddafe881e5f8a9f347df2880064d2375b6d
+ms.openlocfilehash: 4b8a309e9e04ffc27691b4af687dbae9df31b4fc
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95918394"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540830"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>获取调用 Web API 的移动应用的令牌
 
@@ -255,7 +255,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 
 ##### <a name="other-optional-parameters"></a>其他可选参数
 
-若要了解 `AcquireTokenInteractive` 的其他可选参数，请参阅 [AcquireTokenInteractiveParameterBuilder 的参考文档](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods)。
+若要了解 `AcquireTokenInteractive` 的其他可选参数，请参阅 [AcquireTokenInteractiveParameterBuilder 的参考文档](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder#methods)。
 
 ### <a name="acquire-tokens-via-the-protocol"></a>通过协议获取令牌
 
@@ -295,4 +295,3 @@ client_id=<CLIENT_ID>
 ## <a name="next-steps"></a>后续步骤
 
 转到此方案中的下一篇文章：[调用 Web API](scenario-mobile-call-api.md)。
-

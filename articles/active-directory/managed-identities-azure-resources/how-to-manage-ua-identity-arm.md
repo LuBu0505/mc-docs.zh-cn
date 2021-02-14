@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/08/2021
+ms.date: 02/04/2021
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f543379d9fb70ddf746e517c129eac1e8a8e3be5
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 6201e7f78999762b1122521320ec7c787b826a4d
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021745"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540853"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>使用 Azure 资源管理器创建、列出和删除用户分配的托管标识
 
@@ -86,6 +86,5 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 ## <a name="next-steps"></a>后续步骤
 
 有关如何使用 Azure 资源管理器模板向 Azure VM 分配用户分配的托管标识的信息，请参阅[使用模板在 Azure VM 上配置 Azure 资源的托管标识](qs-configure-template-windows-vm.md)。
-
 
 

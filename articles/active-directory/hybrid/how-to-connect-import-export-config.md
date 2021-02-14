@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/14/2020
+ms.date: 02/04/2021
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91a63314d302c1ae1a2e2138dad352f70ff8c896
-ms.sourcegitcommit: 7646936d018c4392e1c138d7e541681c4dfd9041
+ms.openlocfilehash: 15234558665d07381d20a8e6b1c44b99c4fb1191
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648039"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540865"
 ---
-# <a name="import-and-export-azure-ad-connect-configuration-settings-public-preview"></a>导入和导出 Azure AD Connect 配置设置（公共预览版）
+# <a name="import-and-export-azure-ad-connect-configuration-settings"></a>导入和导出 Azure AD Connect 配置设置 
 
 Azure Active Directory (Azure AD) Connect 部署有多种变化，从单个林快捷模式安装到通过使用自定义同步规则跨多个林进行同步的复杂部署。 由于配置选项和机制数量巨大，因此了解哪些设置有效，且能够快速部署具有相同配置的服务器非常重要。 此功能引入了对给定同步服务器的配置进行分类并将设置导入到新部署中的功能。 可以比较不同的同步设置快照，以便轻松地直观显示两个服务器间的差异，或一段时间内同一服务器的差异。
 
@@ -91,10 +91,11 @@ Azure Active Directory (Azure AD) Connect 部署有多种变化，从单个林�
 
 将原始导入的设置文件与新部署的服务器的导出的设置文件进行比较，是了解预期部署与所得部署之间任何差异的必要步骤。 使用你喜欢的并排文本比较应用程序会产出可快速突出显示任何所需或意外的更改的即时可视化效果。
 
-尽管现在已经取消了许多先前的手动配置步骤，但你仍应遵循组织的认证过程，以确保无需进行其他配置。 如果你使用高级设置（其当前在公共预览版本的设置管理中尚未被捕获），则可能会发生此配置。
+尽管现在已经取消了许多先前的手动配置步骤，但你仍应遵循组织的认证过程，以确保无需进行其他配置。 如果你使用高级设置（当前在此版本的设置管理中尚未捕获），则可能会发生此配置。
 
 以下是已知限制：
 - **同步规则**：自定义规则的优先顺序必须在 0 到 99 的保留范围内，以避免与 Microsoft 的标准规则发生冲突。 将自定义规则置于保留范围之外可能会导致自定义规则发生偏移，因为标准规则被添加到了配置。 如果配置包含修改后的标准规则，则会出现类似问题。 不鼓励修改标准规则，且规则放置可能不正确。
+- **设备写回**：这些设置将进行编录。 目前在配置过程中未应用这些设置。 如果为原始服务器启用了设备写回，则必须在新部署的服务器上手动配置该功能。
 - **同步的对象类型**：尽管可以使用 Synchronization Service Manager 约束同步对象类型（如用户、联系人和组）的列表，但当前不支持通过同步设置来实现此功能。 完成安装后，必须手动重新应用高级配置。
 - **自定义运行配置文件**：尽管可以使用 Synchronization Service Manager 修改默认的一组运行配置文件，但当前不支持通过同步设置来实现此功能。 完成安装后，必须手动重新应用高级配置。
 - **配置预配层次结构**：不支持通过同步设置来实现 Synchronization Service Manager 的这一高级功能。 完成初始部署后，必须手动重新配置它。

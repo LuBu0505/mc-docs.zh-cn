@@ -2,15 +2,13 @@
 title: 常见问题 - Azure 事件中心 | Microsoft Docs
 description: 本文提供了有关 Azure 事件中心的常见问题 (FAQ) 和解答的列表。
 ms.topic: article
-origin.date: 10/27/2020
-ms.date: 01/14/2021
-ms.author: v-tawe
-ms.openlocfilehash: 3b2150e7e290625244f52bd8e7cbca1800d9082c
-ms.sourcegitcommit: e1edc6ef84dbbda1da4e0a42efa3fd62eee033d1
+ms.date: 01/29/2021
+ms.openlocfilehash: 5754050b57525f547109095e0405c6d587e96c20
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541819"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579416"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
 
@@ -36,13 +34,12 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 * 其他中转连接，对于超出包含的数量的部分收取超额费用
 * 多于单个[使用者组](event-hubs-features.md#consumer-groups)
 * [捕获](event-hubs-capture-overview.md)
-* [Kafka 集成](event-hubs-for-kafka-ecosystem-overview.md)
 
 有关定价层的详细信息（包括专用事件中心），请参阅[事件中心定价详细信息](https://www.azure.cn/pricing/details/event-hubs/)。
 
 ### <a name="where-is-azure-event-hubs-available"></a>Azure 事件中心在哪些区域可用？
 
-在所有支持的 Azure 区域中都可使用 Azure 事件中心。 有关列表，请访问 [Azure 区域](https://www.azure.cn/home/features/products-by-region)页。  
+在所有支持的 Azure 区域中都可使用 Azure 事件中心。 有关列表，请访问 [Azure 区域](https://azure.microsoft.com/regions/)页。  
 
 ### <a name="can-i-use-a-single-advanced-message-queuing-protocol-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>是否可以使用单个高级消息队列协议 (AMQP) 连接来与多个事件中心相互收发数据？
 
@@ -57,8 +54,8 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 ### <a name="how-do-i-monitor-my-event-hubs"></a>如何监视事件中心？
 事件中心向 [Azure Monitor](../azure-monitor/overview.md) 发出详尽指标用于提供资源的状态。 此外，参考指标不仅可以在命名空间级别，而且还能在实体级别评估事件中心服务的总体运行状况。 了解 [Azure 事件中心](event-hubs-metrics-azure-monitor.md)提供哪些监视功能。
 
-### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Azure 事件中心将客户数据存储在何处？
-Azure 事件中心将存储客户数据。 事件中心会自动将此数据存储在单个区域中，因此此服务会自动满足区域内数据驻留要求，包括[信任中心](https://azuredatacentermap.azurewebsites.net/)内指定的要求。
+### <a name="where-does-azure-event-hubs-store-data"></a><a name="in-region-data-residency"></a>Azure 事件中心将数据存储在何处？
+Azure 事件中心标准层和专用层在你选择的区域中存储元数据和数据。 为 Azure 事件中心命名空间设置异地灾难恢复时，会将元数据复制到你选择的次要区域。 因此，此服务会自动满足区域内数据驻留要求，包括[信任中心](https://azuredatacentermap.azurewebsites.net/)内指定的要求。
 
 [!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
 
@@ -138,14 +135,13 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
     
         :::image type="content" source="./media/event-hubs-faq/support-request-throughput-units.png" alt-text="“支持请求”页面":::
 
-如果超出 40 TU，事件中心可提供名为“事件中心专用群集”的基于资源/容量的模型。 专用群集按容量单位 (CU) 销售。
+如果超出 40 TU，事件中心可提供名为“事件中心专用群集”的基于资源/容量的模型。 专用群集按容量单位 (CU) 销售。 有关详细信息，请参阅[事件中心专用层 - 概述](event-hubs-dedicated-overview.md)。
+
 ## <a name="dedicated-clusters"></a>专用群集
 
 ### <a name="what-are-event-hubs-dedicated-clusters"></a>什么是事件中心专用群集？
 事件中心专用群集提供单租户部署来满足苛刻的客户要求。 此产品/服务会构建一个不受限于吞吐量单位的基于容量的群集。 这意味着，可以使用该群集，根据群集的 CPU 和内存用量情况来引入和流式传输数据。 有关详细信息，请参阅[事件中心专用群集](event-hubs-dedicated-overview.md)。
 
-### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>如何创建事件中心专用群集？
-有关设置事件中心专用群集的分步说明和详细信息，请参阅[快速入门：使用 Azure 门户创建事件中心专用群集](event-hubs-dedicated-cluster-create-portal.md)。 
 
 
 [!INCLUDE [event-hubs-dedicated-clusters-faq](../../includes/event-hubs-dedicated-clusters-faq.md)]
@@ -154,7 +150,7 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 ## <a name="partitions"></a>分区
 
 ### <a name="how-many-partitions-do-i-need"></a>需要多少分区？
-分区数在创建时指定，并且必须介于 1 和 32 之间。 分区计数不可更改，因此在设置分区计数时应考虑长期规模。 分区是一种数据组织机制，与使用方应用程序中所需的下游并行度相关。 事件中心的分区数与预期会有的并发读取者数直接相关。 有关分区的详细信息，请参阅[分区](event-hubs-features.md#partitions)。
+分区数在创建时指定，并且必须介于 1 和 32 之间。 除[专用层](event-hubs-dedicated-overview.md)以外，所有层的分区计数均不可更改，因此在设置分区计数时应考虑长期规模。 分区是一种数据组织机制，与使用方应用程序中所需的下游并行度相关。 事件中心的分区数与预期会有的并发读取者数直接相关。 有关分区的详细信息，请参阅[分区](event-hubs-features.md#partitions)。
 
 你可能希望在创建时将其设置为最高可能值，即 32。 请记住，拥有多个分区将导致事件发送到多个分区而不保留顺序，除非你将发送方配置为仅发送到 32 个分区中的一个分区，剩下的 31 个分区是冗余分区。 在前一种情况下，必须跨所有 32 个分区读取事件。 在后一种情况下，除了必须在事件处理器主机上进行额外配置外，没有明显的额外成本。
 
@@ -226,7 +222,7 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 
 <!-- Not Full Available  ### Diagnostic logs -->
 
-事件中心支持两种类型的[诊断日志](event-hubs-diagnostic-logs.md) - 捕获错误日志和操作日志 - 这两种日志都用 json 表示并可以通过 Azure 门户启用。
+事件中心支持两种类型的诊断日志 - 捕获错误日志和操作日志 - 这两种日志都用 json 表示并可以通过 Azure 门户启用。
 
 ### <a name="support-and-sla"></a>支持和 SLA
 

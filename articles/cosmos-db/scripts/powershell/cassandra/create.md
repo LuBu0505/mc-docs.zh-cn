@@ -6,16 +6,16 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 origin.date: 05/13/2020
 author: rockboyfor
-ms.date: 11/09/2020
+ms.date: 02/08/2021
 ms.testscope: no
 ms.testdate: 08/17/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5ec923ca5b1abae017929c16ff4d100e8d982aa1
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: cccb613ba726d67c5562c5b9c1626d3ae9a9858a
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94327455"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580507"
 ---
 <!--Verify successfully-->
 # <a name="create-a-keyspace-and-table-for-azure-cosmos-db---cassandra-api"></a>创建 Azure Cosmos DB 的密钥空间和表 - Cassandra API
@@ -23,7 +23,10 @@ ms.locfileid: "94327455"
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
+本示例需要 Azure PowerShell Az 5.4.0 或更高版本。 运行 `Get-Module -ListAvailable Az`，查看已安装哪些版本。
+如果需要安装，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 [!INCLUDE [sample-powershell-install](../../../../../includes/sample-powershell-install-no-ssh.md)]
+运行 [Connect-AzAccount -Environment AzureChinaCloud](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) 以登录到 Azure。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -131,4 +134,4 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 有关 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

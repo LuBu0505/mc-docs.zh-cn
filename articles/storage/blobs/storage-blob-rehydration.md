@@ -4,18 +4,18 @@ description: 从存档存储中解冻 Blob，以便可以访问 Blob 数据。 �
 services: storage
 author: WenJason
 ms.author: v-jay
-origin.date: 04/08/2020
-ms.date: 08/24/2020
+origin.date: 01/08/2021
+ms.date: 02/08/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: d80cc1c2047a310586d2f0bd54f9dfa593638231
-ms.sourcegitcommit: ecd6bf9cfec695c4e8d47befade8c462b1917cf0
+ms.openlocfilehash: 8974f805ee06acad6095e440fc44d35669ebf486
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88753562"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503829"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>从存档层解冻 Blob 数据
 
@@ -30,9 +30,13 @@ ms.locfileid: "88753562"
 
 [!INCLUDE [storage-blob-rehydration](../../../includes/storage-blob-rehydrate-include.md)]
 
+## <a name="monitor-rehydration-progress"></a>监视解除冻结进度
+
+在解除冻结期间，使用“获取 Blob 属性”操作来检查“存档状态”属性，确认层更改的完成时间。 状态显示为“rehydrate-pending-to-hot”或“rehydrate-pending-to-cool”，具体取决于目标层。 完成后，“存档状态”属性会被删除，“访问层”Blob 属性会反映出新层是热层还是冷层。
+
 ## <a name="copy-an-archived-blob-to-an-online-tier"></a>将存档的 Blob 复制到联机层
 
-如果你不想要解冻存档的 Blob，可以选择执行[复制 Blob](https://docs.microsoft.com/rest/api/storageservices/copy-blob) 操作。 原始 Blob 在存档中保持未修改状态，同时会在热层或冷层中联机创建新的 Blob 供你使用。 在“复制 Blob”操作中，还可以将可选的 x-ms-rehydrate-priority 属性置为“标准”或“高”，以指定要在哪个优先级创建你的 Blob 副本。
+如果你不想要解冻存档的 Blob，可以选择执行[复制 Blob](https://docs.microsoft.com/rest/api/storageservices/copy-blob) 操作。 原始 Blob 在存档中保持未修改状态，同时会在热层或冷层中联机创建新的 Blob 供你使用。 在“复制 Blob”操作中，还可以将可选的 x-ms-rehydrate-priority 属性置为“标准”或“高”，以指定要以哪个优先级创建你的 Blob 副本。
 
 从存档中复制 Blob 可能需要数小时才能完成，具体取决于所选解冻优先级。 在幕后，“复制 Blob”操作会读取存档源 Blob，以便在所选目标层中创建新的联机 Blob。 列出 Blob 时，新 Blob 也许可见，但数据并不可用，直到从源存档 Blob 进行读取的操作完成并将数据写入到新的联机目标 Blob 为止。 新 Blob 充当独立的副本，对它进行的任何修改或删除操作不会影响源存档 Blob。
 
@@ -61,7 +65,7 @@ ms.locfileid: "88753562"
 ## <a name="quickstart-scenarios"></a>快速入门方案
 
 ### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>将存档 Blob 解冻到联机层
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 
 1. 在 Azure 门户中，搜索并选择“所有资源”。

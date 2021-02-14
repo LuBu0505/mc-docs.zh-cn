@@ -5,16 +5,16 @@ description: 了解如何排查 Azure Stack Hub 的问题，包括 VM、存储�
 author: WenJason
 ms.topic: article
 origin.date: 12/10/2020
-ms.date: 01/11/2021
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.reviewer: prchint
 ms.lastreviewed: 12/10/2020
-ms.openlocfilehash: 7878e27da1afef045b2d80de2ea31c1e9f52fa72
-ms.sourcegitcommit: a978c5f2c6b53494d67e7c3c5a44b2aa648219a2
+ms.openlocfilehash: a197478f0c070527f52a6a4555dd6d8b196245db
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629081"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503887"
 ---
 # <a name="troubleshoot-issues-in-azure-stack-hub"></a>排查 Azure Stack Hub 中的问题
 
@@ -30,7 +30,7 @@ ms.locfileid: "98629081"
 
 ### <a name="updates-and-diagnostics"></a>更新和诊断
 
-* [如何在 Azure Stack Hub 中使用诊断工具](./azure-stack-diagnostic-log-collection-overview.md)
+* [如何在 Azure Stack Hub 中使用诊断工具](./diagnostic-log-collection.md)
 * [如何验证 Azure Stack Hub 系统状态](azure-stack-diagnostic-test.md)
 * [更新包发布频率](azure-stack-servicing-policy.md#update-package-release-cadence)
 * [对节点状态进行验证和故障排除](azure-stack-node-actions.md)
@@ -195,11 +195,11 @@ slmgr /ipk <AVMA_key>
 
 Azure Stack Hub 修补程序和更新过程旨在让操作员以一致且简单的方式应用更新包。 虽然不常见，但在修补和更新过程中可能会出现问题。 如果在修补和更新过程中遇到问题，建议执行以下步骤：
 
-0. **先决条件**：请确保已遵循 [更新活动清单](release-notes-checklist.md)，并 [启用主动日志收集](./azure-stack-diagnostic-log-collection-overview.md#send-logs-proactively)。
+0. **先决条件**：请确保已遵循 [更新活动清单](release-notes-checklist.md)，并 [启用主动日志收集](./diagnostic-log-collection.md#send-logs-proactively)。
 
 1. 按照在更新失败时创建的失败警报中的补救步骤进行操作。
 
-2. 如果无法解决问题，请创建 [Azure Stack Hub 支持票证](./azure-stack-help-and-support-overview.md?view=azs-2002)。 请确保已针对发生问题的时间跨度[收集日志](./azure-stack-diagnostic-log-collection-overview.md#send-logs-now)。
+2. 如果无法解决问题，请创建 [Azure Stack Hub 支持票证](./azure-stack-help-and-support-overview.md)。 请确保已针对发生问题的时间跨度[收集日志](./diagnostic-log-collection.md#send-logs-now)。 如果更新失败（无论是出现关键警报还是出现警告），请务必检查故障并按照警报中的指示联系 Azure 客户支持服务，从而使缩放单元不会长时间处于失败状态。 使缩放单元长时间处于失败的更新状态可能会导致以后更难解决的其他问题。
 
 ## <a name="common-azure-stack-hub-patch-and-update-issues"></a>常见 Azure Stack Hub 修补程序和更新问题
 

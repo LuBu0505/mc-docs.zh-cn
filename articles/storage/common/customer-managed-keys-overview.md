@@ -6,17 +6,17 @@ services: storage
 author: WenJason
 ms.service: storage
 origin.date: 09/15/2020
-ms.date: 01/18/2021
+ms.date: 02/08/2021
 ms.topic: conceptual
 ms.author: v-jay
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 8bc52fac073616f38cb1061a41ed3b3499eb30db
-ms.sourcegitcommit: f086abe8bd2770ed10a4842fa0c78b68dbcdf771
+ms.openlocfilehash: 94397f67f876d0f5b08203b70010fc65d75a4220
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98163175"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503911"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>客户管理的密钥（用于 Azure 存储加密）
 
@@ -68,7 +68,7 @@ Azure 存储加密支持 2048、3072 和 4096 大小的 RSA 密钥。 有关密�
 
     显式指定密钥版本后，必须手动更新存储帐户，以便在创建新版本时使用新密钥版本 URI。 若要了解如何将存储帐户更新为使用新的密钥版本，请参阅[使用 Azure Key Vault 中存储的客户管理的密钥配置加密](customer-managed-keys-configure-key-vault.md)。
 
-为客户管理的密钥更新密钥版本不会触发存储帐户中数据的重新加密。 用户无需执行任何其他操作。
+更新密钥版本时，根加密密钥的保护会更改，但是 Azure 存储帐户中的数据不会重新加密。 用户无需执行任何其他操作。
 
 > [!NOTE]
 > 若要轮换密钥，请根据你的符合性策略，在密钥保管库中创建新版本的密钥。 可以手动轮换密钥，或创建一个函数以便按计划轮换密钥。

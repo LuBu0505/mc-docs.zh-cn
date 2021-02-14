@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: troubleshooting
-ms.date: 01/05/2021
+ms.date: 02/04/2021
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 364b21e6dfca1036d301eecb4262b2d70ced1437
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 66761c42024daf22b33360c0262a5b26113a9d7d
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023761"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540729"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
@@ -57,7 +57,7 @@ ms.locfileid: "98023761"
 
 ### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices"></a>问：为什么用户在其 Windows 10 设备上看到了错误消息“你的组织已删除该设备”或“你的组织已禁用该设备”？
 
-**答:** 在已建立 Azure AD 联接或向其注册的 Windows 10 设备上，会为用户颁发一个[主刷新令牌 (PRT)](concept-primary-refresh-token.md)，这将启用单一登录。 PRT 的有效性取决于设备本身的有效性。 如果在 Azure AD 中删除或禁用设备，而未从设备本身启动操作，则用户将看到此消息。 对于以下任一情况，均可以在 Azure AD 中删除或禁用设备： 
+**答:** 在已建立 Azure AD 联接或向其注册的 Windows 10 设备上，会为用户颁发一个 [主刷新令牌 (PRT)](concept-primary-refresh-token.md)，这将启用单一登录。 PRT 的有效性取决于设备本身的有效性。 如果在 Azure AD 中删除或禁用设备，而未从设备本身启动操作，则用户将看到此消息。 对于以下任一情况，均可以在 Azure AD 中删除或禁用设备： 
 
 - 用户从“我的应用”门户禁用设备。 
 - 管理员（或用户）通过 Azure 门户或 PowerShell 删除或禁用设备
@@ -144,6 +144,12 @@ ms.locfileid: "98023761"
 >在这两种情况下，必须在每台设备上手动重新注册设备。 若要查看设备之前是否已注册，可[使用 dsregcmd 命令排查设备问题](troubleshoot-device-dsregcmd.md)。
 
 ---
+
+### <a name="q-i-cannot-add-more-than-3-azure-ad-user-accounts-under-the-same-user-session-on-a-windows-10-device-why"></a>问：我不能在 Windows 10 设备的同一用户会话下添加 3 个以上的 Azure AD 用户帐户，为什么？
+
+**答**：Azure AD 在 Windows 10 1803 版本中添加了对多个 Azure AD 帐户的支持。 但是，Windows 10 将设备上的 Azure AD 帐户数限制为 3 个，以限制令牌请求的大小并启用可靠的单一登录 (SSO)。 添加 3 个帐户后，在添加后续帐户时用户将看到错误。 错误屏幕上的“其他问题信息”提供了以下消息，指示原因 -“由于达到帐户限制，添加帐户操作被阻止”。 
+
+---
 ## <a name="azure-ad-join-faq"></a>Azure AD 加入常见问题解答
 
 ### <a name="q-how-do-i-unjoin-an-azure-ad-joined-device-locally-on-the-device"></a>问：如何在设备上本地取消加入已建立 Azure AD 联接的设备？
@@ -182,13 +188,13 @@ Windows 10 2004 更新支持 UPN 更改。 如果用户的设备上包含此更�
 
 ### <a name="q-my-users-cant-search-printers-from-azure-ad-joined-devices-how-can-i-enable-printing-from-those-devices"></a>问：我的用户无法从加入 Azure AD 的设备中搜索打印机。 如何从这些设备启用打印？
 
-**答:** 若要为加入 Azure AD 的设备部署打印机，请参阅[Deploy Windows Server Hybrid Cloud Print with Pre-Authentication](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)（使用预身份验证部署 Windows Server 混合云打印）。 需要安装本地 Windows Server 才能部署混合云打印。 当前，无法使用基于云的打印服务。 
+**答:** 若要为加入 Azure AD 的设备部署打印机，请参阅 [Deploy Windows Server Hybrid Cloud Print with Pre-Authentication](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)（使用预身份验证部署 Windows Server 混合云打印）。 需要安装本地 Windows Server 才能部署混合云打印。 当前，无法使用基于云的打印服务。 
 
 ---
 
 ### <a name="q-how-do-i-connect-to-a-remote-azure-ad-joined-device"></a>问：如何连接到已建立 Azure AD 联接的远程设备？
 
-**答:** 请参阅[连接到已加入远程 Azure Active Directory 的电脑](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc)。
+**答:** 请参阅 [连接到已加入远程 Azure Active Directory 的电脑](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc)。
 
 ---
 
@@ -325,4 +331,3 @@ Windows 10 2004 更新支持 UPN 更改。 如果用户的设备上包含此更�
 - 详细了解[已注册到 Azure AD 的设备](concept-azure-ad-register.md)
 - 详细了解[已加入 Azure AD 的设备](concept-azure-ad-join.md)
 - 详细了解[已加入混合 Azure AD 的设备](concept-azure-ad-join-hybrid.md)
-

@@ -1,5 +1,5 @@
 ---
-title: 数据安全性和加密最佳做法 | Microsoft Azure
+title: 数据安全与加密最佳做法 - Azure
 description: 本文提供一系列有关使用内置 Azure 功能实现数据安全与加密的最佳实践。
 services: security
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 05/06/2019
-ms.date: 12/03/2020
+ms.date: 02/03/2021
 ms.author: v-johya
-ms.openlocfilehash: d596ec75b30b6cc286645500bf18a591c78ff77c
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: f6efefd5f83fa26c05d3aa0a01d695768108921f
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746529"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579476"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure 数据安全与加密最佳做法
 本文介绍了针对数据安全和加密的最佳做法。
@@ -75,7 +75,7 @@ Azure Key Vault 旨在支持应用程序密钥和机密。 Key Vault 不应用�
 因为绝大多数的攻击以最终用户为目标，所以终结点将成为主要攻击点之一。 入侵终结点的攻击者可以使用用户的凭据来访问组织的数据。 大多数终结点攻击都利用了用户是其本地工作站的管理员这一事实。
 
 **最佳做法**：使用安全管理工作站来保护敏感帐户、任务和数据。   
-**详细信息**：使用 [特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)来减小工作站的受攻击面。 这些安全管理工作站可帮助减轻其中一些攻击，以确保数据更为安全。
+**详细信息**：使用 [特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)来减小工作站的受攻击面。 这些安全管理工作站可帮助减轻其中一些攻击，以确保数据更为安全。
 
 **最佳做法**：确保终结点受保护。   
 **详细信息**：在用于使用数据的所有设备上强制实施安全策略（无论数据位于云中还是本地）。

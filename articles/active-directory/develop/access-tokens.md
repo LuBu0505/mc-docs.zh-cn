@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/06/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: ad1f4d16cf4981174d66bf2b26a4ad8706911ab8
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 3f516d12a8291531211646f90508a2cec6bca149
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021645"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540788"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 标识平台访问令牌
 
@@ -260,6 +260,8 @@ https://login.partner.microsoftonline.cn/common/v2.0/.well-known/openid-configur
 
 ### <a name="token-timeouts"></a>令牌超时
 
+使用令牌生存期配置，可以更改刷新令牌的生存期。  一些令牌未被使用（例如，用户在 3 个月内未打开应用）就过期了，这是正常现象，也在预料之中。  应用将遇到这样的情况：登录服务器会因时间问题而拒绝刷新令牌。
+
 * MaxInactiveTime：如果在 MaxInactiveTime 指定的时间内未使用刷新令牌，刷新令牌将不再有效。
 * MaxSessionAge：如果 MaxAgeSessionMultiFactor 或 MaxAgeSessionSingleFactor 已设置为其默认值（“直到吊销”）以外的值，则在经过 MaxAgeSession* 中设置的时间后，需要重新进行身份验证。
 * 示例:
@@ -290,13 +292,9 @@ https://login.partner.microsoftonline.cn/common/v2.0/.well-known/openid-configur
 - 语音
 - PIN
 
-> [!NOTE]
-> Windows 10 上的主刷新令牌 (PRT) 基于凭据进行隔离。 例如，Windows Hello 和密码有各自的 PRT，彼此隔离。 当用户使用 Hello 凭据（PIN 或生物识别）登录，然后更改密码时，先前获得的基于密码的 PRT 将被撤销。 使用密码重新登录会使旧的 PRT 无效，并请求一个新的 PRT。
->
-> 在用于提取新访问令牌和刷新令牌时，刷新令牌不会失效或撤销。  但是，你的应用应该在使用旧令牌后立即丢弃它，并将其替换为新令牌，因为新令牌中有一个新的过期时间。
+请查看[主刷新令牌](../devices/concept-primary-refresh-token.md)，了解有关主刷新令牌的更多详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 了解 [Azure AD 中的 `id_tokens`](id-tokens.md)。
 * 了解权限和同意（[v1.0](../azuread-dev/v1-permissions-consent.md)、[v2.0](v2-permissions-and-consent.md)）。
-

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/18/2020
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1df7c168d9295630122fea18c082ae3fabac2726
-ms.sourcegitcommit: 7646936d018c4392e1c138d7e541681c4dfd9041
+ms.openlocfilehash: d67013daefff14a9b86f74216d4206efda9318c4
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88647740"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540664"
 ---
 # <a name="known-issues-on-internet-explorer-browsers-msaljs"></a>Internet Explorer 浏览器 (MSAL.js) 的已知问题
 
@@ -55,4 +55,3 @@ ms.locfileid: "88647740"
 
 ## <a name="next-steps"></a>后续步骤
 详细了解[在 Internet Explorer 中使用 MSAL.js 时的已知问题](msal-js-use-ie-browser.md)。
-

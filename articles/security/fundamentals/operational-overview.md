@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/03/2020
+ms.date: 02/03/2021
 ms.author: v-johya
-ms.openlocfilehash: e20f908c74a4f569e4db1f333308040150830e81
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 9dd0e2a4c890bffd3605a9f3dbc6cd1e6911d247
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747059"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579474"
 ---
 # <a name="azure-operational-security-overview"></a>Azure 操作安全性概述
 
@@ -60,7 +60,7 @@ Azure Active Directory (Azure AD) 是一种综合性的标识服务，该服务�
 
 -   启用标识和访问管理 (IAM) 作为云服务。
 -   提供中心访问管理、单一登录 (SSO) 及报告功能。
--   支持 Azure 市场中[数千款应用程序](https://market.azure.cn/marketplace/apps/Microsoft.AzureActiveDirectory)（包括 Salesforce、Google Apps、Box 和 Concur）的集成访问管理。
+-   支持 Azure 市场中[数千款应用程序](https://market.azure.cn/marketplace/apps/Microsoft.AzureActiveDirectory)的集成访问管理。
 
 Azure AD 中还包括了整套[标识管理功能](./identity-management-overview.md#security-monitoring-alerts-and-machine-learning-based-reports)，其中包括：
 

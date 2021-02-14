@@ -4,16 +4,16 @@ description: 查看发行说明以了解 Azure Stack Hub MySQL 资源提供程�
 author: WenJason
 ms.topic: article
 origin.date: 09/22/2020
-ms.date: 01/11/2021
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 09/22/2020
-ms.openlocfilehash: c3c7477f9d4516c7b37306993efa922c47fbb85e
-ms.sourcegitcommit: 3f54ab515b784c9973eb00a5c9b4afbf28a930a9
+ms.openlocfilehash: 5ecdcbbf8ebef07f1ef3a56a197951140cc89902
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894438"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503994"
 ---
 # <a name="mysql-resource-provider-1193x-release-notes"></a>MySQL 资源提供程序 1.1.93.x 发行说明
 
@@ -43,6 +43,8 @@ ms.locfileid: "97894438"
 
 ## <a name="known-issues"></a>已知问题
 如果使用了错误的 AzureRmContext，则部署 1.1.93.0 版本可能会失败。 建议直接升级到 1.1.93.1 版本。 如果已成功升级到 1.1.93.0，则可以安全地跳过 1.1.93.1 版本。
+
+在已部署了相同版本的情况下重新部署 MySQL 资源提供程序时（例如，当已部署了 MySQL 资源提供程序 1.1.93.1 并再次部署同一版本时），托管 MySQL 资源提供程序的 VM 将停止。 若要解决此问题，请转到管理门户，在名为“system.\<region\>.mysqladapter”的资源组中找到并重启名为“mysqlvm\<version\>”的 VM。
 
 ## <a name="next-steps"></a>后续步骤
 

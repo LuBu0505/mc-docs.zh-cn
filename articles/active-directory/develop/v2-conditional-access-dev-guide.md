@@ -8,18 +8,18 @@ author: rwike77
 manager: CelesteDG
 ms.author: v-junlch
 ms.reviewer: jmprieur, saeeda
-ms.date: 08/19/2020
+ms.date: 02/02/2021
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: 492fe31dcdf4f24a7ced3a2c3706bf152433f992
-ms.sourcegitcommit: 7646936d018c4392e1c138d7e541681c4dfd9041
+ms.openlocfilehash: bf131ce8344650fd39732c41ae632137c8d4cf68
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88647497"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540667"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问开发人员指南
 
@@ -43,7 +43,7 @@ ms.locfileid: "88647497"
 
 ### <a name="app-types-impacted"></a>受影响的应用类型
 
-通常，在多数情况下，条件访问不会更改应用的行为或要求开发人员进行任何更改。 只有在特定情况下（应用以间接方式或无提示的方式请求服务令牌时），应用才需要进行代码更改以处理条件访问“质询”。 此过程可能与执行交互式登录请求一样简单。
+通常，在多数情况下，条件访问不会更改应用的行为或要求开发人员进行任何更改。  只有在特定情况下（应用以间接方式或无提示的方式请求服务令牌时），应用才需要进行代码更改以处理条件访问“质询”。  此过程可能与执行交互式登录请求一样简单。
 
 具体来说，在以下应用场景下要求代码处理条件访问“质询”：
 
@@ -182,6 +182,6 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 * 若要详细了解这些功能，请参阅 [Azure Active Directory 中的条件访问](../conditional-access/overview.md)。
 * 有关更多的 Azure AD 代码示例，请参阅[示例](sample-v2-code.md)。
-* 有关 MSAL SDK 的详细信息以及如何访问参考文档，请参阅 [Microsoft 身份验证库概述](msal-overview.md)。
+* 如需 MSAL SDK 的详细信息并访问参考文档，请参阅 [Microsoft 身份验证库概述](msal-overview.md)。
 * 若要详细了解多租户应用场景，请参阅[如何使用多租户模式让用户进行登录](howto-convert-app-to-be-multi-tenant.md)。
 

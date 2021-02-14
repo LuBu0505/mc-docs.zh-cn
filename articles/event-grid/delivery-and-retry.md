@@ -3,15 +3,15 @@ title: Azure 事件网格传送和重试
 description: 介绍 Azure 事件网格如何传送事件以及如何处理未送达的消息。
 ms.topic: conceptual
 origin.date: 02/27/2020
-ms.date: 01/18/2021
+ms.date: 02/04/2021
 author: Johnnytechn
 ms.author: v-johya
-ms.openlocfilehash: 1115262a37a47abebf981f2f550050569414c399
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: 2d9ba6dfd0843c9211780bd9f2b6c1b2ba1fb6ba
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751197"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579428"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>事件网格消息传送和重试
 
@@ -71,7 +71,7 @@ az eventgrid event-subscription create \
 | Webhook | 400 错误的请求、413 请求实体太大、403 禁止访问、404 未找到、401 未授权 |
  
 > [!NOTE]
-> 如果没有为终结点配置死信，则在发生上述错误时将删除事件，因此，如果不希望删除这些类型的事件，请考虑配置死信。
+> 如果没有为终结点配置死信，则出现上述错误时将删除事件。 如果不想删除这些类型的事件，请考虑配置死信。
 
 如果订阅的终结点返回的错误不在上面的列表中，则 EventGrid 将使用下面所述的策略执行重试：
 
@@ -84,7 +84,10 @@ az eventgrid event-subscription create \
 - 10 分钟
 - 30 分钟
 - 1 小时
-- 按小时论的话，最多 24 小时
+- 3 小时
+- 6 小时
+- 每 12 小时到 24 小时
+
 
 如果终结点在 3 分钟内做出了响应，则事件网格会尽量尝试从重试队列中删除事件，但仍可能会收到重复项。
 
@@ -108,7 +111,7 @@ az eventgrid event-subscription create \
 
 如果满足上述任一条件，则会将该事件删除或视为死信。  默认情况下，事件网格不启用死信处理。 若要启用该功能，在创建事件订阅时必须指定一个存储帐户来存放未送达的事件。 你将从此存储帐户中拉取事件来解决传递问题。
 
-事件网格已进行所有重试尝试后会将事件发送到死信位置。 如果事件网格收到 400（错误请求）或 413（请求实体太大）响应代码，它会立即将事件发送到死信终结点。 这些响应代码指示事件传送将永远不会成功。
+事件网格已进行所有重试尝试后会将事件发送到死信位置。 如果事件网格收到 400（错误请求）或 413（请求实体太大）响应代码，它会立即计划事件以进行死信处理。 这些响应代码指示事件传送将永远不会成功。
 
 仅在下一次计划的传递尝试时检查生存时间是否过期。 因此，即使生存时间在下一次计划的传递尝试之前到期，也只会在下一次传递时检查事件到期时间，然后再检查死信。 
 

@@ -6,17 +6,17 @@ ms.service: virtual-machines
 ms.topic: include
 origin.date: 10/12/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 02/08/2021
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 79e8e7ce1f9ec9558bf8f86f834771b51f8e0507
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: d7df7ec9e85b8441f343479a75236d952caa6eac
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857157"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580540"
 ---
 <!--Verified successfully-->
 ![图表中显示了 D s v 3 规范。](media/vm-disk-performance/dsv3-documentation.jpg)
@@ -85,7 +85,7 @@ ms.locfileid: "97857157"
 - P30 OS 磁盘
     - IOPS：5,000
     - 主机缓存：读取/写入
-- 两个 P30 数据磁盘  2
+- 两个 P30 数据磁盘 x 2
     - IOPS：5,000
     - 主机缓存：读取/写入
 
@@ -107,10 +107,10 @@ ms.locfileid: "97857157"
 - P30 OS 磁盘
     - IOPS：5,000
     - 主机缓存：读取/写入
-- 两个 P30 数据磁盘  2
+- 两个 P30 数据磁盘 × 2
     - IOPS：5,000
     - 主机缓存：读取/写入
-- 两个 P30 数据磁盘  2
+- 两个 P30 数据磁盘 × 2
     - IOPS：5,000
     - 主机缓存：**已禁用**
 
@@ -168,10 +168,10 @@ ms.locfileid: "97857157"
 - P30 OS 磁盘
     - IOPS：5,000
     - 主机缓存：**已禁用**
-- 两个 P30 数据磁盘  2
+- 两个 P30 数据磁盘 × 2
     - IOPS：5,000
     - 主机缓存：读取/写入
-- 两个 P30 数据磁盘  2
+- 两个 P30 数据磁盘 × 2
     - IOPS：5,000
     - 主机缓存：**已禁用**
 

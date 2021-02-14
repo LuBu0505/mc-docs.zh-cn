@@ -1,5 +1,5 @@
 ---
-title: 将 Azure API 管理与 Azure Kubernetes 服务中部署的微服务结合使用 | Microsoft Docs
+title: 将 Azure API 管理与 Azure Kubernetes 服务中部署的微服务结合使用 | Azure Docs
 description: 本文介绍使用 AKS 部署 API 管理的选项
 services: api-management
 documentationcenter: ''
@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/18/2021
+ms.date: 02/04/2021
 ms.author: v-johya
-ms.openlocfilehash: 20f6831b0452ef17eeebb56eaaa9cb43e4a307c7
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: 938db297a4a169da622b6eb7c03515e9748abb08
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751365"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579632"
 ---
 # <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>将 Azure API 管理与 Azure Kubernetes 服务中部署的微服务结合使用
 

@@ -3,45 +3,48 @@ title: Azure Cosmos DB 中的高可用性
 description: 本文介绍 Azure Cosmos DB 如何提供高可用性
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 11/04/2020
+origin.date: 01/18/2021
 author: rockboyfor
-ms.date: 12/07/2020
+ms.date: 02/08/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 21237e672737d91b8b77e7d53f22a88e40a4ca56
-ms.sourcegitcommit: bbe4ee95604608448cf92dec46c5bfe4b4076961
+ms.openlocfilehash: 5cb31f322d07cfad985801af7976c3320fe234aa
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96598645"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580602"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB 如何提供高可用性？
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB 主要通过两种方式提供高可用性。 第一种方式是 Azure Cosmos DB 跨 Cosmos 帐户中配置的区域复制数据。 第二种方式是 Azure Cosmos DB 在一个区域内维护 4 个数据副本。
 
-Azure Cosmos DB 是一个多区域分布式数据库服务，也是 Azure 中的基础服务。 默认情况下，在 [Azure 中国可用的所有区域](https://azure.microsoft.com/global-infrastructure/services/?products=cosmos-db&regions=china-non-regional,china-east,china-east-2,china-north,china-north-2)中都可用。 可将任意数量的 Azure 区域与 Azure Cosmos 帐户相关联，并且数据会自动且透明地得到复制。 可随时向 Azure Cosmos 帐户添加或从中删除区域。 Cosmos DB 在提供给客户的 Azure 中国云环境中均可使用：
+Azure Cosmos DB 是一个多区域分布式数据库服务，也是在[可以使用 Azure 中国的所有区域](https://azure.microsoft.com/global-infrastructure/services/?products=cosmos-db&regions=china-non-regional,china-east,china-east-2,china-north,china-north-2)中提供的一项基础服务。 可将任意数量的 Azure 区域与 Azure Cosmos 帐户相关联，并且数据会自动且透明地得到复制。 可随时向 Azure Cosmos 帐户添加或从中删除区域。 Cosmos DB 在提供给客户的 Azure 中国云环境中均可使用：
 
 <!--MOONCAKE CUSTOMIZE-->
 
-* Microsoft 与是中国最大的 Internet 提供商之一的世纪互联展开独特合作，推出了 Azure 中国世纪互联。
+* Microsoft 与中国最大的 Internet 提供商世纪互联展开独特合作，推出了 Azure 中国世纪互联。
+
+在一个区域内，Azure Cosmos DB 将数据的四个副本作为副本保留在物理分区中，如下图所示：
 
 <!--MOONCAKE CUSTOMIZE-->
+
 :::image type="content" source="./media/high-availability/cosmosdb-data-redundancy.png" alt-text="物理分区" border="false":::
 
 * Azure Cosmos 容器中的数据[已水平分区](partitioning-overview.md)。
 
 * 分区集是多个副本集的集合。 在每个区域中，每个分区受副本集的保护，该副本集中的大多数副本将复制并以持久方式提交所有写入内容。 副本分布在最多 10 到 20 个容错域中。
 
-* 将复制所有区域中的每个分区。 每个区域包含某个 Azure Cosmos 容器的所有数据分区，可接受写入并维护读取。  
+* 将复制所有区域中的每个分区。 每个区域均包含一个 Azure Cosmos 容器的所有数据分区，并且在启用了多区域写入时可供读取和写入。  
 
 如果 Azure Cosmos 帐户分布在 N 个 Azure 区域之间，则所有数据至少有 N x 4 个副本。 在超过 2 个区域中拥有 Azure Cosmos 帐户可提高应用程序的可用性，相关区域之间的延迟较低。
 
 ## <a name="slas-for-availability"></a>可用性 SLA
 
-作为多区域分布式数据库，Azure Cosmos DB 提供综合性 SLA，涵盖吞吐量、99% 时间内的延迟、一致性和高可用性。 下表显示 Azure Cosmos DB 针对单区域和多区域帐户提供的高可用性保证。 为实现高可用性，请始终将 Azure Cosmos 帐户配置为使用多个写入区域。
+Azure Cosmos DB 提供综合性的 SLA，涵盖了吞吐量、99% 的情况下的延迟、一致性和高可用性。 下表显示 Azure Cosmos DB 针对单区域和多区域帐户提供的高可用性保证。 为提高写入可用性，请将 Azure Cosmos 帐户配置为使用多个写入区域。
 
 |操作类型  | 单区域 |多区域（单区域写入）|多区域（多区域写入） |
 |---------|---------|---------|-------|
@@ -118,4 +121,4 @@ Azure Cosmos DB 是一个多区域分布式数据库服务，也是 Azure 中的
 
 * [多区域环境中的 SDK 行为](troubleshoot-sdk-availability.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

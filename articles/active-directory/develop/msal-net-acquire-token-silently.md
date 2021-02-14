@@ -1,29 +1,24 @@
 ---
-title: 以无提示方式获取令牌（适用于 .NET 的 Microsoft 身份验证库）| Azure
+title: 从缓存获取令牌 (MSAL.NET)
+titleSuffix: Microsoft identity platform
 description: 了解如何使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 以无提示方式获取访问令牌。
 services: active-directory
-documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
-origin.date: 07/16/2019
-ms.date: 08/23/2019
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff4fa9be055d2346b8930f58a9107826e08451bc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: d3fa1dd289024fc466d7a229ab01e193ee8af1d3
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "69993260"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540783"
 ---
 # <a name="get-a-token-from-the-token-cache-using-msalnet"></a>使用 MSAL.NET 从令牌缓存获取令牌
 
@@ -70,5 +65,3 @@ if (result != null)
  // Use the token
 }
 ```
-
-<!-- Update_Description: code update -->

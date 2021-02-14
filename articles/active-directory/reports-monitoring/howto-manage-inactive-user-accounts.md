@@ -13,16 +13,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/24/2020
+ms.date: 02/04/2021
 ms.author: v-junlch
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94d3bc7211e506cfa440a0d987bc99678581c35c
-ms.sourcegitcommit: 7ad3bfc931ef1be197b8de2c061443be1cf732ef
+ms.openlocfilehash: 15c429aaa23977f7e45d9a0199031cacae06134e
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91245611"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540870"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>如何：管理 Azure AD 中的非活动用户帐户
 
@@ -85,7 +85,7 @@ lastSignInDateTime 属性由 [Microsoft Graph REST API](https://docs.microsoft.c
 
 若要生成 lastSignInDateTime 时间戳，你需要成功登录。 由于 lastSignInDateTime 属性是一项新功能，因此，在以下情况下，lastSignInDateTime 属性的值可能为空：
 
-- 用户的上次成功登录在此功能发布（2019 年 12 月 1 日）之前发生。
+- 用户的上一次成功登录发生在 2020 年 4 月之前。
 - 受影响的用户帐户从未进行成功登录。
 
 ## <a name="next-steps"></a>后续步骤
@@ -93,4 +93,3 @@ lastSignInDateTime 属性由 [Microsoft Graph REST API](https://docs.microsoft.c
 * [使用具有证书的 Azure Active Directory 报告 API 获取数据](tutorial-access-api-with-certificates.md)
 * [审核 API 参考](https://docs.microsoft.com/graph/api/resources/directoryaudit?view=graph-rest-beta) 
 * [登录活动报告 API 参考](https://docs.microsoft.com/graph/api/resources/signin?view=graph-rest-beta)
-

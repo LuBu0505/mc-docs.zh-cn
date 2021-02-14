@@ -6,17 +6,17 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 origin.date: 05/23/2019
 author: rockboyfor
-ms.date: 12/07/2020
+ms.date: 02/08/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: devx-track-js
-ms.openlocfilehash: 36ca656e43642692e3a9f04fe6d4a00c71ac67de
-ms.sourcegitcommit: bbe4ee95604608448cf92dec46c5bfe4b4076961
+ms.openlocfilehash: 17d738d1ebedfb4546bc5462bd57492d533c8d40
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96598608"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580603"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>如何使用真实示例为 Azure Cosmos DB 中的数据建模和分区
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -65,7 +65,7 @@ ms.locfileid: "96598608"
 
 在此阶段，我们尚未考虑每个实体（用户、帖子等）将要包含的详细信息。 针对关系存储进行设计时，此步骤往往是要处理的最初几个步骤之一，因为我们需要确定这些实体在表、列、外键等方面如何进行转换。对于在写入时不会实施任何架构的文档数据库，基本上不必要予以考虑。
 
-必须从一开始就标识访问模式的主要原因在于，请求列表将会成为我们的测试套件。 每当循环访问数据模型时，我们都会遍历每个请求，并检查其性能和可伸缩性。
+必须从一开始就标识访问模式的主要原因在于，请求列表将会成为我们的测试套件。 每当循环访问数据模型时，我们都会遍历每个请求，并检查其性能和可伸缩性。 我们计算每个模型中消耗的请求单位并对其进行优化。 所有这些模型都使用默认索引策略，你可以通过为特定属性编制索引来覆盖该策略，这可以进一步改善 RU 消耗量和延迟。
 
 ## <a name="v1-a-first-version"></a>V1：第一个版本
 
@@ -599,4 +599,4 @@ function truncateFeed() {
 - [Azure Cosmos DB 中的分区](partitioning-overview.md)
 - [Azure Cosmos DB 中的更改源](change-feed.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

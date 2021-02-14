@@ -61,19 +61,19 @@ Azure Databricks DNASeq 管道是符合 [GATK 最佳做法](https://software.bro
 * 为了获得最佳性能，请使用至少具有 60GB 内存的计算优化 VM。 我们建议使用 Standard_F32s_v2 VM。
 * 如果正在运行基本质量分数校准，请改用常规用途 (**Standard_D32s_v3**) 实例，因为此操作需要更多内存。
 
-## <a name="parameters"></a>参数
+## <a name="parameters"></a>parameters
 
 管道接受控制其行为的参数。 这里记录了最重要且最常更改的参数；其余参数可以在 DNASeq 笔记本中找到。
 可以为所有运行或单次运行设置参数。
 
-| 参数                         | 默认                           | 描述                                                                                                                                                                                                                                                                      |
+| 参数                         | 默认                           | 说明                                                                                                                                                                                                                                                                      |
 |-----------------------------------|-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | manifest                          | 不适用                               | 描述输入的清单。                                                                                                                                                                                                                                               |
-| 输出                            | 不适用                               | 应将管道输出写入到的路径。                                                                                                                                                                                                                                |
+| output                            | 不适用                               | 应将管道输出写入到的路径。                                                                                                                                                                                                                                |
 | replayMode                        | skip                              | 下列其中一项：<br><br>* `skip`：如果输出已存在，则跳过相关阶段。<br>* `overwrite`：将删除现有输出。                                                                                                                                                              |
 | exportVCF                         | false                             | 如果为 true，则管道会将结果写入 VCF 以及 Delta Lake。                                                                                                                                                                                                               |
 | referenceConfidenceMode           | 无                              | 下列其中一项：<br><br>* 如果为 `NONE`，则输出中将仅包含变体站点<br>* 如果为 `GVCF`，则会包含所有站点，其中包含相邻的参考站点。<br>* 如果为 `BP_RESOLUTION`，则会包含所有站点。                                                                         |
-| perSampleTimeout                  | 12h                               | 每个样本所应用的超时。 达到此超时时间后，管道会继续执行下一个样本。 此参数的值必须包含超时单位：“s”（表示秒）、“m”（表示分钟）或“h”（表示小时）。 例如，“60m”会导致超时 60 分钟。 |
+| perSampleTimeout                  | 12 小时                               | 每个样本应用的超时。 达到此超时时间后，管道会继续执行下一个样本。 此参数的值必须包含超时单位：“s”（表示秒）、“m”（表示分钟）或“h”（表示小时）。 例如，“60m”会导致超时 60 分钟。 |
 
 > [!TIP]
 >
@@ -97,11 +97,11 @@ val pipeline = new DNASeqPipeline(align = true, callVariants = true, annotate = 
 
 | 读取比对 | 变体识别 | 变体批注 |
 |----------------|-----------------|--------------------|
-| true           | true            | true               |
-| true           | true            | false              |
-| true           | false           | false              |
-| false          | true            | true               |
-| false          | true            | false              |
+| 是           | 是            | 是               |
+| 是           | 是            | false              |
+| 是           | false           | false              |
+| false          | 是            | 是               |
+| false          | 是            | false              |
 
 ## <a name="reference-genomes"></a>参考基因组
 
@@ -241,7 +241,7 @@ file_path,sample_id,paired_end,read_group_id
 
 当你在新的示例上运行管道时，它将显示为新的分区。 如果为已显示在输出目录中的示例运行管道，则会覆盖该分区。
 
-由于所有信息都在 Delta Lake 中提供，因此你可以在 Python、R、Scala 或 SQL 中使用 Spark 轻松对其进行分析。 例如： 。
+由于所有信息都在 Delta Lake 中提供，因此你可以在 Python、R、Scala 或 SQL 中使用 Spark 轻松对其进行分析。 例如：
 
 ### <a name="python"></a>Python
 
@@ -261,7 +261,7 @@ USING delta
 LOCATION '/genomics/output_dir/genotypes'
 ```
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 **作业运行缓慢，并且正在运行的任务很少**
 

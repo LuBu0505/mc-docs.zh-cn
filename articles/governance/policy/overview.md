@@ -1,16 +1,17 @@
 ---
 title: Azure Policy 概述
 description: Azure Policy 是 Azure 中的一项服务，用于创建、分配和管理 Azure 环境中的策略定义。
-ms.author: v-tawe
-origin.date: 10/05/2020
-ms.date: 01/05/2021
+origin.date: 01/14/2021
+author: rockboyfor
+ms.date: 02/08/2021
+ms.author: v-yeche
 ms.topic: overview
-ms.openlocfilehash: 74c60644b5944160d38c36775ab18acb6a11a841
-ms.sourcegitcommit: ff20289adb80a6ab45e15fa5e196ff7af7e1c6b5
+ms.openlocfilehash: 2d79a3733fcd6a771e4edb7b1db58d7908eeaf6b
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97874837"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580620"
 ---
 # <a name="what-is-azure-policy"></a>什么是 Azure Policy？
 
@@ -53,15 +54,9 @@ Azure Policy 通过应用[效果](./concepts/effects.md)来实现这其中的每
 
 尽管这些效果主要是在创建或更新资源时影响资源，但 Azure Policy 还支持处理现有的不合规资源，而无需改变该资源。 若要详细了解如何使现有资源合规，请参阅[修正资源](./how-to/remediate-resources.md)。
 
-<!-- 
-### Video overview
-
-The following overview of Azure Policy is from Build 2018. For slides or video download, visit
-[Govern your Azure environment through Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030)
-on Channel 9.
-
-> [!VIDEO https://www.youtube.com/embed/dxMaYF2GB7o]
--->
+<!--NOT AVAILABLE ON ### Video overview-->
+<!--NOT AVAILABLE ON [Govern your Azure environment through Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030)-->
+<!--NOT AVAILABLE ON [!VIDEO https://www.youtube.com/embed/dxMaYF2GB7o]-->
 
 ## <a name="getting-started"></a>入门
 
@@ -89,7 +84,7 @@ Azure Policy 在两个资源提供程序中具有多个权限（称为操作）�
 
 ### <a name="resources-covered-by-azure-policy"></a>Azure Policy 涵盖的资源
 
-Azure Policy 评估 Azure 中的所有资源以及已启用 Arc 的资源。 对于某些资源提供程序（例如 [Guest Configuration](./concepts/guest-configuration.md)、[Azure Kubernetes 服务](../../aks/intro-kubernetes.md)和 [Azure Key Vault](../../key-vault/general/overview.md)），可以使用一个更深度的集成来管理设置和对象。 有关详细信息，请参阅[资源提供程序模式](./concepts/definition-structure.md)。
+Azure Policy 评估订阅级别或更低级别的所有 Azure 资源，包括启用了 Arc 的资源。 对于某些资源提供程序（例如 [Guest Configuration](./concepts/guest-configuration.md)、[Azure Kubernetes 服务](../../aks/intro-kubernetes.md)和 [Azure Key Vault](../../key-vault/general/overview.md)），可以使用一个更深度的集成来管理设置和对象。 有关详细信息，请参阅[资源提供程序模式](./concepts/definition-structure.md)。
 
 ### <a name="recommendations-for-managing-policies"></a>管理策略的建议
 
@@ -143,9 +138,9 @@ Azure Policy 评估 Azure 中的所有资源以及已启用 Arc 的资源。 对
 
 在此计划中，将具有特定策略定义，例如：
 
-- 监视安全中心中未加密的 SQL 数据库 – 用于监视未加密的 SQL 数据库和服务器。
-- **监视安全中心中的操作系统漏洞** - 用于监视不满足配置基线的服务器。
-- 监视安全中心中缺失的终结点保护 – 用于监视不具备已安装终结点保护代理的服务器。
+- **在安全中心监视未加密的 SQL 数据库** - 用于监视未加密的 SQL 数据库和服务器。
+- **在安全中心监视 OS 漏洞** - 用于监视不满足配置基线的服务器。
+- **在安全中心监视缺失的终结点保护** - 用于监视未安装终结点保护代理的服务器。
 
 类似于策略参数，计划参数通过减少冗余来帮助简化计划管理。 计划参数是计划内的策略定义正在使用的参数。
 
@@ -159,7 +154,7 @@ Azure Policy 评估 Azure 中的所有资源以及已启用 Arc 的资源。 对
 在此情况下，定义 initiativeC 的计划参数时，有三个选项可供选择：
 
 - 使用此计划中的策略定义参数：在此示例中，allowedLocations 和 allowedSingleLocation 为 initiativeC 的计划参数 。
-- 向此计划定义中策略定义的参数提供值。 在此示例中，可以向 policyA 的参数 – allowedLocations 和 policyB 的参数 – allowedSingleLocation   提供位置列表。 此外，也可在分配此计划时提供值。
+- 向此计划定义中策略定义的参数提供值。 在此示例中，可以向 policyA 的参数 - allowedLocations 和 policyB 的参数 - allowedSingleLocation    提供位置列表。 此外，也可在分配此计划时提供值。
 - 分配此计划时，提供可供使用的值列表选项。 在分配此计划时，从计划内的策略定义继承的参数只能具有此提供列表中的值。
 
 在计划定义中创建值选项时，无法在计划分配期间输入其他值，因为它不属于列表。
@@ -186,3 +181,5 @@ Azure Policy 评估 Azure 中的所有资源以及已启用 Arc 的资源。 对
 
 - [查看策略定义结构](./concepts/definition-structure.md)。
 - [使用门户分配策略定义](./assign-policy-portal.md)。
+
+<!--Update_Description: update meta properties, wording update, update link-->

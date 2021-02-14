@@ -1,16 +1,17 @@
 ---
 title: 策略定义结构的详细信息
 description: 介绍如何使用策略定义为组织中的 Azure 资源建立约定。
-ms.author: v-tawe
 origin.date: 10/22/2020
-ms.date: 01/14/2021
+author: rockboyfor
+ms.date: 02/08/2021
+ms.author: v-yeche
 ms.topic: conceptual
-ms.openlocfilehash: 8dd0ffa1be0f959add2bf6a151b909ae66fa706b
-ms.sourcegitcommit: 93063f9b8771b8e895c3bcdf218f5e3af14ef537
+ms.openlocfilehash: 464271b85df676c73cb30c4043155641fe22eb17
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98193235"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580465"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -29,8 +30,8 @@ Azure Policy 可为资源建立多种约定。 策略定义描述资源符合性
 - metadata
 - parameters
 - 策略规则
-  - 逻辑评估
-  - 效果
+    - 逻辑评估
+    - 效果
 
 例如，以下 JSON 说明限制资源部署位置的策略：
 
@@ -52,7 +53,7 @@ Azure Policy 可为资源建立多种约定。 策略定义描述资源符合性
                     "strongType": "location",
                     "displayName": "Allowed locations"
                 },
-                "defaultValue": [ "chinaeast2" ]
+                "defaultValue": [ "chinanorth2" ]
             }
         },
         "policyRule": {
@@ -85,6 +86,9 @@ Azure Policy 内置和模式位于 [Azure Policy 示例](../samples/index.md)。
 
 - `Builtin`：这些策略定义由 Microsoft 提供并维护。
 - `Custom`：客户创建的所有策略定义都具有此值。
+
+    <!--NOT AVAILABLE ON [Regulatory Compliance](./regulatory-compliance.md)-->
+    
 - `Static`：表示具有 Microsoft“所有权”的合规性策略定义。 这些策略定义的合规性结果是 Microsoft 基础结构上的第三方审核结果。 在 Azure 门户中，此值有时显示为“Microsoft 托管”。 有关详细信息，请参阅[云中责任分担](../../../security/fundamentals/shared-responsibility.md)。
 
 ## <a name="mode"></a>模式
@@ -104,29 +108,18 @@ Azure Policy 内置和模式位于 [Azure Policy 示例](../samples/index.md)。
 
 在创建强制执行标记或位置的策略时，应该使用 `indexed`。 虽然并不是必需的，但是它会阻止不支持标记和位置的资源，使其不会在符合性结果中显示为不兼容。 有一个例外情况，就是资源组和订阅。 策略定义若在资源组或订阅上强制执行位置或标记，则应将“模式”设为 `all`，并明确以 `Microsoft.Resources/subscriptions/resourceGroups` 或 `Microsoft.Resources/subscriptions` 类型为目标。 有关示例，请参阅[模式：标记 - 示例 #1](../samples/pattern-tags.md)。 有关支持标记的资源列表，请参阅[有关 Azure 资源的标记支持](../../../azure-resource-manager/management/tag-support.md)。
 
-<!-- ### Resource Provider modes -->
+<!--NOT AVAILABLE ON  ### Resource Provider modes-->
 
-<!-- The following Resource Provider mode is fully supported:
+<!--NOT AVAILABLE ON Microsoft.Kubernetes RESOURCE PROVIDER-->
+<!--NOT AVAILABLE ON EnforceOPAConstraint-->
 
-- `Microsoft.Kubernetes.Data` for managing your Kubernetes clusters on or off Azure. Definitions
-  using this Resource Provider mode use effects _audit_, _deny_, and _disabled_. Use of the
-  [EnforceOPAConstraint](./effects.md#enforceopaconstraint) effect is _deprecated_. -->
+<!--NOT AVAILABLE ON Microsoft.ContainerService RESOURCE PROVIDER-->
+<!--NOT AVAILABLE ON EnforceRegoPolicy-->
 
-<!-- The following Resource Provider modes are currently supported as a **preview**:
+<!--NOT AVAILABLE ON PRIVIEW POLICY FOR `Microsoft.KeyVault`-->
+<!--NOT AVAILABLE ON [Integrate Azure Key Vault with Azure Policy](../../../key-vault/general/azure-policy.md)-->
 
-- `Microsoft.ContainerService.Data` for managing admission controller rules on
-  [Azure Kubernetes Service](../../../aks/intro-kubernetes.md). Definitions using this Resource
-  Provider mode **must** use the [EnforceRegoPolicy](./effects.md#enforceregopolicy) effect. This
-  mode is _deprecated_. -->
-
-<!-- - `Microsoft.KeyVault.Data` for managing vaults and certificates in
-  [Azure Key Vault](../../../key-vault/general/overview.md). For more information on these policy
-  definitions, see
-  [Integrate Azure Key Vault with Azure Policy](../../../key-vault/general/azure-policy.md).
-
-> [!NOTE]
-> Resource Provider modes only support built-in policy definitions and don't support
-> [exemptions](./exemption-structure.md). -->
+<!--NOT AVAILABLE ON EXEMPTION IN AZURE PORTAL CHINA-->
 
 ## <a name="metadata"></a>Metadata
 
@@ -144,7 +137,7 @@ Azure Policy 内置和模式位于 [Azure Policy 示例](../samples/index.md)。
 
 ## <a name="parameters"></a>parameters
 
-参数可减少策略定义的数量，有助于简化策略管理。 使用类似窗体中字段的参数 - `name`、`address`、`city`、`state`。 这些参数始终不变，但其值会基于窗体中的各填写内容变化。
+参数可减少策略定义的数量，有助于简化策略管理。 可以将参数想象成窗体上的字段 - `name`、`address`、`city`、`state`。 这些参数始终不变，但其值会基于窗体中的各填写内容变化。
 构建策略时，参数同样适用。 如果在策略定义中包括参数，就可以通过使用不同的值重新使用策略以执行不同方案。
 
 > [!NOTE]
@@ -166,6 +159,8 @@ Azure Policy 内置和模式位于 [Azure Policy 示例](../samples/index.md)。
 - `allowedValues`：（可选）提供参数在分配过程中所接受值的数组。
 
 例如，可以定义策略定义来限制资源的部署位置。 **allowedLocations** 可以是该策略定义的一个参数。 每次分配策略定义来限制接受的值时，会使用此参数。 使用 **strongType** 可以在通过门户完成分配时提供增强的体验：
+
+<!--CORRECT FOR LOCATION-->
 
 ```json
 "parameters": {
@@ -273,7 +268,7 @@ strongType 的非资源类型允许值包括：
 
 ### <a name="conditions"></a>条件
 
-条件用于评估 **field** 或 **value** 访问器是否符合特定标准。 支持的条件有：
+条件用于评估某个值是否符合特定的标准。 支持的条件有：
 
 - `"equals": "stringValue"`
 - `"notEquals": "stringValue"`
@@ -303,39 +298,41 @@ strongType 的非资源类型允许值包括：
 
 当使用 match 和 notMatch 条件时，请提供 `#` 来匹配数字、`?` 来匹配字母、`.` 来匹配所有字符，以及提供任何其他字符来匹配该实际字符。 尽管 match 和 notMatch 区分大小写，但用于评估 stringValue 的所有其他条件都不区分大小写 。 “matchInsensitively”和“notMatchInsensitively”中提供了不区分大小写的替代方案 。
 
-在 \[\*\] 别名数组字段值中，数组中的每个元素都会使用元素间的逻辑 and 进行单独计算。 有关详细信息，请参阅[引用数组资源属性](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties)。
-
 ### <a name="fields"></a>字段
 
-使用字段构成条件。 字段匹配资源请求有效负载中的属性，并说明资源的状态。
-
+可以使用“field”表达式来构建条件，用于评估资源请求有效负载中的属性值是否符合特定的标准。
 支持以下字段：
 
 - `name`
 - `fullName`
-  - 返回资源全名。 资源全名是最前面为任意父资源名称的资源名称（例如“myServer/myDatabase”）。
+    - 返回资源全名。 资源全名是最前面为任意父资源名称的资源名称（例如“myServer/myDatabase”）。
 - `kind`
 - `type`
 - `location`
-  - 对于不限位置的资源，请使用 **global**。
+    - 位置字段已规范化，支持各种格式。 例如，`China East 2` 被视为等于 `chinaeast2`。
+    - 对于不限位置的资源，请使用 **global**。
 - `id`
-  - 返回所评估的资源的资源 ID。
-  - 示例：`/subscriptions/06be863d-0996-4d56-be22-384767287aa2/resourceGroups/myRG/providers/Microsoft.KeyVault/vaults/myVault`
+    - 返回所评估的资源的资源 ID。
+    - 示例：`/subscriptions/06be863d-0996-4d56-be22-384767287aa2/resourceGroups/myRG/providers/Microsoft.KeyVault/vaults/myVault`
 - `identity.type`
-  - 返回在资源上启用的[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)类型。
+    - 返回在资源上启用的[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)类型。
 - `tags`
 - `tags['<tagName>']`
-  - 此括号语法支持具有标点符号的标记名称，例如连字符、句点或空格。
-  - 其中的 \<tagName\> 是要验证其条件的标记的名称。
-  - 示例：`tags['Acct.CostCenter']`，其中 Acct.CostCenter 是标记的名称。
+    - 此括号语法支持具有标点符号的标记名称，例如连字符、句点或空格。
+    - 其中的 \<tagName\> 是要验证其条件的标记的名称。
+    - 示例：`tags['Acct.CostCenter']`，其中 Acct.CostCenter 是标记的名称。
 - `tags['''<tagName>''']`
-  - 此括号语法通过双撇号进行转义，可支持在其中包含撇号的标记名称。
-  - 其中的“\<tagName\>”是要验证其条件的标记的名称。
-  - 示例：`tags['''My.Apostrophe.Tag''']`，其中 'My.Apostrophe.Tag' 是标记的名称。
+    - 此括号语法通过双撇号进行转义，可支持在其中包含撇号的标记名称。
+    - 其中的“\<tagName\>”是要验证其条件的标记的名称。
+    - 示例：`tags['''My.Apostrophe.Tag''']`，其中 'My.Apostrophe.Tag' 是标记的名称。
 - 属性别名 - 有关列表，请参阅[别名](#aliases)。
 
 > [!NOTE]
 > `tags.<tagName>``tags[tagName]` 和 `tags[tag.with.dots]` 仍然是可接受的用于声明标记字段的方式。 但是，首选表达式是上面列出的那些。
+
+> [!NOTE]
+> 在引用 \[\*\] 别名的“field”表达式中，将在元素之间使用逻辑“与”对数组中的每个元素分别进行评估。
+> 有关详细信息，请参阅[引用数组资源属性](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties)。
 
 #### <a name="use-tags-with-parameters"></a>使用带参数的标记
 
@@ -367,7 +364,7 @@ strongType 的非资源类型允许值包括：
 
 ### <a name="value"></a>值
 
-也可使用 **value** 来形成条件。 **value** 会针对 [参数](#parameters)、[支持的模板函数](#policy-functions)或文本来检查条件。 **value** 可与任何支持的 [条件](#conditions)配对。
+用于评估某个值是否符合特定标准的条件可以使用“value”表达式来构建。 值可以是文本、[参数](#parameters)的值，也可以是任何[受支持的模板函数](#policy-functions)的返回值。
 
 > [!WARNING]
 > 如果模板函数的结果是一个错误，则策略评估会失败。 评估失败是一种隐式 **拒绝**。 有关详细信息，请参阅[避免模板失败](#avoiding-template-failures)。 使用 DoNotEnforce 的 [enforcementMode](./assignment-structure.md#enforcement-mode)，以防止在测试和验证新策略定义期间，由于新的或更新的资源评估失败而受到影响。
@@ -452,9 +449,11 @@ strongType 的非资源类型允许值包括：
 
 ### <a name="count"></a>计数
 
-计算资源有效负载中陈列有多少成员符合条件表达式的条件，可以使用 Count 表达式来构成。 常见的方案是检查“其中至少一个”、“只有一个”、“全部”或“没有”数组成员符合条件。 Count 会计算条件表达式每个 [\[\*\] 别名](#understanding-the--alias)数组成员，并加总 true 结果，然后将结果与表达式运算符进行比较。 “Count”表达式最多可添加到单个 policyRule 定义 3 次 。
+用于统计数组中有多少成员符合特定标准的条件可以使用“count”表达式来构建。 常见方案是检查是“至少有一个”数组成员、“正好有一个”数组成员、“所有”数组成员还是“没有”数组成员满足条件。 “count”会根据条件表达式评估每个数组成员，并将 true 结果求和，然后将其与表达式运算符进行比较。
 
-Count 表达式的结构如下：
+#### <a name="field-count"></a>字段计数
+
+统计请求有效负载中的数组有多少成员符合条件表达式。 “字段计数”表达式的结构为：
 
 ```json
 {
@@ -468,16 +467,62 @@ Count 表达式的结构如下：
 }
 ```
 
-以下属性与 count 搭配使用：
+以下属性与“字段计数”结合使用：
 
-- count.field（必需）：包含数组路径，且必须为数组别名。 如果缺少数组，则表达式的计算结果为 false，而不考虑条件表达式。
-- count.where（可选）：此条件表达式会单独计算 count.field 的每个 [\[\*\] 别名](#understanding-the--alias)数据成员。 如果未提供此属性，具有“字段”路径的所有数组成员将评估为 true。 任何[条件](../concepts/definition-structure.md#conditions)都可在此属性内使用。
+- count.field（必需）：包含数组路径，且必须为数组别名。
+- **count.where**（可选）：用于分别评估 `count.field` 的每个 [\[\*\] 别名](#understanding-the--alias)数组成员的条件表达式。 如果未提供此属性，具有“字段”路径的所有数组成员将评估为 true。 任何[条件](../concepts/definition-structure.md#conditions)都可在此属性内使用。
   可在此属性中使用[逻辑运算符](#logical-operators)来创建复杂的评估要求。
 - **\<condition\>** （必需）：该值将与满足 **count.where** 条件表达式的项数进行比较。 应使用数字[条件](../concepts/definition-structure.md#conditions)。
 
-有关如何在 Azure Policy 中使用数组属性的更多详细信息，包括关于 count 表达式计算方式的详细说明，请参阅[引用数组资源属性](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties)。
+在单个 policyRule 定义中，“字段计数”表达式最多可以将同一字段数组枚举三次。
 
-#### <a name="count-examples"></a>计数示例
+有关如何在 Azure Policy 中使用数组属性的更多详细信息，包括有关“字段计数”表达式计算方式的详细说明，请参阅[引用数组资源属性](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties)。
+
+#### <a name="value-count"></a>值计数
+统计数组中有多少成员符合条件。 数组可以是文本数组，也可以是[对数组参数的引用](#using-a-parameter-value)。 “值计数”表达式的结构为：
+
+```json
+{
+    "count": {
+        "value": "<literal array | array parameter reference>",
+        "name": "<index name>",
+        "where": {
+            /* condition expression */
+        }
+    },
+    "<condition>": "<compare the count of true condition expression array members to this value>"
+}
+```
+
+以下属性与“值计数”结合使用：
+
+- count.value（必需）：要评估的数组。
+- count.name（必需）：索引名称，由英文字母和数字构成。 定义在当前迭代中评估的数组成员的值的名称。 该名称用于引用 `count.where` 条件内的当前值。 当“count”表达式不在另一个“count”表达式的子级中时，此项为可选。 如果未提供此项，则索引名称将隐式设置为 `"default"`。
+- **count.where**（可选）：用于针对 `count.value` 的每个数组成员分别进行评估的条件表达式。 如果未提供此属性，则所有数组成员都将评估为 true。 任何[条件](../concepts/definition-structure.md#conditions)都可在此属性内使用。 可在此属性中使用[逻辑运算符](#logical-operators)来创建复杂的评估要求。 可以通过调用 [current](#the-current-function) 函数来访问当前枚举的数组成员的值。
+- **\<condition\>** （必需）：该值将与满足 `count.where` 条件表达式的项数进行比较。 应使用数字[条件](../concepts/definition-structure.md#conditions)。
+
+将强制实施以下限制：
+- 在单个 policyRule 定义中最多可以使用 10 个“值计数”表达式。
+- 每个“值计数”表达式最多可以执行 100 次迭代。 此数目包括由任何父级“值计数”表达式执行的迭代次数。
+
+#### <a name="the-current-function"></a>current 函数
+
+`current()` 函数仅在 `count.where` 条件内可用。 它返回当前通过“count”表达式评估枚举的数组成员的值。
+
+值计数用法
+
+- `current(<index name defined in count.name>)`. 例如：`current('arrayMember')`。
+- `current()`. 只有当“值计数”表达式不是另一个“count”表达式的子级时，才允许使用此函数。 返回与上面的值相同的值。
+
+如果调用返回的值是一个对象，则支持属性访问器。 例如：`current('objectArrayMember').property`。
+
+字段计数用法
+
+- `current(<the array alias defined in count.field>)`. 例如，`current('Microsoft.Test/resource/enumeratedArray[*]')`。
+- `current()`. 只有当“字段计数”表达式不是另一个“count”表达式的子级时，才允许使用此函数。 返回与上面的值相同的值。
+- `current(<alias of a property of the array member>)`. 例如，`current('Microsoft.Test/resource/enumeratedArray[*].property')`。
+
+#### <a name="field-count-examples"></a>字段计数示例
 
 示例 1：检查数组是否为空
 
@@ -562,29 +607,168 @@ Count 表达式的结构如下：
 }
 ```
 
-示例 6：使用 `where` 条件中的 `field()` 函数访问当前计算所得的数组成员的文本值。 此条件确认不存在具有偶数优先级值的安全规则。
+示例 6：在 `where` 条件中使用 `current()` 函数来访问模板函数中当前枚举的数组成员的值。 此条件检查虚拟网络是否包含不在 10.0.0.0/24 CIDR 范围内的某个地址前缀。
 
 ```json
 {
     "count": {
-        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
         "where": {
-          "value": "[mod(first(field('Microsoft.Network/networkSecurityGroups/securityRules[*].priority')), 2)]",
-          "equals": 0
+          "value": "[ipRangeContains('10.0.0.0/24', current('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]'))]",
+          "equals": false
         }
     },
     "greater": 0
 }
 ```
 
+示例 7：在 `where` 条件中使用 `field()` 函数来访问当前枚举的数组成员的值。 此条件检查虚拟网络是否包含不在 10.0.0.0/24 CIDR 范围内的某个地址前缀。
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
+        "where": {
+          "value": "[ipRangeContains('10.0.0.0/24', first(field(('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]')))]",
+          "equals": false
+        }
+    },
+    "greater": 0
+}
+```
+
+#### <a name="value-count-examples"></a>值计数示例
+
+示例 1：检查资源名称是否与任何给定的名称模式匹配。
+
+```json
+{
+    "count": {
+        "value": [ "prefix1_*", "prefix2_*" ],
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+示例 2：检查资源名称是否与任何给定的名称模式匹配。 `current()` 函数未指定索引名称。 结果与前面的示例相同。
+
+```json
+{
+    "count": {
+        "value": [ "prefix1_*", "prefix2_*" ],
+        "where": {
+            "field": "name",
+            "like": "[current()]"
+        }
+    },
+    "greater": 0
+}
+```
+
+示例 3：检查资源名称是否与数组参数提供的任何给定的名称模式匹配。
+
+```json
+{
+    "count": {
+        "value": "[parameters('namePatterns')]",
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+示例 4：检查是否有任何虚拟网络地址前缀不在批准的前缀的列表下。
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
+        "where": {
+            "count": {
+                "value": "[parameters('approvedPrefixes')]",
+                "name": "approvedPrefix",
+                "where": {
+                    "value": "[ipRangeContains(current('approvedPrefix'), current('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]'))]",
+                    "equals": true
+                },
+            },
+            "equals": 0
+        }
+    },
+    "greater": 0
+}
+```
+
+示例 5：检查是否在 NSG 中定义了所有保留的 NSG 规则。 保留的 NSG 规则的属性是在一个包含对象的数组参数中定义的。
+
+参数值：
+
+```json
+[
+    {
+        "priority": 101,
+        "access": "deny",
+        "direction": "inbound",
+        "destinationPortRange": 22
+    },
+    {
+        "priority": 102,
+        "access": "deny",
+        "direction": "inbound",
+        "destinationPortRange": 3389
+    }
+]
+```
+
+策略:
+```json
+{
+    "count": {
+        "value": "[parameters('reservedNsgRules')]",
+        "name": "reservedNsgRule",
+        "where": {
+            "count": {
+                "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+                "where": {
+                    "allOf": [
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].priority",
+                            "equals": "[current('reservedNsgRule').priority]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].access",
+                            "equals": "[current('reservedNsgRule').access]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].direction",
+                            "equals": "[current('reservedNsgRule').direction]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].destinationPortRange",
+                            "equals": "[current('reservedNsgRule').destinationPortRange]"
+                        }
+                    ]
+                }
+            },
+            "equals": 1
+        }
+    },
+    "equals": "[length(parameters('reservedNsgRules'))]"
+}
+```
+
 ### <a name="effect"></a>效果
 
 Azure Policy 支持以下类型的效果：
-
-<!--
-- **EnforceOPAConstraint** (preview): configures the Open Policy Agent admissions controller with Gatekeeper v3 for self-managed Kubernetes clusters on Azure (preview)
-- **EnforceRegoPolicy** (preview): configures the Open Policy Agent admissions controller with Gatekeeper v2 in Azure Kubernetes Service
--->
 
 - Append：会将定义的字段集添加到请求
 - Audit：会在活动日志中生成一个警告事件，但不会使请求失败
@@ -593,6 +777,9 @@ Azure Policy 支持以下类型的效果：
 - DeployIfNotExists：如果相关资源不存在，则部署该资源
 - **Disabled**：不评估资源是否符合策略规则
 - **Modify**：在资源中添加、更新或删除定义的标记
+
+<!--NOT AVAILABLE ON EnforceOPAConstraint-->
+<!--NOT AVAILABLE ON EnforceRegoPolicy-->
 
 有关每种效果、评估顺序、属性和示例的完整详细信息，请参阅[了解 Azure Policy 效果](effects.md)。
 
@@ -616,32 +803,31 @@ Azure Policy 支持以下类型的效果：
 以下函数可在策略规则中使用，但与在 Azure 资源管理器模板（ARM 模板）中使用不同：
 
 - `utcNow()` - 与 ARM 模板不同，该属性可以在 defaultValue 之外使用。
-  - 以通用 ISO 8601 日期/时间格式“`yyyy-MM-ddTHH:mm:ss.fffffffZ`”返回设置为当前日期和时间的字符串。
+    - 以通用 ISO 8601 日期/时间格式“`yyyy-MM-ddTHH:mm:ss.fffffffZ`”返回设置为当前日期和时间的字符串。
 
 以下函数仅适用于策略规则：
 
 - `addDays(dateTime, numberOfDaysToAdd)`
-  - **dateTime**：[必需] 字符串 - 采用通用 ISO 8601 日期/时间格式“yyyy-MM-ddTHH:mm:ss.FFFFFFFZ”的字符串
-  - numberOfDaysToAdd：[必需] 整数 - 要增加的天数
+    - **dateTime**：[必需] 字符串 - 采用通用 ISO 8601 日期/时间格式“yyyy-MM-ddTHH:mm:ss.FFFFFFFZ”的字符串
+    - numberOfDaysToAdd：[必需] 整数 - 要增加的天数
 - `field(fieldName)`
-  - fieldName：[必需] 字符串 - 要检索的[字段](#fields)名称
-  - 从 If 条件正在评估的资源返回该字段的值。
-  - `field` 主要用于 **AuditIfNotExists** 和 **DeployIfNotExists**，以引用所评估资源上的字段。 可以在 [DeployIfNotExists 示例](effects.md#deployifnotexists-example)中看到这种用法的示例。
+    - fieldName：[必需] 字符串 - 要检索的[字段](#fields)名称
+    - 从 If 条件正在评估的资源返回该字段的值。
+    - `field` 主要用于 **AuditIfNotExists** 和 **DeployIfNotExists**，以引用所评估资源上的字段。 可以在 [DeployIfNotExists 示例](effects.md#deployifnotexists-example)中看到这种用法的示例。
 - `requestContext().apiVersion`
-  - 返回已触发策略评估的请求的 API 版本（示例：`2019-09-01`）。
+    - 返回已触发策略评估的请求的 API 版本（示例：`2019-09-01`）。
     该值是 PUT/PATCH 请求中用于对资源创建/更新进行评估的 API 版本。 在对现有资源进行符合性评估时，将会一律使用最新的 API 版本。
 - `policy()`
-  - 返回有关正在评估的策略的下列信息。 可以从返回的对象访问属性，例如：`[policy().assignmentId]`。
+    - 返回有关正在评估的策略的下列信息。 可以从返回的对象访问属性，例如：`[policy().assignmentId]`。
   
-  ```json
-  {
+    ```json
+    {
     "assignmentId": "/subscriptions/ad404ddd-36a5-4ea8-b3e3-681e77487a63/providers/Microsoft.Authorization/policyAssignments/myAssignment",
     "definitionId": "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c",
     "setDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/42a694ed-f65e-42b2-aa9e-8052e9740a92",
     "definitionReferenceId": "StorageAccountNetworkACLs"
-  }
-  ```
-
+    }
+    ```
 
 - `ipRangeContains(range, targetRange)`
     - **range**：[必需] 字符串 - 指定 IP 地址范围的字符串。
@@ -654,6 +840,8 @@ Azure Policy 支持以下类型的效果：
     - CIDR 范围（示例：`10.0.0.0/24`、`2001:0DB8::/110`）
     - 由起始 IP 地址和结束 IP 地址定义的范围（示例：`192.168.0.1-192.168.0.9`、`2001:0DB8::-2001:0DB8::3:FFFF`）
 
+- `current(indexName)`
+    - 只能在 [count 表达式](#count)内使用的特殊函数。
 
 #### <a name="policy-function-example"></a>策略函数示例
 
@@ -681,49 +869,49 @@ Azure Policy 支持以下类型的效果：
 
 - 适用于 Visual Studio Code 的 Azure Policy 扩展（推荐）
 
-  使用[适用于 Visual Studio Code 的 Azure Policy 扩展](../how-to/extension-for-vscode.md)来查看和发现资源属性的别名。
+    使用[适用于 Visual Studio Code 的 Azure Policy 扩展](../how-to/extension-for-vscode.md)来查看和发现资源属性的别名。
 
-  :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Visual Studio Code 的 Azure Policy 扩展的屏幕截图，鼠标悬停在属性上以显示别名。" border="false":::
+    :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Visual Studio Code 的 Azure Policy 扩展的屏幕截图，鼠标悬停在属性上以显示别名。" border="false":::
 
 - Azure PowerShell
 
-  ```powershell
-  # Login first with Connect-AzAccount
-  Connect-AzAccount -EnvironmentName AzureChinaCloud
+    ```powershell
+    # Login first with Connect-AzAccount
+    Connect-AzAccount -Environment AzureChinaCloud
 
-  # Use Get-AzPolicyAlias to list available providers
-  Get-AzPolicyAlias -ListAvailable
+    # Use Get-AzPolicyAlias to list available providers
+    Get-AzPolicyAlias -ListAvailable
 
-  # Use Get-AzPolicyAlias to list aliases for a Namespace (such as Azure Compute -- Microsoft.Compute)
-  (Get-AzPolicyAlias -NamespaceMatch 'compute').Aliases
-  ```
+    # Use Get-AzPolicyAlias to list aliases for a Namespace (such as Azure Compute -- Microsoft.Compute)
+    (Get-AzPolicyAlias -NamespaceMatch 'compute').Aliases
+    ```
 
-  > [!NOTE]
-  > 若要查找可用于[修改](./effects.md#modify)效果的别名，请在 Azure PowerShell 4.6.0 或更高版本中使用以下命令：
-  >
-  > ```azurepowershell
-  > Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }
-  > ```
+    > [!NOTE]
+    > 若要查找可用于[修改](./effects.md#modify)效果的别名，请在 Azure PowerShell 4.6.0 或更高版本中使用以下命令：
+    >
+    > ```powershell
+    > Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }
+    > ```
 
 - Azure CLI
 
-  ```azurecli
-  # Login first with below commands
-  az cloud set -n AzureChinaCloud
-  az login
+    ```azurecli
+    # Login first with below commands
+    az cloud set -n AzureChinaCloud
+    az login
 
-  # List namespaces
-  az provider list --query [*].namespace
+    # List namespaces
+    az provider list --query [*].namespace
 
-  # Get Azure Policy aliases for a specific Namespace (such as Azure Compute -- Microsoft.Compute)
-  az provider show --namespace Microsoft.Compute --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
-  ```
+    # Get Azure Policy aliases for a specific Namespace (such as Azure Compute -- Microsoft.Compute)
+    az provider show --namespace Microsoft.Compute --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
+    ```
 
 - REST API/ARMClient
 
-  ```http
-  GET https://management.chinacloudapi.cn/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases
-  ```
+    ```http
+    GET https://management.chinacloudapi.cn/providers/?api-version=2019-10-01&$expand=resourceTypes/aliases
+    ```
 
 ### <a name="understanding-the--alias"></a>了解 [*] 别名
 
@@ -758,3 +946,5 @@ Azure Policy 支持以下类型的效果：
 - 了解如何[获取符合性数据](../how-to/get-compliance-data.md)。
 - 了解如何[修正不符合的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。
+
+<!--Update_Description: update meta properties, wording update, update link-->

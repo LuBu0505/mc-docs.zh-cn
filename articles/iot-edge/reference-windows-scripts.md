@@ -4,17 +4,16 @@ description: 用于在 Windows 设备上安装、卸载或更新的 IoT Edge Pow
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-origin.date: 10/06/2020
-ms.date: 10/13/2020
+ms.date: 02/02/2021
 ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bae6d0c386d909032f0250e348b07351c0cb0a4c
-ms.sourcegitcommit: 9438c9db77338cecacf37d2fc178e757df9de83d
+ms.openlocfilehash: 67f9e4e8bbc82d29f9686e15c44f0e613e49c487
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94595290"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579461"
 ---
 # <a name="powershell-scripts-for-iot-edge-on-windows"></a>Windows 上 IoT Edge 的 PowerShell 脚本
 
@@ -104,6 +103,4 @@ Initialize-IoTEdge 命令使用设备连接字符串和操作详细信息配置 
 
 在以下文章中了解如何使用这些命令：
 
-* [安装或卸载 Azure IoT Edge 运行时](how-to-install-iot-edge.md)
-* [使用对称密钥身份验证预配 Azure IoT Edge 设备](how-to-manual-provision-symmetric-key.md)
-* [使用 X.509 证书身份验证预配 Azure IoT Edge 设备](how-to-manual-provision-x509.md)
+* [安装或卸载适用于 Windows 的 Azure IoT Edge](how-to-install-iot-edge-windows-on-windows.md)

@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 08/19/2020
 author: rockboyfor
-ms.date: 11/09/2020
+ms.date: 02/08/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 35999a7e40cda7ddf46e3ba913d3f646659f59db
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: e21de970198ee25388a9f7d3f3ebe2edbec882b7
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508020"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580601"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Azure Cosmos DB 中的定价模型
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -34,7 +34,6 @@ Azure Cosmos DB 的定价模型可简化成本管理和计划。 使用 Azure Co
 
 Azure Cosmos DB 中的定价模型在所有 API 中都是一致的。 有关详细信息，请参阅 [Azure Cosmos DB 定价页](https://www.azure.cn/pricing/details/cosmos-db/)、[了解 Azure Cosmos DB 帐单](understand-your-bill.md)和 [Azure Cosmos DB 定价模型如何对客户而言更具经济效益](total-cost-ownership.md)。
 
-
 <!--MOONCAKE CORRECT ON non-government region in the US condition clause-->
 
 ## <a name="try-azure-cosmos-db-for-free"></a>免费试用 Azure Cosmos DB
@@ -45,14 +44,17 @@ Azure Cosmos DB 免费为开发人员提供众多选项。 这些选项包括：
 
 <!--MOONCAKE CUSTOMIZE: Azure trial account-->
 
-* **Azure 试用帐户**：Azure 提供了一个[免费层](https://www.microsoft.com/china/azure/index.html?fromtype=cn)，它在头 120 天为你提供价值 3500 元的 Azure 额度。
+* **Azure 试用版订阅**：Azure 提供了一个[免费层](https://www.microsoft.com/china/azure/index.html?fromtype=cn)，它在头 30 天为你提供价值 3500 元的 Azure 额度。
 
-<!--Not Available on For more information [Azure trial account](../billing/billing-avoid-charges-free-account.md)-->
-<!--Not Available on * **Try Azure Cosmos DB for free**-->
+<!--NOT AVAILABLE ON [Azure trial subscription](../cost-management-billing/manage/avoid-charges-free-account.md)-->
+<!--NOT AVAILABLE ON * **Try Azure Cosmos DB for free**-->
 
 * **Azure Cosmos DB 模拟器**：为方便进行开发，Azure Cosmos DB 模拟器提供了一个模拟 Azure Cosmos DB 服务的本地环境。 模拟器免费提供，并且具有对云服务的高保真度。 使用 Azure Cosmos DB 模拟器可在本地开发和测试应用程序，无需创建 Azure 订阅且不会产生任何费用。 投入生产之前，可以在本地使用模拟器开发应用程序。 如果对模拟器的应用程序功能感到满意，可切换到云中的“使用 Azure Cosmos DB 帐户”，从而大幅节省成本。 有关模拟器的详细信息，请参阅[使用 Azure Cosmos DB 进行开发和测试](local-emulator.md)一文。
 
 <!-- Not Available on ## Pricing with reserved capacity-->
+<!--NOT AVAILABLE ON [reserved capacity](cosmos-db-reserved-capacity.md)-->
+<!--NOT AVAILABLE ON [Prepay for Azure Cosmos DB resources with reserved capacity](cosmos-db-reserved-capacity.md)-->
+
 ## <a name="next-steps"></a>后续步骤
 
 可在以下文章中了解更多关于优化 Azure Cosmos DB 资源成本的信息：
@@ -65,8 +67,8 @@ Azure Cosmos DB 免费为开发人员提供众多选项。 这些选项包括：
 * 详细了解如何[优化查询成本](./optimize-cost-reads-writes.md)
 * 详细了解如何[优化多区域 Cosmos 帐户的成本](optimize-cost-regions.md)
     
-    <!--Not Available on * Learn about [Azure Cosmos DB reserved capacity](cosmos-db-reserved-capacity.md)-->
+    <!--NOT AVAILABLE ON [Azure Cosmos DB reserved capacity](cosmos-db-reserved-capacity.md)-->
     
 * 了解 [Azure Cosmos DB 模拟器](local-emulator.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -4,16 +4,16 @@ description: 汇总了使用 Azure Site Recovery 将 Azure VM 灾难恢复到次
 ms.topic: article
 origin.date: 11/29/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: 09/07/2020
 ms.author: v-yeche
-ms.openlocfilehash: 30377941cc524c2a8c8838251d289111dddad1ab
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 6289f79043c48d78da240fab1c5742e4f3343901
+ms.sourcegitcommit: 7fc72b8afbdf9ad5e53922f489229e54282214b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231089"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540352"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>在 Azure 区域之间进行 Azure VM 灾难恢复的支持矩阵
 
@@ -47,6 +47,7 @@ ms.locfileid: "98231089"
 中国 | 中国东部、中国北部、中国东部 2、中国北部 2
 
 <!--MOONCAKE: Not Available on **Brazil South**-->
+
 <!--MOONCAKE: Not Available on THE FIRST TWO ROW IN NOTE SECTION-->
 
 >[!NOTE]
@@ -209,7 +210,7 @@ Tags  | 支持 | 应用于源虚拟机上的用户生成的标签会在测试故
 
 此表汇总了对 Azure VM OS 磁盘、数据磁盘和临时磁盘的支持。
 
-- 请务必遵循适用于 [Linux](../virtual-machines/linux/disk-scalability-targets.md) 和 [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM 的 VM 磁盘限制以及目标，以避免任何性能问题。
+- 请务必遵循[托管磁盘](../virtual-machines/disks-scalability-targets.md)的 VM 磁盘限制以及目标，以避免任何性能问题。
 - 如果使用默认设置进行部署，Site Recovery 会根据源设置自动创建磁盘和存储帐户。
 - 如果自定义，请确保遵循指南。
 
@@ -259,7 +260,7 @@ Tags  | 用户生成的标签每 24 小时复制一次。
 <!--Not Avaiable on Line 230+1,  ZRS -->
 
 >[!IMPORTANT]
-> 为了避免出现性能问题，请务必遵守 [Linux](../virtual-machines/linux/disk-scalability-targets.md) 或 [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM 的 VM 磁盘可伸缩性和性能目标。 如果使用默认设置，Site Recovery 会基于源配置创建所需的磁盘和存储帐户。 如果自定义和选择自己的设置，请遵守源 VM 的磁盘可伸缩性和性能目标。
+> 为了避免出现性能问题，请务必遵循[托管磁盘](../virtual-machines/disks-scalability-targets.md)的 VM 磁盘可伸缩性和性能目标。 如果使用默认设置，Site Recovery 会基于源配置创建所需的磁盘和存储帐户。 如果自定义和选择自己的设置，请遵守源 VM 的磁盘可伸缩性和性能目标。
 
 ## <a name="limits-and-data-change-rates"></a>限制和数据更改率
 

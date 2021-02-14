@@ -3,17 +3,17 @@ title: Azure Stack Hub 发行说明
 description: Azure Stack Hub 集成系统的发行说明，包括更新和 bug 修复。
 author: WenJason
 ms.topic: article
-origin.date: 12/23/2020
-ms.date: 01/18/2021
+origin.date: 01/22/2021
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
-ms.openlocfilehash: eb4b810bc2a62b1a2f3878afefe8fb2ad57c5961
-ms.sourcegitcommit: e1edc6ef84dbbda1da4e0a42efa3fd62eee033d1
+ms.openlocfilehash: 637bf32c4515afa8b2b4e287f8d6a0ce2ba4b76c
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541895"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503980"
 ---
 # <a name="azure-stack-hub-release-notes"></a>Azure Stack Hub 发行说明
 
@@ -119,19 +119,13 @@ Azure Stack Hub 定期发布修补程序。 从 2005 版开始，更新到新的
 
 Azure Stack Hub 修补程序仅适用于 Azure Stack Hub 集成系统；请勿尝试在 ASDK 上安装修补程序。
 
-### <a name="hotfix-prerequisites-before-applying-the-2008-update"></a>修补程序先决条件：在应用 2008 更新之前
-
-必须在包含以下修补程序的版本 2005 上应用 Azure Stack Hub 版本 2008：
-
-- [Azure Stack Hub 修补程序 1.2005.25.92](https://support.microsoft.com/help/4595074)
-
 ### <a name="after-successfully-applying-the-2008-update"></a>成功应用 2008 更新之后
 
-更新到新的主版本（如 1.2005.x 到 1.2008.x）时，会自动安装新的主版本中的最新修补程序（如果有）。 在此之后，如果发布了适用于你的内部版本的修补程序，则应安装它。
+由于 Azure Stack Hub 修补程序是累积的，因此，作为最佳做法，你应安装已为你的内部版本发布的所有修补程序，以确保主要版本之间的最佳更新体验。 更新到新的主版本（如 1.2005.x 到 1.2008.x）时，会自动安装新的主版本中的最新修补程序（如果有）。
 
 安装 2008 之后，如果有任何 2008 修补程序被发布，应安装这些修补程序：
 
-- [Azure Stack Hub 修补程序 1.2008.20.102](https://support.microsoft.com/help/4595075)
+- [Azure Stack Hub 修补程序 1.2008.23.108](https://support.microsoft.com/topic/c0d203fd-7585-4c8d-8ea5-ae13897e352e)
 
 ## <a name="2005-build-reference"></a>2005 内部版本参考
 
@@ -182,7 +176,7 @@ Azure Stack Hub 2005 更新内部版本类型为“完整”。
 
 - 从管理员门户中删除了停止、关闭和重启基础结构角色实例的操作。 还在 Fabric 资源提供程序中删除了相应的 API。 Azure Stack Hub 的管理员 RM 模块和 AZ 预览版中的以下 PowerShell cmdlet 不再有效：Stop-AzsInfrastructureRoleInstance、Disable-InfrastructureRoleInstance 和 Restart-InfrastructureRoleInstance  。 将从 Azure Stack Hub 的下一个管理员 AZ 模块版本中删除这些 cmdlet。
 - Azure Stack Hub 2005 现在仅支持 [Azure Stack Hub 2020（版本 87.x）上的应用服务](app-service-release-notes-2020-Q2.md)。
-- 执行硬件监视所需的用户加密设置已从 DES 更改为 AES，以提高安全性。 请联系你的硬件合作伙伴，了解如何更改基板管理控制器 (BMC) 中的设置。 在 BMC 中进行更改后，可能需要使用特权终结点再次运行命令 **Set-BmcCredential**。 有关详细信息，请参阅[在 Azure Stack Hub 中轮换机密](azure-stack-rotate-secrets.md)
+- 执行硬件监视所需的用户加密设置已从 DES 更改为 AES，以提高安全性。 请联系你的硬件合作伙伴，了解如何更改基板管理控制器 (BMC) 中的设置。 在 BMC 中进行更改后，可能需要使用特权终结点再次运行命令 Set-BmcCredential。 有关详细信息，请参阅[在 Azure Stack Hub 中轮换机密](azure-stack-rotate-secrets.md)
 
 ### <a name="fixes"></a>修复项
 
@@ -270,13 +264,13 @@ Azure Stack Hub 2002 更新内部版本类型为“完整”。
 - Azure Stack Hub 就绪性检查器工具现在使用分配给 AD Graph 的所有 TCP IP 端口来验证 AD Graph 集成。
 - 脱机联合工具已更新，改进了可靠性。 该工具在 GitHub 上不再可用，已[移到 PowerShell 库](https://www.powershellgallery.com/packages/Azs.Syndication.Admin/)中。 有关详细信息，请参阅[将市场项下载到 Azure Stack Hub](azure-stack-download-azure-marketplace-item.md)。
 - 将引入一项新的监视功能。 针对物理主机和基础结构 VM 的磁盘空间不足警报将由平台自动修正。仅当此操作失败时，该警报才会显示在 Azure Stack Hub 管理员门户中，供操作员执行操作。
-- 对[诊断日志收集](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002&preserve-view=true)的改进。 新的体验优化和简化了诊断日志收集，它不需要预先配置 blob 存储帐户。 存储环境已预先配置，因此你可以在创建支持案例之前发送日志，并减少支持人员通话时间。
-- [主动日志收集和按需日志收集](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002&preserve-view=true)所花费的时间已缩短 80%。 日志收集时间可能会比此预期值长，但不需要 Azure Stack Hub 操作员执行操作，除非日志收集失败。
+- 对[诊断日志收集](./diagnostic-log-collection.md?preserve-view=true&view=azs-2002)的改进。 新的体验优化和简化了诊断日志收集，它不需要预先配置 blob 存储帐户。 存储环境已预先配置，因此你可以在创建支持案例之前发送日志，并减少支持人员通话时间。
+- [主动日志收集和按需日志收集](./diagnostic-log-collection.md?preserve-view=true&view=azs-2002)所花费的时间已降低 80%。 日志收集时间可能会比预期长，但不需要 Azure Stack Hub 操作员执行操作，除非日志收集失败。
 - 启动更新后，“更新”边栏选项卡中会显示 Azure Stack Hub 更新程序包的下载进度。 这仅适用于那些选择[通过自动下载功能准备更新程序包](azure-stack-update-prepare-package.md#automatic-download-and-preparation-for-update-packages)且已连接的 Azure Stack Hub 系统。
 - 改进了网络控制器主机代理的可靠性。
 - 引入了一个名为 DNS Orchestrator 的新微服务，它改进了在修补和更新期间内部 DNS 服务的复原逻辑。
 - 添加了一个新的请求验证，用于在创建 VM 时使启动诊断存储帐户参数的无效 blob URI 失败。
-- 为 Rdagent 和主机代理（主机上用于方便执行 VM CRUD 操作的两个服务）添加了自动修正和日志记录改进。
+- 为 Reagent 和主机代理（主机上用于便利地执行 VM CRUD 操作的两个服务）添加了自动修正和日志记录改进。
 - 向市场管理添加了一项新功能，使 Microsoft 能够添加属性，目的是防止管理员下载由于存在各种属性（例如 Azure Stack 版本或计费模型）而与其 Azure Stack 不兼容的市场产品。 只有 Microsoft 才能添加这些属性。 有关详细信息，请参阅[使用门户下载市场项](azure-stack-download-azure-marketplace-item.md#use-the-portal-to-download-marketplace-items)。
 
 ### <a name="changes"></a>更改

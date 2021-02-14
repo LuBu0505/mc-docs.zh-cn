@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/25/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: ea2109759061b3402fd098e9dc5552044acabe74
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 0e3bbe8faeeae9a128ed06ff025f7b9493b3aed1
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230932"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804319"
 ---
 # <a name="configure-and-submit-training-runs"></a>配置和提交训练运行
 
@@ -75,6 +75,9 @@ experiment = Experiment(workspace=ws, name=experiment_name)
 选择要在其中运行训练脚本的计算目标。 如果 ScriptRunConfig 中未指定任何计算目标，或者 `compute_target='local'`，则 Azure ML 会在本地执行脚本。 
 
 本文中的示例代码假设你已创建了“先决条件”部分的计算目标 `my_compute_target`。
+
+>[!Note]
+>不支持将 Azure Databricks 作为用于模型训练的计算目标。 可以使用 Azure Databricks 执行数据准备和部署任务。 
 
 ## <a name="create-an-environment"></a>创建环境
 Azure 机器学习[环境](concept-environments.md)是（机器学习训练发生于其中的）环境的封装。 此类学习环境会指定与训练和评分脚本有关的 Python 包、Docker 映像、环境变量和软件设置。 它们还指定运行时（Python、Spark 或 Docker）。
@@ -175,16 +178,29 @@ run.wait_for_completion(show_output=True)
 
 ## <a name="troubleshooting"></a>疑难解答
 
+* 运行失败并出现 `jwt.exceptions.DecodeError`：确切的错误消息：`jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()`。 
+    
+    请考虑升级到 azureml-core 的最新版本：`pip install -U azureml-core`。
+    
+    如果在本地运行时遇到此问题，请检查在启动运行的环境中安装的 PyJWT 的版本。 受支持的 PyJWT 的版本是低于 2.0.0 的版本。 如果版本不低于 2.0.0，请从环境中卸载 PyJWT。 可以检查 PyJWT 的版本，按如下所述进行卸载，然后安装正确的版本：
+    1. 启动命令 shell，激活安装了 azureml-core 的 conda 环境。
+    2. 输入 `pip freeze` 并查找 `PyJWT`，如果找到，则列出的版本应低于 2.0.0
+    3. 如果列出的版本不受支持，请在命令行界面中使用 `pip uninstall PyJWT`，并输入 y 进行确认。
+    4. 使用 `pip install 'PyJWT<2.0.0'` 进行安装
+    
+    如果要随运行提交用户创建的环境，请考虑在该环境中使用 azureml-core 的最新版本。 不低于 1.18.0 版的 azureml-core 已经固定为使用低于 2.0.0 的 PyJWT。 如果需要在提交的环境中使用低于 1.18.0 版的 azureml-core，请确保在 pip 依赖项中指定低于 2.0.0 版的 PyJWT。
+
+
  * **ModuleErrors（没有名为“xxx”的模块）** ：如果在 Azure ML 中提交试验时遇到 ModuleErrors，则训练脚本需要安装某个包，但并未添加该包。 你提供包名称后，Azure ML 在用于训练运行的环境中安装该包。
 
     如果使用估算器提交试验，则可以根据要从哪个源安装包，通过估算器中的 `pip_packages` 或 `conda_packages` 参数指定包名称。 还可以使用 `conda_dependencies_file` 指定包含所有依赖项的 yml 文件，或使用 `pip_requirements_file` 参数列出 txt 文件中的所有 pip 要求。 如果你有自己的 Azure ML 环境对象，并且希望替代估算器使用的默认映像，则可以通过估算器构造函数的 `environment` 参数来指定该环境。
     
     可以在 [AzureML 容器](https://github.com/Azure/AzureML-Containers)中看到 Azure ML 维护的 Docker 映像及其内容。
     框架特定的依赖项列在相应的框架文档中：
-    *  [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
-    * [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
-    * [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
-    *  [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
+    *  [Chainer](/python/api/azureml-train-core/azureml.train.dnn.chainer?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
+    * [PyTorch](/python/api/azureml-train-core/azureml.train.dnn.pytorch?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
+    * [TensorFlow](/python/api/azureml-train-core/azureml.train.dnn.tensorflow?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
+    *  [SKLearn](/python/api/azureml-train-core/azureml.train.sklearn.sklearn?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
     
     > [!Note]
     > 如果你认为某个特定的包比较常用，需要添加到 Azure ML 维护的映像和环境中，请在 [AzureML 容器](https://github.com/Azure/AzureML-Containers)中提出 GitHub 问题。 
@@ -192,7 +208,7 @@ run.wait_for_completion(show_output=True)
 * **NameError（未定义名称）、AttributeError（对象没有属性）** ：此异常应该是训练脚本引发的。 可以在 Azure 门户中查看日志文件，以获取有关未定义特定名称或属性错误的详细信息。 在 SDK 中，可以使用 `run.get_details()` 来查看错误消息。 这还会列出针对运行生成的所有日志文件。 在重新提交运行之前，请务必检查训练脚本并修复错误。 
 
 
-* **运行或试验删除**：可以通过以下方式将试验存档：使用 [Experiment.archive](https://docs.microsoft.com/python//api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truearchive--) 方法，或者从 Azure 机器学习工作室客户端中的“试验”选项卡视图中使用“存档试验”按钮。 执行此操作后，在列出查询和视图时将隐藏该试验，但不会将其删除。
+* **运行或试验删除**：可以通过以下方式将试验存档：使用 [Experiment.archive](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truearchive--) 方法，或者从 Azure 机器学习工作室客户端中的“试验”选项卡视图中使用“存档试验”按钮。 执行此操作后，在列出查询和视图时将隐藏该试验，但不会将其删除。
 
     目前不支持永久删除个体试验或运行。 有关删除工作区资产的详细信息，请参阅[导出或删除机器学习服务工作区数据](how-to-export-delete-data.md)。
 
@@ -205,17 +221,7 @@ run.wait_for_completion(show_output=True)
 
     在内部，Azure ML 会将具有相同指标名称的块串联到一个连续列表中。
 
-* 运行失败并出现 `jwt.exceptions.DecodeError`：确切的错误消息：`jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()`。 
-    
-    请考虑升级到 azureml-core 的最新版本：`pip install -U azureml-core`。
-    
-    如果在本地运行时遇到此问题，请检查在启动运行的环境中安装的 PyJWT 的版本。 受支持的 PyJWT 的版本是低于 2.0.0 的版本。 如果版本不低于 2.0.0，请从环境中卸载 PyJWT。 可以检查 PyJWT 的版本，按如下所述进行卸载，然后安装正确的版本：
-    1. 启动命令 shell，激活安装了 azureml-core 的 conda 环境。
-    2. 输入 `pip freeze` 并查找 `PyJWT`，如果找到，则列出的版本应低于 2.0.0
-    3. 如果列出的版本不受支持，请在命令行界面中使用 `pip uninstall PyJWT`，并输入 y 进行确认。
-    4. 使用 `pip install 'PyJWT<2.0.0'` 进行安装
-    
-    如果要随运行提交用户创建的环境，请考虑在该环境中使用 azureml-core 的最新版本。 不低于 1.18.0 版的 azureml-core 已经固定为使用低于 2.0.0 的 PyJWT。 如果需要在提交的环境中使用低于 1.18.0 版的 azureml-core，请确保在 pip 依赖项中指定低于 2.0.0 版的 PyJWT。
+* **计算目标启动时间过长**：用于计算目标的 Docker 映像是从 Azure 容器注册表 (ACR) 加载的。 在默认情况下，Azure 机器学习会创建一个使用“基本”服务层级的 ACR。 将工作区的 ACR 更改为“标准”或“高级”层级可能会减少生成和加载映像所需的时间。 有关详细信息，请参阅 [Azure 容器注册表服务层级](../container-registry/container-registry-skus.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

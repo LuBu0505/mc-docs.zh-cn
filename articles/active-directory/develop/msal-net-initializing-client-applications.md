@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/09/2020
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: c22d4f508a4052e953cbaa64bb746bda573edbb4
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: a3c8db073f23711a24b53262f27eefb68df45888
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91936960"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540774"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>使用 MSAL.NET 初始化客户端应用程序
 本文介绍如何使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 初始化公共客户端和机密客户端应用程序。  若要详细了解客户端应用程序类型和应用程序配置选项，请阅读[概述](msal-client-applications.md)。
@@ -159,3 +159,11 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
+## <a name="next-steps"></a>后续步骤
+
+初始化客户端应用程序后，下一项任务是添加对用户登录和/或已授权 API 访问的支持。
+
+我们的应用程序方案文档提供了有关将用户登录和获取访问令牌以代表用户访问 API 的指南：
+
+- [用于登录用户的 Web 应用：登录和注销](scenario-web-app-sign-user-sign-in.md)
+- [调用 Web API 的 Web 应用：获取令牌](scenario-web-app-call-api-acquire-token.md)

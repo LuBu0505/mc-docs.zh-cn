@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/03/2020
+ms.date: 02/03/2021
 ms.author: v-johya
 origin.date: 10/28/2019
-ms.openlocfilehash: e436ef83fcbd14026be94c368882757bb0ae894a
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: ea23cce1720ab6fe91677750a7f1f2e8096ac746
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747239"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579413"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure 安全管理和监视概述
 本文概述了 Azure 提供的安全功能和服务，以帮助管理和监视 Azure 云服务和虚拟机。
@@ -113,15 +113,18 @@ Azure AD 标识保护提供了可疑登录活动和潜在漏洞的统一视图�
 
 ## <a name="security-center"></a>安全中心
 
-Azure 安全中心可帮助防范、检测和应对威胁。 通过安全中心可提高对 Azure 资源安全性的可见性和控制力度。 它为 Azure 订阅提供集成的安全监控和策略管理。 它有助于检测可能会被忽视的威胁，适用于各种安全解决方案生态系统。
+Azure 安全中心可帮助防范、检测和应对威胁。 通过安全中心可提高对 Azure 资源安全性以及混合云环境中资源的安全性的可见性和控制力度。 
+
+安全中心对已连接的资源执行持续的安全评估，并将其配置和部署与 [Azure 安全基准检验](../benchmarks/introduction.md)进行比较，以提供针对你的环境量身定制的详细安全建议。
 
 安全中心通过以下方式帮助优化和监视 Azure 资源的安全：
 
-* 你可根据以下内容为 Azure 订阅资源定义策略：
-  * 公司的安全需求。
-  * 应用程序的类型或每个订阅中数据的敏感度。
-* 监视 Azure 虚拟机、网络和应用程序的状态。
-* 提供按优先级排列的安全警报列表，包括集成的合作伙伴解决方案中的警报。 它还提供了快速调查攻击所需的信息以及如何修复攻击的建议。
+- 你可根据以下内容为 Azure 订阅资源定义策略：
+    - 组织的安全需求。
+    - 应用程序的类型或每个订阅中数据的敏感度。
+    - 适用于订阅的任何行业或监管标准或基准。 
+- 监视 Azure 虚拟机、网络和应用程序的状态。
+- 提供按优先级排列的安全警报列表，包括集成的合作伙伴解决方案中的警报。 它还提供了快速调查攻击所需的信息以及如何修复攻击的建议。
 
 了解详细信息：
 

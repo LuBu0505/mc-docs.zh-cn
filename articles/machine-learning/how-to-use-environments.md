@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 origin.date: 07/23/2020
 ms.date: 08/24/2020
-ms.openlocfilehash: 750f94bc2f593c936a7d1a38f62cfdd4111d0bf4
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: d6ed67fe0d20c5fddfff768320ecddf5918077da
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97105272"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804283"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>在 Azure 机器学习中创建和使用软件环境
 
@@ -131,6 +131,8 @@ myenv.docker.base_image_registry="your_registry_location"
 #### <a name="use-your-own-dockerfile"></a>使用你自己的 Dockerfile 
 
 还可以指定自定义 Dockerfile。 最简单的方法是使用 Docker ```FROM``` 命令从某个 Azure 机器学习基础映像开始，然后添加自己的自定义步骤。 如果需要安装非 Python 包作为依赖项，请使用此方法。 记住将基础映像设置为“None”。
+
+请注意，Python 是 Azure 机器学习中的隐式依赖项，因此自定义 dockerfile 必须已安装 Python。
 
 ```python
 # Specify docker steps as a string. 

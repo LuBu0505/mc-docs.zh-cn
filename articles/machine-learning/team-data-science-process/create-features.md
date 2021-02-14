@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: 555024e7419710e015bf03c3ca8ad4b4d35e2e92
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: a982c965a15ee717cacec24b386235ed89c849c8
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978173"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804289"
 ---
-# <a name="feature-engineering-in-data-science"></a>数据科学中的特征工程
+# <a name="feature-engineering-in-machine-learning"></a>机器学习中的特征工程
 
 在本文中，你将了解特征工程及其在机器学习增强数据中的作用。 从在 [Azure 机器学习工作室（经典）](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)试验中提取的说明性示例中学习。 
 

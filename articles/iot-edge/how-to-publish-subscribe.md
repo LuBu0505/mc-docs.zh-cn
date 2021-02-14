@@ -6,17 +6,16 @@ keywords: ''
 author: kgremban
 ms.author: v-tawe
 ms.reviewer: ebertra
-origin.date: 11/09/2020
-ms.date: 01/05/2021
+ms.date: 02/02/2021
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: fb60670e422bf87d3e30115140ed64d7aa393341
-ms.sourcegitcommit: 40db5a4b9ab8b5877e307ff7a567fd930ca81c72
+ms.openlocfilehash: bedf58c1fe5e0db2626b99f690edb2d0d4cd3cb7
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894289"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579600"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>使用 Azure IoT Edge 发布和订阅
 
@@ -252,7 +251,7 @@ ms.locfileid: "97894289"
 
 ### <a name="authorize-publisher-and-subscriber-clients"></a>对发布服务器和订阅服务器客户端授权
 
-若要对发布服务器和订阅服务器进行授权，请通过 Azure CLI、Visual Studio 或 Visual Studio Code 编辑 IoT Edge 中心孪生体，以包含以下授权策略：
+若要对发布服务器和订阅服务器进行授权，请通过 Azure CLI、Visual Studio 或 Visual Studio Code 创建 IoT Edge 部署来编辑 IoT Edge 中心孪生体，以包含以下授权策略：
 
 ```json
 {

@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/06/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: nacanuma
 ms.custom: aaddev devx-track-js
-ms.openlocfilehash: 5d291868449253973b25f3cd14a823df0f80fc93
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 3014163c125d9f5439efb2a0f2b2c20a2b74e771
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021781"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540677"
 ---
-# <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>通过适用于 JavaScript 的 Microsoft 身份验证库来使用 Azure AD B2C
+# <a name="use-the-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>通过适用于 JavaScript 的 Microsoft 身份验证库来使用 Azure AD B2C
 
-借助[适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js)，JavaScript 应用程序开发人员可以使用 [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/overview.md) 通过社交和本地标识对用户进行身份验证。
+借助[适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js)，JavaScript 应用程序开发人员可以使用 [Azure Active Directory B2C](../../active-directory-b2c/overview.md) (Azure AD B2C) 通过社交和本地标识对用户进行身份验证。
 
 使用作为标识管理服务的 Azure AD B2C，可以自定义和控制客户的注册和登录方式，并在他们使用你的应用程序时管理其配置文件。 使用 Azure AD B2C，还可以为应用程序在身份验证过程中显示的 UI 提供品牌标志并进行自定义。
 
@@ -216,4 +216,4 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 详细了解 Azure AD B2C 概念：
 
 - [用户流](../../active-directory-b2c/tutorial-create-user-flows.md)
-
+- [自定义策略](../../active-directory-b2c/custom-policy-get-started.md)

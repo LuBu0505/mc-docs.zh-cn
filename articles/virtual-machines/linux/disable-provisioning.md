@@ -6,15 +6,15 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 09/10/2020
+ms.date: 02/01/2021
 ms.author: v-johya
 ms.reviewer: cynthn
-ms.openlocfilehash: cc3936e3c8ca8aeffbe2e43f0bd44b08643f4786
-ms.sourcegitcommit: f45809a2120ac7a77abe501221944c4482673287
+ms.openlocfilehash: a95b6e076c29303ae210cadf0aa8204db2599700
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057484"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579590"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>禁用或删除 VM 和映像中的 Linux 代理
 
@@ -31,9 +31,9 @@ Azure 平台可承载许多扩展，其中包括 VM 配置、监视、安全性�
 
 ## <a name="disabling-extension-processing"></a>禁用扩展处理
 
-可以通过多种方式来禁用扩展处理（具体取决于你的需求），但在继续之前，**必须**删除部署到 VM 的所有扩展，例如，可以使用 AZ CLI 执行[列出](/cli/vm/extension?view=azure-cli-latest#az-vm-extension-list)和[删除](/cli/vm/extension?view=azure-cli-latest#az-vm-extension-delete)操作：
+可以通过多种方式来禁用扩展处理（具体取决于你的需求），但在继续之前，**必须** 删除部署到 VM 的所有扩展，例如，可以使用 Azure CLI 执行[列出](/cli/vm/extension#az-vm-extension-list)和[删除](/cli/vm/extension#az-vm-extension-delete)操作：
 
-```bash
+```azurecli
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
 ```
 > [!Note]
@@ -43,7 +43,7 @@ az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
 ### <a name="disable-at-the-control-plane"></a>在控制平面中禁用
 如果你不确定将来是否需要扩展，则可以保留 VM 上安装的 Linux 代理，然后从平台禁用扩展处理功能。 这是 `Microsoft.Compute` api 版本 `2018-06-01` 或更高版本中提供的选项，不依赖于所安装的 Linux 代理版本。
 
-```bash
+```azurecli
 az vm update -g <resourceGroup> -n <vmName> --set osProfile.allowExtensionOperations=false
 ```
 可以通过上述命令轻松地从平台重新启用此扩展处理，但启用时请将其设置为“true”。
@@ -132,7 +132,7 @@ Linux 代理能够通过步骤“waagent -deprovision+user”清理一些现有�
 
 
 **创建常规托管映像**
-```bash
+```azurecli
 az vm deallocate -g <resource_group> -n <vm_name>
 az vm generalize -g <resource_group> -n <vm_name>
 az image create -g <resource_group> -n <image_name> --source <vm_name>
@@ -140,7 +140,7 @@ az image create -g <resource_group> -n <image_name> --source <vm_name>
 
 **在共享映像库中创建映像版本**
 
-```bash
+```azurecli
 az sig image-version create \
     -g $sigResourceGroup 
     --gallery-name $sigName 
@@ -157,7 +157,7 @@ az sig image-version create \
 
 若要在禁用扩展的情况下部署 VM，你可以将 Azure CLI 与 [--enable-agent](/cli/vm#az-vm-create) 结合使用。
 
-```bash
+```azurecli
 az vm create \
     --resource-group $resourceGroup \
     --name $prodVmName \

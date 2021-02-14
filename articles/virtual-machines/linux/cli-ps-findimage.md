@@ -5,14 +5,14 @@ author: Johnnytechn
 ms.service: virtual-machines-linux
 origin.date: 01/25/2019
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 02/01/2021
 ms.author: v-johya
-ms.openlocfilehash: 0d9fd862bce384c25e62d968ac5726a2bb8bc4e5
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 8ca6a3ee66ad8e7c224d659ace2b2d4cbc391b8f
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022544"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579560"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>使用 Azure CLI 在 Azure 市场中查找 Linux VM 映像
 
@@ -28,6 +28,33 @@ ms.locfileid: "98022544"
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
+## <a name="deploy-from-a-vhd-using-purchase-plan-parameters"></a>使用购买计划参数从 VHD 部署
+
+如果你有一个使用付费 Azure 市场映像创建的现有 VHD，则在从该 VHD 创建新的 VM 时，可能需要提供购买计划信息。 
+
+如果你仍有原始 VM 或有使用同一市场映像创建的其他 VM，则可以使用 [az vm get-instance-view](/cli/vm#az_vm_get_instance_view) 从其中获取计划名称、发布者和产品信息。 此示例获取 myResourceGroup 资源组中名为 myVM 的 VM，然后显示购买计划信息 。
+
+```azurepowershell
+az vm get-instance-view -g myResourceGroup -n myVM --query plan
+```
+
+如果在删除原始 VM 之前未获得计划信息，则可提交[支持请求](https://support.azure.cn/zh-cn/support/support-azure/)。 他们将需要 VM 名称、订阅 ID 和删除操作的时间戳。
+
+获得计划信息后，可以使用 `--attach-os-disk` 参数指定 VHD 来创建新的 VM。
+
+```azurecli
+az vm create \
+   --resource-group myResourceGroup \
+  --name myNewVM \
+  --nics myNic \
+  --size Standard_DS1_v2 --os-type Linux \
+  --attach-os-disk myVHD \
+  --plan-name planName \
+  --plan-publisher planPublisher \
+  --plan-product planProduct 
+```
+
+<!-- Not Available on Bitnami image on Mooncake -->
 ## <a name="list-popular-images"></a>列出常用映像
 
 运行 [az vm image list](https://docs.azure.cn/cli/vm/image?view=azure-cli-latest#az-vm-image-list) 命令，无需选择 `--all` 选项即可在 Azure 市场中查看常用 VM 映像的列表。 例如，运行以下命令以表格形式显示缓存的常用映像列表：
@@ -39,8 +66,7 @@ az vm image list --output table
 输出包括映像 URN（Urn 列中的值）  。 使用其中一个常用市场映像创建 VM 时，可选择指定 *UrnAlias*（一种简短格式，如 *UbuntuLTS*）。
 
 <!--AVAILABLE SUCCESSFULLY ON RHEL           RedHat                  7-RAW               RedHat:RHEL:7-RAW:latest                                        RHEL                 latest-->
-
-```
+```output
 You are viewing an offline list of images, use --all to retrieve an up-to-date list
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
@@ -69,7 +95,7 @@ az vm image list --offer Debian --all --output table
 
 部分输出： 
 
-```
+```output
 Offer              Publisher    Sku                  Urn                                                    Version
 -----------------  -----------  -------------------  -----------------------------------------------------  --------------
 Debian             credativ     7                    credativ:Debian:7:7.0.201602010                        7.0.201602010
@@ -119,7 +145,7 @@ az vm image list --location chinanorth --offer Deb --publisher credativ --sku 8 
 
 部分输出：
 
-```
+```output
 Offer    Publisher    Sku                Urn                                              Version
 -------  -----------  -----------------  -----------------------------------------------  -------------
 Debian   credativ     8                  credativ:Debian:8:8.0.201602010                  8.0.201602010
@@ -150,8 +176,8 @@ Debian   credativ     8                  credativ:Debian:8:8.0.201901221        
 ```
 
 ## <a name="navigate-the-images"></a>浏览映像
-
-在某个位置查找映像的另一种方法是，运行序列中的 [az vm image list-publishers](https://docs.azure.cn/cli/vm/image?view=azure-cli-latest#az-vm-image-list-publishers)、[az vm image list-offers](https://docs.azure.cn/cli/vm/image?view=azure-cli-latest#az-vm-image-list-offers) 和 [az vm image list-skus](https://docs.azure.cn/cli/vm/image?view=azure-cli-latest#az-vm-image-list-skus) 命令。 可以使用这些命令确定以下值：
+ 
+在某个位置查找映像的另一种方法是，运行序列中的 [az vm image list-publishers](/cli/vm/image)、[az vm image list-offers](/cli/vm/image) 和 [az vm image list-skus](/cli/vm/image) 命令。 可以使用这些命令确定以下值：
 
 1. 列出映像发布者。
 2. 对于给定的发布者，列出其产品。
@@ -167,10 +193,8 @@ az vm image list-publishers --location chinanorth --output table
 
 部分输出：
 
-
 <!--MOONCAKE CUSTOMIZE BELOW-->
-
-```
+```output
 Location    Name
 ----------  ----------------------------------------------------
 chinanorth  360-cn
@@ -210,7 +234,7 @@ az vm image list-offers --location chinanorth --publisher Canonical --output tab
 
 输出：
 
-```
+```output
 Location    Name
 ----------  -------------------------
 chinanorth      Ubuntu15.04Snappy
@@ -227,7 +251,7 @@ az vm image list-skus --location chinanorth --publisher Canonical --offer Ubuntu
 
 输出：
 
-```
+```output
 Location    Name
 ----------  -----------------
 chinanorth  12.04.5-LTS
@@ -268,7 +292,7 @@ az vm image list --location chinanorth --publisher Canonical --offer UbuntuServe
 
 部分输出：
 
-```
+```output
 Offer         Publisher    Sku        Urn                                               Version
 ------------  -----------  ---------  ------------------------------------------------  ---------------
 UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201804262  18.04.201804262
@@ -294,7 +318,7 @@ UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201
 ...
 ```
 
-现在，可通过记下 URN 值准确地选择想要使用的映像。 通过 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 命令创建 VM 时，可将此值与 `--image` 参数一起传递。 记住，可选择将 URN 中的版本号替换为“latest”。 此版本始终是映像的最新版本。 
+现在，可通过记下 URN 值准确地选择想要使用的映像。 通过 [az vm create](/cli/vm) 命令创建 VM 时，可将此值与 `--image` 参数一起传递。 记住，可选择将 URN 中的版本号替换为“latest”。 此版本始终是映像的最新版本。 
 
 如果使用资源管理器模板部署 VM，请在 `imageReference` 属性中单独设置映像参数。
 
@@ -304,7 +328,7 @@ UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201
 
 ### <a name="view-plan-properties"></a>查看计划属性
 
-若要查看映像的购买计划信息，请运行 [az vm image show](https://docs.azure.cn/cli/image?view=azure-cli-latest#az-vm-image-show) 命令。 如果输出中的 `plan` 属性不是 `null`，则映像有条款，在以编程方式部署前需要接受该条款。
+若要查看映像的购买计划信息，请运行 [az vm image show](/cli/image) 命令。 如果输出中的 `plan` 属性不是 `null`，则映像有条款，在以编程方式部署前需要接受该条款。
 
 例如，Canonical Ubuntu Server 18.04 LTS 映像没有附加条款，因为 `plan` 信息为 `null`：
 
@@ -314,7 +338,7 @@ az vm image show --location chinanorth --urn Canonical:UbuntuServer:18.04-LTS:la
 
 输出：
 
-```
+```output
 {
   "dataDiskImages": [],
   "id": "/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/chinanorth/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/18.04-LTS/Versions/18.04.201901220",

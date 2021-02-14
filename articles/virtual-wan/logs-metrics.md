@@ -7,23 +7,29 @@ ms.service: virtual-wan
 ms.topic: how-to
 origin.date: 06/05/2020
 author: rockboyfor
-ms.date: 11/23/2020
+ms.date: 02/01/2021
 ms.testscope: yes
 ms.testdate: 11/02/2020
 ms.author: v-yeche
-ms.openlocfilehash: 530635d7de93a5b9fe80eaa799c68d60edd97dfc
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 54623ae0f8ff2dd0e1fc77f4a7020b5687d0a77b
+ms.sourcegitcommit: 7fc72b8afbdf9ad5e53922f489229e54282214b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977627"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540361"
 ---
 <!--Verified Successfully-->
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure 虚拟 WAN 日志和指标
 
-你可以使用 Azure Monitor 监视 Azure 虚拟 WAN。 虚拟 WAN 是一个网络服务，其中整合了多种网络、安全和路由功能，提供单一操作界面。 虚拟 WAN VPN 网关、ExpressRoute 网关和 Azure 防火墙都具有通过 Azure Monitor 提供的日志记录和指标。 有关 Azure 防火墙信息，请参阅 [Azure 防火墙日志和指标](../firewall/logs-and-metrics.md)。
+你可以使用 Azure Monitor 监视 Azure 虚拟 WAN。 虚拟 WAN 是一个网络服务，其中整合了多种网络、安全和路由功能，提供单一操作界面。 虚拟 WAN VPN 网关、ExpressRoute 网关和 Azure 防火墙都具有通过 Azure Monitor 提供的日志记录和指标。
 
 本文讨论了可通过门户获得的指标和诊断。 指标是能够为近实时方案提供支持的轻型数据，因此，它们特别适合用于警报和快速检测问题。
+
+## <a name="monitoring-secured-hub-azure-firewall"></a>监视受保护的中心（Azure 防火墙） 
+
+可以使用 Azure 防火墙日志监视受保护的中心。 此外，可以使用活动日志来审核对 Azure 防火墙资源执行的操作。
+
+如果已选择使用 Azure 防火墙保护虚拟中心，则可访问以下链接了解相关的日志和指标：[Azure 防火墙日志和指标](../firewall/logs-and-metrics.md)。
 
 ## <a name="metrics"></a>指标
 

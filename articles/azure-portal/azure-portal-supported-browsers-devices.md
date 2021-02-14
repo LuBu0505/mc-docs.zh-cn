@@ -3,20 +3,18 @@ title: Azure 门户支持的浏览器和设备
 description: 可以在所有新式设备上通过最新的浏览器版本使用 Azure 门户。 请参阅本文以确保你的浏览器受支持。
 ms.assetid: 35fa18ec-21d8-41bf-af2b-e5e92703401d
 ms.topic: conceptual
-origin.date: 11/18/2020
-ms.date: 01/13/2021
-ms.author: v-tawe
+ms.date: 01/28/2021
 ms.custom: accessibility
-ms.openlocfilehash: 6ee1dc0aea25ed480d1256887ff5747281c3497b
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 084a8b60527b80a763a5685fc7904dcf0a63cab4
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230392"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579387"
 ---
 # <a name="supported-devices"></a>支持的设备
 
-[Azure 门户](https://portal.azure.cn)是基于 Web 的控制台，可在所有新式的台式机和平板电脑设备的浏览器中运行。 若要使用门户，必须在浏览器上启用 JavaScript。
+[Azure 门户](https://portal.azure.cn)是基于 Web 的控制台，可在所有新式的台式机和平板电脑设备的浏览器中运行。 若要使用门户，必须在浏览器上启用 JavaScript。 我们建议你不要在浏览器中使用广告拦截器，因为它们可能会导致某些门户功能出现问题。
 
 <!-- If you need to manage Azure resources from a mobile device, try the  [Azure mobile app](https://azure.microsoft.com/features/azure-portal/mobile-app/). It's available for iOS and Android. -->
 

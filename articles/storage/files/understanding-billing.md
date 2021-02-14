@@ -4,20 +4,20 @@ description: 了解如何解释针对 Azure 文件共享的预配和即用即付
 author: WenJason
 ms.service: storage
 ms.topic: how-to
-origin.date: 12/1/2020
-ms.date: 01/18/2021
+origin.date: 01/20/2021
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: 91455cbab49443ad44a75bdfbd3b37d4330396a6
-ms.sourcegitcommit: f086abe8bd2770ed10a4842fa0c78b68dbcdf771
+ms.openlocfilehash: a33c2c1b0e92aa74effdb10172dea077459ddf41
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98163233"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503928"
 ---
 # <a name="understanding-azure-files-billing"></a>了解 Azure 文件存储计费
 
-## <a name="provisioned-billing"></a>预配计费
+## <a name="provisioned-model"></a>预配模型
 Azure 文件存储将预配模型用于高级文件共享。 在预配业务模型中，可以主动向 Azure 文件存储服务指定存储需求，而不是根据使用的资源进行计费。 这类似于在本地购买硬件，因为当你预配具有一定存储量的 Azure 文件共享时，无论是否使用该存储，都需要为其付费，就像在开始使用空间时，你不会支付本地物理媒体的费用一样。 与在本地购买物理媒体不同，可以根据存储和 IO 性能特征来灵活地纵向扩展或纵向缩放预配的文件共享。
 
 预配高级文件共享时，可以指定工作负载所需的 GiB。 预配的每个 GiB 均可提供固定比率的附加 IOPS 和吞吐量。 除得到保证的基线 IOPS 之外，每个高级文件共享还支持最大程度的突发限制。 IOPS 和吞吐量的公式如下所示：

@@ -1,11 +1,11 @@
 ---
-title: 管理紧急访问管理员帐户 - Azure AD | Microsoft Docs
+title: 管理紧急访问管理员帐户 - Azure AD
 description: 本文介绍如何借助紧急访问帐户来防止意外地被锁在 Azure Active Directory (Azure AD) 组织之外的情况。
 services: active-directory
 author: markwahl-msft
 manager: daveba
 ms.author: v-junlch
-ms.date: 12/08/2020
+ms.date: 02/04/2021
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: roles
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 930d4b97c49fc85b5fd80a5442be0801a012630f
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 133c1dab3caa608e59503dbf8a40c89724e81893
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004088"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540852"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>在 Azure AD 中管理紧急访问帐户
 
@@ -60,7 +60,7 @@ ms.locfileid: "97004088"
 
 ## <a name="federation-guidance"></a>联合身份验证指南
 
-对于使用 AD 域服务和 ADFS 或类似标识提供者联合到 Azure AD 的组织，另一种做法是配置一个可由该标识提供者提供 MFA 声明的紧急访问帐户。  例如，紧急访问帐户可由证书和密钥对（例如，存储在智能卡上）提供安全保障。  当该用户在 AD 中进行身份验证时，ADFS 可向 Azure AD 提供声明，指示该用户满足 MFA 要求。  即使使用此方法，组织也仍需要提供基于云的紧急访问帐户，否则无法建立联合。 
+一些组织使用 AD 域服务和 ADFS 或类似的标识提供者与 Azure AD 进行联合。 不应存在具有管理权限的本地帐户。 在 Azure AD 外部掌控和/或执行对具有管理权限的帐户的身份验证会在这些系统出现服务中断或遭到入侵时增加不必要的风险。
 
 ## <a name="store-account-credentials-safely"></a>安全地存储帐户凭据
 
@@ -158,4 +158,3 @@ ms.locfileid: "97004088"
 - [如何要求用户进行双重验证](../authentication/howto-mfa-userstates.md)
 - 如果使用 Microsoft 365，则[在 Microsoft 365 中为全局管理员配置额外的保护](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts)
 - [启动全局管理员访问评审](../privileged-identity-management/pim-how-to-start-security-review.md)并[将现有全局管理员转换为更具体的管理员角色](permissions-reference.md)
-

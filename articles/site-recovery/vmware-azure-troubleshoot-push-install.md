@@ -6,16 +6,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 origin.date: 04/03/2020
 author: rockboyfor
-ms.date: 09/14/2020
+ms.date: 02/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 8c4e0b0b84e9051f472676ec2bba4bd7e5815c1c
-ms.sourcegitcommit: e1cd3a0b88d3ad962891cf90bac47fee04d5baf5
+ms.openlocfilehash: 61612ce83353faf04940dc8d4e1cf9f3c21a301a
+ms.sourcegitcommit: 7fc72b8afbdf9ad5e53922f489229e54282214b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89655414"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540359"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>排查移动服务推送安装问题
 
@@ -37,7 +37,7 @@ ms.locfileid: "89655414"
 
 ## <a name="credentials-check-errorid-95107--95108"></a><a name="credentials-check-errorid-95107--95108"></a>凭据检查（ErrorID：95107 和 95108）
 
-验证在启用复制期间选择的用户帐户是否有效且准确。 Azure Site Recovery 需要具有**管理员特权**的 **root** 帐户或用户帐户来执行推送安装。 否则，系统会在源计算机上阻止推送安装。
+验证在启用复制期间选择的用户帐户是否有效且准确。 Azure Site Recovery 需要具有 **管理员特权** 的 **root** 帐户或用户帐户来执行推送安装。 否则，系统会在源计算机上阻止推送安装。
 
 对于 Windows（**错误 95107**），请验证用户是否能够使用本地帐户或域帐户在源计算机上进行管理访问。 如果使用的不是域帐户，则需在本地计算机上禁用远程用户访问控制。
 
@@ -109,7 +109,22 @@ ms.locfileid: "89655414"
 
 若要解决该错误：
 
+* 请验证用户是否能够使用本地帐户或域帐户在源计算机上进行管理访问。 如果使用的不是域帐户，则需在本地计算机上禁用远程用户访问控制。
+  * 若要手动添加注册表项来禁用远程用户访问控制，请执行以下操作：
+    * `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
+    * 添加一个新的 `DWORD`：`LocalAccountTokenFilterPolicy`
+    * 将值设置为 `1`
+  * 若要添加注册表项，请在命令提示符下运行以下命令：
+
+    `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
+
 * 请确保你能够从配置服务器对源计算机执行 ping 操作。 如果在启用复制期间选择了横向扩展进程服务器，请确保能够从进程服务器对源计算机执行 ping 操作。
+
+* 请确保在虚拟机上启用了文件和打印机共享服务。 查看[此处](vmware-azure-troubleshoot-push-install.md#file-and-printer-sharing-services-check-errorid-95105--95106)的步骤。
+
+* 请确保虚拟机上已启用 WMI 服务。 查看[此处](vmware-azure-troubleshoot-push-install.md#windows-management-instrumentation-wmi-configuration-check-error-code-95103)的步骤。
+
+* 请确保可从进程服务器访问虚拟机上的网络共享文件夹。 查看[此处](vmware-azure-troubleshoot-push-install.md#check-access-for-network-shared-folders-on-source-machine-errorid-9510595523)的步骤。
 
 * 从源服务器计算机的命令行中，使用 `Telnet` 在 HTTPS 端口 135 上对配置服务器或横向扩展进程服务器执行 ping 操作，如以下命令所示。 此命令检查是否存在任何网络连接问题或防火墙端口阻止问题。
 

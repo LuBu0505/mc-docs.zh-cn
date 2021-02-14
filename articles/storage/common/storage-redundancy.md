@@ -6,16 +6,16 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: conceptual
-origin.date: 01/08/2021
-ms.date: 01/18/2021
+origin.date: 01/19/2021
+ms.date: 02/08/2021
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: b181f3111edb5cdbf2b37684a1c3c9f56b02a15c
-ms.sourcegitcommit: f086abe8bd2770ed10a4842fa0c78b68dbcdf771
+ms.openlocfilehash: dafd0fad6ddfc9d9fd5d1acf366b8382ea7d7c80
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98163213"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503901"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -34,7 +34,7 @@ Azure 存储帐户中的数据始终在主要区域中复制三次：
 **本地冗余存储 (LRS)** 在主要区域中的单个物理位置内同步复制数据三次。 LRS 是成本最低的复制选项，但对于需要高可用性的应用程序，不建议使用此选项。
 ### <a name="locally-redundant-storage"></a>本地冗余存储
 
-本地冗余存储 (LRS) 在主要区域中的单个物理位置内复制数据三次。 LRS 可在一年中提供至少 99.999999999%（11 个 9）的对象持久性。
+本地冗余存储 (LRS) 在主要区域中的单个数据中心内复制数据三次。 LRS 可在一年中提供至少 99.999999999%（11 个 9）的对象持久性。
 
 与其他选项相比，LRS 是成本最低的冗余选项，但提供的持久性也最低。 LRS 可以保护数据，使其不受服务器机架和驱动器故障影响。 但是，如果数据中心发生火灾或洪灾等灾难，使用 LRS 的存储帐户的所有副本可能会丢失或不可恢复。 为了减轻此风险，Azure 建议使用[异地冗余存储](#geo-redundant-storage) (GRS)。
 
@@ -102,6 +102,7 @@ Azure 存储提供一个将数据复制到次要区域的选项：
 | 给定一年内的对象持久性百分比 | 至少 99.999999999%（11 个 9） | 至少 99.99999999999999%（16 个 9） |
 | 读取请求的可用性 | 至少为 99.9%（冷访问层为 99%） | GRS 至少为 99.9%（冷访问层为 99%）<br /><br />RA-GRS 至少为 99.99%（冷访问层为 99.9%） |
 | 写入请求的可用性 | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） |
+| 在单独的节点上维护的数据副本数 | 单个区域内的三个副本 | 共六个副本，包括主要区域中的三个副本和次要区域中的三个副本 |
 
 ### <a name="durability-and-availability-by-outage-scenario"></a>持久性和可用性（按中断方案）
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/06/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 8892eccd599bee59505c96bc9fa9aa81cd9459f5
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 127139da78be6d7f02d07f0c4a82e78efdef8c14
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021623"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540785"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft 标识平台最佳做法和建议
 
@@ -111,4 +111,3 @@ ms.locfileid: "98021623"
 * [身份验证库参考](reference-v2-libraries.md)
 * [Microsoft 标识平台中的权限和许可](v2-permissions-and-consent.md)
 * [Microsoft 图形 API](https://developer.microsoft.com/graph)
-

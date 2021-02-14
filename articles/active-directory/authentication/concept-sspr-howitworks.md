@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/07/2021
+ms.date: 02/04/2021
 ms.author: v-junlch
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3874de9722d72d7d8116bdabce27d84724c986cf
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: e4a819d39aaa1b10874284117208d1b59676c93a
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022085"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540600"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>工作原理：Azure AD 自助密码重置
 
@@ -244,4 +244,3 @@ SSPR 在 Active Directory 中执行管理员发起的密码重置的等效操作
 [Authentication]: ./media/concept-sspr-howitworks/manage-authentication-methods-for-password-reset.png "可用的 Azure AD 身份验证方法和所需数量"
 [Registration]: ./media/concept-sspr-howitworks/configure-registration-options.png "在 Azure 门户中配置 SSPR 注册选项"
 [Writeback]: ./media/concept-sspr-howitworks/on-premises-integration.png "Azure 门户中的 SSPR 的本地集成"
-

@@ -3,16 +3,15 @@ title: 查询存储 - Azure Database for MariaDB
 description: 了解 Azure Database for MariaDB 中的查询存储功能，可以帮助你跟踪一段时间内的性能。
 author: WenJason
 ms.author: v-jay
-ms.service: mariadb
 ms.topic: conceptual
-origin.date: 12/02/2019
-ms.date: 03/02/2020
-ms.openlocfilehash: bb525e3da7606dd69ec6ffa99086daea17646e5a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 01/15/2021
+ms.date: 02/08/2021
+ms.openlocfilehash: 656088bc4e680c72c26994d3d0b146f80237fa80
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78154352"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99504006"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>使用查询存储监视 Azure Database for MariaDB 的性能
 
@@ -35,16 +34,16 @@ ms.locfileid: "78154352"
 ### <a name="enable-query-store-using-the-azure-portal"></a>使用 Azure 门户启用查询存储
 
 1. 登录到 Azure 门户，选择你的 Azure Database for MariaDB 服务器。
-1. 在菜单的“设置”部分中选择“服务器参数”   。
-1. 搜索 query_store_capture_mode 参数。
-1. 将值设置为 ALL，然后**保存**。
+2. 在菜单的“设置”部分中选择“服务器参数” 。
+3. 搜索 query_store_capture_mode 参数。
+4. 将值设置为 ALL，然后 **保存**。
 
 若要在查询存储中启用等待统计信息，请执行以下操作：
 
 1. 搜索 query_store_wait_sampling_capture_mode 参数。
-1. 将值设置为 ALL，然后**保存**。
+2. 将值设置为 ALL，然后 **保存**。
 
-第一批数据可在 mysql 数据库中最长保留 20 分钟。
+留出最多 20 分钟以便第一批数据保存到 mysql 数据库中。
 
 ## <a name="information-in-query-store"></a>查询存储中的信息
 
@@ -79,8 +78,8 @@ SELECT * FROM mysql.query_store_wait_stats;
 | **观测** | **操作** |
 |---|---|
 |高锁定等待 | 检查受影响查询的查询文本，并确定目标实体。 在查询存储中查找修改同一实体的其他查询，这些查询经常执行和/或持续很长时间。 确定这些查询后，请考虑更改应用程序逻辑以提高并发性，或使用限制较少的隔离级别。 |
-|高缓冲 IO 等待 | 在查询存储中查找具有大量物理读取的查询。 如果它们匹配具有高 IO 等待的查询，考虑在基础实体上引入索引，以便进行搜索而不是扫描。 这将最小化查询的 IO 开销。 检查门户中服务器的“性能建议”，以查看是否存在可优化查询的此服务器的索引建议  。 |
-|高内存等待 | 在查询存储中查找消耗内存最多的查询。 这些查询可能会延迟受影响查询的进度。 检查门户中服务器的“性能建议”，以查看是否存在可优化这些查询的索引建议  。|
+|高缓冲 IO 等待 | 在查询存储中查找具有大量物理读取的查询。 如果它们匹配具有高 IO 等待的查询，考虑在基础实体上引入索引，以便进行搜索而不是扫描。 这将最小化查询的 IO 开销。 检查门户中服务器的“性能建议”，以查看是否存在可优化查询的此服务器的索引建议。 |
+|高内存等待 | 在查询存储中查找消耗内存最多的查询。 这些查询可能会延迟受影响查询的进度。 检查门户中服务器的“性能建议”，以查看是否存在可优化这些查询的索引建议。|
 
 ## <a name="configuration-options"></a>配置选项
 
@@ -109,9 +108,9 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 ## <a name="views-and-functions"></a>视图和函数
 
-使用以下视图和函数查看并管理查询存储。 [选择特权公共角色](howto-create-users.md#create-additional-admin-users)中的任何人都可使用这些视图来查看查询存储中的数据。 这些视图仅在 **mysql** 数据库中提供。
+使用以下视图和函数查看并管理查询存储。 具有[选择权限公共角色](howto-create-users.md#create-more-admin-users)的任何人都可使用这些视图来查看查询存储中的数据。 这些视图仅在 **mysql** 数据库中提供。
 
-删除文本和常数后，通过查看查询的结构来规范化查询。 如果除文本值之外两个查询相同，则它们将具有相同的哈希值。
+删除文本和常数后，通过查看查询的结构来规范化查询。 如果除文本值之外两个查询均相同，则它们将具有相同的哈希值。
 
 ### <a name="mysqlquery_store"></a>mysql.query_store
 
@@ -124,14 +123,14 @@ SELECT * FROM mysql.query_store_wait_stats;
 | `timestamp_id` | timestamp| 是| 执行查询时的时间戳。 此值基于 query_store_interval 配置|
 | `query_digest_text`| longtext| 是| 删除所有文本后的规范化查询文本|
 | `query_sample_text` | longtext| 是| 首次出现的包含文本的实际查询|
-| `query_digest_truncated` | bit| 是| 查询文本是否已截断。 如果查询超过 1 KB，则值为 Yes|
+| `query_digest_truncated` | bit| YES| 查询文本是否已截断。 如果查询超过 1 KB，则值为 Yes|
 | `execution_count` | bigint(20)| 是| 针对此时间戳 ID/在配置的间隔时间段内执行该查询的次数|
 | `warning_count` | bigint(20)| 是| 此查询在该时间间隔内生成的警告数|
 | `error_count` | bigint(20)| 是| 此查询在该时间间隔内生成的错误数|
-| `sum_timer_wait` | Double| 是| 此查询在该时间间隔内的总执行时间|
-| `avg_timer_wait` | Double| 是| 此查询在该时间间隔内的平均执行时间|
-| `min_timer_wait` | Double| 是| 此查询的最小执行时间|
-| `max_timer_wait` | Double| 是| 最大执行时间|
+| `sum_timer_wait` | Double| YES| 此查询在该时间间隔内的总执行时间|
+| `avg_timer_wait` | Double| YES| 此查询在该时间间隔内的平均执行时间|
+| `min_timer_wait` | Double| YES| 此查询的最小执行时间|
+| `max_timer_wait` | Double| YES| 最大执行时间|
 | `sum_lock_time` | bigint(20)| 是| 在此时间范围内对此查询执行的所有锁花费的总时间|
 | `sum_rows_affected` | bigint(20)| 是| 受影响的行数|
 | `sum_rows_sent` | bigint(20)| 是| 发送到客户端的行数|
@@ -175,7 +174,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 - 如果 MariaDB 服务器启用了参数 `default_transaction_read_only`，查询存储将无法捕获数据。
 - 如果遇到较长的 Unicode 查询（\>= 6000 个字节），查询存储功能可能会中断。
 - 等待统计信息的保留期为 24 小时。
-- 等待统计信息使用样本来捕获一部分事件。 可以使用参数 `query_store_wait_sampling_frequency` 修改频率。
+- 等待统计信息使用样本来捕获一部分事件。 可以使用参数 `query_store_wait_sampling_frequency` 来修改频率。
 
 ## <a name="next-steps"></a>后续步骤
 

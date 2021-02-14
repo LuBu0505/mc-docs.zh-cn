@@ -298,6 +298,8 @@
               href: azure-stack-dev-start-howto-vm-python.md
             - name: 部署 NodeJS Web 应用
               href: azure-stack-dev-start-howto-vm-nodejs.md
+        - name: 创建 GitHub 操作 - 登录
+          href: ci-cd-github-action-login-cli.md
     - name: 部署基础模式
       href: deploy-foundational-patterns.md
       items:

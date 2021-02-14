@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: ac41317cbdfc1b29d7ce8d863e081129b94d0e24
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: 936a63aed317200627301f2e201235cb54acba58
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570557"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540608"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的用户帐户概述
 
@@ -70,7 +70,7 @@ ms.locfileid: "98570557"
 
 可以邀请外部用户作为来宾用户访问租户。 邀请来宾用户访问 Azure AD B2C 租户的典型方案是共享管理职责。 有关使用来宾帐户的示例，请参阅 [Azure Active Directory B2B 协作用户的属性](../active-directory/external-identities/user-properties.md)。
 
-在邀请来宾用户访问租户时，你需要提供收件人的电子邮件地址以及描述邀请的消息。 邀请链接会将用户转到同意页面，在该页面选中“开始使用”按钮并接受权限审核。 如果未将收件箱附加到电子邮件地址，则用户可以通过使用受邀凭据转到 Microsoft 页面来导航到同意页面。 然后，强制用户兑换邀请，方法就是单击电子邮件中的链接。 例如：`https://account.activedirectory.windowsazure.cn/r#/applications/B2CTENANTNAME`。
+在邀请来宾用户访问租户时，你需要提供收件人的电子邮件地址以及描述邀请的消息。 邀请链接会将用户带到同意页面。 如果未将收件箱附加到电子邮件地址，则用户可以通过使用受邀凭据转到 Microsoft 页面来导航到同意页面。 然后，强制用户兑换邀请，方法就是单击电子邮件中的链接。 例如：`https://account.activedirectory.windowsazure.cn/r#/applications/B2CTENANTNAME`。
 
 还可以使用 [Microsoft Graph API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-beta) 来邀请来宾用户。
 
@@ -78,11 +78,10 @@ ms.locfileid: "98570557"
 
 使用者用户可以登录受 Azure AD B2C 保护的应用程序，但无法访问 Azure 门户等 Azure 资源。 使用者用户可以使用本地帐户或联合帐户。 通过使用[注册或登录用户流](user-flow-overview.md)、使用 Microsoft Graph API 或使用 Azure 门户创建使用者帐户。
 
-可以指定使用自定义用户属性创建使用者用户帐户时收集的数据。 有关详细信息，请参阅在[在 Azure Active Directory B2C 中定义自定义属性](user-flow-custom-attributes.md)。
+可以指定在创建使用者用户帐户时收集的数据。 
 
 有关管理使用者帐户的详细信息，请参阅[使用 Microsoft Graph 管理 Azure AD B2C 用户帐户](manage-user-accounts-graph-api.md)。
 
 ### <a name="migrate-consumer-user-accounts"></a>迁移使用者用户帐户
 
 可能需要将现有的使用者用户帐户从任何标识提供者迁移到 Azure AD B2C。 有关详细信息，请参阅[将用户迁移到 Azure AD B2C](user-migration.md)。
-

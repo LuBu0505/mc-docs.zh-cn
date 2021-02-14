@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: 2c55826a70ad25fea951b8a3310e5a06fb1b2608
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 5382c8f0793cdca6bf49095425a205b9ace8688e
+ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230680"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804375"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>使用 Python 配置自动化 ML 试验
 
@@ -65,7 +65,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 自动化机器学习支持驻留在本地桌面上或云中（例如 Azure Blob 存储）的数据。 数据可以读入 Pandas 数据帧或 Azure 机器学习 TabularDataset 中 。  [了解有关数据集的详细信息](how-to-create-register-datasets.md)。
 
-训练数据的要求：
+机器学习中对训练数据的要求：
 - 数据必须为表格格式。
 - 要预测的值（目标列）必须位于数据中。
 
@@ -96,9 +96,9 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ## <a name="training-validation-and-test-data"></a>训练、验证和测试数据
 
-可以直接在 `AutoMLConfig` 构造函数中指定单独的 **训练集和验证集**。 详细了解[如何配置数据拆分和交叉验证](how-to-configure-cross-validation-data-splits.md)（针对 AutoML 试验）。 
+可以直接在 `AutoMLConfig` 构造函数中指定单独的训练数据和验证数据集。 详细了解[如何配置数据拆分和交叉验证](how-to-configure-cross-validation-data-splits.md)（针对 AutoML 试验）。 
 
-如果未显式指定 `validation_data` 或 `n_cross_validation` 参数，则 AutoML 将应用默认技术来决定如何执行验证。 此决定依赖于分配给 `training_data` 参数的数据集中的行数。 
+如果未显式指定 `validation_data` 或 `n_cross_validation` 参数，则自动化 ML 将应用默认技术来决定如何执行验证。 此决定依赖于分配给 `training_data` 参数的数据集中的行数。 
 
 |训练数据大小| 验证技术 |
 |---|-----|
@@ -157,7 +157,6 @@ dataset = Dataset.Tabular.from_delimited_files(data)
     time_series_settings = {
         'time_column_name': time_column_name,
         'time_series_id_column_names': time_series_id_column_names,
-        'drop_column_names': ['logQuantity'],
         'forecast_horizon': n_test_periods
     }
     
@@ -356,7 +355,7 @@ run = experiment.submit(automl_config, show_output=True)
 若要获取特征化摘要并了解哪些功能已添加到特定模型，请参阅[特征化透明度](how-to-configure-auto-features.md#featurization-transparency)。 
 
 > [!NOTE]
-> 自动化 ML 使用的算法本身具有随机性，这可能会导致建议的模型最终指标分数（如准确性）出现细微差异。 自动化 ML 还可在必要时对数据执行操作，例如训练-测试拆分、训练-验证拆分或交叉验证。 因此，如果多次使用相同的配置设置和主要指标运行一个试验，你可能会发现由于这些因素导致每个试验最终指标分数存在差异。 
+> 自动化 ML 使用的算法本身具有随机性，这可能会导致建议的模型最终指标分数（如准确度）出现细微差异。 自动化 ML 还可在必要时对数据执行操作，例如训练-测试拆分、训练-验证拆分或交叉验证。 因此，如果多次使用相同的配置设置和主要指标运行一个试验，你可能会发现由于这些因素导致每个试验最终指标分数存在差异。 
 
 ## <a name="register-and-deploy-models"></a>注册和部署模型
 

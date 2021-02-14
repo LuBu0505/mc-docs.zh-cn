@@ -1,18 +1,18 @@
 ---
 title: Azure SignalR 服务故障排除指南
 description: 了解如何排查常见问题
-author: yjin81
+author: WenJason
 ms.service: signalr
 ms.topic: conceptual
 origin.date: 11/06/2020
-ms.date: 12/30/2020
-ms.author: v-tawe
-ms.openlocfilehash: c6b2379a2855ce008955b0462e89135bc25ccea0
-ms.sourcegitcommit: eb742dcade404c9909d01e2570188f0bc4076992
+ms.date: 02/08/2021
+ms.author: v-jay
+ms.openlocfilehash: a243505121419a27eddcf5e9f7307e619f84f283
+ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97820349"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99503954"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Azure SignalR 服务常见问题故障排除指南
 
@@ -152,6 +152,10 @@ JWT 令牌生存期的默认值目前为 1 小时。
 对于免费实例，并发连接计数限制为 20。对于标准实例，每个单位的并发连接计数限制为 1K，这意味着 100 个单位允许 100 K 个并发连接。    
 
 连接包括客户端连接和服务器连接。 请查看[此文](./signalr-concept-messages-and-connections.md#how-connections-are-counted)，了解如何进行连接计数。
+
+### <a name="too-many-negotiate-requests-at-the-same-time"></a>同时的协商请求太多。
+
+我们建议在重新连接之前进行随机延迟，请查看[此处](#restart_connection)以获取重试示例。
 
 ## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>协商时出现 500 错误：Azure SignalR 服务尚未连接，请稍后再试。
 
@@ -344,7 +348,7 @@ finally
 
     * [ASP.NET Core C# 客户端](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample/ChatSample.CSharpClient/Program.cs#L64)
 
-    * [ASP.NET Core JavaScript 客户端](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample/ChatSample/wwwroot/index.html#L164)
+    * [ASP.NET Core JavaScript 客户端](https://github.com/Azure/azure-signalr/blob/release/1.0.0-preview1/samples/ChatSample/wwwroot/index.html#L164)
 
     * [ASP.NET C# 客户端](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.CSharpClient/Program.cs#L78)
 

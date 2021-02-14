@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 01/05/2021
+ms.date: 02/02/2021
 ms.author: v-junlch
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac6e3df1622ef874d54bac5259b5668b93d0ee43
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 34752c34e93f5eef51c6d2b024bef34221acf995
+ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023851"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540723"
 ---
 # <a name="discover-the-current-state-of-external-collaboration-in-your-organization"></a>发现组织中外部协作的当前状态 
 
@@ -38,7 +38,7 @@ ms.locfileid: "98023851"
 
 ## <a name="find-current-collaboration-partners"></a>查找当前的协作合作伙伴
 
-外部用户可以是具有合作伙伴管理的凭据的 [Azure AD B2B 用户](../external-identities/what-is-b2b.md)（首选），也可以是具有本地预配凭据的外部用户。 通常（但不总是）使用 Guest 的 UserType 标记这些用户。 可以通过 [Microsoft Graph API](https://docs.microsoft.com/graph/api/user-list?view=graph-rest-1.0&tabs=http)、[PowerShell](https://docs.microsoft.com/graph/api/user-list?view=graph-rest-1.0&tabs=http) 或 [Azure 门户](../enterprise-users/users-bulk-download.md)来枚举来宾用户。
+外部用户可以是具有合作伙伴管理的凭据的 [Azure AD B2B 用户](../external-identities/what-is-b2b.md)（首选），也可以是具有本地预配凭据的外部用户。 通常（但不总是）使用 Guest 的 UserType 标记这些用户。 可以通过 [Microsoft Graph API](https://docs.microsoft.com/graph/api/user-list?tabs=http&view=graph-rest-1.0)、[PowerShell](https://docs.microsoft.com/graph/api/user-list?tabs=http&view=graph-rest-1.0) 或 [Azure 门户](../enterprise-users/users-bulk-download.md)来枚举来宾用户。
 
 ### <a name="use-email-domains-and-companyname-property"></a>使用电子邮件域和 companyName 属性
 
@@ -46,9 +46,9 @@ ms.locfileid: "98023851"
 
 ### <a name="use-allow-or-deny-lists"></a>使用允许或拒绝列表
 
-若要发现当前你正在与谁协作或你阻止了与谁的协作，可以查看是否已将一些组织添加到[允许或拒绝列表](../external-identities/allow-deny-list.md)。
+考虑你的组织是否希望仅允许与特定组织进行协作。 或者，考虑你的组织是否希望阻止与特定组织进行协作。  在租户级别，有一个[允许或拒绝列表](../external-identities/allow-deny-list.md)，可用于控制总体 B2B 邀请和兑换次数，而不考虑来源（如 Teams、SharePoint 和 Azure 门户）。
+如果你使用的是权利管理，则还可以使用“特定的连接组织”设置将访问包的范围限定为你的合作伙伴的子集，如下所示。
 
-考虑你的组织是否希望仅允许与特定组织进行协作。 还要考虑你的组织是否希望阻止与特定组织的协作。 这些设置可适用于总体 B2B 兑换或仅适用于特定的访问包。
 
 ![创建新访问包时允许/拒绝列表的屏幕截图。](./media/secure-external-access/2-new-access-package.png)
 
@@ -88,4 +88,3 @@ ms.locfileid: "98023851"
 8. [通过敏感度标签实现安全访问](8-secure-access-sensitivity-labels.md)
 
 9. [实现对 Microsoft Teams、OneDrive 和 SharePoint 的安全访问](9-secure-access-teams-sharepoint.md)
-

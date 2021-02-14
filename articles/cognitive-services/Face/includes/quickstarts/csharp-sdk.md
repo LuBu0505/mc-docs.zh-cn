@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: include
-ms.date: 10/28/2020
+ms.date: 02/04/2021
 ms.author: v-johya
-ms.openlocfilehash: 5facd6591a65f72d8436cda44a2661bb3d8cb0e1
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 6c659b897cbd8d88a17fa25fa1956fe864c38f05
+ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105460"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580105"
 ---
 开始使用适用于 .NET 的人脸客户端库进行人脸识别。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过人脸服务，可以访问用于检测和识别图像中的人脸的高级算法。
 
@@ -22,10 +22,10 @@ ms.locfileid: "93105460"
 
 * [检测图像中的人脸](#detect-faces-in-an-image)
 * [查找相似人脸](#find-similar-faces)
-* [创建和训练人员组](#create-and-train-a-person-group)
+* [创建人员组](#create-a-person-group)
 * [识别人脸](#identify-a-face)
 
-[参考文档](https://docs.microsoft.com/dotnet/api/overview/cognitiveservices/client/faceapi?view=azure-dotnet) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1) | [示例](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
+[库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1) | [示例](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -50,7 +50,7 @@ ms.locfileid: "93105460"
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 `face-quickstart` 的新控制台应用。 此命令将创建包含单个源文件的简单“Hello World”C# 项目： *program.cs* 。 
+在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 `face-quickstart` 的新控制台应用。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：*program.cs*。 
 
 ```console
 dotnet new console -n face-quickstart
@@ -857,9 +857,9 @@ namespace FaceQuickstart
 
 
 > [!IMPORTANT]
-> 转到 Azure 门户。 如果在“先决条件”部分中创建的 [产品名称] 资源已成功部署，请单击“后续步骤”下的“转到资源”按钮  。 在资源的“密钥和终结点”页的“资源管理”下可以找到密钥和终结点 。 
+> 转到 Azure 门户。 如果你在“先决条件”部分创建的人脸资源部署成功，请单击“后续步骤”下的“转到资源”按钮  。 在资源的“密钥和终结点”页的“资源管理”下可以找到密钥和终结点 。 
 >
-> 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 有关详细信息，请参阅认知服务[安全性](/cognitive-services/cognitive-services-security)文章。
+> 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 有关详细信息，请参阅认知服务[安全性](../../../cognitive-services-security.md)文章。
 
 ```csharp
 // <snippet_using>
@@ -2413,7 +2413,7 @@ namespace FaceQuickstart
 * [对客户端进行身份验证](#authenticate-the-client)
 * [检测图像中的人脸](#detect-faces-in-an-image)
 * [查找相似人脸](#find-similar-faces)
-* [创建和训练人员组](#create-and-train-a-person-group)
+* [创建人员组](#create-a-person-group)
 * [识别人脸](#identify-a-face)
 
 ## <a name="authenticate-the-client"></a>验证客户端
@@ -5491,6 +5491,9 @@ namespace FaceQuickstart
     }
 }
 ```
+
+> [!TIP]
+> 还可以检测本地图像中的人脸。 请参阅 [IFaceOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ifaceoperations?view=azure-dotnet) 方法，例如 DetectWithStreamAsync。
 
 ### <a name="display-detected-face-data"></a>显示检测到的人脸数据
 
@@ -8574,11 +8577,11 @@ namespace FaceQuickstart
 
 ## <a name="identify-a-face"></a>识别人脸
 
-识别操作采用一个（或多个）人员的图像，并在图像中查找每个人脸的标识（人脸识别搜索）。 它将每个检测到的人脸与某个 **PersonGroup** （面部特征已知的不同 **Person** 对象的数据库）进行比较。 为了执行“识别”操作，你首先需要创建并训练 PersonGroup
+识别操作采用一个（或多个）人员的图像，并在图像中查找每个人脸的标识（人脸识别搜索）。 它将每个检测到的人脸与某个 **PersonGroup**（面部特征已知的不同 **Person** 对象的数据库）进行比较。 为了执行“识别”操作，你首先需要创建并训练 PersonGroup
 
 ### <a name="create-a-person-group"></a>创建人员组
 
-以下代码创建包含六个不同 **Person** 对象的 **PersonGroup** 。 它将每个 **Person** 与一组示例图像相关联，然后进行训练以按面部特征识别每个人。 **Person** 和 **PersonGroup** 对象在验证、识别和分组操作中使用。
+以下代码创建包含六个不同 **Person** 对象的 **PersonGroup**。 它将每个 **Person** 与一组示例图像相关联，然后进行训练以按面部特征识别每个人。 **Person** 和 **PersonGroup** 对象在验证、识别和分组操作中使用。
 
 在类的根目录中声明一个字符串变量，用于表示要创建的 **PersonGroup** 的 ID。
 
@@ -10883,6 +10886,9 @@ namespace FaceQuickstart
 }
 ```
 
+> [!TIP]
+> 你还可以从本地图像创建 PersonGroup。 请参阅 [IPersonGroupPerson](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.ipersongroupperson?view=azure-dotnet) 方法，例如 AddFaceFromStreamAsync.
+
 ### <a name="train-the-persongroup"></a>训练 PersonGroup
 
 从图像中提取人脸数据并将其分类成不同的 **Person** 对象后，必须训练 **PersonGroup** 才能识别与其每个 **Person** 对象关联的视觉特征。 以下代码调用异步 **train** 方法并轮询结果，然后将状态输出到控制台。
@@ -11651,6 +11657,9 @@ namespace FaceQuickstart
     }
 }
 ```
+
+> [!TIP]
+> 人脸 API 在一组预构建的模型呢上运行，这些模型在本质上是静态的（模型的性能不会因为运行服务而提高或降低）。 如果 Microsoft 更新模型的后端，但不迁移整个新模型版本，那么模型生成的结果可能会变化。 若要使用更新的模型版本，可重新训练 PersonGroup，将更新的模型指定为具有相同注册映像的参数。
 
 现已准备好在验证、识别或分组操作中使用此 **Person** 组及其关联的 **Person** 对象。
 
@@ -13210,7 +13219,7 @@ dotnet run
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 如果你在本快速入门中创建了 **PersonGroup** 并想要删除它，请在程序中运行以下代码：
@@ -14750,9 +14759,6 @@ namespace FaceQuickstart
 ## <a name="next-steps"></a>后续步骤
 
 在本快速入门中，你已了解如何使用适用于 .NET 的人脸客户端库来执行基本人脸识别任务。 接下来，请在参考文档中详细了解该库。
-
-> [!div class="nextstepaction"]
-> [人脸 API 参考 (.NET)](https://docs.microsoft.com/dotnet/api/overview/cognitiveservices/client/faceapi?view=azure-dotnet)
 
 * [什么是人脸服务？](../../overview.md)
 * 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/Face/FaceQuickstart.cs) 上找到此示例的源代码。

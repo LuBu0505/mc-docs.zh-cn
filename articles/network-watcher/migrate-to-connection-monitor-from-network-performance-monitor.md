@@ -9,27 +9,23 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
+origin.date: 01/07/2021
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/08/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: ab357d8120286bbd9c5f82cc43873b4610e35ab2
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 3132266731da8a68ab65f696410f15d9764f203f
+ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231186"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580575"
 ---
 <!--PM REVIEWING MANDATORY-->
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>从网络性能监视器迁移到连接监视器
 
 只需单击一下，就可以将测试从网络性能监视器 (NPM) 迁移到经过改进的新连接监视器，并且没有故障时间。 若要了解有关这些优势的详细信息，请参阅[连接监视器](./connection-monitor-overview.md)。
-
-
->[!NOTE]
-> 只有服务连接监视器中的测试可以迁移到连接监视器。
->
 
 ## <a name="key-points-to-note"></a>需要注意的要点
 
@@ -54,8 +50,8 @@ ms.locfileid: "98231186"
 1. 在网络观察程序中，选择“连接监视器”，然后选择“从 NPM 迁移测试”选项卡 。 
 
     :::image type="content" source="./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png" alt-text="将测试从网络性能监视器迁移到连接监视器" lightbox="./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png":::
-    
-1. 在下拉列表中，选择订阅和工作区，然后选择要迁移的 NPM 功能。 目前只能从服务连接监视器迁移测试。  
+
+1. 在下拉列表中，选择订阅和工作区，然后选择要迁移的 NPM 功能。 
 1. 选择“导入”以迁移测试。
 
 迁移开始后，将进行以下更改： 
@@ -77,7 +73,7 @@ ms.locfileid: "98231186"
 ## <a name="next-steps"></a>后续步骤
 
 若要详细了解连接监视器，请参阅：
-* [从连接监视器迁移到连接监视器](./migrate-to-connection-monitor-from-connection-monitor-classic.md)
+* [从连接监视器（经典版）迁移到连接监视器](./migrate-to-connection-monitor-from-connection-monitor-classic.md)
 * [使用 Azure 门户创建连接监视器](./connection-monitor-create-using-portal.md)
 
 <!-- Update_Description: new article about migrate to connection monitor from network performance monitor -->
