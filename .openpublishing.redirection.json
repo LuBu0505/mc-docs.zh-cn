@@ -30659,6 +30659,11 @@
             "source_path": "articles/virtual-machines/linux/tutorial-backup-vms.md",
             "redirect_url": "/backup/quick-backup-vm-portal",
             "redirect_document_id": false
+        },
+        {
+            "source_path": "articles/azure-monitor/platform/monitoring-classic-retirement.md",
+            "redirect_url": "/azure-monitor/alerts/monitoring-classic-retirement",
+            "redirect_document_id": false
         }
 
     ]
