@@ -3,27 +3,26 @@ title: 教程：Azure 数据资源管理器和 Azure Monitor 中的 Kusto 查询
 description: 本教程介绍如何使用以 Kusto 查询语言编写的查询来满足 Azure 数据资源管理器和 Azure Monitor 中的常见查询需求。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 10/08/2020
-ms.date: 01/22/2021
+ms.date: 02/08/2021
 ms.localizationpriority: high
-zone_pivot_group_filename: zone-pivot-groups.json
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 7d5b9c8342d1c5f6b3ac39a40e5903c184c42a5f
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.openlocfilehash: 6b1894aaca20edf6b1d4d0a8c16cb3a191473e78
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611520"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087587"
 ---
 # <a name="tutorial-use-kusto-queries-in-azure-data-explorer-and-azure-monitor"></a>教程：在 Azure 数据资源管理器和 Azure Monitor 中使用 Kusto 查询
 
 ::: zone pivot="azuredataexplorer"
 
-了解 Kusto 查询语言的最佳方式是查看一些基本查询，从而“感受”这种语言。 建议使用[包含一些示例数据的数据库](https://help.kusto.chinacloudapi.cn/Samples)。 本教程中演示的查询应在该数据库上运行。 示例数据库中的 `StormEvents` 表提供了一些有关在美国发生的风暴的信息。
+了解 Kusto 查询语言的最佳方式是查看一些基本查询，从而“感受”这种语言。 建议使用[包含一些示例数据的数据库](https://help.kusto.windows.net/Samples)。 本教程中演示的查询应在该数据库上运行。 示例数据库中的 `StormEvents` 表提供了一些有关在美国发生的风暴的信息。
 
 ## <a name="count-rows"></a>统计行数
 
@@ -31,7 +30,7 @@ ms.locfileid: "98611520"
 
 语法说明：查询是数据源（通常是表名称），可以选择后跟一个或多个管道字符和一些表格运算符。
 
-<!-- csl: https://help.kusto.chinacloudapi.cn/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents | count
 ```
@@ -52,7 +51,7 @@ StormEvents | count
 
 仅查看 2007 年 2 月在 `California` 发生的 `flood` 事件：
 
-<!-- csl: https://help.kusto.chinacloudapi.cn/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | where StartTime > datetime(2007-02-01) and StartTime < datetime(2007-03-01)
@@ -70,7 +69,7 @@ StormEvents
 
 我们来看一些数据。 5 行随机示例是怎样的？
 
-<!-- csl: https://help.kusto.chinacloudapi.cn/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | take 5
@@ -96,7 +95,7 @@ StormEvents
 
 显示前 n 行，按指定列排序：
 
-<!-- csl: https://help.kusto.chinacloudapi.cn/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | top 5 by StartTime desc
@@ -115,7 +114,7 @@ StormEvents
 
 你可以先使用 [sort](./sortoperator.md)，然后使用 [take](./takeoperator.md) 来获得相同的结果：
 
-<!-- csl: https://help.kusto.chinacloudapi.cn/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | sort by StartTime desc
@@ -127,7 +126,7 @@ StormEvents
 
 通过计算每行中的值来创建新列：
 
-<!-- csl: https://help.kusto.chinacloudapi.cn/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | limit 5
@@ -149,7 +148,7 @@ StormEvents
 
 示例：
 
-<!-- csl: https://help.kusto.chinacloudapi.cn/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print x=1
 | extend x = x + 1, y = x
@@ -168,7 +167,7 @@ print x=1
 
 统计每个州发生的事件数：
 
-<!-- csl: https://help.kusto.chinacloudapi.cn/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | summarize event_count = count() by State
@@ -178,7 +177,7 @@ StormEvents
 
 有一系列[聚合函数](./summarizeoperator.md#list-of-aggregation-functions)可供使用。 可以在一个 `summarize` 运算符中使用多个聚合函数，以生成多个计算列。 例如，我们可以获得每个州的风暴数，以及每个州独特风暴类型的总和。 然后，可以使用 [top](./topoperator.md) 来获取受风暴影响最大的州：
 
-<!-- csl: https://help.kusto.chinacloudapi.cn/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
 | summarize StormCount = count(), TypeOfStorms = dcount(EventType) by State
@@ -205,7 +204,7 @@ StormEvents
 
 可在 `by` 子句中使用标量（数字、时间或间隔）值，但建议使用 [bin()](./binfunction.md) 函数将值放入箱中：
 
-<!-- csl: https://help.kusto.chinacloudapi.cn/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | where StartTime > datetime(2007-02-14) and StartTime < datetime(2007-02-21)
@@ -231,7 +230,7 @@ StormEvents
 
 可投射两个列，并将它们用作图表的 x 轴和 y 轴：
 
-<!-- csl: https://help.kusto.chinacloudapi.cn/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
 | summarize event_count=count(), mid = avg(BeginLat) by State 
@@ -252,7 +251,7 @@ StormEvents
 
 回到数字箱，显示一个时序：
 
-<!-- csl: https://help.kusto.chinacloudapi.cn/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | summarize event_count=count() by bin(StartTime, 1d)
@@ -265,7 +264,7 @@ StormEvents
 
 在 `summarize by` 子句中使用多个值可为值的每个组合创建单独的行：
 
-<!-- csl: https://help.kusto.chinacloudapi.cn/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
 | where StartTime > datetime(2007-06-04) and StartTime < datetime(2007-06-10) 
@@ -287,7 +286,7 @@ StormEvents
 
 按一天的时间取模对事件计数，将其量化到小时。 此处，我们使用 `floor` 而不是 `bin`：
 
-<!-- csl: https://help.kusto.chinacloudapi.cn/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | extend hour = floor(StartTime % 1d , 1h)
@@ -306,7 +305,7 @@ StormEvents
 
 不同州一天中不同时间的活动如何变化？
 
-<!-- csl: https://help.kusto.chinacloudapi.cn/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | extend hour= floor( StartTime % 1d , 1h)
@@ -319,7 +318,7 @@ StormEvents
 
 除以 `1h` 以将 x 轴转换为小时数，而不是持续时间：
 
-<!-- csl: https://help.kusto.chinacloudapi.cn/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | extend hour= floor( StartTime % 1d , 1h)/ 1h
@@ -336,7 +335,7 @@ StormEvents
 
 可以使用第一个 `EventType` 和第二个 `EventType` 拉取风暴事件，然后在 `State` 上联接这两个集：
 
-<!-- csl: https://help.kusto.chinacloudapi.cn/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | where EventType == "Lightning"
@@ -359,7 +358,7 @@ StormEvents
 
 可以使用 `extend` 为这两个时间戳提供别名，然后计算会话持续时间：
 
-<!-- csl: https://help.kusto.chinacloudapi.cn/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 Events
 | where eventName == "session_started"
@@ -381,7 +380,7 @@ Events
 
 返回到 `StormEvents` 表，其中有多少不同时长的风暴？
 
-<!-- csl: https://help.kusto.chinacloudapi.cn/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | extend  duration = EndTime - StartTime
@@ -417,11 +416,11 @@ StormEvents
 
 * 有 5% 的风暴的持续时间不超过 5 分钟。
 * 有 50% 的风暴的持续时间不超过 1小时 25 分钟。
-* 有 95% 的风暴至少持续了 2 小时 50 分钟。
+* 有 95% 的风暴的持续时间不超过 2 小时 50 分钟。
 
 若要获取每个州的单独明细，请分别将 `state` 列与两个 `summarize` 运算符一起使用：
 
-<!-- csl: https://help.kusto.chinacloudapi.cn/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | extend  duration = EndTime - StartTime
@@ -439,7 +438,7 @@ StormEvents
 
 使用 [let](./letstatement.md) 分离出上一个 `join` 示例中查询表达式的各部分。 结果不变：
 
-<!-- csl: https://help.kusto.chinacloudapi.cn/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let LightningStorms = 
     StormEvents
@@ -508,11 +507,11 @@ Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request
 
 ## <a name="count-rows"></a>统计行数
 
-[InsightsMetrics](/azure-monitor/reference/tables/insightsmetrics) 表包含由见解（如用于 VM 的 Azure Monitor 和用于容器的 Azure Monitor）收集的性能数据。 若要了解表的大小，请将其内容传递到只计算行数的运算符。
+InsightsMetrics 表包含由见解（如用于 VM 的 Azure Monitor 和用于容器的 Azure Monitor）收集的性能数据。 若要了解表的大小，请将其内容传递到只计算行数的运算符。
 
 查询是数据源（通常是表名称），可以选择后跟一个或多个管道字符和一些表格运算符。 在这种情况下，将返回 `InsightsMetrics` 表中的所有记录，然后将其发送到 [count 运算符](./countoperator.md)。 `count` 运算符显示结果，因为该运算符是查询中的最后一个命令。
 
-<!-- csl: https://help.kusto.chinacloudapi.cn/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 InsightsMetrics | count
 ```
@@ -526,7 +525,7 @@ InsightsMetrics | count
 
 ## <a name="filter-by-boolean-expression-where"></a>按布尔表达式筛选：where
 
-[AzureActivity](/azure-monitor/reference/tables/azureactivity) 表包含 Azure 活动日志中的条目，让你能够深入了解 Azure 中发生的任何订阅级别或管理组级事件。 让我们仅查看特定周内的 `Critical` 条目。
+AzureActivity 表包含 Azure 活动日志中的条目，让你能够深入了解 Azure 中发生的任何订阅级别或管理组级事件。 让我们仅查看特定周内的 `Critical` 条目。
 
 [where](/data-explorer/kusto/query/whereoperator) 运算符在 Kusto 查询语言中是通用的。 `where` 将筛选表中符合特定条件的行。 以下示例命令行使用多个命令。 首先，查询检索表中的所有记录。 然后，它仅针对时间范围内的记录筛选数据。 最后，它仅针对具有 `Critical` 级别的记录筛选这些结果。
 
@@ -556,7 +555,7 @@ AzureActivity
 
 ## <a name="show-n-rows-take"></a>显示 n 行：take 
 
-[NetworkMonitoring](/azure-monitor/reference/tables/networkmonitoring) 包含 Azure 虚拟网络的监视数据。 我们来使用 [take](./takeoperator.md) 运算符查看该表中的十个随机示例行。 [take](./takeoperator.md) 不以任何特定顺序显示表中一定数量的行：
+NetworkMonitoring 包含 Azure 虚拟网络的监视数据。 我们来使用 [take](./takeoperator.md) 运算符查看该表中的十个随机示例行。 [take](./takeoperator.md) 不以任何特定顺序显示表中一定数量的行：
 
 ```kusto
 NetworkMonitoring
@@ -591,7 +590,7 @@ NetworkMonitoring
 
 [extend](./projectoperator.md) 运算符与 [project](./projectoperator.md) 运算符相似，只不过它会添加到一组列中，而不是替换它们。 你可使用这两个运算符基于每行上的计算创建一个新列。
 
-[Perf](/azure-monitor/reference/tables/perf) 表包含的性能数据是从运行 Log Analytics 代理的虚拟机中收集的。 
+Perf 表包含的性能数据是从运行 Log Analytics 代理的虚拟机中收集的。 
 
 ```kusto
 Perf
@@ -606,7 +605,7 @@ Perf
 
 [summarize](./summarizeoperator.md) 运算符将在 `by` 子句中具有相同值的行组合在一起。 然后，它使用聚合函数（如 `count`）将每个组合并为单个行。 有一系列[聚合函数](./summarizeoperator.md#list-of-aggregation-functions)可供使用。 可以在一个 `summarize` 运算符中使用多个聚合函数，以生成多个计算列。 
 
-[SecurityEvent](/azure-monitor/reference/tables/securityevent) 表包含安全事件，如在受监视的计算机上启动的登录和进程。 可计算每台计算机上发生的每个级别的事件数。 在此示例中，将为每个计算机和级别组合生成一个行。 包含事件计数的列。
+SecurityEvent 表包含安全事件，如在受监视的计算机上启动的登录和进程。 可计算每台计算机上发生的每个级别的事件数。 在此示例中，将为每个计算机和级别组合生成一个行。 包含事件计数的列。
 
 ```kusto
 SecurityEvent
@@ -619,7 +618,7 @@ SecurityEvent
 
 可按标量值（如数字和时间值）进行聚合，但应使用 [bin()](./binfunction.md) 函数将行分组为不同的数据集。 例如，如果按 `TimeGenerated` 进行聚合，则几乎每个时间值都有一行。 使用 `bin()` 将这些值合并为小时或天。
 
-[InsightsMetrics](/azure-monitor/reference/tables/insightsmetrics) 表包含由见解（如用于 VM 的 Azure Monitor 和用于容器的 Azure Monitor）收集的性能数据。 以下查询显示多台计算机处理器每小时的平均使用率：
+InsightsMetrics 表包含由见解（如用于 VM 的 Azure Monitor 和用于容器的 Azure Monitor）收集的性能数据。 以下查询显示多台计算机处理器每小时的平均使用率：
 
 ```kusto
 InsightsMetrics
@@ -662,11 +661,11 @@ InsightsMetrics
 
 ## <a name="join-data-from-two-tables"></a>联接两个表中的数据
 
-如果需要在单个查询中检索两个表中的数据该怎么办？ 可使用 [join](/azure/data-explorer/kusto/query/joinoperator?pivots=azuremonitor) 运算符将多个表中的行合并到一个结果集中。 每个表都必须有一个具有匹配值的列，以便 join 识别要匹配的行。
+如果需要在单个查询中检索两个表中的数据该怎么办？ 可使用 [join](/data-explorer/kusto/query/joinoperator?pivots=azuremonitor) 运算符将多个表中的行合并到一个结果集中。 每个表都必须有一个具有匹配值的列，以便 join 识别要匹配的行。
 
-[VMComputer](/azure-monitor/reference/tables/vmcomputer) 是 Azure Monitor 用于 VM 的表，用于存储它所监视的虚拟机的详细信息。 [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) 包含从这些虚拟机收集的性能数据。 InsightsMetrics 中收集的一个值是可用内存，但不是可用的内存百分比。 若要计算百分比，需要每个虚拟机的物理内存。 该值位于 `VMComputer`。
+VMComputer 是 Azure Monitor 用于 VM 的表，用于存储它所监视的虚拟机的详细信息。 InsightsMetrics 包含从这些虚拟机收集的性能数据。 InsightsMetrics 中收集的一个值是可用内存，但不是可用的内存百分比。 若要计算百分比，需要每个虚拟机的物理内存。 该值位于 `VMComputer`。
 
-下面的示例查询使用联接来执行此计算。 [distinct](/azure/data-explorer/kusto/query/distinctoperator) 运算符与 `VMComputer` 一起使用，因为会定期从每台计算机中收集详细信息。 因此，会为该表中的每台计算机创建多个行。 使用 `Computer` 列联接两个表。 在结果集中创建一个行，其中对于 `InsightsMetrics` 中的每一行，包括两个表中的列，并且 `Computer` 中的值与 `VMComputer` 中 `Computer` 列中的相同值匹配。
+下面的示例查询使用联接来执行此计算。 [distinct](/data-explorer/kusto/query/distinctoperator) 运算符与 `VMComputer` 一起使用，因为会定期从每台计算机中收集详细信息。 因此，会为该表中的每台计算机创建多个行。 使用 `Computer` 列联接两个表。 在结果集中创建一个行，其中对于 `InsightsMetrics` 中的每一行，包括两个表中的列，并且 `Computer` 中的值与 `VMComputer` 中 `Computer` 列中的相同值匹配。
 
 ```kusto
 VMComputer

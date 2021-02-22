@@ -7,14 +7,13 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: tutorial
-origin.date: 09/25/2020
-ms.date: 11/27/2020
-ms.openlocfilehash: 029053b31cca75ba71407ea4a00c1798f1ca1b60
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.date: 02/04/2021
+ms.openlocfilehash: 0aa5362d39a763d5a71c737618342e98b6a5dee5
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96430998"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087560"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>教程：使用 REST 为 Azure 存储中的 JSON Blob 编制索引
 
@@ -95,23 +94,23 @@ Azure 认知搜索可使用一个知晓如何读取半结构化数据的[索引�
 
 REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
 
-1. [登录到 Azure 门户](https://portal.azure.cn/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.azure.cn`。
+1. [登录到 Azure 门户](https://portal.azure.cn/)，在搜索服务的“概述”页中获取 URL。 示例终结点可能类似于 `https://mydemo.search.azure.cn`。
 
 1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
-:::image type="content" source="media/search-get-started-postman/get-url-key.png" alt-text="获取 HTTP 终结点和访问密钥" border="false":::
+   :::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="获取 HTTP 终结点和访问密钥" border="false":::
 
 所有请求对发送到服务的每个请求都需要 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
 ## <a name="2---set-up-postman"></a>2 - 设置 Postman
 
-启动 Postman 并设置 HTTP 请求。 如果不熟悉此工具，请参阅[使用 Postman 探索 Azure 认知搜索 REST API](search-get-started-postman.md) 了解详细信息。
+启动 Postman 并设置 HTTP 请求。 如果不熟悉此工具，请参阅[使用 REST API 创建搜索索引](search-get-started-rest.md)。
 
 本教程中每个调用的请求方法是 **POST** 和 **GET**。 你将向搜索服务发出三个 API 调用，以创建数据源、索引和索引器。 数据源包含指向存储帐户的指针以及 JSON 数据。 加载数据时，搜索服务会建立连接。
 
 在标头中，将“Content-type”设置为 `application/json`，将 `api-key` 设置为 Azure 认知搜索服务的管理 API 密钥。 设置标头后，可将其用于本练习中的每个请求。
 
-  :::image type="content" source="media/search-get-started-postman/postman-url.png" alt-text="Postman 请求 URL 和标头" border="false":::
+  :::image type="content" source="media/search-get-started-rest/postman-url.png" alt-text="Postman 请求 URL 和标头" border="false":::
 
 URI 必须指定 api-version，每个调用应返回 **201 Created**。 用于使用 JSON 数组的正式版 api-version 为 `2020-06-30`。
 
@@ -159,7 +158,7 @@ URI 必须指定 api-version，每个调用应返回 **201 Created**。 用于�
     ```
 
 ## <a name="4---create-an-index"></a>4 - 创建索引
-    
+
 第二次调用的是[创建索引 API](https://docs.microsoft.com/rest/api/searchservice/create-index)，用于创建可存储所有可搜索数据的 Azure 认知搜索索引。 索引指定所有参数及其属性。
 
 1. 请将此调用的终结点设置为 `https://[service name].search.azure.cn/indexes?api-version=2020-06-30`。 请将 `[service name]` 替换为搜索服务的名称。

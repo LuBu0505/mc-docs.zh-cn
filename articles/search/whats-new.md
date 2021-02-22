@@ -6,15 +6,14 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: overview
-origin.date: 11/12/2020
-ms.date: 12/10/2020
+ms.date: 02/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: 81c33d5538fd2e5ea99aa2b7f00d96223068c05d
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: dd6bafa118dc714c7c16e9222defdca6a88ab0a0
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004140"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087548"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
@@ -37,7 +36,7 @@ ms.locfileid: "97004140"
 |------------------------------|----------|-------------|---------------|
 | [管理 REST API (2020-08-01)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | 新的稳定 REST API 增加了对创建共享专用链接资源的支持。 | 正式发布。 |
 | [管理 REST API (2020-08-01-Preview)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | 添加了适用于 Azure Functions 和 Azure SQL for MySQL 数据库的共享专用链接资源。 | 公共预览版。 |
-| [管理 .NET SDK 4.0](https://docs.microsoft.com/dotnetapi/overview/azure/search/management) | .NET SDK | 适用于管理 SDK 的 Azure SDK 更新，面向 REST API 版本 2020-08-01。 | 正式发布。 |
+| [管理 .NET SDK 4.0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management) | .NET SDK | 适用于管理 SDK 的 Azure SDK 更新，面向 REST API 版本 2020-08-01。 | 正式发布。 |
 
 ## <a name="august-2020"></a>2020 年 8 月
 
@@ -59,23 +58,15 @@ ms.locfileid: "97004140"
 |---------|------------------|-------------|---------------|
 [知识存储](knowledge-store-concept-intro.md) | AI 扩充 | AI 扩充索引器的输出，将内容存储在 Azure 存储中以供其他应用和进程使用。 | 正式发布。 </br> 使用[搜索 REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) 或更高版本，或门户。 |
 | [搜索 REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) | REST | REST API 的新稳定版本。 除了知识存储，此版本还包括搜索相关性和评分的增强功能。 | 正式发布。 |
-| **Okapi BM25 相关性算法** | 查询 | 新的相关性排名算法自动用于 7 月 15 日之后创建的所有新搜索服务。 对于先前创建的服务，可以通过在索引字段上设置 `similarity` 属性来选择加入。 | 正式发布。 </br> 使用[搜索 REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) 或更高版本，或 REST API 2019-05-06。 |
-
-<!-- | **executionEnvironment** | Security (indexers) | Explicitly set this indexer configuration property to `private` to force all connections to external data sources over a private endpoint. Applicable only to search services that leverage Azure Private Link. | Generally available. </br> Use [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) to set this general configuration parameter. | -->
+| [Okapi BM25 相关性算法](index-ranking-similarity.md) | 查询 | 新的相关性排名算法自动用于 7 月 15 日之后创建的所有新搜索服务。 对于先前创建的服务，可以通过在索引字段上设置 `similarity` 属性来选择加入。 | 正式发布。 </br> 使用[搜索 REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) 或更高版本，或 REST API 2019-05-06。 |
+<!-- | **executionEnvironment** | 安全性（索引器） | 显式地将此索引器配置属性设置为 `private`，以强制通过专用终结点连接到外部数据源。 仅适用于使用 Azure 专用链接的搜索服务。 | 正式发布。 </br> 使用[搜索 REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) 设置此常规配置参数。 | -->
 
 ## <a name="may-2020-microsoft-build"></a>2020 年 5 月（Microsoft Build 大会）
-
-<!--
-| [**Debug sessions**](cognitive-search-debug-session.md) | AI enrichment | Debug sessions provide a portal-based interface to investigate and resolve issues with an existing skillset. Fixes created in the debug session can be saved to production skillsets. Get started with [this tutorial](cognitive-search-tutorial-debug-sessions.md). | Public preview, in the portal. |
-| [**IP rules for in-bound firewall support**](service-configure-firewall.md) | Security | Limit access to a search service endpoint to specific IP addresses. | Generally available. </br> Use [Management REST API 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/) or later, or the portal. |
-| [**Azure Private Link for a private search endpoint**](service-create-private-endpoint.md) | Security| Shield a search service from the public internet by running it as a private link resource, accessible only to client apps and other Azure services on the same virtual network. | Generally available. </br> Use [Management REST API 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/) or later, or the portal. |
-| [**system-managed identity (preview)**](search-howto-managed-identities-data-sources.md) | Security (indexers) | Register a search service as a trusted service with Azure Active Directory to set up connections to supported Azure data source for indexing. Applies to [indexers](search-indexer-overview.md) that ingest content from Azure data sources such as Azure SQL Database, Azure Cosmos DB, and Azure Storage. | Public preview. </br> Use the portal to register the search service. |
--->
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 类别 | 说明 | 可用性  |
 |---------|------------------|-------------|---------------|
 | [**sessionId 查询参数**](index-similarity-and-scoring.md)，[scoringStatistics=global parameter](index-similarity-and-scoring.md#scoring-statistics) | 查询（相关性） | 将 sessionID 添加到查询中，以建立一个用于计算搜索分数的会话，scoringStatistics=global 用于从所有分区收集分数，以实现更一致的搜索分数计算。 | 正式发布。 </br> 使用[搜索 REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) 或更高版本，或 REST API 2019-05-06。 |
-| [featuresMode（预览版）](index-similarity-and-scoring.md#featuresMode-param) | 查询 | 添加此查询参数，展开相关性分数以显示详细信息：每个字段相似度得分、每个字段术语频率和每个字段匹配的唯一标记数。 你可以在自定义评分算法中使用这些数据点。 有关演示此功能的示例，请参阅[添加机器学习 (LearnToRank) 以搜索相关性](https://github.com/Azure-Samples/search-ranking-tutorial)。 | 公共预览版。 </br> 使用[搜索 REST API 2020-06-30-Preview](https://docs.microsoft.com/rest/api/searchservice/index-preview) 或 REST API 2019-05-06-Preview。 |
+| [**featuresMode 相关性分数扩展（预览版）**](index-similarity-and-scoring.md#featuresMode-param) | 查询 | 添加此查询参数，展开相关性分数以显示详细信息：每个字段相似度得分、每个字段术语频率和每个字段匹配的唯一标记数。 <br/><br/>自定义评分算法可以使用此信息。 “学习排序”算法是一种高级的自定义评分功能，通过提供相关性分数详细信息即可实现该功能。 有关演示此功能的示例，请参阅[添加机器学习 (LearnToRank) 以搜索相关性](https://github.com/Azure-Samples/search-ranking-tutorial)。 | 公共预览版。 </br> 使用[搜索 REST API 2020-06-30-Preview](https://docs.microsoft.com/rest/api/searchservice/index-preview) 或 REST API 2019-05-06-Preview。 |
 
 ## <a name="march-2020"></a>2020 年 3 月
 
@@ -97,10 +88,9 @@ ms.locfileid: "97004140"
 |---------|------------------|-------------|---------------|
 | [客户管理的加密密钥](search-security-manage-encryption-keys.md) |安全性 | 除了平台的内置加密外，还添加了额外的加密层。 使用你创建和管理的加密密钥，可以在有效负载到达搜索服务之前对索引内容和同义词映射进行加密。 | 正式发布。 </br> 使用 Search REST API 2019-05-06 或更高版本。 对于托管代码，即使该功能现在不再以预览版提供，但正确的包仍是 [.NET SDK 版本 8.0-preview](search-dotnet-sdk-migration-version-9.md)。 |
 | [适用于入站防火墙支持的 IP 规则（预览版）](service-configure-firewall.md) | 安全性 | 将对搜索服务终结点的访问限制为特定的 IP 地址。 预览版 API 在 [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service) 中提供 **IpRule** 和 **NetworkRuleSet** 属性。 此预览版功能可在选定的区域中使用。 |  使用 api-version=2019-10-01-Preview 的公共预览版。  |
+<!-- | [专用搜索终结点的 Azure 专用链接（预览版）](service-create-private-endpoint.md) | 安全性| 通过将搜索服务作为专用链接资源（仅可供同一虚拟网络上的客户端应用和其他 Azure 服务访问）运行，使其不受公共 Internet 的影响。 | 使用 api-version=2019-10-01-Preview 的公共预览版。  | -->
 
-<!-- | [**Azure Private Link for a private search endpoint (preview)**](service-create-private-endpoint.md) | Security| Shield a search service from the public internet by running it as a private link resource, accessible only to client apps and other Azure services on the same virtual network. | Public preview using api-version=2019-10-01-Preview.  | -->
-
-## <a name="features-in-2019"></a>2019 版中的功能
+## <a name="2019-feature-announcements"></a>2019 功能公告
 
 ### <a name="december-2019"></a>2019 年 12 月
 

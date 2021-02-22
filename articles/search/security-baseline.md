@@ -4,16 +4,15 @@ description: Azure 认知搜索安全基线为实现 Azure 安全基准中指定
 author: msmbaldwin
 ms.service: search
 ms.topic: conceptual
-origin.date: 09/25/2020
-ms.date: 01/14/2021
+ms.date: 02/04/2021
 ms.author: v-tawe
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5fd74dd68f571819ac87b1e9966630c1e0286a24
-ms.sourcegitcommit: 01cd9148f4a59f2be4352612b0705f9a1917a774
+ms.openlocfilehash: 4eb119fb9d13cfaa7ea06a87533746d6bcde22fe
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98194749"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087536"
 ---
 # <a name="azure-security-baseline-for-azure-cognitive-search"></a>Azure 认知搜索的 Azure 安全基线
 
@@ -341,7 +340,7 @@ ms.locfileid: "98194749"
 
 **指导**：使用配置了多重身份验证 (MFA) 的特权访问工作站 (PAW) 来登录并访问 Azure 资源。
 
-<!-- - [Understand secure, Azure-managed workstations](../active-directory/devices/concept-azure-managed-workstation.md) -->
+- [了解安全的 Azure 托管工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
  
 
 - [如何启用 Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
@@ -785,9 +784,9 @@ Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 导出模板，
 
 **指导**：如果使用自定义的 Azure Policy 定义，请使用 Azure DevOps 或 Azure Repos 安全地存储和管理代码。
 
-- [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azuredevops/repos/git/gitworkflow)
+- [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
 
-- [Azure Repos 文档](https://docs.microsoft.com/azuredevops/repos/index)
+- [Azure Repos 文档](https://docs.microsoft.com/azure/devops/repos/index)
 
 **Azure 安全中心监视**：不适用
 

@@ -3,14 +3,14 @@ title: 排查常见错误
 description: 了解如何排查为 Kubernetes 创建策略定义、各种 SDK 和加载项时遇到的问题。
 origin.date: 12/01/2020
 ms.date: 01/14/2021
-ms.author: v-tawe
+ms.author: v-yeche
 ms.topic: troubleshooting
-ms.openlocfilehash: 55059fa7e3ad8dc2489edf2e34c0f653a0e6869a
-ms.sourcegitcommit: 93063f9b8771b8e895c3bcdf218f5e3af14ef537
+ms.openlocfilehash: da1e2cbd720ca6fef45f336c35cbc08a3dc680ba
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98193286"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087552"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>排查使用 Azure Policy 时出现的错误
 
@@ -23,8 +23,7 @@ ms.locfileid: "98193286"
 - 使用自定义策略时，请尝试在 Azure 门户中获取有关架构的 Lint 分析反馈，或查看生成的[符合性数据](../how-to/get-compliance-data.md)以了解资源的评估方式。
 - 使用各种 SDK 时，SDK 提供有关函数失败原因的详细信息。
 
-<!-- - When working with the add-on for Kubernetes, start with the -->
-  <!-- [logging](../concepts/policy-for-kubernetes.md#logging) in the cluster. -->
+<!--NOT AVAILABLE ON  [logging](../concepts/policy-for-kubernetes.md#logging)-->
 
 ## <a name="general-errors"></a>常规错误
 
@@ -183,7 +182,7 @@ then rerun the `helm install azure-policy-addon` command.
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
 - 通过 [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-policy.html) 获得专家提供的答案。
-- 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://support.azure.cn)并选择 **获取支持**。
+- 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://support.azure.cn/zh-cn/support/contact)并选择 **获取支持**。
 
 <!-- - Connect with [@AzureSupport](https://support.azure.cn) – the official Microsoft Azure
   account for improving customer experience by connecting the Azure community to the right

@@ -106,7 +106,7 @@
             - name: Python
               displayName: 'Event Hub, ingest'
               href: data-connection-event-hub-python.md
-            - name: Azure Resource Manager 模板
+            - name: Azure 资源管理器模板
               displayName: 'Event Hub, ingest, data connection'
               href: data-connection-event-hub-resource-manager.md
         - name: IoT 中心
@@ -235,7 +235,7 @@
                 - name: Python
                   displayName: cluster principal
                   href: cluster-principal-python.md
-                - name: Azure Resource Manager 模板
+                - name: Azure 资源管理器模板
                   displayName: cluster principal
                   href: cluster-principal-resource-manager.md
             - name: 管理群集语言扩展
@@ -253,7 +253,7 @@
                 - name: Python
                   displayName: database principal
                   href: database-principal-python.md
-                - name: Azure Resource Manager 模板
+                - name: Azure 资源管理器模板
                   displayName: database principal
                   href: database-principal-resource-manager.md
             - name: 策略
@@ -1267,6 +1267,26 @@
         - name: 控件命令概述
           displayName: Management
           href: ./kusto/management/index.md
+        - name: 工作负载组（预览）
+          items:
+            - name: 工作负载组概述
+              href: ./kusto/management/workload-groups.md
+            - name: 工作负载组管理
+              href: ./kusto/management/workload-groups-commands.md
+            - name: 请求分类策略
+              items:
+                - name: 请求分类策略
+                  href: ./kusto/management/request-classification-policy.md
+                - name: 请求分类策略命令
+                  href: ./kusto/management/request-classification-policy-commands.md
+            - name: 请求限制策略
+              items:
+                - name: 请求限制策略
+                  href: ./kusto/management/request-limits-policy.md
+            - name: 请求速率限制策略
+              items:
+                - name: 请求速率限制策略
+                  href: ./kusto/management/request-rate-limit-policy.md
         - name: 架构
           items:
             - name: 架构管理的最佳做法
@@ -1427,12 +1447,6 @@
                   href: ./kusto/management/partitioningpolicy.md
                 - name: 分区策略命令
                   href: ./kusto/management/partitioning-policy.md
-            - name: 查询限制
-              items:
-                - name: 查询限制策略
-                  href: ./kusto/management/query-throttling-policy.md
-                - name: 查询限制策略命令
-                  href: ./kusto/management/query-throttling-policy-commands.md
             - name: 保留
               items:
                 - name: 保留策略

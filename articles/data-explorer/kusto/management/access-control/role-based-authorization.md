@@ -3,18 +3,17 @@ title: Kusto 中基于角色的授权 - Azure 数据资源管理器
 description: 本文介绍 Azure 数据资源管理器的 Kusto 中基于角色的授权。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 02/14/2020
-ms.date: 01/22/2021
-ms.openlocfilehash: f8342183daf6af927e8f7ad4854a72767dfd3e79
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 02/08/2021
+ms.openlocfilehash: 7e12fb815d2f6345c5a285cdf661495fa6aa44da
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611424"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087596"
 ---
 # <a name="role-based-authorization-in-kusto"></a>Kusto 中基于角色的授权
 

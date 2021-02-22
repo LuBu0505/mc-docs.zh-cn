@@ -3,20 +3,19 @@ title: 跨数据库和跨群集查询 - Azure 数据资源管理器
 description: 本文介绍 Azure 数据资源管理器中的跨数据库和跨群集查询。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 02/13/2020
-ms.date: 01/22/2021
-zone_pivot_group_filename: zone-pivot-groups.json
+ms.date: 02/08/2021
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 28f7e5d9748d755e5b484baff85aaea258325c19
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.openlocfilehash: 903514e1f0746e722e3bc6cf76ec602e70cbac84
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611504"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087513"
 ---
 # <a name="cross-database-and-cross-cluster-queries"></a>跨数据库和跨群集查询
 

@@ -8,12 +8,12 @@ ms.date: 01/25/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 9f55d732f270994f13539b1bec9ef4e4ed12c39f
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: 718c9fc0c5f75f90aaf2338eba0ccc1edcae5f12
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751201"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087549"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 模板的资源函数
 
@@ -42,14 +42,14 @@ ms.locfileid: "98751201"
 
 返回某个[扩展资源](../management/extension-resource-types.md)的资源 ID，该资源属于适用于其他资源的资源类型，是对其功能的补充。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 | 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| ResourceId |是 |string |扩展资源应用到的资源的资源 ID。 |
-| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |string |资源的名称。 |
-| resourceName2 |否 |string |下一个资源名称段（如果需要）。 |
+| ResourceId |是 |字符串 |扩展资源应用到的资源的资源 ID。 |
+| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |字符串 |资源的名称。 |
+| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
 
 如果资源类型包含更多段，则继续添加资源名称作为参数。
 
@@ -250,11 +250,11 @@ resource myAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |字符串 |资源的唯一标识符。 |
-| apiVersion |是 |string |资源运行时状态的 API 版本。 通常采用 **yyyy-mm-dd** 格式。 |
-| functionValues |否 |object | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas。 本文中演示了传递函数值的示例。 |
+| apiVersion |是 |字符串 |资源运行时状态的 API 版本。 通常采用 **yyyy-mm-dd** 格式。 |
+| functionValues |否 |对象 (object) | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas。 本文中演示了传递函数值的示例。 |
 
 ### <a name="valid-uses"></a>有效使用
 
@@ -265,6 +265,9 @@ resource myAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
 ### <a name="implementations"></a>实现形式
 
 下表中显示 list* 的可能用途。
+
+<!--CORRECT LINE 302 Microsoft.DocumentDB/databaseAccounts/notebookWorkspaces-->
+<!--CORRECT ON cosmos-db-resource-provider/2020-06-01/-->
 
 | 资源类型 | 函数名称 |
 | ------------- | ------------- |
@@ -302,7 +305,7 @@ resource myAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
 | Microsoft.Devices/provisioningServices | [listkeys](https://docs.microsoft.com/rest/api/iot-dps/iotdpsresource/listkeys) |
 | Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/2020-06-01-preview/databaseaccounts/listconnectionstrings) |
 | Microsoft.DocumentDB/databaseAccounts | [listKeys](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/2020-06-01-preview/databaseaccounts/listkeys) |
-| Microsoft.DocumentDB/databaseAccounts/notebookWorkspaces | [listConnectionInfo](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/2020-04-01/notebookworkspaces/listconnectioninfo) |
+| Microsoft.DocumentDB/databaseAccounts/notebookWorkspaces | [listConnectionInfo](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/2020-06-01/notebookworkspaces/listconnectioninfo) |
 | Microsoft.DomainRegistration | [listDomainRecommendations](https://docs.microsoft.com/rest/api/appservice/domains/listrecommendations) |
 | Microsoft.DomainRegistration/topLevelDomains | [listAgreements](https://docs.microsoft.com/rest/api/appservice/topleveldomains/listagreements) |
 | Microsoft.EventGrid/domains | [listKeys](https://docs.microsoft.com/rest/api/eventgrid/version2020-06-01/domains/listsharedaccesskeys) |
@@ -496,12 +499,12 @@ sasToken: listAccountSas(storagename, '2018-02-01', accountSasProperties).accoun
 
 返回有关资源提供程序及其支持的资源类型的信息。 如果未提供资源类型，则该函数将返回资源提供程序支持的所有类型。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |是 |string |提供程序的命名空间 |
-| resourceType |否 |string |指定的命名空间中的资源类型。 |
+| providerNamespace |是 |字符串 |提供程序的命名空间 |
+| resourceType |否 |字符串 |指定的命名空间中的资源类型。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -584,13 +587,13 @@ output providerOutput array = providers(providerNamespace, resourceType)
 
 返回表示资源的运行时状态的对象。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| resourceName 或 resourceIdentifier |是 |string |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 当引用以前部署的资源或者资源名称不明确时，请提供资源 ID。 |
-| apiVersion |否 |string |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，则需要此参数。 通常采用 **yyyy-mm-dd** 格式。 |
-| 'Full' |否 |string |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
+| resourceName 或 resourceIdentifier |是 |字符串 |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 当引用以前部署的资源或者资源名称不明确时，请提供资源 ID。 |
+| apiVersion |否 |字符串 |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，则需要此参数。 通常采用 **yyyy-mm-dd** 格式。 |
+| 'Full' |否 |字符串 |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
 
 <!-- Not Available on [template reference](https://docs.microsoft.com/azure/templates/)-->
 
@@ -1059,15 +1062,15 @@ output resourceGroupOutput object = resourceGroup()
 
 返回资源的唯一标识符。 如果资源名称不确定或未设置在相同的模板内，请使用此函数。 返回的标识符的格式因部署是在资源组、订阅、管理组还是租户的范围内进行而不同。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 仅在资源组或订阅的范围内部署时才提供此值。 |
-| resourceGroupName |否 |string |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 仅在资源组的范围内部署时才提供此值。 |
-| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |string |资源的名称。 |
-| resourceName2 |否 |string |下一个资源名称段（如果需要）。 |
+| resourceGroupName |否 |字符串 |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 仅在资源组的范围内部署时才提供此值。 |
+| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |字符串 |资源的名称。 |
+| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
 
 如果资源类型包含更多段，则继续添加资源名称作为参数。
 
@@ -1297,12 +1300,12 @@ output nestedResourceOutput string = resourceId('Microsoft.SQL/servers/databases
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
-| sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentSubOutput | String | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| nestedResourceOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
+| sameRGOutput | 字符串 | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentRGOutput | 字符串 | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentSubOutput | 字符串 | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| nestedResourceOutput | 字符串 | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
 ## <a name="subscription"></a>订阅
 
@@ -1361,14 +1364,14 @@ output subscriptionOutput object = subscription()
 
 返回在订阅级别部署的资源的唯一标识符。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
-| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |string |资源的名称。 |
-| resourceName2 |否 |string |下一个资源名称段（如果需要）。 |
+| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |字符串 |资源的名称。 |
+| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
 
 如果资源类型包含更多段，则继续添加资源名称作为参数。
 
@@ -1493,13 +1496,13 @@ resource myRoleAssignment 'Microsoft.Authorization/roleAssignments@2018-09-01-pr
 
 返回在租户级别部署的资源的唯一标识符。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |string |资源的名称。 |
-| resourceName2 |否 |string |下一个资源名称段（如果需要）。 |
+| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |字符串 |资源的名称。 |
+| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
 
 如果资源类型包含更多段，则继续添加资源名称作为参数。
 

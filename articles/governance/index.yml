@@ -12,12 +12,12 @@ metadata:
   ms.author: v-tawe
   origin.date: 10/20/2020
   ms.date: 01/14/2021
-  ms.openlocfilehash: c37504ace1185be639f5a0064111d778d7f86a7c
-  ms.sourcegitcommit: 93063f9b8771b8e895c3bcdf218f5e3af14ef537
+  ms.openlocfilehash: 62c3e8d3ee8da64f719d72806d7097d6c8dba496
+  ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/14/2021
-  ms.locfileid: "98193242"
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "101087588"
 highlightedContent:
   items:
   - title: 治理概述
@@ -165,7 +165,7 @@ additionalContent:
       - text: REST
         url: https://docs.microsoft.com/rest/api/azure-resourcegraph/
       - text: 资源管理器模板
-        url: https://docs.microsoft.com/templates/microsoft.resourcegraph/allversions
+        url: https://docs.microsoft.com/azure/templates/microsoft.resourcegraph/allversions
     - title: 成本管理
       links:
       - text: REST

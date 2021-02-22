@@ -3,18 +3,17 @@ title: Kusto 跨群集查询和架构更改 - Azure 数据资源管理器
 description: 本文介绍 Azure 数据资源管理器中的跨群集查询和架构更改。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 02/13/2020
-ms.date: 01/22/2021
-ms.openlocfilehash: 0110ba831edb1ad61ff740625b9425b0687a0d23
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 02/08/2021
+ms.openlocfilehash: caa0fb89954fc6e5c41e2c929fd4fa5b795063c5
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611657"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087598"
 ---
 # <a name="cross-cluster-queries-and-schema-changes"></a>跨群集查询和架构更改
 

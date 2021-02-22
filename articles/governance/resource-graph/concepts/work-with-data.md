@@ -6,12 +6,12 @@ origin.date: 09/30/2020
 ms.date: 01/14/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ef83b87075c1eee7af3fc331ea1bc6fb9c9f6688
-ms.sourcegitcommit: 93063f9b8771b8e895c3bcdf218f5e3af14ef537
+ms.openlocfilehash: 2cda41e5451036a42e7eea3e173b9af5927ef58f
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98193285"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087617"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>处理大型 Azure 资源数据集
 
@@ -21,7 +21,7 @@ Azure Resource Graph 旨在处理并获取 Azure 环境中资源的相关信息�
 
 ## <a name="data-set-result-size"></a>数据集结果大小
 
-默认情况下，Resource Graph 限制任何查询都只能返回 100 条记录。 这项控制措施可保护用户和服务不受会生成大型数据集的意外查询影响。 当客户尝试通过查询来按照能满足自己特定需求的方式查找和筛选资源时，这种情况最为常见。 这项控制措施不同于使用 [top](/kusto/query/topoperator) 或 [limit](/kusto/query/limitoperator) Azure 数据资源管理器语言运算符来限制结果。
+默认情况下，Resource Graph 限制任何查询都只能返回 100 条记录。 这项控制措施可保护用户和服务不受会生成大型数据集的意外查询影响。 当客户尝试通过查询来按照能满足自己特定需求的方式查找和筛选资源时，这种情况最为常见。 这项控制措施不同于使用 [top](https://docs.azure.cn/data-explorer/kusto/query/topoperator) 或 [limit](https://docs.azure.cn/data-explorer/kusto/query/limitoperator) Azure 数据资源管理器语言运算符来限制结果。
 
 > [!NOTE]
 > 使用 First 时，建议用 `asc` 或 `desc` 按至少一个列对结果进行排序。 如果不排序，则返回的结果是随机的且不可重复。

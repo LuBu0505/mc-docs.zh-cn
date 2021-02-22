@@ -3,21 +3,20 @@ title: union 运算符 - Azure 数据资源管理器 | Microsoft Docs
 description: 本文介绍了 Azure 数据资源管理器中的 union 运算符。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 02/13/2020
-ms.date: 01/22/2021
+ms.date: 02/08/2021
 ms.localizationpriority: high
-zone_pivot_group_filename: zone-pivot-groups.json
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: e017b97a605f257d8c52e296a68f0e1a18c6cfc3
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.openlocfilehash: e06d348876580be98a76b798622ac231bfece58d
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611490"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087575"
 ---
 # <a name="union-operator"></a>union 运算符
 

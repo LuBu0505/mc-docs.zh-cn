@@ -2,18 +2,17 @@
 title: 使用 Azure 数据资源管理器 Python 库引入数据
 description: 本文介绍如何使用 Python 将数据引入（加载）到 Azure 数据资源管理器中。
 author: orspod
-ms.author: v-tawe
-ms.reviewer: mblythe
+ms.author: v-junlch
+ms.reviewer: vladikbr
 ms.service: data-explorer
 ms.topic: how-to
-origin.date: 06/03/2019
-ms.date: 01/19/2021
-ms.openlocfilehash: 48a37fd69f5526204ed6a7cd5628add9606563e9
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 02/08/2021
+ms.openlocfilehash: 8510dca2ab1e93bbdf22783cea5b7ed12067ea95
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611293"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087529"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>使用 Azure 数据资源管理器 Python 库引入数据
 
@@ -29,9 +28,9 @@ ms.locfileid: "98611293"
 首先，在群集中创建一个表和数据映射。 然后将引入排列到群集并验证结果。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-* 具有活动订阅的 Azure 帐户。 [试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+* 具有活动订阅的 Azure 帐户。 [创建帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 * [Python 3.4+](https://www.python.org/downloads/)。
 
@@ -62,7 +61,7 @@ Azure 数据资源管理器使用 Azure Active Directory 租户 ID，以对应�
 https://login.chinacloudapi.cn/<YourDomain>/.well-known/openid-configuration/
 ```
 
-例如，如果域名为 contoso.com，则该 URL 将是：[https://login.chinacloudapi.cn/contoso.com/.well-known/openid-configuration/](https://login.chinacloudapi.cn/contoso.com/.well-known/openid-configuration/)  。 单击此 URL 以查看结果；第一行如下所示。 
+例如，如果域名为 contoso.com，则该 URL 将是：`https://login.chinacloudapi.cn/contoso.com/.well-known/openid-configuration/`  。 单击此 URL 以查看结果；第一行如下所示。 
 
 ```console
 "authorization_endpoint":"https://login.chinacloudapi.cn/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
@@ -97,7 +96,7 @@ DESTINATION_TABLE_COLUMN_MAPPING = "StormEvents_CSV_Mapping"
 导入其他类并设置数据源文件的常数。 此示例使用 Azure Blob 存储上托管的示例文件。 StormEvents  示例数据集包含[美国国家环境信息中心](https://www.ncdc.noaa.gov/stormevents/)中与天气相关的数据。
 
 ```python
-from azure.kusto.ingest import KustoIngestClient, IngestionProperties, FileDescriptor, BlobDescriptor, DataFormat, ReportLevel, ReportMethod
+from azure.kusto.ingest import QueuedIngestClient, IngestionProperties, FileDescriptor, BlobDescriptor, DataFormat, ReportLevel, ReportMethod
 
 CONTAINER = "samplefiles"
 ACCOUNT_NAME = "kustosamplefiles"
@@ -139,11 +138,11 @@ dataframe_from_result_table(RESPONSE.primary_results[0])
 将一条消息排入队列，以便从 blob 存储中提取数据并将该数据引入到 Azure 数据资源管理器。
 
 ```python
-INGESTION_CLIENT = KustoIngestClient(KCSB_INGEST)
+INGESTION_CLIENT = QueuedIngestClient(KCSB_INGEST)
 
 # All ingestion properties are documented here: https://docs.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
-INGESTION_PROPERTIES = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, dataFormat=DataFormat.CSV,
-                                           mappingReference=DESTINATION_TABLE_COLUMN_MAPPING, additionalProperties={'ignoreFirstRecord': 'true'})
+INGESTION_PROPERTIES = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, data_format=DataFormat.CSV,
+                                           ingestion_mapping_reference=DESTINATION_TABLE_COLUMN_MAPPING, additional_properties={'ignoreFirstRecord': 'true'})
 # FILE_SIZE is the raw size of the data in bytes
 BLOB_DESCRIPTOR = BlobDescriptor(BLOB_PATH, FILE_SIZE)
 INGESTION_CLIENT.ingest_from_blob(

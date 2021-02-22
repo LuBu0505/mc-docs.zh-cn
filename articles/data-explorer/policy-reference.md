@@ -1,19 +1,18 @@
 ---
 title: Azure 数据资源管理器的内置策略定义
 description: 列出 Azure 数据资源管理器的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-origin.date: 01/13/2020
-ms.date: 01/20/2021
+ms.date: 02/08/2021
 ms.topic: reference
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.service: data-explorer
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 8a6411f0ceac4d21c30fa9168d73d40905cc6b27
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.openlocfilehash: e00ab98e92921f278f35a35129097603c58bfa00
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98614888"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087567"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-data-explorer"></a>Azure 数据资源管理器的 Azure Policy 内置定义
 

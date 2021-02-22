@@ -3,19 +3,18 @@ title: 字符串运算符 - Azure 数据资源管理器
 description: 本文介绍了 Azure 数据资源管理器中的字符串运算符。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 10/19/2020
-ms.date: 01/22/2021
+ms.date: 02/08/2021
 ms.localizationpriority: high
-ms.openlocfilehash: ba99f10cfc73c5efcc4cbc25319dc689a15dc97d
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.openlocfilehash: 10266c0e8e8171c5ccfa75a52b4fcea305a00d77
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611497"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087580"
 ---
 # <a name="string-operators"></a>字符串运算符
 

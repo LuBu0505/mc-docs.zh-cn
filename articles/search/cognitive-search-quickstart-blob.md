@@ -7,24 +7,23 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: quickstart
-origin.date: 09/25/2020
-ms.date: 11/27/2020
-ms.openlocfilehash: 897b352f06a01061c9017ec4abc889c175c76c2a
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.date: 02/04/2021
+ms.openlocfilehash: 79f6ce6c7402badd02602d403dfef5f94f774a77
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431198"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087591"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索认知技能集
 
-技能集是一项基于 AI 的功能，它可以从大型的无差别文本或图像文件提取信息和结构，使内容可编制索引并可在 Azure 认知搜索中搜索。 
+技能组是一项基于 AI 的功能，它使用深度学习模型从大型的无差别文本或图像文件提取信息和结构，使内容可编制索引并可在 Azure 认知搜索中搜索。 
 
 在本快速入门中，你将合并 Azure 云中的服务和数据以创建技能集。 一切准备就绪后，可在 Azure 门户中运行“导入数据”向导，以将这些数据提取到一起。 最终结果是一个可在门户（[搜索资源管理器](search-explorer.md)）中查询的可搜索索引，其中填充了 AI 处理功能创建的数据。
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，必须满足以下条件：
+开始之前，必须具备以下先决条件：
 
 + 具有活动订阅的 Azure 帐户。 [试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
