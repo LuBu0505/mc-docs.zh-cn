@@ -20,7 +20,7 @@ ms.locfileid: "98193250"
 本教程介绍了如何使用 [Azure 事件中心](./event-hubs-about.md?WT.mc_id=devto-blog-abhishgu)（适用于 Kafka）、[Azure DB for PostgreSQL](../postgresql/overview.md) 和 Debezium 在 Azure 上设置基于变更数据捕获的系统。 它将使用 [Debezium PostgreSQL 连接器](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html)将数据库修改从 PostgreSQL 流式传输到 Azure 事件中心内的 Kafka 主题。
 
 > [!NOTE]
-> 本文包含对术语“白名单”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
+> 本文包含对术语“允许列表”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 在本教程中，我们将执行以下步骤：
 
@@ -43,7 +43,7 @@ ms.locfileid: "98193250"
 要从事件中心服务进行发送和接收，需要使用事件中心命名空间。 有关创建命名空间和事件中心的说明，请参阅[创建事件中心](event-hubs-create.md)。 获取事件中心连接字符串和完全限定域名 (FQDN) 供以后使用。 有关说明，请参阅[获取事件中心连接字符串](event-hubs-get-connection-string.md)。 
 
 ## <a name="setup-and-configure-azure-database-for-postgresql"></a>设置和配置 Azure Database for PostgreSQL
-[Azure Database for PostgreSQL](../postgresql/overview.md) 是一项关系数据库服务，基于开源 PostgreSQL 数据库引擎的社区版本，并且以两种部署选项提供：单一服务器和超大规模 (Citus)。 请[按照这些说明](../postgresql/quickstart-create-server-database-portal.md)使用 Azure 门户创建 Azure Database for PostgreSQL 服务器。 
+[Azure Database for PostgreSQL](../postgresql/overview.md) 是一项关系数据库服务，基于开源 PostgreSQL 数据库引擎的社区版本，并且以两种部署选项提供：“单一服务器”和“超大规模(Citus)”。 请[按照这些说明](../postgresql/quickstart-create-server-database-portal.md)使用 Azure 门户创建 Azure Database for PostgreSQL 服务器。 
 
 ## <a name="setup-and-run-kafka-connect"></a>设置并运行 Kafka Connect
 本部分包含以下主题：
