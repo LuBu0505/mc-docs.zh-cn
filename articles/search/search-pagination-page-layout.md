@@ -7,14 +7,13 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 12/09/2020
-ms.date: 01/14/2021
-ms.openlocfilehash: 01c862bf31fb08698f13cd29fbbc55b497970275
-ms.sourcegitcommit: 01cd9148f4a59f2be4352612b0705f9a1917a774
+ms.date: 02/04/2021
+ms.openlocfilehash: ac3d63bd04a90c7b272c73c75223a60f904b2e8e
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98194768"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087515"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中使用搜索结果
 
@@ -104,7 +103,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 
 ### <a name="how-to-get-consistent-ordering"></a>如何获得一致的排序
 
-如果一致的排序是一项应用程序要求，则可以在字段上显式定义 [ **`$orderby`** ] 表达式(query-odata-filter-orderby-syntax.md)。 只有在编制索引时设置为 `sortable` 的字段才可用于对结果排序。 如果你指定了 `orderby` 参数的值来包括字段名称并且针对地理空间值调用了 [`geo.distance()` 函数](query-odata-filter-orderby-syntax.md)，则 `$orderby` 中常用的字段包括评级、日期和位置。  
+如果一致的排序是一项应用程序要求，则可以在字段上显式定义 [`$orderby` 表达式](query-odata-filter-orderby-syntax.md)。 只有在编制索引时设置为 `sortable` 的字段才可用于对结果排序。 如果你指定了 `orderby` 参数的值来包括字段名称并且针对地理空间值调用了 [`geo.distance()` 函数](query-odata-filter-orderby-syntax.md)，则 `$orderby` 中常用的字段包括评级、日期和位置。  
 
 提高一致性的另一种方法是使用[自定义评分配置文件](index-add-scoring-profiles.md)。 使用评分配置文件可以提高在特定字段中有匹配项的项的分数，从而可以让你更好地控制搜索结果中各个项的排名。 这一附加的评分逻辑有助于覆盖副本之间的细微差异，因为每个文档的搜索评分会在更大程度上拉开差距。 我们建议对此方法使用[排名算法](index-ranking-similarity.md)。
 
