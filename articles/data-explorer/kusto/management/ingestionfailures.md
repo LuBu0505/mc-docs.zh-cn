@@ -3,18 +3,17 @@ title: 引入失败 - Azure 数据资源管理器
 description: 本文介绍 Azure 数据资源管理器中的引入失败。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 01/20/2019
-ms.date: 01/22/2021
-ms.openlocfilehash: c748fc530f71adb5fa5614370d5ba48837f6aff7
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 02/08/2021
+ms.openlocfilehash: 343ac457874106dd2c7b2565151e537af25ae342
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611683"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087512"
 ---
 # <a name="ingestion-failures"></a>引入失败
 
@@ -30,6 +29,8 @@ ms.locfileid: "98611683"
 > 引入失败应通过[指标](../../using-metrics.md)监视，并可选择使用引入日志。 若要设置引入日志，请参阅[使用诊断日志监视 Azure 数据资源管理器的引入、命令、查询和表](../../using-diagnostic-logs.md)。
 > 
 > 若要详细了解如何监视在涉及[排队引入](../api/netfx/about-kusto-ingest.md#queued-ingestion)的流中发生的故障，请参阅[此指南](../api/netfx/kusto-ingest-client-status.md)。
+>
+> 引入失败的保留期为 14 天。
 
 **语法**
 

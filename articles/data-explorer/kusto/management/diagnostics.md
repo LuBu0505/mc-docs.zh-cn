@@ -3,18 +3,17 @@ title: 诊断信息 - Azure 数据资源管理器
 description: 本文介绍 Azure 数据资源管理器中的诊断信息。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 02/13/2020
-ms.date: 01/22/2021
-ms.openlocfilehash: 156986ca10fa58032e51c3c013c119e177b69e35
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 02/08/2021
+ms.openlocfilehash: b3c45d61222241870acbdbfa20d4db724919bafd
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611331"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087558"
 ---
 # <a name="diagnostic-information"></a>诊断信息
 
@@ -64,10 +63,12 @@ Kusto.Azure.Svc_IN_0|net.tcp://100.112.138.15:23107/|Kusto.Azure.Svc_IN_0/RD000D
 ## <a name="show-diagnostics"></a>.show diagnostics
 
 ```kusto
-.show diagnostics
+.show diagnostics [with(scope = cluster | workloadgroup)]
 ```
 
 返回有关 Kusto 群集运行状况的信息。
+
+`scope` 控制显示容量的基础。 容量可以基于命令所分类到的[工作负荷组](workload-groups.md)，或群集的总容量。 如果未指定范围，则默认为 `workloadgroup`。
  
 **返回**
 
@@ -110,10 +111,12 @@ Kusto.Azure.Svc_IN_0|net.tcp://100.112.138.15:23107/|Kusto.Azure.Svc_IN_0/RD000D
 ## <a name="show-capacity"></a>.show capacity
 
 ```kusto
-.show capacity
+.show capacity [with(scope = cluster | workloadgroup)]
 ```
 
 返回每个资源的估计群集容量的计算结果。
+
+`scope` 控制显示容量的基础。 容量可以基于命令所分类到的[工作负荷组](workload-groups.md)，或群集的总容量。 如果未指定范围，则默认为 `workloadgroup`。
  
 **结果**
 

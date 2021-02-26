@@ -3,18 +3,17 @@ title: 创建具体化视图 - Azure 数据资源管理器
 description: 本文介绍了如何在 Azure 数据资源管理器中创建具体化视图。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 08/30/2020
-ms.date: 01/22/2021
-ms.openlocfilehash: c70a25ce724bd9662e5300ab051755fc27a15122
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 02/08/2021
+ms.openlocfilehash: e5de606866153b6f32c70fce6a47a7b68660ac1e
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611321"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087620"
 ---
 # <a name="create-materialized-view"></a>.create materialized-view
 
@@ -82,10 +81,11 @@ ms.locfileid: "98611321"
 
 |properties|类型|说明 |
 |----------------|-------|---|
-|backfill|bool|根据 SourceTable 中当前存在的所有记录创建视图 (`true`)，还是从现在开始创建视图 (`false`)。 默认值为 `false`。| 
+|backfill|bool|根据 SourceTable 中当前存在的所有记录创建视图 (`true`)，还是从现在开始创建视图 (`false`)。 默认值为 `false`。 有关详细信息，请参阅[回填具体化视图](#backfill-a-materialized-view)部分。| 
 |effectiveDateTime|datetime| 如果与 `backfill=true` 一起指定，则创建操作仅会回填在该日期/时间之后引入的记录。 还必须将回填设置为 true。 需要一个日期/时间文本，例如 `effectiveDateTime=datetime(2019-05-01)`|
-|dimensionTables|Array|以逗号分隔的、视图中的维度表的列表。 请参阅 [Query 参数](#query-argument)
+|lookback|timespan| 仅对 `arg_max`/`arg_min`/`any` 具体化视图有效，且仅当引擎为 [EngineV3](../../../engine-v3.md) 时有效。 限制需要重复项的时间段。 例如，如果在 `arg_max` 视图上指定了 6 小时的回溯，则新引入的记录与现有记录之间的重复数据删除将只考虑最长 6 小时前引入的记录。 回溯相对于 `ingestion_time`。 错误地定义回溯时段可能会导致具体化视图中出现重复项。 例如，如果一个特定键的记录在同一键的记录被引入 10 小时后引入，而回溯设置为 6 小时，则此键将是视图中的重复项。 在[具体化时间](materialized-view-overview.md#how-materialized-views-work)期间和[查询时间](materialized-view-overview.md#materialized-views-queries)期间同时应用回溯时段。|
 |autoUpdateSchema|bool|是否根据源表更改自动更新视图。 默认值为 `false`。 此选项仅对 `arg_max(Timestamp, *)` / `arg_min(Timestamp, *)` / `any(*)` 类型的视图（仅当 columns 参数为 `*` 时）有效。 如果将此选项设置为 true，则对源表所做的更改会自动反映在具体化视图中。
+|dimensionTables|Array|以逗号分隔的、视图中的维度表的列表。 请参阅 [Query 参数](#query-argument)
 |文件夹|string|具体化视图的文件夹。|
 |docString|string|记录具体化视图的字符串|
 
@@ -133,11 +133,11 @@ ms.locfileid: "98611321"
     } 
     ```
 
-1. 基于 EventId 列对源表执行重复数据删除操作的具体化视图：
+1. 基于 EventId 列使用 6 小时的回溯对源表执行重复数据删除操作的具体化视图。 仅针对当前记录之前的 6 小时内引入的记录进行重复项删除：
 
     <!-- csl -->
     ```
-    .create materialized-view DedupedT on table T
+    .create materialized-view with(lookback=6h) DedupedT on table T
     {
         T
         | summarize any(*) by EventId
@@ -294,11 +294,12 @@ ms.locfileid: "98611321"
     } 
     ```
 
-## <a name="limitations-on-creating-materialized-views"></a>创建具体化视图的限制
+## <a name="materialized-views-limitations-and-known-issues"></a>具体化视图的限制和已知问题
 
 * 无法通过以下方式创建具体化视图：
     * 基于另一个具体化视图。
-    * 基于[追随者数据库](../../../follower.md)。 追随者数据库是只读的，而具体化视图需要执行写入操作。  在领导者数据库上定义的具体化视图可以从其追随者进行查询，就像领导者中的任何其他表一样。 
+    * 基于[追随者数据库](../../../follower.md)。 追随者数据库是只读的，而具体化视图需要执行写入操作。  在领导者数据库上定义的具体化视图可以从其追随者进行查询，就像领导者中的任何其他表一样。
+* 具体化视图仅处理引入到源表中的新记录。 从源表中删除的记录，无论是由于运行[data purge](../../concepts/data-purge.md)/[drop extents](../drop-extents.md)，还是由于[保留策略](../retentionpolicy.md)或任何其他原因，都不会影响具体化视图。 具体化视图具有其自己的[保留策略](materialized-view-overview.md#materialized-views-policies)，该策略独立于源表的保留策略。 具体化视图可能包含源表中不存在的记录。
 * 具体化视图的源表：
     * 必须是使用[引入方法](../../../ingest-data-overview.md#ingestion-methods-and-tools)之一、使用[更新策略](../updatepolicy.md)或使用[“从查询中引入”命令](../data-ingestion/ingest-from-query.md)直接将内容引入到其中的表。
         * 具体而言，不支持使用[移动区](../move-extents.md)从其他表移动到具体化视图的源表中。 移动区可能会失败并出现以下错误：`Cannot drop/move extents from/to table 'TableName' since Materialized View 'ViewName' is currently processing some of these extents`。 
@@ -323,7 +324,7 @@ ms.locfileid: "98611321"
 
 ### <a name="properties"></a>属性
 
-|properties|类型|说明
+|属性|类型|说明
 |----------------|-------|---|
 |operationId|GUID|从 create materialized-view 命令返回的操作 ID。|
 

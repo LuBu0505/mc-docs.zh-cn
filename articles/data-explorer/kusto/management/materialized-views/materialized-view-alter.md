@@ -3,18 +3,17 @@ title: 更改具体化视图 - Azure 数据资源管理器
 description: 本文介绍如何在 Azure 数据资源管理器中更改具体化视图。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 08/30/2020
-ms.date: 01/22/2021
-ms.openlocfilehash: f46eed0d0a071884c30e7db4bfdcaa4446028956
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 02/08/2021
+ms.openlocfilehash: 6988acf752b5082f73ede49a1e968110ed0223db
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611323"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087622"
 ---
 # <a name="alter-materialized-view"></a>.alter materialized-view
 
@@ -44,7 +43,7 @@ ms.locfileid: "98611323"
 
 ## <a name="properties"></a>属性
 
-`dimensionTables` 是 materialized-view alter 命令唯一支持的属性。 此属性应在查询引用维度表时使用。 有关详细信息，请参阅 [`.create materialized-view`](materialized-view-create.md) 命令。
+`dimensionTables` 和 `lookback` 属性是具体化视图 alter 命令中唯一支持的属性。 有关这些内容的详细信息，请参阅 [`.create materialized-view`](materialized-view-create.md) 命令。
 
 ## <a name="use-cases"></a>用例
 

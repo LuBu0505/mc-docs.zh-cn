@@ -8,14 +8,13 @@ ms.author: v-tawe
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 07/11/2020
-ms.date: 01/14/2021
-ms.openlocfilehash: 82307fb33f929fa12c399adadc369ce74297f706
-ms.sourcegitcommit: 01cd9148f4a59f2be4352612b0705f9a1917a774
+ms.date: 02/04/2021
+ms.openlocfilehash: 11228fd6b5b2dc3c0219047ebfb2610d9ba9f7c2
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98194721"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087630"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>如何使用 Azure 认知搜索中的索引器为 Cosmos DB 数据编制索引 
 
@@ -34,7 +33,7 @@ ms.locfileid: "98194721"
 
 Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问的 [Azure Cosmos DB 项](../cosmos-db/account-databases-containers-items.md#azure-cosmos-items)。 
 
-+ 对于 [SQL API](../cosmos-db/sql-query-getting-started.md)（已推出正式版），可以使用[门户](#cosmos-indexer-portal)、[REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) 或 [.NET SDK](https://docs.microsoft.com/dotnet/api/azure.searchdocuments.indexes.models.searchindexer) 创建数据源和索引器。
++ 对于 [SQL API](../cosmos-db/sql-query-getting-started.md)（已推出正式版），可以使用[门户](#cosmos-indexer-portal)、[REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) 或 [.NET SDK](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexer) 创建数据源和索引器。
 
 + 对于 [MongoDB API（预览版）](../cosmos-db/mongodb-introduction.md)，可以使用[门户](#cosmos-indexer-portal)或 [REST API 版本 2020-06-30-Preview](search-api-preview.md) 创建数据源和索引器。
 
@@ -139,7 +138,7 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 - 汇编请求的输入
 
-对于每个请求，必须提供 Azure 认知搜索的服务名称和管理密钥（在 POST 标头中），以及 Blob 存储的存储帐户名称和密钥。 可以使用 [Postman 或 Visual Studio Code](search-get-started-rest.md) 将 HTTP 请求发送到 Azure 认知搜索。
+对于每个请求，必须提供 Azure 认知搜索的服务名称和管理密钥（在 POST 标头中），以及 Blob 存储的存储帐户名称和密钥。 可以使用 [Postman](search-get-started-rest.md) 或 [Visual Studio Code](search-get-started-vs-code.md) 将 HTTP 请求发送到 Azure 认知搜索。
 
 将以下四个值复制到记事本中，以便将其粘贴到请求：
 
@@ -183,7 +182,7 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
 
 请求正文包含数据源定义，其中应包括以下字段：
 
-| 字段   | 描述 |
+| 字段   | 说明 |
 |---------|-------------|
 | name | 必需。 选择任意名称来表示你的数据源对象。 |
 |type| 必需。 必须是 `cosmosdb`。 |
@@ -309,16 +308,16 @@ SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @High
 
 正式版 .NET SDK 完全可与正式版 REST API 搭配使用。 我们建议查看前面的 REST API 部分，以了解相关概念、工作流和要求。 然后，可以参阅以下 .NET API 参考文档，在托管代码中实现 JSON 索引器。
 
-+ [azure.search.documents.indexes.models.searchindexerdatasourceconnection](https://docs.microsoft.com/dotnetapi/azure.search.documents.indexes.models.searchindexerdatasourceconnection)
-+ [azure.search.documents.indexes.models.searchindexerdatasourcetype](https://docs.microsoft.com/dotnetapi/azure.search.documents.indexes.models.searchindexerdatasourcetype)
-+ [azure.search.documents.indexes.models.searchindex](https://docs.microsoft.com/dotnetapi/azure.search.documents.indexes.models.searchindex)
-+ [azure.search.documents.indexes.models.searchindexer](https://docs.microsoft.com/dotnetapi/azure.search.documents.indexes.models.searchindexer)
++ [azure.search.documents.indexes.models.searchindexerdatasourceconnection](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection)
++ [azure.search.documents.indexes.models.searchindexerdatasourcetype](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype)
++ [azure.search.documents.indexes.models.searchindex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindex)
++ [azure.search.documents.indexes.models.searchindexer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexer)
 
 <a name="DataChangeDetectionPolicy"></a>
 
 ## <a name="indexing-changed-documents"></a>为已更改的文档编制索引
 
-数据更改检测策略旨在有效识别已更改的数据项。 目前，唯一支持的策略是使用 Azure Cosmos DB 提供的 `_ts`（时间戳）属性的 [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnetapi/azure.search.documents.indexes.models.highwatermarkchangedetectionpolicy)，该属性按如下所示指定：
+数据更改检测策略旨在有效识别已更改的数据项。 目前，唯一支持的策略是使用 Azure Cosmos DB 提供的 `_ts`（时间戳）属性的 [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.highwatermarkchangedetectionpolicy)，该属性按如下所示指定：
 
 ```http
     {

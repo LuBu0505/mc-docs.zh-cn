@@ -2,19 +2,18 @@
 title: 使用指标监视 Azure 数据资源管理器的性能、运行状况和使用情况
 description: 了解如何使用 Azure 数据资源管理器指标来监视群集的性能、运行状况和使用情况。
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
-origin.date: 09/19/2020
-ms.date: 01/22/2021
+ms.date: 02/08/2021
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 10d9b67b7ab0185f6ea9775cf0deb1c38bb4457e
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.openlocfilehash: fe4172044d147e58479fcef6077275e497513e8e
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611467"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087517"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>使用指标监视 Azure 数据资源管理器的性能、运行状况和使用情况
 
@@ -24,7 +23,7 @@ Azure 数据资源管理器指标提供关于 Azure 数据资源管理器群集�
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有，可以创建一个[试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+* Azure 订阅。 如果没有帐户，可以[创建一个 Azure 帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn/)。
 * 一个[群集和数据库](create-cluster-database-portal.md)。
 
 ## <a name="use-metrics-to-monitor-your-azure-data-explorer-resources"></a>使用指标来监视 Azure 数据资源管理器资源
@@ -40,7 +39,7 @@ Azure 数据资源管理器指标提供关于 Azure 数据资源管理器群集�
 
 系统为 Azure 数据资源管理器群集预先选择了“资源”和“指标命名空间”选取器。   下图中的数字对应于下面带编号的列表。 这些内容可以指导你掌握在设置和查看指标时使用的不同选项。
 
-![“指标”窗格](media/using-metrics/metrics-pane.png)
+![“指标”窗格](./media/using-metrics/metrics-pane.png)
 
 1. 若要创建指标图表，请选择 **指标** 名称和每个指标的相关 **聚合**。 有关不同指标的详细信息，请参阅[支持的 Azure 数据资源管理器指标](#supported-azure-data-explorer-metrics)。
 1. 选择“添加指标”可以查看在同一图表中绘制的多个指标。 
@@ -138,7 +137,7 @@ Azure 数据资源管理器指标有助于深入了解资源的整体性能和�
 |---|---|---|---|---|
 | 查询持续时间 | 毫秒 | Avg、Min、Max、Sum | 收到查询结果之前所花费的总时间（不包括网络延迟）。 | QueryStatus |
 | 并发查询总数 | 计数 | Avg、Max、Min、Sum | 群集中并行运行的查询数。 使用此指标可以很好地评估群集上的负载。 | 无 |
-| 受限制的查询总数 | 计数 | Avg、Max、Min、Sum | 群集中受限制（被拒绝）的查询数。 允许的最大并发（并行）查询数在并发查询策略中定义。 | 无 |
+| 受限制的查询总数 | 计数 | Avg、Max、Min、Sum | 群集中受限制（被拒绝）的查询数。 允许的最大并发（并行）查询数在请求速率限制策略中进行定义。 | 无 |
 
 ## <a name="materialized-view-metrics"></a>具体化视图指标
 

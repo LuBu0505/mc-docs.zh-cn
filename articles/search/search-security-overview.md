@@ -7,25 +7,24 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 12/15/2020
-ms.date: 01/14/2021
+ms.date: 02/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: 88b8048c8a00edb56444e3c7ff53df8a9adda7dc
-ms.sourcegitcommit: 01cd9148f4a59f2be4352612b0705f9a1917a774
+ms.openlocfilehash: 45a3440be318407e76093a55647ec80df0568c41
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98194770"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087557"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure 认知搜索中的安全性 - 概述
 
-本文介绍 Azure 认知搜索中可以保护内容和操作的关键安全功能。
+本文介绍 Azure 认知搜索中保护内容和操作的安全功能。
 
-+ 在存储层上，已为保存到磁盘的所有服务托管内容（包括索引、同义词映射以及索引器、数据源和技能组的定义）内置了静态加密。 Azure 认知搜索还支持添加客户管理的密钥 (CMK)，以对索引内容进行双重加密。 对于 2020 年 8 月 1 日后创建的服务，CMK 加密延伸到临时磁盘上的数据，以对索引内容进行完全双重加密。
++ 在存储层上，已为保存到磁盘的所有服务托管内容（包括索引、同义词映射以及索引器、数据源和技能组的定义）内置了数据加密。 （可选）你可以添加客户管理的密钥 (CMK) 用于已编制索引内容的补充加密。 对于 2020 年 8 月 1 日后创建的服务，CMK 加密延伸到临时磁盘上的数据，以对索引内容进行完全“双重加密”。
 
 + 入站安全性通过不断提升的安全性级别来保护搜索服务终结点：从请求所使用的 API 密钥到防火墙中的入站规则，再到全面保护服务不受公共 Internet 影响的专用终结点。
 
-<!-- + Outbound security applies to indexers that pull content from external sources. For outbound requests, set up a managed identity to make search a trusted service when accessing data from Azure Storage, Azure SQL, Cosmos DB, or other Azure data sources. A managed identity is a substitute for credentials or access keys on the connection. Outbound security is not covered in this article. For more information about this capability, see [Connect to a data source using a managed identity](search-howto-managed-identities-data-sources.md). -->
+<!-- + Outbound security relates to indexers that pull content from external sources. For outbound requests, set up a managed identity to make search a trusted service when accessing data from Azure Storage, Azure SQL, Cosmos DB, or other Azure data sources. A managed identity is a substitute for credentials or access keys on the connection. Outbound security is not covered in this article. For more information about this capability, see [Connect to a data source using a managed identity](search-howto-managed-identities-data-sources.md). -->
 
 <!--
 Watch this fast-paced video for an overview of the security architecture and each feature category.

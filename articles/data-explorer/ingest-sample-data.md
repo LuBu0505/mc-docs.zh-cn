@@ -2,19 +2,18 @@
 title: 将示例数据引入 Azure 数据资源管理器
 description: 了解如何将与天气相关的示例数据引入（加载）到 Azure 数据资源管理器。
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-origin.date: 08/12/2019
-ms.date: 01/19/2021
+ms.date: 02/08/2021
 ms.localizationpriority: high
-ms.openlocfilehash: db17fe39c748c980d523fd11e2c587a33e8a5ffb
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.openlocfilehash: a7b7a60c8193885da3cb94d138c92d84c338f1ac
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611690"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087613"
 ---
 # <a name="quickstart-ingest-sample-data-into-azure-data-explorer"></a>快速入门：将示例数据引入 Azure 数据资源管理器
 
@@ -33,22 +32,22 @@ StormEvents  示例数据集包含[美国国家环境信息中心](https://www.n
 
 1. 登录到 [https://dataexplorer.azure.cn](https://dataexplorer.azure.cn)。
 
-1. 在应用程序的左上角，选择“添加群集”  。
+1. 在应用程序的左上角，选择“添加群集”。
 
-1. 在“添加群集”  对话框中，以 `https://<ClusterName>.<Region>.kusto.chinacloudapi.cn/` 格式输入群集 URL，然后选择“添加”  。
+1. 在“添加群集”对话框中，以 `https://<ClusterName>.<Region>.kusto.chinacloudapi.cn/` 格式输入群集 URL，然后选择“添加”。
 
-1. 粘贴以下命令，然后选择“运行”  以创建 StormEvents 表。
+1. 粘贴以下命令，然后选择“运行”以创建 StormEvents 表。
 
     ```Kusto
     .create table StormEvents (StartTime: datetime, EndTime: datetime, EpisodeId: int, EventId: int, State: string, EventType: string, InjuriesDirect: int, InjuriesIndirect: int, DeathsDirect: int, DeathsIndirect: int, DamageProperty: int, DamageCrops: int, Source: string, BeginLocation: string, EndLocation: string, BeginLat: real, BeginLon: real, EndLat: real, EndLon: real, EpisodeNarrative: string, EventNarrative: string, StormSummary: dynamic)
     ```
-1. 粘贴以下命令，然后选择“运行”  以将数据引入到 StormEvents 表中。
+1. 粘贴以下命令，然后选择“运行”以将数据引入到 StormEvents 表中。
 
     ```Kusto
-    .ingest into table StormEvents h'https://kustosamplefiles.blob.core.chinacloudapi.cn/samplefiles/StormEvents.csv?sv=2019-12-12&ss=b&srt=o&sp=r&se=2022-09-05T02:23:52Z&st=2020-09-04T18:23:52Z&spr=https&sig=VrOfQMT1gUrHltJ8uhjYcCequEcfhjyyMX%2FSc3xsCy4%3D' with (ignoreFirstRecord=true)
+    .ingest into table StormEvents 'https://kustosamplefiles.blob.core.chinacloudapi.cn/samplefiles/StormEvents.csv?sv=2019-12-12&ss=b&srt=o&sp=r&se=2022-09-05T02:23:52Z&st=2020-09-04T18:23:52Z&spr=https&sig=VrOfQMT1gUrHltJ8uhjYcCequEcfhjyyMX%2FSc3xsCy4%3D' with (ignoreFirstRecord=true)
     ```
 
-1. 引入完成后，粘贴到以下查询中，在窗口中，选择该查询，并选择“运行”  。
+1. 引入完成后，粘贴到以下查询中，在窗口中，选择该查询，并选择“运行”。
 
     ```Kusto
     StormEvents
@@ -57,7 +56,7 @@ StormEvents  示例数据集包含[美国国家环境信息中心](https://www.n
     ```
     查询从引入的示例数据返回以下结果。
 
-    ![查询结果](media/ingest-sample-data/query-results.png)
+    ![查询结果](./media/ingest-sample-data/query-results.png)
 
 ## <a name="next-steps"></a>后续步骤
 

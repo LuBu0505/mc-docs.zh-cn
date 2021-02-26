@@ -2,29 +2,28 @@
 title: 使用诊断日志监视 Azure 数据资源管理器的引入、命令和查询
 description: 了解如何设置诊断日志，使 Azure 数据资源管理器能够监视引入、命令和查询操作。
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: guregini
 ms.service: data-explorer
 ms.topic: how-to
-origin.date: 09/18/2019
-ms.date: 01/22/2021
-ms.openlocfilehash: 809feb3f648febf7efaf10e80d268eb597a31f4c
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 02/08/2021
+ms.openlocfilehash: 2e1a526ee05595a6421bcfc2adec7c5e38c3e7ad
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611279"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087530"
 ---
 # <a name="monitor-azure-data-explorer-ingestion-commands-queries-and-tables-using-diagnostic-logs"></a>使用诊断日志监视 Azure 数据资源管理器的引入、命令、查询和表
 
-Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 [Azure Monitor 诊断日志](/azure/azure-monitor/platform/diagnostic-logs-overview)提供有关 Azure 资源操作的数据。 Azure 数据资源管理器使用诊断日志获取有关引入、命令、查询和表的见解。 可将操作日志导出到 Azure 存储、事件中心或 Log Analytics 以监视引入、命令和查询状态。 可将 Azure 存储和 Azure 事件中心的日志路由到 Azure 数据资源管理器群集中的某个表，以进一步分析。
+Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 [Azure Monitor 诊断日志](/azure-monitor/platform/diagnostic-logs-overview)提供有关 Azure 资源操作的数据。 Azure 数据资源管理器使用诊断日志获取有关引入、命令、查询和表的见解。 可将操作日志导出到 Azure 存储、事件中心或 Log Analytics 以监视引入、命令和查询状态。 可将 Azure 存储和 Azure 事件中心的日志路由到 Azure 数据资源管理器群集中的某个表，以进一步分析。
 
 > [!IMPORTANT] 
 > 诊断日志数据可能包含敏感数据。 请根据监视需求限制日志目标的权限。 
 
 ## <a name="prerequisites"></a>先决条件
 
-* 如果没有 Azure 订阅，请创建一个[试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+* 如果没有 Azure 订阅，请创建一个 [Azure 帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn/)。
 * 登录到 [Azure 门户](https://portal.azure.cn/)。
 * 创建[群集和数据库](create-cluster-database-portal.md)。
 
@@ -74,7 +73,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 1. 在 [Azure 门户](https://portal.azure.cn)中，选择要监视的 Azure 数据资源管理器群集资源。
 1. 在“监视”下，选择“诊断设置”   。
   
-    ![添加诊断日志](media/using-diagnostic-logs/add-diagnostic-logs.png)
+    ![添加诊断日志](./media/using-diagnostic-logs/add-diagnostic-logs.png)
 
 1. 选择“添加诊断设置”。 
 1. 在“诊断设置”窗口中，执行以下操作：

@@ -3,18 +3,17 @@ title: 连续数据导出 - Azure 数据资源管理器 | Microsoft Docs
 description: 本文介绍了 Azure 数据资源管理器中的连续数据导出。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 08/03/2020
-ms.date: 01/22/2021
-ms.openlocfilehash: b1f691397161772c32411db00fe0eb98597b8291
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 02/08/2021
+ms.openlocfilehash: c019620ef09ecc2ab6f60579525b7bc8f4197816
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611646"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087597"
 ---
 # <a name="continuous-data-export-overview"></a>连续数据导出概述
 
@@ -90,8 +89,9 @@ ms.locfileid: "98611646"
 
 ## <a name="limitations"></a>限制
 
-* 连续导出对于通过流式引入引入的数据不起作用。 
+* 连续导出对于通过流式引入引入的数据不起作用。
 * 无法在启用了[行级安全策略](../../management/rowlevelsecuritypolicy.md)的表上配置连续导出。
+* 仅当源表中的记录被直接引入到表中（使用[引入方法](../../../ingest-data-overview.md#ingestion-methods-and-tools)之一，使用[更新策略](../updatepolicy.md)或[从查询引入命令](../data-ingestion/ingest-from-query.md)）时连续导出才有效。 如果使用 [.move extents](../move-extents.md) 或使用 [.rename table](../rename-table-command.md) 将记录移到表中，则连续导出可能不处理这些记录。 请参阅[数据库游标](../databasecursor.md#restrictions)页中所述的限制。
 * 其[连接字符串](../../api/connection-strings/storage.md)中包含 `impersonate` 的外部表不支持连续导出。
 * 连续导出不支持跨数据库和跨群集调用。
 * 连续导出未设计用于将数据从 Azure 数据资源管理器连续流式传输出去。 连续导出以分布式模式运行，所有节点并发导出。 如果每个运行所查询的数据范围很小，则连续导出的输出将是很多小项目。 项目数量取决于群集中的节点数。

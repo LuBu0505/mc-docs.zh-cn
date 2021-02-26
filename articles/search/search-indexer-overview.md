@@ -7,35 +7,44 @@ author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
-origin.date: 09/25/2020
-ms.date: 11/27/2020
+ms.date: 02/04/2021
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 77e762d28041d6d23bfa2f1e9b5928e0945e38e8
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: a32964254ee2e9e5aa1ea586c1d0ca0518f4ac88
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300510"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087626"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure 认知搜索中的索引器
 
-Azure 认知搜索中的 *索引器* 是一种爬网程序，它从外部 Azure 数据源提取可搜索的数据和元数据，并根据索引与数据源之间字段到字段映射填充索引。 由于不需要编写任何将数据添加到索引的代码，该服务就能拉取数据，因此这种方法有时也称为“拉取模式”。
+Azure 认知搜索中的索引器是一种爬网程序，它从外部 Azure 数据源提取可搜索的数据和元数据，并使用源数据与索引之间字段到字段的映射填充搜索索引。 由于不需要编写任何将数据添加到索引的代码，该服务就能拉取数据，因此这种方法有时也称为“拉取模式”。
 
-索引器基于数据源类型或平台，单个索引器适用于 Azure 上的 SQL Server、Cosmos DB、Azure 表存储和 Blob 存储。 Blob 存储索引器有特定于 Blob 内容类型的其他属性。
-
-可以单独使用索引器来引入数据，也可以结合索引器使用多种技术来加载索引中的部分字段。
+索引器仅适用于 Azure，其中包含适用于 [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Azure Cosmos DB](search-howto-index-cosmosdb.md)、[Azure 表存储](search-howto-indexing-azure-tables.md) 和 [Blob 存储](search-howto-indexing-azure-blob-storage.md)的单个索引器。 配置索引器时，将指定数据源（原点）和索引（目标）。 Blob 存储等源具有特定于该内容类型的其他配置属性。
 
 可以按需运行索引器，也可以采用每 5 分钟运行一次的定期数据刷新计划来运行索引器。 要进行更频繁的更新，则需要采用“推送模式”，便于同时更新 Azure 认知搜索和外部数据源中的数据。
+
+## <a name="usage-scenarios"></a>使用方案
+
+可以单独使用索引器来引入数据，也可以使用多种技术的结合，包括仅加载索引中的部分字段，并在此过程中有选择地转换或扩充内容。 下表汇总了主要方案。
+
+| 方案 |策略 |
+|----------|---------|
+| 单一源 | 此模式是最简单的模式：一个数据源是搜索索引的唯一内容提供程序。 在源中，将标识一个字段，其中包含在搜索索引中充当文档键的唯一值。 唯一值将用作标识符。 所有其他源字段将隐式或显式映射到索引中的相应字段。 </br></br>一个重要结论是，文档键的值来自源数据。 搜索服务不生成键值。 在后续运行中，将添加包含新键的传入文档，同时合并或覆盖包含现有键的传入文档，具体取决于索引字段是 Null 还是已填充。 |
+| 多个源| 索引可以接受来自多个源的内容，其中每个运行都从不同的源中引入了新的内容。 </br></br>一种可能的结果是一个索引，它在每个索引器运行后获取文档，并在每个源中创建所有文档。 例如，文档 1-100 来自 Blob 存储，而文档 101-200 来自 Azure SQL 等。 此方案的难点在于设计适用于所有传入数据的索引架构和在搜索索引中保持一致的文档键结构。 在本机中，唯一标识文档的值是 Blob 容器中的 metadata_storage_path 和 SQL 表中的主键。 你可以设想一下，不考虑内容原点，必须修改一个或两个源来提供通用格式的键值。 对于这种情况，应执行一定程度的预处理来同质化数据，以便将数据拉取到单个索引中。</br></br>另一种可能的结果是搜索文档，这些文档在第一次运行时只进行部分填充，在后续运行时再进一步填充以引入来自其他源的值。 例如，字段 1-10 来自 Blob 存储，而字段 11-20 来自 Azure SQL 等。 此模式的难点在于确保每个索引的运行都面向相同的文档。 若要将字段合并到现有文档中，则需要对文档键进行匹配。 有关此方案的演示，请参阅[教程：来自多个数据源的索引](tutorial-multiple-data-sources.md)。 |
+| 内容转换 | 认知搜索支持可选的 [AI 扩充](cognitive-search-concept-intro.md)行为，这些行为可添加图像分析和自然语言处理，以创建新的可搜索内容和结构。 AI 扩充通过附加的[技能组](cognitive-search-working-with-skillsets.md)由索引器驱动。 若要执行 AI 扩充，索引器仍需要索引和数据源，但在此方案中，会将技能组处理添加到索引器执行。 |
 
 ## <a name="approaches-for-creating-and-managing-indexers"></a>创建及管理索引器的方法
 
 可以使用以下方法创建和管理索引器：
 
-* [门户 > 导入数据向导](search-import-data-portal.md)
-* [服务 REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* [.NET SDK](https://docs.microsoft.com/dotnetapi/azure.search.documents.indexes.models.searchindexer)
++ [门户 > 导入数据向导](search-import-data-portal.md)
++ [服务 REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
++ [.NET SDK](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexer)
 
-一开始会将新的索引器宣布为预览版功能。 预览版功能首先在 API（REST 和 .NET）中引入，然在逐渐公开发行以后再集成到门户中。 如果评估的是新索引器，则应做好编写代码的计划。
+如果使用的是 SDK，请创建 [SearchIndexerClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexerclient) 以使用索引器、数据源和技能组。 上述链接适用于 .NET SDK，但所有 SDK 都提供了 SearchIndexerClient 和相似的 API。
+
+最初，新数据源以预览功能发布，并且仅适用于 REST。 在推出正式发布版之后，门户和各种 SDK 都内置了完全支持，且每个 SDK 都有各自的发行计划。
 
 ## <a name="permissions"></a>权限
 
@@ -47,15 +56,15 @@ Azure 认知搜索中的 *索引器* 是一种爬网程序，它从外部 Azure 
 
 索引器在 Azure 上抓取数据存储。
 
-* [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
-* [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md)（预览版）
-* [Azure 表存储](search-howto-indexing-azure-tables.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [SQL 托管实例](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
-* [Azure 虚拟机中的 SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
++ [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
++ [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md)（预览版）
++ [Azure 表存储](search-howto-indexing-azure-tables.md)
++ [Azure Cosmos DB](search-howto-index-cosmosdb.md)
++ [Azure SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [SQL 托管实例](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
++ [Azure 虚拟机中的 SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 
-## <a name="indexer-stages"></a>索引器阶段
+## <a name="stages-of-indexing"></a>索引阶段
 
 在首次运行时，如果索引为空，索引器将读取表或容器中提供的所有数据。 在后续运行中，索引器通常可以只检测并检索已更改的数据。 对于 blob 数据，更改检测是自动进行的。 对于其他数据源（如 Azure SQL 或 Cosmos DB），必须启用更改检测。
 
@@ -69,9 +78,9 @@ Azure 认知搜索中的 *索引器* 是一种爬网程序，它从外部 Azure 
 
 示例：  
 
-* 如果文档是 [Azure SQL 数据源](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)中的记录，则索引器将提取记录中的每个字段。
-* 如果文档是 [Azure Blob 存储数据源](search-howto-indexing-azure-blob-storage.md)中的 PDF 文件，则索引器将提取该文件的文本、图像和元数据。
-* 如果文档是 [Cosmos DB 数据源](search-howto-index-cosmosdb.md)中的记录，则索引器将提取 Cosmos DB 文档中的字段和子字段。
++ 如果文档是 [Azure SQL 数据源](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)中的记录，则索引器将提取记录中的每个字段。
++ 如果文档是[Azure Blob 存储数据源](search-howto-indexing-azure-blob-storage.md)中的 PDF 文件，则索引器将提取文本、图像和元数据。
++ 如果文档是 [Cosmos DB 数据源](search-howto-index-cosmosdb.md)中的记录，则索引器将提取 Cosmos DB 文档中的字段和子字段。
 
 ### <a name="stage-2-field-mappings"></a>第 2 阶段：字段映射 
 
@@ -83,9 +92,9 @@ Azure 认知搜索中的 *索引器* 是一种爬网程序，它从外部 Azure 
 
 ### <a name="stage-4-output-field-mappings"></a>阶段 4：输出字段映射
 
-技能组的输出实际上是一棵称为“扩充文档”的信息树。 通过输出字段映射，可以选择此树中哪些部分要映射到索引中的字段。 了解如何[定义输出字段映射](cognitive-search-output-field-mapping.md)。
+如果包括技能组，则很可能需要包含输出字段映射。 技能组的输出实际上是一棵称为“扩充文档”的信息树。 通过输出字段映射，可以选择此树中哪些部分要映射到索引中的字段。 了解如何[定义输出字段映射](cognitive-search-output-field-mapping.md)。
 
-就像将源字段中的原义值关联到目标字段的字段映射一样，输出字段映射会告知索引器如何将扩充文档中的已转换值关联到索引中的目标字段。 与被视为可选的字段映射不同，你始终需要为需要驻留在索引中的任何已转换内容定义输出字段映射。
+输出字段映射会指示索引器如何将扩充文档中已转换的值关联到索引中的目标字段，但是字段映射会将数据源中的逐字值关联到目标字段。 与被视为可选的字段映射不同，你始终需要为需要驻留在索引中的任何已转换内容定义输出字段映射。
 
 <!-- The next image shows a sample indexer [debug session](cognitive-search-debug-session.md) representation of the indexer stages: document cracking, field mappings, skillset execution, and output field mappings. -->
 
@@ -96,17 +105,20 @@ Azure 认知搜索中的 *索引器* 是一种爬网程序，它从外部 Azure 
 索引器可提供数据源独有的功能。 因此，索引器或数据源配置的某些方面会因索引器类型而不同。 但是，所有索引器的基本构成元素和要求都相同。 下面介绍所有索引器都适用的共同步骤。
 
 ### <a name="step-1-create-a-data-source"></a>步骤 1：创建数据源
-索引器从数据源对象获取数据源连接。 数据源定义提供连接字符串和可能的凭据。 调用[创建数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source) REST API 或 [SearchIndexerDataSourceConnection 类](https://docs.microsoft.com/dotnetapi/azure.search.documents.indexes.models.searchindexerdatasourceconnection)以创建资源。
+
+索引器从数据源对象获取数据源连接。 数据源定义提供连接字符串和可能的凭据。 调用[创建数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source) REST API 或 [SearchIndexerDataSourceConnection 类](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection)以创建资源。
 
 数据源的配置和管理独立于使用数据源的索引器，这意味着多个索引器可使用一个数据源，同时加载多个索引。
 
 ### <a name="step-2-create-an-index"></a>步骤 2：创建索引
-索引器会自动执行某些与数据引入相关的任务，但通常不会自动创建索引。 先决条件是必须具有预定义的索引，且索引的字段必须与外部数据源中的字段匹配。 字段需按名称和数据类型进行匹配。 若要详细了解如何构建索引，请参阅[创建索引（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Create-Index)或 [SearchIndex 类](https://docs.microsoft.com/dotnetapi/azure.search.documents.indexes.models.searchindex)。 如需字段关联方面的帮助，请参阅 [Azure 认知搜索索引器中的字段映射](search-indexer-field-mappings.md)。
+
+索引器会自动执行某些与数据引入相关的任务，但通常不会自动创建索引。 先决条件是必须具有预定义的索引，且索引的字段必须与外部数据源中的字段匹配。 字段需按名称和数据类型进行匹配。 若要详细了解如何构建索引，请参阅[创建索引（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Create-Index)或 [SearchIndex 类](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindex)。 如需字段关联方面的帮助，请参阅 [Azure 认知搜索索引器中的字段映射](search-indexer-field-mappings.md)。
 
 > [!Tip]
 > 虽然不能使用索引器来生成索引，但可以使用门户中的 **导入数据** 向导。 大多数情况下，该向导可以根据源中现有的元数据推断索引架构，提供一个初级索引架构，该架构在向导处于活动状态时可以进行内联编辑。 在服务上创建索引以后，若要在门户中进一步进行编辑，多数情况下只能添加新字段。 可以将向导视为索引的创建工具而非修订工具。 如需手动方式的学习，请一步步完成[门户演练](search-get-started-portal.md)。
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>步骤 3：创建和计划索引器
+
 索引器定义是一种构造，它将与数据引入相关的所有元素组合在一起。 必需元素包括数据源和索引。 可选元素包括计划和字段映射。 只有在源字段和索引字段明确对应的情况下，字段映射才是可选的。 有关构建索引器的详细信息，请参阅 [创建索引器（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)。
 
 <a id="RunIndexer"></a>
@@ -121,9 +133,9 @@ api-key: [Search service admin key]
 ```
 
 > [!NOTE]
-> “运行 API”成功返回时，已计划索引器调用，但实际处理过程以异步方式发生。 
+> “运行 API”成功返回代码时，已计划索引器调用，但实际处理过程以异步方式发生。 
 
-可以通过门户或“获取索引器状态 API”监视索引器状态。 
+可以通过门户或[获取索引器状态 API](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) 监视索引器状态。 
 
 <a name="GetIndexerStatus"></a>
 
@@ -169,11 +181,12 @@ api-key: [Search service admin key]
 执行历史记录包含最多 50 个最近完成的执行，它们被按反向时间顺序排序（因此，最新执行出现在响应中的第一个）。
 
 ## <a name="next-steps"></a>后续步骤
+
 了解基本概念后，下一步是查看每种数据源特定的要求和任务。
 
-* [Azure 虚拟机上的 Azure SQL 数据库、SQL 托管实例或 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
-* [Azure 表存储](search-howto-indexing-azure-tables.md)
-* [使用 Azure 认知搜索 Blob 索引器为 CSV blob 编制索引](search-howto-index-csv-blobs.md)
-* [使用 Azure 认知搜索 Blob 索引器为 JSON blob 编制索引](search-howto-index-json-blobs.md)
++ [Azure 虚拟机上的 Azure SQL 数据库、SQL 托管实例或 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [Azure Cosmos DB](search-howto-index-cosmosdb.md)
++ [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
++ [Azure 表存储](search-howto-indexing-azure-tables.md)
++ [使用 Azure 认知搜索 Blob 索引器为 CSV blob 编制索引](search-howto-index-csv-blobs.md)
++ [使用 Azure 认知搜索 Blob 索引器为 JSON blob 编制索引](search-howto-index-json-blobs.md)

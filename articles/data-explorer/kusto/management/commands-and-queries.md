@@ -3,18 +3,17 @@ title: 命令和查询管理 - Azure 数据资源管理器
 description: 本文介绍 Azure 数据资源管理器中的命令和查询管理。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 08/19/2019
-ms.date: 01/22/2021
-ms.openlocfilehash: f23d5966cd5c405411907f07e6a08eef1d872b85
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 02/08/2021
+ms.openlocfilehash: d5306d77df55aae33f4d0528a9e007caa2c7bc6f
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611653"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087633"
 ---
 # <a name="commands-and-queries-management"></a>命令和查询管理
 
@@ -53,6 +52,7 @@ ms.locfileid: "98611653"
 | CacheStatistics          | 动态    |
 | ScannedExtentsStatistics | 动态    |
 | ResultSetStatistics      | 动态    |
+| WorkloadGroup            | 字符串     |
 
 > [!NOTE]
 > 对于查询，`CommandType` 的值为 `Query`。

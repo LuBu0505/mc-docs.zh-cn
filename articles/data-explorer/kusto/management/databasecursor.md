@@ -3,18 +3,17 @@ title: 数据库游标 - Azure 数据资源管理器
 description: 本文介绍 Azure 数据资源管理器中的数据库游标。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 02/13/2020
-ms.date: 01/22/2021
-ms.openlocfilehash: 4c296b80410adda514ab93d8b8fbea30d9ff145b
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 02/08/2021
+ms.openlocfilehash: 8a074bfda0595c8ffb86713fc031eee9594dab73
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611665"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087514"
 ---
 # <a name="database-cursors"></a>数据库游标
 
@@ -58,6 +57,8 @@ Kusto 提供三个函数来帮助实现上述两个方案：
 系统会确保根据引入历史记录的需要将该值更新到此类表中，然后运行引用此类表的查询。 在其他情况下，它不一定会更新。
 
 引入过程首先会提交数据，使其可用于查询，然后才会为每条记录分配一个实际的游标值。 如果尝试在引入完成后立即使用数据库游标查询数据，则结果可能尚未包含最后添加的记录，因为尚未为这些记录分配游标值。 同样，即使引入在两次检索之间进行，重复检索当前数据库游标值也可能返回相同的值，因为只有游标提交才能更新其值。
+
+基于数据库游标对表进行查询只有在记录被直接引入到该表的情况下才能保证有效（仅提供一次保证）。 如果使用 [move extents](move-extents.md)/[.replace extents](replace-extents.md) 等盘区命令将数据移到表中，或使用 [.rename table](rename-table-command.md)，那么使用数据库游标查询该表无法保证不会遗漏任何数据。 这是因为记录的引入时间是最初引入时分配的，并且在移动盘区操作期间无法更改。 因此，将盘区移动到目标表中时，可能已经处理分配到这些盘区中的记录的游标值（并且数据库游标的下一个查询将会遗漏新记录）。
 
 ## <a name="example-processing-records-exactly-once"></a>示例：仅处理一次记录
 

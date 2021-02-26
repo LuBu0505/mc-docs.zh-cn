@@ -3,18 +3,17 @@ title: 在 Azure 存储或 Azure Data Lake 中创建和更改外部表 - Azure �
 description: 本文介绍了如何在 Azure 存储或 Azure Data Lake 中创建和更改外部表
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 03/24/2020
-ms.date: 01/22/2021
-ms.openlocfilehash: d41a810c3c403ccb5222ec02810073d3181c3f9d
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 02/08/2021
+ms.openlocfilehash: 53bf7f97426e90a91a9ab796e426dda2c6aeb3a1
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611686"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087571"
 ---
 # <a name="create-and-alter-external-tables-in-azure-storage-or-azure-data-lake"></a>在 Azure 存储或 Azure Data Lake 中创建和更改外部表
 
@@ -26,8 +25,8 @@ ms.locfileid: "98611686"
 
 **语法**
 
-(`.create` | `.alter` | `.create-or-alter`) `external` `table` *[TableName](#table-name)* `(` *[Schema](#schema)* `)`  
-`kind` `=` (`blob` | `adl`)  
+(`.create` `|` `.alter` `|` `.create-or-alter`) `external` `table` *[TableName](#table-name)* `(` *[Schema](#schema)* `)`  
+`kind` `=` (`blob` `|` `adl`)  
 [`partition` `by` `(` *[Partitions](#partitions)* `)` [`pathformat` `=` `(` *[PathFormat](#path-format)* `)`]]  
 `dataformat` `=` *[Format](#format)*  
 `(` *[StorageConnectionString](#connection-string)* [`,` ...] `)`   
@@ -169,7 +168,7 @@ ms.locfileid: "98611686"
 kind=blob 
 dataformat=csv 
 ( 
-   h@'https://storageaccount.blob.core.chinacloudapi.cn/container1;secretKey'
+   h@'https://storageaccount.blob.core.chinacloudapi.cn/container1;secretKey' 
 ) 
 ```
 
@@ -194,7 +193,7 @@ partition by (Month:datetime = startofmonth(Timestamp))
 pathformat = (datetime_pattern("'year='yyyy'/month='MM", Month)) 
 dataformat=csv 
 ( 
-   h@'https://storageaccount.blob.core.chinacloudapi.cn/container1;secretKey'
+   h@'https://storageaccount.blob.core.chinacloudapi.cn/container1;secretKey' 
 ) 
 ```
 
@@ -207,7 +206,7 @@ partition by (CustomerNamePart:string = CustomerName, Date:datetime = startofday
 pathformat = ("customer_name=" CustomerNamePart "/" Date)
 dataformat=csv 
 (  
-   h@'https://storageaccount.blob.core.chinacloudapi.cn/container1;secretKey'
+   h@'https://storageaccount.blob.core.chinacloudapi.cn/container1;secretKey' 
 )
 ```
 

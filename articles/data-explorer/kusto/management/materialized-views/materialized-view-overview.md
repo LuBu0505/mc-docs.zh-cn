@@ -3,25 +3,24 @@ title: 具体化视图 - Azure 数据资源管理器
 description: 本文介绍了 Azure 数据资源管理器中的具体化视图。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 08/30/2020
-ms.date: 01/22/2021
-ms.openlocfilehash: cdd13399cb9ac38f22a3889aef2262ff83ba1663
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 02/08/2021
+ms.openlocfilehash: fea27325db0ee69b73d36e4821b36376fe852f36
+ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611316"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101087619"
 ---
 # <a name="materialized-views-preview"></a>具体化视图（预览版）
 
 [具体化视图](../../query/materialized-view-function.md)公开了对源表的聚合查询。 具体化视图始终返回聚合查询的最新结果（始终是全新的）。 [查询具体化视图](#materialized-views-queries)比直接对源表运行聚合的性能更高，每个查询都会执行该聚合。
 
 > [!NOTE]
-> 具体化视图有一些[限制](materialized-view-create.md#limitations-on-creating-materialized-views)，无法保证适用于所有方案。 使用此功能之前，请查看[性能注意事项](#performance-considerations)。
+> 具体化视图有一些[限制](materialized-view-create.md#materialized-views-limitations-and-known-issues)，无法保证适用于所有方案。 使用此功能之前，请查看[性能注意事项](#performance-considerations)。
 
 使用以下命令来管理具体化视图：
 * [`.create materialized-view`](materialized-view-create.md)
@@ -63,9 +62,11 @@ ms.locfileid: "98611316"
 
 ## <a name="materialized-views-queries"></a>具体化视图查询
 
-查询具体化视图的主要方法是按其名称进行查询，就像查询表引用一样。 查询具体化视图时，它会将视图的具体化部分与源表中尚未具体化的记录组合在一起。 查询具体化视图时，会始终根据引入到源表的所有记录返回最新结果。 有关具体化视图部件细目的详细信息，请参阅[具体化视图的工作原理](#how-materialized-views-work)。 
+* 查询具体化视图的主要方法是按其名称进行查询，就像查询表引用一样。 查询具体化视图时，它会将视图的具体化部分与源表中尚未具体化的记录组合在一起 (`delta`)。 查询具体化视图时，会始终根据引入到源表的所有记录返回最新结果。 有关具体化视图中的具体化和非具体化部分的详细信息，请参阅[具体化视图的工作原理](#how-materialized-views-work) 。
 
-查询该视图的另一种方法是使用 [`materialized_view()` 函数](../../query/materialized-view-function.md)。 此选项支持仅查询该视图的具体化部分，同时指定用户愿意容忍的最大延迟。 此选项不保证返回最新记录，但与查询整个视图相比，此选项始终更加高效。 此函数适用于你愿意舍弃一些时效性以提高性能的方案，例如，适用于遥测仪表板。
+    * 将具体化部分与 `delta` 合并会在幕后执行联接。 默认情况下，此联接不是[随机](../../query/shufflequery.md)的。 可以通过添加名为 `materialized_view_shuffle` 的[客户端请求属性](../../api/netfx/request-properties.md)来强制查询的随机执行。 请参阅以下[示例](#examples)。 添加此属性有时可以显示提高具体化视图查询的性能。 将来，将基于具体化视图的当前状态自动推导随机执行的需求，但现在这需要显式的提示。
+
+* 查询该视图的另一种方法是使用 [`materialized_view()` 函数](../../query/materialized-view-function.md)。 此选项支持仅查询该视图的具体化部分，同时指定用户愿意容忍的最大延迟。 此选项不保证返回最新记录，但与查询整个视图相比，此选项始终更加高效。 此函数适用于你愿意舍弃一些时效性以提高性能的方案，例如，适用于遥测仪表板。
 
 视图可以参与跨群集或跨数据库查询，但不包括在通配符联合或搜索中。
 
@@ -75,6 +76,24 @@ ms.locfileid: "98611316"
     
     <!-- csl -->
     ```kusto
+    ViewName
+    ```
+
+1. 查询整个视图，并提供提示以使用 `shuffle` 策略。 包括源表中的最新记录：
+
+    * 示例 #1：基于 `Id` 列随机执行（类似于使用 `hint.shufflekey=Id`）：
+    
+    <!-- csl -->
+    ```kusto
+    set materialized_view_shuffle = dynamic([{"Name" : "ViewName", "Keys" : [ "Id" ] }]);
+    ViewName
+    ```
+
+    * 示例 #2：基于所有键随机执行（类似于使用 `hint.strategy=shuffle`）：
+    
+    <!-- csl -->
+    ```kusto
+    set materialized_view_shuffle = dynamic([{"Name" : "ViewName" }]);
     ViewName
     ```
 
@@ -92,6 +111,7 @@ ms.locfileid: "98611316"
 * **群集资源：** 与群集上运行的任何其他进程一样，具体化视图使用群集中的资源（CPU、内存）。 如果群集超载，将具体化视图添加到其中可能会导致群集性能下降。 可使用[群集运行状况指标](../../../using-metrics.md#cluster-metrics)监视群集的运行状况。 [优化的自动缩放](../../../manage-cluster-horizontal-scaling.md#optimized-autoscale)目前不将正在考虑的具体化视图运行状况作为自动缩放规则的一部分。
 
 * **与具体化数据重叠：** 在具体化期间，自上次具体化后引入到源表中的所有新记录（增量）会被处理并具体化到视图中。 新记录与已具体化记录之间的交集越大，具体化视图的性能就越差。 如果要更新的记录数（例如，在 `arg_max` 视图中的记录数）是源表的一小部分，则具体化视图的效果最佳。 如果所有或大多数具体化视图记录需要在每个具体化循环中进行更新，则具体化视图将不能很好地执行。 请使用[区重新生成指标](../../../using-metrics.md#materialized-view-metrics)来确定这种情况。
+    * 当新记录与具体化视图之间的交集相对较高时，将群集移到[引擎 V3](../../../engine-v3.md) 应该会对具体化视图性能产生显著影响。 这是因为引擎 V3 中的盘区重新生成阶段比 V2 中的更加优化。
 
 * **引入速率：** 在具体化视图的源表中，对数据量或引入速率没有硬编码限制。 但是，具体化视图的建议引入速率不超过 1-2GB/秒。采用更高的引入速率可能仍然可以很好地执行。 性能取决于群集大小、可用资源以及与现有数据的交集量。
 
@@ -155,8 +175,10 @@ ms.locfileid: "98611316"
    **诊断**：`MaterializedViewResult` 指标的 `Result` 将是 `UnknownError`。 如果此失败频繁发生，请开具支持票证，以便 Azure 数据资源管理器团队进一步进行调查。
 
 如果没有具体化失败，则每次成功执行时会触发 `MaterializedViewResult` 指标，且 `Result`=`Success`。 如果具体化视图滞后（`Age` 超出阈值），则它可能不正常，不管执行是否成功。 在以下情况下，可能会出现这种情形：
-   * 具体化速度较慢，因为在每个具体化循环中要重新生成的区太多。 若要详细了解区重新生成为何会影响视图性能，请参阅[具体化视图的工作原理](#how-materialized-views-work)。 
-   * 如果每个具体化循环都需要重新生成视图中接近 100% 的区，此视图可能无法跟上进度并会变得不正常。 每个循环中重新生成的区数在 `MaterializedViewExtentsRebuild` 指标中提供。 这种情况下，在[具体化视图容量策略](../capacitypolicy.md#materialized-views-capacity-policy)中增大区重新生成并发度可能也有所帮助。 
+   * 具体化速度较慢，因为在每个具体化循环中要重新生成的区太多。 若要详细了解区重新生成为何会影响视图性能，请参阅[具体化视图的工作原理](#how-materialized-views-work)。
+   * 如果每个具体化循环都需要重新生成视图中接近 100% 的区，此视图可能无法跟上进度并会变得不正常。 每个循环中重新生成的区数在 `MaterializedViewExtentsRebuild` 指标中提供。 对于这种情况，请考虑以下解决方案： 
+        * 在[具体化视图容量策略](../capacitypolicy.md#materialized-views-capacity-policy)中增大盘区重新生成并发。
+        * 将群集移到[引擎 V3](../../../engine-v3.md) 应能够显著提升盘区重新生成的性能。
    * 群集中有更多具体化视图，但群集没有足够的容量来运行所有视图。 请参阅[具体化视图容量策略](../capacitypolicy.md#materialized-views-capacity-policy)来更改执行的具体化视图数量的默认设置。
 
 ## <a name="next-steps"></a>后续步骤
