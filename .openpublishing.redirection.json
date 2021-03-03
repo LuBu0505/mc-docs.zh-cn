@@ -23446,11 +23446,6 @@
             "redirect_document_id": true
         },
         {
-            "source_path": "azure-stack/operator/azure-stack-hci-overview.md",
-            "redirect_url": "/azure-stack/hci/overview",
-            "redirect_document_id": true
-        },
-        {
             "source_path": "articles/azure-monitor/platform/diagnostics-extension-schema.md",
             "redirect_url": "/azure-monitor/platform/diagnostics-extension-versions",
             "redirect_document_id": false
@@ -24650,11 +24645,6 @@
             "source_path": "articles/security-center/security-center-detection-capabilities.md",
             "redirect_url": "/security-center/security-center-alerts-overview",
             "redirect_document_id": false
-        },
-        {
-            "source_path": "articles/azure-stack/operator/azure-stack-hci-overview.md",
-            "redirect_url": "/azure-stack/hci/overview",
-            "redirect_document_id": true
         },
         {
             "source_path": "articles/service-bus-relay/diagnostic-logs.md",
@@ -28456,11 +28446,6 @@
             "redirect_document_id": false
         },
         {
-            "source_path": "articles/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal.md",
-            "redirect_url": "/azure-stack/operator/azure-stack-diagnostic-log-collection-overview",
-            "redirect_document_id": false
-        },
-        {
             "source_path": "articles/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-powershell.md",
             "redirect_url": "/azure-stack/operator/azure-stack-diagnostic-log-collection-overview",
             "redirect_document_id": false
@@ -30664,7 +30649,30 @@
             "source_path": "articles/azure-monitor/platform/monitoring-classic-retirement.md",
             "redirect_url": "/azure-monitor/alerts/monitoring-classic-retirement",
             "redirect_document_id": false
-        }
+        },
+    {
+      "source_path_from_root": "/articles/azure-sql/managed-instance/scripts/create-powershell-azure-resource-manager-template.md",
+      "redirect_url": "/azure-sql/managed-instance/create-template-quickstart",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/vpn-gateway/create-vpn-azure-aws-managed-solutions.md",
+      "redirect_url": "/vpn-gateway/tutorial-site-to-site-portal",
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "articles/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal.md", 
+      "redirect_url": "/azure-stack/operator/diagnostic-log-collection", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "articles/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection.md", 
+      "redirect_url": "/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal", 
+      "redirect_document_id": false
+    }
+
+
+
 
     ]
 }
