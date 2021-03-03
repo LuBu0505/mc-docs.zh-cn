@@ -1,25 +1,19 @@
 ---
 title: 使用 REST API 创建 Azure 数据工厂
 description: 创建一个 Azure 数据工厂管道，将数据从 Azure Blob 存储中的一个位置复制到另一位置。
-services: data-factory
-documentationcenter: ''
 author: WenJason
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: rest-api
 ms.topic: quickstart
 origin.date: 01/18/2021
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.author: v-jay
-ms.openlocfilehash: 934997a6934a87841fc2cdc7bc114d33f2c1fbc6
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: e7d07dccb3b186314c222525b1e4b9780a7daf21
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059810"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697569"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>快速入门：使用 REST API 创建 Azure 数据工厂和管道
 
@@ -407,7 +401,7 @@ $runId = $response.runId
         $response = Invoke-RestMethod -Method GET -Uri $request -Header $authHeader
         Write-Host  "Pipeline run status: " $response.Status -foregroundcolor "Yellow"
 
-        if ($response.Status -eq "InProgress") {
+        if ( ($response.Status -eq "InProgress") -or ($response.Status -eq "Queued") ) {
             Start-Sleep -Seconds 15
         }
         else {

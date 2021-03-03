@@ -12,14 +12,14 @@ ms.workload: ''
 ms.topic: how-to
 ms.custom: ''
 origin.date: 07/24/2020
-ms.date: 09/07/2020
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.openlocfilehash: 6633ac4bfce87363ef4f69508ab82e31369a74f9
-ms.sourcegitcommit: 2eb5a2f53b4b73b88877e962689a47d903482c18
+ms.openlocfilehash: 54f5c44e53c4d3665880135bbb80c0b1393593a7
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89414113"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696622"
 ---
 # <a name="how-to-use-azure-portal-to-invoke-direct-methods"></a>如何使用 Azure 门户调用直接方法
 
@@ -55,7 +55,7 @@ LVA 模块公开的每种[直接方法](./direct-methods.md)均可通过 Azure �
 1. 将下面的 JSON 复制并粘贴到“有效负载”字段中。
     ```json
     {
-    "@apiVersion":
+    "@apiVersion": "2.0"
     }
     ```
 1. 选择页面顶部的“调用方法”按钮。<br><br>

@@ -4,15 +4,15 @@ description: 了解如何在创建 RabbitMQ 消息时运行 Azure Function。
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.author: v-junlch
 ms.custom: ''
-ms.openlocfilehash: 3424531918062a2718c97454f6a5c900b1dec0c8
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: b9bd8e9495d993947c06942109221e07c4d86cd4
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023988"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697769"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>Azure Functions 的 RabbitMQ 触发器概述
 
@@ -27,7 +27,7 @@ ms.locfileid: "98023988"
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-以下示例显示了一个 [C# 函数](functions-dotnet-class-library.md)，该函数将 RabbitMQ 消息作为 [RabbitMQ 事件](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html)进行读取和记录：
+以下示例显示了一个 [C# 函数](functions-dotnet-class-library.md)，该函数将 RabbitMQ 消息作为 [RabbitMQ 事件](https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.Events.BasicDeliverEventArgs.html)进行读取和记录：
 
 ```cs
 [FunctionName("RabbitMQTriggerCSharp")]
@@ -196,7 +196,7 @@ JavaScript 不支持特性。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-默认消息类型为 [RabbitMQ 事件](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html)，RabbitMQ 事件的 `Body` 属性可以读取为下面列出的类型：
+默认消息类型为 [RabbitMQ 事件](https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.Events.BasicDeliverEventArgs.html)，RabbitMQ 事件的 `Body` 属性可以读取为下面列出的类型：
 
 * `An object serializable as JSON` - 消息以有效的 JSON 字符串形式传递。
 * `string`
@@ -205,7 +205,7 @@ JavaScript 不支持特性。
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-默认消息类型为 [RabbitMQ 事件](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html)，RabbitMQ 事件的 `Body` 属性可以读取为下面列出的类型：
+默认消息类型为 [RabbitMQ 事件](https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.Events.BasicDeliverEventArgs.html)，RabbitMQ 事件的 `Body` 属性可以读取为下面列出的类型：
 
 * `An object serializable as JSON` - 消息以有效的 JSON 字符串形式传递。
 * `string`
@@ -301,4 +301,3 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 ## <a name="next-steps"></a>后续步骤
 
 - [从 Azure Functions 发送 RabbitMQ 消息（输出绑定）](./functions-bindings-rabbitmq-output.md)
-

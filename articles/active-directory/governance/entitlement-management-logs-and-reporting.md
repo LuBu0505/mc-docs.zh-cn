@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 09/08/2020
+ms.date: 02/24/2021
 ms.author: v-junlch
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e441b2b3337ca35a8d671adcda94ead72b03994
-ms.sourcegitcommit: 25d542cf9c8c7bee51ec75a25e5077e867a9eb8b
+ms.openlocfilehash: c2fa7a8a3e4b6e654ac729d1378d13c92c55b045
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89593821"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697952"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>在 Azure AD 权利管理中使用 Azure Monitor 存档日志和进行报告
 
@@ -170,7 +170,7 @@ $wks | ft CustomerId, Name
 
 ### <a name="send-the-query-to-the-log-analytics-workspace"></a>将查询发送到 Log Analytics 工作区
 最后，在确定工作区后，可以使用 [Invoke-AzOperationalInsightsQuery](https://docs.microsoft.com/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery?view=azps-3.3.0
-) 将 Kusto 查询发送到该工作区。 这些查询以 [Kusto 查询语言](/data-explorer/kusto/query)编写。
+) 将 Kusto 查询发送到该工作区。 这些查询以 [Kusto 查询语言](/data-explorer/kusto/query/)编写。
  
 例如，可以使用 PowerShell cmdlet 发送如下所示的查询，从 Log Analytics 工作区检索审核事件记录的日期范围：
  

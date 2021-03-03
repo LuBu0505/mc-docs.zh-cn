@@ -34,7 +34,7 @@
           href: quickstart-v2-aspnet-core-webapp.md
         - name: ASP.NET Core（调用 Microsoft Graph）
           href: quickstart-v2-aspnet-core-webapp-calls-graph.md
-        - name: Node.js - MSAL | 预览
+        - name: Node.js - MSAL
           href: quickstart-v2-nodejs-webapp-msal.md
         - name: Node.js - Passport.js
           displayName: 'OIDC, express'
@@ -60,12 +60,18 @@
           href: quickstart-v2-uwp.md
         - name: Windows 桌面 .NET
           href: quickstart-v2-windows-desktop.md
+        - name: Node.js Electron
+          href: quickstart-v2-nodejs-desktop.md
     - name: 守护程序或后端服务
       items:
         - name: .NET Core 控制台（守护程序）
           href: quickstart-v2-netcore-daemon.md
         - name: Python 控制台守护程序
           href: quickstart-v2-python-daemon.md
+        - name: Node.js 控制台守护程序
+          href: quickstart-v2-nodejs-console.md
+        - name: Java 控制台守护程序
+          href: quickstart-v2-java-daemon.md
 - name: 教程
   items:
     - name: 单页应用 (SPA)
@@ -82,6 +88,8 @@
           href: tutorial-v2-asp-webapp.md
         - name: Blazor 服务器
           href: tutorial-blazor-server.md
+        - name: Node.js web 应用教程
+          href: tutorial-v2-nodejs-webapp-msal.md
     - name: 移动和桌面
       items:
         - name: Android
@@ -95,10 +103,14 @@
           href: tutorial-v2-windows-desktop.md
         - name: 在 Android 应用中使用共享设备模式
           href: tutorial-v2-shared-device-mode.md
+        - name: Electron 桌面应用
+          href: tutorial-v2-nodejs-desktop.md
     - name: 守护程序或后端服务
       items:
         - name: ASP.NET 守护程序 Web 应用
           href: tutorial-v2-aspnet-daemon-web-app.md
+        - name: Node.js 控制台守护程序
+          href: tutorial-v2-nodejs-console.md
 - name: 示例
   href: sample-v2-code.md
 - name: 概念
@@ -320,7 +332,7 @@
               href: msal-error-handling-dotnet.md
               displayName: 'handling, catch'
             - name: 在 MSAL.NET 中进行日志记录
-              href: msal-logging.md?tabs=dotnet
+              href: msal-logging-dotnet.md
             - name: 从缓存获取令牌
               href: msal-net-acquire-token-silently.md
             - name: 令牌缓存序列化
@@ -362,7 +374,7 @@
               href: msal-error-handling-js.md
               displayName: 'handling, catch'
             - name: MSAL.js 中的日志记录
-              href: msal-logging.md?tabs=javascript
+              href: msal-logging-js.md
         - name: 适用于 iOS 和 MacOS 的 MSAL
           items:
             - name: 分别适用于 iOS 和 macOS 的 MSAL 的差异
@@ -392,7 +404,7 @@
               href: msal-error-handling-ios.md
               displayName: 'handling, catch'
             - name: MSAL for iOS/macOS 中的日志记录
-              href: msal-logging.md?tabs=swift
+              href: msal-logging-ios.md
         - name: 适用于 Python 的 MSAL
           items:
             - name: 自定义令牌缓存序列化
@@ -405,7 +417,7 @@
               href: msal-error-handling-python.md
               displayName: 'handling, catch'
             - name: MSAL for Python 中的日志记录
-              href: msal-logging.md?tabs=python
+              href: msal-logging-python.md
         - name: 适用于 Java 的 MSAL
           items:
             - name: 自定义令牌缓存序列化
@@ -420,7 +432,7 @@
               href: msal-error-handling-java.md
               displayName: 'handling, catch'
             - name: MSAL for Java 中的日志记录
-              href: msal-logging.md?tabs=java
+              href: msal-logging-java.md
         - name: 适用于 Android 的 MSAL
           items:
             - name: 帐户和租户配置文件
@@ -438,7 +450,7 @@
               href: msal-android-handling-exceptions.md
               displayName: 'android, mobile, handling, catch'
             - name: MSAL for Android 中的日志记录
-              href: msal-logging.md?tabs=android
+              href: msal-logging-android.md
     - name: 自定义令牌和声明
       items:
         - name: 使用 PowerShell 自定义声明

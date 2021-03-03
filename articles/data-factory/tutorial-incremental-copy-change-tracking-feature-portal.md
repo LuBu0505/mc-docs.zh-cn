@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 01/12/2018
 ms.date: 02/01/2021
-ms.openlocfilehash: 53277a46f771a8f5199c0e80b6b3688512ad25c4
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: e2e6b5b1def56be51d6d427b1f78209b91949471
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059276"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697488"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>使用 Azure 门户根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
@@ -157,27 +157,25 @@ ms.locfileid: "99059276"
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
 1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
-1. 在左侧菜单中，选择“创建资源” > “数据 + 分析” > “数据工厂”：
+2. 在左侧菜单中，选择“创建资源” > “数据 + 分析” > “数据工厂”：
 
    ![在“新建”窗格中选择“数据工厂”](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
-2. 在“新建数据工厂”页中，输入 **ADFTutorialDataFactory** 作为 **名称**。
+3. 在“新建数据工厂”页中，输入 **ADFTutorialDataFactory** 作为 **名称**。
 
      ![“新建数据工厂”页](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-azure-data-factory.png)
 
    Azure 数据工厂的名称必须 **全局唯一**。 如果收到错误，请更改数据工厂的名称（例如改为 yournameADFTutorialDataFactory），并重新尝试创建。 有关数据工厂项目命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
 
    数据工厂名“ADFTutorialDataFactory”不可用
-3. 选择要在其中创建数据工厂的 Azure **订阅**。
-4. 对于 **资源组**，请执行以下步骤之一：
+4. 选择要在其中创建数据工厂的 Azure **订阅**。
+5. 对于 **资源组**，请执行以下步骤之一：
 
       - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
       - 选择“新建”，并输入资源组的名称。   
          
         若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
-4. 选择“V2 (预览)”作为 **版本**。
-5. 选择数据工厂的 **位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
-6. 选择“固定到仪表板”。     
+6. 选择数据工厂的 **位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 7. 单击“创建”。      
 8. 在仪表板上，你会看状态如下的以下磁贴：“正在部署数据工厂”。
 
@@ -214,7 +212,7 @@ ms.locfileid: "99059276"
 ### <a name="create-azure-sql-database-linked-service"></a>创建 Azure SQL 数据库链接服务
 在此步骤中，请将数据库链接到数据工厂。
 
-1. 依次单击“连接”、“+ 新建”。
+1. 依次单击“连接”、“+ 新建”。 
 2. 在“新建链接服务”窗口中，选择“Azure SQL 数据库”，然后单击“继续”。
 3. 在“新建链接服务”窗口中执行以下步骤：
 

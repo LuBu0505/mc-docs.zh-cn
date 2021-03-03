@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 02/01/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: cc749bf79f8d0e6e2dde76d36ba373196df50fe6
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: 7e3dcec5cf764955f5cf1be7899fdc19cf8c7621
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540874"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697884"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>快速入门：使用授权代码流在 React SPA 中登录并获取访问令牌
 
@@ -40,9 +40,7 @@ ms.locfileid: "99540874"
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1（快速）：注册并自动配置应用，然后下载代码示例
 >
-> 1. 登录 [Azure 门户](https://portal.azure.cn)。
-> 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，然后将门户会话设置为要使用的 Azure AD 租户。
-> 1. 选择[“应用注册”](https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs)。
+> 1. 转到 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册</a>快速入门体验。
 > 1. 输入应用程序的名称。
 > 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户”。 
 > 1. 选择“注册”。
@@ -52,24 +50,23 @@ ms.locfileid: "99540874"
 >
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 >
-> 1. 登录 [Azure 门户](https://portal.azure.cn)。
-> 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，然后将门户会话设置为要使用的 Azure AD 租户。
-> 1. 选择[“应用注册”](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)。
-> 1. 选择“新注册”。
+> 1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
+> 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
+> 1. 搜索并选择“Azure Active Directory”  。
+> 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 > 1. “注册应用程序”页显示后，请输入应用程序的名称。
 > 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户”。 
 > 1. 选择“注册”  。 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
-> 1. 在已注册的应用程序的左窗格中，选择“身份验证”。
-> 1. 在“平台配置”下，选择“`Add a platform`”。
-> 1. 在随之出现的窗口中，选择“单页应用程序”。
-> 1. 将“重定向 URI”值设为 `http://localhost:3000/`。 这是将在本地计算机上侦听的默认端口 NodeJS。 在成功对用户进行身份验证后，我们会将身份验证响应返回到此 URl。 
-> 1. 单击“配置”按钮以应用更改。
+> 1. 在“管理”下，选择“身份验证”。 
+> 1. 在“平台配置”下，选择“添加平台” 。 在打开的窗格中，选择“单页应用程序”。
+> 1. 将“重定向 URI”值设置为 `http://localhost:3000/`。 这是将在本地计算机上侦听的默认端口 NodeJS。 在成功对用户进行身份验证后，我们会将身份验证响应返回到此 URl。 
+> 1. 选择“配置”来应用更改。
 > 1. 在“平台配置”下，展开“单页应用程序” 。
-> 1. 确认在“授权类型”下显示了 ![已配置](./media/quickstart-v2-javascript/green-check.png) 重定向 URI 符合带有 PKCE 的授权代码流的条件。
+> 1. 确认在授权类型![已配置](./media/quickstart-v2-javascript/green-check.png)下，重定向 URI 符合带有 PKCE 的授权代码流的条件。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
-> 为使本快速入门中的代码示例正常运行，需将 `http://localhost:3000/` 添加为 `redirectUri`。
+> 为使此快速入门中的代码示例正常运行，请添加重定向 URI `http://localhost:3000/`。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [为我进行这些更改]()
 >
@@ -177,7 +174,7 @@ ms.locfileid: "99540874"
 
 ### <a name="msaljs"></a>msal.js
 
-MSAL.js 库会登录用户并请求令牌，这些令牌用于访问受 Microsoft 标识平台保护的 API。
+MSAL.js 库会让用户登录并请求用于访问受 Microsoft 标识平台保护的 API 的令牌。
 
 如果已安装 Node.js，则可通过 Node.js 包管理器 (npm) 下载最新版本：
 

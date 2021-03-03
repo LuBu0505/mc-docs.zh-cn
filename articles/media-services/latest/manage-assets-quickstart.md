@@ -1,18 +1,18 @@
 ---
-title: 使用门户上传、编码和流式传输内容 - Azure
+title: 使用门户上传、编码和流式处理内容
 description: 本快速入门介绍如何使用门户通过 Azure 媒体服务上传、编码和流式传输内容。
 ms.topic: quickstart
 origin.date: 08/31/2020
-ms.date: 11/30/2020
+ms.date: 03/08/2021
 author: WenJason
-ms.author: v-jay
-manager: femila
-ms.openlocfilehash: dcf43b8f774402183f85574cb4cb3f2989aac520
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.author: inhenkel
+manager: digimobile
+ms.openlocfilehash: c276214033d4223f2ac2aab6f198674101b694e2
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300857"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697108"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>快速入门：使用门户上传、编码和流式传输内容
 
@@ -28,17 +28,22 @@ ms.locfileid: "96300857"
   
 ## <a name="overview"></a>概述
 
-* 要开始管理、加密、编码和流式处理 Azure 中的媒体内容，需要创建媒体服务帐户，并将高质量的数字媒体文件上传到资产中。 
+* 若要开始管理、加密、编码、分析和流式传输 Azure 中的媒体内容，需要创建媒体服务帐户，并将高质量的数字媒体文件上传到资产中。 
     
     > [!NOTE]
-    > 如果视频以前是使用媒体服务 v3 API 上传到媒体服务帐户的，或者内容是基于实时输出生成的，则 Azure 门户中不会显示“编码”或“加密”按钮 。 使用媒体服务 v3 API 来执行这些任务。
+    > 如果视频以前是使用媒体服务 v3 API 上传到媒体服务帐户的，或者该内容是基于实时输出生成的，则 Azure 门户中不会显示“编码”、“分析”或“加密”按钮  。 使用媒体服务 v3 API 来执行这些任务。
 
     查看以下内容： 
 
   * [云上传和存储](storage-account-concept.md)
   * [资产的概念](assets-concept.md)
-* 将高质量的数字媒体文件上传到一个资产（输入资产）后，可对其进行处理（编码）。 处理的内容将进入另一个资产（输出资产）。 
+* 将高质量的数字媒体文件上传到一个资产（输入资产）后，可对其进行处理（编码或分析）。 处理的内容将进入另一个资产（输出资产）。 
     * 将上传的文件[编码](encoding-concept.md)为可在各种浏览器和设备上播放的格式。
+    * [分析](analyzing-video-audio-files-concept.md)上传的文件。 
+
+        目前，使用 Azure 门户时，可以执行以下操作：生成 TTML 和 WebVTT 隐藏式字幕文件。 采用这些格式的文件可用于使有听力障碍的用户能够访问音频和视频文件。 你还可以从内容中提取关键字。
+
+        要获得丰富的体验，使你能够从视频和音频文件中提取见解，请使用媒体服务 v3 预设（如[教程：使用媒体服务 v3 来分析视频](analyze-videos-tutorial-with-api.md)中所述）。    
 * 处理完内容后，即可将媒体内容交付给客户端播放器。 若要使输出资产中的视频可供客户端进行播放，必须创建流式处理定位符。 创建流式处理定位符时，需要指定流式处理策略 。 使用流式处理策略可为流式处理定位符定义流式处理协议和加密选项（如果有） 。
     
     审阅：
@@ -53,9 +58,9 @@ ms.locfileid: "96300857"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[创建媒体服务帐户](create-account-howto.md#use-the-azure-portal)
+[创建媒体服务帐户](create-account-howto.md)
 
-## <a name="upload"></a>上传
+## <a name="upload"></a>上载
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 1. 找到并单击你的媒体服务帐户。

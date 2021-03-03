@@ -11,12 +11,12 @@ ms.author: v-jay
 ms.reviewer: MashaMSFT
 origin.date: 11/06/2020
 ms.date: 01/04/2021
-ms.openlocfilehash: e2552871ab838929b9726b296cda38d25bacf263
-ms.sourcegitcommit: e1edc6ef84dbbda1da4e0a42efa3fd62eee033d1
+ms.openlocfilehash: df0b783c86bceafe347c45f0809558e2e44261e4
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541857"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696869"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>迁移指南：将 SQL Server 到 SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -31,9 +31,9 @@ ms.locfileid: "98541857"
 - 计算引擎 (Google Cloud Platform - GCP)  
 - Cloud SQL for SQL Server (Google Cloud Platform - GCP) 
 
-有关迁移的详细信息，请参阅[迁移概述](sql-server-to-managed-instance-overview.md)。 有关其他方案，请参阅[数据库迁移指南](/dms/)。
+如需更多迁移信息，请参阅[迁移概述](sql-server-to-managed-instance-overview.md)。 有关其他方案，请参阅[数据库迁移指南](/dms/)。
 
-:::image type="content" source="media/sql-server-to-managed-instance-overview/migration-process-flow-small.png" alt-text="迁移过程流":::
+:::image type="content" source="media/sql-server-to-managed-instance-overview/migration-process-flow-small.png" alt-text="迁移流程":::
 
 ## <a name="prerequisites"></a>先决条件 
 
@@ -45,15 +45,15 @@ ms.locfileid: "98541857"
 
 ## <a name="pre-migration"></a>迁移前
 
-验证你的源环境是否受支持后，开始预迁移阶段。 发现所有现有数据源，评估迁移可阻塞性问题行性，并确定可能会妨碍迁移的任何阻塞性问题。  
+验证你的源环境是否受支持后，开始预迁移阶段。 发现所有现有数据源，评估迁移可行性，确定可能会妨碍迁移的任何阻碍性问题。  
 
 ### <a name="discover"></a>发现
 
-在“发现”阶段，扫描网络以确定你的组织使用的所有 SQL Server 实例和功能。 
+在“发现”阶段，扫描网络以查明你的组织使用的所有 SQL Server 实例和功能。 
 
-你可以使用  [Microsoft 评估和规划工具包（“MAP 工具包”）](https://www.microsoft.com/download/details.aspx?id=7826)来评估你当前的 IT 基础结构。 该工具包提供了一个功能强大的清单、评估和报告工具，可以简化迁移规划过程。 
+你可以使用  [Microsoft 评估和规划工具包（“MAP 工具包”）](https://www.microsoft.com/download/details.aspx?id=7826)来评估你当前的 IT 基础结构。 该工具包提供了功能强大的清单、评估和报告工具，可以简化迁移规划过程。 
 
-有关可用于“发现”阶段的工具的详细信息，请参阅[可用于数据迁移方案的服务和工具](../../../dms/dms-tools-matrix.md)。 
+若要详细了解可用于“发现”阶段的工具，请参阅[可用于数据迁移方案的服务和工具](../../../dms/dms-tools-matrix.md)。 
 
 ### <a name="assess"></a>评估 
 
@@ -64,14 +64,14 @@ ms.locfileid: "98541857"
 - [Azure 目标建议](https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb)
 - [Azure SKU 建议](https://docs.microsoft.com/sql/dma/dma-sku-recommend-sql-db)
 
-若要使用“数据库迁移评估”评估你的环境，请执行以下步骤： 
+若要使用“数据库迁移评估”来评估你的环境，请执行以下步骤： 
 
 1. 打开[数据迁移助手 (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)。 
 1. 选择“文件”，然后选择“新建评估” 。 
 1. 指定一个项目名称，选择“SQL Server”作为源服务器类型，然后选择“Azure SQL 托管实例”作为目标服务器类型。 
-1. 选择要生成的评估报告的类型， 例如数据库兼容性和功能奇偶一致性。 根据评估类型，SQL Server 源上所需的权限可能有所不同。  在运行评估之前，DMA 将突出显示所选顾问所需的权限。
-    - “功能奇偶一致性”类别提供了一套全面的建议、Azure 中可用的替代项，以及缓解步骤来帮助你规划你的迁移项目。 （所需的 sysadmin 权限）
-    - “兼容性问题”类别提供了可能会阻止迁移的“部分支持或完全不支持”功能兼容性问题，以及用于解决这些问题的建议（需要 `CONNECT SQL`、`VIEW SERVER STATE` 和 `VIEW ANY DEFINITION` 权限）。
+1. 选择要生成的评估报告的类型， 例如，数据库兼容性和功能奇偶一致性。 根据评估类型，源 SQL Server 上所需的权限可能有所不同。  在运行评估之前，DMA 会突出显示所选顾问所需的权限。
+    - “功能奇偶一致性”类别提供了一套全面的建议、Azure 中可用的替代项以及缓解步骤来帮助你计划迁移项目 （需要 sysadmin 权限）。
+    - “兼容性问题”类别标识了可能会阻止迁移的“部分支持或完全不支持”功能兼容性问题，以及用于解决这些问题的建议（需要 `CONNECT SQL`、`VIEW SERVER STATE` 和 `VIEW ANY DEFINITION` 权限）。
 1. 指定 SQL Server 的源连接详细信息并连接到源数据库。
 1. 选择“开始评估”。 
 1. 完成此过程时后，选择并查看针对迁移阻止和功能奇偶一致性问题的评估报告。 还可以将评估报告导出到文件，以便与组织中的其他团队或人员共享。 
@@ -89,7 +89,7 @@ ms.locfileid: "98541857"
 - [使用 PowerShell 执行规模化评估](https://docs.microsoft.com/sql/dma/dma-consolidatereports)
 - [使用 Power BI 分析评估报告](https://docs.microsoft.com/sql/dma/dma-consolidatereports#dma-reports)
 
-=### 创建性能基线
+### <a name="create-a-performance-baseline"></a>创建性能基线
 
 如果需要将 SQL 托管实例上工作负载的性能与 SQL Server 上运行的原始工作负载的性能进行比较，请创建用于比较的性能基线。 请参阅[性能基线](sql-server-to-managed-instance-performance-baseline.md)以了解详细信息。 
 

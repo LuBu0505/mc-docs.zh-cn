@@ -2,21 +2,21 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 02/13/2020
+ms.date: 02/26/2021
 ms.author: v-junlch
-ms.openlocfilehash: 5fa7d38ed1797b877f12b4abc622825f1a16637a
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: fe80f3ac2996bccf665230c47cf27c2d6c59b79c
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428761"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697503"
 ---
-添加在 `msg` 上使用 `context.bindings` 输出绑定对象来创建队列消息的代码。 请在 `context.res` 语句之前添加此代码。
+添加在 `context.bindings` 上使用 `msg` 输出绑定对象来创建队列消息的代码。 请在 `context.res` 语句之前添加此代码。
 
 ```javascript
-// Add a message to the Storage queue.
-context.bindings.msg = "Name passed to the function: " + 
-(req.query.name || req.body.name);
+        // Add a message to the Storage queue,
+        // which is the name passed to the function.
+        context.bindings.msg = (req.query.name || req.body.name);
 ```
 
 此时，你的函数应如下所示：
@@ -26,9 +26,9 @@ module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
     if (req.query.name || (req.body && req.body.name)) {
-        // Add a message to the Storage queue.
-        context.bindings.msg = "Name passed to the function: " + 
-        (req.query.name || req.body.name);
+        // Add a message to the Storage queue,
+        // which is the name passed to the function.
+        context.bindings.msg = (req.query.name || req.body.name);
         context.res = {
             // status: 200, /* Defaults to 200 */
             body: "Hello " + (req.query.name || req.body.name)
@@ -42,4 +42,3 @@ module.exports = async function (context, req) {
     }
 };
 ```
-

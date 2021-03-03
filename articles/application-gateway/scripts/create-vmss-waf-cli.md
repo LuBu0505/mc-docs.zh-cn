@@ -9,15 +9,15 @@ ms.service: application-gateway
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 11/16/2020
+ms.date: 02/18/2021
 ms.author: v-junlch
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b82f108fcdab5641213982ecc7ab446c3dbaff84
-ms.sourcegitcommit: f436acd1e2a0108918a6d2ee9a1aac88827d6e37
+ms.openlocfilehash: 85621e0573ffaf9b4451e702dd53ae6bb2b7048c
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96509046"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697358"
 ---
 # <a name="restrict-web-traffic-using-the-azure-cli"></a>使用 Azure CLI 限制 Web 流量
 
@@ -130,13 +130,13 @@ az group delete --name myResourceGroupAG --yes
 
 此脚本使用以下命令创建部署。 表中的每一项均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](/cli/network/vnet#az-network-vnet-create) | 创建虚拟网络。 |
 | [az network vnet subnet create](/cli/network/vnet/subnet#az-network-vnet-subnet-create) | 在虚拟网络中创建子网。 |
-| [az network public-ip create](/cli/network/public-ip?view=azure-cli-latest) | 创建应用程序网关的公共 IP 地址。 |
-| [az network application-gateway create](/cli/network/application-gateway?view=azure-cli-latest) | 创建应用程序网关。 |
+| [az network public-ip create](https://docs.azure.cn/zh-cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) | 创建应用程序网关的公共 IP 地址。 |
+| [az network application-gateway create](/cli/network/application-gateway) | 创建应用程序网关。 |
 | [az vmss create](/cli/vmss#az-vmss-create) | 创建虚拟机规模集。 |
 | [az storage account create](/cli/storage/account#az-storage-account-create) | 创建存储帐户。 |
 | [az monitor diagnostic-settings create](/cli/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) | 创建存储帐户。 |
@@ -147,4 +147,3 @@ az group delete --name myResourceGroupAG --yes
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/overview)。
 
 可以在 [Azure 应用程序网关文档](../cli-samples.md)中找到其他应用程序网关 CLI 脚本示例。
-

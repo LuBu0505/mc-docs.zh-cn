@@ -4,16 +4,16 @@ description: 适用于自动化的 Azure 安全基线
 author: WenJason
 ms.service: security
 ms.topic: conceptual
-origin.date: 06/22/2020
-ms.date: 02/01/2021
+origin.date: 01/07/2021
+ms.date: 02/22/2021
 ms.author: v-jay
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 281274f19dca27a16dad4813f0c03ed8bce3ba12
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 4d9b15524f10601d07d0a28f0233b627cfab78ea
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99058596"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697154"
 ---
 # <a name="azure-security-baseline-for-automation"></a>适用于自动化的 Azure 安全基线
 
@@ -23,7 +23,7 @@ ms.locfileid: "99058596"
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
-## <a name="network-security"></a>网络安全性
+## <a name="network-security"></a>网络安全
 
 有关详细信息，请参阅[安全控制：网络安全](../security/benchmarks/security-control-network-security.md)。
 
@@ -289,11 +289,11 @@ ms.locfileid: "99058596"
 
 **指导**：使用可显式分配并可查询的 Azure Active Directory 内置管理员角色。 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组的成员的帐户。 每次将自动化帐户运行方式帐户用于 runbook 时，请确保还会在你的清单中跟踪这些服务主体，因为它们常常具有提升的权限。 删除任何未使用的运行方式帐户，以最大程度地降低暴露的受攻击面。
 
-* [如何使用 PowerShell 获取 Azure AD 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [如何使用 PowerShell 获取 Azure AD 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember)
 
-* [删除运行方式帐户或经典运行方式帐户](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [删除运行方式帐户或经典运行方式帐户](./delete-run-as-account.md)
 
 * [管理 Azure 自动化运行方式帐户](./manage-runas-account.md)
 
@@ -317,7 +317,7 @@ ms.locfileid: "99058596"
 
 * [详细了解 Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
-* [删除运行方式帐户或经典运行方式帐户](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [删除运行方式帐户或经典运行方式帐户](./delete-run-as-account.md)
 
 * [管理 Azure 自动化运行方式帐户](./manage-runas-account.md)
 
@@ -367,7 +367,7 @@ ms.locfileid: "99058596"
 
 * [如何使用 Azure 标识访问评审](../active-directory/governance/access-reviews-overview.md)
 
-* [删除运行方式帐户或经典运行方式帐户](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [删除运行方式帐户或经典运行方式帐户](./delete-run-as-account.md)
 
 * [管理 Azure 自动化运行方式帐户](./manage-runas-account.md)
 
@@ -579,7 +579,7 @@ ms.locfileid: "99058596"
 
 * [如何使用 Azure Resource Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-* [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription)
 
 * [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -605,7 +605,7 @@ ms.locfileid: "99058596"
 
 * [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
-* [删除运行方式帐户或经典运行方式帐户](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [删除运行方式帐户或经典运行方式帐户](./delete-run-as-account.md)
 
 * [管理 Azure 自动化运行方式帐户](./manage-runas-account.md)
 
@@ -713,7 +713,7 @@ ms.locfileid: "99058596"
 
 **指导**：使用混合 Runbook 辅助角色功能时，根据脚本的类型，可以使用特定于操作系统的配置或第三方资源来限制用户在 Azure 计算资源中执行脚本的能力。 还可以利用 Azure 安全中心自适应应用程序控制来确保仅执行已授权软件，并阻止所有未授权软件在 Azure 虚拟机上执行。
 
-* [如何在 Windows 环境中控制 PowerShell 脚本的执行](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [如何在 Windows 环境中控制 PowerShell 脚本的执行](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 * [如何使用 Azure 安全中心自适应应用程序控制](../security-center/security-center-adaptive-application.md)
 
@@ -751,7 +751,7 @@ ms.locfileid: "99058596"
 
 还可以使用来自 Azure 安全中心的建议作为 Azure 资源的安全配置基线。
 
-* [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias)
 
 * [教程：创建和管理策略以强制实施符合性](../governance/policy/tutorials/create-and-manage.md)
 
@@ -815,7 +815,7 @@ ms.locfileid: "99058596"
 
 * [有关创建 ARM 模板的信息](../virtual-machines/windows/ps-template.md)
 
-* [如何将自定义 VM VHD 上传到 Azure](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
+* [如何将自定义 VM VHD 上传到 Azure](/azure-stack/operator/azure-stack-add-vm-image)
 
 **Azure 安全中心监视**：不适用
 
@@ -825,7 +825,7 @@ ms.locfileid: "99058596"
 
 **指导**：使用 Azure DevOps 安全地存储和管理代码，如自定义 Azure 策略、Azure 资源管理器模板和 Desired State Configuration 脚本。 若要访问在 Azure DevOps 中管理的资源，可以向特定用户、内置安全组或 Azure Active Directory（如果与 Azure DevOps 集成）或 Active Directory（如果与 TFS 集成）中定义的组授予或拒绝授予权限。 使用源代码管理集成功能，可以通过源代码管理存储库中的脚本使自动化帐户中的 Runbook 保持最新。
 
-* [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
 
 * [关于 Azure DevOps 中的权限和组](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
 
@@ -1007,7 +1007,7 @@ ms.locfileid: "99058596"
 
 * [Azure 自动化简介](./automation-intro.md)
 
-* [如何在 Azure 中备份密钥保管库密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [如何在 Azure 中备份密钥保管库密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 * [为自动化帐户使用客户管理的密钥](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1033,7 +1033,7 @@ ms.locfileid: "99058596"
 
 * [Azure 自动化简介](./automation-intro.md)
 
-* [如何在 Azure 中备份密钥保管库密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [如何在 Azure 中备份密钥保管库密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 * [为自动化帐户使用客户管理的密钥](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1049,7 +1049,7 @@ ms.locfileid: "99058596"
 
 * [使用 ARM 模板和 Azure 门户部署资源](../azure-resource-manager/templates/deploy-portal.md)
 
-* [如何在 Azure 中还原密钥保管库密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [如何在 Azure 中还原密钥保管库密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 * [为自动化帐户使用客户管理的密钥](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1063,7 +1063,7 @@ ms.locfileid: "99058596"
 
 使用源代码管理集成功能，可以通过源代码管理存储库中的脚本使自动化帐户中的 Runbook 保持最新。
 
-* [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
 
 * [关于 Azure DevOps 中的权限和组](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
 

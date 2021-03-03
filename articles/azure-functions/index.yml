@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: ggailey777
   ms.author: v-junlch
-  ms.date: 01/27/2021
-  ms.openlocfilehash: 39caed6198215e4033288912544e22850452e41f
-  ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+  ms.date: 03/02/2021
+  ms.openlocfilehash: 4f26ee3207d795f5cc6274537945786f162acc01
+  ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/29/2021
-  ms.locfileid: "99060092"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101696564"
 landingContent:
 - title: 关于 Azure Functions
   linkLists:
@@ -106,14 +106,22 @@ landingContent:
     links:
     - text: 使用 Jenkins 插件进行部署
       url: https://docs.microsoft.com/azure/developer/jenkins/deploy-to-azure-functions
-- title: 性能和监视
+- title: 性能和监视最佳做法
   linkLists:
   - linkListType: concept
     links:
+    - text: 性能和可靠性
+      url: functions-best-practices.md
+    - text: 管理连接
+      url: manage-connections.md
+    - text: 存储注意事项
+      url: storage-considerations.md
+    - text: 错误处理和函数重试
+      url: functions-bindings-error-pages.md
+    - text: 安全性
+      url: security-concepts.md
     - text: 监视函数
       url: functions-monitoring.md
-    - text: 优化性能
-      url: functions-best-practices.md
     - text: 网络注意事项
       url: functions-networking-options.md
   - linkListType: how-to-guide

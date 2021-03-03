@@ -4,17 +4,17 @@ description: 了解如何从 Azure 下载市场项并发布到 Azure Stack Hub�
 author: WenJason
 ms.topic: conceptual
 origin.date: 12/16/2020
-ms.date: 02/08/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: avishwan
 ms.lastreviewed: 12/16/2020
 zone_pivot_groups: state-connected-disconnected
-ms.openlocfilehash: 2192fddda311a7b9b6ef6fc4eb290d49b9944e85
-ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
+ms.openlocfilehash: 9d6291bd7d9de93ffa8172c582d9a02fd8e0ff6a
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99504001"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697595"
 ---
 # <a name="download-marketplace-items-to-azure-stack-hub"></a>将市场项下载到 Azure Stack Hub
 
@@ -32,7 +32,7 @@ ms.locfileid: "99504001"
 
 [!INCLUDE [Azure Stack Hub Operator Access Workstation](../includes/operator-note-owa.md)]
 
-# <a name="connected"></a><a name="state-connected"></a>[已联网](#tab/state-connected)
+# <a name="connected"></a>[已连接](#tab/state-connected)
 
 通过连接的部署，可以使用管理员门户下载市场项。
 
@@ -66,7 +66,7 @@ Azure Stack Hub 部署必须已建立 Internet 连接，并且已注册到 Azure
 
 7. 若要部署下载的项，请选择“+ 创建资源”，在类别中搜索该新市场项。 接下来，选择该项以开始部署过程。 该过程根据市场项的不同而异。
 
-# <a name="disconnected"></a><a name="state-disconnected"></a>[已离线](#tab/state-disconnected)
+# <a name="disconnected"></a>[已断开连接](#tab/state-disconnected)
 
 Azure Stack Hub 受限或未建立 Internet 连接时，可以使用 PowerShell 和“市场联合工具”，将市场项下载到已建立 Internet 连接的计算机。 然后，将这些项传输到 Azure Stack Hub 环境。 在离线环境中，无法使用 Azure Stack Hub 门户下载市场项。
 
@@ -119,16 +119,16 @@ Azure Stack Hub 受限或未建立 Internet 连接时，可以使用 PowerShell 
 
 1. 在已建立 Internet 连接的计算机上，以管理员身份打开 PowerShell 控制台。
 
-2. 使用已用于注册 Azure Stack Hub 的 Azure 帐户登录到相应的 Azure 云和 AzureAD 目录租户。 若要添加该帐户，请在 PowerShell 中运行 `Login-AzAccount`：
+2. 使用已用于注册 Azure Stack Hub 的 Azure 帐户登录到相应的 Azure 云和 AzureAD 目录租户。 若要添加该帐户，请在 PowerShell 中运行 `Connect-AzAccount`：
 
    ```powershell  
-   Login-AzAccount -Environment AzureChinaCloud -Tenant '<mydirectory>.partner.onmschina.cn'
+   Connect-AzAccount -Environment AzureChinaCloud -Tenant '<mydirectory>.partner.onmschina.cn'
    ```
 
    系统会提示输入 Azure 帐户凭据。根据帐户的配置，可能需要使用双因素身份验证。
 
    > [!NOTE]
-   > 如果会话过期、密码已更改或你需要切换帐户，请在使用 `Add-AzAccount` 登录之前先运行以下 cmdlet：`Remove-AzAccount -Scope Process`。
+   > 如果会话过期、密码已更改或你需要切换帐户，请在使用 `Connect-AzAccount` 登录之前先运行以下 cmdlet：`Remove-AzAccount -Scope Process`。
 
 3. 如果有多个订阅，请运行以下命令，以选择已用于注册的订阅：
 

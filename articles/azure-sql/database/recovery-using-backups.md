@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: mathoma, sstein, danil
 origin.date: 11/13/2020
-ms.date: 01/25/2021
-ms.openlocfilehash: fea45fe5d322990b4f8678a198e3fc6b9f1d204c
-ms.sourcegitcommit: e1edc6ef84dbbda1da4e0a42efa3fd62eee033d1
+ms.date: 02/22/2021
+ms.openlocfilehash: 4b551b620a506ba3b8adf723b7f13357945718e2
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541902"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697792"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>使用自动数据库备份进行恢复 - Azure SQL 托管实例和 SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -54,8 +54,8 @@ ms.locfileid: "98541902"
 
 | **部署选项** | **处理的并发请求数最多为 #** | **提交的并发请求数最多为 #** |
 | :--- | --: | --: |
-|**单个数据库（每个订阅）**|10|60|
-|**弹性池（每个池）**|4|200|
+|**单个数据库（每个订阅）**|30|100|
+|**弹性池（每个池）**|4|2000|
 
 
 没有任何内置的方法可以还原整个服务器。 有关如何完成此任务的示例，请参阅 [Azure SQL 数据库：完整服务器恢复](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666)。

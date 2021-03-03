@@ -11,64 +11,76 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
-origin.date: 01/08/2020
-ms.date: 02/17/2020
-ms.openlocfilehash: b20c341d76df1b6bc6325fc3586e92e125b2d5ee
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+origin.date: 01/29/2021
+ms.date: 03/01/2021
+ms.openlocfilehash: d474088191e0f529379b831a9244c5ebabc005f8
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432595"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696692"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure 数据库迁移服务实例
 
-在本快速入门中，你将使用 Azure 门户创建 Azure 数据库迁移服务的实例。  创建实例后，可使用它将数据从 SQL Server 迁移到 Azure SQL 数据库。
+在本快速入门中，你将使用 Azure 门户创建 Azure 数据库迁移服务的实例。 创建实例后，可以使用该实例将多个数据库源的数据迁移到 Azure 数据平台，例如从 SQL Server 迁移到 Azure SQL 数据库或从 SQL Server 迁移到 Azure SQL 托管实例。
 
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-打开 Web 浏览器，导航到 [Azure 门户](https://portal.azure.cn/)，然后输入登录到门户所需的凭据。
+打开 Web 浏览器，导航到 [Azure 门户](https://portal.azure.cn/)，然后输入登录到门户所需的凭据。 默认视图是服务仪表板。
 
-默认视图是服务仪表板。
+> [!NOTE]
+> 每个订阅在每个区域最多可创建 10 个 DMS 实例。 如果需要更多实例，请创建支持票证。
 
 ## <a name="register-the-resource-provider"></a>注册资源提供程序
 
 在创建数据库迁移服务的第一个实例之前，请注册 Microsoft.DataMigration 资源提供程序。
 
-1. 在 Azure 门户中，依次选择“所有服务”和“订阅”。
+1. 在 Azure 门户中，搜索并选择“订阅”。
+
+   ![显示门户订阅](media/quickstart-create-data-migration-service-portal/portal-select-subscription.png)
 
 2. 选择要在其中创建 Azure 数据库迁移服务实例的订阅，再选择“资源提供程序”。
 
-3. 搜索“迁移”，然后选择“注册”。
+    ![显示资源提供程序](media/quickstart-create-data-migration-service-portal/portal-select-resource-provider.png)
+
+3. 搜索迁移，然后选择 Microsoft.DataMigration 旁的“注册” 。
 
     ![注册资源提供程序](media/quickstart-create-data-migration-service-portal/dms-register-provider.png)
 
 ## <a name="create-an-instance-of-the-service"></a>创建服务的实例
 
-1. 选择“+创建资源”以创建 Azure 数据库迁移服务的实例。
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源” 。 搜索并选择“Azure 数据库迁移服务”。
 
-2. 在市场中搜索“迁移”，选择“Azure 数据库迁移服务”，并在“Azure 数据库迁移服务”屏幕中选择“创建”。
+    ![Azure 市场](media/quickstart-create-data-migration-service-portal/portal-marketplace.png)
 
-3. 在“创建迁移服务”屏幕中：
+2. 在“Azure 数据库迁移服务”屏幕上，选择“创建”   。
 
-    - 选择一个容易记住且唯一的服务名称，用于标识 Azure 数据库迁移服务的实例。
-    - 选择要在其中创建实例的 Azure **订阅**。
-    - 选择现有的 **资源组**，或创建一个新组。
-    - 选择距离源或目标服务器最近的“位置”。
-    - 选择一个现有的虚拟网络或创建一个。
+    ![创建 Azure 数据库迁移服务实例](media/quickstart-create-data-migration-service-portal/dms-create.png)
 
-        虚拟网络为 Azure 数据库迁移服务提供了对源数据库和目标环境的访问权限。
+3. 在“创建迁移服务”基本信息屏幕中：
 
-        有关如何在 Azure 门户中创建虚拟网络的详细信息，请参阅[使用 Azure 门户创建虚拟网络](/virtual-network/quick-create-portal)一文。
+     - 选择订阅。
+     - 新建资源组或使用现有资源组。
+     - 指定 Azure 数据库迁移服务实例的名称。
+     - 选择要在其中创建 Azure 数据库迁移服务实例的位置。
+     - 选择“Azure”作为服务模式。
+     - 选择定价层。 有关成本和定价层的详细信息，请参阅[价格页](https://www.azure.cn/pricing/details/database-migration/)。
+     
+    ![配置 Azure 数据库迁移服务实例基本信息设置](media/quickstart-create-data-migration-service-portal/dms-create-basics.png)
 
-    - 对于“定价层”选择“基本: 1 vCore”。
+     - 选择“下一页:网络”。
 
-        ![创建迁移服务](media/quickstart-create-data-migration-service-portal/dms-create-service1.png)
+4. 在“创建迁移服务”网络屏幕中：
 
-4. 选择“创建”。
+    - 选择现有虚拟网络或新建一个。 虚拟网络为 Azure 数据库迁移服务提供了对源数据库和目标环境的访问权限。 有关如何在 Azure 门户中创建虚拟网络的详细信息，请参阅[使用 Azure 门户创建虚拟网络](../virtual-network/quick-create-portal.md)一文。
 
-    片刻之后，Azure 数据库迁移服务的实例即会创建并可供使用。 系统显示下图所示的 Azure 数据库迁移服务：
+    ![配置 Azure 数据库迁移服务实例网络设置](media/quickstart-create-data-migration-service-portal/dms-network-settings.png)
+
+    - 选择“查看 + 创建”以创建服务。 
+    
+    - 片刻之后，Azure 数据库迁移服务的实例即会创建并可供使用：
 
     ![迁移服务已创建](media/quickstart-create-data-migration-service-portal/dms-service-created.png)
 
@@ -78,5 +90,7 @@ ms.locfileid: "96432595"
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [将 SQL Server 迁移到 Azure SQL 数据库](tutorial-sql-server-to-azure-sql.md)
+* [将 SQL Server 脱机迁移到 Azure SQL 数据库](tutorial-sql-server-to-azure-sql.md)
+* [将 SQL Server 联机迁移到 Azure SQL 数据库](tutorial-sql-server-azure-sql-online.md)
+* [将 SQL Server 脱机迁移到 Azure SQL 托管实例](tutorial-sql-server-to-managed-instance.md)
+* [将 SQL Server 联机迁移到 Azure SQL 托管实例](tutorial-sql-server-managed-instance-online.md)

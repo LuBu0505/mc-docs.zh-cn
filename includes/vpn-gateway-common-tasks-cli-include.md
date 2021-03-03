@@ -6,19 +6,19 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
 origin.date: 03/21/2018
-ms.date: 03/04/2019
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.custom: include file
-ms.openlocfilehash: 8f0f72f980fb0ff8f9d365563aac7e50702d4f63
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: fec03e4f003d8be8ea54e4ea9aec1701fcd8a51d
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63849101"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697780"
 ---
 ### <a name="to-view-local-network-gateways"></a>查看本地网关
 
-若要查看本地网关的列表，请使用 [az network local-gateway list](https://docs.microsoft.com/cli/azure/network/local-gateway) 命令。
+若要查看本地网关的列表，请使用 [az network local-gateway list](/cli/network/local-gateway) 命令。
 
 ```azurecli
 az network local-gateway list --resource-group TestRG1
@@ -30,14 +30,14 @@ az network local-gateway list --resource-group TestRG1
 
 ### <a name="to-verify-the-shared-key-values"></a>验证共享密钥值
 
-验证共享密钥值与用于 VPN 设备配置的值是否相同。 如果不同，请使用设备提供的值再次运行链接，或者使用返回的值更新设备。 值必须匹配。 若要查看共享的密钥，请使用 [az network vpn-connection-list](https://docs.microsoft.com/cli/azure/network/vpn-connection)。
+验证共享密钥值与用于 VPN 设备配置的值是否相同。 如果不同，请使用设备提供的值再次运行链接，或者使用返回的值更新设备。 值必须匹配。 若要查看共享的密钥，请使用 [az network vpn-connection-list](/cli/network/vpn-connection)。
 
 ```azurecli
 az network vpn-connection shared-key show --connection-name VNet1toSite2 --resource-group TestRG1
 ```
 ### <a name="to-view-the-vpn-gateway-public-ip-address"></a>查看 VPN 网关的公共 IP 地址
 
-若要查找虚拟网关的公共 IP 地址，请使用 [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip) 命令。 为了方便阅读，对本示例的输出进行了格式化，以表格式显示一系列公共 IP。
+若要查找虚拟网关的公共 IP 地址，请使用 [az network public-ip list](/cli/network/public-ip) 命令。 为了方便阅读，对本示例的输出进行了格式化，以表格式显示一系列公共 IP。
 
 ```azurecli
 az network public-ip list --resource-group TestRG1 --output table

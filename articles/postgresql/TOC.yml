@@ -22,6 +22,9 @@
     - name: 版本控制策略
       href: concepts-version-policy.md
       displayName: 'version, postgresql'
+    - name: 已知问题和限制
+      href: concepts-known-issues-limitations.md
+      displayName: 'issues, limitations, postgresql'
 - name: 单台服务器
   expanded: true
   items:
@@ -187,6 +190,8 @@
               displayName: 'query store, performance, optimize, recommendations'
         - name: 应用开发
           items:
+            - name: 最佳做法
+              href: application-best-practices.md
             - name: 连接库
               href: concepts-connection-libraries.md
               displayName: 'libraries, drivers'
@@ -306,7 +311,7 @@
             - name: 针对指标创建警报
               href: howto-alert-on-metric.md
               displayName: 'alerts, metrics, monitor'
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: 排查连接错误
               href: howto-troubleshoot-common-connection-issues.md

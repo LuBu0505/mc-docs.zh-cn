@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/19/2020
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 17b2ae222acb81c12b48aea54aa8a6d9b11e205c
-ms.sourcegitcommit: 7646936d018c4392e1c138d7e541681c4dfd9041
+ms.openlocfilehash: 6864916b36a30da83a556abc6e7094b9dad7ebc8
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88647724"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696905"
 ---
 # <a name="prepare-mobile-apps-for-production"></a>准备用于生产的移动应用
 
@@ -34,19 +34,9 @@ ms.locfileid: "88647724"
 - [MSAL iOS wiki](https://github.com/AzureAD/microsoft-authentication-library-for-objc/wiki)
 - [MSAL.NET wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki)
 
-## <a name="mitigate-and-investigate-issues"></a>缓解和调查问题
-
-若要更好地诊断应用中的问题，请收集数据。 有关可以收集的数据类型的信息，请参阅 [MSAL 应用程序中的日志记录](./msal-logging.md)。
-
-一些数据收集建议如下：
-
-- 用户在有问题时可能会寻求帮助。 最佳做法是捕获日志并将其临时存储。 提供一个供用户上传日志的位置。 MSAL 提供日志记录扩展来捕获有关身份验证的详细信息。
-
-- 如果遥测可用，请通过 MSAL 启用它，以收集有关用户如何登录应用的数据。
-
-## <a name="next-steps"></a>后续步骤
 
 [!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
-若要尝试其他示例，请参阅[桌面和移动公共客户端应用](sample-v2-code.md#desktop-and-mobile-public-client-apps)。
+## <a name="next-steps"></a>后续步骤
 
+若要尝试其他示例，请参阅[桌面和移动公共客户端应用](sample-v2-code.md#desktop-and-mobile-public-client-apps)。

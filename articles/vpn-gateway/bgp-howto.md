@@ -7,14 +7,14 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: how-to
 origin.date: 09/18/2020
-ms.date: 11/23/2020
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.openlocfilehash: 24299e4def925010bd2f3e4d2e92473245a830f8
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: ee4f5c649e9a086e8db12e5251f0092c3214680d
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432590"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697862"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways"></a>如何在 Azure VPN 网关上配置 BGP
 
@@ -50,7 +50,7 @@ BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交
 
 ### <a name="1-create-and-configure-testvnet1"></a>1.创建并配置 TestVNet1
 
-在此步骤中，你将创建并配置 TestVNet1。 使用[创建网关教程](vpn-gateway-tutorial-create-gateway-powershell.md)中的步骤创建并配置 Azure 虚拟网络和 VPN 网关。 使用下面屏幕截图中的参考设置。
+在此步骤中，你将创建并配置 TestVNet1。 使用[创建网关教程](./tutorial-create-gateway-portal.md)中的步骤创建并配置 Azure 虚拟网络和 VPN 网关。 使用下面屏幕截图中的参考设置。
 
 * 虚拟网络：
 
@@ -108,7 +108,7 @@ BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交
 
 ## <a name="part-2-configure-bgp-on-cross-premises-s2s-connections"></a><a name ="crosspremises"></a>第 2 部分：在跨界 S2S 连接上配置 BGP
 
-若要建立跨界连接，需要创建本地网络网关来表示本地 VPN 设备，并创建一个连接以将 VPN 网关与本地网关连接在一起，如[创建站点到站点连接](vpn-gateway-howto-site-to-site-resource-manager-portal.md)所述。  本文包含指定 BGP 配置参数所需的其他属性。
+若要建立跨界连接，需要创建本地网络网关来表示本地 VPN 设备，并创建一个连接以将 VPN 网关与本地网关连接在一起，如[创建站点到站点连接](./tutorial-site-to-site-portal.md)所述。  本文包含指定 BGP 配置参数所需的其他属性。
 
 **图示 3**
 

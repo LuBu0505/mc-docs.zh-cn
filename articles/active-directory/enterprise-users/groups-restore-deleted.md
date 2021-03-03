@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 01/06/2021
+ms.date: 02/24/2021
 ms.author: v-junlch
 ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6942eb9618c6d7379fb4f283bfbfc1d2d79b5d87
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 822f931ecb62bf9daf15d183c2f81103dd3c4dd2
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021586"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696829"
 ---
 # <a name="restore-a-deleted-microsoft-365-group-in-azure-active-directory"></a>在 Azure Active Directory 中还原已删除的 Microsoft 365 组
 
@@ -32,7 +32,7 @@ ms.locfileid: "98021586"
 角色 | 权限
 --------- | ---------
 全局管理员、组管理员和 Intune 管理员 | 可以还原任何已删除的 Microsoft 365 组
-用户管理员 | 可以还原任何已删除的 Microsoft 365 组，但分配给公司管理员角色的组除外
+用户管理员 | 可还原任何已删除的 Microsoft 365 组，但分配给全局管理员角色的组除外
 User | 可以还原他们拥有的任何已删除 Microsoft 365 组
 
 ## <a name="view-and-manage-the-deleted-microsoft-365-groups-that-are-available-to-restore"></a>查看和管理可还原的已删除 Microsoft 365 组
@@ -101,4 +101,3 @@ User | 可以还原他们拥有的任何已删除 Microsoft 365 组
 * [管理组的成员](../fundamentals/active-directory-groups-members-azure-portal.md)
 * [管理组的成员身份](../fundamentals/active-directory-groups-membership-azure-portal.md)
 * [管理组中用户的动态规则](groups-dynamic-membership.md)
-

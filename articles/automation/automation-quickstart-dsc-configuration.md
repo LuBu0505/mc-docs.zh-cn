@@ -5,15 +5,15 @@ services: automation
 ms.subservice: dsc
 keywords: dsc, 配置, 自动化
 origin.date: 11/06/2018
-ms.date: 08/10/2020
+ms.date: 02/22/2021
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 2bfdf5bd70d75cef969d1a3df5a93cdab5f65443
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: bbb47e9e765ebdc0fe11399e21d78014ba1ae07f
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507610"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697172"
 ---
 # <a name="configure-a-vm-with-desired-state-configuration"></a>使用 Desired State Configuration 配置 VM
 
@@ -41,13 +41,20 @@ ms.locfileid: "96507610"
 3. 查找要为其启用 DSC 的虚拟机。 可以使用搜索栏和筛选器选项来查找特定的虚拟机。
 4. 单击该虚拟机，然后单击“连接”。
 5. 选择适用于虚拟机的 DSC 设置。 如果已准备好一个配置，可将其指定为 `Node Configuration Name`。 可以将[配置模式](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaConfig)设置为控制计算机的配置行为。
-6. 单击“确定”。 将 DSC 扩展部署到虚拟机时，状态将显示为 `Connecting`。
+6. 单击“确定”。  将 DSC 扩展部署到虚拟机时，状态将显示为 `Connecting`。
 
 ![启用用于 DSC 的 Azure VM](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
 
 ## <a name="import-modules"></a>导入模块
 
 模块包含 DSC 资源，在 [PowerShell 库](https://www.powershellgallery.com)中可以找到许多模块。 在配置中使用的任何资源都必须在编译之前导入到自动化帐户中。 本教程需要名为 **nx** 的模块。
+
+1. 在自动化帐户的左侧窗格中，在“共享资源”下选择“模块库”。 
+1. 通过键入模块的部分名称来搜索要导入的模块：`nx`。
+1. 单击要导入的模块。
+1. 单击“导入”。
+
+![导入 DSC 模块](./media/automation-quickstart-dsc-configuration/dsc-import-module-nx.png)
 
 ## <a name="import-the-configuration"></a>导入配置
 
@@ -91,7 +98,7 @@ configuration LAMPServer {
 1. 在自动化帐户的左窗格中，选择“状态配置(DSC)”，然后单击“配置”选项卡。
 2. 单击“+ 添加”。
 3. 选择在前一步骤中保存的配置文件。
-4. 单击“确定”。
+4. 单击“确定”。 
 
 ## <a name="compile-a-configuration"></a>编译配置
 

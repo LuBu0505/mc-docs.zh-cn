@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 01/14/2021
+ms.date: 02/24/2021
 ms.author: v-junlch
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6c09ee8324a248a79fc3583cf5aa9766c7531c16
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 1053c4ac04765b5543f00dca420d3172dc6fab13
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195234"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697204"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>教程：从 iOS 或 macOS 应用登录用户并调用 Microsoft Graph
 
@@ -71,7 +71,7 @@ ms.locfileid: "98195234"
 
 ## <a name="register-your-application"></a>注册应用程序
 
-1. 登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册” > “新建注册”  。
@@ -155,7 +155,7 @@ var webViewParameters : MSALWebviewParameters?
 var currentAccount: MSALAccount?
 ```
 
-需要修改的唯一值是分配给 `kClientID` 作为[应用程序 ID](./developer-glossary.md#application-id-client-id) 的值。 此值是你在本教程开头的步骤中保存的 MSAL 配置数据的一部分，该步骤用于在 Azure 门户中注册应用程序。
+你修改的唯一值是分配到 `kClientID` 以用作[应用程序 ID](./developer-glossary.md#application-id-client-id) 的值。 此值是你在本教程开头的步骤中保存的 MSAL 配置数据的一部分，该步骤用于在 Azure 门户中注册应用程序。
 
 ## <a name="configure-xcode-project-settings"></a>配置 Xcode 项目设置
 
@@ -859,4 +859,3 @@ func acquireTokenInteractively() {
 
 > [!div class="nextstepaction"]
 > [方案：用于调用 Web API 的移动应用程序](scenario-mobile-overview.md)
-

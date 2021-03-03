@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 12/07/2020
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: 6c26a56e94acb6fa1df25528f62c18a514ad9d03
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 7ae1f337a647970def036f6bdb87ad07ee2f70f0
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004152"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697964"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入门：从 Android 应用登录用户并调用 Microsoft Graph API
 
@@ -35,7 +35,7 @@ ms.locfileid: "97004152"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
->  为使此快速入门中的代码示例正常运行，需要添加与身份验证代理兼容的重定向 URI。
+> 为使此快速入门中的代码示例正常运行，请添加与身份验证代理兼容的重定向 URI。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [为我进行这些更改]()
 >
@@ -484,4 +484,3 @@ mMultipleAccountApp.removeAccount(accountList.get(accountListSpinner.getSelected
 
 > [!div class="nextstepaction"]
 > [教程：从 Android 应用程序将用户登录并调用 Microsoft Graph](tutorial-v2-android.md)
-

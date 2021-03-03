@@ -4,16 +4,16 @@ description: 了解如何使用 PowerShell 连接到 Azure Stack Hub 以使用�
 author: WenJason
 ms.topic: article
 origin.date: 11/22/2020
-ms.date: 12/07/2020
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 11/22/2020
-ms.openlocfilehash: 51ccfb750e39945bf51b64fdd86f99562e8ddf5a
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: bcd0fcdf1af2fb2a858110d4717f731ca77e665b
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507979"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697651"
 ---
 # <a name="connect-to-azure-stack-hub-with-powershell-as-a-user"></a>以用户身份使用 PowerShell 连接到 Azure Stack Hub
 
@@ -52,7 +52,7 @@ ms.locfileid: "96507979"
 
     # After signing in to your environment, Azure Stack Hub cmdlets
     # can be easily targeted at your Azure Stack Hub instance.
-    Add-AzAccount -EnvironmentName "AzureStackUser" -TenantId $TenantId
+    Connect-AzAccount -EnvironmentName "AzureStackUser" -TenantId $TenantId
 ```
 ### <a name="azurerm-modules"></a>[AzureRM 模块](#tab/azurerm1)
  
@@ -80,7 +80,7 @@ ms.locfileid: "96507979"
   Add-AzEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"
 
   # Sign in to your environment
-  Login-AzAccount -EnvironmentName "AzureStackUser"
+  Connect-AzAccount -EnvironmentName "AzureStackUser"
   ```
 ### <a name="azurerm-modules"></a>[AzureRM 模块](#tab/azurerm2)
  

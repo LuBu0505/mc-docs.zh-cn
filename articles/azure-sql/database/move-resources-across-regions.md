@@ -13,12 +13,12 @@ ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 06/25/2019
 ms.date: 08/17/2020
-ms.openlocfilehash: 0b6883eb17a3e0c3756e118e8b72d214b5748e68
-ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
+ms.openlocfilehash: ebd17e086b22a16abc2f8e9f30f1ae24d6afdb2b
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88222885"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697290"
 ---
 # <a name="move-resources-to-new-region---azure-sql-database--azure-sql-managed-instance"></a>将资源移到新区域 - Azure SQL 数据库和 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -152,7 +152,6 @@ ms.locfileid: "88222885"
 1. 如果为托管实例启用了审核，请确保：
     - 已将包含现有日志的存储容器或事件中心移到目标区域。
     - 已在目标实例上配置审核。 有关详细信息，请参阅 [SQL 托管实例的审核](../managed-instance/auditing-configure.md)。
-1. 如果实例具有长期保留策略 (LTR)，则现有的 LTR 备份将与当前实例保持关联。 由于目标实例不同，因此可以使用源实例访问源区域中的旧 LTR 备份，即使删除了该实例，也可以做到。
 
 ### <a name="prepare-resources"></a>准备资源
 

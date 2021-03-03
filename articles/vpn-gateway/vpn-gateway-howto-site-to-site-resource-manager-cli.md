@@ -7,21 +7,21 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: how-to
 origin.date: 10/23/2020
-ms.date: 12/07/2020
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.openlocfilehash: 0c9bff88b7ece68c24ecab545e1daf75273dc64c
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 72959a2928a9053d701a563fafe0c4ca9d306030
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746983"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697781"
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>使用 CLI 创建具有站点到站点 VPN 连接的虚拟网络
 
 本文介绍如何使用 Azure CLI 创建站点到站点 VPN 网关连接，以便从本地网络连接到 VNet。 本文中的步骤适用于 Resource Manager 部署模型。 也可使用不同的部署工具或部署模型来创建此配置，方法是从以下列表中选择另一选项：<br>
 
 > [!div class="op_single_selector"]
-> * [Azure 门户](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Azure 门户](./tutorial-site-to-site-portal.md)
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure 门户（经典）](vpn-gateway-howto-site-to-site-classic-portal.md)

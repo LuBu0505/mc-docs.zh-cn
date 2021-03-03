@@ -5,14 +5,14 @@ author: MikeDodaro
 ms.author: v-junlch
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.date: 11/02/2020
+ms.date: 02/19/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 4d44530772ce48eaa66a5384c0740b049f7c224f
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 3ed841a0824dee3a4dc641f18e1c3143c7941768
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328856"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696538"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>使用 IntelliJ 部署 Azure Spring Cloud 应用程序
 
@@ -21,8 +21,6 @@ ms.locfileid: "94328856"
 在运行此示例之前，可以尝试[基础知识快速入门](spring-cloud-quickstart.md)。
 
 ## <a name="prerequisites"></a>先决条件
-* [JDK 8 Azul Zulu](https://docs.microsoft.com/java/azure/jdk/java-jdk-install?preserve-view=true&view=azure-java-stable)
-* [Maven 3.5.0+](https://maven.apache.org/download.cgi)
 * [IntelliJ IDEA 社区版/旗舰版，版本 2020.1/2020.2](https://www.jetbrains.com/idea/download/#section=windows)
 
 ## <a name="install-the-plug-in"></a>安装插件
@@ -32,7 +30,7 @@ ms.locfileid: "94328856"
 
     ![选择“配置”](./media/spring-cloud-intellij-howto/configure-plugin-1.png)
 
-1. 搜索“Azure Toolkit for IntelliJ”。  单击“安装”。
+1. 搜索“Azure Toolkit for IntelliJ”。  单击“安装”  。
 
     ![安装插件](./media/spring-cloud-intellij-howto/install-plugin.png)
 

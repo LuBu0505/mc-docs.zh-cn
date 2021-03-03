@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 6b9d756b8af041eb936336e7c42f85e42ae5575c
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 20c93c5301700f27f45c2e2fbea95941e1e43493
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98229859"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750683"
 ---
 本教程需要以下 Azure 资源：
 
@@ -22,14 +22,27 @@ ms.locfileid: "98229859"
     ```
     
     在脚本成功完成后，你应可在订阅中看到所有所需资源。
+    1. **流式处理终结点** - 这将有助于播放记录的 AMS 资产。
+    1. **虚拟机** - 这是将充当边缘设备的虚拟机。
+    1. **磁盘** - 这是连接到虚拟机来存储媒体和项目的存储磁盘。
+    1. **网络安全组** - 这用于筛选 Azure 虚拟网络中出入 Azure 资源的网络流量。
+    1. **网络接口** - Azure 虚拟机可通过它与 Internet、Azure 和其他资源进行通信。
+    1. **堡垒连接** - 你可通过它使用浏览器和 Azure 门户连接到虚拟机。
+    1. **公共 IP 地址** - Azure 资源可通过它与 Internet 和面向公众的 Azure 服务通信
+    1. **虚拟网络** - 通过它，许多类型的 Azure 资源（例如虚拟机）可以安全方式彼此通信、与 Internet 通信，以及与本地网络通信。 详细了解[虚拟网络](/virtual-network/virtual-networks-overview)
+    1. **IoT 中心** - 这充当消息中心，用于在 IoT 应用程序、IoT Edge 模块以及它管理的设备之间进行双向通信。
+    1. **媒体服务帐户** - 这有助于在 Azure 中管理和流式传输媒体内容。
+    1. **存储帐户** - 你必须具有一个主存储帐户，而且可拥有任意数量与媒体服务帐户关联的辅助存储帐户。 有关详细信息，请参阅 [Azure 存储帐户与 Azure 媒体服务帐户](/media-services/latest/storage-account-concept)。
+    1. **容器注册表** - 这有助于存储和管理专用 Docker 容器映像及相关项目。
+
 1. 脚本完成后，选择大括号即可公开文件夹结构。 你将看到一些文件。 与本快速入门相关的文件如下：
 
-     * ***edge-deployment/.env** - 此文件包含 Visual Studio Code 用来将模块部署到边缘设备的属性。
-     _ ***appsetting.json** _ - Visual Studio Code 使用此文件来运行示例代码。
+     * edge-deployment/.env - 此文件包含 Visual Studio Code 用来将模块部署到边缘设备的属性。
+     * appsetting.json - Visual Studio Code 使用此文件来运行示例代码。
      
     在下一节的 Visual Studio Code 中设置开发环境时，你需要这些文件。 现在需要将它们复制到本地文件中。
     
     ![应用设置](../../../media/quickstarts/clouddrive.png)
 
 > [!TIP]
-> 如果在创建 Azure 资源时遇到问题，请查看[故障排除指南](../../../troubleshoot-how-to.md#common-error-resolutions)来解决一些常见问题。_*
+> 如果在创建 Azure 资源时遇到问题，请查看[故障排除指南](../../../troubleshoot-how-to.md#common-error-resolutions)来解决一些常见问题。

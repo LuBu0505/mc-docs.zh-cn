@@ -27,6 +27,8 @@
       href: learn/automation-tutorial-runbook-textual.md
     - name: 创建 Python Runbook
       href: learn/automation-tutorial-runbook-textual-python2.md
+    - name: 创建 Python 3 Runbook
+      href: learn/automation-tutorial-runbook-textual-python-3.md
 - name: 概念
   items:
     - name: 自动化帐户身份验证概述
@@ -39,6 +41,8 @@
       href: automation-runbook-types.md
     - name: PowerShell DSC
       href: 'https://docs.microsoft.com/powershell/scripting/dsc/overview/overview'
+    - name: 自动化网络配置详细信息
+      href: automation-network-configuration.md
     - name: 安全性
       items:
         - name: Azure Policy 的安全控件
@@ -60,8 +64,14 @@
           href: automation-create-standalone-account.md
         - name: 使用资源管理器模板创建自动化帐户
           href: quickstart-create-automation-account-template.md
-        - name: 管理自动化运行方式帐户
-          href: manage-runas-account.md
+        - name: 运行方式帐户
+          items:
+            - name: 创建运行方式帐户
+              href: create-run-as-account.md
+            - name: 删除运行方式帐户
+              href: delete-run-as-account.md
+            - name: 管理运行方式帐户
+              href: manage-runas-account.md
         - name: 管理角色权限和安全性
           href: automation-role-based-access-control.md
     - name: 共享资源
@@ -84,10 +94,14 @@
           href: shared-resources/variables.md
         - name: 管理 Python 2 程序包
           href: python-packages.md
+        - name: 管理 Python 3 包
+          href: python-3-packages.md
         - name: 排查共享资源问题
           href: troubleshoot/shared-resources.md
     - name: 流程自动化
       items:
+        - name: 使用 PowerShell 库中的 Runbook 和模块
+          href: automation-runbook-gallery.md
         - name: 了解 PowerShell 工作流
           href: automation-powershell-workflow.md
         - name: 管理 runbook

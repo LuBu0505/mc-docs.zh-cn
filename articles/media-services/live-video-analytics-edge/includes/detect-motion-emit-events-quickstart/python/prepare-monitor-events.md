@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 353ff01b3272802b99a27dc507ed6b1b599c3404
-ms.sourcegitcommit: 2eb5a2f53b4b73b88877e962689a47d903482c18
+ms.openlocfilehash: 6919456908994e75c79af0df7c4c76824aff1eb9
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89413434"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101749906"
 ---
 你将在 IoT Edge 模块上使用实时视频分析来检测传入的实时视频流中的运动并将事件发送到 IoT 中心。 若要查看这些事件，请执行以下步骤：
 
@@ -13,3 +13,9 @@ ms.locfileid: "89413434"
 1. 右键单击“lva-sample-device”，然后选择“开始监视内置事件终结点” 。
 
     ![开始监视内置事件终结点](../../../media/quickstarts/start-monitoring-iothub-events.png)
+
+> [!NOTE]
+> 系统可能会要求你提供 IoT 中心的内置终结点信息。 若要获取此信息，请在 Azure 门户中导航到 IoT 中心，然后在左侧导航窗格中查找“内置终结点”选项。 单击此处，在“与事件中心兼容的终结点”部分下查找“与事件中心兼容的终结点” 。 复制并使用框中的文本。 终结点将如下所示：  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.chinacloudapi.cn/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```

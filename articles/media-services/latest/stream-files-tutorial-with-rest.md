@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒体服务 v3 对远程文件进行编码和流式传输
+title: 使用媒体服务对远程文件进行编码和流式传输
 description: 按照本教程的步骤，使用 REST 通过 Azure 媒体服务基于 URL 对文件进行编码并流式传输内容。
 services: media-services
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
 origin.date: 10/12/2020
-ms.date: 01/18/2021
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.openlocfilehash: aa312643f373ffd5c21ef8f2d970dc37fccb269a
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 833e38a273b1ae63be88398e368b4958089c170b
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98229857"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696677"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - REST
 
@@ -405,3 +405,9 @@ Azure Media Player 可用于测试，但不可在生产环境中使用。
 az group delete --name amsResourceGroup
 ```
 
+## <a name="next-steps"></a>后续步骤
+
+现已介绍如何上传、编码和流式传输视频，请参阅以下文章： 
+
+> [!div class="nextstepaction"]
+> [分析视频](analyze-videos-tutorial-with-api.md)

@@ -1,6 +1,6 @@
 ---
 title: 快速入门：在通用 Windows 平台桌面应用中让用户登录并调用 Microsoft Graph | Azure
-description: 本快速入门介绍 Windows 桌面 .NET (XAML) 应用程序如何获取访问令牌并调用受 Microsoft 标识平台终结点保护的 API
+description: 本快速入门介绍 Windows 桌面 .NET (XAML) 应用程序如何获取访问令牌并调用受 Microsoft 标识平台保护的 API。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 02/02/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a48653b35b157f90178acb028950b24cdff1d4cf
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: 01fbd320bc9ada1a469f036ce1529365ed466bcf
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540839"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697867"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>快速入门：获取令牌并从 Windows 桌面应用中调用 Microsoft Graph API
 
@@ -36,7 +36,7 @@ ms.locfileid: "99540839"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
-> 1. 转到 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入门体验。
+> 1. 转到 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册</a>快速入门体验。
 > 1. 输入应用程序的名称并选择“注册”。
 > 1. 遵照说明下载内容，并只需单击一下自动配置新应用程序。
 >
@@ -45,7 +45,7 @@ ms.locfileid: "99540839"
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 > 若要手动注册应用程序并将应用的注册信息添加到解决方案，请执行以下步骤：
 >
-> 1. 登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+> 1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 > 1. 搜索并选择“Azure Active Directory”  。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
@@ -59,7 +59,7 @@ ms.locfileid: "99540839"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
-> 要使此快速入门的代码示例正常运行，需要将答复 URL 添加为 **https://login.partner.microsoftonline.cn/common/oauth2/nativeclient** 。
+> 为使此快速入门中的代码示例正常运行，请添加重定向 URI `https://login.partner.microsoftonline.cn/common/oauth2/nativeclient`。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [执行此更改]()
 >
@@ -144,7 +144,7 @@ MSAL 有两种获取令牌的方法：`AcquireTokenInteractive` 和 `AcquireToke
 
 #### <a name="get-a-user-token-interactively"></a>以交互方式获取用户令牌
 
-某些情况下需要强制用户通过弹出窗口与 Microsoft 标识平台终结点进行交互，以验证其凭据或进行许可。 示例包括：
+在某些情况下，需要强制用户通过弹出窗口与 Microsoft 标识平台进行交互，以验证其凭据或授予许可。 示例包括：
 
 - 用户首次登录应用程序
 - 由于密码已过期，用户可能需要重新输入凭据的情况

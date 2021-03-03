@@ -1,23 +1,18 @@
 ---
 title: 使用 Azure 数据工厂从 Hive 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Hive 复制到支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 author: WenJason
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 origin.date: 11/17/2020
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.author: v-jay
-ms.openlocfilehash: b3a13cadca412416290ef173ddc39be353335dff
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 49c70aa30220d4c5ab7cedb5203660b6a48b65a5
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059200"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697834"
 ---
 # <a name="copy-and-transform-data-from-hive-using-azure-data-factory"></a>使用 Azure 数据工厂从 Hive 复制和转换数据 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -49,7 +44,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Hive 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Hive** | 是 |
 | host | Hive 服务器的 IP 地址或主机名；对于多台主机，将以“;”分隔（仅限启用了 serviceDiscoveryMode 时）。  | 是 |
@@ -98,7 +93,7 @@ Hive 链接的服务支持以下属性：
 
 要从 Hive 复制数据，请将数据集的 type 属性设置为 **HiveObject**。 支持以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**HiveObject** | 是 |
 | 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
@@ -130,7 +125,7 @@ Hive 链接的服务支持以下属性：
 
 要从 Hive 复制数据，请将复制活动中的源类型设置为 **HiveSource**。 复制活动 **source** 部分支持以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**HiveSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |

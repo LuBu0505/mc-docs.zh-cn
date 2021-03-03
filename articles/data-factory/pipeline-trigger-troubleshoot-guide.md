@@ -8,12 +8,12 @@ ms.date: 02/01/2021
 ms.topic: troubleshooting
 ms.author: v-jay
 ms.reviewer: susabat
-ms.openlocfilehash: 6a74eb293d28d789a86fbe13bae39504e4f2961e
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 01c9cc8bb2b68d9432849a54d1f7ab73859fc5e9
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059812"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697571"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>对 Azure 数据工厂中的管道业务流程和触发器进行故障排除
 
@@ -53,7 +53,7 @@ Source=Microsoft.DataTransfer.Common,'
 Type=Microsoft.DataTransfer.Execution.Core.ExecutionException,Message=There are substantial concurrent MappingDataflow executions which is causing failures due to throttling under Integration Runtime 'AutoResolveIntegrationRuntime'.
 `
 
-**原因：** 已达到集成运行时的容量限制。 你可能在使用同一个集成运行时同时运行大量数据流。 有关详细信息，请参阅 [Azure 订阅和服务的限制、配额与约束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#version-2)。
+**原因：** 已达到集成运行时的容量限制。 你可能在使用同一个集成运行时同时运行大量数据流。 有关详细信息，请参阅 [Azure 订阅和服务的限制、配额与约束](/azure-resource-manager/management/azure-subscription-service-limits#version-2)。
 
 **解决方法**：
  

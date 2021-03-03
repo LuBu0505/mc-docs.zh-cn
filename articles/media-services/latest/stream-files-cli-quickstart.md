@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 媒体服务和 Azure CLI 流式传输视频文件
-description: 按照本教程的步骤，创建新的 Azure 媒体服务帐户、编码文件并将文件流式传输到 Azure Media Player。
+title: 使用 Azure 媒体服务 CLI 流式传输视频文件
+description: 按照本教程的步骤，使用 Azure CLI 创建新的 Azure 媒体服务帐户、对文件进行编码并将文件流式传输到 Azure Media Player。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -12,14 +12,14 @@ ms.workload: media
 ms.topic: tutorial
 ms.custom: devx-track-azurecli
 origin.date: 08/31/2020
-ms.date: 09/28/2020
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.openlocfilehash: 3675a011d4563ebdff9ad6bda5a28b2ce7512d30
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: e861af7027da8121bdb5064513a630a5ee923d3e
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300746"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697345"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - Azure CLI
 
@@ -37,7 +37,7 @@ ms.locfileid: "96300746"
 
 ## <a name="create-a-media-services-account"></a>创建媒体服务帐户
 
-在加密、编码、管理和流式传输 Azure 中的媒体内容之前，需要创建一个媒体服务帐户。 该帐户必须与一个或多个存储帐户相关联。
+在加密、编码、分析、管理和流式传输 Azure 中的媒体内容之前，需要创建一个媒体服务帐户。 该帐户必须与一个或多个存储帐户相关联。
 
 媒体服务帐户和所有关联的存储帐户必须位于同一 Azure 订阅中。 我们建议在媒体服务帐户所在的同一位置使用存储帐户，以限制延迟和数据传出费用。
 
@@ -126,7 +126,7 @@ az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 
 ## <a name="create-a-transform-for-adaptive-bitrate-encoding"></a>创建适用于自适应比特率编码的转换
 
-创建一个转换，以便配置对视频进行编码的常见任务。 本示例执行自适应比特率编码。 然后，在创建的转换下提交某个作业。 该作业是向媒体服务发出的请求，目的是将转换应用到给定的视频或音频内容输入。
+创建一个 **转换**，以便配置对视频进行编码或分析的常见任务。 本示例执行自适应比特率编码。 然后，在创建的转换下提交某个作业。 该作业是向媒体服务发出的请求，目的是将转换应用到给定的视频或音频内容输入。
 
 ```azurecli
 az ams transform create --name testEncodingTransform --preset AdaptiveStreaming --description 'a simple Transform for Adaptive Bitrate Encoding' -g amsResourceGroup -a amsaccount

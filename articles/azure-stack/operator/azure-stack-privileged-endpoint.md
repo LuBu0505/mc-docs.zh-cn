@@ -4,17 +4,17 @@ description: 了解如何以操作员身份使用 Azure Stack Hub 中的特权�
 author: WenJason
 ms.topic: article
 origin.date: 12/16/2020
-ms.date: 02/08/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/28/2020
 ms.custom: conteperfq4
-ms.openlocfilehash: e886f7788df416a90610bc20725572271bc39bf3
-ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
+ms.openlocfilehash: 29e9785c6239225f36b82aa42ddb24c9d4e93b0c
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99503992"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696699"
 ---
 # <a name="use-the-privileged-endpoint-in-azure-stack-hub"></a>使用 Azure Stack Hub 中的特权终结点
 
@@ -44,7 +44,7 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
 在运行特权终结点时，需要将当前区域性设置设置为 `en-US`，否则 cmdlet （如 Test-AzureStack 或 Get-AzureStackLog）无法按预期工作。
 
 > [!NOTE]
-> 出于安全原因，我们要求只从硬件生命周期主机上运行的强化 VM 或者从专用的安全计算机（例如[特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)）连接到 PEP。 不得修改硬件生命周期主机的原始配置（包括安装新软件），也不得使用该主机来连接 PEP。
+> 出于安全原因，我们要求只从硬件生命周期主机上运行的强化 VM 或者从专用的安全计算机（例如[特权访问工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model)）连接到 PEP。 不得修改硬件生命周期主机的原始配置（包括安装新软件），也不得使用该主机来连接 PEP。
 
 1. 建立信任。
 

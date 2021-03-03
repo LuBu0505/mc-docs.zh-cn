@@ -4,15 +4,15 @@ description: 了解如何限制 Azure 订阅使其行为像 Azure Stack Hub 订�
 author: WenJason
 ms.topic: article
 origin.date: 11/22/2020
-ms.date: 12/07/2020
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.lastreviewed: 11/22/2020
-ms.openlocfilehash: bcb15f986de706e3e7ab6acaa34b0d35cb5574f1
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: c19801f8ca027bf4d7ce49a806120f79dc5b3615
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507997"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697652"
 ---
 # <a name="manage-azure-policy-using-the-azure-stack-hub-policy-module"></a>使用 Azure Stack Hub 策略模块管理 Azure Policy
 
@@ -36,7 +36,7 @@ ms.locfileid: "96507997"
 ### <a name="az-modules"></a>[Az 模块](#tab/az1)
 
 ```powershell
-Add-AzAccount -EnvironmentName AzureChinaCloud
+Connect-AzAccount -Environment AzureChinaCloud
 $s = Select-AzSubscription -SubscriptionName "Azure subscription name"
 $policy = New-AzPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
 $subscriptionID = $s.Subscription.SubscriptionId
@@ -45,7 +45,7 @@ New-AzPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /subscr
 ### <a name="azurerm-modules"></a>[AzureRM 模块](#tab/azurerm1)
 
 ```powershell
-Add-AzureRMAccount -EnvironmentName AzureChinaCloud
+Add-AzureRMAccount -Environment AzureChinaCloud
 $s = Select-AzureRMSubscription -SubscriptionName "Azure subscription name"
 $policy = New-AzureRMPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
 $subscriptionID = $s.Subscription.SubscriptionId
@@ -61,7 +61,7 @@ New-AzureRMPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /s
 ### <a name="az-modules"></a>[Az 模块](#tab/az2)
 
 ```powershell
-Add-AzAccount -EnvironmentName AzureChinaCloud
+Connect-AzAccount -Environment AzureChinaCloud
 $rgName = 'myRG01'
 $s = Select-AzSubscription -SubscriptionName "Azure subscription name"
 $policy = New-AzPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)

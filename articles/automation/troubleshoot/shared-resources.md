@@ -2,19 +2,16 @@
 title: 排查 Azure 自动化共享资源问题
 description: 本文介绍了如何排查和解决 Azure 自动化共享资源的问题。
 services: automation
-author: WenJason
-ms.author: v-jay
-origin.date: 03/12/2019
-ms.date: 08/10/2020
-ms.topic: conceptual
-ms.service: automation
-manager: digimobile
-ms.openlocfilehash: 6a79739a1951b6aaca8f55cf5279248f3a0bbc02
-ms.sourcegitcommit: e6b216b180734783219378410e13192e314a4497
+ms.subservice: ''
+origin.date: 01/27/2021
+ms.date: 02/22/2021
+ms.topic: troubleshooting
+ms.openlocfilehash: e465f9335aa28fd148a11c3d54c4d0ac03244890
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87790526"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696920"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>排查共享资源问题
 
@@ -34,7 +31,7 @@ ms.locfileid: "87790526"
 
 #### <a name="resolution"></a>解决方法
 
-若要解决此问题，必须使用 [Remove-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) cmdlet 删除处于停滞状态的模块。 然后，可以重试导入模块。
+若要解决此问题，必须使用 [Remove-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationModule) cmdlet 删除处于停滞状态的模块。 然后，可以重试导入模块。
 
 ```azurepowershell
 Remove-AzAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
@@ -71,7 +68,7 @@ Azure modules are being updated
 * 结构与自动化所需的结构不匹配。
 * 该模块依赖于其他模块，而后者尚未部署到自动化帐户。
 * 该模块的文件夹中缺少依赖项。
-* 使用了 [New-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) cmdlet 来上传该模块，但你未提供完整的存储路径，或者未使用可公开访问的 URL 来加载该模块。
+* 使用了 [New-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationModule) cmdlet 来上传该模块，但你未提供完整的存储路径，或者未使用可公开访问的 URL 来加载该模块。
 
 #### <a name="resolution"></a>解决方法
 
@@ -135,7 +132,7 @@ You do not have permissions to create…
 
 #### <a name="resolution"></a>解决方法
 
-若要创建或更新运行方式帐户，你必须对运行方式帐户使用的各种资源具有适当的[权限](../manage-runas-account.md#permissions)。 
+若要创建或更新运行方式帐户，你必须对运行方式帐户使用的各种资源具有适当的[权限](../automation-security-overview.md#permissions)。
 
 如果问题是由某个锁造成的，请验证是否可以删除该锁。 在 Azure 门户中转到被锁定的资源，右键单击该锁，然后选择“删除”。
 
@@ -151,7 +148,7 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 #### <a name="cause"></a>原因
 
-此错误很可能是由于错误配置了[运行方式帐户](../manage-runas-account.md)而造成的。
+此错误很可能是由于错误配置了[运行方式帐户](../automation-security-overview.md)而造成的。
 
 #### <a name="resolution"></a>解决方法
 

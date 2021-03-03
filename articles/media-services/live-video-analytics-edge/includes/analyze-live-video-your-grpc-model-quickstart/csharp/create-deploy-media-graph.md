@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 6008b54a116540cbe2ba5b7a170a36f30d72c7f3
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: add1ecf6f31b4dee8b5800be2ac344a6f147a596
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024315"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750751"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>检查和编辑示例文件
 
@@ -87,6 +87,13 @@ ms.locfileid: "98024315"
     否则，请在左下角“AZURE IOT 中心”窗格附近选择“更多操作”图标，然后选择“设置 IoT 中心连接字符串”  。 可以从 appsettings.json 文件中复制字符串。 或者，为确保在 Visual Studio Code 中配置了正确的 IoT 中心，请使用[选择 IoT 中心命令](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub)。
 
     ![IoT 中心连接字符串](../../../media/quickstarts/iot-hub-connection-string-grpc.png)
+
+    > [!NOTE]
+    > 系统可能会要求你提供 IoT 中心的内置终结点信息。 若要获取此信息，请在 Azure 门户中导航到 IoT 中心，然后在左侧导航窗格中查找“内置终结点”选项。 单击此处，在“与事件中心兼容的终结点”部分下查找“与事件中心兼容的终结点” 。 复制并使用框中的文本。 终结点将如下所示：  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.chinacloudapi.cn/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
+
 1. 右键单击 src/edge/config/ deployment.grpcyolov3icpu.amd64.json，并选择“为单个设备创建部署” 。
 
     ![为单个设备创建部署](../../../media/quickstarts/create-deployment-single-device-grpc.png)
@@ -97,7 +104,7 @@ ms.locfileid: "98024315"
     * rtspsim 模块，可模拟 RTSP 服务器，充当实时视频源的源。
 
         > [!NOTE]
-        > 如果使用的是自己的边缘设备，而不是设置脚本预配的边缘设备，请转到你的边缘设备并使用管理员权限运行以下命令，以拉取并存储该快速入门所使用的示例视频文件：  
+        > 上述步骤假设你使用的是设置脚本创建的虚拟机。 如果使用的是自己的边缘设备，请转到你的边缘设备并使用管理员权限运行以下命令，以拉取并存储该快速入门所使用的示例视频文件：  
 
         ```
         mkdir /home/lvaadmin/samples
@@ -124,6 +131,11 @@ ms.locfileid: "98024315"
 
    ![开始监视](../../../media/quickstarts/start-monitoring-built-event-endpoint-grpc.png)
 
+    > [!NOTE]
+    > 系统可能会要求你提供 IoT 中心的内置终结点信息。 若要获取此信息，请在 Azure 门户中导航到 IoT 中心，然后在左侧导航窗格中查找“内置终结点”选项。 单击此处，在“与事件中心兼容的终结点”部分下查找“与事件中心兼容的终结点” 。 复制并使用框中的文本。 终结点将如下所示：  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.chinacloudapi.cn/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
 ### <a name="run-the-sample-program"></a>运行示例程序
 
 1. 若要启动调试会话，请选择 F5 键。 你可在“终端”窗口中看到打印的消息。

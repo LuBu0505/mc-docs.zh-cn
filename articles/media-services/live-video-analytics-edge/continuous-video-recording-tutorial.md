@@ -3,13 +3,13 @@ title: 将视频连续录制到云中并从云中播放教程 - Azure
 description: 在本教程中，你将了解如何使用 Azure IoT Edge 上的 Azure 实时视频分析将视频连续录制到云中并使用 Azure 媒体服务流式传输该视频的任何部分。
 ms.topic: tutorial
 origin.date: 05/27/2020
-ms.date: 01/18/2021
-ms.openlocfilehash: 6c03aa8ec7a44754532acf3d2a8d35f76585c766
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 03/08/2021
+ms.openlocfilehash: ae159cd82ce005212d22f0e1de0fdcac85c93d73
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230306"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696812"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>教程：将视频连续录制到云中并从云中播放
 
@@ -109,8 +109,8 @@ ms.locfileid: "98230306"
     AAD_TENANT_ID="<AAD Tenant ID>"  
     AAD_SERVICE_PRINCIPAL_ID="<AAD SERVICE_PRINCIPAL ID>"  
     AAD_SERVICE_PRINCIPAL_SECRET="<AAD SERVICE_PRINCIPAL ID>"  
-    INPUT_VIDEO_FOLDER_ON_DEVICE="/home/lvaadmin/samples/input"  
-    OUTPUT_VIDEO_FOLDER_ON_DEVICE="/home/lvaadmin/samples/output"  
+    VIDEO_INPUT_FOLDER_ON_DEVICE="/home/lvaadmin/samples/input"  
+    VIDEO_OUTPUT_FOLDER_ON_DEVICE="/home/lvaadmin/samples/output"  
     APPDATA_FOLDER_ON_DEVICE="/var/local/mediaservices"
     CONTAINER_REGISTRY_USERNAME_myacr="<your container registry username>"  
     CONTAINER_REGISTRY_PASSWORD_myacr="<your container registry username>"      
@@ -141,6 +141,12 @@ ms.locfileid: "98230306"
 1. 选择左下角“AZURE IOT 中心”窗格旁边的“更多操作”图标，设置 IoT 中心连接字符串 。 从 src/cloud-to-device-console-app/appsettings.json 文件复制该字符串。 
 
     ![设置 IoT 中心连接字符串](./media/quickstarts/set-iotconnection-string.png)
+    > [!NOTE]
+    > 系统可能会要求你提供 IoT 中心的内置终结点信息。 若要获取此信息，请在 Azure 门户中导航到 IoT 中心，然后在左侧导航窗格中查找“内置终结点”选项。 单击此处，在“与事件中心兼容的终结点”部分下查找“与事件中心兼容的终结点” 。 复制并使用框中的文本。 终结点将如下所示：  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.chinacloudapi.cn/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
+
 1. 右键单击“src/edge/deployment.template.json”文件，然后选择“生成 IoT Edge 部署清单”。 Visual Studio Code 使用 .env 文件中的值来替换在部署模板文件中找到的变量。 此操作在 src/edge/config 文件夹中创建一个名为 deployment.amd64.json 的清单文件。
 
    ![生成 IoT Edge 部署清单](./media/quickstarts/generate-iot-edge-deployment-manifest.png)
@@ -164,6 +170,12 @@ ms.locfileid: "98230306"
 
     ![开始监视内置事件终结点](./media/quickstarts/start-monitoring-iothub-events.png)
 
+    > [!NOTE]
+    > 系统可能会要求你提供 IoT 中心的内置终结点信息。 若要获取此信息，请在 Azure 门户中导航到 IoT 中心，然后在左侧导航窗格中查找“内置终结点”选项。 单击此处，在“与事件中心兼容的终结点”部分下查找“与事件中心兼容的终结点” 。 复制并使用框中的文本。 终结点将如下所示：  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.chinacloudapi.cn/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
+
 ## <a name="run-the-program"></a>运行程序 
 
 1. 在 Visual Studio Code 中，打开“扩展”选项卡（或按 Ctrl+Shift+X），然后搜索“Azure IoT 中心”。
@@ -178,7 +190,7 @@ ms.locfileid: "98230306"
 1. 转到 src/cloud-to-device-console-app/operations.json。
 1. 在 GraphTopologySet 节点下，编辑以下内容：
 
-    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json" `
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/2.0/topology.json" `
 1. 接下来，在 GraphInstanceSet 和 GraphTopologyDelete 节点下，确保 topologyName 的值与前面图形拓扑中的 name 属性的值匹配   ：
 
     `"topologyName" : "CVRToAMSAsset"`  

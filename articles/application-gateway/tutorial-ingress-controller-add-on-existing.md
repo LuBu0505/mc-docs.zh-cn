@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 12/01/2020
+ms.date: 02/18/2021
 ms.author: v-junlch
-ms.openlocfilehash: 46bf651c38a7643b406a43741f76568a406ab01d
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: 5cc75346e0777644dac74da2ab07dc7fcc9c2d4a
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507613"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696615"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>教程：通过 Azure CLI 使用现有的应用程序网关为现有 AKS 群集启用应用程序网关入口控制器加载项（预览版）
 
@@ -67,7 +67,7 @@ az group create --name myResourceGroup --location canadacentral
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity 
 ```
 
-若要为 `az aks create` 命令配置其他参数，请访问[此处](https://docs.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest#az-aks-create)的参考信息。 
+若要为 `az aks create` 命令配置其他参数，请访问[此处](/cli/aks#az-aks-create)的参考信息。 
 
 ## <a name="deploy-a-new-application-gateway"></a>部署新的应用程序网关 
 
@@ -143,4 +143,3 @@ az group delete --name myResourceGroup
 
 > [!div class="nextstepaction"]
 > [详细了解如何禁用 AGIC 加载项](./ingress-controller-disable-addon.md)
-

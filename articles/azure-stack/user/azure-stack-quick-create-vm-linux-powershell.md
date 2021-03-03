@@ -4,15 +4,15 @@ description: 在 Azure Stack Hub 中使用 PowerShell 创建 Linux VM。
 author: WenJason
 ms.topic: quickstart
 origin.date: 11/22/2020
-ms.date: 12/07/2020
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.lastreviewed: 11/22/2020
-ms.openlocfilehash: 0f8943431cb6135bc97080a5349877bd61277956
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: d99c5f3096c53fe6420242b2bceb75543033d24c
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508087"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696601"
 ---
 # <a name="quickstart-create-a-linux-server-vm-by-using-powershell-in-azure-stack-hub"></a>快速入门：在 Azure Stack Hub 中使用 PowerShell 创建 Linux 服务器 VM
 
@@ -573,7 +573,7 @@ Set-AzureRMCurrentStorageAccount `
 
 # Create a storage container to store the VM image
 $containerName = 'osdisks'
-$container = New-AzureRMStorageContainer `
+$container = New-AzureStorageContainer `
   -Name $containerName `
   -Permission Blob
 

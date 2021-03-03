@@ -6,19 +6,19 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 02/19/2021
 ms.author: v-junlch
 ms.reviewer: akjosh
-ms.openlocfilehash: 1fe01a888ac5e1175f37c90b9c92d6613a73c794
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: c59a9b861f327edf1551a462b57ba1b807e4875e
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937281"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696581"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image-with-azure-cli"></a>使用 Azure CLI 从通用化映像创建规模集
 
-使用 Azure CLI 从[共享映像库](shared-image-galleries.md)中存储的通用化映像版本创建规模集。 若要使用专用化映像版本创建规模集，请参阅[从专用化映像创建规模集实例](instance-specialized-image-version-cli.md)。
+使用 Azure CLI 从[共享映像库](../virtual-machines/shared-image-galleries.md)中存储的通用化映像版本创建规模集。 若要使用专用化映像版本创建规模集，请参阅[从专用化映像创建规模集实例](instance-specialized-image-version-cli.md)。
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.4.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
 
@@ -56,11 +56,10 @@ az vmss create \
 
 ## <a name="next-steps"></a>后续步骤
 
-此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
+可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 
 - [创建共享映像库](https://azure.microsoft.com/resources/templates/101-sig-create/)
 - [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 
-有关共享映像库的详细信息，请参阅[概述](shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](../virtual-machines/troubleshooting-shared-images.md)。
-
+有关共享映像库的详细信息，请参阅[概述](../virtual-machines/shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](../virtual-machines/troubleshooting-shared-images.md)。

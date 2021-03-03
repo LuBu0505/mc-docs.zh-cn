@@ -1,12 +1,12 @@
 ---
-ms.openlocfilehash: 36659d4454c7809ad76f07cc39cbd445e4be89c4
-ms.sourcegitcommit: a978c5f2c6b53494d67e7c3c5a44b2aa648219a2
+ms.openlocfilehash: 90a2a80a1aa5287321bf445c8039f2e10de7eae9
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633462"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750087"
 ---
-通过使用 OUTPUT_VIDEO_FOLDER_ON_DEVICE 密钥，将 MP4 文件写入在 .env 文件中配置的边缘设备上的目录中。 如果使用了默认值，则结果应位于 /var/media/ 文件夹中。
+通过使用 VIDEO_OUTPUT_FOLDER_ON_DEVICE 密钥，将 MP4 文件写入在 .env 文件中配置的边缘设备上的目录中。 如果使用了默认值，则结果应位于 /var/media/ 文件夹中。
 
 播放 MP4 文件剪辑：
 

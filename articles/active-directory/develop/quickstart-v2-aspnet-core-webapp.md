@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 02/02/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: cbd31bfb17323ca567ef0bed73dba659c82e4c77
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: 2c253f84050617a50284d193f056b7a1f86e9a2b
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540751"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697176"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入门：向 ASP.NET Core Web 应用添加 Microsoft 登录功能
 
@@ -38,7 +38,7 @@ ms.locfileid: "99540751"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
-> 1. 转到 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview/" target="_blank">Azure 门户 - 应用注册<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入门体验。
+> 1. 转到 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview/" target="_blank">Azure 门户 - 应用注册</a>快速入门体验。
 > 1. 输入应用程序的名称并选择“注册”。
 > 1. 遵照说明下载内容，并一键式自动配置新应用程序。
 >
@@ -47,7 +47,7 @@ ms.locfileid: "99540751"
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 > 若要手动注册应用程序并将应用的注册信息添加到解决方案，请执行以下步骤：
 >
-> 1. 登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+> 1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 > 1. 搜索并选择“Azure Active Directory”  。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
@@ -56,13 +56,13 @@ ms.locfileid: "99540751"
 > 1. 选择“注册”  。
 > 1. 在“管理”下，选择“身份验证”。 
 > 1. 在“重定向 URI”下，选择“添加 URI”，然后输入 `https://localhost:44321/signin-oidc` 。
-> 1. 输入 `https://localhost:44321/signout-oidc` 的“注销 URL”。
-> 1. 选择“隐式授权”下的“ID 令牌”。
+> 1. 输入前向通道注销 URL `https://localhost:44321/signout-oidc`。
+> 1. 在“隐式授权和混合流”下，选择“ID 令牌” 。
 > 1. 选择“保存”。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
-> 为使此快速入门中的代码示例正常运行，需将回复 URL 添加为 `https://localhost:44321/` 和 `https://localhost:44321/signin-oidc`，将注销 URL 添加为 `https://localhost:44321/signout-oidc`，并请求将由授权终结点颁发的 ID 令牌。
+> 为使此快速入门中的示例代码正常运行，请添加重定向 URI `https://localhost:44321/` 和 `https://localhost:44321/signin-oidc`，以及前向通道注销 URL `https://localhost:44321/signout-oidc` 。 请求 ID 令牌将由授权终结点颁发。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [执行此更改]()
 >
@@ -99,7 +99,7 @@ ms.locfileid: "99540751"
 >
 >    - 将 `Enter_the_Application_Id_here` 替换为在 Azure 门户中注册的应用程序的“应用程序(客户端) ID”。 可以在应用的“概览”页中找到“应用程序(客户端) ID”。
 >    - 将 `common` 替换为以下其中一项：
->       - 如果应用程序支持“仅限此组织目录中的帐户”，请将此值替换为“目录(租户) ID”(GUID) 或“租户名称”（例如 `contoso.partner.onmschina.cn`）  。 你可以在应用的”概述”页上找到“目录(租户) ID” 。
+>       - 如果应用程序支持“仅限此组织目录中的帐户”，请将此值替换为“目录(租户) ID”(GUID) 或“租户名称”（例如 `contoso.partner.onmschina.cn`）  。 你可以在应用的概述页面上找到目录（租户）ID 。
 >       - 如果应用程序支持“任何组织目录中的帐户”，请将此值替换为 `organizations`。对于此快速入门，请勿更改 appsettings.json 文件中的任何其他值。
 >
 > #### <a name="step-4-build-and-run-the-application"></a>步骤 4：生成并运行应用程序
@@ -145,7 +145,7 @@ Microsoft.AspNetCore.Authentication 中间件使用主机进程初始化时执�
 
 方法 `AddAuthentication()` 配置该服务以添加基于 Cookie 的身份验证，此身份验证在浏览器方案中使用，并用于设置 OpenID Connect 质询。
 
-包含 `.AddMicrosoftIdentityWebApp` 的行可向应用程序添加 Microsoft 标识平台身份验证。 然后将其配置为，基于 appsettings.json 配置文件 `AzureAD` 部分中的信息，使用 Microsoft 标识平台终结点进行登录：
+包含 `.AddMicrosoftIdentityWebApp` 的行可向应用程序添加 Microsoft 标识平台身份验证。 然后，将其配置为基于 appsettings.json 配置文件 `AzureAD` 部分中的信息，使用 Microsoft 标识平台进行登录：
 
 | *appsettings.json* 密钥 | 说明                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|

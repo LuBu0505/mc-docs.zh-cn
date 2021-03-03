@@ -4,15 +4,15 @@ description: 了解如何准备要部署到 Azure Spring Cloud 中的应用程�
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 02/19/2021
 ms.author: v-junlch
 ms.custom: devx-track-java
-ms.openlocfilehash: 9e5b0b6be9d30d45d01f4170322af1bb2cf6e9b8
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: c788bab92ddeec92fb71d2f0c0b8cbaa432ccbc2
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99058909"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697012"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>准备要部署到 Azure Spring Cloud 中的应用程序
 
@@ -45,7 +45,7 @@ Spring Boot 版本 | Spring Cloud 版本
 2.4.1+ | 2020.0.0
 
 > [!NOTE]
-> 我们发现 Spring Boot 2.4.0 在应用和 Eureka 之间的 TLS 身份验证存在问题，请使用 2.4.1 版或更高版本。 如果坚持使用 2.4.0，请参阅我们的[常见问题解答](/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development)以获取解决方法。
+> 我们发现 Spring Boot 2.4.0 在应用和 Eureka 之间的 TLS 身份验证存在问题，请使用 2.4.1 版或更高版本。 如果坚持使用 2.4.0，请参阅我们的[常见问题解答](./spring-cloud-faq.md?pivots=programming-language-java#development)以获取解决方法。
 
 ### <a name="dependencies-for-spring-boot-version-2223"></a>Spring Boot 版本 2.2/2.3 的依赖项
 

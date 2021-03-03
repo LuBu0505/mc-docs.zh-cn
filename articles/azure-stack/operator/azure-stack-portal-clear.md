@@ -3,17 +3,17 @@ title: 从 Azure Stack Hub 中按需清除门户用户数据数据
 description: 了解如何按 Azure Stack Hub 用户的请求清除门户用户数据。
 author: WenJason
 ms.topic: conceptual
-origin.date: 05/06/2020
-ms.date: 12/07/2020
+origin.date: 02/08/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: troettinger
 ms.lastreviewed: 09/10/2019
-ms.openlocfilehash: 5c0e4b3191800e953d34a9fa9e1cc727e62f48de
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: eef00fcbe4e33d63ead77cc237563c15af81bc0e
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507716"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697406"
 ---
 # <a name="clear-portal-user-data-from-azure-stack-hub"></a>从 Azure Stack Hub 中清除门户用户数据
 
@@ -26,7 +26,7 @@ Azure Stack Hub 操作员可以根据 Azure Stack Hub 用户的请求，按需�
 > [!NOTE]
 > 在遵循本文中的指导之后，某些用户数据可能仍会出现在事件日志的 system 节中。 在日志自动滚动更新之前，这些数据可能会保留数天。
 
-## <a name="requirements"></a>要求
+## <a name="prerequisites"></a>先决条件
 
 - [安装适用于 Azure Stack Hub 的 PowerShell](powershell-install-az-module.md)。
 - 从 GitHub [下载最新的 Azure Stack Hub 工具](azure-stack-powershell-download.md)。

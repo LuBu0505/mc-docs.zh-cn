@@ -4,15 +4,15 @@ description: 了解如何运行从 Azure Stack Hub 中的密钥保管库检索�
 author: WenJason
 ms.topic: conceptual
 origin.date: 11/20/2020
-ms.date: 12/07/2020
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.lastreviewed: 11/20/2020
-ms.openlocfilehash: be0b239a25b6c5d2f820d62ec90737e98308946f
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: e7a5159891bfa09b2524c8881343c0eae24d835a
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507908"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696918"
 ---
 # <a name="allow-apps-to-access-azure-stack-hub-key-vault-secrets"></a>允许应用访问 Azure Stack Hub Key Vault 机密
 
@@ -74,7 +74,7 @@ $TenantID = Get-AzsDirectoryTenantId `
   -EnvironmentName AzureStackUser
 
 # Sign in to the user portal.
-Add-AzAccount `
+Connect-AzAccount `
   -EnvironmentName "AzureStackUser" `
   -TenantId $TenantID `
 

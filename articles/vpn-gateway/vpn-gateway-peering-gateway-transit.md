@@ -7,14 +7,14 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: how-to
 origin.date: 11/30/2020
-ms.date: 01/04/2021
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.openlocfilehash: c99b4a29d27a6937da42d0625938f0cae87d49c5
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 9781baa976a4fffaf98f7c00bc0abf7112d7af77
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856774"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697246"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>针对虚拟网络对等互连配置 VPN 网关传输
 
@@ -43,8 +43,8 @@ ms.locfileid: "97856774"
 
 |VNet|部署模型| 虚拟网络网关|
 |---|---|---|---|
-| Hub-RM| [资源管理器](vpn-gateway-howto-site-to-site-resource-manager-portal.md)| [是](tutorial-create-gateway-portal.md)|
-| Spoke-RM | [资源管理器](vpn-gateway-howto-site-to-site-resource-manager-portal.md)| 否 |
+| Hub-RM| [资源管理器](./tutorial-site-to-site-portal.md)| [是](tutorial-create-gateway-portal.md)|
+| Spoke-RM | [资源管理器](./tutorial-site-to-site-portal.md)| 否 |
 | Spoke-Classic | [经典](vpn-gateway-howto-site-to-site-classic-portal.md#CreatVNet) | 否 |
 
 ### <a name="permissions"></a><a name="permissions"></a>Permissions
@@ -177,6 +177,5 @@ Add-AzVirtualNetworkPeering `
 ## <a name="next-steps"></a>后续步骤
 
 * 在为生产用途创建虚拟网络对等互连之前，请详细了解[虚拟网络对等互连约束和行为](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)和[虚拟网络对等互连设置](../virtual-network/virtual-network-manage-peering.md#create-a-peering)。
-
 * [使用相同的部署模型创建虚拟网络对等互连](../virtual-network/tutorial-connect-virtual-networks-portal.md)。
 * [使用不同的部署模型创建虚拟网络对等互连](../virtual-network/create-peering-different-deployment-models.md)。

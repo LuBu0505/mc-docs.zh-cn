@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 07/06/2020
 ms.date: 01/04/2021
 ms.author: v-jay
-ms.openlocfilehash: 7dd62f8ed0c0e05000378dafb4eefc3fa17fa072
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 7104e498cf776c9724ce9229928a6fef3605bc92
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830321"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696740"
 ---
 # <a name="managed-identity-for-data-factory"></a>数据工厂的托管标识
 

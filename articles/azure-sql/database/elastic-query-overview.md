@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein
 origin.date: 12/05/2019
-ms.date: 12/14/2020
-ms.openlocfilehash: 134b13aaf86ef3f95e6d52cfd6fbe84a3461f004
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.date: 02/22/2021
+ms.openlocfilehash: 9bbfcb7e8b0a9f6dbe9d645c5efb4f893c5862de
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830134"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696814"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL 数据库弹性查询概述（预览版）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -121,7 +121,7 @@ ms.locfileid: "97830134"
 若要开始编写代码，请参阅[弹性查询入门 - 水平分区（分片）](elastic-query-getting-started.md)。
 
 > [!IMPORTANT]
-> 能否对大量的数据库成功执行弹性查询，在很大程度上取决于执行查询期间每个数据库的可用性。 如果其中的某个数据库不可用，整个查询将会失败。 如果你打算一次性查询数百甚至数千个数据库，请确保客户端应用程序中嵌入了重试逻辑，或者考虑利用[弹性数据库作业](./job-automation-overview.md#elastic-database-jobs-preview)（预览版）并查询一小部分数据库，然后将每个查询的结果合并到一个目标中。
+> 能否对大量的数据库成功执行弹性查询，在很大程度上取决于执行查询期间每个数据库的可用性。 如果其中的某个数据库不可用，整个查询将会失败。 如果你打算一次性查询数百甚至数千个数据库，请确保客户端应用程序中嵌入了重试逻辑，或者考虑利用[弹性数据库作业](./job-automation-overview.md)（预览版）并查询一小部分数据库，然后将每个查询的结果合并到一个目标中。
 
 ## <a name="t-sql-querying"></a>T-SQL 查询
 

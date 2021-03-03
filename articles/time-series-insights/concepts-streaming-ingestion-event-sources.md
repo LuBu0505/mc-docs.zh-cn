@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: 98f8d810ac5abc06d7391a89d4dfbae09ededb54
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 02/19/2021
+ms.openlocfilehash: c6338cdef46d47bc364f8881437ae0fa5836640f
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059085"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697921"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure 时序见解第 2 代事件源
 
@@ -59,7 +59,7 @@ ms.locfileid: "99059085"
 
 - 将 IoT 中心或事件中心的数据保留时间增加到最大值 7 天。
 
-- 在 Azure 门户中创建环境警报。 基于平台[指标](how-to-monitor-tsi-reference.md#metrics)的警报使你可以验证端到端管道行为。 [此处](/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts)是有关创建和管理警报的说明。 建议的警报条件：
+- 在 Azure 门户中创建环境警报。 基于平台[指标](./how-to-monitor-tsi-reference.md#metrics)的警报使你可以验证端到端管道行为。 [此处](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)是有关创建和管理警报的说明。 建议的警报条件：
 
   - IngressReceivedMessagesTimeLag 大于 5 分钟
   - IngressReceivedBytes 为 0
@@ -97,4 +97,3 @@ Azure 时序见解第 2 代目前不支持使用流式传输管道导入历史�
 - 阅读 [JSON 平展和转义规则](./concepts-json-flattening-escaping-rules.md)以了解如何存储事件。
 
 - 了解你的环境的[吞吐量限制](./concepts-streaming-ingress-throughput-limits.md)
-

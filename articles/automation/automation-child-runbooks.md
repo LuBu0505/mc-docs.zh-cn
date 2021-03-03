@@ -4,14 +4,14 @@ description: 本文介绍如何创建由另一个 Runbook 调用的 Runbook。
 services: automation
 ms.subservice: process-automation
 origin.date: 01/17/2019
-ms.date: 08/10/2020
+ms.date: 02/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: ed6ab37fe941507cfd53bea922e2f315d35f7637
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 864fcf4bdc845c63b2f2d0689450daeba22fdc87
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830103"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697321"
 ---
 # <a name="create-modular-runbooks"></a>创建模块化 Runbook
 
@@ -105,7 +105,7 @@ Connect-AzAccount `
     -ApplicationId $ServicePrincipalConnection.ApplicationId `
     -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
 
-$AzureContext = Get-AzSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
+$AzureContext = Set-AzContext -SubscriptionId $ServicePrincipalConnection.SubscriptionID
 
 $params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
 

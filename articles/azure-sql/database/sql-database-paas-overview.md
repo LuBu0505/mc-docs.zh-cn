@@ -13,12 +13,12 @@ ms.author: v-jay
 ms.reviewer: ''
 origin.date: 09/21/2020
 ms.date: 01/04/2021
-ms.openlocfilehash: 83f3013f34e1ee4f64941b33e43b48ef80ef0c78
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 7583e56f164a426221aa72c5b2fc10a49a4e5f91
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830260"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696988"
 ---
 # <a name="what-is-azure-sql-database"></a>什么是 Azure SQL 数据库？
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -114,8 +114,8 @@ Azure SQL 数据库使你的企业可以在中断期间继续运营。 在传统
 
 - [自动备份](automated-backups-overview.md)：
 
-  SQL 数据库自动执行数据库的完整备份、差异备份和事务日志备份，以便能够还原到任何时间点。 对于单一数据库和共用数据库，可以将 SQL 数据库配置为，将完整数据库备份存储到 Azure 存储，以供长期备份保留。 对于托管实例，还可以执行仅复制备份，以供长期备份保留。
-
+  SQL 数据库自动执行数据库的完整备份、差异备份和事务日志备份，以便能够还原到任何时间点。 对于单一数据库和共用数据库，可以将 SQL 数据库配置为，将完整数据库备份存储到 Azure 存储，以供长期备份保留。
+  
 - [时间点还原](recovery-using-backups.md)：
 
   所有 SQL 数据库部署选项都支持恢复到任何数据库的自动备份保留期内的任何时间点。

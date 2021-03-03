@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 02/02/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6d946e2914d397750bee67bd9a19fe69ef451e9e
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: e04005c3252a691050ae953457d2aca5d77e2ce1
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540827"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697244"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>教程：从 Android 应用程序登录用户并调用 Microsoft Graph API
 
-在本教程中，你将生成一个与 Microsoft 标识平台集成的 Android 应用，用户可登录该应用并获取访问令牌以调用 Microsoft Graph API。
+在本教程中，你要构建一个与 Microsoft 标识平台集成的 Android 应用，用户可登录该应用并获取访问令牌以调用 Microsoft Graph API。
 
 完成本教程后，该应用程序将接受任何公司或组织中使用 Azure Active Directory 的工作或学校帐户进行登录。
 
@@ -74,7 +74,7 @@ MSAL 将自动续订令牌，在设备上的其他应用之间提供单一登录
 
 ### <a name="register-your-application"></a>注册应用程序
 
-1. 登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册” > “新建注册”  。

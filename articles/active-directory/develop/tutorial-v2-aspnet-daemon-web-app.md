@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 01/14/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 1daf4fb094a6212cb546a95d17b6f7915b314a55
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 08a9d127aae0c9b827e4d39fb1929d40035bbac9
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195054"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697205"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>教程：生成使用 Microsoft 标识平台的多租户守护程序
 
@@ -45,11 +45,11 @@ ms.locfileid: "98195054"
 
 本示例中的“守护程序”组件是 API 控制器 `SyncController.cs`。 调用该控制器时，它会从 Microsoft Graph 提取客户的 Azure Active Directory (Azure AD) 租户中的用户列表。 `SyncController.cs` 由 Web 应用程序中的 AJAX 调用触发。 它使用[适用于 .NET 的 Microsoft 身份验证库 (MSAL)](msal-overview.md) 获取 Microsoft Graph 的访问令牌。
 
-由于该应用是面向 Microsoft 企业客户的多租户应用，因此它必须为客户提供一种“注册”应用程序或将应用程序“连接”到其公司数据的方法。 在连接流期间，公司管理员首先将应用程序权限直接授予应用，使该应用能够以非交互方式访问公司数据，而无需用户登录。 本示例中的大部分逻辑介绍了如何使用标识平台[管理员许可](v2-permissions-and-consent.md#using-the-admin-consent-endpoint)终结点来实现此连接流。
+由于该应用是面向 Microsoft 企业客户的多租户应用，因此它必须为客户提供一种“注册”应用程序或将应用程序“连接”到其公司数据的方法。 在连接流期间，全局管理员首先将应用程序权限直接授予应用，使该应用能够以非交互方式访问公司数据，而无需用户登录。 本示例中的大部分逻辑介绍了如何使用标识平台[管理员许可](v2-permissions-and-consent.md#using-the-admin-consent-endpoint)终结点来实现此连接流。
 
 ![关系图显示了 UserSync 应用，上面有 3 个本地项连接到 Azure，其中 Startup.Auth 需要令牌以交互方式连接到 Azure AD，AccountController 获取管理员同意来连接到 Azure AD，而 SyncController 读取用户来连接到 Microsoft Graph。](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 
-有关此示例中使用的概念的详细信息，请阅读[标识平台终结点的客户端凭据协议文档](v2-oauth2-client-creds-grant-flow.md)。
+有关此示例中使用的概念的详细信息，请阅读[标识平台的客户端凭据协议文档](v2-oauth2-client-creds-grant-flow.md)。
 
 ## <a name="clone-or-download-this-repository"></a>克隆或下载此存储库
 
@@ -93,7 +93,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 ### <a name="choose-the-azure-ad-tenant"></a>选择 Azure AD 租户
 
-1. 登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 
 
@@ -109,8 +109,8 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 1. 选择“注册”以创建应用程序。
 1. 在应用的“概述”页上，找到“应用程序(客户端) ID”值，并记下该值以供后续使用 。 稍后需要使用它为此项目配置 Visual Studio 配置文件。
 1. 在“管理”下，选择“身份验证”。 
-1. 将“注销 URL”设置为 `https://localhost:44316/Account/EndSession`。
-1. 在“隐式授权”部分中，选择“访问令牌”和“ID 令牌”  。 本示例需要启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)，使用户能够登录并调用 API。
+1. 将“前向通道注销 URL”设置为 `https://localhost:44316/Account/EndSession`。
+1. 在“隐式授权和混合流”部分，选择“访问令牌”和“ID 令牌”  。 本示例需要启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)，使用户能够登录并调用 API。
 1. 选择“保存”。
 1. 在“管理”下，选择“证书和机密”。  
 1. 在“客户端密码”部分中，选择“新建客户端密码” 。 
@@ -203,7 +203,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>创建 dotnet-web-daemon-v2 并将其发布到 Azure 网站
 
-1. 登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 1. 在左上角，选择“创建资源”。
 1. 选择“Web” > “Web 应用”，然后为网站命名。  例如，将它命名为“dotnet-web-daemon-v2-contoso.chinacloudsites.cn”。
 1. 选择“订阅”、“资源组”和“应用服务计划和位置”的信息。   为“OS”选择“Windows”，为“发布”选择“代码”。   
@@ -224,10 +224,10 @@ Visual Studio 将发布项目，同时自动打开浏览器并加载该项目的
 
 ### <a name="update-the-azure-ad-tenant-application-registration-for-dotnet-web-daemon-v2"></a>更新 dotnet-web-daemon-v2 的 Azure AD 租户应用程序注册
 
-1. 返回到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 返回到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 1. 在左侧窗格中选择“Azure Active Directory”服务，然后选择“应用注册”。 
 1. 选择 **dotnet-web-daemon-v2** 应用程序。
-1. 在应用程序的“身份验证”页上，使用服务地址更新“注销 URL”字段。  例如，使用 `https://dotnet-web-daemon-v2-contoso.chinacloudsites.cn`。
+1. 在应用程序的“身份验证”页上，使用服务地址更新“前向通道注销 URL”字段 。 例如，使用 `https://dotnet-web-daemon-v2-contoso.chinacloudsites.cn/Account/EndSession`。
 1. 在“品牌”菜单中，将“主页 URL”更新为服务地址。  例如，使用 `https://dotnet-web-daemon-v2-contoso.chinacloudsites.cn`。
 1. 保存配置。
 1. 在“身份验证” > “重定向 URI”菜单的值列表中添加相同的 URL。  如果有多个重定向 URL，请确保每个重定向 URL 都有一个使用应用服务的 URI 的新条目。
@@ -237,9 +237,9 @@ Visual Studio 将发布项目，同时自动打开浏览器并加载该项目的
 
 ## <a name="get-help"></a>获取帮助
 
-使用 [Stack Overflow](http://stackoverflow.com/questions/tagged/msal) 获取社区的支持。
-先在 Stack Overflow 上提问并浏览现有问题，查看是否已有人提出过相同的问题。
-请务必在提问或评论中加上“adal”、“msal”和“dotnet”标记。
+使用 [Microsoft Q&A](https://docs.microsoft.com/answers/products/) 获取社区的支持。
+先在 [Microsoft Q&A](https://docs.microsoft.com/answers/products/) 上提问并浏览现有问题，查看是否已有人提出过相同的问题。
+请务必在提问或评论中加上“azure-ad-adal-deprecation”、“azure-ad-msal”和“dotnet-standard”标记。
 
 如果发现示例中有错误，请在 [GitHub 问题](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/issues)上提出问题。
 
@@ -253,4 +253,3 @@ Visual Studio 将发布项目，同时自动打开浏览器并加载该项目的
 
 > [!div class="nextstepaction"]
 > [方案：用于调用 Web API 的守护程序应用程序](scenario-daemon-overview.md)
-

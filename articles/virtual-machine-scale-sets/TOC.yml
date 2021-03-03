@@ -63,6 +63,8 @@
       items:
         - name: 创建虚拟机规模集
           href: ./scripts/cli-sample-create-simple-scale-set.md
+        - name: 创建和管理虚拟机规模集
+          href: ./scripts/cli-sample-manage-scale-set.md
         - name: 从自定义 VM 映像创建规模集
           href: ./scripts/cli-sample-create-scale-set-from-custom-image.md
         - name: 将应用程序安装到规模集
@@ -147,8 +149,10 @@
       href: ../virtual-machines/linux/endorsed-distros.md
       maintainContext: true
     - name: 维护和更新
-      href: ../virtual-machines/maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
-      maintainContext: true
+      items:
+        - name: 概述
+          href: ../virtual-machines/maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
+          maintainContext: true
     - name: 磁盘存储
       items:
         - name: 托管磁盘
@@ -166,7 +170,7 @@
         - name: 临时 OS 磁盘
           href: ../virtual-machines/ephemeral-os-disks.md
         - name: 磁盘的可伸缩性目标
-          href: ../virtual-machines/windows/disk-scalability-targets.md
+          href: ../virtual-machines/disks-scalability-targets.md
           maintainContext: true
         - name: 磁盘的备份和灾难恢复
           href: ../virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks.md
@@ -304,9 +308,10 @@
           href: virtual-machine-scale-sets-placement-groups.md
         - name: 将规模集模板转换为使用托管磁盘
           href: virtual-machine-scale-sets-convert-template-to-md.md
-        - name: 使用专用主机（预览）
-          href: ../virtual-machines/dedicated-hosts.md
+        - name: 使用专用主机
           items:
+            - name: 概述
+              href: ../virtual-machines/dedicated-hosts.md
             - name: CLI
               href: ../virtual-machines/linux/dedicated-hosts-cli.md
             - name: PowerShell

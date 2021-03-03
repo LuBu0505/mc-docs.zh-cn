@@ -10,14 +10,14 @@ ms.subservice: develop
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 01/13/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
-ms.openlocfilehash: a2d22d5e703102134da5d8a891b316ce1284b64f
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 87907699706ff3a01bdb77b444f3691232954631
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195224"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697959"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>快速入门：在 Angular 单页应用程序中将用户登录并获取访问令牌
 
@@ -35,9 +35,7 @@ ms.locfileid: "98195224"
 >
 > ### <a name="option-1-express-register-and-automatically-configure-the-app-and-then-download-the-code-sample"></a>选项 1（快速）：注册并自动配置应用，然后下载代码示例
 >
-> 1. 登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
-> 1. 如果帐户有权访问多个租户，请在右上角选择该帐户，然后将门户会话设置为要使用的 Azure Active Directory (Azure AD) 租户。
-> 1. 在 Azure 门户中打开新的[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs)窗格。
+> 1. 转到 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册</a>快速入门体验。
 > 1. 输入应用程序的名称并选择“注册”。
 > 1. 转到快速入门窗格，查看 Angular 快速入门。 遵照说明下载内容，系统会自动配置新应用程序。
 >
@@ -45,15 +43,15 @@ ms.locfileid: "98195224"
 >
 > #### <a name="step-1-register-the-application"></a>步骤 1：注册应用程序
 >
-> 1. 登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
-> 1. 如果帐户有权访问多个租户，请在右上角选择该帐户，然后将门户会话设置为要使用的 Azure AD 租户。
+> 1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
+> 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 > 1. 按照说明在 Azure 门户中[注册单页应用程序](./scenario-spa-app-registration.md)。
 > 1. 在应用注册的“身份验证”窗格中添加新的平台，并注册重定向 URI：`http://localhost:4200/`。
-> 1. 本快速入门使用[隐式授权流](v2-oauth2-implicit-grant-flow.md)。 针对“ID 令牌”和“访问令牌”选择“隐式授权”设置。 由于此应用要将用户登录并调用 API，因此需要 ID 令牌和访问令牌。
+> 1. 本快速入门使用[隐式授权流](v2-oauth2-implicit-grant-flow.md)。 在“隐式授权和混合流”部分，选择“ID 令牌”和“访问令牌”  。 由于此应用要将用户登录并调用 API，因此需要 ID 令牌和访问令牌。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-the-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
-> 为使本快速入门的代码示例正常运行，需将重定向 URI 添加为 **http://localhost:4200/** 并启用“隐式授权”。
+> 为使此快速入门中的代码示例正常运行，需要将重定向 URI 添加为 http://localhost:4200/ 并启用“隐式授权” 。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [为我进行这些更改]()
 >
@@ -99,13 +97,13 @@ ms.locfileid: "98195224"
 >|值名称|说明|
 >|---------|---------|
 >|Enter_the_Application_Id_Here|在应用程序注册的“概览”页中，这是你的“应用程序(客户端) ID”值。 |
->|Enter_the_Cloud_Instance_Id_Here|这是 Azure 云的实例。 对于主要云或全球 Azure 云，请输入 **https://login.partner.microsoftonline.cn** 。 对于国家/地区云（例如中国云），请参阅[国家/地区云](./authentication-national-cloud.md)。|
+>|Enter_the_Cloud_Instance_Id_Here|这是 Azure 云的实例。 对于国家/地区云（例如中国云），请参阅[国家/地区云](./authentication-national-cloud.md)。|
 >|Enter_the_Tenant_Info_Here| 设置为以下选项之一：如果应用程序支持此组织目录中的帐户，请将此值替换为目录（租户）ID 或租户名称（例如 contoso.microsoft.com）。 如果应用程序支持“任何组织目录中的帐户”，请将此值替换为 **organizations**。 |
 >|Enter_the_Redirect_Uri_Here|替换为 http://localhost:4200 。|
 >|cacheLocation  | （可选）针对身份验证状态设置浏览器存储。 默认值为 sessionStorage。   |
 >|storeAuthStateInCookie  | （可选）标识用于存储身份验证请求状态的库。 在浏览器 Cookie 中验证身份验证流时需要此状态。 此 Cookie 为 Internet Explorer 和 Microsoft Edge 设置，可以适应这两个浏览器。 有关更多详细信息，请参阅[已知问题](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues)。 |
 > > [!TIP]
-> > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用的“概述”页。
+> > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用的“概述”页。   
 
 有关可用的可配置选项的详细信息，请阅读[初始化客户端应用程序](msal-js-initializing-client-applications.md)。
 
@@ -143,4 +141,3 @@ ms.locfileid: "98195224"
 
 > [!div class="nextstepaction"]
 > [Angular 教程](./tutorial-v2-angular.md)
-

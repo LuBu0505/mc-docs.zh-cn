@@ -9,15 +9,15 @@ ms.service: application-gateway
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 11/16/2020
+ms.date: 02/18/2021
 ms.author: v-junlch
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 7b71391380b60cbc387b07bef1a678810dd46ac8
-ms.sourcegitcommit: f436acd1e2a0108918a6d2ee9a1aac88827d6e37
+ms.openlocfilehash: c03d49cfe56fe4c759fc4971df27da53febb4ada
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508963"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697767"
 ---
 # <a name="manage-web-traffic-using-the-azure-cli"></a>使用 Azure CLI 管理 Web 流量
 
@@ -109,13 +109,13 @@ az group delete --name myResourceGroupAG --yes
 
 此脚本使用以下命令创建部署。 表中的每一项均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/group) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](/cli/network/vnet) | 创建虚拟网络。 |
 | [az network vnet subnet create](/cli/network/vnet/subnet#az-network-vnet-subnet-create) | 在虚拟网络中创建子网。 |
-| [az network public-ip create](/cli/network/public-ip?view=azure-cli-latest) | 创建应用程序网关的公共 IP 地址。 |
-| [az network application-gateway create](/cli/network/application-gateway?view=azure-cli-latest) | 创建应用程序网关。 |
+| [az network public-ip create](https://docs.azure.cn/zh-cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) | 创建应用程序网关的公共 IP 地址。 |
+| [az network application-gateway create](/cli/network/application-gateway) | 创建应用程序网关。 |
 | [az vmss create](/cli/vmss) | 创建虚拟机规模集。 |
 | [az network public-ip show](https://docs.azure.cn/zh-cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-show) | 获取应用程序网关的公共 IP 地址。 |
 
@@ -124,4 +124,3 @@ az group delete --name myResourceGroupAG --yes
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/overview)。
 
 可以在 [Azure Windows VM 文档](../cli-samples.md)中找到其他应用程序网关 CLI 脚本示例。
-

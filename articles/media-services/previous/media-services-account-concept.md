@@ -1,6 +1,6 @@
 ---
 title: 管理 Azure 媒体服务 v2 帐户 | Microsoft Docs
-description: 若要开始管理、加密、编码和流式处理 Azure 中的媒体内容，需要创建媒体服务帐户。 本文介绍如何管理 Azure 媒体服务 v2 帐户。
+description: 若要开始管理、加密、编码、分析和流式处理 Azure 中的媒体内容，需要创建媒体服务帐户。 本文介绍如何管理 Azure 媒体服务 v2 帐户。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -10,20 +10,20 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 origin.date: 07/05/2019
-ms.date: 09/28/2020
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.openlocfilehash: d32f87a9aedc8a0dacefb9c8ab35a9fc58c3e466
-ms.sourcegitcommit: 7ad3bfc931ef1be197b8de2c061443be1cf732ef
+ms.openlocfilehash: 8e6b93510cd65ffd00cf136a2008a4c740ed1e50
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91244765"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696616"
 ---
 # <a name="manage-azure-media-services-v2-accounts"></a>管理 Azure 媒体服务 v2 帐户
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-若要开始管理、加密、编码和流式处理 Azure 中的媒体内容，需要创建媒体服务帐户。 创建媒体服务帐户时，需要提供 Azure 存储帐户资源的名称。 指定存储帐户会附加到媒体服务帐户。 媒体服务帐户和所有关联的存储帐户必须位于同一 Azure 订阅中。  
+若要开始管理、加密、编码、分析和流式处理 Azure 中的媒体内容，需要创建媒体服务帐户。 创建媒体服务帐户时，需要提供 Azure 存储帐户资源的名称。 指定存储帐户会附加到媒体服务帐户。 媒体服务帐户和所有关联的存储帐户必须位于同一 Azure 订阅中。  
 
 ## <a name="moving-a-media-services-account-between-subscriptions"></a>在订阅之间移动媒体服务帐户
 

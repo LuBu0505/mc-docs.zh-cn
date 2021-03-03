@@ -5,14 +5,14 @@ services: application-gateway
 author: surajmb
 ms.service: application-gateway
 ms.topic: troubleshooting
-ms.date: 01/27/2021
+ms.date: 02/18/2021
 ms.author: v-junlch
-ms.openlocfilehash: c95e571256be3930a21141e081c728749868e357
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 857cc38b0fafc1899b3c80c96f3cce42100933c9
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059315"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696708"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>排查应用程序网关中的后端运行状况问题
 ==================================================
@@ -24,7 +24,7 @@ ms.locfileid: "99059315"
 
 ### <a name="how-to-check-backend-health"></a>如何检查后端运行状况
 
-若要检查后端池的运行状况，可以使用 Azure 门户中的“后端运行状况”页。 或者，可以使用 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhealth?view=azps-2.6.0)、[CLI](/cli/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-show-backend-health) 或 [REST API](https://docs.microsoft.com/rest/api/application-gateway/applicationgateways/backendhealth)。
+若要检查后端池的运行状况，可以使用 Azure 门户中的“后端运行状况”页。 或者，可以使用 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhealth)、[CLI](/cli/network/application-gateway#az-network-application-gateway-show-backend-health) 或 [REST API](https://docs.microsoft.com/rest/api/application-gateway/applicationgateways/backendhealth)。
 
 所述任意方法检索到的状态可能为下列其中一项：
 
@@ -83,7 +83,7 @@ BackendAddressPoolsText : [
 > [!NOTE]
 > 默认探测请求将以“\<protocol\>://127.0.0.1:\<port\>/”格式发送。 例如，对于端口 80 上的 HTTP 探测，格式为 http://127.0.0.1:80 。 只将 HTTP 状态代码 200 至 399 视为正常。 协议和目标端口继承自 HTTP 设置。 如果你希望应用程序网关探测不同的协议、主机名或路径，并识别其他状态代码为正常，请配置一个自定义探测，并将其关联到 HTTP 设置。
 
-<a name="error-messages"></a>错误消息
+<a name="error-messages"></a>Error messages
 ------------------------
 #### <a name="backend-server-timeout"></a>后端服务器超时
 
@@ -119,7 +119,7 @@ BackendAddressPoolsText : [
 
 1.  如果使用 Azure 默认 DNS，请与域名注册机构确认是否完成了正确的 A 记录或 CNAME 记录映射。
 
-1.  如果域是专用或内部域，请尝试从同一虚拟网络中的 VM 解析它。 如果能够解析，请重启应用程序网关，然后再次检查。 若要重启应用程序网关，需要使用相关链接资源中所述的 PowerShell 命令[停止](https://docs.microsoft.com/powershell/module/azurerm.network/stop-azurermapplicationgateway?view=azurermps-6.13.0)再[启动](https://docs.microsoft.com/powershell/module/azurerm.network/start-azurermapplicationgateway?view=azurermps-6.13.0)它。
+1.  如果域是专用或内部域，请尝试从同一虚拟网络中的 VM 解析它。 如果能够解析，请重启应用程序网关，然后再次检查。 若要重启应用程序网关，需要使用相关链接资源中所述的 PowerShell 命令[停止](https://docs.microsoft.com/powershell/module/azurerm.network/stop-azurermapplicationgateway)再[启动](https://docs.microsoft.com/powershell/module/azurerm.network/start-azurermapplicationgateway)它。
 
 #### <a name="tcp-connect-error"></a>TCP 连接错误
 

@@ -7,13 +7,13 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 origin.date: 09/21/2020
-ms.date: 11/09/2020
-ms.openlocfilehash: 544e0467367970502a4fd97a8ce7bccc0f0b4791
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.date: 03/08/2021
+ms.openlocfilehash: 691f3849bdde8a2c3124b2af4f5a7a84e4b41219
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328019"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696843"
 ---
 # <a name="azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL 单一服务器
 

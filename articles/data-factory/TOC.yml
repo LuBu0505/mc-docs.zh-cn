@@ -95,8 +95,12 @@
       items:
         - name: 使用映射数据流转换数据
           items:
+            - name: 使用 Delta Lake 转换数据湖数据
+              href: tutorial-data-flow-delta-lake.md
             - name: 使用映射数据流转换数据
               href: tutorial-data-flow.md
+            - name: 映射数据流视频教程
+              href: data-flow-tutorials.md
         - name: 使用外部服务
           items:
             - name: HDInsight Spark
@@ -129,6 +133,10 @@
           href: tutorial-deploy-ssis-packages-azure-powershell.md
         - name: 加入虚拟网络
           href: tutorial-deploy-ssis-virtual-network.md
+    - name: 端到端实验室
+      items:
+        - name: 使用数据工厂和数据共享实现数据集成
+          href: lab-data-flow-data-share.md
 - name: 示例
   items:
     - name: Azure PowerShell
@@ -221,7 +229,7 @@
           href: connector-azure-databricks-delta-lake.md
         - name: Azure 文件存储
           href: connector-azure-file-storage.md
-        - name: Azure SQL Database
+        - name: Azure SQL 数据库
           href: connector-azure-sql-database.md
         - name: Azure SQL 托管实例
           href: connector-azure-sql-managed-instance.md
@@ -506,6 +514,8 @@
           href: data-flow-lookup.md
         - name: 新建分支
           href: data-flow-new-branch.md
+        - name: 分析
+          href: data-flow-parse.md
         - name: 透视
           href: data-flow-pivot.md
         - name: 级别
@@ -664,6 +674,8 @@
               href: how-to-sqldb-to-cosmosdb.md
             - name: 对代码片段进行重复数据消除和 NULL 检查
               href: how-to-data-flow-dedupe-nulls-snippets.md
+            - name: 使用数据流处理 AML 模型中的数据
+              href: scenario-dataflow-process-data-aml-models.md
         - name: 从本地进行 SSIS 迁移
           items:
             - name: SSIS 迁移概述
@@ -727,7 +739,9 @@
     - name: 资源管理器模板
       href: 'https://docs.microsoft.com/azure/templates/microsoft.datafactory/allversions'
     - name: Python
-      href: 'https://docs.microsoft.com/python/api/overview/azure/datafactory?view=azure-python'
+      href: 'https://docs.microsoft.com/python/api/overview/azure/datafactory'
+    - name: Azure Policy 内置策略定义
+      href: policy-reference.md
 - name: 资源
   items:
     - name: 白皮书

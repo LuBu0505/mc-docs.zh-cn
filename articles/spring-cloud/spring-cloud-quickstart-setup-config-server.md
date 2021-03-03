@@ -5,14 +5,14 @@ author: MikeDodaro
 ms.author: v-junlch
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 12/28/2020
-ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: f39c3730f4248039d94f14d6925d03f5b59e6a6f
-ms.sourcegitcommit: a37f80e7abcf3e42859d6ff73abf566efed783da
+ms.date: 02/19/2021
+ms.custom: devx-track-java
+ms.openlocfilehash: 2dcffeb7f4eff108cffab26bf4e770690f7408e5
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829380"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697786"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>快速入门：设置 Azure Spring Cloud Config Server
 
@@ -63,7 +63,7 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 ---
 
 > [!TIP]
-> 如果将专用存储库用于配置服务器，请参阅[介绍设置身份验证的教程](/spring-cloud/spring-cloud-tutorial-config-server)。
+> 如果将专用存储库用于配置服务器，请参阅[介绍设置身份验证的教程](./spring-cloud-tutorial-config-server.md)。
 
 ## <a name="troubleshooting-of-azure-spring-cloud-config-server"></a>Azure Spring Cloud Config Server 的故障排除
 
@@ -96,4 +96,3 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 
 > [!div class="nextstepaction"]
 > [构建和部署应用](spring-cloud-quickstart-deploy-apps.md)
-

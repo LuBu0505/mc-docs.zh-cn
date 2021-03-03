@@ -4,16 +4,16 @@ description: 了解缩放单元节点操作，包括开机、关机、禁用、�
 author: WenJason
 ms.topic: how-to
 origin.date: 1/19/2021
-ms.date: 02/08/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 1/19/2021
-ms.openlocfilehash: d728b055c124fd7c77f0edcc5116ef27081d8925
-ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
+ms.openlocfilehash: 457b7b6e5fdfce2dce857e0170d00ded19d638a1
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99503993"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696727"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack-hub"></a>Azure Stack Hub 中的缩放单元节点操作
 
@@ -71,7 +71,7 @@ Azure Stack Hub 在执行排出、恢复、修复、关闭或启动之类的操�
 
     ```powershell
     Add-AzEnvironment -Name AzureStack -ARMEndpoint https://adminmanagement.local.azurestack.external
-    Add-AzAccount -Environment AzureStack
+    Connect-AzAccount -Environment AzureStack
     ```
 
 2. 运行以下命令以重启 Fabric 资源提供程序角色。

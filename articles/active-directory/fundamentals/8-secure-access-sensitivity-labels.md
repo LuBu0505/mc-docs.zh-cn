@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 02/25/2021
 ms.author: v-junlch
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3fc3eeea41350f9ada997d9b685e1c82524d32e
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: 00410c8b9fddb8dabb0517624bb8af5d07615a55
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540711"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697380"
 ---
 # <a name="control-access-with-sensitivity-labels"></a>通过敏感度标签控制访问 
 
@@ -66,7 +66,7 @@ ms.locfileid: "99540711"
 
 * 对于 HBI 数据、站点或 Microsoft 365 组，应采用哪些默认值？
 
-* 你将在何处使用敏感度标签进行标记和监视，而不是[强制执行加密](https://docs.microsoft.com/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide)或[强制执行容器访问限制](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)？
+* 你将在何处使用敏感度标签[进行标记和监视](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels?view=o365-worldwide)，而不是[强制执行加密](https://docs.microsoft.com/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide)或[强制执行容器访问限制](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)？
 
 **对于电子邮件和内容**
 

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 01/13/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 95e61da40a0775c1bbd8e85fd54fc14a3c1bd7e7
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: f05ff6635a5ea3f1f784c77d7a987204c699568f
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195228"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697969"
 ---
 # <a name="how-to-modify-the-accounts-supported-by-an-application"></a>如何修改应用程序支持的帐户
 
@@ -34,7 +34,7 @@ ms.locfileid: "98195228"
 
 若要为现有应用注册支持的帐户类型指定不同的设置，请执行以下操作：
 
-1. 登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册”，然后选择你的应用程序 。
@@ -59,4 +59,3 @@ ms.locfileid: "98195228"
 ## <a name="next-steps"></a>后续步骤
 
 详细了解[将应用从单租户转换为多租户](howto-convert-app-to-be-multi-tenant.md)的要求。
-

@@ -41,6 +41,20 @@
               href: 8-secure-access-sensitivity-labels.md
             - name: 9 安全访问 Teams、SharePoint 和 OneDrive
               href: 9-secure-access-teams-sharepoint.md
+        - name: 保护服务帐户
+          items:
+            - name: 本地服务帐户简介
+              href: service-accounts-on-premises.md
+            - name: 保护组 MSA
+              href: service-accounts-group-managed.md
+            - name: 保护独立 MSA
+              href: service-accounts-standalone-managed.md
+            - name: 保护计算机帐户
+              href: service-accounts-computer.md
+            - name: 保护基于用户的服务帐户
+              href: service-accounts-user-on-premises.md
+            - name: 管理本地服务帐户
+              href: service-accounts-govern-on-premises.md
         - name: 启用 MFA
           href: concept-fundamentals-mfa-get-started.md
         - name: 安全默认值
@@ -113,6 +127,8 @@
                   href: resilience-client-app.md
                 - name: 守护程序应用程序
                   href: resilience-daemon-app.md
+            - name: 监视应用程序运行状况以进行复原
+              href: monitor-sign-in-health-for-resilience.md
         - name: Azure 中使用的证书颁发机构
           href: certificate-authorities.md
     - name: 部署指南

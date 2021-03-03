@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 09/23/2020
+ms.date: 02/24/2021
 ms.author: v-junlch
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.custom: contperfq1
-ms.openlocfilehash: 49716b56a63ca48e2fd6f31e9cb9f91d69360425
-ms.sourcegitcommit: 7ad3bfc931ef1be197b8de2c061443be1cf732ef
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 8222237f4905a3376036e03504ac3425f22111ff
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91245260"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696547"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD 权利管理是什么？
 
@@ -69,8 +69,9 @@ Azure AD 权利管理可以帮助解决这些难题。  若要了解有关客户
 
 你还可以控制对依赖于 Azure AD 安全组或 Microsoft 365 组的其他资源的访问权限。  例如：
 
-- 可以通过在访问包中使用 Azure AD 安全组，并为该组配置[基于组的许可](../users-groups-roles/licensing-groups-assign.md)，为用户提供 Microsoft 365 许可证
-- 可以通过在访问包中使用 Azure AD 安全组，并为该组创建 [Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)，为用户提供管理 Azure 资源的权限
+- 可以通过在访问包中使用 Azure AD 安全组，并为该组配置[基于组的许可](../enterprise-users/licensing-groups-assign.md)，为用户提供 Microsoft 365 许可证。
+- 可以通过在访问包中使用 Azure AD 安全组，并为该组创建 [Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)，为用户提供管理 Azure 资源的权限。
+- 可以使用可分配到访问包中 Azure AD 角色的组并向[该组分配 Azure AD 角色](../roles/groups-assign-role.md)，从而授予用户管理 Azure AD 角色的访问权限。
 
 ## <a name="how-do-i-control-who-gets-access"></a>如何控制谁获得访问权限？
 
@@ -97,7 +98,7 @@ Azure AD 权利管理可以帮助解决这些难题。  若要了解有关客户
 
 访问包并不替代其他访问权限分配机制。  它们最适用于类似如下的情况：
 
-- 员工需要用于特定任务的受时间限制的访问权限。  
+- 员工需要用于特定任务的受时间限制的访问权限。  例如，你可以使用基于组的许可和动态组来确保所有员工都有 Exchange Online 邮箱，然后在员工需要其他访问权限的情况（例如从其他部门读取部门资源）下使用访问包。
 - 需要员工经理或其他指定人员批准的访问。
 - 部门希望自己管理自己的资源访问策略，不希望 IT 参与。  
 - 两个或多个组织在一个项目上进行协作，因此，需要通过 Azure AD B2B 引入一个组织中的多个用户，使其能够访问其他组织的资源。
@@ -135,17 +136,22 @@ Azure AD 权利管理可以帮助解决这些难题。  若要了解有关客户
 请确保目录中至少具有与以下项数量相同的 Azure AD Premium P2 许可证：
 
 - 可以请求访问包的成员用户数。
-- 请求访问包的成员和来宾用户数。
-- 审批访问包请求的成员和来宾用户数。
-- 具有直接访问包分配的成员和来宾用户数。
+- <u>请求</u>访问包的成员用户数。
+- <u>审批访问包请求</u>的成员用户数。
+- <u>审阅访问包分配</u>的成员用户数。 
+- 具有<u>直接访问包分配</u>的成员用户数。
+
+对于来宾用户，许可需求取决于使用的[许可模式](../external-identities/external-identities-pricing.md)。 但是，以下来宾用户的活动被视为使用 Azure AD Premium P2：
+- <u>请求</u>访问包的来宾用户数。 
+- <u>审批访问包请求</u>的来宾用户数。
+- <u>审阅访问包分配</u>的来宾用户数。
+- 具有<u>直接访问包分配</u>的来宾用户数。 
 
 以下任务无需 Azure AD Premium P2 许可证：
 
 - 设置初始目录、访问包和策略并将管理任务委托给其他用户的、具有全局管理员角色的用户无需任何许可证。
 - 被委托了管理任务的用户（例如目录创建者、目录所有者和访问包管理员）无需任何许可证。
 - 有权请求访问包但并不请求访问包的来宾无需任何许可证 。
-
-Azure AD External Identities（来宾用户）定价基于月度活动用户数 (MAU)，这是对一个日历月内具有身份验证活动的独立用户的计数。 此模型将替换 1:5 比率计费模型，该模型允许租户中的每个 Azure AD Premium 许可证最多 5 个来宾用户。 当你的租户链接到订阅时，如果使用 External Identities 功能与来宾用户协作，则将使用基于 MAU 的计费模型自动计费。 有关详细信息，请参阅 [Azure AD External Identities](../external-identities/external-identities-pricing.md) 的计费模型。
 
 有关许可证的详细信息，请参阅[使用 Azure Active Directory 门户分配或删除许可证](../fundamentals/license-users-groups.md)。
 
@@ -160,6 +166,6 @@ Azure AD External Identities（来宾用户）定价基于月度活动用户数 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [教程：创建第一个访问包](entitlement-management-access-package-first.md)
+- 如果希望使用 Azure 门户管理对资源的访问，请参阅[教程：管理对资源的访问 - Azure 门户](entitlement-management-access-package-first.md)。
+- 如果希望使用 Microsoft Graph 管理对资源的访问，请参阅[教程：管理对资源的访问 - Microsoft Graph](https://docs.microsoft.com/graph/tutorial-access-package-api?toc=/active-directory/governance/toc.json&bc=/active-directory/governance/breadcrumb/toc.json)
 - [常见方案](entitlement-management-scenarios.md)
-

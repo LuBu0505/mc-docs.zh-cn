@@ -3,19 +3,19 @@ title: Azure 应用程序网关文档
 summary: 了解如何创建应用程序网关。 本文档可帮助你规划、部署和管理通往 Azure 资源的 Web 流量。
 metadata:
   title: Azure 应用程序网关文档
-  description: 了解如何部署 Azure 防火墙（一种基于云的网络安全服务）。
+  description: 了解 Azure 应用程序网关，这是一种 Web 流量负载均衡器，可用于管理 Web 应用程序的流量。
   services: application-gateway
   ms.service: application-gateway
   ms.topic: landing-page
   author: vhorne
   ms.author: v-junlch
-  ms.date: 01/11/2021
-  ms.openlocfilehash: af6e5340f666dac3232a7a822d43c5e3d8d4e032
-  ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+  ms.date: 02/18/2021
+  ms.openlocfilehash: 71a95f9e30be68b4ff0585f3df6ac5bde850fcd1
+  ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/14/2021
-  ms.locfileid: "98195257"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101697476"
 landingContent:
 - title: 了解应用程序网关
   linkLists:

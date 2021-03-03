@@ -4,12 +4,12 @@ description: 可以使用 IoT Edge 上的实时视频分析进行连续视频录
 ms.topic: how-to
 origin.date: 04/27/2020
 ms.date: 07/27/2020
-ms.openlocfilehash: c10d2aa522f502e8e5bf31a103ff196454b643d3
-ms.sourcegitcommit: 091c672fa448b556f4c2c3979e006102d423e9d7
+ms.openlocfilehash: 99496ab0c09d19136e081290781041df6c008d55
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87162771"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697304"
 ---
 # <a name="playback-of-recordings"></a>播放录制内容 
 

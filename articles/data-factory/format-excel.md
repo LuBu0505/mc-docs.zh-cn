@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 12/08/2020
 ms.date: 02/01/2021
 ms.author: v-jay
-ms.openlocfilehash: 9bfc7afe105059802d9b391ed41fea4053a2e69b
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 8460fcde66be4c4556ed478a9326c4231dcbf8be
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059010"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697354"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure 数据工厂中的 Excel 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "99059010"
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Excel 数据集支持的属性列表。
 
-| 属性         | 说明                                                  | 必需 |
+| 属性         | 说明                                                  | 必选 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 数据集的 type 属性必须设置为“Excel”。   | 是      |
 | location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。 | 是      |
@@ -75,9 +75,9 @@ ms.locfileid: "99059010"
 
 ### <a name="excel-as-source"></a>Excel 作为源 
 
-复制活动的 **_\_source\*** * 节支持以下属性。
+复制活动的 ***\*source\**** 节支持以下属性。
 
-| 属性      | 说明                                                  | 必需 |
+| 属性      | 说明                                                  | 必选 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为“ExcelSource”。 | 是      |
 | storeSettings | 有关如何从数据存储读取数据的一组属性。 每个基于文件的连接器在 `storeSettings` 下都有其自己支持的读取设置。 | 否       |

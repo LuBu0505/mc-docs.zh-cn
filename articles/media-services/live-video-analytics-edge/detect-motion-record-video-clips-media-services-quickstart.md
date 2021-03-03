@@ -3,13 +3,13 @@ title: 检测运动，将视频录制到 Azure 媒体服务
 description: 本快速入门演示如何使用 IoT Edge 上的实时视频分析功能来检测实时视频流中的运动，并将视频剪辑录制到 Azure 媒体服务。
 ms.topic: quickstart
 origin.date: 04/27/2020
-ms.date: 02/01/2021
-ms.openlocfilehash: 81582d1514f2445aad02d2f15f5b11eccb24e138
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/08/2021
+ms.openlocfilehash: 92b8fa179ef07fa593c4555531a7ad4076fda38f
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059794"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696804"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>快速入门：检测运动，将视频录制到媒体服务
 
@@ -545,6 +545,11 @@ ms.locfileid: "99059794"
 
     ![开始监视内置事件监视](./media/quickstarts/start-monitoring-iothub-events.png)
     
+    > [!NOTE]
+    > 系统可能会要求你提供 IoT 中心的内置终结点信息。 若要获取此信息，请在 Azure 门户中导航到 IoT 中心，然后在左侧导航窗格中查找“内置终结点”选项。 单击此处，在“与事件中心兼容的终结点”部分下查找“与事件中心兼容的终结点” 。 复制并使用框中的文本。 终结点将如下所示：  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.chinacloudapi.cn/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
     几秒钟内，你可在“输出”窗口看到以下消息：
 
 ```

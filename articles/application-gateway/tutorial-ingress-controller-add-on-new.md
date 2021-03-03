@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 12/01/2020
+ms.date: 02/18/2021
 ms.author: v-junlch
-ms.openlocfilehash: 6579541cbbe4d76fd4c6adf5e34cb02f4c09f7ee
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: 7aefed702a6835194efe2516962ab3499578f58d
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507614"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697157"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>教程：使用新的应用程序网关实例为新的 AKS 群集启用入口控制器加载项（预览版）
 
@@ -80,7 +80,7 @@ az group create --name myResourceGroup --location canadacentral
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-prefix "10.2.0.0/16" --generate-ssh-keys
 ```
 
-若要为 `az aks create` 命令配置其他参数，请参阅[这些参考](https://docs.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest#az-aks-create)。 
+若要为 `az aks create` 命令配置其他参数，请参阅[这些参考](/cli/aks#az-aks-create)。 
 
 > [!NOTE]
 > 创建的 AKS 群集将显示在创建的 myResourceGroup 资源组中。 但是，自动创建的应用程序网关实例将位于代理池所在的节点资源组中。 默认情况下，节点资源组将命名为 MC_resource-group-name_cluster-name_location，但可以修改。 
@@ -128,4 +128,3 @@ az group delete --name myResourceGroup
 
 > [!div class="nextstepaction"]
 > [了解如何禁用 AGIC 加载项](./ingress-controller-disable-addon.md)
-

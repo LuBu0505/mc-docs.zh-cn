@@ -11,14 +11,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
 origin.date: 08/19/2019
-ms.date: 11/30/2020
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.openlocfilehash: dfe35434d81c7e54c680d3fbab9caec48a48a9ee
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 9fbbfcdb940e96b96ed0c25e9ac5f1bfa6bdd082
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300837"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697143"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>媒体服务中的转换和作业
 
@@ -55,7 +55,7 @@ ms.locfileid: "96300837"
 
 ## <a name="transforms"></a>转换
 
-**转换** 可用来配置对视频进行编码的常见任务。 每个 **转换** 描述了用于处理视频或音频文件的脚本或任务工作流。 单个转换可以应用多个规则。 例如，转换可以指定以给定的比特率将每个视频编码成 MP4 文件，并从该视频的第一帧生成缩略图。 针对要包含在转换中的每个规则，请添加一个 TransformOutput 条目。 使用预设来告知转换要如何处理输入媒体文件。
+**转换** 可用来配置对视频进行编码或分析的常见任务。 每个 **转换** 描述了用于处理视频或音频文件的脚本或任务工作流。 单个转换可以应用多个规则。 例如，转换可以指定以给定的比特率将每个视频编码成 MP4 文件，并从该视频的第一帧生成缩略图。 针对要包含在转换中的每个规则，请添加一个 TransformOutput 条目。 使用预设来告知转换要如何处理输入媒体文件。
 
 ### <a name="viewing-schema"></a>查看架构
 
@@ -121,3 +121,4 @@ ms.locfileid: "96300837"
 
     - [教程：基于 URL 对远程文件进行编码并流式传输视频](stream-files-tutorial-with-rest.md)
     - [教程：上传、编码和流式传输视频](stream-files-tutorial-with-api.md)
+    - [教程：使用媒体服务 v3 来分析视频](analyze-videos-tutorial-with-api.md)

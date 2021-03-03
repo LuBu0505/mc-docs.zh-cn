@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 07/27/2020
-ms.date: 01/04/2021
-ms.openlocfilehash: 101a555566397c661b9aaf225621a96cc3c5e2e7
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.date: 02/22/2021
+ms.openlocfilehash: b1d0a4cfcf4d81b68e63e77884fa6234e11f6313
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830272"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697581"
 ---
 # <a name="what-is-azure-sql"></a>什么是 Azure SQL？ 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -49,7 +49,7 @@ Azure SQL 是基于熟悉的 SQL Server 引擎构建的，因此你可轻松迁�
 
 Azure 会持续监视你的数据是否受到威胁。 借助 Azure SQL，你可以：
 
-- 通过智能[高级威胁检测](/security/fundamentals/threat-detection#advanced-threat-detection-features-other-azure-services)和主动漏洞评估警报，实时修正潜在威胁。 
+- 通过智能[高级威胁检测](../security/fundamentals/threat-detection.md#advanced-threat-detection-features-other-azure-services)和主动漏洞评估警报，实时修正潜在威胁。 
 - 使用[内置安全控件](/security/)（包括 T-SQL、身份验证、网络和密钥管理）获得业界领先的多层保护。 
 - 充分利用任何云数据库服务最全面的[符合性](https://www.trustcenter.cn/zh-cn/compliance/default.html)。 
 

@@ -5,14 +5,14 @@ author: MikeDodaro
 ms.author: v-junlch
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 02/19/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: ff0e09ce900b0f407e0b35bef9780c40c7715063
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: bfb4929be9137fe3e0513c1dbe75a638f583e4f4
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060011"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697080"
 ---
 # <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-preview"></a>收集 Spring Cloud Resilience4J 断路器指标（预览版）
 
@@ -22,9 +22,9 @@ ms.locfileid: "99060011"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 根据 [Application Insights 的 Java 进程内代理指南](/spring-cloud/spring-cloud-howto-application-insights#enable-java-in-process-agent-for-application-insights)启用 Java 进程内代理。 
+* 根据 [Application Insights 的 Java 进程内代理指南](./spring-cloud-howto-application-insights.md#enable-java-in-process-agent-for-application-insights)启用 Java 进程内代理。 
 
-* 根据 [Application Insights 指南](/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation)启用 resilience4j 指标的维度收集。
+* 根据 [Application Insights 指南](../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)启用 resilience4j 指标的维度收集。
 
 * 安装 git、Maven 和 Java（如果开发计算机尚未使用这些程序）。
 
@@ -125,7 +125,6 @@ az spring-cloud app deploy -n reactive-resilience4j \
 
 ## <a name="see-also"></a>另请参阅
 
-* [Application insights](/spring-cloud/spring-cloud-howto-application-insights)
+* [Application insights](./spring-cloud-howto-application-insights.md)
 * [分布式跟踪](spring-cloud-tutorial-distributed-tracing.md)
 * [断路器仪表板](spring-cloud-tutorial-circuit-breaker.md)
-

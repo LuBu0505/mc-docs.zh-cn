@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 07/01/2020
-ms.date: 10/29/2020
-ms.openlocfilehash: ff055b41058d7cc1b32da9b5acd05d44a591e4cc
-ms.sourcegitcommit: 7b3c894d9c164d2311b99255f931ebc1803ca5a9
+ms.date: 03/08/2021
+ms.openlocfilehash: ff2faa809fb30caa7dfc4978d0e06bd96f18ee01
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470025"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697400"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>使用查询存储监视性能
 
@@ -30,11 +30,11 @@ Azure Database for PostgreSQL 中的查询存储功能提供了一种一段时�
 1. 登录到 Azure 门户，选择 Azure Database for PostgreSQL 服务器。
 2. 在菜单的“设置”部分中选择“服务器参数” 。
 3. 搜索 `pg_qs.query_capture_mode` 参数。
-4. 将值设置为 `TOP` 并 **保存** 。
+4. 将值设置为 `TOP` 并 **保存**。
 
 若要在查询存储中启用等待统计信息，请执行以下操作： 
 1. 搜索 `pgms_wait_sampling.query_capture_mode` 参数。
-1. 将值设置为 `ALL` 并 **保存** 。
+1. 将值设置为 `ALL` 并 **保存**。
 
 
 或者，可使用 Azure CLI 设置这些参数。
@@ -150,25 +150,25 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="query_storequery_texts_view"></a>query_store.query_texts_view
 此视图返回查询存储中的查询文本数据。 每个不同的 query_text 都有一行。
 
-|**名称**|  **类型**|   **说明**|
-|---|---|---|
-|query_text_id  |bigint     |query_texts 表的 ID|
-|query_sql_text |Varchar(10000)     |代表语句的文本。 具有相同结构的不同查询聚集在一起；此文本是群集中第一个查询的文本。|
+| **名称** | 类型 | **说明** |
+|--|--|--|
+| query_text_id | bigint | query_texts 表的 ID |
+| query_sql_text | Varchar(10000) | 代表语句的文本。 具有相同结构的不同查询聚集在一起；此文本是群集中第一个查询的文本。 |
 
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
 此视图返回查询存储中的等待事件数据。 每个不同的数据库 ID、用户 ID、查询 ID 和事件都有一行。
 
-|**名称**|  **类型**|   **参考**| **说明**|
-|---|---|---|---|
-|user_id    |oid    |pg_authid.oid  |执行此语句的用户的 OID|
-|db_id  |oid    |pg_database.oid    |在其中执行语句的数据库的 OID|
-|query_id   |bigint     ||根据语句的分析树计算的内部哈希代码|
-|event_type |text       ||后端正在等待的事件类型|
-|event  |text       ||后端当前正在等待的等待事件名称|
-|calls  |Integer        ||捕获的相同事件的数量|
-
+| **名称** | **类型** | **参考** | **说明** |
+|--|--|--|--|
+| user_id | oid | pg_authid.oid | 执行此语句的用户的 OID |
+| db_id | oid | pg_database.oid | 在其中执行语句的数据库的 OID |
+| query_id | bigint |  | 根据语句的分析树计算的内部哈希代码 |
+| event_type | text |  | 后端正在等待的事件类型 |
+| event | text |  | 后端当前正在等待的等待事件名称 |
+| calls | Integer |  | 捕获的相同事件的数量 |
 
 ### <a name="functions"></a>函数
+
 Query_store.qs_reset() 返回无效值
 
 `qs_reset` 丢弃查询存储迄今收集的所有统计信息。 只能由服务器管理员角色执行此函数。
@@ -185,7 +185,7 @@ Azure Database for PostgreSQL 集成了 [Azure Monitor 诊断设置](../azure-mo
 > 此诊断功能仅适用于“常规用途”和“内存优化”定价层。
 
 ### <a name="configure-diagnostic-settings"></a>配置诊断设置
-可以使用 Azure 门户、CLI、REST API 和 PowerShell 为 Postgres 服务器启用诊断设置。 要配置的日志类别是 **QueryStoreRuntimeStatistics** 和 **QueryStoreWaitStatistics** 。 
+可以使用 Azure 门户、CLI、REST API 和 PowerShell 为 Postgres 服务器启用诊断设置。 要配置的日志类别是 **QueryStoreRuntimeStatistics** 和 **QueryStoreWaitStatistics**。 
 
 若要使用 Azure 门户启用资源日志：
 

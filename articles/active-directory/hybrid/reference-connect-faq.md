@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 12/07/2020
+ms.date: 02/26/2021
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0012e186361af5f3408b9b4cc79250ef517d507
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 35c87e144ac142f990e54e9f02aaea6d048fd9a2
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97003610"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697091"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常见问题解答
 
@@ -157,8 +157,8 @@ Azure AD Connect 不支持纯 IPv6 环境。
 **问：Azure AD 中的 userPrincipalName (UPN) 属性为何与本地 UPN 不匹配？**  
 有关信息，请参阅以下文章：
 
-* [Microsoft 365、Azure 或 Intune 中的用户名与本地 UPN 或备用登录 ID 不匹配](https://support.microsoft.com/kb/2523192)
-* [在将用户帐户的 UPN 更改为使用不同的联合域后，Azure Active Directory 同步工具未同步更改](https://support.microsoft.com/kb/2669550)
+* [Microsoft 365、Azure 或 Intune 中的用户名与本地 UPN 或备用登录 ID 不匹配](https://mskb.pkisolutions.com/kb/2523192)
+* [在将用户帐户的 UPN 更改为使用不同的联合域后，Azure Active Directory 同步工具未同步更改](https://mskb.pkisolutions.com/kb/2669550)
 
 还可以根据 [Azure AD Connect 同步服务功能](how-to-connect-syncservice-features.md)中所述配置 Azure AD，以允许同步引擎更新 UPN。
 
@@ -274,4 +274,3 @@ Azure AD Connect 服务偶尔会在升级以后无法启动。 在这种情况�
 **问：为什么在同步步骤错误后出现事件 6311 和 6401？**
 
 事件 6311 - **服务器在执行回叫时遇到意外错误**，而 6401 - **管理代理控制器遇到意外错误** - 始终在同步步骤错误之后记录。 若要解决这些错误，需要清除同步步骤错误。  有关详细信息，请参阅[对同步期间的错误进行故障排除](tshoot-connect-sync-errors.md)和[使用 Azure AD Connect 同步进行对象同步故障排除](tshoot-connect-objectsync.md)
-

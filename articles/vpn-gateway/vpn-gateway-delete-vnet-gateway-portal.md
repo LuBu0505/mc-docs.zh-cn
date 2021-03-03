@@ -5,15 +5,15 @@ services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 origin.date: 10/16/2020
-ms.date: 11/23/2020
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.topic: how-to
-ms.openlocfilehash: 6cdcc15c769e0493cee13d87c536eb248d4f805d
-ms.sourcegitcommit: db15d6cc591211c0e531d636f45e9cbe24cfb15b
+ms.openlocfilehash: afedce82881286f5c6713b1d5121829a4194e613
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94908884"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697525"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>使用门户删除虚拟网络网关
 

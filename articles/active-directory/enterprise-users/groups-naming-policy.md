@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/06/2021
+ms.date: 02/24/2021
 ms.author: v-junlch
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a22d9acabb56ffc2a4e9dc79fb446b75047fdd2
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: e48b2e6058affb8bee07a19264d1bc1c18b7aa9c
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021590"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696831"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>在 Azure Active Directory 中对 Microsoft 365 组强制执行命名策略
 
@@ -72,13 +72,12 @@ ms.locfileid: "98021590"
 若要配置命名策略，需要以下角色之一：
 - 全局管理员
 - 组管理员
+- 目录写入者
 
 
 选定的管理员可跨所有组工作负荷和终结点得到这些策略的豁免，因此可以使用阻止的字词及其自己的命名约定创建组。 下面列出了可得到组命名策略豁免的管理员角色。
 
 - 全局管理员
-- 合作伙伴层 1 支持
-- 合作伙伴层 2 支持
 - 用户管理员
 
 ## <a name="configure-naming-policy-in-azure-portal"></a>在 Azure 门户中配置命名策略
@@ -266,4 +265,3 @@ Microsoft 365 管理中心 | Microsoft 365 管理中心遵循命名策略。 当
 - [管理组的成员](../fundamentals/active-directory-groups-members-azure-portal.md)
 - [管理组的成员身份](../fundamentals/active-directory-groups-membership-azure-portal.md)
 - [管理组中用户的动态规则](groups-dynamic-membership.md)
-

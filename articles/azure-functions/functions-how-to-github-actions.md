@@ -3,21 +3,21 @@ title: 使用 GitHub Actions 在 Azure Functions 中进行代码更新
 description: 了解如何使用 GitHub Actions 来定义一个在 GitHub 中生成和部署 Azure Functions 项目的工作流。
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 03/02/2021
 ms.author: v-junlch
 ms.custom: devx-track-csharp, github-actions-azure
-ms.openlocfilehash: 4cc2b74a187f9b20b826724b30a8fc5431a1a481
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 05cab5c2fea6e59c495c627c2e66fd23e0831ab0
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195238"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697331"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 Github Actions 进行持续交付
 
 使用 [GitHub Actions](https://github.com/features/actions) 定义一个工作流，以便自动生成代码并将其部署到 Azure Functions 中的函数应用。 
 
-在 GitHub Actions 中，[工作流](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions)是在 GitHub 存储库中定义的自动化过程。 此过程告知 GitHub 如何在 GitHub 中生成和部署函数应用项目。 
+在 GitHub Actions 中，[工作流](https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions)是在 GitHub 存储库中定义的自动化过程。 此过程告知 GitHub 如何在 GitHub 中生成和部署函数应用项目。 
 
 工作流通过存储库的 `/.github/workflows/` 路径中的 YAML (.yml) 文件定义。 此定义包含组成工作流的各种步骤和参数。 
 
@@ -40,7 +40,7 @@ ms.locfileid: "98195238"
 
 对于 GitHub Actions，建议使用发布配置文件向 Azure Functions 进行身份验证。 还可以使用服务主体进行验证。 若要了解详细信息，请参阅[此 GitHub Actions 存储库](https://github.com/Azure/functions-action)。 
 
-将你的发布配置文件凭据保存为 [GitHub 机密](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets)后，将在工作流中使用此机密向 Azure 进行身份验证。 
+将你的发布配置文件凭据保存为 [GitHub 机密](https://docs.github.com/en/actions/reference/encrypted-secrets)后，将在工作流中使用此机密向 Azure 进行身份验证。 
 
 #### <a name="download-your-publish-profile"></a>下载你的发布配置文件
 

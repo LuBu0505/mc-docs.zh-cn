@@ -4,16 +4,16 @@ description: 获取 Microsoft Azure Stack Hub 的支持。
 author: WenJason
 ms.topic: article
 origin.date: 01/19/2021
-ms.date: 02/08/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: shisab
 ms.lastreviewed: 01/19/2021
-ms.openlocfilehash: a9fff0a19fcb05595faac5887dc4aaa4f9fc9ea5
-ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
+ms.openlocfilehash: ede0fdc4b9b47cbdebe341ab3425dad83556a52a
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99503997"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696609"
 ---
 # <a name="azure-stack-hub-help-and-support"></a>Azure Stack Hub 帮助和支持
 
@@ -66,7 +66,7 @@ Azure Stack Hub 操作员可以使用“帮助 + 支持”收集诊断日志并�
 可以通过两种方式将诊断日志发送到 Microsoft：
 
 - [主动发送日志](./diagnostic-log-collection.md#send-logs-proactively)：如果启用，日志收集将由特定的运行状况警报触发。
-- [立即发送日志](./diagnostic-log-collection.md#send-logs-now)：可以手动选择特定滑动窗口作为日志收集的时间范围。
+- [立即发送日志](./diagnostic-log-collection.md#send-logs-now-with-the-administrator-portal)：可以手动选择特定滑动窗口作为日志收集的时间范围。
 
 ![此屏幕截图显示了如何开始收集诊断日志。](media/azure-stack-help-and-support/banner-enable-automatic-log-collection.png)
 

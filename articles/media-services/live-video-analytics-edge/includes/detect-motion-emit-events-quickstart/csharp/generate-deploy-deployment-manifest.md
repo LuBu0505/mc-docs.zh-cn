@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: d90fa7bc74c3c7445c4460f229c5aa021905fd0f
-ms.sourcegitcommit: 7ad3bfc931ef1be197b8de2c061443be1cf732ef
+ms.openlocfilehash: b29c87e7b5e194f1754b7694eec9274f842bb244
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91244818"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750415"
 ---
 部署清单定义要部署到边缘设备的模块。 它还定义了这些模块的配置设置。 
 
@@ -14,6 +14,13 @@ ms.locfileid: "91244818"
 1. 在“AZURE IOT 中心”窗格旁，选择“更多操作”图标以设置 IoT 中心连接字符串 。 可以从 src/cloud-to-device-console-app/appsettings.json 文件复制该字符串。 
 
     ![设置 IoT 连接字符串](../../../media/quickstarts/set-iotconnection-string.png)
+
+> [!NOTE]
+> 系统可能会要求你提供 IoT 中心的内置终结点信息。 若要获取此信息，请在 Azure 门户中导航到 IoT 中心，然后在左侧导航窗格中查找“内置终结点”选项。 单击此处，在“与事件中心兼容的终结点”部分下查找“与事件中心兼容的终结点” 。 复制并使用框中的文本。 终结点将如下所示：  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.chinacloudapi.cn/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
+
 1. 右键单击“src/edge/deployment.template.json”并选择“生成 IoT Edge 部署清单”。
 
     ![生成 IoT Edge 部署清单](../../../media/quickstarts/generate-iot-edge-deployment-manifest.png)

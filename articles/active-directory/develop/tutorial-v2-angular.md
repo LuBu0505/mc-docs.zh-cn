@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 12/07/2020
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: a0cb67ce3669107ea97cb59a3d7def8173c82d5c
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: b798e716f7e4cf7f34bf1950dd2b62d38bdb2ffb
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004197"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697633"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>教程：从 Angular 单页应用程序将用户登录并调用 Microsoft Graph API
 
@@ -123,7 +123,7 @@ ng generate component page-name                  # To add a new page (such as a 
     |值名称|关于|
     |---------|---------|
     |Enter_the_Application_Id_Here|在应用程序注册的“概览”页中，这是你的“应用程序(客户端) ID”值。  |
-    |Enter_the_Cloud_Instance_Id_Here|这是 Azure 云的实例。 对于主要云或全球 Azure 云，请输入 **https://login.partner.microsoftonline.cn** 。 对于国家/地区云（例如中国云），请参阅[国家/地区云](./authentication-national-cloud.md)。|
+    |Enter_the_Cloud_Instance_Id_Here|这是 Azure 云的实例。 对于国家/地区云（例如中国云），请参阅[国家/地区云](./authentication-national-cloud.md)。|
     |Enter_the_Tenant_Info_Here| 设置为以下选项之一：如果应用程序支持此组织目录中的帐户，请将此值替换为目录（租户）ID 或租户名称（例如 contoso.microsoft.com）。 如果应用程序支持“任何组织目录中的帐户”，请将此值替换为 **organizations**。  |
     |Enter_the_Redirect_Uri_Here|替换为 **http://localhost:4200** 。|
 
@@ -271,7 +271,7 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 #### <a name="get-a-user-token-interactively"></a>以交互方式获取用户令牌
 
-有时需要让用户与 Microsoft 标识平台终结点进行交互。 例如：
+有时需要让用户与 Microsoft 标识平台进行交互。 例如：
 
 * 由于密码已过期，用户可能需要重新输入凭据。
 * 应用程序正在请求访问用户需要许可的其他资源范围。
@@ -279,7 +279,7 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 对于大多数应用程序，建议的模式是先调用 `acquireTokenSilent`，然后捕获异常，然后再调用 `acquireTokenPopup`（或 `acquireTokenRedirect`），以启动交互式请求。
 
-调用 `acquireTokenPopup` 会弹出一个登录窗口。 另外，`acquireTokenRedirect` 会将用户重定向到 Microsoft 标识平台终结点。 在该窗口中，用户需要确认其凭据，许可访问所需的资源，或完成双重身份验证。
+调用 `acquireTokenPopup` 会弹出一个登录窗口。 另外，`acquireTokenRedirect` 会将用户重定向到 Microsoft 标识平台。 在该窗口中，用户需要确认其凭据，许可访问所需的资源，或完成双重身份验证。
 
 ```javascript
   const requestObj = {
@@ -346,4 +346,3 @@ Microsoft Graph API 需要 *user.read* 作用域来读取用户的个人资料�
 
 > [!div class="nextstepaction"]
 > [方案：单页应用程序](scenario-spa-overview.md)
-

@@ -5,15 +5,15 @@ description: 本文概述了应用程序网关上的 Web 应用程序防火墙 (
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 01/05/2021
+ms.date: 02/18/2021
 ms.author: v-junlch
 ms.topic: conceptual
-ms.openlocfilehash: 05ce39e59d3b3c6a0de2b109fb02d39120e84106
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 9b32299353f28b8042a85c35d36f3098e0f586e0
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023118"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696709"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>什么是 Azure 应用程序网关上的 Azure Web 应用程序防火墙？
 
@@ -153,7 +153,7 @@ OWASP 有两种模式，用于决定是否阻止流量：传统模式和异常�
 
 #### <a name="azure-security-center"></a>Azure 安全中心
 
-[安全中心](../security-center/security-center-intro.md)可帮助防范、检测和应对威胁。 它可提高对 Azure 资源安全性的可见性和控制力度。 应用程序网关与安全中心集成。 安全中心会扫描环境以检测未受保护的 Web 应用程序。 它可以建议应用程序网关 WAF 保护这些易受攻击的资源。 直接从安全中心创建防火墙。 这些 WAF 实例已与安全中心集成。 他们将警报和运行状况信息发送到安全中心以进行报告。
+[安全中心](../security-center/security-center-intro.md)可帮助防范、检测和应对威胁。 它可提高对 Azure 资源安全性的可见性和控制力度。 应用程序网关已[与安全中心集成](../../security-center/security-center-partner-integration.md#integrated-azure-security-solutions)。 安全中心会扫描环境以检测未受保护的 Web 应用程序。 它可以建议应用程序网关 WAF 保护这些易受攻击的资源。 直接从安全中心创建防火墙。 这些 WAF 实例已与安全中心集成。 他们将警报和运行状况信息发送到安全中心以进行报告。
 
 ![安全中心概述窗口](media/ag-overview/figure1.png)
 

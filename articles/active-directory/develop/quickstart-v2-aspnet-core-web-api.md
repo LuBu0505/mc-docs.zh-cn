@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 01/13/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 1771492765b1e8adc9227739e7f89a2ff503736f
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 7f921facaf7e5c658d88705d876e0237c0e80776
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195225"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697955"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>快速入门：使用 Microsoft 标识平台保护 ASP.NET Core Web API
 
@@ -35,7 +35,7 @@ ms.locfileid: "98195225"
 >
 > 首先，在 Azure AD 租户中注册 Web API，并通过执行以下步骤来添加范围：
 >
-> 1. 登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+> 1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 > 1. 搜索并选择“Azure Active Directory”  。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
@@ -95,7 +95,7 @@ Microsoft.AspNetCore.Authentication 中间件使用托管进程初始化时执�
 
 `AddAuthentication()` 方法配置服务以添加基于 JwtBearer 的身份验证。
 
-包含 `.AddMicrosoftIdentityWebApi` 的行向 Web API 添加 Microsoft 标识平台授权。 然后，将其配置为根据 appsettings.json 配置文件的 `AzureAD` 部分中的信息来验证 Microsoft 标识平台终结点颁发的访问令牌：
+包含 `.AddMicrosoftIdentityWebApi` 的行会向 Web API 添加 Microsoft 标识平台授权。 然后对其进行配置，使其根据 appsettings.json 配置文件的 `AzureAD` 部分中的信息来验证 Microsoft 标识平台颁发的访问令牌：
 
 | appsettings.json 密钥 | 说明                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -167,4 +167,3 @@ namespace webapi.Controllers
 
 > [!div class="nextstepaction"]
 > [GitHub 上的 ASP.NET Core Web API 教程](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)
-

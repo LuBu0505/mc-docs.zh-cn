@@ -2,18 +2,18 @@
 title: Azure Stack Hub 数据中心集成演练
 description: 了解在数据中心现场成功部署 Azure Stack Hub 后预期产生的效果（从规划到部署后）。
 author: WenJason
-ms.topic: article
+ms.topic: conceptual
 origin.date: 03/04/2020
-ms.date: 05/18/2020
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: asganesh
 ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: 2d7ea1e80d9cdbc0a6fbfed883519219e6351585
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 7705d0e4e6f59bc42c45eff49c35cb42969476b2
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422388"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697289"
 ---
 # <a name="azure-stack-hub-datacenter-integration-walkthrough"></a>Azure Stack Hub 数据中心集成演练
 
@@ -67,7 +67,7 @@ Azure 或 Azure Stack Hub 解决方案合作伙伴会帮助你评估你的目标
 -   需要哪种规模的解决方案？
 -   电源和散热要求是什么？
 
-使用 [Azure Stack Hub Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) 来调查和分析最佳硬件容量和配置以满足你的需求。 
+使用 [Azure Stack Hub Capacity Planner](https://download.microsoft.com/download/4/a/2/4a2bd10c-58a0-4ee7-8c3f-55b526ce7e75/AzureStackHubCapacityPlanner_v2005.01.xlsm) 来调查和分析最佳硬件容量和配置以满足你的需求。 
 
 ## <a name="ordering"></a>排序
 你的组织承诺购买 Azure Stack Hub、签署合同和采购订单，并向解决方案提供商提供集成要求数据。
@@ -99,7 +99,7 @@ Azure 或 Azure Stack Hub 解决方案合作伙伴会帮助你评估你的目标
 ## <a name="hardware-delivery"></a>硬件交付 
 当解决方案抵达你的设施时，解决方案提供商将与你一起安排日程。 收到并安置好解决方案后，需要与解决方案提供商一起安排好时间，让工程师到现场执行 Azure Stack Hub 部署。
 
-在现场工程师抵达开始部署解决方案之前，将所有必要数据锁住并准备好，这一点**至关重要**。
+在现场工程师抵达开始部署解决方案之前，将所有必要数据锁住并准备好，这一点 **至关重要**。
 
 -   必须购买并准备好所有证书。
 

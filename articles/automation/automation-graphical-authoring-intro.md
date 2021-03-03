@@ -4,14 +4,14 @@ description: 本文介绍了如何在不使用代码的情况下创作图形 Run
 services: automation
 ms.subservice: process-automation
 origin.date: 03/16/2018
-ms.date: 10/19/2020
+ms.date: 02/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 22e6b7d1fad89b73679ab0ffca4bfc3ae31001cc
-ms.sourcegitcommit: 57511ab990fbb26305a76beee48f0c223963f7ca
+ms.openlocfilehash: ba4591aa11ee91255aaa2bd52ebf31978551f068
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91943477"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696903"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>在 Azure 自动化中创作图形 Runbook
 
@@ -96,11 +96,11 @@ Azure 自动化中的所有 Runbook 都是 Windows PowerShell 工作流。 图�
 
 重试条件是在每次活动运行后计算的 PowerShell 表达式。 如果表达式解析为 True，则活动再次运行。 如果表达式解析为 False，则活动不会再次运行，且 Runbook 转移到下一个活动。
 
-:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="“启用重试”功能设置的屏幕截图。":::
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="此屏幕截图显示了“重试，直到此条件成立”字段以及可在重试条件中使用的 PowerShell 表达式示例。":::
 
 重试条件可以使用名为 `RetryData` 的变量，此变量提供对活动重试相关信息的访问权限。 此变量具有下表中的属性。
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--- |:--- |
 | `NumberOfAttempts` |活动已运行的次数。 |
 | `Output` |活动上次运行的输出。 |
@@ -255,7 +255,7 @@ Runbook 通过定义一个或多个输入参数来接受输入。 用户在 Runb
 
 按下表中的属性定义每个输入参数：
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--- |:--- |
 | 名称 | 必需。 参数的名称。 此名称在 Runbook 中必须是唯一的。 它必须以字母开头，且只能包含字母、数字和下划线字符。 此名称不得包含空格。 |
 | 说明 |可选。 有关输入参数用途的说明。 |
@@ -374,7 +374,7 @@ $h
 
 ## <a name="authenticate-to-azure-resources"></a>访问 Azure 资源所需的身份验证
 
-Azure 自动化中用于管理 Azure 资源的 Runbook 将需要通过 Azure 进行身份验证。 [运行方式帐户](./manage-runas-account.md)（亦称为“服务主体”）是自动化 Runbook 用于访问订阅中的 Azure 资源管理器资源的默认机制。 通过向画布添加使用 PowerShell [Get-AutomationConnection](https://docs.microsoft.com/system-center/sma/manage-global-assets) cmdlet 的 `AzureRunAsConnection` 连接资产，可以将此功能添加到图形 Runbook。 还可以添加 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet。 以下示例展示了此方案。
+Azure 自动化中用于管理 Azure 资源的 Runbook 将需要通过 Azure 进行身份验证。 [运行方式帐户](./automation-security-overview.md)（亦称为“服务主体”）是自动化 Runbook 用于访问订阅中的 Azure 资源管理器资源的默认机制。 通过向画布添加使用 PowerShell [Get-AutomationConnection](https://docs.microsoft.com/system-center/sma/manage-global-assets) cmdlet 的 `AzureRunAsConnection` 连接资产，可以将此功能添加到图形 Runbook。 还可以添加 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet。 以下示例展示了此方案。
 
 ![运行方式身份验证活动](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 

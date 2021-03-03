@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 02/02/2021
+ms.date: 02/24/2021
 ms.author: v-junlch
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: a7b7f20974d5d3944f884eff50bfd75db40d1522
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: 7bde767eacb52dcde3069046d6c63e6bf28441e3
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540838"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697136"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>教程：从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API
 
@@ -292,7 +292,7 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
     }
 ```
 
-MSAL.NET 使用异步方法来获取令牌或操作帐户。 你需要在 UI 线程中支持 UI 操作。 因此，需要进行 `Dispatcher.RunAsync` 调用，并在调用 `ConfigureAwait(false)` 之前采取预防措施。
+MSAL.NET 使用异步方法来获取令牌或操作帐户。 同样，需要在 UI 线程中支持 UI 操作。 因此，需要进行 `Dispatcher.RunAsync` 调用，并在调用 `ConfigureAwait(false)` 之前采取预防措施。
 
 #### <a name="more-information-about-signing-out"></a>有关注销的详细信息<a name="more-information-on-sign-out"></a>
 
@@ -343,9 +343,9 @@ private async Task DisplayMessageAsync(string message)
 
 ## <a name="register-your-application"></a>注册应用程序
 
-现在需注册应用程序：
+现在，注册应用程序：
 
-1. 登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册” > “新建注册”  。
@@ -356,8 +356,8 @@ private async Task DisplayMessageAsync(string message)
 
 为应用程序配置身份验证：
 
-1. 返回 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>，在“管理”下，选择“身份验证” > “添加平台”，然后选择“移动和桌面应用程序”   。
-1. 在“重定向 URI”部分中，勾选 https://login.partner.microsoftonline.cn/common/oauth2/nativeclient 。
+1. 返回 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>，在“管理”下，选择“身份验证” > “添加平台”，然后选择“移动和桌面应用程序”   。
+1. 在“重定向 URI”部分中，输入 `https://login.partner.microsoftonline.cn/common/oauth2/nativeclient`。
 1. 选择“配置” 。
 
 为应用程序配置 API 权限：

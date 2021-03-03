@@ -3,14 +3,14 @@ title: Azure Functions 自定义处理程序
 description: 了解如何在任何语言或运行时版本中使用 Azure Functions。
 author: anthonychu
 ms.author: v-junlch
-ms.date: 01/13/2021
+ms.date: 03/02/2021
 ms.topic: article
-ms.openlocfilehash: 806d62fa93ac42b197cc66f9345ec2c56c2e470d
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 37f0a3b8f9fe2c2c2d95273eb70cf9194ccf69ff
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195073"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697477"
 ---
 # <a name="azure-functions-custom-handlers"></a>Azure Functions 自定义处理程序
 
@@ -121,9 +121,6 @@ local.settings.json 定义在本地运行函数应用时使用的应用程序设
   }
 }
 ```
-
-> [!NOTE]
-> 在 Linux Premium 上或应用服务计划中，`Custom` 可能不会被识别为有效的运行时。 如果这是你的部署目标，则将 `FUNCTIONS_WORKER_RUNTIME` 设置为空字符串。
 
 ### <a name="function-metadata"></a>函数元数据
 
@@ -589,4 +586,3 @@ Functions 主机输出额外的日志消息，包括与自定义处理程序进�
 ## <a name="next-steps"></a>后续步骤
 
 通过[自定义处理程序快速入门](create-first-function-vs-code-other.md)，开始使用 Go 或 Rust 构建 Azure 函数应用。
-

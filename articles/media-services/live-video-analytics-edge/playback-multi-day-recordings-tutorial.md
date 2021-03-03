@@ -3,13 +3,13 @@ title: 播放多天录制的内容 - Azure
 description: 本教程介绍如何使用 Azure 媒体服务 API 播放多天连续录制的视频内容。
 ms.topic: tutorial
 origin.date: 05/27/2020
-ms.date: 11/30/2020
-ms.openlocfilehash: df257dc93ec5754b4b39fbff39b985b2b98fe756
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.date: 03/08/2021
+ms.openlocfilehash: 961c197af39b97c8d39f095069d1ae9c41281e4b
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300893"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697308"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>教程：播放多天录制的内容  
 
@@ -58,7 +58,7 @@ ms.locfileid: "96300893"
 }
 ```
 
-接下来，在 Visual Studio 代码中，打开 src/ams-asset-player。 该文件夹包含本教程所需的文件。 打开 appsettings.json 文件，然后将其内容复制到新文件 appsettings.development.json 中。 对后一个文件进行以下编辑：
+接下来，在 Visual Studio 代码中，打开 src/ams-asset-player。 该文件夹包含本教程所需的文件。 打开 appsettings.json 文件，然后将其内容复制到新文件 appsettings.development.json 中。 对新创建的 appsettings.development.json 进行以下编辑：
 
 ```
   "AMS" : {

@@ -3,15 +3,15 @@ title: 从 Azure VM 启用 Azure 自动化更新管理
 description: 本文介绍如何从 Azure VM 启用更新管理。
 services: automation
 origin.date: 11/04/2020
-ms.date: 12/07/2020
+ms.date: 02/22/2021
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: c65b11f9d7db9e2648fb818158e65ad02e0cb1de
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: e79be36f0a2f62fc95c518f05c3ecc44121a7fa7
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746697"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697278"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>从 Azure VM 启用“更新管理”
 
@@ -23,7 +23,7 @@ ms.locfileid: "96746697"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果还没有订阅，请注册一个[试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
-* 用于管理计算机的[自动化帐户](../index.yml)。
+* 用于管理计算机的[自动化帐户](../automation-security-overview.md)。
 * [虚拟机](../../virtual-machines/windows/quick-create-portal.md)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure

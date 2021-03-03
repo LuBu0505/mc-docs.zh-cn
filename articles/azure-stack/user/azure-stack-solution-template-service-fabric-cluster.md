@@ -4,16 +4,16 @@ description: 了解如何在 Azure Stack Hub 中部署受保护的 Service Fabri
 author: WenJason
 ms.topic: tutorial
 origin.date: 11/20/2020
-ms.date: 12/07/2020
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: shnatara
 ms.lastreviewed: 11/20/2020
-ms.openlocfilehash: 167af4fb779ec89bbc7fd4a09d5640b286b0bcf4
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: 0701d64a689302c5fcf29895c59526549bd7e34d
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507334"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697758"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack-hub"></a>在 Azure Stack Hub 中部署 Service Fabric 群集
 
@@ -101,7 +101,7 @@ Azure Stack Hub 中的 Service Fabric 群集不使用资源提供程序 Microsof
    #==============================================================================
    
    Add-AzEnvironment -Name AzureStack -ARMEndpoint $armEndpoint
-   Login-AzAccount -Environment AzureStack -TenantId $tenantId
+   Connect-AzAccount -Environment AzureStack -TenantId $tenantId
    
    $rgName = "sfvaultrg"
    Write-Host "Creating Resource Group..." -ForegroundColor Yellow

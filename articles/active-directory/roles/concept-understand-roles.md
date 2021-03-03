@@ -2,23 +2,23 @@
 title: 了解 Azure Active Directory 角色概念
 description: 通过 Azure Active Directory 中的资源范围，了解如何理解 Azure Active Directory 内置和自定义角色。
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: overview
-ms.date: 01/14/2021
+ms.date: 02/25/2021
 ms.author: v-junlch
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fcfe8d69881eecc698654d68cf94a31cb5b728d
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 0c38d10311ed3db91504b9859031d523982af4bb
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195267"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697336"
 ---
 # <a name="understand-roles-in-azure-active-directory"></a>了解 Azure Active Directory 中的角色
 
@@ -61,7 +61,7 @@ Azure AD 内置角色的区别在于使用场景，可分为以下三大类别�
 Category | Role
 ---- | ----
 特定于 Azure AD 的角色 | 应用程序管理员<br>应用程序开发人员<br>身份验证管理员<br>B2C IEF 密钥集管理员<br>B2C IEF 策略管理员<br>云应用管理员<br>云设备管理员<br>条件访问管理员<br>设备管理员<br>目录读者<br>目录同步帐户<br>目录编写人员<br>外部 ID 用户流管理员<br>外部 ID 用户流属性管理员<br>外部标识提供者管理员<br>组管理员<br>来宾邀请者<br>支持管理员<br>混合标识管理员<br>许可证管理员<br>合作伙伴一线支持人员<br>合作伙伴二线支持人员<br>密码管理员<br>特权身份验证管理员<br>特权角色管理员<br>报告读者<br>用户帐户管理员
-跨服务角色 | 公司管理员<br>合规性管理员<br>符合性数据管理员<br>全局读取者<br>安全管理员<br>安全操作员<br>安全读取者<br>服务支持管理员
+跨服务角色 | 全局管理员<br>合规性管理员<br>符合性数据管理员<br>全局读取者<br>安全管理员<br>安全操作员<br>安全读取者<br>服务支持管理员
 特定于服务的角色 | Azure DevOps 管理员<br>Azure 信息保护管理员<br>计费管理员<br>CRM 服务管理员<br>客户密码箱访问审批者<br>桌面分析管理员<br>Exchange 服务管理员<br>Insights 管理员<br>Insights 业务主管<br>Intune 服务管理员<br>Kaizala 管理员<br>Lync 服务管理员<br>消息中心隐私读取者<br>消息中心读取者<br>现代商业用户<br>网络管理员<br>Office 应用管理员<br>Power BI 服务管理员<br>Power Platform 管理员<br>打印机管理员<br>打印机技术人员<br>搜索管理员<br>搜索编辑员<br>SharePoint 服务管理员<br>Teams 通信管理员<br>Teams 通信支持工程师<br>Teams 通信支持专家<br>Teams 设备管理员<br>Teams 服务管理员
 
 ## <a name="next-steps"></a>后续步骤
@@ -69,4 +69,3 @@ Category | Role
 - [Azure AD 基于角色的访问控制概述](custom-overview.md)
 - 使用 [Azure 门户、Azure AD PowerShell 或图形 API](custom-create.md) 创建角色分配
 - [查看角色分配](custom-view-assignments.md)
-

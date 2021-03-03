@@ -1,20 +1,20 @@
 ---
 title: 教程 - 为 Azure Active Directory 域服务配置 LDAPS | Microsoft Docs
 description: 本教程介绍如何为 Azure Active Directory 域服务托管域配置安全的轻型目录访问协议 (LDAPS)。
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/21/2020
+ms.date: 02/26/2021
 ms.author: v-junlch
-ms.openlocfilehash: a19ddfb83f86ec364f28f400fa3857fb7833f81c
-ms.sourcegitcommit: f436acd1e2a0108918a6d2ee9a1aac88827d6e37
+ms.openlocfilehash: f4a83560d341f07f2e51abf5f5212bbef5ec25f8
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508736"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696865"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>教程：为 Azure Active Directory 域服务托管域配置安全 LDAP
 
@@ -213,6 +213,12 @@ Thumbprint                                Subject
 
 失败的一些常见原因包括域名不正确、证书的加密算法不是 TripleDES-SHA1 或者证书即将过期或已过期。 可以使用有效的参数重新创建证书，然后使用此更新的证书启用安全 LDAP。
 
+## <a name="change-an-expiring-certificate"></a>更改过期证书
+
+1. 通过执行[创建安全 LDAP 证书](#create-a-certificate-for-secure-ldap)的步骤来创建替换安全 LDAP 证书。
+1. 若要将替换证书应用于 Azure AD DS，请在 Azure 门户中 Azure AD DS 的左侧菜单中，选择“安全 LDAP”，然后选择“更改证书” 。
+1. 将证书分发给使用安全 LDAP 连接的所有客户端。 
+
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>锁定通过 Internet 进行的安全 LDAP 访问
 
 启用通过 Internet 对托管域进行安全 LDAP 访问时，会对安全造成威胁。 可在 Internet 上通过 TCP 端口 636 访问托管域。 建议仅限环境中的特定已知 IP 地址访问托管域。 可以使用 Azure 网络安全组规则来限制对安全 LDAP 的访问。
@@ -224,15 +230,15 @@ Thumbprint                                Subject
 1. 此时会显示现有的入站和出站安全规则列表。 在网络安全组窗口的左侧，选择“设置”>“入站安全规则”。
 1. 选择“添加”，然后创建一个允许 *TCP* 端口 *636* 的规则。 为提高安全性，请选择“IP 地址”作为源，然后为组织指定自己的有效 IP 地址或范围。
 
-    | 设置                           | 值        |
+    | 设置                           | Value        |
     |-----------------------------------|--------------|
     | 源                            | IP 地址 |
     | 源 IP 地址/CIDR 范围 | 环境的有效 IP 地址或范围 |
     | 源端口范围                | *            |
-    | 目标                       | Any          |
+    | 目标                       | 任意          |
     | 目标端口范围           | 636          |
     | 协议                          | TCP          |
-    | 操作                            | Allow        |
+    | 操作                            | 允许        |
     | 优先度                          | 401          |
     | 名称                              | AllowLDAPS   |
 
@@ -311,4 +317,3 @@ Thumbprint                                Subject
 [rsat]: https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools
 [ldap-query-basics]: https://docs.microsoft.com/windows/desktop/ad/creating-a-query-filter
 [New-SelfSignedCertificate]: https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate
-

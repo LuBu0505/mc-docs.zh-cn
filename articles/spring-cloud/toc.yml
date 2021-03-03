@@ -45,8 +45,10 @@
       href: spring-cloud-concept-metrics.md
     - name: Azure Spring Boot 执行器
       href: spring-cloud-concept-manage-monitor-app-spring-boot-actuator.md
-    - name: 安全控件
-      href: spring-cloud-concept-security-controls.md
+    - name: 安全性
+      items:
+        - name: 安全控件
+          href: spring-cloud-concept-security-controls.md
     - name: 了解应用状态
       href: spring-cloud-concept-app-status.md
     - name: 规划灾难恢复
@@ -55,7 +57,7 @@
   items:
     - name: 开发
       items:
-        - name: 准备 Java Spring 应用以进行部署
+        - name: 准备应用以进行部署
           href: spring-cloud-tutorial-prepare-app-deployment.md
         - name: 设置配置服务器
           href: spring-cloud-tutorial-config-server.md
@@ -99,6 +101,12 @@
           href: spring-cloud-howto-application-insights.md
         - name: Resilience4J 断路器指标
           href: spring-cloud-howto-circuit-breaker-metrics.md
+        - name: 结构化应用程序日志
+          href: spring-cloud-structured-app-log.md
+    - name: 网络
+      items:
+        - name: 在 VNET 中运行 Azure Spring Cloud 的客户责任
+          href: spring-cloud-vnet-customer-responsibilities.md
     - name: 安全
       items:
         - name: 启用系统分配的托管标识

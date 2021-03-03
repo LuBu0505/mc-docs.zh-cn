@@ -4,15 +4,15 @@ description: 在本快速入门中，我们需要将 Spring Cloud 应用程序�
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 01/26/2021
+ms.date: 02/19/2021
 ms.author: v-junlch
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d3f9d42cbccf78ee14e2ad49876ddde629a03a02
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 0dbea656e5c6f9d975a5e0e8137a9d0c99686afe
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060006"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697925"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>快速入门：部署第一个 Azure Spring Cloud 应用程序
 
@@ -110,7 +110,7 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4
 1. 创建已分配公共终结点的应用：
 
     ```azurecli
-    az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --is-public
+    az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --is-public true
     ```
 
 1. 为应用部署 Jar 文件（在 Windows 上为 `target\hellospring-0.0.1-SNAPSHOT.jar`）：
@@ -216,4 +216,3 @@ az group delete --name <your resource group name; for example: hellospring-15584
 > [生成并运行微服务](spring-cloud-quickstart-sample-app-introduction.md)
 
 GitHub 中提供了更多示例：[Azure Spring Cloud 示例](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)。
-

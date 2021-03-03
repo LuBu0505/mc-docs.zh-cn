@@ -5,16 +5,16 @@ services: automation
 author: WenJason
 ms.service: automation
 ms.topic: include
-origin.date: 10/21/2020
-ms.date: 11/23/2020
+origin.date: 02/08/2021
+ms.date: 02/22/2021
 ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: d6d3e6da98365cde31687909b5c4243a62cac275
-ms.sourcegitcommit: c89f1adcf403f5845e785064350136698eed15b8
+ms.openlocfilehash: 994959718c18841ef6245dc1f1d897dbea8a3cf3
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94680778"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750841"
 ---
 #### <a name="process-automation"></a>流程自动化
 
@@ -23,9 +23,10 @@ ms.locfileid: "94680778"
 | 每个 Azure 自动化帐户每 30 秒可以提交的新作业的最大数量（非计划的作业） |100 |达到此限制时，后续作业创建请求会失败。 客户端会收到错误响应。|
 | 每个自动化帐户相同时间实例并发运行的作业的最大数量（非计划的作业） |200 |达到此限制时，后续作业创建请求会失败。 客户端会收到错误响应。|
 | 30 天滚动期内作业元数据的最大存储大小 | 10 GB（约 400 万个作业）|达到此限制时，后续作业创建请求会失败。 |
-| 最大作业流限制|1 MiB|单个流不能大于 1 MB。|
+| 最大作业流限制|1 MiB|单个流不能大于 1 MiB。|
 | 每个自动化帐户每 30 秒可以导入的模块的最大数量 |5 ||
 | 模块的最大大小 |100 MB ||
+| 节点配置文件的最大大小 | 1 MB | 适用于状态配置 |
 | 作业运行时间，免费层 |每个订阅每个日历月 500 分钟 ||
 | 每个沙盒允许的最大磁盘空间<sup>1</sup> |1 GB |仅适用于 Azure 沙盒。|
 | 沙盒的最大内存量<sup>1</sup> |400 MB |仅适用于 Azure 沙盒。|

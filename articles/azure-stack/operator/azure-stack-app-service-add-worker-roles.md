@@ -3,17 +3,17 @@ title: 在 Azure Stack Hub 上的应用服务中添加辅助角色和基础结�
 description: 有关缩放 Azure Stack Hub 上的 Azure 应用服务的详细指导
 author: WenJason
 ms.topic: article
-origin.date: 11/15/2020
-ms.date: 12/07/2020
+origin.date: 1/29/2020
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: anwestg
-ms.lastreviewed: 11/15/2020
-ms.openlocfilehash: cf38bdb8962a5f92bffd6e577f91809ad687c097
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.lastreviewed: 1/29/2020
+ms.openlocfilehash: 41c52a4b9a342bc69618d6d60e131cb56c9d6001
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507897"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697061"
 ---
 # <a name="add-workers-and-infrastructure-in-azure-app-service-on-azure-stack-hub"></a>在 Azure Stack Hub 上的 Azure 应用服务中添加辅助角色和基础结构
 
@@ -43,7 +43,7 @@ Azure Stack Hub 上的 Azure 应用服务默认支持免费的和共享的辅助
     ##### Scale out the AppService Role instances ######
     
     # Set context to AzureStack admin.
-    Login-AzAccount -EnvironmentName AzureStackAdmin
+    Connect-AzAccount -EnvironmentName AzureStackAdmin
                                                     
     ## Name of the Resource group where AppService is deployed.
     $AppServiceResourceGroupName = "AppService.local"
@@ -77,7 +77,7 @@ Azure Stack Hub 上的 Azure 应用服务默认支持免费的和共享的辅助
     
     ##### Scale out the AppService Role instances ######
     
-    # Set context to AzureStack admin.
+    # Set context to AzureStackAdmin admin.
     Login-AzureRMAccount -EnvironmentName AzureStackAdmin
                                                     
     ## Name of the Resource group where AppService is deployed.

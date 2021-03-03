@@ -4,16 +4,16 @@ description: 了解 Azure Stack Hub 存储数据传输工具。
 author: WenJason
 ms.topic: conceptual
 origin.date: 11/22/2020
-ms.date: 02/08/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/22/2020
-ms.openlocfilehash: abf0a56a658e3ba1d7c4bbde91d42cb3179a22d5
-ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
+ms.openlocfilehash: 206b469b7890c07206801fa342e318c0efdd83c7
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99503975"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697751"
 ---
 # <a name="use-data-transfer-tools-in-azure-stack-hub-storage"></a>在 Azure Stack Hub 存储中使用数据传输工具
 
@@ -149,7 +149,7 @@ Add-AzEnvironment -Name $ARMEvnName -ARMEndpoint $ARMEndPoint
 
 # Login
 $TenantID = Get-AzsDirectoryTenantId -AADTenantName $AADTenantName -EnvironmentName $ARMEvnName
-Add-AzAccount -EnvironmentName $ARMEvnName -TenantId $TenantID 
+Connect-AzAccount -EnvironmentName $ARMEvnName -TenantId $TenantID 
 
 # Set a default Azure subscription.
 Select-AzSubscription -SubscriptionName $SubscriptionName
@@ -237,13 +237,13 @@ New-AzureRMStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageAc
 Set-AzureRMCurrentStorageAccount -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName 
 
 # Create a new container.
-New-AzureRMStorageContainer -Name $ContainerName -Permission Off
+New-AzureContainer -Name $ContainerName -Permission Off
 
 # Upload a blob into a container.
-Set-AzureRMStorageBlobContent -Container $ContainerName -File $ImageToUpload
+Set-AzureBlobContent -Container $ContainerName -File $ImageToUpload
 
 # List all blobs in a container.
-Get-AzureRMStorageBlob -Container $ContainerName
+Get-AzureBlob -Container $ContainerName
 
 # Download blobs from the container:
 # Get a reference to a list of all blobs in a container.

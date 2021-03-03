@@ -3,14 +3,14 @@ title: 使用 OpenVINO™ Model Server（由 Intel 提供的 AI 扩展）来分�
 description: 在本教程中，将使用由 Intel 提供的 AI 模型服务器来分析（模拟的） IP 相机中的实时视频源。
 ms.topic: tutorial
 origin.date: 09/08/2020
-ms.date: 02/01/2021
+ms.date: 03/08/2021
 titleSuffix: Azure
-ms.openlocfilehash: e34fe60118862893b13d2d4ba850f2171d00edeb
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 904302244ee2b72a5723ac337bceb9c4f173f853
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059864"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696620"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>教程：使用 OpenVINO™ Model Server（由 Intel 提供的 AI 扩展）来分析实时视频 
 
@@ -25,7 +25,7 @@ ms.locfileid: "99059864"
 
 * 包含活动订阅的 Azure 帐户。 如果没有帐户，可[创建试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
   > [!NOTE]
-  > 你将需要一个具有服务主体创建权限（所有者角色提供此权限）的 Azure 订阅。 如果你没有正确的权限，请联系帐户管理员，让其授予你适当的权限。 
+  > 你将需要一个具有服务主体创建权限（所有者角色提供此权限）的 Azure 订阅。 如果没有正确的权限，请联系帐户管理员，让其授予适当的权限。 
 * 包含以下扩展的 [Visual Studio Code](https://code.visualstudio.com/)：
     * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
     * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
@@ -89,11 +89,11 @@ Intel® 分发版 [OpenVINO™ 工具套件](https://software.intel.com/content/
 
 1. 转到 src/cloud-to-device-console-app 文件夹。 你可在此处看到 appsettings.json 文件和一些其他文件：
 
-    * ***c2d-console-app.csproj** _ - Visual Studio Code 的项目文件。
-    _ ***operations.json** _ - 希望程序运行的操作的列表。
-    _ ***Program.cs** _ - 示例程序代码。 此代码：
+    * c2d-console-app.csproj - Visual Studio Code 的项目文件。
+    * operations.json - 希望程序运行的操作的列表。
+    * Program.cs - 示例程序代码。 此代码：
 
-        _ 加载应用设置。
+        * 加载应用设置。
         * 调用 IoT Edge 模块上的实时视频分析公开的直接方法。 可以通过调用模块的[直接方法](direct-methods.md)来使用该模块分析实时视频流。
         * 暂停以检查“终端”窗口中程序的输出，并检查“输出”窗口中模块生成的事件 。
         * 调用直接方法以清理资源。
@@ -125,6 +125,12 @@ Intel® 分发版 [OpenVINO™ 工具套件](https://software.intel.com/content/
     否则，请在左下角“AZURE IOT 中心”窗格附近选择“更多操作”图标，然后选择“设置 IoT 中心连接字符串”  。 可以从 appsettings.json 文件中复制字符串。 或者，为确保在 Visual Studio Code 中配置了正确的 IoT 中心，请使用[选择 IoT 中心命令](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub)。
     
     ![设置 IoT 中心连接字符串](./media/quickstarts/set-iotconnection-string.png)
+
+> [!NOTE]
+> 系统可能会要求你提供 IoT 中心的内置终结点信息。 若要获取此信息，请在 Azure 门户中导航到 IoT 中心，然后在左侧导航窗格中查找“内置终结点”选项。 单击此处，在“与事件中心兼容的终结点”部分下查找“与事件中心兼容的终结点” 。 复制并使用框中的文本。 终结点将如下所示：  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.chinacloudapi.cn/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
 
 1. 右键单击 src/edge/config/deployment.openvino.amd64.json，然后选择“为单个设备创建部署”。 
 

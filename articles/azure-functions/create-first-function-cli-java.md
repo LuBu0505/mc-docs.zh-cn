@@ -1,17 +1,17 @@
 ---
 title: 通过命令行创建 Java 函数 - Azure Functions
 description: 了解如何通过命令行创建 Java 函数，然后将本地项目发布到 Azure Functions 中的无服务器托管。
-ms.date: 01/04/2021
+ms.date: 02/26/2021
 ms.topic: quickstart
 ms.custom:
 - devx-track-java
 - devx-track-azurecli
-ms.openlocfilehash: 13ebdb8bc577ec0e487bc925f457b5bd727a765b
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: b2aa45100f70497c3bb4e198dfd20bdc31a534d1
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022670"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697680"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>快速入门：在 Azure 中通过命令行创建 Java 函数
 
@@ -205,6 +205,11 @@ public class Function {
                     <execution>
                         <id>package-functions</id>
                         <goals>
+                            <goal>package</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 ```
 
 若要控制在 Azure 中创建资源的方式，可以更改这些设置，例如，在初始部署之前将 `runtime.os` 从 `windows` 更改为 `linux`。 有关 Maven 插件支持的设置的完整列表，请参阅[配置详细信息](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details)。
@@ -316,4 +321,3 @@ Remove-AzResourceGroup -Name java-functions-group
 
 > [!div class="nextstepaction"]
 > [连接到 Azure 存储队列](functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-java)
-

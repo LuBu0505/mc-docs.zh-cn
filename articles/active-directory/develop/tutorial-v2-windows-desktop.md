@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 02/02/2021
+ms.date: 02/24/2021
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b10b6a5eed659b1c8a14cf48ec18d1f9428c6f1a
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: 47f58129bc0af640ae89022e108eef1f30675a16
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540705"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697138"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>教程：从 Windows 桌面应用调用 Microsoft Graph API
 
@@ -47,7 +47,7 @@ ms.locfileid: "99540705"
 
 ## <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>负责获得用于访问受保护 Web API 的令牌
 
-对用户进行身份验证后，示例应用程序会收到一个令牌，该令牌可用于查询受面向开发人员的 Microsoft 标识平台保护的 Microsoft Graph API 或 Web API。
+对用户进行身份验证后，示例应用程序会收到一个令牌，该令牌可用于查询受 Microsoft 标识平台保护的 Microsoft Graph API 或 Web API。
 
 API（如 Microsoft Graph）需要令牌以允许访问特定资源。 例如，需要使用令牌读取用户的配置文件、访问用户的日历或发送电子邮件。 应用程序可通过指定 API 作用域来使用 MSAL 请求访问令牌，从而访问这些资源。 然后对于针对受保护资源发出的每个调用，将此访问令牌添加到 HTTP 授权标头。
 
@@ -97,14 +97,14 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
 ### <a name="option-1-express-mode"></a>选项 1：快速模式
 
 可以通过执行以下操作快速注册应用程序：
-1. 转到 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入门体验。
+1. 转到 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册</a>快速入门体验。
 1. 输入应用程序的名称并选择“注册”。
 1. 遵照说明下载内容，并只需单击一下自动配置新应用程序。
 
 ### <a name="option-2-advanced-mode"></a>选项 2：高级模式
 
 若要注册应用程序并将应用程序注册信息添加到解决方案，请执行以下操作：
-1. 登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册” > “新建注册”  。

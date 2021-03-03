@@ -1,32 +1,26 @@
 ---
 title: 使用 Azure 数据工厂复制 Blob 存储中的数据
-description: 创建一个 Azure 数据工厂，将数据从 Azure Blob 存储中的一个位置复制到另一位置。
-services: data-factory
-documentationcenter: ''
-author: WenJason
-manager: digimobile
-ms.reviewer: douglasl
+description: 使用 PowerShell 创建一个 Azure 数据工厂，以便将数据从 Azure Blob 存储中的一个位置复制到另一位置。
+author: linda33wj
 ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: quickstart
 origin.date: 04/10/2020
-ms.date: 11/23/2020
+ms.date: 03/01/2021
 ms.author: v-jay
-ms.openlocfilehash: ee3c2552e919f56b0e8acd3ecbe20c97cba8d4bb
-ms.sourcegitcommit: c89f1adcf403f5845e785064350136698eed15b8
+ms.openlocfilehash: 4774225719191f104427e0e5dca86211c6ab2aac
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94680390"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697572"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>快速入门：使用 PowerShell 创建 Azure 数据工厂
 
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-此快速入门介绍了如何使用 PowerShell 创建 Azure 数据工厂。 在此数据工厂中创建的管道会将数据从 Azure Blob 存储中的一个文件夹 **复制** 到另一个文件夹。 有关如何使用 Azure 数据工厂 **转换** 数据的教程，请参阅 [教程：使用 Spark 转换数据](transform-data-using-spark.md)。
+此快速入门介绍如何使用 PowerShell 创建 Azure 数据工厂。 在此数据工厂中创建的管道会将数据从 Azure Blob 存储中的一个文件夹 **复制** 到另一个文件夹。 有关如何使用 Azure 数据工厂 **转换** 数据的教程，请参阅 [教程：使用 Spark 转换数据](transform-data-using-spark.md)。
 
 > [!NOTE]
 > 本文不提供数据工厂服务的详细介绍。 有关 Azure 数据工厂服务的介绍，请参阅 [Azure 数据工厂简介](introduction.md)。
@@ -38,6 +32,9 @@ ms.locfileid: "94680390"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 按[如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 中的说明安装最新的 Azure PowerShell 模块。
+
+>[!WARNING]
+>如果不使用最新版的 PowerShell 和数据工厂模块，可能会在运行命令时遇到反序列化错误。 
 
 #### <a name="log-in-to-powershell"></a>登录到 PowerShell
 
@@ -113,8 +110,8 @@ ms.locfileid: "94680390"
 在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本快速入门中，请创建一个 Azure 存储链接服务，用作源存储和接收器存储。 链接服务包含的连接信息可供数据工厂服务用来在运行时连接到它。
 
 >[!TIP]
->本快速入门使用“帐户密钥”  作为数据存储的身份验证类型，但你可以根据需要选择其他受支持的身份验证方法：“SAS URI”  、“服务主体”  和“托管标识”  。 有关详细信息，请参阅[此文](/data-factory/connector-azure-blob-storage#linked-service-properties)中的相应部分。
->为了安全地存储数据存储的机密，我们还建议使用 Azure Key Vault。 有关详细说明，请参阅[此文](/data-factory/store-credentials-in-key-vault)。
+>本快速入门使用“帐户密钥”  作为数据存储的身份验证类型，但你可以根据需要选择其他受支持的身份验证方法：“SAS URI”  、“服务主体”  和“托管标识”  。 有关详细信息，请参阅[此文](./connector-azure-blob-storage.md#linked-service-properties)中的相应部分。
+>为了安全地存储数据存储的机密，我们还建议使用 Azure Key Vault。 有关详细说明，请参阅[此文](./store-credentials-in-key-vault.md)。
 
 1. 在 **C:\ADFv2QuickStartPSH** 文件夹中，创建包含以下内容的名为 **AzureStorageLinkedService.json** 的 JSON 文件：（创建 ADFv2QuickStartPSH 文件夹（如果不存在）。）
 
@@ -134,7 +131,7 @@ ms.locfileid: "94680390"
     }
     ```
 
-    如果使用记事本，请在“另存为”对话框中选择“所有文件”作为“另存为类型”字段的值。    否则，会为文件添加 `.txt` 扩展。 例如，`AzureStorageLinkedService.json.txt` 。 如果先在文件资源管理器中创建该文件，然后再在记事本中将其打开，则可能看不到 `.txt` 扩展，因为系统默认设置“隐藏已知文件类型的扩展名”选项。  在执行下一步骤之前删除 `.txt` 扩展名。
+    如果使用记事本，请在“另存为”对话框中选择“所有文件”作为“另存为类型”字段的值。    否则，会为文件添加 `.txt` 扩展。 例如，`AzureStorageLinkedService.json.txt`。 如果先在文件资源管理器中创建该文件，然后再在记事本中将其打开，则可能看不到 `.txt` 扩展，因为系统默认设置“隐藏已知文件类型的扩展名”选项。  在执行下一步骤之前删除 `.txt` 扩展名。
 
 2. 在 **PowerShell** 中，切换到 **ADFv2QuickStartPSH** 文件夹。
 
@@ -339,12 +336,12 @@ $RunId = Invoke-AzDataFactoryV2Pipeline `
             -PipelineRunId $RunId
 
         if ($Run) {
-            if ($run.Status -ne 'InProgress') {
+            if ( ($Run.Status -ne "InProgress") -and ($Run.Status -ne "Queued") ) {
                 Write-Output ("Pipeline run finished. The status is: " +  $Run.Status)
                 $Run
                 break
             }
-            Write-Output "Pipeline is running...status: InProgress"
+            Write-Output ("Pipeline is running...status: " + $Run.Status)
         }
 
         Start-Sleep -Seconds 10

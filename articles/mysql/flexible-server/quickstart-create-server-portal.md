@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 origin.date: 10/22/2020
-ms.date: 01/11/2021
-ms.openlocfilehash: b14a9b737c1b90c2ad32585eb7529b67c4c4a4a1
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.date: 03/08/2021
+ms.openlocfilehash: 7627595ef02d295caacd123efda62d9905a9e9b0
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024117"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697785"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>快速入门：使用 Azure 门户创建 Azure Database for MySQL 灵活服务器
 
@@ -86,16 +86,15 @@ Azure Database for MySQL 灵活服务器是一种托管服务，可用于在云�
 
 ## <a name="connect-to-the-server-by-using-mysqlexe"></a>通过 mysql.exe 连接到服务器
 
-如果使用“专用访问(VNet 集成)”创建了灵活服务器，需要从与服务器相同的虚拟网络中的资源连接到服务器。 可以创建虚拟机并将其添加到使用灵活服务器创建的虚拟网络中。
+如果使用“专用访问(VNet 集成)”创建了灵活服务器，需要从与服务器相同的虚拟网络中的资源连接到服务器。 可以创建虚拟机并将其添加到使用灵活服务器创建的虚拟网络中。 有关详细信息，请参阅[配置专用访问文档](how-to-manage-virtual-network-portal.md)。
 
-如果使用“公共访问(允许的 IP 地址)”创建了灵活服务器，可以将本地 IP 地址添加到服务器上的防火墙规则列表中。
+如果使用“公共访问(允许的 IP 地址)”创建了灵活服务器，可以将本地 IP 地址添加到服务器上的防火墙规则列表中。 有关分步指南，请参阅[创建或管理防火墙规则文档](how-to-manage-firewall-portal.md)。
 
 可以使用 [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) 或 [MySQL Workbench](./connect-workbench.md) 从本地环境连接到服务器。 
 
-如果使用的是 mysql .exe，请使用以下命令进行连接。 在命令中使用服务器名称、用户名和密码。 
-
 ```bash
- mysql -h mydemoserver.mysql.database.chinacloudapi.cn -u mydemouser -p
+wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
+mysql -h mydemoserver.mysql.database.chinacloudapi.cn -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
 ## <a name="clean-up-resources"></a>清理资源
 现在已在资源组中创建 Azure Database for MySQL 灵活服务器。 如果将来不再需要这些资源，可以通过删除资源组来删除它们，也可以直接删除 MySQL 服务器。 若要删除资源组，请完成以下步骤：

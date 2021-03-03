@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 02/02/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: 80aa06d14caee2521d7353c87cb1e7f5fa39773c
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: feb8990e0d1ad5ad55b98fd10cb87c0b3bcb3cbc
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540596"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697175"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>快速入门：向 ASP.NET Web 应用添加 Microsoft 标识平台登录功能
 
@@ -38,7 +38,7 @@ ms.locfileid: "99540596"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
-> 1. 转到 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入门体验。
+> 1. 转到 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册</a>快速入门体验。
 > 1. 输入应用程序的名称并选择“注册”。
 > 1. 遵照说明下载内容，并一键式自动配置新应用程序。
 >
@@ -47,19 +47,20 @@ ms.locfileid: "99540596"
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 > 若要手动注册应用程序并将应用的注册信息添加到解决方案，请执行以下步骤：
 >
-> 1. 登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+> 1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 > 1. 搜索并选择“Azure Active Directory”  。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 > 1. 输入应用程序的名称（例如 `ASPNET-Quickstart`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 > 1. 在“重定向 URI”中添加 `https://localhost:44368/`，然后选择“注册” 。
 > 1. 在“管理”下，选择“身份验证”。 
-> 1. 在“隐式授权”子部分下，选择“ID 令牌”。
+> 1. 在“隐式授权和混合流”部分，选择“ID 令牌” 。
 > 1. 选择“保存”。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
-> 要使此快速入门中的代码示例正常运行，需要将答复 URL 添加为 `https://localhost:44368/`。
+> 为使此快速入门中的代码示例正常运行，请添加重定向 URI `https://localhost:44368/`。
+
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [执行此更改]()
 >
@@ -164,11 +165,11 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |其中  | 说明 |
+> |Where  | 说明 |
 > |---------|---------|
 > | `ClientId`     | Azure 门户中注册的应用程序的应用程序 ID |
 > | `Authority`    | 用户要进行身份验证的 STS 终结点。 对于公有云，通常为 `https://login.partner.microsoftonline.cn/{tenant}/v2.0`，其中 {tenant} 是租户名称、租户 ID 或者引用常用终结点（用于多租户应用程序）的 common |
-> | `RedirectUri`  | 一个 URL，在通过 Microsoft 标识平台终结点进行身份验证之后，会将用户发送到此 URL |
+> | `RedirectUri`  | 一个 URL，在通过 Microsoft 标识平台进行身份验证之后，会将用户发送到此 URL |
 > | `PostLogoutRedirectUri`     | 一个 URL，在注销以后，会将用户发送到此 URL |
 > | `Scope`     | 请求的作用域的列表，使用空格进行分隔 |
 > | `ResponseType`     | 请求身份验证的响应包含 ID 令牌 |
@@ -177,7 +178,7 @@ public void Configuration(IAppBuilder app)
 
 
 > [!NOTE]
-> 在本快速入门中，设置 `ValidateIssuer = false` 是一种简化操作。 在实际应用程序中，需验证颁发者。
+> 在本快速入门中，设置 `ValidateIssuer = false` 是一种简化操作。 在实际应用程序中验证颁发者。
 > 查看示例，了解如何执行该操作。
 
 ### <a name="initiate-an-authentication-challenge"></a>启动身份验证质询

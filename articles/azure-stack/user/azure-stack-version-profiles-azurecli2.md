@@ -4,16 +4,16 @@ description: 了解如何使用跨平台命令行接口 (CLI) 管理和部署 Az
 author: WenJason
 ms.topic: article
 origin.date: 12/16/2020
-ms.date: 01/11/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 12/16/2020
-ms.openlocfilehash: 7e696385511655d52888165247f4c82c1da8e910
-ms.sourcegitcommit: 3f54ab515b784c9973eb00a5c9b4afbf28a930a9
+ms.openlocfilehash: 6bcdb005dddf3044953affd4eaa84da917a2f7a6
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894380"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697752"
 ---
 # <a name="install-azure-cli-on-azure-stack-hub"></a>在 Azure Stack Hub 上安装 Azure CLI
 
@@ -54,7 +54,7 @@ ms.locfileid: "97894380"
       | 值 | 示例 | 说明 |
       | --- | --- | --- |
       | 环境名称 | AzureStackUser | 对于用户环境，请使用 `AzureStackUser`。 如果你是操作员，请指定 `AzureStackAdmin`。 |
-      | 资源管理器终结点 | `https://management.contoso.partner.onmschina.cn` | ASDK 中的 **ResourceManagerUrl** 为：`https://management.contoso.partner.onmschina.cn/`集成系统中的 **ResourceManagerUrl** 为：`https://management.<region>.<fqdn>/` 如果对集成系统终结点有疑问，请与云操作员联系。 |
+      | 资源管理器终结点 | `https://management.contoso.partner.onmschina.cn` | ASDK 中的 **ResourceManagerUrl** 为：`https://management.local.azurestack.external/`集成系统中的 **ResourceManagerUrl** 为：`https://management.<region>.<fqdn>/` 如果对集成系统终结点有疑问，请与云操作员联系。 |
       | 存储终结点 | local.contoso.partner.onmschina.cn | `local.azurestack.external` 适用于 ASDK。 对于集成系统，请使用适用于系统的终结点。  |
       | KeyVault 后缀 | .vault.contoso.partner.onmschina.cn | `.vault.local.azurestack.external` 适用于 ASDK。 对于集成系统，请使用适用于系统的终结点。  |
       | 终结点 active directory graph 资源 ID | https://graph.chinacloudapi.cn/ | Active Directory 资源 ID。 |
@@ -100,7 +100,7 @@ ms.locfileid: "97894380"
 
    - 以服务主体身份登录： 
     
-        在登录之前，请[通过 Azure 门户或 CLI 创建一个服务主体](../operator/azure-stack-create-service-principals.md?view=azs-2002)，并为其分配角色。 接下来，使用以下命令登录：
+        在登录之前，请[通过 Azure 门户或 CLI 创建一个服务主体](../operator/azure-stack-create-service-principals.md)，并为其分配角色。 接下来，使用以下命令登录：
     
         ```azurecli  
         az login `
@@ -283,7 +283,7 @@ az group create -n MyResourceGroup -l local
    
    * 以服务主体身份登录
     
-     在登录之前，请[通过 Azure 门户或 CLI 创建一个服务主体](../operator/azure-stack-create-service-principals.md?view=azs-2002)，并为其分配角色。 接下来，使用以下命令登录：
+     在登录之前，请[通过 Azure 门户或 CLI 创建一个服务主体](../operator/azure-stack-create-service-principals.md)，并为其分配角色。 接下来，使用以下命令登录：
 
      ```azurecli  
      az login \
@@ -403,4 +403,4 @@ az group create -n MyResourceGroup -l local
 
 - [使用 Azure CLI 部署模板](azure-stack-deploy-template-command-line.md)
 - [为 Azure Stack Hub 用户启用 Azure CLI（操作员）](../operator/azure-stack-cli-admin.md)
-- [管理用户权限](azure-stack-manage-permissions.md) 
+- [管理用户权限](azure-stack-manage-permissions.md)

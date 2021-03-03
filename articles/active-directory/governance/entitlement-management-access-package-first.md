@@ -1,9 +1,9 @@
 ---
-title: 教程 - 创建访问包 - Azure AD 权利管理
-description: 有关如何在 Azure Active Directory 权利管理中创建第一个访问包的分步教程。
+title: 教程 - 管理对 Azure AD 权利管理中的资源的访问
+description: 有关如何在 Azure Active Directory 权利管理中使用 Azure 门户创建第一个访问包的分步教程。
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 01/08/2021
+ms.date: 02/24/2021
 ms.author: v-junlch
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e19aaea4c4e466906f69929cfddea02b7a61749a
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 3ce595d5c6f749b3080e73837e4bfc1e8c407068
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021570"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697850"
 ---
-# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>教程：在 Azure AD 权利管理中创建第一个访问包
+# <a name="tutorial-manage-access-to-resources-in-azure-ad-entitlement-management"></a>Tutorial:管理对 Azure AD 权利管理中的资源的访问
 
 对于组织而言，管理对员工所需的所有资源（例如组、应用程序和站点）的访问是一项非常重要的功能。 应该为员工授予适当的访问权限级别以使其保持工作效率，同时，在不再需要这种权限级别时将其删除。
 
@@ -38,7 +38,6 @@ ms.locfileid: "98021570"
 > * 允许目录中的用户请求访问
 > * 演示内部用户如何请求该访问包
 
-可以使用 Microsoft Graph 以编程方式创建访问包。 有关如何以编程方式创建访问包的教程，请参阅[权利管理 API](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -265,4 +264,3 @@ ms.locfileid: "98021570"
 请继续学习下一篇文章，了解权利管理中常用的方案步骤。
 > [!div class="nextstepaction"]
 > [常见方案](entitlement-management-scenarios.md)
-

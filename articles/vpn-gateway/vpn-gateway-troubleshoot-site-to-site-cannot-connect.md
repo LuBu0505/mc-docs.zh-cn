@@ -6,14 +6,14 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 origin.date: 09/16/2019
-ms.date: 12/07/2020
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.openlocfilehash: 4896253a8403c1a1c7d6b2e6d84e22066cafc505
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 1a48866bde3f7f8154ef6980053a6c1381e8574b
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747211"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697364"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>故障排除：Azure 站点到站点 VPN 连接无法建立连接并停止工作
 
@@ -111,5 +111,5 @@ Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
 
 ## <a name="next-steps"></a>后续步骤
 
--   [配置与虚拟网络的站点到站点连接](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
--   [配置站点到站点 VPN 连接的 IPsec/IKE 策略](vpn-gateway-ipsecikepolicy-rm-powershell.md)
+- [配置与虚拟网络的站点到站点连接](./tutorial-site-to-site-portal.md)
+- [配置站点到站点 VPN 连接的 IPsec/IKE 策略](vpn-gateway-ipsecikepolicy-rm-powershell.md)

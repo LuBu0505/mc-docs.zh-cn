@@ -2,14 +2,14 @@
 title: 使用 ServiceNow 发送服务运行状况警报
 description: 获取有关发送到 ServiceNow 实例的服务运行状况事件的个性化通知。
 ms.topic: conceptual
-ms.date: 08/10/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 23566754011326192486d56b094e3b6cea808c07
-ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
+ms.date: 02/19/2021
+ms.custom: devx-track-js
+ms.openlocfilehash: 57a4277a393f21625c5c9b6cd507e20c7a56645f
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88223186"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696588"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>使用 Webhook 通过 ServiceNow 发送 Azure 服务运行状况警报
 

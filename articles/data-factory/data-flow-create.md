@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 02/12/2019
 ms.date: 02/01/2021
-ms.openlocfilehash: f4ddf84bc64c6ea589a787b7855048e9df56fb69
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 233f781a26489aa9623fae22b9d4590d915a05b9
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060855"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697754"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>创建 Azure 数据工厂数据流
 
@@ -23,9 +23,6 @@ ms.locfileid: "99060855"
 
 首先从 Azure 门户创建一个新的 V2 数据工厂。 创建新工厂后，单击“创作和监视”磁贴以启动数据工厂 UI。
 
-![屏幕截图显示了“版本”选择为 V2 的“新建数据工厂”窗格。](media/data-flow/v2portal.png "数据流创建")
-
-进入数据工厂 UI 后，你可以使用示例数据流。 示例可从 ADF 模板库中获得。 在 ADF 中，创建“来自模板的管道”并从模板库中选择“数据流”类别。
 
 ![屏幕截图显示了选中“使用数据流转换数据”的“数据流”选项卡。](media/data-flow/template.png "数据流创建")
 

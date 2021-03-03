@@ -1,19 +1,19 @@
 ---
 title: 快速入门：创建 Azure DB for PostgreSQL - ARM 模板
-description: 本文介绍如何使用 Azure 资源管理器模板创建 Azure Database for PostgreSQL 单一服务器。
+description: 本快速入门介绍如何使用 Azure 资源管理器模板创建 Azure Database for PostgreSQL 单一服务器。
 author: WenJason
 ms.service: postgresql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: v-jay
-origin.date: 05/14/2020
-ms.date: 10/19/2020
-ms.openlocfilehash: eaf1899358d0a2d4d399fd55a239f6d47cea3e3c
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+origin.date: 02/11/2021
+ms.date: 03/08/2021
+ms.openlocfilehash: 32f01c1a75e88c15de006ce0ff9bd24bee663916
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432178"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697750"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>快速入门：使用 ARM 模板创建 Azure Database for PostgreSQL 单一服务器
 
@@ -27,7 +27,7 @@ ms.locfileid: "96432178"
 
 ## <a name="prerequisites"></a>先决条件
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 具有活动订阅的 Azure 帐户。 [创建一个试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
@@ -298,7 +298,7 @@ ms.locfileid: "96432178"
 
 ## <a name="deploy-the-template"></a>部署模板
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 选择以下链接以在 Azure 门户中部署 Azure Database for PostgreSQL 服务器模板：
 
@@ -376,7 +376,7 @@ read -p "Press [ENTER] to continue: "
 
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 按照以下步骤查看新 Azure Database for PostgreSQL 服务器的概览：
 
@@ -407,11 +407,39 @@ read -p "Press [ENTER] to continue: "
 
 ---
 
+## <a name="exporting-arm-template-from-the-portal"></a>从门户导出 ARM 模板
+可从 Azure 门户[导出 ARM 模板](../azure-resource-manager/templates/export-template-portal.md)。 可以通过两种方式来导出模板：
+
+- [从资源组或资源导出](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource)。 此选项基于现有的资源生成新模板。 导出的模板是资源组当前状态的“快照”。 可以导出整个资源组，或该资源组中的特定资源。
+- [在部署之前导出或从历史记录导出](../azure-resource-manager/templates/export-template-portal.md#export-template-before-deployment)。 此选项检索用于部署的确切模板副本。
+
+导出模板时，将在 PostgreSQL 服务器资源的 ```"properties":{ }``` 部分中看到，出于安全原因不会包含 ```administratorLogin``` 和 ```administratorLoginPassword```。 部署模板前，必须将这些参数添加到模板中，否则模板会失败。
+
+```
+"resources": [
+    {
+      "type": "Microsoft.DBforPostgreSQL/servers",
+      "apiVersion": "2017-12-01",
+      "name": "[parameters('servers_name')]",
+      "location": "chinaeast2",
+      "sku": {
+                "name": "B_Gen5_1",
+                "tier": "Basic",
+                "family": "Gen5",
+                "capacity": 1
+            },
+      "properties": {
+        "administratorLogin": "[parameters('administratorLogin')]",
+        "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+```
+
+
+
 ## <a name="clean-up-resources"></a>清理资源
 
 如果不再需要该资源组，可以将其删除，这将删除资源组中的资源。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 在 [Azure 门户](https://portal.azure.cn)中，搜索并选择“资源组”。
 

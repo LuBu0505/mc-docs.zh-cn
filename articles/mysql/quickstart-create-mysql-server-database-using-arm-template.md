@@ -8,12 +8,12 @@ ms.custom: subject-armqs
 ms.author: v-jay
 origin.date: 05/19/2020
 ms.date: 10/19/2020
-ms.openlocfilehash: dfa1a0dac4a3136415cd314a2f48da74af2e2c85
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: 78ddc3f672c4269009df9f2617bb6e0772b49726
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431678"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697614"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>快速入门：使用 ARM 模板创建 Azure Database for MySQL 服务器
 
@@ -27,7 +27,7 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
 
 ## <a name="prerequisites"></a>先决条件
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 具有活动订阅的 Azure 帐户。 [创建一个试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
@@ -296,7 +296,7 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
 
 ## <a name="deploy-the-template"></a>部署模板
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 选择以下链接以在 Azure 门户中部署 Azure Database for MySQL 服务器模板：
 
@@ -379,7 +379,7 @@ echo "Press [ENTER] to continue ..."
 
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 按照以下步骤查看新 Azure Database for MySQL 服务器的概览：
 
@@ -411,11 +411,37 @@ az resource show --resource-group $resourcegroupName --name $serverName --resour
 
 ---
 
+## <a name="exporting-arm-template-from-the-portal"></a>从门户导出 ARM 模板
+可从 Azure 门户[导出 ARM 模板](../azure-resource-manager/templates/export-template-portal.md)。 可以通过两种方式来导出模板：
+
+- [从资源组或资源导出](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource)。 此选项基于现有的资源生成新模板。 导出的模板是资源组当前状态的“快照”。 可以导出整个资源组，或该资源组中的特定资源。
+- [在部署之前导出或从历史记录导出](../azure-resource-manager/templates/export-template-portal.md#export-template-before-deployment)。 此选项检索用于部署的确切模板副本。
+
+导出模板时，将在 MySQL 服务器资源的 ```"properties":{ }``` 部分中看到，出于安全原因，```administratorLogin``` 和 ```administratorLoginPassword``` 未包含在内。 部署模板前，必须将这些参数添加到模板中，否则模板会失败。
+
+```
+"resources": [
+    {
+      "type": "Microsoft.DBforMySQL/servers",
+      "apiVersion": "2017-12-01",
+      "name": "[parameters('servers_name')]",
+      "location": "chinaeast2",
+      "sku": {
+                "name": "B_Gen5_1",
+                "tier": "Basic",
+                "family": "Gen5",
+                "capacity": 1
+            },
+      "properties": {
+        "administratorLogin": "[parameters('administratorLogin')]",
+        "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+```
+
 ## <a name="clean-up-resources"></a>清理资源
 
 如果不再需要该资源组，可以将其删除，这将删除资源组中的资源。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 在 [Azure 门户](https://portal.azure.cn)中，搜索并选择“资源组”。
 

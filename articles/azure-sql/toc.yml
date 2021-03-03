@@ -133,8 +133,10 @@
                   href: database/xevent-code-ring-buffer.md
     - name: 共享操作说明
       items:
-        - name: 作业自动化
+        - name: 使用弹性作业的作业自动化
           href: database/job-automation-overview.md
+        - name: 使用 SQL 代理的作业自动化
+          href: database/job-automation-managed-instances.md
         - name: 业务连续性
           items:
             - name: 配置故障转移组
@@ -451,6 +453,8 @@
               href: database/elastic-pool-scale.md
             - name: 管理池资源
               href: database/elastic-pool-manage.md
+            - name: 密集弹性池中的资源管理
+              href: database/elastic-pool-resource-management.md
             - name: 超大规模性能诊断
               href: database/hyperscale-performance-diagnostics.md
         - name: 安全
@@ -606,8 +610,6 @@
               href: managed-instance/connect-vm-instance-configure.md
             - name: 点到站点连接
               href: managed-instance/point-to-site-p2s-configure.md
-            - name: 长期备份保留
-              href: managed-instance/long-term-backup-retention-configure.md
         - name: 加载数据
           items:
             - name: 还原示例数据库
@@ -718,6 +720,8 @@
           href: managed-instance/alerts-create.md
         - name: 在托管实例上手动启动故障转移
           href: managed-instance/user-initiated-failover.md
+        - name: 使用日志重播服务迁移数据库
+          href: managed-instance/log-replay-service-migrate.md
     - name: 示例
       items:
         - name: Azure CLI
@@ -978,7 +982,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/zh-CN/home'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 连接错误
           href: database/troubleshoot-common-errors-issues.md

@@ -4,16 +4,16 @@ description: 了解如何创建并发布 Azure Stack Hub 市场项。
 author: WenJason
 ms.topic: article
 origin.date: 11/16/2020
-ms.date: 12/07/2020
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: avishwan
 ms.lastreviewed: 11/16/2020
-ms.openlocfilehash: f9c620c9794ed77958404caec4d4363b342fda2c
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: ea662b54bf1c8f185f749bcaff909e2310f84992
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507765"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696741"
 ---
 # <a name="create-and-publish-a-custom-azure-stack-hub-marketplace-item"></a>创建并发布自定义 Azure Stack Hub 市场项
 
@@ -162,7 +162,7 @@ ms.locfileid: "96507765"
     ```powershell
     $ArmEndpoint = "https://adminmanagement.local.azurestack.external"
     Add-AzEnvironment -Name "AzureStackAdmin" -ArmEndpoint $ArmEndpoint
-    Add-AzAccount -EnvironmentName "AzureStackAdmin"
+    Connect-AzAccount -EnvironmentName "AzureStackAdmin"
     ```
 
 4. 运行以下脚本，将资源导入库中：

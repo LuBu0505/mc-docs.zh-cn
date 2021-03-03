@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 02/02/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 1e7e05807ddbf72f6e36bcfe7ffa2b722a528e61
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: aeb42190988545064be384ea5ecde03319174152
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540846"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697881"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入门：在 JavaScript SPA 中登录用户并获得访问令牌
 
@@ -37,7 +37,7 @@ ms.locfileid: "99540846"
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1（快速）：注册并自动配置应用，然后下载代码示例
 >
-> 1. 转到 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入门体验。
+> 1. 转到 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册</a>快速入门体验。
 > 1. 输入应用程序的名称。
 > 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户”。 
 > 1. 选择“注册”  。
@@ -47,21 +47,22 @@ ms.locfileid: "99540846"
 >
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 >
-> 1. 登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+> 1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 > 1. 搜索并选择“Azure Active Directory”  。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 > 1. 输入应用程序的 **名称**。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 > 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户”。 
 > 1. 选择“注册”  。 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
-> 1. 本快速入门要求启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)。 在已注册的应用程序的左窗格中，选择“身份验证”。
-> 1. 在“平台配置”下，选择“添加平台”。 左侧将打开一个面板。 在此面板中选择“Web 应用程序”区域。
-> 1. 在左侧将“重定向 URI”值设置为 `http://localhost:3000/`。 然后选择“访问令牌”和“ID 令牌”。
+> 1. 本快速入门要求启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)。 在“管理”下，选择“身份验证”。 
+> 1. 在“平台配置” > “添加平台”下 。 选择“Web”。
+> 1. 将“重定向 URI”值设为 `http://localhost:3000/` 
+> 1. 在“隐式授权和混合流”下，选择“访问令牌”和“ID 令牌”  。
 > 1. 选择“配置” 。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
-> 为使本快速入门中的代码示例正常运行，需将 `redirectUri` 添加为 `http://localhost:3000/` 并启用“隐式授权”。
+> 为使本快速入门的代码示例正常运行，请添加重定向 URI `http://localhost:3000/` 并启用“隐式授权” 。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [为我进行这些更改]()
 >
@@ -201,7 +202,7 @@ npm install msal
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |其中  | 说明 |
+> |Where  | 说明 |
 > |---------|---------|
 > |`clientId`     | 在 Azure 门户中注册的应用程序的应用程序 ID|
 > |`authority`    | （可选）支持帐户类型的颁发机构 URL，如前面的配置部分所述。 默认颁发机构为 `https://login.partner.microsoftonline.cn/common`。 |
@@ -229,7 +230,7 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-> |其中  | 说明 |
+> |Where  | 说明 |
 > |---------|---------|
 > | `scopes`   | （可选）包含在登录时为了获得用户许可而请求的范围。 例如：`["https://microsoftgraph.chinacloudapi.cn/user.read"]`（针对 Microsoft Graph）或 `[ "<Application ID URL>/scope" ]`（针对自定义 Web API，即 `api://<Application ID>/access_as_user`）。 |
 
@@ -259,20 +260,20 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-> |其中  | 说明 |
+> |Where  | 说明 |
 > |---------|---------|
 > | `scopes`   | 包含请求的需要在 API 的访问令牌中返回的作用域。 例如：`[ "https://microsoftgraph.chinacloudapi.cn/mail.read" ]`（针对 Microsoft Graph）或 `[ "<Application ID URL>/scope" ]`（针对自定义 Web API，即 `api://<Application ID>/access_as_user`）。|
 
 #### <a name="get-a-user-token-interactively"></a>以交互方式获取用户令牌
 
-在某些情况下，需要强制用户与 Microsoft 标识平台终结点交互。 例如：
+在某些情况下，你要强制用户与 Microsoft 标识平台进行交互。 例如：
 * 由于密码已过期，用户可能需要重新输入凭据。
 * 应用程序正在请求访问用户需要许可的其他资源范围。
 * 需要双重身份验证。
 
 建议用于大多数应用程序的常用模式是先调用 `acquireTokenSilent`，然后捕获异常，然后再调用 `acquireTokenPopup`（或 `acquireTokenRedirect`），以便启动交互式请求。
 
-调用 `acquireTokenPopup` 会显示用于登录的弹出窗口。 （调用 `acquireTokenRedirect` 会将用户重定向到 Microsoft 标识平台终结点。）在该窗口中，为了进行交互，用户需要确认其凭证、为所需的资源提供许可，或者完成双重身份验证。
+调用 `acquireTokenPopup` 会显示用于登录的弹出窗口。 （调用 `acquireTokenRedirect` 则会将用户重定向到 Microsoft 标识平台。） 在该窗口中，为了进行交互，用户需要确认其凭证、为所需的资源提供许可，或者完成双重身份验证。
 
 ```javascript
 // Add here scopes for access token to be used at MS Graph API endpoints.

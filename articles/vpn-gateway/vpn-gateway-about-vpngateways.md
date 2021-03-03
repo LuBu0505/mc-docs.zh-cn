@@ -7,15 +7,15 @@ Customer intent: As someone with a basic network background, but is new to Azure
 ms.service: vpn-gateway
 ms.topic: overview
 origin.date: 08/27/2020
-ms.date: 01/04/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.custom: contperfq1
-ms.openlocfilehash: a05ff792fd3a25ec5cfcdfe7d040d6e2d99fd09d
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 36154e066fb921b4b4f27a7332b5d079056cc1a7
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856918"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697528"
 ---
 # <a name="what-is-vpn-gateway"></a>什么是 VPN 网关？
 

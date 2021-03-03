@@ -1,25 +1,24 @@
 ---
-title: Azure PowerShell 脚本示例 - 为点到站点 VPN 配置 RADIUS 用户名/密码身份验证 | Microsoft Docs
-description: 为点到站点 VPN 配置 RADIUS 用户名/密码身份验证。 本文使用 PowerShell。
+title: Azure PowerShell 脚本示例 - 为 P2S VPN 配置 RADIUS 身份验证
+titleSuffix: Azure VPN Gateway
+description: 为点到站点 VPN 配置 RADIUS 用户名/密码身份验证的 PowerShell 示例
 services: vpn-gateway
-documentationcenter: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
-ms.devlang: powershell
 ms.topic: sample
-origin.date: 05/30/2018
-ms.date: 09/07/2020
+origin.date: 02/10/2021
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.openlocfilehash: 26339635096e6220e844e6cd37839841cc6ec81b
-ms.sourcegitcommit: 22e1da9309795e74a91b7241ac5987a802231a8c
+ms.openlocfilehash: 28781a43ae0d322ab53e4c46cc40936d19c8248b
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462951"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697894"
 ---
-# <a name="create-a-vpn-gateway-and-add-point-to-site-configuration-using-powershell"></a>使用 PowerShell 创建 VPN 网关并添加点到站点配置
+# <a name="create-a-vpn-gateway-with-p2s-radius-authentication---powershell-script-sample"></a>创建具有 P2S RADIUS 身份验证的 VPN 网关 - PowerShell 脚本示例
 
-此脚本创建基于路由的 VPN 网关，并使用 RADIUS 用户名/密码身份验证添加点到站点配置
+此脚本示例创建基于路由的 VPN 网关，并使用 RADIUS 用户名/密码身份验证添加点到站点配置。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -27,48 +26,46 @@ ms.locfileid: "89462951"
 # Declare variables
   $VNetName  = "VNet1"
   $FESubName = "FrontEnd"
-  $BESubName = "Backend"
-  $GWSubName = "GatewaySubnet"
-  $VNetPrefix1 = "10.0.0.0/16"
+  $VNetPrefix1 = "10.1.0.0/16"
   $FESubPrefix = "10.1.0.0/24"
-  $BESubPrefix = "10.1.1.0/24"
   $GWSubPrefix = "10.1.255.0/27"
-  $VPNClientAddressPool = "192.168.0.0/24"
+  $VPNClientAddressPool = "172.16.201.0/24"
   $RG = "TestRG1"
   $Location = "China North"
   $GWName = "VNet1GW"
   $GWIPName = "VNet1GWIP"
-  $GWIPconfName = "gwipconf"
+  $RSAddress = "10.51.0.15"
+
 # Create a resource group
-New-AzResourceGroup -Name TestRG1 -Location ChinaNorth
+New-AzResourceGroup -Name $RG -Location $Location
 # Create a virtual network
 $virtualNetwork = New-AzVirtualNetwork `
-  -ResourceGroupName TestRG1 `
-  -Location ChinaNorth `
-  -Name VNet1 `
-  -AddressPrefix 10.1.0.0/16
+  -ResourceGroupName $RG `
+  -Location $Location `
+  -Name $VNetName `
+  -AddressPrefix $VNetPrefix1
 # Create a subnet configuration
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
-  -Name Frontend `
-  -AddressPrefix 10.1.0.0/24 `
+  -Name $FESubName `
+  -AddressPrefix $FESubPrefix `
   -VirtualNetwork $virtualNetwork
 # Set the subnet configuration for the virtual network
 $virtualNetwork | Set-AzVirtualNetwork
 # Add a gateway subnet
-$vnet = Get-AzVirtualNetwork -ResourceGroupName TestRG1 -Name VNet1
-Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $vnet
+$vnet = Get-AzVirtualNetwork -ResourceGroupName $RG -Name $VNetName
+Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix $GWSubPrefix -VirtualNetwork $vnet
 # Set the subnet configuration for the virtual network
 $vnet | Set-AzVirtualNetwork
 # Request a public IP address
-$gwpip= New-AzPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1 -Location 'China North' `
+$gwpip= New-AzPublicIpAddress -Name $GWIPName -ResourceGroupName $RG -Location $Location `
  -AllocationMethod Dynamic
 # Create the gateway IP address configuration
-$vnet = Get-AzVirtualNetwork -Name VNet1 -ResourceGroupName TestRG1
+$vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $RG
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
 $gwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id
 # Create the VPN gateway
-New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
- -Location 'China North' -IpConfigurations $gwipconfig -GatewayType Vpn `
+New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
+ -Location $Location -IpConfigurations $gwipconfig -GatewayType Vpn `
  -VpnType RouteBased -GatewaySku VpnGw1 -VpnClientProtocol "IKEv2"
 # Create a secure string for the RADIUS secret
 $Secure_Secret=Read-Host -AsSecureString -Prompt "RadiusSecret"
@@ -76,8 +73,8 @@ $Secure_Secret=Read-Host -AsSecureString -Prompt "RadiusSecret"
 # Add the VPN client address pool and the RADIUS server information
 $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway `
- -VpnClientAddressPool "172.16.201.0/24" -VpnClientProtocol @( "SSTP", "IkeV2" ) `
- -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
+ -VpnClientAddressPool $VPNClientAddressPool -VpnClientProtocol @( "SSTP", "IkeV2" ) `
+ -RadiusServerAddress $RSAddress -RadiusServerSecret $Secure_Secret
 ```
 
 ## <a name="clean-up-resources"></a>清理资源
@@ -111,5 +108,3 @@ Remove-AzResourceGroup -Name TestRG1
 ## <a name="next-steps"></a>后续步骤
 
 有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/)。
-
-<!-- Update_Description: code update -->

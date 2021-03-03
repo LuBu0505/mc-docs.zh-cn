@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 01/05/2021
+ms.date: 02/19/2021
 ms.custom: lyrana
-ms.openlocfilehash: 75e245a50e54555e0ee2edc4c5dd82d5e408c76f
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 3b533bb5add72d649c2a97e686b7f3f57c5be321
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023560"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697173"
 ---
 # <a name="monitoring-time-series-insights"></a>监视时序见解
 
@@ -27,7 +27,7 @@ ms.locfileid: "98023560"
 
 ## <a name="what-is-azure-monitor"></a>什么是 Azure Monitor
 
-时序见解使用 [Azure Monitor](/azure-monitor/overview) 创建监视数据。Azure Monitor 是 Azure 中的一个全堆栈监视服务，提供用于监视 Azure 资源以及其他云中的资源和本地资源的整套功能。
+时序见解使用 [Azure Monitor](../azure-monitor/overview.md) 创建监视数据。Azure Monitor 是 Azure 中的一个全堆栈监视服务，提供用于监视 Azure 资源以及其他云中的资源和本地资源的整套功能。
 
 一开始可以阅读[使用 Azure Monitor 监视 Azure 资源](/azure-monitor/insights/monitor-azure-resource)一文，其中介绍了以下概念：
 
@@ -63,7 +63,7 @@ Azure 时序见解收集的监视数据的类型与 [Azure 资源的监视数据
 
 ## <a name="analyzing-metrics"></a>分析指标
 
-可以从“Azure Monitor”菜单中打开“指标”，以分析 Azure 时序见解指标以及来自其他 Azure 服务的指标。 有关使用此工具的详细信息，请参阅 [Azure 指标资源管理器入门](/azure-monitor/platform/metrics-getting-started)。
+可以从“Azure Monitor”菜单中打开“指标”，以分析 Azure 时序见解指标以及来自其他 Azure 服务的指标。 有关使用此工具的详细信息，请参阅 [Azure 指标资源管理器入门](../azure-monitor/platform/metrics-getting-started.md)。
 
 有关收集的平台指标的列表，请参阅[监视 Azure 时序见解数据参考](how-to-monitor-tsi-reference.md#metrics)
 
@@ -88,7 +88,7 @@ Azure 时序见解将数据存储在以下表中。
 |:---|:---|
 | TSIIngress | 存储来自入口类别的数据的表。 入口类别跟踪入口管道中发生的错误。 此类别包括接收事件（如连接到事件源失败）和处理事件（如分析事件负载时出现错误）时发生的错误。
 
-若要将数据路由到 Azure Monitor 日志，你必须创建一个诊断设置，以便将资源日志或平台指标发送到 Log Analytics 工作区。 若要了解详细信息，请参阅[收集和路由](/iot-hub/monitor-iot-hub#collection-and-routing)。
+若要将数据路由到 Azure Monitor 日志，你必须创建一个诊断设置，以便将资源日志或平台指标发送到 Log Analytics 工作区。 若要了解详细信息，请参阅[收集和路由](../iot-hub/monitor-iot-hub.md#collection-and-routing)。
 
 ## <a name="sample-queries"></a>示例查询
 
@@ -115,7 +115,7 @@ Azure 时序见解将数据存储在以下表中。
 
 ## <a name="alerts"></a>警报
 
-在监视数据中发现重要情况时，Azure Monitor 警报会主动通知你。 有了警报，你就可以在客户注意到你的系统中的问题之前确定和解决它们。 可以在[指标](/azure-monitor/platform/alerts-metric-overview)、[日志](/azure-monitor/platform/alerts-unified-log)和[活动日志](/azure-monitor/platform/activity-log-alerts)上设置警报。 不同类型的警报各有优缺点。
+在监视数据中发现重要情况时，Azure Monitor 警报会主动通知你。 有了警报，你就可以在客户注意到你的系统中的问题之前确定和解决它们。 可以在[指标](../azure-monitor/platform/alerts-metric-overview.md)、[日志](../azure-monitor/platform/alerts-unified-log.md)和[活动日志](../azure-monitor/platform/activity-log-alerts.md)上设置警报。 不同类型的警报各有优缺点。
 
 当基于平台指标创建警报规则时，请注意，对于以计数单位收集的时序见解平台指标，某些聚合可能不可用或无法使用。
 

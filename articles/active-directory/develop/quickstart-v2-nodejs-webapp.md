@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 02/02/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 773ddc7341f7867d9fa1a5053addce559706ee0e
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: 2019b2bd96cd736b7db4116a3d99956ddbf0bb66
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540842"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697871"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>快速入门：向 Node.js Web 应用添加使用 OpenID Connect 登录功能
 
@@ -30,22 +30,22 @@ ms.locfileid: "99540842"
 
 ## <a name="register-your-application"></a>注册应用程序
 
-1. 登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 1. 输入应用程序的名称（例如 `MyWebApp`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 1. 在“支持的帐户类型”部分，选择“任何组织目录中的帐户”。 
 
-    如果有多个重定向 URI，以后需要在成功创建应用后，从“身份验证”选项卡添加这些 URI。
+    如果有多个重定向 URI，请在成功创建应用后，在“身份验证”选项卡中添加这些 URI。
 
 1. 选择“注册”以创建应用。
 1. 在应用的“概述”页上，找到“应用程序(客户端) ID”值，并记下该值供稍后使用。  稍后需要在此项目中使用此值来配置应用程序。
 1. 在“管理”下，选择“身份验证”。 
 1. 选择“添加平台” > “Web” 。 
 1. 在“重定向 URI”部分中，输入 `http://localhost:3000/auth/openid/return`。
-1. 输入注销 URL `https://localhost:3000`。
-1. 在隐式授权部分，选中“ID 令牌”，因为该示例需要启用[隐式授权流](./v2-oauth2-implicit-grant-flow.md)才能让用户登录。
+1. 输入前向通道注销 URL `https://localhost:3000`。
+1. 在“隐式授权和混合流”部分，选择“ID 令牌”，因为该示例需要启用[隐式授权流](./v2-oauth2-implicit-grant-flow.md)才能让用户登录 。
 1. 选择“配置” 。
 1. 在“管理”下，选择“证书和机密” > “新建客户端机密”  。
 1. 输入实例应用机密的密钥说明。

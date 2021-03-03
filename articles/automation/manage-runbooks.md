@@ -4,20 +4,20 @@ description: 本文介绍如何在 Azure 自动化中管理 Runbook。
 services: automation
 ms.subservice: process-automation
 origin.date: 10/23/2020
-ms.date: 12/07/2020
+ms.date: 02/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: a5e12e637afc28d8bfd91065566c8e3bf947d108
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 5ff0712cd985a6e3d4a7a83ab6a49aee1c1aed40
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747171"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697684"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>在 Azure 自动化中管理 Runbook
 
-可以通过以下方法将 Runbook 添加到 Azure 自动化：创建新的 Runbook 或从文件中导入现有 Runbook。 本文介绍如何管理从文件中导入的 Runbook。 
+可创建新的 Runbook，或从文件或 [Runbook 库](automation-runbook-gallery.md)中导入现有 Runbook，将 Runbook 添加到 Azure 自动化中。 本文介绍如何管理从文件中导入的 Runbook。 可在 [Azure 自动化的 Runbook 和模块库](automation-runbook-gallery.md)中获取有关如何访问社区 Runbook 和模块的全部详细信息。
 
-## <a name="create-a-runbook"></a>创建 runbook
+## <a name="create-a-runbook"></a>创建 Runbook
 
 使用 Azure 门户或 Windows PowerShell 在 Azure 自动化中创建新的 Runbook。 Runbook 创建后，就可使用下文中的信息编辑它：
 

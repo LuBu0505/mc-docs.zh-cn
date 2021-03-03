@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 09/29/2020
+ms.date: 02/18/2021
 ms.author: v-junlch
-ms.openlocfilehash: aee40603c1fa4d5be33185e03891f8ae8c20613b
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: bf003198fd5754949ce966310f661fa8d2c41f67
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937396"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697478"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>创建应用程序网关自定义错误页
 
@@ -49,7 +49,7 @@ ms.locfileid: "91937396"
 1. 在门户中导航到“应用程序网关”，并选择一个应用程序网关。
 
     ![显示应用程序网关的“概述”页的屏幕截图。](./media/custom-error/ag-overview.png)
-2. 单击“侦听器”**** 并导航到你要在其中指定错误页的特定侦听器。
+2. 单击“侦听器”并导航到你要在其中指定错误页的特定侦听器。
 
     ![应用程序网关侦听器](./media/custom-error/ag-listener.png)
 3. 在侦听器级别为 403 WAF 错误或 502 维护页配置一个自定义错误页。
@@ -57,7 +57,7 @@ ms.locfileid: "91937396"
     > [!NOTE]
     > 目前不支持从 Azure 门户中创建全局级别的自定义错误页。
 
-4. 为给定的错误状态代码指定一个可公开访问的 blob URL，然后单击“保存”。**** 现在，应用程序网关已经配置了自定义错误页。
+4. 为给定的错误状态代码指定一个可公开访问的 blob URL，然后单击“保存”。 现在，应用程序网关已经配置了自定义错误页。
 
    ![应用程序网关错误代码](./media/custom-error/ag-error-codes.png)
 
@@ -81,9 +81,8 @@ $listener01 = Get-AzApplicationGatewayHttpListener -Name <listener-name> -Applic
 $updatedlistener = Add-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus502 -CustomErrorPageUrl "http://<website-url>"
 ```
 
-有关详细信息，请参阅 [Add-AzApplicationGatewayCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewaycustomerror?view=azps-1.2.0) 和 [Add-AzApplicationGatewayHttpListenerCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewayhttplistenercustomerror?view=azps-1.3.0)。
+有关详细信息，请参阅 [Add-AzApplicationGatewayCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewaycustomerror) 和 [Add-AzApplicationGatewayHttpListenerCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewayhttplistenercustomerror)。
 
 ## <a name="next-steps"></a>后续步骤
 
 有关应用程序网关诊断的信息，请参阅[应用程序网关的后端运行状况、诊断日志和指标](application-gateway-diagnostics.md)。
-

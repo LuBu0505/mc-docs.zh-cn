@@ -7,14 +7,14 @@ Customer intent: As someone with a basic network background, but is new to Azure
 ms.service: vpn-gateway
 ms.topic: article
 origin.date: 09/03/2020
-ms.date: 11/23/2020
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.openlocfilehash: 7b194f552af7e3aee2b66e5c4ce736deaa72ac7f
-ms.sourcegitcommit: db15d6cc591211c0e531d636f45e9cbe24cfb15b
+ms.openlocfilehash: 1c448d24567635f5aa07cfba3032e3f67e2afa4d
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94908927"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697857"
 ---
 # <a name="vpn-gateway-design"></a>VPN 网关设计
 

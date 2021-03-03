@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/02/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 5ef2875054c874ffa62801cf54db537ccdc56828
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: 85893b472406cccd305ab9613923277547be391a
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540848"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697802"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>使用 MSAL.js 初始化客户端应用程序
 
@@ -43,7 +43,7 @@ ms.locfileid: "99540848"
 
 ## <a name="initialize-msaljs-2x-apps"></a>初始化 MSAL.js 2.x 应用
 
-通过使用`Configuration`对象实例化 `PublicClientApplication` 来初始化 MSAL 身份验证上下文。 所需的最低配置属性是应用程序的 `clientID`，在 Azure 门户中应用注册的“概述”页上显示为“应用程序(客户端) ID” 。
+通过使用[配置][msal-js-configuration]对象实例化 [PublicClientApplication][msal-js-publicclientapplication] 来初始化 MSAL 身份验证上下文。 所需的最低配置属性是应用程序的 `clientID`，在 Azure 门户中应用注册的“概述”页上显示为“应用程序(客户端) ID” 。
 
 下面是一个示例配置对象和 `PublicClientApplication` 的实例化：
 
@@ -103,7 +103,7 @@ msalInstance.handleRedirectPromise().then((tokenResponse) => {
 
 ### `handleRedirectPromise`
 
-当应用程序使用重定向流时，调用 `handleRedirectPromise`。 使用重定向流时，应在每次加载页面时运行 `handleRedirectPromise`。
+当应用程序使用重定向流时，调用 [handleRedirectPromise][msal-js-handleredirectpromise]。 使用重定向流时，应在每次加载页面时运行 `handleRedirectPromise`。
 
 这个承诺有三种可能的结果：
 
@@ -113,9 +113,9 @@ msalInstance.handleRedirectPromise().then((tokenResponse) => {
 
 ## <a name="initialize-msaljs-1x-apps"></a>初始化 MSAL.js 1.x 应用
 
-通过使用配置对象实例化 `UserAgentApplication` 来初始化 MSAL 1.x 身份验证上下文。 所需的最低配置属性是应用程序的 `clientID`，在 Azure 门户中应用注册的“概述”页上显示为“应用程序(客户端) ID” 。
+通过使用配置对象实例化 [UserAgentApplication][msal-js-useragentapplication] 来初始化 MSAL 1.x 身份验证上下文。 所需的最低配置属性是应用程序的 `clientID`，在 Azure 门户中应用注册的“概述”页上显示为“应用程序(客户端) ID” 。
 
-在 MSAL.js 1.2.x 或更早版本中，对于使用重定向流的身份验证方法（`loginRedirect` 和 `acquireTokenRedirect`），必须通过 `handleRedirectCallback()` 方法显式注册一个返回成功或错误结果的回调。 在 MSAL.js 1.2.x 和更早版本中，必须显式注册回调，因为重定向流不会像具有弹出体验的方法那样返回承诺。 在 MSAL.js 版本 1.3.x 和更高版本中注册回调是可选操作。
+对于 MSAL.js 1.2.x 或更早版本中使用重定向流（[loginRedirect][msal-js-loginredirect] 和 [acquireTokenRedirect][msal-js-acquiretokenredirect]）的身份验证方法，必须通过 `handleRedirectCallback()` 方法显式注册一个返回成功或错误结果的回调。 在 MSAL.js 1.2.x 和更早版本中，必须显式注册回调，因为重定向流不会像具有弹出体验的方法那样返回承诺。 在 MSAL.js 版本 1.3.x 和更高版本中注册回调是可选操作。
 
 ```javascript
 // Configuration object constructed
@@ -146,10 +146,16 @@ MSAL.js 1.x 和 2.x 在设计上分别采用 `UserAgentApplication` 或 `PublicC
 
 ## <a name="next-steps"></a>后续步骤
 
-GitHub 上的此 MSAL.js 2.x 代码示例演示如何使用`Configuration`对象实例化 `PublicClientApplication`：
+GitHub 上的此 MSAL.js 2.x 代码示例演示如何使用[配置][msal-js-configuration]对象实例化 [PublicClientApplication][msal-js-publicclientapplication]：
 
 [Azure-Samples/ms-identity-javascript-v2](https://github.com/Azure-Samples/ms-identity-javascript-v2)
 
 <!-- LINKS - External -->
 [msal-browser]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-browser/
 [msal-core]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/
+[msal-js-acquiretokenredirect]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal.useragentapplication.html#acquiretokenredirect
+[msal-js-configuration]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/modules/_azure_msal.html#configuration
+[msal-js-handleredirectpromise]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal_browser.publicclientapplication.html#handleredirectpromise
+[msal-js-loginredirect]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal.useragentapplication.html#loginredirect
+[msal-js-publicclientapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal_browser.publicclientapplication.html
+[msal-js-useragentapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal.useragentapplication.html

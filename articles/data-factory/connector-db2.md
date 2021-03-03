@@ -1,23 +1,18 @@
 ---
 title: 使用 Azure 数据工厂从 DB2 复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 DB2 复制到支持的接收器数据存储。
-services: data-factory
-documentationcenter: ''
 author: WenJason
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 origin.date: 05/26/2020
-ms.date: 06/29/2020
+ms.date: 03/01/2021
 ms.author: v-jay
-ms.openlocfilehash: 7941d696d6be3853273651d24d7cd19d7f12e052
-ms.sourcegitcommit: f5484e21fa7c95305af535d5a9722b5ab416683f
+ms.openlocfilehash: 175670cb04b1dde293d2c47298f53efb59e8268a
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322583"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697280"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 DB2 复制数据
 
@@ -29,7 +24,7 @@ ms.locfileid: "85322583"
 
 以下活动支持此 DB2 数据库连接器：
 
-- 包含[支持的源/接收器矩阵](copy-activity-overview.md)的 [Copy 活动](copy-activity-overview.md)
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 DB2 数据库复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
@@ -65,7 +60,7 @@ ms.locfileid: "85322583"
 
 DB2 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Db2** | 是 |
 | connectionString | 指定连接到 DB2 实例所需的信息。<br/> 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
@@ -73,14 +68,14 @@ DB2 链接服务支持以下属性：
 
 连接字符串中的典型属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | server |DB2 服务器的名称。 可以在冒号分隔的服务器名称后面指定端口号，例如 `server:port`。<br>DB2 连接器采用 DDM/DRDA 协议，如果未指定，则默认使用端口 50000。 特定 DB2 数据库使用的端口可能会因版本和设置而有所不同，例如，对于 DB2 LUW，默认端口为 50000，对于 AS400，默认端口为 446 或 448（如果启用 TLS）。 请参阅以下 DB2 文档，了解端口的典型配置方式：[DB2 z/OS](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.qb.dbconn.doc/doc/t0008229.html)、[DB2 iSeries](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/ddp/rbal1ports.htm) 和 [DB2 LUW](https://www.ibm.com/support/knowledgecenter/en/SSEKCU_1.1.3.0/com.ibm.psc.doc/install/psc_t_install_typical_db2_port.html)。 |是 |
 | database |DB2 数据库的名称。 |是 |
 | authenticationType |用于连接 DB2 数据库的身份验证类型。<br/>允许的值为：**基本**。 |是 |
 | username |指定用于连接到 DB2 数据库的用户名。 |是 |
 | password |指定为用户名指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
-| packageCollection | 指定在查询数据库时，ADF 自动创建所需的包的位置。 如果未设置此值，数据工厂将使用 {username} 作为默认值。 | 否 |
+| packageCollection    | 指定在查询数据库时，ADF 自动创建所需的包的位置。 如果未设置此值，数据工厂将使用 {username} 作为默认值。 | 否 |
 | certificateCommonName | 使用安全套接字层 (SSL) 或传输层安全性 (TLS) 加密时，必须为“证书公用名称”输入值。 | 否 |
 
 > [!TIP]
@@ -112,13 +107,13 @@ DB2 链接服务支持以下属性：
         "type": "Db2",
         "typeProperties": {
             "connectionString": "server=<server:port>;database=<database>;authenticationType=Basic;username=<username>;packageCollection=<packagecollection>;certificateCommonName=<certname>;",
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -162,7 +157,7 @@ DB2 链接服务支持以下属性：
 
 若要从 DB2 复制数据，需要支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**Db2Table** | 是 |
 | 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
@@ -197,10 +192,10 @@ DB2 链接服务支持以下属性：
 
 若要从 DB2 复制数据，复制活动的 **source** 节需要支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**Db2Source** | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`。 | 否（如果指定了数据集中的“tableName”） |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 
@@ -245,28 +240,28 @@ DB2 链接服务支持以下属性：
 | BigInt |Int64 |
 | 二进制 |Byte[] |
 | Blob |Byte[] |
-| Char |String |
-| Clob |String |
+| Char |字符串 |
+| Clob |字符串 |
 | Date |datetime |
-| DB2DynArray |String |
-| DbClob |String |
+| DB2DynArray |字符串 |
+| DbClob |字符串 |
 | 小数 |小数 |
 | DecimalFloat |小数 |
 | Double |Double |
 | Float |Double |
-| Graphic |String |
+| Graphic |字符串 |
 | Integer |Int32 |
 | LongVarBinary |Byte[] |
-| LongVarChar |String |
-| LongVarGraphic |String |
+| LongVarChar |字符串 |
+| LongVarGraphic |字符串 |
 | Numeric |小数 |
 | Real |Single |
 | SmallInt |Int16 |
 | 时间 |TimeSpan |
-| Timestamp |DateTime |
+| 时间戳 |DateTime |
 | VarBinary |Byte[] |
-| VarChar |String |
-| VarGraphic |String |
+| VarChar |字符串 |
+| VarGraphic |字符串 |
 | Xml |Byte[] |
 
 ## <a name="lookup-activity-properties"></a>Lookup 活动属性

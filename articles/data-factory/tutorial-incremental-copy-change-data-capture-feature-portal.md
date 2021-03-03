@@ -1,23 +1,18 @@
 ---
 title: 使用变更数据捕获以增量方式复制数据
 description: 在本教程中，你将创建一个 Azure 数据工厂管道，该管道以增量方式将增量数据从 Azure SQL 托管实例数据库中的表复制到 Azure 存储。
-services: data-factory
 ms.author: v-jay
 author: WenJason
-manager: digimobile
-ms.reviewer: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
-ms.custom: ''
 origin.date: 05/04/2020
-ms.date: 02/01/2021
-ms.openlocfilehash: 82625ea67b75a1365a4a01beb0c0f66be55a7ad8
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/01/2021
+ms.openlocfilehash: b5d2684e18f78c3a9cc966fa9dc5efcaf435a109
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059265"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697317"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>使用变更数据捕获 (CDC)，以增量方式将 Azure SQL 托管实例中的数据加载到 Azure 存储
 
@@ -91,10 +86,10 @@ ms.locfileid: "99059265"
 
     ```sql
      insert into customers 
-        (customer_id, first_name, last_name, email, city) 
+         (customer_id, first_name, last_name, email, city) 
      values 
-        (1, 'Chevy', 'Leward', 'cleward0@mapy.cz', 'Reading'),
-        (2, 'Sayre', 'Ateggart', 'sateggart1@nih.gov', 'Portsmouth'),
+         (1, 'Chevy', 'Leward', 'cleward0@mapy.cz', 'Reading'),
+         (2, 'Sayre', 'Ateggart', 'sateggart1@nih.gov', 'Portsmouth'),
         (3, 'Nathalia', 'Seckom', 'nseckom2@blogger.com', 'Portsmouth');
     ```
 
@@ -104,18 +99,17 @@ ms.locfileid: "99059265"
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
 1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
-1. 在左侧菜单中，选择“创建资源” > “数据 + 分析” > “数据工厂”：
+2. 在左侧菜单中，选择“创建资源” > “数据 + 分析” > “数据工厂”：
 
    ![在“新建”窗格中选择“数据工厂”](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-azure-data-factory-menu.png)
 
-2. 在“新建数据工厂”页中，输入 **ADFTutorialDataFactory** 作为 **名称**。
+3. 在“新建数据工厂”页中，输入 **ADFTutorialDataFactory** 作为 **名称**。
 
      ![“新建数据工厂”页](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-azure-data-factory.png)
 
    Azure 数据工厂的名称必须 **全局唯一**。 如果收到错误，请更改数据工厂的名称（例如改为 yournameADFTutorialDataFactory），并重新尝试创建。 有关数据工厂项目命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
 
     数据工厂名“ADFTutorialDataFactory”不可用。
-3. 选择“V2”作为“版本”。
 4. 选择要在其中创建数据工厂的 Azure **订阅**。
 5. 对于 **资源组**，请执行以下步骤之一：
 
@@ -124,7 +118,6 @@ ms.locfileid: "99059265"
          
     若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 5. 选择数据工厂的 **位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
-6. 取消选中“启用 GIT”。     
 7. 单击“创建”。
 8. 部署完成后，单击“转到资源”
 

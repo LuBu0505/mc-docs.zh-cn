@@ -1,6 +1,5 @@
 ---
-title: 媒体服务实体的筛选、排序和分页
-titleSuffix: Azure Media Services
+title: 实体的筛选、排序和分页
 description: 了解如何对 Azure 媒体服务 v3 实体进行筛选、排序和分页。
 services: media-services
 documentationcenter: ''
@@ -11,15 +10,15 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: overview
 origin.date: 08/31/2020
-ms.date: 09/28/2020
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: b6670e3a08510182f3de577e97f8a27e812a877d
-ms.sourcegitcommit: 7ad3bfc931ef1be197b8de2c061443be1cf732ef
+ms.openlocfilehash: 56a5ca134463b4786fb7e122b41bb3db58efcdbb
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91245129"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697730"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>媒体服务实体的筛选、排序和分页
 
@@ -38,15 +37,15 @@ ms.locfileid: "91245129"
 
 相等性运算符：
 
-- `eq`：测试某个字段是否*等于*某个常量值。
-- `ne`：测试某个字段是否*不等于*某个常量值。
+- `eq`：测试某个字段是否 *等于* 某个常量值。
+- `ne`：测试某个字段是否 *不等于* 某个常量值。
 
 范围运算符：
 
-- `gt`：测试某个字段是否*大于*某个常量值。
-- `lt`：测试某个字段是否*小于*某个常量值。
+- `gt`：测试某个字段是否 *大于* 某个常量值。
+- `lt`：测试某个字段是否 *小于* 某个常量值。
 - `ge`：测试某个字段是否大于或等于  某个常数值。
-- `le`：测试某个字段是否*小于或等于*某个常量值。
+- `le`：测试某个字段是否 *小于或等于* 某个常量值。
 
 ## <a name="filter"></a>筛选器
 
@@ -152,7 +151,7 @@ https://management.chinacloudapi.cn/subscriptions/00000000-0000-0000-0000-000000
 
 ```csharp
 var odataQuery = new ODataQuery<Job>("properties/state eq Microsoft.Media.JobState'Scheduled' or properties/state eq Microsoft.Media.JobState'Processing'");
-client.Jobs.List(config.ResourceGroup, config.AccountName, AdaptiveStreaming, odataQuery);
+client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransformName, odataQuery);
 ```
 
 ## <a name="filtering-and-ordering-options-of-entities"></a>实体的筛选和排序选项
@@ -161,27 +160,27 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, AdaptiveStreaming, od
 
 |实体名称|属性名称|筛选器|订单|
 |---|---|---|---|
-|[资产](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`、`gt`、`lt`、`ge`、`le`|`asc` 和 `desc`|
+|[资产](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` 和 `desc`|
 ||properties.alternateId |`eq`||
 ||properties.assetId |`eq`||
-||properties.created| `eq`、`gt`、`lt`| `asc` 和 `desc`|
-|[内容密钥策略](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
-||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
-||properties.description    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`||
-||properties.lastModified|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
+||properties.created| `eq`, `gt`, `lt`| `asc` 和 `desc`|
+|[内容密钥策略](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+||properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+||properties.description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
+||properties.lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
 ||properties.policyId|`eq`, `ne`||
 |[作业](https://docs.microsoft.com/rest/api/media/jobs)| name  | `eq`            | `asc` 和 `desc`|
 ||properties.state        | `eq`, `ne`        |                         |
-||properties.created      | `gt`、`ge`、`lt`、`le`| `asc` 和 `desc`|
-||properties.lastModified | `gt`、`ge`、`lt`、`le` | `asc` 和 `desc`| 
-|[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
-||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
-||properties.endTime    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
-|[流式处理策略](https://docs.microsoft.com/rest/api/media/streamingpolicies)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
-||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
+||properties.created      | `gt`, `ge`, `lt`, `le`| `asc` 和 `desc`|
+||properties.lastModified | `gt`, `ge`, `lt`, `le` | `asc` 和 `desc`| 
+|[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+||properties.created    |`eq`, `ne`, `ge`, `le`,  `gt`, `lt`|`asc` 和 `desc`|
+||properties.endTime    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+|[流式处理策略](https://docs.microsoft.com/rest/api/media/streamingpolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+||properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
 |[转换](https://docs.microsoft.com/rest/api/media/transforms)| name | `eq`            | `asc` 和 `desc`|
-|| properties.created      | `gt`、`ge`、`lt`、`le`| `asc` 和 `desc`|
-|| properties.lastModified | `gt`、`ge`、`lt`、`le`| `asc` 和 `desc`|
+|| properties.created      | `gt`, `ge`, `lt`, `le`| `asc` 和 `desc`|
+|| properties.lastModified | `gt`, `ge`, `lt`, `le`| `asc` 和 `desc`|
 
 ## <a name="next-steps"></a>后续步骤
 

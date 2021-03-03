@@ -4,16 +4,16 @@ description: 了解如何规划和准备数据中心与 Azure Stack Hub 集成�
 author: WenJason
 ms.topic: conceptual
 origin.date: 04/02/2020
-ms.date: 01/18/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2019
-ms.openlocfilehash: 35b848198270fa54f9ae9379a4aed39f1f4a1c9c
-ms.sourcegitcommit: e1edc6ef84dbbda1da4e0a42efa3fd62eee033d1
+ms.openlocfilehash: 830de63eeb63d0eed1d27398a557f767cddbba17
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541897"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696591"
 ---
 # <a name="datacenter-integration-planning-considerations-for-azure-stack-hub-integrated-systems"></a>有关 Azure Stack Hub 集成系统的数据中心集成规划注意事项
 
@@ -199,7 +199,6 @@ Azure Stack Hub 不会备份租户应用和数据。 必须针对 Azure Stack Hu
 ## <a name="learn-more"></a>了解详细信息
 
 - 有关用例、购买、合作伙伴和 OEM 硬件供应商的信息，请参阅 [Azure Stack Hub](https://azure.microsoft.com/overview/azure-stack/) 产品页。
-- 有关 Azure Stack Hub 集成系统的路线图和上市区域的信息，请参阅白皮书：[Azure Stack Hub：Azure 的扩展](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)。 
 
 ## <a name="next-steps"></a>后续步骤
 [Azure Stack Hub 部署连接模型](azure-stack-connection-models.md)

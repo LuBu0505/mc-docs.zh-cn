@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 01/14/2021
+ms.date: 02/24/2021
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 25dceb8ea417158481f009590b613fa91a8806d0
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 2d335256216d676698e91ccef2fcf389eebf4db1
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195128"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696896"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>教程：让用户登录并从 JavaScript 单页应用程序 (SPA) 调用 Microsoft 图形 API
 
@@ -45,7 +45,7 @@ ms.locfileid: "98195128"
 
 ![显示本教程生成的示例应用的工作原理](./media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
-本指南创建的示例应用程序允许 JavaScript SPA 查询从 Microsoft 标识平台终结点接受令牌的 Microsoft 图形 API 或 Web API。 在此方案中，用户登录后请求了访问令牌，并通过授权标头将其添加到 HTTP 请求。 此令牌将用于通过 **MS Graph API** 获取用户的个人资料和邮件。
+本指南创建的示例应用程序允许 JavaScript SPA 查询从 Microsoft 标识平台接受令牌的 Microsoft Graph API 或 Web API。 在此方案中，用户登录后请求了访问令牌，并通过授权标头将其添加到 HTTP 请求。 此令牌将用于通过 **MS Graph API** 获取用户的个人资料和邮件。
 
 令牌获取和更新由[适用于 JavaScript 的 Microsoft 身份验证库 (MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-js) 处理。
 
@@ -265,7 +265,7 @@ ms.locfileid: "98195128"
 
 在继续进行身份验证之前，请在 **Azure Active Directory** 中注册你的应用程序。
 
-1. 登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册” > “新建注册”  。
@@ -275,7 +275,7 @@ ms.locfileid: "98195128"
 1. 选择“注册”  。
 1. 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
 1. 在“管理”下，选择“身份验证”。 
-1. 在“隐式授权”部分中，选择“ID 令牌”，然后选择“访问令牌”  。 由于此应用必须将用户登录并调用 API，因此需要 ID 令牌和访问令牌。
+1. 在“隐式授权和混合流”部分，选择“ID 令牌”和“访问令牌”  。 由于此应用必须将用户登录并调用 API，因此需要 ID 令牌和访问令牌。
 1. 选择“保存”。
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>设置 Node.js 的重定向 URL
@@ -320,7 +320,7 @@ ms.locfileid: "98195128"
 
  其中：
  - \<Enter_the_Application_Id_Here> 是所注册应用程序的应用程序（客户端）ID。
- - \<Enter_the_Cloud_Instance_Id_Here> 是 Azure 云的实例。 对于主要或全球 Azure 云，只需输入 *https://login.partner.microsoftonline.cn* 。 对于 **国家** 云（例如“中国”云），请参阅 [国家云](./authentication-national-cloud.md)。
+ - \<Enter_the_Cloud_Instance_Id_Here> 是 Azure 云的实例。 对于 **国家** 云（例如“中国”云），请参阅 [国家云](./authentication-national-cloud.md)。
  - \<Enter_the_Tenant_info_here> 设置为以下选项之一：
    - 如果应用程序支持“此组织目录中的帐户”，请将此值替换为“租户 ID”或“租户名称”（例如，*contoso.microsoft.com*）。
    - 如果应用程序支持“任何组织目录中的帐户”，请将此值替换为 **organizations**。
@@ -405,19 +405,19 @@ ms.locfileid: "98195128"
 
 ### <a name="more-information"></a>详细信息
 
-用户首次选择“登录”按钮后，`signIn` 方法将调用 `loginPopup` 以将用户登录。 此方法会打开一个包含 Microsoft 标识平台终结点的弹出窗口，以提示并验证用户的凭据。 成功登录后，用户将重定向回到原始的 *index.html* 页。 他们将接收到一个由 `msal.js` 处理的令牌，该令牌包含的信息已缓存。 该令牌称为 ID令牌，并包含有关用户的基本信息，如用户显示名。 如果计划将此令牌提供的数据用于任何目的，则需确保此令牌已由后端服务器验证，以保证将令牌颁发给应用程序的有效用户。
+用户首次选择“登录”按钮后，`signIn` 方法将调用 `loginPopup` 以将用户登录。 此方法会打开一个包含 Microsoft 标识平台终结点的弹出窗口，以提示并验证用户的凭据。 成功登录后，用户将重定向回到原始的 *index.html* 页。 他们将接收到一个由 `msal.js` 处理的令牌，该令牌包含的信息已缓存。 该令牌称为 ID令牌，并包含有关用户的基本信息，如用户显示名。 如果计划将此令牌提供的数据用于任何目的，请确保此令牌会由后端服务器验证，以保证该令牌颁发给应用程序的有效用户。
 
 本指南生成的 SPA 调用 `acquireTokenSilent` 和/或 `acquireTokenPopup` 来获取用于查询 Microsoft Graph API 以获取用户配置文件信息的访问令牌。 如果需要用于验证 ID 令牌的示例，请查看 GitHub 中的[此](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 示例")示例应用程序。 该示例使用 ASP.NET Web API 进行令牌验证。
 
 #### <a name="get-a-user-token-interactively"></a>以交互方式获取用户令牌
 
-首次登录后，你不希望在每次用户需要请求令牌来访问资源时，都要求他们重新进行身份验证。 因此，在大部分时间应使用 *acquireTokenSilent* 来获取令牌。 但在某些情况下，需要强制用户与 Microsoft 标识平台终结点交互。 示例包括：
+首次登录后，你不希望在每次用户需要请求令牌来访问资源时，都要求他们重新进行身份验证。 因此，在大部分时间应使用 *acquireTokenSilent* 来获取令牌。 但是，在有些情况下，你会强制用户与 Microsoft 标识平台进行交互。 示例包括：
 
 - 由于密码已过期，用户可能需要重新输入其凭据。
 - 应用程序正在请求访问资源，这需要用户的许可。
 - 需要双重身份验证。
 
-调用 *acquireTokenPopup* 会打开一个弹出窗口（或者，*acquireTokenRedirect* 会将用户重定向到 Microsoft 标识平台终结点）。 在该窗口中，为了进行交互，用户需要确认其凭据、为所需的资源提供许可，或者完成双重身份验证。
+调用 acquireTokenPopup 会打开一个弹出窗口（或者，acquireTokenRedirect 会将用户重定向到 Microsoft 标识平台） 。 在该窗口中，为了进行交互，用户需要确认其凭据、为所需的资源提供许可，或者完成双重身份验证。
 
 #### <a name="get-a-user-token-silently"></a>以无提示方式获取用户令牌
 
@@ -481,7 +481,7 @@ ms.locfileid: "98195128"
    ```
 1. 在浏览器中输入 **http://localhost:3000** 或 **http://localhost:{port}** ，其中，*port* 是 Web 服务器正在侦听的端口。 应会显示 index.html 文件的内容和“登录”按钮。
 
-在浏览器加载 index.html 文件后，选择“登录”。 系统将提示你使用 Microsoft 标识平台终结点进行登录：
+在浏览器加载 index.html 文件后，选择“登录”。 系统将提示你使用 Microsoft 标识平台进行登录：
 
 ![JavaScript SPA 帐户登录窗口](./media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 
@@ -512,4 +512,3 @@ Microsoft Graph API 需要 *user.read* 作用域来读取用户的个人资料�
 
 > [!div class="nextstepaction"]
 > [方案：单页应用程序](scenario-spa-overview.md)
-

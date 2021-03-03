@@ -8,14 +8,14 @@ ms.topic: tutorial
 author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
-origin.date: 10/21/2020
-ms.date: 12/14/2020
-ms.openlocfilehash: 2bc8a37de73fc0a16001c4ef07386bf8ebed87b4
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+origin.date: 02/11/2021
+ms.date: 02/22/2021
+ms.openlocfilehash: 788126bcc4ecd39b4724f895613b592ea2e77065
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829947"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696624"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>教程：使用 Azure AD 应用程序创建 Azure AD 用户
 
@@ -232,35 +232,27 @@ if ($selDirReader -eq $null) {
 
     ```powershell
     # PowerShell script for creating a new SQL user called myapp using application AppSP with secret
-
-    $tenantId = "<TenantId>"   #  tenantID (Azure Directory ID) were AppSP resides
-    $clientId = "<ClientId>"   #  AppID also ClientID for AppSP     
-    $clientSecret = "<ClientSecret>"   #  client secret for AppSP 
-    $Resource = "https://database.chinacloudapi.cn/"
+    # AppSP is part of an Azure AD admin for the Azure SQL server below
     
-    $adalPath  = "${env:ProgramFiles}\WindowsPowerShell\Modules\AzureRM.profile\5.8.3"
-    # To install the latest AzureRM.profile version execute  -Install-Module -Name AzureRM.profile
-    $adal      = "$adalPath\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
-    $adalforms = "$adalPath\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll"
-    [System.Reflection.Assembly]::LoadFrom($adal) | Out-Null
-      $resourceAppIdURI = 'https://database.chinacloudapi.cn/'
-
-      # Set Authority to Azure AD Tenant
-      $authority = 'https://login.chinacloudapi.cn/' + $tenantId
-
-      $ClientCred = [Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential]::new($clientId, $clientSecret)
-      $authContext = [Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext]::new($authority)
-      $authResult = $authContext.AcquireTokenAsync($resourceAppIdURI,$ClientCred)
-      $Tok = $authResult.Result.CreateAuthorizationHeader()
-      $Tok=$Tok.Replace("Bearer ","")
-      Write-host "token"
-      $Tok
-      Write-host  " "
-
+    # Download latest  MSAL  - https://www.powershellgallery.com/packages/MSAL.PS
+    Import-Module MSAL.PS
+    
+    $tenantId = "<TenantId>"   # tenantID (Azure Directory ID) were AppSP resides
+    $clientId = "<ClientId>"   # AppID also ClientID for AppSP     
+    $clientSecret = "<ClientSecret>"   # Client secret for AppSP 
+    $scopes = "https://database.chinacloudapi.cn/.default" # The end-point
+    
+    $result = Get-MsalToken -RedirectUri $uri -ClientId $clientId -ClientSecret (ConvertTo-SecureString $clientSecret -AsPlainText -Force) -TenantId $tenantId -Scopes $scopes
+    
+    $Tok = $result.AccessToken
+    #Write-host "token"
+    $Tok
+      
     $SQLServerName = "<server name>"    # Azure SQL logical server name 
-    Write-Host "Create SQL connectionstring"
-    $conn = New-Object System.Data.SqlClient.SQLConnection 
     $DatabaseName = "<database name>"     # Azure SQL database name
+    
+    Write-Host "Create SQL connection string"
+    $conn = New-Object System.Data.SqlClient.SQLConnection 
     $conn.ConnectionString = "Data Source=$SQLServerName.database.chinacloudapi.cn;Initial Catalog=$DatabaseName;Connect Timeout=30"
     $conn.AccessToken = $Tok
     
@@ -274,20 +266,11 @@ if ($selDirReader -eq $null) {
     
     Write-host "results"
     $command.ExecuteNonQuery()
-    $conn.Close()  
+    $conn.Close()
     ``` 
 
     或者，可以使用博客[对 SQL DB 进行 Azure AD 服务主体身份验证 - 代码示例](https://techcommunity.microsoft.com/t5/azure-sql-database/azure-ad-service-principal-authentication-to-sql-db-code-sample/ba-p/481467)中的代码示例。 修改脚本以执行 DDL 语句 `CREATE USER [myapp] FROM EXTERNAL PROVIDER`。 相同的脚本可用于在 SQL 数据库中创建常规 Azure AD 用户组。
 
-    > [!NOTE]
-    > 如果需要安装模块 AzureRM.profile，则需要以管理员身份打开 PowerShell。 可以使用以下命令自动安装最新的 AzureRM.profile 版本，并为上述脚本设置 `$adalpath`：
-    > 
-    > ```powershell
-    > Install-Module AzureRM.profile -force
-    > Import-Module AzureRM.profile
-    > $version = (Get-Module -Name AzureRM.profile).Version.toString()
-    > $adalPath = "${env:ProgramFiles}\WindowsPowerShell\Modules\AzureRM.profile\${version}"
-    > ```
     
 2. 通过执行以下命令，检查用户 myapp 是否存在于数据库中：
 

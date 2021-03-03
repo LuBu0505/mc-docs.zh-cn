@@ -4,16 +4,16 @@ description: 了解安装 Azure Stack 开发工具包 (ASDK) 后要进行的建�
 author: WenJason
 ms.topic: article
 origin.date: 12/03/2020
-ms.date: 01/18/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 12/03/2020
-ms.openlocfilehash: 5df74fb29c248152d2e7443fe7b5d3f0546c57aa
-ms.sourcegitcommit: e1edc6ef84dbbda1da4e0a42efa3fd62eee033d1
+ms.openlocfilehash: 3f5b04e157bd94635c2f6566ee46172668aa12d5
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541875"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696533"
 ---
 # <a name="post-deployment-configurations-for-asdk"></a>ASDK 的部署后配置
 
@@ -198,7 +198,7 @@ cd AzureStack-Tools-master
 
 ## <a name="enable-multi-tenancy"></a>启用多租户
 
-对于使用 Azure AD 的部署，需要为 ASDK 安装[启用多租户](../operator/azure-stack-enable-multitenancy.md#enable-multi-tenancy)。
+对于使用 Azure AD 的部署，需要为 ASDK 安装[启用多租户](../operator/azure-stack-enable-multitenancy.md)。
 
 > [!NOTE]
 > 当使用非用于注册 Azure Stack 的域的管理员或用户帐户登录 Azure Stack 门户时，用于注册 Azure Stack 的域名必须追加到门户 URL 后面。 例如，如果 Azure Stack 已注册到 fabrikam.partner.onmschina.cn 并且登录的用户帐户为 admin@contoso.com，则用于登录用户门户的 URL 将为 https\://portal.local.azurestack.external/fabrikam.partner.onmschina.cn。

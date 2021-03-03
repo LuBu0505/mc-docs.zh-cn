@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, vanto
 origin.date: 01/14/2020
-ms.date: 01/04/2021
-ms.openlocfilehash: 4cfbe5932ea58907813a4563c0dc19dd3e914073
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.date: 02/22/2021
+ms.openlocfilehash: dd30395a0114c2f69ec7270ac474f6640da1c570
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830248"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697126"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>排查 SQL 数据库和 SQL 托管实例中的临时连接错误
 
@@ -332,7 +332,7 @@ Enterprise Library 6 (EntLib60) 是 .NET 类的框架，可帮助你实施云服
 用于处理暂时性错误的重试逻辑是 EntLib60 可以提供帮助的一个领域。 有关详细信息，请参阅 [4 - 锲而不舍是一切成功的秘密：使用暂时性故障处理应用程序块](https://docs.microsoft.com/previous-versions/msp-n-p/dn440719(v=pandp.60))。
 
 > [!NOTE]
-> EntLib60 的源代码可从[下载中心](https://go.microsoft.com/fwlink/p/?LinkID=290898)公开下载。 Microsoft 不打算对 EntLib 做进一步的功能更新或维护更新。
+> EntLib60 的源代码可从[下载中心](https://github.com/MicrosoftArchive/enterprise-library)公开下载。 Microsoft 不打算对 EntLib 做进一步的功能更新或维护更新。
 
 <a id="entlib60-classes-for-transient-errors-and-retry" name="entlib60-classes-for-transient-errors-and-retry"></a>
 

@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 02/02/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: bd987e5ad5acbbb85053912c1053ce68cfd35223
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: 514afe3182099e826921611e64d35797b71fbed3
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540850"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697886"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入门：向 Java Web 应用添加 Microsoft 登录功能
 
@@ -38,7 +38,7 @@ ms.locfileid: "99540850"
 >
 > ### <a name="option-1-register-and-automatically-configure-your-app-and-then-download-the-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
-> 1. 转到 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入门体验。
+> 1. 转到 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册</a>快速入门体验。
 > 1. 输入应用程序的名称并选择“注册”。
 > 1. 按照门户快速入门体验中的说明下载自动配置的应用程序代码。
 >
@@ -48,7 +48,7 @@ ms.locfileid: "99540850"
 >
 > 若要注册应用程序并手动向其中添加应用的注册信息，请执行以下步骤：
 >
-> 1. 登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+> 1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 > 1. 搜索并选择“Azure Active Directory”  。
 > 1. 在“管理”下，选择“应用注册”。
@@ -68,7 +68,7 @@ ms.locfileid: "99540850"
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
 >
-> 若要在此快速入门中使用代码示例，你需要：
+> 若要使用此快速入门中的代码示例：
 >
 > 1. 添加回复 URL `https://localhost:8443/msal4jsample/secure/aad` 和 `https://localhost:8443/msal4jsample/graph/me`。
 > 1. 创建客户端机密。
@@ -161,7 +161,7 @@ ms.locfileid: "99540850"
 
 ##### <a name="running-the-project-from-tomcat"></a>从 Tomcat 中运行项目
 
-若要将 Web 示例部署到 Tomcat，需要对源代码进行一些更改。
+若要将 Web 示例部署到 Tomcat，请对源代码进行一些更改。
 
 1. 打开 ms-identity-java-webapp/pom.xml。
     - 在 `<name>msal-web-sample</name>` 下添加 `<packaging>war</packaging>`。

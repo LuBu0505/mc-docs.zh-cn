@@ -2,14 +2,14 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 11/17/2020
+ms.date: 02/26/2021
 ms.author: v-junlch
-ms.openlocfilehash: 27e7203d585739215bc7f57ea206b41890b52066
-ms.sourcegitcommit: 054636c134cc0f53c194a6b76668644e18d1c4fe
+ms.openlocfilehash: 5f476b517ca7c2e899e423d7f99b1dec1e40fd17
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95970685"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750710"
 ---
 ## <a name="publish-the-project-to-azure"></a>将项目发布到 Azure
 
@@ -35,17 +35,18 @@ ms.locfileid: "95970685"
     
     - **选择新资源的位置**：为了获得更好的性能，请选择你附近的 [区域](https://azure.microsoft.com/regions/)。 
     
+    在 Azure 中创建单个资源时，扩展会在通知区域显示这些资源的状态。
+
+    :::image type="content" source="media/functions-publish-project-vscode/resource-notification.png" alt-text="Azure 资源创建通知":::
+    
 1.  完成后，将使用基于函数应用名称的名称在订阅中创建以下 Azure 资源：
     
-    - 一个资源组：相关资源的逻辑容器。
-    - 一个标准 Azure 存储帐户：用于维护项目的状态和其他信息。
-    - 一个消耗计划：用于定义无服务器函数应用的基础主机。 
-    - 一个函数应用：提供用于执行函数代码的环境。 可以通过函数应用将函数分组为逻辑单元，以便在同一托管计划中更轻松地管理、部署和共享资源。
-    - 一个连接到函数应用的 Application Insights 实例：用于跟踪无服务器函数的使用情况。
+    [!INCLUDE [functions-vs-code-created-resources](functions-vs-code-created-resources.md)]
 
     创建函数应用并应用了部署包之后，会显示一个通知。 
-    
-1. 在此通知中选择“查看输出”以查看创建和部署结果，其中包括你创建的 Azure 资源。 如果错过了通知，请选择右下角的响铃图标以再次查看。
+
+    [!INCLUDE [functions-vs-code-create-tip](functions-vs-code-create-tip.md)]
+
+4. 在此通知中选择“查看输出”以查看创建和部署结果，其中包括你创建的 Azure 资源。 如果错过了通知，请选择右下角的响铃图标以再次查看。
 
     ![创建完成通知](./media/functions-publish-project-vscode/function-create-notifications.png)
-

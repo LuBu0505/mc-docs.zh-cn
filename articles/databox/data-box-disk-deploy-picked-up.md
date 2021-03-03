@@ -1,21 +1,21 @@
 ---
 title: 寄回 Azure Data Box Disk 的教程| Microsoft Docs
-description: 通过本教程了解如何将 Azure Data Box 磁盘寄送到世纪互联
+description: 通过本教程了解如何返回 Azure Data Box Disk。 取件说明取决于你要将设备退回的位置。
 services: databox
 author: WenJason
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-origin.date: 07/16/2020
-ms.date: 07/27/2020
+origin.date: 02/02/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.localizationpriority: high
-ms.openlocfilehash: 23094ce77b41a495eb94ab4b3df5987c642392fc
-ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
+ms.openlocfilehash: 0b7ab7024677fb3908f710013a003bea8327ebeb
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87917259"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697158"
 ---
 ::: zone target="docs"
 
@@ -69,7 +69,7 @@ ms.locfileid: "87917259"
 
 3. 完成预订取件后，接收来自 FedEx 的电子邮件确认。  
 
-4. 如果遇到任何问题，请向 [DL-DC-SHA@oe.21vianet.com](mailto:DL-DC-SHA@oe.21vianet.com) 发送电子邮件，其中需包含所遇到问题的详细信息，并且其主题需提到订单名称。
+4. 如果遇到任何问题，请向 [DL-DC-SHA@oe.21vianet.com](mailto:DL-DC-SHA@oe.21vianet.com) 发送电子邮件，提供问题的详细信息，并在主题行填写订单名称。
 
 #### <a name="premier-customer-care-contact-information"></a>Premier Customer Care 联系信息
 
@@ -103,13 +103,9 @@ ms.locfileid: "87917259"
 >
 > * 将 Data Box 磁盘寄送到世纪互联
 
-转到下一个操作指南，了解如何验证从 Data Box Disk 上传到 Azure 存储帐户的数据。
+转到下一个操作指南，了解如何验证从 Data Box Disk 到 Azure 存储帐户的数据上传情况。
 
 > [!div class="nextstepaction"]
 > [验证从 Azure Data Box Disk 上传的数据](./data-box-disk-deploy-upload-verify.md)
 
 ::: zone-end
-
-
-
-

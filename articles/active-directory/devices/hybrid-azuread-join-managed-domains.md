@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: tutorial
-ms.date: 01/05/2021
+ms.date: 02/24/2021
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1dfc77ca3af39009b2fd79bc501d13a78a56ca6
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 29d054d359886ebf5507444d88da287eee5e718b
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023527"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697626"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教程：为托管域配置混合 Azure Active Directory 加入
 
@@ -80,7 +80,7 @@ ms.locfileid: "98023527"
 
 如果组织需要通过经身份验证的出站代理访问 Internet，请确保 Windows 10 计算机能够成功对出站代理进行身份验证。 由于 Windows 10 计算机使用计算机上下文运行设备注册，因此请使用计算机上下文配置出站代理身份验证。 根据配置要求使用相应的出站代理提供程序。
 
-使用[测试设备注册连接](https://gallery.technet.microsoft.com/Test-Device-Registration-3dc944c0)脚本验证设备是否能够访问系统帐户下的上述 Microsoft 资源。
+使用[测试设备注册连接](https://docs.microsoft.com/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/)脚本验证设备是否能够访问系统帐户下的上述 Microsoft 资源。
 
 ## <a name="configure-hybrid-azure-ad-join"></a>配置混合 Azure AD 联接
 
@@ -88,23 +88,21 @@ ms.locfileid: "98023527"
 
 1. 启动 Azure AD Connect，然后选择“配置”。
 
-   ![欢迎使用](./media/hybrid-azuread-join-managed-domains/welcome-azure-ad-connect.png)
-
 1. 在“其他任务”中，依次选择“配置设备选项”、“下一步”。  
 
    ![其他任务](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-additional-tasks.png)
 
 1. 在“概述”中选择“下一步”。 
 
-   ![概述](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-overview.png)
-
 1. 在“连接到 Azure AD”中，输入 Azure AD 租户的全局管理员凭据。  
-
-   ![连接到 Azure AD](./media/hybrid-azuread-join-managed-domains/connect-to-azure-ad-username-password.png)
 
 1. 在“设备选项”中，依次选择“配置混合 Azure AD 加入”、“下一步”。  
 
    ![设备选项](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-device-options.png)
+
+1. 在“设备操作系统”中选择 Active Directory 环境中设备使用的操作系统，然后选择“下一步”。 
+
+   ![设备操作系统](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-device-operating-systems.png)
 
 1. 在“SCP 配置”中，对于你希望 Azure AD Connect 在其中配置 SCP 的每个林，请完成以下步骤，然后选择“下一步”。 
 
@@ -114,17 +112,9 @@ ms.locfileid: "98023527"
 
    ![SCP](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-scp-configuration.png)
 
-1. 在“设备操作系统”中选择 Active Directory 环境中设备使用的操作系统，然后选择“下一步”。 
-
-   ![设备操作系统](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-device-operating-systems.png)
-
 1. 在“已准备好配置”中选择“配置”。 
 
-   ![已准备好配置](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-ready-to-configure.png)
-
 1. 在“配置完成”中选择“退出”。 
-
-   ![配置完成](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-configuration-complete.png)
 
 ## <a name="enable-windows-down-level-devices"></a>启用 Windows 下层设备
 
@@ -227,4 +217,3 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 继续学习下一篇文章，了解如何使用 Azure 门户管理设备标识。
 > [!div class="nextstepaction"]
 > [管理设备标识](device-management-azure-portal.md)
-

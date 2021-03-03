@@ -3,17 +3,17 @@ title: 使用 PowerShell 连接到 Azure Stack Hub
 description: 了解如何使用 PowerShell 连接到 Azure Stack Hub。
 author: WenJason
 ms.topic: article
-origin.date: 11/19/2020
-ms.date: 01/11/2021
+origin.date: 2/1/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: thoroet
-ms.lastreviewed: 11/19/2020
-ms.openlocfilehash: e15b01b8a055498e95b2729d9ca8631aae40c393
-ms.sourcegitcommit: 3f54ab515b784c9973eb00a5c9b4afbf28a930a9
+ms.lastreviewed: 2/1/2021
+ms.openlocfilehash: 90da2ad0e20285e59dacb53033913017e2d66747
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894435"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697407"
 ---
 # <a name="connect-to-azure-stack-hub-with-powershell"></a>使用 PowerShell 连接到 Azure Stack Hub
 
@@ -47,7 +47,7 @@ ms.locfileid: "97894435"
 
     # After signing in to your environment, Azure Stack Hub cmdlets
     # can be easily targeted at your Azure Stack Hub instance.
-    Add-AzAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantId
+    Connect-AzAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantId
 ```
 ### <a name="azurerm-modules"></a>[AzureRM 模块](#tab/azurerm1)
 
@@ -85,7 +85,7 @@ ms.locfileid: "97894435"
       -AzureKeyVaultServiceEndpointResourceId https://adminvault.local.azurestack.external
 
   # Sign in to your environment.
-  Login-AzAccount -EnvironmentName "AzureStackAdmin"
+  Connect-AzAccount -EnvironmentName "AzureStackAdmin"
   ```
 
 ### <a name="azurerm-modules"></a>[AzureRM 模块](#tab/azurerm2)

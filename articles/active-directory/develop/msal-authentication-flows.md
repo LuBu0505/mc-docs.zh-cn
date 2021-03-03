@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/22/2020
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: saeeda
-ms.openlocfilehash: 79d5ba3d5be3e51f542d7a512f4e5d546d7f1ef6
-ms.sourcegitcommit: 7ad3bfc931ef1be197b8de2c061443be1cf732ef
+ms.openlocfilehash: 49424ff55653be9e792939c004564365ed834034
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91244682"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696737"
 ---
 # <a name="authentication-flows"></a>身份验证流
 
@@ -223,7 +223,7 @@ IWA 不会绕过多重身份验证。 如果配置了多重身份验证，需要
 - 你已提供某种方式让用户同意应用程序（请参阅[请求个人用户同意](v2-permissions-and-consent.md#requesting-individual-user-consent)）。
 - 你已提供某种方式让租户管理员同意应用程序（请参阅[管理员同意](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)）。
 
-已针对 .NET Desktop、.NET Core 和 Windows 通用平台应用启用 IWA 流。 在 .NET Core 上，必须向 IWA 提供用户名，因为 .NET Core 无法从操作系统获取用户名。
+已针对 .NET Desktop、.NET Core 和 Windows 通用平台应用启用 IWA 流。
 
 有关同意的详细信息，请参阅 [v2.0 权限和同意](v2-permissions-and-consent.md)。
 
@@ -232,4 +232,3 @@ IWA 不会绕过多重身份验证。 如果配置了多重身份验证，需要
 现在，你已经了解了 Microsoft 身份验证库 (MSAL) 支持的身份验证流，接下来了解有关获取和缓存在这些流中使用的令牌的信息：
 
 [使用 Microsoft 身份验证库 (MSAL) 获取和缓存令牌](msal-acquire-cache-tokens.md)
-

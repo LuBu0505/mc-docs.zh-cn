@@ -4,14 +4,14 @@ description: 本文介绍如何将 Azure 自动化源代码管理与其他存储
 services: automation
 ms.subservice: process-automation
 origin.date: 11/12/2020
-ms.date: 11/23/2020
+ms.date: 02/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: fb2bd3e920d1389f3ff097880d79f5f9ca993c06
-ms.sourcegitcommit: c89f1adcf403f5845e785064350136698eed15b8
+ms.openlocfilehash: 76506051576c18304e29ac7d2e61c32bba3bb7af
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94680434"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697423"
 ---
 # <a name="use-source-control-integration"></a>使用源代码管理集成
 
@@ -30,7 +30,7 @@ Azure 自动化支持三种类型的源代码管理：
 ## <a name="prerequisites"></a>先决条件
 
 * 源代码管理存储库（GitHub 或 Azure Repos）
-* 一个[运行方式帐户](manage-runas-account.md)
+* 一个[运行方式帐户](automation-security-overview.md#run-as-accounts)
 * 自动化帐户中[最新的 Azure 模块](automation-update-azure-modules.md)包括 `Az.Accounts` 模块（相当于 `AzureRM.Profile` 的 Az 模块）
 
 > [!NOTE]
@@ -54,7 +54,7 @@ Azure 自动化支持三种类型的源代码管理：
 
 4. 在“源代码管理摘要”页上，使用字段填写下面定义的源代码管理属性。 完成后单击“保存”。
 
-    |properties  |说明  |
+    |属性  |说明  |
     |---------|---------|
     |源代码管理名称     | 源代码管理的友好名称。 该名称只能包含字母和数字。        |
     |源代码管理类型     | 源代码管理机制的类型。 可用选项包括：</br> * GitHub</br>* Azure Repos (Git)</br> * Azure Repos (TFVC)        |

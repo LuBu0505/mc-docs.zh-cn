@@ -12,12 +12,12 @@ ms.topic: conceptual
 origin.date: 01/15/2018
 ms.date: 06/15/2020
 ms.author: v-jay
-ms.openlocfilehash: a3ac2626d89d6714aa28a78727b1c4a44a5f0a9f
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.openlocfilehash: 9b03db77bab437c5ab3546a54d9dfdc71a078897
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723363"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697262"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>在 Azure 数据工厂中加密本地数据存储的凭据
 

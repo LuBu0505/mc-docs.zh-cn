@@ -5,15 +5,15 @@ author: WenJason
 ms.service: dms
 ms.topic: conceptual
 origin.date: 12/08/2020
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 992bf3fe95c5e77fa96107eb4c7d24d598d04cb0
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 8d139559c395f2322bfe67877dd7e70cbd788745
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857617"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696981"
 ---
 # <a name="azure-security-baseline-for-azure-database-migration-service"></a>适用于 Azure 数据库迁移服务的 Azure 安全基线
 
@@ -320,7 +320,7 @@ Azure 数据库迁移服务不允许在其资源上运行应用程序或安装�
 
 - [Azure Active Directory 中的“审核活动”报表](../active-directory/reports-monitoring/concept-audit-logs.md)
 
-- [Azure 安全中心的威胁防护](/security-center/threat-protection)
+- [Azure 安全中心的威胁防护](../security-center/azure-defender.md)
 
 **Azure 安全中心监视**：是
 

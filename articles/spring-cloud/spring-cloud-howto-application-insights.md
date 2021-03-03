@@ -5,14 +5,14 @@ author: MikeDodaro
 ms.author: v-junlch
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 01/11/2021
+ms.date: 02/19/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: d3a2c9bc6c300a6e73550244d03b33becd6c3a2b
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 37b996993590d588c25ab4aefcd2370370f4c9db
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195097"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696842"
 ---
 # <a name="application-insights-java-in-process-agent-in-azure-spring-cloud-preview"></a>Azure Spring Cloud 中的 Application Insights Java 进程内代理（预览版）
 
@@ -83,9 +83,6 @@ Application Insights 提供了许多可观察的角度，包括：
 
   [ ![IPA 8](./media/spring-cloud-application-insights/petclinic-microservices-live-metrics.jpg)](./media/spring-cloud-application-insights/petclinic-microservices-live-metrics.jpg)
 
-* 在左侧导航窗格中，单击“可用性”可通过创建 [Application Insights 中的可用性测试](/azure-monitor/app/monitor-web-app-availability)来监视 Web 应用的可用性和响应性。
-
-  [ ![IPA 9](./media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)](./media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)
 
 ## <a name="arm-template"></a>ARM 模板
 若要使用 Azure 资源管理器模板，请将以下内容复制到 `azuredeploy.json`。
@@ -144,4 +141,3 @@ az spring-cloud app-insights update --disable -name "assignedName" -resource-gro
 * [将分布式跟踪与 Azure Spring Cloud 配合使用](spring-cloud-tutorial-distributed-tracing.md)
 * [分析日志和指标](diagnostic-services.md)
 * [实时流式传输日志](spring-cloud-howto-log-streaming.md)
-

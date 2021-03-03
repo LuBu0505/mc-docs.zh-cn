@@ -11,18 +11,18 @@ author: WenJason
 ms.author: v-jay
 ms.reviwer: sstein
 origin.date: 10/21/2020
-ms.date: 02/01/2021
-ms.openlocfilehash: 2073879deffbf9961e041fed7a7951676603a0ec
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 02/22/2021
+ms.openlocfilehash: 0fb82340c1c815515442d745dff03916abf089ba
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059681"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696608"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell-preview"></a>使用 PowerShell 创建弹性作业代理（预览版）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[弹性作业（预览版）](job-automation-overview.md#elastic-database-jobs-preview)可以跨多个数据库并行运行一个或多个 Transact-SQL (T-SQL) 脚本。
+[弹性作业（预览版）](job-automation-overview.md)可以跨多个数据库并行运行一个或多个 Transact-SQL (T-SQL) 脚本。
 
 本教程介绍跨多个数据库运行查询所需的步骤：
 
@@ -64,7 +64,7 @@ Get-Module Az.Sql
 
 ## <a name="create-required-resources"></a>创建所需资源
 
-创建弹性作业代理需要一个用作[作业数据库](job-automation-overview.md#job-database)的数据库（S0 或更高级别）。
+创建弹性作业代理需要一个用作[作业数据库](job-automation-overview.md#elastic-job-database)的数据库（S0 或更高级别）。
 
 下面的脚本创建新的资源组、服务器以及可用作作业数据库的数据库。 第二个脚本创建另一个服务器，其中包含两个用于对其执行作业的空数据库。
 
@@ -158,12 +158,12 @@ $params = @{
   'username' = $adminLogin
   'password' = $adminPassword
   'outputSqlErrors' = $true
-  'query' = "CREATE LOGIN masteruser WITH PASSWORD='password!123'"
+  'query' = 'CREATE LOGIN masteruser WITH PASSWORD=''password!123'''
 }
 Invoke-SqlCmd @params
 $params.query = "CREATE USER masteruser FROM LOGIN masteruser"
 Invoke-SqlCmd @params
-$params.query = "CREATE LOGIN jobuser WITH PASSWORD='password!123'"
+$params.query = 'CREATE LOGIN jobuser WITH PASSWORD=''password!123'''
 Invoke-SqlCmd @params
 
 # for each target database
@@ -185,7 +185,7 @@ $targetDatabases | % {
 
 # create job credential in Job database for master user
 Write-Output "Creating job credentials..."
-$loginPasswordSecure = (ConvertTo-SecureString -String "password!123" -AsPlainText -Force)
+$loginPasswordSecure = (ConvertTo-SecureString -String 'password!123' -AsPlainText -Force)
 
 $masterCred = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList "masteruser", $loginPasswordSecure
 $masterCred = $jobAgent | New-AzSqlElasticJobCredential -Name "masteruser" -Credential $masterCred

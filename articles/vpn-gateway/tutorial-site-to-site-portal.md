@@ -7,13 +7,13 @@ ms.author: v-jay
 ms.service: vpn-gateway
 ms.topic: tutorial
 origin.date: 12/04/2020
-ms.date: 01/04/2021
-ms.openlocfilehash: efb55d9bb6ab0c07c7bfb63d76642a34ee244dc8
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.date: 03/08/2021
+ms.openlocfilehash: eb7ab3c24669e73307cbcb21c8ba4308ac641a21
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857634"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697124"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-in-the-azure-portal"></a>教程：在 Azure 门户中创建站点到站点连接
 
@@ -70,6 +70,7 @@ Azure VPN 网关在客户本地与 Azure 之间提供跨界连接。 本教程�
 * **网关类型：** VPN
 * **VPN 类型：** 基于路由
 * **SKU：** VpnGw1
+* **代系：** 第 1 代
 * **虚拟网络：** VNet1
 * **网关子网地址范围：** 10.1.255.0/27
 * **公共 IP 地址**：新建
@@ -153,7 +154,7 @@ Azure VPN 网关在客户本地与 Azure 之间提供跨界连接。 本教程�
 
 [!INCLUDE [reset a gateway](../../includes/vpn-gateway-reset-gw-portal-include.md)]
 
-### <a name="additional-configuration-considerations"></a><a name="connectVM"></a>其他配置注意事项
+### <a name="additional-configuration-considerations"></a><a name="additional"></a>其他配置注意事项
 
 可以通过多种方式自定义 S2S 配置。 有关详细信息，请参阅下列文章：
 

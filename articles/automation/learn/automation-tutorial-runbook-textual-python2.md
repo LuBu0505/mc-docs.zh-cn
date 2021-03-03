@@ -4,15 +4,15 @@ description: 本文指导如何创建、测试和发布简单的 Python Runbook�
 services: automation
 ms.subservice: process-automation
 origin.date: 04/19/2020
-ms.date: 08/10/2020
+ms.date: 02/22/2021
 ms.topic: tutorial
-ms.custom: has-adal-ref, tracking-python
-ms.openlocfilehash: afe67abb17756aed2bfff94c55e429e1dccc6111
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.custom: has-adal-ref, devx-track-python
+ms.openlocfilehash: c1ab308fa0c0cf6693533434dc7ff0fab4bc106c
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432414"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697686"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>教程：创建 Python Runbook
 
@@ -170,7 +170,9 @@ print("Hello World!")
 # Initialize the compute management client with the RunAs credential and specify the subscription to work against.
 compute_client = ComputeManagementClient(
     azure_credential,
-    str(runas_connection["SubscriptionId"])
+    str(runas_connection["SubscriptionId"]),
+    "2015-06-15",
+    "https://management.chinacloudapi.cn"
 )
 
 

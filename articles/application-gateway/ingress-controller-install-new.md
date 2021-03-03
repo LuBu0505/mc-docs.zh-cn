@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 01/04/2021
+ms.date: 02/18/2021
 ms.author: v-junlch
-ms.openlocfilehash: ba6e171489412215d41d9d641a0e20cc2838a65d
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 3fd5cd973fb6013235b12dea62deb0983b943598
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021873"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696706"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>如何安装使用新应用程序网关的应用程序网关入口控制器 (AGIC)
 
@@ -22,7 +22,7 @@ ms.locfileid: "98021873"
 
 请确保已安装以下命令行工具：
 
-* `az` - Azure CLI：[安装说明](/cli/install-azure-cli?view=azure-cli-latest)
+* `az` - Azure CLI：[安装说明](/cli/install-azure-cli)
 * `kubectl` - Kubernetes 命令行工具：[安装说明](https://kubernetes.io/docs/tasks/tools/install-kubectl)
 * `helm` - Kubernetes 包管理器：[安装说明](https://github.com/helm/helm/releases/latest)
 * `jq` - 命令行 JSON 处理器：[安装说明](https://stedolan.github.io/jq/download/)

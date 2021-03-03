@@ -2,16 +2,17 @@
 title: 从自动化帐户启用 Azure 自动化更新管理
 description: 本文介绍如何从自动化帐户启用更新管理。
 services: automation
+ms.subservice: update-management
 origin.date: 11/09/2020
-ms.date: 11/23/2020
+ms.date: 02/22/2021
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 2d396057916ca09a572c2571b43756ffb87c588d
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: f3de95a4956b126f3f6fc40315cb1b59bf5ff1f2
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432671"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697838"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>从自动化帐户启用更新管理
 
@@ -23,8 +24,9 @@ ms.locfileid: "96432671"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果还没有 Azure 订阅，可注册一个[试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
-* 用于管理计算机的[自动化帐户](../index.yml)。
+* 用于管理计算机的[自动化帐户](../automation-security-overview.md)。
 * [Azure 虚拟机](../../virtual-machines/windows/quick-create-portal.md)。 非 Azure VM 或服务器需要安装用于 Windows 或 Linux 的 [Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)，在其中启用了向链接到自动化帐户更新管理的工作区报告的功能。 
+
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

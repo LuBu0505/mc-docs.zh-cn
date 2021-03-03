@@ -2,18 +2,18 @@
 title: Azure Stack Hub 集成系统的 Azure 联网部署决策
 description: 确定部署规划决策，以便对 Azure Stack Hub 集成系统（包括计费和标识）进行 Azure 连接型部署。
 author: WenJason
-ms.topic: article
+ms.topic: conceptual
 origin.date: 03/04/2020
-ms.date: 12/07/2020
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: wfayed
 ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: e8bf1bfd4035fe140d4a64d3492ebc0b38962898
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: d20d844fd167e78b4884a46c6321b91762b40357
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507827"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697475"
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-hub-integrated-systems"></a>Azure Stack Hub 集成系统的 Azure 联网部署规划决策
 在决定[如何将 Azure Stack Hub 集成到混合云环境](azure-stack-connection-models.md)后，即可完成 Azure Stack Hub 部署决策。
@@ -68,7 +68,6 @@ ms.locfileid: "96507827"
 
 ## <a name="learn-more"></a>了解详细信息
 - 有关用例、购买、合作伙伴和 OEM 硬件供应商的信息，请参阅 [Azure Stack Hub](https://www.azure.cn/overview/azure-stack/) 产品页。
-- 有关 Azure Stack Hub 集成系统的路线图和上市区域的信息，请参阅白皮书：[Azure Stack Hub：Azure 的扩展](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)。 
 
 ## <a name="next-steps"></a>后续步骤
 [数据中心网络集成](azure-stack-network.md)

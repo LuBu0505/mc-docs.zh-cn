@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/07/2021
+ms.date: 02/25/2021
 ms.author: v-junlch
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 5c3bfda9b4304210184b823216d0631da3e0b086
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: aaef07d521eae8d5941797753753fbca629a5466
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022079"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696880"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密码策略和账户限制
 
@@ -75,6 +75,7 @@ ms.locfileid: "98022079"
   * 合作伙伴一线支持人员
   * 合作伙伴二线支持人员
   * Exchange 管理员
+  * 邮箱管理员
   * Skype for Business 管理员
   * 用户管理员
   * 目录写入者
@@ -85,9 +86,11 @@ ms.locfileid: "98022079"
   * 安全管理员
   * 特权角色管理员
   * Intune 管理员
+  * 已加入 Azure AD 的设备的本地管理员
   * Dynamics 365 管理员
   * Power BI 服务管理员
   * 身份验证管理员
+  * 密码管理员
   * 特权身份验证管理员
 
 * 如果在试用订阅中已过 30 天；或
@@ -180,4 +183,3 @@ ms.locfileid: "98022079"
 若要开始进行 SSPR，请参阅[教程：使用户能够使用 Azure Active Directory 自助式密码重置来解锁其帐户或重置密码](tutorial-enable-sspr.md)。
 
 如果你或用户遇到 SSPR 问题，请参阅[排查自助式密码重置问题](./troubleshoot-sspr.md)
-

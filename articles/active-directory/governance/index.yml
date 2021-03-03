@@ -7,17 +7,17 @@ metadata:
   manager: daveba
   ms.author: v-junlch
   ms.collection: na
-  ms.date: 08/25/2020
+  ms.date: 02/24/2021
   ms.service: active-directory
   ms.subservice: na
   ms.topic: landing-page
   services: active-directory
-  ms.openlocfilehash: a6c6442eed2d21d8188bf33785ca8d065cc8e07f
-  ms.sourcegitcommit: b5ea35dcd86ff81a003ac9a7a2c6f373204d111d
+  ms.openlocfilehash: 0c1180c06eaac9503b9da984f85d9ec30632a750
+  ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/27/2020
-  ms.locfileid: "88946865"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101697949"
 landingContent:
 - title: 关于 Identity Governance
   linkLists:
@@ -33,8 +33,10 @@ landingContent:
       url: entitlement-management-overview.md
   - linkListType: tutorial
     links:
-    - text: 创建你的首个访问包，以帮助用户请求他们所需的访问权限
+    - text: 管理资源访问 - Azure 门户
       url: entitlement-management-access-package-first.md
+    - text: 管理资源访问 - Microsoft Graph
+      url: https://docs.microsoft.com/graph/tutorial-access-package-api?toc=/active-directory/governance/toc.json&bc=/active-directory/governance/breadcrumb/toc.json
   - linkListType: concept
     links:
     - text: 委托和角色

@@ -7,21 +7,21 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: how-to
 origin.date: 09/03/2020
-ms.date: 11/23/2020
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.openlocfilehash: 4716436a1cc4424204035576869896b9c487862c
-ms.sourcegitcommit: db15d6cc591211c0e531d636f45e9cbe24cfb15b
+ms.openlocfilehash: 4007b3294e30866b546613c2c925818c361929a0
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "95970815"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696635"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>使用 PowerShell 创建具有站点到站点 VPN 连接的 VNet
 
 本文介绍如何使用 PowerShell 创建站点到站点 VPN 网关连接，以便从本地网络连接到 VNet。 本文中的步骤适用于 Resource Manager 部署模型。 也可使用不同的部署工具或部署模型来创建此配置，方法是从以下列表中选择另一选项：
 
 > [!div class="op_single_selector"]
-> * [Azure 门户](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Azure 门户](./tutorial-site-to-site-portal.md)
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure 门户（经典）](vpn-gateway-howto-site-to-site-classic-portal.md)
@@ -243,7 +243,7 @@ VPN 连接有几种不同的验证方式。
 
 ## <a name="to-modify-ip-address-prefixes-for-a-local-network-gateway"></a><a name="modify"></a>修改本地网关的 IP 地址前缀
 
-如果需要路由到本地位置的 IP 地址前缀更改，则可修改本地网关。 提供了两套说明。 要选择哪套说明取决于是否创建了网关连接。 使用这些示例时，修改这些值以匹配你的环境。
+如果需要路由到本地位置的 IP 地址前缀更改，则可修改本地网关。 使用这些示例时，修改这些值以匹配你的环境。
 
 [!INCLUDE [Modify prefixes](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
 

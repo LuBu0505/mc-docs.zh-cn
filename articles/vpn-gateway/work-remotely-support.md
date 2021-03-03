@@ -6,14 +6,14 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
 origin.date: 09/03/2020
-ms.date: 11/23/2020
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.openlocfilehash: 81c5cebf452c0fe8cb74030e48c5720e79b8a756
-ms.sourcegitcommit: db15d6cc591211c0e531d636f45e9cbe24cfb15b
+ms.openlocfilehash: 27b456f1bbadc6815cdc73452f3407e943f28ec5
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "95970693"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696765"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>使用 Azure VPN 网关点到站点连接实现远程工作
 
@@ -66,7 +66,7 @@ Azure 点到站点解决方案基于云且可快速预配，以满足在家办�
 4. 配置本地设备以连接到 Azure 虚拟网关。
 5. 从 Azure 门户下载点到站点配置文件并将其分发到客户端
 
-若要了解如何设置站点到站点 VPN 隧道，请参阅[此链接](vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
+若要了解如何设置站点到站点 VPN 隧道，请参阅[此链接](./tutorial-site-to-site-portal.md)。
 
 ## <a name="faq-for-native-azure-certificate-authentication"></a><a name="faqcert"></a>本机 Azure 证书身份验证常见问题解答
 
