@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/05/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: saeeda, rayluo
 ms.custom: aaddev
-ms.openlocfilehash: 2b62b655ecb83a923ac0acbdac746c55ae0572d6
-ms.sourcegitcommit: dfdb65cef6a6b089992644f075b9c3f444cb8e36
+ms.openlocfilehash: af7f66367b23e2064e689c80036512b7452b24df
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98793972"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697509"
 ---
 # <a name="handle-errors-and-exceptions-in-msal-for-python"></a>处理 MSAL for Python 中的错误和异常
 
@@ -26,14 +26,14 @@ ms.locfileid: "98793972"
 
 ## <a name="error-handling-in-msal-for-python"></a>MSAL for Python 中的错误处理
 
-在 MSAL for Python 中，大多数错误都作为 API 调用的返回值传达。 此错误以字典形式表示，其中包含来自 Microsoft 标识平台的 JSON 响应。
+在适用于 Python 的 MSAL 中，大多数错误都是作为 API 调用的返回值来传递的。 错误表示为一个字典，其中包含来自 Microsoft 标识平台的 JSON 响应。
 
-* 成功的响应包含 `"access_token"` 键。 响应的格式通过 OAuth2 协议定义。 有关详细信息，请参阅 [5.1 成功响应](https://tools.ietf.org/html/rfc6749#section-5.1)
-* 错误响应包含 `"error"`，并且通常包含 `"error_description"`。 响应的格式通过 OAuth2 协议定义。 有关详细信息，请参阅 [5.2 错误响应](https://tools.ietf.org/html/rfc6749#section-5.2)
+* 成功的响应包含 `"access_token"` 项。 响应的格式由 OAuth2 协议定义。 有关详细信息，请参阅 [5.1 成功的响应](https://tools.ietf.org/html/rfc6749#section-5.1)
+* 错误的响应包含 `"error"`，通常为 `"error_description"`。 响应的格式由 OAuth2 协议定义。 有关详细信息，请参阅 [5.2 错误的响应](https://tools.ietf.org/html/rfc6749#section-5.2)
 
-返回错误时，`"error_description"` 键包含用户可读的消息，而该消息通常又包含 Microsoft 标识平台错误代码。 有关各种错误代码的详细信息，请参阅[身份验证和授权错误代码](./reference-aadsts-error-codes.md)。
+返回错误时，`"error_description"` 项包含用户可读的消息；它通常包含 Microsoft 标识平台错误代码。 有关各个错误代码的详细信息，请参阅[身份验证和授权错误代码](./reference-aadsts-error-codes.md)。
 
-在 MSAL for Python 中，异常很罕见，因为系统对大多数错误的处理方式是返回错误值。 仅当你尝试使用该库的方式存在问题时（例如在 API 参数格式不正确时），才会引发 `ValueError` 异常。
+在适用于 Python 的 MSAL 中，很少引发异常，因为大多数错误都是通过返回错误值来处理的。 仅当你尝试使用该库的方式存在问题时（例如在 API 参数格式不正确时），才会引发 `ValueError` 异常。
 
 [!INCLUDE [Active directory error handling claims challenges](../../../includes/active-directory-develop-error-handling-claims-challenges.md)]
 
@@ -41,5 +41,4 @@ ms.locfileid: "98793972"
 
 ## <a name="next-steps"></a>后续步骤
 
-请考虑[在 MSAL for Python 中启用日志记录](msal-logging.md?tabs=python)，以帮助你诊断和调试问题。
-
+请考虑[在 MSAL for Python 中启用日志记录](msal-logging-python.md)，以帮助你诊断和调试问题。

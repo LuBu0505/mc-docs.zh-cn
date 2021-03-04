@@ -4,16 +4,16 @@ description: 本文提供用于连接到 Azure VPN 网关的合作伙伴 VPN 设
 services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
-ms.topic: article
-origin.date: 06/20/2017
-ms.date: 02/24/2020
+ms.topic: how-to
+origin.date: 09/02/2020
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.openlocfilehash: 6d470b34c32730fa38ea4344b329956aec183339
-ms.sourcegitcommit: 753c74533aca0310dc7acb621cfff5b8993c1d20
+ms.openlocfilehash: f957c0963496fc5c49a2f63e2f0d1d19cec21d5b
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92211421"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696614"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>合作伙伴 VPN 设备配置概述
 本文提供有关配置用于连接到 Azure VPN 网关的本地 VPN 设备的概述。 示例 Azure 虚拟网络和 VPN 网关设置用于演示如何使用相同参数连接到不同的本地 VPN 设备配置。
@@ -28,12 +28,12 @@ Azure VPN 网关使用标准 IPsec/IKE 协议套件建立站点到站点 (S2S) V
 
 ![单一 S2S VPN 隧道图示](./media/vpn-gateway-3rdparty-device-config-overview/singletunnel.png)
 
-有关设置单一 VPN 隧道的分布说明，请参阅[配置站点到站点连接](vpn-gateway-howto-site-to-site-resource-manager-portal.md)。 以下部分指定示例配置的连接参数，并提供 PowerShell 脚本来帮助读者入门。
+有关设置单一 VPN 隧道的分布说明，请参阅[配置站点到站点连接](./tutorial-site-to-site-portal.md)。 以下部分指定示例配置的连接参数，并提供 PowerShell 脚本来帮助读者入门。
 
 ### <a name="connection-parameters"></a>连接参数
 本部分列出了前几部分中示例中所用的参数。
 
-| **Parameter**                | **值**                    |
+| **参数**                | **值**                    |
 | ---                          | ---                          |
 | 虚拟网络地址前缀        | 10.11.0.0/16<br>10.12.0.0/16 |
 | Azure VPN 网关 IP         | Azure VPN 网关 IP         |
@@ -116,14 +116,14 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG
 如果 VPN 设备不支持“任意到任意”流量选择器（例如基于路由或基于 VTI 的配置），请创建自定义 IPsec/IKE 策略并配置[“UsePolicyBasedTrafficSelectors”](vpn-gateway-connect-multiple-policybased-rm-ps.md)选项。
 
 > [!IMPORTANT]
-> 需创建 IPsec/IKE 策略，才能对连接启用“UsePolicyBasedTrafficSelectors”选项  。
+> 需创建 IPsec/IKE 策略，才能对连接启用“UsePolicyBasedTrafficSelectors”选项。
 
 
 示例脚本使用以下算法和参数创建 IPsec/IKE 策略：
 * IKEv2：AES256、SHA384、DHGroup24
 * IPsec：AES256、SHA1、PFS24、SA 生存期 7200 秒和 20480000KB (20GB)
 
-该脚本应用 IPsec/IKE 策略，并对连接启用“UsePolicyBasedTrafficSelectors”选项  。
+该脚本应用 IPsec/IKE 策略，并对连接启用“UsePolicyBasedTrafficSelectors”选项。
 
 ```powershell
 $ipsecpolicy5 = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA1 -PfsGroup PFS24 -SALifeTimeSeconds 7200 -SADataSizeKilobytes 20480000
@@ -143,7 +143,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG
     New-AzLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP5 -AddressPrefix $LNGPrefix50 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP5
     ```
 
-* 在创建连接时，必须将“-EnableBGP”选项设置为 $True  ：
+* 在创建连接时，必须将“-EnableBGP”选项设置为 $True：
 
     ```powershell
     New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
@@ -151,4 +151,3 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG
 
 ## <a name="next-steps"></a>后续步骤
 有关设置主动 - 主动 VPN 网关的分布说明，请参阅[为跨界连接和 VNet 到 VNet 连接配置主动 - 主动 VPN 网关](vpn-gateway-activeactive-rm-powershell.md)。
-
