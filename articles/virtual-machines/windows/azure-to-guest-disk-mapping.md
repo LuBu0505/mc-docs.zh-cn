@@ -7,16 +7,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 origin.date: 11/17/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 01/04/2021
 ms.author: v-yeche
-ms.openlocfilehash: 81a3c6956cf6ad201042adf8903c22557f6271d6
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 65440992203e6c6e98a7431e898e662a0015c240
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857594"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052852"
 ---
 <!--Verified successfully-->
 # <a name="how-to-map-azure-disks-to-windows-vm-guest-disks"></a>如何将 Azure 磁盘映射到 Windows VM 来宾磁盘
@@ -78,5 +78,4 @@ $vm.StorageProfile.DataDisks | ft
 ```
 ---
 
-<!-- Update_Description: new article about azure to guest disk mapping -->
-<!--NEW.date: 01/04/2021-->
+<!--Update_Description: update meta properties, wording update, update link-->

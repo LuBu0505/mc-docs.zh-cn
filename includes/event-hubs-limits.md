@@ -5,16 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-origin.date: 09/10/2020
-ms.date: 12/02/2020
+ms.date: 02/24/2021
 ms.author: v-tawe
 ms.custom: include file
-ms.openlocfilehash: 0707a2a6a52b7f33867b587c6b7f2b1aaabc9cf4
-ms.sourcegitcommit: e1edc6ef84dbbda1da4e0a42efa3fd62eee033d1
+ms.openlocfilehash: 5dbdee1fa37751469e18425fe6a20bca5ef500d4
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98557142"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102205963"
 ---
 下表提供了特定于 [Azure 事件中心](https://www.azure.cn/home/features/event-hubs/)的配额和限制。 有关事件中心定价的信息，请参阅[事件中心定价](https://www.azure.cn/pricing/details/event-hubs/)。
 
@@ -31,7 +30,8 @@ ms.locfileid: "98557142"
 | 每个使用者组的非 epoch 接收者数 |- |5 |
 | 每个命名空间的授权规则数量 | 系统会拒绝创建授权规则的后续请求。|12 |
 | GetRuntimeInformation 方法的调用数 |  - | 每秒 50 个 | 
-| 虚拟网络 (VNet) 和 IP 配置规则的数量 | - | 128 | 
+| 虚拟网络 (VNet) 数 | - | 128 | 
+| IP 配置规则数 | - | 128 | 
 
 
 ### <a name="basic-vs-standard-tiers"></a>基本层和标准层

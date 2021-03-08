@@ -3,20 +3,20 @@ title: 使用 PowerShell 在 Azure 中设置 Application Insights | Microsoft Do
 description: 自动配置 Azure 诊断，通过管道将数据发送到 Application Insights。
 ms.topic: conceptual
 origin.date: 08/06/2019
-ms.date: 12/07/2020
+ms.date: 02/22/2021
 ms.author: v-johya
-ms.openlocfilehash: 590e9d398cb97fdd867c65dde55d2afbcba534b1
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: ccd9086acb3f68bd7d8bcb72ee25598b109f1716
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97105302"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197247"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>使用 PowerShell 为 Azure 云服务设置 Application Insights
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-可以将 [Azure](https://portal.azure.cn) 配置为向 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) [发送 Azure 诊断](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)。 该诊断与 Azure Cloud Service 和 Azure VM 有关。 它们是对使用 Application Insights SDK 从应用内发送的遥测的补充。 作为在 Azure 中自动处理新建资源过程的一部分，可以使用 PowerShell 配置诊断。
+可以将 [Azure](https://portal.azure.cn) 配置为向 [Azure Application Insights](./app-insights-overview.md) [发送 Azure 诊断](../agents/diagnostics-extension-to-application-insights.md)。 该诊断与 Azure Cloud Service 和 Azure VM 有关。 它们是对使用 Application Insights SDK 从应用内发送的遥测的补充。 作为在 Azure 中自动处理新建资源过程的一部分，可以使用 PowerShell 配置诊断。
 
 ## <a name="azure-template"></a>Azure 模板
 如果 Web 应用在 Azure 中，并且使用 Azure 资源管理器模板创建资源，可以通过将以下内容添加到资源节点来配置 Application Insights：
@@ -129,7 +129,7 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 ## <a name="see-also"></a>另请参阅
 * [使用 Application Insights 监视 Azure Cloud Service 应用](./cloudservices.md)
-* [将 Azure 诊断发送到 Application Insights](../platform/diagnostics-extension-to-application-insights.md)
+* [将 Azure 诊断发送到 Application Insights](../agents/diagnostics-extension-to-application-insights.md)
 
 
 

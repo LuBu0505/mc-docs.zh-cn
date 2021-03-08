@@ -3,8 +3,7 @@ title: 使用动态 DNS 在 Azure 中注册主机名 | Azure
 description: 了解如何设置动态 DNS，以便在自己的 DNS 服务器中注册主机名。
 services: dns
 documentationcenter: na
-author: rockboyfor
-manager: digimobile
+manager: vitinnan
 ms.assetid: c315961a-fa33-45cf-82b9-4551e70d32dd
 ms.service: dns
 ms.devlang: na
@@ -12,14 +11,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/23/2017
-ms.date: 07/06/2020
+author: rockboyfor
+ms.date: 02/22/2021
 ms.author: v-yeche
-ms.openlocfilehash: 0ee4bd67cd5501b531108afb050e75f3e5798cb5
-ms.sourcegitcommit: af71b9199d47fb81e85d70da0cfb265cc814a644
+ms.openlocfilehash: 9dad3ab2e3ab068671077e0126550760bf5822d2
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969034"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055260"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>使用动态 DNS 在自己的 DNS 服务器中注册主机名
 
@@ -28,7 +28,7 @@ ms.locfileid: "85969034"
 将自定义 DNS 服务器作为 Azure VM 托管时，可将针对同一虚拟网络的主机名查询转发到 Azure 以解析主机名。 如果不希望使用此选项，可使用动态 DNS (DDNS) 在 DNS 服务器中注册 VM 主机名。 Azure 不具备直接在 DNS 服务器中创建记录所需的凭据，因此通常需要替代方案。 以下是一些常见的具有替代方案的情况：
 
 ## <a name="windows-clients"></a>Windows 客户端
-在启动时或其 IP 地址更改时，未加入域的 Windows 客户端会尝试不安全的 DDNS 更新。 DNS 名称为主机名加上的主 DNS 后缀。 Azure 保留主 DNS 后缀为空，但你可以通过[用户界面](https://technet.microsoft.com/library/cc794784.aspx)或 [PowerShell](https://docs.microsoft.com/powershell/module/dnsclient/set-dnsclient) 在 VM 中对后缀进行设置。
+在启动时或其 IP 地址更改时，未加入域的 Windows 客户端会尝试不安全的 DDNS 更新。 DNS 名称为主机名加上的主 DNS 后缀。 Azure 保留主 DNS 后缀为空，但你可以通过[用户界面](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc794784(v=ws.10))或 [PowerShell](https://docs.microsoft.com/powershell/module/dnsclient/set-dnsclient) 在 VM 中对后缀进行设置。
 
 已加入域的 Windows 客户端通过使用安全的 DDNS 将其 IP 地址注册到域控制器。 域加入过程在客户端上设置主 DNS 后缀并创建和维护信任关系。
 
@@ -71,4 +71,4 @@ fi
 supersede domain-name <required-dns-suffix>;
 ```
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

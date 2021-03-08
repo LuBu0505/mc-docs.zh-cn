@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: overview
 origin.date: 02/25/2020
-ms.date: 11/30/2020
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 0fa2b7e4680a279db1eada8aba1576ba458da8b8
-ms.sourcegitcommit: dabbf66e4507a4a771f149d9f66fbdec6044dfbf
+ms.openlocfilehash: 91c4865e297a7d37470bb85af9f24f83dcf95349
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96153020"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196305"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 简介
 
@@ -38,7 +38,7 @@ Data Lake Storage Gen2 在 Blob 存储的基础上构建，并通过以下方式
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Data Lake Storage Gen2 的主要功能
 
--   Hadoop 兼容访问：使用 Data Lake Storage Gen2，可以像使用 [Hadoop 分布式文件系统 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 一样管理和访问数据。 新的 [ABFS 驱动程序](data-lake-storage-abfs-driver.md)（用于访问数据）在所有 Apache Hadoop 环境中都可用。 这些环境包括 [Azure HDInsight](/hdinsight/index)、Azure Databricks 和 [Azure Synapse Analytics](/synapse-analytics)。
+-   Hadoop 兼容访问：使用 Data Lake Storage Gen2，可以像使用 [Hadoop 分布式文件系统 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 一样管理和访问数据。 新的 [ABFS 驱动程序](data-lake-storage-abfs-driver.md)（用于访问数据）在所有 Apache Hadoop 环境中都可用。 这些环境包括 [Azure HDInsight](../../hdinsight/index.yml)、[Azure Databricks](/databricks/) 和 [Azure Synapse Analytics](../../synapse-analytics/index.yml)。
 
 -   POSIX 权限的超集：Data Lake Gen2 的安全模型支持 ACL 和 POSIX 权限，以及特定于 Data Lake Storage Gen2 的一些额外粒度。 可以通过存储资源管理器或 Hive 和 Spark 等框架来配置设置。
 
@@ -65,7 +65,7 @@ Data Lake Storage Gen2 在 Blob 存储的基础上构建，并通过以下方式
 | 概念                                | 顶级组织 | 较低级别的组织                                            | 数据容器 |
 |----------------------------------------|------------------------|---------------------------------------------------------------------|----------------|
 | Blob - 常规用途对象存储 | 容器              | 虚拟目录（仅限 SDK - 不提供原子操作） | Blob           |
-| Azure Data Lake Storage Gen2 - 分析存储          | 容器            | Directory                                                           | 文件           |
+| Azure Data Lake Storage Gen2 - 分析存储          | 容器            | 目录                                                           | 文件           |
 
 ## <a name="supported-blob-storage-features"></a>支持的 Blob 存储功能
 
@@ -85,5 +85,3 @@ Data Lake Storage gen2 支持多个 Azure 服务。 可以使用它们来引入�
 
 - [Azure Data Lake Storage Gen2 的已知问题](data-lake-storage-known-issues.md)
 - [Azure Data Lake Storage 的多协议访问](data-lake-storage-multi-protocol-access.md)
-
-

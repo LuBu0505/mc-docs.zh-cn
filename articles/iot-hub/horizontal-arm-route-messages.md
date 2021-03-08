@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: robinsh
 ms.custom: mvc, subject-armqs
-ms.openlocfilehash: 66a4bb3f27257330ae1d99e34c948edd16a0b889
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 926bc413de2417c91ec5f3e222248c3e26b72352
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747201"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196653"
 ---
 # <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>快速入门：使用 ARM 模板部署 Azure IoT 中心和存储帐户
 
@@ -241,10 +241,10 @@ ms.locfileid: "96747201"
    SET IOT_DEVICE_KEY=<device-key-goes-here>
    ```
 
-1. 最后一个环境变量是“设备 ID”。 在命令窗口中，设置并执行命令。 
-   
-   ```cms
-   SET IOT_DEVICE_ID=<device-id-goes-here> 
+1. 最后一个环境变量是“设备 ID”。 在命令窗口中，设置并执行命令。
+
+   ```cmd
+   SET IOT_DEVICE_ID=<device-id-goes-here>
    ```
 
    如以下示例所示：

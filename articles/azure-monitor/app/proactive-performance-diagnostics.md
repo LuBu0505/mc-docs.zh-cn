@@ -3,15 +3,15 @@ title: 智能检测 - 性能异常 | Azure Docs
 description: Application Insights 执行应用遥测的智能分析，并在有潜在问题时发出警告。 此功能不需要任何设置。
 ms.topic: conceptual
 author: Johnnytechn
-ms.date: 01/12/2021
+ms.date: 02/22/2021
 ms.reviewer: antonfr
 ms.author: v-johya
-ms.openlocfilehash: 476938ec313b26577a9df8dcc376b8a74027ed55
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 122192402f24ab4d58988ae239f3e09e0376309d
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231039"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197266"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智能检测 - 性能异常
 
@@ -62,7 +62,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 ## <a name="faq"></a>常见问题解答
 
 * *那么，Azure 员工会查看我的数据？*
-  * 不是。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](./data-retention-privacy.md)数据。
+  * 否。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](./data-retention-privacy.md)数据。
 * *是否分析由 Application Insights 收集的所有数据？*
   * 目前不会。 目前，我们分析请求响应时间、依赖项响应时间和页面加载时间。 其他指标的分析功能正在规划中，今后有望推出。
 
@@ -72,13 +72,13 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 * *是否可以创建自己的异常检测规则或自定义现有的规则？*
 
   * 目前不可以，但可以：
-    * [设置警报](../platform/alerts-log.md)，以便在指标超出阈值时告知用户。
+    * [设置警报](../alerts/alerts-log.md)，以便在指标超出阈值时告知用户。
     * [将遥测导出](./export-telemetry.md)到[数据库](./code-sample-export-sql-stream-analytics.md)或 [Power BI](./export-power-bi.md)，可自行在其中进行分析。
 * *执行分析的频率是多少？*
 
   * 我们每天针对前一天（UTC 时区整天）的遥测数据运行分析。
-* *那么这是否会替换 [指标警报](../platform/alerts-log.md)？*
-  * 不是。  我们不确定检测用户视为异常的每个行为。
+* *那么这是否会替换 [指标警报](../alerts/alerts-log.md)？*
+  * 否。  我们不确定检测用户视为异常的每个行为。
 
 
 * *如果不执行任何操作来响应通知，是否会收到提醒？*
@@ -177,10 +177,10 @@ Application Insights 可以找到只会影响一部分用户，或者只会在�
 
 * [探查器](profiler.md) 
 * [快照调试器](./snapshot-debugger.md)
-* [分析](../log-query/log-analytics-tutorial.md)
-* [分析智能诊断](../log-query/log-query-overview.md)
+* [分析](../logs/log-analytics-tutorial.md)
+* [分析智能诊断](../logs/log-query-overview.md)
 
 智能检测是完全自动执行的。 但是或许你想要设置更多的警报？
 
-* [手动配置的指标警报](../platform/alerts-log.md)
+* [手动配置的指标警报](../alerts/alerts-log.md)
 

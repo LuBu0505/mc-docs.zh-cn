@@ -4,14 +4,14 @@ description: 本文列出了 Azure Application Insights 指标以及支持的聚
 services: azure-monitor
 ms.topic: reference
 ms.author: v-johya
-ms.date: 01/27/2021
+ms.date: 02/22/2021
 ms.subservice: application-insights
-ms.openlocfilehash: eecd1fbb2d9bb3a245f557b037c700475f97dabb
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 0bfb8bdf0c75695be9fceb9c12a59672f348c409
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99058891"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197245"
 ---
 # <a name="application-insights-standard-metrics"></a>Application Insights 标准指标
 
@@ -274,5 +274,5 @@ ms.locfileid: "99058891"
 ## <a name="next-steps"></a>后续步骤
 
 * 了解[基于日志的指标和预聚合的指标](./pre-aggregated-metrics-log-metrics.md)。
-* [基于日志的指标查询和定义](../platform/app-insights-metrics.md)。
+* [基于日志的指标查询和定义](../essentials/app-insights-metrics.md)。
 

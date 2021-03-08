@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 07/04/2017
 ms.date: 01/11/2021
 ms.author: v-yiso
-ms.openlocfilehash: 0a1e745dd362b397ce9d7f386e99976583f51d53
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: c36798c6a051b903ebddada97a399d49c62e1cee
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830287"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196545"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>通过 IoT 中心将设备中的文件上传到云 (.NET)
 
@@ -68,19 +68,19 @@ ms.locfileid: "97830287"
     ```csharp
     using System.IO;
     ```
-4. 将以下方法添加到 **Program** 类：
+
+1. 将以下方法添加到 **Program** 类：
 
     ```csharp
-    private static async void SendToBlobAsync()
+    private static async Task SendToBlobAsync(string fileName)
     {
-        string fileName = "image.jpg";
         Console.WriteLine("Uploading file: {0}", fileName);
         var watch = System.Diagnostics.Stopwatch.StartNew();
 
-        using (var sourceData = new FileStream(@"image.jpg", FileMode.Open))
-        {
-            await deviceClient.UploadToBlobAsync(fileName, sourceData);
-        }
+        await deviceClient.GetFileUploadSasUriAsync(new FileUploadSasUriRequest { BlobName = fileName });
+        var blob = new CloudBlockBlob(sas.GetBlobUri());
+        await blob.UploadFromFileAsync(fileName);
+        await deviceClient.CompleteFileUploadAsync(new FileUploadCompletionNotification { CorrelationId = sas.CorrelationId, IsSuccess = true });
 
         watch.Stop();
         Console.WriteLine("Time to upload file: {0}ms\n", watch.ElapsedMilliseconds);
@@ -92,7 +92,7 @@ ms.locfileid: "97830287"
 1. 在 Main 方法中的 `Console.ReadLine()` 前面添加以下行：
 
     ```csharp
-    SendToBlobAsync();
+    await SendToBlobAsync("image.jpg");
     ```
 
 > [!NOTE]

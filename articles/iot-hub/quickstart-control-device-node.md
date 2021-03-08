@@ -13,12 +13,12 @@ ms.workload: ns
 origin.date: 06/21/2019
 ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: 76d6fa5b0537a8f0694ffdfe497069154a5a28f3
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 4605eee40ecc23dbd2779a64260bf9d004888f38
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746782"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196543"
 ---
 # <a name="quickstart-use-nodejs-to-control-a-device-connected-to-an-azure-iot-hub"></a>快速入门：使用 Node.js 控制连接到 Azure IoT 中心的设备
 
@@ -74,7 +74,7 @@ ms.locfileid: "96746782"
     **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
     ```azurecli
-    az iot hub device-identity show-connection-string \
+    az iot hub device-identity connection-string show \
       --hub-name {YourIoTHubName} \
       --device-id MyNodeDevice \
       --output table
@@ -90,7 +90,7 @@ ms.locfileid: "96746782"
 
     **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
     ```azurecli
-    az iot hub show-connection-string \
+    az iot hub connection-string show \
       --policy-name service --name {YourIoTHubName} --output table
 
     ```

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/02/2021
+ms.date: 02/25/2021
 ms.author: v-johya
-ms.openlocfilehash: 69dffb245fb15ac8752f93b0c1bb02df3cc92cef
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: 570c89ae71258bf3d2b88020dab1968ce11d10ed
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579452"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197637"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能存档
 
@@ -29,6 +29,47 @@ ms.locfileid: "99579452"
 - Bug 修复
 - 已弃用的功能
 
+
+## <a name="august-2020"></a>2020 年 8 月
+
+8 月的更新包括：
+
+- [资产清单 - 功能强大的资产安全状况新视图](#asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets)
+- [添加了对 Azure Active Directory 安全默认值的支持（用于多重身份验证）](#added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication)
+- [新的 AKS 安全策略已添加到 ASC_default 计划 - 仅供个人预览版客户使用](#new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only)
+
+
+### <a name="asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets"></a>资产清单 - 功能强大的资产安全状况新视图
+
+安全中心的资产清单页（当前为预览版）提供了一种方法，用于查看已连接到安全中心的资源的安全状况。
+
+安全中心会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后会提供有关如何消除这些安全漏洞的建议。 当任何资源具有未完成的建议时，它们将显示在清单中。
+
+你可以使用该视图及其筛选器来浏览安全状况数据，并根据发现结果采取更多操作。
+
+详细了解[资产清单](asset-inventory.md)。
+
+
+### <a name="added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication"></a>添加了对 Azure Active Directory 安全默认值的支持（用于多重身份验证）
+
+安全中心已添加对[安全默认值](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)（Microsoft 的免费标识安全保护）的全部支持。
+
+安全默认值提供了预配置的标识安全设置，以保护组织免受与标识相关的常见攻击。 安全默认值总计已保护了逾 500 万名租户；50,000 名租户也受安全中心的保护。
+
+现在，安全中心在识别出未启用安全默认值的 Azure 订阅时将提供安全建议。 到目前为止，安全中心建议使用条件访问启用多重身份验证，这是 Azure Active Directory (AD) 高级许可证的一部分。 对于使用 Azure AD Free 的客户，我们现在建议启用安全默认值。 
+
+我们旨在鼓励更多客户使用 MFA 保护其云环境，并缓解对[安全功能分数](secure-score-security-controls.md)影响最大的最高风险。
+
+详细了解[安全默认值](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)。
+
+
+### <a name="service-principals-recommendation-added"></a>添加了服务主体建议
+
+添加了一条新建议，该建议推荐使用管理证书来管理订阅的安全中心客户改用服务主体。
+
+“应使用服务主体而不是管理证书来保护订阅”这一建议推荐使用服务主体或 Azure 资源管理器，以更安全地管理订阅。 
+
+详细了解 [Azure Active Directory 中的应用程序对象和服务主体对象](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。
 
 ## <a name="march-2020"></a>2020 年 3 月
 

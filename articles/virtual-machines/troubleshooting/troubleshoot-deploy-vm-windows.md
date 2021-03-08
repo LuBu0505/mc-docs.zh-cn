@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 origin.date: 11/01/2018
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2eeaf792285373cc397f3903b2945c30a15b2459
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 4c8d1f328b059130d9f83649d53e1391307492e8
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106331"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054323"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>排查 Azure 中的 Windows 虚拟机部署问题
 
@@ -94,7 +94,7 @@ productPesIds="1234, 5678"
 
 ## <a name="are-n-series-vms-available-in-my-region"></a>我所在的区域是否提供 N 系列 VM？
 
-可以从[可用产品(按区域)](https://azure.microsoft.com/regions/services) 以及[此处](https://www.azure.cn/pricing/details/virtual-machines)的定价来查看可用性。
+可以从[可用产品(按区域)](https://status.azure.com/status/) 以及[此处](https://www.azure.cn/pricing/details/virtual-machines)的定价来查看可用性。
 
 ## <a name="what-client-images-can-i-use-and-deploy-in-azure-and-how-to-i-get-them"></a>可以在 Azure 中使用和部署哪些客户端映像，以及如何获取它们？
 
@@ -103,7 +103,7 @@ productPesIds="1234, 5678"
 - Azure 库的[符合条件的开发/测试产品/服务](../windows/client-images.md#eligible-offers)中提供了 Windows 10 映像。 
 - 任一产品类型的 Visual Studio 订阅者也可以[适当地准备和创建](../windows/prepare-for-upload-vhd-image.md) 64 位 Windows 7 或 Windows 10 映像，并[将其上载到 Azure](../windows/upload-generalized-managed.md)。 仅限有效的 Visual Studio 订户用于开发/测试目的。
 
-<!--Not Available on Windows 8-->
+<!--NOT AVAILABLE on Windows 8-->
 
 [本文](../windows/client-images.md)概述在 Azure 中运行 Windows 客户端和使用 Azure 库映像所要满足的条件。
 
@@ -130,4 +130,4 @@ productPesIds="1234, 5678"
 
 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://support.azure.cn/support/support-azure/)提交请求。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

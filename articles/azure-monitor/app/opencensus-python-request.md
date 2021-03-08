@@ -4,14 +4,14 @@ description: 使用 OpenCensus Python 监视 Python 应用的请求调用。
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 01/27/2021
+ms.date: 02/22/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 44d5024d3aafc7f581426d6d9c300223ce6a646d
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 209f629f1e3050d19f4eb78558ba4a6843f8958b
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059515"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197664"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>使用 OpenCensus Python 跟踪传入请求
 
@@ -176,7 +176,7 @@ OpenCensus 没有 FastAPI 的扩展。 若要编写自己的 FastAPI 中间件�
 
 * [应用程序映射](./app-map.md)
 * [搜索](./diagnostic-search.md)
-* [日志（分析）查询](../log-query/log-query-overview.md)
+* [日志（分析）查询](../logs/log-query-overview.md)
 * [事务诊断](./transaction-diagnostics.md)
 
 

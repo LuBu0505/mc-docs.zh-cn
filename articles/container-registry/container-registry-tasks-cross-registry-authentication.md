@@ -4,14 +4,14 @@ description: 配置 Azure 容器注册表任务（ACR 任务）以使用 Azure �
 ms.topic: article
 origin.date: 07/06/2020
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.author: v-yeche
-ms.openlocfilehash: ad1e74db058e9cc35609d7218bcb30f9e013fd6b
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 68ad34cd3177e214884179d758952ea5cee74510
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063519"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052705"
 ---
 <!--Verify successfully-->
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>使用 Azure 托管标识在 ACR 任务中进行跨注册表的身份验证 
@@ -59,7 +59,7 @@ az acr import --name mybaseregistry \
 version: v1.1.0
 steps:
 # Replace mybaseregistry with the name of your registry containing the base image
-  - build: -t $Registry/hello-world:$ID  https://github.com/Azure-Samples/acr-build-helloworld-node.git -f Dockerfile-app --build-arg REGISTRY_NAME=mybaseregistry.azurecr.cn
+  - build: -t $Registry/hello-world:$ID  https://github.com/Azure-Samples/acr-build-helloworld-node.git#main -f Dockerfile-app --build-arg REGISTRY_NAME=mybaseregistry.azurecr.cn
   - push: ["$Registry/hello-world:$ID"]
 ```
 

@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 11/17/2016
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 405a4f5f647c774f074d76bb93dfc0b35e5a6cf0
-ms.sourcegitcommit: 1f933e4790b799ceedc685a0cea80b1f1c595f3d
+ms.openlocfilehash: 76f014b74ad218cccb676488fe7c9a4f810405af
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628254"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053017"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>使用 Azure CLI 将多个 IP 地址分配给虚拟机
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-本文介绍如何使用 Azure CLI 通过 Azure 资源管理器部署模型创建虚拟机 (VM)。 无法将多个 IP 地址分配到通过经典部署模型创建的资源。 若要详细了解 Azure 部署模型，请阅读 [Understand deployment models](../resource-manager-deployment-model.md)（了解部署模型）一文。
+本文介绍如何使用 Azure CLI 通过 Azure 资源管理器部署模型创建虚拟机 (VM)。 无法将多个 IP 地址分配到通过经典部署模型创建的资源。 若要详细了解 Azure 部署模型，请阅读 [Understand deployment models](../azure-resource-manager/management/deployment-models.md)（了解部署模型）一文。
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
@@ -43,7 +43,7 @@ ms.locfileid: "92628254"
 3. 从命令行界面使用命令 `az login` 登录，并选择要使用的订阅。
 4. 通过在 Linux 或 Mac 计算机上执行以下脚本创建 VM。 该脚本创建 1 个资源组、1 个虚拟网络 (VNet)、1 个具有 3 个 IP 配置的 NIC，以及附加 2 个 NIC 的 VM。 NIC、公共 IP 地址、虚拟网络和 VM 资源均必须位于同一位置和订阅。 虽然资源不必都存在于同一资源组中，但是在以下脚本中资源都存在于同一资源组中。
 
-```bash
+```azurecli
 
 #!/bin/sh
 
@@ -285,4 +285,4 @@ az vm create \
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

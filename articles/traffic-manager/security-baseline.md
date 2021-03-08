@@ -5,17 +5,17 @@ ms.service: traffic-manager
 ms.topic: conceptual
 origin.date: 10/01/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: 10/26/2020
 ms.author: v-yeche
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d8ec75ee2ced89c750c9f41c84684c9f1fda17ff
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: f81928d0ad64e8d797c0f5023646ca1a2dc783f5
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230804"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054383"
 ---
 <!--Verified Successfully-->
 # <a name="azure-security-baseline-for-azure-traffic-manager"></a>适用于 Azure 流量管理器的 Azure 安全基线
@@ -34,7 +34,7 @@ ms.locfileid: "98230804"
 
 通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方 SIEM。
 
-<!--Not Available on 01/15 - [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
+<!--NOT AVAILABLE ON - [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
 
@@ -48,7 +48,7 @@ ms.locfileid: "98230804"
 
 在 Azure Monitor 内启用诊断设置，以访问审核日志、安全日志和诊断日志。 活动日志自动可用，包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用元素。
 
-<!--Not Available on 01/15 - [How to enable resource logging](traffic-manager-diagnostic-logs.md)-->
+<!--NOT AVAILABLE ON - [How to enable resource logging](traffic-manager-diagnostic-logs.md)-->
 
 - [流量管理器指标和警报](traffic-manager-metrics-alerts.md)
 
@@ -78,7 +78,7 @@ ms.locfileid: "98230804"
 
 或者，可以启用数据并将其加入 Azure Sentinel 或第三方 SIEM。 
 
-<!--Not Available on 01/15 - [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
+<!--NOT AVAILABLE ON - [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
 
 - [Log Analytics 查询入门](../azure-monitor/log-query/get-started-portal.md)
 
@@ -102,7 +102,7 @@ ms.locfileid: "98230804"
 
 - [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/learn/tutorial-response.md)
 
-<!--Not Available on 01/15 [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
+<!--NOT AVAILABLE ON - [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
 
 **Azure 安全中心监视**：是
 
@@ -140,7 +140,7 @@ ms.locfileid: "98230804"
 
 还可以通过使用 Azure AD Privileged Identity Management 和 Azure 资源管理器来启用即时访问权限。 
 
-- [详细了解 Privileged Identity Management](https://docs.azure.cn/active-directory/privileged-identity-management/)
+- [详细了解 Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 - [如何使用 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -152,7 +152,7 @@ ms.locfileid: "98230804"
 
 **指导**：Azure 流量管理器支持使用 Azure Active Directory 进行 SSO 身份验证。 通过使用组织的预先存在的标识为服务启用 SSO，减少用户必须管理的标识和凭据的数量。
 
-<!--Not Available on 01/15 - [Understand SSO with Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)-->
+<!--NOT AVAILABLE ON - [Understand SSO with Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)-->
 
 **Azure 安全中心监视**：不适用
 
@@ -174,7 +174,7 @@ ms.locfileid: "98230804"
 
 **指导**：对于需要提升的权限的管理任务，请使用安全的 Azure 托管工作站（也称为特权访问工作站，简称 PAW）。
 
-<!--Not Available on 01/15 - [Understand secure, Azure-managed workstations](../active-directory/devices/concept-azure-managed-workstation.md)-->
+- [了解安全的 Azure 托管工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -188,9 +188,9 @@ ms.locfileid: "98230804"
 
 此外，还可使用 Azure AD 风险检测来查看有关风险用户行为的警报和报告。
 
-- [如何部署 Privileged Identity Management](https://docs.azure.cn/active-directory/privileged-identity-management/pim-deployment-plan)
+- [如何部署 Privileged Identity Management](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-<!--Not Available on 01/15 [Understand Azure AD risk detection](https://docs.azure.cn/active-directory/reports-monitoring/concept-risk-events)-->
+<!--NOT AVAILABLE ON - [Understand Azure AD risk detection](../active-directory/identity-protection/overview-identity-protection.md)-->
 
 **Azure 安全中心监视**：是
 
@@ -220,7 +220,7 @@ ms.locfileid: "98230804"
 
 **指南**：Azure AD 提供日志来帮助发现过时的帐户。 此外，请使用 Azure AD 标识和访问评审来有效管理组成员身份、对企业应用程序的访问以及角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才持续拥有访问权限。 
 
-- [了解 Azure AD 报告](https://docs.azure.cn/active-directory/reports-monitoring/)
+- [了解 Azure AD 报告](../active-directory/reports-monitoring/index.yml)
 
 - [如何使用 Azure AD 标识和访问评审](../active-directory/governance/access-reviews-overview.md)
 
@@ -234,16 +234,16 @@ ms.locfileid: "98230804"
 
 可以通过为 Azure AD 用户帐户创建诊断设置，并将审核日志和登录日志发送到 Log Analytics 工作区，来简化此过程。 你可以在 Log Analytics 工作区中配置所需的警报。
 
-- [如何将 Azure 活动日志与 Azure Monitor 集成](https://docs.azure.cn/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何将 Azure 活动日志与 Azure Monitor 集成](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure 安全中心监视**：不适用
 
 **责任**：客户
 
 <!--Not Available on ### 3.12: Alert on account login behavior deviation-->
-<!--Not Available on 01/15 [How to view Azure AD risky sign-ins](https://docs.azure.cn/active-directory/reports-monitoring/concept-risky-sign-ins)-->
-<!--Not Available on 01/15 [How to configure and enable Identity Protection risk policies](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)-->
-<!--Not Avaialble on 01/15 [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
+<!--NOT AVAILABLE ON - [How to view Azure AD risky sign-ins](../active-directory/identity-protection/overview-identity-protection.md)-->
+<!--NOT AVAILABLE ON - [How to configure and enable Identity Protection risk policies](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)-->
+<!--NOT AVAILABLE ON - [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
 
 ## <a name="data-protection"></a>数据保护
 
@@ -253,7 +253,7 @@ ms.locfileid: "98230804"
 
 **指导**：使用标记可以帮助跟踪存储或处理敏感信息的 Azure 资源。
 
-- [如何创建和使用标记](https://docs.azure.cn/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -309,15 +309,8 @@ Azure 流量管理器具有一个名为“流量管理器参与者”的预定�
 
 **责任**：客户
 
-### <a name="62-maintain-asset-metadata"></a>6.2：维护资产元数据
-
-**指导**：使用“策略名称”、“描述”和“类别”可根据分类以符合逻辑的方式组织资产。
-
-<!--Not Available on 01/15 - [For more information about tagging assets, see Resource naming and tagging decision guide](https://docs.azure.cn/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure-resource-manager/management/toc.json)-->
-
-**Azure 安全中心监视**：不适用
-
-**责任**：客户
+<!--NOT AVAILABLE ON ### 6.2: Maintain asset metadata-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure-resource-manager%2fmanagement%2ftoc.json-->
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
@@ -330,11 +323,11 @@ Azure 流量管理器具有一个名为“流量管理器参与者”的预定�
 
 还可以创建自定义 Azure Policy 定义，以限制更精细的资源设置。
 
-<!--Not Available on 01/15[How to create additional Azure subscriptions](https://docs.azure.cn/billing/billing-create-subscription)-->
+<!--NOT AVAILABLE ON - [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)-->
 
-- [如何创建管理组](https://docs.azure.cn/governance/management-groups/create)
+- [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
-- [如何创建和使用标记](https://docs.azure.cn/azure-resource-manager/resource-group-using-tags)
+- [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -373,7 +366,7 @@ Azure 流量管理器具有一个名为“流量管理器参与者”的预定�
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Policy 拒绝特定的资源类型](https://docs.azure.cn/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/index.md)
 
 **Azure 安全中心监视**：是
 
@@ -481,7 +474,7 @@ Azure 流量管理器具有一个名为“流量管理器参与者”的预定�
 
 - [Azure 安全中心中的安全警报](../security-center/security-center-alerts-overview.md)
 
-- [使用标记整理 Azure 资源](https://docs.azure.cn/azure-resource-manager/resource-group-using-tags)
+- [使用标记整理 Azure 资源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 安全中心监视**：是
 
@@ -513,7 +506,7 @@ Azure 流量管理器具有一个名为“流量管理器参与者”的预定�
 
 - [如何配置连续导出](../security-center/continuous-export.md)
 
-<!--Not Avaialble on 01/15 [How to stream alerts into Azure Sentinel](../sentinel/connect-azure-security-center.md)-->
+<!--NOT AVAILABLE ON - [How to stream alerts into Azure Sentinel](../sentinel/connect-azure-security-center.md)-->
 
 **Azure 安全中心监视**：不适用
 
@@ -547,7 +540,7 @@ Azure 流量管理器具有一个名为“流量管理器参与者”的预定�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [Azure 安全基准](https://docs.azure.cn/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](https://docs.azure.cn/security/benchmarks/security-baselines-overview)
+- 请参阅 [Azure 安全基准](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

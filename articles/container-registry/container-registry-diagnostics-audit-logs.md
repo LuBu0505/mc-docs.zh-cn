@@ -4,16 +4,16 @@ description: 记录和分析 Azure 容器注册表的资源日志事件，例如
 ms.topic: article
 origin.date: 06/01/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 09/14/2020
 ms.author: v-yeche
-ms.openlocfilehash: 04af1d8154f0fd5415508930da349bac4ccfbf6f
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: cc84568524f3809ffb6332446ac5f1608d808f48
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230553"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054032"
 ---
 <!--Verified successfully-->
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>用于诊断评估和审核的 Azure 容器注册表日志
@@ -155,4 +155,4 @@ ContainerRegistryLoginEvents
 * 详细了解如何使用 [Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) 和创建[日志查询](../azure-monitor/log-query/get-started-queries.md)。
 * 参阅 [Azure 平台日志概述](../azure-monitor/platform/platform-logs-overview.md)，了解不同的 Azure 层提供的平台日志。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

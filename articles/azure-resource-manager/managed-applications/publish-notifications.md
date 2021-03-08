@@ -4,16 +4,16 @@ description: 使用 Webhook 终结点配置托管应用程序，以接收有关�
 ms.topic: conceptual
 origin.date: 11/01/2019
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 7068b14196e43a0fe232166d17520a8df9900e77
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 689cb090b86c55823f1e2f5376415c0ec0c2053b
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022661"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055305"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>提供通知的 Azure 托管应用程序
 
@@ -65,9 +65,10 @@ Azure 托管应用程序通知可让发布者根据托管应用程序实例的�
 ```
 ## <a name="add-azure-marketplace-managed-application-notifications"></a>添加 Azure 市场托管应用程序通知
 
-<!--Not Available on [Create an Azure application offer](../../marketplace/create-new-azure-apps-offer.md)-->
+<!--NOT AVAILABLE ON [Create an Azure application offer](../../marketplace/create-new-azure-apps-offer.md)-->
 
 :::image type="content" source="./media/publish-notifications/marketplace-notifications.png" alt-text="Azure 门户中的 Azure 市场托管应用程序通知":::
+
 ## <a name="event-triggers"></a>事件触发器
 下表描述了 EventType 和 ProvisioningState 的所有可能组合及其触发器：
 
@@ -91,10 +92,10 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 {
     "eventType": "PUT",
-    "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
+    "applicationId": "/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Succeeded",
-    "applicationDefinitionId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applicationDefinitions/<appDefName>"    
+    "applicationDefinitionId": "/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applicationDefinitions/<appDefName>"    
 }
 
 ```
@@ -109,7 +110,7 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
     "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Failed",
-    "applicationDefinitionId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applicationDefinitions/<appDefName>",
+    "applicationDefinitionId": "/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applicationDefinitions/<appDefName>",
     "error": {
         "code": "ErrorCode",
         "message": "error message",
@@ -132,7 +133,7 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 {
     "eventType": "PUT",
-    "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
+    "applicationId": "/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Succeeded",
     "billingDetails": {
@@ -155,7 +156,7 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 {
     "eventType": "PUT",
-    "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
+    "applicationId": "/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Failed",
     "billingDetails": {
@@ -201,4 +202,4 @@ billingDetails | 仅为 Azure 市场托管应用程序指定。  托管应用程
 
 托管应用程序通知服务预期 Webhook 终结点在通知中返回 `200 OK` 响应。 如果 Webhook 终结点返回大于或等于 500 的 HTTP 错误代码、返回错误代码 429，或暂时不可访问，则通知服务将会重试。 如果 Webhook 终结点在 10 小时内一直不可用，则会删除通知消息，并且重试将会停止。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

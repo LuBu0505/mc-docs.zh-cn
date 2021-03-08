@@ -3,17 +3,17 @@ title: 混合连接的诊断日志
 description: 本文概述了可用于 Azure 中继的所有活动和诊断日志。
 ms.topic: how-to
 origin.date: 06/23/2020
-ms.date: 08/31/2020
+author: rockboyfor
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 07/20/2020
 ms.author: v-yeche
-author: rockboyfor
-ms.openlocfilehash: dbbcdabb0c6a87d772b66b9e89a71584b3b9fe02
-ms.sourcegitcommit: b5ea35dcd86ff81a003ac9a7a2c6f373204d111d
+ms.openlocfilehash: 6f4f6efcb211ce541bf62b7f380b6f2ed922057c
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88947102"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054414"
 ---
 <!--Verified successfully-->
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>为 Azure 中继混合连接启用诊断日志
@@ -57,14 +57,14 @@ ms.locfileid: "88947102"
 ## <a name="schema-for-hybrid-connections-events"></a>混合连接事件的架构
 混合连接事件日志 JSON 字符串包括下表中列出的元素：
 
-| 名称 | 描述 |
+| 名称 | 说明 |
 | ------- | ------- |
-| ResourceId | Azure 资源管理器资源 ID |
-| ActivityId | 内部 ID，用于标识指定的操作。 也称为“TrackingId” |
-| 端点 | 中继资源的地址 |
-| OperationName | 所记录的混合连接操作的类型 |
-| EventTimeString | 日志记录的 UTC 时间戳 |
-| 消息 | 事件的详细消息 |
+| ResourceId | Azure Resource Manager 资源 ID |
+| ActivityId | 内部 ID，用于标识指定的操作。 也称为“TrackingId” |
+| 端点 | 中继资源的地址 |
+| OperationName | 所记录的混合连接操作的类型 |
+| EventTimeString | 日志记录的 UTC 时间戳 |
+| Message | 事件的详细消息 |
 | 类别 | 事件的类别。 目前只有 `HybridConnectionsEvents`。 
 
 ## <a name="sample-hybrid-connections-event"></a>混合连接事件示例
@@ -90,13 +90,13 @@ ms.locfileid: "88947102"
 | InvalidSasToken | 无效 SAS 令牌。 | 
 | ListenerAcceptingConnection | 侦听器正在接受连接。 |
 | ListenerAcceptingConnectionTimeout | 正在接受连接的侦听器已超时。 |
-| ListenerAcceptingHttpRequestFailed | 由于出现异常，正在接受 HTTP 请求的侦听器失败。 |
-| ListenerAcceptingRequestTimeout | 正在接受请求的侦听器已超时。 |  
-| ListenerClosingFromExpiredToken | 侦听器正在关闭，因为安全令牌已过期。 | 
+| ListenerAcceptingHttpRequestFailed | 由于出现异常，正在接受 HTTP 请求的侦听器失败。 |
+| ListenerAcceptingRequestTimeout | 正在接受请求的侦听器已超时。 |  
+| ListenerClosingFromExpiredToken | 侦听器正在关闭，因为安全令牌已过期。 | 
 | ListenerRejectedConnection | 侦听器已拒绝了连接。 |
-| ListenerReturningHttpResponse | 侦听器正在返回 HTTP 响应。 |  
+| ListenerReturningHttpResponse | 侦听器正在返回 HTTP 响应。 |  
 | ListenerReturningHttpResponseFailed | 侦听器正在返回带有失败代码的 HTTP 响应。 | 
-| ListenerSentHttpResponse | 中继服务已收到来自侦听器的 HTTP 响应。 | 
+| ListenerSentHttpResponse | 中继服务已收到来自侦听器的 HTTP 响应。 | 
 | ListenerUnregistered | 侦听器被注销。 | 
 | ListenerUnresponsive | 侦听器在返回响应时无响应。 | 
 | MessageSendingToListener | 正在向侦听器发送消息。 |
@@ -115,4 +115,4 @@ ms.locfileid: "88947102"
 * [Azure 中继简介](relay-what-is-it.md)
 * [中继混合连接入门](relay-hybrid-connections-dotnet-get-started.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

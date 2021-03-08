@@ -3,7 +3,7 @@ title: 筛选网络流量 - Azure PowerShell | Azure
 description: 本文介绍如何在 PowerShell 中使用网络安全组筛选发往子网的网络流量。
 services: virtual-network
 documentationcenter: virtual-network
-manager: digimobile
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want to filter network traffic to virtual machines that perform similar functions, such as web servers.
@@ -15,21 +15,19 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 origin.date: 03/30/2018
 author: rockboyfor
-ms.date: 10/05/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 10/05/2020
 ms.author: v-yeche
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: ca4bccf58582ae3eea64d08454f594f2df458b29
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: 1b89527853ed0e9baaac64dbe637135061fc2fe5
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507159"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053778"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>在 PowerShell 中使用网络安全组筛选网络流量
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 可以使用网络安全组来筛选虚拟网络子网的入站和出站网络流量。 网络安全组包含安全规则，这些规则可按 IP 地址、端口和协议筛选网络流量。 安全规则应用到子网中部署的资源。 在本文中，学习如何：
 
@@ -38,7 +36,7 @@ ms.locfileid: "96507159"
 * 将虚拟机 (VM) 部署到子网中
 * 测试流量筛选器
 
-如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn) 。
+如果没有 Azure 订阅，请在开始前创建一个[试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 <!--[!INCLUDE [cloud-shell-powershell](../../../includes/cloud-shell-powershell.md)]-->
 
@@ -50,7 +48,7 @@ ms.locfileid: "96507159"
 
 ### <a name="create-application-security-groups"></a>创建应用程序安全组
 
-首先使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 针对本文中创建的所有资源创建一个资源组。 以下示例在“chinaeast”  位置创建一个资源组：
+首先使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 针对本文中创建的所有资源创建一个资源组。 以下示例在“chinaeast”位置创建一个资源组：
 
 ```powershell
 Connect-AzAccount -Environment AzureChinaCloud
@@ -261,9 +259,9 @@ Get-AzPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-打开下载的 RDP 文件。 出现提示时，选择“连接”  。
+打开下载的 RDP 文件。 出现提示时，选择“连接”。
 
-输入在创建 VM 时指定的用户名和密码（可能需要选择“更多选择”，然后选择“使用其他帐户”，以便指定在创建 VM 时输入的凭据），然后选择“确定”。    你可能会在登录过程中收到证书警告。 选择“是”以继续进行连接。 
+输入在创建 VM 时指定的用户名和密码（可能需要选择“更多选择”，然后选择“使用其他帐户”，以便指定在创建 VM 时输入的凭据），然后选择“确定”。 你可能会在登录过程中收到证书警告。 选择“是”以继续进行连接。
 
 连接将会成功，因为允许通过端口 3389 将入站流量从 Internet 发往已附加到 *myVmMgmt* VM 的网络接口所在的 *myAsgMgmtServers* 应用程序安全组。
 
@@ -306,8 +304,8 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，我们已创建一个网络安全组并将其关联到虚拟网络子网。 若要详细了解网络安全组，请参阅[网络安全组概述](security-overview.md)和[管理网络安全组](manage-network-security-group.md)。
+在本文中，我们已创建一个网络安全组并将其关联到虚拟网络子网。 若要详细了解网络安全组，请参阅[网络安全组概述](./network-security-groups-overview.md)和[管理网络安全组](manage-network-security-group.md)。
 
 默认情况下，Azure 在子网之间路由流量。 你也可以选择通过某个 VM（例如，充当防火墙的 VM）在子网之间路由流量。 若要了解操作方法，请参阅[创建路由表](tutorial-create-route-table-powershell.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -4,15 +4,15 @@ description: 有多少用户回归到应用？
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 10/29/2020
+ms.date: 02/22/2021
 origin.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 53b865e2b715caa9b960021d8e26931a00da936a
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 9795de10338a5ffcab3705ae914d7c3dad5edb1a
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106020"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197687"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>使用 Azure Application Insights 为 Web 应用程序进行用户留存情况分析
 
@@ -64,7 +64,7 @@ ms.locfileid: "93106020"
     - [用户、会话、事件](usage-segmentation.md)
     - [漏斗图](usage-funnels.md)
     - [用户流](usage-flows.md)
-    - [工作簿](../platform/workbooks-overview.md)
+    - [工作簿](../visualize/workbooks-overview.md)
     - [添加用户上下文](usage-send-user-context.md)
 
 

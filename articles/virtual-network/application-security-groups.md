@@ -6,22 +6,22 @@ services: virtual-network
 documentationcenter: na
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/27/2020
 author: rockboyfor
-ms.date: 10/05/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: 10/05/2020
 ms.author: v-yeche
 ms.reviewer: kumud
-ms.openlocfilehash: 39e954c7b950afa514523d76d138f9dbccaa5240
-ms.sourcegitcommit: 29a49e95f72f97790431104e837b114912c318b4
+ms.openlocfilehash: 31a47ff56c9e15cdf1ff8cb7417cd416791470c5
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91564595"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055244"
 ---
 <!--Verified successfully-->
 # <a name="application-security-groups"></a>应用程序安全组
@@ -72,4 +72,4 @@ ms.locfileid: "91564595"
 
 * 连接如何[创建网络安全组](tutorial-filter-network-traffic.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

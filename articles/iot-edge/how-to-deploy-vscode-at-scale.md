@@ -5,17 +5,16 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-origin.date: 01/08/2020
-ms.date: 11/13/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5bd6ecec5e6b8f716be914a37d48ca0ccc63fbe2
-ms.sourcegitcommit: 9438c9db77338cecacf37d2fc178e757df9de83d
+ms.openlocfilehash: f433965f3f97da4acf2588fdaedcf13c2ae5e769
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94595172"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196684"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>使用 Visual Studio Code 大规模部署 IoT Edge 模块
 
@@ -83,7 +82,7 @@ ms.locfileid: "94595172"
             "edgeAgent": {
               "type": "docker",
               "settings": {
-                "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+                "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
                 "createOptions": "{}"
               }
             },
@@ -92,7 +91,7 @@ ms.locfileid: "94595172"
               "status": "running",
               "restartPolicy": "always",
               "settings": {
-                "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+                "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
                 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
               }
             }

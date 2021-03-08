@@ -7,14 +7,14 @@ origin.date: 06/13/2018
 ms.subservice: monitoring
 ms.custom: REST
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 03/04/2021
 ms.author: v-johya
-ms.openlocfilehash: 8d81a2b115c10d225ef82c8b88d1066fdfcbcd12
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: 3bfaa27ee7f225b202171341288b4d4206a89bd7
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579391"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197206"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>使用 REST API 获取虚拟机使用情况指标
 
@@ -24,7 +24,7 @@ ms.locfileid: "99579391"
 
 ## <a name="build-the-request"></a>生成请求
 
-使用以下 GET 请求从虚拟机中收集 [CPU 百分比指标](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
+使用以下 GET 请求从虚拟机中收集 [CPU 百分比指标](../../azure-monitor/essentials/metrics-supported.md#microsoftcomputevirtualmachines)
 
 ```http
 GET https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmname}/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=Percentage%20CPU&timespan=2018-06-05T03:00:00Z/2018-06-07T03:00:00Z

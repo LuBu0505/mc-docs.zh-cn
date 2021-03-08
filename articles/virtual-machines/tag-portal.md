@@ -6,16 +6,16 @@ ms.workload: infrastructure-services
 ms.service: virtual-machines
 origin.date: 11/11/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 11/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 58e1df1b940b01aa23102f3d76f6a4c572479368
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: e444104505fb867885b20a665b368aeff6a113fb
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857152"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054374"
 ---
 <!--Verified successfully-->
 # <a name="tagging-a-vm-using-the-portal"></a>使用门户标记 VM
@@ -31,11 +31,9 @@ ms.locfileid: "97857152"
 
     :::image type="content" source="media/tag/key-value.png" alt-text="用于将键值对添加为标记的页的屏幕截图。":::
 
-后续步骤
+### <a name="next-steps"></a>后续步骤
 
 - 若要详细了解如何标记 Azure 资源，请参阅 [Azure 资源管理器概述](../azure-resource-manager/management/overview.md)和 [使用标记来组织 Azure 资源](../azure-resource-manager/management/tag-resources.md)。
 
-<!--Not Available on [Understanding your Azure Bill](../cost-management-billing/understand/review-individual-bill.md)-->
-<!--Not Available on [Gain insights into your Azure resource consumption](../cost-management-billing/manage/usage-rate-card-overview.md)-->
-
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--NOT AVAILABLE ON [Understanding your Azure Bill](../cost-management-billing/understand/review-individual-bill.md)-->
+<!--Update_Description: update meta properties, wording update, update link-->

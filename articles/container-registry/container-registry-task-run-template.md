@@ -4,14 +4,14 @@ description: 将 ACR 任务运行排入队列，以使用 Azure 资源管理器�
 ms.topic: article
 origin.date: 04/22/2020
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 03/01/2021
 ms.author: v-yeche
-ms.openlocfilehash: e272348884ca16ccc72b1b7ac21d3bcf6fad6ac5
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 116dce4ff2ba3d4b4589a927497613dbde57bbbb
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106095"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055316"
 ---
 <!--Verified successfully-->
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>使用资源管理器模板运行 ACR 任务
@@ -64,7 +64,7 @@ az deployment group create \
     registryName=mycontainerregistry \
     repository=helloworld-node \
     taskRunName=testrun \
-    sourceLocation=https://github.com/Azure-Samples/acr-build-helloworld-node.git
+    sourceLocation=https://github.com/Azure-Samples/acr-build-helloworld-node.git#main
  ```
 
 上一条命令在命令行上传递了参数。 如有需要，请将这些参数传递到[参数文件](../azure-resource-manager/templates/parameter-files.md)中。
@@ -212,7 +212,7 @@ az deployment group create \
     taskRunName=basetask \
     userAssignedIdentity=$resourceID \
     customRegistryIdentity=$clientID \
-    sourceLocation=https://github.com/<your-GitHub-ID>/acr-build-helloworld-node.git \
+    sourceLocation=https://github.com/<your-GitHub-ID>/acr-build-helloworld-node.git#main \
     dockerFilePath=Dockerfile-test \
     customRegistry=mybaseregistry.azurecr.cn
 ```
@@ -262,4 +262,4 @@ basetask
 [az-identity-show]: https://docs.microsoft.com/cli/azure/identity#az_identity_show
 [az-role-assignment-create]: https://docs.azure.cn/cli/role/assignment#az_role_assignment_create
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

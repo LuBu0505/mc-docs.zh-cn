@@ -12,14 +12,14 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 11/28/2018
-ms.date: 11/12/2020
+ms.date: 02/25/2021
 ms.author: v-johya
-ms.openlocfilehash: 10afa63dd44422d76d0f922ab6712e2932ff52a9
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: 44fea583aa4c7fe258d00bd5d16dfbd46d45de87
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637982"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197207"
 ---
 # <a name="azure-security-center-data-security"></a>Azure 安全中心数据安全性
 
@@ -67,8 +67,8 @@ Log Analytics 代理扫描各种安全相关配置和事件，并将其收集到
 
 | Stream                                                                                | 数据类型                                                                                                                                                                                                          |
 |---------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Azure 活动日志](../azure-monitor/platform/activity-log.md)                       | 所有安全警报、经审核的安全中心[实时](security-center-just-in-time.md)访问请求，以及由[自适应应用程序控制](security-center-adaptive-application.md)生成的所有警报。|
-| [Azure Monitor 日志](../azure-monitor/platform/data-platform.md)                      | 所有安全警报。                                                                                                                                                                                                |
+| [Azure 活动日志](../azure-monitor/essentials/activity-log.md)                       | 所有安全警报、经审核的安全中心[实时](security-center-just-in-time.md)访问请求，以及由[自适应应用程序控制](security-center-adaptive-application.md)生成的所有警报。|
+| [Azure Monitor 日志](../azure-monitor/data-platform.md)                      | 所有安全警报。                                                                                                                                                                                                |
 | [Azure Resource Graph](../governance/resource-graph/overview.md)                      | 安全警报、安全建议、漏洞评估结果、安全分数信息、合规性检查的状态等。                                                                       |
 | [Azure 安全中心 REST API](https://docs.microsoft.com/rest/api/securitycenter/) | 安全警报、安全建议等。                                                                                                                                                                |
 |                                                                                       |                                                                                                                                                                                                                     |

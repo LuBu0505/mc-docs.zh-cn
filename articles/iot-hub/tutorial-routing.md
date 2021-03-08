@@ -10,12 +10,12 @@ origin.date: 03/12/2019
 ms.date: 11/18/2019
 ms.author: v-yiso
 ms.custom: mvc
-ms.openlocfilehash: e0aee5e1dce9c8cfa60a1cb3a49cacab5cecd77c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: daffd67322deb5d057e11f505dc064a12055b721
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73831425"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196588"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>教程：使用 Azure CLI 和 Azure 门户配置 IoT 中心消息路由
 
@@ -29,9 +29,9 @@ ms.locfileid: "73831425"
 
 有几个资源名称必须全局唯一，例如 IoT 中心名称和存储帐户名称。 为方便进行标识，这些资源名称的后面追加了名为 *randomValue* 的随机字母数字值。 randomValue 在脚本的顶部生成一次，并根据需要追加到整个脚本中的资源名称。 如果不想要使用随机后缀，可将其设置为空字符串或特定值。
 
-复制以下脚本并将其粘贴到 Cloud Shell，然后按 Enter。 系统每次运行脚本中的一行。 此脚本将创建本教程所需的基本资源，包括存储帐户、IoT 中心、服务总线命名空间和服务总线队列。
-
-有关调试的提示：此脚本使用续接符号（反斜杠 `\`），使脚本更方便阅读。 如果在运行脚本时遇到问题，请确保任何反斜杠后面没有空格。
+> [!TIP]
+> 有关调试的提示：此脚本使用续接符号（反斜杠 `\`），使脚本更方便阅读。 如果在运行脚本时遇到问题，请确保 Cloud Shell 会话正在运行 `bash`，并且所有反斜杠后面都没有空格。
+>
 
 ```azurecli-interactive
 # This retrieves the subscription id of the account 
@@ -135,22 +135,22 @@ az servicebus queue create --name $sbQueueName \
 
 2. 在资源列表下选择“IoT 中心”。 本教程使用 ContosoTestHub  。
 
-3. 选择“消息路由”  。 在“消息路由”窗格中，选择“+添加”   。 在“添加路由”窗格中，选择“终结点”字段旁边的“+添加”以显示支持的终结点，如下图所示   ：
+3. 选择“消息路由”  。 在“消息路由”窗格中，选择“+添加”   。 在“添加路由”窗格中，选择“终结点”字段旁边的“+添加终结点”以显示支持的终结点，如下图所示 ：
 
-   ![开始添加路由的终结点](./media/tutorial-routing/message-routing-add-a-route-w-storage-ep.png)
+   ![开始添加路由的终结点](./media/tutorial-routing/message-routing-add-a-route-with-storage-endpoint-ver2.png)
 
-4. 选择“Blob 存储”  。 此时会显示“添加存储终结点”窗格  。
+4. 选择“存储”。 此时会显示“添加存储终结点”窗格  。
 
-   ![添加终结点](./media/tutorial-routing/message-routing-add-storage-ep.png)
+   ![添加终结点](./media/tutorial-routing/message-routing-add-storage-endpoint-ver2.png)
 
 5. 为终结点输入名称。 本教程使用 **ContosoStorageEndpoint**。
 
-6. 选择“选取容器”  。 将转到存储帐户列表。 选择在准备步骤中设置的存储账户。 本教程使用 **contosostorage**。 它显示该存储帐户中的容器列表。 **选择**在准备步骤中设置的容器。 本教程使用 contosoresults  。 返回到“添加存储终结点”窗格并查看所做的选择。 
+6. 选择“选取容器”  。 将转到存储帐户列表。 选择在准备步骤中设置的存储账户。 本教程使用 **contosostorage**。 它显示该存储帐户中的容器列表。 **选择** 在准备步骤中设置的容器。 本教程使用 contosoresults  。 返回到“添加存储终结点”窗格并查看所做的选择。 
 
 7. 将编码设置为 AVRO 或 JSON。 在本教程中，其余字段使用默认值。 如果所选的区域不支持 JSON 编码，则此字段将会灰显。
 
    > [!NOTE]
-   > 可以使用 **Blob 文件名格式**设置 Blob 名称的格式。 默认为 `{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}`。 格式必须包含 {iothub}、{partition}、{YYYY}、{MM}、{DD}、{HH} 和 {mm}，顺序不限。
+   > 可以使用 **Blob 文件名格式** 设置 Blob 名称的格式。 默认为 `{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}`。 格式必须包含 {iothub}、{partition}、{YYYY}、{MM}、{DD}、{HH} 和 {mm}，顺序不限。
    >
    > 例如，使用默认 Blob 文件名格式时，如果中心名称为 ContosoTestHub，日期/时间为 2018 年 10 月 30 日上午 10:56，则 Blob 名称将类似于：`ContosoTestHub/0/2018/10/30/10/56`。
    > 
@@ -161,7 +161,7 @@ az servicebus queue create --name $sbQueueName \
 
 9. 现在完成余下的路由查询信息。 此查询指定将消息发送到刚刚添加为终结点的存储容器的条件。 填充屏幕上的字段。
 
-   **名称**：为路由查询输入名称。 本教程使用 **ContosoStorageRoute**。
+   **Name**：为路由查询输入名称。 本教程使用 **ContosoStorageRoute**。
 
    **终结点**：选择刚刚设置的终结点。
 
@@ -173,7 +173,7 @@ az servicebus queue create --name $sbQueueName \
 
    ![为存储帐户创建路由查询](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
 
-   选择“保存”  。 完成后，返回到“消息路由”窗格，可在其中看到存储的新路由查询。 关闭“路由”窗格，将返回到资源组页。
+   选择“保存”。  完成后，返回到“消息路由”窗格，可在其中看到存储的新路由查询。 关闭“路由”窗格，将返回到资源组页。
 
 ### <a name="route-to-a-service-bus-queue"></a>路由到服务总线队列
 
@@ -199,7 +199,7 @@ az servicebus queue create --name $sbQueueName \
 
 6. 现在完成余下的路由查询信息。 此查询指定将消息发送到刚刚添加为终结点的服务总线队列的条件。 填充屏幕上的字段。 
 
-   **名称**：为路由查询输入名称。 本教程使用 **ContosoSBQueueRoute**。 
+   **Name**：为路由查询输入名称。 本教程使用 **ContosoSBQueueRoute**。 
 
    **终结点**：选择刚刚设置的终结点。
 
@@ -209,7 +209,7 @@ az servicebus queue create --name $sbQueueName \
 
    ![为服务总线队列创建路由查询](./media/tutorial-routing/message-routing-finish-route-sbq-ep.png)
 
-7. 选择“保存”  。 返回到“路由”窗格时，可看到这两个新的路由，如此处所示。
+7. 选择“保存”。  返回到“路由”窗格时，可看到这两个新的路由，如此处所示。
 
    ![刚刚设置的路由](./media/tutorial-routing/message-routing-show-both-routes.png)
 

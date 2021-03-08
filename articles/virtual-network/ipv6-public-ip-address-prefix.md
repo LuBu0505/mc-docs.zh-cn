@@ -6,21 +6,21 @@ services: virtual-network
 documentationcenter: na
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 03/31/2020
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: 10/26/2020
 ms.author: v-yeche
-ms.openlocfilehash: b5e4c989583e9968c9012b493d401b2749f29d5a
-ms.sourcegitcommit: 1f933e4790b799ceedc685a0cea80b1f1c595f3d
+ms.openlocfilehash: 171261ed52e5366fcd68d8876e4080b460430f6c
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628246"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053809"
 ---
 # <a name="reserved-public-ipv6-address-prefix"></a>保留的公共 IPv6 地址前缀
 
@@ -55,4 +55,4 @@ ms.locfileid: "92628246"
 - 详细了解 [IPv6 地址](ipv6-overview.md)。
 - 了解[如何在 Azure 中创建和使用公共 IP](virtual-network-public-ip-address.md)（IPv4 和 IPv6）。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -5,19 +5,19 @@ services: automation
 ms.service: virtual-machines
 origin.date: 04/26/2019
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: carmonm
-ms.openlocfilehash: 045af6e8dab0cbf8471925e452fca55d7afe23fa
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 676fc78255b53058218106eeafa717b4000a82f9
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856969"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054015"
 ---
 <!--Verfiy succesfully-->
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>使用“运行命令”在 Windows VM 中运行 PowerShell 脚本
@@ -118,4 +118,4 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 若要了解在 VM 中远程运行脚本和命令的其他方法，请参阅[在 Windows VM 中运行脚本](run-scripts-in-vm.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

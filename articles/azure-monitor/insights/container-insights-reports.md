@@ -2,17 +2,17 @@
 title: 用于容器的 Azure Monitor 中的报表
 description: 描述可用于分析由用于容器的 Azure Monitor 收集的数据的报表。
 ms.topic: conceptual
-ms.date: 01/26/2021
+ms.date: 02/22/2021
 ms.author: v-johya
-ms.openlocfilehash: b0adda990e07d0be21256fc7bde6d57bc8b728be
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 4682efd47cc567e7b9e29b165cb489d557fa4f9b
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99061033"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197546"
 ---
 # <a name="reports-in-azure-monitor-for-containers"></a>用于容器的 Azure Monitor 中的报表
-建议用于容器的 Azure Monitor 中的报表使用现成的 [Azure 工作簿](../platform/workbooks-overview.md)。 本文介绍了可用的各种报表以及如何访问这些报表。
+建议用于容器的 Azure Monitor 中的报表使用现成的 [Azure 工作簿](../visualize/workbooks-overview.md)。 本文介绍了可用的各种报表以及如何访问这些报表。
 
 ## <a name="viewing-reports"></a>查看报告
 从 Azure 门户上的 Azure Monitor 菜单中，选择“容器” 。 在“监视”部分中选择“见解”，选择一个特定的群集，然后选择“报表(预览)”页面  。 
@@ -20,7 +20,7 @@ ms.locfileid: "99061033"
 [![报表页](./media/container-insights-reports/reports-page.png)](./media/container-insights-reports/reports-page.png#lightbox)
 
 ## <a name="create-a-custom-workbook"></a>创建自定义工作簿
-要基于这些工作簿中的任何一个创建自定义工作簿，请选择“查看工作簿”下拉菜单，然后选择下拉菜单底部的“转到 AKS 库” 。 如需详细了解工作簿以及如何使用工作簿模板，请参阅 [Azure Monitor 工作簿](../platform/workbooks-overview.md)。
+要基于这些工作簿中的任何一个创建自定义工作簿，请选择“查看工作簿”下拉菜单，然后选择下拉菜单底部的“转到 AKS 库” 。 如需详细了解工作簿以及如何使用工作簿模板，请参阅 [Azure Monitor 工作簿](../visualize/workbooks-overview.md)。
 
 [![AKS 库](./media/container-insights-reports/aks-gallery.png)](./media/container-insights-reports/aks-gallery.png#lightbox)
 
@@ -79,5 +79,5 @@ ms.locfileid: "99061033"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如需详细了解 Azure Monitor 中的工作簿，请参阅 [Azure Monitor 工作簿](../platform/workbooks-overview.md)。
+- 如需详细了解 Azure Monitor 中的工作簿，请参阅 [Azure Monitor 工作簿](../visualize/workbooks-overview.md)。
 

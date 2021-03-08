@@ -4,17 +4,16 @@ description: 使用环境变量和创建选项来启用对 IoT Edge 设备本地
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-origin.date: 08/14/2020
-ms.date: 11/13/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7da66e549c86a99e54524127311c2dd4afb32a49
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: c8ad4ea70171a99a3ab8a71709213e88bf8f4544
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300778"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196903"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>向模块授予对设备本地存储的访问权限
 
@@ -37,7 +36,7 @@ ms.locfileid: "96300778"
 "systemModules": {
     "edgeAgent": {
         "settings": {
-            "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+            "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
             "createOptions": {
                 "HostConfig": {
                     "Binds":["<HostStoragePath>:<ModuleStoragePath>"]
@@ -53,7 +52,7 @@ ms.locfileid: "96300778"
     },
     "edgeHub": {
         "settings": {
-            "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+            "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
             "createOptions": {
                 "HostConfig": {
                     "Binds":["<HostStoragePath>:<ModuleStoragePath>"],
@@ -86,7 +85,7 @@ sudo chmod 700 <HostStoragePath>
 
 ## <a name="encrypted-data-in-module-storage"></a>模块存储中的加密数据
 
-当模块调用 IoT Edge 守护程序的工作负载 API 来加密数据时，系统会使用模块 ID 和模块的生成 ID 来派生加密密钥。 如果从部署中删除了某个模块，然后将另一具有相同模块 ID 的模块部署到同一设备，则会使用生成 ID 来保护机密。 可以使用 Azure CLI 命令 [az iot hub module-identity show](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-identity#ext-azure-cli-iot-ext-az-iot-hub-module-identity-show) 查看模块的生成 ID。
+当模块调用 IoT Edge 守护程序的工作负载 API 来加密数据时，系统会使用模块 ID 和模块的生成 ID 来派生加密密钥。 如果从部署中删除了某个模块，然后将另一具有相同模块 ID 的模块部署到同一设备，则会使用生成 ID 来保护机密。 可以使用 Azure CLI 命令 [az iot hub module-identity show](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/module-identity) 查看模块的生成 ID。
 
 如果要跨代在模块之间共享文件，则这些文件不能包含任何机密，否则无法解密。
 

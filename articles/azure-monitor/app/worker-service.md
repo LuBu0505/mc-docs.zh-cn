@@ -4,15 +4,15 @@ description: 使用 Azure Monitor Application Insights 监视 .NET Core/.NET Fra
 author: Johnnytechn
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 10/29/2020
+ms.date: 02/22/2021
 origin.date: 12/16/2019
 ms.author: v-johya
-ms.openlocfilehash: 3765ae53a176c7ef7c6db93a885116583bcc47c8
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: e479fde27523132ace02cb4e0cef0c8a78d6cda4
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104670"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197152"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>适用于辅助角色服务应用程序（非 HTTP 应用）的 Application Insights
 
@@ -22,7 +22,7 @@ ms.locfileid: "93104670"
 
 ## <a name="supported-scenarios"></a>支持的方案
 
-[适用于辅助角色服务的 Application Insights SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 最适合用于非 HTTP 应用程序，无论这些应用程序在何处或者如何运行。 如果应用程序正在运行并与 Azure 建立了网络连接，则可以收集遥测数据。 只要支持 .NET Core，就能支持 Application Insights 监视。 此包可在新引入的 [.NET Core 3.0 辅助角色服务](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances)、[Asp.Net Core 2.1/2.2 中的后台任务](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&preserve-view=true)、控制台应用 (.NET Core/ .NET Framework) 等工作负荷中使用。
+[适用于辅助角色服务的 Application Insights SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 最适合用于非 HTTP 应用程序，无论这些应用程序在何处或者如何运行。 如果应用程序正在运行并与 Azure 建立了网络连接，则可以收集遥测数据。 只要支持 .NET Core，就能支持 Application Insights 监视。 此包可在新引入的 [.NET Core 3.0 辅助角色服务](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances)、[Asp.Net Core 2.1/2.2 中的后台任务](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services)、控制台应用 (.NET Core/ .NET Framework) 等工作负荷中使用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -111,9 +111,9 @@ ms.locfileid: "93104670"
 ```json
     {
         "ApplicationInsights":
-            {
+        {
             "InstrumentationKey": "putinstrumentationkeyhere"
-            },
+        },
         "Logging":
         {
             "LogLevel":
@@ -137,7 +137,7 @@ ms.locfileid: "93104670"
 
 ## <a name="aspnet-core-background-tasks-with-hosted-services"></a>使用托管服务的 ASP.NET Core 后台任务
 
-[此文档](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-2.2&preserve-view=true)介绍了如何在 ASP.NET Core 2.1/2.2 应用程序中创建后台任务。
+[此文档](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio)介绍了如何在 ASP.NET Core 2.1/2.2 应用程序中创建后台任务。
 
 [此处](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService)分享了完整示例
 
@@ -566,9 +566,9 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 [.NET Core 控制台应用程序](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) 如果使用的控制台应用程序是以 .NET Core（2.0 或更高版本）或 .NET Framework（4.7.2 或更高版本）编写的，请使用此示例
 
-[使用 HostedServices 的 ASP .NET Core 后台任务](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService) 如果在 Asp.Net Core 2.1/2.2 中操作，并根据[此处](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&preserve-view=true)的官方指南创建后台任务，请使用此示例
+[使用 HostedServices 的 ASP .NET Core 后台任务](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService) 如果在 Asp.Net Core 2.1/2.2 中操作，并根据[此处](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services)的官方指南创建后台任务，请使用此示例
 
-[.NET Core 3.0 辅助角色服务](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) 如果根据[此处](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-3.0&preserve-view=true#worker-service-template)的官方指南创建了 .NET Core 3.0 辅助角色服务应用程序，请使用此示例
+[.NET Core 3.0 辅助角色服务](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) 如果根据[此处](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio#worker-service-template)的官方指南创建了 .NET Core 3.0 辅助角色服务应用程序，请使用此示例
 
 ## <a name="open-source-sdk"></a>开源 SDK
 

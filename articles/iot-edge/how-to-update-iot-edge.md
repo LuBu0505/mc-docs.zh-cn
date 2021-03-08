@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-ms.date: 02/02/2021
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 72b215d48e47ab2009c8b96975ae152998c95fb4
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: d1b208fc370274687192160da5b024d5a1651e17
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579602"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196586"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>更新 IoT Edge 安全守护程序和运行时
 
@@ -35,12 +35,6 @@ IoT Edge 安全守护程序是一个本机组件，需要使用 IoT Edge 设备�
 在 Linux x64 设备上，请使用 apt-get 或相应的包管理器将安全守护程序更新到最新版本。
 
 从 Microsoft 获取最新的存储库配置：
-
-* **Ubuntu Server 16.04**：
-
-   ```bash
-   curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
-   ```
 
 * **Ubuntu Server 18.04**：
 
@@ -100,7 +94,7 @@ curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-<!-- 1.0.10 -->
+<!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
 
 借助 IoT Edge for Linux on Windows，IoT Edge 可以在 Windows 设备上托管的 Linux 虚拟机中运行。 此虚拟机已预安装 IoT Edge，并通过 Microsoft 更新进行管理，以使组件保持最新。 目前没有可用的更新。

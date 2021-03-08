@@ -9,14 +9,14 @@ ms.assetid: 1b71e8ad-3bd8-4475-b735-79ca9963b823
 ms.service: security-center
 ms.topic: conceptual
 origin.date: 03/15/2020
-ms.date: 12/03/2020
+ms.date: 02/25/2021
 ms.author: v-johya
-ms.openlocfilehash: 68ea6546eb874563fdafe47a8c8ae4a645549880
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 62ac51f064625fc7ad7fd06bfdd2686ea3567f29
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746655"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197317"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure 安全中心的安全警报
 
@@ -62,7 +62,7 @@ Microsoft 安全研究人员始终在不断地寻找威胁。 由于在云中和
 
 ## <a name="how-are-alerts-classified"></a>如何对警报进行分类？
 
-安全中心为警报分配严重性，以帮助你确定参与每个警报的顺序优先级，以便在资源泄漏时可以立即访问。 严重性取决于安全中心对调查结果或用于发出警报的分析的可信度，以及对导致警报的活动背后存在恶意意图的可信度级别。
+安全中心为警报分配严重性，以帮助你确定参与每个警报的顺序优先级，以便在资源泄漏时可以立即访问。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
 > [!NOTE]
 > 警报严重性在门户和早于 2019-01-01 的 REST API 中以不同的方式显示。 如果你使用的是较低版本的 API，请升级以获得一致的体验，如下所述。
@@ -98,5 +98,5 @@ Azure 安全中心受益于在整个 Microsoft 有安全研究和数据科学团
 
 本文介绍了安全中心的各类警报。 有关详细信息，请参阅：
 
-- Azure 活动日志中的安全警报 - 安全警报和事件除了在 Azure 门户中或以编程方式提供之外，还会作为 [Azure 活动日志](../azure-monitor/platform/activity-log.md#view-the-activity-log)中的事件进行审核。 有关事件架构的详细信息，请参阅 [Azure 活动日志中的安全警报](https://go.microsoft.com/fwlink/?linkid=2114113)
+- Azure 活动日志中的安全警报 - 安全警报和事件除了在 Azure 门户中或以编程方式提供之外，还会作为 [Azure 活动日志](../azure-monitor/essentials/activity-log.md#view-the-activity-log)中的事件进行审核。 有关事件架构的详细信息，请参阅 [Azure 活动日志中的安全警报](https://go.microsoft.com/fwlink/?linkid=2114113)
 

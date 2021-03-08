@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 0d05e4eb8733a94e2c3ee0cb2fabef2b81b341c1
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 29136123aabf9faaf9b25b97ef2f1e55fdb2ad77
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978185"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196922"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
 
@@ -77,7 +77,7 @@ ms.locfileid: "94978185"
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-如果知道已部署服务的名称，请使用 [az ml service show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) 命令：
+如果知道已部署服务的名称，请使用 [az ml service show](/cli/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) 命令：
 
 ```azurecli
 az ml service show -n <service-name>

@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/04/2020
+ms.date: 02/25/2021
 ms.author: v-johya
-ms.openlocfilehash: 8317a3106c2244a632587ab1b015676935700bb5
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: a3a6eb1d4bbf2a07db4df81b286dcf329bd7ce92
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747167"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197287"
 ---
 # <a name="security-alerts-schemas"></a>安全警报架构
 
@@ -147,7 +147,7 @@ Azure 安全中心将 Azure 活动日志中生成的安全警报作为事件进�
 |**subStatus**|值和 localizedValue 子字段为空|
 |**submissionTimestamp**|事件提交到活动日志的 UTC 时间戳|
 |**subscriptionId**|已盗用的资源的订阅 ID|
-|**properties**|与警报相关的其他属性的 JSON 包。 这些项在警报中各不相同，但是以下字段将出现在所有警报中：<br>- 严重性：攻击的严重性<br>- compromisedEntity：被盗用的资源的名称<br>- remediationSteps：要执行的一系列修正步骤<br>- 意向：警报的终止链意向。|
+|**properties**|与警报相关的其他属性的 JSON 包。 这些项在警报中各不相同，但是以下字段将出现在所有警报中：<br>- 严重性：攻击的严重性<br>- compromisedEntity：被盗用的资源的名称<br>- remediationSteps：要执行的一系列修正步骤<br>- 意向：警报的终止链意向。 [意向表](alerts-reference.md#intentions)中记录了可能的意向|
 |**relatedEvents**|常量 - 空数组|
 |||
 
@@ -172,5 +172,5 @@ Microsoft Graph 是 Microsoft 365 中数据和智能的网关。 它提供了一
 
 - [Azure 事件中心](../event-hubs/index.yml) - Microsoft 的完全托管的实时数据引入服务
 - [连续导出安全中心数据](continuous-export.md)
-- [Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md) - Azure Monitor 将日志数据存储在 Log Analytics 工作区中，该工作区是一个包含数据和配置信息的容器
+- [Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md) - Azure Monitor 将日志数据存储在 Log Analytics 工作区中，该工作区是一个包含数据和配置信息的容器
 

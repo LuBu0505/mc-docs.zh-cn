@@ -5,13 +5,13 @@ ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
 origin.date: 01/23/2020
-ms.date: 08/10/2020
-ms.openlocfilehash: 0f5fa52ded25f68c18a5d329a3c95c8a1c94e3d7
-ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
+ms.date: 03/05/2021
+ms.openlocfilehash: 912cc4c64d01d75f62086077b43f68c0d1a8c0d6
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88228007"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197561"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>监视事件网格消息传送 
 本文介绍如何使用门户查看事件网格主题和订阅的指标，并创建相关警报。 
@@ -29,7 +29,7 @@ ms.locfileid: "88228007"
 对于订阅，以下是一些指标：
 
 * **传送成功**：事件已成功传送到订阅的终结点，但收到 2xx 响应。
-* **传送失败**：服务每次尝试传送并且事件处理程序未返回成功的 2xx 代码时，“传送失败”**** 计数器就会相应递增。 如果我们尝试多次传送同一事件并失败，则每次失败都会使“传送失败”**** 计数器相应递增。
+* **传送失败**：服务每次尝试传送并且事件处理程序未返回成功的 2xx 代码时，“传送失败”计数器就会相应递增。 如果我们尝试多次传送同一事件并失败，则每次失败都会使“传送失败”计数器相应递增。
 * **事件过期**：未传送事件，并且已发送所有重试尝试。 已删除该事件。
 * **已匹配事件**：事件订阅已匹配主题中的事件。
 
@@ -55,7 +55,7 @@ ms.locfileid: "88228007"
 
 :::image type="content" source="./media/monitor-event-delivery/topics-metrics-page.png" alt-text="“主题 - 指标”页":::
 
-若要详细了解指标，请参阅 [Azure Monitor 中的指标](../azure-monitor/platform/data-platform-metrics.md)
+若要详细了解指标，请参阅 [Azure Monitor 中的指标](../azure-monitor/essentials/data-platform-metrics.md)
 
 有关示例，请参阅“已发布事件”指标的指标图表。
 
@@ -72,7 +72,7 @@ ms.locfileid: "88228007"
 
     :::image type="content" source="./media/monitor-event-delivery/event-subscriptions-page.png" alt-text="从“事件网格订阅”页选择事件订阅":::        
 
-    对于自定义主题，请选择“事件网格主题”作为**主题类型**。 对于系统主题，请选择 Azure 资源的类型，例如“存储帐户(Blob，GPv2)”。 
+    对于自定义主题，请选择“事件网格主题”作为 **主题类型**。 对于系统主题，请选择 Azure 资源的类型，例如“存储帐户(Blob，GPv2)”。 
 3. 对于图表中的订阅，请在主页上查看订阅的指标。 可以查看过去 1 小时、6 小时、12 小时、1 天、7 天或 30 天的“常规”、“错误”、“延迟”和“死信”指标。 
 
     :::image type="content" source="./media/monitor-event-delivery/subscription-home-page-metrics.png" alt-text="订阅主页上的指标":::    
@@ -94,7 +94,7 @@ ms.locfileid: "88228007"
 
 :::image type="content" source="./media/monitor-event-delivery/system-topic-metrics-page.png" alt-text="“系统主题 - 指标”页":::
 
-若要详细了解指标，请参阅 [Azure Monitor 中的指标](../azure-monitor/platform/data-platform-metrics.md)
+若要详细了解指标，请参阅 [Azure Monitor 中的指标](../azure-monitor/essentials/data-platform-metrics.md)
 
 
 ## <a name="next-steps"></a>后续步骤

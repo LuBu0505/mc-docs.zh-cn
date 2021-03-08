@@ -4,13 +4,13 @@ description: 流分析可以持续转换、筛选和路由从 Application Insigh
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 11/10/2020
-ms.openlocfilehash: 7e68f479db572aba51179a272ff4e32e1ca9690e
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.date: 02/22/2021
+ms.openlocfilehash: 2bc3e0156e68d445faf2880d8301bbc020d6c356
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94638212"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197410"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>使用流分析处理从 Application Insights 导出的数据
 [Azure 流分析](/stream-analytics/)是用于处理[从 Application Insights 导出](export-telemetry.md)的数据的理想工具。 流分析可以从各种源提取数据。 它可以转换和筛选数据，然后将其路由到各种接收器。
@@ -57,7 +57,7 @@ ms.locfileid: "94638212"
 
     ![选择事件类型](./media/export-stream-analytics/080.png)
 
-1. 让我们累积一些数据。 请休息一下，让其他人先使用该应用程序一段时间。 应用程序中会逐渐传入遥测数据，[指标资源管理器](../platform/metrics-charts.md)中会显示统计图表，[诊断搜索](./diagnostic-search.md)中会显示各个事件。 
+1. 让我们累积一些数据。 请休息一下，让其他人先使用该应用程序一段时间。 应用程序中会逐渐传入遥测数据，[指标资源管理器](../essentials/metrics-charts.md)中会显示统计图表，[诊断搜索](./diagnostic-search.md)中会显示各个事件。 
    
     此外，数据将导出到存储。 
 2. 检查导出的数据 在 Visual Studio 中，请选择“查看”>“Cloud Explorer”，并打开“Azure”>“存储”。 （如果没有此菜单选项，则需要安装 Azure SDK：打开“新建项目”对话框，打开 Visual C#/云/获取 Azure SDK for .NET。）

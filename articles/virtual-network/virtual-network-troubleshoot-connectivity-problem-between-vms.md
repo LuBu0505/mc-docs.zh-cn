@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 10/30/2018
 author: rockboyfor
-ms.date: 10/05/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 7b3d77b10bf0c2a0cef4ef2a486c2e7d8892bde7
-ms.sourcegitcommit: 29a49e95f72f97790431104e837b114912c318b4
+ms.openlocfilehash: 1878d486d6221497fbd3f8093117a03bed211077
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91564513"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053748"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>排查 Azure VM 间的连接问题
 
@@ -52,7 +52,7 @@ Azure 虚拟机 (VM) 间可能出现连接问题。 本文提供解决此问题�
 
 ### <a name="step-1-check-whether-nic-is-misconfigured"></a>步骤 1：检查 NIC 的配置是否不正确
 
-按照[如何为 Azure Windows VM 重置网络接口](../virtual-machines/windows/reset-network-interface.md)中的步骤进行操作。 
+按照[如何为 Azure Windows VM 重置网络接口](../virtual-machines/troubleshooting/reset-network-interface.md)中的步骤进行操作。 
 
 如果修改网络接口 (NIC) 后出现此问题，请按照下列步骤进行操作：
 
@@ -65,8 +65,8 @@ Azure 虚拟机 (VM) 间可能出现连接问题。 本文提供解决此问题�
 
 **单 NIC VM** 
 
-- [重新部署 Windows VM](../virtual-machines/windows/redeploy-to-new-node.md)
-- [重新部署 Linux VM](../virtual-machines/linux/redeploy-to-new-node.md)
+- [重新部署 Windows VM](../virtual-machines/troubleshooting/redeploy-to-new-node-windows.md)
+- [重新部署 Linux VM](../virtual-machines/troubleshooting/redeploy-to-new-node-linux.md)
 
 ### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>步骤 2：检查网络流量是否被 NSG 或 UDR 阻止
 
@@ -106,7 +106,7 @@ netstat -l
 
 ### <a name="step-7-check-whether-the-endpoint-is-created-for-the-classic-vm"></a>步骤 7：检查是否为经典 VM 创建了终结点
 
-在 Azure 中使用经典部署模型创建的所有 VM 都可以通过专用网络通道与同一云服务或虚拟网络中的其他虚拟机自动通信。 但是，其他虚拟网络上的计算机需要终结点才能定向虚拟机的入站网络流量。 有关详细信息，请参阅[如何设置终结点](../virtual-machines/windows/classic/setup-endpoints.md)。
+在 Azure 中使用经典部署模型创建的所有 VM 都可以通过专用网络通道与同一云服务或虚拟网络中的其他虚拟机自动通信。 但是，其他虚拟网络上的计算机需要终结点才能定向虚拟机的入站网络流量。 有关详细信息，请参阅[如何设置终结点](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints)。
 
 ### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>步骤 8：尝试连接到 VM 网络共享
 
@@ -116,7 +116,7 @@ netstat -l
 
 使用[网络观察程序 IP 流验证](../network-watcher/network-watcher-ip-flow-verify-overview.md)和 [NSG 流日志记录](../network-watcher/network-watcher-nsg-flow-logging-overview.md)确定是否存在干扰流量流的 NSG 或 UDR。 还可在[此处](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections)验证 Vnet 间配置。
 
-### <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
+### <a name="need-help-contact-support"></a>需要帮助？ 请联系支持人员。
 如果仍需帮助，请[联系支持人员](https://support.azure.cn/support/support-azure/)以快速解决问题。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

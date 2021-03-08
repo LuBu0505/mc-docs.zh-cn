@@ -7,13 +7,13 @@ ms.author: v-johya
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/12/2021
-ms.openlocfilehash: f3b01feab08092a754320c2a8deefd6cf76ad477
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 02/22/2021
+ms.openlocfilehash: 7a1faddc191520766e880b225a67d084e6cc2019
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230830"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197595"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>适用于 Application Insights JavaScript SDK 的 React 插件
 
@@ -228,5 +228,5 @@ const App = () => {
 ## <a name="next-steps"></a>后续步骤
 
 - 若要详细了解 JavaScript SDK，请参阅 [Application Insights JavaScript SDK 文档](javascript.md)。
-- 若要了解 Kusto 查询语言和 Log Analytics 中的查询数据，请参阅[日志查询概述](../../azure-monitor/log-query/log-query-overview.md)。
+- 若要了解 Kusto 查询语言和 Log Analytics 中的查询数据，请参阅[日志查询概述](../../azure-monitor/logs/log-query-overview.md)。
 

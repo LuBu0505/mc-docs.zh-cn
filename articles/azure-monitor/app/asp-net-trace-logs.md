@@ -4,15 +4,15 @@ description: 由 Trace、NLog 或 Log4Net 生成的搜索日志。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 author: Johnnytechn
-ms.date: 01/12/2021
+ms.date: 02/22/2021
 ms.author: v-johya
 origin.date: 05/08/2019
-ms.openlocfilehash: 9619208cfbd5d1f424b0fa27375ec40a3ffa8f96
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 73fcd7cf288b72c3253b3c13492263e32c6e26c2
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230836"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197450"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>在 Application Insights 中浏览 .NET/.NET Core 和 Python 跟踪日志
 
@@ -88,7 +88,7 @@ System.Diagnostics.Trace.TraceWarning("Slow response - database01");
 ```
 
 ## <a name="use-eventsource-events"></a>使用 EventSource 事件
-可配置要作为跟踪发送到 Application Insights 的 [System.Diagnostics.Tracing.EventSource](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) 事件。 首先，安装 `Microsoft.ApplicationInsights.EventSourceListener` NuGet 包。 然后编辑 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 文件的 `TelemetryModules` 部分。
+可配置要作为跟踪发送到 Application Insights 的 [System.Diagnostics.Tracing.EventSource](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource) 事件。 首先，安装 `Microsoft.ApplicationInsights.EventSourceListener` NuGet 包。 然后编辑 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 文件的 `TelemetryModules` 部分。
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
@@ -206,7 +206,7 @@ logger.warning('Hello, World!')
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>配置工具中没有日志适配器选项
 * 首先安装记录框架。
-* 如果使用的是 System.Diagnostics.Trace，请确保已[在 web.config 中对其进行配置](https://docs.microsoft.com/dotnet/api/system.diagnostics.eventlogtracelistener?view=dotnet-plat-ext-3.1)。
+* 如果使用的是 System.Diagnostics.Trace，请确保已[在 web.config 中对其进行配置](https://docs.microsoft.com/dotnet/api/system.diagnostics.eventlogtracelistener)。
 * 确保已安装最新版本的 Application Insights。 在 Visual Studio中，转到“工具” > “扩展和更新”，并打开“更新”选项卡  。如果“Developer Analytics Tools”在此处，请选择以更新它。
 
 <a name="emptykey"></a>
@@ -228,7 +228,7 @@ logger.warning('Hello, World!')
 
 * [ASP.NET 中的诊断故障和异常][exceptions]
 * [了解有关搜索的详细信息][diagnostic]
-* [疑难解答][qna]
+* [故障排除][qna]
 
 <!--Link references-->
 

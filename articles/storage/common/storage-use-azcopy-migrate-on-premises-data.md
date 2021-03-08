@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: tutorial
 origin.date: 05/14/2019
-ms.date: 11/16/2020
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 3ac2f9937c3f55c3afd3a9909d7e9337e463964d
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: a4ead1e2a28fb84034c3113bbdccd47b38093e54
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432020"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196202"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>教程：使用 AzCopy 将本地数据迁移到云存储空间
 
@@ -109,7 +109,7 @@ azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.chin
 
 * 请将 `<container-name>` 占位符替换为所创建容器的名称。
 
-若要详细了解 `sync` 命令，请参阅[同步文件](storage-use-azcopy-blobs.md#synchronize-files)。
+若要详细了解 `sync` 命令，请参阅[同步文件](./storage-use-azcopy-v10.md#transfer-data)。
 
 ## <a name="create-a-scheduled-task"></a>创建计划的任务
 
@@ -177,13 +177,13 @@ schtasks /CREATE /SC minute /MO 5 /TN "AzCopy Script" /TR C:\script.bat
 
 若要详细了解如何在本地和 Azure 存储之间移动数据，请单击以下链接：
 
-* [将数据移入和移出 Azure 存储](./storage-choose-data-transfer-solution.md?toc=%252fstorage%252ffiles%252ftoc.json)。  
+* [将数据移入和移出 Azure 存储](./storage-choose-data-transfer-solution.md?toc=%2fstorage%2ffiles%2ftoc.json)。  
 
 有关 AzCopy 的详细信息，请参阅以下任何文章：
 
 * [AzCopy 入门](storage-use-azcopy-v10.md)
 
-* [使用 AzCopy 和 Blob 存储传输数据](storage-use-azcopy-blobs.md)
+* [使用 AzCopy 和 Blob 存储传输数据](./storage-use-azcopy-v10.md#transfer-data)
 
 * [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
 

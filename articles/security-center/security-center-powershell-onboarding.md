@@ -1,6 +1,6 @@
 ---
 title: 通过 PowerShell 加入 Azure 安全中心
-description: 本文档将指导你完成通过 PowerShell cmdlet 开始使用 Azure 安全中心的过程。
+description: 本文档将指导你完成通过 PowerShell cmdlet 启用 Azure 安全中心的过程。
 services: security-center
 documentationcenter: na
 author: Johnnytechn
@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/12/2020
+ms.date: 02/25/2021
 ms.author: v-johya
 origin.date: 10/02/2018
-ms.openlocfilehash: 31af6ac094151c37a4fa8af9766238a47c040e54
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: 0114a2b78d8fa9cdb8b931892a762af90fc5c56e
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94638075"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197123"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>使用 PowerShell 自动载入 Azure 安全中心
 
@@ -90,7 +90,7 @@ ms.locfileid: "94638075"
 
     ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'```
 
-    ```$Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ 'Enable Monitoring in Azure Security Center'} New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'```
+    ```$Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ 'Azure Security Benchmark'} New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'```
 
 你已使用 PowerShell 成功加入 Azure 安全中心。
 

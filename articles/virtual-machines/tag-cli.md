@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 origin.date: 11/11/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 01/04/2021
 ms.author: v-yeche
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 995dc8a813206fffb17445023dd44fe8c6ea1676
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: efef4b73312537b6bac4b318dd3c28cdf72fe2f1
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857610"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054371"
 ---
 <!--Verified successfully-->
 # <a name="how-to-tag-a-vm-using-the-cli"></a>如何使用 CLI 来标记 VM
@@ -47,14 +47,11 @@ az vm update \
    --remove tags.myNewTagName1
 ```
 
-通过 Azure CLI 和门户将标记应用到资源中以后，接下来可以看一看计费门户中的使用详情，了解其中的标记。
+既然我们已通过 Azure CLI 和门户将标记应用到资源中，那就让我们看一看使用情况详细信息，以在计费门户中的查看标记。
 
-后续步骤
+### <a name="next-steps"></a>后续步骤
 
 - 若要详细了解如何标记 Azure 资源，请参阅 [Azure 资源管理器概述](../azure-resource-manager/management/overview.md)和 [使用标记来组织 Azure 资源](../azure-resource-manager/management/tag-resources.md)。
 
-<!--Not Available on [Understanding your Azure Bill](../cost-management-billing/understand/review-individual-bill.md)-->
-<!--Not Available on [Gain insights into your Azure resource consumption](../cost-management-billing/manage/usage-rate-card-overview.md)-->
-
-<!-- Update_Description: new article about tag cli -->
-<!--NEW.date: 01/04/2021-->
+<!--NOT AVAILABLE ON [Understanding your Azure Bill](../cost-management-billing/understand/review-individual-bill.md)-->
+<!--Update_Description: update meta properties, wording update, update link-->

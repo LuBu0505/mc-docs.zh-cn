@@ -5,16 +5,16 @@ services: container-service
 ms.topic: conceptual
 origin.date: 08/26/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 09/14/2020
 ms.author: v-yeche
-ms.openlocfilehash: ba9f753b57f00b38d1e57d8ce8c76f6b25815e5d
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 56af957ca22d9700f3bc89f96bb218eb22ea5562
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023128"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053043"
 ---
 <!--Verified successfully-->
 # <a name="sustainable-software-engineering-principles-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的可持续软件工程原则
@@ -23,8 +23,8 @@ ms.locfileid: "98023128"
 
 关于可持续软件工程，需要了解的一个重要理念是：它是优先事项和重点的转移。 在许多情况下，软件的设计和运行方式侧重于快速性能和低延迟。 可持续软件工程侧重于尽可能多地降低碳排放量。 在某些情况下，应用可持续软件工程原则可以提高性能或降低延迟，例如，降低总体网络行程就可以实现该目标。 考虑将可持续软件工程原则应用到应用程序之前，请查看应用程序的优先级、需求和利弊。
 
-<!--Not Available on In other cases, reducing carbon emissions may cause slower performance or increased latency, such as delaying low-priority workloads.-->
-<!--Not Available low-priority feature-->
+<!--NOT AVAILABLE on In other cases, reducing carbon emissions may cause slower performance or increased latency, such as delaying low-priority workloads.-->
+<!--NOT AVAILABLE on FEATURE low-priority-->
 
 
 ## <a name="measure-and-optimize"></a>度量和优化
@@ -52,7 +52,10 @@ ms.locfileid: "98023128"
 减少往返群集的请求和响应的距离通常可以减少联网设备的电力消耗并减少碳排放。 查看网络流量后，请考虑在更靠近你的网络流量来源的[区域中][regions]创建群集。 你还可以使用 [Azure 流量管理器][azure-traffic-manager]来帮助你将流量路由到最近的群集和[邻近放置组][proiximity-placement-groups]，以便缩短 Azure 资源之间的距离。
 
 > [!IMPORTANT]
-> 考虑对群集的网络进行更改时，切勿以必须满足的工作负荷要求为代价来减少网络行程。 例如，使用[可用性区域][availability-zones]会导致群集上的网络行程增多，但处理工作负荷要求可能需要使用该功能。
+> 考虑对群集的网络进行更改时，切勿以必须满足的工作负荷要求为代价来减少网络行程。
+
+<!--NOT AVAILABLE ON For example, using [availability zones][availability-zones] causes more network travel on your cluster but using that feature may be necessary to handle workload requirements.-->
+<!--NOT AVAILABLE on FEATURE availability zone-->
 
 ## <a name="demand-shaping"></a>需求调整
 
@@ -75,8 +78,7 @@ ms.locfileid: "98023128"
 * [资源预留][resource-reservations]
 * [邻近放置组][proiximity-placement-groups]
 
-<!--Not Available on * [Availability Zones][availability-zones]-->
-<!--Not Available on [availability-zones]: availability-zones.md-->
+<!--NOT AVAILABLE ON [availability-zones]: availability-zones.md-->
 
 [azure-monitor]: ../azure-monitor/insights/container-insights-overview.md
 [azure-traffic-manager]: ../traffic-manager/traffic-manager-overview.md
@@ -87,7 +89,7 @@ ms.locfileid: "98023128"
 [scale-auto]: concepts-scale.md#cluster-autoscaler
 [scale-horizontal]: concepts-scale.md#horizontal-pod-autoscaler
 
-<!--Not Available on [spot-pools]: spot-node-pool.md-->
+<!--NOT AVAILABLE ON [spot-pools]: spot-node-pool.md-->
 
 [multiple-node-pools]: use-multiple-node-pools.md
 [node-sizing]: use-multiple-node-pools.md#specify-a-vm-size-for-a-node-pool
@@ -95,4 +97,4 @@ ms.locfileid: "98023128"
 [system-pools]: use-system-pools.md
 [principles-sse]: https://docs.microsoft.com/learn/modules/sustainable-software-engineering-overview/
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

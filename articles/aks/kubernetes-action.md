@@ -5,23 +5,23 @@ services: container-service
 ms.topic: article
 origin.date: 11/06/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 05/06/2020
 ms.author: v-yeche
 ms.custom: github-actions-azure
-ms.openlocfilehash: 1ff9a363085cc608176a623065db2311181df0f1
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: fb6bd192a3672a06b96b1583fbfa90fcf1cde21d
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022328"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054074"
 ---
 <!--CONFIRME WITH DONG LIU SUCCESSFULLY-->
 <!--NEW FEATURES HAS BEEN RELEASED ON AZURE CHINA CLOUD-->
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>用于将容器部署到 Kubernetes 服务的 GitHub Actions
 
-可以通过 [GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions) 灵活地生成自动化软件开发生命周期工作流。 可以使用多个 Kubernetes 操作通过 GitHub Actions 将 Azure 容器注册表中的容器部署到 Azure Kubernetes 服务。 
+可以通过 [GitHub Actions](https://docs.github.com/en/actions) 灵活地生成自动化软件开发生命周期工作流。 可以使用多个 Kubernetes 操作通过 GitHub Actions 将 Azure 容器注册表中的容器部署到 Azure Kubernetes 服务。 
 
 ## <a name="prerequisites"></a>先决条件 
 
@@ -48,7 +48,7 @@ ms.locfileid: "98022328"
 
 可以在 [Azure CLI](https://docs.azure.cn/cli/) 中使用 [az ad sp create-for-rbac](https://docs.azure.cn/cli/ad/sp#az_ad_sp_create_for_rbac) 命令创建[服务主体](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。
 
-<!--Not Avaialble on [Azure Cloud Shell](https://shell.azure.com/)-->
+<!--NOT AVAILABLE ON [Azure Cloud Shell](https://shell.azure.com/)-->
 
 ```azurecli
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
@@ -219,8 +219,8 @@ jobs:
 
 不再需要 Kubernetes 群集、容器注册表和存储库时，请通过删除资源组和 GitHub 存储库来清理部署的资源。 
 
-<!--Not Available on ## Next steps-->
-<!--Not Available on > [Learn about Azure Kubernetes Service](https://docs.microsoft.com/azure/architecture/reference-architectures/containers/aks-start-here)-->
+<!--NOT AVAIABLE ON ## Next steps-->
+<!--NOT AVAIABLE ON > [Learn about Azure Kubernetes Service](https://docs.microsoft.com/azure/architecture/reference-architectures/containers/aks-start-here)-->
 
 ### <a name="more-kubernetes-github-actions"></a>更多 Kubernetes GitHub Actions
 
@@ -233,4 +233,4 @@ jobs:
 * [Kubernetes 烘培](https://github.com/Azure/k8s-bake) (`azure/k8s-bake`)：烘焙清单文件，用于通过 helm2、kustomize 或 kompose 进行部署。
 * [Kubernetes lint](https://github.com/azure/k8s-lint) (`azure/k8s-lint`)：验证/lint 清单文件。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -6,16 +6,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 origin.date: 09/17/2018
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 182eb324da41cc71b4c83f9d1cb1bd17e39145b9
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 1ea9109a7675d318a5b481acf50ab8d2f31ec10e
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104691"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054395"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>从托管映像创建 VM
 
@@ -23,7 +23,7 @@ ms.locfileid: "93104691"
 
 在创建新的 VM 之前，需要[创建托管 VM 映像](capture-image-resource.md)以用作源映像，并向应有权访问该映像的任何用户授予对该映像的读取权限。 
 
-一个托管映像最多支持 20 个同时部署。 如果尝试从同一托管映像同时创建超过 20 个 VM，则可能会由于单个 VHD 的存储性能限制而导致预配超时。 若要同时创建 20 个以上的 VM，请使用为每 20 个并发 VM 部署配置 1 个副本的[共享映像库](shared-image-galleries.md)映像。
+一个托管映像最多支持 20 个同时部署。 如果尝试从同一托管映像同时创建超过 20 个 VM，则可能会由于单个 VHD 的存储性能限制而导致预配超时。 若要同时创建 20 个以上的 VM，请使用为每 20 个并发 VM 部署配置 1 个副本的[共享映像库](../shared-image-galleries.md)映像。
 
 ## <a name="use-the-portal"></a>使用门户
 
@@ -57,6 +57,6 @@ New-AzVm `
 ```
 
 ## <a name="next-steps"></a>后续步骤
-[使用 Azure PowerShell 模块创建和管理 Windows VM](tutorial-manage-vm.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)
+[使用 Azure PowerShell 模块创建和管理 Windows VM](tutorial-manage-vm.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

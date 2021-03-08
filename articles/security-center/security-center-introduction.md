@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/06/2021
+ms.date: 02/25/2021
 ms.author: v-johya
-ms.openlocfilehash: 4fb2b5baccc541307b7bac1104dd3c416d1ab6ff
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 904587ddb2e70a5470b3c01e3b1ce8d690b7ae07
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022126"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197520"
 ---
 # <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
 
@@ -70,7 +70,7 @@ Azure 安全中心解决了三个最紧急的安全性挑战：
 
 ### <a name="continuous-assessments"></a>持续评估
 
-安全中心会持续发现部署在工作负荷中的新资源并评估它们是否已根据安全最佳做法进行了配置，如果没有，则会将它们标记出来，并且你将获得一个按优先级排列的建议列表，便于你进行修复以保护计算机。
+安全中心会持续发现部署在工作负荷中的新资源并评估它们是否已根据安全最佳做法进行了配置，如果没有，则会将它们标记出来，并且你将获得一个按优先级排列的建议列表，便于你进行修复以保护计算机。 此建议列表由 [Azure 安全基准](../security/benchmarks/introduction.md)实现和支持；该基准是 Microsoft 针对基于常见合规性框架的安全与合规最佳做法创作的一组特定于 Azure 的准则。 这一公认的基准建立在 [Internet 安全中心 (CIS)](https://www.cisecurity.org/benchmark/azure/) 和[国家标准与技术研究院 (NIST)](https://www.nist.gov/) 的控制基础上，重点关注以云为中心的安全性。
 
 为了帮助你了解每个建议对整体安全状况的重要程度，安全中心将建议分组到安全控件中，并向每个控件添加“安全分数”值。 这一点在你设置安全工作的优先级时至关重要。
 
@@ -99,7 +99,7 @@ Azure 安全中心的值的核心在于其建议。 这些建议是针对在工�
 
 安全中心的威胁防护包括融合杀伤链分析，它可以基于网络杀伤链分析自动关联环境中的警报，有助于更好地了解攻击活动的完整情况，例如它的起始位置以及它对资源造成的影响。
 
-:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="安全警报":::
+:::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Azure 安全中心的安全警报列表":::
 
 <!--Not available in MC: ### Integration with Microsoft Defender for Endpoint-->
 ### <a name="protect-paas"></a>保护 PaaS

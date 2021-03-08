@@ -11,14 +11,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 03/19/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.author: v-yeche
-ms.openlocfilehash: 6873806cb66f79480f0d40a538b5a3d85449906a
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 8086a893800afe4d82c4c3762b34c3bb4a2a81cb
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856720"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055222"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>适用于 Windows 的 Azure 磁盘加密 (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -61,9 +61,9 @@ v2.2 架构建议用于所有新 VM，并且不需要 Azure Active Directory 属
           "EncryptionOperation": "[encryptionOperation]",
           "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
           "KeyVaultURL": "[keyVaultURL]",
-          "KekVaultResourceId": "[keyVaultResourceID]",
-          "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
           "KeyVaultResourceId": "[keyVaultResourceID]",
+          "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+          "KekVaultResourceId": "[kekVaultResourceID]",
           "SequenceVersion": "sequenceVersion]",
           "VolumeType": "[volumeType]"
         }
@@ -96,8 +96,8 @@ v2.2 架构建议用于所有新 VM，并且不需要 Azure Active Directory 属
       "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
       "KeyVaultURL": "[keyVaultURL]",
       "KeyVaultResourceId": "[keyVaultResourceID]",
-      "KekVaultResourceId": "[keyVaultResourceID]",
       "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+      "KekVaultResourceId": "[kekVaultResourceID]",
       "SequenceVersion": "sequenceVersion]",
       "VolumeType": "[volumeType]"
     }
@@ -126,8 +126,8 @@ v2.2 架构建议用于所有新 VM，并且不需要 Azure Active Directory 属
       "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
       "KeyVaultURL": "[keyVaultURL]",
       "KeyVaultResourceId": "[keyVaultResourceID]",
-      "KekVaultResourceId": "[keyVaultResourceID]",
       "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+      "KekVaultResourceId": "[kekVaultResourceID]",
       "SequenceVersion": "sequenceVersion]",
       "VolumeType": "[volumeType]"
     }
@@ -146,7 +146,7 @@ v2.2 架构建议用于所有新 VM，并且不需要 Azure Active Directory 属
 | （1.1 架构）AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID | 
 | （1.1 架构）AADClientSecret | password | string |
 | （1.1 架构）AADClientCertificate | thumbprint | string |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
+| EncryptionOperation | EnableEncryption | string | 
 | （可选 - 默认 RSA-OAEP）KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
 | KeyVaultURL | url | string |
 | KeyVaultResourceId | url | string |
@@ -176,11 +176,11 @@ v2.2 架构建议用于所有新 VM，并且不需要 Azure Active Directory 属
 
 如果对本文中的任何观点存在疑问，可以联系 [Azure 支持](https://support.azure.cn/support/contact/)上的 Azure 专家。 
 
-或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://support.azure.cn/support/support-azure/)提交请求。 有关使用 Azure 支持的信息，请阅读 [Azure 支持常见问题](https://www.azure.cn/support/faq/)。
+或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://support.azure.cn/support/support-azure/)提交请求。 有关使用 Azure 支持的信息，请阅读 [Azure 支持常见问题](https://www.azure.cn/support/faq/)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关扩展的详细信息，请参阅[适用于 Windows 的虚拟机扩展和功能](features-windows.md)。
 * 有关适用于 Windows 的 Azure 磁盘加密的详细信息，请参阅 [Windows 虚拟机](../../security/fundamentals/azure-disk-encryption-vms-vmss.md#windows-virtual-machines)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

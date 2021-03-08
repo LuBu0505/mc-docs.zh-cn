@@ -1,0 +1,56 @@
+- name: Azure
+  tocHref: 'https://docs.azure.cn'
+  topicHref: /index
+  items:
+    - name: Synapse Analytics
+      tocHref: /sql-database/
+      topicHref: /synapse-analytics/index
+- name: Azure
+  tocHref: 'https://docs.azure.cn'
+  topicHref: /index
+  items:
+    - name: Synapse Analytics
+      tocHref: /azure-databricks/
+      topicHref: /synapse-analytics/index
+- name: Azure
+  tocHref: 'https://docs.azure.cn'
+  topicHref: /index
+  items:
+    - name: Synapse Analytics
+      tocHref: /data-factory/
+      topicHref: /synapse-analytics/index
+- name: Azure
+  tocHref: 'https://docs.azure.cn'
+  topicHref: /index
+  items:
+    - name: Synapse Analytics
+      tocHref: 'https://docs.microsoft.com/sql/t-sql/'
+      topicHref: /synapse-analytics/index
+- name: Azure
+  tocHref: 'https://docs.azure.cn'
+  topicHref: /index
+  items:
+    - name: Synapse Analytics
+      tocHref: /machine-learning
+      topicHref: /synapse-analytics/index
+- name: Azure
+  tocHref: 'https://docs.azure.cn'
+  topicHref: /index
+  items:
+    - name: Synapse Analytics
+      tocHref: /active-directory
+      topicHref: /synapse-analytics/index
+- name: Azure
+  tocHref: 'https://docs.azure.cn'
+  topicHref: /index
+  items:
+    - name: Synapse Analytics
+      tocHref: /cosmos-db
+      topicHref: /synapse-analytics/index
+- name: Azure
+  tocHref: 'https://docs.azure.cn'
+  topicHref: /index
+  items:
+    - name: Synapse Analytics
+      tocHref: /synapse-analytics/sql-data-warehouse
+      topicHref: /synapse-analytics/index

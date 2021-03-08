@@ -7,16 +7,16 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 origin.date: 09/02/2020
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
-ms.openlocfilehash: 35a6836221270b4468191ee6902772d289a75f89
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 5207be1b07cb798c91e5667efa5cf7e8e2129909
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105841"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053865"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 
@@ -448,10 +448,10 @@ Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“
 
 1. 调整虚拟磁盘的大小以满足 Azure 要求：
 
-   1. Azure 上的磁盘必须已将虚拟大小调整为 1 MiB。 如果 VHD 的大小不是 1 MiB 的整数倍，需要将磁盘大小调整为 1 MiB 的倍数。 基于上传的 VHD 创建映像时，不到 1 MiB 的磁盘将导致错误。 若要验证该大小，可使用 PowerShell [Get-VHD](https://docs.microsoft.com/powershell/module/hyper-v/get-vhd) comdlet 来显示“大小”和“文件大小”，其中大小在 Azure 中必须是 1 MiB 的倍数，而文件大小将等于“大小”加上 VHD 页脚的 512 字节。
+    1. Azure 上的磁盘必须已将虚拟大小调整为 1 MiB。 如果 VHD 的大小不是 1 MiB 的整数倍，需要将磁盘大小调整为 1 MiB 的倍数。 基于上传的 VHD 创建映像时，不到 1 MiB 的磁盘将导致错误。 若要验证该大小，可使用 PowerShell [Get-VHD](https://docs.microsoft.com/powershell/module/hyper-v/get-vhd) comdlet 来显示“大小”和“文件大小”，其中大小在 Azure 中必须是 1 MiB 的倍数，而文件大小将等于“大小”加上 VHD 页脚的 512 字节。
 
-   1. 第 1 代 VM 的 OS VHD 允许的最大大小为 2,048 GiB (2 TiB)， 
-   1. 数据磁盘的最大大小为 32,767 GiB (32 TiB)。
+    1. 第 1 代 VM 的 OS VHD 允许的最大大小为 2,048 GiB (2 TiB)， 
+    1. 数据磁盘的最大大小为 32,767 GiB (32 TiB)。
 
 > [!NOTE]
 > - 如果要在转换为固定磁盘并根据需要调整大小后准备 Windows OS 磁盘，请创建使用该磁盘的 VM。 启动并登录到该 VM，然后继续根据本文内容，完成上传准备。  
@@ -501,7 +501,7 @@ Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
 
 <!--Not Available on ### Convert from VMware VMDK disk format-->
 <!--Not Available on [VMDK file format](https://en.wikipedia.org/wiki/VMDK)-->
-<!--Not Available on [Azure Migrate](../../migrate/server-migrate-overview.md)-->
+<!--NOT AVAILABLE ON [Azure Migrate](../../migrate/server-migrate-overview.md)-->
 
 ## <a name="complete-the-recommended-configurations"></a>完成建议的配置
 
@@ -514,7 +514,7 @@ Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -Name PagingFiles -Value 'D:\pagefile.sys' -Type MultiString -Force
     ```
 
-    如果某个数据磁盘已附加到 VM，则临时驱动器卷的驱动器号通常为 *D* 。此驱动器号可能有所不同，具体取决于你的设置，以及可用驱动器的数目。
+    如果某个数据磁盘已附加到 VM，则临时驱动器卷的驱动器号通常为 *D*。此驱动器号可能有所不同，具体取决于你的设置，以及可用驱动器的数目。
 
     - 我们建议禁用防病毒软件可能提供的脚本阻止程序。 这些阻止程序可能会干扰并阻止从映像部署新 VM 时执行的 Windows 预配代理脚本。
 
@@ -523,6 +523,4 @@ Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
 - [将 Windows VM 映像上传到 Azure 以进行 Resource Manager 部署](upload-generalized-managed.md)
 - [排查 Azure Windows VM 激活问题](../troubleshooting/troubleshoot-activation-problems.md)
 
-<!--Not Available on windows/troubleshoot-activation-problems.md-->
-
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

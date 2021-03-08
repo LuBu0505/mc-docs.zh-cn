@@ -5,15 +5,15 @@ ms.service: security
 ms.topic: conceptual
 origin.date: 03/16/2020
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.author: v-yeche
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 21d36274b084390972cc845106d51465863c8d53
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: b4c91f088b3fee02d4d9ba94c6c891d356ea456b
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063614"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054042"
 ---
 <!--Verified successfully-->
 # <a name="azure-security-baseline-for-azure-container-registry"></a>Azure 容器注册表的 Azure 安全基线
@@ -1023,7 +1023,9 @@ Microsoft 安全响应中心的事件剖析： https://msrc-blog.microsoft.com/2
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
-**指导**：使用连续导出功能导出 Azure 安全中心警报和建议。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Sentinel。
+**指导**：使用连续导出功能导出 Azure 安全中心警报和建议。 使用连续导出可以手动导出或者持续导出警报和建议。
+
+<!--NOT AVAILABLE ON  You may use the Azure Security Center data connector to stream the alerts Sentinel.-->
 
 如何配置连续导出： https://docs.azure.cn/security-center/continuous-export
 

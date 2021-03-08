@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 05/13/2019
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3310851d6a3eea677f7b1bfe058784837095ce7e
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 05f6179c7a4b3dae6a87be66d94bee0b04d1eca6
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230916"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053986"
 ---
 # <a name="create-change-or-delete-a-public-ip-prefix"></a>创建、更改或删除公共 IP 前缀
 
@@ -69,7 +69,7 @@ ms.locfileid: "98230916"
 |CLI|[az network public-ip prefix create](https://docs.azure.cn/cli/network/public-ip/prefix#az_network_public_ip_prefix_create)|
 |PowerShell|[New-AzPublicIpPrefix](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipprefix)|
 
-<!--Not Available on Available Zone-->
+<!--Not Available on FEATURE availability zone-->
 
 ## <a name="create-a-static-public-ip-address-from-a-prefix"></a>从前缀创建静态公共 IP 地址
 在创建前缀后，必须从前缀创建静态 IP 地址。 为此，请执行以下步骤。
@@ -93,7 +93,7 @@ ms.locfileid: "98230916"
 |工具|命令|
 |---|---|
 |CLI|[az network public-ip create](https://docs.azure.cn/cli/network/public-ip#az_network_public_ip_create)|
-|PowerShell|[New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=azps-2.0.0)|
+|PowerShell|[New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress)|
 
 ## <a name="view-or-delete-a-prefix"></a>查看或删除前缀
 
@@ -131,4 +131,4 @@ ms.locfileid: "98230916"
 
 - 了解使用[公共 IP 前缀](public-ip-address-prefix.md)的方案和好处
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

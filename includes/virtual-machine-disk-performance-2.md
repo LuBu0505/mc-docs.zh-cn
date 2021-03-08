@@ -6,17 +6,17 @@ ms.service: virtual-machines
 ms.topic: include
 origin.date: 10/12/2020
 author: rockboyfor
-ms.date: 02/08/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: d7df7ec9e85b8441f343479a75236d952caa6eac
-ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
+ms.openlocfilehash: 3db94238a3baa094a5bbae672c22acbd09aa6b09
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580540"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054387"
 ---
 <!--Verified successfully-->
 ![图表中显示了 D s v 3 规范。](media/vm-disk-performance/dsv3-documentation.jpg)
@@ -85,7 +85,7 @@ ms.locfileid: "99580540"
 - P30 OS 磁盘
     - IOPS：5,000
     - 主机缓存：读取/写入
-- 两个 P30 数据磁盘 x 2
+- 两个 P30 数据磁盘 × 2
     - IOPS：5,000
     - 主机缓存：读取/写入
 
@@ -121,58 +121,4 @@ ms.locfileid: "99580540"
 - 由于使用主机缓存的三个磁盘在缓存限制 (16,000) 内，因此这些请求会成功完成。 不会达到存储性能上限。
 - 由于未使用主机缓存的两个磁盘在非缓存限制 (12,800) 内，因此这些请求也会成功完成。 不会达到上限。
 
-## <a name="disk-performance-metrics"></a>磁盘性能指标
-
-我们在 Azure 上提供了一些指标，可以通过它们了解虚拟机和磁盘的性能。 可以通过 Azure 门户查看这些指标。 还可以通过 API 调用来检索它们。 指标按一分钟间隔进行计算。 以下指标可用于深入了解 VM 和磁盘 IO 及吞吐量性能：
-
-- OS 磁盘队列深度：当前未完成的等待在 OS 磁盘中读取或写入的 IO 请求数。
-- OS 磁盘读取字节数/秒：每秒从 OS 磁盘中读取的字节数。
-- OS 磁盘读取操作次数/秒：每秒从 OS 磁盘读取的输入操作的次数。
-- OS 磁盘写入字节数/秒：每秒在 OS 磁盘中写入的字节数。
-- OS 磁盘写入操作次数/秒：每秒在 OS 磁盘中写入的输出操作的次数。
-- 数据磁盘队列深度：当前未完成的等待在数据磁盘中读取或写入的 IO 请求数。
-- 数据磁盘读取字节数/秒：每秒从数据磁盘中读取的字节数。
-- 数据磁盘读取操作次数/秒：每秒从数据磁盘读取的输入操作的次数。
-- 数据磁盘写入字节数/秒：每秒在数据磁盘中写入的字节数。
-- 数据磁盘写入操作次数/秒：每秒在数据磁盘中写入的输出操作的次数。
-- 磁盘读取字节数/秒：每秒从附加到某个 VM 的所有磁盘中读取的总字节数。
-- 磁盘读取操作次数/秒：每秒从附加到某个 VM 的所有磁盘中读取的输入操作的次数。
-- 磁盘写入字节数/秒：每秒在附加到某个 VM 的所有磁盘中写入的字节数。
-- 磁盘写入操作次数/秒：每秒在附加到某个 VM 的所有磁盘中写入的输出操作的次数。
-
-## <a name="storage-io-utilization-metrics"></a>存储 IO 利用率指标
-
-有助于诊断磁盘 IO 上限的指标：
-
-- 已使用的数据磁盘 IOPS 的百分比：通过将完成的数据磁盘 IOPS 与预配的数据磁盘 IOPS 相比计算得出的百分比。 如果此数为 100%，则表明正在运行的应用程序达到你的数据磁盘 IOPS 限制的 IO 上限。
-- 已使用的数据磁盘带宽百分比：通过将完成的数据磁盘吞吐量与预配的数据磁盘吞吐量相比计算得出的百分比。 如果此数为 100%，则表明正在运行的应用程序达到你的数据磁盘带宽限制的 IO 上限。
-- 已使用的 OS 磁盘 IOPS 的百分比：通过将完成的 OS 磁盘 IOPS 与预配的 OS 磁盘 IOPS 相比计算得出的百分比。 如果此数为 100%，则表明正在运行的应用程序达到你的 OS 磁盘 IOPS 限制的 IO 上限。
-- 已使用的 OS 磁盘带宽百分比：通过将完成的 OS 磁盘吞吐量与预配的 OS 磁盘吞吐量相比计算得出的百分比。 如果此数为 100%，则表明正在运行的应用程序达到你的 OS 磁盘带宽限制的 IO 上限。
-
-有助于诊断 VM IO 上限的指标：
-
-- 已使用的 VM 缓存 IOPS 的百分比：通过将完成的总 IOPS 与最大缓存虚拟机 IOPS 限制相比计算得出的百分比。 如果此数为 100%，则表明正在运行的应用程序达到你的 VM 缓存 IOPS 限制的 IO 上限。
-- 已使用的 VM 缓存带宽百分比：通过将完成的总磁盘吞吐量与最大缓存虚拟机吞吐量相比计算得出的百分比。 如果此数为 100%，则表明正在运行的应用程序达到你的 VM 缓存带宽限制的 IO 上限。
-- 已使用的 VM 未缓存 IOPS 的百分比：通过将虚拟机上完成的总 IOPS 与最大非缓存虚拟机 IOPS 限制相比计算得出的百分比。 如果此数为 100%，则表明正在运行的应用程序达到你的 VM 非缓存 IOPS 限制的 IO 上限。
-- 已使用的 VM 非缓存带宽百分比：通过将虚拟机上完成的总磁盘吞吐量与最大预配虚拟机吞吐量相比计算得出的百分比。 如果此数为 100%，则表明正在运行的应用程序达到你的 VM 非缓存带宽限制的 IO 上限。
-
-## <a name="storage-io-utilization-metrics-example"></a>存储 IO 利用率指标示例
-
-让我们通过一个示例来了解如何使用这些新的存储 IO 利用率指标来帮助我们调试系统中的瓶颈。 系统设置与前面的示例相同，但是，这次附加的 OS 磁盘不缓存。
-
-设置：
-
-- Standard_D8s_v3
-    - 缓存的 IOPS：16,000
-    - 非缓存 IOPS：12,800
-- P30 OS 磁盘
-    - IOPS：5,000
-    - 主机缓存：**已禁用**
-- 两个 P30 数据磁盘 × 2
-    - IOPS：5,000
-    - 主机缓存：读取/写入
-- 两个 P30 数据磁盘 × 2
-    - IOPS：5,000
-    - 主机缓存：**已禁用**
-
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

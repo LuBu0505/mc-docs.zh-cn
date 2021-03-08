@@ -10,16 +10,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/26/2019
 author: rockboyfor
-ms.date: 09/28/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 09/28/2020
 ms.author: v-yeche
-ms.openlocfilehash: ae8428d6e1215d1be864d9225bea9be9d59f7666
-ms.sourcegitcommit: 71953ae66ddfc07c5d3b4eb55ff8639281f39b40
+ms.openlocfilehash: dd674f83294d7d81c61313d78a81f974a084d2cd
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91395155"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054041"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
 
@@ -54,7 +54,7 @@ ms.locfileid: "91395155"
 
 由于流量管理器在 DNS 级别与应用程序集成，因此需要将额外的 DNS 查找插入 DNS 解析链中。 流量管理器对 DNS 解析时间的影响微乎其微。 流量管理器使用全局性的名称服务器网络，并使用任播网络来确保始终将 DNS 查询路由到最靠近的可用名称服务器。 此外，对 DNS 响应进行缓存意味着，因使用流量管理器而导致的额外的 DNS 延迟仅出现在部分会话中。
 
-<!--Not Available on  [anycast](https://en.wikipedia.org/wiki/Anycast)-->
+<!--NOT AVAILABLE on  [anycast](https://en.wikipedia.org/wiki/Anycast)-->
 
 “性能”方法将流量路由到最靠近的可用终结点。 最终结果是，与此方法相关的整体性能影响会减到最小。 通过减小与终结点之间的网络延迟，应该可以抵消 DNS 延迟增大造成的影响。
 
@@ -64,7 +64,7 @@ ms.locfileid: "91395155"
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>是否可以对“裸”域名使用流量管理器？
 
-是的。 若要了解如何为域名顶点创建别名记录以引用 Azure 流量管理器配置文件，请参阅[使用流量管理器配置支持顶点域名的别名记录](https://docs.azure.cn/dns/tutorial-alias-tm)。
+是的。 若要了解如何为域名顶点创建别名记录以引用 Azure 流量管理器配置文件，请参阅[使用流量管理器配置支持顶点域名的别名记录](../dns/tutorial-alias-tm.md)。
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>处理 DNS 查询时流量管理器是否会考虑客户端子网地址？ 
 
@@ -186,7 +186,7 @@ ms.locfileid: "91395155"
 
 不能对 Azure Web 应用使用多个订阅中的终结点。 Web 应用要求其所用的任何自定义域名只能在单个订阅中使用。 无法对多个订阅中的 Web 应用使用同一个域名。
 
-对于其他终结点类型，可在多个订阅中结合使用流量管理器和终结点。 在 Resource Manager 中，只要配置流量管理器配置文件的人员具有终结点的读取访问权限，任何订阅的终结点就都可添加到流量管理器中。 可使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) 授予这些权限。 可使用 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) 或 [Azure CLI](https://docs.azure.cn/cli/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-create) 添加其他订阅中的终结点。
+对于其他终结点类型，可在多个订阅中结合使用流量管理器和终结点。 在 Resource Manager 中，只要配置流量管理器配置文件的人员具有终结点的读取访问权限，任何订阅的终结点就都可添加到流量管理器中。 可使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) 授予这些权限。 可使用 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) 或 [Azure CLI](https://docs.azure.cn/cli/network/traffic-manager/endpoint#az_network_traffic_manager_endpoint_create) 添加其他订阅中的终结点。
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>能否将流量管理器用于云服务的“过渡”槽？
 
@@ -225,7 +225,7 @@ Azure Resource Manager 要求所有资源组指定一个位置，这决定了部
 
 ### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>如何确定每个终结点的当前运行状况？
 
-除了总体配置文件，每个终结点的当前监视状态也显示在 Azure 门户中。 此信息也可通过流量监视器 [REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx)、[PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.trafficmanager) 和[跨平台 Azure CLI](../cli-install-nodejs.md) 获取。
+除了总体配置文件，每个终结点的当前监视状态也显示在 Azure 门户中。 此信息也可通过流量监视器 [REST API](https://docs.microsoft.com/rest/api/trafficmanager/)、[PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.trafficmanager) 和[跨平台 Azure CLI](https://docs.azure.cn/cli/install-classic-cli) 获取。
 
 可以使用 Azure Monitor 来跟踪终结点的运行状况，并查看其可视表示形式。 有关使用 Azure Monitor 的详细信息，请参阅 [Azure 监视文档](/monitoring-and-diagnostics/monitoring-overview-metrics)。
 
@@ -387,4 +387,4 @@ Azure Resource Manager 要求所有资源组指定一个位置，这决定了部
 - 详细了解流量管理器[终结点监视和自动故障转移](../traffic-manager/traffic-manager-monitoring.md)。
 - 详细了解流量管理器[流量路由方法](../traffic-manager/traffic-manager-routing-methods.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

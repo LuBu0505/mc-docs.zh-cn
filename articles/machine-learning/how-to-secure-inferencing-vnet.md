@@ -11,12 +11,12 @@ ms.author: aashishb
 author: peterclu
 ms.date: 10/12/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 35d6b9308569b7f6e5d861694d4acbca5ba552c4
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: be2f88d9121d676f0870e77e1d9e46f9f06f7ad4
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021665"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196875"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习推理环境
 
@@ -202,6 +202,7 @@ except:
     prov_config.service_cidr = "10.0.0.0/16"
     prov_config.dns_service_ip = "10.0.0.10"
     prov_config.subnet_name = subnet_name
+    prov_config.load_balancer_subnet = subnet_name
     prov_config.docker_bridge_cidr = "172.17.0.1/16"
 
     # Create compute target

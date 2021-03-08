@@ -4,16 +4,16 @@ description: 本文提供了用于评估 Azure 中继的内置安全控制清单
 ms.topic: conceptual
 origin.date: 06/23/2020
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 575e0ede5c96afdb5c4322c36229923af1ed241b
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: c4b81f032a7fcf51dcd753c61fc961020cbcd7de
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063582"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054340"
 ---
 # <a name="security-controls-for-azure-relay"></a>Azure 中继的安全控制
 
@@ -25,8 +25,8 @@ ms.locfileid: "99063582"
 
 | 安全控制 | Yes/No | 注释 | 文档 |
 |---|---|--|--|
-| 专用终结点支持| 否 |  |   |
-| 网络隔离和防火墙支持| 否 |  |   |
+| 专用终结点支持| 是 |  |   |
+| 网络隔离和防火墙支持| 是 |  |   |
 | 强制隧道支持| 空值 | 中继是 TLS 隧道  |   |
 
 ## <a name="monitoring--logging"></a>监视和日志记录

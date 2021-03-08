@@ -5,16 +5,16 @@ author: WenJason
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-origin.date: 10/28/2020
-ms.date: 12/14/2020
+origin.date: 02/04/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.reviewer: jamesbak
-ms.openlocfilehash: 8a5e8638b07e3bcd83fb059b03953e2b61da0a20
-ms.sourcegitcommit: a8afac9982deafcf0652c63fe1615ba0ef1877be
+ms.openlocfilehash: d3c86729c9833e98b3f17fed926b005025ba3377
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96850805"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196300"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
@@ -55,9 +55,6 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 * [获取页面范围](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
 * [增量复制 Blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
 * [从 URL 放置页](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
-* [追加块](https://docs.microsoft.com/rest/api/storageservices/append-block)
-* [通过 URL 追加块](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
-
 
 具有分层命名空间的帐户不支持非托管 VM 磁盘。 若要在存储帐户中启用分层命名空间，请将非托管 VM 磁盘置于未启用分层命名空间功能的存储帐户中。
 

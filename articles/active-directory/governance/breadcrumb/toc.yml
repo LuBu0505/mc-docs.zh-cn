@@ -1,0 +1,7 @@
+- name: Azure
+  tocHref: /
+  topicHref: /index
+  items:
+    - name: 调控
+      tocHref: 'https://docs.microsoft.com/graph/'
+      topicHref: /active-directory/governance/index

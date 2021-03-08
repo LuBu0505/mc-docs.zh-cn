@@ -7,16 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 author: gvashishtha
 ms.author: gopalv
-ms.reviewer: jmartens
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 340b4f4b3e0a1a9f16edd331c4eb28f70e7a479c
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 6af05f61a3e1911be87dc9dde328435ed7c5763e
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98229977"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196511"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>远程模型部署故障排除 
 

@@ -6,14 +6,14 @@ author: Johnnytechn
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 11/13/2020
+ms.date: 02/25/2021
 ms.author: v-johya
-ms.openlocfilehash: daf1396e071616054d130e2c986af545225e602e
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: c0068d60cb16ef5119e06af1a4405b3c491122b2
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94638265"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197285"
 ---
 # <a name="stream-alerts-to-a-siem-soar-or-it-service-management-solution"></a>将警报流式传输到 SIEM、SOAR 或 IT 服务管理解决方案
 
@@ -50,9 +50,9 @@ Azure 本机工具可确保你可以查看当前使用的所有最常用解决�
     > [!TIP]
     > 若要在管理组级别使用 Azure Policy 执行此操作，请参阅[大规模创建连续导出自动化配置](continuous-export.md?tabs=azure-policy#configure-continuous-export-at-scale-using-the-supplied-policies)
 
-1. [使用 Azure Monitor 的内置连接器将 Azure 事件中心连接到首选解决方案](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)。
+1. [使用 Azure Monitor 的内置连接器将 Azure 事件中心连接到首选解决方案](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)。
 
-1. （可选）将原始日志流式传输到 Azure 事件中心并连接到首选解决方案。 有关详细信息，请参阅[提供的监视数据](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#monitoring-data-available)。
+1. （可选）将原始日志流式传输到 Azure 事件中心并连接到首选解决方案。 有关详细信息，请参阅[提供的监视数据](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md#monitoring-data-available)。
 
 > [!TIP]
 > 若要查看导出的数据类型的事件架构，请访问[事件中心事件架构](https://aka.ms/ASCAutomationSchemas)。

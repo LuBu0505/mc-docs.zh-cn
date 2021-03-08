@@ -4,8 +4,7 @@ titleSuffix: Azure Virtual Network
 description: 排查虚拟网络 NAT 的问题。
 services: virtual-network
 documentationcenter: na
-author: rockboyfor
-manager: digimobile
+manager: KumudD
 ms.service: virtual-network
 Customer intent: As an IT administrator, I want to troubleshoot Virtual Network NAT.
 ms.devlang: na
@@ -13,16 +12,17 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 05/20/2020
-ms.date: 07/20/2020
+author: rockboyfor
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: c5ebb547b3c3f4f12002e70ab3150e5739a45b00
-ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
+ms.openlocfilehash: 21c48eb2461dd5cccaed0f9c222dcd75546d66ac
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86441215"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053960"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>排查 Azure 虚拟网络 NAT 连接问题
 
@@ -206,5 +206,4 @@ _**解决方法：**_
 * 了解 [NAT 网关资源的指标和警报](nat-metrics.md)。
 * [在 UserVoice 中告诉我们接下来想要为虚拟网络 NAT 开发什么功能](https://aka.ms/natuservoice)。
 
-<!-- Update_Description: new article about troubleshoot nat -->
-<!--NEW.date: 07/20/2020-->
+<!--Update_Description: update meta properties, wording update, update link-->

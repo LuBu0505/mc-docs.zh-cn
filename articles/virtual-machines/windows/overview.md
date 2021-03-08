@@ -6,17 +6,17 @@ ms.workload: infrastructure-services
 ms.topic: overview
 origin.date: 11/14/2019
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 26fed1719bf7b9ad6cd73dd4cca372b5a9a161ba
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 013e63cdc02e72b60801e4e3ad17506c16ca07c6
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856659"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053868"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure 中的 Windows 虚拟机
 
@@ -48,7 +48,7 @@ Azure 虚拟机 (VM) 是 Azure 提供的多种可缩放按需分配计算资源�
 ### <a name="locations"></a>位置
 在 Azure 中创建的所有资源分布在中国的多个[地理区域](https://status.azure.com/status/)。 创建 VM 时，区域通常称为 **位置** 。 位置指定 VM 虚拟硬盘的存储位置。
 
-<!-- Notice: Change around the world to China -->
+<!--MOONCAKE: Change around the world to around China -->
 
 下表显示了获取可用位置列表的一些方法。
 
@@ -57,7 +57,7 @@ Azure 虚拟机 (VM) 是 Azure 提供的多种可缩放按需分配计算资源�
 | Azure 门户 |创建 VM 时，可从列表中选择位置。 |
 | Azure PowerShell |使用 [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) 命令。 |
 | REST API |使用[列出位置](https://docs.microsoft.com/rest/api/resources/subscriptions)操作。 |
-| Azure CLI |使用 [az account list-locations](https://docs.azure.cn/cli/account) 操作。 |
+| Azure CLI |使用 [az account list-locations](https://docs.azure.cn/cli/account#az_account_list_locations) 操作。 |
 
 <!--Not Available on ### Singapore data residency-->
 
@@ -65,7 +65,7 @@ Azure 虚拟机 (VM) 是 Azure 提供的多种可缩放按需分配计算资源�
 Azure 宣布了行业领先的单实例虚拟机服务级别协议：可用性达到 99.9%（前提是为所有磁盘使用高级存储部署 VM）。  为了使部署符合标准 99.95% 的 VM 服务级别协议，仍需要在可用性集中部署两个或更多个运行工作负荷的 VM。 可用性集可确保 VM 分布在 Azure 数据中心内的多个容错域，并使用不同的维护时段部署到主机。 完整 [Azure SLA](https://www.azure.cn/support/sla/virtual-machines/) 说明了 Azure 作为整体的保证可用性。
 
 ## <a name="vm-size"></a>VM 大小
-VM 的[大小](../sizes.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)由所要运行的工作负荷决定。 然后，选择的大小决定了处理能力、内存和存储容量等因素。 Azure 提供各种大小来支持多种类型的用途。
+VM 的[大小](../sizes.md)由所要运行的工作负荷决定。 然后，选择的大小决定了处理能力、内存和存储容量等因素。 Azure 提供各种大小来支持多种类型的用途。
 
 Azure 根据 VM 的大小和操作系统[按小时进行收费](https://www.azure.cn/pricing/details/virtual-machines/)。 对于不足一小时的部分，Azure 仅根据使用的分钟数计费。 存储将另行定价和收费。
 
@@ -73,7 +73,7 @@ Azure 根据 VM 的大小和操作系统[按小时进行收费](https://www.azur
 订阅附带默认的[配额限制](../../azure-resource-manager/management/azure-subscription-service-limits.md)，在为项目部署大量 VM 时，这些限制可能会造成影响。 每个订阅的当前限制是每区域 20 个 VM。 可以[开具支持票证](https://support.azure.cn/support/support-azure/)来请求提高限制
 
 ### <a name="operating-system-disks-and-images"></a>操作系统磁盘和映像
-虚拟机使用[虚拟硬盘 (VHD)](../managed-disks-overview.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json) 来存储其操作系统 (OS) 和数据。 VHD 还可用于存储映像，可以选择某个映像来安装 OS。 
+虚拟机使用[虚拟硬盘 (VHD)](../managed-disks-overview.md) 来存储其操作系统 (OS) 和数据。 VHD 还可用于存储映像，可以选择某个映像来安装 OS。 
 
 Azure 提供许多[市场映像](https://market.azure.cn/marketplace/apps/filter?search=virtual-machine-images)来配合各种版本和类型的 Windows Server 操作系统使用。 市场映像由映像发布者、产品、SKU 和版本（通常指定为最新版本）标识。 仅支持 64 位操作系统。 有关受支持的来宾操作系统、角色和功能的详细信息，请参阅 [Azure 虚拟机的 Microsoft 服务器软件支持](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)。
 
@@ -84,7 +84,7 @@ Azure 提供许多[市场映像](https://market.azure.cn/marketplace/apps/filter
 | Azure 门户 |选择要使用的映像时，系统会自动指定值。 |
 | Azure PowerShell |[Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) -Location *location*<br />[Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) -Location *location* -Publisher *publisherName*<br />[Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) -Location *location* -Publisher *publisherName* -Offer *offerName* |
 | REST API |[列出映像发布者](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<br />[列出映像产品](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<br />[列出映像 SKU](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
-| Azure CLI |[az vm image list-publishers](https://docs.azure.cn/cli/vm/image) --location *location*<br />[az vm image list-offers](https://docs.azure.cn/cli/vm/image) --location *location* --publisher *publisherName*<br />[az vm image list-skus](https://docs.azure.cn/cli/vm) --location *location* --publisher *publisherName* --offer *offerName*|
+| Azure CLI |[az vm image list-publishers](https://docs.azure.cn/cli/vm/image#az_vm_image_list_publishers) --location *location*<br />[az vm image list-offers](https://docs.azure.cn/cli/vm/image#az_vm_image_list_offers) --location *location* --publisher *publisherName*<br />[az vm image list-skus](https://docs.azure.cn/cli/vm#az_vm_image_list_skus) --location *location* --publisher *publisherName* --offer *offerName*|
 
 可以选择 [上传并使用自己的映像](upload-generalized-managed.md) ，在这种情况下，无需使用发布者名称、产品和 SKU。
 
@@ -100,14 +100,14 @@ VM [扩展](../extensions/features-windows.md?toc=/virtual-machines/windows/toc.
 ### <a name="related-resources"></a>相关资源
 VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则要予以创建。
 
-| 资源 | 必须 | 说明 |
+| 资源 | 必选 | 说明 |
 | --- | --- | --- |
 | [资源组](../../azure-resource-manager/management/overview.md) |是 |VM 必须包含在资源组中。 |
 | [存储帐户](../../storage/common/storage-account-create.md) |是 |VM 需要使用存储帐户来存储其虚拟硬盘。 |
 | [虚拟网络](../../virtual-network/virtual-networks-overview.md) |是 |VM 必须是虚拟网络的成员。 |
 | [公共 IP 地址](../../virtual-network/public-ip-addresses.md) |否 |可以向 VM 分配一个公共 IP 地址，以便远程访问它。 |
 | [网络接口](../../virtual-network/virtual-network-network-interface.md) |是 |VM 需要使用网络接口在网络中通信。 |
-| [数据磁盘](attach-managed-disk-portal.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json) |否 |VM 可以包含数据磁盘，以便扩展存储功能。 |
+| [数据磁盘](attach-managed-disk-portal.md) |否 |VM 可以包含数据磁盘，以便扩展存储功能。 |
 
 <!--Not Avaialble on ## Data residency-->
 
@@ -119,4 +119,4 @@ VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则�
 - [PowerShell](quick-create-powershell.md)
 - [Azure CLI](quick-create-cli.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

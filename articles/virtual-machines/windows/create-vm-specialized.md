@@ -6,16 +6,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 origin.date: 10/10/2019
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: b96dc9c1c469698ba919b0c848b6000329063169
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: c95dc0e9a85cb93544c50efee4199fe409e00355
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857124"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054392"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>使用 PowerShell 从专用磁盘创建 Windows VM
 
@@ -59,7 +59,7 @@ $osDisk = Get-AzDisk `
 ### <a name="prepare-the-vm"></a>准备 VM
 使用原始 VHD 创建新的 VM。 
 
-* [准备好要上传到 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。 **不要** 使用 Sysprep 通用化 VM。
+* [准备好要上传到 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md)。 **不要** 使用 Sysprep 通用化 VM。
 * 删除 VM 上安装的所有来宾虚拟化工具和代理（例如 VMware 工具）。
 * 确保 VM 配置为从 DHCP 获取 IP 地址和 DNS 设置。 这可以确保服务器在启动时获得虚拟网络中的 IP 地址。 
 
@@ -194,7 +194,7 @@ $nsg = New-AzNetworkSecurityGroup `
 
 ```
 
-有关终结点和 NSG 规则的详细信息，请参阅[使用 PowerShell 在 Azure 中打开 VM 端口](nsg-quickstart-powershell.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
+有关终结点和 NSG 规则的详细信息，请参阅[使用 PowerShell 在 Azure 中打开 VM 端口](nsg-quickstart-powershell.md)。
 
 ### <a name="create-a-public-ip-address-and-nic"></a>创建公共 IP 地址和 NIC
 若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/public-ip-addresses.md)和网络接口。
@@ -272,4 +272,4 @@ $vmList.Name
 ## <a name="next-steps"></a>后续步骤
 登录新虚拟机。 有关详细信息，请参阅 [How to connect and log on to an Azure virtual machine running Windows](connect-logon.md)（如何连接并登录到运行 Windows 的 Azure 虚拟机）。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -5,15 +5,15 @@ author: WenJason
 ms.service: storage
 ms.topic: how-to
 origin.date: 12/08/2020
-ms.date: 01/18/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 6e12397c9f11e11cf7fb75e6d02abe68a5417a95
-ms.sourcegitcommit: f086abe8bd2770ed10a4842fa0c78b68dbcdf771
+ms.openlocfilehash: 9671895718ef5a7a1e0c94728cb0497b19b2b977
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98163059"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196343"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>使用 AzCopy 和文件存储传输数据 
 
@@ -64,7 +64,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制文件
 
 |    |     |
 |--------|-----------|
-| **语法** | `azcopy copy '<local-file-path>' 'https://<storage-account-name>.file.core.chinacloudapi.cn/<file-share-name>/<file-name>?<SAS-token>'` |
+| **语法** | `azcopy copy '<local-file-path>' 'https://<storage-account-name>.file.core.chinacloudapi.cn/<file-share-name>/<file-name><SAS-token>'` |
 | **示例** | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.file.core.chinacloudapi.cn/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 还可以在文件路径或文件名中的任意位置使用通配符 (*) 来上传文件。 例如：`'C:\myDirectory\*.txt'` 或 `C:\my*\*.txt`。
@@ -237,7 +237,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制文件
 
 #### <a name="download-from-a-share-snapshot"></a>从共享快照下载
 
-可以通过引用共享快照的 DateTime 值来下载特定版本的文件或目录。 若要详细了解共享快照，请参阅 [Azure 文件存储的共享快照概述](/storage/files/storage-snapshots-files)。 
+可以通过引用共享快照的 DateTime 值来下载特定版本的文件或目录。 若要详细了解共享快照，请参阅 [Azure 文件存储的共享快照概述](../files/storage-snapshots-files.md)。 
 
 |    |     |
 |--------|-----------|
@@ -252,7 +252,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制文件
 
 AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) [API](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)，因此，数据会直接在存储服务器之间复制。 这些复制操作不会占用计算机的网络带宽。 可以通过设置 `AZCOPY_CONCURRENCY_VALUE` 环境变量的值来提高这些操作的吞吐量。 有关详细信息，请参阅[优化吞吐量](storage-use-azcopy-configure.md#optimize-throughput)。
 
-还可以通过引用共享快照的 DateTime 值来复制文件的特定版本。 若要详细了解共享快照，请参阅 [Azure 文件存储的共享快照概述](/storage/files/storage-snapshots-files)。 
+还可以通过引用共享快照的 DateTime 值来复制文件的特定版本。 若要详细了解共享快照，请参阅 [Azure 文件存储的共享快照概述](../files/storage-snapshots-files.md)。 
 
 本部分包含以下示例：
 

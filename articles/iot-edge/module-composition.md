@@ -4,17 +4,16 @@ description: 了解部署清单如何声明要部署的模块、如何部署这�
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-origin.date: 10/08/2020
-ms.date: 11/13/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 34e361769f770f6d3e86048874d9dca067b73a66
-ms.sourcegitcommit: 9438c9db77338cecacf37d2fc178e757df9de83d
+ms.openlocfilehash: 1e68312e319b0576fb4bbf649424a276eb0c8b0b
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94595112"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196760"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>了解如何在 IoT Edge 中部署模块和建立路由
 
@@ -328,7 +327,7 @@ IoT Edge 中心会一直存储消息，直到达到在 [IoT Edge 中心所需属
           "edgeAgent": {
             "type": "docker",
             "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+              "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
               "createOptions": ""
             }
           },
@@ -338,7 +337,7 @@ IoT Edge 中心会一直存储消息，直到达到在 [IoT Edge 中心所需属
             "restartPolicy": "always",
             "startupOrder": 0,
             "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+              "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
             }
           }

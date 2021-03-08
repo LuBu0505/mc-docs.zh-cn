@@ -6,13 +6,13 @@ ms.author: v-johya
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.custom: contperf-fy21q1
-ms.date: 01/25/2021
-ms.openlocfilehash: 30edeae094024bc392e5538f6e1700365011a742
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/04/2021
+ms.openlocfilehash: 1a7d76cd8c2c9e4dc3ba5339f298eabf3631beee
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059116"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197101"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>使用资源日志排查 Azure 流分析问题
 
@@ -24,9 +24,9 @@ ms.locfileid: "99059116"
 
 流分析提供两种类型的日志：
 
-* [活动日志](../azure-monitor/platform/platform-logs-overview.md)（始终在线），可深入了解对作业执行的操作。
+* [活动日志](../azure-monitor/essentials/platform-logs-overview.md)（始终在线），可深入了解对作业执行的操作。
 
-* [资源日志](../azure-monitor/platform/platform-logs-overview.md)（可配置），可详细了解作业发生的所有情况。 资源日志在创建作业时开始，并在删除作业时结束。 日志中包含了作业更新和运行期间的事件。
+* [资源日志](../azure-monitor/essentials/platform-logs-overview.md)（可配置），可详细了解作业发生的所有情况。 资源日志在创建作业时开始，并在删除作业时结束。 日志中包含了作业更新和运行期间的事件。
 
 > [!NOTE]
 > 可以使用 Azure 存储、Azure 事件中心和 Azure Monitor 日志等服务分析不一致的数据。 将根据这些服务的定价模式进行收费。

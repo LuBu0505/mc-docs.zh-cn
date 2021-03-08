@@ -8,17 +8,17 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: conceptual
 origin.date: 10/07/2017
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 351c68b09afd810979990d43b200176050ef0026
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 60b98c22f8ab03c364a7215b70d8ff1c75e07027
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106292"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054016"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>从 Amazon Web Services (AWS) 和其他平台迁移到 Azure 中的托管磁盘
 
@@ -29,7 +29,7 @@ ms.locfileid: "93106292"
 - “专用 VHD” - 维护来自原始 VM 的用户帐户、应用程序和其他状态数据。 
 
 > [!IMPORTANT]
-> 将任何 VHD 上传到 Azure 之前，应该遵循[准备要上传到 Azure 的 Windows VHD 或 VHDX](prepare-for-upload-vhd-image.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)
+> 将任何 VHD 上传到 Azure 之前，应该遵循[准备要上传到 Azure 的 Windows VHD 或 VHDX](prepare-for-upload-vhd-image.md)
 >
 >
 
@@ -44,7 +44,7 @@ ms.locfileid: "93106292"
 Azure 托管磁盘无需管理存储帐户，从而简化了 VM 管理。 托管磁盘还受益于可用性集中 VM 的更佳可靠性。 这可确保将可用性集中不同 VM 的磁盘最大限度地彼此独立，以避免单点故障。 它会自动将可用性集中不同 VM 的磁盘置于不同的存储缩放单元（戳），限制由于硬件和软件故障引起的单个存储缩放单元故障影响。
 根据需求，可以从三种类型的存储选项中进行选择。 若要了解可用的磁盘类型，请参阅[选择磁盘类型](../disks-types.md)一文。
 
-<!--Not Available on Ulter SSD till 08/31/2020-->
+<!--Not Available on Ulter SSD till 02/22/2021-->
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>计划迁移到托管磁盘
 
@@ -54,7 +54,7 @@ Azure 托管磁盘无需管理存储帐户，从而简化了 VM 管理。 托管
 
 ### <a name="location"></a>位置
 
-选取 Azure 托管磁盘可用位置。 如果要迁移到高级托管磁盘，还应确保高级存储在计划迁移到的区域中可用。 有关可用位置的最新信息，请参阅 [Azure 服务（按区域）](https://azure.microsoft.com/regions/#services) 。
+选取 Azure 托管磁盘可用位置。 如果要迁移到高级托管磁盘，还应确保高级存储在计划迁移到的区域中可用。 有关可用位置的最新信息，请参阅 [Azure 服务（按区域）](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=managed-disks&regions=china-non-regional,china-east,china-east-2,china-north,china-north-2) 。
 
 ### <a name="vm-sizes"></a>VM 大小
 
@@ -95,6 +95,6 @@ Azure 托管磁盘无需管理存储帐户，从而简化了 VM 管理。 托管
 
 ## <a name="next-steps"></a>后续步骤
 
-- 将任何 VHD 上传到 Azure 之前，应该遵循[准备要上传到 Azure 的 Windows VHD 或 VHDX](prepare-for-upload-vhd-image.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)
+- 将任何 VHD 上传到 Azure 之前，应该遵循[准备要上传到 Azure 的 Windows VHD 或 VHDX](prepare-for-upload-vhd-image.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

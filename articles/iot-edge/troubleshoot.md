@@ -4,17 +4,16 @@ description: 通过本文了解 Azure IoT Edge 的标准诊断技能，例如检
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-origin.date: 11/12/2020
-ms.date: 01/05/2021
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f03fe6766a4085b38711da43e5de48032eb25823
-ms.sourcegitcommit: 40db5a4b9ab8b5877e307ff7a567fd930ca81c72
+ms.openlocfilehash: f2200815796c9965fef598876bd18b33185581e2
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894313"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196659"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>排除 IoT Edge 设备故障
 
@@ -241,7 +240,7 @@ iotedge logs <container name>
      type: docker
      env: {}
      config:
-       image: mcr.microsoft.com/azureiotedge-agent:1.0
+       image: mcr.microsoft.com/azureiotedge-agent:1.1
        auth: {}
    ```
 

@@ -4,15 +4,15 @@ description: 在设备、桌面应用、网页或服务中插入几行代码，�
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 03/27/2019
-ms.date: 01/27/2021
+ms.date: 02/22/2021
 ms.author: v-johya
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: b0d5330c086a372c633b0ba7518f6b923086b166
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 93b67d06d98b5afcda3811aab1209993b592952d
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059918"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197461"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -112,7 +112,7 @@ telemetry.getContext().getDevice().setId("...");
 
 ## <a name="trackevent"></a>TrackEvent
 
-在 Application Insights 中，自定义事件是一个数据点，它可在[指标资源管理器](../platform/metrics-charts.md)中显示为聚合计数，在[诊断搜索](./diagnostic-search.md)中显示为单个事件。 （它与 MVC 或其他框架“事件”不相关。）
+在 Application Insights 中，自定义事件是一个数据点，它可在[指标资源管理器](../essentials/metrics-charts.md)中显示为聚合计数，在[诊断搜索](./diagnostic-search.md)中显示为单个事件。 （它与 MVC 或其他框架“事件”不相关。）
 
 在代码中插入 `TrackEvent` 调用来统计各种事件。 用户选择特定功能的频率、实现特定目标的频率，或可能制造特定类型的错误的频率。
 
@@ -150,7 +150,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 ### <a name="custom-events-in-analytics"></a>Analytics 中的自定义事件
 
-[“Application Insights 日志”选项卡](../log-query/log-query-overview.md)或[使用体验](usage-overview.md)中的 `customEvents` 表格提供了遥测。 事件可能来自 `trackEvent(..)` 或[单击“分析自动收集”插件](javascript-click-analytics-plugin.md)。
+[“Application Insights 日志”选项卡](../logs/log-query-overview.md)或[使用体验](usage-overview.md)中的 `customEvents` 表格提供了遥测。 事件可能来自 `trackEvent(..)` 或[单击“分析自动收集”插件](javascript-click-analytics-plugin.md)。
 
  
 
@@ -208,7 +208,7 @@ telemetry.trackMetric({name: "queueLength", value: 42.0});
 
 ### <a name="custom-metrics-in-analytics"></a>分析中的自定义指标
 
-[Application Insights Analytics](../log-query/log-query-overview.md) 的 `customMetrics` 表格提供了遥测。 每行表示对应用中 `trackMetric(..)` 的调用。
+[Application Insights Analytics](../logs/log-query-overview.md) 的 `customMetrics` 表格提供了遥测。 每行表示对应用中 `trackMetric(..)` 的调用。
 
 * `valueSum` - 这是度量值的总和。 若要获取平均值，请除以 `valueCount`。
 * `valueCount` - 聚合到此 `trackMetric(..)` 调用中的度量值个数。
@@ -278,7 +278,7 @@ appInsights.stopTrackPage("Page1", url, properties, measurements);
 
 ### <a name="page-telemetry-in-analytics"></a>Analytics 中的页面遥测
 
-[Analytics](../log-query/log-query-overview.md)中有两个表展示了浏览器操作的数据：
+[Analytics](../logs/log-query-overview.md)中有两个表展示了浏览器操作的数据：
 
 * `pageViews` 表包含关于 URL 和页标题的数据
 * `browserTimings` 表包含关于客户端性能的数据，例如处理传入数据所用的时间
@@ -314,7 +314,7 @@ pageViews
 
 ## <a name="operation-context"></a>操作上下文
 
-可以通过将遥测项与操作上下文关联来将遥测项关联在一起。 标准的请求跟踪模块针对在处理 HTTP 请求时发送的异常和其他事件执行此操作。 在[搜索](./diagnostic-search.md)和[分析](../log-query/log-query-overview.md)中，可以使用操作 ID 轻松找到与请求关联的任何事件。
+可以通过将遥测项与操作上下文关联来将遥测项关联在一起。 标准的请求跟踪模块针对在处理 HTTP 请求时发送的异常和其他事件执行此操作。 在[搜索](./diagnostic-search.md)和[分析](../logs/log-query-overview.md)中，可以使用操作 ID 轻松找到与请求关联的任何事件。
 
 有关关联的更多详细信息，请参阅 [Application Insights 中的遥测关联](./correlation.md)。
 
@@ -352,7 +352,7 @@ using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operati
 
 ### <a name="requests-in-analytics"></a>Analytics 中的请求
 
-在 [Application Insights Analytics](../log-query/log-query-overview.md) 中，请求出现在 `requests` 表中。
+在 [Application Insights Analytics](../logs/log-query-overview.md) 中，请求出现在 `requests` 表中。
 
 如果正在进行[采样](./sampling.md)，那么 itemCount 属性将会显示大于 1 的值。 例如，itemCount==10 表明对 trackRequest() 调用了 10 次，采样进程只传输其中一次。 若要按请求名称获取正确的请求数和平均持续时间，请使用如下所示的代码：
 
@@ -365,7 +365,7 @@ requests
 
 将异常发送到 Application Insights：
 
-* 用于[对其计数](../platform/metrics-charts.md)，作为问题发生频率的指示。
+* 用于[对其计数](../essentials/metrics-charts.md)，作为问题发生频率的指示。
 * 用于[检查单个事件](./diagnostic-search.md)。
 
 报告包含堆栈跟踪。
@@ -434,7 +434,7 @@ SDK 会自动捕获许多异常，因此不一定需要显式调用 TrackExcepti
 
 ### <a name="exceptions-in-analytics"></a>Analytics 中的异常
 
-在 [Application Insights Analytics](../log-query/log-query-overview.md) 中，异常出现在 `exceptions` 表中。
+在 [Application Insights Analytics](../logs/log-query-overview.md) 中，异常出现在 `exceptions` 表中。
 
 如果正在进行[采样](./sampling.md)，那么 `itemCount` 属性将显示大于 1 的值。 例如，itemCount==10 表明对 trackException() 调用了 10 次，采样进程只传输其中一次。 若要按异常类型获取正确的异常数，请使用如下所示的代码：
 
@@ -529,7 +529,7 @@ telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties
 
 ### <a name="traces-in-analytics"></a>Analytics 中的跟踪
 
-在 [Application Insights Analytics](../log-query/log-query-overview.md) 中，对 TrackTrace 的调用出现在 `traces` 表中。
+在 [Application Insights Analytics](../logs/log-query-overview.md) 中，对 TrackTrace 的调用出现在 `traces` 表中。
 
 如果正在进行[采样](./sampling.md)，那么 itemCount 属性将显示大于 1 的值。 例如，itemCount==10 表明对 `trackTrace()` 调用了 10 次，采样进程只传输其中一次。 若要获取正确的跟踪调用数，应使用 `traces | summarize sum(itemCount)` 之类的代码。
 
@@ -611,7 +611,7 @@ finally
 
 ### <a name="dependencies-in-analytics"></a>Analytics 中的依赖项
 
-在 [Application Insights Analytics](../log-query/log-query-overview.md) 中，trackDependency 调用出现在 `dependencies` 表中。
+在 [Application Insights Analytics](../logs/log-query-overview.md) 中，trackDependency 调用出现在 `dependencies` 表中。
 
 如果正在进行[采样](./sampling.md)，那么 itemCount 属性将显示大于 1 的值。 例如，itemCount==10 表明对 trackDependency() 调用了 10 次，采样进程只传输其中一次。 若要按目标组件获取正确的依赖项数，请使用如下所示的代码：
 
@@ -699,7 +699,7 @@ function Authenticated(signInId) {
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-在[指标资源管理器](../platform/metrics-charts.md)中，可以创建统计“经身份验证的用户”和“用户帐户”的图表。 
+在[指标资源管理器](../essentials/metrics-charts.md)中，可以创建统计“经身份验证的用户”和“用户帐户”的图表。 
 
 还可以[搜索](./diagnostic-search.md)具有特定用户名和帐户的客户端数据点。
 
@@ -821,7 +821,7 @@ telemetry.TrackEvent(event);
 
 ### <a name="custom-measurements-and-properties-in-analytics"></a>在 Analytics 中自定义度量值和属性
 
-在 [Analytics](../log-query/log-query-overview.md) 中，自定义指标和属性显示在每个遥测记录的 `customMeasurements` 和 `customDimensions` 属性中。
+在 [Analytics](../logs/log-query-overview.md) 中，自定义指标和属性显示在每个遥测记录的 `customMeasurements` 和 `customDimensions` 属性中。
 
 例如，如果已向请求遥测添加名为“game”的属性，此查询将计算“game”不同值的出现次数，同时显示自定义指标“score”的平均值：
 
@@ -1108,8 +1108,8 @@ telemetry.Context.Operation.Name = "MyOperationName";
 
 ## <a name="reference-docs"></a>参考文档
 
-* [ASP.NET 参考](/dotnet/api/overview/insights?view=azure-dotnet)
-* [Java 参考](https://docs.microsoft.com/java/api/overview/appinsights?view=azure-java-stable/)
+* [ASP.NET 参考](/dotnet/api/overview/insights)
+* [Java 参考](https://docs.microsoft.com/java/api/overview/appinsights)
 * [JavaScript 参考](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 
 ## <a name="sdk-code"></a>SDK 代码

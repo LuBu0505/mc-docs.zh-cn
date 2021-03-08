@@ -1,22 +1,23 @@
 ---
 title: 排查 Azure VM 连接性问题
-manager: digimobile
+description: 排查 Azure VM 连接性问题
+manager: dcscontentpm
 audience: ITPro
 ms.topic: troubleshooting
 ms.service: virtual-network
 localization_priority: Normal
 origin.date: 08/29/2019
 author: rockboyfor
-ms.date: 10/05/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: 10/05/2020
 ms.author: v-yeche
-ms.openlocfilehash: cd834224f89b7a81b03569edccaedfefbfad5694
-ms.sourcegitcommit: 29a49e95f72f97790431104e837b114912c318b4
+ms.openlocfilehash: 1a0b208e3238b44328cb8bd77e7bc5daddec913d
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91564548"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052600"
 ---
 # <a name="troubleshoot-azure-vm-connectivity-problems"></a>排查 Azure VM 连接性问题
 
@@ -75,11 +76,11 @@ tcping64.exe -t <destination VM address> 3389
 3. 在列表中选择虚拟机。
 4. 在虚拟机的页面上，选择“连接”  。
 
-有关详细信息，请参阅[如何连接并登录到运行 Windows 的 Azure 虚拟机](/virtual-machines/windows/connect-logon)。
+有关详细信息，请参阅[如何连接并登录到运行 Windows 的 Azure 虚拟机](../virtual-machines/windows/connect-logon.md)。
 
 Linux  ：
 
-有关详细信息，请参阅[连接到 Azure 中的 Linux VM](/virtual-machines/linux/quick-create-portal)。
+有关详细信息，请参阅[连接到 Azure 中的 Linux VM](../virtual-machines/linux/quick-create-portal.md)。
 
 如果远程桌面或 SSH 连接成功，请转到下一步。
 
@@ -87,9 +88,9 @@ Linux  ：
 
 在源 VM 上运行连接性检查，检查响应。
 
-**Windows**：[使用 PowerShell 通过 Azure 网络观察程序检查连接性](/network-watcher/network-watcher-connectivity-powershell)
+**Windows**：[使用 PowerShell 通过 Azure 网络观察程序检查连接性](../network-watcher/network-watcher-connectivity-powershell.md)
 
-Linux  ：[使用 Azure CLI 2.0 通过 Azure 网络观察程序检查连接性](/network-watcher/network-watcher-connectivity-cli)
+Linux  ：[使用 Azure CLI 2.0 通过 Azure 网络观察程序检查连接性](../network-watcher/network-watcher-connectivity-cli.md)
 
 以下是示例响应：
 
@@ -129,20 +130,20 @@ Hops             : [
 
 #### <a name="step-5-fix-the-issue-in-the-connectivity-check-result"></a>步骤 5：修复连接性检查结果中的问题。
 
-1. 在收到的连接性检查响应的“跃点”部分，检查列出的**问题**。 
+1. 在收到的连接性检查响应的“跃点”部分，检查列出的 **问题**。 
 
-    :::image type="content" source="media/troubleshoot-vm-connectivity/connectivity-response.png" alt-text="屏幕截图显示一个连续对 IP 地址执行 ping 操作的命令提示符窗口。":::
+    :::image type="content" source="media/troubleshoot-vm-connectivity/connectivity-response.png" alt-text="连接性响应":::
 
 2. 在下表中找到相应的解决方法，按指示的步骤解决问题。
 
     |问题类型  |Value  |解决操作 |
     |---------|---------|---------|
-    |NetworkSecurityRule|阻止 NSG 的名称|可以[删除 NSG 规则](/virtual-network/manage-network-security-group#delete-a-security-rule)，也可以按[此处](/virtual-network/manage-network-security-group#change-a-security-rule)的说明修改该规则。|
-    |UserDefinedRoute     |   阻止 UDR 的名称      | 如果不需要此路由，请删除 UDR。 如果不能删除此路由，请使用相应的地址前缀和下一跃点更新此路由。 也可调整“网络虚拟设备”，以适当方式转发流量。 有关详细信息，请参阅：[虚拟网络流量路由](/virtual-network/virtual-networks-udr-overview)和[使用 PowerShell 通过路由表路由网络流量](/virtual-network/virtual-network-create-udr-arm-ps)。|
+    |NetworkSecurityRule|阻止 NSG 的名称|可以[删除 NSG 规则](./manage-network-security-group.md#delete-a-security-rule)，也可以按[此处](./manage-network-security-group.md#change-a-security-rule)的说明修改该规则。|
+    |UserDefinedRoute     |   阻止 UDR 的名称      | 如果不需要此路由，请删除 UDR。 如果不能删除此路由，请使用相应的地址前缀和下一跃点更新此路由。 也可调整“网络虚拟设备”，以适当方式转发流量。 有关详细信息，请参阅：[虚拟网络流量路由](./virtual-networks-udr-overview.md)和[使用 PowerShell 通过路由表路由网络流量](./tutorial-create-route-table-powershell.md)。|
     |CPU    |    使用情况     |     按[运行 Linux 或 Windows 的 Azure 虚拟机常规性能故障排除](https://support.microsoft.com/en-in/help/3150851/generic-performance-troubleshooting-for-azure-virtual-machine-running)中介绍的这些建议操作。|
     |内存    |      使用情况   |    按[运行 Linux 或 Windows 的 Azure 虚拟机常规性能故障排除](https://support.microsoft.com/en-in/help/3150851/generic-performance-troubleshooting-for-azure-virtual-machine-running)中介绍的建议操作。|
     |来宾防火墙    |      防火墙阻止的名称   |      执行以下步骤：[打开或关闭 Windows Defender 防火墙](https://support.microsoft.com/help/4028544/windows-turn-windows-firewall-on-or-off)。|
-    |DNS 解析     |    DNS 的名称     |    执行以下步骤：[Azure DNS 故障排除指南](/dns/dns-troubleshoot)和 [Azure 虚拟网络中资源的名称解析](/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)。     |
+    |DNS 解析     |    DNS 的名称     |    执行以下步骤：[Azure DNS 故障排除指南](../dns/dns-troubleshoot.md)和 [Azure 虚拟网络中资源的名称解析](./virtual-networks-name-resolution-for-vms-and-role-instances.md)。     |
     |套接字错误    |      不适用   |     指定的端口已由另一应用程序使用。 请尝试使用另一端口。    |
 
 3. 再次运行连接性检查，确定问题是否已解决。
@@ -153,7 +154,7 @@ Hops             : [
 
 默认情况下，辅助网络适配器（也称为网络接口卡或网络适配器）未配置为拥有默认网关。 因此，辅助适配器上的通信流会限制在同一子网内。
 
-:::image type="content" source="media/troubleshoot-vm-connectivity/ipconfig.png" alt-text="屏幕截图显示一个连续对 IP 地址执行 ping 操作的命令提示符窗口。":::
+:::image type="content" source="media/troubleshoot-vm-connectivity/ipconfig.png" alt-text="IP 配置":::
 
 如果用户要启用辅助网络适配器，以在自己的子网外部通信，则必须在路由表中添加一个条目来配置网关。 为此，请执行以下步骤：
 
@@ -172,7 +173,7 @@ Hops             : [
 
 3. 运行 route print。 如果条目已成功添加，则会看到一个如下所示的条目：
 
-    :::image type="content" source="media/troubleshoot-vm-connectivity/iproute.png" alt-text="屏幕截图显示一个连续对 IP 地址执行 ping 操作的命令提示符窗口。":::
+    :::image type="content" source="media/troubleshoot-vm-connectivity/iproute.png" alt-text="IP 路由":::
 
 现在，尝试连接到辅助网络适配器。 如果连接仍未成功，请转到下一步。
 
@@ -180,7 +181,7 @@ Hops             : [
 
 针对主网络适配器和辅助网络适配器，检查两个网络适配器上的默认“入站端口规则”（“允许 VNet 入站”、“允许负载均衡器入站”）。 还应确保优先级较低的规则下没有匹配的阻止规则。
 
-:::image type="content" source="media/troubleshoot-vm-connectivity/nsg.png" alt-text="屏幕截图显示一个连续对 IP 地址执行 ping 操作的命令提示符窗口。":::
+:::image type="content" source="media/troubleshoot-vm-connectivity/nsg.png" alt-text="屏幕截图显示虚拟机的网络设置，可以在其中看到“允许 Vnet 入站”和“允许 Vnet 出站”。":::
 
 #### <a name="step-3-run-a-connectivity-check-to-the-secondary-network-adapter"></a>步骤 3：运行针对辅助网络适配器的连接性检查。
 
@@ -189,9 +190,9 @@ Hops             : [
 
 若要详细了解如何运行连接性检查，请参阅以下文章：
 
-**Windows**：[使用 PowerShell 通过 Azure 网络观察程序检查连接性](/network-watcher/network-watcher-connectivity-powershell)
+**Windows**：[使用 PowerShell 通过 Azure 网络观察程序检查连接性](../network-watcher/network-watcher-connectivity-powershell.md)
 
-Linux  ：[使用 Azure CLI 2.0 通过 Azure 网络观察程序检查连接性](/network-watcher/network-watcher-connectivity-cli)。
+Linux  ：[使用 Azure CLI 2.0 通过 Azure 网络观察程序检查连接性](../network-watcher/network-watcher-connectivity-cli.md)。
 
 以下是示例响应：
 
@@ -231,15 +232,12 @@ Hops             : [
 
 #### <a name="step-4-refer-the-table-under-step-5-and-follow-these-steps-to-resolve-the-issues"></a>步骤 4：参阅[步骤 5](#step-5-fix-the-issue-in-the-connectivity-check-result) 下的表，按这些步骤解决问题。
 
-<!--Not Available on ### Azure VM cannot connect to the internet-->
-<!--Not Available on portal
-7. Select the **Read/Write** option at the top of the portal.
-8. Select the **Edit** option.
--->
-<!--Not Available on [Resource Explorer portal](https://resources.azure.com/)-->
+<!--NOT AVAILABLE on ### Azure VM cannot connect to the internet-->
+<!--NOT AVAILABLE on portal-->
+<!--NOT AVAILABLE on [Resource Explorer portal](https://resources.azure.com/)-->
 
 ## <a name="next-steps"></a>后续步骤
 
-[排查 Azure VM 间的连接问题](/virtual-network/virtual-network-troubleshoot-connectivity-problem-between-vms)
+[排查 Azure VM 间的连接问题](./virtual-network-troubleshoot-connectivity-problem-between-vms.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

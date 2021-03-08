@@ -6,28 +6,28 @@ services: virtual-network
 documentationcenter: na
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 08/24/2020
 author: rockboyfor
-ms.date: 10/05/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.reviewer: kumud
-ms.openlocfilehash: a990658b631fbe87afa5fd3a749cfca93127aa65
-ms.sourcegitcommit: 29a49e95f72f97790431104e837b114912c318b4
+ms.openlocfilehash: e7b683b396b901cfe30fa0b93145f08f8749b882
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91571586"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053977"
 ---
 <!--Verified Successfully-->
 # <a name="how-network-security-groups-filter-network-traffic"></a>网络安全组如何筛选网络流量
 <a name="network-security-groups"></a>
 
-可以使用 Azure 网络安全组来筛选 Azure 虚拟网络中出入 Azure 资源的网络流量。 网络安全组包含[安全规则](/virtual-network/security-overview#security-rules)，这些规则可允许或拒绝多种 Azure 资源的入站和出站网络流量。 可以为每项规则指定源和目标、端口以及协议。
+可以使用 Azure 网络安全组来筛选 Azure 虚拟网络中出入 Azure 资源的网络流量。 网络安全组包含[安全规则](./network-security-groups-overview.md#security-rules)，这些规则可允许或拒绝多种 Azure 资源的入站和出站网络流量。 可以为每项规则指定源和目标、端口以及协议。
 
 可以将资源从多个 Azure 服务部署到一个 Azure 虚拟网络中。 如需完整列表，请参阅[可部署到虚拟网络中的服务](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)。 可将零个或一个网络安全组与虚拟机中的每个虚拟网络[子网](virtual-network-manage-subnet.md#change-subnet-settings)和[网络接口](virtual-network-network-interface.md#associate-or-dissociate-a-network-security-group)相关联。 可将同一网络安全组关联到选定的任意数量的子网和网络接口。
 
@@ -41,7 +41,7 @@ ms.locfileid: "91571586"
 
 对于入站流量，Azure 先处理与某个子网相关联的网络安全组（如果有）中的规则，然后处理与网络接口相关联的网络安全组（如果有）中的规则。
 
-- **VM1**：系统会处理 *NSG1* 中的安全规则，因为它与 *Subnet1* 关联，而 *VM1* 位于 *Subnet1* 中。 除非创建了一条允许端口 80 入站流量的规则，否则流量会被 [DenyAllInbound](/virtual-network/security-overview#denyallinbound) 默认安全规则拒绝，并且永远不会被 *NSG2* 评估，因为 *NSG2* 关联到网络接口。 如果 *NSG1* 有一条允许端口 80 的安全规则，则流量会由 *NSG2* 处理。 若要允许从端口 80 到虚拟机的流量，*NSG1* 和 *NSG2* 必须指定一条规则来允许从 Internet 到端口 80 的流量。
+- **VM1**：系统会处理 *NSG1* 中的安全规则，因为它与 *Subnet1* 关联，而 *VM1* 位于 *Subnet1* 中。 除非创建了一条允许端口 80 入站流量的规则，否则流量会被 [DenyAllInbound](./network-security-groups-overview.md#denyallinbound) 默认安全规则拒绝，并且永远不会被 *NSG2* 评估，因为 *NSG2* 关联到网络接口。 如果 *NSG1* 有一条允许端口 80 的安全规则，则流量会由 *NSG2* 处理。 若要允许从端口 80 到虚拟机的流量，*NSG1* 和 *NSG2* 必须指定一条规则来允许从 Internet 到端口 80 的流量。
 - **VM2**：系统会处理 *NSG1* 中的规则，因为 *VM2* 也在 *Subnet1* 中。 *VM2* 没有关联到其网络接口的网络安全组，因此会接收 *NSG1* 所允许的所有流量，或者会拒绝 *NSG1* 所拒绝的所有流量。 当网络安全组关联到子网时，对于同一子网中的所有资源，流量要么被允许，要么被拒绝。
 - **VM3**：由于没有网络安全组关联到 *Subnet2*，系统允许流量进入子网并由 *NSG2* 处理，因为 *NSG2* 关联到已附加到 *VM3* 的网络接口。
 - **VM4**：允许流量发往 *VM4*，因为网络安全组没有关联到 *Subnet3* 或虚拟机中的网络接口。 如果没有关联的网络安全组，则允许所有网络流量通过子网和网络接口。
@@ -50,14 +50,14 @@ ms.locfileid: "91571586"
 
 对于出站流量，Azure 先处理与某个网络接口相关联的网络安全组（如果有）中的规则，然后处理与子网相关联的网络安全组（如果有）中的规则。
 
-- **VM1**：系统会处理 *NSG2* 中的安全规则。 除非创建一条安全规则来拒绝从端口 80 到 Internet 的出站流量，否则 *NSG1* 和 *NSG2* 中的 [AllowInternetOutbound](/virtual-network/security-overview#allowinternetoutbound) 默认安全规则都会允许该流量。 如果 *NSG2* 有一条拒绝端口 80 的安全规则，则流量会被拒绝，不会由 *NSG1* 评估。 若要拒绝从虚拟机到端口 80 的流量，则两个网络安全组或其中的一个必须有一条规则来拒绝从端口 80 到 Internet 的流量。
+- **VM1**：系统会处理 *NSG2* 中的安全规则。 除非创建一条安全规则来拒绝从端口 80 到 Internet 的出站流量，否则 *NSG1* 和 *NSG2* 中的 [AllowInternetOutbound](./network-security-groups-overview.md#allowinternetoutbound) 默认安全规则都会允许该流量。 如果 *NSG2* 有一条拒绝端口 80 的安全规则，则流量会被拒绝，不会由 *NSG1* 评估。 若要拒绝从虚拟机到端口 80 的流量，则两个网络安全组或其中的一个必须有一条规则来拒绝从端口 80 到 Internet 的流量。
 - **VM2**：所有流量都会通过网络接口发送到子网，因为附加到 *VM2* 的网络接口没有关联的网络安全组。 系统会处理 *NSG1* 中的规则。
 - **VM3**：如果 *NSG2* 有一条拒绝端口 80 的安全规则，则流量会被拒绝。 如果 *NSG2* 有一条允许端口 80 的安全规则，则允许从端口 80 到 Internet 的出站流量，因为没有关联到 *Subnet2* 的网络安全组。
 - **VM4**：允许来自 *VM4* 的所有网络流量，因为网络安全组没有关联到已附加到虚拟机的网络接口，也没有关联到 *Subnet3*。
 
 ## <a name="intra-subnet-traffic"></a>子网内部流量
 
-需要注意的是，与子网关联的 NSG 中的安全规则可能会影响子网中 VM 之间的连接。 例如，如果将规则添加到拒绝所有入站和出站流量的 NSG1**，则 VM1** 和 VM2** 将无法再相互通信。 必须专门添加另一个规则来允许此通信。 
+需要注意的是，与子网关联的 NSG 中的安全规则可能会影响子网中 VM 之间的连接。 例如，如果将规则添加到拒绝所有入站和出站流量的 NSG1，则 VM1 和 VM2 将无法再相互通信。 必须专门添加另一个规则来允许此通信。 
 
 可以通过查看网络接口的[有效安全规则](virtual-network-network-interface.md#view-effective-security-rules)，轻松查看已应用到网络接口的聚合规则。 还可以使用 Azure 网络观察程序中的 [IP 流验证](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fvirtual-network%2ftoc.json)功能来确定是否允许发往或发自网络接口的通信。 IP 流验证会告知你系统是允许还是拒绝通信，以及哪条网络安全规则允许或拒绝该流量。
 
@@ -75,5 +75,4 @@ ms.locfileid: "91571586"
 * 如果有通信问题，需要对网络安全组进行故障排除，请参阅[诊断虚拟机网络流量筛选器问题](diagnose-network-traffic-filter-problem.md)。 
 * 了解如何通过[网络安全组流日志](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fvirtual-network%2ftoc.json)来分析出入具有关联网络安全组的资源的网络流量。
 
-<!-- Update_Description: new article about network security group how it works -->
-<!--NEW.date: 10/05/2020-->
+<!--Update_Description: update meta properties, wording update, update link-->

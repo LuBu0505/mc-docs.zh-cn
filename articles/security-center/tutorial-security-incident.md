@@ -13,14 +13,14 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 08/30/2018
-ms.date: 12/01/2020
+ms.date: 02/25/2021
 ms.author: v-johya
-ms.openlocfilehash: 59d29c6f4d8ff69fd81d4d03db13db39af83ec96
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 51bcd73f2f0ac9eefea858139ea4ada9a8ac7a71
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747241"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197314"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>教程：会审、调查和响应安全警报
 安全中心使用高级分析和威胁情报来持续分析混合云工作负载，在云资源中出现潜在恶意活动时发出警报。 你还可以将其他安全产品和服务中的警报集成到安全中心。 发出警报后，需采取快速行动进行调查和修正潜在安全问题。 
@@ -43,15 +43,13 @@ ms.locfileid: "96747241"
 
 从“安全警报”页中会审警报：
 
-:::image type="content" source="./media/tutorial-security-incident/alerts-list.png" alt-text="安全警报列表页面" lightbox="./media/tutorial-security-incident/alerts-list.png":::
+:::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Azure 安全中心的安全警报列表":::
 
 使用此页面查看环境中活动的安全警报，以确定要首先调查哪个警报。
 
 会审安全警报时，根据警报严重性确定警报优先级，方法是先对优先级较高的警报进行寻址。 有关警报严重性的详细信息，请参阅[如何对警报进行分类](security-center-alerts-overview.md#how-are-alerts-classified)？
 
-> [!TIP]
-> 可以将 Azure 安全中心连接到包括 Azure Sentinel 在内的大多数流行的 SIEM 解决方案，并从你选择的工具中使用警报。 有关详细信息，请参阅[将警报流式传输到 SIEM、SOAR 或 IT 服务管理解决方案](export-to-siem.md)。
-
+<!--Not available in MC: Azure Sentinel-->
 
 ## <a name="investigate-a-security-alert"></a>调查安全警报
 
@@ -122,5 +120,6 @@ ms.locfileid: "96747241"
 ## <a name="next-steps"></a>后续步骤
 本教程介绍了响应安全警报时需使用的安全中心功能。 如需查看相关材料，请参阅：
 
+- [安全警报 - 参考指南](alerts-reference.md)
 - [Azure Defender 简介](azure-defender.md)
 

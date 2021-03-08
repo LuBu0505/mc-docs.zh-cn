@@ -6,16 +6,16 @@ ms.workload: infrastructure
 ms.topic: how-to
 origin.date: 01/03/2019
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 082414b7b3ed17249145e3aa2be84df2c883e62d
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: b198073808512f5d07b4e6d7c924c2f757d89564
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856914"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054012"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager 模板中的虚拟机
 
@@ -109,7 +109,7 @@ ms.locfileid: "97856914"
             "storageAccountName": "[variables('storageName')]", 
             "storageAccountKey": "[listkeys(variables('accountid'), 
               '2015-06-15').key1]", 
-            "storageAccountEndPoint": "https://core.chinacloudapi.cn" 
+            "storageAccountEndPoint": "https://core.chinacloudapi.cn/" 
           } 
         } 
       },
@@ -276,7 +276,7 @@ ms.locfileid: "97856914"
 
 - [大小](../sizes.md)
 
-    <!--Not Available on -- [name](https://docs.microsoft.com/azure/architecture/best-practices/resource-naming) and credentials-->
+    <!--Not Available on -- [name](https://docs.microsoft.com/azure/architecture/best-practices/resource-naming)-->
     
 - 磁盘和[操作系统设置](cli-ps-findimage.md)
 - [网络接口](https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-network-deploy-multinic-classic-ps) 
@@ -284,7 +284,7 @@ ms.locfileid: "97856914"
 
 ## <a name="disks-and-images"></a>磁盘和映像
 
-在 Azure 中，vhd 文件可以表示[磁盘或映像](../managed-disks-overview.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。 如果 vhd 文件中的操作系统专用于特定 VM，则该文件称为磁盘。 如果 vhd 文件中的操作系统经过通用化，用于创建多个 VM，则该文件称为映像。   
+在 Azure 中，vhd 文件可以表示[磁盘或映像](../managed-disks-overview.md)。 如果 vhd 文件中的操作系统专用于特定 VM，则该文件称为磁盘。 如果 vhd 文件中的操作系统经过通用化，用于创建多个 VM，则该文件称为映像。   
 
 ### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>从平台映像创建新虚拟机和新磁盘
 
@@ -395,10 +395,10 @@ ms.locfileid: "97856914"
       "storageAccount": "[variables('storageName')]" 
     }, 
     "protectedSettings": { 
+      "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
       "storageAccountName": "[variables('storageName')]", 
       "storageAccountKey": "[listkeys(variables('accountid'), 
-        '2015-06-15').key1]", 
-      "storageAccountEndPoint": "https://core.chinacloudapi.cn" 
+        '2015-06-15').key1]"
     } 
   } 
 },
@@ -455,8 +455,8 @@ start.ps1 脚本可以完成许多配置任务。 例如，在本示例中已添
 
 - 参考[创作 Azure Resource Manager 模板](../../azure-resource-manager/templates/template-syntax.md)创建自己的模板。
 - 参考[使用 Resource Manager 模板创建 Windows 虚拟机](ps-template.md)部署创建的模板。
-- 请参阅[使用 Azure PowerShell 模块创建并管理 Windows VM](tutorial-manage-vm.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)，了解如何管理创建的 VM。
+- 请参阅[使用 Azure PowerShell 模块创建并管理 Windows VM](tutorial-manage-vm.md)，了解如何管理创建的 VM。
 
-<!--Not Available on  [Azure Resource Manager template reference](https://docs.microsoft.com/azure/templates/)-->
+<!--NOT AVAILABLE on  [Azure Resource Manager template reference](https://docs.microsoft.com/azure/templates/)-->
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

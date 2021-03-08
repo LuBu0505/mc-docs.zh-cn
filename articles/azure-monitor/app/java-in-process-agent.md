@@ -2,16 +2,16 @@
 title: Azure Monitor Application Insights Java
 description: 无需修改代码即可监视在任何环境中运行的 Java 应用程序的应用程序性能。 分布式跟踪和应用程序映射。
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 02/22/2021
 author: Johnnytechn
 ms.custom: devx-track-java
 ms.author: v-johya
-ms.openlocfilehash: eb14693b99d407cd8caad23e49d97fd5c193ec7b
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 53f1076f00a279a1ee507d1f6cb988360cd35079
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059915"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197170"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java 无代码应用程序监视 Azure Monitor Application Insights
 
@@ -230,6 +230,7 @@ try {
 } finally {
     long endTime = System.currentTimeMillis();
     RemoteDependencyTelemetry telemetry = new RemoteDependencyTelemetry();
+    telemetry.setSuccess(success);
     telemetry.setTimestamp(new Date(startTime));
     telemetry.setDuration(new Duration(endTime - startTime));
     telemetryClient.trackDependency(telemetry);

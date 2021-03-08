@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 11/02/2020
-ms.openlocfilehash: ce4fff72d4734474bd79eedfb2dc7747c8528196
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.date: 02/22/2021
+ms.openlocfilehash: e363be818ee5fdc64de67457747548e966640c4d
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328838"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197260"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>使用 Azure Policy 大规模部署 Azure Monitor
 虽然某些 Azure Monitor 功能仅配置一次或有限的几次，但另一些功能必须针对要监视的每个资源重复配置。 本文介绍了如何使用 Azure Policy 大规模实施 Azure Monitor 以确保为所有 Azure 资源一致且准确地配置监视功能。
@@ -33,7 +33,7 @@ Azure Policy 由下表中的对象构成。 有关每个对象的更详细的说
 | 分配 | 策略定义或计划在分配到作用域之前不会生效。 例如，将策略分配给某个资源组以将其应用于在该资源中创建的所有资源，或将其应用于某个订阅以将其应用于该订阅中的所有资源。  有关更多详细信息，请参阅 [Azure Policy 分配结构](../governance/policy/concepts/assignment-structure.md)。 |
 
 ## <a name="built-in-policy-definitions-for-azure-monitor"></a>Azure Monitor 的内置策略定义
-Azure Policy 包括多个与 Azure Monitor 相关的预生成定义。 你可以将这些策略定义分配给现有订阅，也可以将它们作为基础来创建你自己的自定义定义。 有关“监视”类别中的内置策略的完整列表，请参阅 [Azure Monitor的 Azure Policy 内置策略定义](./samples/policy-reference.md)。
+Azure Policy 包括多个与 Azure Monitor 相关的预生成定义。 你可以将这些策略定义分配给现有订阅，也可以将它们作为基础来创建你自己的自定义定义。 有关“监视”类别中的内置策略的完整列表，请参阅 [Azure Monitor的 Azure Policy 内置策略定义](./policy-reference.md)。
 
 若要查看与监视相关的内置策略定义，请执行以下操作：
 
@@ -45,7 +45,7 @@ Azure Policy 包括多个与 Azure Monitor 相关的预生成定义。 你可以
 
 
 ## <a name="diagnostic-settings"></a>诊断设置
-[诊断设置](platform/diagnostic-settings.md)将资源日志和指标从 Azure 资源收集到多个位置，通常是收集到 Log Analytics 工作区，该工作区允许使用[日志查询](log-query/log-query-overview.md)和[日志警报](platform/alerts-log.md)来分析数据。 使用 Policy 可在每次创建资源时自动创建诊断设置。
+[诊断设置](essentials/diagnostic-settings.md)将资源日志和指标从 Azure 资源收集到多个位置，通常是收集到 Log Analytics 工作区，该工作区允许使用[日志查询](logs/log-query-overview.md)和[日志警报](alerts/alerts-log.md)来分析数据。 使用 Policy 可在每次创建资源时自动创建诊断设置。
 
 每个 Azure 资源类型都有需要在诊断设置中列出的一组唯一的类别。 因此，每个资源类型都需要一个单独的策略定义。 某些资源类型具有无需修改便可分配的内置策略定义。 对于其他资源类型，你需要创建自定义定义。
 
@@ -124,5 +124,5 @@ Azure Policy 包括多个与 Azure Monitor 相关的预生成定义。 你可以
 ## <a name="next-steps"></a>后续步骤
 
 - 阅读有关 [Azure Policy](../governance/policy/overview.md) 的更多内容。
-- 阅读有关[诊断设置](platform/diagnostic-settings.md)的更多内容。
+- 阅读有关[诊断设置](essentials/diagnostic-settings.md)的更多内容。
 

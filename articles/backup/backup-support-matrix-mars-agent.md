@@ -3,15 +3,15 @@ title: MARS 代理的支持矩阵
 description: 本文汇总了备份运行 Microsoft Azure 恢复服务 (MARS) 代理的计算机时的 Azure 备份支持。
 author: Johnnytechn
 origin.date: 08/30/2019
-ms.date: 11/17/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.author: v-johya
-ms.openlocfilehash: 9b4f3fae000b5e15241f1c723a933436257177a1
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 34b140d3e3b51d83ebc0942216f5e57a2f0f4256
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977364"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197216"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 恢复服务 (MARS) 代理进行备份的支持矩阵
 
@@ -62,6 +62,7 @@ MARS 代理需要以下 URL 的访问权限：
 - *.WindowsAzure.cn
 - *.MicrosoftOnline.cn
 - *.chinacloudapi.cn
+- `www.msftconnecttest.com`
 
 以及以下 IP 地址：
 
@@ -85,11 +86,16 @@ MARS 代理需要以下 URL 的访问权限：
 
 使用公共对等互连：确保访问以下域/地址：
 
-- `http://www.msftncsi.com/ncsi.txt`
-- `microsoft.com`
-- `.WindowsAzure.com`
-- `.partner.microsoftonline.cn`
-- `.chinacloudapi.cn`
+* URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.cn`
+  * `*.partner.microsoftonline.cn`
+  * `*.chinacloudapi.cn`
+  * `www.msftconnecttest.com`
+* IP 地址
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 使用 Microsoft 对等互连，选择以下服务/区域和相关社区值：
 

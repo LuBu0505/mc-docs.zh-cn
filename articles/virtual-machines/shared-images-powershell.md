@@ -10,16 +10,16 @@ author: rockboyfor
 ms.date: 01/04/2021
 ms.author: v-yeche
 ms.reviewer: akjosh
-ms.openlocfilehash: ce7e2de7da494c5af0c377adcff6503ce0d96cff
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: b5147af5a60ce361a985e148f85fb68c0131811f
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857087"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055313"
 ---
 # <a name="create-a-shared-image-gallery-with-azure-powershell"></a>使用 Azure PowerShell 创建共享映像库 
 
-[共享映像库](./windows/shared-image-galleries.md)大大简化了整个组织中的自定义映像共享。 自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动部署任务，例如预加载应用程序、应用程序配置和其他 OS 配置。 
+[共享映像库](./shared-image-galleries.md)大大简化了整个组织中的自定义映像共享。 自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动部署任务，例如预加载应用程序、应用程序配置和其他 OS 配置。 
 
 使用共享映像库，你可以在 AAD 租户内在同一区域或跨区域与组织中的其他用户共享自定义 VM 映像。 选择要共享哪些映像，要在哪些区域中共享，以及希望与谁共享它们。 你可以创建多个库，以便可以按逻辑方式对共享映像进行分组。 
 
@@ -35,8 +35,8 @@ ms.locfileid: "97857087"
 
 从 [VM](image-version-vm-powershell.md)、[托管映像](image-version-managed-image-powershell.md)或[另一个库中的映像](image-version-another-gallery-powershell.md)创建映像。
 
-<!--Not Available on [Azure Image Builder (preview)](./windows/image-builder-overview.md)-->
-<!--Not Available on [create a new image version from an existing image version](./windows/image-builder-gallery-update-image-version.md)-->
+<!--NOT AVAILABLE ON [Azure Image Builder (preview)](./image-builder-overview.md)-->
+<!--NOT AVAILABLE ON [create a new image version from an existing image version](./windows/image-builder-gallery-update-image-version.md)-->
 
 此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 
@@ -45,4 +45,4 @@ ms.locfileid: "97857087"
 - [在共享映像库中创建映像版本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sig-image-version-create/)
 - [根据映像版本创建 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-sig/)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

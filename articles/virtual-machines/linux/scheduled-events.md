@@ -5,15 +5,15 @@ author: Johnnytechn
 ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 11/11/2020
+ms.date: 03/04/2021
 ms.author: v-johya
 ms.reviewer: mimckitt
-ms.openlocfilehash: 2770798783aece8cf6f47c92e705504cb3818f01
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: 4b279634aa1766ca84a9122e36840523651a77ba
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637826"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197580"
 ---
 <!--MOONCAKE: "Preempt" equal to low priority which not support on China-->
 
@@ -51,7 +51,7 @@ ms.locfileid: "94637826"
 
   元数据服务公开在 VM 中使用可访问的 REST 终结点运行 VM 的相关信息。 该信息通过不可路由的 IP 提供，因此不会在 VM 外部公开。
 
-### <a name="scope"></a>作用域
+### <a name="scope"></a>范围
 计划的事件传送到：
 
 - 独立虚拟机。
@@ -69,7 +69,7 @@ ms.locfileid: "94637826"
 如果不是在虚拟网络中创建 VM（云服务和经典 VM 的默认情况），则需使用额外的逻辑以发现要使用的 IP 地址。 若要了解如何[发现主机终结点](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)，请参阅此示例。
 
 ### <a name="version-and-region-availability"></a>版本和区域可用性
-计划事件服务受版本控制。 版本是必需的，当前版本为 `2019-01-01`。
+计划事件服务受版本控制。 版本是必需的，当前版本为 `2019-08-01`。
 
 | 版本 | 发布类型 | 区域 | 发行说明 | 
 | - | - | - | - | 
@@ -133,7 +133,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 |属性  |  说明 |
 | - | - |
 | EventId | 此事件的全局唯一标识符。 <br /><br /> 示例： <br /><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | 此事件造成的影响。 <br/><br/> 值： <br /><ul><li> `Freeze`：虚拟机计划暂停数秒。 CPU 和网络连接可能会暂停，但对内存或打开的文件没有影响。<li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘将丢失）。 <li> `Terminate`：计划将删除虚拟机。 |
+| EventType | 此事件造成的影响。 <br/><br/> 值： <br /><ul><li> `Freeze`：虚拟机计划暂停数秒。 CPU 和网络连接可能会暂停，但对内存或打开的文件没有影响。<li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘将丢失）。 <li>`Preempt`：正在删除现成虚拟机（临时磁盘将丢失）。 <li> `Terminate`：计划将删除虚拟机。 |
 | ResourceType | 此事件影响的资源类型。 <br /><br /> 值： <ul><li>`VirtualMachine`|
 | 资源| 此事件影响的资源列表。 它保证最多只能包含一个[更新域](manage-availability.md)的计算机，但可能不包含该更新域中的所有计算机。 <br /><br /> 示例： <br /><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | 此事件的状态。 <br /><br /> 值： <ul><li>`Scheduled`：此事件计划在 `NotBefore` 属性指定的时间之后启动。<li>`Started`：此事件已启动。</ul> 不提供 `Completed` 或类似状态。 事件完成后，将不再返回该事件。

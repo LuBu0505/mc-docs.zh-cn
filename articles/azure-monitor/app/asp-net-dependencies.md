@@ -4,15 +4,15 @@ description: 使用 Application Insights 监视来自本地或 Azure Web 应用�
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 06/25/2019
-ms.date: 01/12/2021
+ms.date: 02/22/2021
 ms.author: v-johya
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f8d43828330f11431bd1e88dfde4b2a9a9448106
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: f3c663580eabe26cfdf7b06994093bdadb59d36f
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230840"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197457"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>在 Azure Application Insights 中跟踪依赖项 
 
@@ -112,9 +112,10 @@ services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o)
 除了上述平台特定的步骤之外，还必须通过使用以下命令修改 applicationInsights.config 文件来显式选择启用 SQL 命令集合：
 
 ```xml
-<Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">
-<EnableSqlCommandTextInstrumentation>true</EnableSqlCommandTextInstrumentation>
-</Add>
+<TelemetryModules>
+  <Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">
+    <EnableSqlCommandTextInstrumentation>true</EnableSqlCommandTextInstrumentation>
+  </Add>
 ```
 
 在上述情况下，验证是否已正确安装该检测引擎的适当方法是验证收集的 `DependencyTelemetry` 的 SDK 版本是否为“rddp”。 “rdddsd”或“rddf”表示依赖项是通过 DiagnosticSource 或 EventSource 回调收集的，因此不会捕获完整的 SQL 查询。

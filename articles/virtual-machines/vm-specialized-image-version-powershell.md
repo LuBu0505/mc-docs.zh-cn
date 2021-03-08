@@ -7,17 +7,17 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 origin.date: 05/04/2020
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.reviewer: akjosh
-ms.openlocfilehash: df06eaf5b03a51e12c021fcb2a29da85a937843b
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: afbb209e6fa06b90754530513938750af56ebd18
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106127"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054305"
 ---
 <!--Verified successfully-->
 # <a name="create-a-vm-using-a-specialized-image"></a>使用专用化映像创建 VM 
@@ -26,7 +26,7 @@ ms.locfileid: "93106127"
 
 获得专用化映像版本后，可以使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 创建一个或多个新 VM。 
 
-在此示例中，我们使用映像定义 ID 来确保新 VM 会使用最新版本的映像。 也可通过将映像版本 ID 用作 `Set-AzVMSourceImage -Id` 来使用特定版本。 例如，若要使用映像版本 *1.0.0* ，请键入：`Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`。 
+在此示例中，我们使用映像定义 ID 来确保新 VM 会使用最新版本的映像。 也可通过将映像版本 ID 用作 `Set-AzVMSourceImage -Id` 来使用特定版本。 例如，若要使用映像版本 *1.0.0*，请键入：`Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`。 
 
 请注意，使用特定映像版本意味着：如果该特定映像版本由于已删除或已从区域中删除而无法使用，则自动化可能会失败。 建议使用映像定义 ID 来创建新的 VM（除非需要特定的映像版本）。
 
@@ -126,8 +126,8 @@ Add-AzVMDataDisk `
 
 ## <a name="next-steps"></a>后续步骤
 
-<!--Not Available on [Azure Image Builder (preview)](./linux/image-builder-overview.md)-->
-<!--Not Available on [create a new image version from an existing image version](./linux/image-builder-gallery-update-image-version.md)-->
+<!--NOT AVAILABLE ON [Azure Image Builder (preview)](./image-builder-overview.md)-->
+<!--NOT AVAILABLE ON [create a new image version from an existing image version](./linux/image-builder-gallery-update-image-version.md)-->
 
 此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 
@@ -136,6 +136,6 @@ Add-AzVMDataDisk `
 - [在共享映像库中创建映像版本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sig-image-version-create/)
 - [根据映像版本创建 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-sig/)
 
-有关共享映像库的详细信息，请参阅[概述](./windows/shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](troubleshooting-shared-images.md)。
+有关共享映像库的详细信息，请参阅[概述](./shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](troubleshooting-shared-images.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

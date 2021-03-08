@@ -4,13 +4,13 @@ description: Application Insights 代理 API 参考。 无需重新部署网站�
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 01/14/2021
-ms.openlocfilehash: 59b58369bdf56659f109d4a29a8bf74fae05c4fa
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 02/22/2021
+ms.openlocfilehash: 933f37e61438b29c9e7469a55ddaee681ce97b45
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230915"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197689"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Monitor Application Insights 代理 API 参考
 
@@ -637,9 +637,9 @@ Timeout Reached. Stopping...
 ## <a name="next-steps"></a>后续步骤
 
   查看遥测：
- - [浏览指标](../platform/metrics-charts.md)，以便监视性能和使用情况。
+ - [浏览指标](../essentials/metrics-charts.md)，以便监视性能和使用情况。
 - [搜索事件和日志](./diagnostic-search.md)以诊断问题。
-- 使用[分析](../log-query/log-query-overview.md)，以便进行更高级的查询。
+- 使用[分析](../logs/log-query-overview.md)，以便进行更高级的查询。
 - [创建仪表板](./overview-dashboard.md)。
  
  添加更多遥测：

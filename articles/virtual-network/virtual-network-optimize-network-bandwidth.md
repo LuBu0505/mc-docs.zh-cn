@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 10/06/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8e95ae70c462d36066f2113f10ca2549d6212014
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: dcb99a4271c88178a56f138d4d61e7deefe740f5
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570672"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055159"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>优化 Azure 虚拟机网络吞吐量
 
@@ -142,9 +142,9 @@ sudo yum install microsoft-hyper-v
 <!-- Not Avaiable on ### Red Hat -->
 
 ## <a name="next-steps"></a>后续步骤
-* 使用[邻近放置组](../virtual-machines/windows/co-location.md)将各个 VM 部署在相近的位置，以缩短延迟
+* 使用[邻近放置组](../virtual-machines/co-location.md)将各个 VM 部署在相近的位置，以缩短延迟
 * 请参阅[带宽/吞吐量测试 Azure VM](virtual-network-bandwidth-testing.md)，查阅方案的优化结果。
 * 阅读有关如何[为虚拟机分配带宽](virtual-machine-network-throughput.md)的信息
 * 通过 [Azure 虚拟网络常见问题解答 (FAQ)](virtual-networks-faq.md) 了解详细信息
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

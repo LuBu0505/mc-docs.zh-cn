@@ -5,14 +5,14 @@ ms.topic: conceptual
 author: Johnnytechn
 origin.date: 08/22/2019
 ms.author: v-johya
-ms.date: 01/27/2021
+ms.date: 02/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0fc26838a2c7a9ebb2fd20b4a3c8c074ce08e3ba
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: a3ce0970aa530bdee4531a891988b429de89712c
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059981"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197382"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>本地服务器的 Azure Monitor Application Insights 代理入门
 
@@ -80,9 +80,9 @@ Enable-ApplicationInsightsMonitoring -ConnectionString xxxxxxxx-xxxx-xxxx-xxxx-x
 
  查看遥测：
 
-- [浏览指标](../platform/metrics-charts.md)，以便监视性能和使用情况。
+- [浏览指标](../essentials/metrics-charts.md)，以便监视性能和使用情况。
 - [搜索事件和日志](./diagnostic-search.md)以诊断问题。
-- [使用分析](../log-query/log-query-overview.md)，以便进行更高级的查询。
+- [使用分析](../logs/log-query-overview.md)，以便进行更高级的查询。
 - [创建仪表板](./overview-dashboard.md)。
 
  添加更多遥测：

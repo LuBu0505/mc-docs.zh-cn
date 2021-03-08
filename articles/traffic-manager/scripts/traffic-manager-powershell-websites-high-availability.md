@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 origin.date: 04/26/2018
 author: rockboyfor
-ms.date: 09/28/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: 09/28/2020
 ms.author: v-yeche
-ms.openlocfilehash: 64ebd56baac0d0d0ae2f755cb873bebde66346f8
-ms.sourcegitcommit: 71953ae66ddfc07c5d3b4eb55ff8639281f39b40
+ms.openlocfilehash: 597d69de0b7a8c1c267c30f384f8077f4723bfd4
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91395160"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054416"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-powershell"></a>使用 Azure PowerShell 为实现应用程序的高可用性路由流量
 
@@ -141,4 +141,4 @@ Remove-AzResourceGroup -Name myResourceGroup2
 
 可在 [Azure 网络概述文档](../powershell-samples.md?toc=%2fnetworking%2ftoc.json)中找到其他网络 PowerShell 脚本示例。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

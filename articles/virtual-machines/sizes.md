@@ -11,12 +11,12 @@ ms.date: 10/19/2020
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
-ms.openlocfilehash: f3f7c787265a18bae473508e756b93b99bad0125
-ms.sourcegitcommit: 6f66215d61c6c4ee3f2713a796e074f69934ba98
+ms.openlocfilehash: 692dccdd21b283bc63ccefaec5cd117cf919a272
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92128097"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054372"
 ---
 <!--Verified Successfully-->
 # <a name="sizes-for-virtual-machines-in-azure"></a>Azure 中虚拟机的大小
@@ -77,6 +77,8 @@ ms.locfileid: "92128097"
     
     <!-- Not Available on - [High performance compute](sizes-hpc.md)-->
     
-- 查看[上一代](sizes-previous-gen.md)页面，了解 A Standard、Dv1（D1-4 和 D11-14 v1）以及 A8-A11 系列
+- 查看[上一代](sizes-previous-gen.md)页，了解 A Standard 和 Dv1（D1-4 和 D11-14 v1）系列
+
+    <!--NOT AVAILABLE ON A8-A11-->
 
 <!-- Update_Description: update meta properties, wording update, update link -->

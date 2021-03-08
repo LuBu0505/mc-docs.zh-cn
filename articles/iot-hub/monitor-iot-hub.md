@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: b97029a4d1cc306f668761afa4cb6ca4be759148
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 32764f11f7d6fc5777a0dee7c316ab84915f46f2
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300091"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196605"
 ---
 # <a name="monitoring-azure-iot-hub"></a>监视 Azure IoT 中心
 
@@ -31,7 +31,7 @@ ms.locfileid: "96300091"
 
 Azure IoT 中心使用 [Azure Monitor](/azure-monitor/overview) 创建监视数据。Azure Monitor 是 Azure 中的一个全堆栈监视服务，提供用于监视 Azure 资源以及其他云中的资源和本地资源的整套功能。
 
-一开始可以阅读[使用 Azure Monitor 监视 Azure 资源](/azure-monitor/insights/monitor-azure-resource)一文，其中介绍了以下概念：
+一开始可以阅读[使用 Azure Monitor 监视 Azure 资源](../azure-monitor/essentials/monitor-azure-resource.md)一文，其中介绍了以下概念：
 
 - 说明是 Azure Monitor？
 - 与监视相关的成本
@@ -43,7 +43,7 @@ Azure IoT 中心使用 [Azure Monitor](/azure-monitor/overview) 创建监视数�
 
 ## <a name="monitoring-data"></a>监视数据
 
-Azure IoT 中心收集的监视数据与[监视来自 Azure 资源的数据](/azure-monitor/insights/monitor-azure-resource#monitoring-data-from-Azure-resources)中所述的其他 Azure 资源的类型相同。
+Azure IoT 中心收集的监视数据与[监视来自 Azure 资源的数据](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)中所述的其他 Azure 资源的类型相同。
 
 有关 Azure IoT 中心创建的指标和日志的详细信息，请参阅 [Azure IoT 中心监视数据参考](monitor-iot-hub-reference.md)。
 
@@ -67,31 +67,31 @@ Azure IoT 中心收集的监视数据与[监视来自 Azure 资源的数据](/az
 
 :::image type="content" source="media/monitor-iot-hub/diagnostic-setting-portal.png" alt-text="IoT 中心的“诊断设置”窗格。":::
 
-有关使用 Azure 门户、CLI 或 PowerShell 创建诊断设置的详细过程，请参阅[创建诊断设置以收集 Azure 中的平台日志和指标](/azure-monitor/platform/diagnostic-settings)。 创建诊断设置时，请指定要收集的日志类别。 [Azure IoT 中心监视数据参考中的“资源日志”](monitor-iot-hub-reference.md#resource-logs)下列出了 Azure IoT 中心的类别。
+有关使用 Azure 门户、CLI 或 PowerShell 创建诊断设置的详细过程，请参阅[创建诊断设置以收集 Azure 中的平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)。 创建诊断设置时，请指定要收集的日志类别。 [Azure IoT 中心监视数据参考中的“资源日志”](monitor-iot-hub-reference.md#resource-logs)下列出了 Azure IoT 中心的类别。
 
 将 IoT 中心平台指标路由到其他位置时，请注意：
 
 - 以下平台指标不可通过诊断设置导出：“已连接设备数(预览)”和“设备总数(预览)” 。
 
-- 多维指标（例如，某些[路由指标](monitor-iot-hub-reference.md#routing-metrics)）当前导出为跨维度值聚合的平展单维指标。 有关更多详细信息，请参阅[将平台指标导出到其他位置](/azure-monitor/platform/metrics-supported#exporting-platform-metrics-to-other-locations)。
+- 多维指标（例如，某些[路由指标](monitor-iot-hub-reference.md#routing-metrics)）当前导出为跨维度值聚合的平展单维指标。 有关更多详细信息，请参阅[将平台指标导出到其他位置](../azure-monitor/essentials/metrics-supported.md#exporting-platform-metrics-to-other-locations)。
 
 ## <a name="analyzing-metrics"></a>分析指标
 
-可以从“Azure Monitor”菜单中打开“指标”，使用指标资源管理器根据来自其他 Azure 服务的指标分析 Azure IoT 中心的指标 。 有关使用此工具的详细信息，请参阅 [Azure 指标资源管理器入门](/azure-monitor/platform/metrics-getting-started)。
+可以从“Azure Monitor”菜单中打开“指标”，使用指标资源管理器根据来自其他 Azure 服务的指标分析 Azure IoT 中心的指标 。 有关使用此工具的详细信息，请参阅 [Azure 指标资源管理器入门](../azure-monitor/essentials/metrics-getting-started.md)。
 
 在 Azure 门户的 IoT 中心左窗格的“监视”下选择“指标”以打开指标资源管理器。默认情况下，打开的指标资源管理器的范围为 IoT 中心发出的平台指标：
 
 :::image type="content" source="media/monitor-iot-hub/metrics-portal.png" alt-text="IoT 中心的指标资源管理器页。":::
 
-有关为 Azure IoT 中心收集的平台指标的列表，请参阅 [Azure IoT 中心监视数据参考中的“指标”](monitor-iot-hub-reference.md#metrics)。 有关为所有 Azure 服务收集的平台指标的列表，请参阅 [Azure Monitor 支持的指标](/azure-monitor/platform/metrics-supported)。
+有关为 Azure IoT 中心收集的平台指标的列表，请参阅 [Azure IoT 中心监视数据参考中的“指标”](monitor-iot-hub-reference.md#metrics)。 有关为所有 Azure 服务收集的平台指标的列表，请参阅 [Azure Monitor 支持的指标](../azure-monitor/essentials/metrics-supported.md)。
 
 对于以计数单位收集的 IoT 中心平台指标，某些聚合可能不可用或无法使用。 若要了解详细信息，请参阅 [Azure IoT 中心监视数据参考中的“支持的聚合”](monitor-iot-hub-reference.md#supported-aggregations)。
 
-某些 IoT 中心指标（例如[路由指标](monitor-iot-hub-reference.md#routing-metrics)）是多维的。 对于这些指标，你可以基于某个维度对图表应用[筛选器](/azure-monitor/platform/metrics-charts#apply-filters-to-charts)和[拆分](/azure-monitor/platform/metrics-charts#apply-splitting-to-a-chart)。
+某些 IoT 中心指标（例如[路由指标](monitor-iot-hub-reference.md#routing-metrics)）是多维的。 对于这些指标，你可以基于某个维度对图表应用[筛选器](../azure-monitor/essentials/metrics-charts.md#filters)和[拆分](../azure-monitor/essentials/metrics-charts.md#apply-splitting)。
 
 ## <a name="analyzing-logs"></a>分析日志
 
-Azure Monitor 日志中的数据以表形式存储，每个表具有自己独有的属性集。 这些表中的数据与某个 Log Analytics 工作区相关联，并且可以在 Log Analytics 中进行查询。 若要详细了解 Azure Monitor 日志，请参阅 Azure Monitor 文档中的 [Azure Monitor 日志概述](/azure-monitor/platform/data-platform-logs)。 
+Azure Monitor 日志中的数据以表形式存储，每个表具有自己独有的属性集。 这些表中的数据与某个 Log Analytics 工作区相关联，并且可以在 Log Analytics 中进行查询。 若要详细了解 Azure Monitor 日志，请参阅 Azure Monitor 文档中的 [Azure Monitor 日志概述](../azure-monitor/logs/data-platform-logs.md)。 
 
 若要将数据路由到 Azure Monitor 日志，你必须创建一个诊断设置，以便将资源日志或平台指标发送到 Log Analytics 工作区。 若要了解详细信息，请参阅[收集和路由](#collection-and-routing)。
 
@@ -101,17 +101,17 @@ Azure Monitor 日志中的数据以表形式存储，每个表具有自己独有
 
 有关 Azure Monitor 日志使用的可供 Log Analytics 查询的表的列表，请参阅 [Azure IoT 中心监视数据参考中的“Azure Monitor 日志表”](monitor-iot-hub-reference.md#azure-monitor-logs-tables)。
 
-Azure Monitor 中的所有资源日志都具有后跟服务特定字段的相同字段。 [Azure Monitor 资源日志架构](/azure-monitor/platform/resource-logs-schema#top-level-resource-logs-schema)概述了常见架构。 可以在 [Azure IoT 中心监视数据参考中的“资源日志”](monitor-iot-hub-reference.md#resource-logs)中找到为 Azure IoT 中心收集的资源日志的架构和类别。
+Azure Monitor 中的所有资源日志都具有后跟服务特定字段的相同字段。 [Azure Monitor 资源日志架构](../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema)概述了常见架构。 可以在 [Azure IoT 中心监视数据参考中的“资源日志”](monitor-iot-hub-reference.md#resource-logs)中找到为 Azure IoT 中心收集的资源日志的架构和类别。
 
-[活动日志](/azure-monitor/platform/activity-log)是 Azure 中的一种平台日志，可用于深入了解订阅级别事件。 你可以单独查看它或将它路由到 Azure Monitor 日志，然后便可以在其中使用 Log Analytics 执行复杂得多的查询。  
+[活动日志](../azure-monitor/essentials/activity-log.md)是 Azure 中的一种平台日志，可用于深入了解订阅级别事件。 你可以单独查看它或将它路由到 Azure Monitor 日志，然后便可以在其中使用 Log Analytics 执行复杂得多的查询。  
 
 将 IoT 中心平台指标路由到 Azure Monitor 日志时，请注意：
 
 - 以下平台指标不可通过诊断设置导出：“已连接设备数(预览)”和“设备总数(预览)” 。
 
-- 多维指标（例如，某些[路由指标](monitor-iot-hub-reference.md#routing-metrics)）当前导出为跨维度值聚合的平展单维指标。 有关更多详细信息，请参阅[将平台指标导出到其他位置](/azure-monitor/platform/metrics-supported#exporting-platform-metrics-to-other-locations)。
+- 多维指标（例如，某些[路由指标](monitor-iot-hub-reference.md#routing-metrics)）当前导出为跨维度值聚合的平展单维指标。 有关更多详细信息，请参阅[将平台指标导出到其他位置](../azure-monitor/essentials/metrics-supported.md#exporting-platform-metrics-to-other-locations)。
 
-有关 IoT 中心的一些常见查询，请参阅[示例 Kusto 查询](#sample-kusto-queries)。 有关使用 Log Analytics 查询的详细信息，请参阅 [Azure Monitor 中的日志查询概述](/azure-monitor/log-query/log-query-overview)。
+有关 IoT 中心的一些常见查询，请参阅[示例 Kusto 查询](#sample-kusto-queries)。 有关使用 Log Analytics 查询的详细信息，请参阅 [Azure Monitor 中的日志查询概述](../azure-monitor/logs/log-query-overview.md)。
 
 ### <a name="sdk-version-in-iot-hub-logs"></a>IoT 中心日志中的 SDK 版本
 
@@ -152,7 +152,7 @@ AzureDiagnostics
 ### <a name="sample-kusto-queries"></a>示例 Kusto 查询
 
 > [!IMPORTANT]
-> 在 IoT 中心菜单中选择“日志”时，Log Analytics 随即打开，其查询范围设置为当前 IoT 中心。 这意味着日志查询只包含来自该资源的数据。 如果希望运行的查询包含其他 IoT 中心或其他 Azure 服务的数据，请从“Azure Monitor”菜单中选择“日志”。 有关详细信息，请参阅 [Azure Monitor Log Analytics 中的日志查询范围和时间范围](/azure-monitor/log-query/scope/)。
+> 在 IoT 中心菜单中选择“日志”时，Log Analytics 随即打开，其查询范围设置为当前 IoT 中心。 这意味着日志查询只包含来自该资源的数据。 如果希望运行的查询包含其他 IoT 中心或其他 Azure 服务的数据，请从“Azure Monitor”菜单中选择“日志”。 有关详细信息，请参阅 [Azure Monitor Log Analytics 中的日志查询范围和时间范围](../azure-monitor/logs/scope.md)。
 
 下面是可用来帮助你监视 IoT 中心的查询。
 
@@ -288,13 +288,13 @@ class Program
 
 ## <a name="alerts"></a>警报
 
-在监视数据中发现重要情况时，Azure Monitor 警报会主动通知你。 有了警报，你就可以在客户注意到你的系统中的问题之前确定和解决它们。 可以在[指标](/azure-monitor/platform/alerts-metric-overview)、[日志](/azure-monitor/platform/alerts-unified-log)和[活动日志](/azure-monitor/platform/activity-log-alerts)上设置警报。 不同类型的警报各有优缺点。
+在监视数据中发现重要情况时，Azure Monitor 警报会主动通知你。 有了警报，你就可以在客户注意到你的系统中的问题之前确定和解决它们。 可以在[指标](../azure-monitor/alerts/alerts-metric-overview.md)、[日志](../azure-monitor/alerts/alerts-unified-log.md)和[活动日志](../azure-monitor/alerts/activity-log-alerts.md)上设置警报。 不同类型的警报各有优缺点。
 
 当基于平台指标创建警报规则时，请注意，对于以计数单位收集的 IoT 中心平台指标，某些聚合可能不可用或无法使用。 若要了解详细信息，请参阅 [Azure IoT 中心监视数据参考中的“支持的聚合”](monitor-iot-hub-reference.md#supported-aggregations)。
 
 ## <a name="monitor-per-device-disconnects-with-event-grid"></a>使用事件网格监视每个设备的连接断开问题
 
-Azure Monitor 提供“连接的设备数”指标，可用于监视连接到 IoT 中心的设备数，并在连接的设备数低于阈值时触发警报。 尽管在某些情况下，仅使用该指标就足以达到目的，但 [Azure 事件网格](/event-grid/)还提供了一个低延迟、每设备监视解决方案，可用于跟踪关键设备和基础结构的设备连接。
+Azure Monitor 提供“连接的设备数”指标，可用于监视连接到 IoT 中心的设备数，并在连接的设备数低于阈值时触发警报。 尽管在某些情况下，仅使用该指标就足以达到目的，但 [Azure 事件网格](../event-grid/index.yml)还提供了一个低延迟、每设备监视解决方案，可用于跟踪关键设备和基础结构的设备连接。
 
 借助事件网格，可以订阅 IoT 中心 [DeviceConnected 和 DeviceDisconnected 事件](iot-hub-event-grid.md#event-types)，以触发警报和监视设备连接状态 。 与 Azure Monitor 相比，事件网格提供的事件延迟要低得多，并且你可以监视每台设备，而不是已连接的设备总数。 这些因素使事件网格成为监视关键设备和基础结构的连接的首选方法。 强烈建议在生产环境中使用事件网格监视设备连接。
 
@@ -304,4 +304,4 @@ Azure Monitor 提供“连接的设备数”指标，可用于监视连接到 Io
 
 - 有关 [服务名称] 创建的指标、日志和其他重要值的参考信息，请参阅 [Azure IoT 中心监视数据参考](monitor-iot-hub-reference.md)。
 
-- 有关监视 Azure 资源的详细信息，请参阅[使用 Azure Monitor 监视 Azure 资源](/azure-monitor/insights/monitor-azure-resource)。
+- 有关监视 Azure 资源的详细信息，请参阅[使用 Azure Monitor 监视 Azure 资源](../azure-monitor/essentials/monitor-azure-resource.md)。

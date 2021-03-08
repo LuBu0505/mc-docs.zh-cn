@@ -4,19 +4,19 @@ description: 介绍在 JSON 中通过连续导出导出的、用作筛选器的�
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 01/08/2019
-ms.date: 01/14/2021
+ms.date: 02/22/2021
 ms.author: v-johya
-ms.openlocfilehash: 36ca03ca92f828e67542fbd7ff5aa3e8b4d4b8f3
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: d74a7de184f2cfdfe738ab7f81819c0b452b3879
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231052"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197408"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights 导出数据模型
 此表列出了从 [Application Insights](./app-insights-overview.md) SDK 发送到门户的遥测属性。
 [连续导出](export-telemetry.md)的数据输出中会显示这些属性。
-这些属性还显示在[指标资源管理器](../platform/metrics-charts.md)和[诊断搜索](./diagnostic-search.md)的属性筛选器中。
+这些属性还显示在[指标资源管理器](../essentials/metrics-charts.md)和[诊断搜索](./diagnostic-search.md)的属性筛选器中。
 
 需要注意的要点：
 

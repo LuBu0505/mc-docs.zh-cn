@@ -5,14 +5,14 @@ ms.reviewer: srinathv
 author: Johnnytechn
 ms.topic: conceptual
 origin.date: 07/08/2019
-ms.date: 09/28/2020
+ms.date: 03/01/2021
 ms.author: v-johya
-ms.openlocfilehash: 69539818477710ca067aced4396288916fa57ec2
-ms.sourcegitcommit: 80567f1c67f6bdbd8a20adeebf6e2569d7741923
+ms.openlocfilehash: aa892a6ffa00948c28a962694ec53deaff92e76c
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91871223"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197337"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure 备份监视警报 - 常见问题解答
 
@@ -69,6 +69,6 @@ Azure 备份失败后，会在 20 分钟内引发警报。
 
 阅读其他常见问题：
 
-* 有关 Azure VM 备份的[常见问题](backup-azure-vm-backup-faq.md)。
+* 有关 Azure VM 备份的[常见问题](backup-azure-vm-backup-faq.yml)。
 * 有关 Azure 备份代理的[常见问题](backup-azure-file-folder-backup-faq.md)
 

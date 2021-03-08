@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: reference
 origin.date: 07/24/2020
-ms.date: 08/24/2020
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 487e3bc13189f07abd221418974fd43278cacc2f
-ms.sourcegitcommit: ecd6bf9cfec695c4e8d47befade8c462b1917cf0
+ms.openlocfilehash: c24863bdcf6c26b07f0264121e837b478d8d0dde
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88753566"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196220"
 ---
 # <a name="azcopy-jobs-resume"></a>azcopy jobs resume
 
@@ -29,7 +29,7 @@ azcopy jobs resume [jobID] [flags]
 ## <a name="related-conceptual-articles"></a>相关概念性文章
 
 - [AzCopy 入门](storage-use-azcopy-v10.md)
-- [使用 AzCopy 和 Blob 存储传输数据](storage-use-azcopy-blobs.md)
+- [使用 AzCopy 和 Blob 存储传输数据](./storage-use-azcopy-v10.md#transfer-data)
 - [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
 - [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)
 

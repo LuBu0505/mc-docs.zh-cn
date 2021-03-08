@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 05/15/2019
 author: rockboyfor
-ms.date: 11/16/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: da427c3665284f7fb04645731bdb5919bbd28783
-ms.sourcegitcommit: 39288459139a40195d1b4161dfb0bb96f5b71e8e
+ms.openlocfilehash: 1d8e314a52a745144c759eb29bec1ce17ad66577
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94590833"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053210"
 ---
 # <a name="what-is-ip-address-1686312916"></a>IP 地址 168.63.129.16 是什么？
 
@@ -39,7 +39,7 @@ IP 地址 168.63.129.16 是虚拟公共 IP 地址，用于简化 Azure 平台资
 
 ## <a name="scope-of-ip-address-1686312916"></a>IP 地址 168.63.129.16 的作用域
 
-公共 IP 地址 168.63.129.16 用于所有区域和所有国家云。 此特殊公共 IP 地址由 Azure 所有，不会更改。 建议在任何本地（在 VM 中）防火墙策略（出站方向）中都允许此 IP 地址。 此特殊 IP 地址和资源之间的通信是安全的，因为只有内部 Azure 平台才能从此 IP 地址获得消息。 如果阻止此地址，可能会在各种场景中出现意外行为。 168.63.129.16 是[主机节点的虚拟 IP](../virtual-network/security-overview.md#azure-platform-considerations)，因此不受用户定义的路由的限制。
+公共 IP 地址 168.63.129.16 用于所有区域和所有国家云。 此特殊公共 IP 地址由 Azure 所有，不会更改。 建议在任何本地（在 VM 中）防火墙策略（出站方向）中都允许此 IP 地址。 此特殊 IP 地址和资源之间的通信是安全的，因为只有内部 Azure 平台才能从此 IP 地址获得消息。 如果阻止此地址，可能会在各种场景中出现意外行为。 168.63.129.16 是[主机节点的虚拟 IP](./network-security-groups-overview.md#azure-platform-considerations)，因此不受用户定义的路由的限制。
 
 - VM 代理需要通过端口 80/tcp 和 32526/tcp 与 WireServer (168.63.129.16) 进行出站通信。 这些端口应在 VM 上的本地防火墙中打开。 在这些端口上进行的与 168.63.129.16 的通信不受配置的网络安全组的限制。
 
@@ -51,7 +51,7 @@ IP 地址 168.63.129.16 是虚拟公共 IP 地址，用于简化 Azure 平台资
 
 ## <a name="next-steps"></a>后续步骤
 
-- [安全组](security-overview.md)
+- [安全组](./network-security-groups-overview.md)
 - [创建、更改或删除网络安全组](manage-network-security-group.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

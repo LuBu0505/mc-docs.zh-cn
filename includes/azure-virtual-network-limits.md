@@ -6,15 +6,15 @@ ms.service: networking
 ms.topic: include
 origin.date: 01/14/2020
 author: rockboyfor
-ms.date: 10/26/2020
+ms.date: 03/01/2021
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 1f24b66a0f3e6eb042a73adf464d0ebfde566b37
-ms.sourcegitcommit: 7b3c894d9c164d2311b99255f931ebc1803ca5a9
+ms.openlocfilehash: 8ad4e0779851359693be6529db85f82d43a90186
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470381"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053330"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>
 ### <a name="networking-limits---azure-resource-manager"></a>网络限制 - Azure 资源管理器
@@ -30,27 +30,27 @@ ms.locfileid: "92470381"
 | 每个虚拟网络的虚拟网络对等互连数 |500 |
 | [每个虚拟网络的虚拟网关（VPN 网关）](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |1 |
 | [每个虚拟网络的虚拟网关（ExpressRoute 网关）](../articles/expressroute/expressroute-about-virtual-network-gateways.md#gwsku) |1 |
-| 每个虚拟网络的 DNS 服务器数 |20 个 |
+| 每个虚拟网络的 DNS 服务器数 |20 |
 | 每个虚拟网络的专用 IP 地址数 |65,536 |
 | 每个网络接口的专用 IP 地址数 |256 |
 | 每个虚拟机的专用 IP 地址数 |256 |
 | 每个网络接口的公共 IP 地址数 |256 |
 | 每个虚拟机的公共 IP 地址数 |256 |
-| [虚拟机或角色实例的单 NIC 并发 TCP 或 UDP 流数](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) |500,000 |
+| [虚拟机或角色实例的单 NIC 并发 TCP 或 UDP 流数](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-active-connections-recommendations) |500,000 |
 | 网络接口卡数 |65,536 |
 | 网络安全组 |5,000 |
 | 每个 NSG 的 NSG 规则数 |1,000 |
 | 为安全组中的源或目标指定的 IP 地址和范围数 |4,000 |
 | 应用程序安全组 |3,000 |
-| 每个 IP 配置和每个 NIC 的应用程序安全组数 |20 个 |
+| 每个 IP 配置和每个 NIC 的应用程序安全组数 |20 |
 | 每个应用程序安全组的 IP 配置数 |4,000 |
 | 可在网络安全组的所有安全规则中指定的应用程序安全组数 |100 |
 | 用户定义路由表数 |200 |
 | 每个路由表的用户定义的路由数 |400 |
-| 每个 Azure VPN 网关的点到站点根证书数 |20 个 |
+| 每个 Azure VPN 网关的点到站点根证书数 |20 |
 
-<!--Not Available on | Virtual network TAPs |100 |-->
-<!--Not Available on | Network interface TAP configurations per virtual network TAP |100 |-->
+<!--NOT AVAILABLE on | Virtual network TAPs |100 |-->
+<!--NOT AVAILABLE on | Network interface TAP configurations per virtual network TAP |100 |-->
 
 <a name="publicip-address"></a>
 #### <a name="public-ip-address-limits"></a>公共 IP 地址限制
@@ -59,6 +59,7 @@ ms.locfileid: "92470381"
 | 公共 IP 地址<sup>1</sup> | 基本版为 10。 | 请联系支持人员。 |
 | 静态公共 IP 地址<sup>1</sup> | 基本版为 10。 | 请联系支持人员。 |
 | 标准公共 IP 地址<sup>1</sup> | 10 | 请联系支持人员。 |
+| [每个资源组的公共 IP 地址](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md#microsoftnetwork) | 800 | 请联系支持人员。 | 
 | 公共 IP 前缀 | 受订阅中的标准公共 IP 数限制 | 请联系支持人员。 |
 | 公共 IP 前缀长度 | /28 | 请联系支持人员。 |
 
@@ -77,7 +78,7 @@ ms.locfileid: "92470381"
 | 每个 NIC 的规则数（在 NIC 上的所有 IP 上） | 300                           |
 | 前端 IP 配置数              | 600                           |
 | 后端池大小                       | 单个虚拟网络 1000 个 IP 配置 |
-| 每个负载均衡器的后端资源数 <sup>1<sup> | 150                   |
+| 每个负载均衡器的后端资源数 <sup>1<sup> | 250                   |
 | 高可用性端口                 | 每个内部前端 1 个       |
 | 每个负载均衡器的出站规则        | 600                           |
 | 每个 VM 的负载均衡器数                   | 2（1 个公共，1 个内部）   |
@@ -111,8 +112,8 @@ ms.locfileid: "92470381"
 | 每个路由表的用户定义的路由数 |400 |400 |
 | 公共 IP 地址 (动态) |500 |500 |
 | 保留的公共 IP 地址 |500 |500 |
-| 每个部署的公共 VIP |5 |联系支持人员 |
-| 每个部署的专用 VIP（内部负载均衡） |1 |1 |
+| 每个部署的公共 IP |5 |联系支持人员 |
+| 每个部署的专用 IP（内部负载均衡） |1 |1 |
 | 终结点访问控制列表 (ACL) |50 |50 |
 
 <!-- Update_Description: update meta properties, wording update, update link -->

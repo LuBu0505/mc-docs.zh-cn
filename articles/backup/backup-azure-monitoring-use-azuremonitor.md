@@ -4,35 +4,35 @@ description: 使用 Azure Monitor 监视 Azure 备份工作负荷及创建自定
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 06/04/2019
-ms.date: 09/22/2020
+ms.date: 03/01/2021
 ms.author: v-johya
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: efd8f06e01831f26adf547bd90854d60b110f5ec
-ms.sourcegitcommit: cdb7228e404809c930b7709bcff44b89d63304ec
+ms.openlocfilehash: 89b416a6bafb226bbf2bf48b8351add35201c002
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91402434"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197340"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>使用 Azure Monitor 进行大规模监视
 
-Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](backup-azure-monitoring-built-in-monitor.md)。 无需配置任何附加的管理基础结构即可使用这些功能。 但是，仅限在以下方案中使用此内置服务：
+Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](backup-azure-monitoring-built-in-monitor.md)。 无需任何附加的管理基础结构即可使用这些功能。 但是，仅限在以下方案中使用此内置服务：
 
 - 监视不同订阅中多个恢复服务保管库中的数据
-- 首选的通知通道不是电子邮件**
+- 首选的通知通道不是电子邮件
 - 用户想要接收更多方案的警报
-- 在 Azure 中查看来自本地组件（例如 System Center Data Protection Manager）的信息。门户不会在[**备份作业**](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault)或[**备份警报**](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault)中显示这些信息
+- 在 Azure 中查看来自本地组件（例如 System Center Data Protection Manager）的信息。门户不会在 [**备份作业**](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault)或 [**备份警报**](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault)中显示这些信息
 
 ## <a name="using-log-analytics-workspace"></a>使用 Log Analytics 工作区
 
 ### <a name="create-alerts-by-using-log-analytics"></a>使用 Log Analytics 创建警报
 
-在 Azure Monitor 中，可以在 Log Analytics 工作区内创建你自己的警报。 在工作区中，可以使用 Azure 操作组来选择首选的通知机制。**
+在 Azure Monitor 中，可以在 Log Analytics 工作区内创建你自己的警报。 在工作区中，可以使用 Azure 操作组来选择首选的通知机制。
 
 > [!IMPORTANT]
 > 有关创建此查询所产生的成本的信息，请参阅 [Azure Monitor 定价](https://www.azure.cn/pricing/details/monitor/)。
 
-打开 Log Analytics 工作区的“日志”部分，并为自己的日志创建查询****。 选择“新建警报规则”时，将打开 Azure Monitor 警报创建页，如下图所示。****
+打开 Log Analytics 工作区的“日志”部分，并为自己的日志创建查询。 选择“新建警报规则”时，将打开 Azure Monitor 警报创建页，如下图所示。
 
 ![在 Log Analytics 工作区中创建警报](./media/backup-azure-monitoring-laworkspace/custom-alert.png)
 
@@ -42,7 +42,7 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
 
 #### <a name="alert-condition"></a>警报条件
 
-警报的定义特征是其触发条件。 选择“条件”可在“日志”页上自动加载 Kusto 查询，如下图所示。**** **** 在此处可根据需要编辑条件。 有关详细信息，请参阅[示例 Kusto 查询](#sample-kusto-queries)。
+警报的定义特征是其触发条件。 选择“条件”可在“日志”页上自动加载 Kusto 查询，如下图所示。  在此处可根据需要编辑条件。 有关详细信息，请参阅[示例 Kusto 查询](#sample-kusto-queries)。
 
 ![设置警报条件](./media/backup-azure-monitoring-laworkspace/la-azurebackup-alertlogic.png)
 
@@ -53,17 +53,17 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
 
 #### <a name="alert-action-groups"></a>警报操作组
 
-使用操作组指定通知通道。 若要查看可用的通知机制，请在“操作组”下选择“新建”。**** ****
+使用操作组指定通知通道。 若要查看可用的通知机制，请在“操作组”下选择“新建”。 
 
 ![“添加操作组”窗口中的可用通知机制](./media/backup-azure-monitoring-laworkspace/LA-AzureBackup-ActionGroup.png)
 
 单纯地在 Log Analytics 中就能满足所有的警报和监视要求；你也可以使用 Log Analytics 来补充内置通知。
 
-有关详细信息，请参阅[使用 Azure Monitor 创建、查看和管理日志警报](../azure-monitor/platform/alerts-log.md)以及[在 Azure 门户中创建和管理操作组](../azure-monitor/platform/action-groups.md)。
+有关详细信息，请参阅[使用 Azure Monitor 创建、查看和管理日志警报](../azure-monitor/alerts/alerts-log.md)以及[在 Azure 门户中创建和管理操作组](../azure-monitor/alerts/action-groups.md)。
 
 ### <a name="sample-kusto-queries"></a>示例 Kusto 查询
 
-默认图形提供可对其生成警报的基本方案的 Kusto 查询。 还可以修改查询，以获取要对其发出警报的数据。 将以下示例 Kusto 查询粘贴到“日志”页中，然后基于查询创建警报：****
+默认图形提供可对其生成警报的基本方案的 Kusto 查询。 还可以修改查询，以获取要对其发出警报的数据。 将以下示例 Kusto 查询粘贴到“日志”页中，然后基于查询创建警报：
 
 - 所有成功的备份作业
 
@@ -155,35 +155,35 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
 
 ### <a name="diagnostic-data-update-frequency"></a>诊断数据更新频率
 
-保管库中的诊断数据将传送到 Log Analytics 工作区，但会出现一定的延迟。 从恢复服务保管库推送每个事件 20 到 30 分钟后，这些事件将抵达 Log Analytics 工作区。** 下面是有关延迟的更多详细信息：
+保管库中的诊断数据将传送到 Log Analytics 工作区，但会出现一定的延迟。 从恢复服务保管库推送每个事件 20 到 30 分钟后，这些事件将抵达 Log Analytics 工作区。 下面是有关延迟的更多详细信息：
 
 - 在所有解决方案中，一旦创建备份服务的内置警报，就会立即推送这些警报。 因此，它们通常会在 20 到 30 分钟后显示在 Log Analytics 工作区中。
-- 在所有解决方案中，在完成按需备份作业和还原作业后，会立即推送这些作业。**
-- 对于除 SQL 备份以外的所有解决方案，在完成计划的备份作业后，会立即推送这些作业。**
+- 在所有解决方案中，在完成按需备份作业和还原作业后，会立即推送这些作业。
+- 对于除 SQL 备份以外的所有解决方案，在完成计划的备份作业后，会立即推送这些作业。
 - 对于 SQL 备份，由于日志备份可每隔 15 分钟发生，所有已完成的计划备份作业的信息（包括日志）将每隔 6 小时进行批处理和推送。
-- 在所有解决方案中，备份项、策略、恢复点、存储等其他信息每天至少推送一次。**
+- 在所有解决方案中，备份项、策略、恢复点、存储等其他信息每天至少推送一次。
 - 备份配置发生更改（例如更改策略或编辑策略）会触发所有相关备份信息的推送。
 
 ## <a name="using-the-recovery-services-vaults-activity-logs"></a>使用恢复服务保管库的活动日志
 
 > [!CAUTION]
-> 以下步骤仅适用于 Azure VM 备份。** 不能对 Azure 备份代理、Azure 中的 SQL 备份或 Azure 文件等解决方案使用这些步骤。
+> 以下步骤仅适用于 Azure VM 备份。 不能对 Azure 备份代理、Azure 中的 SQL 备份或 Azure 文件等解决方案使用这些步骤。
 
 还可以使用活动日志来获取事件通知，例如备份成功。 遵循以下步骤开始：
 
 1. 登录 Azure 门户。
 2. 打开相关的恢复服务保管库。
-3. 在保管库的属性中，打开“活动日志”部分。****
+3. 在保管库的属性中，打开“活动日志”部分。
 
 若要识别相应的日志并创建警报：
 
-1. 应用下图中所示的筛选器，验证是否能够接收成功备份的活动日志。 根据需要更改“时间跨度”值以查看记录。****
+1. 应用下图中所示的筛选器，验证是否能够接收成功备份的活动日志。 根据需要更改“时间跨度”值以查看记录。
 
    ![通过筛选找到 Azure VM 备份的活动日志](./media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
 
 2. 选择操作名称以查看相关详细信息。
-3. 选择“新建警报规则”打开“创建规则”页。**** ****
-4. 遵循[使用 Azure Monitor 创建、查看和管理活动日志警报](../azure-monitor/platform/alerts-activity-log.md)中的步骤创建警报。
+3. 选择“新建警报规则”打开“创建规则”页。 
+4. 遵循[使用 Azure Monitor 创建、查看和管理活动日志警报](../azure-monitor/alerts/alerts-activity-log.md)中的步骤创建警报。
 
    ![新建警报规则](./media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 
@@ -191,7 +191,7 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
 
 ## <a name="using-log-analytics-to-monitor-at-scale"></a>使用 Log Analytics 进行大规模监视
 
-可以在 Azure Monitor 中查看从活动日志和 Log Analytics 工作区创建的所有警报。 只需打开左侧的“警报”窗格即可。****
+可以在 Azure Monitor 中查看从活动日志和 Log Analytics 工作区创建的所有警报。 只需打开左侧的“警报”窗格即可。
 
 尽管你可以通过活动日志获取通知，但我们强烈建议使用 Log Analytics（而不是活动日志）进行大规模监视。 原因如下：
 

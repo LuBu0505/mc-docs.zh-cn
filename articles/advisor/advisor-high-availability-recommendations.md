@@ -5,13 +5,13 @@ author: Johnnytechn
 ms.author: v-johya
 ms.topic: article
 origin.date: 01/29/2019
-ms.date: 11/13/2020
-ms.openlocfilehash: 098123cfe6259d50054ddf0680be62105d570ef1
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.date: 03/04/2021
+ms.openlocfilehash: 167523a1943158a8938df0e820b3bc8a1d6c718d
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637943"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197674"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>使用 Azure 顾问提高应用程序的可靠性
 
@@ -79,7 +79,7 @@ Azure 顾问会检查是否有任何使用基本 SKU 的 VPN 网关，并建议�
 
 ## <a name="repair-invalid-log-alert-rules"></a>修复无效的日志警报规则
 
-Azure 顾问会检测到在其条件部分指定了无效查询的日志警报规则。 Azure Monitor 日志警报规则按指定的频率运行查询，并根据结果触发警报。 随着时间的推移，查询可能会因所引用资源、表或命令的变化而变得无效。 顾问建议对警报查询进行更正，以防止自动禁用规则并确保监视范围。 有关详细信息，请参阅[警报规则故障排除](../azure-monitor/platform/alerts-troubleshoot-log.md#query-used-in-a-log-alert-isnt-valid)
+Azure 顾问会检测到在其条件部分指定了无效查询的日志警报规则。 Azure Monitor 日志警报规则按指定的频率运行查询，并根据结果触发警报。 随着时间的推移，查询可能会因所引用资源、表或命令的变化而变得无效。 顾问建议对警报查询进行更正，以防止自动禁用规则并确保监视范围。 有关详细信息，请参阅[警报规则故障排除](../azure-monitor/alerts/alerts-troubleshoot-log.md#query-used-in-a-log-alert-isnt-valid)
 
 ## <a name="configure-consistent-indexing-mode-on-your-azure-cosmos-db-collection"></a>在 Azure Cosmos DB 集合上配置“一致”索引模式
 

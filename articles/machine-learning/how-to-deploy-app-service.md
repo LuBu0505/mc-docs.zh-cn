@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: f67cf1f1f92d1d08cd5ffdda7fd7f51bf9674eb3
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: d5ee0004069a66da74fe98762ee735f12590b757
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978268"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196488"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>将机器学习模型部署到 Azure 应用服务（预览版）
 
@@ -29,7 +29,7 @@ ms.locfileid: "94978268"
 通过 Azure 机器学习，可从经训练的机器学习模型创建 Docker 映像。 此映像包含一个 Web 服务，它会接收数据，将数据提交到模型，然后返回响应。 Azure 应用服务可用于部署映像，并提供以下功能：
 
 * 高级[身份验证](/app-service/configure-authentication-provider-aad)，可增强安全性。 身份验证方法包括 Azure Active Directory 和多重身份验证。
-* 无需重新部署即可[自动缩放](../azure-monitor/platform/autoscale-get-started.md?toc=%252fazure%252fapp-service%252ftoc.json)。
+* 无需重新部署即可[自动缩放](../azure-monitor/autoscale/autoscale-get-started.md?toc=%252fazure%252fapp-service%252ftoc.json)。
 * [TLS 支持](/app-service/configure-ssl-certificate-in-code)，可在客户端和服务之间实现安全通信。
 
 有关 Azure 应用服务提供的功能的详细信息，请参阅[应用服务概述](/app-service/overview)。
@@ -271,7 +271,7 @@ print(response.json())
 ## <a name="next-steps"></a>后续步骤
 
 * 请参阅 [Linux 上的应用服务](/app-service/containers/)文档，了解如何配置 Web 应用。
-* 请参阅 [Azure 中的自动缩放入门](../azure-monitor/platform/autoscale-get-started.md?toc=%252fazure%252fapp-service%252ftoc.json)，详细了解缩放。
+* 请参阅 [Azure 中的自动缩放入门](../azure-monitor/autoscale/autoscale-get-started.md?toc=%252fazure%252fapp-service%252ftoc.json)，详细了解缩放。
 * [在 Azure 应用服务中使用 TLS/SSL 证书](/app-service/configure-ssl-certificate-in-code)。
 * [将应用服务应用配置为使用 Azure Active Directory 登录](/app-service/configure-authentication-provider-aad)。
 * [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)

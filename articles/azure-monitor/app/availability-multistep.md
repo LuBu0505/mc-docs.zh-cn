@@ -4,14 +4,14 @@ description: 使用 Azure Application Insights 设置多步骤 Web 测试，以�
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 10/23/2019
-ms.date: 01/14/2021
+ms.date: 02/22/2021
 ms.author: v-johya
-ms.openlocfilehash: c204fad25083dcf16c080135382515727242cfe4
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: af7063d6a75f44ed019fd6c802cd099a06f8dc94
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230834"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197237"
 ---
 # <a name="multi-step-web-tests"></a>多步骤 Web 测试
 
@@ -38,7 +38,7 @@ ms.locfileid: "98230834"
 > [!WARNING]
 > 我们不再建议使用多步骤记录器。 记录器是针对具有基本交互的静态 HTML 页面开发的，不提供新式网页的功能体验。
 
-有关创建 Visual Studio Web 测试的指南，请参阅[官方 Visual Studio 2019 文档](https://docs.microsoft.com/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019)。
+有关创建 Visual Studio Web 测试的指南，请参阅[官方 Visual Studio 2019 文档](https://docs.microsoft.com/visualstudio/test/how-to-create-a-web-service-test)。
 
 ## <a name="upload-the-web-test"></a>上传 Web 测试
 
@@ -51,21 +51,21 @@ ms.locfileid: "98230834"
 |设置| 说明
 |----|----|----|
 |**测试频率**| 设置从每个测试位置运行测试的频率。 如果有五个测试位置，且默认频率为五分钟，则平均每隔一分钟测试站点一次。|
-|**测试位置**| 是服务器将 Web 请求发送到 URL 的位置。 建议最低测试位置数目为 5，以确保可以将网站中的问题与网络问题区分开来。 最多可以选择 16 个位置。
+|**测试位置**| 是服务器从其将 Web 请求发送到 URL 的位置。 **建议最低测试位置数目为 5**，以确保可以将网站中的问题与网络问题区分开来。 最多可以选择 16 个位置。
 
 ### <a name="success-criteria"></a>成功条件
 
 |设置| 说明
 |----|----|----|
-| **测试超时** |减少此值可以接收有关响应变慢的警报。 如果未在这段时间内收到站点的响应，则将测试视为失败。 如果选择了“分析依赖请求”，则必须在这段时间内收到所有图像、样式文件、脚本和其他依赖资源。|
+| **测试超时** |减少此值可以接收有关响应变慢的警报。 如果未在这段时间内收到站点的响应，则将测试视为失败。 如果选择了“分析依赖请求”，则必须在这段时间内收到所有图像、样式文件、脚本和其他依赖资源  。|
 | **HTTP 响应** | 视为成功的返回状态代码。 代码 200 指示返回了正常网页。|
-| **内容匹配** | 类似于“Welcome!”的字符串。 我们测试区分大小写的匹配项是否出现在每个响应中。 它必须是不带通配符的纯字符串。 别忘了，如果页面内容更改，可能需要更新。 **内容匹配仅支持英文字符** |
+| **内容匹配** | 类似于“欢迎!”的字符串。 我们测试区分大小写的匹配项是否出现在每个响应中。 它必须是不带通配符的纯字符串。 别忘了，如果页面内容更改，可能需要更新。 **内容匹配仅支持英文字符** |
 
 ### <a name="alerts"></a>警报
 
 |设置| 说明
 |----|----|----|
-|**准实时（预览）** | 建议使用准实时警报。 创建可用性测试后，配置此类型的警报。  |
+|**近实时（预览）** | 我们建议使用近实时警报。 在创建可用性测试后会配置此类警报。  |
 |**经典** | 我们不再建议对新的可用性测试使用经典警报。|
 |**警报位置阈值**|建议最少 3/5 个位置。 警报位置阈值和测试位置数目之间的最佳关系是，警报位置阈值  =  测试位置数 - 2，至少有 5 个测试位置 。|
 
@@ -142,7 +142,7 @@ Web 测试日期时间插件提供了处理参数化时间的方法。
 
 ## <a name="troubleshooting"></a>疑难解答
 
-请参阅[疑难解答文章](troubleshoot-availability.md)。
+专用[故障排除文章](troubleshoot-availability.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

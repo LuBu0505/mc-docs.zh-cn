@@ -4,7 +4,7 @@ description: 本文讨论在 Web 应用项目的实现和验证阶段要考虑�
 author: Johnnytechn
 manager: barbkess
 ms.author: v-johya
-ms.date: 01/19/2021
+ms.date: 03/04/2021
 origin.date: 06/12/2019
 ms.topic: article
 ms.service: security
@@ -14,12 +14,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: d52ac55d4ebf307704875282451e1b1a9ccd9246
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: d61ee3aa424d7dc35096b20796c1afeeac38d54d
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751351"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197310"
 ---
 # <a name="develop-secure-applications-on-azure"></a>在 Azure 上开发安全的应用程序
 本文介绍开发云应用程序时要考虑的安全活动和控制措施， 并涵盖 Microsoft [安全开发生命周期 (SDL)](https://docs.microsoft.com/previous-versions/windows/desktop/cc307891(v=msdn.10)) 的实现和验证阶段要考虑的安全问题和概念。 目标在于帮助定义可用于开发更安全的应用程序的活动和 Azure 服务。
@@ -137,7 +137,7 @@ DAST 与静态应用程序安全测试 (SAST) 不同。 SAST 工具在代码未�
 
 在代码执行完成后评审攻击面有助于确保已考虑对应用程序或系统进行的任何设计或实现更改。 它有助于确保已评审和缓解由于更改而创建的任何新攻击途径，包括威胁模型。
 
-可通过扫描应用程序来生成攻击面概览。 Microsoft 提供了一种名为 [Attack Surface Analyzer](https://www.microsoft.com/download/details.aspx?id=24487) 的攻击面分析工具。 可以从许多商业动态测试和漏洞扫描工具或服务中进行选择，包括 [OWASP Zed Attack Proxy Project](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project)、[Arachni](http://arachni-scanner.com/) 和 [w3af](http://w3af.sourceforge.net/)。 这些扫描工具对应用进行爬网，并映射可通过 Web 访问的应用程序部分。 你也可以在 Azure 市场中搜索类似的开发人员工具。
+可通过扫描应用程序来生成攻击面概览。 Microsoft 提供了一种名为 [Attack Surface Analyzer](https://www.microsoft.com/download/details.aspx?id=58105) 的攻击面分析工具。 可以从许多商业动态测试和漏洞扫描工具或服务中进行选择，包括 [OWASP Zed Attack Proxy Project](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project)、[Arachni](http://arachni-scanner.com/) 和 [w3af](http://w3af.sourceforge.net/)。 这些扫描工具对应用进行爬网，并映射可通过 Web 访问的应用程序部分。 你也可以在 Azure 市场中搜索类似的开发人员工具。
 
 ### <a name="perform-security-penetration-testing"></a>执行安全渗透测试
 

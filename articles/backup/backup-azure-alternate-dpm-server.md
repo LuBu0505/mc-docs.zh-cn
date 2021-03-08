@@ -4,14 +4,14 @@ description: 将所保护的数据从任意 Azure 备份服务器恢复到恢复
 author: Johnnytechn
 ms.topic: conceptual
 origin.date: 07/09/2019
-ms.date: 09/28/2020
+ms.date: 03/01/2021
 ms.author: v-johya
-ms.openlocfilehash: 4d34052fc0e7726a79b9e7f10385ad27086cf6fb
-ms.sourcegitcommit: 80567f1c67f6bdbd8a20adeebf6e2569d7741923
+ms.openlocfilehash: e1c5ef5cd280b65fe3484a1c138cb9125159e6de
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91871313"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197672"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>从 Azure 备份服务器恢复数据
 
@@ -62,7 +62,7 @@ ms.locfileid: "91871313"
 
      选择与“还原安全”相对应的选项。 可以应用进行数据恢复的目标计算机的安全设置，也可以应用在创建恢复点时适用于产品的安全设置。
 
-     确定是否在恢复成功完成后发送**通知**。
+     确定是否在恢复成功完成后发送 **通知**。
 
      ![外部 DPM 恢复通知](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-notifications.png)
 9. “摘要”屏幕列出了目前为止的所选选项。 选择“恢复”后，数据将恢复到相应的本地位置。
@@ -92,6 +92,6 @@ ms.locfileid: "91871313"
 
 阅读其他常见问题：
 
-* 有关 Azure VM 备份的[常见问题](backup-azure-vm-backup-faq.md)
+* 有关 Azure VM 备份的[常见问题](backup-azure-vm-backup-faq.yml)
 * 有关 Azure 备份代理的[常见问题](backup-azure-file-folder-backup-faq.md)
 

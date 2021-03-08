@@ -5,15 +5,15 @@ author: WenJason
 ms.service: storage
 ms.topic: troubleshooting
 origin.date: 09/13/2019
-ms.date: 01/18/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: efd63432b69d7feae3cb7a81e35b79a56fe9f196
-ms.sourcegitcommit: f086abe8bd2770ed10a4842fa0c78b68dbcdf771
+ms.openlocfilehash: e0a5e0a7993791bdff9075af42b1f3a1a017ee08
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98163157"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196299"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>在 Windows 中排查 Azure 文件存储问题 (SMB)
 
@@ -240,7 +240,7 @@ $leaseClient.Break() | Out-Null
 - 如果知道通过写入要扩展的最终文件大小，并且软件在文件的未写入结尾包含零时未出现兼容性问题，请提前设置文件大小，而不是让每次写入都成为扩展写入。
 - 使用正确的复制方法：
     - 为两个文件共享之间的任何传输使用 [AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fstorage%252ffiles%252ftoc.json)。
-    - 在本地计算机上的文件共享之间使用 [Robocopy](./storage-files-deployment-guide.md#robocopy)。
+    - 在本地计算机上的文件共享之间使用 [Robocopy](./storage-how-to-create-file-share.md)。
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>Windows 8.1 或 Windows Server 2012 R2 的注意事项
 

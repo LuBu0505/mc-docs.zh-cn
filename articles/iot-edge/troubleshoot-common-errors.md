@@ -4,20 +4,19 @@ description: 本文介绍了部署 IoT Edge 解决方案时遇到的问题的常
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-origin.date: 11/10/2020
-ms.date: 12/03/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: dd3a20567817fc66dc7cdc8c0385c5e27e73bf57
-ms.sourcegitcommit: 60e70acb6f9604aeef69d2027f7f96a1d7d5b248
+ms.openlocfilehash: cc85130d728eadf17b9f9f2a0cd107abdb6ac64a
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96541181"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196660"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常见问题和解决方法
 
@@ -175,7 +174,7 @@ warn: edgelet_utils::logging --     caused by: failed to create endpoint edgeHub
    ```json
    "edgeHub": {
        "settings": {
-           "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+           "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
            "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
        },
        "type": "docker",
@@ -189,7 +188,7 @@ warn: edgelet_utils::logging --     caused by: failed to create endpoint edgeHub
    ```json
    "edgeHub": {
        "settings": {
-           "image": "mcr.microsoft.com/azureiotedge-hub:1.0"
+           "image": "mcr.microsoft.com/azureiotedge-hub:1.1"
        },
        "type": "docker",
        "status": "running",
@@ -287,7 +286,7 @@ IoT Edge 中心是 IoT Edge 运行时的一部分，默认情况下已针对性�
 "edgeHub": {
   "type": "docker",
   "settings": {
-    "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+    "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
     "createOptions": <snipped>
   },
   "env": {

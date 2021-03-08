@@ -5,15 +5,15 @@ ms.service: azure-policy
 ms.topic: conceptual
 origin.date: 07/02/2020
 author: rockboyfor
-ms.date: 02/08/2021
+ms.date: 03/01/2021
 ms.author: v-yeche
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 551be8e8201d39d6dd717c30490d5874ec2dbaee
-ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
+ms.openlocfilehash: a6234a6421e93868d99cf6f1e11d9a774f2a7b44
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580531"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196568"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Azure 安全基准的 Azure Policy 安全基准
 

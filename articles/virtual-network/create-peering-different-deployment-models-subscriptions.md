@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/25/2020
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
 ms.reviewer: anavin
-ms.openlocfilehash: 78c61bb29f0302c01938a0ba7a8447d3df04145a
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: 1586c88ebd623b42d71e6dc7b8b325d8cff6bfec
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751040"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055268"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>创建虚拟网络对等互连 - 不同的部署模型和不同的订阅
 
@@ -47,11 +47,11 @@ ms.locfileid: "98751040"
 本教程为每个订阅使用不同的帐户。 如果使用的帐户可访问这两个订阅，则可使用相同帐户完成所有步骤，跳过注销门户的步骤，及为虚拟网络分配其他用户权限的步骤。
 
 1. 以 UserA 的身份登录 [Azure 门户](https://portal.azure.cn)。 用于登录的帐户必须拥有创建虚拟网络对等互连的必要权限。 有关权限列表，请参阅[虚拟网络对等互连权限](virtual-network-manage-peering.md#permissions)。
-2. 依次单击“+ 新建”、“网络”、“虚拟网络”。  
+2. 依次单击“+ 新建”、“网络”、“虚拟网络”。   
 3. 在“创建虚拟网络”边栏选项卡中，为以下设置输入或选择值，然后单击“创建”： 
     - **名称**：*myVnetA*
     - **地址空间**：*10.0.0.0/16*
-    - 子网名称：默认值
+    - 子网名称：默认值  
     - **子网地址范围**：*10.0.0.0/24*
     - **订阅**：选择订阅 A。
     - **资源组**：选择“新建”，然后输入 myResourceGroupA
@@ -69,7 +69,7 @@ ms.locfileid: "98751040"
 
     - **名称**：*myVnetB*
     - **地址空间**：*10.1.0.0/16*
-    - 子网名称：默认值
+    - 子网名称：默认值  
     - **子网地址范围**：*10.1.0.0/24*
     - **订阅**：选择订阅 B。
     - **资源组**：选择“新建”，然后输入 myResourceGroupB
@@ -77,9 +77,6 @@ ms.locfileid: "98751040"
 
 14. 在门户顶部的“搜索资源”框中键入 *myVnetB*。 单击出现在搜索结果中的“myVnetB”。 随即显示“myVnetB”虚拟网络的边栏选项卡。
 15. 在显示的“myVnetB”边栏选项卡中，单击左侧垂直选项列表中的“属性” 。 复制“资源 ID”，在稍后的步骤中使用。 资源 ID 类似于以下示例：`/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`
-    
-    <!--MOONCAKE: on \<Subscription ID\> when without the ` charactors-->
-    
 16. 完成 myVnetB 的步骤 5-9，输入步骤 8 中的 **UserA**。
 17. 以 UserB 的身份注销门户，然后以 UserA 的身份登录。
 18. 在门户顶部的“搜索资源”框中键入 *myVnetA*。 单击出现在搜索结果中的“myVnetA”。 随即显示“myVnet”虚拟网络的边栏选项卡。
@@ -119,7 +116,7 @@ ms.locfileid: "98751040"
 4. 必须使用 bash shell 和 Azure CLI（非经典 CLI）完成其余步骤。
 5. 将以下脚本复制到电脑上的文本编辑器。 将 `<SubscriptionB-Id>` 替换为订阅 ID。 如果不知道订阅 ID，请输入 `az account show` 命令。 输出中的 **id** 值就是订阅 ID。复制修改后的脚本，将其粘贴到 CLI 会话中，然后按 `Enter`。
     
-    <!--Notice: Previous contain azure login -->
+    [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
     
     ```azurecli
     az role assignment create \
@@ -346,6 +343,6 @@ ms.locfileid: "98751040"
 - 在针对生产用途创建虚拟网络对等互连之前，请充分熟悉重要的[虚拟网络对等互连约束和行为](virtual-network-manage-peering.md#requirements-and-constraints)。
 - 了解所有的[虚拟网络对等互连设置](virtual-network-manage-peering.md#create-a-peering)。
 
-<!--NOT Available on [create a hub and spoke network topology](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering)-->
+<!--NOT AVAILABLE on [create a hub and spoke network topology](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering)-->
 
-<!--Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

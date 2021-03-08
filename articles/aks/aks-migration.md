@@ -5,17 +5,17 @@ services: container-service
 ms.topic: article
 origin.date: 02/25/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 90cce1705662f61b9bb8aef48ec7ec22a3883b36
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: df34c9340ef7212b991de6ff381c18aa3e97e000
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023139"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054423"
 ---
 <!--Can be Release after confirmation-->
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>迁移到 Azure Kubernetes 服务 (AKS)
@@ -61,9 +61,8 @@ AKS 是一个托管服务，它提供独特的功能和较低的管理开销。 
 
 我们建议使用[虚拟机规模集](../virtual-machine-scale-sets/index.yml)和 [Azure 标准负载均衡器](./load-balancer-standard.md)支持的 AKS 群集，以确保获得[多个节点池](./use-multiple-node-pools.md)、[授权的 IP 范围](./api-server-authorized-ip-ranges.md)、[群集自动缩放程序](./cluster-autoscaler.md)等功能，以及已发布的其他新功能。
 
-<!--Not Avaialble on [Availability Zones](/availability-zones/az-overview)-->
-<!--Not Avaialble on [Azure Policy for AKS](../governance/policy/concepts/policy-for-kubernetes.md)-->
-
+<!--NOT AVAILABLE ON [Availability Zones](../availability-zones/az-overview.md)-->
+<!--NOT AVAILABLE ON [Azure Policy for AKS](../governance/policy/concepts/policy-for-kubernetes.md)-->
 
 [虚拟机可用性集](../virtual-machines/availability.md#availability-sets)支持的 AKS 群集缺少上述许多功能的支持。
 
@@ -118,7 +117,7 @@ az aks create \
 
 :::image type="content" source="media/operator-best-practices-bc-dr/aks-azure-traffic-manager.png" alt-text="将 AKS 与流量管理器配合使用":::
 
-<!--Not Avaialble on [Azure Front Door Service](/frontdoor/front-door-overview)-->
+<!--NOT AVAILABLE ON [Azure Front Door Service](../frontdoor/front-door-overview.md)-->
 
 ### <a name="considerations-for-stateless-applications"></a>无状态应用程序的注意事项
 
@@ -184,7 +183,7 @@ kubectl get deployment -o=yaml --export > deployments.yaml
 
 你可能需要将 AKS 群集移到 [AKS 支持的不同区域][region-availability]。 我们建议你在其他区域中创建一个新群集，然后将资源和应用程序部署到新群集。 此外，如果在 AKS 群集上运行任何服务（例如 Azure Dev Spaces），则还需要在新区域中的群集上安装和配置这些服务。
 
-<!--Not Available on [Azure Dev Spaces][azure-dev-spaces]-->
+<!--NOT AVAILABLE ON [Azure Dev Spaces][azure-dev-spaces]-->
 
 本文汇总了以下各项的迁移详细信息：
 
@@ -199,6 +198,6 @@ kubectl get deployment -o=yaml --export > deployments.yaml
 
 [region-availability]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service&regions=china-non-regional,china-east,china-east-2,china-north,china-north-2
 
-<!--Not Available on [azure-dev-spaces]: ../dev-spaces/index.yml-->
+<!--NOT AVAILABLE ON [azure-dev-spaces]: ../dev-spaces/index.yml-->
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

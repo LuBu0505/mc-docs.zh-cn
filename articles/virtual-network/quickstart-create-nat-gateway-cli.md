@@ -13,17 +13,17 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 origin.date: 02/18/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 886bb43fe8b4c344c9b9759b14f79b7287a554dd
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 8b5ee7106ca2eed8a1625977e1021ac1c21c7462
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230757"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102108429"
 ---
 <!--Verified successfully-->
 # <a name="create-a-nat-gateway-using-azure-cli"></a>使用 Azure CLI 创建 NAT 网关
@@ -32,9 +32,11 @@ ms.locfileid: "98230757"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-<!--Not Avaialble on using Azure Cloud Shell-->
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- 本文需要 Azure CLI 2.0.71 或更高版本。 
+- 本文需要 Azure CLI 2.0.71 或更高版本。
+
+    <!--NOT AVAILABLE ON Azure Cloud Shell-->
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
@@ -80,9 +82,9 @@ ms.locfileid: "98230757"
 - 一个公共 IP 池和公共 IP 前缀，供 NAT 网关资源转换的出站流使用。
 - 将空闲超时从默认值 4 分钟更改为 10 分钟。
 
-使用 [az network nat gateway create](https://docs.microsoft.com/cli/azure/network/nat/gateway#az_network_nat_gateway_create) 创建名为 **myNATgateway** 的全局 Azure NAT 网关。 该命令同时使用公共 IP 地址 **myPublicIP** 和公共 IP 前缀 **myPublicIPprefix**。 该命令将空闲超时更改为 **10** 分钟。
+使用 [az network nat gateway create](https://docs.azure.cn/cli/network/nat/gateway#az_network_nat_gateway_create) 创建名为 **myNATgateway** 的全局 Azure NAT 网关。 该命令同时使用公共 IP 地址 **myPublicIP** 和公共 IP 前缀 **myPublicIPprefix**。 该命令将空闲超时更改为 **10** 分钟。
 
-<!--CORRECT ON https://docs.microsoft.com/cli/azure/network/nat/gateway#az_network_nat_gateway_create-->
+<!--CORRECT ON https://docs.azure.cn/cli/network/nat/gateway#az_network_nat_gateway_create-->
 
 ```azurecli
   az network nat gateway create \
@@ -228,8 +230,6 @@ ssh <ip-address-destination>
 
 如果不再需要上述资源组及其包含的所有资源，可以使用 [az group delete](https://docs.azure.cn/cli/group#az_group_delete) 命令将其删除。
 
-<!--Not Available on Open an [Azure Cloud Shell](https://shell.azure.com) in your browser.-->
-
 ```azurecli 
   az group delete \
     --name myResourceGroupNAT
@@ -248,4 +248,4 @@ ssh <ip-address-destination>
 - 有关[使用 Azure 门户部署 NAT 网关资源](./quickstart-create-nat-gateway-portal.md)的快速入门。
 > [!div class="nextstepaction"]
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

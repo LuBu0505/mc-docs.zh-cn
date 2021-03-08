@@ -3,14 +3,14 @@ title: 使用顾问改进卓越运营
 description: 使用 Azure 顾问为 Azure 订阅优化和完善卓越运营。
 ms.topic: article
 origin.date: 10/24/2019
-ms.date: 11/13/2020
+ms.date: 03/04/2021
 ms.author: v-johya
-ms.openlocfilehash: 69c1cae2210025d9bdd4256f160120c22add978b
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: 5683396aaafeba64fd0b6120c821e1a0f8ee5573
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637940"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197406"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>使用 Azure 顾问实现卓越运营
 
@@ -40,7 +40,7 @@ Azure 顾问中的卓越运营建议可在以下方面帮助你：
 
 ## <a name="repair-invalid-log-alert-rules"></a>修复无效的日志警报规则
 
-Azure 顾问会检测在其条件部分指定了无效查询的警报规则。 可在 Azure Monitor 中创建日志警报规则，通过它们按指定的时间间隔运行分析查询。 查询结果决定了是否需要触发警报。 随着时间的推移，分析查询可能会因所引用资源、表或命令的变化而变得无效。 顾问会建议你更正警报规则中的查询以防止自动禁用，并确保监视你在 Azure 中的所有资源。 [详细了解如何排查警报规则问题。](../azure-monitor/platform/alerts-troubleshoot-log.md)
+Azure 顾问会检测在其条件部分指定了无效查询的警报规则。 可在 Azure Monitor 中创建日志警报规则，通过它们按指定的时间间隔运行分析查询。 查询结果决定了是否需要触发警报。 随着时间的推移，分析查询可能会因所引用资源、表或命令的变化而变得无效。 顾问会建议你更正警报规则中的查询以防止自动禁用，并确保监视你在 Azure 中的所有资源。 [详细了解如何排查警报规则问题。](../azure-monitor/alerts/alerts-troubleshoot-log.md)
 
 ## <a name="use-azure-policy-recommendations"></a>使用 Azure Policy 建议
 

@@ -13,12 +13,12 @@ ms.workload: ns
 origin.date: 06/16/2020
 ms.date: 07/20/2020
 ms.author: v-yiso
-ms.openlocfilehash: fa269957d443ce2d84af0b5d4af2de77ee272630
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 8c2964090177d8fb18315dbbafd4a0a49a942eef
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747173"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196848"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序读取该数据 (Python)
 
@@ -62,7 +62,7 @@ ms.locfileid: "96747173"
     **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
     ```azurecli
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
     ```
 
     记下如下所示的设备连接字符串：

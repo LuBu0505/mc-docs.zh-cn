@@ -12,17 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 03/30/2018
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1cf1e24d0e75f1958e347fefef36084fa334d004
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: eeb6be32f8df503a672dca86003788ded0090c42
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857104"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055298"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>适用于 Windows 的虚拟机扩展和功能
 
@@ -37,7 +37,7 @@ Azure 虚拟机 (VM) 扩展是小型应用程序，可在 Azure VM 上提供部�
 - 使用适用于 Windows 的 DSC 扩展将 PowerShell 所需状态配置应用到 VM。 有关详细信息，请参阅 [Azure Desired State configuration extension](dsc-overview.md)（Azure Desired State Configuration 扩展）。
 - 使用 Log Analytics 代理 VM 扩展配置 VM 监视功能。 有关详细信息，请参阅[将 Azure VM 连接到 Azure Monitor 日志](../../azure-monitor/learn/quick-collect-azurevm.md)。
     
-    <!--Not Availble on - Configure an Azure VM by using Chef.-->
+    <!--NOT AVAILABLE ON [Automating Azure VM deployment with Chef](https://docs.azure.cn/developer/chef/windows-vm-configure)-->
     
 - 使用 Datadog 扩展配置 Azure 基础结构监视功能。 有关详细信息，请参阅 [Datadog 博客](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)。
 
@@ -104,8 +104,6 @@ Get-Command Set-Az*Extension* -Module Az.Compute
 
 此命令的输出如下所示：
 
-<!--MOONCAKE: CORRECT ON 4.2.1 the latested Version -->
-
 ```powershell
 CommandType     Name                                          Version    Source
 -----------     ----                                          -------    ------
@@ -123,9 +121,6 @@ Cmdlet          Set-AzVMExtension                             4.5.0      Az.Comp
 Cmdlet          Set-AzVMSqlServerExtension                    4.5.0      Az.Compute
 Cmdlet          Set-AzVmssDiskEncryptionExtension             4.5.0      Az.Compute
 ```
-
-<!--MOONCAKE: CORRECT ON 4.2.1 the latest Version -->
-<!--The version checked is 4.2.1 by 08/24/2020-->
 
 以下示例使用自定义脚本扩展从 GitHub 存储库将脚本下载到目标虚拟机上，并运行该脚本。 有关自定义脚本扩展的详细信息，请参阅[自定义脚本扩展概述](custom-script-windows.md)。
 

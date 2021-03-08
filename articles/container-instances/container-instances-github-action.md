@@ -4,21 +4,21 @@ description: 配置一个 GitHub 操作，用于自动执行生成容器映像�
 ms.topic: article
 origin.date: 08/20/2020
 author: rockboyfor
-ms.date: 01/25/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 05/06/2020
 ms.author: v-yeche
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: c76bb9135c6fb1330d65b3f6dbdd09e365e4b6d4
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: 2a9b5e338caafe17a6c1e536a039cc726909e67e
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751347"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055227"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>配置 GitHub 操作以创建容器实例
 
-[Github 操作](https://docs.github.com/en/free-pro-team@latest/actions)是 GitHub 中的一个功能套件，可以在存储代码的同一位置自动执行软件开发工作流，并针对拉取请求和问题进行协作。
+[Github 操作](https://docs.github.com/en/actions)是 GitHub 中的一个功能套件，可以在存储代码的同一位置自动执行软件开发工作流，并针对拉取请求和问题进行协作。
 
 使用 GitHub 操作[部署到 Azure 容器实例](https://github.com/azure/aci-deploy)可以自动将单个容器部署到 Azure 容器实例。 该操作可为容器实例设置属性（类似于在 [az container create][az-container-create] 命令中设置的属性）。
 
@@ -64,7 +64,7 @@ ms.locfileid: "98751347"
 首先获取你的资源组的资源 ID。 请将以下 [az group show][az-group-show] 命令中的占位符替换为你的组名称：
 
 ```azurecli
-$groupId=$(az group show \
+groupId=$(az group show \
   --name <resource-group-name> \
   --query id --output tsv)
 ```
@@ -188,7 +188,7 @@ az role assignment create \
 
 :::image type="content" source="./media/container-instances-github-action/github-action-progress.png" alt-text="查看工作流进度":::
 
-若要了解如何查看工作流中每个步骤的状态和结果，请参阅[查看工作流运行历史记录](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/viewing-workflow-run-history)。 如果工作流未完成，请参阅[查看日志以诊断故障](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/using-workflow-run-logs#viewing-logs-to-diagnose-failures)。
+若要了解如何查看工作流中每个步骤的状态和结果，请参阅[查看工作流运行历史记录](https://docs.github.com/en/actions/managing-workflow-runs/viewing-workflow-run-history)。 如果工作流未完成，请参阅[查看日志以诊断故障](https://docs.github.com/en/actions/managing-workflow-runs/using-workflow-run-logs#viewing-logs-to-diagnose-failures)。
 
 工作流成功完成后，运行 [az container show][az-container-show] 命令获取有关名为 *aci-sampleapp* 的容器实例的信息。 替换为你的资源组名称： 
 
@@ -231,8 +231,6 @@ az extension add \
   --name deploy-to-azure
 ```
 
-<!--CORRECT ON https://docs.azure.cn/cli/azure-cli-extensions-overview-->
-
 有关查找、安装和管理扩展的信息，请参阅[在 Azure CLI 中使用扩展](https://docs.azure.cn/cli/azure-cli-extensions-overview)。
 
 ### <a name="run-az-container-app-up"></a>运行 `az container app up`
@@ -252,7 +250,7 @@ az container app up \
 
 ### <a name="command-progress"></a>命令进度
 
-* 出现提示时，请提供你的 GitHub 凭据，或提供具有“存储库”和“用户”作用域的 [GitHub 个人访问令牌](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) (PAT)，以便向 GitHub 帐户进行身份验证 。 如果提供了 GitHub 凭据，该命令将为你创建一个 PAT。 按照附加提示配置工作流。
+* 出现提示时，请提供你的 GitHub 凭据，或提供具有“存储库”和“用户”作用域的 [GitHub 个人访问令牌](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) (PAT)，以便向 GitHub 帐户进行身份验证 。 如果提供了 GitHub 凭据，该命令将为你创建一个 PAT。 按照附加提示配置工作流。
 
 * 该命令将为工作流创建存储库机密：
 
@@ -273,7 +271,7 @@ Workflow succeeded
 Your app is deployed at:  http://acr-build-helloworld-node.chinaeast2.azurecontainer.console.azure.cn:8080/
 ```
 
-若要在 GitHub UI 中查看每个步骤的工作流状态和结果，请参阅[查看工作流运行历史记录](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/viewing-workflow-run-history)。
+若要在 GitHub UI 中查看每个步骤的工作流状态和结果，请参阅[查看工作流运行历史记录](https://docs.github.com/en/actions/managing-workflow-runs/viewing-workflow-run-history)。
 
 ### <a name="validate-workflow"></a>验证工作流
 
@@ -324,7 +322,7 @@ az group delete \
 
 <!-- LINKS - internal -->
 
-[azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli
+[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli
 [az-group-show]: https://docs.azure.cn/cli/group#az_group_show
 [az-group-delete]: https://docs.azure.cn/cli/group#az_group_delete
 [az-ad-sp-create-for-rbac]: https://docs.azure.cn/cli/ad/sp#az_ad_sp_create_for_rbac
@@ -337,4 +335,4 @@ az group delete \
 [az-container-app-up]: https://docs.microsoft.com/cli/azure/ext/deploy-to-azure/container/app#ext_deploy_to_azure_az_container_app_up
 
 <!--CORRECT ON [az-container-app-up]: https://docs.microsoft.com/cli/azure/ext/deploy-to-azure/container/app#ext_deploy_to_azure_az_container_app_up-->
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

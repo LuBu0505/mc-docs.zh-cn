@@ -4,15 +4,15 @@ description: 为 SDK 编写遥测处理器和遥测初始化表达式，以在�
 ms.topic: conceptual
 origin.date: 11/23/2016
 author: Johnnytechn
-ms.date: 11/10/2020
+ms.date: 02/22/2021
 ms.author: v-johya
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7c929e5503fbf0905e1f487c20377818adbb9bed
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: 90e1e5810febe4dbe0c557b410c3b18efd315b1c
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637929"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197545"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK 中的筛选和预处理遥测
 
@@ -500,7 +500,7 @@ public void Initialize(ITelemetry telemetry)
 
 #### <a name="add-information-from-httpcontext"></a>从 HttpContext 添加信息
 
-下面的初始化表达式示例从 [`HttpContext`](https://docs.microsoft.com/aspnet/core/fundamentals/http-context?view=aspnetcore-3.1) 读取数据并将其附加到 `RequestTelemetry` 实例。 `IHttpContextAccessor` 是通过构造函数依赖项注入自动提供的。
+下面的初始化表达式示例从 [`HttpContext`](https://docs.microsoft.com/aspnet/core/fundamentals/http-context) 读取数据并将其附加到 `RequestTelemetry` 实例。 `IHttpContextAccessor` 是通过构造函数依赖项注入自动提供的。
 
 ```csharp
 public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer

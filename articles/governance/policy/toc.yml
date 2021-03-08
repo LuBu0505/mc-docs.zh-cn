@@ -20,6 +20,9 @@
     - name: 分配策略 - .NET
       displayName: 'assign, compliance'
       href: ./assign-policy-dotnet.md
+    - name: 分配策略 - JavaScript
+      displayName: 'assign, compliance'
+      href: ./assign-policy-javascript.md
     - name: 分配策略 - Python
       displayName: 'assign, compliance'
       href: ./assign-policy-python.md
@@ -145,7 +148,7 @@
     - name: 修正不符合资源
       displayName: 'managed identity, task, definition, roleDefinitionIds'
       href: ./how-to/remediate-resources.md
-- name: 疑难解答
+- name: 故障排除
   items:
     - name: 常见问题
       href: ./troubleshoot/general.md
@@ -154,7 +157,7 @@
 - name: 参考
   items:
     - name: Azure CLI
-      href: /cli/policy
+      href: 'https://docs.azure.cn/cli/policy'
     - name: Azure PowerShell
       items:
         - name: 策略
@@ -166,15 +169,15 @@
     - name: 用于 .NET 的 Azure SDK
       items:
         - name: 分配
-          href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
+          href: 'https://docs.azure.cn/dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment'
         - name: 策略定义
-          href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+          href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition'
     - name: 用于 Java 的 Azure SDK
       items:
         - name: 分配
-          href: 'https://docs.microsoft.com/java/api/com.microsoft.azure.management.resources.policyassignment'
+          href: 'https://docs.azure.cn/java/api/com.microsoft.azure.management.resources.policyassignment'
         - name: 策略定义
-          href: 'https://docs.microsoft.com/java/api/com.microsoft.azure.management.resources.PolicyDefinitions'
+          href: 'https://docs.azure.cn/java/api/com.microsoft.azure.management.resources.PolicyDefinitions'
     - name: 用于 JavaScript 的 Azure SDK
       items:
         - name: 策略
@@ -210,13 +213,7 @@
         - name: 来宾配置
           href: 'https://docs.microsoft.com/rest/api/guestconfiguration/'
     - name: 资源管理器模板
-      items:
-        - name: 分配
-          href: /azure/templates/microsoft.authorization/policyassignments
-        - name: 策略定义
-          href: 'https://docs.microsoft.com/azure/templates/microsoft.authorization/policydefinitions'
-        - name: 计划定义
-          href: 'https://docs.microsoft.com/azure/templates/microsoft.authorization/policysetdefinitions'
+      items: null
     - name: Terraform 资源
       items:
         - name: 分配
@@ -248,6 +245,6 @@
     - name: 反馈和支持
       items:
         - name: Azure 支持工单
-          href: 'https://support.azure.cn/support/contact'
+          href: 'https://support.azure.cn/support/support-azure/'
     - name: 定价计算器
       href: 'https://www.azure.cn/pricing/calculator/'

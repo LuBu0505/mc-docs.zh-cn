@@ -10,12 +10,12 @@ ms.date: 11/30/2020
 ms.testscope: yes
 ms.testdate: 07/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5ef6d8aecee41e29b009344a5bece4133bfb7cf9
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: fa88a001ad12240bcfa94505545681d7a56d3f8f
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432662"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054417"
 ---
 <!--Verified successfully on 09/07/2020-->
 <!--Verified from the renamed articles-->
@@ -98,5 +98,4 @@ ms.locfileid: "96432662"
 > [!div class="nextstepaction"]
 > [使用 NSG](bastion-nsg.md)
 
-<!-- Update_Description: new article about tutorial create host portal -->
-<!--NEW.date: 11/02/2020-->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -4,15 +4,15 @@ description: 了解如何在 Application Insights 中设置 Web 测试。 当网
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 01/12/2021
+ms.date: 02/22/2021
 origin.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: b941fb9a781515ded7f27a378c8951a4de9d7283
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 59902ff90e6820edf79ca088209044b0c95b4756
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230835"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197448"
 ---
 # <a name="availability-alerts"></a>可用性警报
 
@@ -25,7 +25,7 @@ ms.locfileid: "98230835"
 ![创建体验](./media/availability-alerts/create-test.png)
 
 > [!NOTE]
->  使用[新的统一警报](../platform/alerts-overview.md)时，必须在警报体验中配置预警规则严重性和[操作组](../platform/action-groups.md)的通知首选项。 如果不执行以下步骤，则只会收到门户内通知。
+>  使用[新的统一警报](../alerts/alerts-overview.md)时，必须在警报体验中配置预警规则严重性和[操作组](../alerts/action-groups.md)的通知首选项。 如果不执行以下步骤，则只会收到门户内通知。
 
 1. 保存可用性测试后，在详细信息选项卡上单击你刚才所做的测试旁边的省略号。 单击“编辑警报”。
 
@@ -40,7 +40,7 @@ ms.locfileid: "98230835"
 
 ### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>当 Y 个位置中有 X 个报告失败时发出警报
 
-创建新的可用性测试时，会在[新的统一警报体验](../platform/alerts-overview.md)中默认启用“Y 个位置中的 X 个”警报规则。 可通过选择“经典”选项或选择禁用该警报规则来选择退出。
+创建新的可用性测试时，会在[新的统一警报体验](../alerts/alerts-overview.md)中默认启用“Y 个位置中的 X 个”警报规则。 可通过选择“经典”选项或选择禁用该警报规则来选择退出。
 
 > [!NOTE]
 > 通过执行上述步骤，将操作组配置为在警报触发时接收通知。 如果不执行此步骤，则在规则触发时只会收到门户内通知。
@@ -48,7 +48,7 @@ ms.locfileid: "98230835"
 
 ### <a name="alert-on-availability-metrics"></a>根据可用性指标发出警报
 
-使用[新的统一警报](../platform/alerts-overview.md)时，可以根据分段聚合可用性发出警报以及测试持续时间指标：
+使用[新的统一警报](../alerts/alerts-overview.md)时，可以根据分段聚合可用性发出警报以及测试持续时间指标：
 
 1. 在指标体验中选择 Application Insights 资源，然后选择可用性指标：
 
@@ -58,7 +58,7 @@ ms.locfileid: "98230835"
 
 ### <a name="alert-on-custom-analytics-queries"></a>根据自定义分析查询发出警报
 
-使用[新的统一警报](../platform/alerts-overview.md)时，可以根据[自定义日志查询](../platform/alerts-unified-log.md)发出警报。 借助自定义查询，可以在有助于获得最可靠的可用性问题信号的任意条件下发出警报。 如果使用 TrackAvailability SDK 发送自定义可用性结果，这同样适用。
+使用[新的统一警报](../alerts/alerts-overview.md)时，可以根据[自定义日志查询](../alerts/alerts-unified-log.md)发出警报。 借助自定义查询，可以在有助于获得最可靠的可用性问题信号的任意条件下发出警报。 如果使用 TrackAvailability SDK 发送自定义可用性结果，这同样适用。
 
 > [!Tip]
 > 可用性数据的指标包括可能通过调用我们的 TrackAvailability SDK 提交的任何自定义可用性结果。 可以使用“根据指标发出警报”支持根据自定义可用性结果发出警报。
@@ -66,7 +66,7 @@ ms.locfileid: "98230835"
 
 ## <a name="automate-alerts"></a>自动发送警报
 
-若要使用 Azure 资源管理器模板自动执行此过程，请参阅[使用资源管理器模板创建指标警报](../platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert)文档。
+若要使用 Azure 资源管理器模板自动执行此过程，请参阅[使用资源管理器模板创建指标警报](../alerts/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert)文档。
 
 ## <a name="troubleshooting"></a>故障排除
 

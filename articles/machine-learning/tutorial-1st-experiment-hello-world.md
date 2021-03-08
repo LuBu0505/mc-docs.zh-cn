@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 9db4b90c0176cb2d6dd8b96b3ac9ee821249e2dc
-ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
+ms.openlocfilehash: cd361077d0aefbbe81897ab66e7f4f55667b755f
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804367"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196830"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>教程：运行“Hello world!” Python 脚本（第 2 部分，共 4 部分）
 
@@ -48,15 +48,7 @@ print("Hello world!")
 
 你的项目目录结构现在将如下所示：
 
-```Bash
-tutorial
-└──.azureml
-|  └──config.json
-└──src
-|  └──hello.py
-└──01-create-workspace.py
-└──02-create-compute.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-hello-world/directory-structure.png" alt-text="目录结构显示 src 子目录中的 hello.py":::
 
 
 ### <a name="test-your-script-locally"></a><a name="test"></a>在本地测试你的脚本

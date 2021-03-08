@@ -15,12 +15,12 @@ origin.date: 06/21/2019
 ms.date: 04/06/2020
 ms.author: v-yiso
 ms.custom: mvc
-ms.openlocfilehash: 53ee3efe6d4a22e3b013ebce7ef8e946e1ad5c5e
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 528a70cb7f19acff897cb63db0a27836873e110c
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830085"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196796"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -73,11 +73,11 @@ az extension add --name azure-iot
 # Create a resource group:
 az group create --name tutorial-iot-hub-rg --location $location
 
-# Create your free-tier IoT Hub. You can only have one free IoT Hub per subscription:
-az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
+# Create your free-tier IoT Hub. You can only have one free IoT Hub per subscription.
+az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --partition-count 2 --sku F1
 
 # Make a note of the service connection string, you need it later:
-az iot hub show-connection-string --name $hubname --policy-name service -o table
+az iot hub connection-string show --name $hubname --policy-name service -o table
 
 ```
 
@@ -91,7 +91,8 @@ hubname=tutorial-iot-hub
 az iot hub device-identity create --device-id MyTwinDevice --hub-name $hubname --resource-group tutorial-iot-hub-rg
 
 # Retrieve the device connection string, you need this later:
-az iot hub device-identity show-connection-string --device-id MyTwinDevice --hub-name $hubname --resource-group tutorial-iot-hub-rg -o table
+az iot hub device-identity connection-string show --device-id MyTwinDevice --hub-name $hubname --resource-group tutorial-iot-hub-rg -o table
+
 ```
 
 ## <a name="send-state-information"></a>发送状态信息
@@ -127,7 +128,7 @@ client.getTwin(function(err, twin) {
 
 ### <a name="sample-desired-properties"></a>所需属性示例
 
-可以使用对应用程序有利的任何方式来构建所需属性。 本示例使用一个名为 **fanOn** 的顶级属性，并将剩余的属性分组到单独的 **组件** 中。 以下 JSON 片段显示了本教程所用的所需属性的结构：
+可以使用对应用程序有利的任何方式来构建所需属性。 本示例使用一个名为 **fanOn** 的顶级属性，并将剩余的属性分组到单独的 **组件** 中。 以下 JSON 片段显示了本教程所用的所需属性的结构。 JSON 位于 desired.json 文件中。
 
 ```
 {

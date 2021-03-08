@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 011735ac6f71596812c417fa8250235d1ced1e27
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: 737684f5e6ad2ed4bad9a666cecb1560dd165c9c
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97104497"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196703"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>执行数据科学任务：探索、建模和部署
 
@@ -43,7 +43,7 @@ Azure 机器学习等产品还提供了[高级数据准备](../how-to-create-reg
 生成多个模型后，往往需要配置一个系统来注册和管理这些模型。 通常，需要创建脚本或 API 的组合，以及后端数据库或版本控制系统。 可考虑用于这些管理任务的几个选项包括：
 
 1. [Azure 机器学习 - 模型管理服务](../index.yml)
-2. [MIT 提供的 ModelDB](http://modeldb.csail.mit.edu:3000/projects) 
+2. [MIT 提供的 ModelDB](https://people.csail.mit.edu/mvartak/papers/modeldb-hilda.pdf) 
 3. [用作模型管理系统的 SQL-Server](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 

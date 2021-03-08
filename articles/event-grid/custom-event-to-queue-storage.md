@@ -3,15 +3,15 @@ title: 快速入门：将自定义事件发送到存储队列 - 事件网格、A
 description: 快速入门：使用 Azure 事件网格和 Azure CLI 发布一个主题，然后订阅该事件。 存储队列用于终结点。
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 12/01/2020
+ms.date: 03/05/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 196598223d253313d15c7161c192b7cba5d27c0f
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: 0cb817e34bab539502d9d9ebfa9aa22fc6a41b15
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431912"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197501"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>快速入门：使用 Azure CLI 和事件网格将自定义事件路由到 Azure 队列存储
 
@@ -118,6 +118,11 @@ done
 导航到门户中的队列存储，请注意，事件网格会将这三个事件发送到队列。
 
 ![显示消息](./media/custom-event-to-queue-storage/messages.png)
+
+> [!NOTE]
+> 如果对从事件网格接收消息的队列使用 [Azure Functions 的 Azure 队列存储触发器](../azure-functions/functions-bindings-storage-queue-trigger.md)，那么在执行函数时，你可能会看到以下错误消息：`The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.`
+> 
+> 原因是当你使用 [Azure 队列存储触发器](../azure-functions/functions-bindings-storage-queue-trigger.md)时，Azure Functions 需要使用 base64 编码的字符串，但事件网格以纯文本格式将消息发送到存储队列。 目前，无法将 Azure Functions 的队列触发器配置为接受纯文本。 
 
 
 ## <a name="clean-up-resources"></a>清理资源

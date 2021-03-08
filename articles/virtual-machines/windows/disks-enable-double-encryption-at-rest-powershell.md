@@ -3,7 +3,7 @@ title: Azure PowerShell - 启用静态双重加密 - 托管磁盘
 description: 使用 Azure PowerShell 为托管磁盘数据启用静态双重加密。
 origin.date: 08/24/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 01/04/2021
 ms.topic: how-to
@@ -11,12 +11,12 @@ ms.author: v-yeche
 ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 365f8761f5519bb9e9e876b862d467054911e2df
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: b46e5d2044d2de9b4de8948322b0a0ccfee9f782
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857684"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053966"
 ---
 <!--Verified successfully-->
 # <a name="use-the-azure-powershell-module-to-enable-double-encryption-at-rest-for-managed-disks"></a>使用 Azure PowerShell 模块为托管磁盘启用静态双重加密
@@ -25,16 +25,15 @@ Azure 磁盘存储支持对托管磁盘的静态双重加密。 有关静态双�
 
 ## <a name="prerequisites"></a>先决条件
 
-安装最新的 [Azure PowerShell 版本](https://docs.microsoft.com/powershell/azure/install-az-ps)，并使用 [Connect-AzAccount -Environment AzureChinaCloud](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-4.3.0) 登录到 Azure 帐户。
+安装最新的 [Azure PowerShell 版本](https://docs.microsoft.com/powershell/azure/install-az-ps)，并使用 [Connect-AzAccount -Environment AzureChinaCloud](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) 登录到 Azure 帐户。
 
 ## <a name="getting-started"></a>入门
 
 1. 创建 Azure Key Vault 和加密密钥的实例。
 
     创建 Key Vault 实例时，必须启用软删除和清除保护。 软删除可确保 Key Vault 在给定的保留期（默认为 90 天）内保留已删除的密钥。 清除保护可确保在保留期结束之前，无法永久删除已删除的密钥。 这些设置可防止由于意外删除而丢失数据。 使用 Key Vault 加密托管磁盘时，这些设置是必需的。
-    
-    
-    <!--CORRECT TO REMOVE -EnableSoftDelete -->
+
+    <!--CORRECT DEFAULT VALUE IS -EnableSoftDelete -->
     
     ```powershell
     $ResourceGroupName="yourResourceGroupName"
@@ -78,5 +77,4 @@ Azure 磁盘存储支持对托管磁盘的静态双重加密。 有关静态双�
 - [Azure PowerShell - 使用客户管理的密钥进行服务器端加密 - 托管磁盘](disks-enable-customer-managed-keys-powershell.md)
 - [Azure 资源管理器模板示例](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/DoubleEncryption)
 
-<!-- Update_Description: new article about disks enable double encryption at rest powershell -->
-<!--NEW.date: 01/04/2021-->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -11,17 +11,17 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 origin.date: 03/20/2018
 author: rockboyfor
-ms.date: 10/05/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4104cc31ba65285e9e19dca048e57a754a4c0b53
-ms.sourcegitcommit: 29a49e95f72f97790431104e837b114912c318b4
+ms.openlocfilehash: 2d7b5a3d281261cf86afe515022aac82427f9602
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91564590"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102108745"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance-script-sample"></a>通过网络虚拟设备脚本示例路由流量
 
@@ -29,13 +29,13 @@ ms.locfileid: "91564590"
 
 可以通过本地 PowerShell 安装来执行脚本。 如果在本地使用 PowerShell，则此脚本需要 Az PowerShell 模块 5.4.1 或更高版本。 要查找已安装的版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 来创建与 Azure 的连接。
 
-<!--Not Available on the Azure [Cloud Shell](https://shell.azure.com/powershell)-->
+<!--NOT AVIALABLE on the Azure [Cloud Shell](https://shell.azure.com/powershell)-->
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="sample-script"></a>示例脚本
 
-<!--[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]-->
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ```powershell
 # Variables for common values
@@ -158,4 +158,4 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 可在[虚拟网络 PowerShell 示例](../powershell-samples.md)中查找其他虚拟网络 PowerShell 脚本示例。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

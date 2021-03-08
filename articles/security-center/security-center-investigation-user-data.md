@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/13/2020
+ms.date: 02/25/2021
 ms.author: v-johya
-ms.openlocfilehash: d6d7be9dfa27744980e49c1d51dedc56bb26917b
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: 5b7d6736036b4f9c466cc9b2e85bd72a9b14db2d
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94638288"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197519"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>管理在 Azure 安全中心调查中找到的用户数据
-本文提供有关如何管理在 Azure 安全中心调查功能中找到的用户数据的信息。 调查数据存储在 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)中并在安全中心公开。 管理用户数据包括导出或删除数据的能力。
+本文提供有关如何管理在 Azure 安全中心调查功能中找到的用户数据的信息。 调查数据存储在 [Azure Monitor 日志](../azure-monitor/logs/log-query-overview.md)中并在安全中心公开。 管理用户数据包括导出或删除数据的能力。
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
@@ -57,5 +57,5 @@ https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 有关管理用户数据的详细信息，请参阅[管理 Azure 安全中心的用户数据](security-center-privacy.md)。
-若要详细了解如何删除 Azure Monitor 日志中的专用数据，请参阅[如何导出和删除专用数据](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)。
+若要详细了解如何删除 Azure Monitor 日志中的专用数据，请参阅[如何导出和删除专用数据](../azure-monitor/logs/personal-data-mgmt.md#how-to-export-and-delete-private-data)。
 

@@ -8,12 +8,12 @@ ms.testscope: no
 ms.testdate: ''
 ms.topic: quickstart
 ms.author: v-yeche
-ms.openlocfilehash: 5c37e66c6b53efdb2ba2f7aa0063c4e15e61aacf
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: b2f63486fa559191d903ecc0669f07cced88ed72
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022920"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053288"
 ---
 <!--Verified successfully-->
 <!--REASON: IS NOT PRIVATE PREVIEW TILL ON 01/06/2021-->
@@ -75,7 +75,6 @@ ms.locfileid: "98022920"
     }
   ],
   "outputs": {
-    "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
     "storageAccountName": {
       "type": "string",
       "value": "[variables('storageAccountName')]"
@@ -83,6 +82,8 @@ ms.locfileid: "98022920"
   }
 }
 ```
+
+<!--MOONCAKE: OUTPUTS SECTION CAN NOT CONTAINS "storageAccountEndPoint": "https://core.chinacloudapi.cn"-->
 
 ## <a name="create-template-spec"></a>创建模板规格
 
@@ -192,7 +193,6 @@ ms.locfileid: "98022920"
                     }
                   },
                   "variables": {
-                    "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
                     "storageAccountName": "[[concat('store', uniquestring(resourceGroup().id))]"
                   },
                   "resources": [
@@ -209,7 +209,6 @@ ms.locfileid: "98022920"
                     }
                   ],
                   "outputs": {
-                    "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
                     "storageAccountName": {
                       "type": "string",
                       "value": "[[variables('storageAccountName')]"
@@ -434,7 +433,6 @@ ms.locfileid: "98022920"
     }
   },
   "variables": {
-    "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
     "storageAccountName": "[concat(parameters('namePrefix'), uniquestring(resourceGroup().id))]"
   },
   "resources": [
@@ -451,7 +449,6 @@ ms.locfileid: "98022920"
     }
   ],
   "outputs": {
-    "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
     "storageAccountName": {
       "type": "string",
       "value": "[variables('storageAccountName')]"
@@ -584,7 +581,6 @@ ms.locfileid: "98022920"
                     }
                   },
                   "variables": {
-                    "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
                     "storageAccountName": "[[concat(parameters('namePrefix'), uniquestring(resourceGroup().id))]"
                   },
                   "resources": [
@@ -601,7 +597,6 @@ ms.locfileid: "98022920"
                     }
                   ],
                   "outputs": {
-                    "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
                     "storageAccountName": {
                       "type": "string",
                       "value": "[[variables('storageAccountName')]"

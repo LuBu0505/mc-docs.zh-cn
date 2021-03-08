@@ -6,20 +6,20 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: tutorial
 ms.workload: infrastructure
-ms.date: 12/01/2020
+ms.date: 03/04/2021
 ms.author: v-johya
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: 9fda4937466fb6c588353c8729dfc6ccc994e6aa
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 132d3e8ee437620cb8f9a920a80836ad5c125eb5
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747117"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197579"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>教程：使用 Azure CLI 创建 Azure VM 的自定义映像
 
-自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动配置，例如预加载应用程序、应用程序配置和其他 OS 配置。 在本教程中，你将创建自己的 Azure 虚拟机自定义映像。 学习如何：
+自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动配置，例如预加载应用程序、应用程序配置和其他 OS 配置。 在本教程中，你将创建自己的 Azure 虚拟机自定义映像。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建共享映像库
@@ -35,7 +35,7 @@ ms.locfileid: "96747117"
 
 ## <a name="overview"></a>概述
 
-[共享映像库](shared-image-galleries.md)大大简化了整个组织中的自定义映像共享。 自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动配置，例如预加载应用程序、应用程序配置和其他 OS 配置。 
+[共享映像库](../shared-image-galleries.md)大大简化了整个组织中的自定义映像共享。 自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动配置，例如预加载应用程序、应用程序配置和其他 OS 配置。 
 
 共享映像库可让你与他人共享自定义 VM 映像。 选择要共享哪些映像，要在哪些区域中共享，以及希望与谁共享它们。 
 
@@ -43,7 +43,7 @@ ms.locfileid: "96747117"
 
 [!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 下列步骤详细说明如何将现有 VM 转换为可重用自定义映像，以便将其用于创建新 VM 实例。
 
@@ -83,13 +83,13 @@ az vm get-instance-view -g MyResourceGroup -n MyVm --query id
 
 映像定义为映像创建一个逻辑分组。 它们用于管理有关映像版本的信息，这些版本是在其中创建的。 
 
-映像定义名称可以由大写或小写字母、数字、点、短划线和句点构成。 
+映像定义名称可能包含大写或小写字母、数字、点、短划线和句点。 
 
-若要详细了解可为映像定义指定的值，请参阅[映像定义](./shared-image-galleries.md#image-definitions)。
+若要详细了解可为映像定义指定的值，请参阅[映像定义](../shared-image-galleries.md#image-definitions)。
 
 使用 [az sig image-definition create](https://docs.microsoft.com/cli/sig/image-definition#az-sig-image-definition-create) 在库中创建一个映像定义。 
 
-在此示例中，映像定义名为 myImageDefinition，适用于[专用化](./shared-image-galleries.md#generalized-and-specialized-images) Linux OS 映像。 
+在此示例中，映像定义名为 myImageDefinition，适用于[专用化](../shared-image-galleries.md#generalized-and-specialized-images) Linux OS 映像。 
 
 ```azurecli 
 az sig image-definition create \
@@ -111,7 +111,8 @@ az sig image-definition create \
 
 允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
-在此示例中，映像的版本为 1.0.0，并且我们打算使用区域冗余存储在“中国北部”区域创建 2 个副本，在“中国东部区域”创建 1 个副本，在“中国东部 2”区域创建 1 个副本   。 复制区域必须包含源 VM 所在的区域。
+<!--Not available in MC: standard_zrs-->
+在此示例中，映像的版本为 *1.0.0*，并且我们打算使用本地冗余存储在“中国北部”区域创建 2 个副本，在“中国东部区域”创建 1 个副本，在“中国东部 2”区域创建 1 个副本。 复制区域必须包含源 VM 所在的区域。
 
 请将此示例中的 `--managed-image` 值替换为上一步的 VM ID。
 
@@ -121,7 +122,7 @@ az sig image-version create \
    --gallery-name myGallery \
    --gallery-image-definition myImageDefinition \
    --gallery-image-version 1.0.0 \
-   --target-regions "chinanorth" "chinaeast=1" "chinaeast2=1=standard_zrs" \
+   --target-regions "chinanorth" "chinaeast=1" "chinaeast2=1=standard_lrs" \
    --replica-count 2 \
    --managed-image "/subscriptions/<Subscription ID>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"
 ```
@@ -177,7 +178,7 @@ az role assignment create \
 <!--Not available in MC currently-->
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已创建自定义 VM 映像。 你已了解如何：
+在本教程中，已创建自定义 VM 映像。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建共享映像库

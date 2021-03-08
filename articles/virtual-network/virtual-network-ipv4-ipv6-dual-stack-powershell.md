@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 03/31/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/22/2021
 ms.author: v-yeche
-ms.openlocfilehash: 7c65ae30731f7d74fb8e5f365d643fa72123efbe
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: d8d998996f27e5f318d2bcfcee228ca282bc376e
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570675"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053761"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---powershell"></a>部署使用基本负载均衡器的 IPv6 双堆栈应用程序 - PowerShell
 
@@ -27,9 +27,9 @@ ms.locfileid: "98570675"
 
 若要部署使用标准负载均衡器的双堆栈 (IPV4 + IPv6) 应用程序，请参阅[使用 Azure PowerShell 部署具有标准负载均衡器的 IPv6 双堆栈应用程序](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)。
 
-<!--Not Suitable for following global [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]-->
+<!--NOT AVAILABLE ON [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)-->
 
-如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell 模块 6.9.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 来创建与 Azure 的连接。
+如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell 模块 6.9.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 来创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -284,7 +284,7 @@ $vnet = New-AzVirtualNetwork `
 
 ### <a name="create-virtual-machines"></a>创建虚拟机
 
-使用 [New-AzureRmNetworkInterface](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 设置 VM 的管理员用户名和密码：
+使用 [New-AzureRmNetworkInterface](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential) 设置 VM 的管理员用户名和密码：
 
 ```powershell
 $cred = get-credential -Message "DUAL STACK VNET SAMPLE:  Please enter the Administrator credential to log into the VMs."
@@ -363,4 +363,4 @@ Remove-AzResourceGroup -Name dsRG1
 
 在本文中，你已使用双重前端 IP 配置（IPv4 和 IPv6）创建了一个基本负载均衡器。 你还创建了两个虚拟机，它们包含采用双重 IP 配置（IPV4 + IPv6）的 NIC，并已添加到负载均衡器的后端池。 若要详细了解 Azure 虚拟网络中的 IPv6 支持，请参阅 [Azure 虚拟网络 IPv6 是什么？](ipv6-overview.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

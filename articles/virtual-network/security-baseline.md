@@ -5,17 +5,17 @@ ms.service: virtual-network
 ms.topic: conceptual
 origin.date: 10/01/2020
 author: rockboyfor
-ms.date: 02/08/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 10/26/2020
 ms.author: v-yeche
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b0b93bb86d325c301730944cc7e8e58fad80163a
-ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
+ms.openlocfilehash: abacbe5b83293efb8b769a6e967cc00628fccda0
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580529"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053968"
 ---
 <!--Verified Successfully-->
 # <a name="azure-security-baseline-for-virtual-network"></a>虚拟网络的 Azure 安全基线

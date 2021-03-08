@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.topic: include
 origin.date: 04/02/2020
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 0331c6d9474d27e6749507dfcf67570e980852fc
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 73aa5739e53595e6e8aff862580626fc28ebb4d5
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063688"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055173"
 ---
 <!--Verified successfully by PG team-->
 1. 登录到 [Azure 门户](https://portal.azure.cn/)并导航到要拍摄快照的磁盘。

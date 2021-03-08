@@ -10,14 +10,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/21/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/22/2021
 ms.author: v-yeche
-ms.openlocfilehash: 3bfeb721e70379c0fe526faed87843fc1be6aefd
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: 702d5a9f19c5c834f9e13ba63db002e55ca3b157
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570643"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053755"
 ---
 <!--Verified successfuly on Charactor content-->
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Azure 存储的虚拟网络服务终结点策略
@@ -34,13 +34,13 @@ ms.locfileid: "98570643"
 
 - __改进了发往 Azure 存储的虚拟网络流量的安全性__
 
-  使用[网络安全组的 Azure 服务标记](https://docs.azure.cn/virtual-network/security-overview#service-tags)可以只允许将虚拟网络出站流量发往特定 Azure 存储区域。 但是，这允许向选定 Azure 存储区域内的任何帐户发送流量。
+    使用[网络安全组的 Azure 服务标记](./network-security-groups-overview.md)可以只允许将虚拟网络出站流量发往特定 Azure 存储区域。 但是，这允许向选定 Azure 存储区域内的任何帐户发送流量。
 
-  使用终结点策略可以指定允许进行虚拟网络出站访问的 Azure 存储帐户，并限制所有其他存储帐户的访问。 这可以提供精细得多的安全控制，为虚拟网络中的数据外泄提供保护。
+    使用终结点策略可以指定允许进行虚拟网络出站访问的 Azure 存储帐户，并限制所有其他存储帐户的访问。 这可以提供精细得多的安全控制，为虚拟网络中的数据外泄提供保护。
 
 - __可缩放、高可用性的策略可以筛选 Azure 服务流量__
 
-   终结点策略提供可横向缩放、高可用性的解决方案来筛选虚拟网络通过服务终结点发出的 Azure 服务流量。 为虚拟网络中的此流量维护中心网络设备不会产生额外的开销。
+    终结点策略提供可横向缩放、高可用性的解决方案来筛选虚拟网络通过服务终结点发出的 Azure 服务流量。 为虚拟网络中的此流量维护中心网络设备不会产生额外的开销。
 
 ## <a name="json-object-for-service-endpoint-policies"></a>服务终结点策略的 JSON 对象
 让我们快速了解服务终结点策略对象。
@@ -145,8 +145,8 @@ ms.locfileid: "98570643"
 
 ## <a name="next-steps"></a>后续步骤
 
-<!--Not Available on - Learn [how to configure virtual network service endpoint policies](virtual-network-service-endpoint-policies-portal.md)-->
+<!--NOT AVAILABLE ON [how to configure virtual network service endpoint policies](virtual-network-service-endpoint-policies-portal.md)-->
 
 - 详细了解[虚拟网络服务终结点](virtual-network-service-endpoints-overview.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

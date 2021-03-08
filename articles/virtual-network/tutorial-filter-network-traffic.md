@@ -4,7 +4,6 @@ titlesuffix: Azure Virtual Network
 description: 本教程介绍如何在 Azure 门户中使用网络安全组筛选发往子网的网络流量。
 services: virtual-network
 documentationcenter: virtual-network
-author: rockboyfor
 tags: azure-resource-manager
 Customer intent: I want to filter network traffic to virtual machines that perform similar functions, such as web servers.
 ms.service: virtual-network
@@ -13,14 +12,15 @@ ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 origin.date: 12/13/2018
-ms.date: 07/06/2020
+author: rockboyfor
+ms.date: 02/22/2021
 ms.author: v-yeche
-ms.openlocfilehash: 8fd87938e15fd26758ae0b69f3aff293fd768384
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: c068356ad96f6d7bc0f3c60e1ffb3e11da61fd56
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507158"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055229"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>教程：使用 Azure 门户通过网络安全组筛选网络流量
 
@@ -34,7 +34,7 @@ ms.locfileid: "96507158"
 
 可以根据需要使用 [Azure CLI](tutorial-filter-network-traffic-cli.md) 或 [PowerShell](tutorial-filter-network-traffic-powershell.md) 完成本教程中的步骤。
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+如果没有 Azure 订阅，请在开始前创建一个[试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -46,7 +46,7 @@ ms.locfileid: "96507158"
 2. 选择“网络”，然后选择“虚拟网络” 。
 3. 输入或选择以下信息，接受剩下的默认设置，然后选择“创建”：
 
-    | 设置                 | Value                                              |
+    | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 名称                    | myVirtualNetwork                                   |
     | 地址空间           | 10.0.0.0/16                                        |
@@ -64,7 +64,7 @@ ms.locfileid: "96507158"
 2. 在“在市场中搜索”框中输入“应用程序安全组”。 当“应用程序安全组”显示在搜索结果中时，将其选中，再次在“所有项”下选择“应用程序安全组”，然后选择“创建”   。
 3. 输入或选择以下信息，然后选择“创建”：
 
-    | 设置        | Value                                                         |
+    | 设置        | 值                                                         |
     | ---            | ---                                                           |
     | 名称           | myAsgWebServers                                               |
     | 订阅   | 选择订阅。                                     |
@@ -73,7 +73,7 @@ ms.locfileid: "96507158"
 
 4. 再次完成步骤 3 并指定以下值：
 
-    | 设置        | Value                                                         |
+    | 设置        | 值                                                         |
     | ---            | ---                                                           |
     | 名称           | myAsgMgmtServers                                              |
     | 订阅   | 选择订阅。                                     |
@@ -86,7 +86,7 @@ ms.locfileid: "96507158"
 2. 依次选择“网络”、“网络安全组” 。
 3. 输入或选择以下信息，然后选择“创建”：
 
-    |设置|Value|
+    |设置|值|
     |---|---|
     |名称|myNsg|
     |订阅| 选择订阅。|
@@ -98,7 +98,7 @@ ms.locfileid: "96507158"
 1. 在门户顶部的“搜索资源、服务和文档”框中，开始键入“myNsg”。 当“myNsg”出现在搜索结果中时，将其选中。
 2. 在“设置”下选择“子网”，然后选择“+ 关联”，如下图所示：  
 
-    ![将 NSG 关联到子网](./media/tutorial-filter-network-traffic/associate-nsg-subnet.png)
+    :::image type="content" source="./media/tutorial-filter-network-traffic/associate-nsg-subnet.png" alt-text="将 NSG 关联到子网":::
 
 3. 在“关联子网”下选择“虚拟网络”，然后选择“myVirtualNetwork”。   依次选择“子网”、“mySubnet”、“确定”。  
 
@@ -106,7 +106,7 @@ ms.locfileid: "96507158"
 
 1. 在“设置”下选择“入站安全规则”，然后选择“+ 添加”，如下图所示：  
 
-    ![添加入站安全规则](./media/tutorial-filter-network-traffic/add-inbound-rule.png)
+    :::image type="content" source="./media/tutorial-filter-network-traffic/add-inbound-rule.png" alt-text="添加入站安全规则":::
 
 2. 创建一项允许端口 80 和 443 与 **myAsgWebServers** 应用程序安全组通信的安全规则。 在“添加入站安全规则”下输入或选择以下值，接受其余默认值，然后选择“添加” ：
 
@@ -131,7 +131,7 @@ ms.locfileid: "96507158"
 
 完成步骤 1-3 以后，请复查所创建的规则。 你的列表应如下图中的列表所示：
 
-![安全规则](./media/tutorial-filter-network-traffic/security-rules.png)
+:::image type="content" source="./media/tutorial-filter-network-traffic/security-rules.png" alt-text="安全规则":::
 
 ## <a name="create-virtual-machines"></a>创建虚拟机
 
@@ -148,7 +148,7 @@ ms.locfileid: "96507158"
     
 3. 输入或选择以下信息，并接受剩下的默认设置：
 
-    |设置|Value|
+    |设置|值|
     |---|---|
     |订阅| 选择订阅。|
     |资源组| 选择“使用现有资源组”，再选择“myResourceGroup” 。|
@@ -160,7 +160,7 @@ ms.locfileid: "96507158"
 4. 选择 VM 的大小，然后选择“选择”。
 5. 在“网络”下选择以下值，并接受剩下的默认设置：
 
-    |设置|Value|
+    |设置|值|
     |---|---|
     |虚拟网络 |选择“myVirtualNetwork”。|
     |NIC 网络安全组 |选择“无”。|
@@ -178,7 +178,7 @@ ms.locfileid: "96507158"
 1. 在门户顶部的“搜索资源、服务和文档”框中，开始键入“myVmWeb”。 当“myVmWeb”VM 出现在搜索结果中时，请将其选中。
 2. 在“设置”下选择“网络” 。  选择“配置应用程序安全组”，然后选择 **myAsgWebServers** 作为 **应用程序安全组**，最后选择“保存”，如下图所示： 
 
-    ![关联到 ASG](./media/tutorial-filter-network-traffic/associate-to-asg.png)
+    :::image type="content" source="./media/tutorial-filter-network-traffic/associate-to-asg.png" alt-text="关联到 ASG":::
 
 3. 再次完成步骤 1 和 2，搜索 **myVmMgmt** VM 并选择 **myAsgMgmtServers** ASG。
 
@@ -186,8 +186,8 @@ ms.locfileid: "96507158"
 
 1. 连接到 *myVmMgmt* VM。 在门户顶部的“搜索”框中输入“myVmMgmt”。 当“myVmMgmt”出现在搜索结果中时，将其选中。 选择“连接”按钮。
 2. 选择“下载 RDP 文件”。
-3. 打开下载的 rdp 文件，然后选择“连接”。 输入在创建 VM 时指定的用户名和密码。 可能需要选择“更多选择”，然后选择“使用其他帐户”，以指定在创建 VM 时输入的凭据。
-4. 选择“确定” 。
+3. 打开下载的 rdp 文件，然后选择“连接”。 输入在创建 VM 时指定的用户名和密码。 可能需要选择“更多选择”  ，然后选择“使用其他帐户”  ，以指定在创建 VM 时输入的凭据。
+4. 选择“确定”  。
 5. 你可能会在登录过程中收到证书警告。 如果收到警告，请选择“是”或“继续”以继续连接。 
 
     连接将会成功，因为允许通过端口 3389 将入站流量从 Internet 发往已附加到 *myVmMgmt* VM 的网络接口所在的 *myAsgMgmtServers* 应用程序安全组。
@@ -210,7 +210,7 @@ ms.locfileid: "96507158"
 9. 从 *myVmMgmt* VM 断开连接。
 10. 在 Azure 门户顶部的“搜索资源、服务和文档”框中，开始在计算机中键入“myVmWeb”。 当“myVmWeb”出现在搜索结果中时，请选择它。 记下 VM 的 **公共 IP 地址**。 下图所示地址为 137.135.84.74，但你的地址不同于此：
 
-    ![公共 IP 地址](./media/tutorial-filter-network-traffic/public-ip-address.png)
+    :::image type="content" source="./media/tutorial-filter-network-traffic/public-ip-address.png" alt-text="公共 IP 地址":::
 
 11. 若要确认能否从 Internet 访问 *myVmWeb* Web 服务器，请在计算机上打开 Internet 浏览器并浏览到 `http://<public-ip-address-from-previous-step>`。 此时会看到 IIS 欢迎屏幕，因为允许通过端口 80 将入站流量从 Internet 发往已附加到 *myVmWeb* VM 的网络接口所在的 *myAsgWebServers* 应用程序安全组。
 
@@ -224,11 +224,11 @@ ms.locfileid: "96507158"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已创建一个网络安全组并将其关联到虚拟网络子网。 若要详细了解网络安全组，请参阅[网络安全组概述](security-overview.md)和[管理网络安全组](manage-network-security-group.md)。
+在本教程中，你已创建一个网络安全组并将其关联到虚拟网络子网。 若要详细了解网络安全组，请参阅[网络安全组概述](./network-security-groups-overview.md)和[管理网络安全组](manage-network-security-group.md)。
 
 默认情况下，Azure 在子网之间路由流量。 你也可以选择通过某个 VM（例如，充当防火墙的 VM）在子网之间路由流量。 若要了解如何创建路由表，请继续学习下一教程。
 
 > [!div class="nextstepaction"]
 > [创建路由表](./tutorial-create-route-table-portal.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

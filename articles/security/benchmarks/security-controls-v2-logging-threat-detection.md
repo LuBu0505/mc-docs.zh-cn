@@ -4,15 +4,15 @@ description: Azure 安全基准 V2 日志记录和威胁检测
 author: Johnnytechn
 ms.service: security
 ms.topic: conceptual
-ms.date: 01/19/2021
+ms.date: 03/04/2021
 ms.author: v-johya
 ms.custom: security-benchmark
-ms.openlocfilehash: 8800ea1b84eb55b637e1e4fb97b7ead01116bf9a
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: 624d6f1b1d4360d88502f0587589b1041605d4b9
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751055"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197275"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>安全控制 V2：日志记录和威胁检测
 
@@ -121,7 +121,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 可使用 Azure 安全中心和 Azure Policy 在 Azure 资源上实现资源日志和日志数据收集，以访问审核、安全性和资源日志。 活动日志自动可用，包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用元素。 
 
-- [了解 Azure 中的日志记录和不同的日志类型](../../azure-monitor/platform/platform-logs-overview.md)
+- [了解 Azure 中的日志记录和不同的日志类型](../../azure-monitor/essentials/platform-logs-overview.md)
 
 - [了解 Azure 安全中心数据收集](../../security-center/security-center-enable-data-collection.md)
 
@@ -149,7 +149,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 此外，启用数据并将其加入第三方 SIEM。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/essentials/diagnostic-settings.md)
 
 **责任**：客户
 
@@ -171,7 +171,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，这些活动包�
 
 在 Azure Monitor 中，可根据组织的合规性规则设置 Log Analytics 工作区保持期。 将 Azure 存储帐户或 Log Analytics 工作区帐户用于长期存储和存档存储。
 
-- [更改 Log Analytics 中的数据保留期](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [更改 Log Analytics 中的数据保留期](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [如何为 Azure 存储帐户日志配置保留策略](../../storage/common/storage-monitor-storage-account.md#configure-logging)
 

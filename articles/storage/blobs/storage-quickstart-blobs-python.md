@@ -1,31 +1,31 @@
 ---
 title: 快速入门：Azure Blob 存储库 v12 - Python
-description: 本快速入门介绍如何使用适用于 Python 的 Azure Blob 存储客户端库版本 12 在 Blob（对象）存储中创建容器和 blob。 接下来，将介绍如何将 blob 下载到本地计算机，以及如何在容器中列出所有 blob。
+description: 本快速入门介绍如何使用适用于 Python 的 Azure Blob 存储客户端库版本 12 在 Blob（对象）存储中创建容器和 Blob。 接下来，将介绍如何将 blob 下载到本地计算机，以及如何在容器中列出所有 blob。
 author: WenJason
 ms.author: v-jay
-origin.date: 07/24/2020
-ms.date: 09/28/2020
+origin.date: 01/28/2021
+ms.date: 03/08/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 1cbdb4483d6b93872b7962b3300802d91f99d884
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: 9ac6b5be819b572e9f8b95bbde113cbdf5fa6ead
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432609"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196270"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>快速入门：使用 Python v12 SDK 管理 blob
 
 本快速入门介绍如何使用 Python 管理 blob。 Blob 是可以保存大量文本或二进制数据（包括图像、文档、流媒体和存档数据）的对象。 你将上传、下载和列出 Blob，并创建和删除容器。
 
-其他资源：
+更多资源：
 
 * [API 参考文档](https://docs.microsoft.com/python/api/azure-storage-blob)
 * [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob)
 * [包（Python 包索引）](https://pypi.org/project/azure-storage-blob/)
-* [示例](/storage/common/storage-samples-python?toc=%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [示例](../common/storage-samples-python.md?toc=%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -55,7 +55,7 @@ ms.locfileid: "96432609"
     cd blob-quickstart-v12
     ```
 
-1. 在 blob-quickstart-v12 目录中，创建名为 data 的另一个目录 。 将在这里创建和存储 blob 数据文件。
+1. 在 blob-quickstart-v12 目录中，创建名为 data 的另一个目录 。 将在此目录中创建和存储 Blob 数据文件。
 
     ```console
     mkdir data
@@ -63,13 +63,13 @@ ms.locfileid: "96432609"
 
 ### <a name="install-the-package"></a>安装包
 
-仍在应用程序目录中，使用 `pip install` 命令安装适用于 Python 包的 Azure Blob 存储客户端库。
+还是在应用程序目录中，使用 `pip install` 命令安装适用于 Python 包的 Azure Blob 存储客户端库。
 
 ```console
 pip install azure-storage-blob
 ```
 
-此命令安装适用于 Python 包的 Azure Blob 存储客户端库及其依赖的所有库。 在本例中，即适用于 Python 的 Azure Core 库。
+此命令会安装适用于 Python 包的 Azure Blob 存储客户端库及其依赖的所有库。 在本例中，即适用于 Python 的 Azure Core 库。
 
 ### <a name="set-up-the-app-framework"></a>设置应用框架
 
@@ -81,17 +81,19 @@ pip install azure-storage-blob
 
     代码如下：
 
-    ```python
-    import os, uuid
-    from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient, __version__
+```python
+import os, uuid
+from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient, __version__
 
-    try:
-        print("Azure Blob storage v" + __version__ + " - Python quickstart sample")
-        # Quick start code goes here
-    except Exception as ex:
-        print('Exception:')
-        print(ex)
-    ```
+try:
+    print("Azure Blob Storage v" + __version__ + " - Python quickstart sample")
+
+    # Quick start code goes here
+
+except Exception as ex:
+    print('Exception:')
+    print(ex)
+```
 
 1. 在 blob-quickstart-v12 目录中，将新文件另存为 blob-quickstart-v12.py 。
 
@@ -117,7 +119,7 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 ## <a name="code-examples"></a>代码示例
 
-这些示例代码片段演示如何使用适用于 Python 的 Azure Blob 存储客户端库执行以下步骤：
+这些示例代码片段演示了如何使用适用于 Python 的 Azure Blob 存储客户端库执行以下任务：
 
 * [获取连接字符串](#get-the-connection-string)
 * [创建容器](#create-a-container)
@@ -158,7 +160,7 @@ connect_str = os.getenv('AZURE_STORAGE_CONNECTION_STRING')
 blob_service_client = BlobServiceClient.from_connection_string(connect_str)
 
 # Create a unique name for the container
-container_name = "quickstart" + str(uuid.uuid4())
+container_name = str(uuid.uuid4())
 
 # Create the container
 container_client = blob_service_client.create_container(container_name)
@@ -168,6 +170,7 @@ container_client = blob_service_client.create_container(container_name)
 
 以下代码片段：
 
+1. 创建用于保存数据文件的本地目录。
 1. 在本地目录中创建文本文件。
 1. 通过从[创建容器](#create-a-container)部分中调用 [BlobServiceClient](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient) 上的 [get_blob_client](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.containerclient#get-blob-client-blob--snapshot-none-) 方法，获取对 [BlobClient](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.blobclient) 对象的引用。
 1. 通过调用 [upload_blob](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.blobclient#upload-blob-data--blob-type--blobtype-blockblob---blockblob----length-none--metadata-none----kwargs-) 方法将本地文本文件上传到 blob。
@@ -175,9 +178,12 @@ container_client = blob_service_client.create_container(container_name)
 将此代码添加到 `try` 块的末尾：
 
 ```python
-# Create a file in local data directory to upload and download
+# Create a local directory to hold blob data
 local_path = "./data"
-local_file_name = "quickstart" + str(uuid.uuid4()) + ".txt"
+os.mkdir(local_path)
+
+# Create a file in the local data directory to upload and download
+local_file_name = str(uuid.uuid4()) + ".txt"
 upload_file_path = os.path.join(local_path, local_file_name)
 
 # Write text to the file
@@ -230,7 +236,7 @@ with open(download_file_path, "wb") as download_file:
 
 以下代码使用 [delete_container](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.containerclient#delete-container---kwargs-) 方法删除整个容器，从而清除该应用所创建的资源。 也可根据需要删除本地文件。
 
-在删除 blob、容器和本地文件之前，应用会调用 `input()` 以暂停并等待用户输入。 可以通过此机会验证是否已正确创建资源，然后再删除这些资源。
+在删除 blob、容器和本地文件之前，应用会调用 `input()` 以暂停并等待用户输入。 在资源被删除之前，请验证是否已正确创建这些资源。
 
 将此代码添加到 `try` 块的末尾：
 
@@ -245,13 +251,14 @@ container_client.delete_container()
 print("Deleting the local source and downloaded files...")
 os.remove(upload_file_path)
 os.remove(download_file_path)
+os.rmdir(local_path)
 
 print("Done")
 ```
 
 ## <a name="run-the-code"></a>运行代码
 
-此应用在本地文件夹中创建测试文件，并将其上传到 Blob 存储。 然后，该示例会列出容器中的 blob，并使用新名称下载文件，这样便可对新旧文件进行对比。
+此应用会在本地文件夹中创建测试文件，并将其上传到 Azure Blob 存储。 示例随后会列出容器中的 Blob，并下载具有新名称的文件。 可将旧文件和新文件进行比较。
 
 导航到包含 blob-quickstart-v12.py 文件的目录，然后执行以下 `python` 命令来运行应用。
 
@@ -262,7 +269,7 @@ python blob-quickstart-v12.py
 应用的输出类似于以下示例：
 
 ```output
-Azure Blob storage v12 - Python quickstart sample
+Azure Blob Storage v12 - Python quickstart sample
 
 Uploading to Azure Storage as blob:
         quickstartcf275796-2188-4057-b6fb-038352e35038.txt
@@ -280,7 +287,7 @@ Deleting the local source and downloaded files...
 Done
 ```
 
-在开始清理过程之前，请在“data”文件夹中查看这两个文件。 可以打开它们，然后就会观察到它们完全相同。
+在开始清理过程之前，请在“data”文件夹中查看这两个文件。 可打开它们，然后就会看到它们完全相同。
 
 验证文件后，按 Enter 键以删除测试文件并完成演示。
 
@@ -293,5 +300,5 @@ Done
 > [!div class="nextstepaction"]
 > [Azure Blob 存储 SDK v12 Python 示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
-* 有关详细信息，请参阅[适用于 Python 的 Azure 存储客户端库](https://docs.microsoft.com/azure/developer/python/sdk/storage/overview?view=storage-py-v12)。
+* 有关详细信息，请参阅[适用于 Python 的 Azure 存储客户端库](https://docs.microsoft.com/azure/developer/python/sdk/storage/overview)。
 * 有关教程、示例、快速入门和其他文档，请访问[面向 Python 开发人员的 Azure](https://docs.microsoft.com/azure/python/)。

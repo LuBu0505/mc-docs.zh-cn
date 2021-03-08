@@ -4,15 +4,15 @@ description: 在不重新部署网站的情况下监视网站性能。 使用托
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 08/26/2019
-ms.date: 01/12/2021
+ms.date: 02/22/2021
 ms.custom: devx-track-dotnet
 ms.author: v-johya
-ms.openlocfilehash: 54923c8750a250d553d60db69d4f1156f453cae7
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 07654d219e5c230c2c2cde224c7c5f2ca19eec48
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231050"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197587"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>在运行时使用 Application Insights 无代码附加检测 Web 应用
 
@@ -97,7 +97,7 @@ ms.locfileid: "98231050"
 
 - 确认 applicationInsights.config 文件在目标应用目录中并且包含 ikey。
 
-- 如果怀疑缺失数据，可在 [Analytics](../log-query/log-analytics-tutorial.md) 中运行查询，列出目前正在发送遥测数据的所有云角色。
+- 如果怀疑缺失数据，可在 [Analytics](../logs/log-analytics-tutorial.md) 中运行查询，列出目前正在发送遥测数据的所有云角色。
   ```Kusto
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
@@ -318,9 +318,9 @@ Application Insights SDK 版本 2.4 是[支持 .NET 4.0 的最新版本](https:/
 
 查看遥测：
 
-* [浏览指标](../platform/metrics-charts.md)，以便监视性能和使用情况
+* [浏览指标](../essentials/metrics-charts.md)，以便监视性能和使用情况
 * [搜索事件和日志][diagnostic]以诊断问题
-* [分析](../log-query/log-query-overview.md)，以便进行更高级的查询
+* [分析](../logs/log-query-overview.md)，以便进行更高级的查询
 
 添加更多遥测：
 

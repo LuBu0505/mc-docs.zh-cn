@@ -10,12 +10,12 @@ ms.tgt_pltfrm: arduino
 origin.date: 02/02/2018
 ms.date: 06/08/2020
 ms.author: v-yiso
-ms.openlocfilehash: bb5a28deb9fa5e39e840eccaf367e0064404e37a
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 71f29f1fbec6c8f120fea387be9f9329b9cf4667
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747200"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196646"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>将 MXChip IoT DevKit 连接到 Azure IoT 远程监视解决方案加速器
 
@@ -122,8 +122,8 @@ DevKit 将重新启动并开始运行代码。
 
 如果遇到问题，请参阅 [IoT 开发人员工具包常见问题解答](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)，或通过以下渠道联系我们：
 
-* [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
-* [堆栈溢出](https://stackoverflow.com/questions/tagged/iot-devkit)
+* [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>后续步骤
 

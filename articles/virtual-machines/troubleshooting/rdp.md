@@ -1,5 +1,5 @@
 ---
-title: 排查 RDP 问题 | Azure
+title: 排查 Azure 中 Windows VM 的 RDP 问题 | Azure
 description: 在 Azure 中排查 Windows VM 的 RDP 问题。
 services: virtual-machines-windows
 author: rockboyfor
@@ -11,14 +11,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 origin.date: 12/13/2018
-ms.date: 11/11/2019
+ms.date: 02/22/2021
 ms.author: v-yeche
-ms.openlocfilehash: 5cc37aef301785d9fcfe64e3d3c850be2bf277a4
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: b090c2ec6ab561e5bc8211988c2adcd30c75d7c4
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106214"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054332"
 ---
 # <a name="troubleshoot-rdp-issues"></a>排查 RDP 问题
 
@@ -35,7 +35,7 @@ ms.locfileid: "93106214"
 - [排查内部错误](Troubleshoot-rdp-internal-error.md)
 - [排查连接频繁断开的问题](troubleshoot-rdp-intermittent-connectivity.md)
 - [排查常见错误](troubleshoot-rdp-general-error.md)
-- [排查身份验证错误](troubleshoot-authentication-error-rdp-vm.md)
+- [排查身份验证错误](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm)
 - [按事件 ID 排查 Azure VM RDP 连接问题](event-id-troubleshoot-vm-rdp-connecton.md)
 - [排查由于静态 IP 而导致的 VM 中的 RDP 错误](troubleshoot-rdp-static-ip.md)
 - [排查由于 NIC 已禁用而导致的 VM 中的 RDP 错误](troubleshoot-rdp-nic-disabled.md)

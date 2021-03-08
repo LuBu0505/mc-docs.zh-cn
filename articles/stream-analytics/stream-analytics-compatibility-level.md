@@ -6,13 +6,13 @@ ms.author: v-johya
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 03/10/2020
-ms.date: 11/16/2020
-ms.openlocfilehash: 0262ac852aeb8fb93e3166b27d8b08cf27bb8d3a
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.date: 03/04/2021
+ms.openlocfilehash: 7248299b49913043c13cb7b45b4d7a669e0282df
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977430"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197182"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 流分析作业的兼容性级别
 
@@ -44,7 +44,7 @@ Azure 流分析目前支持三种兼容性级别：
 4. 选择所需的兼容性级别值。
 5. 选择页面底部的“保存”  。
 
-![Azure 门户中的流分析兼容性级别](./media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
+![Azure 门户中的流分析兼容性级别](./media/stream-analytics-compatibility-level/stream-analytics-compat-level-1-2.png)
 
 在更新兼容性级别时，T 编译器会使用与所选兼容性级别相对应的语法来验证作业。
 

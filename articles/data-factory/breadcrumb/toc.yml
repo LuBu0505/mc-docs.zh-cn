@@ -1,0 +1,7 @@
+- name: Azure
+  tocHref: 'https://docs.azure.cn/'
+  topicHref: /index
+  items:
+    - name: Azure 数据工厂
+      tocHref: /machine-learning/
+      topicHref: /data-factory/index

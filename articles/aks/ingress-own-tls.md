@@ -6,16 +6,16 @@ services: container-service
 ms.topic: article
 origin.date: 08/17/2020
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: ad15e697127db17a3b6af63021d0c62d8211647a
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: a8aee7e36cd977beba3a2340338cf56e89e1d998
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063684"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054419"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>创建 HTTPS 入口控制器并在 Azure Kubernetes 服务 (AKS) 中使用自己的 TLS 证书
 
@@ -232,7 +232,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   tls:
   - hosts:
@@ -398,7 +398,7 @@ kubectl delete namespace ingress-basic
 
 - [创建具有外部网络连接的基本入口控制器][aks-ingress-basic]
 
-    <!--Not Available on - [Enable the HTTP application routing add-on][aks-http-app-routing]-->
+    <!--NOT AVAILABLE ON - [Enable the HTTP application routing add-on][aks-http-app-routing]-->
     
 - [创建使用内部、专用网络和 IP 地址的入口控制器][aks-ingress-internal]
 - 创建一个使用 Let's Encrypt 的入口控制器，以自动生成[具有动态公共 IP 地址][aks-ingress-tls]或[具有静态公共 IP 地址][aks-ingress-static-tls]的 TLS 证书

@@ -4,16 +4,16 @@ description: Azure 安全控制 - 网络安全
 author: Johnnytechn
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 03/04/2021
 ms.author: v-johya
 ms.custom: security-benchmark
 origin.date: 12/30/2019
-ms.openlocfilehash: 2cafc9cbefac744cb0e096c0e4a00b80c8caf3ea
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: aeec898bb2c699aa6ff03dca06b13a081af9cf1c
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747121"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197109"
 ---
 # <a name="security-control-network-security"></a>安全控制：网络安全
 
@@ -174,9 +174,9 @@ ms.locfileid: "96747121"
 
 使用 Azure 活动日志监视网络资源配置，并检测 Azure 资源的更改。 在 Azure Monitor 中创建当关键资源发生更改时触发的警报。
 
-- [如何查看和检索 Azure 活动日志事件](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [如何查看和检索 Azure 活动日志事件](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [如何在 Azure Monitor 中创建警报](../../azure-monitor/platform/alerts-activity-log.md)
+- [如何在 Azure Monitor 中创建警报](../../azure-monitor/alerts/alerts-activity-log.md)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,14 +4,14 @@ description: 将诊断和使用情况数据导出到 Azure 中的存储，然后
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 07/25/2019
-ms.date: 01/12/2021
+ms.date: 02/22/2021
 ms.author: v-johya
-ms.openlocfilehash: 83506f6a870d66bd210f8ec884541bc6d5709984
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: cadbd54ba516f09a3d7f54cf4134fae7827ef946
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231054"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197197"
 ---
 # <a name="export-telemetry-from-application-insights"></a>从 Application Insights 导出遥测数据
 想要将遥测数据保留超过标准保留期限？ 或者要以某种专业方式处理这些数据？ 连续导出很适合此目的。 可以使用 JSON 格式将 Application Insights 门户中显示的事件导出到 Azure 中的存储。 可以从该存储中下载这些数据，并编写所需的代码来处理这些数据。  
@@ -24,7 +24,7 @@ ms.locfileid: "98231054"
 
 * 通过“指标”或“搜索”选项卡顶部的“导出”按钮，可将表格和图表发送到 Excel 电子表格。
 
-* [Analytics](../log-query/log-query-overview.md) 提供功能强大的遥测查询语言。 它还可以导出结果。
+* [Analytics](../logs/log-query-overview.md) 提供功能强大的遥测查询语言。 它还可以导出结果。
 * 如果想要[在 Power BI 中浏览数据](./export-power-bi.md)，无需使用连续导出也可以做到。
 * 使用[数据访问 REST API](https://dev.applicationinsights.io/) 能够以编程方式访问遥测数据。
 * 也可以访问“[通过 Powershell 连续导出](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)”设置。

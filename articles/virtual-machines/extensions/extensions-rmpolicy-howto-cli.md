@@ -10,17 +10,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 origin.date: 03/23/2018
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.reviewer: cynthn
-ms.openlocfilehash: 650e9dffd535a2a9838852de1c6094f1de314af8
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 23d6a93d7a883966ced2c36a317076122bc06bc7
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856701"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055299"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>使用 Azure Policy 限制 Linux VM 上的扩展安装
 
@@ -180,4 +180,4 @@ az policy definition delete --name 'not-allowed-vmextension-linux'
 
 有关详细信息，请参阅 [Azure Policy](../../governance/policy/overview.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

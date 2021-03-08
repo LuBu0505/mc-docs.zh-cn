@@ -4,8 +4,7 @@ titlesuffix: Azure Virtual Network
 description: 了解 Azure 中的专用 IP 地址。
 services: virtual-network
 documentationcenter: na
-author: rockboyfor
-manager: digimobile
+manager: KumudD
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: na
@@ -13,14 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 05/28/2020
-ms.date: 07/06/2020
+author: rockboyfor
+ms.date: 02/22/2021
 ms.author: v-yeche
-ms.openlocfilehash: 495309f89414cd4e4f75434f84ad809f7fd1201c
-ms.sourcegitcommit: 89118b7c897e2d731b87e25641dc0c1bf32acbde
+ms.openlocfilehash: a31a24747a330190b8399f6f60a14aeec3e33df2
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85946197"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053972"
 ---
 # <a name="private-ip-addresses"></a>专用 IP 地址
 使用专用 IP 可在 Azure 中的资源之间进行通信。 
@@ -83,8 +83,8 @@ Azure 保留每个子网地址范围中的前四个地址。 不能将这些地�
 
 可以将专用 IP 地址分配到以下服务的前端配置：
 
-* [Azure 内部负载均衡器](../load-balancer/load-balancer-internal-overview.md?toc=%2fvirtual-network%2ftoc.json) (ILB)
-* [Azure 应用程序网关](../application-gateway/application-gateway-introduction.md?toc=%2fvirtual-network%2ftoc.json) 
+* [Azure 内部负载均衡器](../load-balancer/load-balancer-overview.md?toc=%2fvirtual-network%2ftoc.json) (ILB)
+* [Azure 应用程序网关](../application-gateway/overview.md?toc=%2fvirtual-network%2ftoc.json) 
 
 此专用 IP 地址将用作内部终结点。 内部终结点仅供其虚拟网络和连接到它的远程网络中的资源访问。 可以分配动态或静态 IP。
 
@@ -109,5 +109,4 @@ Azure 保留每个子网地址范围中的前四个地址。 不能将这些地�
 了解 [Azure 中的公共 IP 地址](public-ip-addresses.md)
 * [通过 Azure 门户使用静态专用 IP 地址部署 VM](virtual-networks-static-private-ip-arm-pportal.md)
 
-<!-- Update_Description: new article about private ip addresses -->
-<!--NEW.date: 07/06/2020-->
+<!--Update_Description: update meta properties, wording update, update link-->

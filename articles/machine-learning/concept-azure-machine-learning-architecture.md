@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: da5f3fc5c41db2f8f0f1d89be846abc35cb16658
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 9795f2e9436becda2778b49cf6f8af9e2d747fb9
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978199"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196764"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作原理：体系结构和概念
 
@@ -46,19 +46,6 @@ ms.locfileid: "94978199"
 + [Azure Key Vault](/key-vault/)：存储计算目标使用的机密和工作区所需的其他敏感信息。
 
 可与其他人共享工作区。
-
-### <a name="create-workspace"></a>创建工作区
-
-下图显示了创建工作区工作流。
-
-* 从某个受支持的 Azure 机器学习客户端（Azure CLI、Python SDK、Azure 门户）登录到 Azure AD，并请求相应的 Azure 资源管理器令牌。
-* 调用 Azure 资源管理器来创建工作区。 
-* Azure 资源管理器联系 Azure 机器学习资源提供程序来预配工作区。
-* 如果不指定现有资源，则在订阅中创建额外的所需资源。
-
-还可根据需要预配附加到工作区的其他计算目标（例如 Azure Kubernetes 服务或 VM）。
-
-[![创建工作区工作流](media/concept-azure-machine-learning-architecture/create-workspace.png)](media/concept-azure-machine-learning-architecture/create-workspace.png#lightbox)
 
 ## <a name="computes"></a>计算
 
@@ -126,10 +113,6 @@ Azure 机器学习在试验中记录所有运行并存储以下信息：
 [工作区](#workspace) > [试验](#experiments) > [运行](#runs) > **快照**
 
 提交运行时，Azure 机器学习会将包含该脚本的目录压缩为 zip 文件并将其发送到计算目标。 然后解压缩 zip 文件并运行脚本。 Azure 机器学习还将该 zip 文件存储为快照，作为运行记录的一部分。 有权限访问工作区的任何用户都可以浏览运行记录并下载快照。
-
-下图显示了代码快照工作流。
-
-[![代码快照工作流](media/concept-azure-machine-learning-architecture/code-snapshot.png)](media/concept-azure-machine-learning-architecture/code-snapshot.png#lightbox)
 
 ### <a name="logging"></a>日志记录
 
@@ -275,7 +258,7 @@ Azure 机器学习提供以下监视和日志记录功能：
 * 对于数据科学家，可监视实验并记录来自训练运行的信息。 有关详细信息，请参阅以下文章：
    * [启动、监视和取消训练运行](how-to-manage-runs.md)
    * [记录训练运行的指标](how-to-track-experiments.md)
-   * [使用 MLflow 对试验进行跟踪](how-to-use-mlflow.md)
+   * [使用 MLflow 跟踪试验](how-to-use-mlflow.md)
    * [使用 TensorBoard 将运行可视化](how-to-monitor-tensorboard.md)
 * 对于管理员，可使用 Azure Monitor 监视工作区、相关 Azure 资源及事件（例如资源创建和删除）的相关信息。 有关详细信息，请参阅[如何监视 Azure 机器学习](monitor-azure-machine-learning.md)。
 * 对于 DevOps 或 MLOps，可监视部署为 Web 服务的模型或 IoT Edge 模块生成的信息，以确定部署问题并收集提交给该服务的数据 。 有关详细信息，请参阅[收集模型数据](how-to-enable-data-collection.md)和[使用 Application Insights 进行监视](how-to-enable-app-insights.md)。

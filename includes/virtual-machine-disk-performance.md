@@ -6,17 +6,17 @@ ms.service: virtual-machines
 ms.topic: include
 origin.date: 09/25/2020
 author: rockboyfor
-ms.date: 02/08/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 11/02/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: a05d3017e672c1fc93273475d6731e41056136f2
-ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
+ms.openlocfilehash: 7fc69b52219453b5597c55f4cdda4f27ef626485
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580541"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054388"
 ---
 本文阐述了磁盘性能，以及在将 Azure 虚拟机和 Azure 磁盘组合使用时磁盘性能的工作原理。 此外还介绍了如何诊断磁盘 IO 的瓶颈，以及可以进行哪些更改以优化性能。
 

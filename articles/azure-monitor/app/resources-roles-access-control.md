@@ -3,15 +3,15 @@ title: Azure Application Insights 中的资源、角色和访问控制 | Azure D
 description: 组织的见解的所有者、参与者和读者。
 ms.topic: conceptual
 origin.date: 02/14/2019
-ms.date: 11/10/2020
+ms.date: 02/22/2021
 ms.custom: devx-track-azurepowershell
 ms.author: v-johya
-ms.openlocfilehash: 0b2894d94eacbe075d1f370ce5abc70e066de10e
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: 4d99a744abcf6340e35b68d7229b977cfb94d2ce
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94638168"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197665"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights 中的资源、角色和访问控制
 
@@ -79,7 +79,7 @@ ms.locfileid: "94638168"
 | [读者](../../role-based-access-control/built-in-roles.md#reader) |可以查看但无法更改任何内容。 |
 | [Application Insights 快照调试器](../../role-based-access-control/built-in-roles.md#application-insights-snapshot-debugger) | 授予用户使用 Application Insights 快照调试器功能的权限。 请注意，此角色既不包含在所有者角色中，也不包含在参与者角色中。 |
 | Azure 服务部署版本管理参与者 | 通过 Azure 服务部署进行部署的服务的参与者角色。 |
-| [数据清除程序](../../role-based-access-control/built-in-roles.md#data-purger) | 清除个人数据的特殊角色。 有关更多信息，请参阅我们的[个人数据指南](../platform/personal-data-mgmt.md)。   |
+| [数据清除程序](../../role-based-access-control/built-in-roles.md#data-purger) | 清除个人数据的特殊角色。 有关更多信息，请参阅我们的[个人数据指南](../logs/personal-data-mgmt.md)。   |
 | ExpressRoute 管理员 | 可以创建删除和管理快速路由。|
 | [Log Analytics 参与者](../../role-based-access-control/built-in-roles.md#log-analytics-contributor) | Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。  |
 | [Log Analytics 读者](../../role-based-access-control/built-in-roles.md#log-analytics-reader) | Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置，其中包括查看所有 Azure 资源上的 Azure 诊断的配置。 |

@@ -22,7 +22,7 @@
               href: ../../machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager.md?toc=/azure-resource-manager/templates/toc.json
             - name: 机器学习
               href: ../../machine-learning/how-to-create-workspace-template.md?toc=/azure-resource-manager/templates/toc.json
-        - name: 分析
+        - name: Analytics
           items:
             - name: Analysis Services
               href: ../../analysis-services/analysis-services-create-template.md?toc=/azure-resource-manager/templates/toc.json
@@ -112,7 +112,7 @@
           items:
             - name: 自动化
               href: ../../automation/quickstart-create-automation-account-template.md?toc=/azure-resource-manager/templates/toc.json
-            - name: Backup
+            - name: 备份
               href: ../../backup/quick-backup-vm-template.md?toc=/azure-resource-manager/templates/toc.json
             - name: 托管应用程序
               href: ../managed-applications/publish-service-catalog-app.md?toc=/azure-resource-manager/templates/toc.json

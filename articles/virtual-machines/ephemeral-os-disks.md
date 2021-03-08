@@ -6,17 +6,17 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 origin.date: 07/23/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: 4b923f2972ff3f79951a66443658bbd459178f83
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 46f9005ce6b8ddd394dc6ce11ea90f03b724f36a
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856727"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055304"
 ---
 <!--Verified successfully-->
 <!--Transfer from an include file-->
@@ -31,7 +31,7 @@ ms.locfileid: "97856727"
 - 与临时磁盘一样降低延迟。 
 - 临时 OS 磁盘免费，因此不需为 OS 磁盘支付存储费用。
 - 它们在所有 Azure 区域中提供。 
-- [共享映像库](./linux/shared-image-galleries.md)支持临时 OS 磁盘。 
+- [共享映像库](./shared-image-galleries.md)支持临时 OS 磁盘。 
 
 持久 OS 磁盘和临时 OS 磁盘的主要区别：
 
@@ -259,4 +259,4 @@ foreach($vmSize in $vmSizes)
 ## <a name="next-steps"></a>后续步骤
 可以使用 [Azure CLI](https://docs.azure.cn/cli/vm#az_vm_create) 创建具有临时 OS 磁盘的 VM。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

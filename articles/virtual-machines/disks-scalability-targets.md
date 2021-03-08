@@ -3,19 +3,19 @@ title: VM 磁盘的可伸缩性和性能目标
 description: 了解附加到 VM 的虚拟机磁盘的可伸缩性和性能目标。
 origin.date: 01/15/2021
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 02/01/2021
 ms.author: v-yeche
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 374f3c9c990381245dcbbb3d715dda672785d484
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: cf6b2ecbeb6a91dd95da69de17caa132fbd37dbf
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064542"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054412"
 ---
 <!--Verified successfully from rename article-->
 # <a name="scalability-and-performance-targets-for-vm-disks"></a>VM 磁盘的可伸缩性和性能目标
@@ -39,5 +39,4 @@ ms.locfileid: "99064542"
 
 [Azure 订阅和服务限制、配额和约束](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
-<!-- Update_Description: new article about disks scalability targets -->
-<!--NEW.date: 02/01/2021-->
+<!--Update_Description: update meta properties, wording update, update link-->

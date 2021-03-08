@@ -5,18 +5,18 @@ ms.service: virtual-machines
 ms.topic: conceptual
 origin.date: 04/24/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.subservice: disks
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: f1c27c20d8725eee54a6364eeef9073b74140c28
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 1719126f651d4c0038ce3acd0ce4bf73194b6a3e
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856675"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052603"
 ---
 <!--Verified successfully from renamed articles-->
 # <a name="introduction-to-azure-managed-disks"></a>Azure 托管磁盘简介
@@ -25,7 +25,7 @@ Azure 托管磁盘是由 Azure 托管并与 Azure 虚拟机配合使用的块级
 
 可用的磁盘类型包括高级固态硬盘 (SSD)、标准 SSD 和标准硬盘驱动器 (HDD)。 有关每种磁盘类型的信息，请参阅[选择适用于 IaaS VM 的磁盘类型](disks-types.md)。
 
-<!--Not Available on FEATURE ultra disks-->
+<!--NOT AVAILABLE on FEATURE ultra disks-->
 
 ## <a name="benefits-of-managed-disks"></a>托管磁盘的好处
 
@@ -43,11 +43,15 @@ Azure 托管磁盘是由 Azure 托管并与 Azure 虚拟机配合使用的块级
 
 托管磁盘集成可用性集，可确保[可用性集中的 VM](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) 的磁盘彼此之间完全隔离以避免单点故障。 磁盘自动放置于不同的存储缩放单元（模块）。 如果某个模块因硬件或软件故障而失败，则只有其磁盘在该模块上的 VM 实例会失败。 例如，假定某个应用程序在 5 台 VM 上运行并且这些 VM 位于一个可用性集中。 这些 VM 的磁盘不会存储在同一个模块中，因此，如果一个模块失败，该应用程序的其他实例可以继续运行。
 
-<!--Not Available on ### Integration with Availability Zones-->
-<!--Not Avaialble on [Availability Zones](../availability-zones/az-overview.md)-->
+<!--NOT AVAILABLE ON ### Integration with Availability Zones-->
+<!--NOT AVAILABLE ON [Availability Zones](../availability-zones/az-overview.md)-->
+
 ### <a name="azure-backup-support"></a>Azure 备份支持
 
 若要防范区域灾难，可以使用 [Azure 备份](../backup/backup-overview.md)创建具有基于时间的备份和备份保留策略的备份作业。 这样就可以随意执行 VM 或托管磁盘还原。 目前，Azure 备份支持高达 32 太字节 (TiB) 的磁盘大小。 [详细了解](../backup/backup-support-matrix-iaas.md) Azure VM 备份支持。
+
+<!--NOT AVAILABLE ON #### Azure Disk Backup-->
+<!--NOT AVAILABLE ON [Overview of Azure Disk Backup (in preview)](../backup/disk-backup-overview.md)-->
 
 ### <a name="granular-access-control"></a>粒度访问控制
 
@@ -58,6 +62,8 @@ Azure 托管磁盘是由 Azure 托管并与 Azure 虚拟机配合使用的块级
 通过直接上传，可以轻松地将 vhd 传输到 Azure 托管磁盘。 以前，必须遵循一个更复杂的过程，包括将数据暂存到存储帐户中。 现在，步骤更少了。 可以更方便地将本地 VM 上传到 Azure、上传到大型托管磁盘，并简化了备份和还原过程。 通过允许你直接将数据上传到托管磁盘而不将它们附加到 VM，还降低了成本。 可以使用直接上传来上传最大为 32 TiB 的 vhd。
 
 若要了解如何将 vhd 传输到 Azure，请参阅 [CLI](linux/disks-upload-vhd-to-managed-disk-cli.md) 或 [PowerShell](windows/disks-upload-vhd-to-managed-disk-powershell.md) 文章。
+
+<!--CORRECT ON [PowerShell](windows/disks-upload-vhd-to-managed-disk-powershell.md)-->
 
 ## <a name="security"></a>安全性
 
@@ -95,7 +101,7 @@ Azure 磁盘加密允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘�
 
 ### <a name="temporary-disk"></a>临时磁盘
 
-大多数 VM 都包含一个临时磁盘，该磁盘不是托管磁盘。 临时磁盘为应用程序和进程提供短期存储，仅用于存储页面或交换文件等数据。 在[维护事件](./manage-availability.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)期间或[重新部署 VM](troubleshooting/redeploy-to-new-node-windows.md?toc=/virtual-machines/windows/toc.json) 时，临时磁盘上的数据可能会丢失。 在以标准方式成功重启 VM 期间，临时磁盘上的数据将保留。 有关无临时磁盘的 VM 的详细信息，请参阅[无本地临时磁盘的 Azure VM 规格](azure-vms-no-temp-disk.md)。
+大多数 VM 都包含一个临时磁盘，该磁盘不是托管磁盘。 临时磁盘为应用程序和进程提供短期存储，仅用于存储页面或交换文件等数据。 在[维护事件](./manage-availability.md#understand-vm-reboots---maintenance-vs-downtime)期间或[重新部署 VM](troubleshooting/redeploy-to-new-node-windows.md?toc=/virtual-machines/windows/toc.json) 时，临时磁盘上的数据可能会丢失。 在以标准方式成功重启 VM 期间，临时磁盘上的数据将保留。 有关无临时磁盘的 VM 的详细信息，请参阅[无本地临时磁盘的 Azure VM 规格](azure-vms-no-temp-disk.md)。
 
 在 Azure Linux VM 上，临时磁盘通常为“/dev/sdb”；在 Windows VM 上，临时磁盘默认为 D:。 务器端加密不会加密临时磁盘，除非你在主机上启用加密。
 
@@ -105,7 +111,7 @@ Azure 磁盘加密允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘�
 
 基于已使用大小对快照计费。 例如，如果创建预配容量为 64 GiB 且实际使用数据大小为 10 GiB 的托管磁盘的快照，则仅针对已用数据大小 10 GiB 对该快照计费。 例如，如果快照的已用数据大小为 10 GiB，则每日使用情况报告将显示 10 GiB/(31 天) = 0.3226 作为已使用数量。
 
-<!--Not Available on [Azure usage report](../cost-management-billing/understand/review-individual-bill.md)-->
+<!--NOT AVAILABLE ON [Azure usage report](../cost-management-billing/understand/review-individual-bill.md)-->
 
 若要了解有关如何为托管磁盘创建快照的详细信息，请查看下列资源：
 
@@ -156,4 +162,4 @@ Azure 对磁盘流量使用优先网络通道。 在出现网络争用时，这�
 > [!div class="nextstepaction"]
 > [选择适用于 IaaS VM 的磁盘类型](disks-types.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

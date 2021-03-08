@@ -4,18 +4,17 @@ description: 将 Azure CLI 与 Azure IoT 扩展结合使用，以将 IoT Edge �
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-origin.date: 10/13/2020
-ms.date: 11/13/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: b49d8fa4ec72b83f640dfeddb3f66890f4a84195
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 03374ba04318b8f2650bbac70d062c331a9c6c4f
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300739"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196696"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>使用 Azure CLI 部署 Azure IoT Edge 模块
 
@@ -65,7 +64,7 @@ ms.locfileid: "96300739"
             "edgeAgent": {
               "type": "docker",
               "settings": {
-                "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+                "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
                 "createOptions": "{}"
               }
             },
@@ -74,7 +73,7 @@ ms.locfileid: "96300739"
               "status": "running",
               "restartPolicy": "always",
               "settings": {
-                "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+                "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
                 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
               }
             }

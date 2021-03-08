@@ -3,7 +3,6 @@ title: 按事件 ID 排查 Azure VM RDP 连接问题 | Azure
 description: 使用事件 ID 排查阻止远程桌面协议 (RDP) 连接到 Azure 虚拟机 (VM) 的各种问题。
 services: virtual-machines-windows
 manager: dcscontentpm
-tags: ''
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.workload: infrastructure-services
@@ -11,16 +10,16 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 origin.date: 11/01/2018
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: d8b549c884781e793012597c60060e6e140314be
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 184192e5f80faa745becf6c83fe3ce40925cd1d2
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105957"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054366"
 ---
 <!--Verify part successfully-->
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>按事件 ID 排查 Azure VM RDP 连接问题 
@@ -237,9 +236,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 
 RDP 默认使用 TLS 1.0 协议。 但是，该协议可能会更改为 TLS 1.1（这是新标准）。
 
-若要解决此问题，请参阅[使用 RDP 连接到 Azure VM 时排查身份验证错误](troubleshoot-authentication-error-rdp-vm.md#tls-version)。
-
-<!--Correct on Azure VM-->
+若要解决此问题，请参阅[使用 RDP 连接到 Azure VM 时排查身份验证错误](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm#tls-version)。
 
 ## <a name="scenario-3"></a>方案 3
 
@@ -304,4 +301,4 @@ Null <br />
 
 [Event ID 1058 — Remote Desktop Services Authentication and Encryption](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee890862(v=ws.10))（事件 ID 1058 - 远程桌面服务身份验证和加密）
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

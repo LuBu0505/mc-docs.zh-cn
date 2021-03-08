@@ -4,15 +4,15 @@ description: 事件网格安全基线为实现 Azure 安全基准中指定的安
 author: Johnnytechn
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 02/04/2021
+ms.date: 03/05/2021
 ms.author: v-johya
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 146ff9cbdab4fbdd81da58f462b6d8628bf30471
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: 0fee40d3f87b946fb76cb10c6d165f31725f4db2
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579502"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197581"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>事件网格的 Azure 安全基线
 
@@ -135,9 +135,9 @@ ms.locfileid: "99579502"
 
 **指导**：使用 Azure 活动日志监视网络资源配置，并检测与 Azure 事件网格相关的网络资源的更改。 在 Azure Monitor 中创建当关键网络资源发生更改时触发的警报。
 
-- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -179,7 +179,7 @@ ms.locfileid: "99579502"
 
 **指导**：在 Azure Monitor 中，根据组织的合规性规定，为与 Azure 事件网格资源关联的 Log Analytics 工作区设置日志保留期。
 
-- [如何设置日志保留参数](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [如何设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：不适用
 
@@ -195,9 +195,9 @@ ms.locfileid: "99579502"
 
 - [如何在 Log Analytics 工作区中对 Azure 事件网格执行查询](diagnostic-logs.md)
 
-- [Log Analytics 查询入门](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Log Analytics 查询入门](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
+- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/logs/get-started-queries.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -215,7 +215,7 @@ ms.locfileid: "99579502"
 
 - [事件网格诊断日志架构的详细信息](diagnostic-logs.md)
 
-- [使用 Azure Monitor 创建、查看和管理日志警报](../azure-monitor/platform/alerts-log.md)
+- [使用 Azure Monitor 创建、查看和管理日志警报](../azure-monitor/alerts/alerts-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -457,7 +457,7 @@ ms.locfileid: "99579502"
 
 **指导**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建在 Azure 事件网格资源的生产实例和其他关键资源或相关资源发生更改时发出的警报。
 
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -553,7 +553,7 @@ ms.locfileid: "99579502"
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：监视计算资源中未批准的软件应用程序
 
-**指南**：不适用；此建议适用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -594,7 +594,7 @@ ms.locfileid: "99579502"
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10：维护已获批软件的清单
 
-**指南**：不适用；此建议适用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 

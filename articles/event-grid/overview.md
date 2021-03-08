@@ -3,14 +3,14 @@ title: 什么是 Azure 事件网格？
 description: 使用 Azure 事件网格将事件数据从源发送到处理程序。 生成基于事件的应用程序，并与 Azure 服务集成。
 author: Johnnytechn
 ms.topic: overview
-ms.date: 11/18/2020
+ms.date: 03/05/2021
 ms.author: v-johya
-ms.openlocfilehash: 9bff847fc8f7927e795d7face39b98307347cad7
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: af4ca0943093da7657c8896ba41f1948093422c3
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977717"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197398"
 ---
 # <a name="what-is-azure-event-grid"></a>什么是 Azure 事件网格？
 
@@ -22,7 +22,7 @@ ms.locfileid: "94977717"
 
 本文将对 Azure 事件网格进行简要概述。 若要开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。 
 
-:::image type="content" source="./media/overview/functional-model.png" alt-text="源和处理程序的事件网格模型" lightbox="./media/overview/functional-model.png":::
+:::image type="content" source="./media/overview/functional-model.png" alt-text="源和处理程序的事件网格模型" lightbox="./media/overview/functional-model-big.png":::
 
 此图展示事件网格连接源和处理程序的方式，而不是支持的集成的完整列表。
 
@@ -30,17 +30,20 @@ ms.locfileid: "94977717"
 
 目前，以下 Azure 服务支持将事件发送到事件网格。 有关列表中某个源的详细信息，请选择相应链接。
 
-<!-- Not abailable in china: event-schema-app-configuration.md event-schema-azure-maps.md event-schema-communication-services.md event-schema-container-registry.md event-schema-machine-learning.md-->
-
+<!-- Not abailable in china: event-schema-communication-services.md event-schema-azure-maps.md-->
+- [Azure 应用配置](event-schema-app-configuration.md)
 - [Azure Blob 存储](event-schema-blob-storage.md)
+- [Azure 容器注册表](event-schema-container-registry.md)
 - [Azure 事件中心](event-schema-event-hubs.md)
 - [Azure IoT 中心](event-schema-iot-hub.md)
 - [Azure Key Vault](event-schema-key-vault.md)
+- [Azure 机器学习](event-schema-machine-learning.md)
 - [Azure 媒体服务](event-schema-media-services.md)
 - [Azure 资源组](event-schema-resource-groups.md)
 - [Azure 服务总线](event-schema-service-bus.md)
 - [Azure SignalR](event-schema-azure-signalr.md)
 - [Azure 订阅](event-schema-subscriptions.md)
+- [用于 Redis 的 Azure 缓存](event-schema-azure-cache.md)
 
 ## <a name="event-handlers"></a>事件处理程序
 

@@ -4,20 +4,20 @@ description: 使用 Azure 资源管理器模板在 PowerShell 中自动创建和
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 10/17/2019
-ms.date: 01/12/2021
+ms.date: 02/22/2021
 ms.author: v-johya
-ms.openlocfilehash: 82bd1e9fc829d98dcf83c13450d5becac7a3b406
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 6d788c911d5af972dcef3481dc8f16afa86169d4
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231045"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197157"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>使用 PowerShell 管理 Application Insights 资源
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本文演示如何通过 Azure 资源管理自动创建和更新 [Application Insights](./app-insights-overview.md) 资源。 例如，可能在生成过程中执行此操作。 除了基本的 Application Insights 资源，还可创建可用性 Web 测试、设置[警报](../platform/alerts-log.md)、设置[定价方案](pricing.md)和创建其他 Azure 资源。
+本文演示如何通过 Azure 资源管理自动创建和更新 [Application Insights](./app-insights-overview.md) 资源。 例如，可能在生成过程中执行此操作。 除了基本的 Application Insights 资源，还可创建可用性 Web 测试、设置[警报](../alerts/alerts-log.md)、设置[定价方案](pricing.md)和创建其他 Azure 资源。
 
 创建这些资源的关键是用于 [Azure 资源管理器](../../azure-resource-manager/management/manage-resources-powershell.md) 的 JSON 模板。 基本过程如下：下载现有资源的 JSON 定义；将特定值（如名称）参数化；然后在需要新建资源时运行模板。 可以将多个资源打包在一起，以便一次性创建它们，例如具有可用性测试、警报和连续导出的存储的应用监视器。 某些参数化有一些微妙之处，此处我们将进行介绍。
 
@@ -407,12 +407,12 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 ## <a name="add-a-metric-alert"></a>添加指标警报
 
-若要自动创建指标警报，请参阅[指标警报模板](../platform/alerts-metric-create-templates.md#template-for-a-simple-static-threshold-metric-alert)一文
+若要自动创建指标警报，请参阅[指标警报模板](../alerts/alerts-metric-create-templates.md#template-for-a-simple-static-threshold-metric-alert)一文
 
 
 ## <a name="add-an-availability-test"></a>添加可用性测试
 
-若要自动执行可用性测试，请参阅[指标警报模板](../platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert)一文。
+若要自动执行可用性测试，请参阅[指标警报模板](../alerts/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert)一文。
 
 ## <a name="add-more-resources"></a>添加更多资源
 
@@ -434,7 +434,6 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
    
     每个 Web 测试都有关联的警报规则，因此必须复制这两者。
    
-    还可以包含指标相关警报。 [指标名称](powershell-alerts.md#metric-names)。
 5. 在每个资源中插入此行：
    
     `"apiVersion": "2015-05-01",`

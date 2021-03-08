@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 03/05/2019
 author: rockboyfor
-ms.date: 09/28/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: 09/28/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2cab6b79e80ef0ac7f1080d74364889cf3af16b3
-ms.sourcegitcommit: 71953ae66ddfc07c5d3b4eb55ff8639281f39b40
+ms.openlocfilehash: 7b3d2fd28252dfac2dc0c4db5302e79ae88ddf2a
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91395395"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054039"
 ---
 # <a name="how-traffic-manager-works"></a>流量管理器的工作原理
 
@@ -33,7 +33,7 @@ ms.locfileid: "91395395"
 
 当客户端尝试连接到某个服务时，必须先将该服务的 DNS 名称解析成 IP 地址。 然后，客户端就可以连接到该 IP 地址以访问相关服务。
 
-**需要了解的最重要一点是，流量管理器在 DNS 级别工作。** 流量管理器根据流量路由方法的规则，使用 DNS 将客户端导向到特定的服务终结点。 客户端**直接**连接到选定的终结点。 流量管理器不是代理或网关。 流量管理器看不到流量在客户端与服务之间传递。
+**需要了解的最重要一点是，流量管理器在 DNS 级别工作。** 流量管理器根据流量路由方法的规则，使用 DNS 将客户端导向到特定的服务终结点。 客户端 **直接** 连接到选定的终结点。 流量管理器不是代理或网关。 流量管理器看不到流量在客户端与服务之间传递。
 
 ## <a name="traffic-manager-example"></a>流量管理器示例
 
@@ -50,9 +50,7 @@ Contoso Corp 开发了一个新的合作伙伴门户。 此门户的 URL 为 `ht
     ![流量管理器 DNS 配置][1]
 
     > [!NOTE]
-    > 通过 Azure 流量管理器来使用虚构域时，必须使用 CNAME 将虚构域名指向流量管理器域名。 DNS 标准不允许在域的“顶点”（或根）位置创建 CNAME。 因此，无法为“contoso.com”（有时称为“裸”域）创建 CNAME。 只能为“contoso.com”下的域（例如“www.contoso.com”）创建 CNAME。 为了克服此限制，建议在 [Azure DNS](../dns/dns-overview.md) 上托管 DNS 域。 或者可以使用简单的 HTTP 重定向将针对“contoso.com”的请求定向到某个备用名称（例如“www.contoso.com”）。
-
-    <!--and using [Alias records](../dns/tutorial-alias-tm.md) to point to your traffic manager profile-->
+    > 通过 Azure 流量管理器来使用虚构域时，必须使用 CNAME 将虚构域名指向流量管理器域名。 DNS 标准不允许在域的“顶点”（或根）位置创建 CNAME。 因此，无法为“contoso.com”（有时称为“裸”域）创建 CNAME。 只能为“contoso.com”下的域（例如“www.contoso.com”）创建 CNAME。 为了克服此限制，建议在 [Azure DNS](../dns/dns-overview.md) 上托管 DNS 域并使用[别名记录](../dns/tutorial-alias-tm.md)以指向流量管理器配置文件。 或者可以使用简单的 HTTP 重定向将针对“contoso.com”的请求定向到某个备用名称（例如“www.contoso.com”）。
 
 ### <a name="how-clients-connect-using-traffic-manager"></a>客户端如何使用流量管理器进行连接
 
@@ -81,27 +79,27 @@ Contoso Corp 开发了一个新的合作伙伴门户。 此门户的 URL 为 `ht
 
 ## <a name="faqs"></a>常见问题解答
 
-* [流量管理器使用什么 IP 地址？](/traffic-manager/traffic-manager-faqs#what-ip-address-does-traffic-manager-use)
+* [流量管理器使用什么 IP 地址？](./traffic-manager-faqs.md#what-ip-address-does-traffic-manager-use)
 
-* [可以使用流量管理器路由什么类型的流量？](/traffic-manager/traffic-manager-faqs#what-types-of-traffic-can-be-routed-using-traffic-manager)
+* [可以使用流量管理器路由什么类型的流量？](./traffic-manager-faqs.md#what-types-of-traffic-can-be-routed-using-traffic-manager)
 
-* [流量管理器是否支持“粘滞”会话？](/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-sticky-sessions)
+* [流量管理器是否支持“粘滞”会话？](./traffic-manager-faqs.md#does-traffic-manager-support-sticky-sessions)
 
-* [使用流量管理器时为何出现 HTTP 错误？](/traffic-manager/traffic-manager-faqs#why-am-i-seeing-an-http-error-when-using-traffic-manager)
+* [使用流量管理器时为何出现 HTTP 错误？](./traffic-manager-faqs.md#why-am-i-seeing-an-http-error-when-using-traffic-manager)
 
-* [使用流量管理器对性能有什么影响？](/traffic-manager/traffic-manager-faqs#what-is-the-performance-impact-of-using-traffic-manager)
+* [使用流量管理器对性能有什么影响？](./traffic-manager-faqs.md#what-is-the-performance-impact-of-using-traffic-manager)
 
-* [流量管理器允许使用什么应用程序协议？](/traffic-manager/traffic-manager-faqs#what-application-protocols-can-i-use-with-traffic-manager)
+* [流量管理器允许使用什么应用程序协议？](./traffic-manager-faqs.md#what-application-protocols-can-i-use-with-traffic-manager)
 
-* [是否可以对“裸”域名使用流量管理器？](/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-a-naked-domain-name)
+* [是否可以对“裸”域名使用流量管理器？](./traffic-manager-faqs.md#can-i-use-traffic-manager-with-a-naked-domain-name)
 
-* [处理 DNS 查询时流量管理器是否会考虑客户端子网地址？](/traffic-manager/traffic-manager-faqs#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
+* [处理 DNS 查询时流量管理器是否会考虑客户端子网地址？](./traffic-manager-faqs.md#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
 
-* [什么是 DNS TTL，它如何影响我的用户？](/traffic-manager/traffic-manager-faqs#what-is-dns-ttl-and-how-does-it-impact-my-users)
+* [什么是 DNS TTL，它如何影响我的用户？](./traffic-manager-faqs.md#what-is-dns-ttl-and-how-does-it-impact-my-users)
 
-* [可将流量管理器响应的 TTL 设置为多高或多低？](/traffic-manager/traffic-manager-faqs#how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses)
+* [可将流量管理器响应的 TTL 设置为多高或多低？](./traffic-manager-faqs.md#how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses)
 
-* [如何了解传入到我的配置文件的查询数量？](/traffic-manager/traffic-manager-faqs#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
+* [如何了解传入到我的配置文件的查询数量？](./traffic-manager-faqs.md#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -114,4 +112,4 @@ Contoso Corp 开发了一个新的合作伙伴门户。 此门户的 URL 为 `ht
 [1]: ./media/traffic-manager-how-traffic-manager-works/dns-configuration.png
 [2]: ./media/traffic-manager-how-traffic-manager-works/flow.png
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

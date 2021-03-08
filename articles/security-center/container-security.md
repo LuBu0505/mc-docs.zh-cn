@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/02/2021
+ms.date: 02/25/2021
 ms.author: v-johya
 origin.date: 02/11/2020
-ms.openlocfilehash: 8834b7591a0e34230d17776ec47e6e6e77681f0f
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: d2f1deb125a46dd44814837738630171120f3668
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579370"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197089"
 ---
 # <a name="container-security-in-security-center"></a>安全中心的容器安全性
 
@@ -71,11 +71,25 @@ Azure 安全中心会识别在 IaaS Linux VM 上或其他运行 Docker 容器的
 ### <a name="continuous-monitoring-of-your-kubernetes-clusters"></a>持续监视 Kubernetes 群集
 安全中心可以与 Azure Kubernetes 服务 (AKS) 协同工作，后者是 Microsoft 的托管容器业务流程服务，用于开发、部署和管理容器化应用程序。
 
-AKS 提供安全控制，并且可用于了解群集的安全状况。 安全中心使用这些功能来完成以下任务：
-* 持续监视 AKS 群集的配置
-* 生成符合行业标准的安全建议
+AKS 提供安全控制，并且可用于了解群集的安全状况。 安全中心使用这些功能来持续监视 AKS 群集的配置，并生成符合行业标准的安全建议。
+
+下面是有关 Azure 安全中心、Azure Kubernetes 服务和 Azure Policy 之间的交互的高级关系图：
+
+:::image type="content" source="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png" alt-text="有关 Azure 安全中心、Azure Kubernetes 服务和 Azure Policy 之间的交互的高级关系图" lightbox="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png":::
+
+你可以看到安全中心接收和分析的项包括：
+
+- 来自 API 服务器的审核日志
+- Log Analytics 代理中的原始安全事件
+
+    > [!NOTE]
+    > 目前，我们不支持在虚拟机规模集上运行的 Azure Kubernetes 服务群集上安装 Log Analytics 代理。
+
+- 来自 AKS 群集的群集配置信息
+- Azure Policy 中的工作负载配置（通过适用于 Kubernetes 的 Azure Policy 加载项）
 
 若要详细了解针对此功能可能出现的相关安全中心建议，请参阅建议参考表的[计算部分](recommendations-reference.md#recs-compute)。
+
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>使用 Kubernetes 准入控制实现工作负载保护最佳做法
 
@@ -86,6 +100,8 @@ AKS 提供安全控制，并且可用于了解群集的安全状况。 安全中
 通过 AKS 群集上的加载项，将按照预先定义的一组最佳做法监视对 Kubernetes API 服务器的每个请求，然后再将其保存到群集。 然后，可以配置为强制实施最佳做法，并规定将其用于未来的工作负载。 
 
 例如，可以规定不应创建特权容器，并且阻止以后的任何请求。
+
+参阅[保护 Kubernetes 工作负载](kubernetes-workload-protections.md)，了解详细信息。
 
 
 ## <a name="run-time-protection-for-aks-nodes-and-clusters"></a>面向 AKS 节点和群集的运行时保护

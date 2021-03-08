@@ -1,16 +1,17 @@
 ---
 title: 如何保护资源层次结构 - Azure 治理
 description: 了解如何通过层次结构设置（包括设置默认管理组）来保护资源层次结构。
-origin.date: 09/02/2020
-ms.date: 11/06/2020
-ms.author: v-tawe
+origin.date: 02/05/2021
+author: rockboyfor
+ms.date: 03/01/2021
+ms.author: v-yeche
 ms.topic: conceptual
-ms.openlocfilehash: 3ad70f782482be6c7c0aad0c08b6d7b7e92f04de
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: f052e285fc542cf8d16c8ae25f1a08a2b2ab0f91
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328847"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196553"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>如何保护资源层次结构
 
@@ -88,8 +89,8 @@ ms.locfileid: "94328847"
 
 1. 将“需要权限才能创建新管理组。” 选项切换为打开。
 
-   > [!NOTE]
-   > 如果“需要权限才能创建新管理组。” 切换功能处于禁用状态，要么所查看的管理组不是根管理组，要么你的安全主体没有更改层次结构设置所需的权限。
+    > [!NOTE]
+    > 如果“需要权限才能创建新管理组。” 切换功能处于禁用状态，要么所查看的管理组不是根管理组，要么你的安全主体没有更改层次结构设置所需的权限。
 
 ### <a name="set-require-authorization-with-rest-api"></a>使用 REST API 设置“需要授权”
 
@@ -97,19 +98,19 @@ ms.locfileid: "94328847"
 
 - REST API URI
 
-  ```http
-  PUT https://management.chinacloudapi.cn/providers/Microsoft.Management/managementGroups/{rootMgID}/settings/default?api-version=2020-02-01
-  ```
+    ```http
+    PUT https://management.chinacloudapi.cn/providers/Microsoft.Management/managementGroups/{rootMgID}/settings/default?api-version=2020-02-01
+    ```
 
 - 请求正文
 
-  ```json
-  {
+    ```json
+    {
       "properties": {
           "requireAuthorizationForGroupCreation": true
       }
-  }
-  ```
+    }
+    ```
 
 若要重新打开该设置，请使用相同终结点，并将 requireAuthorizationForGroupCreation 设置为值 false。
 
@@ -119,3 +120,5 @@ ms.locfileid: "94328847"
 
 - [创建管理组来组织 Azure 资源](../create-management-group-portal.md)
 - [如何更改、删除或管理管理组](../manage.md)
+
+<!--Update_Description: update meta properties, wording update, update link-->

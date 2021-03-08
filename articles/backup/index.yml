@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: Johnnytechn
   ms.author: v-johya
-  ms.date: 02/02/2021
-  ms.openlocfilehash: df769d7551c16c2b6abaf9c8275161e0b0e20fae
-  ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+  ms.date: 03/01/2021
+  ms.openlocfilehash: db4b1d361fba12a7826a9613f6f02638bb316b71
+  ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/05/2021
-  ms.locfileid: "99579429"
+  ms.lasthandoff: 03/05/2021
+  ms.locfileid: "102197195"
 landingContent:
 - title: 了解 Azure 备份
   linkLists:
@@ -73,7 +73,7 @@ landingContent:
     - text: Azure VM 备份的支持矩阵
       url: backup-support-matrix-iaas.md
     - text: 常见问题解答 - Azure VM 备份
-      url: backup-azure-vm-backup-faq.md
+      url: backup-azure-vm-backup-faq.yml
     - text: 管理 Azure VM 备份
       url: backup-azure-manage-vms.md
 - title: 备份 Azure VM 上的 SQL Server

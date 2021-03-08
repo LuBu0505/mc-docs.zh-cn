@@ -13,12 +13,12 @@ ms.workload: ns
 origin.date: 03/04/2020
 ms.date: 12/14/2020
 ms.author: v-yiso
-ms.openlocfilehash: 4bec80ba27bf6a72357e810962ff23612f685468
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 87b25872eee53c1d371ced30f00fe00fdeedc7b1
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830090"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196614"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>快速入门：控制连接到 IoT 中心的设备 (.NET)
 
@@ -81,7 +81,7 @@ IoT 中心是一项 Azure 服务，使你可以从云管理 IoT 设备，并将�
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
     ```azurecli
-    az iot hub device-identity show-connection-string \
+    az iot hub device-identity connection-string show \
       --hub-name {YourIoTHubName} \
       --device-id MyDotnetDevice \
       --output table
@@ -98,7 +98,7 @@ IoT 中心是一项 Azure 服务，使你可以从云管理 IoT 设备，并将�
 还需一个 IoT 中心服务连接字符串，以便服务应用程序能够连接到中心并检索消息。 以下命令检索 IoT 中心的服务连接字符串：
 
 ```azurecli
-az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
+az iot hub connection-string show --policy-name service --name {YourIoTHubName} --output table
 ```
 
 记下如下所示的服务连接字符串：

@@ -4,20 +4,20 @@ description: 搜索和筛选由 Web 应用发送的原始遥测数据。
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 07/30/2019
-ms.date: 01/14/2021
+ms.date: 02/22/2021
 ms.author: v-johya
-ms.openlocfilehash: 0b72fd1d54f6ecb1c9e50a8a03ac222d2d7b450d
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: fdfe263daedcb1b20aa248e0861582bcaa781023
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231056"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197253"
 ---
 # <a name="using-search-in-application-insights"></a>使用 Application Insights 中的搜索
 
 搜索是 [Application Insights](./app-insights-overview.md) 中的一项功能，可用于查找和浏览单个遥测项，例如页面视图、异常或 Web 请求。 此外，可以查看编写的日志跟踪和事件。
 
-（若要对数据进行更复杂的查询，请使用 [Analytics](../log-query/log-analytics-tutorial.md)。）
+（若要对数据进行更复杂的查询，请使用 [Analytics](../logs/log-analytics-tutorial.md)。）
 
 ## <a name="where-do-you-see-search"></a>哪里可以看到“搜索”？
 
@@ -84,7 +84,7 @@ ms.locfileid: "98231056"
 ## <a name="search-the-data"></a>搜索数据
 
 > [!NOTE]
-> 若要编写更复杂的查询，请在“搜索”边栏选项卡的顶部打开 [**日志（分析）**](../log-query/log-analytics-tutorial.md)。
+> 若要编写更复杂的查询，请在“搜索”边栏选项卡的顶部打开 [**日志（分析）**](../logs/log-analytics-tutorial.md)。
 >
 
 可以搜索任何属性值中的关键词。 如果已编写包含属性值的[自定义事件](./api-custom-events-metrics.md)，可使用此功能。
@@ -148,7 +148,7 @@ ms.locfileid: "98231056"
 
 ## <a name="next-steps"></a><a name="add"></a>后续步骤
 
-* [在 Analytics 中编写复杂查询](../log-query/log-analytics-tutorial.md)
+* [在 Analytics 中编写复杂查询](../logs/log-analytics-tutorial.md)
 * [向 Application Insights 发送日志和自定义的遥测数据](./asp-net-trace-logs.md)
 * [疑难解答](../faq.md)
 

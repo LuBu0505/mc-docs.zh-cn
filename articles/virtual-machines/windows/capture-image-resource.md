@@ -7,23 +7,23 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 origin.date: 09/27/2018
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: legacy
-ms.openlocfilehash: 449e927b263124b74ffcdceb3901c53c21ec92a2
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 3c3200ffc3502af2e25d81978d40b664fd74e2cd
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104843"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054303"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中创建通用 VM 的托管映像
 
 可通过在存储帐户中存储为托管/非托管磁盘的通用虚拟机 (VM) 创建托管的映像资源。 然后可以使用该映像创建多个 VM。 有关托管映像如何计费的信息，请参阅[托管磁盘定价](https://www.azure.cn/pricing/details/storage/managed-disks/)。 
 
-一个托管映像最多支持 20 个同时部署。 如果尝试从同一托管映像同时创建超过 20 个 VM，则可能会由于单个 VHD 的存储性能限制而导致预配超时。 若要同时创建 20 个以上的 VM，请使用为每 20 个并发 VM 部署配置 1 个副本的[共享映像库](shared-image-galleries.md)映像。
+一个托管映像最多支持 20 个同时部署。 如果尝试从同一托管映像同时创建超过 20 个 VM，则可能会由于单个 VHD 的存储性能限制而导致预配超时。 若要同时创建 20 个以上的 VM，请使用为每 20 个并发 VM 部署配置 1 个副本的[共享映像库](../shared-image-galleries.md)映像。
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>使用 Sysprep 通用化 Windows VM
 
@@ -36,7 +36,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 >
 >Sysprep 要求对驱动器进行完全解密。 如果在 VM 上启用了加密，请在运行 Sysprep 之前将其禁用。
 >
-> 如果计划在首次将虚拟硬盘 (VHD) 上传到 Azure 之前运行 Sysprep，请确保先[准备好 VM](prepare-for-upload-vhd-image.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。  
+> 如果计划在首次将虚拟硬盘 (VHD) 上传到 Azure 之前运行 Sysprep，请确保先[准备好 VM](prepare-for-upload-vhd-image.md)。  
 > 
 > 
 
@@ -86,7 +86,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
 6. 如果想要在创建映像后删除源 VM，选择“创建映像后自动删除此虚拟机”。
 
-    <!--Not Available on [availability zone](../../availability-zones/az-overview.md)-->
+<!--NOT AVAILABLE ON [availability zone](../../availability-zones/az-overview.md)-->
     
 8. 选择“创建”以创建映像。
 
@@ -98,7 +98,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
 在开始之前，请确保有最新版本的 Azure PowerShell 模块。 若要查找版本，请在 PowerShell 中运行 `Get-Module -ListAvailable Az`。 如需升级，请参阅[使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则运行 `Connect-AzAccount -Environment AzureChinaCloud` 以创建与 Azure 的连接。
 
-<!--Not Available on [availability zones](../../availability-zones/az-overview.md)-->
+<!--NOT AVAILABLE ON [availability zone(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD)s](../../availability-zones/az-overview.md)-->
 
 若要创建 VM 映像，请遵循下列步骤：
 
@@ -210,7 +210,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
 ## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>从使用存储帐户的 VM 创建映像
 
-若要从不使用托管磁盘的 VM 创建托管映像，需要存储帐户中 OS VHD 的 URI，格式如下： https:// *mystorageaccount* .blob.core.chinacloudapi.cn/ *vhdcontainer*/*vhdfilename.vhd* 。 在本示例中，VHD 位于名为 vhdcontainer 的容器中的 mystorageaccount 中，且 VHD 文件名为 vhdfilename.vhd。
+若要从不使用托管磁盘的 VM 创建托管映像，需要存储帐户中 OS VHD 的 URI，格式如下： https://*mystorageaccount*.blob.core.chinacloudapi.cn/*vhdcontainer*/*vhdfilename.vhd*。 在本示例中，VHD 位于名为 vhdcontainer 的容器中的 mystorageaccount 中，且 VHD 文件名为 vhdfilename.vhd。
 
 1. 创建一些变量。
 
@@ -241,6 +241,6 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
     ```
 
 ## <a name="next-steps"></a>后续步骤
-- [从托管的映像创建 VM](create-vm-generalized-managed.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
+- [从托管的映像创建 VM](create-vm-generalized-managed.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

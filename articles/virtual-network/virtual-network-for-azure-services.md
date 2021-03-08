@@ -6,21 +6,21 @@ services: virtual-network
 documentationcenter: na
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 04/06/2020
 author: rockboyfor
-ms.date: 11/16/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9bdcd36b8d1145278c209145ed961cbc638d5f11
-ms.sourcegitcommit: 39288459139a40195d1b4161dfb0bb96f5b71e8e
+ms.openlocfilehash: f92a55df50d589d14781df315f3b119b13f26963
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94590936"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055264"
 ---
 # <a name="deploy-dedicated-azure-services-into-virtual-networks"></a>将专用 Azure 服务部署到虚拟网络
 
@@ -34,7 +34,7 @@ ms.locfileid: "94590936"
 - 本地资源可通过[站点到站点 VPN（VPN 网关）](../vpn-gateway/design.md?toc=%2fvirtual-network%2ftoc.json#s2smulti)或 [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fvirtual-network%2ftoc.json) 使用专用 IP 地址访问虚拟网络中的资源。
 - 虚拟网络可使用专用 IP 地址进行[对等互连](virtual-network-peering-overview.md)，实现虚拟网络中资源之间的彼此通信。
 - 虚拟网络中的服务实例通常由 Azure 服务完全托管。 这包括监视资源的运行状况并根据负载进行缩放。
-- 服务实例部署在虚拟网络的子网中。 根据服务提供的指南，必须通过[网络安全组](security-overview.md#network-security-groups)对子网开放入站和出站网络访问。
+- 服务实例部署在虚拟网络的子网中。 根据服务提供的指南，必须通过[网络安全组](./network-security-groups-overview.md#network-security-groups)对子网开放入站和出站网络访问。
 - 某些服务还会对它们能够部署到其中的子网施加限制，限制策略、路由的应用，或者要求将 VM 和服务资源组合到同一子网中。 请查看每项服务，了解这些具体限制，因为它们会随时间而变化。 此类服务的示例包括 Azure 容器实例和应用服务。 
     
     <!--Not Available on Azure NetApp Files, Dedicated HSM-->
@@ -44,12 +44,13 @@ ms.locfileid: "94590936"
 
 ### <a name="services-that-can-be-deployed-into-a-virtual-network"></a>可部署到虚拟网络中的服务
 
-|Category|服务| 专用<sup>1</sup> 子网
+|类别|服务| 专用<sup>1</sup> 子网
 |-|-|-|
-| 计算 | 虚拟机：[Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fvirtual-network%2ftoc.json) 或 [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fvirtual-network%2ftoc.json) <br/>[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fvirtual-network%2ftoc.json)<br/>[云服务](https://msdn.microsoft.com/library/azure/jj156091)：仅限虚拟网络（经典）<br/> [Azure Batch](../batch/nodes-and-pools.md?toc=%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)| 否 <br/> 否 <br/> 否 <br/> 否<sup>2</sup>
+| 计算 | 虚拟机：[Linux](https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/infrastructure-example?toc=%2fvirtual-network%2ftoc.json) 或 [Windows](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/infrastructure-example?toc=%2fvirtual-network%2ftoc.json) <br/>[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fvirtual-network%2ftoc.json)<br/>[云服务](https://docs.microsoft.com/previous-versions/azure/reference/jj156091(v=azure.100))：仅限虚拟网络（经典）<br/> [Azure Batch](../batch/nodes-and-pools.md?toc=%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)| 否 <br/> 否 <br/> 否 <br/> 否<sup>2</sup>
 | 网络 | [应用程序网关 - WAF](../application-gateway/application-gateway-ilb-arm.md?toc=%2fvirtual-network%2ftoc.json)<br/>[VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fvirtual-network%2ftoc.json)<br/>[Azure 防火墙](../firewall/overview.md?toc=%2fvirtual-network%2ftoc.json)  <br/> [Azure Bastion](../bastion/bastion-overview.md?toc=%2fvirtual-network%2ftoc.json)<br/>[网络虚拟设备](https://docs.microsoft.com/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn)| 是 <br/> 是 <br/> 是 <br/> 是 <br/> 否
 |数据|[RedisCache](../azure-cache-for-redis/cache-how-to-premium-vnet.md?toc=%2fvirtual-network%2ftoc.json)<br/>[Azure SQL 托管实例](../azure-sql/managed-instance/connectivity-architecture-overview.md?toc=%2fvirtual-network%2ftoc.json)| 是 <br/> 是 <br/> 
-| 分析 | [Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fvirtual-network%2ftoc.json)<br/> | 否<sup>2</sup> <br/> 
+| Analytics | [Azure HDInsight](../hdinsight/hdinsight-plan-virtual-network-deployment.md?toc=%2fvirtual-network%2ftoc.json)<br/>[Azure Databricks](https://docs.azure.cn/databricks/scenarios/what-is-azure-databricks?toc=%2fvirtual-network%2ftoc.json) |否<sup>2</sup> <br/> 否<sup>2</sup> <br/> 
+| 标识 | [Azure Active Directory 域服务](../active-directory-domain-services/tutorial-create-instance.md?toc=%2fvirtual-network%2ftoc.json) |否 <br/>
 | 容器 | [Azure Kubernetes 服务 (AKS)](../aks/concepts-network.md?toc=%2fvirtual-network%2ftoc.json)<br/>[Azure 容器实例 (ACI)](../container-instances/container-instances-vnet.md)<br/>带有 Azure 虚拟网络 CNI [插件](https://github.com/Azure/acs-engine/tree/master/examples/vnet)的 [Azure 容器服务引擎](https://github.com/Azure/acs-engine)<br/>[Azure Functions](../azure-functions/functions-networking-options.md#virtual-network-integration) |否<sup>2</sup><br/> 是 <br/><br/> 否 <br/> 是
 | Web | [API 管理](../api-management/api-management-using-with-vnet.md?toc=%2fvirtual-network%2ftoc.json)<br/>[Web 应用](../app-service/web-sites-integrate-with-vnet.md?toc=%2fvirtual-network%2ftoc.json)<br/>[应用服务环境](../app-service/web-sites-integrate-with-vnet.md?toc=%2fvirtual-network%2ftoc.json)<br/>|是 <br/> 是 <br/> 是 
 |||
@@ -57,11 +58,9 @@ ms.locfileid: "94590936"
 <sup>1</sup>“专用”表示只能在此子网中部署服务专用资源，并且不能将其与客户 VM/VMSS 组合使用 <br/> 
 <sup>2</sup> 建议的最佳做法是将这些服务置于专用子网中，但这并非服务的强制要求。
 
-<!-- Not Available on [Azure Databricks](../azure-databricks/what-is-azure-databricks.md)-->
-<!-- Not Available on | Identity | [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-vnet.md)-->
 <!-- Mooncake Correct on [Azure Container Instance (ACI)](../container-instances/container-instances-vnet.md)-->
-<!-- Not Available on [Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)-->
-<!-- Not Available on | Hosted | [Azure Dedicated HSM](../dedicated-hsm/index.yml)-->
-<!-- Not Available on [Deploy in Azure virtual network (VNet injection)](../spring-cloud/spring-cloud-tutorial-deploy-in-azure-virtual-network.md)-->
+<!--NOT AVAILABLE ON [Azure Dedicated HSM(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD)](../dedicated-hsm/index.yml?toc=%2fvirtual-network%2ftoc.json)-->
+<!--NOT AVAILABLE ON [Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md?toc=%2fvirtual-network%2ftoc.json)-->
+<!--NOT AVAILABLE ON [Deploy in Azure virtual network (VNet injection)](../spring-cloud/spring-cloud-tutorial-deploy-in-azure-virtual-network.md)-->
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

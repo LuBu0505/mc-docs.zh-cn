@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.workload: infrastructure
 origin.date: 10/27/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 10/26/2020
 ms.author: v-yeche
 ms.reviewer: olayemio
-ms.openlocfilehash: 8409dd8bd06d9937516283f33a4ebaeb55a4ef14
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: b25614ee4404e6950eb1655ee19af72806b0c9dd
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856670"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052476"
 ---
 <!--Verified Successfully-->
 # <a name="create-a-managed-disk-from-an-image-version"></a>从映像版本创建托管磁盘
@@ -120,4 +120,4 @@ New-AzDisk -Disk $diskConfig `
 
 还可以使用 [Azure CLI](image-version-managed-image-cli.md) 或 [PowerShell](image-version-managed-image-powershell.md) 从托管磁盘创建映像版本。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

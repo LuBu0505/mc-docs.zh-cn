@@ -4,15 +4,15 @@ description: Linux 虚拟机安全基线为实现 Azure 安全基准中指定的
 author: Johnnytechn
 ms.service: virtual-machines-linux
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 03/04/2021
 ms.author: v-johya
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 32feeab492c5578e7b0e3bc9e2b40cfe7c7ed76f
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: c08266895504125ed6768f21fa81f9d89319260a
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579392"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197256"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>适用于 Linux 虚拟机的 Azure 安全基线
 
@@ -168,9 +168,9 @@ ms.locfileid: "99579392"
 
 使用 Azure Policy 来验证（和/或修正）与 Linux 虚拟机相关的网络资源的配置。
 
-* [如何查看和检索 Azure 活动日志事件](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [如何查看和检索 Azure 活动日志事件](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [如何在 Azure Monitor 中创建警报](../../azure-monitor/platform/alerts-activity-log.md)
+* [如何在 Azure Monitor 中创建警报](../../azure-monitor/alerts/alerts-activity-log.md)
 
 * [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -200,7 +200,7 @@ ms.locfileid: "99579392"
 
 * [Azure 安全中心中的数据收集](../../security-center/security-center-enable-data-collection.md)
 
-* [若要捕获用于监视的 Syslog 数据，需启用 Log Analytics 扩展](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
+* [若要捕获用于监视的 Syslog 数据，需启用 Log Analytics 扩展](../../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
 
 **Azure 安全中心监视**：是
 
@@ -216,13 +216,13 @@ ms.locfileid: "99579392"
 
 此外，请允许 Azure Monitor 访问你的审核和活动日志，其中包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用的元素。
 
-* [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/platform/diagnostic-settings.md)
+* [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Log Analytics 代理概述](../../azure-monitor/platform/log-analytics-agent.md)
+* [Log Analytics 代理概述](../../azure-monitor/agents/log-analytics-agent.md)
 
 * [适用于 Linux 的 Log Analytics 虚拟机扩展](../extensions/oms-linux.md)
 
-* [查看和检索 Azure 活动日志事件](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [查看和检索 Azure 活动日志事件](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [Application Insights 概述](../../azure-monitor/app/app-insights-overview.md)
 
@@ -238,7 +238,7 @@ ms.locfileid: "99579392"
 
 * [Azure 安全中心中的数据收集](../../security-center/security-center-enable-data-collection.md)
 
-* [若要捕获用于监视的 Syslog 数据，需启用 Log Analytics 扩展](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
+* [若要捕获用于监视的 Syslog 数据，需启用 Log Analytics 扩展](../../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
 
 **Azure 安全中心监视**：是
 
@@ -248,7 +248,7 @@ ms.locfileid: "99579392"
 
 **指导**：确保用于存储虚拟机日志的任何存储帐户或 Log Analytics 工作区都具有根据组织的符合性规定设置的日志保留期。
 
-* [如何配置 Log Analytics 工作区保留期](../../azure-monitor/platform/manage-cost-storage.md)
+* [如何配置 Log Analytics 工作区保留期](../../azure-monitor/logs/manage-cost-storage.md)
 
 **Azure 安全中心监视**：不可用
 
@@ -262,13 +262,13 @@ ms.locfileid: "99579392"
 
 或者，可以启用数据并将其载入第三方 SIEM，以监视和查看日志。
 
-* [Log Analytics 代理概述](../../azure-monitor/platform/log-analytics-agent.md)
+* [Log Analytics 代理概述](../../azure-monitor/agents/log-analytics-agent.md)
 
 * [适用于 Linux 的 Log Analytics 虚拟机扩展](../extensions/oms-linux.md)
 
-* [了解 Log Analytics 工作区](../../azure-monitor/log-query/log-analytics-tutorial.md)
+* [了解 Log Analytics 工作区](../../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [如何在 Azure Monitor 中执行自定义查询](../../azure-monitor/log-query/get-started-queries.md)
+* [如何在 Azure Monitor 中执行自定义查询](../../azure-monitor/logs/get-started-queries.md)
 
 **Azure 安全中心监视**：不可用
 
@@ -282,7 +282,7 @@ ms.locfileid: "99579392"
 
 * [如何在 Azure 安全中心管理警报](../../security-center/security-center-managing-and-responding-alerts.md)
 
-* [如何针对 Log Analytics 日志数据发出警报](../../azure-monitor/learn/tutorial-response.md)
+* [如何针对 Log Analytics 日志数据发出警报](../../azure-monitor/alerts/tutorial-response.md)
 
 **Azure 安全中心监视**：不可用
 
@@ -312,7 +312,7 @@ ms.locfileid: "99579392"
 
 * [如何在 Azure Monitor 中执行自定义查询](../../azure-monitor/log-query/get-started-queries.md)
 
-* [Azure Monitor 中的 Syslog 数据源](../../azure-monitor/platform/data-sources-syslog.md)
+* [Azure Monitor 中的 Syslog 数据源](../../azure-monitor/agents/data-sources-syslog.md)
 
 **Azure 安全中心监视**：不可用
 
@@ -396,7 +396,7 @@ Azure 安全中心监视：不可用
 
 * [如何将 Azure 活动日志集成到 Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [如何为自定义警报和通知配置操作组](../../azure-monitor/platform/action-groups.md)
+* [如何为自定义警报和通知配置操作组](../../azure-monitor/alerts/action-groups.md)
 
 **Azure 安全中心监视**：是
 
@@ -438,13 +438,13 @@ Azure 安全中心监视：不可用
 
 **指导**：配置 Azure Active Directory 的诊断设置，以将审核日志和登录日志发送到 Log Analytics 工作区。 此外，使用 Azure Monitor 查看日志并对来自 Azure 虚拟机的 auth syslog 数据执行查询。
 
-* [了解 Log Analytics 工作区](../../azure-monitor/log-query/log-analytics-tutorial.md)
+* [了解 Log Analytics 工作区](../../azure-monitor/logs/log-analytics-tutorial.md)
 
 * [如何将 Azure 活动日志集成到 Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [如何在 Azure Monitor 中执行自定义查询](../../azure-monitor/log-query/get-started-queries.md)
+* [如何在 Azure Monitor 中执行自定义查询](../../azure-monitor/logs/get-started-queries.md)
 
-* [Azure Monitor 中的 Syslog 数据源](../../azure-monitor/platform/data-sources-syslog.md)
+* [Azure Monitor 中的 Syslog 数据源](../../azure-monitor/agents/data-sources-syslog.md)
 
 **Azure 安全中心监视**：不可用
 
@@ -568,9 +568,9 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 **指导**：将 Azure Monitor 与 Azure 活动日志配合使用，以创建在虚拟机和相关资源发生更改时发出的警报。
 
-* [如何针对 Azure 活动日志事件创建警报](../../azure-monitor/platform/alerts-activity-log.md)
+* [如何针对 Azure 活动日志事件创建警报](../../azure-monitor/alerts/alerts-activity-log.md)
 
-* [如何针对 Azure 活动日志事件创建警报](../../azure-monitor/platform/alerts-activity-log.md)
+* [如何针对 Azure 活动日志事件创建警报](../../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Azure 存储分析日志记录](../../storage/common/storage-analytics-logging.md)
 
@@ -812,7 +812,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 * [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-* [有关如何下载 VM 模板的信息](../windows/download-template.md)
+* [有关如何下载 VM 模板的信息](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/download-template)
 
 **Azure 安全中心监视**：不可用
 
@@ -856,7 +856,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 对于大部分方案，Microsoft 基本 VM 模板与 Azure Automation Desired State Configuration 相结合可以帮助满足和维护安全要求。
 
-* [有关如何下载 VM 模板的信息](../windows/download-template.md)
+* [有关如何下载 VM 模板的信息](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [有关创建 ARM 模板的信息](../windows/ps-template.md)
 

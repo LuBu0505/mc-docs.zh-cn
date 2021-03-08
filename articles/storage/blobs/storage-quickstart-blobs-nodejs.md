@@ -4,17 +4,17 @@ description: 本快速入门介绍如何使用适用于 JavaScript 的 Azure Blo
 author: WenJason
 ms.author: v-jay
 origin.date: 09/17/2020
-ms.date: 11/16/2020
+ms.date: 03/08/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: e0d960b3f5ed4be7909ef0d9d8718d6794385dbe
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: 1f4d264fd174f590c111cdb76dc344fcfe41bce1
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432612"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196271"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>快速入门：在 Node.js 中使用 JavaScript v12 SDK 管理 blob
 
@@ -25,7 +25,7 @@ ms.locfileid: "96432612"
 * [API 参考文档](https://docs.microsoft.com/javascript/api/@azure/storage-blob)
 * [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
 * [包(节点包管理器)](https://www.npmjs.com/package/@azure/storage-blob)
-* [示例](/storage/common/storage-samples-javascript?toc=%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [示例](../common/storage-samples-javascript.md?toc=%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -277,7 +277,7 @@ console.log("Container was deleted successfully. requestId: ", deleteContainerRe
 
 此应用创建文本字符串，并将其上传到 Blob 存储。 示例随后列出容器中的 Blob，下载 Blob 并显示下载的数据。
 
-在控制台提示符下，导航到包含blob-quickstart-v12.py 文件的目录，然后执行以下 `node` 命令来运行应用。
+在控制台提示符下，导航到包含 blob-quickstart-v12.js 文件的目录，然后执行以下 `node` 命令来运行应用。
 
 ```console
 node blob-quickstart-v12.js
@@ -315,6 +315,6 @@ Done
 > [!div class="nextstepaction"]
 > [Azure for JavaScript 开发人员中心](https://docs.microsoft.com/azure/developer/javascript/)
 
-* 若要了解如何部署使用 Azure Blob 存储的 Web 应用，请参阅[教程：使用 Azure 存储将映像数据上传到云中](/storage/blobs/storage-upload-process-images?tabs=javascript&preserve-view=true)
+* 若要了解如何部署使用 Azure Blob 存储的 Web 应用，请参阅[教程：使用 Azure 存储将映像数据上传到云中](./storage-upload-process-images.md?preserve-view=true&tabs=javascript)
 * 若要查看 Blob 存储示例应用，请继续学习 [Azure Blob 存储客户端库 v12 JavaScript 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)。
 * 若要了解详细信息，请参阅[适用于 JavaScript 的 Azure Blob 存储客户端库](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)。

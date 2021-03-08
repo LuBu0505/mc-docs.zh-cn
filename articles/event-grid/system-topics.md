@@ -3,14 +3,14 @@ title: Azure 事件网格中的系统主题
 description: 介绍 Azure 事件网格中的系统主题。
 author: Johnnytechn
 ms.topic: conceptual
-ms.date: 10/10/2020
+ms.date: 03/05/2021
 ms.author: v-johya
-ms.openlocfilehash: 2e881a3551e869c9d373ea7c536bc1c96fa7f86b
-ms.sourcegitcommit: 6f66215d61c6c4ee3f2713a796e074f69934ba98
+ms.openlocfilehash: 8b717afd3fa1acc743f523808ceac33efa088d32
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92128157"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197366"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure 事件网格中的系统主题
 事件网格中的系统主题表示由 Azure 服务（如 Azure 存储和 Azure 事件中心）发布的一个或多个事件。 例如，一个系统主题可以表示已为特定存储帐户发布的所有 Blob 事件或仅“Blob 已创建”和“Blob 已删除”事件  。 在此示例中，当 Blob 上传到存储帐户时，Azure 存储服务会将“Blob 已创建”事件发布到事件网格中的系统主题，然后，事件网格会将该事件转发给接收和处理该事件的主题[订阅服务器](event-handlers.md)。 
@@ -21,17 +21,20 @@ ms.locfileid: "92128157"
 ## <a name="azure-services-that-support-system-topics"></a>支持系统主题的 Azure 服务
 下面是支持创建系统主题的 Azure 服务的当前列表。
 
-<!--Not available in MC: event-schema-app-configuration.md, event-schema-azure-maps.md-->
+- [Azure 应用配置](event-schema-app-configuration.md)
 - [Azure 应用服务](event-schema-app-service.md)
 - [Azure Blob 存储](event-schema-blob-storage.md)
+- [Azure 容器注册表](event-schema-container-registry.md)
 - [Azure 事件中心](event-schema-event-hubs.md)
 - [Azure IoT 中心](event-schema-iot-hub.md)
 - [Azure Key Vault](event-schema-key-vault.md)
+- [Azure 机器学习](event-schema-machine-learning.md)
 - [Azure 媒体服务](event-schema-media-services.md)
 - [Azure 资源组](event-schema-resource-groups.md)
 - [Azure 服务总线](event-schema-service-bus.md)
 - [Azure SignalR](event-schema-azure-signalr.md)
 - [Azure 订阅](event-schema-subscriptions.md)
+- [用于 Redis 的 Azure 缓存](event-schema-azure-cache.md)
 
 ## <a name="system-topics-as-azure-resources"></a>作为 Azure 资源的系统主题
 在过去，系统主题是隐式的，并且为了简单起见而未公开。 系统主题现在作为 Azure 资源可见，并提供以下功能：

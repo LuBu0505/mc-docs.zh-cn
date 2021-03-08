@@ -1,6 +1,6 @@
 ---
-title: 查看 Azure IoT 中心消息路由结果 (.NET) | Microsoft Docs
-description: 在使用本教程的第 1 部分设置了所有资源之后，添加将消息路由到 Azure 流分析的功能并在 PowerBI 中查看结果。
+title: 教程 - 查看 Azure IoT 中心消息路由结果 (.NET) | Microsoft Docs
+description: 教程 - 在使用本教程的第 1 部分设置了所有资源之后，添加将消息路由到 Azure 流分析的功能并在 Power BI 中查看结果。
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -10,12 +10,12 @@ origin.date: 03/25/2018
 ms.date: 12/02/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 2c0dd3b6f981be7737425774640918b5be25c618
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: 2c9745335f6909a2eb7bce847a569ae3198b2a01
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937344"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196800"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>教程：第 2 部分 - 查看路由的消息
 
@@ -49,7 +49,7 @@ ms.locfileid: "91937344"
 
    **位置**：使用你的位置。 本教程使用“美国西部”  。
 
-   **Log Analytics**：应关闭此开关。
+   **启用日志分析**：应关闭此开关。
 
    ![“创建逻辑应用”屏幕](./media/tutorial-routing-view-message-routing-results/create-logic-app.png)
 

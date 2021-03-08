@@ -6,12 +6,12 @@ author: Johnnytechn
 ms.date: 01/27/2021
 ms.custom: devx-track-java
 ms.author: v-johya
-ms.openlocfilehash: 4edbc43211fe37f7036233ab8c08746af776e5d9
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 2692f112d167109389a5e8e5eeb81654887c3b58
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059917"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197176"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>快速入门：Java Web 项目中的 Application Insights 入门
 
@@ -168,7 +168,7 @@ Application Insights SDK 按以下顺序查找密钥：
 ![钻取到特定示例视图](./media/java-get-started/007-instance.png)
 
 ### <a name="analytics-powerful-query-language"></a>分析：功能强大的查询语言
-随着累积的数据越来越多，可以运行查询来聚合数据以及查找单个实例。  [分析](../log-query/log-query-overview.md) 是一个强大的工具，既可用于了解性能和使用情况，也可用于诊断。
+随着累积的数据越来越多，可以运行查询来聚合数据以及查找单个实例。  [分析](../logs/log-query-overview.md) 是一个强大的工具，既可用于了解性能和使用情况，也可用于诊断。
 
 ![分析示例](./media/java-get-started/0025.png)
 
@@ -287,7 +287,7 @@ Application Insights Java SDK 现支持 [W3C 分布式跟踪](https://w3c.github
 * [监视 Unix 性能计数器](java-collectd.md)
 * [将监视功能添加到网页](javascript.md)，监视器页面加载时间、AJAX 调用、浏览器异常。
 * 编写[自定义遥测](./api-custom-events-metrics.md)来跟踪浏览器或服务器中的使用情况。
-* 使用[分析](../log-query/log-query-overview.md)从应用通过遥测执行功能强大的查询
+* 使用[分析](../logs/log-query-overview.md)从应用通过遥测执行功能强大的查询
 * 有关详细信息，请访问[面向 Java 开发人员的 Azure](/java)。
 
 <!--Link references-->
@@ -296,6 +296,6 @@ Application Insights Java SDK 现支持 [W3C 分布式跟踪](https://w3c.github
 [apiexceptions]: ./api-custom-events-metrics.md#trackexception
 [diagnostic]: ./diagnostic-search.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 [usage]: javascript.md
 

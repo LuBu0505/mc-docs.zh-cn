@@ -10,22 +10,22 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 04/25/2019
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: e0bad10f0c0eaa33f32a8994f811fce61090cf1a
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: b545ae8e8123cc5467e3e4d1f9e4ff6f1f1afbb3
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105426"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052500"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>脱机重置 Azure VM 的本地 Windows 密码
-如果已安装 Azure 来宾代理，可以使用 [Azure 门户或 Azure PowerShell](reset-rdp.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json) 重置 Azure 中 VM 的本地 Windows 密码。 此方法是重置 Azure VM 密码的主要方法。 如果遇到了 Azure 来宾代理无响应的问题，或者上传自定义映像后无法安装，可以手动重置 Windows 密码。 本文详细说明如何通过将源 OS 虚拟磁盘附加到另一个 VM 来重置本地帐户密码。 本文所述的步骤不适用于 Windows 域控制器。 
+如果已安装 Azure 来宾代理，可以使用 [Azure 门户或 Azure PowerShell](reset-rdp.md) 重置 Azure 中 VM 的本地 Windows 密码。 此方法是重置 Azure VM 密码的主要方法。 如果遇到了 Azure 来宾代理无响应的问题，或者上传自定义映像后无法安装，可以手动重置 Windows 密码。 本文详细说明如何通过将源 OS 虚拟磁盘附加到另一个 VM 来重置本地帐户密码。 本文所述的步骤不适用于 Windows 域控制器。 
 
 > [!WARNING]
-> 只有在万不得已的情况下才使用此过程。 始终应该先尝试使用 [Azure 门户或 Azure PowerShell](reset-rdp.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json) 重置密码。
+> 只有在万不得已的情况下才使用此过程。 始终应该先尝试使用 [Azure 门户或 Azure PowerShell](reset-rdp.md) 重置密码。
 
 ## <a name="overview-of-the-process"></a>过程概述
 无法访问 Azure 来宾代理时，针对 Azure 中的 Windows VM 执行本地密码重置的核心步骤如下：
@@ -42,7 +42,7 @@ ms.locfileid: "93105426"
 > [!NOTE]
 > 这些步骤不适用于 Windows 域控制器。 仅适用于独立服务器或域成员服务器。
 
-在执行以下步骤之前，始终应该尝试使用 [Azure 门户或 Azure PowerShell](reset-rdp.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json) 来重置密码。 在开始之前，请确保备份 VM。
+在执行以下步骤之前，始终应该尝试使用 [Azure 门户或 Azure PowerShell](reset-rdp.md) 来重置密码。 在开始之前，请确保备份 VM。
 
 1. 为受影响 VM 的 OS 磁盘拍摄快照，从快照创建磁盘，然后将该磁盘附加到故障排除 VM。 有关详细信息，请参阅[通过使用 Azure 门户将 OS 磁盘附加到恢复 VM 来对 Windows VM 进行故障排除](troubleshoot-recovery-disks-portal-windows.md)。
 2. 使用远程桌面连接到故障排除 VM。
@@ -126,7 +126,7 @@ ms.locfileid: "93105426"
 
         :::image type="content" source="./media/reset-local-password-without-agent/disks-select-storage-account-classic.png" alt-text="选择存储帐户 - 经典":::
 
-    3. 选中标有“显示经典存储帐户”的框，然后选择源容器。 源容器通常为 *vhds* ：
+    3. 选中标有“显示经典存储帐户”的框，然后选择源容器。 源容器通常为 *vhds*：
 
         :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-classic.png" alt-text="选择存储容器 - 经典":::
 
@@ -222,6 +222,6 @@ ms.locfileid: "93105426"
         * 删除 `gpt.ini`（如果 `gpt.ini` 之前已存在，并且你已将其重命名为 `gpt.ini.bak`，请将 `.bak` 文件重命名回 `gpt.ini`）
 
 ## <a name="next-steps"></a>后续步骤
-如果仍然无法使用远程桌面建立连接，请参阅 [RDP 故障排除指南](troubleshoot-rdp-connection.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。 [详细的 RDP 故障排除指南](detailed-troubleshoot-rdp.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)探讨的是故障排除方法而不是具体的步骤。 也可以通过[提出 Azure 支持请求](https://support.azure.cn/support/contact/)来获得人工协助。
+如果仍然无法使用远程桌面建立连接，请参阅 [RDP 故障排除指南](troubleshoot-rdp-connection.md)。 [详细的 RDP 故障排除指南](detailed-troubleshoot-rdp.md)探讨的是故障排除方法而不是具体的步骤。 也可以通过[提出 Azure 支持请求](https://support.azure.cn/support/contact/)来获得人工协助。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -3,16 +3,16 @@ title: Application Insights：语言、平台和集成 | Microsoft Docs
 description: 适用于 Application Insights 的语言、平台和集成
 ms.topic: conceptual
 author: Johnnytechn
+ms.date: 02/22/2021
 origin.date: 07/18/2019
-ms.date: 05/28/2020
 ms.reviewer: olegan
 ms.author: v-johya
-ms.openlocfilehash: bf9b8192a0ddbc48f3f73895d677dff70b9e9eca
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 2437296e4f41db943e81e450a7083dee5d10e347
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106320"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197097"
 ---
 # <a name="supported-languages"></a>支持的语言
 
@@ -33,13 +33,15 @@ ms.locfileid: "93106320"
 ### <a name="instrumentation-through-code-sdks"></a>通过代码进行检测 (SDK)
 * [ASP.NET](./asp-net.md)
 * [ASP.NET Core](./asp-net-core.md)
-* [Android](../learn/mobile-center-quickstart.md) (App Center)
-* [iOS](../learn/mobile-center-quickstart.md) (App Center)
+* [Android](../app/mobile-center-quickstart.md) (App Center)
+* [iOS](../app/mobile-center-quickstart.md) (App Center)
 * [Java EE](./java-get-started.md)
 * [Node.JS](https://www.npmjs.com/package/applicationinsights)
 * [Python](./opencensus-python.md)
-* [通用 Windows 应用](../learn/mobile-center-quickstart.md) (App Center)
+* [通用 Windows 应用](../app/mobile-center-quickstart.md) (App Center)
 * [Windows 桌面应用程序、服务和辅助角色](./windows-desktop.md)
+* [React](./javascript-react-plugin.md)
+* [React Native](./javascript-react-native-plugin.md)
 
 ## <a name="logging-frameworks"></a>记录框架
 * [ILogger](./ilogger.md)

@@ -5,13 +5,13 @@ ms.topic: how-to
 author: Johnnytechn
 ms.author: v-johya
 origin.date: 11/18/2019
-ms.date: 11/18/2020
-ms.openlocfilehash: 4189adf2cb426a7e4b219b6c652984f29005f645
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.date: 03/05/2021
+ms.openlocfilehash: 86f5fb6de9dcea0c12fb14c9c4e924fe514dea9c
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978086"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197500"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>将事件发布到受 Azure Active Directory 保护的终结点
 
@@ -95,6 +95,7 @@ Write-Host $myAppRoles
 if ($myAppRoles -match $eventGridRoleName)
 {
     Write-Host "The Azure Event Grid role is already defined.`n"
+    $myServicePrincipal = Get-AzureADServicePrincipal -Filter ("appId eq '" + $myApp.AppId + "'")
 } else
 {
     $myServicePrincipal = Get-AzureADServicePrincipal -Filter ("appId eq '" + $myApp.AppId + "'")

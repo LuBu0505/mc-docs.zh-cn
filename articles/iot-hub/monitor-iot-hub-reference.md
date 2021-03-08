@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: reference
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: 89d84fdcae5f240f6be10d53230ee29ae67518d7
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 52edcb4e51edd49da32ce6dfd5584f9abe1c5c31
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329379"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196604"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>监视 Azure IoT 中心数据参考
 
@@ -23,25 +23,48 @@ ms.locfileid: "94329379"
 
 以下小节按常规类别细分了 IoT 中心平台指标，并按它们在 Azure 门户中显示的名称列出它们。 还提供了与每个小节中显示的指标相关的信息。
 
-你还可以在 Azure Monitor 文档中的 [Microsoft.Devices/IotHubs](/azure-monitor/platform/metrics-supported#microsoftdevicesiothubs) 下找到一个按指标名称列出所有 IoT 中心平台指标的表。 请注意，此表并不提供本文中涵盖的一些信息，如一些指标[支持的聚合](#supported-aggregations)。
+你还可以在 Azure Monitor 文档中的 [Microsoft.Devices/IotHubs](../azure-monitor/essentials/metrics-supported.md#microsoftdevicesiothubs) 下找到一个按指标名称列出所有 IoT 中心平台指标的表。 请注意，此表并不提供本文中涵盖的一些信息，如一些指标[支持的聚合](#supported-aggregations)。
 
-若要了解其他 Azure 服务支持的指标，请参阅 [Azure Monitor 支持的指标](/azure-monitor/platform/metrics-supported)。
+若要了解其他 Azure 服务支持的指标，请参阅 [Azure Monitor 支持的指标](../azure-monitor/essentials/metrics-supported.md)。
 
 本节主题
 
-- [支持的聚合](#supported-aggregations)
-- [云到设备命令指标](#cloud-to-device-command-metrics)
-- [云到设备直接方法指标](#cloud-to-device-direct-methods-metrics)
-- [云到设备孪生操作指标](#cloud-to-device-twin-operations-metrics)
-- [配置指标](#configurations-metrics)
-- [每日配额指标](#daily-quota-metrics)
-- [设备指标](#device-metrics)
-- [设备遥测指标](#device-telemetry-metrics)
-- [设备到云孪生操作指标](#device-to-cloud-twin-operations-metrics)
-- [事件网格指标](#event-grid-metrics)
-- [作业指标](#jobs-metrics)
-- [路由指标](#routing-metrics)
-- [孪生查询指标](#twin-query-metrics)
+- [监视 Azure IoT 中心数据参考](#monitoring-azure-iot-hub-data-reference)
+  - [度量值](#metrics)
+    - [支持的聚合](#supported-aggregations)
+    - [云到设备命令指标](#cloud-to-device-command-metrics)
+    - [云到设备直接方法指标](#cloud-to-device-direct-methods-metrics)
+    - [云到设备孪生操作指标](#cloud-to-device-twin-operations-metrics)
+    - [配置指标](#configurations-metrics)
+    - [每日配额指标](#daily-quota-metrics)
+    - [设备指标](#device-metrics)
+    - [设备遥测指标](#device-telemetry-metrics)
+    - [设备到云孪生操作指标](#device-to-cloud-twin-operations-metrics)
+    - [事件网格指标](#event-grid-metrics)
+    - [作业指标](#jobs-metrics)
+    - [路由指标](#routing-metrics)
+    - [孪生查询指标](#twin-query-metrics)
+  - [指标维度](#metric-dimensions)
+  - [资源日志](#resource-logs)
+    - [连接](#connections)
+    - [设备遥测](#device-telemetry)
+    - [云到设备的命令](#cloud-to-device-commands)
+    - [设备标识操作](#device-identity-operations)
+    - [文件上传操作](#file-upload-operations)
+    - [Routes](#routes)
+    - [设备到云孪生操作](#device-to-cloud-twin-operations)
+    - [云到设备孪生操作](#cloud-to-device-twin-operations)
+    - [孪生查询](#twin-queries)
+    - [作业操作](#jobs-operations)
+    - [直接方法](#direct-methods)
+    - [分布式跟踪（预览版）](#distributed-tracing-preview)
+      - [IoT 中心 D2C（设备到云）日志](#iot-hub-d2c-device-to-cloud-logs)
+      - [IoT 中心流入日志](#iot-hub-ingress-logs)
+      - [IoT 中心流出日志](#iot-hub-egress-logs)
+    - [配置](#configurations)
+    - [设备流（预览版）](#device-streams-preview)
+  - [Azure Monitor 日志表](#azure-monitor-logs-tables)
+  - [另请参阅](#see-also)
 
 ### <a name="supported-aggregations"></a>支持的聚合
 
@@ -225,31 +248,50 @@ Azure IoT 中心具有以下与它的一些路由和事件网格指标关联的�
 |**结果**| 成功或失败 。|
 |**RoutingSource**| 设备消息<br>孪生更改事件<br>设备生命周期事件|
 
-若要了解有关指标维度的详细信息，请参阅[多维指标](/azure-monitor/platform/data-platform-metrics#multi-dimensional-metrics)。
+若要了解有关指标维度的详细信息，请参阅[多维指标](../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics)。
 
 ## <a name="resource-logs"></a>资源日志
 
-本节列出为 Azure IoT 中心收集的所有资源日志类别类型和架构。 所有 IoT 中心日志的资源提供程序和类型均为 [Microsoft.Devices/IotHubs](/azure-monitor/platform/resource-logs-categories#microsoftdevicesiothubs)。
+本节列出为 Azure IoT 中心收集的所有资源日志类别类型和架构。 所有 IoT 中心日志的资源提供程序和类型均为 [Microsoft.Devices/IotHubs](../azure-monitor/essentials/resource-logs-categories.md#microsoftdevicesiothubs)。
 
 本节主题
 
-- [连接](#connections)
-- [设备遥测](#device-telemetry)
-- [云到设备的命令](#cloud-to-device-commands)
-- [设备标识操作](#device-identity-operations)
-- [文件上传操作](#file-upload-operations)
-- [Routes](#routes)
-- [设备到云孪生操作](#device-to-cloud-twin-operations)
-- [云到设备孪生操作](#cloud-to-device-twin-operations)
-- [孪生查询](#twin-queries)
-- [作业操作](#jobs-operations)
-- [直接方法](#direct-methods)
-- [分布式跟踪（预览版）](#distributed-tracing-preview)
-  - [IoT 中心 D2C（设备到云）日志](#iot-hub-d2c-device-to-cloud-logs)
-  - [IoT 中心流入日志](#iot-hub-ingress-logs)
-  - [IoT 中心流出日志](#iot-hub-egress-logs)
-- [配置](#configurations)
-- [设备流（预览版）](#device-streams-preview)
+- [监视 Azure IoT 中心数据参考](#monitoring-azure-iot-hub-data-reference)
+  - [度量值](#metrics)
+    - [支持的聚合](#supported-aggregations)
+    - [云到设备命令指标](#cloud-to-device-command-metrics)
+    - [云到设备直接方法指标](#cloud-to-device-direct-methods-metrics)
+    - [云到设备孪生操作指标](#cloud-to-device-twin-operations-metrics)
+    - [配置指标](#configurations-metrics)
+    - [每日配额指标](#daily-quota-metrics)
+    - [设备指标](#device-metrics)
+    - [设备遥测指标](#device-telemetry-metrics)
+    - [设备到云孪生操作指标](#device-to-cloud-twin-operations-metrics)
+    - [事件网格指标](#event-grid-metrics)
+    - [作业指标](#jobs-metrics)
+    - [路由指标](#routing-metrics)
+    - [孪生查询指标](#twin-query-metrics)
+  - [指标维度](#metric-dimensions)
+  - [资源日志](#resource-logs)
+    - [连接](#connections)
+    - [设备遥测](#device-telemetry)
+    - [云到设备的命令](#cloud-to-device-commands)
+    - [设备标识操作](#device-identity-operations)
+    - [文件上传操作](#file-upload-operations)
+    - [Routes](#routes)
+    - [设备到云孪生操作](#device-to-cloud-twin-operations)
+    - [云到设备孪生操作](#cloud-to-device-twin-operations)
+    - [孪生查询](#twin-queries)
+    - [作业操作](#jobs-operations)
+    - [直接方法](#direct-methods)
+    - [分布式跟踪（预览版）](#distributed-tracing-preview)
+      - [IoT 中心 D2C（设备到云）日志](#iot-hub-d2c-device-to-cloud-logs)
+      - [IoT 中心流入日志](#iot-hub-ingress-logs)
+      - [IoT 中心流出日志](#iot-hub-egress-logs)
+    - [配置](#configurations)
+    - [设备流（预览版）](#device-streams-preview)
+  - [Azure Monitor 日志表](#azure-monitor-logs-tables)
+  - [另请参阅](#see-also)
 
 ### <a name="connections"></a>连接
 
@@ -277,7 +319,7 @@ Azure IoT 中心具有以下与它的一些路由和事件网格指标关联的�
 
 ### <a name="device-telemetry"></a>设备遥测
 
-设备遥测类别跟踪在 IoT 中心发生且与遥测管道相关的错误。 此类别包括发送遥测事件（例如限制）和接收遥测事件（例如未经授权的读取者）时发生的错误。 此类别无法捕捉设备本身运行的代码所造成的错误。
+设备遥测类别跟踪在 IoT 中心发生的、与遥测管道相关的错误。 此类别包括发送遥测事件（例如限制）和接收遥测事件（例如未经授权的读取者）时发生的错误。 此类别无法捕捉设备本身运行的代码所造成的错误。
 
 ```json
 {
@@ -329,7 +371,7 @@ Azure IoT 中心具有以下与它的一些路由和事件网格指标关联的�
 
 ### <a name="device-identity-operations"></a>设备标识操作
 
-设备标识操作类别跟踪你尝试在其 IoT 中心的标识注册表中创建、更新或删除条目时所发生的错误。 预配方案就很适合跟踪此类别。
+设备标识操作类别跟踪你尝试在 IoT 中心的标识注册表中创建、更新或删除条目时所发生的错误。 预配方案就很适合跟踪此类别。
 
 ```json
 {
@@ -354,9 +396,9 @@ Azure IoT 中心具有以下与它的一些路由和事件网格指标关联的�
 
 文件上传类别跟踪在 IoT 中心发生且与文件上传功能相关的错误。 此类别包括：
 
-* SAS URI 发生的错误，例如它在设备就上传完毕通知中心之前到期。
+* SAS URI 发生的错误，例如，它在设备向中心通知某个完成的上传前失效。
 
-* 设备报告的失败上传。
+* 由设备报告的失败上传。
 
 * 创建 IoT 中心通知消息期间在存储中找不到文件时发生的错误。
 
@@ -585,4 +627,4 @@ IoT 中心配置日志跟踪有关自动设备管理功能集的事件和错误�
 ## <a name="see-also"></a>另请参阅
 
 * 有关监视 Azure IoT 中心的说明，请参阅[监视 Azure IoT 中心](monitor-iot-hub.md)。
-* 有关监视 Azure 资源的详细信息，请参阅[使用 Azure Monitor 监视 Azure 资源](/azure-monitor/insights/monitor-azure-resource)。
+* 有关监视 Azure 资源的详细信息，请参阅[使用 Azure Monitor 监视 Azure 资源](../azure-monitor/essentials/monitor-azure-resource.md)。

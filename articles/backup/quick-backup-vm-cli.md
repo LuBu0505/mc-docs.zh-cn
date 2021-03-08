@@ -5,15 +5,15 @@ author: Johnnytechn
 ms.devlang: azurecli
 ms.topic: quickstart
 origin.date: 01/31/2019
-ms.date: 11/17/2020
+ms.date: 03/01/2021
 ms.author: v-johya
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 74aa48d7b95d42eb5960fb0cb9a28793b96371a0
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 8578fb46b985692a2db6ec2b881d907fabf7a310
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977704"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197533"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-azure-cli"></a>使用 Azure CLI 在 Azure 中备份虚拟机
 
@@ -72,7 +72,7 @@ az backup protection enable-for-vm \
 ```
 
 > [!IMPORTANT]
-> 使用 CLI 一次为多个 VM 启用备份时，请确保单个策略关联的 VM 不超过 100 个。 这是[建议的最佳做法](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy)。 目前，如果 VM 超过 100 个，PowerShell 客户端不会显式阻止，但计划在将来添加检查。
+> 使用 CLI 一次为多个 VM 启用备份时，请确保单个策略关联的 VM 不超过 100 个。 这是[建议的最佳做法](./backup-azure-vm-backup-faq.yml#is-there-a-limit-on-number-of-vms-that-can-be-associated-with-the-same-backup-policy)。 目前，如果 VM 超过 100 个，PowerShell 客户端不会显式阻止，但计划在将来添加检查。
 
 ## <a name="start-a-backup-job"></a>启动备份作业
 

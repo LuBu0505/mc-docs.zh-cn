@@ -4,14 +4,14 @@ description: 使用 Application Insights Profiler 探查 Azure 应用服务上�
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 01/12/2021
+ms.date: 02/22/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 631b189c63e04d2a942e67e7a68e1d6a2f3adf21
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: cef36207d9d89ffcfdf7d6bb8cbe659ec291513a
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231033"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197156"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>使用 Application Insights 探查实时 Azure 应用服务应用
 
@@ -44,14 +44,14 @@ Application Insights Profiler 是作为应用服务运行时的一部分预先�
 可以通过为 Azure 应用服务创建应用设置来启用 Application Insights Profiler。 包含如上所示选项的页面将为你创建这些应用设置。 但是，也可以使用模板或其他方式自动创建这些设置。 如果 Application Insights 资源与 Azure 应用服务位于不同的订阅中，这些设置也将起作用。
 下面是启用 Profiler 所需的设置：
 
-|应用设置    | Value    |
+|应用设置    | 值    |
 |---------------|----------|
 |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights 资源的 iKey    |
 |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
 |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
 
-可以使用 [Azure 资源管理器模板](./azure-web-apps.md#app-service-application-settings-with-azure-resource-manager)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp)、[Azure CLI](/cli/webapp/config/appsettings?view=azure-cli-latest) 设置这些值。
+可以使用 [Azure 资源管理器模板](./azure-web-apps.md#app-service-application-settings-with-azure-resource-manager)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp)、[Azure CLI](/cli/webapp/config/appsettings) 设置这些值。
 
 ### <a name="enabling-profiler-for-other-clouds-manually"></a>手动为其他云启用 Profiler
 

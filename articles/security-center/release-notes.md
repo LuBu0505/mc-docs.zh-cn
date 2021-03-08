@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2021
 ms.author: v-johya
-ms.openlocfilehash: 2628a31ba590d56f8c5c20793bee1016eb3dc5a0
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: bfd5440b06dbe26ae80319d57441536f493872c9
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579454"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197636"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -117,7 +117,7 @@ Azure 安全中心的资产清单页提供了一个页面，用于查看已连�
 
 如 [Azure Kubernetes 服务](../aks/use-pod-security-policies.md)文档中所述，弃用了预览建议“应在 Kubernetes Services 上定义 Pod 安全策略”。
 
-Pod 安全策略（预览）功能已设置为弃用，在 2020 年 10 月 15 日之后将不再提供，以支持适用于 AKS 的 Azure Policy。
+Pod 安全策略（预览版）功能已设置为弃用，并且在 2020 年 10 月 15 日之后将不再提供，以支持 AKS 的 Azure Policy。
 
 弃用 Pod 安全策略（预览版）之后，必须在使用已弃用功能的任何现有群集上禁用该功能，以执行将来的群集升级并保留在 Azure 支持范围内。
 
@@ -154,115 +154,4 @@ Pod 安全策略（预览）功能已设置为弃用，在 2020 年 10 月 15 �
 现在，建议的详细信息页面包括一个刷新时间间隔指示器（如相关），并且清楚显示了建议的严重性。
 
 :::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="显示刷新频率和严重性的建议页面":::
-
-
-
-## <a name="august-2020"></a>2020 年 8 月
-
-8 月的更新包括：
-
-- [资产清单 - 功能强大的资产安全状况新视图](#asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets)
-- [添加了对 Azure Active Directory 安全默认值的支持（用于多重身份验证）](#added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication)
-- [添加了服务主体建议](#service-principals-recommendation-added)
-- [VM 上的漏洞评估 - 已合并建议和策略](#vulnerability-assessment-on-vms---recommendations-and-policies-consolidated)
-- [新的 AKS 安全策略已添加到 ASC_default 计划 - 仅供个人预览版客户使用](#new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only)
-
-
-### <a name="asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets"></a>资产清单 - 功能强大的资产安全状况新视图
-
-安全中心的资产清单页（当前为预览版）提供了一种方法，用于查看已连接到安全中心的资源的安全状况。
-
-安全中心会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后会提供有关如何消除这些安全漏洞的建议。 当任何资源具有未完成的建议时，它们将显示在清单中。
-
-你可以使用该视图及其筛选器来浏览安全状况数据，并根据发现结果采取更多操作。
-
-详细了解[资产清单](asset-inventory.md)。
-
-
-### <a name="added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication"></a>添加了对 Azure Active Directory 安全默认值的支持（用于多重身份验证）
-
-安全中心已添加对[安全默认值](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)（Microsoft 的免费标识安全保护）的全部支持。
-
-安全默认值提供了预配置的标识安全设置，以保护组织免受与标识相关的常见攻击。 安全默认值总计已保护了逾 500 万名租户；50,000 名租户也受安全中心的保护。
-
-现在，安全中心在识别出未启用安全默认值的 Azure 订阅时将提供安全建议。 到目前为止，安全中心建议使用条件访问启用多重身份验证，这是 Azure Active Directory (AD) 高级许可证的一部分。 对于使用 Azure AD Free 的客户，我们现在建议启用安全默认值。 
-
-我们旨在鼓励更多客户使用 MFA 保护其云环境，并缓解对[安全功能分数](secure-score-security-controls.md)影响最大的最高风险。
-
-详细了解[安全默认值](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)。
-
-
-### <a name="service-principals-recommendation-added"></a>添加了服务主体建议
-
-添加了一条新建议，该建议推荐使用管理证书来管理订阅的安全中心客户改用服务主体。
-
-“应使用服务主体而不是管理证书来保护订阅”这一建议推荐使用服务主体或 Azure 资源管理器，以更安全地管理订阅。 
-
-详细了解 [Azure Active Directory 中的应用程序对象和服务主体对象](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。
-
-
-### <a name="vulnerability-assessment-on-vms---recommendations-and-policies-consolidated"></a>VM 漏洞评估 - 合并了建议和策略
-
-安全中心检查 VM，以检测其是否正在运行漏洞评估解决方案。 如果未找到漏洞评估解决方案，安全中心将建议简化部署。
-
-如果发现漏洞，安全中心将建议总结结果，以便必要时进行调查和修正。
-
-无论用户使用哪些类型的扫描仪，为确保所有用户享受一致的体验，我们已将四条建议统一为以下两条：
-
-|统一的建议|更改描述|
-|----|:----|
-|**应在虚拟机上启用漏洞评估解决方案**|替换以下两条建议：<br> • 在虚拟机上启用内置漏洞评估解决方案（由 Qualys 提供技术支持）（现已弃用）（仅标准层显示此建议）<br> • 漏洞评估解决方案应安装在虚拟机上（现已弃用）（标准和免费层显示此建议）|
-|**应修正虚拟机中的漏洞**|替换以下两条建议：<br>• 修正虚拟机上发现的漏洞（由 Qualys 提供支持）（现已弃用）<br>• 应通过漏洞评估解决方案修正漏洞（现已弃用）|
-|||
-
-现在可根据同一建议从 Qualys 或 Rapid7 等合作伙伴部署安全中心的漏洞评估扩展或专用许可解决方案（“BYOL”）。
-
-此外，发现漏洞并报告到安全中心时，无论哪个漏洞评估解决方案标识了结果，都会有一条建议提醒你注意这些结果。
-
-#### <a name="updating-dependencies"></a>更新依赖项
-
-如果脚本、查询或自动化引用了先前的建议或策略密钥/名称，请使用下表更新引用：
-
-##### <a name="before-august-2020"></a>2020 年 8 月之前
-
-|建议|范围|
-|----|:----|
-|**在虚拟机上启用内置漏洞评估解决方案（由 Qualys 提供支持）**<br>注册表项：550e890b-e652-4d22-8274-60b3bdb24c63|内置|
-|修正虚拟机上发现的漏洞（由 Qualys 提供支持）<br>注册表项：1195afff-c881-495e-9bc5-1486211ae03f|内置|
-|应在虚拟机上安装漏洞评估解决方案<br>注册表项：01b1ed4c-b733-4fee-b145-f23236e70cf3|BYOL|
-|**应通过漏洞评估解决方案修复漏洞**<br>注册表项：71992a2a-d168-42e0-b10e-6b45fa2ecddb|BYOL|
-||||
-
-
-|策略|范围|
-|----|:----|
-|**应对虚拟机启用漏洞评估**<br>策略 ID：501541f7-f7e7-4cd6-868c-4190fdad3ac9|内置|
-|**应通过漏洞评估解决方案修正漏洞**<br>策略 ID：760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
-||||
-
-
-##### <a name="from-august-2020"></a>2020 年 8 月之后
-
-|建议|范围|
-|----|:----|
-|**应在虚拟机上启用漏洞评估解决方案**<br>密钥：ffff0522-1e88-47fc-8382-2a80ba848f5d|内置 + BYOL|
-|**应修正虚拟机中的漏洞**<br>注册表项：1195afff-c881-495e-9bc5-1486211ae03f|内置 + BYOL|
-||||
-
-|策略|范围|
-|----|:----|
-|[应对虚拟机启用漏洞评估](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>策略 ID：501541f7-f7e7-4cd6-868c-4190fdad3ac9 |内置 + BYOL|
-||||
-
-
-### <a name="new-aks-security-policies-added-to-asc_default-initiative---for-use-by-private-preview-customers-only"></a>新的 AKS 安全策略已添加到 ASC_default 计划 - 仅供个人预览版客户使用
-
-为确保默认情况下保护 Kubernetes 工作负载，安全中心正在添加 Kubernetes 级别的策略和强化建议，包括带有 Kubernetes 准入控制的强制执行选项。
-
-早期阶段的此项目包括个人预览版，并增加了 ASC_default 计划的新策略（默认情况下禁用）。
-
-可以放心地忽略这些策略，这些策略不会对环境造成影响。 如果要启用他们，请在 https://aka.ms/SecurityPrP 中注册预览版，然后在以下选项中进行选择：
-
-1. **单一预览版** - 仅加入此个人预览版。 明确提及“ASC 连续扫描”作为要加入的预览版。
-1. **正在进行的计划** - 将添加到此个人预览版和后续个人预览版。 你需要完成个人资料和隐私协议。
 

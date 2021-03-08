@@ -4,13 +4,13 @@ description: 本文介绍了适用于 Azure Redis Cache 的 Azure Monitor 功能
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 11/02/2020
-ms.openlocfilehash: 4c4d88f4a224385b041ac2a5492e030a5f7c169d
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.date: 02/22/2021
+ms.openlocfilehash: 7a5ad104dcd71bc8a2df54379a8664ac300e0dba
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328389"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197629"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis"></a>探究适用于 Azure Cache for Redis 的 Azure Monitor
 
@@ -186,7 +186,7 @@ ms.locfileid: "94328389"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 配置[指标警报](../platform/alerts-metric.md)和[服务运行状况通知](../../service-health/alerts-activity-log-service-notifications-portal.md)来设置自动警报，以帮助检测问题。
+* 配置[指标警报](../alerts/alerts-metric.md)和[服务运行状况通知](../../service-health/alerts-activity-log-service-notifications-portal.md)来设置自动警报，以帮助检测问题。
 
-* 查看[使用 Azure Monitor 工作簿创建交互式报表](../platform/workbooks-overview.md)，了解工作簿支持的方案、创作和自定义报表的方式，以及更多信息。
+* 查看[使用 Azure Monitor 工作簿创建交互式报表](../visualize/workbooks-overview.md)，了解工作簿支持的方案、创作和自定义报表的方式，以及更多信息。
 

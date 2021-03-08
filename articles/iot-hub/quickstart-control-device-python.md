@@ -13,12 +13,12 @@ ms.workload: ns
 origin.date: 09/14/2020
 ms.date: 12/14/2020
 ms.author: v-yiso
-ms.openlocfilehash: eabe35b2c1c74066ee02daf87fa56af598866a8f
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 3a9a555231e788872496bda5f2ee7428c545ac78
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746778"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196544"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>快速入门：控制连接到 IoT 中心的设备 (Python)
 
@@ -67,7 +67,7 @@ ms.locfileid: "96746778"
     **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
     ```azurecli
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
     ```
 
     记下如下所示的设备连接字符串：
@@ -80,7 +80,7 @@ ms.locfileid: "96746778"
 
     **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
     ```azurecli
-    az iot hub show-connection-string \
+    az iot hub connection-string show \
       --policy-name service \
       --name {YourIoTHubName} \
       --output table

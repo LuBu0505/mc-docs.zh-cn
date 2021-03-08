@@ -13,13 +13,13 @@ metadata:
   author: Johnnytechn
   ms.author: v-johya
   manager: rkarlin
-  ms.date: 01/19/2021
-  ms.openlocfilehash: d42b3683c27ca49f14c254ff4df15456897f7a4a
-  ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+  ms.date: 03/04/2021
+  ms.openlocfilehash: 5675a4fc91d75ae531b0e2f2def593d57c2870d8
+  ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/25/2021
-  ms.locfileid: "98751221"
+  ms.lasthandoff: 03/05/2021
+  ms.locfileid: "102197593"
 highlightedContent:
   items:
   - title: Azure 安全性简介
@@ -46,18 +46,21 @@ conceptualContent:
       text: Azure 服务的安全控制
     footerLink:
       url: ./fundamentals/index.yml
-      text: 查看详细信息
+      text: 查看更多
   - title: 开发人员
     links:
     - url: ./develop/secure-dev-overview.md
       itemType: overview
       text: 安全开发最佳做法
+    - url: ./develop/secure-develop.md
+      itemType: tutorial
+      text: 开发安全应用程序
     - url: ./develop/threat-modeling-tool.md
       itemType: concept
       text: Microsoft 威胁建模工具
     footerLink:
       url: ./develop/index.yml
-      text: 查看详细信息
+      text: 查看更多
   - title: 基准和建议
     links:
     - url: ./benchmarks/introduction.md
@@ -68,7 +71,7 @@ conceptualContent:
       text: Azure 安全中心建议
     footerLink:
       url: ./benchmarks/index.yml
-      text: 查看详细信息
+      text: 查看更多
   - title: 机密和密钥
     links:
     - url: ../key-vault/general/overview.md
@@ -93,7 +96,7 @@ conceptualContent:
       text: 存储安全
     footerLink:
       url: ./fundamentals/encryption-overview.md
-      text: 查看详细信息
+      text: 查看更多
   - title: 身份管理
     links:
     - url: ./fundamentals/identity-management-best-practices.md
@@ -101,7 +104,7 @@ conceptualContent:
       text: 安全最佳做法
     footerLink:
       url: ./fundamentals/identity-management-overview.md
-      text: 查看详细信息
+      text: 查看更多
   - title: 安全监视
     links:
     - url: ../security-center/security-center-get-started.md
@@ -115,7 +118,7 @@ conceptualContent:
       text: 使用安全策略
     footerLink:
       url: ../security-center/index.yml
-      text: 查看详细信息
+      text: 查看更多
   - title: 威胁防护
     links:
     - url: ../security-center/security-center-alerts-overview.md
@@ -123,10 +126,10 @@ conceptualContent:
       text: Azure 安全中心的安全警报
     - url: ../azure-sql/database/threat-detection-overview.md
       itemType: concept
-      text: Azure SQL 数据库的高级威胁防护
+      text: Azure Defender for SQL
     footerLink:
       url: ./fundamentals/threat-detection.md
-      text: 查看详细信息
+      text: 查看更多
   - title: 日志记录和审核
     links:
     - url: ./fundamentals/log-audit.md
@@ -156,7 +159,7 @@ conceptualContent:
       text: 客户数据保护
     footerLink:
       url: ./fundamentals/infrastructure.md
-      text: 查看详细信息
+      text: 查看更多
   - title: 虚拟机安全
     links:
     - url: ./fundamentals/virtual-machines-overview.md

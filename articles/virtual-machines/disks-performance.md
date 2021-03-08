@@ -3,19 +3,19 @@ title: 虚拟机和磁盘性能
 description: 详细了解如何组合使用虚拟机及其附加的磁盘以提高性能。
 origin.date: 10/12/2020
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 02/08/2021
 ms.author: v-yeche
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 69fe56ea77c29342af6a1f3ec79d698a671b39bb
-ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
+ms.openlocfilehash: b090f65b9ceef27421d2b9ca21182510209b5b9f
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580542"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054389"
 ---
 <!--Verified successfully from rename article-->
 # <a name="virtual-machine-and-disk-performance"></a>虚拟机和磁盘性能
@@ -26,9 +26,4 @@ ms.locfileid: "99580542"
 
 [!INCLUDE [VM and Disk Performance](../../includes/virtual-machine-disk-performance-2.md)]
 
-让我们对可创建 IO 活动的此虚拟机和磁盘组合运行基准测试。 若要了解如何在 Azure 上对存储 IO 进行基准测试，请参阅[在 Azure 磁盘存储上对应用程序进行基准测试](disks-benchmarks.md)。 通过基准测试工具，可以看到 VM 和磁盘组合可以实现 22,800 个 IOPS：
-
-[!INCLUDE [VM and Disk Performance](../../includes/virtual-machine-disk-performance-3.md)]
-
-<!-- Update_Description: new article about disks performance -->
-<!--NEW.date: 02/01/2021-->
+<!--Update_Description: update meta properties, wording update, update link-->

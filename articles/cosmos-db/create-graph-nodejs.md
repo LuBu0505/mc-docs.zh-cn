@@ -12,12 +12,12 @@ ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
 ms.custom: devx-track-js
-ms.openlocfilehash: f82d16d1e2a97eb6b565bfea197e456dd3bff390
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 28a054889ea179feef704af71d1922e05654c2e0
+ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328041"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "102108754"
 ---
 <!--Verify sucessfully-->
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>快速入门：使用 Azure Cosmos DB Gremlin API 帐户生成 Node.js 应用程序
@@ -35,7 +35,7 @@ ms.locfileid: "94328041"
 在本快速入门中，你将通过 Azure 门户创建和管理 Azure Cosmos DB Gremlin（图形）API 帐户，并使用从 GitHub 克隆的 Node.js 应用来添加数据。 Azure Cosmos DB 是一种多模型数据库服务，可让你通过多区域分布和水平缩放功能快速创建和查询文档、表、键/值和图数据库。
 
 ## <a name="prerequisites"></a>先决条件
-- 具有活动订阅的 Azure 帐户。 [免费创建一个](https://www.azure.cn/pricing/1rmb-trial/)。 
+- 具有活动订阅的 Azure 帐户。 [免费创建一个](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。 
 - [Node.js 0.10.29+](https://nodejs.org/)。
 - [Git](https://git-scm.com/downloads)。
 

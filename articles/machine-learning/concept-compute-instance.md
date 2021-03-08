@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: v-yiso
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 2cc870fa2c8ec35881a47d92793a72717f2da09c
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 1acb04588efdc85f95fcf4b27bee43f39fa97ef8
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230686"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196762"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
 
@@ -51,7 +51,7 @@ Azure 机器学习计算实例是面向数据科学家的基于云的托管式�
 
 使用计算实例作为远程服务器，无需 SSH 即可在 [VS Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) 中运行 Jupyter 笔记本。 也可以通过[远程 SSH 扩展](https://devblogs.microsoft.com/python/enhance-your-azure-machine-learning-experience-with-the-vs-code-extension/)启用 VS Code 集成。
 
-可以[安装包](how-to-create-manage-compute-instance.md#install-packages)，然后在计算实例中[添加内核](how-to-create-manage-compute-instance.md#add-new-kernels)。  
+可以[安装包](how-to-access-terminal.md#install-packages)，然后在计算实例中[添加内核](how-to-access-terminal.md#add-new-kernels)。  
 
 计算实例上已安装以下工具和环境： 
 

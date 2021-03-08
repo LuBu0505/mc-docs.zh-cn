@@ -4,15 +4,15 @@ description: 了解如何使用漏斗图来发现客户与你的应用程序的�
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 10/29/2020
+ms.date: 02/22/2021
 origin.date: 07/17/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 602dfd96e2e915e49d775b1600cb5beeab285083
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: ff841e4d567e1c5926bd9690cb24cae2168b3aa1
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105242"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197350"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>使用 Application Insights 漏斗图了解客户如何使用你的应用程序
 
@@ -47,7 +47,7 @@ ms.locfileid: "93105242"
   * [使用情况概述](usage-overview.md)
   * [用户、会话和事件](usage-segmentation.md)
   * [保留](usage-retention.md)
-  * [工作簿](../platform/workbooks-overview.md)
+  * [工作簿](../visualize/workbooks-overview.md)
   * [添加用户上下文](usage-send-user-context.md)
   * [导出到 Power BI](./export-power-bi.md)
 

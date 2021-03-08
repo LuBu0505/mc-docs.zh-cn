@@ -6,18 +6,18 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
 origin.date: 03/20/2020
-ms.date: 11/16/2020
+ms.date: 12/07/2020
 ms.testscope: no
 ms.testdate: ''
 author: rockboyfor
 ms.author: v-yeche
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: f0d36a54d6906468140fd51ee63e70e256ce2120
-ms.sourcegitcommit: 5f07189f06a559d5617771e586d129c10276539e
+ms.openlocfilehash: 9b2cf4b2209f43de774628338f35ed289a51d8c4
+ms.sourcegitcommit: bbe4ee95604608448cf92dec46c5bfe4b4076961
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94552820"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "102108779"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>将 Node.js Mongoose 应用程序连接到 Azure Cosmos DB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -87,7 +87,7 @@ Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 
     ```JavaScript
     # You can get the following connection details from the Azure portal. You can find the details on the Connection string pane of your Azure Cosmos account.
 
-    COSMODDB_USER = "<Azure Cosmos account's user name, usually the database account name>"
+    COSMOSDB_USER = "<Azure Cosmos account's user name, usually the database account name>"
     COSMOSDB_PASSWORD = "<Azure Cosmos account password, this is one of the keys specified in your account>"
     COSMOSDB_DBNAME = "<Azure Cosmos database name>"
     COSMOSDB_HOST= "<Azure Cosmos Host name>"
@@ -98,7 +98,7 @@ Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 
     ```JavaScript
     mongoose.connect("mongodb://"+process.env.COSMOSDB_HOST+":"+process.env.COSMOSDB_PORT+"/"+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb", {
       auth: {
-        user: process.env.COSMODDB_USER,
+        user: process.env.COSMOSDB_USER,
         password: process.env.COSMOSDB_PASSWORD
       },
     useNewUrlParser: true,

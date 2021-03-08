@@ -1,19 +1,19 @@
 ---
 title: 部署模板 - Azure 门户
 description: 了解如何使用 Azure 门户创建第一个 Azure 资源管理器模板（ARM 模板），以及如何部署该模板。
-origin.date: 06/29/2020
+origin.date: 01/26/2021
 author: rockboyfor
 ms.date: 01/11/2021
 ms.testscope: yes
 ms.testdate: 07/13/2020
 ms.topic: quickstart
 ms.author: v-yeche
-ms.openlocfilehash: 16a1441a271ad8b3a45397e122b45e727f5f91b1
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: e19afe510d8c81df3ef846ea9fe88f431a6bce11
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022662"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054336"
 ---
 <!--Verify successfully-->
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建和部署 ARM 模板
@@ -39,12 +39,14 @@ ms.locfileid: "98022662"
 
     :::image type="content" source="./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-a-resource.png" alt-text="在 Azure 门户菜单中，选择“创建资源”":::
 
-1. 选择“存储” > “存储帐户” 。
+1. 在搜索框中键入“存储帐户”，然后按 [ENTER] 。
+1. 选择“创建”。
 
     :::image type="content" source="./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png" alt-text="创建 Azure 存储帐户":::
+
 1. 输入以下信息：
 
-    |名称|Value|
+    |名称|值|
     |----|----|
     |**资源组**|选择“新建”，然后指定所选资源组的名称。 在屏幕截图中，资源组名称为 *mystorage1016rg*。 资源组是 Azure 资源的容器。 资源组方便 Azure 资源的管理。 |
     |**名称**|为存储帐户指定唯一的名称。 存储帐户名称在整个 Azure 中必须是唯一的，且仅包含小写字母和数字。 名称长度必须介于 3 到 24 个字符之间。 如果收到错误消息“存储帐户名称‘mystorage1016’已被占用”，请尝试使用“&lt;名称>存储&lt;MMDD 格式的今日日期>”，例如“johndolestorage1016” 。 |
@@ -53,7 +55,7 @@ ms.locfileid: "98022662"
     
     可对剩余的属性使用默认值。
 
-    ![使用 Azure 门户创建 Azure 存储帐户配置](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account.png)
+    :::image type="content" source="./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account.png" alt-text="使用 Azure 门户创建 Azure 存储帐户配置":::
 
     > [!NOTE]
     > 某些导出的模板需要经过一些编辑才能部署。
@@ -142,7 +144,6 @@ Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入了已存
                }
            },
            "variables": {
-               "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
                "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
            },
            "resources": [
@@ -169,10 +170,10 @@ Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入了已存
         }
         ```
 
-1. 选择“保存” 。
+1. 选择“保存”。
 1. 输入以下值：
 
-    |名称|Value|
+    |名称|值|
     |----|----|
     |**资源组**|选择在上一部分中创建的资源组名称。 |
     |**区域**|选择资源组的位置。 例如，**中国北部**。 |
@@ -185,7 +186,7 @@ Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入了已存
     |**允许 Blob 公共访问**| 对于本快速入门，请选择“false”。 |
 
 1. 选择“查看 + 创建”。
-1. 选择“创建” 。
+1. 选择“创建”。
 1. 选择屏幕顶部的铃铛图标（通知）可查看部署状态。 此时会看到“部署正在进行”。 等待部署完成。
 
     :::image type="content" source="./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-notification.png" alt-text="Azure 资源管理器模板部署通知":::
@@ -212,4 +213,4 @@ Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入了已存
 > [!div class="nextstepaction"]
 > [初学者教程](./template-tutorial-create-first-template.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

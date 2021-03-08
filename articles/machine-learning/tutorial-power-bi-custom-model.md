@@ -10,12 +10,12 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: ff70c9e251e94e2d8c78817af34c00ee5bfd0a09
-ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
+ms.openlocfilehash: df23841564bb160d2afb3c66d964f658f0addbbf
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804383"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196788"
 ---
 # <a name="tutorial-power-bi-integration---create-the-predictive-model-with-a-jupyter-notebook-part-1-of-2"></a>Tutorial:Power BI 集成 - 使用 Jupyter Notebook 创建预测模型（第 1 部分，共 2 部分）
 
@@ -118,7 +118,7 @@ X_df.info()
 import joblib
 from sklearn.linear_model import Ridge
 
-model = Ridge().fit(X,y)
+model = Ridge().fit(X_df,y_df)
 joblib.dump(model, 'sklearn_regression_model.pkl')
 ```
 
@@ -286,10 +286,8 @@ ACI service creation operation finished, operation "Succeeded"
 ```python
 import json
 
-
 input_payload = json.dumps({
-    'data': X_df[0:2].values.tolist(),
-    'method': 'predict'  # If you have a classification model, you can get probabilities by changing this to 'predict_proba'.
+    'data': X_df[0:2].values.tolist()
 })
 
 output = service.run(input_payload)

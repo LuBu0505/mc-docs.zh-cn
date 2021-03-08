@@ -5,16 +5,16 @@ services: service-bus-relay
 ms.topic: article
 origin.date: 06/23/2020
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: cd9bce61e2a84d90077d964fb0fc2fc280fc00b5
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 181903b3c89a81220e3519f0ba71dad19ee4fe4a
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063680"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054413"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 中继指标 
 Azure 中继指标提供 Azure 订阅中的资源的状态。 通过一组丰富的指标数据，可在命名空间和实体级别评估中继资源的总体运行状况。 这些统计信息非常重要，因为它们能够帮助监视 Azure 中继的状态。 另外，指标也可帮助解决由根本原因造成的问题，而无需联系 Azure 支持。
@@ -65,14 +65,14 @@ Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https:/
 |SenderConnections-TotalRequests |在指定的期间内由发送者发出的连接请求数。<br/><br/> 单元：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 |ActiveConnections |活动连接的数目。 此值为时间点值。<br/><br/> 单元：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 |ActiveListeners |活动侦听器的数目。 此值为时间点值。<br/><br/> 单元：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|ListenerDisconnects |指定的期间内断开连接的侦听器数。<br/><br/> 单位：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|SenderDisconnects |指定的期间内断开连接的发送者数。<br/><br/> 单位：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|ListenerDisconnects |指定的期间内断开连接的侦听器数。<br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|SenderDisconnects |指定的期间内断开连接的发送者数。<br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 
 ## <a name="memory-usage-metrics"></a>内存使用情况指标
 
 | 标准名称 | 说明 |
 | ------------------- | ----------------- |
-|BytesTransferred |在指定的期间内传输的字节数。<br/><br/> 单位：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|BytesTransferred |在指定的期间内传输的字节数。<br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 
 ## <a name="metrics-dimensions"></a>指标维度
 
@@ -88,4 +88,4 @@ Azure 中继支持为 Azure Monitor 中的指标使用以下维度。 为指标�
 
 [1]: ./media/relay-metrics-azure-monitor/relay-monitor1.png
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -5,14 +5,14 @@ ms.topic: quickstart
 author: Johnnytechn
 ms.author: v-johya
 origin.date: 07/15/2019
-ms.date: 12/01/2020
+ms.date: 02/22/2021
 ms.custom: mvc
-ms.openlocfilehash: 89d61e0c4535b1c723f60de055be8a5a4f2401bd
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: b195945a9914820ec9d8a1e69a68171748631b5d
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432443"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197488"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>快速入门：开始使用 Azure Monitor Application Insights 监视你的网站
 
@@ -29,19 +29,19 @@ ms.locfileid: "96432443"
 
 Application Insights 可以从任何连接 Internet 的应用程序收集遥测数据，不管是在本地运行还是在云中运行。 使用以下步骤查看此数据：
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 1. 选择“创建资源” > “管理工具” > “Application Insights”。
 
    > [!NOTE]
    >如果这是你第一次创建 Application Insights 资源，请参阅[创建 Application Insights 资源](./create-new-resource.md)。
 1. 显示配置框后，请使用下表填写输入字段：
 
-    | 设置        | Value           | 说明  |
+    | 设置        | 值           | 说明  |
    | ------------- |:-------------|:-----|
    | **名称**      | 全局唯一值 | 标识所监视的应用的名称。 |
-   | **资源组**     | MyResourceGroup      | 用于托管 Application Insights 数据的新资源组的名称。 可创建新的资源组或使用现有资源组。 |
+   | **资源组**     | myResourceGroup      | 用于托管 Application Insights 数据的新资源组的名称。 可创建新的资源组或使用现有资源组。 |
    | **位置** | 中国北部 | 选择离你近的位置或离托管应用的位置近的位置。 |
-1. 选择“创建” 。
+1. 选择“创建”  。
 
 ## <a name="create-an-html-file"></a>创建一个 HTML 文件
 
@@ -140,11 +140,11 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 > 如果使用了现有资源组，则以下说明不适用。 只需删除单个 Application Insights 资源即可。 请记住，在删除某个资源组时，属于该组的所有底层资源也会一并删除。
 
 1. 在 Azure 门户的左侧菜单中选择“资源组”，然后选择“myResourceGroup”或临时资源组的名称。
-1. 在资源组页上选择“删除”，在文本框中输入 **myResourceGroup**，然后选择“删除”。
+1. 在资源组页上选择“删除”  ，在文本框中输入 **myResourceGroup**，然后选择“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [查找和诊断性能问题](../log-query/log-query-overview.md)
+> [查找和诊断性能问题](../logs/log-query-overview.md)
 
 

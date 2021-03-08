@@ -4,16 +4,16 @@ description: Azure 安全控制 - 日志记录和监视
 author: Johnnytechn
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 03/04/2021
 ms.author: v-johya
 ms.custom: security-benchmark
 origin.date: 04/14/2020
-ms.openlocfilehash: ba1f503b9612ed11f76d8b3850684f2dcf369d53
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 8df65e0b08a6eeec7ea777a06146967f180be8cd
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747124"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197110"
 ---
 # <a name="security-control-logging-and-monitoring"></a>安全控制：日志记录和监视
 
@@ -41,9 +41,9 @@ Microsoft 维护 Azure 资源的时间源，但是，你可以选择管理计算
 
 或者，可以启用数据并将其加入第三方 SIEM。 
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/essentials/diagnostic-settings.md)
 
-- [如何使用 Azure Monitor 收集 Azure 虚拟机内部主机日志](../../azure-monitor/learn/quick-collect-azurevm.md)
+- [如何使用 Azure Monitor 收集 Azure 虚拟机内部主机日志](../../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [如何开始使用 Azure Monitor 和第三方 SIEM 集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -55,9 +55,9 @@ Microsoft 维护 Azure 资源的时间源，但是，你可以选择管理计算
 
 在 Azure 资源上启用诊断设置，以访问审核、安全和诊断日志。 活动日志自动可用，包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用元素。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/essentials/diagnostic-settings.md)
 
-- [了解 Azure 中的日志记录和不同的日志类型](../../azure-monitor/platform/platform-logs-overview.md)
+- [了解 Azure 中的日志记录和不同的日志类型](../../azure-monitor/essentials/platform-logs-overview.md)
 
 ## <a name="24-collect-security-logs-from-operating-systems"></a>2.4：从操作系统收集安全日志
 
@@ -67,7 +67,7 @@ Microsoft 维护 Azure 资源的时间源，但是，你可以选择管理计算
 
 如果计算资源归 Microsoft 所有，则 Microsoft 负责监视它。 如果计算资源归你的组织所有，则由你负责监视。 可以使用 Azure 安全中心监视 OS。 安全中心从操作系统收集的数据包括 OS 类型和版本、OS（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和登录用户。 Log Analytics 代理还会收集故障转储文件。
 
-- [如何使用 Azure Monitor 收集 Azure 虚拟机内部主机日志](../../azure-monitor/learn/quick-collect-azurevm.md)
+- [如何使用 Azure Monitor 收集 Azure 虚拟机内部主机日志](../../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [了解 Azure 安全中心数据收集](../../security-center/security-center-enable-data-collection.md)
 
@@ -79,7 +79,7 @@ Microsoft 维护 Azure 资源的时间源，但是，你可以选择管理计算
 
 在 Azure Monitor 中，根据组织的合规性规章设置 Log Analytics 工作区保留期。 使用 Azure 存储帐户进行长期/存档存储。
 
-- [更改 Log Analytics 中的数据保留期](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [更改 Log Analytics 中的数据保留期](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [如何为 Azure 存储帐户日志配置保留策略](../../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -91,9 +91,9 @@ Microsoft 维护 Azure 资源的时间源，但是，你可以选择管理计算
 
 分析和监视日志中的异常行为，并定期查看结果。 使用 Azure Monitor 的 Log Analytics 工作区查看日志并对日志数据执行查询。
 
-- [了解 Log Analytics 工作区](../../azure-monitor/log-query/get-started-portal.md)
+- [了解 Log Analytics 工作区](../../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [如何在 Azure Monitor 中执行自定义查询](../../azure-monitor/log-query/get-started-queries.md)
+- [如何在 Azure Monitor 中执行自定义查询](../../azure-monitor/logs/get-started-queries.md)
 
 ## <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：针对异常活动启用警报
 
@@ -106,7 +106,7 @@ Microsoft 维护 Azure 资源的时间源，但是，你可以选择管理计算
 
 - [如何在 Azure 安全中心管理警报](../../security-center/security-center-managing-and-responding-alerts.md)
 
-- [如何针对 Log Analytics 日志数据发出警报](../../azure-monitor/learn/tutorial-response.md)
+- [如何针对 Log Analytics 日志数据发出警报](../../azure-monitor/alerts/tutorial-response.md)
 
 ## <a name="28-centralize-anti-malware-logging"></a>2.8：集中管理反恶意软件日志记录
 
@@ -140,9 +140,9 @@ Microsoft 维护 Azure 资源的时间源，但是，你可以选择管理计算
 
 - [Azure 安全中心中的数据收集](../../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-- [如何在 Azure Monitor 中执行自定义查询](../../azure-monitor/log-query/get-started-queries.md)
+- [如何在 Azure Monitor 中执行自定义查询](../../azure-monitor/logs/get-started-queries.md)
 
-- [Azure Monitor 中的 Syslog 数据源](../../azure-monitor/platform/data-sources-syslog.md)
+- [Azure Monitor 中的 Syslog 数据源](../../azure-monitor/agents/data-sources-syslog.md)
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -5,18 +5,18 @@ services: automation
 ms.service: virtual-machines
 origin.date: 05/02/2018
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: a85c50b6b08adbf557d9fea0576524b67ddf69c7
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: b5e317a9efc69967ae6cab3897c27136fde3c28b
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328100"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055247"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>在 Windows VM 中运行脚本
 
@@ -69,5 +69,5 @@ ms.locfileid: "94328100"
 * [运行命令](run-command.md)
 * [混合 Runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)
 
-<!-- Not Available on * [Serial console](serial-console.md)-->
-<!-- Update_Description: update meta properties -->
+<!--NOT AVAILABLE ON * [Serial console](../troubleshooting/serial-console-windows.md)-->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -7,17 +7,17 @@ author: WenJason
 ms.service: storage
 ms.topic: how-to
 origin.date: 04/21/2020
-ms.date: 08/24/2020
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.reviewer: fryu
 ms.subservice: common
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 40a7f4ee5eaf087b888f8965c46f00b000917f78
-ms.sourcegitcommit: ecd6bf9cfec695c4e8d47befade8c462b1917cf0
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 2b8f4f9721cf9c45133a88b1e40f9b6a18a4ec8e
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88753485"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196203"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>需要安全传输以确保安全连接
 
@@ -58,7 +58,7 @@ ms.locfileid: "88753485"
 * [REST API](https://docs.microsoft.com/rest/api/storagerp/storageaccounts)
 * [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount)
 * [CLI](/cli/storage/account)
-* [NodeJS](https://www.npmjs.com/package/azure-arm-storage/)
+* [NodeJS](https://www.npmjs.com/package/@azure/arm-storage/)
 * [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage)
 * [Python SDK](https://pypi.org/project/azure-mgmt-storage)
 * [Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage)

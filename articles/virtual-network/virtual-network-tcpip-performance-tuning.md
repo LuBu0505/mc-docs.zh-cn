@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 04/02/2019
 author: rockboyfor
-ms.date: 10/05/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
-ms.openlocfilehash: b1e6132150df4bf58b7647a876704d9505639cbf
-ms.sourcegitcommit: 29a49e95f72f97790431104e837b114912c318b4
+ms.openlocfilehash: 33a3e23b93e6f11fa946e112c6cb168c2ce27d2e
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91564509"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055263"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>适用于 Azure VM 的 TCP/IP 性能优化
 
@@ -120,7 +120,7 @@ PMTUD 过程的效率低下，会影响网络性能。 如果发送的数据包�
 
 如果使用执行封装（例如 IPsec VPN）的 VM，在数据包大小和 MTU 方面还需要注意其他一项事项。 VPN 将更多标头添加到数据包，这会增大数据包的大小并需要减小 MSS。
 
-对于 Azure，我们建议将 TCP MSS 钳位设置为 1,350 字节，将隧道接口 MTU 设置为 1,400。 有关详细信息，请参阅 [VPN 设备和 IPSec/IKE 参数页](/vpn-gateway/vpn-gateway-about-vpn-devices)。
+对于 Azure，我们建议将 TCP MSS 钳位设置为 1,350 字节，将隧道接口 MTU 设置为 1,400。 有关详细信息，请参阅 [VPN 设备和 IPSec/IKE 参数页](../vpn-gateway/vpn-gateway-about-vpn-devices.md)。
 
 ### <a name="latency-round-trip-time-and-tcp-window-scaling"></a>延迟、往返时间和 TCP 窗口缩放
 
@@ -258,13 +258,13 @@ Set-NetTCPSetting
 
 - **降低 CPU 利用率**：绕过主机中的虚拟交换机可以减少用于处理流量的 CPU 资源。
 
-若要使用加速网络，需要在每个适用的 VM 上显式启用它。 有关说明，请参阅[创建启用加速网络的 Linux 虚拟机](/virtual-network/create-vm-accelerated-networking-cli)。
+若要使用加速网络，需要在每个适用的 VM 上显式启用它。 有关说明，请参阅[创建启用加速网络的 Linux 虚拟机](./create-vm-accelerated-networking-cli.md)。
 
 #### <a name="receive-side-scaling"></a>接收端缩放
 
 接收端缩放 (RSS) 是一种网络驱动程序技术，它通过在多处理器系统中的多个 CPU 之间分配接收处理，更有效地分配网络流量的接收负载。 简单来说，RSS 可让系统处理更多的接收流量，因为它使用所有可用的 CPU，而不是只使用一个。 有关 RSS 的更多技术讨论，请参阅[接收端缩放简介](https://docs.microsoft.com/windows-hardware/drivers/network/introduction-to-receive-side-scaling)。
 
-在 VM 上启用加速网络后，若要获得最佳性能，需要启用 RSS。 RSS 也能够为不使用加速网络的 VM 带来优势。 有关如何确定 RSS 是否已启用及其启用方法的概述，请参阅[优化 Azure 虚拟机的网络吞吐量](/virtual-network/virtual-network-optimize-network-bandwidth/)。
+在 VM 上启用加速网络后，若要获得最佳性能，需要启用 RSS。 RSS 也能够为不使用加速网络的 VM 带来优势。 有关如何确定 RSS 是否已启用及其启用方法的概述，请参阅[优化 Azure 虚拟机的网络吞吐量](./virtual-network-optimize-network-bandwidth.md)。
 
 ### <a name="tcp-time_wait-and-time_wait-assassination"></a>TCP TIME_WAIT 和 TIME_WAIT 抹消
 
@@ -292,7 +292,7 @@ Azure 提供多种 VM 大小和类型，每种大小和类型的性能各不相�
 
 Azure 虚拟机上至少附加了一个网络接口。 它们可能包含多个网络接口。 分配给某个虚拟机的带宽是流经所有网络接口（已连接到该虚拟机）的所有出站流量的总和。 换言之，带宽是按虚拟机分配的，而不管该虚拟机上附加了多少个网络接口。
 
-[Azure 中 Windows 虚拟机的大小](/virtual-machines/windows/sizes?toc=%2fvirtual-network%2ftoc.json)详细说明了每种 VM 大小支持的预期出站吞吐量和网络接口数。 若要查看最大吞吐量，请选择一种类型（例如“常规用途”），然后在结果页上找到有关大小系列的部分（例如“Dv2 系列”）。**** 对于每个系列，有一个表格的最后一列中提供了网络规范，其标题为“最大 NIC 数/预期网络带宽 (MBps)”。
+[Azure 中 Windows 虚拟机的大小](../virtual-machines/sizes.md?toc=%2fvirtual-network%2ftoc.json)详细说明了每种 VM 大小支持的预期出站吞吐量和网络接口数。 若要查看最大吞吐量，请选择一种类型（例如“常规用途”），然后在结果页上找到有关大小系列的部分（例如“Dv2 系列”）。 对于每个系列，有一个表格的最后一列中提供了网络规范，其标题为“最大 NIC 数/预期网络带宽 (MBps)”。
 
 吞吐量限制适用于虚拟机。 吞吐量不受这些因素的影响：
 
@@ -304,7 +304,7 @@ Azure 虚拟机上至少附加了一个网络接口。 它们可能包含多个�
 
 - **协议**：基于所有协议的所有出站流量都计入限制。
 
-有关详细信息，请参阅[虚拟机网络带宽](/virtual-network/virtual-machine-network-throughput/)。
+有关详细信息，请参阅[虚拟机网络带宽](./virtual-machine-network-throughput.md)。
 
 ### <a name="internet-performance-considerations"></a>Internet 性能注意事项
 
@@ -332,7 +332,7 @@ Azure 区域由一个笼统的地理区域中的多个数据中心构成。 这�
 
 VM 的地理位置以及两个 VM 之间的潜在延迟可能受可用性集的配置影响。 但是，某个区域中数据中心之间的距离与该区域直接相关，主要受该区域中数据中心拓扑的影响。
 
-<!--Not Available on Availability Zones-->
+<!--Not Available on FEATURE Availability Zone-->
 
 ### <a name="source-nat-port-exhaustion"></a>源 NAT 端口耗尽
 
@@ -340,7 +340,7 @@ Azure 中的部署可与 Azure 外部的公共 Internet 和/或公共 IP 地址�
 
 对于每个出站连接，Azure 负载均衡器需要保持此映射一段时间。 根据 Azure 的多租户性质，对每个 VM 的每个出站流保持此映射可能会消耗大量的资源。 因此，需要根据 Azure 虚拟网络的配置设置一些限制。 或者，更准确地说，Azure VM 在给定的时间只能建立特定数量的出站连接。 达到这些限制时，VM 无法建立更多的出站连接。
 
-但是，此行为是可配置的。 有关 SNAT 和 SNAT 端口耗尽的详细信息，请参阅[此文](/load-balancer/load-balancer-outbound-connections)。
+但是，此行为是可配置的。 有关 SNAT 和 SNAT 端口耗尽的详细信息，请参阅[此文](../load-balancer/load-balancer-outbound-connections.md)。
 
 ## <a name="measure-network-performance-on-azure"></a>测试 Azure 上的网络性能
 
@@ -354,7 +354,7 @@ TCP 性能严重依赖于 RTT 和丢包率。 测量 RTT 和丢包率的最简�
 
 NTttcp 是用于测试 Linux 或 Windows VM 的 TCP 性能的工具。 可以更改各项 TCP 设置，然后测试使用 NTttcp 所带来的优势。 有关详细信息，请参阅以下资源：
 
-- [带宽/吞吐量测试 (NTttcp)](/virtual-network/virtual-network-bandwidth-testing/)
+- [带宽/吞吐量测试 (NTttcp)](./virtual-network-bandwidth-testing.md)
 
 - [NTttcp 实用工具](https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769)
 
@@ -364,9 +364,9 @@ NTttcp 是用于测试 Linux 或 Windows VM 的 TCP 性能的工具。 可以更
 
 有关详细信息，请参阅以下文章：
 
-- [排查 Expressroute 网络性能问题](/expressroute/expressroute-troubleshooting-network-performance)
+- [排查 Expressroute 网络性能问题](../expressroute/expressroute-troubleshooting-network-performance.md)
 
-- [如何验证到达虚拟网络的 VPN 吞吐量](/vpn-gateway/vpn-gateway-validate-throughput-to-vnet)
+- [如何验证到达虚拟网络的 VPN 吞吐量](../vpn-gateway/vpn-gateway-validate-throughput-to-vnet.md)
 
 ### <a name="detect-inefficient-tcp-behaviors"></a>检测低效的 TCP 行为
 
@@ -378,6 +378,6 @@ NTttcp 是用于测试 Linux 或 Windows VM 的 TCP 性能的工具。 可以更
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 Azure VM 的 TCP/IP 性能优化后，我们建议了解[规划虚拟网络](/virtual-network/virtual-network-vnet-plan-design-arm)时的其他考虑因素，或[详细了解如何连接和配置虚拟网络](/virtual-network/)。
+了解 Azure VM 的 TCP/IP 性能优化后，我们建议了解[规划虚拟网络](./virtual-network-vnet-plan-design-arm.md)时的其他考虑因素，或[详细了解如何连接和配置虚拟网络](./index.yml)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

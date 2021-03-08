@@ -3,15 +3,15 @@ title: 智能检测 - Application Insights 中的失败异常 | Azure Docs
 description: 将针对到 Web 应用的失败请求速率的异常变化向用户发出警报，并提供诊断分析。 无需进行配置。
 ms.topic: conceptual
 author: Johnnytechn
-ms.date: 01/12/2021
+ms.date: 02/22/2021
 ms.author: v-johya
 ms.reviewer: yalavi
-ms.openlocfilehash: 7f2cf9b903c7678c3cd11c739832a43957afef68
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 8c29633b2357777f201f0329be7dfbddb6a12090
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231040"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197226"
 ---
 # <a name="smart-detection---failure-anomalies"></a>智能检测 - 失败异常
 如果 Web 应用的失败请求速率出现异常上升，那么 [Application Insights](./app-insights-overview.md) 会近乎实时地自动通知你。 它会对 HTTP 请求速率或报告为失败的依赖项调用的异常上升进行检测。 对于请求而言，失败的请求通常是响应代码为 400 或更高的请求。 为了帮助会审和诊断问题，通知详情中会提供失败及相关应用程序数据的特征分析。 还提供指向 Application Insights 门户的链接，以供进一步诊断。 该功能不需要任何设置或配置，因为它使用机器学习算法来预测正常的失败率。
@@ -33,7 +33,7 @@ ms.locfileid: "98231040"
 * 直接指向 Application Insights 中数据的相关搜索的链接。
 
 ## <a name="benefits-of-smart-detection"></a>智能检测的优点
-普通[指标警报](../platform/alerts-log.md)会通知你可能存在问题。 但是，智能检测将开始诊断工作，并执行以往都需要你自行完成的大量分析。 结果将整齐地打包，以帮助你快速找到问题的根源。
+普通[指标警报](../alerts/alerts-log.md)会通知你可能存在问题。 但是，智能检测将开始诊断工作，并执行以往都需要你自行完成的大量分析。 结果将整齐地打包，以帮助你快速找到问题的根源。
 
 ## <a name="how-it-works"></a>工作原理
 智能检测可监视从应用收到的数据，特别是失败率。 此规则计算 `Successful request` 属性为 False 的请求数，和 `Successful call` 属性为 False 的依赖项调用数。 对于请求而言，默认情况下，`Successful request == (resultCode < 400)`（除非已将自定义代码写入[筛选器](./api-filtering-sampling.md#filtering)或生成自己的 [TrackRequest](./api-custom-events-metrics.md#trackrequest) 调用）。 
@@ -50,7 +50,7 @@ ms.locfileid: "98231040"
 
 生成的分析以警报形式发送给用户，除非已将它配置为不这样做。
 
-与[手动设置的警报](../platform/alerts-log.md)一样，你可以检查触发警报的状态（如果问题已修复，则可以解决此问题）。 在 Application Insights 资源的“警报”页配置警报规则。 但与其他警报不同，无需设置或配置智能检测。 如果需要，可以禁用它或更改其目标电子邮件地址。
+与[手动设置的警报](../alerts/alerts-log.md)一样，你可以检查触发警报的状态（如果问题已修复，则可以解决此问题）。 在 Application Insights 资源的“警报”页配置警报规则。 但与其他警报不同，无需设置或配置智能检测。 如果需要，可以禁用它或更改其目标电子邮件地址。
 
 ### <a name="alert-logic-details"></a>警报逻辑详细信息
 
@@ -66,11 +66,11 @@ ms.locfileid: "98231040"
 
 可以从端口或者使用 Azure 资源管理器禁用智能检测警报规则（[请参阅模板示例](./proactive-arm-config.md)）。
 
-该警报规则是使用名为“Application Insights 智能检测”的关联[操作组](../platform/action-groups.md)创建的（该操作组包含电子邮件和 webhook 操作），并且可以进行扩展以在警报触发时触发其他操作。
+该警报规则是使用名为“Application Insights 智能检测”的关联[操作组](../alerts/action-groups.md)创建的（该操作组包含电子邮件和 webhook 操作），并且可以进行扩展以在警报触发时触发其他操作。
 
 > [!NOTE]
 > 该警报规则现在默认向与订阅的监视查阅者和监视参与者角色关联的用户发送电子邮件通知。 [此处](./proactive-email-notification.md)介绍了有关详细信息。
-> 通过该警报规则发送的通知需遵循[常见警报架构](../platform/alerts-common-schema.md)。
+> 通过该警报规则发送的通知需遵循[常见警报架构](../alerts/alerts-common-schema.md)。
 >
 
 打开“警报”页。 包括失败异常警报规则以及已手动设置的任何警报，并可以查看其当前是否处于警报状态。
@@ -412,7 +412,7 @@ ms.locfileid: "98231040"
 ## <a name="whats-the-difference-"></a>区别是什么...
 智能检测失败异常对其他类似但又不同的 Application Insight 功能进行补充。
 
-* [指标警报](../platform/alerts-log.md)由你设置，并且可监视各种指标，如 CPU 占用率、请求速率、页面加载时间等。 可以将它们用于发出警告，例如在需要添加更多资源时。 相比之下，智能检测失败异常涵盖小范围的关键指标（当前仅失败请求速率），设计成一旦 Web 应用的失败请求速率相较于 Web 应用的正常行为而言增加，便会以近乎实时的方式通知你。 与指标警报不同，智能检测会自动设置和更新行为中响应更改的阈值。 智能检测还会启动诊断工作，从而为你节省解决问题的时间。
+* [指标警报](../alerts/alerts-log.md)由你设置，并且可监视各种指标，如 CPU 占用率、请求速率、页面加载时间等。 可以将它们用于发出警告，例如在需要添加更多资源时。 相比之下，智能检测失败异常涵盖小范围的关键指标（当前仅失败请求速率），设计成一旦 Web 应用的失败请求速率相较于 Web 应用的正常行为而言增加，便会以近乎实时的方式通知你。 与指标警报不同，智能检测会自动设置和更新行为中响应更改的阈值。 智能检测还会启动诊断工作，从而为你节省解决问题的时间。
 
 * [智能检测性能异常](proactive-performance-diagnostics.md)还使用计算机智能发现指标中的异常模式，使得你无需执行任何配置。 但与智能检测失败异常不同，智能检测性能异常的目的是查找可能不能提供很好服务的使用情况复写体分段，例如通过特定类型浏览器上的特定页面。 将每日执行分析，如果找到任何结果，则很可能紧急程度远低于警报。 相比之下，会对传入的应用程序数据连续执行失败异常分析，如果服务器失败率超出预期值，会在几分钟内通知你。
 
@@ -427,11 +427,11 @@ ms.locfileid: "98231040"
 
 *那么，你是否正在查看我的应用程序数据？*
 
-* 不是。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](./data-retention-privacy.md)数据。
+* 否。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](./data-retention-privacy.md)数据。
 
 *是否需要订阅此警报？*
 
-* 不是。 发送请求数据的每个应用程序都有智能检测警报规则。
+* 否。 发送请求数据的每个应用程序都有智能检测警报规则。
 
 *是否可以取消订阅或者获取已发送至同事的通知？*
 
@@ -443,16 +443,16 @@ ms.locfileid: "98231040"
 
 *一些警报关于已知问题，我不希望接收它们。*
 
-* 你可以使用[警报操作规则](../platform/alerts-action-rules.md)抑制功能。
+* 你可以使用[警报操作规则](../alerts/alerts-action-rules.md)抑制功能。
 
 ## <a name="next-steps"></a>后续步骤
 这些诊断工具可帮助检查应用中的数据：
 
-* [指标资源管理器](../platform/metrics-charts.md)
+* [指标资源管理器](../essentials/metrics-charts.md)
 * [搜索资源管理器](./diagnostic-search.md)
-* [分析 - 功能强大的查询语言](../log-query/log-analytics-tutorial.md)
+* [分析 - 功能强大的查询语言](../logs/log-analytics-tutorial.md)
 
 智能检测是自动执行的。 但是或许你想要设置更多的警报？
 
-* [手动配置的指标警报](../platform/alerts-log.md)
+* [手动配置的指标警报](../alerts/alerts-log.md)
 

@@ -4,14 +4,14 @@ description: 为开发、测试和生产戳记直接遥测不同的资源。
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 05/15/2017
-ms.date: 12/07/2020
+ms.date: 02/22/2021
 ms.author: v-johya
-ms.openlocfilehash: fa96b4153769025dc7c4da3a01450f500b1a61ee
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: df8e7a512e8c260e4157d967ca602447703ee35b
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97104332"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197440"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>应该部署多少个 Application Insights 资源
 
@@ -89,7 +89,7 @@ var appInsights = window.appInsights || function(config){ ...
 ## <a name="filter-on-build-number"></a>按版本号筛选
 发布新应用版本时，我们希望能够将不同版本的遥测数据分开。
 
-可以设置“应用程序版本”属性，这样便可以筛选[搜索](../../azure-monitor/app/diagnostic-search.md)和[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)结果。
+可以设置“应用程序版本”属性，这样便可以筛选[搜索](../../azure-monitor/app/diagnostic-search.md)和[指标资源管理器](../../azure-monitor/essentials/metrics-charts.md)结果。
 
 可通过多种不同的方法设置“应用程序版本”属性。
 
@@ -135,7 +135,7 @@ var appInsights = window.appInsights || function(config){ ...
 </PropertyGroup>
 ```
 
-当它具有内部信息时，Application Insights Web 模块自动将 **应用程序版本** 作为属性添加到每个遥测项。 这样，便可以在执行[诊断搜索](../../azure-monitor/app/diagnostic-search.md)或[浏览指标](../../azure-monitor/platform/metrics-charts.md)时按版本进行筛选。
+当它具有内部信息时，Application Insights Web 模块自动将 **应用程序版本** 作为属性添加到每个遥测项。 这样，便可以在执行[诊断搜索](../../azure-monitor/app/diagnostic-search.md)或[浏览指标](../../azure-monitor/essentials/metrics-charts.md)时按版本进行筛选。
 
 但请注意，内部版本号只能由 Microsoft 生成引擎生成，而不能由 Visual Studio 中的开发人员生成引擎生成。
 

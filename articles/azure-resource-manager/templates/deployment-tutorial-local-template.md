@@ -1,20 +1,20 @@
 ---
 title: 教程 - 部署本地 Azure 资源管理器模板
 description: 了解如何从本地计算机部署 Azure 资源管理器模板（ARM 模板）
-origin.date: 01/12/2021
+origin.date: 02/10/2021
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 08/24/2020
 ms.topic: tutorial
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: 4fd527c31428198eeddb9f46b0dcc79af0967e26
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 90ead318c75e2fa4dc735c0f3ee99ce1122ba183
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063568"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055286"
 ---
 # <a name="tutorial-deploy-a-local-arm-template"></a>教程：部署本地 ARM 模板
 
@@ -47,7 +47,7 @@ ms.locfileid: "99063568"
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "projectName": {
@@ -95,7 +95,7 @@ ms.locfileid: "99063568"
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2019-04-01",
+      "apiVersion": "2019-06-01",
       "name": "[variables('storageAccountName')]",
       "location": "[parameters('location')]",
       "sku": {
@@ -108,7 +108,7 @@ ms.locfileid: "99063568"
     },
     {
       "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2016-09-01",
+      "apiVersion": "2020-09-01",
       "name": "[variables('appServicePlanName')]",
       "location": "[parameters('location')]",
       "sku": {
@@ -128,7 +128,7 @@ ms.locfileid: "99063568"
     },
     {
       "type": "Microsoft.Web/sites",
-      "apiVersion": "2018-11-01",
+      "apiVersion": "2020-09-01",
       "name": "[variables('webAppName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
@@ -281,4 +281,4 @@ az deployment group create \
 > [!div class="nextstepaction"]
 > [部署链接模板](./deployment-tutorial-linked-template.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

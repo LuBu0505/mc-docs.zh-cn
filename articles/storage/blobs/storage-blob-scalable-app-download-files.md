@@ -4,16 +4,17 @@ description: 了解如何使用 Azure SDK 从 Azure 存储帐户下载大量随�
 author: WenJason
 ms.service: storage
 ms.topic: tutorial
-origin.date: 02/20/2018
-ms.date: 03/09/2020
+origin.date: 02/04/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.subservice: blobs
-ms.openlocfilehash: 8d17647685b263595a44dc6bdb9536eafb9ca953
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.custom: devx-track-csharp
+ms.openlocfilehash: df695c1e603c168ec2bf1ab4d905db64d571a0fe
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78411391"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196239"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>从 Azure 存储下载大量随机数据
 
@@ -34,7 +35,7 @@ ms.locfileid: "78411391"
 
  若要创建与虚拟机的远程桌面会话，请在本地计算机上使用以下命令。 将 IP 地址替换为虚拟机的 publicIPAddress。 出现提示时，输入创建虚拟机时使用的凭据。
 
-```
+```console
 mstsc /v:<publicIpAddress>
 ```
 
@@ -46,8 +47,10 @@ mstsc /v:<publicIpAddress>
 public static void Main(string[] args)
 {
     Console.WriteLine("Azure Blob storage performance and scalability sample");
-    // Set threading and default connection limit to 100 to ensure multiple threads and connections can be opened.
-    // This is in addition to parallelism with the storage client library that is defined in the functions below.
+    // Set threading and default connection limit to 100 to 
+    // ensure multiple threads and connections can be opened.
+    // This is in addition to parallelism with the storage 
+    // client library that is defined in the functions below.
     ThreadPool.SetMinThreads(100, 4);
     ServicePointManager.DefaultConnectionLimit = 100; // (Or More)
 
@@ -55,11 +58,12 @@ public static void Main(string[] args)
     try
     {
         // Call the UploadFilesAsync function.
-        UploadFilesAsync().GetAwaiter().GetResult();
+        // await UploadFilesAsync();
 
-        // Uncomment the following line to enable downloading of files from the storage account.  This is commented out
-        // initially to support the tutorial at https://docs.azure.cn/storage/blobs/storage-blob-scalable-app-download-files.
-        // DownloadFilesAsync().GetAwaiter().GetResult();
+        // Uncomment the following line to enable downloading of files from the storage account.
+        // This is commented out initially to support the tutorial at 
+        // https://docs.azure.cn/storage/blobs/storage-blob-scalable-app-download-files
+        await DownloadFilesAsync();
     }
     catch (Exception ex)
     {
@@ -68,11 +72,13 @@ public static void Main(string[] args)
     }
     finally
     {
-        // The following function will delete the container and all files contained in them.  This is commented out initially
-        // As the tutorial at https://docs.azure.cn/storage/blobs/storage-blob-scalable-app-download-files has you upload only for one tutorial and download for the other. 
+        // The following function will delete the container and all files contained in them.
+        // This is commented out initially as the tutorial at 
+        // https://docs.azure.cn/storage/blobs/storage-blob-scalable-app-download-files
+        // has you upload only for one tutorial and download for the other.
         if (!exception)
         {
-            // DeleteExistingContainersAsync().GetAwaiter().GetResult();
+            // await DeleteExistingContainersAsync();
         }
         Console.WriteLine("Press any key to exit the application");
         Console.ReadKey();
@@ -82,7 +88,7 @@ public static void Main(string[] args)
 
 应用程序更新后，需再次生成应用程序。 打开 `Command Prompt` 并导航到 `D:\git\storage-dotnet-perf-scale-app`。 通过运行 `dotnet build` 重新生成应用程序，如以下示例所示：
 
-```
+```console
 dotnet build
 ```
 
@@ -92,33 +98,119 @@ dotnet build
 
 键入 `dotnet run` 运行应用程序。
 
-```
+```console
 dotnet run
 ```
 
-应用程序读取位于 storageconnectionstring 中指定的存储帐户中的容器  。 它使用容器中的 [ListBlobsSegmented](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobssegmented?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlobContainer_ListBlobsSegmented_System_String_System_Boolean_Microsoft_WindowsAzure_Storage_Blob_BlobListingDetails_System_Nullable_System_Int32__Microsoft_WindowsAzure_Storage_Blob_BlobContinuationToken_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) 方法每次循环访问 10 个 blob，并使用 [DownloadToFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadtofileasync?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadToFileAsync_System_String_System_IO_FileMode_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) 方法将它们下载到本地计算机。
-下表显示了每个 blob 下载完成后为其定义的 [BlobRequestOptions](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions?view=azure-dotnet)。
-
-|properties|值|说明|
-|---|---|---|
-|[DisableContentMD5Validation](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.disablecontentmd5validation?view=azure-dotnet)| true| 该属性禁用对上传内容的 MD5 哈希检查。 禁用 MD5 验证可加快传输速度。 但是不能确认传输文件的有效性或完整性。 |
-|[StoreBlobContentMD5](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.storeblobcontentmd5?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_StoreBlobContentMD5)| false| 该属性确定是否计算和存储 MD5 哈希。   |
-
 下例显示了 `DownloadFilesAsync` 任务：
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+应用程序读取位于 storageconnectionstring 中指定的存储帐户中的容器。 它使用 [GetBlobs](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs) 方法循环访问 Blob，并使用 [DownloadToAsync](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadtoasync) 方法将它们下载到本地计算机。
+
+```csharp
+private static async Task DownloadFilesAsync()
+{
+    BlobServiceClient blobServiceClient = GetBlobServiceClient();
+
+    // Path to the directory to upload
+    string downloadPath = Directory.GetCurrentDirectory() + "\\download\\";
+    Directory.CreateDirectory(downloadPath);
+    Console.WriteLine($"Created directory {downloadPath}");
+
+    // Specify the StorageTransferOptions
+    var options = new StorageTransferOptions
+    {
+        // Set the maximum number of workers that 
+        // may be used in a parallel transfer.
+        MaximumConcurrency = 8,
+
+        // Set the maximum length of a transfer to 50MB.
+        MaximumTransferSize = 50 * 1024 * 1024
+    };
+
+    List<BlobContainerClient> containers = new List<BlobContainerClient>();
+
+    foreach (BlobContainerItem container in blobServiceClient.GetBlobContainers())
+    {
+        containers.Add(blobServiceClient.GetBlobContainerClient(container.Name));
+    }
+
+    // Start a timer to measure how long it takes to download all the files.
+    Stopwatch timer = Stopwatch.StartNew();
+
+    // Download the blobs
+    try
+    {
+        int count = 0;
+
+        // Create a queue of tasks that will each upload one file.
+        var tasks = new Queue<Task<Response>>();
+
+        foreach (BlobContainerClient container in containers)
+        {                     
+            // Iterate through the files
+            foreach (BlobItem blobItem in container.GetBlobs())
+            {
+                string fileName = downloadPath + blobItem.Name;
+                Console.WriteLine($"Downloading {blobItem.Name} to {downloadPath}");
+
+                BlobClient blob = container.GetBlobClient(blobItem.Name);
+
+                // Add the download task to the queue
+                tasks.Enqueue(blob.DownloadToAsync(fileName, default, options));
+                count++;
+            }
+        }
+
+        // Run all the tasks asynchronously.
+        await Task.WhenAll(tasks);
+
+        // Report the elapsed time.
+        timer.Stop();
+        Console.WriteLine($"Downloaded {count} files in {timer.Elapsed.TotalSeconds} seconds");
+    }
+    catch (RequestFailedException ex)
+    {
+        Console.WriteLine($"Azure request failed: {ex.Message}");
+    }
+    catch (DirectoryNotFoundException ex)
+    {
+        Console.WriteLine($"Error parsing files in the directory: {ex.Message}");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Exception: {ex.Message}");
+    }
+}
+```
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+应用程序读取位于 storageconnectionstring 中指定的存储帐户中的容器。 它使用容器中的 [ListBlobsSegmentedAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient.listblobssegmentedasync) 方法每次循环访问 10 个 Blob，并使用 [DownloadToFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadtofileasync) 方法将它们下载到本地计算机。
+
+下表显示了每个 Blob 下载完成后为其定义的 [BlobRequestOptions](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions)。
+
+|属性|值|说明|
+|---|---|---|
+|[DisableContentMD5Validation](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| 该属性禁用对上传内容的 MD5 哈希检查。 禁用 MD5 验证可加快传输速度。 但是不能确认传输文件的有效性或完整性。 |
+|[StoreBlobContentMD5](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| 该属性确定是否计算和存储 MD5 哈希。   |
 
 ```csharp
 private static async Task DownloadFilesAsync()
 {
     CloudBlobClient blobClient = GetCloudBlobClient();
 
-    // Define the BlobRequestOptions on the download, including disabling MD5 hash validation for this example, this improves the download speed.
+    // Define the BlobRequestOptions on the download, including disabling MD5 
+    // hash validation for this example, this improves the download speed.
     BlobRequestOptions options = new BlobRequestOptions
     {
         DisableContentMD5Validation = true,
         StoreBlobContentMD5 = false
     };
 
-    // Retrieve the list of containers in the storage account.  Create a directory and configure variables for use later.
+    // Retrieve the list of containers in the storage account.
+    // Create a directory and configure variables for use later.
     BlobContinuationToken continuationToken = null;
     List<CloudBlobContainer> containers = new List<CloudBlobContainer>();
     do
@@ -140,7 +232,8 @@ private static async Task DownloadFilesAsync()
         int max_outstanding = 100;
         int completed_count = 0;
 
-        // Create a new instance of the SemaphoreSlim class to define the number of threads to use in the application.
+        // Create a new instance of the SemaphoreSlim class to
+        // define the number of threads to use in the application.
         SemaphoreSlim sem = new SemaphoreSlim(max_outstanding, max_outstanding);
 
         // Iterate through the containers
@@ -148,7 +241,7 @@ private static async Task DownloadFilesAsync()
         {
             do
             {
-                // Return the blobs from the container lazily 10 at a time.
+                // Return the blobs from the container, 10 at a time.
                 resultSegment = await container.ListBlobsSegmentedAsync(null, true, BlobListingDetails.All, 10, continuationToken, null, null);
                 continuationToken = resultSegment.ContinuationToken;
                 {
@@ -188,11 +281,13 @@ private static async Task DownloadFilesAsync()
 }
 ```
 
+---
+
 ### <a name="validate-the-connections"></a>验证连接
 
-在下载文件的同时，可以验证存储帐户的并发连接数。 打开 `Command Prompt` 并键入 `netstat -a | find /c "blob:https"`。 此命令显示当前使用 `netstat` 打开的连接数。 下例显示的输出与自己运行该教程时看到的输出类似。 如该示例所示，从存储帐户下载随机文件时，打开了 280 多个连接。
+在下载文件的同时，可以验证存储帐户的并发连接数。 打开控制台窗口，然后键入 `netstat -a | find /c "blob:https"`。 此命令显示当前打开的连接数。 如以下示例所示，从存储帐户下载文件时，打开了 280 多个连接。
 
-```
+```console
 C:\>netstat -a | find /c "blob:https"
 289
 
@@ -201,13 +296,13 @@ C:\>
 
 ## <a name="next-steps"></a>后续步骤
 
-本系列的第三部分介绍了从存储帐户下载大量随机数据的方法，例如如何：
+本系列的第三部分介绍了从存储帐户下载大量数据的方法，包括如何：
 
 > [!div class="checklist"]
 > * 运行应用程序
 > * 验证连接数
 
-接下来进入本系列的第四部分，验证门户中的吞吐量和延迟指标。
+转到本系列的第四部分，验证门户中的吞吐量和延迟指标。
 
 > [!div class="nextstepaction"]
 > [验证门户中的吞吐量和延迟指标](storage-blob-scalable-app-verify-metrics.md)

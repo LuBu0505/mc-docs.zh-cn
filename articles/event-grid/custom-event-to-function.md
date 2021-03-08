@@ -4,14 +4,14 @@ description: 快速入门：使用 Azure 事件网格和 Azure CLI 或门户发�
 author: Johnnytechn
 ms.author: v-johya
 origin.date: 11/05/2019
-ms.date: 12/01/2020
+ms.date: 03/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: 59bebf1ed40cd530f700e11d5ff7817c09c656dc
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: f230f480ad843eeb80c3c0c0729f2060d5553287
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432137"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197502"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>快速入门：使用事件网格将自定义事件路由到 Azure 函数
 
@@ -22,7 +22,7 @@ Azure 事件网格是针对云的事件处理服务。 Azure 函数是受支持�
 ## <a name="create-azure-function"></a>创建 Azure 函数
 在订阅自定义主题之前，创建一个函数来处理事件。 
 
-1. 按照[创建函数应用](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)中的说明创建函数应用。
+1. 按照[创建函数应用](../azure-functions/functions-get-started.md)中的说明创建函数应用。
 2. 使用事件网格触发器创建函数。 如果这是你第一次使用此触发器，可能需要单击“安装”来安装该扩展。
     1. 在“函数应用”页上，选择左侧菜单上的“Functions”，在模板中搜索“事件网格”，然后选择“Azure 事件网格触发器”。 
 

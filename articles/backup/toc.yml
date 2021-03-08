@@ -340,8 +340,6 @@
               href: soft-delete-sql-saphana-in-azure-vm.md
         - name: 混合备份的安全性
           href: backup-azure-security-feature.md
-        - name: 专用终结点
-          href: private-endpoints.md
         - name: Azure 备份中的加密
           href: backup-encryption.md
         - name: 传输层安全性
@@ -351,7 +349,7 @@
           href: ./security-controls-policy.md
         - name: 安全基线
           href: security-baseline.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: Azure VM
           href: backup-azure-vms-troubleshoot.md

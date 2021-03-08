@@ -2,16 +2,16 @@
 title: 监视容器实例
 description: 如何监视 Azure 容器实例中的容器消耗的计算资源，例如 CPU 和内存。
 ms.topic: article
-origin.date: 04/24/2019
+origin.date: 12/17/2020
 author: rockboyfor
-ms.date: 01/25/2021
+ms.date: 03/01/2021
 ms.author: v-yeche
-ms.openlocfilehash: bb5873badf1ebcd5f7ccbd4f0f932b4169cad0d3
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: 5fbe74fd556c09d52f598d7bdbcff240c8060120
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751161"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055148"
 ---
 <!--Verified successfully-->
 # <a name="monitor-container-resources-in-azure-container-instances"></a>监视 Azure 容器实例中的容器资源
@@ -140,12 +140,12 @@ Timestamp            Name          Containername             Average
 
 <!-- IMAGES -->
 
-<!--Not Avaialble on [cpu-chart]: ./media/container-instances-monitor/cpu-multi.png-->
+<!--NOT AVAILABLE ON [cpu-chart]: ./media/container-instances-monitor/cpu-multi.png-->
 
 [dimension]: ./media/container-instances-monitor/dimension.png
 [dual-chart]: ./media/container-instances-monitor/metrics.png
 
-<!--Not Avaialble on [memory-chart]: ./media/container-instances-monitor/memory-multi.png-->
+<!--NOT AVAILABLE ON [memory-chart]: ./media/container-instances-monitor/memory-multi.png-->
 
 <!-- LINKS - External -->
 
@@ -158,4 +158,4 @@ Timestamp            Name          Containername             Average
 [monitor-dimension]: ../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics
 [supported-metrics]: ../azure-monitor/platform/metrics-supported.md#microsoftcontainerinstancecontainergroups
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

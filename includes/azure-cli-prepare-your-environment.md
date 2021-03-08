@@ -1,17 +1,17 @@
 ---
 ms.topic: include
 origin.date: 09/10/2020
-ms.date: 02/08/2021
+ms.date: 02/22/2021
 author: rockboyfor
 ms.author: v-yeche
 manager: barbkess
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 687c3990c97d36bdc2b1f757fce0fe3cc63bef24
-ms.sourcegitcommit: fda47fe846d47f30e65a048251402d873e416650
+ms.openlocfilehash: 2752c2d63af68e6e7d679607b61af787ff3441dd
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99427416"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102108426"
 ---
 <!--Verified successfully-->
 ## <a name="prerequisites"></a>先决条件

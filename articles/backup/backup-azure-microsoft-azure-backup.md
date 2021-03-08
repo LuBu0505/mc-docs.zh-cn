@@ -4,14 +4,14 @@ description: 本文介绍了如何准备环境，以使用 Microsoft Azure 备�
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 11/13/2018
-ms.date: 11/17/2020
+ms.date: 03/01/2021
 ms.author: v-johya
-ms.openlocfilehash: a8548f1c60f7ebe27ef1b758279f7ff7d206a1c4
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 229bb7196a43447ae97cc3d6de759cdb51331848
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977406"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197346"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安装和升级 Azure 备份服务器
 
@@ -306,13 +306,18 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 
 ### <a name="recovering-from-loss-of-connectivity"></a>连接断开后进行恢复
 
-如果防火墙或代理阻止访问 Azure，则需要在防火墙/代理配置文件中允许以下域地址：
+如果计算机的 Internet 访问状态受限，请确保计算机或代理上的防火墙设置允许以下 URL 和 IP 地址：
 
-* `http://www.msftncsi.com/ncsi.txt`
-* \*.Microsoft.com
-* \*.WindowsAzure.cn
-* \*.partner.microsoftonline.cn
-* \*.chinacloudapi.cn
+* URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.cn`
+  * `*.partner.microsoftonline.cn`
+  * `*.chinacloudapi.cn`
+  * `www.msftconnecttest.com`
+* IP 地址
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 如果使用 ExpressRoute Microsoft 对等互连，请选择以下服务/区域：
 

@@ -13,12 +13,12 @@ ms.workload: ns
 origin.date: 06/21/2019
 ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: 9fefe9794788537146dcb86816fbbc57f82aef88
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: a3207786f10769f934003d8090d00db1173e9560
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746781"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196836"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>快速入门：使用 Java 控制连接到 Azure IoT 中心的设备
 
@@ -31,7 +31,7 @@ ms.locfileid: "96746781"
 
 * 具有活动订阅的 Azure 帐户。 [创建试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
-* Java SE 开发工具包 8。 在[针对 Azure 和 Azure Stack 的 Java 长期支持](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)中的“长期支持”下选择“Java 8”。  
+* Java SE 开发工具包 8。 在[针对 Azure 和 Azure Stack 的 Java 长期支持](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)中的“长期支持”下选择“Java 8”。
 
     可以使用以下命令验证开发计算机上 Java 的当前版本：
 
@@ -82,7 +82,7 @@ ms.locfileid: "96746781"
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
     ```azurecli
-    az iot hub device-identity show-connection-string \
+    az iot hub device-identity connection-string show\
       --hub-name {YourIoTHubName} \
       --device-id MyJavaDevice \
       --output table
@@ -101,7 +101,7 @@ ms.locfileid: "96746781"
 **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
 ```azurecli
-az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
+az iot hub connection-string show --policy-name service --name {YourIoTHubName} --output table
 ```
 
 记下如下所示的服务连接字符串：

@@ -13,21 +13,19 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 origin.date: 03/13/2018
 author: rockboyfor
-ms.date: 10/05/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 10/05/2020
 ms.author: v-yeche
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4a3f71c154920bfa91a2d05b236748ebcd0235fb
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: d0dd91abb258b6eaa72c137058da0d7f2ca79849
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507631"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055238"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>通过 PowerShell 使用虚拟网络对等互连连接虚拟网络
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 可以使用虚拟网络对等互连将虚拟网络互相连接。 将虚拟网络对等互连后，两个虚拟网络中的资源将能够以相同的延迟和带宽相互通信，就像这些资源位于同一个虚拟网络中一样。 在本文中，学习如何：
 
@@ -36,11 +34,11 @@ ms.locfileid: "96507631"
 * 将虚拟机 (VM) 部署到每个虚拟网络
 * VM 之间进行通信
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+如果没有 Azure 订阅，请在开始前创建一个[试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 <!--[!INCLUDE [cloud-shell-powershell](../../../includes/cloud-shell-powershell.md)]-->
 
-如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 来创建与 Azure 的连接。
+如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 来创建与 Azure 的连接。
 
 ## <a name="create-virtual-networks"></a>创建虚拟网络
 
@@ -162,7 +160,7 @@ New-AzVm `
 
 ## <a name="communicate-between-vms"></a>VM 之间进行通信
 
-可以从 Internet 连接到 VM 的公共 IP 地址。 使用 [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) 返回 VM 的公共 IP 地址。 以下示例返回 myVm1 VM 的公共 IP 地址  ：
+可以从 Internet 连接到 VM 的公共 IP 地址。 使用 [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) 返回 VM 的公共 IP 地址。 以下示例返回 myVm1 VM 的公共 IP 地址：
 
 ```powershell
 Get-AzPublicIpAddress `
@@ -170,13 +168,13 @@ Get-AzPublicIpAddress `
   -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-从本地计算机使用以下命令创建与 myVm1 VM 的远程桌面会话  。 将 `<publicIpAddress>` 替换为上一命令返回的 IP 地址。
+从本地计算机使用以下命令创建与 myVm1 VM 的远程桌面会话。 将 `<publicIpAddress>` 替换为上一命令返回的 IP 地址。
 
 ```
 mstsc /v:<publicIpAddress>
 ```
 
-此时会创建远程桌面协议 (.rdp) 文件，并下载到计算机，同时打开该文件。 输入用户名和密码（可能需要选择“更多选择”，然后选择“使用其他帐户”，以便指定在创建 VM 时输入的凭据），然后单击“确定”。    你可能会在登录过程中收到证书警告。 单击“是”或“继续”继续进行连接。  
+此时会创建远程桌面协议 (.rdp) 文件，并下载到计算机，同时打开该文件。 输入用户名和密码（可能需要选择“更多选择”，然后选择“使用其他帐户”，以便指定在创建 VM 时输入的凭据），然后单击“确定”。 你可能会在登录过程中收到证书警告。 单击“是”或“继续”继续进行连接。
 
 在 *myVm1* VM 上，允许 Internet 控制消息协议 (ICMP) 通过 Windows 防火墙，以便在稍后的步骤中使用 PowerShell 从 *myVm2* ping 此 VM：
 
@@ -212,8 +210,8 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 在本文中，你已学习了如何使用虚拟网络对等互连来连接同一 Azure 区域中的两个网络。 还可以将不同的[受支持区域](virtual-network-manage-peering.md#cross-region)和[不同的 Azure 订阅](create-peering-different-subscriptions.md#powershell)中的虚拟网络对等互连。 若要详细了解虚拟网络对等互连，请参阅[虚拟网络对等互连概述](virtual-network-peering-overview.md)和[管理虚拟网络对等互连](virtual-network-manage-peering.md)。
 
-<!-- Not Available on [hub and spoke network designs](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fvirtual-network%2ftoc.json#vnet-peering)-->
+<!--NOT AVAILABLE on [hub and spoke network designs](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fvirtual-network%2ftoc.json#vnet-peering)-->
 
 可以通过 VPN [将自己的计算机连接到虚拟网络](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md?toc=%2fvirtual-network%2ftoc.json)，并可与虚拟网络或对等虚拟网络中的资源进行交互。 有关用来完成虚拟网络文章中涉及的许多任务的可重用脚本，请参阅[脚本示例](powershell-samples.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -73,32 +73,8 @@
   items:
     - name: Elasticsearch
       href: ./linux/tutorial-elasticsearch.md
-    - name: FreeBSD 数据包筛选器
-      href: ./linux/freebsd-pf-nat.md
-    - name: 数据库
-      items:
-        - name: SUSE 上的 MySQL
-          href: ./linux/mysql-on-opensuse.md
-        - name: MongoDB
-          items:
-            - name: Linux
-              href: ./linux/install-mongodb.md
-            - name: Windows
-              href: ./windows/install-mongodb.md
-        - name: PostgreSQL
-          href: ./linux/postgresql-install.md
-        - name: Linux 上的 MS SQL
-          href: 'https://docs.azure.cn/azure-sql/virtual-machines/linux/sql-vm-create-portal-quickstart?view=sql-server-ver15'
-    - name: 容器
-      items:
-        - name: 创建 Docker 主机
-          href: 'https://github.com/Azure/azure-docker-extension/blob/master/README.md'
-        - name: 使用 Docker 计算机
-          href: ./linux/docker-machine.md
-        - name: 使用 Docker Compose
-          href: ./linux/docker-compose-quickstart.md
-    - name: Visual Studio
-      href: ./windows/using-visual-studio-vm.md
+    - name: 虚拟机上的 SQL
+      href: 'https://docs.azure.cn/azure-sql/virtual-machines/'
 - name: 实例数
   items:
     - name: 大小
@@ -199,6 +175,8 @@
           href: dedicated-hosts-portal.md
         - name: PowerShell
           href: ./windows/dedicated-hosts-powershell.md
+    - name: 购买选项
+      items:
         - name: Azure 混合权益
           items:
             - name: Windows
@@ -222,7 +200,7 @@
           href: ./linux/copy-vm.md
         - name: 创建 LAMP 堆栈
           href: ./linux/tutorial-lamp-stack.md
-        - name: 使用 SSL 保护 Web 服务器
+        - name: 使用 TLS\SSL 保护 Web 服务器
           items:
             - name: Linux
               href: ./linux/tutorial-secure-web-server.md
@@ -252,8 +230,8 @@
               href: ./windows/create-vm-specialized.md
         - name: 使用 Java
           href: ./windows/java.md
-        - name: 使用 Python
-          href: ./windows/python.md
+        - name: Python
+          href: 'https://docs.microsoft.com/samples/azure-samples/virtual-machines-python-manage/azure-virtual-machines-management-samples---python/?context=/virtual-machines/context/context'
         - name: 使用 ARM 模板
           displayName: Azure Resource Manager template
           href: ./windows/ps-template.md
@@ -439,6 +417,8 @@
               href: ./linux/flatcar-create-upload-vhd.md
             - name: FreeBSD
               href: ./linux/freebsd-intro-on-azure.md
+            - name: FreeBSD 数据包筛选器
+              href: ./linux/freebsd-pf-nat.md
             - name: Oracle Linux
               href: ./linux/oracle-create-upload-vhd.md
             - name: OpenBSD
@@ -467,8 +447,6 @@
               href: ./linux/cloudinit-configure-swapfile.md
             - name: 运行现有的 Bash 脚本
               href: ./linux/cloudinit-bash-script.md
-            - name: 准备适用于 cloud-init 的现有 VM
-              href: ./linux/cloudinit-prepare-custom-image.md
         - name: 创建不含预配代理的 Linux 映像
           href: ./linux/no-agent.md
         - name: 禁用 Linux 代理预配
@@ -485,6 +463,8 @@
           href: ./windows/capture-image-resource.md
         - name: 从托管映像创建 VM
           href: ./windows/create-vm-generalized-managed.md
+        - name: Visual Studio
+          href: ./windows/using-visual-studio-vm.md
     - name: 共享映像库
       items:
         - name: 概述
@@ -540,7 +520,7 @@
                 - name: 更新映像资源
                   href: update-image-resources-powershell.md
                 - name: 用于共享的应用注册
-                  href: 'https://docs.azure.cn/virtual-machines/windows/share-images-across-tenants'
+                  href: ./windows/share-images-across-tenants.md
         - name: 门户
           items:
             - name: 创建库、映像和 VM
@@ -634,10 +614,12 @@
                   href: linux/disks-enable-double-encryption-at-rest-cli.md
         - name: Azure 磁盘加密场景
           items:
-            - name: Linux
-              href: ./linux/disk-encryption-linux.md
-            - name: Windows
-              href: ./windows/disk-encryption-windows.md
+            - name: Azure 磁盘加密概述
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-linux.md
+                - name: Windows
+                  href: ./windows/disk-encryption-windows.md
             - name: CLI
               items:
                 - name: Linux
@@ -654,6 +636,8 @@
               items:
                 - name: Linux
                   href: ./linux/disk-encryption-portal-quickstart.md
+                - name: Windows
+                  href: ./windows/disk-encryption-portal-quickstart.md
             - name: 用于 Azure 磁盘加密的密钥保管库
               items:
                 - name: Linux
@@ -710,6 +694,8 @@
                       href: ./windows/disk-encryption-windows-aad.md
     - name: 性能和成本优化
       items:
+        - name: 虚拟机和磁盘性能
+          href: disks-performance.md
         - name: 高性能设计
           href: premium-storage-performance.md
         - name: 磁盘突发
@@ -724,8 +710,14 @@
               href: disks-performance-tiers-portal.md
         - name: 启用写入加速器
           href: how-to-enable-write-accelerator.md
+        - name: 对磁盘进行基准检验
+          href: disks-benchmarks.md
+    - name: 磁盘的可伸缩性目标
+      href: disks-scalability-targets.md
     - name: 备份和数据保护
       items:
+        - name: 启用增量快照
+          href: disks-incremental-snapshots.md
         - name: 磁盘的备份和灾难恢复
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: 拍摄磁盘快照 - CLI
@@ -738,7 +730,7 @@
       href: ephemeral-os-disks.md
     - name: 迁移和转换
       items:
-        - name: 在“标准”和“高级”之间转换磁盘
+        - name: 将磁盘转换为另一种磁盘类型
           items:
             - name: CLI
               href: ./linux/convert-disk-storage.md
@@ -887,6 +879,8 @@
       href: ./linux/static-dns-name-resolution-for-linux-on-azure.md
 - name: 安全性
   items:
+    - name: 概述
+      href: ../security/fundamentals/virtual-machines-overview.md?context=/virtual-machines/context/context
     - name: Azure 安全中心
       href: ../security-center/security-center-introduction.md
     - name: 安全基线
@@ -928,7 +922,6 @@
               href: ../bastion/create-host-cli.md
             - name: Bastion SSH 连接
               href: ../bastion/bastion-connect-vm-ssh.md
-              items: null
             - name: Bastion RDP 连接
               href: ../bastion/bastion-connect-vm-rdp.md
         - name: 使用访问控制
@@ -1009,8 +1002,6 @@
   items:
     - name: 监视 VM
       items:
-        - name: Linux
-          href: ./linux/tutorial-monitor.md
         - name: Windows
           href: ./windows/tutorial-monitor.md
     - name: 代理
@@ -1025,8 +1016,10 @@
               href: ../azure-monitor/platform/diagnostics-extension-overview.md?context=/virtual-machines/context/context
             - name: Linux 诊断扩展
               items:
-                - name: 概述
+                - name: 4.0 版
                   href: ../virtual-machines/extensions/diagnostics-linux.md?context=/virtual-machines/context/context
+                - name: 版本 3.0
+                  href: ../virtual-machines/extensions/diagnostics-linux-v3.md?context=/virtual-machines/context/context
         - name: Log Analytics 代理
           items:
             - name: 概述
@@ -1116,7 +1109,7 @@
         - name: 定价
           href: ../backup/azure-backup-pricing.md
         - name: 常见问题解答
-          href: ../backup/backup-azure-vm-backup-faq.md
+          href: 'https://docs.azure.cn/backup/backup-azure-vm-backup-faq'
     - name: 灾难恢复
       items:
         - name: 概述
@@ -1163,7 +1156,7 @@
     - name: 自定义数据
       href: custom-data.md
 - name: 故障排除
-  href: ./troubleshooting/index.yml
+  href: 'https://docs.microsoft.com/troubleshoot/azure/virtual-machines/welcome-virtual-machines'
 - name: 资源
   items:
     - name: Azure Q&A

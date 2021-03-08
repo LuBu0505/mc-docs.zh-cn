@@ -4,14 +4,14 @@ description: 通过 OpenCensus Python 监视 Python 应用的依赖项调用。
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 01/12/2021
+ms.date: 02/22/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 2d80df3eaaa4afd0fac095cc896c694afa6c1e12
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 210ea51df15a75a999353b023999b0f54ce988d0
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231044"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197193"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>使用 OpenCensus Python 跟踪依赖项
 
@@ -172,7 +172,7 @@ config_integration.trace_integrations(['sqlalchemy'])
 
 * [应用程序映射](./app-map.md)
 * [搜索](./diagnostic-search.md)
-* [日志（分析）查询](../log-query/log-query-overview.md)
+* [日志（分析）查询](../logs/log-query-overview.md)
 * [事务诊断](./transaction-diagnostics.md)
 
 

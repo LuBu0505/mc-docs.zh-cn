@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 10/14/2019
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9c48c583a6c640e797d6264fffa29c6f105e2f6c
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 448e2b26a60edc3fd46b9bf700043fa876d4a1b7
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230765"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053989"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-standard-internal-load-balancer-in-azure---powershell"></a>在 Azure 中部署使用标准内部负载均衡器的 IPv6 双堆栈应用程序 - PowerShell
 
@@ -48,7 +48,7 @@ ms.locfileid: "98230765"
 
 如果你选择在本地安装和使用 PowerShell，本文要求使用 Azure PowerShell 模块 6.9.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 来创建与 Azure 的连接。
 
-<!--Not Available on ## Prerequisites-->
+<!--NOT AVAILABLE on ## Prerequisites-->
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -290,7 +290,7 @@ $NIC_2 = New-AzNetworkInterface `
 
 ### <a name="create-virtual-machines"></a>创建虚拟机
 
-使用 [New-AzureRmNetworkInterface](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 设置 VM 的管理员用户名和密码：
+使用 [New-AzureRmNetworkInterface](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential) 设置 VM 的管理员用户名和密码：
 
 ```azurepowershell
 $cred = get-credential -Message "DUAL STACK VNET SAMPLE:  Please enter the Administrator credential to log into the VM's"
@@ -336,4 +336,4 @@ Remove-AzResourceGroup -Name dsStd_ILB_RG
 
 在本文中，你已使用双重前端 IP 配置（IPv4 和 IPv6）创建了一个标准负载均衡器。 你还创建了两个虚拟机，它们包含采用双重 IP 配置（IPV4 + IPv6）的 NIC，并已添加到负载均衡器的后端池。 若要详细了解 Azure 虚拟网络中的 IPv6 支持，请参阅 [Azure 虚拟网络 IPv6 是什么？](ipv6-overview.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

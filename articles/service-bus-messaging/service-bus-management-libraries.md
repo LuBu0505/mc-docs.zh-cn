@@ -10,12 +10,12 @@ ms.testscope: yes
 ms.testdate: 07/20/2020
 ms.author: v-yeche
 author: rockboyfor
-ms.openlocfilehash: ff7b6c471ee15eb41f1d2e1d243083af01d681fd
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: eee85acd383d165ef8e5945b749564c495c5fcf4
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059578"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196466"
 ---
 # <a name="dynamically-provision-service-bus-namespaces-and-entities"></a>动态预配服务总线命名空间和实体 
 Azure 服务总线管理库可以动态预配服务总线命名空间和实体。 这样可以实现复杂的部署和消息方案，并能以编程方式确定要预配的实体。 这些库目前可用于 .NET。
@@ -34,7 +34,10 @@ Microsoft.Azure.Management.ServiceBus 库仅支持 Azure Active Directory (Azure
 以下各部分更详细地介绍了这些库。 
 
 ## <a name="azuremessagingservicebusadministration"></a>Azure.Messaging.ServiceBus.Administration
-可使用 [Azure.Messaging.ServiceBus.Administration](https://docs.azure.cn/dotnet/api/azure.messaging.servicebus.administration) 命名空间中的 [ServiceBusAdministrationClient](https://docs.azure.cn/dotnet/api/azure.messaging.servicebus.administration.servicebusadministrationclient) 类来管理命名空间、队列、主题和订阅。 下面是示例代码。 如需查看完整示例，请参阅 [CRUD 示例](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/tests/Samples/Sample07_CrudOperations.cs)。
+可使用 [Azure.Messaging.ServiceBus.Administration](https://docs.microsoft.com/dotnet/api/azure.messaging.servicebus.administration) 命名空间中的 [ServiceBusAdministrationClient](https://docs.microsoft.com/dotnet/api/azure.messaging.servicebus.administration.servicebusadministrationclient) 类来管理命名空间、队列、主题和订阅。 下面是示例代码。 如需查看完整示例，请参阅 [CRUD 示例](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/tests/Samples/Sample07_CrudOperations.cs)。
+
+<!--CORRECT ON https://docs.microsoft.com/dotnet/api/azure.messaging.servicebus.administration.servicebusadministrationclient-->
+<!--CORRECT ON https://docs.microsoft.com/dotnet/api/azure.messaging.servicebus.administration-->
 
 ```csharp
 using System;

@@ -4,15 +4,15 @@ description: Azure 容器实例服务的计算和内存资源在不同 Azure 区
 ms.topic: article
 origin.date: 04/27/2020
 author: rockboyfor
-ms.date: 02/08/2021
+ms.date: 03/01/2021
 ms.author: v-yeche
 ms.custom: references_regions
-ms.openlocfilehash: 08d9fb1d0306b2748937c72ffb80368b92e26598
-ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
+ms.openlocfilehash: 5cb3ff5c4e5b56d03f25631efd8d800ca78d9894
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580618"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055226"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure 容器实例在 Azure 区域的资源可用性
 

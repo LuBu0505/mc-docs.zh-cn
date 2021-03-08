@@ -5,13 +5,13 @@ services: azure-monitor
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 11/02/2020
-ms.openlocfilehash: 1a926ed531eeaeb87ef91ded5ab363db48a8a591
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.date: 02/22/2021
+ms.openlocfilehash: 96dccdab92251955c5b71e7b1a12e50f0b64ff8b
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328689"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197551"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>使用 Azure Monitor for Key Vault 监视密钥保管库服务
 Azure Monitor for Key Vault 通过提供 Key Vault 请求、性能、故障和延迟的统一视图，对密钥保管库进行全面监视。
@@ -129,7 +129,7 @@ Azure Monitor for Key Vault 通过提供 Key Vault 请求、性能、故障和�
 2. 在“概览”工作簿上，从命令栏中选择“编辑” 。
 3. 从“订阅”下拉列表中选择要用作默认订阅的一个或多个订阅。 请记住，工作簿最多支持选择 10 个订阅。
 4. 从“密钥保管库”下拉列表中选择要用作默认帐户的一个或多个帐户。 请记住，工作簿最多支持选择 200 个存储帐户。
-5. 从命令栏中选择“另存为”以使用你的自定义项保存工作簿的副本，然后单击“完成编辑”以返回到读取模式 。
+5. 选择命令栏中的“另存为”，以保存包含自定义项的工作簿副本，然后单击“完成编辑”返回到阅读模式。
 
 ## <a name="troubleshooting"></a>故障排除
 
@@ -169,5 +169,5 @@ Azure Monitor for Key Vault 通过提供 Key Vault 请求、性能、故障和�
 
 ## <a name="next-steps"></a>后续步骤
 
-查看[使用 Azure Monitor 工作簿创建交互式报表](../platform/workbooks-overview.md)，了解工作簿旨在支持的方案、创作新报表和自定义现有报表的方式，以及更多信息。
+查看[使用 Azure Monitor 工作簿创建交互式报表](../visualize/workbooks-overview.md)，了解工作簿旨在支持的方案、创作新报表和自定义现有报表的方式，以及更多信息。
 

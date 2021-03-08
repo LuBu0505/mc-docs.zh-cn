@@ -5,17 +5,17 @@ services: container-service
 ms.topic: quickstart
 origin.date: 01/13/2021
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 07/13/2020
 ms.author: v-yeche
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 52a7b3d7ad8c68049ca0ccb01f90618ac4c75736
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 5c66759bc7694d5986b43a38da35eacfcf6c63e8
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063677"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054069"
 ---
 <!--Verified successfully-->
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>快速入门：使用 PowerShell 部署 Azure Kubernetes 服务群集
@@ -77,7 +77,7 @@ New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCoun
 
 片刻之后，该命令将会完成，并返回有关群集的信息。
 
-## <a name="connect-to-the-cluster"></a>连接至群集
+## <a name="connect-to-the-cluster"></a>连接到群集
 
 若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。 
 
@@ -278,7 +278,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
-<!--Not Available on [azure-dev-spaces]: ../dev-spaces/index.yml-->
+<!--NOT AVAILABEL ON [azure-dev-spaces]: ../dev-spaces/index.yml-->
 
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git

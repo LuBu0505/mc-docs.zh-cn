@@ -7,15 +7,15 @@ ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
-ms.date: 12/03/2020
+ms.date: 03/04/2021
 ms.author: v-johya
 origin.date: 09/20/2018
-ms.openlocfilehash: 9a4a134c2efc9470f3e2b7f7edf2422686ef551e
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: c6a59583acf138cca6034dd556709000d5761fd6
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97003607"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197214"
 ---
 # <a name="azure-encryption-overview"></a>Azure 加密概述
 
@@ -105,6 +105,7 @@ CLE 具有内置函数，可通过函数使用对称或非对称密钥、证书�
 <!-- Data Lake not available-->
 
 ## <a name="encryption-of-data-in-transit"></a>传输中的数据加密
+
 Azure 提供了许多机制，用于在迁移数据时保持数据的私密性。
 
 ### <a name="data-link-layer-encryption-in-azure"></a>Azure 中的数据链路层加密
@@ -177,7 +178,7 @@ Microsoft 让客户能够使用传输层安全性 (TLS) 协议来保护在云服
 
 有关详细信息，请参阅：
 
-[在 Azure 门户中创建站点到站点连接](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+[在 Azure 门户中创建站点到站点连接](../../vpn-gateway/tutorial-site-to-site-portal.md)
 
 [在 PowerShell 门户中创建站点到站点连接](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 

@@ -3,16 +3,16 @@ title: Azure Defender 的仪表板及其功能
 description: 了解 Azure Defender 仪表板的功能。
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 11/13/2020
+ms.date: 02/25/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: cc5da9c22bcad94ec880641e9f9e3405b4c05e61
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: d35f89031ae0020615195864023ff5e74f890f18
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94638306"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197532"
 ---
 # <a name="the-azure-defender-dashboard"></a>Azure Defender 仪表板
 
@@ -49,5 +49,5 @@ Azure Defender 仪表板提供：
 有关 Azure Defender 的详细信息，请参阅 [Azure Defender 简介](azure-defender.md)
 
 > [!div class="nextstepaction"]
-> [启用 Azure Defender](security-center-pricing.md)
+> [启用 Azure Defender](security-center-pricing.md#enable-azure-defender)
 

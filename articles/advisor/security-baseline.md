@@ -4,15 +4,15 @@ description: Azure 顾问安全基线为实现 Azure 安全基准中指定的安
 author: msmbaldwin
 ms.service: advisor
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 03/04/2021
 ms.author: v-johya
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b764e74f6c12857b8e61fdb9cc96476da4a777ab
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: 1e397138949a5b533d9cb6f0e1cc19cf7c6a5d24
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579634"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197698"
 ---
 # <a name="azure-security-baseline-for-azure-advisor"></a>适用于 Azure 顾问的 Azure 安全基线
 
@@ -205,9 +205,9 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 活动日志可用于在进行故障排除时查找错误，或监视组织中的用户如何对资源进行修改。
 
-- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/platform/platform-logs-overview.md)
+- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/essentials/platform-logs-overview.md)
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -219,7 +219,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 确保正在将 Azure 活动日志集成到中央日志记录。 通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用 Azure 存储帐户进行长期存档存储。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md) 
 
 **Azure 安全中心监视**：不适用
 
@@ -230,9 +230,9 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 **指导**：确保用于存储 Azure 顾问日志的所有存储帐户或 Log Analytics 工作区都根据组织的合规性规定设置了日志保留期。
 在 Azure Monitor 中，可根据组织的合规性规则设置 Log Analytics 工作区保持期。 将 Azure 存储、Data Lake 或 Log Analytics 工作区帐户用于长期存储和存档存储。
 
-- [如何配置 Log Analytics 工作区保留期](../azure-monitor/platform/manage-cost-storage.md) 
+- [如何配置 Log Analytics 工作区保留期](../azure-monitor/logs/manage-cost-storage.md) 
 
-- [在 Azure 存储帐户中存储资源日志](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [在 Azure 存储帐户中存储资源日志](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure 安全中心监视**：不适用
 

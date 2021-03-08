@@ -4,15 +4,15 @@ description: 保留和隐私政策声明
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 09/29/2019
-ms.date: 01/14/2021
+ms.date: 02/22/2021
 ms.author: v-johya
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 55f18cb330edeb6b36d1944b9a521fc381070e06
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 25a1ad7a5a17f2223dc06e3b16bac41a1fb1eef4
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231055"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197567"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的数据收集、保留和存储
 
@@ -46,7 +46,7 @@ Application Insights SDK 可用于多种应用程序类型：托管在自己的 
   
   * 每个 SDK 有许多[模块](./configuration-with-applicationinsights-config.md)，这些模块使用不同的技术收集不同类型的遥测数据。
   * 如果在开发环境中安装 SDK，则除了使用标准模块发送自己的遥测数据以外，还可以使用 SDK 的 API 发送这些数据。 这些自定义遥测数据可以包含所要发送的任何数据。
-* 在某些 Web 服务器中，还装有与应用一起运行并发送有关 CPU、内存和网络占用量的遥测数据的代理。 例如，Azure VM、Docker 主机和 [Java EE 服务器](../../azure-monitor/app/java-agent.md)都可能拥有此类代理。
+* 在某些 Web 服务器中，还装有与应用一起运行并发送有关 CPU、内存和网络占用量的遥测数据的代理。 例如，Azure VM、Docker 主机和 [Java EE 服务器](./java-agent.md)都可能拥有此类代理。
 
 ### <a name="what-kinds-of-data-are-collected"></a>收集哪些类型的数据？
 主要类别如下：
@@ -124,7 +124,7 @@ Azure 工作人员对数据的访问将受到限制。 我们只有在获得许�
 
 利用本地存储的遥测通道会在 TEMP 或 APPDATA 目录中创建临时文件，但仅限于运行应用程序的特定帐户。 当终结点暂时不可用或达到限制值时，可能会发生这种情况。 解决此问题后，遥测通道便会恢复发送所有新数据和暂留数据。
 
-此持久数据不会在本地加密。 如果这是一个问题，请检查数据并限制私人数据的收集。 （有关详细信息，请参阅[如何导出和删除私人数据](../platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)。）
+此持久数据不会在本地加密。 如果这是一个问题，请检查数据并限制私人数据的收集。 （有关详细信息，请参阅[如何导出和删除私人数据](../logs/personal-data-mgmt.md#how-to-export-and-delete-private-data)。）
 
 如果客户需要根据特定安全要求配置此目录，可以针对每个框架进行配置。 请确保运行应用程序的进程对此目录拥有写入权限，并确保此目录受保护，以免遥测数据遭用户意外读取。
 
@@ -244,7 +244,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>Application Insights 中存储的个人数据
 
-[Application Insights 个人数据文章](../platform/personal-data-mgmt.md)深入探讨了此问题。
+[Application Insights 个人数据文章](../logs/personal-data-mgmt.md)深入探讨了此问题。
 
 #### <a name="can-my-users-turn-off-application-insights"></a>用户是否可以关闭 Application Insights？
 无法直接配合使用。 我们未提供用户可操作的开关来关闭 Application Insights。
@@ -297,7 +297,7 @@ SDK 根据平台的不同而异，可以安装多个组件。 （请参阅 [Appl
 可以通过[编辑 ApplicationInsights.config 来关闭某些数据][config]
 
 > [!NOTE]
-> 客户端 IP 用于推断地理位置，但默认情况下，不再存储 IP 数据且将所有的零写入关联的字段。 若要了解有关个人数据处理的详细信息，推荐参阅这一篇[文章](../platform/personal-data-mgmt.md#application-data)。 如果需要存储 IP 地址数据，我们的[“IP 地址收集”一文](./ip-collection.md)会指导你完成选择。
+> 客户端 IP 用于推断地理位置，但默认情况下，不再存储 IP 数据且将所有的零写入关联的字段。 若要了解有关个人数据处理的详细信息，推荐参阅这一篇[文章](../logs/personal-data-mgmt.md#application-data)。 如果需要存储 IP 地址数据，我们的[“IP 地址收集”一文](./ip-collection.md)会指导你完成选择。
 
 ## <a name="credits"></a>致谢
 此产品包含 MaxMind 创建的 GeoLite2 数据，可从 [https://www.maxmind.com](https://www.maxmind.com) 获取。

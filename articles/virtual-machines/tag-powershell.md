@@ -6,16 +6,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 origin.date: 11/11/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 01/04/2021
 ms.author: v-yeche
-ms.openlocfilehash: bee2d76a759655bae3f775b263124379b4a16186
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: a311f032bc4fe740c6101b14ae39eb44dd839dc2
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857685"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055311"
 ---
 <!--Verified successfully-->
 # <a name="how-to-tag-a-virtual-machine-in-azure-using-powershell"></a>如何使用 PowerShell 标记 Azure 中的虚拟机
@@ -87,12 +87,9 @@ Environment   Production
 Location      MyLocation
 ```
 
-后续步骤
+### <a name="next-steps"></a>后续步骤
 
 - 若要详细了解如何标记 Azure 资源，请参阅 [Azure 资源管理器概述](../azure-resource-manager/management/overview.md)和 [使用标记来组织 Azure 资源](../azure-resource-manager/management/tag-resources.md)。
 
-<!--Not Available on [Understanding your Azure Bill](../cost-management-billing/understand/review-individual-bill.md)-->
-<!--Not Available on [Gain insights into your Azure resource consumption](../cost-management-billing/manage/usage-rate-card-overview.md)-->
-
-<!-- Update_Description: new article about tag powershell -->
-<!--NEW.date: 01/04/2021-->
+<!--NOT AVAILABLE ON [Understanding your Azure Bill](../cost-management-billing/understand/review-individual-bill.md)-->
+<!--Update_Description: update meta properties, wording update, update link-->

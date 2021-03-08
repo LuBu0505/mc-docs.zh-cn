@@ -5,15 +5,15 @@ ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
 origin.date: 10/11/2019
-ms.date: 01/12/2021
+ms.date: 02/22/2021
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: 961977610d92f4d15f0efd4039c8a07f52289eac
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: a5d69522e9553c079d02f08dc0a67cf97703d005
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231043"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197250"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>为 Python 应用程序设置 Azure Monitor
 
@@ -36,7 +36,7 @@ python -m pip install opencensus-ext-azure
 > [!NOTE]
 > `python -m pip install opencensus-ext-azure` 命令假定你已为 Python 安装设置了 `PATH` 环境变量。 如果尚未配置此变量，则需要提供 Python 可执行文件所在位置的完整目录路径。 结果为如下所示的命令：`C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure`。
 
-SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送到 Azure Monitor。 分别是跟踪、指标和日志。 有关这些遥测类型的详细信息，请参阅[数据平台概述](../platform/data-platform.md)。 按照以下说明通过三个导出程序发送这些遥测类型。
+SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送到 Azure Monitor。 分别是跟踪、指标和日志。 有关这些遥测类型的详细信息，请参阅[数据平台概述](../data-platform.md)。 按照以下说明通过三个导出程序发送这些遥测类型。
 
 ## <a name="telemetry-type-mappings"></a>遥测类型映射
 
@@ -441,7 +441,7 @@ exporter = metrics_exporter.new_metrics_exporter(
 每个导出程序都接受通过构造函数传递的相同配置参数。 可在此处查看有关每个导出程序的详细信息：
 
 - `connection_string`：用于连接到 Azure Monitor 资源的连接字符串。 其优先级高于 `instrumentation_key`。
-- `enable_standard_metrics`：用于 `AzureMetricsExporter`。 指示导出程序将[性能计数器](../platform/app-insights-metrics.md#performance-counters)指标自动发送到 Azure Monitor。 默认为 `True`。
+- `enable_standard_metrics`：用于 `AzureMetricsExporter`。 指示导出程序将[性能计数器](../essentials/app-insights-metrics.md#performance-counters)指标自动发送到 Azure Monitor。 默认为 `True`。
 - `export_interval`：用于指定导出频率（秒）。
 - `instrumentation_key`：用于连接到 Azure Monitor 资源的检测密钥。
 - `logging_sampling_rate`：用于 `AzureLogHandler`。 为导出日志提供采样率 [0,1.0]。 默认值为 1.0。
@@ -461,7 +461,7 @@ exporter = metrics_exporter.new_metrics_exporter(
 - 对于使用 Azure Monitor 指标导出程序发送的遥测，发送的指标在 `customMetrics` 下显示。
 - 对于使用 Azure Monitor 日志导出程序发送的遥测，日志在 `traces` 下显示。 异常在 `exceptions` 下显示。
 
-有关如何使用查询和日志的更多详细信息，请参阅 [Azure Monitor 中的日志](../platform/data-platform-logs.md)。
+有关如何使用查询和日志的更多详细信息，请参阅 [Azure Monitor 中的日志](../logs/data-platform-logs.md)。
 
 ## <a name="learn-more-about-opencensus-for-python"></a>了解有关 OpenCensus for Python 的详细信息
 
@@ -476,11 +476,11 @@ exporter = metrics_exporter.new_metrics_exporter(
 * [跟踪传入请求](./opencensus-python-dependency.md)
 * [跟踪传出请求](./opencensus-python-request.md)
 * [应用程序映射](./app-map.md)
-* [端到端性能监视](../learn/tutorial-performance.md)
+* [端到端性能监视](../app/tutorial-performance.md)
 
 ### <a name="alerts"></a>警报
 
 * [智能诊断](./proactive-diagnostics.md)：这些测试可自动运行，因此不需要进行任何设置。 它们会告诉你应用是否具有异常的失败请求速率。
-* [指标警报](../platform/alerts-log.md)：设置警报以在某个指标超过阈值时发出警告。 可以在编码到应用中的自定义指标中设置它们。
+* [指标警报](../alerts/alerts-log.md)：设置警报以在某个指标超过阈值时发出警告。 可以在编码到应用中的自定义指标中设置它们。
 
 

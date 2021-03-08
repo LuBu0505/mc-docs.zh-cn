@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 10/29/2018
-ms.date: 01/19/2021
+ms.date: 03/04/2021
 ms.author: v-johya
-ms.openlocfilehash: 78802444732d8dfd8b9df0bfc393ab1e7af1daf0
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: 5436e0806f8419fa6f0b17a8dc30db4f8d085912
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751271"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197296"
 ---
 # <a name="azure-network-security-overview"></a>Azure 网络安全概述
 
@@ -178,7 +178,7 @@ Azure 网络支持以下安全远程访问方案：
 
 了解详细信息：
 
-* [使用 Azure 门户创建具有站点到站点 VPN 连接的资源管理器 VNet](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [使用 Azure 门户创建具有站点到站点 VPN 连接的资源管理器 VNet](../../vpn-gateway/tutorial-site-to-site-portal.md)
 * [关于 VPN 网关](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
 ### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-dedicated-wan-link"></a>通过专用的 WAN 链接将本地网络连接到虚拟网络
@@ -361,7 +361,7 @@ Azure 安全中心帮助你预防、检测和响应威胁，同时提高 Azure �
 
 网络级别的日志记录是任何网络安全方案的重要功能。 在 Azure 中，可以记录针对 NSG 获得的信息，以获取网络级别的日志记录信息。 使用 NSG 日志记录可从以下来源获取信息：
 
-* [活动日志](../../azure-monitor/platform/platform-logs-overview.md)。 使用这些日志查看提交到 Azure 订阅的所有操作。 默认情况下，这些日志已启用并可在 Azure 门户中使用。 这些日志以前称为审核或操作日志。
+* [活动日志](../../azure-monitor/essentials/platform-logs-overview.md)。 使用这些日志查看提交到 Azure 订阅的所有操作。 默认情况下，这些日志已启用并可在 Azure 门户中使用。 这些日志以前称为审核或操作日志。
 * 事件日志。 这些日志提供有关应用了哪些 NSG 规则的信息。
 * 计数器日志。 通过这些日志，可知道所应用每个 NSG 规则拒绝或允许流量的次数。
 

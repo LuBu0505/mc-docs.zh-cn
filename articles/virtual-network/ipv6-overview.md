@@ -4,23 +4,23 @@ titlesuffix: Azure Virtual Network
 description: 介绍 Azure 虚拟网络中的 IPv6 以及 IPv6 终结点和数据路径。
 services: virtual-network
 documentationcenter: na
-manager: digimobile
+manager: twooley
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 origin.date: 03/31/2020
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: 10/26/2020
 ms.author: v-yeche
-ms.openlocfilehash: c253558aae17e92149769ba99a0e0231decf922e
-ms.sourcegitcommit: 1f933e4790b799ceedc685a0cea80b1f1c595f3d
+ms.openlocfilehash: e06266d7fa63120c1578fe539445d4f56b1782c2
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628248"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053988"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Azure 虚拟网络 IPv6 是什么？
 
@@ -95,4 +95,4 @@ IPv6 Azure 资源和带宽按照与 IPv4 相同的费率收费。 IPv6 不收取
 - 了解如何[使用 Azure CLI 部署 IPv6 双堆栈应用程序](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md)。
 - 了解如何[使用资源管理器模板 (JSON) 部署 IPv6 双堆栈应用程序](ipv6-configure-standard-load-balancer-template-json.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

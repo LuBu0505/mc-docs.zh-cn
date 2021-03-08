@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: be638e3934cb3e84ab69d9b04f7a6caa77c714c4
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: f82f26d286397341efab7246d3475a7b1e561a0a
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300634"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196682"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-azure-monitor-resource-logs"></a>将 IoT 中心从操作监视迁移到 Azure Monitor 资源日志
 
-使用[操作监视](iot-hub-operations-monitoring.md)来跟踪 IoT 中心内操作状态的客户可以将该工作流迁移到 [Azure Monitor 资源日志](../azure-monitor/platform/platform-logs-overview.md)（Azure Monitor 的一项功能）。 资源日志为许多 Azure 服务提供资源级诊断信息。
+使用[操作监视](iot-hub-operations-monitoring.md)来跟踪 IoT 中心内操作状态的客户可以将该工作流迁移到 [Azure Monitor 资源日志](../azure-monitor/essentials/platform-logs-overview.md)（Azure Monitor 的一项功能）。 资源日志为许多 Azure 服务提供资源级诊断信息。
 
 **IoT 中心的操作监视功能已弃用**，已从门户中删除。 本文提供了将工作负载从操作监视移动到 Azure Monitor 资源日志的步骤。 若要详细了解弃用日程表，请参阅[利用 Azure Monitor 和 Azure 资源运行状况监视 Azure IoT 解决方案](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/)。
 
@@ -49,9 +49,9 @@ ms.locfileid: "96300634"
 
 1. 选择“保存”，保存这些设置。
 
-新设置在大约 10 分钟后生效。 在此之后，日志就会出现在已配置的目标中。 有关配置诊断的详细信息，请参阅[从 Azure 资源收集和使用日志数据](/azure/azure-monitor/platform/platform-logs-overview)。
+新设置在大约 10 分钟后生效。 在此之后，日志就会出现在已配置的目标中。 有关配置诊断的详细信息，请参阅[从 Azure 资源收集和使用日志数据](../azure-monitor/essentials/platform-logs-overview.md)。
 
-若要详细了解如何创建诊断设置（包括使用 PowerShell 和 Azure CLI 进行创建），请参阅 Azure Monitor 文档中的[诊断设置](/azure/azure-monitor/platform/diagnostic-settings)。
+若要详细了解如何创建诊断设置（包括使用 PowerShell 和 Azure CLI 进行创建），请参阅 Azure Monitor 文档中的[诊断设置](../azure-monitor/essentials/diagnostic-settings.md)。
 
 ### <a name="turn-off-operations-monitoring"></a>关闭操作监视
 

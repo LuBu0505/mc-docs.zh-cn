@@ -10,12 +10,12 @@ ms.author: v-yiso
 author: timlt
 origin.date: 11/06/2019
 ms.date: 04/06/2020
-ms.openlocfilehash: c381d4a76b872f5f119bc1876ea14da480d243b9
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: c55c6e845a8d78dcc2febfb4788210b49a8ed3db
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746753"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196851"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用 Azure CLI 监视该数据
 
@@ -32,7 +32,7 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
 
 ## <a name="prepare-two-cli-sessions"></a>准备两个 CLI 会话
-在本部分中，准备两个 Azure CLI 会话。 如果使用 Cloud Shell，将在单独的浏览器选项卡中运行这两个会话。 如果使用本地 CLI 客户端，将运行两个单独的 CLI 实例。 使用第一个会话作为模拟设备，并使用第二个会话来监视和发送消息。 若要运行命令，请选择“复制”以复制本快速入门中的代码块，将其粘贴到 shell 会话中，然后运行它。
+在本部分中，准备两个 Azure CLI 会话。 如果使用 Cloud Shell，将在单独的浏览器选项卡中运行这两个会话。 如果使用本地 CLI 客户端，将运行两个单独的 CLI 实例。 使用第一个会话作为模拟设备，并使用第二个会话来监视和发送消息。 若要运行命令，请选择“复制”以复制本快速入门中的代码块，将其粘贴到 shell 会话中，然后运行它  。
 
 Azure CLI 要求你登录到 Azure 帐户。 Azure CLI Shell 会话与 IoT 中心之间的所有通信都经过身份验证和加密。 因此，本快速入门不需要将用于实际设备的额外身份验证（如连接字符串）。
 
@@ -45,7 +45,7 @@ Azure CLI 要求你登录到 Azure 帐户。 Azure CLI Shell 会话与 IoT 中�
 
    [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-1. 打开第二个 CLI 会话。  如果使用 Cloud Shell，请选择“打开新会话”。 如果在本地使用 CLI，请打开第二个实例。 
+1. 打开第二个 CLI 会话。  如果使用 Cloud Shell，请选择“打开新会话”  。 如果在本地使用 CLI，请打开第二个实例。 
 
     >[!div class="mx-imgBorder"]
     >![打开新的 Cloud Shell 会话](media/quickstart-send-telemetry-cli/cloud-shell-new-session.png)
@@ -78,7 +78,7 @@ Azure CLI 要求你登录到 Azure 帐户。 Azure CLI Shell 会话与 IoT 中�
 
     *YourIotHubName*。 将下面的占位符替换为你为 IoT 中心选择的名称。 
 
-    *simDevice*。 在本快速入门的其余部分中，可以直接将此名称用于模拟设备。 可使用其他名称。 
+    *simDevice*: 在本快速入门的其余部分中，可以直接将此名称用于模拟设备。 或者，也可使用其他名称。 
 
     ```azurecli
     az iot hub device-identity create --device-id simDevice --hub-name {YourIoTHubName} 
@@ -123,7 +123,7 @@ Azure CLI 要求你登录到 Azure 帐户。 Azure CLI Shell 会话与 IoT 中�
     ```azurecli
     az iot device c2d-message send -d simDevice --data "Hello World" --props "key0=value0;key1=value1" -n {YourIoTHubName}
     ```
-    （可选）可以使用 Azure 门户发送云到设备的消息。 为此，请浏览到 IoT 中心的概述页，依次选择“IoT 设备”、模拟设备和“发送到设备的消息”。 
+    （可选）可以使用 Azure 门户发送云到设备的消息。 为此，请浏览到 IoT 中心的概述页，依次选择“IoT 设备”、模拟设备和“发送到设备的消息”   。 
 
 1. 在第一个 CLI 会话中，确认模拟设备是否已收到消息。 
 
@@ -135,25 +135,25 @@ Azure CLI 要求你登录到 Azure 帐户。 Azure CLI Shell 会话与 IoT 中�
 使用 Azure 门户可以管理 IoT 中心和设备的所有方面。 在引入来自设备的遥测数据的典型 IoT 中心应用程序中，你可能想要监视设备或查看设备遥测数据中的指标。 
 
 若要在 Azure 门户中可视化消息传递指标，请执行以下操作：
-1. 在门户的左侧导航菜单中选择“所有资源”。 这会列出订阅中的所有资源，包括你创建的 IoT 中心。 
+1. 在门户的左侧导航菜单中选择“所有资源”  。 这会列出订阅中的所有资源，包括你创建的 IoT 中心。 
 
 1. 选择你创建的 IoT 中心上的链接。 门户将显示中心的概述页。
 
-1. 在 IoT 中心的左窗格中选择“指标”。 
+1. 在 IoT 中心的左窗格中选择“指标”  。 
 
     ![IoT 中心消息传递指标](media/quickstart-send-telemetry-cli/iot-hub-portal-metrics.png)
 
-1. 在“范围”中输入 IoT 中心名称。
+1. 在“范围”中输入 IoT 中心名称  。
 
-2. 在“指标命名空间”中选择“IoT 中心标准指标”。
+2. 在“指标命名空间”中选择“IoT 中心标准指标”   。
 
-3. 在“指标”中选择“已使用的消息总数”。 
+3. 在“指标”中选择“已使用的消息总数”。   
 
 4. 将鼠标指针悬停在设备发送消息的时间线区域上。 某个时间点的消息总数显示在时间线的左下角。
 
     ![查看 Azure IoT 中心指标](media/quickstart-send-telemetry-cli/iot-hub-portal-view-metrics.png)
 
-5. （可选）使用“指标”下拉列表显示模拟设备上的其他指标。 例如，“C2D 消息传递已完成”或“设备总数（预览）”。 
+5. （可选）使用“指标”下拉列表显示模拟设备上的其他指标  。 例如，“C2D 消息传递已完成”或“设备总数（预览）”   。 
 
 ## <a name="clean-up-resources"></a>清理资源
 如果不再需要本快速入门中创建的 Azure 资源，可以使用 Azure CLI 将其删除。
@@ -164,19 +164,19 @@ Azure CLI 要求你登录到 Azure 帐户。 Azure CLI Shell 会话与 IoT 中�
 > 删除资源组的操作不可逆。 资源组以及包含在其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 
 
 若要按名称删除资源组，请执行以下操作：
-1. 运行 [az group delete](/cli/group?view=azure-cli-latest#az-group-delete) 命令。 这会删除你创建的资源组、IoT 中心和设备注册。
+1. 运行 [az group delete](/cli/group?view=azure-cli-latest#az-group-delete&preserve-view=true) 命令。 这会删除你创建的资源组、IoT 中心和设备注册。
 
     ```azurecli
     az group delete --name MyResourceGroup
     ```
-1. 运行 [az group list](/cli/group?view=azure-cli-latest#az-group-list) 命令，确认资源组是否已删除。  
+1. 运行 [az group list](/cli/group?view=azure-cli-latest#az-group-list&preserve-view=true) 命令，确认资源组是否已删除。  
 
     ```azurecli
     az group list
     ```
 
 ## <a name="next-steps"></a>后续步骤
-在本快速入门中，你使用 Azure CLI 创建了 IoT 中心和模拟设备、发送了遥测数据、监视了遥测数据、发送了云到设备的消息，并清理了资源。 使用 Azure 门户可视化设备上的消息传递了指标。
+在本快速入门中，你使用 Azure CLI 创建了 IoT 中心和模拟设备、发送了遥测数据、监视了遥测数据、发送了云到设备的消息，并清理了资源。 使用 Azure 门户可视化了设备上的消息传递指标。
 
 如果你是设备开发人员，建议执行的下一步骤是查看使用适用于 C 的 Azure IoT 设备 SDK 的遥测快速入门。（可选）使用首选语言或 SDK 查看可用的 Azure IoT 中心遥测快速入门文章之一。
 

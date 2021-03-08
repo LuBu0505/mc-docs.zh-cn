@@ -61,7 +61,7 @@
       href: identity-management-overview.md
     - name: 最佳做法
       href: identity-management-best-practices.md
-- name: 网络安全性
+- name: 网络安全
   items:
     - name: 安全概述
       href: network-overview.md
@@ -126,7 +126,7 @@
       href: service-fabric-best-practices.md
 - name: 监视、审核和操作
   items:
-    - name: 高级威胁防护
+    - name: 威胁防护
       href: threat-detection.md
     - name: Azure 日志记录和审核
       href: log-audit.md

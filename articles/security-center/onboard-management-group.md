@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/13/2020
+ms.date: 02/25/2021
 ms.author: v-johya
-ms.openlocfilehash: a29b3c370cbaea63368cef00cf029fbde3ee8898
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: d1ca19365cb21072b082271fcfa9103c005e0161
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94638333"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197493"
 ---
 # <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>对管理组中的所有订阅启用安全中心
 
@@ -98,5 +98,5 @@ ms.locfileid: "94638333"
 现已加入了整个管理组，请启用 Azure Defender 的高级保护。 
 
 > [!div class="nextstepaction"]
-> [启用 Azure Defender](security-center-pricing.md)
+> [启用 Azure Defender](security-center-pricing.md#enable-azure-defender)
 

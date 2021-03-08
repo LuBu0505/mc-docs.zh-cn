@@ -3,7 +3,6 @@ title: 在 Azure VM 上的来宾 OS 中启用或禁用防火墙规则 | Azure
 description: 了解如何使用联机或脱机远程工具或注册表设置在远程 Azure VM 上启用或禁用来宾 OS 防火墙规则。
 services: virtual-machines-windows
 manager: dcscontentpm
-tags: ''
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.workload: infrastructure-services
@@ -11,16 +10,16 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 origin.date: 11/22/2018
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 78654c980196ba11ef8e49f143851dcdcf20d957
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 59a60369eafaf0d18f708fe2fa57f2c87f9b3279
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106365"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055283"
 ---
 <!-- Verify part successfully-->
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>在 Azure VM 来宾 OS 中启用或禁用防火墙规则
@@ -53,9 +52,29 @@ ms.locfileid: "93106365"
 
 2. 使用[自定义脚本扩展](../extensions/custom-script-windows.md)功能在 Azure 门户中上传此脚本。 
 
-<!--Not Avaialble on #### Mitigation 2: Remote PowerShell-->
+#### <a name="mitigation-2-remote-powershell"></a>缓解措施 2：远程 PowerShell
 
-#### <a name="mitigation-2-pstools-commands"></a>缓解措施 2：PSTools 命令
+如果 VM 处于联机状态且可以在同一虚拟网络中的另一个 VM 上对其进行访问，则可以使用另一个 VM 执行以下缓解措施。
+
+1. 在故障排除 VM 上，打开 PowerShell 控制台窗口。
+
+2. 根据情况运行以下命令。
+
+    * 启用规则：
+        ```powershell
+        Enter-PSSession (New-PSSession -ComputerName "<HOSTNAME>" -Credential (Get-Credential) -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck)) 
+        Enable-NetFirewallRule -DisplayName  "RemoteDesktop-UserMode-In-TCP"
+        exit
+        ```
+
+    * 禁用规则：
+        ```powershell
+        Enter-PSSession (New-PSSession -ComputerName "<HOSTNAME>" -Credential (Get-Credential) -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck)) 
+        Disable-NetFirewallRule -DisplayName  "RemoteDesktop-UserMode-In-TCP"
+        exit
+        ```
+
+#### <a name="mitigation-3-pstools-commands"></a>缓解措施 3：PSTools 命令
 
 如果 VM 处于联机状态且可以在同一虚拟网络中的另一个 VM 上对其进行访问，则可以使用另一个 VM 执行以下缓解措施。
 
@@ -75,27 +94,27 @@ ms.locfileid: "93106365"
         netsh advfirewall firewall set rule dir=in name="Remote Desktop - User Mode (TCP-In)" new enable=no
         ```
 
-#### <a name="mitigation-3-remote-registry"></a>缓解措施 3：远程注册表
+#### <a name="mitigation-4-remote-registry"></a>缓解操作 4：远程注册表
 
-如果 VM 处于联机状态且可以在同一虚拟网络中的另一个 VM 上对其进行访问，则可以在另一个 VM 上使用[远程注册表](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)。
+如果 VM 处于联机状态且可以在同一虚拟网络中的另一个 VM 上对其进行访问，则可以在另一个 VM 上使用[远程注册表](https://www.betaarchive.com/wiki/index.php?title=Microsoft_KB_Archive/314837)。
 
 1. 在故障排除 VM 上启动注册表编辑器 (regedit.exe)，然后选择“文件” > “连接网络注册表”   。
 
-2. 打开 *TARGET MACHINE* \SYSTEM 分支，然后指定以下值：
+2. 打开 *TARGET MACHINE*\SYSTEM 分支，然后指定以下值：
 
     * 若要启用规则，请打开以下注册表值：
 
-        *TARGET MACHINE* \SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
+        *TARGET MACHINE*\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
 
-        然后，将字符串中的 **Active=FALSE** 更改为 **Active=TRUE** ：
+        然后，将字符串中的 **Active=FALSE** 更改为 **Active=TRUE**：
 
         `v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
     * 若要禁用规则，请打开以下注册表值：
 
-        *TARGET MACHINE* \SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
+        *TARGET MACHINE*\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
 
-        然后，将 **Active=TRUE** 更改为 **Active=FALSE** ：
+        然后，将 **Active=TRUE** 更改为 **Active=FALSE**：
 
         `v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
@@ -124,7 +143,7 @@ ms.locfileid: "93106365"
 7. 找到并打开 \windows\system32\config\SYSTEM 文件。 
 
     > [!Note]
-    > 系统会提示输入名称。 输入 **BROKENSYSTEM** ，然后展开 **HKEY_LOCAL_MACHINE** 。 现在，可以看到名为 **BROKENSYSTEM** 的附加项。 为了进行故障排除，我们将这些有问题的配置单元装载为 **BROKENSYSTEM** 。
+    > 系统会提示输入名称。 输入 **BROKENSYSTEM**，然后展开 **HKEY_LOCAL_MACHINE**。 现在，可以看到名为 **BROKENSYSTEM** 的附加项。 为了进行故障排除，我们将这些有问题的配置单元装载为 **BROKENSYSTEM**。
 
 8. 对 BROKENSYSTEM 分支进行以下更改：
 
@@ -134,7 +153,7 @@ ms.locfileid: "93106365"
 
         HKLM\BROKENSYSTEM\ControlSet00X\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
 
-        然后，将 **Active=FALSE** 更改为 **Active=True** 。
+        然后，将 **Active=FALSE** 更改为 **Active=True**。
 
         `v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
@@ -142,7 +161,7 @@ ms.locfileid: "93106365"
 
         HKLM\BROKENSYSTEM\ControlSet00X\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
 
-        然后，将 **Active=True** 更改为 **Active=FALSE** 。
+        然后，将 **Active=True** 更改为 **Active=FALSE**。
 
         `v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
@@ -152,4 +171,4 @@ ms.locfileid: "93106365"
 
 11. 检查是否解决了问题。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -4,15 +4,15 @@ description: 使用 Azure 存储帐户创建传输管道，将映像集合或其
 ms.topic: article
 origin.date: 10/07/2020
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 03/01/2021
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: 55ab773c2464e9ba2b99b6ace3eb9980bb1f3f21
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 36bb2f62392c8440eda984f916d403d0d24ac584
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93103667"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054077"
 ---
 <!--Verified successfuly, ONLY CHARACTERS CONTENT-->
 <!--Parameter Value have been change in content-->
@@ -317,7 +317,7 @@ az storage blob list \
 
 ## <a name="transfer-blob-optional"></a>传输 blob（可选） 
 
-使用 AzCopy 工具或其他方法将 [blob 数据](../storage/common/storage-use-azcopy-blobs.md#copy-blobs-between-storage-accounts)从源存储帐户传输到目标存储帐户。
+使用 AzCopy 工具或其他方法将 [blob 数据](../storage/common/storage-use-azcopy-v10.md#transfer-data)从源存储帐户传输到目标存储帐户。
 
 例如，以下 [`azcopy copy`](../storage/common/storage-ref-azcopy-copy.md) 命令会将源帐户下 transfer 容器中的 myblob 复制到目标帐户下的 transfer 容器 。 如果该 blob 存在于目标帐户中，则会被覆盖。 身份验证使用对源和目标容器具有相应权限的 SAS 令牌。 （未显示用于创建令牌的步骤。）
 

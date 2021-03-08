@@ -4,15 +4,15 @@ description: 对 Web 应用的用户进行人口统计学分析。
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 10/29/2020
+ms.date: 02/22/2021
 origin.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: fc7cb8820f256815db01a8cb29b06c3e5e23327d
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: ef479735ac501abd192936933547906b1aed6a81
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106017"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197686"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>在 Application Insights 中进行用户、会话和事件分析
 
@@ -28,9 +28,9 @@ ms.locfileid: "93106017"
 
 三个使用情况边栏选项卡使用相同的工具从三个视角对来自 Web 应用的遥测进行切片和切块。 通过对数据进行筛选和拆分，可以洞察不同页面和功能的相对使用情况。
 
-* **“用户”工具** ：多少人使用了应用及其功能。  将使用浏览器 cookie 中存储的匿名 ID 对用户进行计数。 使用不同浏览器或计算机的单个用户会被计为多个用户。
-* **“会话”工具** ：用户活动的多少会话包括了应用的特定页面和功能。 会话是在用户处于不活动状态半小时后或者在连续使用 24 小时后进行计数的。
-* **“事件”工具** ：应用的特定页面和功能是以何频率使用的。 当浏览器加载了应用中的页面时会计入一次页面查看，前提是已[检测到此操作](./javascript.md)。 
+* **“用户”工具**：多少人使用了应用及其功能。  将使用浏览器 cookie 中存储的匿名 ID 对用户进行计数。 使用不同浏览器或计算机的单个用户会被计为多个用户。
+* **“会话”工具**：用户活动的多少会话包括了应用的特定页面和功能。 会话是在用户处于不活动状态半小时后或者在连续使用 24 小时后进行计数的。
+* **“事件”工具**：应用的特定页面和功能是以何频率使用的。 当浏览器加载了应用中的页面时会计入一次页面查看，前提是已[检测到此操作](./javascript.md)。 
 
     自定义事件表示应用中发生的某个事件的一次出现，通常是一项用户交互，例如单击按钮或某项任务完成。 可以在应用中插入代码来[生成自定义事件](./api-custom-events-metrics.md#trackevent)。
 
@@ -48,13 +48,13 @@ ms.locfileid: "93106017"
 ## <a name="saving-and-sharing-reports"></a>保存和共享报表 
 可以将用户报表保存为在“我的报表”部分中专供你使用的报表，或者将其保存为在“共享报表”部分中可供对此 Application Insights 资源具有访问权限的其他所有人访问的共享报表。
 
-若要共享“用户”、“会话”或“事件”报表的链接，请单击工具栏中的“共享”  ，然后复制该链接。
+若要共享“用户”、“会话”或“事件”报表的链接，请单击工具栏中的“共享”，然后复制该链接。
 
-若要共享“用户”、“会话”或“事件”报表中的数据副本，请单击工具栏中的“共享”  ，然后单击“Word 图标”  使用该数据创建一个 Word 文档。 或者，单击主图表上方的“Word 图标”  。
+若要共享“用户”、“会话”或“事件”报表中的数据副本，请单击工具栏中的“共享”，然后单击“Word 图标”使用该数据创建一个 Word 文档。 或者，单击主图表上方的“Word 图标”。
 
 ## <a name="meet-your-users"></a>了解用户
 
-“了解用户”  部分显示与当前查询匹配的五个示例用户的相关信息。 除了聚合之外，考虑并探究个体的行为可以洞察人们使用应用的实际方式。
+“了解用户”部分显示与当前查询匹配的五个示例用户的相关信息。 除了聚合之外，考虑并探究个体的行为可以洞察人们使用应用的实际方式。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -63,7 +63,7 @@ ms.locfileid: "93106017"
     - [漏斗图](usage-funnels.md)
     - [保留](usage-retention.md)
     - [用户流](usage-flows.md)
-    - [工作簿](../platform/workbooks-overview.md)
+    - [工作簿](../visualize/workbooks-overview.md)
     - [添加用户上下文](usage-send-user-context.md)
 
 

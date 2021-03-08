@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: f124eb038b62855105e5bd0dd34424f4fa498ee6
-ms.sourcegitcommit: 5f07189f06a559d5617771e586d129c10276539e
+ms.openlocfilehash: e3d18235d2078dd12e8b76aa98fb509e154e88a0
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94552228"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196772"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>将 Azure Active Directory 用户同步到 HDInsight 群集
 
@@ -123,7 +123,7 @@ ms.locfileid: "94552228"
 1. 此结果显示，状态为“完成”，创建了一个新用户且为该用户指定了成员身份。 在此示例中，用户分配到“HiveUsers”同步的 LDAP 组，因为用户已在 Azure AD 中添加到该组。
 
     > [!NOTE]  
-    > 前一方法仅同步创建群集时在域设置的“访问用户组”属性中指定的 Azure AD 组。 有关详细信息，请参阅[创建 HDInsight 群集](domain-joined/apache-domain-joined-configure.md)。
+    > 前一方法仅同步创建群集时在域设置的“访问用户组”属性中指定的 Azure AD 组。 有关详细信息，请参阅[创建 HDInsight 群集](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)。
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>验证新添加的 Azure AD 用户
 

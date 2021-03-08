@@ -4,8 +4,7 @@ description: 了解有助于标识管理的核心 Azure 安全功能。 了解�
 services: security
 documentationcenter: na
 author: Johnnytechn
-manager: barbkess
-editor: TomSh
+manager: rkarlin
 ms.assetid: 5aa0a7ac-8f18-4ede-92a1-ae0dfe585e28
 ms.service: security
 ms.subservice: security-fundamentals
@@ -13,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/03/2020
+ms.date: 03/04/2021
 ms.author: v-johya
 origin.date: 09/19/2018
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 672e431181b12463551533c2797d2a82a8f9bae7
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 47a0a7ef554011cdc8122c1701abc373b18cbb16
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746875"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197393"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 标识管理安全概述
 

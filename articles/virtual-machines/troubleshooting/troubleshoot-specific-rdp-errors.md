@@ -12,16 +12,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 origin.date: 10/31/2018
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: b88122dea7a96bd082b565e6a2b7adcafe7cee5b
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 889fedfa32159bc85216b906179d91533a9a8b6f
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93103563"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054315"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Azure 中 Windows VM 特定 RDP 错误消息故障排除
 在使用远程桌面与 Azure 中 Windows 虚拟机 (VM) 的连接时，可能会收到特定错误消息。 本文详细介绍了一些遇到的更常见错误消息以及解决错误的故障排除步骤。 如果在使用 RDP 连接到 VM 时出现问题，但没有收到特定错误消息，请参阅[远程桌面故障排除指南](troubleshoot-rdp-connection.md)。
@@ -29,9 +29,9 @@ ms.locfileid: "93103563"
 有关特定错误消息的信息，请参阅以下内容：
 
 * [由于没有可用于提供许可证的远程桌面授权服务器，远程会话已断开连接](#rdplicense)。
-* [远程桌面找不到计算机“名称”](#rdpname)。
+* [远程桌面找不到计算机“名称”。](#rdpname)
 * [身份验证出错。无法联系本地安全机构](#rdpauth)。
-* [Windows 安全性错误：凭据无效](#wincred)。
+* [Windows 安全性错误：你的凭据不起作用](#wincred)。
 * [此计算机无法连接到远程计算机](#rdpconnect)。
 
 <a name="rdplicense"></a>
@@ -67,9 +67,6 @@ mstsc <File name>.RDP /admin
 此 RDP 文件的地址部分包含：
 
 * 包含 VM 的云服务的完全限定域名（在本例中为“tailspin-azdatatier.chinacloudapp.cn”）。
-
-    <!-- DNS cloudapp.net SHOULD BE chinacloudapp.cn -->
-    
 * 远程桌面流量终结点的外部 TCP 端口 (55919)。
 
 <a name="rdpauth"></a>
@@ -77,7 +74,7 @@ mstsc <File name>.RDP /admin
 ## <a name="an-authentication-error-has-occurred-the-local-security-authority-cannot-be-contacted"></a>发生身份验证错误。 无法联系本地安全机构。
 原因：目标 VM 在凭据的用户名部分找不到安全机构。
 
-如果用户名格式为 *SecurityAuthority*\\*UserName* （例如：CORP\User1），则 *SecurityAuthority* 部分是 VM 的计算机名（表示本地安全机构）或 Active Directory 域名。
+如果用户名格式为 *SecurityAuthority*\\*UserName*（例如：CORP\User1），则 *SecurityAuthority* 部分是 VM 的计算机名（表示本地安全机构）或 Active Directory 域名。
 
 可能的解决方法：
 
@@ -113,9 +110,9 @@ mstsc <File name>.RDP /admin
 确保用于连接的帐户具有远程桌面登录权限。 解决方法是使用域管理员或本地管理员帐户通过远程桌面建立连接。 若要将所需帐户添加到远程桌面用户本地组，请使用 Microsoft 管理控制台管理单元（“系统工具”>“本地用户和组”>“组”>“远程桌面用户”  ）。
 
 ## <a name="next-steps"></a>后续步骤
-如果没有发生这些错误，但在使用 RDP 连接时出现未知问题，请参阅[远程桌面故障排除指南](troubleshoot-rdp-connection.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
+如果没有发生这些错误，但在使用 RDP 连接时出现未知问题，请参阅[远程桌面故障排除指南](troubleshoot-rdp-connection.md)。
 
 * 有关用于访问 VM 上运行的应用程序的故障排除步骤，请参阅[对在 Azure VM 上运行的应用程序的访问进行故障排除](./troubleshoot-app-connection.md?toc=/virtual-machines/linux/toc.json)。
 * 如果在 Azure 中使用 Secure Shell (SSH) 连接到 Linux VM 时遇到问题，请参阅[对 Azure 中到 Linux VM 的 SSH 连接进行故障排除](./troubleshoot-ssh-connection.md?toc=/virtual-machines/linux/toc.json)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

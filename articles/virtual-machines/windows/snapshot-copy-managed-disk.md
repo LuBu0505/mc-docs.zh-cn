@@ -7,17 +7,17 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 origin.date: 10/08/2018
 author: rockboyfor
-ms.date: 10/19/2020
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: b4b04c614158f71d18b5648c954f87154abe222c
-ms.sourcegitcommit: 6f66215d61c6c4ee3f2713a796e074f69934ba98
+ms.openlocfilehash: 2307c236490ed85f970babafb067953b0b394582
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92128362"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053959"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-powershell"></a>使用门户或 PowerShell 创建快照
 
@@ -34,7 +34,7 @@ ms.locfileid: "92128362"
 4. 输入快照的 **名称** 。
 5. 选择现有的[资源组](../../azure-resource-manager/management/overview.md#resource-groups)，或键入新资源组的名称。 
 6. 选择 Azure 数据中心“位置” 。  
-7. 对于 **源磁盘** ，选择要获取其快照的托管磁盘。
+7. 对于 **源磁盘**，选择要获取其快照的托管磁盘。
 8. 选择用于存储快照的“帐户类型”。 选择“Standard_HDD”，除非需要将快照存储在高性能磁盘上。
 9. 选择“创建” 。
 
@@ -68,8 +68,8 @@ ms.locfileid: "92128362"
         -CreateOption copy
     ```
 
-    <!--Not Available on [availability zones](../../availability-zones/az-overview.md)-->
-    <!--Not Available on FEATURE Standard_ZRS-->
+    <!--NOT AVAILABLE on [availability zones](../../availability-zones/az-overview.md)-->
+    <!--NOT AVAILABLE on FEATURE Standard_ZRS-->
 
 4. 拍摄快照：
 
@@ -82,6 +82,6 @@ ms.locfileid: "92128362"
 
 ## <a name="next-steps"></a>后续步骤
 
-通过从快照创建托管磁盘，然后将新的托管磁盘附加为 OS 磁盘，来从快照创建虚拟机。 有关详细信息，请参阅[使用 PowerShell 从快照创建 VM](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md) 中的示例。
+通过从快照创建托管磁盘，然后将新的托管磁盘附加为 OS 磁盘，来从快照创建虚拟机。 有关详细信息，请参阅[使用 PowerShell 从快照创建 VM](https://docs.microsoft.com/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot) 中的示例。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

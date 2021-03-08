@@ -1,31 +1,32 @@
 ---
 title: 使用门户创建邻近放置组
 description: 了解如何使用 Azure 门户创建邻近放置组。
-author: rockboyfor
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
 origin.date: 04/24/2020
-ms.date: 07/06/2020
+author: rockboyfor
+ms.date: 02/22/2021
 ms.author: v-yeche
-ms.openlocfilehash: 3ba1273891cf044e46eaaffc649ea0b1509da6b2
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: be86a3652e1af0b7a9f11c67e5d7a6d559acb2fd
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105840"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054017"
 ---
 <!--Verified successfully-->
 # <a name="create-a-proximity-placement-group-using-the-portal"></a>使用门户创建邻近放置组
 
-若要让 VM 尽可能靠近，将延迟尽可能降至最低，应将 VM 部署到一个[邻近放置组](co-location.md#proximity-placement-groups)中。
+若要让 VM 尽可能靠近，将延迟尽可能降至最低，应将 VM 部署到一个[邻近放置组](../co-location.md#proximity-placement-groups)中。
 
 邻近放置组是一种逻辑分组，用于确保 Azure 计算资源在物理上彼此靠近。 邻近放置组用于要求低延迟的工作负荷。
 
 > [!NOTE]
 > 邻近放置组不能与专用主机一起使用。
+>
 
-<!--Not Available on availability zones together with placement groups-->
+<!--Not Available on FEATURE availability zone-->
 
 ## <a name="create-the-proximity-placement-group"></a>创建邻近放置组
 
@@ -38,14 +39,14 @@ ms.locfileid: "93105840"
 1. 在“邻近放置组名称”中键入一个名称，然后选择“查看 + 创建”。
 1. 在通过验证后，选择“创建”以创建邻近放置组。
 
-    ![创建邻近放置组的屏幕截图](./media/ppg/ppg.png)
+    :::image type="content" source="./media/ppg/ppg.png" alt-text="创建邻近放置组的屏幕截图":::
 
 ## <a name="create-a-vm"></a>创建 VM
 
 1. 在门户中创建 VM 时，转到“高级”选项卡。 
 1. 在“邻近放置组”部分，选择正确的邻近放置组。 
 
-    ![在门户中新建 VM 时“邻近放置组”部分的屏幕截图](./media/ppg/vm-ppg.png)
+    :::image type="content" source="./media/ppg/vm-ppg.png" alt-text="在门户中新建 VM 时“邻近放置组”部分的屏幕截图":::
 
 1. 在完成所有其他必需选择后，选择“查看 + 创建”。
 1. 通过验证后，选择“创建”，在邻近放置组中部署 VM。
@@ -73,4 +74,4 @@ ms.locfileid: "93105840"
 
 也可使用 [Azure PowerShell](proximity-placement-groups.md) 创建邻近放置组。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

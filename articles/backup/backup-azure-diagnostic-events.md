@@ -4,14 +4,14 @@ description: 本文介绍如何使用 Azure 备份的新旧诊断事件。
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 10/30/2019
-ms.date: 09/22/2020
+ms.date: 03/01/2021
 ms.author: v-johya
-ms.openlocfilehash: 98be6aafee9e570cf8290b54ed125631385d7383
-ms.sourcegitcommit: cdb7228e404809c930b7709bcff44b89d63304ec
+ms.openlocfilehash: 748331c1803c1ed66299ee49386c6906d8d1ab72
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91402437"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197143"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>使用恢复服务保管库的诊断设置
 
@@ -40,7 +40,7 @@ Azure 备份提供以下诊断事件。 每个事件都提供一组特定的备�
 
 ## <a name="use-diagnostics-settings-with-log-analytics"></a>将诊断设置与 Log Analytics 配合使用
 
-现在，可以使用 Azure 备份将保管库诊断数据发送到专用 Log Analytics 表进行备份。 这些表称为[资源专用表](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)。
+现在，可以使用 Azure 备份将保管库诊断数据发送到专用 Log Analytics 表进行备份。 这些表称为[资源专用表](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)。
 
 若要将保管库诊断数据发送到 Log Analytics，请执行以下操作：
 

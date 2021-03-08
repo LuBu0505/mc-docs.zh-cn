@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 12/04/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 463b329709f0bd837ddcf069d3789fa0251902de
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: e7e860cb3487e63e84aa98cf53a3271703b45f5a
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022434"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196824"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>在 Python 中启动、监视和取消训练运行
 
@@ -275,7 +275,7 @@ with exp.start_logging() as parent_run:
 > [!NOTE]
 > 当子运行超出范围时，会自动标记为已完成。
 
-若要高效地创建许多子运行，请使用 [`create_children()`](https://docs.microsoft.com/python//api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-children-count-none--tag-key-none--tag-values-none-) 方法。 由于每次创建操作都会造成网络调用，因此，创建一批运行比逐个创建更为高效。
+若要高效地创建许多子运行，请使用 [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-children-count-none--tag-key-none--tag-values-none-) 方法。 由于每次创建操作都会造成网络调用，因此，创建一批运行比逐个创建更为高效。
 
 ### <a name="submit-child-runs"></a>提交子运行
 

@@ -3,17 +3,17 @@ title: 适用于 SQL 的 Azure Defender - 优点和功能
 description: 了解适用于 SQL 的 Azure Defender 的优点和功能。
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 01/26/2021
+ms.date: 02/25/2021
 ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 474293019e5c7c8201862a956181044e8fe19781
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: b09dd166077891ac6423b3a34c367466acdb9c76
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060069"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197286"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>适用于 SQL 的 Azure Defender 简介
 
@@ -44,6 +44,8 @@ ms.locfileid: "99060069"
 - [漏洞评估](../azure-sql/database/sql-vulnerability-assessment.md) - 一种扫描服务，用于发现、跟踪并帮助修正潜在的数据库漏洞。 评估扫描概述了 SQL 计算机的安全状态以及任何安全发现结果的详细信息。
 
 - [高级威胁防护](../azure-sql/database/threat-detection-overview.md) -一种检测服务，用于持续监视 SQL 服务器的威胁，例如 SQL 注入、暴力攻击和特权滥用。 此服务在 Azure 安全中心提供面向操作的安全警报，其中包括可疑活动的详细信息、有关如何减少威胁的指导。
+    > [!TIP]
+    > [在警报参考页中](alerts-reference.md#alerts-sql-db-and-warehouse)查看 SQL Server 的安全警报列表。
 
 
 ## <a name="what-kind-of-alerts-does-azure-defender-for-sql-provide"></a>适用于 SQL 的 Azure Defender 提供哪种类型的警报？

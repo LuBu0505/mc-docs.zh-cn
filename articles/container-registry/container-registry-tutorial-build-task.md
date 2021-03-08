@@ -4,15 +4,15 @@ description: 本教程介绍如何配置一个 Azure 容器注册表任务，以
 ms.topic: tutorial
 origin.date: 11/24/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/01/2021
 ms.author: v-yeche
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: 7e92188280564e76362b39446c23d338a7922e4c
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: e3d495a2f3949cfe66892d976c02b7ac7abd43e8
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230967"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102108759"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>教程：提交源代码时，在云中自动化容器映像生成
 
@@ -58,7 +58,7 @@ az acr task create \
     --registry $ACR_NAME \
     --name taskhelloworld \
     --image helloworld:{{.Run.ID}} \
-    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
+    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git#main \
     --file Dockerfile \
     --git-access-token $GIT_PAT
 ```
@@ -88,7 +88,7 @@ az acr task create \
   },
   "creationDate": "2010-11-19T22:42:32.972298+00:00",
   "id": "/subscriptions/<Subscription ID>/resourceGroups/myregistry/providers/Microsoft.ContainerRegistry/registries/myregistry/tasks/taskhelloworld",
-  "location": "chinanorth",
+  "location": "chinaeast2",
   "name": "taskhelloworld",
   "platform": {
     "architecture": "amd64",
@@ -101,7 +101,7 @@ az acr task create \
   "step": {
     "arguments": [],
     "baseImageDependencies": null,
-    "contextPath": "https://github.com/gituser/acr-build-helloworld-node",
+    "contextPath": "https://github.com/gituser/acr-build-helloworld-node#main",
     "dockerFilePath": "Dockerfile",
     "imageNames": [
       "helloworld:{{.Run.ID}}"
@@ -123,7 +123,7 @@ az acr task create \
         "name": "defaultSourceTriggerName",
         "sourceRepository": {
           "branch": "main",
-          "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node",
+          "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node#main",
           "sourceControlAuthProperties": null,
           "sourceControlType": "GitHub"
         },
@@ -277,4 +277,4 @@ ca5                       linux       Succeeded  Manual      2020-11-19T22:23:42
 [az-acr-task-list-runs]: https://docs.azure.cn/cli/acr/task#az_acr_task_list_runs
 [az-login]: https://docs.azure.cn/cli/reference-index#az_login
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

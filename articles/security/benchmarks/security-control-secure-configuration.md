@@ -4,16 +4,16 @@ description: Azure 安全控制安全配置
 author: Johnnytechn
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 03/04/2021
 ms.author: v-johya
 ms.custom: security-benchmark
 origin.date: 04/14/2020
-ms.openlocfilehash: 5cd1e9e65cfb09061fa4cae031a08be59eaa2db8
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 92477a8a7834b93e4b5ce9e5ef24e3564dbd0755
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747104"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197108"
 ---
 # <a name="security-control-secure-configuration"></a>安全控制：安全配置
 
@@ -87,9 +87,9 @@ ms.locfileid: "96747104"
 
 - [在 Azure 门户中创建 Windows 虚拟机](../../virtual-machines/windows/quick-create-portal.md)
 
-- [有关如何下载 VM 模板的信息](../../virtual-machines/windows/download-template.md)
+- [有关如何下载 VM 模板的信息](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/download-template)
 
-- [将 VHD 上传到 Azure 并创建新的 VM 的示例脚本](../../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [将 VHD 上传到 Azure 并创建新的 VM 的示例脚本](https://docs.microsoft.com/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 
 <!--devops not available -->
 ## <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全存储自定义操作系统映像
@@ -106,7 +106,7 @@ ms.locfileid: "96747104"
 
 - [如何配置 Azure RBAC](../../role-based-access-control/quickstart-assign-role-user-portal.md)
 
-- [共享映像库概述](../../virtual-machines/windows/shared-image-galleries.md)
+- [共享映像库概述](../../virtual-machines/shared-image-galleries.md)
 
 ## <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署 Azure 资源的配置管理工具
 

@@ -2,19 +2,19 @@
 title: ACR 任务中的托管标识
 description: 在 Azure 容器注册表任务中启用 Azure 资源的托管标识，使该任务能够访问其他 Azure 资源（包括其他专用容器注册表）。
 services: container-registry
-author: rockboyfor
-manager: digimobile
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 origin.date: 01/14/2020
-ms.date: 04/06/2020
+author: rockboyfor
+ms.date: 03/01/2021
 ms.author: v-yeche
-ms.openlocfilehash: 160fad58c1562932032ce8fee7c1895df8235758
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: 94876a97a4dabd9b3b29d8aa9352a668387eb61f
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093500"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055315"
 ---
 <!--Verify successfully-->
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>在 ACR 任务中使用 Azure 托管标识 

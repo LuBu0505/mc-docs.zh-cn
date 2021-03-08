@@ -2,17 +2,16 @@
 title: 优化 Apache Spark 群集配置 - Azure HDInsight
 description: 了解如何配置 Apache Spark 群集以最大化 Azure HDInsight 的吞吐量。
 author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 2884b39f6723141f1b0f62468838187925d5d0e7
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: 4bb26cb89ca3a712d606e7ac4084f5e56cf35d4e
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516829"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196651"
 ---
 # <a name="cluster-configuration-optimization-for-apache-spark"></a>Apache Spark 的群集配置优化
 

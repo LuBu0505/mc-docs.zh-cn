@@ -8,15 +8,15 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 origin.date: 08/17/2020
-ms.date: 12/14/2020
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0f53d204bacaa72cd040559d49af44769ed8a715
-ms.sourcegitcommit: a8afac9982deafcf0652c63fe1615ba0ef1877be
+ms.openlocfilehash: 846e838881732c60089f2be7881b1bb0638eb54d
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96850739"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196276"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>快速入门：使用 Azure CLI 创建、下载和列出 blob
 
@@ -140,7 +140,7 @@ az storage blob download \
 
 ## <a name="data-transfer-with-azcopy"></a>使用 AzCopy 传输数据
 
-AzCopy 命令行实用程序提供适用于 Azure 存储的高性能且可编写脚本的数据传输。 可使用 AzCopy 将数据传输到 Blob 存储和 Azure 文件存储，或将数据从其中传出。 有关 AzCopy v10（最新版 AzCopy）的详细信息，请参阅 [AzCopy 入门](../common/storage-use-azcopy-v10.md)。 若要了解如何将 AzCopy v10 与 Blob 存储配合使用，请参阅[使用 AzCopy 和 Blob 存储传输数据](../common/storage-use-azcopy-blobs.md)。
+AzCopy 命令行实用程序提供适用于 Azure 存储的高性能且可编写脚本的数据传输。 可使用 AzCopy 将数据传输到 Blob 存储和 Azure 文件存储，或将数据从其中传出。 有关 AzCopy v10（最新版 AzCopy）的详细信息，请参阅 [AzCopy 入门](../common/storage-use-azcopy-v10.md)。 若要了解如何将 AzCopy v10 与 Blob 存储配合使用，请参阅[使用 AzCopy 和 Blob 存储传输数据](../common/storage-use-azcopy-v10.md#transfer-data)。
 
 以下示例使用 AzCopy 将本地文件上传到 blob。 请务必将示例值替换为你自己的值：
 

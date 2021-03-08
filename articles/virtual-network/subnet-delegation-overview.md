@@ -6,21 +6,21 @@ documentationcenter: na
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 12/15/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: c87ce7cc3013ffd70aa6553c4b6246a1c2c18c6b
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 682378593092d9e6405b3e6814efa9ddd2aca6cf
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230333"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053965"
 ---
 <!--Verified successfully-->
 <!--Correct on Powershell cmdlet-->
@@ -72,4 +72,4 @@ ms.locfileid: "98230333"
 
 - [委托子网](manage-subnet-delegation.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -4,16 +4,16 @@ description: 如何自定义适用于 .NET 和 .NET Core 的 Azure Application I
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 05/14/2019
-ms.date: 10/29/2020
+ms.date: 02/22/2021
 ms.custom: devx-track-csharp
 ms.author: v-johya
 ms.reviewer: mbullwin
-ms.openlocfilehash: 883e4c95809a0846335236c06638910585b4c122
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 1c8dae380a794aca76543f7ac2fee65be0c44c66
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105655"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197507"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights 中的遥测通道
 
@@ -21,7 +21,7 @@ ms.locfileid: "93105655"
 
 ## <a name="what-are-telemetry-channels"></a>什么是遥测通道？
 
-遥测通道负责缓冲遥测项并将其发送到 Application Insights 服务，存储在该服务中的项可用于查询和分析。 遥测通道是实现 [`Microsoft.ApplicationInsights.ITelemetryChannel`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) 接口的任何类。
+遥测通道负责缓冲遥测项并将其发送到 Application Insights 服务，存储在该服务中的项可用于查询和分析。 遥测通道是实现 [`Microsoft.ApplicationInsights.ITelemetryChannel`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel) 接口的任何类。
 
 遥测信道的 `Send(ITelemetry item)` 方法在调用所有遥测初始化表达式和遥测处理器之后调用。 因此，遥测处理器删除的任何项不会进入通道。 一般情况下，`Send()` 不会立即将项发送到后端。 它通常将这些项缓冲在内存中并分批发送，以提高传输效率。
 

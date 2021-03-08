@@ -4,13 +4,13 @@ description: 本文档将介绍如何使用 TrackAvailability() 创建一个 Azu
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 01/12/2021
-ms.openlocfilehash: 68c6688a1c35565568e58829746fd46312fc7392
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 02/22/2021
+ms.openlocfilehash: 2a5e37536eb8e73ac0aada83c7b9928b00e6b7ad
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230838"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197549"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>使用 Azure Functions 创建和运行自定义可用性测试
 
@@ -177,7 +177,7 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 
 ## <a name="query-in-logs-analytics"></a>在“日志(分析)”中查询
 
-可以使用“日志(分析)”查看可用性结果、依赖关系等。 若要详细了解“日志”，请访问[日志查询概述](../log-query/log-query-overview.md)。
+可以使用“日志(分析)”查看可用性结果、依赖关系等。 若要详细了解“日志”，请访问[日志查询概述](../logs/log-query-overview.md)。
 
 >[!div class="mx-imgBorder"]
 >![可用性结果](./media/availability-azure-functions/availabilityresults.png)

@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.service: traffic-manager
 origin.date: 09/18/2019
 author: rockboyfor
-ms.date: 09/28/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 09/28/2020
 ms.author: v-yeche
-ms.openlocfilehash: 045521ce8b8c791e4d856f2efbefad603f327d09
-ms.sourcegitcommit: 71953ae66ddfc07c5d3b4eb55ff8639281f39b40
+ms.openlocfilehash: fb6b6da69ddeb9facbc6c5cf3afc0327b5ac70db
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91395312"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054048"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>使用 Azure PowerShell 的流量管理器子网替代
 
@@ -119,6 +119,6 @@ ms.locfileid: "91395312"
 ## <a name="next-steps"></a>后续步骤
 详细了解流量管理器[流量路由方法](traffic-manager-routing-methods.md)。
 
-了解[子网流量路由方法](/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)
+了解[子网流量路由方法](./traffic-manager-routing-methods.md#subnet-traffic-routing-method)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -4,15 +4,15 @@ description: 了解如何在 Azure 应用服务中运行 Linux Ruby 应用，同
 ms.devlang: ruby
 ms.topic: tutorial
 origin.date: 06/18/2020
-ms.date: 12/21/2020
+ms.date: 01/18/2021
 ms.author: v-tawe
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
-ms.openlocfilehash: e8c5df6c3e964f78c5c639f3387c15509bd0c273
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 5679fd72b71fcb3cdcbeeb1e99124a1c1d0ed26a
+ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021899"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "102053322"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>在基于 Linux 上的 Azure 应用服务中生成 Ruby 和 Postgres 应用
 
@@ -34,12 +34,13 @@ ms.locfileid: "98021899"
 
 ## <a name="prerequisites"></a>先决条件
 
-为完成此教程：
+完成本教程：
 
 - [安装 Git](https://git-scm.com/)
 - [安装 Ruby 2.6](https://www.ruby-lang.org/en/documentation/installation/)
 - [安装 Ruby on Rails 5.1](https://guides.rubyonrails.org/v5.1/getting_started.html)
 - [安装并运行 PostgreSQL](https://www.postgresql.org/download/)
+
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="prepare-local-postgres"></a>准备本地 Postgres
@@ -101,7 +102,7 @@ rake db:migrate
 rails server
 ```
 
-在浏览器中导航至 `http://localhost:3000` 。 在页面中添加一些任务。
+在浏览器中导航到 `http://localhost:3000`。 在页面中添加一些任务。
 
 ![Ruby on Rails 已成功连接到 Postgres](./media/tutorial-ruby-postgres-app/postgres-connect-success.png)
 
@@ -294,7 +295,7 @@ git remote add azure <paste-copied-url-here>
 推送到 Azure 远程功能以部署 Ruby on Rails 应用程序。 系统会提示输入前面在创建部署用户期间提供的密码。
 
 ```bash
-git push azure master
+git push azure main
 ```
 
 在部署期间，Azure 应用服务会向 Git 告知其进度。
@@ -305,7 +306,7 @@ Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
@@ -424,7 +425,7 @@ rake db:migrate RAILS_ENV=production
 ```bash
 git add .
 git commit -m "added complete checkbox"
-git push azure master
+git push azure main
 ```
 
 `git push` 完成后，请导航至 Azure 应用，测试新功能。

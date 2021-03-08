@@ -3,16 +3,16 @@ title: 用于存储的 Azure Defender - 优点和功能
 description: 了解适用于服务器的 Azure Defender 的优点和功能。
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 01/29/2021
+ms.date: 02/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 4b271c9671a939111056665c9be258caf553aae1
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: f25529a13288bdb5802f1c7a2aa0383e2bcc1dcc
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579359"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197643"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>适用于服务器的 Azure Defender 简介
 
@@ -27,13 +27,8 @@ ms.locfileid: "99579359"
 
 适用于服务器的 Azure Defender 提供的威胁检测和保护功能包括：
 
-- **用于终结点的 Microsoft Defender 的集成许可证（仅限 Windows）** - 适用于服务器的 Azure Defender 包括 [用于终结点的 Microsoft Defender](https://www.microsoft.com/microsoft-365/security/endpoint-defender)。 两者共同提供全面的终结点检测和响应 (EDR) 功能。
-
-    用于终结点的 Defender 在检测到威胁时会触发警报。 警报在安全中心显示。 在安全中心，还可以透视用于终结点的 Defender 控制台，并执行详细调查来发现攻击范围。 了解有关用于终结点的 Microsoft Defender 的详细信息。
-
-    > [!IMPORTANT]
-    > 使用安全中心的 Windows 服务器上已自动启用用于终结点的 Microsoft Defender 传感器。
-
+<!--Not available in MC: Integrated license for Microsoft Defender for Endpoint-->
+<!--Not available in MC: Vulnerability assessment scanning for VMs-->
 - **实时 (JIT) 虚拟机 (VM) 访问** - 威胁制造者会主动搜寻设有开放管理端口（如 RDP 或 SSH）的可访问计算机。 你的所有虚拟机都是潜在的攻击目标。 VM 在被成功入侵后将会用作进一步攻击环境中资源的入口点。
 
     启用适用于服务器的 Azure Defender 时，可以使用实时 VM 访问功能来锁定发往 VM 的入站流量，降低遭受攻击的可能性，同时在需要时还允许轻松连接到 VM。 [了解详细信息](just-in-time-explained.md)。
@@ -60,9 +55,13 @@ ms.locfileid: "99579359"
 
   无文件攻击检测功能会生成详细的安全警报，其中包含相关描述和其他进程元数据，例如网络活动数据。 这可以加快警报会审、关联和下游响应时间。 此方法是对基于事件的 EDR 解决方案的补充，并扩大了检测范围。
 
+  有关无文件攻击检测警报的详细信息，请参阅[警报参考表](alerts-reference.md#alerts-windows)。
+
 - **Linux auditd 警报和 Log Analytics 代理集成（仅 Linux）** - auditd 系统包含一个负责监视系统调用的内核级子系统。 该子系统会按照指定的规则集筛选这些调用，并将针对这些调用生成的消息写入到套接字。 安全中心在 Log Analytics 代理中集成了 auditd 包的功能。 通过这种集成，无需满足任何先决条件，就能在所有受支持的 Linux 发行版中收集 auditd 事件。
 
     可以使用适用于 Linux 的 Log Analytics 代理收集、扩充 auditd 记录并将其聚合到事件中。 安全中心会持续添加新分析功能，这些功能可以使用 Linux 信号来检测云和本地 Linux 计算机上的恶意行为。 类似于 Windows 中的功能，这些分析功能可以检测各种可疑进程、可疑登录企图、内核模块加载操作和其他活动。 这些活动可能表示计算机正在受到攻击或已遭入侵。  
+
+    有关 Linux 警报的列表，请参阅[警报参考表](alerts-reference.md#alerts-linux)。
 
 
 ## <a name="simulating-alerts"></a>模拟警报
@@ -85,5 +84,5 @@ ms.locfileid: "99579359"
 - 无论警报是由安全中心生成，还是由安全中心从其他安全产品接收，你都可以导出该警报。 若要将警报导出到任何第三方 SIEM 或任何其他外部工具，请按照[将警报导出到 SIEM](continuous-export.md) 中的说明操作。
 
 - > [!div class="nextstepaction"]
-    > [启用 Azure Defender](security-center-pricing.md)
+    > [启用 Azure Defender](security-center-pricing.md#enable-azure-defender)
 

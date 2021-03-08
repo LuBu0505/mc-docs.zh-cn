@@ -2,18 +2,18 @@
 title: 清除标记和清单
 description: 使用清除命令根据年龄和标记筛选器从 Azure 容器注册表中删除多个标记和清单，并选择性地安排清除操作计划。
 ms.topic: article
-origin.date: 11/10/2020
+origin.date: 01/27/2021
 author: rockboyfor
-ms.date: 11/30/2020
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 07/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: c0ff656499e42fe2c3b3d7a1ff9c243f6964430e
-ms.sourcegitcommit: ea52237124974eda84f8cef4bf067ae978d7a87d
+ms.openlocfilehash: e69bbe68f7b16bdc085154ab5751876b6754c189
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024628"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053873"
 ---
 <!--Verified successfully-->
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>自动清除 Azure 容器注册表中的映像
@@ -89,7 +89,7 @@ az acr task create --name purgeTask \
   --context /dev/null
 ```
 
-运行 [az acr task show][az-acr-task-show] 命令，查看是否已配置计时器触发器。
+运行 [az acr task show][az-acr-task-show] 命令查看该计时器触发器是否已配置。
 
 ### <a name="purge-large-numbers-of-tags-and-manifests"></a>清除大量标记和清单
 
@@ -172,7 +172,7 @@ az acr task create --name weeklyPurgeTask \
   --context /dev/null
 ```
 
-运行 [az acr task show][az-acr-task-show] 命令，查看是否已配置计时器触发器。
+运行 [az acr task show][az-acr-task-show] 命令查看该计时器触发器是否已配置。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -191,4 +191,4 @@ az acr task create --name weeklyPurgeTask \
 [az-acr-task-create]: https://docs.azure.cn/cli/acr/task#az_acr_task_create
 [az-acr-task-show]: https://docs.azure.cn/cli/acr/task#az_acr_task_show
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

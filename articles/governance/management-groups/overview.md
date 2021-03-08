@@ -3,16 +3,16 @@ title: 使用管理组来组织资源 - Azure 治理
 description: 了解管理组、其权限的工作方式以及如何使用它们。
 origin.date: 01/22/2021
 author: rockboyfor
-ms.date: 02/08/2021
+ms.date: 03/01/2021
 ms.author: v-yeche
 ms.topic: overview
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: e5070d0995f53cc57c4852c965609f747ac85c76
-ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
+ms.openlocfilehash: 4afd01313b8a74e38a23c7145c9c6c404490cca0
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580525"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196551"
 ---
 <!--Verified successfully-->
 # <a name="what-are-azure-management-groups"></a>什么是 Azure 管理组？
@@ -98,7 +98,7 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (Azure RBAC)](../
 
 | Azure 角色名称             | 创建 | 重命名 | 移动\*\* | 删除 | 分配访问权限 | 分配策略 | 读取  |
 |:-------------------------- |:------:|:------:|:--------:|:------:|:-------------:| :------------:|:-----:|
-|所有者                       | X      | X      | X        | X      | X             | X             | X     |
+|“所有者”                       | X      | X      | X        | X      | X             | X             | X     |
 |参与者                 | X      | X      | X        | X      |               |               | X     |
 |MG 参与者\*            | X      | X      | X        | X      |               |               | X     |
 |读取器                      |        |        |          |        |               |               | X     |
@@ -190,11 +190,11 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (Azure RBAC)](../
 如果执行移动操作，你需要： 
 
 - 在子订阅或管理组上的管理组写入权限和角色分配写入权限。
-  - 内置角色示例：所有者
+    - 内置角色示例“所有者”
 - 目标父管理组中的管理组写入访问权限。
-  - 内置角色示例：**所有者**、**参与者**、**管理组参与者**
+    - 内置角色示例：**所有者**、**参与者**、**管理组参与者**
 - 现有父管理组中的管理组写入访问权限。
-  - 内置角色示例：**所有者**、**参与者**、**管理组参与者**
+    - 内置角色示例：**所有者**、**参与者**、**管理组参与者**
 
 **例外**：如果目标或现有父管理组不是根管理组，则权限要求不适用。 由于根管理组是所有新管理组和订阅的默认登陆点，因此不需在其上具有相关权限即可移动某个项。
 

@@ -1,8 +1,8 @@
 ---
 title: Azure 虚拟机的内置策略定义
 description: 列出 Azure 虚拟机的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-origin.date: 01/08/2021
-ms.date: 01/18/2021
+origin.date: 02/09/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 10/19/2020
 ms.topic: reference
@@ -11,12 +11,12 @@ ms.author: v-yeche
 ms.service: virtual-machines
 ms.subservice: security
 ms.custom: subject-policy-reference
-ms.openlocfilehash: e4091183700cf431057833db86048bb1e2c7794d
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: e0ed7a3f75ae82a5f0165fd8e7b1aee968920445
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570558"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054381"
 ---
 <!--Verified Successfully-->
 # <a name="azure-policy-built-in-definitions-for-azure-virtual-machines"></a>Azure 虚拟机的 Azure Policy 内置定义
@@ -31,8 +31,7 @@ ms.locfileid: "98570558"
 
 <!--Not Available on ## Microsoft.VirtualMachineImages-->
 
-<!--Not Available on [!INCLUDE [azure-policy-reference-rp-vmimages](../../includes/policy/reference/byrp/microsoft.virtualmachineimages.md)-->
-
+<!--NOT AVAILABLE ON [azure-policy-reference-rp-vmimages](../../includes/policy/reference/byrp/microsoft.virtualmachineimages.md)-->
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
 [!INCLUDE [azure-policy-reference-rp-classiccompute](../../includes/policy/reference/byrp/microsoft.classiccompute.md)]
@@ -43,4 +42,4 @@ ms.locfileid: "98570558"
 - 查看 [Azure Policy 定义结构](../governance/policy/concepts/definition-structure.md)。
 - 查看[了解策略效果](../governance/policy/concepts/effects.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

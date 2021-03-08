@@ -4,15 +4,15 @@ description: 如何使受控制的遥测数据的卷。
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 01/17/2020
-ms.date: 01/12/2021
+ms.date: 02/22/2021
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f8c564a502ad6f7c4871e5936a0838be609d434d
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 7caa1c4c71cf6f49747295fae892ddd6c3bbe8d8
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231032"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197443"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -480,7 +480,7 @@ handler = AzureLogHandler(
 
 ## <a name="knowing-whether-sampling-is-in-operation"></a>了解采样是否正在运行
 
-若要查找实际采样率（无论是否已应用），请使用如下所示的[分析查询](../log-query/log-query-overview.md)：
+若要查找实际采样率（无论是否已应用），请使用如下所示的[分析查询](../logs/log-query-overview.md)：
 
 ```kusto
 union requests,dependencies,pageViews,browserTimings,exceptions,traces

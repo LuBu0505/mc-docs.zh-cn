@@ -5,16 +5,16 @@ ms.assetid: 14feb4f3-5095-496e-9a40-690e1414bd73
 ms.devlang: php
 ms.topic: tutorial
 origin.date: 06/15/2020
-ms.date: 12/21/2020
+ms.date: 01/18/2021
 ms.author: v-tawe
-ms.custom: mvc, cli-validate, seodec18
+ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 438973015062326ea1002c9cd94da7e8462fdf88
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 291bf1bb7d9641f0501638f397132c11a8a3934f
+ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022869"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "102053323"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 PHP 和 MySQL 应用
 
@@ -151,8 +151,6 @@ php artisan serve
 ![PHP 已成功连接到 MySQL](./media/tutorial-php-mysql-app/mysql-connect-success.png)
 
 在终端键入 `Ctrl + C` 可停止 PHP。
-
-<!-- [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] -->
 
 ## <a name="create-mysql-in-azure"></a>在 Azure 中创建 MySQL
 
@@ -455,7 +453,7 @@ Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
@@ -486,7 +484,7 @@ Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
@@ -638,7 +636,7 @@ php artisan migrate --env=production --force
 ```bash
 git add .
 git commit -m "added complete checkbox"
-git push azure master
+git push azure main
 ```
 
 `git push` 完成后，请导航至 Azure 应用，测试新功能。

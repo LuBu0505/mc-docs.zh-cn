@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 01/14/2021
+ms.date: 02/22/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 85a76afdffd0b36b770172aacceefd888d412b38
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 833eb52c8cda23295e6f0644a868852661b95122
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231038"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197418"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>使用 Application Insights 分析实时 Azure 云服务
 
@@ -38,7 +38,7 @@ Application Insights Profiler 随 Azure 诊断扩展一同安装。 只需将 Az
 
 1. 配置 Azure 诊断扩展以启用 Profiler：
 
-    a. 找到应用程序角色的 [Azure 诊断](../platform/diagnostics-extension-overview.md) diagnostics.wadcfgx 文件，如下所示：  
+    a. 找到应用程序角色的 [Azure 诊断](../agents/diagnostics-extension-overview.md) diagnostics.wadcfgx 文件，如下所示：  
 
       ![诊断配置文件的位置](./media/profiler-cloudservice/cloudservice-solutionexplorer.png)  
 

@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 01/14/2021
+ms.date: 02/22/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4cc596d77761ac176d5bfed0d502ee84a7c668bf
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 99f72527b4b203a6c6d855a8b46ea2fddc2bc95b
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231035"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197122"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>使用 Application Insights 探查实时 Azure Service Fabric 应用程序
 
@@ -29,7 +29,7 @@ Azure 诊断中包括了 Application Insights Profiler。 可以使用 Azure 资
 
 1. Profiler 支持 .NET Framework 和 .Net Core。 如果使用的是 .NET Framework，请确保使用 [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 或更高版本。 只需确认部署的 OS 是 `Windows Server 2012 R2` 或更高版本。 Profiler 支持 .NET Core 2.1 及更高版本的应用程序。
 
-1. 在部署模板文件中搜索 [Azure 诊断](../platform/diagnostics-extension-overview.md)。
+1. 在部署模板文件中搜索 [Azure 诊断](../agents/diagnostics-extension-overview.md)。
 
 1. 添加以下 `SinksConfig` 部分作为 `WadCfg` 的子元素。 使用自己的 Application Insights 检测密钥替换 `ApplicationInsightsProfiler` 属性值：  
 

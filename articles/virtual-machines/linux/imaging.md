@@ -6,15 +6,15 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: overview
 ms.workload: infrastructure
-ms.date: 12/01/2020
+ms.date: 03/04/2021
 ms.author: v-johya
 ms.reviewer: cynthn
-ms.openlocfilehash: a49d22f33b58f506751cc0e5d184639157d77c3d
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: d434913730ea4b28f95c94a5e7549740de2a5f03
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746526"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197297"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>在 Azure 中引入和创建 Linux 映像
 
@@ -29,7 +29,7 @@ Azure 支持将 VHD 引入到 Azure 平台，将其用作[托管磁盘](../faq-f
 
 Azure 托管磁盘是单个的 VHD。 可以使用现有 VHD 和根据其创建托管磁盘，或者从头开始创建一个空托管磁盘。 可以通过将磁盘附加到 VM 来借助托管磁盘创建 VM，但一个 VM 只能使用一个 VHD。 OS 属性无法修改，Azure 只会尝试开启 VM 和启动磁盘。 
 
-Azure 映像可以由多个 OS 磁盘和数据磁盘组成。 使用托管映像创建 VM 时，该平台生成此映像的副本并使用它来创建 VM，因此，同一托管映像可以重复用于多个 VM。 Azure 还提供了高级映像管理功能，例如全局复制和通过[共享映像库](shared-image-galleries.md)进行版本控制。 
+Azure 映像可以由多个 OS 磁盘和数据磁盘组成。 使用托管映像创建 VM 时，该平台生成此映像的副本并使用它来创建 VM，因此，同一托管映像可以重复用于多个 VM。 Azure 还提供了高级映像管理功能，例如全局复制和通过[共享映像库](../shared-image-galleries.md)进行版本控制。 
 
 
 
@@ -46,7 +46,7 @@ Azure 提供了两种主要映像类型：通用映像和专用映像。 通用�
 
 ### <a name="generalized-images"></a>通用映像
 
-通用映像在首次启动时需要完成设置。 例如，在首次启动时，设置主机名、管理员用户和其他特定于 VM 的配置。 需要多次重用映像以及在创建期间传入参数时，此类映像非常有用。 如果通用映像包含 Azure 代理，则代理将处理参数，并向平台返回指示初始配置已完成的信号。 此过程称为“预配”。 
+通用映像在首次启动时需要完成设置。 例如，在首次启动时，设置主机名、管理员用户和其他特定于 VM 的配置。 需要多次重用映像以及在创建期间传入参数时，此类映像非常有用。 如果通用映像包含 Azure 代理，则代理将处理参数，并向平台返回指示初始配置已完成的信号。 此过程称为[预配](./provisioning.md)。 
 
 预配要求映像中包含配置程序。 以下两个配置程序可供使用：
 - [Azure Linux 代理](../extensions/agent-linux.md)
@@ -65,7 +65,7 @@ Azure 提供了两种主要映像类型：通用映像和专用映像。 通用�
 使用 Linux 映像时有两个选项可供选择：
 
 - 使用托管映像在开发和测试环境中创建简单的 VM。
-- 使用[共享映像库](shared-image-galleries.md)大规模创建和共享映像。
+- 使用[共享映像库](../shared-image-galleries.md)大规模创建和共享映像。
 
 
 ### <a name="managed-images"></a>托管映像
@@ -76,7 +76,7 @@ Azure 提供了两种主要映像类型：通用映像和专用映像。 通用�
 
 ### <a name="azure-shared-image-gallery-sig"></a>Azure 共享映像库 (SIG)
 
-[共享映像库](shared-image-galleries.md)推荐用于大规模创建、管理和共享映像。 共享映像库提供许多功能和特性，可帮助你围绕映像生成结构和组织：  
+[共享映像库](../shared-image-galleries.md)推荐用于大规模创建、管理和共享映像。 共享映像库提供许多功能和特性，可帮助你围绕映像生成结构和组织：  
 
 - 支持通用映像和专用映像。
 - 支持第 1 代映像和第 2 代映像。

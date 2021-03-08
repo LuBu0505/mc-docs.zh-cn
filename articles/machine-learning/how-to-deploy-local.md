@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy
-ms.openlocfilehash: 0c03676275701adc56463866bb9604fdaf5a555a
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 734ce225e0affb0e92d152a3cc2b34fd61ac80fa
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023276"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196681"
 ---
 # <a name="deploy-models-trained-with-azure-machine-learning-on-your-local-machines"></a>在本地计算机上部署通过 Azure 机器学习训练的模型 
 
@@ -31,7 +31,7 @@ ms.locfileid: "98023276"
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 - 模型和环境。 如果没有已训练的模型，则可以使用[此教程](tutorial-train-models-with-aml.md)中提供的模型和依赖项文件。
-- [适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python//api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)。
+- [适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)。
 - conda 管理器，例如 Anaconda 或 Miniconda，前提是你希望镜像 Azure 机器学习程序包依赖项。
 - Docker，前提是你希望使用容器化版本的 Azure 机器学习环境。
 
@@ -186,7 +186,7 @@ print("prediction:", resp.text)
 
 - 在门户中，选择“模型”选项卡，接着选择所需模型，然后在“详细信息”页上选择“下载”。
 - 在命令行中使用 `az ml model download`（请参阅[模型下载](/cli/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext_azure_cli_ml_az_ml_model_download&preserve-view=false)。）
-- 使用 Python SDK `Model.download()` 方法。 （请参阅[模型类](https://docs.microsoft.com/python//api/azureml-core/azureml.core.model.model?view=azure-ml-py#download-target-dir------exist-ok-false--exists-ok-none-&preserve-view=false)。）
+- 使用 Python SDK `Model.download()` 方法。 （请参阅[模型类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#download-target-dir------exist-ok-false--exists-ok-none-&preserve-view=false)。）
 
 Azure 模型是一个或多个序列化 Python 对象，打包为 Python pickle 文件（.pkl 扩展名）。 pickle 文件的内容取决于用于训练模型的机器学习库或技术。 例如，如果你使用教程中的模型，则可以使用以下命令来加载模型：
 

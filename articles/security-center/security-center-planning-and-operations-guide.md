@@ -6,15 +6,15 @@ author: Johnnytechn
 manager: rkarlin
 ms.service: security-center
 ms.topic: tutorial
-ms.date: 12/03/2020
+ms.date: 02/25/2021
 ms.author: v-johya
 origin.date: 09/10/2019
-ms.openlocfilehash: c1a8e07fa9c3915605431f0b9b1034a6a2435823
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 6ad28c11965ded6fcfba1c79f2a68519f56b80b3
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747180"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197276"
 ---
 # <a name="planning-and-operations-guide"></a>规划和操作指南
 本指南适用于计划使用 Azure 安全中心的信息技术 (IT) 专业人员、IT 架构师、信息安全分析师和云管理员。
@@ -136,11 +136,11 @@ Azure 安全中心使用 Log Analytics 代理（Azure Monitor 服务同样使用
 
 ### <a name="agent"></a>Agent
 
-在安全策略中启用自动预配后，Log Analytics 代理（适用于 [Windows](../azure-monitor/platform/agent-windows.md) 或 [Linux](../azure-monitor/learn/quick-collect-linux-computer.md)）会安装在所有支持的 Azure VM 和新建的任何 VM 上。 如果 VM 或计算机已安装 Log Analytics 代理，Azure 安全中心会利用当前的已安装代理。 代理的过程设计为非入侵性，对 VM 性能的影响非常小。
+在安全策略中启用自动预配后，Log Analytics 代理（适用于 [Windows](../azure-monitor/agents/agent-windows.md) 或 [Linux](../azure-monitor/vm/quick-collect-linux-computer.md)）会安装在所有支持的 Azure VM 和新建的任何 VM 上。 如果 VM 或计算机已安装 Log Analytics 代理，Azure 安全中心会利用当前的已安装代理。 代理的过程设计为非入侵性，对 VM 性能的影响非常小。
 
-适用于 Windows 的 Log Analytics 代理要求使用 TCP 端口 443。 有关其他详细信息，请参阅[故障排除文章](security-center-troubleshooting-guide.md)。
+适用于 Windows 的 Log Analytics 代理需要使用 TCP 端口 443。 有关其他详细信息，请参阅[故障排除文章](security-center-troubleshooting-guide.md)。
 
-如需在某个时候禁用数据收集功能，可在安全策略中将其关闭。 然而，由于其他 Azure 管理和监视服务可能使用 Log Analytics 代理，因此关闭安全中心的数据收集功能后不会自动卸载代理。 必要时可手动卸载代理。
+如需在某个时候禁用数据收集功能，可在安全策略中将其关闭。 然而，由于其他 Azure 管理和监视服务可能使用 Log Analytics 代理，因此关闭安全中心数据收集后不会自动卸载代理。 必要时可手动卸载代理。
 
 > [!NOTE]
 > 若要查找受支持 VM 的列表，请阅读 [Azure 安全中心常见问题解答 (FAQ)](faq-vms.md)。

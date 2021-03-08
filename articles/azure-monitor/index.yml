@@ -7,13 +7,13 @@ metadata:
   ms.topic: landing-page
   author: Johnnytechn
   ms.author: v-johya
-  ms.date: 01/12/2021
-  ms.openlocfilehash: 0a12ab08c17e4ca0a9b2ec8ef4a3e52587526c04
-  ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+  ms.date: 02/22/2021
+  ms.openlocfilehash: f84028d2cf2b8a050a3e294a2a6ed8240dc2a9e7
+  ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/15/2021
-  ms.locfileid: "98230905"
+  ms.lasthandoff: 03/05/2021
+  ms.locfileid: "102197544"
 landingContent:
 - title: 关于 Azure Monitor
   linkLists:
@@ -32,7 +32,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: 数据源概述
-      url: platform/data-sources.md
+      url: agents/data-sources.md
     - text: 数据平台概述
       url: platform/data-platform.md
 - title: 10 分钟快速入门
@@ -40,7 +40,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: 监视指标并发出警报
-      url: platform/alerts-metric.md
+      url: alerts/alerts-metric.md
     - text: 分析日志
       url: ./log-query/log-analytics-tutorial.md
     - text: Log Analytics 中的 Azure VM

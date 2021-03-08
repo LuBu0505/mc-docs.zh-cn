@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 10/27/2016
 author: rockboyfor
-ms.date: 09/28/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 09/28/2020
 ms.author: v-yeche
-ms.openlocfilehash: 26754fd464261d008b1daa67ad4c549e1cf3619f
-ms.sourcegitcommit: 71953ae66ddfc07c5d3b4eb55ff8639281f39b40
+ms.openlocfilehash: dcd729e54ebba86aefcbe55db593fc5978eb618d
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91395399"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054065"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>在 Azure 中使用负载均衡服务
 
@@ -41,7 +41,7 @@ Azure 提供多种服务用于管理网络流量的分发和负载均衡方式�
     * 多值路由 - 允许你在单个 DNS 响应中发送多个应用程序终结点的 IP 地址。
 
     客户端直接连接到由流量管理器返回的终结点。 当某个终结点运行不正常时，Azure 流量管理器可以检测到这种状态，并将客户端重定向到另一个正常的实例。 若要详细了解此服务，请参阅 [Azure 流量管理器文档](traffic-manager-overview.md)。
-* **应用程序网关**以服务形式提供应用程序传送控制器 (ADC)，借此为应用程序提供各种第 7 层负载均衡功能。 客户可以用它将 CPU 密集型 TLS 终止卸载到应用程序网关，优化 Web 场工作效率。 其他第 7 层路由功能包括传入流量的轮循机制分布、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后托管多个网站的功能。 可以将应用程序网关配置为面向 Internet 的网关、仅限内部访问的网关或二者合一的网关。 应用程序网关完全受 Azure 管理，可缩放且高度可用。 它提供丰富的诊断和日志记录功能以改进可管理性。
+* **应用程序网关** 以服务形式提供应用程序传送控制器 (ADC)，借此为应用程序提供各种第 7 层负载均衡功能。 客户可以用它将 CPU 密集型 TLS 终止卸载到应用程序网关，优化 Web 场工作效率。 其他第 7 层路由功能包括传入流量的轮循机制分布、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后托管多个网站的功能。 可以将应用程序网关配置为面向 Internet 的网关、仅限内部访问的网关或二者合一的网关。 应用程序网关完全受 Azure 管理，可缩放且高度可用。 它提供丰富的诊断和日志记录功能以改进可管理性。
 * **负载均衡器** 是 Azure SDN 堆栈的组成部分，为所有 UDP 和 TCP 协议提供高性能、低延迟的第 4 层负载均衡服务。 它管理入站和出站连接。 可以配置公共和内部负载均衡终结点，定义规则将入站连接映射到后端池目标，并在其中包含 TCP 和 HTTP 运行状况探测选项来管理服务的可用性。
 
 ## <a name="scenario"></a>方案
@@ -95,18 +95,16 @@ Azure 提供多种服务用于管理网络流量的分发和负载均衡方式�
     * **资源组**：包含应用程序网关的资源组。 可以是现有资源组，也可以是新的资源组。
     * **位置**：应用程序网关的区域，与资源组的位置相同。 位置很重要，因为虚拟网络和公共 IP 必须与网关位于同一位置。
 3. 单击 **“确定”** 。
-4. 定义应用程序网关的虚拟网络、子网、前端 IP 和侦听器配置。 在本方案中，前端 IP 地址是**公共**地址，因此稍后可将它作为终结点添加到流量管理器配置文件中。
+4. 定义应用程序网关的虚拟网络、子网、前端 IP 和侦听器配置。 在本方案中，前端 IP 地址是 **公共** 地址，因此稍后可将它作为终结点添加到流量管理器配置文件中。
 5. 使用以下选项之一配置侦听器：
     * 如果使用 HTTP，则无须进行任何配置。 单击 **“确定”** 。
     * 如果使用 HTTPS，则需进一步配置。 请参阅[创建应用程序网关](../application-gateway/quick-create-portal.md)，从第 9 步开始。 完成配置以后，单击“确定”。
-    
-        <!--Notice: URL (../application-gateway/application-gateway-create-gateway-portal.md) direction to (../application-gateway/quick-create-portal.md)-->
 
 #### <a name="configure-url-routing-for-application-gateways"></a>为应用程序网关配置 URL 路由
 
-选择后端池时，使用基于路径的规则配置的应用程序网关采用请求 URL 加轮循机制分配法的路径模式。 在此方案中，我们要添加基于路径的规则，将包含“/images/\*”的任意 URL 定向到映像服务器池。 如需详细了解如何为应用程序网关配置基于 URL 路径的路由，请参阅[为应用程序网关创建基于路径的规则](../application-gateway/application-gateway-create-url-route-portal.md)。
+选择后端池时，使用基于路径的规则配置的应用程序网关采用请求 URL 加轮循机制分配法的路径模式。 在此方案中，我们要添加基于路径的规则，将包含“/images/\*”的任意 URL 定向到映像服务器池。 如需详细了解如何为应用程序网关配置基于 URL 路径的路由，请参阅[为应用程序网关创建基于路径的规则](../application-gateway/create-url-route-portal.md)。
 
-:::image type="content" source="./media/traffic-manager-load-balancing-azure/web-tier-diagram.png" alt-text="负载均衡体系结构关系图":::
+:::image type="content" source="./media/traffic-manager-load-balancing-azure/web-tier-diagram.png" alt-text="应用程序网关 Web 层关系图":::
 
 1. 从资源组转到在前面部分创建的应用程序网关实例。
 2. 在“设置”下面选择“后端池”，然后选择“添加”，添加要与 Web 层后端池关联的 VM。  
@@ -164,7 +162,7 @@ Azure 提供多种服务用于管理网络流量的分发和负载均衡方式�
 
 如果高可用性数据库群集使用 SQL Server AlwaysOn，请参阅[配置一个或多个 Always On 可用性组侦听器](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md)了解分步说明。
 
-有关配置内部负载均衡器的详细信息，请参阅[在 Azure 门户中创建内部负载均衡器](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)。
+有关配置内部负载均衡器的详细信息，请参阅[在 Azure 门户中创建内部负载均衡器](../load-balancer/quickstart-load-balancer-standard-internal-portal.md)。
 
 1. 在 Azure 门户的左侧窗格中，单击“创建资源” > “网络” > “负载均衡器”  。
 2. 为负载均衡器选择一个名称。
@@ -201,9 +199,9 @@ Azure 提供多种服务用于管理网络流量的分发和负载均衡方式�
 
 1. 在负载均衡器的“设置”下面选择“负载均衡规则”，然后单击“添加”创建规则  。
 2. 输入负载均衡规则的“名称”。
-3. 选择负载均衡器的**前端 IP 地址**、**协议**和**端口**。
+3. 选择负载均衡器的 **前端 IP 地址**、**协议** 和 **端口**。
 4. 在“后端端口”下面，指定要在后端池中使用的端口 。
-5. 选择在前面步骤中创建的**后端池**和**探测**，对其应用规则。
+5. 选择在前面步骤中创建的 **后端池** 和 **探测**，对其应用规则。
 6. 在“会话持久性”下面，选择会话的保存方式 。
 7. 在“空闲超时”下面，指定经过几分钟后发生空闲超时 。
 8. 在“浮动 IP”下选择“禁用”或“启用”  。
@@ -219,9 +217,6 @@ Azure 提供多种服务用于管理网络流量的分发和负载均衡方式�
 
 * [流量管理器概述](traffic-manager-overview.md)
 * [应用程序网关概述](../application-gateway/overview.md)
-    
-    <!--Notice: URL direct  application-gateway-introduction.md to overview.md-->
-    
 * [Azure 负载均衡器概述](../load-balancer/load-balancer-overview.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

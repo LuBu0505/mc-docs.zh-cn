@@ -8,16 +8,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 origin.date: 01/13/2019
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 76ef19769448b5762c068bd48304da733f62ee5c
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 36e1ad44ccbade2ed86df9a67642f28d53b46f79
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104829"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053040"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>从 Azure 下载 Windows VHD
 
@@ -30,9 +30,9 @@ ms.locfileid: "93104829"
 若要使用 VHD 作为映像创建其他 VM，请通用化该 VM。
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)（如果未登录）。
-2. [连接到 VM](connect-logon.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。 
+2. [连接到 VM](connect-logon.md)。 
 3. 在 VM 上，以管理员身份打开“命令提示符”窗口。
-4. 将目录切换到 *%windir%\system32\sysprep* ，然后运行 sysprep.exe。
+4. 将目录切换到 *%windir%\system32\sysprep*，然后运行 sysprep.exe。
 5. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”。
 6. 在“关闭选项”中选择“关闭”，然后单击“确定”。 
 
@@ -62,12 +62,12 @@ ms.locfileid: "93104829"
 ## <a name="download-vhd"></a>下载 VHD
 
 1. 在生成的 URL 下，单击“下载 VHD 文件”。
-1. 可能需要单击浏览器中的“保存”以开始下载。 VHD 文件的默认名称为 *abcd* 。
+1. 可能需要单击浏览器中的“保存”以开始下载。 VHD 文件的默认名称为 *abcd*。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[将 VHD 文件上传到 Azure](upload-generalized-managed.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。 
-- [从存储帐户中的非托管磁盘创建托管磁盘](attach-disk-ps.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
-- [使用 PowerShell 管理 Azure 磁盘](tutorial-manage-data-disk.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
+- 了解如何[将 VHD 文件上传到 Azure](upload-generalized-managed.md)。 
+- [从存储帐户中的非托管磁盘创建托管磁盘](attach-disk-ps.md)。
+- [使用 PowerShell 管理 Azure 磁盘](tutorial-manage-data-disk.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -7,12 +7,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: ac26eec1c9dcd5041920e8d1cee4db9bbcc493a2
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 25ece124cb997c5d25329719f9809552caaa66be
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978271"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196663"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>参考：Ubuntu (Linux) Data Science Virtual Machine
 
@@ -51,7 +51,7 @@ source /anaconda/bin/activate root
 
 H2O 是一种快速的内存中分布式机器学习和预测分析平台。 根环境和 py35 Anaconda 环境中都安装有 Python 包。 同时也会安装 R 包。 
 
-若要从命令行打开 H2O，请运行 `java -jar /dsvm/tools/h2o/current/h2o.jar`。 可能需要配置各种[命令行选项](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line)。 若要开始，可以浏览到 http://localhost:54321 以访问 Flow Web UI。 示例笔记本也位于 JupyterHub。
+若要从命令行打开 H2O，请运行 `java -jar /dsvm/tools/h2o/current/h2o.jar`。 可能需要配置各种[命令行选项](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line)。 若要开始，可以浏览到 `http://localhost:54321` 以访问 Flow Web UI。 示例笔记本也位于 JupyterHub。
 
 ### <a name="keras"></a>Keras
 
@@ -308,7 +308,7 @@ cd xgboostdemo
 xgboost mushroom.conf
 ```
 
-一个 .model 文件将写入到指定的目录。 可在 [GitHub](https://github.com/dmlc/xgboost/tree/master/demo/binary_classification) 上找到有关此演示示例的信息。
+一个 .model 文件将写入到指定的目录。 可在 [GitHub](https://github.com/dmlc/xgboost/tree/master/demo/CLI/binary_classification) 上找到有关此演示示例的信息。
 
 有关 xgboost 的详细信息，请参阅 [xgboost 文档页](https://xgboost.readthedocs.org/en/latest/)及其 [GitHub 存储库](https://github.com/dmlc/xgboost)。
 

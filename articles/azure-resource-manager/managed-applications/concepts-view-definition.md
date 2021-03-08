@@ -4,16 +4,16 @@ description: 介绍为 Azure 托管应用程序创建视图定义的概念。
 ms.topic: conceptual
 origin.date: 06/12/2019
 author: rockboyfor
-ms.date: 10/12/2020
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 04/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: de8baea62ccd8218bef819d05c9bac33c9357c44
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: 9b6a8f4df0328ca59d997fed71338bd3a46cef37
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937122"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053388"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>查看 Azure 托管应用程序中的定义项目
 
@@ -128,7 +128,7 @@ ms.locfileid: "91937122"
 }
 ```
 
-|属性|必须|说明|
+|属性|必选|说明|
 |---------|---------|---------|
 |标头的值开始缓存响应|否|概述页的标题。|
 |description|否|托管应用程序的说明。|
@@ -167,7 +167,7 @@ ms.locfileid: "91937122"
 }
 ```
 
-|属性|必须|说明|
+|属性|必选|说明|
 |---------|---------|---------|
 |displayName|否|视图的显示标题。|
 |版本|否|用于呈现视图的平台版本。|
@@ -175,7 +175,7 @@ ms.locfileid: "91937122"
 
 ### <a name="chart"></a>图表
 
-|属性|必须|说明|
+|属性|必选|说明|
 |---------|---------|---------|
 |displayName|是|图表的显示标题。|
 |chartType|否|用于此图表的可视化效果。 默认使用折线图。 支持的图表类型：`Bar, Line, Area, Scatter`。|
@@ -183,7 +183,7 @@ ms.locfileid: "91937122"
 
 ### <a name="metric"></a>指标
 
-|属性|必须|说明|
+|属性|必选|说明|
 |---------|---------|---------|
 |name|是|指标的名称。|
 |aggregationType|是|用于此指标的聚合类型。 支持的聚合类型：`none, sum, min, max, avg, unique, percentile, count`|
@@ -191,15 +191,15 @@ ms.locfileid: "91937122"
 |resourceTagFilter|否|要显示其指标的资源标记数组（使用单词 `or` 分隔）。 在资源类型筛选器的顶部应用。|
 |resourceType|是|要显示其指标的资源类型。|
 
-:::image type="content" source="./media/view-definition/metrics.png" alt-text="屏幕截图显示具有托管应用程序的“概述”，该应用有一个“测试操作”控件用于运行演示应用程序。":::
+:::image type="content" source="./media/view-definition/metrics.png" alt-text="屏幕截图显示托管应用程序的名为“我的指标视图”的“监视”页面。":::
 
 ## <a name="custom-resources"></a>自定义资源
 
 `"kind": "CustomResources"`
 
-可以定义此类型的多个视图。 每个视图表示 **mainTemplate.json** 中定义的自定义提供程序中的**唯一**自定义资源类型。
+可以定义此类型的多个视图。 每个视图表示 **mainTemplate.json** 中定义的自定义提供程序中的 **唯一** 自定义资源类型。
 
-<!--Not Available on [Azure Custom Providers Preview overview](../custom-providers/overview.md)-->
+<!--NOT AVAILABLE ON [Azure Custom Providers Preview overview](../custom-providers/overview.md)-->
 
 在此视图中，可对自定义资源类型执行 GET、PUT、DELETE 和 POST 操作。 POST 操作可以是全局自定义操作，或自定义资源类型上下文中的自定义操作。
 
@@ -229,23 +229,23 @@ ms.locfileid: "91937122"
 }
 ```
 
-|属性|必须|说明|
+|属性|必选|说明|
 |---------|---------|---------|
-|displayName|是|视图的显示标题。 标题对于 **viewDefinition.json** 中的每个 CustomResources 视图应该**唯一**。|
+|displayName|是|视图的显示标题。 标题对于 **viewDefinition.json** 中的每个 CustomResources 视图应该 **唯一**。|
 |版本|否|用于呈现视图的平台版本。|
-|resourceType|是|自定义资源类型。 必须是自定义提供程序的**唯一**自定义资源类型。|
+|resourceType|是|自定义资源类型。 必须是自定义提供程序的 **唯一** 自定义资源类型。|
 |icon|否|视图的图标。 示例图标列表在 [JSON 架构](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)中定义。|
 |createUIDefinition|否|为“创建自定义资源”命令创建 UI 定义架构。 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)|
 |命令|否|CustomResources 视图的其他工具栏按钮数组，请参阅[命令](#commands)。|
 |列|否|自定义资源的列数组。 如果未定义，则默认会显示 `name` 列。 该列必须具有 `"key"` 和 `"displayName"`。 对于键，请提供要在视图中显示的属性的键。 如果嵌套键，请使用句点作为分隔符，例如 `"key": "name"` 或 `"key": "properties.property1"`。 对于显示名称，请提供要在视图中显示的属性的显示名称。 还可以提供 `"optional"` 属性。 设置为 true 时，该列默认会在视图中隐藏。|
 
-:::image type="content" source="./media/view-definition/customresources.png" alt-text="屏幕截图显示具有托管应用程序的“概述”，该应用有一个“测试操作”控件用于运行演示应用程序。":::
+:::image type="content" source="./media/view-definition/customresources.png" alt-text="屏幕截图显示名为“测试自定义资源类型”的“资源”页面以及“自定义上下文操作”控件。":::
 
 ## <a name="commands"></a>命令
 
 命令是显示在页面上的附加工具栏按钮数组。 每个命令表示 **mainTemplate.json** 中定义的 Azure 自定义提供程序中的一个 POST 操作。
 
-<!--Not Available on [Azure Custom Providers Preview overview](../custom-providers/overview.md)-->
+<!--NOT AVAILABLE ON [Azure Custom Providers overview](../custom-providers/overview.md)-->
 
 ```json
 {
@@ -260,7 +260,7 @@ ms.locfileid: "91937122"
 }
 ```
 
-|属性|必须|说明|
+|属性|必选|说明|
 |---------|---------|---------|
 |displayName|是|命令按钮的显示名称。|
 |path|是|自定义提供程序操作名称。 该操作必须在 **mainTemplate.json** 中定义。|
@@ -273,9 +273,9 @@ ms.locfileid: "91937122"
 
 可以定义此类型的多个视图。 使用此视图可以通过 **mainTemplate.json** 中定义的自定义提供程序，将现有资源链接到托管应用程序。
 
-<!--Not Available on [Azure Custom Providers Preview overview](../custom-providers/overview.md)-->
+<!--NOT AVAILABLE ON [Azure Custom Providers Preview overview](../custom-providers/overview.md)-->
 
-在此视图中，可以基于 `targetResourceType` 扩展现有的 Azure 资源。 选择某个资源时，它会向**公共**自定义提供程序创建加入请求，这会对资源应用副作用。 
+在此视图中，可以基于 `targetResourceType` 扩展现有的 Azure 资源。 选择某个资源时，它会向 **公共** 自定义提供程序创建加入请求，这会对资源应用副作用。 
 
 ```json
 {
@@ -289,9 +289,9 @@ ms.locfileid: "91937122"
 }
 ```
 
-|属性|必须|说明|
+|属性|必选|说明|
 |---------|---------|---------|
-|displayName|是|视图的显示标题。 标题对于 **viewDefinition.json** 中的每个 Associations 视图应该**唯一**。|
+|displayName|是|视图的显示标题。 标题对于 **viewDefinition.json** 中的每个 Associations 视图应该 **唯一**。|
 |版本|否|用于呈现视图的平台版本。|
 |targetResourceType|是|目标资源类型。 这是要为资源加入显示的资源类型。|
 |createUIDefinition|否|为“创建关联资源”命令创建 UI 定义架构。 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)|
@@ -304,7 +304,7 @@ ms.locfileid: "91937122"
 
 - 有关托管应用程序的简介，请参阅 [Azure 托管应用程序概述](overview.md)。
 
-<!--Not Available on [Azure Custom Providers overview](../custom-providers/overview.md)-->
-<!--Not Available on [Tutorial: Create managed application with custom provider actions and resource types](tutorial-create-managed-app-with-custom-provider.md)-->
+<!--NOT AVAILABLE ON [Azure Custom Providers overview](../custom-providers/overview.md)-->
+<!--NOT AVAILABLE ON [Tutorial: Create managed application with custom provider actions and resource types](tutorial-create-managed-app-with-custom-provider.md)-->
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

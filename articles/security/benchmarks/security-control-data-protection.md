@@ -4,16 +4,16 @@ description: Azure 安全控制 - 数据保护
 author: Johnnytechn
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 03/04/2021
 ms.author: v-johya
 ms.custom: security-benchmark
 origin.date: 04/14/2020
-ms.openlocfilehash: 31a8da95360f265189c655d27289364b8cf8063d
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: be13f2f1025a72f52562d30b7442d6aee4a36ba7
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746541"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197107"
 ---
 # <a name="security-control-data-protection"></a>安全控制：数据保护
 
@@ -99,7 +99,7 @@ ms.locfileid: "96746541"
 
 如果需要在计算资源上确保合规性，则实施第三方工具（如基于主机的自动数据丢失防护解决方案），以便对数据强制实施访问控制，即使数据从系统复制也是如此。
 
-对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 已实施并维护一套可靠的数据保护控制机制和功能。
+对于 Microsoft 管理的底层平台，Microsoft 会将所有客户内容视为敏感数据，并会全方位地防范客户数据丢失和遭到透露。 为了确保 Azure 中的客户数据保持安全，Microsoft 实施并维护了一套可靠的数据保护控制措施和功能。
 
 - [了解 Azure 中的客户数据保护](../fundamentals/protection-customer-data.md)
 
@@ -123,7 +123,7 @@ ms.locfileid: "96746541"
 
 将 Azure Monitor 与 Azure 活动日志结合使用，以创建在关键 Azure 资源发生更改时发出的警报。
 
-- [如何针对 Azure 活动日志事件创建警报](../../azure-monitor/platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](../../azure-monitor/alerts/alerts-activity-log.md)
 
 
 ## <a name="next-steps"></a>后续步骤

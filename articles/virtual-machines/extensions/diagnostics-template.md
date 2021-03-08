@@ -12,17 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 origin.date: 05/31/2017
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1da6bc71dd46cac80bcfa583823d7d05e4625601
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 96629a0f6b6d46b213d43ea2983bb4f403563560
+ms.sourcegitcommit: 7b82ae15228f29de415b60b0318c42ca20736623
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856707"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102108770"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用
 Azure 诊断扩展可在基于 Windows 的 Azure 虚拟机上提供监视和诊断功能。 通过将该扩展纳入为 Azure 资源管理器模板的一部分，可以在虚拟机上启用这些功能。 有关将任何扩展纳入为虚拟机模板一部分的详细信息，请参阅[使用 VM 扩展创作 Azure 资源管理器模板](../windows/template-description.md#extensions)。 本文介绍如何将 Azure 诊断扩展添加到 Windows 虚拟机模板中。  
@@ -55,7 +55,6 @@ Azure 诊断扩展可在基于 Windows 的 Azure 虚拟机上提供监视和诊�
                 "storageAccount": "[parameters('existingdiagnosticsStorageAccountName')]"
             },
             "protectedSettings": {
-                "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
                 "storageAccountName": "[parameters('existingdiagnosticsStorageAccountName')]",
                 "storageAccountKey": "[listkeys(variables('accountid'), '2015-05-01-preview').key1]",
                 "storageAccountEndPoint": "https://core.chinacloudapi.cn"
@@ -181,7 +180,7 @@ MetricAggregation 值 *PT1M* 和 *PT1H* 分别表示一分钟的聚合和一小�
 
 ## <a name="next-steps"></a>后续步骤
 * 有关具有诊断扩展的 Windows 虚拟机的完整示例模板，请参阅 [201-vm-monitoring-diagnostics-extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)   
-* 使用 [Azure PowerShell](../windows/ps-template.md) 或 [Azure 命令行](../linux/create-ssh-secured-vm-from-template.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)部署资源管理器模板
+* 使用 [Azure PowerShell](../windows/ps-template.md) 或 [Azure 命令行](../linux/create-ssh-secured-vm-from-template.md)部署资源管理器模板
 * 了解有关[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)的详细信息
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

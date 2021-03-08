@@ -5,14 +5,14 @@ ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
 origin.date: 09/19/2019
-ms.date: 01/12/2021
+ms.date: 02/22/2021
 ms.reviewer: sdash
-ms.openlocfilehash: 705a1a585f1ba54ed1ebe31f5efb04e3a8535dec
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 7ea312e22d3183e47293212dce5dadc1b85e6135
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230907"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197508"
 ---
 # <a name="troubleshooting"></a>故障排除
 
@@ -39,7 +39,7 @@ ms.locfileid: "98230907"
 
 ### <a name="i-did-not-receive-the-webhook-notification"></a>我尚未收到 Webhook 通知？
 
-检查以确保接收 Webhook 通知的应用程序可用并成功处理 Webhook 请求。 有关详细信息，请参阅[此文](../platform/alerts-log-webhook.md)。
+检查以确保接收 Webhook 通知的应用程序可用并成功处理 Webhook 请求。 有关详细信息，请参阅[此文](../alerts/alerts-log-webhook.md)。
 
 ### <a name="i-am-getting--403-forbidden-errors-what-does-this-mean"></a>我收到了 403 禁止访问的错误，这是什么意思？
 
@@ -90,7 +90,7 @@ ms.locfileid: "98230907"
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>谁会收到（经典）警报通知？
 
-本节仅适用于经典警报，并将帮助优化警报通知以确保只有预期的接收人能收到通知。 若要详细了解[经典警报](../platform/alerts-classic.overview.md)与新的警报体验之间的区别，请参阅[警报概述文章](../platform/alerts-overview.md)。 若要控制新的警报体验中的警报通知，请使用[操作组](../platform/action-groups.md)。
+本节仅适用于经典警报，并将帮助优化警报通知以确保只有预期的接收人能收到通知。 若要详细了解[经典警报](../alerts/alerts-classic.overview.md)与新的警报体验之间的区别，请参阅[警报概述文章](../alerts/alerts-overview.md)。 若要控制新的警报体验中的警报通知，请使用[操作组](../alerts/action-groups.md)。
 
 * 建议将经典警报通知用于特定接收人。
 
@@ -101,7 +101,7 @@ ms.locfileid: "98230907"
 > [!NOTE]
 > 如果当前使用“批/组”复选框选项并禁用它，则无法还原更改。
 
-如果需要根据用户角色通知用户，请使用新的警报体验/近实时警报。 使用[操作组](../platform/action-groups.md)，可以为具有任何参与者/所有者/读者角色（未融合为单一选项）的用户配置电子邮件通知。
+如果需要根据用户角色通知用户，请使用新的警报体验/近实时警报。 使用[操作组](../alerts/action-groups.md)，可以为具有任何参与者/所有者/读者角色（未融合为单一选项）的用户配置电子邮件通知。
 
 ## <a name="next-steps"></a>后续步骤
 

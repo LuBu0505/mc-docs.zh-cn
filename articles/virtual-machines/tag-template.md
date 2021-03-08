@@ -6,16 +6,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 origin.date: 10/26/2018
 author: rockboyfor
-ms.date: 01/04/2021
-ms.testscope: yes|no
-ms.testdate: 01/04/2021null
+ms.date: 03/01/2021
+ms.testscope: yes
+ms.testdate: 01/04/2021
 ms.author: v-yeche
-ms.openlocfilehash: b673377e958cfc275d2592e064832596e726e69a
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: fba2c850d0706f6af7d71d229d2672a9b611eb02
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857680"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055310"
 ---
 <!--Verified successfully-->
 # <a name="tagging-a-vm-using-a-template"></a>使用模板来标记 VM
@@ -49,12 +49,9 @@ ms.locfileid: "97857680"
 
 单击  “创建”使用标记值部署此模板。
 
-后续步骤
+### <a name="next-steps"></a>后续步骤
 
 - 若要详细了解如何标记 Azure 资源，请参阅 [Azure 资源管理器概述](../azure-resource-manager/management/overview.md)和 [使用标记来组织 Azure 资源](../azure-resource-manager/management/tag-resources.md)。
 
-<!--Not Available on [Understanding your Azure Bill](../cost-management-billing/understand/review-individual-bill.md)-->
-<!--Not Available on [Gain insights into your Azure resource consumption](../cost-management-billing/manage/usage-rate-card-overview.md)-->
-
-<!-- Update_Description: new article about tag template -->
-<!--NEW.date: 01/04/2021-->
+<!--NOT AVAILABLE ON [Understanding your Azure Bill](../cost-management-billing/understand/review-individual-bill.md)-->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -4,14 +4,14 @@ description: 介绍可在 Azure 资源管理器模板（ARM 模板）中使用�
 ms.topic: conceptual
 origin.date: 11/18/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 03/01/2021
 ms.author: v-yeche
-ms.openlocfilehash: e5f7715f12a454f948c93a850f3144096fc05d41
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 034c28f9da89e66ea0a0a01c97932cad70765fe1
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022283"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054043"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM 模板的比较函数
 
@@ -34,7 +34,7 @@ ms.locfileid: "98022283"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int、string、array 或 object |要测试是否为 null 的第一个值。 |
 | 其他参数 |否 |int、string、array 或 object |要测试是否为 null 的其他值。 |
@@ -109,18 +109,18 @@ param objectToTest object = {
   ]
 }
 
-output stringOutput string = coalesce(objectToTest.null1, objectToTest.null2, objectToTest.string)
-output intOutput int = coalesce(objectToTest.null1, objectToTest.null2, objectToTest.int)
-output objectOutput object = coalesce(objectToTest.null1, objectToTest.null2, objectToTest.object)
-output arrayOutput array = coalesce(objectToTest.null1, objectToTest.null2, objectToTest.array)
-output emptyOutput bool =empty(coalesce(objectToTest.null1, objectToTest.null2))
+output stringOutput string = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.string
+output intOutput int = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.int
+output objectOutput object = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.object
+output arrayOutput array = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.array
+output emptyOutput bool =empty(objectToTest.null1 ?? objectToTest.null2)
 ```
 
 ---
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | stringOutput | String | 默认值 |
 | intOutput | int | 1 |
@@ -640,4 +640,4 @@ output checkStrings bool = firstString <= secondString
 
 * 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

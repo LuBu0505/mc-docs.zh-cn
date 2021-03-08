@@ -13,12 +13,12 @@ ms.workload: ns
 origin.date: 06/01/2020
 ms.date: 10/12/2020
 ms.author: v-yiso
-ms.openlocfilehash: 179bb2b0a2c969048c924a8802dc6d458c72bc8c
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 48ad5bd900fbf7e91aa129db7a4e330ff676670e
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231075"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196855"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-service-application-net"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用服务应用程序 (.NET) 读取该数据
 
@@ -77,7 +77,7 @@ dotnet --version
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
     ```azurecli
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDotnetDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyDotnetDevice --output table
     ```
 
     记下如下所示的设备连接字符串：

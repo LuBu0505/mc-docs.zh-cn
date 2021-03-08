@@ -4,16 +4,16 @@ description: 查找有关 Azure Kubernetes 服务 (AKS) 的某些常见问题的
 ms.topic: conceptual
 origin.date: 08/06/2020
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 07/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4f010766bbc7f4b35159e72588b0e4e9cb4b2c17
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 2293952fc8bde8c505833a8b62c46c6e5e854f8e
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063603"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055307"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -27,9 +27,9 @@ ms.locfileid: "99063603"
 
 否。 AKS 群集是区域性资源，不能跨区域。 有关如何创建包括多个区域的体系结构的指南，请参阅[用于实现业务连续性和灾难恢复的最佳做法][bcdr-bestpractices]。
 
-<!--Not Available on ## Can I spread an AKS cluster across availability zones?-->
-<!--Not Available on [availability zones][availability-zones]-->
-<!--Not Available on in [regions that support them][az-regions]-->
+<!--NOT AVAILABLE ON ## Can I spread an AKS cluster across availability zones?-->
+<!--NOT AVAILABLE ON [availability zones][availability-zones]-->
+<!--NOT AVAILABLE ON in [regions that support them][az-regions]-->
 
 ## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>能否限制哪些人员可以访问 Kubernetes API 服务器？
 
@@ -58,15 +58,13 @@ Azure 会按照夜间计划自动将安全修补程序应用于群集中的 Linu
 
 AKS 在多个 Azure 基础结构资源之上构建，包括虚拟机规模集、虚拟网络和托管磁盘。 这使你能够在 AKS 提供的托管 Kubernetes 环境中利用 Azure 平台的许多核心功能。 
 
-<!--Not Available on For example, most Azure virtual machine types can be used directly with AKS and Azure Reservations can be used to receive discounts on those resources automatically.-->
-<!--Not Available on Azure Reservations-->
+<!--NOT AVAILABLE ON For example, most Azure virtual machine types can be used directly with AKS and Azure Reservations can be used to receive discounts on those resources automatically.-->
+<!--NOT AVAILABLE ON FEATURE Azure Reservations-->
 
 为了启用此体系结构，每个 AKS 部署跨越两个资源组：
 
 1. 创建第一个资源组。 此组仅包含 Kubernetes 服务资源。 在部署过程中，AKS 资源提供程序会自动创建第二个资源组。 例如，第二个资源组为 *MC_myResourceGroup_myAKSCluster_chinaeast2*。 有关如何指定这第二个资源组的名称，请参阅下一部分。
 1. 第二个资源组（称为节点资源组）包含与该群集相关联的所有基础结构资源。 这些资源包括 Kubernetes 节点 VM、虚拟网络和存储。 默认情况下，节点资源组使用类似于 *MC_myResourceGroup_myAKSCluster_chinaeast2* 的名称。 每当删除群集时，AKS 会自动删除节点资源，因此，仅应对生命周期与群集相同的资源使用 AKS。
-
-    <!--CUSTOMIZATION: MEET SCORECARD REQUEST ON resources THAT share the cluster's lifecycle-->
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>我是否可为 AKS 节点资源组提供自己的名称？
 
@@ -74,7 +72,7 @@ AKS 在多个 Azure 基础结构资源之上构建，包括虚拟机规模集、
 
 若要自行指定一个资源组名称，请安装 [aks-preview][aks-preview-cli] Azure CLI 扩展版本 0.3.2 或更高版本。 使用 [az aks create][az-aks-create] 命令创建 AKS 群集时，请使用 `--node-resource-group` 参数并指定资源组的名称。 如果使用 Azure 资源管理器模板部署 AKS 群集，则可以使用 nodeResourceGroup 属性定义资源组名称。
 
-<!--Not Avaialble on [use an Azure Resource Manager template][aks-rm-template]-->
+<!--NOT AVAILABLE ON [use an Azure Resource Manager template][aks-rm-template]-->
 
 * Azure 资源提供程序会在你自己的订阅中自动创建辅助资源组。
 * 只能在创建群集时指定自定义资源组名称。
@@ -149,8 +147,8 @@ Windows Server 对节点池的支持具有一些限制，Kubernetes 项目中的
 
 AKS 通过[运行时间 SLA][uptime-sla] 提供 SLA 保障（可选的附加功能）。
 
-<!--Not Available on  ## Can I apply Azure reservation discounts to my AKS agent nodes?-->
-<!--Not Available on   [Azure reservations][reservation-discounts]-->
+<!--NOT AVAILABLE ON  ## Can I apply Azure reservation discounts to my AKS agent nodes?-->
+<!--NOT AVAILABLE ON   [Azure reservations][reservation-discounts]-->
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>我可以在 Azure 租户之间移动/迁移群集吗？
 
@@ -194,8 +192,8 @@ AKS 通过[运行时间 SLA][uptime-sla] 提供 SLA 保障（可选的附加功�
 
 ## <a name="can-i-scale-my-aks-cluster-to-zero"></a>能否将 AKS 群集缩放为零？
 
-<!--Not Available on [stop a running AKS cluster](start-stop-cluster.md)-->
-<!--Not Available on You can completely stop a running AKS cluster), saving on the respective compute costs.-->
+<!--NOT AVAILABLE ON [stop a running AKS cluster](start-stop-cluster.md)-->
+<!--NOT AVAILABLE ON You can completely stop a running AKS cluster), saving on the respective compute costs.-->
 
 可以选择[将所有的或特定的 `User` 节点池缩放或自动缩放](scale-cluster.md#scale-user-node-pools-to-0)为 0，以仅维护必要的群集配置。
 你不能直接将[系统节点池](use-system-pools.md)缩放为零。
@@ -208,13 +206,13 @@ AKS 通过[运行时间 SLA][uptime-sla] 提供 SLA 保障（可选的附加功�
 
 否。使用虚拟机规模集 API 进行的缩放操作不受支持。 可以使用 AKS API 缩放到零个非系统节点池。
 
-<!--Not Available on [stop your cluster](start-stop-cluster.md)-->
+<!--NOT AVAILABLE ON [stop your cluster](start-stop-cluster.md)-->
 
 ## <a name="can-i-stop-or-de-allocate-all-my-vms"></a>是否可以停止或解除分配我的所有 VM？
 
 虽然 AKS 有对抗此类配置并从其恢复的复原机制，但这不是受支持的配置。
 
-<!--Not Available on [Stop your cluster](start-stop-cluster.md)-->
+<!--NOT AVAILABLE ON [Stop your cluster](start-stop-cluster.md)-->
 
 ## <a name="can-i-use-custom-vm-extensions"></a>是否可以使用自定义 VM 扩展？
 

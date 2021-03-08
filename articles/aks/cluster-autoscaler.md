@@ -5,16 +5,16 @@ services: container-service
 ms.topic: article
 origin.date: 07/18/2019
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 07/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: ffd66683e250aa72e7fb8ac22d399461db853f33
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 3c4a59f02ad6959167a622a2c55e15b1ffd3bbd1
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063599"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055154"
 ---
 <!--Verified successfully-->
 <!--PG team have confirm the issue have been fixed-->
@@ -128,7 +128,7 @@ az aks update \
 
 还可以通过更改群集范围的自动缩放程序配置文件中的默认值，来配置群集自动缩放程序的更高粒度详细信息。 例如，在节点未充分利用 10 分钟后，将发生纵向缩减事件。 如果你的工作负荷每 15 分钟运行一次，则可能需要更改自动缩放程序配置文件，以便在 15 到 20 分钟后纵向缩减未充分利用的节点。 启用群集自动缩放程序后，除非指定不同的设置，否则将使用默认配置文件。 可以更新群集自动缩放程序配置文件中的以下设置：
 
-| 设置                          | 描述                                                                              | 默认值 |
+| 设置                          | 说明                                                                              | 默认值 |
 |----------------------------------|------------------------------------------------------------------------------------------|---------------|
 | scan-interval                    | 重新评估群集纵向扩展或缩减的频率                                    | 10 秒    |
 | scale-down-delay-after-add       | 纵向扩展后经过多长时间恢复评估纵向缩减                               | 10 分钟    |
@@ -280,6 +280,8 @@ az aks nodepool update \
 ```
 
 若要对现有的群集重新启用群集自动缩放程序，可以使用 [az aks nodepool update][az-aks-nodepool-update] 命令并指定 `--enable-cluster-autoscaler`、 `--min-count` 和 `--max-count` 参数。
+
+<!--NOT AVAILABLE ON that span multiple zones-->
 
 ## <a name="next-steps"></a>后续步骤
 

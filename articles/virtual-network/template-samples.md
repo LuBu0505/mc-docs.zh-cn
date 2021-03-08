@@ -3,22 +3,22 @@ title: 适用于虚拟网络的 Azure 资源管理器模板示例 | Azure
 description: 了解可供用来部署 Azure 虚拟网络的各种 Azure 资源管理器模板。
 services: virtual-network
 documentationcenter: virtual-network
-author: rockboyfor
-manager: digimobile
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 origin.date: 04/22/2019
-ms.date: 07/06/2020
+author: rockboyfor
+ms.date: 02/22/2021
 ms.author: v-yeche
-ms.openlocfilehash: bf243582f23a84367d0622d86600cea9d83ee15c
-ms.sourcegitcommit: af71b9199d47fb81e85d70da0cfb265cc814a644
+ms.openlocfilehash: 07fba76c867427e6bf3e2eced4d171277755bfac
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969016"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053963"
 ---
 # <a name="azure-resource-manager-template-samples-for-virtual-network"></a>适用于虚拟网络的 Azure 资源管理器模板示例
 
@@ -38,4 +38,4 @@ ms.locfileid: "85969016"
 |[创建具有多个 IP 地址的虚拟机](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-ipconfig)| 创建具有多个 IP 地址的 Windows 或 Linux VM|
 |[配置 IPv4 + IPv6 双堆栈虚拟网络](https://github.com/Azure/azure-quickstart-templates/tree/master/ipv6-in-vnet)|部署具有两个 VM 的双栈 (IPv4+IPv6) 虚拟网络和具有 IPv4 和 IPv6 公共 IP 地址的 Azure 基本负载均衡器。 |
 
-<!-- Update_Description: update meta properties, wording update -->
+<!--Update_Description: update meta properties, wording update, update link-->

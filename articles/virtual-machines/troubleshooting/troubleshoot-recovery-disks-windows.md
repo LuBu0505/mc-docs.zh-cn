@@ -9,16 +9,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 08/09/2018
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 82907f9653219f490fa1fa8b0e5b4db4118259ad
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 25c8ae6ffa153bb9cc21ac1ac9b8d15ded76827d
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104973"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054316"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>通过使用 Azure PowerShell 将 OS 磁盘附加到恢复 VM 来对 Windows VM 进行故障排除
 如果 Windows 虚拟机 (VM) 在 Azure 中遇到启动或磁盘错误，可能需要对磁盘本身执行故障排除步骤。 一个常见示例是应用程序更新失败，使 VM 无法成功启动。 本文详细介绍如何使用 Azure PowerShell 将磁盘连接到另一个 Windows VM 来修复所有错误，然后修复原始 VM。 
@@ -39,7 +39,7 @@ ms.locfileid: "93104973"
 6. 从恢复 VM 卸载并分离磁盘。
 7. 更改受影响 VM 的 OS 磁盘。
 
-可以使用 VM 修复命令自动执行步骤 1、2、3、4、6 和 7。 有关更多文档和说明，请参阅[使用 Azure 虚拟机修复命令修复 Windows VM](repair-windows-vm-using-azure-virtual-machine-repair-commands.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
+可以使用 VM 修复命令自动执行步骤 1、2、3、4、6 和 7。 有关更多文档和说明，请参阅[使用 Azure 虚拟机修复命令修复 Windows VM](repair-windows-vm-using-azure-virtual-machine-repair-commands.md)。
 
 确保已安装[最新 Azure PowerShell](https://docs.microsoft.com/powershell/azure/) 并登录到订阅：
 
@@ -176,7 +176,7 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
     Get-Disk
     ```
 
-    以下示例输出显示该磁盘连接了磁盘 **2** 。 （也可使用 `Get-Volume` 查看驱动器号）：
+    以下示例输出显示该磁盘连接了磁盘 **2**。 （也可使用 `Get-Volume` 查看驱动器号）：
 
     ```powershell
     Number   Friendly Name   Serial Number   HealthStatus   OperationalStatus   Total Size   Partition
@@ -254,8 +254,8 @@ Update-AzVM -ResourceGroup "myResourceGroup" -VM $myVM
 ```
 
 ## <a name="next-steps"></a>后续步骤
-如果在连接到 VM 时遇到问题，请参阅[对 Azure VM 的 RDP 连接进行故障排除](troubleshoot-rdp-connection.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。 如果在访问 VM 上运行的应用程序时遇到问题，请参阅[对 Windows VM 上的应用程序连接问题进行故障排除](troubleshoot-app-connection.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
+如果在连接到 VM 时遇到问题，请参阅[对 Azure VM 的 RDP 连接进行故障排除](troubleshoot-rdp-connection.md)。 如果在访问 VM 上运行的应用程序时遇到问题，请参阅[对 Windows VM 上的应用程序连接问题进行故障排除](troubleshoot-app-connection.md)。
 
 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

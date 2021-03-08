@@ -3,15 +3,15 @@ title: 策略定义结构的详细信息
 description: 介绍如何使用策略定义为组织中的 Azure 资源建立约定。
 origin.date: 10/22/2020
 author: rockboyfor
-ms.date: 02/08/2021
+ms.date: 03/01/2021
 ms.author: v-yeche
 ms.topic: conceptual
-ms.openlocfilehash: 464271b85df676c73cb30c4043155641fe22eb17
-ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
+ms.openlocfilehash: 64354e58798b6b838f31261b9cbd141babe4f188
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580465"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196821"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -355,7 +355,7 @@ strongType 的非资源类型允许值包括：
                 "value": "[resourcegroup().tags[parameters('tagName')]]"
             }],
             "roleDefinitionIds": [
-                "/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+                "/providers/microsoft.authorization/roleDefinitions/4a9ae827-6dc8-4573-8ac7-8239d42aa03f"
             ]
         }
     }

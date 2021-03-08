@@ -2,14 +2,14 @@
 title: 新建基于工作区的 Azure Monitor Application Insights 资源 | Microsoft Docs
 description: 了解启用基于工作区的新 Azure Monitor Application Insights 资源所需的步骤。
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 02/22/2021
 ms.author: v-johya
-ms.openlocfilehash: edbfcd38d98ca5a5245b52fc8b3d200cfd053228
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: 623f20ed9808e08cee965e964754a5f08619f98c
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97105521"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197270"
 ---
 # <a name="workspace-based-application-insights-resources"></a>基于工作区的 Application Insights 资源
 
@@ -24,17 +24,18 @@ ms.locfileid: "97105521"
 
 基于工作区的 Application Insights 使得你可以利用 Azure Monitor 和 Log Analytics 的最新功能，其中包括：
 
-* [客户管理的密钥 (CMK)](../platform/customer-managed-keys.md) 为你的数据提供静态加密，并提供只有你有权访问的加密密钥。
-* 使用[产能预留层](../platform/manage-cost-storage.md#pricing-model)可以节省 25% 的成本（与即用即付价格相比）。 
+* [客户管理的密钥 (CMK)](../logs/customer-managed-keys.md) 为你的数据提供静态加密，并提供只有你有权访问的加密密钥。
+* 使用[产能预留层](../logs/manage-cost-storage.md#pricing-model)可以节省 25% 的成本（与即用即付价格相比）。 
 * 可以通过 Log Analytics 流引入提高数据引入速度。
 
 ## <a name="create-workspace-based-resource"></a>创建基于工作区的资源
 
 登录 [Azure 门户](https://portal.azure.cn)，并创建 Application Insights 资源：
 
-![基于工作区的 Application Insights 资源](./media/create-workspace-resource/create-workspace-based.png)
+> [!div class="mx-imgBorder"]
+> ![基于工作区的 Application Insights 资源](./media/create-workspace-resource/create-workspace-based.png)
 
-如果你还没有现有的 Log Analytics 工作区，请[参阅 Log Analytics 工作区创建文档](../learn/quick-create-workspace.md)。
+如果你还没有现有的 Log Analytics 工作区，请[参阅 Log Analytics 工作区创建文档](../logs/quick-create-workspace.md)。
 
 创建资源后，可在“概览”窗格中看到相应的工作区信息：
 
@@ -109,7 +110,7 @@ az monitor app-insights component create --app
 az monitor app-insights component create --app demoApp --location chinaeast2 --kind web -g my_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-有关此命令的完整 Azure CLI 文档，请参阅 [Azure CLI 文档](/cli/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)。
+有关此命令的完整 Azure CLI 文档，请参阅 [Azure CLI 文档](/cli/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-create)。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -208,6 +209,6 @@ PowerShell 命令 `New-AzApplicationInsights` 当前不支持创建基于工作�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [探索指标](../platform/metrics-charts.md)
-* [编写分析查询](../log-query/log-query-overview.md)
+* [探索指标](../essentials/metrics-charts.md)
+* [编写分析查询](../logs/log-query-overview.md)
 

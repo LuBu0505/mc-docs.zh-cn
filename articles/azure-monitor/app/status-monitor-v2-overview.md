@@ -4,14 +4,14 @@ description: Application Insights 代理的概述。 无需重新部署网站即
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 01/14/2021
+ms.date: 02/22/2021
 origin.date: 09/16/2019
-ms.openlocfilehash: c79c69f573a1d102cbabb6de6a5d79be556a8892
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: e661ed291ea588dfa482b416a72ed6dd435ad3fe
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230911"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197381"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>为本地服务器部署 Azure Monitor Application Insights 代理
 
@@ -27,12 +27,12 @@ Application Insights 代理（以前称为状态监视器 V2）是发布到 [Pow
 
 ## <a name="powershell-gallery"></a>PowerShell 库
 
-Application Insights 代理位于此处： https://www.powershellgallery.com/packages/Az.ApplicationMonitor 。
+Application Insights 代理位于此处：https://www.powershellgallery.com/packages/Az.ApplicationMonitor。
 
 ![PowerShell 库](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
 
-## <a name="instructions"></a>Instructions
+## <a name="instructions"></a>说明
 - 请参阅[入门说明](status-monitor-v2-get-started.md)，从简明的代码示例开始学习。
 - 请参阅[详细说明](status-monitor-v2-detailed-instructions.md)，以深入了解如何开始使用。
 
@@ -46,7 +46,7 @@ Application Insights 代理位于此处： https://www.powershellgallery.com/pac
 - [Set-ApplicationInsightsMonitoringConfig](./status-monitor-v2-api-reference.md#set-applicationinsightsmonitoringconfig)
 - [Start-ApplicationInsightsMonitoringTrace](./status-monitor-v2-api-reference.md#start-applicationinsightsmonitoringtrace)
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 - [故障排除](status-monitor-v2-troubleshoot.md)
 - [已知问题](status-monitor-v2-troubleshoot.md#known-issues)
 
@@ -55,20 +55,20 @@ Application Insights 代理位于此处： https://www.powershellgallery.com/pac
 
 - Application Insights 代理是否支持代理安装？
 
-  *是*。 可以通过多种方式下载 Application Insights 代理。 如果计算机可以访问 Internet，则可以使用 `-Proxy` 参数登录到 PowerShell 库。
+  *是* 可以通过多种方式下载 Application Insights 代理。 如果计算机可以访问 Internet，则可以使用 `-Proxy` 参数登录到 PowerShell 库。
 还可以手动下载此模块，并将其安装到计算机上或直接使用它。
 上述每个选项都在[详细说明](status-monitor-v2-detailed-instructions.md)中进行了说明。
 
 - 状态监视器 v2 是否支持 ASP.NET Core 应用程序？
 
-  *不*。 有关启用对 ASP.NET Core 应用程序的监视的说明，请参阅[适用于 ASP.NET Core 应用程序的 Application Insights](./asp-net-core.md)。 无需为 ASP.NET Core 应用程序安装 StatusMonitor。 即使 ASP.NET Core 应用程序托管在 IIS 中，也是如此。
+  “否”。 有关启用对 ASP.NET Core 应用程序的监视的说明，请参阅[适用于 ASP.NET Core 应用程序的 Application Insights](./asp-net-core.md)。 无需为 ASP.NET Core 应用程序安装 StatusMonitor。 即使 ASP.NET Core 应用程序托管在 IIS 中，也是如此。
 
 - 如何验证启用是否成功？
 
   - [Get-ApplicationInsightsMonitoringStatus](./status-monitor-v2-api-reference.md#get-applicationinsightsmonitoringstatus) cmdlet 可用于验证启用是否成功。
   - 我们建议你使用[实时指标](./live-stream.md)来快速确定应用是否正在发送遥测数据。
 
-  - 还可以使用 [Log Analytics](../log-query/log-analytics-tutorial.md) 列出当前正在发送遥测数据的所有云角色：
+  - 还可以使用 [Log Analytics](../logs/log-analytics-tutorial.md) 列出当前正在发送遥测数据的所有云角色：
       ```Kusto
       union * | summarize count() by cloud_RoleName, cloud_RoleInstance
       ```
@@ -77,9 +77,9 @@ Application Insights 代理位于此处： https://www.powershellgallery.com/pac
 
 查看遥测：
 
-* [浏览指标](../platform/metrics-charts.md)，以便监视性能和使用情况。
+* [浏览指标](../essentials/metrics-charts.md)，以便监视性能和使用情况。
 * [搜索事件和日志](./diagnostic-search.md)以诊断问题。
-* [使用分析](../log-query/log-query-overview.md)，以便进行更高级的查询。
+* [使用分析](../logs/log-query-overview.md)，以便进行更高级的查询。
 * [创建仪表板](./overview-dashboard.md)。
 
 添加更多遥测：

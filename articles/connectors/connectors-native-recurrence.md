@@ -7,16 +7,16 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 origin.date: 12/18/2020
 author: rockboyfor
-ms.date: 01/25/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4fe5ff6334f00699996f64dc973e69d6b83fbfd1
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: fa7555033602c07feea76672f5a5b3855f0579d5
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751334"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053926"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的定期触发器创建、计划和运行重复任务和工作流
 
@@ -64,12 +64,12 @@ ms.locfileid: "98751334"
     ||||||
 
     > [!IMPORTANT]
-    > 如果重复周期未指定高级计划选项，则将来的重复周期将基于上次运行时间。
-    > 这些重复周期的开始时间可能会因存储调用期间的延迟等因素而发生偏移。 为了确保逻辑应用不会错过重复周期，特别是当频率为几天或更长的时间时，请使用以下选项之一：
+    > 如果某个定期触发未指定具体的[开始日期和时间](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time)，则在保存或部署逻辑应用时，会立即运行第一次定期触发，而不管触发器的定期设置如何。 若要避免此行为，请提供你希望运行第一次定期触发的开始日期和时间。
+    >
+    > 如果某个定期触发未指定任何其他高级计划选项（例如具体时间）来运行将来的定期触发，则这些将来的定期触发会以上一次运行时间为基础。 因此，这些定期触发的开始时间可能会因存储调用期间的延迟等因素而发生偏移。 
+    > 为了确保逻辑应用不会错过定期触发（特别是在频率为几天（或更长时间）一次的情况下），请尝试以下选项：
     > 
-    > * 提供重复周期的开始时间。
-    > 
-    > * 使用“在这些小时”和“在这些分钟”属性指定何时运行重复周期的小时和分钟。
+    > * 提供定期触发的开始日期和时间，以及运行后续定期触发的具体时间，这可以通过“在这些小时”和“在这些分钟”属性来进行，仅适用于“天”和“周”频率。
     > 
     > * 使用[滑动窗口触发器](../connectors/connectors-native-sliding-window.md)，而不是使用重复触发器。
 
@@ -141,4 +141,4 @@ ms.locfileid: "98751334"
 * [使用延迟操作暂停工作流](../connectors/connectors-native-delay.md)
 * [适用于逻辑应用的连接器](../connectors/apis-list.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -4,13 +4,13 @@ description: 介绍 Azure 事件网格的 SDK。 这些 SDK 提供管理、发�
 ms.topic: reference
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 10/10/2020
-ms.openlocfilehash: bba2eaf6c3e1781717c0448c0376e0d5e93a3f25
-ms.sourcegitcommit: 6f66215d61c6c4ee3f2713a796e074f69934ba98
+ms.date: 03/05/2021
+ms.openlocfilehash: 6c0768da41c79f1f350954ec3953ff0ef1f24732
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92128247"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197254"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>用于管理和发布的事件网格 SDK
 
@@ -23,7 +23,7 @@ ms.locfileid: "92128247"
 * [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid)
 * [Go](https://github.com/Azure/azure-sdk-for-go)
 * [Java](https://search.maven.org/#search%7Cga%7C1%7Cazure-mgmt-eventgrid)
-* [Node](https://www.npmjs.com/package/azure-arm-eventgrid)
+* [Node](https://www.npmjs.com/package/@azure/arm-eventgrid)
 * [Python](https://pypi.python.org/pypi/azure-mgmt-eventgrid)
 * [Ruby](https://rubygems.org/gems/azure_mgmt_event_grid)
 

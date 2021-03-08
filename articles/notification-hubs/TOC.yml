@@ -30,10 +30,10 @@
           items:
             - name: iOS 教程的先决条件
               href: ios-sdk-get-started.md
-            - name: Objective-C（版本 3.0.0 预览版 1）
-              href: ios-sdk-300.md
-            - name: Objective-C（版本 2.0.4）
-              href: ios-sdk-204.md
+            - name: Objective-C（当前 SDK）
+              href: ios-sdk-current.md
+            - name: Objective-C（旧版 SDK）
+              href: ios-sdk-legacy.md
         - name: 向特定设备发送推送通知
           href: notification-hubs-ios-xplat-segmented-apns-push-notification.md
         - name: 向特定用户发送推送通知
@@ -129,6 +129,8 @@
       href: notification-hubs-baidu-china-android-notifications-get-started.md
     - name: 通过通知中心使用 APNS VOIP
       href: voip-apns.md
+    - name: 为通知中心启用诊断日志
+      href: notification-hubs-diagnostic-logs.md
 - name: 参考
   items:
     - name: .NET
@@ -138,7 +140,7 @@
     - name: PowerShell
       href: 'https://docs.microsoft.com/powershell/module/az.notificationhubs'
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/notificationhubs'
+      href: 'https://docs.microsoft.com/rest/api/notificationhubs/'
     - name: 资源管理器模板
       href: 'https://docs.microsoft.com/azure/templates/microsoft.notificationhubs/allversions'
 - name: 资源

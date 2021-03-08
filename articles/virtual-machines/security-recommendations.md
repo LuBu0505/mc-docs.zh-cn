@@ -7,18 +7,18 @@ ms.subservice: security
 ms.topic: conceptual
 origin.date: 11/13/2019
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: security-recommendations
 ms.reviewer: cynthn
-ms.openlocfilehash: 5ef92b5094b06839db5e902d28ebbedd25bfd3f4
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: b506ee93d15aea95c780207c00eee588f901cc01
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856790"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054376"
 ---
 <!--Verified successfully-->
 # <a name="security-recommendations-for-virtual-machines-in-azure"></a>针对 Azure 中虚拟机的安全建议
@@ -57,9 +57,8 @@ ms.locfileid: "97856790"
 |-|----|--|
 | 集中进行 VM 身份验证。 | 可以使用 [Azure Active Directory 身份验证](../active-directory/develop/authentication-vs-authorization.md)集中进行 Windows 和 Linux VM 的身份验证。 | - |
 
-<!--Not Available on ## Monitoring-->
-<!--Not Available on [Azure Monitor for VMs](../articles/azure-monitor/insights/vminsights-overview.md)-->
-
+<!--NOT AVAILABLE ON ## Monitoring-->
+<!--NOT AVAILABLE ON [Azure Monitor for VMs](../azure-monitor/vm/vminsights-overview.md)-->
 
 ## <a name="networking"></a>网络
 
@@ -72,4 +71,5 @@ ms.locfileid: "97856790"
 
 请咨询应用程序提供商，了解是否有其他安全要求。 有关开发安全的应用程序的详细信息，请参阅[安全开发文档](https://azure.microsoft.com/resources/develop-secure-applications-on-azure/)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--CORRECT ON https://azure.microsoft.com/resources/develop-secure-applications-on-azure/-->
+<!--Update_Description: update meta properties, wording update, update link-->

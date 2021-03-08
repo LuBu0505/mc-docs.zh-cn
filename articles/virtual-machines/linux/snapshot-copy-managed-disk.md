@@ -6,15 +6,15 @@ manager: twooley
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 11/11/2020
+ms.date: 03/04/2021
 ms.author: v-johya
 ms.subservice: disks
-ms.openlocfilehash: 015217d51a4cc485edcea86ff6aa57edd9d545a9
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: 4235992b95d1994619bb7dae1f824d4978364a9c
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637878"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197651"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-azure-cli"></a>使用门户或 Azure CLI 创建快照
 
@@ -28,7 +28,7 @@ ms.locfileid: "94637878"
 
 以下步骤说明如何使用带有 **--source-disk** 参数的 **az snapshot create** 命令创建快照。 以下示例假设 *myResourceGroup* 资源组中存在名为 *myVM* 的 VM。
 
-使用 [az vm show](https://docs.azure.cn/zh-cn/cli/vm?view=azure-cli-latest#az-vm-show) 获取磁盘 ID。
+使用 [az vm show](/cli/vm#az-vm-show) 获取磁盘 ID。
 
 ```azurecli
 osDiskId=$(az vm show \
@@ -38,7 +38,7 @@ osDiskId=$(az vm show \
    -o tsv)
 ```
 
-使用 [az snapshot create](https://docs.azure.cn/zh-cn/cli/snapshot?view=azure-cli-latest#az-snapshot-create) 创建名为 *osDisk-backup* 的快照。
+使用 [az snapshot create](/cli/snapshot#az-snapshot-create) 创建名为 *osDisk-backup* 的快照。
 
 ```azurecli
 az snapshot create \
@@ -49,7 +49,7 @@ az snapshot create \
 
 <!-- Not Available on Availability zones -->
 
-可以使用 [az snapshot list](https://docs.azure.cn/zh-cn/cli/snapshot?view=azure-cli-latest#az-snapshot-list) 查看快照列表。
+可以使用 [az snapshot list](/cli/snapshot#az-snapshot-list) 查看快照列表。
 
 ```azurecli
 az snapshot list \
@@ -72,6 +72,6 @@ az snapshot list \
 
 ## <a name="next-steps"></a>后续步骤
 
- 通过从快照创建托管磁盘，然后将新的托管磁盘附加为 OS 磁盘来从快照创建虚拟机。 有关详细信息，请参阅[从快照创建 VM](./../scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fcli%2fmodule%2ftoc.json) 脚本。
+ 通过从快照创建托管磁盘，然后将新的托管磁盘附加为 OS 磁盘来从快照创建虚拟机。 有关详细信息，请参阅[从快照创建 VM](https://docs.microsoft.com/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot?toc=%2fcli%2fmodule%2ftoc.json) 脚本。
 
 <!-- Update_Description: update link, wording update, update meta properties -->

@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 03/02/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 21b7a17dbbfda0ce57d1b71f1c6758603c667823
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: b8da04ed7354c2b9af4a83d7320be0525abb5953
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570670"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055259"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虚拟网络中资源的名称解析
 
@@ -60,7 +60,7 @@ Azure 提供的名称解析仅提供基本的权威 DNS 功能。 如果使用�
 除公共 DNS 名称解析之外，Azure 还为驻留在相同虚拟网络或云服务中的 VM 和角色实例提供内部名称解析。 云服务中的 VM 和实例共享相同的 DNS 后缀，因此仅使用主机名便可。 但在使用经典部署模型部署的虚拟网络中，不同云服务具有不同的 DNS 后缀。 在这种情况下，需要使用 FQDN 解析不同云服务的名称。 在使用 Azure 资源管理器部署模型部署的虚拟网络中，某个虚拟网络中的所有虚拟机的 DNS 后缀是一致的，因此无需 FQDN。 DNS 名称可分配给 VM 和网络接口。 虽然 Azure 提供的名称解析不需要任何配置，但并不适合所有部署方案，参见上表详细说明。
 
 > [!NOTE]
-> 在使用云服务 Web 和辅助角色的情况下，还可以使用 Azure 服务管理 REST API 访问角色实例的内部 IP 地址。 有关详细信息，请参阅[服务管理 REST API 参考](https://msdn.microsoft.com/library/azure/ee460799.aspx)。 地址基于角色名称和实例编号。 
+> 在使用云服务 Web 和辅助角色的情况下，还可以使用 Azure 服务管理 REST API 访问角色实例的内部 IP 地址。 有关详细信息，请参阅[服务管理 REST API 参考](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100))。 地址基于角色名称和实例编号。 
 >
 
 ### <a name="features"></a>功能
@@ -91,7 +91,7 @@ Azure 提供的名称解析包括以下功能：
 * 对 \[vmname\].internal.chinacloudapp.cn 格式的 FQDN 执行正向查找会解析为分配给虚拟机的 IP 地址。
 * 如果虚拟网络已作为注册虚拟网络链接到 [Azure DNS 专用区域](../dns/private-dns-overview.md)，则反向 DNS 查询会返回两条记录。 一条记录的格式将为 \[vmname\].[privatednszonename]，另一条记录的格式将为 \[vmname\].internal.chinacloudapp.cn
 * 反向 DNS 查找的范围限定为给定的虚拟网络，即使该虚拟网络已对等互连到其他虚拟网络。 对位于对等互连虚拟网络中的虚拟机的 IP 地址执行反向 DNS 查询（PTR 查询）会返回 NXDOMAIN。
-* 如果要在虚拟网络中关闭反向 DNS 功能，可以通过使用 [Azure DNS 专用区域](../dns/private-dns-overview.md)并将此区域链接到你的虚拟网络来执行此操作。 例如，如果虚拟网络的 IP 地址空间是 10.20.0.0/16，可以创建空的专用 DNS 区域 20.10.in-addr.arpa，并将其链接到该虚拟网络。 在将区域链接到虚拟网络时，应禁用链接上的自动注册。 此区域将替代虚拟网络的默认反向查找区域，因为此区域为空，反向 DNS 查询将获得 NXDOMAIN。 请参阅我们的[快速入门指南](https://docs.azure.cn/dns/private-dns-getstarted-portal)，详细了解如何创建专用 DNS 区域并将其链接到虚拟网络。
+* 如果要在虚拟网络中关闭反向 DNS 功能，可以通过使用 [Azure DNS 专用区域](../dns/private-dns-overview.md)并将此区域链接到你的虚拟网络来执行此操作。 例如，如果虚拟网络的 IP 地址空间是 10.20.0.0/16，可以创建空的专用 DNS 区域 20.10.in-addr.arpa，并将其链接到该虚拟网络。 在将区域链接到虚拟网络时，应禁用链接上的自动注册。 此区域将替代虚拟网络的默认反向查找区域，因为此区域为空，反向 DNS 查询将获得 NXDOMAIN。 请参阅我们的[快速入门指南](../dns/private-dns-getstarted-portal.md)，详细了解如何创建专用 DNS 区域并将其链接到虚拟网络。
 
 > [!NOTE]
 > 若要跨虚拟网络执行反向 DNS 查找，可以创建一个反向查找区域 (in-addr.arpa) [Azure DNS 专用区域](../dns/private-dns-overview.md)，并将其链接到多个虚拟网络。 但是，必须手动管理虚拟机的反向 DNS 记录。
@@ -166,7 +166,7 @@ Azure 提供的功能可能无法满足名称解析的需求。 例如，可能�
 DNS 转发还可用于在虚拟网络之间进行 DNS 解析，可以通过本地计算机来解析 Azure 提供的主机名。 若要解析 VM 的主机名，DNS 服务器 VM 必须驻留在同一虚拟网络中，并且必须配置为将主机名查询转发到 Azure。 由于 DNS 后缀在每个虚拟网络中是不同的，因此可使用条件性转发规则将 DNS 查询发送到正确的虚拟网络进行解析。 下图显示了两个虚拟网络和一个本地网络使用本方法在虚拟网络之间进行 DNS 解析。 DNS 转发器示例可在 [Azure 快速入门模板库](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder/)和 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder) 中获取。
 
 > [!NOTE]
-> 角色实例可对同一虚拟网络中的 VM 执行名称解析， 方法是使用由 VM 主机名和 **internal.chinacloudapp.cn** DNS 后缀组成的 FQDN。 但是，在这种情况下，仅当角色实例在[角色架构（.cscfg 文件）](https://msdn.microsoft.com/library/azure/jj156212.aspx)中定义了 VM 名称时，名称解析才会成功。
+> 角色实例可对同一虚拟网络中的 VM 执行名称解析， 方法是使用由 VM 主机名和 **internal.chinacloudapp.cn** DNS 后缀组成的 FQDN。 但是，在这种情况下，仅当角色实例在[角色架构（.cscfg 文件）](https://docs.microsoft.com/previous-versions/azure/reference/jj156212(v=azure.100))中定义了 VM 名称时，名称解析才会成功。
 > `<Role name="<role-name>" vmName="<vm-name>">`
 >
 > 需要在另一个虚拟网络中执行 VM 名称解析的角色实例（使用 **internal.chinacloudapp.cn** 后缀的 FQDN）必须使用本部分所述的方法（在两个虚拟网络之间进行自定义 DNS 服务器转发）。
@@ -179,7 +179,7 @@ DNS 转发还可用于在虚拟网络之间进行 DNS 解析，可以通过本�
 如果需要，可以使用 PowerShell 或 API 确定内部 DNS 后缀：
 
 * 对于 Azure 资源管理器部署模型中的虚拟网络，可以通过[网络接口 REST API](https://docs.microsoft.com/rest/api/virtualnetwork/networkinterfaces)、[Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterface) PowerShell cmdlet 和 [az network nic show](https://docs.azure.cn/cli/network/nic#az_network_nic_show) Azure CLI 命令获取该后缀。
-* 在经典部署模型中，可以通过 [Get Deployment API](https://msdn.microsoft.com/library/azure/ee460804.aspx) 调用或 [Get-AzureVM -Debug](https://docs.microsoft.com/powershell/module/servicemanagement/azure.service/get-azurevm) cmdlet 获取该后缀。
+* 在经典部署模型中，可以通过 [Get Deployment API](https://docs.microsoft.com/previous-versions/azure/reference/ee460804(v=azure.100)) 调用或 [Get-AzureVM -Debug](https://docs.microsoft.com/powershell/module/servicemanagement/azure.service/get-azurevm) cmdlet 获取该后缀。
 
 如果不想将查询转发到 Azure，应提供自己的 DNS 解析。 DNS 解决方案需要：
 
@@ -217,7 +217,7 @@ DNS 转发还可用于在虚拟网络之间进行 DNS 解析，可以通过本�
 > [!NOTE]
 > 如果为虚拟网络选择自定义 DNS 服务器，则必须至少指定一个 DNS 服务器 IP 地址；否则，虚拟网络将忽略配置，而改用由 Azure 提供的 DNS。
 
-使用经典部署模型时，可以在 Azure 门户或[网络配置文件](https://msdn.microsoft.com/library/azure/jj157100)中指定虚拟网络的 DNS 服务器。 对于云服务器，可以通过[服务配置文件](https://msdn.microsoft.com/library/azure/ee758710)或者在 PowerShell 中使用 [New-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure.service/new-azurevm) 指定 DNS 服务器。
+使用经典部署模型时，可以在 Azure 门户或[网络配置文件](https://docs.microsoft.com/previous-versions/azure/reference/jj157100(v=azure.100))中指定虚拟网络的 DNS 服务器。 对于云服务器，可以通过[服务配置文件](https://docs.microsoft.com/previous-versions/azure/reference/ee758710(v=azure.100))或者在 PowerShell 中使用 [New-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure.service/new-azurevm) 指定 DNS 服务器。
 
 > [!NOTE]
 > 如果更改已部署的虚拟网络或虚拟机的 DNS 设置，要使新的 DNS 设置生效，必须对虚拟网络中所有受影响的 VM 执行 DHCP 租约续订。 对于运行 Windows OS 的 VM，可以直接在 VM 中键入 `ipconfig /renew` 来完成此操作。 步骤因 OS 而异。 请参阅 OS 类型的相关文档。
@@ -231,8 +231,8 @@ Azure 资源管理器部署模型
 
 经典部署模型：
 
-* [Azure 服务配置架构](https://msdn.microsoft.com/library/azure/ee758710)
-* [虚拟网络配置架构](https://msdn.microsoft.com/library/azure/jj157100)
-* [使用网络配置文件配置虚拟网络](virtual-networks-using-network-configuration-file.md)
+* [Azure 服务配置架构](https://docs.microsoft.com/previous-versions/azure/reference/ee758710(v=azure.100))
+* [虚拟网络配置架构](https://docs.microsoft.com/previous-versions/azure/reference/jj157100(v=azure.100))
+* [使用网络配置文件配置虚拟网络](https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

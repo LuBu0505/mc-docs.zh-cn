@@ -2,14 +2,14 @@
 title: 将 Azure Monitor Application Insights 经典资源迁移到基于工作区的资源 | Microsoft Docs
 description: 了解将 Azure Monitor Application Insights 经典资源升级到新的基于工作区的模型需要执行的步骤。
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 02/22/2021
 ms.author: v-johya
-ms.openlocfilehash: 884cb02c8d11c4b7fdd947a7486c3cc7fd8fb961
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: bbe6e870344697eab3ae9b2349b09054165549be
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97105522"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197695"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>迁移到基于工作区的 Application Insights 资源
 
@@ -21,19 +21,19 @@ ms.locfileid: "97105522"
 
 基于工作区的 Application Insights 使得你可以利用 Azure Monitor 和 Log Analytics 的所有最新功能，其中包括：
 
-* [客户管理的密钥 (CMK)](../platform/customer-managed-keys.md) 为你的数据提供静态加密，并提供只有你有权访问的加密密钥。
-* 使用[产能预留层](../platform/manage-cost-storage.md#pricing-model)可以节省 25% 的成本（与即用即付价格相比）。 
+* [客户管理的密钥 (CMK)](../logs/customer-managed-keys.md) 为你的数据提供静态加密，并提供只有你有权访问的加密密钥。
+* 使用[产能预留层](../logs/manage-cost-storage.md#pricing-model)可以节省 25% 的成本（与即用即付价格相比）。 
 * 可以通过 Log Analytics 流引入提高数据引入速度。
 
 ## <a name="migration-process"></a>迁移过程
 
 迁移到基于工作区的资源时，不会将任何数据从经典资源的存储传输到新的基于工作区的存储。 而选择迁移则会将新数据的写入位置更改为 Log Analytics 工作区，同时保留对经典资源数据的访问权限。 
 
-你的经典资源数据将持久保存，并受针对经典 Application Insights 资源的保留设置制约。 在迁移后引入的所有新数据会受关联的 Log Analytics 工作区的[保留设置](../platform/manage-cost-storage.md#change-the-data-retention-period)制约，该工作区还支持[按数据类型确定的不同保留设置](../platform/manage-cost-storage.md#retention-by-data-type)。
+你的经典资源数据将持久保存，并受针对经典 Application Insights 资源的保留设置制约。 在迁移后引入的所有新数据会受关联的 Log Analytics 工作区的[保留设置](../logs/manage-cost-storage.md#change-the-data-retention-period)制约，该工作区还支持[按数据类型确定的不同保留设置](../logs/manage-cost-storage.md#retention-by-data-type)。
 迁移过程是永久性的，无法撤消。 将资源迁移到基于工作区的 Application Insights 后，它将始终是基于工作区的资源。 但是，在迁移后，可以根据需要随时更改目标工作区。 
 
 > [!NOTE]
-> 基于工作区的 Application Insights 资源的数据引入和保留操作[通过数据所在的 Log Analytics 工作区计费](../platform/manage-cost-storage.md)。 如果在迁移之前选择了将引入经典 Application Insights 资源的数据保留 90 天以上，则数据保留将继续通过该 Application Insights 资源计费。 [详细了解]( ./pricing.md#workspace-based-application-insights)基于工作区的 Application Insights 资源的计费。
+> 基于工作区的 Application Insights 资源的数据引入和保留操作[通过数据所在的 Log Analytics 工作区计费](../logs/manage-cost-storage.md)。 如果在迁移之前选择了将引入经典 Application Insights 资源的数据保留 90 天以上，则数据保留将继续通过该 Application Insights 资源计费。 [详细了解]( ./pricing.md#workspace-based-application-insights)基于工作区的 Application Insights 资源的计费。
 
 如果不需要迁移现有资源，但是想要创建新的基于工作区的 Application Insights 资源，请使用[基于工作区的资源创建指南](create-workspace-resource.md)。
 
@@ -41,12 +41,12 @@ ms.locfileid: "97105522"
 
 - 一个 Log Analytics 工作区，且其访问控制模式需要设为“`use resource or workspace permissions`”设置。 
 
-    - 基于工作区的 Application Insights 资源与设为专用“`workspace based permissions`”设置的工作区不兼容。 若要详细了解 Log Analytics 工作区访问控制，请参阅 [Log Analytics 配置访问控制模式指南](../platform/manage-access.md#configure-access-control-mode)
+    - 基于工作区的 Application Insights 资源与设为专用“`workspace based permissions`”设置的工作区不兼容。 若要详细了解 Log Analytics 工作区访问控制，请参阅 [Log Analytics 配置访问控制模式指南](../logs/manage-access.md#configure-access-control-mode)
 
-    - 如果你还没有现有的 Log Analytics 工作区，请[参阅 Log Analytics 工作区创建文档](../learn/quick-create-workspace.md)。
+    - 如果你还没有现有的 Log Analytics 工作区，请[参阅 Log Analytics 工作区创建文档](../logs/quick-create-workspace.md)。
     
 - 基于工作区的资源不支持连续导出，必须禁用此功能。
-迁移完成后，可以使用[诊断设置](../platform/diagnostic-settings.md)配置到存储帐户的数据存档或到 Azure 事件中心的流式传输。  
+迁移完成后，可以使用[诊断设置](../essentials/diagnostic-settings.md)配置到存储帐户的数据存档或到 Azure 事件中心的流式传输。  
 
 - 在你的 Log Analytics 工作区的“常规” > “使用情况和预估成本” > “数据保留”下检查当前保留设置。   此设置会影响迁移 Application Insights 资源后新引入数据的存储时间。 如果你目前存储 Application Insights 数据的时间超过默认的 90 天，想要保留这个较长的保留期，则可能需要调整工作区保留设置。
 
@@ -111,7 +111,7 @@ az monitor app-insights component update --app
 az monitor app-insights component update --app your-app-insights-resource-name -g your_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-有关此命令的完整 Azure CLI 文档，请参阅 [Azure CLI 文档](/cli/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-update)。
+有关此命令的完整 Azure CLI 文档，请参阅 [Azure CLI 文档](/cli/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-update)。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -206,7 +206,7 @@ PowerShell 命令 `Update-AzApplicationInsights` 当前不支持将经典 Applic
 
 **错误消息：** 所选工作区配置为基于工作区的访问模式。某些 APM 功能可能会受影响。请选择其他工作区或在工作区设置中允许基于资源的访问权限。可以使用 CLI 解决此错误。 
 
-为了使基于工作区的 Application Insights 资源正常运行，你需要将目标 Log Analytics 工作区的访问控制模式更改为资源或工作区权限设置。 此设置位于 Log Analytics 工作区 UI 中的“属性” > “访问控制模式”下。 有关详细说明，请参阅 [Log Analytics 配置访问控制模式指南](../platform/manage-access.md#configure-access-control-mode)。 如果访问控制模式设置为独占的“需要工作区权限”设置，则通过门户迁移体验进行的迁移会保持被阻止状态。
+为了使基于工作区的 Application Insights 资源正常运行，你需要将目标 Log Analytics 工作区的访问控制模式更改为资源或工作区权限设置。 此设置位于 Log Analytics 工作区 UI 中的“属性” > “访问控制模式”下。 有关详细说明，请参阅 [Log Analytics 配置访问控制模式指南](../logs/manage-access.md#configure-access-control-mode)。 如果访问控制模式设置为独占的“需要工作区权限”设置，则通过门户迁移体验进行的迁移会保持被阻止状态。
 
 如果由于安全原因而无法为当前目标工作区更改访问控制模式，建议你创建新的用于迁移的 Log Analytics 工作区。 
 
@@ -226,7 +226,7 @@ PowerShell 命令 `Update-AzApplicationInsights` 当前不支持将经典 Applic
 
 - 选择“禁用”后，可以导航回迁移 UI。 如果“编辑连续导出”页提示你的设置不会保存，你可以针对此提示选择“确定”，因为它与禁用/启用连续导出无关。
 
-- 将 Application Insights 资源成功迁移到基于工作区的资源后，可以使用“诊断设置”来替换连续导出过去提供的功能。 请从你的 Application Insights 资源中选择“诊断设置” > “添加诊断设置”。  可以选择所有表，或是要存档到存储帐户或流式传输到 Azure 事件中心的表的子集。 有关诊断设置的详细指南，请参阅 [Azure Monitor 诊断设置指南](../platform/diagnostic-settings.md)。
+- 将 Application Insights 资源成功迁移到基于工作区的资源后，可以使用“诊断设置”来替换连续导出过去提供的功能。 请从你的 Application Insights 资源中选择“诊断设置” > “添加诊断设置”。  可以选择所有表，或是要存档到存储帐户或流式传输到 Azure 事件中心的表的子集。 有关诊断设置的详细指南，请参阅 [Azure Monitor 诊断设置指南](../essentials/diagnostic-settings.md)。
 
 ### <a name="retention-settings"></a>保留设置
 
@@ -238,6 +238,6 @@ PowerShell 命令 `Update-AzApplicationInsights` 当前不支持将经典 Applic
 
 ## <a name="next-steps"></a>后续步骤
 
-* [探索指标](../platform/metrics-charts.md)
-* [编写分析查询](../log-query/log-query-overview.md)
+* [探索指标](../essentials/metrics-charts.md)
+* [编写分析查询](../logs/log-query-overview.md)
 

@@ -4,19 +4,18 @@ description: IoT Edge 模块日志检索以及上传到 Azure Blob 存储。
 author: v-tcassi
 manager: philmea
 ms.author: v-tawe
-origin.date: 11/12/2020
-ms.date: 01/05/2021
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 5dbd4ce9392ec13b22855f5c7035ce42b73e2833
-ms.sourcegitcommit: 40db5a4b9ab8b5877e307ff7a567fd930ca81c72
+ms.openlocfilehash: 9c0dc5a9fd957d0a1feaa6d9d2518689bc395587
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894298"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196874"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>检索 IoT Edge 部署中的日志
 
@@ -52,8 +51,8 @@ ms.locfileid: "97894298"
              "id": "regex string",
              "filter": {
                 "tail": "int",
-                "since": "int",
-                "until": "int",
+                "since": "string",
+                "until": "string",
                 "loglevel": "int",
                 "regex": "regex string"
              }
@@ -71,8 +70,8 @@ ms.locfileid: "97894298"
 | ID | 字符串 | 提供模块名称的正则表达式。 它可以匹配边缘设备上的多个模块。 应为 [.NET 正则表达式](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions)格式。 |
 | filter | JSON 部分 | 要应用于与元组中 `id` 正则表达式匹配的模块的日志筛选器。 |
 | tail | integer | 从最新日志行开始检索的过去的日志行数。 可选。 |
-| since | integer | 只返回此时间之后的日志，作为持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）、rfc3339 时间戳或 UNIX 时间戳。  如果同时指定 `tail` 和 `since`，将首先使用 `since` 值检索日志。 然后，将 `tail` 值应用于结果，并返回最终结果。 可选。 |
-| until | integer | 仅返回指定时间之前的日志，作为 rfc3339 时间戳、UNIX 时间戳或持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）。 可选。 |
+| since | 字符串 | 只返回此时间之后的日志，作为持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）、rfc3339 时间戳或 UNIX 时间戳。  如果同时指定 `tail` 和 `since`，将首先使用 `since` 值检索日志。 然后，将 `tail` 值应用于结果，并返回最终结果。 可选。 |
+| until | 字符串 | 仅返回指定时间之前的日志，作为 rfc3339 时间戳、UNIX 时间戳或持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）。 可选。 |
 | 日志级别 | integer | 筛选小于或等于指定日志级别的日志行。 日志行应遵循推荐的日志记录格式，并使用 Syslog 严重性级别标准。 可选。 |
 | regex | 字符串 | 使用 [.NET 正则表达式](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions)格式，筛选内容与指定正则表达式匹配的日志行。 可选。 |
 | encoding | 字符串 | `gzip` 或 `none`。 默认为 `none`。 |
@@ -161,8 +160,8 @@ az iot hub invoke-module-method \
              "id": "regex string",
              "filter": {
                 "tail": "int",
-                "since": "int",
-                "until": "int",
+                "since": "string",
+                "until": "string",
                 "loglevel": "int",
                 "regex": "regex string"
              }
@@ -294,8 +293,8 @@ az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d 
 |-|-|-|
 | schemaVersion | 字符串 | 设置为 `1.0` |
 | sasURL | 字符串 (URI) | [对 Azure Blob 存储容器具有写入权限的共享访问签名 URL](https://docs.microsoft.com/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
-| since | integer | 只返回此时间之后的日志，作为持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）、rfc3339 时间戳或 UNIX 时间戳。 可选。 |
-| until | integer | 仅返回指定时间之前的日志，作为 rfc3339 时间戳、UNIX 时间戳或持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）。 可选。 |
+| since | 字符串 | 只返回此时间之后的日志，作为持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）、rfc3339 时间戳或 UNIX 时间戳。 可选。 |
+| until | 字符串 | 仅返回指定时间之前的日志，作为 rfc3339 时间戳、UNIX 时间戳或持续时间（1 天、90 分钟、2 天 3 小时 2 分钟）。 可选。 |
 | edgeRuntimeOnly | boolean | 如果为 true，则仅从 Edge 代理、Edge 中心和 Edge 安全守护程序返回日志。 默认值：false。  可选。 |
 
 > [!IMPORTANT]

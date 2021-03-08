@@ -7,12 +7,12 @@ origin.date: 03/05/2020
 author: Johnnytechn
 ms.author: v-johya
 ms.date: 01/15/2021
-ms.openlocfilehash: ac7703e971a9bc346480ddf100591173227cca65
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: d291220d0664cbf155b70d211529ffa1d713a5b7
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230490"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197596"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor 文档中有哪些新增内容？
 
@@ -99,7 +99,6 @@ ms.locfileid: "98230490"
 
 - [Azure 监视代理概述](platform/agents-overview.md) - 重新构造了各个表格来更好地阐明每个代理的特有功能。
 - [Azure 诊断扩展概述](platform/diagnostics-extension-overview.md) - 全部进行了重新编写。
-- [在 Azure Monitor 中使用适用于 IIS 的 Blob 存储和适用于事件的表存储](platform/diagnostics-extension-logs.md) - 针对更新和澄清进行了常规重新编写。
 - [安装并配置 Windows Azure 诊断扩展 (WAD)](platform/diagnostics-extension-windows-install.md) - 新文章。 
 - [Windows 诊断扩展架构](platform/diagnostics-extension-schema-windows.md) - 已重新组织。
 - [将数据从 Windows Azure 诊断扩展发送到 Azure 事件中心](platform/diagnostics-extension-stream-event-hubs.md) - 全部进行了重新编写和更新。

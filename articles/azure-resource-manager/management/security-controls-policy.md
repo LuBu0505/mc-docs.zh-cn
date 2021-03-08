@@ -1,8 +1,8 @@
 ---
 title: Azure 资源管理器的 Azure Policy 法规遵从性控制
-description: 列出可用于 Azure 资源管理器的 Azure Policy 法规遵从性控制。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-origin.date: 01/21/2021
-ms.date: 02/01/2021
+description: 列出可用于 Azure 资源管理器的 Azure Policy 法规遵从性控制。 这些内置的策略定义提供了管理 Azure 资源合规性的常用方法。
+origin.date: 02/09/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 08/24/2020
 ms.topic: sample
@@ -10,12 +10,12 @@ author: rockboyfor
 ms.author: v-yeche
 ms.service: azure-resource-manager
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 5ca8c38b27ccfb76359a6e35d83f657674813a0e
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 1738b3c6bc2541338d7b9721dabc5d0b073c5968
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063643"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052824"
 ---
 <!--Include files updated-->
 <!--Pending to check [!INCLUDE [azure-policy-compliancecontrols-arm] in the next update-->
@@ -23,7 +23,7 @@ ms.locfileid: "99063643"
 
 <!--NOT AVAILABLE ON [Regulatory Compliance in Azure Policy](../../governance/policy/concepts/regulatory-compliance.md)-->
 
-Azure Policy 中的法规符合性为与不同符合性标准相关的“符合域”和“安全控制措施”提供 Azure 创建和管理的计划定义，称为“内置” 。 此页列出 Azure 资源管理器的“符合域”和“安全控件” 。 可以分别为“安全控件”分配内置项，以帮助 Azure 资源符合特定的标准。
+Azure Policy 中的法规符合性为与不同符合性标准相关的“符合域”和“安全控制措施”提供 Azure 创建和管理的计划定义，称为“内置” 。 此页列出 Azure 资源管理器的“符合域”和“安全控件” 。 可以分别为“安全控制”分配内置项，以帮助 Azure 资源符合特定的标准。
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../../includes/policy/standards/intro-warning.md)]
 

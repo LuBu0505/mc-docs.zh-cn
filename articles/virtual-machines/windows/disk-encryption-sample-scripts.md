@@ -6,17 +6,17 @@ ms.subservice: security
 ms.topic: how-to
 origin.date: 08/06/2019
 author: rockboyfor
-ms.date: 11/16/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: a149921572d7cf36b9fa86b2c7eae6335a350e6d
-ms.sourcegitcommit: 39288459139a40195d1b4161dfb0bb96f5b71e8e
+ms.openlocfilehash: fa7839f8112829170ea681f2b093a5e0ffd3f856
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94590639"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055157"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure 磁盘加密示例脚本 
 
@@ -29,9 +29,9 @@ ms.locfileid: "94590639"
 
 - **列出订阅中所有已加密的 VM**
 
-  可以使用[此 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VM.ps1)在订阅中存在的所有资源组中找到所有 ADE 加密的 VM 和扩展版本。
+    可以使用[此 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VM.ps1)在订阅中存在的所有资源组中找到所有 ADE 加密的 VM 和扩展版本。
 
-  另外，这些 cmdlet 将显示所有 ADE 加密的 VM（但不显示扩展版本）：
+    另外，这些 cmdlet 将显示所有 ADE 加密的 VM（但不显示扩展版本）：
 
     ```powershell
     $osVolEncrypted = {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
@@ -45,9 +45,9 @@ ms.locfileid: "94590639"
 
 - **列出 Key Vault 中用于加密 VM 的所有磁盘加密机密**
 
-```powershell
-Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
-```
+    ```powershell
+    Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
+    ```
 
 ### <a name="using-the-azure-disk-encryption-prerequisites-powershell-script"></a>使用 Azure 磁盘加密先决条件 PowerShell 脚本
 
@@ -286,4 +286,4 @@ Set-AzKeyVaultAccessPolicy -VaultName $kvname -UserPrincipalName $acctid -Permis
             -KeyEncryptionKeyURL $KeyEncryptionKey.Id
 ```
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

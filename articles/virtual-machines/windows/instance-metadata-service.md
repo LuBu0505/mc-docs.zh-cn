@@ -7,22 +7,22 @@ ms.service: virtual-machines
 ms.subservice: monitoring
 ms.topic: how-to
 ms.workload: infrastructure-services
-origin.date: 01/04/2021
+origin.date: 02/11/2021
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: a39fbd07c9b87755bf86ae890aae16c43986f559
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: d86e48560ce1c1af7d00a06f1a2cdaf4cae91550
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570553"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054301"
 ---
 <!--Verified Successfully-->
 
 [!INCLUDE [virtual-machines-imds](../../../includes/virtual-machines-imds.md)]
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

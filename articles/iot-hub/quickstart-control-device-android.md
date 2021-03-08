@@ -11,12 +11,12 @@ ms.custom: mvc
 origin.date: 06/21/2019
 ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: b98886ecc597c7452730cc5f533c6653d8927077
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 1217107d8581c660cdad1a1b5f92598cc6a19415
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746792"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196612"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>快速入门：控制连接到 IoT 中心的设备 (Android)
 
@@ -70,7 +70,7 @@ ms.locfileid: "96746792"
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
     ```azurecli
-    az iot hub device-identity show-connection-string \
+    az iot hub device-identity connection-string show\
       --hub-name {YourIoTHubName} \
       --device-id MyAndroidDevice \
       --output table
@@ -89,7 +89,7 @@ ms.locfileid: "96746792"
 **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
 ```azurecli
-az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
+az iot hub connection-string show --policy-name service --name {YourIoTHubName} --output table
 ```
 
 记下如下所示的服务连接字符串：

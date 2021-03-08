@@ -4,15 +4,15 @@ description: 适用于流分析的 Azure 安全基线
 author: Johnnytechn
 ms.service: security
 ms.topic: conceptual
-ms.date: 01/25/2021
+ms.date: 03/04/2021
 ms.author: v-johya
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f88cd0aa01b4acd175871a01368f22418f40f47b
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: ddfb3b9c41e63f38fe1a2c33ec828c24a634346c
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99058512"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197183"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>适用于流分析的 Azure 安全基线
 
@@ -22,7 +22,7 @@ ms.locfileid: "99058512"
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
-## <a name="network-security"></a>网络安全性
+## <a name="network-security"></a>网络安全
 
 有关详细信息，请参阅[安全控制：网络安全](../security/benchmarks/security-control-network-security.md)。
 
@@ -114,9 +114,9 @@ ms.locfileid: "99058512"
 
 **指导**：使用 Azure 活动日志监视网络资源配置，并检测流分析资源的变化。 在 Azure Monitor 中创建当关键资源发生更改时触发的警报。
 
-* [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -138,7 +138,7 @@ ms.locfileid: "99058512"
 
 **指导**：通过 Azure Monitor 引入日志来聚合安全数据，如审核事件和请求。 在 Azure Monitor 中，使用 Log Analytics 工作区查询和执行分析，并使用 Azure 存储帐户进行长期/存档存储，可以选择使用不可变存储和强制保留等安全功能。
 
-* [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+* [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Azure 安全中心监视**：是
 
@@ -170,7 +170,7 @@ ms.locfileid: "99058512"
 
 * [如何为 Azure 存储帐户日志配置保留策略](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
-* [更改 Log Analytics 中的数据保留期](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [更改 Log Analytics 中的数据保留期](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -180,9 +180,9 @@ ms.locfileid: "99058512"
 
 **指导**：分析和监视日志中的异常行为，并定期审查流分析资源的结果。 使用 Azure Monitor 的 Log Analytics 工作区查看日志并对日志数据执行查询。 或者，可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。
 
-* [有关 Log Analytics 工作区的详细信息](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [有关 Log Analytics 工作区的详细信息](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
+* [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/logs/get-started-queries.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -192,7 +192,7 @@ ms.locfileid: "99058512"
 
 **指导**：启用流分析的诊断设置，并将日志发送到 Log Analytics 工作区。 将 Log Analytics 工作区加入 Azure Sentinel，因为它提供了安全业务流程自动化响应 (SOAR) 解决方案。 这样便可以创建 playbook（自动化解决方案）并将其用于修正安全问题。
 
-* [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/learn/tutorial-response.md)
+* [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/alerts/tutorial-response.md)
 
 * [Azure 流分析提供诊断日志和活动数据供审查](./stream-analytics-job-diagnostic-logs.md)
 
@@ -454,7 +454,7 @@ ms.locfileid: "99058512"
 
 **指导**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建在 Azure 流分析资源生产实例发生更改时发出的警报。
 
-* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：是
 

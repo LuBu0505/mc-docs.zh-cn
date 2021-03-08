@@ -5,17 +5,17 @@ ms.service: virtual-machines
 ms.topic: how-to
 origin.date: 01/15/2021
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 02/01/2021
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: 9f3820f39c8f3e6c40c906b2235f710c92990ace
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: de9a10251b9b9e49b111c5d07c1f519ca75b09ea
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064546"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055174"
 ---
 <!--Verified successfully by PG team-->
 # <a name="create-an-incremental-snapshot-for-managed-disks"></a>为托管磁盘创建增量快照
@@ -116,5 +116,4 @@ $incrementalSnapshots
 
 要查看演示使用 .NET 的增量快照的差异功能的示例代码，请参阅[通过增量快照差异功能将 Azure 托管磁盘备份复制到另一区域](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)。
 
-<!-- Update_Description: new article about disks incremental snapshots -->
-<!--NEW.date: 02/01/2021-->
+<!--Update_Description: update meta properties, wording update, update link-->

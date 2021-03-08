@@ -11,18 +11,18 @@ ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
-origin.date: 10/05/2018
+origin.date: 02/09/2021
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 01adee205c8b12d6647f869c89a7aa50f28a95db
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 780bf365d1a79b8e0f2f8219b54070d7bb484462
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856999"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055300"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Desired State Configuration 扩展与 Azure 资源管理器模板
 
@@ -42,8 +42,8 @@ DSC 扩展继承默认扩展属性。
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
-  "name": "Microsoft.Powershell.DSC",
-  "apiVersion": "2018-06-30",
+  "name": "[concat(parameters('VMName'), '/Microsoft.Powershell.DSC')]",
+  "apiVersion": "2018-06-01",
   "location": "[parameters('location')]",
   "dependsOn": [
     "[concat('Microsoft.Compute/virtualMachines/', parameters('VMName'))]"
@@ -439,4 +439,4 @@ DSC 扩展继承默认扩展属性。
 - 获取 [Azure DSC 扩展处理程序简介](dsc-overview.md)。
 - 有关 PowerShell DSC 的详细信息，请转到 [PowerShell 文档中心](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

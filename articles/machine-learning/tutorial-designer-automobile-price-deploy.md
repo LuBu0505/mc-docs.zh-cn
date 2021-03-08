@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 722a6741e95f8004e740d2b8627ccafc56137e4a
-ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
+ms.openlocfilehash: 10d256142fba37d408eb65b17a3efe904b267a22
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804296"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196782"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>教程：使用设计器部署机器学习模型
 
@@ -122,17 +122,19 @@ ms.locfileid: "99804296"
 > 如果在“实时终结点设置”框中为“计算类型”选择了“Azure 容器实例”，则还可以部署到“Azure 容器实例”(ACI)  。
 > Azure 容器实例用于测试或开发。 对于需要小于 48 GB RAM 的基于 CPU 的低缩放工作负载，请使用 ACI。
 
-## <a name="view-the-real-time-endpoint"></a>查看实时终结点
+## <a name="test-the-real-time-endpoint"></a>测试实时终结点
 
 部署完成后，可通过转到“终结点”页来查看实时终结点。
 
 1. 在“终结点”页上，选择已部署的终结点。
 
-1. 在“详细信息”选项卡中，可以查看更多信息，例如 REST URI、状态和标签。
+    在“详细信息”选项卡中，可以查看更多信息，例如 REST URI、Swagger 定义、状态和标记。
 
-1. 在“使用”选项卡中，可以找到安全密钥并设置身份验证方法。
+    在“使用”选项卡中，可以找到使用代码示例和安全密钥，以及设置身份验证方法。
 
-1. 在“部署日志”选项卡中，你可以找到实时终结点的详细部署日志。 
+    在“部署日志”选项卡中，你可以找到实时终结点的详细部署日志。
+
+1. 若要测试终结点，请转到“测试”选项卡。可在此输入测试数据并选择“测试”以验证终结点的输出。
 
 有关使用 Web 服务的详细信息，请参阅[使用部署为 Web 服务的模型](how-to-consume-web-service.md)
 

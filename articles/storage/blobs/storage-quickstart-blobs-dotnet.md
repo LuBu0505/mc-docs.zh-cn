@@ -1,20 +1,20 @@
 ---
 title: 快速入门：Azure Blob 存储库 v12 - .NET
-description: 本快速入门介绍如何使用适用于 .NET 的 Azure Blob 存储客户端库版本 12 在 Blob（对象）存储中创建容器和 blob。 接下来，将介绍如何将 blob 下载到本地计算机，以及如何在容器中列出所有 blob。
+description: 本快速入门介绍如何使用适用于 .NET 的 Azure Blob 存储客户端库版本 12 在 Blob（对象）存储中创建容器和 Blob。 接下来，将介绍如何将 blob 下载到本地计算机，以及如何在容器中列出所有 blob。
 author: WenJason
 ms.author: v-jay
 origin.date: 07/24/2020
-ms.date: 12/14/2020
+ms.date: 03/08/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dc2b1cd74a8199a2312421a2ec41bab67d1472de
-ms.sourcegitcommit: a8afac9982deafcf0652c63fe1615ba0ef1877be
+ms.openlocfilehash: 7f3cb3e9c031ae116a0b616aed469795f67f09bb
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96850738"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196275"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v12
 
@@ -71,7 +71,7 @@ ms.locfileid: "96850738"
 
 ### <a name="install-the-package"></a>安装包
 
-仍在应用程序目录中时，使用 `dotnet add package` 命令安装适用于 .NET 包的 Azure Blob 存储客户端库。
+当仍在应用程序目录中时，使用 `dotnet add package` 命令安装适用于 .NET 包的 Azure Blob 存储客户端库。
 
 ```console
 dotnet add package Azure.Storage.Blobs
@@ -145,7 +145,7 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 在 `Main` 方法内添加此代码：
 
 ```csharp
-Console.WriteLine("Azure Blob storage v12 - .NET quickstart sample\n");
+Console.WriteLine("Azure Blob Storage v12 - .NET quickstart sample\n");
 
 // Retrieve the connection string for use with the application. The storage
 // connection string is stored in an environment variable on the machine
@@ -288,7 +288,7 @@ dotnet run
 应用的输出类似于以下示例：
 
 ```output
-Azure Blob storage v12 - .NET quickstart sample
+Azure Blob Storage v12 - .NET quickstart sample
 
 Uploading to Blob storage as blob:
          https://mystorageacct.blob.core.chinacloudapi.cn/quickstartblobs60c70d78-8d93-43ae-954d-8322058cfd64/quickstart2fe6c5b4-7918-46cb-96f4-8c4c5cb2fd31.txt

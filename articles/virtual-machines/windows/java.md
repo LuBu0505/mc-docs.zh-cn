@@ -7,21 +7,21 @@ ms.workload: infrastructure
 ms.topic: how-to
 origin.date: 07/17/2017
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.custom: devx-track-java
 ms.author: v-yeche
-ms.openlocfilehash: fc5df2a474646b02c3ffac826ad0c0492d59453f
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 1c869ba7e1440dfb5196dcf831fba1019c3c7048
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104101"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054300"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>使用 Java 创建和管理 Azure 中的 Windows VM
 
-[Azure 虚拟机](overview.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json) (VM) 需要多个支持性 Azure 资源。 本文介绍如何使用 Java 创建、管理和删除 VM 资源。 你将学习如何执行以下操作：
+[Azure 虚拟机](overview.md) (VM) 需要多个支持性 Azure 资源。 本文介绍如何使用 Java 创建、管理和删除 VM 资源。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Maven 项目
@@ -36,7 +36,10 @@ ms.locfileid: "93104101"
 
 ## <a name="create-a-maven-project"></a>创建 Maven 项目
 
-1. 如果尚未安装 [Java](https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable)，请安装。
+1. 如果尚未安装 [Java](https://docs.azure.cn/java/java-supported-jdk-runtime)，请安装。
+
+    <!--CORRECT ON https://docs.azure.cn/java/java-supported-jdk-runtime-->
+
 2. 安装 [Maven](https://maven.apache.org/download.cgi)。
 3. 创建新文件夹和项目：
 
@@ -291,7 +294,7 @@ input.nextLine();
 ```
 
 > [!NOTE]
-> 本教程创建运行 Windows Server 操作系统版本的虚拟机。 若要详细了解如何选择其他映像，请参阅[使用 Windows PowerShell 和 Azure CLI 来导航和选择 Azure 虚拟机映像](../linux/cli-ps-findimage.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
+> 本教程创建运行 Windows Server 操作系统版本的虚拟机。 若要详细了解如何选择其他映像，请参阅[使用 Windows PowerShell 和 Azure CLI 来导航和选择 Azure 虚拟机映像](../linux/cli-ps-findimage.md)。
 > 
 >
 
@@ -470,4 +473,4 @@ input.nextLine();
 ## <a name="next-steps"></a>后续步骤
 * 详细了解如何使用[用于 Java 的 Azure 库](https://docs.azure.cn/java/java-sdk-azure-overview)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -5,17 +5,17 @@ ms.service: virtual-machines
 ms.topic: conceptual
 origin.date: 10/05/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 09/07/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: 475a94d7a56e5ae416b481c19a7f39825b0751ae
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: fa3dc60d1d0cada0bc48f8508834fb39e2f4f1fd
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857088"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054379"
 ---
 <!--Verified successfully from rename articles-->
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure 高级存储：高性能设计
@@ -39,8 +39,8 @@ ms.locfileid: "97857088"
 >
 > 如果你希望对磁盘进行基准测试，请参阅我们的关于磁盘基准测试的文章：
 >
-> * 对于 Linux：[在 Azure 磁盘存储上对应用程序进行基准测试](linux/disks-benchmarks.md)
-> * 对于 Windows：[磁盘基准测试](windows/disks-benchmarks.md)。
+> * 对于 Linux：[在 Azure 磁盘存储上对应用程序进行基准测试](./disks-benchmarks.md)
+> * 对于 Windows：[磁盘基准测试](./disks-benchmarks.md)。
 >
 > 如果 VM 支持加速网络，则应确保它已启用。 如果未启用，则可以在 [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) 和 [Linux](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) 上已部署的 VM 上启用它。
 
@@ -58,7 +58,7 @@ IOPS，或每秒输入/输出操作，是指应用程序在一秒内发送到存
 
 将高级存储磁盘连接到大型 VM 时，Azure 会根据磁盘规格预配保障数目的 IOPS。 例如，P50 磁盘预配 7500 IOPS。 每个大型 VM 还存在一个其所能承受的特定 IOPS 限制。
 
-<!-- Not Available on For example, a Standard GS5 VM has 80,000 IOPS limit.-->
+<!--NOT AVAIALBLE ON For example, a Standard GS5 VM has 80,000 IOPS limit.-->
 
 ## <a name="throughput"></a>吞吐量
 
@@ -66,7 +66,7 @@ IOPS，或每秒输入/输出操作，是指应用程序在一秒内发送到存
 
 将高级存储磁盘连接到大型 VM 时，Azure 会根据磁盘规格预配吞吐量。 例如，P50 磁盘预配 250 MB/秒的磁盘吞吐量。 每个高规格 VM 还存在一个其所能承受的特定吞吐量限制。
 
-<!-- Not Available on For example, Standard GS5 VM has a maximum throughput of 2,000 MB per second. -->
+<!--NOT AVAIALBLE ON For example, Standard GS5 VM has a maximum throughput of 2,000 MB per second. -->
 
 吞吐量和 IOPS 之间存在一个关系，如以下公式所示。
 
@@ -205,17 +205,17 @@ IO 大小是较为重要的因素之一。 IO 大小是由应用程序生成的�
 
 开始设计应用程序时，首要操作之一是选择用于承载应用程序的 VM。 高级存储提供高规格 VM 大小，可以运行需要更高计算能力和高的本地磁盘 I/O 性能的应用程序。 这些 VM 为本地磁盘提供更快的处理器、更高的内存内核比和固态驱动器 (SSD)。 DS VM 是支持高级存储的大规模 VM 的例子。
 
-<!-- Not Available on and GS series -->
+<!--NOT AVAIALBLE ON and GS series -->
 
 高规格 VM 提供不同的大小、不同数目的 CPU 内核、内存、OS 和临时磁盘大小。 每种 VM 大小还设置了可以连接到 VM 的最大数目的数据磁盘。 因此，所选 VM 大小会影响提供给应用程序的处理能力、内存大小和存储容量。 它还会影响计算和存储成本。 例如，以下是 DS 系列中最大 VM 的规格：
 
-<!-- Not Available on and GS series -->
+<!--NOT AVAIALBLE ON and GS series -->
 
 | VM 大小 | CPU 核心数 | 内存 | VM 磁盘大小 | 最大 数据磁盘 | 缓存大小 | IOPS | 带宽缓存 IO 限制 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS14 |16 |112 GB |OS = 1023 GB <br /> 本地 SSD = 224 GB |32 |576 GB |50,000 IOPS <br /> 512 MB/秒 |4,000 IOPS，33 MB/秒 |
 
-<!-- Not Available on | Standard_GS5 |32-->
+<!--NOT AVAIALBLE ON | Standard_GS5 |32-->
 
 若要查看所有可用 Azure VM 大小的完整列表，请参阅 [Azure 中虚拟机的大小](sizes.md)。 选择能够满足或者在扩展后能够满足所需应用程序性能要求的 VM 大小。 除此之外，在选择 VM 大小时，还需考虑以下重要事项。
 
@@ -227,29 +227,29 @@ IO 大小是较为重要的因素之一。 IO 大小是由应用程序生成的�
 *运行成本*  
 在许多情况下，使用高级存储的总体运行成本可能会低于使用标准存储。
 
-<!--MOONCAKE CUSTOMIZE: NO UPDATE ON Price change to CNY-->
+<!--MOONCAKE CUSTOMIZE: UPDATE CAREFULLY ON Price CNY-->
 
 例如，以需要 16,000 IOPS 的应用程序为考虑对象。 若要达到此性能，需要使用 Standard\_D14 Azure IaaS VM，该 VM 可以使用 32 个标准存储 1 TB 磁盘来实现 16,000 的最大 IOPS。 每个 1-TB 标准存储磁盘最多可以实现 500 IOPS。 此 VM 每月的估计成本将是 CNY10,171。 32 个标准存储磁盘每月的成本将是 CNY8,847。 每月估计的总成本将是 CNY19,018。
 
 但是，如果将同一应用程序置于高级存储上，则所需 VM 大小和高级存储磁盘数都会减少，从而降低总体成本。 Standard\_DS13 VM 可以使用 4 个 P30 磁盘来满足 16,000 IOPS 的要求。 DS13 VM 的最大 IOPS 为 25,600，每个 P30 磁盘的最大 IOPS 为 5,000。 总起来说，此配置可以达到 5,000 x 4 = 20,000 的 IOPS。 此 VM 每月的估计成本将是 CNY5,081。 4 个 P30 高级存储磁盘每月的成本是 CNY3,625。 每月估计的总成本将是 CNY8,706。
 
-<!--IMPORTANT: NO UPDATE ON Price change to CNY-->
+<!--MOONCAKE CUSTOMIZE: UPDATE CAREFULLY ON Price CNY-->
 
 下表总结了这种情况下标准存储和高级存储的成本明细。
 
 <!--IMPORTANT: NO UPDATE ON Price change to CNY-->
 
-| &nbsp; | **Standard** | **高级** |
+| &nbsp; | **标准** | **高级** |
 | --- | --- | --- |
 | **VM 每月的成本** |CNY10,171.48（标准\_D14） |CNY5,081.52（标准\_DS13） |
 | **磁盘每月的成本** |CNY8847.36（32 个 1 TB 磁盘） |CNY3625.16（4 个 P30 磁盘） |
 | **每月成本总计** |CNY19,018.84 |CNY8706.68 |
 
-<!--MOONCAKE CUSTOMIZE: NO UPDATE ON Price change to CNY-->
+<!--MOONCAKE CUSTOMIZE: UPDATE CAREFULLY ON Price CNY-->
 
 *Linux 发行版*  
 
-使用 Azure 高级存储，可以让运行 Windows 和 Linux 的 VM 获得相同的性能级别。 支持多种 Linux 发行版，可在[此处](linux/endorsed-distros.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)查看完整列表。 请务必注意，不同的发行版适用于不同类型的工作负荷。 根据运行工作负荷的发行版，所见性能级别会有所不同。 使用应用程序测试各种 Linux 发行版，选择最适合的。
+使用 Azure 高级存储，可以让运行 Windows 和 Linux 的 VM 获得相同的性能级别。 支持多种 Linux 发行版，可在[此处](linux/endorsed-distros.md)查看完整列表。 请务必注意，不同的发行版适用于不同类型的工作负荷。 根据运行工作负荷的发行版，所见性能级别会有所不同。 使用应用程序测试各种 Linux 发行版，选择最适合的。
 
 使用高级存储运行 Linux 时，请查看与所需驱动程序相关的最新更新，确保实现高性能。
 
@@ -311,7 +311,7 @@ Azure 高级存储提供了多种大小，因此你可以选择最适合需求�
 *ReadWrite*  
 默认情况下，OS 磁盘已启用 ReadWrite 缓存。 我们最近还增加了对在数据磁盘上进行 ReadWrite 缓存的支持。 如果使用 ReadWrite 缓存，则必须通过适当方法将数据从缓存写入到永久性磁盘。 例如，SQL Server 会自行将缓存数据写入永久性存储磁盘。 对不负责保留所需数据的应用程序使用 ReadWrite 缓存可能会在 VM 崩溃时导致数据丢失。
 
-*无*  
+无  
 目前，只有数据磁盘支持“无”。 OS 磁盘不支持此选项。 如果在 OS 磁盘上设置“无”，它将在内部覆盖此设置并将其设置为“ReadOnly”。
 
 举例来说，可以通过执行以下操作将这些准则应用到在高级存储上运行的 SQL Server：
@@ -328,7 +328,7 @@ Azure 高级存储提供了多种大小，因此你可以选择最适合需求�
 
 对于所有高级 SSD，当已知不存在任何可能丢失数据的缓存时，可以禁用磁盘上文件系统的“屏障”以提高性能。  如果 Azure 磁盘缓存设置为 ReadOnly 或 None，则可以禁用屏障。  但是，如果缓存设置为 ReadWrite，则屏障应保持启用状态以确保写入持续性。  默认情况下，屏障通常处于启用状态，但你可以根据文件系统类型使用以下方法之一禁用屏障：
 
-<!--Not Available on FEATURE ultra disks-->
+<!--NOT AVAILABLE on FEATURE ultra disks-->
 
 * 对于 reiserFS，请使用 barrier=none 装入选项来禁用屏障。  若要显式启用屏障，请使用 barrier=flush。
 * 对于 ext3/ext4，请使用 barrier=0 装入选项来禁用屏障。  若要显式启用屏障，请使用 barrier=1。
@@ -405,8 +405,8 @@ Azure 高级存储根据所选 VM 大小和磁盘大小，预配指定数目的 
 
 如果你希望对磁盘进行基准测试，请参阅我们的关于磁盘基准测试的文章：
 
-* 对于 Linux：[在 Azure 磁盘存储上对应用程序进行基准测试](linux/disks-benchmarks.md)
-* 对于 Windows：[磁盘基准测试](windows/disks-benchmarks.md)。
+* 对于 Linux：[在 Azure 磁盘存储上对应用程序进行基准测试](./disks-benchmarks.md)
+* 对于 Windows：[磁盘基准测试](./disks-benchmarks.md)。
 
 了解有关可用磁盘类型的详细信息：
 
@@ -418,4 +418,4 @@ SQL Server 用户请阅读有关 SQL Server 性能最佳实践的文章：
 * [Azure 虚拟机中 SQL Server 的性能最佳做法](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)
 * [Azure 高级存储为 Azure VM 中的 SQL Server 提供最高性能](https://cloudblogs.microsoft.com/sqlserver/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm/)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

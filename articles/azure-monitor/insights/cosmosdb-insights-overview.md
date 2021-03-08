@@ -4,13 +4,13 @@ description: 本文介绍了适用于 Cosmos DB 的 Azure Monitor 功能。使�
 author: Johnnytechn
 ms.author: v-johya
 ms.topic: conceptual
-ms.date: 01/12/2021
-ms.openlocfilehash: 99d9f67ec05566bcdd2a9fb4ed5cb7595ed1b721
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 02/22/2021
+ms.openlocfilehash: 69ae1b2a2a8a4527cf0e80d0c97e160cecb32af7
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230638"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197550"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>探究适用于 Azure Cosmos DB 的 Azure Monitor
 
@@ -37,7 +37,7 @@ ms.locfileid: "98230638"
 
 若要查看所有订阅中的存储帐户的利用率和性能，请执行以下步骤。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 
 2. 搜索“Monitor”并选择“Monitor”。
 
@@ -125,7 +125,7 @@ ms.locfileid: "98230638"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 配置[指标警报](../platform/alerts-metric.md)和[服务运行状况通知](../../service-health/alerts-activity-log-service-notifications-portal.md)来设置自动警报，以帮助检测问题。
+* 配置[指标警报](../alerts/alerts-metric.md)和[服务运行状况通知](../../service-health/alerts-activity-log-service-notifications-portal.md)来设置自动警报，以帮助检测问题。
 
-* 查看[使用 Azure Monitor 工作簿创建交互式报表](../platform/workbooks-overview.md)，了解工作簿旨在支持的方案、创作新报表和自定义现有报表的方式，以及更多信息。
+* 查看[使用 Azure Monitor 工作簿创建交互式报表](../visualize/workbooks-overview.md)，了解工作簿旨在支持的方案、创作新报表和自定义现有报表的方式，以及更多信息。
 

@@ -3,16 +3,16 @@ title: 使用 Azure 安全中心强化 Docker 主机并保护容器
 description: 如何保护 Docker 主机，并验证它们是否符合 CIS Docker 基准
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 11/13/2020
+ms.date: 02/25/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: efea7757745a61204130ebb5f11165151bac1328
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: 191c1adba97ad51949bff427e61f95bbfe3d99b0
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94638293"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197365"
 ---
 # <a name="harden-your-docker-hosts"></a>强化 Docker 主机
 
@@ -29,7 +29,7 @@ Azure 安全中心会识别在 IaaS Linux VM 上或其他运行 Docker 容器的
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|正式发布 (GA)|
+|发布状态：|正式发布版 (GA)|
 |定价：|需要[用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
 |所需角色和权限：|主机连接到的工作区上的读取器|
 |云：|![是](./media/icons/yes-icon.png) 中国云|

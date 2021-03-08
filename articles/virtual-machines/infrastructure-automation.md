@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.workload: infrastructure
 origin.date: 07/17/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 57f6dbb7406fd15d055cac5fc3227f6090f8ea86
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: dc9225c39c8d55e45d37067967cefadb5f87a23d
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857135"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053794"
 ---
 <!--Verified Successfully-->
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>在 Azure 中将基础结构自动化工具与虚拟机配合使用
@@ -37,17 +37,16 @@ ms.locfileid: "97857135"
 [Ansible](https://www.ansible.com/) 是适用于配置管理、VM 创建或应用程序部署的自动化引擎。 Ansible 通常将无代理的模型与 SSH 密钥配合使用，对目标计算机进行身份验证和管理。 配置任务在 playbook 中定义，可以使用多个 Ansible 模块来执行特定任务。 有关详细信息，请参阅 [How Ansible works](https://www.ansible.com/how-ansible-works)（Ansible 工作原理）。
 
 <!--Not Available on Learn how to-->
-<!--Not Available on - [Install and configure Ansible on Linux for use with Azure](/developer/ansible/install-on-linux-vm)-->
-<!--Not Available on - [Create a Linux virtual machine](/developer/ansible/vm-configure)-->
-<!--Not Available on - [Manage a Linux virtual machine](/developer/ansible/vm-manage)-->
+<!--NOT AVAILABLE ON - [Install and configure Ansible on Linux for use with Azure](https://docs.azure.cn/developer/ansible/install-on-linux-vm)-->
+<!--NOT AVAILABLE ON - [Create a Linux virtual machine](https://docs.azure.cn/developer/ansible/vm-configure)-->
+<!--NOT AVAILABLE ON - [Manage a Linux virtual machine](https://docs.azure.cn/developer/ansible/vm-manage)-->
 
 ## <a name="chef"></a>Chef
 [Chef](https://www.chef.io/) 是一个自动化平台，用于定义基础结构的配置、部署和管理方式。 其他组件包括：Chef Habitat，用于应用程序生命周期自动化而不是基础结构；Chef InSpec，用于自动遵循安全和策略要求。 Chef 客户端安装在目标计算机上，通过一个或多个中心 Chef 服务器来存储和管理配置。 有关详细信息，请参阅 [An Overview of Chef](https://docs.chef.io/chef_overview.html)（Chef 概述）。
 
-<!--Not Available on Learn how to:
-
-<!--Not Available on - [Deploy Chef Automate from the Azure Marketplace](https://market.azure.cn/marketplace/apps/chef-software.chef-automate?tab=Overview).-->
-<!--Not Available on - [Install Chef on Windows and create Azure VMs](/developer/chef/windows-vm-configure)-->
+<!--NOT AVAILABLE ON Learn how to:-->
+<!--NOT AVAILABLE ON - [Deploy Chef Automate from the Azure Marketplace](https://market.azure.cn/marketplace/apps/chef-software.chef-automate?tab=Overview).-->
+<!--NOT AVAILABLE ON - [Install Chef on Windows and create Azure VMs](https://docs.azure.cn/developer/chef/windows-vm-configure)-->
 
 ## <a name="puppet"></a>Puppet
 [Puppet](https://www.puppet.com) 是可供企业使用的自动化平台，用于处理应用程序交付和部署过程。 代理安装在目标计算机上，因此 Puppet Master 可以通过运行清单来定义 Azure 基础结构和 VM 的所需配置。 Puppet 可以通过集成其他解决方案（例如 Jenkins 和 GitHub）来改进 DevOps 工作流。 有关详细信息，请参阅 [How Puppet works](https://puppet.com/products/how-puppet-works)（Puppet 工作原理）。
@@ -57,7 +56,7 @@ ms.locfileid: "97857135"
 - [部署 Puppet](https://puppet.com/docs/puppet/5.5/install_windows.html)。
 
 ## <a name="cloud-init"></a>Cloud-init
-[Cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 安装程序包和写入文件，或者配置用户和安全。 由于是在初始启动过程中调用 cloud-init，因此无需额外的步骤且无需代理来应用配置。  有关如何正确设置 `#cloud-config` 文件格式的详细信息，请参阅 [cloud-init 文档站点](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)。  `#cloud-config` 文件是采用 base64 编码的文本文件。
+[Cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 来安装程序包和写入文件，或者配置用户和安全性。 由于是在初始启动过程中调用 cloud-init，因此无需额外的步骤且无需代理来应用配置。  有关如何正确设置 `#cloud-config` 文件格式的详细信息，请参阅 [cloud-init 文档站点](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)。  `#cloud-config` 文件是采用 base64 编码的文本文件。
 
 Cloud-init 还支持不同的发行版。 例如，不要使用 apt-get 安装或 yum 安装来安装包。 可定义要安装的程序包的列表。 Cloud-init 将为所选发行版自动使用本机包管理工具。
 

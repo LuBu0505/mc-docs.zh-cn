@@ -6,15 +6,15 @@ author: Johnnytechn
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 01/20/2021
+ms.date: 02/25/2021
 ms.author: v-johya
 origin.date: 09/10/2019
-ms.openlocfilehash: 8842bffaba3f54b495fac7a1138188c49520af38
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: 0a69478e7580d797aa2e708186ffdedc19185dde
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751322"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197137"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>从 Azure 安全中心自动预配代理和扩展
 
@@ -84,7 +84,7 @@ ms.locfileid: "98751322"
 
     - **将 Azure VM 连接到不同的工作区** - 从下拉列表中，选择用于存储收集的数据的工作区。 下拉列表包含所有订阅中的所有工作区。 你可以使用此选项从在不同订阅中运行的虚拟机收集数据，并将其全部存储在所选工作区中。  
 
-        如果已有一个 Log Analytics 工作区，可以使用该工作区（需要工作区上的读取和写入权限）。 如果在组织中使用集中式工作区，并想要使用该工作区来收集安全数据，则此选项非常有用。 从[在 Azure Monitor 中管理对日志数据和工作区的访问](../azure-monitor/platform/manage-access.md)中了解详细信息。
+        如果已有一个 Log Analytics 工作区，可以使用该工作区（需要工作区上的读取和写入权限）。 如果在组织中使用集中式工作区，并想要使用该工作区来收集安全数据，则此选项非常有用。 从[在 Azure Monitor 中管理对日志数据和工作区的访问](../azure-monitor/logs/manage-access.md)中了解详细信息。
 
         如果所选的工作区中已启用 Security 或 SecurityCenterFree 解决方案，则会自动设置定价层。 如果没有，请在工作区中安装安全中心解决方案：
 
@@ -215,7 +215,7 @@ ms.locfileid: "98751322"
    - [安装适用于 Windows 的 Log Analytics 代理](../virtual-machines/extensions/oms-windows.md)
    - [安装适用于 Linux 的 Log Analytics 代理](../virtual-machines/extensions/oms-linux.md)
 
-1. 若要在现有 VM 上部署代理，请按照[收集有关 Azure 虚拟机的数据](../azure-monitor/learn/quick-collect-azurevm.md)（“收集事件和性能数据”部分为可选）中的说明进行操作。
+1. 若要在现有 VM 上部署代理，请按照[收集有关 Azure 虚拟机的数据](../azure-monitor/vm/quick-collect-azurevm.md)（“收集事件和性能数据”部分为可选）中的说明进行操作。
 
 1. 若要使用 PowerShell 部署代理，请按照虚拟机文档中的说明进行操作：
 

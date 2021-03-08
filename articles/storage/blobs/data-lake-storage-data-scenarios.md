@@ -6,15 +6,15 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 origin.date: 02/14/2020
-ms.date: 12/14/2020
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.reviewer: stewu
-ms.openlocfilehash: b14941749d7959528f0e7ab898bb0bb6a57cc596
-ms.sourcegitcommit: a8afac9982deafcf0652c63fe1615ba0ef1877be
+ms.openlocfilehash: 0c27c7c411402e62ba260d000c8c9b5af8c93455
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96850819"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196318"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen2 满足大数据需求
 
@@ -120,7 +120,7 @@ Azure ExpressRoute 允许在 Azure 数据中心与本地中的基础结构之间
 |工具 | 指南 |
 |---|--|
 |Azure HDInsight | [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) |
-|Azure Databricks | Azure Data Lake Storage Gen2<br><br>[快速入门：使用 Azure Databricks 分析 Azure Data Lake Storage Gen2 中的数据](./data-lake-storage-quickstart-create-databricks-account.md?toc=%2fstorage%2fblobs%2ftoc.json)|
+|Azure Databricks | [Azure Data Lake Storage Gen2](/databricks/data/data-sources/azure/azure-datalake-gen2)<br><br>[快速入门：使用 Azure Databricks 分析 Azure Data Lake Storage Gen2 中的数据](./data-lake-storage-quickstart-create-databricks-account.md?toc=%2fstorage%2fblobs%2ftoc.json)<br><br>[教程：使用 Azure Databricks 提取、转换和加载数据](/databricks/scenarios/databricks-extract-load-sql-data-warehouse?toc=%2fstorage%2fblobs%2ftoc.json)|
 
 ## <a name="visualize-the-data"></a>可视化数据
 
@@ -143,4 +143,4 @@ Azure ExpressRoute 允许在 Azure 数据中心与本地中的基础结构之间
 |Azure 数据工厂 | [Azure 数据工厂中的 Copy 活动](../../data-factory/copy-activity-overview.md) |
 |Apache DistCp | [使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据](./data-lake-storage-use-distcp.md) |
 |Azure 存储资源管理器|[使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-explorer.md)|
-|AzCopy 工具|[使用 AzCopy 和 Blob 存储传输数据](../common/storage-use-azcopy-blobs.md)|
+|AzCopy 工具|[使用 AzCopy 和 Blob 存储传输数据](../common/storage-use-azcopy-v10.md#transfer-data)|

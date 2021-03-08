@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/03/2020
+ms.date: 03/04/2021
 ms.author: v-johya
 origin.date: 11/21/2017
-ms.openlocfilehash: aa8d42f5976dc14bc535b75f1ba8336797002095
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: f004df2d5d14007b573ebc5cd21aa33a108e69a4
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746533"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197517"
 ---
 # <a name="azure-database-security-checklist"></a>Azure 数据库安全性清单
 
@@ -54,7 +54,7 @@ ms.locfileid: "96746533"
 |<br> 数据库访问 | <ul><li>[身份验证](../../azure-sql/database/logins-create-manage.md)（Azure Active Directory 身份验证），AD 身份验证使用 Azure Active Directory 管理的标识。</li><li>[授权](../../azure-sql/database/logins-create-manage.md)，授予用户必需的最低权限。</li></ul> |
 |<br>应用程序访问| <ul><li>[行级别安全性](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)（使用安全策略，同时基于用户的标识、角色或执行上下文来限制行级别访问）。</li><li>[动态数据掩码](../../azure-sql/database/dynamic-data-masking-overview.md)（使用“权限和策略”，通过对非特权用户模糊化敏感数据来限制此类数据的泄露）</li></ul>|
 |**主动监视**||  
-| <br>跟踪和检测| <ul><li>[审核](../../azure-sql/database/auditing-overview.md)跟踪数据库事件，并将事件写入 [Azure 存储帐户](../../storage/common/storage-account-create.md)中的审核日志/活动日志。</li><li>使用 [Azure Monitor 活动日志](../../azure-monitor/platform/platform-logs-overview.md)跟踪 Azure 数据库运行状况。</li><li>[威胁检测](../../azure-sql/database/threat-detection-configure.md)会检测异常的数据库活动，指出数据库有潜在的安全威胁。 </li></ul> |
+| <br>跟踪和检测| <ul><li>[审核](../../azure-sql/database/auditing-overview.md)跟踪数据库事件，并将事件写入 [Azure 存储帐户](../../storage/common/storage-account-create.md)中的审核日志/活动日志。</li><li>使用 [Azure Monitor 活动日志](../../azure-monitor/essentials/platform-logs-overview.md)跟踪 Azure 数据库运行状况。</li><li>[威胁检测](../../azure-sql/database/threat-detection-configure.md)会检测异常的数据库活动，指出数据库有潜在的安全威胁。 </li></ul> |
 |<br>Azure 安全中心| <ul><li>[数据监视](../../security-center/security-center-remediate-recommendations.md)，使用 Azure 安全中心作为 SQL 和其他 Azure 服务的集中式安全监视解决方案。</li></ul>|        
 
 ## <a name="conclusion"></a>结论

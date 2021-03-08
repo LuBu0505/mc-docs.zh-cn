@@ -8,28 +8,28 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 09/24/2018
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 07/06/2020
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33488c747c6e93100644fcaab9eb59917b51d127
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 738d912b630b07de49e7886e302bacc248cd3f95
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856664"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052801"
 ---
-<!--Not Available on Mooncake-->
-<!--NVV4 series is not Available on MOONCAKE-->
+<!--Verified successfully-->
+<!--ONLY VALID ON CUDA INSTALLATION FOR NCV3 Series-->
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>在运行 Windows 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序 
 
 若要利用 NVIDIA GPU 支持的 Azure N 系列 VM 的 GPU 功能，必须安装 NVIDIA GPU 驱动程序。
 
-<!--Not Avaialble on [NVIDIA GPU Driver Extension](../extensions/hpccompute-gpu-windows.md)-->
-<!--Not Available on [NVIDIA GPU Driver Extension documentation](../extensions/hpccompute-gpu-windows.md)-->
+<!--NOT AVAILABLE ON [NVIDIA GPU Driver Extension](../extensions/hpccompute-gpu-windows.md)-->
+<!--NOT AVAILABLE ON [NVIDIA GPU Driver Extension documentation](../extensions/hpccompute-gpu-windows.md)-->
 
-选择手动安装 NVIDIA GPU 驱动程序时，请参阅本文，其中提供了受支持的操作系统、驱动程序以及安装和验证步骤。 针对 [Linux VM](../linux/n-series-driver-setup.md?toc=%2fvirtual-machines%2flinux%2ftoc.json) 也提供了驱动程序手动安装信息。
+选择手动安装 NVIDIA GPU 驱动程序时，请参阅本文，其中提供了受支持的操作系统、驱动程序以及安装和验证步骤。 针对 [Linux VM](../linux/n-series-driver-setup.md) 也提供了驱动程序手动安装信息。
 
 有关基本规范、存储容量和磁盘详细信息，请参阅 [GPU Windows VM 大小](../sizes-gpu.md?toc=/virtual-machines/windows/toc.json)。 
 
@@ -43,11 +43,11 @@ ms.locfileid: "97856664"
 
 安装 CUDA 驱动程序后，不需要重启。
 
-<!-- Not Available on After GRID driver installation on a VM, a restart is required.-->
+<!--NOT AVAILABLE on After GRID driver installation on a VM, a restart is required.-->
 
 ## <a name="verify-driver-installation"></a>验证驱动程序安装
 
- 如果已安装 CUDA 驱动程序，则 Nvidia 控制面板将不可见。
+如果已安装 CUDA 驱动程序，则 Nvidia 控制面板将不可见。
 
 可以在设备管理器中验证驱动程序安装。 以下示例展示了如何在 Azure NC VM 上成功配置 Tesla K80 卡。
 
@@ -82,4 +82,4 @@ Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "chinanorth2" -
 
 * 为 NVIDIA Tesla GPU 构建 GPU 加速应用程序的开发人员也可下载并安装最新的 [CUDA 工具包](https://developer.nvidia.com/cuda-downloads)。 有关详细信息，请参阅 [CUDA 安装指南](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

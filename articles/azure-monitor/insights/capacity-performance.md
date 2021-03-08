@@ -5,14 +5,14 @@ ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 08/20/2020
+ms.date: 02/22/2021
 origin.date: 07/13/2017
-ms.openlocfilehash: 62d2182a6f76ba93dd1c15f2150631189d09e2fe
-ms.sourcegitcommit: 83c7dd0d35815586f5266ba660c4f136e20b2cc5
+ms.openlocfilehash: dca957ae1de63c49a05dd119fa8d128f1b6452c9
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89148631"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197547"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>使用容量和性能解决方案（已弃用）规划 Hyper-V 虚拟机容量
 
@@ -42,11 +42,11 @@ ms.locfileid: "89148631"
 
 | 连接的源 | 支持 | 说明 |
 |---|---|---|
-| [Windows 代理](../platform/agent-windows.md) | 是 | 解决方案从 Windows 代理收集容量和性能数据信息。 |
-| [Linux 代理](../learn/quick-collect-linux-computer.md) | 否 | 解决方案不从直接 Linux 代理收集容量和性能数据信息。|
-| [Azure 存储帐户](../platform/resource-logs.md#send-to-log-analytics-workspace) | 否 | Azure 存储不包括容量和性能数据。|
+| [Windows 代理](../agents/agent-windows.md) | 是 | 解决方案从 Windows 代理收集容量和性能数据信息。 |
+| [Linux 代理](../vm/quick-collect-linux-computer.md) | 否    | 解决方案不从直接 Linux 代理收集容量和性能数据信息。|
+| [Azure 存储帐户](../essentials/resource-logs.md#send-to-log-analytics-workspace) | 否 | Azure 存储不包括容量和性能数据。|
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 必须在 Windows Server 2012 或更高版本的 Hyper-V 主机而非虚拟机上安装 Windows 或 Operations Manager 代理。
 
@@ -83,7 +83,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 ### <a name="review-utilization"></a>查看利用率
 
-单击“容量和性能”磁贴，打开“容量和性能”仪表板。 仪表板包含下表中的列。 每个列按照指定范围和时间范围列出了匹配该列条件的最多十项。 可单击该列底部的“查看全部”  或单击列标题运行返回所有记录的日志搜索。
+单击“容量和性能”磁贴，打开“容量和性能”仪表板。 仪表板包含下表中的列。 每个列按照指定范围和时间范围列出了匹配该列条件的最多十项。 可单击该列底部的“查看全部”或单击列标题运行返回所有记录的日志搜索。
 
 - **主机**
     - **主机 CPU 利用率**：根据所选时间段显示主计算机的 CPU 利用率图形趋势和主机的列表。 将鼠标悬停在折线图上即可查看特定时间点的详细信息。 单击图表即可在日志搜索中查看更多详细信息。 单击任意主机名称即可打开日志搜索并查看托管 VM 的 CPU 计数器详细信息。
@@ -129,6 +129,6 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 
 ## <a name="next-steps"></a>后续步骤
-* 使用 [Log Analytics 中的日志搜索](../log-query/log-query-overview.md)查看详细的容量和性能数据。
+* 使用 [Log Analytics 中的日志搜索](../logs/log-query-overview.md)查看详细的容量和性能数据。
 
 

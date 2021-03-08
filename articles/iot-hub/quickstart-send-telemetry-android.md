@@ -11,12 +11,12 @@ ms.custom: mvc
 origin.date: 03/15/2019
 ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: 177ac6cc5414eee4060ecd74b886c32aed6da7e4
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 4152d98fe8c6c7db70ce60b8d76b4d36ae110336
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746773"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196828"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>快速入门：从 Android 设备发送 IoT 遥测数据
 
@@ -61,7 +61,7 @@ ms.locfileid: "96746773"
     **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
     ```azurecli
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyAndroidDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyAndroidDevice --output table
     ```
 
     记下如下所示的设备连接字符串：

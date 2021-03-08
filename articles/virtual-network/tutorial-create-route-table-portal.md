@@ -12,16 +12,16 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 origin.date: 03/13/2020
 author: rockboyfor
-ms.date: 10/05/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9273be2adb8bacf08f92a2284eca9de2b65f0162
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: fcd192e495a9d6351ccc0a25b27ab7407128022a
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507496"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055233"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>教程：使用 Azure 门户通过路由表路由网络流量
 
@@ -37,7 +37,7 @@ ms.locfileid: "96507496"
 
 本教程使用 [Azure 门户](https://portal.azure.cn)。 你也可使用 [Azure CLI](tutorial-create-route-table-cli.md) 或 [Azure PowerShell](tutorial-create-route-table-powershell.md)。
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+如果没有 Azure 订阅，请在开始前创建一个[试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 ## <a name="create-an-nva"></a>创建 NVA
 
@@ -106,7 +106,7 @@ ms.locfileid: "96507496"
         | ------- | ----- |
         | 名称 | *mynvastorageaccount* |
         | 帐户类型 | “存储(常规用途 v1)” |
-        | 性能 | **Standard** |
+        | 性能 | **标准** |
         | 复制 | **本地冗余存储 (LRS)** |
 
     1. 选择“确定”退出对话框。
@@ -132,7 +132,7 @@ ms.locfileid: "96507496"
     | 设置 | 值 |
     | ------- | ----- |
     | 名称 | *myRouteTablePublic* |
-    | 订阅 | 订阅 |
+    | 订阅 | 你的订阅 |
     | 资源组 | **myResourceGroup** |
     | 位置 | (US) 中国东部 |
     | 虚拟网络网关路由传播 | **已启用** |
@@ -363,5 +363,5 @@ ms.locfileid: "96507496"
 > [!div class="nextstepaction"]
 > [限制 PaaS 资源的网络访问](tutorial-restrict-network-access-to-resources.md)
 
-<!--Not Availbale on /cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn-->
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--NOT AVAILABLE ON [quickstart on analyzing your costs](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)-->
+<!--Update_Description: update meta properties, wording update, update link-->

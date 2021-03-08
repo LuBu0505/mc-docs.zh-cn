@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 5577c0a6863e6dcc110e010cd97d0f8521bc049a
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: d9f5d4ab6b414a62dd308d5c767cc191856cc7f6
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230000"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196730"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>在标记项目中标记图像 
 
@@ -61,11 +61,7 @@ ms.locfileid: "98230000"
 
 提交手头数据的标记后，Azure 将使用工作队列中的一组新图像刷新页面。
 
-### <a name="assisted-machine-learning-preview"></a>辅助机器学习（预览版） 
-
-> [!IMPORTANT]
-> 辅助机器学习目前提供公共预览版。
-> 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。 
+### <a name="assisted-machine-learning"></a>辅助机器学习
 
 可能会触发机器学习算法。 如果在项目中启用了这些算法，你可能会看到以下内容：
 
@@ -73,7 +69,14 @@ ms.locfileid: "98230000"
 
 * 稍后，你可能会在项目名称旁边看到“预标记任务”。  然后，图像将显示一个来自机器学习分类模型的建议标签。 任何机器学习模型都达不到 100% 的准确度。 虽然我们只使用模型有信心识别的图像，但这些图像仍然可能没有正确地预标记。  看到这些标签时，请在提交页面之前更正任何错误的标签。  
 
-* 对于对象检测模型，你可能会看到已存在的边界框和标签。  在提交页面之前更正不正确的任何内容。
+* 在对象标识模型中，可能已经存在边界框和标签。  在提交页面之前更正不正确的任何内容。
+
+* 在分段模型中，可能已经存在多边形和标签。  在提交页面之前更正不正确的任何内容。 
+
+    > [!IMPORTANT]
+    > （预览版）中列出的功能以公共预览版提供。   
+    > 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 
 特别是在标记项目的早期阶段，机器学习模型可能只能准确地预标记一小部分图像。 在标记这些图像后，标记项目将返回到手动标记，为下一轮模型训练收集更多数据。 随着时间的推移，模型将对更高比例的图像更有信心，从而在项目的后期产生更多的预标记任务。
 

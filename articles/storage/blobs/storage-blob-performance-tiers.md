@@ -4,17 +4,17 @@ description: 介绍 Azure 块 Blob 存储的高级与标准性能层之间的差
 author: WenJason
 ms.author: v-jay
 origin.date: 11/12/2019
-ms.date: 03/30/2020
+ms.date: 03/08/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 167269f0bf0a2c08784d3098eca7d2731d8dbf96
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+ms.openlocfilehash: f5ad7182f91adef7c5dce681208fd444bace6882
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86227065"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196360"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>块 Blob 存储的性能层
 
@@ -64,7 +64,7 @@ Azure 块 Blob 存储提供两个不同的性能层：
 
 无法将现有的标准性能存储帐户转换为使用高级性能层的块 Blob 存储帐户。 若要迁移到高级性能存储帐户，必须创建一个块 Blob 存储帐户，并将数据迁移到新帐户。 有关详细信息，请参阅[创建块 Blob 存储帐户](storage-blob-create-account-block-blob.md)。
 
-若要在存储帐户之间复制 Blob，可以使用最新版本的 [AzCopy](../common/storage-use-azcopy-blobs.md) 命令行工具。 Azure 数据工厂等其他工具也可用于数据移动和转换。
+若要在存储帐户之间复制 Blob，可以使用最新版本的 [AzCopy](../common/storage-use-azcopy-v10.md#transfer-data) 命令行工具。 Azure 数据工厂等其他工具也可用于数据移动和转换。
 
 ## <a name="blob-lifecycle-management"></a>Blob 生命周期管理
 
@@ -82,6 +82,5 @@ Blob 存储生命周期管理提供了丰富的基于规则的策略：
 评估 GPv2 和 Blob 存储帐户中的热、冷和存档层。
 
 - [了解如何从存档层解冻 Blob 数据](storage-blob-rehydration.md)
-- [通过启用 Azure 存储度量值来评估当前存储帐户的使用情况](../common/storage-enable-and-view-metrics.md)
 - [按区域查看 Blob 存储帐户和 GPv2 帐户中的热层、冷层和存档层定价](https://azure.cn/pricing/details/storage/)
 - [检查数据传输定价](https://azure.cn/pricing/details/data-transfer/)

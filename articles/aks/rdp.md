@@ -6,16 +6,16 @@ services: container-service
 ms.topic: article
 origin.date: 06/04/2019
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 07/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 69483ab27a415578c931660d4f2b02677ac29313
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 4be59285b98f9e808befc3820d0f3dfd9b77309b
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004175"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055306"
 ---
 <!--Verified successfully-->
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>使用 RDP 连接到 Azure Kubernetes 服务 (AKS) 群集 Windows Server 节点以进行维护或故障排除
@@ -180,4 +180,4 @@ az network nsg rule delete --resource-group $CLUSTER_RG --nsg-name $NSG_NAME --n
 [ssh-steps]: ssh.md
 [view-master-logs]: view-master-logs.md
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

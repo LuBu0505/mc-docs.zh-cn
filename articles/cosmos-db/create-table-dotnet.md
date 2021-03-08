@@ -7,17 +7,17 @@ ms.devlang: dotnet
 ms.topic: quickstart
 origin.date: 05/28/2020
 author: rockboyfor
-ms.date: 11/09/2020
+ms.date: 12/07/2020
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e72c7750cd4a22285a47ded58adc9d42f5373a04
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 12bcf419ed7afd0d4f36c86bf522bb7744a5669c
+ms.sourcegitcommit: bbe4ee95604608448cf92dec46c5bfe4b4076961
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328610"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "102108746"
 ---
 <!--Verify sucessfully-->
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>快速入门：使用 .NET SDK 和 Azure Cosmos DB 生成表 API 应用 
