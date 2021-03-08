@@ -7,22 +7,22 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 origin.date: 01/27/2020
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.reviewer: zivr
-ms.openlocfilehash: fdf7763012d0850c29a9da69e19c7a6e04da23d1
-ms.sourcegitcommit: 22e1da9309795e74a91b7241ac5987a802231a8c
+ms.openlocfilehash: 9ad933f543bd0508697a2f08567ff0490ca43af4
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89463085"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054014"
 ---
 <!--Verified successfully-->
 # <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>使用 PowerShell 将 VM 部署到邻近放置组
 
-若要让 VM 尽可能靠近，将延迟尽可能降至最低，应将 VM 部署到一个[邻近放置组](co-location.md#proximity-placement-groups)中。
+若要让 VM 尽可能靠近，将延迟尽可能降至最低，应将 VM 部署到一个[邻近放置组](../co-location.md#proximity-placement-groups)中。
 
 邻近放置组是一种逻辑分组，用于确保 Azure 计算资源在物理上彼此靠近。 邻近放置组用于要求低延迟的工作负荷。
 
@@ -175,4 +175,4 @@ Start-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupNa
 
 也可使用 [Azure CLI](../linux/proximity-placement-groups.md) 创建邻近放置组。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

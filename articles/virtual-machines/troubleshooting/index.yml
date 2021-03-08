@@ -8,16 +8,16 @@ metadata:
   ms.service: virtual-machines-windows
   ms.topic: landing-page
   author: rockboyfor
-  ms.date: 02/08/2021
+  ms.date: 02/22/2021
   ms.testscope: yes
   ms.testdate: 08/31/2020
   ms.author: v-yeche
-  ms.openlocfilehash: 3adf0eeed9ecfcca5cf62ee4d844d02cc885882b
-  ms.sourcegitcommit: fda47fe846d47f30e65a048251402d873e416650
+  ms.openlocfilehash: fed4a45f65e5778c7595c9161b8baba05d4cd17c
+  ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/02/2021
-  ms.locfileid: "99426579"
+  ms.lasthandoff: 03/04/2021
+  ms.locfileid: "102054403"
 landingContent:
 - title: 排查部署失败问题
   linkLists:
@@ -50,7 +50,7 @@ landingContent:
     - text: 按事件 ID 排查 Azure VM RDP 连接问题
       url: ./event-id-troubleshoot-vm-rdp-connecton.md
     - text: 使用 RDP 连接到 Azure VM 时排查身份验证错误
-      url: ./troubleshoot-authentication-error-rdp-vm.md
+      url: https://docs.microsoft.com/troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm
     - text: VM 来宾网卡被禁用
       url: ./troubleshoot-rdp-nic-disabled.md
 - title: 密码重置

@@ -4,15 +4,15 @@ description: 分析不同的属性对应用部件的转换率造成的潜在影�
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 11/10/2020
+ms.date: 02/22/2021
 ms.reviewer: mbullwin
 origin.date: 01/08/2019
-ms.openlocfilehash: 40ff4615e886ce5e71f51b877e19a32ad7c4fd69
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: ca04f8c9cce4779b045a5cce306fb6ce7d2de55a
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94638089"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197351"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights 中的 Impact 分析功能
 
@@ -86,7 +86,7 @@ Impact 最终计算方式根据是按指标还是按维护分析而异。 使用
     - [漏斗图](usage-funnels.md)
     - [保留](usage-retention.md)
     - [用户流](usage-flows.md)
-    - [工作簿](../platform/workbooks-overview.md)
+    - [工作簿](../visualize/workbooks-overview.md)
     - [添加用户上下文](usage-send-user-context.md)
 
 

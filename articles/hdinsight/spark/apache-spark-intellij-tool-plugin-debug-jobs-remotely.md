@@ -13,12 +13,12 @@ ms.topic: article
 origin.date: 11/28/2017
 ms.date: 10/28/2019
 ms.author: v-yiso
-ms.openlocfilehash: 0d54a752c85a6afa6b2cc4bb61a9cd86b561bd71
-ms.sourcegitcommit: bb7497d5a11e8fb506907221ff65a18e6c523372
+ms.openlocfilehash: 71f1b94d7dc86f5228a383f96052eb7147d42622
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98692077"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196784"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>使用 Azure Toolkit for IntelliJ 通过 VPN 在 HDInsight 中远程调试 Apache Spark 应用程序
 
@@ -44,7 +44,7 @@ ms.locfileid: "98692077"
 ## <a name="step-1-create-an-azure-virtual-network"></a>步骤 1：创建 Azure 虚拟网络
 遵照以下链接中的说明创建 Azure 虚拟网络，并验证台式机与虚拟网络之间的连接。
 
-* [使用 Azure 门户创建具有站点到站点 VPN 连接的 VNet](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [使用 Azure 门户创建具有站点到站点 VPN 连接的 VNet](../../vpn-gateway/tutorial-site-to-site-portal.md)
 * [使用 PowerShell 创建具有站点到站点 VPN 连接的 VNet](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 * [使用 PowerShell 配置与虚拟网络的点到站点连接](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
@@ -60,11 +60,11 @@ ms.locfileid: "98692077"
 
     ![在 Ambari 中选择“主机”](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png)
 
-1. 此时会显示头节点、工作节点和 zookeeper 节点的列表。 头节点带有 **hn** _ 前缀。 选择第一个头节点。
+1. 此时会显示头节点、工作节点和 zookeeper 节点的列表。 头节点带有 **hn*** 前缀。 选择第一个头节点。
 
     ![在 Ambari 中查找头节点](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
 
-1. 在打开的页面底部的“摘要”窗格中，复制头节点的“IP 地址”和“主机名”。 
+1. 在打开的页面底部的“摘要”窗格中，复制头节点的“IP 地址”和“主机名”。  
 
     ![在 Ambari 中查找 IP 地址](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address1.png)
 

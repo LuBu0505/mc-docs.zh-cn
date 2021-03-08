@@ -5,16 +5,16 @@ services: container-service
 ms.topic: article
 origin.date: 07/17/2020
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: a86a8b66d8fde8f3b40d1b9af67899fede4a10b1
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 06293153eeea9c777469327eba8937676adc4760
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063635"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055292"
 ---
 <!--Verified successfully from PG team confirmation-->
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>创建专用 Azure Kubernetes 服务群集
@@ -90,6 +90,8 @@ az aks create \
 
 ### <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>创建具有专用 DNS 区域的专用 AKS 群集
 
+<!--NOT AVAILABLE ON Preview on --private-dns-zone (custom private dns zone ResourceId)-->
+
 ```azurecli
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --private-dns-zone [none|system]
 ```
@@ -137,16 +139,15 @@ API 服务器终结点没有公共 IP 地址。 若要管理 API 服务器，需
 ## <a name="limitations"></a>限制 
 * IP 授权范围不能应用于专用 API 服务器终结点，它们仅适用于公共 API 服务器
 
-    <!--Not Available on * [Azure Private Link service limitations][private-link-service]-->
+    <!--NOT AVAILABLE ON * [Azure Private Link service limitations][private-link-service]-->
     
 * 不支持具有专用群集的 Azure DevOps Microsoft 托管的代理。
     
-    <!--Not Available on [Self-hosted Agents](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?preserve-view=true&tabs=browser&view=azure-devops)-->
+    <!--NOT AVAILABLE ON [Self-hosted Agents](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?preserve-view=true&tabs=browser&view=azure-devops)-->
     
 * 对于需要使 Azure 容器注册表能够与专用 AKS 配合使用的客户，容器注册表虚拟网络必须与代理群集虚拟网络对等互连。
 * 不支持将现有 AKS 群集转换为专用群集
 * 删除或修改客户子网中的专用终结点将导致群集停止运行。 
-* 当前不支持适用于容器的 Azure Monitor 实时数据。
 * 客户在自己的 DNS 服务器上更新 A 记录后，这些 Pod 仍会在迁移后将 apiserver FQDN 解析到较旧的 IP，直到重启这些 Pod。 客户需要在控制平面迁移之后重启 hostNetwork Pod 和 default-DNSPolicy Pod。
 * 如果对控制平面进行维护，[AKS IP](./limit-egress-traffic.md) 可能会更改。 在这种情况下，你必须在自定义 DNS 服务器上更新指向 API 服务器专用 IP 的 A 记录，并重启使用 hostNetwork 的任何自定义 Pod 或部署。
 
@@ -163,7 +164,6 @@ API 服务器终结点没有公共 IP 地址。 若要管理 API 服务器，需
 [azure-bastion]: ../bastion/tutorial-create-host-portal.md
 [express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
 
-<!--Not Available on [devops-agents]: https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops-->
+<!--NOT AVAILABLE ON [devops-agents]: https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops-->
 <!--NOT AVAILABLE ON [availability-zones]: availability-zones.md-->
-
 <!--Update_Description: update meta properties, wording update, update link-->

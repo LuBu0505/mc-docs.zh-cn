@@ -5,17 +5,17 @@ ms.service: security
 ms.topic: conceptual
 origin.date: 05/27/2020
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 07/20/2020
 ms.author: v-yeche
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 359a0592fce850c93865cf77cf7bb548d5c5dcd7
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 448ecadf11196316cfa022288430747702d36452
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063521"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055324"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>容器实例的 Azure 安全基线
 
@@ -25,7 +25,7 @@ ms.locfileid: "99063521"
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
-## <a name="network-security"></a>网络安全性
+## <a name="network-security"></a>网络安全
 
 有关详细信息，请参阅[安全控制：网络安全](../security/benchmarks/security-control-network-security.md)。
 
@@ -583,7 +583,7 @@ ms.locfileid: "99063521"
 
 * [Azure 容器实例的安全注意事项](./container-instances-image-security.md)
 
-<!--NOT AVAILABLE ON * [Azure Container Registry integration with Security Center](../security-center/defender-for-container-registries-introduction.md)-->
+* [Azure 容器注册表与安全中心的集成](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure 安全中心监视**：是
 
@@ -621,7 +621,7 @@ ms.locfileid: "99063521"
 
 * [Azure 容器实例的安全注意事项](./container-instances-image-security.md)
 
-<!--NOT AVAILABLE ON * [Azure Container Registry integration with Security Center](../security-center/defender-for-container-registries-introduction.md)-->
+* [Azure 容器注册表与安全中心的集成](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure 安全中心监视**：是
 
@@ -633,7 +633,7 @@ ms.locfileid: "99063521"
 
 * [Azure 容器实例的安全注意事项](./container-instances-image-security.md)
 
-<!--NOT AVAILABLE ON * [Azure Container Registry integration with Security Center](../security-center/defender-for-container-registries-introduction.md)-->
+* [Azure 容器注册表与安全中心的集成](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure 安全中心监视**：是
 
@@ -723,7 +723,7 @@ ms.locfileid: "99063521"
 
 * [Azure 容器实例的安全注意事项](./container-instances-image-security.md)
 
-<!--NOT AVAILABLE ON * [Azure Container Registry integration with Security Center](../security-center/defender-for-container-registries-introduction.md)-->
+* [Azure 容器注册表与安全中心的集成](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -859,7 +859,7 @@ ms.locfileid: "99063521"
 
 * [Azure 容器实例的容器监视和扫描安全建议](./container-instances-image-security.md)
 
-<!--NOT AVAILABLE ON * [Azure Container Registry integration with Security Center](../security-center/defender-for-container-registries-introduction.md)-->
+* [Azure 容器注册表与安全中心的集成](../security-center/defender-for-container-registries-introduction.md)
 
 * [关于 Azure 容器注册表任务的基础映像更新](../container-registry/container-registry-tasks-base-images.md)
 

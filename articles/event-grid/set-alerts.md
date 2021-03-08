@@ -4,13 +4,13 @@ description: 本文介绍如何创建有关 Azure 事件网格指标和活动日
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 08/10/2020
-ms.openlocfilehash: 2f5b4d7bf2fd4e056a45a08aee331b0b9f8d2635
-ms.sourcegitcommit: 9d9795f8a5b50cd5ccc19d3a2773817836446912
+ms.date: 03/05/2021
+ms.openlocfilehash: cd363d90b2a5233c963fde854344c19bcb28537a
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88228938"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197379"
 ---
 # <a name="set-alerts-on-azure-event-grid-metrics-and-activity-logs"></a>设置有关 Azure 事件网格指标和活动日志的警报
 本文介绍如何创建有关 Azure 事件网格指标和活动日志操作的警报。 可以针对 Azure 事件网格资源（主题和域）的发布和交付这两种指标创建警报。 对于系统主题，请[使用“指标”页创建警报](#create-alerts-using-the-metrics-page)。
@@ -73,7 +73,7 @@ ms.locfileid: "88228938"
     
 
 > [!NOTE]
-> 本文并未涉及创建警报时所有可以使用的不同步骤和组合。 有关警报的概述，请参阅[警报概述](../azure-monitor/platform/alerts-metric.md)。
+> 本文并未涉及创建警报时所有可以使用的不同步骤和组合。 有关警报的概述，请参阅[警报概述](../azure-monitor/alerts/alerts-metric.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

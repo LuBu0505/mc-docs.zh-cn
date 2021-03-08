@@ -4,10 +4,8 @@ description: 本文介绍如何使用 Azure CLI 通过虚拟网络服务终结�
 services: virtual-network
 documentationcenter: virtual-network
 manager: mtillman
-editor: ''
 tags: azure-resource-manager
 Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: how-to
@@ -15,17 +13,17 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure-services
 origin.date: 03/14/2018
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4e89add9dd0c94ab23a5c64396ac9598df5af955
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: 6741935b7ac7bc277c9ac66a4739d81fca34b66d
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570678"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102108769"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>使用 Azure CLI 通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
 
@@ -125,7 +123,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-每个网络安全组包含多个[默认安全规则](security-overview.md#default-security-rules)。 以下规则将替代允许对所有公共 IP 地址进行出站访问的默认安全规则。 `destination-address-prefix "Internet"` 选项拒绝对所有公共 IP 地址进行出站访问。 上一个规则将替代此规则，因为它的优先级更高，上一个规则允许对 Azure 存储的公共 IP 地址进行访问。
+每个网络安全组包含多个[默认安全规则](./network-security-groups-overview.md#default-security-rules)。 以下规则将替代允许对所有公共 IP 地址进行出站访问的默认安全规则。 `destination-address-prefix "Internet"` 选项拒绝对所有公共 IP 地址进行出站访问。 上一个规则将替代此规则，因为它的优先级更高，上一个规则允许对 Azure 存储的公共 IP 地址进行访问。
 
 ```azurecli
 az network nsg rule create \
@@ -355,4 +353,4 @@ az group delete --name myResourceGroup --yes
 
 如果帐户中有多个虚拟网络，可将两个虚拟网络连接到一起，使每个虚拟网络中的资源可以相互通信。 若要了解如何操作，请参阅[连接虚拟网络](tutorial-connect-virtual-networks-cli.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

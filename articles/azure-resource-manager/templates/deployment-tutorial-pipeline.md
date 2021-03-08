@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure Pipelines 进行持续集成
 description: 了解如何持续构建、测试和部署 Azure 资源管理器模板（ARM 模板）。
-origin.date: 08/24/2020
+origin.date: 02/16/2021
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 06/22/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 4f29a3bdf99fb5f831e9d5d9cbba6ffec8900bc5
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 8340ae50c84a9614296f6451a9e5fdc795b31e5e
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063631"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055287"
 ---
 <!--Verified successfully on 04/30/2020-->
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>教程：使用 Azure Pipelines 持续集成 ARM 模板
@@ -51,7 +51,7 @@ Azure DevOps 提供开发人员服务，以支持团队规划工作、协作开�
 * **安装 Git**。 本教程说明使用 Git Bash 或 Git Shell 。 如需说明，请参阅[安装 Git](https://www.atlassian.com/git/tutorials/install-git)。
 * **Azure DevOps 组织**。 如果没有组织，可以免费创建一个组织。 请参阅[创建组织或项目集合](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization)。
     
-    <!--CORRECT ON URL on https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops-->
+    <!--CORRECT ON URL on https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-->
     
 * （可选）**包含资源管理器工具扩展的 Visual Studio Code**。 请参阅[快速入门：使用 Visual Studio Code 创建 ARM 模板](quickstart-create-templates-use-visual-studio-code.md)。
 
@@ -96,8 +96,8 @@ _CreateWebApp_ 文件夹是存储模板的文件夹。 使用 `pwd` 命令可显
 
 如果不创建模板的话，可以下载模板并将其保存到 _CreateWebApp_ 文件夹。
 
-* 主模板： https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json
-* 链接模板： https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json
+* 主模板： https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/azuredeploy.json
+* 链接模板： https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/linkedStorageAccount.json
 
 使用的文件夹名称和文件名与管道中的名称相同。 如果更改这些名称，则必须更新管道中使用的名称。
 
@@ -118,7 +118,7 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
 
     可能会收到一条有关 LF 的警告。 可以忽略该警告。 main 是主分支。  通常，每次更新创建一个分支。 若要简化本教程，请直接使用主分支。
 
-1. 从浏览器浏览到 GitHub 存储库。 该 URL 为 `https://github.com/[YourAccountName]/[YourGitHubRepository]`。 应会看到 _CreateWebApp_ 文件夹以及其中的三个文件。
+1. 从浏览器浏览到 GitHub 存储库。 该 URL 为 `https://github.com/[YourAccountName]/[YourGitHubRepository]`。 应会看到 _CreateWebApp_ 文件夹以及其中的两个文件。
 1. 选择“linkedStorageAccount.json”打开模板。
 1. 选择“原始”按钮。 该 URL 以 `https://raw.githubusercontent.com` 开头。
 1. 复制 URL。 稍后在本教程中配置管道时需要提供此值。
@@ -147,7 +147,7 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
 
 1. 从左侧菜单的底部选择“项目设置”。
 1. 在“管道”下，选择“服务连接” 。
-1. 依次选择“新建服务连接”、“Azure 资源管理器”、“下一步”。  
+1. 依次选择“创建服务连接”、“Azure 资源管理器”、“下一步”  。
     
     <!--MOONCAKE CUSTOMIZATION ON 04/30/2020-->
     
@@ -197,7 +197,7 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
 若要以包含部署模板步骤的方式创建管道，请执行以下操作：
 
 1. 在左侧菜单中选择“管道”。
-1. 选择“新建管道”。
+1. 选择“创建管道”。
 1. 从“连接”选项卡中，选择“GitHub” 。 如果系统要求输入 GitHub 凭据，然后按照说明进行操作。 如果看到以下屏幕，请选择“仅选择存储库”，并验证存储库是否位于列表中，然后选择“批准和安装” 。
 
     :::image type="content" source="./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-only-select-repositories.png" alt-text="Azure 资源管理器 Azure DevOps Azure Pipelines“仅选择存储库”":::
@@ -290,4 +290,4 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
 > [!div class="nextstepaction"]
 > [利用模板参考](./template-tutorial-use-template-reference.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

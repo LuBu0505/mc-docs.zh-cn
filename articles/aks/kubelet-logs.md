@@ -4,16 +4,17 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 节点的 kubelet 日
 services: container-service
 ms.topic: article
 origin.date: 03/05/2019
-ms.date: 08/10/2020
+author: rockboyfor
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 97df196c495b19abd5bd0fc70c7b605f0a34f08d
-ms.sourcegitcommit: fce0810af6200f13421ea89d7e2239f8d41890c0
+ms.openlocfilehash: bd3489fad8e1b0d62184d7a7024098ae9a0dfb00
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87842678"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054075"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>从 Azure Kubernetes 服务 (AKS) 群集节点获取 kubelet 日志
 
@@ -82,4 +83,4 @@ I0508 12:28:58.344656    8672 kubelet_node_status.go:497] Using Node Hostname fr
 [aks-master-logs]: view-master-logs.md
 [azure-container-logs]: ../azure-monitor/insights/container-insights-overview.md
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

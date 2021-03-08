@@ -9,16 +9,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/11/2018
 author: rockboyfor
-ms.date: 09/28/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: 09/28/2020
 ms.author: v-yeche
-ms.openlocfilehash: ea64d8c56b1a6a5e40b34bca8e0745327fd4c0ed
-ms.sourcegitcommit: 71953ae66ddfc07c5d3b4eb55ff8639281f39b40
+ms.openlocfilehash: 32a8921d3c9638465689045575a478380a0b2920
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91395389"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054036"
 ---
 <!--Verified successfully-->
 # <a name="traffic-manager-metrics-and-alerts"></a>流量管理器指标和警报

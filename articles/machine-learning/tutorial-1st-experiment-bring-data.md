@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
-ms.date: 09/15/2020
+ms.date: 02/11/2021
 ms.custom: tracking-python
-ms.openlocfilehash: 4966aa8436e4ffd86560e91ba026da79e8c1487b
-ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
+ms.openlocfilehash: bcb9ba896b323a29a7377cdd053b449a805de5ec
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804372"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196894"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>教程：使用你自己的数据（第 4 部分，共 4 部分）
 
@@ -156,21 +156,8 @@ optimizer = optim.SGD(
 
 你的脚本现在接受数据路径作为参数。 若要开始，请在本地对其进行测试。 向教程目录结构添加一个名为 `data` 的文件夹。 目录结构应类似于：
 
-```txt
-tutorial
-└──.azureml
-|  └──config.json
-|  └──pytorch-env.yml
-└──data
-└──src
-|  └──hello.py
-|  └──model.py
-|  └──train.py
-└──01-create-workspace.py
-└──02-create-compute.py
-└──03-run-hello.py
-└──04-run-pytorch.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-bring-data/directory-structure.png" alt-text="目录结构中显示了 .azureml、data 和 src 子目录":::
+
 
 如果在上一教程中未在本地运行 `train.py`，将不会有 `data/` 目录。 在此示例中，请在 `train.py` 脚本中在 `download=True` 的情况下在本地运行 `torchvision.datasets.CIFAR10` 方法。
 

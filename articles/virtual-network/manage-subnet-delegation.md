@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 11/06/2019
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/22/2021
 ms.author: v-yeche
-ms.openlocfilehash: 5656b0588a9a1347d4dd1a9786790525b6bad2f1
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: c83988210f0139fac8e43f68cce4967101b855fa
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230951"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102108752"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>添加或删除子网委托
 
@@ -35,7 +35,7 @@ ms.locfileid: "98230951"
 ### <a name="connect-to-azure"></a>连接到 Azure
 
 ```powershell
-  Connect-AzAccount -Environment AzureChinaCloud
+Connect-AzAccount -Environment AzureChinaCloud
 ```
 
 ### <a name="create-a-resource-group"></a>创建资源组
@@ -46,11 +46,11 @@ ms.locfileid: "98230951"
 以下示例在“chinaeast”  位置创建名为“myResourceGroup”  的资源组：
 
 ```powershell
-  New-AzResourceGroup -Name myResourceGroup -Location chinaeast
+New-AzResourceGroup -Name myResourceGroup -Location chinaeast
 ```
 ### <a name="create-virtual-network"></a>创建虚拟网络
 
-使用 **New-AzVirtualNetwork** 在 **myResourceGroup** 中创建名为 [myVnet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) 的虚拟网络，并使用 **New-AzVirtualNetworkSubnetConfig** 创建名为 [mySubnet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest) 的子网。 虚拟网络的 IP 地址空间是 **10.0.0.0/16**。 虚拟网络中的子网是 **10.0.0.0/24**。  
+使用 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) 在 **myResourceGroup** 中创建名为 **myVnet** 的虚拟网络，并使用 [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建名为 **mySubnet** 的子网。 虚拟网络的 IP 地址空间是 **10.0.0.0/16**。 虚拟网络中的子网是 **10.0.0.0/24**。  
 
 ```powershell
   $subnet = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix "10.0.0.0/24"
@@ -67,7 +67,7 @@ ms.locfileid: "98230951"
 
 在此部分，我们将上一部分创建的子网委托给 Azure 服务。 
 
-请使用 [Add-AzDelegation](https://docs.microsoft.com/powershell/module/az.network/add-azdelegation?view=latest) 通过名为 **myDelegation** 的委托（委托到 Azure 服务）对名为 **mySubnet** 的子网进行更新。  在此示例中，**Microsoft.DBforPostgreSQL/serversv2** 用于示例委托：
+请使用 [Add-AzDelegation](https://docs.microsoft.com/powershell/module/az.network/add-azdelegation) 通过名为 **myDelegation** 的委托（委托到 Azure 服务）对名为 **mySubnet** 的子网进行更新。  在此示例中，**Microsoft.DBforPostgreSQL/serversv2** 用于示例委托：
 
 ```powershell
   $vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
@@ -75,7 +75,7 @@ ms.locfileid: "98230951"
   $subnet = Add-AzDelegation -Name "myDelegation" -ServiceName "Microsoft.DBforPostgreSQL/serversv2" -Subnet $subnet
   Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
-使用 [Get-AzDelegation](https://docs.microsoft.com/powershell/module/az.network/get-azdelegation?view=latest) 验证委托：
+使用 [Get-AzDelegation](https://docs.microsoft.com/powershell/module/az.network/get-azdelegation) 验证委托：
 
 ```powershell
   $subnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"
@@ -91,7 +91,7 @@ ms.locfileid: "98230951"
 ```
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>从 Azure 服务中删除子网委托
 
-使用 [Remove-AzDelegation](https://docs.microsoft.com/powershell/module/az.network/remove-azdelegation?view=latest) 从名为 **mySubnet** 的子网中删除委托：
+使用 [Remove-AzDelegation](https://docs.microsoft.com/powershell/module/az.network/remove-azdelegation) 从名为 **mySubnet** 的子网中删除委托：
 
 ```powershell
   $vnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup"
@@ -99,7 +99,7 @@ ms.locfileid: "98230951"
   $subnet = Remove-AzDelegation -Name "myDelegation" -Subnet $subnet
   Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
-使用 [Get-AzDelegation](https://docs.microsoft.com/powershell/module/az.network/get-azdelegation?view=latest) 验证是否已删除委托：
+使用 [Get-AzDelegation](https://docs.microsoft.com/powershell/module/az.network/get-azdelegation) 验证是否已删除委托：
 
 ```powershell
   $subnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"
@@ -112,4 +112,4 @@ ms.locfileid: "98230951"
 ## <a name="next-steps"></a>后续步骤
 - 了解如何[在 Azure 中管理子网](virtual-network-manage-subnet.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

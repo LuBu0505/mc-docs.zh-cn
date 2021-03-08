@@ -6,17 +6,17 @@ ms.topic: troubleshooting
 ms.author: v-jay
 manager: dcscontentpm
 origin.date: 10/21/2019
-ms.date: 11/16/2020
+ms.date: 03/08/2021
 ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: f0b4ebe9da214181bdc9068dda0ed958ba7581d3
-ms.sourcegitcommit: 5f07189f06a559d5617771e586d129c10276539e
+ms.openlocfilehash: 4955d3d8bfbebcef95a4acf21045ade9b40dfdf3
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94552246"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196346"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>使用存储分析日志排查延迟问题
 
@@ -28,7 +28,7 @@ ms.locfileid: "94552246"
 
 ## <a name="recommended-steps"></a>建议的步骤
 
-1. 下载[存储分析日志](./storage-analytics-logging.md#download-storage-logging-log-data)。
+1. 下载[存储分析日志](./manage-storage-analytics-logs.md#download-storage-logging-log-data)。
 
 2. 使用以下 PowerShell 脚本将原始格式的日志转换为表格格式：
 

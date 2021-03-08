@@ -5,23 +5,23 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-ms.date: 02/02/2021
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: f1ab55f9c1cc2ecf8a453d8823ea7cbf3dc67173
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: d89ec42552b730bb08ea569b93db9bc0699a7a1c
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579626"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196693"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>使用 Azure CLI 大规模部署并监视 IoT Edge 模块
 
 使用 Azure 命令行接口创建 IoT Edge 自动部署，同时为多个设备管理正在进行的部署。 IoT Edge 的自动部署是 IoT 中心[自动设备管理](../iot-hub/iot-hub-automatic-device-management.md)功能的一部分。 部署是允许将多个模块部署到多个设备、跟踪模块的状态和运行状况以及在必要时做出更改的动态过程。
 
-有关详细信息，请参阅[了解单设备 IoT Edge 自动部署或大规模 IoT Edge 自动部署](module-deployment-monitoring.md)。
+有关详细信息，请参阅[了解单个设备或大规模的 IoT Edge 自动部署](module-deployment-monitoring.md)。
 
 在本文中，将安装 Azure CLI 和 IoT 扩展。 然后，了解如何使用可用的 CLI 命令将模块部署到一组 IoT Edge 设备并监视进度。
 
@@ -65,7 +65,7 @@ ms.locfileid: "99579626"
             "edgeAgent": {
               "type": "docker",
               "settings": {
-                "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+                "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
                 "createOptions": "{}"
               }
             },
@@ -74,7 +74,7 @@ ms.locfileid: "99579626"
               "status": "running",
               "restartPolicy": "always",
               "settings": {
-                "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+                "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
                 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
               }
             }

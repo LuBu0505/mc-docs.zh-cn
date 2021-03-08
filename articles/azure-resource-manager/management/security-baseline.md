@@ -5,17 +5,17 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 origin.date: 10/30/2020
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 11/16/2020
 ms.author: v-yeche
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0e073a90526050eefa25b4f6ec13573411e2d3ba
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 36759ca4f23f24e013e687693a686c9b8d058a49
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063638"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053339"
 ---
 <!--Verified successfully-->
 # <a name="azure-security-baseline-for-azure-resource-manager"></a>适用于 Azure 资源管理器的 Azure 安全基线

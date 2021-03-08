@@ -7,16 +7,16 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 origin.date: 02/06/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: f1f8f18482e45815cf35fd13b11098c6a9a96d12
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: b0df0955e4d459ae61287b3da55533ecf1bc5105
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570655"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052955"
 ---
 <!--Verified successfully from rename articles-->
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>Linux 中平台支持的从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移
@@ -41,7 +41,7 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 * 存储帐户
 * 虚拟网络
 * VPN 网关
-* [快速路由网关](https://docs.azure.cn/expressroute/expressroute-howto-move-arm)（仅限在虚拟网络所在的同一订阅中）
+* [快速路由网关](../expressroute/expressroute-howto-move-arm.md)（仅限在虚拟网络所在的同一订阅中）
 * 网络安全组
 * 路由表
 * 保留 IP
@@ -87,8 +87,6 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 为了让迁移顺畅进行，可以在经典存储帐户中部署 Resource Manager VM。 通过此功能，就可以并且应该迁移计算和网络资源，而不必受到存储帐户的约束。 迁移虚拟机和虚拟网络后，需要迁移存储帐户才能完成迁移过程。
 
 如果存储帐户没有任何关联的磁盘或虚拟机数据，并且只有 blob、文件、表和队列，那么到 Azure 资源管理器的迁移可以作为独立的迁移完成，而不需要依赖项。
-
-<!--MOONCAKE: No **Migrate to ARM** submenu in Azure China Portal, only use Powershell-->
 
 > [!NOTE]
 > Resource Manager 部署模型没有经典映像和磁盘的概念。 迁移存储帐户时，经典映像和磁盘不在 Resource Manager 堆栈中可见，但后备 VHD 保留在存储帐户中。
@@ -151,6 +149,8 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 | Microsoft Dynamics Lifecycle Services |包含由 Dynamics Lifecycle Services 管理的虚拟机的虚拟网络 |目前不支持。 |
 | Azure API 管理 |包含 Azure API 管理部署的虚拟网络 |目前不支持。 若要迁移 IaaS VNET，则更改 API 管理部署的 VNET（该部署不会造成停机）。 |
 
+<!--CORRECT ON Microsoft Dynamics Lifecycle Services-->
+
 ## <a name="next-steps"></a>后续步骤
 
 * [有关平台支持的从经典部署模型到 Azure Resource Manager 部署模型的迁移的技术深入探讨](migration-classic-resource-manager-deep-dive.md)
@@ -161,4 +161,4 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 * [查看最常见的迁移错误](migration-classic-resource-manager-errors.md)
 * [查看有关将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型的最常见问题](migration-classic-resource-manager-faq.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

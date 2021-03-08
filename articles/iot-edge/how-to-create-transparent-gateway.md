@@ -4,26 +4,25 @@ description: 将 Azure IoT Edge 用作可处理来自下游设备的消息的透
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-origin.date: 10/15/2020
-ms.date: 01/05/2021
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: fa0b97463395060175c11648b57e6748d4adcd55
-ms.sourcegitcommit: 40db5a4b9ab8b5877e307ff7a567fd930ca81c72
+ms.openlocfilehash: d2392cc99587a13f47a2b3b7c5e6db856275cfb5
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894292"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196694"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>将 IoT Edge 设备配置为充当透明网关
 
 本文详细说明如何将 IoT Edge 设备配置为充当透明网关，供其他设备用来与 IoT 中心通信。 本文使用术语 *IoT Edge 网关* 来指代配置为透明网关的 IoT Edge 设备。 有关详细信息，请参阅[如何将 IoT Edge 设备用作网关](./iot-edge-as-gateway.md)。
 
-<!-- 1.0.10 -->
+<!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
 
 >[!NOTE]

@@ -4,14 +4,14 @@ description: 了解如何使用 Azure Application Insights 处理 IP 地址和�
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 11/10/2020
+ms.date: 02/22/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 152e3a28b3b251223012184cc9d08acd1fdf33a6
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: 19f68caeee05cddcc46dbe79342ac0b1c9a667d7
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94638047"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197449"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>地理位置和 IP 地址处理
 
@@ -32,7 +32,7 @@ ms.locfileid: "94638047"
 
 而默认设置是不收集 IP 地址。 我们仍提供灵活选择来替代此行为。 但是，建议验证集合是否违反任何合规性要求或当地法规。 
 
-若要详细了解 Application Insights 中的个人数据处理，请参阅[个人数据指南](../platform/personal-data-mgmt.md)。
+若要详细了解 Application Insights 中的个人数据处理，请参阅[个人数据指南](../logs/personal-data-mgmt.md)。
 
 ## <a name="storing-ip-address-data"></a>存储 IP 地址数据
 
@@ -243,11 +243,11 @@ requests
 
 新收集的 IP 地址将显示在 `customDimensions_client-ip` 列中。 默认的 `client-ip` 列仍将四个八进制数全部归零。 
 
-如果从 localhost 进行测试，并且 `customDimensions_client-ip` 的值为 `::1`，则此值为预期行为。 `::1` 表示 IPv6 中的环回地址。 它等效于 IPv4 中的 `127.0.01`。
+如果从 localhost 进行测试，并且 `customDimensions_client-ip` 的值为 `::1`，则此值为预期行为。 `::1` 表示 IPv6 中的环回地址。 它等效于 IPv4 中的 `127.0.0.1`。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解 Application Insights 中的[个人数据收集](../platform/personal-data-mgmt.md)。
+* 详细了解 Application Insights 中的[个人数据收集](../logs/personal-data-mgmt.md)。
 
 * 详细了解 Application Insights 中 [IP 地址收集](https://apmtips.com/posts/2016-07-05-client-ip-address/)的工作原理。 （本文是由我们的某位工程师早前撰写的一篇外部博客文章。 其中所述的机制不同当前的默认行为，现在，IP 地址将记录为 `0.0.0.0`，不过此文更深入地描述了内置 `ClientIpHeaderTelemetryInitializer` 的机制。）
 

@@ -6,16 +6,16 @@ ms.service: bastion
 ms.topic: overview
 origin.date: 10/13/2020
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: e2139226a3dc6afe03e145e368fce7a689e1da77
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 5f31df1991307a21b859ba07a0650232d7d415c9
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104817"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055256"
 ---
 <!--RELEASE BEFORE CONFIRMATION-->
 # <a name="what-is-azure-bastion"></a>什么是 Azure Bastion？
@@ -34,7 +34,7 @@ RDP 和 SSH 是连接 Azure 中运行的工作负载的基本方法。 不要通
 
 此图显示了 Azure Bastion 部署体系结构。 在此图中：
 
-* Bastion 主机部署在虚拟网络中。
+* 堡垒主机部署在虚拟网络中，该网络包含具有最小 /27 前缀的 AzureBastionSubnet 子网。
 * 用户使用任何 HTML5 浏览器连接到 Azure 门户。
 * 用户选择要连接到的虚拟机。
 * 单击一下，在浏览器中打开 RDP/SSH 会话。
@@ -65,4 +65,4 @@ RDP 和 SSH 是连接 Azure 中运行的工作负载的基本方法。 不要通
 * [教程：创建 Azure Bastion 主机并连接到 Windows VM](tutorial-create-host-portal.md)。
 * 了解 Azure 的一些其他关键[网络功能](../networking/networking-overview.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

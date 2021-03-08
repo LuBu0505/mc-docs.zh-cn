@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/06/2021
+ms.date: 02/25/2021
 ms.author: v-johya
 origin.date: 02/25/2020
-ms.openlocfilehash: 38ea7e0f66b927806c9c421d02539186e947715d
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 073fbf5a625f1dbec58f2f865d79844fe56fbd1e
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023203"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197185"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>常见问题解答 - 有关数据收集、代理和工作区的问题
 
@@ -28,7 +28,7 @@ ms.locfileid: "98023203"
 
 ## <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>安全中心创建的工作区中的 Azure Monitor 日志是否会产生费用？
 
-不是。 Azure Monitor 日志配置为按节点计费时，安全中心创建的工作区中的 Azure Monitor 日志不会产生费用。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
+否。 Azure Monitor 日志配置为按节点计费时，安全中心创建的工作区中的 Azure Monitor 日志不会产生费用。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
 
 - 关闭 Azure Defender - 安全中心在默认工作区中启用“SecurityCenterFree”解决方案。 如果 Azure Defender 处于关闭状态，则你无需付费。
 
@@ -44,7 +44,7 @@ ms.locfileid: "98023203"
 
 ## <a name="what-is-the-log-analytics-agent"></a>什么是 Log Analytics 代理？
 
-Azure 安全中心依赖 [Log Analytics 代理](../azure-monitor/platform/log-analytics-agent.md)来监视安全漏洞和威胁。该代理与 Azure Monitor 服务所用的代理相同， 
+Azure 安全中心依赖 [Log Analytics 代理](../azure-monitor/agents/log-analytics-agent.md)来监视安全漏洞和威胁。该代理与 Azure Monitor 服务所用的代理相同， 
 
 有时又称为 Microsoft Monitoring Agent（或“MMA”）。 
 
@@ -52,9 +52,9 @@ Azure 安全中心依赖 [Log Analytics 代理](../azure-monitor/platform/log-an
 
 请确保计算机正在运行此代理支持的操作系统之一，如以下页面所述：
 
-* [适用于 Windows 的 Log Analytics 代理支持的操作系统](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [适用于 Windows 的 Log Analytics 代理支持的操作系统](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
 
-* [适用于 Linux 的 Log Analytics 代理支持的操作系统](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [适用于 Linux 的 Log Analytics 代理支持的操作系统](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
 
 详细了解 [Log Analytics 代理收集的数据](security-center-enable-data-collection.md)。
 
@@ -245,7 +245,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 ## <a name="what-happens-when-data-collection-is-enabled"></a>启用数据收集之后会发生什么？
 
-启用自动预配后，安全中心可在所有受支持的 Azure VM 以及任何新建的 Azure VM 中预配 Log Analytics 代理。 建议进行自动预配，但也可以手动完成代理安装。 [了解如何安装 Log Analytics 代理扩展](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。 
+启用自动预配后，安全中心可在所有受支持的 Azure VM 以及任何新建的 Azure VM 中预配 Log Analytics 代理。 建议进行自动预配，但也可以手动完成代理安装。 [了解如何安装 Log Analytics 代理扩展](../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。 
 
 该代理可启用进程创建事件 4688 和事件 4688 内的 *CommandLine* 字段。 VM 上创建的新进程由事件日志记录，并由安全中心检测服务监视。 若要详细了解针对每个新进程记录的详细信息，请参阅 [4688 中的说明字段](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields)。 该代理还收集 VM 上创建的 4688 事件，并将这些事件存储在搜索中。
 
@@ -257,7 +257,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 ## <a name="will-security-center-work-using-an-oms-gateway"></a>安全中心是否可以使用 OMS 网关？
 
 是的。 Azure 安全中心利用 Azure Monitor，使用 Log Analytics 代理从 Azure VM 和服务器收集数据。
-若要收集数据，每个 VM 和服务器都必须连接到使用 HTTPS 的 Internet。 可直接、通过代理或 [OMS 网关](../azure-monitor/platform/gateway.md)完成此连接。
+若要收集数据，每个 VM 和服务器都必须连接到使用 HTTPS 的 Internet。 可直接、通过代理或 [OMS 网关](../azure-monitor/agents/gateway.md)完成此连接。
 
 
 ## <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>Monitoring Agent 会影响服务器性能吗？

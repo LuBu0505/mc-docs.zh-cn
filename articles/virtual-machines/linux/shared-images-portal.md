@@ -8,20 +8,20 @@ ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
 origin.date: 11/06/2019
-ms.date: 12/01/2020
+ms.date: 03/04/2021
 ms.author: v-johya
 ms.reviewer: akjosh
-ms.openlocfilehash: 1044e3abb4d1d33ac7c3864ea951fcbbe8021e15
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: c36d0a71d3309be020928bc3feb1240dce354d83
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747109"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197654"
 ---
 <!--Verified the Shared Image Gallery exist-->
 # <a name="create-a-shared-image-gallery-using-the-portal"></a>使用门户创建共享映像库
 
-[共享映像库](shared-image-galleries.md)大大简化了整个组织中的自定义映像共享。 自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动部署任务，例如预加载应用程序、应用程序配置和其他 OS 配置。 
+[共享映像库](../shared-image-galleries.md)大大简化了整个组织中的自定义映像共享。 自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动部署任务，例如预加载应用程序、应用程序配置和其他 OS 配置。 
 
 使用共享映像库，你可以在 Azure AD 租户内在同一区域或跨区域与组织中的其他用户共享自定义 VM 映像。 选择要共享哪些映像，要在哪些区域中共享，以及希望与谁共享它们。 你可以创建多个库，以便可以按逻辑方式对共享映像进行分组。 
 
@@ -55,7 +55,7 @@ ms.locfileid: "96747109"
 1. 在映像定义的页面顶部，从菜单中选择“创建 VM”。
 1. 对于“资源组”，请选择“新建”并键入 *myResourceGroup* 作为名称。 
 1. 在“虚拟机名称”中键入 *myVM*。
-1. 对于“区域”，请选择“中国东部”。
+1. 对于“区域”，请选择“中国东部”。  
 1. 对于“可用性选项”，请保留默认设置“无需基础结构冗余”。
 1. 如果你是从映像定义的页面开始操作的，系统会自动使用 `latest` 映像版本填充“映像”的值。
 1. 对于“大小”，请从可用大小列表中选择一种 VM 大小，然后选择“选择”。 
@@ -80,6 +80,5 @@ ms.locfileid: "96747109"
 - [在共享映像库中创建映像版本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sig-image-version-create/)
 - [根据映像版本创建 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-sig/)
 
-有关共享映像库的详细信息，请参阅[概述](shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](../troubleshooting-shared-images.md)。
-
+有关共享映像库的详细信息，请参阅[概述](../shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](../troubleshooting-shared-images.md)。
 

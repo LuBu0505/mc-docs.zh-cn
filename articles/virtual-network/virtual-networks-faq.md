@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/26/2020
 author: rockboyfor
-ms.date: 02/02/2021
+ms.date: 02/22/2021
 ms.author: v-yeche
-ms.openlocfilehash: 986b273631f5d51be4b8ce5861845169db530132
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 99df2d5474b9a393eb12c650486fadd4e4ead9a3
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99058424"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055261"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虚拟网络常见问题 (FAQ)
 
@@ -120,10 +120,12 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 它�
 是的，VNet 可以是单纯的 IPv4，也可以是双堆栈 (IPv4+IPv6)。  有关详细信息，请参阅 [Azure 虚拟网络的 IPv6 概述](./ipv6-overview.md)。
 
 ### <a name="can-a-vnet-span-regions"></a>VNet 是否可以跨区域？
+
+<!--NOT AVAILABLE ON [Availability zones overview](../availability-zones/az-overview.md?toc=%2fvirtual-network%2ftoc.json)-->
+
 否。 一个 VNet 限制为单个区域。 可以通过虚拟网络对等互连来连接不同区域中的虚拟网络。 有关详细信息，请参阅[虚拟网络对等互连概述](virtual-network-peering-overview.md)
 
 <!--Not Available on FEATURE availability zone-->
-<!-- Not Available on [Availability zones overview](../availability-zones/az-overview.md)-->
 
 ### <a name="can-i-connect-a-vnet-to-another-vnet-in-azure"></a>是否可以将 VNet 连接到 Azure 中的另一个 VNet？
 是的。 可以使用以下任一方式将一个 VNet 连接到另一个 VNet：
@@ -199,7 +201,7 @@ Azure 提供的 DNS 是由 Microsoft 提供的多租户 DNS 服务。 Azure 在�
 
 * [应用服务网络功能](../app-service/networking-features.md)
 
-    <!-- Not Available on [Creating Web Apps in an App Service Environment](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fvirtual-network%2ftoc.json) -->
+<!--NOT AVAILABLE ON * [Creating Web Apps in an App Service Environment](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fvirtual-network%2ftoc.json)-->
 
 * [将应用与 Azure 虚拟网络进行集成](../app-service/web-sites-integrate-with-vnet.md?toc=%2fvirtual-network%2ftoc.json)
 * [应用服务访问限制](../app-service/app-service-ip-restrictions.md)
@@ -247,7 +249,7 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间相�
 ### <a name="is-there-tooling-support-for-vnets"></a>是否有 VNet 的工具支持？
 是的。 详细了解以下操作：
 - 使用 Azure 门户通过 [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) 和[经典](https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal)部署模型部署 VNet。
-- 使用 PowerShell 来管理通过 [Resource Manager](https://docs.microsoft.com/powershell/module/az.network) 和[经典](https://docs.microsoft.com/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0)部署模型部署的 VNet。
+- 使用 PowerShell 来管理通过 [Resource Manager](https://docs.microsoft.com/powershell/module/az.network) 和[经典](https://docs.microsoft.com/powershell/module/servicemanagement/azure.service/)部署模型部署的 VNet。
 - 使用 Azure 命令行接口 (CLI) 管理通过[资源管理器](https://docs.azure.cn/cli/network/vnet)和[经典](https://docs.microsoft.com/previous-versions/azure/virtual-machines/azure-cli-arm-commands?toc=%2fvirtual-network%2ftoc.json#network-resources)部署模型部署的 VNet。  
 
 ## <a name="vnet-peering"></a><a name="vnet-peering"></a>VNet 对等互连
@@ -312,7 +314,6 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间相�
 下面是可以尝试的[故障排除指南](virtual-network-troubleshoot-peering-issues.md)。
 
 <!--MOONCAKE: CORRECT ON REDIRECT TO virtual-network-troubleshoot-peering-issues.md-->
-
 <!--Not Available on ## Virtual network TAP-->
 
 ## <a name="virtual-network-service-endpoints"></a>虚拟网络服务终结点
@@ -396,9 +397,7 @@ VNet 服务终结点有助于保护 Azure 服务资源。 VNet 资源通过网�
 
 ### <a name="can-i-filter-virtual-network-traffic-to-azure-services-allowing-only-specific-azure-service-resources-over-vnet-service-endpoints"></a>我是否可以通过 VNet 服务终结点筛选发往 Azure 服务的虚拟网络流量，以便仅允许特定的 Azure 服务资源？ 
 
-使用虚拟网络 (VNet) 服务终结点策略可以通过服务终结点筛选发往 Azure 服务的虚拟网络流量，以便仅允许特定的 Azure 服务资源。 
-
-<!--Not Available on Endpoint policies provide granular access control from the virtual network traffic to the Azure services. You can learn more about the service endpoint policies [here](virtual-network-service-endpoint-policies-overview.md)-->
+使用虚拟网络 (VNet) 服务终结点策略可以通过服务终结点筛选发往 Azure 服务的虚拟网络流量，以便仅允许特定的 Azure 服务资源。 终结点策略从发往 Azure 服务的虚拟网络流量提供精细的访问控制。 可在[此处](virtual-network-service-endpoint-policies-overview.md)了解有关服务终结点策略的更多信息。
 
 ### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Azure Active Directory (Azure AD) 是否支持 VNet 服务终结点？
 
@@ -406,7 +405,7 @@ Azure Active Directory (Azure AD) 不以本机方式支持服务终结点。 可
 
 <!--Not Available on ADLS Gen 1.-->
 <!--Not Available on  Note that the "Microsoft.AzureActiveDirectory" tag listed under services supporting service endpoints is used for supporting service endpoints to ADLS Gen 1.-->
-<!--Not Available on [Azure Data Lake Store Gen 1 VNet Integration](../data-lake-store/data-lake-store-network-security.md?toc=%2fvirtual-network%2ftoc.json)-->
+<!--NOT AVAILABLE ON  [Azure Data Lake Store Gen 1 VNet Integration](../data-lake-store/data-lake-store-network-security.md?toc=%2fvirtual-network%2ftoc.json)-->
 
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>对于我可以从 VNet 中设置多少个 VNet 服务终结点有什么限制吗？
 虚拟网络中的 VNet 服务终结点总数没有限制。 对于 Azure 服务资源（例如 Azure 存储帐户），服务可能会对用于保护资源的子网数目强制施加限制。 下表显示了一些示例限制： 
@@ -427,4 +426,4 @@ Azure Active Directory (Azure AD) 不以本机方式支持服务终结点。 可
 >[!NOTE]
 > Azure 服务自行决定是否对这些限制进行更改。 有关服务详细信息，请参阅相应的服务文档。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

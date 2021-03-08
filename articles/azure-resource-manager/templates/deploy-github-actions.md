@@ -4,22 +4,22 @@ description: 介绍如何使用 GitHub Actions 部署资源管理器模板（ARM
 ms.topic: conceptual
 origin.date: 10/13/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 07/13/2020
 ms.author: v-yeche
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 448a866160cac0233c9f4ac09df8bc60f8f72b3c
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 4431b939dbf65ef92e6de9b96b94bad6b70305fc
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021345"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054396"
 ---
 <!--Verified successfully on 2020/07/13 by harris-->
 # <a name="deploy-arm-templates-by-using-github-actions"></a>使用 GitHub Actions 部署 ARM 模板
 
-[Github 操作](https://docs.github.com/en/free-pro-team@latest/actions)是 GitHub 中的一个功能套件，可以在存储代码的同一位置自动执行软件开发工作流，并针对拉取请求和问题进行协作。
+[Github 操作](https://docs.github.com/en/actions)是 GitHub 中的一个功能套件，可以在存储代码的同一位置自动执行软件开发工作流，并针对拉取请求和问题进行协作。
 
 使用[“部署 Azure 资源管理器模板”操作](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template)将 Azure 资源管理器模板（ARM 模板）自动部署到 Azure。
 
@@ -27,7 +27,7 @@ ms.locfileid: "98021345"
 
 - 具有活动订阅的 Azure 帐户。 [创建试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 - 一个 GitHub 帐户。 如果没有该帐户，请注册[免费版](https://github.com/join)。
-    - GitHub 存储库，用于存储资源管理器模板和工作流文件。 若要创建一个存储库，请参阅[创建新存储库](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-new-repository)。
+    - GitHub 存储库，用于存储资源管理器模板和工作流文件。 若要创建一个存储库，请参阅[创建新存储库](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-new-repository)。
 
 ## <a name="workflow-file-overview"></a>工作流文件概述
 
@@ -44,7 +44,7 @@ ms.locfileid: "98021345"
 
 可以在 [Azure CLI](https://docs.azure.cn/cli/) 中使用 [az ad sp create-for-rbac](https://docs.azure.cn/cli/ad/sp#az_ad_sp_create_for_rbac) 命令创建[服务主体](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 
 
-<!--Not Avaialble on [Azure Cloud Shell](https://shell.azure.com/)-->
+<!--NOT AVAILABLE ON [Azure Cloud Shell](https://shell.azure.com/)-->
 
 如果没有资源组，请创建一个。
 
@@ -165,4 +165,4 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
 > [创建第一个 ARM 模板](./template-tutorial-create-first-template.md)
 
 <!--Not Avaialble on [Learn module: Automate the deployment of ARM templates by using GitHub Actions](https://docs.microsoft.com/learn/modules/deploy-templates-command-line-github-actions/)-->
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

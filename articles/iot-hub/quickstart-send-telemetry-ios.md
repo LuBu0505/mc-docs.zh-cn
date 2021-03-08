@@ -12,12 +12,12 @@ ms.workload: ns
 origin.date: 04/03/2019
 ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: 049daffab2a35f6277f861e6cf4ac33a18af42c3
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: ed190d50c42e98268d2be3c6b58e9180eb6e1622
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746751"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196857"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>快速入门：将遥测数据从设备发送到 IoT 中心 (iOS)
 
@@ -64,7 +64,7 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
    ```azurecli
-   az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id myiOSdevice --output table
+   az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id myiOSdevice --output table
    ```
 
    记下如下所示的设备连接字符串：

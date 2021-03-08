@@ -6,17 +6,17 @@ ms.service: bastion
 ms.topic: include
 origin.date: 11/05/2020
 author: rockboyfor
-ms.date: 11/23/2020
-ms.testscope: yes|no
-ms.testdate: 11/23/2020null
+ms.date: 03/01/2021
+ms.testscope: yes
+ms.testdate: 11/23/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 08832feb47302a20607953b9708d12a56ba1bb3b
-ms.sourcegitcommit: b072689d006cbf9795612acf68e2c4fee0eccfbc
+ms.openlocfilehash: 72fcf1c7b96f6603a2381a5379f3b7bca0dbcddf
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94849547"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102108765"
 ---
 ### <a name="can-i-still-deploy-multiple-bastion-hosts-across-peered-virtual-networks"></a>是否仍可将多个 Bastion 主机部署到对等互连虚拟网络中？
 

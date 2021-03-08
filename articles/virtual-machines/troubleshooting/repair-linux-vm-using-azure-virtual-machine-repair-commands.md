@@ -11,16 +11,16 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 origin.date: 09/10/2019
 author: rockboyfor
-ms.date: 10/26/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2888dc25b8543af08ad9440bb5bb61a5b5381d7f
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: b424f1a865c0ed1db40761a648b6665f495727a1
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105410"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054331"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>使用 Azure 虚拟机修复命令修复 Linux VM
 
@@ -46,9 +46,7 @@ ms.locfileid: "93105410"
 4. 运行 az vm repair run 或执行缓解步骤。
 5. 运行 az vm repair restore
 
-有关其他文档和说明，请参阅 [az vm repair](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair#az_vm_repair)。
-
-<!--CORRECT ON https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair?view=azure-cli-latest#az-vm-repair-->
+有关其他文档和说明，请参阅 [az vm repair](https://docs.azure.cn/cli/ext/vm-repair/vm/repair#az_vm_repair)。
 
 ## <a name="repair-process-example"></a>修复过程示例
 
@@ -60,7 +58,7 @@ ms.locfileid: "93105410"
 
     如果希望在本地安装并使用 CLI，则本快速入门需要 Azure CLI 2.0.30 版或更高版本。 运行 ``az --version`` 即可查找版本。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli)。
 
-    如果需要使用与当前登录 Azure 门户所用帐户不同的帐户登录本地 Shell，可使用 ``az login`` [az login reference](https://docs.azure.cn/cli/reference-index?view=azure-cli-latest#az_login&preserve-view=true)。  若要在与你的帐户关联的订阅之间切换，可使用 ``az account set --subscription`` [az account set reference](https://docs.azure.cn/cli/account#az_account_set&preserve-view=true)。
+    如果需要使用与当前登录 Azure 门户所用帐户不同的帐户登录本地 Shell，可使用 ``az login`` [az login reference](https://docs.azure.cn/cli/reference-index#az_login)。  若要在与你的帐户关联的订阅之间切换，可使用 ``az account set --subscription`` [az account set reference](https://docs.azure.cn/cli/account#az_account_set)。
 
     <--Mooncake 自定义句子逻辑-->
 
@@ -110,6 +108,6 @@ az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGro
 
 * 如果在连接到 VM 时遇到问题，请参阅[对 Azure 虚拟机的 RDP 连接进行故障排除](./troubleshoot-rdp-connection.md)。
 * 如果在访问 VM 上运行的应用程序时遇到问题，请参阅[排查 Azure 中虚拟机上的应用程序连接问题](./troubleshoot-app-connection.md)。
-* 有关使用 Resource Manager 的详细信息，请参阅 [Azure Resource Manager 概述](../../azure-resource-manager/management/overview.md)。
+* 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

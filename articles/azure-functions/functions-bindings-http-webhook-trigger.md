@@ -3,15 +3,15 @@ title: Azure Functions HTTP 触发器
 description: 了解如何通过 HTTP 调用 Azure 函数。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 01/27/2021
+ms.date: 03/03/2021
 ms.author: v-junlch
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dafc5d193d047da3bd7717c191ef6b5426ac3c08
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: ccc955549953de3b9168597acc39deb4b37f6932
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059696"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055150"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 触发器
 
@@ -488,9 +488,9 @@ PowerShell 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-| type  | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
+| type | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
 | **direction** | 不适用| 必需 - 必须设置为 `in`。 |
-| **name** | 不适用| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
+| name | 不适用| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
 | <a name="http-auth"></a>**authLevel** |  AuthLevel |确定请求中需要提供的密钥（如果有），以便调用此函数。 授权级别可以是以下值之一： <ul><li><code>anonymous</code>&mdash;无需 API 密钥。</li><li><code>function</code>&mdash;特定于函数的 API 密钥是必需的。 如果未提供任何值，该值为默认值。</li><li><code>admin</code>&mdash;无需主密钥。</li></ul> 有关详细信息，请参阅有关[授权密钥](#authorization-keys)的部分。 |
 | methods |**方法** | HTTP 方法的数组，该函数将响应此方法。 如果未指定，该函数将响应所有 HTTP 方法。 请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
 | route | **Route** | 定义路由模板，控制函数将响应的请求 URL。 如果未提供任何值，则默认值为 `<functionname>`。 有关详细信息，请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
@@ -636,6 +636,8 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
     Body = $Message
 })
 ```
+
+---
 
 默认情况下，所有函数路由的前缀均为 api。 还可以使用 [host.json](functions-host-json.md) 文件中的 `extensions.http.routePrefix` 属性自定义或删除前缀。 以下示例通过将空字符串用于 host.json 文件中的前缀删除 api 路由前缀。
 

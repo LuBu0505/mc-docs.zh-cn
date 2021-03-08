@@ -49,7 +49,7 @@
                   href: ../common/storage-analytics-logging.md?toc=%2fstorage%2ffiles%2ftoc.json
                 - name: 监视、诊断和故障排除
                   href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fstorage%2ffiles%2ftoc.json
-    - name: 性能和规模
+    - name: 性能和缩放性
       items:
         - name: 可伸缩性和性能目标
           href: storage-files-scale-targets.md
@@ -69,8 +69,6 @@
       items:
         - name: 创建 SMB 文件共享
           href: storage-how-to-create-file-share.md
-        - name: 创建高级文件共享
-          href: storage-how-to-create-premium-fileshare.md
         - name: 具有高级文件共享的 SQL Server FCI
           href: ../../azure-sql/virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md?toc=%2fstorage%2ffiles%2ftoc.json
     - name: 装载

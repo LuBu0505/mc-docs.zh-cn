@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 origin.date: 08/09/2018
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 433831d7581111128bfedf1bfa02f75f371a5f46
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 4638d9ea0f0a18a81dd8fcb6fbf1913c5b58fe66
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104110"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054373"
 ---
 <!--Verified Successsfully-->
 # <a name="virtual-machines-lifecycle-and-states"></a>虚拟机生命周期和状态
@@ -155,7 +155,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
    :::column-end:::
    :::column span="":::
 
-   **已计费** _
+   **已计费***
 
    :::column-end:::
 :::row-end:::
@@ -163,7 +163,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 :::row:::
    :::column span="":::
 
-   _ *正在解除分配**
+   **正在解除分配**
 
    :::column-end:::
    :::column span="":::
@@ -182,7 +182,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
    :::column-end:::
    :::column span="":::
 
-   **未计费** _
+   **未计费***
 
    :::column-end:::
 :::row-end:::
@@ -190,7 +190,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 :::row:::
    :::column span="":::
 
-   _ *已解除分配**
+   **已解除分配**
 
    :::column-end:::
    :::column span="":::
@@ -376,7 +376,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
    [
    ```
 
-   **注意** ：如果存在 OS 故障或者 OS 没有及时安装，则 OS 预配可能会过渡到“失败”状态。 会根据部署在基础结构上的 VM 对客户收费。
+   **注意**：如果存在 OS 故障或者 OS 没有及时安装，则 OS 预配可能会过渡到“失败”状态。 会根据部署在基础结构上的 VM 对客户收费。
 
    :::column-end:::
 
@@ -415,13 +415,12 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 
 实例视图 API 提供 VM 运行状态信息。 有关详细信息，请参阅 [Virtual Machines - Instance View](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview)（虚拟机 - 实例视图）API 文档。
 
-<!--Not Available on Azure Resources explorer provides a simple UI for viewing the VM running state: [Resource Explorer](https://resources.azure.com/).-->
+<!--NOT AVAILABLE ON [Resource Explorer](https://resources.azure.com/)-->
 
 预配状态在 VM 属性和实例视图中可见。 电源状态在 VM 的实例视图中提供。
 
 若要检索订阅中所有 VM 的电源状态，请使用[虚拟机 - 列出所有 API](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall)，并将参数 statusOnly 设置为 true。
 
-<!--Not Available on ## Next steps-->
-<!--Not Available on To learn more about monitoring your VM, see [Monitor virtual machines in Azure](../azure-monitor/insights/monitor-vm-azure.md)-->
-
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--NOT AVAILABLE ON ## Next steps-->
+<!--NOT AVAILABLE ON [Monitor virtual machines in Azure](../azure-monitor/vm/monitor-vm-azure.md)-->
+<!--Update_Description: update meta properties, wording update, update link-->

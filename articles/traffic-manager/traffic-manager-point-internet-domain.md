@@ -9,20 +9,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 10/11/2016
 author: rockboyfor
-ms.date: 09/28/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: 09/28/2020
 ms.author: v-yeche
-ms.openlocfilehash: c16da675dc73056be28557f61e0811f65fa21007
-ms.sourcegitcommit: 71953ae66ddfc07c5d3b4eb55ff8639281f39b40
+ms.openlocfilehash: dcedc0429020de9d2b8e58956d19acc12f4e045b
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91395456"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054049"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>将公司 Internet 域指向 Azure 流量管理器域
 
-创建流量管理器配置文件时，Azure 会自动为该配置文件分配一个 DNS 名称。 若要使用 DNS 区域中的某个名称，请创建一条映射到流量管理器配置文件域名的 CNAME DNS 记录。 可以在流量管理器配置文件的“配置”页上的“常规”  部分中找到流量管理器域名。
+创建流量管理器配置文件时，Azure 会自动为该配置文件分配一个 DNS 名称。 若要使用 DNS 区域中的某个名称，请创建一条映射到流量管理器配置文件域名的 CNAME DNS 记录。 可以在流量管理器配置文件的“配置”页上的“常规”部分中找到流量管理器域名。
 
 例如，若要将名称 `www.contoso.com` 指向流量管理器 DNS 名称 `contoso.trafficmanager.cn`，请创建以下 DNS 资源记录：
 
@@ -36,7 +36,7 @@ ms.locfileid: "91395456"
 ## <a name="next-steps"></a>后续步骤
 
 * [流量管理器路由方法](traffic-manager-routing-methods.md)
-* [流量管理器 - 禁用、启用或删除配置文件](disable-enable-or-delete-a-profile.md)
-* [流量管理器 - 禁用或启用终结点](disable-or-enable-an-endpoint.md)
+* [流量管理器 - 禁用、启用或删除配置文件](./traffic-manager-manage-profiles.md)
+* [流量管理器 - 禁用或启用终结点](./traffic-manager-manage-endpoints.md)
 
-<!--Update_Description: update meta properties-->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -4,14 +4,14 @@ description: 监视 Application Insights 中的系统和自定义的 .NET/.NET C
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 11/10/2020
+ms.date: 02/22/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ab165f8c7410180f46d5b135c30e2aab1ba2ce2a
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: 18ea99cdab98e42f54cbf7aa0519630ba39cd38a
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94638053"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197420"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters 简介
 
@@ -90,14 +90,14 @@ Application Insights 支持使用 `EventCounterCollectionModule` 来收集 `Even
 
 ## <a name="event-counters-in-metric-explorer"></a>Metric Explorer 中的事件计数器
 
-若要在 [Metric Explorer](../platform/metrics-charts.md) 中查看 EventCounter 指标，请选择 Application Insights 资源，然后选择基于日志的指标作为指标命名空间。 EventCounter 指标随即显示在“自定义”类别下。
+若要在 [Metric Explorer](../essentials/metrics-charts.md) 中查看 EventCounter 指标，请选择 Application Insights 资源，然后选择基于日志的指标作为指标命名空间。 EventCounter 指标随即显示在“自定义”类别下。
 
 > [!div class="mx-imgBorder"]
 > ![Application Insights 指标资源管理器中报告的事件计数器](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>Analytics 中的事件计数器
 
-还可以在 [Analytics](../log-query/log-query-overview.md) 的“customMetrics”表中搜索和显示事件计数器报表。
+还可以在 [Analytics](../logs/log-query-overview.md) 的“customMetrics”表中搜索和显示事件计数器报表。
 
 例如，运行以下查询，以查看收集了哪些计数器并可用于查询：
 
@@ -123,7 +123,7 @@ customMetrics
 与其他遥测一样，customMetrics 同样也具有列 `cloud_RoleInstance`，指示正在其上运行应用的主机服务器实例的标识。 上述查询显示每个实例的计数器值，并可用于比较不同服务器实例的性能。
 
 ## <a name="alerts"></a>警报
-与其他指标一样，可以[设置警报](../platform/alerts-log.md)以便在事件计数器超出指定的限制时收到警报。 打开“警报”窗格，并单击“添加警报”。
+与其他指标一样，可以[设置警报](../alerts/alerts-log.md)以便在事件计数器超出指定的限制时收到警报。 打开“警报”窗格，并单击“添加警报”。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

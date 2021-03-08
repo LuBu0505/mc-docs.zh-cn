@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 origin.date: 07/23/2020
 ms.date: 08/24/2020
-ms.openlocfilehash: d6ed67fe0d20c5fddfff768320ecddf5918077da
-ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
+ms.openlocfilehash: 743fff7c2df0b907c3af636341b5f5f2b20feaa4
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804283"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196506"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>在 Azure 机器学习中创建和使用软件环境
 
@@ -205,7 +205,8 @@ myenv = Environment.from_existing_conda_environment(name = "myenv",
 环境定义可以通过 [`save_to_directory()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=truesave-to-directory-path--overwrite-false-) 方法以易于编辑的格式保存到目录。 进行修改后，可以通过从目录加载文件来实例化新的环境。
 
 ```python
-myenv = Environment.save_to_directory(path = "path-to-destination-directory", overwrite = False)
+# save the enviroment
+myenv.save_to_directory(path="path-to-destination-directory", overwrite=False)
 # modify the environment definition
 newenv = Environment.load_from_directory(path = "path-to-source-directory")
 ```
@@ -398,7 +399,7 @@ service = Model.deploy(
 
 ## <a name="notebooks"></a>笔记本
 
-此[文章](./how-to-run-jupyter-notebooks.md#add-new-kernels)介绍如何将 Conda 环境安装为笔记本中的内核。
+此[文章](./how-to-access-terminal.md#add-new-kernels)介绍如何将 Conda 环境安装为笔记本中的内核。
 
 [使用自定义 Docker 基础映像部署模型](how-to-deploy-custom-docker-image.md)演示了如何使用自定义的 Docker 基础映像部署模型。
 

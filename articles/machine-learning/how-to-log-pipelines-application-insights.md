@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 344ef09cc0e90306208b908f1d8ffcc13fc24fed
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 6344dc87f7b6c423349832931cb831f30dd688e6
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98229988"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196721"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>在 Application Insights 中收集用于警报和调试的机器学习管道日志文件
 
@@ -153,7 +153,7 @@ Application Insights 中的结果将显示日志消息和级别、文件路径�
 
 ### <a name="additional-helpful-queries"></a>其他有用查询
 
-以下某些查询使用“customDimensions.Level”。 这些严重性级别对应于最初发送 Python 日志时所用的级别。 有关其他查询信息，请参阅 [Azure Monitor 日志查询](/data-explorer/kusto/query/)。
+以下某些查询使用“customDimensions.Level”。 这些严重性级别对应于最初发送 Python 日志时所用的级别。 有关其他查询信息，请参阅 [Azure Monitor 日志查询](/azure/data-explorer/kusto/query/)。
 
 | 用例                                                               | 查询                                                                                              |
 |------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
@@ -164,6 +164,6 @@ Application Insights 中的结果将显示日志消息和级别、文件路径�
 
 ## <a name="next-steps"></a>后续步骤
 
-在 Application Insights 实例中启用日志后，可以使用这些日志基于查询结果设置 [Azure Monitor 警报](../azure-monitor/platform/alerts-overview.md#what-you-can-alert-on)。
+在 Application Insights 实例中启用日志后，可以使用这些日志基于查询结果设置 [Azure Monitor 警报](../azure-monitor/alerts/alerts-overview.md#what-you-can-alert-on)。
 
-还可以将查询结果添加到 [Azure 仪表板](../azure-monitor/learn/tutorial-app-dashboards.md#add-logs-query)以获取更多见解。
+还可以将查询结果添加到 [Azure 仪表板](../azure-monitor/app/tutorial-app-dashboards.md#add-logs-query)以获取更多见解。

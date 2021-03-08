@@ -3,15 +3,15 @@ title: MABS（Azure 备份服务器）V3 UR1 保护矩阵
 description: 本文提供了一个支持矩阵，列出了受 Azure 备份服务器保护的所有工作负荷、数据类型和安装。
 author: Johnnytechn
 origin.date: 11/13/2018
-ms.date: 01/07/2021
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.author: v-johya
-ms.openlocfilehash: bb62d313dca2fc5cb1c9dc3110be6a6cec57fe60
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: e8bd26726c519166c7b71716f310c3346ea02b13
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022832"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197481"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS（Azure 备份服务器）V3 UR1 保护矩阵
 
@@ -68,11 +68,17 @@ ms.locfileid: "98022832"
 
 使用公共对等互连：确保访问以下域/地址：
 
-* `http://www.msftncsi.com/ncsi.txt`
-* `azure.cn`
-* `.WindowsAzure.cn`
-* `.partner.microsoftonline.cn`
-* `.chinacloudapi.cn`
+* URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.cn`
+  * `*.WindowsAzure.cn`
+  * `*.partner.microsoftonline.cn`
+  * `*.chinacloudapi.cn`
+  * `www.msftconnecttest.com`
+* IP 地址
+  * 20.190.128.0/18
+  * 40.126.0.0/18
+
 
 使用 Microsoft 对等互连，选择以下服务/区域和相关社区值：
 

@@ -2,13 +2,13 @@
 title: Azure 事件中心功能概述 | Microsoft Docs
 description: 本文详细介绍 Azure 事件中心的功能和术语。
 ms.topic: article
-ms.date: 01/29/2021
-ms.openlocfilehash: c978190f74eb1fc0ac125db3f2b5855cbaa1f704
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.date: 02/24/2021
+ms.openlocfilehash: 6f4e86d1d167fa8dd5d2df03305dddac20ac5356
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579424"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196872"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中心的功能和术语
 

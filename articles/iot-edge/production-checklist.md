@@ -4,20 +4,19 @@ description: 了解如何将 Azure IoT Edge 解决方案从开发环境转移到
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-origin.date: 07/10/2020
-ms.date: 09/30/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f0d82162433e4b9d2e875611ec21f285e0fd2573
-ms.sourcegitcommit: 29a49e95f72f97790431104e837b114912c318b4
+ms.openlocfilehash: 310fcea6a0c215001719af86f5cf5b03830cf64d
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91564555"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196748"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
@@ -189,11 +188,11 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 
 * edgeAgent：
 
-    `"image": "<registry name and server>/azureiotedge-agent:1.0",`
+    `"image": "<registry name and server>/azureiotedge-agent:1.1",`
 
 * edgeHub：
 
-    `"image": "<registry name and server>/azureiotedge-hub:1.0",`
+    `"image": "<registry name and server>/azureiotedge-hub:1.1",`
 
 ## <a name="networking"></a>网络
 
@@ -210,13 +209,13 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
 
 如果网络设置要求显式允许从 IoT Edge 设备建立的连接，请查看以下 IoT Edge 组件列表：
 
-* **IoT Edge 代理**可能通过 WebSocket 来与 IoT 中心建立持久性 AMQP/MQTT 连接。
-* **IoT Edge 中心**可能通过 WebSocket 来与 IoT 中心建立一个持久性 AMQP 连接或多个 MQTT 连接。
-* **IoT Edge 守护程序**向 IoT 中心发出间歇性 HTTPS 调用。
+* **IoT Edge 代理** 可能通过 WebSocket 来与 IoT 中心建立持久性 AMQP/MQTT 连接。
+* **IoT Edge 中心** 可能通过 WebSocket 来与 IoT 中心建立一个持久性 AMQP 连接或多个 MQTT 连接。
+* **IoT Edge 守护程序** 向 IoT 中心发出间歇性 HTTPS 调用。
 
 在所有三种情况下，DNS 名称会与 \*azure-devices.cn 模式匹配。
 
-此外，**容器引擎**通过 HTTPS 向容器注册表发出调用。 若要检索 IoT Edge 运行时容器映像，请使用 DNS 名称 mcr.microsoft.com。 容器引擎连接到部署中配置的其他注册表。
+此外，**容器引擎** 通过 HTTPS 向容器注册表发出调用。 若要检索 IoT Edge 运行时容器映像，请使用 DNS 名称 mcr.microsoft.com。 容器引擎连接到部署中配置的其他注册表。
 
 此清单可作为防火墙规则的入手点：
 

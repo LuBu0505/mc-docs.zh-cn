@@ -4,14 +4,14 @@ description: 了解如何从 Azure 容器实例中的容器组将资源日志和
 ms.topic: article
 origin.date: 07/13/2020
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 03/01/2021
 ms.author: v-yeche
-ms.openlocfilehash: 3bce4d314fb0e19ee52380dd0e295fa4cb5d1419
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: e49c2bae7e7b5c5bbaaaeab730d63654677eb5ee
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104991"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054384"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>使用 Azure Monitor 日志进行容器组和实例日志记录
 
@@ -33,7 +33,7 @@ Log Analytics 工作区提供了一个集中的位置，用于存储和查询来
 * [Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)
 * [Azure CLI](https://docs.azure.cn/cli/install-azure-cli)
 
-    <!--Not Avaialble on or [Cloud Shell](/cloud-shell/overview)-->
+    <!--NOT AVAILABLE ON [Cloud Shell](../cloud-shell/overview.md)-->
 
 ## <a name="get-log-analytics-credentials"></a>获取 Log Analytics 凭据
 
@@ -68,7 +68,7 @@ az container create \
 
 ### <a name="deploy-with-yaml"></a>使用 YAML 进行部署
 
-如果喜欢使用 YAML 部署容器组，请使用此方法。 下面的 YAML 定义包含单个容器的容器组。 将 YAML 复制到一个新文件中，然后将 `LOG_ANALYTICS_WORKSPACE_ID` 和 `LOG_ANALYTICS_WORKSPACE_KEY` 替换为在前面的步骤中获得的值。 将该文件保存为 **deploy-aci.yaml** 。
+如果喜欢使用 YAML 部署容器组，请使用此方法。 下面的 YAML 定义包含单个容器的容器组。 将 YAML 复制到一个新文件中，然后将 `LOG_ANALYTICS_WORKSPACE_ID` 和 `LOG_ANALYTICS_WORKSPACE_KEY` 替换为在前面的步骤中获得的值。 将该文件保存为 **deploy-aci.yaml**。
 
 ```yaml
 apiVersion: 2019-12-01
@@ -181,4 +181,4 @@ ContainerInstanceLog_CL
 
 [az-container-create]: https://docs.microsoft.com/cli/azure/container#az_container_create
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

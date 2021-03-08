@@ -4,14 +4,14 @@ description: Application Insights 如何适应 devOps 周期
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 12/21/2018
-ms.date: 11/10/2020
+ms.date: 02/22/2021
 ms.author: v-johya
-ms.openlocfilehash: 9846ef2c3c4845644a6b707cd7fa4b6b38469cd3
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: d96a7c1e75779dd747197632a095743cd0eb4bec
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94638207"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197180"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>使用 Application Insights 对 Web 应用和服务进行深度诊断
 ## <a name="why-do-i-need-application-insights"></a>为什么需要 Application Insights？
@@ -113,7 +113,7 @@ Web 系统中的故障通常由配置问题或系统中许多组件之间的交�
 ![应用程序地图](./media/devops/0050.png)
 
 ## <a name="application-insights-analytics"></a>Application Insights Analytics
-借助 [Analytics](../log-query/log-query-overview.md) 可以使用类似于 SQL 的强大语言编写任意查询。  将各种不同的观点链接到一起后，跨整个应用程序堆栈的诊断就会变得很容易。可以提出正确的问题，将服务性能与业务指标和客户体验相关联。 
+借助 [Analytics](../logs/log-query-overview.md) 可以使用类似于 SQL 的强大语言编写任意查询。  将各种不同的观点链接到一起后，跨整个应用程序堆栈的诊断就会变得很容易。可以提出正确的问题，将服务性能与业务指标和客户体验相关联。 
 
 可以查询门户中存储的所有遥测实例和指标原始数据。 语言包括筛选、联接、聚合与其他操作。 可以计算字段并执行统计分析。 目前提供表格式和图形可视化效果。
 

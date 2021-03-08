@@ -14,14 +14,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 1/29/2019
-ms.date: 12/03/2020
+ms.date: 03/04/2021
 ms.author: v-johya
-ms.openlocfilehash: e8d10dad00fc12c8abd3c66ab30e922e20cda1ea
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 90e4a1cf900de3902a82db8f4a9f869b775029b3
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747154"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197597"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 上可用的安全服务和技术
 
@@ -36,7 +36,7 @@ ms.locfileid: "96747154"
 |--------|--------|
 |[Azure&nbsp;安全&nbsp;Center](../../security-center/security-center-introduction.md)| 一个云工作负荷保护解决方案，可跨混合云工作负荷提供安全性管理和高级威胁防护。|
 |[Azure 密钥保管库](../../key-vault/general/overview.md)| 一个安全的机密存储空间，用于存储密码、连接字符串和维持应用正常工作所需的其他信息。 |
-|[Azure Monitor 日志](../../azure-monitor/log-query/log-query-overview.md)|一项监视服务，它收集遥测和其他数据，并且提供查询语言和分析引擎，以传递应用和资源操作见解。 可单独使用或与其他服务一同使用（例如安全中心）。 |
+|[Azure Monitor 日志](../../azure-monitor/logs/log-query-overview.md)|一项监视服务，它收集遥测和其他数据，并且提供查询语言和分析引擎，以传递应用和资源操作见解。 可单独使用或与其他服务一同使用（例如安全中心）。 |
 
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](/azure-security-disk-encryption-overview)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->
 

@@ -4,15 +4,15 @@ description: 介绍 Azure 如何在 OpenCensus 项目中通过合作伙伴关系
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 01/12/2021
+ms.date: 02/22/2021
 origin.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 108f99a60646f737c1621d4c472e595e47485b09
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 5c82e59173ab008cda9108c8279ec14edb316663
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231053"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197240"
 ---
 # <a name="what-is-distributed-tracing"></a>什么是分布式跟踪？
 
@@ -37,7 +37,7 @@ Azure Monitor 还提供[应用程序映射](./app-map.md)视图，该视图聚�
 * [.NET](asp-net.md)
 * [.NET Core](asp-net-core.md)
 * [Java](./java-in-process-agent.md)
-* [Node.js](../learn/nodejs-quick-start.md)
+* [Node.js](../app/nodejs-quick-start.md)
 * [JavaScript](./javascript.md)
 * [Python](opencensus-python.md)
 
@@ -57,6 +57,6 @@ OpenCensus 网站保留了 [Python](https://opencensus.io/api/python/trace/usage
 
 * [OpenCensus Python 使用指南](https://opencensus.io/api/python/trace/usage.html)
 * [应用程序映射](./app-map.md)
-* [端到端性能监视](../learn/tutorial-performance.md)
+* [端到端性能监视](../app/tutorial-performance.md)
 
 

@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.workload: infrastructure
 origin.date: 02/20/2019
 author: rockboyfor
-ms.date: 11/16/2020
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 09/07/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: 87455853df976f7ece3eca3e829920f41a349947
-ms.sourcegitcommit: 39288459139a40195d1b4161dfb0bb96f5b71e8e
+ms.openlocfilehash: 1d7dfd57d78b7a705fd99530c078cd094b4bdccf
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94590765"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054342"
 ---
 # <a name="enable-write-accelerator"></a>启用写入加速器
 
@@ -29,7 +29,7 @@ ms.locfileid: "94590765"
 
 应该对包含事务日志或 DBMS 重做日志的卷使用写入加速器。 建议不要对 DBMS 数据卷使用写入加速器，因为此功能已针对日志磁盘进行了优化。
 
-只能配合 [Azure 托管磁盘](https://www.azure.cn/home/features/storage/managed-disks/)使用写入加速器。
+只能配合 [Azure 托管磁盘](https://azure.microsoft.com/services/storage/disks/)使用写入加速器。
 
 > [!IMPORTANT]
 > 对 VM 的操作系统磁盘启用写入加速器会重新启动该 VM。
@@ -71,7 +71,7 @@ IOPS 限制是针对每个 VM 而不是每个磁盘  。 对于每个 VM，所�
 
 目前，使用写入加速器必须满足以下先决条件：
 
-- 要向其应用 Azure 写入加速器的磁盘需是高级存储上的 [Azure 托管磁盘](https://www.azure.cn/home/features/storage/managed-disks/)。
+- 要向其应用 Azure 写入加速器的磁盘需是高级存储上的 [Azure 托管磁盘](https://azure.microsoft.com/services/storage/disks/)。
 - 必须使用 M 系列 VM
 
 ## <a name="enabling-azure-write-accelerator-using-azure-powershell"></a>使用 Azure PowerShell 启用 Azure 写入加速器
@@ -81,23 +81,23 @@ Azure PowerShell 模块 5.5.0 和更高版本对相关的 cmdlet 做了更改，
 
 已将新的开关参数 **-WriteAccelerator** 添加到以下 cmdlet：
 
-- [Set-AzVMOsDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk?view=azurermps-6.0.0)
-- [Add-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/Add-AzVMDataDisk?view=azurermps-6.0.0)
-- [Set-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/Set-AzVMDataDisk?view=azurermps-6.0.0)
-- [Add-AzVmssDataDisk](https://docs.microsoft.com/powershell/module/az.compute/Add-AzVmssDataDisk?view=azurermps-6.0.0)
+- [Set-AzVMOsDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk)
+- [Add-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/Add-AzVMDataDisk)
+- [Set-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/Set-AzVMDataDisk)
+- [Add-AzVmssDataDisk](https://docs.microsoft.com/powershell/module/az.compute/Add-AzVmssDataDisk)
 
 不指定该参数会将属性设置为 false，并且会部署不受写入加速器支持的磁盘。
 
 已将新的开关参数 **-OsDiskWriteAccelerator** 添加到以下 cmdlet：
 
-- [Set-AzVmssStorageProfile](https://docs.microsoft.com/powershell/module/az.compute/Set-AzVmssStorageProfile?view=azurermps-6.0.0)
+- [Set-AzVmssStorageProfile](https://docs.microsoft.com/powershell/module/az.compute/Set-AzVmssStorageProfile)
 
 默认情况下，不指定该参数会将属性设置为 false，并且会返回不利用写入加速器的磁盘。
 
 已将新的可选布尔参数（不可为 null） **-OsDiskWriteAccelerator** 添加到以下 cmdlet：
 
-- [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/Update-AzVM?view=azurermps-6.0.0)
-- [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/Update-AzVmss?view=azurermps-6.0.0)
+- [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/Update-AzVM)
+- [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/Update-AzVmss)
 
 指定 $true 或 $false 可以控制磁盘对 Azure 写入加速器的支持。
 
@@ -385,4 +385,4 @@ Update-AzVM -ResourceGroupName $rgname -VM $vm
 
 进行这项更改后，写入加速器应会支持该驱动器。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

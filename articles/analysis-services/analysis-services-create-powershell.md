@@ -5,18 +5,18 @@ ms.service: azure-analysis-services
 ms.topic: quickstart
 origin.date: 08/31/2020
 author: rockboyfor
-ms.date: 09/21/2020
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.reviewer: minewiskan
 ms.custom: references_regions , devx-track-azurepowershell
-ms.openlocfilehash: d1ff5787ec1dd2efab0cfa3e58c19b4f56785ef2
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: 1f67883150af2cef7c41a6429f72aa384ac1603d
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507197"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054299"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>快速入门：创建服务器 - PowerShell
 

@@ -4,15 +4,15 @@ description: 本教程介绍如何配置一个 Azure 容器注册表任务，以
 ms.topic: tutorial
 origin.date: 11/24/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/01/2021
 ms.author: v-yeche
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: dc8817c912df0ec4d149297e2cedcf7ed87018ac
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 3f299f6d89784d3555e557fc22cb8d94089bedd7
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231076"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053172"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>教程：提交源代码时在云中运行多步骤容器工作流
 
@@ -84,7 +84,7 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
 az acr task create \
     --registry $ACR_NAME \
     --name example1 \
-    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
+    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git#main \
     --file taskmulti.yaml \
     --git-access-token $GIT_PAT
 ```
@@ -114,7 +114,7 @@ az acr task create \
   "step": {
     "baseImageDependencies": null,
     "contextAccessToken": null,
-    "contextPath": "https://github.com/gituser/acr-build-helloworld-node.git",
+    "contextPath": "https://github.com/gituser/acr-build-helloworld-node.git#main",
     "taskFilePath": "taskmulti.yaml",
     "type": "FileTask",
     "values": [],
@@ -133,7 +133,7 @@ az acr task create \
         "name": "defaultSourceTriggerName",
         "sourceRepository": {
           "branch": "main",
-          "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node.git",
+          "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node.git#main",
           "sourceControlAuthProperties": null,
           "sourceControlType": "Github"
         },
@@ -317,7 +317,7 @@ steps:
 az acr task create \
     --registry $ACR_NAME \
     --name example2 \
-    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
+    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git#main \
     --file taskmulti-multiregistry.yaml \
     --git-access-token $GIT_PAT \
     --set regDate=mycontainerregistrydate.azurecr.cn
@@ -465,4 +465,4 @@ Run ID: cf1g was successful after 46s
 [build-task-01-new-token]: ./media/container-registry-tutorial-build-tasks/build-task-01-new-token.png
 [build-task-02-generated-token]: ./media/container-registry-tutorial-build-tasks/build-task-02-generated-token.png
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

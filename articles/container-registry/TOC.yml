@@ -121,6 +121,8 @@
               displayName: 'permissions, authorization'
             - name: 内容信任
               href: container-registry-content-trust.md
+            - name: 通过安全中心扫描映像
+              href: ../security-center/defender-for-container-registries-introduction.md?bc=%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fcontainer-registry%2ftoc.json
         - name: 注册表和其他 Azure 服务
           expanded: false
           items:
@@ -148,6 +150,7 @@
               href: container-registry-troubleshoot-performance.md
             - name: 检测常见问题
               href: container-registry-check-health.md
+              displayName: 'check, health'
             - name: 常见问题解答
               href: container-registry-faq.md
 - name: 任务

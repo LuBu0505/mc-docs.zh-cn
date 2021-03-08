@@ -10,17 +10,17 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 origin.date: 01/13/2021
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 08/10/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: b36519c91d32e0a9a16c50a1f841dbeb4d46fc05
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 3986d73f60b079dd0f4246d242e29b1d86d2e445
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059026"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109025"
 ---
 ### <a name="general-requirements"></a>一般要求
 
@@ -120,6 +120,6 @@ Any <br /><br />虽然这需要有效地“全部允许”，但 Batch 服务会
 
 | 源 | 源端口 | 目标 | 目标端口 | 协议 | 操作 |
 | --- | --- | --- | --- | --- | --- |
-| 任意 | * | Any | 443  | 任意 | Allow |
+| 任意 | * | 任意 | 443  | 任意 | Allow |
 
 <!-- Update_Description: update meta properties, wording update, update link -->

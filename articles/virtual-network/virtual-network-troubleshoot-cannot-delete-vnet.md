@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 10/31/2018
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 0cef7e691a7b6b5e91a899b7e4059a6c2a1e0c75
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: 2480e7de57b3510933e692b29a6109539c150c28
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570595"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053002"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>故障排除：无法在 Azure 中删除虚拟网络
 
@@ -71,11 +71,11 @@ ms.locfileid: "98570595"
 1. 选择与容器组相关的网络配置文件。
 1. 选择“删除”。
 
-   :::image type="content" source="media/virtual-network-troubleshoot-cannot-delete-vnet/container-instances.png" alt-text="隐藏网络配置文件列表的屏幕截图。":::
+    :::image type="content" source="media/virtual-network-troubleshoot-cannot-delete-vnet/container-instances.png" alt-text="隐藏网络配置文件列表的屏幕截图。":::
 
 1. 再次删除子网或虚拟网络。
 
-如果这些步骤未解决问题，请使用以下 [Azure CLI 命令](https://docs.azure.cn/container-instances/container-instances-vnet#clean-up-resources)清理资源。 
+如果这些步骤未解决问题，请使用以下 [Azure CLI 命令](../container-instances/container-instances-vnet.md#clean-up-resources)清理资源。 
 
 ### <a name="check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network"></a>检查 Azure Active Directory 域服务是否已在虚拟网络中启用
 
@@ -114,4 +114,4 @@ Move-AzureVirtualNetwork -VirtualNetworkName "Name" -Abort
 - [Azure 虚拟网络](virtual-networks-overview.md)
 - [Azure 虚拟网络常见问题解答 (FAQ)](virtual-networks-faq.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

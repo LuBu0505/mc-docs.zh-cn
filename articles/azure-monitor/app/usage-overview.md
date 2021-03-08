@@ -4,14 +4,14 @@ description: 了解用户，以及他们将应用用于哪些目的。
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 09/19/2019
-ms.date: 01/27/2021
+ms.date: 02/22/2021
 ms.author: v-johya
-ms.openlocfilehash: 3b05fb58e914d9f7dda83694abeede2df758c897
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 7abce5ead0fdea247c81a94718facc679f886c45
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060049"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197688"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights 使用分析
 
@@ -40,7 +40,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
     若要了解更多用于监视网站的高级配置，请查看 [JavaScript SDK 参考](./javascript.md)一文。
 
-3. **移动应用代码：** 通过 [按照此指南操作](../learn/mobile-center-quickstart.md)，使用 App Center SDK 收集应用中的事件，然后将这些事件的副本发送到 Application Insights 进行分析。
+3. **移动应用代码：** 通过 [按照此指南操作](../app/mobile-center-quickstart.md)，使用 App Center SDK 收集应用中的事件，然后将这些事件的副本发送到 Application Insights 进行分析。
 
 4. **获取遥测：** 在调试模式下运行项目几分钟，并在“Application Insights”中的“概述”边栏选项卡中查找结果。
 
@@ -185,7 +185,7 @@ ASP.NET Core 应用
    - [漏斗图](usage-funnels.md)
    - [保留](usage-retention.md)
    - [用户流](usage-flows.md)
-   - [工作簿](../platform/workbooks-overview.md)
+   - [工作簿](../visualize/workbooks-overview.md)
    - [添加用户上下文](usage-send-user-context.md)
 
 

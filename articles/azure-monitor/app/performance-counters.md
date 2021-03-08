@@ -4,15 +4,15 @@ description: 监视 Application Insights 中的系统和自定义的 .NET 性能
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 12/13/2018
-ms.date: 10/29/2020
+ms.date: 02/22/2021
 ms.custom: devx-track-csharp
 ms.author: v-johya
-ms.openlocfilehash: 81d54bb2c690404d82cbef9ecf6ac2cdd950c4ad
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 5336c31365496e3f85bfbbaa147fb06a8b0d169b
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106321"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197249"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 中的系统性能计数器
 
@@ -44,7 +44,7 @@ Windows 提供了各种[性能计数器](https://docs.microsoft.com/windows/desk
 
     `Get-Counter -ListSet *`
 
-    （请参阅 [`Get-Counter`](https://docs.microsoft.com/powershell/module/microsoft.powershell.diagnostics/get-counter?view=powershell-5.1)。）
+    （请参阅 [`Get-Counter`](https://docs.microsoft.com/powershell/module/microsoft.powershell.diagnostics/get-counter)。）
 2. 打开 ApplicationInsights.config。
 
    * 如果在开发期间已将 Application Insights 添加到了应用，请在项目中编辑 ApplicationInsights.config，然后将它重新部署到服务器。
@@ -113,7 +113,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 ```
 
 ## <a name="performance-counters-in-analytics"></a>分析中的性能计数器
-可以在[分析](../log-query/log-query-overview.md)中搜索并显示性能计数器报告。
+可以在[分析](../logs/log-query-overview.md)中搜索并显示性能计数器报告。
 
 **PerformanceCounters** 架构公开每个性能计数器的 `category`、`counter` 名称和 `instance` 名称。  在每个应用程序的遥测中，将仅看到该应用程序的计数器。 例如，若要查看哪些计数器可用： 
 
@@ -125,7 +125,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 
 ![Application Insights 分析中的内存时间图表](./media/performance-counters/analytics-available-memory.png)
 
-与其他遥测一样， **performanceCounters** 同样也具有列 `cloud_RoleInstance`，指示正在其上运行应用的主机服务器实例的标识。 例如，若要应用在不同计算机上的性能： 
+与其他遥测一样，**performanceCounters** 同样也具有列 `cloud_RoleInstance`，指示正在其上运行应用的主机服务器实例的标识。 例如，若要应用在不同计算机上的性能： 
 
 ![Application Insights 分析中按角色实例分段的性能](./media/performance-counters/analytics-metrics-role-instance.png)
 
@@ -151,7 +151,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 * SDK 2.8.0 及更高版本在 Linux 中支持 cpu/memory 计数器， 但不在 Linux 中支持其他计数器。 在 Linux（和其他非 Windows 环境）中，获取系统计数器的建议方法是使用 [EventCounter](eventcounters.md)
 
 ## <a name="alerts"></a>警报
-与其他指标一样，可以[设置警报](../platform/alerts-log.md)以便在性能计数器超出指定的限制时收到警报。 打开“警报”窗格，并单击“添加警报”。
+与其他指标一样，可以[设置警报](../alerts/alerts-log.md)以便在性能计数器超出指定的限制时收到警报。 打开“警报”窗格，并单击“添加警报”。
 
 ## <a name="next-steps"></a><a name="next"></a>后续步骤
 

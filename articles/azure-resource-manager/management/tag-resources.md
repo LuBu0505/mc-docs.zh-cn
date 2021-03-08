@@ -4,23 +4,23 @@ description: 演示如何应用标记来组织 Azure 资源进行计费和管理
 ms.topic: conceptual
 origin.date: 01/04/2021
 author: rockboyfor
-ms.date: 01/25/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 07/13/2020
 ms.author: v-yeche
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d3e59d3f1dba1e7701781f6b43ad384d13f5710f
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: b784b94d51df149cb63cfe9138e886812872c00b
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751193"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054337"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>使用标记对 Azure 资源和管理层次结构进行组织
 
 可将标记应用到 Azure 资源、资源组和订阅，以便有条理地将它们组织成分类。 每个标记均由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
 
-<!--Not Available on [Resource naming and tagging decision guide](https://docs.azure.cn/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure-resource-manager/management/toc.json)-->
+<!--NOT AVAILABLE ON [Resource naming and tagging decision guide](https://docs.azure.cn/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure-resource-manager/management/toc.json)-->
 
 > [!IMPORTANT]
 > 标记名称对于操作不区分大小写。 系统会更新或检索具有标记名称的标记，而不考虑大小写。 但是，资源提供程序可能会保留为标记名称提供的大小写。 你将在成本报表中看到该大小写。
@@ -731,6 +731,5 @@ az deployment sub create --name tagresourcegroup --location chinanorth2 --templa
 
 * 并非所有资源类型都支持标记。 若要确定是否可以将标记应用到资源类型，请参阅 [Azure 资源的标记支持](tag-support.md)。
 
-<!--Not Available on [Resource naming and tagging decision guide](/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure-resource-manager/management/toc.json)-->
-
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--NOT AVAILABLE ON [Resource naming and tagging decision guide](https://docs.azure.cn/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure-resource-manager/management/toc.json)-->
+<!--Update_Description: update meta properties, wording update, update link-->

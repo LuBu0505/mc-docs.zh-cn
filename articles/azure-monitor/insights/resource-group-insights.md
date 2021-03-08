@@ -4,15 +4,16 @@ description: 通过 Azure Monitor 了解资源组级别的分布式应用程序�
 ms.subservice: ''
 ms.topic: conceptual
 author: Johnnytechn
+ms.author: v-johya
 origin.date: 09/19/2018
-ms.date: 08/20/2020
+ms.date: 02/22/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 14899f7c75aad67e29fcf9b89a0e3df5ca549d2d
-ms.sourcegitcommit: 83c7dd0d35815586f5266ba660c4f136e20b2cc5
+ms.openlocfilehash: 057c948bf59d8b6f4c26f53ed5a94b624d421dfc
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89148561"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197624"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>使用 Azure Monitor（预览版）监视资源组
 
@@ -46,9 +47,9 @@ ms.locfileid: "89148561"
 
    |         |          |
    | ---------------- |:-----|
-   | [**警报**](../platform/alerts-overview.md)      |  查看、创建和管理警报。 |
-   | [**指标**](../platform/data-platform.md) | 可视化并浏览基于指标的数据。    |
-   | [**活动日志**](../platform/platform-logs-overview.md) | Azure 中已发生的订阅级别事件。  |
+   | [**警报**](../alerts/alerts-overview.md)      |  查看、创建和管理警报。 |
+   | [**指标**](../data-platform.md) | 可视化并浏览基于指标的数据。    |
+   | [**活动日志**](../essentials/platform-logs-overview.md) | Azure 中已发生的订阅级别事件。  |
    | [**应用程序映射**](../app/app-map.md) | 浏览分布式应用程序的拓扑，以识别性能瓶颈或故障作用点。 |
 
 ## <a name="failures-and-performance"></a>故障和性能
@@ -117,7 +118,7 @@ ms.locfileid: "89148561"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Monitor 工作簿](../platform/workbooks-overview.md)
+- [Azure Monitor 工作簿](../visualize/workbooks-overview.md)
 - [Azure 资源运行状况](../../service-health/resource-health-overview.md)
-- [Azure Monitor 警报](../platform/alerts-overview.md)
+- [Azure Monitor 警报](../alerts/alerts-overview.md)
 

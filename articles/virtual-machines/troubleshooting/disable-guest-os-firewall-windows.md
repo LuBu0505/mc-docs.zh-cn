@@ -15,14 +15,14 @@ ms.date: 09/07/2020
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 313eb3fed646e1b729bfc284d203f3806128f96c
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: d10ec7fbd0b63152230c57efbfcf014fc2664194
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105327"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054365"
 ---
-<!-- Verify part successfully-->
+<!--Verify part successfully-->
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>在 Azure VM 中禁用来宾 OS 防火墙
 
 本文为以下情况提供参考：你怀疑来宾操作系统防火墙正在筛选发往虚拟机 (VM) 的部分或全部流量。 如果故意对导致 RDP 连接失败的防火墙进行更改，则可能发生这种情况。
@@ -56,9 +56,25 @@ ms.locfileid: "93105327"
 >   ```
 >   但是，只要再次应用该策略，就会被踢出远程会话。 此问题的永久性解决方法是修改此计算机上应用的策略。
 
-<!--Not Available on #### Mitigation 2: Remote PowerShell-->
+#### <a name="mitigation-2-remote-powershell"></a>缓解措施 2：远程 PowerShell
 
-#### <a name="mitigation-2-pstools-commands"></a>缓解措施 2：PSTools 命令
+1. 连接到与使用 RDP 连接无法访问的 VM 位于同一虚拟网络上的一个 VM。
+
+2. 打开 PowerShell 控制台窗口。
+
+3. 运行以下命令：
+
+    ```powershell
+    Enter-PSSession (New-PSSession -ComputerName "<HOSTNAME>" -Credential (Get-Credential) -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck)) 
+    netsh advfirewall set allprofiles state off
+    Restart-Service -Name mpssvc 
+    exit
+    ```
+
+> [!Note]
+> 如果防火墙是通过组策略对象设置的，此方法可能无效，因为此命令仅更改本地注册表项。 如果应用策略，它将覆盖此更改。 
+
+#### <a name="mitigation-3-pstools-commands"></a>缓解措施 3：PSTools 命令
 
 1. 在故障排除 VM 上，下载 [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools)。
 
@@ -72,9 +88,9 @@ ms.locfileid: "93105327"
     psservice restart mpssvc
     ```
 
-#### <a name="mitigation-3-remote-registry"></a>缓解措施 3：远程注册表 
+#### <a name="mitigation-4-remote-registry"></a>缓解操作 4：远程注册表 
 
-按以下步骤来使用[远程注册表](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)。
+按以下步骤来使用[远程注册表](https://www.betaarchive.com/wiki/index.php?title=Microsoft_KB_Archive/314837)。
 
 1. 在故障排除 VM 上，启动注册表编辑器，然后转到“文件” > “连接网络注册表” 。
 
@@ -92,7 +108,7 @@ ms.locfileid: "93105327"
 
 5. 单击“服务(本地)”。
 
-6. 选择“连接到另一台计算机”。
+6. 选择“连接到另一台计算机”。 
 
 7. 输入问题 VM 的 **专用 IP 地址 (DIP)** 。
 
@@ -150,4 +166,4 @@ ms.locfileid: "93105327"
 
 11. 检查是否解决了问题。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

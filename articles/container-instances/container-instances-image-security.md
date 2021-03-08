@@ -4,17 +4,17 @@ description: 有关保护 Azure 容器实例的映像和机密的建议，以及
 ms.topic: article
 origin.date: 01/10/2020
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 04/30/2020
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: 0d3bb26ae143b0d6304b284a27e7eb38e3475228
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: d9e612a8e660c57916170771ecdc8946ae0313d2
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104743"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052818"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure 容器实例的安全注意事项
 
@@ -38,8 +38,8 @@ ms.locfileid: "93104743"
 
 利用解决方案来扫描专用注册表中的容器映像并识别潜在漏洞。 必须了解不同解决方案提供的威胁检测深度。
 
+例如，Azure 容器注册表可以选择[与 Azure 安全中心](../security-center/defender-for-container-registries-introduction.md)集成，以便自动扫描已推送到注册表的所有 Linux 映像。 Azure 安全中心的集成 Qualys 扫描程序可以检测映像漏洞、对其进行分类，并提供修正指导。
 
-<!--Not Available on [integrates with Azure Security Center](../security-center/defender-for-container-registries-introduction.md)-->
 
 <!--Not Available on [Twistlock](https://market.azure.cn/marketplace/apps/twistlock.twistlock?tab=Overview)-->
 <!--Not Avaialble on [Aqua Security](https://market.azure.cn/marketplace/apps/aqua-security.aqua-security?tab=Overvie)-->
@@ -144,7 +144,7 @@ ms.locfileid: "93104743"
 
 维护对容器生态系统（包括 Kubernetes 群集）、容器注册表和容器映像的管理访问的准确审核线索。 这些日志在审核时可能需要用到，在发生任何安全事件后可用作法庭证据。 Azure 解决方案包括：
 
-* [将 Azure Kubernetes 服务与 Azure 安全中心集成](../security-center/azure-kubernetes-service-integration.md)来监视群集环境的安全配置并生成安全建议
+* [将 Azure Kubernetes 服务与 Azure 安全中心集成](../security-center/defender-for-kubernetes-introduction.md)来监视群集环境的安全配置并生成安全建议
 * [Azure 容器监视解决方案](../azure-monitor/insights/containers.md)
 * [Azure 容器实例](container-instances-log-analytics.md)和 [Azure 容器注册表](../container-registry/container-registry-diagnostics-audit-logs.md)的资源日志
 
@@ -154,6 +154,6 @@ ms.locfileid: "93104743"
 
 * 详细了解如何使用 [Azure 安全中心](../security-center/container-security.md)在容器化环境中进行实时威胁检测。
 
-<!--Not Available on [Twistlock](https://www.twistlock.com/solutions/microsoft-azure-container-security/)-->
-<!--Not Available on [Aqua Security](https://www.aquasec.com/solutions/azure-container-security/)-->
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--NOT AVAILABLE ON [Twistlock](https://www.twistlock.com/solutions/microsoft-azure-container-security/)-->
+<!--NOT AVAILABLE ON [Aqua Security](https://www.aquasec.com/solutions/azure-container-security/)-->
+<!--Update_Description: update meta properties, wording update, update link-->

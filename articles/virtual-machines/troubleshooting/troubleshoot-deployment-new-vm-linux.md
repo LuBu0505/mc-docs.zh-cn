@@ -11,16 +11,16 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 origin.date: 09/09/2016
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: d3c6147765eab5b6221203010a60b5fa9746a5ea
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: afe05f5bb72b79a2ba2b5f8b662c246c306c7379
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106330"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052893"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>排查在 Azure 中新建 Linux 虚拟机时遇到的 Resource Manager 部署问题
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -63,7 +63,7 @@ ms.locfileid: "93106330"
 
 **解决方法：**
 
-若要解决这两个错误，请从门户中删除当前映像，并[从当前 VHD 重新捕获映像](../linux/capture-image.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)，该映像具有与该 OS（通用/专用）相同的设置。
+若要解决这两个错误，请从门户中删除当前映像，并[从当前 VHD 重新捕获映像](../linux/capture-image.md)，该映像具有与该 OS（通用/专用）相同的设置。
 
 ## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>问题：自定义/库/市场映像；分配失败
 当新的 VM 请求被固定到不支持所请求的 VM 大小、或没有可用空间可处理请求的群集时，便会发生此错误。
@@ -91,4 +91,4 @@ ms.locfileid: "93106330"
 ## <a name="next-steps"></a>后续步骤
 如果在 Azure 中启动已停止的 Linux VM 或调整现有 Linux VM 的大小时遇到问题，请参阅[排查在 Azure 中重新启动现有 Linux 虚拟机或调整其大小时遇到的 Resource Manager 部署问题](./troubleshoot-deploy-vm-linux.md?toc=/virtual-machines/linux/toc.json)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

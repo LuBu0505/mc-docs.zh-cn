@@ -7,17 +7,17 @@ ms.subservice: imaging
 ms.workload: infrastructure
 origin.date: 05/04/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.reviewer: akjosh
-ms.openlocfilehash: b80acabf019e03fd8f506b6f4e5ead51d0a691e6
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 51af290629bdc96c89ce1803d195952afb6dd564
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857089"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054406"
 ---
 # <a name="clone-a-managed-image-to-a-shared-image-gallery-image"></a>将托管映像克隆到共享映像库映像
 
@@ -55,7 +55,7 @@ $gallery = Get-AzGallery `
 
 创建映像定义时，请确保它包含所有正确信息。 由于托管映像始终会通用化，因此应设置 `-OsState generalized`。 
 
-若要详细了解可以为映像定义指定的值，请参阅[映像定义](./windows/shared-image-galleries.md#image-definitions)。
+若要详细了解可以为映像定义指定的值，请参阅[映像定义](./shared-image-galleries.md#image-definitions)。
 
 使用 [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) 创建映像定义。 在此示例中，映像定义名为 *myImageDefinition*，适用于通用化 Windows OS。 若要使用 Linux OS 创建映像的定义，请使用 `-OsType Linux`。 
 
@@ -136,4 +136,4 @@ Remove-AzImage `
 
 有关如何提供购买计划信息的信息，请参阅[在创建映像时提供 Azure 市场购买计划信息](marketplace-images.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

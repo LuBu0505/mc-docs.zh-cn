@@ -1,16 +1,17 @@
 ---
 title: 评估新 Azure Policy 定义的影响
 description: 了解将新策略定义引入 Azure 环境时要遵循的过程。
-ms.author: v-tawe
 origin.date: 10/05/2020
-ms.date: 11/06/2020
+author: rockboyfor
+ms.date: 03/01/2021
+ms.author: v-yeche
 ms.topic: conceptual
-ms.openlocfilehash: 3f6e24c9453231e2f3b176a0e6bf25f343ca5839
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 86cc8300dbf9996a6ac7f29a80f7721e378ecad1
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94327748"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196935"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>评估新 Azure Policy 定义的影响
 
@@ -72,6 +73,8 @@ Azure Policy 是一种功能强大的工具，用于管理 Azure 资源以符合
 - 了解[策略定义结构](./definition-structure.md)。
 - 了解[策略分配结构](./assignment-structure.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取合规性数据](../how-to/get-compliance-data.md)。
-- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
+- 了解如何[获取符合性数据](../how-to/get-compliance-data.md)。
+- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。
+
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -4,15 +4,15 @@ description: 分析具有某种共性的不同集、用户、会话、事件或�
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 12/07/2020
+ms.date: 02/22/2021
 origin.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d39faa2b1f3cdf63555387369998834f762c6436
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: efeda7d8b1c0be1dfaee2b980018ad6074197e27
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97104404"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197352"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights 队列
 
@@ -35,9 +35,9 @@ ms.locfileid: "97104404"
 
 1. 打开“队列”工具。
 
-2. 选择“模板库”选项卡。  将会看到各种队列的模板集合。
+2. 选择“模板库”选项卡。将会看到各种队列的模板集合。
 
-3. 选择“参与用户 -- 按使用天数”。 
+3. 选择“参与用户 -- 按使用天数”。
 
     此队列有三个参数：
     * **Activities**：选择要将哪些事件和页面视图计入“用法”。
@@ -50,16 +50,16 @@ ms.locfileid: "97104404"
 
     现在，此队列代表在过去 28 天内 5 个独立的日期通过任何自定义事件或页面视图发送的所有用户 ID。
 
-5. 选择“保存”  。
+5. 选择“保存”。
 
    > [!TIP]
    > 为队列命名，例如“Engaged Users (5+ Days)”。 根据是否希望对此 Application Insights 资源拥有访问权限的其他人查看此队列，将此队列保存到“我的报告”或“共享报告”中。
 
-6. 选择“返回库”。 
+6. 选择“返回库”。
 
 ### <a name="what-can-you-do-by-using-this-cohort"></a>此队列有哪些作用？
 
-打开“用户”工具。 在“显示”下拉框中，选择在“用户属于...”下创建的队列。  
+打开“用户”工具。 在“显示”下拉框中，选择在“用户属于...”下创建的队列。
 
 现已根据此用户队列筛选“用户”工具：
 
@@ -70,21 +70,21 @@ ms.locfileid: "97104404"
 * 不能通过普通的筛选器创建此集。 日期逻辑更高级。
 * 可以使用“用户”工具中的正常筛选器进一步筛选此队列。 因此，尽管该队列是基于 28 天期限定义的，但仍可以在“用户”工具中将时间范围调整为 30、60 或 90 天。
 
-这些筛选器支持更复杂的问题，而通过查询生成器无法表达这样的问题。 例如，对于在过去 28 天参与的人员，  他们在过去 60 天的行为如何？
+这些筛选器支持更复杂的问题，而通过查询生成器无法表达这样的问题。 例如，对于在过去 28 天参与的人员，他们在过去 60 天的行为如何？
 
 ## <a name="example-events-cohort"></a>示例：事件队列
 
-还可以创建事件队列。 在本部分，我们将定义一个事件队列和页面视图， 然后了解如何从其他工具使用它们。 此队列可以定义一组被团队视为活动用法的事件，或者定义一组与特定新功能相关的事件。 
+还可以创建事件队列。 在本部分，我们将定义一个事件队列和页面视图， 然后了解如何从其他工具使用它们。 此队列可以定义一组被团队视为活动用法的事件，或者定义一组与特定新功能相关的事件。
 
 1. 打开“队列”工具。
 
-2. 选择“模板库”选项卡。  将会看到各种队列的模板集合。
+2. 选择“模板库”选项卡。将会看到各种队列的模板集合。
 
-3. 选择“事件选取器”。 
+3. 选择“事件选取器”。
 
     ![事件选取器的屏幕截图](./media/usage-cohorts/006.png)
 
-4. 在“活动”下拉框中，选择想要添加到队列中的事件。 
+4. 在“活动”下拉框中，选择想要添加到队列中的事件。
 
 5. 保存队列并为其命名。
 
@@ -94,7 +94,7 @@ ms.locfileid: "97104404"
 
 ![演练“队列”工具用法的动画](./media/usage-cohorts/cohorts0001.gif)
 
-1. 打开“队列”工具，依次选择“模板库”选项卡、“空白用户队列”。  
+1. 打开“队列”工具，依次选择“模板库”选项卡、“空白用户队列”。
 
     ![空白用户队列](./media/usage-cohorts/001.png)
 
@@ -117,7 +117,7 @@ ms.locfileid: "97104404"
     | where client_CountryOrRegion == "China East"
     ```
 
-3. 选择“运行查询”。  如果表中未显示用户 ID，请更改为应用程序用户所在的国家/地区。
+3. 选择“运行查询”。 如果表中未显示用户 ID，请更改为应用程序用户所在的国家/地区。
 
 4. 保存并命名队列。
 
@@ -132,7 +132,7 @@ _我已定义某些国家/地区的用户的队列。当我在“用户”工具
 
 ## <a name="learn-more"></a>了解详细信息
 
-* [Analytics 查询语言](../log-query/log-analytics-tutorial.md?toc=%2fazure-monitor%2ftoc.json)
+* [Analytics 查询语言](../logs/log-analytics-tutorial.md?toc=%2fazure-monitor%2ftoc.json)
 * [用户、会话、事件](usage-segmentation.md)
 * [用户流](usage-flows.md)
 * [使用情况概述](usage-overview.md)

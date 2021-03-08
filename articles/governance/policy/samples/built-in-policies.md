@@ -1,18 +1,18 @@
 ---
 title: 内置策略定义列表
 description: 列出 Azure Policy 的内置策略定义。 类别包括“标记”、“合规性”、“Key Vault”、“Kubernetes”、“来宾配置”等。
-origin.date: 01/21/2021
+origin.date: 02/09/2021
 author: rockboyfor
-ms.date: 02/08/2021
+ms.date: 03/01/2021
 ms.author: v-yeche
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 8b0930bdc072a136659737428b79271ad69c1e1a
-ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
+ms.openlocfilehash: 192478a49236c90e0e0142e639dde1375f8dcc42
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580606"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196742"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy 内置策略定义
 
@@ -38,6 +38,8 @@ ms.locfileid: "99580606"
 
 [!INCLUDE [azure-policy-reference-policies-app-service](../../../../includes/policy/reference/bycat/policies-app-service.md)]
 
+<!--NOT AVAILABLE ON 03/05/2021 ## Attestation-->
+<!--NOT AVAILABLE ON [azure-policy-reference-policies-attestation](../../../../includes/policy/reference/bycat/policies-attestation.md)-->
 <!--NOT AVAILABLE ON 02/08/2021 ## Automanage-->
 <!--NOT AVAILABLE ON [azure-policy-reference-policies-automanage](../../../../includes/policy/reference/bycat/policies-automanage.md)-->
 
@@ -51,7 +53,7 @@ ms.locfileid: "99580606"
 
 <!--NOT AVAILABLE ON 02/08/2021 ## Azure Stack Edge-->
 <!--NOT AVAILABLE ON [azure-policy-reference-policies-azure-stack-edge](../../../../includes/policy/reference/bycat/policies-azure-stack-edge.md)-->
-## <a name="backup"></a>Backup
+## <a name="backup"></a>备份
 
 [!INCLUDE [azure-policy-reference-policies-backup](../../../../includes/policy/reference/bycat/policies-backup.md)]
 
@@ -107,6 +109,11 @@ ms.locfileid: "99580606"
 
 <!--NOT AVAILABLE ON 02/08/2021 ## Guest Configuration-->
 <!--NOT AVAILABLE ON [azure-policy-reference-policies-guest-configuration](../../../../includes/policy/reference/bycat/policies-guest-configuration.md)-->
+
+## <a name="hdinsight"></a>HDInsight
+
+[!INCLUDE [azure-policy-reference-policies-hdinsight](../../../../includes/policy/reference/bycat/policies-hdinsight.md)]
+
 <!--NOT AVAILABLE ON 02/08/2021 ## Internet of Things-->
 <!--NOT AVAILABLE ON [azure-policy-reference-policies-internet-of-things](../../../../includes/policy/reference/bycat/policies-internet-of-things.md)-->
 

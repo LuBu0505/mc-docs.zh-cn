@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/06/2021
+ms.date: 02/25/2021
 ms.author: v-johya
 origin.date: 05/09/2020
-ms.openlocfilehash: 8250b4fde1017f58ca32671b98e27b2253b9b218
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 6d2269705ca4f163754d1d12acc82b4ef7d59a6d
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022744"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197423"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>针对安全警报配置电子邮件通知 
 
@@ -42,15 +42,14 @@ ms.locfileid: "98022744"
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|正式发布 (GA)|
+|发布状态：|正式发布版 (GA)|
 |定价：|免费|
 |所需角色和权限：|**安全管理员**<br>**订阅所有者** |
 |云：|![是](./media/icons/yes-icon.png) 中国云|
 |||
 
 
-## <a name="customize-the-security-alerts-email-notifications"></a>自定义安全警报电子邮件通知<a name="email"></a>
-
+## <a name="customize-the-security-alerts-email-notifications-via-the-portal"></a>通过门户自定义安全警报电子邮件通知<a name="email"></a>
 可以将电子邮件通知发送给具有特定 Azure 角色的个人或所有用户。
 
 1. 从安全中心的“定价和设置”区域中选择相关订阅，然后选择“电子邮件通知” 。
@@ -62,10 +61,33 @@ ms.locfileid: "98022744"
 
 1. 若要将安全联系人信息应用到订阅，请选择“保存”。
 
+## <a name="customize-the-alerts-email-notifications-through-the-api"></a>通过 API 自定义安全警报电子邮件通知
+还可以通过提供的 REST API 来管理电子邮件通知。 有关完整详细信息，请参阅 [SecurityContacts API 文档](https://docs.microsoft.com/rest/api/securitycenter/securitycontacts)。
+
+这是创建安全联系人配置时 PUT 请求的请求正文示例：
+
+```json
+{
+    "properties": {
+        "emails": admin@contoso.com;admin2@contoso.com,
+        "notificationsByRole": {
+            "state": "On",
+            "roles": ["AccountAdmin", "Owner"]
+        },
+        "alertNotifications": {
+            "state": "On",
+            "minimalSeverity": "High"
+        },
+        "phone": ""
+    }
+}
+```
+
 
 ## <a name="see-also"></a>另请参阅
 若要了解有关安全警报的详细信息，请参阅以下页面：
 
+- [安全警报 - 参考指南](alerts-reference.md) -- 了解 Azure 安全中心的威胁防护模块中可能会显示的安全警报
 - [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报
 - [工作流自动化](workflow-automation.md) -- 通过自定义通知逻辑自动响应警报
 

@@ -1,16 +1,17 @@
 ---
 title: 策略示例索引
 description: Azure Policy 的内置项的索引。 类别标记、法规符合性、Key Vault、Kubernetes、来宾配置等。
+origin.date: 01/29/2021
+author: rockboyfor
+ms.date: 03/01/2021
+ms.author: v-yeche
 ms.topic: sample
-origin.date: 10/14/2020
-ms.date: 11/06/2020
-ms.author: v-tawe
-ms.openlocfilehash: 17dc8d5cbe7918f7267997a8233886d893c27ae7
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: b6524e0d90b289f1244e0770514f5fd93ecfa410
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94327564"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196567"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy 示例
 
@@ -35,17 +36,17 @@ ms.locfileid: "94327564"
 - [对计划中的策略定义进行分组](./pattern-group-with-initiative.md)
 - [使用 deployIfNotExists 部署资源](./pattern-deploy-resources.md)
 
-<!--
-## Regulatory Compliance
-
-The following are the [Regulatory Compliance](../concepts/regulatory-compliance.md) built-ins:
-
-- [Azure Security Benchmark](./azure-security-benchmark.md)
-- [CIS Microsoft Azure Foundations Benchmark v1.1.0](./cis-azure-1-1-0.md)
-- [HIPAA HITRUST 9.2](./hipaa-hitrust-9-2.md)
-- [NIST SP 800-53 R4](./nist-sp-800-53-r4.md)
-- [NIST SP 800-171 R2](./nist-sp-800-171-r2.md)
--->
+<!--NOT AVAILABLE ON ## Regulatory Compliance-->
+<!--NOT AVAILABLE ON [Regulatory Compliance](../concepts/regulatory-compliance.md)-->
+<!--NOT AVAILABLE ON ./azure-security-benchmark.md-->
+<!--NOT AVAILABLE ON ./azure-security-benchmarkv1.md-->
+<!--NOT AVAILABLE ON ./cis-azure-1-1-0.md-->
+<!--NOT AVAILABLE ON ./cmmc-l3.md-->
+<!--NOT AVAILABLE ON ./hipaa-hitrust-9-2.md-->
+<!--NOT AVAILABLE ON ./iso-27001.md-->
+<!--NOT AVAILABLE ON - [New Zealand Information Security Manual](./new-zealand-ism.md)-->
+<!--NOT AVAILABLE ON ./nist-sp-800-53-r4.md-->
+<!--NOT AVAILABLE ON ./nist-sp-800-171-r2.md-->
 
 ## <a name="other-samples"></a>其他示例
 
@@ -56,3 +57,5 @@ The following are the [Regulatory Compliance](../concepts/regulatory-compliance.
 - 在 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)中查看这些内置项。
 - 查看 [Azure Policy 定义结构](../concepts/definition-structure.md)。
 - 查看[了解策略效果](../concepts/effects.md)。
+
+<!--Update_Description: update meta properties, wording update, update link-->

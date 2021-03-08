@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: how-to
 origin.date: 07/27/2020
-ms.date: 01/18/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 0b3cc88daacbcc026afda9032b2e191d37d66e50
-ms.sourcegitcommit: f086abe8bd2770ed10a4842fa0c78b68dbcdf771
+ms.openlocfilehash: 56e2d157981c436f16b9ee9374c6d5922d75f038
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98163158"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196331"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>对 AzCopy 进行配置、优化和故障排除
 
@@ -23,7 +23,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 > [!NOTE]
 > 如果你正在寻找 AzCopy 入门内容，请参阅以下文章：
 > - [AzCopy 入门](storage-use-azcopy-v10.md)
-> - [使用 AzCopy 和 Blob 存储传输数据](storage-use-azcopy-blobs.md)
+> - [使用 AzCopy 和 Blob 存储传输数据](./storage-use-azcopy-v10.md#transfer-data)
 > - [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
 > - [使用 AzCopy 和 Amazon S3 Bucket 传输数据](storage-use-azcopy-s3.md)
 
@@ -184,7 +184,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 ## <a name="change-the-location-of-the-plan-and-log-files"></a>更改计划和日志文件的位置
 
-默认情况下，计划和日志文件位于 Windows 上的 `%USERPROFILE%\.azcopy` 目录中，或 Mac 和 Linux 上的 `$HOME$\.azcopy` 目录中。 可以更改此位置。
+默认情况下，计划和日志文件位于 Windows 上的 `%USERPROFILE%\.azcopy` 目录中，或 Mac 和 Linux 上的 `$HOME/.azcopy` 目录中。 可以更改此位置。
 
 ### <a name="change-the-location-of-plan-files"></a>更改计划文件的位置
 
@@ -221,5 +221,3 @@ AzCopy 日志级别默认设置为 `INFO`。 若要降低日志详细程度以�
 若要从本地计算机中删除所有计划和日志文件以节省磁盘空间，请使用 `azcopy jobs clean` 命令。
 
 若要删除只与一个作业关联的计划和日志文件，请使用 `azcopy jobs rm <job-id>`。 请将此示例中的 `<job-id>` 占位符替换为作业的作业 ID。
-
-

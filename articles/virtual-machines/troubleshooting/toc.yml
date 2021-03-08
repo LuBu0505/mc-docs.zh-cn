@@ -149,7 +149,7 @@
         - name: 排查常见错误
           href: troubleshoot-rdp-general-error.md
         - name: 排查身份验证错误
-          href: troubleshoot-authentication-error-rdp-vm.md
+          href: 'https://docs.microsoft.com/troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm'
         - name: 按事件 ID 排查 Azure VM RDP 连接问题
           href: event-id-troubleshoot-vm-rdp-connecton.md
         - name: 排查由于静态 IP 而导致的 VM 中的 RDP 错误

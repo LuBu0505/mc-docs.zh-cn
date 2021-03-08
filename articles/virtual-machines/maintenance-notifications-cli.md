@@ -6,16 +6,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 origin.date: 11/19/2019
 author: rockboyfor
-ms.date: 10/19/2020
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3b0c3a0661054721c3530c22d2f71d42cc8afd50
-ms.sourcegitcommit: 6f66215d61c6c4ee3f2713a796e074f69934ba98
+ms.openlocfilehash: 4560a89b78a85d355983e9b0d88f4f2b34c89616
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127961"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055294"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-azure-cli"></a>使用 Azure CLI 处理计划内维护通知
 
@@ -31,15 +31,15 @@ az vm get-instance-view -n myVM -g myResourceGroup --query instanceView.maintena
 
 输出
 ```
-      "maintenanceRedeployStatus": {
-      "additionalProperties": {},
-      "isCustomerInitiatedMaintenanceAllowed": true,
-      "lastOperationMessage": null,
-      "lastOperationResultCode": "None",
-      "maintenanceWindowEndTime": "2018-06-04T16:30:00+00:00",
-      "maintenanceWindowStartTime": "2018-05-21T16:30:00+00:00",
-      "preMaintenanceWindowEndTime": "2018-05-19T12:30:00+00:00",
-      "preMaintenanceWindowStartTime": "2018-05-14T12:30:00+00:00"
+"maintenanceRedeployStatus": {
+"additionalProperties": {},
+"isCustomerInitiatedMaintenanceAllowed": true,
+"lastOperationMessage": null,
+"lastOperationResultCode": "None",
+"maintenanceWindowEndTime": "2018-06-04T16:30:00+00:00",
+"maintenanceWindowStartTime": "2018-05-21T16:30:00+00:00",
+"preMaintenanceWindowEndTime": "2018-05-19T12:30:00+00:00",
+"preMaintenanceWindowStartTime": "2018-05-14T12:30:00+00:00"
 ```
 
 ## <a name="start-maintenance"></a>启动维护
@@ -78,4 +78,4 @@ azure compute virtual-machine initiate-maintenance --service-name myService --na
 
 还可以使用 [Azure PowerShell](maintenance-notifications-powershell.md) 或[门户](maintenance-notifications-portal.md)处理计划内维护。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

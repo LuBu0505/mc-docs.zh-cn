@@ -10,12 +10,12 @@ origin.date: 02/22/2019
 ms.date: 04/06/2020
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: daa7d8b0ce2c4b3f4a79b23e5b6a28a018a82bfd
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: db92fc28dac32885bd94d6935022f99b9c0c537d
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830091"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196805"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>教程：使用模拟设备测试与 IoT 中心的连接
 
@@ -170,7 +170,7 @@ node SimulatedDevice-2.js "{Your SAS token}"
 首先，请使用以下命令检索模拟设备的当前连接字符串：
 
 ```azurecli
-az iot hub device-identity show-connection-string --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
+az iot hub device-identity connection-string show --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
 ```
 
 若要运行可发送消息的模拟设备，请导航到已下载代码中的 **iot-hub\Tutorials\ConnectivityTests** 文件夹。

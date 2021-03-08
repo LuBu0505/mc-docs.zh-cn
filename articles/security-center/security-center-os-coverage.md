@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/06/2021
+ms.date: 02/25/2021
 ms.author: v-johya
 origin.date: 08/29/2019
-ms.openlocfilehash: 62330705f85c93257633a5b08211e609dbcb4632
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 8b0f28bd68226daffefa85f3898114b2a8558b19
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023293"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197518"
 ---
 # <a name="supported-platforms"></a>支持的平台 
 
@@ -38,10 +38,10 @@ Azure 安全中心支持基于不同类型的混合环境的虚拟机和服务�
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
-安全中心依赖于 [Log Analytics 代理](../azure-monitor/platform/agents-overview.md#log-analytics-agent)。 请确保计算机正在运行此代理支持的操作系统之一，如以下页面所述：
+安全中心依赖于 [Log Analytics 代理](../azure-monitor/agents/agents-overview.md#log-analytics-agent)。 请确保计算机正在运行此代理支持的操作系统之一，如以下页面所述：
 
-* [适用于 Windows 的 Log Analytics 代理支持的操作系统](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
-* [适用于 Linux 的 Log Analytics 代理支持的操作系统](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [适用于 Windows 的 Log Analytics 代理支持的操作系统](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
+* [适用于 Linux 的 Log Analytics 代理支持的操作系统](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
 
 还要确保 Log Analytics 代理已[正确配置为将数据发送到安全中心](security-center-enable-data-collection.md#manual-agent)
 
@@ -54,8 +54,6 @@ Azure 安全中心支持基于不同类型的混合环境的虚拟机和服务�
 ## <a name="cloud-services"></a>云服务 <a name="cloud-services"></a>
 
 此外，云服务中运行的虚拟机也受支持。 仅监视云服务 Web 和在生产槽运行的辅助角色。 若要了解有关云服务的详细信息，请参阅[云服务概述](../cloud-services/cloud-services-choose-me.md)。
-
-还支持对驻留在 Azure Stack 中的 VM 进行保护。
 
 ## <a name="next-steps"></a>后续步骤
 

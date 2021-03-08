@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 10/02/2019
-ms.date: 12/03/2020
+ms.date: 03/04/2021
 ms.author: v-johya
-ms.openlocfilehash: c5980449e34064b63f52d3e2f4ed2db7845bd5b7
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 2799666f1101e84ec1a11594546c194dce571e1a
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747178"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197391"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Azure 网络安全最佳做法
 本文介绍一系列 Azure 最佳做法以增强网络安全。 这些最佳实践衍生自我们的 Azure 网络经验和客户的经验。
@@ -123,7 +123,7 @@ Azure 网络安全设备可提供比网络级控制所提供的更高的安全�
 
 基于前面提到的零信任概念，建议考虑将外围网络用于所有高安全性部署，以增强 Azure 资源的网络安全和访问控制级别。 可以使用 Azure 或第三方解决方案在资产与 Internet 之间提供额外的安全层：
 
-- Azure 本机控制。 [Azure 防火墙](/firewall/overview)和[应用程序网关中的 Web 应用程序防火墙](../../application-gateway/features.md#web-application-firewall)通过完全有状态防火墙即服务、内置高可用性、无限制的云可伸缩性、FQDN 筛选、对 OWASP 核心规则集的支持以及简单的设置和配置，来提供基本安全性。
+- Azure 本机控制。 [Azure 防火墙](../../firewall/overview.md)和[应用程序网关中的 Web 应用程序防火墙](../../application-gateway/features.md#web-application-firewall)通过完全有状态防火墙即服务、内置高可用性、无限制的云可伸缩性、FQDN 筛选、对 OWASP 核心规则集的支持以及简单的设置和配置，来提供基本安全性。
 - 第三方产品/服务。 在 [Azure 市场](https://market.azure.cn/)中搜索下一代防火墙 (NGFW) 和其他第三方产品/服务，它们可提供熟悉的安全工具和显著增强的网络安全级别。 配置可能会更加复杂，但第三方产品/服务可能会允许你使用现有功能和技能组。
 
 ## <a name="avoid-exposure-to-the-internet-with-dedicated-wan-links"></a>避免向具有专用 WAN 链接的 Internet 公开
@@ -196,20 +196,7 @@ ExpressRoute 连接的位置可能会影响防火墙容量、可伸缩性、可�
 - 专用的 WAN 链接不会遍历 Internet。
 - 专用的 WAN 链接通常更稳定且性能更佳。
 
-## <a name="secure-your-critical-azure-service-resources-to-only-your-virtual-networks"></a>保护关键的 Azure 服务资源，只允许在客户自己的虚拟网络中对其进行访问
-使用虚拟网络服务终结点可通过直接连接将虚拟网络专用地址空间和虚拟网络标识扩展到 Azure 服务。 使用终结点可以保护关键的 Azure 服务资源，只允许在客户自己的虚拟网络中对其进行访问。 从虚拟网络发往 Azure 服务的流量始终保留在 Azure 主干网络中。
-
-服务终结点提供以下优势：
-
-- **提高了 Azure 服务资源的安全性**：使用服务终结点，可在虚拟网络中保护 Azure 服务资源。 在虚拟网络中保护服务资源可以完全消除通过公共 Internet 对这些资源进行访问，只允许来自客户自己的虚拟网络的流量，从而提高了安全性。
-- **来自虚拟网络的 Azure 服务流量的最佳路由**：虚拟网络中强制 Internet 流量通过本地和/或虚拟设备（称为强制隧道）的任何路由也会强制 Azure 服务流量采用与 Internet 流量相同的路由。 服务终结点为 Azure 流量提供最佳路由。
-
-  终结点始终将服务流量直接从虚拟网络带至 Azure 主干网络上的服务。 将流量保留在 Azure 主干网络上可以通过强制隧道持续审核和监视来自虚拟网络的出站 Internet 流量，而不会影响服务流量。 详细了解[用户定义的路由和强制隧道](../../virtual-network/virtual-networks-udr-overview.md)。
-
-- **设置简单，管理开销更少**：不再需要使用虚拟网络中的保留公共 IP 地址通过 IP 防火墙保护 Azure 资源。 无需使用 NAT 或网关设备即可设置服务终结点。 只需单击一下子网，即可配置服务终结点。 不会产生与终结点维护相关的额外开销。
-
-要了解服务终结点及可使用服务终结点的 Azure 服务和区域的详细信息，请参阅[虚拟网络服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)。
-
+<!--Not available in MC: Azure Private Link-->
 ## <a name="next-steps"></a>后续步骤
 有关通过 Azure 设计、部署和管理云解决方案时可以使用的更多安全最佳做法，请参阅 [Azure 安全最佳做法和模式](best-practices-and-patterns.md)。
 

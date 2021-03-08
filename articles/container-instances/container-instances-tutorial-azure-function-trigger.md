@@ -4,15 +4,15 @@ description: 创建 HTTP 触发的无服务器 PowerShell 函数，以便自动�
 ms.topic: tutorial
 origin.date: 06/10/2020
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 03/01/2021
 ms.author: v-yeche
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6e8f558a2e124d41a671b75012b802e70436ea05
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: c0e0a77b4c87ca517f09f1e6a21ee5903e894911
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021673"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054356"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>教程：使用 HTTP 触发的 Azure 函数创建容器组
 
@@ -108,7 +108,7 @@ if ($name) {
 
 ## <a name="run-the-function-in-azure"></a>在 Azure 中运行函数
 
-部署成功完成以后，请获取函数 URL。 例如，使用 Visual Studio Code 中的“Azure:Functions”区域复制 HttpTrigger 函数 URL，或者在 [Azure 门户](../azure-functions/functions-create-first-azure-function.md#test-the-function)中获取函数 URL。
+部署成功完成以后，请获取函数 URL。 例如，使用 Visual Studio Code 中的“Azure:Functions”区域复制 HttpTrigger 函数 URL，或者在 [Azure 门户](../azure-functions/functions-get-started.md)中获取函数 URL。
 
 函数 URL 的格式为：
 
@@ -218,4 +218,4 @@ az group delete --name myfunctionapp
 [new-azcontainergroup]: https://docs.microsoft.com/powershell/module/az.containerinstance/new-azcontainergroup
 [get-azcontainerinstancelog]: https://docs.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancelog
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

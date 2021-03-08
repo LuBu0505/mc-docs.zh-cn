@@ -4,14 +4,14 @@ description: 使用流分析将 Application Insights 数据连续导出到 SQL�
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 09/11/2017
-ms.date: 11/10/2020
+ms.date: 02/22/2021
 ms.author: v-johya
-ms.openlocfilehash: a54b8bb54005d3041f2edfd04d3a54e7fe083bd6
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: 82d2cbf90be8c03470c55e0bc885419712da12f7
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94638194"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197136"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>演练：使用流分析从 Application Insights 导出到 SQL
 本文说明如何使用[连续导出][export]和 [Azure 流分析](/stream-analytics/)，将遥测数据从 [Azure Application Insights][start] 移入 Azure SQL 数据库。 
@@ -64,7 +64,7 @@ ms.locfileid: "94638194"
     ![选择事件类型](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. 让我们累积一些数据。 请休息一下，让其他人先使用该应用程序一段时间。 应用程序中会逐渐传入遥测数据，[指标资源管理器](../platform/metrics-charts.md)中会显示统计图表，[诊断搜索](./diagnostic-search.md)中会显示各个事件。 
+1. 让我们累积一些数据。 请休息一下，让其他人先使用该应用程序一段时间。 应用程序中会逐渐传入遥测数据，[指标资源管理器](../essentials/metrics-charts.md)中会显示统计图表，[诊断搜索](./diagnostic-search.md)中会显示各个事件。 
    
     此外，数据将导出到存储。 
 2. 在门户中检查导出的数据 - 选择“浏览”，选择存储帐户，然后选择“容器”；也可以在 Visual Studio 中检查。 在 Visual Studio 中，请选择“查看”>“Cloud Explorer”，并打开“Azure”>“存储”。 （如果没有此菜单选项，则需要安装 Azure SDK：打开“新建项目”对话框，打开 Visual C#/云/获取 Azure SDK for .NET。）
@@ -85,7 +85,7 @@ ms.locfileid: "94638194"
 ![依次选择“浏览”、“服务器”、服务器、“设置”、“防火墙”、“允许访问 Azure”](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
 ## <a name="create-a-table-in-azure-sql-database"></a>在 Azure SQL 数据库中创建表
-使用偏好的管理工具连接到在上一部分中创建的数据库。 本演练将使用 [SQL Server 管理工具](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms?view=sql-server-ver15) (SSMS)。
+使用偏好的管理工具连接到在上一部分中创建的数据库。 本演练将使用 [SQL Server 管理工具](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS)。
 
 ![连接到 Azure SQL 数据库](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 
@@ -255,7 +255,7 @@ FROM [dbo].[PageViewsTable]
 
 [diagnostic]: ./diagnostic-search.md
 [export]: ./export-telemetry.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 [portal]: https://portal.azure.cn/
 [start]: ./app-insights-overview.md
 

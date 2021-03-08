@@ -9,12 +9,12 @@ ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 author: rockboyfor
-ms.openlocfilehash: b6ba20945872e4d7865bfac91a90f3714cbba5bf
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 797bca6189227352a1a44d504606d76a801202a8
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059131"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196490"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>使用 AMQP 1.0 通过 .NET 使用服务总线
 
@@ -54,7 +54,9 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 ### <a name="amqp-over-websockets"></a>基于 WebSockets 的 AMQP
 若要通过 WebSocket 使用 AMQP，请在连接字符串中将 `TransportType` 设置为 `AmqpWebSockets`。 例如：`Endpoint=sb://[namespace].servicebus.chinacloudapi.cn/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=AmqpWebSockets`。 
 
-如果使用的是 .NET Microsoft.Azure.ServiceBus 库，请将 [ServiceBusConnection.TransportType](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.servicebusconnection.transporttype) 设置为 [TransportType 枚举](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.transporttype)的 AmqpWebSockets。
+如果使用的是 .NET Microsoft.Azure.ServiceBus 库，请将 [ServiceBusConnection.TransportType](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.servicebusconnection.transporttype) 设置为 [TransportType 枚举](https://docs.azure.cn/dotnet/api/microsoft.azure.servicebus.transporttype)的 AmqpWebSockets。
+
+<!--CORRECT ON https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.servicebusconnection.transporttype-->
 
 如果使用的是 .NET Azure.Messaging.ServiceBus 库，请将 [ServiceBusClient.TransportType](https://docs.microsoft.com/dotnet/api/azure.messaging.servicebus.servicebusclient.transporttype) 设置为 [ServiceBusTransportType 枚举](https://docs.microsoft.com/dotnet/api/azure.messaging.servicebus.servicebustransporttype)的 AmqpWebSockets。
 

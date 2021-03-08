@@ -6,12 +6,12 @@ author: Johnnytechn
 ms.author: v-johya
 origin.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d96e188f83d04883332e81b380e5a0e7ef2e3378
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: 34dd03cd1f3e5edf1f9320928d129a637b549af5
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94638181"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197154"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights 中基于日志的指标和预先聚合的指标
 
@@ -30,12 +30,12 @@ ms.locfileid: "94638181"
 
 ## <a name="pre-aggregated-metrics"></a>预先聚合的指标
 
-除了基于日志的指标以外，在 2018 年年底，Application Insights 团队交付了存储在专用存储库（已针对时序进行优化）中的指标的公共预览版。 新指标不再作为包含大量属性的单个事件进行保存。 它们存储为预先聚合的时序，并且仅包含键维度。 这使得新指标在查询时间方面非常出色：检索数据的速度要快得多，而且所需的计算能力更低。 因此，可以实现[针对指标维度发出近实时警报](../platform/alerts-metric-near-real-time.md)、响应能力更强的[仪表板](./overview-dashboard.md)等方案。
+除了基于日志的指标以外，在 2018 年年底，Application Insights 团队交付了存储在专用存储库（已针对时序进行优化）中的指标的公共预览版。 新指标不再作为包含大量属性的单个事件进行保存。 它们存储为预先聚合的时序，并且仅包含键维度。 这使得新指标在查询时间方面非常出色：检索数据的速度要快得多，而且所需的计算能力更低。 因此，可以实现[针对指标维度发出近实时警报](../alerts/alerts-metric-near-real-time.md)、响应能力更强的[仪表板](./overview-dashboard.md)等方案。
 
 > [!IMPORTANT]
 > 基于日志的指标和预先聚合的指标可在 Application Insights 中共存。 为了区分两者，在 Application Insights UX 中，预先聚合的指标现在称为“标准指标(预览版)”，而事件中的传统指标已重命名为“基于日志的指标”。
 
-较新的 SDK（适用于 .NET 的 [Application Insights 2.7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) SDK 或更高版本）会在收集期间预聚合指标。 这适用于[默认发送的标准指标](../platform/metrics-supported.md#microsoftinsightscomponents)，因此准确度不受采样或筛选的影响。 它也适用于使用 [GetMetric](./api-custom-events-metrics.md#getmetric) 发送的自定义指标，从而减少数据引入并降低成本。
+较新的 SDK（适用于 .NET 的 [Application Insights 2.7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) SDK 或更高版本）会在收集期间预聚合指标。 这适用于[默认发送的标准指标](../essentials/metrics-supported.md#microsoftinsightscomponents)，因此准确度不受采样或筛选的影响。 它也适用于使用 [GetMetric](./api-custom-events-metrics.md#getmetric) 发送的自定义指标，从而减少数据引入并降低成本。
 
 对于不实施预先聚合的 SDK（即，早期版本的 Application Insights SDK 或用于浏览器检测的 SDK），Application Insights 后端仍会通过聚合 Application Insights 事件收集终结点收到的事件来填充新指标。 这意味着，尽管不能减少通过网络传输的数据量，但仍可以使用预先聚合的指标并改善性能，同时，在收集期间，可以使用不预先聚合指标的 SDK 来支持近实时维度警报。
 
@@ -81,7 +81,7 @@ ms.locfileid: "94638181"
 
 ## <a name="creating-charts-and-exploring-log-based-and-standard-pre-aggregated-metrics"></a>创建图表和浏览基于日志的指标与预先聚合的标准指标
 
-使用 [Azure Monitor 指标资源管理器](../platform/metrics-getting-started.md)可以绘制预先聚合的指标和基于日志的指标的图表，以及创作包含图表的仪表板。 选择所需的 Application Insights 资源后，使用命名空间选取器在标准指标（预览版）和基于日志的指标之间切换，或选择自定义指标命名空间：
+使用 [Azure Monitor 指标资源管理器](../essentials/metrics-getting-started.md)可以绘制预先聚合的指标和基于日志的指标的图表，以及创作包含图表的仪表板。 选择所需的 Application Insights 资源后，使用命名空间选取器在标准指标（预览版）和基于日志的指标之间切换，或选择自定义指标命名空间：
 
 ![指标命名空间](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 
@@ -93,6 +93,6 @@ ms.locfileid: "94638181"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [近实时警报](../platform/alerts-metric-near-real-time.md)
+* [近实时警报](../alerts/alerts-metric-near-real-time.md)
 * [GetMetric 和 TrackValue](./api-custom-events-metrics.md#getmetric)
 
