@@ -1,5 +1,6 @@
 ---
-title: 从守护程序应用调用 Web API - Microsoft 标识平台 | Azure
+title: 从守护程序应用调用 Web API | Azure
+titleSuffix: Microsoft identity platform
 description: 了解如何构建用于调用 Web API 的守护程序应用。
 services: active-directory
 author: jmprieur
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/23/2020
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: d10b711b35d17c08dd1fa270914276aac936729b
-ms.sourcegitcommit: 883daddafe881e5f8a9f347df2880064d2375b6d
+ms.openlocfilehash: 322a8148a4a672b3f30e01a7156f9764a67e0814
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95918404"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696797"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>调用 Web API 的守护程序应用 - 从应用调用 Web API
 
@@ -80,4 +81,3 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 转到此方案中的下一篇文章：[移到生产环境](./scenario-daemon-production.md?tabs=java)。
 
 ---
-

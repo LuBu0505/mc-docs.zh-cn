@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 02/22/2021
 ms.author: v-junlch
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 1d4bea055074ab760240689e86e5a709b560935f
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 0856c19785f1b5401c5c7a39dbe80181aae0e540
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98194998"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696550"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>配置令牌生存期策略（预览版）
 你可以指定由 Microsoft 标识平台颁发的访问、SAML 或 ID 令牌的生存期。 可以针对组织中的所有应用、多租户（多组织）应用程序或者组织中的特定服务主体设置生存期。 
@@ -38,7 +38,7 @@ ms.locfileid: "98194998"
 1. 若要查看组织中创建的所有策略，请运行 [Get-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) cmdlet。  任何已定义的属性值不同于上面列出的默认值的结果都在停用范围内。
 
     ```powershell
-    Get-AzureADPolicy -All
+    Get-AzureADPolicy -All $true
     ```
 
 1. 若要查看哪些应用和服务主体链接到你确定的特定策略，请使用任何策略 ID 替换 1a37dad8-5da7-4cc8-87c7-efbc0326cf20，以运行以下 [Get-AzureADPolicyAppliedObject](https://docs.microsoft.com/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) cmdlet。 然后，你可以决定是配置条件访问登录频率，还是保留 Azure AD 默认值。
@@ -85,9 +85,9 @@ ms.locfileid: "98194998"
 
 ## <a name="create-token-lifetime-policies-for-refresh-and-session-tokens"></a>为刷新和会话令牌创建令牌生存期策略
 > [!IMPORTANT]
-> 自 2020 年 5 月起，新租户无法配置刷新和会话令牌生存期。  具有现有配置的租户可以在 2021 年 1 月 30 之前修改刷新和会话令牌策略。  Azure Active Directory 将在 2021 年 1 月 30 日之后停止执行策略中的现有刷新和会话令牌配置。 在停用之后，你仍然可以配置访问、SAML 和 ID 令牌生存期。
+> 从 2021 年 1 月 30 日起，无法再配置刷新和会话令牌生存期。 Azure Active Directory 不再支持现有策略中的刷新和会话令牌配置。  现有令牌过期后颁发的新令牌现已设置为默认配置。 在刷新和会话令牌配置停用后，你仍可配置访问权限、SAML 和 ID 令牌生存期。
 >
-> 如果需要继续定义要求用户再次登录之前的时间段，请配置条件访问中的登录频率。 
+> 现有令牌的生存期不会更改。 在它们过期后，会根据默认值颁发新令牌。
 >
 
 ### <a name="manage-an-organizations-default-policy"></a>管理组织的默认策略

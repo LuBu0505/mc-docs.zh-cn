@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 origin.date: 10/15/2020
-ms.date: 10/29/2020
+ms.date: 02/22/2021
 ms.reviewer: ''
-ms.openlocfilehash: 0328648962847d82e232dffa5751ba72d47d92bb
-ms.sourcegitcommit: 7b3c894d9c164d2311b99255f931ebc1803ca5a9
+ms.openlocfilehash: 6a912695326460d205e1a5fd790b3521556f96ba
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470007"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696991"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "92470007"
 
 选择服务层级首要考虑的是业务连续性、存储和性能需求。
 
-||基本|标准|高级|
+||基本|Standard|高级|
 | :-- | --: |--:| --:|
 |**目标工作负荷**|开发和生产|开发和生产|开发和生产|
 |**运行时间 SLA**|99.99%|99.99%|99.99%|
@@ -54,11 +54,14 @@ ms.locfileid: "92470007"
 > 在基本、S0 和 S1 服务目标中，数据库文件存储在 Azure 标准存储中，该存储使用基于硬盘驱动器 (HDD) 的存储介质。 这些服务目标最适合用于对性能变化不太敏感的开发、测试和其他不频繁访问的工作负载。
 >
 
+> [!TIP]
+> 若要查看数据库或弹性池的实际[资源调控](resource-limits-logical-server.md#resource-governance)限制，请查询 [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 视图。
+
 ## <a name="single-database-dtu-and-storage-limits"></a>单一数据库 DTU 和存储限制
 
 单一数据库的计算大小以数据库事务单位 (DTU) 表示，弹性池则以弹性数据库事务单位 (eDTU) 表示。 有关 DTU 和 eDTU 的更多信息，请参阅[基于 DTU 的购买模型](purchasing-models.md#dtu-based-purchasing-model)。
 
-||基本|标准|高级|
+||基本|Standard|高级|
 | :-- | --: | --: | --: |
 | **最大存储大小** | 2 GB | 1 TB | 4 TB  |
 | **最大 DTU** | 5 | 3000 | 4000 |

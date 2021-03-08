@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 01/13/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.openlocfilehash: 5b98a1e3ff0c74f690b52ecf441bad58b232a65c
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: d37c24b78fba8121d2dccd62c259992da2987bd0
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98194992"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697182"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>如何：配置应用程序的发布者域
 
@@ -48,18 +48,12 @@ ms.locfileid: "98194992"
 
 若要设置应用的发布者域，请执行以下步骤。
 
-1. 使用工作或学校帐户登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
-
-1. 如果你的帐户在多个 Azure AD 租户中存在：
-   1. 从页面右上角的菜单中选择你的个人资料，然后选择“切换目录”。 
-   1. 将会话切换到要在其中创建应用程序的 Azure AD 租户。
-
+1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
+1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择在其中注册应用的租户。
 1. 导航到[“Azure Active Directory”>“应用注册”](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)，找到并选择要配置的应用。
 
    选择应用后，会看到该应用的“概述”页。 
-
-1. 在应用的“概述”页中，选择“品牌”部分。  
-
+1. 在“管理”下，选择“品牌打造” 。
 1. 找到“发布者域”字段并选择以下选项之一： 
 
    - 如果尚未配置域，请选择“配置域”。 
@@ -155,4 +149,3 @@ ms.locfileid: "98194992"
 ## <a name="configure-publisher-domain-programmatically"></a>以编程方式配置发布者域
 
 目前，不支持使用 REST API 或 PowerShell 以编程方式配置发布者域。
-
