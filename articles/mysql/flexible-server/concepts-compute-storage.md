@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 10/20/2020
-ms.date: 01/11/2021
-ms.openlocfilehash: 3753cc1cf891cfe34306e37949afdf4ba5f71dde
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+origin.date: 1/28/2021
+ms.date: 03/08/2021
+ms.openlocfilehash: 1cc81081ba6488fda990f07c894724b771f1e8bb
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023999"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696683"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活服务器（预览版）中的计算和存储选项
 
@@ -72,6 +72,9 @@ ms.locfileid: "98023999"
 
 若要获取有关可用计算系列的更多详细信息，请参阅[可突发（B 系列）](../../virtual-machines/sizes-b-series-burstable.md)、[常规用途（Ddsv4 系列）](../../virtual-machines/ddv4-ddsv4-series.md)和[内存优化（Edsv4 系列）](../../virtual-machines/edv4-edsv4-series.md)的相关 Azure VM 文档。
 
+>[!NOTE]
+>对于[可突发（B 系列）计算层](../../virtual-machines/sizes-b-series-burstable.md)，如果 VM 启动/停止或重启，额度可能会丢失。 有关详细信息，请参阅[可突发（B 系列）常见问题解答](/virtual-machines/sizes-b-series-burstable#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart)。
+
 ## <a name="storage"></a>存储
 
 预配的存储是指可供灵活服务器使用的存储容量。 存储用于数据库文件、临时文件、事务日志和 MySQL 服务器日志。 在所有计算层中，支持的最小存储为 5 GiB，最大存储为 16 TiB。 存储按 1 GiB 的增量缩放，并且可在创建服务器后纵向扩展。
@@ -100,15 +103,14 @@ ms.locfileid: "98023999"
 存储自动增长尚不可用于 Azure Database for MySQL 灵活服务器。
 
 ## <a name="iops"></a>IOPS
-所有计算大小的最小有效 IOPS 为 100，最大有效 IOPS 由以下两个属性确定： 
-- 计算：最大有效 IOPS 可能受所选计算大小的最大可用 IOPS 限制。
-- 存储：在所有计算层中，IOPS 按预配存储大小以 3:1 的比例进行缩放。
 
-可以通过增加预配存储或改用更大的计算大小（如果 IOPS 受计算限制）扩展可用的有效 IOPS。 在预览版中，支持的最大有效 IOPS 为 20,000 IOPS。
+Azure Database for MySQL � 灵活服务器支持预配额外的 IOPS。 借助此功能可配置超出免费 IOPS 限制的其他 IOPS。 使用此功能，你可以根据工作负载需求随时增加或减少预配的 IOPS 数。 
 
-若要详细了解每个计算大小的最大有效 IOPS，请使用计算和存储的组合，如下所示： 
+所有计算大小的最小 IOPS 为 100，最大 IOPS 由所选计算大小确定。 在预览版中，支持的最大 IOPS 为 20,000 IOPS。
 
-| 计算大小         | 最大有效 IOPS  | 
+详细了解每个计算大小的最大 IOPS，如下所示： 
+
+| 计算大小         | 最大 IOPS        | 
 |----------------------|---------------------|
 | **可突发**        |                     |
 | Standard_B1s         | 320                 |
@@ -131,11 +133,14 @@ ms.locfileid: "98023999"
 | Standard_E48ds_v4    | 20000               | 
 | Standard_E64ds_v4    | 20000               |  
 
-最大有效 IOPS 取决于每个计算大小的最大可用 IOPS。 请参阅下面的公式，并参阅 [B 系列](../../virtual-machines/sizes-b-series-burstable.md)、[Ddsv4 系列](../../virtual-machines/ddv4-ddsv4-series.md)和 [Edsv4 系列](../../virtual-machines/edv4-edsv4-series.md)文档中的“最大未缓存磁盘吞吐量：IOPS/MBps”列。
+最大 IOPS 取决于每个计算大小的最大可用 IOPS。 参阅 [B 系列](../../virtual-machines/sizes-b-series-burstable.md)、[Ddsv4 系列](../../virtual-machines/ddv4-ddsv4-series.md)和 [Edsv4 系列](../../virtual-machines/edv4-edsv4-series.md)文档中的“最大未缓存磁盘吞吐量：IOPS/MBps”列。
 
-最大有效 IOPS = MINIMUM（计算大小的“最大未缓存磁盘吞吐量：IOPS/MBps”，预配的存储 (GiB) * 3）
+> [!Important]
+> 免费 IOPS = MINIMUM（计算大小的“最大未缓存磁盘吞吐量：IOPS/MBps”，预配的存储 (GiB) * 3）<br>
+> 所有计算大小的最小 IOPS 均为 100<br>
+> 最大 IOPS 取决于所选的计算大小。 在预览版中，支持的最大 IOPS 为 20,000 IOPS。
 
-可以使用 [IO 百分比](./concepts-monitoring.md)指标在 Azure 门户中（使用 Azure Monitor）监视 I/O 使用情况。 如果需要更多 IOPS，则需要了解是否受计算大小或预配的存储限制。 相应地缩放预配的服务器的计算或存储。
+可以使用 [IO 百分比](./concepts-monitoring.md)指标在 Azure 门户中（使用 Azure Monitor）监视 I/O 使用情况。 如果需要比基于计算力的最大 IOPS 更高的 IOPS，则需要扩展服务器的计算。
 
 ## <a name="backup"></a>Backup
 

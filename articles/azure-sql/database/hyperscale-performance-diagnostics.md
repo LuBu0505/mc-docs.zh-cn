@@ -10,13 +10,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein
 origin.date: 10/18/2019
-ms.date: 07/13/2020
-ms.openlocfilehash: 572123834f30c9fb96dd51c8be8b572c466bb9f5
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+ms.date: 02/22/2021
+ms.openlocfilehash: d19e331a16efdd6551906ffb38d02aa37ab92fe0
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86227203"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696945"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL 超大规模服务层级性能故障排除诊断
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "86227203"
 
 ## <a name="log-rate-throttling-waits"></a>日志速率限制等待
 
-在超大规模数据库中，无论服务级别是什么，日志生成限制目前都设置为 100 MB/秒。 但有时，必须限制主计算副本上的日志生成速率，以保持符合可恢复性 SLA。 如果在应用日志服务中的新日志记录后，[页面服务器或其他计算副本](service-tier-hyperscale.md#distributed-functions-architecture)明显滞后，则会发生此限制。
+每个 Azure SQL 数据库服务级别通过[日志速率调控](resource-limits-logical-server.md#transaction-log-rate-governance)来强制实施日志生成速率限制。 在超大规模数据库中，无论服务级别是什么，日志生成限制目前都设置为 100 MB/秒。 但有时，必须限制主计算副本上的日志生成速率，以保持符合可恢复性 SLA。 如果在应用日志服务中的新日志记录后，很久才出现[页面服务器或其他计算副本](service-tier-hyperscale.md#distributed-functions-architecture)，则会发生此限制。
 
 以下等待类型（在 [sys.dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/) 中）描述了在主计算副本上限制日志速率的原因：
 
@@ -95,6 +95,14 @@ ms.locfileid: "86227203"
 
 - 在主计算副本上，日志写入计入 sys.dm_io_virtual_file_stats 的 file_id 2。 主计算副本上的日志写入将写入到日志登陆区域。
 - 提交时，辅助副本上的日志记录不会强化。 在“超大规模”中，日志服务以异步方式将日志应用到次要副本。 由于日志写入实际上不是在次要副本上发生的，因此，次要副本上的日志 IO 的任何记帐仅用于跟踪目的。
+
+## <a name="data-io-in-resource-utilization-statistics"></a>资源利用率统计信息中的数据 IO
+
+在非超大规模数据库中，有关相对于[资源管理](./resource-limits-logical-server.md#resource-governance)数据 IOPS 限制的针对数据文件的组合读取和写入 IOPS，可查看 `avg_data_io_percent` 列中的 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 和 [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 视图。 这个值在 Azure 门户中报告为数据 IO 百分比。
+
+在超大规模数据库中，此列报告相对于仅限计算副本上本地存储的限制的数据 IOPS 利用率，特别是针对 RBPEX 和 `tempdb` 的 IO。 此列中的值 100% 表示资源管理限制了本地存储 IOPS。 如果这与性能问题相关，请优化工作负载以生成较少的 IO，或者提高数据库服务目标以提高资源管理最大数据 IOPS [限制](resource-limits-vcore-single-databases.md)。 对于 RBPEX 读取和写入的资源管理，系统会对单个 8 KB IO 进行计数，而不是计算可能由 SQL Server 数据库引擎发出的较大 IO。
+
+如上所述，不会在资源利用率视图或门户中报告针对远程页面服务器的数据 IO，但会在 [sys.dm_io_virtual_file_stats()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF 中进行报告。
 
 ## <a name="additional-resources"></a>其他资源
 
