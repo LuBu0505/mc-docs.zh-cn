@@ -1,23 +1,19 @@
 ---
 title: 从 SAP 表复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 SAP 表复制到支持的接收器数据存储。
-services: data-factory
 ms.author: v-jay
 author: WenJason
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-origin.date: 09/01/2019
-ms.date: 11/23/2020
-ms.openlocfilehash: ec2f3720fdac4b9708dd1e8bcfe95823790b2c31
-ms.sourcegitcommit: c89f1adcf403f5845e785064350136698eed15b8
+origin.date: 02/01/2021
+ms.date: 03/01/2021
+ms.openlocfilehash: 145ceaf789af09a6d2353b20343a0a06e66da213
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94680498"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697926"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP 表复制数据
 
@@ -26,7 +22,7 @@ ms.locfileid: "94680498"
 本文概述如何使用 Azure 数据工厂中的复制活动从 SAP 表复制数据。 有关详细信息，请参阅[复制活动概述](copy-activity-overview.md)。
 
 >[!TIP]
->若要了解 ADF 对 SAP 数据集成方案的总体支持，请参阅[使用 Azure 数据工厂进行 SAP 数据集成](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)白皮书，其中包含各 SAP 连接器的详细介绍、比较和指导。
+>若要了解 ADF 对 SAP 数据集成方案的总体支持，请参阅[使用 Azure 数据工厂进行 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中包含每个 SAP 连接器的详细介绍、比较和指导。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -52,6 +48,7 @@ ms.locfileid: "94680498"
 - 通过默认或自定义 RFC 检索数据。
 
 版本 7.01 或更高版本指 SAP NetWeaver 版本，而不是 SAP ECC 版本。 例如，SAP ECC 6.0 EHP 7 的 NetWeaver 版本一般 >=7.4。 如果你不确定自己的环境，请在 SAP 系统中执行以下步骤来确认版本：
+
 1. 使用 SAP GUI 连接到 SAP 系统。 
 2. 转到“系统” -> “状态” 。 
 3. 检查 SAP_BASIS 的版本，确保它等于或大于 701。  
@@ -102,7 +99,7 @@ SAP BW Open Hub 链接服务支持以下属性：
 | `sncQop` | 要应用的保护级别的 SNC 质量。<br/>当 `sncMode` 打开时适用。 <br/>允许的值为 `1`（身份验证）、`2`（完整性）、`3`（隐私）、`8`（默认值）和 `9`（最大值）。 | 否 |
 | `connectVia` | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如前面的[先决条件](#prerequisites)中所述，需要安装自承载集成运行时。 |是 |
 
-**示例 1：连接到 SAP 应用程序服务器**
+### <a name="example-1-connect-to-an-sap-application-server"></a>示例 1：连接到 SAP 应用程序服务器
 
 ```json
 {
@@ -294,6 +291,60 @@ SAP BW Open Hub 链接服务支持以下属性：
     }
 ]
 ```
+
+## <a name="join-sap-tables"></a>联接 SAP 表
+
+SAP 表连接器目前仅支持单个具有默认函数模块的表。 若要获取多个表的联接数据，可以按照以下步骤利用 SAP 表连接器中的 [customRfcReadTableFunctionModule](#copy-activity-properties) 属性。
+
+- [编写自定义函数模块](#create-custom-function-module)，该模块可将查询作为 OPTIONS，并应用你自己的逻辑来检索数据。
+- 对于“自定义函数模块”，请输入自定义函数模块的名称。
+- 对于“RFC 表选项”，请指定要作为 OPTIONS 提供给函数模块的表联接语句，例如“`<TABLE1>` INNER JOIN `<TABLE2>` ON COLUMN0”。
+
+下面是一个示例：
+
+![SAP 表联接](./media/connector-sap-table/sap-table-join.png) 
+
+>[!TIP]
+>还可考虑将联接数据聚合在 VIEW 中，这受 SAP 表连接器支持。
+>还可尝试将相关的表提取并载入到 Azure 上（例如，Azure 存储和 Azure SQL 数据库），然后使用数据流进行进一步联接或筛选。
+
+## <a name="create-custom-function-module"></a>创建自定义函数模块
+
+对于 SAP 表，我们目前支持复制源中的 [customRfcReadTableFunctionModule](#copy-activity-properties) 属性，这允许你利用自己的逻辑和流程数据。
+
+作为快速入门指南，以下是开始使用“自定义函数模块”的一些要求：
+
+- 定义：
+
+    ![定义](./media/connector-sap-table/custom-function-module-definition.png) 
+
+- 将数据导出到下表之一：
+
+    ![导出表 1](./media/connector-sap-table/export-table-1.png) 
+
+    ![导出表 2](./media/connector-sap-table/export-table-2.png)
+ 
+以下是有关 SAP 表连接器如何与自定义函数模块一起工作的说明：
+
+1. 通过 SAP NCO 与 SAP 服务器建立连接。
+
+1. 调用“自定义函数模块”，并将参数设置如下：
+
+    - QUERY_TABLE：在 ADF SAP 表数据集中设置的表名称； 
+    - 分隔符：在 ADF SAP 表源中设置的分隔符； 
+    - 行计数/选项/字段：在 ADF 表源中设置的行计数/聚合选项/字段。
+
+1. 获取结果并按以下方式分析数据：
+
+    1. 分析字段表中的值以获取架构。
+
+        ![分析字段中的值](./media/connector-sap-table/parse-values.png)
+
+    1. 获取输出表中的值，以查看哪个表包含这些值。
+
+        ![获取输出表中的值](./media/connector-sap-table/get-values.png)
+
+    1. 获取 OUT_TABLE 中的值，分析数据，然后将其写入接收器。
 
 ## <a name="data-type-mappings-for-an-sap-table"></a>SAP 表的数据类型映射
 

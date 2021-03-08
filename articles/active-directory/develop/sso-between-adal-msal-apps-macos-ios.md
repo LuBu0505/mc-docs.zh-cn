@@ -1,29 +1,26 @@
 ---
-title: ADAL 应用与 MSAL 应用 (iOS/macOS) 之间的 SSO - Microsoft 标识平台 | Azure
-description: ''
+title: ADAL 和 MSAL 应用 (iOS/macOS) 之间的 SSO | Azure
+titleSuffix: Microsoft identity platform
+description: 了解如何共享 ADAL 与 MSAL 应用之间的 SSO
 services: active-directory
-documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/06/2020
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 97e02ffe9585e04b0779638807325b5dcde8d741
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f18815ec42bde796b30feae3654d3671ca4a2d14
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77067692"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697634"
 ---
-# <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>如何：macOS 和 iOS 上的 ADAL 与 MSAL 应用之间的 SSO
+# <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>操作方法：macOS 和 iOS 上的 ADAL 与 MSAL 应用之间的 SSO
 
 适用于 iOS 的 Microsoft 身份验证库 (MSAL) 可与 [ADAL Objective-C](https://github.com/AzureAD/azure-activedirectory-library-for-objc) 共享应用程序之间的 SSO 状态。 你可以按照自己的步调将应用迁移到 MSAL，确保用户仍可受益于跨应用 SSO - 即使混用基于 ADAL 和基于 MSAL 的应用。
 
@@ -37,7 +34,7 @@ ms.locfileid: "77067692"
 
 ### <a name="cache-format"></a>缓存格式
 
-ADAL 2.7.x 可以读取 MSAL 缓存格式。 对于版本 ADAL 2.7.x 的跨应用 SSO，无需执行任何特殊操作。 但是，需要注意这两个库支持的帐户标识符的差异。
+ADAL 2.7.x 可以读取 MSAL 缓存格式。 对于版本 ADAL 2.7.x 的跨应用 SSO，无需执行任何特殊操作。 但是，请注意这两个库支持的帐户标识符的差异。
 
 ### <a name="account-identifier-differences"></a>帐户标识符差异
 
@@ -53,7 +50,7 @@ MSAL 和 ADAL 使用不同的帐户标识符。 ADAL 使用 UPN 作为主要帐�
 | --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
 | 可显示的标识符            | `username`                                                   | `userId`        | `userId`                       |
 | 不可显示的唯一标识符 | `identifier`                                                 | `homeAccountId` | 不适用                            |
-| 没有任何已知的帐户 ID               | 通过 `allAccounts:` 中的 `MSALPublicClientApplication` API 查询所有帐户 | 空值             | 不适用                            |
+| 没有任何已知的帐户 ID               | 通过 `allAccounts:` 中的 `MSALPublicClientApplication` API 查询所有帐户 | 不适用             | 不适用                            |
 
 这是提供这些标识符的 `MSALAccount` 接口：
 
@@ -289,5 +286,3 @@ do {
 ## <a name="next-steps"></a>后续步骤
 
 详细了解[身份验证流和应用程序方案](authentication-flows-app-scenarios.md)
-
-<!-- Update_Description: wording update -->

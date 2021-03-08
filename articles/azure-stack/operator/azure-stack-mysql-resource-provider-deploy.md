@@ -4,16 +4,16 @@ description: 了解如何将 MySQL 资源提供程序适配器和 MySQL 数据�
 author: WenJason
 ms.topic: article
 origin.date: 12/07/2020
-ms.date: 01/11/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: caoyang
 ms.lastreviewed: 12/07/2020
-ms.openlocfilehash: 3eeae434bfe9882d8f1d60a8762abd3b959dec17
-ms.sourcegitcommit: 3f54ab515b784c9973eb00a5c9b4afbf28a930a9
+ms.openlocfilehash: e1926204a166d41ebecd2b28ba346d14bd23fb5c
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894439"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697414"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack-hub"></a>在 Azure Stack Hub 上部署 MySQL 资源提供程序
 
@@ -119,7 +119,7 @@ _仅适用于集成系统安装_。 必须提供 [Azure Stack Hub 部署 PKI 要
 若要部署 MySQL 资源提供程序，请打开一个权限提升的 PowerShell（不是 PowerShell ISE）新窗口，并切换到解压缩后的 MySQL 资源提供程序二进制文件所在的目录。 
 
 > [!IMPORTANT]
-> 强烈建议在运行更新脚本之前，使用 Clear-AzureRmContext -Scope CurrentUser 和 Clear-AzureRmContext -Scope Process 清除缓存。
+> 强烈建议在运行部署或更新脚本之前，使用 Clear-AzureRmContext -Scope CurrentUser 和 Clear-AzureRmContext -Scope Process 清除缓存 。
 
 运行 **DeployMySqlProvider.ps1** 脚本，以完成以下任务：
 

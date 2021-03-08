@@ -1,15 +1,15 @@
 ---
 title: 为 Azure Functions 配置监视
 description: 了解如何将函数应用连接到 Application Insights 以进行监视，以及如何配置数据收集。
-ms.date: 01/27/2021
+ms.date: 02/26/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ff528337233eb83902e742172643f9749b4caa43
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 7071992cdda437ac365d926144e45e6211315d6d
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060110"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697322"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>如何为 Azure Functions 配置监视
 
@@ -228,6 +228,8 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 --resource-group <RESOURCE_GROUP_NAME> \
 --setting-names SCALE_CONTROLLER_LOGGING_ENABLED
 ```
+
+启用缩放控制器日志记录后，便可以[查询缩放控制器日志](analyze-telemetry-data.md#query-scale-controller-logs)。 
 
 ## <a name="enable-application-insights-integration"></a>启用 Application Insights 集成
 

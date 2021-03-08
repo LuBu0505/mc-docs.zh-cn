@@ -9,14 +9,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 02/23/2021
 ms.author: v-junlch
-ms.openlocfilehash: b9cc717d3fe9368f79ddebafa829dd1e43ff5099
-ms.sourcegitcommit: 7ad3bfc931ef1be197b8de2c061443be1cf732ef
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3ba3f70b547bf47470987d567ad88a95cb1b6220
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91245190"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696953"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>如何为给定 API 选择权限
 
@@ -28,5 +29,4 @@ ms.locfileid: "91245190"
 
 ## <a name="next-steps"></a>后续步骤
 
-[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
-
+[AzureAD Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html)

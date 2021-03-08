@@ -2,14 +2,14 @@
 title: 在 Application Insights 中分析 Azure Functions 遥测数据
 description: 本文介绍了如何查看和查询由 Azure Application Insights 收集并存储在其中的 Azure Functions 遥测数据。
 ms.topic: how-to
-ms.date: 01/12/2021
+ms.date: 02/26/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 7004fc38fb0e5d46fa3f56b9429f414aefe9d3d5
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: aac3124ba800f9db7bcd82b13e5b8580f254ac92
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195269"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697707"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>在 Application Insights 中分析 Azure Functions 遥测数据 
 
@@ -65,7 +65,7 @@ Azure Functions 与 Application Insights 集成，以用于更好地监视函数
 | **[失败](../azure-monitor/app/asp-net-exceptions.md)** |  基于函数失败和服务器异常来创建图表和警报。 操作名称是函数名称。 不显示依赖项中的失败，除非为依赖项实现了自定义遥测。 |
 | **[性能](../azure-monitor/app/performance-counters.md)** | 通过查看每个 Cloud 角色实例的资源利用率和吞吐量来分析性能问题。 如果要针对函数阻碍基础资源正常工作的情况进行调试，此性能数据会很有用。 |
 | **[指标](../azure-monitor/platform/metrics-charts.md)** | 创建基于指标的图表和警报。 指标包括函数调用次数、执行时间和成功率。 |
-| **[实时指标](../azure-monitor/app/live-stream.md)** | 随着指标数据的创建，近实时地查看指标数据。 |
+| **[实时指标：](../azure-monitor/app/live-stream.md)** | 随着指标数据的创建，近实时地查看指标数据。 |
 
 ## <a name="query-telemetry-data"></a>查询遥测数据
 
@@ -77,18 +77,18 @@ Azure Functions 与 Application Insights 集成，以用于更好地监视函数
 
 下面是一个查询示例，它显示过去 30 分钟内每个辅助角色的请求的分布。
 
-<pre>
+```kusto
 requests
 | where timestamp > ago(30m) 
 | summarize count() by cloud_RoleInstance, bin(timestamp, 1m)
 | render timechart
-</pre>
+```
 
 可用的表会显示在左侧的“架构”选项卡中。 可以在下表中找到由函数调用生成的数据：
 
 | 表 | 说明 |
 | ----- | ----------- |
-| **traces** | 由函数代码中的运行时和跟踪创建的日志。 |
+| **traces** | 由函数代码中的运行时、规模控制器和跟踪创建的日志。 |
 | **requests** | 一个请求用于一个函数调用。 |
 | **异常** | 由运行时引发的任何异常。 |
 | **customMetrics** | 成功和失败调用的计数、成功率和持续时间。 |
@@ -99,12 +99,38 @@ requests
 
 在每个表内，一些函数特定的数据位于 `customDimensions` 字段。  例如，以下查询检索所有具有日志级别 `Error` 的跟踪。
 
-<pre>
+```kusto
 traces 
 | where customDimensions.LogLevel == "Error"
-</pre>
+```
 
 运行时提供了 `customDimensions.LogLevel` 和 `customDimensions.Category` 字段。 可以在日志中提供在函数代码中编写的其他字段。 有关用 C# 编写的示例，请参阅 .NET 类库开发人员指南中的[结构化日志记录](functions-dotnet-class-library.md#structured-logging)。
+
+## <a name="query-scale-controller-logs"></a>查询规模控制器日志
+
+_此功能为预览版。_
+
+启用[规模控制器日志](configure-monitoring.md#configure-scale-controller-logs)和[ Application Insights 集成](configure-monitoring.md#enable-application-insights-integration)后，可以使用 Application Insights 日志搜索来查询已发出的规模控制器日志。 规模控制器日志保存在 ScaleControllerLogs 下的 `traces` 集合中。
+
+以下查询可用于在指定时间段内搜索当前函数应用的所有规模控制器日志：
+
+```kusto
+traces 
+| extend CustomDimensions = todynamic(tostring(customDimensions))
+| where CustomDimensions.Category == "ScaleControllerLogs"
+```
+
+以下查询对上一个查询进行了扩展，以显示如何只获取指示规模更改的日志：
+
+```kusto
+traces 
+| extend CustomDimensions = todynamic(tostring(customDimensions))
+| where CustomDimensions.Category == "ScaleControllerLogs"
+| where message == "Instance count changed"
+| extend Reason = CustomDimensions.Reason
+| extend PreviousInstanceCount = CustomDimensions.PreviousInstanceCount
+| extend NewInstanceCount = CustomDimensions.CurrentInstanceCount
+```
 
 ## <a name="consumption-plan-specific-metrics"></a>特定于消耗计划的指标
 
@@ -114,11 +140,22 @@ traces
 
 [!INCLUDE [functions-consumption-metrics-queries](../../includes/functions-consumption-metrics-queries.md)]
 
+## <a name="azure-monitor-metrics"></a>Azure Monitor 指标
+
+除了 Application Insights 收集的遥测数据外，还可以从 [Azure Monitor 指标](../azure-monitor/platform/data-platform-metrics.md)获取有关函数应用运行方式的数据。 除了通常[可用于 App 服务应用](../app-service/web-sites-monitor.md#understand-metrics)的指标外，还有两个特定于相关函数的指标：
+
+| 指标 | 说明 |
+| ---- | ---- |
+| **FunctionExecutionCount** | 函数执行计数表示函数应用已执行的次数。 这与函数在应用中运行的次数相关。 此指标目前不支持在 Linux 上运行的高级和专用（App 服务）计划。 |
+| **FunctionExecutionUnits** | 函数执行单位由执行次数和内存使用组成。  目前无法通过 Azure Monitor 获取内存数据这一指标。 但是，如果要优化应用的内存用量，可以使用 Application Insights 收集的性能计数器数据。 此指标目前不支持在 Linux 上运行的高级和专用（App 服务）计划。|
+
+若要详细了解如何使用 Application Insights 数据计算消耗计划的成本，请参阅[估计消耗计划成本](functions-consumption-costs.md)。 若要详细了解如何使用监视器资源管理器查看指标，请参阅 [Azure 指标资源管理器入门](../azure-monitor/platform/metrics-getting-started.md)。
+
+
 ## <a name="next-steps"></a>后续步骤
 
 请参阅以下文章，以详细了解如何监视 Azure Functions：
 
 + [监视 Azure Functions](functions-monitoring.md)
 + [如何配置对 Azure Functions 的监视](configure-monitoring.md)
-
 

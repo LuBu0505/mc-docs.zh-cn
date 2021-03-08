@@ -1,20 +1,18 @@
 ---
 title: 排查 Azure 数据工厂问题 | Microsoft Docs
 description: 了解如何排查 Azure 数据工厂中的外部控制活动问题。
-services: data-factory
 author: WenJason
 ms.service: data-factory
 ms.topic: troubleshooting
 origin.date: 12/30/2020
-ms.date: 01/25/2021
+ms.date: 03/01/2021
 ms.author: v-jay
-ms.reviewer: craigg
-ms.openlocfilehash: d76bf7f80eebe2f17b489b19aee07d80557ce21b
-ms.sourcegitcommit: e1edc6ef84dbbda1da4e0a42efa3fd62eee033d1
+ms.openlocfilehash: 7e7ed75ea90af301426ba73670b6464dee2ef8d6
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541840"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697753"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>排查 Azure 数据工厂问题
 
@@ -931,7 +929,7 @@ ms.locfileid: "98541840"
 
 ### <a name="activity-stuck-issue"></a>活动停滞问题
 
-如果观察到活动运行的时间比正常运行的时间长得多，并且几乎没有任何进展，则可能是停滞。 你可以尝试取消它，然后重试，看是否有帮助。 如果是复制活动，则可以参阅[排查复制活动的性能问题](copy-activity-performance-troubleshooting.md)一文，了解性能监视和故障排除。
+如果观察到活动运行的时间比正常运行的时间长得多，并且几乎没有任何进展，则可能是停滞。 你可以尝试取消它，然后重试，看是否有帮助。 如果是复制活动，则可以参阅[排查复制活动的性能问题](copy-activity-performance-troubleshooting.md)一文，了解性能监视和故障排除；如果是数据流，请参阅[映射数据流性能](concepts-data-flow-performance.md)和优化指南。
 
 ### <a name="payload-is-too-large"></a>有效负载太大
 

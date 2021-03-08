@@ -9,22 +9,22 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/06/2021
+ms.date: 02/22/2021
 ms.author: v-junlch
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b2108739a55d06cb88beeaeccf72343f25b0069d
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 9c92567f9228ec1001f465029b31f33f0f9a15b0
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022053"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697457"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft 标识平台应用程序身份验证证书凭据
 
 Microsoft 标识平台允许应用程序在任何可以使用客户端机密的地方使用其自己的凭据进行身份验证，例如，在 OAuth 2.0 [客户端凭据授权](v2-oauth2-client-creds-grant-flow.md)流和[代理](v2-oauth2-on-behalf-of-flow.md) (OBO) 流中。
 
-应用程序可用于身份验证的一种凭据形式是使用应用程序拥有的证书签名的 [JSON Web 令牌](./security-tokens.md#json-web-tokens-jwts-and-claims) (JWT) 断言。
+应用程序可用于身份验证的一种凭据形式是使用应用程序拥有的证书签名的 [JSON Web 令牌](./security-tokens.md#json-web-tokens-and-claims) (JWT) 断言。
 
 ## <a name="assertion-format"></a>断言格式
 
@@ -40,7 +40,7 @@ Microsoft 标识平台允许应用程序在任何可以使用客户端机密的�
 
 ### <a name="claims-payload"></a>声明（有效负载）
 
-声明类型 | 值 | 说明
+声明类型 | “值” | 说明
 ---------- | ---------- | ----------
 aud | `https://login.partner.microsoftonline.cn/{tenantId}/v2.0` | “aud”（受众）声明标识 JWT 预期的收件人（在这里为 Azure AD）。请参阅 [RFC 7519 的 4.1.3 节](https://tools.ietf.org/html/rfc7519#section-4.1.3)。  在本例中，该收件人为登录服务器 (login.partner.microsoftonline.cn)。
 exp | 1601519414 | “exp”（过期时间）声明指定只能在哪个时间（含）之前接受 JWT 的处理。 请参阅 [RFC 7519 的 4.1.4 节](https://tools.ietf.org/html/rfc7519#section-4.1.4)。  这样就可以在这之前一直使用断言，所以时间要短 - 最多在 `nbf` 之后 5 - 10 分钟。  Azure AD 当前未对 `exp` 时间设置限制。 
@@ -101,12 +101,12 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 ### <a name="updating-the-application-manifest"></a>更新应用程序清单
 
-拥有证书后需计算：
+获取证书后，计算以下值：
 
 - `$base64Thumbprint` - 证书哈希的 Base64 编码值
 - `$base64Value` - 证书原始数据的 Base64 编码值
 
-还需要提供 GUID 来标识应用程序清单中的密钥 (`$keyId`)。
+请提供 GUID 以标识应用程序清单中的密钥 (`$keyId`)。
 
 在客户端应用程序的 Azure 应用注册中：
 1. 选择“清单”以打开应用程序清单。
@@ -131,7 +131,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 客户端断言可以在任何使用客户端机密的地方使用。  例如，在[授权代码流](v2-oauth2-auth-code-flow.md)中，你可以传入一个 `client_secret` 来证明请求来自你的应用。 可以用 `client_assertion` 和 `client_assertion_type` 参数替换它。 
 
-| 参数 | Value | 说明|
+| 参数 | “值” | 说明|
 |-----------|-------|------------|
 |`client_assertion_type`|`urn:ietf:params:oauth:client-assertion-type:jwt-bearer`| 这是一个固定值，表示你正在使用证书凭据。 |
 |`client_assertion`| JWT |这是上面创建的 JWT。 |
@@ -141,4 +141,3 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 [MSAL.NET 库用单行代码处理这种情况](msal-net-client-assertions.md)。
 
 GitHub 上的[使用 Microsoft 标识平台的 .NET Core 守护程序控制台应用程序](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)代码示例展示了应用程序如何使用自己的凭据进行身份验证。 它还展示了如何使用 `New-SelfSignedCertificate` PowerShell cmdlet [创建自签名证书](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script)。 你还可以使用示例存储库中的[应用创建脚本](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md)来创建证书、计算指纹，以及进行其他操作。
-

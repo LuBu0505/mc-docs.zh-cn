@@ -1,5 +1,6 @@
 ---
-title: 将调用 Web API 的桌面应用移到生产环境 - Microsoft 标识平台 | Azure
+title: 将桌面应用调用 Web API 移至生产环境 | Azure
+titleSuffix: Microsoft identity platform
 description: 了解如何将调用 Web API 的桌面应用移到生产环境
 services: active-directory
 author: jmprieur
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/06/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: a5d78d30de99c3c43d921287fe16c67738d5ea74
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 5ddd9c2f39c72a438bd684f171ddf85e86ac14a2
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022520"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696669"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>用于调用 Web API 的桌面应用：移到生产环境
 
@@ -31,14 +32,14 @@ ms.locfileid: "98022520"
 > [!NOTE]
 > 获得多个资源的同意适用于 Microsoft 标识平台，但不适用于 Azure Active Directory (Azure AD) B2C。 Azure AD B2C 仅支持管理员同意，不支持用户同意。
 
-不能使用 Microsoft 标识平台 (v2.0) 终结点一次获取多个资源的令牌。 `scopes` 参数只能包含单个资源的范围。 可以使用 `extraScopesToConsent` 参数确保用户预先同意多个资源。
+不能使用 Microsoft 标识平台一次获取多个资源的令牌。 `scopes` 参数只能包含单个资源的范围。 可以使用 `extraScopesToConsent` 参数确保用户预先同意多个资源。
 
 例如，你可能有两个资源（每个资源有两个范围）：
 
 - `https://mytenant.partner.onmschina.cn/customerapi`，范围为 `customer.read` 和 `customer.write`
 - `https://mytenant.partner.onmschina.cn/vendorapi`，范围为 `vendor.read` 和 `vendor.write`
 
-在此示例中，请使用具有 `extraScopesToConsent` 参数的 `.WithAdditionalPromptToConsent` 修饰符。
+在此示例中，请使用具有 `extraScopesToConsent` 参数的 `.WithExtraScopesToConsent` 修饰符。
 
 例如：
 
@@ -95,7 +96,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 此调用为你获得第一个 Web API 的访问令牌。
 
-如果需要调用第二个 Web API，请调用 `AcquireTokenSilent` API。
+调用第二个 Web API 时，请调用 `AcquireTokenSilent` API。
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
@@ -103,5 +104,7 @@ AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync()
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+若要尝试其他示例，请参阅[桌面和移动公共客户端应用](sample-v2-code.md#desktop-and-mobile-public-client-apps)。
+
+
 

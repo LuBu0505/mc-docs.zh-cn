@@ -3,24 +3,24 @@ title: 了解管理员角色委派 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory 中的委托模型、示例和 角色安全性
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 02/25/2021
 ms.author: v-junlch
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 400ee289bd0cdb7a6f4970562f9a326f243985d6
-ms.sourcegitcommit: 33f2835ec41ca391eb9940edfcbab52888cf8a01
+ms.openlocfilehash: 43cb94d6597dcb1d5e09156dddd9be7f6f4046b5
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94326919"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697083"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>在 Azure Active Directory 中委托管理权限
 
@@ -38,7 +38,7 @@ ms.locfileid: "94326919"
 
 在 Azure AD 门户中，可以[查看任何角色的所有成员](manage-roles-portal.md)，以帮助快速检查部署和委托权限。
 
-如果想要委托 Azure 资源访问权限而不是 Azure AD 中的管理访问权限，请参阅[分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
+如果想要委托 Azure 资源访问权限而不是 Azure AD 中的管理访问权限，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="delegation-planning"></a>委托规划
 
@@ -115,4 +115,3 @@ Azure AD 提供了一篇综合性的指南来帮助你规划和执行 Azure AD �
 ## <a name="next-steps"></a>后续步骤
 
 有关 Azure AD 角色说明的参考，请参阅[在 Azure AD 中分配管理员角色](permissions-reference.md)
-

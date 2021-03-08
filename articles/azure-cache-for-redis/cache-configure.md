@@ -4,14 +4,14 @@ description: 了解 Azure Redis 缓存的默认 Redis 配置，并了解如何�
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
-ms.date: 12/28/2020
+ms.date: 02/18/2021
 ms.author: v-junlch
-ms.openlocfilehash: c549d11fc5afec0593d4293dc14cd17f8502d9ad
-ms.sourcegitcommit: a37f80e7abcf3e42859d6ff73abf566efed783da
+ms.openlocfilehash: f845c8929d986810a68e485a97f6763589537ab9
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829446"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697592"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何配置 Azure Redis 缓存
 本主题介绍可用于 Azure Redis 缓存实例的配置。 本主题还介绍了适用于 Azure Redis 缓存实例的默认 Redis 服务器配置。
@@ -236,10 +236,7 @@ Redis 密钥空间通知是在“高级设置”  边栏选项卡上配置的。
 
 如果要指定维护时段，请勾选合适的日期，并指定每天的维护时段开始时间，最后再单击“确定”  。 维护时段使用 UTC 时间。
 
-> [!IMPORTANT]
-> “计划更新”  功能仅适用于高级层缓存。 有关详细信息和说明，请参阅 [Azure Redis 缓存管理 - 计划更新](cache-administration.md#schedule-updates)。
->
->
+有关详细信息和说明，请参阅 [Azure Cache for Redis 管理 - 计划更新](cache-administration.md#schedule-updates)
 
 ### <a name="geo-replication"></a>异地复制
 
@@ -506,4 +503,3 @@ shard1>get myKey
 
 ## <a name="next-steps"></a>后续步骤
 * 有关使用 Redis 命令的详细信息，请参阅[如何运行 Redis 命令？](cache-development-faq.md#how-can-i-run-redis-commands)
-

@@ -3,13 +3,13 @@ title: 监视和日志记录 - Azure
 description: 本文概述了 IoT Edge 上的实时视频分析中的监视和日志记录。
 ms.topic: reference
 origin.date: 04/27/2020
-ms.date: 01/18/2021
-ms.openlocfilehash: 99209e8df47cf1125b9a71352159ee6cdb0f3f1f
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 03/08/2021
+ms.openlocfilehash: f7a03460e62debea482d270dd7af0445ecf5acd1
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230283"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697139"
 ---
 # <a name="monitoring-and-logging"></a>监视和日志记录
 
@@ -255,14 +255,14 @@ Fragments(video=143039375031270,format=m3u8-aapl)
       urls = ["http://edgeHub:9600/metrics", "http://edgeAgent:9600/metrics", "http://{LVA_EDGE_MODULE_NAME}:9600/metrics"]
 
     [[outputs.azure_monitor]]
-      namespace_prefix = ""
+      namespace_prefix = "lvaEdge"
       region = "westus"
       resource_id = "/subscriptions/{SUBSCRIPTON_ID}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.Devices/IotHubs/{IOT_HUB_NAME}"
     ```
     > [!IMPORTANT]
     > 请务必替换 .toml 文件中的变量。 变量由大括号 (`{}`) 表示。
 
-1. 在同一文件夹中创建包含以下命令的 `.dockerfile`：
+1. 在同一文件夹中创建包含以下命令的 Dockerfile：
     ```
         FROM telegraf:1.15.3-alpine
         COPY telegraf.toml /etc/telegraf/telegraf.conf
@@ -270,7 +270,7 @@ Fragments(video=143039375031270,format=m3u8-aapl)
 
 1. 使用 Docker CLI 命令生成 Docker 文件，并将该映像发布到 Azure 容器注册表。
     
-   若要详细了解如何使用 Docker CLI 将映像推送到容器注册表，请参阅[推送和拉取 Docker 映像](/container-registry/container-registry-get-started-docker-cli)。 有关 Azure 容器注册表的其他信息，请参阅[文档](/container-registry/)。
+   若要详细了解如何使用 Docker CLI 将映像推送到容器注册表，请参阅[推送和拉取 Docker 映像](../../container-registry/container-registry-get-started-docker-cli.md)。 有关 Azure 容器注册表的其他信息，请参阅[文档](../../container-registry/index.yml)。
 
 
 1. 推送到 Azure 容器注册表以后，请将以下节点添加到部署清单文件：
@@ -312,6 +312,21 @@ Fragments(video=143039375031270,format=m3u8-aapl)
 
    这种情况下，请在 Azure 门户中转到 IoT 中心，并在左窗格中选择“指标”。 你应会在那里看到指标。
 
+使用 Prometheus 和[日志分析](/azure-monitor/log-query/log-analytics-tutorial) 可以生成[监视指标](/azure-monitor/platform/metrics-supported)，例如 CPUPercent、MemoryUsedPercent 等。使用 Kusto 查询语言可以编写如下查询，并获得 IoT 边缘模块使用的 CPU 百分比。
+```kusto
+let cpu_metrics = promMetrics_CL
+| where Name_s == "edgeAgent_used_cpu_percent"
+| extend dimensions = parse_json(Tags_s)
+| extend module_name = tostring(dimensions.module_name)
+| where module_name in ("lvaEdge","yolov3","tinyyolov3")
+| summarize cpu_percent = avg(Value_d) by bin(TimeGenerated, 5s), module_name;
+cpu_metrics
+| summarize cpu_percent = sum(cpu_percent) by TimeGenerated
+| extend module_name = "Total"
+| union cpu_metrics
+```
+
+[ ![示意图显示使用 Kusto 查询的指标。](./media/telemetry-schema/metrics.png)](./media/telemetry-schema/metrics.png#lightbox)
 ## <a name="logging"></a>日志记录
 
 与其他 IoT Edge 模块一样，你也可以[检查边缘设备上的容器日志](../../iot-edge/troubleshoot.md#check-container-logs-for-issues)。 可以通过使用[以下模块孪生](module-twin-configuration-schema.md)属性来配置写入到日志中的信息：

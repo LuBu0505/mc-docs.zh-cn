@@ -4,14 +4,14 @@ description: 本文概述了如何在 Azure 自动化中处理 runbook。
 services: automation
 ms.subservice: process-automation
 origin.date: 10/06/2020
-ms.date: 11/02/2020
+ms.date: 02/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 13ae920fa6dc1e46877880b5e769ed2a1ea4fbb1
-ms.sourcegitcommit: ca5e5792f3c60aab406b7ddbd6f6fccc4280c57e
+ms.openlocfilehash: ad04a047fdd5af6c069e4b4018abe2955d3b7d87
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92750211"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697732"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>在 Azure 自动化中执行 Runbook
 
@@ -53,7 +53,7 @@ Azure 自动化中的 runbook 可以在 Azure 沙盒上运行，也可以在[混
 |与本地服务进行交互|混合 Runbook 辅助角色|直接访问主机，或其他云环境或本地环境中的资源。 |
 |需要第三方软件和可执行文件|混合 Runbook 辅助角色|管理操作系统并且可以安装软件。|
 |运行资源密集型脚本|混合 Runbook 辅助角色| Azure 沙盒具有[资源限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)。|
-|使用具有特定要求的模块| 混合 Runbook 辅助角色|一些示例如下：</br> WinSCP - winscp.exe 上的依赖项 </br> IIS 管理 - 用于启用或管理 IIS 的依赖项|
+|使用具有特定要求的模块| 混合 Runbook 辅助角色|下面是一些示例：</br> WinSCP - winscp.exe 上的依赖项 </br> IIS 管理 - 用于启用或管理 IIS 的依赖项|
 |使用安装程序安装模块|混合 Runbook 辅助角色|沙盒模块必须支持复制。|
 |使用需要 4.7.2 以外版本的 .NET Framework 的 runbook 或模块|混合 Runbook 辅助角色|Azure 沙盒支持 .NET Framework 4.7.2，并且不支持升级到其他版本。|
 |运行需要提升的脚本|混合 Runbook 辅助角色|沙盒不允许提升。 借助混合 Runbook 辅助角色，可以在运行需要提升的命令时关闭 UAC 并使用 [Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command)。|
@@ -71,7 +71,7 @@ Runbook 必须包含用于处理[资源](https://docs.microsoft.com/rest/api/res
 
 ## <a name="security"></a>安全性
 
-Azure 自动化使用 [Azure 安全中 (ASC)](/security-center/) 保护你的资源以及检测 Linux 系统中的漏洞。 无论资源是否在 Azure 中，均可跨工作负荷提供安全性。 请参阅 [Azure 自动化中的身份验证简介](automation-security-overview.md)。
+Azure 自动化使用 [Azure 安全中 (ASC)](../security-center/security-center-introduction.md) 保护你的资源以及检测 Linux 系统中的漏洞。 无论资源是否在 Azure 中，均可跨工作负荷提供安全性。 请参阅 [Azure 自动化中的身份验证简介](automation-security-overview.md)。
 
 ASC 对可以在 VM 上运行任何签名或未签名脚本的用户施加限制。 如果你是具有 VM 根访问权限的用户，则必须使用数字签名显式配置计算机或将其关闭。 否则，只有在创建自动化帐户并启用适当的功能之后，才能通过运行脚本来应用操作系统更新。
 
@@ -108,7 +108,7 @@ Log Analytics 代理和 nxautomation 帐户的可用日志如下：
 
 ## <a name="runbook-permissions"></a>Runbook 权限
 
-Runbook 需要通过凭据向 Azure 进行身份验证的权限。 请参阅[管理 Azure 自动化运行方式帐户](manage-runas-account.md)。
+Runbook 需要通过凭据向 Azure 进行身份验证的权限。 请参阅 [Azure 自动化身份验证概述](automation-security-overview.md)。
 
 ## <a name="modules"></a>模块
 
@@ -135,8 +135,9 @@ Azure 自动化支持从同一自动化帐户运行作业的环境。 一个 run
 
 | 状态 | 说明 |
 |:--- |:--- |
+| 激活 |正在激活作业。 |
 | 已完成 |作业已成功完成。 |
-| 失败 |图形或 PowerShell 工作流 runbook 未能编译。 PowerShell runbook 未能启动或作业遇到异常。 请参阅 [Azure 自动化 runbook 类型](automation-runbook-types.md)。|
+| 已失败 |图形或 PowerShell 工作流 runbook 未能编译。 PowerShell runbook 未能启动或作业遇到异常。 请参阅 [Azure 自动化 runbook 类型](automation-runbook-types.md)。|
 | 失败，正在等待资源 |作业失败，因为它已达到[公平份额](#fair-share)限制三次，并且每次都从同一个检查点或 Runbook 开始处启动。 |
 | 已排队 |作业正在等待自动化辅助角色上的资源变得可用，以便其能够启动。 |
 | 正在恢复 |系统正在恢复已暂停的作业。 |
@@ -233,6 +234,6 @@ Azure 沙盒中的 runbook 作业无法访问任何设备或应用程序特征�
 ## <a name="next-steps"></a>后续步骤
 
 * 若要开始使用 PowerShell Runbook，请参阅[教程：创建 PowerShell Runbook](learn/automation-tutorial-runbook-textual-powershell.md)。
-* 若要使用 Runbook，请参阅[在 Azure 自动化中管理 Runbook](manage-runbooks.md)。
+* 若要使用 runbook，请参阅[在 Azure 自动化中管理 runbook](manage-runbooks.md)。
 * 有关 PowerShell 的详细信息，请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/scripting/overview)。
 * * 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation#automation)。

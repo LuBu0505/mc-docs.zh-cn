@@ -1,5 +1,5 @@
 ---
-title: 媒体保留单位 - Azure | Microsoft Docs
+title: 媒体保留单位 - Azure
 description: 媒体保留单位可用于缩放媒体处理能力并决定媒体处理任务的速度。
 services: media-services
 documentationcenter: ''
@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 origin.date: 09/30/2020
-ms.date: 11/30/2020
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.openlocfilehash: 684a0c2eff644233474f67762b9c68d7e35f8d85
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 94d517fa805e1bd1c340942cd730f3c8d12b2452
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301012"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697142"
 ---
 # <a name="media-reserved-units"></a>媒体预留单位
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-使用 Azure 媒体服务，可以通过管理媒体保留单位 (MRU) 来缩放媒体处理能力。 MRU 提供对媒体进行编码所需的更多计算能力。 MRU 的数量决定了处理媒体任务的速度，以及在一个帐户中可并发处理的媒体任务数。 例如，如果帐户具有 5 个 MRU，并且有要处理的任务，就可以同时运行 5 个媒体任务。 其余任何任务将排队，并且在运行的任务完成后可被按顺序选择进行处理。 你预配的每个 MRU 都将导致产能预留，但不会为你提供专用资源。 在需求量极高的时候，你的所有 MRU 可能不会立即开始处理。
+使用 Azure 媒体服务，可以通过管理媒体保留单位 (MRU) 来缩放媒体处理能力。 MRU 提供编码媒体所需的额外计算能力。 MRU 的数量决定了处理媒体任务的速度，以及在帐户中可并发处理的媒体任务数。 例如，如果帐户具有 5 个 MRU，并且有要处理的任务，就可以同时运行 5 个媒体任务。 其余任何任务将排队，并且在运行的任务完成后可被选择按顺序进行处理。 你预配的每个 MRU 都将导致产能预留，但不会为你提供专用资源。 在需求量极高的时候，你的所有 MRU 可能不会立即开始处理。
 
 任务是对资产执行的单个操作，例如自适应流式处理编码。 提交作业时，媒体服务负责将作业分解为单个的操作（即任务），然后这些操作将与单独的 MRU 相关联。
 
@@ -40,7 +40,7 @@ ms.locfileid: "96301012"
 | **S3**|单比特率和多比特率编码。<br/>全高清和 4K 分辨率视频。 对时间敏感，更快的编码周转。|预设为“H264 单比特率 1080p”的编码大约需要 3 分钟。<br/><br/>预设为“H264 多比特率 1080p”的编码大约需要 8 分钟。|
 
 > [!NOTE]
-> 如果你没有为帐户预配 MRU，则将以 S1 MRU 的性能处理你的媒体任务，并且将按顺序选取任务。 处理能力未被预留，因此完成一个任务和开始下一个任务之间的等待时间将取决于系统中资源的可用性。
+> 如果你没有为帐户预配 MRU，则将以 S1 MRU 的性能处理你的媒体任务，并且将按顺序选取任务。 没有预留处理容量，因此完成一个任务和开始下一个任务之间的等待时间将取决于系统中资源的可用性。
 
 ## <a name="considerations"></a>注意事项
 
@@ -51,7 +51,8 @@ ms.locfileid: "96301012"
 计费金额基于在帐户中预配的媒体保留单位的分钟数（无论是否有任何作业正在运行）。 有关详细说明，请参阅[媒体服务定价](https://azure.cn/pricing/details/media-services/)页的“常见问题”部分。
 
 ## <a name="next-step"></a>后续步骤
-[使用 CLI 缩放媒体预留单位](media-reserved-units-cli-how-to.md)
+[使用 CLI 缩放媒体保留单位](media-reserved-units-cli-how-to.md)
+[分析视频](analyze-videos-tutorial-with-api.md)
 
 ## <a name="see-also"></a>另请参阅
 

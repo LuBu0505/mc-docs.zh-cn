@@ -3,17 +3,16 @@ title: Common Data Model 格式
 description: 使用 Common Data Model 元数据系统转换数据
 author: WenJason
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-origin.date: 12/07/2020
-ms.date: 02/01/2021
+origin.date: 02/04/2021
+ms.date: 03/01/2021
 ms.author: v-jay
-ms.openlocfilehash: 2de95aa1c1b9c16c5d1cd4b1d5378eb2ff97c544
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 4dee49554078426d37bfdb164c01adfb92d0f59c
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060704"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697260"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure 数据工厂中的 Common Data Model 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -41,14 +40,14 @@ Common Data Model 作为映射数据流中的[内联数据集](data-flow-source.
 | 根位置：文件夹路径 | CDM 文件夹的根文件夹位置 | 是 | 字符串 | folderPath |
 | 清单文件：实体路径 | 根文件夹中实体的文件夹路径 | 否 | 字符串 | entityPath |
 | 清单文件：清单名称 | 清单文件名称。 默认值为“default”  | 否 | 字符串 | manifestName |
-| 按上次修改时间筛选 | 选择根据文件上次更改的时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore | 
+| 按上次修改时间筛选 | 选择根据上次更改时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore | 
 | 架构链接服务 | 语料库所在的链接服务 | 是（如果使用清单） | `'adlsgen2'` 或 `'github'` | corpusStore | 
 | 实体引用容器 | 容器语料库位于其中 | 是（如果使用 ADLS Gen2 中的清单和语料库） | 字符串 | adlsgen2_fileSystem |
 | 实体引用存储库 | GitHub 存储库名称 | 是（如果使用 GitHub 中的清单和语料库） | 字符串 | github_repository |
 | 实体引用分支 | GitHub 存储库分支 | 是（如果使用 GitHub 中的清单和语料库） | 字符串 |  github_branch |
 | 语料库文件夹 | 语料库的根位置 | 是（如果使用清单） | 字符串 | corpusPath |
 | 语料库实体 | 实体引用的路径 | 是 | 字符串 | 实体 |
-| 允许找不到文件 | 如果为 true，则在找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
+| 允许找不到文件 | 如果为 true，则找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
 
 在源和接收器转换过程中选择“实体引用”时，可从以下三个选项中选择实体引用的位置：
 
@@ -86,6 +85,7 @@ CDM 仅作为内联数据集提供，且默认情况下没有关联架构。 若
 2. 查找 partitions.Location 属性 
 3. 将“blob.core.chinacloudapi.cn”更改为“dfs.core.chinacloudapi.cn”
 4. 将 URL 中的任何“% 2F”编码修正为“/”
+5. 如果使用 ADF 数据流，则必须将分区文件路径中的特殊字符替换为字母数字值，或切换到 Synapse 数据流
 
 ### <a name="cdm-source-data-flow-script-example"></a>CDM 源数据流脚本示例
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 将内容上传到 Azure 媒体服务资产
+title: 将内容上传到资产 CLI
 description: 本主题中的 Azure CLI 脚本演示如何创建媒体服务资产供上传内容使用。
 services: media-services
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.tgt_pltfrm: multiple
 ms.workload: na
-origin.date: 08/31/2020
-ms.date: 09/28/2020
+origin.date: 02/16/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 02543b36c5815dacff36c6e3d07ad4b3ba6640a6
-ms.sourcegitcommit: 7ad3bfc931ef1be197b8de2c061443be1cf732ef
+ms.openlocfilehash: 32125f04c6dee90935414570c915100bb2e2db56
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91245648"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696844"
 ---
 # <a name="create-an-asset"></a>创建资产
 
@@ -97,10 +97,6 @@ read continue
 ### <a name="using-curl"></a>使用 cURL
 
 [!INCLUDE [media-services-cli-instructions.md](./includes/task-create-asset-curl.md)]
-
-## <a name="using-postman"></a>使用 Postman
-
-[!INCLUDE[Create an asset with Postman](./includes/task-create-asset-postman.md)]
 
 ## <a name="net"></a>[.NET](#tab/net/)
 

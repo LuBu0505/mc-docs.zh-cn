@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/02/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: 429fa94eb8f798147baa072374391af229d5dfe8
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: 49e9d7bbe28fdf66428309c43b3bf0d4e0ff2bc1
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540836"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697028"
 ---
 # <a name="protected-web-api-code-configuration"></a>受保护的 Web API：代码配置
 
-若要配置受保护 Web API 的代码，需要了解：
+若要配置受保护 Web API 的代码，请了解：
 
 - API 受保护的定义是什么。
 - 如何配置持有者令牌。
@@ -55,7 +55,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 ```
 
 > [!IMPORTANT]
-> 客户端应用程序向 Web API 的 Microsoft 标识平台终结点请求持有者令牌。  Web API 是唯一应该验证令牌并查看其中包含的声明的应用程序。 客户端应用永远不会尝试检查令牌中的声明。
+> 客户端应用程序向 Web API 的 Microsoft 标识平台请求持有者令牌。 Web API 是唯一应该验证令牌并查看其中包含的声明的应用程序。 客户端应用永远不会尝试检查令牌中的声明。
 >
 > 将来，Web API 可能要求加密令牌。 这项要求会阻止可以查看访问令牌的客户端应用进行访问。
 
@@ -139,7 +139,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- 目前，ASP.NET Core 模板会创建可将你的组织或任何组织中的用户登录的 Azure Active Directory (Azure AD) Web API。 可以将模板更改为使用 Microsoft 身份平台终结点，方法是使用 [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) 替换 Startup.cs 中的代码：
+ 目前，ASP.NET Core 模板会创建可将你的组织或任何组织中的用户登录的 Azure Active Directory (Azure AD) Web API。 可以将模板更改为使用 Microsoft 标识平台，方法是使用 [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) 替换 Startup.cs 中的代码：
 
 ```csharp
 using Microsoft.Identity.Web;

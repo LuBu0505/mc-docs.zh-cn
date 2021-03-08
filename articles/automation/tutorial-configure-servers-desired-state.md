@@ -5,13 +5,13 @@ services: automation
 ms.subservice: dsc
 ms.topic: conceptual
 origin.date: 08/08/2018
-ms.date: 08/10/2020
-ms.openlocfilehash: b1cacf3d9fc34f3cb6f1f00f71650819a2af562b
-ms.sourcegitcommit: e6b216b180734783219378410e13192e314a4497
+ms.date: 02/22/2021
+ms.openlocfilehash: 55a969902f07eed93e7dbb601d8b6aa2b787a275
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87788299"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696568"
 ---
 # <a name="configure-machines-to-a-desired-state"></a>将计算机配置为所需状态
 
@@ -28,7 +28,7 @@ ms.locfileid: "87788299"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 一个 Azure 自动化帐户。 有关如何创建 Azure 自动化运行方式帐户的说明，请参阅 [Azure 运行方式帐户](./manage-runas-account.md)。
+- 一个 Azure 自动化帐户。 若要了解有关 Azure 自动化帐户及其要求的更多信息，请参阅[自动化帐户身份验证概述](./automation-security-overview.md)。
 - 一个运行 Windows Server 2008 R2 或更高版本的 Azure 资源管理器 VM（非经典）。 如需创建 VM 的说明，请参阅[在 Azure 门户中创建第一个 Windows 虚拟机](../virtual-machines/windows/quick-create-portal.md)。
 - Azure PowerShell 模块 3.6 版或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)。
 - 熟悉所需状态配置 (DSC)。 有关 DSC 文档的信息，请参阅 [Windows PowerShell Desired State Configuration 概述](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview)。
@@ -43,14 +43,13 @@ Azure Automation State Configuration 支持使用[部分配置](https://docs.mic
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) cmdlet 登录到 Azure 订阅，然后按屏幕说明操作。
+使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount) cmdlet 登录到 Azure 订阅，然后按屏幕说明操作。
 
 ```powershell
 Connect-AzAccount -Environment AzureChinaCloud
 ```
 
 ## <a name="create-and-upload-a-configuration-to-azure-automation"></a>创建配置并将配置上传到 Azure 自动化
-
 
 在文本编辑器中键入以下内容，并在本地将文件保存为 TestConfig.ps1。
 
@@ -69,7 +68,7 @@ configuration TestConfig {
 > [!NOTE]
 > 在需要导入多个提供 DSC 资源的模块的更高级方案中，请确保每个模块在配置中具有唯一 `Import-DscResource` 行。
 
-调用 [Import-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/Import-AzAutomationDscConfiguration?view=azps-3.7.0) cmdlet，将配置上传到自动化帐户。
+调用 [Import-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/Import-AzAutomationDscConfiguration) cmdlet，将配置上传到自动化帐户。
 
 ```powershell
  Import-AzAutomationDscConfiguration -SourcePath 'C:\DscConfigs\TestConfig.ps1' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -Published
@@ -79,7 +78,7 @@ configuration TestConfig {
 
 必须先将 DSC 配置编译为节点配置，然后才能将它分配给节点。 参阅 [DSC 配置](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations)。
 
-调用 [Start-AzAutomationDscCompilationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationDscCompilationJob?view=azps-3.7.0) cmdlet，将 `TestConfig` 配置编译为自动化帐户中名为 `TestConfig.WebServer` 的节点配置。
+调用 [Start-AzAutomationDscCompilationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationDscCompilationJob) cmdlet，将 `TestConfig` 配置编译为自动化帐户中名为 `TestConfig.WebServer` 的节点配置。
 
 ```powershell
 Start-AzAutomationDscCompilationJob -ConfigurationName 'TestConfig' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount'
@@ -89,7 +88,7 @@ Start-AzAutomationDscCompilationJob -ConfigurationName 'TestConfig' -ResourceGro
 
 可以使用 Azure 自动化状态配置来管理 Azure VM（包括经典 VM 和资源管理器 VM）、本地 VM、Linux 计算机、AWS VM，以及本地物理机。 在本主题中，我们介绍如何仅注册 Azure 资源管理器 VM。 有关注册其他类型的计算机的信息，请参阅[登记由 Azure 自动化状态配置管理的计算机](automation-dsc-onboarding.md)。
 
-调用 [Register-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/Az.Automation/Register-AzAutomationDscNode?view=azps-3.7.0) cmdlet，将 VM 作为托管节点注册到 Azure Automation State Configuration。 
+调用 [Register-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/Az.Automation/Register-AzAutomationDscNode) cmdlet，将 VM 作为托管节点注册到 Azure Automation State Configuration。 
 
 ```powershell
 Register-AzAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm'
@@ -126,7 +125,7 @@ Set-AzAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountN
 
 ## <a name="check-the-compliance-status-of-a-managed-node"></a>检查托管节点的符合性状态
 
-可通过使用 [Get-AzAutomationDscNodeReport](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationDscNodeReport?view=azps-3.7.0) cmdlet 来获取有关托管节点符合性状态的报告。
+可通过使用 [Get-AzAutomationDscNodeReport](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationDscNodeReport) cmdlet 来获取有关托管节点符合性状态的报告。
 
 ```powershell
 # Get the ID of the DSC node
@@ -147,7 +146,7 @@ $reports[0]
 > [!NOTE]
 > 要从服务中注销节点，只需设置本地 Configuration Manager 设置，以便节点不再连接到服务。
 > 这不会影响当前应用于节点的配置。
-> 要删除当前配置，请使用 [PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) 或删除本地配置文件（这是 Linux 节点的唯一选项）。
+> 要删除当前配置，请使用 [PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument) 或删除本地配置文件（这是 Linux 节点的唯一选项）。
 
 ### <a name="azure-portal"></a>Azure 门户
 
@@ -158,13 +157,13 @@ $reports[0]
 
 ### <a name="powershell"></a>PowerShell
 
-要使用 PowerShell 从 Azure Automation State Configuration 服务中注销节点，请按照 cmdlet [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0) 的文档进行操作。
+要使用 PowerShell 从 Azure Automation State Configuration 服务中注销节点，请按照 cmdlet [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode) 的文档进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关入门信息，请参阅 [ 入门](automation-dsc-getting-started.md)。
+- 有关入门信息，请参阅 [Azure Automation State Configuration 入门](automation-dsc-getting-started.md)。
 - 要了解如何启用节点，请参阅[启用 Azure Automation State Configuration](automation-dsc-onboarding.md)。
 - 若要了解如何编译 DSC 配置，以便将它们分配给目标节点，请参阅[在 Azure Automation State Configuration 中编译 DSC 配置](automation-dsc-compile.md)。
 - 若要查看在持续部署管道中使用 Azure Automation State Configuration 的示例，请参阅[使用 Chocolatey 设置持续部署](automation-dsc-cd-chocolatey.md)。
 - 有关定价信息，请参阅 [Azure Automation State Configuration 定价](https://azure.cn/pricing/details/automation/)。
-- 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+- 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation)。

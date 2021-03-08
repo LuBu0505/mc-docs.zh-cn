@@ -3,21 +3,21 @@ title: 使用 Azure AD 配置最终用户如何对应用程序表示同意
 description: 对于将有权访问你组织数据的应用程序，了解管理用户如何及何时对这些应用表示同意的方式。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 02/26/2021
 ms.author: v-junlch
 ms.reviewer: arvindh, luleon, phsignor
-ms.custom: contperfq2
-ms.openlocfilehash: 3c517c3217e24c5a922ff28bb600dea43e54bdc6
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 4af0876e644fa4fc3e0cfa79de5391393386a673
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004090"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697340"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>配置最终用户如何对应用程序表示同意
 
@@ -48,7 +48,7 @@ ms.locfileid: "97004090"
 
 若要通过 Azure 门户配置用户同意设置：
 
-1. 以[全局管理员](../roles/permissions-reference.md#global-administrator--company-administrator)的身份登录 [Azure 门户](https://portal.azure.cn)。
+1. 以[全局管理员](../roles/permissions-reference.md#global-administrator)的身份登录 [Azure 门户](https://portal.azure.cn)。
 1. 选择“Azure Active Directory” > “企业应用程序” > “同意和权限” > “用户同意设置”   。
 1. 在“针对应用程序的用户同意”下，选择想要为所有用户配置的同意设置。
 1. 选择“保存”以保存设置。
@@ -179,5 +179,4 @@ Set-AzureADMSAuthorizationPolicy `
 * [Microsoft 标识平台中的权限和许可](../develop/v2-permissions-and-consent.md)
 
 获取帮助或查找问题的答案：
-* [StackOverflow 上的 Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)
-
+* [Microsoft Q&A 上的 Azure AD。](https://docs.microsoft.com/answers/topics/azure-active-directory.html)

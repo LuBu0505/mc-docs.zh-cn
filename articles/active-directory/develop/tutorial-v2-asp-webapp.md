@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 02/02/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 7686de6ec7732954003860dc397cf15594e6d4d8
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: dbafbf13a797a397fead6385dc9e8c4f023c1d46
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540823"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697207"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>教程：向 ASP.NET Web 应用添加 Microsoft 登录功能
 
@@ -119,7 +119,7 @@ ms.locfileid: "99540823"
         // Tenant is the tenant ID (e.g. contoso.partner.onmschina.cn, or 'common' for multi-tenant)
         static string tenant = System.Configuration.ConfigurationManager.AppSettings["Tenant"];
 
-        // Authority is the URL for authority, composed by Microsoft identity platform endpoint and the tenant name (e.g. https://login.partner.microsoftonline.cn/contoso.partner.onmschina.cn/v2.0)
+        // Authority is the URL for authority, composed of the Microsoft identity platform and the tenant name (e.g. https://login.partner.microsoftonline.cn/contoso.partner.onmschina.cn/v2.0)
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
@@ -361,7 +361,7 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
 
 若要快速注册应用程序，请执行以下步骤：
 
-1. 转到 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入门体验。  
+1. 转到 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">Azure 门户 - 应用注册</a>快速入门体验。  
 1. 输入应用程序的名称并选择“注册”。
 1. 遵照说明下载内容，并单击一下自动配置新应用程序。
 
@@ -375,7 +375,7 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
    1. 在 Visual Studio 中右键单击该项目，然后选择“属性”和“Web”选项卡 。在“服务器”部分，将“项目 URL”设置更改为“SSL URL”  。
    1. 复制 SSL URL。 需在下一步将此 URL 添加到注册门户的重定向 URL 列表。<br/><br/>![项目属性](./media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
    
-1. 登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册” > “新建注册”  。
@@ -383,7 +383,7 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
 1. 将在步骤 1 中从 Visual Studio 复制的 SSL URL（例如 `https://localhost:44368/`）添加到“重定向 URI”。
 1. 选择“注册”  。
 1. 在“管理”下，选择“身份验证”。 
-1. 在“隐式授权”部分中，选择“ID 令牌”，然后选择“保存”  。
+1. 在“隐式授权和混合流”部分，选择“ID 令牌”，然后选择“保存”  。
 1. 在根文件夹中的 web.config 文件内的 `configuration\appSettings` 节下添加以下内容：
 
     ```xml
@@ -406,14 +406,13 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
 <br/><br/>
 ![登录 Microsoft 帐户](./media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
-#### <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
-
-与 Microsoft 标识平台集成的应用程序遵循的授权模型可让用户和管理员控制数据的访问方式。 在用户向 Microsoft 标识平台进行身份验证以访问此应用程序后，系统会提示他们许可应用程序请求的权限（“查看你的基本个人资料”和“保留你已授权访问的数据的访问权限”）。 接受这些权限后，用户将转到应用程序结果。 但是，如果出现以下情况之一，则系统可能会向用户提示“需要管理员许可”页：
+#### <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft 标识平台中的权限和许可
+与 Microsoft 标识平台集成的应用程序遵循的授权模型可让用户和管理员控制数据的访问方式。 在用户对 Microsoft 标识平台进行身份验证以访问此应用程序后，系统会提示他们许可应用程序请求的权限（“查看你的基本个人资料”和“保留你已授权访问的数据的访问权限”）。 接受这些权限后，用户将转到应用程序结果。 但是，如果出现以下情况之一，则系统可能会向用户提示“需要管理员许可”页：
 
 - 应用程序开发人员添加了任何需要“管理员许可”的附加权限。
 - 或者，在配置的租户（“企业应用程序”->“用户设置”）中，用户无法许可代表他们访问公司数据的应用。
 
-有关详细信息，请参阅 [Microsoft 标识平台终结点中的权限和许可](./v2-permissions-and-consent.md)。
+有关详细信息，请参阅 [Microsoft 标识平台中的权限和许可](./v2-permissions-and-consent.md)。
 
 ### <a name="view-application-results"></a>查看应用程序结果
 
@@ -427,11 +426,11 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
 
 浏览到控制器视图后，应当会显示包含用户基本属性的表格：
 
-|属性 |值 |说明 |
+|属性 |“值” |说明 |
 |---|---|---|
 |**名称** |用户全名 | 用户的名字和姓氏
 |**用户名** |user<span>@domain.com</span> | 用于标识用户的用户名|
-|**主题** |主题 |唯一标识 Web 上用户的字符串|
+|**主题** |使用者 |唯一标识 Web 上用户的字符串|
 |**租户 ID** |Guid | 唯一表示用户的 Azure AD 组织的 Guid|
 
 此外，还应当显示包含身份验证请求中所有声明的表格。 有关详细信息，请参阅 [ID 令牌中的声明列表](./id-tokens.md)。

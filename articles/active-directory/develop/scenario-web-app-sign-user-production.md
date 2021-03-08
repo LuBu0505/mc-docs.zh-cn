@@ -1,5 +1,6 @@
 ---
-title: 将用于登录用户的 Web 应用移到生产环境 - Microsoft 标识平台 | Azure
+title: 将可使用户登录的 Web 应用移到生产环境 | Azure
+titleSuffix: Microsoft identity platform
 description: 了解如何构建用于登录用户的 Web 应用（移到生产环境）
 services: active-directory
 author: jmprieur
@@ -8,30 +9,25 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/07/2020
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: 7a35ca4a66d1fcf8689706425823163609ee6913
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: dfa091d19f23049402786d0e5898ebaa0f9ff72a
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004091"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697649"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>用于登录用户的 Web 应用：移到生产环境
 
-现在你已了解如何获取用于调用 Web API 的令牌，接下来学习如何将其移到生产环境。
+现在你已了解如何获取用于调用 Web API 的令牌，下面是将应用程序移到生产环境时需要考虑的一些事项。
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="troubleshooting"></a>故障排除
-
-> [!NOTE]
-> 用户首次登录到 Web 应用程序时，他们将需要同意。 但是，在某些组织中，用户可能会看到如下所示的消息：
->
-> “AppName 需要权限来访问组织中只有管理员才能授权的资源。请先让管理员授予对此应用的权限，然后你才能使用此应用。”
->
-> 这是因为租户管理员已禁用让用户同意的功能。 在这种情况下，你需要与租户管理员联系，以便他们针对应用程序要求的范围进行管理员许可。
+用户首次登录到 Web 应用程序时，他们将需要同意。 但在某些组织中，用户可能会看到如下所示的消息：“AppName 需要权限来访问组织中只有管理员才能授权的资源。请先让管理员授予对此应用的权限，然后你才能使用此应用。”
+这是因为租户管理员已禁用让用户同意的功能。 在这种情况下，请与租户管理员联系，以便他们针对应用程序要求的范围进行管理员许可。
 
 ## <a name="same-site"></a>同一站点
 
@@ -62,4 +58,3 @@ Microsoft.Identity.Web NuGet 包处理最常见的 SameSite 问题。
 ## <a name="next-steps"></a>后续步骤
 
 Web 应用登录用户后，它就可以代表已登录用户调用 Web API。 从 Web 应用调用 Web API 是以下方案的目标：[调用 Web API 的 Web 应用](scenario-web-app-call-api-overview.md)。
-

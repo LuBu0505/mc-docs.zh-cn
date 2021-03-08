@@ -11,12 +11,12 @@ ms.author: v-jay
 ms.reviewer: MashaMSFT
 origin.date: 11/06/2020
 ms.date: 01/04/2021
-ms.openlocfilehash: e5fcc29d45e84a1577b41ef437519e4656352710
-ms.sourcegitcommit: e1edc6ef84dbbda1da4e0a42efa3fd62eee033d1
+ms.openlocfilehash: 577949e5092ff5c46f3e36c770a7aa61d3fbceb2
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541816"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696702"
 ---
 # <a name="migration-guide-sql-server-to-sql-database"></a>迁移指南：将 SQL Server 到 SQL 数据库
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -95,7 +95,7 @@ ms.locfileid: "98541816"
 - [使用 PowerShell 执行规模化评估](https://docs.microsoft.com/sql/dma/dma-consolidatereports)
 - [使用 Power BI 分析评估报告](https://docs.microsoft.com/sql/dma/dma-consolidatereports#dma-reports)
 
-=## 迁移
+## <a name="migrate"></a>迁移
 
 完成与预迁移阶段相关的任务后，便可以执行架构和数据迁移。 
 
@@ -144,6 +144,18 @@ ms.locfileid: "98541816"
 
 > [!IMPORTANT]
 > 有关与使用 DMS 进行迁移时执行直接转换相关的特定步骤的详细信息，请参阅[执行直接转换迁移](../../../dms/tutorial-sql-server-azure-sql-online.md#perform-migration-cutover)。
+
+## <a name="migration-recommendations"></a>迁移建议
+
+若要加快迁移到 Azure SQL 数据库的速度，应考虑以下建议：
+
+|  | 资源争用 | 建议 |
+|--|--|--|
+| **源（通常在本地）** |迁移期间源中的主要瓶颈是 DATA 文件的延迟和 DATA I/O，需要仔细监视。  |根据 DATA 文件的延迟时间和 DATA IO，以及它是虚拟机还是物理服务器，你必须与存储管理员联系，并探索各种选项来缓解瓶颈。 |
+|**目标（Azure SQL 数据库）**|最大的限制因素是日志生成速率和日志文件的延迟。 使用 Azure SQL 数据库时，日志生成速率最高可达 96 MB/秒。 | 若要加快迁移速度，请将目标 SQL DB 纵向扩展到业务关键 Gen5 8 vcore，以获取 96 MB/秒的最大日志生成速率，并实现日志文件的低延迟。 无论选择哪种服务级别，[超大规模](/azure-sql/database/service-tier-hyperscale)服务层都提供 100 MB/秒的日志速率 |
+|**Network** |所需网络带宽等于最大日志引入速率 96 MB/秒（768 Mb/秒） |根据本地数据中心到 Azure 的网络连接情况，检查网络带宽（通常是 [Azure ExpressRoute](/expressroute/expressroute-introduction#bandwidth-options)），使其适应最大日志引入速率。 |
+|**用于数据迁移助手 (DMA) 的虚拟机** |对于运行 DMA 的虚拟机来说，主要的瓶颈是 CPU |通过以下项来加速数据迁移时的注意事项 </br>- Azure 计算密集型 VM </br>- 使用至少 F8s_v2 (8 vcore) VM 运行 DMA </br>- 确保 VM 在与目标相同的 Azure 区域中运行 |
+|**Azure 数据库迁移服务 (DMS)** |DMS 的计算资源争用和数据库对象注意事项 |使用高级 4 vCore。 DMS 会自动处理数据库对象（如外键、触发器、约束和非聚集索引），无需任何手动干预。  |
 
 
 ## <a name="post-migration"></a>迁移后

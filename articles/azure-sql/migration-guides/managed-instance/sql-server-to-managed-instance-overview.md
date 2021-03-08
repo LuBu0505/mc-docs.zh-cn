@@ -10,13 +10,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: MashaMSFT
 origin.date: 11/06/2020
-ms.date: 01/04/2021
-ms.openlocfilehash: ca43911c3bf7548788f5f6c3f58c256fd50b2a8f
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.date: 02/22/2021
+ms.openlocfilehash: f3f81a47d23d921035c37bc2ef74d58c738f95bf
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830411"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696867"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>迁移概述：将 SQL Server 到 SQL 托管实例
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -173,7 +173,7 @@ SQL Server Reporting Services (SSRS) 报表可迁移到 Power BI 中的分页报
 
 默认情况下，Azure 数据库迁移服务仅支持迁移 SQL 登录名。 但是，可通过以下方式启用迁移 Windows 登录名的功能：
 
-确保目标 SQL 托管实例具有 Azure AD 读取访问权限，这可由具有“公司管理员”或“全局管理员”角色的用户通过 Azure 门户进行配置 。
+确保目标 SQL 托管实例具有 Azure AD 读取访问权限，该权限可由具有“全局管理员”角色的用户通过 Azure 门户进行配置。
 配置 Azure 数据库迁移服务实例以启用 Windows 用户/组登录名迁移，这通过 Azure 门户在“配置”页上进行设置。 启用此设置后，重启服务以使更改生效。
 
 重启服务后，Windows 用户/组登录名将出现在可用于迁移的登录名列表中。 对于迁移的所有 Windows 用户/组登录名，系统都会提示提供关联的域名。 不支持服务用户帐户（域名为 NT AUTHORITY 的帐户）和虚拟用户帐户（域名为 NT SERVICE 的帐户）。

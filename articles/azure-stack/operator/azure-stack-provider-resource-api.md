@@ -8,16 +8,16 @@ ms.date: 12/07/2020
 ms.author: v-jay
 ms.reviewer: alfredop
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 42ba0ecaed37b4e9c1faa34ff080c6bbc811b38b
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: c7320ab22897b3e70f8b3d7907c76ea92a93ca1b
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508064"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696698"
 ---
 # <a name="provider-resource-usage-api"></a>提供商资源使用情况 API
 
-“提供者”  一词适用于服务管理员和任何委派的提供者。 Azure Stack Hub 操作员和委派的提供者可使用提供者使用情况 API，查看其直接租户的使用情况。 例如，如下图所示，P0 可以调用提供者 API，以获取 P1 和 P2 的直接使用情况信息；而 P1 可以通过调用来获取 P3 和 P4 的使用情况信息。
+“提供者”一词适用于服务管理员和任何委派的提供者。 Azure Stack Hub 操作员和委派的提供者可使用提供者使用情况 API，查看其直接租户的使用情况。 例如，如下图所示，P0 可以调用提供者 API，以获取 P1 和 P2 的直接使用情况信息；而 P1 可以通过调用来获取 P3 和 P4 的使用情况信息。
 
 ![提供者层次结构的概念模型](media/azure-stack-provider-resource-api/image1.png)
 
@@ -27,7 +27,7 @@ ms.locfileid: "96508064"
 
 请求会获取所请求的订阅在请求的时间范围内的消耗量详细信息。 没有请求正文。
 
-此使用情况 API 是提供者 API，因此必须将提供者订阅中的“所有者”、“参与者”或“读者”角色分配给调用方。   
+此使用情况 API 是提供者 API，因此必须将提供者订阅中的“所有者”、“参与者”或“读者”角色分配给调用方。
 
 | 方法 | 请求 URI |
 | --- | --- |
@@ -37,7 +37,7 @@ ms.locfileid: "96508064"
 
 | 参数 | 说明 |
 | --- | --- |
-| `armendpoint` |Azure Stack Hub 环境的 Azure 资源管理器终结点。 按 Azure Stack Hub 约定，Azure 资源管理器终结点名称的格式为 `https://adminmanagement.{domain-name}`。 例如，对于 Azure Stack 开发工具包 (ASDK)，如果域名为“local.azurestack.external”  ，则资源管理器终结点为 `https://adminmanagement.local.azurestack.external`。 |
+| `armendpoint` |Azure Stack Hub 环境的 Azure 资源管理器终结点。 按 Azure Stack Hub 约定，Azure 资源管理器终结点名称的格式为 `https://adminmanagement.{domain-name}`。 例如，对于 Azure Stack 开发工具包 (ASDK)，如果域名为“local.azurestack.external”，则资源管理器终结点为 `https://adminmanagement.local.azurestack.external`。 |
 | `subId` |进行调用的用户的订阅 ID。 |
 | `reportedStartTime` |查询的开始时间。 `DateTime` 的值应为以协调世界时 (UTC) 和小时开始时的时间呈现，例如 13:00。 对于每日聚合，请将此值设置为 UTC 午夜。 格式是转义的 ISO 8601，例如 `2015-06-16T18%3a53%3a11%2b00%3a00Z`，其中冒号转义为 `%3a`，而加号转义为 `%2b`，使其符合 URI 规范。 |
 | `reportedEndTime` |查询的结束时间。 适用于 `reportedStartTime` 的约束也适用于此参数。 `reportedEndTime` 的值不得为未来或当前的日期。 如果是，结果会设为“处理未完成”。 |
@@ -89,7 +89,7 @@ meterID1",
 |`subscriptionId` |Azure Stack Hub 用户的订阅标识符。 |
 |`usageStartTime`|此使用情况聚合所属的使用情况存储桶 UTC 开始时间。|
 |`usageEndTime`|此使用情况聚合所属的使用情况存储桶 UTC 结束时间。 |
-|`instanceData` |实例详细信息的键/值对（采用新格式）：<br> `resourceUri`：完全限定的资源 ID，其中包括资源组和实例名称。 <br> `location`：运行此服务的区域。 <br> `tags`：用户所指定的资源标记。 <br> `additionalInfo`：更多关于所消耗资源的详细信息（例如 OS 版本或映像类型）。 |
+|`instanceData` |实例详细信息的键/值对（采用新格式）：<br> `resourceUri`：完全限定的资源 ID，包括资源组和实例名称。 <br> `location`：运行此服务的区域。 <br> `tags`：用户指定的资源标记。 <br> `additionalInfo`：关于所消耗资源的详细信息（例如 OS 版本或映像类型）。 |
 |`quantity`|此时间范围内发生的资源消耗数量。 |
 |`meterId` |所消耗资源的唯一 ID（也称 `ResourceID`）。 |
 
@@ -115,13 +115,13 @@ meterID1",
 
 | 方法 | 请求 URI |
 | --- | --- |
-| GET | `https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&api-version=2015-06-01-preview` |
+| GET | `https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&api-version=2015-06-01-preview` |
 
 #### <a name="return-usage-for-deleted-or-active-tenant"></a>返回已删除或活动租户的使用情况
 
 | 方法 | 请求 URI |
 | --- | --- |
-| GET |`https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&subscriberId={subscriber-id}&api-version=2015-06-01-preview` |
+| GET |`https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&subscriberId={subscriber-id}&api-version=2015-06-01-preview` |
 
 ## <a name="next-steps"></a>后续步骤
 

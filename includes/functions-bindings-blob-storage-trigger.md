@@ -6,16 +6,18 @@ author: craigshoemaker
 manager: gwallace
 ms.service: azure-functions
 ms.topic: include
-ms.date: 10/16/2020
+ms.date: 02/26/2021
 ms.author: v-junlch
 ms.custom: include file
-ms.openlocfilehash: ed33bea659bc5d8a096d28458c2a4925625cc03b
-ms.sourcegitcommit: 6309f3a5d9506d45ef6352e0e14e75744c595898
+ms.openlocfilehash: 6f59f0f0fc43478c72a03893bbecbd927382922c
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92121603"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697831"
 ---
+### <a name="default"></a>默认
+
 可以将以下参数类型用于触发 blob：
 
 * `Stream`
@@ -33,3 +35,16 @@ ms.locfileid: "92121603"
 
 由于整个 Blob 内容都会加载到内存中，因此，只有当 Blob 较小时才建议绑定到 `string` 或 `Byte[]`。 平时，最好使用 `Stream` 或 `CloudBlockBlob` 类型。 有关详细信息，请参阅本文后面的[并发和内存使用情况](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#concurrency-and-memory-usage)。
 
+### <a name="additional-types"></a>其他类型
+
+应用如果使用 [5.0.0 版或更高版本的存储扩展](../articles/azure-functions/functions-bindings-storage-blob.md#storage-extension-5x-and-higher)，还可以使用用于 .NET 的 Azure SDK 中的类型。 此版本为了支持以下类型，删除了对旧的 `ICloudBlob`、`CloudBlockBlob`、`CloudPageBlob` 和 `CloudAppendBlob` 类型的支持：
+
+- [BlobClient](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobclient)<sup>1</sup>
+- [BlockBlobClient](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.specialized.blockblobclient)<sup>1</sup>
+- [PageBlobClient](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.specialized.pageblobclient)<sup>1</sup>
+- [AppendBlobClient](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.specialized.appendblobclient)<sup>1</sup>
+- [BlobBaseClient](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.specialized.blobbaseclient)<sup>1</sup>
+
+<sup>1</sup> function.json 中需有 "inout" 绑定 `direction` 或 C# 类库中需有 `FileAccess.ReadWrite`。
+
+有关使用这些类型的示例，请参阅[扩展的 GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Blobs#examples)。

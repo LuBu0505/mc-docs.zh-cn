@@ -6,7 +6,7 @@ keywords: ''
 author: rolyon
 manager: daveba
 ms.author: v-junlch
-ms.date: 02/04/2021
+ms.date: 02/25/2021
 ms.topic: conceptual
 ms.service: active-directory
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d245575ce98c3bec28ad5cbb46d68e2cc20c5a06
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: 6da9ae2fca9da9a8c83f0c46ebab8a462a61c50d
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540851"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696761"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -147,9 +147,10 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 个人电子邮件帐户经常会遭到网络攻击者的钓鱼攻击，这种风险使得全局管理员帐户不能使用个人电子邮件地址。 若要将 Internet 风险与管理权限隔离开来，请为每个具有管理权限的用户创建专用的帐户。
 
-* 确保为执行全局管理员任务的用户创建单独的帐户
-* 确保全局管理员不会无意中使用其管理员帐户打开电子邮件或运行程序
-* 确保这些帐户将其电子邮件转发到工作邮箱
+* 确保为执行全局管理员任务的用户创建单独的帐户。
+* 确保全局管理员不会无意中使用其管理员帐户打开电子邮件或运行程序。
+* 确保这些帐户将其电子邮件转发到工作邮箱。
+* 全局管理员（和其他特权组）帐户应为仅限云的帐户，且不与本地 Active Directory 相关联。
 
 #### <a name="ensure-the-passwords-of-administrative-accounts-have-recently-changed"></a>确保管理帐户的密码最近更改过
 
@@ -159,7 +160,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 Azure AD Connect 将用户密码的哈希从本地 Active Directory 同步到基于云的 Azure AD 组织。 如果将联合身份验证与 Active Directory 联合身份验证服务 (AD FS) 结合使用，则可以将密码哈希同步用作备用方案。 如果本地 Active Directory 或 AD FS 服务器暂时不可用，此备用方案可能很有用。
 
-密码哈希同步可让用户使用登录到本地 Active Directory 实例时所用的同一密码登录到服务。 有关详细信息，请参阅[使用 Azure AD Connect 同步实现密码哈希同步](../hybrid/how-to-connect-password-hash-synchronization.md)。
+密码哈希同步可让用户使用登录到本地 Active Directory 实例时所用的同一密码登录到服务。 密码哈希同步可让标识保护通过将密码哈希与已知泄露的密码进行比较，来检测已泄露的凭据。 有关详细信息，请参阅[使用 Azure AD Connect 同步实现密码哈希同步](../hybrid/how-to-connect-password-hash-synchronization.md)。
 
 #### <a name="require-multi-factor-authentication-for-users-in-privileged-roles-and-exposed-users"></a>要求特权角色用户和已公开的用户执行多重身份验证
 

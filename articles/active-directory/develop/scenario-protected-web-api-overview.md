@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/23/2020
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c47843896886978a1f24c1931e5022f47e5f80c9
-ms.sourcegitcommit: 883daddafe881e5f8a9f347df2880064d2375b6d
+ms.openlocfilehash: 31772d8b8bfe67715544b0c1e9cc312f9c0fe7b1
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95918382"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697025"
 ---
 # <a name="scenario-protected-web-api"></a>方案：受保护的 Web API
 
 通过此方案了解如何公开 Web API。 还了解如何保护 Web API，以便只有经过身份验证的用户才能访问它。
 
-若要使用 Web API，需要启用使用工作和学校帐户进行了身份验证的用户。
+若要使用 Web API，需要支持使用工作和学校帐户进行了身份验证的用户。
 
 ## <a name="specifics"></a>详情
 
@@ -42,5 +42,4 @@ ms.locfileid: "95918382"
 
 ## <a name="next-steps"></a>后续步骤
 
-转到此方案中的下一篇文章：[应用注册](scenario-protected-web-api-app-registration.md)。
-
+转到此方案中的下一篇文章，[应用注册](scenario-protected-web-api-app-registration.md)。

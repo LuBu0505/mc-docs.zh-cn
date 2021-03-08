@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 01/07/2021
-ms.date: 01/12/2021
-ms.author: v-tawe
-ms.openlocfilehash: 65dc1684df3158bbb74bbfdbee87ede24d93cc45
-ms.sourcegitcommit: e8f79dbea2f4f2529b09fb7705da0b9bd16631f3
+ms.date: 02/19/2021
+ms.author: v-johya
+ms.openlocfilehash: 21d9a54c59bfdfc2acbfbe3a679ba3b435be8605
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98114130"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697495"
 ---
 # <a name="speech-services-in-sovereign-clouds"></a>主权云中的语音服务
 
@@ -29,6 +29,7 @@ ms.locfileid: "98114130"
   - [https://portal.azure.cn/](https://portal.azure.cn/)
 - **区域：**
   - 中国东部 2
+  - 中国北部 2
 - **可用定价层：**
   - 免费层 (F0) 和标准层 (S0)。 有关更多详细信息，请参阅[此处](https://www.azure.cn/pricing/details/cognitive-services/index.html)
 - **支持的功能：**
@@ -42,17 +43,7 @@ ms.locfileid: "98114130"
 - 不受支持的功能：
   - 自定义语音
 - **支持的语言：**
-  - 阿拉伯语 (ar-*)
-  - 中文 (zh-*)
-  - 英语 (en-*)
-  - 法语 (fr-*)
-  - 德语 (de-*)
-  - 北印度语 (hi-*)
-  - 韩语 (ko-*)
-  - 俄语 (ru-*)
-  - 西班牙语 (es-*)
-  
-  有关更多语言支持，请在[此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support)查看支持的语言列表
+  - 请在[此处](language-support.md)查看支持的语言的列表
 
 ### <a name="endpoint-information"></a>终结点信息
 
@@ -74,6 +65,7 @@ Azure 中国中的语音服务 REST API 终结点采用以下格式：
 |                     | 区域标识符 |
 |--|--|
 | **中国东部 2**  | `chinaeast2` |
+| **中国北部 2**  | `chinanorth2` |
 
 #### <a name="speech-sdk"></a>语音 SDK
 
@@ -94,3 +86,7 @@ spx recognize --host "azCnHost" --file myaudio.wav
 | **中国东部 2** | |
 | 语音转文本 | `wss://chinaeast2.stt.speech.azure.cn` |
 | 文本到语音转换 | `https://chinaeast2.tts.speech.azure.cn` |
+| **中国北部 2** | |
+| 语音转文本 | `wss://chinanorth2.stt.speech.azure.cn` |
+| 文本到语音转换 | `https://chinanorth2.tts.speech.azure.cn` |
+

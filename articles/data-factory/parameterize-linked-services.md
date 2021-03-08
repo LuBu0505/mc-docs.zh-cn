@@ -1,22 +1,18 @@
 ---
 title: 参数化 Azure 数据工厂中的链接服务
 description: 了解如何参数化 Azure 数据工厂中的链接服务，并在运行时传递动态值。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 origin.date: 01/15/2021
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 author: WenJason
 ms.author: v-jay
-manager: digimobile
-ms.openlocfilehash: 0cc0d25c72989169f30839510375d430ce4d8502
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 22d83c2fe2f2dbd5449f661069d64300f90bd04e
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059816"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697573"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>参数化 Azure 数据工厂中的链接服务
 
@@ -29,6 +25,9 @@ ms.locfileid: "99059816"
 > [!TIP]
 > 我们建议不要参数化密码或机密。 而应将所有连接字符串都存储在 Azure Key Vault 中，并参数化 *机密名称*。
 
+> [!Note]
+> 存在导致在参数名中使用“-”的待解决的 bug，在该 bug 被解决之前，建议使用不带“-”的名称。
+
 ## <a name="supported-linked-service-types"></a>支持的链接服务类型
 
 可以将任何类型的链接服务参数化。
@@ -40,7 +39,7 @@ ms.locfileid: "99059816"
 - Azure Database for MySQL
 - Azure Databricks
 - Azure Key Vault
-- Azure SQL Database
+- Azure SQL 数据库
 - Azure SQL 托管实例
 - Azure Synapse Analytics 
 - MySQL

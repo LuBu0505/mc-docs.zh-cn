@@ -3,23 +3,23 @@ title: 向 Azure Stack Hub 发出 API 请求
 description: 了解如何从 Azure 检索身份验证令牌，以向 Azure Stack Hub 发出 API 请求。
 author: WenJason
 ms.topic: article
-origin.date: 05/06/2020
-ms.date: 06/22/2020
+origin.date: 02/08/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2020
-ms.openlocfilehash: 15d012d31135360af87269b840ec9cf7c09e07fc
-ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
+ms.openlocfilehash: d46a263144b5691b736d8665a6882b8efbece9ce
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85096421"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696593"
 ---
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
 # <a name="make-api-requests-to-azure-stack-hub"></a>向 Azure Stack Hub 发出 API 请求
 
-可以使用 Azure Stack Hub REST API 自动执行操作，例如将虚拟机 (VM) 添加到 Azure Stack Hub 云。
+可以使用 Azure Stack Hub REST API 自动执行操作，例如，将虚拟机 (VM) 添加到 Azure Stack Hub 云。
 
 这些 API 要求客户端向 Azure 登录终结点进行身份验证。 该终结点将返回一个要在发送到 Azure Stack Hub API 的每个请求的标头中使用的令牌。 Azure 使用 Oauth 2.0。
 
@@ -62,7 +62,7 @@ grant_type=password
    要使用的身份验证方案类型。 在此示例中，值为 `password`。
 
 - **资源**：  
-   令牌访问的资源。 可以通过查询 Azure Stack Hub 管理元数据终结点找到该资源。 查看“受众”**** 部分。
+   令牌访问的资源。 可以通过查询 Azure Stack Hub 管理元数据终结点找到该资源。 查看“受众”部分。
 
 - **Azure Stack Hub 管理终结点**：
 
@@ -99,7 +99,7 @@ grant_type=password
   https://contoso.partner.onmschina.cn/4de154de-f8a8-4017-af41-df619da68155
   ```
 
-- client_id****
+- client_id
 
   此值已硬编码为默认值：
 
@@ -160,7 +160,7 @@ curl -X "POST" "https://login.chinacloudapi.cn/fabrikam.partner.onmschina.cn/oau
 
 ## <a name="api-queries"></a>API 查询
 
-获取访问令牌后，请将其作为标头添加到每个 API 请求。 若要将其添加为标头，请创建值为 `Bearer <access token>` 的**授权**标头。 例如：
+获取访问令牌后，请将其作为标头添加到每个 API 请求。 若要将其添加为标头，请创建值为 `Bearer <access token>` 的 **授权** 标头。 例如：
 
 请求：
 

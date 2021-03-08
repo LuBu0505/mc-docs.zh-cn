@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 10/21/2019
-ms.date: 02/01/2021
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.openlocfilehash: 719a7e0ec34a531e46b3095a170874b42789d40e
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 5be8e713702a57db81b786d9418349afff2e347b
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059856"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697100"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>授权 Microsoft&reg; 平滑流式处理客户端移植工具包
 
@@ -124,11 +124,11 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * EXPRESS LUCK TECHNOLOGY LIMITED
 * Fluendo S.A.
 * FUNAI ELECTRIC CO., LTD
-* Hisense International Co., Ltd. 
+* Hisense International Co., Ltd.
+* Hisense Visual Technology Co., Ltd
 * HKC Corporation Limited
 * Hong Kong Konka Ltd
 * Innolux Corporation
-* Innopia Technologies, Inc
 * Jinpin Electrical Company Ltd.Zhuhai.S.E.Z
 * K-Tronics (Suzhou) Technology Co., Ltd. 
 * Kaonmedia Co., Ltd.

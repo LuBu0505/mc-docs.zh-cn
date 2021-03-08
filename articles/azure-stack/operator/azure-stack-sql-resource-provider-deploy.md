@@ -5,16 +5,16 @@ description: 了解如何在 Azure Stack Hub 上部署 SQL Server 资源提供�
 author: WenJason
 ms.topic: article
 origin.date: 12/07/2020
-ms.date: 01/11/2021
+ms.date: 03/01/2021
 ms.lastreviewed: 12/07/2020
 ms.author: v-jay
 ms.reviewer: xiao
-ms.openlocfilehash: 5289a66dca5aaff74d27eb7bcf36073cbe497358
-ms.sourcegitcommit: 3f54ab515b784c9973eb00a5c9b4afbf28a930a9
+ms.openlocfilehash: 9c87883e85fe7bb78cbafa90525b821b9beeabd8
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894368"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697164"
 ---
 # <a name="deploy-the-sql-server-resource-provider-on-azure-stack-hub"></a>在 Azure Stack Hub 上部署 SQL Server 资源提供程序
 
@@ -116,7 +116,7 @@ _仅适用于集成系统安装_。 必须提供 [Azure Stack Hub 部署 PKI 要
 若要部署 SQL 资源提供程序，请打开一个权限提升的 PowerShell（不是 PowerShell ISE）**新** 窗口，并切换到解压缩后的 SQL 资源提供程序二进制文件所在的目录。 
 
 > [!IMPORTANT]
-> 强烈建议在运行更新脚本之前，使用 Clear-AzureRmContext -Scope CurrentUser 和 Clear-AzureRmContext -Scope Process 清除缓存。
+> 强烈建议在运行部署或更新脚本之前，使用 Clear-AzureRmContext -Scope CurrentUser 和 Clear-AzureRmContext -Scope Process 清除缓存 。
 
 运行 DeploySqlProvider.ps1 脚本，以完成以下任务：
 

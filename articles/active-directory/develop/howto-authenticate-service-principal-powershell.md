@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev , devx-track-azurepowershell
 ms.topic: how-to
 ms.tgt_pltfrm: multiple
-ms.date: 01/06/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: tomfitz
-ms.openlocfilehash: a5f98bbc0824e2a93bd57a0e5908cf0c8fbfece9
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: a9ac6298662b691ff3e709ab8985af458db8f8e3
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021635"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696879"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>如何：通过 Azure PowerShell 使用证书创建服务主体
 
@@ -72,7 +72,7 @@ New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $sp.Applic
 
 可以使用 **ResourceGroupName** 参数将角色分配范围限制为特定资源组。 还可以使用 **ResourceType** 和 **ResourceName** 参数将范围限制为特定资源。 
 
-如果 **未使用 Windows 10 或 Windows Server 2016**，需要从 Microsoft 脚本中心下载 [自签名证书生成器](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/)。 解压其内容，并导入所需的 cmdlet。
+如果未使用 Windows 10 或 Windows Server 2016，请从 Microsoft 脚本中心下载[自签名证书生成器](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/)。 解压其内容，并导入所需的 cmdlet。
 
 ```powershell
 # Only run if you could not use New-SelfSignedCertificate
@@ -91,7 +91,7 @@ $cert = Get-ChildItem -path Cert:\CurrentUser\my | where {$PSitem.Subject -eq 'C
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>通过自动执行的 PowerShell 脚本提供证书
 
-以服务主体方式登录时，需提供 AD 应用所在目录的租户 ID。 租户是 Azure AD 的实例。
+每当以服务主体方式登录时，请提供 AD 应用所在目录的租户 ID。 租户是 Azure AD 的实例。
 
 ```powershell
 $TenantId = (Get-AzSubscription -SubscriptionName "Contoso Default").TenantId
@@ -152,7 +152,7 @@ Param (
 ```
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>通过自动执行的 PowerShell 脚本提供证书
-以服务主体方式登录时，需提供 AD 应用所在目录的租户 ID。 租户是 Azure AD 的实例。
+每当以服务主体方式登录时，请提供 AD 应用所在目录的租户 ID。 租户是 Azure AD 的实例。
 
 ```powershell
 Param (
@@ -228,4 +228,3 @@ Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
 * 有关应用程序和服务主体的详细说明，请参阅 [Application Objects and Service Principal Objects](app-objects-and-service-principals.md)（应用程序对象和服务主体对象）。
 * 有关 Azure AD 身份验证的详细信息，请参阅 [Azure AD 的身份验证方案](./authentication-vs-authorization.md)。
 * 有关使用 Microsoft Graph 处理应用注册的信息，请参阅[应用程序](https://docs.microsoft.com/graph/api/resources/application) API 参考。
-

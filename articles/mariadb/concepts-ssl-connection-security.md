@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: conceptual
 origin.date: 07/09/2020
 ms.date: 11/23/2020
-ms.openlocfilehash: bdb286a7996a55691496aa142fce277e55b80683
-ms.sourcegitcommit: db15d6cc591211c0e531d636f45e9cbe24cfb15b
+ms.openlocfilehash: 6ee6af269794f1868c0292f9ad254d00cb836867
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94908991"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697974"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的 SSL/TLS 连接
 Azure Database for MariaDB 支持使用安全套接字层 (SSL) 将数据库服务器连接到客户端应用程序。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。
@@ -55,7 +55,7 @@ Azure Database for MariaDB 提供了为客户端连接强制使用 TLS 版本的
 
 ## <a name="cipher-support-by-azure-database-for-mariadb"></a>Azure Database for MariaDB 的密码支持
 
-作为 SSL/TLS 通信的一部分，密码套件会被验证，并且只有支持密码套件才被允许与数据库服务器通信。 密码套件验证在[网关层](concepts-connectivity-architecture.md#connectivity-architecture)中控制，而不是在节点本身上显式控制。 如果密码套件与下面列出的某个套件不匹配，系统会拒绝传入的客户端连接。
+作为 SSL/TLS 通信的一部分，将验证密码套件，并且仅允许支持密码套件与数据库服务器通信。 密码套件验证在[网关层](concepts-connectivity-architecture.md#connectivity-architecture)中控制，而不是在节点本身上显式控制。 如果密码套件与下面列出的某个套件不匹配，系统会拒绝传入的客户端连接。
 
 ### <a name="cipher-suite-supported"></a>支持的密码套件
 

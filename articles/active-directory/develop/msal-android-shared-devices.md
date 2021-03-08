@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/20/2020
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: ee38b41755b27eaa726f7fe017fb3f3f76afa4b9
-ms.sourcegitcommit: 883daddafe881e5f8a9f347df2880064d2375b6d
+ms.openlocfilehash: 5f5ae2d5f7a4c1d1bc2c264ca35fd034bb2848cc
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95918447"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697007"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>适用于 Android 设备的共享设备模式
 
@@ -107,4 +107,3 @@ private IPublicClientApplication mApplication;
 ## <a name="next-steps"></a>后续步骤
 
 尝试学习[在 Android 应用程序中使用共享设备模式](tutorial-v2-shared-device-mode.md)教程，其中介绍了如何在共享模式的 Android 设备上运行一线工作人员应用。
-

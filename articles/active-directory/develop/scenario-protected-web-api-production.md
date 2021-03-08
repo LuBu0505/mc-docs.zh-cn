@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/23/2020
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: 06621300618f75c2a20d808928264f7493b8667c
-ms.sourcegitcommit: 883daddafe881e5f8a9f347df2880064d2375b6d
+ms.openlocfilehash: 3489cbc42a42da9f0f56e061d964a3295e489980
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95918380"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697026"
 ---
 # <a name="protected-web-api---move-to-production"></a>受保护的 Web API - 移到生产环境
 
-现在你已了解如何保护 Web API，下面说明如何将其移到生产环境。
+现在你已了解如何保护 Web API，将应用程序移动到生产环境时，需要考虑以下事项。
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -35,4 +35,3 @@ ms.locfileid: "95918380"
 - [使用守护程序调用受保护的 API](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/2-Call-OwnApi)
 - [ASP.NET Core Web API 教程](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)
 - [ASP.NET Web API 示例](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)
-

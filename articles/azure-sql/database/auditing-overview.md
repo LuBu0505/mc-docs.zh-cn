@@ -8,15 +8,15 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
-origin.date: 11/08/2020
-ms.date: 01/04/2021
+origin.date: 02/03/2021
+ms.date: 02/22/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 910973865159293f1a5266fd0b10e3fb7cef4243
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 698c00b11fb10d9d5139c3c31ced62b7a81681de
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830083"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697113"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的审核
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -274,6 +274,11 @@ AzureDiagnostics
 - [创建或更新服务器扩展审核策略](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
 - [获取数据库扩展审核策略](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [获取服务器扩展审核策略](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+
+### <a name="using-azure-cli"></a>使用 Azure CLI
+
+- [管理服务器的审核策略](/cli/sql/server/audit-policy?view=azure-cli-latest)
+- [管理数据库的审核策略](/cli/sql/db/audit-policy?view=azure-cli-latest)
 
 ### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
 

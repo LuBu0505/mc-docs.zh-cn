@@ -1,23 +1,20 @@
 ---
-title: PowerShell 脚本 - 使用数据工厂转换云中的数据 | Microsoft Docs
+title: 使用 PowerShell 转换云中数据
 description: 此 PowerShell 脚本通过在 Azure HDInsight Spark 群集上运行 Spark 程序转换云中的数据。
-services: data-factory
 author: WenJason
-manager: digimobile
-editor: ''
-ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.topic: article
-origin.date: 09/12/2017
-ms.date: 07/08/2019
 ms.author: v-jay
-ms.openlocfilehash: 61c5e4e1a8b42faa3c72eeb2237331eb82cedd9f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.reviewer: maghan
+ms.service: data-factory
+ms.topic: conceptual
+ms.custom: seo-lt-2019
+origin.date: 09/12/2017
+ms.date: 03/01/2021
+ms.openlocfilehash: ea0f81cfb882145109e8dee84b6d92fadc4056dd
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67570233"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697907"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>PowerShell 脚本 - 使用 Azure 数据工厂转换云中的数据
 
@@ -27,7 +24,7 @@ ms.locfileid: "67570233"
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 * **Azure 存储帐户**。 创建 Python 脚本和输入文件，并将其上传到 Azure 存储。 Spark 程序的输出存储在此存储帐户中。 按需 Spark 群集使用相同的存储帐户作为其主存储。  
 
 ### <a name="upload-python-script-to-your-blob-storage-account"></a>将 Python 脚本上传到 Blob 存储帐户

@@ -5,13 +5,13 @@ services: automation
 ms.subservice: ''
 ms.topic: conceptual
 origin.date: 12/17/2020
-ms.date: 01/04/2021
-ms.openlocfilehash: ad8a4cf2ccb24385167a6aff91f18c6ffb3d4465
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.date: 02/22/2021
+ms.openlocfilehash: c555d671e3163af196b5cbfe1704daf9dbe68dde
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830240"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697452"
 ---
 # <a name="azure-automation-frequently-asked-questions"></a>Azure 自动化常见问题解答
 
@@ -48,4 +48,32 @@ $sched = New-AzAutomationSchedule -ResourceGroupName mygroup -AutomationAccountN
 
 New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName <automationAccountName> -Schedule $sched -Windows -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
+
+## <a name="process-automation---python-runbooks"></a>流程自动化 - Python Runbook
+
+### <a name="which-python-3-version-is-supported-in-azure-automation"></a>Azure 自动化支持 Python 3 的哪个版本？
+
+对于云作业，支持 Python 3.8。 如果代码与不同的版本兼容，则任何 3.x 版本的脚本和包都可能起作用。
+
+对于 Windows 混合 Runbook 辅助角色上的混合作业，可以选择安装想要使用的任何 3.x 版本。 对于 Linux 混合 Runbook 辅助角色上的混合作业，我们根据安装在计算机的 Python 3 版本来运行 DSC OMSConfig 和 Linux 混合辅助角色。 建议安装版本 3.6，但是如果 Python 3 不同版本间的方法签名或协定没有发生重大更改，则其他版本也应该会起作用。
+
+### <a name="can-python-2-and-python-3-runbooks-run-in-same-automation-account"></a>Python 2 Runbook 和 Python 3 Runbook 是否可以在同一自动化帐户中运行？
+
+可以，对于在同一自动化帐户中使用 Python 2 Runbook 和 Python 3 Runbook 没有限制。  
+
+### <a name="what-is-the-plan-for-migrating-existing-python-2-runbooks-and-packages-to-python-3"></a>将现有 Python 2 Runbook 和包迁移到 Python 3 的计划是什么？
+
+Azure 自动化不计划将 Python 2 Runbook 和包迁移到 Python 3。 你需要自己执行此迁移。 现有以及新的 Python 2 Runbook 和包将继续工作。
+
+### <a name="what-are-the-packages-supported-by-default-in-python-3-environment"></a>默认情况下，在 Python 3 环境中受支持的包是哪些？
+
+Azure 包 4.0.0 会默认安装在 Python 3 自动化环境中。 你可手动导入更高版本的 Azure 包来替代默认版本。
+
+### <a name="what-if-i-run-a-python-3-runbook-that-references-a-python-2-package-or-vice-versa"></a>如果要运行一个引用 Python 2 包的 Python 3 Runbook 呢？反之呢？
+
+Python 2 和 Python 3 具有不同的执行环境。 当 Python 2 Runbook 运行时，仅可导入 Python 2 包，对于 Python 3 来说同样如此。
+
+### <a name="how-do-i-differentiate-between-python-2-and-python-3-runbooks-and-packages"></a>如何区分 Python 2 Runbook 和 Python 3 Runbook 及其包？
+
+Python 3 是新的 Runbook 定义，可区分 Python 2 Runbook 和 Python 3 Runbook。 同样地，为 Python 3 包引入另一种包类型。
 

@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 05/23/2019
-ms.date: 01/11/2021
-ms.openlocfilehash: c85827fe50edbd3566baf71f326c6607f20bdae2
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+origin.date: 2/11/2021
+ms.date: 03/08/2021
+ms.openlocfilehash: 5dccca80b18b11c40d49039607dba3fb21737fd4
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022138"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696612"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的连接体系结构
 本文介绍 Azure Database for PostgreSQL 的连接体系结构，以及如何在 Azure 内部和外部将流量从客户端定向到 Azure Database for PostgreSQL 数据库实例。
@@ -29,7 +29,7 @@ ms.locfileid: "98022138"
 
 网关服务托管在一个 IP 地址后面的一组无状态计算节点上，当你的客户端尝试连接到 Azure Database for PostgreSQL 服务器时，将首先访问该 IP 地址。 
 
-在持续的服务维护过程中，我们会定期刷新托管网关的计算硬件，以确保提供最安全和性能最佳的体验。 刷新网关硬件后，将首先生成一个新的计算节点通道。 这一新通道为所有新创建的 Azure Database for PostgreSQL 服务器提供流量，在同一区域中，它采用的 IP 地址将与较旧的网关通道采用的地址不同，目的在于使流量区分开来。 新通道完全正常运行后，为现有服务器提供服务的较旧的网关硬件将计划解除授权。 在解除网关硬件的授权之前，运行其服务器并连接到较旧网关通道的客户可通过电子邮件和 Azure 门户提前三个月收到通知。 如果你在应用程序的连接字符串中硬编码网关 IP 地址， 
+在持续的服务维护过程中，我们会定期刷新托管网关的计算硬件，确保提供最安全和性能最佳的体验。 刷新网关硬件后，将首先生成一个新的计算节点通道。 这一新通道为所有新创建的 Azure Database for PostgreSQL 服务器提供流量，在同一区域中，它采用的 IP 地址将与较旧的网关通道采用的地址不同，目的在于使流量区分开来。 旧的网关硬件将继续为现有服务器提供服务，但将来会被停用。 在解除网关硬件的授权之前，运行其服务器并连接到较旧网关通道的客户可通过电子邮件和 Azure 门户提前三个月收到通知。 如果你在应用程序的连接字符串中硬编码网关 IP 地址， 
 
 * 网关的解除授权可能会影响与服务器的连接。 不建议这样做。应在应用程序的连接字符串中使用服务器的完全限定的域名 (FQDN)，格式为 <servername>.postgres.database.chinacloudapi.cn。 
 * 请勿为使出站流量能够到达新的网关通道而在客户端防火墙中更新较新的网关 IP 地址。

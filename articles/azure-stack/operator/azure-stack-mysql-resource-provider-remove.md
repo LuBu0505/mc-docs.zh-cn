@@ -4,16 +4,16 @@ description: 了解如何从 Azure Stack Hub 部署中删除 MySQL 资源提供�
 author: WenJason
 ms.topic: article
 origin.date: 1/22/2020
-ms.date: 01/11/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/20/2
-ms.openlocfilehash: 92ab0a1a650cc6cc1118f306dc4885e409f0d6db
-ms.sourcegitcommit: 3f54ab515b784c9973eb00a5c9b4afbf28a930a9
+ms.openlocfilehash: ba60b7702c86ae87c22674a624ce2641de32343d
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894434"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697905"
 ---
 # <a name="remove-the-mysql-resource-provider-in-azure-stack-hub"></a>在 Azure Stack Hub 中删除 MySQL 资源提供程序
 
@@ -33,6 +33,10 @@ ms.locfileid: "97894434"
   
 2. 获取 MySQL 资源提供程序安装包的副本，然后运行自解压程序，将内容解压缩到一个临时目录。
 3. 打开一个权限提升的 PowerShell 控制台新窗口，并切换到解压缩后的 MySQL 资源提供程序安装文件所在的目录。
+
+> [!IMPORTANT]
+> 我们强烈建议在运行脚本前，使用 Clear-AzureRmContext -Scope CurrentUser 和 Clear-AzureRmContext -Scope Process 清除缓存 。
+
 4. 使用以下参数运行 DeployMySqlProvider.ps1 脚本：
     - **Uninstall**：删除资源提供程序和所有关联的资源。
     - **PrivilegedEndpoint**：特权终结点的 IP 地址或 DNS 名称。

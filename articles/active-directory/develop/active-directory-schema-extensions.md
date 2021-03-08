@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/26/2020
+ms.date: 02/22/2021
 ms.author: v-junlch
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: fea1ca5838cd532b4c4acb959c66865859f52d17
-ms.sourcegitcommit: ca5e5792f3c60aab406b7ddbd6f6fccc4280c57e
+ms.openlocfilehash: b23c4ad4eacd07231707ca35040371b7e1672af5
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92749986"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697341"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>在声明中使用目录架构扩展属性
 
@@ -74,4 +74,3 @@ ms.locfileid: "92749986"
 ## <a name="next-steps"></a>后续步骤
 - 了解如何[向 SAML 2.0 和 JSON Web 令牌 (JWT) 令牌添加自定义声明或额外声明](active-directory-optional-claims.md)。
 - 了解如何[为特定应用自定义在令牌中发出的声明](active-directory-claims-mapping.md)。
-

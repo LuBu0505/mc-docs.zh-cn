@@ -13,15 +13,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 03/29/2018
-ms.date: 01/25/2021
+ms.date: 02/22/2021
 ms.author: v-jay
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 88eb59a09e8f4ba00d67482aea34ca57ee3383e8
-ms.sourcegitcommit: e1edc6ef84dbbda1da4e0a42efa3fd62eee033d1
+ms.openlocfilehash: 922d5db258d99b5437742e99854a6311ed198675
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541898"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697064"
 ---
 <!--Verified the Redirect articles successfully-->
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>教程：在 Azure 虚拟机中的 SQL Server 上创建可用性组的先决条件
@@ -92,9 +92,9 @@ Azure 会创建资源组，并在门户中固定资源组的快捷方式。
    | **字段** | Value |
    | --- | --- |
    | **名称** |autoHAVNET |
-   | **地址空间** |10.33.0.0/24 |
+   | **地址空间** |10.0.0.0/24 |
    | **子网名称** |管理员 |
-   | **子网地址范围** |10.33.0.0/29 |
+   | **子网地址范围** |10.0.0.0/29 |
    | **订阅** |指定要使用的订阅。 如果只有一个订阅，“订阅”字段将是空白的。 |
    | **资源组** |选择“使用现有项”，然后选择资源组的名称。 |
    | **位置** |指定 Azure 位置。 |
@@ -146,7 +146,7 @@ Azure 返回到门户仪表板，并在创建好新网络时发出通知。
 
 ## <a name="create-availability-sets"></a>创建可用性集
 
-创建虚拟机前，需创建可用性集。 可用性集可减少计划内或计划外维护事件的停机时间。 Azure 可用性集是 Azure 置于物理容错域和更新域上的逻辑资源组。 容错域可确保可用性集的成员具有单独的电源和网络资源。 更新域确保可用性集的成员不会同时停机进行维护。 有关详细信息，请参阅[管理虚拟机的可用性](../../../virtual-machines/manage-availability.md?toc=%252fvirtual-machines%252fwindows%252ftoc.json)。
+创建虚拟机前，需创建可用性集。 可用性集可减少计划内或计划外维护事件的停机时间。 Azure 可用性集是 Azure 置于物理容错域和更新域上的逻辑资源组。 容错域可确保可用性集的成员具有单独的电源和网络资源。 更新域确保可用性集的成员不会同时停机进行维护。 有关详细信息，请参阅[管理虚拟机的可用性](../../../virtual-machines/manage-availability.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 需要两个可用性集。 一个用于域控制器。 另一个用于 SQL Server VM。
 

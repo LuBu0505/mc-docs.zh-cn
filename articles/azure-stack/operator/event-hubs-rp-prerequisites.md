@@ -6,15 +6,15 @@ ms.author: v-jay
 ms.service: azure-stack
 ms.topic: how-to
 origin.date: 12/09/2019
-ms.date: 01/11/2021
+ms.date: 03/01/2021
 ms.reviewer: jfggdl
 ms.lastreviewed: 12/09/2019
-ms.openlocfilehash: 38befde7064c00cd7869a0001735fadedb009144
-ms.sourcegitcommit: 3f54ab515b784c9973eb00a5c9b4afbf28a930a9
+ms.openlocfilehash: 9948cbe006d2f39af906271bc9c1d063ccf2fc8b
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894406"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697820"
 ---
 # <a name="prerequisites-for-installing-event-hubs-on-azure-stack-hub"></a>在 Azure Stack Hub 上安装事件中心的先决条件
 
@@ -24,7 +24,7 @@ ms.locfileid: "97894406"
 > 这些先决条件假定你至少已部署了 4 节点 Azure Stack Hub 集成系统。 Azure Stack 开发工具包 (ASDK) 不支持事件中心资源提供程序。
 
 > [!IMPORTANT]
-> 事件中心需要 Azure Stack Hub 2002 内部版本或更高版本。 请注意，Azure Stack Hub 的内部版本是递增的。 例如，如果已安装版本 1910，必须首先升级到 [2002](./release-notes.md?view=azs-2002&preserve-view=true#2002-build-reference)，然后再升级到 2005。 也就是说，不能跳过中间的内部版本。
+> 事件中心需要 Azure Stack Hub 2005 内部版本或更高版本。 请注意，Azure Stack Hub 的内部版本是递增的。 例如，如果已安装版本 1910，必须首先升级到 [2002](./release-notes.md?view=azs-2002&preserve-view=true#2002-build-reference)，然后再升级到 2005。 也就是说，不能跳过中间的内部版本。
 
 ## <a name="common-prerequisites"></a>常见的先决条件
 

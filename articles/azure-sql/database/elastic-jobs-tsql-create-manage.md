@@ -10,41 +10,41 @@ ms.topic: how-to
 ms.author: v-jay
 author: WenJason
 ms.reviewer: sstein
-origin.date: 02/07/2020
-ms.date: 02/01/2021
-ms.openlocfilehash: 3dd4fc4d455cc3db374e155c241817534af1a25b
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+origin.date: 02/01/2021
+ms.date: 02/22/2021
+ms.openlocfilehash: 993baf6339a51d01306372a3682c2ebcd01bcfed
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99058890"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696963"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>使用 Transact-SQL (T-SQL) 创建和管理弹性数据库作业（预览版）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 本文通过许多示例方案说明了如何使用 T-SQL 来完成弹性作业的入门。
 
-这些示例使用[作业数据库](job-automation-overview.md#job-database)中提供的[存储过程](#job-stored-procedures)和[视图](#job-views)。
+这些示例使用[作业数据库](job-automation-overview.md#elastic-job-database)中提供的[存储过程](#job-stored-procedures)和[视图](#job-views)。
 
 Transact-SQL (T-SQL) 用于创建、配置、执行和管理作业。 T-SQL 不支持创建弹性作业代理，因此必须先使用门户或 [PowerShell](elastic-jobs-powershell-create.md#create-the-elastic-job-agent) 创建弹性作业代理。
 
 ## <a name="create-a-credential-for-job-execution"></a>创建执行作业所需的凭据
 
-此凭据用于连接到目标数据库，以便执行脚本。 此凭据需要在目标组指定的数据库上拥有适当的权限，否则无法成功地执行脚本。 使用[逻辑 SQL 服务器](logical-servers.md)和/或池目标组成员时，强烈建议创建一个用于刷新此凭据的主凭据，然后再在执行作业时扩展服务器和/或池。 数据库范围的凭据在作业代理数据库中创建。 必须使用同一凭据来创建登录名，并创建基于登录名的用户，以便在目标数据库上授予登录数据库权限。 
+此凭据用于连接到目标数据库，以便执行脚本。 此凭据需要在目标组指定的数据库上拥有适当的权限，否则无法成功地执行脚本。 使用[逻辑 SQL 服务器](logical-servers.md)和/或池目标组成员时，强烈建议创建一个用于刷新此凭据的凭据，然后再在执行作业时扩展服务器和/或池。 数据库范围的凭据在作业代理数据库中创建。 必须使用同一凭据来创建登录名，并创建基于登录名的用户，以便在目标数据库上授予登录数据库权限。 
 
 ```sql
---Connect to the job database specified when creating the job agent
+--Connect to the new job database specified when creating the Elastic Job agent
 
--- Create a db master key if one does not already exist, using your own password.  
+-- Create a database master key if one does not already exist, using your own password.  
 CREATE MASTER KEY ENCRYPTION BY PASSWORD='<EnterStrongPasswordHere>';  
   
--- Create a database scoped credential.  
-CREATE DATABASE SCOPED CREDENTIAL myjobcred WITH IDENTITY = 'jobcred',
+-- Create two database scoped credentials.  
+-- The credential to connect to the Azure SQL logical server, to execute jobs
+CREATE DATABASE SCOPED CREDENTIAL job_credential WITH IDENTITY = 'job_credential',
     SECRET = '<EnterStrongPasswordHere>';
 GO
-
--- Create a database scoped credential for the master database of server1.
-CREATE DATABASE SCOPED CREDENTIAL mymastercred WITH IDENTITY = 'mastercred',
+-- The credential to connect to the Azure SQL logical server, to refresh the database metadata in server
+CREATE DATABASE SCOPED CREDENTIAL refresh_credential WITH IDENTITY = 'refresh_credential',
     SECRET = '<EnterStrongPasswordHere>';
 GO
 ```
@@ -52,20 +52,20 @@ GO
 ## <a name="create-a-target-group-servers"></a>创建目标组（服务器）
 
 以下示例演示如何针对服务器中的所有数据库执行作业。  
-连接到[作业数据库](job-automation-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](job-automation-overview.md#elastic-job-database)，然后运行以下命令：
 
 ```sql
 -- Connect to the job database specified when creating the job agent
 
 -- Add a target group containing server(s)
-EXEC jobs.sp_add_target_group 'ServerGroup1'
+EXEC jobs.sp_add_target_group 'ServerGroup1';
 
 -- Add a server target member
 EXEC jobs.sp_add_target_group_member
-'ServerGroup1',
+@target_group_name = 'ServerGroup1',
 @target_type = 'SqlServer',
-@refresh_credential_name = 'mymastercred', --credential required to refresh the databases in a server
-@server_name = 'server1.database.chinacloudapi.cn'
+@refresh_credential_name = 'refresh_credential', --credential required to refresh the databases in a server
+@server_name = 'server1.database.chinacloudapi.cn';
 
 --View the recently created target group and target group members
 SELECT * FROM jobs.target_groups WHERE target_group_name='ServerGroup1';
@@ -75,29 +75,29 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 ## <a name="exclude-an-individual-database"></a>排除单个数据库
 
 以下示例演示如何针对服务器中的所有数据库执行作业，名为 MappingDB 的数据库除外。  
-连接到[作业数据库](job-automation-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](job-automation-overview.md#elastic-job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
 -- Add a target group containing server(s)
-EXEC [jobs].sp_add_target_group N'ServerGroup'
+EXEC [jobs].sp_add_target_group N'ServerGroup';
 GO
 
 -- Add a server target member
 EXEC [jobs].sp_add_target_group_member
 @target_group_name = N'ServerGroup',
 @target_type = N'SqlServer',
-@refresh_credential_name = N'mymastercred', --credential required to refresh the databases in a server
-@server_name = N'London.database.chinacloudapi.cn'
+@refresh_credential_name = N'refresh_credential', --credential required to refresh the databases in a server
+@server_name = N'London.database.chinacloudapi.cn';
 GO
 
 -- Add a server target member
 EXEC [jobs].sp_add_target_group_member
 @target_group_name = N'ServerGroup',
 @target_type = N'SqlServer',
-@refresh_credential_name = N'mymastercred', --credential required to refresh the databases in a server
-@server_name = 'server2.database.chinacloudapi.cn'
+@refresh_credential_name = N'refresh_credential', --credential required to refresh the databases in a server
+@server_name = 'server2.database.chinacloudapi.cn';
 GO
 
 --Exclude a database target member from the server target group
@@ -106,7 +106,7 @@ EXEC [jobs].sp_add_target_group_member
 @membership_type = N'Exclude',
 @target_type = N'SqlDatabase',
 @server_name = N'server1.database.chinacloudapi.cn',
-@database_name = N'MappingDB'
+@database_name = N'MappingDB';
 GO
 
 --View the recently created target group and target group members
@@ -117,21 +117,21 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name = N'ServerGrou
 ## <a name="create-a-target-group-pools"></a>创建目标组（池）
 
 以下示例演示如何以一个或多个弹性池中的所有数据库为目标。  
-连接到[作业数据库](job-automation-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](job-automation-overview.md#elastic-job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
 -- Add a target group containing pool(s)
-EXEC jobs.sp_add_target_group 'PoolGroup'
+EXEC jobs.sp_add_target_group 'PoolGroup';
 
 -- Add an elastic pool(s) target member
 EXEC jobs.sp_add_target_group_member
-'PoolGroup',
+@target_group_name = 'PoolGroup',
 @target_type = 'SqlElasticPool',
-@refresh_credential_name = 'mymastercred', --credential required to refresh the databases in a server
+@refresh_credential_name = 'refresh_credential', --credential required to refresh the databases in a server
 @server_name = 'server1.database.chinacloudapi.cn',
-@elastic_pool_name = 'ElasticPool-1'
+@elastic_pool_name = 'ElasticPool-1';
 
 -- View the recently created target group and target group members
 SELECT * FROM jobs.target_groups WHERE target_group_name = N'PoolGroup';
@@ -141,20 +141,20 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name = N'PoolGroup';
 ## <a name="deploy-new-schema-to-many-databases"></a>将新架构部署到多个数据库
 
 以下示例演示如何将新架构部署到所有数据库。  
-连接到[作业数据库](job-automation-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](job-automation-overview.md#elastic-job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
 --Add job for create table
-EXEC jobs.sp_add_job @job_name = 'CreateTableTest', @description = 'Create Table Test'
+EXEC jobs.sp_add_job @job_name = 'CreateTableTest', @description = 'Create Table Test';
 
 -- Add job step for create table
 EXEC jobs.sp_add_jobstep @job_name = 'CreateTableTest',
 @command = N'IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = object_id(''Test''))
 CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
-@credential_name = 'myjobcred',
-@target_group_name = 'PoolGroup'
+@credential_name = 'job_credential',
+@target_group_name = 'PoolGroup';
 ```
 
 ## <a name="data-collection-using-built-in-parameters"></a>使用内置参数进行数据收集
@@ -189,7 +189,7 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 3. internal_execution_id 列上名为 `IX_<TableName>_Internal_Execution_ID` 的非聚集索引。
 4. 上面列出的所有权限（数据库的 `CREATE TABLE` 权限除外）。
 
-连接到[作业数据库](job-automation-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](job-automation-overview.md#elastic-job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -201,32 +201,34 @@ EXEC jobs.sp_add_job @job_name ='ResultsJob', @description='Collection Performan
 EXEC jobs.sp_add_jobstep
 @job_name = 'ResultsJob',
 @command = N' SELECT DB_NAME() DatabaseName, $(job_execution_id) AS job_execution_id, * FROM sys.dm_db_resource_stats WHERE end_time > DATEADD(mi, -20, GETDATE());',
-@credential_name = 'myjobcred',
+@credential_name = 'job_credential',
 @target_group_name = 'PoolGroup',
 @output_type = 'SqlDatabase',
-@output_credential_name = 'myjobcred',
+@output_credential_name = 'job_credential',
 @output_server_name = 'server1.database.chinacloudapi.cn',
 @output_database_name = '<resultsdb>',
-@output_table_name = '<resutlstable>'
-Create a job to monitor pool performance
+@output_table_name = '<resutlstable>';
+
+--Create a job to monitor pool performance
+
 --Connect to the job database specified when creating the job agent
 
--- Add a target group containing master database
-EXEC jobs.sp_add_target_group 'MasterGroup'
+-- Add a target group containing Elastic Job database
+EXEC jobs.sp_add_target_group 'ElasticJobGroup';
 
 -- Add a server target member
 EXEC jobs.sp_add_target_group_member
-@target_group_name = 'MasterGroup',
+@target_group_name = 'ElasticJobGroup',
 @target_type = 'SqlDatabase',
 @server_name = 'server1.database.chinacloudapi.cn',
-@database_name = 'master'
+@database_name = 'master';
 
 -- Add a job to collect perf results
 EXEC jobs.sp_add_job
 @job_name = 'ResultsPoolsJob',
 @description = 'Demo: Collection Performance data from all pools',
 @schedule_interval_type = 'Minutes',
-@schedule_interval_count = 15
+@schedule_interval_count = 15;
 
 -- Add a job step w/ schedule to collect results
 EXEC jobs.sp_add_jobstep
@@ -247,61 +249,61 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
         avg_storage_percent, elastic_pool_storage_limit_mb FROM sys.elastic_pool_resource_stats
         WHERE end_time > @poolStartTime and end_time <= @poolEndTime;
 '),
-@credential_name = 'myjobcred',
-@target_group_name = 'MasterGroup',
+@credential_name = 'job_credential',
+@target_group_name = 'ElasticJobGroup',
 @output_type = 'SqlDatabase',
-@output_credential_name = 'myjobcred',
+@output_credential_name = 'job_credential',
 @output_server_name = 'server1.database.chinacloudapi.cn',
 @output_database_name = 'resultsdb',
-@output_table_name = 'resutlstable'
+@output_table_name = 'resutlstable';
 ```
 
 ## <a name="view-job-definitions"></a>查看作业定义
 
 以下示例演示了如何查看当前的作业定义。  
-连接到[作业数据库](job-automation-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](job-automation-overview.md#elastic-job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
 -- View all jobs
-SELECT * FROM jobs.jobs
+SELECT * FROM jobs.jobs;
 
 -- View the steps of the current version of all jobs
 SELECT js.* FROM jobs.jobsteps js
 JOIN jobs.jobs j
-  ON j.job_id = js.job_id AND j.job_version = js.job_version
+  ON j.job_id = js.job_id AND j.job_version = js.job_version;
 
 -- View the steps of all versions of all jobs
-select * from jobs.jobsteps
+SELECT * FROM jobs.jobsteps;
 ```
 
 ## <a name="begin-unplanned-execution-of-a-job"></a>开始非计划的作业执行过程
 
 以下示例演示如何立即启动作业。  
-连接到[作业数据库](job-automation-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](job-automation-overview.md#elastic-job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
 -- Execute the latest version of a job
-EXEC jobs.sp_start_job 'CreateTableTest'
+EXEC jobs.sp_start_job 'CreateTableTest';
 
 -- Execute the latest version of a job and receive the execution id
-declare @je uniqueidentifier
-exec jobs.sp_start_job 'CreateTableTest', @job_execution_id = @je output
-select @je
+declare @je uniqueidentifier;
+exec jobs.sp_start_job 'CreateTableTest', @job_execution_id = @je output;
+select @je;
 
-select * from jobs.job_executions where job_execution_id = @je
+select * from jobs.job_executions where job_execution_id = @je;
 
 -- Execute a specific version of a job (e.g. version 1)
-exec jobs.sp_start_job 'CreateTableTest', 1
+exec jobs.sp_start_job 'CreateTableTest', 1;
 ```
 
 ## <a name="schedule-execution-of-a-job"></a>计划作业的执行
 
 以下示例演示如何计划一项将来执行的作业。  
-连接到[作业数据库](job-automation-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](job-automation-overview.md#elastic-job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -310,13 +312,13 @@ EXEC jobs.sp_update_job
 @job_name = 'ResultsJob',
 @enabled=1,
 @schedule_interval_type = 'Minutes',
-@schedule_interval_count = 15
+@schedule_interval_count = 15;
 ```
 
 ## <a name="monitor-job-execution-status"></a>监视作业执行状态
 
 以下示例演示如何查看所有作业的执行状态详细信息。  
-连接到[作业数据库](job-automation-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](job-automation-overview.md#elastic-job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -324,27 +326,27 @@ EXEC jobs.sp_update_job
 --View top-level execution status for the job named 'ResultsPoolJob'
 SELECT * FROM jobs.job_executions
 WHERE job_name = 'ResultsPoolsJob' and step_id IS NULL
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 
 --View all top-level execution status for all jobs
 SELECT * FROM jobs.job_executions WHERE step_id IS NULL
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 
 --View all execution statuses for job named 'ResultsPoolsJob'
 SELECT * FROM jobs.job_executions
 WHERE job_name = 'ResultsPoolsJob'
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 
 -- View all active executions
 SELECT * FROM jobs.job_executions
 WHERE is_active = 1
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 ```
 
 ## <a name="cancel-a-job"></a>取消作业
 
 以下示例演示如何取消作业。  
-连接到[作业数据库](job-automation-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](job-automation-overview.md#elastic-job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -352,23 +354,23 @@ ORDER BY start_time DESC
 -- View all active executions to determine job execution id
 SELECT * FROM jobs.job_executions
 WHERE is_active = 1 AND job_name = 'ResultPoolsJob'
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 GO
 
 -- Cancel job execution with the specified job execution id
-EXEC jobs.sp_stop_job '01234567-89ab-cdef-0123-456789abcdef'
+EXEC jobs.sp_stop_job '01234567-89ab-cdef-0123-456789abcdef';
 ```
 
 ## <a name="delete-old-job-history"></a>删除旧的作业历史记录
 
 以下示例演示如何删除特定日期之前的作业历史记录。  
-连接到[作业数据库](job-automation-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](job-automation-overview.md#elastic-job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
 -- Delete history of a specific job's executions older than the specified date
-EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-01 00:00:00'
+EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-01 00:00:00';
 
 --Note: job history is automatically deleted if it is >45 days old
 ```
@@ -376,19 +378,19 @@ EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-
 ## <a name="delete-a-job-and-all-its-job-history"></a>删除作业及其所有历史记录
 
 以下示例演示如何删除作业以及所有相关的作业历史记录。  
-连接到[作业数据库](job-automation-overview.md#job-database)，然后运行以下命令：
+连接到[作业数据库](job-automation-overview.md#elastic-job-database)，然后运行以下命令：
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
-EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
+EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob';
 
 --Note: job history is automatically deleted if it is >45 days old
 ```
 
 ## <a name="job-stored-procedures"></a>作业存储过程
 
-以下存储过程位于[作业数据库](job-automation-overview.md#job-database)中。
+以下存储过程位于[作业数据库](job-automation-overview.md#elastic-job-database)中。
 
 |存储过程  |说明  |
 |---------|---------|
@@ -1024,10 +1026,10 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 要向其添加成员的目标组的名称。 target_group_name 为 nvarchar(128)，没有默认值。
 
 [ **\@membership_type =** ] 'membership_type'  
-指定是包括目标组成员还是将其排除。 target_group_name 为 nvarchar(128)，默认值为“Include”。 membership_type 的有效值为“Include”或“Exclude”。
+指定是包括目标组成员还是将其排除。 target_group_name 为 nvarchar(128)，默认值为 'Include'。 membership_type 的有效值为“Include”或“Exclude”。
 
 [ **\@target_type =** ] 'target_type'  
-目标数据库或数据库集合的类型，其中包括一个服务器中的所有数据库、一个弹性池中的所有数据库、一个分片映射中的所有数据库，或者一个单独的数据库。 target_type 为 nvarchar(128)，没有默认值。 target_type 的有效值为 'SqlServer'、'SqlElasticPool'、'SqlDatabase' 或 'SqlShardMap'。 
+目标数据库或数据库集合的类型，其中包括一个服务器中的所有数据库、一个弹性池中的所有数据库、一个分片映射中的所有数据库，或者一个单独的数据库。 target_type 为 nvarchar(128)，没有默认值。 target_type 的有效值为 'SqlServer'、'SqlElasticPool'、'SqlDatabase' 或 'SqlShardMap'。
 
 [ **\@refresh_credential_name =** ] 'refresh_credential_name'  
 数据库范围的凭据的名称。 refresh_credential_name 为 nvarchar(128)，没有默认值。
@@ -1066,18 +1068,18 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 ```sql
 --Connect to the jobs database specified when creating the job agent
-USE ElasticJobs ;
+USE ElasticJobs;
 GO
 
 -- Add a target group containing server(s)
-EXEC jobs.sp_add_target_group @target_group_name =  N'Servers Maintaining Customer Information'
+EXEC jobs.sp_add_target_group @target_group_name =  N'Servers Maintaining Customer Information';
 GO
 
 -- Add a server target member
 EXEC jobs.sp_add_target_group_member
 @target_group_name = N'Servers Maintaining Customer Information',
 @target_type = N'SqlServer',
-@refresh_credential_name=N'mymastercred', --credential required to refresh the databases in server
+@refresh_credential_name=N'refresh_credential', --credential required to refresh the databases in server
 @server_name=N'London.database.chinacloudapi.cn' ;
 GO
 
@@ -1085,7 +1087,7 @@ GO
 EXEC jobs.sp_add_target_group_member
 @target_group_name = N'Servers Maintaining Customer Information',
 @target_type = N'SqlServer',
-@refresh_credential_name=N'mymastercred', --credential required to refresh the databases in server
+@refresh_credential_name=N'refresh_credential', --credential required to refresh the databases in server
 @server_name=N'NewYork.database.chinacloudapi.cn' ;
 GO
 
@@ -1140,12 +1142,12 @@ GO
 
 -- Retrieve the target_id for a target_group_members
 declare @tid uniqueidentifier
-SELECT @tid = target_id FROM [jobs].target_group_members WHERE target_group_name = 'Servers Maintaining Customer Information' and server_name = 'London.database.chinacloudapi.cn'
+SELECT @tid = target_id FROM [jobs].target_group_members WHERE target_group_name = 'Servers Maintaining Customer Information' and server_name = 'London.database.chinacloudapi.cn';
 
 -- Remove a target group member of type server
 EXEC jobs.sp_delete_target_group_member
 @target_group_name = N'Servers Maintaining Customer Information',
-@target_id = @tid
+@target_id = @tid;
 GO
 ```
 
@@ -1203,7 +1205,7 @@ GO
 
 ## <a name="job-views"></a>作业视图
 
-以下视图在[作业数据库](job-automation-overview.md#job-database)中提供。
+以下视图在[作业数据库](job-automation-overview.md#elastic-job-database)中提供。
 
 |查看  |说明  |
 |---------|---------|

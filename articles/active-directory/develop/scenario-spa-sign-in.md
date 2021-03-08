@@ -1,5 +1,6 @@
 ---
-title: 单页应用登录和注销 - Microsoft 标识平台 | Azure
+title: 单页应用登录和注销
+titleSuffix: Microsoft identity platform
 description: 了解如何生成单页应用程序（登录）
 services: active-directory
 author: navyasric
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/23/2020
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: 811d7061e4f29479bd124d8f9e8b1d357d272f6d
-ms.sourcegitcommit: 883daddafe881e5f8a9f347df2880064d2375b6d
+ms.openlocfilehash: db39b6d22206f42102beaa206eb977efcd119eeb
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95918360"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696656"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>单页应用程序：登录和注销
 
@@ -207,7 +208,7 @@ myMsal.loginRedirect(loginRequest);
 
 # <a name="javascript-msaljs-1x"></a>[JavaScript (MSAL.js 1.x)](#tab/javascript1)
 
-重定向方法不会返回承诺，因为已从主应用离开。 若要处理并访问返回的令牌，需要在调用重定向方法之前注册成功和错误回叫。
+重定向方法不会返回承诺，因为已从主应用离开。 若要处理并访问返回的令牌，请在调用重定向方法之前注册成功和错误回叫。
 
 ```javascript
 
@@ -307,4 +308,3 @@ this.authService.logout();
 ## <a name="next-steps"></a>后续步骤
 
 转到此方案中的下一篇文章：[获取应用的令牌](scenario-spa-acquire-token.md)。
-

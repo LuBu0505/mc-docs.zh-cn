@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 02/25/2021
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6b7c876ec346d5d2e31abebb90938e6e52ff69f7
-ms.sourcegitcommit: daf7317c80f13e459469bbc507786520c8fa6d70
+ms.openlocfilehash: ca34ab310677b3efd995de48fff3b3ad5eb7bad5
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89046527"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697734"
 ---
 # <a name="blocking-legacy-authentication"></a>阻止旧式身份验证
  
@@ -37,6 +37,7 @@ ms.locfileid: "89046527"
 1. 按“客户端应用”进行筛选，然后选中显示的所有“旧式身份验证客户端”选项。 
 1. 按“状态” > “成功”进行筛选。  
 1. 如果需要，请使用“日期”筛选器扩展日期范围。
+1. 如果你已激活[新登录活动报告预览](../reports-monitoring/concept-all-sign-ins.md)，请在“用户登录(非交互式)”选项卡上也重复上述步骤。
 
 筛选将仅显示通过所选旧式身份验证协议成功进行的登录尝试。 单击每个登录尝试会显示更多详细信息。 选择单个数据行后，“基本信息”选项卡下的“客户端应用”列或“客户端应用”字段将指示使用了哪个旧式身份验证协议。 这些日志将指示哪些用户仍然依赖于旧式身份验证，以及哪些应用程序正在使用旧式协议发出身份验证请求。 对于未出现在这些日志中且已被确认不使用旧式身份验证的用户，请仅为这些用户实施条件访问策略，或启用“基线策略: 阻止旧式身份验证”。
 
@@ -101,4 +102,3 @@ SharePoint Online 在默认情况下已启用新式身份验证。 对于在 201
 - [如何将本地 Exchange Server 配置为使用混合新式身份验证](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
 - [如何在 Skype for Business 中使用新式身份验证 (ADAL)](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
 - [阻止旧式身份验证](../conditional-access/block-legacy-authentication.md)
-

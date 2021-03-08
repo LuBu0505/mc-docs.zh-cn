@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/05/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 385108c14bfdca1644abc1969dfb5c25fbf19a72
-ms.sourcegitcommit: dfdb65cef6a6b089992644f075b9c3f444cb8e36
+ms.openlocfilehash: 9e53f4050143100aaaa7d34dc3438e1f9b1c2c63
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98793975"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697972"
 ---
 # <a name="handle-errors-and-exceptions-in-msalnet"></a>处理 MSAL.NET 中的错误和异常
 
@@ -28,7 +28,7 @@ ms.locfileid: "98793975"
 
 处理 .NET 异常时，可以使用异常类型本身和 `ErrorCode` 成员来区分不同的异常。 `ErrorCode` 的值是 [MsalError](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msalerror) 类型的常量。
 
-也可以查看 [MsalClientException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msalexception)、[MsalServiceException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msalserviceexception) 和 [MsalUIRequiredException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msaluirequiredexception) 的字段。
+也可以查看 [MsalClientException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msalexception)、[MsalServiceException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msalserviceexception) 和 [MsalUIRequiredException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msaluirequiredexception) 字段。
 
 如果引发 [MsalServiceException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msalserviceexception)，请尝试查看[身份验证和授权错误代码](reference-aadsts-error-codes.md)，以查看其中是否列出了相关代码。
 
@@ -38,20 +38,20 @@ ms.locfileid: "98793975"
 
 | 异常 | 错误代码 | 缓解措施|
 | --- | --- | --- |
-| [MsalUiRequiredException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msaluirequiredexception) | AADSTS65001：用户或管理员尚未许可使用名为“{appName}”、ID 为“{appId}”的应用程序。 针对此用户和资源发送交互式授权请求。| 需要先获取用户的许可。 如果未使用 .NET Core（它没有任何 Web UI），请调用 `AcquireTokeninteractive`（仅一次）。 如果使用 .NET Core 或者不希望执行 `AcquireTokenInteractive`，则用户可以导航到某个 URL 来提供许可：`https://login.partner.microsoftonline.cn/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read`。 若要调用 `AcquireTokenInteractive`，请使用 `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
-| [MsalUiRequiredException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msaluirequiredexception) | AADSTS50079：用户必须使用[多重身份验证 (MFA)](../authentication/concept-mfa-howitworks.md)。| 无缓解措施。 如果为租户配置了 MFA 并且 Azure Active Directory (AAD) 决定强制实施 MFA，则需要回退到 `AcquireTokenInteractive` 或 `AcquireTokenByDeviceCode` 等交互式流。|
-| [MsalServiceException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msalserviceexception) |AADSTS90010：不支持通过 */common* 或 */consumers* 终结点的授予类型。 请使用 */organizations* 或特定于租户的终结点。 使用了 */common*。| 根据 Azure AD 发出的消息中所述，颁发机构需要使用一个租户或 */organizations*。|
-| [MsalServiceException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msalserviceexception) | AADSTS70002：请求正文必须包含以下参数：`client_secret or client_assertion`。| 如果应用程序未注册为 Azure AD 中的公共客户端应用程序，则可能会引发此异常。 在 Azure 门户中编辑应用程序的清单，并将 `allowPublicClient` 设置为 `true`。 |
+| [MsalUiRequiredException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msaluirequiredexception) | AADSTS65001：用户或管理员尚未许可使用名为“{appName}”、ID 为“{appId}”的应用程序。 针对此用户和资源发送交互式授权请求。| 首先获取用户同意。 如果未使用 .NET Core（它没有任何 Web UI），请调用 `AcquireTokeninteractive`（仅一次）。 如果使用 .NET Core 或者不希望执行 `AcquireTokenInteractive`，则用户可以导航到某个 URL 来提供许可：`https://login.partner.microsoftonline.cn/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read`。 要调用 `AcquireTokenInteractive`，请使用 `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
+| [MsalUiRequiredException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msaluirequiredexception) | AADSTS50079：用户必须使用[多重身份验证 (MFA)](../authentication/concept-mfa-howitworks.md)。| 无缓解措施。 如果已为租户配置 MFA 并且 Azure Active Directory (AAD) 决定对其进行强制实施，则回退到 `AcquireTokenInteractive` 或 `AcquireTokenByDeviceCode` 等交互式流。|
+| [MsalServiceException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msalserviceexception) |AADSTS90010：/common 或 /consumers 终结点不支持此授权类型 。 请使用 */organizations* 或特定于租户的终结点。 使用了 */common*。| 根据 Azure AD 发出的消息中所述，颁发机构需要使用一个租户或 */organizations*。|
+| [MsalServiceException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msalserviceexception) | AADSTS70002：请求正文必须包含以下参数：`client_secret or client_assertion`。| 如果应用程序未注册为 Azure AD 中的公共客户端应用程序，则可能引发此异常。 在 Azure 门户中编辑应用程序的清单，并将 `allowPublicClient` 设置为 `true`。 |
 | [MsalClientException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msalclientexception)| `unknown_user Message`：无法识别已登录的用户| 库无法查询当前的 Windows 已登录用户，或者此用户未加入 AD 或 Azure AD（已加入工作区的用户不受支持）。 缓解措施 1：在 UWP 中，检查应用程序是否具有以下功能：企业身份验证、专用网络（客户端和服务器）、用户帐户信息。 缓解措施 2：实现自己的逻辑以提取用户名（例如 john@contoso.com），并使用 `AcquireTokenByIntegratedWindowsAuth` 表单来提取用户名。|
-| [MsalClientException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msalclientexception)|integrated_windows_auth_not_supported_managed_user| 此方法依赖于 Active Directory (AD) 公开的协议。 如果在 Azure AD 中创建了一个用户但该用户不受 AD 的支持（“托管”用户），则此方法将会失败。 在 AD 中创建的受 Azure AD 支持的用户（“联合”用户）可以受益于这种非交互式身份验证方法。 缓解措施：使用交互式身份验证。|
+| [MsalClientException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msalclientexception)|integrated_windows_auth_not_supported_managed_user| 此方法依赖于 Active Directory (AD) 公开的协议。 如果在 Azure AD 中创建了一个用户但该用户不受 AD 的支持（“托管”用户），则此方法将会失败。 在 AD 中创建的受 Azure AD 支持的用户（“联合”用户）可以受益于这种非交互式身份验证方法。 缓解：使用交互式身份验证。|
 
 ### `MsalUiRequiredException`
 
-调用 `AcquireTokenSilent()` 时，从 MSAL.NET 返回的一个常见状态代码是 `MsalError.InvalidGrantError`。 此状态代码表示应用程序应再次调用身份验证库，但要在交互模式下调用（用于公共客户端应用程序的 AcquireTokenInteractive 或 AcquireTokenByDeviceCodeFlow 会在 Web 应用中执行质询）。 这是因为，只有在完成额外的用户交互之后，才能颁发身份验证令牌。
+调用 `AcquireTokenSilent()` 时，从 MSAL.NET 返回的其中一个常见状态代码是 `MsalError.InvalidGrantError`。 此状态代码表示应用程序应再次调用身份验证库，但要在交互模式下调用（用于公共客户端应用程序的 AcquireTokenInteractive 或 AcquireTokenByDeviceCodeFlow 会在 Web 应用中执行质询）。 这是因为在颁发身份验证令牌之前，需要进行其他用户交互。
 
-在大多数情况下，`AcquireTokenSilent` 失败的原因是令牌缓存中没有与请求匹配的令牌。 访问令牌将在 1 小时后过期，`AcquireTokenSilent` 会尝试基于刷新令牌获取新令牌（在 OAuth2 中，这称为“刷新令牌”流）。 此流也可能出于各种原因（例如，租户管理员配置了更严格的登录策略）而失败。 
+大多数情况下，`AcquireTokenSilent` 失败的原因是，令牌缓存没有与请求匹配的令牌。 访问令牌将在 1 小时后过期，`AcquireTokenSilent` 将尝试基于刷新令牌获取新的令牌（在 OAuth2 术语中，这是刷新令牌流）。 此流也可能因各种原因而失败，例如，如果租户管理员配置了更严格的登录策略。 
 
-交互的目的是让用户采取某种措施。 在这些条件中，有些对于用户来说很容易解决（例如，通过单击接受使用条款），而有些则无法通过当前配置进行解决（例如，有问题的计算机需要连接到特定的公司网络）。 有些条件可帮助用户设置多重身份验证，或者在其设备上安装 Microsoft Authenticator。
+交互的目标在于让用户执行一项操作。 在这些条件中，有些对于用户来说很容易解决（例如，通过单击接受使用条款），而有些则无法通过当前配置进行解决（例如，有问题的计算机需要连接到特定的公司网络）。 有些条件可帮助用户设置多重身份验证，或者在其设备上安装 Microsoft Authenticator。
 
 ### <a name="msaluirequiredexception-classification-enumeration"></a>`MsalUiRequiredException` 分类枚举
 
@@ -59,14 +59,14 @@ MSAL 公开一个 `Classification` 字段，你可以读取该字段，以便提
 
 | 分类    | 含义           | 建议的处理方式 |
 |-------------------|-------------------|----------------------|
-| BasicAction | 在交互式身份验证流期间，可通过用户交互来解决条件。 | 调用 AcquireTokenInteractively()。 |
-| AdditionalAction | 在交互式身份验证流以外，可以通过与系统进行附加的补救交互来解决条件。 | 调用 AcquireTokenInteractively() 以显示一条解释补救措施的消息。 如果用户不太可能完成补救措施，调用方应用程序可以选择隐藏需要 additional_action 的流。 |
-| MessageOnly      | 目前无法解决条件。 启动交互式身份验证流会显示一条解释该条件的消息。 | 调用 AcquireTokenInteractively() 以显示一条解释该条件的消息。 用户阅读该消息并关闭窗口后，AcquireTokenInteractively() 将返回 UserCanceled 错误。 如果该消息不太可能会为用户带来帮助，调用方应用程序可以选择隐藏导致 message_only 的流。|
-| ConsentRequired  | 用户许可缺失或已撤销。 | 调用 AcquireTokenInteractively()，让用户提供许可。 |
-| UserPasswordExpired | 用户的密码已过期。 | 调用 AcquireTokenInteractively()，使用户能够重置其密码。 |
-| PromptNeverFailed| 已结合参数 prompt=never 调用交互式身份验证，这会强制 MSAL 依赖于浏览器 Cookie，且不显示浏览器。 此操作已失败。 | 调用 AcquireTokenInteractively() 但不指定 Prompt.None |
-| AcquireTokenSilentFailed | MSAL SDK 没有足够的信息，无法从缓存中提取令牌。 原因可能是缓存中没有令牌，或找不到帐户。 错误消息中提供了更多详细信息。  | 调用 AcquireTokenInteractively()。 |
-| 无    | 不提供更多详细信息。 在交互式身份验证流期间，可通过用户交互来解决条件。 | 调用 AcquireTokenInteractively()。 |
+| BasicAction | 在交互式身份验证流中，条件可以通过用户交互来解决。 | 调用 AcquireTokenInteractively()。 |
+| AdditionalAction | 在交互式身份验证流之外，条件可以通过与系统进行其他补救交互来解决。 | 调用 AcquireTokenInteractively() 以显示一条说明补救操作的消息。 如果用户不太可能完成补救操作，则调用应用程序可能会选择隐藏需要 additional_action 的流。 |
+| MessageOnly      | 条件目前无法解决。 启动交互式身份验证流将显示一条说明条件的消息。 | 调用 AcquireTokenInteractively() 以显示一条说明条件的消息。 用户读取该消息并关闭窗口后，AcquireTokenInteractively() 将返回 UserCanceled 错误。 如果用户不太可能从该消息中获益，则调用应用程序可能会选择隐藏导致 message_only 的流。|
+| ConsentRequired  | 用户许可缺失或已撤销。 | 调用 AcquireTokenInteractively()，以取得用户许可。 |
+| UserPasswordExpired | 用户的密码已过期。 | 调用 AcquireTokenInteractively()，以便用户可以重置其密码。 |
+| PromptNeverFailed| 通过参数 prompt=never 调用交互式身份验证，强制 MSAL 依赖浏览器 cookie，而不是显示浏览器。 此操作已失败。 | 在没有 Prompt.None 的情况下，调用 AcquireTokenInteractively() |
+| AcquireTokenSilentFailed | MSAL SDK 没有足够的信息，无法从缓存中获取令牌。 这可能是因为缓存中没有令牌，或找不到帐户。 此错误消息包含更多详细信息。  | 调用 AcquireTokenInteractively()。 |
+| 无    | 未提供更多详细信息。 在交互式身份验证流中，条件可以通过用户交互来解决。 | 调用 AcquireTokenInteractively()。 |
 
 ## <a name="net-code-example"></a>.NET 代码示例
 
@@ -129,7 +129,7 @@ catch (MsalUiRequiredException ex) when (ex.ErrorCode == MsalError.InvalidGrantE
 
 从 MSAL.NET 调用需要条件访问的 API 时，应用程序需要处理声明质询异常。 此错误将显示为 [MsalServiceException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msalserviceexception)，其中的 [Claims](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msalserviceexception.claims) 属性不为空。
 
-若要处理声明质询，需要使用 `PublicClientApplicationBuilder` 类的 `.WithClaim()` 方法。
+要处理声明质询，需要使用 `PublicClientApplicationBuilder` 类的 `.WithClaim()` 方法。
 
 [!INCLUDE [Active directory error handling retries](../../../includes/active-directory-develop-error-handling-retries.md)]
 
@@ -137,9 +137,9 @@ catch (MsalUiRequiredException ex) when (ex.ErrorCode == MsalError.InvalidGrantE
 
 对于 HTTP 错误代码为 500-600 的错误，MSAL.NET 实现一个简单的重试一次机制。
 
-[MsalServiceException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msalserviceexception) 以 `namedHeaders` 属性的形式公开 `System.Net.Http.Headers.HttpResponseHeaders`。 可以使用错误代码中的附加信息来提高应用程序的可靠性。 对于前面所述的场景，可以使用 `RetryAfterproperty`（类型为 `RetryConditionHeaderValue`）并计算重试时间。
+[MsalServiceException](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.msalserviceexception) 将 `System.Net.Http.Headers.HttpResponseHeaders` 作为 `namedHeaders` 属性展现。 可以利用错误代码中的附加信息来提高应用程序的可靠性。 对于前面所述的情况，可以使用 `RetryConditionHeaderValue` 类型的 `RetryAfterproperty` 并计算重试时间。
 
-下面是使用客户端凭据流的守护程序应用程序示例。 可以根据用于获取令牌的方法改编此示例。
+下面是使用客户端凭据流的守护程序示例。 可以将此流修改为使用任何用于获取令牌的方法。
 
 ```csharp
 
@@ -177,5 +177,4 @@ do
 
 ## <a name="next-steps"></a>后续步骤
 
-请考虑[在 MSAL.NET 中启用日志记录](msal-logging.md?tabs=dotnet)，以帮助你诊断和调试问题。
-
+请考虑启用 [MSAL.NET 中的日志](msal-logging-dotnet.md)，以帮助诊断并调试问题。

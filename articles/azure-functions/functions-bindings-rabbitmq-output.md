@@ -4,15 +4,15 @@ description: 了解如何从 Azure Functions 发送 RabbitMQ 消息。
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.author: v-junlch
 ms.custom: ''
-ms.openlocfilehash: 958b35f6febbeed051cafced58fbac67f24a202d
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 7cbc0411bf01ae0e1cb4d2a8cca1fc3e2b3be8b5
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023930"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697768"
 ---
 # <a name="rabbitmq-output-binding-for-azure-functions-overview"></a>适用于 Azure Functions 的 RabbitMQ 输出绑定概述
 
@@ -160,7 +160,7 @@ module.exports = function (context, input) {
 
 # <a name="java"></a>[Java](#tab/java)
 
-以下示例演示了一个 Java 函数，该函数在由 TimerTrigger 每 5 分钟触发一次时，将消息发送到 RabbitMQ 队列。
+以下 Java 函数使用 [Java RabbitMQ 类型](https://mvnrepository.com/artifact/com.microsoft.azure.functions/azure-functions-java-library-rabbitmq)中的 `@RabbitMQOutput` 注释来说明 RabbitMQ 队列输出绑定的配置。 该函数由 TimerTrigger 每 5 分钟触发一次，并在触发时将消息发送到 RabbitMQ 队列。
 
 ```java
 @FunctionName("RabbitMQOutputExample")
@@ -257,7 +257,7 @@ JavaScript 不支持特性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-队列消息可通过 context.bindings 获得。<NAME> 其中 <NAME> 与 function.json 中定义的名称相匹配。 如果有效负载为 JSON，该值将反序列化为对象。
+队列消息可通过 context.bindings 获得<NAME>。 其中 <NAME> 与 function.json 中定义的名称相匹配。 如果有效负载为 JSON，该值将反序列化为对象。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -272,4 +272,3 @@ JavaScript 不支持特性。
 ## <a name="next-steps"></a>后续步骤
 
 - [在创建 RabbitMQ 消息时运行函数（触发器）](./functions-bindings-rabbitmq-trigger.md)
-

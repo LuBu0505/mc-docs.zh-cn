@@ -1,23 +1,18 @@
 ---
 title: 使用 Azure 数据工厂从 REST 终结点复制数据以及向其中复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从云或本地 REST 源复制到受支持的接收器数据存储，或者从受支持的源数据存储复制到 REST 接收器。
-services: data-factory
-documentationcenter: ''
 author: WenJason
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 origin.date: 12/08/2020
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.author: v-jay
-ms.openlocfilehash: b058f58f8b60257bff9263a752b1f665b175caa3
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 7d986f3bfdf8aabb024636d46e1d6a7e155527cf
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829863"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697284"
 ---
 # <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 REST 终结点复制数据以及向其中复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -27,7 +22,7 @@ ms.locfileid: "97829863"
 此 REST 连接器、[HTTP 连接器](connector-http.md)和 [Web 表连接器](connector-web-table.md)之间的区别如下：
 
 - **REST 连接器** 专门支持从 RESTful API 复制数据； 
-- “HTTP 连接器”是通用的，可从任何 HTTP 终结点检索数据，以执行文件下载等操作。 在此 REST 连接器可用之前，可以偶尔使用 HTTP 连接器从 RESTful API 复制数据，这是受支持的，但 HTTP 连接器与 REST 连接器相比功能较少。
+- “HTTP 连接器”是通用的，可从任何 HTTP 终结点检索数据，以执行文件下载等操作。 在使用此 REST 连接器之前，你可能会偶尔使用 HTTP 连接器从 RESTful API 复制数据，虽然 HTTP 连接器受支持，但与 REST 连接器相比功能较少。
 - **Web 表连接器** 用于从 HTML 网页中提取表内容。
 
 ## <a name="supported-capabilities"></a>支持的功能
@@ -58,7 +53,7 @@ ms.locfileid: "97829863"
 
 REST 链接服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **RestService**  。 | 是 |
 | url | REST 服务的基 URL。 | 是 |
@@ -70,7 +65,7 @@ REST 链接服务支持以下属性：
 
 将 **authenticationType** 属性设置为 **Basic**。 除了前面部分所述的通用属性，还指定以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | userName | 用于访问 REST 终结点的用户名。 | 是 |
 | password | 用户（userName 值）的密码  。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中  。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -103,7 +98,7 @@ REST 链接服务支持以下属性：
 
 将 **authenticationType** 属性设置为 **AadServicePrincipal**。 除了前面部分所述的通用属性，还指定以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | servicePrincipalId | 指定 Azure Active Directory 应用程序的客户端 ID。 | 是 |
 | servicePrincipalKey | 指定 Azure Active Directory 应用程序的密钥。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或 [引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -173,7 +168,7 @@ REST 链接服务支持以下属性：
 
 若要从 REST 复制数据，支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 属性必须设置为 **RestResource**。 | 是 |
 | relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 HTTP 连接器从以下组合 URL 复制数据：`[URL specified in linked service]/[relative URL specified in dataset]`。 | 否 |
@@ -209,7 +204,7 @@ REST 链接服务支持以下属性：
 
 复制活动 **source** 部分支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **RestSource**。 | 是 |
 | requestMethod | HTTP 方法。 允许的值为 GET（默认值）和 POST 。 | 否 |
@@ -298,7 +293,7 @@ REST 链接服务支持以下属性：
 
 复制活动接收器部分中支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 RestSink 。 | 是 |
 | requestMethod | HTTP 方法。 允许的值为 POST（默认值）、PUT 和 PATCH。 | 否 |
@@ -386,7 +381,7 @@ REST 连接器作为接收器时适用于接受 JSON 的 REST API。 数据将�
 
 **示例：**
 
-Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一页的 URL 将在 *_paging.next_* 中表示：
+Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一页的 URL 将在 ***paging.next*** 中表示：
 
 ```json
 {
@@ -441,7 +436,7 @@ Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一
 ### <a name="about-the-solution-template"></a>关于解决方案模板
 
 该模板包含两个活动：
-- Web 活动检索持有者令牌，然后将其作为 Authorization 标头传递到后续的“复制”活动。
+- “Web”活动检索持有者令牌，然后将其作为 Authorization 标头传递到后续的“复制”活动  。
 - “复制”活动将数据从 REST 复制到 Azure Data Lake Storage  。
 
 该模板定义两个参数：

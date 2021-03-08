@@ -4,14 +4,14 @@ description: 了解 Azure Cache for Redis 高可用性功能和选项
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 02/18/2021
 ms.author: v-junlch
-ms.openlocfilehash: 3b9323d3ff908c50c5040b460c8762dd712d2480
-ms.sourcegitcommit: 33f2835ec41ca391eb9940edfcbab52888cf8a01
+ms.openlocfilehash: 510a5c38ce6cfea422cc2237d8c041fcdf025de3
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94326545"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697771"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Azure Cache for Redis 的高可用性
 
@@ -21,9 +21,8 @@ Azure Cache for Redis 使用多个称为“节点”的用于缓存的 VM 来实
 
 | 选项 | 说明 | 可用性 | 标准 | 高级 | Enterprise |
 | ------------------- | ------- | ------- | :------: | :---: | :---: |
-| [标准复制](#standard-replication)| 单个数据中心或可用性区域 (AZ) 中具有自动故障转移功能的双节点复制配置 | 99.9% |✔|✔|-|
-| [Enterprise 群集](#enterprise-cluster) | 链接了两个区域中的缓存实例，提供自动故障转移 | 99.9% |-|-|✔|
-| [异地复制](#geo-replication) | 两个区域中的链接缓存实例，具有用户控制的故障转移 | 99.9%（对于单个区域） |-|✔|-|
+| [标准复制](#standard-replication)| 单个数据中心中具有自动故障转移功能的双节点复制配置 | 99.9% |✔|✔|-|
+| [异地复制](#geo-replication) | 两个区域中的链接缓存实例，具有用户控制的故障转移 | 99.9%（“高级”层级，单区域） |-|✔|-|
 
 ## <a name="standard-replication"></a>标准复制
 
@@ -47,21 +46,32 @@ Azure Cache for Redis 使用多个称为“节点”的用于缓存的 VM 来实
 
 此外，Azure Cache for Redis 在高级层中允许更多副本节点。 可以为[多副本缓存](cache-how-to-multi-replicas.md)配置最多三个副本节点。 具有更多副本通常会提高复原能力，因为附加的节点会为主节点提供备份。 即使有更多副本，Azure Cache for Redis 实例仍可能会受到数据中心范围的或 AZ 范围的服务中断的严重影响。 通过将多个副本与[区域冗余](#zone-redundancy)结合使用，可以提高缓存可用性。
 
-## <a name="enterprise-cluster"></a>Enterprise 群集
+### <a name="premium-tier"></a>高级层
 
 >[!NOTE]
 >此功能以预览版提供。
 >
 >
 
+下图说明了“高级”层级的区域冗余配置：
+
+:::image type="content" source="media/cache-high-availability/zone-redundancy.png" alt-text="区域冗余设置":::
+   
+Azure Cache for Redis 在你选择的 AZ 上将节点以循环方式分布在区域冗余缓存中。 它还确定最初将哪个节点用作主节点。
+
+区域冗余缓存提供自动故障转移。 若当前主节点不可用，则由其中一个副本接管。 如果新的主节点位于不同的 AZ，则应用程序可能会遇到更长的缓存响应时间。 AZ 在地理位置上是分开的。 从一个 AZ 切换到另一 AZ 会改变应用程序和缓存的托管位置之间的物理距离。 此更改会影响应用程序到缓存的往返网络延迟。 额外的延迟应在大多数应用程序的可接受范围内。 建议对应用程序进行测试，以确保它可以正常使用区域冗余缓存。
+
+### <a name="enterprise-and-enterprise-flash-tiers"></a>Enterprise 和 Enterprise Flash 层级
+
 任一企业层中的缓存在 Redis Enterprise 群集上运行。 它需要在任何时候都保持奇数个服务器节点以便形成仲裁。 默认情况下，它由三个节点组成，每个节点都托管在专用 VM 上。 Enterprise 缓存有两个大小相同的数据节点和一个较小的仲裁节点 。 Enterprise Flash 缓存有三个大小相同的数据节点。 Enterprise 群集在内部将 Redis 数据划分为多个分区。 每个分区有一个主分区和至少一个副本 。 每个数据节点都包含一个或多个分区。 Enterprise 群集可确保任何分区的主分区和副本永远不会并置在同一数据节点上。 分区将数据从主分区异步复制到其相应的副本。
 
 当数据节点不可用或发生网络拆分时，会发生类似于[标准复制](#standard-replication)中描述的故障转移。 Enterprise 群集使用基于仲裁的模型来确定哪些未受影响的节点将参与新的仲裁。 它还根据需要将这些节点中的分区副本提升为主分区。
 
-
 ## <a name="geo-replication"></a>异地复制
 
-异地复制主要是为灾难恢复设计的。 它使你能够在另一 Azure 区域中配置 Azure Cache for Redis 实例，以便为主缓存提供备份。 [为 Azure Cache for Redis 设置异地复制](cache-how-to-geo-replication.md)提供了有关异地复制工作原理的详细说明。
+[异地复制](cache-how-to-geo-replication.md)是用于链接两个 Azure Cache for Redis 实例的机制，这两个实例通常跨越两个 Azure 区域。 一个缓存选作主链接缓存，另一个缓存指定为辅助链接缓存。 只有主链接缓存才接受读写请求。 写入主缓存的数据将复制到辅助链接缓存。 辅助链接缓存可服务于读取请求。 主缓存实例和辅助缓存实例之间的数据传输受 TLS 保护。
+
+异地复制主要是为灾难恢复设计的。 使用异地复制，可以将缓存数据备份至其他区域。 默认情况下，应用程序会对主要区域进行写入和读取操作。 可以选择将其配置为从次要区域进行读取。 如果应用程序的其余部分保留在主要区域中，则出于担心区域之间的网络延迟会增加的原因，异地复制不会提供自动故障转移。 需要通过取消链接辅助缓存来管理和启动故障转移。 这将使它提升为新的主实例。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -70,4 +80,3 @@ Azure Cache for Redis 使用多个称为“节点”的用于缓存的 VM 来实
 * [Azure Cache for Redis 高级服务层](cache-overview.md#service-tiers)
 * [将副本添加到 Azure Cache for Redis](cache-how-to-multi-replicas.md)
 * [为 Azure Cache for Redis 设置异地复制](cache-how-to-geo-replication.md)
-

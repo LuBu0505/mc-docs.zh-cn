@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/05/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: saeeda, oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 5bfa39878ecd16e9c3c36454349e80dfb9e030f1
-ms.sourcegitcommit: dfdb65cef6a6b089992644f075b9c3f444cb8e36
+ms.openlocfilehash: e405c1621bba783e0dfbee2c0bb20bc08e1f2ce1
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98793973"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696799"
 ---
 # <a name="handle-errors-and-exceptions-in-msal-for-iosmacos"></a>处理 MSAL for iOS/macOS 中的错误和异常
 
@@ -26,22 +26,22 @@ ms.locfileid: "98793973"
 
 ## <a name="error-handling-in-msal-for-iosmacos"></a>MSAL for iOS/macOS 中的错误处理
 
-[MSALError 枚举](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128)中列出了适用于 iOS 和 macOS 的 MSAL 错误的完整列表。
+[MSALError 枚举](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128)中列出了适用于 iOS 和 macOS 的 MSAL 完整错误列表。
 
 生成的所有 MSAL 错误都以 `MSALErrorDomain` 域返回。
 
-对于系统错误，MSAL 将从系统 API 返回原始 `NSError`。 例如，如果令牌获取因未建立网络连接而失败，则 MSAL 将返回错误，同时返回 `NSURLErrorDomain` 域和 `NSURLErrorNotConnectedToInternet` 代码。
+对于系统错误，MSAL 会从系统 API 返回原始 `NSError`。 例如，如果由于缺少网络连接，令牌获取失败，则 MSAL 会返回包含 `NSURLErrorDomain` 域和 `NSURLErrorNotConnectedToInternet` 代码的错误。
 
-建议至少在客户端处理以下两个 MSAL 错误：
+建议在客户端上至少处理以下两个 MSAL 错误：
 
-- `MSALErrorInteractionRequired`：用户必须执行交互式请求。 有许多状况可能会导致此错误，例如，身份验证会话过期，或需要满足额外的身份验证要求。 调用 MSAL 交互式令牌获取 API 可予以恢复。 
+- `MSALErrorInteractionRequired`：用户必须执行交互式请求。 很多条件都可能会导致此错误，例如身份验证会话过期或需要额外的身份验证要求。 调用 MSAL 交互式令牌获取 API 以进行恢复。 
 
-- `MSALErrorServerDeclinedScopes`：部分或所有范围被拒绝。 确定是仅使用授予的范围继续，还是停止登录过程。
+- `MSALErrorServerDeclinedScopes`：部分或全部作用域已被拒绝。 决定是继续使用唯一允许的作用域，还是停止登录过程。
 
 > [!NOTE]
-> 请只将 `MSALInternalError` 枚举用于参考和调试。 请勿尝试在运行时自动处理这些错误。 如果应用遇到属于 `MSALInternalError` 类别的任何错误，可以显示一条面向用户的常规消息来解释发生了什么情况。
+> `MSALInternalError` 枚举应仅用于引用和调试。 请勿尝试在运行时自动处理这些错误。 如果应用遇到属于 `MSALInternalError` 的任何错误，则可能希望显示一条面向用户的通用消息，说明所发生的情况。
 
-例如，`MSALInternalErrorBrokerResponseNotReceived` 表示用户未完成身份验证并已手动返回到应用。 在这种情况下，应用应该显示一条常规错误消息来指出身份验证未完成，并建议他们尝试再次进行身份验证。
+例如，`MSALInternalErrorBrokerResponseNotReceived` 表示用户未完成身份验证并已手动返回到应用。 在这种情况下，应用应显示一条通用错误消息，说明身份验证未完成，并建议他们尝试再次进行身份验证。
 
 以下 Objective-C 示例代码演示了处理某些常见错误状况的最佳做法。
 
@@ -231,9 +231,9 @@ ms.locfileid: "98793973"
 
 [!INCLUDE [Active directory error handling claims challenges](../../../includes/active-directory-develop-error-handling-claims-challenges.md)]
 
-适用于 iOS 和 macOS 的 MSAL 允许你在交互式和无提示令牌获取方案中请求特定声明。
+借助适用于 iOS 和 macOS 的 MSAL，你可以在交互式和静默令牌获取方案中请求特定的声明。
 
-若要请求自定义声明，请在 `MSALSilentTokenParameters` 或 `MSALInteractiveTokenParameters`中指定 `claimsRequest`。
+要请求自定义声明，请在 `MSALSilentTokenParameters` 或 `MSALInteractiveTokenParameters` 中指定 `claimsRequest`。
 
 有关详细信息，请参阅[使用适用于 iOS 和 macOS 的 MSAL 请求自定义声明](request-custom-claims.md)。
 
@@ -241,5 +241,4 @@ ms.locfileid: "98793973"
 
 ## <a name="next-steps"></a>后续步骤
 
-请考虑[在 MSAL iOS/macOS 中启用日志记录](msal-logging.md?tabs=swift)，以帮助你诊断和调试问题。
-
+请考虑启用 [ MSAL for iOS/macOS 中的日志记录](msal-logging-ios.md)，以帮助你诊断和调试问题。

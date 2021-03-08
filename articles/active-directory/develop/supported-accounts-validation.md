@@ -1,21 +1,22 @@
 ---
-title: 按受支持帐户类型列出的验证差异 - Microsoft 标识平台 | Azure
+title: 受支持帐户类型的验证差异 | Azure
+titleSuffix: Microsoft identity platform
 description: 了解向 Microsoft 标识平台注册应用时，不同受支持帐户类型的各种属性的验证差异。
 author: SureshJa
 ms.author: v-junlch
 manager: CelesteDG
-ms.date: 08/19/2020
+ms.date: 02/23/2021
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 21028311f01bbb392f4675cc73447a0c42e95eaa
-ms.sourcegitcommit: 7646936d018c4392e1c138d7e541681c4dfd9041
+ms.openlocfilehash: daa2ee97dcf795847dad6edb2f4a91c6d3a921ed
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88647544"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697629"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>按受支持帐户类型列出的验证差异 (signInAudience)
 
@@ -23,10 +24,10 @@ ms.locfileid: "88647544"
 
 这些方式包括：
 
-- *AzureADMyOrg*：仅限应用注册的组织目录中的帐户（单租户）
-- *AzureADMultipleOrgs*：任何组织目录中的帐户（多租户）
+- AzureADMyOrg：仅应用已注册的组织目录中的帐户（单租户）。
+- AzureADMultipleOrgs：任何组织目录中的帐户（多租户）。
 
-对于已注册的应用程序，可以在应用程序的“身份验证”  部分找到受支持帐户类型值。 也可以在**清单**中的 `signInAudience` 属性下找到它。
+对于已注册的应用程序，可以在应用程序的“身份验证”  部分找到受支持帐户类型值。 也可以在 **清单** 中的 `signInAudience` 属性下找到它。
 
 为此属性选择的值已影响其他应用对象属性。 因此，如果更改此属性，则可能需要先更改其他属性。
 
@@ -42,12 +43,11 @@ ms.locfileid: "88647544"
 | 此 API 定义的作用域 (`oauth2Permissions`) | 最大作用域名称长度为 120 个字符 <br><br> 对定义的作用域数没有限制* | 最大作用域名称长度为 120 个字符 <br><br> 对定义的作用域数没有限制* | | 
 | 授权客户端应用程序 (`preAuthorizedApplications`) | 无限制* | 无限制* |  
 | appRoles | 支持 <br> 无限制* | 支持 <br> 无限制* | 
-| 注销 URL | 允许 http://localhost <br><br> 最大长度为 255 个字符 | 允许 http://localhost <br><br> 最大长度为 255 个字符 |  
+| 前通道注销 URL | 允许 https://localhost <br><br> 不允许 `http` 方案 <br><br> 最大长度为 255 个字符 | 允许 https://localhost <br><br> 不允许 `http` 方案 <br><br> 最大长度为 255 个字符 | 
 
-*应用对象的所有集合属性有大约 1000 项的全局限制
+*应用对象的所有集合属性有大约 1000 项的全局限制。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[应用程序注册](app-objects-and-service-principals.md)
-- 了解[应用程序清单](reference-app-manifest.md)
-
+- 了解[应用程序注册](app-objects-and-service-principals.md)。
+- 了解[应用程序清单](reference-app-manifest.md)。

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 94a696e0d8c94b03772bde70b557f06a5396aa7e
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.openlocfilehash: 4a00de3aa7d1b03ee2635efca44c23c127c6c118
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126496"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696966"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>接受 v1.0 令牌中的 Web API 的范围
 
@@ -37,7 +37,7 @@ var scopes = new [] {  ResourceId+"/user_impersonation"};
 var scopes = [ ResourceId + "/user_impersonation"];
 ```
 
-若要使用 Microsoft Graph API (https:\//microsoftgraph.chinacloudapi.cn/) 通过 MSAL.NET Azure AD 进行读取和写入，需按以下示例所示创建范围列表：
+若要使用 Microsoft Graph API (https:\//microsoftgraph.chinacloudapi.cn/) 通过 MSAL.NET Azure AD 进行读取和写入，请按以下示例所示创建范围列表：
 
 ```csharp
 string ResourceId = "https://microsoftgraph.chinacloudapi.cn/";
@@ -49,7 +49,7 @@ var ResourceId = "https://microsoftgraph.chinacloudapi.cn/";
 var scopes = [ ResourceId + "Directory.Read", ResourceID + "Directory.Write"];
 ```
 
-若要写入对应于 Azure 资源管理器 API (https:\//management.core.chinacloudapi.cn/) 的范围，需要请求以下范围（请注意有两个斜杠）：
+若要写入对应于 Azure 资源管理器 API (https:\//management.core.chinacloudapi.cn/) 的范围，请求以下范围（请注意有两个斜杠）：
 
 ```csharp
 var scopes = new[] {"https://management.core.chinacloudapi.cn//user_impersonation"};
@@ -59,12 +59,12 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 ```
 
 > [!NOTE]
-> 你需要使用两个斜杠，这是因为，Azure 资源管理器 API 要求在其受众声明 (aud) 中使用一个斜杠，然后使用一个斜杠来分隔 API 名称与范围。
+> 使用两个斜杠是因为 Azure 资源管理器 API 要求在其受众声明 (aud) 中使用一个斜杠，然后使用一个斜杠来分隔 API 名称与范围。
 
 下面是 Azure AD 使用的逻辑：
 
 - 对于使用 v1.0 访问令牌（只能使用此类令牌）的 ADAL (Azure AD v1.0) 终结点，aud=resource
-- 对于要求资源访问令牌接受 v2.0 令牌的 MSAL（Microsoft 标识平台 (v2.0)）终结点，`aud=resource.AppId`
+- 对于要求资源访问令牌接受 v2.0 令牌的 MSAL（Microsoft 标识平台），`aud=resource.AppId`
 - 对于要求资源访问令牌接受 v1.0 令牌的 MSAL（v2.0 终结点）（与上面的情况相同），Azure AD 将提取最后一个斜杠前面的所有内容并将其用作资源标识符，以分析请求的范围中的所需受众。 因此，如果 https:\//database.chinacloudapi.cn 预期的受众为“https:\//database.chinacloudapi.cn/”，则需要请求的范围为“https:\//database.chinacloudapi.cn//.default”。 另请参阅 GitHub 问题 [#747：将省略资源 URL 的尾部斜杠，因为该斜杠会导致 SQL 身份验证失败](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
 
 ## <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>将请求访问权限范围限定为 v1.0 应用程序的所有权限
@@ -84,4 +84,3 @@ var scopes = [ ResourceId + "/.default"];
 ## <a name="scopes-to-request-for-a-client-credential-flowdaemon-app"></a>针对客户端凭据流/守护程序应用的请求的范围
 
 使用客户端凭据流时，要传递的范围也是 `/.default`。 这会让 Azure AD 知道管理员在应用程序注册中许可的所有应用级权限。
-

@@ -3,13 +3,13 @@ title: 管理录制策略 - Azure
 description: 本主题介绍如何管理录制策略。
 ms.topic: how-to
 oririn.date: 04/27/2020
-ms.date: 09/07/2020
-ms.openlocfilehash: 7a4d93c50ec8c97525dff8ce3c064d18b9a85cee
-ms.sourcegitcommit: 2eb5a2f53b4b73b88877e962689a47d903482c18
+ms.date: 03/08/2021
+ms.openlocfilehash: c931aa7e37613f049a31601e33889697e50b2ce9
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89413542"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697137"
 ---
 # <a name="manage-recording-policy"></a>管理录制策略
 
@@ -46,7 +46,7 @@ ms.locfileid: "89413542"
 * 指定当 blob 期限超过 30 天时，它们将从[热访问层移动到冷访问层](../../storage/blobs/storage-blob-storage-tiers.md?tabs=azure-portal)。
 * 如果 blob 期限超过 90 天，则将其删除。
 
-由于实时视频分析按指定的时间单位存档视频，因此资产将包含一系列 blob，每个片段一个 blob。 当生命周期管理策略生效并删除较旧的 blob 时，你将继续能够通过媒体服务 API 访问和播放剩余的 blob。 有关详细信息，请参阅[播放录制内容](playback-recordings-how-to.md)。 
+使用实时视频分析来记录到资产时，请指定 `segmentLength` 属性，该属性指示模块在将视频写入云之前聚合视频的最小持续时间（以秒为单位）。 你的资产将包含一系列片段，每个片段的创建时间戳都在上一个之后 `segmentLength`。 生命周期管理策略启动后，它会删除早于指定阈值的段。 但你可以继续通过媒体服务 API 访问和播放剩余的片段。 有关详细信息，请参阅[播放录制内容](playback-recordings-how-to.md)。 
 
 ## <a name="limitations"></a>限制
 

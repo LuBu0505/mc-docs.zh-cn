@@ -2,21 +2,21 @@
 title: 有关 Azure AD 域服务的常见问题解答 | Microsoft Docs
 description: 阅读并了解有关 Azure Active Directory 域服务的配置、管理和可用性方面的一些常见问题解答
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 48731820-9e8c-4ec2-95e8-83dba1e58775
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/20/2020
+ms.date: 02/26/2021
 ms.author: v-junlch
-ms.openlocfilehash: 246378afa27f331a00ad467eb77efbeb0bf757c5
-ms.sourcegitcommit: f436acd1e2a0108918a6d2ee9a1aac88827d6e37
+ms.openlocfilehash: 9cf780216d9865dd2d3539becb419b18edb84f40
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508645"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696841"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>有关 Azure Active Directory (AD) 域服务的常见问题 (FAQ)
 
@@ -106,7 +106,7 @@ ms.locfileid: "96508645"
 否。 你在托管域上没有管理权限。 你不可以在该域中使用“域管理员”和“企业管理员”权限。  本地 Active Directory 中的域管理员或企业管理员组成员在该托管域上也没有域/企业管理员权限。
 
 ### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>能否在托管域上使用 LDAP 或其他 AD 管理工具修改组成员身份？
-无法修改从 Azure Active Directory 同步到 Azure AD 域服务的用户和组，因为其来源是 Azure Active Directory。 可以修改源自托管域的任何用户或组。
+无法修改从 Azure Active Directory 同步到 Azure AD 域服务的用户和组，因为其来源是 Azure Active Directory。 这包括将用户或组从 AADDC 用户管理的组织单位移至自定义组织单位。 可以修改源自托管域的任何用户或组。  
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>对 Azure AD 目录的更改需要多长时间才可在托管域中显示？
 在 Azure AD 目录中使用 Azure AD UI 或 PowerShell 所做的更改将自动同步到托管域中。 此同步过程在后台运行。 没有规定此同步完成所有对象更改的时间段。
@@ -136,7 +136,7 @@ Azure AD 域服务托管域上的默认密码生存期为 90 天。 此密码生
 ## <a name="billing-and-availability"></a>计费和可用性
 
 * [Azure AD 域服务是付费服务吗？](#is-azure-ad-domain-services-a-paid-service)
-* [该服务是否有试用帐户？](#is-there-a-trial-account-for-the-service)
+* [该服务是否有试用版？](#is-there-a-trial-for-the-service)
 * [我能否暂停 Azure AD 域服务托管域？](#can-i-pause-an-azure-ad-domain-services-managed-domain)
 * [对于 DR 事件，是否可以将 Azure AD 域服务故障转移到另一个区域？](#can-i-pause-an-azure-ad-domain-services-managed-domain)
 * [是否可以从企业移动性套件 (EMS) 获取 Azure AD 域服务？是否需要 Azure AD Premium 才能使用 Azure AD 域服务？](#can-i-fail-over-azure-ad-domain-services-to-another-region-for-a-dr-event)
@@ -145,14 +145,14 @@ Azure AD 域服务托管域上的默认密码生存期为 90 天。 此密码生
 ### <a name="is-azure-ad-domain-services-a-paid-service"></a>Azure AD 域服务是付费服务吗？
 是的。 有关详细信息，请参阅[定价页](https://www.azure.cn/pricing/details/active-directory-ds/)。
 
-### <a name="is-there-a-trial-account-for-the-service"></a>该服务是否有试用帐户？
-Azure 的试用版中包含 Azure AD 域服务。 可以注册 [Azure 试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+### <a name="is-there-a-trial-for-the-service"></a>该服务是否有试用版？
+Azure 的试用版中包含 Azure AD 域服务。 可以注册 [Azure 试用版](https://www.microsoft.com/china/azure/index.html?fromtype=cn/)。
 
 ### <a name="can-i-pause-an-azure-ad-domain-services-managed-domain"></a>我能否暂停 Azure AD 域服务托管域？
 否。 一旦启用 Azure AD 域服务托管域，即可在选定的虚拟网络中使用该服务，直到删除托管域为止。 无法暂停该服务。 删除托管域前，会按小时对服务计费。
 
 ### <a name="can-i-fail-over-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>对于 DR 事件，是否可以将 Azure AD 域服务故障转移到另一个区域？
-否。 Azure AD 域服务当前未提供异地冗余部署模型。 它被限制到 Azure 区域中的单个虚拟网络。 如果希望利用多个 Azure 区域，需要在 Azure IaaS VM 上运行 Active Directory 域控制器。 
+是的，要为托管域提供异地复原能力，可以在支持 Azure AD DS 的任何 Azure 区域中为对等的虚拟网络创建一个额外的[副本集](tutorial-create-replica-set.md)。 副本集与托管域共享相同的命名空间和配置。
 
 ### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>是否可以从企业移动性套件 (EMS) 获取 Azure AD 域服务？ 是否需要 Azure AD Premium 才能使用 Azure AD 域服务？
 否。 Azure AD 域服务是即用即付的 Azure 服务，未包含在 EMS 中。 Azure AD 域服务可用于所有版本的 Azure AD（免费版和高级版）。 它按小时计费，具体取决于使用量。
@@ -169,4 +169,3 @@ Azure 的试用版中包含 Azure AD 域服务。 可以注册 [Azure 试用帐�
 若要详细了解 Azure AD 域服务，请参阅[什么是 Azure Active Directory 域服务？](overview.md)。
 
 若要开始使用，请参阅[创建并配置 Azure Active Directory 域服务托管域](tutorial-create-instance.md)。
-

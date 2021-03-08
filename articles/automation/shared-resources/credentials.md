@@ -4,14 +4,14 @@ description: 本文介绍如何创建凭据资产并在 Runbook 或 DSC 配置�
 services: automation
 ms.subservice: shared-capabilities
 origin.date: 12/22/2020
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 63531f34481f7a0e1f52ba43aea331f9cc9f0038
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: fa5fa2f8459e7a6f9e4562c3abf79c6a6767f3db
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830082"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696571"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>在 Azure 自动化中管理凭据
 
@@ -54,7 +54,7 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 
 ## <a name="python-functions-that-access-credentials"></a>用于访问凭据的 Python 函数
 
-下表中的函数用于在 Python 2 Runbook 中访问凭据。
+下表中的函数用于在 Python 2 Runbook 和 Python 3 Runbook 中访问凭据。 Python 3 Runbook 目前处于预览阶段。
 
 | 函数 | 说明 |
 |:---|:---|
@@ -116,7 +116,7 @@ $securePassword = $myCredential.Password
 $password = $myCredential.GetNetworkCredential().Password
 ```
 
-还可以使用凭据通过 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) 向 Azure 进行身份验证。 在大多数情况下，应使用[运行方式帐户](../manage-runas-account.md)并使用 [Get-AzAutomationConnection](../automation-connections.md) 检索连接。
+还可以使用凭据通过 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) 向 Azure 进行身份验证。 在大多数情况下，应使用[运行方式帐户](../automation-security-overview.md#run-as-accounts)并使用 [Get-AzAutomationConnection](../automation-connections.md) 检索连接。
 
 ```powershell
 $myCred = Get-AutomationPSCredential -Name 'MyCredential'
@@ -141,6 +141,20 @@ from automationassets import AutomationAssetNotFound
 cred = automationassets.get_automation_credential("credtest")
 print cred["username"]
 print cred["password"]
+```
+
+# <a name="python-3"></a>[Python 3](#tab/python3)
+
+以下示例演示如何在 Python 3 Runbook（预览）中访问凭据。
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a credential
+cred = automationassets.get_automation_credential("credtest")
+print (cred["username"])
+print (cred["password"])
 ```
 
 ---

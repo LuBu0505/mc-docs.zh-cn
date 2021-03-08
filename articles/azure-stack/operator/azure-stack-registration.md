@@ -5,18 +5,18 @@ description: 了解如何将 Azure Stack Hub 集成系统注册到 Azure，以�
 author: WenJason
 ms.topic: how-to
 origin.date: 11/19/2020
-ms.date: 12/07/2020
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: avishwan
 ms.lastreviewed: 11/19/2020
-ms.custom: contperfq4
+ms.custom: contperf-fy20q4
 zone_pivot_groups: state-connected-disconnected
-ms.openlocfilehash: 70f8864d0fc37ab79d28a2d7b938893459abec61
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: 8f2e6e31875812e93a065df41cb22eaa71dff338
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507116"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697081"
 ---
 # <a name="register-azure-stack-hub-with-azure"></a>将 Azure Stack Hub 注册到 Azure
 
@@ -88,11 +88,11 @@ Azure Stack Hub 工具 GitHub 存储库包含支持 Azure Stack Hub 功能（包
 
 ### <a name="determine-your-billing-model"></a>确定计费模型
 
-# <a name="connected"></a><a name="state-connected"></a>[已连接](#tab/state-connected)
+# <a name="connected"></a>[已连接](#tab/state-connected)
 
  连接的部署允许 Azure Stack Hub 连接到 Internet 和 Azure。 你也可以使用 Azure AD 或 Active Directory 联合身份验证服务 (AD FS) 作为标识存储，并从两种计费模型中进行选择：“即用即付”或“基于容量”。 稍后在运行注册脚本时指定计费模型。
 
-# <a name="disconnected"></a><a name="state-disconnected"></a>[已断开连接](#tab/state-disconnected)
+# <a name="disconnected"></a>[已断开连接](#tab/state-disconnected)
 
  使用断开连接的部署，无需连接到 Internet 即可使用 Azure Stack Hub。 使用断开连接部署，你将受限于一个 AD FS 标识存储和基于容量的计费模型。 稍后在运行注册脚本时指定计费模型。
 
@@ -107,7 +107,7 @@ Azure Stack Hub 工具 GitHub 存储库包含支持 Azure Stack Hub 功能（包
 
 若要确定 Azure Stack Hub 部署的云 ID，请参阅[查找云 ID](azure-stack-find-cloud-id.md)。
 
-# <a name="connected"></a><a name="state-connected"></a>[已连接](#tab/state-connected)
+# <a name="connected"></a>[已连接](#tab/state-connected)
 
 ## <a name="register-with-pay-in-advance-billing"></a>使用预先支付计费模型注册
 
@@ -122,14 +122,14 @@ Azure Stack Hub 工具 GitHub 存储库包含支持 Azure Stack Hub 功能（包
 
 1. 若要向 Azure 注册 Azure Stack Hub 资源提供程序，请以管理员身份启动 PowerShell ISE，然后使用以下 PowerShell cmdlet，并将 **EnvironmentName** 参数设置为相应的 Azure 订阅类型（请参阅下面的“参数”）。
 
-2. 添加用于注册 Azure Stack Hub 的 Azure 帐户。 若要添加该帐户，请运行 **Add-AzAccount** cmdlet。 系统会提示输入 Azure 帐户凭据。根据帐户的配置，可能需要使用双因素身份验证。
+2. 添加用于注册 Azure Stack Hub 的 Azure 帐户。 若要添加该帐户，请运行 Connect-AzAccount cmdlet。 系统会提示输入 Azure 帐户凭据。根据帐户的配置，可能需要使用双因素身份验证。
 
    ```powershell
-   Add-AzAccount -EnvironmentName "AzureChinaCloud"
+   Connect-AzAccount -EnvironmentName "AzureChinaCloud"
    ```
 
    >[!Note]
-   > 如果会话过期、密码已更改，或者只是希望切换帐户，请在使用 Add-AzAccount 登录之前运行以下 cmdlet：`Remove-AzAccount-Scope Process`
+   > 如果会话过期、密码已更改，或者你只是想要切换帐户，请在使用 Connect-AzAccount 登录之前运行以下 cmdlet：`Remove-AzAccount-Scope Process`
 
 3. 如果有多个订阅，请运行以下命令，选择要使用的那个订阅：  
 
@@ -239,7 +239,7 @@ Azure Stack Hub 工具 GitHub 存储库包含支持 Azure Stack Hub 功能（包
 
 1. 若要向 Azure 注册 Azure Stack Hub 资源提供程序，请以管理员身份启动 PowerShell ISE，然后使用以下 PowerShell cmdlet，并将 **EnvironmentName** 参数设置为相应的 Azure 订阅类型（请参阅下面的“参数”）。
 
-2. 添加用于注册 Azure Stack Hub 的 Azure 帐户。 若要添加该帐户，请运行 **Add-AzAccount** cmdlet。 系统会提示输入 Azure 帐户凭据。根据帐户的配置，可能需要使用双因素身份验证。
+2. 添加用于注册 Azure Stack Hub 的 Azure 帐户。 若要添加该帐户，请运行 Connect-AzAccount cmdlet。 系统会提示输入 Azure 帐户凭据。根据帐户的配置，可能需要使用双因素身份验证。
 
    ```powershell  
    Connect-AzAccount -Environment "AzureChinaCloud"
@@ -276,7 +276,7 @@ Azure Stack Hub 工具 GitHub 存储库包含支持 Azure Stack Hub 功能（包
 
 1. 若要向 Azure 注册 Azure Stack Hub 资源提供程序，请以管理员身份启动 PowerShell ISE，然后使用以下 PowerShell cmdlet，并将 **EnvironmentName** 参数设置为相应的 Azure 订阅类型（请参阅下面的“参数”）。
 
-2. 添加用于注册 AzureRMure Stack Hub 的 Azure 帐户。 若要添加该帐户，请运行 Add-AzureRMAccount cmdlet。 系统会提示输入 Azure 帐户凭据。根据帐户的配置，可能需要使用双因素身份验证。
+2. 添加用于注册 Azure Stack Hub 的 Azure 帐户。 若要添加该帐户，请运行 Add-AzureRMAccount cmdlet。 系统会提示输入 Azure 帐户凭据。根据帐户的配置，可能需要使用双因素身份验证。
 
    ```powershell  
    Connect-AzureRMAccount -Environment "AzureChinaCloud"
@@ -311,7 +311,7 @@ Azure Stack Hub 工具 GitHub 存储库包含支持 Azure Stack Hub 功能（包
 
 ---
 
-# <a name="disconnected"></a><a name="state-disconnected"></a>[已断开连接](#tab/state-disconnected)
+# <a name="disconnected"></a>[已断开连接](#tab/state-disconnected)
 
 ## <a name="register-with-capacity-billing"></a>使用容量计费模型注册
 
@@ -513,7 +513,7 @@ Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -Pri
 
 ---
 
-# <a name="disconnected"></a><a name="state-disconnected"></a>[已断开连接](#tab/state-disconnected)
+# <a name="disconnected"></a>[已断开连接](#tab/state-disconnected)
 
 在以下情况下，需要更新或续订注册：
 
@@ -559,7 +559,7 @@ Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -Pri
 
 ---
 
-# <a name="connected"></a><a name="state-connected"></a>[已连接](#tab/state-connected)
+# <a name="connected"></a>[已连接](#tab/state-connected)
 
 运行以下 PowerShell cmdlet：
 
@@ -573,7 +573,7 @@ Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -Pri
       -RegistrationName $RegistrationName
    ```
 
-# <a name="disconnected"></a><a name="state-disconnected"></a>[已断开连接](#tab/state-disconnected)
+# <a name="disconnected"></a>[已断开连接](#tab/state-disconnected)
 
 1. 若要更改注册令牌，请运行以下 PowerShell cmdlet：  
 
@@ -649,7 +649,7 @@ Get-AzsRegistrationToken [-PrivilegedEndpointCredential] <PSCredential> [-Privil
 
 ## <a name="registration-failures"></a>注册失败
 
-# <a name="connected"></a><a name="state-connected"></a>[已连接](#tab/state-connected)
+# <a name="connected"></a>[已连接](#tab/state-connected)
 
 在尝试注册 Azure Stack Hub 时，可能会看到以下错误之一：
 
@@ -667,7 +667,7 @@ Get-AzsRegistrationToken [-PrivilegedEndpointCredential] <PSCredential> [-Privil
 
    原因：当 Azure Stack Hub 无法访问注册资源时，通常会发生这种情况。 这种情况的一种常见原因是，当 Azure 订阅的目录租户更改时，它会重置注册。 如果已更改订阅的目录租户，将无法访问 Azure Stack Hub 市场或报告使用情况。 需要重新注册才能解决此问题。
 
-# <a name="disconnected"></a><a name="state-disconnected"></a>[已断开连接](#tab/state-disconnected)
+# <a name="disconnected"></a>[已断开连接](#tab/state-disconnected)
 
 在尝试注册 Azure Stack Hub 时，可能会看到以下错误之一：
 

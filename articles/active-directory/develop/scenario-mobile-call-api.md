@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/02/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: cbd70618459f270f56ceed8f2e8fc64b69b99185
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: db3decc458a9d3e2a701a25903a7fc27fbaa0512
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540828"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696666"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>从移动应用调用 Web API
 
@@ -117,7 +117,7 @@ task.resume()
 
 ## <a name="make-several-api-requests"></a>发出多个 API 请求
 
-如果需要多次调用同一 API，或者需要调用多个 API，请在构建应用时考虑以下主题：
+若要多次调用同一 API，或者要调用多个 API，请在构建应用时考虑以下主题：
 
 - **增量同意**：Microsoft 标识平台允许应用在需要权限时（而不是在开始时）获取用户同意。 每次应用准备好调用 API 时，它应只请求所需的作用域。
 
@@ -125,7 +125,7 @@ task.resume()
 
 ## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>使用增量同意和条件访问调用多个 API
 
-如果需要为同一用户调用多个 API，请在为用户获取令牌后，通过随后调用 `AcquireTokenSilent` 以获取令牌来避免重复要求用户提供凭据：
+若要为同一用户调用多个 API，则在为用户获取令牌后，可以通过随后调用 `AcquireTokenSilent` 获取令牌来避免重复要求用户提供凭据：
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")

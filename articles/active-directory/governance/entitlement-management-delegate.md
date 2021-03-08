@@ -3,7 +3,7 @@ title: 权利管理中的委托和角色 - Azure AD
 description: 了解如何将访问管理从 IT 管理员委托给部门经理和项目经理，使他们能够自行管理访问权限。
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/10/2020
+ms.date: 02/24/2021
 ms.author: v-junlch
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6f3660c392c268121849837d29d153207a01928
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: 6e1fa1b6ec1a8328fce8f2d428075bc0323b731b
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91936944"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697323"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD 权利管理中的委托和角色
 
@@ -37,9 +37,9 @@ ms.locfileid: "91936944"
 
 ![从 IT 管理员委托给经理](./media/entitlement-management-delegate/delegate-admin-dept-managers.png)
 
-作为 IT 管理员，Hana 在每个部门中都有联系人 -- 市场营销部的 Mamta、财务部的 Mark 以及法务部的 Joe，这些人负责其所在部门的资源和业务关键内容。
+作为 IT 管理员，Hana 在每个部门中都有联系人 - 市场营销部的 Mamta、财务部的 Mark 以及法务部的 Joe，这些人负责其所在部门的资源和业务关键内容。
 
-使用权利管理，你可以将访问管理委托给这些非管理员的人员，因为这些人知道哪些用户需要对哪些资源具有多长时间的访问权限。 这可确保适当的人员为其部门管理访问权限。
+使用权利管理，你可以将访问管理委托给这些非管理员的人员，因为这些人知道哪些用户需要对哪些资源具有多长时间的访问权限。 委派非管理员可确保适当的人员为其部门管理访问权限。
 
 Hana 可以采用下面这种方式将访问管理委托给市场营销部、财务部和法务部。
 
@@ -47,15 +47,13 @@ Hana 可以采用下面这种方式将访问管理委托给市场营销部、财
 
 1. Hana 将该组添加到目录创建者角色。
 
-    Mamta、Mark 和 Joe 现在可以为自己的部门创建目录、添加自己的部门所需的资源，并在目录中执行进一步的委托。
-
-    请注意，Mamta、Mark 和 Joe 看不到彼此的目录。
+    Mamta、Mark 和 Joe 现在可以为自己的部门创建目录、添加自己的部门所需的资源，并在目录中执行进一步的委托。 他们看不到彼此的目录。
 
 1. Mamta 创建“市场营销”目录，它是资源的容器。
 
 1. Mamta 向此目录添加她的市场营销部拥有的资源。
 
-1. Mamta 可以将其部门的其他人员添加为此目录的目录所有者。 这有助于共享目录管理责任。
+1. Mamta 可以将其部门的其他人员添加为此目录的目录所有者，这有助于共享目录管理职责。
 
 1. Mamta 可以进一步将“市场营销”目录中访问包的创建和管理委托给市场营销部的项目经理。 她可以通过向他们分配访问包管理者角色来完成此操作。 访问包管理者可以创建和管理访问包。 
 
@@ -79,11 +77,11 @@ Hana 可以采用下面这种方式将访问管理委托给市场营销部、财
 | 权利管理角色 | 描述 |
 | --- | --- |
 | 目录创建者 | 创建和管理目录。 通常，该角色是不充当全局管理员的 IT 管理员，或者是资源集合的资源所有者。 创建目录的人员将自动成为该目录的第一个目录所有者，并可以添加其他目录所有者。 目录创建者无法管理或查看他们不拥有的目录，也无法将他们不拥有的资源添加到目录中。 如果目录创建者需要管理其他目录或添加他们不拥有的资源，那么他们可以请求成为该目录或资源的共同所有者。 |
-| 目录所有者 | 编辑和管理现有目录。 通常，该角色是 IT 管理员或资源所有者，或者是目录所有者指定的用户。 |
+| 目录所有者 | 编辑和管理现有目录。 通常，该角色是 IT 管理员或资源所有者，或者是目录所有者选择的用户。 |
 | 访问包管理者 | 编辑和管理目录中的所有现有访问包。 |
 | 访问包分配管理人员 | 编辑和管理所有现有访问包的分配。 |
 
-此外，访问包的指定审批者和请求者也拥有权限，但他们不是角色。
+此外，所选的审批者和访问包请求者也拥有权限，但他们不是角色。
 
 | Right | 描述 |
 | --- | --- |
@@ -118,29 +116,25 @@ Hana 可以采用下面这种方式将访问管理委托给市场营销部、财
 
 ## <a name="required-roles-to-add-resources-to-a-catalog"></a>将资源添加到目录所需的角色
 
-全局管理员可以在目录中添加或删除任何组（云创建的安全组，或云创建的Microsoft 365 组）、应用程序或 SharePoint Online 站点。 用户管理员可以添加或删除目录中的任何组或应用程序，但配置为可分配给目录角色的组除外。
+全局管理员可以在目录中添加或删除任何组（云创建的安全组，或云创建的Microsoft 365 组）、应用程序或 SharePoint Online 站点。 用户管理员可以添加或删除目录中的任何组或应用程序，但配置为可分配给目录角色的组除外。 请注意，用户管理员可以管理目录中的访问包，其中包括配置为可分配给目录角色的组。  
 
-对于不充当全局管理员或用户管理员的用户，若要将组、应用程序或 SharePoint Online 站点添加到目录，该用户必须同时具有所需的 Azure AD 目录角色和目录所有者权利管理角色。** 下表列出了将资源添加到目录所需的角色组合。 若要从目录中删除资源，必须具有相同的角色。
+对于不充当全局管理员或用户管理员的用户，若要将组、应用程序或 SharePoint Online 站点添加到目录，该用户必须同时具有所需的 Azure AD 目录角色和目录所有者权利管理角色。 下表列出了将资源添加到目录所需的角色组合。 若要从目录中删除资源，必须具有相同的角色。
 
 | Azure AD 目录角色 | 权利管理角色 | 可以添加安全组 | 可以添加 Microsoft 365 组 | 可以添加应用 | 可以添加 SharePoint Online 站点 |
 | --- | :---: | :---: | :---: | :---: | :---: |
-| [全局管理员](../users-groups-roles/directory-assign-admin-roles.md) | 不适用 |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [用户管理员](../users-groups-roles/directory-assign-admin-roles.md) | 不适用 |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Intune 管理员](../users-groups-roles/directory-assign-admin-roles.md) | 目录所有者 | :heavy_check_mark: | :heavy_check_mark: |  |  |
-| [Exchange 管理员](../users-groups-roles/directory-assign-admin-roles.md) | 目录所有者 |  | :heavy_check_mark: |  |  |
-| [Teams 服务管理员](../users-groups-roles/directory-assign-admin-roles.md) | 目录所有者 |  | :heavy_check_mark: |  |  |
-| [SharePoint 管理员](../users-groups-roles/directory-assign-admin-roles.md) | 目录所有者 |  | :heavy_check_mark: |  | :heavy_check_mark: |
-| [应用程序管理员](../users-groups-roles/directory-assign-admin-roles.md) | 目录所有者 |  |  | :heavy_check_mark: |  |
-| [云应用程序管理员](../users-groups-roles/directory-assign-admin-roles.md) | 目录所有者 |  |  | :heavy_check_mark: |  |
+| [全局管理员](../roles/permissions-reference.md) | 不适用 |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [用户管理员](../roles/permissions-reference.md) | 不适用 |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Intune 管理员](../roles/permissions-reference.md) | 目录所有者 | :heavy_check_mark: | :heavy_check_mark: |  |  |
+| [Exchange 管理员](../roles/permissions-reference.md) | 目录所有者 |  | :heavy_check_mark: |  |  |
+| [Teams 服务管理员](../roles/permissions-reference.md) | 目录所有者 |  | :heavy_check_mark: |  |  |
+| [SharePoint 管理员](../roles/permissions-reference.md) | 目录所有者 |  | :heavy_check_mark: |  | :heavy_check_mark: |
+| [应用程序管理员](../roles/permissions-reference.md) | 目录所有者 |  |  | :heavy_check_mark: |  |
+| [云应用程序管理员](../roles/permissions-reference.md) | 目录所有者 |  |  | :heavy_check_mark: |  |
 | 用户 | 目录所有者 | 仅限组所有者 | 仅限组所有者 | 仅限应用所有者 |  |
 
-> [!NOTE]
-> 如果用户添加安全组或 Microsoft 365 组，则该组不能是可分配角色的组。 如果用户在创建访问包时添加了可分配角色的组，则他们还必须是该可分配角色的组的所有者。
-
-若要确定任务的最小特权角色，还可以参考[按 Azure Active Directory 中的管理员任务划分的管理员角色](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)。
+若要确定任务的最小特权角色，还可以参考[按 Azure Active Directory 中的管理员任务划分的管理员角色](../roles/delegate-by-task.md#entitlement-management)。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [将访问管理委托给目录创建者](entitlement-management-delegate-catalog.md)
 - [创建和管理资源的目录](entitlement-management-catalog-create.md)
-

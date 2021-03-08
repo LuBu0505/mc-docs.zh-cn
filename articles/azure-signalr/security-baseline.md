@@ -5,15 +5,15 @@ author: WenJason
 ms.service: signalr
 ms.topic: conceptual
 origin.date: 11/25/2020
-ms.date: 02/08/2021
+ms.date: 02/22/2021
 ms.author: v-jay
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0a9d53d9c9155eca3040b4b5374fc0fd3b9160a2
-ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
+ms.openlocfilehash: 055c5ca804728575b083acf8cea82fc78b8a8170
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99504009"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697386"
 ---
 # <a name="azure-security-baseline-for-azure-signalr-service"></a>适用于 Azure SignalR 服务的 Azure 安全基线
 
@@ -221,7 +221,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 **指导**：Azure Active Directory (Azure AD) 中最重要的内置角色是全局管理员和特权角色管理员，因为分配到这两种角色的用户可以委托管理员角色：
 
-- 全局管理员/公司管理员：具有此角色的用户可访问 Azure AD 中的所有管理功能，还可访问使用 Azure AD 标识的服务。
+- 全局管理员：具有此角色的用户可访问 Azure AD 中的所有管理功能，还可访问使用 Azure AD 标识的服务。
 
 - 特权角色管理员：具有此角色的用户可以管理 Azure Active Directory (Azure AD) 和 Azure AD Privileged Identity Management (PIM) 中的角色分配。 此外，该角色可管理 PIM 和管理单元的各个方面。
 
@@ -235,7 +235,7 @@ Azure SignalR 服务具有内置的高特权角色。 请限制高特权帐户�
 
 - [使用 Azure Privileged Identity Management 安全警报](../active-directory/privileged-identity-management/pim-how-to-configure-security-alerts.md)
 
-<!-- - [Securing privileged access for hybrid and cloud deployments in Azure AD](/active-directory/users-groups-roles/directory-admin-roles-secure) -->
+- [确保 Azure AD 中混合部署和云部署的特权访问安全性](../active-directory/roles/security-planning.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -292,7 +292,7 @@ Azure SignalR 服务中的内置角色包括：
 
 应确保妥善保管紧急访问帐户的凭据（例如密码、证书或智能卡），仅将其告诉只能在紧急情况下有权使用它们的个人。
 
-- [在 Azure AD 中管理紧急访问帐户](/active-directory/users-groups-roles/directory-emergency-access)
+- [在 Azure AD 中管理紧急访问帐户](../active-directory/roles/security-emergency-access.md)
 
 **Azure 安全中心监视**：不适用
 

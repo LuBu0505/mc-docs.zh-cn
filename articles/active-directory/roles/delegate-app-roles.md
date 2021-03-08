@@ -3,23 +3,23 @@ title: 委托应用程序管理管理员权限 - Azure AD | Microsoft Docs
 description: 在 Azure Active Directory 中授予应用程序访问管理权限
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: how-to
-ms.date: 11/04/2020
+ms.date: 02/25/2021
 ms.author: v-junlch
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 114147aa453ca48632d95e9343db70a7c7247727
-ms.sourcegitcommit: 33f2835ec41ca391eb9940edfcbab52888cf8a01
+ms.openlocfilehash: c1357e86bb8d8369fd97bf8677258bc40c22106b
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94326798"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696964"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>在 Azure Active Directory 中委托应用注册权限
 
@@ -105,4 +105,3 @@ Azure AD 提供一组内置的管理员角色，用于授予 Azure AD 中所有�
 
 - [应用程序注册子类型和权限](custom-available-permissions.md)
 - [Azure AD 管理员角色参考](permissions-reference.md)
-

@@ -1,23 +1,48 @@
 ---
 title: Azure VPN 网关：关于 P2S VPN 客户端配置文件
-description: 这可帮助你使用客户端配置文件
+description: 使用本文查找 VPN 客户端配置文件所需的信息。
 services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
-ms.topic: article
-origin.date: 05/13/2020
-ms.date: 07/06/2020
+ms.topic: how-to
+origin.date: 02/08/2021
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.openlocfilehash: 8ec3a1bc5c7c333e1340439e7ad93882f3525a2e
-ms.sourcegitcommit: 7ea2d04481512e185a60fa3b0f7b0761e3ed7b59
+ms.openlocfilehash: 637b9e580d5a6b03e370c723b340be4aff98fc63
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85845901"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697727"
 ---
-# <a name="about-p2s-vpn-client-profiles"></a>关于 P2S VPN 客户端配置文件
+# <a name="working-with-p2s-vpn-client-profile-files"></a>使用 P2S VPN 客户端配置文件
 
-已下载的配置文件包含配置 VPN 连接所需的信息。 本文将帮助你获取和了解 VPN 客户端配置文件所需的信息。
+配置文件包含配置 VPN 连接所需的信息。 本文将帮助你获取和了解 VPN 客户端配置文件所需的信息。
+
+## <a name="generate-and-download-profile"></a>生成并下载配置文件
+
+可使用 PowerShell 或使用 Azure 门户生成客户端配置文件。 两种方法之一都会返回相同的 zip 文件。
+
+### <a name="portal"></a>门户
+
+1. 在 Azure 门户中，导航到要连接到的虚拟网络的虚拟网络网关。
+1. 在虚拟网络网关页面上，选择“点到点配置”。
+1. 在“点到站点配置”页的顶部，选择“下载 VPN 客户端”。 需要几分钟才能生成客户端配置包。
+1. 浏览器会指示客户端配置 zip 文件可用。 其名称与网关名称相同。 解压缩该文件，查看文件夹。
+
+### <a name="powershell"></a>PowerShell
+
+若要使用 PowerShell 生成，可以使用以下示例：
+
+1. 生成 VPN 客户端配置文件时，“-AuthenticationMethod”的值为“EapTls”。 使用以下命令生成 VPN 客户端配置文件：
+
+   ```azurepowershell
+   $profile=New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls"
+
+   $profile.VPNProfileSASUrl
+   ```
+
+1. 将 URL 复制到浏览器，下载 zip 文件，然后解压缩该文件，查看其中的文件夹。
 
 [!INCLUDE [client profiles](../../includes/vpn-gateway-vwan-vpn-profile-download.md)]
 

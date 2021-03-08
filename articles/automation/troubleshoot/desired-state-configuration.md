@@ -2,20 +2,16 @@
 title: 排查 Azure 自动化状态配置问题
 description: 本文介绍如何排查和解决 Azure 自动化状态配置问题。
 services: automation
-ms.service: automation
 ms.subservice: ''
-author: WenJason
-ms.author: v-jay
 origin.date: 04/16/2019
-ms.date: 08/10/2020
-ms.topic: conceptual
-manager: digimobile
-ms.openlocfilehash: 1bc7abe18de7406144cb272a410a770bc1c0a2c3
-ms.sourcegitcommit: e6b216b180734783219378410e13192e314a4497
+ms.date: 02/22/2021
+ms.topic: troubleshooting
+ms.openlocfilehash: 847a57e7d1a3a354424e756274b7f972377b1d8a
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87788332"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697024"
 ---
 # <a name="troubleshoot-azure-automation-state-configuration-issues"></a>排查 Azure 自动化状态配置问题
 
@@ -43,7 +39,7 @@ Azure 自动化状态配置基于 PowerShell 所需状态配置 (DSC) 生成。 
 
 可以按照[安装稳定版本模块](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)中的说明在本地计算机上安装 `xDscDiagnostics` 模块。
 
-若要在 Azure 计算机上安装 `xDscDiagnostics` 模块，请使用 [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0)。 还可以按照[使用“运行命令”在 Windows VM 中运行 PowerShell 脚本](../../virtual-machines/windows/run-command.md)中的步骤使用 Azure 门户中的“运行命令”选项。
+若要在 Azure 计算机上安装 `xDscDiagnostics` 模块，请使用 [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand)。 还可以按照[使用“运行命令”在 Windows VM 中运行 PowerShell 脚本](../../virtual-machines/windows/run-command.md)中的步骤使用 Azure 门户中的“运行命令”选项。
 
 有关使用 xDscDiagnostics 的信息，请参阅[使用 xDscDiagnostics 分析 DSC 日志](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)。 另请参阅 [xDscDiagnostics Cmdlet](https://github.com/PowerShell/xDscDiagnostics#cmdlets)。
 
@@ -67,13 +63,13 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 
 ### <a name="resolution"></a>解决方法
 
-使用 [Remove-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0 cmdlet 删除配置。
+使用 [Remove-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration) cmdlet 来删除配置。
 
 ## <a name="scenario-failed-to-register-the-dsc-agent"></a><a name="failed-to-register-agent"></a>场景：未能注册 DSC 代理
 
 ### <a name="issue"></a>问题
 
-若为 [Set-DscLocalConfigurationManager](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) 或其他 DSC cmdlet，则会收到以下错误：
+若为 [Set-DscLocalConfigurationManager](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager) 或其他 DSC cmdlet，则会收到以下错误：
 
 ```error
 Registration of the Dsc Agent with the server
@@ -112,7 +108,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 此问题是由证书错误或过期引起的。 请参阅[重新注册节点](../automation-dsc-onboarding.md#re-register-a-node)。
 
-此问题也可能是由于代理配置不允许访问 * **.azure-automation.cn** 而导致的。 有关详细信息，请参阅[专用网络的配置](../automation-dsc-overview.md#network-planning)。 
+此问题也可能是由于代理配置不允许访问 * **.azure-automation.cn** 而导致的。 有关详细信息，请参阅[配置专用网络](../automation-dsc-overview.md#network-planning)。 
 
 ### <a name="resolution"></a>解决方法
 
@@ -178,7 +174,7 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
 * 可以使用 Azure 门户或 PowerShell cmdlet 将节点配置分配给节点。
 
   * 在 Azure 门户中，转到“主页” > “自动化帐户”>“（你的自动化帐户）”>“状态配置(DSC)”  。 然后选择一个节点并选择“分配节点配置”。
-  * 使用 [Set-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationDscNode?view=azps-3.7.0) cmdlet。
+  * 使用 [Set-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationDscNode) cmdlet。
 
 ## <a name="scenario-no-node-configurations-mof-files-were-produced-when-a-configuration-was-compiled"></a><a name="no-mof-files"></a>场景：编译配置时未生成节点配置（MOF 文件）
 
@@ -318,7 +314,7 @@ This event indicates that failure happens when LCM is processing the configurati
 
 ### <a name="resolution"></a>解决方法
 
-可以通过显式包括任何 [Import-DSCResource](https://docs.microsoft.com/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1) 调用的 `ModuleName` 参数来更快地分析 DSC 配置。
+可以通过显式包括任何 [Import-DSCResource](https://docs.microsoft.com/powershell/scripting/dsc/configurations/import-dscresource) 调用的 `ModuleName` 参数来更快地分析 DSC 配置。
 
 ## <a name="next-steps"></a>后续步骤
 

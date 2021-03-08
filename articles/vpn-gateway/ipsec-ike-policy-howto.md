@@ -7,14 +7,14 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: how-to
 origin.date: 09/18/2020
-ms.date: 11/23/2020
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.openlocfilehash: c4c10705aadbc74ee167fd1f5a9df235b1cf76ca
-ms.sourcegitcommit: db15d6cc591211c0e531d636f45e9cbe24cfb15b
+ms.openlocfilehash: 29274cd92835b4c794bcbf880d78a601907ffd48
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94909065"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697563"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections-azure-portal"></a>为 S2S VPN 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略：Azure 门户
 
@@ -29,8 +29,9 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请�
 ### <a name="considerations"></a>注意事项
 
 * IPsec/IKE 策略仅适用于以下网关 SKU：
-  * ***VpnGw1~3** _ _ 对于给定的连接，你只能指定一个*_策略组合。
-_ 你必须为 IKE（主模式）和 IPsec（快速模式）指定所有算法和参数。 不允许指定部分策略。
+  * ***VpnGw1~5***
+* 一个给定的连接只能指定一个策略组合。
+* 必须指定 IKE（主模式）和 IPsec（快速模式）的所有算法和参数。 不允许指定部分策略。
 * 请查阅 VPN 设备供应商规范，确保本地 VPN 设备支持该策略。 如果策略不兼容，则无法建立 S2S 或 VNet 到 VNet 的连接。
 
 ## <a name="workflow"></a><a name ="workflow"></a>工作流
@@ -119,7 +120,7 @@ _ 你必须为 IKE（主模式）和 IPsec（快速模式）指定所有算法�
 
 ### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a><a name="createvnet1"></a>步骤 1 - 创建虚拟网络、VPN 网关和本地网关
 
-创建以下资源，如以下屏幕截图所示。 有关步骤，请参阅[创建站点到站点 VPN 连接](vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
+创建以下资源，如以下屏幕截图所示。 有关步骤，请参阅[创建站点到站点 VPN 连接](./tutorial-site-to-site-portal.md)。
 
 * **虚拟网络：** TestVNet1
 

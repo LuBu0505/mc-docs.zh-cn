@@ -1,20 +1,18 @@
 ---
-title: Azure Database for MySQL 数据库应用程序开发概述
+title: 应用程序开发 - Azure Database for MySQL
 description: 介绍开发人员为连接 Azure Database for MySQL 而编写应用程序代码时应遵循的设计注意事项
-services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: kfile
-editor: jasonwhowell
-ms.service: mysql-database
-ms.topic: article
-ms.date: 06/16/2018
-ms.openlocfilehash: 17a00f7afce82350b6d795204d7aecfcadd5937c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+author: WenJason
+ms.author: v-jay
+ms.service: mysql
+ms.topic: conceptual
+origin.date: 3/18/2020
+ms.date: 03/08/2021
+ms.openlocfilehash: c21cd37253c8812862901237d392f4d1b8f127b6
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "67236578"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696956"
 ---
 # <a name="application-development-overview-for-azure-database-for-mysql"></a>Azure Database for MySQL 应用程序开发概述 
 
@@ -30,7 +28,7 @@ ms.locfileid: "67236578"
 为各种编程语言和平台提供了代码示例。 可在以下位置找到代码示例的链接：[用于连接 Azure Database for MySQL 的连接库](concepts-connection-libraries.md)
 
 ## <a name="tools"></a>工具
-Azure Database for MySQL 使用 MySQL 社区版，此版本与 MySQL 常用管理工具（如 Workbench）或 MySQL 实用程序（如 mysql.exe）及 [phpMyAdmin](https://www.phpmyadmin.net/) 和 [Navicat](https://www.navicat.com/products/navicat-for-mysql) 等工具兼容。 还可以使用 Azure 门户、Azure CLI 和 REST API 与数据库服务进行交互。
+Azure Database for MySQL 使用 MySQL 社区版，此版本与 MySQL 常用管理工具（如 Workbench）或 MySQL 实用程序（如 mysql.exe、[phpMyAdmin](https://www.phpmyadmin.net/)、[Navicat](https://www.navicat.com/products/navicat-for-mysql) 和 [dbForge Studio for MySQL](https://www.devart.com/dbforge/mysql/studio/)）及其他工具兼容。 还可以使用 Azure 门户、Azure CLI 和 REST API 与数据库服务进行交互。
 
 ## <a name="resource-limitations"></a>资源限制
 Azure Database for MySQL 使用两种不同机制管理可用于服务器的资源： 
@@ -40,7 +38,7 @@ Azure Database for MySQL 使用两种不同机制管理可用于服务器的资�
 ## <a name="security"></a>安全性
 Azure Database for MySQL 提供用于在 MySQL Database 中限制访问、保护数据、配置用户和角色及监视活动的资源。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 Azure Database for MySQL 支持用户和登录名这两种服务器身份验证方式。
 
 ## <a name="resiliency"></a>复原

@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: mathoma, sstein
 origin.date: 08/27/2020
-ms.date: 12/14/2020
-ms.openlocfilehash: f6c8802f44229888f6ab1850b150c770266b84cb
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.date: 02/22/2021
+ms.openlocfilehash: 37b7f07f2f807470b3aef38dd9ac1af018671135
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830215"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696965"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>创建并使用活动异地复制 - Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -125,7 +125,7 @@ ms.locfileid: "97830215"
 由于辅助数据库上的计算大小较小而在主数据库上进行的事务日志速率限制是使用 HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO 等待类型报告的，可通过 [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 和 [sys.dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) 数据库视图查看。
 
 > [!NOTE]
-> 主数据库上的事务日志速率也可能会因与辅助数据库上计算大小较小无关的原因而受限制。 即使辅助数据库上的计算大小等于或大于主数据库上的计算大小，也可能会发生这种限制。
+> 主数据库上的事务日志速率也可能会因与辅助数据库上计算大小较小无关的原因而受限制。 即使辅助数据库上的计算大小等于或大于主数据库上的计算大小，也可能会发生这种限制。 有关详细信息（包括不同类型的日志速率限制的等待类型），请参阅[事务日志速率调控](resource-limits-logical-server.md#transaction-log-rate-governance)。
 
 有关 SQL 数据库计算大小的详细信息，请参阅[什么是 SQL 数据库服务层级](purchasing-models.md)。
 

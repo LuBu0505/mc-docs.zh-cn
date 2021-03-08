@@ -2,20 +2,16 @@
 title: Azure Automation State Configuration 入门
 description: 本文介绍如何在 Azure Automation State Configuration 中执行最常见的任务。
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: WenJason
-ms.author: v-jay
 origin.date: 04/15/2019
-ms.date: 08/10/2020
+ms.date: 02/22/2021
 ms.topic: conceptual
-manager: digimobile
-ms.openlocfilehash: 5d5c8f9651464b2e06851dac569d2d14d6320706
-ms.sourcegitcommit: e6b216b180734783219378410e13192e314a4497
+ms.openlocfilehash: d9a8666e574a4a5dc0dbab1f6e78dc723d4c7089
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87788339"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696734"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Azure Automation State Configuration 入门
 
@@ -27,7 +23,7 @@ ms.locfileid: "87788339"
 
 若要完成本文中的示例，需要具备以下条件：
 
-- 一个 Azure 自动化帐户。 有关如何创建 Azure 自动化运行方式帐户的说明，请参阅 [Azure 运行方式帐户](./manage-runas-account.md)。
+- 一个 Azure 自动化帐户。 若要了解有关自动化帐户以及相关要求的详细信息，请参阅[自动化帐户身份验证概述](./automation-security-overview.md)。
 - 一个运行[支持的操作系统](automation-dsc-overview.md#operating-system-requirements)的 Azure 资源管理器 VM（非经典）。 如需创建 VM 的说明，请参阅[在 Azure 门户中创建第一个 Windows 虚拟机](../virtual-machines/windows/quick-create-portal.md)
 
 ## <a name="create-a-dsc-configuration"></a>创建 DSC 配置
@@ -76,7 +72,7 @@ ms.locfileid: "87788339"
 
    ![**导入配置**边栏选项卡的屏幕截图](./media/automation-dsc-getting-started/AddConfig.png)
 
-1. 单击“确定”。
+1. 单击 **“确定”** 。
 
 ## <a name="view-a-configuration-in-azure-automation"></a>查看 Azure 自动化中的配置
 
@@ -238,4 +234,4 @@ Azure 将启动启用 VM 的过程。 完成后，VM 会显示在自动化帐户
 - 要为你的环境中的 VM 启用此功能，请参阅[启用 Azure Automation State Configuration](automation-dsc-onboarding.md)。
 - 若要了解 PowerShell DSC，请参阅 [Windows PowerShell Desired State Configuration 概述](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview)。
 - 有关定价信息，请参阅 [Azure Automation State Configuration 定价](https://azure.cn/pricing/details/automation/)。
-- 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+- 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation)。

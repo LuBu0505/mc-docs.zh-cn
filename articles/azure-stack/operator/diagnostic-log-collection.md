@@ -3,39 +3,51 @@ title: 诊断日志收集
 description: 了解诊断日志收集。
 author: WenJason
 ms.topic: article
-origin.date: 10/30/2020
-ms.date: 01/18/2021
+origin.date: 02/03/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: shisab
-ms.lastreviewed: 12/08/2020
-ms.openlocfilehash: 0f69505c2d88095360a22fcd43eeed622d61dd7f
-ms.sourcegitcommit: e1edc6ef84dbbda1da4e0a42efa3fd62eee033d1
+ms.lastreviewed: 02/03/2021
+ms.openlocfilehash: d02178531360b55c123d96154be67a8b47d7e62e
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541900"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697824"
 ---
 # <a name="diagnostic-log-collection"></a>诊断日志收集
 
-Azure Stack Hub 是一个集合，同时包含可以彼此交互的 Windows 组件和本地 Azure 服务。 所有这些组件和服务都会生成自己的日志集。 由于 Azure 支持使用这些日志来识别和修复问题，因此我们提供诊断日志收集。 使用诊断日志收集功能，你可以快速收集诊断日志并与 Azure 支持共享该日志。
+你可以共享由 Azure Stack Hub 创建的诊断日志。 这些日志由 Windows 组件和本地 Azure 服务创建。 Microsoft 支持部门可以使用日志来修复或识别 Azure Stack Hub 实例的问题。
 
-> [!IMPORTANT]
-> 必须注册 Azure Stack Hub 才能使用诊断日志收集。 如果尚未注册 Azure Stack Hub，请使用[特权终结点 (PEP)](azure-stack-get-azurestacklog.md) 来共享日志。 
+若要开始使用 Azure Stack Hub 诊断日志收集，必须注册实例。 如果尚未注册 Azure Stack Hub，请使用[特权终结点 (PEP)](azure-stack-get-azurestacklog.md) 来共享日志。 
 
-Azure Stack Hub 提供了多种方式来收集和保存诊断日志并将其发送到 Azure 支持。 根据与 Azure 的连接情况，用于收集和发送日志的选项包括：
+可以通过多种方式将诊断日志发送到 Azure 支持。 根据与 Azure 的连接，选项包括：
 * [主动发送日志（建议）](#send-logs-proactively)
 * [立即发送日志](#send-logs-now)
 * [在本地保存日志](#save-logs-locally)
 
-以下流程图显示了各种情况下用于发送诊断日志的选项。 如果 Azure Stack Hub 可以连接到 Azure，建议启用“主动日志收集”，这会在引发关键警报时自动将诊断日志上传到 Azure 中由 Azure 控制的存储 blob。 还可使用“立即发送日志”按需收集日志。 如果 Azure Stack Hub 与 Azure 断开连接，可以“在本地保存日志”。 
+以下流程图显示了用于发送诊断日志的选项。 如果 Azure Stack Hub 连接到 Azure，请启用“主动日志收集”。 主动日志收集在引发关键警报时自动将诊断日志上传到 Azure 中由 Azure 控制的存储 blob。 还可使用“立即发送日志”按需收集日志。 对于在断开连接的环境中运行的 Azure Stack Hub，或者如果遇到连接问题，请选择“在本地保存日志”。
 
 ![流程图，显示如何将日志立即发送到 Microsoft](media/azure-stack-help-and-support/send-logs-now-flowchart.png)
 
 ## <a name="send-logs-proactively"></a>主动发送日志
 
-在你建立支持案例之前，主动收集日志功能会自动从 Azure Stack Hub 收集诊断日志并将其发送给我们。 这些日志仅在发出了[系统运行状况警报](#proactive-diagnostic-log-collection-alerts)的情况下收集，并且仅在建立了支持案例的情况下供 Azure 支持访问。
+在你建立支持案例之前，主动收集日志功能会自动从 Azure Stack Hub 收集诊断日志并将其发送给我们。 这些日志仅在发出了系统运行状况警报的情况下收集，并且仅在建立了支持案例的情况下供 Azure 支持访问。
 
-从 Azure Stack Hub 版本 2008 开始，主动收集日志的功能使用改进的算法，即使在操作员看不到的错误情况下也可以捕获日志。 这样可以确保在适当的时间收集正确的诊断信息，无需操作员进行任何交互。 在某些情况下，Azure 支持可以更快地开始故障排除工作并解决问题。 初始算法改进侧重于修补升级操作。 建议启用主动收集日志的功能，因为更多的操作已经过优化，好处更多。
+从 Azure Stack Hub 版本 2008 开始，主动收集日志的功能使用改进的算法，即使在操作员看不到的错误情况下也可以捕获日志。 这样可以确保在适当的时间收集正确的诊断信息，无需操作员进行任何交互。 在某些情况下，Azure 支持可以更快地开始故障排除工作并解决问题。 初始算法改进侧重于修补升级操作。
+
+Azure Stack Hub 将收集警报和其他隐藏的故障事件的日志，这些日志对于你来说是不可见的。
+
+Azure Stack Hub 将主动收集以下方面的日志：
+
+- 更新失败。
+- 更新需要注意。
+
+当事件触发这些警报时，Azure Stack Hub 会主动将日志发送到 Azure。
+
+此外，Azure Stack Hub 将由其他故障事件触发的日志发送到 Azure。 这些事件对你不可见。
+
+建议启用主动收集日志的功能，因为更多的操作已经过优化，好处更多。
 
 随时可以禁用和重新启用主动日志收集。 按照以下步骤设置主动收集日志功能。
 
@@ -56,38 +68,6 @@ Azure Stack Hub 提供了多种方式来收集和保存诊断日志并将其发�
 
 通过“主动收集日志”方式收集的日志会上传到由 Azure 管理和控制的 Azure 存储帐户中。 在收到支持案例的情况下，或者是为了改善 Azure Stack Hub 的运行状况，我们可能会访问这些日志。
 
-### <a name="proactive-diagnostic-log-collection-alerts"></a>主动收集诊断日志时的警报
-
-如果已启用，则当引发以下事件之一时，主动收集日志的功能会上传日志。
-
-例如，“更新失败”是一个警报，会触发主动收集诊断日志的操作。 如果启用了主动收集功能，则会在更新失败时主动捕获诊断日志，这样有助于 Azure 支持排查问题。 仅在引发 **更新失败** 的警报时才收集诊断日志。
-
-| 警报标题 | FaultIdType |
-|---|---|
-|无法连接到远程服务 | UsageBridge.NetworkError|
-|更新失败 | Urp.UpdateFailure |
-|存储资源提供程序基础结构/依赖项不可用 |    StorageResourceProviderDependencyUnavailable |
-|节点未连接到控制器| ServerHostNotConnectedToController |  
-|路由发布失败 | SlbMuxRoutePublicationFailure |
-|存储资源提供程序内部数据存储不可用 |    StorageResourceProvider。 DataStoreConnectionFail |
-|存储设备发生故障 | Microsoft.Health.FaultType.VirtualDisks.Detached |
-|运行状况控制器无法访问存储帐户 | Microsoft.Health.FaultType.StorageError |
-|与物理磁盘的连接已丢失 | Microsoft.Health.FaultType.PhysicalDisk.LostCommunication |
-|Blob 服务未在节点上运行 | StorageService.The.blob.service.is.not.running.on.a.node-Critical |
-|基础结构角色不正常 | Microsoft.Health.FaultType.GenericExceptionFault |
-|表服务错误 | StorageService.Table.service.errors-Critical |
-|文件共享已利用超过 80% | Microsoft.Health.FaultType.FileShare.Capacity.Warning.Infra |
-|缩放单元节点已脱机 | FRP.Heartbeat.PhysicalNode |
-|基础结构角色实例不可用 | FRP.Heartbeat.InfraVM |
-|基础结构角色实例不可用  | FRP.Heartbeat.NonHaVm |
-|基础结构角色“目录管理”报告了时间同步错误 | DirectoryServiceTimeSynchronizationError |
-|挂起的外部证书过期 | CertificateExpiration.ExternalCert.Warning |
-|挂起的外部证书过期 | CertificateExpiration.ExternalCert.Critical |
-|由于内存容量不足，无法针对特定类别和大小预配虚拟机 | AzureStack.ComputeController.VmCreationFailure.LowMemory |
-|无法访问节点以供虚拟机放置 | AzureStack.ComputeController.HostUnresponsive |
-|备份失败  | AzureStack.BackupController.BackupFailedGeneralFault |
-|由于与失败的操作发生冲突，已跳过计划的备份    | AzureStack.BackupController.BackupSkippedWithFailedOperationFault |
-
 ## <a name="send-logs-now"></a>立即发送日志
 
 > [!TIP]
@@ -99,7 +79,7 @@ Azure Stack Hub 提供了多种方式来收集和保存诊断日志并将其发�
 * [管理员门户（建议）](#send-logs-now-with-the-administrator-portal)
 * [PowerShell](#send-logs-now-with-powershell)
 
-如果 Azure Stack Hub 已连接到 Azure，建议你使用管理员门户，因为这是直接将日志发送给我们的最简单方法。 如果该门户不可用，则应改为使用 PowerShell 发送日志。
+如果 Azure Stack Hub 已连接到 Azure，建议你使用管理员门户，因为这是直接将日志发送给我们的最简单方法。 如果该门户不可用，应改为使用 PowerShell 发送日志。
 
 ### <a name="send-logs-now-with-the-administrator-portal"></a>通过管理员门户立即发送日志
 
@@ -186,7 +166,9 @@ Azure Stack Hub 提供了多种方式来收集和保存诊断日志并将其发�
 
 ## <a name="save-logs-locally"></a>在本地保存日志
 
-当 Azure Stack Hub 与 Azure 断开连接时，可以将日志保存到本地服务器消息块 (SMB) 共享。 在“设置”边栏选项卡中，输入具有共享写入权限的路径、用户名和密码。 在支持案例期间，Azure 支持会提供详细步骤来说明如何传输这些本地日志。 如果管理员门户不可用，则可以使用 [Get-AzureStackLog](azure-stack-get-azurestacklog.md) 在本地保存日志。
+当 Azure Stack Hub 与 Azure 断开连接时，可以将日志保存到本地服务器消息块 (SMB) 共享。 例如，你可以运行断开连接的环境。 如果在正常连接的情况下遇到连接问题，则可以在本地保存日志以帮助进行故障排除。
+
+ 在“设置”边栏选项卡中，输入具有共享写入权限的路径、用户名和密码。 在支持案例期间，Azure 支持会提供详细步骤来说明如何传输这些本地日志。 如果管理员门户不可用，则可以使用 [Get-AzureStackLog](azure-stack-get-azurestacklog.md) 在本地保存日志。
 
 ![诊断日志收集选项的屏幕截图](media/azure-stack-help-and-support/save-logs-locally.png)
 
@@ -200,7 +182,7 @@ Azure Stack Hub 提供了多种方式来收集和保存诊断日志并将其发�
 |----|---|
 | 低带宽/高延迟连接 | 完成日志上传的时间会延长。 |
 | 共享连接 | 上传也可能影响共享网络连接的其他应用/用户。 |
-| 计量连接 | ISP 可能会针对你额外使用网络的情况收取额外费用。 |
+| 计量连接 | ISP 可能会针对你额外使用网络的情况另行收费。 |
 
 ## <a name="view-log-collection"></a>查看日志集合
 

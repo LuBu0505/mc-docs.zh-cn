@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 01/05/2021
+ms.date: 02/24/2021
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3aca218be2f21a4299bd468b73a29f4bd965eb1
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 592b15445c111693d654ace5effe009b96b703cd
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023516"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696592"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入的实施
 
@@ -81,6 +81,8 @@ ms.locfileid: "98023516"
 - 使用凭据漫游或用户配置文件漫游或强制性配置文件时，Windows 下级设备上不支持混合 Azure AD 联接。
 
 - Server Core OS 不支持任何类型的设备注册。
+
+- 用户状态迁移 (USMT) 工具不适用于设备注册。  
 
 ### <a name="os-imaging-considerations"></a>OS 映像注意事项
 - 如果依赖于系统准备工具 (Sysprep)，并且使用 Windows 10 1809 以前版本的映像进行安装，请确保该映像不是来自已在 Azure AD 中注册为混合 Azure AD 联接的设备。
@@ -170,4 +172,3 @@ ms.locfileid: "98023516"
 
 <!--Image references-->
 [1]: ./media/hybrid-azuread-join-plan/12.png
-

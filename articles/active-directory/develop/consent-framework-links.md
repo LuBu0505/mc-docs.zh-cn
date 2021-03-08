@@ -1,5 +1,5 @@
 ---
-title: 应用程序许可工作原理
+title: 应用程序同意操作的工作原理
 description: 详细了解 Azure AD 同意框架的工作原理以便了解如何在 Azure AD上开发应用程序时使用该框架
 services: active-directory
 author: rwike77
@@ -9,14 +9,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/18/2020
+ms.date: 02/22/2021
 ms.author: v-junlch
-ms.openlocfilehash: 40aa0a42ab2f5cad8399cc5137b33cc75e68897d
-ms.sourcegitcommit: 7646936d018c4392e1c138d7e541681c4dfd9041
+ROBOTS: NOINDEX
+ms.openlocfilehash: 6a0bf6053c9b55bd2cd76bba719b6865312ac4a4
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88647714"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697098"
 ---
 # <a name="how-application-consent-works"></a>应用程序同意操作的工作原理
 
@@ -30,5 +31,4 @@ ms.locfileid: "88647714"
 - 有关详细信息，请参阅[在授权代码授权流期间如何在 OAuth 2.0 协议层支持同意](../azuread-dev/v1-protocols-oauth-code.md#request-an-authorization-code)
 
 ## <a name="next-steps"></a>后续步骤
-[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
-
+[AzureAD Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html)

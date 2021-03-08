@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
 origin.date: 3/18/2020
-ms.date: 09/14/2020
-ms.openlocfilehash: 083854c67adc0d5dde10b993a3594be1f432d733
-ms.sourcegitcommit: 5116a603d3cac3cbc2e2370ff857f871f8f51a5f
+ms.date: 03/08/2021
+ms.openlocfilehash: 771d67c7bb1e47485f06b9702bc7fe9539fad79e
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89512900"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697303"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>与 Azure Database for MySQL 兼容的 MySQL 驱动程序和管理工具
 > [!NOTE]
@@ -47,16 +47,16 @@ Azure Database for MySQL 使用世界上最常用的 MySQL 数据库社区版。
 ## <a name="management-tools"></a>管理工具
 兼容性优势也适用于数据库管理工具。 只要数据库操作在用户权限范围内，现有工具应继续与 Azure Database for MySQL 配合使用。 下表列出了已测试并确认与 Azure Database for MySQL 5.6 和 5.7 兼容的三种常用数据库管理工具：
 
-|                                     | **MySQL Workbench 6.x 及以上版本** | **Navicat 12** | **PHPMyAdmin 4.x 及以上版本** |
-| :---------------------------------- | :----------------------------- | :------------- | :-------------------------|
-| **创建、更新、读取、写入、删除** | X | X | X |
-| **SSL 连接** | X | X | X |
-| **SQL 查询自动完成** | X | X |  |
-| **导入和导出数据** | X | X | X |
-| **导出为多种格式** | X | X | X |
-| **备份和还原** |  | X |  |
-| **显示服务器参数** | X | X | X |
-| **显示客户端连接** | X | X | X |
+|                                     | **MySQL Workbench 6.x 及以上版本** | **Navicat 12** | **PHPMyAdmin 4.x 及以上版本** | **dbForge Studio for MySQL 9.0** |
+| :---------------------------------- | :----------------------------- | :------------- | :-------------------------| :------------------------------- |
+| **创建、更新、读取、写入、删除** | X | X | X | X |
+| **SSL 连接** | X | X | X | X |
+| **SQL 查询自动完成** | X | X |  | X |
+| **导入和导出数据** | X | X | X | X |
+| **导出为多种格式** | X | X | X | X |
+| **备份和还原** |  | X |  | X |
+| **显示服务器参数** | X | X | X | X |
+| **显示客户端连接** | X | X | X | X |
 
 ## <a name="next-steps"></a>后续步骤
 

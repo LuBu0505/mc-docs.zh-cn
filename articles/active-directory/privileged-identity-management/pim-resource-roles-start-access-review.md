@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 01/08/2021
+ms.date: 02/24/2021
 ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b0bc8dd90e5f4fadb5dec079ff27f36d66af2c8
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: b9bd24cda6921761d823f1f9c735c0fd90e97f44
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021901"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697201"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中创建对 Azure 资源角色的访问评审
 
@@ -30,7 +30,7 @@ ms.locfileid: "98021901"
 
 ## <a name="prerequisites"></a>必备条件
 
-[特权角色管理员](../roles/permissions-reference.md#privileged-role-administrator)
+ 若要创建访问评审，必须具有资源的[所有者](../../role-based-access-control/built-in-roles.md#owner)或[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator) Azure 角色。
 
 ## <a name="open-access-reviews"></a>打开访问评审
 
@@ -50,7 +50,7 @@ ms.locfileid: "98021901"
 
 ## <a name="start-the-access-review"></a>启动访问评审
 
-指定访问评审的设置后，单击“启动”。  访问评审将显示在列表中，并带有其状态指示器。
+指定访问评审的设置后，单击“启动”。 访问评审将显示在列表中，并带有其状态指示器。
 
 ![访问评审列表，其中显示已启动评审的状态](./media/pim-resource-roles-start-access-review/access-reviews-list.png)
 
@@ -73,4 +73,3 @@ ms.locfileid: "98021901"
 - [评审对 Azure 资源角色的访问权限](pim-resource-roles-perform-access-review.md)
 - [完成 Azure 资源角色的访问评审](pim-resource-roles-complete-access-review.md)
 - [创建 Azure AD 角色的访问评审](pim-how-to-start-security-review.md)
-

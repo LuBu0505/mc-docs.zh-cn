@@ -2,18 +2,18 @@
 title: 在 Azure Stack Hub 中配置 IPsec/IKE 站点到站点 VPN 连接
 description: 详细了解并配置 Azure Stack Hub 中站点到站点 VPN 或 VNet 到 VNet 连接的 IPsec/IKE 策略。
 author: WenJason
-ms.custom: contperfq4
+ms.custom: contperf-fy20q4
 ms.topic: article
 origin.date: 11/22/2020
-ms.date: 12/07/2020
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.lastreviewed: 11/22/2020
-ms.openlocfilehash: 7eb53c8358f2c358c576f46c6d7a305661570635
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: de01179f7a5c794919b4e2d65b352f612ac83555
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507943"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697403"
 ---
 # <a name="configure-ipsecike-policy-for-site-to-site-vpn-connections"></a>配置站点到站点 VPN 连接的 IPsec/IKE 策略
 
@@ -76,7 +76,7 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 若�
 | IKEv2 完整性                                      | SHA384、SHA256、SHA1、MD5                                                |
 | DH 组                                             | ECP384、DHGroup14、DHGroup2、DHGroup1、ECP256、DHGroup24             |
 | IPsec 加密                                     | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128、DES3、DES、无 |
-| IPsec 完整性                                      | GCMAES256、GCMAES192、GCMAES128                                          |
+| IPsec 完整性                                      | GCMAES256、GCMAES192、GCMAES128、SHA256                                         |
 | PFS 组                                            | PFS24、ECP384、ECP256、PFS2048、PFS2、PFS1、PFSMM、无                  |
 | QM SA 生存期                                       | （可选：如果未指定，则使用默认值）<br />                         秒（整数；至少为 300 秒/默认为 27000 秒）<br />                         KB（整数；至少为 1024 KB/默认为 102400000 KB） |
 | 流量选择器                                     | Azure Stack Hub 不支持基于策略的流量选择器。         |

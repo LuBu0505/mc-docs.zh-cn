@@ -3,17 +3,17 @@ title: 使用 AKS 引擎在 Azure Stack Hub 上部署 Kubernetes 群集
 description: 如何从运行 AKS 引擎的客户端 VM 中将 Kubernetes 群集部署到 Azure Stack Hub 上。
 author: WenJason
 ms.topic: article
-origin.date: 09/02/2020
-ms.date: 11/09/2020
+origin.date: 02/05/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: waltero
-ms.lastreviewed: 09/02/2020
-ms.openlocfilehash: c00facd3e8bb498432ff4155519162d237e00660
-ms.sourcegitcommit: f187b1a355e2efafea30bca70afce49a2460d0c7
+ms.lastreviewed: 2/5/2021
+ms.openlocfilehash: f7f6c0e867f5ba4294e3ae46001c1abbed961f31
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93330611"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696781"
 ---
 # <a name="deploy-a-kubernetes-cluster-with-the-aks-engine-on-azure-stack-hub"></a>使用 AKS 引擎在 Azure Stack Hub 上部署 Kubernetes 群集
 
@@ -27,10 +27,10 @@ ms.locfileid: "93330611"
 
 本部分介绍如何为群集创建 API 模型。
 
-1.  首先使用 Azure Stack Hub [示例](https://github.com/Azure/aks-engine/tree/master/examples/azure-stack) API 模型文件，为部署创建本地副本。 在安装 AKS 引擎的计算机上运行：
+1.  首先使用适用于 [Linux](https://aka.ms/aksengine-json-example-raw) 或 [Windows](https://aka.ms/aksengine-json-example-raw-win) 的 Azure Stack Hub API 模型文件，并为部署创建本地副本。 在安装 AKS 引擎的计算机上运行：
 
     ```bash
-    curl -o kubernetes-azurestack.json https://raw.githubusercontent.com/Azure/aks-engine/master/examples/azure-stack/kubernetes-azurestack.json
+    curl -o kubernetes-azurestack.json https://raw.githubusercontent.com/Azure/aks-engine/v0.55.4/examples/azure-stack/kubernetes-azurestack.json
     ```
 
     > [!NOTE]  
@@ -76,7 +76,7 @@ ms.locfileid: "93330611"
 
     | 字段 | 说明 |
     | --- | --- |
-    | count | 输入要用于部署的代理数。 每个订阅使用的节点的最大数目为 50 个。 如果要为每个订阅部署多个群集，请确保代理总数不超过 50 个。 请确保使用[示例 API 模型 JSON 文件](https://github.com/Azure/aks-engine/blob/master/examples/azure-stack/kubernetes-azurestack.json)中指定的配置项目。  |
+    | count | 输入要用于部署的代理数。 每个订阅使用的节点的最大数目为 50 个。 如果要为每个订阅部署多个群集，请确保代理总数不超过 50 个。 请确保使用[示例 API 模型 JSON 文件](https://aka.ms/aksengine-json-example-raw)中指定的配置项目。  |
     | vmSize | 输入 [Azure Stack Hub 支持的大小](./azure-stack-vm-sizes.md)，例如 `Standard_D2_v2`。 |
     | distro | 输入 `aks-ubuntu-16.04`。 |
 
@@ -237,7 +237,7 @@ ms.locfileid: "93330611"
 
 ### <a name="update-each-node-manually"></a>手动更新每个节点
 
-1. 从云运营商处获取服务主体的新机密。 有关 Azure Stack Hub 的说明，请参阅[使用应用标识访问 Azure Stack Hub 资源](/azure-stack/operator/azure-stack-create-service-principals)。
+1. 从云运营商处获取服务主体的新机密。 有关 Azure Stack Hub 的说明，请参阅[使用应用标识访问 Azure Stack Hub 资源](../operator/azure-stack-create-service-principals.md)。
 2. 使用云运营商提供的新凭据更新每个节点上的 `/etc/kubernetes/azure.json`。 进行更新后，重启 kubelet 和 kube-controller-manager 。
 
 ### <a name="update-the-cluster-with-aks-engine-update"></a>使用 aks-engine update 更新群集

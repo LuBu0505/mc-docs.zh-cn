@@ -3,15 +3,15 @@ title: 适用于 Azure Functions 的 Azure 队列存储输出绑定
 description: 了解如何在 Azure Functions 中创建 Azure 队列存储消息。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 11/30/2020
+ms.date: 03/01/2021
 ms.author: v-junlch
 ms.custom: devx-track-csharp, cc996988-fb4f-47
-ms.openlocfilehash: ab58eb7b21c501db8ddf805c9db1c3dde9cf5c57
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: c6408829c6b93cf7bd2a46aeb6fac10920896830
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507333"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697981"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure 队列存储输出绑定
 
@@ -328,17 +328,19 @@ PowerShell 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** | 不适用 | 必须设置为 `queue`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|type | 不适用 | 必须设置为 `queue`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为 `out`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
 |**name** | 不适用 | 表示函数代码中的队列的变量的名称。 设置为 `$return` 可引用函数返回值。|
 |**queueName** |**QueueName** | 队列的名称。 |
-|连接 | **Connection** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，Functions 运行时将会查找名为“MyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
+|连接 | **Connection** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。<br><br>例如，如果将 `connection` 设置为“MyStorage”，Functions 运行时将会查找名为“MyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>如果使用 [5.x 版或更高版本的扩展](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)，而不是使用连接字符串，则可以提供对用于定义连接的配置节的引用。 请参阅[连接](./functions-reference.md#connections)。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>使用情况
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+### <a name="default"></a>默认
 
 使用 `out T paramName` 等方法参数写入一条队列消息。 可以使用方法返回类型而不使用 `out` 参数，`T` 可为以下任何类型：
 
@@ -354,7 +356,18 @@ PowerShell 不支持特性。
 * `ICollector<T>` 或 `IAsyncCollector<T>`
 * [CloudQueue](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
+### <a name="additional-types"></a>其他类型
+
+应用如果使用 [5.0.0 版或更高版本的存储扩展](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)，还可以使用用于 .NET 的 Azure SDK 中的类型。 此版本为了支持以下类型，删除了对旧的 `CloudQueue` 和 `CloudQueueMessage` 类型的支持：
+
+- [QueueMessage](https://docs.microsoft.com/dotnet/api/azure.storage.queues.models.queuemessage)
+- 用于编写多个队列消息的 [QueueClient](https://docs.microsoft.com/dotnet/api/azure.storage.queues.queueclient)
+
+有关使用这些类型的示例，请参阅[扩展的 GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples)。
+
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+
+### <a name="default"></a>默认
 
 使用 `out T paramName` 等方法参数写入一条队列消息。 `paramName` 是在 *function.json* 的 `name` 属性中指定的值。 可以使用方法返回类型而不使用 `out` 参数，`T` 可为以下任何类型：
 
@@ -369,6 +382,15 @@ PowerShell 不支持特性。
 
 * `ICollector<T>` 或 `IAsyncCollector<T>`
 * [CloudQueue](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
+
+### <a name="additional-types"></a>其他类型
+
+应用如果使用 [5.0.0 版或更高版本的存储扩展](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)，还可以使用用于 .NET 的 Azure SDK 中的类型。 此版本为了支持以下类型，删除了对旧的 `CloudQueue` 和 `CloudQueueMessage` 类型的支持：
+
+- [QueueMessage](https://docs.microsoft.com/dotnet/api/azure.storage.queues.models.queuemessage)
+- 用于编写多个队列消息的 [QueueClient](https://docs.microsoft.com/dotnet/api/azure.storage.queues.queueclient)
+
+有关使用这些类型的示例，请参阅[扩展的 GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples)。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -397,38 +419,6 @@ PowerShell 不支持特性。
 | Blob、表、队列 | [存储错误代码](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
 | Blob、表、队列 |  [故障排除](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
-<a name="host-json"></a>  
-
-## <a name="hostjson-settings"></a>host.json 设置
-
-本部分介绍版本 2.x 及更高版本中可用于此绑定的全局配置设置。 下面的示例 host.json 文件仅包含此绑定的 2.x 版及更高版本设置。 若要详细了解 2.x 版及更高版本中的全局配置设置，请参阅 [Azure Functions 的 host.json 参考](functions-host-json.md)。
-
-> [!NOTE]
-> 有关 Functions 1.x 中 host.json 的参考，请参阅 [Azure Functions 1.x 的 host.json 参考](functions-host-json-v1.md)。
-
-```json
-{
-    "version": "2.0",
-    "extensions": {
-        "queues": {
-            "maxPollingInterval": "00:00:02",
-            "visibilityTimeout" : "00:00:30",
-            "batchSize": 16,
-            "maxDequeueCount": 5,
-            "newBatchThreshold": 8
-        }
-    }
-}
-```
-
-|属性  |默认 | 说明 |
-|---------|---------|---------|
-|maxPollingInterval|00:00:01|队列轮询的最大间隔时间。 最小值为 00:00:00.100（100 毫秒），可递增至 00:01:00（1 分钟）。  在 1.x 中，数据类型是毫秒，在 2.x 及更高版本中，数据类型是 TimeSpan。|
-|visibilityTimeout|00:00:00|消息处理失败时的重试间隔时间。 |
-|batchSize|16|Functions 运行时同时检索并并行处理的队列消息数。 当处理的数量下降到 `newBatchThreshold` 时，运行时可获取另一个批，并开始处理这些消息。 因此，每个函数处理的最大并发消息数是 `batchSize` 加上 `newBatchThreshold`。 此限制分别应用于各个队列触发的函数。 <br><br>如果要避免对队列上收到的消息并行执行，可以将 `batchSize` 设置为 1。 但是，只有在函数于单个虚拟机 (VM) 上运行时，此设置才可消除并发。 如果函数应用横向扩展到多个 VM，每个 VM 可运行每个队列触发的函数的一个实例。<br><br>`batchSize` 的最大值为 32。 |
-|maxDequeueCount|5|在将某个消息移到有害队列之前，尝试处理该消息的次数。|
-|newBatchThreshold|batchSize/2|只要同时处理的消息数下降到此数值，运行时即检索另一个批次。|
-
 ## <a name="next-steps"></a>后续步骤
 
 - [在队列存储数据更改时运行函数（触发器）](./functions-bindings-storage-queue-trigger.md)
@@ -436,4 +426,3 @@ PowerShell 不支持特性。
 <!-- LINKS -->
 
 [CloudQueueMessage]: https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage
-

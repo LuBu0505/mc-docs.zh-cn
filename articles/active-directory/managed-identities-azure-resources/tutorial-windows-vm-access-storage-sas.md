@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/08/2021
+ms.date: 02/24/2021
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7469117cc07185af843a0face93592056494ba54
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 6daa5ecf2d43c139b4e2bbdb3b028f52cdd696fc
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021696"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697627"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>教程：使用 Windows VM 系统分配的托管标识通过 SAS 凭据访问 Azure 存储
 
@@ -39,7 +39,7 @@ ms.locfileid: "98021696"
 
 - 具备托管标识相关知识。 如果不熟悉 Azure 资源功能的托管标识，请参阅此[概述](overview.md)。 
 - 一个 Azure 帐户，[注册试用版](https://www.microsoft.com/china/azure/index.html?fromtype=cn/)。
-- 在相应范围（订阅或资源组）内具有“所有者”权限，以执行所需的资源创建和角色管理步骤。 如果需要有关角色分配的帮助，请参阅[使用基于角色的访问控制管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)。
+- 在相应范围（订阅或资源组）内具有“所有者”权限，以执行所需的资源创建和角色管理步骤。 如果需要有关角色分配的帮助，请参阅[分配 Azure 角色以管理对于 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)。
 - 还需要启用了系统分配的托管标识的 Windows 虚拟机。
   - 如需为本教程创建虚拟机，则可以按照标题为[创建启用了系统分配的标识的虚拟机](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity)的文章进行操作
 
@@ -210,4 +210,3 @@ Name              : testblob
 
 > [!div class="nextstepaction"]
 >[使用共享访问签名 (SAS)](../../storage/common/storage-sas-overview.md)
-

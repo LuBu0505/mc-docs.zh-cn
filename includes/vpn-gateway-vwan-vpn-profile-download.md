@@ -5,38 +5,31 @@ services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
-origin.date: 07/31/2020
-ms.date: 09/07/2020
+origin.date: 02/08/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: bda489afcdabddb317ce0eb7ffd9c5ccee8a9069
-ms.sourcegitcommit: 22e1da9309795e74a91b7241ac5987a802231a8c
+ms.openlocfilehash: 060cd2b3f7944d5a8cf697a339fd5fd776d1aa24
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89464244"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697726"
 ---
-## <a name="1-download-the-file"></a>1.下载文件
-
-运行以下命令。 将结果 URL 复制到浏览器，以便下载配置文件 zip 文件。
-
-```azurepowershell
-$profile = New-AzVpnClientConfiguration -ResourceGroupName AADAuth -Name AADauthGW -AuthenticationMethod "EapTls"
-   
-$PROFILE.VpnProfileSASUrl
-```
-
-## <a name="2-extract-the-zip-file"></a>2.提取 zip 文件
+## <a name="extract-the-zip-file"></a>解压缩 zip 文件
 
 解压缩 zip 文件。 该文件包含以下文件夹：
 
 * AzureVPN
 * 泛型
-* OpenVPN（如果已在网关上启用 OpenVPN 和 Azure 证书或 RADIUS 身份验证设置） 。 对于 VPN 网关，请参阅[创建租户](../articles/vpn-gateway/openvpn-azure-ad-tenant.md)。 对于虚拟 WAN，请参阅[创建租户 - VWAN](../articles/virtual-wan/openvpn-azure-ad-tenant.md)。
+* OpenVPN（如果已在网关上启用 OpenVPN 和 Azure 证书或 RADIUS 身份验证设置） 。 选择对应于你的配置的相应项目以创建租户。
 
-## <a name="3-retrieve-information"></a>3.检索信息
+  * [VPN 网关 - 创建租户](../articles/vpn-gateway/openvpn-azure-ad-tenant.md)。
+  * [虚拟 WAN - 创建租户](../articles/virtual-wan/openvpn-azure-ad-tenant.md)。
 
-在 AzureVPN 文件夹中，导航到 azurevpnconfig.xml 文件，然后使用记事本打开它。 记下以下标记之间的文本。
+## <a name="retrieve-information"></a>检索信息
+
+在 AzureVPN 文件夹中导航到 azurevpnconfig.xml 文件，然后用记事本打开它 。 记下以下标记之间的文本。
 
 ```
 <audience>          </audience>
@@ -50,11 +43,11 @@ $PROFILE.VpnProfileSASUrl
 
 添加连接时，请使用在上一步中为配置文件详细信息页面收集的信息。 这些字段对应于以下信息：
 
-   * **受众：** 标识令牌所针对的接收方资源
-   * **颁发者：** 标识发出令牌的安全令牌服务 (STS) 以及 Azure AD 租户
-   * **租户：** 包含颁发令牌的目录租户的一个不变的唯一标识符
-   * **FQDN：** Azure VPN 网关上的完全限定的域名 (FQDN)
-   * **ServerSecret：** VPN 网关预共享密钥
+* **受众：** 标识令牌所针对的接收方资源。
+* **颁发者：** 标识发出令牌的安全令牌服务 (STS) 以及 Azure AD 租户。
+* **租户：** 包含颁发令牌的目录租户的一个不变的唯一标识符。
+* **FQDN：** Azure VPN 网关上的完全限定的域名 (FQDN)。
+* **ServerSecret：** VPN 网关预共享密钥。
 
 ## <a name="folder-contents"></a>文件夹内容
 

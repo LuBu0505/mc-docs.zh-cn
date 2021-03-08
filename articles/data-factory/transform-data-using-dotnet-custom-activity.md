@@ -1,22 +1,19 @@
 ---
 title: 在管道中使用自定义活动
 description: 了解如何使用 .NET 创建自定义活动，然后在 Azure 数据工厂管道中使用这些活动。
-services: data-factory
 ms.service: data-factory
 author: WenJason
 ms.author: v-jay
-manager: digimobile
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 11/26/2018
-ms.date: 11/23/2020
-ms.openlocfilehash: 8203fa31d5f0b49254d72968cd89067fcf1cf7ac
-ms.sourcegitcommit: c89f1adcf403f5845e785064350136698eed15b8
+ms.date: 03/01/2021
+ms.openlocfilehash: f3d396743795181d68525c486f05e047e89d1fee
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94680482"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697206"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 
@@ -36,6 +33,9 @@ ms.locfileid: "94680482"
 * [Azure Batch 基础知识](../batch/batch-technical-overview.md) - Azure Batch 服务的概述。
 * [New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/New-azBatchAccount) cmdlet 以创建 Azure Batch 帐户（或）[Azure 门户](../batch/batch-account-create-portal.md)以使用 Azure 门户创建 Azure Batch 帐户。 请参阅 [Using PowerShell to manage Azure Batch Account](https://docs.microsoft.com/archive/blogs/windowshpc/using-azure-powershell-to-manage-azure-batch-account)（使用 Azure PowerShell 管理 Azure Batch 帐户）一文，了解有关使用此 cmdlet 的详细说明。
 * [New-AzBatchPool](https://docs.microsoft.com/powershell/module/az.batch/New-AzBatchPool) cmdlet 以创建 Azure Batch 池。
+
+> [!IMPORTANT]
+> 创建新的 Azure Batch 池时，必须使用“VirtualMachineConfiguration”，而不是“CloudServiceConfiguration”。 有关更多详细信息，请参阅 [Azure Batch 池迁移指南](/batch/batch-pool-cloud-service-to-virtual-machine-configuration)。 
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch 链接服务
 
@@ -98,7 +98,7 @@ ms.locfileid: "94680482"
 
 下表描述了此活动特有的属性的名称和描述。
 
-| 属性              | 说明                              | 必须 |
+| 属性              | 说明                              | 必选 |
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | 管道中活动的名称     | 是      |
 | description           | 描述活动用途的文本。  | 否       |

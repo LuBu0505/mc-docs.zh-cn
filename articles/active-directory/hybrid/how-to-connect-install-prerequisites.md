@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/04/2021
+ms.date: 02/26/2021
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db85cbdcce529beb94178162107117b25823e332
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: 9e9b079b83f67cbf88aeca9f0d18db9493a3e02a
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540855"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697731"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect 的先决条件
 本文介绍 Azure Active Directory (Azure AD) Connect 的先决条件和硬件要求。
@@ -164,6 +164,17 @@ Azure AD Connect 依赖于 Microsoft PowerShell 和 .NET Framework 4.5.1。 服�
     "SchUseStrongCrypto"=dword:00000001
     ```
 1. 如果还想要在同步引擎服务器和远程 SQL Server 之间启用 TLS 1.2，请确保为 [Microsoft SQL Server 的 TLS 1.2 支持](https://support.microsoft.com/kb/3135244)安装所需的版本。
+
+### <a name="dcom-prerequisites-on-the-synchronization-server"></a>同步服务器上的 DCOM 必备组件
+在同步服务的安装过程中，Azure AD Connect 会检查是否存在以下注册表项：
+
+- HKEY_LOCAL_MACHINE:  Software\Microsoft\Ole
+
+在此注册表项下，Azure AD Connect 将检查以下值是否存在且未损坏： 
+
+- [MachineAccessRestriction](https://docs.microsoft.com/windows/win32/com/machineaccessrestriction)
+- [MachineLaunchRestriction](https://docs.microsoft.com/windows/win32/com/machinelaunchrestriction)
+- [DefaultLaunchPermission](https://docs.microsoft.com/windows/win32/com/defaultlaunchpermission)
 
 ## <a name="prerequisites-for-federation-installation-and-configuration"></a>联合身份验证安装和配置的先决条件
 ### <a name="windows-remote-management"></a>Windows 远程管理

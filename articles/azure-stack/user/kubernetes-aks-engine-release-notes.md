@@ -3,17 +3,17 @@ title: Azure Stack Hub 上 Azure Kubernetes 服务 (AKS) 引擎的发行说明
 description: 了解更新 Azure Stack Hub 上的 AKS 引擎需要采取的步骤。
 author: WenJason
 ms.topic: article
-origin.date: 09/28/2020
-ms.date: 11/09/2020
+origin.date: 2/11/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: waltero
-ms.lastreviewed: 09/28/2020
-ms.openlocfilehash: 7b13489a89b9a4e7b1e4c0697314048bdf857933
-ms.sourcegitcommit: f187b1a355e2efafea30bca70afce49a2460d0c7
+ms.lastreviewed: 2/11/2021
+ms.openlocfilehash: 7ec71db9dc8a49646e272389d48affd6a7403bfd
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93330441"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697666"
 ---
 # <a name="release-notes-for-the-aks-engine-on-azure-stack-hub"></a>Azure Stack Hub 上的 AKS 引擎发行说明
 适用于 AKS 引擎的版本 v0.55.4。
@@ -76,6 +76,7 @@ AKS 引擎升级命令完全自动执行群集的升级过程，它负责处理�
 
 -   Kubernetes 群集管理员将需要下载新的 aks-engine 版本 0.51.0。 请参阅下面的文章[在 Linux 上的 Azure Stack Hub 中安装 AKS 引擎](./azure-stack-kubernetes-aks-engine-deploy-linux.md)中的说明。 你可以遵循用于首次安装群集的过程。 此更新将覆盖以前的二进制文件。 例如，如果你使用了 get-akse.sh 脚本，请按照[在联网环境中安装](./azure-stack-kubernetes-aks-engine-deploy-linux.md#install-in-a-connected-environment)部分中所述的步骤进行操作。 如果你是在 Windows 系统上安装，则此过程同样适用，请参阅[在 Windows 上的 Azure Stack Hub 中安装 AKS 引擎](./azure-stack-kubernetes-aks-engine-deploy-windows.md)一文。
 
+
 ## <a name="aks-engine-and-azure-stack-version-mapping"></a>AKS 引擎和 Azure Stack 版本映射
 
 | Azure Stack Hub 版本 | AKS 引擎版本 |
@@ -94,12 +95,22 @@ AKS 引擎升级命令完全自动执行群集的升级过程，它负责处理�
 | 1.15.12、1.16.8、1.16.9 | 1.16.14 |
 | 1.16.8、1.16.9、1.16.14 | 1.17.11 |
 
-在 API 模型 json 文件中，请在 `orchestratorProfile` 部分下指定发行版和版本值，例如，如果计划部署 Kubernetes 1.16.14，则必须设置以下两个值（请参阅示例 [kubernetes-azurestack.json](https://raw.githubusercontent.com/Azure/aks-engine/master/examples/azure-stack/kubernetes-azurestack.json)）：
+在 API 模型 json 文件中，请在 `orchestratorProfile` 部分下指定发行版和版本值，例如，如果计划部署 Kubernetes 1.16.14，则必须设置以下两个值（请参阅示例 [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw)）：
 
 ```json  
     -   "orchestratorRelease": "1.16",
     -   "orchestratorVersion": "1.16.14"
 ```
+
+## <a name="aks-engine-and-corresponding-image-mapping"></a>AKS 引擎及相应的映像映射
+
+| AKS 引擎 | AKS 基础映像 | Kubernetes 版本 | 说明 |
+|---|---|---|---|
+| v0.43.1 | AKS 基础 Ubuntu 16.04-LTS 映像发行版，2019 年 10 月 (2019.10.24) | 1.15.5、1.15.4、1.14.8、1.14.7 |  |
+| v0.48.0 | AKS 基础 Ubuntu 16.04-LTS 映像发行版，2020 年 3 月 (2020.03.19) | 1.15.10、1.14.7 |  |
+| v0.51.0 | AKS 基础 Ubuntu 16.04-LTS 映像发行版，2020 年 5 月 (2020.05.13)，AKS 基础 Windows 映像 (17763.1217.200513) | 1.15.12、1.16.8、1.16.9 | API 模型示例（[Linux](https://github.com/Azure/aks-engine/blob/v0.51.0/examples/azure-stack/kubernetes-azurestack.json)、[Windows](https://github.com/Azure/aks-engine/blob/v0.51.0/examples/azure-stack/kubernetes-windows.json)） |
+| v0.55.0 | AKS 基础 Ubuntu 16.04-LTS 映像发行版，2020 年 8 月 (2020.08.24)，AKS 基础 Windows 映像 (17763.1397.200820) | 1.15.12、1.16.14、1.17.11 | API 模型示例（[Linux](https://github.com/Azure/aks-engine/blob/v0.55.0/examples/azure-stack/kubernetes-azurestack.json)、[Windows](https://github.com/Azure/aks-engine/blob/v0.55.0/examples/azure-stack/kubernetes-windows.json)） |
+| v0.55.4 | AKS 基础 Ubuntu 16.04-LTS 映像发行版，2020 年 9 月 (2020.09.14)，AKS 基础 Windows 映像 (17763.1397.200820) | 1.15.12、1.16.14、1.17.11 | API 模型示例（[Linux](https://github.com/Azure/aks-engine/blob/v0.55.0/examples/azure-stack/kubernetes-azurestack.json)、[Windows](https://github.com/Azure/aks-engine/blob/v0.55.0/examples/azure-stack/kubernetes-windows.json)） |
 
 ## <a name="whats-new"></a>新增功能
 
@@ -200,7 +211,7 @@ AKS 引擎升级命令完全自动执行群集的升级过程，它负责处理�
 
 ## <a name="whats-new"></a>新增功能 
 
--   支持 Kubernetes 版本 1.15.10 ([\#2834](https://github.com/Azure/aks-engine/issues/2834))。 部署新群集时，请确保在你的 API 模型 json 文件（即 群集定义文件）中指定发行版本号和次版本号。 你可以找到示例：[kubernetes-azurestack.json](https://raw.githubusercontent.com/Azure/aks-engine/master/examples/azure-stack/kubernetes-azurestack.json)：
+-   支持 Kubernetes 版本 1.15.10 ([\#2834](https://github.com/Azure/aks-engine/issues/2834))。 部署新群集时，请确保在你的 API 模型 json 文件（即 群集定义文件）中指定发行版本号和次版本号。 你可以找到示例：[kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw)：
 
     - `"orchestratorRelease": "1.15`,
 

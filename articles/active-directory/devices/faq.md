@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: troubleshooting
-ms.date: 02/04/2021
+ms.date: 02/24/2021
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66761c42024daf22b33360c0262a5b26113a9d7d
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: af26e0848371498f54f1ea5659658c1344468fe3
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540729"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697863"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
@@ -299,6 +299,11 @@ Windows 10 2004 更新支持 UPN 更改。 如果用户的设备上包含此更�
 - 对于已注册 Azure AD 的 Windows 10 设备，请转到“设置” > “帐户” > “访问工作单位或学校”  。 选择帐户，然后选择“断开连接”。 在 Windows 10 上，设备注册按用户配置文件进行。
 - 对于 iOS 和 Android，可使用 Microsoft Authenticator 应用程序的“设置” > “设备注册”，并选择“注销设备”  。
 - 对于 macOS，可使用 Microsoft Intune 公司门户应用程序从管理中取消注册设备，并删除任何注册。 
+
+对于 Windows 10 设备，可通过 [Workplace (WPJ) 删除工具](https://download.microsoft.com/download/8/e/f/8ef13ae0-6aa8-48a2-8697-5b1711134730/WPJCleanUp.zip)自动执行此过程。
+
+> [!NOTE]
+> 此工具将删除设备上的所有 SSO 帐户。 完成此操作后，所有应用程序都将丢失 SSO 状态，并且设备将从管理工具 (MDM) 和云中注销。 应用程序下次尝试登录时，用户将被要求重新添加帐户。
 
 ---
 ### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>问：如何阻止用户在企业 Windows 10 设备上添加更多的工作帐户（已注册 Azure AD）？

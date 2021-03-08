@@ -10,21 +10,21 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-origin.date: 01/05/2021
-ms.date: 01/18/2021
+origin.date: 01/29/2021
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.openlocfilehash: 344fe406fd50e03bc8108989beab49a6dcf2b950
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 54b4df194d0f1cae17fb3d84dd6c7678959d7ccf
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230591"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697347"
 ---
 # <a name="azure-storage-accounts"></a>Azure 存储帐户
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-若要开始管理、加密、编码和流式处理 Azure 中的媒体内容，需要创建媒体服务帐户。 创建媒体服务帐户时，需要提供 Azure 存储帐户资源的名称。 指定存储帐户会附加到媒体服务帐户。
+若要开始管理、加密、编码、分析和流式处理 Azure 中的媒体内容，需要创建媒体服务帐户。 创建媒体服务帐户时，需要提供 Azure 存储帐户资源的名称。 指定存储帐户会附加到媒体服务帐户。
 
 媒体服务帐户和所有关联的存储帐户必须位于同一 Azure 订阅中。 强烈建议在媒体服务帐户所在的位置使用存储帐户，避免额外的延迟和数据出口成本。
 
@@ -35,7 +35,7 @@ ms.locfileid: "98230591"
 > [!NOTE]
 > 仅热访问层支持与 Azure 媒体服务配合使用，尽管其他访问层可用于降低未活跃使用的内容的存储成本。
 
-可以为存储帐户选择不同的 SKU。 有关详细信息，请参阅[存储帐户](/cli/storage/account?view=azure-cli-latest)。 若要通过存储帐户进行试验，请使用 `--sku Standard_LRS`。 但是，在选取用于生产的 SKU 时，应考虑 `--sku Standard_RAGRS`，以便通过异地复制确保业务连续性。
+可以为存储帐户选择不同的 SKU。 若要通过存储帐户进行试验，请使用 `--sku Standard_LRS`。 但是，在选取用于生产的 SKU 时，应考虑 `--sku Standard_RAGRS`，以便通过异地复制确保业务连续性。
 
 ## <a name="assets-in-a-storage-account"></a>存储帐户中的资产
 
@@ -50,14 +50,11 @@ ms.locfileid: "98230591"
 
 |加密选项|说明|媒体服务 v3|
 |---|---|---|
-|媒体服务存储加密| AES-256 加密，媒体服务管理的密钥。 |不支持。<sup>(1)</sup>|
+|媒体服务存储加密| AES-256 加密，媒体服务管理的密钥。 |不支持。<sup>1</sup>|
 |[静态数据的存储服务加密](../../storage/common/storage-service-encryption.md)|由 Azure 存储提供的服务器端加密，由 Azure 或客户托管的密钥。|。|
 |[存储客户端加密](../../storage/common/storage-client-side-encryption.md)|由 Azure 存储提供的客户端加密，由 Key Vault 中的客户托管密钥。|不支持。|
 
 <sup>1</sup> 在媒体服务 v3 中，仅当资产是使用媒体服务 v2 创建的时才支持存储加密（AES-256 加密）以实现向后兼容性，这意味着 v3 适用于现有存储加密的资产，但不允许创建新资产。
-
-## <a name="double-encryption"></a>双重加密
-媒体服务支持双重加密。  若要详细了解双重加密，请参阅 [Azure 双重加密](/security/fundamentals/double-encryption)。
 
 ## <a name="storage-account-errors"></a>存储帐户错误
 
@@ -69,10 +66,6 @@ ms.locfileid: "98230591"
 |---|---|
 |媒体服务帐户或附加的存储帐户已迁移到单独的订阅。 |迁移存储帐户或媒体服务帐户，使之全都位于同一订阅中。 |
 |媒体服务帐户在使用另一订阅中的附加存储帐户，因为它是支持此功能的早期媒体服务帐户。 所有早期的媒体服务帐户都已转换成新式的基于 Azure 资源管理器的帐户，其状态将为“已断开连接”。 |迁移存储帐户或媒体服务帐户，使之全都位于同一订阅中。|
-
-## <a name="azure-storage-firewall"></a>Azure 存储防火墙
-
-Azure 媒体服务不支持启用了 Azure 存储防火墙或[专用终结点](../../storage/common/storage-network-security.md)的存储帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,7 +3,7 @@ title: 排查权利管理问题 - Azure AD
 description: 了解排查 Azure Active Directory 权利管理问题时应检查的一些项。
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.subservice: compliance
-ms.date: 10/10/2020
+ms.date: 02/24/2021
 ms.author: v-junlch
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aab63375006b7a062680b9e3937bcd2b44bb4fe0
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: fd84eb5aadf0d7254b2beb438805f94c553471a1
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937178"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696633"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>排查 Azure AD 权利管理的问题
 
@@ -35,7 +35,7 @@ ms.locfileid: "91937178"
 
 ## <a name="resources"></a>资源
 
-* 应用程序的角色由应用程序自身定义，并在 Azure AD 中进行管理。 如果某个应用程序没有任何资源角色，则权利管理会将用户分配到一个**默认访问**角色。
+* 应用程序的角色由应用程序自身定义，并在 Azure AD 中进行管理。 如果某个应用程序没有任何资源角色，则权利管理会将用户分配到一个 **默认访问** 角色。
 
     请注意，Azure 门户可能还会显示不能选作应用程序的服务的服务主体。  具体而言，**Exchange Online** 和 **SharePoint Online** 是服务，而不是在目录中具有资源角色的应用程序，因此，不能将它们包含在访问包中。  相反，使用基于组的许可为需要访问这些服务的用户建立适当的许可。
 
@@ -47,7 +47,6 @@ ms.locfileid: "91937178"
 
 * 删除团队成员时，也会将其从 Microsoft 365 组中删除。 从团队的聊天功能中删除可能会延迟。 有关详细信息，请参阅[组成员身份](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)。
 
-* 确保你的目录未在多地域进行配置。 权利管理当前不支持 SharePoint Online 的多地域位置。 SharePoint Online 站点必须位于默认地理位置，才能由权利管理进行管理。 有关详细信息，请参阅 [OneDrive 和 SharePoint Online 中的多地域功能](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365)。
 
 ## <a name="access-packages"></a>访问包
 
@@ -79,9 +78,9 @@ ms.locfileid: "91937178"
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“访问包”，然后打开访问包。****
+1. 在左侧菜单中单击“访问包”，然后打开访问包。
 
-1. 单击“请求”。****
+1. 单击“请求”。
 
 1. 选择要查看的请求。
 
@@ -107,9 +106,9 @@ ms.locfileid: "91937178"
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“访问包”，然后打开访问包。****
+1. 在左侧菜单中单击“访问包”，然后打开访问包。
 
-1. 单击“请求”。****
+1. 单击“请求”。
 
 1. 单击要重新处理的请求。
 
@@ -125,13 +124,13 @@ ms.locfileid: "91937178"
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“访问包”，然后打开访问包。****
+1. 在左侧菜单中单击“访问包”，然后打开访问包。
 
-1. 单击“请求”。****
+1. 单击“请求”。
 
 1. 单击要取消的请求。
 
-1. 在请求详细信息窗格中，单击“取消请求”。****
+1. 在请求详细信息窗格中，单击“取消请求”。
 
 ## <a name="multiple-policies"></a>多个策略
 
@@ -146,7 +145,7 @@ ms.locfileid: "91937178"
     | P1 | 你的目录中的或特定的连接组织中的特定用户和组 |
     | P2 | 你的目录中的所有成员（不包括来宾） |
     | P3 | 你的目录中的或特定的连接组织中的所有用户（包括来宾） |
-    | P4 | 所有连接的组织或所有用户（所有连接的组织 + 任何新的外部用户） |
+    | P4 | 所有配置的已连接组织或所有用户（所有连接的组织 + 任何新的外部用户） |
     
     如果有任何策略具有较高的优先级类别，则会忽略较低的优先级类别。 若要通过示例来了解如何将优先级相同的多个策略显示给请求者，请参阅[选择策略](entitlement-management-request-access.md#select-a-policy)。
 
@@ -154,4 +153,3 @@ ms.locfileid: "91937178"
 
 - [管控外部用户的访问权限](entitlement-management-external-users.md)
 - [查看有关用户如何在权利管理中获取访问权限的报告](entitlement-management-reports.md)
-

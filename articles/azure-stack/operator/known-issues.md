@@ -3,17 +3,17 @@ title: Azure Stack Hub 已知问题
 description: 了解 Azure Stack Hub 发行版中的已知问题。
 author: WenJason
 ms.topic: article
-origin.date: 11/16/2020
-ms.date: 01/11/2021
+origin.date: 01/28/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
-ms.openlocfilehash: 45450dc6143136b7772dedc9badc5fb24833ae40
-ms.sourcegitcommit: 3f54ab515b784c9973eb00a5c9b4afbf28a930a9
+ms.openlocfilehash: a03823fc68a75b742e1f271cf451b85a5dc5c081
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894388"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696944"
 ---
 # <a name="azure-stack-hub-known-issues"></a>Azure Stack Hub 已知问题
 
@@ -83,6 +83,17 @@ ms.locfileid: "97894388"
 - 原因：在负载均衡器上启用“会话相关性”时，2 元组哈希使用 PA IP（物理地址 IP）而不是分配给 VM 的专用 IP。 如果定向到负载均衡器的流量通过 VPN 到达，或者，如果所有客户端 VM（源 IP）位于同一节点上并且启用了会话相关性，则所有流量都将定向到一个后端 VM。
 - 发生次数：通用
 
+#### <a name="ipv6-button-visible-in-frontend-ip-configuration"></a>在前端 IP 配置中显示的 IPv6 按钮
+
+- 适用于：此问题适用于 2008 版本。
+- 原因：在创建公共负载均衡器的前端 IP 配置时，IPv6 按钮是可见的，且已启用。 这是一个门户上的外观问题。 Azure Stack Hub 目前不支持 IPv6。
+- 发生次数：通用
+
+#### <a name="backend-port-and-frontend-port-need-to-be-the-same-when-floating-ip-is-enabled"></a>在启用浮动 IP 的情况下，后端端口和前端端口必须相同
+
+- 适用于：此问题适用于所有版本。 
+- 原因：根据负载平衡规则，启用浮动 IP 时，前端端口和后端端口需要保持一致。 这是设计的结果。
+- 发生次数：通用
 ## <a name="update"></a>更新
 
 有关已知的 Azure Stack Hub 更新问题，请参阅[排查 Azure Stack Hub 中的更新问题](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates)。
@@ -441,4 +452,4 @@ ms.locfileid: "97894388"
 ## <a name="next-steps"></a>后续步骤
 
 - [查看更新活动清单](release-notes-checklist.md)
-- [查看安全更新列表](release-notes-security-updates.md) 可以访问 [TechNet 库中旧版本 Azure Stack Hub 的已知问题](https://aka.ms/azsarchivedrelnotes)。 提供这些已存档文档仅供参考，并不意味着支持这些版本。 有关 Azure Stack Hub 支持的信息，请参阅 [Azure Stack Hub 服务策略](azure-stack-servicing-policy.md)。 如需进一步的帮助，请联系 Azure 客户支持服务。
+- [查看安全更新列表](release-notes-security-updates.md) 可以在左侧目录中的[“资源”>“发行说明文档”](./relnotearchive/known-issues-1910.md)下找到旧版 Azure Stack Hub 的已知问题。 提供这些已存档文章仅供参考，并不意味着支持这些版本。 有关 Azure Stack Hub 支持的信息，请参阅 [Azure Stack Hub 服务策略](azure-stack-servicing-policy.md)。 如需进一步的帮助，请联系 Azure 客户支持服务。

@@ -2,20 +2,20 @@
 title: 如何在 Azure Functions 中禁用函数
 description: 了解如何在 Azure Functions 中禁用与启用函数。
 ms.topic: conceptual
-ms.date: 10/19/2020
+ms.date: 03/01/2021
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: bc2ac3f94537b4a59cf57f82f1ea637f61e1f5b9
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+ms.openlocfilehash: 6e25b57ac365534aa56bbee802dfecbbbf268c90
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472097"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697221"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>如何在 Azure Functions 中禁用函数
 
 本文介绍如何在 Azure Functions 中禁用函数。 禁用某个函数意味着运行时将忽略针对该函数定义的自动触发器。 这使你可以在不停止整个函数应用的情况下阻止特定函数运行。
 
-若要禁用函数，建议的方式是将格式为 `AzureWebJobs.<FUNCTION_NAME>.Disabled` 的应用设置设为 `true`。 可以通过多种方式创建和修改此应用程序设置，包括使用 [Azure CLI](/cli/)，以及使用 [Azure 门户](https://portal.azure.cn)中函数的“管理”选项卡。 
+若要禁用函数，建议的方式是将格式为 `AzureWebJobs.<FUNCTION_NAME>.Disabled` 的应用设置设为 `true`。 可以通过多种方式创建和修改此应用程序设置，包括使用 [Azure CLI](/cli/) 以及 [Azure 门户](https://portal.azure.cn)中函数的“概述”选项卡。 
 
 > [!NOTE]  
 > 如果使用本文所述的方法禁用 HTTP 触发的函数，则在本地计算机上运行时，仍然可以访问该终结点。  
@@ -40,9 +40,11 @@ az functionapp config appsettings set --name <myFunctionApp> \
 
 ## <a name="use-the-portal"></a>使用门户
 
-还可以使用函数的“概览”页上的“启用”和“禁用”按钮。 这两个按钮通过更改 `AzureWebJobs.<FUNCTION_NAME>.Disabled` 应用设置的值来工作。 此特定于函数的设置是在第一次禁用它时创建的。
+还可以使用函数的“概览”页上的“启用”和“禁用”按钮。 这两个按钮通过更改 `AzureWebJobs.<FUNCTION_NAME>.Disabled` 应用设置的值来工作。 此特定于函数的设置是在第一次禁用它时创建的。 
 
 ![函数状态开关](./media/disable-function/function-state-switch.png)
+
+即使从本地项目发布到函数应用时，仍可以使用门户来禁用函数应用中的函数。 
 
 > [!NOTE]  
 > 门户集成的测试功能会忽略 `Disabled` 设置。 这意味着，从门户的“测试”窗口启动时，禁用的函数仍会运行。 
@@ -68,23 +70,7 @@ az functionapp config appsettings set --name <myFunctionApp> \
 
 ### <a name="c-class-libraries"></a>C# 类库
 
-在类库函数中，还可以使用 `Disable` 属性来防止函数被触发。 可以使用不带构造函数参数的属性，如以下示例中所示：
-
-```csharp
-public static class QueueFunctions
-{
-    [Disable]
-    [FunctionName("QueueTrigger")]
-    public static void QueueTrigger(
-        [QueueTrigger("myqueue-items")] string myQueueItem, 
-        TraceWriter log)
-    {
-        log.Info($"C# function processed: {myQueueItem}");
-    }
-}
-```
-
-不带构造函数参数的属性要求重新编译并重新部署项目，以更改函数的禁用状态。 该属性的更灵活用法是包含一个引用布尔应用设置的构造函数参数，如以下示例中所示：
+在类库函数中，还可以使用 `Disable` 属性来防止函数被触发。 通过此属性可自定义用于禁用函数的设置的名称。 使用可定义引用布尔应用设置的构造函数参数的属性版本，如以下示例中所示：
 
 ```csharp
 public static class QueueFunctions
@@ -102,12 +88,7 @@ public static class QueueFunctions
 
 使用此方法可以通过更改应用设置来启用和禁用函数，而无需重新编译或重新部署。 更改应用设置会导致函数应用重启，因此，可立即识别到禁用状态的更改。
 
-> [!IMPORTANT]
-> 只能使用 `Disabled` 属性来禁用类库函数。 为类库函数生成的 *function.json* 文件不可直接编辑。 如果编辑该文件，对 `disabled` 属性所做的任何更改都不起作用。
->
-> “管理”选项卡上的“函数状态”开关也是如此，因为它的工作方式就是更改 *function.json* 文件。 
->
-> 另请注意，门户可能指示函数已禁用，但实际上并未禁用。
+还有一个参数的构造函数，该参数不接受设置名称的字符串。 不建议使用此版本的属性。 如果使用此版本，则必须重新编译并重新部署项目，以更改函数的禁用状态。
 
 ### <a name="functions-1x---scripting-languages"></a>Functions 1.x - 脚本语言
 
@@ -139,10 +120,9 @@ public static class QueueFunctions
 在第二个示例中，当存在名为 IS_DISABLED 的应用设置且其值设置为 `true` 或 1 时，将禁用相应的函数。
 
 >[!IMPORTANT]  
->门户现在使用应用程序设置来禁用 v1.x 函数。 当应用程序设置与 function.json 文件冲突时，可能会出现错误。 应从 function.json 文件中删除 `disabled` 属性，以防止出现错误。 
+>门户使用应用程序设置来禁用 v1.x 函数。 当应用程序设置与 function.json 文件冲突时，可能会出现错误。 应从 function.json 文件中删除 `disabled` 属性，以防止出现错误。 
 
 
 ## <a name="next-steps"></a>后续步骤
 
 本文介绍了如何禁用自动触发器。 有关触发器的详细信息，请参阅[触发器和绑定](functions-triggers-bindings.md)。
-

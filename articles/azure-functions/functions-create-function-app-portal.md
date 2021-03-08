@@ -2,20 +2,23 @@
 title: 在 Azure 门户中创建第一个函数
 description: 了解如何使用 Azure 门户创建第一个可无服务器执行的 Azure Function。
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/02/2021
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 7c7f2df0cd821404fc48096b96f242b8a5ed487f
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 76fe0cba356ad1d3d30f33bb4d2d7902d717d50e
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060107"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697120"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>在 Azure 门户中创建第一个函数
 
 Azure Functions 用于在无服务器环境中运行代码，无需先创建虚拟机 (VM) 或发布 Web 应用程序。 本文介绍如何使用 Azure Functions 在 Azure 门户中创建 HTTP 触发器函数“hello world”。
 
-我们建议[在本地开发函数](functions-develop-local.md)，然后发布到 Azure 中的函数应用。  
+>[!NOTE]
+>仅 JavaScript、PowerShell、TypeScript 和 C# 脚本函数支持门户内编辑。<br><br>对于 C# 类库和 Java 函数，可在门户中创建函数应用，但还必须在本地创建函数，然后将其发布到 Azure。 
+
+相反，我们建议[在本地开发函数](functions-develop-local.md)，然后发布到 Azure 中的函数应用。  
 通过以下链接之一开始使用所选的本地开发环境和语言：
 
 | Visual Studio Code | 终端/命令提示符 | Visual Studio |

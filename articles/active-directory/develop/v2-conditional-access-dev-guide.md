@@ -8,18 +8,18 @@ author: rwike77
 manager: CelesteDG
 ms.author: v-junlch
 ms.reviewer: jmprieur, saeeda
-ms.date: 02/02/2021
+ms.date: 02/24/2021
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: bf131ce8344650fd39732c41ae632137c8d4cf68
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: 138a857672d7d3a1276eccb13f14ed60fc2cfe96
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540667"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697243"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问开发人员指南
 
@@ -43,9 +43,9 @@ ms.locfileid: "99540667"
 
 ### <a name="app-types-impacted"></a>受影响的应用类型
 
-通常，在多数情况下，条件访问不会更改应用的行为或要求开发人员进行任何更改。  只有在特定情况下（应用以间接方式或无提示的方式请求服务令牌时），应用才需要进行代码更改以处理条件访问“质询”。  此过程可能与执行交互式登录请求一样简单。
+通常，在多数情况下，条件访问不会更改应用的行为或要求开发人员进行任何更改。 只有在特定情况下（应用以间接方式或无提示的方式请求服务令牌时），应用才需要进行代码更改以处理条件访问质询。  此过程可能与执行交互式登录请求一样简单。
 
-具体来说，在以下应用场景下要求代码处理条件访问“质询”：
+具体来说，在以下应用场景下需要代码来处理条件访问质询：
 
 * 执行代理流的应用
 * 访问多个服务/资源的应用
@@ -54,7 +54,7 @@ ms.locfileid: "99540667"
 
 条件访问策略不仅可应用于应用，还可应用于应用访问的 Web API。 若要详细了解如何配置条件访问策略，请参阅[快速入门：使用 Azure Active Directory 条件访问要求针对特定应用进行 MFA](../authentication/tutorial-enable-azure-mfa.md)。
 
-根据具体的情况，企业客户随时可以应用和删除条件访问策略。 应用新策略后，若要使应用继续正常工作，需执行“质询”处理。 以下示例演示了质询处理的过程。
+根据具体的情况，企业客户随时可以应用和删除条件访问策略。 应用新策略后，为了让应用继续正常工作，需执行质询处理。 以下示例演示了质询处理的过程。
 
 ### <a name="conditional-access-examples"></a>条件访问示例
 

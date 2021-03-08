@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/08/2021
+ms.date: 02/24/2021
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d663473236f573866c11611b50ad99e0540978c
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: deeee0322575bc7c877e33257bb19b9b2895cc66
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021698"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696575"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure Cosmos DB
 
@@ -38,7 +38,7 @@ ms.locfileid: "98021698"
 
 - 如果不熟悉 Azure 资源功能的托管标识，请参阅此[概述](overview.md)。 
 - 如果没有 Azure 帐户，请先[注册试用版](https://www.microsoft.com/china/azure/index.html?fromtype=cn/)，然后再继续。
-- 要执行所需的资源创建和角色管理，帐户在相应的范围（订阅或资源组）需要“所有者”权限。 如果需要有关角色分配的帮助，请参阅[使用基于角色的访问控制管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)。
+- 要执行所需的资源创建和角色管理，帐户在相应的范围（订阅或资源组）需要“所有者”权限。 如果需要有关角色分配的帮助，请参阅[分配 Azure 角色以管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)。
 - 安装最新版本的 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)
 - 还需要启用了系统分配的托管标识的 Windows 虚拟机。
   - 如需为本教程创建虚拟机，则可以按照标题为[创建启用了系统分配的标识的虚拟机](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity)的文章进行操作
@@ -214,4 +214,3 @@ az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection
 
 > [!div class="nextstepaction"]
 >[Azure Cosmos DB 概述](../../cosmos-db/introduction.md)
-

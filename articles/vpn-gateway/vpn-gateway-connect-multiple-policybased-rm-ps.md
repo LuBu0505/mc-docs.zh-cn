@@ -5,15 +5,15 @@ services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: how-to
-origin.date: 02/26/2020
-ms.date: 09/07/2020
+origin.date: 09/02/2020
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.openlocfilehash: eb93d8367f53228aabddc07e0126c5b47da1c939
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: 3fad8a1a2304c2e8a2e745f883d2145ff268547e
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432561"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697724"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>使用 PowerShell 将 Azure VPN 网关连接到多个基于策略的本地 VPN 设备
 
@@ -39,7 +39,7 @@ ms.locfileid: "96432561"
 
 | 类别 | 基于策略的 VPN 网关 | 基于路由的 VPN 网关 | 基于路由的 VPN 网关 |
 | -------- | ----------------------- | ---------------------- | ---------------------- |---                                                 |
-| Azure 网关 SKU    | 基本                       | 基本                            | VpnGw1、VpnGw2、VpnGw3  |
+| Azure 网关 SKU    | 基本                       | 基本                            | VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5  |
 | **IKE 版本**          | IKEv1                       | IKEv2                            | IKEv1 和 IKEv2                         |
 | **最大S2S 连接** | **1**                       | 10                               | 30                     |
 |                          |                             |                                  |                                                    |

@@ -1,21 +1,21 @@
 ---
-title: 在 Azure 云服务中收集性能计数器 | Microsoft Docs
+title: 在 Azure 云服务（经典）中收集性能计数器 | Microsoft Docs
 description: 了解如何使用 Azure 诊断和 Application Insights 在云服务中发现、使用和创建性能计数器。
 ms.topic: article
 ms.service: cloud-services
-ms.date: 01/25/2021
+ms.date: 02/26/2021
 ms.author: v-junlch
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: e13772c0fc3c291f724b9a293240b73bf108d3f0
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 5dc3a01ad5db43a04bd300b9bdf295654158510b
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059884"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697068"
 ---
-# <a name="collect-performance-counters-for-your-azure-cloud-service"></a>收集 Azure 云服务的性能计数器
+# <a name="collect-performance-counters-for-your-azure-cloud-service-classic"></a>收集 Azure 云服务（经典）的性能计数器
 
 使用性能计数器可以跟踪应用程序和主机的运行情况。 Windows Server 提供与硬件、应用程序、操作系统等相关的许多不同性能计数器。 通过收集性能计数器并将其发送到 Azure，可以分析此信息以帮助做出更明智的决策。 
 
@@ -292,4 +292,3 @@ counterServiceUsed.Increment();
 - [Application Insights 中的系统性能计数器](../azure-monitor/app/performance-counters.md)
 - [指定计数器路径](https://docs.microsoft.com/windows/win32/perfctrs/specifying-a-counter-path)
 - [Azure 诊断架构 - 性能计数器](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element)
-

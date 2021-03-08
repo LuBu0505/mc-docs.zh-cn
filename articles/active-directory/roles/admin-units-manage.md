@@ -3,23 +3,23 @@ title: 添加和删除管理单元 - Azure Active Directory | Microsoft Docs
 description: 在 Azure Active Directory 中使用管理单元来限制角色权限的范围。
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.workload: identity
-ms.date: 11/04/2020
+ms.date: 02/25/2021
 ms.author: v-junlch
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f6abd31a5e95a313a4ad0bf22eb0cdef7f9b80d
-ms.sourcegitcommit: 33f2835ec41ca391eb9940edfcbab52888cf8a01
+ms.openlocfilehash: 83458da08a396ca2d4f095dd16672ccdbf8364b9
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94326930"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697337"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>在 Azure Active Directory 中管理管理单元
 
@@ -38,7 +38,7 @@ ms.locfileid: "94326930"
     ![显示“为 Graph 浏览器授予管理员同意”链接的屏幕截图。](./media/admin-units-manage/select-graph-explorer.png)
 
 
-1. 使用 Azure AD Powershell 的预览版本。
+1. 使用 [Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/)。
 
 ## <a name="add-an-administrative-unit"></a>添加管理单元
 
@@ -58,7 +58,7 @@ ms.locfileid: "94326930"
 
 ### <a name="use-powershell"></a>使用 PowerShell
 
-在尝试运行以下命令之前，请安装 Azure AD PowerShell（预览版）：
+在尝试运行以下命令之前，请安装 [Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/)：
 
 ```powershell
 Connect-AzureAD -AzureEnvironmentName AzureChinaCloud
@@ -113,4 +113,3 @@ Request body
 
 * [对管理单元中的用户的管理](admin-units-add-manage-users.md)
 * [管理管理单元中的组](admin-units-add-manage-groups.md)
-

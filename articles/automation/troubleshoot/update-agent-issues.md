@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: digimobile
-ms.openlocfilehash: 17363f4421c72cbc37248f58de2b4635e18dcccf
-ms.sourcegitcommit: f837837326a4856b06d1924d17521a0a7e892850
+ms.openlocfilehash: 439c0e86af204ca837ccf738566b608a75c54a2b
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89449797"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696922"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>排查 Windows 更新代理问题
 
@@ -105,7 +105,7 @@ Crypto 文件夹访问检查将确定本地系统帐户是否有权访问 C:\Pro
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>脱机进行故障排除
 
-可以通过在本地运行脚本，在混合 Runbook 辅助角色上脱机使用故障排除。 从 PowerShell 库获取以下脚本：[Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration)。 若要运行该脚本，必须安装 WMF 4.0 或更高版本。 若要下载最新版本的 PowerShell，请参阅[安装各种版本的 PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)。
+可以通过在本地运行脚本，在混合 Runbook 辅助角色上脱机使用故障排除。 从 GitHub 获取以下脚本：[UM_Windows_Troubleshooter_Offline.ps1](https://github.com/Azure/updatemanagement/blob/main/UM_Windows_Troubleshooter_Offline.ps1)。 若要运行该脚本，必须安装 WMF 4.0 或更高版本。 若要下载最新版本的 PowerShell，请参阅[安装各种版本的 PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)。
 
 此脚本的输出如以下示例所示：
 

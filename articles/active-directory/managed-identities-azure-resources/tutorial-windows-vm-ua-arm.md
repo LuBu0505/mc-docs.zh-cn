@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/08/2021
+ms.date: 02/24/2021
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a8a35ec6829c03ce5d6b76e7fce420639f973ac
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: dc95fa55d23266c127ba26f734b11acba082d054
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021693"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697625"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>教程：使用 Windows VM 上用户分配的托管标识访问 Azure 资源管理器
 
@@ -45,7 +45,7 @@ ms.locfileid: "98021693"
 
 - [创建 Windows 虚拟机](../../virtual-machines/windows/quick-create-portal.md)
 
-- 若要执行本教程中必需的资源创建和角色管理步骤，你的帐户需要在相应范围（订阅或资源组）具有“所有者”权限。 如果需要有关角色分配的帮助，请参阅[使用基于角色的访问控制管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)。
+- 若要执行本教程中必需的资源创建和角色管理步骤，你的帐户需要在相应范围（订阅或资源组）具有“所有者”权限。 如果需要有关角色分配的帮助，请参阅[分配 Azure 角色以管理对于 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)。
 
 - 若要运行示例脚本，可使用 Azure PowerShell 在本地运行脚本，如下一部分所述。
 
@@ -183,4 +183,3 @@ CanDelegate: False
 
 > [!div class="nextstepaction"]
 >[Azure 资源管理器](../../azure-resource-manager/management/overview.md)
-

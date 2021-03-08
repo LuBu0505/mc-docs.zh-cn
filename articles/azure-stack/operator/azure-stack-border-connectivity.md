@@ -2,18 +2,18 @@
 title: Azure Stack Hub 集成系统的边界连接和网络集成
 description: 了解如何在 Azure Stack Hub 集成系统中规划数据中心边界网络连接。
 author: WenJason
-ms.topic: article
-origin.date: 03/04/2019
-ms.date: 05/18/2020
+ms.topic: conceptual
+origin.date: 01/14/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: wamota
-ms.lastreviewed: 11/15/2019
-ms.openlocfilehash: 384eb3eb9e96d106f99e34dde201305702a43d8f
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.lastreviewed: 01/14/2021
+ms.openlocfilehash: d00c4593de0df306cdc01e104ef4539226b6417c
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422399"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697910"
 ---
 # <a name="border-connectivity"></a>边界连接 
 网络集成规划是成功进行 Azure Stack Hub 集成系统部署、操作和管理的重要先决条件。 边界连接规划从选择是否要将动态路由与边界网关协议 (BGP) 一起使用开始。 这需要分配一个 16 位自治系统编号 (ASN)（公共或专用），或使用静态路由。
@@ -37,7 +37,7 @@ Azure Stack Hub 解决方案内运行的软件负载均衡器 (SLB) 将对等互
 
 若要使用静态路由将 Azure Stack Hub 集成到网络环境，必须连接边界和 TOR 设备之间的所有四个物理链路。 由于静态路由的工作方式，无法保证高可用性。
 
-对于发往 Azure Stack Hub 内任何网络的流量，边界设备必须配置有指向 TOR 和边界之间设置的四个 P2P IP 中的每一个的静态路由，但仅需要外部或公共 VIP 网络就能运行。 初始部署需要到 BMC 网络和外部网络的静态路由。 操作员可以选择在边界中保留静态路由以访问位于 BMC 和基础结构网络上的管理资源。 添加指向*交换机基础结构*和*交换机管理*网络的静态路由是可选的。
+对于发往 Azure Stack Hub 内任何网络的流量，边界设备必须配置有指向 TOR 和边界之间设置的四个 P2P IP 中的每一个的静态路由，但仅需要外部或公共 VIP 网络就能运行。 初始部署需要到 BMC 网络和外部网络的静态路由。 操作员可以选择在边界中保留静态路由以访问位于 BMC 和基础结构网络上的管理资源。 添加指向 *交换机基础结构* 和 *交换机管理* 网络的静态路由是可选的。
 
 TOR 设备配置有将所有流量发送到边界设备的静态默认路由。 默认规则的一个流量例外是，对于专用空间，将使用应用于 TOR 到边界连接的访问控制列表阻止该流量。
 
@@ -51,17 +51,7 @@ TOR 设备配置有将所有流量发送到边界设备的静态默认路由。 
 
 <sup>\*\*\*</sup> 交换机管理网络是必需的，可以与交换机基础结构网络分开添加。
 
-## <a name="transparent-proxy"></a>透明代理
-如果数据中心要求所有流量都使用代理，则必须配置“透明代理”以便根据策略处理来自机架的所有流量，并分离网络上不同区域之间的流量。
-
-> [!IMPORTANT]
-> Azure Stack Hub 解决方案不支持普通 Web 代理。  
-
-透明代理（也称为截获、内联或强制代理）将截获网络层的正常通信，而无需任何特殊的客户端配置。 客户端不需要知道代理是否存在。
-
-![透明代理](media/azure-stack-border-connectivity/transparent-proxy.svg)
-
-SSL 流量拦截[不受支持](azure-stack-firewall.md#ssl-interception)，并且在访问终结点时可能会导致服务故障。 与标识所需的终结点进行通信时，支持的最大超时值为 60 秒，并可以进行 3 次重试尝试。
-
 ## <a name="next-steps"></a>后续步骤
-[DNS 集成](azure-stack-integrate-dns.md)
+
+- [DNS 集成](azure-stack-integrate-dns.md)
+- [Azure Stack Hub 的透明代理](azure-stack-transparent-proxy.md)

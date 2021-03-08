@@ -1,18 +1,18 @@
 ---
-title: 自带密钥（客户管理的密钥）与媒体服务
+title: 自带密钥（客户管理的密钥）
 description: 可将客户管理的密钥（即自带密钥）与媒体服务配合使用。
 author: WenJason
 ms.author: v-jay
 ms.service: media-services
 ms.topic: conceptual
-origin.date: 10/14/2020
-ms.date: 01/11/2021
-ms.openlocfilehash: 137ca6c4143c50dbb9925d7d6d9d4242d9acb511
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+origin.date: 1/28/2020
+ms.date: 03/08/2021
+ms.openlocfilehash: 3896bbcc7d690ff18290e61083c5bb417c73c203
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023970"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697460"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>自带密钥（客户管理的密钥）与媒体服务
 
@@ -37,6 +37,13 @@ ms.locfileid: "98023970"
 
 > [!WARNING]
 > 媒体服务监视对客户密钥的访问。 如果客户密钥变为不可访问（例如，已删除密钥或已删除 Key Vault 或已删除访问授权），则媒体服务会将该帐户转换为客户密钥不可访问状态（有效地禁用帐户）。 但是，可以在此状态下删除此帐户。 唯一受支持的操作是帐户 GET、LIST 和 DELETE；在恢复对帐户密钥的访问之前，所有其他请求（编码、流式处理等）都将失败。
+
+## <a name="double-encryption"></a>双重加密
+
+媒体服务自动支持双重加密。 对于静态数据，第一层加密使用客户管理的密钥或 Microsoft 托管密钥，具体取决于帐户的 `AccountEncryption` 设置。  使用单独的 Microsoft 托管密钥自动提供静态数据加密的第二层。 若要详细了解双重加密，请参阅 [Azure 双重加密](../../security/fundamentals/double-encryption.md)。
+
+> [!NOTE]
+> 双重加密在媒体服务帐户上是自动启用的。 但需在存储帐户上分别配置客户管理的密钥和双重加密。 请参阅[存储加密](/storage/common/storage-service-encryption)。
 
 ## <a name="tutorials"></a>教程
 

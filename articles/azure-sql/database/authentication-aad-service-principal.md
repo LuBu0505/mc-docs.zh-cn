@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
-origin.date: 10/21/2020
-ms.date: 12/14/2020
-ms.openlocfilehash: a649b8c5926ca44a2952a4f7d906db7aef3770c0
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+origin.date: 02/11/2021
+ms.date: 02/22/2021
+ms.openlocfilehash: a62d90cba87e626c0c7b4833aae64d3f7ee400ea
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829942"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696848"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>使用 Azure SQL 的 Azure Active Directory 服务主体
 
@@ -53,7 +53,7 @@ SQL 数据库和 Azure Synapse 现在支持以 Azure AD 应用程序身份运行
 
 为了能够以 Azure AD 应用程序身份在 SQL 数据库和 Azure Synapse 中创建 Azure AD 对象，需要进行以下设置：
 
-1. 分配服务器标识
+1. 分配服务器标识。 分配的服务器标识代表托管系统标识 (MSI)。 目前，Azure SQL 的服务器标识不支持用户托管标识 (UMI)。
     - 对于新的 Azure SQL 逻辑服务器，请执行以下 PowerShell 命令：
     
     ```powershell

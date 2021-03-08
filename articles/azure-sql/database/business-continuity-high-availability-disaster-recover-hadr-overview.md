@@ -14,12 +14,12 @@ ms.author: v-jay
 ms.reviewer: mathoma, sstein
 origin.date: 06/25/2019
 ms.date: 02/01/2021
-ms.openlocfilehash: f3bff7ee2e39f38dab5fe25cc311a8867b1daee6
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 747127ea386bfe98f2b97b67d4905da7715864b6
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059294"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696816"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>使用 Azure SQL 数据库确保业务连续性的相关概述
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -50,7 +50,7 @@ SQL 数据库和 SQL 托管实例还提供多种业务连续性功能，用于�
 - 使用[时态表](../temporal-tables.md)可以从任意时间点还原行版本。
 - 使用[内置自动备份](automated-backups-overview.md)和[时间点还原](recovery-using-backups.md#point-in-time-restore)可将整个数据库还原到已配置保留期（最长为 35 天）内的某个时间点。
 - 如果服务器尚未删除，可[将已删除的数据库还原](recovery-using-backups.md#deleted-database-restore)到删除时的时间点。
-- 使用[长期备份保留](long-term-retention-overview.md)可将备份保留长达 10 年之久。 该功能处于 SQL 托管实例有限的公共预览版中
+- 使用[长期备份保留](long-term-retention-overview.md)可将备份保留长达 10 年之久。 它不适用于 SQL 托管实例。
 - 使用[活动异地复制](active-geo-replication-overview.md)，可以创建可读取的副本，并且在发生数据中心中断或应用程序升级期间手动故障转移到任何副本。
 - 发生数据中心中断时，应用程序可以通过[自动故障转移组](auto-failover-group-overview.md#terminology-and-capabilities)自动恢复。
 

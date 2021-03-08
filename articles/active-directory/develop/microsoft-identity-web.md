@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/06/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 9888ac17f01ed58866d52250fb696bd49aff9488
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 00d36a5432959dd5c319e762c61681675eb47cb8
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022050"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696832"
 ---
 # <a name="microsoft-identity-web-authentication-library"></a>Microsoft 标识 Web 身份验证库
 
@@ -70,7 +70,7 @@ dotnet new blazorserver2 --auth SingleOrg --calls-graph --client-id "00000000-00
 
 #### <a name="github"></a>GitHub
 
-Microsoft 标识 Web 是 GitHub 上承载的一个开源项目：<a href="https://github.com/AzureAD/microsoft-identity-web" target="_blank">AzureAD/microsoft-identity-web<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+Microsoft 标识 Web 是 GitHub 上承载的一个开源项目：<a href="https://github.com/AzureAD/microsoft-identity-web" target="_blank">AzureAD/microsoft-identity-web</a>
 
 [存储库 wiki](https://github.com/AzureAD/microsoft-identity-web/wiki) 包含其他文档，如果你需要帮助或发现了 bug，可以[提交问题](https://github.com/AzureAD/microsoft-identity-web/issues)。
 
@@ -99,8 +99,8 @@ Microsoft 标识 Web 是 GitHub 上承载的一个开源项目：<a href="https:
 
 GitHub上的 Microsoft 标识 Web Wiki 包含了广泛的参考文档，涉及此库的各个方面。 例如，可以在下面找到证书用法、增量同意和条件访问参考：
 
-- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates" target="_blank">将证书用于 Microsoft.Identity.Web<span class="docon docon-navigate-external x-hidden-focus"></span></a> (GitHub)
-- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access" target="_blank">增量同意和条件访问<span class="docon docon-navigate-external x-hidden-focus"></span></a> (GitHub)
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates" target="_blank">将证书用于 Microsoft.Identity.Web</a> (GitHub)
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access" target="_blank">增量同意和条件访问</a> (GitHub)
 
 <!-- LINKS -->
 <!--  [miw-certs]: microsoft-identity-web-certificates.md  -->
@@ -110,4 +110,3 @@ GitHub上的 Microsoft 标识 Web Wiki 包含了广泛的参考文档，涉及�
 [scenario-api-call-api]: scenario-web-api-call-api-call-api.md#option-1-call-microsoft-graph-with-the-sdk  
 [scenario-api-call-graph]: scenario-web-api-call-api-call-api.md#option-1-call-microsoft-graph-with-the-sdk  
 [scenario-api-validation]: scenario-protected-web-api-verification-scope-app-roles.md  
-

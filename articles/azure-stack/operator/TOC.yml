@@ -12,6 +12,12 @@
           href: release-notes-security-updates.md
         - name: 发行说明
           href: release-notes.md
+        - name: 修补程序
+          items:
+            - name: 修补程序 1.2005.29.100
+              href: hotfix-1-2005-29-100.md
+            - name: 修补程序 1.2008.25.114
+              href: hotfix-1-2008-25-114.md
         - name: 已知问题
           href: known-issues.md
 - name: 快速入门
@@ -67,9 +73,12 @@
               href: azure-stack-configure-dns.md
             - name: 配置时间服务器
               href: azure-stack-configure-time.md
-            - name: 防火墙集成
-              href: azure-stack-firewall.md
+            - name: 防火墙/代理
               items:
+                - name: 防火墙集成
+                  href: azure-stack-firewall.md
+                - name: 透明代理
+                  href: azure-stack-transparent-proxy.md
                 - name: 发布终结点
                   href: azure-stack-integrate-endpoints.md
                 - name: 扩展主机
@@ -353,6 +362,10 @@
                   href: event-hubs-rp-rotate-secrets.md
                 - name: 服务更新公告
                   href: 'https://techcommunity.microsoft.com/t5/Event-Hubs-Blog/bg-p/EventHubs'
+            - name: 发行说明
+              items:
+                - name: '1.2012.1.0 发行说明 [2021 年 2 月]'
+                  href: event-hubs-rp-release-1-2012-10.md
             - name: 删除
               href: event-hubs-rp-remove.md
         - name: Azure Stack Hub 上的 IoT 中心
@@ -517,5 +530,51 @@
       href: 'https://docs.microsoft.com/hybrid'
 - name: 资源
   items:
-    - name: Azure Stack Hub MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=AzureStack'
+    - name: 发行说明存档
+      items:
+        - name: 1910 发行说明
+          href: ./relnotearchive/release-notes-1910.md
+        - name: 1910 已知问题
+          href: ./relnotearchive/known-issues-1910.md
+        - name: 1908 发行说明
+          href: ./relnotearchive/release-notes-1908.md
+        - name: 1908 已知问题
+          href: ./relnotearchive/known-issues-1908.md
+        - name: 1907 发行说明
+          href: ./relnotearchive/release-notes-1907.md
+        - name: 1907 已知问题
+          href: ./relnotearchive/known-issues-1907.md
+        - name: 1906 发行说明
+          href: ./relnotearchive/release-notes-1906.md
+        - name: 1906 已知问题
+          href: ./relnotearchive/known-issues-1906.md
+        - name: 1905 发行说明
+          href: ./relnotearchive/release-notes-1905.md
+        - name: 1905 已知问题
+          href: ./relnotearchive/known-issues-1905.md
+        - name: 1904 发行说明
+          href: ./relnotearchive/release-notes-1904.md
+        - name: 1904 已知问题
+          href: ./relnotearchive/known-issues-1904.md
+        - name: 1903 发行说明
+          href: ./relnotearchive/release-notes-known-issues-1903.md
+        - name: 1902 发行说明
+          href: ./relnotearchive/release-notes-known-issues-1902.md
+        - name: 1901 发行说明
+          href: ./relnotearchive/release-notes-known-issues-1901.md
+        - name: 1811 发行说明
+          href: ./relnotearchive/release-notes-known-issues-1811.md
+        - name: 1809 发行说明
+          href: ./relnotearchive/release-notes-known-issues-1809.md
+        - name: 1808 发行说明
+          href: ./relnotearchive/release-notes-known-issues-1808.md
+        - name: 1807 发行说明
+          href: ./relnotearchive/release-notes-known-issues-1807.md
+        - name: 1805 发行说明
+          href: ./relnotearchive/release-notes-known-issues-1805.md
+        - name: 1804 发行说明
+          href: ./relnotearchive/release-notes-known-issues-1804.md
+        - name: 1803 发行说明
+          href: ./relnotearchive/release-notes-known-issues-1803.md
+        - name: 1802 发行说明
+          href: ./relnotearchive/release-notes-known-issues-1802.md

@@ -1,23 +1,19 @@
 ---
 title: 将数据加载到 Azure Synapse Analytics 中
 description: 使用 Azure 数据工厂将数据复制到 Azure Synapse Analytics 中
-services: data-factory
-ms.author: jingwang
+ms.author: v-jay
 author: WenJason
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-origin.date: 12/09/2020
-ms.date: 01/04/2021
-ms.openlocfilehash: f9c16cc77ae79ab27f70b95de49b2d66046f7a40
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+origin.date: 01/29/2020
+ms.date: 03/01/2021
+ms.openlocfilehash: 50e1226cd54b0a2cd07ac37dbdbcb4c9ef80f9f2
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830190"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696599"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据加载到 Azure Synapse Analytics 中
 
@@ -58,7 +54,7 @@ ms.locfileid: "97830190"
     * **版本**：选择“V2”。
     * **位置**：选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 这些数据存储包括 Azure 存储、Azure SQL 数据库，等等。
 
-3. 选择“创建” 。
+3. 选择“创建”  。
 4. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”主页，如下图所示：
 
    ![数据工厂主页](./media/doc-common-process/data-factory-home-page.png)
@@ -127,7 +123,7 @@ ms.locfileid: "97830190"
 
     b. 在“新建链接服务”页上，选择你的存储帐户，然后选择“创建”以部署链接服务 。
 
-    c. 在“高级设置”部分，取消选择“使用默认类型”选项，然后选择“下一步”  。
+    c. 取消选择“使用类型默认值”选项，然后选择“下一步” 。
 
     ![配置 PolyBase](./media/load-azure-sql-data-warehouse/configure-polybase.png)
 

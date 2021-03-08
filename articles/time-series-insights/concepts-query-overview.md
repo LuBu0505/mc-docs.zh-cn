@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 02/19/2021
 ms.custom: seodec18
-ms.openlocfilehash: f39f1ee280f07b7466e6d3a31d61ca59be77df6a
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: e452090c805f133d99e7ad6b218a66ac911a4431
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508045"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697784"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>查询来自 Azure 时序见解第 2 代的数据
 
@@ -54,13 +54,12 @@ Azure 时序见解第 2 代使用丰富的基于字符串的表达式语言[时�
 
 ## <a name="time-series-query-tsq-apis"></a>时序查询 (TSQ) API
 
-这些 API 对多层存储解决方案中的两种存储（暖存储和冷存储）都可用。 查询 URL 参数用于指定查询应该在其上执行的[存储类型](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters)：
+这些 API 对多层存储解决方案中的两种存储（暖存储和冷存储）都可用。 
 
 * [获取事件 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)：用于查询和检索原始事件和关联的事件时间戳（当它们从源提供程序记录在 Azure 时序见解第 2 代中时）。 此 API 可用于从给定时序 ID 和搜索范围中检索原始事件。 此 API 支持分页，可以检索选定输入的完整响应数据集。
 
   > [!IMPORTANT]
-
-  > * 根据 [JSON 平展和转义规则即将发生的变化](./ingestion-rules-update.md)中的说明，数组将会被存储为动态类型。 若要访问存储为这种类型的有效负载属性，只能通过获取事件 API。
+  > 根据 [JSON 平展和转义规则即将发生的变化](./ingestion-rules-update.md)中的说明，数组将会被存储为动态类型。 若要访问存储为这种类型的有效负载属性，只能通过获取事件 API。
 
 * [获取时序 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)：此 API 对原始事件应用变量定义的计算，可用于查询和检索计算值与关联的事件时间戳。 这些变量可以在时序模型中定义，或者在查询中以内联方式提供。 此 API 支持分页，可以检索选定输入的完整响应数据集。
 
@@ -69,6 +68,16 @@ Azure 时序见解第 2 代使用丰富的基于字符串的表达式语言[时�
   对于指定的搜索范围和间隔，此 API 将根据每个间隔和变量返回时序 ID 的聚合响应。 响应数据集中的间隔数的计算方式是，统计纪元计时周期数（自 Unix 纪元 1970 年 1 月 1 日开始消逝的毫秒数），然后将计时周期数除以查询中指定的间隔跨度大小。
 
   响应集中返回的时间戳与左间隔边界相关，而与间隔中的采样事件无关。
+
+
+### <a name="selecting-store-type"></a>选择存储类型
+
+上述 API 在单次调用中只能针对两种存储类型之一（冷或暖）执行查询。 查询 URL 参数用于指定查询应该在其上执行的[存储类型](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters)。 
+
+如果未指定任何参数，则默认情况下将在冷存储上执行查询。 如果查询跨越的时间范围中存在冷存储和暖存储的重叠，则建议将查询路由到冷存储以获得最佳体验，因为暖存储只包含部分数据。 
+
+Azure 时序见解资源管理器和 [Power BI 连接器](./how-to-connect-power-bi.md)对上述 API 发起调用，并将自动选择相关的正确 storeType 参数。 
+
 
 ## <a name="next-steps"></a>后续步骤
 

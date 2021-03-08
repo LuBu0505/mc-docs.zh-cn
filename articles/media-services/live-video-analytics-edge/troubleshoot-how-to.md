@@ -5,13 +5,13 @@ author: WenJason
 ms.topic: how-to
 ms.author: v-jay
 origin.date: 12/04/2020
-ms.date: 01/18/2021
-ms.openlocfilehash: f5b890bd7a3e559042775c685ead9919dc49cdcf
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 03/08/2021
+ms.openlocfilehash: 7a4a2970fc7938f7ea4e8c73eb928a7a5c7e96ba
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231060"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697306"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>对 IoT Edge 上的实时视频分析进行故障排除
 
@@ -67,7 +67,7 @@ az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device 
     * 500 - IoT Edge 运行时中出现了一个错误。
 
     > [!TIP]
-    > 如果在环境中运行 Azure IoT Edge 模块时遇到问题，请使用 [Azure IoT Edge 标准诊断步骤](/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)作为故障排除和诊断的指南。
+    > 如果在环境中运行 Azure IoT Edge 模块时遇到问题，请使用 [Azure IoT Edge 标准诊断步骤](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)作为故障排除和诊断的指南。
 ### <a name="post-deployment-direct-method-error-code"></a>后期部署：直接方法错误代码
 1. 如果收到状态 `501 code`，请检查以确保直接方法名称正确。 如果方法名称和请求有效负载准确，则应获得结果，并显示成功代码 =200。 
 1. 如果请求有效负载不准确，将显示状态 `400 code` 以及指示错误代码和消息的响应有效负载，这些错误代码和消息应该有助于诊断直接方法调用的问题。
@@ -97,7 +97,17 @@ IoT Edge 模块的容器日志应包含诊断信息，以帮助调试模块运�
 * [IoT Edge 模块部署成功，然后从设备中消失](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-deploys-successfully-then-disappears-from-device)。
 
     > [!TIP]
-    > 如果在环境中运行 Azure IoT Edge 模块时遇到问题，请使用 [Azure IoT Edge 标准诊断步骤](/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)作为故障排除和诊断的指南。
+    > 如果在环境中运行 Azure IoT Edge 模块时遇到问题，请使用 [Azure IoT Edge 标准诊断步骤](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)作为故障排除和诊断的指南。
+
+运行[实时视频分析资源安装脚本](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)时可能会遇到问题。 一些常见问题包括：
+
+* 在没有所有者权限的情况下使用订阅。 这将导致脚本失败，并出现 ForbiddenError 或 AuthorizationFailed 错误 。
+    * 要解决此问题，请确保你对计划使用的订阅拥有所有者权限。 如果不能自己完成此操作，请与订阅管理员联系以授予适当权限。
+* **由于策略冲突而导致模板部署失败。**
+    * 要解决此问题，请与 IT 管理员合作，确保创建虚拟机的调用绕过阻止 ssh 身份验证。 这不是必需的，因为我们使用的是需要用户名和密码才能与 Azure 资源通信的安全堡垒网络。 成功创建虚拟机，将其部署并附加到 IoT 中心后，这些凭据将存储在 vm-edge-device-credentials.txt 文件中。
+* 安装脚本无法创建服务主体和/或 Azure 资源。
+    * 若要解决此问题，请检查你的订阅和 Azure 租户是否未达到其最大服务限制。 详细了解 [Azure AD 服务限制和局限性](/active-directory/enterprise-users/directory-service-limits-restrictions)以及 [Azure 订阅和服务限制、配额与约束](/azure-resource-manager/management/azure-subscription-service-limits)。
+
 ### <a name="live-video-analytics-working-with-external-modules"></a>用于外部模块的实时视频分析
 
 通过媒体图扩展处理器的实时视频分析可以扩展媒体图，以使用 HTTP 或 gRPC 协议发送和接收来自其他 IoT Edge 模块的数据。 作为[特定示例](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)，媒体图可以通过 HTTP 协议将视频帧作为图像发送到外部推理模块（如 Yolo v3），并接收基于 JSON 的分析结果。 在这种拓扑中，事件的目标主要是 IoT 中心。 如果在中心上看不到推理事件，请检查以下各项：
@@ -273,7 +283,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 ``` 
 
-[.NET 上 gRPC 中的日志记录和诊断](https://docs.microsoft.com/aspnet/core/grpc/diagnostics?view=aspnetcore-3.1&preserve-view=true)为从 gRPC 服务器收集一些诊断日志提供了一些指导。 
+[.NET 上 gRPC 中的日志记录和诊断](https://docs.microsoft.com/aspnet/core/grpc/diagnostics?preserve-view=true&view=aspnetcore-3.1)为从 gRPC 服务器收集一些诊断日志提供了一些指导。 
 
 ### <a name="a-failed-grpc-connection"></a>失败的 gRPC 连接 
 
@@ -283,7 +293,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 实时视频分析不监视或不提供任何硬件资源监视。 开发人员必须使用硬件制造商监视解决方案。 但是，如果使用的是 Kubernetes 容器，则可以使用 [Kubernetes 仪表板](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)监视设备。 
 
-.NET Core 文档中的 gRPC 还共享有关[性能最佳做法](https://docs.microsoft.com/aspnet/core/grpc/performance?view=aspnetcore-3.1&preserve-view=true)和[负载平衡](https://docs.microsoft.com/aspnet/core/grpc/performance?view=aspnetcore-3.1#load-balancing&preserve-view=true)的一些有价值的信息。  
+.NET Core 文档中的 gRPC 还共享有关[性能最佳做法](https://docs.microsoft.com/aspnet/core/grpc/performance?preserve-view=true&view=aspnetcore-3.1)和[负载平衡](https://docs.microsoft.com/aspnet/core/grpc/performance?preserve-view=true&view=aspnetcore-3.1#load-balancing)的一些有价值的信息。  
 
 ### <a name="troubleshooting-an-inference-server-when-it-does-not-receive-any-frames-and-you-are-receiving-an-unknown-protocol-error"></a>当推理服务器未收到任何帧，且你收到了“未知”协议错误时，将对推理服务器进行故障排除 
 
@@ -297,7 +307,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
    ```
 
    如果命令输出的是一串乱七八糟的文本，则 telnet 可以成功打开与推理服务器的连接，并打开二进制 gRPC 通道。 如果未看到这种情况，则 telnet 将报告网络错误。 
-* 在推理服务器中，可以在 gRPC 库中启用其他日志记录。 这可能会提供有关 gRPC 通道本身的其他信息。 这种操作因语言而异，一下是 [C#](https://docs.microsoft.com/aspnet/core/grpc/diagnostics?view=aspnetcore-3.1&preserve-view=true) 的说明。 
+* 在推理服务器中，可以在 gRPC 库中启用其他日志记录。 这可能会提供有关 gRPC 通道本身的其他信息。 这种操作因语言而异，一下是 [C#](https://docs.microsoft.com/aspnet/core/grpc/diagnostics?preserve-view=true&view=aspnetcore-3.1) 的说明。 
 
 ### <a name="picking-more-images-from-buffer-of-grpc-without-sending-back-result-for-first-buffer"></a>从 gRPC 缓冲区中选取更多图像，而不会向第一个缓冲区发送回结果
 

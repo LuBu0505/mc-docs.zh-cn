@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/18/2020
+ms.date: 02/22/2021
 ms.author: v-junlch
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 25fd24f3f3affd3febf5dfeb0a6fa9fd32cc6eac
-ms.sourcegitcommit: 7646936d018c4392e1c138d7e541681c4dfd9041
+ms.openlocfilehash: f4a9aaf324df0b071933372f48dc4a7f88d4e981
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88647494"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696877"
 ---
 # <a name="support-and-help-options-for-developers"></a>开发人员的支持和帮助选项
 
@@ -26,20 +26,20 @@ ms.locfileid: "88647494"
 > [!div class="checklist"]
 > * 如何通过搜索来确定是问题尚未由社区做出解答，还是你尝试实现的功能已存在现有文档
 > * 在某些情况下，我们只想使用自己的支持工具来帮助调试特定的问题
-> * 如果找不到所需的解答，可在 *Stack Overflow* 上提问
+> * 如果找不到所需的解答，建议在 Microsoft Q&A 上提问
 > * 如果发现某个身份验证库出现问题，请提出 *GitHub* 问题
 > * 最后，如果需要与某人交流，可以提出支持请求
 
 ## <a name="search"></a>搜索
 
-如果遇到开发相关的问题，也许能够在文档、[GitHub 示例](https://github.com/azure-samples)或 [Stack Overflow](https://www.stackoverflow.com) 问题解答中找到答案。
+如果遇到开发相关的问题，也许能够在文档、[GitHub 示例](https://github.com/azure-samples)或 [Microsoft Q&A](https://docs.microsoft.com/answers/products/) 问题解答中找到答案。
 
 ### <a name="scoped-search"></a>限定范围的搜索
 
-为了更快地找到结果，请在偏好的搜索引擎中使用以下查询，将搜索范围限定为 Stack Overflow、文档和代码示例：
+为了更快地找到结果，请在偏好的搜索引擎中使用以下查询，将搜索范围限定为 [Microsoft Q&A](https://docs.microsoft.com/answers/products/)、文档和代码示例：
 
 ```
-{Your Search Terms} (site:stackoverflow.com OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)
+{Your Search Terms} (site:http://www.docs.microsoft.com/answers/products/ OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)
 ```
 
 其中， *{Your Search Terms}* 对应于搜索关键字。
@@ -51,26 +51,26 @@ ms.locfileid: "88647494"
 | [jwt.ms](https://jwt.ms) | 粘贴 ID 或访问令牌来解码声明名称和值。 |
 | [Microsoft Graph 浏览器](https://developer.microsoft.com/zh-cn/graph/graph-explorer-china)| 用于针对 Microsoft Graph API 发出请求和查看响应的工具。 |
 
-## <a name="post-a-question-to-stack-overflow"></a>在 Stack Overflow 上发布问题
+## <a name="post-a-question-to-microsoft-qa"></a>在 Microsoft Q&A 上发布问题
 
-Stack Overflow 是开发相关问题的首选渠道。 在这里，开发人员社区成员和 Microsoft 团队成员可直接助你解决问题。
+[Microsoft Q&A](https://docs.microsoft.com/answers/products/) 是解决开发相关问题的首选渠道。 在这里，开发人员社区成员和 Microsoft 团队成员可直接助你解决问题。
 
-如果通过搜索未找到你的问题的解答，请在 Stack Overflow 中提交新问题。 在提问时请使用以下标记之一，以便社区更快速地识别问题和解答问题：
+如果通过搜索未找到你的问题的解答，请在 [Microsoft Q&A](https://docs.microsoft.com/answers/products/) 中提交新问题。 在提问时请使用以下标记之一，以便社区更快速地识别问题和解答问题：
 
 |组件/区域  | Tags |
 |---------|---------|
-| ADAL 库 | [[adal]](https://stackoverflow.com/questions/tagged/adal) |
-| MSAL 库     | [[msal]](https://stackoverflow.com/questions/tagged/msal) |
-| OWIN 中间件  | [[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
-| [Azure B2B](../external-identities/what-is-b2b.md)  | [[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
-| [Azure B2C](https://www.azure.cn/home/features/active-directory-b2c/)  | [[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
-| [Microsoft 图形 API](https://developer.microsoft.com/graph/) | [[microsoft-graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
-| 与身份验证或授权主题相关的其他任何方面 | [[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
+| ADAL 库 | [[adal]](https://docs.microsoft.com/answers/topics/azure-ad-adal-deprecation.html) |
+| MSAL 库     | [[msal]](https://docs.microsoft.com/answers/topics/azure-ad-msal.html) |
+| OWIN 中间件  | [[azure-active-directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
+| [Azure B2B](../external-identities/what-is-b2b.md)  | [[azure-ad-b2b]](https://docs.microsoft.com/answers/topics/azure-ad-b2b.html) |
+| [Azure B2C](https://www.azure.cn/home/features/active-directory-b2c/)  | [[azure-ad-b2c]](https://docs.microsoft.com/answers/topics/azure-ad-b2c.html) |
+| [Microsoft 图形 API](https://developer.microsoft.com/graph/) | [[azure-ad-graph]](https://docs.microsoft.com/answers/topics/azure-ad-graph.html) |
+| 与身份验证或授权主题相关的其他任何方面 | [[azure-active-directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
 
-Stack Overflow 中的以下帖子包含有关如何提问和如何添加源代码的提示。 遵循以下准则可提高社区成员快速评估和响应问题的可能性：
+[Microsoft Q&A](https://docs.microsoft.com/answers/products/) 中的以下帖子包含有关如何提问和如何添加源代码的提示。 遵循以下准则可提高社区成员快速评估和响应问题的可能性：
 
-* [如何正确提问](https://stackoverflow.com/help/how-to-ask)
-* [How to create a minimal, complete, and verifiable example](https://stackoverflow.com/help/mcve)（如何创建最小、完整且可验证的示例）
+* [如何正确提问](https://docs.microsoft.com/answers/articles/24951/how-to-write-a-quality-question.html)
+* [How to create a minimal, complete, and verifiable example](https://docs.microsoft.com/answers/articles/24907/how-to-write-a-quality-answer.html)（如何创建最小、完整且可验证的示例）
 
 ## <a name="create-a-github-issue"></a>创建 GitHub 问题
 
@@ -87,7 +87,6 @@ Stack Overflow 中的以下帖子包含有关如何提问和如何添加源代�
 
 * 如果已有 Azure 支持计划，请[在此处提出支持请求](https://portal.azure.cn/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
-* 如果你不是 Azure 客户，也可以通过[我们的商业支持](https://support.microsoft.com/gp/contactus81?Audience=Commercial)向 Microsoft 提出支持请求。
+* 如果你不是 Azure 客户，也可以通过[我们的商业支持](https://support.serviceshub.microsoft.com/supportforbusiness)向 Microsoft 提出支持请求。
 
 还可以尝试通过[虚拟代理](https://www.azure.cn/support/contact/?ws=support)获取支持或提出问题。
-

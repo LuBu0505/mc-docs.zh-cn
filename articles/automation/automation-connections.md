@@ -4,15 +4,15 @@ description: 本文介绍如何管理与外部服务或应用程序之间的 Azu
 services: automation
 ms.subservice: shared-capabilities
 origin.date: 12/22/2020
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 9f75b7a9b5dd1d568974a22d25a20168b68e8d41
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: f442e115a8568ab891f97ab25ecbcc66dccfb1a2
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830104"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697733"
 ---
 # <a name="manage-connections-in-azure-automation"></a>在 Azure 自动化中管理连接
 
@@ -36,7 +36,7 @@ Azure 自动化提供了以下内置连接类型：
 * `AzureServicePrincipal` -表示 Azure 运行方式帐户使用的连接。
 * `AzureClassicCertificate` -表示经典 Azure 运行方式帐户使用的连接。
 
-在大多数情况下不需要创建连接资源，因为在创建 [RunAs 帐户](manage-runas-account.md)时已经创建了该连接。
+在大多数情况下不需要创建连接资源，因为在创建 [RunAs 帐户](automation-security-overview.md)时已经创建了该连接。
 
 ## <a name="powershell-cmdlets-to-access-connections"></a>用于访问连接的 PowerShell cmdlet
 
@@ -62,7 +62,7 @@ Azure 自动化提供了以下内置连接类型：
 
 ## <a name="python-functions-to-access-connections"></a>用于访问连接的 Python 函数
 
-下表中的函数用于在 Python2 Runbook 中访问连接。
+下表中的函数用于在 Python 2 Runbook 和 Python 3 Runbook 中访问连接。 Python 3 runbook 目前处于预览阶段。
 
 | 函数 | 说明 |
 |:---|:---|
@@ -138,7 +138,7 @@ Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.
 
 # <a name="python"></a>[Python](#tab/python2)
 
-下图演示了如何在 Python 2 Runbook 中使用运行方式连接进行身份验证。
+下面的示例演示如何在 Python 2 Runbook 和 Python 3 Runbook 中使用运行方式连接进行身份验证。
 
 ```python
 """ Tutorial to show how to authenticate against Azure resource manager resources """

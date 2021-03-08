@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/13/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 56ab7bb40e81434262ff646eb52be91ad26087cc
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 89279d2900d0d6ae6e32e8c3977642aacc3d0c22
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195186"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696974"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>在 Xamarin 应用程序中使用 Microsoft Authenticator 或 Intune 公司门户
 
@@ -91,7 +91,7 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 
 ### <a name="step-4-set-uiviewcontroller"></a>步骤 4：设置 UIViewController()
 
-仍然是在 AppDelegate.cs 文件中，你需要设置一个对象窗口。 对于 Xamarin iOS，通常不需要设置对象窗口，但若要发送和接收中介的响应，则需要一个对象窗口。
+仍然是在 AppDelegate.cs 文件中，请设置一个对象窗口。 对于 Xamarin iOS，通常不需要设置对象窗口，但若要发送和接收中介的响应，则需要一个对象窗口。
 
 若要设置对象窗口：
 
@@ -183,7 +183,7 @@ public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth";
 
 **若要生成重定向 URI，请执行以下操作：**
 
-1. 登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 1. 选择“Azure Active Directory” > “应用注册”> 你的已注册应用
 1. 选择  “身份验证” > “添加平台” > “iOS/macOS”
 1. 输入你的捆绑 ID，然后选择“配置”。
@@ -237,7 +237,7 @@ result = await app.AcquireTokenInteractive(scopes)
 
 ### <a name="step-4-add-a-redirect-uri-to-your-app-registration"></a>步骤 4：向应用注册中添加重定向 URI
 
-MSAL 使用 URL 调用中介，然后返回到你的应用。 若要完成该往返过程，需要使用 [Azure 门户](https://portal.azure.cn)为应用注册一个 **重定向 URI**。
+MSAL 使用 URL 调用中介，然后返回到你的应用。 若要完成该往返过程，请使用 [Azure 门户](https://portal.azure.cn)为应用注册一个重定向 URI。
 
 应用程序的重定向 URI 的格式依赖于用于对 APK 进行签名的证书。 例如：
 
@@ -364,4 +364,3 @@ URI 的最后一部分 `hgbUYHVBYUTvuvT&Y6tr554365466=` 是签署 APK 时使用�
 ## <a name="next-steps"></a>后续步骤
 
 了解[将通用 Windows 平台与 MSAL.NET 配合使用时的注意事项](msal-net-uwp-considerations.md)。
-

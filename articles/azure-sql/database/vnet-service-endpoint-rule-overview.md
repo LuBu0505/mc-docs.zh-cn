@@ -11,19 +11,19 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto, genemi
 origin.date: 11/14/2019
-ms.date: 01/04/2021
-ms.openlocfilehash: ba35eedff08419ea20d00e95b51bf0e86d29ae31
-ms.sourcegitcommit: a978c5f2c6b53494d67e7c3c5a44b2aa648219a2
+ms.date: 02/22/2021
+ms.openlocfilehash: 09fbe6f70a5b6a2af5cb4c5480995aa617504595
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629057"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697596"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>使用适用于 Azure SQL 数据库中的服务器的虚拟网络服务终结点和规则
 
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-虚拟网络规则是一种防火墙安全功能，用于控制是否允许 [Azure SQL 数据库](sql-database-paas-overview.md)中数据库和弹性池的服务器或 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 中数据库的服务器接受从虚拟网络中的特定子网发送的通信。 本文说明了为何有时候最好选择虚拟网络规则来安全地启用与 Azure SQL 数据库和 Azure Synapse Analytics 中数据库的通信。
+虚拟网络规则是一项防火墙安全功能，用于控制 [Azure SQL 数据库](sql-database-paas-overview.md)中数据库和弹性池的服务器或 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 中专用 SQL 池（之前称为 SQL DW）数据库的服务器是否接受从虚拟网络中的特定子网发出的通信。 本文说明了为何有时候最好选择虚拟网络规则来安全地启用与 Azure SQL 数据库和 Azure Synapse Analytics 中数据库的通信。
 
 > [!NOTE]
 > 本文同时适用于 Azure SQL 数据库和 Azure Synapse Analytics。 为简单起见，术语“数据库”是指 Azure SQL 数据库中的数据库和 Azure Synapse Analytic 中的数据库。 同样，无论何时提及“服务器”，都是指承载着 Azure SQL 数据库和 Azure Synapse Analytics 的[逻辑 SQL 服务器](logical-servers.md)。

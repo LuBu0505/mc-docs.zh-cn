@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 09/23/2020
+ms.date: 02/24/2021
 ms.author: v-junlch
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9710a9eb71772acb39333be5e9600d3b10bac0b5
-ms.sourcegitcommit: 7ad3bfc931ef1be197b8de2c061443be1cf732ef
+ms.openlocfilehash: 1ca8defb545f1d8e56d074f0702e2b475d7cf81f
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91245675"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697735"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中更改访问包的资源角色
 
@@ -55,11 +55,11 @@ ms.locfileid: "91245675"
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“访问包”，然后打开访问包。****
+1. 在左侧菜单中单击“访问包”，然后打开访问包。
 
-1. 在左侧菜单中单击“资源角色”。****
+1. 在左侧菜单中单击“资源角色”。
 
-1. 单击“添加资源角色”打开“将资源角色添加到访问包”页。****
+1. 单击“添加资源角色”打开“将资源角色添加到访问包”页。
 
     ![访问包 - 添加资源角色](./media/entitlement-management-access-package-resources/resource-roles-add.png)
 
@@ -76,6 +76,7 @@ ms.locfileid: "91245675"
 
 - 当用户（包括来宾）作为成员添加到组或团队时，他们可以查看该组或团队的所有其他成员。
 - Azure AD 无法更改使用 Azure AD Connect 从 Windows Server Active Directory 同步的组的成员身份，或在 Exchange Online 中作为通讯组创建的组的成员身份。  
+- 无法通过添加或删除成员来更新动态组的成员身份，因此，不适合在权利管理中使用动态组成员身份。
 
 有关详细信息，请参阅[比较组](https://docs.microsoft.com/office365/admin/create-groups/compare-groups)和 [Microsoft 365 组和 Microsoft Teams](https://docs.microsoft.com/microsoftteams/office-365-groups)。
 
@@ -96,7 +97,7 @@ ms.locfileid: "91245675"
     | Microsoft 365 | 未启用 Teams 的 Microsoft 365 组。 用于公司内部和外部用户之间的协作。 |
     | 组 | 已启用 Teams 的 Microsoft 365 组。 用于公司内部和外部用户之间的协作。 |
 
-1. 在“角色”列表中，选择“所有者”或“成员”。************
+1. 在“角色”列表中，选择“所有者”或“成员”。
 
     我们通常会选择“成员”角色。 如果选择“所有者”角色，则允许用户添加或删除其他成员或所有者。
 
@@ -121,7 +122,7 @@ ms.locfileid: "91245675"
 
 - 应用程序还可能已将组分配到其角色。  可以选择添加组来取代访问包中的应用程序角色，但是，用户在“我的访问权限”门户中看不到作为访问包的一部分的应用程序。
 
-1. 在“将资源角色添加到访问包”页上，单击“应用程序”打开“选择应用程序”窗格。********
+1. 在“将资源角色添加到访问包”页上，单击“应用程序”打开“选择应用程序”窗格。
 
 1. 选择要包含在访问包中的应用程序。
 
@@ -129,7 +130,7 @@ ms.locfileid: "91245675"
 
 1. 单击“选择”。
 
-1. 在“角色”列表中，选择应用程序角色。****
+1. 在“角色”列表中，选择应用程序角色。
 
     ![访问包 - 为应用程序添加资源角色](./media/entitlement-management-access-package-resources/application-role.png)
 
@@ -141,15 +142,21 @@ ms.locfileid: "91245675"
 
 为用户分配访问包时，Azure AD 可自动为用户分配对 SharePoint Online 站点或 SharePoint Online 站点集合的访问权限。
 
-1. 在“将资源角色添加到访问包”页上，单击“SharePoint 站点”打开“选择 SharePoint Online 站点”窗格。********
+1. 在“将资源角色添加到访问包”页上，单击“SharePoint 站点”打开“选择 SharePoint Online 站点”窗格。
 
-1. 选择要包含在访问包中的 SharePoint Online 站点。
+    :::image type="content" source="media/entitlement-management-access-package-resources/sharepoint-multigeo-portal.png" alt-text="访问包 - 添加资源角色 - 选择 SharePoint 站点 - 门户视图":::
+
+1. 若已为 SharePoint 启用[多地域](https://docs.microsoft.com/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365?view=o365-worldwide)，请选择想从中选择站点的环境。
+    
+    :::image type="content" source="media/entitlement-management-access-package-resources/sharepoint-multigeo-select.png" alt-text="访问包 - 添加资源角色 - 选择 SharePoint 多地域站点":::
+
+1. 如果未启用多地域，则无需选择环境。 选择要包含在访问包中的 SharePoint Online 站点。
 
     ![访问包 - 添加资源角色 - 选择 SharePoint Online 站点](./media/entitlement-management-access-package-resources/sharepoint-site-select.png)
 
 1. 单击“选择”。
 
-1. 在“角色”列表中，选择 SharePoint Online 站点角色。****
+1. 在“角色”列表中，选择 SharePoint Online 站点角色。
 
     ![访问包 - 为 SharePoint Online 站点添加资源角色](./media/entitlement-management-access-package-resources/sharepoint-site-role.png)
 
@@ -163,13 +170,13 @@ ms.locfileid: "91245675"
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“访问包”，然后打开访问包。****
+1. 在左侧菜单中单击“访问包”，然后打开访问包。
 
-1. 在左侧菜单中单击“资源角色”。****
+1. 在左侧菜单中单击“资源角色”。
 
 1. 在资源角色列表中，找到要删除的资源角色。
 
-1. 依次单击省略号 (**...**)、“删除资源角色”。****
+1. 依次单击省略号 (**...**)、“删除资源角色”。
 
     删除此资源角色后，在访问包中具有现有分配的任何用户对此资源角色的访问权限将自动吊销。
 
@@ -183,4 +190,3 @@ ms.locfileid: "91245675"
 
 - [使用 Azure Active Directory 创建基本组并添成员](../fundamentals/active-directory-groups-create-azure-portal.md)
 - [SharePoint Online 简介](https://docs.microsoft.com/sharepoint/introduction)
-

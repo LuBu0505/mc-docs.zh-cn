@@ -6,17 +6,17 @@ services: azure-stack
 documentationcenter: ''
 author: WenJason
 ms.topic: article
-origin.date: 01/14/2021
-ms.date: 02/08/2021
+origin.date: 02/18/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: alfredop
 ms.lastreviewed: 02/26/2019
-ms.openlocfilehash: 102b7d6e41db5dcc63b18514d44fd3eb734490b7
-ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
+ms.openlocfilehash: e5c51e457499d03725cca71bec17ef5428d4b285
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99503885"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697822"
 ---
 # <a name="frequently-asked-questions-about-azure-stack-hub-usage"></a>有关 Azure Stack Hub 用量的常见问题解答
 
@@ -213,15 +213,10 @@ ms.locfileid: "99503885"
 
 ### <a name="event-hubs"></a>事件中心
 
-**计量 ID**：d3a257e7-cf59-43bd-82c0-cf29ca8f7da0（付费计量）  
-**计量名称**：1 核    
+计量 ID：CB6A35C5-FADE-406C-B14D-6DDB7C4CA3D5  
+**计量名称**：1 核  
 **单元**：核\*小时  
-**注释**：部署的事件中心群集使用的核心数。 核心数是 10 的倍数。
-
-**计量 ID**：29ea0bfc-6780-4711-98fc-2c7db191e1a4（管理计量）  
-**计量名称**：1 核管理   
-**单元**：核\*小时  
-**注释**：部署的事件中心群集使用的核心数。 核心数是 10 的倍数。
+备注：单位表示已部署的事件中心群集每小时使用的核心数。 因为每个已配置的 CU 使用 10 个核心，所以核心数是 10 的倍数。
 
 ### <a name="key-vault"></a>密钥保管库
   

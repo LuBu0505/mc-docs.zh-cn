@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/07/2020
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 7212d2024a4c41de3ca8006da52ec337eb59f552
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: d7d4dad3837ccd52b2c449df05ec6961f5778d5d
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97003779"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697973"
 ---
 # <a name="application-configuration-options"></a>应用程序配置选项
 
@@ -29,7 +29,7 @@ ms.locfileid: "97003779"
   - [客户端 ID](#client-id)
   - [重定向 URI](#redirect-uri)
   - [客户端机密](#client-secret)（用于机密客户端应用程序）
-- [日志记录选项](#logging)，包括日志级别，以及使用该库的组件的名称。
+- [日志记录选项](#logging)，包括日志级别，以及使用该库的组件的名称
 
 ## <a name="authority"></a>颁发机构
 
@@ -40,8 +40,8 @@ ms.locfileid: "97003779"
 | 常见的颁发机构 URL | 何时使用 |
 |--|--|
 | `https://login.partner.microsoftonline.cn/<tenant>/` | 仅允许特定组织的用户登录。 URL 中的 `<tenant>` 是 Azure Active Directory (Azure AD) 租户 (GUID) 或其租户域的租户 ID。 |
-- https\://login.partner.microsoftonline.cn/common/。 用于通过工作和学校帐户将用户登录。
-| `https://login.partner.microsoftonline.cn/organizations/` | 通过工作和学校帐户将用户登录。 |
+| `https://login.partner.microsoftonline.cn/common/` | 通过工作和学校帐户登录用户。 |
+| `https://login.partner.microsoftonline.cn/organizations/` | 通过工作和学校帐户登录用户。 |
 
 
 在代码中指定的机构需要与在 Azure 门户中为“应用注册”中的应用指定的支持帐户类型一致 。
@@ -73,7 +73,7 @@ Azure AD 云颁发机构有两个组成部分：
 
 登录受众取决于应用的业务需求：
 
-- 业务线应用程序 (LOB) 开发人员也许会生成一个只在其组织中使用的单租户应用程序。 在这种情况下，需要按租户 ID（Azure AD 实例的 ID）或者与 Azure AD 实例关联的域名指定组织。
+- 业务线应用程序 (LOB) 开发人员也许会生成一个只在其组织中使用的单租户应用程序。 在这种情况下，请按租户 ID（Azure AD 实例的 ID）或者与 Azure AD 实例关联的域名指定组织。
 - ISV 可能想要使用任一组织或某些组织（多租户应用）中的用户工作帐户和学校帐户将用户登录。 
 
 ### <a name="how-to-specify-the-audience-in-your-codeconfiguration"></a>如何在代码/配置中指定受众
@@ -114,9 +114,9 @@ Azure AD 云颁发机构有两个组成部分：
   | UWP | `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()` 的值。 这可以通过浏览器启用 SSO，方法是：将值设置为需注册的 WebAuthenticationBroker.GetCurrentApplicationCallbackUri() 的结果 |
   | .NET Core | `https://localhost`. 这样用户就可以将系统浏览器用于交互式身份验证，因为 .NET Core 目前没有 UI 用于嵌入式 Web 视图。 |
 
-- 若要构建不支持代理的 Xamarin Android 和 iOS 应用程序，则不需添加重定向 URI（对于 Xamarin Android 和 iOS，重定向 URI 会自动设置为 `msal{ClientId}://auth`
+- 若要构建不支持代理重定向 URI 的 Xamarin Android 和 iOS 应用程序，则不需添加重定向 URI。 对于 Xamarin Android 和 iOS，重定向 URI 会自动设置为 `msal{ClientId}://auth`。
 
-- 需要在[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)中配置重定向 URI：
+- 请在[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)中配置重定向 URI：
 
    ![应用注册中的重定向 URI](./media/msal-client-application-configuration/redirect-uri.png)
 
@@ -129,7 +129,7 @@ Azure AD 云颁发机构有两个组成部分：
 
 ### <a name="redirect-uri-for-confidential-client-apps"></a>机密客户端应用的重定向 URI
 
-对于 Web 应用，重定向 URI（或回复 URI）是 Azure AD 用来向应用程序发回令牌的 URI。 如果机密应用是 Web 应用/Web API，则此 URI 可以是其 URL。 重定向 URI 需在应用注册中注册。 部署一个最初已在本地测试的应用时，这种注册尤其重要。 然后，需要在门户中添加已部署的应用的回复 URL。
+对于 Web 应用，重定向 URI（或回复 URL）是 Azure AD 用来向应用程序发回令牌的 URI。 如果机密应用是 Web 应用/Web API，则此 URI 可以是其 URL。 重定向 URI 需在应用注册中注册。 部署一个最初已在本地测试的应用时，这种注册尤其重要。 然后，需要在门户中添加已部署的应用的回复 URL。
 
 对于守护程序应用，不需要指定重定向 URI。
 
@@ -138,10 +138,21 @@ Azure AD 云颁发机构有两个组成部分：
 此选项指定机密客户端应用的客户端机密。 在使用 PowerShell AzureAD、PowerShell AzureRM 或 Azure CLI 注册应用期间，此机密（应用密码）将提供给 Azure AD。
 
 ## <a name="logging"></a>日志记录
+为了帮助对调试和身份验证失败进行故障排除，Microsoft 身份验证库提供了内置的日志记录支持。 以下文章介绍了如何记录每个库：
 
-其他配置选项可用于日志记录和故障排除。 有关其用法的详细信息，请参阅[日志记录](msal-logging.md)一文。
+:::row:::
+    :::column:::
+        - [在 MSAL.NET 中进行日志记录](msal-logging-dotnet.md)
+        - [MSAL for Android 中的日志记录](msal-logging-android.md)
+        - [MSAL.js 中的日志记录](msal-logging-js.md)
+    :::column-end:::
+    :::column:::
+        - [MSAL for iOS/macOS 中的日志记录](msal-logging-ios.md)
+        - [MSAL for Java 中的日志记录](msal-logging-java.md)
+        - [MSAL for Python 中的日志记录](msal-logging-python.md)
+    :::column-end:::
+:::row-end:::
 
 ## <a name="next-steps"></a>后续步骤
 
 了解如何[使用 MSAL.NET 初始化客户端应用程序](msal-net-initializing-client-applications.md)和[使用 MSAL.js 初始化客户端应用程序](msal-js-initializing-client-applications.md)。
-

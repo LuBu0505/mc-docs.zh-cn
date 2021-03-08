@@ -1,19 +1,19 @@
 ---
-title: 如何监视用于 Redis 的 Azure 缓存
+title: 监视用于 Redis 的 Azure 缓存
 description: 了解如何监视用于 Redis 的 Azure 缓存实例的运行状况和性能
 author: yegu-ms
 ms.author: v-junlch
 ms.service: cache
 ms.topic: conceptual
-ms.date: 12/28/2020
-ms.openlocfilehash: 141a4bc60a2060c0d21b986e4619b3decc062315
-ms.sourcegitcommit: a37f80e7abcf3e42859d6ff73abf566efed783da
+ms.date: 02/18/2021
+ms.openlocfilehash: d06ee9801d6aff73057a073ec0ea3db368f20dcd
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829444"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697556"
 ---
-# <a name="how-to-monitor-azure-cache-for-redis"></a>如何监视用于 Redis 的 Azure 缓存
+# <a name="monitor-azure-cache-for-redis"></a>监视用于 Redis 的 Azure 缓存
 
 用于 Redis 的 Azure 缓存使用 [Azure Monitor](../azure-monitor/index.yml) 提供用于监视缓存实例的几个选项。 可以查看度量值、将度量值图表固定到启动板、自定义监视图表的日期和时间范围、在图表中添加和删除度量值，以及设置符合特定条件时发出的警报。 借助这些工具，可以监视 Azure Redis 缓存实例的运行状况，以及管理缓存应用程序。
 

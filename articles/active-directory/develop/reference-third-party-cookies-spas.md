@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/26/2020
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 4899f0ef53ebaec752a215e93e1c11565d8e5a38
-ms.sourcegitcommit: ca5e5792f3c60aab406b7ddbd6f6fccc4280c57e
+ms.openlocfilehash: 6dcbca5d0e462eecad65eb66b1e6f71471f2acdb
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92749937"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697915"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>在 Safari 和其他阻止第三方 Cookie 的浏览器中处理 ITP
 
@@ -26,7 +26,7 @@ ms.locfileid: "92749937"
 
 ## <a name="what-is-intelligent-tracking-protection-itp"></a>什么是智能跟踪保护 (ITP)？
 
-Apple Safari 提供默认已启用的隐私保护功能，称为 [智能跟踪保护](https://webkit.org/tracking-prevention-policy/) ( *ITP* )。 ITP 会阻止“第三方”Cookie - 包含在跨域请求中的 Cookie。
+Apple Safari 提供默认已启用的隐私保护功能，称为 [智能跟踪保护](https://webkit.org/tracking-prevention-policy/) (*ITP*)。 ITP 会阻止“第三方”Cookie - 包含在跨域请求中的 Cookie。
 
 常见的用户跟踪形式是，在后台将一个 iframe 加载到第三方站点，并使用 Cookie 在整个 Internet 中关联用户。 遗憾的是，此模式也是单页应用 (SPA) 中实现[隐式流](v2-oauth2-implicit-grant-flow.md)的标准方式。 当浏览器阻止第三方 Cookie 以阻止用户跟踪时，SPA 也会中断。
 

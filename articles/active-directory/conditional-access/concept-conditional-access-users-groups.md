@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 02/24/2021
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee9a4aa98452f70966e4aab573dd791814cab35a
-ms.sourcegitcommit: 59810f8eba5e430d85a595e346d3b7fb6e4a0102
+ms.openlocfilehash: 2e01fccbf2de0a7e248baa114491edfca5f76b1e
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94501735"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697046"
 ---
 # <a name="conditional-access-users-and-groups"></a>条件访问：用户和组
 
@@ -41,6 +41,9 @@ ms.locfileid: "94501735"
       - 允许管理员选择用于确定分配的特定 Azure AD 目录角色。 例如，组织可以对分配有全局管理员角色的用户创建更严格的策略。
    - 用户和组
       - 允许以特定用户集为目标。 例如，将某个人力资源应用选作云应用时，组织可以选择包含人力资源部所有成员的组。 某个组可以是 Azure AD 中任何类型的组，包括动态组，或分配的安全组和通讯组。 策略将应用于嵌套的用户和组。
+
+> [!IMPORTANT]
+> 选择条件访问策略中包含的用户和组时，可直接添加到条件访问策略中的单独用户数量存在限制。 如果需要将大量单独用户直接添加到条件访问策略，则建议将用户归为一组，并改为将该组分配到条件访问策略。
 
 > [!WARNING]
 > 如果用户或组是 2048 个以上的组的成员，则其访问可能会被阻止。 此限制适用于直接组和嵌套组成员身份。
@@ -80,4 +83,3 @@ ms.locfileid: "94501735"
 - [条件访问：云应用或操作](concept-conditional-access-cloud-apps.md)
 
 - [条件访问常见策略](concept-conditional-access-policy-common.md)
-

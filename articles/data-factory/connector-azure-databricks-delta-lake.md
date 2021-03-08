@@ -1,23 +1,19 @@
 ---
 title: 将数据复制到 Azure Databricks Delta Lake 以及从中复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，向/从 Azure Databricks Delta Lake 复制数据。
-services: data-factory
 ms.author: v-jay
 author: WenJason
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 11/24/2020
-ms.date: 02/01/2021
-ms.openlocfilehash: ae706817096a72723622d924f5abc1a09730dc5f
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/01/2021
+ms.openlocfilehash: 4739a1dae4f7d46edca1a4946169ed12a86e1150
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059983"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696717"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从Azure Databricks Delta Lake 复制数据
 
@@ -42,14 +38,14 @@ ms.locfileid: "99059983"
 
 若要使用此 Azure Databricks Delta Lake 连接器，你需要在 Azure Databricks 中设置群集。
 
-- 为了将数据复制到 Delta Lake，复制活动会调用 Azure Databricks 群集来从 Azure 存储中读取数据。该存储可以是原始源，也可以是数据工厂通过内置的暂存复制首先将源数据写入到其中的暂存区域。 从 [Delta Lake 作为源](#delta-lake-as-source)中了解详细信息。
-- 类似地，为了从 Delta Lake 复制数据，复制活动会调用 Azure Databricks 群集来将数据写入到 Azure 存储。该存储可以是你的原始接收器，也可以是数据工厂通过内置的暂存复制继续从中将数据写入到最终接收器的暂存区域。 从 [Delta Lake 作为接收器](#delta-lake-as-sink)中了解详细信息。
+- 为了将数据复制到 Delta Lake，复制活动会调用 Azure Databricks 群集来从 Azure 存储中读取数据。该存储可以是原始源，也可以是数据工厂通过内置的暂存复制首先将源数据写入到其中的暂存区域。 从 [Delta Lake 作为接收器](#delta-lake-as-sink)中了解详细信息。
+- 类似地，为了从 Delta Lake 复制数据，复制活动会调用 Azure Databricks 群集来将数据写入到 Azure 存储。该存储可以是你的原始接收器，也可以是数据工厂通过内置的暂存复制继续从中将数据写入到最终接收器的暂存区域。 从 [Delta Lake 作为源](#delta-lake-as-source)中了解详细信息。
 
 Databricks 群集需要有权访问 Azure Blob 或 Azure Data Lake Storage Gen2 帐户、用于源/接收器/暂存的存储容器/文件系统，以及要在其中写入 Delta Lake 表的容器/文件系统。
 
-- 若要使用 **Azure Data Lake Storage Gen2**，你可以在 Databricks 群集上的 Apache Spark 配置中配置 **服务主体** 或 **存储帐户访问密钥**。
+- 若要使用 **Azure Data Lake Storage Gen2**，你可以在 Databricks 群集上的 Apache Spark 配置中配置 **服务主体** 或 **存储帐户访问密钥**。 按照[使用服务主体直接访问](/databricks/data/data-sources/azure/azure-datalake-gen2#access-directly-with-service-principal-and-oauth-20)或[使用存储帐户访问密钥直接访问](/databricks/data/data-sources/azure/azure-datalake-gen2#access-directly-using-the-storage-account-access-key)中的步骤进行操作。
 
-- 若要使用 **Azure Blob 存储**，你可以在 Databricks 群集上的 Apache Spark 配置中配置 **存储帐户访问密钥** 或 **SAS 令牌**。
+- 若要使用 **Azure Blob 存储**，你可以在 Databricks 群集上的 Apache Spark 配置中配置 **存储帐户访问密钥** 或 **SAS 令牌**。 按照[使用 RDD API 访问 Azure Blob 存储](/databricks/data/data-sources/azure/azure-storage#access-azure-blob-storage-using-the-rdd-api)中的步骤进行操作。
 
 在复制活动执行期间，如果你配置的群集已终止，则数据工厂会自动启动它。 如果你使用数据工厂创作 UI 来创作管道，则对于数据预览之类的操作，你需要有一个实时群集，数据工厂不会代表你启动群集。
 
@@ -59,7 +55,7 @@ Databricks 群集需要有权访问 Azure Blob 或 Azure Data Lake Storage Gen2 
 
 2. 在“Databricks Runtime 版本”下拉列表中，选择一个 Databricks 运行时版本。
 
-3. 将以下属性添加到 Spark 配置来开启“自动优化”：
+3. 将以下属性添加到 [Spark 配置](/databricks/clusters/configure#spark-config)来打开[自动优化](/databricks/delta/optimizations/auto-optimize)：
 
    ```
    spark.databricks.delta.optimizeWrite.enabled true
@@ -67,6 +63,8 @@ Databricks 群集需要有权访问 Azure Blob 或 Azure Data Lake Storage Gen2 
    ```
 
 4. 根据集成和缩放需求配置群集。
+
+有关群集配置的详细信息，请参阅[配置群集](/databricks/clusters/configure)。
 
 ## <a name="get-started"></a>入门
 
@@ -78,12 +76,12 @@ Databricks 群集需要有权访问 Azure Blob 或 Azure Data Lake Storage Gen2 
 
 Azure Databricks Delta Lake 链接服务支持以下属性。
 
-| Property    | 说明                                                  | 必需 |
+| Property    | 说明                                                  | 必选 |
 | :---------- | :----------------------------------------------------------- | :------- |
 | type        | type 属性必须设置为 **AzureDatabricksDeltaLake**。 | 是      |
 | 域      | 指定 Azure Databricks 工作区 URL，例如 `https://adb-xxxxxxxxx.xx.databricks.azure.cn`。 |          |
-| clusterId   | 指定现有群集的群集 ID。 该群集应该是已创建的交互式群集。 <br>可以通过 Databricks 工作区 ->“群集”->“交互式群集名称”->“配置”->“标记”找到交互式群集的群集 ID。 |          |
-| accessToken | 数据工厂通过 Azure Databricks 进行身份验证时，必须使用访问令牌。 需从 Databricks 工作区生成访问令牌。 |          |
+| clusterId   | 指定现有群集的群集 ID。 该群集应该是已创建的交互式群集。 <br>可以通过 Databricks 工作区 ->“群集”->“交互式群集名称”->“配置”->“标记”找到交互式群集的群集 ID。 [了解详细信息](/databricks/clusters/configure#cluster-tags)。 |          |
+| accessToken | 数据工厂通过 Azure Databricks 进行身份验证时，必须使用访问令牌。 需从 Databricks 工作区生成访问令牌。 [此处](/databricks/dev-tools/api/latest/authentication#generate-token)提供了查找访问令牌的更多详细步骤。 |          |
 | connectVia  | 用于连接到数据存储的 [Integration Runtime](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定，则使用默认 Azure Integration Runtime。 | 否       |
 
 **示例：**
@@ -111,7 +109,7 @@ Azure Databricks Delta Lake 链接服务支持以下属性。
 
 Azure Databricks Delta Lake 数据集支持以下属性。
 
-| Property  | 说明                                                  | 必需                    |
+| Property  | 说明                                                  | 必选                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | 数据集的 type 属性必须设置为 **AzureDatabricksDeltaLakeDataset**。 | 是                         |
 | database | 数据库的名称。 |对于源为“否”，对于接收器为“是”  |
@@ -145,13 +143,13 @@ Azure Databricks Delta Lake 数据集支持以下属性。
 
 为了从 Azure Databricks Delta Lake 复制数据，复制活动的 **source** 节需要支持以下属性。
 
-| Property                     | 说明                                                  | 必需 |
+| Property                     | 说明                                                  | 必选 |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | 复制活动源的 type 属性必须设置为 **AzureDatabricksDeltaLakeSource**。 | 是      |
 | query          | 指定用于读取数据的 SQL 查询。 对于“按时间顺序查看”控制，请遵循以下模式：<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | 否       |
 | exportSettings | 用于从增量表检索数据的高级设置。 | 否       |
-| ***在 `exportSettings` 下：** _ |  |  |
-| type | 导出命令的类型，设置为 _*AzureDatabricksDeltaLakeExportCommand**。 | 是 |
+| 在 `exportSettings` 下： |  |  |
+| type | 导出命令的类型，设置为 AzureDatabricksDeltaLakeExportCommand。 | 是 |
 | dateFormat | 将日期类型格式化为具有日期格式的字符串。 自定义日期格式遵循[日期/时间模式](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)中的格式。 如果未指定，则它使用默认值 `yyyy-MM-dd`。 | 否 |
 | timestampFormat | 将时间戳类型格式化为具有时间戳格式的字符串。 自定义日期格式遵循[日期/时间模式](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)中的格式。 如果未指定，则它使用默认值 `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]`。 | 否 |
 
@@ -259,13 +257,13 @@ Azure Databricks Delta Lake 数据集支持以下属性。
 
 为了将数据复制到 Azure Databricks Delta Lake，复制活动的 **sink** 节需要支持以下属性。
 
-| Property      | 说明                                                  | 必需 |
+| Property      | 说明                                                  | 必选 |
 | :------------ | :----------------------------------------------------------- | :------- |
 | type          | 复制活动接收器的 type 属性，设置为 **AzureDatabricksDeltaLakeSink**。 | 是      |
 | preCopyScript | 指定一个 SQL 查询。每次运行时，复制活动在将数据写入到 Databricks 增量表之前都会运行该查询。 你可以使用此属性来清除预加载的数据，或添加一个 truncate table 或 Vacuum语句。 | 否       |
 | importSettings | 用于将数据写入增量表的高级设置。 | 否 |
-| **_在 `importSettings` 下：_* _ |                                                              |  |
-| type | 导入命令的类型，设置为 _*AzureDatabricksDeltaLakeImportCommand**。 | 是 |
+| 在 `importSettings` 下： |                                                              |  |
+| type | 导入命令的类型，设置为 AzureDatabricksDeltaLakeImportCommand。 | 是 |
 | dateFormat | 将字符串格式化为具有日期格式的日期类型。 自定义日期格式遵循[日期/时间模式](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)中的格式。 如果未指定，则它使用默认值 `yyyy-MM-dd`。 | 否 |
 | timestampFormat | 将字符串格式化为具有时间戳格式的时间戳类型。 自定义日期格式遵循[日期/时间模式](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)中的格式。 如果未指定，则它使用默认值 `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]`。 | 否 |
 
@@ -373,7 +371,7 @@ Azure Databricks Delta Lake 数据集支持以下属性。
 
 ## <a name="monitoring"></a>监视
 
-Azure 数据工厂提供与其他连接器相同的[复制活动监视体验](copy-activity-monitoring.md)。
+Azure 数据工厂提供与其他连接器相同的[复制活动监视体验](copy-activity-monitoring.md)。 此外，因为是在 Azure Databricks 群集上向/从 Delta Lake 加载数据，所以可以进一步[查看详细的群集日志](/databricks/clusters/clusters-manage#view-cluster-logs)并[监视性能](/databricks/clusters/clusters-manage#monitor-performance)。
 
 ## <a name="lookup-activity-properties"></a>查找活动属性
 

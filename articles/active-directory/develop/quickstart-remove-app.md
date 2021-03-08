@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 01/13/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 70727d8609037150fb51cc597472250188eec400
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: fa7762c24e0f652aeeb429bce416b49c618950b7
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195223"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697962"
 ---
 # <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>如何删除注册到 Microsoft 标识平台的应用程序
 
-已经向 Microsoft 标识平台注册了应用程序的企业开发人员可能需要删除应用程序的注册。
+已在 Microsoft 标识平台注册应用程序的企业开发人员可能需要删除应用程序的注册。
 
 在以下各小节中，你将了解如何实现以下操作：
 
@@ -37,11 +37,12 @@ ms.locfileid: "98195223"
 
 由你或你的组织注册的应用程序是由租户中的应用程序对象与服务主体对象表示的。 有关详细信息，请参阅[应用程序对象和服务主体对象](./app-objects-and-service-principals.md)。
 
-若要删除应用程序，你必须是应用程序的所有者或者具有管理员权限。
+若要删除应用程序，你需被列为应用程序的所有者或者具有管理员权限。
 
-1. 使用工作或学校帐户登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
-1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务  ，然后选择“应用注册”。  找到并选择要配置的应用程序。 选择应用以后，会看到应用程序的“概览”页。 
+1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
+1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择在其中注册应用的租户。
+1. 搜索并选择“Azure Active Directory”。 
+1. 在“管理”下，选择“应用注册”，然后选择要配置的应用程序 。 选择应用以后，会看到应用程序的“概览”页。 
 1. 在“概览”  页中，选择“删除”  。
 1. 选择“是”  以确认要删除该应用。
 
@@ -54,4 +55,3 @@ ms.locfileid: "98195223"
 ## <a name="next-steps"></a>后续步骤
 
 详细了解 Microsoft 标识平台中的[应用程序和服务主体对象](app-objects-and-service-principals.md)。
-

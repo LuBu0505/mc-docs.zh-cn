@@ -1,23 +1,18 @@
 ---
 title: 复制活动中的会话日志
 description: 了解如何在 Azure 数据工厂的复制活动中启用会话日志。
-services: data-factory
-documentationcenter: ''
 author: WenJason
-manager: ''
-ms.reviewer: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 origin.date: 11/11/2020
-ms.date: 11/23/2020
+ms.date: 03/01/2021
 ms.author: v-jay
-ms.openlocfilehash: fb4aa5d66903948b954976a47231f201b366c6d9
-ms.sourcegitcommit: c89f1adcf403f5845e785064350136698eed15b8
+ms.openlocfilehash: 53ec51b6bc5501b129d8e33425afdc0a003ac636
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94680610"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696773"
 ---
 #  <a name="session-log-in-copy-activity"></a>复制活动中的会话日志
 
@@ -102,6 +97,9 @@ path | 日志文件的路径。 | 指定用于存储日志文件的路径。 如
         }
 
 ```
+
+> [!NOTE]
+> 当 `enableCopyActivityLog` 属性设置为 `Enabled` 时，将生成日志文件名。
 
 ### <a name="the-schema-of-the-log-file"></a>日志文件的架构
 

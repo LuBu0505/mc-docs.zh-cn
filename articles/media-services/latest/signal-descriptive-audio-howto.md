@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒体服务 v3 指示描述性音频轨道 | Microsoft Docs
+title: 使用媒体服务 v3 指示描述性音频轨道
 description: 按照本教程中的步骤，使用媒体服务 v3 上传文件、编码视频、添加描述性音频轨道和流式传输内容。
 services: media-services
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.workload: ''
 ms.topic: how-to
 ms.custom: devx-track-csharp
 origin.date: 08/31/220
-ms.date: 11/30/2020
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.openlocfilehash: 7ea21ac3d58cbde02ca65ef2724476242c6f426d
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: ab52f91ac9d8ca22088488a1c524fb9b90f3ac5d
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300747"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697349"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>指示描述性音频轨道
 
@@ -434,3 +434,6 @@ private static async Task<IList<string>> GetStreamingUrlsAsync(
 
 Azure Media Player 可用于测试，但不可在生产环境中使用。 
 
+## <a name="next-steps"></a>后续步骤
+
+[分析视频](analyze-videos-tutorial-with-api.md)

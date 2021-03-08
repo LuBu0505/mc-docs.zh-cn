@@ -5,46 +5,71 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 01/05/2021
+ms.date: 02/24/2021
 ms.author: v-junlch
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bc31ef850a6e5962a90d6f13ce257f4b3f114dd
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: c3399e0b456b9951317e1046ee54dcbdd7ea6ecf
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022488"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697553"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>B2B 协作用户的条件访问
 
-## <a name="multi-factor-authentication-for-b2b-users"></a>针对 B2B 用户的多重身份验证
-通过 Azure AD B2B 协作，组织可以针对 B2B 用户强制实施多重身份验证 (MFA) 策略。 可以在租户、应用或个人用户级别强制实施这些策略，与针对全职员工和组织成员启用这些策略的方式相同。 资源组织中强制实施 MFA 策略。
+本文介绍组织如何为 B2B 来宾用户界定条件访问 (CA) 策略的范围以访问其资源。
+>[!NOTE]
+>与该标识提供者 (IdP) 的现有用户的身份验证或授权流相比，来宾用户的此身份验证或授权流稍有不同。
 
-示例：
-1. 公司 A 中的管理员或信息工作者邀请公司 B 中的用户加入公司 A 中的应用程序 Foo  。
-2. 公司 A 中的应用程序 *Foo* 配置为在访问时需要进行 MFA。
-3. 公司 B 中的用户尝试访问公司 A 租户中的应用 Foo 时，会要求其完成 MFA 质询  。
-4. 用户可设置公司 A 对其的 MFA，并选择 MFA 选项。
-5. 此方案适用于任何标识（Azure AD，例如，如果公司 B 中的用户使用社交 ID 进行身份验证）
-6. 公司 A 必须具有足够的支持 MFA 的高级 Azure AD 许可证。 公司 B 中的用户使用公司 A 提供的此许可证。
+## <a name="authentication-flow-for-b2b-guest-users-from-an-external-directory"></a>来自外部目录的 B2B 来宾用户的身份验证流
 
-邀请方租户始终负责对合作伙伴组织中的用户进行 MFA（即使合作伙伴组织具有 MFA 功能）。
+下图说明了流：![图像显示来自外部目录的 B2B 来宾用户的身份验证流](./media/conditional-access-b2b/authentication-flow-b2b-guests.png)
 
-### <a name="setting-up-mfa-for-b2b-collaboration-users"></a>为 B2B 协作用户设置 MFA
-若要了解为 B2B 协作用户设置 MFA 有多轻松，请参阅以下视频：
+| 步骤 | 说明 |
+|--------------|-----------------------|
+| 1. | B2B 来宾用户请求对资源的访问。 资源将用户重定向到其资源租户，即受信任的 IdP。|
+| 2. | 资源租户将用户标识为外部用户，并将用户重定向到 B2B 来宾用户的 IdP。 用户在 IdP 中执行主要身份验证。
+| 3. | B2B 来宾用户的 IdP 向用户颁发令牌。 用户被重定向回具有令牌的资源租户。 资源租户验证令牌，然后根据其 CA 策略评估用户。 例如，资源租户可能要求用户执行 Azure Active Directory (AD) 多重身份验证。
+| 4. | 满足所有资源租户 CA 策略后，资源租户将颁发自己的令牌，并将用户重定向到其资源。
+
+## <a name="azure-ad-multi-factor-authentication-for-b2b-users"></a>针对 B2B 用户的 Azure AD 多重身份验证
+
+组织可以对其 B2B 来宾用户执行多个 Azure AD 多重身份验证策略。 可以在租户、应用或个人用户级别强制实施这些策略，这与针对全职员工和组织成员启用这些策略的方式相同。
+资源租户始终负责用户的 Azure AD 多重身份验证，即使来宾用户的组织具有多重身份验证功能也是如此。 下面举例进行说明：
+
+1. 一家名为 Fabrikam 的公司中的管理员或信息工作者邀请来自另一家名为 Contoso 的公司的用户使用他们的应用程序 Woodgrove。
+
+2. Fabrikam 的 Woodgrove 应用程序被配置为需要 Azure AD 多重身份验证访问。
+
+3. 当来自 Contoso 的 B2B 来宾用户尝试访问 Fabrikam 租户中的 Woodgrove 时，系统要求他们完成 Azure AD 多重身份验证质询。
+
+4. 然后，来宾用户可以使用 Fabrikam 设置 Azure AD 多重身份验证，并选择选项。
+
+5. 此情况适用于任何标识 - Azure AD。 例如，Contoso 中的用户可以使用社交 ID 进行身份验证。
+
+6. Fabrikam 必须提供足够的高级 Azure AD 许可证来支持 Azure AD 多重身份验证。 然后来自 Contoso 的用户才能使用 Fabrikam 提供的此许可证。 有关 B2B 许可的信息，请参阅 [Azure AD 外部标识的计费模型](/active-directory/external-identities/external-identities-pricing)。
+
+>[!NOTE]
+>Azure AD 多重身份验证在资源租户上完成，以确保可预测性。
+
+### <a name="set-up-azure-ad-multi-factor-authentication-for-b2b-users"></a>针对 B2B 用户设置 Azure AD 多重身份验证
+
+若要为 B2B 协作用户设置 Azure AD 多重身份验证，请观看以下视频：
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-conditional-access-setup/Player]
 
-### <a name="b2b-users-mfa-experience-for-offer-redemption"></a>用于产品/服务兑换的 B2B 用户 MFA 体验
-请查看下面的动画了解兑换体验：
+### <a name="b2b-users-azure-ad-multi-factor-authentication-for-offer-redemption"></a>针对兑换产品时要求的 B2B 用户 Azure AD 多重身份验证
+
+若要详细了解兑换产品时的 Azure AD 多重身份验证体验，请观看以下视频：
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/MFA-redemption/Player]
 
-### <a name="mfa-reset-for-b2b-collaboration-users"></a>为 B2B 协作用户重置 MFA
-目前，管理员可以要求 B2B 协作用户只使用以下 PowerShell cmdlet 再次进行身份验证：
+### <a name="azure-ad-multi-factor-authentication-reset-for-b2b-users"></a>针对 B2B 用户的 Azure AD 多重身份验证重置
+
+现在，可以使用以下 PowerShell cmdlet 来证明 B2B 来宾用户：
 
 1. 连接到 Azure AD
 
@@ -63,53 +88,56 @@ ms.locfileid: "98022488"
    Get-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName, @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
    ```
 
-3. 重置特定用户的 MFA 方法，以要求该 B2B 协作用户再次设置身份验证方法。 示例：
+3. 重置特定用户的 Azure AD 多重身份验证方法，以要求该 B2B 协作用户再次设置身份验证方法。 
+   以下是示例：
 
    ```
    Reset-MsolStrongAuthenticationMethodByUpn -UserPrincipalName gsamoogle_gmail.com#EXT#@ WoodGroveAzureAD.partner.onmschina.cn
    ```
 
-### <a name="why-do-we-perform-mfa-at-the-resource-tenancy"></a>为什么在资源租户中执行 MFA？
+## <a name="conditional-access-for-b2b-users"></a>针对 B2B 用户的条件访问
 
-在当前版本中，为确保可预测性，资源租户始终需要执行 MFA。 例如，假设 Contoso 用户 (Sally) 被邀请到 Fabrikam，并且 Fabrikam 针对 B2B 用户启用了 MFA。
+有各种影响 B2B 来宾用户的 CA 策略的因素。
 
-如果 Contoso 对 App1 启用了 MFA 策略，但未对 App2 启用，那么查看令牌中的 Contoso MFA 声明时，可能会发现以下问题：
+### <a name="device-based-conditional-access"></a>基于设备的条件访问
 
-* 第 1 天：用户在 Contoso 中进行了 MFA 并访问 App1，因此 Fabrikam 中没有显示其他 MFA 提示。
+在 CA 中，有一个要求用户的[设备合规或已加入混合 Azure AD](/active-directory/conditional-access/concept-conditional-access-conditions#device-state-preview) 的选项。 B2B 来宾用户只有在资源租户能够管理其设备时才能满足合规性。 设备不能一次由多个组织管理。 B2B 来宾用户无法满足混合 Azure AD 加入，因为他们没有本地 AD 帐户。 仅当来宾用户的设备不受管理时，来宾用户才能在资源租户中注册其设备，然后使设备合规。 然后，用户可以满足授权控制要求。
 
-* 第 2 天：用户在 Contoso 中访问了 App2，那么如果现在访问 Fabrikam，就必须在其中注册 MFA。
+>[!Note]
+>不建议对外部用户要求使用受管理设备。
 
-这个过程可能会令人困惑，并可能会导致成功登录的次数降低。
+### <a name="mobile-application-management-policies"></a>移动应用程序管理策略
 
-此外，即使 Contoso 启用了 MFA 功能，Fabrikam 也不可能一直信任 Contoso MFA 策略。
+CA 授权控制（如需要已批准的客户端应用和需要应用保护策略）需要在租户中注册设备 。 这些控制仅应用于 [iOS 和 Android 设备](/active-directory/conditional-access/concept-conditional-access-conditions#device-platforms)。 但是，如果用户的设备已经由其他组织管理，则这两种控制都不能应用于 B2B 来宾用户。 移动设备不能一次在多个租户中注册。 如果移动设备由其他组织管理，则用户将被阻止。 仅当来宾用户的设备不受管理时，来宾用户才能在资源租户中注册其设备。 然后，用户可以满足授权控制要求。  
 
-最后，资源租户 MFA 还适用于社交 ID，以及尚未设置 MFA 的合作伙伴组织。
+>[!NOTE]
+>不建议对外部用户要求应用保护策略。
 
-因此，在针对 B2B 用户进行 MFA 方面，建议始终需要在邀请方租户中进行 MFA。 此要求可能会导致有些情况下需要进行两次 MFA，但是无论在什么时候访问邀请方租户，最终用户体验都是可以预测的：Sally 必须注册邀请方租户的 MFA。
+### <a name="location-based-conditional-access"></a>基于位置的条件访问
 
-### <a name="device-based-location-based-and-risk-based-conditional-access-for-b2b-users"></a>B2B 用户基于设备、位置和风险的条件访问
+如果邀请组织能够创建定义其合作伙伴组织的受信任 IP 地址范围，则可以执行基于 IP 范围的[基于位置的策略](/active-directory/conditional-access/concept-conditional-access-conditions#locations)。
 
-Contoso 为其公司数据启用基于设备的条件访问策略时，会阻止从不受 Contoso 管理并且不符合 Contoso 设备策略的设备进行访问。
+还可以基于地理位置执行策略。
 
-如果 B2B 用户的设备不受 Contoso 管理，则在强制实施这些策略的任何上下文中，合作伙伴组织中的 B2B 用户进行的访问都将被阻止。 但是，Contoso 可以创建包含特定合作伙伴用户的排除列表，将其排除在基于设备的条件访问策略之外。
+### <a name="risk-based-conditional-access"></a>基于风险的条件访问
 
-#### <a name="mobile-application-management-policies-for-b2b"></a>B2B 的移动应用程序管理策略
+如果 B2B 来宾用户满足授权控制要求，则执行[登录风险策略](/active-directory/conditional-access/concept-conditional-access-conditions#sign-in-risk)。 例如，组织可能需要 Azure AD 多重身份验证，以承担中等或高登录风险。 但是，如果某个用户以前没有在资源租户中注册过 Azure AD 多重身份验证，则该用户将被阻止。 这样做是为了防止恶意用户在泄露合法用户密码时注册其自己的 Azure AD 多重身份验证凭据。
 
-条件访问应用保护策略无法应用于 B2B 用户，因为邀请组织无法查看 B2B 用户的本组织。
+但无法在资源租户中解决[用户风险策略](/active-directory/conditional-access/concept-conditional-access-conditions#user-risk)。 例如，如果你需要为高风险来宾用户更改密码，则由于无法重置资源目录中的密码，他们将被阻止。
 
-#### <a name="location-based-conditional-access-for-b2b"></a>针对 B2B 的基于位置的条件访问
+### <a name="conditional-access-client-apps-condition"></a>条件访问客户端应用条件
 
-如果邀请组织能够创建定义其合作伙伴组织的受信任 IP 地址范围，则可针对 B2B 用户强制实施基于位置的条件访问策略。
+针对 B2B 来宾用户的[客户端应用条件](/active-directory/conditional-access/concept-conditional-access-conditions#client-apps)的行为与针对其他类型用户的客户端应用条件的行为是一样的。 例如，你可以阻止来宾用户使用旧版身份验证协议。
 
-#### <a name="risk-based-conditional-access-for-b2b"></a>针对 B2B 的基于风险的条件访问
+### <a name="conditional-access-session-controls"></a>条件访问会话控制
 
-目前是在 B2B 用户的本组织中进行风险评估，因此不能对 B2B 用户应用基于风险的登录策略。
+针对 B2B 来宾用户的[会话控制](/active-directory/conditional-access/concept-conditional-access-session)的行为与针对其他类型用户的会话控制的行为是一样的。
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅以下有关 Azure AD B2B 协作的文章：
+有关详细信息，请参阅以下有关 Azure AD B2B 协作的文章：
 
-* [什么是 Azure AD B2B 协作？](what-is-b2b.md)
-* [外部标识定价](external-identities-pricing.md)
-* [Azure Active Directory B2B 协作常见问题 (FAQ)](faq.md)
+- [什么是 Azure AD B2B 协作？](/active-directory/external-identities/what-is-b2b)
+- [外部标识定价](https://www.azure.cn/pricing/details/active-directory/)
+- [常见问题 (FAQ)](/active-directory/external-identities/faq)
 

@@ -1,14 +1,14 @@
 ---
 title: 保护 Azure Functions
 description: 了解如何使 Azure 中运行的函数代码更安全，使其免遭常见攻击的威胁。
-ms.date: 11/18/2020
+ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: d10fb07e74e8832954307df3f4f3b9b1e8c47671
-ms.sourcegitcommit: b072689d006cbf9795612acf68e2c4fee0eccfbc
+ms.openlocfilehash: 5c9f65fca9f61e5cd3175f346c0c9e12cd6c9349
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "95970740"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697811"
 ---
 # <a name="securing-azure-functions"></a>保护 Azure Functions
 
@@ -102,6 +102,8 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 
 [!INCLUDE [app-service-managed-identities](../../includes/app-service-managed-identities.md)]
 
+托管标识可用于替代来自某些触发器和绑定的连接的机密。 请参阅[基于标识的连接](#identity-based-connections)。
+
 有关详细信息，请参阅[如何使用应用服务和 Azure Functions 的托管标识](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json)。
 
 #### <a name="restrict-cors-access"></a>限制 CORS 访问
@@ -131,6 +133,14 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 虽然应用程序设置足以满足大多数功能，但你可能希望跨多个服务共享相同的机密。 在这种情况下，机密的冗余存储会导致更多潜在的漏洞。 一种更安全的方法是使用中央机密存储服务，并使用对该服务的引用而不是对机密本身的引用。      
 
 [Azure Key Vault](../key-vault/general/overview.md) 是一项服务，可以提供集中式机密管理，并且可以完全控制访问策略和审核历史记录。 你可在应用程序设置中使用 Key Vault 引用来代替连接字符串或密钥。 若要了解详细信息，请参阅[使用应用服务和 Azure Functions 的 Key Vault 引用](../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json)。
+
+### <a name="identity-based-connections"></a>基于标识的连接
+
+标识可用于代替机密来连接到某些资源。 这种方法的优点是不需要管理机密，而是提供更精细的访问控制和审核。 
+
+编写用于创建与[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)的连接的代码时，可以选择使用标识而不是机密或连接字符串。 每个服务的文档中都介绍了这两种连接方法的详细信息。
+
+某些 Azure Functions 触发器和绑定扩展可以使用基于标识的连接进行配置。 现在，这包括 [Azure Blob](./functions-bindings-storage-blob.md) 和 [Azure 队列](./functions-bindings-storage-queue.md)扩展。 有关如何配置这些扩展以使用标识的详细信息，请参阅[如何在 Azure Functions 中使用基于标识的连接](./functions-reference.md#configure-an-identity-based-connection)。
 
 ### <a name="set-usage-quotas"></a>设置使用配额
 

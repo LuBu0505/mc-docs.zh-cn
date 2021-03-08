@@ -1,5 +1,6 @@
 ---
-title: 支持的帐户类型 - Microsoft 标识平台 | Azure
+title: 支持的帐户类型 | Azure
+titleSuffix: Microsoft identity platform
 description: 有关受众的概念文档以及应用程序中受支持的帐户类型
 services: active-directory
 author: jmprieur
@@ -8,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/06/2021
+ms.date: 02/24/2021
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 3cca51b6526b1813bfb4a60ec194184bcdfed62b
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 4011e1336d94bca7bbab32c4fc1701f36fea8a98
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022506"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697225"
 ---
 # <a name="supported-account-types"></a>支持的帐户类型
 
@@ -53,4 +54,3 @@ ms.locfileid: "98022506"
 
 - 了解有关 [Azure Active Directory 中的租赁](./single-and-multi-tenant-apps.md)的详细信息。
 - 了解有关[国家/地区云](./authentication-national-cloud.md)的详细信息。
-

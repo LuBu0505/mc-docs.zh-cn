@@ -10,13 +10,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein,vanto
 origin.date: 01/14/2021
-ms.date: 02/01/2021
-ms.openlocfilehash: 4b35d28988e61b12e727ba4e68d8cf097dec17bb
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 02/22/2021
+ms.openlocfilehash: fc2db490398ee09db24137425cc7f09887f456d2
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99058880"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697611"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>排查 Azure SQL 数据库和 Azure SQL 托管实例的连接问题和其他问题
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 | ---:| ---:|:--- |
 | 4060 |16 |无法打开该登录请求的数据库“%.&#x2a;ls”。 登录失败。 有关详细信息，请参阅[错误 4000 到 4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999)|
 | 40197 |17 |该服务在处理你的请求时遇到错误。 请重试。 错误代码 %d。<br/><br/>当服务由于软件或硬件升级、硬件故障或任何其他故障转移问题而关闭时，将收到此错误。 错误 40197 的消息中嵌入的错误代码 (%d) 提供有关所发生的故障或故障转移类型的其他信息。 错误 40197 的消息中嵌入的错误代码的一些示例有 40020、40143、40166 和 40540。<br/><br/>重新连接会将你自动连接到数据库的正常运行副本。 应用程序必须捕获错误 40197、记录该消息中嵌入的错误代码 (%d) 以供进行故障排除，然后尝试重新连接到 SQL 数据库，直到资源可用且再次建立连接为止。 有关详细信息，请参阅[暂时性错误](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults)。|
-| 40501 |20 个 |服务当前正忙。 请在 10 秒钟后重试请求。 事件 ID：%ls。 代码：%d。 有关详细信息，请参阅： <br/>&bull; &nbsp;[逻辑 SQL Server 资源限制](resource-limits-logical-server.md)<br/>&bull; &nbsp;[单一数据库的基于 DTU 的限制](service-tiers-dtu.md)<br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[单一数据库的基于 vCore 的限制](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Azure SQL 托管实例资源限制](../managed-instance/resource-limits.md)。|
+| 40501 |20 |服务当前正忙。 请在 10 秒钟后重试请求。 事件 ID：%ls。 代码：%d。 有关详细信息，请参阅： <br/>&bull; &nbsp;[逻辑 SQL Server 资源限制](resource-limits-logical-server.md)<br/>&bull; &nbsp;[单一数据库的基于 DTU 的限制](service-tiers-dtu.md)<br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[单一数据库的基于 vCore 的限制](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Azure SQL 托管实例资源限制](../managed-instance/resource-limits.md)。|
 | 40613 |17 |数据库“%.&#x2a;ls”（在服务器“%.&#x2a;ls”上）当前不可用。 请稍后重试连接。 如果问题仍然存在，请与客户支持人员联系，并向其提供“%.&#x2a;ls”的会话跟踪 ID。<br/><br/> 如果已建立到数据库的现有专用管理员连接 (DAC)，则可能发生此错误。 有关详细信息，请参阅[暂时性错误](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults)。|
 | 49918 |16 |无法处理请求。 没有足够的资源来处理请求。<br/><br/>服务当前正忙。 请稍后重试请求。 有关详细信息，请参阅： <br/>&bull; &nbsp;[逻辑 SQL Server 资源限制](resource-limits-logical-server.md)<br/>&bull; &nbsp;[单一数据库的基于 DTU 的限制](service-tiers-dtu.md)<br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[单一数据库的基于 vCore 的限制](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Azure SQL 托管实例资源限制](../managed-instance/resource-limits.md)。 |
 | 49919 |16 |无法处理创建或更新请求。 订阅“%ld”有太多创建或更新操作正在进行。<br/><br/>服务正忙于为订阅或服务器处理多个创建或更新请求。 为了优化资源，当前阻止了请求。 请查询 [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) 以了解挂起的操作。 请等到挂起的创建或更新请求完成后，或删除其中一个挂起的请求，再重试请求。 有关详细信息，请参阅： <br/>&bull; &nbsp;[逻辑 SQL Server 资源限制](resource-limits-logical-server.md)<br/>&bull; &nbsp;[单一数据库的基于 DTU 的限制](service-tiers-dtu.md)<br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[单一数据库的基于 vCore 的限制](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Azure SQL 托管实例资源限制](../managed-instance/resource-limits.md)。 |
@@ -170,6 +170,148 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 
 发生连接超时的原因是应用程序无法连接到服务器。 若要解决此问题，请尝试执行[解决常见连接问题的步骤](#steps-to-fix-common-connection-issues)部分所述的步骤（按所述顺序执行）。
 
+## <a name="resource-governance-errors"></a>资源调控错误
+
+### <a name="error-10928-resource-id-d"></a>错误 10928：资源 ID：%d
+
+``10928: Resource ID: %d. The %s limit for the database is %d and has been reached. See http://go.microsoft.com/fwlink/?LinkId=267637 for assistance. The Resource ID value in error message indicates the resource for which limit has been reached. For sessions, Resource ID = 2.``
+
+若要解决此问题，请尝试以下方法之一：
+
+- 检查是否存在长时间运行的查询。
+
+  > [!NOTE]
+  > 这是最简单的方法，但不一定能够解决问题。 有关对长期运行的查询或阻塞的查询进行故障排除的详细信息，请参阅[了解并解决 Azure SQL 数据库的阻塞问题](understand-resolve-blocking.md)。
+
+1. 运行以下 SQL 查询来检查 [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 视图，以确定是否存在任何阻塞的请求：
+
+   ```sql
+   SELECT * FROM sys.dm_exec_requests;
+   ```
+
+1. 使用 [sys.dm_exec_input_buffer](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) 动态管理功能和有问题的查询的 session_id 为头阻塞程序确定“输入缓冲区”，例如：
+
+   ```sql 
+   SELECT * FROM sys.dm_exec_input_buffer (100,0);
+   ```
+
+1. 优化最前面的阻塞查询。
+
+如果即使解决了阻塞查询和长时间运行的查询，数据库也仍持续达到其极限，请考虑升级到具有更多资源的[版本](https://azure.cn/pricing/details/sql-database/)。
+
+有关数据库限制的详细信息，请参阅[服务器的 SQL 数据库资源限制](./resource-limits-logical-server.md)。
+
+### <a name="error-10929-resource-id-1"></a>错误 10929：资源 ID：1
+
+``10929: Resource ID: 1. The %s minimum guarantee is %d, maximum limit is %d and the current usage for the database is %d. However, the server is currently too busy to support requests greater than %d for this database. See http://go.microsoft.com/fwlink/?LinkId=267637 for assistance. Otherwise, please try again later.``
+
+### <a name="error-40501-the-service-is-currently-busy"></a>错误 40501：服务当前繁忙
+
+``40501: The service is currently busy. Retry the request after 10 seconds. Incident ID: %ls. Code: %d.``
+
+这是一个引擎限制错误，表示超过了资源限制。
+
+有关资源限制的更多信息，请参阅[逻辑 SQL 服务器资源限制](./resource-limits-logical-server.md)。
+
+### <a name="error-40544-the-database-has-reached-its-size-quota"></a>错误 40544：数据库已达到其大小配额
+
+``40544: The database has reached its size quota. Partition or delete data, drop indexes, or consult the documentation for possible resolutions. Incident ID: <ID>. Code: <code>.``
+
+当数据库达到其大小配额时会发生此错误。
+
+以下步骤可帮助你解决此问题，或提供更多的选项：
+
+1. 使用 Azure 门户中的仪表板检查数据库的当前大小。
+
+   > [!NOTE]
+   > 若要识别哪些表消耗了最多的空间，因此确定可能需要清理哪些表，请运行以下 SQL 查询：
+
+   ```sql
+   SELECT o.name,
+    SUM(p.row_count) AS 'Row Count',
+    SUM(p.reserved_page_count) * 8.0 / 1024 AS 'Table Size (MB)'
+   FROM sys.objects o
+   JOIN sys.dm_db_partition_stats p on p.object_id = o.object_id
+   GROUP BY o.name
+   ORDER BY [Table Size (MB)] DESC;
+   ```
+
+2. 如果当前大小未超过所用版本支持的最大大小，你可以使用 ALTER DATABASE 来增大 MAXSIZE 设置。
+3. 如果数据库已超过所用版本支持的最大大小，请尝试以下一个或多个步骤：
+
+   - 执行一般的数据库清理活动。 例如，使用截断/删除操作清理不需要的数据，或者使用 SQL Server Integration Services (SSIS) 或批量复制程序 (bcp) 实用工具移出数据。
+   - 请将数据分区或删除、删除索引或查阅文档以找到可能的解决方案。
+   - 有关数据库缩放的信息，请参阅[缩放单一数据库资源](./single-database-scale.md)和[缩放弹性池资源](./elastic-pool-scale.md)。
+
+### <a name="error-40549-session-is-terminated-because-you-have-a-long-running-transaction"></a>错误 40549：存在长时间运行的事务，因此已终止会话
+
+``40549: Session is terminated because you have a long-running transaction. Try shortening your transaction.``
+
+如果反复出现此错误，请尝试执行以下步骤来解决问题：
+
+1. 检查 sys.dm_exec_requests 视图，以确定是否有任何打开的会话对 total_elapsed_time 列使用了较大的值。 运行以下 SQL 脚本来执行此项检查：
+
+   ```sql
+   SELECT * FROM sys.dm_exec_requests;
+   ```
+
+2. 使用 [sys.dm_exec_input_buffer](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) 动态管理功能和有问题的查询的 session_id 为头阻塞程序确定“输入缓冲区”，例如：
+
+   ```sql 
+   SELECT * FROM sys.dm_exec_input_buffer (100,0);
+   ```
+
+3. 优化该查询。
+
+    > [!Note]
+    > 有关故障排除 Azure SQL 数据库中阻塞的详细信息，请参阅[了解并解决 Azure SQL 数据库阻塞问题](understand-resolve-blocking.md)。
+
+还应考虑批处理查询。 有关批处理的信息，请参阅[如何使用批处理来改善 SQL 数据库应用程序的性能](../performance-improve-use-batching.md)。
+
+### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>错误 40551：由于过度使用 TEMPDB，已终止会话
+
+``40551: The session has been terminated because of excessive TEMPDB usage. Try modifying your query to reduce the temporary table space usage.``
+
+若要解决此问题，请执行以下步骤：
+
+1. 更改查询以减少临时表空间的用量。
+2. 删除不再需要的临时对象。
+3. 截断表，或删除未使用的表。
+
+### <a name="error-40552-the-session-has-been-terminated-because-of-excessive-transaction-log-space-usage"></a>错误 40552：由于过度使用事务日志空间，已终止会话
+
+``40552: The session has been terminated because of excessive transaction log space usage. Try modifying fewer rows in a single transaction.``
+
+若要解决此问题，请尝试执行以下方法：
+
+- 此问题可能是插入、更新或删除操作造成的。
+通过立即实施批处理或拆分为多个较小的事务，来尝试减少操作的行数。
+- 此问题可能是索引重建操作造成的。 若要解决此问题，请确保表中受影响的行数 * (所更新字段的平均字节大小 + 80) < 2 GB。
+
+  > [!NOTE]
+  > 对于索引重建，所更新字段的平均大小应替换为平均索引大小。
+
+### <a name="error-40553-the-session-has-been-terminated-because-of-excessive-memory-usage"></a>错误 40553：由于过度使用 TEMPDB，已终止会话
+
+``40553 : The session has been terminated because of excessive memory usage. Try modifying your query to process fewer rows.``
+
+若要解决此问题，请尝试优化查询。
+
+有关详细的故障排除过程，请参阅[我的查询是否在云中正常运行？](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud)。
+
+### <a name="table-of-additional-resource-governance-error-messages"></a>其他资源管理错误消息表
+
+| 错误代码 | 严重性 | 说明 |
+| ---:| ---:|:--- |
+| 10928 |20 |资源 ID：%d。 数据库的 %s 限制是 %d 且已达到该限制。 有关详细信息，请参阅[单一数据库和共用数据库的 SQL 数据库资源限制](resource-limits-logical-server.md)。<br/><br/>资源 ID 指示已达到限制的资源。 对于工作线程，资源 ID = 1。 对于会话，资源 ID = 2。<br/><br/>有关此错误以及如何解决此错误的详细信息，请参阅： <br/>&bull; &nbsp;[逻辑 SQL Server 资源限制](resource-limits-logical-server.md)<br/>&bull; &nbsp;[单一数据库的基于 DTU 的限制](service-tiers-dtu.md)<br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[单一数据库的基于 vCore 的限制](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Azure SQL 托管实例资源限制](../managed-instance/resource-limits.md)。 |
+| 10929 |20 |资源 ID：%d。 %s 最小保证为 %d，最大限制为 %d，数据库的当前使用率为 %d。 但是，服务器当前太忙，无法支持针对该数据库的数目大于 %d 的请求。 资源 ID 指示已达到限制的资源。 对于工作线程，资源 ID = 1。 对于会话，资源 ID = 2。 有关详细信息，请参阅： <br/>&bull; &nbsp;[逻辑 SQL Server 资源限制](resource-limits-logical-server.md)<br/>&bull; &nbsp;[单一数据库的基于 DTU 的限制](service-tiers-dtu.md)<br/>&bull; &nbsp;[弹性池的基于 DTU 的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[单一数据库的基于 vCore 的限制](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Azure SQL 托管实例资源限制](../managed-instance/resource-limits.md)。 <br/>否则，请稍后重试。 |
+| 40544 |20 |数据库已达到大小配额。 请将数据分区或删除、删除索引或查阅文档以找到可能的解决方案。 有关数据库缩放的信息，请参阅[缩放单一数据库资源](single-database-scale.md)和[缩放弹性池资源](elastic-pool-scale.md)。|
+| 40549 |16 |由于您有长时间运行的事务，已终止会话。 请尝试缩短您的事务的运行时间。 有关批处理的信息，请参阅[如何使用批处理来改善 SQL 数据库应用程序的性能](../performance-improve-use-batching.md)。|
+| 40550 |16 |由于会话获取的锁过多，已终止该会话。 请尝试在单个事务中读取或修改更少的行。 有关批处理的信息，请参阅[如何使用批处理来改善 SQL 数据库应用程序的性能](../performance-improve-use-batching.md)。|
+| 40551 |16 |由于过度使用 `TEMPDB`，已终止该会话。 请尝试修改您的查询以减少使用临时表空间。<br/><br/>如果在使用临时对象，则通过在会话不再需要临时对象后删除这些临时对象，可以节省 `TEMPDB` 数据库中的空间。 若要详细了解如何在 SQL 数据库中使用 tempdb，请参阅 [SQL 数据库中的 Tempdb 数据库](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)。|
+| 40552 |16 |由于过度使用事务日志空间，已终止该会话。 请尝试在单个事务中修改更少的行。 有关批处理的信息，请参阅[如何使用批处理来改善 SQL 数据库应用程序的性能](../performance-improve-use-batching.md)。<br/><br/>如果在使用 `bcp.exe` 实用程序或 `System.Data.SqlClient.SqlBulkCopy` 类执行大容量插入，则可尝试使用 `-b batchsize` 或 `BatchSize` 选项来限制在各事务中复制到服务器的行数。 如果正在使用 `ALTER INDEX` 语句重新生成索引，请尝试使用 `REBUILD WITH ONLINE = ON` 选项。 有关 vCore 购买模型的事务日志大小的信息，请参阅： <br/>&bull; &nbsp;[单一数据库的基于 vCore 的限制](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[弹性池的基于 vCore 的限制](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Azure SQL 托管实例资源限制](../managed-instance/resource-limits.md)。|
+| 40553 |16 |由于过度使用内存，已终止该会话。 请尝试修改您的查询以处理更少的行。<br/><br/>在 Transact-SQL 代码中减少 `ORDER BY` 和 `GROUP BY` 操作的数目可以降低查询的内存需求。 有关数据库缩放的信息，请参阅[缩放单一数据库资源](single-database-scale.md)和[缩放弹性池资源](elastic-pool-scale.md)。|
+
 ## <a name="elastic-pool-errors"></a>弹性池错误
 
 以下错误与创建和使用弹性池有关：
@@ -204,7 +346,7 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 若要解决此问题，请执行以下步骤：
 
 1. 在 SSMS 的登录屏幕上选择“选项”，然后选择“连接属性”。 
-2. 在“连接到数据库”字段中，输入用户的默认数据库名称作为默认登录数据库，然后选择“连接”。 
+2. 在“连接到数据库”字段中，输入用户的默认数据库名称作为默认登录数据库，然后选择“连接” 。
 
    ![连接属性](./media/troubleshoot-common-errors-issues/cannot-open-database-master.png)
 

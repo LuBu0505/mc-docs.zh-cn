@@ -3,21 +3,21 @@ title: Azure 云服务部署常见问题解答 | Microsoft Docs
 description: 本文列出了有关 Azure 云服务部署的常见问题解答。
 ms.topic: article
 ms.service: cloud-services
-ms.date: 01/25/2021
+ms.date: 02/26/2021
 ms.author: v-junlch
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 2983d3bf0c36be021de704bb25976e1241cc17dd
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: fdb31ffc3a133762f8e556096e832727768c286f
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99058859"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697574"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Azure 云服务（经典）的部署问题：常见问题 (FAQ)
 
-本文包含 [Microsoft Azure 云服务](/cloud-services/)的常见部署问题。 还可以参阅[云服务 VM 大小页面](./cloud-services-sizes-specs.md)，了解大小信息。
+可在本文查看 [Azure 云服务](https://www.azure.cn/home/features/cloud-services)部署常见问题的解答。 还可以参阅[云服务 VM 大小页面](cloud-services-sizes-specs.md)，了解大小信息。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -48,7 +48,7 @@ ms.locfileid: "99058859"
 ## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>为什么我的订阅或服务的限制/配额/约束有时会导致部署云服务失败？
 如果需要分配的资源超过服务所在区域/数据中心级别允许的默认或最大配额，则云服务部署可能会失败。 有关详细信息，请参阅[云服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cloud-services-limits)。
 
-还可以在门户上跟踪订阅的当前使用情况/配额：Azure 门户 => 订阅 => \<appropriate subscription>  =>“使用情况 + 配额”。
+还可在门户跟踪订阅的当前使用情况/配额：Azure 门户 =>“订阅”=> \<appropriate subscription>  =>“使用情况 + 配额”。
 
 
 ## <a name="how-can-i-change-the-size-of-a-deployed-cloud-service-vm-without-redeploying-it"></a>如何在不重新部署已部署云服务虚拟机的情况下更改其大小？
@@ -73,4 +73,3 @@ ms.locfileid: "99058859"
 在经典门户中，包直接上传到管理 API 层，然后 API 层暂时将其放入内部存储帐户。  API 层并不是文件上传服务，因此这个过程会导致性能和可伸缩性问题。  在 Azure 门户中（资源管理器部署模型），我们越过了先上传到 API 层这一临时步骤，因此实现了更快、更可靠的部署。
 
 所需成本很少，并且可以在所有部署中重复使用同一存储帐户。 可以使用[存储成本计算器](https://www.azure.cn/pricing/calculator/#storage1)确定上传服务包 (CSPKG)、下载 CSPKG 以及之后删除 CSPKG 的成本。
-

@@ -9,22 +9,22 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/06/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 4ce3aee2241b298048c1f06f53bb116008d1d84d
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 5b4186efc7d5534828f8fabf4167b1e6e8cb8834
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021756"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697890"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>使用 MSAL.NET 通过社交标识将用户登录
 
 可以在 [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/overview.md) 中使用 MSAL.NET 通过社交标识将用户登录。 Azure AD B2C 是围绕策略这一概念构建的。 在 MSAL.NET 中，指定策略相当于提供颁发机构。
 
-- 实例化公共客户端应用程序时，需要将策略指定为颁发机构的一部分。
+- 实例公共客户端应用程序时，请将策略指定为机构/授权的一部分。
 - 需要应用策略时，请调用一个接受 `authority` 参数的 `AcquireTokenInteractive` 的重写。
 
 本文适用于 MSAL.NET 3.x。 有关 MSAL.NET 2.x 的信息，请在 GitHub 上参阅 MSAL.NET Wiki 中的[有关将 Azure AD B2C 与 MSAL 2.x 配合使用的细节](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-Specifics-MSAL-2.x)。
@@ -67,31 +67,27 @@ application = PublicClientApplicationBuilder.Create(ClientID)
 为公共客户端应用程序中受 Azure AD B2C 保护的 API 获取令牌时，需要将重写与颁发机构配合使用：
 
 ```csharp
-IEnumerable<IAccount> accounts = await application.GetAccountsAsync();
-AuthenticationResult ar = await application.AcquireTokenInteractive(scopes)
-                                           .WithAccount(GetAccountByPolicy(accounts, policy))
-                                           .WithParentActivityOrWindow(ParentActivityOrWindow)
-                                           .ExecuteAsync();
+AuthenticationResult authResult = null;
+IEnumerable<IAccount> accounts = await application.GetAccountsAsync(policy);
+IAccount account = accounts.FirstOrDefault();
+try
+{
+    authResult = await application.AcquireTokenSilent(scopes, account)
+                      .ExecuteAsync();
+}
+catch (MsalUiRequiredException ex)
+{
+    authResult = await application.AcquireTokenInteractive(scopes)
+                        .WithAccount(account)
+                        .WithParentActivityOrWindow(ParentActivityOrWindow)
+                        .ExecuteAsync();
+}  
 ```
 
 在前面的代码片段中：
 
 - `policy` 是一个字符串，其中包含 Azure AD B2C 用户流或自定义策略的名称（例如 `PolicySignUpSignIn`）。
 - `ParentActivityOrWindow` 对于 Android（活动）是必需的，对于支持父 UI（如 Microsoft Windows 中的窗口和 iOS 中的 UIViewController）的其他平台则是可选的。 有关 UI 对话框的详细信息，请参阅 MSAL Wiki 上的 [WithParentActivityOrWindow](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow)。
-- `GetAccountByPolicy(IEnumerable<IAccount>, string)`：用于在帐户中查找给定策略的方法。 例如：
-
-  ```csharp
-  private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
-  {
-      foreach (var account in accounts)
-      {
-          string userIdentifier = account.HomeAccountId.ObjectId.Split('.')[0];
-          if (userIdentifier.EndsWith(policy.ToLower()))
-              return account;
-      }
-      return null;
-  }
-  ```
 
 目前通过调用 `AcquireTokenInteractive` 来应用用户流或自定义策略（例如，让用户编辑其配置文件或重置其密码）。 对于这两个策略，不使用返回的令牌/身份验证结果。
 
@@ -104,16 +100,16 @@ AuthenticationResult ar = await application.AcquireTokenInteractive(scopes)
 ```csharp
 private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
 {
-    IEnumerable<IAccount> accounts = await app.GetAccountsAsync();
+    IEnumerable<IAccount> accounts = await application.GetAccountsAsync(PolicyEditProfile);
+    IAccount account = accounts.FirstOrDefault();
     try
     {
-        var authResult = await app.AcquireToken(scopes:App.ApiScopes)
-                            .WithAccount(GetUserByPolicy(accounts, App.PolicyEditProfile)),
+        var authResult = await application.AcquireTokenInteractive(scopes)
                             .WithPrompt(Prompt.NoPrompt),
-                            .WithB2CAuthority(App.AuthorityEditProfile)
+                            .WithAccount(account)
+                            .WithB2CAuthority(AuthorityEditProfile)
                             .ExecuteAsync();
-        DisplayBasicTokenInfo(authResult);
-    }
+     }
     catch
     {
     }
@@ -134,7 +130,7 @@ private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
 
 ### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 配置 ROPC 流
 
-在 Azure AD B2C 租户中，新建一个用户流并选择“使用 ROPC 登录”，以便为该用户流启用 ROPC。 有关详细信息，请参阅[配置资源所有者密码凭据流](../../active-directory-b2c/configure-ropc.md)。
+在 Azure AD B2C 租户中，新建一个用户流并选择“使用 ROPC 登录”，以便为该用户流启用 ROPC。 有关详细信息，请参阅[配置资源所有者密码凭据流](../../active-directory-b2c/add-ropc-policy.md)。
 
 `IPublicClientApplication` 包含 `AcquireTokenByUsernamePassword` 方法：
 
@@ -176,7 +172,7 @@ MSAL.NET 支持[令牌缓存](https://docs.microsoft.com/dotnet/api/microsoft.id
 
 建议的解决方法是使用之前介绍的[按策略缓存](#acquire-a-token-to-apply-a-policy)。
 
-或者，如果要在 Azure AD B2C 中使用自定义策略，也可使用 `tid` 声明。 自定义策略可通过使用声明转换将其他声明返回到应用程序。
+或者，如果要使用 Azure AD B2C 中的[自定义策略](../../active-directory-b2c/custom-policy-get-started.md)，可使用 `tid` 声明。 自定义策略可通过使用声明转换将其他声明返回到应用程序。
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>“在令牌响应中缺失”的缓解措施
 
@@ -191,4 +187,3 @@ MSAL.NET 支持[令牌缓存](https://docs.microsoft.com/dotnet/api/microsoft.id
 | 示例 | 平台 | 说明|
 |------ | -------- | -----------|
 |[active-directory-b2c-xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS、Xamarin Android、UWP | 一个 Xamarin Forms 应用，它使用 MSAL.NET 通过 Azure AD B2C 对用户进行身份验证，然后使用返回的令牌访问 Web API。|
-

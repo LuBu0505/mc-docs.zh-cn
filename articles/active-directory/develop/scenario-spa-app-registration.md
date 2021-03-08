@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/14/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: 529bd5d83592ab97014be656f089e019d2e13e51
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 693ba894859deee0827a2d641b870b030e320d1b
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195012"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696664"
 ---
 # <a name="single-page-application-app-registration"></a>单页应用程序：应用注册
 
@@ -27,9 +27,9 @@ ms.locfileid: "98195012"
 
 对于基于 MSAL 1.0 和 2.0 的应用程序，请先完成以下步骤以创建初始应用注册。
 
-1. 登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
-1. 搜索并选择“Azure Active Directory”。
+1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 1. 输入应用程序的 **名称**。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 1. 选择应用程序支持的帐户类型。 请勿输入“重定向 URI”。 有关不同帐户类型的说明，请参阅[注册应用程序](quickstart-register-app.md)。
@@ -47,7 +47,7 @@ ms.locfileid: "98195012"
 1. 在 Azure 门户中，选择先前在[创建应用注册](#create-the-app-registration)中创建的应用注册。
 1. 在“管理”下，选择“身份验证” > “添加平台”  。
 1. 在“Web 应用程序”下，选择“单页应用程序”磁贴。
-1. 在“重定向 URI”下，输入 [重定向 URI](reply-url.md)。 请勿选中“隐式授权”下的任一复选框。
+1. 在“重定向 URI”下，输入 [重定向 URI](reply-url.md)。 请勿选中“隐式授权和混合流”下的任一复选框 。
 1. 选择“配置”以添加重定向 URI。
 
 现在，你已经完成了单页应用程序 (SPA) 的注册，并配置了重定向 URI，客户端将被重定向到该 URI，并且安全令牌也将发送到该 URI。 通过使用“添加平台”窗格中的“单页应用程序”磁贴来配置重定向 URI，可以将应用程序注册配置为支持使用 PKCE 和 CORS 的授权代码流。
@@ -60,7 +60,7 @@ ms.locfileid: "98195012"
 1. 在“管理”下，选择“身份验证” > “添加平台”  。
 1. 在“Web 应用程序”下，选择“单页应用程序”磁贴。
 1. 在“重定向 URI”下，输入 [重定向 URI](reply-url.md)。
-1. 启用“隐式流”：
+1. 启用“隐式授权和混合流”：
     - 如果你的应用程序登录了用户，请选择“ID 令牌”。
     - 如果你的应用程序也需调用受保护的 Web API，请选择“访问令牌”。 有关这些令牌类型的更多信息，请参阅 [ID 令牌](id-tokens.md)和[访问令牌](access-tokens.md)。
 1. 选择“配置”以添加重定向 URI。
@@ -80,4 +80,3 @@ ms.locfileid: "98195012"
 ## <a name="next-steps"></a>后续步骤
 
 配置应用代码，以使用在先前步骤中创建的应用注册：[应用的代码配置](scenario-spa-app-configuration.md)。
-

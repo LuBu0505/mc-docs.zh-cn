@@ -5,16 +5,16 @@ description: 了解如何更新 Azure Stack Hub SQL 资源提供程序。
 author: WenJason
 ms.topic: article
 origin.date: 8/19/2020
-ms.date: 01/11/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: c2f6680a1f3ea9110279b3f607efa2193f0bf2b1
-ms.sourcegitcommit: 3f54ab515b784c9973eb00a5c9b4afbf28a930a9
+ms.openlocfilehash: 6dc8fbc4f41e368678edd62586f12d06ce026f64
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894355"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697111"
 ---
 # <a name="update-the-sql-resource-provider"></a>更新 SQL 资源提供程序
 
@@ -48,6 +48,9 @@ UpdateSQLProvider.ps1 脚本在创建新的 VM 后，会从旧的资源提供程
 * 数据库信息
 * 宿主服务器信息
 * 必要的 DNS 记录
+
+> [!IMPORTANT]
+> 强烈建议在运行部署或更新脚本之前，使用 Clear-AzureRmContext -Scope CurrentUser 和 Clear-AzureRmContext -Scope Process 清除缓存 。
 
 ## <a name="update-script-parameters"></a>更新脚本参数
 
@@ -105,19 +108,19 @@ $tempDir = 'C:\TEMP\SQLRP'
 
 # The service admin account (this can be Azure AD or AD FS).
 $serviceAdmin = "admin@mydomain.partner.onmschina.cn"
-$AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$AdminPass = ConvertTo-SecureString 'P@ssw0rd1' -AsPlainText -Force
 $AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
 
 # Set the credentials for the new resource provider VM.
-$vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$vmLocalAdminPass = ConvertTo-SecureString 'P@ssw0rd1' -AsPlainText -Force
 $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("sqlrpadmin", $vmLocalAdminPass)
 
 # Add the cloudadmin credential required for privileged endpoint access.
-$CloudAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$CloudAdminPass = ConvertTo-SecureString 'P@ssw0rd1' -AsPlainText -Force
 $CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domain\cloudadmin", $CloudAdminPass)
 
 # Change the following as appropriate.
-$PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$PfxPass = ConvertTo-SecureString 'P@ssw0rd1' -AsPlainText -Force
 
 # For version 1.1.47.0 or later, the PowerShell modules used by the RP deployment are placed in C:\Program Files\SqlMySqlPsh
 # The deployment script adds this path to the system $env:PSModulePath to ensure correct modules are used.

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/07/2020
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2d59eb6e48a50b61341d345892d5685cb24d8a42
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: eaffef32d408eb952264e5baf9279faf30a40878
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97003774"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697983"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份验证和授权错误代码
 
@@ -95,6 +95,7 @@ ms.locfileid: "97003774"
 | AADSTS50000 | TokenIssuanceError - 登录服务出现问题。 请[开具支持票证](https://support.azure.cn/en-us/support/support-azure/)以解决此问题。 |
 | AADSTS50001 | InvalidResource - 资源已禁用或不存在。 请检查应用代码，确保为尝试访问的资源指定了确切的资源 URL。  |
 | AADSTS50002 | NotAllowedTenant - 由于租户中的代理访问权限受限，登录失败。 如果这是你自己的租户策略，可以更改受限的租户设置来解决此问题。 |
+| AADSTS500021 | 拒绝访问“{tenant}”租户。 AADSTS500021 指示已配置租户限制功能，并且用户正尝试访问标头 `Restrict-Access-To-Tenant` 指定的允许租户列表中没有的租户。
 | AADSTS50003 | MissingSigningKey - 由于缺少签名密钥或证书，登录失败。 这可能是因为应用中未配置任何签名密钥。 如果仍然出现问题，请联系应用所有者或应用管理员。 |
 | AADSTS50005 | DevicePolicyError - 用户尝试从条件访问策略目前不支持的平台登录到设备。 |
 | AADSTS50006 | InvalidSignature - 由于签名无效，签名验证失败。 |
@@ -326,4 +327,3 @@ ms.locfileid: "97003774"
 ## <a name="next-steps"></a>后续步骤
 
 * 遇到了问题或者找不到所需的内容？ 请创建 GitHub 问题，或查看[面向开发人员的支持和帮助选项](./developer-support-help-options.md)来了解其他可以获得帮助和支持的方法。
-

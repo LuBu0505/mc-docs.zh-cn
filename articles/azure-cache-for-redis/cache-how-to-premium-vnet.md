@@ -1,32 +1,27 @@
 ---
 title: 配置虚拟网络 - 高级层 Azure Cache for Redis 实例
-description: 了解如何为高级层 Azure Cache for Redis 实例创建和管理虚拟网络支持。
+description: 了解如何为高级层 Azure Cache for Redis 实例创建和管理虚拟网络支持
 author: yegu-ms
 ms.author: v-junlch
 ms.service: cache
-ms.custom: devx-track-csharp
 ms.topic: conceptual
-ms.date: 12/28/2020
-ms.openlocfilehash: 8af00125384fc0f3d10b7bfc553573987b8619b0
-ms.sourcegitcommit: a37f80e7abcf3e42859d6ff73abf566efed783da
+ms.date: 02/18/2021
+ms.openlocfilehash: 6cee3cd2f92e67caebe95cc7a83078704c66d605
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829386"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697508"
 ---
-# <a name="configure-virtual-network-support-for-a-premium-tier-azure-cache-for-redis-instance"></a>如何为高级层 Azure Cache for Redis 实例配置虚拟网络支持
+# <a name="configure-virtual-network-support-for-a-premium-azure-cache-for-redis-instance"></a>如何为高级 Azure Cache for Redis 实例配置虚拟网络支持
 
-Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能的选择更加灵活。 高级层功能包括群集、持久性和虚拟网络支持。 虚拟网络是云中的专用网络。 为 Azure Cache for Redis 实例配置虚拟网络后，该实例不可公开寻址，而只能从虚拟网络中的虚拟机和应用程序进行访问。 本文说明如何为高级层 Azure Cache for Redis 实例配置虚拟网络支持。
+除了子网、访问控制策略和其他用于进一步限制访问的功能，[Azure 虚拟网络](https://www.azure.cn/home/features/virtual-network/)部署还提供增强的安全性和隔离性。 为 Azure Cache for Redis 实例配置虚拟网络后，该实例不可公开寻址，而只能从虚拟网络中的虚拟机和应用程序进行访问。 本文说明如何为高级层 Azure Cache for Redis 实例配置虚拟网络支持。
 
 > [!NOTE]
 > Azure Cache for Redis 同时支持经典部署模型和 Azure 资源管理器虚拟网络。
 > 
 
-## <a name="why-virtual-network"></a>为何采用虚拟网络？
-
-[Azure 虚拟网络](https://www.azure.cn/home/features/virtual-network/)部署为 Azure Cache for Redis 实例提供增强的安全性和隔离性，并提供子网、访问控制策略以及其他用来进一步限制访问的功能。
-
-## <a name="virtual-network-support"></a>虚拟网络支持
+## <a name="set-up-virtual-network-support"></a>设置虚拟网络支持
 
 在创建缓存期间，可在“新建 Azure Cache for Redis”窗格中配置虚拟网络支持。
 
@@ -178,7 +173,7 @@ public static ConnectionMultiplexer Connection
 * 与全球 Azure 存储终结点建立的出站网络连接。 包括位于 Azure Cache for Redis 实例所在区域中的终结点，以及位于其他 Azure 区域中的存储终结点。 Azure 存储终结点在以下 DNS 域之下解析：*table.core.chinacloudapi.cn*、*blob.core.chinacloudapi.cn*、*queue.core.chinacloudapi.cn* 和 *file.core.chinacloudapi.cn*。
 * 与 ocsp.digicert.com、crl4.digicert.com、ocsp.msocsp.com、mscrl.microsoft.com、crl3.digicert.com、cacerts.digicert.com、oneocsp.microsoft.com 和 crl.microsoft.com 的出站网络连接       。 需要此连接才能支持 TLS/SSL 功能。
 * 虚拟网络的 DNS 设置必须能够解析前面几点所提到的所有终结点和域。 确保已针对虚拟网络配置并维护有效的 DNS 基础结构即可符合这些 DNS 要求。
-* 与以下Azure Monitor 终结点（在下列 DNS 域下进行解析）的出站网络连接：shoebox2-black.shoebox2.metrics.nsatc.net、north-prod2.prod2.metrics.nsatc.net、azglobal-black.azglobal.metrics.nsatc.net、shoebox2-red.shoebox2.metrics.nsatc.net、east-prod2.prod2.metrics.nsatc.net 和 azglobal-red.azglobal.metrics.nsatc.net     。
+* 与以下 Azure Monitor 终结点（在下列 DNS 域下进行解析）的出站网络连接：shoebox2-black.shoebox2.metrics.nsatc.net、north-prod2.prod2.metrics.nsatc.net、azglobal-black.azglobal.metrics.nsatc.net、shoebox2-red.shoebox2.metrics.nsatc.net、east-prod2.prod2.metrics.nsatc.net、azglobal-red.azglobal.metrics.nsatc.net、shoebox3.prod.microsoftmetrics.com、shoebox3-red.prod.microsoftmetrics.com 和 shoebox3-black.prod.microsoftmetrics.com        。
 
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-virtual-network"></a>如何验证我的缓存在虚拟网络中是否可以正常使用？
 
@@ -281,4 +276,3 @@ Azure 会保留每个子网中的某些 IP 地址，不可以使用这些地址�
 [redis-cache-vnet-ip]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-ip.png
 
 [redis-cache-vnet-info]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-info.png
-

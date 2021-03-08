@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 26ef8b643cd6f7a3892a9603cad444cef3051ef0
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: f0dc4dbf7a1d989efc4f34305769fd8a2c9174b6
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195001"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696883"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体
 
@@ -37,7 +37,7 @@ ms.locfileid: "98195001"
 
 ### <a name="check-azure-ad-permissions"></a>检查 Azure AD 权限
 
-1. 选择“Azure Active Directory” 。
+1. 选择“Azure Active Directory”  。
 1. 记下你的角色。 如果角色为“用户”，则必须确保非管理员可以注册应用程序。
 
    ![找到你的角色。 如果你是用户，请确保非管理员可以注册应用](./media/howto-create-service-principal-portal/view-user-info.png)
@@ -75,8 +75,8 @@ ms.locfileid: "98195001"
 
 我们直接介绍如何创建标识。 如果遇到问题，请查看[所需权限](#permissions-required-for-registering-an-app)，确保帐户可以创建标识。
 
-1. 通过 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>登录到你的 Azure 帐户。
-1. 选择“Azure Active Directory” 。
+1. 通过 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>登录到 Azure 帐户。
+1. 选择“Azure Active Directory”  。
 1. 选择“应用注册” 。
 1. 选择“新注册”。
 1. 为应用程序命名。 选择支持的帐户类型，它决定了谁可以使用应用程序。 在“重定向 URI”下，选择“Web”作为要创建的应用程序类型。 输入访问令牌将发送到的 URI。 设置这些值后，选择“注册”。
@@ -115,9 +115,9 @@ ms.locfileid: "98195001"
 
 ## <a name="get-tenant-and-app-id-values-for-signing-in"></a>获取用于登录的租户和应用 ID 值
 
-以编程方式登录时，需要随身份验证请求和应用程序 ID 传递租户 ID。  还需要证书或身份验证密钥（如以下部分中所述）。 若要获取这些值，请使用以下步骤：
+以编程方式登录时，请随身份验证请求和应用程序 ID 传递租户 ID。  还需要证书或身份验证密钥（如以下部分中所述）。 若要获取这些值，请使用以下步骤：
 
-1. 选择“Azure Active Directory” 。
+1. 选择“Azure Active Directory”  。
 1. 从 Azure AD 中的“应用注册”，选择应用程序。
 1. 复制“目录(租户) ID”并将其存储在应用程序代码中。
 
@@ -153,7 +153,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 若要上传证书，请执行以下操作：
 
-1. 选择“Azure Active Directory” 。
+1. 选择“Azure Active Directory”  。
 1. 从 Azure AD 中的“应用注册”，选择应用程序。
 1. 选择“证书和机密”。
 1. 选择“上传证书”并选择证书（现有证书或导出的自签名证书）。
@@ -162,7 +162,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 1. 选择“添加”  。
 
-在门户中将证书注册到应用程序后，需要启用客户端应用程序代码才能使用该证书。
+在门户中将证书注册到应用程序后，请启用客户端应用程序代码以使用该证书。
 
 ### <a name="option-2-create-a-new-application-secret"></a>选项 2：创建新的应用程序机密
 
@@ -181,7 +181,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 ## <a name="configure-access-policies-on-resources"></a>在资源上配置访问策略
 请记住，可能需要对应用程序需要访问的资源配置附加权限。 例如，你还必须[更新密钥保管库的访问策略](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies)，以使应用程序能够访问密钥、机密或证书。
 
-1. 在 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>中，导航到密钥保管库并选择“访问策略”。
+1. 在 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>中，导航到密钥保管库并选择“访问策略”。
 1. 选择“添加访问策略”，然后选择要授予应用程序的密钥、机密和证书权限。  选择之前创建的服务主体。
 1. 选择“添加”以添加访问策略，然后选择“保存”以提交更改。
     ![添加访问策略](./media/howto-create-service-principal-portal/add-access-policy.png)
@@ -191,4 +191,3 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 * 若要了解如何指定安全策略，请参阅 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)。
 * 有关可对用户授予或拒绝的可用操作的列表，请参阅 [Azure Resource Manager 资源提供程序操作](../../role-based-access-control/resource-provider-operations.md)。
 * 有关使用 Microsoft Graph 处理应用注册的信息，请参阅[应用程序](https://docs.microsoft.com/graph/api/resources/application) API 参考。
-

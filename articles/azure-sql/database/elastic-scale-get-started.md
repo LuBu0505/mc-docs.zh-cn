@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein
 origin.date: 01/25/2019
-ms.date: 12/14/2020
-ms.openlocfilehash: 9821f58ebaf678794ec6c378c2978938d9867afa
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.date: 02/22/2021
+ms.openlocfilehash: 0d1bd1a1dd64210fdb9dae07e4be5d69a0217b84
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830065"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697263"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>弹性数据库工具入门
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -86,13 +86,15 @@ ms.locfileid: "97830065"
 
 1. 下载 [Elastic DB Tools for Azure SQL - Getting Started sample](https://github.com/Azure/elastic-db-tools)（Azure SQL 弹性数据库工具 - 入门示例）。 将示例解压缩到所选位置。
 
-2. 若要创建项目，请从 C# 目录打开 ElasticScaleStarterKit.sln 解决方案。
+2. 若要创建项目，请从 elastic-db-tools-master 目录打开 ElasticDatabaseTools.sln 解决方案 。 
 
-3. 在示例项目的解决方案中打开 app.config 文件。 然后遵循该文件中的说明，添加服务器名称和登录信息（用户名和密码）。
+3. 将 ElasticScaleStarterKit 项目设置为“启动项目”。
 
-4. 生成并运行应用程序。 出现提示时，请允许 Visual Studio 还原该解决方案的 NuGet 包。 此操作从 NuGet 下载最新版本的弹性数据库客户端库。
+4. 在 ElasticScaleStarterKit 项目中，打开 App.config 文件 。 然后遵循该文件中的说明，添加服务器名称和登录信息（用户名和密码）。
 
-5. 若要详细了解客户端库功能，请试验各种选项。 请注意应用程序在控制台输出中执行的步骤，并随意浏览后台代码。
+5. 生成并运行应用程序。 出现提示时，请允许 Visual Studio 还原该解决方案的 NuGet 包。 此操作从 NuGet 下载最新版本的弹性数据库客户端库。
+
+6. 若要详细了解客户端库功能，请试验各种选项。 请注意应用程序在控制台输出中执行的步骤，并随意浏览后台代码。
 
    ![进度][4]
 

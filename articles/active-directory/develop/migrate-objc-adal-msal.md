@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/06/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: e9076cec0bed227251f9758b7338d2d57cf14dfd
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 74d620fc7bb19ddf5c876669d3ca898e21a06e25
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021775"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697042"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>将应用程序迁移到适用于 iOS 和 macOS 的 MSAL
 
@@ -37,14 +37,14 @@ Microsoft 标识平台与 Azure Active Directory v1.0 之前存在一些重要�
 
 ### <a name="standards-compliance"></a>标准合规性
 
-* Microsoft 标识平台终结点遵从 OAuth 2.0 和 OpenId Connect 标准。
+* Microsoft 标识平台遵从 OAuth 2.0 和 OpenId Connect 标准。
 
 ### <a name="incremental-and-dynamic-consent"></a>增量许可和动态许可
 
 * Azure Active Directory v1.0 终结点要求在应用程序注册过程中提前声明所有权限。 这意味着，这些权限是静态的。
 * Microsoft 标识平台允许动态请求权限。 应用只能根据需求请求权限，并在需求提高时请求更多的权限。
 
-有关 Azure Active Directory v1.0 与 Microsoft 标识平台之间的差异的详细信息，请参阅[为何要更新到 Microsoft 标识平台 (v2.0)？](../azuread-dev/azure-ad-endpoint-comparison.md)。
+若要详细了解 Azure Active Directory v1.0 与 Microsoft 标识平台之间的差异，请参阅[为何要更新到 Microsoft 标识平台？](../azuread-dev/azure-ad-endpoint-comparison.md)。
 
 ## <a name="adal-and-msal-library-differences"></a>ADAL 与 MSAL 库的差异
 
@@ -465,4 +465,3 @@ application.acquireTokenSilent(with: silentParameters) {
 ## <a name="next-steps"></a>后续步骤
 
 详细了解[身份验证流和应用程序方案](authentication-flows-app-scenarios.md)
-

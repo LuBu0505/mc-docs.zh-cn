@@ -9,15 +9,15 @@ ms.topic: reference
 author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, bonova, danil
-origin.date: 11/10/2020
-ms.date: 02/01/2021
+origin.date: 1/12/2021
+ms.date: 02/22/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 7a609220f95324dd62bbd806730472bbc00f1ab9
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 46b57d82e13d9a5d6a1d71221299974ed94c43f2
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059828"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696541"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server 与 Azure SQL 托管实例之间的 T-SQL 差异
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -285,6 +285,7 @@ WITH PRIVATE KEY (<private_key_options>)
 ### <a name="sql-server-agent"></a>SQL Server 代理
 
 - 目前，SQL 托管实例不支持启用和禁用 SQL Server 代理。 SQL 代理始终运行。
+- 不支持基于空闲 CPU 的作业计划触发器。
 - SQL Server 代理设置为只读。 SQL 托管实例不支持过程 `sp_set_agent_properties`。 
 - 作业
   - 支持 T-SQL 作业步骤。
@@ -307,13 +308,7 @@ WITH PRIVATE KEY (<private_key_options>)
   - 不支持代理。
 - 不支持 EventLog。
 - 用户必须直接映射到 Azure AD 服务器主体（登录名），才能创建、修改或执行 SQL 代理作业。 未直接映射的用户（例如，属于有权创建、修改或执行 SQL 代理作业的 Azure AD 组的用户）将无法有效地执行这些操作。 这是由于托管实例模拟和 [EXECUTE AS 限制](#logins-and-users)的缘故。
-
-目前不支持以下 SQL 代理功能：
-
-- 代理
-- 针对空闲 CPU 计划作业
-- 启用或禁用代理
-- 警报
+- 不支持主/目标 (MSX/TSX) 作业的多服务器管理功能。
 
 有关 SQL Server 代理的信息，请参阅 [SQL Server 代理](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent)。
 
@@ -483,9 +478,10 @@ SQL 托管实例中的链接服务器支持有限数量的目标：
   - `remote access`
   - `remote data archive`
   - `remote proc trans`
+  - `scan for startup procs`
 - 不支持 `sp_execute_external_scripts`。 请参阅 [sp_execute_external_scripts](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples)。
 - 不支持 `xp_cmdshell`。 请参阅 [xp_cmdshell](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql)。
-- 不支持 `Extended stored procedures`，其中包括 `sp_addextendedproc` 和 `sp_dropextendedproc`。 请参阅[扩展存储过程](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)。
+- 不支持 `Extended stored procedures`，其中包括 `sp_addextendedproc` 和 `sp_dropextendedproc`。 此功能不受支持，因为它位于 SQL Server 的弃用路径中。 请参阅[扩展存储过程](https://docs.microsoft.com/sql/relational-databases/extended-stored-procedures-programming/database-engine-extended-stored-procedures-programming)了解详细信息。
 - 不支持 `sp_attach_db`、`sp_attach_single_file_db` 和 `sp_detach_db`。 请参阅 [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql)、[sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql) 和 [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql)。
 
 ### <a name="system-functions-and-variables"></a>系统函数和变量

@@ -2,21 +2,17 @@
 title: Azure 数据工厂的角色和权限
 description: 介绍创建数据工厂并使用子资源所需的角色和权限。
 origin.date: 11/5/2018
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: data-factory
-services: data-factory
-documentationcenter: ''
-ms.workload: data-services
 author: WenJason
 ms.author: v-jay
-manager: digimobile
-ms.openlocfilehash: fcb9bd1404ce8d0ea29b54395b82c536e78b88de
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 1b37c8fac2d8d729b3fc55f1c3877001a04450fd
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830299"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696725"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure 数据工厂的角色和权限
 
@@ -54,6 +50,9 @@ ms.locfileid: "97830299"
 > [!IMPORTANT]
 > 使用“数据工厂参与者”角色进行资源管理器模板部署不会提升你的权限。 例如，如果你部署一个可以创建 Azure 虚拟机的模板，而你没有创建虚拟机的权限，则部署会失败并出现授权错误。
 
+   在发布上下文中，“Microsoft.DataFactory/工厂/写入”权限适用于以下模式。
+- 仅当客户修改全局参数时，才需要在实时模式中使用该权限。
+
 ### <a name="custom-scenarios-and-custom-roles"></a>自定义方案和自定义角色
 
 有时候，可能需要为不同的数据工厂用户授予不同的访问权限级别。 例如：
@@ -86,6 +85,7 @@ ms.locfileid: "97830299"
 - 允许用户通过 PowerShell 或 SDK 更新数据工厂，但不允许其在 Azure 门户中进行更新。
 
   为用户分配内置的“参与者”角色，其权限范围为数据工厂资源。 此角色允许用户在 Azure 门户中查看资源，但不允许其访问“发布”和“全部发布”按钮。
+
 
 ## <a name="next-steps"></a>后续步骤
 

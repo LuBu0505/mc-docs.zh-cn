@@ -13,16 +13,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 01/08/2021
+ms.date: 02/24/2021
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.custom: has-adal-ref, devx-track-azurecli
-ms.openlocfilehash: 65b39011a70b64d3d791e27c5e47751fee041f32
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 048d0d45262e8f1a88f0a33d3e752a97bcf8a934
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021739"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697004"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 资源托管标识的 FAQ 和已知问题
 
@@ -48,6 +48,10 @@ az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  princi
 应用注册有两个组件：应用程序对象和服务主体对象。 Azure 资源的托管标识仅包含以下组件之一：一个服务主体对象。 
 
 托管标识在目录中没有通常用于授予 MS Graph 应用权限的应用程序对象。 需要直接将托管标识的 MS Graph 权限授予服务主体。  
+
+### <a name="can-the-same-managed-identity-be-used-across-multiple-regions"></a>是否可以跨多个区域使用同一托管标识？
+
+简而言之，是的，可以在多个 Azure 区域中使用用户分配的托管标识。 展开来说就是，当用户分配的托管标识作为区域资源创建时，在 Azure AD 中创建的关联[服务主体](../develop/app-objects-and-service-principals.md#service-principal-object) (SPN) 可在全球范围使用。 可以从任何 Azure 区域使用服务主体，其可用性取决于 Azure AD 的可用性。 例如，如果在中南部区域创建了一个用户分配的托管标识，而该区域变为不可用，则此问题仅影响托管标识本身的[控制平面](../../azure-resource-manager/management/control-plane-and-data-plane.md)活动。  已经配置为使用托管标识的任何资源执行的活动都不会受到影响。
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Azure 资源托管标识可以用于 Azure 云服务吗？
 
@@ -174,4 +178,3 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>将用户分配的托管标识移动到其他资源组/订阅
 
 不支持将用户分配的托管标识移动到其他资源组。
-

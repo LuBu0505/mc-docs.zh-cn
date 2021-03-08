@@ -4,15 +4,15 @@ description: 了解 Azure Stack Hub 管理基础知识。
 author: WenJason
 ms.topic: article
 origin.date: 06/16/2020
-ms.date: 12/07/2020
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.lastreviewed: 06/16/2020
-ms.openlocfilehash: 0cce344bd508a1b8fb8bbf83fe2a85ca4604d535
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: 564ea36589fa775717a5bf3a93c80569c8f18c4a
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508100"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697922"
 ---
 # <a name="azure-stack-hub-administration-basics"></a>Azure Stack Hub 管理基础知识
 
@@ -52,13 +52,15 @@ ms.locfileid: "96508100"
 - 应用服务
 - Azure Functions
 - SQL 和 MySQL 数据库
+- 事件中心
+- IoT 中心（预览）
 - Kubernetes（预览版）
 
 这些服务在提供给用户之前，需要进行额外的配置。 有关详细信息，请参阅 Azure Stack Hub 操作员文档的“教程”和“操作指南\套餐服务”部分。
 
 **服务路线图**
 
-Azure Stack Hub 会持续增加对 Azure 服务的支持。 有关计划的路线图，请参阅 [Azure Stack Hub：Azure 的扩展](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409)白皮书。 也可留意 [Azure Stack Hub 博客文章](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview)中的新公告。
+Azure Stack Hub 会持续增加对 Azure 服务的支持。 
 
 ## <a name="what-account-should-i-use"></a>我应使用什么帐户?
 

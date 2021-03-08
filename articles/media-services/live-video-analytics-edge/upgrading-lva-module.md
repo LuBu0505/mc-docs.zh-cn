@@ -5,13 +5,13 @@ author: WenJason
 ms.topic: how-to
 ms.author: v-jay
 origin.date: 12/14/2020
-ms.date: 02/01/2021
-ms.openlocfilehash: 989aa2ead23bf2f91aedd7bcaf6efefaa1a642aa
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/08/2021
+ms.openlocfilehash: eef6a49067f9c509c18219976ff0caa69d6f99c8
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060129"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696623"
 ---
 # <a name="upgrading-live-video-analytics-on-iot-edge-from-10-to-20"></a>将 IoT Edge 上的实时视频分析从 1.0 升级为 2.0
 
@@ -38,7 +38,7 @@ ms.locfileid: "99060129"
 "image": "mcr.microsoft.com/media/live-video-analytics:2"
 ```
 > [!TIP]
-如果尚未修改“IoT Edge 上的实时视频分析”模块的名称，请在模块节点下查找 `lvaEdge`。
+> 如果尚未修改“IoT Edge 上的实时视频分析”模块的名称，请在模块节点下查找 `lvaEdge`。
 
 ### <a name="topology-file-changes"></a>拓扑文件更改
 在拓扑文件中，确保将 **`apiVersion`** 设置为 2.0
@@ -59,9 +59,9 @@ ms.locfileid: "99060129"
 >**`outputSelectors`** 是一个可选属性。 如果未使用此属性，则媒体图将来自 RTSP 相机的音频（如果启用）和视频传递到下游。 
 
 * 在 `MediaGraphHttpExtension` 和 `MediaGraphGrpcExtension` 处理器中，请注意以下更改：  
-    * **映像属性**
-        * `MediaGraphImageFormatEncoded` 不再受支持。 
-        * 请改用 **`MediaGraphImageFormatBmp`** 、 **`MediaGraphImageFormatJpeg`** 或 **`MediaGraphImageFormatPng`** 。 例如，应用于对象的
+    #### <a name="image-properties"></a>映像属性
+    * `MediaGraphImageFormatEncoded` 不再受支持。 
+      * 请改用 **`MediaGraphImageFormatBmp`** 、 **`MediaGraphImageFormatJpeg`** 或 **`MediaGraphImageFormatPng`** 。 例如，应用于对象的
         ```
         "image": {
                 "scale": 
@@ -95,14 +95,14 @@ ms.locfileid: "99060129"
         >[!NOTE]
         > pixelFormat 的可能值包括：`yuv420p`、`rgb565be`、`rgb565le`、`rgb555be`、`rgb555le`、`rgb24`、`bgr24`、`argb`、`rgba`、`abgr`、`bgra`  
 
-    * **Grpc 扩展处理器的 extensionConfiguration**  
-        * `MediaGraphGrpcExtension` 处理器中提供了一个名为 **`extensionConfiguration`** 的新属性，该属性为可选字符串，可用于 gRPC 协定中。 此字段可用于将任何数据传递到推理服务器，你可以定义推理服务器如何使用这些数据。  
-        当你在单个推理服务器中打包多个 AI 模型时，需要使用此属性。 使用此属性时，无需为每个 AI 模型公开节点。 相反，对于图形实例，扩展提供商可以使用 **`extensionConfiguration`** 属性定义如何选择不同的 AI 模型，并且在执行期间，LVA 会将此字符串传递给推断服务器，该服务器可以使用此字符串来调用所需的 AI 模型。  
+    #### <a name="extensionconfiguration-for-grpc-extension-processor"></a>Grpc 扩展处理器的 extensionConfiguration  
+    * `MediaGraphGrpcExtension` 处理器中提供了一个名为 **`extensionConfiguration`** 的新属性，该属性为可选字符串，可用于 gRPC 协定中。 此字段可用于将任何数据传递到推理服务器，你可以定义推理服务器如何使用这些数据。  
+    当你在单个推理服务器中打包多个 AI 模型时，需要使用此属性。 使用此属性时，无需为每个 AI 模型公开节点。 相反，对于图形实例，扩展提供商可以使用 **`extensionConfiguration`** 属性定义如何选择不同的 AI 模型，并且在执行期间，LVA 会将此字符串传递给推断服务器，该服务器可以使用此字符串来调用所需的 AI 模型。  
 
-    * **AI 组合**
-        * 实时视频分析2.0 现在支持在拓扑中使用多个媒体图形扩展处理器。 可以将来自 RTSP 相机的媒体帧按顺序、并行或两者结合的方式传递给不同的 AI 模型。 请参阅样本拓扑，其中显示了两个按顺序使用的 AI 模型。
+    #### <a name="ai-composition"></a>AI 组合
+    * 实时视频分析2.0 现在支持在拓扑中使用多个媒体图形扩展处理器。 可以将来自 RTSP 相机的媒体帧按顺序、并行或两者结合的方式传递给不同的 AI 模型。 请参阅样本拓扑，其中显示了两个按顺序使用的 AI 模型。
 
-
+### <a name="disk-space-management-with-sink-nodes"></a>具有接收器节点的磁盘空间管理
 * 在“文件接收器”节点中，现在可以指定“IoT Edge 上的实时视频分析”模块可以使用多少磁盘空间来存储已处理的映像。 为此，请将 **`maximumSizeMiB`** 字段添加到“文件接收器”节点。 样本“文件接收器”节点如下所示：
     ```
     "sinks": [
@@ -155,6 +155,7 @@ ms.locfileid: "99060129"
     >[!NOTE]
     >  “文件接收器”路径拆分为基本目录路径和文件名模式，而“资产接收器”路径仅包括基本目录路径 。  
 
+### <a name="frame-rate-management"></a>帧速率管理
 * IoT Edge 上的实时视频分析 2.0 模块中已弃用 **`MediaGraphFrameRateFilterProcessor`** 。
     * 若要对传入视频进行采样以用于处理，请将 **`samplingOptions`** 属性添加到 MediaGraph 扩展处理器（`MediaGraphHttpExtension` 或 `MediaGraphGrpcExtension`）  
      ```
@@ -170,7 +171,7 @@ ms.locfileid: "99060129"
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/telemetry-schema/telegraf.png" alt-text="事件的分类":::
 
-使用 docker 可以轻松生成带自定义配置的 Telegraf 映像。 有关详细信息，请访问[监视和日志记录](monitoring-logging.md#azure-monitor-collection-via-telegraf)页。
+使用 docker 可以轻松生成带自定义配置的 Telegraf 映像。 请访问[监视和日志记录](monitoring-logging.md#azure-monitor-collection-via-telegraf)页，了解详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

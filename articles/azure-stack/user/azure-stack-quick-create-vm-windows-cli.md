@@ -1,20 +1,20 @@
 ---
-title: 使用 Azure CLI 在 Azure Stack Hub 中创建 Windows 虚拟机
+title: 使用 Azure CLI 在 Azure Stack Hub 创建 Windows VM
 description: 使用 Azure CLI 在 Azure Stack Hub 中创建 Windows 虚拟机
 author: WenJason
 ms.topic: quickstart
-origin.date: 1/22/2020
-ms.date: 05/18/2020
+origin.date: 2/1/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.lastreviewed: 01/14/2020
-ms.openlocfilehash: 38e5b78cdf1fd317618bb8f29454c0c242fea02d
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: df7684008ff8d91504423331ab9eba5dfb443384
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422540"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696594"
 ---
-# <a name="quickstart-create-a-windows-server-virtual-machine-using-azure-cli-in-azure-stack-hub"></a>快速入门：使用 Azure CLI 在 Azure Stack Hub 中 创建 Windows Server 虚拟机
+# <a name="quickstart-create-a-windows-server-virtual-machine-using-azure-cli-in-azure-stack-hub"></a>快速入门：使用 Azure CLI 在 Azure Stack Hub 中创建 Windows Server 虚拟机
 
 可以使用 Azure CLI 创建 Windows Server 2016 虚拟机。 请按照本文中的步骤创建和使用虚拟机。 本文还提供了以下步骤：
 
@@ -24,7 +24,7 @@ ms.locfileid: "83422540"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 确保 Azure Stack Hub 操作员已将“Windows Server 2016”  映像添加到 Azure Stack Hub 市场。
+* 确保 Azure Stack Hub 操作员已将“Windows Server 2016”映像添加到 Azure Stack Hub 市场。
 
 * Azure Stack Hub 需要使用特定版本的 Azure CLI 来创建和管理资源。 如果尚未为 Azure Stack Hub 配置 Azure CLI，请按照[安装和配置 Azure CLI](azure-stack-version-profiles-azurecli2.md) 的步骤进行操作。
 

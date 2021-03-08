@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/23/2020
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: 5fcbec230019ffdc2f7c83b242cdbbddd9a4e061
-ms.sourcegitcommit: 883daddafe881e5f8a9f347df2880064d2375b6d
+ms.openlocfilehash: a6000fd082db1b0145ca30f5b2f51c38d3bc9bb0
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95918386"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696665"
 ---
 # <a name="protected-web-api-app-registration"></a>受保护的 Web API：应用注册
 
@@ -27,7 +27,7 @@ ms.locfileid: "95918386"
 
 ## <a name="accepted-token-version"></a>接受的令牌版本
 
-Microsoft 标识平台终结点可以发出 v1.0 令牌和 v2.0 令牌。 有关这些令牌的详细信息，请参阅[访问令牌](access-tokens.md)。
+Microsoft 标识平台可以发出 v1.0 令牌和 v2.0 令牌。 有关这些令牌的详细信息，请参阅[访问令牌](access-tokens.md)。
 
 在 Azure 门户中创建 Web API 应用程序注册时，API 可以接受的令牌版本取决于你选择的“支持的帐户类型”。
 
@@ -44,7 +44,7 @@ Microsoft 标识平台终结点可以发出 v1.0 令牌和 v2.0 令牌。 有关
 1. 如果更改了令牌版本，请选择“保存”。
 
 > [!NOTE]
-> Web API 会指定它所接受的令牌版本。 当客户端从 Microsoft 标识平台 (v2.0) 终结点请求 Web API 的令牌时，所获取的令牌会指示 Web API 接受哪个令牌版本。
+> Web API 会指定它所接受的令牌版本。 当客户端从 Microsoft 标识平台请求 Web API 的令牌时，所获取的令牌会指示 Web API 接受哪个令牌版本。
 
 ## <a name="no-redirect-uri"></a>无重定向 URI
 
@@ -58,7 +58,7 @@ Web API 不需注册重定向 URI，因为没有任何用户以交互方式登�
 
 范围通常采用 `resourceURI/scopeName` 格式。 对于 Microsoft Graph，范围具有快捷方式。 例如，`User.Read` 是 `https://microsoftgraph.chinacloudapi.cn/user.read` 的快捷方式。
 
-在应用注册过程中，需定义以下参数：
+在应用注册过程中，请定义以下参数：
 
 - 资源 URI
 - 一个或多个范围
@@ -68,7 +68,7 @@ Web API 不需注册重定向 URI，因为没有任何用户以交互方式登�
 
 对于客户端应用程序，范围将显示为委托的权限，应用角色将显示为 Web API 的应用程序权限。 
 
-范围还会出现在向应用用户显示的许可窗口中。 因此，需要提供用于描述范围的相应字符串：
+范围还会出现在向应用用户显示的许可窗口中。 因此，请提供描述范围的响应字符串：
 
 - 用户看到的内容。
 - 可授予管理员许可的租户管理员看到的内容。
@@ -78,7 +78,7 @@ Web API 不需注册重定向 URI，因为没有任何用户以交互方式登�
 ### <a name="exposing-delegated-permissions-scopes"></a>公开委托的权限（范围）
 
 1. 在应用程序注册中选择“公开 API”。
-1. 选择“添加范围”。 
+1. 选择“添加范围”。
 1. 出现提示时，请选择“保存并继续”，接受建议的应用程序 ID URI (`api://{clientId}`)。
 1. 指定以下值：
     - 选择“范围名称”并输入 **access_as_user**。
@@ -99,7 +99,7 @@ Web API 不需注册重定向 URI，因为没有任何用户以交互方式登�
 
 #### <a name="exposing-application-permissions-app-roles"></a>公开应用程序权限（应用角色）
 
-若要公开应用程序权限，需要编辑清单。
+若要公开应用程序权限，请编辑清单。
 
 1. 在应用程序的应用程序注册中选择“清单”。
 1. 若要编辑清单，请找到 `appRoles` 设置并添加应用程序角色。 以下示例 JSON 块中提供了角色定义。
@@ -149,9 +149,8 @@ Web API 将检查应用角色。 此角色是软件开发人员公开应用程�
    >
    > 但是，如上一部分中所述，Web API 始终可以验证应用程序是否具有租户管理员授权的适当角色。API 的验证方式是验证访问令牌是否包含角色声明，以及此声明的值是否正确。 在上述 JSON 示例中，值为 `access_as_application`。
 
-1. 选择“保存” 。
+1. 选择“保存”  。
 
 ## <a name="next-steps"></a>后续步骤
 
 转到此方案中的下一篇文章：[应用代码配置](scenario-protected-web-api-app-configuration.md)。
-

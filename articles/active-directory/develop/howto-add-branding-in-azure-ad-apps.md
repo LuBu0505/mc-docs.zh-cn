@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 09/30/2020
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: d014bf176ff70a5d5d1d531ce3a5a403e62d3364
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: 1d22caa5e27d20acfb05b6f652f82cf48967bd54
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937536"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697200"
 ---
 # <a name="branding-guidelines-for-applications"></a>适用于应用程序的品牌准则
 
@@ -27,8 +27,8 @@ ms.locfileid: "91937536"
 在本文中，你将：
 
 - 了解 Microsoft 管理的两种用户帐户以及如何在应用程序中引用 Azure AD 帐户
-- 了解添加要在应用中使用的 Microsoft 徽标所需执行的操作
-- 下载官方的**登录**或**使用 Microsoft 登录**图像以在应用中使用
+- 了解有关在应用中使用 Microsoft 徽标的要求
+- 下载官方的 **登录** 或 **使用 Microsoft 登录** 图像以在应用中使用
 - 了解品牌和导航的注意事项
 
 
@@ -92,13 +92,13 @@ Microsoft 徽标和“通过 Microsoft 登录”词语的关联可唯一地将 A
 
 ## <a name="branding-dos-and-donts"></a>品牌注意事项
 
-**务必**将“工作或学校帐户”与“通过 Microsoft 登录”按钮结合使用来提供附加说明，以便帮助最终用户识别他们是否可以使用该应用。 **请勿** 使用“企业帐户”、“业务帐户”或“公司帐户”等其他词语。
+**务必** 将“工作或学校帐户”与“通过 Microsoft 登录”按钮结合使用来提供附加说明，以便帮助最终用户识别他们是否可以使用该应用。 **请勿** 使用“企业帐户”、“业务帐户”或“公司帐户”等其他词语。
 
 请勿使用“Microsoft 365 ID”或“Azure ID”。 Microsoft 365 也是 Microsoft 的消费型产品名称，它不使用 Azure AD 进行身份验证。
 
 **不要** 更改 Microsoft 徽标。
 
-**请勿**向最终用户显示 Azure 或 Active Directory 品牌。 但是，可以对开发人员、IT 专业人员和管理员使用这些词语。
+**请勿** 向最终用户显示 Azure 或 Active Directory 品牌。 但是，可以对开发人员、IT 专业人员和管理员使用这些词语。
 
 ## <a name="navigation-dos-and-donts"></a>导航注意事项
 

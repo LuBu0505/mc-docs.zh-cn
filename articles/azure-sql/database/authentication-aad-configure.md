@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto, sstein
 origin.date: 08/17/2020
-ms.date: 01/25/2021
-ms.openlocfilehash: ad4c31f0412f4677d7df72b82cf8778343042173
-ms.sourcegitcommit: e1edc6ef84dbbda1da4e0a42efa3fd62eee033d1
+ms.date: 02/22/2021
+ms.openlocfilehash: 9eaaa45ba96e383b20462f56b9584e6625af9e24
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541864"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696688"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>使用 Azure SQL 配置和管理 Azure AD 身份验证
 
@@ -63,13 +63,13 @@ Azure 中的每个[服务器](logical-servers.md)（托管 SQL 数据库或 Azur
 ## <a name="provision-azure-ad-admin-sql-managed-instance"></a>预配 Azure AD 管理员（SQL 托管实例）
 
 > [!IMPORTANT]
-> 若要预配 Azure SQL 托管实例，则只执行以下步骤。 在 Azure AD 中，只能由全局/公司管理员或特权角色管理员执行此操作。
+> 若要预配 Azure SQL 托管实例，则只执行以下步骤。 在 Azure AD 中，此操作只能由全局管理员或特权角色管理员执行。
 
 SQL 托管实例需要权限来读取 Azure AD，以成功完成通过安全组成员资格验证用户身份或创建新用户等任务。 为此，需要授予 SQL 托管实例读取 Azure AD 的权限。 可以使用 Azure 门户或 PowerShell 执行此操作。
 
 ### <a name="azure-portal"></a>Azure 门户
 
-若要使用 Azure 门户授予 SQL 托管实例 Azure AD 读取权限，请在 Azure AD 中以全局/公司管理员身份登录，然后执行以下步骤：
+若要通过 Azure 门户向 SQL 托管实例授予 Azure AD 读取权限，请在 Azure AD 中以全局管理员身份登录，然后执行以下步骤：
 
 1. 在 [Azure 门户](https://portal.azure.cn)右上角，从可能的 Active Directory 下拉列表中选择你的连接。
 
@@ -116,7 +116,7 @@ SQL 托管实例需要权限来读取 Azure AD，以成功完成通过安全组�
 
 ```powershell
 # Gives Azure Active Directory read permission to a Service Principal representing the SQL Managed Instance.
-# Can be executed only by a "Company Administrator", "Global Administrator", or "Privileged Role Administrator" type of user.
+# Can be executed only by a "Global Administrator" or "Privileged Role Administrator" type of user.
 
 $aadTenant = "<YourTenantId>" # Enter your tenant ID
 $managedInstanceName = "MyManagedInstance"

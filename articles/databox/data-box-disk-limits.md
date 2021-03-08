@@ -7,14 +7,14 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.author: v-jay
-ms.openlocfilehash: 5b763890a5de6d424e2e57581332647b4cec47cf
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 2cad865dfe3c0fbd6c7408505250be2901d1eab4
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059225"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697259"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box 磁盘限制
 
@@ -65,7 +65,7 @@ ms.locfileid: "99059225"
 
 | 数据类型             | 默认限制          |
 |--------------------------|------------------------|
-| 块 Blob、页 Blob    | 有关这些限制的最新信息，请参阅 [Azure Blob 存储缩放目标](../storage/blobs/scalability-targets.md#scale-targets-for-blob-storage)、[Azure 标准存储缩放目标](../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)和 [Azure 文件存储缩放目标](../storage/files/storage-files-scale-targets.md#file-share-and-file-scale-targets)。 <br /><br /> 这些限制包括来自所有源（包括 Data Box Disk）的数据。|
+| 块 Blob、页 Blob    | 有关这些限制的最新信息，请参阅 [Azure Blob 存储缩放目标](../storage/blobs/scalability-targets.md#scale-targets-for-blob-storage)、[Azure 标准存储缩放目标](../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)和 [Azure 文件存储缩放目标](../storage/files/storage-files-scale-targets.md)。 <br /><br /> 这些限制包括来自所有源（包括 Data Box Disk）的数据。|
 
 
 ## <a name="azure-object-size-limits"></a>Azure 对象大小限制
@@ -77,7 +77,7 @@ ms.locfileid: "99059225"
 | 块 blob        | ~ 4.75 TiB                                                 |
 | 页 blob         | 8 TiB <br> （以页 Blob 格式上传的每个文件必须经过 512 字节对齐，否则上传会失败。 <br> VHD 和 VHDX 都已经过 512 字节对齐。） |
 |Azure 文件        | 1 TiB <br> 最大 共享大小为 5 TiB     |
-| 托管磁盘     |4 TiB <br> 有关大小和限制的详细信息，请参阅： <li>[托管磁盘的可伸缩性目标](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
+| 托管磁盘     |4 TiB <br> 有关大小和限制的详细信息，请参阅： <li>[托管磁盘的可伸缩性目标](../virtual-machines/disks-scalability-targets.md#managed-virtual-machine-disks)</li>|
 
 
 ## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Azure 块 blob、页 blob 和文件命名约定

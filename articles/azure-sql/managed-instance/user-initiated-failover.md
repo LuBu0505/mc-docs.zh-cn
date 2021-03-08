@@ -3,20 +3,20 @@ title: 在 SQL 托管实例上手动启动故障转移
 description: 了解如何在 Azure SQL 托管实例上手动对主要副本和次要副本进行故障转移。
 services: sql-database
 ms.service: sql-managed-instance
-ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurecli
+ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
 author: WenJason
 ms.author: v-jay
 ms.reviewer: douglas, sstein
 origin.date: 12/16/2020
-ms.date: 01/04/2020
-ms.openlocfilehash: d4aef7befee6ef0d13d586b07d31d4360533bd8d
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.date: 02/22/2021
+ms.openlocfilehash: 361ee3db2a445486b49b7f624e0d05e2b2c7f2e8
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830193"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696537"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL 托管实例上用户启动的手动故障转移
 
@@ -126,7 +126,7 @@ API 响应将为以下两项之一：
 
 ## <a name="monitor-the-failover"></a>监视故障转移
 
-若要监视用户启动的手动故障转移的进度，请在你喜欢的客户端（例如 SSMS）中对 SQL 托管实例执行以下 T-SQL 查询。 它将读取系统视图 sys.dm_hadr_fabric_replica_states 并报告实例上可用的副本。 启动手动故障转移后刷新相同的查询。
+若要监视用户为你的 BC 实例启动的故障转移的进度，请在你喜欢的客户端（例如 SSMS）中对 SQL 托管实例执行以下 T-SQL 查询。 它将读取系统视图 sys.dm_hadr_fabric_replica_states 并报告实例上可用的副本。 启动手动故障转移后刷新相同的查询。
 
 ```T-SQL
 SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_hadr_fabric_replica_states
@@ -134,7 +134,13 @@ SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_h
 
 启动故障转移之前，你的输出将指示 BC 服务层上的当前主副本，其中包含 AlwaysOn 可用性组中的一个主副本和三个次要副本。 执行故障转移后，再次运行此查询将需要指示主节点的更改。
 
-在 GP 服务层中，你将无法看到与上面所示的 BC 的输出相同的输出。 这是因为 GP 服务层只基于单个节点。 GP 服务层的 T-SQL 查询输出将仅在故障转移前后显示单个节点。 在故障转移过程中，客户端丢失的连接（通常持续不到一分钟）将作为故障转移执行的指示。
+在 GP 服务层中，你将无法看到与上面所示的 BC 的输出相同的输出。 这是因为 GP 服务层只基于单个节点。 可以使用可选的 T-SQL 查询来显示在 GP 服务层实例的节点上启动 SQL 进程的时间：
+
+```T-SQL
+SELECT sqlserver_start_time, sqlserver_start_time_ms_ticks FROM sys.dm_os_sys_info
+```
+
+在故障转移期间，客户端短暂的连接中断（通常持续不到一分钟），将表明无论服务级别如何，都将执行故障转移。
 
 > [!NOTE]
 > 在高强度工作负载的情况下，完成故障转移过程（不是实际的短暂不可用性）可能需要几分钟的时间。 这是因为实例引擎在能够进行故障转移之前正在处理主节点上的所有当前事务，并跟进辅助节点。
@@ -144,6 +150,7 @@ SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_h
 > - 每 15 分钟在同一托管实例上可能会启动一次 (1) 故障转移。
 > - 对于 BC 实例，若要使故障转移请求得到接受，必须存在仲裁副本。
 > - 对于 BC 实例，不能指定要在其上启动故障转移的可读辅助副本。
+> - 在自动备份系统完成对新数据库的第一次完全备份之前，将不允许进行故障转移。
 
 ## <a name="next-steps"></a>后续步骤
 

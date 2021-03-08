@@ -1,5 +1,6 @@
 ---
-title: 配置用于用户登录的 Web 应用 - Microsoft 标识平台 | Azure
+title: 配置用于让用户登录的 Web 应用 | Azure
+titleSuffix: Microsoft identity platform
 description: 了解如何构建用于登录用户的 Web 应用（代码配置）
 services: active-directory
 author: jmprieur
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/23/2020
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: d523a36f5cdbfb776017b35f75e17b5cee257f20
-ms.sourcegitcommit: 883daddafe881e5f8a9f347df2880064d2375b6d
+ms.openlocfilehash: 0bb0332382c1c1b5fd10004a4040f90e27275351
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95918337"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697118"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>可将用户登录的 Web 应用：代码配置
 
@@ -63,13 +64,13 @@ ms.locfileid: "95918337"
 
 ## <a name="configuration-files"></a>配置文件
 
-使用 Microsoft 标识平台将用户登录的 Web 应用程序是通过配置文件配置的。 需填充的设置为：
+使用 Microsoft 标识平台将用户登录的 Web 应用程序是通过配置文件配置的。 需要在配置中指定以下值：
 
 - 云实例 (`Instance`)（例如，如果需要在国家云中运行应用）
 - 租户 ID 中的受众 (`TenantId`)
 - 应用程序的客户端 ID (`ClientId`)，从 Azure 门户中复制
 
-有时，可以通过 `Authority`（`Instance` 与 `TenantId` 的串联）将应用程序参数化。
+还可能看到对 `Authority` 的引用。 `Authority` 值是 `Instance` 和 `TenantId` 值的串联。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -128,7 +129,7 @@ ms.locfileid: "95918337"
 }
 ```
 
-在 Azure 门户中，需要在应用程序的“身份验证”页中注册的回复 URI 需与这些 URL 相匹配。 对于上述两个配置文件，URL 为 `https://localhost:44321/signin-oidc`。 原因是 `applicationUrl` 为 `http://localhost:3110`，但指定的是 `sslPort` (44321)。 `CallbackPath` 是 `appsettings.json` 中定义的 `/signin-oidc`。
+在 Azure 门户中，在应用程序的“身份验证”页中注册的重定向 URI 需与这些 URL 相匹配。 对于上述两个配置文件，URL 为 `https://localhost:44321/signin-oidc`。 原因是 `applicationUrl` 为 `http://localhost:3110`，但指定的是 `sslPort` (44321)。 `CallbackPath` 是 `appsettings.json` 中定义的 `/signin-oidc`。
 
 注销 URI 将采用相同方式设置为 `https://localhost:44321/signout-oidc`。
 
@@ -156,7 +157,7 @@ ms.locfileid: "95918337"
   </appSettings>
 ```
 
-在 Azure 门户中，需要在应用程序的“身份验证”页中注册的回复 URI 需与这些 URL 相匹配。 即，它们应是 `https://localhost:44326/`。
+在 Azure 门户中，在应用程序的“身份验证”页中注册的回复 URI 需与这些 URL 相匹配。 即，它们应是 `https://localhost:44326/`。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -170,7 +171,7 @@ aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
 aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 ```
 
-在 Azure 门户中，需要在应用程序的“身份验证”页中注册的回复 URI 需与应用程序定义的 `redirectUri` 实例相匹配。 即，它们应是 `http://localhost:8080/msal4jsample/secure/aad` 和 `http://localhost:8080/msal4jsample/graph/me`。
+在 Azure 门户中，在应用程序的“身份验证”页中注册的回复 URI 需与应用程序定义的 `redirectUri` 实例相匹配。 即，它们应是 `http://localhost:8080/msal4jsample/secure/aad` 和 `http://localhost:8080/msal4jsample/graph/me`。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -198,7 +199,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 
 ## <a name="initialization-code"></a>初始化代码
 
-初始化代码因平台而异。 对于 ASP.NET Core 和 ASP.NET，用户登录将委托给 OpenID Connect 中间件来完成。 ASP.NET 或 ASP.NET Core 模板可为 Azure Active Directory (Azure AD) v1.0 终结点生成 Web 应用程序。 只需进行一些配置就能使这些应用程序适应 Microsoft 标识平台 (v2.0) 终结点。 对于 Java，初始化由 Spring 在应用程序的配合下进行处理。
+初始化代码因平台而异。 对于 ASP.NET Core 和 ASP.NET，用户登录将委托给 OpenID Connect 中间件来完成。 ASP.NET 或 ASP.NET Core 模板可为 Azure Active Directory (Azure AD) v1.0 终结点生成 Web 应用程序。 只需进行一些配置就能使这些应用程序适应 Microsoft 标识平台。 对于 Java，初始化由 Spring 在应用程序的配合下进行处理。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -258,7 +259,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 - `AddMicrosoftIdentityWebAppAuthentication` 扩展方法在 Microsoft.Identity.Web 中进行定义。 该方法：
   - 添加身份验证服务。
   - 配置用于读取配置文件的选项（此处来自“AzureAD”部分）
-  - 配置 OpenID Connect 选项，使颁发机构是 Microsoft 标识平台终结点。
+  - 配置 OpenID Connect 选项，将颁发机构设为 Microsoft 标识平台。
   - 验证令牌的颁发者。
   - 确保从 ID 令牌中的 `preferred_username` 声明映射与名称对应的声明。
 
@@ -287,7 +288,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
   app.UseOpenIdConnectAuthentication(
     new OpenIdConnectAuthenticationOptions
     {
-     // `Authority` represents the identity platform endpoint - https://login.partner.microsoftonline.cn/common/v2.0.
+     // Authority` represents the identity platform endpoint - https://login.partner.microsoftonline.cn/common/v2.0.
      // `Scope` describes the initial permissions that your app will need.
      //  See https://docs.azure.cn/zh-cn/active-directory/develop/v2-permissions-and-consent
      ClientId = clientId,
@@ -355,4 +356,3 @@ Session(app)
 转到此方案中的下一篇文章：[登录和注销](./scenario-web-app-sign-user-sign-in.md?tabs=python)。
 
 ---
-

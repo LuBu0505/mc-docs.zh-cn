@@ -5,15 +5,15 @@ author: WenJason
 ms.service: security
 ms.topic: conceptual
 origin.date: 06/05/2020
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1dafc0f50fd48aef998b69b554f5dad10405425e
-ms.sourcegitcommit: a978c5f2c6b53494d67e7c3c5a44b2aa648219a2
+ms.openlocfilehash: 5aa97eec1fb2761d6a3903ea4fd3e87ae412d336
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629042"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696938"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>适用于 Azure 数据工厂的 Azure 安全基线
 
@@ -23,7 +23,7 @@ ms.locfileid: "98629042"
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
-## <a name="network-security"></a>网络安全性
+## <a name="network-security"></a>网络安全
 
 有关详细信息，请参阅[安全控制：网络安全](../security/benchmarks/security-control-network-security.md)。
 
@@ -314,6 +314,8 @@ ms.locfileid: "98629042"
 * [如何使用 PowerShell 获取 Azure AD 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
 * [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+
+* [本地帐户信息](../active-directory/devices/assign-local-admin.md#manage-the-device-administrator-role)
 
 **Azure 安全中心监视**：是
 
@@ -618,7 +620,7 @@ ms.locfileid: "98629042"
 
 * [如何使用 Azure Resource Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-* [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription)
 
 * [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -736,7 +738,7 @@ ms.locfileid: "98629042"
 
 **指导**：如果在 Azure 虚拟机中运行 Runtime Integration，根据脚本类型，可以使用特定于操作系统的配置或第三方资源来限制用户在 Azure 计算资源中执行脚本的能力。 还可以利用 Azure 安全中心自适应应用程序控制来确保仅执行已授权软件，并阻止所有未授权软件在 Azure 虚拟机上执行。
 
-* [如何在 Windows 环境中控制 PowerShell 脚本的执行](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [如何在 Windows 环境中控制 PowerShell 脚本的执行](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 * [如何使用 Azure 安全中心自适应应用程序控制](../security-center/security-center-adaptive-application.md)
 
@@ -812,11 +814,11 @@ ms.locfileid: "98629042"
 
 对于大部分方案，Microsoft 基本 VM 模板与 Azure Automation Desired State Configuration 相结合可以帮助满足和维护安全要求。
 
-* [有关如何下载 VM 模板的信息](../virtual-machines/windows/download-template.md)
+* [有关如何下载 VM 模板的信息](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [有关创建 Azure 资源管理器模板的信息](../virtual-machines/windows/ps-template.md)
 
-* [如何将自定义 VM VHD 上传到 Azure](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
+* [如何将自定义 VM VHD 上传到 Azure](/azure-stack/operator/azure-stack-add-vm-image)
 
 **Azure 安全中心监视**：是
 
@@ -826,9 +828,9 @@ ms.locfileid: "98629042"
 
 **指导**：如果使用自定义的 Azure Policy 定义，请使用 Azure DevOps 或 Azure Repos 安全地存储和管理代码。
 
-* [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
 
-* [Azure Repos 文档](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Azure Repos 文档](https://docs.microsoft.com/azure/devops/repos/index)
 
 **Azure 安全中心监视**：不适用
 
@@ -889,6 +891,28 @@ ms.locfileid: "98629042"
 * [加入 Azure Automation State Configuration 管理的计算机](../automation/automation-dsc-onboarding.md)
 
 **Azure 安全中心监视**：不适用
+
+**责任**：客户
+
+### <a name="711-manage-azure-secrets-securely"></a>7.11：安全管理 Azure 机密
+
+**指导**：将托管服务标识与 Azure Key Vault 结合使用，以便简化和保护云应用程序的机密管理。
+
+也可在 Azure Key Vault 中存储凭据或机密值，并在管道执行过程中使用它们来传递到活动。 请确保已启用软删除。
+
+* [如何与 Azure 托管标识集成](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
+
+* [如何创建 Key Vault](../key-vault/secrets/quick-create-portal.md)
+
+* [如何向 Key Vault 进行身份验证](../key-vault/general/authentication.md)
+
+* [如何分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-portal.md)
+
+* [在管道活动中使用 Azure Key Vault 机密](./how-to-use-azure-key-vault-secrets-pipeline-activities.md)
+
+* [Azure Key Vault 中的软删除](../key-vault/general/soft-delete-overview.md)
+
+**Azure 安全中心监视**：是
 
 **责任**：客户
 

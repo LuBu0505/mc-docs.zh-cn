@@ -9,12 +9,12 @@ origin.date: 09/03/2020
 ms.date: 09/21/2020
 ms.author: v-jay
 ms.reviewer: daperlov
-ms.openlocfilehash: b4acba004a6bf41a4ab15516862af32794142c9d
-ms.sourcegitcommit: f5d53d42d58c76bb41da4ea1ff71e204e92ab1a7
+ms.openlocfilehash: 10238375facb2831a9b2017c47ca2c8799231495
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532884"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697756"
 ---
 # <a name="troubleshoot-azure-data-factory-ux-issues"></a>排查 Azure 数据工厂 UX 问题
 

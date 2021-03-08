@@ -4,15 +4,15 @@ description: 了解如何在 Azure Functions 中使用计时器触发器。
 author: craigshoemaker
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.topic: reference
-ms.date: 11/30/2020
+ms.date: 03/01/2021
 ms.author: v-junlch
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7df593fce2ef9a56657510418391c2723b6518ed
-ms.sourcegitcommit: dfdb65cef6a6b089992644f075b9c3f444cb8e36
+ms.openlocfilehash: 233e0ae7c2b2976ec0fe0e225b9a2f7763b4e117
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98793813"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696827"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions 的计时器触发器
 
@@ -82,7 +82,7 @@ public static void Run(TimerInfo myTimer, ILogger log)
 
 # <a name="java"></a>[Java](#tab/java)
 
-以下示例函数的触发和执行间隔为 5 分钟。 函数上的 `@TimerTrigger` 注释使用与 `CRON expressions` 相同的字符串格式定义计划。
+以下示例函数的触发和执行间隔为 5 分钟。 函数上的 `@TimerTrigger` 注释使用与 `CRON expressions`相同的字符串格式定义计划。
 
 ```java
 @FunctionName("keepAlive")
@@ -190,7 +190,7 @@ C# 脚本不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-函数上的 `@TimerTrigger` 注释使用与 `CRON expressions` 相同的字符串格式定义计划。
+函数上的 `@TimerTrigger` 注释使用与 `CRON expressions`相同的字符串格式定义计划。
 
 ```java
 @FunctionName("keepAlive")
@@ -215,11 +215,11 @@ PowerShell 不支持特性。
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 function.json 文件和 `TimerTrigger` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `TimerTrigger` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** | 不适用 | 必须设置为“timerTrigger”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|type | 不适用 | 必须设置为“timerTrigger”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为“in”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
 |**name** | 不适用 | 在函数代码中表示计时器对象的变量的名称。 | 
 |**schedule**|**ScheduleExpression**|[CRON 表达式](#ncrontab-expressions)或 [TimeSpan](#timespan) 值。 只能对在应用服务计划中运行的函数应用使用 `TimeSpan`。 可以将计划表达式放在应用设置中并将此属性设置为用 **%** 符号括起的应用设置名称，例如此示例中的“%ScheduleAppSetting%”。 |
@@ -308,7 +308,7 @@ CRON 表达式中的数字指的是时间和日期，而不是时间跨度。 �
 
 ## <a name="scale-out"></a>横向扩展
 
-如果函数应用横向扩展到多个实例，则在所有实例中只会运行由计时器触发的函数的单个实例。
+如果函数应用横向扩展到多个实例，则在所有实例中只会运行由计时器触发的函数的单个实例。 如果有未完成的调用仍在运行，它将不会再次触发。
 
 ## <a name="function-apps-sharing-storage"></a>共享同一存储的函数应用
 
@@ -338,4 +338,3 @@ CRON 表达式中的数字指的是时间和日期，而不是时间跨度。 �
 
 > [!div class="nextstepaction"]
 > [详细了解 Azure Functions 触发器和绑定](functions-triggers-bindings.md)
-

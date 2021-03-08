@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 02/25/2020
-ms.date: 01/11/2021
-ms.openlocfilehash: 4b5130083b0a15e16f5aa16bf8a937eaefdb7c46
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.date: 03/08/2021
+ms.openlocfilehash: 94dc960bcd475d3b8a3028ca25bf78b3c78f295a
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023064"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697381"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL - 单一服务器中进行备份和还原
 
@@ -67,8 +67,7 @@ Azure Database for PostgreSQL 最高可以提供 100% 的已预配服务器存�
 - **时间点还原**：可以与任一备份冗余选项配合使用，所创建的新服务器与原始服务器位于同一区域。
 - **异地还原**：只能在已将服务器配置为进行异地冗余存储的情况下使用，用于将服务器还原到另一区域。
 
-估计的恢复时间取决于若干因素，包括数据库大小、事务日志大小、网络带宽，以及在同一区域同时进行恢复的数据库总数。 恢复时间通常少于 12 小时。
-
+估计的恢复时间取决于若干因素，包括数据库大小、事务日志大小、网络带宽，以及在同一区域同时进行恢复的数据库总数。 恢复时间因上次数据备份和需要执行恢复量的不同而异。 通常不到 12 个小时。
 
 ### <a name="point-in-time-restore"></a>时间点还原
 

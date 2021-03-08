@@ -6,14 +6,14 @@ ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 11/05/2020
-ms.date: 12/14/2020
+ms.date: 03/08/2021
 ms.custom: fasttrack-edit
-ms.openlocfilehash: dcd8a2cc253da39decde263c8b72079df2a666a8
-ms.sourcegitcommit: a8afac9982deafcf0652c63fe1615ba0ef1877be
+ms.openlocfilehash: 4e5e912ca44ecddc3eba7bcaa668c33aef3153d4
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96850902"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697398"
 ---
 # <a name="azure-database-for-postgresql-versioning-policy"></a>Azure Database for PostgreSQL 版本策略
 
@@ -28,7 +28,7 @@ Azure Database for PostgreSQL 支持以下数据库版本。
 | PostgreSQL 11 |
 | PostgreSQL 10 |
 | PostgreSQL 9.6 |
-| PostgreSQL 9.5 |
+| PostgreSQL 9.5（已停用） |
 
 ## <a name="major-version-support"></a>主要版本支持
 如 [PostgreSQL 社区版本控制策略](https://www.postgresql.org/support/versioning/)所述，从 Azure 开始支持该版本之日起，到 PostgreSQL 社区停用该版本之日结束，在此期间，Azure Database for PostgreSQL 将支持 PostgreSQL 的每个主版本。
@@ -41,14 +41,14 @@ Azure Database for PostgreSQL 支持以下数据库版本。
 
 | 版本 | 新增功能 | Azure 支持开始日期 | 停用日期|
 | ----- | ----- | ------ | ----- |
-| PostgreSQL 9.5| [功能](https://www.postgresql.org/docs/9.5/release-9-5.html)  | 2018 年 4 月 18 日    | 2021 年 2 月 11 日
+| [PostgreSQL 9.5（已停用）](https://www.postgresql.org/about/news/postgresql-132-126-1111-1016-9621-and-9525-released-2165/)| [功能](https://www.postgresql.org/docs/9.5/release-9-5.html)  | 2018 年 4 月 18 日 | 2021 年 2 月 11 日
 | [PostgreSQL 9.6](https://www.postgresql.org/about/news/postgresql-96-released-1703/) | [功能](https://wiki.postgresql.org/wiki/NewIn96) | 2018 年 4 月 18 日  | 2021 年 11 月 11 日
 | [PostgreSQL 10](https://www.postgresql.org/about/news/postgresql-10-released-1786/) | [功能](https://wiki.postgresql.org/wiki/New_in_postgres_10) | 2018 年 6 月 4 日  | 2022 年 11 月 10 日
 | [PostgreSQL 11](https://www.postgresql.org/about/news/postgresql-11-released-1894/) | [功能](https://www.postgresql.org/docs/11/release-11.html) | 2019 年 7 月 24 日  | 2023 年 11 月 9 日
 
 ## <a name="retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 不支持已停用的 PostgreSQL 引擎版本
 
-在停用每个 PostgreSQL 数据库版本之后，如果继续运行已停用版本，需要注意以下限制：
+可以继续在 Azure Database for PostgreSQL 中运行已停用的版本。 但是，请注意每个 PostgreSQL 数据库版本的停用日期之后的以下限制：
 - 由于社区将不会发布任何进一步的 bug 修复或安全修复，Azure Database for PostgreSQL 将不会针对任何 bug 或安全问题修补已停用的数据库引擎，也不会针对已停用的数据库引擎采取安全措施。 因此，你可能会遇到安全漏洞或其他问题。 但是，Azure 将继续对主机、OS、容器以及任何其他与服务相关的组件执行定期维护和修补。
 - 如果你可能遇到的任何支持问题与 PostgreSQL 数据库有关，我们可能无法为你提供支持。 在这种情况下，必须升级数据库，以便我们为你提供任何支持。
 - 无法为已停用的版本创建新的数据库服务器。 但能够执行时间点恢复并为现有服务器创建只读副本。

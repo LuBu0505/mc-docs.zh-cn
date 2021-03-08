@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ninarn, sstein
 origin.date: 12/9/2020
-ms.date: 01/04/2021
-ms.openlocfilehash: b60b1df7ed9b6fd5d7a6758dea963faeefac9b98
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.date: 02/22/2021
+ms.openlocfilehash: 15d0883ce6c881e0eb87bea6f1bab8d38a312c7e
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829929"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697840"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>弹性池有助于在 Azure SQL 数据库中管理和缩放多个数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -91,19 +91,17 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 以下步骤可帮助你评估池是否比单一数据库更具成本效益：
 
 1. 通过如下方式来估算池所需的 eDTU 或 vCore：
-
-对于基于 DTU 的购买模型：
-
-MAX(<数据库的总数目 X 每一数据库的平均 DTU 使用率>, <并发峰值数据库数目 X 每一数据库的峰值 DTU 使用率>)   
-
-对于基于 vCore 的购买模型：
-
-MAX(<数据库的总数目 X 每一数据库的平均 vCore 使用率>, <并发峰值数据库数目 X 每一数据库的峰值 vCore 使用率>)   
-
+   - 对于基于 DTU 的购买模型：
+     - MAX（<DB 的总数目 &times; 每 DB 的平均 DTU 使用率>、<同时达到峰值的 DB 数目 &times; 每 DB 的峰值 DTU 使用率>）   
+   - 对于基于 vCore 的购买模型：
+     - MAX（<DB 的总数目 &times; 每 DB 的平均 vCore 使用率>、<同时达到峰值的 DB 数目 &times; 每 DB 的峰值 vCore 使用率>）   
 2. 通过添加池中所有数据库所需的数据大小，估计池所需的总存储空间。 对于 DTU 购买模型，确定提供此存储量的 eDTU 池大小。
 3. 对于基于 DTU 的购买模型，请取步骤 1 和步骤 2 中 eDTU 估算值中较大的那个。 对于基于 vCore 的购买模型，请取步骤 1 中的 vCore 估算值。
 4. 请参阅 [SQL 数据库定价页](https://www.azure.cn/pricing/details/sql-database/)，找到大于步骤 3 中估算值的最小池大小。
 5. 将步骤 4 的池价格与使用单一数据库适当计算大小的价格相比较。
+
+> [!IMPORTANT]
+> 如果池中的数据库数量接近所支持的最大值，请确保[考虑密集弹性池中的资源管理](elastic-pool-resource-management.md)。
 
 ## <a name="using-other-sql-database-features-with-elastic-pools"></a>将其他 SQL 数据库功能与弹性池一起使用
 
@@ -150,9 +148,10 @@ MAX(<数据库的总数目 X 每一数据库的平均 vCore 使用率>, <并发�
 
 在 Azure 门户中，可以监视弹性池和该池中的数据库的利用率。 还可以对弹性池进行一组更改，并同时提交所有更改。 这些更改包括添加或删除数据库、更改弹性池设置或更改数据库设置。
 
-可以将内置的[性能监视](/azure-sql/database/performance-guidance)和[警报工具](/azure-sql/database/alerts-insights-configure-portal)与性能等级组合使用。  此外，SQL 数据库可[发出指标和资源日志](/azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure?tabs=azure-portal)，以方便进行监视。
+可以将内置的[性能监视](./performance-guidance.md)和[警报工具](./alerts-insights-configure-portal.md)与性能等级组合使用。  此外，SQL 数据库可[发出指标和资源日志](./metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-portal)，以方便进行监视。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 有关定价信息，请参阅[弹性池定价](https://www.azure.cn/pricing/details/sql-database/)。
 - 若要缩放弹性池，请参阅[缩放弹性池](elastic-pool-scale.md)和[缩放弹性池 - 示例代码](scripts/monitor-and-scale-pool-powershell.md)
+- 若要了解具有多个数据库的弹性池中的资源管理，请参阅[密集弹性池中的资源管理](elastic-pool-resource-management.md)。

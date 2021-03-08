@@ -1,23 +1,18 @@
 ---
 title: 将 Azure-SSIS 集成运行时加入虚拟网络
 description: 了解如何将 Azure-SSIS Integration Runtime 加入 Azure 虚拟网络。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 origin.date: 11/02/2020
-ms.date: 11/23/2020
+ms.date: 03/01/2021
 author: WenJason
 ms.author: v-jay
-ms.reviewer: douglasl
-manager: digimobile
-ms.openlocfilehash: daa00e52d08759654b1f465aca7987ae9c58f68e
-ms.sourcegitcommit: c89f1adcf403f5845e785064350136698eed15b8
+ms.openlocfilehash: 0351c402b8f0076aea21c92c56db1d7b78b828c7
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94680503"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696815"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>将 Azure-SSIS 集成运行时加入虚拟网络
 
@@ -74,7 +69,10 @@ ms.locfileid: "94680503"
 
 ## <a name="access-to-data-sources-protected-by-ip-firewall-rule"></a>访问 IP 防火墙规则保护的数据源
 
-如果 SSIS 包访问仅允许特定静态公共 IP 地址的数据存储/资源，并且你想要从 Azure-SSIS IR 保护对这些资源的访问，则可以使用自己的 Azure-SSIS IR [公共 IP 地址](../virtual-network/virtual-network-public-ip-address.md)，同时将其加入虚拟网络，然后将 IP 防火墙规则添加到相关的 Azure 资源，以允许来自这些 IP 地址的访问。
+如果 SSIS 包访问仅允许特定静态公共 IP 地址的数据存储/资源，并且你想要从 Azure-SSIS IR 保护对这些资源的访问，则可以将[公共 IP 地址](../virtual-network/virtual-network-public-ip-address.md)与 Azure-SSIS IR 相关联，同时将其加入虚拟网络，然后将 IP 防火墙规则添加到相关的 Azure 资源，以允许来自这些 IP 地址的访问。 可通过两种替代方法来实现此目的： 
+
+- 创建 Azure-SSIS IR 时，可以自带公共 IP 地址，并通过[数据工厂 UI 或 SDK](#join-the-azure-ssis-ir-to-a-virtual-network) 指定。 只有 Azure-SSIS IR 的出站 Internet 连接将使用你提供的公共 IP 地址，子网中的其他设备将不使用它们。
+- 你还可以为 Azure-SSIS IR 将加入的子网设置[虚拟网络 NAT](../virtual-network/nat-overview.md)，并且该子网中的所有出站连接都将使用你指定的公共 IP 地址。
 
 在所有情况下，都只能通过 Azure 资源管理器部署模型部署虚拟网络。
 

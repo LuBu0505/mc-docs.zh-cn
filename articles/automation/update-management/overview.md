@@ -3,15 +3,15 @@ title: Azure 自动化更新管理概述
 description: 本文概述了为 Windows 和 Linux 计算机实现更新的更新管理功能。
 services: automation
 ms.subservice: update-management
-origin.date: 01/13/2021
-ms.date: 02/01/2021
+origin.date: 01/22/2021
+ms.date: 02/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: ee7e3e909540329e008fb88d5952a63bc3e2964f
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 9bf19e04cd5f36cdb0d3c7ccdd68e987a9c9196e
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059532"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697729"
 ---
 # <a name="update-management-overview"></a>更新管理概述
 
@@ -70,7 +70,7 @@ ms.locfileid: "99059532"
 
 |操作系统  |说明  |
 |---------|---------|
-|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br>Windows Server 2012 R2(Datacenter/Standard)<br>Windows Server 2012 |
+|Windows Server 2019（包括 Server 核心的数据中心/标准）<br><br>Windows Server 2016（不包括 Server 核心的数据中心/标准）<br><br>Windows Server 2012 R2(Datacenter/Standard)<br><br>Windows Server 2012 | |
 |Windows Server 2008 R2（RTM 和 SP1 Standard）| 更新管理仅支持对此操作系统进行评估和修补。 Windows Server 2008 R2 不支持[混合 Runbook 辅助角色](../automation-windows-hrw-install.md)。 |
 |CentOS 6 和 7 (x64)      | Linux 代理需要具有访问更新存储库的权限。 基于分类的修补需要借助 `yum` 来返回 CentOS 的 RTM 版本中没有的安全数据。 有关 CentOS 上基于分类的修补的详细信息，请参阅 [Linux 上的更新分类](view-update-assessments.md#linux)。          |
 |Red Hat Enterprise 6 和 7 (x64)     | Linux 代理需要具有访问更新存储库的权限。        |
@@ -78,7 +78,7 @@ ms.locfileid: "99059532"
 |Ubuntu 14.04 LTS、16.04 LTS 和 18.04 LTS (x64)      |Linux 代理需要具有访问更新存储库的权限。         |
 
 > [!NOTE]
-> Azure 虚拟机规模集可通过更新管理进行管理。 更新管理适用于实例本身，而非基础映像。 你需要以增量方法计划更新，这样所有 VM 实例才不会同时更新。
+> 更新管理不支持对 Azure 虚拟机规模集中的所有实例安全地自动执行更新管理。 建议使用[自动 OS 映像升级](../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)来管理规模集的 OS 映像升级。
 
 ### <a name="unsupported-operating-systems"></a>不支持的操作系统
 
@@ -160,16 +160,7 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 
 ## <a name="network-planning"></a><a name="ports"></a>网络规划
 
-更新管理特别需要以下地址。 与以下地址的通信通过端口 443 进行。
-
-|Azure 中国云  |
-|---------|---------|
-|*.ods.opinsights.azure.cn    |
-|*.oms.opinsights.azure.cn     |
-|*.blob.core.chinacloudapi.cn |
-|*.azure-automation.cn |
-
-创建网络组安全规则或配置 Azure 防火墙以允许流量流向自动化服务和 Log Analytics 工作区时，请使用 [服务标记](../../virtual-network/service-tags-overview.md#available-service-tags) GuestAndHybridManagement 和 AzureMonitor 。 这样可简化网络安全规则的日常管理。 若要获取当前服务标记和范围信息，并将其包含为本地防火墙配置的一部分，请参阅[可下载的 JSON 文件](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)。
+查看 [Azure 自动化网络配置](../automation-network-configuration.md#hybrid-runbook-worker-and-state-configuration)，以了解有关更新管理所需的端口、URL 和其他网络的详细信息。
 
 对于 Windows 计算机，还必须允许流量发送到 Windows 更新所需的任何终结点。 可以在[与 HTTP/Proxy 相关的问题](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)中找到所需终结点的更新列表。 如果你有本地 [Windows 更新服务器](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)，则还必须允许流向 [WSUS 密钥](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)中指定的服务器的流量。
 
@@ -200,7 +191,9 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 |其他更新     | 本质上不是关键更新或不是安全更新的所有其他更新。        |
 
 >[!NOTE]
->适用于 Linux 计算机的更新分类在支持的 Azure 中国云中使用时不可用。 没有 Linux 更新分类，它们显示在“其他更新”类别下。 更新管理使用受支持的分发版发布的数据，尤其是其发布的 [OVAL](https://oval.mitre.org/)（开放式漏洞与评估语言）文件。 由于 Internet 访问受到限制，因此更新管理无法访问和使用这些文件。
+>适用于 Linux 计算机的更新分类在支持的 Azure 中国云中使用时不可用。 
+>
+> 没有 Linux 更新分类，它们显示在“其他更新”类别下。 更新管理使用受支持的分发版发布的数据，尤其是其发布的 [OVAL](https://oval.mitre.org/)（开放式漏洞与评估语言）文件。 由于网络访问受限，更新管理无法访问以上文件。
 
 对于 Linux，更新管理可以区分云中类别“安全性”和“其他”下的关键更新和安全更新，同时显示因云中数据扩充而产生的评估数据 。 为了进行修补，更新管理依赖于计算机上提供的分类数据。 与其他发行版不同，CentOS 在 RTM 版本中未提供此信息。 如果已将 CentOS 计算机配置为返回以下命令的安全数据，则更新管理可以基于分类进行修补。
 

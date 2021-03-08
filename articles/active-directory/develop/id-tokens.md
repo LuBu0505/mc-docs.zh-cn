@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/06/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 1bc25f8e822b5799617d47dad5e44e8d5154b331
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: b043e5f6d723235de9fd3e7f9d415e1993fe1975
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022049"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697044"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft 标识平台 ID 令牌
 
@@ -89,7 +89,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`groups:src1`|JSON 对象 | 对于长度不受限制（参阅上文中的 `hasgroups`）但对于令牌而言仍然太大的令牌请求，将包括指向用户的完整组列表的链接。 对于 JWT，作为分布式声明；对于 SAML，作为新声明替代 `groups` 声明。 <br><br>JWT 值示例： <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://microsoftgraph.chinacloudapi.cn/v1.0/users/{userID}/getMemberObjects" }`<br><br> 有关详细信息，请参阅[组超额声明](#groups-overage-claim)。|
 
 > [!NOTE]
-> v1.0 和 v2.0 id_token 携带的信息量存在差异，如上述示例所示。 版本基于终结点，从该终结点处其接受请求。 尽管现有应用程序可能使用 Azure AD 终结点，但新应用程序应使用 v2.0“Microsoft 标识平台”终结点。
+> v1.0 和 v2.0 id_token 携带的信息量存在差异，如上述示例所示。 版本基于终结点，从该终结点处其接受请求。 尽管现有应用程序可能使用 Azure AD 终结点，但新应用程序应使用“Microsoft 标识平台”。
 >
 > - v1.0：Azure AD 终结点：`https://login.partner.microsoftonline.cn/common/oauth2/authorize`
 > - v2.0：Microsoft 标识平台终结点：`https://login.partner.microsoftonline.cn/common/oauth2/v2.0/authorize`
@@ -139,4 +139,3 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 
 * 了解[访问令牌](access-tokens.md)
 * 使用[可选声明](active-directory-optional-claims.md)自定义 id_token 中的 JWT 声明。
-

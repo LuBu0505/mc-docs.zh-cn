@@ -1,29 +1,28 @@
 ---
-title: Microsoft 标识平台身份验证协议 | Microsoft Docs
+title: Microsoft 标识平台身份验证协议
 description: Microsoft 标识平台支持的身份验证协议概述
 author: rwike77
 services: active-directory
 manager: CelesteDG
-ms.assetid: 7a838ae2-c24c-4304-b6c0-e77fb888e6c0
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 02/22/2021
 ms.author: v-junlch
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29e72774d984e913f9130865a097573500d17e31
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ROBOTS: NOINDEX
+ms.openlocfilehash: 110fd731a78c97beeda63c34c24013af0b8f6148
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75776876"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697458"
 ---
 # <a name="microsoft-identity-platform-authentication-protocols"></a>Microsoft 标识平台身份验证协议
 
-Microsoft 标识平台支持多个最广泛使用的身份验证和授权协议。 本部分中的主题介绍 Microsoft 标识平台中支持的协议及其实现。 这些主题包括支持的声明类型的回顾、联合元数据的使用简介、详细的 OAuth 2.0。 和 SAML 2.0 协议参考文档，以及故障排除部分。
+Microsoft 标识平台支持多个广泛使用的身份验证和授权协议。 本部分中的主题介绍 Microsoft 标识平台中支持的协议及其实现。 这些主题包括支持的声明类型的回顾、联合元数据的使用简介、详细的 OAuth 2.0。 和 SAML 2.0 协议参考文档，以及故障排除部分。
 
 ## <a name="authentication-protocols-articles-and-reference"></a>身份验证协议文章和参考
 
@@ -38,5 +37,3 @@ Microsoft 标识平台支持多个最广泛使用的身份验证和授权协议�
 
 * [Microsoft 标识平台概述](v2-overview.md)
 * [Active Directory 代码示例](sample-v2-code.md)
-
-<!-- Update_Description: wording update -->

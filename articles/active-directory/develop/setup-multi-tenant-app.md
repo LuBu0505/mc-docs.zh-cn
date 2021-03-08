@@ -9,14 +9,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/19/2020
+ms.date: 02/23/2021
 ms.author: v-junlch
-ms.openlocfilehash: da4108413eeec1128453179cc48ed1ec6fcbcd6d
-ms.sourcegitcommit: 7646936d018c4392e1c138d7e541681c4dfd9041
+ROBOTS: NOINDEX
+ms.openlocfilehash: 56ce739dc8765dc84000f31190b57853cfbd67a8
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88647664"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697644"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>如何配置新的多租户应用程序
 
@@ -28,5 +29,4 @@ ms.locfileid: "88647664"
 - 有关详细信息，请参阅[如何对多租户应用程序进行端到端配置和编码](./howto-convert-app-to-be-multi-tenant.md)，其中包括如何注册、使用“通用”终结点、实现“用户”和“管理员”同意、如何实现更多高级多层方案
 
 ## <a name="next-steps"></a>后续步骤
-[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
-
+[AzureAD Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html)

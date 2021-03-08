@@ -4,20 +4,20 @@ description: Azure Stack Hub 上的 Azure 应用服务和 Azure Functions 概述
 author: WenJason
 ms.topic: article
 origin.date: 05/05/2020
-ms.date: 07/20/2020
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 01/13/2019
-ms.openlocfilehash: e11fc422bf687d39996e557c3b7d9e73ef119d8e
-ms.sourcegitcommit: e9ffd50aa5eaab402a94bfabfc70de6967fe6278
+ms.openlocfilehash: 2df0f190f287eadd7388a66d5a45a4648b91f767
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2020
-ms.locfileid: "86307437"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697082"
 ---
 # <a name="azure-app-service-and-azure-functions-on-azure-stack-hub-overview"></a>Azure Stack Hub 上的 Azure 应用服务和 Azure Functions 概述
 
-Azure Stack Hub 上的 Azure 应用服务是 Azure 的一种可用于 Azure Stack Hub 的平台即服务 (PaaS) 套餐。 该服务可让你的内部或外部客户为任何平台或设备创建 Web 应用、API 应用和 Azure Functions 应用。 他们可以将你的应用与本地应用集成，并可实现业务流程的自动化。 Azure Stack Hub 云操作员可以在完全托管的虚拟机 (VM) 上，使用他们选择的共享 VM 资源或专用 VM 运行客户的应用。
+Azure Stack Hub 上的 Azure 应用服务是 Azure 的一种可用于 Azure Stack Hub 的平台即服务 (PaaS) 套餐。 通过该服务，你的内部或外部客户可为任何平台或设备创建 Web 应用和 Azure Functions 应用。 他们可以将你的应用与本地应用集成，并可实现业务流程的自动化。 Azure Stack Hub 云操作员可以在完全托管的虚拟机 (VM) 上，使用他们选择的共享 VM 资源或专用 VM 运行客户的应用。
 
 使用 Azure 应用服务可以自动执行业务流程和托管云 API。 Azure 应用服务作为单个集成服务，允许用户将各种组件（例如网站、REST API 和业务流程）组合到单个解决方案中。
 
@@ -33,8 +33,7 @@ Azure Stack Hub 上的 Azure 应用服务是 Azure 的一种可用于 Azure Stac
 
 应用服务提供多种应用类型，每种类型负责托管特定的工作负荷：
 
-- [Web 应用](/app-service/overview)用于托管网站和 Web 应用。
-- [API 应用](/app-service/overview)用于托管 REST API。
+- [Web 应用](/app-service/overview)用于托管网站、Web 应用和 REST API。
 - [Azure Functions v1](/azure-functions) 用于托管事件驱动的无服务器工作负荷。
 
 “应用”一词是指专用于运行工作负荷的托管资源。 以 Web 应用为例，你可能习惯于将 Web 应用视为计算资源和应用代码，二者共同向浏览器提供功能。 在 Azure 应用服务中，Web 应用是 Azure Stack Hub 提供的用于托管应用代码的计算资源。

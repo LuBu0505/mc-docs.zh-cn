@@ -3,15 +3,15 @@ title: 适用于 Azure Functions 的 Azure 队列存储触发器和绑定概述
 description: 了解如何在 Azure Functions 中使用 Azure 队列存储触发器和输出绑定。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 10/19/2020
+ms.date: 03/01/2021
 ms.author: v-junlch
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 0f2d117143a0b5f99f5463dee370eb82e53b96bc
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+ms.openlocfilehash: c1b5044e771eda187753910317a6389e022adf35
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472648"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697003"
 ---
 # <a name="azure-queue-storage-trigger-and-bindings-for-azure-functions-overview"></a>适用于 Azure Functions 的 Azure 队列存储触发器和绑定概述
 
@@ -34,6 +34,13 @@ Azure Functions 可以在创建新的 Azure 队列存储消息时运行，并可
 | C# 脚本、Java、JavaScript、PowerShell | 注册[扩展捆绑包]          | 建议将 [Azure Tools 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)用于 Visual Studio Code。 |
 | C# 脚本（Azure 门户中仅限联机）         | 添加绑定                            | 若要更新现有绑定扩展而不必重新发布函数应用，请参阅[更新扩展]。 |
 
+#### <a name="storage-extension-5x-and-higher"></a>存储扩展 5.x 和更高版本
+
+新版本的存储绑定扩展可用作[预览 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/5.0.0-beta.2)。 此预览版引入了[使用标识而不是机密进行连接](./functions-reference.md#configure-an-identity-based-connection)的功能。 对于 .NET 应用程序，它还会更改可以绑定到的类型，并将 `WindowsAzure.Storage` 和 `Microsoft.Azure.Storage` 中的类型替换为 [Azure.Storage.Queues](https://docs.microsoft.com/dotnet/api/azure.storage.queues) 中的新类型。
+
+> [!NOTE]
+> 预览包不包括在扩展捆绑包中，必须手动安装。 对于 .NET 应用，请添加对包的引用。 对于所有其他应用类型，请参阅[更新扩展]。
+
 [core tools]: ./functions-run-local.md
 [扩展捆绑包]: ./functions-bindings-register.md#extension-bundles
 [NuGet 包]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage
@@ -46,8 +53,41 @@ Functions 1.x 应用会自动引用 [Microsoft.Azure.WebJobs](https://www.nuget.
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
+<a name="host-json"></a>  
+
+## <a name="hostjson-settings"></a>host.json 设置
+
+本部分介绍版本 2.x 及更高版本中可用于此绑定的全局配置设置。 下面的示例 host.json 文件仅包含此绑定的 2.x 版及更高版本设置。 若要详细了解 2.x 版及更高版本中的全局配置设置，请参阅 [Azure Functions 的 host.json 参考](functions-host-json.md)。
+
+> [!NOTE]
+> 有关 Functions 1.x 中 host.json 的参考，请参阅 [Azure Functions 1.x 的 host.json 参考](functions-host-json-v1.md)。
+
+```json
+{
+    "version": "2.0",
+    "extensions": {
+        "queues": {
+            "maxPollingInterval": "00:00:02",
+            "visibilityTimeout" : "00:00:30",
+            "batchSize": 16,
+            "maxDequeueCount": 5,
+            "newBatchThreshold": 8,
+            "messageEncoding": "base64"
+        }
+    }
+}
+```
+
+|属性  |默认 | 说明 |
+|---------|---------|---------|
+|maxPollingInterval|00:00:01|队列轮询的最大间隔时间。 最小值为 00:00:00.100（100 毫秒），可递增至 00:01:00（1 分钟）。  在函数 2.x 和更高版本中，数据类型是 `TimeSpan`，而在版本 1.x 中，它以毫秒为单位。|
+|visibilityTimeout|00:00:00|消息处理失败时的重试间隔时间。 |
+|batchSize|16|Functions 运行时同时检索并并行处理的队列消息数。 当处理的数量下降到 `newBatchThreshold` 时，运行时可获取另一个批，并开始处理这些消息。 因此，每个函数处理的最大并发消息数是 `batchSize` 加上 `newBatchThreshold`。 此限制分别应用于各个队列触发的函数。 <br><br>如果要避免对队列上收到的消息并行执行，可以将 `batchSize` 设置为 1。 但是，只有在函数应用仅于单个虚拟机 (VM) 上运行时，此设置才可消除并发。 如果函数应用横向扩展到多个 VM，每个 VM 可运行每个队列触发的函数的一个实例。<br><br>`batchSize` 的最大值为 32。 |
+|maxDequeueCount|5|在将某个消息移到有害队列之前，尝试处理该消息的次数。|
+|newBatchThreshold|batchSize/2|只要同时处理的消息数下降到此数值，运行时即检索另一个批次。|
+|messageEncoding|base64| 此设置仅适用于[扩展版本 5.0.0 和更高版本](#storage-extension-5x-and-higher)。 它表示消息的编码格式。 有效值为 `base64` 和 `none`。|
+
 ## <a name="next-steps"></a>后续步骤
 
 - [在队列存储数据更改时运行函数（触发器）](./functions-bindings-storage-queue-trigger.md)
 - [向队列存储写入消息（输出绑定）](./functions-bindings-storage-queue-output.md)
-

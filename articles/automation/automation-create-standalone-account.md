@@ -3,15 +3,15 @@ title: 创建独立的 Azure 自动化帐户
 description: 本文介绍如何创建独立的 Azure 自动化帐户和经典运行方式帐户。
 services: automation
 ms.subservice: process-automation
-origin.date: 01/15/2019
-ms.date: 11/02/2020
+origin.date: 01/07/2021
+ms.date: 02/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: e05d3c0535e6d0653907a949dde8eb56dc27e8f1
-ms.sourcegitcommit: ca5e5792f3c60aab406b7ddbd6f6fccc4280c57e
+ms.openlocfilehash: f0963af1cf91b8fd6d77464ab17077ba4193297c
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92750208"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697711"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>创建独立的 Azure 自动化帐户
 
@@ -39,7 +39,7 @@ ms.locfileid: "92750208"
 如果已将某用户添加到全局管理员/共同管理员角色，则可先将其从订阅的 Active Directory 实例中删除， 然后将其重新添加到 Active Directory 中的用户角色。 若要验证用户角色，请执行以下操作：
 
 1. 在 Azure 门户中，转到“Azure Active Directory”窗格。
-1. 选择“用户和组”。
+1. 选择“用户和组”  。
 1. 选择“所有用户”。
 1. 选择特定的用户后，选择“配置文件”。 用户配置文件下的“用户类型”属性值不应为“来宾”。
 
@@ -94,7 +94,7 @@ ms.locfileid: "92750208"
 
 ## <a name="create-a-classic-run-as-account"></a>创建经典运行方式帐户
 
-创建 Azure 自动化帐户时，默认情况下不再创建经典运行方式帐户。 如果你仍需要经典运行方式帐户：
+默认情况下，在创建 Azure 自动化帐户时不会创建经典运行方式帐户。 若需使用经典运行方式帐户管理 Azure 经典资源，请执行以下步骤：
 
 1. 在“自动化帐户”的“帐户设置”下，选择“运行方式帐户” 。
 2. 选择“Azure 经典运行方式帐户”。
@@ -105,5 +105,5 @@ ms.locfileid: "92750208"
 * 若要详细了解图形创作，请参阅[在 Azure 自动化中创作图形 Runbook](automation-graphical-authoring-intro.md)。
 * 若要开始使用 PowerShell Runbook，请参阅[教程：创建 PowerShell Runbook](learn/automation-tutorial-runbook-textual-powershell.md)。
 * 若要开始使用 PowerShell 工作流 Runbook，请参阅[教程：创建 PowerShell 工作流 Runbook](learn/automation-tutorial-runbook-textual.md)。
-* 若要开始使用 Python 2 Runbook，请参阅[教程：创建 Python 2 Runbook](learn/automation-tutorial-runbook-textual-python2.md)。
-* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation)。
+* 若要开始使用 Python 3 Runbook，请参阅[教程：创建 Python 3 Runbook](learn/automation-tutorial-runbook-textual-python-3.md)。
+* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation)。

@@ -4,17 +4,17 @@ titleSuffix: Azure Stack
 description: 了解在 Azure Stack Hub 上可以使用哪些来宾操作系统。
 author: WenJason
 ms.topic: article
-origin.date: 12/15/2020
-ms.date: 01/11/2021
+origin.date: 02/01/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/06/2019
-ms.openlocfilehash: b65938f129d9664be0e8c6ceeae9f90aa9f24d56
-ms.sourcegitcommit: 3f54ab515b784c9973eb00a5c9b4afbf28a930a9
+ms.openlocfilehash: ebefb8d30ed6958d8116011cc8f6807675e1fc0a
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894359"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697443"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack-hub"></a>Azure Stack Hub 支持的来宾操作系统
 
@@ -51,9 +51,17 @@ Azure Stack Hub 市场中列为可用的 Linux 发行版包括必要的 Windows 
 
 | 分发 | 说明 | 发布者 | Azure Stack Hub 市场 |
 | --- | --- | --- | --- |
-| 基于 CentOS 的 6.9 | 64 位 | Rogue Wave | 是 |
+| 基于 CentOS 的 8.0 | 64 位 | Rogue Wave | 是 |
+| 基于 CentOS 的 7.8 | 64 位 | Rogue Wave | 是 |
+| 基于 CentOS 的 7.7 LVM | 64 位 | Rogue Wave | 是 |
+| 基于 CentOS 的 7.7 | 64 位 | Rogue Wave | 是 |
+| 基于 CentOS 的 7.6 | 64 位 | Rogue Wave | 是 |
 | 基于 CentOS 的 7.5 | 64 位 | Rogue Wave | 是 |
+| 基于 CentOS 的 7.5 LVM | 64 位 | Rogue Wave | 是 |
+| 基于 CentOS 的 7.4 | 64 位 | Rogue Wave | 是 |
 | 基于 CentOS 的 7.3 | 64 位 | Rogue Wave | 是 |
+| 基于 CentOS 的 6.9 | 64 位 | Rogue Wave | 是 |
+| 基于 CentOS 的 6.10 | 64 位 | Rogue Wave | 是 |
 | ClearLinux | 64 位 | ClearLinux.org | 是 |
 | CoreOS Linux (Stable) |  64 位 | CoreOS | 是 |
 | Debian 8 "Jessie" | 64 位 | credativ |  是 |
@@ -65,6 +73,7 @@ Azure Stack Hub 市场中列为可用的 Linux 发行版包括必要的 Windows 
 | Ubuntu 14.04-LTS | 64 位 | Canonical | 是 |
 | Ubuntu 16.04-LTS | 64 位 | Canonical | 是 |
 | Ubuntu 18.04-LTS | 64 位 | Canonical | 是 |
+| Ubuntu Server 20.04 LTS | 64 位 | Canonical | 是 |
 
 有关 Red Hat Enterprise Linux 支持信息，请参阅 [Red Hat 和 Azure Stack Hub：常见问题解答](https://access.redhat.com/articles/3413531)。
 

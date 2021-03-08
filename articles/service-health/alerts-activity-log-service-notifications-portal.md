@@ -1,14 +1,14 @@
 ---
 title: 使用 Azure 门户接收有关 Azure 服务通知的活动日志警报
-description: 在 Azure 服务发生时，通过短信、电子邮件或 webhook 接收通知。
+description: 了解如何使用 Azure 门户为服务运行状况通知设置活动日志警报。
 ms.topic: conceptual
-ms.date: 08/10/2020
-ms.openlocfilehash: f9239f826c6c0fd322f10799dee5db25db8a238d
-ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
+ms.date: 02/19/2021
+ms.openlocfilehash: b3b74e84f4ce8aa7a70b6a406112b06f2e5afac0
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88223329"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697535"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications-using-the-azure-portal"></a>使用 Azure 门户创建有关服务通知的活动日志警报
 ## <a name="overview"></a>概述
@@ -56,14 +56,14 @@ ms.locfileid: "88223329"
 > [!NOTE]
 >此订阅用于保存活动日志警报。 警报资源部署到此订阅，并在其中监视活动日志事件。
 
-5. 选择要针对其发出警报的**事件类型**：   服务问题、计划内维护、运行状况公告和安全公告。
+5. 选择要针对其发出警报的 **事件类型**：   服务问题、计划内维护、运行状况公告和安全公告。
 
 6. 单击“选择操作组”以选择现有操作组或创建新的操作组。 有关操作组的详细信息，请参阅[在 Azure 门户中创建和管理操作组](../azure-monitor/platform/action-groups.md)。
 
 
-7. 通过输入**警报规则名称**和**说明**定义警报详细信息。
+7. 通过输入 **警报规则名称** 和 **说明** 定义警报详细信息。
 
-8. 选择要将警报保存到的**资源组**。
+8. 选择要将警报保存到的 **资源组**。
 
 
 

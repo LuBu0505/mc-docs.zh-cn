@@ -2,13 +2,13 @@
 title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
-ms.date: 01/04/2021
-ms.openlocfilehash: 636cdfb3567529b22c93c17af8c665864287d861
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.date: 03/02/2021
+ms.openlocfilehash: 60abdaaf2e5645d551fc6945200b7422655dacdf
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021461"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697332"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host.json 参考 
 
@@ -39,6 +39,7 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
         "flushTimeout": "00:00:30"
     },
     "extensions": {
+        "blobs": {},
         "cosmosDb": {},
         "durableTask": {},
         "eventHubs": {},
@@ -216,6 +217,10 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 | thresholdForSnapshotting | 1 | Application Insights 请求快照之前需要查看异常的次数。 |
 | uploaderProxy | null | 替代 Snapshot Uploader 进程中使用的代理服务器。 如果应用程序通过代理服务器连接到 Internet，则可能需要使用此设置。 Snapshot Collector 在应用程序的进程内运行，并使用相同的代理设置。 但是，Snapshot Uploader 作为单独的进程运行，并且你可能需要手动配置代理服务器。 如果此值为 null，Snapshot Collector 将尝试通过检查 System.Net.WebRequest.DefaultWebProxy 并将值传递到 Snapshot Uploader 来自动检测代理的地址。 如果此值不为 null，则不会使用自动检测，并且将在 Snapshot Uploader 中使用此处指定的代理服务器。 |
 
+## <a name="blobs"></a>Blob
+
+可在[存储 Blob 触发器和绑定](functions-bindings-storage-blob.md#hostjson-settings)中查找配置设置。  
+
 ## <a name="cosmosdb"></a>CosmosDB
 
 可在 [Cosmos DB 触发器和绑定](functions-bindings-cosmosdb-v2-output.md#host-json)中查找配置设置。
@@ -378,7 +383,7 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 
 ## <a name="queues"></a>queues
 
-可在[存储队列触发器和绑定](functions-bindings-storage-queue-output.md#host-json)中查找设置。  
+可在[存储队列触发器和绑定](functions-bindings-storage-queue.md#host-json)中查找设置。  
 
 ## <a name="retry"></a>retry
 
@@ -482,4 +487,3 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 
 > [!div class="nextstepaction"]
 > [查看环境变量中的全局设置](functions-app-settings.md)
-

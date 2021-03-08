@@ -4,17 +4,17 @@ titleSuffix: Azure Stack Hub
 description: 了解 Azure Stack Hub 服务策略以及如何使集成系统保持受支持状态。
 author: WenJason
 ms.topic: article
-origin.date: 12/15/2020
-ms.date: 01/11/2021
+origin.date: 02/17/2020
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: niy
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: e7ab006de3a3acf5ac5c7fa7985e3ad545a08173
-ms.sourcegitcommit: 3f54ab515b784c9973eb00a5c9b4afbf28a930a9
+ms.openlocfilehash: 85552a9f2cb5acb235175ea72fc89eba70e0b142
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894417"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697112"
 ---
 # <a name="azure-stack-hub-servicing-policy"></a>Azure Stack Hub 服务策略
 
@@ -28,7 +28,7 @@ Microsoft 会发布完整的更新包和修补程序包来解决特定问题。
 
 修补程序更新包托管在同一个安全的 Azure 终结点中。 可以使用每篇相应的修补程序知识库文章（例如，[Azure Stack Hub 修补程序 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114)）中的嵌入式链接下载它们。 Azure Stack Hub 操作员可以按照[在 Azure Stack Hub 中应用更新](azure-stack-apply-updates.md)中的过程下载 .xml 和 .zip 文件并将其导入，这与操作完整的每月更新包类似。 使用已连接缩放单元的 Azure Stack Hub 操作员会看到修补程序自动出现在管理员门户中，并会看到消息“有可用更新”。
 
-如果缩放单元未连接，并且希望收到有关每个修补程序版本的通知，请订阅每个版本中记录的 [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss) 或 [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom) 源。
+如果缩放单元未连接，并且希望收到有关每个修补程序版本的通知，请订阅 [RSS 源](https://azurestackhubdocs.azurewebsites.net/xml/hotfixes.rss)以获取有关每个修补程序版本的通知。
 
 ## <a name="update-package-types"></a>更新包类型
 
@@ -48,9 +48,9 @@ OEM 硬件供应商会根据需要发布更新。 请咨询 OEM 以获取硬件�
 
 有关特定更新（包括其下载方法）的信息，请参阅该更新的发行说明：
 
-- [Azure Stack Hub 2008 更新](/azure-stack/operator/release-notes?view=azs-2008)
-- [Azure Stack Hub 2005 更新](/azure-stack/operator/release-notes?view=azs-2005)
-- [Azure Stack Hub 2002 更新](/azure-stack/operator/release-notes?view=azs-2002)
+- [Azure Stack Hub 2008 更新](./release-notes.md?preserve-view=true&view=azs-2008)
+- [Azure Stack Hub 2005 更新](./release-notes.md?preserve-view=true&view=azs-2005)
+- [Azure Stack Hub 2002 更新](./release-notes.md?preserve-view=true&view=azs-2002)
 
 ## <a name="hotfixes"></a>修补程序
 
@@ -62,8 +62,8 @@ OEM 硬件供应商会根据需要发布更新。 请咨询 OEM 以获取硬件�
 
 有关当前可用的修补程序的信息，请参阅该更新的发行说明：
 
-- [Azure Stack Hub 2005 修补程序](/azure-stack/operator/release-notes?view=azs-2005#hotfixes)
-- [Azure Stack Hub 2002 修补程序](/azure-stack/operator/release-notes?view=azs-2002#hotfixes-1)
+- [Azure Stack Hub 2005 修补程序](./release-notes.md?preserve-view=true&view=azs-2005#hotfixes)
+- [Azure Stack Hub 2002 修补程序](./release-notes.md?preserve-view=true&view=azs-2002#hotfixes-1)
 
 ## <a name="keep-your-system-under-support"></a>保持系统受支持
 

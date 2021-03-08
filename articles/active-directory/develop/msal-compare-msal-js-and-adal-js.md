@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/02/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ced13961495319724d436f1c9e05aa1a9be0408e
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: b00103aa8256a946e59af59116628520eafd0449
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540672"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697030"
 ---
 # <a name="differences-between-msaljs-and-adaljs"></a>MSAL.js 与 ADAL.js 的差异
 
-适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 与适用于 JavaScript 的 Azure AD 身份验证库 (ADAL.js) 用于对 Azure AD 实体进行身份验证，以及从 Azure AD 请求令牌。 截止目前，大多数开发人员都是通过 ADAL 来请求令牌，使用面向开发人员的 Azure AD (v1.0) 来对 Azure AD 标识（工作和学校帐户）进行身份验证。 现在，使用 MSAL.js 可以通过 Microsoft 标识平台 (v2.0) 对更广泛的 Microsoft 标识（Azure AD 标识以及通过 Azure AD B2C 使用的社交和本地帐户）进行身份验证。
+适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 与适用于 JavaScript 的 Azure AD 身份验证库 (ADAL.js) 用于对 Azure AD 实体进行身份验证，以及从 Azure AD 请求令牌。 截止目前，大多数开发人员都是通过 ADAL 来请求令牌，使用面向开发人员的 Azure AD (v1.0) 来对 Azure AD 标识（工作和学校帐户）进行身份验证。 现在，使用 MSAL.js 可以通过 Microsoft 标识平台对更广泛的 Microsoft 标识（Azure AD 标识以及通过 Azure AD B2C 使用的社交和本地帐户）进行身份验证。
 
 本文介绍如何在适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 与适用于 JavaScript 的 Azure AD 身份验证库 (ADAL.js) 之间进行选择，并对这两个库做了比较。
 
@@ -48,7 +48,7 @@ ms.locfileid: "99540672"
 
 在 v1.0 中，使用 `https://login.partner.microsoftonline.cn/common` 颁发机构可让用户使用任何 Azure AD 帐户（适用于任何组织）登录。
 
-在 v2.0 中，使用 `https://login.partner.microsoftonline.cn/common` 颁发机构可让用户使用任何 Azure AD 组织帐户登录。 若要限制为只能登录到 Azure AD 帐户（与 ADAL.js 中的行为类似），需要使用 `https://login.partner.microsoftonline.cn/organizations`。 有关详细信息，请参阅[使用 MSAL.js 初始化](msal-js-initializing-client-applications.md)中的 `authority` 配置选项。
+在 v2.0 中，使用 `https://login.partner.microsoftonline.cn/common` 颁发机构可让用户使用任何 Azure AD 组织帐户登录。 若要限制为只能登录到 Azure AD 帐户（与 ADAL.js 中的行为类似），请使用 `https://login.partner.microsoftonline.cn/organizations`。 有关详细信息，请参阅[使用 MSAL.js 初始化](msal-js-initializing-client-applications.md)中的 `authority` 配置选项。
 
 ### <a name="scopes-for-acquiring-tokens"></a>用于获取令牌的范围
 * 身份验证请求中用于获取令牌的范围而不是资源参数

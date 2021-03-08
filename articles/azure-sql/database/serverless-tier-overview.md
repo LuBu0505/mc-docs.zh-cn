@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein
 origin.date: 12/8/2020
-ms.date: 01/04/2021
-ms.openlocfilehash: e8eab6d0492106ab58beddc17c9344fbb01b25fc
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.date: 02/22/2021
+ms.openlocfilehash: 0e8075b169f346f6ee1e26cb65aa0ada56c8499d
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830264"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697309"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -26,14 +26,14 @@ ms.locfileid: "97830264"
 
 ## <a name="serverless-compute-tier"></a>无服务器计算层
 
-Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩放范围和 autopause 延迟参数化。 这些参数的配置将组成数据库性能经验和计算成本。
+Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩放范围和自动暂停延迟参数化。 这些参数的配置将组成数据库性能经验和计算成本。
 
 ![无服务器计费](./media/serverless-tier-overview/serverless-billing.png)
 
 ### <a name="performance-configuration"></a>性能配置
 
 - “最小 vCore 数”和“最大 vCore 数”是可配置的参数，用于定义数据库可用的计算容量范围。  内存和 IO 限制与指定的 vCore 范围成正比。  
-- **自动暂停延迟** 是可配置的参数，用于定义数据库在自动暂停之前必须处于非活动状态的时间段。 发生下次登录或其他活动时，数据库会自动恢复。  或者，可以禁用自动暂停。
+- 自动暂停延迟是可配置的参数，用于定义数据库在自动暂停之前必须处于非活动状态的时间段。 发生下次登录或其他活动时，数据库会自动恢复。  或者，可以禁用自动暂停。
 
 ### <a name="cost"></a>成本
 
@@ -49,7 +49,7 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 
 对于具有间歇性、不可预测的使用模式，在空闲使用时间段后的计算预热期间能够容忍一定延迟的单一数据库来说，无服务器是一种高性价比的方案。 相比之下，对于具有较高的平均使用量，并且计算预热期间无法容忍任何延迟的单一数据库或多个数据库，预配计算层是更具性价比的方案。
 
-### <a name="scenarios-well-suited-for-serverless-compute"></a>适合无服务器计算的场景
+### <a name="scenarios-well-suited-for-serverless-compute"></a>非常适合无服务器计算的场景
 
 - 具有间歇性、不可预测的使用模式，中间穿插着非活动时段且一段时间内平均计算利用率较低的单一数据库。
 - 预配计算层中经常重新缩放的单一数据库；客户更倾向于将计算重新缩放委托到服务。
@@ -58,7 +58,7 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 ### <a name="scenarios-well-suited-for-provisioned-compute"></a>适合预配计算的场景
 
 - 采用较有规律的可预测使用模式，且在一段时间内平均计算利用率较高的单一数据库。
-- 不能容忍因较频繁的内存微调或从暂停状态下自动恢复的延迟，而导致需要对性能做出妥协的数据库。
+- 不能容忍因较频繁的内存微调或从暂停状态下恢复的延迟，而导致需要对性能做出妥协的数据库。
 - 采用间歇性、不可预测使用模式，可整合到弹性池以提高性价比优化的多个数据库。
 
 ## <a name="comparison-with-provisioned-compute-tier"></a>与预配计算层的比较
@@ -104,9 +104,9 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 
 随着从磁盘中不断提取数据，SQL 缓存也会不断增大，其增长速度与预配的数据库相同。 当数据库处于繁忙状态时，允许缓存无约束增大，但不能超过最大内存限制。
 
-## <a name="autopausing-and-autoresuming"></a>自动暂停和自动恢复
+## <a name="auto-pause-and-auto-resume"></a>自动暂停和自动恢复
 
-### <a name="autopausing"></a>自动暂停
+### <a name="auto-pause"></a>自动暂停
 
 如果在自动暂停延迟的时间段内，下面的所有条件均成立，则会触发自动暂停：
 
@@ -125,7 +125,7 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 
 在部署某些需要数据库联机的服务更新期间，会暂时阻止自动暂停。  在这种情况下，一旦服务更新完成，就会再次允许自动暂停。
 
-### <a name="autoresuming"></a>自动恢复
+### <a name="auto-resuming"></a>自动恢复
 
 如果在任何时候，下面的任意条件成立，均会触发自动恢复：
 
@@ -148,7 +148,7 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 
 监视解决方案、管理解决方案或其他执行上述任何操作的解决方案将触发自动恢复。
 
-在部署某些需要数据库联机的服务更新时，也会触发自动刷新。
+在部署某些需要数据库联机的服务更新期间，也会触发自动恢复。
 
 ### <a name="connectivity"></a>连接
 

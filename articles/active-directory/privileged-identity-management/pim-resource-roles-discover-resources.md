@@ -11,15 +11,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/26/2020
+ms.date: 02/24/2021
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 087a79a40446a9805ce68e27ee3eb3dd1a639662
-ms.sourcegitcommit: ca5e5792f3c60aab406b7ddbd6f6fccc4280c57e
+ms.openlocfilehash: db5579f9275b464ec603b0b55c7adbf64d2a2c19
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92749780"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697199"
 ---
 # <a name="discover-azure-resources-to-manage-in-privileged-identity-management"></a>在 Privileged Identity Management 中发现要管理的 Azure 资源
 
@@ -66,7 +66,7 @@ ms.locfileid: "92749780"
 
     ![已选择资源并突出显示“管理资源”选项的“发现”窗格](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
 
-1. 如果看到确认加入要管理的所选资源的消息，请选择“是”。
+1. 如果看到确认加入要管理的所选资源的消息，请选择“是”。 然后将 PIM 配置为管理资源下的所有新的和现有的子对象。
 
     ![确认加入所选资源以进行管理的消息](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
 
@@ -74,4 +74,3 @@ ms.locfileid: "92749780"
 
 - [在 Privileged Identity Management 中配置 Azure 资源角色设置](pim-resource-roles-configure-role-settings.md)
 - [在 Privileged Identity Management 中分配 Azure 资源角色](pim-resource-roles-assign-roles.md)
-

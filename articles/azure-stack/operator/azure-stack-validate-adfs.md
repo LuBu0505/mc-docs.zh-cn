@@ -7,16 +7,16 @@ documentationcenter: ''
 author: WenJason
 ms.topic: how-to
 origin.date: 10/19/2020
-ms.date: 12/07/2020
+ms.date: 03/01/2021
 ms.author: inhenkel
 ms.reviewer: jerskine
 ms.lastreviewed: 10/19/2020
-ms.openlocfilehash: ca246c50f3248f87e90b04ad0a6d9d7e1c00bb27
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: ef0fd33595a29edc5b11d3bac5b2a409c38d06c3
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508036"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697821"
 ---
 # <a name="validate-ad-fs-integration-for-azure-stack-hub"></a>验证 Azure Stack Hub 的 AD FS 集成
 
@@ -24,9 +24,9 @@ ms.locfileid: "96508036"
 
 就绪性检查器会验证下列项：
 
-* 联合元数据包含用于联合身份验证的有效 XML 元素。 
-* 可以检索 AD FS SSL 证书，并可以生成信任链。  在戳记上，AD FS 必须信任 SSL 证书链。 证书必须由签署 Azure Stack Hub 部署证书的同一证书颁发机构  签名，或者由受信任的根颁发机构合作伙伴签名。 有关受信任根颁发机构合作伙伴的完整列表，请参阅 [TechNet](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca)。
-* AD FS 签名证书受信任且不会在近期过期。 
+* 联合元数据包含用于联合身份验证的有效 XML 元素。
+* 可以检索 AD FS SSL 证书，并可以生成信任链。 在戳记上，AD FS 必须信任 SSL 证书链。 证书必须由签署 Azure Stack Hub 部署证书的同一证书颁发机构签名，或者由受信任的根颁发机构合作伙伴签名。 有关受信任的根证书颁发机构合作伙伴的完整列表，请参阅[参与者列表 - Microsoft 受信任的根程序](https://docs.microsoft.com/security/trusted-root/participants-list)。
+* AD FS 签名证书受信任且不会在近期过期。
 
 有关 Azure Stack Hub 数据中心集成的详细信息，请参阅 [Azure Stack Hub 数据中心集成 - 标识](azure-stack-integrate-identity.md)。
 
@@ -41,7 +41,7 @@ ms.locfileid: "96508036"
 **运行该工具的计算机：**
 
 * 已建立域连接的 Windows 10 或 Windows Server 2016。
-* PowerShell 5.1 或更高版本。 若要检查版本，请运行以下 PowerShell 命令，然后查看主要版本和次要版本：    
+* PowerShell 5.1 或更高版本。 若要检查版本，请运行以下 PowerShell 命令，然后查看主要版本和次要版本：   
     ```powershell
     $PSVersionTable.PSVersion
     ```
@@ -103,8 +103,8 @@ ms.locfileid: "96508036"
 
 使用：
 
-* `-OutputPath`：在 run 命令的末尾使用 *path* 参数可以指定不同的报告位置。
-* `-CleanReport`：在 run 命令的末尾使用该参数可以清除先前报告信息的 AzsReadinessCheckerReport.json。 有关详细信息，请参阅 [Azure Stack Hub 验证报告](azure-stack-validation-report.md)。
+* `-OutputPath`：在 run 命令末尾的 path 参数，指定不同的报告位置。
+* `-CleanReport`：在 run 命令末尾的参数，清除前述报告信息的 AzsReadinessCheckerReport.json。 有关详细信息，请参阅 [Azure Stack Hub 验证报告](azure-stack-validation-report.md)。
 
 ## <a name="validation-failures"></a>验证失败
 
@@ -118,9 +118,9 @@ ms.locfileid: "96508036"
 Invoke-AzsADFSValidation : The term 'Invoke-AzsADFSValidation' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
 ```
 
-**原因**：PowerShell Autoload 无法正常加载就绪性检查器模块。
+原因：PowerShell Autoload 无法正确加载就绪情况检查器模块。
 
-**解决方法**：显式导入就绪性检查器模块。 复制以下代码并将其粘贴到 PowerShell 中，然后使用当前安装的版本号更新 `<version>`。
+解决方案：显示导入就绪情况检查器模块。 复制以下代码并将其粘贴到 PowerShell 中，然后使用当前安装的版本号更新 `<version>`。
 
 ```powershell
 Import-Module "c:\Program Files\WindowsPowerShell\Modules\Microsoft.AzureStack.ReadinessChecker\<version>\Microsoft.AzureStack.ReadinessChecker.psd1" -Force

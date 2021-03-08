@@ -10,15 +10,15 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
-origin.date: 08/04/2020
-ms.date: 01/04/2021
+origin.date: 01/25/2021
+ms.date: 02/22/2021
 tags: azure-synpase
-ms.openlocfilehash: afb12e1e22c1cf6c38478b075532e736651420bc
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 21cc091578b3258e2f0f90d5087bec1eedd08592
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830113"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696607"
 ---
 # <a name="dynamic-data-masking"></a>动态数据屏蔽 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -27,15 +27,11 @@ Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 支持�
 
 动态数据掩码允许客户指定在对应用层产生最小影响的前提下可以透露的敏感数据量，从而帮助防止未经授权的用户访问敏感数据。 它是一种基于策略的安全功能，会在针对指定的数据库字段运行查询后返回的结果集中隐藏敏感数据，同时保持数据库中的数据不变。
 
-例如，呼叫中心服务代表可以根据呼叫者的信用卡号的多个数字来识别其身份，但这些数据项不应完全透露给服务代表。 可以定义掩码规则，对任意查询的结果集中任何信用卡号除最后四位数以外的其他所有数字进行掩码。 另举一例：在需要进行故障排除时，开发人员可通过定义适当的数据掩码来保护个人数据，因此可在不违反符合性法规的情况下，对生产环境进行查询。
+例如，呼叫中心的服务代表可能通过确认呼叫方电子邮件的几个字符来对其进行识别，但是完整的电子邮件地址不应泄露给服务代表。 掩码规则可定义为对任何查询的结果集中的所有电子邮件地址进行掩蔽。 另举一例：在需要进行故障排除时，开发人员可通过定义适当的数据掩码来保护个人数据，因此可在不违反符合性法规的情况下，对生产环境进行查询。
 
 ## <a name="dynamic-data-masking-basics"></a>动态数据掩码基础知识
 
 通过在 SQL 数据库配置窗格中的“安全性”下选择“动态数据掩码”边栏选项卡，在 Azure 门户中设置动态数据掩码策略 。 不能使用 SQL 托管实例的门户设置此功能（请使用 PowerShell 或 REST API）。 有关详细信息，请参阅 [Dynamic Data Masking](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)。
-
-### <a name="dynamic-data-masking-permissions"></a>动态数据掩码权限
-
-Azure SQL 数据库管理员、服务器管理员或 [SQL 安全管理员](../../role-based-access-control/built-in-roles.md#sql-security-manager)角色可以配置动态数据掩码。
 
 ### <a name="dynamic-data-masking-policy"></a>动态数据掩码策略
 
@@ -84,3 +80,11 @@ DDM 建议引擎会将数据库中的某些字段标记为可能的敏感字段�
 
 - [创建或更新](https://docs.microsoft.com/rest/api/sql/datamaskingrules/createorupdate)：创建或更新数据库的数据掩码规则。
 - [按数据库列出](https://docs.microsoft.com/rest/api/sql/datamaskingrules/listbydatabase)：获取数据库的数据掩码规则列表。
+
+## <a name="permissions"></a>权限
+
+动态数据掩码可由 Azure SQL 数据库管理员、服务器管理员或基于角色的访问控制 (RBAC) [SQL 安全管理器](../../role-based-access-control/built-in-roles.md#sql-security-manager)角色配置。
+
+## <a name="next-steps"></a>后续步骤
+
+[动态数据掩码](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)

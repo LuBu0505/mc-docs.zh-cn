@@ -10,14 +10,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 05/29/2017
-ms.date: 12/07/2020
+ms.date: 03/01/2021
 ms.author: v-jay
-ms.openlocfilehash: 0bf71fe627d2c1838a47795d69db72dcdfcd655e
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: b3bb04408ac1ae393cb5cb0b72c1a8475b73e0b4
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747015"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697367"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>为 Azure 中托管的服务配置反向 DNS
 
@@ -34,7 +34,7 @@ Azure 中的服务使用由 Azure 分配并拥有的 IP 地址。 必须在相�
 在 Azure DNS 中，通过 PublicIpAddress 资源公开计算资源（如虚拟机、虚拟机规模集或 Service Fabric 群集）。 使用 PublicIpAddress 的“ReverseFqdn”属性配置反向 DNS 查找。
 
 
-Azure 应用服务目前不支持反向 DNS。
+Azure 应用服务和应用程序网关目前不支持反向 DNS。
 
 ## <a name="validation-of-reverse-dns-records"></a>反向 DNS 记录的验证
 

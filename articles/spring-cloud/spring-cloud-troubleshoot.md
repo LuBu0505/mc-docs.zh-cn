@@ -4,15 +4,15 @@ description: Azure Spring Cloud 的故障排除指南
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: troubleshooting
-ms.date: 12/28/2020
+ms.date: 02/19/2021
 ms.author: v-junlch
 ms.custom: devx-track-java
-ms.openlocfilehash: 88e1843845c63dafc7aa60dc9be01ab94e8522f2
-ms.sourcegitcommit: a37f80e7abcf3e42859d6ff73abf566efed783da
+ms.openlocfilehash: bf939227066c1acb833fd97b9d0ab0778fcd87bd
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829448"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696555"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>排查常见的 Azure Spring Cloud 问题
 

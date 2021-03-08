@@ -3,23 +3,23 @@ title: 按管理任务委派角色 - Azure Active Directory | Microsoft Docs
 description: 在 Azure Active Directory 中为标识任务委托角色
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 11/24/2020
+ms.date: 02/25/2021
 ms.author: v-junlch
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dff75a461518bdf6d75b8149dbeabc954aca67c5
-ms.sourcegitcommit: 883daddafe881e5f8a9f347df2880064d2375b6d
+ms.openlocfilehash: f3163ae7683d051bef771c011caac61ceb3cec7b
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95918512"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696895"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中按管理员任务委托管理员角色
 
@@ -69,7 +69,7 @@ ms.locfileid: "95918512"
 
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
-管理域 | 全局管理员角色 | 
+管理域 | 域名管理员 | 
 读取所有配置 | 目录读者 | 默认用户角色（[请参阅文档](../fundamentals/users-default-permissions.md)）
 
 ## <a name="domain-services"></a>域服务
@@ -79,6 +79,15 @@ ms.locfileid: "95918512"
 创建 Azure AD 域服务实例 | 全局管理员 | 
 执行所有 Azure AD 域服务任务 | Azure AD DC 管理员组（[请参阅文档](../../active-directory-domain-services/tutorial-create-management-vm.md#administrative-tasks-you-can-perform-on-a-managed-domain)） | 
 读取所有配置 | 包含 AD DS 服务的 Azure 订阅的读者 | 
+
+## <a name="devices"></a>设备
+
+任务 | 最小特权角色 | 其他角色
+---- | --------------------- | ----------------
+禁用设备 | 云设备管理员 | 
+启用设备 | 云设备管理员 | 
+读取基本配置 | 默认用户角色（[请参阅文档](../fundamentals/users-default-permissions.md)） | 
+读取 BitLocker 密钥 | 安全读取者 | 密码管理员、安全管理员
 
 ## <a name="enterprise-applications"></a>企业应用程序
 
@@ -151,9 +160,9 @@ ms.locfileid: "95918512"
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
 删除选定用户生成的所有现有应用密码 | 全局管理员角色 | 
-禁用 MFA | 全局管理员角色 | 
-启用 MFA | 全局管理员角色 | 
-管理 MFA 服务设置 | 全局管理员角色 | 
+禁用 MFA | 身份验证管理员（通过 PowerShell） | 特权身份验证管理员（通过 PowerShell）
+启用 MFA | 身份验证管理员（通过 PowerShell） | 特权身份验证管理员（通过 PowerShell） 
+管理 MFA 服务设置 | 身份验证策略管理员 | 
 要求选定的用户再次提供联系方法 | 身份验证管理员 | 
 在所有记住的设备上还原多重身份验证  | 身份验证管理员 | 
 
@@ -267,4 +276,3 @@ ms.locfileid: "95918512"
 
 * [如何分配或删除 Azure AD 管理员角色](manage-roles-portal.md)
 * [Azure AD 管理员角色参考](permissions-reference.md)
-

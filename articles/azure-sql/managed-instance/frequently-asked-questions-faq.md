@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein
 origin.date: 09/21/2020
-ms.date: 02/01/2021
-ms.openlocfilehash: 240c9f29e671d59bb7accbae584b109e5f1f0e02
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 02/22/2021
+ms.openlocfilehash: 263a56af002e442aa13f0cf902ef3a332bef1f40
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059198"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697594"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 托管实例常见问题解答 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -360,14 +360,7 @@ SQL 托管实例负责对管理端口设置规则。 这通过名为[服务辅�
 
 **是否可以执行 DNS 刷新？**
 
-目前我们不提供刷新 SQL 托管实例 DNS 服务器配置的功能。
-
-DNS 配置最终会刷新：
-
-- 当 DHCP 租约过期时。
-- 平台升级时。
-
-一种解决方法是将 SQL 托管实例降级为 4 个 vCore，然后再将其升级。 这样刷新 DNS 配置会产生一种负面影响。
+是的。 请参阅[在 SQL 托管实例虚拟群集上同步虚拟网络 DNS 服务器设置](./synchronize-vnet-dns-servers-setting-on-virtual-cluster.md)。
 
 ## <a name="change-time-zone"></a>更改时区
 
@@ -482,3 +475,9 @@ ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
 ```
 
 （将“test”替换为所需的登录 ID，并调整策略和过期时间值）
+
+**什么是 SQL 托管实例的计划内维护事件？**
+
+请参阅[在 SQL 托管实例中计划 Azure 维护事件](../database/planned-maintenance.md)。 
+
+

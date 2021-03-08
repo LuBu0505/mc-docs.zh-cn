@@ -4,14 +4,14 @@ description: 本文介绍如何在 Runbook 和 DSC 配置中使用变量。
 services: automation
 ms.subservice: shared-capabilities
 origin.date: 12/01/2020
-ms.date: 02/01/2021
+ms.date: 02/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: d0276d98646731d8b20cb85b6ae799720a84ea70
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 7d0792de25a8b578b97fbf19b5a74b54e15f13dd
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99058599"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697661"
 ---
 # <a name="manage-variables-in-azure-automation"></a>在 Azure 自动化中管理变量
 
@@ -27,7 +27,7 @@ ms.locfileid: "99058599"
 
 Azure 自动化会持久保存变量，因此即使 Runbook 或 DSC 配置失败，变量也仍然可用。 此行为允许一个 Runbook 或 DSC 配置设置的值随后由另一个 Runbook 使用，或由同一 Runbook 或 DSC 配置在下次运行时使用。
 
-Azure 自动化会安全存储每个加密的变量。 创建变量时，可以指定将其加密，并由 Azure 自动化将其作为安全资产进行存储。 创建变量后，除非重新创建变量，否则将无法更改其加密状态。 如果你拥有存储了尚未加密的敏感数据的自动化帐户变量，需要删除这些变量并将其重新创建为加密变量。 Azure 安全中心建议对所有 Azure 自动化变量进行加密，如[自动化帐户变量应进行加密](../../security-center/recommendations-reference.md#recs-computeapp)中所述。
+Azure 自动化会安全存储每个加密的变量。 创建变量时，可以指定将其加密，并由 Azure 自动化将其作为安全资产进行存储。 创建变量后，除非重新创建变量，否则将无法更改其加密状态。 如果你拥有存储了尚未加密的敏感数据的自动化帐户变量，需要删除这些变量并将其重新创建为加密变量。 Azure 安全中心建议对所有 Azure 自动化变量进行加密，如[自动化帐户变量应进行加密](../../security-center/recommendations-reference.md#recs-compute)中所述。
 
 >[!NOTE]
 >Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥进行加密并存储在 Azure 自动化中。 Azure 自动化将密钥存储在系统管理的 Key Vault 中。 在存储安全资产之前，自动化会从 Key Vault 加载密钥，然后使用该密钥加密资产。
@@ -83,7 +83,7 @@ Write-output "The encrypted value of the variable is: $mytestencryptvar"
 
 ## <a name="python-functions-to-access-variables"></a>用于访问变量的 Python 函数
 
-下表中的函数用于在 Python2 runbook 中访问变量。
+下表中的函数用于在 Python 2 和 3 Runbook 中访问变量。 Python 3 Runbook 目前处于预览阶段。
 
 |Python 函数|说明|
 |:---|:---|
@@ -180,6 +180,30 @@ except AutomationAssetNotFound:
     print "variable not found"
 ```
 
+# <a name="python-3"></a>[Python 3](#tab/python3)
+
+以下示例演示如何在 Python 3 Runbook（预览）中获取变量，设置变量以及处理不存在的变量的异常。
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a variable
+value = automationassets.get_automation_variable("test-variable")
+print value
+
+# set a variable (value can be int/bool/string)
+automationassets.set_automation_variable("test-variable", True)
+automationassets.set_automation_variable("test-variable", 4)
+automationassets.set_automation_variable("test-variable", "test-string")
+
+# handle a non-existent variable exception
+try:
+    value = automationassets.get_automation_variable("nonexisting variable")
+except AutomationAssetNotFound:
+    print ("variable not found")
+```
+
 ---
 
 ## <a name="graphical-runbook-examples"></a>图形 Runbook 示例
@@ -196,4 +220,4 @@ except AutomationAssetNotFound:
 
 * 若要了解有关用于访问变量的 cmdlet 的详细信息，请参阅[在 Azure 自动化中管理模块](modules.md)。
 * 有关 Runbook 的常规信息，请参阅[在 Azure 自动化中执行 Runbook](../automation-runbook-execution.md)。
-* 有关 DSC 配置的详细信息，请参阅 [Azure 自动化状态配置概述](../automation-dsc-overview.md)。
+* 有关 DSC 配置的详细信息，请参阅 [Azure 自动化 State Configuration 概述](../automation-dsc-overview.md)。

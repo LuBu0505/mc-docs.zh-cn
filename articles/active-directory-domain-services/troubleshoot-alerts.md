@@ -2,21 +2,21 @@
 title: Azure AD 域服务中的常见警报和解决方法 | Microsoft Docs
 description: 了解如何解决作为 Azure Active Directory 域服务运行状况的一部分而生成的常见警报
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 54319292-6aa0-4a08-846b-e3c53ecca483
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/01/2020
+ms.date: 02/26/2021
 ms.author: v-junlch
-ms.openlocfilehash: cbc8251c9294b836a9e709552846dd296eed795f
-ms.sourcegitcommit: cdb7228e404809c930b7709bcff44b89d63304ec
+ms.openlocfilehash: 248d594de9c6327f28410eb29bce002a80063ff0
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91402581"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696863"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>已知问题：Azure Active Directory 域服务中的常见警报和解决方法
 
@@ -162,7 +162,7 @@ Azure AD 域服务用来为域提供服务的服务主体无权管理 Azure 订�
 
 某些自动生成的服务主体可用于管理和创建托管域的资源。 如果更改了其中一个服务主体的访问权限，则域将无法正确管理资源。 以下步骤说明如何了解服务主体并向服务主体授予访问权限：
 
-1. 了解[基于角色的访问控制以及如何在 Azure 门户中授予对应用程序的访问权限](../role-based-access-control/role-assignments-portal.md)。
+1. 了解[基于 Azure 角色的访问控制以及如何在 Azure 门户中授予对应用程序的访问权限](../role-based-access-control/role-assignments-portal.md)。
 2. 评审 ID 为“abba844e-bc0e-44b0-947a-dc74e5d09022”的服务主体所具有的访问权限，并授予在以前的某个日期拒绝的访问权限。
 
 ## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112：托管域中没有足够的 IP 地址
@@ -300,4 +300,3 @@ Azure AD DS 要求使用有效的订阅。 如果托管域与之关联的 Azure 
 
 <!-- INTERNAL LINKS -->
 [azure-support]: https://support.azure.cn/en-us/support/support-azure/
-

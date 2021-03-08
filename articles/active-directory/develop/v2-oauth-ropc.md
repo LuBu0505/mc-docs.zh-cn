@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 02/24/2021
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 25da408e2702a5a4d141e09ca841000f1481748b
-ms.sourcegitcommit: ca5e5792f3c60aab406b7ddbd6f6fccc4280c57e
+ms.openlocfilehash: 6d9ed869ec3d78b464e974c5bcc3ce8186f91543
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92749906"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697982"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft 标识平台和 OAuth 2.0 资源所有者密码凭据
 
@@ -29,7 +29,7 @@ Microsoft 标识平台支持 [OAuth 2.0 资源所有者密码凭据 (ROPC) 授�
 
 > [!IMPORTANT]
 >
-> * Microsoft 标识平台终结点仅支持将 ROPC 用于 Azure AD 租户。 这意味着，必须使用特定于租户的终结点 (`https://login.partner.microsoftonline.cn/{TenantId_or_Name}`) 或 `organizations` 终结点。
+> * Microsoft 标识平台仅支持 ROPC 供 Azure AD 租户使用。 这意味着，必须使用特定于租户的终结点 (`https://login.partner.microsoftonline.cn/{TenantId_or_Name}`) 或 `organizations` 终结点。
 > * 没有密码的帐户不能通过 ROPC 登录。 对于这种情况，建议改用适合应用的其他流。
 > * 如果用户需使用[多重身份验证 (MFA)](../authentication/concept-mfa-howitworks.md) 来登录应用程序，则系统会改为阻止用户。
 > * [混合联合身份验证](../hybrid/whatis-fed.md)方案（例如，用于对本地帐户进行身份验证的 Azure AD 和 ADFS）不支持 ROPC。 如果用户已整页重定向到本地标识提供者，则 Azure AD 将无法针对该标识提供者测试用户名和密码。
@@ -65,11 +65,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 参数 | 条件 | 说明 |
 | --- | --- | --- |
-| `tenant` | 必须 | 一个目录租户，用户需登录到其中。 此参数可采用 GUID 或友好名称格式。 此参数不能设置为 `common` 或 `consumers`，但可以设置为 `organizations`。 |
-| `client_id` | 必须 | [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)页分配给你的应用的应用程序（客户端）ID。 |
-| `grant_type` | 必须 | 必须设置为 `password`。 |
-| `username` | 必须 | 用户的电子邮件地址。 |
-| `password` | 必须 | 用户的密码。 |
+| `tenant` | 必选 | 一个目录租户，用户需登录到其中。 此参数可采用 GUID 或友好名称格式。 此参数不能设置为 `common` 或 `consumers`，但可以设置为 `organizations`。 |
+| `client_id` | 必选 | [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)页分配给你的应用的应用程序（客户端）ID。 |
+| `grant_type` | 必选 | 必须设置为 `password`。 |
+| `username` | 必选 | 用户的电子邮件地址。 |
+| `password` | 必选 | 用户的密码。 |
 | `scope` | 建议 | 以空格分隔的[范围](v2-permissions-and-consent.md)或权限的列表，这是应用需要的。 在交互式流中，管理员或用户必须提前同意这些作用域。 |
 | `client_secret`| 有时必需 | 如果应用是公共客户端，则无法包括 `client_secret` 或 `client_assertion`。  如果应用是机密客户端，则它必须包括在内。 |
 | `client_assertion` | 有时必需 | 使用证书生成的不同形式的 `client_secret`。  有关更多详细信息，请参阅[证书凭据](active-directory-certificate-credentials.md)。 |
@@ -91,7 +91,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 参数 | 格式 | 说明 |
 | --------- | ------ | ----------- |
-| `token_type` | String | 始终设置为 `Bearer`。 |
+| `token_type` | 字符串 | 始终设置为 `Bearer`。 |
 | `scope` | 空格分隔的字符串 | 如果返回了访问令牌，则此参数会列出该访问令牌的有效范围。 |
 | `expires_in`| int | 包含的访问令牌的有效时间，以秒为单位。 |
 | `access_token`| 不透明字符串 | 针对请求的[范围](v2-permissions-and-consent.md)颁发。 |
@@ -112,4 +112,3 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ## <a name="learn-more"></a>了解详细信息
 
 有关使用 ROPC 的示例，请参阅 GitHub 上的 [.NET 核心控制台应用程序](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)代码示例。
-

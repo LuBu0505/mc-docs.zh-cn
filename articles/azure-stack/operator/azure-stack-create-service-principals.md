@@ -5,15 +5,15 @@ author: WenJason
 ms.author: v-jay
 ms.topic: how-to
 origin.date: 11/16/2020
-ms.date: 12/07/2020
+ms.date: 03/01/2021
 ms.lastreviewed: 11/16/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 8a14271cc10629635945fbb4cc974891f07e4fc8
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: 82e3077321816dcb1f2b7ba7e3963226d1b61f54
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507115"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697474"
 ---
 # <a name="use-an-app-identity-to-access-azure-stack-hub-resources"></a>使用应用标识访问 Azure Stack Hub 资源
 
@@ -77,7 +77,7 @@ ms.locfileid: "96507115"
 
 创建证书凭据时，必须符合以下要求：
 
- - 对于生产环境，证书必须由内部证书颁发机构或公共证书颁发机构颁发。 使用公共颁发机构时，必须将基础操作系统映像中的颁发机构包括为 Microsoft 受信任根颁发机构计划的一部分。 可以在 [Microsoft 信任根证书计划：参与者](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca)中找到完整列表。 稍后在[更新证书凭据](#update-a-certificate-credential)期间，还将显示创建“自签名”测试证书的示例。 
+ - 对于生产环境，证书必须由内部证书颁发机构或公共证书颁发机构颁发。 使用公共颁发机构时，必须将基础操作系统映像中的颁发机构包括为 Microsoft 受信任根颁发机构计划的一部分。 如需完整列表，请查看[参与者列表 - Microsoft 受信任根计划](https://docs.microsoft.com/security/trusted-root/participants-list)。 稍后在[更新证书凭据](#update-a-certificate-credential)期间，还将显示创建“自签名”测试证书的示例。 
  - 加密提供程序必须指定为 Microsoft 旧版加密服务提供程序 (CSP) 密钥提供程序。
  - 证书格式必须是 PFX 文件，因为公钥和私钥都是必需的。 Windows 服务器使用包含公钥文件（TLS/SSL 证书文件）和关联的私钥文件的 .pfx 文件。
  - Azure Stack Hub 基础结构必须能够通过网络访问证书中发布的证书颁发机构的证书吊销列表 (CRL) 位置。 此 CRL 必须是一个 HTTP 终结点。

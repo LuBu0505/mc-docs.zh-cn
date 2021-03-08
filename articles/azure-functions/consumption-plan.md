@@ -1,14 +1,14 @@
 ---
 title: Azure Functions 消耗计划托管
 description: 了解 Azure Functions 消耗计划托管如何支持在动态缩放的环境中运行代码，但你只需为执行期间使用的资源付费。
-ms.date: 01/27/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: 256363f444ece64da64df8d463fd441b22fae5ff
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 0cdd8a75d233fd6eb044439fd778c7355abb0a81
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060109"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697318"
 ---
 # <a name="azure-functions-consumption-plan-hosting"></a>Azure Functions 消耗计划托管
 

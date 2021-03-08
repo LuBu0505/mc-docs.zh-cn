@@ -1,24 +1,19 @@
 ---
 title: 排查复制活动的性能问题
 description: 了解如何排查 Azure 数据工厂中复制活动的性能问题。
-services: data-factory
-documentationcenter: ''
 ms.author: v-jay
 author: WenJason
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 01/07/2021
-ms.date: 01/25/2021
-ms.openlocfilehash: 7db7f00a4c54d54f278343b891317ea536910042
-ms.sourcegitcommit: e1edc6ef84dbbda1da4e0a42efa3fd62eee033d1
+ms.date: 03/02/2021
+ms.openlocfilehash: 372af9dc151fd95d02c245a013dd4c130df88765
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541869"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696845"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>排查复制活动的性能问题
 
@@ -176,6 +171,17 @@ ms.locfileid: "98541869"
 
 ## <a name="connector-and-ir-performance"></a>连接器和 IR 性能
 
+本部分探讨特定连接器类型或集成运行时的一些性能故障排除指南。
+
+### <a name="activity-execution-time-varies-using-azure-ir-vs-azure-vnet-ir"></a>使用 Azure IR 与 Azure VNet IR 时，活动执行时间会有所不同
+
+当数据集基于不同 Integration Runtime 时，活动执行时间会有所不同。
+
+- **症状**：只需在数据集中切换“链接服务”下拉列表就可以执行相同的管道活动，但运行时间会明显不同。 如果数据集基于托管虚拟网络 Integration Runtime，则完成运行所需的平均时间超过 2 分钟，但基于默认 Integration Runtime 时，则需要大约 20 秒来完成。
+
+- **原因**：检查管道运行的详细信息，可以看到慢速管道在托管 VNet（虚拟网络）IR 上运行，而正常管道在 Azure IR 上运行。 按照设计，托管 VNet IR 的队列时间比 Azure IR 长，因为我们不会为每个数据工厂保留一个计算节点，因此每个复制活动需要大约 2 分钟的预热才能启动，并且它主要在 VNet 联接而不是在 Azure IR 发生。
+
+    
 ### <a name="low-performance-when-loading-data-into-azure-sql-database"></a>在将数据加载到 Azure SQL 数据库时性能较低
 
 - **症状**：在将数据复制到 Azure SQL 数据库时速度变慢。
@@ -184,7 +190,7 @@ ms.locfileid: "98541869"
 
     - Azure SQL 数据库层不够高。
 
-    - Azure SQL 数据库 DTU 使用率接近 100%。 可以[监视性能](/azure-sql/database/monitor-tune-overview)并考虑将 Azure SQL 数据库层升级。
+    - Azure SQL 数据库 DTU 使用率接近 100%。 可以[监视性能](../azure-sql/database/monitor-tune-overview.md)并考虑将 Azure SQL 数据库层升级。
 
     - 未正确设置索引。 请在加载数据之前先删除所有索引，并在加载完成之后再重新创建索引。
 
@@ -192,7 +198,6 @@ ms.locfileid: "98541869"
 
     - 使用的是存储过程，而不是批量插入，这会使性能更差。 
 
-- **解决方法**：请参阅[排查复制活动的性能问题](/data-factory/copy-activity-performance-troubleshooting)。
 
 ### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>分析大型 Excel 文件时超时或性能较低
 
@@ -213,6 +218,9 @@ ms.locfileid: "98541869"
     - 对于导入架构，你可以生成一个较小的示例文件（原始文件的一部分），并选择“从示例文件导入架构”而不是“从连接/存储导入架构”。
 
     - 若要列出工作表，可以改为在工作表下拉框中单击“编辑”并输入工作表名称/索引。
+
+    - 若要将大型 Excel 文件 (>100 MB) 复制到其他存储，可以使用支持流式读取且性能更好的数据流 Excel 源。
+    
 ## <a name="other-references"></a>其他参考资料
 
 下面是有关一些受支持数据存储的性能监视和优化参考：

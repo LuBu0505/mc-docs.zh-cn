@@ -1,6 +1,6 @@
 ---
 title: Microsoft 标识平台管理员同意协议
-description: 介绍 Microsoft 标识平台终结点中的授权，包括范围、权限和许可。
+description: 介绍 Microsoft 标识平台中的授权，包括范围、权限和许可。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/06/2021
+ms.date: 02/24/2021
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 93a957e1118a46592c334e4773f8e82ed9f00d40
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 7542009d6a9b2908d2134dcacc97949363d3fa30
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022510"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697240"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Microsoft 标识平台中的管理员同意
 
@@ -88,4 +88,3 @@ http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-
 - 了解如何[在授权代码授予流期间在 OAuth 2.0 协议层提供许可支持](v2-oauth2-auth-code-flow.md#request-an-authorization-code)。
 - 了解[多租户应用程序如何使用许可框架](./howto-convert-app-to-be-multi-tenant.md)来实现“用户”许可和“管理员”许可，为更高级的多层应用程序模式提供支持。
 - 了解 [Azure AD 应用程序许可体验](application-consent-experience.md)
-

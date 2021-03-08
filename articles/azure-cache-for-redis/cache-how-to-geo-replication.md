@@ -1,24 +1,28 @@
 ---
-title: 如何为 Azure Redis 缓存设置异地复制 | Microsoft Docs
-description: 了解如何跨地理区域复制 Azure Redis 缓存实例。
+title: 为高级 Azure Cache for Redis 实例配置异地复制
+description: 了解如何跨 Azure 区域复制 Azure Cache for Redis 高级实例
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 02/18/2021
 ms.author: v-junlch
-ms.openlocfilehash: 59609d496f300e8b2024955db0872b2ed0d4163f
-ms.sourcegitcommit: 33f2835ec41ca391eb9940edfcbab52888cf8a01
+ms.openlocfilehash: 4bb6b99bd26ca01a974b3851a1b715076d330df7
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94326572"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697479"
 ---
-# <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>如何为 Azure Redis 缓存设置异地复制
+# <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>为高级 Azure Cache for Redis 实例配置异地复制
 
-“异地复制”提供一种用于链接两个高级层 Azure Redis 缓存实例的机制。 一个缓存选作主链接缓存，另一个缓存指定为辅助链接缓存。 辅助链接缓存将变为只读，写入主缓存的数据将复制到辅助链接缓存。 主缓存实例和辅助缓存实例之间的数据传输受 TLS 保护。 异地复制可用于设置跨两个 Azure 区域的缓存。 本文提供了为高级层 Azure Redis 缓存实例配置异地复制的指南。
+本文将介绍如何使用 Azure 门户配置异地复制的 Azure 缓存。
+
+异地复制将两个高级 Azure Cache for Redis 实例链接在一起，并创建数据复制关系。 这些缓存实例通常位于不同的 Azure 区域中，尽管不是必需的。 一个实例充当主实例，另一个实例充当辅助实例。 主实例处理读取和写入请求，并将更改传播到辅助实例。 该过程将一直持续到两个实例之间的链接被删除为止。
 
 > [!NOTE]
-> 异地复制设计为灾难恢复解决方案。 默认情况下，应用程序将写入主要区域并从中进行读取。 可以选择将其配置为从次要区域进行读取。 如果应用程序的其余部分保留在主要区域中，则出于担心区域之间的网络延迟会增加的原因，异地复制不会提供自动故障转移。 需要通过取消链接辅助缓存来管理和启动故障转移。 这将使它提升为新的主实例。
+> 异地复制设计为灾难恢复解决方案。
+>
+>
 
 ## <a name="geo-replication-prerequisites"></a>异地复制先决条件
 
@@ -195,4 +199,3 @@ ms.locfileid: "94326572"
 了解有关 Azure Cache for Redis 功能的详细信息。
 
 * [Azure Cache for Redis 服务层](cache-overview.md#service-tiers)
-

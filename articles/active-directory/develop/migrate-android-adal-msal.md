@@ -10,16 +10,16 @@ ms.subservice: develop
 ms.topic: conceptual
 ms.tgt_pltfrm: Android
 ms.workload: identity
-ms.date: 01/06/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: e09c38f0b48f3e39dc6d3f3e362e84114ca7e9f2
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 8ce64792fe5cfd821f86e3f6560ce6f435effc4d
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022048"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696632"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>适用于 Android 的 ADAL 到 MSAL 迁移指南
 
@@ -69,7 +69,7 @@ MSAL 公共 API 引入了重要的更改，其中包括：
 首次使用 ADAL 和 Azure AD v1 终结点时，就会授予用户对其拥有的资源的许可。 通过 MSAL 和 Microsoft 标识平台时，可以增量请求许可。 对于被用户视为高特权的权限，或者对为何需要某个权限提供明确的解释时，增量许可非常有用。 在 ADAL 中，这些权限可能导致用户放弃应用登录。
 
 > [!TIP]
-> 如果需要向用户提供额外的上下文来解释为何应用需要某个权限，我们建议使用增量许可。
+> 使用增量许可来向用户提供关于为何你的应用需要权限的额外的上下文。
 
 ### <a name="admin-consent"></a>管理员同意
 
@@ -303,4 +303,3 @@ public enum LogLevel
     VERBOSE
 }
 ```
-

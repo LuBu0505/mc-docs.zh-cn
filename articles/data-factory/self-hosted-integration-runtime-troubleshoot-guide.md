@@ -1,19 +1,18 @@
 ---
 title: 在 Azure 数据工厂中排查自承载集成运行时问题
 description: 了解如何在 Azure 数据工厂中排查自承载集成运行时问题。
-services: data-factory
 author: WenJason
 ms.service: data-factory
 ms.topic: troubleshooting
-origin.date: 11/17/2020
-ms.date: 01/04/2021
+origin.date: 01/25/2021
+ms.date: 03/01/2021
 ms.author: v-jay
-ms.openlocfilehash: 12263a81258c2732f7784565277e0927da007d31
-ms.sourcegitcommit: a978c5f2c6b53494d67e7c3c5a44b2aa648219a2
+ms.openlocfilehash: aa1b2fb89595bdae27791b529ecc8f7baa6ca590
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629089"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696952"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>排查自承载集成运行时问题
 
@@ -37,31 +36,6 @@ ms.locfileid: "98629089"
 
 检查 IR 节点上的资源使用情况和并发活动执行情况。 调整活动运行的内部和触发器时间，以避免在单个 IR 节点上同时执行太多操作。
 
-
-### <a name="ssltls-certificate-issue"></a>SSL/TLS 证书问题
-
-#### <a name="symptoms"></a>症状
-
-选择“自承载 IR 配置管理器” > 从 Intranet 执行远程访问”后，尝试通过选择证书来启用安全套接字层 (SSL)/传输层安全性 (TLS) 证书（高级）时，收到以下错误 ：
-
-“远程访问设置无效。 对传出消息的标识检查失败。 远程终结点的预期 DNS 标识为‘abc.microsoft.com’，但远程终结点提供了 DNS 声明‘microsoft.com’。 如果这是合法的远程终结点，你可以在创建通道代理时将 DNS 标识‘microsoft.com’显式指定为 EndpointAddress 的标识属性，通过这种方式解决此问题。”
-
-在前面的示例中，所选证书附有后缀“microsoft.com”。
-
-#### <a name="cause"></a>原因
-
-这是 Windows Communication Foundation (WCF) 中的已知问题。 WCF SSL/TLS 验证仅检查使用者可选名称 (SAN) 字段中的最后一个 DNS 名称。 
-
-#### <a name="resolution"></a>解决方法
-
-Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的原因通常是 SSL 证书不正确。 SAN 中的最后一个 DNS 名称应为有效名称。 
-
-若要验证并更正 DNS 名称，请执行以下操作： 
-
-1. 打开管理控制台。
-1. 在“证书详细信息”下，仔细检查“使用者”和“使用者可选名称”框中的值  。 例如，如果“DNS Name= microsoft.com.com”，则该 DNS 名称无效。
-1. 请联系证书颁发公司删除不正确的 DNS 名称。
-
 ### <a name="concurrent-jobs-limit-issue"></a>并发作业限制问题
 
 #### <a name="symptoms"></a>症状
@@ -77,7 +51,8 @@ Azure 数据工厂 v2 自承载 IR 支持通配符证书。 发生此问题的�
 并发作业数的限制取决于计算机的逻辑核心和内存。 尝试将值下调（如调整为 24），然后查看结果。
 
 > [!TIP] 
-> 要了解如何计算 math.log，请转到[对数计算器](https://www.rapidtables.com/calc/math/Log_Calculator.html)。
+> -    若要详细了解逻辑核心计数以及如何确定计算机的逻辑核心计数，请参阅[在 Windows 10 上查找 CPU 中的核心数的四种方法](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/)。
+> -    要了解如何计算 math.log，请转到[对数计算器](https://www.rapidtables.com/calc/math/Log_Calculator.html)。
 
 
 ### <a name="self-hosted-ir-high-availability-ha-ssl-certificate-issue"></a>自承载 IR 高可用性 (HA) SSL 证书问题
@@ -697,7 +672,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 如何确定你是否受到影响：
 
-- 如果你使用[设置防火墙配置和 IP 地址的允许列表](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)中所述的方法基于完全限定的域名 (FQDN) 定义防火墙规则，则不受影响。
+- 如果你使用[设置防火墙配置和 IP 地址的允许列表](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-addresses)中所述的方法基于完全限定的域名 (FQDN) 定义防火墙规则，则不受影响。
 
 - 如果你在公司防火墙上显式启用了出站 IP 允许列表，则会受影响。
 

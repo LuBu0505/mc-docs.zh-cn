@@ -3,22 +3,22 @@ title: 配置 Azure Stack Hub 的 VPN 网关设置
 description: 了解并配置 Azure Stack Hub 的 VPN 网关设置。
 author: WenJason
 ms.topic: conceptual
-origin.date: 05/07/2020
-ms.date: 01/18/2021
+origin.date: 02/08/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.lastreviewed: 12/27/2019
-ms.openlocfilehash: 140312ea1d9a236dc744898ccf9318b62001ce41
-ms.sourcegitcommit: e1edc6ef84dbbda1da4e0a42efa3fd62eee033d1
+ms.openlocfilehash: caa1ac7addc7cb8537731a45c0c1caf97431950a
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541833"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697401"
 ---
 # <a name="configure-vpn-gateway-settings-for-azure-stack-hub"></a>配置 Azure Stack Hub 的 VPN 网关设置
 
 VPN 网关是一种虚拟网络网关，可在 Azure Stack Hub 中的虚拟网络与远程 VPN 网关之间发送加密流量。 远程 VPN 网关可位于 Azure 中、数据中心的设备中，或另一个站点上的设备中。 如果两个终结点之间有网络连接，可以在这两个网络之间建立安全的站点到站点 (S2S) VPN 连接。
 
-VPN 网关连接依赖于多个资源的配置，每个资源都包含可配置的设置。 本文介绍与资源管理器部署模型中创建的虚拟网络的 VPN 网关相关的资源和设置。 可在[关于 Azure Stack Hub 的 VPN 网关](azure-stack-vpn-gateway-about-vpn-gateways.md)中找到每个连接解决方案的说明和拓扑图。
+VPN 网关连接依赖于多个资源的配置，每个资源都包含可配置的设置。 本文介绍与资源管理器部署模型中创建的虚拟网络的 VPN 网关相关的资源和设置。 可在[为 Azure Stack Hub 创建 VPN 网关](azure-stack-vpn-gateway-about-vpn-gateways.md)中找到每个连接解决方案的说明和拓扑图。
 
 ## <a name="vpn-gateway-settings"></a>VPN 网关设置
 
@@ -30,8 +30,8 @@ VPN 网关连接依赖于多个资源的配置，每个资源都包含可配置�
 
 ```powershell
 New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
--Location 'China East' -IpConfigurations $gwipconfig -GatewayType Vpn `
--VpnType RouteBased
+   -Location 'China East' -IpConfigurations $gwipconfig -GatewayType Vpn `
+   -VpnType RouteBased
 ```
 
 ### <a name="gateway-skus"></a>网关 SKU
@@ -42,9 +42,9 @@ Azure Stack Hub 提供下表中所示的 VPN 网关 SKU：
 
 | | 隧道吞吐量 |VPN 网关最大 IPsec 隧道数 |
 |-------|-------|-------|
-|**基本 SKU**  | 100 Mbps    | 20 个    |
-|**标准 SKU**   | 100 Mbps  | 20 个 |
-|**高性能 SKU** | 200 Mbps | 10 个 |
+|**基本 SKU**  | 100 Mbps    | 20    |
+|**标准 SKU**   | 100 Mbps  | 20 |
+|**高性能 SKU** | 200 Mbps | 10 |
 
 ### <a name="resizing-gateway-skus"></a>调整网关 SKU 大小
 
@@ -64,8 +64,8 @@ Azure Stack Hub 不支持在所支持的旧式 SKU 之间调整 SKU 大小。
 
 ```powershell
 New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
--Location 'China East' -IpConfigurations $gwipconfig -GatewaySku Standard `
--GatewayType Vpn -VpnType RouteBased
+   -Location 'China East' -IpConfigurations $gwipconfig -GatewaySku Standard `
+   -GatewayType Vpn -VpnType RouteBased
 ```
 
 ### <a name="connection-types"></a>连接类型
@@ -76,8 +76,8 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ```powershell
 New-AzVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg `
--Location 'China East' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
--ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
+   -Location 'China East' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
+   -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
 ```
 
 ### <a name="vpn-types"></a>VPN 类型
@@ -100,8 +100,8 @@ New-AzVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg
 
 ```powershell
 New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
--Location 'China East' -IpConfigurations $gwipconfig `
--GatewayType Vpn -VpnType RouteBased
+   -Location 'China East' -IpConfigurations $gwipconfig `
+   -GatewayType Vpn -VpnType RouteBased
 ```
 
 ### <a name="gateway-requirements"></a>网关要求
@@ -112,7 +112,7 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 |--|--|--|--|--|
 | **站点到站点连接（S2S 连接）** | 不支持 | 基于路由的 VPN 配置 | 基于路由的 VPN 配置 | 基于路由的 VPN 配置 |
 | **身份验证方法**  | 不支持 | S2S 连接的预先共享密钥  | S2S 连接的预先共享密钥  | S2S 连接的预先共享密钥  |
-| **S2S 连接的最大数目**  | 不支持 | 20 个 | 20 个| 10 个|
+| **S2S 连接的最大数目**  | 不支持 | 20 | 20| 10|
 |**活动路由支持 (BGP)** | 不支持 | 不支持 | 支持 | 支持 |
 
 ### <a name="gateway-subnet"></a>网关子网

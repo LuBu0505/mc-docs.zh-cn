@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 09/22/2020
-ms.date: 01/11/2021
-ms.openlocfilehash: 4fb89dbaca0a99249b74232441f68a194b564592
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.date: 03/08/2021
+ms.openlocfilehash: a2d3a0bf8e784acde41b13b2eb581d180530538c
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023598"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697695"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器中的限制
 
@@ -67,6 +67,13 @@ PostgreSQL 连接，即使空闲，也可以占用大约 10MB 的内存。 而�
 
 - 目前不支持在主要数据库引擎版本之间进行自动迁移。 如果要升级到下一个主版本，请进行[转储并将其还原](../howto-migrate-using-dump-and-restore.md)到使用新引擎版本创建的服务器。
 
+### <a name="storage"></a>存储
+
+- 配置完成后，将无法减少存储大小。
+- 目前暂时无法使用存储自动增长功能。 请监视使用情况，并增加存储大小。 
+- 当存储使用率达到 95% 或可用容量小于 5 GiB 时，服务器会自动切换为只读模式，目的是避免因磁盘已满而发生的错误。 
+- 建议针对 `storage used` 或 `storage percent` 超过特定阈值的情况设置警报规则，以便能主动提前采取措施，例如增加存储大小。 例如，可以设置一个在存储使用率超过 80% 时触发的警报。
+  
 ### <a name="networking"></a>网络
 
 - 目前不支持移入或移出 VNET。
@@ -74,6 +81,10 @@ PostgreSQL 连接，即使空闲，也可以占用大约 10MB 的内存。 而�
 - VNET 不支持防火墙规则，可以改为使用网络安全组。
 - 公共访问数据库服务器可以连接到公共 Internet（例如通过 `postgres_fdw`），并且不能限制此访问。 基于 VNET 的服务器可以使用网络安全组限制出站访问。
 
+### <a name="high-availability-ha"></a>高可用性 (HA)
+
+- 服务器故障转移到 HA 备用服务器时，数据库服务器的 IP 地址会发生变化。 请确保使用 DNS 记录而不是服务器 IP 地址。
+- 如果使用已配置 HA 的灵活服务器配置逻辑复制，那么当故障转移到备用服务器时，逻辑复制槽不会复制到备用服务器。 
 ### <a name="postgres-engine-extensions-and-pgbouncer"></a>Postgres 引擎、扩展和 PgBouncer
 
 - 不支持 Postgres 10 及更早版本。 如果需要较旧的 Postgres 版本，建议使用[单一服务器](../overview-single-server.md)选项。

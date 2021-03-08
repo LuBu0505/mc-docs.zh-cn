@@ -3,14 +3,14 @@ title: Azure Functions 中的触发器和绑定
 description: 了解如何使用触发器和绑定将 Azure 函数连接到联机事件和基于云的服务。
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 01/04/2021
+ms.date: 03/02/2021
 ms.author: v-junlch
-ms.openlocfilehash: da365ad39b9df53989f0ae4609a5200e4e44c871
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 9f38a023551d40af065b73110bb094c79db4e25d
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021445"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697560"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 触发器和绑定概念
 
@@ -39,16 +39,19 @@ ms.locfileid: "98021445"
 
 ###  <a name="trigger-and-binding-definitions"></a>触发器和绑定的定义
 
-触发器和绑定的定义根据开发方法的不同而异。
+触发器和绑定的定义根据开发语言的不同而异。
 
-| 平台 | 触发器和绑定的配置方式... |
+| 语言 | 触发器和绑定的配置方式... |
 |-------------|--------------------------------------------|
 | C# 类库 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用 C# 特性修饰方法和参数 |
-| 其他所有（包括 Azure 门户） | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更新 [function.json](./functions-reference.md)（[架构](http://json.schemastore.org/function)） |
+| Java | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用 Java 注释修饰方法和参数  | 
+| JavaScript/PowerShell/TypeScript | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更新 [function.json](./functions-reference.md)（[架构](http://json.schemastore.org/function)） |
 
-门户为此配置提供了一个 UI，但你可以通过函数的“集成”选项卡打开“高级编辑器”，来直接编辑文件。  
+对于依赖 function.json 的语言，门户在“集成”选项卡中提供了用于添加绑定的 UI。还可以在门户中函数的“代码 + 测试”选项卡中直接编辑该文件。 使用 Visual Studio Code，可以通过一套方便的提示轻松地[将绑定添加到 function.json 文件](functions-develop-vs-code.md?tabs=nodejs#add-a-function-to-your-project)。 
 
-在 .NET 中，参数类型定义了输入数据的数据类型。 例如，使用 `string` 绑定到队列触发器的文本、一个要读取为二进制内容的字节数组，以及一个要反序列化为对象的自定义类型。
+在 .NET 和 Java 中，参数类型定义了输入数据的数据类型。 例如，使用 `string` 绑定到队列触发器的文本、一个要读取为二进制内容的字节数组，以及一个要反序列化为对象的自定义类型。 由于 .NET 类库函数和 Java 函数不依赖 function.json 来绑定定义，所以在门户中不能对它们进行创建和编辑。 C# 门户编辑基于C# 脚本，该脚本使用 function.json 而不是特性。
+
+若要详细了解如何将绑定添加到现有函数，请参阅[使用绑定将函数连接到 Azure 服务](add-bindings-existing-function.md)。
 
 对于动态键入的语言（如 JavaScript），请在 function.json 文件中使用 `dataType` 属性。 例如，若要以二进制格式读取 HTTP 请求的内容，将 `dataType` 设置为 `binary`：
 
@@ -105,4 +108,3 @@ ms.locfileid: "98021445"
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
 > [注册 Azure Functions 绑定扩展](./functions-bindings-register.md)
-

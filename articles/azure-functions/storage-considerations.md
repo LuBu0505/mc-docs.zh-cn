@@ -2,13 +2,13 @@
 title: Azure Functions 的存储注意事项
 description: 了解 Azure Functions 的要求和存储数据加密。
 ms.topic: conceptual
-ms.date: 01/13/2021
-ms.openlocfilehash: d979db24831fc2ddfde0768126ef80c8506d0eca
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.date: 03/02/2021
+ms.openlocfilehash: 7bdf6c7f848c6aadb38681e26b9176f6fe3d02be
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195249"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697800"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions 的存储注意事项
 
@@ -27,11 +27,13 @@ ms.locfileid: "98195249"
 
 ## <a name="storage-account-requirements"></a>存储帐户要求
 
-创建函数应用时，必须创建或链接到支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 这是因为 Functions 依赖于 Azure 存储，执行管理触发器和记录函数执行等操作。 某些存储帐户不支持队列和表。 这些帐户包括仅限 blob 的存储帐户、Azure 高级存储和使用 ZRS 复制的常规用途存储帐户。
+创建函数应用时，必须创建或链接到支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 这是因为 Functions 依赖于 Azure 存储，执行管理触发器和记录函数执行等操作。 某些存储帐户不支持队列和表。 这些帐户包括仅 Blob 存储帐户和 Azure 高级存储。
 
 若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介](../storage/common/storage-introduction.md#core-storage-services)。 
 
 虽然可以将现有存储帐户用于函数应用，不过必须确保它满足这些要求。 可以保证通过 Azure 门户在函数应用创建流中创建的存储帐户满足这些存储帐户要求。 通过门户在创建函数应用的过程中选择现有存储帐户时，会筛选掉不受支持的帐户。 在此流中，只允许选择要创建的函数应用所在区域中的现有存储帐户。 若要了解详细信息，请参阅[存储帐户位置](#storage-account-location)。
+
+<!-- JH: Does using a Premium Storage account improve perf? -->
 
 ## <a name="storage-account-guidance"></a>存储帐户指导
 
@@ -71,4 +73,3 @@ ms.locfileid: "98195249"
 
 > [!div class="nextstepaction"]
 > [Azure Functions 的缩放和托管](functions-scale.md)
-

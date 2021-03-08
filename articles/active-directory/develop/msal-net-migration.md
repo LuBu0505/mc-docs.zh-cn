@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/02/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: f22f0d475ecf98199fa28e6aeacc92a490d51daa
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: ba5f8513861f9753b72e996bed348d9d3f7e0ee2
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540772"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696979"
 ---
 # <a name="migrating-applications-to-msalnet"></a>将应用程序迁移到 MSAL.NET
 
@@ -35,9 +35,9 @@ ms.locfileid: "99540772"
 
 ## <a name="differences-between-adal-and-msal-apps"></a>ADAL 与 MSAL 应用之间的差异
 
-在大多数情况下都可以使用 MSAL.NET 和 Microsoft 标识平台终结点，这是最新一代的 Microsoft 身份验证库。 使用 MSAL.NET 可以获取通过 Azure AD（工作和学校帐户）或 Azure AD B2C 登录到应用程序的用户的令牌。 
+在大多数情况下都可以使用 MSAL.NET 和 Microsoft 标识平台，这是最新一代的 Microsoft 身份验证库。 使用 MSAL.NET 可以获取通过 Azure AD（工作和学校帐户）或 Azure AD B2C 登录到应用程序的用户的令牌。
 
-如果你已熟悉面向开发人员的 Azure AD (v1.0) 终结点（和 ADAL.NET），请阅读[ Microsoft 标识平台 (v2.0) 终结点有何不同？](../azuread-dev/azure-ad-endpoint-comparison.md)
+如果你已熟悉面向开发人员的 Azure AD (v1.0) 终结点（和 ADAL.NET），请阅读 [Microsoft 标识平台有何不同？](../azuread-dev/azure-ad-endpoint-comparison.md)。
 
 但是，如果应用程序需要使用早期版本的 [Active Directory 联合身份验证服务 (ADFS)](https://docs.microsoft.com/windows-server/identity/active-directory-federation-services) 将用户登录，则你仍然需要使用 ADAL.NET。 有关详细信息，请参阅 [ADFS 支持](https://aka.ms/msal-net-adfs-support)。
 
@@ -145,7 +145,7 @@ MSAL.NET 将令牌缓存用作密封类，并消除了扩展该类的功能。 �
 
 在 v1.0 中，如果你使用 `https://login.partner.microsoftonline.cn/common` 颁发机构，则会允许用户使用任何 AAD 帐户（适用于任何组织）登录。 请参阅 [ADAL.NET 中的颁发机构验证](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD#authority-validation)
 
-如果你使用 v2.0 中的 `https://login.partner.microsoftonline.cn/common` 颁发机构，则会允许用户使用任何 AAD 组织登录。 在 MSAL.NET 中，如果你想要限制为使用任何 AAD 帐户登录（与在 ADAL.NET 中的行为相同），则需要使用 `https://login.partner.microsoftonline.cn/organizations`。 有关详细信息，请参阅[公共客户端应用程序](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication)中的 `authority` 参数。
+如果你使用 v2.0 中的 `https://login.partner.microsoftonline.cn/common` 颁发机构，则会允许用户使用任何 AAD 组织登录。 在 MSAL.NET 中，如果你想要限制为使用任何 AAD 帐户登录（与在 ADAL.NET 中的行为相同），请使用 `https://login.partner.microsoftonline.cn/organizations`。 有关详细信息，请参阅[公共客户端应用程序](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication)中的 `authority` 参数。
 
 ## <a name="v10-and-v20-tokens"></a>v1.0 和 v2.0 令牌
 
@@ -170,7 +170,7 @@ OAuth2 权限是 v1.0 Web API（资源）应用程序向客户端应用程序公
 例如，若要以用户名访问应用 ID URI 为 `ResourceId` 的 v1.0 Web API，需要使用：
 
 ```csharp
-var scopes = new [] {  ResourceId+"/user_impersonation"};
+var scopes = new [] { ResourceId+"/user_impersonation" };
 ```
 
 若要使用 Microsoft Graph API (https://microsoftgraph.chinacloudapi.cn/) 通过 MSAL.NET Azure Active Directory 进行读取和写入，需要按以下代码片段所示创建范围列表：
@@ -182,7 +182,7 @@ string[] scopes = { ResourceId + "Directory.Read", ResourceId + "Directory.Write
 
 #### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>警告：应在对应于 v1.0 Web API 的范围中使用一个或两个斜杠
 
-若要写入对应于 Azure 资源管理器 API (https://management.core.chinacloudapi.cn/) 的范围，需要请求以下范围（请注意有两个斜杠）
+若要写入对应于 Azure 资源管理器 API (https://management.core.chinacloudapi.cn/) 的范围，请求以下范围（请注意有两个斜杠）。
 
 ```csharp
 var scopes = new[] {"https://management.core.chinacloudapi.cn//user_impersonation"};
@@ -205,7 +205,7 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 
 ```csharp
 ResourceId = "someAppIDURI";
-var scopes = new [] {  ResourceId+"/.default"};
+var scopes = new [] { ResourceId+"/.default" };
 ```
 
 ### <a name="scopes-to-request-in-the-case-of-client-credential-flow--daemon-app"></a>在客户端凭据流/守护程序应用中限定请求范围
@@ -266,4 +266,4 @@ AuthenticationResult result = await appRt.AcquireTokenByRefreshToken(null, rt)
 
 ## <a name="next-steps"></a>后续步骤
 
-可以[ Microsoft 标识平台终结点中的范围、权限和许可](v2-permissions-and-consent.md)中找到有关范围的详细信息
+可以[ Microsoft 标识平台中的范围、权限和许可](v2-permissions-and-consent.md)中找到有关范围的详细信息

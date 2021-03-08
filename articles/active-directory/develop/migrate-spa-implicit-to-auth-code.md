@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 02/02/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 60f977d38a206134bbc5496117ea8d7f3740e8a9
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: be0e81f317b08361333ba45958dae5194af32131
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540681"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697039"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>将 JavaScript 单页应用从隐式授权迁移到授权代码流
 
@@ -41,7 +41,7 @@ MSAL.js 2.x 支持浏览器中的授权代码流（而不是隐式授权流）�
 
 对于当前配置了 Web 平台重定向 URI 的应用注册，请按照以下步骤进行操作：
 
-1. 登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>，然后选择“Azure Active Directory”租户。
+1. 登录到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>，然后选择“Azure Active Directory”租户。
 1. 在“应用注册”中，选择应用程序，然后选择“身份验证” 。
 1. 在 Web 平台磁贴下的“重定向 URI”中，选择指示“应该迁移 URI”的警告横幅 。
 
@@ -58,7 +58,7 @@ MSAL.js 2.x 支持浏览器中的授权代码流（而不是隐式授权流）�
 
 ## <a name="update-your-code-to-msaljs-2x"></a>将代码更新为 MSAL.js 2.x
 
-在 MSAL 1.x 中，你通过初始化 UserAgentApplication 创建了一个应用程序实例，如下所示：
+在 MSAL 1.x 中，你通过初始化 [UserAgentApplication][msal-js-useragentapplication] 创建了一个应用程序实例，如下所示：
 
 ```javascript
 // MSAL 1.x
@@ -67,7 +67,7 @@ import * as msal from "msal";
 const msalInstance = new msal.UserAgentApplication(config);
 ```
 
-在 MSAL 2.x 中，请改为初始化 PublicClientApplication：
+在 MSAL 2.x 中，请改为初始化 [PublicClientApplication][msal-js-publicclientapplication]：
 
 ```javascript
 // MSAL 2.x
@@ -84,12 +84,14 @@ const msalInstance = new msal.PublicClientApplication(config);
 
 在应用注册中取消选中隐式授权设置后，将对使用注册及其客户端 ID 的所有应用程序禁用隐式流。
 
-在将所有应用程序更新为 MSAL.js 2.x 和 PublicClientApplication 之前，请勿禁用隐式授权流。
+在将所有应用程序更新为 MSAL.js 2.x 和 [PublicClientApplication][msal-js-publicclientapplication] 之前，请勿禁用隐式授权流。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关授权代码流的详细信息（包括隐式和授权代码流之间的差异），请参阅 [Microsoft 标识平台和 OAuth 2.0 授权代码流](v2-oauth2-auth-code-flow.md)。
+若要详细了解授权代码流（包括隐式和授权代码流之间的差异），请参阅 [Microsoft 标识平台和 OAuth 2.0 授权代码流](v2-oauth2-auth-code-flow.md)。
 
 如果你想要更深入了解 Microsoft 标识平台上的 JavaScript 单页应用程序开发，由多部分组成的[方案：单页应用程序](scenario-spa-overview.md)系列文章可以帮助你入门。
 
 <!-- LINKS - external -->
+[msal-js-useragentapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal.useragentapplication.html
+[msal-js-publicclientapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal_browser.publicclientapplication.html

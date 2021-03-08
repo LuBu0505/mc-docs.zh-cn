@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 02/24/2021
 ms.author: v-junlch
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: 0620f726c4c3361991f78a3ab1e64767d8aab68d
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: 406ada5cffabb35dfc24a7d25c255a9360c9abbd
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540655"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697227"
 ---
-# <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
+# <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft 标识平台中的权限和许可
 
-与 Microsoft 标识平台集成的应用程序遵循的授权模型可让用户和管理员控制数据的访问方式。 授权模型的实现已在 Microsoft 标识平台终结点上更新。 它更改了应用必须与 Microsoft 标识平台交互的方式。 本文介绍此授权模型的基本概念，包括范围、权限和许可。
+与 Microsoft 标识平台集成的应用程序遵循的授权模型可让用户和管理员控制数据的访问方式。 授权模型的实现已在 Microsoft 标识平台上更新。 它更改了应用必须与 Microsoft 标识平台交互的方式。 本文介绍此授权模型的基本概念，包括范围、权限和许可。
 
 ## <a name="scopes-and-permissions"></a>范围和权限
 
@@ -53,7 +53,7 @@ Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授�
 
 ## <a name="permission-types"></a>权限类型
 
-Microsoft 标识平台支持两种类型的权限：*委托的权限* 和 *应用程序权限*。
+Microsoft 标识平台支持两种类型的权限：委托的权限和应用程序权限 。
 
 * **委托的权限** 由包含登录用户的应用使用。 对于这些应用，由用户或管理员同意应用请求的权限， 并向应用授予委托的权限，以便该应用在对目标资源进行调用时可充当登录的用户。 
 
@@ -128,7 +128,7 @@ https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fmail.send
 
 `scope` 参数是应用程序所请求的委托权限列表（以空格分隔）。 每个权限都是通过将权限值附加到资源的标识符（应用程序 ID URI）来指示的。 在该请求示例中，应用需要相应的权限来读取用户的日历，以及以用户身分发送邮件。
 
-在用户输入其凭据之后，Microsoft 标识平台终结点将检查是否有匹配的 *用户许可* 记录。 如果用户过去未曾同意所请求权限的任何一项，并且管理员尚未代表整个组织同意这些权限，则 Microsoft 标识平台终结点会请求用户授予请求的权限。
+在用户输入其凭据之后，Microsoft 标识平台将检查是否有匹配的用户同意记录。 如果用户过去未曾同意所请求权限的任何一项，并且管理员尚未代表整个组织同意这些权限，则 Microsoft 标识平台会请求用户授予请求的权限。
 
 在此期间，`offline_access`（“维持对已授予访问权限的数据的访问权限”）权限和 `user.read`（“登录并读取个人资料”）权限会自动包含在对应用程序的初始同意中。  这些权限通常是应用正常运行所需的权限。 `offline_access` 权限为应用提供对刷新令牌的访问权限，而刷新令牌对本机应用和 Web 应用至关重要。 `user.read` 权限提供对 `sub` 声明的访问权限。 它允许客户端或应用随时间推移正确标识用户并访问基本用户信息。
 
@@ -164,7 +164,7 @@ https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fmail.send
 
 使用管理员同意终结点授予管理员同意后，操作便完成了。 用户不需执行任何进一步的操作。 授予管理员同意后，用户可以通过典型的授权流获得访问令牌。 生成的访问令牌将具有同意的权限。
 
-当公司管理员使用你的应用程序并被定向到授权终结点时，Microsoft 标识平台会检测用户的角色， 并询问公司管理员是否要代表整个租户同意你请求的权限。 你可以改用一个专用的管理员同意终结点，这样就可以主动请求管理员代表整个租户授予权限。 请求应用程序权限时，也必须使用此终结点。 不能使用授权终结点来请求应用程序权限。
+当全局管理员使用你的应用程序并被定向到授权终结点时，Microsoft 标识平台会检测用户的角色， 并询问全局管理员是否要代表整个租户同意你请求的权限。 你可以改用一个专用的管理员同意终结点，这样就可以主动请求管理员代表整个租户授予权限。 请求应用程序权限时，也必须使用此终结点。 不能使用授权终结点来请求应用程序权限。
 
 如果你遵循了这些步骤，则应用就能为租户中的所有用户请求权限，包括受管理员限制的范围。 此操作是一个高特权操作， 仅当对于你的方案而言为必需时才应使用。
 
@@ -181,7 +181,7 @@ https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fmail.send
 
 配置应用程序的静态请求权限列表：
 
-1. 在 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview" target="_blank">Azure 门户 - 应用注册<span class="docon docon-navigate-external x-hidden-focus"></span></a> 快速入门体验中转到你的应用程序。
+1. 在 <a href="https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview" target="_blank">Azure 门户 - 应用注册</a> 快速入门体验中转到你的应用程序。
 1. 选择一个应用程序，或[创建一个应用](quickstart-register-app.md)（如尚未创建）。
 1. 在应用程序的“概述”页的“管理”下，选择“API 权限” > “添加权限”。   
 1. 从可用 API 的列表中选择“Microsoft Graph”。 然后添加应用所需的权限。
@@ -335,7 +335,7 @@ response_type=token            //Code or a hybrid flow is also possible here
 
 此代码示例为所有已注册的权限生成同意页，前提是前面有关同意和 `/.default` 的说明适用于此方案。 然后，此代码返回 `id_token`，而不是访问令牌。  
 
-此行为适合某些从 Azure AD 身份验证库 (ADAL) 迁移到 Microsoft 身份验证库 (MSAL) 的旧客户端。 此设置不应由面向 Microsoft 标识平台终结点的新客户端使用。
+此行为适合某些从 Azure AD 身份验证库 (ADAL) 迁移到 Microsoft 身份验证库 (MSAL) 的旧客户端。 此设置不应由面向 Microsoft 标识平台的新客户端使用。
 
 ### <a name="client-credentials-grant-flow-and-default"></a>客户端凭据授权流和“/.default”  
 

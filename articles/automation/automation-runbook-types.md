@@ -3,15 +3,15 @@ title: Azure 自动化 Runbook 类型
 description: 本文介绍可以在 Azure 自动化中使用的不同 Runbook 类型，以及在确定要使用的具体类型时的注意事项。
 services: automation
 ms.subservice: process-automation
-origin.date: 12/22/2020
-ms.date: 01/04/2021
+origin.date: 02/17/2021
+ms.date: 02/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: add904e85c61390c7a20c9b10dbea85f59a1723e
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 4c59466125302b14e6491c3ed87aeb3e850caead
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830268"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697694"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure 自动化 Runbook 类型
 
@@ -101,18 +101,28 @@ PowerShell 工作流 Runbook 是基于 [Windows PowerShell 工作流](automation
 
 ## <a name="python-runbooks"></a>Python Runbook
 
-在 Python 2 下编译 Python runbook。 可以在 Azure 门户中使用文本编辑器直接编辑 Runbook 的代码。 还可以使用任何脱机文本编辑器，以及将 [Runbook 导入](manage-runbooks.md)到 Azure 自动化中。
+Python Runbook 在 Python 2 和 Python 3 下编译。 Python 3 Runbook 目前处于预览阶段。 可以在 Azure 门户中使用文本编辑器直接编辑 Runbook 的代码。 还可以使用任何脱机文本编辑器，以及将 [Runbook 导入](manage-runbooks.md)到 Azure 自动化中。
 
 ### <a name="advantages"></a>优点
 
 * 使用强大的 Python 库。
-* 可在 Azure 或 Linux 混合 Runbook 辅助角色上运行。 如果安装了 [python 2.7](https://www.python.org/downloads/release/latest/python2)，则支持 Windows 混合 Runbook 辅助角色。
+* 可以在 Azure 中或混合 Runbook 辅助角色上运行。
+* 对于 Python 2，在已安装 [Python 2.7](https://www.python.org/downloads/release/latest/python2) 的情况下，支持 Windows 混合 Runbook 辅助角色。
+* 对于 Python 3 云作业，支持 Python 3.8 版本。 如果代码与不同的版本兼容，则任何 3.x 版本的脚本和包都可能起作用。  
+* 对于 Windows 计算机上的 Python 3 混合作业，你可以选择安装想使用的任何 3.x 版本。  
+* 对于 Linux 计算机上的 Python 3 混合作业，我们根据安装在计算机上 Python 3 版本来运行 DSC OMSConfig 和 Linux 混合辅助角色。 我们建议在 Linux 计算机上安装 3.6 版本。 但是如果 Python 3 不同版本间的方法签名或协定没有发生重大更改，则另外的版本应该也会工作。
 
 ### <a name="limitations"></a>限制
 
 * 你必须熟悉 Python 脚本。
-* 目前仅支持 Python 2。 任何 Python 3 特定函数都将失败。
 * 若要使用第三方库，必须将[包导入](python-packages.md)自动化帐户。
+* 使用 PowerShell/PowerShell 工作流中的 Start-AutomationRunbook cmdlet 来启动 Python 3 Runbook（预览），该方法不起作用。 你可以使用 Az.Automation 模块中的 Start-AzAutomationRunbook 或 AzureRm.Automation 模块中的 Start-AzureRmAutomationRunbook 来解决此限制 。 
+* Python 3 Runbook（预览）和包不适用于 PowerShell。
+* Azure 自动化不支持 sys.stderr。
+
+### <a name="known-issues"></a>已知问题
+
+Python 3 作业有时会失败，并弹出异常消息“无效解释器可执行路径”。 如果作业延迟，启动超过 10 分钟或使用 Start-AutomationRunbook 来启动 Python 3 Runbook，可能会看见此异常。 如果作业延迟，请重新启动 Runbook。
 
 ## <a name="next-steps"></a>后续步骤
 

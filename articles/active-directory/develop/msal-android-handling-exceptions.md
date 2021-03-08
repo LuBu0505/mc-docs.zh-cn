@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: troubleshooting
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: marsma
-ms.openlocfilehash: a66b725a709a0094c3bb11786e211168c6583c7a
-ms.sourcegitcommit: 59810f8eba5e430d85a595e346d3b7fb6e4a0102
+ms.openlocfilehash: dbebe658b7724311596a58e3f2ea2853fa0f8318
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94501639"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697031"
 ---
 # <a name="handle-exceptions-and-errors-in-msal-for-android"></a>处理适用于 Android 的 MSAL 中的异常和错误
 
@@ -77,5 +77,4 @@ private SilentAuthenticationCallback getAuthSilentCallback() {
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解[日志记录错误](./msal-logging.md?tabs=android)
-
+详细了解 [MSAL for Android 中的日志记录](msal-logging-android.md)。

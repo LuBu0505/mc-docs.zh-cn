@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
-ms.date: 02/02/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 42ef3514b6140d7ee380c2fab2cad9613705265e
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: 4476da1fc136b534763f2e6c9a312569486e958f
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540702"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697980"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 应用清单
 
@@ -27,13 +27,13 @@ ms.locfileid: "99540702"
 可以通过 Azure 门户或者使用 [REST API](https://docs.microsoft.com/graph/api/resources/application) 或 [PowerShell](https://docs.microsoft.com/powershell/module/azuread#applications) 以编程方式配置应用的属性。 但是，在某些情况下，需要编辑应用清单来配置应用的属性。 这些方案包括：
 
 * 如果已将应用注册为 Azure AD 多租户，则无法在 UI 中更改支持的帐户。 而是必须使用应用程序清单编辑器来更改支持的帐户类型。
-* 如果需要定义你的应用支持的权限和角色，则必须修改应用程序清单。
+* 若要定义你的应用支持的权限和角色，则必须修改应用程序清单。
 
 ## <a name="configure-the-app-manifest"></a>配置应用清单
 
 若要配置应用程序清单，请执行以下操作：
 
-1. 转到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。 搜索并选择 **Azure Active Directory** 服务。
+1. 转到 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。 搜索并选择 **Azure Active Directory** 服务。
 1. 选择“应用注册” 。
 1. 选择要配置的应用。
 1. 在应用的“概览”页中，选择“清单”部分。  此时会打开一个基于 Web 的清单编辑器，可在其中编辑门户中的清单。 （可选）可以选择“下载”以在本地编辑清单，然后使用“上传”将清单重新应用于应用程序。 
@@ -46,7 +46,7 @@ ms.locfileid: "99540702"
 
 | 键 | 值类型 |
 | :--- | :--- |
-| id | String |
+| id | 字符串 |
 
 应用在目录中的唯一标识符。 此 ID 不是用于在任何协议事务中标识应用的标识符。 用于引用目录查询中的对象。
 
@@ -97,7 +97,7 @@ ms.locfileid: "99540702"
 
 | 键 | 值类型 |
 | :--- | :--- |
-| allowPublicClient | 布尔 |
+| allowPublicClient | Boolean |
 
 指定回退应用程序类型。 默认情况下，Azure AD 基于 replyUrlsWithType 推断应用程序类型。 某些情况下，Azure AD 无法确定客户端应用类型。 例如，这样的一种情况是 [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) 流，其中发生了没有 URL 重定向的 HTTP 请求。 在这种情况下，Azure AD 将基于此属性的值解释应用程序类型。 如果此值设置为 true，则回退应用程序类型设置为公共客户端，例如在移动设备上运行的已安装应用。 默认值为 false，这意味着，回退应用程序类型为机密，例如 Web 应用。
 
@@ -123,7 +123,7 @@ ms.locfileid: "99540702"
 
 ### <a name="approles-attribute"></a>appRoles 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | appRoles | 集合 |
 
@@ -148,7 +148,7 @@ ms.locfileid: "99540702"
 
 ### <a name="errorurl-attribute"></a>errorUrl 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | errorUrl | 字符串 |
 
@@ -156,7 +156,7 @@ ms.locfileid: "99540702"
 
 ### <a name="groupmembershipclaims-attribute"></a>groupMembershipClaims 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 |groupMembershipClaims | 字符串 |
 
@@ -164,7 +164,9 @@ ms.locfileid: "99540702"
 
 - `"None"`
 - `"SecurityGroup"`（适用于安全组和 Azure AD 角色）
-- `"All"`（该操作可获取登录用户所属的所有安全组、通讯组和 Azure AD 目录角色。
+- `"ApplicationGroup"`（此选项仅包括分配给应用程序的组）
+- `"DirectoryRole"`（获取用户所属的 Azure AD 目录角色）
+- `"All"`（此项将获取已登录用户所属的所有安全组、通讯组和 Azure AD 目录角色）。
 
 示例：
 
@@ -176,7 +178,7 @@ ms.locfileid: "99540702"
 
 | 键 | 值类型 |
 | :--- | :--- |
-| optionalClaims | String |
+| optionalClaims | 字符串 |
 
 此特定应用的安全令牌服务在令牌中返回的可选声明。
 
@@ -191,7 +193,7 @@ ms.locfileid: "99540702"
 
 ### <a name="identifieruris-attribute"></a>identifierUris 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | identifierUris | String Array |
 
@@ -205,7 +207,7 @@ ms.locfileid: "99540702"
 
 ### <a name="informationalurls-attribute"></a>informationalUrls 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | informationalUrls | 字符串 |
 
@@ -224,7 +226,7 @@ ms.locfileid: "99540702"
 
 ### <a name="keycredentials-attribute"></a>keyCredentials 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | keyCredentials | 集合 |
 
@@ -248,7 +250,7 @@ ms.locfileid: "99540702"
 
 ### <a name="knownclientapplications-attribute"></a>knownClientApplications 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | knownClientApplications | String Array |
 
@@ -262,7 +264,7 @@ ms.locfileid: "99540702"
 
 ### <a name="logourl-attribute"></a>logoUrl 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | logoUrl | 字符串 |
 
@@ -276,7 +278,7 @@ ms.locfileid: "99540702"
 
 ### <a name="logouturl-attribute"></a>logoutUrl 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | logoutUrl | 字符串 |
 
@@ -304,9 +306,9 @@ ms.locfileid: "99540702"
 
 ### <a name="oauth2allowimplicitflow-attribute"></a>oauth2AllowImplicitFlow 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
-| oauth2AllowImplicitFlow | 布尔 |
+| oauth2AllowImplicitFlow | Boolean |
 
 指定此 Web 应用是否可以请求 OAuth2.0 隐式流访问令牌。 默认值为 false。 此标志用于基于浏览器的应用，例如 JavaScript 单页应用。 若要了解详细信息，请在目录中输入 `OAuth 2.0 implicit grant flow`，并查看有关隐式流的主题。
 
@@ -318,9 +320,9 @@ ms.locfileid: "99540702"
 
 ### <a name="oauth2allowidtokenimplicitflow-attribute"></a>oauth2AllowIdTokenImplicitFlow 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
-| oauth2AllowIdTokenImplicitFlow | 布尔 |
+| oauth2AllowIdTokenImplicitFlow | Boolean |
 
 指定此 Web 应用是否可以请求 OAuth2.0 隐式流 ID 令牌。 默认值为 false。 此标志用于基于浏览器的应用，例如 JavaScript 单页应用。
 
@@ -357,9 +359,9 @@ ms.locfileid: "99540702"
 
 ### <a name="oauth2requiredpostresponse-attribute"></a>oauth2RequiredPostResponse 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
-| oauth2RequiredPostResponse | 布尔 |
+| oauth2RequiredPostResponse | Boolean |
 
 指定在 OAuth 2.0 令牌请求过程中，Azure AD 是否允许与 GET 请求相反的 POST 请求。 默认值为 false，即指定只允许 GET 请求。
 
@@ -371,7 +373,7 @@ ms.locfileid: "99540702"
 
 ### <a name="parentalcontrolsettings-attribute"></a>parentalControlSettings 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | parentalControlSettings | 字符串 |
 
@@ -389,7 +391,7 @@ ms.locfileid: "99540702"
 
 ### <a name="passwordcredentials-attribute"></a>passwordCredentials 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | passwordCredentials | 集合 |
 
@@ -411,7 +413,7 @@ ms.locfileid: "99540702"
 
 ### <a name="preauthorizedapplications-attribute"></a>preAuthorizedApplications 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | preAuthorizedApplications | 集合 |
 
@@ -432,7 +434,7 @@ ms.locfileid: "99540702"
 
 ### <a name="publisherdomain-attribute"></a>publisherDomain 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | publisherDomain | 字符串 |
 
@@ -441,12 +443,12 @@ ms.locfileid: "99540702"
 示例：
 
 ```json
-    "publisherDomain": "https://www.contoso.com",
+    "publisherDomain": "{tenant}.partner.onmschina.cn",
 ```
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | replyUrlsWithType | 集合 |
 
@@ -471,7 +473,7 @@ ms.locfileid: "99540702"
 
 ### <a name="requiredresourceaccess-attribute"></a>requiredResourceAccess 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | requiredResourceAccess | 集合 |
 
@@ -498,7 +500,7 @@ ms.locfileid: "99540702"
 
 ### <a name="samlmetadataurl-attribute"></a>samlMetadataUrl 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | samlMetadataUrl | 字符串 |
 
@@ -512,7 +514,7 @@ ms.locfileid: "99540702"
 
 ### <a name="signinurl-attribute"></a>signInUrl 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | signInUrl | 字符串 |
 
@@ -526,7 +528,7 @@ ms.locfileid: "99540702"
 
 ### <a name="signinaudience-attribute"></a>signInAudience 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | signInAudience | String |
 
@@ -542,7 +544,7 @@ ms.locfileid: "99540702"
 
 ### <a name="tags-attribute"></a>tags 属性
 
-| 密钥 | 值类型 |
+| 键 | 值类型 |
 | :--- | :--- |
 | 标记 | String Array  |
 

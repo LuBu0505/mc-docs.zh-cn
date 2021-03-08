@@ -5,16 +5,16 @@ author: WenJason
 ms.author: v-jay
 ms.service: azure-stack
 ms.topic: reference
-origin.date: 10/20/2020
-ms.date: 12/07/2020
+origin.date: 2/8/2021
+ms.date: 03/01/2021
 ms.reviewer: kivenkat
-ms.lastreviewed: 07/07/2020
-ms.openlocfilehash: da57c95385c113b9ddc4419218b7c8892db663c5
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.lastreviewed: /8/2021
+ms.openlocfilehash: 7fd761d2df0ccfc8240ecb40eb53837604b0fb04
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830185"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697402"
 ---
 # <a name="graphics-processing-unit-gpu-virtual-machine-vm-on-azure-stack-hub"></a>Azure Stack Hub 上的图形处理单元 (GPU) 虚拟机 (VM)
 
@@ -28,9 +28,11 @@ ms.locfileid: "97830185"
 - [NCasT4_v3](https://docs.microsoft.com/azure/virtual-machines/nct4-v3-series)
 
 > [!IMPORTANT]  
-> 公共预览版目前支持 Azure Stack Hub GPU。 若要参与预览，请完成 [aka.ms/azurestackhubgpupreview](https://aka.ms/azurestackhubgpupreview) 上的表单。
+> 在 2005 和 2008 年的 Azure Stack Hub 版本中，Azure Stack Hub GPU 支持为公共预览版。  
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 
+> [!WARNING]  
+> 在此版本中，不支持 GPU VM。 需要升级到 Azure Stack Hub 2005 或更高版本。 此外，Azure Stack Hub 硬件必须具有物理 GPU。
 ## <a name="ncv3"></a>NCv3
 
 NCv3 系列 VM 采用 NVIDIA Tesla V100 GPU。 客户可将这些更新的 GPU 用于传统的 HPC 工作负荷，例如油藏模拟、DNA 测序、蛋白质分析、Monte Carlo 模拟和其他工作负荷。 
@@ -50,6 +52,8 @@ NVv4 系列虚拟机由 [AMD Radeon Instinct MI25](https://www.amd.com/en/produc
 | Standard_NV4as_v4 |4 |14 |88 | 1/8 | 2 | 4 | 2 | 
 
 ## <a name="ncast4_v3"></a>NCasT4_v3
+> [!IMPORTANT]
+> 无法使用门户用户界面 (UI) 部署这些 VM 大小。 可以使用 PowerShell、Azure CLI 或 Azure 资源管理器模板。
 
 | 大小 | vCPU | 内存:GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大 NIC 数 | 
 | --- | --- | --- | --- | --- | --- | --- |

@@ -3,15 +3,15 @@ title: 在混合 Runbook 辅助角色上运行 Azure 自动化 Runbook
 description: 本文介绍如何使用混合 Runbook 辅助角色在本地数据中心或其他云提供商的计算机上运行 Runbook。
 services: automation
 ms.subservice: process-automation
-origin.date: 10/06/2020
-ms.date: 12/07/2020
+origin.date: 01/29/2021
+ms.date: 02/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: e56a0b40d436e0c831d6a08e95578b4f88721dc2
-ms.sourcegitcommit: a978c5f2c6b53494d67e7c3c5a44b2aa648219a2
+ms.openlocfilehash: f68059c0552a1c57d5389cfee59b55524b5c3f6e
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629058"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696891"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色中运行 Runbook
 
@@ -23,7 +23,7 @@ ms.locfileid: "98629058"
 
 Azure 自动化处理混合 Runbook 辅助角色上的作业的方式不同于处理 Azure 沙盒中运行的作业的方式。 对于长时间运行的 runbook，请确保它能在重启后复原。 有关作业行为的详细信息，请参阅[混合 Runbook 辅助角色作业](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-jobs)。
 
-混合 Runbook 辅助角色的作业在 Windows 上的本地 System 帐户下运行，或者在 Linux 上的 nxautomation 帐户下运行。 对于 Linux，请确保 nxautomation 帐户有权访问 Runbook 模块的存储位置。 使用 [Install-Module](https://docs.microsoft.com/powershell/module/powershellget/install-module) cmdlet 时，请确保为 `Scope` 参数指定 AllUsers，以确保 nxautomation 帐户具有访问权限。 有关 Linux 上的 PowerShell 的详细信息，请参阅[非 Windows 平台上的 PowerShell 的已知问题](https://docs.microsoft.com/powershell/scripting/whats-new/what-s-new-in-powershell-70?view=powershell-7.1)。
+混合 Runbook 辅助角色的作业在 Windows 上的本地 System 帐户下运行，或者在 Linux 上的 nxautomation 帐户下运行。 对于 Linux，请确保 nxautomation 帐户有权访问 Runbook 模块的存储位置。 使用 [Install-Module](https://docs.microsoft.com/powershell/module/powershellget/install-module) cmdlet 时，请确保为 `Scope` 参数指定 AllUsers，以确保 nxautomation 帐户具有访问权限。 有关 Linux 上的 PowerShell 的详细信息，请参阅[非 Windows 平台上的 PowerShell 的已知问题](https://docs.microsoft.com/powershell/scripting/whats-new/what-s-new-in-powershell-70)。
 
 ## <a name="configure-runbook-permissions"></a>配置 runbook 权限
 
@@ -95,6 +95,10 @@ Azure 虚拟机上的混合 Runbook 辅助角色可以使用托管标识来向 A
 ## <a name="install-run-as-account-certificate"></a><a name="runas-script"></a>安装运行方式帐户证书
 
 在 Azure 中部署资源时，可能需要在自动生成过程中访问本地系统以支持部署过程中的某个任务或某组步骤。 若要使用运行方式帐户针对 Azure 进行身份验证，必须安装运行方式帐户证书。
+
+>[!NOTE]
+>此 PowerShell runbook 当前不在 Linux 计算机上运行。 它仅在 Windows 计算机上运行。
+>
 
 以下 PowerShell Runbook 称为 Export-RunAsCertificateToHybridWorker，其从 Azure 自动化帐户导出运行方式证书。 Runbook 下载证书并将其导入到连接到同一帐户的混合 Runbook 辅助角色上的本地计算机证书存储中。 完成该步骤后，Runbook 会验证辅助角色能否成功地使用运行方式帐户对 Azure 进行身份验证。
 
@@ -329,4 +333,4 @@ Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name
 
 * 如果 Runbook 未成功完成，请查看 [Runbook 执行失败](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)相关故障排除指南。
 * 有关 PowerShell 的详细信息（包括语言参考和学习模块），请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/scripting/overview)。
-* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation#automation)。
+* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation)。

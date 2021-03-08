@@ -2,20 +2,16 @@
 title: 使用 Azure 自动化排查 Linux 更新代理问题
 description: 本文介绍如何排查和解决在进行更新管理时出现的 Linux Windows 更新代理问题。
 services: automation
-author: WenJason
-ms.author: v-jay
-origin.date: 12/03/2019
-ms.date: 08/10/2020
-ms.topic: conceptual
-ms.service: automation
+origin.date: 01/25/2021
+ms.date: 02/22/2021
+ms.topic: troubleshooting
 ms.subservice: update-management
-manager: digimobile
-ms.openlocfilehash: eaac6fc78b2c6184b9dbcaafda4e19fa8f21d4a5
-ms.sourcegitcommit: e6b216b180734783219378410e13192e314a4497
+ms.openlocfilehash: 110dd7dbf15a02a53d5aaa1d2bcd98a44c35897b
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87788301"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697773"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>排查 Linux 更新代理问题
 
@@ -28,7 +24,7 @@ ms.locfileid: "87788301"
 > [!NOTE]
 > Azure 门户显示的内容和计算机的当前状态之间可能会些微延迟。
 
-本文介绍如何从 Azure 门户为 Azure 计算机运行故障排除，以及如何为[离线场景](#troubleshoot-offline)下的非 Azure 计算机运行故障排除。 
+本文介绍如何从 Azure 门户为 Azure 计算机运行故障排除，以及如何为[离线场景](#troubleshoot-offline)下的非 Azure 计算机运行故障排除。
 
 > [!NOTE]
 > 如果配置了代理服务器，则故障排除脚本当前不会通过它路由流量。
@@ -91,7 +87,6 @@ sudo /opt/microsoft/omsagent/bin/service_control restart
 
 此检查可确保混合 Runbook 辅助角色在计算机上运行。 如果混合 Runbook 辅助角色正常运行，则应存在以下示例中的进程。
 
-
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
 nxautom+   8593      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/state/automationworker/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
@@ -130,7 +125,7 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>脱机进行故障排除
 
-可以通过在本地运行脚本，在混合 Runbook 辅助角色上脱机使用故障排除。 Python 脚本 [update_mgmt_health_check.py](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6) 可在脚本中心内找到。 以下示例显示了此脚本的输出示例：
+可以通过在本地运行脚本，在混合 Runbook 辅助角色上脱机使用故障排除。 可在 GitHub 中查看 Python 脚本 [UM_Linux_Troubleshooter_Offline.py](https://github.com/Azure/updatemanagement/blob/main/UM_Linux_Troubleshooter_Offline.py)。 以下示例显示了此脚本的输出示例：
 
 ```output
 Debug: Machine Information:   Static hostname: LinuxVM2

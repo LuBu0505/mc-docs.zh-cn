@@ -8,19 +8,20 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 05/02/2017
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.author: v-jay
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c67a07ae55b28ddeb2333837320f5e1370f8bba0
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: f91054521f91175b227864c48da1843d82d00d5b
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829773"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697062"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>在不同的 Azure 区域中配置 SQL Server Always On 可用性组
 
@@ -88,6 +89,7 @@ ms.locfileid: "97829773"
    - 使用特定于 IP 地址的 TCP 端口探测。
    - 具有特定于同一区域中 SQL Server 的负载均衡规则。  
    - 如果后端池中的虚拟机不是单个可用性集或虚拟机规模集的一部分，则为标准负载均衡器。 有关其他信息，请查看 [Azure 负载均衡器标准概述](../../../load-balancer/load-balancer-overview.md)。
+   - 如果两个不同区域的两个虚拟网络通过全局 VNet 对等互连进行对等互连，则为标准负载均衡器。 有关详细信息，请参阅 [Azure 虚拟网络常见问题解答 (FAQ)](../../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
 
 1. [向新的 SQL Server 添加故障转移群集功能](availability-group-manually-configure-prerequisites-tutorial.md#add-failover-clustering-features-to-both-sql-server-vms)。
 
@@ -170,7 +172,7 @@ ms.locfileid: "97829773"
 
 ## <a name="fail-over-to-remote-region"></a>故障转移到远程区域
 
-要测试侦听器与远程区域之间的连接，可将副本故障转移到远程区域。 尽管副本是异步的，但故障转移存在丢失数据的可能性。 要故障转移并防止丢失数据，请将可用性模式更改为同步，将故障转移模式设置为自动。 使用以下步骤：
+要测试侦听器与远程区域之间的连接，可将副本故障转移到远程区域。 尽管副本是异步的，但故障转移存在丢失数据的可能性。 要故障转移并防止丢失数据，请将可用性模式更改为同步，将故障转移模式设置为自动。 请使用以下步骤：
 
 1. 在“对象资源管理器”中连接到承载主副本的 SQL Server 实例。
 1. 在“AlwaysOn 可用性组”的“可用性组”下，右键单击可用性组，然后选择“属性”  。

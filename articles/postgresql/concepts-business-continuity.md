@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 08/07/2020
-ms.date: 12/14/2020
-ms.openlocfilehash: cbc4c44fdf714644e86ab10a305ba5182241686c
-ms.sourcegitcommit: a8afac9982deafcf0652c63fe1615ba0ef1877be
+ms.date: 03/08/2021
+ms.openlocfilehash: 9b617d2b67f46499405a80b2c3d4d1fa558fd54b
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96850380"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697433"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>有关使用 Azure Database for PostgreSQL - 单一服务器确保业务连续性的概述
 
@@ -33,7 +33,7 @@ Azure Database for PostgreSQL 提供了业务连续性功能，这些功能包�
 
 | **功能** | **基本** | **常规用途** | **内存优化** |
 | :------------: | :-------: | :-----------------: | :------------------: |
-| 从备份执行时间点还原 | 保留期内的任何还原点 | 保留期内的任何还原点 | 保留期内的任何还原点 |
+| 从备份执行时间点还原 | 保留期内的任何还原点 <br/> RTO - 可变 <br/>RPO < 15 分钟| 保留期内的任何还原点 <br/> RTO - 可变 <br/>RPO < 15 分钟 | 保留期内的任何还原点 <br/> RTO - 可变 <br/>RPO < 15 分钟 |
 | 从异地复制的备份执行异地还原 | 不支持 | RTO - 可变 <br/>RPO < 1 小时 | RTO - 可变 <br/>RPO < 1 小时 |
 | 只读副本 | RTO - 几分钟* <br/>RPO < 5 分钟* | RTO - 几分钟* <br/>RPO < 5 分钟*| RTO - 几分钟* <br/>RPO < 5 分钟*|
 

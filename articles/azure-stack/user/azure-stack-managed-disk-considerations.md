@@ -4,16 +4,16 @@ description: 了解 Azure Stack Hub 中托管磁盘和托管映像的差异与�
 author: WenJason
 ms.topic: article
 origin.date: 11/22/2020
-ms.date: 12/07/2020
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: jiahan
 ms.lastreviewed: 11/22/2020
-ms.openlocfilehash: fca875cd1da1a093c0dfb7e82e8c99c825bc9e3c
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: df4c47789cecc5ddfe26eeac0cfcc3ddd7ac6968
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507814"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696634"
 ---
 # <a name="azure-stack-hub-managed-disks-differences-and-considerations"></a>Azure Stack Hub 托管磁盘：差异与注意事项
 
@@ -354,7 +354,7 @@ New-AzureRMVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VmC
 - 如果订阅是在应用 1808 更新之前创建的，请遵循以下步骤来更新订阅。 否则，在此订阅中部署 VM 可能会失败，并出现错误消息“磁盘管理器发生内部错误。”
    1. 在 Azure Stack Hub 用户门户中，转到“订阅”，找到相应订阅。 依次单击“资源提供程序”、“Microsoft.Compute”、“重新注册”。
    2. 在同一订阅下，转到“访问控制(标识和访问管理)”，验证“Azure Stack Hub - 托管磁盘”是否已列出。 
-- 如果使用多租户环境，请让云操作员（可以是组织内部或来自服务提供商的操作员）根据[此文](../operator/azure-stack-enable-multitenancy.md#register-azure-stack-hub-with-the-guest-directory)中的步骤重新配置每个来宾目录。 否则，在与该来宾目录关联的订阅中部署 VM 可能会失败，并出现错误消息“磁盘管理器中出现内部错误。”
+- 如果使用多租户环境，请让云操作员（可以是组织内部或来自服务提供商的操作员）根据[在 Azure Stack Hub 中配置多租户](../operator/azure-stack-enable-multitenancy.md#configure-guest-directory)中的步骤重新配置每个来宾目录。 否则，在与该来宾目录关联的订阅中部署 VM 可能会失败，并出现错误消息“磁盘管理器中出现内部错误。”
 
 ## <a name="next-steps"></a>后续步骤
 

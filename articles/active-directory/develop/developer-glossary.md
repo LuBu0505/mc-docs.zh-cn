@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/30/2020
+ms.date: 02/22/2021
 ms.author: v-junlch
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 1dd2b2fa1f1e147865ecdad3d0928a4bc7527601
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: e050d2ef7a0033beb959a6749f307d1b16034a16
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937517"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697197"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft 标识平台开发人员术语表
 
@@ -34,7 +34,7 @@ ms.locfileid: "91937517"
 * 使用[“授权代码”授权](#authorization-grant)，则最终用户先以资源所有者的身份进行身份验证，将授权委托给客户端来访问资源。 然后，客户端在获取访问令牌时进行身份验证。 令牌有时可以更具体地称为“用户+应用”令牌，因为它同时代表授权客户端应用程序的用户，以及应用程序。
 * 使用[“客户端凭据”授权](#authorization-grant)，则客户端提供唯一的身份验证，在没有资源所有者身份验证/授权的情况下运行，因此该令牌有时可以称为“仅限应用”令牌。
 
-有关更多详细信息，请参阅 [Microsoft 标识平台令牌参考][AAD-Tokens-Claims]。
+有关更多详细信息，请查看 [Microsoft 标识平台令牌参考][AAD-Tokens-Claims]。
 
 ## <a name="application-id-client-id"></a>应用程序 ID（客户端 ID）
 
@@ -95,7 +95,7 @@ Azure AD 向应用程序注册颁发的唯一标识符，用于标识特定应�
 
 [安全令牌](#security-token)包含声明，声明将有关某个实体（例如[客户端应用程序](#client-application)或[资源所有者](#resource-owner)）的断言提供给另一个实体（例如[资源服务器](#resource-server)）。 声明是中继令牌主体（例如，由[授权服务器](#authorization-server)进行身份验证的安全主体）相关事实的名称/值对。 给定令牌中的声明依赖于几个变量，包括令牌类型、用于验证主体身份的凭据类型和应用程序配置等。
 
-有关更多详细信息，请参阅 [Microsoft 标识平台令牌参考][AAD-Tokens-Claims]。
+有关更多详细信息，请查看 [Microsoft 标识平台令牌参考][AAD-Tokens-Claims]。
 
 ## <a name="client-application"></a>客户端应用程序
 
@@ -113,7 +113,7 @@ Azure AD 向应用程序注册颁发的唯一标识符，用于标识特定应�
 
 [授权服务器](#authorization-server)的[授权终结点](#authorization-endpoint)提供的 [OpenID Connect][OpenIDConnect-ID-Token] [安全令牌](#security-token)，其中包含与最终用户[资源所有者](#resource-owner)的身份验证相关的[声明](#claim)。 与访问令牌一样，ID 令牌也以数字签名的 [JSON Web 令牌 (JWT)][JWT] 形式来表示。 不过，与访问令牌不同的是，ID 令牌的声明并不用于与资源访问相关的用途（具体地说，是访问控制）。
 
-有关更多详细信息，请参阅 [Microsoft 标识平台令牌参考][AAD-Tokens-Claims]。
+有关更多详细信息，请查看 [Microsoft 标识平台令牌参考][AAD-Tokens-Claims]。
 
 ## <a name="microsoft-identity-platform"></a>Microsoft 标识平台
 
@@ -180,7 +180,7 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 ## <a name="service-principal-object"></a>应用程序对象
 
-当你在 [Azure 门户][AZURE-portal]中注册/更新应用程序时，该门户将为此租户创建/更新[应用程序对象](#application-object)和对应的服务主体对象。 应用程序对象可全局（在关联的应用程序已获授予访问权限的所有租户中）*定义*应用程序的标识配置，并可作为模板来*派生*出其对应的服务主体对象，以便在运行时于本地（在特定租户）使用。
+当你在 [Azure 门户][AZURE-portal]中注册/更新应用程序时，该门户将为此租户创建/更新[应用程序对象](#application-object)和对应的服务主体对象。 应用程序对象可全局（在关联的应用程序已获授予访问权限的所有租户中）*定义* 应用程序的标识配置，并可作为模板来 *派生* 出其对应的服务主体对象，以便在运行时于本地（在特定租户）使用。
 
 有关详细信息，请参阅[应用程序和服务主体对象][AAD-App-SP-Objects]。
 
@@ -222,7 +222,7 @@ Azure AD 目录的实例称为 Azure AD 租户。 它提供的一些功能包括
 
 ## <a name="next-steps"></a>后续步骤
 
-[Microsoft 标识平台开发人员指南][AAD-Dev-Guide]是用于所有 Microsoft 标识平台开发相关主题的登陆页，包括[应用程序集成][AAD-How-To-Integrate]的概述和 [Microsoft 标识平台身份验证与支持的身份验证方案][AAD-Auth-Scenarios]基础知识。 另外，还可在 [GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=) 上找到关于如何快速启动和运行的代码示例及教程。
+[Microsoft 标识平台开发人员指南][AAD-Dev-Guide]是所有与 Microsoft 标识平台开发相关的主题使用的登陆页面，这些主题包括[应用程序集成][AAD-How-To-Integrate]概述和 [Microsoft 标识平台身份验证与支持的身份验证方案][AAD-Auth-Scenarios]基础知识。 另外，还可在 [GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=) 上找到关于如何快速启动和运行的代码示例及教程。
 
 请使用以下评论部分提供反馈，帮助我们改进和编写此内容，包括有关新建定义或更新现有定义的请求！
 
@@ -235,7 +235,7 @@ Azure AD 目录的实例称为 Azure AD 租户。 它提供的一些功能包括
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [Graph-Perm-Scopes]: https://docs.microosft.com/graph/permissions-reference
 [Graph-App-Resource]: https://docs.microosft.com/graph/api/resources/application
-[Graph-Sp-Resource]: https://docs.microosft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta
+[Graph-Sp-Resource]: https://docs.microosft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta&preserve-view=true
 [Graph-User-Resource]: https://docs.microosft.com/graph/api/resources/user
 [AAD-How-Subscriptions-Assoc]:../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md
@@ -257,4 +257,3 @@ Azure AD 目录的实例称为 Azure AD 租户。 它提供的一些功能包括
 [OpenIDConnect]: https://openid.net/specs/openid-connect-core-1_0.html
 [OpenIDConnect-AuthZ-Endpoint]: https://openid.net/specs/openid-connect-core-1_0.html#AuthorizationEndpoint
 [OpenIDConnect-ID-Token]: https://openid.net/specs/openid-connect-core-1_0.html#IDToken
-

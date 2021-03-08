@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 02/24/2021
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: d4c6d6ab3ed4a3937d5180a467951c6ef92412eb
-ms.sourcegitcommit: ca5e5792f3c60aab406b7ddbd6f6fccc4280c57e
+ms.openlocfilehash: 9691289a6c91ef1b60ea671dfe61f10116c90471
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92749904"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697203"
 ---
 # <a name="microsoft-identity-platform-userinfo-endpoint"></a>Microsoft 标识平台的 UserInfo 终结点
 
@@ -93,4 +93,3 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6Il…
 * [查看 ID 令牌的内容](id-tokens.md)
 * [使用可选声明自定义 ID 令牌的内容](active-directory-optional-claims.md)
 * [使用 OAuth2 协议请求访问令牌和 ID 令牌](v2-protocols-oidc.md)
-

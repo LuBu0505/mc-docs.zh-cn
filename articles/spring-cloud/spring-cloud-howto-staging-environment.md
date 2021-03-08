@@ -1,31 +1,32 @@
 ---
 title: 在 Azure Spring Cloud 中设置过渡环境 | Microsoft Docs
 description: 了解如何在 Azure Spring Cloud 中使用蓝绿部署
-author: bmitchell287
+author: MikeDodaro
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 11/02/2020
+ms.date: 02/19/2021
 ms.author: v-junlch
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 4de4e16ef15857e699351ac3302923db33ff3cac
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 066934197ff52ca6c05bb032e09770c7095dcb17
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328684"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696924"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>在 Azure Spring Cloud 中设置过渡环境
 
-本文介绍如何使用 Azure Spring Cloud 中的蓝绿色部署模式来设置过渡部署。 蓝/绿部署是一种 Azure DevOps 持续交付模式，它依赖于在部署新（绿色）版本时保持现有（蓝色）版本的活动性。 本文还会介绍如何在不直接更改生产部署的情况下，将此过渡部署投入生产。
+本文介绍如何使用 Azure Spring Cloud 中的蓝绿部署模式来设置过渡部署。 蓝绿部署是一种 Azure DevOps 持续交付模式，它依赖于在部署新（绿色）版本时保持现有（蓝色）版本的活动性。 本文还介绍了如何在不更改生产部署的情况下，将此过渡部署放入生产环境。
 
 ## <a name="prerequisites"></a>先决条件
 
-本文假设你已根据 [Azure Spring Cloud 应用程序的启动教程](./spring-cloud-quickstart.md)部署 PiggyMetrics 应用程序。 PiggyMetrics 包括三个应用程序：“gateway”、“account-service”和“auth-service”。  
+* 标准定价层上的 Azure Spring Cloud 实例。
+* Azure CLI Azure Spring Cloud 扩展
 
-如果要对本示例使用其他应用程序，需要在该应用程序面向公众的部分进行一项简单的更改。  此项更改会将过渡部署与生产部署区分开来。
+本文使用根据 Spring Initializer 构建的应用程序。 如果要对本示例使用其他应用程序，需要在该应用程序面向公众的部分进行一项简单的更改，将过渡部署和生产区分开来。
 
 
-若要在 Azure Spring Cloud 中设置过渡环境，请按照后续部分中的说明进行操作。
+若要在 Azure Spring Cloud 中设置蓝绿部署，请按照后续部分中的说明进行操作。
 
 ## <a name="install-the-azure-cli-extension"></a>安装 Azure CLI 扩展
 
@@ -34,35 +35,94 @@ ms.locfileid: "94328684"
 ```azurecli
 az extension add --name spring-cloud
 ```
-    
-## <a name="view-all-deployments"></a>查看所有部署
+## <a name="prepare-app-and-deployments"></a>准备应用和部署
+若要构建应用程序，请执行下列步骤：
+1. 使用带有[此配置](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client)的 Spring Initializer 为示例应用生成代码。
 
-在 Azure 门户中转到你的服务实例，然后选择“部署管理”以查看所有部署。 若要查看更多详细信息，可选择每个部署。
+2. 下载代码。
+3. 将以下源文件 HelloController.java 添加到文件夹 `\src\main\java\com\example\hellospring\`。
+```java
+package com.example.hellospring; 
+import org.springframework.web.bind.annotation.RestController; 
+import org.springframework.web.bind.annotation.RequestMapping; 
 
-## <a name="create-a-staging-deployment"></a>创建分阶段部署
+@RestController 
 
-1. 在本地开发环境中，对 PiggyMetrics 网关应用程序进行少许修改。 例如，更改 gateway/src/main/resources/static/css/launch.css 文件中的颜色。 这样便可轻松区分这两个部署。 若要生成 jar 包，请运行以下命令： 
+public class HelloController { 
 
-    ```console
-    mvn clean package
-    ```
+@RequestMapping("/") 
 
-1. 在 Azure CLI 中创建新的部署，并指定过渡部署名称“绿色”。
+  public String index() { 
 
-    ```azurecli
-    az spring-cloud app deployment create -g <resource-group-name> -s <service-instance-name> --app gateway -n green --jar-path gateway/target/gateway.jar
-    ```
+      return "Greetings from Azure Spring Cloud!"; 
+  } 
 
-1. 成功部署后，从应用程序仪表板访问网关页面，然后在左侧的“应用实例”选项卡中查看所有实例 。
-  
-> [!NOTE]
-> 发现状态为“OUT_OF_SERVICE”，因此在验证完成之前，流量不会路由到此部署。
+} 
+```
+4. 生成 .jar 文件：
+```azurecli
+mvn clean packge -DskipTests
+```
+5. 在 Azure Spring Cloud 实例中创建应用：
+```azurecli
+az spring-cloud app create -n demo -g <resourceGroup> -s <Azure Spring Cloud instance> --is-public
+```
+6. 将应用部署到 Azure Spring Cloud：
+```azurecli
+az spring-cloud app deploy -n demo -g <resourceGroup> -s <Azure Spring Cloud instance> --jar-path target\hellospring-0.0.1-SNAPSHOT.jar
+```
+7. 修改过渡部署的代码：
+```java
+package com.example.hellospring; 
+import org.springframework.web.bind.annotation.RestController; 
+import org.springframework.web.bind.annotation.RequestMapping; 
 
-## <a name="verify-the-staging-deployment"></a>验证过渡部署
+@RestController 
 
-1. 返回“部署管理”页面并选择你的新部署。 部署状态应显示为“正在运行”。 “分配/取消分配域”按钮应显示为灰色，因为该环境是一个过渡环境。
+public class HelloController { 
 
-1. 在“概述”页面中，应会看到“测试终结点” 。 将其复制粘贴到新的浏览器窗口，此时应会显示新的 PiggyMetrics 页面。
+@RequestMapping("/") 
+
+  public String index() { 
+
+      return "Greetings from Azure Spring Cloud! THIS IS THE GREEN DEPLOYMENT"; 
+  } 
+
+} 
+```
+8. 重新生成 .jar 文件：
+```azurecli
+mvn clean packge -DskipTests
+```
+9. 创建绿色部署： 
+```azurecli
+az spring-cloud app deployment create -n green --app demo -g <resourceGroup> -s <Azure Spring Cloud instance> --jar-path target\hellospring-0.0.1-SNAPSHOT.jar 
+```
+
+## <a name="view-apps-and-deployments"></a>查看应用和部署
+
+使用以下过程查看已部署的应用。
+
+1. 转到 Azure 门户中的 Azure Spring Cloud 实例。
+
+1. 从左侧导航窗格中打开“应用”边栏选项卡，查看服务实例的应用。
+
+    [ ![应用-仪表板](./media/spring-cloud-blue-green-staging/app-dashboard.png)](./media/spring-cloud-blue-green-staging/app-dashboard.png)
+
+1. 可单击某个应用并查看详细信息。
+
+    [ ![应用-概述](./media/spring-cloud-blue-green-staging/app-overview.png)](./media/spring-cloud-blue-green-staging/app-overview.png)
+
+1. 打开“部署”以查看应用的所有部署。 该网格显示了生产和过渡部署。
+
+    [ ![应用/部署仪表板](./media/spring-cloud-blue-green-staging/deployments-dashboard.png)](./media/spring-cloud-blue-green-staging/deployments-dashboard.png)
+
+1. 单击 URL 以打开当前部署的应用程序。
+    ![已部署的 URL](./media/spring-cloud-blue-green-staging/running-blue-app.png)
+1. 单击“状态”列中的“生产”，查看默认应用 。
+    ![默认正在运行](./media/spring-cloud-blue-green-staging/running-default-app.png)
+1. 单击“状态”列中的“过渡”，查看过渡应用 。
+    ![过渡正在运行](./media/spring-cloud-blue-green-staging/running-staging-app.png)
 
 >[!TIP]
 > * 确认测试终结点以斜线 (/) 结尾，从而确保正确加载 CSS 文件。  
@@ -72,14 +132,18 @@ az extension add --name spring-cloud
 > 配置服务器设置既应用于过渡环境，也应用于生产环境。 例如，如果在配置服务器中将应用网关的上下文路径 (`server.servlet.context-path`) 设置为 somepath，则绿色部署的路径将更改为“https://\<username>:\<password>@\<cluster-name>.test.azureapps.io/gateway/green/somepath/...”。
  
  如果此时访问面向公众的应用网关，应会看到没有新更改的旧页面。
-    
+
 ## <a name="set-the-green-deployment-as-the-production-environment"></a>将绿色部署设置为生产环境
 
-1. 在过渡环境中验证更改后，可将其推送到生产环境。 返回“部署管理”，选中“网关”应用程序复选框。 
+1. 在过渡环境中验证更改后，可将其推送到生产环境。 在“应用/部署”页面上，选择 `Production` 中当前具有的应用程序 。
 
-2. 选择“设置部署”。
-3. 在“生产部署”列表中选择“绿色”，然后选择“应用”  。
-4. 转到网关应用程序的“概述”页。 如果已为网关应用程序分配了一个域，URL 将在“概述”窗格中显示。 若要查看修改后的 PiggyMetrics 页面，请选择该 URL，然后前往该站点。
+1. 单击绿色部署的“注册状态”后面的省略号，并将过渡生成设置为生产。 
+
+   [ ![将生产设置为过渡](./media/spring-cloud-blue-green-staging/set-staging-deployment.png)](./media/spring-cloud-blue-green-staging/set-staging-deployment.png)
+
+1. 现在，应用的 URL 应会显示所做的更改。
+
+   ![立即在部署中过渡](./media/spring-cloud-blue-green-staging/new-production-deployment.png)
 
 >[!NOTE]
 > 将绿色部署设置为生产环境后，以前的部署将变成过渡部署。
@@ -104,5 +168,4 @@ az spring-cloud app deployment delete -n <staging-deployment-name> -g <resource-
 
 ## <a name="next-steps"></a>后续步骤
 
-* [快速入门：部署第一个 Azure Spring Cloud 应用程序](spring-cloud-quickstart.md)
-
+* [适用于 Azure Spring Cloud 的 CI/CD](https://review.docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-cicd?branch=pr-en-us-142929&pivots=programming-language-java)

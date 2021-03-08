@@ -3,17 +3,17 @@ title: 在 Azure Stack Hub 中准备更新包
 description: 了解如何在 Azure Stack Hub 中准备更新包。
 author: WenJason
 ms.topic: how-to
-origin.date: 07/22/2020
-ms.date: 08/31/2020
+origin.date: 02/08/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.lastreviewed: 09/10/2019
 ms.reviewer: sranthar
-ms.openlocfilehash: 571b8e4701d863b4ff8a33a831e90f0e2f93ccdc
-ms.sourcegitcommit: 4e2d781466e54e228fd1dbb3c0b80a1564c2bf7b
+ms.openlocfilehash: c602aa8dc60df3869455dace86c87697dc38a419
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88867833"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697156"
 ---
 # <a name="prepare-an-azure-stack-hub-update-package"></a>准备 Azure Stack Hub 更新包
 
@@ -46,7 +46,7 @@ Azure Stack Hub 更新和修补程序的更新包可通过门户中的更新边�
 
 ### <a name="automatic-download-and-preparation-for-update-packages"></a>自动下载和准备更新包
 
-对于已连接到 Azure Stack Hub 自动更新终结点的系统，系统会自动准备 Azure Stack Hub 软件更新和修补程序：<https://*.azureedge.net> 和 <https://aka.ms/azurestackautomaticupdate>。 若要详细了解如何与 Azure Stack Hub 自动更新终结点建立连接，请参阅 [Azure Stack Hub 防火墙集成](./azure-stack-integrate-endpoints.md#ports-and-urls-outbound)中所述的“修补升级”终结点 。
+对于已连接到 Azure Stack Hub 自动更新终结点的系统，系统会自动准备 Azure Stack Hub 软件更新和修补程序：`https://*.azureedge.net` 和 `https://aka.ms/azurestackautomaticupdate`。 若要详细了解如何与 Azure Stack Hub 自动更新终结点建立连接，请参阅 [Azure Stack Hub 防火墙集成](./azure-stack-integrate-endpoints.md#ports-and-urls-outbound)中所述的“修补升级”终结点 。
 
 ### <a name="where-to-download-azure-stack-hub-update-packages"></a>Azure Stack Hub 更新包的下载位置
 
@@ -57,7 +57,7 @@ Azure Stack Hub 更新和修补程序的更新包可通过门户中的更新边�
 
 ### <a name="where-to-download-azure-stack-hub-hotfix-packages"></a>Azure Stack Hub 修补程序包的下载位置
 
-[Azure Stack Hub 修补程序](./azure-stack-updates.md#update-package-types)的包托管于 Azure Stack Hub 更新所在的安全 Azure 终结点中。 使用已连接的实例的 Azure Stack Hub 操作员会看到 [Azure Stack Hub 更新自动出现在管理员门户中](#automatic-download-and-preparation-for-update-packages)（当更新可用时）。 可以使用每篇相应的修补程序知识库文章（例如，[Azure Stack Hub 修补程序 1.1906.11.52](https://support.microsoft.com/help/4515650)）中的嵌入式链接下载它们。 也可在与 Azure Stack Hub 版本对应的发行说明中找到修补程序的链接。
+[Azure Stack Hub 修补程序](./azure-stack-updates.md#update-package-types)的包托管于 Azure Stack Hub 更新所在的安全 Azure 终结点中。 使用已连接的实例的 Azure Stack Hub 操作员会看到 [Azure Stack Hub 更新自动出现在管理员门户中](#automatic-download-and-preparation-for-update-packages)（当更新可用时）。 可以使用每篇相应的修补程序知识库文章中的嵌入式链接下载它们。 也可在与 Azure Stack Hub 版本对应的发行说明中找到修补程序 KB 文章的链接。
 
 ### <a name="where-to-download-oem-update-packages"></a>OEM 更新包的下载位置
 

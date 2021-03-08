@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 02/02/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 5237806e9f5ac49e52fb3c21a772c5da697d2ab5
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: 10ffc0a60d429954094a7232999c2e04e1c42f45
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540773"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697775"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>通过 MSAL.NET 使用配置选项实例化机密客户端应用程序
 
@@ -28,7 +28,7 @@ ms.locfileid: "99540773"
 
 - 客户端 ID（表示 GUID 的字符串）
 - 标识提供者 URL（为实例命名）和应用程序的登录受众。 这两个参数统称为颁发机构。
-- 如果你仅在为组织编写业务线应用程序（也称为单租户应用程序），则为租户 ID。
+- 租户 ID：如果你编写的业务线应用程序（也称为单租户应用程序）专用于自己的组织。
 - 应用程序机密（客户端机密字符串）；对于机密客户端应用，需要获取证书（类型为 X509Certificate2）。
 - 对于 Web 应用，有时对于公共客户端应用（特别是当你的应用需要使用中转站时），还将需要设置 redirectUri，标识提供者将在其中使用安全令牌联系你的应用程序。
 
@@ -60,7 +60,7 @@ MSAL.NET 中选项的属性名称与 ASP.NET Core 中 `AzureADOptions` 的属性
 
 从 MSAL.NET v3.x 开始，可以根据配置文件配置机密客户端应用程序。
 
-在需要配置和实例化应用程序的类中，需声明 `ConfidentialClientApplicationOptions` 对象。  使用 [Microsoft.Extensions.Configuration.Binder nuget 包](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder) 中的 `IConfigurationRoot.Bind()` 方法，将从源读取的配置（包括 appconfig.json 文件）绑定到应用程序选项的实例：
+在想要配置和实例化应用程序的类中，请声明 `ConfidentialClientApplicationOptions` 对象。  使用 [Microsoft.Extensions.Configuration.Binder NuGet 包](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder)中的 `IConfigurationRoot.Bind()` 方法，将从源读取的配置绑定到应用程序选项的实例：
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -79,7 +79,7 @@ app = ConfidentialClientApplicationBuilder.CreateWithApplicationOptions(_applica
 ```
 
 ## <a name="add-runtime-configuration"></a>添加运行时配置
-在机密客户端应用程序中，通常会为每个用户设置一个缓存。 因此，需将缓存关联到用户，并告知应用程序生成器你需要使用它。 同样，你可以有一个动态计算的重定向 URI。 在此示例中，代码如下：
+在机密客户端应用程序中，通常会为每个用户设置一个缓存。 因此，需将缓存关联到用户，并告知应用程序生成器你需要使用它。 同样，你可以有一个动态计算的重定向 URI。 在这种情况下，代码如下：
 
 ```csharp
 IConfidentialClientApplication app;

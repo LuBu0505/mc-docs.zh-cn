@@ -1,16 +1,16 @@
 ---
-title: 向 Azure Functions 中的现有函数添加绑定
-description: 了解如何向 Azure Functions 项目中的现有函数添加绑定。
+title: 将函数连接到其他 Azure 服务
+description: 了解如何向 Azure Functions 项目中的现有函数添加连接到其他 Azure 服务的绑定。
 ms.topic: how-to
-ms.date: 10/19/2020
-ms.openlocfilehash: 69417cdcdc596ad9fa4538df48f15f7985c99467
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+ms.date: 02/26/2021
+ms.openlocfilehash: c72266d8f1eb78cd9bac1cee20c4d0ad530ae4b8
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92473131"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697710"
 ---
-# <a name="add-bindings-to-an-existing-function-in-azure-functions"></a>向 Azure Functions 中的现有函数添加绑定
+# <a name="connect-functions-to-azure-services-using-bindings"></a>使用绑定将函数连接到 Azure 服务
 
 创建函数时，请将特定于语言的触发器代码从一组触发器模板添加到项目中。 若要使用输入或输出绑定将函数连接到其他服务，则必须在函数中添加特定的绑定定义。 有关绑定的详细信息，请参阅 [Azure Functions 触发器和绑定的概念](functions-triggers-bindings.md)。
 
@@ -40,4 +40,3 @@ ms.locfileid: "92473131"
 ## <a name="next-steps"></a>后续步骤
 
 + [Azure Functions 触发器和绑定概念](functions-triggers-bindings.md)
-

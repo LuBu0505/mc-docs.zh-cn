@@ -1,22 +1,19 @@
 ---
 title: 以编程方式监视 Azure 数据工厂
 description: 了解如何使用不同的软件开发工具包 (SDK) 监视数据工厂中的管道。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 origin.date: 01/16/2018
-ms.date: 05/11/2020
+ms.date: 03/01/2021
 author: WenJason
 ms.author: v-jay
-manager: digimobile
-ms.openlocfilehash: 8f70a1d8a5a13497c2af200ab461d47b94a79810
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.custom: devx-track-python
+ms.openlocfilehash: 133dd0b2ca518a5b6b195f25548716541089af12
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198239"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696987"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>以编程方式监视 Azure 数据工厂
 
@@ -28,9 +25,20 @@ ms.locfileid: "82198239"
 
 ## <a name="data-range"></a>数据范围
 
-数据工厂仅将管道运行数据存储 45 天。 以编程方式查询有关数据工厂管道运行的数据时 - 比如使用 PowerShell 命令 `Get-AzDataFactoryV2PipelineRun` 来查询，对于可选的 `LastUpdatedAfter` 和 `LastUpdatedBefore` 参数，无最大日期限制。 但是，如果查询过去一年（举例）的数据，查询不会返回错误，而仅返回最近 45 天的管道运行数据。
+数据工厂仅将管道运行数据存储 45 天。 以编程方式查询有关数据工厂管道运行的数据时 - 比如使用 PowerShell 命令 `Get-AzDataFactoryV2PipelineRun` 来查询，对于可选的 `LastUpdatedAfter` 和 `LastUpdatedBefore` 参数，无最大日期限制。 但如果查询例如过去一年的数据，则不会返回错误，而仅返回最近 45 天的管道运行数据。
 
-如果要保留管道运行数据超过 45 天，可使用 [Azure Monitor](monitor-using-azure-monitor.md) 设置自己的诊断日志记录。
+如果要保留管道运行数据超过 45 天，请使用 [Azure Monitor](monitor-using-azure-monitor.md) 设置自己的诊断日志记录。
+
+## <a name="pipeline-run-information"></a>管道运行信息
+
+有关管道运行属性，请参阅 [PipelineRun API 参考](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/get#pipelinerun)。 管道运行在其生命周期中具有不同状态，下面列出了可能的运行状态值：
+
+* 已排队
+* 正在进行
+* 已成功
+* 失败
+* 正在取消
+* 已取消
 
 ## <a name="net"></a>.NET
 有关使用 .NET SDK 创建和监视管道的完整演练，请参阅[使用 .NET 创建数据工厂和管道](quickstart-create-data-factory-dot-net.md)。
@@ -45,7 +53,7 @@ ms.locfileid: "82198239"
     {
         pipelineRun = client.PipelineRuns.Get(resourceGroup, dataFactoryName, runResponse.RunId);
         Console.WriteLine("Status: " + pipelineRun.Status);
-        if (pipelineRun.Status == "InProgress")
+        if (pipelineRun.Status == "InProgress" || pipelineRun.Status == "Queued")
             System.Threading.Thread.Sleep(15000);
         else
             break;
@@ -68,7 +76,7 @@ ms.locfileid: "82198239"
     Console.ReadKey();
     ```
 
-有关 .NET SDK 的完整文档，请参阅[数据工厂 .NET SDK 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactory?view=azure-dotnet)。
+有关 .NET SDK 的完整文档，请参阅[数据工厂 .NET SDK 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactory)。
 
 ## <a name="python"></a>Python
 有关使用 Python SDK 创建和监视管道的完整演练，请参阅[使用 Python 创建数据工厂和管道](quickstart-create-data-factory-python.md)。
@@ -86,7 +94,7 @@ activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(
 print_activity_run_details(activity_runs_paged[0])
 ```
 
-有关 Python SDK 的完整文档，请参阅[数据工厂 Python SDK 参考](https://docs.microsoft.com/python/api/overview/azure/datafactory?view=azure-python)。
+有关 Python SDK 的完整文档，请参阅[数据工厂 Python SDK 参考](https://docs.microsoft.com/python/api/overview/azure/datafactory)。
 
 ## <a name="rest-api"></a>REST API
 有关使用 REST API 创建和监视管道的完整演练，请参阅[使用 REST API 创建数据工厂和管道](quickstart-create-data-factory-rest-api.md)。
@@ -99,7 +107,7 @@ print_activity_run_details(activity_runs_paged[0])
         $response = Invoke-RestMethod -Method GET -Uri $request -Header $authHeader
         Write-Host  "Pipeline run status: " $response.Status -foregroundcolor "Yellow"
 
-        if ($response.Status -eq "InProgress") {
+        if ( ($response.Status -eq "InProgress") -or ($response.Status -eq "Queued") ) {
             Start-Sleep -Seconds 15
         }
         else {
@@ -128,12 +136,12 @@ print_activity_run_details(activity_runs_paged[0])
         $run = Get-AzDataFactoryV2PipelineRun -ResourceGroupName $resourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $runId
 
         if ($run) {
-            if ($run.Status -ne 'InProgress') {
-                Write-Host "Pipeline run finished. The status is: " $run.Status -foregroundcolor "Yellow"
+            if ( ($run.Status -ne "InProgress") -and ($run.Status -ne "Queued") ) {
+                Write-Output ("Pipeline run finished. The status is: " +  $run.Status)
                 $run
                 break
             }
-            Write-Host  "Pipeline is running...status: InProgress" -foregroundcolor "Yellow"
+            Write-Output ("Pipeline is running...status: " + $run.Status)
         }
 
         Start-Sleep -Seconds 30

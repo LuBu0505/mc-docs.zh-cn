@@ -10,16 +10,16 @@ ms.subservice: develop
 ms.topic: conceptual
 ms.tgt_pltfrm: Java
 ms.workload: identity
-ms.date: 02/02/2021
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: f233925b8a78c053defe1bb33a928561f7d52caa
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: 3ae8ba777f7d7983de67327266e9b67c9d0a33de
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540685"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696830"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>适用于 Java 的 ADAL 到 MSAL 迁移指南
 
@@ -29,7 +29,7 @@ ms.locfileid: "99540685"
 
 MSAL 提供以下优势：
 
-- 由于它使用较新的 Microsoft 标识平台终结点，你可以通过 Azure AD 企业到消费者 (B2C) 方案对更广泛的一组 Microsoft 标识（例如 Azure AD 标识以及社交和本地帐户）进行身份验证。
+- 由于它使用较新的 Microsoft 标识平台，你可以通过 Azure AD 企业到消费者 (B2C) 方案对更广泛的一组 Microsoft 标识（例如 Azure AD 标识以及社交和本地帐户）进行身份验证。
 - 用户将获得最佳单一登录体验。
 - 应用程序可以启用增量许可，更轻松地为条件访问提供支持。
 
@@ -37,13 +37,13 @@ MSAL for Java 是我们建议用于 Microsoft 标识平台的身份验证库。 
 
 ## <a name="differences"></a>差异
 
-如果你一直在使用面向开发人员的 Azure AD (v1.0) 终结点（和 ADAL4J），请阅读[ Microsoft 标识平台 (v2.0) 终结点有何不同？](../azuread-dev/azure-ad-endpoint-comparison.md)
+如果你一直在使用面向开发人员的 Azure AD (v1.0) 终结点（和 ADAL4J），请阅读 [Microsoft 标识平台有何不同？](../azuread-dev/azure-ad-endpoint-comparison.md)。
 
 ## <a name="scopes-not-resources"></a>范围不是资源
 
 ADAL4J 获取资源的令牌，而 MSAL for Java 则是获取范围的令牌。 许多 MSAL for Java 类需要 scopes 参数。 此参数是一个字符串列表，这些字符串声明所需的权限和请求的资源。 请参阅 [Microsoft Graph 的范围](https://docs.microsoft.com/graph/permissions-reference)查看示例范围。
 
-可以将 `/.default` 作用域后缀添加到资源中，帮助将应用从 v1.0 终结点 (ADAL) 迁移到 Microsoft 标识平台终结点 (MSAL)。 例如，对于 `https://microsoftgraph.chinacloudapi.cn` 的资源值，等效的作用域值为 `https://microsoftgraph.chinacloudapi.cn/.default`。  如果资源未采用 URL 形式，但资源 ID 采用 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` 形式，则仍可以使用作用域值 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default`。
+可以将 `/.default` 作用域后缀添加到资源中，帮助将应用从 ADAL 迁移到 MSAL。 例如，对于 `https://microsoftgraph.chinacloudapi.cn` 的资源值，等效的作用域值为 `https://microsoftgraph.chinacloudapi.cn/.default`。  如果资源未采用 URL 形式，但资源 ID 采用 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` 形式，则仍可以使用作用域值 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default`。
 
 有关不同类型作用域的更多详细信息，请参阅 [Microsoft 标识平台中的权限和许可](./v2-permissions-and-consent.md)以及[接受 v1.0 令牌的 Web API 的作用域](./msal-v1-app-scopes.md)两篇文章。
 
@@ -80,7 +80,7 @@ MSAL for Java 添加了[令牌缓存](msal-acquire-cache-tokens.md)，在可能�
 
 在 v1.0 中，如果你使用 `https://login.partner.microsoftonline.cn/common` 颁发机构，则用户可以使用任何 Azure Active Directory (AAD) 帐户（适用于任何组织）登录。
 
-如果你使用 v2.0 中的 `https://login.partner.microsoftonline.cn/common` 颁发机构，则用户可以使用任何 AAD 组织登录。 在 MSAL for Java 中，若要限制登录到任何 AAD 帐户，则需要使用 `https://login.partner.microsoftonline.cn/organizations` 颁发机构（与 ADAL4J 中的行为相同）。 若要指定颁发机构，请在创建 `PublicClientApplication` 类时，在 [PublicClientApplication.Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) 方法中设置 `authority` 参数。
+如果你使用 v2.0 中的 `https://login.partner.microsoftonline.cn/common` 颁发机构，则用户可以使用任何 AAD 组织登录。 在 MSAL for Java 中，若要限制登录到任何 AAD 帐户，请使用 `https://login.partner.microsoftonline.cn/organizations` 颁发机构（与使用 ADAL4J 的行为相同）。 若要指定颁发机构，请在创建 `PublicClientApplication` 类时，在 [PublicClientApplication.Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) 方法中设置 `authority` 参数。
 
 ## <a name="v10-and-v20-tokens"></a>v1.0 和 v2.0 令牌
 

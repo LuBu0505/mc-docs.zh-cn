@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 02/04/2021
+ms.date: 02/24/2021
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a71be415f4533ebb33ee262287a7dd4c5a214932
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: 4094fc8b3c9b711f7f01e50322b6c9a6d8c9ed54
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540727"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697628"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Windows 虚拟机
 
@@ -188,9 +188,9 @@ az role assignment create \
 
 有关如何使用 Azure RBAC 管理对 Azure 订阅资源的访问的详细信息，请参阅以下文章：
 
-- [使用 Azure CLI 添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-cli.md)
-- [使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)
-- [使用 Azure PowerShell 添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-powershell.md)。
+- [使用 Azure CLI 分配 Azure 角色](../../role-based-access-control/role-assignments-cli.md)
+- [使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)
+- [使用 Azure PowerShell 分配 Azure 角色](../../role-based-access-control/role-assignments-powershell.md)。
 
 ## <a name="using-conditional-access"></a>使用条件访问
 
@@ -344,7 +344,9 @@ AADLoginForWindows 扩展必须成功安装，VM 才能完成 Azure AD 联接过
 > [!NOTE]
 > Windows 10 版本 20H1 添加了对已注册 Azure AD 电脑的支持来启动到 VM 的 RDP 连接。 在使用已注册 Azure AD（而不是已建立 Azure AD 联接或已建立混合 Azure AD 联接）的电脑作为 RDP 客户端来启动与 VM 的连接时，必须采用 AzureAD\UPn 格式（例如 AzureAD\john@contoso.com）输入凭据。
 
-此外，请验证在 Azure AD 联接建立完成后是否尚未卸载 AADLoginForWindows 扩展。
+请验证在 Azure AD 联接建立完成后是否尚未卸载 AADLoginForWindows 扩展。
+
+此外请确保在服务器和客户端上都已启用安全策略“网络安全：允许请求对此计算机进行 PKU2U 身份验证以使用联机标识”。
  
 #### <a name="mfa-sign-in-method-required"></a>需要 MFA 登录方法
 

@@ -3,14 +3,14 @@ title: 适用于 Azure Functions 的 Azure Blob 存储触发器和绑定
 description: 了解如何在 Azure Functions 中使用 Azure Blob 存储触发器和绑定。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 10/19/2020
+ms.date: 03/01/2021
 ms.author: v-junlch
-ms.openlocfilehash: 7435ff9f643b4a0239f40c716684b8206494e515
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+ms.openlocfilehash: f23717b7282a4110906ceb1253155359bc75b8b7
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472014"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696567"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>适用于 Azure Functions 的 Azure Blob 存储绑定概述
 
@@ -34,6 +34,13 @@ Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与 
 | C# 脚本、Java、JavaScript、PowerShell | 注册[扩展捆绑包]          | 建议将 [Azure Tools 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)用于 Visual Studio Code。 |
 | C# 脚本（Azure 门户中仅限联机）         | 添加绑定                            | 若要更新现有绑定扩展而不必重新发布函数应用，请参阅[更新扩展]。 |
 
+#### <a name="storage-extension-5x-and-higher"></a>存储扩展 5.x 和更高版本
+
+新版本的存储绑定扩展可用作[预览 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/5.0.0-beta.2)。 此预览版引入了[使用标识而不是机密进行连接](./functions-reference.md#configure-an-identity-based-connection)的功能。 对于 .NET 应用程序，它还会更改可以绑定到的类型，并将 `WindowsAzure.Storage` 和 `Microsoft.Azure.Storage` 中的类型替换为 [Azure.Storage.Blobs](https://docs.microsoft.com/dotnet/api/azure.storage.blobs) 中的新类型。
+
+> [!NOTE]
+> 预览包不包括在扩展捆绑包中，必须手动安装。 对于 .NET 应用，请添加对包的引用。 对于所有其他应用类型，请参阅[更新扩展]。
+
 [core tools]: ./functions-run-local.md
 [扩展捆绑包]: ./functions-bindings-register.md#extension-bundles
 [NuGet 包]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage
@@ -46,9 +53,30 @@ Functions 1.x 应用会自动引用 [Microsoft.Azure.WebJobs](https://www.nuget.
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
+## <a name="hostjson-settings"></a>host.json 设置
+
+> [!NOTE]
+> 本部分介绍的内容不适用于使用 5.0.0 之前的扩展版本的情况。 对于这些版本，没有适用于 blob 的全局配置设置。
+
+当使用的[扩展版本不低于 5.0.0](#storage-extension-5x-and-higher) 时，本部分中介绍的全局配置设置才适用于此绑定。 下面的示例 host.json 文件仅包含此绑定的 2.x 版及更高版本设置。 若要详细了解 2.x 版及更高版本的 Azure Functions 中的全局配置设置，请参阅 [Azure Functions 的 host.json 参考](functions-host-json.md)。
+
+```json
+{
+    "version": "2.0",
+    "extensions": {
+        "blobs": {
+            "maxDegreeOfParallelism": "4"
+        }
+    }
+}
+```
+
+|属性  |默认 | 说明 |
+|---------|---------|---------|
+|maxDegreeOfParallelism|8 *（可用核心数）|每个 blob 触发器函数允许使用的并发调用数（整数）。 允许的最小值为 1。|
+
 ## <a name="next-steps"></a>后续步骤
 
 - [在 blob 存储数据更改时运行函数](./functions-bindings-storage-blob-trigger.md)
 - [函数运行时读取 blob 存储数据](./functions-bindings-storage-blob-input.md)
 - [通过函数写入 blob 存储数据](./functions-bindings-storage-blob-output.md)
-
