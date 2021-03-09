@@ -31919,6 +31919,16 @@
         "source_path": "articles/azure-monitor/scripts/powershell-sample-create-workspace.md",
         "redirect_url": "/azure-monitor/logs/powershell-sample-create-workspace",
         "redirect_document_id": false
+    },
+    {
+        "source_path": "/articles/vs-azure-tools-storage-explorer-relnotes.md",
+        "redirect_url": "https://github.com/microsoft/AzureStorageExplorer/releases",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "/articles/vs-azure-tools-storage-emulator-using.md",
+        "redirect_url": "/storage/common/storage-use-emulator",
+        "redirect_document_id": false
     }
     
 
