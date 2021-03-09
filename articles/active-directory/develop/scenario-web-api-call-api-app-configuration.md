@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/23/2020
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: a19277c9a3e9a73d73e62c733d3173ac55510ebd
-ms.sourcegitcommit: 883daddafe881e5f8a9f347df2880064d2375b6d
+ms.openlocfilehash: 978a9656e63ed4d11ee6a3801026ff96d09b5168
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95918359"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696658"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>调用 Web API 的 Web API：代码配置
 
@@ -33,12 +33,12 @@ Microsoft 建议在调用下游 Web API 开发 ASP.NET Core 保护的 API 时，
 
 ## <a name="client-secrets-or-client-certificates"></a>客户端密码或客户端证书
 
-鉴于 Web API 现在调用了下游 Web API，你需要在 appsettings.json 文件中提供客户端密码或客户端证书。 还可添加一个部分来指定：
+鉴于 Web API 现在调用下游的 Web API，请提供 appsettings.json 文件中客户端密码或客户端证书。 你还可以添加一个节来指定：
 
 - 下游 Web API 的 URL
 - 调用 API 所需的范围
 
-在下面的示例中，`GraphBeta` 部分指定了这些设置。
+在下面的示例中，`GraphBeta` 节指定了这些设置。
 
 ```JSON
 {
@@ -115,8 +115,8 @@ public class Startup
 
 如果要调用 Microsoft Graph，可通过 Microsoft.Identity.Web 在 API 操作中直接使用 `GraphServiceClient`（由 Microsoft Graph SDK 公开）。 若要公开 Microsoft Graph：
 
-1. 将 [Microsoft.Identity.Web.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) NuGet 包添加到项目中。
-1. 在 *Startup.cs* 文件中 `.EnableTokenAcquisitionToCallDownstreamApi()` 的后面添加 `.AddMicrosoftGraph()`。 `.AddMicrosoftGraph()` 具有多个重写。 如果使用将配置部分作为参数的重写，代码会变为：
+1. 将 [Microsoft.Identity.Web.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) NuGet 包添加到项目。
+1. 在 Startup.cs 文件的 `.EnableTokenAcquisitionToCallDownstreamApi()` 后面添加 `.AddMicrosoftGraph()`。 `.AddMicrosoftGraph()` 具有多个重写。 使用将配置部分作为参数的重写，代码变为：
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -166,10 +166,10 @@ public class Startup
 
 下图显示 Microsoft.Identity.Web 的各种可能性以及它们对 Startup.cs 文件的影响 ：
 
-:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="显示 Startup.cs 中的服务配置选项的框图，说明如何调用 Web API 和指定令牌缓存实现":::
+:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="此框图显示了 Startup.cs 中的服务配置选项，用于调用 Web API 和指定令牌缓存实现":::
 
 > [!NOTE]
-> 若要完全理解本文中的代码示例，需要熟悉 [ASP.NET Core 基础知识](https://docs.microsoft.com/aspnet/core/fundamentals)，尤其是[依赖关系注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)和[选项](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options)。
+> 若要完全理解以下代码示例，请熟悉 [ASP.NET Core 基础知识](https://docs.microsoft.com/aspnet/core/fundamentals)，尤其是[依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)和[选项](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options)。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -257,4 +257,3 @@ Python Web API 需要使用一些中间件来验证从客户端接收的持有�
 ## <a name="next-steps"></a>后续步骤
 
 转到此方案中的下一篇文章：[获取应用的令牌](scenario-web-api-call-api-acquire-token.md)。
-

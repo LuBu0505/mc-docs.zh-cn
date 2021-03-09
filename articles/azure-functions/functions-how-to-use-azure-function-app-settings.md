@@ -3,14 +3,14 @@ title: 配置 Azure Functions 中的函数应用设置
 description: 了解如何配置 Azure Functions 中的函数应用设置。
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 03/02/2021
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: eb2a424004c7e7fd9bda2dc9cd4532d5176102f0
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 1ea54673bfe245ff0c2b6ace65b98bf66d8b3b71
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060100"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697333"
 ---
 # <a name="manage-your-function-app"></a>管理函数应用 
 
@@ -37,6 +37,8 @@ ms.locfileid: "99060100"
 这些设置是加密存储的。 若要了解详细信息，请参阅[应用程序设置安全](security-concepts.md#application-settings)。
 
 # <a name="portal"></a>[门户](#tab/portal)
+
+若要查找应用程序设置，请参阅[在 Azure 门户中开始操作](#get-started-in-the-azure-portal)。 
 
 “应用程序设置”选项卡维护函数应用使用的设置。 你必须选择“显示值”才能在门户中查看值。 若要在门户中添加设置，请选择“新建应用程序设置”并添加新的键值对。
 

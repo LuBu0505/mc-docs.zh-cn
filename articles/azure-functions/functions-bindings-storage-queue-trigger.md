@@ -3,15 +3,15 @@ title: 适用于 Azure Functions 的 Azure 队列存储触发器
 description: 了解如何在 Azure 队列存储数据更改时运行 Azure Function。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 11/30/2020
+ms.date: 03/01/2021
 ms.author: v-junlch
 ms.custom: devx-track-csharp, cc996988-fb4f-47
-ms.openlocfilehash: 57d2c3ba1f4a22a17cd25581b808c9e075fe07b6
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: b42b1bb4281140cf4ab04b5d0593bc86c0864ca6
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507332"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697002"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>适用于 Azure Functions 的 Azure 队列存储触发器
 
@@ -303,17 +303,19 @@ PowerShell 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** | 不适用| 必须设置为 `queueTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|type | 不适用| 必须设置为 `queueTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction**| 不适用 | 只能在 *function.json* 文件中设置。 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
 |**name** | 不适用 |函数代码中包含队列项有效负载的变量的名称。  |
 |**queueName** | **QueueName**| 要轮询的队列的名称。 |
-|连接  | **Connection** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，Functions 运行时将会查找名为“MyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
+|连接  | **Connection** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。<br><br>例如，如果将 `connection` 设置为“MyStorage”，Functions 运行时将会查找名为“MyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>如果使用 [5.x 版或更高版本的扩展](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)，而不是连接字符串，则可以提供对用于定义连接的配置节的引用。 请参阅[连接](./functions-reference.md#connections)。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>使用情况
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+### <a name="default"></a>默认
 
 使用 `string paramName` 等方法参数访问消息数据。 可以绑定到以下任何类型：
 
@@ -324,7 +326,17 @@ PowerShell 不支持特性。
 
 如果在尝试绑定到 `CloudQueueMessage` 时出现错误消息，请确保引用[正确的存储 SDK 版本](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)。
 
+### <a name="additional-types"></a>其他类型
+
+应用如果使用 [5.0.0 版或更高版本的存储扩展](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)，还可以使用用于 .NET 的 Azure SDK 中的类型。 此版本为了支持以下类型，删除了对旧的 `CloudQueueMessage` 类型的支持：
+
+- [QueueMessage](https://docs.microsoft.com/dotnet/api/azure.storage.queues.models.queuemessage)
+ 
+有关使用这些类型的示例，请参阅[扩展的 GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples)。
+
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+
+### <a name="default"></a>默认
 
 使用 `string paramName` 等方法参数访问消息数据。 `paramName` 是在 *function.json* 的 `name` 属性中指定的值。 可以绑定到以下任何类型：
 
@@ -334,6 +346,14 @@ PowerShell 不支持特性。
 * [CloudQueueMessage]
 
 如果在尝试绑定到 `CloudQueueMessage` 时出现错误消息，请确保引用[正确的存储 SDK 版本](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)。
+
+### <a name="additional-types"></a>其他类型
+
+应用如果使用 [5.0.0 版或更高版本的存储扩展](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)，还可以使用用于 .NET 的 Azure SDK 中的类型。 此版本为了支持以下类型，删除了对旧的 `CloudQueueMessage` 类型的支持：
+
+- [QueueMessage](https://docs.microsoft.com/dotnet/api/azure.storage.queues.models.queuemessage)
+
+有关使用这些类型的示例，请参阅[扩展的 GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples)。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -395,7 +415,7 @@ PowerShell 不支持特性。
 
 ## <a name="hostjson-properties"></a>host.json 属性
 
-[host.json](functions-host-json.md#queues) 文件包含控制队列触发器行为的设置。 有关可用设置的详细信息，请参阅 [host.json 设置](functions-bindings-storage-queue-output.md#hostjson-settings)部分。
+[host.json](functions-host-json.md#queues) 文件包含控制队列触发器行为的设置。 有关可用设置的详细信息，请参阅 [host.json 设置](functions-bindings-storage-queue.md#hostjson-settings)部分。
 
 ## <a name="next-steps"></a>后续步骤
 

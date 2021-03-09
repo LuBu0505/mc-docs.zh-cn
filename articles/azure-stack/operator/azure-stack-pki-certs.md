@@ -4,16 +4,16 @@ description: 了解 Azure Stack Hub 集成系统的 Azure Stack Hub PKI 证书�
 author: WenJason
 ms.topic: conceptual
 origin.date: 08/19/2020
-ms.date: 01/18/2021
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: ppacent
 ms.lastreviewed: 12/16/2019
-ms.openlocfilehash: aa62fcadc348cc708eaf2737b7db6c7112c0b19c
-ms.sourcegitcommit: e1edc6ef84dbbda1da4e0a42efa3fd62eee033d1
+ms.openlocfilehash: 47786c4c9e559d60f531ae87dc8016041b5e770a
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541856"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697465"
 ---
 # <a name="azure-stack-hub-public-key-infrastructure-pki-certificate-requirements"></a>Azure Stack Hub 公钥基础结构 (PKI) 证书要求
 
@@ -29,7 +29,7 @@ Azure Stack Hub 有一个公共基础结构网络，该网络使用分配给少�
 ## <a name="certificate-requirements"></a>证书要求
 以下列表描述了常规的证书颁发要求、安全要求和格式要求：
 
-- 证书必须由内部证书颁发机构或公共证书颁发机构颁发。 如果使用公共证书颁发机构，它必须作为 Microsoft 信任根颁发机构计划的一部分包含在基础操作系统映像中。 如需完整列表，请参阅 [Microsoft 受信任根证书计划：参与者](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca)中找到完整列表。
+- 证书必须由内部证书颁发机构或公共证书颁发机构颁发。 如果使用公共证书颁发机构，它必须作为 Microsoft 信任根颁发机构计划的一部分包含在基础操作系统映像中。 如需完整列表，请查看[参与者列表 - Microsoft 受信任根计划](https://docs.microsoft.com/security/trusted-root/participants-list)。
 - Azure Stack Hub 基础结构必须能够通过网络访问证书中发布的证书颁发机构的证书吊销列表 (CRL) 位置。 此 CRL 必须是一个 http 终结点。
 - 在 pre-1903 内部版本中轮换证书时，证书必须由签署部署时提供的证书的同一内部证书颁发机构颁发，或者由上述任何公共证书颁发机构颁发。
 - 轮换内部版本 1903 及更高版本的证书时，证书可以由任何企业或公共证书颁发机构来颁发。

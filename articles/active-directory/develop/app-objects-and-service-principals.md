@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/06/2021
+ms.date: 02/22/2021
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: 4895dce489141b0323b05b07705dca79d4aa97a8
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 5679cf9e69f8271817388c7f329d43c826daa8c4
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022060"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697325"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory 中的应用程序对象和服务主体对象
 
@@ -27,9 +27,9 @@ ms.locfileid: "98022060"
 ## <a name="application-registration"></a>应用程序注册
 为了将标识和访问管理功能委托给 Azure AD，应用程序必须使用 Azure AD [租户](developer-glossary.md#tenant)进行注册。 将应用程序注册到 Azure AD 时，需要创建应用程序的标识配置，使其能够与 Azure AD 集成。 在 [Azure 门户][AZURE-Portal]中注册应用时，可以选择单租户（只能在自己的租户中访问）或多租户（可在其他租户中访问），也可以选择设置重定向 URI（将访问令牌发送到的位置）。
 
-:::image type="content" source="media/app-objects-and-service-principals/app-registration.png" alt-text="Azure 门户的“注册应用程序”窗格的屏幕截图":::
+有关注册应用的分步说明，请参阅[应用注册快速入门](quickstart-register-app.md)。
 
-完成应用注册后，你将拥有应用（应用程序对象）的全局唯一实例，该实例存在于你的主租户或目录中。  而且你的应用拥有全局唯一 ID（应用或客户端 ID）。  然后，在门户中，你便可以添加机密或证书和作用域以使应用正常工作，在登录对话框中自定义应用的品牌等等。
+完成应用注册后，你将拥有应用（[应用程序对象](#application-object)）的全局唯一实例，该实例存在于你的主租户或目录中。  而且你的应用拥有全局唯一 ID（应用或客户端 ID）。  然后，在门户中，你便可以添加机密或证书和作用域以使应用正常工作，在登录对话框中自定义应用的品牌等等。
 
 如果在门户中注册应用程序，会在主租户中自动创建应用程序对象以及服务主体对象。  如果使用 Microsoft Graph API 注册/创建应用程序，则通过一个单独步骤创建服务主体对象。
 
@@ -100,4 +100,3 @@ Microsoft Graph [ServicePrincipal 实体][MS-Graph-Sp-Entity]定义服务主体�
 [MS-Graph-App-Entity]: https://docs.microsoft.com/graph/api/resources/application
 [MS-Graph-Sp-Entity]: https://docs.microsoft.com/graph/api/resources/serviceprincipal
 [AZURE-Portal]: https://portal.azure.cn
-

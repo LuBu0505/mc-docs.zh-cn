@@ -5,18 +5,16 @@ author: yegu-ms
 ms.author: v-junlch
 ms.service: cache
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: d0694a68c0fe00b314d9879bf3724c23c48864a8
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+ms.date: 02/18/2021
+ms.openlocfilehash: e361ec027a217afb99aa8a468e51d173adf0472d
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472651"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697027"
 ---
-# <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>如何为高级 Azure Redis 缓存配置 Redis 群集功能
-Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和功能（包括群集、暂留和虚拟网络支持等高级层功能）的选择上具有灵活性。 本文介绍如何配置高级 Azure Redis 缓存实例中的群集功能。
+# <a name="configure-redis-clustering-for-a-premium-azure-cache-for-redis-instance"></a>为高级 Azure Cache for Redis 实例配置 Redis 群集功能
 
-## <a name="what-is-redis-cluster"></a>什么是 Redis 群集？
 Azure Redis 缓存提供的 Redis 群集与 [在 Redis 中实施](https://redis.io/topics/cluster-tutorial)的一样。 Redis 群集具有以下优势： 
 
 * 能够在多个节点中自动拆分数据集。 
@@ -28,7 +26,8 @@ Azure Redis 缓存提供的 Redis 群集与 [在 Redis 中实施](https://redis.
 
 在 Azure 中，Redis 群集以主/副模型提供。在该模型中，每个分片都有一个带副本的主/副对，副本由 Azure Redis 缓存服务管理。 
 
-## <a name="clustering"></a>群集功能
+## <a name="set-up-clustering"></a>设置群集功能
+
 在创建缓存期间，在“新建 Azure Redis 缓存”边栏选项卡上启用群集功能  。 
 
 1. 若要创建高级缓存，请登录到 [Azure 门户](https://portal.azure.cn)并选择“创建资源”。 除了在 Azure 门户中创建缓存以外，也可以使用 Resource Manager 模板、PowerShell 或 Azure CLI 创建。 有关创建 Azure Redis 缓存的详细信息，请参阅[创建缓存](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)。
@@ -37,17 +36,17 @@ Azure Redis 缓存提供的 Redis 群集与 [在 Redis 中实施](https://redis.
    
 2. 在“新建”页上选择“数据库”，然后选择“Azure Cache for Redis”。
 
-    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="创建资源。":::
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="选择 Azure Cache for Redis。":::
 
 3. 在“新建 Redis 缓存”页上配置新高级缓存的设置。
    
    | 设置      | 建议的值  | 说明 |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS 名称** | 输入任何全局唯一的名称。 | 缓存名称必须是包含 1 到 63 个字符的字符串，只能包含数字、字母或连字符。 该名称必须以数字或字母开头和结尾，且不能包含连续的连字符。 缓存实例的主机名将是 *\<DNS name>.redis.cache.chinacloudapi.cn* 。 | 
-   | **订阅** | 单击下拉箭头，选择你的订阅。 | 要在其下创建此新的 Azure Cache for Redis 实例的订阅。 | 
-   | **资源组** | 单击下拉箭头，选择一个资源组，或者选择“新建”并输入新的资源组名称。 | 要在其中创建缓存和其他资源的资源组的名称。 将所有应用资源放入一个资源组可以轻松地统一管理或删除这些资源。 | 
-   | **位置** | 单击下拉箭头，选择一个位置。 | 选择与要使用该缓存的其他服务靠近的[区域](https://azure.microsoft.com/regions/)。 |
-   | **缓存类型** | 单击下拉箭头，选择高级缓存来配置高级功能。 有关详细信息，请参阅 [Azure Cache for Redis 定价](https://www.azure.cn/pricing/details/redis-cache/)。 |  定价层决定可用于缓存的大小、性能和功能。 有关详细信息，请参阅[用于 Redis 的 Azure 缓存概述](cache-overview.md)。 |
+   | **DNS 名称** | 输入任何全局唯一的名称。 | 缓存名称必须是包含 1 到 63 个字符的字符串，只能包含数字、字母或连字符。 该名称必须以数字或字母开头和结尾，且不能包含连续的连字符。 缓存实例的主机名将是 *\<DNS name>.redis.cache.chinacloudapi.cn*。 | 
+   | **订阅** | 单击下拉箭头并选择你的订阅。 | 要在其下创建此新的 Azure Cache for Redis 实例的订阅。 | 
+   | **资源组** | 单击下拉箭头并选择一个资源组，或者选择“新建”并输入新的资源组名称。 | 要在其中创建缓存和其他资源的资源组的名称。 将所有应用资源放入一个资源组可以轻松地统一管理或删除这些资源。 | 
+   | **位置** | 单击下拉箭头并选择一个位置。 | 选择与要使用该缓存的其他服务靠近的[区域](https://azure.microsoft.com/regions/)。 |
+   | **缓存类型** | 单击下拉箭头并选择高级缓存来配置高级功能。 有关详细信息，请参阅 [Azure Cache for Redis 定价](https://www.azure.cn/pricing/details/redis-cache/)。 |  定价层决定可用于缓存的大小、性能和功能。 有关详细信息，请参阅[用于 Redis 的 Azure 缓存概述](cache-overview.md)。 |
 
 4. 选择“网络”选项卡，或单击页面底部的“网络”按钮 。
 
@@ -57,13 +56,13 @@ Azure Redis 缓存提供的 Redis 群集与 [在 Redis 中实施](https://redis.
 
 7. 在高级缓存实例的“高级”选项卡中，配置非 TLS 端口、群集和数据暂留的设置。 若要启用群集，请单击“启用”。
 
-    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering.png" alt-text="创建资源。":::
+    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering.png" alt-text="群集切换。":::
 
     群集中最多可以有 10 个分片。 单击“启用”后，滑动滑块或者针对“分片计数”键入一个 1 到 10 之间的数字，然后单击“确定”。
 
     每个分片都是一个由 Azure 管理的主/副缓存对，而缓存的总大小则通过将定价层中选择的缓存大小乘以分片数来计算。
 
-    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering-selected.png" alt-text="创建资源。":::
+    :::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-clustering-selected.png" alt-text="已选择“群集切换”。":::
 
     创建缓存后，即可连接到该缓存，并像非群集缓存一样使用，Redis 会将数据分发到整个缓存分片中。 如果诊断[已启用](cache-how-to-monitor.md#enable-cache-diagnostics)，则会为每个分片单独捕获度量值，这些度量值可在 Azure Redis 缓存边栏选项卡中[查看](cache-how-to-monitor.md)。 
 
@@ -102,6 +101,7 @@ Azure Redis 缓存提供的 Redis 群集与 [在 Redis 中实施](https://redis.
 > 
 
 ## <a name="clustering-faq"></a>群集功能常见问题
+
 以下列表包含有关 Azure Redis 缓存群集功能的常见问题解答。
 
 * [使用群集功能时，是否需要对客户端应用程序进行更改？](#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
@@ -171,7 +171,7 @@ Redis-cli.exe -h <<cachename>> -p 1300N (to connect to instance N)
 是的。 首先，请确保缓存为高级缓存，如果不是，则进行缩放。 接下来，应该能够看到群集配置选项，包括用于启用群集的选项。 可以在创建缓存或首次启用群集功能后更改群集大小。
 
    >[!IMPORTANT]
-   >无法撤消启用群集功能。 启用了群集功能且只有一个分片的缓存的行为与 *没有* 群集功能的相同大小缓存的行为 *不同* 。
+   >无法撤消启用群集功能。 启用了群集功能且只有一个分片的缓存的行为与 *没有* 群集功能的相同大小缓存的行为 *不同*。
 
 ### <a name="can-i-configure-clustering-for-a-basic-or-standard-cache"></a>可以为基本缓存或标准缓存配置群集功能吗？
 群集功能仅适用于高级缓存。
@@ -186,6 +186,7 @@ Redis-cli.exe -h <<cachename>> -p 1300N (to connect to instance N)
 如果使用的是 StackExchange.Redis 并在使用群集功能时收到 `MOVE` 异常，请确保使用的是 [StackExchange.Redis 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) 或更高版本。 有关如何配置 .NET 应用程序以使用 StackExchange.Redis 的说明，请参阅[配置缓存客户端](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)。
 
 ## <a name="next-steps"></a>后续步骤
+
 了解有关 Azure Cache for Redis 功能的详细信息。
 
 * [Azure Cache for Redis 高级服务层](cache-overview.md#service-tiers)
@@ -197,4 +198,3 @@ Redis-cli.exe -h <<cachename>> -p 1300N (to connect to instance N)
 [redis-cache-clustering-selected]: ./media/cache-how-to-premium-clustering/redis-cache-clustering-selected.png
 
 [redis-cache-redis-cluster-size]: ./media/cache-how-to-premium-clustering/redis-cache-redis-cluster-size.png
-

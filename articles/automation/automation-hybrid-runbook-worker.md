@@ -3,15 +3,15 @@ title: Azure 自动化混合 Runbook 辅助角色概述
 description: 本文概述了混合 Runbook 辅助角色，可以使用这些辅助角色在本地数据中心或云提供商的计算机上运行 Runbook。
 services: automation
 ms.subservice: process-automation
-origin.date: 01/11/2021
-ms.date: 02/01/2021
+origin.date: 01/22/2021
+ms.date: 02/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0e8939fcd8155835a65f7e2528950ab8f3b7707b
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 3d39ba495393504e681ae06fa8ee8b4522d3f492
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059305"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696893"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>混合 Runbook 辅助角色概述
 
@@ -55,14 +55,7 @@ Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的�
 
 ## <a name="network-planning"></a><a name="network-planning"></a>网络规划
 
-要使系统和用户混合 Runbook 辅助角色连接并注册到 Azure 自动化，必须让其有权访问此部分所述的端口号和 URL。 辅助角色还必须有权访问 [Log Analytics 代理所需的端口和 URL](../azure-monitor/platform/agent-windows.md) 才能连接到 Azure Monitor Log Analytics 工作区。
-
-混合 Runbook 辅助角色需要以下端口和 URL：
-
-* 端口：只需使用 TCP 443 即可进行出站 Internet 访问
-* 全局 URL：`*.azure-automation.cn`
-* 代理服务：`https://<workspaceId>.agentsvc.azure-automation.cn`
-
+查看 [Azure 自动化网络配置](automation-network-configuration.md#network-planning-for-hybrid-runbook-worker)，以了解有关混合 Runbook 辅助角色所需的端口、URL 和其他网络的详细信息。
 
 ### <a name="proxy-server-use"></a>使用代理服务器
 

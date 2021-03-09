@@ -3,15 +3,15 @@ title: Azure Functions 的 Azure Blob 存储输入绑定
 description: 了解如何向某个 Azure 函数提供 Azure Blob 存储输入绑定数据。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 01/12/2021
+ms.date: 03/01/2021
 ms.author: v-junlch
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 73fd57c490437e26c3053eb90a1ff081b5a13375
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 13d03d63d649fb8ae9e5bbaed244e5eb48f49589
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195183"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696757"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储输入绑定
 
@@ -139,7 +139,7 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
   }
 ```
 
-在 [Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对其值将来自 Blob 的参数使用 `@BlobInput` 注释。  可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
+在 [Java 函数运行时库](https://docs.microsoft.com/zh-cn/java/api/overview/azure/functions/runtime?view=azure-java-stable)中，对其值将来自 Blob 的参数使用 `@BlobInput` 注释。  可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -281,11 +281,11 @@ PowerShell 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type  | 不适用 | 必须设置为 `blob`。 |
-|direction  | 不适用 | 必须设置为 `in`。 [用法](#usage)部分中已阐述异常。 |
+|type | 不适用 | 必须设置为 `blob`。 |
+|**direction** | 不适用 | 必须设置为 `in`。 [用法](#usage)部分中已阐述异常。 |
 |name  | 不适用 | 表示函数代码中的 Blob 的变量的名称。|
 |**路径** |**BlobPath** | Blob 的路径。 |
-|连接  |**Connection**| 包含要用于此绑定的[存储连接字符串](../storage/common/storage-configure-connection-string.md)的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，则 Functions 运行时会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
+|连接  |**Connection**| 包含要用于此绑定的[存储连接字符串](../storage/common/storage-configure-connection-string.md)的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，则 Functions 运行时会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。<br><br>如果使用 [5.x 版或更高版本的扩展](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)，而不是连接字符串，则可以提供对用于定义连接的配置节的引用。 请参阅[连接](./functions-reference.md#connections)。|
 |**dataType**| 不适用 | 对于动态类型化语言，指定基础数据类型。 可能的值为 `string`、`binary` 或 `stream`。  |
 |不适用 | **访问** | 表示是要读取还是写入。 |
 
@@ -320,4 +320,3 @@ PowerShell 不支持特性。
 
 - [在 blob 存储数据更改时运行函数](./functions-bindings-storage-blob-trigger.md)
 - [通过函数写入 blob 存储数据](./functions-bindings-storage-blob-output.md)
-

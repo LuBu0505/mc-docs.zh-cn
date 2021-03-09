@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 09/22/2020
-ms.date: 01/11/2021
-ms.openlocfilehash: 2410fb34d1f40e356b94d43ccfd15beac55f726f
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.date: 03/08/2021
+ms.openlocfilehash: 959949df99f372d7c07094d6a771cd26b2cd554a
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023883"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696556"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器中的计算和存储选项
 
@@ -152,7 +152,10 @@ ms.locfileid: "98023883"
 
 当达到存储限制时，服务器将开始返回错误并防止任何进一步的修改。 这也可能导致其他操作活动（如备份和 WAL 存档）出现问题。
 
+为了避免出现这样情况，当存储使用率达到 95% 或可用容量小于 5 GiB 时，服务器会自动切换为只读模式。
+
 建议主动监视正在使用的磁盘空间，并在任何存储不足的情况发生之前增加磁盘大小。 可以设置警报，在服务器存储接近磁盘不足的情况时通知你，从而避免任何磁盘耗尽问题。 有关详细信息，请参阅有关[如何设置警报](howto-alert-on-metrics.md)的文档。
+
 
 ### <a name="storage-auto-grow"></a>存储自动增长
 

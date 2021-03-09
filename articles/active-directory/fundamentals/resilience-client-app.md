@@ -10,13 +10,13 @@ ms.topic: how-to
 author: knicholasa
 ms.author: v-junlch
 manager: martinco
-ms.date: 02/02/2021
-ms.openlocfilehash: 59224662b6eefdb297d66a8827784550ce8c6ccd
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.date: 02/25/2021
+ms.openlocfilehash: 5269606e81b4152f7b984fc91c9528914a59d5dc
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540819"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697174"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-client-applications-you-develop"></a>提高你开发的客户端应用程序中身份验证和授权的复原能力
 

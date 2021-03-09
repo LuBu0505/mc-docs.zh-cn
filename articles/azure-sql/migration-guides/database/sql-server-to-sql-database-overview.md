@@ -10,13 +10,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: MashaMSFT
 origin.date: 11/06/2020
-ms.date: 01/04/2021
-ms.openlocfilehash: 3a7c2309eff4312740b3db371bba4b31fd0f0574
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.date: 02/22/2021
+ms.openlocfilehash: 133d82e7df8e3e48f048e617c43eb529a79a49c3
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830423"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697670"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>迁移概述：将 SQL Server 到 SQL 数据库
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -79,6 +79,10 @@ SQL 数据库为多种[部署模型](../../database/sql-database-paas-overview.m
 - [业务关键/高级服务层级](../../database/service-tier-business-critical.md)适用于需要高事务速率、低延迟 IO 和高级别复原能力的高层应用程序，具有可用于故障转移和卸载读取工作负载的辅助副本。
 - [超大规模服务层级](../../database/service-tier-hyperscale.md)适用于具有不断增长的数据量并且需要自动纵向扩展到 100 TB 的数据库大小的数据库。 专为特大型数据库设计。 
 
+> [!IMPORTANT]
+> [管理 Azure SQL 数据库中的事务日志记录速率](../../database/resource-limits-logical-server.md#transaction-log-rate-governance)以限制过高的数据引入速率。 因此在迁移过程中可能需要扩展目标数据库资源 (vCore/DTU) 以减轻 CPU 或吞吐量的压力。 选择适当大小的目标数据库，但计划在必要时为迁移扩展资源。 
+
+
 ### <a name="sql-server-on-azure-vm-alternative"></a>Azure VM 上的 SQL Server 替代项
 
 你的企业可能要求使 [Azure 虚拟机中的 SQL Server](../../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) 成为比 Azure SQL 数据库更合适的目标。 
@@ -93,7 +97,7 @@ SQL 数据库为多种[部署模型](../../database/sql-database-paas-overview.m
 
 ## <a name="migration-tools"></a>迁移工具 
 
-推荐的迁移工具是数据迁移助手和 Azure 数据库迁移服务。 还可以使用其他替代迁移选项。 
+推荐的迁移工具是数据迁移助手和 Azure 数据库迁移服务。 还有其他可替代的迁移选项。 
 
 ### <a name="recommended-tools"></a>建议的工具
 
@@ -108,7 +112,7 @@ SQL 数据库为多种[部署模型](../../database/sql-database-paas-overview.m
 
 ### <a name="alternative-tools"></a>替代工具
 
-下表列出了替代迁移工具： 
+下表列出了可替代的迁移工具： 
 
 |技术 |说明  |
 |---------|---------|
@@ -130,7 +134,7 @@ SQL 数据库为多种[部署模型](../../database/sql-database-paas-overview.m
 |迁移选项  |何时使用  |注意事项  |
 |---------|---------|---------|
 |[数据迁移助手 (DMA)](https://docs.microsoft.com/sql/dma/dma-migrateonpremsqltosqldb) | - 迁移单一数据库（架构和数据）。  </br> - 可在数据迁移过程中适应停机。 </br> </br> 受支持的源： </br> - SQL Server (2005 - 2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM | - 迁移活动执行数据库对象（从源到目标）之间的数据移动，因此建议在非高峰时间运行。 </br> - DMA 报告每个数据库对象的迁移状态，包括迁移的行数。  </br> - 对于大型迁移（数据库数量/数据库大小），请使用下面列出的 Azure 数据库迁移服务。|
-|[Azure 数据库迁移服务 (DMS)](../../../dms/tutorial-sql-server-to-azure-sql.md)| - 迁移单一数据库或大规模迁移。 </br> - 可在迁移过程中适应停机。 </br> </br> 受支持的源： </br> - SQL Server (2005 - 2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM | - 可通过 [PowerShell](../../../dms/howto-sql-server-to-azure-sql-powershell.md) 自动执行大规模迁移。 </br> - 完成迁移的时间取决于数据库的大小和数据库中的对象数。 </br> - 需要源数据库设置为只读。 |
+|[Azure 数据库迁移服务 (DMS)](../../../dms/tutorial-sql-server-to-azure-sql.md)| - 迁移单一数据库或大规模迁移。 </br> - 可在迁移过程中适应停机。 </br> </br> 支持的源： </br> - SQL Server (2005 - 2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM | - 可通过 [PowerShell](../../../dms/howto-sql-server-to-azure-sql-powershell.md) 自动执行大规模迁移。 </br> - 完成迁移的时间取决于数据库的大小和数据库中的对象数。 </br> - 需要源数据库设置为只读。 |
 | | | |
 
 ### <a name="alternative-options"></a>替代选项
@@ -139,19 +143,19 @@ SQL 数据库为多种[部署模型](../../database/sql-database-paas-overview.m
 
 |方法/技术 |何时使用    |注意事项  |
 |---------|---------|---------|
-|[事务复制](../../database/replication-to-sql-database.md)| - 通过不断地将源数据库表中的更改发布到目标 SQL 数据库表进行迁移。 </br> - 所选表（数据库的子集）的全部或部分数据库迁移。  </br> </br> 受支持的源： </br> - [SQL Server (2016 - 2019)，存在一些限制](https://docs.microsoft.com/sql/relational-databases/replication/replication-backward-compatibility) </br> - AWS EC2  </br> - GCP 计算 SQL Server VM  | - 与其他迁移选项相比，设置相对复杂。   </br> - 提供连续复制选项以迁移数据（无需使数据库脱机）。  </br> - 在源 SQL Server 上设置发布服务器时，事务复制有许多需要考虑的限制。 有关详细信息，请参阅[对发布对象的限制](https://docs.microsoft.com/sql/relational-databases/replication/publish/publish-data-and-database-objects#limitations-on-publishing-objects)。 </br>- 可以[监视复制活动](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)。    |
-|[导入导出服务/BACPAC](../../database/database-import.md)| - 迁移单个业务线应用程序数据库。 </br>- 适用于较小的数据库。  </br>  - 不需要单独的迁移服务或工具。 </br> </br> 受支持的源： </br> - SQL Server (2005 - 2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM  |  - 需要停机，因为数据需要在源处导出并在目标处导入。   </br> - 导出/导入中使用的文件格式和数据类型需与表架构一致，以避免截断/数据类型不匹配错误。  </br> - 导出包含大量对象的数据库所花费的时间可能会大大增加。       |
-|[大容量复制](https://docs.microsoft.com/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server)| - 迁移全部或部分数据迁移。 </br> - 可以适应停机。 </br> </br> 受支持的源： </br> - SQL Server (2005 - 2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM   | - 从源导出数据并导入到目标需要停机时间。 </br> - 导出/导入中使用的文件格式和数据类型需与表架构一致。 |
+|[事务复制](../../database/replication-to-sql-database.md)| - 通过不断地将源数据库表中的更改发布到目标 SQL 数据库表进行迁移。 </br> - 所选表（数据库的子集）的全部或部分数据库迁移。  </br> </br> 受支持的源： </br> - [SQL Server (2016 - 2019)，存在一些限制](https://docs.microsoft.com/sql/relational-databases/replication/replication-backward-compatibility) </br> - AWS EC2  </br> - GCP 计算 SQL Server VM  | - 与其他迁移选项相比，设置相对复杂。   </br> - 提供连续复制选项以迁移数据（无需使数据库脱机）。  </br> - 在源 SQL Server 上设置发布服务器时，关于事务的复制，有一些限制需要考虑。 有关详细信息，请参阅[对发布对象的限制](https://docs.microsoft.com/sql/relational-databases/replication/publish/publish-data-and-database-objects#limitations-on-publishing-objects)。 </br>- 可以[监视复制活动](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)。    |
+|[导入导出服务/BACPAC](../../database/database-import.md)| - 迁移单个业务线应用程序数据库。 </br>- 适用于较小的数据库。  </br>  - 不需要单独的迁移服务或工具。 </br> </br> 受支持的源： </br> - SQL Server (2005 - 2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM  |  - 需要停机，因为数据需要在源处导出并在目标处导入。   </br> - 导出/导入中使用的文件格式和数据类型需要与表架构一致，以避免“截断”/“数据类型不匹配”错误。  </br> - 导出包含大量对象的数据库所花费的时间可能会大大增加。       |
+|[大容量复制](https://docs.microsoft.com/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server)| - 迁移全部或部分数据迁移。 </br> - 可以适应停机。 </br> </br> 支持的源： </br> - SQL Server (2005 - 2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM   | - 从源导出数据并导入目标时需要停机时间。 </br> - 导出/导入中使用的文件格式和数据类型需与表架构一致。 |
 |[Azure 数据工厂 (ADF)](../../../data-factory/connector-azure-sql-database.md)| - 从源 SQL Server 数据库迁移和/或转换数据。 </br> - 将数据从多个数据源合并到 Azure SQL 数据库，通常用于商业智能 (BI) 工作负载。  |  - 需要在 ADF 中创建数据移动管道，以将数据从源移动到目标。   </br> - [成本](https://azure.cn/pricing/details/data-factory/)是一个重要的考虑因素，与管道触发器、活动运行、数据移动的持续时间等有关。 |
 |[SQL 数据同步](../../database/sql-data-sync-data-sql-server-sql-database.md)| - 在源数据库和目标数据库之间同步数据。</br> - 适合在 Azure SQL 数据库和本地 SQL Server 之间以双向流运行连续同步。 | - Azure SQL 数据库必须是中心数据库，以与作为成员数据库的本地 SQL Server 数据库同步。</br> - 与事务复制相比，SQL 数据同步支持在本地和 Azure SQL 数据库之间进行双向数据同步。 </br> - 可能会对性能有更高的影响，具体取决于工作负载。|
 | | | |
 
 ## <a name="feature-interoperability"></a>功能互操作性 
 
-迁移依赖于其他 SQL Server 功能的工作负载时，还有其他注意事项。
+如果迁移的工作负载还依赖其他 SQL Server 功能，则还有其他注意事项。
 
 #### <a name="sql-server-integration-services"></a>SQL Server Integration Services
-通过将 SQL Server Integration Services (SSIS) 包重新部署到 [Azure 数据工厂](../../../data-factory/introduction.md)中的 Azure SSIS 运行时，将包迁移到 Azure。 Azure 数据工厂通过提供用于在 Azure 中执行 SSIS 包的运行时来[支持 SSIS 包的迁移](../../../data-factory/scenario-ssis-migration-overview.md#azure-sql-database-as-database-workload-destination)。
+通过将 SQL Server Integration Services (SSIS) 包重新部署到 [Azure 数据工厂](../../../data-factory/introduction.md)中的 Azure SSIS 运行时，将包迁移到 Azure。 Azure 数据工厂通过提供用于在 Azure 中执行 SSIS 包的运行时来[支持 SSIS 包的迁移](../../../data-factory/scenario-ssis-migration-overview.md#azure-sql-database-as-database-workload-destination)。 此外，还可以使用[数据流](../../../data-factory/concepts-data-flow-overview.md)在 ADF 中以本机方式重写 SSIS ETL 逻辑。
 
 
 #### <a name="sql-server-reporting-services"></a>SQL Server Reporting Services
@@ -163,7 +167,7 @@ SQL 数据库为多种[部署模型](../../database/sql-database-paas-overview.m
 除了 SQL 数据库中包含的高可用性体系结构之外，还有[自动故障转移组](../../database/auto-failover-group-overview.md)功能，使你可以管理托管实例中数据库到另一个区域的复制和故障转移。 
 
 #### <a name="sql-agent-jobs"></a>SQL 代理作业
-Azure SQL 数据库不会直接支持 SQL 代理作业，需要部署到[弹性数据库作业（预览版）](../../database/job-automation-overview.md#elastic-database-jobs-preview)。
+Azure SQL 数据库不会直接支持 SQL 代理作业，需要部署到[弹性数据库作业（预览版）](../../database/job-automation-overview.md)。
 
 #### <a name="logins-and-groups"></a>登录名和组
 在脱机模式下，使用数据库迁移服务 (DMS) 将 SQL 登录名从源 SQL Server 移动到 Azure SQL 数据库。  使用“迁移向导”中的“已选择登录名”边栏选项卡将登录名迁移到目标 SQL 数据库 。 
@@ -189,7 +193,7 @@ Windows 用户和组也可以通过在“DMS 配置”页中启用相应的切�
 
 ## <a name="migration-assets"></a>迁移资产 
 
-如需更多帮助，请参阅为实际迁移项目开发的以下资源。
+如需更多帮助，请参阅以下资源，这些资源是为支持实际迁移项目而开发的。
 
 |资产  |说明  |
 |---------|---------|
@@ -215,7 +219,7 @@ Windows 用户和组也可以通过在“DMS 配置”页中启用相应的切�
    - [Azure SQL 数据库概述](../../database/sql-database-paas-overview.md)
    - [Azure 总拥有成本计算器](https://azure.cn/pricing/calculator/) 
 
-- 若要详细了解云迁移的框架和采用周期，请参阅
+- 有关云迁移的框架和采用周期的详细信息，请参阅
    -  [适用于 Azure 的云采用框架](https://docs.microsoft.com/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [为迁移到 Azure 的工作负载计算成本和调整大小的最佳做法](https://docs.microsoft.com/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
 

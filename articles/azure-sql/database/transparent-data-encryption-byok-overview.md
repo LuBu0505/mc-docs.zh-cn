@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
-origin.date: 03/18/2020
-ms.date: 01/04/2021
-ms.openlocfilehash: b3a01bb3731679c43d607f126dbd265f3a371f65
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+origin.date: 02/01/2021
+ms.date: 02/22/2021
+ms.openlocfilehash: 7cc41530d93757fc6ee8778dd997ec4a0d9b663b
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830222"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697181"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>使用客户管理的密钥进行 Azure SQL 透明数据加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -179,11 +179,9 @@ Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](../..
 
 ## <a name="high-availability-with-customer-managed-tde"></a>使用客户管理的 TDE 实现高可用性
 
-即使没有为服务器配置异地冗余，我们也强烈建议将服务器配置为使用两个不同区域中的包含相同密钥材料的两个不同 Key Vault。 若要实现此目的，可以使用与服务器共置在同一区域中的主要 Key Vault 来创建一个 TDE 保护器，并将密钥克隆到位于不同 Azure 区域中的 Key Vault，以便在主要 Key Vault 遇到服务中断时，服务器能够访问另一个 Key Vault，同时让数据库保持正常运行。
+即使没有为服务器配置异地冗余，我们也强烈建议将服务器配置为使用两个不同区域中的包含相同密钥材料的两个不同 Key Vault。 不应将另一区域的辅助 Key Vault 中的密钥标记为 TDE 保护器，甚至不允许这样做。 如果发生了影响主要 Key Vault 的服务中断，只有在满足上述条件时，系统才会自动切换到辅助 Key Vault 中具有相同指纹的另一个已链接密钥（如果存在）。 请注意，如果由于撤销了访问权限或者由于删除了密钥或 Key Vault 而导致 TDE 保护程序无法访问，则不会发生这种切换，因为这可能意味着客户有意要限制服务器访问密钥。通过在密钥保管库外创建密钥，并将其导入到位于不同区域的两个密钥保管库中，可以在这两个密钥保管库中提供相同的密钥材料。 
 
-使用 Backup-AzKeyVaultKey cmdlet 从主要 Key Vault 检索加密格式的密钥，然后使用 Restore-AzKeyVaultKey cmdlet 并指定第二个区域中的 Key Vault 来克隆密钥。 或者，使用 Azure 门户来备份和还原密钥。 不应将另一区域的辅助 Key Vault 中的密钥标记为 TDE 保护器，甚至不允许这样做。
-
-如果发生了影响主要 Key Vault 的服务中断，只有在满足上述条件时，系统才会自动切换到辅助 Key Vault 中具有相同指纹的另一个已链接密钥（如果存在）。 请注意，如果由于撤销了访问权限或者由于删除了密钥或 Key Vault 而无法访问 TDE 保护器，则不会发生这种切换，因为这可能意味着客户有意地想要限制服务器访问密钥。
+另外，还可以通过使用与服务器共置在同一区域中的主要密钥保管库来生成密钥，并将密钥克隆到位于不同 Azure 区域中的密钥保管库来实现此目的。 使用 [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/Backup-AzKeyVaultKey) cmdlet 从主要密钥保管库检索加密格式的密钥，然后使用 [Restore-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey) cmdlet 并指定第二个区域中的密钥保管库来克隆密钥。 或者，使用 Azure 门户来备份和还原密钥。 仅允许在同一 Azure 订阅和 [Azure 地理区域](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)内的密钥保管库之间执行密钥备份/还原操作。  
 
 ![单服务器高可用性](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
 

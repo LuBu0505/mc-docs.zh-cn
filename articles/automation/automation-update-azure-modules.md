@@ -4,14 +4,14 @@ description: 本文介绍如何更新 Azure 自动化中默认提供的常见 Az
 services: automation
 ms.subservice: process-automation
 origin.date: 06/14/2019
-ms.date: 08/10/2020
+ms.date: 02/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: f61d06d549cbe200112fdd7a483765454ba72a0c
-ms.sourcegitcommit: 753c74533aca0310dc7acb621cfff5b8993c1d20
+ms.openlocfilehash: f38334b48046aa876f405e9a0044589acb665ddd
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92211543"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697692"
 ---
 # <a name="update-azure-powershell-modules"></a>更新 Azure PowerShell 模块
 
@@ -24,7 +24,7 @@ ms.locfileid: "92211543"
 
 为了避免影响 Runbook 及其自动化过程，请在继续操作之前进行测试和验证。 如果没有用于此目的专用自动化帐户，请考虑创建一个自动化帐户，以便可以在 Runbook 开发期间测试许多不同的方案。 该测试应该包括更新 PowerShell 模块等迭代更改。
 
-请确保为自动化帐户创建了 [Azure 运行方式帐户凭据](manage-runas-account.md)。
+请确保为自动化帐户创建了 [Azure 运行方式帐户](automation-security-overview.md#run-as-accounts)。
 
 如果在本地开发脚本，建议测试时在本地使用与自动化帐户中相同的模块版本，以确保收到相同的结果。 在验证结果并且应用了所需的任何更改之后，则可将更改移到生产环境。
 
@@ -39,7 +39,7 @@ ms.locfileid: "92211543"
 
 ## <a name="use-update-runbook-code-as-a-regular-powershell-script"></a>使用更新 Runbook 代码作为常规 PowerShell 脚本
 
-你可以使用 Runbook 代码作为常规 PowerShell 脚本而非 Runbook。 为此，请先使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) cmdlet 登录到 Azure，然后将 `-Login $false` 传递给脚本。
+你可以使用 Runbook 代码作为常规 PowerShell 脚本而非 Runbook。 为此，请先使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet 登录到 Azure，然后将 `-Login $false` 传递给脚本。
 
 ## <a name="use-the-update-runbook"></a>使用更新 runbook 
 

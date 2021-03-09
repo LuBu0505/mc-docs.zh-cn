@@ -1,19 +1,19 @@
 ---
-title: 如何将 redis-cli 与 Azure Cache for Redis 配合使用
-description: 了解如何使用 redis-cli.exe  作为命令行工具与作为客户端的 Azure Cache for Redis 进行交互。
+title: 将 redis-cli 与 Azure Cache for Redis 配合使用
+description: 了解如何使用 redis-cli.exe 作为命令行工具与作为客户端的 Azure Cache for Redis 进行交互
 author: yegu-ms
 ms.author: v-junlch
 ms.service: cache
 ms.topic: conceptual
-ms.date: 11/03/2020
-ms.openlocfilehash: c609de1dc6e37cb997fd14d4553c6b4f9892947e
-ms.sourcegitcommit: 33f2835ec41ca391eb9940edfcbab52888cf8a01
+ms.date: 02/18/2021
+ms.openlocfilehash: fc045639457cc39578021d6f7486cf1254cd1b43
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94326593"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697512"
 ---
-# <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>如何将 Redis 命令行工具与 Azure Redis 缓存配合使用
+# <a name="use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>将 Redis 命令行工具与 Azure Redis 缓存配合使用
 
 redis-cli.exe 是一种常用的命令行工具，可作为客户端与 Azure Redis 缓存进行交互  。 此工具也可与 Azure Redis 缓存一起使用。
 
@@ -88,4 +88,3 @@ redis-cli.exe -h yourcachename.redis.cache.chinacloudapi.cn -p 6379 -a YourAcces
 ## <a name="next-steps"></a>后续步骤
 
 了解使用 [Redis 控制台](cache-configure.md#redis-console)发出命令的详细信息。
-

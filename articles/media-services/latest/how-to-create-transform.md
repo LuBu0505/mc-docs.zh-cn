@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本示例 - 创建转换 | Microsoft Docs
+title: Azure CLI 脚本示例 - 创建转换
 description: 转换描述了处理视频或音频文件的任务的简单工作流（通常称为“工作程序”）。 本文中的 Azure CLI 脚本演示如何创建转换。
 services: media-services
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: multiple
 ms.workload: na
 origin.date: 11/18/2020
-ms.date: 12/14/2020
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b71fdb41b2d5ca86dcdda320f4913ef840babd88
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 559441d2b5725ee7ccd82b03e7225b881debcb8f
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004281"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697307"
 ---
 # <a name="create-a-transform"></a>创建转换
 
@@ -33,6 +33,8 @@ ms.locfileid: "97004281"
 
 [创建媒体服务帐户](./create-account-howto.md)。
 
+## <a name="cli"></a>[CLI](#tab/cli/)
+
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
 > [!NOTE]
@@ -42,7 +44,7 @@ ms.locfileid: "97004281"
 
 ## <a name="example-script"></a>示例脚本
 
-```cli
+```azurecli
 #!/bin/bash
 
 # Update the following variables for your own settings:
@@ -57,12 +59,32 @@ az ams transform create \
  -g $resourceGroup \
  -a $amsAccountName \
 
+ # Create a Transform for Video Analyer Preset
+az ams transform create \
+ --name videoAnalyzerTransform \
+ --preset  VideoAnalyzer \
+ -g $resourceGroup \
+ -a $amsAccountName \
+
+ # Create a Transform for Audio Analzyer Preset
+az ams transform create \
+ --name audioAnalyzerTransform \
+ --preset  AudioAnalyzer \
+ -g $resourceGroup \
+ -a $amsAccountName \
+
 # List all the Transforms in an account
 az ams transform list -a $amsAccountName -g $resourceGroup
 
 echo "press  [ENTER]  to continue."
 read continue
 ```
+
+## <a name="rest"></a>[REST](#tab/rest/)
+
+[!INCLUDE [task general transform creation](./includes/task-create-basic-audio-rest.md)]
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

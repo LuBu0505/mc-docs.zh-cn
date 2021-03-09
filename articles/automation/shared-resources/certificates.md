@@ -4,14 +4,14 @@ description: 本文介绍如何使用可供 runbook 和 DSC 配置访问的证�
 services: automation
 ms.subservice: shared-capabilities
 origin.date: 12/22/2020
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: a3ef29cc74b94048a138dc9f45f6a48d5fd4e2cc
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 0065766b8159915575d639733a675471aa709c9b
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830080"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697155"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>在 Azure 自动化中管理证书
 
@@ -46,7 +46,7 @@ Azure 自动化使用适用于 Azure 资源管理器资源的 [Get-AzAutomationC
 
 ## <a name="python-functions-to-access-certificates"></a>用于访问证书的 Python 函数
 
-下表中的函数用于在 Python 2 Runbook 中访问证书。
+使用下表中的函数可在 Python 2 和 3 runbook 中访问证书。 Python 3 runbook 目前处于预览阶段。
 
 | 函数 | 说明 |
 |:---|:---|
@@ -153,6 +153,18 @@ cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
 print cert
 ```
 
+# <a name="python-3"></a>[Python 3](#tab/python3)
+
+以下示例演示如何在 Python 3 runbook（预览版）中访问证书。
+
+```python
+# get a reference to the Azure Automation certificate
+cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
+
+# returns the binary cert content  
+print (cert)
+```
+
 ---
 
 ### <a name="graphical-runbook-example"></a>图形 Runbook 示例
@@ -169,4 +181,4 @@ print cert
 
 * 若要了解有关用于访问凭据的 cmdlet 的详细信息，请参阅[在 Azure 自动化中管理模块](modules.md)。
 * 有关 Runbook 的常规信息，请参阅[在 Azure 自动化中执行 Runbook](../automation-runbook-execution.md)。
-* 有关 DSC 配置的详细信息，请参阅 [Azure 自动化状态配置概述](../automation-dsc-overview.md)。
+* 有关 DSC 配置的详细信息，请参阅 [Azure 自动化 State Configuration 概述](../automation-dsc-overview.md)。

@@ -6,14 +6,14 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: how-to
 origin.date: 10/27/2020
-ms.date: 11/23/2020
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.openlocfilehash: 57e7ecabcea5d041638376c7fb0e17ea08b3c6d9
-ms.sourcegitcommit: db15d6cc591211c0e531d636f45e9cbe24cfb15b
+ms.openlocfilehash: 69a60af0ea1ee49832cb4c3754f50d74338bf85f
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "95970704"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697461"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>为 P2S OpenVPN 协议连接创建 Azure Active Directory 租户
 
@@ -100,4 +100,4 @@ Azure AD 租户需要以下帐户：全局管理员帐户和主用户帐户。 �
 
 ## <a name="next-steps"></a>后续步骤
 
-若要连接到虚拟网络，必须创建并配置 VPN 客户端配置文件。 请参阅[配置 VPN 客户端以建立 P2S VPN 连接](openvpn-azure-ad-client.md)。
+创建和配置 VPN 客户端配置文件。 请参阅[配置 VPN 客户端以建立 P2S VPN 连接](openvpn-azure-ad-client.md)。

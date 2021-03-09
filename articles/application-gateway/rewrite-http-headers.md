@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 11/16/2020
+ms.date: 02/18/2021
 ms.author: v-junlch
-ms.openlocfilehash: f743e7b2c051a218393cb7971f09c8b15d78180d
-ms.sourcegitcommit: b072689d006cbf9795612acf68e2c4fee0eccfbc
+ms.openlocfilehash: 3e27dfad290884ad1e646999fef5b37a4c8b087d
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94849455"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697772"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>重写应用程序网关的 HTTP 标头
 
@@ -69,21 +69,21 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 | client_port                | 客户端端口。                                                  |
 | client_tcp_rtt             | 有关客户端 TCP 连接的信息。 在支持 TCP_INFO 套接字选项的系统上可用。 |
 | client_user                | 使用 HTTP 身份验证时提供用于身份验证的用户名。 |
-| host                       | 按此优先顺序排列：请求行中的主机名、Host 请求标头字段中的主机名，或与请求匹配的服务器名称。 示例：在请求 http://contoso.com:8080/article.aspx?id=123&title=fabrikam 中，主机值将为 contoso.com  |
+| host                       | 按此优先顺序排列：请求行中的主机名、Host 请求标头字段中的主机名，或与请求匹配的服务器名称。 示例：在请求 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` 中，主机值将为 contoso.com |
 | cookie_ *name*              | *name* Cookie。                                            |
 | http_method                | 用于发出 URL 请求的方法。 例如 GET 或 POST。 |
 | http_status                | 会话状态。 例如 200、400 或 403。                       |
 | http_version               | 请求协议。 通常为 HTTP/1.0、HTTP/1.1 或 HTTP/2.0。 |
-| query_string               | 请求的 URL 中“?”后面的变量/值对列表。 示例：在请求 http://contoso.com:8080/article.aspx?id=123&title=fabrikam 中，query_string 值将为 id=123&title=fabrikam  |
+| query_string               | 请求的 URL 中“?”后面的变量/值对列表。 示例：在请求 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` 中，query_string 值将为 id=123&title=fabrikam |
 | received_bytes             | 请求的长度（包括请求行、标头和请求正文）。 |
 | request_query              | 请求行中的参数。                                |
 | request_scheme             | 请求方案：http 或 https。                            |
-| request_uri                | 完整的原始请求 URI（带参数）。 示例：在请求 http://contoso.com:8080/article.aspx?id=123&title=fabrikam 中，request_uri 值将为 /article.aspx?id=123&title=fabrikam    |
+| request_uri                | 完整的原始请求 URI（带参数）。 示例：在请求 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` 中，request_uri 值将为 /article.aspx?id=123&title=fabrikam   |
 | sent_bytes                 | 发送到客户端的字节数。                             |
 | server_port                | 接受请求的服务器端口。                 |
 | ssl_connection_protocol    | 已建立的 TLS 连接的协议。        |
 | ssl_enabled                | 如果连接在 TLS 模式下建立，则为“On”。 否则为空字符串。 |
-| uri_path                   | 标识 Web 客户端要访问的主机中的特定资源。 这是请求 URI 中没有参数的部分。 示例：在请求 http://contoso.com:8080/article.aspx?id=123&title=fabrikam 中，uri_path 值将为 /article.aspx   |
+| uri_path                   | 标识 Web 客户端要访问的主机中的特定资源。 这是请求 URI 中没有参数的部分。 示例：在请求 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` 中，uri_path 值将为 /article.aspx  |
 
 ## <a name="rewrite-configuration"></a>重写配置
 
@@ -170,4 +170,3 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 - [使用 Azure 门户重写 HTTP 标头](./rewrite-http-headers-portal.md)
 - [使用 Azure PowerShell 重写 HTTP 标头](add-http-header-rewrite-rule-powershell.md)
-

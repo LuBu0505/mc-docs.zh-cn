@@ -2,20 +2,17 @@
 title: Azure 数据工厂中的 Parquet 格式
 description: 本主题介绍了如何处理 Azure 数据工厂中的 Parquet 格式。
 author: WenJason
-manager: digimobile
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 origin.date: 09/27/2020
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.author: v-jay
-ms.openlocfilehash: d1c18bf6be5db460eb598b19230b24fd0637ee30
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 269668dcc91bf497c36702098ea237d9e3431c65
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059186"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697809"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Azure 数据工厂中的 Parquet 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -28,11 +25,11 @@ ms.locfileid: "99059186"
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供了 Parquet 数据集支持的属性列表。
 
-| 属性         | 说明                                                  | 必须 |
+| 属性         | 说明                                                  | 必选 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 数据集的 type 属性必须设置为 **Parquet**。 | 是      |
 | location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。 **请在连接器文章 -> 数据集属性部分中查看详细信息**。 | 是      |
-| compressionCodec | 写入到 Parquet 文件时要使用的压缩编解码器。 从 Parquet 文件中读取时，数据工厂会基于文件元数据自动确定压缩编解码器。<br>支持的类型为“**none**”、“**gzip**”、“**snappy**”（默认值）和“**lzo**”。 请注意，当前复制活动在读取/写入 Parquet 文件时不支持 LZO。 | 否       |
+| compressionCodec | 写入到 Parquet 文件时要使用的压缩编解码器。 从 Parquet 文件中读取时，数据工厂会基于文件元数据自动确定压缩编解码器。<br>支持的类型为“none”、“gzip”、“snappy”（默认值）和“lzo”   。 请注意，当前复制活动在读取/写入 Parquet 文件时不支持 LZO。 | 否       |
 
 > [!NOTE]
 > Parquet 文件不支持列名称中包含空格。
@@ -67,18 +64,18 @@ ms.locfileid: "99059186"
 
 ### <a name="parquet-as-source"></a>Parquet 作为源
 
-复制活动的 **_\_source\*** * 节支持以下属性。
+复制活动的 ***\*source\**** 部分支持以下属性。
 
-| 属性      | 说明                                                  | 必须 |
+| 属性      | 说明                                                  | 必选 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为 **ParquetSource**。 | 是      |
 | storeSettings | 有关如何从数据存储读取数据的一组属性。 每个基于文件的连接器在 `storeSettings` 下都有其自己支持的读取设置。 **请在连接器文章 -> 复制活动属性部分中查看详细信息**。 | 否       |
 
 ### <a name="parquet-as-sink"></a>Parquet 作为接收器
 
-复制活动的 **\_sink\*** 节支持以下属性。
+复制活动的 ***\*sink\**** 部分支持以下属性。
 
-| 属性      | 说明                                                  | 必须 |
+| 属性      | 说明                                                  | 必选 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动接收器的 type 属性必须设置为“ParquetSink”。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“Parquet 写入设置”表。 |    否      |
@@ -86,7 +83,7 @@ ms.locfileid: "99059186"
 
 `formatSettings` 下支持的 Parquet 写入设置：
 
-| 属性      | 说明                                                  | 必需                                              |
+| 属性      | 说明                                                  | 必选                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | formatSettings 的类型必须设置为 ParquetWriteSettings。 | 是                                                   |
 | maxRowsPerFile | 在将数据写入到文件夹时，可选择写入多个文件，并指定每个文件的最大行数。  | 否 |
@@ -103,13 +100,13 @@ ms.locfileid: "99059186"
 | 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必须为 `parquet` | 是 | `parquet` | format |
-| 通配符路径 | 所有匹配通配符路径的文件都会得到处理。 重写数据集中设置的文件夹和文件路径。 | 否 | String[] | wildcardPaths |
-| 分区根路径 | 对于已分区的文件数据，可以输入分区根路径，以便将已分区的文件夹读取为列 | 否 | 字符串 | partitionRootPath |
-| 文件列表 | 源是否指向某个列出待处理文件的文本文件 | 否 | `true` 或 `false` | fileList |
-| 用于存储文件名的列 | 使用源文件名称和路径创建新列 | 否 | 字符串 | rowUrlColumn |
-| 完成后 | 在处理后删除或移动文件。 文件路径从容器根开始 | 否 | 删除：`true` 或 `false` <br> 移动：`[<from>, <to>]` | purgeFiles <br> moveFiles |
-| 按上次修改时间筛选 | 选择根据上次更改文件的时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore |
-| 允许找不到文件 | 如果为 true，在找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
+| 通配符路径 | 将处理与通配符路径匹配的所有文件。 替代在数据集中设置的文件夹和文件路径。 | 否 | String[] | wildcardPaths |
+| 分区根路径 | 对于已分区的文件数据，你可以输入分区根路径，以便将已分区的文件夹作为列读取 | 否 | 字符串 | partitionRootPath |
+| 文件列表 | 源是否指向列出了要处理的文件的文本文件 | 否 | `true` 或 `false` | fileList |
+| 用于存储文件名的列 | 使用源文件名称和路径创建一个新列 | 否 | 字符串 | rowUrlColumn |
+| 完成后 | 在处理后删除或移动文件。 文件路径从容器根目录开始 | 否 | Delete：`true` 或 `false` <br> Move：`[<from>, <to>]` | purgeFiles <br> moveFiles |
+| 按上次修改时间筛选 | 选择根据上次更改时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore |
+| 允许找不到文件 | 如果为 true，则找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
 
 ### <a name="source-example"></a>源示例
 

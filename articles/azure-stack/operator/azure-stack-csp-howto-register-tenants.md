@@ -4,16 +4,16 @@ description: 了解如何将租户添加到 Azure Stack Hub 以获取用量和�
 author: WenJason
 ms.topic: article
 origin.date: 11/17/2020
-ms.date: 12/07/2020
+ms.date: 03/01/2021
 ms.author: v-jay
 ms.reviewer: alfredop
 ms.lastreviewed: 11/17/2020
-ms.openlocfilehash: c52f0d347f36723ea0769b0941295d7107ab4dc7
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: d26f6ca6fdda1a7509533abfa40e07e54140274e
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507104"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697469"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack-hub"></a>将租户添加到 Azure Stack Hub 以获取用量和计费信息
 
@@ -55,11 +55,11 @@ CSP 通常向其 Azure Stack Hub 部署中的多个最终客户（租户）提�
 1. 在权限提升的提示符窗口中打开 Windows PowerShell 并运行：  
 
    ```powershell
-   Add-AzAccount -EnvironmentName AzureChinaCloud
+   Connect-AzAccount -EnvironmentName AzureChinaCloud
    ```
 
    >[!NOTE]
-   > 如果会话过期、密码已更改，或者只是希望切换帐户，请在使用 Add-AzAccount 登录之前运行以下 cmdlet：`Remove-AzAccount-Scope Process`。
+   > 如果会话过期、密码已更改，或者你只是想要切换帐户，请在使用 Connect-AzAccount 登录之前运行以下 cmdlet：`Remove-AzAccount-Scope Process`。
 
 2. 键入 Azure 凭据。
 3. 在 PowerShell 会话中运行：
@@ -88,7 +88,7 @@ New-AzResource PowerShell 参数
    ```
 
    >[!NOTE]
-   > 如果会话过期、密码已更改，或者只是希望切换帐户，请在使用 Add-AzAccount 登录之前运行以下 cmdlet：`Remove-AzAccount-Scope Process`。
+   > 如果会话过期、密码已更改，或者你只是想要切换帐户，请在使用 Connect-AzAccount 登录之前运行以下 cmdlet：`Remove-AzAccount-Scope Process`。
 
 2. 键入 Azure 凭据。
 3. 在 PowerShell 会话中运行：

@@ -6,12 +6,12 @@ ms.subservice: update-management
 origin.date: 12/17/2020
 ms.date: 01/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: 63d55b65e54afe1482603df63d0773212c4577d5
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 94ff272679fdd3bf32304d95dcbf0e1ef42eccdd
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830335"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696651"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>管理前脚本和后脚本
 
@@ -43,7 +43,7 @@ ms.locfileid: "97830335"
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext 属性
 
-|properties  |说明  |
+|属性  |说明  |
 |---------|---------|
 |SoftwareUpdateConfigurationName     | 软件更新配置的名称。        |
 |SoftwareUpdateConfigurationRunId     | 运行的唯一 ID。        |
@@ -174,7 +174,9 @@ if (<My custom error logic>)
 
 ## <a name="samples"></a>示例
 
-可以在 [Azure 自动化 GitHub 组织](https://github.com/azureautomation)和 [PowerShell 库](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22)中找到前脚本和后脚本的示例。 使用“更新管理”作为筛选器。
+可以在 [Azure 自动化 GitHub 组织](https://github.com/azureautomation)和 [PowerShell 库](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22)中找到操作前脚本和操作后脚本的示例，也可以通过 Azure 门户导入这些示例。 为此，请在自动化帐户的“流程自动化”下，选择“Runbook 库”。 使用“更新管理”作为筛选器。
+
+![库列表](./media/pre-post-scripts/runbook-gallery.png)
 
 或者，可按脚本名称进行搜索，如以下列表中所示：
 

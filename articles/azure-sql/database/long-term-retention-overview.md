@@ -1,7 +1,7 @@
 ---
 title: 长期备份保留
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
-description: 了解 Azure SQL 数据库和 Azure SQL 托管实例如何通过长期保留策略支持将完整数据库备份存储长达 10 年。
+description: 了解 Azure SQL 数据库如何通过长期保留策略支持将完整数据库备份存储长达 10 年。
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -13,18 +13,18 @@ ms.author: v-jay
 ms.reviewer: mathoma, sstein
 origin.date: 05/18/2019
 ms.date: 12/14/2020
-ms.openlocfilehash: 3b55a95950128d39b117340dc510c8780f53f992
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: f54a57d99025632c0f9d5cea33420ab1a15b18b4
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829687"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696638"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>长期保留 - Azure SQL 数据库和 Azure SQL 托管实例
 
 出于法规要求、符合性或其他商业目的，许多应用程序要求保留 Azure SQL 数据库和 Azure SQL 托管实例的[自动备份](automated-backups-overview.md)功能提供的过去 7-35 天的数据库备份。 通过使用长期保留 (LTR) 功能，可以将指定的 SQL 数据库和 SQL 托管实例完整备份存储在可以进行异地冗余存储的 Azure Blob 存储中长达 10 年。 然后，可以将任何备份还原为新数据库。
 
-可以为 Azure SQL 数据库启用长时间保留。Azure SQL 托管实例的长期保留功能以有限的公共预览版形式提供。 本文提供长期保留的概念概述。 要配置长期保留，请参阅[配置 Azure SQL 数据库 LTR](long-term-backup-retention-configure.md) 和[配置 Azure SQL 托管实例 LTR](../managed-instance/long-term-backup-retention-configure.md)。 
+可以为 Azure SQL 数据库启用长时间保留，该功能不可用于 Azure SQL 托管实例。 本文提供长期保留的概念概述。 若要配置长期保留，请参阅[配置 Azure SQL 数据库 LTR](long-term-backup-retention-configure.md)。 
 
 > [!NOTE]
 > 可以使用 SQL 代理作业来安排[仅复制数据库备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server)作为超过 35 天的 LTR 的替代方案。
@@ -78,25 +78,13 @@ W=12 周（84 天）、M=12 个月（365 天）、Y=10 年（3650 天）、WeekO
 > [!NOTE]
 > 在发生导致故障转移的服务中断问题后恢复原始的主数据库时，该数据库将变成新的辅助数据库。 因此，在该数据库重新变成主数据库之前，备份创建操作不会恢复，并且现有的 LTR 策略不会生效。 
 
-## <a name="sql-managed-instance-support"></a>SQL 托管实例支持
-
-在 Azure SQL 托管实例中使用长期备份保留存在以下限制：
-
-- **受限公共预览版** - 此预览版仅适用于 EA 订阅和云解决方案提供商订阅，并受到有限可用性的限制。  
-- [仅限 PowerShell](../managed-instance/long-term-backup-retention-configure.md) - 目前不支持 Azure 门户。 必须使用 PowerShell 启用 LTR。 
-
-若要请求注册，请创建 [Azure 支持票证](https://support.azure.cn/support/support-azure/)。
-
-
 ## <a name="configure-long-term-backup-retention"></a>配置长期备份保留
 
-可以使用 Azure 门户、适用于 Azure SQL 数据库的 PowerShell 和适用于 Azure SQL 托管实例的 PowerShell 来配置长期备份保留。 若要从 LTR 存储还原数据库，可以根据时间戳选择一个特定备份。 数据库可以还原到原始数据库所在的订阅中的任何现有服务器或托管实例。
+可以使用 Azure 门户和适用于 Azure SQL 数据库的 PowerShell 来配置长期备份保留。 若要从 LTR 存储还原数据库，可以根据时间戳选择一个特定备份。 数据库可以还原到原始数据库所在的订阅中的任何现有服务器。
 
 若要了解如何使用 Azure 门户或 PowerShell 配置长期保留或从 SQL 数据库的备份还原数据库，请参阅[管理 Azure SQL 数据库长期备份保留](long-term-backup-retention-configure.md)
 
-若要了解如何使用 PowerShell 为 SQL 托管实例配置长期保留或从备份还原数据库，请参阅[管理 Azure SQL 托管实例长期备份保留](../managed-instance/long-term-backup-retention-configure.md)。
-
-若要从 LTR 存储还原数据库，可以根据时间戳选择一个特定备份。 数据库可以还原到原始数据库所在的订阅中的任何现有服务器。 若要了解如何使用 Azure 门户或 PowerShell 从 LTR 备份还原数据库，请参阅[管理 Azure SQL 数据库长期备份保留](long-term-backup-retention-configure.md)。 在你的请求中，请说明你希望为 SQL 托管实例注册 LTR 的受限公共预览版。
+若要从 LTR 存储还原数据库，可以根据时间戳选择一个特定备份。 数据库可以还原到原始数据库所在的订阅中的任何现有服务器。 若要了解如何使用 Azure 门户或 PowerShell 从 LTR 备份还原数据库，请参阅[管理 Azure SQL 数据库长期备份保留](long-term-backup-retention-configure.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 

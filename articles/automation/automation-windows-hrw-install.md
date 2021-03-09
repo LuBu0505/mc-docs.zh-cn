@@ -4,14 +4,14 @@ description: 本文介绍如何部署混合 Runbook 辅助角色，你可使用�
 services: automation
 ms.subservice: process-automation
 origin.date: 11/24/2020
-ms.date: 12/07/2020
+ms.date: 02/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6d13f18411d34d3a83e958b2caee407df119ac5b
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: f5a9da7027529422574f9b7e15a2c8ef43f8e067
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747202"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697691"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合 Runbook 辅助角色
 
@@ -39,8 +39,8 @@ Azure 自动化将存储并管理 Runbook，然后将其传送到一台或多台
 
 混合 Runbook 辅助角色功能支持以下操作系统：
 
-* Windows Server 2019
-* Windows Server 2016、版本 1709 和 1803
+* Windows Server 2019（包括 Server Core）
+* Windows Server 2016、版本 1709 和 1803（不包括 Server Core）
 * Windows Server 2012、2012 R2
 * Windows Server 2008 SP2 (x64)、2008 R2
 * Windows 10 Enterprise（包括多会话）和 Pro

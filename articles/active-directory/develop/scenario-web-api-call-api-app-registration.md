@@ -1,5 +1,6 @@
 ---
-title: 注册调用 Web API 的 Web API - Microsoft 标识平台 | Azure
+title: 注册调用 Web API 的 Web 应用 | Azure
+titleSuffix: Microsoft identity platform
 description: 了解如何构建调用下游 Web API 的 Web API（应用注册）。
 services: active-directory
 author: jmprieur
@@ -8,19 +9,19 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/23/2020
+ms.date: 02/23/2021
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: 19a0ee6019fef650d4c641f21d2f46cf222df33b
-ms.sourcegitcommit: 883daddafe881e5f8a9f347df2880064d2375b6d
+ms.openlocfilehash: 908b99945d03d8ebd8d41949dd04d1ba19ad359f
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95918356"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696657"
 ---
 # <a name="a-web-api-that-calls-web-apis-app-registration"></a>调用 Web API 的 Web API：应用注册
 
-调用下游 Web API 的 Web API 与受保护的 Web API 具有相同的注册。 因此，需要按照[受保护的 Web API：应用注册](scenario-protected-web-api-app-registration.md)中的说明进行操作。
+调用下游 Web API 的 Web API 与受保护的 Web API 具有相同的注册。 请按照[受保护的 Web API：应用注册](scenario-protected-web-api-app-registration.md)中的说明进行操作。
 
 由于 Web 应用现在调用 Web API，因此它将成为一个机密客户端应用程序。 这就是为什么需要额外的注册信息的原因：应用需要与 Microsoft 标识平台共享机密（客户端凭据）。
 
@@ -33,4 +34,3 @@ Web 应用代表收到持有者令牌的用户调用 API。 Web 应用需要请�
 ## <a name="next-steps"></a>后续步骤
 
 转到此方案中的下一篇文章：[应用代码配置](scenario-web-api-call-api-app-configuration.md)。
-

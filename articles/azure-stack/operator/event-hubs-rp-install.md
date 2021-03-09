@@ -6,20 +6,20 @@ ms.author: v-jay
 ms.service: azure-stack
 ms.topic: how-to
 origin.date: 09/02/2020
-ms.date: 01/11/2021
+ms.date: 03/01/2021
 ms.reviewer: jfggdl
 ms.lastreviewed: 09/02/2020
 zone_pivot_groups: state-connected-disconnected
-ms.openlocfilehash: d6d51cbfc1a53649bbba219f751577771545841b
-ms.sourcegitcommit: 3f54ab515b784c9973eb00a5c9b4afbf28a930a9
+ms.openlocfilehash: 09ab02efabd309d81c90a3c25781c1584b61d71e
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894347"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697825"
 ---
 # <a name="how-to-install-event-hubs-on-azure-stack-hub"></a>如何在 Azure Stack Hub 上安装事件中心
 
-本文介绍如何下载和安装事件中心资源提供程序，使其可供客户订阅。
+本文介绍如何下载和安装事件中心资源提供程序，使其可供客户订阅。 在继续操作之前，还必须先满足[事件中心安装先决条件](event-hubs-rp-prerequisites.md)。
 
 ## <a name="download-packages"></a>下载包
 
@@ -28,7 +28,7 @@ ms.locfileid: "97894347"
 > [!NOTE]
 > 下载过程可能需要 30 分钟到 2 小时的时间，具体取决于网络延迟和 Azure Stack Hub 实例上的现有包。 
 
-# <a name="connected"></a><a name="state-connected"></a>[已联网](#tab/state-connected)
+# <a name="connected"></a>[已连接](#tab/state-connected)
 对于联网场景，可以将项目从 Azure 市场直接下载到 Azure Stack Hub 市场：
 
 1. 登录到 Azure Stack Hub 管理员门户。
@@ -45,7 +45,7 @@ ms.locfileid: "97894347"
 - Azure Stack Hub 加载项 RP Windows Server（仅限内部）
 - PowerShell 所需状态配置
 
-# <a name="disconnected"></a><a name="state-disconnected"></a>[已离线](#tab/state-disconnected)
+# <a name="disconnected"></a>[已断开连接](#tab/state-disconnected)
 对于离线场景或部分联网场景，请将包下载到本地计算机，然后将其导入到 Azure Stack Hub 市场：
 
 1. 如果尚未这样做，请按照[下载市场项 - 离线或部分联网的场景](azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected)中的说明进行操作。 其中，你将下载并运行“市场联合”工具，该工具用于下载“事件中心”包。

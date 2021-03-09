@@ -1,23 +1,18 @@
 ---
 title: Azure 数据工厂中复制活动的容错
 description: 了解如何通过跳过不兼容数据向 Azure 数据工厂中的复制活动添加容错。
-services: data-factory
-documentationcenter: ''
 author: WenJason
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 origin.date: 06/22/2020
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.author: v-jay
-ms.openlocfilehash: 4ec4abe35855e7f51feaaa1880d2d1131ab18ae7
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 5fb3611f52b3538ad03de1e7e159c246ced1d294
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830005"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696772"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure 数据工厂中复制活动的容错
 
@@ -56,7 +51,8 @@ ADF 在复制二进制文件时支持以下容错方案。 在以下情况下，
     "skipErrorFile": { 
         "fileMissing": true, 
         "fileForbidden": true, 
-        "dataInconsistency": true 
+        "dataInconsistency": true,
+        "invalidFileName": true        
     }, 
     "validateDataConsistency": true, 
     "logSettings": {
@@ -75,12 +71,13 @@ ADF 在复制二进制文件时支持以下容错方案。 在以下情况下，
     }
 } 
 ```
-属性 | 说明 | 允许的值 | 必须
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | -------- 
 skipErrorFile | 一组属性，用于指定在数据移动过程中要跳过的失败类型。 | | 否
 fileMissing | SkipErrorFile 属性包中的一个键值对，用于确定是否要跳过在复制 ADF 时被其他应用程序删除的文件。 <br/> -True：跳过其他应用程序正在删除的文件，复制其余内容。 <br/> -False：在数据移动过程中，一旦从源存储中删除任何文件则中止复制活动。 <br/>默认情况下，该属性设置为 True。 | True（默认值） <br/>False | 否
 fileForbidden | SkipErrorFile 属性包中的一个键值对，用来确定当这些文件或文件夹的 ACL 需要比 ADF 中配置的连接更高的权限级别时，是否要跳过特定文件。 <br/> -True：要通过跳过文件来复制其余内容。 <br/> -False：在获取文件夹或文件的权限问题后，要中止复制活动。 | True <br/>False（默认值） | 否
 dataInconsistency | SkipErrorFile 属性包中的一个键值对，用于确定是否要跳过源和目标存储之间不一致的数据。 <br/> -True：要通过跳过不一致的数据来复制其余内容。 <br/> -False：找到不一致的数据后要中止复制活动。 <br/>请注意，仅当你将 validateDataConsistency 设置为 True 时，此属性才有效。 | True <br/>False（默认值） | 否
+invalidFileName | skipErrorFile 属性包中的一个键值对，用于确定当目标存储的文件名无效时是否要跳过特定文件。 <br/> -True：要通过跳过文件名无效的文件来复制其余内容。 <br/> -False：要在文件具有无效文件名时中止复制活动。 <br/>请注意，将二进制文件从任何存储复制到 ADLS Gen2 或仅将二进制文件从 AWS S3 复制到任何存储时，此属性有效。 | True <br/>False（默认值） | 否
 logSettings  | 当要记录跳过的对象名称时可以指定的一组属性。 | &nbsp; | 否
 linkedServiceName | [Azure Blob 存储](connector-azure-blob-storage.md#linked-service-properties)或 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) 的链接服务，用于存储会话日志文件。 | `AzureBlobStorage` 或 `AzureBlobFS` 类型链接服务的名称，指代用于存储日志文件的实例。 | 否
 path | 日志文件的路径。 | 指定用于存储日志文件的路径。 如果未提供路径，服务会为用户创建一个容器。 | 否
@@ -132,10 +129,10 @@ path | 日志文件的路径。 | 指定用于存储日志文件的路径。 如
 列 | 说明 
 -------- | -----------  
 时间戳 | ADF 跳过文件时的时间戳。
-Level | 此项的日志级别。 对于显示文件跳过的项，它将处于“警告”级别。
+级别 | 此项的日志级别。 对于显示文件跳过的项，它将处于“警告”级别。
 OperationName | 每个文件上的 ADF 复制活动操作行为。 它将为“FileSkip”，以指定要跳过的文件。
 OperationItem | 要跳过的文件名。
-消息 | 说明为何要跳过文件的详细信息。
+Message | 说明为何要跳过文件的详细信息。
 
 日志文件的示例如下所示： 
 ```
@@ -197,7 +194,7 @@ Timestamp,Level,OperationName,OperationItem,Message
 }, 
 ```
 
-属性 | 说明 | 允许的值 | 必须
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | -------- 
 enableSkipIncompatibleRow | 指定是否在复制期间跳过不兼容的行。 | True<br/>False（默认值） | 否
 logSettings | 若要记录不兼容行，可以指定的一组属性。 | &nbsp; | 否
@@ -228,10 +225,10 @@ path | 包含已跳过行的日志文件的路径。 | 指定要用于记录不�
 列 | 说明 
 -------- | -----------  
 时间戳 | ADF 跳过不兼容行时的时间戳
-Level | 此项的日志级别。 如果此项显示跳过的行，它将处于“警告”级别
+级别 | 此项的日志级别。 如果此项显示跳过的行，它将处于“警告”级别
 OperationName | 每个行上的 ADF 复制活动操作行为。 它将为“TabularRowSkip”以指定已跳过特定不兼容行
 OperationItem | 源数据存储中的已跳过行。
-消息 | 说明此特定行不兼容性的详细信息。
+Message | 说明此特定行不兼容性的详细信息。
 
 
 下面的示例展示了日志文件内容：
@@ -271,7 +268,7 @@ Timestamp, Level, OperationName, OperationItem, Message
 }
 ```
 
-属性 | 说明 | 允许的值 | 必须
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | -------- 
 enableSkipIncompatibleRow | 指定是否在复制期间跳过不兼容的行。 | True<br/>False（默认值） | 否
 redirectIncompatibleRowSettings | 若要记录不兼容行，可以指定的一组属性。 | &nbsp; | 否

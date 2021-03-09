@@ -3,14 +3,14 @@ title: 监视 Azure Functions
 description: 了解如何将 Azure Application Insights 和 Azure Functions 结合使用来监视函数执行。
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 03/02/2021
 ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
-ms.openlocfilehash: 19e6ef3f8d7950bdcb55c4b10bd96ae47b8165d7
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: d9accc9cca68f4a52c6c579fe3ee02815ceedbfa
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195213"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697673"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -88,6 +88,10 @@ Application Insights 生成收集的依赖项数据的 _应用程序映射_。 �
 + [JavaScript](functions-reference-node.md#write-trace-output-to-logs) 
 + [PowerShell](functions-reference-powershell.md#logging)
 
+## <a name="analyze-data"></a>分析数据
+
+默认情况下，从函数应用中收集的数据会存储在 Application Insights 中。 在 [Azure 门户](https://portal.azure.cn)中，Application Insights 提供了一组全面的遥测数据可视化效果。 你可以深入查看错误日志，并且可以查询事件和指标。 若要了解详细信息，包括关于如何查看和查询已收集数据的示例，请参阅[在 Application Insights 中分析 Azure Functions 遥测数据](analyze-telemetry-data.md)。 
+
 ## <a name="streaming-logs"></a>流式处理日志
 
 开发应用程序时，通常需要了解在 Azure 中运行时近实时地写入日志的内容。
@@ -126,4 +130,3 @@ _此功能为预览版。_
 
 * [Application Insights](/azure-monitor/overview)
 * [ASP.NET Core 日志记录](https://docs.microsoft.com/aspnet/core/fundamentals/logging/)
-

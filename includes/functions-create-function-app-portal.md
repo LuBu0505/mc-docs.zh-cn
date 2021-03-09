@@ -5,15 +5,15 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 01/27/2021
+ms.date: 02/26/2021
 ms.author: v-junlch
 ms.custom: include file
-ms.openlocfilehash: edaf5b75610b873289b19ac113f570aa7b57e68d
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 11bf38489f2a7e990325b23661e2124efb48821c
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060105"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697119"
 ---
 1. 在 Azure 门户菜单或“主页”页中，选择“创建资源” 。
 
@@ -27,7 +27,7 @@ ms.locfileid: "99060105"
     | **[资源组](../articles/azure-resource-manager/management/overview.md)** |  *myResourceGroup* | 要在其中创建 Function App 的新资源组的名称。 |
     | **函数应用名称** | 全局唯一名称 | 用于标识新 Function App 的名称。 有效字符为 `a-z`（不区分大小写）、`0-9` 和 `-`。  |
     |<bpt id="p1">**</bpt>Publish<ept id="p1">**</ept>| 代码 | 用于发布代码文件或 Docker 容器的选项。 |
-    | **运行时堆栈** | 首选语言 | 选择支持你喜欢的函数编程语言的运行时。 |
+    | **运行时堆栈** | 首选语言 | 选择支持你喜欢的函数编程语言的运行时。 门户中编辑仅适用于 JavaScript、PowerShell、TypeScript 和 C# 脚本。 C# 类库和 Java 函数必须[在本地开发](../articles/azure-functions/functions-develop-local.md#local-development-environments)。  |
     |**版本**| 版本号 | 选择已安装的运行时的版本。 |
     |**区域**| 首选区域 | 选择离你近或离函数访问的其他服务近的[区域](https://azure.microsoft.com/regions/)。 |
 

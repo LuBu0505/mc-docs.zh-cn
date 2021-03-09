@@ -1,16 +1,16 @@
 ---
 title: Azure Functions 网络选项
 description: 在 Azure Functions 中可用的所有网络选项的概述。
-author: jeffhollan
+author: cachai2
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 03/02/2021
 ms.author: v-junlch
-ms.openlocfilehash: e8b35e24891bbe509f3efbefe6697fe8f49d67de
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 4bb08b46f69921177f187c5dd1ec70bcd311cba1
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195118"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101697675"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 网络选项
 
@@ -79,12 +79,9 @@ Azure Functions 中的虚拟网络集成将共享基础结构与应用服务 Web
 
 若要了解详细信息，请参阅[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。
 
-## <a name="restrict-your-storage-account-to-a-virtual-network-preview"></a>将存储帐户限制到虚拟网络（预览版）中
+## <a name="restrict-your-storage-account-to-a-virtual-network"></a>将存储帐户限制到虚拟网络中 
 
-创建函数应用时，必须创建或链接到支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。  可以将此存储帐户替换为服务终结点或专用终结点所保护的存储帐户。  在中国北部 2，此预览功能目前仅适用于 Windows 高级计划。  若要使用限制到专用网络的存储帐户来设置函数，请执行以下操作：
-
-> [!NOTE]
-> 在中国北部 2，限制存储帐户功能目前仅适用于使用 Windows 的高级函数
+创建函数应用时，必须创建或链接到支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。  可以将此存储帐户替换为服务终结点或专用终结点所保护的存储帐户。  此功能目前仅适用于 Windows 高级计划。  若要使用限制到专用网络的存储帐户来设置函数，请执行以下操作：
 
 1. 使用未启用服务终结点的存储帐户创建一个函数。
 1. 将该函数配置为连接到你的虚拟网络。
@@ -160,7 +157,10 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 在 Azure Functions 中使用时，每个混合连接与单个 TCP 主机和端口组合相关联。 这意味着，混合连接终结点可以位于任何操作系统和任何应用程序上，前提是你能够访问 TCP 侦听端口。 混合连接功能不知道也不关心应用程序协议或者要访问的内容是什么。 它只提供网络访问。
 
-有关详细信息，请参阅[应用服务文档中的“混合连接”](../app-service/app-service-hybrid-connections.md)。 这些相同的配置步骤支持 Azure Functions。
+有关详细信息，请参阅[应用服务文档中的“混合连接”](../app-service/app-service-hybrid-connections.md)。 Azure Functions 支持这些相同配置步骤。
+
+>[!IMPORTANT]
+> 只有 Windows 计划才支持混合连接。 不支持 Linux。
 
 ## <a name="outbound-ip-restrictions"></a>出站 IP 限制
 
@@ -187,4 +187,3 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 * [详细了解 Azure 中的虚拟网络](../virtual-network/virtual-networks-overview.md)
 * [在应用服务环境中允许更多的网络功能和控制](../app-service/environment/intro.md)
 * [使用混合连接连接到单独的本地资源而无需更改防火墙](../app-service/app-service-hybrid-connections.md)
-

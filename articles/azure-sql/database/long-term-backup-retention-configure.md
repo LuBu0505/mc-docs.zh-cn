@@ -11,19 +11,18 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: mathoma, sstein
 origin.date: 12/16/2020
-ms.date: 01/04/2021
-ms.openlocfilehash: ebda3a98762ba7687c078ef35fcc9f6c734f194d
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.date: 02/22/2021
+ms.openlocfilehash: e7c6bc69a32d838dc938752ac76a98b4f32bafae
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829698"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101696640"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>管理 Azure SQL 数据库长期备份保留
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-在 Azure SQL 数据库中，可以使用[长期备份保留](long-term-retention-overview.md)策略 (LTR) 配置数据库，以自动将数据库备份保留在单独的 Azure Blob 存储容器中最多 10 年。 然后，可以通过 Azure 门户或 PowerShell 使用这些备份来恢复数据库。 可以为 [Azure SQL 托管实例](../managed-instance/long-term-backup-retention-configure.md)配置长期备份保留，但该功能目前为有限的公共预览版。
-
+在 Azure SQL 数据库中，可以使用[长期备份保留](long-term-retention-overview.md)策略 (LTR) 配置数据库，以自动将数据库备份保留在单独的 Azure Blob 存储容器中最多 10 年。 然后，可以通过 Azure 门户或 PowerShell 使用这些备份来恢复数据库。 
 ## <a name="using-the-azure-portal"></a>使用 Azure 门户
 
 以下各部分展示了如何使用 Azure 门户配置长期保留、查看长期保留的备份，以及还原长期保留的备份。
@@ -197,7 +196,7 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 ```
 
 > [!IMPORTANT]
-> 若要在删除服务器后从 LTR 备份进行还原，必须具有服务器订阅范围内的权限，并且该订阅必须处于活动状态。 还必须省略可选的 -ResourceGroupName 参数。
+> 若要在删除服务器或资源组后从 LTR 备份进行还原，必须具有服务器订阅范围内的权限，并且该订阅必须处于活动状态。 还必须省略可选的 -ResourceGroupName 参数。
 
 > [!NOTE]
 > 从此处，可使用 SQL Server Management Studio 连接到已还原的数据库，执行所需任务，例如从恢复的数据库中提取一部分数据，复制到现有数据库或删除现有数据库，并将已还原的数据库重命名为现有数据库名。 请参阅[时间点还原](recovery-using-backups.md#point-in-time-restore)。
