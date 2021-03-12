@@ -31921,15 +31921,68 @@
         "redirect_document_id": false
     },
     {
-        "source_path": "/articles/vs-azure-tools-storage-explorer-relnotes.md",
+        "source_path": "articles/vs-azure-tools-storage-explorer-relnotes.md",
         "redirect_url": "https://github.com/microsoft/AzureStorageExplorer/releases",
         "redirect_document_id": false
     },
     {
-        "source_path": "/articles/vs-azure-tools-storage-emulator-using.md",
+        "source_path": "articles/vs-azure-tools-storage-emulator-using.md",
         "redirect_url": "/storage/common/storage-use-emulator",
         "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md",
+      "redirect_url": "/dms/",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/dms/tutorial-sql-server-azure-sql-online.md",
+      "redirect_url": "/dms/tutorial-sql-server-to-azure-sql",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/dms/known-issues-azure-sql-online.md",
+      "redirect_url": "/dms/",
+      "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/linux/cloudinit-prepare-custom-image.md",
+        "redirect_url": "/virtual-machines/linux/redhat-create-upload-vhd",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/linux/docker-compose-quickstart.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/docker-compose-quickstart",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/linux/docker-machine.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/docker-machine",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/linux/install-mongodb.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/install-mongodb",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/linux/mysql-on-opensuse.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/mysql-on-opensuse",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/linux/postgresql-install.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/postgresql-install",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/linux/tutorial-monitor.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/tutorial-monitor",
+        "redirect_document_id": false
     }
+    
+
+
     
 
 
