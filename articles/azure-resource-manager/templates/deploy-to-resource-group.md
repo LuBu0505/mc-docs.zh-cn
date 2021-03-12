@@ -2,18 +2,18 @@
 title: 将资源部署到资源组
 description: 介绍如何在 Azure 资源管理器模板中部署资源。 它介绍如何将多个资源组作为目标。
 ms.topic: conceptual
-origin.date: 11/24/2020
+origin.date: 01/13/2021
 author: rockboyfor
-ms.date: 12/14/2020
-ms.testscope: yes|no
-ms.testdate: 11/23/2020null
+ms.date: 03/01/2021
+ms.testscope: yes
+ms.testdate: 11/23/2020
 ms.author: v-yeche
-ms.openlocfilehash: bedd05aad8812b6a310751f308e637c23090cb2c
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: afb2371b4fe2245eb2cd44efcdfc03ff7440c80f
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97003743"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053928"
 ---
 <!--Verified successfully form rename and merge files.-->
 # <a name="resource-group-deployments-with-arm-templates"></a>使用 ARM 模板进行资源组部署
@@ -24,7 +24,7 @@ ms.locfileid: "97003743"
 
 可以将大多数资源部署到资源组。
 
-<!--Not Available on [ARM template reference](https://docs.microsoft.com/azure/templates)-->
+<!--NOT AVAILABLE ON [ARM template reference](https://docs.azure.cn/templates)-->
 
 ## <a name="schema"></a>架构
 
@@ -86,7 +86,7 @@ New-AzResourceGroupDeployment `
 * [使用 ARM 模板和 Azure 资源管理器 REST API 部署资源](deploy-rest.md)
 * [使用部署按钮从 GitHub 存储库部署模板](deploy-to-azure-button.md)
 
-<!--Not Avaialble on [Deploy ARM templates from local Shell](deploy-cloud-shell.md)-->
+<!--NOT AVAILABLE ON * [Deploy ARM templates from local Shell](deploy-cloud-shell.md)-->
 
 ## <a name="deployment-scopes"></a>部署范围
 
@@ -96,7 +96,8 @@ New-AzResourceGroupDeployment `
 * 同一订阅或其他订阅中的其他资源组
 * 租户中的任何订阅
 * 资源组的租户
-* [扩展资源](scope-extension-resources.md)可应用于资源
+
+可以将[扩展资源](scope-extension-resources.md)的范围设置为与部署目标不同的范围。
 
 部署模板的用户必须有权访问指定的作用域。
 
@@ -209,9 +210,9 @@ New-AzResourceGroupDeployment `
 
 ### <a name="scope-to-tenant"></a>将范围设定为租户
 
-可通过将 `scope` 设置为 `/`，在租户中创建资源。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
+若要在租户中创建资源，请将 `scope` 设置为 `/`。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
 
-可使用设置了 `scope` 和 `location` 的嵌套部署。
+若要使用嵌套部署，请设置 `scope` 和 `location`。
 
 ```json
 {
@@ -266,6 +267,8 @@ New-AzResourceGroupDeployment `
     }
 }
 ```
+
+有关详细信息，请参阅[管理组](deploy-to-management-group.md#management-group)。
 
 ## <a name="deploy-to-target-resource-group"></a>部署到目标资源组
 
@@ -567,4 +570,4 @@ az deployment group create \
 
 * 若要通过示例来了解如何为 Azure 安全中心部署工作区设置，请参阅 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

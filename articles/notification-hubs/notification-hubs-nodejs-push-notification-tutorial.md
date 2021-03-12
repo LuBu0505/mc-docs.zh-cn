@@ -13,18 +13,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-origin.date: 04/29/2020
-ms.date: 11/13/2020
+ms.date: 02/26/2021
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: 56f3313f01937e59af09242f903393211bf4fbc1
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.openlocfilehash: 494bc2ee934d934e3b1ff9f85af4295bcb2e5307
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431032"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196472"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>使用 Azure 通知中心和 Node.js 发送推送通知
 
@@ -50,7 +49,7 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 
 ## <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 
-本教程的第一步是创建新的空白 Node.js 应用程序。 有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][nodejswebsite]、使用 Windows PowerShell 创建 [Node.js 云服务][Node.js Cloud Service]或[使用 WebMatrix 创建网站][webmatrix]。
+本教程的第一步是创建新的空白 Node.js 应用程序。 有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][nodejswebsite]、使用 Windows PowerShell 创建 [Node.js 云服务][Node.js 云服务]或[使用 WebMatrix 创建网站][webmatrix]。
 
 ## <a name="configure-your-application-to-use-notification-hubs"></a>将应用程序配置为使用通知中心
 
@@ -81,11 +80,11 @@ var azure = require('azure-sb');
 var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
 ```
 
-通过执行以下步骤从 [Azure 门户] 获取连接 `connectionstring` 值：
+通过执行以下步骤从 [Azure 门户]获取连接 `connectionstring` 值：
 
 1. 在左侧导航窗格中，单击“浏览” 。
 2. 选择“通知中心” ，并找到要用于示例的中心。 如果在创建新通知中心时需要帮助，可以参阅 [Windows 应用商店入门教程](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。
-3. Select <bpt id="p1">**</bpt>Settings<ept id="p1">**</ept>.
+3. 选择“设置”。
 4. 单击“访问策略” 。 会看到共享连接字符串和完全访问连接字符串。
 
 ![Azure 门户 — 通知中心](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
@@ -202,11 +201,8 @@ notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
 [SqlFilter.SqlExpression]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter#microsoft_servicebus_messaging_sqlfilter_sqlexpression
 [Azure Service Bus Notification Hubs]: https://docs.microsoft.com/previous-versions/azure/azure-services/jj927170(v=azure.100)
 [SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter#microsoft_servicebus_messaging_sqlfilter
-[Web Site with WebMatrix]: https://docs.microsoft.com/develop/nodejs/tutorials/web-site-with-webmatrix/
-[Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[Previous Management Portal]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png
-[nodejswebsite]: ../app-service/quickstart-nodejs.md
-[webmatrix]: https://docs.microsoft.com/aspnet/web-pages/videos/introduction/create-a-website-using-webmatrix
-[Node.js Cloud Service with Storage]: https://docs.microsoft.com/develop/nodejs/tutorials/web-app-with-storage/
-[Node.js Web Application with Storage]: https://docs.microsoft.com/develop/nodejs/tutorials/web-site-with-storage/
+<!-- [Web Site with WebMatrix]: https://docs.microsoft.com/develop/nodejs/tutorials/web-site-with-webmatrix/ -->
+[Node.js 云服务]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md [以前的管理门户]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png [nodejswebsite]: ../app-service/quickstart-nodejs.md [webmatrix]: https://docs.microsoft.com/aspnet/web-pages/videos/introduction/create-a-website-using-webmatrix
+<!-- [Node.js Cloud Service with Storage]: https://docs.microsoft.com/develop/nodejs/tutorials/web-app-with-storage/ -->
+<!-- [Node.js Web Application with Storage]: https://docs.microsoft.com/develop/nodejs/tutorials/web-site-with-storage/ -->
 [Azure 门户]: https://portal.azure.cn
