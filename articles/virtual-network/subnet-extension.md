@@ -3,25 +3,25 @@ title: Azure 中的子网扩展 | Microsoft
 description: 了解 Azure 中的子网扩展。
 services: virtual-network
 documentationcenter: na
-author: rockboyfor
-manager: digimobile
+manager: narayan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 10/31/2019
-ms.date: 01/06/2020
+author: rockboyfor
+ms.date: 02/22/2021
 ms.author: v-yeche
-ms.openlocfilehash: 27cf5c0385c5bf844d1f1a5d858bc0a2a29f0ee9
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 721903e1a8c903d346b9c82d6bc80f60016e619b
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75599830"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053021"
 ---
 # <a name="subnet-extension"></a>子网扩展
 将工作负荷迁移到公有云需要经过认真的规划和协调。 其中一个重要考虑因素是能够保留 IP 地址。 如果应用程序具有 IP 地址依赖性，或者法规要求使用特定的 IP 地址，则这项能力就非常重要。 Azure 虚拟网络允许使用所选的 IP 地址范围创建 VNet 和子网，从而解决了此问题。
@@ -32,9 +32,9 @@ ms.locfileid: "75599830"
 
 尽管在一般情况下扩展网络并非良好的做法，在对于以下用例，可能有必要这样做。
 
-- **分阶段迁移**：最常见的场景是分阶段完成迁移。 需要先迁移几个应用程序，然后逐渐将剩余的应用程序迁移到 Azure。
+- **分阶段迁移**：最常见的场景是要分阶段完成迁移。 需要先迁移几个应用程序，然后逐渐将剩余的应用程序迁移到 Azure。
 - **延迟**：低延迟要求可能是在本地保留某些应用程序的另一个原因，这可以确保它们尽量靠近你的数据中心。
-- **符合性**：另一种用例是，需要根据法规要求在本地保留某些应用程序。
+- **合规性**：另一种用例是，需要根据合规性要求在本地保留某些应用程序。
 
 > [!NOTE] 
 > 除非必要，否则不应扩展子网。 如果确实需要扩展子网，应尽量将此措施作为一个中间步骤来实施。 如果有时间，应尝试为本地网络中的应用程序重新编号，然后将其迁移到 Azure。
@@ -44,7 +44,7 @@ ms.locfileid: "75599830"
 ## <a name="extend-your-subnet-to-azure"></a>将子网扩展到 Azure
  可以使用基于第 3 层叠加网络的解决方案将本地子网扩展到 Azure。 大多数解决方案使用叠加技术（例如 VXLAN）通过第 3 层叠加网络来扩展第 2 层网络。 下图显示了一个通用的解决方案。 在此解决方案中，同一子网位于 Azure 和本地这两端。 
 
-![子网扩展示例](./media/subnet-extension/subnet-extension.png)
+:::image type="content" source="./media/subnet-extension/subnet-extension.png" alt-text="子网扩展示例":::
 
 该子网中的 IP 地址已分配到 Azure 中和本地的 VM。 Azure 和本地的网络中都插入了一个 NVA。 当 Azure 中的 VM 尝试与本地网络中的 VM 通信时，Azure NVA 将捕获数据包，封装该数据包，然后通过 VPN/Express Route 将其发送到本地网络。 本地 NVA 接收数据包，解封装数据包，然后将其转发到 NVA 所在网络中的目标接收端。 返回流量使用类似的路径和逻辑。
 
@@ -55,5 +55,4 @@ ms.locfileid: "75599830"
 ## <a name="next-steps"></a>后续步骤 
 [使用供应商解决方案将子网扩展到 Azure](https://github.com/microsoft/Azure-LISP)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
-<!--NEW.date: 01/06/2020-->
+<!--Update_Description: update meta properties, wording update, update link-->

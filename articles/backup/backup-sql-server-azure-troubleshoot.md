@@ -4,14 +4,14 @@ description: 有关使用 Azure 备份来备份在 Azure VM 上运行的 SQL Ser
 ms.topic: troubleshooting
 author: Johnnytechn
 origin.date: 06/18/2019
-ms.date: 01/07/2021
+ms.date: 03/01/2021
 ms.author: v-johya
-ms.openlocfilehash: 9b1e82a708b7509aa65f9cbdb928d32c91a27a8b
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 4fb37f2cc9db57b00506b5ddba9399cdb4ea34ee
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023180"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197219"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>排查使用 Azure 备份进行 SQL Server 数据库备份的问题
 
@@ -205,22 +205,29 @@ ms.locfileid: "98023180"
 |---|---|---|
 操作被阻止，因为保管库已达到 24 小时内允许的最大此类操作数量限制。 | 达到 24 小时内允许的最大操作数量限制后，会出现此错误。 此错误通常出现在执行大规模操作（例如修改策略或自动保护）时。 与 CloudDosAbsoluteLimitReached 的情况不同，你对于缓解这种状态几乎无能为力。 事实上，Azure 备份服务将针对相关的所有项目，在内部重试操作。<br> 例如：如果使用某个策略保护了大量的数据源，而你尝试修改该策略，则会针对每个受保护项触发配置保护作业，因此有时可能会达到每日允许的最大此类操作数量限制。| Azure 备份服务会在 24 小时后自动重试此操作。
 
+### <a name="workloadextensionnotreachable"></a>WorkloadExtensionNotReachable
+
+| 错误消息 | 可能的原因 | 建议的操作 |
+|---|---|---|
+Azure 备份工作负荷扩展操作失败。 | VM 已关闭，或者由于 Internet 连接问题，VM 无法联系 Azure 备份服务。| <li> 确保 VM 已启动并正在运行，且具有 Internet 连接。<li> [重新注册 SQL Server VM 上的扩展](manage-monitor-sql-database-backup.md#re-register-extension-on-the-sql-server-vm)。
+
+
 ### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
-由于 Internet 连接问题，VM 无法联系 Azure 备份服务。 | VM 需要与 Azure 备份服务、Azure 存储或 Azure Active Directory 服务建立出站连接。| - 如果使用 NSG 来限制连接，则应使用 AzureBackup 服务标记来允许对 Azure 备份服务进行出站访问，同样也允许对 Azure AD (AzureActiveDirectory) 和 Azure 存储（存储）服务进行出站访问  。 请按照这些[步骤](./backup-sql-server-database-azure-vms.md#nsg-tags)授予访问权限。<br>- 确保 DNS 在解析 Azure 终结点。<br>- 检查 VM 是否在阻止访问 Internet 的负载均衡器后面。 向 VM 分配公共 IP 即可使用发现功能。<br>- 验证是否有防火墙/防病毒软件/代理在阻止调用上述三个目标服务。
+由于 Internet 连接问题，VM 无法联系 Azure 备份服务。 | VM 需要与 Azure 备份服务、Azure 存储或 Azure Active Directory 服务建立出站连接。| <li> 如果使用 NSG 来限制连接，则应使用 AzureBackup 服务标记来允许对 Azure 备份服务进行出站访问，同样也允许对 Azure AD (AzureActiveDirectory) 和 Azure 存储（存储）服务进行出站访问  。 请按照这些[步骤](./backup-sql-server-database-azure-vms.md#nsg-tags)授予访问权限。 <li> 确保 DNS 在解析 Azure 终结点。 <li> 检查 VM 是否在阻止访问 Internet 的负载均衡器后面。 向 VM 分配公共 IP 即可使用发现功能。 <li> 验证是否有防火墙/防病毒软件/代理正在阻止对上述三个目标服务的调用。
 
 ## <a name="re-registration-failures"></a>重新注册失败
 
 在触发重新注册操作之前，请检查是否存在以下一种或多种症状：
 
-- 所有操作（例如备份、还原和配置备份）在 VM 失败，并出现以下错误代码之一：**WorkloadExtensionNotReachable**、**UserErrorWorkloadExtensionNotInstalled**、**WorkloadExtensionNotPresent**、**WorkloadExtensionDidntDequeueMsg**。
+- 所有操作（例如备份、还原和配置备份）在 VM 失败，并出现以下错误代码之一：[WorkloadExtensionNotReachable](#workloadextensionnotreachable)、UserErrorWorkloadExtensionNotInstalled、WorkloadExtensionNotPresent、WorkloadExtensionDidntDequeueMsg。
 - 如果备份项的“备份状态”区域显示为“无法访问”，请排除可能导致相同状态的其他所有原因：
 
   - 缺少在 VM 上执行备份相关操作的权限。
   - VM 已关闭，因此备份无法进行。
-  - 网络问题。
+  - [网络问题](#usererrorvminternetconnectivityissue)
 
    ![重新注册 VM](./media/backup-azure-sql-database/re-register-vm.png)
 

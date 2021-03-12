@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 9cc088b8965ec4f0a76e01a70d999b2f1ff886d1
-ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
+ms.openlocfilehash: 164a5595e3364604bf2235c0e9004332c84a9fc8
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804365"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196602"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure 机器学习中的安全数据访问
 
@@ -50,7 +50,8 @@ Azure 机器学习使你可以轻松连接到云中的数据。  它在基础存
 
 ![该图显示了流入数据存储和数据集的 Azure 存储服务。 数据集流入模型训练，模型训练流入数据漂移，而数据漂移又流回数据集。](./media/concept-data/data-concept-diagram.svg)
 
-## <a name="datastores"></a>数据存储
+<a name="datastores"></a>
+## <a name="connect-to-storage-with-datastores"></a>通过数据存储连接到存储
 
 Azure 机器学习数据存储可安全地将连接信息保存到 Azure 存储中，因此无需在脚本中对其进行编码。 [注册并创建一个数据存储](how-to-access-data.md)即可轻松连接到存储帐户，并访问底层 Azure 存储服务中的数据。 
 
@@ -65,7 +66,8 @@ Azure 中支持的基于云的存储服务，可注册为数据存储：
 + Databricks 文件系统
 + Azure Database for MySQL
 
-## <a name="datasets"></a>数据集
+<a name="datasets"></a>
+## <a name="reference-data-in-storage-with-datasets"></a>使用数据集引用存储中的数据
 
 Azure 机器学习数据集不是你的数据的副本。 创建数据集时，将会创建对其存储服务中的数据的引用及其元数据的副本。 
 

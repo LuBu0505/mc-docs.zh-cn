@@ -5,16 +5,16 @@ services: container-service
 ms.topic: article
 origin.date: 06/03/2019
 author: rockboyfor
-ms.date: 09/21/2020
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: e070eecc07b9a151779353462ce270d43c824616
-ms.sourcegitcommit: f3fee8e6a52e3d8a5bd3cf240410ddc8c09abac9
+ms.openlocfilehash: cfc5c9ac03763f43a1f95aca4e43446c4a260fa3
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2020
-ms.locfileid: "91146761"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053041"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络
 
@@ -68,7 +68,7 @@ AKS 群集中每个节点的最大 Pod 数为 250。 每个节点的默认最大
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | 是（最大 250） |
 | Resource Manager 模板 | 110 | 30 | 是（最大 250） |
-| 门户 | 110 | 30 | 否 |
+| 门户 | 110 | 110（在“节点池”选项卡中配置） | 否 |
 
 ### <a name="configure-maximum---new-clusters"></a>配置最大值 - 新群集
 
@@ -105,7 +105,9 @@ AKS 群集中每个节点的最大 Pod 数为 250。 每个节点的默认最大
 
 **子网**：要将群集部署到的虚拟网络中的子网。 若要在虚拟网络中为群集创建新的子网，请选择“新建”，并按照“创建子网”部分中的步骤操作 。 对于混合连接，地址范围不应与环境中的其他任何虚拟网络重叠。
 
-**Kubernetes 服务地址范围**：这是 Kubernetes 分配给群集中的内部[服务][services]的一组虚拟 IP。 可以使用任何专用地址范围，只要其符合以下要求即可：
+**Azure 网络插件**：使用 azure 网络插件时，无法从 VM 使用 clusterCIDR 中从不属于 AKS 群集的 IP 访问配置了“externalTrafficPolicy=Local”的内部 LoadBalancer 服务。
+
+**Kubernetes 服务地址范围**：这是 Kubernetes 分配给群集中的内部 [服务][services]的一组虚拟 IP。 可以使用任何专用地址范围，只要其符合以下要求即可：
 
 * 不得在群集的虚拟网络 IP 地址范围内
 * 不得与群集虚拟网络对等互连的任何其他虚拟网络重叠
@@ -218,19 +220,18 @@ az aks create \
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
 
 <!-- LINKS - Internal -->
-<!-- Not Available on cli/aks -->
 
-[az-aks-create]: https://docs.microsoft.com/cli/azure/aks#az_aks_create
+[az-aks-create]: https://docs.azure.cn/cli/aks#az_aks_create
 [aks-ssh]: ssh.md
 
-<!--Not Available on [ManagedClusterAgentPoolProfile]: /templates/microsoft.containerservice/managedclusters#managedclusteragentpoolprofile-object-->
+<!--NOT AVAILABLE ON [ManagedClusterAgentPoolProfile]: /templates/microsoft.containerservice/managedclusters#managedclusteragentpoolprofile-object-->
 
 [aks-network-concepts]: concepts-network.md
 [aks-ingress-basic]: ingress-basic.md
 [aks-ingress-tls]: ingress-tls.md
 [aks-ingress-static-tls]: ingress-static-ip.md
 
-<!--Not Available on [aks-http-app-routing]: http-application-routing.md-->
+<!--NOT AVAILABLE ON [aks-http-app-routing]: http-application-routing.md-->
 
 [aks-ingress-internal]: ingress-internal-ip.md
 [network-policy]: use-network-policies.md
@@ -238,4 +239,4 @@ az aks create \
 [network-comparisons]: concepts-network.md#compare-network-models
 [system-node-pools]: use-system-pools.md
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -6,16 +6,16 @@ services: container-service
 ms.topic: article
 origin.date: 03/11/2019
 author: rockboyfor
-ms.date: 11/30/2020
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: c9c0cf295ef75366e944e2dc8fb7236b6d4ba9b5
-ms.sourcegitcommit: ea52237124974eda84f8cef4bf067ae978d7a87d
+ms.openlocfilehash: 70ecd6b59bcf897ebcb2a6d4690bc3a1d5a3610c
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024441"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054343"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>更新或轮换 Azure Kubernetes 服务 (AKS) 的凭据
 
@@ -52,6 +52,9 @@ az ad sp credential list --id $SP_ID --query "[].endDate" -o tsv
 ### <a name="reset-the-existing-service-principal-credential"></a>重置现有的服务主体凭据
 
 若要为现有服务主体更新凭据，请使用 [az aks show][az-aks-show] 命令获取群集的服务主体 ID。 以下示例获取 myResourceGroup 资源组中名为 myAKSCluster 的群集的 ID 。 服务主体 ID 设置为名为“SP_ID”变量以供在其他命令中使用。 这些命令使用 Bash 语法。
+
+> [!WARNING]
+> 在使用 Azure 虚拟机规模集的 AKS 群集上重置群集凭据时，将执行[节点映像升级][node-image-upgrade]以使用新凭据信息更新节点。
 
 ```azurecli
 SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
@@ -143,5 +146,6 @@ az aks update-credentials \
 [az-ad-sp-create]: https://docs.azure.cn/cli/ad/sp#az_ad_sp_create_for_rbac
 [az-ad-sp-credential-list]: https://docs.azure.cn/cli/ad/sp/credential#az_ad_sp_credential_list
 [az-ad-sp-credential-reset]: https://docs.azure.cn/cli/ad/sp/credential#az_ad_sp_credential_reset
+[node-image-upgrade]: ./node-image-upgrade.md
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

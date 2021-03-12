@@ -3,16 +3,16 @@ title: 配置 Azure 备份报表
 description: 使用 Log Analytics 和 Azure 工作簿配置和查看 Azure 备份的报表
 ms.topic: conceptual
 author: Johnnytechn
-ms.date: 01/07/2021
+ms.date: 03/01/2021
 ms.author: v-johya
-ms.openlocfilehash: 7111309e7839c2d2290579d5247dd40355ec3361
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 72e785b81cfe553062f39673a88b1ca4ce77ef36
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021692"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197158"
 ---
-# <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
+# <a name="configure-azure-backup-reports-preview"></a>配置 Azure 备份报告（预览版）
 
 备份管理员的一个常见需求是根据时间跨度较长的数据获取有关备份的见解。 此类解决方案的用例包括：
 
@@ -20,7 +20,7 @@ ms.locfileid: "98021692"
 - 审核备份和还原。
 - 确定不同粒度级别的关键趋势。
 
-如今，Azure 备份提供了一种使用 [Azure Monitor 日志](../azure-monitor/log-query/log-analytics-tutorial.md)和 [Azure 工作簿](../azure-monitor/platform/workbooks-overview.md)的报表解决方案。 这些资源有助于你跨整个备份资产获得有关备份的丰富见解。 本文介绍如何配置和查看 Azure 备份报表。
+如今，Azure 备份提供了一种使用 [Azure Monitor 日志](../azure-monitor/logs/log-analytics-tutorial.md)和 [Azure 工作簿](../azure-monitor/visualize/workbooks-overview.md)的报表解决方案。 这些资源有助于你跨整个备份资产获得有关备份的丰富见解。 本文介绍如何配置和查看 Azure 备份报表。
 
 ## <a name="supported-scenarios"></a>支持的方案
 
@@ -40,9 +40,9 @@ ms.locfileid: "98021692"
 
 设置一个或多个 Log Analytics 工作区来存储备份报表数据。 可以创建此 Log Analytics 工作区的位置和订阅与保管库所处的位置和订阅无关。
 
-若要设置 Log Analytics 工作区，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
+若要设置 Log Analytics 工作区，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)。
 
-默认情况下，Log Analytics 工作区中的数据将保留 30 天。 若要查看更长时间范围的数据，请更改 Log Analytics 工作区的保持期。 若要更改保持期，请参阅[通过 Azure Monitor 日志管理使用情况和成本](../azure-monitor/platform/manage-cost-storage.md)。
+默认情况下，Log Analytics 工作区中的数据将保留 30 天。 若要查看更长时间范围的数据，请更改 Log Analytics 工作区的保持期。 若要更改保持期，请参阅[通过 Azure Monitor 日志管理使用情况和成本](../azure-monitor/logs/manage-cost-storage.md)。
 
 ### <a name="2-configure-diagnostics-settings-for-your-vaults"></a>2.为保管库配置诊断设置
 

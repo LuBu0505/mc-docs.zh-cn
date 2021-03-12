@@ -6,17 +6,19 @@ author: Johnnytechn
 ms.custom: devx-track-java
 origin.date: 11/01/2018
 ms.author: v-johya
-ms.date: 01/12/2021
-ms.openlocfilehash: 74ad95a327fbcaf6dd8b00276708c6821dcd2670
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 02/22/2021
+ms.openlocfilehash: 2257879c5d1f11b135647f78fbb4df30663bf10a
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231049"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197265"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk-not-recommended"></a>如何将 Micrometer 与 Azure Application Insights Java SDK 配合使用（不建议）
 
 > [!IMPORTANT]
+> 不再建议使用本文档中所述的方法。
+> 
 > 监视 Java 应用程序的建议方法是在不更改代码的情况下使用自动检测。 Micrometer 遥测是通过 Application Insights Java 3.0 代理自动收集的，请遵循 [Application Insights Java 3.0 代理](./java-in-process-agent.md)的准则。
 
 > [!NOTE]
@@ -282,5 +284,5 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
 ## <a name="next-steps"></a>后续步骤
 
 * 若要详细了解 Micrometer，请参阅官方的 [Micrometer 文档](https://micrometer.io/docs)。
-* 若要了解 Azure 上的 Spring，请参阅官方的 [Azure 上的 Spring 文档](/java/spring-framework/?view=azure-java-stable)。
+* 若要了解 Azure 上的 Spring，请参阅官方的 [Azure 上的 Spring 文档](/java/spring-framework/)。
 

@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 09/28/2020
+origin.date: 01/28/2021
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: badc81935a63eecc4255ef582aa996294e35c869
-ms.sourcegitcommit: 1f933e4790b799ceedc685a0cea80b1f1c595f3d
+ms.openlocfilehash: c3cd8f5958e76337800309e3975c8c9c49cf912a
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628243"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053980"
 ---
 <!--Verified successfully-->
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>使用 NAT 网关资源设计虚拟网络
@@ -64,7 +64,7 @@ NAT 网关资源：
 
 建议为大多数工作负荷使用 NAT，除非对[基于池的负载均衡器出站连接](../load-balancer/load-balancer-outbound-connections.md)有具体的依赖。  
 
-可以从标准负载均衡器方案（包括[出站规则](../load-balancer/load-balancer-outbound-rules-overview.md)）迁移到 NAT 网关。 若要迁移，请将负载均衡器前端中的公共 IP 和公共 IP 前缀资源移到 NAT 网关。 不需要为 NAT 网关指定新的 IP 地址。 可以重复使用标准公共 IP 地址资源和公共 IP 前缀资源，只要总共不超过 16 个 IP 地址即可。 在转换期间，请规划好迁移并考虑到服务中断。  将此过程自动化可以最大程度地缩减中断时间。 首先在过渡环境中测试迁移。  在转换期间，入站来源流不受影响。
+可以从标准负载均衡器方案（包括[出站规则](../load-balancer/load-balancer-outbound-connections.md#outboundrules)）迁移到 NAT 网关。 若要迁移，请将负载均衡器前端中的公共 IP 和公共 IP 前缀资源移到 NAT 网关。 不需要为 NAT 网关指定新的 IP 地址。 可以重复使用标准公共 IP 地址资源和公共 IP 前缀资源，只要总共不超过 16 个 IP 地址即可。 在转换期间，请规划好迁移并考虑到服务中断。  将此过程自动化可以最大程度地缩减中断时间。 首先在过渡环境中测试迁移。  在转换期间，入站来源流不受影响。
 
 以下示例是 Azure 资源管理器模板中的代码片段。  此模板部署多个资源，其中包括 NAT 网关。  在此示例中，模板有以下参数：
 
@@ -265,19 +265,18 @@ NAT 网关是使用虚拟网络中某个子网上的属性定义的。 虚拟网
 1. [入站和出站连接的共存](#coexistence-of-inbound-and-outbound)
 2. [管理基本资源](#managing-basic-resources)
 
-<!--Not Available on 3. [Availability Zones](#availability-zones)-->
+<!--NOT AVAIALBLE on 3. [Availability Zones](#availability-zones)-->
 
 ### <a name="cost-optimization"></a>成本优化
 
 若要优化开销，[服务终结点](virtual-network-service-endpoints-overview.md)是可以考虑的选项。 这些服务不需要 NAT。 定向到服务终结点或专用链接的流量不会得到虚拟网络 NAT 的处理。  
 
-<!--Not Available on and [private link](../private-link/private-link-overview.md)-->
+<!--NOT AVAIALBLE on and [private link](../private-link/private-link-overview.md)-->
 
 服务终结点将 Azure 服务资源关联到虚拟网络，并控制对 Azure 服务资源的访问。 例如，在访问 Azure 存储时，可将服务终结点用于存储，以免产生 NAT 数据处理费用。 服务终结点是免费的。
 
-<!--Not Available on Private link exposes Azure PaaS service (or other services hosted with private link) as a private endpoint inside a virtual network.  Private link is billed based on duration and data processed.-->
-
-<!--Not Available on Evaluate if either or both of these approaches are a good fit for your scenario and use as needed.-->
+<!--NOT AVAIALBLE on Private link exposes Azure PaaS service (or other services hosted with private link) as a private endpoint inside a virtual network.  Private link is billed based on duration and data processed.-->
+<!--NOT AVAIALBLE on Evaluate if either or both of these approaches are a good fit for your scenario and use as needed.-->
 
 ### <a name="coexistence-of-inbound-and-outbound"></a>入站和出站连接的共存
 
@@ -348,13 +347,13 @@ VM 将使用 NAT 网关建立出站连接。  来源入站连接不受影响。
 
 NAT 网关优先于子网的出站方案。 无法通过适当的转换来调整基本负载均衡器或公共 IP（以及使用这些资源构建的任何托管服务）。 NAT 网关控制与子网上 Internet 流量的出站连接。 发往基本负载均衡器和公共 IP 的入站流量将不可用。 发往基本负载均衡器和/或 VM 上配置的公共 IP 的入站流量将不可用。
 
-<!--Not Available on ### Availability Zones-->
+<!--NOT AVAIALBLE on ### Availability Zones-->
 
 ## <a name="performance"></a>性能
 
 每个 NAT 网关资源最多可提供 50 Gbps 的吞吐量。 可以将部署拆分成多个子网，为每个子网或子网组分配一个 NAT 网关，以便进行横向扩展。
 
-对于所分配的每个出站 IP 地址，每个 NAT 网关可支持 64,000 个分别用于 TCP 和 UDP 的流。  请查看下面的有关源网络地址转换 (SNAT) 的部分来获取详细信息，并查看[故障排除文章](https://docs.azure.cn/virtual-network/troubleshoot-nat)来了解具体的问题解决指南。
+对于所分配的每个出站 IP 地址，每个 NAT 网关可支持 64,000 个分别用于 TCP 和 UDP 的流。  请查看下面的有关源网络地址转换 (SNAT) 的部分来获取详细信息，并查看[故障排除文章](./troubleshoot-nat.md)来了解具体的问题解决指南。
 
 ## <a name="source-network-address-translation"></a>源网络地址转换
 
@@ -388,11 +387,11 @@ NAT 网关可借机重复使用源 (SNAT) 端口。  下面将这个概念阐释
 |:---:|:---:|:---:|
 | 4 | 192.168.0.16:4285 | 65.52.0.2:80 |
 
-某个 NAT 网关可能会将流 4 转换为一个端口，这个端口也可以用于其他目标。  请参阅[缩放](/virtual-network/nat-gateway-resource#scaling)，了解有关正确调整 IP 地址预配大小的其他讨论。
+某个 NAT 网关可能会将流 4 转换为一个端口，这个端口也可以用于其他目标。  请参阅[缩放](#scaling)，了解有关正确调整 IP 地址预配大小的其他讨论。
 
 | 流向 | 源元组 | 经过 SNAT 处理的源元组 | 目标元组 | 
 |:---:|:---:|:---:|:---:|
-| 4 | 192.168.0.16:4285 | 65.52.1.1: **1234** | 65.52.0.2:80 |
+| 4 | 192.168.0.16:4285 | 65.52.1.1:**1234** | 65.52.0.2:80 |
 
 请不要依赖于上面示例中源端口的特定分配方式。  上面只是基本概念的演示图。
 
@@ -431,7 +430,7 @@ NAT 网关资源可借机重复使用源 (SNAT) 端口。 对于缩放目的设�
 
 不同目标的 SNAT 端口最有可能被重用。 而且随着 SNAT 端口即将耗尽，流可能不会成功。  
 
-有关示例信息，请参阅 [SNAT 基础知识](/virtual-network/nat-gateway-resource#source-network-address-translation)。
+有关示例信息，请参阅 [SNAT 基础知识](#source-network-address-translation)。
 
 ### <a name="protocols"></a>协议
 
@@ -462,6 +461,7 @@ NAT 网关资源与 UDP 和 TCP 流的 IP 和 IP 传输标头交互，对应用�
 - NAT 与标准 SKU 公共 IP、公共 IP 前缀和负载均衡器资源兼容。   基本资源（例如基本负载均衡器）以及派生自这些资源的任何产品都与 NAT 不兼容。  必须将基本资源放在未配置 NAT 的子网中。
 - 支持 IPv4 地址系列。  NAT 不会与 IPv6 地址系列交互。  NAT 不能部署在具有 IPv6 前缀的子网中。
 - NAT 不能跨多个虚拟网络。
+- 不支持 IP 分段。
 
 ## <a name="suggestions"></a>建议
 
@@ -486,12 +486,12 @@ NAT 网关资源与 UDP 和 TCP 流的 IP 和 IP 传输标头交互，对应用�
     - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway)
     - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
     
-    <!--Not Available on * Learn about [availability zones](../availability-zones/az-overview.md)-->
+    <!--NOT AVAILABLE ON * Learn about [availability zones](../availability-zones/az-overview.md)-->
 
-* 了解[标准负载均衡器](../load-balancer/load-balancer-standard-overview.md)。
+* 了解[标准负载均衡器](../load-balancer/load-balancer-overview.md)。
 
-    <!--Not Available on * Learn about [availability zones and standard load balancer](../load-balancer/load-balancer-standard-availability-zones.md)-->
+    <!--NOT AVAILABLE ON on * Learn about [availability zones and standard load balancer](../load-balancer/load-balancer-standard-availability-zones.md)-->
 
 * [在 UserVoice 中告诉我们接下来想要为虚拟网络 NAT 开发什么功能](https://aka.ms/natuservoice)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

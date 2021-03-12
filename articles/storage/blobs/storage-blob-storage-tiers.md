@@ -4,17 +4,17 @@ description: 了解 Azure Blob 存储的热、冷和存档访问层。 查看支
 author: WenJason
 ms.author: v-jay
 origin.date: 01/11/2021
-ms.date: 02/08/2021
+ms.date: 03/08/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: 8a0a6d6287faee0c26f52f03c9cf321ab2c17cae
-ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
+ms.openlocfilehash: 33c87845208b90fe69ee9c54dc2ced30679e0da6
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99503830"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196344"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Azure Blob 存储的访问层 - 热、冷和存档
 
@@ -165,6 +165,8 @@ Blob 存储生命周期管理提供丰富的基于规则的策略，这些策略
 - 异地复制数据传输成本：此费用仅适用于配置了异地复制的帐户，包括 GRS 和 RA-GRS。 异地复制数据传输会产生每 GB 费用。
 - **出站数据传输成本**：出站数据传输（传出 Azure 区域的数据）会按每 GB 产生带宽使用费，与通用存储帐户一致。
 - **更改访问层**：更改帐户访问层会导致未设置显式层的所有 Blob 产生层更改费。 有关更改单个 Blob 的访问层的信息，请参阅 [Blob 级分层计费](#blob-level-tiering-billing)。
+
+    当版本控制已启用或 Blob 包含快照时，更改 Blob 的访问层可能会产生额外费用。 有关启用了版本控制的 blob 的信息，请参阅 blob 版本控制文档中的[定价和计费](versioning-overview.md#pricing-and-billing)。 有关包含快照的 Blob 的信息，请参阅 Blob 快照文档中的[定价和计费](snapshots-overview.md#pricing-and-billing)。
 
 > [!NOTE]
 > 有关块 Blob 定价的详细信息，请参阅[块 Blob 定价](https://azure.cn/pricing/details/storage/blobs/)。 有关出站数据传输费用的详细信息，请参阅[带宽定价详细信息](https://www.azure.cn/pricing/details/bandwidth/)页。

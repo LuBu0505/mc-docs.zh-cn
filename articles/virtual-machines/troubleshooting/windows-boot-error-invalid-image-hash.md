@@ -12,16 +12,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 origin.date: 09/03/2020
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: 10/19/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1a297e301d4a2cb319f8f28254b8324780f42a11
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 1f70fca33061c16f70a205f4cdd1ed2ed6b9f383
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106322"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055165"
 ---
 <!--Verfied Successfully-->
 # <a name="windows-boot-manager-error---0xc0000428-status-invalid-image-hash"></a>Windows 启动管理器错误 - 0xC0000428 状态无效的映像哈希
@@ -67,6 +67,9 @@ ms.locfileid: "93106322"
 - 在 Azure 中，所有 Windows 预览版映像都将在其说明中包含注释，该注释表示这些映像不用于生产，只能在指定的试用期内使用或作为“预览版”使用。
 
 ## <a name="solution"></a>解决方案
+
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
 
 如果你的映像是预览版映像，则无法延长所使用的映像的有效期，你需要使用非预览版映像[部署新的 VM](../windows/quick-create-portal.md)。 以下步骤将帮助你确定是否使用了预览版映像，并提供资源来帮助你将数据从相应 VM 传输到新的 VM。 如果确实已将映像标识为预览版映像，则该映像将不可恢复，因为它现在已过期。
 
@@ -127,4 +130,4 @@ ms.locfileid: "93106322"
     az vm image list  --location "China North" --publisher "MicrosoftWindowsServer" --offer "WindowsServer" --sku "2016-Datacenter"
     ```
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

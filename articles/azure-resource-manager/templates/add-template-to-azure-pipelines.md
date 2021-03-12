@@ -2,31 +2,35 @@
 title: 使用 Azure Pipelines 和模板实现 CI/CD
 description: 介绍如何使用 Azure 资源管理器模板在 Azure Pipelines 中配置持续集成。 它演示如何使用 PowerShell 脚本，或如何将文件复制到暂存位置并从该位置进行部署。
 ms.topic: conceptual
-origin.date: 10/01/2020
+origin.date: 02/05/2021
 author: rockboyfor
-ms.date: 11/23/2020
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: e03f2d783cabd16d0abfec644766561103cfa235
-ms.sourcegitcommit: 7a5c52be6a673649ce3c845d19a9fc9b0c508734
+ms.openlocfilehash: c329102e6b7a4220109542b99b5fcff7e6e5c5ed
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94915105"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054046"
 ---
 <!--Verified successfully on 2020/06/18 by harris-->
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>将 ARM 模板与 Azure Pipelines 集成
 
-可将 Azure 资源管理器模板（ARM 模板）与 Azure Pipelines 集成，以实现持续集成和持续部署 (CI/CD)。 教程 [ARM 模板与 Azure Pipelines 的持续集成](deployment-tutorial-pipeline.md)演示如何使用 [ARM 模板部署任务](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)从 GitHub 存储库部署模板。 如果要直接从存储库部署模板，则可以使用此方法。
+可将 Azure 资源管理器模板（ARM 模板）与 Azure Pipelines 集成，以实现持续集成和持续部署 (CI/CD)。 本文介绍使用 Azure Pipelines 来部署模板的另外两种高级方法。
 
-本文介绍使用 Azure Pipelines 部署模板的另外两种方法。 本文介绍以下操作：
+## <a name="select-your-option"></a>选择你的选项
 
-* **添加用于运行 Azure PowerShell 脚本的任务**。 此选项的优势是可在整个开发生命周期中提供一致性，因为你可以使用运行本地测试时所用的同一脚本。 脚本将部署模板，但也可以执行其他操作，例如，获取要用作参数的值。
+在继续阅读本文之前，请考虑用于从管道部署 ARM 模板的不同选项。
+
+* 使用 ARM 模板部署任务。 此选项是最简单的选项。 如果要直接从存储库部署模板，则可以使用此方法。 本文不介绍此选项，但 [ARM 模板与 Azure Pipelines 的持续集成](deployment-tutorial-pipeline.md)教程中会介绍此选项。 这篇文章会介绍如何使用 [ARM 模板部署任务](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)从 GitHub 存储库部署模板。
+
+* **添加用于运行 Azure PowerShell 脚本的任务**。 此选项的优势是可在整个开发生命周期中提供一致性，因为你可以使用运行本地测试时所用的同一脚本。 脚本将部署模板，但也可以执行其他操作，例如，获取要用作参数的值。 本文介绍了此选项。 请参阅 [Azure PowerShell 任务](#azure-powershell-task)。
 
     Visual Studio 提供包含 PowerShell 脚本的 [Azure 资源组项目](create-visual-studio-deployment-project.md)。 该脚本会将项目中的生成工件暂存到资源管理器可以访问的存储帐户。 生成工件是项目中的一些项，例如链接的模板、脚本和应用程序二进制文件。 如果要继续使用项目中的脚本，请使用本文中显示的 PowerShell 脚本任务。
 
-* **添加用于复制和部署任务的任务**。 此选项可以方便地取代项目脚本。 在管道中配置两个任务。 一个任务将生成工件暂存到可访问的位置。 其他任务从该位置部署模板。
+* **添加用于复制和部署任务的任务**。 此选项可以方便地取代项目脚本。 在管道中配置两个任务。 一个任务将生成工件暂存到可访问的位置。 其他任务从该位置部署模板。 本文介绍了此选项。 请参阅[复制并部署任务](#copy-and-deploy-tasks)。
 
 ## <a name="prepare-your-project"></a>准备项目
 
@@ -238,4 +242,4 @@ steps:
 
 若要了解如何通过 GitHub Actions 使用 ARM 模板，请参阅[使用 GitHub Actions 部署 Azure 资源管理器模板](deploy-github-actions.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

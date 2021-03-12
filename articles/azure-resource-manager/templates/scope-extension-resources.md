@@ -2,27 +2,30 @@
 title: 扩展资源类型的范围
 description: 介绍如何在部署扩展资源类型时使用 scope 属性。
 ms.topic: conceptual
-origin.date: 10/22/2020
+origin.date: 01/13/2021
 author: rockboyfor
-ms.date: 11/23/2020
+ms.date: 03/01/2021
 ms.testscope: yes|no
-ms.testdate: 11/23/2020null
+ms.testdate: 11/23/2020
 ms.author: v-yeche
-ms.openlocfilehash: aa4d196d58cff181f2906e16d194029dd1a8ba4f
-ms.sourcegitcommit: b072689d006cbf9795612acf68e2c4fee0eccfbc
+ms.openlocfilehash: 83e4824c815fafc3cf963d41b3a5b2f02d966c07
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "95970649"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054339"
 ---
 <!--Verified successfully-->
 # <a name="setting-scope-for-extension-resources-in-arm-templates"></a>在 ARM 模板中设置扩展资源的范围
 
-扩展资源是用于修改其他资源的资源。 例如，可以为资源分配角色以限制访问权限。 角色分配是扩展资源类型。
+扩展资源是用于修改其他资源的资源。 例如，可以为资源分配角色。 角色分配是扩展资源类型。
 
 有关扩展资源类型的完整列表，请参阅[用于扩展其他资源的功能的资源类型](../management/extension-resource-types.md)。
 
 本文介绍如何在使用 Azure 资源管理器模板（ARM 模板）进行部署时设置扩展资源类型的范围。 它介绍了在应用到资源时可用于扩展资源的 scope 属性。
+
+> [!NOTE]
+> scope 属性仅适用于扩展资源类型。 若要为非扩展类型的资源类型指定其他范围，请使用嵌套部署或链接部署。 有关详细信息，请参阅[资源组部署](deploy-to-resource-group.md)、[订阅部署](deploy-to-subscription.md)、[管理组部署](deploy-to-management-group.md)和[租户部署](deploy-to-tenant.md)。
 
 ## <a name="apply-at-deployment-scope"></a>在部署范围内应用
 
@@ -223,9 +226,8 @@ New-AzSubscriptionDeployment `
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何在模板中定义参数，请参阅[了解 Azure Resource Manager 模板的结构和语法](template-syntax.md)。
+* 若要了解如何在模板中定义参数，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 * 有关解决常见部署错误的提示，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](common-deployment-errors.md)。
-* 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用模板](secure-template-with-sas-token.md)。
+* 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用 ARM 模板](secure-template-with-sas-token.md)。
 
-<!-- Update_Description: new article about scope extension resources -->
-<!--NEW.date: 11/23/2020-->
+<!--Update_Description: update meta properties, wording update, update link-->

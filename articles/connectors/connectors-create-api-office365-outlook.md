@@ -7,15 +7,15 @@ ms.reviewer: logicappspm
 ms.topic: article
 origin.date: 11/13/2020
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 03/01/2021
 ms.author: v-yeche
 tags: connectors
-ms.openlocfilehash: 8a94070dda7d4a78a0c770bc8b1de68e808ca410
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 2b03085c79ee28835e242193405f16878f75f48f
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97003664"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053263"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Office 365 Outlook 中的电子邮件、联系人和日历
 
@@ -47,7 +47,10 @@ ms.locfileid: "97003664"
 
 1. 如果你没有连接到 Outlook 帐户的活动连接，系统将提示你登录并创建该连接。 若要使用其他用户帐户（例如服务帐户）连接到 Outlook，请参阅[使用其他帐户进行连接](#connect-using-other-accounts)。 否则，请提供触发器属性的相关信息。
 
-    <!--Not Available on [Configurable token lifetimes in Azure Active Directory](../active-directory/develop/active-directory-configurable-token-lifetimes.md)-->
+    > [!NOTE]
+    > 即使你更改了登录凭据，你的连接也不会过期，直到撤销为止。 
+
+    <!--NOT AVAILABLE ON [Configurable token lifetimes in Azure Active Directory](../active-directory/develop/active-directory-configurable-token-lifetimes.md)-->
     
     此示例选择供触发器检查的日历，例如：
 
@@ -79,7 +82,10 @@ ms.locfileid: "97003664"
 
 1. 如果你没有连接到 Outlook 帐户的活动连接，系统将提示你登录并创建该连接。 若要使用其他用户帐户（例如服务帐户）连接到 Outlook，请参阅[使用其他帐户进行连接](#connect-using-other-accounts)。 否则，请提供操作属性的相关信息。
 
-    <!--Not Available on [Configurable token lifetimes in Azure Active Directory](../active-directory/develop/active-directory-configurable-token-lifetimes.md)-->
+    > [!NOTE]
+    > 即使你更改了登录凭据，你的连接也不会过期，直到撤销为止。 
+
+    <!--NOT AVAILABLE ON [Configurable token lifetimes in Azure Active Directory](../active-directory/develop/active-directory-configurable-token-lifetimes.md)-->
     
     此示例选择可供操作在其中创建新联系人的联系人文件夹，例如：
 
@@ -95,13 +101,15 @@ ms.locfileid: "97003664"
 
 如果尝试使用与当前登录到 Azure 的帐户不同的帐户连接到 Outlook，则可能会出现单一登录 (SSO) 错误。 当使用一个帐户登录 Azure 门户，但使用其他帐户来创建连接时，会发生此问题。 逻辑应用设计器需要使用已登录到 Azure 的帐户。 若要解决此问题，可采用以下选项：
 
-<!--Not Available on [single sign-on (SSO)](../active-directory/manage-apps/what-is-single-sign-on.md)-->
+<!--NOT AVAILABLE ON [single sign-on (SSO)](../active-directory/manage-apps/what-is-single-sign-on.md)-->
 
-* 将另一个帐户设置为逻辑应用的资源组参与者。
+* 在逻辑应用的资源组中，使用“参与者”角色设置另一个帐户。
 
-    1. 在逻辑应用的资源组菜单中，选择“访问控制(IAM)”。 使用参与者角色设置其他帐户。 有关详细信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)。
+    1. 在逻辑应用的资源组菜单中，选择“访问控制(IAM)”。 使用参与者角色设置其他帐户。 
 
-    1. 如果使用工作或学校帐户登录到 Azure 门户，请注销并使用其他帐户重新登录。 现可使用另一个帐户创建到 Outlook 的连接。
+        有关详细信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)。
+
+    1. 设置此角色后，使用现在已有参与者权限的帐户登录到 Azure 门户。 现在可以使用此帐户创建与 Outlook 的连接。
 
 * 设置另一个帐户，使工作或学校帐户具有“发送方式”权限。
 
@@ -121,4 +129,4 @@ ms.locfileid: "97003664"
 
 * 了解其他[逻辑应用连接器](../connectors/apis-list.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

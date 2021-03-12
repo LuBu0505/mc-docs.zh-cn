@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 01/04/2021
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: a3d3b3260c9b52c51fbcaaf30ba9fc39c29e08e3
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: b5ab727fd3cb0517c9275db83b0b6590ec1eef14
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98229809"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053945"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>在 Azure 中排查出站 SMTP 连接问题
 
@@ -32,7 +32,7 @@ ms.locfileid: "98229809"
 
 ## <a name="recommended-method-of-sending-email"></a>推荐的电子邮件发送方法
 
-建议使用经过身份验证的 SMTP 中继服务从 Azure VM 或 Azure 应用服务发送电子邮件。 （这些中继服务通常通过 TCP 端口 587 或 443 连接，但它们支持其他端口。）这些服务用于维护 IP 或域信誉，以尽量降低第三方电子邮件提供商拒绝邮件的可能性。 [SendGrid](https://sendgrid.com/partners/azure/) 就是这样一个 SMTP 中继服务，但还有其他服务。 还可具有本地运行并能使用的安全的 SMTP 中继服务。
+建议使用经过身份验证的 SMTP 中继服务从 Azure VM 或 Azure 应用服务发送电子邮件。 （这些中继服务通常通过 TCP 端口 587 连接，但它们支持其他端口。）这些服务用于维护 IP 或域信誉，以尽量降低第三方电子邮件提供商拒绝邮件的可能性。 [SendGrid](https://sendgrid.com/partners/azure/) 就是这样一个 SMTP 中继服务，但还有其他服务。 还可具有本地运行并能使用的安全的 SMTP 中继服务。
 
 在 Azure 中使用这些电子邮件传递服务不受限制（无论是哪种订阅类型）。
 
@@ -97,4 +97,4 @@ ms.locfileid: "98229809"
 
 <!--MOONCAKE CORRECT ON support type: **Subscription Management** service type: **Maintenance notification related issue**-->
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

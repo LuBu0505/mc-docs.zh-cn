@@ -3,15 +3,15 @@ title: 适用于 ASP.NET Core 应用程序的 Azure Application Insights | Azure
 description: 监视 ASP.NET Core Web 应用程序的可用性、性能和使用情况。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 01/27/2021
+ms.date: 02/22/2021
 ms.author: v-johya
 origin.date: 05/22/2019
-ms.openlocfilehash: d604e264292982d2c635557faa7fd030367473a3
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: e540af9922e66c8ad5a3946858e3a61975a71cd7
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060091"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197456"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights
 
@@ -31,7 +31,10 @@ ms.locfileid: "99060091"
 * **IDE**：Visual Studio、VS Code 或命令行。
 
 > [!NOTE]
-> ASP.NET Core 3.X 需要 [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) 或更高版本。
+> ASP.NET Core 3.1 需要 [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) 或更高版本。
+
+> [!IMPORTANT]
+> 支持以下 ASP.NET Core 版本：ASP.NET Core 2.1 和 ASP.NET Core 3.1。 版本 2.0、2.2 和 3.0 已停用，不再受支持。
 
 ## <a name="prerequisites"></a>先决条件
 

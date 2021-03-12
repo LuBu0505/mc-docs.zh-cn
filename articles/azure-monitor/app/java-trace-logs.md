@@ -4,18 +4,20 @@ description: 在 Application Insights 中搜索 Log4J 或 Logback 跟踪
 ms.topic: conceptual
 ms.author: v-johya
 origin.date: 05/18/2019
-ms.date: 12/07/2020
+ms.date: 02/22/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: e7ec48b20be99ea92348d976b8d78bee12f781f2
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: b5c1f96d02b91c953ba84376dd96e27e4fc7eab1
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97104637"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197690"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>在 Application Insights 中浏览 Java 跟踪日志
 
 > [!IMPORTANT]
+> 不再建议使用本文档中所述的方法。
+>
 > 监视 Java 应用程序的建议方法是在不更改代码的情况下使用自动检测。 请按照 [Application Insights Java 3.0 代理](./java-in-process-agent.md)指南进行操作。
 
 如果使用 Logback 或 Log4J（v1.2 或 v2.0）进行跟踪，可将跟踪日志自动发送到 Application Insights，以便在其中发现和搜索日志。

@@ -5,18 +5,17 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 ms.reviewer: kevindaw
-origin.date: 04/09/2020
-ms.date: 01/18/2021
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d1ebb94e80cb1b56b262b69d84d638e22046425f
-ms.sourcegitcommit: 01cd9148f4a59f2be4352612b0705f9a1917a774
+ms.openlocfilehash: 5d5a1f040fa824455d39c06f35d5502655e09dfd
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98194730"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196901"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>使用 X.509 证书创建和预配 IoT Edge 设备
 
@@ -89,7 +88,7 @@ Windows:
 
 1. 在 [Azure 门户](https://portal.azure.cn)中，导航到 IoT 中心设备预配服务的实例。
 
-1. 在“设置”下，选择“管理注册”。 
+1. 在“设置”下，选择“管理注册”。  
 
 1. 选择“添加个人注册”，然后完成以下步骤以配置注册：   
 
@@ -118,7 +117,7 @@ Windows:
       }
       ```
 
-1. 选择“保存” 。
+1. 选择“保存”  。
 
 既然此设备已存在注册，IoT Edge 运行时在安装期间可以自动预配设备。 转到[安装 IoT Edge 运行时](#install-the-iot-edge-runtime)部分来设置 IoT Edge 设备。
 
@@ -203,7 +202,7 @@ Windows:
       }
       ```
 
-1. 选择“保存” 。
+1. 选择“保存”  。
 
 既然此设备已存在注册，IoT Edge 运行时在安装期间可以自动预配设备。 转到下一部分来设置 IoT Edge 设备。
 
@@ -249,7 +248,11 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
    #   registration_id: "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
        identity_cert: "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
        identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+   #  always_reprovision_on_startup: true
+   #  dynamic_reprovisioning: false
    ```
+
+   （可选）使用 `always_reprovision_on_startup` 或 `dynamic_reprovisioning` 行来配置设备的重新预配行为。 如果设备设置为在启动时重新预配，它将始终尝试先使用 DPS 进行预配，如果失败，则回退到预配备份。 如果设备设置为动态重新预配自身，则 IoT Edge 将重启，并在检测到重新预配事件时重新预配。 有关详细信息，请参阅 [IoT 中心设备重新预配概念](../iot-dps/concepts-device-reprovision.md)。
 
 1. 将 `scope_id`、`identity_cert` 和 `identity_pk` 的值更新为你的 DPS 和设备信息。
 

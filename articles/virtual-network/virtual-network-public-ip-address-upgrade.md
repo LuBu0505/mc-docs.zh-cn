@@ -13,36 +13,36 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 12/08/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 01/18/2021
 ms.author: v-yeche
 ms.custom: references_regions
-ms.openlocfilehash: 1f266d578aee3b5dfd201ce1bafc23ce3a5a3819
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: df3574c41623d73d5539d08ee8d9befc38348a83
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231157"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052550"
 ---
 <!--Verified successfully-->
 # <a name="upgrade-public-ip-addresses"></a>升级公共 IP 地址
 
-Azure 公共 IP 地址是采用某个 SKU 创建的，该 SKU 可以是基本的，也可以是标准的，它决定了公共 IP 地址的功能的各个方面（包括分配方法、跨可用性区域的使用以及它们可以与哪些资源关联）。 
+Azure 公共 IP 地址是采用某个 SKU 创建的，该 SKU 可以是基本的，也可以是标准的，它决定了公共 IP 地址的功能的各个方面（包括分配方法、功能支持以及它们可以与哪些资源关联）。 
 
 本文介绍了以下方案：
-* 如何将基本 SKU 公共 IP 升级到标准 SKU 公共 IP（使用门户、PowerShell 或 CLI）
+* 如何将基本 SKU 公共 IP 升级到标准 SKU 公共 IP（使用 PowerShell 或 CLI）
 * 如何将经典 Azure 保留 IP 迁移到 Azure 资源管理器基本 SKU 公共 IP
 
 ## <a name="upgrade-public-ip-address-from-basic-to-standard-sku"></a>将公共 IP 地址从基本 SKU 升级到标准 SKU
 
-若要升级公共 IP，则它不得与任何资源相关联（有关如何将公共 IP 解除关联的详细信息，请查看[此页](https://docs.azure.cn/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address)）。
+若要升级公共 IP，则它不得与任何资源相关联（有关如何将公共 IP 解除关联的详细信息，请查看[此页](./virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address)）。
 
-<!--Not Available on [availability zones](https://docs.azure.cn/availability-zones/az-overview?toc=/virtual-network/toc.json#availability-zones)-->
+<!--NOT AVAILABLE ON [availability zones](../availability-zones/az-overview.md?toc=%2fvirtual-network%2ftoc.json#availability-zones)-->
 ---
 # <a name="basic-to-standard---powershell"></a>[**从基本 SKU 升级到标准 SKU - PowerShell**](#tab/option-upgrade-powershell)
 
-下面的示例假设之前创建了一个基本 SKU 公共 IP，具体而言，是使用[此页](https://docs.azure.cn/virtual-network/create-public-ip-powershell?tabs=option-create-public-ip-basic)上提供的示例在“myResourceGroup”中创建了一个基本公共 IP“myBasicPublicIP”。
+下面的示例假设之前创建了一个基本 SKU 公共 IP，具体而言，是使用[此页](./create-public-ip-powershell.md?tabs=option-create-public-ip-basic)上提供的示例在“myResourceGroup”中创建了一个基本公共 IP“myBasicPublicIP”。
 
 若要升级 IP，只需使用 PowerShell 执行以下命令即可。  注意，如果已静态分配了 IP 地址，则可以跳过该部分。
 
@@ -64,7 +64,7 @@ Set-AzPublicIpAddress -PublicIpAddress $pubIP
 
 # <a name="basic-to-standard---cli"></a>[**从基本 SKU 升级到标准 SKU - CLI**](#tab/option-upgrade-cli)
 
-下面的示例假设之前创建了一个基本 SKU 公共 IP，具体而言，是使用[此页](https://docs.azure.cn/virtual-network/create-public-ip-cli?tabs=option-create-public-ip-basic)上提供的示例在“myResourceGroup”中创建了一个基本公共 IP“myBasicPublicIP”。
+下面的示例假设之前创建了一个基本 SKU 公共 IP，具体而言，是使用[此页](./create-public-ip-cli.md?tabs=option-create-public-ip-basic)上提供的示例在“myResourceGroup”中创建了一个基本公共 IP“myBasicPublicIP”。
 
 若要升级 IP，只需使用 Azure CLI 执行以下命令即可。  注意，如果已静态分配了 IP 地址，则可以跳过该部分。
 
@@ -99,7 +99,7 @@ az network public-ip update \
 
 # <a name="reserved-to-basic---powershell"></a>[**从保留 SKU 升级到基本 SKU - PowerShell**](#tab/option-migrate-powershell)
 
-下面的示例假设之前在 myResourceGroup 中创建了一个经典 Azure 保留 IP“myReservedIP”。  进行迁移的另一个先决条件是确保 Azure 资源管理器订阅已针对迁移进行了注册。 [此页](https://docs.azure.cn/virtual-machines/windows/migration-classic-resource-manager-ps)上的步骤 3 和 4 详细介绍了这一点。
+下面的示例假设之前在 myResourceGroup 中创建了一个经典 Azure 保留 IP“myReservedIP”。  进行迁移的另一个先决条件是确保 Azure 资源管理器订阅已针对迁移进行了注册。 [此页](../virtual-machines/migration-classic-resource-manager-ps.md)上的步骤 3 和 4 详细介绍了这一点。
 
 若要迁移保留 IP，请使用 PowerShell 执行以下命令。  注意，如果 IP 地址没有与任何服务（下面有一个名为“myService”的服务）相关联，则可以跳过该步骤。
 
@@ -123,7 +123,7 @@ Move-AzureReservedIP -ReservedIPName $name -Commit
 
 # <a name="reserved-to-basic---cli"></a>[**从保留 SKU 升级到基本 SKU - CLI**](#tab/option-migrate-cli)
 
-下面的示例假设之前在 myResourceGroup 中创建了一个经典 Azure 保留 IP“myReservedIP”。  进行迁移的另一个先决条件是确保 Azure 资源管理器订阅已针对迁移进行了注册。 [此页](https://docs.azure.cn/virtual-machines/linux/migration-classic-resource-manager-cli)上的步骤 3 和 4 详细介绍了这一点。
+下面的示例假设之前在 myResourceGroup 中创建了一个经典 Azure 保留 IP“myReservedIP”。  进行迁移的另一个先决条件是确保 Azure 资源管理器订阅已针对迁移进行了注册。 [此页](../virtual-machines/migration-classic-resource-manager-cli.md)上的步骤 3 和 4 详细介绍了这一点。
 
 若要迁移保留 IP，请使用 Azure CLI 执行以下命令。  注意，如果 IP 地址没有与任何服务（下面有一个名为“myService”的服务和部署“myDeployment”）相关联，则可以跳过该步骤。
 
@@ -154,17 +154,16 @@ azure network reserved-ip commit-migration $name
 
 ## <a name="limitations"></a>限制
 
-* 若要升级基本的公共 IP，则它不能与任何 Azure 资源相关联。  请查看[此页](https://docs.azure.cn/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address)来详细了解如何将公共 IP 解除关联。  类似地，若要迁移保留 IP，则它不能与任何云服务相关联。  请查看[此页](https://docs.azure.cn/virtual-network/remove-public-ip-address-vm)来详细了解如何将保留 IP 解除关联。  
+* 若要升级基本的公共 IP，则它不能与任何 Azure 资源相关联。  请查看[此页](./virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address)来详细了解如何将公共 IP 解除关联。  类似地，若要迁移保留 IP，则它不能与任何云服务相关联。  请查看[此页](./remove-public-ip-address-vm.md)来详细了解如何将保留 IP 解除关联。  
 
-    <!--Not Available on [availability zones](https://docs.azure.cn/availability-zones/az-overview?toc=/virtual-network/toc.json#availability-zones)-->
+    <!--NOT AVAILABLE ON [availability zone(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD)s](../availability-zones/az-overview.md?toc=%2fvirtual-network%2ftoc.json#availability-zones)-->
     
 * 无法从标准 SKU 降级到基本 SKU。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 Azure 中的[公共 IP 地址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)，包括 SKU 类型之间的差异，以及[公共 IP 地址设置](virtual-network-public-ip-address.md#create-a-public-ip-address)。
-- 了解如何[将 Azure 公共负载均衡器从基本 SKU 升级到标准 SKU](https://docs.azure.cn/load-balancer/upgrade-basic-standard)。
-- 了解[经典 Azure 保留 IP](https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) 以及[将经典资源迁移到 Azure 资源管理器](https://docs.azure.cn/virtual-machines/windows/migration-classic-resource-manager-overview)。
+- 详细了解 Azure 中的[公共 IP 地址](./public-ip-addresses.md#public-ip-addresses)，包括 SKU 类型之间的差异，以及[公共 IP 地址设置](virtual-network-public-ip-address.md#create-a-public-ip-address)。
+- 了解如何[将 Azure 公共负载均衡器从基本 SKU 升级到标准 SKU](../load-balancer/upgrade-basic-standard.md)。
+- 了解[经典 Azure 保留 IP](https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) 以及[将经典资源迁移到 Azure 资源管理器](../virtual-machines/migration-classic-resource-manager-overview.md)。
 
-<!-- Update_Description: new article about virtual network public ip address upgrade -->
-<!--NEW.date: 01/18/2021-->
+<!--Update_Description: update meta properties, wording update, update link-->

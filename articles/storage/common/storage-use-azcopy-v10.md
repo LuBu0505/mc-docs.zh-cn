@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: how-to
 origin.date: 12/08/2020
-ms.date: 02/08/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 8c3746800ada536b92c00bf2f48df05d27c85357
-ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
+ms.openlocfilehash: e4c996d035442e3594fd816e1ae715dbf7b98f0a
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99503985"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196361"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -80,7 +80,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 此选项仅适用于 blob 存储。 使用 Azure Active Directory 可以一次性提供凭据，而无需向每个命令追加 SAS 令牌。  
 
 > [!NOTE]
-> 在当前版本中，如果你打算在存储帐户之间复制 Blob，必须向每个源 URL 追加一个 SAS 令牌。 只能在目标 URL 中省略 SAS 令牌。 有关示例，请参阅[在存储帐户之间复制 Blob](storage-use-azcopy-blobs.md)。
+> 在当前版本中，如果你打算在存储帐户之间复制 Blob，必须向每个源 URL 追加一个 SAS 令牌。 只能在目标 URL 中省略 SAS 令牌。 有关示例，请参阅[在存储帐户之间复制 Blob](#transfer-data)。
 
 若要使用 Azure AD 进行访问授权，请参阅[使用 AzCopy 和 Azure Active Directory (Azure AD) 授权访问 Blob](storage-use-azcopy-authorize-azure-active-directory.md)。
 

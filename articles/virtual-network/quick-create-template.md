@@ -7,17 +7,17 @@ ms.service: virtual-network
 ms.topic: quickstart
 origin.date: 06/23/2020
 author: rockboyfor
-ms.date: 10/05/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 10/05/2020
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: c045ecf81871aee3241a489dea1afcb3e60c586a
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: ce778fbdd3804693ddbf93f04d1a4d3765879706
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508029"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053783"
 ---
 <!--Verified Successfully-->
 # <a name="quickstart-create-a-virtual-network---resource-manager-template"></a>快速入门：创建虚拟网络 - 资源管理器模板
@@ -30,7 +30,7 @@ ms.locfileid: "96508029"
 
 ## <a name="prerequisites"></a>先决条件
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+如果没有 Azure 订阅，请在开始前创建一个[试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 ## <a name="review-the-template"></a>查看模板
 
@@ -133,7 +133,7 @@ ms.locfileid: "96508029"
         }
       ]
     }
-  ]  
+  ]
 }
 ```
 
@@ -146,19 +146,20 @@ ms.locfileid: "96508029"
 
 将资源管理器模板部署到 Azure：
 
-<!--MOONCAKE CUSTOMIZATION-->
+<!--MOONCAKE CUSTOMIZATION till 02/22/2021-->
 
-1. 登录 Azure 并在“自定义部署”页上保存以上模板。 该模板创建包含两个子网的虚拟网络。
+1. 选择“部署到 Azure”，登录到 Azure 并打开模板。 该模板创建包含两个子网的虚拟网络。
 
-<!--Not Available on [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Deploy to Azure":::](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-virtual-network-2vms-create%2Fazuredeploy.json)-->
-<!--404 Not Found on https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-virtual-network-2vms-create/azuredeploy.json-->
+   [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署到 Azure":::](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-virtual-network-2vms-create%2Fazuredeploy.json)
+
+1. 在“自定义部署”页上，选择“在编辑器中生成自己的模板”，然后在“编辑模板”页上保存上述模板内容。 该模板创建包含两个子网的虚拟网络。 最后，选择“保存”以返回“自定义部署”页。
 
 2. 在门户中的“自定义部署”页上，键入或选择以下值：
     - 资源组：选择“新建”，键入资源组的名称，然后选择“确定”。
     - **虚拟网络名称**：键入新虚拟网络的名称。
-3. 单击“我同意上述条款和条件”，并选择“购买”。 
+3. 选择“我同意上述条款和条件”，然后选择“购买” 。
 
-<!--MOONCAKE CUSTOMIZATION-->
+<!--MOONCAKE CUSTOMIZATION till 02/22/2021-->
 
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 
@@ -182,5 +183,4 @@ Remove-AzResourceGroup -Name <your resource group name>
 > [!div class="nextstepaction"]
 > [筛选网络流量](tutorial-filter-network-traffic.md)
 
-<!-- Update_Description: new article about quick create template -->
-<!--NEW.date: 10/05/2020-->
+<!--Update_Description: update meta properties, wording update, update link-->

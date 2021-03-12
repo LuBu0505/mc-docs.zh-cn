@@ -1,16 +1,17 @@
 ---
 title: 策略分配结构的详细信息
 description: 介绍策略分配定义，Azure Policy 使用该定义将策略定义和参数关联到资源，以进行评估。
-ms.author: v-tawe
-origin.date: 09/22/2020
-ms.date: 11/06/2020
+origin.date: 01/29/2021
+author: rockboyfor
+ms.date: 03/01/2021
+ms.author: v-yeche
 ms.topic: conceptual
-ms.openlocfilehash: e55bac387b023596364448c8cca8db5edd5d8257
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: d43c9b2e29c5328ed946ea16e81e7910b9cf60d3
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328677"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196548"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy 分配结构
 
@@ -24,6 +25,7 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
 - 强制模式
 - 排除的范围
 - 策略定义
+- 不符合性消息
 - 参数
 
 例如，以下 JSON 显示包含动态参数的、处于 _DoNotEnforce_ 模式的策略分配：
@@ -39,6 +41,11 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
         "enforcementMode": "DoNotEnforce",
         "notScopes": [],
         "policyDefinitionId": "/subscriptions/{mySubscriptionID}/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming",
+        "nonComplianceMessages": [
+            {
+                "message": "Resource names must start with 'DeptA' and end with '-LC'."
+            }
+        ],
         "parameters": {
             "prefix": {
                 "value": "DeptA"
@@ -82,6 +89,32 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
 此字段必须是策略定义或计划定义的完整路径名称。
 `policyDefinitionId` 是字符串，而不是数组。 如果经常要一起分配多个策略，我们建议改用[计划](./initiative-definition-structure.md)。
 
+## <a name="non-compliance-messages"></a>不符合性消息
+
+若要设置描述资源不符合策略或计划定义的原因的自定义消息，请在分配定义中设置 `nonComplianceMessages`。 此节点是一个 `message` 条目的数组。 此自定义消息是对不符合性默认错误消息的补充，并且是可选的。
+
+```json
+"nonComplianceMessages": [
+    {
+        "message": "Default message"
+    }
+]
+```
+
+如果分配是针对某个计划的，则可以为该计划中的每个策略定义配置不同的消息。 消息使用在计划定义中配置的 `policyDefinitionReferenceId` 值。 有关详细信息，请参阅[策略定义属性](./initiative-definition-structure.md#policy-definition-properties)。
+
+```json
+"nonComplianceMessages": [
+    {
+        "message": "Default message"
+    },
+    {
+        "message": "Message for just this policy definition by reference ID",
+        "policyDefinitionReferenceId": "10420126870854049575"
+    }
+]
+```
+
 ## <a name="parameters"></a>parameters
 
 此策略分配段为[策略定义或计划定义](./definition-structure.md#parameters)中定义的参数提供值。 通过这种设计，可对不同的资源重复使用某个策略或计划定义，但需要检查不同的业务价值或成果。
@@ -106,3 +139,5 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
 - 了解如何[获取符合性数据](../how-to/get-compliance-data.md)。
 - 了解如何[修正不符合的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。
+
+<!--Update_Description: update meta properties, wording update, update link-->

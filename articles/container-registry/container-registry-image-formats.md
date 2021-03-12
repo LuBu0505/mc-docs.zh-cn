@@ -3,14 +3,15 @@ title: 支持的内容格式
 description: 了解 Azure 容器注册表支持的内容格式，其中包括与 Docker 兼容的容器映像、Helm 图表、OCI 映像和 OCI 项目。
 ms.topic: article
 origin.date: 08/30/2019
+author: rockboyfor
+ms.date: 03/01/2021
 ms.author: v-yeche
-ms.date: 12/09/2019
-ms.openlocfilehash: c642d1d04dd326e8d487e3cadf53fcce11a1d26c
-ms.sourcegitcommit: 753c74533aca0310dc7acb621cfff5b8993c1d20
+ms.openlocfilehash: 8c955ba39da6ad615e6fd2764f51f86114c1a10e
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92211530"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055320"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Azure 容器注册表中支持的内容格式
 
@@ -22,11 +23,11 @@ ms.locfileid: "92211530"
 
 * [Docker 映像清单 V2，架构 1](https://docs.docker.com/registry/spec/manifest-v2-1/)
 
-* [Docker 映像清单 V2，架构 2](https://docs.docker.com/registry/spec/manifest-v2-2/) - 包括了允许注册表在单个“映像:标记”引用下存储多平台映像的清单列表
+* [Docker 映像清单 V2，架构 2](https://docs.docker.com/registry/spec/manifest-v2-2/) - 包括了允许注册表在单个 `image:tag` 引用下存储多体系结构映像的清单列表
 
 ## <a name="oci-images"></a>OCI 映像
 
-Azure 容器注册表支持符合[开放容器计划 (OCI) 映像格式规范](https://github.com/opencontainers/image-spec/blob/master/spec.md)的映像。 打包格式包括[奇点映像格式 (SIF)](https://github.com/sylabs/sif)。
+Azure 容器注册表支持符合[开放容器计划 (OCI) 映像格式规范](https://github.com/opencontainers/image-spec/blob/master/spec.md)（包括可选的[映像索引](https://github.com/opencontainers/image-spec/blob/master/image-index.md)规范）的映像。 打包格式包括[奇点映像格式 (SIF)](https://github.com/sylabs/sif)。
 
 ## <a name="oci-artifacts"></a>OCI 项目
 
@@ -48,4 +49,4 @@ Azure 容器注册表可以承载 [Helm 图表](https://helm.sh/)的存储库，
 
 * 设置 Azure 容器注册表中承载的 [Helm 存储库](container-registry-helm-repos.md)。
 
-<!--Update_Description: wording update-->
+<!--Update_Description: update meta properties, wording update, update link-->

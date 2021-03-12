@@ -9,16 +9,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 09/28/2018
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 71ca9f112689b7c5769cce9aed1c2660d2487298
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 207e33795d1fd88b04bb385a792d5668525008d7
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104716"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054325"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows 在启动 Azure VM 时显示蓝屏错误
 本文介绍在 Azure 中启动 Windows 虚拟机 (VM) 时可能遇到的蓝屏错误。 本文提供用于收集支持票证数据的步骤。 
@@ -41,6 +41,9 @@ Windows VM 不启动。 检查[启动诊断](./boot-diagnostics.md)中的启动�
 - 应用程序访问内存的禁止扇区
 
 ## <a name="collect-memory-dump-file"></a>收集内存转储文件
+
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
 
 若要解决此问题，需先收集故障转储文件，然后使用此转储文件联系支持部门。 若要收集转储文件，请执行以下步骤：
 
@@ -106,4 +109,4 @@ Windows VM 不启动。 检查[启动诊断](./boot-diagnostics.md)中的启动�
 4. 启动 VM 以重现问题，然后就会生成转储文件。
 5. 将 OS 磁盘附加到恢复 VM，收集转储文件，然后使用该转储文件[提交支持票证](https://support.azure.cn/support/support-azure/)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

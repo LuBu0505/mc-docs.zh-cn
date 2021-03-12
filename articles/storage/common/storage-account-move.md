@@ -7,15 +7,15 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 origin.date: 05/11/2020
-ms.date: 11/16/2020
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.reviewer: dineshm
-ms.openlocfilehash: 859d81846f3c5b705a496a7202518c40b6da52fd
-ms.sourcegitcommit: 5f07189f06a559d5617771e586d129c10276539e
+ms.openlocfilehash: 7f1c8b281620730549d36a758a469b66703c03e5
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94552350"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196351"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>将 Azure 存储帐户移到另一个区域
 
@@ -36,7 +36,7 @@ ms.locfileid: "94552350"
 
 - 确保帐户使用的服务和功能在目标区域中受支持。
 
-- 对于预览版功能，请确保你的订阅已列入目标区域的允许列表。
+- 对于预览功能，请确保你的订阅已列入目标区域的允许列表。
 
 <a id="prepare"></a>
 

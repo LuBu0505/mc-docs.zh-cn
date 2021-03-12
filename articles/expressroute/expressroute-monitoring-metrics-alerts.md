@@ -8,19 +8,19 @@ ms.topic: conceptual
 origin.date: 08/25/2020
 ms.date: 10/19/2020
 ms.author: v-yiso
-ms.openlocfilehash: dd57217467751f400f191b36bc75f38311806b9d
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: 5d146c76dcb421f324668b2b652f5f388426b95a
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937307"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196549"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute 监视、指标和警报
 
 本文可帮助你使用 Azure Monitor 了解 ExpressRoute 监视、指标和警报。 Azure Monitor 是整个 Azure 中所有指标、警报和诊断日志的一站式商店。
  
 >[!NOTE]
->建议不要使用**经典指标**。
+>建议不要使用 **经典指标**。
 >
 
 ## <a name="expressroute-metrics"></a>ExpressRoute 指标
@@ -34,10 +34,14 @@ ms.locfileid: "91937307"
 | --- | --- | --- | --- |
 |ARP 可用性|可用性|<ui><li>对等机（主要/辅助 ExpressRoute 路由器）</ui></li><ui><li> 对等互连类型（专用/公共/Microsoft）</ui></li>|ExpressRoute|
 |BGP 可用性|可用性|<ui><li> 对等机（主要/辅助 ExpressRoute 路由器）</ui></li><ui><li> 对等互连类型</ui></li>|ExpressRoute|
-|BitsInPerSecond|交通|<ui><li> 对等互连类型 (ExpressRoute)</ui></li><ui><li>链路 (ExpressRoute Direct)</ui></li>| <li> ExpressRoute</li><li>ExpressRoute Direct|
-|BitsOutPerSecond|交通| <ui><li>对等互连类型 (ExpressRoute)</ui></li><ui><li> 链路 (ExpressRoute Direct) | <ui><li>ExpressRoute<ui><li>ExpressRoute Direct</ui></li> |
+|BitsInPerSecond|交通|<ui><li> 对等互连类型 (ExpressRoute)</ui></li><ui><li>链路 (ExpressRoute Direct)</ui></li>|<li>ExpressRoute</li><li>ExpressRoute Direct</li><ui><li>ExpressRoute 网关连接</ui></li>|
+|BitsOutPerSecond|交通| <ui><li>对等互连类型 (ExpressRoute)</ui></li><ui><li> 链路 (ExpressRoute Direct) |<ui><li>ExpressRoute<ui><li>ExpressRoute Direct</ui></li><ui><li>ExpressRoute 网关连接</ui></li>|
 |CPU 使用率|性能| <ui><li>实例</ui></li>|ExpressRoute 虚拟网络网关|
 |每秒数据包数|性能| <ui><li>实例</ui></li>|ExpressRoute 虚拟网络网关|
+|播发到对等方的路由计数 |可用性| <ui><li>实例</ui></li>|ExpressRoute 虚拟网络网关|
+|从对等方获知的路由计数 |可用性| <ui><li>实例</ui></li>|ExpressRoute 虚拟网络网关|
+|路由更改频率 |可用性| <ui><li>实例</ui></li>|ExpressRoute 虚拟网络网关|
+|虚拟网络中的 VM 数 |可用性| 不可用 |ExpressRoute 虚拟网络网关|
 |GlobalReachBitsInPerSecond|交通|<ui><li>对等互连线路密钥（服务密钥）</ui></li>|Global Reach|
 |GlobalReachBitsOutPerSecond|交通|<ui><li>对等互连线路密钥（服务密钥）</ui></li>|Global Reach|
 |AdminState|物理连接|链接|ExpressRoute Direct|
@@ -97,12 +101,12 @@ ms.locfileid: "91937307"
 ![er direct 线路协议](./media/expressroute-monitoring-metrics-alerts/line-protocol-per-link.jpg)
 
 ### <a name="rx-light-level---split-by-link"></a>Rx 轻型级别 - 按链路拆分
-可以查看每个端口的 Rx 轻型级别（ExpressRoute Direct 端口的轻型级别是**接收**）。 正常的 Rx 轻型级别通常在 -10 到 0 dBm 范围内
+可以查看每个端口的 Rx 轻型级别（ExpressRoute Direct 端口的轻型级别是 **接收**）。 正常的 Rx 轻型级别通常在 -10 到 0 dBm 范围内
 
 ![er direct 线路 Rx 轻型级别](./media/expressroute-monitoring-metrics-alerts/rxlight-level-per-link.jpg)
 
 ### <a name="tx-light-level---split-by-link"></a>Tx 轻型级别 - 按链路拆分
-可以查看每个端口的 Tx 轻型级别（ExpressRoute Direct 端口的轻型级别为**传输**）。 正常的 Tx 轻型级别通常在 -10 到 0 dBm 范围内
+可以查看每个端口的 Tx 轻型级别（ExpressRoute Direct 端口的轻型级别为 **传输**）。 正常的 Tx 轻型级别通常在 -10 到 0 dBm 范围内
 
 ![er direct 线路 Rx 轻型级别](./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg)
 
@@ -118,8 +122,31 @@ ms.locfileid: "91937307"
 
 可以查看每秒遍历网关的数据包数。
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/pps-split.jpg" alt-text="CPU 拆分":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/pps-split.jpg" alt-text="每秒数据包数 - 拆分":::
 
+### <a name="count-of-routes-advertised-to-peer---split-by-instance"></a>播发到对等方的路由计数 - 按实例拆分
+
+可以查看播发到 ExpressRoute 线路的路由数。
+
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/count-of-routes-advertised-to-peer.png" alt-text="播发到对等方的路由计数":::
+
+### <a name="count-of-routes-learned-from-peer---split-by-instance"></a>从对等方获知的路由计数 - 按实例拆分
+
+可以查看从 ExpressRoute 线路接收的路由数。
+
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/count-of-routes-learned-from-peer.png" alt-text="从对等方获知的路由计数":::
+
+### <a name="frequency-of-routes-change---split-by-instance"></a>路由更改频率 - 按实例拆分
+
+可以查看网关上的路由更改频率。
+
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/frequency-of-routes-changed.png" alt-text="路由更改频率":::
+
+### <a name="number-of-vms-in-the-virtual-network"></a>虚拟网络中的 VM 数
+
+可以查看虚拟网络中的虚拟机数。
+
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/number-of-virtual-machines-virtual-network.png" alt-text="虚拟网络中的虚拟机数":::
 ## <a name="expressroute-gateway-connections-in-bitsseconds"></a>ExpressRoute 网关连接（以位/秒为单位）
 
 ![网关连接](./media/expressroute-monitoring-metrics-alerts/erconnections.jpg ) 
@@ -130,7 +157,7 @@ ms.locfileid: "91937307"
 
    ![alerts](./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg)
 
-2. 单击“+选择目标”****，然后选择 ExpressRoute 网关连接资源。
+2. 单击“+选择目标”，然后选择 ExpressRoute 网关连接资源。
 
    ![目标]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
 3. 定义警报详细信息。
@@ -148,7 +175,7 @@ ms.locfileid: "91937307"
 
 ## <a name="configure-alerts-for-activity-logs-on-circuits"></a>为线路上的活动日志配置警报
 
-在**警报条件**中，可以选择“活动日志”**** 作为信号类型并选择“信号”。
+在 **警报条件** 中，可以选择“活动日志”作为信号类型并选择“信号”。
 
   ![另一个](./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg)
 

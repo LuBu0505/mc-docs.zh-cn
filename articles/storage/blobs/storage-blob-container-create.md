@@ -5,16 +5,17 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: how-to
-origin.date: 07/22/2020
-ms.date: 08/24/2020
+origin.date: 02/04/2020
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.subservice: blobs
-ms.openlocfilehash: ed9594ade815907b8d8ee5fa6104d97b3c2e38af
-ms.sourcegitcommit: ecd6bf9cfec695c4e8d47befade8c462b1917cf0
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1c738adbbd107f77438a7434b73051a86a6d0286
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88753461"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196264"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>使用 .NET 在 Azure 存储中创建或删除容器
 
@@ -38,22 +39,23 @@ Azure 存储中的 Blob 已组织成容器。 必须先创建容器，才能上�
 
 # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-- [创建](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobcontainerclient.create)
-- [CreateAsync](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobcontainerclient.createasync)
-- [CreateIfNotExists](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobcontainerclient.createifnotexists)
-- [CreateIfNotExistsAsync](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobcontainerclient.createifnotexistsasync)
+- [CreateBlobContainer](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobserviceclient.createblobcontainer)
+- [CreateBlobContainerAsync](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobserviceclient.createblobcontainerasync)
+
+如果已存在同名的容器，这些方法将引发异常。
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-- [创建](https://docs.azure.cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.create?view=azure-dotnet)
-- [CreateAsync](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createasync?view=azure-dotnet)
-- [CreateIfNotExists](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createifnotexists?view=azure-dotnet)
-- [CreateIfNotExistsAsync](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createifnotexistsasync?view=azure-dotnet)
----
+- [创建](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.create)
+- [CreateAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createasync)
+- [CreateIfNotExists](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createifnotexists)
+- [CreateIfNotExistsAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createifnotexistsasync)
 
 如果已存在同名的容器，**Create** 和 **CreateAsync** 方法将引发异常。
 
 **CreateIfNotExists** 和 **CreateIfNotExistsAsync** 方法返回一个指示是否已创建容器的布尔值。 如果已存在同名的容器，这些方法将返回 False，指示未创建新容器。
+
+---
 
 将立即在存储帐户下创建容器。 无法将一个容器嵌套在另一个容器下。
 
@@ -206,10 +208,10 @@ private static void CreateRootContainer(CloudBlobClient blobClient)
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-- [删除](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.delete?view=azure-dotnet)
-- [DeleteAsync](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.deleteasync?view=azure-dotnet)
-- [DeleteIfExists](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.deleteifexists?view=azure-dotnet)
-- [DeleteIfExistsAsync](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.deleteifexistsasync?view=azure-dotnet)
+- [删除](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.delete)
+- [DeleteAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.deleteasync)
+- [DeleteIfExists](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.deleteifexists)
+- [DeleteIfExistsAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.deleteifexistsasync)
 ---
 
 如果该容器不存在，Delete 和 DeleteAsync 方法将引发异常 。

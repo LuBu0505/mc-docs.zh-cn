@@ -1,33 +1,35 @@
 ---
-title: 用于文件和 ACL 的 Azure Data Lake Storage Gen2 Python SDK
-description: 在启用了分层命名空间 (HNS) 的存储帐户中使用 Python 来管理目录和文件以及目录访问控制列表 (ACL)。
+title: 使用 Python 管理 Azure Data Lake Storage Gen2 中的数据
+description: 使用 Python 在启用了分层命名空间的存储帐户中管理目录和文件。
 author: WenJason
 ms.service: storage
-origin.date: 01/22/2021
-ms.date: 02/08/2021
+origin.date: 02/17/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
-ms.openlocfilehash: f2d7a85e96f16fe8cb81f59a76d9a7addad4c6da
-ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
+ms.openlocfilehash: ca7046357fb6b57fe1755ea6ccd9ca081d70ddd0
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99503904"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196312"
 ---
-# <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Python 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
+# <a name="use-python-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>使用 Python 管理 Azure Data Lake Storage Gen2 中的目录和文件
 
-本文介绍如何使用 Python 在启用了分层命名空间 (HNS) 的存储帐户中创建和管理目录、文件与权限。 
+本文介绍了如何使用 Python 在具有分层命名空间的存储帐户中创建和管理目录与文件。
+
+若要了解如何获取、设置和更新目录与文件的访问控制列表 (ACL)，请参阅[使用 Python 管理 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-python.md)。
 
 [包（Python 包索引）](https://pypi.org/project/azure-storage-file-datalake/) | [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples) | [API 参考](https://docs.microsoft.com/python/api/azure-storage-file-datalake/azure.storage.filedatalake) | [提供反馈](https://github.com/Azure/azure-sdk-for-python/issues)
 
 ## <a name="prerequisites"></a>先决条件
 
-> [!div class="checklist"]
-> * Azure 订阅。 请参阅[获取 Azure 试用版](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
-> * 一个已启用分层命名空间 (HNS) 的存储帐户。 按[这些](../common/storage-account-create.md)说明创建一个。
+- Azure 订阅。 请参阅[获取 Azure 试用版](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+
+- 一个已启用分层命名空间的存储帐户。 按[这些](create-data-lake-storage-account.md)说明创建一个。
 
 ## <a name="set-up-your-project"></a>设置项目
 
@@ -73,7 +75,7 @@ def initialize_storage_account(storage_account_name, storage_account_key):
 
 - 将 `storage_account_key` 占位符值替换为存储帐户访问密钥。
 
-### <a name="connect-by-using-azure-active-directory-ad"></a>使用 Azure Active Directory (AD) 进行连接
+### <a name="connect-by-using-azure-active-directory-azure-ad"></a>使用 Azure Active Directory (Azure AD) 进行连接
 
 可以使用[适用于 Python 的 Azure 标识客户端库](https://pypi.org/project/azure-identity/)，通过 Azure AD 对应用程序进行身份验证。
 
@@ -167,8 +169,7 @@ def delete_directory():
      print(e)
 ```
 
-
-## <a name="upload-a-file-to-a-directory"></a>将文件上传到目录 
+## <a name="upload-a-file-to-a-directory"></a>将文件上传到目录
 
 首先，通过创建 **DataLakeFileClient** 类的实例，在目标目录中创建文件引用。 通过调用 **DataLakeFileClient.append_data** 方法上传文件。 确保通过调用 **DataLakeFileClient.flush_data** 方法完成上传。
 
@@ -270,89 +271,10 @@ def list_directory_contents():
      print(e)
 ```
 
-## <a name="manage-access-control-lists-acls"></a>管理访问控制列表 (ACL)
-
-可以获取、设置和更新目录与文件的访问权限。
-
-> [!NOTE]
-> 若要使用 Azure Active Directory (Azure AD) 来授予访问权限，请确保已为安全主体分配了[存储 Blob 数据所有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改它们所带来的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](./data-lake-storage-access-control.md)。
-
-### <a name="manage-directory-acls"></a>管理目录 ACL
-
-通过调用 **DataLakeDirectoryClient.get_access_control** 方法获取目录的访问控制列表 (ACL)，并通过调用 **DataLakeDirectoryClient.set_access_control** 方法来设置 ACL。
-
-> [!NOTE]
-> 如果你的应用程序通过使用 Azure Active Directory (Azure AD) 来授予访问权限，请确保已向应用程序用来授权访问的安全主体分配了[存储 Blob 数据所有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改它们所带来的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](./data-lake-storage-access-control.md)。
-
-此示例获取并设置名为 `my-directory` 的目录的 ACL。 字符串 `rwxr-xrw-` 为拥有用户提供读取、写入和执行权限，为拥有组授予读取和执行权限，并为所有其他用户提供读取和写入权限。
-
-```python
-def manage_directory_permissions():
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-
-        directory_client = file_system_client.get_directory_client("my-directory")
-        
-        acl_props = directory_client.get_access_control()
-        
-        print(acl_props['permissions'])
-        
-        new_dir_permissions = "rwxr-xrw-"
-        
-        directory_client.set_access_control(permissions=new_dir_permissions)
-        
-        acl_props = directory_client.get_access_control()
-        
-        print(acl_props['permissions'])
-    
-    except Exception as e:
-     print(e)
-```
-
-还可以获取和设置容器根目录的 ACL。 若要获取根目录，请调用 **FileSystemClient._get_root_directory_client** 方法。
-
-### <a name="manage-file-permissions"></a>管理文件权限
-
-通过调用 **DataLakeFileClient.get_access_control** 方法获取文件的访问控制列表 (ACL)，并通过调用 **DataLakeFileClient.set_access_control** 方法来设置 ACL。
-
-> [!NOTE]
-> 如果你的应用程序通过使用 Azure Active Directory (Azure AD) 来授予访问权限，请确保已向应用程序用来授权访问的安全主体分配了[存储 Blob 数据所有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改它们所带来的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](./data-lake-storage-access-control.md)。
-
-此示例获取并设置名为 `my-file.txt` 的文件的 ACL。 字符串 `rwxr-xrw-` 为拥有用户提供读取、写入和执行权限，为拥有组授予读取和执行权限，并为所有其他用户提供读取和写入权限。
-
-```python
-def manage_file_permissions():
-    try:
-        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
-
-        directory_client = file_system_client.get_directory_client("my-directory")
-        
-        file_client = directory_client.get_file_client("uploaded-file.txt")
-
-        acl_props = file_client.get_access_control()
-        
-        print(acl_props['permissions'])
-        
-        new_file_permissions = "rwxr-xrw-"
-        
-        file_client.set_access_control(permissions=new_file_permissions)
-        
-        acl_props = file_client.get_access_control()
-        
-        print(acl_props['permissions'])
-
-    except Exception as e:
-     print(e)
-```
-
-### <a name="set-an-acl-recursively"></a>以递归方式设置 ACL
-
-你可以为父目录的现有子项以递归方式添加、更新和删除 ACL，而不必为每个子项单独进行这些更改。 有关详细信息，请参阅[以递归方式为 Azure Data Lake Storage Gen2 设置访问控制列表 (ACL)](recursive-access-control-lists.md)。
-
 ## <a name="see-also"></a>另请参阅
 
-* [API 参考文档](https://docs.microsoft.com/python/api/azure-storage-file-datalake/azure.storage.filedatalake)
-* [包（Python 包索引）](https://pypi.org/project/azure-storage-file-datalake/)
-* [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
-* [已知问题](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-* [提供反馈](https://github.com/Azure/azure-sdk-for-python/issues)
+- [API 参考文档](https://docs.microsoft.com/python/api/azure-storage-file-datalake/azure.storage.filedatalake)
+- [包（Python 包索引）](https://pypi.org/project/azure-storage-file-datalake/)
+- [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
+- [已知问题](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+- [提供反馈](https://github.com/Azure/azure-sdk-for-python/issues)

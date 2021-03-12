@@ -7,16 +7,16 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 05/05/2020
-ms.date: 11/16/2020
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: ef55a0282e8948e477b7bfecce0fd55dcdbaccba
-ms.sourcegitcommit: 16af84b41f239bb743ddbc086181eba630f7f3e8
+ms.openlocfilehash: 98c1d97b94d0b73d4304222b4b00f80ee596f1aa
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94589442"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196347"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>灾难恢复和存储帐户故障转移
 
@@ -56,7 +56,7 @@ Azure 存储将维护存储帐户的多个副本，以确保持续性和高可�
 
 - **磁盘：** 利用 [Azure 备份](/backup/)备份 Azure 虚拟机使用的 VM 磁盘。 还建议在发生区域灾难时使用 [Azure Site Recovery](/site-recovery/) 保护 VM。
 - **块 blob：** 启用 [软删除](../blobs/soft-delete-blob-overview.md)以防发生对象级删除和覆盖，或使用 [AzCopy](./storage-use-azcopy-v10.md)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/) 或 [Azure 数据移动库](storage-use-data-movement-library.md)将块 blob 复制到其他区域中的另一个存储帐户内。
-- **文件：** 使用 [AzCopy](./storage-use-azcopy-v10.md) 或 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/) 将文件复制到其他区域中的另一个存储帐户内。
+- 文件存储：启用[软删除](/storage/files/storage-files-prevent-file-share-deletion)以防止意外删除文件共享。 对于 GRS 不可用时的异地冗余，请使用 [AzCopy](./storage-use-azcopy-v10.md) 或 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/) 将文件复制到其他区域中的另一个存储帐户。
 - **表：** 使用 [AzCopy](./storage-use-azcopy-v10.md) 将表数据导出到其他区域中的另一个存储帐户内。
 
 ## <a name="track-outages"></a>跟踪服务中断

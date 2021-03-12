@@ -2,23 +2,25 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 02/03/2021
+ms.date: 03/01/2021
 ms.author: v-johya
 ms.custom: generated
-ms.openlocfilehash: 9c74face5071634b1b0d56dec1adc169be7e0496
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: 3decb1784d7de9fe37bffca432aa47d9af8a7b5a
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579457"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197639"
 ---
-这一类别有 15 条相关建议。
+这一类别有 14 条相关建议。
 
 |建议 |说明 |严重性 |
 |---|---|---|
+|应限制对具有防火墙和虚拟网络配置的存储帐户的访问 |查看存储帐户防火墙设置中的网络访问设置。 建议配置网络规则，以便只有来自许可网络的应用程序才能访问存储帐户。 若要允许来自特定 Internet 或本地客户端的连接，可以向来自特定 Azure 虚拟网络或到公共 Internet IP 地址范围的流量授予访问权限。<br />（相关策略：[存储帐户应限制网络访问](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f34c877ad-507e-4c82-993e-3452a6e0ad3c)） |低 |
 |应在面向内部的虚拟机上应用自适应网络强化建议 |Azure 安全中心已分析下面列出的虚拟机的 Internet 流量通信模式，并确定与它们关联的 NSG 中的现有规则过于宽松，导致潜在攻击面增加。 这可能是由于端口/协议元组或特定 IP 上的流量不足，这些 IP 已被安全中心的威胁情报源标记为恶意。<br />（无相关策略） |中型 |
 |应在面向 Internet 的虚拟机上应用自适应网络强化建议 |Azure 安全中心已分析下面列出的虚拟机的 Internet 流量通信模式，并确定与它们关联的 NSG 中的现有规则过于宽容，导致潜在攻击面增加。<br>这通常在此 IP 地址不会定期与此资源通信的情况下发生。 或者，该 IP 地址已被安全中心的威胁情报源标记为恶意 IP。 （相关策略：[应在面向 Internet 的虚拟机上应用自适应网络强化建议](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f08e6af2d-db70-460a-bfe9-d5bd474ba9d6)） |高 |
 |应限制在与虚拟机关联的网络安全组上使用所有网络端口 |Azure 安全中心已识别到网络安全组的某些入站规则过于宽松。 入站规则不应允许从“任何”或“Internet”范围进行访问。 这有可能使得攻击者能够将你的资源定为攻击目标。<br />（相关策略：[应在与虚拟机关联的网络安全组上限制所有网络端口](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f9daedab3-fb2d-461e-b861-71790eead4f6)） |高 |
+|应启用 Azure DDoS 防护标准 |安全中心发现了应用程序网关资源不受 DDoS 保护服务保护的虚拟网络。 这些资源包含公共 IP。 缓解网络容量和协议攻击。<br />（相关策略：[应启用 Azure DDoS 防护标准](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa7aca53f-2ed4-4466-a25e-0b45ade68efd)） |中型 |
 |面向 Internet 的虚拟机应使用网络安全组进行保护 |使用网络安全组 (NSG) 限制对 VM 的访问，以此防范 VM 遭受潜在威胁。 NSG 包含一系列访问控制列表 (ACL) 规则，这些规则允许或拒绝来自同一子网内外的其他实例到 VM 的网络流量。<br>请注意，为了使计算机尽可能安全，必须限制 VM 对 Internet 的访问权限，并且应在子网上启用 NSG。<br>严重性为“高”的 VM 是面向 Internet 的 VM。<br />（相关策略：[面向 Internet 的虚拟机应使用网络安全组进行保护](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff6de0be7-9a8a-4b8a-b349-43cf02d22f7c)） |高 |
 |应禁用虚拟机上的 IP 转发 |Azure 安全中心发现在某些虚拟机上已启用 IP 转发。 在虚拟机的 NIC 上启用 IP 转发可让该计算机接收发往其他目标的流量。 极少需要启用 IP 转发（例如，将 VM 用作网络虚拟设备时），因此，此策略应由网络安全团队评审。<br />（相关策略：[应禁用虚拟机上的 IP 转发](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fbd352bd5-2853-4985-bf0d-73806b4a5744)） |中型 |
 |应通过即时网络访问控制来保护虚拟机的管理端口 |Azure 安全中心已识别出一些对网络安全组中的管理端口过于宽松的入站规则。 启用实时访问控制，以保护 VM 免受基于 Internet 的暴力攻击。 <a href="https://docs.azure.cn/security-center/security-center-just-in-time">了解详细信息。</a><br />（相关策略：[应通过即时网络访问控制来保护虚拟机的管理端口](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fb0f33259-77d7-4c9e-aac6-3aabcfae693c)） |高 |

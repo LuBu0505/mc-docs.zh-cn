@@ -1,16 +1,17 @@
 ---
 title: 教程：构建策略以强制实施符合性
 description: 本教程中将使用策略来强制执行标准、控制成本、维护安全性并施加企业范围的设计原则。
-ms.author: v-tawe
-origin.date: 10/05/2020
+origin.date: 01/29/2021
+author: rockboyfor
 ms.date: 11/06/2020
+ms.author: v-yeche
 ms.topic: tutorial
-ms.openlocfilehash: 313e3f529e4fb3c792eee5e0d4b931b7de2e14c2
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.openlocfilehash: d3da6fb0848eca278c1409a55c83f1da4ee61021
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431007"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196570"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>教程：创建和管理策略以强制实施符合性
 
@@ -26,7 +27,7 @@ ms.locfileid: "96431007"
 
 ## <a name="prerequisites"></a>先决条件
 
-如果没有 Azure 订阅，请在开始前创建一个[试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+如果没有 Azure 订阅，请在开始前创建一个[试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 ## <a name="assign-a-policy"></a>分配策略
 
@@ -49,7 +50,7 @@ ms.locfileid: "96431007"
 
    此示例使用 Contoso 订阅。 你的订阅将有所不同。
 
-1. 可基于“范围”排除资源。 “排除”从低于“范围”级别的一个级别开始 。 “排除”是可选的，因此暂时将其留空。
+1. 可基于“范围”排除资源。 “排除”从低于“范围”级别的一个级别开始。 “排除”是可选的，因此暂时将其留空。
 
 1. 选择“策略定义”旁边的省略号打开可用定义的列表。 可以使用“内置”来筛选策略定义的 **类型**，以查看所有相关策略定义及其说明。
 
@@ -74,6 +75,10 @@ ms.locfileid: "96431007"
 
 1. 系统会自动勾选“创建托管标识”，因为此策略定义使用 [modify](../concepts/effects.md#modify) 效果。 系统会根据策略定义自动将“权限”设置为“参与者”。 有关详细信息，请参阅[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)和[修正安全性工作原理](../how-to/remediate-resources.md#how-remediation-security-works)。
 
+1. 选择向导顶部的“不合规消息”选项卡。
+
+1. 将“不合规消息”设置为“此资源没有所需标记”。 当拒绝某个资源时或在常规评估期间针对不合规资源会显示此自定义消息。
+
 1. 选择向导顶部的“查看 + 创建”选项卡。
 
 1. 查看选项，然后在页面底部选择“创建”。
@@ -96,7 +101,7 @@ ms.locfileid: "96431007"
      > 若要将此策略定义应用到多个订阅，则位置必须是策略要分配到的订阅所在的管理组。 对于计划定义，也需要确保这一点。
 
    - 策略定义的名称 - 需要非 G 系列中的 VM SKU
-   - 想通过策略定义实现的操作的说明 - 此策略定义强制此范围中创建的所有虚拟机具有 G 系列以外的 SKU，以减少成本。
+   - 想通过策略定义实现的操作的说明 - 此策略定义强制此范围内创建的所有虚拟机具有 G 系列以外的 SKU，以减少成本。
    - 从现有的选项（例如“计算”）中选择，或者为此策略定义创建新的类别。
    - 复制以下 JSON 代码并根据需要进行更新：
       - 策略参数。
@@ -443,7 +448,7 @@ az policy set-definition create -n readOnlyStorage --definitions '[
 ]
 ```
 
-```azurepowershell
+```powershell
 New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"Virtual Machine"}' -PolicyDefinition C:\VMPolicySet.json
 ```
 
@@ -552,3 +557,5 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 > [!div class="nextstepaction"]
 > [Azure Policy 定义结构](../concepts/definition-structure.md)
+
+<!--Update_Description: update meta properties, wording update, update link-->

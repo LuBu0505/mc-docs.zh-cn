@@ -6,16 +6,16 @@ ms.subservice: sizes
 ms.topic: conceptual
 origin.date: 03/31/2020
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 6562494d2e6ccf6e8e2a46c1c459fb63decac382
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: ead1bcb5e4e850152a0feac63bdb9549dcb2869f
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104459"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055295"
 ---
 <!--Verified successfully-->
 <!--Partical Content from verified-->
@@ -32,6 +32,8 @@ M 系列 VM 采用 Intel&reg; 超线程技术。
 [内存保留更新](maintenance-and-updates.md)：不支持<br />
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br />
 [写入加速器](./how-to-enable-write-accelerator.md)：支持<br />
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br />
+[临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br />
 <br />
 
 <!-- NOTICE: 最大 NIC 数/预期网络带宽 (Mbps) SHOULD BE (Mbps) -->
@@ -53,7 +55,7 @@ M 系列 VM 采用 Intel&reg; 超线程技术。
 | Standard_M128 <sup>1</sup>     | 128 | 2048   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8|32000 |
 | Standard_M128m <sup>1</sup>    | 128 | 3892   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8|32000 |
 
-<sup>1</sup> 超过 64 vCPU 的 VM 需要以下受支持的来宾 OS 之一：Windows Server 2016、Ubuntu 16.04 LTS、SLES 12 SP2 和 Red Hat Enterprise Linux、CentOS 7.3 或带 LIS 4.2.1 的 Oracle Linux 7.3。
+<sup>1</sup> 超过 64 vCPU 的 VM 需要以下受支持的来宾版本之一：Windows Server 2016、Ubuntu 16.04 LTS、SLES 12 SP2 和 Red Hat Enterprise Linux、CentOS 7.3 或带 LIS 4.2.1 的 Oracle Linux 7.3。
 
 <sup>2</sup> 实例对于专用于单个客户的硬件独立。
 
@@ -64,11 +66,11 @@ M 系列 VM 采用 Intel&reg; 超线程技术。
 - [常规用途](sizes-general.md)
 - [内存优化](sizes-memory.md)
     
-    <!--Not Available on - [Storage optimized](sizes-storage.md)-->
+    <!--NOT AVAILABLE ON - [Storage optimized](sizes-storage.md)-->
     
 - [GPU 优化](sizes-gpu.md)
     
-    <!--Not Available on - [High performance compute](sizes-hpc.md)-->
+    <!--NOT AVAILABLE ON - [High performance compute](sizes-hpc.md)-->
     
 - [前几代](sizes-previous-gen.md)
 
@@ -76,10 +78,10 @@ M 系列 VM 采用 Intel&reg; 超线程技术。
 
 有关磁盘类型的详细信息：[磁盘类型](./disks-types.md)
 
-<!--Not Available on FEATURE ultra-disk-->
+<!--NOT AVAILABLE on FEATURE ultra-disk-->
 
 ## <a name="next-steps"></a>后续步骤
 
 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

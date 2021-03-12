@@ -6,16 +6,16 @@ manager: gwallace
 ms.topic: article
 origin.date: 01/08/2021
 author: rockboyfor
-ms.date: 01/25/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1a857720e420da49fa612751ed302860acd31d2e
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: 8512fbd1ac1eb210470cf04c4925d9ea1682f002
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751368"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055308"
 ---
 <!--Verify successfully-->
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
@@ -157,6 +157,7 @@ nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 ```
 
 ### <a name="troubleshooting"></a>故障排除
+* 运行 [az aks check-acr](https://docs.azure.cn/cli/aks#az_aks_check_acr) 命令，以验证是否可以从 AKS 群集访问注册表。
 * 详细了解 [ACR 诊断](../container-registry/container-registry-diagnostics-audit-logs.md)
 * 详细了解 [ACR 运行状况](../container-registry/container-registry-check-health.md)
 
@@ -165,4 +166,4 @@ nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 [AKS AKS CLI]: https://docs.azure.cn/cli/aks#az_aks_create
 [Image Pull secret]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

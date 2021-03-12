@@ -5,18 +5,18 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-origin.date: 01/07/2021
+origin.date: 02/12/2021
 author: rockboyfor
-ms.date: 01/25/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 9cdb9b881dcf367198f58b99598306ed86a9e1cd
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: a310d295029e8aabbbc3ab43148ebb94b10b4746
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751128"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054052"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>适用于 Azure 逻辑应用的连接器
 
@@ -62,10 +62,8 @@ ms.locfileid: "98751128"
     | [**集成帐户连接器**](#integration-account-connectors) | 创建和付费购买集成帐户时可以使用这些连接器，它们会转换和验证 XML、编码和解码平面文件，以及使用 AS2、EDIFACT 和 X12 协议处理企业到企业 (B2B) 消息。 |
     |||
 
-<!--Not Available on Gmial connectors-->
-
-<!--Not Available on ### Connect from an integration service environment (ISE)-->
-<!--Not Available on * [Connect to Azure virtual networks from Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)-->
+<!--NOT AVAILABLE ON ### Connect from an integration service environment (ISE)-->
+<!--NOT AVAILABLE ON [integration service environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)-->
 
 <a name="built-ins"></a>
 
@@ -93,7 +91,7 @@ ms.locfileid: "98751128"
 | [![Azure Functions 内置连接器][azure-functions-icon]<br />Azure Functions][azure-functions-doc] | 从逻辑应用调用运行自定义代码片段（C# 或 Node.js）的 Azure 函数。 |
 |||
 
-<!--Not Available on [![Inline Code built-in connector][inline-code-icon]<br />**Inline code**][inline-code-doc]-->
+<!--NOT AVAILABLE ON  [![Inline Code built-in connector][inline-code-icon]<br />**Inline code**][inline-code-doc]-->
 
 ### <a name="control-workflow"></a>控制工作流
 
@@ -256,8 +254,7 @@ ms.locfileid: "98751128"
 
 <!--Not Avaialble on [![API icon][ibm-3270-icon]<br />**IBM 3270**][ibm-3270-doc]-->
 
-
-<!--Not Available on ## ISE connectors-->
+<!--NOT AVAILABLE ON ## ISE connectors-->
 <!--NOT AVAILABLE ON * [Access to Azure virtual network resources from Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)-->
 <!--NOT AVAILABLE ON * [Connect to Azure virtual networks from Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)-->
 
@@ -299,9 +296,11 @@ ms.locfileid: "98751128"
 
 ### <a name="recurrence-for-built-in-triggers"></a>内置触发器的定期触发
 
+<!--MOONCAKE CUSTOMIZE: NOT AVAILABLE ON DST - daylight saving time-->
+
 定期内置触发器遵循你设置的计划，包括你指定的任何时区。 但是，如果某个定期触发未指定任何其他高级计划选项（例如具体时间）来运行将来的定期触发，则这些将来的定期触发会以上一次触发器执行为基础。 因此，这些定期触发的开始时间可能会因存储调用期间的延迟等因素而发生偏移。
 
-<!--Not Available on DST Also, if you don't select a time zone, daylight saving time (DST) might affect when triggers run, for example, shifting the start time one hour forward when DST starts and one hour backward when DST ends.-->
+<!--NOT AVAIABLEL ON  DST Also, if you don't select a time zone, daylight saving time (DST) might affect when triggers run, for example, shifting the start time one hour forward when DST starts and one hour backward when DST ends.-->
 
 为了确保逻辑应用在你指定的开始时间运行并且不会错过定期触发（特别是在频率为几天（或更长时间）一次的情况下），请尝试以下解决方案：
 
@@ -312,7 +311,8 @@ ms.locfileid: "98751128"
     计划作业时，逻辑应用会将要处理的消息放入队列中，并指定该消息何时变得可用，具体取决于运行上次作业的 UTC 时间和计划运行下次作业的 UTC 时间。 指定时区后，逻辑应用的 UTC 时间也会发生偏移以应对季节性时间变化。
     
     <!--NOT AVAILABLE ON However, some time windows might cause problems when the time shifts. For more information and examples, see [Recurrence for daylight saving time and standard time](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time)-->
-
+    <!--MOONCAKE CUSTOMIZE: NOT AVAILABLE ON DST - daylight saving time-->
+    
 * 使用定期触发器，并提供定期触发的开始日期和时间，以及运行后续定期触发的具体时间，这可以通过“在这些小时”和“在这些分钟”属性来进行，仅适用于“日”和“周”频率。
 
 * 使用[滑动窗口触发器](../connectors/connectors-native-sliding-window.md)，而不是使用重复触发器。
@@ -329,17 +329,17 @@ ms.locfileid: "98751128"
 
 * 调用存储期间的延迟。
 
-<!--Not Available on * Not maintaining the specified schedule when daylight saving time (DST) starts and ends.-->
+<!--NOT AVAILABLE ON DST * Not maintaining the specified schedule when daylight saving time (DST) starts and ends.-->
 
 * 可能影响下次运行时的出现时间的其他因素。
 
 若要解决或绕过这些问题，请尝试以下解决方案：
 
-<!--Not Availableon DST * To make sure that the recurrence time doesn't shift when DST takes effect, manually adjust the recurrence so that your logic app continues to run at the expected time. Otherwise, the start time shifts one hour forward when DST starts and one hour backward when DST ends.-->
+<!--NOT AVAILABLE ON DST * To make sure that the recurrence time doesn't shift when DST takes effect, manually adjust the recurrence so that your logic app continues to run at the expected time. Otherwise, the start time shifts one hour forward when DST starts and one hour backward when DST ends.-->
 
 * 使用定期触发器，以便指定时区、开始日期和时间，以及运行后续定期触发的具体时间，这可以通过“在这些小时”和“在这些分钟”属性来进行，仅适用于“日”和“周”频率。   
 
-    <!--NOT AVAILABLE ON  However, some time windows might still cause problems when the time shifts. For more information and examples, see [Recurrence for daylight saving time and standard time](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time)-->
+    <!--NOT AVAILABLE ON DST However, some time windows might still cause problems when the time shifts. For more information and examples, see [Recurrence for daylight saving time and standard time](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time)-->
 
 * 为了避免错过定期触发，请使用[滑动窗口触发器](../connectors/connectors-native-sliding-window.md)，而不是使用定期触发器。
 
@@ -349,7 +349,13 @@ ms.locfileid: "98751128"
 
 若要调用运行自定义代码或者无法作为连接器使用的 API，可以通过[创建自定义 API 应用](../logic-apps/logic-apps-create-api-app.md)来扩展逻辑应用平台。 还可以针对任何基于 REST 或 SOAP 的 API [创建自定义连接器](../logic-apps/custom-connector-overview.md)，使这些 API 可供 Azure 订阅中的任何逻辑应用使用。 若要使自定义 API 应用或连接器可供任何人在 Azure 中使用，可以[提交连接器进行 Microsoft 认证](https://docs.microsoft.com/connectors/custom-connectors/submit-certification)。
 
-<!--Not Available on integration service environment(ISE)-->
+
+<!--NOT AVAILABLE ON [integration service environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)-->
+
+<!--NOT AVAILABLE ON [Connect to Azure virtual networks from Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)-->
+## <a name="get-ready-for-deployment"></a>准备部署
+
+尽管从逻辑应用中创建连接，但连接是具有自己的资源定义的单独 Azure 资源。 若要查看这些连接资源定义，请[将逻辑应用从 Azure 下载到 Visual Studio 中](../logic-apps/manage-logic-apps-with-visual-studio.md)，这是创建最适用部署的有效参数化逻辑应用模板的最简单方法。
 
 <a name="block-connections"></a>
 
@@ -357,9 +363,11 @@ ms.locfileid: "98751128"
 
 如果组织不允许使用 Azure 逻辑应用中的连接器连接到特定资源，则可以在逻辑应用工作流中使用 [Azure Policy](../governance/policy/overview.md) [阻止为特定连接器创建这些连接的功能](../logic-apps/block-connections-connectors.md)。 有关详细信息，请参阅[在 Azure 逻辑应用中阻止特定连接器创建的连接](../logic-apps/block-connections-connectors.md)。
 
-## <a name="get-ready-for-deployment"></a>准备部署
+## <a name="known-issues"></a>已知问题
 
-尽管从逻辑应用中创建连接，但连接是具有自己的资源定义的单独 Azure 资源。 若要查看这些连接资源定义，请[将逻辑应用从 Azure 下载到 Visual Studio 中](../logic-apps/manage-logic-apps-with-visual-studio.md)，这是创建最适用部署的有效参数化逻辑应用模板的最简单方法。
+#### <a name="error-badgateway-client-request-id-guid"></a>错误：BadGateway。 客户端请求 ID：“{GUID}”
+
+当一个或多个连接不支持 Azure Active Directory (Azure AD) OAuth 身份验证（如 SFTP 和 SQL）时，更新逻辑应用上的标记会生成此错误。 若要防止此行为，请避免更新这些标记。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -384,7 +392,7 @@ ms.locfileid: "98751128"
 [http-response-icon]: ./media/apis-list/response.png
 [http-swagger-icon]: ./media/apis-list/http-swagger.png
 
-<!--Not Available on [http-webhook-icon]: ./media/apis-list/http-webhook.png-->
+<!--NOT AVAILABLE ON [http-webhook-icon]: ./media/apis-list/http-webhook.png-->
 
 [inline-code-icon]: ./media/apis-list/inline-code.png
 [schedule-icon]: ./media/apis-list/recurrence.png
@@ -405,11 +413,11 @@ ms.locfileid: "98751128"
 [azure-data-lake-icon]: ./media/apis-list/azure-data-lake.png
 [azure-devops-icon]: ./media/apis-list/azure-devops.png
 
-<!--Not Available on [azure-document-db-icon]: ./media/apis-list/azure-document-db.png-->
+<!--NOT AVAILABLE ON [azure-document-db-icon]: ./media/apis-list/azure-document-db.png-->
 
 [azure-event-grid-icon]: ./media/apis-list/azure-event-grid.png
 
-<!--Not Available on [azure-event-grid-publish-icon]: ./media/apis-list/azure-event-grid-publish.png-->
+<!--NOT AVAILABLE ON [azure-event-grid-publish-icon]: ./media/apis-list/azure-event-grid-publish.png-->
 
 [azure-event-hubs-icon]: ./media/apis-list/azure-event-hubs.png
 [azure-file-storage-icon]: ./media/apis-list/azure-file-storage.png
@@ -441,8 +449,8 @@ ms.locfileid: "98751128"
 [hipchat-icon]: ./media/apis-list/hipchat.png
 [ibm-3270-icon]: ./media/apis-list/ibm-3270.png
 
-<!--Not Avaialble on [ibm-db2-icon]: ./media/apis-list/ibm-db2.png-->
-<!--Not Avaialble on [ibm-informix-icon]: ./media/apis-list/ibm-informix.png-->
+<!--NOT AVAILABLE ON [ibm-db2-icon]: ./media/apis-list/ibm-db2.png-->
+<!--NOT AVAILABLE ON [ibm-informix-icon]: ./media/apis-list/ibm-informix.png-->
 
 [ibm-mq-icon]: ./media/apis-list/ibm-mq.png
 [insightly-icon]: ./media/apis-list/insightly.png
@@ -460,7 +468,7 @@ ms.locfileid: "98751128"
 [pinterest-icon]: ./media/apis-list/pinterest.png
 [postgre-sql-icon]: ./media/apis-list/postgre-sql.png
 
-<!--Not Available on [project-online-icon]: ./media/apis-list/projecton-line.png-->
+<!--NOT AVAILABLE ON [project-online-icon]: ./media/apis-list/projecton-line.png-->
 
 [redmine-icon]: ./media/apis-list/redmine.png
 [salesforce-icon]: ./media/apis-list/salesforce.png
@@ -611,4 +619,4 @@ ms.locfileid: "98751128"
 [xml-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "转换 XML 消息"
 [xml-validate-doc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "验证 XML 消息"
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

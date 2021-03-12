@@ -2,18 +2,18 @@
 title: 资源命名限制
 description: 说明 Azure 资源的命名规则和限制。
 ms.topic: conceptual
-origin.date: 12/29/2020
+origin.date: 01/27/2021
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: bfea3eeb83c1a1b4533a6948db55f34ab26c74c6
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 361a2202be6fc32a1524c3860ef3f017a290376e
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063640"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053287"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure 资源的命名规则和限制
 
@@ -34,53 +34,53 @@ ms.locfileid: "99063640"
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 作用域 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | servers | 资源组 | 3-63 | 小写字母和数字。<br /><br />以小写字母开头。 |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 作用域 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | 服务 | 全局 | 1-50 | 字母数字和连字符。<br /><br />以字母开头，以字母数字结尾。 |
-> | service / apis | 服务 | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / apis / issues | api | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / apis / issues / attachments | 问题 | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / apis / issues / comments | 问题 | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / apis / operations | api | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / apis / operations / tags | operation | 1-256 | 不能使用：<br /> `*#&+:<>?` |
+> | service / apis | 服务 | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / apis / issues | api | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / apis / issues / attachments | 问题 | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / apis / issues / comments | 问题 | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / apis / operations | api | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / apis / operations / tags | operation | 1-256 | 不得使用：<br /> `*#&+:<>?` |
 > | service / apis / releases | api | 1-80 | 字母数字、下划线和连字符。<br /><br />以字母数字或下划线开头和结尾。 |
-> | service / apis / schemas | api | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / apis / tagDescriptions | api | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / apis / tags | api | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / api-version-sets | 服务 | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / authorizationServers | 服务 | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / backends | 服务 | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / certificates | 服务 | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / diagnostics | 服务 | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / groups | 服务 | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / groups / users | group | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / identityProviders | 服务 | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / loggers | 服务 | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / notifications | 服务 | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / notifications / recipientEmails | 通知 | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / openidConnectProviders | 服务 | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / policies | 服务 | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / products | 服务 | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / products / apis | product | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / products / groups | product | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / products / tags | product | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / properties | 服务 | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / subscriptions | 服务 | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / tags | 服务 | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / templates | 服务 | 1-256 | 不能使用：<br /> `*#&+:<>?` |
-> | service / users | 服务 | 1-256 | 不能使用：<br /> `*#&+:<>?` |
+> | service / apis / schemas | api | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / apis / tagDescriptions | api | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / apis / tags | api | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / api-version-sets | 服务 | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / authorizationServers | 服务 | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / backends | 服务 | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / certificates | 服务 | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / diagnostics | 服务 | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / groups | 服务 | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / groups / users | group | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / identityProviders | 服务 | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / loggers | 服务 | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / notifications | 服务 | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / notifications / recipientEmails | 通知 | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / openidConnectProviders | 服务 | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / policies | 服务 | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / products | 服务 | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / products / apis | product | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / products / groups | product | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / products / tags | product | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / properties | 服务 | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / subscriptions | 服务 | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / tags | 服务 | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / templates | 服务 | 1-256 | 不得使用：<br /> `*#&+:<>?` |
+> | service / users | 服务 | 1-256 | 不得使用：<br /> `*#&+:<>?` |
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 作用域 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | configurationStores | 资源组 | 5-50 | 字母数字、下划线字符和连字符。 |
 
@@ -99,15 +99,18 @@ ms.locfileid: "99063640"
 > [!div class="mx-tableFixed"]
 > | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
-> | automationAccounts | 资源组 | 6-50 | 字母数字和连字符。<br /><br />以字母开头，以字母数字结尾。 |
-> | automationAccounts / certificates | 自动化帐户 | 1-128 | 不能使用：<br /> `<>*%&:\?.+/` <br /><br />不能以空格结尾。  |
+> | automationAccounts | 资源组和区域 <br />（请参阅下面的说明） | 6-50 | 字母数字和连字符。<br /><br />以字母开头，以字母数字结尾。 |
+> | automationAccounts / certificates | 自动化帐户 | 1-128 | 不得使用：<br /> `<>*%&:\?.+/` <br /><br />不能以空格结尾。  |
 > | automationAccounts / connections | 自动化帐户 | 1-128 | 不得使用：<br /> `<>*%&:\?.+/` <br /><br />不能以空格结尾。 |
-> | automationAccounts / credentials | 自动化帐户 | 1-128 | 不能使用：<br /> `<>*%&:\?.+/` <br /><br />不能以空格结尾。 |
+> | automationAccounts / credentials | 自动化帐户 | 1-128 | 不得使用：<br /> `<>*%&:\?.+/` <br /><br />不能以空格结尾。 |
 > | automationAccounts / runbooks | 自动化帐户 | 1-63 | 字母数字、下划线和连字符。<br /><br />以字母开头。  |
 > | automationAccounts / schedules | 自动化帐户 | 1-128 | 不得使用：<br /> `<>*%&:\?.+/` <br /><br />不能以空格结尾。 |
-> | automationAccounts / variables | 自动化帐户 | 1-128 | 不能使用：<br /> `<>*%&:\?.+/` <br /><br />不能以空格结尾。 |
+> | automationAccounts / variables | 自动化帐户 | 1-128 | 不得使用：<br /> `<>*%&:\?.+/` <br /><br />不能以空格结尾。 |
 > | automationAccounts / watchers | 自动化帐户 | 1-63 |  字母数字、下划线和连字符。<br /><br />以字母开头。 |
 > | automationAccounts / webhooks | 自动化帐户 | 1-128 | 不得使用：<br /> `<>*%&:\?.+/` <br /><br />不能以空格结尾。 |
+
+> [!NOTE]
+> 自动化帐户名称在每个区域和资源组中是唯一的。 已删除的自动化帐户的名称可能无法立即可用。
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
@@ -143,7 +146,7 @@ ms.locfileid: "99063640"
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 作用域 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | accounts | 资源组 | 2-64 | 字母数字和连字符。<br /><br />以字母数字开头和结尾。 |
 
@@ -461,7 +464,7 @@ ms.locfileid: "99063640"
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 作用域 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | clusters | 资源组 | 4-63 | 字母数字和连字符。<br /><br />以字母数字开头和结尾。 |
 > | workspaces | 全局 | 4-63 | 字母数字和连字符。<br /><br />以字母数字开头和结尾。 |
@@ -558,9 +561,9 @@ ms.locfileid: "99063640"
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 作用域 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
-> | managedInstances | 全局 | 1-63 | 小写字母、数字和连字符。<br /><br />不能以连字符开头或结尾。 |
+> | managedInstances | 全局 | 1-63 | 小写字母、数字和连字符。<br /><br />不能以连字符开头或结尾。 <br /><br /> 不能包含任何特殊字符，例如 `@`。 |
 > | servers | 全局 | 1-63 | 小写字母、数字和连字符。<br /><br />不能以连字符开头或结尾。 |
 > | servers / administrators | server |  | 必须是 `ActiveDirectory`。 |
 > | servers/databases | server | 1-128 | 不得使用：<br />`<>*%&:\/?`<br /><br />不能以句点或空格结尾。 |
@@ -584,7 +587,14 @@ ms.locfileid: "99063640"
 > | 队列 | 存储帐户 | 3-63 | 小写字母、数字和连字符。<br /><br />不能以连字符开头或结尾。 不能使用连续的连字符。 |
 > | 表 | 存储帐户 | 3-63 | 字母数字。<br /><br />以字母开头。 |
 
-<!--Not Avaialble on ## Microsoft.StorageSync-->
+## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
+
+> [!div class="mx-tableFixed"]
+> | 实体 | 范围 | 长度 | 有效的字符 |
+> | --- | --- | --- | --- |
+> | storageSyncServices | 资源组 | 1-260 | 字母数字、空格、句点、连字符和下划线字符。<br /><br />不得以句点或空格结尾。 |
+> | storageSyncServices/syncGroups | 存储同步服务 | 1-260 | 字母数字、空格、句点、连字符和下划线字符。<br /><br />不得以句点或空格结尾。 |
+
 <!--Not Avaialble on ## Microsoft.StorSimple-->
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
@@ -622,6 +632,5 @@ ms.locfileid: "99063640"
 > Azure Functions 具有与 Microsoft.Web/sites 相同的命名规则和限制。
 
 <!--Not Avaialble on ## Next steps-->
-<!--Not Avaialble on[Ready: Recommended naming and tagging conventions](/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)-->
-
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--NOT AVAILABLE ON https://docs.azure.cn/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging-->
+<!--Update_Description: update meta properties, wording update, update link-->

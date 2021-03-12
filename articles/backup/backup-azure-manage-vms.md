@@ -4,14 +4,14 @@ description: 了解如何使用 Azure 备份服务管理和监视 Azure VM 备�
 author: Johnnytechn
 ms.topic: conceptual
 origin.date: 09/18/2019
-ms.date: 12/10/2020
+ms.date: 03/01/2021
 ms.author: v-johya
-ms.openlocfilehash: 768f1a52ce32466dd29b640ba4f21c3ec1593b2a
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: cde2e518cddd3ce333a258b8ca78f9a23a933bf2
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97104889"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197430"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>使用 Azure 备份服务管理 Azure VM 备份
 
@@ -100,7 +100,7 @@ ms.locfileid: "97104889"
 * 按需备份的保留期范围是你在触发备份时指定的保留期值。
 
 > [!NOTE]
-> Azure 备份服务每天最多支持 9 个按需备份，但为了确保获得最佳性能，Azure 建议每天不超过 4 个按需备份。
+> Azure 备份服务支持每天最多创建三个按需备份，另外还支持创建一个计划的备份。
 
 若要触发按需备份，请执行以下操作：
 

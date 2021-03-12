@@ -4,24 +4,22 @@ description: 提供常见的 Azure 订阅和服务限制、配额和约束的列
 ms.topic: conceptual
 origin.date: 09/02/2020
 author: rockboyfor
-ms.date: 01/25/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 08/03/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6d81edae2e23be0e211a19d03e5be7b6f4328131
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: 55e422f5b1b7b50564003a84384e6b45a5e05a2f
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751296"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053331"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
 本文列出了一些最常见的 Azure 限制，有时也称为配额。
 
 若要详细了解 Azure 定价，请参阅 [Azure 定价概述](https://www.azure.cn/pricing/)。 在那里，可以使用[定价计算器](https://www.azure.cn/pricing/calculator/)来估算成本。 你还可以转到特定服务的定价详细信息页，例如 [Windows VM](https://www.azure.cn/pricing/details/virtual-machines/)。 有关帮助管理成本的提示，请参阅[通过 Azure 计费和成本管理来防止意外成本](https://docs.azure.cn/billing/billing-getting-started)。
-
-<!--CORRECT ON https://docs.azure.cn/billing/billing-getting-started-->
 
 ## <a name="managing-limits"></a>管理限制
 
@@ -185,6 +183,11 @@ ms.locfileid: "98751296"
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
 
+<!--NOT AVAILABLE ON ## Azure Quantum limits-->
+<!--NOT AVAILABLE ON [quantum-limits](../../../includes/azure-quantum-limits.md)-->
+<!--NOT AVAILABLE ON ## Azure role-based access control limits-->
+<!--NOT AVAILABLE ON [role-based-access-control-limits](../../../includes/role-based-access-control/limits.md)-->
+
 ## <a name="azure-signalr-service-limits"></a>Azure SignalR 服务限制
 
 [!INCLUDE [signalr-service-limits](../../../includes/signalr-service-limits.md)]
@@ -234,6 +237,7 @@ ms.locfileid: "98751296"
 [!INCLUDE [database-migration-service-limits](../../../includes/database-migration-service-limits.md)]
 
 <!--Not Available on## Digital Twins limits-->
+<!--NOT AVAILABLE ON [digital-twins-limits](../../../includes/digital-twins-limits.md)-->
 
 ## <a name="event-grid-limits"></a>事件网格限制
 
@@ -309,13 +313,11 @@ ms.locfileid: "98751296"
 
 <a name="private-link-limits"></a>
 
-<!--Not Available on Private Link
+<!--Not Available on ### Private Link limits-->
+<!--NOT AVAILABLE ON [private-link-limits](../../../includes/private-link-limits.md)-->
+<!--NOT AVAILABLE ON ## Purview limits-->
+<!--NOT AVAILABLE ON [Azure Purview quota page](../../purview/how-to-manage-quotas.md)-->
 
-### <a name="private-link-limits"></a><span data-ttu-id="2f8e4-200">专用链接限制</span><span class="sxs-lookup"><span data-stu-id="2f8e4-200">Private Link limits</span></span>
-
--->
-
-<!--[!INCLUDE [private-link-limits](../../../includes/private-link-limits.md)-->
 
 
 ### <a name="traffic-manager-limits"></a>流量管理器限制
@@ -334,15 +336,12 @@ ms.locfileid: "98751296"
 
 [!INCLUDE [azure-firewall-limits](../../../includes/firewall-limits.md)]
 
-<!--Not Available on ### Azure Front Door Service limits-->
+<!--NOT AVAILABLE ON  ### Azure Front Door Service limits-->
+<!--NOT AVAILABLE ON [!INCLUDE [azure-front-door-service-limits](../../../includes/front-door-limits.md)-->
 
 ## <a name="notification-hubs-limits"></a>通知中心限制
 
 [!INCLUDE [notification-hub-limits](../../../includes/notification-hub-limits.md)]
-
-## <a name="azure-role-based-access-control-limits"></a>Azure 基于角色的访问控制限制
-
-[!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control-limits.md)]
 
 ## <a name="service-bus-limits"></a>服务总线限制
 
@@ -360,6 +359,10 @@ ms.locfileid: "98751296"
 
 有关 Azure Synapse Analytics 限制，请参阅 [Azure Synapse 资源限制](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
 
+## <a name="azure-files-and-azure-file-sync"></a>Azure 文件存储和 Azure 文件同步
+
+若要详细了解 Azure 文件存储和文件同步的限制，请参阅 [Azure 文件存储的可伸缩性和性能目标](../../storage/files/storage-files-scale-targets.md)。
+
 ## <a name="storage-limits"></a>存储限制
 
 <!--like # storage accts -->
@@ -375,14 +378,6 @@ ms.locfileid: "98751296"
 ### <a name="azure-blob-storage-limits"></a>Azure Blob 存储限制
 
 [!INCLUDE [storage-blob-scale-targets](../../../includes/storage-blob-scale-targets.md)]
-
-### <a name="azure-files-limits"></a>Azure 文件限制
-
-有关 Azure 文件限制的详细信息，请参阅 [Azure 文件可伸缩性和性能目标](../../storage/files/storage-files-scale-targets.md)。
-
-[!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
-
-<!--Not Available on ### Azure File Sync limits confirmed on 09/21/2020-->
 
 ### <a name="azure-queue-storage-limits"></a>Azure 队列存储限制
 
@@ -402,7 +397,7 @@ ms.locfileid: "98751296"
 
 #### <a name="disk-encryption-sets"></a>磁盘加密集
 
-每个区域、每个订阅有 50 个磁盘加密集的限制。 有关更多信息，请参阅 [Linux](../../virtual-machines/disk-encryption.md#restrictions) 或 [Windows](../../virtual-machines/disk-encryption.md#restrictions) 虚拟机的加密文档。 如果需要增加配额，请与 Azure 支持部门联系。
+每个区域、每个订阅有 1000 个磁盘加密集的限制。 有关更多信息，请参阅 [Linux](../../virtual-machines/disk-encryption.md#restrictions) 或 [Windows](../../virtual-machines/disk-encryption.md#restrictions) 虚拟机的加密文档。 如果需要增加配额，请与 Azure 支持部门联系。
 
 ### <a name="managed-virtual-machine-disks"></a>托管虚拟机磁盘
 
@@ -414,7 +409,8 @@ ms.locfileid: "98751296"
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../../../includes/azure-storage-limits-vm-disks-premium.md)]
 
-<!--Not Available on ## StorSimple System limits-->
+<!--NOT AVAILABLE ON ## StorSimple System limits-->
+<!--NOT AVAILABLE ON [!INCLUDE [storsimple-limits-table](../../../includes/storsimple-limits-table.md)-->
 
 ## <a name="stream-analytics-limits"></a>流分析限制
 
@@ -452,4 +448,4 @@ ms.locfileid: "98751296"
 * [Azure 云服务的大小](../../cloud-services/cloud-services-sizes-specs.md)
 * [Azure 资源的命名规则和限制](resource-name-rules.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

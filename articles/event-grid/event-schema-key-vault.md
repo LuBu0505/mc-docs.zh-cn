@@ -3,22 +3,21 @@ title: 充当事件网格源的 Azure Key Vault
 description: 介绍针对 Azure 事件网格中的 Azure Key Vault 事件提供的属性和架构
 ms.topic: conceptual
 author: Johnnytechn
-ms.date: 01/18/2021
+ms.date: 03/05/2021
 ms.author: v-johya
-ms.openlocfilehash: c34c1df2dbda37227841ad376fb9e616600755a2
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: 68928c15dcf3c79d42a66aea7e0f004b4dfbe161
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751182"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197396"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>充当事件网格源的 Azure Key Vault
 
 本文提供了 [Azure Key Vault](../key-vault/index.yml) 中事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
-## <a name="event-grid-event-schema"></a>事件网格事件架构
 
-### <a name="available-event-types"></a>可用事件类型
+## <a name="available-event-types"></a>可用事件类型
 
 Azure Key Vault 帐户生成以下事件类型：
 
@@ -33,9 +32,11 @@ Azure Key Vault 帐户生成以下事件类型：
 | Microsoft.KeyVault.SecretNewVersionCreated | 创建的机密新版本 | 创建新机密或新机密版本时触发。 |
 | Microsoft.KeyVault.SecretNearExpiry | 机密即将过期 | 当前版本的机密即将过期时触发。 （此事件在机密到期日期前 30 天触发。） |
 | Microsoft.KeyVault.SecretExpired | 机密已过期 | 机密过期时触发。 |
-| Microsoft.KeyVault.VaultAccessPolicyChanged | 保管库访问策略已更改 | 当 Key Vault 上的访问策略发生更改时触发。 它包括将 Key Vault 权限模型更改为 Azure RBAC 或从 Azure RBAC 更改 Key Vault 权限模型时的方案  |
+| Microsoft.KeyVault.VaultAccessPolicyChanged | 保管库访问策略已更改 | 当 Key Vault 上的访问策略发生更改时触发。 它包括将 Key Vault 权限模型更改为 Azure 基于角色的访问控制或从 Azure 基于角色的访问控制更改为 Key Vault 权限模型时的方案。   |
 
-### <a name="event-examples"></a>事件示例
+## <a name="event-examples"></a>事件示例
+
+# <a name="event-grid-event-schema"></a>[事件网格事件架构](#tab/event-grid-event-schema)
 
 以下示例显示 **Microsoft.KeyVault.SecretNewVersionCreated** 的架构：
 
@@ -62,19 +63,79 @@ Azure Key Vault 帐户生成以下事件类型：
 ]
 ```
 
+# <a name="cloud-event-schema"></a>[云事件架构](#tab/cloud-event-schema)
+
+以下示例显示 **Microsoft.KeyVault.SecretNewVersionCreated** 的架构：
+
+```JSON
+[
+   {
+      "id":"00eccf70-95a7-4e7c-8299-2eb17ee9ad64",
+      "source":"/subscriptions/{subscription-id}/resourceGroups/sample-rg/providers/Microsoft.KeyVault/vaults/sample-kv",
+      "subject":"newsecret",
+      "type":"Microsoft.KeyVault.SecretNewVersionCreated",
+      "time":"2019-07-25T01:08:33.1036736Z",
+      "data":{
+         "Id":"https://sample-kv.vault.azure.cn/secrets/newsecret/ee059b2bb5bc48398a53b168c6cdcb10",
+         "vaultName":"sample-kv",
+         "objectType":"Secret",
+         "objectName ":"newsecret",
+         "version":" ee059b2bb5bc48398a53b168c6cdcb10",
+         "nbf":"1559081980",
+         "exp":"1559082102"
+      },
+      "specversion":"1.0"
+   }
+]
+```
+
+---
+
 ### <a name="event-properties"></a>事件属性
+
+# <a name="event-grid-event-schema"></a>[事件网格事件架构](#tab/event-grid-event-schema)
+事件具有以下顶级数据：
+
+| 属性 | 类型 | 说明 |
+| -------- | ---- | ----------- |
+| `topic` | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| `subject` | string | 事件主题的发布者定义路径。 |
+| `eventType` | string | 此事件源的一个注册事件类型。 |
+| `eventTime` | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| `id` | 字符串 | 事件的唯一标识符。 |
+| `data` | 对象 | 应用配置事件数据。 |
+| `dataVersion` | string | 数据对象的架构版本。 发布者定义架构版本。 |
+| `metadataVersion` | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+
+
+# <a name="cloud-event-schema"></a>[云事件架构](#tab/cloud-event-schema)
 
 事件具有以下顶级数据：
 
 | 属性 | 类型 | 说明 |
+| -------- | ---- | ----------- |
+| `source` | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| `subject` | string | 事件主题的发布者定义路径。 |
+| `type` | string | 此事件源的一个注册事件类型。 |
+| `time` | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| `id` | 字符串 | 事件的唯一标识符。 |
+| `data` | 对象 | 应用配置事件数据。 |
+| `specversion` | 字符串 | CloudEvents 架构规范版本。 |
+
+---
+ 
+
+数据对象具有以下属性：
+
+| 属性 | 类型 | 说明 |
 | ---------- | ----------- |---|
-| id | string | 触发了此事件的对象的 ID |
-| vaultName | string | 触发了此事件的对象的密钥保管库名称 |
-| objectType | string | 触发了此事件的对象的类型 |
-| objectName | string | 触发了此事件的对象的名称 |
-| 版本 | string | 触发了此事件的对象的版本 |
-| nbf | number | 触发了此事件的对象的 not-before 日期（自 1970-01-01T00:00:00Z 以来的秒数） |
-| exp | number | 触发了此事件的对象的到期日期（自 1970-01-01T00:00:00Z 以来的秒数） |
+| `id` | string | 触发了此事件的对象的 ID |
+| `vaultName` | string | 触发了此事件的对象的密钥保管库名称 |
+| `objectType` | string | 触发了此事件的对象的类型 |
+| `objectName` | string | 触发了此事件的对象的名称 |
+| `version` | string | 触发了此事件的对象的版本 |
+| `nbf` | number | 触发了此事件的对象的 not-before 日期（自 1970-01-01T00:00:00Z 以来的秒数） |
+| `exp` | number | 触发了此事件的对象的到期日期（自 1970-01-01T00:00:00Z 以来的秒数） |
 
 
 ## <a name="next-steps"></a>后续步骤

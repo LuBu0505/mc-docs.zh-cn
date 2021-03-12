@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.topic: tutorial
 origin.date: 03/13/2020
 ms.date: 05/11/2020
-ms.openlocfilehash: 2ca699b007df76164f7e08b1867e412ae676cc5f
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: ce741ee5b7712d1dab9496c33aa77f66d888ce52
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94976953"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196777"
 ---
 # <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>教程：将 ML 试验转换为生产 Python 代码
 
@@ -350,7 +350,7 @@ print("Test result: ", prediction)
 在命令提示符下运行以下使用 `nbconvert` 包和 `experimentation/Diabetes Ridge Regression Training.ipynb` 路径的语句，将笔记本转换为可执行脚本：
 
 ```
-jupyter nbconvert -- to script "Diabetes Ridge Regression Training.ipynb" –output train
+jupyter nbconvert "Diabetes Ridge Regression Training.ipynb" --to script --output train
 ```
 
 将笔记本转换为 `train.py` 后，删除任何不需要的注释。 将位于文件末尾的 `main()` 调用替换为如以下代码所示的条件调用：
@@ -438,7 +438,7 @@ if __name__ == '__main__':
 在命令提示符下运行使用 `nbconvert` 包和 `experimentation/Diabetes Ridge Regression Scoring.ipynb` 路径的以下语句，将笔记本转换为可执行脚本：
 
 ```
-jupyter nbconvert -- to script "Diabetes Ridge Regression Scoring.ipynb" –output score
+jupyter nbconvert "Diabetes Ridge Regression Scoring.ipynb" --to script --output score
 ```
 
 将笔记本转换为 `score.py` 后，删除任何不需要的注释。 `score.py` 文件应类似于以下代码：

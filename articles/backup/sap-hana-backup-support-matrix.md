@@ -5,14 +5,14 @@ author: Johnnytechn
 ms.author: v-johya
 ms.topic: conceptual
 origin.date: 11/7/2019
-ms.date: 02/02/2021
+ms.date: 03/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7347e9d4adc241198f4327630c2aa92184fc398f
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: 0e435b5f514ad540cdd5986bbbda283166d62cc9
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579568"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197153"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>针对备份 Azure VM 上的 SAP HANA 数据库的支持矩阵
 
@@ -28,14 +28,14 @@ Azure 备份支持将 SAP HANA 数据库备份到 Azure。 本文总结了在使
 | **拓扑**               | 仅在 Azure Linux VM 中运行的 SAP HANA                    | HANA 大型实例 (HLI)                                   |
 | **区域**                   |  中国东部、中国北部、中国东部 2、中国北部 2  |
 | **OS 版本**            | 带 SP2、SP3、SP4 和 SP5 的 SLES 12；带 SP0、SP1 和 SP2 的 SLES 15 <br><br>  自 2020 年 8 月 1 日起，适用于 RHEL 的 SAP HANA 备份（7.4、7.6、7.7 和 8.1）已正式发布。                |                                             |
-| **HANA 版本**          | SDC on HANA 1.x、MDC on HANA 2.x <= SPS04 Rev 53、SPS05（尚未对启用了加密的方案进行验证）      |                                                            |
+| **HANA 版本**          | SDC on HANA 1.x、MDC on HANA 2.x SPS04、SPS05 Rev <= 53（对启用了加密的方案也进行了验证）      |                                                            |
 | **HANA 部署**       | 基于单个 Azure VM 的 SAP HANA - 仅纵向扩展 <br><br> 进行高可用性部署时，两个不同计算机上的两个节点均被视为具有单独数据链的单个节点。               | 横向扩展 <br><br> 在高可用性部署中，备份不会自动故障转移到辅助节点。 应为每个节点单独进行备份配置。                                           |
 | **HANA 实例**         | 单个 Azure VM 上的单个 SAP HANA 实例 - 仅纵向扩展 | 单个 VM 上的多个 SAP HANA 实例。 一次只能保护这些多个实例中的一个。                  |
 | **HANA 数据库类型**    | 1\.x 上的单一数据库容器 (SDC)、2.x 上的多数据库容器 (MDC) | HANA 1.x 中的 MDC                                              |
-| **HANA 数据库大小**     | 大小不超过 2 TB 的 HANA 数据库（这不是 HANA 系统的内存大小）               |                                                              |
+| **HANA 数据库大小**     | 大小不超过 8 TB 的 HANA 数据库（这不是 HANA 系统的内存大小）               |                                                              |
 | **备份类型**           | 完整备份、差异备份、增量备份（预览）和日志备份                          |  快照                                       |
 | **还原类型**          | 请参阅 SAP HANA 说明 [1642148](https://launchpad.support.sap.com/#/notes/1642148)，了解支持的还原类型 |                                                              |
-| **备份限制**          | 每个 SAP HANA 实例最多可以进行 2 TB 的完整备份（软限制）         |                                                              |
+| **备份限制**          | 每个 SAP HANA 实例最多可以进行 8 TB 的完整备份（软限制）         |                                                              |
 | **特殊配置** |                                                              | SAP HANA + 动态分层 <br>  通过 LaMa 进行克隆        |
 
 ------

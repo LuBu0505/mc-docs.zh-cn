@@ -3,20 +3,22 @@ title: Java Web 应用性能监视 - Azure Application Insights
 description: 使用 Application Insights 监视 Java 网站的扩展性能和使用情况。
 ms.topic: conceptual
 origin.date: 01/10/2019
-ms.date: 01/27/2021
+ms.date: 02/22/2021
 author: Johnnytechn
 ms.custom: devx-track-java
 ms.author: v-johya
-ms.openlocfilehash: b337eaa16e5fc11ceb044fbdae8692001e0f266a
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: a94ee3d835a4348c5dd8772921a5cbb7ad6d1ce3
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059916"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197225"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>监视 Java Web 应用中的依赖项、捕获的异常和方法执行时间
 
 > [!IMPORTANT]
+> 不再建议使用本文档中所述的方法。
+>
 > 监视 Java 应用程序的建议方法是在不更改代码的情况下使用自动检测。 请按照 [Application Insights Java 3.0 代理](./java-in-process-agent.md)指南进行操作。
 
 如果已[使用 Application Insights SDK 检测了 Java Web 应用][java]，则无需更改任何代码，就能使用 Java 代理来获取更深入的见解：
@@ -135,6 +137,6 @@ ms.locfileid: "99059916"
 [diagnostic]: ./diagnostic-search.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 
 

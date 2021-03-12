@@ -1,25 +1,25 @@
 ---
-title: 使用 Azure 门户将 Azure 公共 IP 移到另一个 Azure 区域
-description: 使用 Azure 资源管理器模板，通过 Azure 门户将 Azure 公共 IP 从一个 Azure 区域移到另一个 Azure 区域。
-author: rockboyfor
+title: 使用 Azure 门户将 Azure 公共 IP 配置移动到另一个 Azure 区域
+description: 使用模板，通过 Azure 门户将 Azure 公共 IP 配置从一个 Azure 区域移到另一个 Azure 区域。
 ms.service: virtual-network
 ms.subservice: ip-services
-ms.topic: article
+ms.topic: how-to
 origin.date: 08/29/2019
-ms.date: 06/15/2020
+author: rockboyfor
+ms.date: 02/22/2021
 ms.author: v-yeche
-ms.openlocfilehash: b374620e359db58394616e82092344b836195eab
-ms.sourcegitcommit: ff67734e01c004be575782b4812cfe857e435f4d
+ms.openlocfilehash: db393bdf1d3071da4e0533aea5050182c7cb6ad1
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84486983"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053982"
 ---
-# <a name="move-azure-public-ip-to-another-region-using-the-azure-portal"></a>使用 Azure 门户将 Azure 公共 IP 移到另一个区域
+# <a name="move-azure-public-ip-configuration-to-another-region-using-the-azure-portal"></a>使用 Azure 门户将 Azure 公共 IP 配置移到另一个区域
 
-在多种情况下，你可能希望将现有的 Azure 公共 IP 从一个区域移到另一个区域。 例如，可能需要创建一个具有相同配置和 SKU 的公共 IP，以便进行测试。 还可能需要按照灾难恢复规划将公共 IP 移到另一个区域。
+在许多场景中，你希望将现有 Azure 公共 IP 区域从一个区域移动到另一个区域。 例如，可能需要创建一个具有相同配置和 SKU 的公共 IP，以便进行测试。 还可能需要按照灾难恢复规划将公共 IP 移到另一个区域。
 
-Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 但是，可以使用 Azure 资源管理器模板来导出公共 IP 的现有配置。  然后，可以将资源暂存在另一区域，方法是：将公共 IP 导出到模板，根据目标区域的情况修改参数，然后将模板部署到新区域。  有关资源管理器和模板的详细信息，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
+Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 但是，可以使用 Azure 资源管理器模板来导出公共 IP 的现有配置。  然后，可将资源暂存在另一区域，方法是：将公共 IP 导出到模板，根据目标区域的情况修改参数，然后将模板部署到新区域。  有关资源管理器和模板的详细信息，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,20 +31,20 @@ Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 
 
 - 确定源网络布局和当前正在使用的所有资源。 此布局包括但不限于负载均衡器、网络安全组 (NSG) 和虚拟网络。
 
-- 验证 Azure 订阅是否允许在已使用的目标区域中创建公共 IP。 请联系支持部门，启用所需配额。
+- 验证 Azure 订阅是否允许在使用的目标区域中创建公司 IP。 请联系支持部门，启用所需配额。
 
-- 确保订阅提供足够的资源，以便为此过程添加公共 IP。  请参阅 [Azure 订阅和服务限制、配额和约束](/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
+- 确保订阅提供足够的资源，以便为此过程添加公共 IP。  请参阅 [Azure 订阅和服务限制、配额和约束](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)。
 
 ## <a name="prepare-and-move"></a>准备并移动
 以下步骤说明如何使用资源管理器模板准备公共 IP，以进行配置移动，并使用 Azure 门户将公共 IP 配置移到目标区域。
 
 ### <a name="export-the-template-and-deploy-from-a-script"></a>通过脚本导出模板并进行部署
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)  >  选择“资源组”。 
+1. 登录到 [Azure 门户](https://portal.azure.cn)  >  选择“资源组”。
 2. 找到包含源公共 IP 的资源组并单击它。
-3. 选择“设置” > “导出模板”。  
-4. 在“导出模板”边栏选项卡中选择“部署”。  
-5. 单击“模板” > “编辑参数”，在在线编辑器中打开 parameters.json 文件。   
+3. 选择“设置” > “导出模板”。 
+4. 在“导出模板”边栏选项卡中选择“部署”。
+5. 单击“模板” > “编辑参数”，在在线编辑器中打开 parameters.json 文件。  
 8. 若要编辑公共 IP 名称的参数，请将源公共 IP 名称中 **parameters** > **value** 下的属性更改为目标公共 IP 的名称（请务必将名称括在引号中）：
 
     ```json
@@ -59,9 +59,9 @@ Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 
     }
 
     ```
-8. 在编辑器中单击“保存”。 
+8. 在编辑器中单击“保存”。
 
-9. 单击“模板” > “编辑模板”，在在线编辑器中打开 template.json 文件。   
+9. 单击“模板” > “编辑模板”，在在线编辑器中打开 template.json 文件。  
 
 10. 若要编辑要将公共 IP 移到其中的目标区域，请更改 **resources** 下的 **location** 属性：
 
@@ -110,9 +110,9 @@ Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 
             },
         ```
 
-        若要详细了解基本的和标准的 sku 公共 IP 的区别，请参阅[创建、更改或删除公共 IP 地址](/virtual-network/virtual-network-public-ip-address)：
+        若要详细了解基本的和标准的 sku 公共 IP 的区别，请参阅[创建、更改或删除公共 IP 地址](./virtual-network-public-ip-address.md)：
 
-    * **公共 IP 分配方法**和**空闲超时** - 可以在模板中更改这两个选项，只需将 **publicIPAllocationMethod** 属性从 **Dynamic** 更改为 **Static** 或从 **Static** 更改为 **Dynamic** 即可。 若要更改空闲超时，可以将 **idleTimeoutInMinutes** 属性更改为所需时间。  默认为 **4**：
+    * **公共 IP 分配方法** 和 **空闲超时** - 可以在模板中更改这两个选项，只需将 **publicIPAllocationMethod** 属性从 **Dynamic** 更改为 **Static** 或从 **Static** 更改为 **Dynamic** 即可。 若要更改空闲超时，可以将 **idleTimeoutInMinutes** 属性更改为所需时间。  默认为 **4**：
 
         ```json
         "resources": [
@@ -136,35 +136,35 @@ Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 
 
         ```
 
-        若要详细了解分配方法和空闲超时值，请参阅[创建、更改或删除公共 IP 地址](/virtual-network/virtual-network-public-ip-address)。
+        若要详细了解分配方法和空闲超时值，请参阅[创建、更改或删除公共 IP 地址](./virtual-network-public-ip-address.md)。
 
-13. 在在线编辑器中单击“保存”。 
+13. 在在线编辑器中单击“保存”。
 
-14. 单击“基本信息” > “订阅”，以选择要将目标公共 IP 部署到的订阅。  
+14. 单击“基本信息” > “订阅”，以选择要将目标公共 IP 部署到的订阅。 
 
-15. 单击“基本信息” > “资源组”，以选择要将目标公共 IP 部署到的资源组。    可以单击“新建”来为目标公共 IP 创建新的资源组。   确保所选名称与现有源公共 IP 的源资源组不同。
+15. 单击“基本信息” > “资源组”，以选择要将目标公共 IP 部署到的资源组。   可以单击“新建”来为目标公共 IP 创建新的资源组。  确保所选名称与现有源公共 IP 的源资源组不同。
 
-16. 确认“基本信息” > “位置”是否设置为要将公共 IP 部署到的目标位置。  
+16. 确认“基本信息” > “位置”是否设置为要将公共 IP 部署到的目标位置。 
 
-17. 在“设置”下，确认名称是否与先前在 parameters 编辑器中输入的名称相匹配。 
+17. 在“设置”下，确认名称是否与先前在 parameters 编辑器中输入的名称相匹配。
 
-18. 选中“条款和条件”下的框。 
+18. 选中“条款和条件”下的框。
 
-19. 单击“购买”按钮部署目标公共 IP。 
+19. 单击“购买”按钮部署目标公共 IP。
 
 ## <a name="discard"></a>弃用
 
-若要丢弃目标公共 IP，请删除包含目标公共 IP 的资源组。  为此，请从门户上的仪表板中选择该资源组，然后选择概述页顶部的“删除”。 
+若要丢弃目标公共 IP，请删除包含目标公共 IP 的资源组。  为此，请从门户上的仪表板中选择该资源组，然后选择概述页顶部的“删除”。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
-若要提交更改并完成公共 IP 的移动，请删除源公共 IP 或资源组。 为此，请从门户上的仪表板中选择该公共 IP 或资源组，然后选择每个页面顶部的“删除”。 
+若要提交更改并完成公共 IP 的移动，请删除源公共 IP 或资源组。 为此，请从门户上的仪表板中选择该公共 IP 或资源组，然后选择每个页面顶部的“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 
 在本教程中，我们将 Azure 公共 IP 从一个区域移到了另一个区域，并清理了源资源。  若要详细了解如何在区域之间移动资源，以及如何在 Azure 中进行灾难恢复，请参阅：
 
-- [将资源移到新资源组或订阅中](/azure-resource-manager/resource-group-move-resources)
-- [将 Azure VM 移到另一区域](/site-recovery/azure-to-azure-tutorial-migrate)
+- [将资源移到新资源组或订阅中](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [将 Azure VM 移到另一区域](../site-recovery/azure-to-azure-tutorial-migrate.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

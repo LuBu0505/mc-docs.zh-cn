@@ -10,16 +10,16 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 origin.date: 03/05/2020
 author: rockboyfor
-ms.date: 10/05/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: ddb75efbee8bc47c907f8036c67efc5eb3b8729a
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: be7ed80298c5168402cc349dc3cb0c33c955eb21
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508031"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055239"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建虚拟网络
 
@@ -27,7 +27,7 @@ ms.locfileid: "96508031"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 具有活动订阅的 Azure 帐户。 [创建一个试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+* 具有活动订阅的 Azure 帐户。 [创建试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -35,11 +35,11 @@ ms.locfileid: "96508031"
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-1. 在 Azure 门户菜单中，选择“创建资源”。 在 Azure 市场中，选择“网络” > “虚拟网络” 。
+1. 在 Azure 门户菜单中，选择“创建资源”  。 在 Azure 市场中，选择“网络” > “虚拟网络” 。
 
 1. 在“创建虚拟网络”中，输入或选择以下信息：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     | 订阅 | 选择订阅。|
     | 资源组 | 选择“新建”，输入 myResourceGroup，然后选择“确定”。 |
@@ -64,11 +64,11 @@ ms.locfileid: "96508031"
 
 1. 在 Azure 门户菜单中，选择“创建资源”  。
 
-1. 在 Azure 市场中，在“新建”  页的“搜索市场”  筛选框中，键入“Windows Server 2019 Datacenter”  ，然后单击 Enter 键并在搜索结果中选择“Windows Server 2019 Datacenter”  。
+1. 在 Azure 市场中，在“新建”页的“搜索市场”筛选框中，键入“Windows Server 2019 Datacenter”，选择 Enter 键，然后在搜索结果中选择“Windows Server 2019 Datacenter”。
     
     <!--MOONCAKE: Customize Virtual Machines to suit with Mooncake-->
     
-1. 在“创建虚拟机 - 基本信息”  中，输入或选择以下信息：
+1. 在“创建虚拟机 - 基本信息”中，输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
@@ -153,7 +153,7 @@ ms.locfileid: "96508031"
     > [!NOTE]
     > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据 。
 
-1. 选择“确定”  。
+1. 选择“确定”。
 
 1. 可能会在登录时收到证书警告。 如果收到证书警告，请选择“确定”或“继续” 。
 
@@ -233,5 +233,5 @@ ms.locfileid: "96508031"
 
 默认情况下，Azure 允许在 VM 之间进行安全通信。 Azure 只允许从 Internet 到 Windows VM 的入站远程桌面连接。 若要详细了解 VM 网络通信类型，请参阅[筛选网络流量](tutorial-filter-network-traffic.md)。
 
-<!--Not Available on /cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn-->
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--NOT AVAILABLE ON [quickstart on analyzing your costs](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)-->
+<!--Update_Description: update meta properties, wording update, update link-->

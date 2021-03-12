@@ -12,16 +12,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 origin.date: 04/25/2018
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 858c1561f8606f1b06f6f55b8c1c8e29d2368156
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 1152171652366a93b60f7ee4f095a1be637346bb
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856719"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055220"
 ---
 <!--Verify successfully-->
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 2
@@ -59,7 +59,7 @@ ms.locfileid: "97856719"
 * 建议不要运行将导致 VM 代理停止或更新的脚本。 这可能会使扩展处于“正在转换”状态，导致超时。
 * 如果脚本会导致重启，则安装应用程序并运行脚本等。应该使用 Cron 作业或者使用 DSC 或 Chef、Puppet 扩展等工具来计划重启。
 * 该扩展只会运行一个脚本一次，如果想要在每次启动时运行一个脚本，则可以使用 [cloud-init 映像](../linux/using-cloud-init.md)和 [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) 模块。 或者，可以使用脚本创建 SystemD 服务单元。
-* 只能向 VM 应用一个扩展版本。 若要运行另一个自定义脚本，需要删除自定义脚本扩展，并使用更新的脚本再次重新应用该扩展。 
+* 只能向 VM 应用一个扩展版本。 若要运行另一个自定义脚本，可以使用新配置更新现有扩展。 或者，可以删除自定义脚本扩展，并使用更新的脚本再次重新应用该扩展。
 * 如果想要计划脚本何时运行，应使用扩展创建一个 Cron 作业。 
 * 脚本运行时，Azure 门户或 CLI 中只会显示“正在转换”扩展状态。 如果希望更频繁地更新正在运行的脚本的状态，需要创建自己的解决方案。
 * 自定义脚本扩展本身不支持代理服务器，但可以使用脚本中支持代理服务器的文件传输工具，如 Curl。 
@@ -130,7 +130,7 @@ ms.locfileid: "97856719"
 ### <a name="property-value-details"></a>属性值详细信息
 * `apiVersion`：可以通过 Azure CLI 使用以下命令找到最新的 apiVersion`az provider list -o json`
     
-    <!--Not Available on [Resource Explorer](https://resources.azure.com/)-->
+    <!--NOT AVAIALBLE on [Resource Explorer](https://resources.azure.com/)-->
     
 * `skipDos2Unix`：（可选，布尔值）跳过对基于脚本的文件 URL 或脚本进行的 dos2unix 转换。
 * `timestamp`（可选，32 位整数）仅当需要更改此字段的值来触发脚本的重新运行时，才使用此字段。  任何整数值都是可以接受的，前提是必须不同于以前的值。
@@ -234,7 +234,7 @@ CustomScript（2.1 版及更高版本）支持使用[托管标识](../../active-
 
 若要在目标 VM/VMSS 上使用用户分配的标识，请将“managedidentity”字段配置为托管标识的客户端 ID 或对象 ID。
 
-> 示例:
+> 示例：
 >
 > ```json
 > {
@@ -258,7 +258,8 @@ CustomScript（2.1 版及更高版本）支持使用[托管标识](../../active-
 可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 可以将上一部分详述的 JSON 架构用在 Azure Resource Manager 模板中，以便在 Azure Resource Manager 模板部署期间运行自定义脚本扩展。 若需包含自定义脚本扩展的示例模板，可访问 [GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)。
 
 <!--MOONCAKE: IMPORTANT:  Setting contain "fileUris" and protectedSettings contain "commandToExecute"-->
-<!--Review Last on 04/26/2020-->
+<!--WE HAVE CONFIRM WITH GITHUB.COM LINK WITH https://github.com/microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json-->
+<!--Review Last on 02/23/2021-->
 
 ```json
 {
@@ -511,4 +512,4 @@ az vm extension list -g myResourceGroup --vm-name myVM
 ## <a name="next-steps"></a>后续步骤
 若要查看代码、当前问题和版本，请参阅 [custom-script-extension-linux 存储库](https://github.com/Azure/custom-script-extension-linux)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

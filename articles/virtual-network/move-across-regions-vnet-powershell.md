@@ -1,24 +1,24 @@
 ---
 title: 使用 Azure PowerShell 将 Azure 虚拟网络移到另一个 Azure 区域
 description: 使用资源管理器模板和 Azure PowerShell 将 Azure 虚拟网络从一个 Azure 区域移到另一个区域。
-author: rockboyfor
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 origin.date: 08/26/2019
-ms.date: 04/13/2020
+author: rockboyfor
+ms.date: 02/22/2021
 ms.author: v-yeche
-ms.openlocfilehash: 3db7fed8987d9d093afd1c2e2de4441c5b4d5126
-ms.sourcegitcommit: 564739de7e63e19a172122856ebf1f2f7fb4bd2e
+ms.openlocfilehash: d7638d9cf3fcf319315c97bdde7e9deb47bed861
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82093280"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053979"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>使用 Azure PowerShell 将 Azure 虚拟网络移到另一个区域
 
 将现有 Azure 虚拟网络从一个区域移到另一个区域的方案有多种。 例如，可以创建一个与现有虚拟网络使用相同测试和可用性配置的虚拟网络。 或者，可以将生产虚拟网络移到另一个区域，作为灾难恢复计划的一部分。
 
-可以使用 Azure 资源管理器模板来完成将虚拟网络移到另一个区域的过程。 为此，可将虚拟网络导出到某个模板，根据目标区域修改参数，然后将该模板部署到新区域。 有关资源管理器模板的详细信息，请参阅[将资源组导出到模板](/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)。
+可以使用 Azure 资源管理器模板来完成将虚拟网络移到另一个区域的过程。 为此，可将虚拟网络导出到某个模板，根据目标区域修改参数，然后将该模板部署到新区域。 有关资源管理器模板的详细信息，请参阅[将资源组导出到模板](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,7 +32,7 @@ ms.locfileid: "82093280"
 
 - 验证 Azure 订阅是否允许在目标区域中创建虚拟网络。 若要启用所需配额，请联系支持部门。
 
-- 确保订阅提供足够的资源，以支持在此过程中添加虚拟网络。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
+- 确保订阅提供足够的资源，以支持在此过程中添加虚拟网络。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)。
 
 ## <a name="prepare-for-the-move"></a>准备移动
 在本部分，你将使用资源管理器模板来准备好要移动的虚拟网络。 然后，使用 Azure PowerShell 命令将虚拟网络移到目标区域。
@@ -41,25 +41,25 @@ ms.locfileid: "82093280"
 
 若要使用 PowerShell 导出虚拟网络并部署目标虚拟网络，请执行以下操作：
 
-1. 使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) 命令登录到 Azure 订阅，然后按屏幕说明操作：
+1. 使用 [Connect-AzAccount -Environment AzureChinaCloud](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) 命令登录到 Azure 订阅，然后按屏幕说明操作：
 
     ```powershell
     Connect-AzAccount -Environment AzureChinaCloud
     ```
 
-1. 使用 [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0) 获取要移到目标区域的虚拟网络的资源 ID，然后将其置于一个变量中：
+1. 使用 [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) 获取要移到目标区域的虚拟网络的资源 ID，然后将其置于一个变量中：
 
     ```powershell
     $sourceVNETID = (Get-AzVirtualNetwork -Name <source-virtual-network-name> -ResourceGroupName <source-resource-group-name>).Id
     ```
 
-1. 将源虚拟网络导出到执行 [Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0) 命令时所在的目录中的某个 .json 文件：
+1. 将源虚拟网络导出到执行 [Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup) 命令时所在的目录中的某个 .json 文件：
 
     ```powershell
     Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
     ```
 
-1. 下载文件的名称与从中导出资源的资源组的名称相同。 找到使用上述命令导出的 *\<resource-group-name>.json* 文件，然后在编辑器中打开它：
+1. 下载文件的名称与从中导出资源的资源组的名称相同。 找到使用上述命令导出的 \<resource-group-name>.json 文件，然后在编辑器中打开它：
 
     ```azurepowershell
     notepad <source-resource-group-name>.json
@@ -97,15 +97,15 @@ ms.locfileid: "82093280"
 
     ```
 
-1. 若要获取区域位置代码，可以通过运行以下命令来使用 Azure PowerShell cmdlet [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0)：
+1. 若要获取区域位置代码，可以通过运行以下命令来使用 Azure PowerShell cmdlet [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation)：
 
     ```powershell
     Get-AzLocation | format-table
     ```
 
-1. （可选）还可以根据要求更改 *\<resource-group-name>.json* 文件中的其他参数：
+1. （可选）还可以根据需求更改 \<resource-group-name>.json 文件中的其他参数：
 
-    * **地址空间**：在保存该文件之前，可以更改虚拟网络的地址空间，方法是修改 **resources** > **addressSpace** 节并更改 **addressPrefixes** 属性：
+    * 地址空间：在保存该文件之前，可以通过修改 resources > addressSpace 部分并更改 addressPrefixes 属性来更改虚拟网络的地址空间   ：
 
         ```json
         "resources": [
@@ -124,7 +124,7 @@ ms.locfileid: "82093280"
                     },
         ```
 
-    * **子网**：可以通过更改该文件的 **subnets** 节来更改子网名称和子网地址空间或在其中添加内容。 可以通过更改 **name** 属性来更改子网名称。 可以通过更改 **addressPrefix** 属性来更改子网地址空间：
+    * 子网：可以通过更改该文件的 subnets 部分来更改或添加子网名称和子网地址空间 。 可以通过更改 **name** 属性来更改子网名称。 可以通过更改 **addressPrefix** 属性来更改子网地址空间：
 
         ```json
         "subnets": [
@@ -192,22 +192,22 @@ ms.locfileid: "82093280"
         ]
         ```
 
-1. 保存 *\<resource-group-name>.json* 文件。
+1. 保存 \<resource-group-name>.json 文件。
 
-1. 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) 在目标区域中为要部署的目标虚拟网络创建资源组：
+1. 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 在目标区域中为要部署的目标虚拟网络创建资源组：
 
     ```powershell
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
 
-1. 使用 [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) 将编辑的 *\<resource-group-name>.json* 文件部署到在上一步骤中创建的资源组：
+1. 通过使用 [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment)，将经过编辑的 \<resource-group-name>.json 文件部署到在上一步中创建的资源组：
 
     ```powershell
 
     New-AzResourceGroupDeployment -ResourceGroupName <target-resource-group-name> -TemplateFile <source-resource-group-name>.json
     ```
 
-1. 若要验证是否已在目标区域创建这些资源，请使用 [Get-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) 和 [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)：
+1. 若要验证是否已在目标区域创建这些资源，请使用 [Get-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup) 和 [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork)：
 
     ```powershell
 
@@ -223,25 +223,25 @@ ms.locfileid: "82093280"
 
 部署虚拟网络后，若要重新开始部署或丢弃目标区域中的虚拟网络，请删除在目标区域中创建的资源组，这样就会删除已移动的虚拟网络。 
 
-若要删除资源组，请使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)：
+若要删除资源组，请使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup)：
 
 ```powershell
 
 Remove-AzResourceGroup -Name <target-resource-group-name>
 ```
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 若要提交更改并完成虚拟网络的移动，请执行以下操作之一：
 
-* 使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) 删除资源组：
+* 使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) 删除资源组：
 
     ```powershell
 
     Remove-AzResourceGroup -Name <source-resource-group-name>
     ```
 
-* 使用 [Remove-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetwork?view=azps-2.6.0) 删除源虚拟网络：  
+* 使用 [Remove-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetwork) 删除源虚拟网络：  
     ``` azurepowershell-interactive
 
     Remove-AzVirtualNetwork -Name <source-virtual-network-name> -ResourceGroupName <source-resource-group-name>
@@ -251,7 +251,7 @@ Remove-AzResourceGroup -Name <target-resource-group-name>
 
 在本教程中，你已使用 PowerShell 将虚拟网络从一个区域移到了另一个区域，然后清理了不再需要的源资源。 若要详细了解如何在区域之间移动资源，以及如何在 Azure 中进行灾难恢复，请参阅：
 
-- [将资源移到新资源组或订阅中](/azure-resource-manager/resource-group-move-resources)
-- [将 Azure 虚拟机移到另一个区域](/site-recovery/azure-to-azure-tutorial-migrate)
+- [将资源移到新资源组或订阅中](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [将 Azure 虚拟机移到另一个区域](../site-recovery/azure-to-azure-tutorial-migrate.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

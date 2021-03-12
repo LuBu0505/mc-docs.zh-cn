@@ -6,12 +6,12 @@ origin.date: 02/17/2019
 ms.date: 11/17/2020
 ms.topic: conceptual
 ms.author: v-johya
-ms.openlocfilehash: 756eb47765af822de88df64fe66790b42943ed26
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 2f3aafcb0bc9c7e37ee7dab4cb17be379ee66856
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977365"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197217"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 备份服务器或 System Center DPM 进行备份时的支持矩阵
 
@@ -114,13 +114,18 @@ Azure 备份可以备份运行以下任何操作系统的 DPM/MABS 实例。 操
 
 ### <a name="url-access"></a>URL 访问
 
-DPM 服务器/MABS 需要以下 URL 的访问权限：
+DPM 服务器/MABS 服务器需要访问以下 URL 和 IP 地址：
 
-- `http://www.msftncsi.com/ncsi.txt`
-- `*.Microsoft.com`
-- `*.WindowsAzure.cn`
-- `*.partner.microsoftonline.cn`
-- `*.chinacloudapi.cn`
+* URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.cn`
+  * `*.partner.microsoftonline.cn`
+  * `*.chinacloudapi.cn`
+  * `www.msftconnecttest.com`
+* IP 地址
+  * 20.190.128.0/18
+  * 40.126.0.0/18：
 
 ### <a name="azure-expressroute-support"></a>Azure ExpressRoute 支持
 
@@ -128,11 +133,16 @@ DPM 服务器/MABS 需要以下 URL 的访问权限：
 
 使用公共对等互连：确保访问以下域/地址：
 
-- `http://www.msftncsi.com/ncsi.txt`
-- `microsoft.com`
-- `.WindowsAzure.cn`
-- `.partner.microsoftonline.cn`
-- `.chinacloudapi.cn`
+* URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.cn`
+  * `*.partner.microsoftonline.cn`
+  * `*.chinacloudapi.cn`
+  * `www.msftconnecttest.com`
+* IP 地址
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 使用 Microsoft 对等互连，选择以下服务/区域和相关社区值：
 

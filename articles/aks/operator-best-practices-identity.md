@@ -5,17 +5,17 @@ description: 了解有关为 Azure Kubernetes 服务 (AKS) 中的群集管理身
 services: container-service
 ms.topic: conceptual
 origin.date: 07/07/2020
-ms.date: 12/14/2020
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 author: rockboyfor
-ms.openlocfilehash: 1a24391ed671c2d005e147ae323844b409d3febb
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: d00dfb86a4a1f938357c11844592d6d9d93fe8f8
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004177"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054355"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的身份验证和授权的最佳做法
 
@@ -94,47 +94,22 @@ roleRef:
 ## <a name="use-azure-rbac"></a>使用 Azure RBAC 
 **最佳做法指导** - 使用 Azure RBAC 来定义用户或组对一个或多个订阅中 AKS 资源拥有的所需最低权限。
 
-完全操作 AKS 群集需要两个级别的访问权限： 
+完全操作 AKS 群集需要一个级别的访问权限： 
 1. 访问 Azure 订阅上的 AKS 资源。 具有此访问级别，可以使用 AKS API 来控制群集的缩放或升级，还可以拉取 kubeconfig。
     要查看如何控制对 AKS 资源和 kubeconfig 的访问权限，请参阅[限制对群集配置文件的访问](control-kubeconfig-access.md)。
 
-2. 访问 Kubernetes API。 此访问级别可通过 [Kubernetes RBAC](#use-kubernetes-role-based-access-control-kubernetes-rbac)（传统上）进行控制，或通过将 Azure RBAC 与 AKS 集成以实现 Kubernetes 授权来进行控制。
+<!--NOT AVAILABLE ON [Use Azure RBAC for Kubernetes authorization](manage-azure-rbac.md)-->
 
-    <!--Not Available on [Use Azure RBAC for Kubernetes authorization](manage-azure-rbac.md)-->
-
-## <a name="use-pod-identities"></a>使用 pod 标识
-
-**最佳做法指导** - 不要在 pod 或容器映像中使用固定的凭据，因为它们存在泄漏或滥用的风险。 应该使用 pod 标识通过中心 Azure AD 标识解决方案来自动请求访问权限。 Pod 标识仅适用于 Linux Pod 和容器映像。
-
-当 pod 需要访问其他 Azure 服务（例如 Cosmos DB、Key Vault 或 Blob 存储）时，pod 需要访问凭据。 可以使用容器映像定义这些访问凭据或将其注入为 Kubernetes 机密，但需要手动创建并分配这些凭据。 通常，凭据会在不同的 pod 之间重复使用，并且不会定期轮换。
-
-使用 Azure 资源的托管标识（目前作为关联的 AKS 开源项目来实现）可以通过 Azure AD 自动请求服务访问权限。 不要手动定义 pod 的凭据。pod 会实时请求访问令牌，并可以使用该令牌来访问仅为它们分配的服务。 在 AKS 中，群集操作员会部署两个组件，以允许 pod 使用托管标识：
-
-* **节点管理标识 (NMI) 服务器** 是在 AKS 群集中每个节点上作为守护程序集运行的 pod。 NMI 服务器侦听发送到 Azure 服务的 pod 请求。
-* **托管标识控制器 (MIC)** 是一个中心 pod，它有权查询 Kubernetes API 服务器，并检查对应于某个 pod 的 Azure 标识映射。
-
-当 pod 请求 Azure 服务访问权限时，网络规则会将流量重定向到节点管理标识 (NMI) 服务器。 NMI 服务器根据远程地址识别请求 Azure 服务访问权限的 pod，并查询托管标识控制器 (MIC)。 MIC 检查 AKS 群集中的 Azure 标识映射，然后，NMI 服务器根据 pod 的标识映射从 Azure Active Directory (AD) 请求访问令牌。 Azure AD 提供对 NMI 服务器的访问权限，该访问权限将返回给 pod。 然后，pod 可以使用此访问令牌请求对 Azure 中服务的访问权限。
-
-在以下示例中，开发人员创建使用托管标识请求 Azure SQL 数据库访问权限的 Pod：
-
-:::image type="content" source="media/operator-best-practices-identity/pod-identities.png" alt-text="pod 标识可让 pod 自动请求对其他服务的访问权限":::
-
-1. 群集操作员首先创建一个服务帐户，当 pod 请求服务访问权限时，可以使用该帐户来映射标识。
-1. 部署 NMI 服务器和 MIC，以便将访问令牌的任何 pod 请求中继到 Azure AD。
-1. 开发人员使用托管标识部署一个 pod，该 pod 可通过 NMI 服务器请求访问令牌。
-1. 该令牌将返回给 Pod，并用于访问 Azure SQL 数据库
-
-> [!NOTE]
-> 托管 Pod 标识是开源项目，Azure 技术支持部门不为其提供支持。
-
-若要使用 Pod 标识，请参阅 [Kubernetes 应用程序的 Azure Active Directory 标识][aad-pod-identity]。
-
+<!--NOT AVAILABLE ON  ## Use Pod-managed Identities-->
+<!--NOT AVAILABLE ON https://docs.azure.cn/aks/use-azure-ad-pod-identity-->
+<!--NOT AVAILABLE ON  az feature register --name EnablePodIdentityPreview --namespace Microsoft.ContainerService-->
 ## <a name="next-steps"></a>后续步骤
 
 本最佳做法文章重点介绍了群集和资源的身份验证与授权。 若要实施其中的某些最佳做法，请参阅以下文章：
 
 * [将 Azure Active Directory 与 AKS 集成][aks-aad]
-* [将 Azure 资源的托管标识与 AKS 配合使用][aad-pod-identity]
+
+<!--NOT AVAILABLE ON https://docs.azure.cn/aks/use-azure-ad-pod-identity-->
 
 有关 AKS 中的群集操作的详细信息，请参阅以下最佳做法：
 
@@ -158,4 +133,4 @@ roleRef:
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
 [azure-ad-rbac]: azure-ad-rbac.md
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

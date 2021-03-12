@@ -4,16 +4,16 @@ description: 介绍创作 Azure 资源管理器模板（ARM 模板）的建议�
 ms.topic: conceptual
 origin.date: 12/01/2020
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 08/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4aeb9d17653cd36692fcfcdbee4cd3f9f3dc3382
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 846e8986af37a5ca4baf5e88cafff3158b3b8170
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063620"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054385"
 ---
 # <a name="arm-template-best-practices"></a>ARM 模板最佳做法
 
@@ -286,6 +286,8 @@ ms.locfileid: "99063620"
 
     > [!NOTE]
     > 为了确保机密内容作为参数传递给 VM 和扩展时经过加密，请使用相关扩展的 `protectedSettings` 属性。
+
+* 为具有可能会随时间变化的默认值的属性指定显式值。 例如，如果要部署 AKS 群集，则可以指定或省略 `kubernetesVersion` 属性。 如果未指定该属性，则[该群集默认使用 N-1 次要版本和最新修补程序](../../aks/supported-kubernetes-versions.md#azure-portal-and-cli-versions)。 在使用 ARM 模板部署群集时，此默认行为可能并不是你预期的行为。 重新部署模板可能会导致群集意外升级到新的 Kubernetes 版本。 请改为考虑指定显式版本号，然后在准备好升级群集时手动更改版本号。
 
 ## <a name="use-test-toolkit"></a>使用测试工具包
 

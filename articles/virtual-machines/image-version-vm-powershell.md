@@ -1,5 +1,5 @@
 ---
-title: 从 VM 创建映像（预览版）
+title: 从 VM 创建映像
 description: 了解如何使用 Azure PowerShell，在共享映像库中从 Azure 中的现有 VM 创建映像。
 ms.topic: how-to
 ms.service: virtual-machines
@@ -7,28 +7,28 @@ ms.subservice: imaging
 ms.workload: infrastructure
 origin.date: 05/04/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.reviewer: akjosh
-ms.openlocfilehash: eae8530b07a56f8d23a0a02636b454461f50002a
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: bbb0693c1b981752df51a484ee193b2818c7c561
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857137"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054404"
 ---
 <!--Verified Successfully-->
-# <a name="preview-create-an-image-from-a-vm"></a>预览版：从 VM 创建映像
+# <a name="create-an-image-from-a-vm"></a>从 VM 创建映像
 
 如果要使用现有 VM 生成多个相同的 VM，你可以使用该 VM 在共享映像库中通过 Azure PowerShell 创建映像。 还可以使用 [Azure CLI](image-version-vm-cli.md) 从 VM 创建映像。
 
-你可以使用 Azure PowerShell 从[专用化和通用化](./windows/shared-image-galleries.md#generalized-and-specialized-images) VM 捕获映像。 
+你可以使用 Azure PowerShell 从[专用化和通用化](./shared-image-galleries.md#generalized-and-specialized-images) VM 捕获映像。 
 
 映像库中的映像具有两个组件，我们将在此示例中创建这两个组件：
-- “映像定义”包含有关映像及其使用要求的信息。 这包括该映像是 Windows 映像还是 Linux 映像、是专用映像还是通用映像，此外还包括发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 
-- 使用共享映像库时，将使用映像版本来创建 VM。 可根据环境的需要创建多个映像版本。 创建 VM 时，将使用该映像版本为 VM 创建新磁盘。 可以多次使用映像版本。
+- “映像定义”包含有关映像及其使用要求的信息。 这包括了该映像是 Windows 还是 Linux 映像、是专用映像还是通用映像、发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 
+- 使用共享映像库时，将使用 **映像版本** 来创建 VM。 可根据环境的需要创建多个映像版本。 创建 VM 时，将使用该映像版本来为 VM 创建新磁盘。 可以多次使用映像版本。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -79,7 +79,7 @@ Stop-AzVM `
 
 制作映像定义时，请确保它具有所有正确信息。 如果已通用化 VM（使用适用于 Windows 的 Sysprep，或适用于 Linux 的 waagent -deprovision），则应使用 `-OsState generalized` 创建映像定义。 如果未通用化 VM，请使用 `-OsState specialized` 创建映像定义。
 
-若要详细了解可以为映像定义指定的值，请参阅[映像定义](./windows/shared-image-galleries.md#image-definitions)。
+若要详细了解可以为映像定义指定的值，请参阅[映像定义](./shared-image-galleries.md#image-definitions)。
 
 使用 [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) 创建映像定义。 
 
@@ -136,10 +136,9 @@ $job.State
 > [!NOTE]
 > 需等待映像版本彻底生成并复制完毕，然后才能使用同一托管映像来创建另一映像版本。
 >
-> 创建映像版本时，还可以通过添加 `-StorageAccountType Premium_LRS` 在高级存储中存储映像，或者通过添加 `-StorageAccountType Standard_LRS` 在本地冗余存储中存储映像。
->
+> 创建映像版本时，还可以通过添加 `-StorageAccountType Premium_LRS` 在高级存储中存储映像。
 
-<!--CORRECT ON Locally Redundant Storage by adding `-StorageAccountType Standard_LRS`-->
+<!--NOT AVAILABLE ON Zone Redundant Storage by adding `-StorageAccountType Standard_ZRS`-->
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -147,4 +146,4 @@ $job.State
 
 有关如何提供购买计划信息的信息，请参阅[在创建映像时提供 Azure 市场购买计划信息](marketplace-images.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -1,5 +1,5 @@
 ---
-title: 通过 REST API 暂停、恢复、缩放
+title: 使用适用于专用 SQL 池（之前称为 SQL DW）的 REST API 进行暂停、恢复和缩放
 description: 通过 REST API 在 Azure Synapse Analytics 中管理专用 SQL 池（以前称为 SQL DW）的计算能力。
 services: synapse-analytics
 author: WenJason
@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 origin.date: 03/29/2019
-ms.date: 01/18/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 6c6fbc4a9381b23d7bf6031402cdf5defb7f5003
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 7a51a8f803b4b5fa22f2b1416c434563e071f667
+ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230660"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102206367"
 ---
 # <a name="rest-apis-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池（以前称为 SQL DW）的 REST API
 
@@ -25,33 +25,34 @@ ms.locfileid: "98230660"
 
 ## <a name="scale-compute"></a>缩放计算
 
-若要更改数据仓库单位，请使用[创建或更新数据库](https://docs.microsoft.com/rest/api/sql/databases/createorupdate?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) REST API。 以下示例将托管在服务器 MyServer 上的数据库 MySQLDW 的数据仓库单位设置为 DW1000。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
+若要更改数据仓库单位，请使用[创建或更新数据库](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) REST API。 以下示例将托管在服务器 MyServer 上的数据库 MySQLDW 的数据仓库单位设置为 DW1000。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
 
 ```
-PATCH https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
+PUT https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2020-08-01-preview HTTP/1.1
 Content-Type: application/json; charset=UTF-8
 
 {
-    "properties": {
-        "requestedServiceObjectiveName": "DW1000c"
+    location: "China East 2",
+    "sku": {
+    "name": "DW200c"
     }
 }
 ```
 
 ## <a name="pause-compute"></a>暂停计算
 
-若要暂停数据库，请使用[暂停数据库](https://docs.microsoft.com/rest/api/sql/databases/pause?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) REST API。 以下示例将暂停 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
+若要暂停数据库，请使用[暂停数据库](https://docs.microsoft.com/rest/api/sql/databases/pause) REST API。 以下示例将暂停 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
 
 ```
-POST https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/pause?api-version=2014-04-01-preview HTTP/1.1
+POST https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/pause?api-version=2020-08-01-preview HTTP/1.1
 ```
 
 ## <a name="resume-compute"></a>恢复计算
 
-若要启动数据库，请使用[恢复数据库](https://docs.microsoft.com/rest/api/sql/databases/resume?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) REST API。 以下示例将启动 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。 
+若要启动数据库，请使用[恢复数据库](https://docs.microsoft.com/rest/api/sql/databases/resume) REST API。 以下示例将启动 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
 
 ```
-POST https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/resume?api-version=2014-04-01-preview HTTP/1.1
+POST https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/resume?api-version=2020-08-01-preview HTTP/1.1
 ```
 
 ## <a name="check-database-state"></a>检查数据库状态
@@ -60,7 +61,7 @@ POST https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resourc
 > 数据库完成联机数据流即检查数据库状态会返回 ONLINE，导致产生连接错误。 如果你正在通过该 API 调用来触发连接尝试，可能需要在应用程序代码中添加 2 到 3 分钟的延迟。
 
 ```
-GET https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01 HTTP/1.1
+GET https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}?api-version=2020-08-01-preview
 ```
 
 ## <a name="get-maintenance-schedule"></a>获取维护计划

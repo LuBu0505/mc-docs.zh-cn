@@ -11,30 +11,30 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 12/03/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: f1aa3f6124a4bff86f54dcfbc0004198f58af23b
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: b59a0b42ecf53d5ed3d5fa562a1660b8cd38d7b6
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570668"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055258"
 ---
 # <a name="what-is-azure-virtual-network"></a>什么是 Azure 虚拟网络？
 
 Azure 虚拟网络 (VNet) 是 Azure 中专用网络的基本构建块。 VNet 允许许多类型的 Azure 资源（例如 Azure 虚拟机 (VM)）以安全方式彼此通信、与 Internet 通信，以及与本地网络通信。 VNet 类似于在你在自己的数据中心运营的传统网络，但附带了 Azure 基础设施的其他优势，例如可伸缩性、可用性和隔离性。
 
 ## <a name="why-use-an-azure-virtual-network"></a>为何要使用 Azure 虚拟网络？
-通过 Azure 虚拟网络，Azure 资源能够以安全方式彼此通信、与 Internet 通信以及与本地网络通信。 可以实现虚拟网络的关键方案包括：Azure 资源与 Internet 进行通信、Azure 资源彼此通信、与本地资源进行通信、筛选网络流量、路由网络流量以及与 Azure 服务集成。
+通过 Azure 虚拟网络，Azure 资源能够以安全方式彼此通信、与 Internet 通信以及与本地网络通信。 使用虚拟网络可实现的关键方案包括：Azure 资源与 Internet 进行通信、Azure 资源彼此通信、与本地资源进行通信、筛选网络流量、路由网络流量以及与 Azure 服务集成。
 
 ### <a name="communicate-with-the-internet"></a>与 Internet 通信
 
 默认情况下，VNet 中的所有资源都可以与 Internet 进行出站通信。 可以通过分配公共 IP 地址或公共负载均衡器来与资源进行入站通信。 还可以使用公共 IP 或公共负载均衡器来管理出站连接。  若要详细了解 Azure 中的出站连接，请参阅[出站连接](../load-balancer/load-balancer-outbound-connections.md)、[公共 IP 地址](virtual-network-public-ip-address.md)和[负载均衡器](../load-balancer/load-balancer-overview.md)。
 
 >[!NOTE]
->仅使用内部[标准负载均衡器](../load-balancer/load-balancer-standard-overview.md)时，在定义[出站连接](../load-balancer/load-balancer-outbound-connections.md)如何与实例级公共 IP 或公共负载均衡器配合使用之前，出站连接不可用。
+>仅使用内部[标准负载均衡器](../load-balancer/load-balancer-overview.md)时，在定义[出站连接](../load-balancer/load-balancer-outbound-connections.md)如何与实例级公共 IP 或公共负载均衡器配合使用之前，出站连接不可用。
 
 <a name="internet"></a>
 ### <a name="communicate-between-azure-resources"></a>Azure 资源之间的通信
@@ -59,7 +59,7 @@ Azure 资源采用下述某种方式安全地相互通信：
 
 可使用以下两个选项中任意一个或同时使用这两个方案筛选子网之间的网络流量：
 
-- 网络安全组：网络安全组和应用程序安全组可包含多个入站和出站安全规则，通过这些规则可按源和目标 IP 地址、端口和协议筛选出入资源的流量。 要了解详细信息，请参阅[网络安全组](security-overview.md#network-security-groups)或[应用程序安全组](security-overview.md#application-security-groups)。
+- 网络安全组：网络安全组和应用程序安全组可包含多个入站和出站安全规则，通过这些规则可按源和目标 IP 地址、端口和协议筛选出入资源的流量。 要了解详细信息，请参阅[网络安全组](./network-security-groups-overview.md#network-security-groups)或[应用程序安全组](./network-security-groups-overview.md#application-security-groups)。
 - **网络虚拟设备：** 虚拟网络设备是可执行网络功能（例如防火墙、WAN 优化等）的 VM。 若要查看可在虚拟网络中部署的网络虚拟设备，请参阅 [Azure 市场](https://market.azure.cn/marketplace/apps/filter?search=networking&page=1&subcategories=appliances)。
 
 <a name="routing"></a>
@@ -90,7 +90,7 @@ Azure 资源采用下述某种方式安全地相互通信：
 使用 Azure VNet 不会产生费用，它是免费的。 标准费率适用于虚拟机 (VM) 等资源和其他产品。 有关详细信息，请参阅 [VNet 定价](https://www.azure.cn/pricing/details/networking/)和 Azure [定价计算器](https://www.azure.cn/pricing/calculator/)。
 
 ## <a name="next-steps"></a>后续步骤
- - 了解 [Azure 虚拟网络概念和最佳做法](concepts-and-best-practices.md)。
- - 若要使用虚拟网络来入门，请先创建一个虚拟网络，向其部署一些 VM，然后在 VM 之间通信。 有关详细信息，请参阅[创建虚拟网络](quick-create-portal.md)快速入门。
+- 了解 [Azure 虚拟网络概念和最佳做法](concepts-and-best-practices.md)。
+- 若要使用虚拟网络来入门，请先创建一个虚拟网络，向其部署一些 VM，然后在 VM 之间通信。 有关详细信息，请参阅[创建虚拟网络](quick-create-portal.md)快速入门。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

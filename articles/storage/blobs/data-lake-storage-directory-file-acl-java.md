@@ -1,39 +1,41 @@
 ---
-title: 用于文件和 ACL 的 Azure Data Lake Storage Gen2 Java SDK
-description: 使用用于 Java 的 Azure 存储库在启用了分层命名空间 (HNS) 的存储帐户中管理目录和文件以及目录访问控制列表 (ACL)。
+title: 使用 Java 管理 Azure Data Lake Storage Gen2 中的数据
+description: 使用适用于 Java 的 Azure 存储库在启用了分层命名空间的存储帐户中管理目录和文件。
 author: WenJason
 ms.service: storage
-origin.date: 01/11/2021
-ms.date: 02/08/2021
+origin.date: 02/17/2021
+ms.date: 03/08/2021
 ms.custom: devx-track-java
 ms.author: v-jay
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 6c08dd63588ebd855ad190d44c2322f988e90844
-ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
+ms.openlocfilehash: 16c22f3e76b8feb595d7356b360c5f9d51dd90ad
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99504010"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196314"
 ---
-# <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Java 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
+# <a name="use-java-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>使用 Java 管理 Azure Data Lake Storage Gen2 中的目录和文件
 
-本文介绍了如何使用 Java 在启用了分层命名空间 (HNS) 的存储帐户中创建和管理目录、文件与权限。 
+本文介绍如何使用 Java 在具有分层命名空间的存储帐户中创建和管理目录与文件。
+
+若要了解如何获取、设置和更新目录与文件的访问控制列表 (ACL)，请参阅[使用 Java 管理 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-java.md)。
 
 [包 (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake) | [API 参考](https://docs.microsoft.com/java/api/overview/azure/storage-file-datalake-readme) | [提供反馈](https://github.com/Azure/azure-sdk-for-java/issues)
 
 ## <a name="prerequisites"></a>先决条件
 
-> [!div class="checklist"]
-> * Azure 订阅。 请参阅[获取 Azure 试用版](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
-> * 一个已启用分层命名空间 (HNS) 的存储帐户。 按[这些](../common/storage-account-create.md)说明创建一个。
+- Azure 订阅。 请参阅[获取 Azure 试用版](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+
+- 一个已启用分层命名空间的存储帐户。 按[这些](create-data-lake-storage-account.md)说明创建一个。
 
 ## <a name="set-up-your-project"></a>设置项目
 
 若要开始，请打开[此页](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)，找到最新版本的 Java 库。 然后，在文本编辑器中打开 pom.xml 文件。 添加引用该版本的依赖项元素。
 
-如果计划使用 Azure Active Directory (AD) 验证客户端应用程序，可将依赖项添加到 Azure 机密客户端库。 请参阅[将机密客户端库包添加到项目](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity#adding-the-package-to-your-project)。
+如果计划通过使用 Azure Active Directory (Azure AD) 来验证客户端应用程序，请将依赖项添加到 Azure 机密客户端库。 请参阅[将机密客户端库包添加到项目](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity#adding-the-package-to-your-project)。
 
 接下来，将这些 import 语句添加到代码文件。
 
@@ -57,7 +59,7 @@ import com.azure.storage.file.datalake.models.RolePermissions;
 import com.azure.storage.file.datalake.options.PathSetAccessControlRecursiveOptions;
 ```
 
-## <a name="connect-to-the-account"></a>连接到帐户 
+## <a name="connect-to-the-account"></a>连接到帐户
 
 若要使用本文中的代码片段，需创建一个表示存储帐户的 **DataLakeServiceClient** 实例。 
 
@@ -109,7 +111,6 @@ static public DataLakeServiceClient GetDataLakeServiceClient
 
 > [!NOTE]
 > 有关更多示例，请参阅[适用于 Java 的 Azure 标识客户端库](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity)文档。
-
 
 ## <a name="create-a-container"></a>创建容器
 
@@ -303,111 +304,6 @@ public void ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient){
 
 }
 ```
-
-## <a name="manage-access-control-lists-acls"></a>管理访问控制列表 (ACL)
-
-可以获取、设置和更新目录与文件的访问权限。
-
-> [!NOTE]
-> 若要使用 Azure Active Directory (Azure AD) 来授予访问权限，请确保已为安全主体分配了[存储 Blob 数据所有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改它们所带来的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](./data-lake-storage-access-control.md)。
-
-### <a name="manage-a-directory-acl"></a>管理目录 ACL
-
-此示例获取并设置名为 `my-directory` 的目录的 ACL。 此示例为拥有用户提供读取、写入和执行权限，为拥有组授予读取和执行权限，并为所有其他用户提供读取访问权限。
-
-> [!NOTE]
-> 如果你的应用程序通过使用 Azure Active Directory (Azure AD) 来授予访问权限，请确保已向应用程序用来授权访问的安全主体分配了[存储 Blob 数据所有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改它们所带来的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](./data-lake-storage-access-control.md)。
-
-```java
-public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient){
-
-      DataLakeDirectoryClient directoryClient =
-        fileSystemClient.getDirectoryClient("");
-
-      PathAccessControl directoryAccessControl =
-          directoryClient.getAccessControl();
-
-      List<PathAccessControlEntry> pathPermissions = directoryAccessControl.getAccessControlList();
-     
-      System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
-           
-      RolePermissions groupPermission = new RolePermissions();
-      groupPermission.setExecutePermission(true).setReadPermission(true);
-
-      RolePermissions ownerPermission = new RolePermissions();
-      ownerPermission.setExecutePermission(true).setReadPermission(true).setWritePermission(true);
-
-      RolePermissions otherPermission = new RolePermissions();
-      otherPermission.setReadPermission(true);
-
-      PathPermissions permissions = new PathPermissions();
-
-      permissions.setGroup(groupPermission);
-      permissions.setOwner(ownerPermission);
-      permissions.setOther(otherPermission);
-
-      directoryClient.setPermissions(permissions, null, null);
-
-      pathPermissions = directoryClient.getAccessControl().getAccessControlList();
-   
-      System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
-
-  }
-
-```
-
-还可以获取和设置容器根目录的 ACL。 若要获取根目录，请将空字符串 (`""`) 传递到“DataLakeFileSystemClient.getDirectoryClient”方法。
-
-### <a name="manage-a-file-acl"></a>管理文件 ACL
-
-此示例获取并设置名为 `upload-file.txt` 的文件的 ACL。 此示例为拥有用户提供读取、写入和执行权限，为拥有组授予读取和执行权限，并为所有其他用户提供读取访问权限。
-
-> [!NOTE]
-> 如果你的应用程序通过使用 Azure Active Directory (Azure AD) 来授予访问权限，请确保已向应用程序用来授权访问的安全主体分配了[存储 Blob 数据所有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改它们所带来的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](./data-lake-storage-access-control.md)。
-
-```java
-public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
-
-     DataLakeDirectoryClient directoryClient =
-       fileSystemClient.getDirectoryClient("my-directory");
-
-     DataLakeFileClient fileClient = 
-       directoryClient.getFileClient("uploaded-file.txt");
-
-     PathAccessControl fileAccessControl =
-         fileClient.getAccessControl();
-
-   List<PathAccessControlEntry> pathPermissions = fileAccessControl.getAccessControlList();
-  
-   System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
-        
-   RolePermissions groupPermission = new RolePermissions();
-   groupPermission.setExecutePermission(true).setReadPermission(true);
-
-   RolePermissions ownerPermission = new RolePermissions();
-   ownerPermission.setExecutePermission(true).setReadPermission(true).setWritePermission(true);
-
-   RolePermissions otherPermission = new RolePermissions();
-   otherPermission.setReadPermission(true);
-
-   PathPermissions permissions = new PathPermissions();
-
-   permissions.setGroup(groupPermission);
-   permissions.setOwner(ownerPermission);
-   permissions.setOther(otherPermission);
-
-   fileClient.setPermissions(permissions, null, null);
-
-   pathPermissions = fileClient.getAccessControl().getAccessControlList();
-
-   System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
-
- }
-```
-
-### <a name="set-an-acl-recursively"></a>以递归方式设置 ACL
-
-你可以为父目录的现有子项以递归方式添加、更新和删除 ACL，而不必为每个子项单独进行这些更改。 有关详细信息，请参阅[以递归方式为 Azure Data Lake Storage Gen2 设置访问控制列表 (ACL)](recursive-access-control-lists.md)。
 
 ## <a name="see-also"></a>另请参阅
 

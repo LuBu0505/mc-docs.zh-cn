@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 11/08/2019
-ms.openlocfilehash: 8926aa7324c47629f344c6980d294be3ff527b2f
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 540cbab55c49e9a1dae307511de3f55dffe59a8e
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300924"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196843"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Azure HDInsight 中的身份验证问题
 
@@ -38,7 +38,7 @@ Azure AD 错误代码 50126 表示租户尚未设置 `AllowCloudPasswordValidati
 
 ### <a name="resolution"></a>解决方法
 
-Azure AD 租户的公司管理员应该允许 Azure AD 为 ADFS 支持的用户使用密码哈希。  应用 `AllowCloudPasswordValidationPolicy`，如[在 HDInsight 中使用企业安全性套餐](../domain-joined/apache-domain-joined-architecture.md)一文所示。
+Azure AD 租户的全局管理员应该允许 Azure AD 为 ADFS 支持的用户使用密码哈希。  应用 `AllowCloudPasswordValidationPolicy`，如[在 HDInsight 中使用企业安全性套餐](../domain-joined/apache-domain-joined-architecture.md)一文所示。
 
 ---
 

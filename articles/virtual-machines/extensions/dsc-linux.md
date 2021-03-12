@@ -2,7 +2,6 @@
 title: 适用于 Linux 的 Azure DSC 扩展
 description: 安装 OMI 和 DSC 包，以便能够使用 Desired State Configuration 来配置 Azure Linux VM。
 services: virtual-machines-linux
-manager: carmonm
 ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.subservice: extensions
@@ -11,23 +10,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 origin.date: 06/12/2018
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 80472c27a242ca9afabc3b79dbf09d207cbbbb58
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: e6833615508e63400f57b375f8dc12911792399a
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857000"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055301"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>适用于 Linux 的 DSC 扩展 (Microsoft.OSTCExtensions.DSCForLinux)
 
 Desired State Configuration (DSC) 是一个管理平台，可让你使用“配置即代码”来管理 IT 和开发基础结构。
 
 > [!NOTE]
-> 适用于 Linux 的 DSC 扩展和[适用于 Linux 的 Azure Monitor 虚拟机扩展](./oms-linux.md)当前存在冲突，并在并列配置中不受支持。 不要在同一 VM 上同时使用这两个解决方案。
+> 适用于 Linux 的 DSC 扩展和[适用于 Linux 的 Log Analytics 虚拟机扩展](./oms-linux.md)当前存在冲突，并在并列配置中不受支持。 不要在同一 VM 上同时使用这两个解决方案。
 
 DSCForLinux 扩展由 Azure 发布并提供支持。 该扩展在 Azure 虚拟机上安装 OMI 和 DSC 代理。 DSC 扩展还能执行以下操作：
 
@@ -50,7 +49,7 @@ DSCForLinux 扩展由 Azure 发布并提供支持。 该扩展在 Azure 虚拟�
 DSCForLinux 扩展要求目标虚拟机已连接到 Internet。 例如，Register 扩展要求连接到自动化服务。
 对于其他操作（例如 Pull），Install 扩展要求连接到 Azure 存储和 GitHub。 它依赖于客户提供的设置。
 
-<!--Delete a 'Pull' from Azure Global-->
+<!--Delete a DUPLCATED 'Pull' from Azure Global-->
 
 ## <a name="extension-schema"></a>扩展架构
 
@@ -83,6 +82,7 @@ DSCForLinux 扩展要求目标虚拟机已连接到 Internet。 例如，Registe
 ## <a name="scenarios"></a>方案
 
 ### <a name="register-an-azure-automation-account"></a>注册 Azure 自动化帐户
+
 protected.json
 ```json
 {
@@ -202,14 +202,18 @@ $publicConfig = '{
 ```
 
 ### <a name="apply-a-meta-mof-configuration-file-in-public-storage-to-the-vm"></a>将元 MOF 配置文件（在公共存储中）应用到 VM
+
 public.json
+
 ```json
 {
   "FileUri": "<meta-mof-file-uri>",
   "ExtensionAction": "Pull"
 }
 ```
+
 PowerShell 格式
+
 ```powershell
 $publicConfig = '{
   "FileUri": "<meta-mof-file-uri>",
@@ -218,7 +222,9 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-a-zip-file-in-an-azure-storage-account-to-the-vm"></a>将自定义资源模块（Azure 存储帐户中的 zip 文件）安装到 VM
+
 protected.json
+
 ```json
 {
   "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
@@ -226,7 +232,9 @@ protected.json
   "StorageAccountKey": "<storage-account-key>"
 }
 ```
+
 public.json
+
 ```json
 {
   "ExtensionAction": "Install",
@@ -249,14 +257,19 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-a-zip-file-in-public-storage-to-the-vm"></a>将自定义资源模块（公共存储中的 zip 文件）安装到 VM
+
 public.json
+
 ```json
 {
   "ExtensionAction": "Install",
   "FileUri": "<resource-zip-file-uri>"
 }
+
 ```
+
 PowerShell 格式
+
 ```powershell
 $publicConfig = '{
   "ExtensionAction": "Install",
@@ -265,14 +278,18 @@ $publicConfig = '{
 ```
 
 ### <a name="remove-a-custom-resource-module-from-the-vm"></a>从 VM 中删除自定义资源模块
+
 public.json
+
 ```json
 {
   "ResourceName": "<resource-name>",
   "ExtensionAction": "Remove"
 }
 ```
+
 PowerShell 格式
+
 ```powershell
 $publicConfig = '{
   "ResourceName": "<resource-name>",
@@ -291,6 +308,7 @@ $publicConfig = '{
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
 
 ### <a name="use-azure-cliazure-cli"></a>使用 [Azure CLI][azure-cli]
+
 在部署 DSCForLinux 扩展之前，请根据第 3 部分中所述的不同方案配置 `public.json` 和 `protected.json`。
 
 #### <a name="classic"></a>经典
@@ -298,33 +316,40 @@ $publicConfig = '{
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 经典部署模式也称为 Azure 服务管理模式。 可运行以下命令切换到该模式：
+
 ```
 $ azure config mode asm
 ```
 
 可运行以下命令部署 DSCForLinux 扩展：
+
 ```
 $ azure vm extension set <vm-name> DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
 
 若要了解最新可用的扩展版本，请运行：
+
 ```
 $ azure vm extension list
 ```
 
 #### <a name="resource-manager"></a>Resource Manager
+
 可运行以下命令切换到 Azure 资源管理器模式：
+
 ```
 $ azure config mode arm
 ```
 
 可运行以下命令部署 DSCForLinux 扩展：
+
 ```
 $ azure vm extension set <resource-group> <vm-name> \
 DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
+
 > [!NOTE]
 > 在 Azure 资源管理器模式下，`azure vm extension list` 目前不可用。
 >
@@ -350,6 +375,7 @@ $version = '< version>'
 ```
 
 根据上面部分所述的不同方案更改 $privateConfig 和 $publicConfig 的内容。
+
 ```
 $privateConfig = '{
   "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
@@ -365,7 +391,7 @@ $publicConfig = '{
 }'
 ```
 
-```
+```powershell
 Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher `
   -Version $version -PrivateConfiguration $privateConfig `
   -PublicConfiguration $publicConfig | Update-AzureVM
@@ -393,6 +419,7 @@ $version = '< version>'
 ```
 
 根据上面部分所述的不同方案更改 $privateConfig 和 $publicConfig 的内容。
+
 ```
 $privateConfig = '{
   "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
@@ -408,7 +435,7 @@ $publicConfig = '{
 }'
 ```
 
-```
+```powershell
 Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location `
   -Name $extensionName -Publisher $publisher -ExtensionType $extensionName `
   -TypeHandlerVersion $version -SettingString $publicConfig -ProtectedSettingString $privateConfig
@@ -416,7 +443,7 @@ Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>疑难解答
+### <a name="troubleshoot"></a>故障排除
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure CLI 运行以下命令。
 
@@ -440,6 +467,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 <!--CORRECT ON LINK REFERENECE ABOVE-->
 
 ## <a name="next-steps"></a>后续步骤
+
 有关扩展的详细信息，请参阅[适用于 Linux 的虚拟机扩展和功能](features-linux.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.workload: infrastructure
 origin.date: 09/27/2018
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: acb297ced7cf322ad99f5f63c2d09b993815d909
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: 87951297cd65fa22708cbccdaba287a031b5371a
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570492"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055271"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>教程：监视 Azure 中的 Windows 虚拟机
 
@@ -32,18 +32,18 @@ Azure 监视使用代理从 Azure VM 收集启动和性能数据，将此数据�
 > * 查看 VM 主机指标
 > * 创建警报
 
-<!--Not Available on > * Enable Azure Monitor for VMs-->
-<!--Not Available on > * View VM performance metrics-->
+<!--NOT AVAILABLE ON > * Enable Azure Monitor for VMs-->
+<!--NOT AVAILABLE ON > * View VM performance metrics-->
 
 ## <a name="launch-azure-local-shell"></a>启动 Azure 本地 Shell
 
-打开 Azure Powershell 控制台，以管理员权限运行下面列出的脚本。
+打开 Azure Powershell 控制台，并以管理员权限运行下面列出的脚本。
 
 <!--Not Available on Azure Cloud Shell-->
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 
-若要在本教程中配置 Azure 监视和更新管理，需要 Azure 中的 Windows VM。 首先，使用 [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) 设置 VM 的管理员用户名和密码：
+若要在本教程中配置 Azure 监视和更新管理，需要 Azure 中的 Windows VM。 首先，使用 [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential) 设置 VM 的管理员用户名和密码：
 
 ```powershell
 $cred = Get-Credential
@@ -80,12 +80,11 @@ Windows VM 在 Azure 中有一个与它交互的专用主机 VM。 系统会自�
 
     :::image type="content" source="./media/tutorial-monitoring/tutorial-monitor-host-metrics.png" alt-text="查看主机指标":::
 
-<!--Not Available on ## Enable advanced monitoring-->
-<!--Not Available on  **Insights (preview)** till 08/24/2020-->
+<!--NOT AVAILABLE ON ## Enable advanced monitoring-->
+<!--NOT AVAILABLE ON  **Insights (preview)** till 02/24/2021-->
 
-<!--Not Available on ## View VM performance metrics-->
-
-<!--Not Available on  **Insights (preview)**-->
+<!--NOT AVAILABLE ON ## View VM performance metrics-->
+<!--NOT AVAILABLE ON  **Insights (preview)**-->
 
 ## <a name="create-alerts"></a>创建警报
 
@@ -116,12 +115,12 @@ Windows VM 在 Azure 中有一个与它交互的专用主机 VM。 系统会自�
 > * 查看主机指标
 > * 创建警报
 
-<!--Not Available on > * Enable Azure Monitor for VMs-->
-<!--Not Available on > * View VM performance metrics-->
+<!--NOT AVAILABLE ON > * Enable Azure Monitor for VMs-->
+<!--NOT AVAILABLE ON > * View VM performance metrics-->
 
 请转到下一教程来了解 Azure 安全中心。
 
 > [!div class="nextstepaction"]
 > [管理 VM 安全性](../../security/fundamentals/overview.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

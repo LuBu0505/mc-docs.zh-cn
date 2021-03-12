@@ -3,18 +3,17 @@ title: 在 Azure Kubernetes 服务 (AKS) 中使用多个节点池
 description: 了解如何为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
 services: container-service
 ms.topic: article
-origin.date: 04/08/2020
 author: rockboyfor
 ms.date: 01/11/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 12207be7a25562c0df23b5ca8b00217f8f61140a
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 6c29287d479ec1a93af863d24c3de4965c9c0452
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021503"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055291"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
 
@@ -691,10 +690,10 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 }
 ```
 
-使用 [az group deployment create][az-group-deployment-create] 命令部署此模板，如以下示例中所示。 系统将提示输入现有的 AKS 群集名称和位置：
+如以下示例中所示，使用 [az deployment group create][az-deployment-group-create] 命令部署此模板。 系统将提示输入现有的 AKS 群集名称和位置：
 
 ```azurecli
-az group deployment create \
+az deployment group create \
     --resource-group myResourceGroup \
     --template-file aks-agentpools.json
 ```

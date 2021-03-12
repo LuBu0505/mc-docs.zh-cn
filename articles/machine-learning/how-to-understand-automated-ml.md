@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: 9f98a846b6f69d57b668426f9f51bb19d757330a
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 7b918085e46d265157f4ae2a0b80e658bf0e7415
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023331"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196520"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>评估自动化机器学习试验结果
 
@@ -192,7 +192,7 @@ explained_variance|解释的方差衡量模型对目标变量变化的解释程�
 mean_absolute_error|平均绝对误差是目标与预测之间的差的预期绝对值。<br><br> **目的：** 越接近 0 越好 <br> **范围：** [0, inf) <br><br> 类型： <br>`mean_absolute_error` <br>  `normalized_mean_absolute_error`，mean_absolute_error 除以数据范围。 | [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|
 mean_absolute_percentage_error|平均绝对百分比误差 (MAPE) 是预测值和实际值之间平均差值的度量值。<br><br> **目的：** 越接近 0 越好 <br> **范围：** [0, inf) ||
 median_absolute_error|平均绝对误差是目标与预测之间的所有绝对差的中间值。 此损失值可靠地反映离群值。<br><br> **目的：** 越接近 0 越好 <br> **范围：** [0, inf)<br><br>类型： <br> `median_absolute_error`<br> `normalized_median_absolute_error`median_absolute_error 除以数据范围。 |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|
-r2_score|R^2 是确定系数或平方误差与输出平均值的基线模型相比减少的百分比。 <br> <br> **目的：** 越接近 1 越好 <br> **范围：** (-inf, 1]|[计算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
+r2_score|R^2 是确定系数或平方误差与输出平均值的基线模型相比减少的百分比。 <br> <br> **目的：** 越接近 1 越好 <br> **范围：** [-1, 1] <br><br> 注意：R^2 的范围通常为 (-inf, 1]，但是对于非常糟糕的模型，自动 ML 会将负值剪辑为 -1。|[计算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
 root_mean_squared_error |均方根误差 (RMSE) 是目标与预测之间的预期平方差的平方根。 对于无偏差估算器，RMSE 等于标准偏差。<br> <br> **目的：** 越接近 0 越好 <br> **范围：** [0, inf)<br><br>类型：<br> `root_mean_squared_error` <br> `normalized_root_mean_squared_error`：root_mean_squared_error 除以数据范围。 |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|
 root_mean_squared_log_error|均方根对数误差是预期平方对数误差的平方根。<br><br>**目的：** 越接近 0 越好 <br> **范围：** [0, inf) <br> <br>类型： <br>`root_mean_squared_log_error` <br> `normalized_root_mean_squared_log_error`，root_mean_squared_log_error 除以数据范围。  |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|
 spearman_correlation| 斯皮尔曼相关是两个数据集之间的关系单一性的非参数测量法。 与皮尔逊相关不同，斯皮尔曼相关不假设两个数据集呈正态分布。 与其他相关系数一样，斯皮尔曼在 -1 和 +1 之间变化，0 表示不相关。 -1 或 1 相关表示确切的单一关系。 <br><br> 斯皮尔曼是一个秩相关指标，这意味着，如果预测值或实际值的变化不改变预测值或实际值的秩序，则不会改变斯皮尔曼结果。<br> <br> **目的：** 越接近 1 越好 <br> **范围：** [-1, 1]|[计算](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|
@@ -234,8 +234,6 @@ spearman_correlation| 斯皮尔曼相关是两个数据集之间的关系单一�
 
 虽然模型评估指标和图表有助于衡量模型的总体质量，但在实践负责任的 AI 时，检查用于进行预测的模型的数据集特征是至关重要的。 这就是自动化 ML 提供模型可解释性仪表板来测量和报告数据集特征的相对贡献的原因。
 
-![特征重要性](./media/how-to-understand-automated-ml/how-to-feature-importance.gif)
-
 若要查看工作室中的可解释性仪表板，请执行以下操作：
 
 1. [登录到工作室](https://studio.ml.azure.cn/)并导航到你的工作区
@@ -246,10 +244,11 @@ spearman_correlation| 斯皮尔曼相关是两个数据集之间的关系单一�
 6. 在“说明”选项卡中，如果模型是最佳的，你可能会看到已创建的说明
 7. 若要创建新的说明，请选择“说明模型”，然后选择要用来计算说明的远程计算
 
+[详细了解自动 ML 中的模型说明](how-to-machine-learning-interpretability-automl.md)。
+
 > [!NOTE]
 > ForecastCN 模型目前不受自动化 ML 说明的支持，其他预测模型对可解释性工具的访问可能有限。
 
 ## <a name="next-steps"></a>后续步骤
 * 请参阅[自动化机器学习模型解释](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)示例笔记本。
-* 了解有关[自动化 ML 中负责任的 AI 产品/服务](how-to-machine-learning-interpretability-automl.md)的更多信息。
 * 对于自动化 ML 特定问题，请联系 askautomatedml@microsoft.com。

@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 01/10/2019
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 889c8d09c4854be1e7103dfa29b46694241c5af9
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: d23cd493c640b55d43e4980140eb6b7dfeab49db
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230340"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053812"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>使用 Azure CLI 创建具有加速网络的 Linux 虚拟机
 
@@ -30,7 +30,7 @@ ms.locfileid: "98230340"
 
 :::image type="content" source="./media/create-vm-accelerated-networking/accelerated-networking.png" alt-text="比较":::
 
-在不使用加速网络的情况下，传入和传出 VM 的所有网络流量必须遍历主机和虚拟交换机。 虚拟交换机针对网络流量实施所有策略，例如网络安全组、访问控制列表、隔离和其他网络虚拟化服务。 若要详细了解虚拟交换机，请阅读 [Hyper-V 网络虚拟化和虚拟交换机](https://technet.microsoft.com/library/jj945275.aspx)一文。
+在不使用加速网络的情况下，传入和传出 VM 的所有网络流量必须遍历主机和虚拟交换机。 虚拟交换机针对网络流量实施所有策略，例如网络安全组、访问控制列表、隔离和其他网络虚拟化服务。 若要详细了解虚拟交换机，请阅读 [Hyper-V 网络虚拟化和虚拟交换机](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134230(v=ws.11))一文。
 
 在使用加速网络的情况下，流量将抵达虚拟机的网络接口 (NIC)，然后转发到 VM。 由虚拟交换机应用的所有网络策略现在都会卸载，并在硬件中应用。 由于在硬件中应用策略，NIC 可以绕过主机和虚拟交换机将网络流量直接转发到 VM，同时保留它在主机中应用的所有策略。
 
@@ -58,13 +58,9 @@ ms.locfileid: "98230340"
 ## <a name="limitations-and-constraints"></a>限制和约束
 
 ### <a name="supported-vm-instances"></a>支持的 VM 实例
-大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。  这些受支持的系列包括：D/DSv2 和 F/Fs
+大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。 在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 
 
-在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 受支持的系列包括：D/Dsv3、D/Dsv4、Dd/Ddv4、E/Esv3、E/Esv4、Edsv4、Fsv2 和 Ms/Mms。
-
-<!--Not Available on  Da/Dasv4, Edv4, Ea/Easv4, Lsv2, and and Ms/Mmsv2 -->
-
-有关 VM 实例的详细信息，请参阅[Linux VM 大小](../virtual-machines/linux/sizes.md?toc=%2fvirtual-network%2ftoc.json)。
+可以在单个[虚拟机大小](../virtual-machines/sizes.md)文档中找到对加速网络的支持。 
 
 ### <a name="custom-images"></a>自定义映像
 如果你使用的是自定义映像，并且映像支持加速网络，请确保在 Azure 上使用 Mellanox ConnectX-3 和 ConnectX-4 Lx NICs 所需的驱动程序。
@@ -103,8 +99,8 @@ removed per issue https://github.com/MicrosoftDocs/azure-docs/issues/9772 -->
 az group create --name myResourceGroup --location chinaeast
 ```
 
-<!--List Regions is not Avialable on Mooncake-->
-<!-- Not Available on  [Linux accelerated networking](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview)-->
+<!--MOONCAKE: List Regions is not Avialable on Mooncake-->
+<!--NOT AVAILABLE ON  [Linux accelerated networking](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview)-->
 
 使用 [az network vnet create](https://docs.azure.cn/cli/network/vnet#az-network-vnet-create) 创建虚拟网络。 以下示例创建名为 myVnet 且具有一个子网的虚拟网络：
 
@@ -168,7 +164,7 @@ az network nic create \
 
 ### <a name="create-a-vm-and-attach-the-nic"></a>创建 VM 并附加 NIC
 
-<!--CORRECT ON VM size and distribution lists are Available to Mooncake-->
+<!--MOONCAKE: CORRECT ON VM size and distribution lists are Available to Mooncake-->
 
 创建 VM 时，指定使用 `--nics` 创建的 NIC。 选择 [Linux 加速网络](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview)中列出的大小和分发版本。 
 
@@ -185,7 +181,7 @@ az vm create \
     --nics myNic
 ```
 
-若要获取所有 VM 大小和特性列表，请参阅 [Linux VM 大小](../virtual-machines/linux/sizes.md?toc=%2fvirtual-network%2ftoc.json)。
+若要获取所有 VM 大小和特性列表，请参阅 [Linux VM 大小](../virtual-machines/sizes.md?toc=%2fvirtual-network%2ftoc.json)。
 
 创建 VM 后，将返回以下类似输出。 记下 publicIpAddress。 在后续步骤中，将使用此地址访问 VM。
 
@@ -325,4 +321,4 @@ az vmss start \
 * 必须在 VM 的 NIC 上禁用加速网络，或者如果在可用性集/VMSS 中，则必须在集合/​​VMSS 中的所有 VM 上禁用。
 * 一旦加速网络被禁用，VM/可用性集/VMSS 即可移至不支持加速网络的新大小并重启。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

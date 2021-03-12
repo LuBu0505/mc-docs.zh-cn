@@ -7,16 +7,16 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 origin.date: 02/10/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 4d6df13924d7fbc222932e6b084f64ac739bb952
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 02577ce219bf99bcb74aa0f062e91d186285a493
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857144"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053136"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>请于 2023 年 3 月 1 日之前将 IaaS 资源迁移到 Azure 资源管理器 
 
@@ -33,7 +33,7 @@ ms.locfileid: "97857144"
 - 在 2023 年 3 月 1 日，尚未迁移到 Azure 资源管理器的订阅将收到通知，其中附有关于删除所有剩余 VM（经典）的时间安排。  
 
 本次停用不影响下列 Azure 服务和功能： 
-- Azure 云服务 
+- [Azure 云服务（经典）](https://docs.azure.cn/cloud-services/cloud-services-choose-me)
 - VM（经典）未使用的存储帐户 
 - VM（经典）未使用的虚拟网络 
 - 其他经典资源
@@ -52,11 +52,11 @@ ms.locfileid: "97857144"
 
 1. 建议使用[平台支持迁移工具](./migration-classic-resource-manager-overview.md)开始规划，按照验证、准备和提交这三个简单步骤迁移现有 VM。 此工具旨在迁移 VM 的同时确保不停机或停机时间最少。 
 
-   1. 第一步是验证，这不影响现有部署，并提供列表可查看所有不受支持的迁移方案。 
-   1. 请浏览[暂时解决方法列表](./migration-classic-resource-manager-overview.md#unsupported-features-and-configurations)来修复部署，使其做好迁移准备。 
-   1. 理想情况下，解决所有验证错误后，在准备和提交步骤中不会遇到任何问题。 提交成功后，部署将实时迁移到 Azure 资源管理器，然后可通过 Azure 资源管理器公开的新的 API 进行管理。 
+    - 第一步是验证，这不影响现有部署，并提供列表可查看所有不受支持的迁移方案。 
+    - 请浏览[暂时解决方法列表](./migration-classic-resource-manager-overview.md#unsupported-features-and-configurations)来修复部署，使其做好迁移准备。 
+    - 理想情况下，解决所有验证错误后，在准备和提交步骤中不会遇到任何问题。 提交成功后，部署将实时迁移到 Azure 资源管理器，然后可通过 Azure 资源管理器公开的新的 API 进行管理。 
 
-   如果迁移工具不适合迁移，可探索[其他计算服务/产品](https://docs.microsoft.com/azure/architecture/guide/technology-choices/compute-decision-tree)来进行迁移。 有许多 Azure 计算服务/产品，而且它们各不相同，因此我们无法为其提供平台支持的迁移路径。  
+    如果迁移工具不适合迁移，可探索[其他计算服务/产品](https://docs.microsoft.com/azure/architecture/guide/technology-choices/compute-decision-tree)来进行迁移。 有许多 Azure 计算服务/产品，而且它们各不相同，因此我们无法为其提供平台支持的迁移路径。  
 
 1. 如果有技术问题、疑惑或在将订阅添加到允许列表时需要帮助，请[联系支持人员](https://support.azure.cn/support/support-azure/)。
 
@@ -72,10 +72,10 @@ ms.locfileid: "97857144"
 
     <!--Correct on the [Azure Migration Support](https://support.azure.cn/support/support-azure)-->
 
-- [Microsoft 快速跟踪](https://www.microsoft.com/fasttrack)：Azure 快速跟踪团队可以在迁移过程中为符合条件的客户提供技术协助。
+- [Microsoft 快速跟踪](https://www.microsoft.com/fasttrack)：快速跟踪团队可以在迁移过程中为符合条件的客户提供技术协助。
 
     <!--Not Available on [Nominate yourself]-->
 
 - 如果你的公司/组织已与 Azure 合作，或者已与 Azure 代表（例如云解决方案架构师 (CSA)、技术客户经理 (TAM)）合作，请联系他们以获取更多的迁移资源。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

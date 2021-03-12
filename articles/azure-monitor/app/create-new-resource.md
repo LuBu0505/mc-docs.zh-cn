@@ -4,18 +4,21 @@ description: 为新的实时应用程序手动设置 Application Insights 监视
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 12/02/2019
-ms.date: 01/12/2021
+ms.date: 02/22/2021
 ms.author: v-johya
-ms.openlocfilehash: 5e682bdffe532024997a2cb36682fe9b8b951b36
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 80b885f6658443e50880fd3c540c8422a4e624d7
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230429"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197694"
 ---
 # <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 
 Azure Application Insights 在 Azure 资源中显示有关应用程序的数据。 因此，创建新资源是[设置 Application Insights 以监视新应用程序][start]中的一个环节。 创建新资源后，可以获取其检测密钥并使用它来配置 Application Insights SDK。 检测密钥会将遥测链接到资源。
+
+> [!IMPORTANT]
+> 经典 Application Insights 已弃用。 请按照以下[关于如何升级到基于工作区的 Application Insights 的说明](convert-classic-resource.md)操作。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -27,7 +30,7 @@ Azure Application Insights 在 Azure 资源中显示有关应用程序的数据�
 
 ![单击左上角的“+”号。 选择开发人员工具，然后选择“Application Insights”](./media/create-new-resource/new-app-insights.png)
 
-   | 设置        |  Value           | 说明  |
+   | 设置        |  值           | 说明  |
    | ------------- |:-------------|:-----|
    | **名称**      | `Unique value` | 名称，用于标识要监视的应用。 |
    | **资源组**     | `myResourceGroup`      | 用于托管 App Insights 数据的新资源组或现有资源组的名称。 |
@@ -35,11 +38,12 @@ Azure Application Insights 在 Azure 资源中显示有关应用程序的数据�
    | **资源模式** | `Classic` 或 `Workspace-based` | 基于工作区的资源当前为公共预览版，用于将 Application Insights 遥测发送到常用 Log Analytics 工作区。 有关详细信息，请参阅[有关基于工作区的资源的文章](create-workspace-resource.md)。
 
 > [!NOTE]
-> 虽然可以在不同资源组中使用相同的资源名称，但使用全局唯一名称会有好处。 如果打算[执行跨资源查询](../log-query/cross-workspace-query.md#identifying-an-application)，这将很有用，因为它可以简化所需的语法。
+> 虽然可以在不同资源组中使用相同的资源名称，但使用全局唯一名称会有好处。 如果打算[执行跨资源查询](../logs/cross-workspace-query.md#identifying-an-application)，这将很有用，因为它可以简化所需的语法。
 
 在必填字段中输入适当的值，然后选择“查看 + 创建”。
 
-![在必填字段中输入值，然后选择“查看 + 创建”。](./media/create-new-resource/review-create.png)
+> [!div class="mx-imgBorder"]
+> ![在必填字段中输入值，然后选择“查看 + 创建”。](./media/create-new-resource/review-create.png)
 
 创建应用后，将打开一个新窗格。 可以在此窗格中查看有关受监视应用程序的性能和使用情况数据。 
 
@@ -97,7 +101,7 @@ SamplingPercentage :
 TenantId           : {subid}
 ```
 
-有关此 cmdlet 的完整 PowerShell 文档，以及若要了解如何检索检测密钥，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0)。
+有关此 cmdlet 的完整 PowerShell 文档，以及若要了解如何检索检测密钥，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights)。
 
 ### <a name="azure-cli-preview"></a>Azure CLI（预览版）
 
@@ -154,18 +158,18 @@ az monitor app-insights component create --app demoApp --location chinaeast2 --k
 }
 ```
 
-有关此命令的完整 Azure CLI 文档，以及若要了解如何检索检测密钥，请参阅 [Azure CLI 文档](/cli/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)。
+有关此命令的完整 Azure CLI 文档，以及若要了解如何检索检测密钥，请参阅 [Azure CLI 文档](/cli/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-create)。
 
 ## <a name="next-steps"></a>后续步骤
 * [诊断搜索](./diagnostic-search.md)
-* [探索指标](../platform/metrics-charts.md)
-* [编写分析查询](../log-query/log-query-overview.md)
+* [探索指标](../essentials/metrics-charts.md)
+* [编写分析查询](../logs/log-query-overview.md)
 
 <!--Link references-->
 
 [api]: ./api-custom-events-metrics.md
 [diagnostic]: ./diagnostic-search.md
-[metrics]: ../platform/metrics-charts.md
+[metrics]: ../essentials/metrics-charts.md
 [start]: ./app-insights-overview.md
 
 

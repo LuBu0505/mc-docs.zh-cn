@@ -5,15 +5,15 @@ author: Johnnytechn
 ms.service: virtual-machines-linux
 ms.topic: how-to
 origin.date: 07/12/2018
-ms.date: 02/01/2021
+ms.date: 03/04/2021
 ms.author: v-johya
 ms.subservice: disks
-ms.openlocfilehash: b377ec745fe844f318361a9bdc5df99fa58b7457
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: 96c539a52b559c77ee20671aa5398dd779b5e361
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579616"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197569"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>使用门户将数据磁盘附加到 Linux VM 
 本文介绍如何通过 Azure 门户将新磁盘和现有磁盘附加到 Linux 虚拟机。 也可以[在 Azure 门户中将数据磁盘附加到 Windows VM](../windows/attach-managed-disk-portal.md)。 
@@ -226,6 +226,9 @@ sdc     3:0:0:0       4G
     ```
 
 ## <a name="next-steps"></a>后续步骤
+
+若要了解详细信息，或者要帮助排查磁盘问题，请参阅 [Linux VM 设备名称更改故障排除](../troubleshooting/troubleshoot-device-names-problems.md)。
+
 还可使用 Azure CLI [附加数据磁盘](add-disk.md)。
 
 <!--Update_Description: update meta properties, wording update -->

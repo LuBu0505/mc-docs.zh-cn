@@ -1,16 +1,17 @@
 ---
 title: 快速入门：使用 REST API 进行新策略分配
 description: 本快速入门介绍如何使用 REST API 创建 Azure Policy 分配以识别不合规资源。
-origin.date: 10/14/2020
-ms.date: 11/06/2020
-ms.author: v-tawe
+origin.date: 01/29/2021
+author: rockboyfor
+ms.date: 03/01/2021
+ms.author: v-yeche
 ms.topic: quickstart
-ms.openlocfilehash: f7dc087f3e9841a66c33794bcff9acea776cb558
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.openlocfilehash: 9398bac1b41fe0be3e349da990974878e67555ef
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431002"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196550"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-rest-api"></a>快速入门：使用 REST API 创建策略分配以识别不合规资源
 
@@ -27,7 +28,7 @@ REST API 用于创建和管理 Azure 资源。 本指南使用 REST API 创建�
 
 - 安装 [ARMClient](https://github.com/projectkudu/ARMClient)（如果尚未安装）。 该工具可将 HTTP 请求发送到基于 Azure 资源管理器的 REST API。 也可以使用 REST 文档中的“试用”功能，或者使用 PowerShell 的 [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod) 或 [Postman](https://www.postman.com) 等工具。
 
-<!-- [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)] -->
+<!--NOT AVAILABLE ON [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)-->
 
 ## <a name="create-a-policy-assignment"></a>创建策略分配
 
@@ -35,38 +36,44 @@ REST API 用于创建和管理 Azure 资源。 本指南使用 REST API 创建�
 
 运行以下命令创建策略分配：
 
-   - REST API URI
+- REST API URI
 
-     ```http
-     PUT https://management.chinacloudapi.cn/{scope}/providers/Microsoft.Authorization/policyAssignments/audit-vm-manageddisks?api-version=2019-09-01
-     ```
+    ```http
+    PUT https://management.chinacloudapi.cn/{scope}/providers/Microsoft.Authorization/policyAssignments/audit-vm-manageddisks?api-version=2019-09-01
+    ```
 
-   - 请求正文
+- 请求正文
 
      ```json
      {
-       "properties": {
-         "displayName": "Audit VMs without managed disks Assignment",
-         "description": "Shows all virtual machines not using managed disks",
-         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a4d",
-       }
-     }
-     ```
+        "properties": {
+            "displayName": "Audit VMs without managed disks Assignment",
+            "description": "Shows all virtual machines not using managed disks",
+            "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a4d",
+            "nonComplianceMessages": [
+                 {
+                     "message": "Virtual machines should use a managed disk"
+                 }
+            ]
+        }
+    }
+    ```
 
 前面的终结点和请求正文使用以下信息：
 
 REST API URI：
 - **范围** - 范围确定在其中实施策略分配的资源或资源组。 它的范围可以从管理组到单个资源。 请确保将 `{scope}` 替换为以下某个模式：
-  - 管理组：`/providers/Microsoft.Management/managementGroups/{managementGroup}`
-  - 订阅：`/subscriptions/{subscriptionId}`
-  - 资源组：`/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
-  - 资源：`/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}`
+    - 管理组：`/providers/Microsoft.Management/managementGroups/{managementGroup}`
+    - 订阅：`/subscriptions/{subscriptionId}`
+    - 资源组：`/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
+    - 资源：`/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}`
 - **名称** - 分配的实际名称。 对于此示例，使用 _audit-vm-manageddisks_。
 
 请求正文：
 - **显示名称** - 策略分配的显示名称。 本例使用了“审核未使用托管磁盘分配的虚拟机”  。
 - **说明** - 有关策略用途或将其分配到此范围的原因的更深入说明。
 - **policyDefinitionId** - 策略定义 ID，用作创建分配的依据。 在本例中，它为策略定义“审核未使用托管磁盘的 VM”的 ID  。
+- **nonComplianceMessages** - 设置资源因不合规而被拒绝时或被评估为不合规时显示的消息。 有关详细信息，请参阅[“分配不合规”消息](./concepts/assignment-structure.md#non-compliance-messages)。
 
 ## <a name="identify-non-compliant-resources"></a>识别不合规的资源
 
@@ -122,3 +129,5 @@ DELETE https://management.chinacloudapi.cn/{scope}/providers/Microsoft.Authoriza
 
 > [!div class="nextstepaction"]
 > [创建和管理策略](./tutorials/create-and-manage.md)
+
+<!--Update_Description: update meta properties, wording update, update link-->

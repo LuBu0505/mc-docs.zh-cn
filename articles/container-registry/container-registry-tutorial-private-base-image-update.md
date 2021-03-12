@@ -4,15 +4,15 @@ description: 在本教程中，你将配置一个 Azure 容器注册表任务，
 ms.topic: tutorial
 origin.date: 11/20/2020
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 03/01/2021
 ms.author: v-yeche
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: c7cf730f1cbf1a2b99c5c53bddf1e184c6ab958e
-ms.sourcegitcommit: fda47fe846d47f30e65a048251402d873e416650
+ms.openlocfilehash: 99c610d3badf1d4e8ea13936a460d7901f10b418
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99426619"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053930"
 ---
 <!--Verify sucessfully-->
 <!--Part content of released articles-->
@@ -102,7 +102,7 @@ az acr task create \
     --registry $ACR_NAME \
     --name baseexample2 \
     --image helloworld:{{.Run.ID}} \
-    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
+    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git#main \
     --file Dockerfile-app \
     --git-access-token $GIT_PAT \
     --arg REGISTRY_NAME=$BASE_ACR.azurecr.cn \
@@ -172,7 +172,10 @@ az acr task run --registry $ACR_NAME --name baseexample2
 
 ### <a name="optional-run-application-container-locally"></a>可选：本地运行应用程序容器
 
-如果在本地运行（而不是在本地 Shell 中运行）并且已安装 Docker，请运行容器，以查看 Web 浏览器中呈现的应用程序，然后再重新生成其基础映像。 如果使用的是本地 Shell，请跳过此部分（Cloud Shell 不支持 `az acr login` 或 `docker run`）。
+如果是在本地运行，并且已安装 Docker，请运行容器，以查看 Web 浏览器中呈现的应用程序，然后再重新生成其基础映像。
+
+<!--NOT AVAILABLE ON (not in the local Shell)-->
+<!--NOT AVAILABLE ON  If you're using the local Shell, skip this section (Cloud Shell does not support `az acr login` or `docker run`).-->
 
 首先，使用 [az acr login][az-acr-login] 在容器注册表中进行身份验证：
 

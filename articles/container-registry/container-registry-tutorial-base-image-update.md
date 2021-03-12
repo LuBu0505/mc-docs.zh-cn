@@ -4,15 +4,15 @@ description: 本教程介绍在更新同一注册表中的基础映像时，如�
 ms.topic: tutorial
 origin.date: 11/24/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/01/2021
 ms.author: v-yeche
 ms.custom: seodec18, mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 218c4dad9f093a424e7b1f2b5f7c8bc1ccd5b5fe
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 2f21c4a8ec168dccd4f06ac3ab0ff4748f53ad4e
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230968"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102108760"
 ---
 <!--Verify sucessfully-->
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>教程：在 Azure 容器注册表中更新基础映像时自动化容器映像生成 
@@ -29,8 +29,6 @@ ms.locfileid: "98230968"
 > * 更新基础映像以触发应用程序映像任务
 > * 显示已触发的任务
 > * 验证已更新的应用程序映像
-
-[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -56,6 +54,8 @@ ms.locfileid: "98230968"
 - 本文需要 Azure CLI 版本 2.0.46 或更高版本。
 
     <!--Not Avaiable on  If using Azure Cloud Shell, the latest version is already installed.-->
+
+[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
 使用适用于环境的值填充这些 shell 环境变量。 此步骤并非必须执行的步骤，但它能让在此教程中执行多个 Azure CLI 命令更容易。 如果未填充这些环境变量，则每当示例命令中出现每个值，都必须手动替换该值。
 
@@ -85,6 +85,12 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 
 首先使用 [az acr build][az-acr-build] 通过 ACR 任务“快速任务”来生成基础映像。  如本系列教程的[第一篇教程](container-registry-tutorial-quick-task.md)中所述，如果生成成功，则此过程不仅会生成映像，还会将其推送到容器注册表。
 
+<!--MOONCAKE CUSTOMIZE-->
+
+[!INCLUDE [container-registry-acr-build-valid-regions-chenye.md](../../includes/container-registry-acr-build-valid-regions-chenye.md)]
+
+<!--MOONCAKE CUSTOMIZE-->
+
 ```azurecli
 az acr build --registry $ACR_NAME --image baseimages/node:15-alpine --file Dockerfile-base .
 ```
@@ -99,7 +105,7 @@ az acr task create \
     --name baseexample1 \
     --image helloworld:{{.Run.ID}} \
     --arg REGISTRY_NAME=$ACR_NAME.azurecr.cn \
-    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
+    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git#main \
     --file Dockerfile-app \
     --git-access-token $GIT_PAT
 ```
@@ -135,7 +141,10 @@ az acr task run --registry $ACR_NAME --name baseexample1
 
 ### <a name="optional-run-application-container-locally"></a>可选：本地运行应用程序容器
 
-如果在本地运行（而不是在本地 Shell 中运行）并且已安装 Docker，请运行容器，以查看 Web 浏览器中呈现的应用程序，然后再重新生成其基础映像。 如果使用的是本地 Shell，请跳过此部分（Cloud Shell 不支持 `az acr login` 或 `docker run`）。
+如果是在本地运行，并且已安装 Docker，请运行容器，以查看 Web 浏览器中呈现的应用程序，然后再重新生成其基础映像。
+
+<!--NOT AVAIALBLE ON not in the Cloud Shell-->
+<!--NOT AVAILABLE ON  If you're using the Cloud Shell, skip this section (Cloud Shell does not support `az acr login` or `docker run`).-->
 
 首先，使用 [az acr login][az-acr-login] 在容器注册表中进行身份验证：
 
@@ -265,7 +274,7 @@ docker stop updatedapp
 [az-acr-task-update]: https://docs.azure.cn/cli/acr/task#az_acr_task_update
 [az-acr-task-run]: https://docs.azure.cn/cli/acr/task#az_acr_task_run
 [az-acr-login]: https://docs.azure.cn/cli/acr#az_acr_login
-[az-acr-task-list-runs]: https://docs.azure.cn/cli/acr
-[az-acr-task]: https://docs.azure.cn/cli/acr
+[az-acr-task-list-runs]: https://docs.azure.cn/cli/acr/task#az_acr_task_list_runs
+[az-acr-task]: https://docs.azure.cn/cli/acr/task
 
 <!-- Update_Description: update meta properties, wording update, update link -->

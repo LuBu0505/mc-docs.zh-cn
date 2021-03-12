@@ -1,6 +1,6 @@
 ---
 title: 什么是 Apache Hive 和 HiveQL - Azure HDInsight | Azure
-description: Apache Hive 是适用于 Hadoop 的数据仓库系统。 可以使用 HiveQL（类似于 Transact-SQL）查询 Hive 中存储的数据。 本文档介绍了如何在 Azure HDInsight 中使用 Hive 和 HiveQL。
+description: Apache Hive 是适用于 Hadoop 的数据仓库系统。 可以使用类似于 Transact-SQL 的 HiveQL 查询 Hive 中存储的数据。 本文档介绍如何在 Azure HDInsight 中使用 Hive 和 HiveQL。
 keywords: hiveql,什么是 hive,hadoop hiveql,如何使用 hive,了解 hive,hive 是什么
 services: hdinsight
 documentationcenter: ''
@@ -18,20 +18,20 @@ ms.workload: big-data
 origin.date: 02/28/2020
 ms.date: 06/22/2020
 ms.author: v-yiso
-ms.openlocfilehash: 6c6b41351ad2ce1bd6c71946b9358e0fd25e3702
-ms.sourcegitcommit: 5f07189f06a559d5617771e586d129c10276539e
+ms.openlocfilehash: 933bc8db044d13b2977be1b4d87f813f99fa1611
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94552410"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196698"
 ---
-# <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>什么是 Azure HDInsight 中的 Apache Hive 和 HiveQL？
+# <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？
 
 [Apache Hive](https://hive.apache.org/) 是适用于 Apache Hadoop 的数据仓库系统。 使用 Hive 可以汇总、查询和分析数据。 Hive 查询使用 HiveQL 编写，它是类似于 SQL 的查询语言。
 
 Hive 可以实现将结构投影到很大程度上未结构化的数据上。 定义结构后，可以使用 HiveQL 来查询这些数据，而无需具备 Java 或 MapReduce 方面的知识。
 
-HDInsight 提供了已针对特定工作负荷进行了优化的多种群集类型。 以下群集类型最常用于 Hive 查询：
+HDInsight 提供已针对特定工作负荷进行优化的多种群集类型。 以下群集类型最常用于 Hive 查询：
 
 |群集类型 |说明|
 |---|---|
@@ -56,11 +56,11 @@ HDInsight 提供了已针对特定工作负荷进行了优化的多种群集类�
 
 ## <a name="hiveql-language-reference"></a>HiveQL 语言参考
 
-[语言手册 (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) 中提供了HiveQL 语言参考。
+[语言手册](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)中提供了HiveQL 语言参考。
 
 ## <a name="hive-and-data-structure"></a>Hive 和数据结构
 
-Hive 知道如何处理结构化和半结构化数据。 例如，其中的字段由特定字符分隔的文本文件。 以下 HiveQL 语句基于空格分隔的数据创建一个表：
+Hive 知道如何处理结构化和半结构化数据。 例如，字段由特定字符分隔的文本文件。 以下 HiveQL 语句基于空格分隔的数据创建一个表：
 
 ```hiveql
 CREATE EXTERNAL TABLE log4jLogs (
@@ -75,7 +75,7 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
 STORED AS TEXTFILE LOCATION '/example/data/';
 ```
 
-Hive 还支持对复杂或不规则的结构化数据使用自定义 **序列化程序/反序列化程序 (SerDe)** 。 有关详细信息，请参阅[如何将自定义 JSON SerDe 与 HDInsight 配合使用](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/)文档。
+Hive 还支持对复杂或不规则的结构化数据使用自定义 **序列化程序/反序列化程序 (SerDe)**。 有关详细信息，请参阅[如何将自定义 JSON SerDe 与 HDInsight 配合使用](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/)文档。
 
 有关 Hive 支持的文件格式的详细信息，请参阅[语言手册 (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
 
@@ -113,11 +113,11 @@ Hive 还支持对复杂或不规则的结构化数据使用自定义 **序列化
 
 * [如何将自定义的 Apache Hive 用户定义函数添加到 HDInsight](https://docs.microsoft.com/archive/blogs/bigdatasupport/how-to-add-custom-hive-udfs-to-hdinsight)
 
-* [用于将日期/时间格式转换为 Hive 时间戳的 Apache Hive 用户定义函数示例](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
+* [将日期/时间格式转换为 Apache Hive 时间戳的 Hive 用户定义函数示例](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
 ## <a name="example-data"></a><a id="data"></a>示例数据
 
-Hive on HDInsight 中预先加载了名为 `hivesampletable` 的内部表。 HDInsight 还提供了可与 Hive 配合使用的示例数据集。 这些数据集存储在 `/example/data` 和 `/HdiSamples` 目录中。 这些目录存在于群集的默认存储中。
+Hive on HDInsight 中预先加载了名为 `hivesampletable` 的内部表。 HDInsight 还提供可与 Hive 配合使用的示例数据集。 这些数据集存储在 `/example/data` 和 `/HdiSamples` 目录中。 这些目录存在于群集的默认存储中。
 
 ## <a name="example-hive-query"></a><a id="job"></a>Hive 查询示例
 
@@ -145,10 +145,10 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 |语句 |说明 |
 |---|---|
 |DROP TABLE|如果该表已存在，则删除它。|
-|CREATE EXTERNAL TABLE|在 Hive 中创建一个新的“外部”表  。 外部表只会在 Hive 中存储表定义。 数据以原始格式的形式保留在原始位置中。|
+|CREATE EXTERNAL TABLE|在 Hive 中创建一个新的“外部”表。 外部表只会在 Hive 中存储表定义。 数据以原始格式的形式保留在原始位置中。|
 |ROW FORMAT|让 Hive 知道数据的格式已如何进行了设置。 在此情况下，每个日志中的字段以空格分隔。|
 |STORED AS TEXTFILE LOCATION|让 Hive 知道数据的存储位置（`example/data` 目录），并且数据已存储为文本。 数据可以在一个文件中，也可以分散在目录的多个文件内。|
-|SELECT|选择“t4”列中包含值“[ERROR]”的所有行的计数   。 此语句返回的值为 **3**，因为有三行包含此值。|
+|SELECT|选择“t4”列中包含值“[ERROR]”的所有行的计数。 此语句返回的值为 **3**，因为有三行包含此值。|
 |INPUT__FILE__NAME LIKE '%.log'|Hive 会尝试对目录中的所有文件应用架构。 在此示例中，目录包含与架构不匹配的文件。 为防止结果中包含垃圾数据，此语句指示 Hive 应当仅返回以 .log 结尾的文件中的数据。|
 
 > [!NOTE]  
@@ -179,7 +179,7 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 |---|---|
 |CREATE TABLE IF NOT EXISTS|如果该表不存在，则创建它。 由于未使用 **EXTERNAL** 关键字，因此此语句会创建内部表。 该表存储在 Hive 数据仓库中，并完全由 Hive 管理。|
 |STORED AS ORC|以优化的行纵栏式 (ORC) 格式存储数据。 ORC 是高度优化且有效的 Hive 数据存储格式。|
-|INSERT OVERWRITE ...SELECT|从包含“[ERROR]”的“log4jLogs”表中选择行，然后将数据插入“errorLogs”表中    。|
+|INSERT OVERWRITE ...SELECT|从包含“[ERROR]”的“log4jLogs”表中选择行，然后将数据插入“errorLogs”表中。|
 
 > [!NOTE]  
 > 与外部表不同，删除内部表会同时删除基础数据。
@@ -188,7 +188,7 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 ### <a name="apache-tez"></a>Apache Tez
 
-[Apache Tez](https://tez.apache.org) 是让数据密集型应用程序（例如 Hive）能够大规模高效运行的框架。 默认情况下，Tez 已启用。  [Apache Hive on Tez 设计文档](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez)包含有关实现选项和优化配置的详细信息。
+[Apache Tez](https://tez.apache.org) 是可让数据密集型应用程序（例如 Hive）大规模高效运行的框架。 默认情况下，Tez 已启用。  [Apache Hive on Tez 设计文档](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez)包含有关实现选项和优化配置的详细信息。
 
 ### <a name="low-latency-analytical-processing-llap"></a>低延迟分析处理 (LLAP)
 

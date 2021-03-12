@@ -8,16 +8,16 @@ ms.subservice: sizes
 ms.topic: conceptual
 origin.date: 06/08/2020
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 03ca6823d3f15db9de53a8337a79d11516d48f1f
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 6530bcf8284cd2aa2be982c8c8f25595bcb13f31
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93103815"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053913"
 ---
 <!--Verified successfully from PG team confirmation-->
 # <a name="dv4-and-dsv4-series"></a>Dv4 和 Dsv4 系列
@@ -38,6 +38,8 @@ Dv4 系列规格在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 上运�
 [实时迁移](maintenance-and-updates.md)：支持<br />
 [内存保留更新](maintenance-and-updates.md)：支持<br />
 [VM 代系支持](generation-2.md)：第 1 代<br />
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br />
+[临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br />
 <br />
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大 NIC 数 | 预期的网络带宽 (Mbps) |
@@ -60,6 +62,8 @@ Dsv4 系列规格在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 上运�
 [实时迁移](maintenance-and-updates.md)：支持<br />
 [内存保留更新](maintenance-and-updates.md)：支持<br />
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br />
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br />
+[临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br />
 <br />
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数 | 预期的网络带宽 (Mbps) |
@@ -72,4 +76,4 @@ Dsv4 系列规格在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 上运�
 | Standard_D48s_v4 | 48 | 192 | 仅限远程存储 | 32 | 76800/1152 | 8|24000 |
 | Standard_D64s_v4 | 64 | 256 | 仅限远程存储 | 32 | 80000/1200 | 8|30000 |
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

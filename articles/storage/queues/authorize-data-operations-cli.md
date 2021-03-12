@@ -6,18 +6,18 @@ author: WenJason
 services: storage
 ms.author: v-jay
 ms.reviewer: ozgun
-origin.date: 11/13/2020
-ms.date: 01/18/2021
+origin.date: 02/10/2021
+ms.date: 03/08/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f9314c7fa60df7176256319cbd5f9d2256683ff1
-ms.sourcegitcommit: f086abe8bd2770ed10a4842fa0c78b68dbcdf771
+ms.openlocfilehash: 557ad72eabae71e813e742df69d15809faae5786
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98163209"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196287"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-with-azure-cli"></a>选择如何使用 Azure CLI 授予对队列数据的访问权限
 
@@ -35,6 +35,9 @@ Azure 存储提供适用于 Azure CLI 的扩展，使你能够指定如何根据
 
 若要使用 `--auth-mode` 参数，请确保已安装 Azure CLI v2.0.46 或更高版本。 运行 `az --version` 以查看已安装版本。
 
+> [!NOTE]
+> 在使用 Azure 资源管理器 ReadOnly 锁锁定了某个存储帐户时，不允许为该存储帐户执行[列出密钥](https://docs.microsoft.com/rest/api/storagerp/storageaccounts/listkeys)操作。 列出密钥是 POST 操作，并且在为该帐户配置了 ReadOnly 锁时，所有 POST 操作都会被阻止 。 因此，当帐户被 ReadOnly 锁锁定时，还没有帐户密钥的用户必须使用 Azure AD 凭据来访问队列数据。
+
 > [!IMPORTANT]
 > 如果省略 `--auth-mode` 参数或将其设置为 `key`，则 Azure CLI 会尝试使用帐户访问密钥进行授权。 在这种情况下，Azure 建议在命令或 `AZURE_STORAGE_KEY` 环境变量中提供访问密钥。 有关环境变量的详细信息，请参阅标题为[为授权参数设置环境变量](#set-environment-variables-for-authorization-parameters)的部分。
 >
@@ -42,7 +45,7 @@ Azure 存储提供适用于 Azure CLI 的扩展，使你能够指定如何根据
 
 ## <a name="authorize-with-azure-ad-credentials"></a>使用 Azure AD 凭据授权
 
-使用 Azure AD 凭据登录 Azure CLI 时，会返回 OAuth 2.0 访问令牌。 Azure CLI 自动使用该令牌针对 Blob 存储或队列存储进行后续数据操作授权。 对于支持的操作，无需再通过命令传递帐户密钥或 SAS 令牌。
+使用 Azure AD 凭据登录 Azure CLI 时，会返回 OAuth 2.0 访问令牌。 Azure CLI 自动使用该令牌针对队列存储进行后续数据操作授权。 对于支持的操作，无需再通过命令传递帐户密钥或 SAS 令牌。
 
 可通过 Azure 基于角色的访问控制 (Azure RBAC) 向 Azure AD 安全主体分配对队列数据的权限。 有关 Azure 存储中 Azure 角色的详细信息，请参阅[通过 Azure RBAC 管理 Azure 存储数据访问权限](../common/storage-auth-aad-rbac-portal.md)。
 
@@ -56,12 +59,12 @@ Azure 存储扩展支持针对队列数据的操作。 可调用的操作取决�
 
 以下示例演示如何在 Azure CLI 中使用 Azure AD 凭据创建队列。 若要创建队列，需要登录到 Azure CLI，并需要资源组和存储帐户。
 
-1. 创建队列之前，请为自己分配[存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)角色。 即使你是帐户所有者，也需要显式权限才能针对存储帐户执行数据操作。 有关分配 Azure 角色的详细信息，请参阅[使用 Azure 门户分配用于访问 blob 和队列数据的 Azure 角色](../common/storage-auth-aad-rbac-portal.md)。
+1. 创建队列之前，请为自己分配[存储队列数据参与者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)角色。 即使你是帐户所有者，也需要显式权限才能针对存储帐户执行数据操作。 有关分配 Azure 角色的详细信息，请参阅[使用 Azure 门户分配用于访问 blob 和队列数据的 Azure 角色](../common/storage-auth-aad-rbac-portal.md)。
 
     > [!IMPORTANT]
-    > 传播 Azure 角色分配可能需要几分钟的时间。
+    > 传播 Azure 角色分配可能需要花费几分钟时间。
 
-1. 在将 `--auth-mode` 参数设置为 `login` 的情况下，调用 [az storage queue create](/cli/storage/queue#az-storage-queue-create) 命令以使用 Azure AD 凭据创建队列。 请务必将尖括号中的占位符值替换为你自己的值：
+1. 在将 `--auth-mode` 参数设置为 `login` 的情况下，调用 [`az storage queue create`](/cli/storage/queue#az-storage-queue-create) 命令以使用 Azure AD 凭据创建队列。 请务必将尖括号中的占位符值替换为你自己的值：
 
     ```azurecli
     az storage queue create \

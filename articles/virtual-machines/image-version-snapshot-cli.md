@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.workload: infrastructure
 origin.date: 06/30/2020
 author: rockboyfor
-ms.date: 10/19/2020
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
 ms.reviewer: akjosh
-ms.openlocfilehash: 523072f87f696082a771db5fce3c23767371f907
-ms.sourcegitcommit: 6f66215d61c6c4ee3f2713a796e074f69934ba98
+ms.openlocfilehash: cd25480c9ad3e35682c8b5a0ced710346b20eb0d
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127667"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054407"
 ---
 <!--Verified successfully from partial-->
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>使用 Azure CLI 从共享映像库中的托管磁盘或快照创建映像
@@ -25,8 +25,8 @@ ms.locfileid: "92127667"
 如果想要将现有快照或托管磁盘迁移到共享映像库，可直接从该托管磁盘或快照创建共享映像库映像。 测试新映像后，可删除源托管磁盘或快照。 还可使用 [Azure PowerShell](image-version-snapshot-powershell.md) 从共享映像库中的托管磁盘或快照创建映像。
 
 映像库中的映像具有两个组件，我们将在此示例中创建这两个组件：
-- “映像定义”包含有关映像及其使用要求的信息。 这包括该映像是 Windows 映像还是 Linux 映像、是专用映像还是通用映像，此外还包括发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 
-- 使用共享映像库时，将使用映像版本来创建 VM。 可根据环境的需要创建多个映像版本。 创建 VM 时，将使用该映像版本为 VM 创建新磁盘。 可以多次使用映像版本。
+- “映像定义”包含有关映像及其使用要求的信息。 这包括了该映像是 Windows 还是 Linux 映像、是专用映像还是通用映像、发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 
+- 使用共享映像库时，将使用 **映像版本** 来创建 VM。 可根据环境的需要创建多个映像版本。 创建 VM 时，将使用该映像版本来为 VM 创建新磁盘。 可以多次使用映像版本。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -74,11 +74,11 @@ az sig list -o table
 
 创建映像定义时，请确保它包含所有正确信息。 在此示例中，我们假设快照或托管磁盘来自正在使用但尚未通用化的 VM。 如果托管磁盘或快照是从通用化 OS 获取的（在 Windows 上运行 Sysprep 或在 Linux 上运行 [waagent](https://github.com/Azure/WALinuxAgent)、`-deprovision` 或 `-deprovision+user` 后），则将 `-OsState` 更改为 `generalized`。 
 
-若要详细了解可为映像定义指定的值，请参阅[映像定义](./linux/shared-image-galleries.md#image-definitions)。
+若要详细了解可为映像定义指定的值，请参阅[映像定义](./shared-image-galleries.md#image-definitions)。
 
 使用 [az sig image-definition create](https://docs.microsoft.com/cli/azure/sig/image-definition#az_sig_image_definition_create) 在库中创建一个映像定义。
 
-在此示例中，映像定义名为 myImageDefinition，适用于[专用化](./linux/shared-image-galleries.md#generalized-and-specialized-images) Linux OS 映像。 若要使用 Windows OS 创建映像的定义，请使用 `--os-type Windows`。 
+在此示例中，映像定义名为 myImageDefinition，适用于[专用化](./shared-image-galleries.md#generalized-and-specialized-images) Linux OS 映像。 若要使用 Windows OS 创建映像的定义，请使用 `--os-type Windows`。 
 
 在此示例中，库名为 myGallery，它位于 myGalleryRG 资源组中，映像定义名称将为 mImageDefinition 。
 
@@ -101,9 +101,9 @@ az sig image-definition create \
 
 使用 [az image gallery create-image-version](https://docs.microsoft.com/cli/azure/sig/image-version#az_sig_image_version_create) 创建映像版本。 
 
-允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式： *MajorVersion* . *MinorVersion* . *Patch* 。
+允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
-在此示例中，映像的版本为 *1.0.0* ，我们打算使用区域冗余存储在“中国东部”区域创建 1 个副本，在“中国东部 2”区域创建 1 个副本。 选择复制的目标区域时，请记住，还需包含托管磁盘或快照的源区域作为复制的目标。
+在此示例中，映像的版本为 *1.0.0*，我们打算使用区域冗余存储在“中国东部”区域创建 1 个副本，在“中国东部 2”区域创建 1 个副本。 选择复制的目标区域时，请记住，还需包含托管磁盘或快照的源区域作为复制的目标。
 
 在 `--os-snapshot` 参数中传入快照或托管磁盘的 ID。
 
@@ -125,6 +125,7 @@ az sig image-version create \
 > [!NOTE]
 > 需等待映像版本彻底生成并复制完毕，然后才能使用同一托管映像来创建另一映像版本。
 >
+> 也可在高级存储中存储所有映像版本副本，只需在创建映像版本时添加 `-StorageAccountType Premium_LRS` 即可。
 
 <!--Not Availale on  by adding `--storage-account-type standard_zrs` when you create the image version.-->
 <!--Not Available on , or [Zone Redundant Storage](/storage/common/storage-redundancy-zrs)-->
@@ -135,4 +136,4 @@ az sig image-version create \
 
 若要了解如何提供购买计划信息，请参阅[创建映像时提供 Azure 市场购买计划信息](marketplace-images.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

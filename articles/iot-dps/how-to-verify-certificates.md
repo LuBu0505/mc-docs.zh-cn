@@ -3,17 +3,16 @@ title: 使用 Azure IoT 中心设备预配服务验证 X.509 CA 证书
 description: 如何使用 Azure IoT 中心设备预配服务 (DPS) 进行 X.509 CA 证书的所有权证明
 author: wesmc7777
 ms.author: v-tawe
-origin.date: 02/26/2018
-ms.date: 09/30/2020
+ms.date: 02/22/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: d432484d15bbb16146a741f0ff9462586e37f64f
-ms.sourcegitcommit: 29a49e95f72f97790431104e837b114912c318b4
+ms.openlocfilehash: ad40eb923a3c33ced62e5724a2aae48220589a19
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91564626"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196911"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>如何使用设备预配服务执行 X.509 CA 证书的所有权证明
 
@@ -43,23 +42,23 @@ ms.locfileid: "91564626"
 
 6. 在“证书详细信息”中，单击“生成验证码”。  
 
-7. 预配服务会创建一个可用于验证证书所有权的**验证码**。 将此代码复制到剪贴板。 
+7. 预配服务会创建一个可用于验证证书所有权的 **验证码**。 将此代码复制到剪贴板。 
 
    ![验证证书](./media/how-to-verify-certificates/verify-cert.png)  
 
 ## <a name="digitally-sign-the-verification-code-to-create-a-verification-certificate"></a>对验证代码进行数字签名，以创建验证证书
 
-现在，需要使用与 X.509 CA 证书关联的、可生成签名的私钥来为*验证码*签名。 此过程称为[所有权证明](https://tools.ietf.org/html/rfc5280#section-3.1)，最终会生成一个签名的验证证书。
+现在，需要使用与 X.509 CA 证书关联的、可生成签名的私钥来为 *验证码* 签名。 此过程称为[所有权证明](https://tools.ietf.org/html/rfc5280#section-3.1)，最终会生成一个签名的验证证书。
 
 Microsoft 提供了工具和示例来帮助你创建签名的验证证书： 
 
 - **Azure IoT 中心 C SDK** 提供了 PowerShell (Windows) 和 (Linux) Bash 脚本来帮助你创建用于开发的 CA 证书和叶证书，以及使用验证码执行所有权证明。 可将系统相关的[文件](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates)下载到工作文件夹，并遵照[管理 CA 证书自述文件](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的说明执行 CA 证书的所有权证明。 
-- **Azure IoT 中心 C# SDK** 包含[组证书验证示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample)，可用于执行所有权证明。
+- **Azure IoT 中心 C# SDK** 包含 [组证书验证示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample)，可用于执行所有权证明。
  
 > [!IMPORTANT]
 > 除了执行所有权证明以外，使用上述 PowerShell 和 Bash 脚本还可创建根证书、中间证书和叶证书用于验证和预配设备。 只能在开发中使用这些证书。 切勿将它们用于生产环境。 
 
-文档和 SDK 中提供的 PowerShell 与 Bash 脚本依赖于 [OpenSSL](https://www.openssl.org/)。 还可以借助 OpenSSL 或其他第三方工具执行所有权证明。 有关 SDK 随附的工具的详细信息，请参阅[如何使用 SDK 随附的工具](how-to-use-sdk-tools.md)。 
+文档和 SDK 中提供的 PowerShell 与 Bash 脚本依赖于 [OpenSSL](https://www.openssl.org/)。 还可以借助 OpenSSL 或其他第三方工具执行所有权证明。 有关使用随 SDK 提供的工具的示例，请参阅[创建 X.509 证书链](tutorial-custom-hsm-enrollment-group-x509.md#create-an-x509-certificate-chain)。 
 
 
 ## <a name="upload-the-signed-verification-certificate"></a>上传已签名的验证证书

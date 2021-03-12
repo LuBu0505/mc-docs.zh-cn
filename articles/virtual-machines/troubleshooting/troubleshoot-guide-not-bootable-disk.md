@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 origin.date: 03/25/2020
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 43da0f3a512a826b62dc6ad9d99f29fd7f34087a
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: a8c1b64a75bdfba3634ba995fa080e6000a98f21
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106328"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054324"
 ---
 <!--Verified successfully-->
 # <a name="boot-error---this-is-not-a-bootable-disk"></a>启动错误 - 这不是可启动磁盘
@@ -43,10 +43,13 @@ ms.locfileid: "93106328"
 
 ### <a name="process-overview"></a>流程概述
 
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
+
 1. 创建并访问修复 VM。
 2. 将“分区状态”设置为“活动”。
 3. 修复磁盘分区。
-4. **建议** ：在重建 VM 之前，启用串行控制台和内存转储收集。
+4. **建议**：在重建 VM 之前，启用串行控制台和内存转储收集。
 5. 重建原始 VM。
 
     > [!NOTE]
@@ -124,7 +127,7 @@ ms.locfileid: "93106328"
 
 #### <a name="suggested-configuration-to-enable-os-dump"></a>用于启用 OS 转储的建议配置
 
-**加载损坏的 OS 磁盘** ：
+**加载损坏的 OS 磁盘**：
 
 `REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM`
 
@@ -152,4 +155,4 @@ ms.locfileid: "93106328"
 
 使用 [VM 修复命令的步骤 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重新装配 VM。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

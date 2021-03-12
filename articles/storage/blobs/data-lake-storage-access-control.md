@@ -5,16 +5,16 @@ author: WenJason
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-origin.date: 10/16/2020
-ms.date: 02/08/2021
+origin.date: 02/17/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.reviewer: jamesbak
-ms.openlocfilehash: 2cd98794899909a8a502dbc16d6d693fc436437b
-ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
+ms.openlocfilehash: 2a1b2150f04702ad30d3509833963a0b12b5ee25
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99504013"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196327"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制列表 (ACL)
 
@@ -29,18 +29,20 @@ Azure Data Lake Storage Gen2 实现了一个访问控制模型，该模型支持
 > [!NOTE]
 > ACL 仅应用于同一个租户中的安全主体，不应用于使用共享密钥或共享访问签名 (SAS) 令牌身份验证的用户。 那是因为没有与调用方关联的标识，因此不能执行基于安全主体权限的授权。  
 
+<a id="set-access-control-lists"></a>
+
 ## <a name="how-to-set-acls"></a>如何设置 ACL
 
 若要设置文件和目录级权限，请参阅以下任一文章：
 
 | 环境 | 项目 |
 |--------|-----------|
-|Azure 存储资源管理器 |[使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-explorer.md#managing-access)|
-|.NET |[使用 .NET 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-dotnet.md#manage-access-control-lists-acls)|
-|Java|[使用 Java 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-java.md#manage-access-control-lists-acls)|
-|Python|[使用 Python 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-python.md#manage-access-control-lists-acls)|
-|PowerShell|[使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-powershell.md#manage-access-control-lists-acls)|
-|Azure CLI|[使用 Azure CLI 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-cli.md#manage-access-control-lists-acls)|
+|Azure 存储资源管理器 |[使用 Azure 存储资源管理器设置 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-explorer-acl.md)|
+|.NET |[使用 .NET 设置 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-dotnet.md)|
+|Java|[使用 Java 设置 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-java.md)|
+|Python|[使用 Python 设置 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-python.md)|
+|PowerShell|[使用 PowerShell 设置 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-powershell.md)|
+|Azure CLI|[使用 Azure CLI 设置 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-cli.md)|
 |REST API |[路径 - 更新](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]

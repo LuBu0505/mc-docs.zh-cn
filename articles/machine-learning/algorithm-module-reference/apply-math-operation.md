@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 2a25fc25176c01f24feed8a8242972a93c3ea16e
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 98bbbf8912cbc4c4f64fdcb5a24519b9c1b2640c
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106269"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196825"
 ---
 # <a name="apply-math-operation"></a>应用数学运算
 
@@ -82,9 +82,9 @@ ms.locfileid: "93106269"
   
 1.  使用“输出模式”选项来指示要生成数学运算的方式： 
 
-    - **Append** 。 用作输入的所有列都包括在输出数据集中，另外还会追加一个包含数学运算结果的附加列。
-    - **Inplace** 。 用作输入的列中的值将替换为新的计算值。 
-    - **ResultOnly** 。 返回一列，其中包含数学运算的结果。
+    - **Append**。 用作输入的所有列都包括在输出数据集中，另外还会追加一个包含数学运算结果的附加列。
+    - **Inplace**。 用作输入的列中的值将替换为新的计算值。 
+    - **ResultOnly**。 返回一列，其中包含数学运算的结果。
   
 1.  提交管道。  
   
@@ -239,7 +239,7 @@ ms.locfileid: "93106269"
 
 ### <a name="pairmax"></a>PairMax
 
-返回两者中较大的值： **“列集”** 中的值或者常量或比较列中的值。  
+返回两者中较大的值：**“列集”** 中的值或者常量或比较列中的值。  
 
 ### <a name="pairmin"></a>PairMin
 
@@ -249,16 +249,19 @@ ms.locfileid: "93106269"
 
 包括基本算术运算：加法和减法、除法和乘法。  由于大多数运算都是二进制，需要两个数字，因此需要首先选择运算，然后选择要在第一个和第二个自变量中使用的列或数字。
 
-选择除法和减法列的顺序可能看起来不够直观。但是，为了更容易理解结果，列标题提供运算名称和列的使用顺序。
+除法和减法的顺序如下： 
+- Subtract(Arg1_Arg2) = Arg1 - Arg 2
+- Divide(Arg1_Arg2) =  Arg1 / Arg 2
 
+下表展示了一些示例
 操作|Num1|Num2|结果列|结果值|
 ----|----|----|----|----
-|加法|1|5|Add(Num2_Num1)| 4|
+|加法|1|5|Add(Num2_Num1)| 6|
 |乘法|1|5|Multiple(Num2_Num1)|5|
-|减法|1|5|Subtract(Num2_Num1)|4|
-|减法|0|1|Subtract(Num2_Num1)|0|
-|部门|1|5|Divide(Num2_Num1)|5|
-|部门|0|1|Divide(Num2_Num1)|无限|
+|减法|5|1|Subtract(Num2_Num1)|4|
+|减法|0|1|Subtract(Num2_Num1)|-1|
+|部门|5|1|Divide(Num2_Num1)|5|
+|部门|1|0|Divide(Num2_Num1)|无限|
 
 ### <a name="add"></a>添加
 

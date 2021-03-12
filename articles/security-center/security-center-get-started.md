@@ -13,14 +13,14 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 12/3/2018
-ms.date: 01/20/2021
+ms.date: 02/25/2021
 ms.author: v-johya
-ms.openlocfilehash: 3e486efe53d140f41659531cc5b3480e7ffdb86d
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: b4b4d481a2a4affaa532dc720380282031d87498
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751317"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197134"
 ---
 # <a name="quickstart-set-up-azure-security-center"></a>快速入门：设置 Azure 安全中心
 
@@ -89,7 +89,7 @@ Azure 安全中心跨混合云工作负荷提供统一的安全管理和威胁�
 
 1. 从安全中心的菜单中，选择“定价和设置”。
 1. 选择相关订阅。
-1. 在“数据收集”页上，将“自动预配”设置为“开启”  。
+1. 在“自动预配”页中，对于“用于 Azure VM 的 Log Analytics 代理”，将状态设置为“开”。
 1. 选择“保存”。
 
     :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="启用 Log Analytics 代理的自动预配":::

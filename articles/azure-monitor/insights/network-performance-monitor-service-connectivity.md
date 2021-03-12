@@ -5,16 +5,19 @@ ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 11/02/2020
+ms.date: 02/22/2021
 origin.date: 02/20/2018
-ms.openlocfilehash: 14d942813b42d9b6c0dc9a9f31979aaf9c166dc5
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: d29c2e4aa4e63355bbb45b597b503e9b0d011f89
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328796"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197627"
 ---
 # <a name="service-connectivity-monitor"></a>服务连接监视器
+
+> [!IMPORTANT]
+> 自 2021 年 7 月 1 日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 可以继续使用在 2021 年 7 月 1 日之前创建的测试。 为了最大程度地减少当前工作负荷的服务中断，请在 2024 年 2 月 29 日之前，在 Azure 网络观察程序中[将测试从网络性能监视器迁移到新连接监视器](/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md)。
 
 可以使用[网络性能监视器](network-performance-monitor.md)中的服务连接监视器功能，监视与 TCP 端口打开的任何终结点之间的网络连接。 此类终结点包括网站、SaaS 应用程序、PaaS 应用程序和 SQL 数据库。 
 
@@ -124,6 +127,6 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
 <!--Not available in MC: ## GCC Office URLs for US Government customers-->
 ## <a name="next-steps"></a>后续步骤
-[搜索日志](../log-query/log-query-overview.md)以查看详细的网络性能数据记录。
+[搜索日志](../logs/log-query-overview.md)以查看详细的网络性能数据记录。
 
 

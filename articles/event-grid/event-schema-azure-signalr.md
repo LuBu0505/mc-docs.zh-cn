@@ -1,26 +1,23 @@
 ---
-title: 充当事件网格源的 Azure SingnalR
+title: 充当事件网格源的 Azure SignalR
 description: 介绍为 Azure 事件网格中的 Azure SignalR 事件提供的属性
-services: event-grid
 author: Johnnytechn
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 03/05/2021
 ms.author: v-johya
-ms.openlocfilehash: 81533102bce3f99e33552a7493d5fd396b4db15f
-ms.sourcegitcommit: 81241aa44adbcac0764e2b5eb865b96ae56da6b7
+ms.openlocfilehash: fa0931658b24ed5cbfe59bf21daa5b648988a6ac
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83001973"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197187"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>SignalR 服务的 Azure 事件网格事件架构
 
-本文提供了 SignalR 服务事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。 它还提供了一个快速入门和教程的列表，这些快速入门和教程介绍如何使用 Azure SignalR 作为事件源。
+本文提供了 SignalR 服务事件的属性和架构。  有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。 它还提供了一个快速入门和教程的列表，这些快速入门和教程介绍如何使用 Azure SignalR 作为事件源。
 
-## <a name="event-grid-event-schema"></a>事件网格事件架构
 
-### <a name="available-event-types"></a>可用事件类型
+## <a name="available-event-types"></a>可用事件类型
 
 SignalR 服务发出以下事件类型：
 
@@ -29,8 +26,9 @@ SignalR 服务发出以下事件类型：
 | Microsoft.SignalRService.ClientConnectionConnected | 当连接客户端连接时引发。 |
 | Microsoft.SignalRService.ClientConnectionDisconnected | 当客户端连接断开连接时引发。 |
 
-### <a name="example-event"></a>示例事件
+## <a name="example-event"></a>示例事件
 
+# <a name="event-grid-event-schema"></a>[事件网格事件架构](#tab/event-grid-event-schema)
 以下示例显示了客户端连接已连接事件的架构： 
 
 ```json
@@ -72,30 +70,92 @@ SignalR 服务发出以下事件类型：
 }]
 ```
 
+# <a name="cloud-event-schema"></a>[云事件架构](#tab/cloud-event-schema)
+
+以下示例显示了客户端连接已连接事件的架构： 
+
+```json
+[{
+  "source": "/subscriptions/{subscription-id}/resourceGroups/signalr-rg/providers/Microsoft.SignalRService/SignalR/signalr-resource",
+  "subject": "/hub/chat",
+  "type": "Microsoft.SignalRService.ClientConnectionConnected",
+  "time": "2019-06-10T18:41:00.9584103Z",
+  "id": "831e1650-001e-001b-66ab-eeb76e069631",
+  "data": {
+    "timestamp": "2019-06-10T18:41:00.9584103Z",
+    "hubName": "chat",
+    "connectionId": "crH0uxVSvP61p5wkFY1x1A",
+    "userId": "user-eymwyo23"
+  },
+  "specversion": "1.0"
+}]
+```
+
+客户端连接断开连接事件的架构类似于： 
+
+```json
+[{
+  "source": "/subscriptions/{subscription-id}/resourceGroups/signalr-rg/providers/Microsoft.SignalRService/SignalR/signalr-resource",
+  "subject": "/hub/chat",
+  "type": "Microsoft.SignalRService.ClientConnectionDisconnected",
+  "time": "2019-06-10T18:41:00.9584103Z",
+  "id": "831e1650-001e-001b-66ab-eeb76e069631",
+  "data": {
+    "timestamp": "2019-06-10T18:41:00.9584103Z",
+    "hubName": "chat",
+    "connectionId": "crH0uxVSvP61p5wkFY1x1A",
+    "userId": "user-eymwyo23",
+    "errorMessage": "Internal server error."
+  },
+  "specversion": "1.0"
+}]
+```
+
+---
+
+
 ### <a name="event-properties"></a>事件属性
+
+
+# <a name="event-grid-event-schema"></a>[事件网格事件架构](#tab/event-grid-event-schema)
+事件具有以下顶级数据：
+
+| 属性 | 类型 | 说明 |
+| -------- | ---- | ----------- |
+| `topic` | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| `subject` | string | 事件主题的发布者定义路径。 |
+| `eventType` | string | 此事件源的一个注册事件类型。 |
+| `eventTime` | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| `id` | 字符串 | 事件的唯一标识符。 |
+| `data` | object | SignalR 服务事件数据。 |
+| `dataVersion` | string | 数据对象的架构版本。 发布者定义架构版本。 |
+| `metadataVersion` | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+
+# <a name="cloud-event-schema"></a>[云事件架构](#tab/cloud-event-schema)
 
 事件具有以下顶级数据：
 
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| 主题 | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| subject | string | 事件主题的发布者定义路径。 |
-| eventType | string | 此事件源的一个注册事件类型。 |
-| EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| id | string | 事件的唯一标识符。 |
-| 数据 | object | SignalR 服务事件数据。 |
-| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| `source` | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| `subject` | string | 事件主题的发布者定义路径。 |
+| `type` | string | 此事件源的一个注册事件类型。 |
+| `time` | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| `id` | 字符串 | 事件的唯一标识符。 |
+| `data` | object | SignalR 服务事件数据。 |
+| `specversion` | 字符串 | CloudEvents 架构规范版本。 |
+
+---
 
 数据对象具有以下属性：
 
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| timestamp | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| hubName | string | 客户端连接所属的中心。 |
-| connectionId | string | 客户端连接的唯一标识符。 |
-| userId | string | 声明中定义的用户标识符。 |
-| errorMessage | string | 导致连接断开连接的错误。 |
+| `timestamp` | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| `hubName` | 字符串 | 客户端连接所属的中心。 |
+| `connectionId` | string | 客户端连接的唯一标识符。 |
+| `userId` | string | 声明中定义的用户标识符。 |
+| `errorMessage` | string | 导致连接断开连接的错误。 |
 
 ## <a name="tutorials-and-how-tos"></a>教程和操作指南
 |标题 | 说明 |

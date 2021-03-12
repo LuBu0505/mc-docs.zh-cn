@@ -11,16 +11,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 origin.date: 08/24/2020
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: aa5429f56214e06102ea3a7bf57d45a3fa380ad6
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: e33844a26462d0076c298ec9dfa9d3b188181c4b
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93103774"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052883"
 ---
 <!--Verified successfully on Charactors only-->
 # <a name="virtual-machine-is-unresponsive-while-applying-audit-policy-configuration-policy"></a>在应用审核策略配置策略时，虚拟机无响应
@@ -47,6 +47,9 @@ ms.locfileid: "93103774"
 ## <a name="solution"></a>解决方案
 
 ### <a name="process-overview"></a>过程概述
+
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
 
 1. 创建和访问修复 VM。
 1. 禁用策略。
@@ -81,7 +84,7 @@ ms.locfileid: "93103774"
 
 1. 使用以下命令删除 CleanupProfiles 项：
 
-    `reg delete &quot;HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows\System" /v CleanupProfiles /f`
+    `reg delete "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows\System" /v CleanupProfiles /f`
 
 1. 使用以下命令卸载 BROKENSOFTWARE 配置单元：
 
@@ -89,7 +92,7 @@ ms.locfileid: "93103774"
 
 ### <a name="enable-the-serial-console-and-memory-dump-collection"></a>启用串行控制台和内存转储收集
 
-**建议** ：在重新生成 VM 之前，通过运行以下脚本来启用串行控制台和内存转储收集：
+**建议**：在重新生成 VM 之前，通过运行以下脚本来启用串行控制台和内存转储收集：
 
 1. 以管理员身份打开权限提升的命令提示符会话。
 1. 列出 BCD 存储数据，并确定要在下一步中使用的引导加载程序标识符。
@@ -100,24 +103,51 @@ ms.locfileid: "93103774"
 
         - 在该命令中，将 `<BOOT PARTITON>` 替换为附加磁盘中包含引导文件夹的分区驱动器号。
 
-            :::image type="content" source="./media/vm-unresponsive-applying-audit-configuration-policy/4.png" alt-text="注册表编辑器中用于加载配置单元的导航。":::
+            :::image type="content" source="./media/vm-unresponsive-applying-audit-configuration-policy/4.png" alt-text="图 4 显示列出了第 1 代 VM 中的 BCD 存储的输出，它在 Windows 引导加载程序下方列出标识符编号。":::
 
-    - 可以使用加载配置单元从脱机系统加载注册表项。 在这种情况下，系统是附加到修复 VM 的受损磁盘。
-    - 系统范围内的设置存储在 HKEY_LOCAL_MACHINE 上，可以缩写为 HKLM 。
+    1. 对于第 2 代 VM，请输入以下命令，并记下列出的标识符：
 
-1. 在附加的磁盘中，打开 `\windows\system32\config\SOFTWARE` 文件。
+        `bcdedit /store <LETTER OF THE EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /enum`
 
-    - 当系统提示你输入名称时，请输入 BROKENSOFTWARE。
-    - 若要验证是否已加载 BROKENSOFTWARE，请展开“HKEY_LOCAL_MACHINE”并查找已添加的 BROKENSOFTWARE 项  。
+        - 在该命令中，将 `<LETTER OF THE EFI SYSTEM PARTITION>` 替换为 EFI 系统分区的驱动器号。
+        - 这可能有助于启动“磁盘管理”控制台以识别标记为 EFI 系统分区的相应系统分区。
+        - 标识符可以是唯一的 GUID，也可以是默认的 bootmgr。
 
-1. 转到“BROKENSOFTWARE”，并检查加载的配置单元中是否有“CleanupProfile”项 。
+1. 运行以下命令：
 
-    - 如果该项存在，说明已设置 CleanupProfile 策略。 它的值表示以天为单位的保留策略。
-    - 如果该项不存在，说明未设置 CleanupProfile 策略。 在这种情况下，请跳到[连同内存转储文件一起提交支持工单](#collect-the-memory-dump-file-and-submit-a-support-ticket)。
+    **启用串行控制台**：
 
-1. 使用以下命令删除 CleanupProfiles 项：
+    ```
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON 
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
+    ```
 
-    `reg delete &quot;HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows\System" /v NMICrashDump /t REG_DWORD /d 1 /f 
+1. 验 OS 磁盘上的可用空间是否大于 VM 上的内存大小 (RAM)。
+
+    如果 OS 磁盘上没有足够的空间，请更改将要创建内存转储文件的位置，并将该位置引用到具有足够可用空间的 VM 上附加的任何数据磁盘。 若要更改位置，请在以下命令中将 %SystemRoot% 替换为数据磁盘的驱动器号（例如，F:）。
+
+    用于启用 OS 转储的建议配置：
+
+    **从损坏的 OS 磁盘加载注册表配置单元：**
+
+    ```
+    REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM
+    ```
+
+    **在 ControlSet001 上启用：**
+
+    ```
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f 
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f 
+    ```
+
+    **在 ControlSet002 上启用：**
+
+    ```
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f 
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f 
     ```
 
     **卸载损坏的 OS 磁盘：**
@@ -157,7 +187,8 @@ ms.locfileid: "93103774"
 
 1. 在修复 VM 上，转到附加的 OS 磁盘中的 Windows 文件夹。 如果分配给附加 OS 磁盘的驱动器号标记为 F，则需转到 `F:\Windows`。
 1. 找到 `memory.dmp` 文件，然后连同内存转储文件一起[提交支持票证](https://support.azure.cn/support/support-azure/)。
+1. 如果在查找 `memory.dmp` 文件时遇到问题，可以改为在串行控制台中使用不可屏蔽的中断 (NMI) 调用。 按照此处的指南，[使用 NMI 调用生成故障转储文件](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump)。
 
-<!--Not Available on [non-maskable interrupt (NMI) calls in serial console](/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls)-->
+    <!--NOT AVAILABLE ON [non-maskable interrupt (NMI) calls in serial console](./serial-console-windows.md#use-the-serial-console-for-nmi-calls)-->
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

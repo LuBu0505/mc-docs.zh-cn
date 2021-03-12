@@ -6,18 +6,18 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: how-to
-origin.date: 09/24/2020
-ms.date: 11/30/2020
+origin.date: 01/27/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 121b10370e5f116121524ec1a321f82c649ae279
-ms.sourcegitcommit: dabbf66e4507a4a771f149d9f66fbdec6044dfbf
+ms.openlocfilehash: 3e378bbf3d3c1c16d1360d9e733510eb64da89a6
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96153107"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196238"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>更改存储帐户的复制方式
 
@@ -38,13 +38,14 @@ Azure 存储提供以下类型的复制：
 
 | 切换 | …到 LRS | …到 GRS/RA-GRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>…从 LRS</b> | 空值 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置<sup>1</sup> |
+| <b>…从 LRS</b> | 空值 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置<sup>1,2</sup> |
 | <b>…从 GRS/RA-GRS</b> | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置 | 空值 |
 
-<sup>1</sup> 会产生一次性出口费用。
+<sup>1</sup> 会产生一次性出口费用。<br />
+<sup>2</sup> 如果存储帐户在存档层中包含 blob，则不支持从 LRS 迁移到 GRS。<br />
 
 > [!CAUTION]
-> 如果你为 (RA-)GRS 执行了[帐户故障转移](storage-disaster-recovery-guidance.md)，则在故障转移后该帐户在新的主要区域中是本地冗余的。 
+> 如果你为 (RA-)GRS 执行了[帐户故障转移](storage-disaster-recovery-guidance.md)，则在故障转移后该帐户在新的主要区域中是本地冗余 (LRS) 帐户。 
 
 ## <a name="change-the-replication-setting"></a>更改复制设置
 

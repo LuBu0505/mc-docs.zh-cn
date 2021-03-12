@@ -2,16 +2,16 @@
 title: 模板中的用户定义函数
 description: 介绍如何在 Azure 资源管理器模板（ARM 模板）中定义和使用用户定义函数。
 ms.topic: conceptual
-origin.date: 03/09/2020
+origin.date: 02/11/2021
 author: rockboyfor
-ms.date: 01/25/2021
+ms.date: 03/01/2021
 ms.author: v-yeche
-ms.openlocfilehash: b3a3217cadf02d02dd1ba20d93cdfab507678bbd
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: b584c46c4eeef414b73083ba331405d90701349f
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751292"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053923"
 ---
 # <a name="user-defined-functions-in-arm-template"></a>ARM 模板中用户定义的函数
 
@@ -47,7 +47,7 @@ ms.locfileid: "98751292"
 
 ## <a name="use-the-function"></a>使用函数
 
-下面的示例演示一个包含用户定义函数的模板。 它使用该函数获取存储帐户的唯一名称。 此模板有一个名为 `storageNamePrefix` 的参数，它将作为参数传递给该函数。
+下面的示例显示了一个模板，其中包含一个用户定义的函数，用于获取存储帐户的唯一名称。 此模板有一个名为 `storageNamePrefix` 的参数，它将作为参数传递给该函数。
 
 ```json
 {
@@ -96,6 +96,12 @@ ms.locfileid: "98751292"
 }
 ```
 
+在部署期间，`storageNamePrefix` 参数将传递给该函数：
+
+* 该模板定义了一个名为 `storageNamePrefix` 的参数。
+* 该函数使用 `namePrefix`，因为只能使用函数中定义的参数。 有关详细信息，请参阅[限制](#limitations)。
+* 在此模板的 `resources` 节中，`name` 元素使用该函数并将 `storageNamePrefix` 值传递给该函数的 `namePrefix`。
+
 ## <a name="limitations"></a>限制
 
 定义用户函数时，存在一些限制：
@@ -111,4 +117,4 @@ ms.locfileid: "98751292"
 * 若要了解用户定义的函数的可用属性，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 * 有关可用模板函数的列表，请参阅 [ARM 模板函数](template-functions.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

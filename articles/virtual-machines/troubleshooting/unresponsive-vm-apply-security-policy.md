@@ -2,8 +2,7 @@
 title: Azure VM 在将安全策略应用于系统时没有响应
 description: 本文提供了一些步骤来解决在将安全策略应用于 Azure VM 中的系统时，VM 没有响应且加载屏幕卡住的问题。
 services: virtual-machines-windows
-author: rockboyfor
-manager: digimobile
+manager: dcscontentpm
 tags: azure-resource-manager
 ms.assetid: a97393c3-351d-4324-867d-9329e31b5629
 ms.service: virtual-machines-windows
@@ -11,16 +10,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 origin.date: 06/15/2020
+author: rockboyfor
 ms.date: 07/27/2020
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: f858d521bf9f0dc2225459a87b1f8f27dd2e5e42
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 41bda0a0e3e1d0451387de4dd9ed3b3ea0b1a4a7
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106209"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052887"
 ---
 # <a name="azure-vm-is-unresponsive-while-applying-security-policy-to-the-system"></a>Azure VM 在将安全策略应用于系统时没有响应
 
@@ -34,7 +34,7 @@ ms.locfileid: "93106209"
 
 :::image type="content" source="media/unresponsive-vm-apply-security-policy/apply-policy.png" alt-text="Windows Server 2012 R2 启动屏幕卡住的屏幕截图。":::
 
-:::image type="content" source="media/unresponsive-vm-apply-security-policy/apply-policy-2.png" alt-text="Windows Server 2012 R2 启动屏幕卡住的屏幕截图。":::
+:::image type="content" source="media/unresponsive-vm-apply-security-policy/apply-policy-2.png" alt-text="操作系统启动屏幕卡住的屏幕截图。":::
 
 ## <a name="cause"></a>原因
 
@@ -44,10 +44,11 @@ ms.locfileid: "93106209"
 
 ### <a name="process-overview"></a>流程概述
 
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
+
 1. [创建和访问修复 VM](#create-and-access-a-repair-vm)
-    
-    <!--Not Available on 2. [Enable Serial Console and Memory Dump Collection](#enable-serial-console-and-memory-dump-collection)-->
-    
+2. [启用串行控制台和内存转储收集](#enable-serial-console-and-memory-dump-collection)
 3. [重新生成 VM](#rebuild-the-vm)
 4. [收集内存转储文件](#collect-the-memory-dump-file)
 
@@ -56,10 +57,78 @@ ms.locfileid: "93106209"
 1. 使用 [VM 修复命令的步骤 1-3](repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 来准备一个修复 VM。
 2. 使用远程桌面连接来连接到修复 VM。
 
-<!--Not Available on ### Enable Serial Console and Memory Dump Collection-->
+### <a name="enable-serial-console-and-memory-dump-collection"></a>启用串行控制台和内存转储收集
 
+若要启用内存转储集合和串行控制台，请运行以下脚本：
 
-### <a name="rebuild-the-vm"></a>重新生成 VM
+1. 打开提升的命令提示符会话（以管理员身份运行）。
+2. 列出 BCD 存储数据，并确定要在下一步中使用的引导加载程序标识符。
+
+     1. 对于第 1 代 VM，请输入以下命令，并记下列出的标识符：
+
+        ```console
+        bcdedit /store <BOOT PARTITON>:\boot\bcd /enum
+        ```
+
+        在该命令中，将 \<BOOT PARTITON> 替换为附加磁盘中包含引导文件夹的分区驱动器号。
+
+        :::image type="content" source="media/unresponsive-vm-apply-security-policy/store-data.png" alt-text="此图显示列出了第 1 代 VM 中的 BCD 存储的输出，它在 Windows 引导加载程序下方列出标识符编号。":::
+
+     2. 对于第 2 代 VM，请输入以下命令，并记下列出的标识符：
+
+        ```console
+        bcdedit /store <LETTER OF THE EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /enum
+        ```
+
+        - 在该命令中，将 \<LETTER OF THE EFI SYSTEM PARTITION> 替换为 EFI 系统分区的驱动器号。
+        - 这可能有助于启动“磁盘管理”控制台以识别标记为“EFI 系统分区”的相应系统分区。
+        - 标识符可以是唯一的 GUID，也可以是默认的“bootmgr”。
+3. 运行以下命令以启用串行控制台：
+
+    ```console
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON
+    ```
+
+    ```console
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
+    ```
+
+    - 在该命令中，将 \<VOLUME LETTER WHERE THE BCD FOLDER IS> 替换为 BCD 文件夹的驱动器号。
+    - 在该命令中，将 \<BOOT LOADER IDENTIFIER> 替换为在上一步骤中找到的标识符。
+4. 验证 OS 磁盘上的可用空间是否大于 VM 上的内存大小 (RAM)。
+
+    1. 如果 OS 磁盘上没有足够的空间，则应更改将在其中创建内存转储文件的位置。 不要在 OS 磁盘上创建文件，可以将其指向附加到 VM 且具有足够可用空间的任何其他数据磁盘。 若要更改位置，请将下面列出的命令中的“%SystemRoot%”替换为数据磁盘的驱动器号（例如“F:”）。
+    2. 输入以下命令（建议的转储配置）：
+
+        加载损坏的 OS 磁盘：
+
+        ```console
+        REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM
+        ```
+
+        在 ControlSet001 上启用：
+
+        ```console
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
+        ```
+
+        在 ControlSet002 上启用：
+
+        ```console
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
+        ```
+
+        卸载损坏的 OS 磁盘：
+
+        ```console
+        REG UNLOAD HKLM\BROKENSYSTEM
+        ```
+
+### <a name="rebuild-the-vm"></a>重建 VM
 
 使用 [VM 修复命令的步骤 5](repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重新装配 VM。
 
@@ -76,12 +145,12 @@ ms.locfileid: "93106209"
 
     - 在修复 VM 上，转到附加的 OS 磁盘中的 Windows 文件夹。 如果分配给附加 OS 磁盘的驱动器号为 `F`，则需转到 `F:\Windows`。
     - 找到 memory.dmp 文件，然后使用该内存转储文件[提交支持票证](https://support.azure.cn/support/support-azure/)。
+    - 如果在查找 memory.dmp 文件时遇到问题，可以改为在串行控制台中使用不可屏蔽的中断 (NMI) 调用。 可以按照指南，[使用 NMI 调用生成故障转储文件](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump)。
     
-    <!--Not Available on [non-maskable interrupt (NMI) calls in serial console](serial-console-windows.md#use-the-serial-console-for-nmi-calls)-->
+    <!--NOT AVAILABLE ON [non-maskable interrupt (NMI) calls in serial console](serial-console-windows.md#use-the-serial-console-for-nmi-calls)-->
     
 ## <a name="next-steps"></a>后续步骤
 
 如果在应用本地用户和组策略时遇到问题，请参阅[应用组策略本地用户和组策略时，VM 无响应](unresponsive-vm-apply-group-policy.md)
 
-<!-- Update_Description: new article about unresponsive vm apply security policy -->
-<!--NEW.date: 07/27/2020-->
+<!--Update_Description: update meta properties, wording update, update link-->

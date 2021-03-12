@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 03/13/2020
 author: rockboyfor
-ms.date: 10/05/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: c14bcd8cc9af1aba02fec11fa0c69651e1280447
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: e52fe23c02240793d36f424599f4ff980f1195ee
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507462"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102108773"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>在虚拟机中添加或删除网络接口。
 
@@ -36,22 +36,26 @@ ms.locfileid: "96507462"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-如果你没有 Azure 帐户，请使用有效的订阅设置一个帐户。 [免费创建帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。 在开始学习本文的余下内容之前，请完成以下任务之一：
+如果你没有 Azure 帐户，请使用有效的订阅设置一个帐户。 [创建试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。 在开始学习本文的余下内容之前，请完成以下任务之一：
 
-- **门户用户**：使用 Azure 帐户登录到 [Azure 门户](https://portal.azure.cn)。
+- **门户用户**： 
+    
+    使用 Azure 帐户登录到 [Azure 门户](https://portal.azure.cn)。
 
-- **PowerShell 用户**：在计算机中运行 PowerShell。
+- **PowerShell 用户**： 
+    
+    使用管理员权限从计算机运行 PowerShell。
     
     <!--Not Available on [Azure Cloud Shell](https://shell.azure.com/powershell)-->
     <!--Not Available on In the Azure Cloud Shell browser tab, find the **Select environment** dropdown list, then pick **PowerShell** if it isn't already selected.-->
 
     如果在本地运行 PowerShell，请使用 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az.Network` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 运行 `Connect-AzAccount -Environment AzureChinaCloud`，创建与 Azure 的连接。
 
-- **Azure 命令行接口 (CLI) 用户**：在计算机中运行 CLI。 
+- **Azure 命令行接口 (CLI) 用户**： 
 
-    如果在本地运行 Azure CLI，请使用 Azure CLI 2.0.26 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli)。 运行 `az login`，创建与 Azure 的连接。
+    在计算机中运行 CLI。 如果在本地运行 Azure CLI，请使用 Azure CLI 2.0.26 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli)。 运行 `az login`，创建与 Azure 的连接。
 
-    <!--Not Available on Either run the commands in the [Azure local Shell](https://shell.azure.com)-->
+   [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
 ## <a name="add-existing-network-interfaces-to-a-new-vm"></a>将现有网络接口添加到新 VM
 
@@ -63,7 +67,7 @@ ms.locfileid: "96507462"
 
 |工具|命令|
 |---|---|
-|CLI|[az network nic create](https://docs.azure.cn/cli/network/nic?toc=%2fvirtual-network%2ftoc.json#az-network-nic-create)|
+|CLI|[az network nic create](https://docs.azure.cn/cli/network/nic?toc=%2fvirtual-network%2ftoc.json#az_network_nic_create)|
 |PowerShell|[New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface?toc=%2fvirtual-network%2ftoc.json)|
 
 <a name="vm-add-nic"></a>
@@ -73,7 +77,7 @@ ms.locfileid: "96507462"
 
 1. 转到 [Azure 门户](https://portal.azure.cn)来查找现有虚拟机。 搜索并选择“虚拟机”。
 
-2. 选择你的 VM 的名称。 该 VM 必须支持要添加的网络接口的数量。 若要了解每个 VM 大小支持的网络接口数量，请参阅 Azure 中适用于 [Linux VM](../virtual-machines/linux/sizes.md?toc=%2fvirtual-network%2ftoc.json) 或 [Windows VM](../virtual-machines/windows/sizes.md?toc=%2fvirtual-network%2ftoc.json) 的大小。
+2. 选择你的 VM 的名称。 该 VM 必须支持要添加的网络接口的数量。 若要了解每个 VM 大小支持的网络接口数量，请参阅 Azure 中适用于 [Linux VM](../virtual-machines/sizes.md?toc=%2fvirtual-network%2ftoc.json) 或 [Windows VM](../virtual-machines/sizes.md?toc=%2fvirtual-network%2ftoc.json) 的大小。
 
 3. 在 VM 命令栏中，选择“停止”，然后在确认对话框中选择“确定”。 然后，等待 VM 的“状态”更改为“已停止(已解除分配)” 。
 
@@ -92,7 +96,7 @@ ms.locfileid: "96507462"
 
 |工具|命令|
 |---|---|
-|CLI|[az vm nic add](https://docs.azure.cn/cli/vm/nic?toc=%2fvirtual-network%2ftoc.json#az-vm-nic-add)（参考）；[详细步骤](../virtual-machines/linux/multiple-nics.md?toc=%2fvirtual-network%2ftoc.json#add-a-nic-to-a-vm)|
+|CLI|[az vm nic add](https://docs.azure.cn/cli/vm/nic?toc=%2fvirtual-network%2ftoc.json#az_vm_nic_add)（参考）；[详细步骤](../virtual-machines/linux/multiple-nics.md?toc=%2fvirtual-network%2ftoc.json#add-a-nic-to-a-vm)|
 |PowerShell|[Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface?toc=%2fvirtual-network%2ftoc.json)（参考）；[详细步骤](../virtual-machines/windows/multiple-nics.md?toc=%2fvirtual-network%2ftoc.json#add-a-nic-to-an-existing-vm)|
 
 <a name="vm-view-nic"></a>
@@ -115,7 +119,7 @@ ms.locfileid: "96507462"
 
 |工具|命令|
 |---|---|
-|CLI|[az vm nic list](https://docs.azure.cn/cli/vm/nic?toc=%2fvirtual-network%2ftoc.json#az-vm-nic-list)|
+|CLI|[az vm nic list](https://docs.azure.cn/cli/vm/nic?toc=%2fvirtual-network%2ftoc.json#az_vm_nic_list)|
 |PowerShell|[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm?toc=%2fvirtual-network%2ftoc.json)|
 
 <a name="vm-remove-nic"></a>
@@ -140,14 +144,14 @@ ms.locfileid: "96507462"
 
 |工具|命令|
 |---|---|
-|CLI|[az vm nic remove](https://docs.azure.cn/cli/vm/nic?toc=%2fvirtual-network%2ftoc.json#az-vm-nic-remove)（参考）；[详细步骤](../virtual-machines/linux/multiple-nics.md?toc=%2fvirtual-network%2ftoc.json#remove-a-nic-from-a-vm)|
+|CLI|[az vm nic remove](https://docs.azure.cn/cli/vm/nic?toc=%2fvirtual-network%2ftoc.json#az_vm_nic_remove)（参考）；[详细步骤](../virtual-machines/linux/multiple-nics.md?toc=%2fvirtual-network%2ftoc.json#remove-a-nic-from-a-vm)|
 |PowerShell|[Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface?toc=%2fvirtual-network%2ftoc.json)（参考）；[详细步骤](../virtual-machines/windows/multiple-nics.md?toc=%2fvirtual-network%2ftoc.json#remove-a-nic-from-an-existing-vm)|
 
 ## <a name="constraints"></a>约束
 
 - VM 上必须至少附加一个网络接口。
 
-- VM 上附加的网络接口数量不能超过 VM 大小支持的数量。 若要详细了解每个 VM 大小支持的网络接口数量，请参阅 Azure 中适用于 [Linux VM](../virtual-machines/linux/sizes.md?toc=%2fvirtual-network%2ftoc.json) 或 [Windows VM](../virtual-machines/windows/sizes.md?toc=%2fvirtual-network%2ftoc.json) 的大小。 所有大小至少支持两个网络接口。
+- VM 上附加的网络接口数量不能超过 VM 大小支持的数量。 若要详细了解每个 VM 大小支持的网络接口数量，请参阅 Azure 中适用于 [Linux VM](../virtual-machines/sizes.md?toc=%2fvirtual-network%2ftoc.json) 或 [Windows VM](../virtual-machines/sizes.md?toc=%2fvirtual-network%2ftoc.json) 的大小。 所有大小至少支持两个网络接口。
 
 - 目前，添加到一个 VM 的网络接口不能附加到另一个 VM。 若要详细了解如何创建网络接口，请参阅[创建网络接口](virtual-network-network-interface.md#create-a-network-interface)。
 
@@ -157,7 +161,7 @@ ms.locfileid: "96507462"
 
 - 你可以控制要将出站流量发送到的网络接口。 但是，VM 默认情况下会将所有出站流量都发送到分配给主网络接口的主 IP 配置的 IP 地址。
 
-- 过去，同一个可用性集中的所有 VM 都需要有一个或多个网络接口。 现在，同一个可用性集中可以存在具有任意数目的网络接口的 VM，只要 VM 大小支持该数目。 只能在创建 VM 时将其添加到可用性集。 若要详细了解可用性集，请参阅[在 Azure 中管理 VM 的可用性](../virtual-machines/windows/manage-availability.md?toc=%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)。
+- 过去，同一个可用性集中的所有 VM 都需要有一个或多个网络接口。 现在，同一个可用性集中可以存在具有任意数目的网络接口的 VM，只要 VM 大小支持该数目。 只能在创建 VM 时将其添加到可用性集。 若要详细了解可用性集，请参阅[在 Azure 中管理 VM 的可用性](../virtual-machines/manage-availability.md?toc=%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)。
 
 - 可以将同一 VM 中的网络接口连接到虚拟网络中的不同子网。 但是，网络接口必须全部连接到同一个虚拟网络。
 
@@ -177,4 +181,4 @@ ms.locfileid: "96507462"
 |创建具有多个 IPv4 地址的单 NIC VM|[CLI](virtual-network-multiple-ip-addresses-cli.md)、[PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|
 |创建具有专用 IPv6 地址的单 NIC VM（在 Azure 负载均衡器后）|[CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fvirtual-network%2ftoc.json)、[PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fvirtual-network%2ftoc.json)、[Azure 资源管理器模板](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fvirtual-network%2ftoc.json)|
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

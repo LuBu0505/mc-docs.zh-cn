@@ -5,16 +5,16 @@ services: container-service
 ms.topic: article
 origin.date: 09/21/2020
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9f77a128ed8f9668ef97a6c106dbc658abef3d3d
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 51dc3b74e2002c96589320a031a798ddfc72eca0
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004044"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054420"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 中的已授权 IP 地址范围保护对 API 服务器的访问
 
@@ -33,7 +33,7 @@ ms.locfileid: "97004044"
 API 服务器授权的 IP 范围功能具有以下限制：
 - 在将 API 服务器授权的 IP 地址范围移出 2019 年 10 月的预览后所创建的群集上，仅标准 SKU 负载均衡器支持 API 服务器授权的 IP 地址范围。 配置了基本 SKU 负载均衡器和 API 服务器已授权 IP 地址范围的现有群集将继续按原有方式工作，但不能迁移到标准 SKU 负载均衡器 。 即使 Kubernetes 版本或控制平面升级后，这些现有群集也会继续工作。 专用群集不支持 API 服务器授权 IP 地址范围。
 
-<!--Not Avaialble on [Public IP per Node node pools preview feature](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools-preview)-->
+<!--NOT AVAILABLE ON [Public IP per Node node pools preview feature](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools-preview)-->
 
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>API 服务器已授权 IP 范围的概述
 
@@ -72,7 +72,7 @@ az aks create \
 >
 > 规则最多可能需要 2 分钟才生效。 在测试连接时，请等待相应时长的时间。
 
-<!--Not Available on Line 66+1 > [additional ranges based on your region][dev-spaces-ranges]-->
+<!--NOT AVAILABLE ON Line 66+1 > [additional ranges based on your region][dev-spaces-ranges]-->
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>指定标准 SKU 负载均衡器的出站 IP
 
@@ -137,6 +137,23 @@ az aks update \
     --api-server-authorized-ip-ranges ""
 ```
 
+## <a name="find-existing-authorized-ip-ranges"></a>查找现有的已授权 IP 范围
+
+若要查找已经过授权的 IP 范围，请使用 [az aks show][az-aks-show]，并指定群集的名称和资源组。 例如：
+
+```azurecli
+az aks show \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --query apiServerAccessProfile.authorizedIpRanges'
+```
+
+## <a name="update-disable-and-find-authorized-ip-ranges-using-azure-portal"></a>使用 Azure 门户来更新、禁用和查找已授权 IP 范围
+
+还可以在 Azure 门户中执行上述添加、更新、查找和禁用已授权 IP 范围的操作。 若要访问，请在群集资源的菜单边栏选项卡中导航到“设置”下的“网络” 。
+
+:::image type="content" source="media/api-server-authorized-ip-ranges/ip-ranges-specified.PNG" alt-text="在浏览器中，显示群集资源的网络设置 Azure 门户页面。选项“设置指定的 IP 范围”和“指定的 IP 范围”已突出显示。":::
+
 ## <a name="how-to-find-my-ip-to-include-in---api-server-authorized-ip-ranges"></a>如何找到要包含在 `--api-server-authorized-ip-ranges` 中的 IP？
 
 必须将开发计算机、工具或自动化 IP 地址添加到 AKS 群集的已批准 IP 范围列表，以便从该处访问 API 服务器。 
@@ -173,7 +190,7 @@ Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
 
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 
-<!--Not Available on [dev-spaces-ranges]: ../dev-spaces/configure-networking.md#aks-cluster-network-requirements-->
+<!--NOT AVAILABLE ON [dev-spaces-ranges]: ../dev-spaces/configure-networking.md#aks-cluster-network-requirements-->
 
 [kubenet]: https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#kubenet
 
@@ -181,6 +198,7 @@ Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
 
 [az-aks-update]: https://docs.azure.cn/cli/ext/aks-preview/aks#ext_aks_preview_az_aks_update
 [az-aks-create]: https://docs.azure.cn/cli/aks#az_aks_create
+[az-aks-show]: https://docs.azure.cn/cli/aks#az_aks_show
 [az-network-public-ip-list]: https://docs.azure.cn/cli/network/public-ip#az_network_public_ip_list
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
 [concepts-security]: concepts-security.md
@@ -189,4 +207,4 @@ Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
 [route-tables]: ../virtual-network/manage-route-table.md
 [standard-sku-lb]: load-balancer-standard.md
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

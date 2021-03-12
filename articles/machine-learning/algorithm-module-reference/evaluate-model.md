@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 origin.date: 07/27/2020
 ms.date: 08/24/2020
-ms.openlocfilehash: 4a4833cc98614df1b80377cbfb5d8e3bf356585d
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: be0117adc4b35ae934689f2ad6d9d6525bd9731a
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978156"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196471"
 ---
 # <a name="evaluate-model-module"></a>“评估模型”模块
 
@@ -95,7 +95,7 @@ ms.locfileid: "94978156"
   
 -   “F1 分数”计算为查准率与查全率的加权平均值，介于 0 到 1 之间，理想的 F1 分数值为 1。  
   
--   “AUC”度量绘制的曲线下面的面积（在 y 轴上绘制真报率，在 x 轴上绘制误报率）。 此指标非常有用，因为它提供单个数字让你比较不同类型的模型。  
+-   “AUC”度量绘制的曲线下面的面积（在 y 轴上绘制真报率，在 x 轴上绘制误报率）。 此指标非常有用，因为它提供单个数字让你比较不同类型的模型。 AUC 不随分类阈值而变化。 它度量模型预测的质量，而不管选择的分类阈值如何。
 
 
 ### <a name="metrics-for-regression-models"></a>回归模型的指标

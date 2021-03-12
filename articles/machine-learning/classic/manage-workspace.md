@@ -1,21 +1,20 @@
 ---
-title: 管理工作区
-titleSuffix: ML Studio (classic) - Azure
+title: ML 工作室（经典版）：管理工作区 - Azure
 description: 管理对 Azure 机器学习工作室（经典）工作区的访问，部署并管理机器学习 API Web 服务
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
-ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+ms.subservice: studio-classic
+ms.topic: how-to
+author: likebupt
+ms.author: v-yiso
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/27/2017
-ms.openlocfilehash: f1c067820442265ecee127bd63e3b75df038474c
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 3e78e9a16c96f4b3488ec6effcd7c1684b63efc8
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978207"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196580"
 ---
 # <a name="manage-an-azure-machine-learning-studio-classic-workspace"></a>管理 Azure 机器学习工作室（经典）工作区
 
@@ -49,7 +48,7 @@ ms.locfileid: "94978207"
 > [!NOTE]
 > 若要部署或管理新 Web 服务，必须分配有该 Web 服务部署到的订阅上的参与者或管理员角色。 如果邀请其他用户加入机器学习工作室（经典）工作区，必须向其分配订阅上的参与者或管理员角色，然后这些用户才能部署或管理 Web 服务。 
 > 
->有关设置访问权限的更多信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
+>有关设置访问权限的详细信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * 详细了解[使用 Azure 资源管理器模板部署机器学习](deploy-with-resource-manager-template.md)。 

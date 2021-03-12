@@ -6,18 +6,18 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: how-to
-origin.date: 12/07/2020
-ms.date: 01/18/2021
+origin.date: 02/10/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a6dff80f407b9104eb5337fe9d3a9e0879205643
-ms.sourcegitcommit: f086abe8bd2770ed10a4842fa0c78b68dbcdf771
+ms.openlocfilehash: a4332d45b8f485ca1e8bdd4ac6791244ea97050d
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98163220"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196353"
 ---
 # <a name="use-powershell-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>使用 PowerShell 为 blob 和队列数据访问分配 Azure 角色
 
@@ -61,8 +61,10 @@ Storage Queue Data Reader                 Allows for read access to Azure Storag
 
 若要将 Azure 角色分配给安全主体，请使用 [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) 命令。 命令的格式因分配范围而异。 为了运行此命令，需要在相应的范围内分配“所有者”和“参与者”角色。 以下示例显示如何在各种范围内为用户分配角色，但可以使用相同的命令将角色分配给任何安全主体。
 
-> [!NOTE]
-> 创建 Azure 存储帐户时，系统不会自动向你分配通过 Azure AD 访问数据的权限。 你必须为自己显式分配一个用于 Azure 存储的 Azure 角色。 可以在订阅、资源组、存储帐户、容器或队列级别分配它。
+> [!IMPORTANT]
+> 创建 Azure 存储帐户时，系统不会自动向你分配通过 Azure AD 访问数据的权限。 必须为自己显式分配一个 Azure RBAC 角色以进行数据访问。 可以在订阅、资源组、存储帐户、容器或队列级别分配它。
+>
+> 如果存储帐户被 Azure 资源管理器只读锁锁定，那么该锁将阻止将范围限定为存储帐户或数据容器（blob 容器或队列）的 Azure RBAC 角色分配。
 
 ### <a name="container-scope"></a>容器范围
 

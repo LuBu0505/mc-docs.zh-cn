@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 11/13/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: d545246c79aab21a2091e5bb7ff824a46e4df35c
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: c24317d21742e0080ef25201de83912fd8880466
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023097"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196624"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>如何将工作区用于自定义 DNS 服务器
 
@@ -34,9 +34,9 @@ ms.locfileid: "98023097"
 
 - （可选）[Azure CLI](/cli/install-azure-cli) 或 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
-## <a name="find-the-ip-addresses"></a>查找 IP 地址
+## <a name="fqdns-in-use"></a>正在使用的 FQDN
 
-以下列表包含工作区和专用终结点使用的完全限定域名 (FQDN)：
+以下列表包含工作区使用的完全限定域名 (FQDN)：
 
 * `<workspace-GUID>.workspace.<region>.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
@@ -47,6 +47,19 @@ ms.locfileid: "98023097"
 
     > [!NOTE]
     > 只能从虚拟网络内访问计算实例。
+    
+### <a name="these-fqdns-are-in-use-in-all-other-regions"></a>这些 FQDN 正在所有其他区域中使用
+以下列表包含工作区使用的完全限定域名 (FQDN)：
+
+* `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
+* `<workspace-GUID>.workspace.<region>.api.azureml.ms`
+* `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.net`
+* `<instance-name>.<region>.instances.azureml.ms`
+
+    > [!NOTE]
+    > 只能从虚拟网络内访问计算实例。
+
+## <a name="find-the-ip-addresses"></a>查找 IP 地址
 
 若要在 VNet 中查找 FQDN 的内部 IP 地址，请使用以下方法之一：
 
@@ -85,7 +98,7 @@ $workspaceDns.CustomDnsConfigs | format-table
 | `ml-myworkspace-eastus-fb7e20a0-8891-458b-b969-55ddb3382f51.notebooks.azure.net` | `10.1.0.6` |
 
 > [!IMPORTANT]
-> 工作区需要的某些 FQDN 未显示在专用终结点显示的列表中。 下表列出了这些 FQDN，还需要将其添加到 DNS 服务器：
+> 工作区需要的某些 FQDN 未显示在专用终结点显示的列表中。 下表列出了这些 FQDN，还需要将其添加到 DNS 服务器和/或 Azure 专用 DNS 区域：
 >
 > * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`

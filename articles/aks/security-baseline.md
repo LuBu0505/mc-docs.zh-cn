@@ -5,17 +5,17 @@ ms.service: container-service
 ms.topic: conceptual
 origin.date: 10/01/2020
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 10/26/2020
 ms.author: v-yeche
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3592c961075ba8c9775557c0acb2aa430a8f405f
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 084be8763b645f3e595dc9b70577be4240c377b9
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063703"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054354"
 ---
 <!--Verified successfully-->
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>适用于 Azure Kubernetes 服务的 Azure 安全基线
@@ -535,10 +535,11 @@ Azure 会管理服务标记包含的地址前缀，并会在地址发生更改�
 
 **责任**：客户
 
-<!--Not Available on ### 3.12: Alert on account login behavior deviation-->
+<!--NOT AVAILABLE ON ### 3.12: Alert on account login behavior deviation-->
 <!--NOT AVAILABLE ON - [How to view Azure AD risky sign-ins](../active-directory/identity-protection/overview-identity-protection.md)-->
 <!--NOT AVAILABLE ON - [How to configure and enable Identity Protection risk policies](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)-->
 <!--NOT AVAILABLE ON - [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
+
 ### <a name="313-provide-azure-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：在支持场合下为 Azure 提供对相关客户数据的访问权限
 
 **指导**：不适用于 Azure Kubernetes 服务 (AKS)，因为它不受客户密码箱支持。
@@ -704,11 +705,11 @@ Azure 管理底层平台，并将所有客户内容视为敏感数据，竭尽�
 
 使用安全中心为每个漏洞提供可操作的建议。 这些建议包括严重程度分类和补救指南。 
 
-<!--Not Available on - [Best practices for container image management and security in Azure Kubernetes Service (AKS)](../security-center/defender-for-container-registries-introduction.md)-->
+- [Azure Kubernetes 服务 (AKS) 中容器映像管理和安全性的最佳做法](../security-center/defender-for-container-registries-introduction.md)
 
 - [了解 AKS 中容器映像管理和安全性的最佳做法](operator-best-practices-container-image-management.md)
 
-<!--Not Available on - [Understand container Registry integration with Azure Security Center](../security-center/defender-for-container-registries-introduction.md)-->
+- [了解容器注册表与 Azure 安全中心的集成](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure 安全中心监视**：是
 

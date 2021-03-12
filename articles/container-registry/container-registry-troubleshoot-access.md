@@ -4,16 +4,16 @@ description: 访问位于虚拟网络中或防火墙后面的 Azure 容器注册
 ms.topic: article
 origin.date: 10/01/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 09/14/2020
 ms.author: v-yeche
-ms.openlocfilehash: d7a17c485a98bd61476bc95eec2db772bc032364
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 6f7946095fb02b1e706062be9c550abae34db3c2
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230859"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055147"
 ---
 <!--Verified Successfully-->
 # <a name="troubleshoot-network-issues-with-registry"></a>排查与注册表相关的网络问题
@@ -46,6 +46,10 @@ ms.locfileid: "98230859"
 运行 [az acr check-health](https://docs.azure.cn/cli/acr#az_acr_check_health) 命令可详细了解注册表环境的运行状况，以及对目标注册表的访问（可选）。 例如，诊断某些网络连接或配置问题。 
 
 参阅[检查 Azure 容器注册表的运行状况](container-registry-check-health.md)以查看命令示例。 如果报告了错误，请查看[错误参考](container-registry-health-error-reference.md)和以下部分，以了解建议的解决方案。
+
+如果在将注册表与 Azure Kubernetes 服务配合使用时遇到问题，请运行 [az aks check-acr](https://docs.microsoft.com/cli/azure/aks#az_aks_check_acr) 命令，以验证是否可以从 AKS 群集访问该注册表。
+
+<!--CORRECT ON https://docs.microsoft.com/cli/azure/aks#az_aks_check_acr-->
 
 > [!NOTE]
 > 当注册表身份验证或授权存在问题时，也可能出现一些网络连接症状。 请参阅[注册表登录故障排除](container-registry-troubleshoot-login.md)。
@@ -83,7 +87,7 @@ ContainerRegistryLoginEvents 表中的注册表资源日志可能有助于诊断
 * [配置公共 IP 网络规则](container-registry-access-selected-networks.md)
 * [使用 Azure 专用链接以私密方式连接到 Azure 容器注册表](container-registry-private-link.md)
 
-<!--Not Available on [Restrict access to a container registry using a service endpoint in an Azure virtual network](container-registry-vnet.md)-->
+    <!--NOT AVAILABLE ON * [Restrict access to a container registry using a service endpoint in an Azure virtual network](container-registry-vnet.md)-->
 
 ### <a name="configure-vnet-access"></a>配置 VNet 访问权限
 
@@ -103,7 +107,7 @@ ContainerRegistryLoginEvents 表中的注册表资源日志可能有助于诊断
 
 * [使用 Azure 专用链接以私密方式连接到 Azure 容器注册表](container-registry-private-link.md)
 
-    <!--Not Available on * [Restrict access to a container registry using a service endpoint in an Azure virtual network](container-registry-vnet.md)-->
+    <!--NOT AVAILABLE ON * [Restrict access to a container registry using a service endpoint in an Azure virtual network](container-registry-vnet.md)-->
 
 * [AKS 群集所需的出站网络规则和 FQDN](../aks/limit-egress-traffic.md#required-outbound-network-rules-and-fqdns-for-aks-clusters)
 * [Kubernetes：调试 DNS 解析](https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/)
@@ -111,24 +115,19 @@ ContainerRegistryLoginEvents 表中的注册表资源日志可能有助于诊断
 
 ### <a name="configure-service-access"></a>配置服务访问
 
-目前，Azure 安全中心无法在限制对专用终结点、所选子网或 IP 地址进行访问的注册表中执行映像漏洞扫描。 此外，以下服务的资源无法访问具有网络限制的容器注册表：
+目前，多个 Azure 服务不允许访问具有网络限制的容器注册表：
 
-<!--Not Available on [image vulnerability scanning](../security-center/defender-for-container-registries-introduction.md?bc=%252fazure%252fcontainer-registry%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fcontainer-registry%252ftoc.json)-->
-
-<!--Not Available on * Azure DevOps Services-->
-
-* Azure 容器实例
-* Azure 容器注册表任务
+* Azure 安全中心无法在限制对专用终结点、所选子网或 IP 地址进行访问的注册表中执行[映像漏洞扫描](../security-center/defender-for-container-registries-introduction.md?bc=%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fcontainer-registry%2ftoc.json)。 
+* 某些 Azure 服务（包括 Azure 应用服务和 Azure 容器实例）的资源无法访问具有网络限制的容器注册表。
 
 如果需要使用容器注册表访问或集成这些 Azure 服务，请去除网络限制。 例如，删除注册表的专用终结点，或者删除或修改注册表的公共访问规则。
 
+从 2021 年 1 月开始，可以将受网络限制的注册表配置为[允许从所选的受信任服务访问](allow-access-trusted-services.md)。
 相关链接：
 
-<!--Not Avaiable on [Azure Container Registry image scanning by Security Center](../security-center/azure-container-registry-integration.md)-->
-
+* [通过安全中心扫描 Azure 容器注册表映像](../security-center/defender-for-container-registries-introduction.md)
 * 提供[反馈](https://support.azure.cn/support/contact/)
-* [配置公共 IP 网络规则](container-registry-access-selected-networks.md)
-* [使用 Azure 专用链接以私密方式连接到 Azure 容器注册表](container-registry-private-link.md)
+* [允许受信任的服务安全访问受网络限制的容器注册表](allow-access-trusted-services.md)
 
 ## <a name="advanced-troubleshooting"></a>高级故障排除
 
@@ -152,4 +151,4 @@ ContainerRegistryLoginEvents 表中的注册表资源日志可能有助于诊断
 * [Microsoft 问答](https://docs.microsoft.com/answers/products/)
 * [开具支持票证](https://support.azure.cn/support/support-azure/)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -5,20 +5,20 @@ author: Johnnytechn
 ms.service: virtual-machines-linux
 ms.topic: how-to
 origin.date: 07/18/2018
-ms.date: 02/01/2021
+ms.date: 03/04/2021
 ms.author: v-johya
 ms.subservice: disks
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1e1297ecd965ee9b74c052742ae12cd00cc5524f
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: 8f2607e7a4685ca3b1829589c192f977dad6df7f
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579608"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197611"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>如何从 Linux 虚拟机中分离数据磁盘
 
-当不再需要附加到虚拟机的数据磁盘时，可以轻松地分离它。 这会从虚拟机中删除该磁盘，但不会从存储中删除它。 在本文中，我们使用的是 Ubuntu LTS 16.04 分发版。 如果使用的是其他分发版，则卸载磁盘的说明可能会有所不同。
+不再需要附加到虚拟机的数据磁盘时，可以轻松地分离它。 这会从虚拟机中删除磁盘，但不会从存储中删除它。 在本文中，我们使用的是 Ubuntu LTS 16.04 分发版。 如果使用的是其他分发版，则卸载磁盘的说明可能会有所不同。
 
 > [!WARNING]
 > 如果分离磁盘，它将不会自动删除。 如果用户订阅了高级存储，则将继续承担该磁盘的存储费用。 有关详细信息，请参阅[使用高级存储时的定价和计费方式](https://www.azure.cn/pricing/details/storage/page-blobs/)。
@@ -122,4 +122,5 @@ az vm disk detach \
 ## <a name="next-steps"></a>后续步骤
 要重新使用数据磁盘，只需[将其附加到其他 VM](add-disk.md) 即可。
 
+如果要删除磁盘，以便不再产生存储费用，请参阅[查找并删除未附加的 Azure 托管和非托管磁盘 - Azure 门户](../disks-find-unattached-portal.md)。
 <!--Update_Description: wording update, update meta properties -->

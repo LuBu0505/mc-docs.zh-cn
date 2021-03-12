@@ -4,14 +4,14 @@ description: 本文介绍了如何先删除依赖项，然后删除 Azure 备份
 author: Johnnytechn
 ms.topic: conceptual
 origin.date: 09/20/2019
-ms.date: 09/28/2020
+ms.date: 03/01/2021
 ms.author: v-johya
-ms.openlocfilehash: bee809fb94c7a324a47e1d2d247fea0e600b4d03
-ms.sourcegitcommit: 80567f1c67f6bdbd8a20adeebf6e2569d7741923
+ms.openlocfilehash: 1bc3832f64c872de02c9496a11b81d05bc7c83fb
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91871473"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197145"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>删除 Azure 备份恢复服务保管库
 
@@ -63,11 +63,11 @@ ms.locfileid: "91871473"
 
 若要停止保护并删除备份数据，请执行以下操作：
 
-1. 在门户中依次转到“恢复服务保管库”、“备份项”。  然后，选择云中的受保护项（例如，Azure 虚拟机、Azure 存储 [Azure 文件服务] 或 Azure 虚拟机上的 SQL Server）。
+1. 在门户中依次转到“恢复服务保管库”、“备份项”。  然后，在“备份管理类型”列表中，选择云中的受保护项（例如，Azure 虚拟机、Azure 存储 [Azure 文件存储服务] 或 Azure 虚拟机上的 SQL Server）。
 
     ![选择备份类型。](./media/backup-azure-delete-vault/azure-storage-selected.png)
 
-2. 右键单击并选择备份项。 根据该备份项是否受保护，菜单将显示“停止备份”窗格或“删除备份数据”窗格。 
+2. 你将看到该类别的所有项的列表。 右键单击并选择备份项。 根据该备份项是否受保护，菜单将显示“停止备份”窗格或“删除备份数据”窗格。 
 
     - 如果显示了“停止备份”窗格，请从下拉菜单中选择“删除备份数据”。  输入备份项的名称（此字段区分大小写），然后从下拉菜单中选择原因。 输入备注（如果有）。 然后选择“停止备份”。
 

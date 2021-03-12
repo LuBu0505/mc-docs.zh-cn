@@ -12,16 +12,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 origin.date: 09/08/2020
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: 10/19/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5734461d902f38846ae973cfeb6145c3e5baf338
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: aabb95e504c27407382ef7ad0b112840324f1113
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105931"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054309"
 ---
 <!--Verified Successfully-->
 # <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>在应用默认域控制器策略时，VM 无响应
@@ -39,6 +39,9 @@ ms.locfileid: "93105931"
 出现此问题可能是因为最近对默认域控制器策略进行了更改。 否则，需要执行内存转储文件分析来确定问题的根本原因。
 
 ## <a name="solution"></a>解决方案
+
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
 
 如果你最近更改了默认域控制器策略，则可能想要撤消这些更改以解决此问题。 如果你不确定导致此问题的原因，请收集内存转储，然后提交支持工单。
 
@@ -58,6 +61,8 @@ ms.locfileid: "93105931"
 
 1. 找到 memory.dmp 文件，然后使用该内存转储文件[提交支持票证](https://support.azure.cn/support/support-azure/)。
 
-<!--Not Available on [non-maskable interrupt (NMI) calls in serial console](./serial-console-windows.md#use-the-serial-console-for-nmi-calls)-->
+1. 如果在查找 memory.dmp 文件时遇到问题，可以改为在串行控制台中使用不可屏蔽的中断 (NMI) 调用。 按照指南，[使用 NMI 调用生成故障转储文件](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+    <!--NOT AVAILABLE ON [non-maskable interrupt (NMI) calls in serial console](./serial-console-windows.md#use-the-serial-console-for-nmi-calls)-->
+
+<!--Update_Description: update meta properties, wording update, update link-->

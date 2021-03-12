@@ -6,17 +6,17 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: how-to
-origin.date: 09/14/2020
-ms.date: 12/14/2020
+origin.date: 02/10/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.reviewer: ozgun
 ms.subservice: blobs
-ms.openlocfilehash: a852b168a97d7861455cdb1fd8bff58ebe77fb35
-ms.sourcegitcommit: a8afac9982deafcf0652c63fe1615ba0ef1877be
+ms.openlocfilehash: 725a115302fb752a7e3c52fd8ce4b5a72a715337
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96850374"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196326"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-blob-data"></a>使用 Azure AD 凭据运行 PowerShell 命令以访问 blob 数据
 
@@ -29,6 +29,9 @@ Azure 存储为 PowerShell 提供扩展，使用户可使用 Azure Active Direct
 Azure 存储扩展支持针对 blob 数据的操作。 可调用的操作取决于向 Azure AD 安全主体授予的权限，此安全主体用于登录 PowerShell。 对 Azure 存储容器的权限通过 Azure RBAC 进行分配。 例如，如果为你分配了“Blob 数据读取者”角色，你可以运行从容器读取数据的脚本命令。 如果为你分配了“Blob 数据参与者”角色，你可以运行脚本命令来读取、写入或删除容器或其中所含数据。
 
 若要详细了解针对容器的每个 Azure 存储操作所需的权限，请参阅[使用 OAuth 令牌调用存储操作](https://docs.microsoft.com/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)。  
+
+> [!IMPORTANT]
+> 在使用 Azure 资源管理器 ReadOnly 锁锁定了某个存储帐户时，不允许为该存储帐户执行[列出密钥](https://docs.microsoft.com/rest/api/storagerp/storageaccounts/listkeys)操作。 “列出密钥”是 POST 操作，并且在为该帐户配置了 ReadOnly 锁时，所有的 POST 操作都会被阻止 。 出于此原因，在使用 ReadOnly 锁锁定了帐户时，还没有帐户密钥的用户必须使用 Azure AD 凭据来访问 Blob 数据。 在 PowerShell 中，包含 `-UseConnectedAccount` 参数，以使用 Azure AD 凭据创建 AzureStorageContext 对象。
 
 ## <a name="call-powershell-commands-using-azure-ad-credentials"></a>使用 Azure AD 凭据调用 PowerShell 命令
 

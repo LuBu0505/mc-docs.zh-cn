@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 11/12/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 10/26/2020
 ms.author: v-yeche
-ms.openlocfilehash: 39f85cac96bef9fb07ad1f4f2dba750568123909
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: a606b9d47aad01c2d804cac6ea07d05f4bcf367c
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570676"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053771"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>使用 Azure 门户创建具有静态公共 IP 地址的虚拟机
 
@@ -36,7 +36,7 @@ ms.locfileid: "98570676"
 
 <!--MOONCAKE CUSTOMIZATION  ON Windows Server 2019 Datacenter - Gen1 TILL 01/182021-->
 
-1. 在门户的左上方，选择“创建资源”，在搜索框中搜索“Windows Server 2019 Datacenter”。
+1. 在门户的左上方，选择“创建资源”，然后在搜索框中搜索“Windows Server 2019 Datacenter”。
     
     <!--Not Available on select **Create a resource** > **Compute** > **Virtual machine**-->
     
@@ -76,7 +76,7 @@ ms.locfileid: "98570676"
     | 选择入站端口 | 选择“RDP (3389)” |
 
     > [!WARNING]
-    > 选择了端口 3389，目的是能够通过 Internet 对 Windows Server 虚拟机进行远程访问。 不建议向 Internet 打开端口 3389 来管理生产工作负荷。 <br /> 若要安全地访问 Azure 虚拟机，请参阅[什么是 Azure Bastion？](https://docs.azure.cn/bastion/bastion-overview)
+    > 选择了端口 3389，目的是能够通过 Internet 对 Windows Server 虚拟机进行远程访问。 不建议向 Internet 打开端口 3389 来管理生产工作负荷。 <br /> 若要安全地访问 Azure 虚拟机，请参阅[什么是 Azure Bastion？](../bastion/bastion-overview.md)
    
 5. 选择“查看 + 创建”  。 
   
@@ -105,9 +105,9 @@ ms.locfileid: "98570676"
 
 <!--CORRECT ON confirmation.aspx?id=57062-->
 
-- 详细了解[静态公共 IP 地址](virtual-network-ip-addresses-overview-arm.md#allocation-method)。
-- 详细了解 Azure 中的[公共 IP 地址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。
+- 详细了解[静态公共 IP 地址](./public-ip-addresses.md#allocation-method)。
+- 详细了解 Azure 中的[公共 IP 地址](./public-ip-addresses.md#public-ip-addresses)。
 - 详细了解所有[公共 IP 地址设置](virtual-network-public-ip-address.md#create-a-public-ip-address)。
-- 详细了解[专用 IP 地址](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)以及如何为 Azure 虚拟机分配[静态公共 IP 地址](virtual-network-network-interface-addresses.md#add-ip-addresses)。
+- 详细了解[专用 IP 地址](./private-ip-addresses.md)以及如何为 Azure 虚拟机分配[静态公共 IP 地址](virtual-network-network-interface-addresses.md#add-ip-addresses)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

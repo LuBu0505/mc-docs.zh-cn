@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 04/15/2020
 author: rockboyfor
-ms.date: 10/05/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: ec486223ef81a00144eec74598b340bd58bfd1c1
-ms.sourcegitcommit: 29a49e95f72f97790431104e837b114912c318b4
+ms.openlocfilehash: 9cc8c6b06fcca952d965f358932aa6f492ababa4
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91564462"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054002"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>使用 Azure PowerShell 创建具有加速网络的 Windows VM
 
@@ -64,13 +64,9 @@ ms.locfileid: "91564462"
 
 ### <a name="supported-vm-instances"></a>支持的 VM 实例
 
-大多数常规用途实例以及具有两个或更多虚拟 CPU (vCPU) 的计算优化实例都支持加速网络。  这些受支持的系列包括：Dv2/DSv2 和 F/Fs。
+大多数常规用途实例以及具有 2 个或更多 vCPU 的计算优化实例都支持加速网络。 在支持超线程的实例上，具有 4 个或更多 vCPU 的 VM 实例支持加速网络。 
 
-在支持超线程的实例上，具有四个或更多个 vCPU 的 VM 实例支持加速网络。 受支持的系列包括：D/Dsv3、E/Esv3、Fsv2 和 Ms/Mms。
-
-<!--Not Available on  D/Dsv4, Ea/Easv4, Lsv2, and Ms/Mmsv2-->
-
-有关 VM 实例的详细信息，请参阅 [Azure 中的 Windows 虚拟机大小](../virtual-machines/windows/sizes.md?toc=%2fvirtual-network%2ftoc.json)。
+可以在单个[虚拟机大小](../virtual-machines/sizes.md)文档中找到对加速网络的支持。 
 
 ### <a name="custom-images"></a>自定义映像
 
@@ -215,7 +211,7 @@ ms.locfileid: "91564462"
     $vmConfig = New-AzVMConfig -VMName "myVm" -VMSize "Standard_DS4_v2"
     ```
 
-    若要获取所有 VM 大小和特性列表，请参阅 [Windows VM 大小](../virtual-machines/windows/sizes.md?toc=%2fvirtual-network%2ftoc.json)。
+    若要获取所有 VM 大小和特性列表，请参阅 [Windows VM 大小](../virtual-machines/sizes.md?toc=%2fvirtual-network%2ftoc.json)。
 
 3. 通过 [Set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem) 和 [Set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage) 创建 VM 配置的其余部分。 以下命令创建 Windows Server 2016 Datacenter：
 
@@ -265,7 +261,7 @@ ms.locfileid: "91564462"
 
 8. 确认已显示“Mellanox ConnectX-3 虚函数以太网适配器”，如下图所示：
 
-    :::image type="content" source="./media/create-vm-accelerated-networking/device-manager.png" alt-text="在使用和不使用加速网络的情况下，Azure 虚拟机之间的通信":::
+    :::image type="content" source="./media/create-vm-accelerated-networking/device-manager.png" alt-text="Mellanox ConnectX-3 虚函数以太网适配器，适用于加速网络的新网络适配器，设备管理器":::
 
 现在已为 VM 启用加速网络。
 
@@ -369,4 +365,4 @@ ms.locfileid: "91564462"
 
 3. 禁用加速网络后，将 VM、可用性集或规模集移至不支持加速网络的新大小，然后重启。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

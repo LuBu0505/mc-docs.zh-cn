@@ -7,17 +7,17 @@ ms.topic: tutorial
 ms.workload: infrastructure
 origin.date: 02/09/2018
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 933bfc79bdce334f5edc910608b0f8b6f5e22ac5
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: 0aa3cd9a6788c94bf7abf9452f7fae0b5e65fb58
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570489"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055270"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>教程：在 Azure 中使用 Key Vault 中存储的 TLS/SSL 证书保护 Windows 虚拟机上的 Web 服务器
 
@@ -34,7 +34,7 @@ ms.locfileid: "98570489"
 
 ## <a name="launch-azure-local-shell"></a>启动 Azure 本地 Shell
 
-打开 Azure Powershell 控制台，以管理员权限运行下面列出的脚本。
+打开 Azure Powershell 控制台，并以管理员权限运行下面列出的脚本。
 
 <!--Not Available on Azure China Cloud-->
 
@@ -82,7 +82,7 @@ Add-AzKeyVaultCertificate `
 ```
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
-使用 [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) 设置 VM 的管理员用户名和密码：
+使用 [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential) 设置 VM 的管理员用户名和密码：
 
 ```powershell
 $cred = Get-Credential
@@ -177,6 +177,6 @@ Get-AzPublicIPAddress -ResourceGroupName $resourceGroup -Name "myPublicIPAddress
 请访问以下链接，查看预先生成的虚拟机脚本示例。
 
 > [!div class="nextstepaction"]
-> [Windows 虚拟机脚本示例](./powershell-samples.md)
+> [Windows 虚拟机脚本示例](https://github.com/Azure/azure-docs-powershell-samples/tree/master/virtual-machine)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

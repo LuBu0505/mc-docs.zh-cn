@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 origin.date: 03/26/2020
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: c0b78e1b6b9292dd1f26a1111d534eb59aeb8646
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: b0f4462f3bef43e07c22c6ee68601c7fd0f6a1c2
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106324"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053975"
 ---
 <!--Verified successfully-->
 # <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>Windows VM 因 Windows 启动管理器而无法启动
@@ -43,18 +43,21 @@ VM 一直在等待用户提示。除非用户手动进行指示，否则 VM 不�
 
 ## <a name="solution"></a>解决方案
 
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
+
 过程概述：
 
 <!--Not Available on 1. Configure for Faster Boot Time using Serial Console.-->
 
 1. 创建并访问修复 VM。
 2. 在修复 VM 上进行配置以缩短启动时间。
-3. **建议** ：在重建 VM 之前，启用串行控制台和内存转储收集。
-4. 重建 VM。
+3. **建议**：在重建 VM 之前，启用串行控制台和内存转储收集。
+4. 重新生成 VM。
 
 <!--Not Available on ### Configure for Faster Boot Time using Serial Console-->
 
-### <a name="create-and-access-a-repair-vm"></a>创建并访问一个修复 VM
+### <a name="create-and-access-a-repair-vm"></a>创建并访问修复 VM
 
 1. 使用 [VM 修复命令的步骤 1-3](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 来准备一个修复 VM。
 2. 使用远程桌面连接来连接到修复 VM。
@@ -103,11 +106,11 @@ VM 一直在等待用户提示。除非用户手动进行指示，否则 VM 不�
 
 3. 验证 OS 磁盘上的可用空间是否与 VM 上的内存大小 (RAM) 相当。
 
-    如果 OS 磁盘上没有足够的空间，则应更改内存转储文件的创建位置，并将该位置指向 VM 上附加的具有足够可用空间的任何数据磁盘。 若要更改位置，请将以下命令中的“%SystemRoot%”替换为数据磁盘的驱动器号（例如“F:”）。
+    如果 OS 磁盘上没有足够的空间，则应更改内存转储文件的创建位置，将其指向任何已附加到 VM 且具有足够可用空间的数据磁盘。 若要更改位置，请将以下命令中的“%SystemRoot%”替换为数据磁盘的驱动器号（例如“F:”）。
 
 #### <a name="suggested-configuration-to-enable-os-dump"></a>用于启用 OS 转储的建议配置
 
-**加载损坏的 OS 磁盘：**
+**加载损坏的 OS 磁盘**：
 
 `REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM`
 
@@ -135,4 +138,4 @@ VM 一直在等待用户提示。除非用户手动进行指示，否则 VM 不�
 
 使用 [VM 修复命令的步骤 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重新装配 VM。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

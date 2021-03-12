@@ -7,15 +7,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 01/19/2021
-ms.date: 02/08/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: dafd0fad6ddfc9d9fd5d1acf366b8382ea7d7c80
-ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
+ms.openlocfilehash: 2405df998d87ea49a3235a6110005ab9757a080b
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99503901"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196234"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -39,6 +39,10 @@ Azure 存储帐户中的数据始终在主要区域中复制三次：
 与其他选项相比，LRS 是成本最低的冗余选项，但提供的持久性也最低。 LRS 可以保护数据，使其不受服务器机架和驱动器故障影响。 但是，如果数据中心发生火灾或洪灾等灾难，使用 LRS 的存储帐户的所有副本可能会丢失或不可恢复。 为了减轻此风险，Azure 建议使用[异地冗余存储](#geo-redundant-storage) (GRS)。
 
 对使用 LRS 的存储帐户的写入请求将以同步方式发生。 只有将数据写入到所有三个副本后，写入操作才会成功返回。
+
+下图显示了如何使用 LRS 在单个数据中心内复制数据：
+
+:::image type="content" source="media/storage-redundancy/locally-redundant-storage.png" alt-text="此图显示了如何使用 LRS 在单个数据中心内复制数据":::
 
 对于以下场景，LRS 是不错的选项：
 
@@ -65,6 +69,10 @@ Azure 存储提供一个将数据复制到次要区域的选项：
 异地冗余存储 (GRS) 使用 LRS 在主要区域中的单个物理位置内同步复制数据三次。 然后，它将数据异步复制到距离主要区域数百英里以外的次要区域中的单个物理位置。 GRS 在给定一年中提供至少 99.99999999999999%（16 个 9）的 Azure 存储数据对象持久性。
 
 首先会将写入操作提交到主要位置，并使用 LRS 复制该操作。 然后会以异步方式将更新复制到次要区域。 将数据写入次要位置后，还会使用 LRS 在该位置复制数据。
+
+下图显示了如何使用 GRS 或 RA-GRS 复制数据：
+
+:::image type="content" source="media/storage-redundancy/geo-redundant-storage.png" alt-text="此图显示了如何使用 GRS 或 RA-GRS 复制数据":::
 
 ## <a name="read-access-to-data-in-the-secondary-region"></a>对次要区域中数据的读取访问
 
@@ -117,13 +125,21 @@ Azure 存储提供一个将数据复制到次要区域的选项：
 
 <sup>1</sup> 如果主要区域变为不可用，则需要执行帐户故障转移来恢复写入可用性。 有关详细信息，请参阅[灾难恢复和存储帐户故障转移](storage-disaster-recovery-guidance.md)。
 
+### <a name="supported-azure-storage-services"></a>支持的 Azure 存储服务
+
+下表显示了每个 Azure 存储服务都支持哪些冗余选项。
+
+| LRS | GRS/RA-GRS |
+|:-|:-|
+| Blob 存储<br />队列存储<br />表存储<br />Azure 文件<br />Azure 托管磁盘 | Blob 存储<br />队列存储<br />表存储<br />Azure 文件<br /> |
+
 ### <a name="supported-storage-account-types"></a>支持的存储帐户类型
 
 下表显示了每种存储帐户类型都支持哪些冗余选项。 有关存储帐户类型，请参阅[存储帐户概述](storage-account-overview.md)。
 
 | LRS | GRS/RA-GRS |
 |:-|:-|
-| 常规用途 v2<br /> 常规用途 v1<br /> 块 Blob 存储<br /> Blob 存储<br /> 文件存储 | 常规用途 v2<br /> 常规用途 v1<br /> Blob 存储 |
+| 常规用途 v2<br /> 常规用途 v1<br /> BlockBlobStorage<br /> BlobStorage<br /> FileStorage | 常规用途 v2<br /> 常规用途 v1<br /> Blob 存储 |
 
 所有存储帐户的所有数据的复制均基于存储帐户的冗余选项。 复制的对象包括块 Blob、追加 Blob、页 Blob、队列、表和文件。 将复制所有层（包括存档层）中的数据。 有关 blob 层的详细信息，请参阅 [Azure Blob 存储：热、冷和存档访问层](../blobs/storage-blob-storage-tiers.md)。
 

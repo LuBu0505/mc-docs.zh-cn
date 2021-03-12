@@ -7,17 +7,17 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 origin.date: 11/19/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 06/08/2020
 ms.author: v-yeche
 tags: connectors
-ms.openlocfilehash: 14c488e54b65beacf79586add54cf19c02a9b5eb
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: bbd18e49ee17a06dba50b0fe557d1ec24221191e
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022184"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055143"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>在 Azure 逻辑应用中接收和响应入站 HTTPS 请求
 
@@ -203,7 +203,7 @@ ms.locfileid: "98022184"
 
 有关逻辑应用入站调用（例如传输层安全性 (TLS) [以前称为安全套接字层 (SSL)] 和 [Azure Active Directory 开放式身份验证 (Azure AD OAuth)](../active-directory/develop/index.yml)）的安全性、授权和加密的详细信息，以及使用 Azure API 管理来公开逻辑应用，或限制发起入站调用的 IP 地址的详细信息，请参阅[保护访问和数据 - 对基于请求的触发器的入站调用的访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)。
 
-<!--Not Available on [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security)-->
+<!--NOT AVAILABLE ON [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security)-->
 
 ## <a name="trigger-outputs"></a>触发器输出
 
@@ -221,13 +221,13 @@ ms.locfileid: "98022184"
 
 使用请求触发器处理入站请求时，可以使用内置[响应操作](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)对响应进行建模并将有效负载结果发送回调用方。 只能将响应操作与请求触发器配合使用。 这种与请求触发器和响应操作的结合会创建请求-响应模式。 除了 Foreach 循环和循环内以及并行分支以外，可以在工作流中的任意位置添加响应操作。
 
-<!--Not Available on [request-response pattern](https://en.wikipedia.org/wiki/Request%E2%80%93response)-->
+<!--NOT AVAILABLE ON [request-response pattern](https://en.wikipedia.org/wiki/Request%E2%80%93response)-->
 
 > [!IMPORTANT]
 > 如果响应操作包含这些标头，则逻辑应用会从生成的响应消息中删除这些标头，且不显示任何警告或错误：
 >
 > * `Allow`
-> * `Content-*` 中含以下例外：`Content-Disposition`、`Content-Encoding` 和 `Content-Type`
+> * `Content-*` 标头（使用 POST 和 PUT 操作时的 `Content-Disposition`、`Content-Encoding` 和 `Content-Type` 除外），但 GET 操作不包括这些标头
 > * `Cookie`
 > * `Expires`
 > * `Last-Modified`
@@ -280,4 +280,4 @@ ms.locfileid: "98022184"
 * [保护访问和数据 - 对基于请求的触发器的入站调用的访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)
 * [适用于逻辑应用的连接器](../connectors/apis-list.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

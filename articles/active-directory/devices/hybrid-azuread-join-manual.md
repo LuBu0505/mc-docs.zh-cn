@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 364ca51d6cd6d787d7076caa73c4dce980d96139
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: f119874af756c30170920913f6368a3a422f40e1
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697300"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196566"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>教程：手动配置加入到混合 Azure Active Directory 的设备
 
@@ -137,7 +137,7 @@ cmdlet：
 
    $aadAdminCred = Get-Credential;
 
-   Initialize-ADSyncDomainJoinedComputerSync -AdConnectorAccount [connector account name] -AzureADCredentials $aadAdminCred;
+   Initialize-ADSyncDomainJoinedComputerSync -AdConnectorAccount [connector account name] -AzureADCredentials $aadAdminCred -AzureEnvironment AzureChinaCloud;
    ```
 
 `Initialize-ADSyncDomainJoinedComputerSync` cmdlet：
@@ -472,13 +472,13 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
    );'
    }
 
-   $existingRules = (Get-ADFSRelyingPartyTrust -Identifier urn:federation:MicrosoftOnline).IssuanceTransformRules 
+   $existingRules = (Get-ADFSRelyingPartyTrust -Identifier urn:federation:partner.microsoftonline.cn).IssuanceTransformRules 
 
    $updatedRules = $existingRules + $rule1 + $rule2 + $rule3 + $rule4 + $rule5
 
    $crSet = New-ADFSClaimRuleSet -ClaimRule $updatedRules
 
-   Set-AdfsRelyingPartyTrust -TargetIdentifier urn:federation:MicrosoftOnline -IssuanceTransformRules $crSet.ClaimRulesString
+   Set-AdfsRelyingPartyTrust -TargetIdentifier urn:federation:partner.microsoftonline.cn -IssuanceTransformRules $crSet.ClaimRulesString
    ```
 
 #### <a name="remarks"></a>备注
@@ -536,7 +536,7 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 
    `c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"] => issue(claim = c);`
 
-1. 在联合身份验证服务器上，输入以下 PowerShell 命令。 将 \<RPObjectName\> 替换为 Azure AD 信赖方信任对象的信赖方对象名称。 此对象通常命名为“Microsoft Office 365 标识平台”。
+1. 在联合身份验证服务器上，输入以下 PowerShell 命令。 将 \<RPObjectName\> 替换为 Azure AD 信赖方信任对象的信赖方对象名称。 此对象通常命名为“Microsoft Office 365 标识平台(中国)”。
 
    `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
 

@@ -6,24 +6,24 @@ ms.topic: tutorial
 ms.workload: infrastructure
 origin.date: 12/05/2018
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 1225ee0225bdb77eb11f35e229dec7a82f882bcc
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: 80af6e8c865c901564ba06b338ee435f7954fce1
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570590"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055276"
 ---
 <!--Verified successfully-->
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>教程：监视更改和更新 Azure 中的 Windows 虚拟机
 
 借助 Azure [更新管理](../../automation/update-management/update-mgmt-overview.md)，可以轻松地识别 Azure 中 Windows 虚拟机中的更改并管理这些 VM 的操作系统更新。
 
-<!--Not Available on [Change Tracking](../../automation/change-tracking.md)-->
+<!--NOT AVAILABLE ON [Change Tracking](../../automation/change-tracking/overview.md)-->
 
 本教程介绍如何执行下列操作：
 
@@ -33,7 +33,7 @@ ms.locfileid: "98570590"
 
 ## <a name="open-azure-local-shell"></a>打开 Azure 本地 Shell
 
-打开 Azure Powershell 控制台，并以管理员权限运行以下脚本。
+打开 Azure Powershell 控制台，并以管理员权限运行下面列出的脚本。
 
 <!--Not Available on Azure Cloud Shell-->
 <!--Not Available on [https://shell.azure.com/powershell](https://shell.azure.com/powershell)-->
@@ -42,7 +42,7 @@ ms.locfileid: "98570590"
 
 若要在本教程中配置 Azure 监视和更新管理，需要 Azure 中的 Windows VM。
 
-首先，使用 [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) 设置 VM 的管理员用户名和密码：
+首先，使用 [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential) 设置 VM 的管理员用户名和密码：
 
 ```powershell
 $cred = Get-Credential
@@ -119,17 +119,14 @@ New-AzVm `
 | --- | --- |
 | **名称** |输入用于标识更新部署的唯一名称。 |
 |**操作系统**| 选择 Linux 或 Windows 。|
-| **要更新的组** |对于在 Azure 上托管的 VM，应基于订阅、资源组、位置和标记的组合定义查询。 此查询将生成要包含在你的部署中的 Azure 托管 VM 的动态组。 <br /><br />对于未托管在 Azure 上的 VM，请选择现有的已保存搜索。 使用此搜索，可以选择要包括在部署中的一组 VM。 <br /><br /> 有关详细信息，请参阅[动态组](../../automation/update-management/update-mgmt-groups.md)。|
+| **要更新的组** |对于在 Azure 上托管的 VM，应基于订阅、资源组、位置和标记的组合定义查询。 此查询将生成要包含在你的部署中的 Azure 托管 VM 的动态组。 <br /><br />对于未托管在 Azure 上的 VM，请选择现有的已保存搜索。 使用此搜索，可以选择要包括在部署中的一组 VM。 <br /><br /> 有关详细信息，请参阅[动态组](../../automation/update-management/configure-groups.md)。|
 | **要更新的计算机** |请选择“已保存的搜索”、“已导入的组”或“计算机”  。<br/><br/>如果选择“计算机”，则可以从下拉列表中选择单个计算机。 每台计算机的准备情况将显示在表的“更新代理准备情况”列中。<br /><br /> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../../azure-monitor/platform/computer-groups.md) |
 |**更新分类**|选择所有必需的更新分类。|
-|**包括/排除更新**|选择此选项可打开“包括/排除”窗格。 要包含或排除的更新位于单独的选项卡上。 |
+|**包括/排除更新**|选择此选项可打开“包括/排除”窗格。 要包含或排除的更新位于单独的选项卡上。 有关如何处理包含的详细信息，请参阅[计划更新部署](../../automation/update-management/deploy-updates.md#schedule-an-update-deployment)。 |
 |**计划设置**|选择启动时间，然后选择“一次”或“定期” 。|
 | **前脚本 + 后脚本**|选择要在部署前和部署后运行的脚本。|
 | **维护时段** | 输入为更新设置的分钟数。 有效值范围为 30 至 360 分钟。 |
 | **重新启动控制**| 选择处理重启的方式。 可用选项包括：<ul><li>**必要时请重启**</li><li>**永远重启**</li><li>**永不重启**</li><li>**仅重启**</li></ul>默认选项为“必要时重启”。 若选择“仅重启”，则不会安装更新。|
-
-<!--Not Available on [Schedule an Update Deployment](../../automation/update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment)-->
-
 
 完成配置计划后，单击“创建”可返回到状态仪表板。 “已计划”表会显示你创建的部署计划。
 
@@ -180,4 +177,4 @@ New-AzVm `
 > [!div class="nextstepaction"]
 > [监视虚拟机](tutorial-monitor.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

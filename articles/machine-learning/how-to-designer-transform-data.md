@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 148f7b8e50d1c21bea9f174731a77c63bad7dc7d
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: b78cec3d071cb87e478c637032d308b74856d889
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977241"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196926"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>在 Azure 机器学习设计器中转换数据
 
@@ -52,11 +52,7 @@ ms.locfileid: "94977241"
 
 1. 将“Adult Census Income Binary classification”数据集拖放到画布上。
 
-1. 选择“Adult Census Income”数据集模块。
-
-1. 在画布右侧出现的详细信息窗格中，选择“输出”。
-
-1. 选择可视化图标 ![可视化图标](media/how-to-designer-transform-data/visualize-icon.png)。
+1. 右键单击“Adult Census Income”数据集模块，并选择“可视化” > “数据集输出”
 
 1. 使用数据预览窗口浏览数据集。 请特别注意“native-country”列值。
 
@@ -80,7 +76,7 @@ ms.locfileid: "94977241"
 
 管道应如下所示：
 
-![显示如何配置管道和“拆分数据”模块的屏幕截图](media/how-to-designer-transform-data/split-data.png)。
+:::image type="content" source="./media/how-to-designer-transform-data/split-data.png"alt-text="显示如何配置管道和“拆分数据”模块的屏幕截图":::
 
 
 ## <a name="save-the-datasets"></a>保存数据集
@@ -95,7 +91,7 @@ ms.locfileid: "94977241"
 
     管道应如下所示：
 
-    ![显示如何连接“导出数据”模块的屏幕截图](media/how-to-designer-transform-data/export-data-pipeline.png)。
+    ![显示如何连接“导出数据”模块的屏幕截图](media/how-to-designer-transform-data/export-data-pipeline.png).
 
 1. 选择连接到“拆分数据”模块的最左侧端口的“导出数据”模块。
 

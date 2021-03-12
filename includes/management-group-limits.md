@@ -1,23 +1,23 @@
 ---
 title: include 文件
 description: include 文件
-author: tfitzmac
+author: rockboyfor
 ms.service: governance
 ms.topic: include
 origin.date: 03/26/2020
-ms.date: 04/20/2020
-ms.author: v-tawe
+ms.date: 03/01/2021
+ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 8f650195fd1827db6b8637b85fe3056401a24a30
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 0b4d191a54a1d206ab53e4b42a1f37645967b022
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300933"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053329"
 ---
 | 资源 | 限制 |
 | --- | --- |
-| 每个目录的管理组数 | 10,000 |
+| 每个 Azure AD 租户的管理组数 | 10,000 |
 | 每个管理组的订阅数 | 不受限制。 |
 | 管理组层次结构的级别数 | 根级别加上 6 个级别<sup>1</sup> |
 | 每个管理组的直接父管理组数 | 一种 |
@@ -25,4 +25,4 @@ ms.locfileid: "96300933"
 
 <sup>1</sup>6 个级别不包括订阅级别。
 
-<sup>2</sup>如果达到 800 个部署的限制，则会从历史记录中删除不再需要的部署。 若要删除管理组级别部署，请使用 [Remove-AzManagementGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/Remove-AzManagementGroupDeployment) 或 [az deployment mg delete](/cli/deployment/mg#az-deployment-mg-delete)。
+<sup>2</sup>如果达到 800 个部署的限制，则会从历史记录中删除不再需要的部署。 若要删除管理组级别部署，请使用 [Remove-AzManagementGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/Remove-AzManagementGroupDeployment) 或 [az deployment mg delete](https://docs.azure.cn/cli/deployment/mg#az_deployment_mg_delete)。

@@ -6,16 +6,16 @@ ms.subservice: sizes
 ms.topic: conceptual
 origin.date: 02/03/2020
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: e5e4607672cedeffb0ab9655c2e1af3d3230ec81
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 8254e3f05577aa906f8a970fda46a9dd863f7cdc
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104999"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053148"
 ---
 <!--Verified successfully-->
 # <a name="av2-series"></a>Av2 系列
@@ -28,6 +28,8 @@ Av2 系列 VM 可以部署在各种不同的硬件类型和处理器上。 Av2 �
 [实时迁移](maintenance-and-updates.md)：支持 <br />
 [内存保留更新](maintenance-and-updates.md)：支持 <br />
 [VM 代系支持](generation-2.md)：第 1 代 <br />
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：不支持<br />
+[临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br />
 <br />
 
 | 大小 | vCore | 内存:GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大数据磁盘数/吞吐量：IOPS | 最大 NIC 数 | 预期的网络带宽 (Mbps)
@@ -47,11 +49,11 @@ Av2 系列 VM 可以部署在各种不同的硬件类型和处理器上。 Av2 �
 - [常规用途](sizes-general.md)
 - [内存优化](sizes-memory.md)
 
-    <!--Not Available on - [Storage optimized](sizes-storage.md)-->
+    <!--NOT AVAILABLE ON - [Storage optimized](sizes-storage.md)-->
 
 - [GPU 优化](sizes-gpu.md)
 
-    <!--Not Available on - [High performance compute](sizes-hpc.md)-->
+    <!--NOT AVAILABLE ON - [High performance compute](sizes-hpc.md)-->
 
 - [前几代](sizes-previous-gen.md)
 
@@ -59,10 +61,10 @@ Av2 系列 VM 可以部署在各种不同的硬件类型和处理器上。 Av2 �
 
 有关磁盘类型的详细信息：[磁盘类型](./disks-types.md)
 
-<!--Not Available on FEATURE ultra-disk-->
+<!--NOT AVAILABLE on FEATURE ultra-disk-->
 
 ## <a name="next-steps"></a>后续步骤
 
 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

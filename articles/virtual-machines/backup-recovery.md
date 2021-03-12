@@ -1,23 +1,23 @@
 ---
-title: Linux VM 备份选项概述
-description: 概述 Linux Azure 虚拟机的备份选项。
+title: VM 备份选项概述
+description: 概述 Azure 虚拟机的备份选项。
 ms.service: virtual-machines
 ms.topic: conceptual
 origin.date: 08/03/2020
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: e6d997d674c044107d5f1b4b6979bfe5f6cf4db5
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: c2e50f26144df9743aa97558f1028803ead55bf0
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105130"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055176"
 ---
 <!--Verified Successfully-->
-# <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虚拟机的备份和还原选项
+# <a name="backup-and-restore-options-for-virtual-machines-in-azure"></a>Azure 中虚拟机的备份和还原选项
 
 可以通过定期创建备份来保护数据。 有多个备份选项可用于 VM，具体取决于使用案例。
 
@@ -25,7 +25,7 @@ ms.locfileid: "93105130"
 
 若要备份运行生产工作负荷的 Azure VM，请使用 Azure 备份。 Azure 备份对 Windows 和 Linux VM 均支持应用程序一致性备份。 Azure 备份可创建恢复点，这些恢复点存储在异地冗余的恢复保管库中。 从恢复点还原时，可以还原整个 VM，也可以仅还原特定的文件。 
 
-有关适用于 Azure VM 的 Azure 备份动手实践简介，请参阅适用于 [Linux](./linux/tutorial-backup-vms.md) 或 [Windows](./windows/tutorial-backup-vms.md) 的“备份 Azure 虚拟机”教程。
+有关适用于 Azure VM 的 Azure 备份动手实践简介，请参阅 [Azure 备份快速入门](../backup/quick-backup-vm-portal.md)。
 
 有关 Azure 备份工作原理的详细信息，请参阅[在 Azure 中计划 VM 备份基础结构](../backup/backup-azure-vms-introduction.md)
 
@@ -47,6 +47,6 @@ ms.locfileid: "93105130"
 * [使用 Linux 中的快照创建作为托管磁盘存储的 VHD 的副本](./linux/snapshot-copy-managed-disk.md)
 
 ## <a name="next-steps"></a>后续步骤
-可以按照适用于 [Linux](./linux/tutorial-backup-vms.md) 或 [Windows](./windows/tutorial-backup-vms.md) 的“备份 Windows 虚拟机教程”试用 Azure 备份。
+可以按照 [Azure 备份快速入门](../backup/quick-backup-vm-portal.md)试用 Azure 备份。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

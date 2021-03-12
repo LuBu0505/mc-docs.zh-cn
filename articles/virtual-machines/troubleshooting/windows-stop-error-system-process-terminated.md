@@ -11,16 +11,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 origin.date: 09/21/2020
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: 10/19/2020
 ms.author: v-yeche
-ms.openlocfilehash: 98e06689117724f838516bc9d9af5c7b9fea8ab0
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 265cdc6c594088e242c2bbc53b4c0f87fa118f7a
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105465"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055278"
 ---
 <!--Verified Successfully-->
 # <a name="windows-stop-error---0xc000021a-status-system-process-terminated"></a>Windows 停止错误 - 0xC000021A 状态系统进程终止
@@ -31,7 +31,7 @@ ms.locfileid: "93105465"
 
 使用[启动诊断](./boot-diagnostics.md)查看 VM 的屏幕截图时，屏幕截图将显示 OS 在启动过程中遇到错误的消息，并显示以下消息：
 
-你的电脑遇到问题，需要重启 **。我们将收集一些错误信息，然后你就可以重启。（已完成 ##%）如果想了解更多信息，可以稍后联机搜索以下错误：0xC000021a** 。
+你的电脑遇到问题，需要重启 **。我们将收集一些错误信息，然后你就可以重启。（已完成 ##%）如果想了解更多信息，可以稍后联机搜索以下错误：0xC000021a**。
 
 ![图 1 显示了错误代码 #0xC000021A 和消息“你的电脑遇到问题，需要重启。 我们将收集一些错误信息，然后你就可以重启。”](./media/windows-stop-error-system-process-terminated/1-pc-problem-restart.png)
 
@@ -50,6 +50,9 @@ ms.locfileid: "93105465"
 
 ### <a name="collect-the-memory-dump-file"></a>收集内存转储文件
 
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
+
 若要解决此问题，需要对故障转储进行分析。 收集故障的内存转储文件，并联系支持人员。 若要收集转储文件，请执行以下步骤：
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>将 OS 磁盘附加到新的修复 VM
@@ -61,9 +64,9 @@ ms.locfileid: "93105465"
 
 1. 在修复 VM 上，转到附加的 OS 磁盘中的 Windows 文件夹。 如果分配给附加 OS 磁盘的驱动器号为 F，请转到 F:\Windows。
 2. 找到 memory.dmp 文件，然后使用该内存转储文件[提交支持票证](https://support.azure.cn/support/support-azure/)。
-3. 如果在查找 memory.dmp 文件时遇到问题，可以按照指南[使用 NMI 调用来生成故障转储文件](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump)。
+3. 如果在查找 memory.dmp 文件时遇到问题，可以改为在串行控制台中使用不可屏蔽的中断 (NMI) 调用。 可以按照此处的指南，[使用 NMI 调用生成故障转储文件](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump)。
 
-    <!--Not Available on [non-maskable interrupt (NMI) calls in serial console](./serial-console-windows.md#use-the-serial-console-for-nmi-calls)-->
+<!--NOT AVAILABLE ON [non-maskable interrupt (NMI) calls in serial console](./serial-console-windows.md#use-the-serial-console-for-nmi-calls)-->
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -71,4 +74,4 @@ ms.locfileid: "93105465"
 - 有关使用 Resource Manager 的详细信息，请参阅 [Azure Resource Manager 概述](../../azure-resource-manager/management/overview.md)。
 - 如果无法连接到 VM，请参阅[对 Azure VM 的 RDP 连接进行故障排除](./troubleshoot-rdp-connection.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

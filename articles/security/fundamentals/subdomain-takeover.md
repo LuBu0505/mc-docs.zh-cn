@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/03/2020
+ms.date: 03/04/2021
 ms.author: v-johya
-ms.openlocfilehash: 1d8d9b17fcd6e9d6084fd2171743c87ffc394f4c
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: a9541eb8de05cfe9cd7b4ca85ea4d9e9759139b5
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747056"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197571"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>阻止无关联的 DNS 项并避免子域接管
 
 本文介绍了子域接管造成的常见安全威胁，以及可采取的缓解措施。
 
 
-## <a name="what-is-subdomain-takeover"></a>什么是子域接管？
+## <a name="what-is-a-subdomain-takeover"></a>什么是子域接管？
 
 子域接管是定期创建和删除大量资源的组织会遇到的一种常见严重威胁。 当你有 [DNS 记录](../../dns/dns-zones-records.md#dns-records)指向已取消预配的 Azure 资源时，可能会发生子域接管。 这类 DNS 记录也称为“无关联的 DNS”项。 CNAME 记录特别容易受到此威胁的攻击。 子域接管使恶意操作者能够将专用于某组织的域的流量重定向到一个执行恶意活动的站点。
 
@@ -119,7 +119,7 @@ ms.locfileid: "96747056"
 
 ### <a name="run-the-script"></a>运行脚本
 
-详细了解 PowerShell 脚本 Get-DanglingDnsRecords.ps1，然后从 GitHub 下载： https://aka.ms/DanglingDNSDomains。
+详细了解 PowerShell 脚本 Get-DanglingDnsRecords.ps1，然后从 GitHub 下载： https://aka.ms/Get-DanglingDnsRecords。
 
 ## <a name="remediate-dangling-dns-entries"></a>修正无关联的 DNS 项 
 

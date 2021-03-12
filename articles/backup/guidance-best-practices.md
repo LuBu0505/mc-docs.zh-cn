@@ -4,13 +4,13 @@ description: 了解将云和本地工作负载备份到云的最佳做法和指�
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 11/17/2020
-ms.openlocfilehash: 8459134a2fae6a8307a83f6c8486312ad6a73986
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.date: 03/01/2021
+ms.openlocfilehash: 48d9ff4a0119089250b15c4a499b06695fdbdbf8
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977603"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197199"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>将云和本地工作负载备份到云
 
@@ -75,7 +75,7 @@ Azure 备份使用保管库（恢复服务保管库和备份保管库）来安�
 * 如果工作负载分布在多个订阅中，则可以创建多个保管库，每个订阅一个保管库或多个保管库。
   * 备份中心使你可以在一个管理工具中管理与备份相关的所有任务。 [在此处了解更多信息]()。
   * 可以通过工作簿模板来自定义视图。 备份资源管理器就是这样一个用于 Azure VM 的模板。 [在此处了解更多信息](monitor-azure-backup-with-backup-explorer.md)。
-  * 如果你需要对多个保管库应用一致的策略，则可以使用 Azure Policy 来跨多个保管库传播备份策略。 可以编写自定义 [Azure Policy 定义](../governance/policy/concepts/definition-structure.md)，以使用 [‘deployifnotexists’](../governance/policy/concepts/effects.md#deployifnotexists) 效果跨多个保管库传播一个备份策略。 可以将此 Azure Policy 定义[分配](../governance/policy/assign-policy-portal.md)到特定的作用域（订阅或 RG），以便它将一个“备份策略”资源部署到该 Azure Policy 分配的作用域内的所有恢复服务保管库。 备份策略的设置（例如备份频率、保留期等）应作为 Azure Policy 分配中的参数由用户指定。
+  * 如果你需要对多个保管库应用一致的策略，则可以使用 Azure Policy 来跨多个保管库传播备份策略。 可以编写自定义 [Azure Policy 定义](../governance/policy/concepts/definition-structure.md)，以使用 [‘deployifnotexists’](../governance/policy/concepts/effects.md#deployifnotexists) 效果跨多个保管库传播一个备份策略。 还可以将此 Azure Policy 定义[分配](../governance/policy/assign-policy-portal.md)到特定的范围（订阅或 RG），以便它将一个“备份策略”资源部署到该 Azure Policy 分配的范围内的所有恢复服务保管库。 备份策略的设置（例如备份频率、保留期等）应作为 Azure Policy 分配中的参数由用户指定。
 
 <!--Not available in MC: backup-azure-move-recovery-services-vault-->
 ### <a name="review-default-settings"></a>查看默认设置
@@ -85,6 +85,8 @@ Azure 备份使用保管库（恢复服务保管库和备份保管库）来安�
 * “存储复制类型”默认设置为“异地冗余”(GRS)。 配置备份后，将禁用修改选项。 请遵循[这些](backup-create-rs-vault.md#set-storage-redundancy)步骤检查和修改设置。
 
 * “软删除”对新建的保管库默认为“已启用”，旨在防止意外或恶意删除备份数据。 请遵循[这些](backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)步骤检查和修改设置。
+
+* 跨区域还原可用于将 Azure VM 还原到次要区域（Azure 配对区域）中。 使用此选项可以执行钻取来满足审核或符合性要求，以及在主要区域发生灾难时还原 VM 或其磁盘。 CRR 是适用于任何 GRS 保管库的可选功能。 [在此处了解更多信息](backup-create-rs-vault.md#set-cross-region-restore)。
 
 * 在完成保管库设计之前，请查看[保管库支持矩阵](backup-support-matrix.md#vault-support)，以了解可能会影响或限制你的设计选择的因素。
 
@@ -236,9 +238,9 @@ Azure 备份服务的功能让你可以灵活地有效管理你的成本，并�
   * 确定不同粒度级别的关键趋势。
 
 * 此外，
-  * 你可以将数据（例如作业、策略等）发送到 Log Analytics 工作区。 这将启用 Azure Monitor 日志的功能以使数据可与 Azure Monitor 收集的其他监视数据进行关联、将多个 Azure 订阅和租户中的日志条目合并到一个位置以便一起分析、使用日志查询执行复杂的分析，并且获得有关日志条目的深入见解。 [在此处了解更多信息](../azure-monitor/platform/activity-log.md#send-to-log-analytics-workspace)。
-  * 可以向事件中心发送数据，以向 Azure 外部发送条目，例如，发送到第三方 SIEM（安全信息和事件管理）或其他日志分析解决方案。 [在此处了解更多信息](../azure-monitor/platform/activity-log.md#send-to-azure-event-hubs)。
-  * 如果要将日志数据保留 90 天以上以进行审核、静态分析或备份，可以将数据发送到 Azure 存储帐户。 如果只需将事件保留 90 天或更短的时间，则无需设置存档到存储帐户，因为活动日志事件保留在 Azure 平台中的时间是 90 天。 [了解详细信息](../azure-monitor/platform/activity-log.md#send-to--azure-storage)。
+  * 你可以将数据（例如作业、策略等）发送到 Log Analytics 工作区。 这将启用 Azure Monitor 日志的功能以使数据可与 Azure Monitor 收集的其他监视数据进行关联、将多个 Azure 订阅和租户中的日志条目合并到一个位置以便一起分析、使用日志查询执行复杂的分析，并且获得有关日志条目的深入见解。 [在此处了解更多信息](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace)。
+  * 可以向事件中心发送数据，以向 Azure 外部发送条目，例如，发送到第三方 SIEM（安全信息和事件管理）或其他日志分析解决方案。 [在此处了解更多信息](../azure-monitor/essentials/activity-log.md#send-to-azure-event-hubs)。
+  * 如果要将日志数据保留 90 天以上以进行审核、静态分析或备份，可以将数据发送到 Azure 存储帐户。 如果只需将事件保留 90 天或更短的时间，则无需设置存档到存储帐户，因为活动日志事件保留在 Azure 平台中的时间是 90 天。 [了解详细信息](../azure-monitor/essentials/activity-log.md#send-to--azure-storage)。
 
 ### <a name="alerting"></a>警报
 

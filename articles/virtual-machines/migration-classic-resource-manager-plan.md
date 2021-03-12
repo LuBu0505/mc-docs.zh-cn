@@ -1,24 +1,24 @@
 ---
 title: 规划从经典部署模型到 Azure 资源管理器部署模型的迁移
-description: 在本文中，了解如何规划从经典部署模型到 Linux 中的 Azure 资源管理器的 IaaS 资源迁移。
-services: virtual-machines-linux
+description: 在本文中，了解如何规划从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移。
+services: virtual-machines
 manager: vashan
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: conceptual
 origin.date: 02/06/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.author: v-yeche
-ms.openlocfilehash: 5f3ae724b9615c6dd605188bf1474f6ae3c65ffe
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 0ae91b7d387b5902d69027befd61468bb8b9113d
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857145"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052951"
 ---
 <!--Verified successfully from rename Linux article-->
-# <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>规划从经典部署模型到 Linux 中的 Azure 资源管理器的 IaaS 资源迁移
+# <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>规划将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager
 
 > [!IMPORTANT]
 > 目前，大约有 90% 的 IaaS VM 在使用 [Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/)。 自 2020 年 2 月 28 日起，经典 VM 已弃用，并将于 2023 年 3 月 1 日完全停用。 [详细了解](https://docs.azure.cn/virtual-machines/classic-vm-deprecation)此弃用以及[它对你的影响](classic-vm-deprecation.md#how-does-this-affect-me)。
@@ -171,8 +171,6 @@ ms.locfileid: "97857145"
 
 实际迁移前，应考虑和缓解上面的“实验室测试”部分中的技术指南。  通过充分测试，实际上迁移不属于事件。  对于生产环境，具有其他支持（如受信任的 Azure 合作伙伴或 Azure 高级服务等）会很有帮助。
 
-<!-- Convert Microsoft to Azure.cn -->
-
 ### <a name="pitfalls-to-avoid"></a>需避免的错误
 
 未完全测试可能导致迁移出现问题和延迟。  
@@ -213,4 +211,4 @@ ms.locfileid: "97857145"
 * [查看最常见的迁移错误](migration-classic-resource-manager-errors.md)
 * [查看有关将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型的最常见问题](migration-classic-resource-manager-faq.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

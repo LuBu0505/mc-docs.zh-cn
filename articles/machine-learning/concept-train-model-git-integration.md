@@ -10,12 +10,12 @@ ms.author: v-yiso
 author: jpe316
 origin.date: 03/05/2020
 ms.date: 03/09/2020
-ms.openlocfilehash: e1ea138876d49d57bcad7e63a7db97ae8efd6aa9
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: fa5cd6ae313e6cb3ad9505b77118d85a68fc9caa
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978028"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196702"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure 机器学习的 Git 集成
 
@@ -29,7 +29,7 @@ Azure 机器学习完全支持用于跟踪工作的 Git 存储库 - 你可以将
 
 ## <a name="clone-git-repositories-into-your-workspace-file-system"></a>将 Git 存储库克隆到你的工作区文件系统
 Azure 机器学习为工作区中的所有用户提供了一个共享文件系统。
-若要将 Git 存储库克隆到此文件共享，我们建议你创建一个计算实例并打开终端。
+若要将 Git 存储库克隆到此文件共享，我们建议你创建一个计算实例并[打开终端](how-to-access-terminal.md)。
 打开终端后，你可以访问完整的 Git 客户端，并可以通过 Git CLI 体验来克隆和使用 Git。
 
 我们建议你将存储库克隆到你的用户目录中，避免与其他人直接在你的工作分支上发生冲突。
@@ -40,7 +40,7 @@ Azure 机器学习为工作区中的所有用户提供了一个共享文件系�
 
 ## <a name="authenticate-your-git-account-with-ssh"></a>通过 SSH 对 Git 帐户进行身份验证
 ### <a name="generate-a-new-ssh-key"></a>生成新的 SSH 密钥
-1) 在 Azure 机器学习笔记本选项卡中[打开终端窗口](/machine-learning/how-to-run-jupyter-notebooks#terminal)。
+1) 在 Azure 机器学习笔记本选项卡中[打开终端窗口](./how-to-access-terminal.md)。
 
 2) 粘贴以下文本，并将其替换为电子邮件地址。
 

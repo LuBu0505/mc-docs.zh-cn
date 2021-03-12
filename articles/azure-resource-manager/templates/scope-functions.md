@@ -4,16 +4,16 @@ description: 介绍如何在限定范围的部署中解析模板函数。 范围
 ms.topic: conceptual
 origin.date: 10/22/2020
 author: rockboyfor
-ms.date: 11/23/2020
+ms.date: 03/01/2021
 ms.testscope: yes|no
 ms.testdate: 11/23/2020null
 ms.author: v-yeche
-ms.openlocfilehash: 89622745bb494c0694c0a865a4e48c55ae1370e6
-ms.sourcegitcommit: b072689d006cbf9795612acf68e2c4fee0eccfbc
+ms.openlocfilehash: 8ab56442bd7d3d0b99c7520fa67b7a456815638e
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94849510"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054335"
 ---
 <!--Verified successfully-->
 # <a name="arm-template-functions-in-deployment-scopes"></a>部署范围内的 ARM 模板函数
@@ -51,7 +51,7 @@ ms.locfileid: "94849510"
     "policyDefinitionId": "[extensionResourceId(variables('mgScope'), 'Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
     ```
 
-* 使用 [tenantResourceId](template-functions-resource.md#tenantresourceid) 函数获取在租户处部署的资源的 ID。 内置策略定义是租户级别资源。 在管理组级别分配内置策略时，请使用 tenantResourceId 函数。
+* 使用 [tenantResourceId()](template-functions-resource.md#tenantresourceid) 函数获取在租户处部署的资源的 ID。 内置策略定义是租户级别资源。 在管理组级别分配内置策略时，请使用 tenantResourceId 函数。
 
     若要获取内置策略定义的资源 ID，请使用：
 
@@ -236,9 +236,8 @@ az deployment group create \
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何在模板中定义参数，请参阅[了解 Azure Resource Manager 模板的结构和语法](template-syntax.md)。
+* 若要了解如何在模板中定义参数，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 * 有关解决常见部署错误的提示，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](common-deployment-errors.md)。
-* 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用模板](secure-template-with-sas-token.md)。
+* 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用 ARM 模板](secure-template-with-sas-token.md)。
 
-<!-- Update_Description: new article about scope functions -->
-<!--NEW.date: 11/23/2020-->
+<!--Update_Description: update meta properties, wording update, update link-->

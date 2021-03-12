@@ -7,15 +7,15 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 03/01/2021
 ms.author: v-tawe
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 19740f3732767b9fa46b8067eb0306a4314ead99
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: f8c710c3c36aea7a5d85cd4321da4bfce1751b0f
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579647"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196652"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>在 Windows 设备上安装和预配 Azure IoT Edge for Linux（预览版）
 
@@ -27,6 +27,8 @@ Azure IoT Edge for Linux on Windows 允许你通过 Linux 虚拟机在 Windows �
 
 >[!NOTE]
 >IoT Edge for Linux on Windows 现提供[公共预览版](https://www.azure.cn/support/legal/)。
+>
+>虽然在 Windows 环境中使用 Azure IoT Edge 时建议使用 IoT Edge for Linux on Windows，但仍可使用 Windows 容器。 如果更喜欢使用 Windows 容器，请参阅有关[安装和管理适用于 Windows 的 Azure IoT Edge](how-to-install-iot-edge-windows-on-windows.md) 的操作指南。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -296,7 +298,7 @@ Azure IoT Edge for Linux on Windows 支持以下预配方法：
 1. 将以下命令复制到文本编辑器中。 根据详述内容将占位符文本替换为你的信息。
 
    ```azurepowershell
-   Provision-EflowVm -provisioningType x509 -scopeId <ID_SCOPE_HERE> -registrationId <REGISTRATION_ID_HERE> -identityCertLocWin <ABSOLUTE_CERT_SOURCE_PATH_ON_WINDOWS_MACHINE> -identityPkLocWin <ABSOLUTE_PRIVATE_KEY_SOURCE_PATH_ON_WINDOWS_MACHINE> -identityCertLocWin <ABSOLUTE_CERT_DEST_PATH_ON_LINUX_MACHINE -identityPkLocVm <ABSOLUTE_PRIVATE_KEY_DEST_PATH_ON_LINUX_MACHINE>
+   Provision-EflowVm -provisioningType x509 -scopeId <ID_SCOPE_HERE> -registrationId <REGISTRATION_ID_HERE> -identityCertLocWin <ABSOLUTE_CERT_SOURCE_PATH_ON_WINDOWS_MACHINE> -identityPkLocWin <ABSOLUTE_PRIVATE_KEY_SOURCE_PATH_ON_WINDOWS_MACHINE> -identityCertLocVm <ABSOLUTE_CERT_DEST_PATH_ON_LINUX_MACHINE -identityPkLocVm <ABSOLUTE_PRIVATE_KEY_DEST_PATH_ON_LINUX_MACHINE>
    ```
 
 1. 在 [Azure 门户](https://portal.azure.cn/)中，导航到你的 DPS 实例。

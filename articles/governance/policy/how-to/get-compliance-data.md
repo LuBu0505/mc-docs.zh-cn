@@ -1,16 +1,17 @@
 ---
 title: 获取策略符合性数据
 description: Azure Policy 的评估和效果确定了符合性。 了解如何获取 Azure 资源的符合性详细信息。
-ms.author: v-tawe
 origin.date: 10/05/2020
-ms.date: 12/03/2020
+author: rockboyfor
+ms.date: 03/01/2021
+ms.author: v-yeche
 ms.topic: how-to
-ms.openlocfilehash: 6febe8778ef75178d7a5ef4d074e942413c0cd49
-ms.sourcegitcommit: 60e70acb6f9604aeef69d2027f7f96a1d7d5b248
+ms.openlocfilehash: 97ea7552b8734743922506dd2a1d47f8f2e96223
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96541174"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196827"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>获取 Azure 资源的符合性数据
 
@@ -70,7 +71,6 @@ jobs:
       with:
         creds: ${{secrets.AZURE_CREDENTIALS}} 
 
-    
     - name: Check for resource compliance
       uses: azure/policy-compliance-scan@v0
       with:
@@ -82,7 +82,7 @@ jobs:
 
 #### <a name="on-demand-evaluation-scan---azure-cli"></a>按需评估扫描 - Azure CLI
 
-符合性扫描从 [az policy state trigger-scan](/cli/policy/state#az-policy-state-trigger-scan) 命令开始。
+符合性扫描从 [az policy state trigger-scan](https://docs.azure.cn/cli/policy/state#az_policy_state_trigger_scan) 命令开始。
 
 默认情况下，`az policy state trigger-scan` 开始评估当前订阅中的所有资源。 若要对特定资源组开始评估，请使用 resource-group 参数。 以下示例启动对 MyRG 资源组的当前订阅的符合性扫描：
 
@@ -98,13 +98,13 @@ az policy state trigger-scan --resource-group "MyRG"
 
 默认情况下，`Start-AzPolicyComplianceScan` 开始评估当前订阅中的所有资源。 若要对特定资源组进行评估，请使用 ResourceGroupName 参数。 以下示例启动对 MyRG 资源组的当前订阅的符合性扫描：
 
-```azurepowershell
+```powershell
 Start-AzPolicyComplianceScan -ResourceGroupName 'MyRG'
 ```
 
 你可以让 PowerShell 在提供结果输出前等待完成异步调用，或者将其作为[作业](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_jobs)在后台运行。 若要通过 PowerShell 作业在后台运行符合性扫描，请使用“Asob”参数，并将值设置为对象，例如本示例中的 `$job`：
 
-```azurepowershell
+```powershell
 $job = Start-AzPolicyComplianceScan -AsJob
 ```
 
@@ -112,7 +112,7 @@ $job = Start-AzPolicyComplianceScan -AsJob
 
 在运行符合性扫描时，检查 `$job` 对象会输出结果，如下所示：
 
-```azurepowershell
+```powershell
 $job
 
 Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
@@ -204,12 +204,7 @@ Azure Policy 使用定义中的“类型”、“名称”或“种类”字段�
 
 :::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="“合规性”页面中策略合规性详细信息的屏幕截图。" border="false":::
 
-<!-- 
-> [!NOTE]
-> Regulatory Compliance in Azure Policy is a Preview feature. Compliance properties from SDK and
-> pages in portal are different for enabled initiatives. For more information, see
-> [Regulatory Compliance](../concepts/regulatory-compliance.md)
- -->
+<!--NOT AVAILABLE ON [Regulatory Compliance](../concepts/regulatory-compliance.md)-->
 
 ## <a name="portal"></a>门户
 
@@ -252,7 +247,7 @@ Azure 门户展示了一个图形体验用于可视化和了解环境中的符�
 使用 REST API 时，可以按容器、定义或分配进行汇总。 下面是使用 Azure Policy Insight 的[按订阅汇总](https://docs.microsoft.com/rest/api/policy-insights/policystates/summarizeforsubscription)功能在订阅级别执行的汇总示例：
 
 ```http
-POST https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2018-04-04
+POST https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2019-10-01
 ```
 
 输出将汇总订阅。 在以下示例输出中，汇总的符合性位于 **value.results.nonCompliantResources** 和 **value.results.nonCompliantPolicies** 下面。 此请求提供更多详细信息，包括构成不合规数的每个分配，以及每个分配的定义信息。 层次结构中的每个策略对象提供一个可用于获取该级别的更多详细信息的 **queryResultsUri**。
@@ -265,7 +260,7 @@ POST https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/provider
         "@odata.id": null,
         "@odata.context": "https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/$metadata#summary/$entity",
         "results": {
-            "queryResultsUri": "https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false",
+            "queryResultsUri": "https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=ComplianceState eq 'NonCompliant'",
             "nonCompliantResources": 15,
             "nonCompliantPolicies": 1
         },
@@ -273,7 +268,7 @@ POST https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/provider
             "policyAssignmentId": "/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77",
             "policySetDefinitionId": "",
             "results": {
-                "queryResultsUri": "https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77'",
+                "queryResultsUri": "https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=ComplianceState eq 'NonCompliant' and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77'",
                 "nonCompliantResources": 15,
                 "nonCompliantPolicies": 1
             },
@@ -282,7 +277,7 @@ POST https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/provider
                 "policyDefinitionId": "/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
                 "effect": "deny",
                 "results": {
-                    "queryResultsUri": "https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'",
+                    "queryResultsUri": "https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=ComplianceState eq 'NonCompliant' and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'",
                     "nonCompliantResources": 15
                 }
             }]
@@ -296,7 +291,7 @@ POST https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/provider
 在上面的示例中，**value.policyAssignments.policyDefinitions.results.queryResultsUri** 提供了一个示例 URI，用于特定策略定义的所有不符合资源。 查看 $filter 值，ComplianceState 等于 (eq)“NonCompliant”，PolicyAssignmentId 是针对策略定义，然后针对 PolicyDefinitionId 本身指定的。 在筛选器中包含 PolicyAssignmentId 的原因是，PolicyDefinitionId 可能在具有不同范围的多个策略或计划分配中存在。 通过指定 PolicyAssignmentId 和 PolicyDefinitionId，可以明确指定想要查找的结果。 以前，我们使用了 **latest** 作为 PolicyStates，因此将 **起始** 和 **截止** 时间范围自动设置成了过去 24 小时。
 
 ```http
-https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'
+https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=ComplianceState eq 'NonCompliant' and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'
 ```
 
 为简洁起见，以下示例响应已被截断，只显示一个不符合资源。 详细响应包含有关资源、策略或计划以及分配的多个数据片段。 请注意，还可以查看已将哪些分配参数传递给了策略定义。
@@ -316,7 +311,7 @@ https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/providers/Mic
         "ComplianceState": "NonCompliant",
         "subscriptionId": "{subscriptionId}",
         "resourceType": "/Microsoft.Compute/virtualMachines",
-        "resourceLocation": "chinaeast2",
+        "resourceLocation": "chinanorth2",
         "resourceGroup": "RG-Tags",
         "resourceTags": "tbd",
         "policyAssignmentName": "37ce239ae4304622914f0c77",
@@ -342,7 +337,7 @@ https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/providers/Mic
 创建或更新资源时，将生成策略评估结果。 结果称为“策略事件”。 使用以下 URI 查看与订阅关联的最近策略事件。
 
 ```http
-https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/default/queryResults?api-version=2018-04-04
+https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/default/queryResults?api-version=2019-10-01
 ```
 
 结果应如以下示例所示：
@@ -363,7 +358,7 @@ https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/providers/Mic
 
 ### <a name="azure-cli"></a>Azure CLI
 
-适用于 Azure Policy 的 [Azure CLI](/cli/what-is-azure-cli) 命令组涵盖 REST 或 Azure PowerShell 中提供的大多数操作。 有关可用命令的完整列表，请参阅 [Azure CLI - Azure Policy 概述](/cli/policy)。
+适用于 Azure Policy 的 [Azure CLI](https://docs.azure.cn/cli/what-is-azure-cli) 命令组涵盖 REST 或 Azure PowerShell 中提供的大多数操作。 有关可用命令的完整列表，请参阅 [Azure CLI - Azure Policy 概述](https://docs.azure.cn/cli/policy)。
 
 示例：获取不符合资源数最多的、最前面的已分配策略的状态摘要。
 
@@ -501,7 +496,7 @@ az policy state list --filter "ResourceType eq 'Microsoft.Network/virtualNetwork
     "policySetDefinitionVersion": "",
     "resourceGroup": "RG-Tags",
     "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Microsoft.Network/virtualNetworks/RG-Tags-vnet",
-    "resourceLocation": "chinaeast2",
+    "resourceLocation": "chinanorth2",
     "resourceTags": "tbd",
     "resourceType": "Microsoft.Network/virtualNetworks",
     "subscriptionId": "{subscriptionId}",
@@ -550,7 +545,7 @@ az policy state list --filter "ResourceType eq 'Microsoft.Network/virtualNetwork
     "policySetDefinitionVersion": "",
     "resourceGroup": "RG-Tags",
     "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Microsoft.Network/virtualNetworks/RG-Tags-vnet",
-    "resourceLocation": "chinaeast2",
+    "resourceLocation": "chinanorth2",
     "resourceTags": "tbd",
     "resourceType": "Microsoft.Network/virtualNetworks",
     "subscriptionId": "{subscriptionId}",
@@ -570,7 +565,7 @@ Install-Module -Name Az.PolicyInsights
 # Import the downloaded module
 Import-Module Az.PolicyInsights
 
-# Login with Connect-AzAccount if not using CLI
+# Login with Connect-AzAccount
 Connect-AzAccount -EnvironmentName AzureChinaCloud
 ```
 
@@ -609,7 +604,7 @@ PolicyDefinitionId         : /providers/Microsoft.Authorization/policyDefinition
 ComplianceState            : NonCompliant
 SubscriptionId             : {subscriptionId}
 ResourceType               : /Microsoft.Network/networkInterfaces
-ResourceLocation           : chinaeast2
+ResourceLocation           : chinanorth2
 ResourceGroup              : RG-Tags
 ResourceTags               : tbd
 PolicyAssignmentName       : 37ce239ae4304622914f0c77
@@ -635,7 +630,7 @@ PolicyDefinitionId         : /providers/Microsoft.Authorization/policyDefinition
 ComplianceState            : NonCompliant
 SubscriptionId             : {subscriptionId}
 ResourceType               : /Microsoft.Network/virtualNetworks
-ResourceLocation           : chinaeast2
+ResourceLocation           : chinanorth2
 ResourceGroup              : RG-Tags
 ResourceTags               : tbd
 PolicyAssignmentName       : 37ce239ae4304622914f0c77
@@ -666,7 +661,7 @@ PolicyDefinitionId         : /providers/Microsoft.Authorization/policyDefinition
 ComplianceState            : NonCompliant
 SubscriptionId             : {subscriptionId}
 ResourceType               : /Microsoft.Network/virtualNetworks
-ResourceLocation           : chinaeast2
+ResourceLocation           : chinaeast
 ResourceGroup              : RG-Tags
 ResourceTags               : tbd
 PolicyAssignmentName       : 37ce239ae4304622914f0c77
@@ -701,3 +696,5 @@ Trent Baker
 - 了解如何[以编程方式创建策略](programmatically-create.md)。
 - 了解如何[修正不符合的资源](remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。
+
+<!--Update_Description: update meta properties, wording update, update link-->

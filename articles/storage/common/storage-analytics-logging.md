@@ -5,23 +5,25 @@ author: WenJason
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-origin.date: 07/23/2020
-ms.date: 11/16/2020
+origin.date: 01/29/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: d4baace84afe3b903284a8ce2dbe1edc6831d102
-ms.sourcegitcommit: 5f07189f06a559d5617771e586d129c10276539e
+ms.openlocfilehash: b451200619ecf5f5d73e23085325c6c293be2a2b
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94552881"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196296"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 存储分析日志记录
 
 存储分析记录成功和失败的存储服务请求的详细信息。 可以使用该信息监视各个请求和诊断存储服务问题。 将最大程度地记录请求。
 
- 默认未对存储帐户启用存储分析日志记录。 可以在 [Azure 门户](https://portal.azure.cn/)中启用它；有关详细信息，请参阅[在 Azure 门户中监视存储帐户](./storage-monitor-storage-account.md)。 还可以通过 REST API 或客户端库以编程方式启用存储分析。 使用[获取 Blob 服务属性](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)、[获取队列服务属性](https://docs.microsoft.com/rest/api/storageservices/Get-Queue-Service-Properties)和[获取表服务属性](https://docs.microsoft.com/rest/api/storageservices/Get-Table-Service-Properties)操作为每个服务启用存储分析。
+ 默认未对存储帐户启用存储分析日志记录。 可以在 [Azure 门户](https://portal.azure.cn/)中启用它，也可以使用 PowerShell 或 Azure CLI 启用它。 有关分步指南，请参阅[启用和管理 Azure 存储分析日志（经典）](manage-storage-analytics-logs.md)。 
+
+还可以通过 REST API 或客户端库以编程方式启用存储分析日志。 使用[获取 Blob 服务属性](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)、[获取队列服务属性](https://docs.microsoft.com/rest/api/storageservices/Get-Queue-Service-Properties)和[获取表服务属性](https://docs.microsoft.com/rest/api/storageservices/Get-Table-Service-Properties)操作为每个服务启用存储分析。 若要查看使用 .NET 启用存储分析日志的示例，请参阅[启用日志](manage-storage-analytics-logs.md)
 
  仅在针对服务终结点发出请求时才会创建日志条目。 例如，如果存储帐户的 Blob 终结点中存在活动，而表或队列终结点中没有该活动，则仅创建与 Blob 服务有关的日志。
 
@@ -31,7 +33,7 @@ ms.locfileid: "94552881"
 ## <a name="requests-logged-in-logging"></a>日志记录中记录的请求
 ### <a name="logging-authenticated-requests"></a>记录经过身份验证的请求
 
- 将记录以下类型的经过身份验证的请求：
+ 将记录以下类型的已经过身份验证的请求：
 
 - 成功的请求
 - 失败的请求，包括超时、限制、网络、授权和其他错误
@@ -67,7 +69,7 @@ ms.locfileid: "94552881"
  ```powershell
  Get-AzStorageBlob -Container '$logs' |  
  Where-Object {  
-     $_.Name -match 'table/2014/05/21/05' -and   
+     $_.Name -match 'blob/2014/05/21/05' -and   
      $_.ICloudBlob.Metadata.LogType -match 'write'  
  } |  
  ForEach-Object {  
@@ -88,7 +90,7 @@ ms.locfileid: "94552881"
 
  下表说明了日志名称中的每个属性：
 
-|Attribute|说明|
+|属性|说明|
 |---------------|-----------------|
 |`<service-name>`|存储服务的名称 例如，`blob`、`table` 或 `queue`|
 |`YYYY`|用四位数表示的日志年份。 例如： `2011`|
@@ -112,7 +114,7 @@ ms.locfileid: "94552881"
 
  所有日志 Blob 与可用于确定 Blob 包含哪些日志记录数据的元数据一起存储。 下表说明了每个元数据属性：
 
-|Attribute|说明|
+|属性|说明|
 |---------------|-----------------|
 |`LogType`|描述日志是否包含与读取、写入或删除操作有关的信息。 该值可能包含一种类型，也可能包含所有三种类型的组合并用逗号隔开。<br /><br /> 示例 1：`write`<br /><br /> 示例 2：`read,write`<br /><br /> 示例 3：`read,write,delete`|
 |`StartTime`|日志中条目的最早时间，采用 `YYYY-MM-DDThh:mm:ssZ` 形式。 例如： `2011-07-31T18:21:46Z`|
@@ -126,108 +128,10 @@ ms.locfileid: "94552881"
 -   `EndTime=2011-07-31T18:22:09Z`
 -   `LogVersion=1.0`
 
-## <a name="enable-storage-logging"></a>启用存储日志记录
-
-可以使用 Azure 门户、PowerShell 和存储 SDK 启用存储日志记录。
-
-### <a name="enable-storage-logging-using-the-azure-portal"></a>使用 Azure 门户启用存储日志记录  
-
-在 Azure 门户中，使用“诊断设置(经典)”边栏选项卡来控制存储日志记录，可从存储帐户菜单边栏选项卡的“监视(经典)”部分访问  。
-
-可以指定要记录的存储服务，以及记录数据的保留期（天）。  
-
-### <a name="enable-storage-logging-using-powershell"></a>使用 PowerShell 启用存储日志记录  
-
- 可在本地计算机上使用 PowerShell 在存储帐户中配置存储日志记录，方法是：使用 Azure PowerShell cmdlet **Get-AzStorageServiceLoggingProperty** 检索当前设置，使用 cmdlet **Set-AzStorageServiceLoggingProperty** 更改当前设置。  
-
- 控制存储日志记录的 cmdlet 使用 LoggingOperations 参数，该参数是一个字符串，包含要记录的请求类型的逗号分隔列表。 三种可能的请求类型是“读取”、“写入”和“删除”  。 要关闭日志记录，请对 LoggingOperations 参数使用值“无” 。  
-
- 以下命令在保留期设为 5 天的情况下，在默认存储帐户中为队列服务中的读取、写入和删除请求打开日志记录：  
-
-```powershell
-Set-AzStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5  
-```  
-
- 以下命令在默认存储帐户中为表服务关闭日志记录：  
-
-```powershell
-Set-AzStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
-```  
-
- 若要了解如何配置 Azure PowerShell cmdlet 来使用 Azure 订阅并了解如何选择要使用的默认存储帐户，请参阅：[如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/)。  
-
-### <a name="enable-storage-logging-programmatically"></a>以编程方式启用存储日志记录  
-
- 除了使用 Azure 门户或 Azure PowerShell cmdlet 控制存储日志记录，你还可以使用 Azure 存储 API 之一。 例如，如果你要使用 .NET 语言，则可以使用存储客户端库。  
-
-# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
-
-```csharp
-QueueServiceClient queueServiceClient = new QueueServiceClient(connectionString);
-
-QueueServiceProperties serviceProperties = queueServiceClient.GetProperties().Value;
-
-serviceProperties.Logging.Delete = true;
-
-QueueRetentionPolicy retentionPolicy = new QueueRetentionPolicy();
-retentionPolicy.Enabled = true;
-retentionPolicy.Days = 2;
-serviceProperties.Logging.RetentionPolicy = retentionPolicy;
-
-serviceProperties.HourMetrics = null;
-serviceProperties.MinuteMetrics = null;
-serviceProperties.Cors = null;
-
-queueServiceClient.SetProperties(serviceProperties);
-```
-
-# <a name="net-v11-sdk"></a>[\.NET v11 SDK](#tab/dotnet11)
-
-```csharp
-var storageAccount = CloudStorageAccount.Parse(connStr);  
-var queueClient = storageAccount.CreateCloudQueueClient();  
-var serviceProperties = queueClient.GetServiceProperties();  
-
-serviceProperties.Logging.LoggingOperations = LoggingOperations.All;  
-serviceProperties.Logging.RetentionDays = 2;  
-
-queueClient.SetServiceProperties(serviceProperties);  
-```  
-
----
-
-
- 有关使用 .NET 语言配置存储日志记录的详细信息，请参阅[存储客户端库参考](https://docs.microsoft.com/previous-versions/azure/dn261237(v=azure.100))。  
-
- 有关使用 REST API 配置存储日志记录的一般信息，请参阅[启用和配置存储分析](https://docs.microsoft.com/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics)。  
-
-## <a name="download-storage-logging-log-data"></a>下载存储日志记录日志数据
-
- 要查看和分析日志数据，应该将包含你感兴趣的日志数据的 blob 下载到本地计算机。 你可以使用很多存储浏览工具从存储帐户下载 blob；你还可以使用 Azure 存储团队提供的命令行 Azure 复制工具 ([AzCopy](storage-use-azcopy-v10.md)) 下载日志数据。  
- 
->[!NOTE]
-> `$logs` 容器未与事件网格集成，因此在写入日志文件时不会收到通知。 
-
- 要确保下载你感兴趣的日志数据，并避免多次下载相同的日志数据，请执行以下操作：  
-
--   对包含日志数据的 blob 使用日期和时间命名约定，以跟踪已下载用于分析的 blob，从而避免多次重新下载相同的数据。  
-
--   使用包含日志数据的 blob 中的元数据来确定特定期限，在该期限内，blob 会保留日志数据以标识需要下载的确切 blob。  
-
-要开始使用 AzCopy，请参阅 [AzCopy 入门](storage-use-azcopy-v10.md) 
-
-下面的示例显示如何下载队列服务的日志数据，时间从 2014 年 5 月 20 日上午 9 点、10 点和 11 点开始。
-
-```
-azcopy copy 'https://mystorageaccount.blob.core.chinacloudapi.cn/$logs/queue' 'C:\Logs\Storage' --include-path '2014/05/20/09;2014/05/20/10;2014/05/20/11' --recursive
-```
-
-要了解有关如何下载特定文件的详细信息，请参阅[下载特定文件](./storage-use-azcopy-blobs.md?toc=%252fstorage%252fblobs%252ftoc.json#download-specific-files)。
-
-下载日志数据后，可以查看文件中的日志条目。 这些日志文件使用带分隔符的文本格式，许多日志读取工具都可以分析此格式（有关详细信息，请参阅[对 Azure 存储进行监视、诊断和故障排除](storage-monitoring-diagnosing-troubleshooting.md)指南）。 不同的工具提供不同的功能用于筛选、排序和搜索日志文件的内容及设置其格式。 有关存储日志记录日志文件格式和内容的详细信息，请参阅[存储分析日志格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)和[存储分析记录的操作和状态消息](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。
 
 ## <a name="next-steps"></a>后续步骤
 
+* [启用和管理 Azure 存储分析日志（经典）](manage-storage-analytics-logs.md)
 * [Storage Analytics Log Format](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)（存储分析日志格式）
 * [存储分析记录的操作和状态消息](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
 * [存储分析指标（经典）](storage-analytics-metrics.md)

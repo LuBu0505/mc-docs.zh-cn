@@ -5,18 +5,18 @@ ms.service: azure-analysis-services
 ms.topic: conceptual
 origin.date: 04/15/2020
 author: rockboyfor
-ms.date: 10/26/2020
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 1e8aa3c64070ecf74ceaf788d6ac5ac4bdc8d149
-ms.sourcegitcommit: 7b3c894d9c164d2311b99255f931ebc1803ca5a9
+ms.openlocfilehash: b59fc2c8fce8a9fa8f04f268f403b77686024e8d
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470147"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054298"
 ---
 # <a name="manage-database-roles-and-users"></a>管理数据库角色和用户
 
@@ -32,6 +32,8 @@ ms.locfileid: "92470147"
 创建表格模型项目时，可以通过将 Visual Studio 中的“角色管理器”与 Analysis Services 项目一起使用来创建角色并将用户或组添加到这些角色。 部署到服务器时，可以使用 SQL Server Management Studio (SSMS)、[Analysis Services PowerShell cmdlet](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) 或[表格模型脚本语言](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) 来添加或删除角色和用户成员。
 
 添加“安全组”时，请使用 `obj:groupid@tenantid`。
+
+添加“服务主体”时，请使用 `app:appid@tenantid`。
 
 ## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>在 Visual Studio 中添加或管理角色和用户  
 
@@ -81,7 +83,7 @@ ms.locfileid: "92470147"
 
 4. 单击“成员资格”，并按电子邮件地址在租户 Azure AD 中输入用户或组。
 
-    :::image type="content" source="./media/analysis-services-database-users/aas-roles-adduser-ssms.png" alt-text="表格模型资源管理器中的角色和用户":::
+    :::image type="content" source="./media/analysis-services-database-users/aas-roles-adduser-ssms.png" alt-text="添加用户":::
 
 5. 如果正在创建的角色具有“读取”权限，可以使用 DAX 公式添加行筛选器。 单击“行筛选器”，选择表，并在“DAX 筛选器”字段中键入 DAX 公式。 
 
@@ -159,4 +161,4 @@ ms.locfileid: "92470147"
   [使用 PowerShell 管理 Azure Analysis Services](analysis-services-powershell.md)  
   [表格模型脚本语言 (TMSL) 参考](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 origin.date: 03/26/2020
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6104155f657bbd18dea4deab2528fba49ae2c1cc
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: cc56d12397e9c59b8c7e96bbb07e6fd1e87acca3
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106326"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053983"
 ---
 <!--Verified successfully (Not Azure enable serial console-->
 # <a name="windows-stop-error---0x000000ef-critical-process-died"></a>Windows 停止错误 - #0x000000EF“关键进程已终止”
@@ -41,9 +41,12 @@ ms.locfileid: "93106326"
 
 ### <a name="process-overview"></a>过程概述：
 
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
+
 1. 创建并访问修复 VM。
 2. 修复任何 OS 损坏情况。
-3. **建议** ：在重建 VM 之前，启用串行控制台和内存转储收集。
+3. **建议**：在重建 VM 之前，启用串行控制台和内存转储收集。
 4. 重建 VM。
 
 > [!NOTE]
@@ -104,7 +107,7 @@ ms.locfileid: "93106326"
 
 #### <a name="suggested-configuration-to-enable-os-dump"></a>用于启用 OS 转储的建议配置
 
-**加载损坏的 OS 磁盘** ：
+**加载损坏的 OS 磁盘**：
 
 `REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM`
 
@@ -132,4 +135,4 @@ ms.locfileid: "93106326"
 
 使用 [VM 修复命令的步骤 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重新装配 VM。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -10,16 +10,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 origin.date: 09/18/2018
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: bb4b6032d01efeaee106de84b421ad8970e48f2f
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 46f0e539d8b6fa04bd761c89c9e0e39ff0666898
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104711"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054312"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM 启动时停滞，并在 Azure 中显示“正在准备 Windows。 请不要关闭计算机”
 
@@ -31,13 +31,16 @@ Windows VM 无法启动。 使用 **启动诊断** 来获取 VM 的屏幕截图�
 
 :::image type="content" source="./media/troubleshoot-vm-configure-update-boot/message1.png" alt-text="Windows Server 2012 R2 的消息示例":::
 
-:::image type="content" source="./media/troubleshoot-vm-configure-update-boot/message2.png" alt-text="Windows Server 2012 R2 的消息示例":::
+:::image type="content" source="./media/troubleshoot-vm-configure-update-boot/message2.png" alt-text="消息示例":::
 
 ## <a name="cause"></a>原因
 
 当服务器在配置发生更改后执行最终重新启动时，通常会发生此问题。 配置更改可能通过 Windows 更新或通过更改服务器的角色/功能进行初始化。 对于 Windows 更新，如果更新的大小较大，则操作系统将需要更多时间来重新配置更改。
 
 ## <a name="collect-an-os-memory-dump"></a>收集 OS 内存转储
+
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
 
 如果等待更改处理后问题仍未解决，则需要收集内存转储文件并与支持部门联系。 若要收集转储文件，请执行以下步骤：
 
@@ -103,11 +106,11 @@ Windows VM 无法启动。 使用 **启动诊断** 来获取 VM 的屏幕截图�
 3. [分离 OS 磁盘，然后将 OS 磁盘重新附加到受影响的 VM](./troubleshoot-recovery-disks-portal-windows.md)。
 4. 启动 VM 并访问串行控制台。
 5. 选择“发送不可屏蔽中断(NMI)”  以触发内存转储。
-    :::image type="content" source="./media/troubleshoot-vm-configure-update-boot/run-nmi.png" alt-text="Windows Server 2012 R2 的消息示例":::
+    :::image type="content" source="./media/troubleshoot-vm-configure-update-boot/run-nmi.png" alt-text="有关发送不可屏蔽中断的位置的插图":::
 6. 再次将 OS 磁盘附加到恢复 VM，收集转储文件。
 
 ## <a name="contact-azure-support"></a>联系 Azure 支持部门
 
 收集转储文件后，请联系 [Azure 支持部门](https://support.azure.cn/support/support-azure/)来分析根本原因。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

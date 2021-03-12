@@ -5,26 +5,23 @@ description: 如何使用 Azure 门户、PowerShell 或 Azure CLI 创建 Azure �
 author: WenJason
 ms.service: storage
 ms.topic: how-to
-origin.date: 2/22/2020
-ms.date: 02/08/2021
+origin.date: 1/20/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 835fb948db619d9db06d2b9d818456b48f68b378
-ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
+ms.openlocfilehash: c0cbfdf9b11af4c5bb7812929e1a2e057fbbeab5
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99503878"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196283"
 ---
 # <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
 若要创建 Azure 文件共享，需要回答有关你将如何使用它的三个问题：
 
 - **Azure 文件共享的性能要求是什么？**  
     Azure 文件存储提供在基于硬盘（基于 HDD）的硬件上托管的标准文件共享，以及在基于固态磁盘（基于 SSD）的硬件上托管的高级文件共享。
-
-- **需要哪种大小的文件共享？**  
-    标准文件共享最多可以涵盖 100 TiB 的空间，但默认不会启用此功能；如果所需的文件共享大于 5 TiB，则需要为存储帐户启用大型文件共享功能。 高级文件共享最多可扩展到 100 TiB 而无需任何特殊设置，但高级文件共享是经过预配的，而不像标准文件共享一样即付即用。 这意味着，预配一个远超所需大小的文件共享会增加存储的总成本。
 
 - **Azure 文件共享在冗余方面的要求是什么？**  
     标准文件共享提供本地冗余 (LRS) 或异地冗余 (GRS) 存储，但是，只有本地冗余文件共享才支持大型文件共享功能。 高级文件共享不支持异地冗余。
@@ -50,7 +47,7 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 
 ![浏览器中存储帐户快速创建选项的屏幕截图](media/storage-how-to-create-file-share/create-storage-account-0.png)
 
-#### <a name="the-basics-section"></a>“基本信息”部分
+#### <a name="basics"></a>基础
 创建存储帐户所要完成的第一部分是标有“基本信息”的部分。 此部分包含创建存储帐户所需填写的所有字段。 若要创建 GPv2 存储帐户，请确保将“性能”单选按钮设置为“标准”，并在“帐户类型”下拉列表中选择“StorageV2 (常规用途 v2)”。
 
 ![一个屏幕截图，其中“性能”单选按钮已选择为“标准”，“帐户类型”已选择为“StorageV2”](media/storage-how-to-create-file-share/create-storage-account-1.png)
@@ -60,25 +57,22 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 ![一个屏幕截图，其中“性能”单选按钮已选择为“高级”，“帐户类型”已选择为“FileStorage”](media/storage-how-to-create-file-share/create-storage-account-2.png)
 
 其他基本信息字段与存储帐户的选择无关：
-- **订阅**：要部署到的存储帐户所在的订阅。 
-- **资源组**：要部署到的存储帐户所在的资源组。 可以创建新的资源组，也可以使用现有资源组。 资源组是对 Azure 资源进行分组的逻辑容器。 在创建存储帐户时，可以选择创建新的资源组，也可以使用现有资源组。
 - **存储帐户名称**：要创建的存储帐户资源的名称。 此名称必须全局唯一，但可以是所需的任何名称。 通过 SMB 装载 Azure 文件共享时，存储帐户名称将用作服务器名称。
 - **位置**：要部署到的存储帐户所在的区域。 此区域可以是与资源组关联的区域，也可以是任何其他可用区域。
-- **复制**：尽管此字段的标签为“复制”，但它实际上指的是“冗余”；这是所需的冗余级别：本地冗余 (LRS) 和异地冗余 (GRS)。 此下拉列表还包含读取访问权限异地冗余存储 (RA-GRS)，它不适用于 Azure 文件共享；在选择这些选项的情况下在存储帐户中创建的任何文件共享实际上是异地冗余的。 根据所在的区域或所选的存储帐户类型，可能不允许使用某些冗余选项。
-- **Blob 访问层**：此字段不适用于 Azure 文件存储，因此可以选中任一单选按钮。 
+- **复制**：尽管此字段的标签为“复制”，但它实际上指的是“冗余”；这是所需的冗余级别：本地冗余 (LRS) 和异地冗余 (GRS)。 此下拉列表还包含不适用于 Azure 文件共享的读取访问异地冗余 (RA-GRS)；在选择这些选项的情况下在存储帐户中创建的任何文件共享实际上是异地冗余的。 
 
-#### <a name="the-networking-blade"></a>“网络”边栏选项卡
+#### <a name="networking"></a>网络
 在“网络”部分可以配置网络选项。 创建存储帐户时，这些设置是可选的，以后可根据需要对其进行配置。 有关这些选项的详细信息，请参阅 [Azure 文件存储的网络注意事项](storage-files-networking-overview.md)。
 
-#### <a name="the-advanced-blade"></a>“高级”边栏选项卡
+#### <a name="advanced"></a>高级
 “高级”部分包含 Azure 文件共享的几项重要设置：
 
-- **需要安全传输**：此字段指示存储帐户是否需要对与存储帐户的通信进行传输中加密。 建议将此功能保持启用状态，但是，如果需要 SMB 2.1 支持，则必须禁用此功能。 如果禁用加密，建议你约束存储帐户访问权限，仅允许访问包含服务终结点和/或专用终结点的虚拟网络。
+- **需要安全传输**：此字段指示存储帐户是否需要对与存储帐户的通信进行传输中加密。 如果需要 SMB 2.1 支持，则必须禁用此功能。
 - **大型文件共享**：此字段为最多涵盖 100 TiB 空间的文件共享启用存储帐户。 启用此功能会将存储帐户限制为只能使用本地冗余存储选项。 为大型文件共享启用 GPv2 存储帐户后，无法禁用大型文件共享功能。 FileStorage 存储帐户（高级文件共享的存储帐户）没有此选项，因为所有高级文件共享最多可以扩展到 100 TiB。
 
 ![适用于 Azure 文件存储的重要高级设置的屏幕截图](media/storage-how-to-create-file-share/create-storage-account-3.png)
 
-“高级”选项卡中提供的其他设置（Blob 软删除、Azure Data Lake Storage Gen 2 的分层命名空间，以及 Blob 存储的 NFSv3）不适用于 Azure 文件存储。
+“高级”选项卡中提供的其他设置（Azure Data Lake Storage Gen 2 的分层命名空间、默认 blob 层等）不适用于 Azure 文件存储。
 
 #### <a name="tags"></a>Tags
 标记是名称/值对，可让你通过将相同的标记应用到多个资源和资源组，对资源进行分类并查看合并的账单。 这些设置是可选的，可以在创建存储帐户后应用。
@@ -161,12 +155,12 @@ az storage account create \
 
 “quota”属性表示高级和标准文件共享之间略有不同：
 
-- 标准文件共享是 Azure 文件共享的上限，最终用户不能超越此上限。 针对标准文件共享指定配额的主要目的是便于预算：“我不希望此文件共享增长到此临界点以外”。 如果未指定配额，则标准文件共享最多可以涵盖 100 TiB 的空间（如果未为存储帐户设置大型文件共享属性，则最多可以涵盖 5 TiB）。
+- 标准文件共享是 Azure 文件共享的上限，最终用户不能超越此上限。 如果未指定配额，则标准文件共享最多可以涵盖 100 TiB 的空间（如果未为存储帐户设置大型文件共享属性，则最多可以涵盖 5 TiB）。
 
-- 对于高级文件共享，配额会重载以表示预配的大小。 预配的大小是将要对你计费的数量，与实际使用情况无关。 预配高级文件共享时，需要考虑两个因素：1) 需要从空间使用率角度考虑该共享的未来增长情况；2) 需要考虑工作负载所需的 IOPS。 每个预配的 GiB 都允许你使用额外的保留 IOPS 和突发 IOPS。 有关如何规划高级文件共享的详细信息，请参阅[预配高级文件共享](understanding-billing.md#provisioned-model)。
+- 对于高级文件共享，配额表示预配的大小。 预配的大小是将要对你计费的数量，与实际使用情况无关。 有关如何规划高级文件共享的详细信息，请参阅[预配高级文件共享](understanding-billing.md#provisioned-model)。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-如果你刚刚创建了存储帐户，可以在部署屏幕中选择“转到资源”导航到该存储帐户。 如果以前已创建了存储帐户，可以通过它所在的资源组导航到该存储帐户。 进入存储帐户后，选择标有“文件共享”的磁贴（也可以通过存储帐户的目录导航到“文件共享”）。 
+如果你刚刚创建了存储帐户，可以在部署屏幕中选择“转到资源”导航到该存储帐户。 进入存储帐户后，选择标有“文件共享”的磁贴（也可以通过存储帐户的目录导航到“文件共享”）。 
 
 ![“文件共享”磁贴的屏幕截图](media/storage-how-to-create-file-share/create-file-share-1.png)
 
@@ -177,7 +171,7 @@ az storage account create \
 - **名称**：要创建的文件共享的名称。
 - **配额**：标准文件共享的文件共享配额；高级文件共享的文件共享预配大小。
 
-选择“创建”以完成新共享的创建。 请注意，如果存储帐户位于虚拟网络中，那么除非客户端也在虚拟网络中，否则无法成功创建 Azure 文件共享。 也可以使用 Azure PowerShell `New-AzRmStorageShare` cmdlet 解决此时间点限制。
+选择“创建”以完成新共享的创建。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 可以使用 [`New-AzRmStorageShare`](https://docs.microsoft.com/powershell/module/az.storage/New-AzRmStorageShare) cmdlet 创建 Azure 文件共享。 以下 PowerShell 命令假设已根据前面有关使用 Azure PowerShell 创建存储帐户的部分中的定义，设置了变量 `$resourceGroupName` 和 `$storageAccountName`。 
@@ -186,18 +180,9 @@ az storage account create \
 > 对于高级文件共享，`-QuotaGiB` 参数指的是文件共享的预配大小。 文件共享的预配大小是将要对你计费的数量，与使用情况无关。 标准文件共享按使用情况计费，而不是按预配大小计费。
 
 ```powershell
-# Update the Azure storage module to use the preview version. You may need to close and 
-# reopen PowerShell before running this command. If you are running PowerShell 5.1, ensure 
-# the following:
-# - Run the below cmdlets as an administrator.
-# - Have PowerShellGet 2.2.3 or later. Uncomment the following line to check.
-# Get-Module -ListAvailable -Name PowerShellGet
-Remove-Module -Name Az.Storage -ErrorAction SilentlyContinue
-Uninstall-Module -Name Az.Storage
-Install-Module -Name Az.Storage -RequiredVersion "2.1.1-preview" -AllowClobber -AllowPrerelease 
-
 # Assuming $resourceGroupName and $storageAccountName from earlier in this document have already
 # been populated. 
+# storage accounts. Standard tiers are only available in standard storage accounts. 
 $shareName = "myshare"
 
 New-AzRmStorageShare `
@@ -210,8 +195,6 @@ New-AzRmStorageShare `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 可以使用 [`az storage share-rm create`](/cli/storage/share-rm?preserve-view=true&view=azure-cli-latest#az_storage_share_rm_create) 命令创建 Azure 文件共享。 以下 Azure CLI 命令假设你已根据前面“使用 Azure CLI 创建存储帐户”部分中的定义，设置了变量 `$resourceGroupName` 和 `$storageAccountName`。
-
-最新的 Azure CLI 更新中提供了在特定层中创建文件共享或将文件共享移动到特定层的功能。 更新 Azure CLI 的操作特定于你使用的操作系统/Linux 发行版。 有关如何在你的系统上更新 Azure CLI 的说明，请参阅[安装 Azure CLI](/cli/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 
 > [!Important]  
 > 对于高级文件共享，`--quota` 参数指的是文件共享的预配大小。 文件共享的预配大小是将要对你计费的数量，与使用情况无关。 标准文件共享按使用情况计费，而不是按预配大小计费。

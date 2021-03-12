@@ -3,22 +3,21 @@ title: 如何在设备与 Azure 设备预配服务之间传输有效负载
 description: 本文档介绍如何在设备与设备预配服务 (DPS) 之间传输有效负载。
 author: menchi
 ms.author: v-tawe
-origin.date: 02/11/2020
-ms.date: 12/03/2020
+ms.date: 02/22/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: a0c6bc42594f81efec81e75ce8bae8a126579924
-ms.sourcegitcommit: 60e70acb6f9604aeef69d2027f7f96a1d7d5b248
+ms.openlocfilehash: f58553e70c543769931faad9dee1c788184b022c
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96541133"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196818"
 ---
-# <a name="how-to-transfer-a-payload-between-device-and-dps"></a>如何在设备与 DPS 之间传输有效负载
+# <a name="how-to-transfer-payloads-between-devices-and-dps"></a>如何在设备和 DPS 之间传输有效负载
 有时，DPS 需要设备中的更多数据才能正常地将设备预配到适当的 IoT 中心，而这些数据需由设备提供。 反之，DPS 可将数据返回给设备，以便为客户端逻辑提供辅助。 
 
-## <a name="when-to-use-it"></a>何时使用此功能
+## <a name="when-to-use-it"></a>何时使用
 此功能可用作[自定义分配](./how-to-use-custom-allocation-policies.md)的增强功能。 例如，你希望在无需人工干预的情况下，根据设备型号分配设备。 在这种情况下，需使用[自定义分配](./how-to-use-custom-allocation-policies.md)。 可以在[注册设备调用](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice)过程中将设备配置为报告型号信息。 DPS 会将设备的有效负载传入自定义分配 Webhook。 当函数收到设备型号信息时，可以确定此设备要转到哪个 IoT 中心。 同样，如果 Webhook 希望将某些数据返回给设备，它会在 Webhook 响应中以字符串的形式传回数据。  
 
 ## <a name="device-sends-data-payload-to-dps"></a>设备将数据有效负载发送到 DPS

@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: how-to
 origin.date: 12/11/2020
-ms.date: 01/18/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: e6e2a078b512d86581d2cd259ff5763f0c362270
-ms.sourcegitcommit: f086abe8bd2770ed10a4842fa0c78b68dbcdf771
+ms.openlocfilehash: 01130ad72c290b4508cdba70bf3068337c535a08
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98163238"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196364"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>使用 AzCopy v10 从 Azure Blob 存储下载 Blob
 
@@ -128,9 +128,23 @@ ms.locfileid: "98163238"
 
 如需详细的参考，请查看 [azcopy copy](storage-ref-azcopy-copy.md) 参考文档。
 
+#### <a name="download-previous-versions-of-a-blob"></a>下载 blob 的早期版本
+
+如果已启用 [blob 版本控制](../blobs/versioning-enable.md)，则可以下载 blob 的一个或多个早期版本。 
+
+首先，创建一个包含[版本 ID](../blobs/versioning-overview.md) 列表的文本文件。 每个版本 ID 必须出现在单独的行中。 例如： 
+
+```
+2020-08-17T05:50:34.2199403Z
+2020-08-17T05:50:34.5041365Z
+2020-08-17T05:50:36.7607103Z
+```
+
+然后，结合 `--list-of-versions` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 指定包含版本列表的文本文件的位置（例如：`D:\\list-of-versions.txt`）。  
+
 #### <a name="download-a-blob-snapshot"></a>下载 Blob 快照
 
-可通过引用 Blob 快照的 **DateTime** 值来下载 [Blob 快照](/storage/blobs/snapshots-overview)。 
+可通过引用 Blob 快照的 **DateTime** 值来下载 [Blob 快照](../blobs/snapshots-overview.md)。 
 
 |    |     |
 |--------|-----------|
@@ -155,7 +169,7 @@ ms.locfileid: "98163238"
 
 ## <a name="next-steps"></a>后续步骤
 
-如需了解更多示例，请参阅以下文章：
+在以下文章中查找更多示例：
 
 - [示例：上载](storage-use-azcopy-blobs-upload.md)
 - [示例：在帐户之间复制](storage-use-azcopy-blobs-copy.md)
