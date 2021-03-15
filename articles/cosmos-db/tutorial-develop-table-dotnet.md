@@ -12,12 +12,12 @@ ms.testscope: yes
 ms.testdate: 09/28/2020
 ms.author: v-yeche
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 282f826cc2affc59994f708106109d7de2f00cf8
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: c945e3a1a7649b6e3614c7961fe3b18685fb21e1
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230246"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996771"
 ---
 <!--Verify sucessfully-->
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>通过 .NET SDK 开始使用 Azure Cosmos DB 表 API 和 Azure 表存储
@@ -227,7 +227,7 @@ namespace CosmosTableSamples.Model
 
 ## <a name="insert-or-merge-an-entity"></a>插入或合并实体
 
-以下代码示例创建实体对象并将其添加到表中。 [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) 类中的 InsertOrMerge 方法用于插入或合并实体。 调用 [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?preserve-view=true&view=azure-dotnet) 方法来执行此操作。 
+以下代码示例创建实体对象并将其添加到表中。 [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) 类中的 InsertOrMerge 方法用于插入或合并实体。 调用 [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync) 方法来执行此操作。 
 
 右键单击项目“CosmosTableSamples”。 选择“添加”、“新项”，并添加名为“SamplesUtils.cs”的类  。 此类存储对实体执行 CRUD 操作所需的全部代码。 
 

@@ -76,6 +76,10 @@
           href: synapse-link-use-cases.md
         - name: Synapse Link 常见问题解答
           href: synapse-link-frequently-asked-questions.md
+    - name: 备份和还原
+      items:
+        - name: 备份和还原简介
+          href: online-backup-and-restore.md
     - name: 优化 Azure Cosmos DB 成本
       items:
         - name: 定价模型
@@ -102,8 +106,10 @@
       href: change-feed.md
     - name: 服务配额
       href: concepts-limits.md
-    - name: 企业就绪情况 - 合规性
-      href: compliance.md
+    - name: 企业就绪情况
+      items:
+        - name: 合规性
+          href: compliance.md
     - name: 自动建议
       href: automated-recommendations.md
 - name: SQL/核心 API
@@ -188,7 +194,7 @@
           href: powershell-samples.md
         - name: Azure CLI
           href: cli-samples.md
-        - name: Azure 资源管理器
+        - name: Azure Resource Manager
           href: templates-samples-sql.md
     - name: 概念
       items:
@@ -724,6 +730,8 @@
                   href: troubleshoot-not-found.md
                 - name: 故障排除未经授权
                   href: troubleshoot-unauthorized.md
+                - name: 故障排除被禁止
+                  href: troubleshoot-forbidden.md
                 - name: 多区域环境中的可用性问题
                   href: troubleshoot-sdk-availability.md
             - name: .NET
@@ -804,6 +812,8 @@
           items:
             - name: 配置跨源资源共享 (CORS)
               href: how-to-configure-cross-origin-resource-sharing.md
+            - name: 配置基于角色的访问控制
+              href: how-to-setup-rbac.md
             - name: 使用托管标识访问数据
               href: managed-identity-based-authentication.md
               displayName: 'msi, managed service identity, aad, azure active directory, identity'
@@ -870,7 +880,7 @@
         - name: REST（管理平面）
           href: 'https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/2020-04-01/sqlresources'
         - name: PowerShell
-          href: 'https://docs.microsoft.com/powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db?preserve-view=true'
+          href: 'https://docs.microsoft.com/powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db?preserve-view=true'
         - name: Azure Policy 内置策略定义
           displayName: 'samples, policies, definitions'
           href: ./policy-reference.md
@@ -911,7 +921,7 @@
           href: cassandra-import-data.md
     - name: 概念
       items:
-        - name: 常见问题解答
+        - name: 常见问题
           href: cassandra-faq.md
         - name: 弹性缩放
           href: manage-scale-cassandra.md
@@ -929,8 +939,6 @@
               href: oracle-migrate-cosmos-db-blitzz.md
             - name: 迁移 - Apache Cassandra 到 Cassandra API（使用 Blitzz）
               href: cassandra-migrate-cosmos-db-blitzz.md
-            - name: 迁移 - Apache Cassandra 到 Cassandra API（使用 Databricks）
-              href: cassandra-migrate-cosmos-db-databricks.md
             - name: 迁移 - Apache Cassandra 到 Cassandra API（使用 Databricks）
               href: cassandra-migrate-cosmos-db-databricks.md
         - name: 更改源
@@ -977,7 +985,7 @@
         - name: REST 资源提供程序
           href: 'https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/2020-04-01/cassandraresources'
         - name: PowerShell
-          href: 'https://docs.microsoft.com/powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db?preserve-view=true'
+          href: 'https://docs.microsoft.com/powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db?preserve-view=true'
 - name: MongoDB API
   items:
     - name: 概述
@@ -993,11 +1001,13 @@
         - name: Node.js
           href: create-mongodb-nodejs.md
         - name: Python
-          href: create-mongodb-flask.md
+          href: ./mongodb-introduction.md
         - name: Xamarin
           href: create-mongodb-xamarin.md
         - name: Golang
           href: create-mongodb-go.md
+        - name: Rust
+          href: create-mongodb-rust.md
     - name: 教程
       items:
         - name: 1 - 创建和管理数据
@@ -1024,9 +1034,11 @@
           href: tutorial-global-distribution-mongodb.md
     - name: 概念
       items:
-        - name: 线路协议支持 (3.6)
+        - name: API 版本 4.0
+          href: mongodb-feature-support-40.md
+        - name: API 版本 3.6
           href: mongodb-feature-support-36.md
-        - name: 线路协议支持 (3.2)
+        - name: API 版本 3.2
           href: mongodb-feature-support.md
         - name: 常见问题解答
           href: mongodb-api-faq.md
@@ -1038,13 +1050,15 @@
           items:
             - name: 迁移前指南
               href: mongodb-pre-migration.md
+            - name: MongoDB 本机工具（脱机）
+              href: tutorial-mongotools-cosmos-db.md
             - name: 数据库迁移服务（联机）
               href: ../dms/tutorial-mongodb-cosmos-db-online.md?toc=/cosmos-db/toc.json&bc=/cosmos-db/breadcrumb/toc.json
             - name: 数据库迁移服务（脱机）
               href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/cosmos-db/toc.json&bc=/cosmos-db/breadcrumb/toc.json
             - name: 迁移后指南
               href: mongodb-post-migration.md
-        - name: 从 MongoDB 3.2 升级到 3.6
+        - name: 升级到 API 版本 4.0 或 3.6
           href: mongodb-version-upgrade.md
         - name: 获取连接字符串
           href: connect-mongodb-account.md
@@ -1065,6 +1079,8 @@
           href: mongodb-change-streams.md
         - name: 管理数据索引编制
           href: mongodb-indexing.md
+        - name: 使用多文档事务
+          href: use-multi-document-transactions.md
         - name: 创建容器 - MongoDB API
           href: how-to-create-container-mongodb.md
         - name: 预配吞吐量 - MongoDB API
@@ -1077,6 +1093,8 @@
           href: mongodb-troubleshoot-query.md
         - name: 排查常见问题
           href: mongodb-troubleshoot.md
+        - name: 防止速率限制错误
+          href: prevent-rate-limiting-errors.md
         - name: MongoDB 扩展命令
           href: mongodb-custom-commands.md
           displayName: custom commands
@@ -1092,7 +1110,7 @@
         - name: REST 资源提供程序
           href: 'https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/2020-04-01/mongodbresources'
         - name: PowerShell
-          href: 'https://docs.microsoft.com/powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db?preserve-view=true'
+          href: 'https://docs.microsoft.com/powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db?preserve-view=true'
 - name: Gremlin API
   displayName: 'graph, graph database'
   items:
@@ -1122,7 +1140,7 @@
           href: tutorial-query-graph.md
     - name: 概念
       items:
-        - name: 常见问题解答
+        - name: 常见问题
           href: gremlin-api-faq.md
         - name: 响应头
           href: gremlin-headers.md
@@ -1166,7 +1184,7 @@
         - name: 响应标头
           href: gremlin-headers.md
         - name: PowerShell
-          href: 'https://docs.microsoft.com/powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db?preserve-view=true'
+          href: 'https://docs.microsoft.com/powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db?preserve-view=true'
         - name: REST 资源提供程序
           href: 'https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/2020-04-01/gremlinresources'
 - name: 表 API
@@ -1217,7 +1235,7 @@
           maintainContext: true
     - name: 概念
       items:
-        - name: 常见问题解答
+        - name: 常见问题
           href: table-api-faq.md
     - name: 操作指南
       items:
@@ -1279,6 +1297,10 @@
       items:
         - name: 配置 Azure Synapse Link
           href: configure-synapse-link.md
+    - name: 备份和还原
+      items:
+        - name: 管理定期备份
+          href: configure-periodic-backup-restore.md
     - name: 安全性
       items:
         - name: 配置 IP 防火墙
@@ -1294,17 +1316,13 @@
           href: how-to-restrict-user-data.md
         - name: 配置客户管理的密钥
           href: how-to-setup-cmk.md
-    - name: 企业就绪情况
-      items:
-        - name: 联机备份和本地还原
-          href: online-backup-and-restore.md
     - name: 监视
       items:
         - name: 监视 Cosmos DB
           href: monitor-cosmos-db.md
         - name: 使用 Azure Monitor 指标
           items:
-            - name: 用于 Cosmos 的 Azure Monitor（预览版）
+            - name: 用于 Cosmos DB 的 Azure Monitor
               href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/cosmos-db/toc.json&bc=/cosmos-db/breadcrumb/toc.json
             - name: 要监视的方案
               href: use-metrics.md
@@ -1334,7 +1352,7 @@
       href: query-cheat-sheet.md
     - name: SQL 演练
       href: 'https://www.documentdb.com/sql/demo'
-    - name: 常见问题解答
+    - name: 常见问题
       href: faq.md
     - name: 白皮书
       href: whitepapers.md

@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本示例 - 重置帐户凭据 | Microsoft Docs
+title: 重置帐户凭据 - CLI
 description: 使用 Azure CLI 脚本重置帐户凭据和恢复 app.config 设置。
 services: media-services
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: multiple
 ms.workload: na
 origin.date: 08/31/2020
-ms.date: 09/28/2020
+ms.date: 03/15/2021
 ms.author: v-jay
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1552d124bff176dec9c7bdd2c50bb8ea771ba00a
-ms.sourcegitcommit: 7ad3bfc931ef1be197b8de2c061443be1cf732ef
+ms.openlocfilehash: 8024cb43fd98d7318bf6f171cdd43cc1155a1cbd
+ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91245612"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103211792"
 ---
 # <a name="azure-cli-example-reset-the-account-credentials"></a>Azure CLI 示例：重置帐户凭据
 
@@ -33,14 +33,12 @@ ms.locfileid: "91245612"
 
 [创建媒体服务帐户](./create-account-howto.md)。
 
-[!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
-
 ## <a name="example-script"></a>示例脚本
 
 ```azurecli
 # Update the following variables for your own settings:
-$resourceGroup=amsResourceGroup
-$amsAccountName=amsmediaaccountname
+$resourceGroup="amsResourceGroup"
+$amsAccountName="amsmediaaccountname"
 
 az ams account sp reset-credentials \
   --account-name $amsAccountName \
@@ -50,4 +48,4 @@ az ams account sp reset-credentials \
 ## <a name="next-steps"></a>后续步骤
 
 * [az ams](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
-* [重置凭据](https://docs.microsoft.com/cli/azure/ams/account/sp?view=azure-cli-latest#az-ams-account-sp-reset-credentials)
+* [重置凭据](https://docs.microsoft.com/cli/azure/ams/account/sp#az-ams-account-sp-reset-credentials)

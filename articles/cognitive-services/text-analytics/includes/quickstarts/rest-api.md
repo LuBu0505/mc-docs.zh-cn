@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 01/04/2020
+ms.date: 03/08/2021
 ms.author: v-johya
-ms.openlocfilehash: a0ea06de43fd3a8719994aad6c64cfdaf6f4187c
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 885c59d64fe79b2cda8af2d37c9c19a3867e8d65
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024277"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212665"
 ---
 # <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
@@ -30,7 +30,7 @@ ms.locfileid: "98024277"
 ## <a name="prerequisites"></a>先决条件
 
 * 最新版本的 [cURL](https://curl.haxx.se/)。
-* 你有了 Azure 订阅后，<a href="https://portal.azure.cn/#create/Microsoft.CognitiveServicesTextAnalytics"  title="创建文本分析资源"  target="_blank">将在 Azure 门户中创建文本分析资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，以获取你的密钥和终结点。 部署后，单击“转到资源”。
+* 你有了 Azure 订阅后，<a href="https://portal.azure.cn/#create/Microsoft.CognitiveServicesTextAnalytics"  title="创建文本分析资源"  target="_blank">将在 Azure 门户中创建文本分析资源 </a>，以获取你的密钥和终结点。 部署后，单击“转到资源”。
     * 你需要从创建的资源获取密钥和终结点，以便将应用程序连接到文本分析 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
     * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 

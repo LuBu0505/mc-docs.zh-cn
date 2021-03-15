@@ -12,12 +12,12 @@ origin.date: 01/07/2021
 ms.date: 02/19/2021
 ms.author: v-johya
 ms.custom: references_regions
-ms.openlocfilehash: 1703ba5f237a52664e153bd220ccdf55f3a0e0fe
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: f3493120d3a3d929e8aa2ece4e56e3cc5f2bd4e6
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697546"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212401"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>语音服务的语言和语音支持
 
@@ -90,7 +90,7 @@ https://cris.azure.cn -> Click on Adaptation Data -> scroll down to section "Pro
 | 立陶宛语(立陶宛)             | `lt-LT` | 文本                                   |                           |
 | 马耳他语（马耳他）                     | `mt-MT` | 文本                                   |                           |
 | 马拉地语(印度)                    | `mr-IN` | 文本                                   |                           |
-| 挪威 (Bokm�l, Norway)         | `nb-NO` | 文本                                   |     是                      |
+| 挪威语（博克马尔语，挪威）         | `nb-NO` | 文本                                   |     是                      |
 | 波兰语（波兰）                    | `pl-PL` | 文本                                   |       是                    |
 | 葡萄牙语(巴西)                | `pt-BR` | 音频 (20190620, 20201015)<br>文本<br>发音|          是                 |
 | 葡萄牙语(葡萄牙)              | `pt-PT` | 文本                                   |             是              |
@@ -222,9 +222,9 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 韩语(韩国) | `ko-KR` | 男 | `ko-KR-InJoonNeural` | 常规 |
 | 马来语（马来西亚） | `ms-MY` | 女 | `ms-MY-YasminNeural` | 常规 |
 | 马来语（马来西亚） | `ms-MY` | 男 | `ms-MY-OsmanNeural` <sup>新建</sup> | 常规 |
-| 挪威 (Bokm�l, Norway) | `nb-NO` | 女 | `nb-NO-IselinNeural` | 常规 |
-| 挪威 (Bokm�l, Norway) | `nb-NO` | Female | `nb-NO-PernilleNeural` <sup>新建</sup> | 常规 |
-| 挪威 (Bokm�l, Norway) | `nb-NO` | 男 | `nb-NO-FinnNeural` <sup>新建</sup> | 常规 |
+| 挪威语（博克马尔语，挪威） | `nb-NO` | 女 | `nb-NO-IselinNeural` | 常规 |
+| 挪威语（博克马尔语，挪威） | `nb-NO` | Female | `nb-NO-PernilleNeural` <sup>新建</sup> | 常规 |
+| 挪威语（博克马尔语，挪威） | `nb-NO` | 男 | `nb-NO-FinnNeural` <sup>新建</sup> | 常规 |
 | 波兰语（波兰） | `pl-PL` | Female | `pl-PL-AgnieszkaNeural` <sup>新建</sup> | 常规 |
 | 波兰语（波兰） | `pl-PL` | 女 | `pl-PL-ZofiaNeural` | 常规 |
 | 波兰语（波兰） | `pl-PL` | 男 | `pl-PL-MarekNeural` <sup>新建</sup> | 常规 |

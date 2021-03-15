@@ -7,13 +7,13 @@ author: Johnnytechn
 ms.author: v-johya
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 01/19/2021
-ms.openlocfilehash: 915d8de1b66e642893e091714bff86736de37d06
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.date: 03/08/2021
+ms.openlocfilehash: 6f7f39d62d1c3179664feb6c1762938a72e0cd23
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751377"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212341"
 ---
 # <a name="cognitive-services-development-options"></a>认知服务开发选项
 
@@ -115,7 +115,6 @@ Power Automate 是 [Power Platform](https://docs.microsoft.com/power-platform/) 
 | 决策 | 指标顾问 | https://metricsadvisor.chinacloudsites.cn/  | [快速入门](./metrics-advisor/quickstarts/web-portal.md) |
 | 语言 | 语言理解 (LUIS) | https://luis.azure.cn/ | |
 | 语音 | 自定义语音识别 | https://speech.microsoft.cn/ | [快速入门](./speech-service/custom-speech-overview.md) |
-| 语音 | 自定义语音 | https://speech.microsoft.cn/ | [快速入门](./speech-service/how-to-custom-voice.md) |  
 
 <!--Not available in MC: Review Tool-->
 

@@ -6,15 +6,15 @@ metadata:
   author: WenJason
   ms.author: v-jay
   origin.date: 09/03/2019
-  ms.date: 11/09/2020
+  ms.date: 03/15/2021
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: da88bba523e926c5a9d9936e631fdfe8a5e9a8d5
-  ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+  ms.openlocfilehash: c6f2a6c7c48976df62d542d39ddf6ebf7fce807a
+  ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/08/2021
-  ms.locfileid: "98022905"
+  ms.lasthandoff: 03/12/2021
+  ms.locfileid: "103211719"
 landingContent:
 - title: 关于 Azure Database for MySQL
   linkLists:
@@ -24,6 +24,8 @@ landingContent:
       url: overview.md
     - text: 选择适当的 MySQL 选项
       url: select-right-deployment-type.md
+    - text: 了解支持的 MySQL 版本
+      url: concepts-supported-versions.md
 - title: 单台服务器
   linkLists:
   - linkListType: overview
@@ -34,10 +36,10 @@ landingContent:
       url: single-server/index.yml
   - linkListType: concept
     links:
+    - text: 服务器概念
+      url: concepts-servers.md
     - text: 了解定价层
       url: concepts-pricing-tiers.md
-    - text: 了解支持的 MySQL 版本
-      url: concepts-supported-versions.md
   - linkListType: quickstart
     links:
     - text: 使用 Azure 门户创建服务器

@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 01/08/2021
-ms.date: 01/14/2021
-ms.author: v-tawe
+ms.date: 03/08/2021
+ms.author: v-johya
 ms.custom: references_regions
-ms.openlocfilehash: eb5a963e439b06a5294a2280edad4f5560e07d3c
-ms.sourcegitcommit: 93063f9b8771b8e895c3bcdf218f5e3af14ef537
+ms.openlocfilehash: e9c1d150366671120b272797884c73d12f52c365
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98193229"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212691"
 ---
 # <a name="text-to-speech-rest-api"></a>文本转语音 REST API
 
@@ -49,6 +49,7 @@ ms.locfileid: "98193229"
 | 区域 | 终结点 |
 |--------|----------|
 | 中国东部 2 | `https://chinaeast2.tts.speech.azure.cn/cognitiveservices/voices/list` |
+| 中国北部 2 | `https://chinanorth2.tts.speech.azure.cn/cognitiveservices/voices/list` |
 
 ### <a name="request-headers"></a>请求标头
 
@@ -136,12 +137,12 @@ Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
   ...
     
    {
-    "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, YunxiNeural)",
+    "Name": "Microsoft Server Speech Text to Speech Voice (zh-cn, YunxiNeural)",
     "DisplayName": "Yunxi",
     "LocalName": "云希",
-    "ShortName": "zh-CN-YunxiNeural",
+    "ShortName": "zh-cn-YunxiNeural",
     "Gender": "Male",
-    "Locale": "zh-CN",
+    "Locale": "zh-cn",
     "StyleList": [
       "Calm",
       "Fearful",
@@ -194,7 +195,7 @@ Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 | `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必须 |
 | `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 必须 |
 | `X-Microsoft-OutputFormat` | 指定音频输出格式。 有关接受值的完整列表，请参阅[音频输出](#audio-outputs)。 | 必须 |
-| `User-Agent` | 应用程序名称。 提供的值必须少于 255 个字符。 | 必需 |
+| `User-Agent` | 应用程序名称。 提供的值必须少于 255 个字符。 | 必须 |
 
 ### <a name="audio-outputs"></a>音频输出
 
@@ -257,5 +258,4 @@ Authorization: Bearer [Base64 access_token]
 ## <a name="next-steps"></a>后续步骤
 
 - [试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)
-- [用于长格式音频的异步合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
-- [自定义语音入门](how-to-custom-voice.md)
+

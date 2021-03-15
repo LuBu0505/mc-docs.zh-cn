@@ -5,14 +5,14 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.author: v-johya
-ms.date: 10/19/2020
+ms.date: 03/08/2021
 origin.date: 10/25/2019
-ms.openlocfilehash: 2387ada5dc9445389bc3dba0d116a25a40029543
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+ms.openlocfilehash: c70db45de3d22f906570a0714bcc8ba8b6b05d12
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472446"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212725"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>对包含常见词汇和概念的术语表进行语言理解
 语言理解 (LUIS) 术语表解释使用 LUIS 服务时可能遇到的术语。
@@ -52,12 +52,13 @@ LUIS [创作资源](luis-how-to-azure-subscription.md#azure-resources-for-luis)�
 
 ## <a name="batch-test"></a>批处理测试
 
-批处理测试是使用一致且已知的用户话语测试集验证当前 LUIS 应用模型的功能。 批处理测试在 [JSON 格式化文件](luis-concept-batch-test.md#batch-file-format)中定义。
+批处理测试是使用一致且已知的用户话语测试集验证当前 LUIS 应用模型的功能。 批处理测试在 [JSON 格式化文件](./luis-how-to-batch-test.md#batch-test-file)中定义。
+
 
 另请参阅：
-* [概念](luis-concept-batch-test.md)
+* [概念](./luis-how-to-batch-test.md)
 * [操作说明](luis-how-to-batch-test.md) - 运行批处理测试
-* [教程](luis-tutorial-batch-testing.md) - 创建和运行批处理测试
+* [教程](./luis-how-to-batch-test.md) - 创建和运行批处理测试
 
 ### <a name="f-measure"></a>F 度量值
 

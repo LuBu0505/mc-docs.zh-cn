@@ -1,5 +1,5 @@
 ---
-title: Azure 媒体服务 v3 发行说明 | Microsoft Docs
+title: Azure 媒体服务 v3 发行说明
 description: 为了让大家随时了解最新的开发成果，本文提供了 Azure 媒体服务 v3 的最新更新。
 services: media-services
 documentationcenter: ''
@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: na
 ms.topic: article
 origin.date: 10/21/2020
-ms.date: 02/01/2021
+ms.date: 03/15/2021
 ms.author: v-jay
-ms.openlocfilehash: 65f0d9c942e513a73388b8cf6b75af74fd267502
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 3bea45d1ab67faff7d778fabb3453a96e96fe8d2
+ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059351"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103211864"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -211,21 +211,21 @@ V3 API 的正式版中的更新包括：
 
 ## <a name="november-2018"></a>2018 年 11 月
 
-CLI 2.0 模块现在可用于 [Azure 媒体服务 v3 正式版](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest&preserve-view=true) - v 2.0.50。
+CLI 2.0 模块现在可用于 [Azure 媒体服务 v3 正式版](https://docs.microsoft.com/cli/azure/ams) - v 2.0.50。
 
 ### <a name="new-commands"></a>新命令
 
-- [az ams account](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest&preserve-view=true)
-- [az ams account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest&preserve-view=true)
-- [az ams asset](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest&preserve-view=true)
-- [az ams asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest&preserve-view=true)
-- [az ams content-key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest&preserve-view=true)
-- [az ams job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest&preserve-view=true)
-- [az ams live-event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest&preserve-view=true)
-- [az ams live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest&preserve-view=true)
-- [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest&preserve-view=true)
-- [az ams streaming-locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest&preserve-view=true)
-- [az ams account mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest&preserve-view=true) - 用于管理媒体预留单位。 有关详细信息，请参阅[缩放媒体预留单位](media-reserved-units-cli-how-to.md)。
+- [az ams account](https://docs.microsoft.com/cli/azure/ams/account)
+- [az ams account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter)
+- [az ams asset](https://docs.microsoft.com/cli/azure/ams/asset)
+- [az ams asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter)
+- [az ams content-key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy)
+- [az ams job](https://docs.microsoft.com/cli/azure/ams/job)
+- [az ams live-event](https://docs.microsoft.com/cli/azure/ams/live-event)
+- [az ams live-output](https://docs.microsoft.com/cli/azure/ams/live-output)
+- [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint)
+- [az ams streaming-locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator)
+- [az ams account mru](https://docs.microsoft.com/cli/azure/ams/account/mru) - 用于管理媒体预留单位。 有关详细信息，请参阅[缩放媒体预留单位](media-reserved-units-cli-how-to.md)。
 
 ### <a name="new-features-and-breaking-changes"></a>新功能和重大更改
 
@@ -350,5 +350,4 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 ## <a name="next-steps"></a>后续步骤
 
 - [概述](media-services-overview.md)
-- [媒体服务 v3 文档更新](docs-release-notes.md)
 - [媒体服务 v2 发行说明](../previous/media-services-release-notes.md)

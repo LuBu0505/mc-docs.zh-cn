@@ -2,21 +2,21 @@
 title: 解除 Azure AD 域服务中的服务主体警报 | Microsoft Docs
 description: 了解如何发现和解除 Azure Active Directory 域服务的服务主体配置警报
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: f168870c-b43a-4dd6-a13f-5cfadc5edf2c
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 08/07/2020
+ms.date: 03/09/2021
 ms.author: v-junlch
-ms.openlocfilehash: 930018d26e2d4e4a2f90d71ceb31d9238b373540
-ms.sourcegitcommit: a5eb9a47feefb053ddbaab4b15c395972c372339
+ms.openlocfilehash: 99c7f3c022244d80d1b46e61b8b6990c7fd84234
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88028585"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212478"
 ---
 # <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>已知问题：Azure Active Directory 域服务中的服务主体警报
 
@@ -99,8 +99,8 @@ Azure AD DS 自动从 Azure AD 同步用户帐户和凭据。 如果用于此过
 2. 现在使用以下 PowerShell cmdlet 删除旧的应用程序和对象：
 
     ```powershell
-    $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.azure.cn'"
-    Remove-AzureADApplication -ObjectId $app.ObjectId
+    $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.azure.cn'"
+    Remove-AzureADApplication -ObjectId $app.ObjectId
     $spObject = Get-AzureADServicePrincipal -Filter "DisplayName eq 'Azure AD Domain Services Sync'"
     Remove-AzureADServicePrincipal -ObjectId $spObject
     ```
@@ -116,4 +116,3 @@ Azure AD DS 自动从 Azure AD 同步用户帐户和凭据。 如果用于此过
 
 <!-- EXTERNAL LINKS -->
 [New-AzureAdServicePrincipal]: https://docs.microsoft.com/powershell/module/AzureAD/New-AzureADServicePrincipal
-

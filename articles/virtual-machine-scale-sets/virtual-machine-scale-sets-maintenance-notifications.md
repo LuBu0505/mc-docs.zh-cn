@@ -6,15 +6,15 @@ ms.author: v-junlch
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 11/16/2020
+ms.date: 03/09/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: f32643dcd8d20b812c3e5d9b601bf5bf18f33142
-ms.sourcegitcommit: b072689d006cbf9795612acf68e2c4fee0eccfbc
+ms.openlocfilehash: 87915cdede0646f920a125044bbc4c16664ee6d4
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94849475"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212596"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>虚拟机规模集的计划内维护通知
 
@@ -143,7 +143,7 @@ Set-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -Pe
 
 ## <a name="check-maintenance-status-by-using-the-cli"></a>使用 CLI 查看维护状态
 
-可以使用 [az vmss list-instances](/cli/vmss?view=azure-cli-latest#az-vmss-list-instances) 查看计划内维护信息。
+可以使用 [az vmss list-instances](/cli/vmss#az-vmss-list-instances) 查看计划内维护信息。
  
 仅当有计划内维护时，才会返回维护信息。 如果未计划影响 VM 实例的维护，则该命令不会返回任何维护信息。 
 
@@ -217,4 +217,3 @@ az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 ## <a name="next-steps"></a>后续步骤
 
 了解如何使用[计划事件](../virtual-machines/windows/scheduled-events.md)从 VM 内注册维护事件。
-

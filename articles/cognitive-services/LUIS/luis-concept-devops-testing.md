@@ -4,14 +4,14 @@ description: 如何在 DevOps 环境中测试语言理解 (LUIS) 应用。
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/28/2020
+ms.date: 03/08/2021
 ms.author: v-johya
-ms.openlocfilehash: c6f012b6c5dc8d8db9dc5a6eb0b21bf48ffb181a
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 08aec6f95996bdbd63b490f5aaef158e9acc60ee
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857160"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212677"
 ---
 # <a name="testing-for-luis-devops"></a>LUIS DevOps 测试
 
@@ -29,7 +29,7 @@ ms.locfileid: "97857160"
 这种测试类似于[交互式测试](./luis-concept-test.md)，可以在 [LUIS 门户](https://luis.azure.cn/)中进行。
 
 - **批处理测试** - 批处理测试是对当前已训练的模型进行的全面测试，用于衡量其性能。 与单元测试不同，批处理测试不是关于“通过或失败”的测试。 批处理测试的预期不是每个测试都将返回预期意向和预期实体。 相反，批处理测试可帮助你在应用中查看每个意向和实体的准确性，并帮助你将一段时间内的改进进行比较。  
-这种类型的测试与可以在 LUIS 门户中以交互方式执行的[批处理测试](./luis-concept-batch-test.md)相同。
+这种类型的测试与可以在 LUIS 门户中以交互方式执行的[批处理测试](./luis-how-to-batch-test.md)相同。
 
 可以从项目的开头使用单元测试。 当你开发 LUIS 应用的架构后，要提高其准确性时，批处理测试才具有真正的价值。
 
@@ -43,7 +43,7 @@ ms.locfileid: "97857160"
 * 预期意向
 * 预期实体。
 
-使用 LUIS [批处理文件语法](./luis-concept-batch-test.md#batch-syntax-template-for-intents-with-entities)在 JSON 格式的文件中定义一组测试。 例如：
+使用 LUIS [批处理文件语法](./luis-how-to-batch-test.md#batch-syntax-template-for-intents-with-entities)在 JSON 格式的文件中定义一组测试。 例如：
 
 ```JSON
 [
@@ -86,7 +86,7 @@ ms.locfileid: "97857160"
 
 #### <a name="designing-batch-tests"></a>设计批处理测试
 
-批处理测试集应包含大量测试用例，旨在跨 LUIS 应用中的所有意向和所有实体进行测试。 有关定义批处理测试集的信息，请参阅 [LUIS 门户中的批处理测试](./luis-concept-batch-test.md)。
+批处理测试集应包含大量测试用例，旨在跨 LUIS 应用中的所有意向和所有实体进行测试。 有关定义批处理测试集的信息，请参阅 [LUIS 门户中的批处理测试](./luis-how-to-batch-test.md)。
 
 ### <a name="running-tests"></a>运行测试
 
@@ -94,7 +94,7 @@ LUIS 门户提供的功能可帮助进行交互式测试：
 
 * 通过[交互式测试](./luis-concept-test.md)，可以提交示例言语，并获取 LUIS 识别的意向和实体的响应。 通过视觉检测来验证测试是否成功。
 
-* [批处理测试](./luis-concept-batch-test.md)使用批处理测试文件作为输入来验证活动训练版本，以判断其预测准确性。 批处理测试可帮助你查看活动版本中每个意向和实体的准确性，并使用图表显示结果。
+* [批处理测试](./luis-how-to-batch-test.md)使用批处理测试文件作为输入来验证活动训练版本，以判断其预测准确性。 批处理测试可帮助你查看活动版本中每个意向和实体的准确性，并使用图表显示结果。
 
 #### <a name="running-tests-in-an-automated-build-workflow"></a>在自动生成工作流中运行测试
 

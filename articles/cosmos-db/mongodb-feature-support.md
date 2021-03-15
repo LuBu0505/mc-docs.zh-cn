@@ -5,17 +5,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
 origin.date: 10/16/2019
-ms.date: 01/18/2021
+ms.date: 03/15/2021
 ms.testscope: no
 ms.testdate: 09/28/2020
 author: rockboyfor
 ms.author: v-yeche
-ms.openlocfilehash: 9f663a4c25933c8574e06445df379ca038ec7eec
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 7c2d8793d16ee9e22aa08f8ea2c97b3e2b6cdeb9
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230314"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996557"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>Azure Cosmos DB 的 API for MongoDB（3.2 版本）：支持的功能和语法
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -27,7 +27,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 通过使用 Azure Cosmos DB 的用于 MongoDB 的 API，可以像以往一样从 MongoDB 中受益，并且可使用 Cosmos DB 提供的所有企业功能：[多区域分发](distribute-data-globally.md)、[自动分片](partitioning-overview.md)、可用性和延迟保证、自动编制每个字段的索引、静态加密和备份等。
 
 > [!NOTE]
-> 本文适用于 Azure Cosmos DB 的 API for MongoDB 3.2。 对于 MongoDB 3.6 版本，请参阅 [MongoDB 3.6 支持的功能和语法](mongodb-feature-support-36.md)。
+> 用于 MongoDB 的 Cosmos DB API 版本 3.2 目前没有生命周期终止 (EOL) 计划。 未来 EOL 的最短期限是 3 年。
 
 ## <a name="protocol-support"></a>协议支持
 
@@ -262,7 +262,7 @@ $regex | `{ "Volcano Name": { $regex: "^Rain"} }`|
 
 <!--Correct on the table: Deleted unnecessary column-->
 
-### <a name="notes"></a>说明
+### <a name="notes"></a>注释
 
 在 $regex 查询中，左定位表达式允许索引搜索。 但是，使用“i”修饰符（不区分大小写）和“m”修饰符（多行）会导致在所有表达式中进行回收集合扫描。
 当需要包含“$”或“|”时，最好创建两个（或更多）正则表达式查询。
@@ -323,7 +323,7 @@ $polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon",
 
 ## <a name="other-operators"></a>其他运算符
 
-运算符 | 示例 | 说明
+运算符 | 示例 | 注释
 --- | --- | --- |
 $all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
 $elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |
@@ -341,7 +341,7 @@ $text |  | 不支持。 改为使用 $regex。
 
 #### <a name="cursor-methods"></a>游标方法
 
-方法 | 示例 | 说明
+方法 | 示例 | 注释
 --- | --- | --- |
 cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | 不会返回没有排序键的文件
 
@@ -375,8 +375,6 @@ Azure Cosmos DB 支持服务器端自动分片。 它自动管理分片的创建
 
 - 了解如何将 [Studio 3T](mongodb-mongochef.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
 - 了解如何将 [Robo 3T](mongodb-robomongo.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
-- 使用 Azure Cosmos DB 的用于 MongoDB 的 API 浏览 MongoDB [示例](mongodb-samples.md)。
+- 通过 Azure Cosmos DB 的用于 MongoDB 的 API 来浏览 MongoDB [示例](mongodb-samples.md)。
 
-<sup>注意：本文介绍了可与 MongoDB 数据库实现线路协议兼容的 Azure Cosmos DB 功能。Azure 不会运行 MongoDB 数据库来提供此服务。Azure Cosmos DB 并不隶属于 MongoDB, inc.</sup>
-
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

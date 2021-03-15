@@ -1,27 +1,24 @@
 ---
 title: 使用 PowerShell 以增量方式复制多个表
 description: 在本教程中，你将创建一个带管道的 Azure 数据工厂，该管道将增量数据从 SQL Server 数据库中的多个表加载到 Azure SQL 数据库。
-services: data-factory
 ms.author: v-jay
 author: WenJason
-manager: digimobile
 ms.reviewer: douglasl, maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-origin.date: 06/10/2020
-ms.date: 01/04/2021
-ms.openlocfilehash: e726ec145c5d7c6eaf73a6cb736d11718502b36c
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+origin.date: 02/18/2021
+ms.date: 03/15/2021
+ms.openlocfilehash: abc745cf7b66c3c9c03fd057a8c69b5394992bde
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830291"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589905"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>使用 PowerShell 以递增方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在本教程中，你将创建一个带管道的 Azure 数据工厂，该管道将增量数据从 SQL Server 数据库中的多个表加载到 Azure SQL 数据库。    
 

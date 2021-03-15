@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 01/26/2021
+ms.date: 03/08/2021
 ms.author: v-junlch
-ms.openlocfilehash: 159453dede1b202a132f3f6bf7175b802c55f20a
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: f8d0695e28b4d8a6b61cab0cff14de3db18224dc
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060692"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212440"
 ---
 # <a name="assign-a-user-as-an-administrator-of-an-azure-subscription"></a>将用户分配为 Azure 订阅的管理员
 
@@ -55,7 +55,7 @@ ms.locfileid: "99060692"
 
    ![“添加角色分配”菜单](./media/shared/add-role-assignment-menu.png)
 
-    此时会打开“添加角色分配”窗格。
+    将打开“添加角色分配”窗格。
 
    ![“添加角色分配”窗格](./media/shared/add-role-assignment.png)
 
@@ -89,6 +89,6 @@ ms.locfileid: "99060692"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure 门户添加或删除 Azure 角色分配](role-assignments-portal.md)
+- [使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)
 - [使用 Azure 门户列出 Azure 角色分配](role-assignments-list-portal.md)
 - [使用 Azure 管理组来组织资源](../governance/management-groups/overview.md)

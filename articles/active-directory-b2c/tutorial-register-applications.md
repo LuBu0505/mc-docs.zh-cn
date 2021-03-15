@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/02/2020
+ms.date: 03/12/2021
 ms.custom: project-no-code
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 790fc2865a5eee4fb390677f4ff484ce3add77e8
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: ed27fa9357bde4e8727ea1519b29474f89d63f4b
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507246"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212491"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中注册 Web 应用
 
@@ -41,7 +41,7 @@ ms.locfileid: "96507246"
 
 #### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/)
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 选择“应用注册”，然后选择“新建注册” 。
@@ -62,7 +62,7 @@ ms.locfileid: "96507246"
 #### <a name="applications-legacy"></a>[应用程序(旧版)](#tab/applications-legacy/)
 
 1. 登录 [Azure 门户](https://portal.azure.cn)。
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录  。
+1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 选择“应用程序(旧版)”，然后选择“添加” 。
 1. 输入应用程序的名称。 例如，“webapp1”。
@@ -99,6 +99,14 @@ ms.locfileid: "96507246"
 
 * * *
 
+## <a name="enable-id-token-implicit-grant"></a>启用 ID 令牌隐式授权
+
+隐式授权的特征是，令牌（例如 ID 和访问令牌）直接从 Azure AD B2C 返回到应用程序。 对于直接从授权终结点请求 ID 令牌的 Web 应用（例如 ASP.NET Core Web 应用和 [https://jwt.ms](https://jwt.ms)），请在应用注册中启用隐式授权流。
+
+1. 在左侧菜单中的“管理”下，选择“身份验证” 。
+1. 在“隐式授权”下，选中“访问令牌”和“ID 令牌”复选框 。
+1. 选择“保存”。
+
 ## <a name="next-steps"></a>后续步骤
 
 本文介绍了如何执行以下操作：
@@ -111,4 +119,3 @@ ms.locfileid: "96507246"
 
 > [!div class="nextstepaction"]
 > [在 Azure Active Directory B2C 中创建用户流](tutorial-create-user-flows.md)
-

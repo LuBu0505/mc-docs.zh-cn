@@ -7,17 +7,17 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 origin.date: 12/06/2018
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/15/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: d995a9ea3422f7d7e65a39c57b76958d057419fb
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: aedabfd7d3e12a27a414b4523e438a426f167caa
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230005"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996595"
 ---
 <!--Verify sucessfully-->
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>教程：使用 Java 应用程序在 Azure Cosmos DB 中创建 Cassandra API 帐户，以便存储键/值数据
@@ -38,7 +38,9 @@ ms.locfileid: "98230005"
 
 * 如果没有 Azure 订阅，请在开始前创建一个[试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。 
 
-* 获取最新版本的 [Java 开发工具包 (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)。 
+* 获取最新版本的 [Java 开发工具包 (JDK)](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)。 
+    
+    <!--CORRECT ON https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install-->
 
 * [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html)[Maven](https://maven.apache.org/) 二进制存档。 
     - 在 Ubuntu 上，可以通过运行 `apt-get install maven` 来安装 Maven。 
@@ -55,7 +57,7 @@ ms.locfileid: "98230005"
     |---------|---------|---------|
     |ID   |   输入唯一的名称    | 输入标识此 Azure Cosmos 帐户的唯一名称。 <br/><br/>由于 cassandra.cosmos.azure.cn 将追加到所提供的用于创建接触点的 ID 后面，因此，请使用唯一但可识别的 ID。         |
     |API    |  Cassandra   |  API 确定要创建的帐户的类型。 <br/> 选择“Cassandra”，因为在本文中，你将创建可使用 Cassandra 查询语言 (CQL) 语法查询的宽列数据库。  |
-    |订阅    |  订阅        |  选择要用于此 Azure Cosmos 帐户的 Azure 订阅。        |
+    |订阅    |  你的订阅        |  选择要用于此 Azure Cosmos 帐户的 Azure 订阅。        |
     |资源组   | 输入名称    |  选择“新建”，然后输入帐户的新资源组名称。 为简单起见，可以使用与 ID 相同的名称。    |
     |位置    |  选择离用户最近的区域    |  选择要在其中托管 Azure Cosmos 帐户的地理位置。 使用离用户最近的位置，使他们能够以最快的速度访问数据。    |
 
@@ -233,4 +235,4 @@ cassandra_password=<FILLME_with_PRIMARY PASSWORD>
 > [!div class="nextstepaction"]
 > [将示例数据加载到 Cassandra API 表](cassandra-api-load-data.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

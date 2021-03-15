@@ -7,17 +7,17 @@ ms.devlang: dotnet
 ms.topic: quickstart
 origin.date: 10/21/2020
 author: rockboyfor
-ms.date: 11/09/2020
+ms.date: 03/15/2021
 ms.testscope: yes
 ms.testdate: 09/28/2020
 ms.author: v-yeche
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 2c03712c61a6303f11fcae232e1908fd7e78eda9
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: e02cb54f862a72dd8a33d58079d55de1cf30dc08
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508057"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996639"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>快速入门：生成 .NET 控制台应用以管理 Azure Cosmos DB SQL API 资源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,13 +40,13 @@ Azure Cosmos DB 是 21Vianet 的快速 NoSQL 数据库，具有适合于任何�
 * 查询数据 
 * 删除数据库
 
-[API 参考文档](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos?preserve-view=true) | [库源代码](https://github.com/Azure/azure-cosmos-dotnet-v3) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)
+[API 参考文档](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos) | [库源代码](https://github.com/Azure/azure-cosmos-dotnet-v3) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)
 
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [免费创建订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
     
-    <!--Not Available on [Try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)--> 
+    <!--NOT AVAIABLE ON [Try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)--> 
     
 * [.NET Core 2.1 SDK 或更高版本](https://dotnet.microsoft.com/download/dotnet-core/2.1)。
 
@@ -58,15 +58,15 @@ Azure Cosmos DB 是 21Vianet 的快速 NoSQL 数据库，具有适合于任何�
 <a name="create-a-database-account"></a>
 ### <a name="create-an-azure-cosmos-account"></a>创建 Azure Cosmos 帐户
 
-<!--Not Available on [Try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)-->
+<!--NOT AVAIABLE ON [Try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)-->
 
 如果你有自己的 Azure 订阅或者免费创建了订阅，则应显式创建 Azure Cosmos 帐户。 以下代码将创建具有会话一致性的 Azure Cosmos 帐户。 该帐户在 `China East` 和 `China North` 中复制。  
 
-<!--Not Available on You can use Azure Cloud Shell to create the Azure Cosmos account-->
+<!--NOT AVAIABLE ON You can use Azure Cloud Shell to create the Azure Cosmos account-->
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
-<!--Not Available on  Select the **Try It** button and paste the code to run it in the Azure local Shell.-->
+<!--NOT AVAIABLE ON  Select the **Try It** button and paste the code to run it in the Azure local Shell.-->
 
 ```azurecli
 
@@ -95,7 +95,7 @@ az cosmosdb create \
 
 创建 Azure Cosmos 帐户需要一段时间，操作成功后，可以看到确认输出。 该命令成功完成后，登录到 [Azure 门户](https://portal.azure.cn/)，验证是否存在指定名称的 Azure Cosmos 帐户。
 
-<!--Not Available on You can close the Azure Close Shell window after the resource is created. -->
+<!--NOT AVAIABLE ON You can close the Azure Close Shell window after the resource is created. -->
 
 <a name="create-dotnet-core-app"></a>
 ### <a name="create-a-new-net-app"></a>新建 .NET 应用
@@ -144,7 +144,7 @@ dotnet add package Microsoft.Azure.Cosmos
 
 1. 导航到 Azure Cosmos 帐户。
 
-1. 打开“键”窗格，复制帐户的 URI 和主键  。 下一步需将 URI 和键值添加到某个环境变量。
+1. 打开“键”窗格，复制帐户的 URI 和主键    。 下一步需将 URI 和键值添加到某个环境变量。
 
 ### <a name="set-the-environment-variables"></a>设置环境变量
 
@@ -183,18 +183,18 @@ export PrimaryKey = "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
 
 若要进一步了解不同实体的层次结构，请参阅[在 Azure Cosmos DB 中使用数据库、容器和项](account-databases-containers-items.md)。 使用以下 .NET 类与这些资源进行交互：
 
-* [CosmosClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclient?preserve-view=true&view=azure-dotnet) - 此类为 Azure Cosmos DB 服务提供客户端逻辑表示。 此客户端对象用于对服务进行配置和执行请求。
+* [CosmosClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclient) - 此类为 Azure Cosmos DB 服务提供客户端逻辑表示。 此客户端对象用于对服务进行配置和执行请求。
 
-* [CreateDatabaseIfNotExistsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclient.createdatabaseifnotexistsasync?preserve-view=true) - 若数据库资源不存在，则此方法以异步操作的形式创建数据库资源；若数据库资源已存在，则此方法以异步操作的形式获取它。 
+* [CreateDatabaseIfNotExistsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclient.createdatabaseifnotexistsasync) - 若数据库资源不存在，则此方法以异步操作的形式创建数据库资源；若数据库资源已存在，则此方法以异步操作的形式获取它。 
 
-* [CreateContainerIfNotExistsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?preserve-view=true) - 若容器不存在，则此方法以异步操作的形式创建容器；若容器已存在，则此方法以异步操作的形式获取它。 可查看响应中的状态代码，确定是新创建了容器 (201) 还是返回了现有容器 (200)。 
-* [CreateItemAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.container.createitemasync?preserve-view=true) - 此方法在容器中创建项。 
+* [CreateContainerIfNotExistsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync) - 若容器不存在，则此方法以异步操作的形式创建容器；若容器已存在，则此方法以异步操作的形式获取它。 可查看响应中的状态代码，确定是新创建了容器 (201) 还是返回了现有容器 (200)。 
+* [CreateItemAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.container.createitemasync) - 此方法在容器中创建项。 
 
-* [UpsertItemAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.container.upsertitemasync?preserve-view=true) - 此方法在容器内创建一个项（如果该项尚不存在）或替换该项（如果该项已存在）。 
+* [UpsertItemAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.container.upsertitemasync) - 此方法在容器内创建一个项（如果该项尚不存在）或替换该项（如果该项已存在）。 
 
-* [GetItemQueryIterator](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.container.GetItemQueryIterator?preserve-view=true) - 此方法使用带有参数化值的 SQL 语句在 Azure Cosmos 数据库的容器下创建项查询。 
+* [GetItemQueryIterator](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.container.GetItemQueryIterator) - 此方法使用带有参数化值的 SQL 语句在 Azure Cosmos 数据库的容器下创建项查询。 
 
-* [DeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.database.deleteasync?preserve-view=true) - 从 Azure Cosmos 帐户中删除指定的数据库。 `DeleteAsync` 方法只删除数据库。 应单独处理 `Cosmosclient` 实例（DeleteDatabaseandCleanupAsync 方法中如此操作）。 
+* [DeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.database.deleteasync) - 从 Azure Cosmos 帐户中删除指定的数据库。 `DeleteAsync` 方法只删除数据库。 应单独处理 `Cosmosclient` 实例（DeleteDatabaseandCleanupAsync 方法中如此操作）。 
 
  <a name="code-examples"></a>
 ## <a name="code-examples"></a>代码示例
@@ -508,4 +508,4 @@ az group delete -g "myResourceGroup"
 > [!div class="nextstepaction"]
 > [将数据导入 Azure Cosmos DB](import-data.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -7,17 +7,17 @@ ms.devlang: dotnet
 ms.topic: quickstart
 origin.date: 10/09/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/15/2021
 ms.testscope: yes
 ms.testdate: 09/28/2020
 ms.author: v-yeche
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b4ae0a2a0ae05e08092d23ac962396b6233d6635
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: ab98cd93eec7e1c491bcae13dd579a6f7ccdd776
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98229868"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996648"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：使用 .NET SDK 和 Azure Cosmos DB 的 API for MongoDB 构建 Xamarin.Forms 应用
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -26,12 +26,14 @@ ms.locfileid: "98229868"
 > * [.NET](create-mongodb-dotnet.md)
 > * [Java](create-mongodb-java.md)
 > * [Node.js](create-mongodb-nodejs.md)
-> * [Python](create-mongodb-flask.md)
+> * [Python](./mongodb-introduction.md)
 > * [Xamarin](create-mongodb-xamarin.md)
 > * [Golang](create-mongodb-go.md)
 >  
 
 Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的多区域分布和水平缩放功能。
+
+<!--CORRECT ON 21Vianet-->
 
 本快速入门演示了如何使用 Azure 门户[创建 Cosmos 帐户并为其配置 Azure Cosmos DB 的用于 MongoDB 的 API](mongodb-introduction.md)、文档数据库和集合。 然后，使用 [MongoDB.NET 驱动程序](https://docs.mongodb.com/ecosystem/drivers/csharp/)构建 Xamarin.Forms 待办事项应用。
 
@@ -75,7 +77,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-xamarin-getting-started.git
@@ -210,4 +212,4 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 > [!div class="nextstepaction"]
 > [将数据导入到使用 Azure Cosmos DB 的用于 MongoDB 的 API 配置的 Azure Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fcosmos-db%2ftoc.json%253ftoc%253d%2fcosmos-db%2ftoc.json)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

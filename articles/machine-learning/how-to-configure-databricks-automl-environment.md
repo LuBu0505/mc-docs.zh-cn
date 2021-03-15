@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 2a5cd7e5c25f1af749792eb19eec7a27e4d5d553
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.openlocfilehash: 75101fc20f949528276dc0104eac4d48aa6fdc19
+ms.sourcegitcommit: aa152825420691f705c959682144d14877916aff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196929"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224114"
 ---
 # <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>在 Azure 机器学习中设置带有 Azure Databricks 和 AutoML 的开发环境 
 
@@ -122,6 +122,16 @@ Azure Databricks 与 Azure 机器学习及其 AutoML 功能集成。
 + 了解如何[创建包含 Databricks 的管道用作训练计算](how-to-create-machine-learning-pipelines.md)。
 
 ## <a name="troubleshooting"></a>疑难解答
+
+* **Databricks 取消自动化机器学习运行**：在 Azure Databricks 上使用自动化机器学习功能时，若要取消某个运行并启动新的试验运行，请重启 Azure Databricks 群集。
+
+* **Databricks 自动化机器学习的迭代数超过 10 个**：在自动化机器学习设置中，如果迭代数超过 10 个，请在提交运行时将 `show_output` 设置为 `False`。
+
+* **Databricks Azure 机器学习 SDK 和自动化机器学习的小组件**：Databricks 笔记本不支持 Azure 机器学习 SDK 小组件，因为笔记本无法分析 HTML 小组件。 可以通过在 Azure Databricks 笔记本单元中使用以下 Python 代码，在门户中查看该小组件：
+
+    ```
+    displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
+    ```
 
 * **安装包时失败**
 

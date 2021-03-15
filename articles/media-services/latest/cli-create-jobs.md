@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本示例 - 创建和提交作业 | Microsoft Docs
+title: Azure CLI 脚本示例 - 创建和提交作业
 description: 本主题中的 Azure CLI 脚本演示如何使用 HTTPs URL 将作业提交到简单编码的转换。
 services: media-services
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: multiple
 ms.workload: na
 origin.date: 08/31/2020
-ms.date: 09/28/2020
+ms.date: 03/15/2021
 ms.author: v-jay
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 22374ab6cb01a5d7d93671a13af8dcf19f910902
-ms.sourcegitcommit: 7ad3bfc931ef1be197b8de2c061443be1cf732ef
+ms.openlocfilehash: 7a82afafe1afdaee253360037fc6883503fb145c
+ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91244994"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103211795"
 ---
 # <a name="cli-example-create-and-submit-a-job"></a>CLI 示例：创建并提交作业
 
@@ -32,8 +32,6 @@ ms.locfileid: "91244994"
 ## <a name="prerequisites"></a>必备条件 
 
 [创建媒体服务帐户](./create-account-howto.md)。
-
-[!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="example-script"></a>示例脚本
 
@@ -91,4 +89,4 @@ az ams job start \
 
 ## <a name="next-steps"></a>后续步骤
 
-[az ams job (CLI)](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
+[az ams job (CLI)](https://docs.microsoft.com/cli/azure/ams/job)

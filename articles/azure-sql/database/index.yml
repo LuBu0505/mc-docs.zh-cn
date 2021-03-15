@@ -10,15 +10,15 @@ metadata:
   ms.topic: landing-page
   author: WenJason
   ms.author: v-jay
-  ms.reviewer: carlrab
-  origin.date: 05/27/2020
-  ms.date: 09/14/2020
-  ms.openlocfilehash: 6cceb96b5b740cbcb755a55e1d344ad348beb07b
-  ms.sourcegitcommit: d5cdaec8050631bb59419508d0470cb44868be1a
+  ms.reviewer: 
+  origin.date: 01/25/2021
+  ms.date: 03/15/2021
+  ms.openlocfilehash: 87b9e00a820d58ee4b8a37c9be1d129c7d7224e6
+  ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/11/2020
-  ms.locfileid: "90014279"
+  ms.lasthandoff: 03/10/2021
+  ms.locfileid: "102589856"
 landingContent:
 - title: Azure SQL 数据库
   linkLists:
@@ -92,6 +92,8 @@ landingContent:
       url: elastic-pool-manage.md
     - text: 缩放
       url: elastic-pool-scale.md
+    - text: 资源管理
+      url: elastic-pool-resource-management.md
 - title: 参考
   linkLists:
   - linkListType: deploy
@@ -138,3 +140,15 @@ landingContent:
       url: elastic-scale-introduction.md
     - text: 弹性查询
       url: elastic-query-overview.md
+- title: 计划内维护
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 规划 Azure 维护事件
+      url: planned-maintenance.md
+    - text: 资源运行状况
+      url: resource-health-to-troubleshoot-connectivity.md
+  - linkListType: how-to-guide
+    links:
+    - text: 维护时段通知
+      url: advance-notifications.md

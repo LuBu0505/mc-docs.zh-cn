@@ -7,17 +7,17 @@ ms.devlang: java
 ms.topic: reference
 origin.date: 08/12/2020
 author: rockboyfor
-ms.date: 11/16/2020
+ms.date: 03/15/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: devx-track-java
-ms.openlocfilehash: 57eaa332d23245b26c21d6089ad3b29802582e9c
-ms.sourcegitcommit: 5f07189f06a559d5617771e586d129c10276539e
+ms.openlocfilehash: c8a08453b33c2527b44ae5c5254c4dd9732381c7
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94552756"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996735"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java 批量执行程序库：下载信息
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -48,7 +48,7 @@ ms.locfileid: "94552756"
 |**GitHub 中的批量执行程序库**|[GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started)|
 | **API 文档**| [Java API 参考文档](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
 |**入门**|[批量执行程序库 Java SDK 入门](bulk-executor-java.md)|
-|受支持的最小运行时|[Java 开发工具包 (JDK) 7+](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)|
+|受支持的最小运行时|[Java 开发工具包 (JDK) 7+](https://docs.azure.cn/java/java-supported-jdk-runtime)|
 
 ## <a name="release-notes"></a>发行说明
 
@@ -77,4 +77,4 @@ ms.locfileid: "94552756"
 
 * 已将起始并发度更新为 1，并增加了 minibatch 的调试日志。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

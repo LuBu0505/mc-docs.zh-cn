@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 origin.date: 04/11/2020
-ms.date: 03/01/2021
-ms.openlocfilehash: 53d26b2ce9a86147a05c3e80f2ad0795d54c6b3e
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.date: 03/15/2021
+ms.openlocfilehash: 82ee2a5b331dbe5eb03bcd9d8eafda54988a0f04
+ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697371"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103211741"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>教程：使用 DMS 将 RDS PostgreSQL 联机迁移到 Azure DB for PostgreSQL
 
@@ -54,11 +54,11 @@ ms.locfileid: "101697371"
 
 * 创建 [Azure Database for PostgreSQL](../postgresql/quickstart-create-server-database-portal.md) 的实例。 有关如何使用 pgAdmin 连接到 PostgreSQL 服务器的详细信息，请参阅此文档[部分](../postgresql/quickstart-create-server-database-portal.md#connect-to-the-server-with-psql)。
 * 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络，它将使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 为本地源服务器提供站点到站点连接。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](../virtual-network/index.yml)，尤其是提供了分步详细信息的快速入门文章。
-* 请确保虚拟网络网络安全组规则未阻止到 Azure 数据库迁移服务的以下出站通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
-* 配置[针对数据库引擎访问的 Windows 防火墙](/postgresql/concepts-firewall-rules)。
+* 请确保虚拟网络的网络安全组规则不阻止 ServiceBus、存储服务和 AzureMonitor 的 ServiceTag 出站端口 443。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
+* 配置[针对数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 PostgreSQL 服务器（默认情况下为 TCP 端口 5432）。
 * 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
-* 为 Azure Database for PostgreSQL 服务器创建服务器级[防火墙规则](/postgresql/concepts-firewall-rules)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的虚拟网络子网范围。
+* 为 Azure Database for PostgreSQL 服务器创建服务器级[防火墙规则](../postgresql/concepts-firewall-rules.md)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的虚拟网络子网范围。
 
 ### <a name="set-up-aws-rds-postgresql-for-replication"></a>设置 AWS RDS PostgreSQL 用于复制
 

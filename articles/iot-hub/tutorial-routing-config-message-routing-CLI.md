@@ -10,12 +10,12 @@ origin.date: 03/25/2019
 ms.date: 04/06/2020
 ms.author: v-yiso
 ms.custom: mvc
-ms.openlocfilehash: bf9d8f658881b2d58bce7662539bc12bdb6fa92b
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f52c99353dc3a5ed235738ad4d07bc14e84ae0ed
+ms.sourcegitcommit: aa152825420691f705c959682144d14877916aff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "80343611"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224120"
 ---
 # <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>教程：使用 Azure CLI 配置 IoT 中心消息路由
 
@@ -148,7 +148,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 [!INCLUDE [iot-hub-include-create-routing-description](../../includes/iot-hub-include-create-routing-description.md)]
 
-若要创建路由终结点，请使用 [az iot hub routing-endpoint create](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#az-iot-hub-routing-endpoint-create)。 若要为终结点创建消息路由，请使用 [az iot hub route create](/cli/azure/iot/hub/route?view=azure-cli-latest#az-iot-hub-route-create)。
+若要创建路由终结点，请使用 [az iot hub routing-endpoint create](/cli/iot/hub/routing-endpoint?view=azure-cli-latest#az-iot-hub-routing-endpoint-create)。 若要为终结点创建消息路由，请使用 [az iot hub route create](/cli/azure/iot/hub/route?view=azure-cli-latest#az-iot-hub-route-create)。
 
 ### <a name="route-to-a-storage-account"></a>路由到存储帐户
 
@@ -176,7 +176,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 **endpointName**：此字段是用于标识终结点的名称。 
 
-**enabled**：此字段默认为 `true`，指示消息路由应在创建后启用。
+**enabled**：此字段默认为 `true`，表示应在创建消息路由后启用该路由。
 
 **condition**：此字段是用于筛选发送到此终结点的消息的查询。 路由到存储的消息的查询条件是 `level="storage"`。
 

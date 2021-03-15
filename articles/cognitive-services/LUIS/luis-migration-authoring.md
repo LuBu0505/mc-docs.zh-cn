@@ -10,13 +10,13 @@ ms.custom: seodec18, contperf-fy21q2
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 12/28/2020
-ms.openlocfilehash: 5af11b88271a1f7efb9cfe9463befcbf9c050dc7
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.date: 03/08/2021
+ms.openlocfilehash: 3caba2efa109c08cdb177732061a73d6b5e6584e
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857656"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212675"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>迁移到 Azure 资源创作密钥
 
@@ -81,7 +81,7 @@ ms.locfileid: "97857656"
    > ![导出应用程序。](./media/migrate-authoring-key/migration-export-apps.png)
 
 
-4. 在迁移区域的窗口中，系统会要求你将应用程序迁移到创作应用程序时所在的区域中的 Azure 资源。 LUIS 有三个创作区域[和门户](/cognitive-services/luis/luis-reference-regions#luis-authoring-regions)。 此窗口会显示在其中创作了你拥有的应用程序的区域。 根据你使用的区域门户和你创作的应用，显示的迁移区域可能会有所不同。 
+4. 在迁移区域的窗口中，系统会要求你将应用程序迁移到创作应用程序时所在的区域中的 Azure 资源。 LUIS 有三个创作区域[和门户](./luis-reference-regions.md#luis-authoring-regions)。 此窗口会显示在其中创作了你拥有的应用程序的区域。 根据你使用的区域门户和你创作的应用，显示的迁移区域可能会有所不同。 
 
    > [!div class="mx-imgBorder"]
    > ![多区域迁移。](./media/migrate-authoring-key/migration-regional-flow.png)

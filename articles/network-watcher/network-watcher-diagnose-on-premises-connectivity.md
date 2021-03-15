@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 01/07/2021
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/15/2021
 ms.testscope: yes
 ms.testdate: 08/03/2020
 ms.author: v-yeche
-ms.openlocfilehash: bdc1c487fe4ed4dd2368aad596ac7ee2ee2c62e0
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: d54e36d0b1c686245d6af6037e9501f6debd156f
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231098"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212621"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>通过 VPN 网关诊断本地连接
 
@@ -36,11 +36,11 @@ ms.locfileid: "98231098"
 想要使用 FortiGate 作为本地 VPN 网关，在 Azure 与本地之间配置站点到站点连接。 若要实现此方案，需要进行以下设置：
 
 1. 虚拟网络网关 - Azure 上的 VPN 网关
-1. 本地网络网关 - Azure 云中的[本地 (FortiGate) VPN 网关](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway)表示形式
-1. 站点到站点连接（基于路由）- [VPN 网关与本地路由器之间的连接](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection)
+1. 本地网络网关 - Azure 云中的[本地 (FortiGate) VPN 网关](../vpn-gateway/tutorial-site-to-site-portal.md#LocalNetworkGateway)表示形式
+1. 站点到站点连接（基于路由）- [VPN 网关与本地路由器之间的连接](../vpn-gateway/tutorial-site-to-site-portal.md#CreateConnection)
 1. [配置 FortiGate](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
-有关站点到站点配置的详细分步指南，请访问：[使用 Azure 门户创建具有站点到站点连接的 VNet](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
+有关站点到站点配置的详细分步指南，请访问：[使用 Azure 门户创建具有站点到站点连接的 VNet](../vpn-gateway/tutorial-site-to-site-portal.md)。
 
 一个关键的配置步骤是配置 IPsec 通信参数，任何不当的配置都会导致本地网络与 Azure 之间的连接断开。 目前，Azure VPN 网关配置为支持第 1 阶段的以下 IPsec 参数。 如下表中所示，Azure VPN 网关支持的加密算法包括 AES256、AES128、和 3DES。
 
@@ -119,4 +119,4 @@ Error: On-premises device rejected Quick Mode settings. Check values.
 
 [1]: ./media/network-watcher-diagnose-on-premises-connectivity/figure1.png
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

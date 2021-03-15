@@ -7,13 +7,13 @@ ms.author: v-jay
 ms.custom: mvc
 ms.topic: overview
 origin.date: 8/21/2020
-ms.date: 01/11/2021
-ms.openlocfilehash: 808e60d785ba68294e67bf0252bf1f9d0039dc47
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.date: 03/15/2021
+ms.openlocfilehash: a0881df028f8605aef0a32f5e3e3e83f2f2b0e09
+ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696957"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103211727"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活服务器（预览版）
 
@@ -25,7 +25,7 @@ ms.locfileid: "101696957"
 
 ## <a name="overview"></a>概述
 
-Azure Database for MySQL 灵活服务器是一种完全托管的数据库服务，旨在针对数据库管理功能和配置设置提供更精细的控制和更大的灵活性。 通常，该服务提供更大的灵活性和基于用户要求的服务器配置自定义。 灵活服务器体系结构允许用户选择单个可用性区域内以及跨多个可用性区域的高可用性。 灵活服务器还提供了更好的成本优化控制，具有停止/启动服务器和可突增 SKU 的功能，非常适合无需持续全计算容量的工作负载。 该服务当前支持 MySQL 5.7 的社区版本。 此服务目前处于预览状态，现已在各种 [Azure 区域](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)中提供。
+Azure Database for MySQL 灵活服务器是一种完全托管的数据库服务，旨在针对数据库管理功能和配置设置提供更精细的控制和更大的灵活性。 通常，该服务提供更大的灵活性和基于用户要求的服务器配置自定义。 灵活服务器体系结构允许用户选择单个可用性区域内以及跨多个可用性区域的高可用性。 灵活服务器还提供了更好的成本优化控制，具有停止/启动服务器和可突增 SKU 的功能，非常适合无需持续全计算容量的工作负载。 该服务目前支持 MySQL 5.7 和 8.0 的社区版本。 此服务目前处于预览状态，现已在各种 [Azure 区域](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)中提供。
 
 灵活服务器最适合用于 
 - 需要更好的控制和自定义的应用程序开发。

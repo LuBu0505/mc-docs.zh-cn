@@ -5,13 +5,13 @@ author: yegu-ms
 ms.author: v-junlch
 ms.service: cache
 ms.topic: conceptual
-ms.date: 02/18/2021
-ms.openlocfilehash: fc045639457cc39578021d6f7486cf1254cd1b43
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.date: 03/09/2021
+ms.openlocfilehash: 8398ea3ad0ffc94dfda47d19552377e75d07a57e
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697512"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212482"
 ---
 # <a name="use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>将 Redis 命令行工具与 Azure Redis 缓存配合使用
 
@@ -27,7 +27,7 @@ redis-cli.exe 是一种常用的命令行工具，可作为客户端与 Azure Re
 
 可通过三种方式收集访问缓存所需的信息：
 
-1. 在 Azure CLI 中使用 [az redis list-keys](/cli/redis?view=azure-cli-latest#az-redis-list-keys)
+1. 在 Azure CLI 中使用 [az redis list-keys](/cli/redis#az-redis-list-keys)
 2. 在 Azure PowerShell 中使用 [Get-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/Get-AzRedisCacheKey)
 3. 使用 Azure 门户。
 

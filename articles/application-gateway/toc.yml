@@ -118,7 +118,7 @@
       href: application-gateway-web-app-overview.md
     - name: WebSocket 支持
       href: application-gateway-websocket.md
-    - name: 常见问题解答
+    - name: 常见问题
       href: application-gateway-faq.yml
 - name: 操作指南
   items:
@@ -188,6 +188,8 @@
           href: ingress-controller-install-existing.md
         - name: 经由 Helm 的 AKS 入口（绿地）
           href: ingress-controller-install-new.md
+        - name: 从 Helm 部署迁移到 AKS 外接程序
+          href: ingress-controller-migration.md
         - name: 禁用并重新启用 AKS 入口控制器外接程序
           href: ingress-controller-disable-addon.md
         - name: 启用 Cookie 关联
@@ -272,7 +274,7 @@
           href: application-gateway-create-probe-classic-ps.md
         - name: 资源管理器 PowerShell
           href: application-gateway-create-probe-ps.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 将 ILB 与应用服务环境配合使用
           href: create-gateway-internal-load-balancer-app-service-environment.md
@@ -312,10 +314,10 @@
       href: /develop/python/
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/applicationgateway'
-    - name: Azure 资源管理器
+    - name: Azure Resource Manager
       displayName: ARM
       href: ../azure-resource-manager/management/overview.md
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       displayName: ARM
       href: 'https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways'
 - name: 资源

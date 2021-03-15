@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 12/01/2020
+ms.date: 03/11/2021
 ms.author: v-junlch
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e619d4fc77de226518220bef463bcffb3fef68d5
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: 18bb33aeddacc76ba6d1c7319726752dd8067fe7
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507149"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212264"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的计费模型
 
@@ -189,4 +189,3 @@ Azure AD B2C 中支持 Azure 云解决方案提供商 (CSP) 订阅。 可以使�
 ## <a name="next-steps"></a>后续步骤
 
 有关最新定价信息，请参阅[Azure Active Directory B2C 定价](https://www.azure.cn/pricing/details/active-directory-b2c/)。
-

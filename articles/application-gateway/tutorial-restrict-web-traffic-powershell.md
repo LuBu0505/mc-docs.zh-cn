@@ -5,15 +5,15 @@ description: 了解如何使用 Azure PowerShell 在应用程序网关上使用 
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 09/15/2020
+ms.date: 03/09/2021
 ms.author: v-junlch
 ms.topic: how-to
-ms.openlocfilehash: 123a4f16cf421ec34da6a555470b82acb5266287
-ms.sourcegitcommit: f436acd1e2a0108918a6d2ee9a1aac88827d6e37
+ms.openlocfilehash: 941c71934a56596d3254fb99253d47028c877a1b
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508609"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212465"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>使用 Azure PowerShell 启用 Web 应用程序防火墙
 
@@ -28,13 +28,13 @@ ms.locfileid: "96508609"
 
 ![Web 应用程序防火墙示例](media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 
-如果愿意，可以使用 [Azure 门户](application-gateway-web-application-firewall-portal.md)或 [Azure CLI](tutorial-restrict-web-traffic-cli.md) 完成本文。
+如果愿意，可以使用 [Azure 门户](application-gateway-web-application-firewall-portal.md)或 [Azure CLI](tutorial-restrict-web-traffic-cli.md) 来完成本文。
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 以创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -46,7 +46,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location chinanorth2
 
 ## <a name="create-network-resources"></a>创建网络资源 
 
-使用 [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建名为 *myBackendSubnet* 和 *myAGSubnet* 的子网配置。 使用 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) 和子网配置创建名为 myVNet 的虚拟网络。 最后使用 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) 创建名为 myAGPublicIPAddress 的公共 IP 地址。 这些资源用于提供与应用程序网关及其关联资源的网络连接。
+使用 [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建名为 *myBackendSubnet* 和 *myAGSubnet* 的子网配置。 使用 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) 和子网配置创建名为 myVNet 的虚拟网络。 最后使用 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。 这些资源用于提供与应用程序网关及其关联资源的网络连接。
 
 ```azurepowershell
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -74,7 +74,7 @@ $pip = New-AzPublicIpAddress `
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
-本部分将创建支持应用程序网关的资源，然后最终创建应用程序网关和 WAF。 创建的资源包括：
+在本部分中，将创建支持应用程序网关的资源，并最终创建它和一个 WAF。 创建的资源包括：
 
 - *IP 配置和前端端口* - 将先前创建的子网关联到应用程序网关，并分配一个端口以用于访问它。
 - *默认池* - 所有应用程序网关必须至少具有一个后端服务器池。
@@ -82,7 +82,7 @@ $pip = New-AzPublicIpAddress `
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>创建 IP 配置和前端端口
 
-使用 [New-AzApplicationGatewayIPConfiguration](https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayipconfiguration) 将前面创建的 myAGSubnet 关联到应用程序网关。 使用 [New-AzApplicationGatewayFrontendIPConfig](https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig) 将 *myAGPublicIPAddress* 分配给应用程序网关。
+使用 [New-AzApplicationGatewayIPConfiguration](https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayipconfiguration) 将前面创建的 *myAGSubnet* 关联到应用程序网关。 使用 [New-AzApplicationGatewayFrontendIPConfig](https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig) 将 *myAGPublicIPAddress* 分配给应用程序网关。
 
 ```azurepowershell
 $vnet = Get-AzVirtualNetwork `
@@ -275,7 +275,7 @@ $store = Get-AzStorageAccount `
 Set-AzDiagnosticSetting `
   -ResourceId $appgw.Id `
   -StorageAccountId $store.Id `
-  -Categories ApplicationGatewayAccessLog, ApplicationGatewayPerformanceLog, ApplicationGatewayFirewallLog `
+  -Category ApplicationGatewayAccessLog, ApplicationGatewayPerformanceLog, ApplicationGatewayFirewallLog `
   -Enabled $true `
   -RetentionEnabled $true `
   -RetentionInDays 30

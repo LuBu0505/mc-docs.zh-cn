@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: b29c87e7b5e194f1754b7694eec9274f842bb244
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 4285ce22b8b3e7114a5eb31a793f6dc00ae75b4b
+ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101751000"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224045"
 ---
 部署清单定义要部署到边缘设备的模块。 它还定义了这些模块的配置设置。 
 
@@ -42,9 +42,9 @@ RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运
 > 如果使用的是自己的边缘设备，而不是设置脚本预配的边缘设备，请转到你的边缘设备并使用管理员权限运行以下命令，以拉取并存储该快速入门所使用的示例视频文件：  
 
 ```
-mkdir /home/lvaadmin/samples      
-mkdir /home/lvaadmin/samples/input    
-curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
-chown -R lvaadmin /home/lvaadmin/samples/  
+mkdir /home/lvaedgeuser/samples      
+mkdir /home/lvaedgeuser/samples/input    
+curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaedgeuser/samples/input/camera-300s.mkv  
+chown -R lvalvaedgeuser:localusergroup /home/lvaedgeuser/samples/  
 ```
 在此阶段，模块已部署，但没有媒体图处于活动状态。

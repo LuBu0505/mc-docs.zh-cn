@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
 origin.date: 12/19/2019
-ms.date: 10/26/2020
+ms.date: 03/08/2021
 ms.author: v-johya
-ms.openlocfilehash: 064b21a12495250dafb94cfedef8d1fff3c111a1
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 6c13e50d5f389c222b4eb41bb0e5274b9f177e07
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105717"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212740"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>教程：将 Power BI 与文本分析认知服务集成
 
@@ -35,8 +35,8 @@ Power BI Desktop 是免费的应用程序，可让你连接、转换和可视化
 <a name="Prerequisites"></a>
 
 - Power BI Desktop。 [免费下载](https://powerbi.microsoft.com/get-started/)。
-- 一个 Azure 帐户。 [创建试用版](https://www.azure.cn/pricing/details/cognitive-services/)或[登录](https://portal.azure.cn/)。
-- 包含文本分析 API 的认知服务 API 帐户。 如果没有帐户，可以[注册](../../cognitive-services-apis-create-account.md)并使用 5,000 个事务/月的免费层级（请参阅[定价详细信息](https://www.azure.cn/pricing/details/cognitive-services/text-analytics/)以完成本教程）。
+- 一个 Azure 帐户。 [创建试用版](https://www.microsoft.com/china/azure/index.html?fromtype=cn)或[登录](https://portal.azure.cn/)。
+- 包含文本分析 API 的认知服务 API 帐户。 如果没有帐户，可以[注册](../../cognitive-services-apis-create-account.md)并使用 5,000 个事务/月的免费层级（请参阅[定价详细信息](https://www.azure.cn/pricing/details/cognitive-services/)以完成本教程）。
 - 在注册期间生成的[文本分析访问密钥](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
 - 客户评论。 可以使用[我们的示例数据](https://aka.ms/cogsvc/ta)或你自己的数据。 本教程假定你使用我们的示例数据。
 
@@ -90,7 +90,7 @@ CSV 导入对话框用于验证 Power BI Desktop 是否已正确检测到字符�
 ## <a name="understand-the-api"></a>了解 API
 <a name="UnderstandingAPI"></a>
 
-对于每个 HTTP 请求，文本分析服务的[关键短语 API](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) 最多可以处理一千个文本文档。 Power BI 偏好一次处理一个记录，因此在本教程中，对 API 的每次调用将只包含一个文档。 对于每个要处理的文档，关键短语 API 要求提供以下字段。
+对于每个 HTTP 请求，文本分析服务的[关键短语 API](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-V3-0/operations/KeyPhrases) 最多可以处理一千个文本文档。 Power BI 偏好一次处理一个记录，因此在本教程中，对 API 的每次调用将只包含一个文档。 对于每个要处理的文档，关键短语 API 要求提供以下字段。
 
 | 字段 | 说明 |
 | - | - |

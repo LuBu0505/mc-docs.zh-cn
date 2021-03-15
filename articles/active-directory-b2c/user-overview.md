@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 03/12/2021
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 936a63aed317200627301f2e201235cb54acba58
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: f7e914e39912a98b756b1798117915cde80967c7
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540608"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212487"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的用户帐户概述
 
@@ -80,7 +80,7 @@ ms.locfileid: "99540608"
 
 可以指定在创建使用者用户帐户时收集的数据。 
 
-有关管理使用者帐户的详细信息，请参阅[使用 Microsoft Graph 管理 Azure AD B2C 用户帐户](manage-user-accounts-graph-api.md)。
+有关管理使用者帐户的详细信息，请参阅[使用 Microsoft Graph 管理 Azure AD B2C 用户帐户](./microsoft-graph-operations.md)。
 
 ### <a name="migrate-consumer-user-accounts"></a>迁移使用者用户帐户
 

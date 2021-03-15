@@ -3,18 +3,18 @@ title: Azure Cosmos DB 中基于消耗量的无服务器产品/服务
 description: 详细了解 Azure Cosmos DB 基于消耗量的无服务器产品/服务。
 ms.service: cosmos-db
 ms.topic: conceptual
-origin.date: 11/25/2020
+origin.date: 01/08/2021
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/15/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 6e2b34e513227fb092c937f959db14c56ccc1bf2
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 8972f232afd3a883b418e7f702cfdf232c907e59
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230070"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996618"
 ---
 <!--Waiting for PM comments on release-->
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB 无服务器（预览版）
@@ -83,4 +83,4 @@ Azure Cosmos DB 无服务器最适合你预期会有“间歇性流量和不可�
 - [在预配吞吐量和无服务器之间进行选择](throughput-serverless.md)
 - [Azure Cosmos DB 中的定价模型](how-pricing-works.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

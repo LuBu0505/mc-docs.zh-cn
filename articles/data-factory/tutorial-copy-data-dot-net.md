@@ -1,27 +1,22 @@
 ---
 title: 将数据从 Azure Blob 存储复制到 Azure SQL 数据库
 description: 本教程提供有关将数据从 Azure Blob 存储复制到 Azure SQL 数据库的分步说明。
-services: data-factory
-documentationcenter: ''
 author: WenJason
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
-origin.date: 11/08/2019
-ms.date: 07/27/2020
+origin.date: 02/18/2021
+ms.date: 03/15/2021
 ms.author: v-jay
-ms.openlocfilehash: 3928c633ad8c0b6131ab291bbbc91f775de3e96e
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: 882dda42122c07a6bfe9304028ad5ebde0a3754b
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432395"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102590030"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Azure Blob 复制到 Azure SQL 数据库
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本教程介绍如何创建一个将数据从 Azure Blob 存储复制到 Azure SQL 数据库的数据工厂管道。 本教程中的配置模式适用于从基于文件的数据存储复制到关系数据存储。 如需支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
 

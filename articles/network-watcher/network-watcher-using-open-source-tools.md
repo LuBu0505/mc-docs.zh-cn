@@ -15,12 +15,12 @@ ms.date: 08/10/2020
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: cabbf61d284ed23bfc465aba0250a9a2524eea0f
-ms.sourcegitcommit: 3eadca6821ef679d8ac6ca2dc46d6a13aac211cd
+ms.openlocfilehash: 3f51439319c1a067ec414b573e157f8c196807a7
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87548070"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212613"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>使用开源工具将传入和传出 VM 的网络流量模式可视化
 
@@ -50,7 +50,7 @@ Azure 网络观察程序允许在网络中执行数据包捕获，以提供捕�
 
 向 CapAnalysis 提供链接时，请务必在存储 Blob URL 的后面追加 SAS 令牌。  为此，请从存储帐户导航到“共享访问签名”，指定允许的权限，按“生成 SAS”按钮创建令牌。 然后，可将此 SAS 令牌追加到数据包捕获存储 Blob URL 的后面。
 
-生成的 URL 应如以下 URL 所示： `http:\//storageaccount.blob.core.chinacloudapi.cn/container/location?addSASkeyhere`
+生成的 URL 应如以下 URL 所示：`http://storageaccount.blob.core.chinacloudapi.cn/container/location?addSASkeyhere`
 
 ### <a name="analyzing-packet-captures"></a>分析数据包捕获
 
@@ -88,7 +88,7 @@ CapAnalysis 提供多种选项来可视化数据包捕获，每种选项从不�
 
     访问 [https://www.capanalysis.net/ca/#about](https://www.capanalysis.net/ca/#about) 可了解有关 CapAnalysis 所有功能的更多信息。
 
-## <a name="conclusion"></a>结论
+## <a name="conclusion"></a>结束语
 
 使用网络观察程序的数据包捕获功能可以捕获所需的数据来执行网络取证，以及更好地了解网络流量。 本方案说明了如何轻松将网络观察程序中的数据包捕获与开源可视化工具相集成。 使用 CapAnalysis 等开源工具将数据包捕获可视化，可以执行深度数据包检查，快速识别网络流量中的趋势。
 
@@ -112,4 +112,4 @@ CapAnalysis 提供多种选项来可视化数据包捕获，每种选项从不�
 [10]: ./media/network-watcher-using-open-source-tools/figure10.png
 [11]: ./media/network-watcher-using-open-source-tools/figure11.png
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

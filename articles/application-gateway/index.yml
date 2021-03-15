@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: vhorne
   ms.author: v-junlch
-  ms.date: 02/18/2021
-  ms.openlocfilehash: 71a95f9e30be68b4ff0585f3df6ac5bde850fcd1
-  ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+  ms.date: 03/09/2021
+  ms.openlocfilehash: 362affe2571e0af39b5bda59324b87b89b2e036b
+  ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/03/2021
-  ms.locfileid: "101697476"
+  ms.lasthandoff: 03/12/2021
+  ms.locfileid: "103212746"
 landingContent:
 - title: 了解应用程序网关
   linkLists:
@@ -73,8 +73,8 @@ landingContent:
       url: ingress-controller-overview.md
   - linkListType: tutorial
     links:
-    - text: 创建 AKS 的入口控制器
-      url: ingress-controller-install-new.md
+    - text: 创建启用了入口控制器外接程序的 AKS 群集
+      url: tutorial-ingress-controller-add-on-new.md
 - title: 使用应用程序网关重写 HTTP 标头和 URL
   linkLists:
   - linkListType: overview

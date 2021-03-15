@@ -1,28 +1,23 @@
 ---
 title: 使用 Azure 门户创建数据工厂管道
 description: 本教程分步说明了如何使用 Azure 门户创建带管道的数据工厂。 该管道通过复制活动将数据从 Azure Blob 存储复制到 Azure SQL 数据库。
-services: data-factory
-documentationcenter: ''
 author: WenJason
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-origin.date: 12/14/2020
-ms.date: 01/04/2021
+origin.date: 02/18/2021
+ms.date: 03/15/2021
 ms.author: v-jay
-ms.openlocfilehash: 5ef7d453aa99142e2c6f7f6f8085d0eb67b07818
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 88570d98044921b0c5a503b9475296dc379a12a4
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830100"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102590031"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂，将数据从 Azure Blob 存储复制到 Azure SQL 数据库中的数据库
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在本教程中，请使用 Azure 数据工厂用户界面 (UI) 创建数据工厂。 此数据工厂中的管道将数据从 Azure Blob 存储复制到 Azure SQL 数据库中的数据库。 本教程中的配置模式适用于从基于文件的数据存储复制到关系数据存储。 如需可以用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
@@ -133,11 +128,11 @@ ms.locfileid: "97830100"
 
 1. 在“选择格式”对话框中选择数据的格式类型，然后选择“继续”。 
 
-1. 在“设置属性”对话框中，输入 **SourceBlobDataset** 作为名称。 选中“第一行作为标题”复选框。 在“链接服务”文本框下，选择“+ 新建”。 
+1. 在“设置属性”对话框中，输入 **SourceBlobDataset** 作为名称。 选中“第一行作为标题”复选框。 在“链接服务”文本框下，选择“+ 新建”。
 
 1. 在“新建链接服务(Azure Blob 存储)”窗口中，输入 **AzureStorageLinkedService** 作为名称，从“存储帐户名称”列表中选择你的存储帐户。  测试连接，选择“创建”以部署该链接服务。
 
-1. 创建链接服务后，会导航回到“设置属性”页。 在“文件路径”旁边，选择“浏览”。 
+1. 创建链接服务后，会导航回到“设置属性”页。 在“文件路径”旁边，选择“浏览”。
 
 1. 导航到 adftutorial/input 文件夹，选择 emp.txt 文件，然后选择“确定”。
 
@@ -174,7 +169,7 @@ ms.locfileid: "97830100"
 
     ![保存新建链接服务](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
 
-1. 将自动导航到“设置属性”对话框。 在“表”中选择“[dbo].[emp]”。  然后选择“确定”。
+1. 将自动导航到“设置属性”对话框。 在“表”中选择“[dbo].[emp]”。 然后选择“确定”。
 
 1. 转到包含管道的选项卡。在“接收器数据集”中，确认已选中“OutputSqlDataset”。 
 
@@ -199,7 +194,7 @@ ms.locfileid: "97830100"
 ## <a name="trigger-the-pipeline-manually"></a>手动触发管道
 在此步骤中，请手动触发在前面的步骤中发布的管道。
 
-1. 选择工具栏中的“触发器”，然后选择“立即触发”。  在“管道运行”页上，选择“确定”。   
+1. 选择工具栏中的“触发器”，然后选择“立即触发”。   在“管道运行”页上，选择“确定”。   
 
 1. 转到左侧的“监视”选项卡。 此时会看到由手动触发器触发的管道运行。 可以使用“管道名称”列下的链接来查看活动详细信息以及重新运行该管道。
 
@@ -254,7 +249,7 @@ ms.locfileid: "97830100"
 1. 验证是否每分钟将两个行（对于每个管道运行）插入 **emp** 表中，直至指定的结束时间。
 
 ## <a name="next-steps"></a>后续步骤
-此示例中的管道将数据从 Blob 存储中的一个位置复制到另一个位置。 你已了解如何执行以下操作：
+此示例中的管道将数据从 Blob 存储中的一个位置复制到另一个位置。 你已了解如何：
 
 > [!div class="checklist"]
 > * 创建数据工厂。

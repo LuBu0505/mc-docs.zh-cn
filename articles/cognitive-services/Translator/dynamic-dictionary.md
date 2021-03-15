@@ -3,20 +3,20 @@ title: 动态字典 - 翻译器
 titleSuffix: Azure Cognitive Services
 description: 本文介绍如何使用 Azure 认知服务翻译器的动态字典功能。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 origin.date: 05/26/2020
-ms.date: 06/22/2020
-ms.author: v-tawe
-ms.openlocfilehash: 9bd6a6db454d1ecfc81772e9433ee0da115c9143
-ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
+ms.date: 03/08/2021
+ms.author: v-johya
+ms.openlocfilehash: bafb172f26ad87c478b3e8f408e7214d6a771ce7
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85241582"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212578"
 ---
 # <a name="how-to-use-a-dynamic-dictionary"></a>如何使用动态字典
 
@@ -39,5 +39,4 @@ ms.locfileid: "85241582"
 
 无论使用还是不使用 HTML 模式，此功能都以相同的方式工作。
 
-请谨慎使用此功能。 对翻译进行自定义时，较好的方法是使用自定义翻译器。 自定义翻译工具能够充分利用上下文和统计概率。 如果必须或能够创建在上下文中显示工作或短语的训练数据，则会得到更好的结果。 可以在 [https://aka.ms/CustomTranslator](https://aka.ms/CustomTranslator) 中找到有关自定义翻译的详细信息。
-<!-- Update_Description: wording update -->
+请谨慎使用此功能。

@@ -12,14 +12,14 @@ metadata:
   ms.subservice: text-analytics
   ms.topic: landing-page
   origin.date: 09/24/2018
-  ms.date: 12/30/2020
+  ms.date: 03/08/2021
   ms.author: v-johya
-  ms.openlocfilehash: 153151e4a76480b926a891fb96fb5be9a8357387
-  ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+  ms.openlocfilehash: 7f4b72135dde9cbbfc25d9ff79dc933a1285dd81
+  ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/08/2021
-  ms.locfileid: "98022196"
+  ms.lasthandoff: 03/12/2021
+  ms.locfileid: "103212669"
 landingContent:
 - title: 关于文本分析 API
   linkLists:
@@ -111,22 +111,20 @@ landingContent:
     links:
     - text: 实体识别
       url: how-tos/text-analytics-how-to-entity-linking.md
-- title: 参考
+- title: 负责使用 AI
   linkLists:
-  - linkListType: reference
+  - linkListType: overview
     links:
-    - text: REST API
-      url: https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7
-    - text: Python 客户端库
-      url: https://docs.microsoft.com/python/api/overview/azure/ai-textanalytics-readme?view=azure-python
-    - text: JavaScript 客户端库
-      url: https://docs.microsoft.com/javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-latest
-    - text: Go 客户端库
-      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics
-    - text: Azure PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices
-    - text: Azure CLI
-      url: /cli/cognitiveservices?view=azure-cli-latest
+    - text: 文本分析的透明度说明
+      url: https://docs.microsoft.com/legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context
+    - text: PII 的透明度说明
+      url: https://docs.microsoft.com/legal/cognitive-services/text-analytics/transparency-note-personally-identifiable-information?context=/azure/cognitive-services/text-analytics/context/context
+    - text: 情绪分析的透明度说明
+      url: https://docs.microsoft.com/legal/cognitive-services/text-analytics/transparency-note-sentiment-analysis?context=/azure/cognitive-services/text-analytics/context/context
+  - linkListType: concept
+    links:
+    - text: 集成和负责使用
+      url: /legal/cognitive-services/text-analytics/guidance-integration-responsible-use?context=/azure/cognitive-services/text-analytics/context/context
 - title: 使用 Docker 容器
   linkLists:
   - linkListType: how-to-guide
@@ -136,9 +134,21 @@ landingContent:
     - text: 配置文本分析容器
       url: text-analytics-resource-container-config.md
     - text: 将容器实例部署到 Azure
-      url: how-tos/text-analytics-how-to-use-container-instances.md
+      url: ../containers/azure-container-instance-recipe.md
     - text: 将容器部署到 Azure Kubernetes 服务 (AKS)
       url: how-tos/text-analytics-how-to-use-kubernetes-service.md
+- title: 参考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST API (v3.1-preview)
+      url: https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v3-1-preview-3/
+    - text: REST API (v3.0)
+      url: https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v3-0
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices
+    - text: Azure CLI
+      url: /cli/cognitiveservices
 - title: 帮助和反馈
   linkLists:
   - linkListType: reference

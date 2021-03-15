@@ -9,13 +9,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
 origin.date: 02/11/2021
-ms.date: 02/22/2021
-ms.openlocfilehash: a62d90cba87e626c0c7b4833aae64d3f7ee400ea
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.date: 03/15/2021
+ms.openlocfilehash: 8d5a72e8ff46b7358d6751011fdfb217edac4015
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696848"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589941"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>使用 Azure SQL 的 Azure Active Directory 服务主体
 
@@ -73,7 +73,7 @@ SQL 数据库和 Azure Synapse 现在支持以 Azure AD 应用程序身份运行
     - 若要检查是否为服务器分配了服务器标识，请执行 Get-AzSqlServer 命令。
 
     > [!NOTE]
-    > 也可以使用 CLI 命令分配服务器标识。 有关详细信息，请参阅 [az sql server create](/cli/sql/server?view=azure-cli-latest#az-sql-server-create&preserve-view=true) 和 [az sql server update](/cli/sql/server?view=azure-cli-latest#az-sql-server-update&preserve-view=true)。
+    > 也可以使用 CLI 命令分配服务器标识。 有关详细信息，请参阅 [az sql server create](/cli/sql/server#az-sql-server-create) 和 [az sql server update](/cli/sql/server#az-sql-server-update)。
 
 2. 向已创建的或分配给服务器的服务器标识授予 Azure AD [**目录读取者**](../../active-directory/roles/permissions-reference.md#directory-readers)权限。
     - 若要授予此权限，请按照以下文章中提供的用于 SQL 托管实例的说明进行操作：[预配 Azure AD 管理员（SQL 托管实例）](authentication-aad-configure.md?tabs=azure-powershell#provision-azure-ad-admin-sql-managed-instance)
@@ -93,7 +93,7 @@ SQL 数据库和 Azure Synapse 现在支持以 Azure AD 应用程序身份运行
       - 对于上述错误，请执行相关步骤，[为 Azure SQL 逻辑服务器分配标识](authentication-aad-service-principal-tutorial.md#assign-an-identity-to-the-azure-sql-logical-server)并[为 SQL 逻辑服务器标识分配目录读取者权限](authentication-aad-service-principal-tutorial.md#assign-directory-readers-permission-to-the-sql-logical-server-identity)。
     > [!NOTE]
     > 上述错误消息会在此功能正式发布之前进行更改，以明确指出要支持 Azure AD 应用程序还需要满足哪些设置要求。
-- 仅支持以 SQL 托管实例的 Azure AD 管理员身份使用 CLI 命令以及 [Az.Sql 版本为 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0) 或更高的 PowerShell 命令设置 Azure AD 应用程序。 有关详细信息，请参阅 [az sql mi ad-admin create](/cli/sql/mi/ad-admin?view=azure-cli-latest&preserve-view=true#az-sql-mi-ad-admin-create) 和 [Set-AzSqlInstanceActiveDirectoryAdministrator](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) 命令。 
+- 仅支持以 SQL 托管实例的 Azure AD 管理员身份使用 CLI 命令以及 [Az.Sql 版本为 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0) 或更高的 PowerShell 命令设置 Azure AD 应用程序。 有关详细信息，请参阅 [az sql mi ad-admin create](/cli/sql/mi/ad-admin#az-sql-mi-ad-admin-create) 和 [Set-AzSqlInstanceActiveDirectoryAdministrator](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) 命令。 
     - 如果要使用 SQL 托管实例的 Azure 门户来设置 Azure AD 管理员，一种可能的解决方法是创建一个 Azure AD 组。 然后，将服务主体（Azure AD 应用程序）添加到此组，并将此组设置为 SQL 托管实例的 Azure AD 管理员。
     - 支持使用 Azure 门户、[PowerShell](authentication-aad-configure.md?tabs=azure-powershell#powershell-for-sql-database-and-azure-synapse) 和 [CLI](authentication-aad-configure.md?tabs=azure-cli#powershell-for-sql-database-and-azure-synapse) 命令将服务主体（Azure AD 应用程序）设置为 SQL 数据库和 Azure Synapse 的 Azure AD 管理员。
 - 访问在不同租户中创建的 SQL 数据库或 SQL 托管实例时，无法将 Azure AD 应用程序与另一个 Azure AD 租户中的服务主体结合使用。 分配给此应用程序的服务主体必须与 SQL 逻辑服务器或托管实例位于同一租户中。

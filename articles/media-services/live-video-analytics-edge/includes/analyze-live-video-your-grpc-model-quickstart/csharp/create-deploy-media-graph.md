@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: add1ecf6f31b4dee8b5800be2ac344a6f147a596
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 7af53d94b9f9788b611368192c7435e9754f9ed7
+ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750751"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224049"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>检查和编辑示例文件
 
@@ -26,11 +26,11 @@ ms.locfileid: "101750751"
 1. 编辑 operations.json 文件：
  
     * 将链接更改为图拓扑：
-    * `"topologyUrl"` : `"https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/grpcExtension/2.0/topology.json"`
+    * `"topologyUrl"` : `"https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/motion-with-grpcExtension/2.0/topology.json"`
     * 在 GraphInstanceSet 下，编辑图形拓扑的名称以匹配前面链接中的值：
-    * `"topologyName"` : `"InferencingWithGrpcExtension"`
+    * `"topologyName"` : `"EVROnMotionPlusGrpcExtension"`
     * 在 GraphTopologyDelete 下，编辑名称：
-    * `"name"` : `"InferencingWithGrpcExtension"`
+    * `"name"` : `"EVROnMotionPlusGrpcExtension"`
 
 > [!NOTE]
 > <p>
@@ -51,7 +51,7 @@ ms.locfileid: "101750751"
 >   },
 >   "dataTransfer": {
 >       "mode": "sharedMemory",
->       "SharedMemorySizeMiB": "5"
+>       "SharedMemorySizeMiB": "256"
 >   },
 >   "image": {
 >       "scale": {
@@ -107,10 +107,10 @@ ms.locfileid: "101750751"
         > 上述步骤假设你使用的是设置脚本创建的虚拟机。 如果使用的是自己的边缘设备，请转到你的边缘设备并使用管理员权限运行以下命令，以拉取并存储该快速入门所使用的示例视频文件：  
 
         ```
-        mkdir /home/lvaadmin/samples
-        mkdir /home/lvaadmin/samples/input    
-        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
-        chown -R lvaadmin /home/lvaadmin/samples/  
+        mkdir /home/lvaedgeuser/samples
+        mkdir /home/lvaedgeuser/samples/input    
+        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaedgeuser/samples/input/camera-300s.mkv  
+        chown -R lvalvaedgeuser:localusergroup /home/lvaedgeuser/samples/  
         ```
     * lvaExtension 模块，它是 YOLOv3 对象检测模型，该模型使用 gRPC 作为通信方法，对图像应用计算机视觉，并返回多种对象类型。
     
@@ -167,7 +167,7 @@ ms.locfileid: "101750751"
       "@apiVersion": "2.0",
       "name": "Sample-Graph-1",
       "properties": {
-        "topologyName": "InferencingWithGrpcExtension",
+        "topologyName": "EVROnMotionPlusGrpcExtension",
         "description": "Sample graph description",
         "parameters": [
           {

@@ -3,22 +3,21 @@ title: 词对齐 - 翻译器
 titleSuffix: Azure Cognitive Services
 description: 若要接收对齐信息，请使用 Translate 方法，并包含可选的 includeAlignment 参数。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 origin.date: 05/26/2020
-ms.date: 06/22/2020
-ms.author: v-tawe
-ms.openlocfilehash: 4b266397fe56ac99f17ec66f7ab050a6732db2e7
-ms.sourcegitcommit: 43db4001be01262959400663abf8219e27e5cb8b
+ms.date: 03/08/2021
+ms.author: v-johya
+ms.openlocfilehash: d95a683483e84d4ad706e1576e7f0f495c8ede95
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85241575"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212628"
 ---
-<!-- title updating-->
 # <a name="how-to-receive-word-alignment-information"></a>如何接收词对齐信息
 
 ## <a name="receiving-word-alignment-information"></a>接收词对齐信息
@@ -27,7 +26,7 @@ ms.locfileid: "85241575"
 ## <a name="alignment-information-format"></a>对齐信息格式
 对齐将作为以下格式的字符串值返回给源的每个词。 每个词的信息由一个空格分隔，其中包括非空格分隔的语言（脚本），比如中文：
 
-[[SourceTextStartIndex]:[SourceTextEndIndex][TgtTextStartIndex]:[TgtTextEndIndex]] *
+[[SourceTextStartIndex]:[SourceTextEndIndex]-[TgtTextStartIndex]:[TgtTextEndIndex]] *
 
 对齐字符串示例：“0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21”。
 
@@ -58,3 +57,4 @@ ms.locfileid: "85241575"
   }
 ]
 ```
+

@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 12/03/2019
-ms.date: 08/03/2020
-ms.author: v-tawe
-ms.openlocfilehash: 21a83b438a9cc987410d452b3ece42934175ae96
-ms.sourcegitcommit: 753c74533aca0310dc7acb621cfff5b8993c1d20
+ms.date: 03/08/2021
+ms.author: v-johya
+ms.openlocfilehash: d818545b82a5ce324bd7c9eb90e40c8fc8f0b9ef
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92211620"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212402"
 ---
 # <a name="disclosure-design-guidelines"></a>披露设计准则
 了解如何通过透明化语音体验的合成性质来构建和维护客户给予的信任。
@@ -73,14 +73,10 @@ ms.locfileid: "92211620"
 
 根据使用的上下文，利用下面的图表来确定合成语音体验需要高公开级别还是低公开级别。
 
-  ![公开评估图表](media/responsible-ai/disclosure-guidelines/flowchart.png)
+  ![公开评估图表](./media/responsible-ai/disclosure-guidelines/flowchart.png)
 
-## <a name="reference-docs"></a>参考文档
-
-* [向配音员公开](https://aka.ms/disclosure-voice-talent)
-* [合成语音技术的负责任的部署指南](concepts-guidelines-responsible-deployment-synthetic.md)
-* [管控概述](concepts-gating-overview.md)
-
-## <a name="next-steps"></a>后续步骤
+## <a name="see-also"></a>另请参阅
 
 * [公开设计模式](concepts-disclosure-patterns.md)
+* [合成语音技术的负责任的部署指南](concepts-guidelines-responsible-deployment-synthetic.md)
+

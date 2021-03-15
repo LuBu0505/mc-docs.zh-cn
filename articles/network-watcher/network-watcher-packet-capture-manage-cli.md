@@ -15,12 +15,12 @@ ms.date: 01/18/2021
 ms.testscope: yes
 ms.testdate: 08/03/2020
 ms.author: v-yeche
-ms.openlocfilehash: e3f0c75820b7f5d879a54cacff5ed73be9292492
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: b58490f7ace3b804c41640c0a4ba495c86689608
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230868"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212614"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>通过 Azure CLI 使用 Azure 网络观察程序管理数据包捕获
 
@@ -196,8 +196,7 @@ az network watcher packet-capture show-status --name packetCaptureName --locatio
     "status": "Succeeded"
   },
   "captureStartTime": "2016-12-06T17:20:01.5671279Z",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_chinaeast/pa
-cketCaptures/packetCaptureName",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_chinaeast/packetCaptures/packetCaptureName",
   "name": "packetCaptureName",
   "packetCaptureError": [],
   "packetCaptureStatus": "Stopped",
@@ -243,4 +242,4 @@ https://{storageAccountName}.blob.core.chinacloudapi.cn/network-watcher-logs/sub
 
 <!-- Image references -->
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

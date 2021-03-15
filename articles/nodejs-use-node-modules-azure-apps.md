@@ -15,12 +15,12 @@ ms.topic: article
 origin.date: 08/17/2016
 ms.date: 09/10/2020
 ms.author: v-tawe
-ms.openlocfilehash: 9f711e6207a696ae9199d447078ccb9d5c860863
-ms.sourcegitcommit: 78c71698daffee3a6b316e794f5bdcf6d160f326
+ms.openlocfilehash: 366e6640135456d3250d50c5d24498881a7a8612
+ms.sourcegitcommit: 51e46fa770f686e754c2fbcd77697fd73aa18bb0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90021445"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498149"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>将 Node.js 模块与 Azure 应用程序一起使用
 本文档提供有关将 Node.js 模块与托管在 Azure 中的应用程序一起使用的指南。 其中提供有关确保应用程序使用特定版本的模块以及对 Azure 使用本机模块的指南。
@@ -90,7 +90,7 @@ package.json 文件的一个潜在问题是它仅指定顶级依赖项的版本�
 
 有关详细信息，请参阅 [Node.js 开发人员中心](https://docs.microsoft.com/azure/developer/javascript/)。
 
-[specify the Node.js version]: nodejs-specify-node-version-azure-apps.md
+[specify the Node.js version]: ./app-service/overview.md
 [How to use the Azure Command-Line Interface for Mac and Linux]:cli-install-nodejs.md
 
 <!-- [Custom Website Deployment Scripts with Kudu]: https://channel9.msdn.com/Shows/Azure-Friday/Custom-Web-Site-Deployment-Scripts-with-Kudu-with-David-Ebbo -->

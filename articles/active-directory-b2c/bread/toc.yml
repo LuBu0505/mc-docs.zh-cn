@@ -20,3 +20,14 @@
         - name: B2C
           tocHref: /active-directory/external-identities/
           topicHref: /active-directory-b2c/index
+- name: Azure
+  tocHref: /
+  topicHref: /index
+  items:
+    - name: Active Directory
+      tocHref: /active-directory/
+      topicHref: /active-directory/index
+      items:
+        - name: B2C
+          tocHref: /active-directory/fundamentals/
+          topicHref: /active-directory-b2c/index

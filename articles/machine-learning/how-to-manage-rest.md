@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 01/31/2020
 ms.custom: tracking-python
-ms.openlocfilehash: d49ab6cd9b6b9b2476731f5fbec4324032178b65
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 21601029655d2ed793aa4bc5aa8f70b287bb03c5
+ms.sourcegitcommit: aa152825420691f705c959682144d14877916aff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022431"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224090"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>使用 REST 创建、运行和删除 Azure ML 资源
 
@@ -79,7 +79,7 @@ curl -X POST https://login.chinacloudapi.cn/{your-tenant-id}/oauth2/token \
 请记下该令牌，因为以后需要用它来对所有后续管理请求进行身份验证。 为此，可在所有请求中设置一个授权标头：
 
 ```bash
-curl -h "Authentication: Bearer {your-access-token}" ...more args...
+curl -h "Authorization:Bearer {your-access-token}" ...more args...
 ```
 
 请注意，该值以字符串“Bearer ”开头（其中包含一个空格，你需要在该空格后添加令牌）。

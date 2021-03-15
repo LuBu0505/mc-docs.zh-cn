@@ -12,14 +12,14 @@ ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 06/02/2020
-ms.date: 01/04/2021
+ms.date: 03/15/2021
 ms.author: v-jay
-ms.openlocfilehash: 644951b07e914fead5cbd112f8d12fb71d4a479b
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 6f72f0ed9a2d4c27dd6d217d7be960bc3b3077f8
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830379"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589973"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure 虚拟机上的 SQL Server 故障转移群集实例 (FCI)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -48,7 +48,7 @@ Azure 虚拟机上的 SQL Server 故障转移群集实例支持对群集仲裁�
 
 Azure VM 上的 SQL Server 提供各种选项用作共享存储解决方案，它适用于 SQL Server 故障转移群集实例的部署： 
 
-||[Azure 共享磁盘](../../../virtual-machines/windows/disks-shared.md)|[高级文件共享](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[存储空间直通 (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
+||[Azure 共享磁盘](../../../virtual-machines/disks-shared.md)|[高级文件共享](../../../storage/files/storage-how-to-create-file-share.md) |[存储空间直通 (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
 |**最低操作系统版本**| All |Windows Server 2012|Windows Server 2016|
 |**最低 SQL Server 版本**|All|SQL Server 2012|SQL Server 2016|
@@ -60,7 +60,7 @@ Azure VM 上的 SQL Server 提供各种选项用作共享存储解决方案，�
 
 ### <a name="azure-shared-disks"></a>Azure 共享磁盘
 
-[Azure 共享磁盘](../../../virtual-machines/windows/disks-shared.md)是 [Azure 托管磁盘](../../../virtual-machines/managed-disks-overview.md)的一项功能。 Windows Server 故障转移群集支持将 Azure 共享磁盘与故障转移群集实例一起使用。 
+[Azure 共享磁盘](../../../virtual-machines/disks-shared.md)是 [Azure 托管磁盘](../../../virtual-machines/managed-disks-overview.md)的一项功能。 Windows Server 故障转移群集支持将 Azure 共享磁盘与故障转移群集实例一起使用。 
 
 **支持的操作系统**：All   
 **支持的 SQL 版本**：All     
@@ -104,7 +104,7 @@ Azure VM 上的 SQL Server 提供各种选项用作共享存储解决方案，�
 
 ### <a name="premium-file-share"></a>高级文件共享
 
-[高级文件共享](../../../storage/files/storage-how-to-create-premium-fileshare.md)是 [Azure 文件存储](../../../storage/files/index.yml)的一项功能。 高级文件共享由 SSD 提供支持，始终具有低延迟。 它们完全支持在 Windows Server 2012 或更高版本上用于 SQL Server 2012 或更高版本的故障转移群集实例。 高级文件共享提供更高的灵活性，使你能在不停机的情况下对文件共享进行大小调整和缩放。
+[高级文件共享](../../../storage/files/storage-how-to-create-file-share.md)是 [Azure 文件存储](../../../storage/files/index.yml)的一项功能。 高级文件共享由 SSD 提供支持，始终具有低延迟。 它们完全支持在 Windows Server 2012 或更高版本上用于 SQL Server 2012 或更高版本的故障转移群集实例。 高级文件共享提供更高的灵活性，使你能在不停机的情况下对文件共享进行大小调整和缩放。
 
 **支持的操作系统**：Windows Server 2012 和更高版本   
 **支持的 SQL 版本**：SQL Server 2012 和更高版本   

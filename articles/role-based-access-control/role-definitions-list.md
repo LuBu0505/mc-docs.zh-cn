@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/29/2020
+ms.date: 03/08/2021
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 0b9d99944b4a90e8dd855518d6f593d4970aeebc
-ms.sourcegitcommit: a37f80e7abcf3e42859d6ff73abf566efed783da
+ms.openlocfilehash: b56d82a817a55508286e7198d4f134f404a825c2
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829445"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212421"
 ---
 # <a name="list-azure-role-definitions"></a>列出 Azure 角色定义
 
@@ -478,5 +478,4 @@ GET https://management.chinacloudapi.cn/providers/Microsoft.Authorization/roleDe
 - [Azure 内置角色](built-in-roles.md)
 - [Azure 自定义角色](custom-roles.md)
 - [使用 Azure 门户列出 Azure 角色分配](role-assignments-list-portal.md)
-- [使用 Azure 门户添加或删除 Azure 角色分配](role-assignments-portal.md)
-
+- [使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)

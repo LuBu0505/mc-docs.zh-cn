@@ -6,17 +6,17 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 origin.date: 10/14/2020
 author: rockboyfor
-ms.date: 11/09/2020
+ms.date: 03/15/2021
 ms.testscope: yes|no
 ms.testdate: 08/10/2020
 ms.author: v-yeche
 ms.custom: devx-track-js
-ms.openlocfilehash: b563b0dd462ee558171c790ddc0b18d7b2a68018
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: eeff04c6bff454729d57ee8f62b0cab5ce226d1f
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328180"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996578"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-sql-api"></a>查找 Azure Cosmos DB SQL API 中执行的操作的请求单位费用
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -214,4 +214,4 @@ request_charge = client.last_response_headers['x-ms-request-charge']
 * [为容器预配吞吐量](how-to-provision-container-throughput.md)
 * [使用 Azure Cosmos DB 中的指标进行监视和调试](use-metrics.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

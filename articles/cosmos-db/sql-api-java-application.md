@@ -5,19 +5,19 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
-origin.date: 05/12/2020
+origin.date: 02/10/2021
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/15/2021
 ms.testscope: yes
 ms.testdate: 09/28/2020
 ms.author: v-yeche
 ms.custom: devx-track-java
-ms.openlocfilehash: e614e4e73cc636c85e24993cfcb3c43aa320a4e1
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 4b2f187e9b13a5024c3a8bc620e5dd29779b62c2
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230963"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996680"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>教程：使用 Azure Cosmos DB 和 SQL API 构建 Java Web 应用程序
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "98230963"
 :::image type="content" source="./media/sql-api-java-application/image1.png" alt-text="我的待办事项列表 Java 应用程序":::
 
 > [!TIP]
-> 此应用程序开发教程假定你之前有使用 Java 的经验。 如果不熟悉 Java 或[必备工具](#Prerequisites)，我们建议从 GitHub 下载完整的 [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) 项目，并按照[本文末尾的说明](#GetProject)生成该项目。 构建之后，可以回顾本文以深入了解项目上下文中的代码。  
+> 此应用程序开发教程假定你之前有使用 Java 的经验。 如果不熟悉 Java 或[必备工具](#Prerequisites)，我们建议从 GitHub 下载完整的 [todo](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app) 项目，并按照[本文末尾的说明](#GetProject)生成该项目。 构建之后，可以回顾本文以深入了解项目上下文中的代码。  
 >
 
 <a name="Prerequisites"></a>
@@ -52,11 +52,11 @@ ms.locfileid: "98230963"
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Java 开发工具包 (JDK) 7+](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)。
+* [Java 开发工具包 (JDK) 7+](https://docs.azure.cn/java/java-supported-jdk-runtime)。
 * [Eclipse IDE for Java EE Developers。](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [已启用 Java 运行时环境（例如 Tomcat 或 Jetty）的 Azure 网站。](../app-service/quickstart-java.md)
 
-如果是首次安装这些工具，那么可以参考 coreservlets.com 网站的[教程：安装 TomCat7 并将其与 Eclipse 一起使用](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html)一文的“快速入门”部分提供的安装过程进行演练。
+<!--NOT AVAILABLE ON http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html-->
 
 <a name="CreateDB"></a>
 ## <a name="create-an-azure-cosmos-db-account"></a>创建 Azure Cosmos DB 帐户
@@ -117,15 +117,15 @@ ms.locfileid: "98230963"
 
     * 在“组 ID”框中，输入 `com.azure`。
     * 在“项目 ID”框中，输入 `azure-cosmos`。
-    * 在“版本”框中输入 `4.0.1-beta.1`。
+    * 在“版本”框中输入 `4.11.0`。
 
     或者，可以直接将组 ID 和项目 ID 的依赖项 XML 添加到 pom.xml 文件：
 
     ```xml
     <dependency>
-      <groupId>com.azure</groupId>
-      <artifactId>azure-cosmos</artifactId>
-      <version>4.0.1-beta.1</version>
+     <groupId>com.azure</groupId>
+     <artifactId>azure-cosmos</artifactId>
+     <version>4.11.0</version>
     </dependency>
     ```
 
@@ -141,7 +141,7 @@ ms.locfileid: "98230963"
 首先，让我们在新文件 TodoItem.java 中定义模型。 `TodoItem` 类定义项的架构以及 getter 和 setter 方法：
 
 ```java
-package com.microsoft.azure.documentdb.sample.model;
+package com.microsoft.azure.cosmos.sample.model;
 
 //@Data
 //@Builder
@@ -202,22 +202,20 @@ public class TodoItem {
 1. 若要调用 Azure Cosmos DB 服务，必须实例化一个新的 `cosmosClient` 对象。 一般情况下，最好是重用 `cosmosClient`，而不是为每个后续请求构造新的客户端。 可以通过在 `cosmosClientFactory` 类中定义客户端来重用它。 更新在[步骤 1](#CreateDB) 中保存的 HOST 和 MASTER_KEY 值。 将 HOST 替换为 URI，将 MASTER_KEY 替换为主密钥。 使用以下代码在 CosmosClientFactory.java 文件中创建 `CosmosClientFactory` 类：
 
     ```java
-    package com.microsoft.azure.documentdb.sample.dao;
+    package com.microsoft.azure.cosmos.sample.dao;
 
-    import com.azure.cosmos.ConnectionPolicy;
     import com.azure.cosmos.ConsistencyLevel;
     import com.azure.cosmos.CosmosClient;
     import com.azure.cosmos.CosmosClientBuilder;
 
     public class CosmosClientFactory {
-       private static final String HOST = "https://docdb-java-sample.documents.azure.cn:443/";
-       private static final String MASTER_KEY = "[YOUR_KEY_HERE]";
+       private static final String HOST = "[ACCOUNT HOST NAME]";
+       private static final String MASTER_KEY = "[ACCOUNT KEY]";
 
        private static CosmosClient cosmosClient = new CosmosClientBuilder()
-               .setEndpoint(HOST)
-               .setKey(MASTER_KEY)
-               .setConnectionPolicy(ConnectionPolicy.getDefaultPolicy())
-               .setConsistencyLevel(ConsistencyLevel.EVENTUAL)
+               .endpoint(HOST)
+               .key(MASTER_KEY)
+               .consistencyLevel(ConsistencyLevel.EVENTUAL)
                .buildClient();
 
        public static CosmosClient getCosmosClient() {
@@ -230,11 +228,11 @@ public class TodoItem {
 1. 创建新 TodoDao.java 文件，并添加 `TodoDao` 类以创建、更新、读取和删除 ToDo 项：
 
     ```java
-    package com.microsoft.azure.documentdb.sample.dao;
+    package com.microsoft.azure.cosmos.sample.dao;
 
     import java.util.List;
 
-    import com.microsoft.azure.documentdb.sample.model.TodoItem;
+    import com.microsoft.azure.cosmos.sample.model.TodoItem;
 
     public interface TodoDao {
        /**
@@ -272,7 +270,7 @@ public class TodoItem {
 1. 创建新 MockDao.java 文件，并添加 `MockDao` 类，此类实现 `TodoDao` 类以对项执行 CRUD 操作：
 
     ```java
-    package com.microsoft.azure.documentdb.sample.dao;
+    package com.microsoft.azure.cosmos.sample.dao;
 
     import java.util.ArrayList;
     import java.util.HashMap;
@@ -281,9 +279,7 @@ public class TodoItem {
 
     import lombok.NonNull;
 
-    import org.apache.commons.lang3.StringUtils;
-
-    import com.microsoft.azure.documentdb.sample.model.TodoItem;
+    import com.microsoft.azure.cosmos.sample.model.TodoItem;
 
     public class MockDao implements TodoDao {
        private final Map<String, TodoItem> todoItemMap;
@@ -294,7 +290,7 @@ public class TodoItem {
 
        @Override
        public TodoItem createTodoItem(@NonNull TodoItem todoItem) {
-           if (StringUtils.isEmpty(todoItem.getId())) {
+           if (todoItem.getId() == null || todoItem.getId().isEmpty()) {
                todoItem.setId(generateId());
            }
            todoItemMap.put(todoItem.getId(), todoItem);
@@ -334,30 +330,29 @@ public class TodoItem {
     我们还可以通过 `cosmosClient` 客户端对象使用 SQL 查询获取 TodoItem 的集合或列表。 最后，定义删除方法以从列表中删除 TodoItem。 以下代码演示 `DocDbDao` 类的内容：
 
     ```java
-    package com.microsoft.azure.documentdb.sample.dao;
+    package com.microsoft.azure.cosmos.sample.dao;
 
-    import java.util.ArrayList;
-    import java.util.List;
-
-    import com.google.gson.Gson;
-    import com.azure.cosmos.ConnectionPolicy;
-    import com.azure.cosmos.ConsistencyLevel;
     import com.azure.cosmos.CosmosClient;
-    import com.azure.cosmos.CosmosClientBuilder;
-    import com.azure.cosmos.CosmosClientException;
     import com.azure.cosmos.CosmosContainer;
     import com.azure.cosmos.CosmosDatabase;
+    import com.azure.cosmos.CosmosException;
     import com.azure.cosmos.implementation.Utils;
     import com.azure.cosmos.models.CosmosContainerProperties;
+    import com.azure.cosmos.models.CosmosContainerResponse;
+    import com.azure.cosmos.models.CosmosDatabaseResponse;
     import com.azure.cosmos.models.CosmosItemRequestOptions;
-    import com.azure.cosmos.models.FeedOptions;
+    import com.azure.cosmos.models.CosmosQueryRequestOptions;
     import com.azure.cosmos.models.FeedResponse;
     import com.azure.cosmos.models.PartitionKey;
     import com.fasterxml.jackson.core.JsonProcessingException;
     import com.fasterxml.jackson.databind.JsonNode;
     import com.fasterxml.jackson.databind.ObjectMapper;
     import com.fasterxml.jackson.databind.node.ObjectNode;
-    import com.microsoft.azure.documentdb.sample.model.TodoItem;
+    import com.google.gson.Gson;
+    import com.microsoft.azure.cosmos.sample.model.TodoItem;
+
+    import java.util.ArrayList;
+    import java.util.List;
 
     public class DocDbDao implements TodoDao {
        // The name of our database.
@@ -371,7 +366,7 @@ public class TodoItem {
 
        // The Cosmos DB Client
        private static CosmosClient cosmosClient = CosmosClientFactory
-               .getCosmosClient();
+           .getCosmosClient();
 
        // The Cosmos DB database
        private static CosmosDatabase cosmosDatabase = null;
@@ -388,15 +383,15 @@ public class TodoItem {
 
            JsonNode todoItemJson = OBJECT_MAPPER.valueToTree(todoItem);
 
-           ((ObjectNode)todoItemJson).put("entityType", "todoItem");    
+           ((ObjectNode) todoItemJson).put("entityType", "todoItem");
 
            try {
                // Persist the document using the DocumentClient.
-               todoItemJson = 
-                       getContainerCreateResourcesIfNotExist()
+               todoItemJson =
+                   getContainerCreateResourcesIfNotExist()
                        .createItem(todoItemJson)
-                       .getResource();
-           } catch (CosmosClientException e) {
+                       .getItem();
+           } catch (CosmosException e) {
                System.out.println("Error creating TODO item.\n");
                e.printStackTrace();
                return null;
@@ -423,12 +418,12 @@ public class TodoItem {
            if (todoItemJson != null) {
                // De-serialize the document in to a TodoItem.
                try {
-               return OBJECT_MAPPER.treeToValue(todoItemJson, TodoItem.class);
+                   return OBJECT_MAPPER.treeToValue(todoItemJson, TodoItem.class);
                } catch (JsonProcessingException e) {
                    System.out.println("Error deserializing read TODO item.\n");
                    e.printStackTrace();
 
-                   return null;             
+                   return null;
                }
            } else {
                return null;
@@ -438,31 +433,30 @@ public class TodoItem {
        @Override
        public List<TodoItem> readTodoItems() {
 
-           List<TodoItem> todoItems = new ArrayList<TodoItem>();        
+           List<TodoItem> todoItems = new ArrayList<TodoItem>();
 
-           String sql = "SELECT * FROM root r WHERE r.entityType = 'todoItem'";                    
+           String sql = "SELECT * FROM root r WHERE r.entityType = 'todoItem'";
            int maxItemCount = 1000;
            int maxDegreeOfParallelism = 1000;
            int maxBufferedItemCount = 100;
 
-           FeedOptions options = new FeedOptions();
-           options.setMaxItemCount(maxItemCount);
+           CosmosQueryRequestOptions options = new CosmosQueryRequestOptions();
            options.setMaxBufferedItemCount(maxBufferedItemCount);
            options.setMaxDegreeOfParallelism(maxDegreeOfParallelism);
-           options.setRequestContinuation(null);
-           options.setPopulateQueryMetrics(false);
+           options.setQueryMetricsEnabled(false);
 
            int error_count = 0;
            int error_limit = 10;
 
+           String continuationToken = null;
            do {
 
-               for (FeedResponse<JsonNode> pageResponse: 
+               for (FeedResponse<JsonNode> pageResponse :
                    getContainerCreateResourcesIfNotExist()
                        .queryItems(sql, options, JsonNode.class)
-                       .iterableByPage()) {
+                       .iterableByPage(continuationToken, maxItemCount)) {
 
-                   options.setRequestContinuation(pageResponse.getContinuationToken());
+                   continuationToken = pageResponse.getContinuationToken();
 
                    for (JsonNode item : pageResponse.getElements()) {
 
@@ -474,8 +468,8 @@ public class TodoItem {
                                if (error_count >= error_limit) {
                                    System.out.println("\n...reached max error count.\n");
                                } else {
-                                   System.out.println("Error deserializing TODO item JsonNode. " + 
-                                           "This item will not be returned.");
+                                   System.out.println("Error deserializing TODO item JsonNode. " +
+                                       "This item will not be returned.");
                                    e.printStackTrace();
                                }
                            }
@@ -484,7 +478,7 @@ public class TodoItem {
                    }
                }
 
-           } while(options.getRequestContinuation() != null);        
+           } while (continuationToken != null);
 
            return todoItems;
        }
@@ -498,15 +492,15 @@ public class TodoItem {
            // For more complex operations - you could de-serialize the document in
            // to a POJO, update the POJO, and then re-serialize the POJO back in to
            // a document.
-           ((ObjectNode)todoItemJson).put("complete", isComplete);
+           ((ObjectNode) todoItemJson).put("complete", isComplete);
 
            try {
                // Persist/replace the updated document.
-               todoItemJson = 
-                       getContainerCreateResourcesIfNotExist()
+               todoItemJson =
+                   getContainerCreateResourcesIfNotExist()
                        .replaceItem(todoItemJson, id, new PartitionKey(id), new CosmosItemRequestOptions())
-                       .getResource();
-           } catch (CosmosClientException e) {
+                       .getItem();
+           } catch (CosmosException e) {
                System.out.println("Error updating TODO item.\n");
                e.printStackTrace();
                return null;
@@ -519,8 +513,8 @@ public class TodoItem {
                System.out.println("Error deserializing updated item.\n");
                e.printStackTrace();
 
-               return null;             
-           }        
+               return null;
+           }
        }
 
        @Override
@@ -534,7 +528,7 @@ public class TodoItem {
                // Delete the document by self link.
                getContainerCreateResourcesIfNotExist()
                    .deleteItem(id, new PartitionKey(id), new CosmosItemRequestOptions());
-           } catch (CosmosClientException e) {
+           } catch (CosmosException e) {
                System.out.println("Error deleting TODO item.\n");
                e.printStackTrace();
                return false;
@@ -565,7 +559,7 @@ public class TodoItem {
 
                        databaseCache = cosmosClient.createDatabase(
                                databaseDefinition, null).getResource();
-                   } catch (CosmosClientException e) {
+                   } catch (CosmosException e) {
                        // TODO: Something has gone terribly wrong - the app wasn't
                        // able to query or create the collection.
                        // Verify your connection, endpoint, and key.
@@ -584,68 +578,68 @@ public class TodoItem {
            try {
 
                if (cosmosDatabase == null) {
-                   cosmosDatabase = cosmosClient.createDatabaseIfNotExists(DATABASE_ID).getDatabase();
+                   CosmosDatabaseResponse cosmosDatabaseResponse = cosmosClient.createDatabaseIfNotExists(DATABASE_ID);
+                   cosmosDatabase = cosmosClient.getDatabase(cosmosDatabaseResponse.getProperties().getId());
                }
 
-           } catch(CosmosClientException e) {
+           } catch (CosmosException e) {
                // TODO: Something has gone terribly wrong - the app wasn't
                // able to query or create the collection.
                // Verify your connection, endpoint, and key.
                System.out.println("Something has gone terribly wrong - " +
-                                  "the app wasn't able to create the Database.\n");
+                   "the app wasn't able to create the Database.\n");
                e.printStackTrace();
-           }        
+           }
 
            try {
 
                if (cosmosContainer == null) {
-                   CosmosContainerProperties properties = new CosmosContainerProperties(CONTAINER_ID,"/id");
-                   cosmosContainer = cosmosDatabase.createContainerIfNotExists(properties).getContainer();
+                   CosmosContainerProperties properties = new CosmosContainerProperties(CONTAINER_ID, "/id");
+                   CosmosContainerResponse cosmosContainerResponse = cosmosDatabase.createContainerIfNotExists(properties);
+                   cosmosContainer = cosmosDatabase.getContainer(cosmosContainerResponse.getProperties().getId());
                }
 
-           } catch(CosmosClientException e) {
+           } catch (CosmosException e) {
                // TODO: Something has gone terribly wrong - the app wasn't
                // able to query or create the collection.
                // Verify your connection, endpoint, and key.
                System.out.println("Something has gone terribly wrong - " +
-                       "the app wasn't able to create the Container.\n");
+                   "the app wasn't able to create the Container.\n");
                e.printStackTrace();
-           }    
+           }
 
            return cosmosContainer;
        }
 
        private JsonNode getDocumentById(String id) {
 
-           String sql = "SELECT * FROM root r WHERE r.id='" + id + "'";                    
+           String sql = "SELECT * FROM root r WHERE r.id='" + id + "'";
            int maxItemCount = 1000;
            int maxDegreeOfParallelism = 1000;
            int maxBufferedItemCount = 100;
 
-           FeedOptions options = new FeedOptions();
-           options.setMaxItemCount(maxItemCount);
+           CosmosQueryRequestOptions options = new CosmosQueryRequestOptions();
            options.setMaxBufferedItemCount(maxBufferedItemCount);
            options.setMaxDegreeOfParallelism(maxDegreeOfParallelism);
-           options.setRequestContinuation(null);
-           options.setPopulateQueryMetrics(false);
+           options.setQueryMetricsEnabled(false);
 
            List<JsonNode> itemList = new ArrayList();
 
+           String continuationToken = null;
            do {
-
-               for (FeedResponse<JsonNode> pageResponse: 
+               for (FeedResponse<JsonNode> pageResponse :
                    getContainerCreateResourcesIfNotExist()
                        .queryItems(sql, options, JsonNode.class)
-                       .iterableByPage()) {
+                       .iterableByPage(continuationToken, maxItemCount)) {
 
-                   options.setRequestContinuation(pageResponse.getContinuationToken());
+                   continuationToken = pageResponse.getContinuationToken();
 
                    for (JsonNode item : pageResponse.getElements()) {
                        itemList.add(item);
                    }
                }
 
-           } while(options.getRequestContinuation() != null);
+           } while (continuationToken != null);
 
            if (itemList.size() > 0) {
                return itemList.get(0);
@@ -654,38 +648,38 @@ public class TodoItem {
            }
        }
 
-    }
-    ```
+   }
+   ```
 
 1. 接下来，创建新 TodoDaoFactory.java 文件，并添加创建新 DocDbDao 对象的 `TodoDaoFactory` 类：
 
-    ```java
-    package com.microsoft.azure.documentdb.sample.dao;
+   ```java
+   package com.microsoft.azure.cosmos.sample.dao;
 
-    public class TodoDaoFactory {
+   public class TodoDaoFactory {
        private static TodoDao myTodoDao = new DocDbDao();
 
        public static TodoDao getDao() {
            return myTodoDao;
        }
-    }
-    ```
+   }
+   ```
 
 ### <a name="add-a-controller"></a>添加控制器
 
 将 TodoItemController 控制器添加到应用程序。 在此项目中，将使用[项目 Lombok](https://projectlombok.org/) 生成构造函数、getter、setter 和一个生成器。 或者，可以手动编写此代码，或使用 IDE 生成此代码：
 
 ```java
-package com.microsoft.azure.documentdb.sample.controller;
+package com.microsoft.azure.cosmos.sample.controller;
 
 import java.util.List;
 import java.util.UUID;
 
 import lombok.NonNull;
 
-import com.microsoft.azure.documentdb.sample.dao.TodoDao;
-import com.microsoft.azure.documentdb.sample.dao.TodoDaoFactory;
-import com.microsoft.azure.documentdb.sample.model.TodoItem;
+import com.microsoft.azure.cosmos.sample.dao.TodoDao;
+import com.microsoft.azure.cosmos.sample.dao.TodoDaoFactory;
+import com.microsoft.azure.cosmos.sample.model.TodoItem;
 
 public class TodoItemController {
     public static TodoItemController getInstance() {
@@ -738,7 +732,7 @@ public class TodoItemController {
 接下来，创建 servlet 以将 HTTP 请求路由到控制器。 创建 ApiServlet.java 文件，并在其下定义以下代码：
 
 ```java
-package com.microsoft.azure.documentdb.sample;
+package com.microsoft.azure.cosmos.sample;
 
 import java.io.IOException;
 
@@ -748,10 +742,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.google.gson.Gson;
-import com.microsoft.azure.documentdb.sample.controller.TodoItemController;
+import com.microsoft.azure.cosmos.sample.controller.TodoItemController;
 
 /**
  * API Frontend Servlet
@@ -789,8 +781,8 @@ public class ApiServlet extends HttpServlet {
         String id = request.getParameter(TODO_ITEM_ID);
         String name = request.getParameter(TODO_ITEM_NAME);
         String category = request.getParameter(TODO_ITEM_CATEGORY);
-        boolean isComplete = StringUtils.equalsIgnoreCase("true",
-                request.getParameter(TODO_ITEM_COMPLETE)) ? true : false;
+        String itemComplete = request.getParameter(TODO_ITEM_COMPLETE);
+        boolean isComplete = itemComplete!= null && itemComplete.equalsIgnoreCase("true");
 
         switch (request.getParameter(API_METHOD)) {
         case CREATE_TODO_ITEM:
@@ -827,14 +819,14 @@ public class ApiServlet extends HttpServlet {
 
 1. 需要一个 Web 用户界面来向用户显示。 让我们使用以下代码重新编写之前创建的 index.jsp：
 
-    ```java
-    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-    <html>
-    <head>
+   ```java
+   <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+   <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+   <html>
+   <head>
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge;" />
-     <title>Azure DocumentDB Java Sample</title>
+     <title>Azure Cosmos Java Sample</title>
 
      <!-- Bootstrap -->
 
@@ -846,8 +838,8 @@ public class ApiServlet extends HttpServlet {
          padding-top: 50px;
        }
      </style>
-    </head>
-    <body>
+   </head>
+   <body>
      <!-- Nav Bar -->
 
      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -921,18 +913,18 @@ public class ApiServlet extends HttpServlet {
      <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
      <script src="//ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/bootstrap.min.js"></script>
      <script src="assets/todo.js"></script>
-    </body>
-    </html>
-    ```
+   </body>
+   </html>
+   ```
 
 1. 最后，编写一些客户端 JavaScript 将 Web 用户界面和 servlet 绑定在一起：
 
-    ```java
-    /**
+   ```java
+   /**
     * ToDo App
     */
 
-    var todoApp = {
+   var todoApp = {
      /*
       * API methods to call Java backend.
       */
@@ -1097,12 +1089,12 @@ public class ApiServlet extends HttpServlet {
 
        todoApp.getTodoItems();
      }
-    };
+   };
 
-    $(document).ready(function() {
+   $(document).ready(function() {
      todoApp.install();
-    });
-    ```
+   });
+   ```
 
 1. 现在剩下的就是测试此应用程序。 在本地运行此应用程序，并添加一些 Todo 项，方法是填充项名称和类别，并单击“添加任务” 。 显示项之后，可以通过切换复选框，然后单击“更新任务”来更新项是否已完成。
 
@@ -1115,18 +1107,18 @@ public class ApiServlet extends HttpServlet {
 
 1. 在“WAR 导出”  窗口中，执行以下操作：
 
-    * 在“Web 项目”框中，输入 azure-documentdb-java-sample。
+    * 在“Web 项目”框中，输入 azure-cosmos-java-sample。
     * 在“目标”框中，选择一个目标以保存 WAR 文件。
     * 单击“完成”。
 
 1. 现在已经具有 WAR 文件，只需将它上传到 Azure 网站的 **webapps** 目录。 有关上传此文件的说明，请参阅[将 Java 应用程序添加到 Azure 应用服务 Web 应用](../app-service/quickstart-java.md)。 将 WAR 文件上传到 webapps 目录之后，运行时环境将检测到已经添加了此文件，并会自动加载它。
 
-1. 若要查看已完成的产品，请导航到 `http://YOUR\_SITE\_NAME.chinacloudsites.cn/azure-java-sample/` 并开始添加任务！
+1. 若要查看已完成的产品，请导航到 `http://YOUR\_SITE\_NAME.chinacloudsites.cn/azure-cosmos-java-sample/` 并开始添加任务！
 
 <a name="GetProject"></a>
 ## <a name="get-the-project-from-github"></a>从 GitHub 获取项目
 
-GitHub 上的 [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) 项目包含本教程中的所有示例。 要将 todo 项目导入 Eclipse，请确保具有 [先决条件](#Prerequisites) 部分中所列的软件和资源，并执行以下操作：
+GitHub 上的 [todo](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app) 项目包含本教程中的所有示例。 要将 todo 项目导入 Eclipse，请确保具有 [先决条件](#Prerequisites) 部分中所列的软件和资源，并执行以下操作：
 
 1. 安装 [项目 Lombok](https://projectlombok.org/)。 Lombok 用于生成项目中的构造函数、getter 和 setter。 下载 lombok.jar 文件之后，双击此文件进行安装，或者从命令行安装。
 
@@ -1138,7 +1130,7 @@ GitHub 上的 [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) 
 
 1. 在“选择存储库源”屏幕上，单击“克隆 URI”。 
 
-1. 在“源 Git 存储库”屏幕上的“URI”框中，输入 https://github.com/Azure-Samples/documentdb-java-todo-app.git ，然后单击“下一步”  。
+1. 在“源 Git 存储库”屏幕上的“URI”框中，输入 https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app ，然后单击“下一步”  。
 
 1. 在“分支选择”屏幕上，确保已选择“main”，然后单击“下一步”  。
 
@@ -1148,9 +1140,9 @@ GitHub 上的 [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) 
 
 1. 在“导入项目”屏幕上，取消选择“DocumentDB”项目，并单击“完成”。   DocumentDB 项目包含 Azure Cosmos DB Java SDK，我们会将其添加为依赖项。
 
-1. 在“项目资源管理器”中，导航到 azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java，并将 HOST 和 MASTER_KEY 值替换为 Azure Cosmos DB 帐户的 URI 和主密钥，然后保存该文件。 有关更多信息，请参阅[步骤 1.创建 Azure Cosmos 数据库帐户](#CreateDB)。
+1. 在“项目资源管理器”中，导航到 azure-cosmos-java-sample\src\com.microsoft.azure.cosmos.sample.dao\DocumentClientFactory.java，并将 HOST 和 MASTER_KEY 值替换为 Azure Cosmos DB 帐户的 URI 和主密钥，然后保存该文件。 有关更多信息，请参阅[步骤 1.创建 Azure Cosmos 数据库帐户](#CreateDB)。
 
-1. 在“项目资源管理器”中，右键单击“azure-documentdb-java-sample”，单击“生成路径”，并单击“配置生成路径”。   
+1. 在“项目资源管理器”中，右键单击“azure-cosmos-java-sample”，单击“生成路径”，并单击“配置生成路径”   。
 
 1. 在“Java 生成路径”屏幕上，在右侧窗格中，选择“库”选项卡，并单击“添加外部 JAR”。   导航至 lombok.jar 文件的位置，单击“打开”，并单击“确定”。 
 
@@ -1164,11 +1156,11 @@ GitHub 上的 [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) 
 
 1. 在此屏幕下面的“服务器”选项卡上，右键单击“localhost 上的 Tomcat v7.0 服务器”，并单击“添加和删除”。  
 
-1. 在“添加和删除”窗口中，将 **azure-documentdb-java-sample** 移到“配置”框，然后单击“完成”。  
+1. 在“添加和删除”窗口中，将 azure-cosmos-java-sample 移到“配置”框，然后单击“完成”   。
 
 1. 在“服务器”选项卡上，右键单击“localhost 上的 Tomcat v7.0 服务器”，并单击“重新启动”。  
 
-1. 在浏览器中，导航到 `http://localhost:8080/azure-documentdb-java-sample/` 并开始向任务列表添加内容。 请注意，如果更改了默认端口值，请将 8080 更改成选择的值。
+1. 在浏览器中，导航到 `http://localhost:8080/azure-cosmos-java-sample/` 并开始向任务列表添加内容。 请注意，如果更改了默认端口值，请将 8080 更改成选择的值。
 
 1. 要将项目部署到 Azure 网站，请参阅[步骤 6. 将应用程序部署到 Azure 网站](#Deploy)。
 
@@ -1177,4 +1169,4 @@ GitHub 上的 [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) 
 > [!div class="nextstepaction"]
 > [使用 Azure Cosmos DB 生成 node.js 应用程序](sql-api-nodejs-application.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

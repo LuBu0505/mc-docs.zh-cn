@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.author: v-junlch
-ms.date: 12/02/2020
+ms.date: 03/12/2021
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 3bf7edecb110a7e6ba7c73efcc46bde0e812a621
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: 60fe02851824fe6f16c9b8d4d6dc6a649141daad
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507253"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212493"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>教程：从桌面应用使用 Azure Active Directory B2C 授予对 Node.js Web API 的访问权限
 
@@ -39,7 +39,7 @@ ms.locfileid: "96507253"
 
 ## <a name="configure-scopes"></a>配置范围
 
-可通过范围控制对受保护资源的访问。 Web API 使用作用域实施基于作用域的访问控制。 例如，可以让某些用户拥有读取和写入访问权限，让另一些用户拥有只读权限。 在本教程中，请为 Web API 定义读取和写入权限。
+可通过作用域控制对受保护资源的访问。 Web API 使用作用域实施基于作用域的访问控制。 例如，可以让某些用户拥有读取和写入访问权限，让另一些用户拥有只读权限。 在本教程中，请为 Web API 定义读取和写入权限。
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
@@ -155,7 +155,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你了解了如何执行以下操作：
+在本教程中，你已学习了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 添加 Web API 应用程序
@@ -163,5 +163,5 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 > * 授予 Web API 权限
 > * 将示例更新为使用该应用程序
 
-
-
+> [!div class="nextstepaction"]
+> [将标识提供者添加到 Azure Active Directory B2C 中的应用程序](add-identity-provider.md)

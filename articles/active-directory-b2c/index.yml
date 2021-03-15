@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: msmimart
   ms.author: v-junlch
-  ms.date: 02/01/2021
-  ms.openlocfilehash: 7f4a74b770ef22aa8e72f42f086ca7c30d2863f5
-  ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+  ms.date: 03/12/2021
+  ms.openlocfilehash: 9255edf5b1e83c42c052a560f0adfab5fc3910e4
+  ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/04/2021
-  ms.locfileid: "99540631"
+  ms.lasthandoff: 03/12/2021
+  ms.locfileid: "103212313"
 landingContent:
 - title: Azure AD B2C
   linkLists:
@@ -53,6 +53,8 @@ landingContent:
     links:
     - text: 启用自助登录
       url: user-flow-overview.md
+    - text: 添加社会和工作标识：OIDC/OAuth2/SAML
+      url: add-identity-provider.md
     - text: 启用单一登录 (SSO)
       url: session-behavior.md
     - text: 自定义 UI/UX

@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 01/11/2021
+ms.date: 03/08/2021
 ms.author: v-junlch
-ms.openlocfilehash: 7ac216d7a726aedab46e02484ea41b48c174e620
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 9f3fb1404cf47cbfd35b8b88d4f5018ba4cf9696
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195035"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212446"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>使用 Azure 门户列出 Azure 角色分配
 
@@ -182,6 +182,5 @@ ms.locfileid: "98195035"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure 门户添加或删除 Azure 角色分配](role-assignments-portal.md)
+- [使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)
 - [排查 Azure RBAC 问题](troubleshooting.md)
-

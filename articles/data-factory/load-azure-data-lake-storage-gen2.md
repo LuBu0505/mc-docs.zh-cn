@@ -1,28 +1,23 @@
 ---
 title: 将数据加载到 Azure Data Lake Storage Gen2 中
 description: 使用 Azure 数据工厂将数据复制到 Azure Data Lake Storage Gen2 中
-services: data-factory
-documentationcenter: ''
-ms.author: jingwang
+ms.author: v-jay
 author: WenJason
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-origin.date: 11/09/2019
-ms.date: 11/23/2020
-ms.openlocfilehash: 7bead027137436253938b36938a8a7897c3f165a
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+origin.date: 02/18/2021
+ms.date: 03/15/2021
+ms.openlocfilehash: eda10b16e128425bdaa071b726da7fbec4b46e13
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432515"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102590019"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>使用 Azure 数据工厂将数据加载到 Azure Data Lake Storage Gen2 中
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Lake Storage Gen2 是一组专用于大数据分析的功能，内置于 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)中。 它可使用文件系统和对象存储范例与数据进行交互。
 

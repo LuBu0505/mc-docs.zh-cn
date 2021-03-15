@@ -12,14 +12,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 06/26/2020
-ms.date: 02/22/2021
+ms.date: 03/15/2021
 ms.author: v-jay
-ms.openlocfilehash: 0b11febe11da48b0f10076bb27cd1fda7cb004d4
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 55e29259e16725d0a0cf699def2d4a7b0dd06aea
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697839"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589843"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>使用 Azure 共享磁盘创建 FCI（Azure VM 上的 SQL Server）
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -199,7 +199,9 @@ Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName
 
 ## <a name="configure-connectivity"></a>配置连接 
 
-若要将流量正确路由到当前主节点，请配置适用于你的环境的连接选项。 你可以创建 [Azure 负载均衡器](failover-cluster-instance-vnn-azure-load-balancer-configure.md)，也可以在使用 SQL Server 2019 CU2（或更高版本）和 Windows Server 2016（或更高版本）的情况下改用[分布式网络名称](failover-cluster-instance-distributed-network-name-dnn-configure.md)功能。 
+若要将流量正确路由到当前主节点，请配置适用于你的环境的连接选项。 你可以创建 [Azure 负载均衡器](failover-cluster-instance-vnn-azure-load-balancer-configure.md)，也可以在使用 SQL Server 2019 CU2（或更高版本）和 Windows Server 2016（或更高版本）的情况下改用[分布式网络名称](failover-cluster-instance-distributed-network-name-dnn-configure.md)功能。  
+
+有关群集连接选项的更多详细信息，请参阅[将 HADR 连接路由到 Azure VM 上的 SQL Server](hadr-cluster-best-practices.md#connectivity)。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,27 +1,23 @@
 ---
 title: 使用 PowerShell 以增量方式复制表
 description: 在本教程中，我们将创建一个 Azure 数据工厂管道，它能够以增量方式将 Azure SQL 数据库中的数据复制到 Azure Blob 存储。
-services: data-factory
 author: WenJason
 ms.author: v-jay
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-origin.date: 01/22/2018
-ms.date: 02/01/2021
-ms.openlocfilehash: 0304e7b61fa10bcbd21c0d7a250aeab0e30bef79
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+origin.date: 02/18/2021
+ms.date: 03/15/2021
+ms.openlocfilehash: 0e1fbbebd84fee1ffeb487e4c3cc0fee8db24fba
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059231"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589966"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-powershell"></a>使用 PowerShell 以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本教程将使用 Azure 数据工厂创建一个管道，用于将 Azure SQL 数据库的表中的增量数据加载到 Azure Blob 存储。
 

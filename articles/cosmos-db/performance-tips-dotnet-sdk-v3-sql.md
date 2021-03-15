@@ -6,17 +6,17 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 origin.date: 10/13/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/15/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.custom: devx-track-dotnet
-ms.openlocfilehash: 900b95b2195d409fa26c82e69417611eb26adda4
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.custom: devx-track-dotnet, contperf-fy21q2
+ms.openlocfilehash: 80ae7a76772d912fc595c4ffbe2be4d2f4267372
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230817"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996746"
 ---
 <!--Verified successfully-->
 <!-- ONLY CHARACTOR CONTENT-->
@@ -62,8 +62,6 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
 在某些情况下，降低垃圾回收的频率可能会有帮助。 在 .NET 中，将 [gcServer](https://docs.microsoft.com/dotnet/core/run-time-config/garbage-collector#flavors-of-garbage-collection) 设置为 `true`。
 
-<!--CORRECT ON https://docs.microsoft.com/dotnet/core/run-time-config/garbage-collector#flavors-of-garbage-collection-->
-
 **横向扩展客户端工作负载**
 
 如果你在高吞吐量级别或速率大于 50,000 请求单位/秒（RU/秒）的情况下进行测试，则客户端应用程序可能会成为工作负荷瓶颈。 这是因为计算机可能会达到 CPU 或网络利用率的上限。 如果达到此上限，可以跨多个服务器横向扩展客户端应用程序以继续进一步推送 Azure Cosmos DB 帐户。
@@ -104,7 +102,7 @@ new CosmosClientOptions
 
 如果可能，请将任何调用 Azure Cosmos DB 的应用程序放在 Azure Cosmos DB 数据库所在的区域。 通过大致的比较发现：在同一区域中对 Azure Cosmos DB 的调用可在 1-2 毫秒内完成，而美国西海岸和美国东海岸之间的延迟则大于 50 毫秒。 根据请求采用的路由，各项请求从客户端传递到 Azure 数据中心边界时的此类延迟可能有所不同。 
 
-确保调用应用程序位于预配的 Azure Cosmos DB 终结点所在的 Azure 区域即可尽可能降低延迟。 有关可用区域的列表，请参阅 [Azure 区域](https://azure.microsoft.com/regions/#services)。
+确保调用应用程序位于预配的 Azure Cosmos DB 终结点所在的 Azure 区域即可尽可能降低延迟。 有关可用区域的列表，请参阅 [Azure 区域](https://status.azure.com/status/)。
 
 :::image type="content" source="./media/performance-tips/same-region.png" alt-text="将客户端并置在同一区域中。" border="false":::
 
@@ -179,7 +177,7 @@ SQL .NET SDK 支持并行查询，使你能够并行查询分区的容器。 有
 
 在性能测试期间，应该增加负载，直到系统对小部分请求进行限制为止。 如果请求受到限制，客户端应用程序应按照服务器指定的重试间隔在限制时退让。 允许退让有助于确保最大程度地减少等待重试的时间。 
 
-有关详细信息，请参阅 [RetryAfter](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Cosmos_CosmosException_RetryAfter)。
+有关详细信息，请参阅 [RetryAfter](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter#Microsoft_Azure_Cosmos_CosmosException_RetryAfter)。
 
 有一个机制可以记录附加诊断信息和排查延迟问题，如以下示例所示。 可以记录具有较高读取延迟的请求的诊断字符串。 捕获的诊断字符串可帮助你了解收到给定请求的 429 错误的次数。
 
@@ -269,4 +267,4 @@ SDK 全部都会隐式捕获此响应，并遵循服务器指定的 retry-after 
 
 若要深入了解如何设计应用程序以实现缩放和高性能，请参阅 [Azure Cosmos DB 中的分区和缩放](partitioning-overview.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

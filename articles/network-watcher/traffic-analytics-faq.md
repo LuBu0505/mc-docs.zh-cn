@@ -10,16 +10,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 01/04/2021
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/15/2021
 ms.testscope: yes
 ms.testdate: 08/03/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3784b3acc7eaeaf48fcef96de94e4cae4b7b02e0
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: fd2812353aefe25003e058dac8378c344d35dd38
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230807"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212237"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -66,6 +66,7 @@ ms.locfileid: "98230807"
 
 可以在以下任何受支持的区域中对 NSG 使用流量分析：
 - 中国东部 2
+- 中国北部 2
 
 Log Analytics 工作区必须存在于以下区域中：
 - 中国东部 2
@@ -80,9 +81,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-i-use-an-existing-workspace"></a>是否可以使用现有的的工作区？
 
-是的。 如果选择现有的工作区，请确保已将此工作区迁移到新的查询语言。 如果不想要升级该工作区，则需要创建新的工作区。 有关新查询语言的详细信息，请参阅[将 Azure Monitor 日志升级到新的日志搜索](../azure-monitor/log-query/log-query-overview.md)。
-
-<!--Correct on the link to azure-monitor/log-query/log-query-overview-->
+是的。 如果选择现有的工作区，请确保已将此工作区迁移到新的查询语言。 如果不想要升级该工作区，则需要创建新的工作区。 有关新查询语言的详细信息，请参阅[将 Azure Monitor 日志升级到新的日志搜索](../azure-monitor/logs/log-query-overview.md)。
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>是否可将 Azure 存储帐户放在一个订阅中，并将 Log Analytics 工作区放在另一个订阅中？
 
@@ -225,7 +224,7 @@ armclient post "https://management.chinacloudapi.cn/subscriptions/<NSG subscript
 - 可以在流量分析中使 Log Analytics 的短链接。 
 - 使用[此处记录的架构](traffic-analytics-schema.md)编写查询 
 - 单击“新建警报规则”以创建警报
-- 请参阅[日志警报文档](../azure-monitor/platform/alerts-log.md)以创建警报
+- 请参阅[日志警报文档](../azure-monitor/alerts/alerts-log.md)以创建警报
 
 ## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>如何检查哪些 VM 接收的本地流量最多？
 
@@ -365,6 +364,6 @@ destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_
 - 选择任何此类节点时，可通过按 `Shift+Left arrow` 键逐个访问其所有连接。 焦点将移至该连接的“信息工具框”。 在任何时候，都可通过再次按 `Shift+Right arrow`，将焦点移回该节点。
 
 ## <a name="are-classic-nsgs-supported"></a>是否支持经典 NSG？
-否，流量分析不支持经典 NSG。 建议将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器，因为经典资源将[弃用](https://docs.azure.cn/virtual-machines/classic-vm-deprecation)。 请参阅本文了解[如何迁移](https://docs.azure.cn/virtual-machines/migration-classic-resource-manager-overview)。
+否，流量分析不支持经典 NSG。 建议将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器，因为经典资源将[弃用](../virtual-machines/classic-vm-deprecation.md)。 请参阅本文了解[如何迁移](../virtual-machines/migration-classic-resource-manager-overview.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -1,23 +1,18 @@
 ---
 title: 在 Azure 数据工厂中结合使用 Azure SQL 托管实例和 Azure-SQL Server Integration Services (SSIS)
 description: 了解如何在 Azure 数据工厂中结合使用 Azure SQL 托管实例和 SQL Server Integration Services (SSIS)。
-services: data-factory
-documentationcenter: ''
 author: WenJason
 ms.author: v-jay
-ms.reviewer: ''
-manager: digimobile
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 origin.date: 4/15/2020
-ms.date: 11/23/2020
-ms.openlocfilehash: 7b7f99791c98cacce9e5453c1f0e743d382ab33f
-ms.sourcegitcommit: c89f1adcf403f5845e785064350136698eed15b8
+ms.date: 03/15/2021
+ms.openlocfilehash: 402311b7036e13c659f163d5802acc677e509492
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94680427"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102590007"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>在 Azure 数据工厂中结合使用 Azure SQL 托管实例和 SQL Server Integration Services (SSIS)
 
@@ -28,7 +23,7 @@ ms.locfileid: "94680427"
 - [为 Azure-SSIS IR 预配由 Azure SQL 托管实例托管的 SSIS 目录 (SSISDB)](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance)
 - [通过 Azure SQL 托管实例代理作业执行 SSIS 包](how-to-invoke-ssis-package-managed-instance-agent.md)
 - [通过 Azure SQL 托管实例代理作业清理 SSISDB 日志](#clean-up-ssisdb-logs)
-- [使用 Azure SQL 托管实例进行 Azure-SSIS IR 故障转移](configure-bcdr-azure-ssis-integration-runtime.md#azure-ssis-ir-failover-with-a-sql-managed-instance)
+- [使用 Azure SQL 托管实例进行 Azure-SSIS IR 故障转移](configure-bcdr-azure-ssis-integration-runtime.md)
 - [使用 Azure SQL 托管实例作为数据库工作负荷目标，将本地 SSIS 工作负荷迁移到 ADF 中的 SSIS](scenario-ssis-migration-overview.md#azure-sql-managed-instance-as-database-workload-destination)
 
 ## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance"></a>为 Azure-SSIS IR 预配由 Azure SQL 托管实例托管的 SSISDB
@@ -164,7 +159,7 @@ ms.locfileid: "94680427"
 
 ## <a name="clean-up-ssisdb-logs"></a>清理 SSISDB 日志
 
-SSISDB 日志保留策略由 [catalog.catalog_properties](https://docs.microsoft.com/sql/integration-services/system-views/catalog-catalog-properties-ssisdb-database?view=sql-server-ver15) 中的以下属性定义：
+SSISDB 日志保留策略由 [catalog.catalog_properties](https://docs.microsoft.com/sql/integration-services/system-views/catalog-catalog-properties-ssisdb-database) 中的以下属性定义：
 
 - OPERATION_CLEANUP_ENABLED
 

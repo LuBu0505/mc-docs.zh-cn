@@ -9,22 +9,22 @@ ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
 origin.date: 11/07/2019
-ms.date: 12/30/2020
+ms.date: 03/08/2021
 ms.author: v-johya
 keywords: 文本挖掘, 情绪分析, 文本分析
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 5a5621a01b16e7055d15c9b0f28de42924402461
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: d6376c355658db98625e30a7d13560ec3f318990
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022190"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212657"
 ---
 # <a name="what-is-the-text-analytics-api"></a>什么是文本分析 API？
 
 文本分析 API 是一种基于云的服务，它提供用于文本挖掘和文本分析的自然语言处理 (NLP) 功能，包括：情绪分析、观点挖掘、关键短语提取、语言检测和命名实体识别。
 
-该 API 是 [Azure 认知服务](../index.yml)的一部分，是云中机器学习和 AI 算法的集合，适用于开发项目。 可以将这些功能与 [REST API](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-V2-1/) 或[客户端库](quickstarts/client-libraries-rest-api.md)一起使用。
+该 API 是 [Azure 认知服务](../index.yml)的一部分，是云中机器学习和 AI 算法的集合，适用于开发项目。 可以将这些功能与 REST API [版本 3.0](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-V3-0/) 或[版本 3.1-preview](https://dev.cognitive.azure.cn/docs/services/TextAnalytics-v3-1-preview-3/) 或[客户端库](quickstarts/client-libraries-rest-api.md)配合使用。
 
 ## <a name="sentiment-analysis"></a>情绪分析
 
@@ -78,9 +78,10 @@ ms.locfileid: "98022190"
 
 * 最低的编程要求：
     * [使用文本分析和 Power Automate 在 Excel 中提取信息](tutorials/extract-excel-information.md)
-    * [使用文本分析 API 和 MS Flow 识别 Yammer 组中的评论的情绪](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?bc=%2fbread%2ftoc.json&toc=%2fcognitive-services%2ftext-analytics%2ftoc.json)
+    * [使用文本分析 API 和 MS Flow 识别 Yammer 组中的评论的情绪](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
     * [集成 Power BI 和文本分析 API 以分析自定义反馈](tutorials/tutorial-power-bi-key-phrases.md)
 * 建议的编程体验：
+    * [使用 Azure Databricks 针对流数据执行情绪分析](/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?bc=%2fbread%2ftoc.json&toc=%2fcognitive-services%2ftext-analytics%2ftoc.json)
     * [生成 Flask 应用以翻译文本、分析情绪以及合成语音](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%2fbread%2ftoc.json&toc=%2fcognitive-services%2ftext-analytics%2ftoc.json)
 
 
@@ -107,6 +108,8 @@ ms.locfileid: "98022190"
 + 使用[快速入门](quickstarts/client-libraries-rest-api.md)开始发送 API 调用。 了解如何以少量的代码提交文本、选择分析，并查看结果。
 
 + 有关新版本和功能的信息，请参阅[文本分析 API 中的新增功能](whats-new.md)。
+
++ 更深入地探讨此[情绪分析教程](/databricks/scenarios/databricks-sentiment-analysis-cognitive-services)（使用 Azure Databricks）。
 
 + 在[“外部和社区内容”页](text-analytics-resource-external-community.md)中查看一系列博客文章和更多的视频，了解如何结合其他工具和技术使用文本分析 API。
 

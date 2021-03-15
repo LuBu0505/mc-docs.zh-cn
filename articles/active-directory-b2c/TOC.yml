@@ -15,9 +15,7 @@
       href: tutorial-register-applications.md
     - name: 3 - 创建用户流
       href: tutorial-create-user-flows.md
-    - name: 自定义 UI
-      href: tutorial-customize-ui.md
-    - name: 对用户进行身份验证
+    - name: 4 - 对用户进行身份验证
       items:
         - name: ASP.NET
           href: tutorial-web-app-dotnet.md
@@ -25,7 +23,7 @@
           href: tutorial-desktop-app.md
         - name: 单页
           href: tutorial-single-page-app.md
-    - name: 授予 API 访问权限
+    - name: 5 - 授予 API 访问权限
       items:
         - name: ASP.NET
           href: tutorial-web-api-dotnet.md
@@ -85,9 +83,14 @@
           href: tutorial-register-applications.md
         - name: 注册单页应用程序 (SPA)
           href: tutorial-register-spa.md
-        - name: 注册 SAML 服务提供程序
-          href: connect-with-saml-service-providers.md
-          displayName: 'SP, RP, service provider, connect'
+        - name: SAML 应用程序
+          items:
+            - name: 配置 SAML 应用程序
+              href: saml-service-provider.md
+              displayName: 'SP, service provider'
+            - name: 配置 SAML 应用程序选项
+              href: saml-service-provider-options.md
+              displayName: 'SP, service provider'
         - name: 注册 Microsoft Graph 应用程序
           href: microsoft-graph-get-started.md
           displayName: 'migrate, migration, microsoft graph'
@@ -104,9 +107,11 @@
         - name: 注册或登录策略
           href: add-sign-up-and-sign-in-policy.md
         - name: 密码重置策略
-          href: add-password-reset-policy.md
-        - name: 密码更改策略
-          href: add-password-change-policy.md
+          items:
+            - name: 自助式密码重置
+              href: add-password-reset-policy.md
+            - name: 自助式密码更改
+              href: add-password-change-policy.md
         - name: 个人资料编辑策略
           href: add-profile-editing-policy.md
         - name: 资源所有者密码凭据策略
@@ -127,8 +132,14 @@
           href: identity-provider-azure-ad-multi-tenant.md
         - name: Azure AD B2C
           href: identity-provider-azure-ad-b2c.md
-        - name: 一般标识提供者
+        - name: 通用 OpenId Connect
           href: identity-provider-generic-openid-connect.md
+        - name: 通用 SAML 标识提供者
+          items:
+            - name: 配置 SAML 标识提供者
+              href: identity-provider-generic-saml.md
+            - name: 配置 SAML 标识提供者选项
+              href: identity-provider-generic-saml-options.md
         - name: GitHub
           href: identity-provider-github.md
         - name: ID.me
@@ -147,14 +158,14 @@
           href: idp-pass-through-user-flow.md
     - name: UX 自定义
       items:
-        - name: 使用公司品牌打造自定义 UI
-          href: company-branding.md
         - name: 使用 HTML 模板自定义 UI
+          displayName: content definitions
           href: customize-ui-with-html.md
         - name: JavaScript 和页面布局
           href: javascript-and-page-layout.md
         - name: 自定义语言
           href: language-customization.md
+          displayName: localization
         - name: 密码复杂性
           href: password-complexity.md
         - name: 禁用电子邮件验证
@@ -197,12 +208,10 @@
           items:
             - name: 使用 Application Insights 收集日志
               href: troubleshoot-with-application-insights.md
-              displayName: troubleshooting
+              displayName: 'troubleshooting, app insights'
             - name: 策略验证
               href: troubleshoot-custom-policies.md
               displayName: troubleshooting
-        - name: 使用情况分析
-          href: analytics-with-application-insights.md
         - name: 参考
           items:
             - name: TrustFrameworkPolicy
@@ -253,8 +262,6 @@
                   items:
                     - name: 关于验证技术配置文件
                       href: validation-technical-profile.md
-                    - name: Application Insights
-                      href: application-insights-technical-profile.md
                     - name: Azure Active Directory
                       href: active-directory-technical-profile.md
                     - name: Azure AD 多重身份验证
@@ -262,7 +269,6 @@
                       displayName: mfa
                     - name: Azure AD SSPR
                       href: aad-sspr-technical-profile.md
-                      displayName: ca
                     - name: ID 令牌提示
                       href: id-token-hint.md
                     - name: JWT 令牌颁发者
@@ -304,9 +310,6 @@
           displayName: 'migrate, b2clogin, owin'
     - name: 自动化
       items:
-        - name: Azure Monitor
-          href: azure-monitor.md
-          displayName: 'log, logs, logging, usage, events'
         - name: Microsoft Graph API
           href: microsoft-graph-operations.md
           displayName: 'account, accounts, msgraph, ms graph, graph'
@@ -316,6 +319,14 @@
     - name: 安全 API 管理 API
       href: secure-api-management.md
       displayName: 'apim, api management, migrate, b2clogin.cn'
+    - name: 日志和监视
+      items:
+        - name: Azure Monitor
+          href: azure-monitor.md
+          displayName: 'log, logs, logging, usage, events, reports, reporting, dashboard'
+        - name: 使用情况分析
+          href: analytics-with-application-insights.md
+          displayName: 'application insights, app insights, reports, reporting'
     - name: 合规性
       items:
         - name: 用户访问权限
@@ -330,6 +341,8 @@
           href: user-migration.md
 - name: 参考
   items:
+    - name: 服务限制和局限性
+      href: service-limits.md
     - name: 应用注册
       href: app-registrations-training-guide.md
     - name: 计费模式
@@ -347,6 +360,18 @@
       href: custom-policy-developer-notes.md
     - name: 页面布局版本
       href: page-layout.md
+    - name: 针对复原能力构建
+      items:
+        - name: Azure AD B2C 复原能力简介
+          href: ../active-directory/fundamentals/resilience-b2c.md
+        - name: 最终用户体验
+          href: ../active-directory/fundamentals/resilient-end-user-experience.md
+        - name: 与外部进程的接口
+          href: ../active-directory/fundamentals/resilient-external-processes.md
+        - name: Azure AD B2C 开发人员最佳做法
+          href: ../active-directory/fundamentals/resilience-b2c-developer-best-practices.md
+        - name: 监视和分析
+          href: ../active-directory/fundamentals/resilience-with-monitoring-alerting.md
     - name: 威胁管理
       href: threat-management.md
       displayName: security

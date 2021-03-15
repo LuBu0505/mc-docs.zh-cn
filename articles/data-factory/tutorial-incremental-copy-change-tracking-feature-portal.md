@@ -1,27 +1,23 @@
 ---
 title: 使用 Azure 门户使用更改跟踪以增量方式复制数据
 description: 在本教程中，你将创建一个带管道的 Azure 数据工厂，该管道根据 Azure SQL 数据库的源数据库中的“更改跟踪”信息将增量数据加载到 Azure Blob 存储。
-services: data-factory
 ms.author: v-jay
 author: WenJason
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-origin.date: 01/12/2018
-ms.date: 02/01/2021
-ms.openlocfilehash: e2e6b5b1def56be51d6d427b1f78209b91949471
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+origin.date: 02/18/2021
+ms.date: 03/15/2021
+ms.openlocfilehash: ce1f56e67c938d20d082edcb0f4d20e735438fac
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697488"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589931"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>使用 Azure 门户根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在本教程中，你将创建一个带管道的 Azure 数据工厂，该管道根据 Azure SQL 数据库的源数据库中的“更改跟踪”信息将增量数据加载到 Azure Blob 存储。  
 
@@ -37,7 +33,7 @@ ms.locfileid: "101697488"
 > * 创建、运行和监视增量复制管道
 
 ## <a name="overview"></a>概述
-在数据集成解决方案中，一种广泛使用的方案是在完成初始数据加载后以增量方式加载数据。 在某些情况下，可以通过某种方式（例如，使用 LastModifyTime、CreationTime 等属性）将源数据存储中某个时段的更改数据轻松地进行切分。 在某些情况下，没有明确的方式可以将增量数据从上一次处理过的数据中区分出来。 可以使用 Azure SQL 数据库、SQL Server 等数据存储支持的更改跟踪技术来确定增量数据。  本教程介绍如何将 Azure 数据工厂与 SQL 更改跟踪技术配合使用，通过增量方式将增量数据从 Azure SQL 数据库加载到 Azure Blob 存储中。  有关 SQL 更改跟踪技术的更具体的信息，请参阅 [SQL Server 中的更改跟踪](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)。 
+在数据集成解决方案中，一种广泛使用的方案是在完成初始数据加载后以增量方式加载数据。 在某些情况下，可以通过某种方式（例如，使用 LastModifyTime、CreationTime 等属性）将源数据存储中某个时段的更改数据轻松地进行切分。 在某些情况下，没有明确的方式可以将增量数据从上一次处理过的数据中区分出来。 可以使用 Azure SQL 数据库、SQL Server 等数据存储支持的更改跟踪技术来确定增量数据。  本教程介绍如何将 Azure 数据工厂与 SQL 更改跟踪技术配合使用，通过增量方式将增量数据从 Azure SQL 数据库加载到 Azure Blob 存储中。  有关 SQL 更改跟踪技术的更具体的信息，请参阅 [SQL Server 中的更改跟踪](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)。
 
 ## <a name="end-to-end-workflow"></a>端到端工作流
 下面是典型的端到端工作流步骤，用于通过更改跟踪技术以增量方式加载数据。
@@ -141,8 +137,8 @@ ms.locfileid: "101697488"
 
     BEGIN
 
-        UPDATE table_store_ChangeTracking_version
-        SET [SYS_CHANGE_VERSION] = @CurrentTrackingVersion
+    UPDATE table_store_ChangeTracking_version
+    SET [SYS_CHANGE_VERSION] = @CurrentTrackingVersion
     WHERE [TableName] = @TableName
 
     END    
@@ -165,7 +161,7 @@ ms.locfileid: "101697488"
 
      ![“新建数据工厂”页](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-azure-data-factory.png)
 
-   Azure 数据工厂的名称必须 **全局唯一**。 如果收到错误，请更改数据工厂的名称（例如改为 yournameADFTutorialDataFactory），并重新尝试创建。 有关数据工厂项目命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
+   Azure 数据工厂的名称必须全局唯一。 如果收到错误，请更改数据工厂的名称（例如改为 yournameADFTutorialDataFactory），并重新尝试创建。 有关数据工厂项目命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
 
    数据工厂名“ADFTutorialDataFactory”不可用
 4. 选择要在其中创建数据工厂的 Azure **订阅**。
@@ -176,7 +172,7 @@ ms.locfileid: "101697488"
          
         若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 6. 选择数据工厂的 **位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
-7. 单击“创建”。      
+7. 单击 **创建**。      
 8. 在仪表板上，你会看状态如下的以下磁贴：“正在部署数据工厂”。
 
     ![“正在部署数据工厂”磁贴](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
@@ -469,9 +465,8 @@ PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 6        new     50     1                     I
 ```
 
-
 ## <a name="next-steps"></a>后续步骤
 继续查看以下教程，了解如何仅基于 LastModifiedDate 来复制新的和更改的文件：
 
 > [!div class="nextstepaction"]
->[按 lastmodifieddate 复制新文件](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
+> [按 lastmodifieddate 复制新文件](tutorial-incremental-copy-lastmodified-copy-data-tool.md)

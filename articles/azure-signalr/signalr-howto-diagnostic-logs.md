@@ -5,14 +5,14 @@ author: WenJason
 ms.service: signalr
 ms.topic: conceptual
 origin.date: 12/17/2019
-ms.date: 02/22/2021
+ms.date: 03/15/2021
 ms.author: v-jay
-ms.openlocfilehash: bc06847bab126f09b4818378905480c4e29d6567
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: e2e56db872034e838163dcffd4ab2afa0cedaecb
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697264"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102590023"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Azure SignalR 服务的资源日志
 
@@ -21,8 +21,8 @@ ms.locfileid: "101697264"
 ## <a name="prerequisites"></a>先决条件
 若要启用资源日志，需要指定某个位置用于存储日志数据。 本教程使用 Azure 存储和 Log Analytics。
 
-* [Azure 存储](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) - 保留策略审核、静态分析或备份的资源日志。
-* [Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) - 灵活的日志搜索和分析工具，可用于分析 Azure 资源生成的原始日志。
+* [Azure 存储](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) - 保留策略审核、静态分析或备份的资源日志。
+* [Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) - 灵活的日志搜索和分析工具，可用于分析 Azure 资源生成的原始日志。
 
 ## <a name="set-up-resource-logs-for-an-azure-signalr-service"></a>设置 Azure SignalR 服务的资源日志
 
@@ -51,7 +51,7 @@ ms.locfileid: "101697264"
 
 新设置在大约 10 分钟后生效。 在此之后，日志将出现在“诊断日志”窗格上配置的存档目标中。
 
-有关配置诊断的详细信息，请参阅 [Azure 资源日志概述](../azure-monitor/platform/platform-logs-overview.md)。
+有关配置诊断的详细信息，请参阅 [Azure 资源日志概述](../azure-monitor/essentials/platform-logs-overview.md)。
 
 ### <a name="resource-logs-categories"></a>资源日志类别
 
@@ -123,7 +123,7 @@ message | 日志事件的详细消息
 
     ![Log Analytics 菜单项](./media/signalr-tutorial-diagnostic-logs/log-analytics-menu-item.png)
 
-2. 输入 `SignalRServiceDiagnosticLogs`，并选择资源日志的查询时间范围。 若要进行高级查询，请参阅 [Azure Monitor 中的 Log Analytics 入门](../azure-monitor/log-query/log-analytics-tutorial.md)
+2. 输入 `SignalRServiceDiagnosticLogs`，并选择资源日志的查询时间范围。 若要进行高级查询，请参阅 [Azure Monitor 中的 Log Analytics 入门](../azure-monitor/logs/log-analytics-tutorial.md)
 
     ![在 Log Analytics 中查询日志](./media/signalr-tutorial-diagnostic-logs/query-log-in-log-analytics.png)
 

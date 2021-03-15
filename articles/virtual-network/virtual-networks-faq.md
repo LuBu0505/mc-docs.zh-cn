@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/26/2020
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/09/2021
 ms.author: v-yeche
-ms.openlocfilehash: 99df2d5474b9a393eb12c650486fadd4e4ead9a3
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: c4c28123fd568430b3827e1dcbddb9392451bb14
+ms.sourcegitcommit: 71c705e5406b26d90ec0b801807c0d933324d9b6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055261"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102474911"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虚拟网络常见问题 (FAQ)
 
@@ -296,7 +296,7 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间相�
 不是。 只能在与其中一个 VNet 的对等互连上启用“使用远程网关”选项。
 
 ### <a name="how-much-do-vnet-peering-links-cost"></a>VNet 对等互连链接的费用如何？
-创建 VNet 对等互连连接不收费。 跨对等互连连接进行数据传输收费。 请[参阅此文](https://www.azure.cn/pricing/details/networking/)。
+创建 VNet 对等互连连接不收费。 跨对等互连连接进行数据传输收费。 请[参阅此文](https://www.azure.cn/pricing/details/virtual-network/)。
 
 ### <a name="is-vnet-peering-traffic-encrypted"></a>VNet 对等互连流量是否加密？
 当 Azure 流量在数据中心之间移动（不受 Azure 或代表 Microsoft 控制的外部物理边界）时，基础网络硬件上会使用 [MACsec 数据链路层加密](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)。  这适用于 VNet 对等互连流量。

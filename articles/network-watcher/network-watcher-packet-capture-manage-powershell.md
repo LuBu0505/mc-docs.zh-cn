@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 01/07/2021
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/15/2021
 ms.testscope: yes
 ms.testdate: 08/03/2020
 ms.author: v-yeche
-ms.openlocfilehash: af7cb4e0b64c85af75f48b4930d566571b86b1e1
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 6a19f08176d6c45b204e24f771ea2c149e2b888f
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98229850"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212617"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>在 PowerShell 中使用 Azure 网络观察程序管理数据包捕获
 
@@ -130,7 +130,7 @@ ForceUpdateTag          :
 下一步是检索网络观察程序实例。 将此变量传递给步骤 4 中的 `New-AzNetworkWatcherPacketCapture` cmdlet。
 
 ```powershell
-$networkWatcher = Get-AzResource -ResourceType "Microsoft.Network/networkWatchers" | Where {$_.Location -eq "chinanorth" }
+$networkWatcher = Get-AzNetworkWatcher  | Where {$_.Location -eq "chinaeast" }
 ```
 
 ### <a name="step-2"></a>步骤 2
@@ -283,4 +283,4 @@ https://{storageAccountName}.blob.core.chinacloudapi.cn/network-watcher-logs/sub
 
 <!-- Image references -->
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

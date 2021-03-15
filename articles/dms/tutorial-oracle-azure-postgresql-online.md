@@ -12,15 +12,18 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 origin.date: 01/24/2020
-ms.date: 12/07/2020
-ms.openlocfilehash: 9d4bc9a5f32b23760557cd3a44a346515759e2b2
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.date: 03/15/2021
+ms.openlocfilehash: 14177c03efee5add5e1584cce87124ef1f0dd079
+ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747041"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103211745"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>教程：使用 DMS（预览版）将 Oracle 联机迁移到 Azure Database for PostgreSQL
+
+> [!IMPORTANT]
+> 2021 年 5 月 1 日后，“Oracle 到 Azure Database for PostgreSQL”迁移方案（当前为预览版）将不再可用。 我们将继续通过替代工具（例如 Ora2pg）提供支持，并为 Oracle 到 PostgreSQL 的迁移提供最佳迁移体验。 有关迁移的最佳实践，请参阅 [Oracle 到 Azure Database for PostgreSQL 迁移指南] (https://aka.ms/OracletoPGguide) 。 
 
 可以使用 Azure 数据库迁移服务在尽量缩短停机时间的情况下，将本地或虚拟机中的 Oracle 数据库迁移到 [Azure Database for PostgreSQL](../postgresql/index.yml)。 换而言之，完成这种迁移只会对应用程序造成极短暂的停机。 本教程介绍如何使用 Azure 数据库迁移服务中的联机迁移活动，将 **HR** 示例数据库从 Oracle 11g 的本地或虚拟机实例迁移到 Azure Database for PostgreSQL。
 
@@ -64,7 +67,7 @@ ms.locfileid: "96747041"
   >
   > Azure 数据库迁移服务缺少 Internet 连接，因此必须提供此配置。
 
-* 确保虚拟网络网络安全组 (NSG) 规则未阻止到 Azure 数据库迁移服务的以下入站通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
+* 请确保虚拟网络的网络安全组(NSG) 规则不阻止 ServiceBus、存储服务和 AzureMonitor 的 ServiceTag 出站端口 443。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
 * 配置[针对数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 Oracle 服务器（默认使用 TCP 端口 1521）。
 * 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
@@ -249,7 +252,7 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>注册 Microsoft.DataMigration 资源提供程序
 
-1. 登录到 Azure 门户，选择“所有服务”  ，然后选择“订阅”  。
+1. 登录到 Azure 门户，选择“所有服务”，然后选择“订阅”。
 
    ![显示门户订阅](media/tutorial-oracle-azure-postgresql-online/portal-select-subscriptions.png)
 
@@ -291,7 +294,7 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
 
 创建服务后，在 Azure 门户中找到并打开它，然后创建一个新的迁移项目。
 
-1. 在 Azure 门户中，选择“所有服务”  ，搜索 Azure 数据库迁移服务，然后选择“Azure 数据库迁移服务”  。
+1. 在 Azure 门户中，选择“所有服务”，搜索 Azure 数据库迁移服务，然后选择“Azure 数据库迁移服务”。
 
     ![查找 Azure 数据库迁移服务的所有实例](media/tutorial-oracle-azure-postgresql-online/dms-search.png)
 
@@ -351,7 +354,7 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
 
 ## <a name="monitor-the-migration"></a>监视迁移
 
-1. 在迁移活动屏幕上选择“刷新”，以便更新显示，直到迁移的“状态”显示为“正在运行”。
+1. 在迁移活动屏幕上选择“刷新”  ，以便更新显示，直到迁移的“状态”  显示为“正在运行”  。
 
      ![活动状态 - 正在运行](media/tutorial-oracle-azure-postgresql-online/dms-activity-running.png)
 

@@ -11,12 +11,12 @@ ms.custom: mvc
 origin.date: 03/15/2019
 ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: 4152d98fe8c6c7db70ce60b8d76b4d36ae110336
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.openlocfilehash: 0aba7efbb5d6723acb5e53daa66089219e735169
+ms.sourcegitcommit: aa152825420691f705c959682144d14877916aff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196828"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224121"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>快速入门：从 Android 设备发送 IoT 遥测数据
 
@@ -99,7 +99,7 @@ ms.locfileid: "102196828"
 
 ## <a name="read-the-telemetry-from-your-hub"></a>从中心读取遥测数据
 
-在本部分，将使用具有 [IoT 扩展](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest)的 Azure Cloud Shell 监视 Android 设备发送的设备消息。
+在本部分，将使用具有 [IoT 扩展](/cli/ext/azure-iot/iot)的 Azure Cloud Shell 监视 Android 设备发送的设备消息。
 
 1. 通过 Azure Cloud Shell 运行以下命令以建立连接并从 IoT 中心读取消息：
 

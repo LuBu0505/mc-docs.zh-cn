@@ -89,7 +89,7 @@
           href: cache-how-to-premium-vnet.md
         - name: 以非公开方式连接到缓存
           href: cache-private-link.md
-        - name: 设置异地复制
+        - name: 设置 OSS 异地复制
           href: cache-how-to-geo-replication.md
         - name: 迁移到 Azure Cache for Redis
           href: cache-migration-guide.md

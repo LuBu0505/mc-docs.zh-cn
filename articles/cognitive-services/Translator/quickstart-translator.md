@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 02/04/2021
+ms.date: 03/08/2021
 ms.author: v-johya
 ms.custom: cog-serv-seo-aug-2020
 keywords: translator, translator 服务, 翻译文本, 音译文本, 语言检测
-ms.openlocfilehash: 95ec233ca102a44f88109602f4d76f58f446bbfb
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: a437c2ff64d1581842cc7d33db22fe08222d4c35
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579517"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212636"
 ---
 # <a name="quickstart-get-started-with-translator"></a>快速入门：Translator 入门
 
@@ -277,7 +277,7 @@ public class Translate {
                 "[{\"Text\": \"Hello World!\"}]");
         Request request = new Request.Builder().url(url).post(body)
                 .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
-                .addHeader("Ocp-Apim-Subscription-Key", location)
+                .addHeader("Ocp-Apim-Subscription-Region", location)
                 .addHeader("Content-type", "application/json")
                 .build();
         Response response = client.newCall(request).execute();
@@ -556,7 +556,7 @@ public class Translate {
                 "[{\"Text\": \"Hello World!\"}]");
         Request request = new Request.Builder().url(url).post(body)
                 .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
-                .addHeader("Ocp-Apim-Subscription-Key", location)
+                .addHeader("Ocp-Apim-Subscription-Region", location)
                 .addHeader("Content-type", "application/json")
                 .build();
         Response response = client.newCall(request).execute();
@@ -830,7 +830,7 @@ public class Detect {
                 "[{\"Text\": \"Ich würde wirklich gern Ihr Auto um den Block fahren ein paar Mal.\"}]");
         Request request = new Request.Builder().url(url).post(body)
                 .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
-                .addHeader("Ocp-Apim-Subscription-Key", location)
+                .addHeader("Ocp-Apim-Subscription-Region", location)
                 .addHeader("Content-type", "application/json")
                 .build();
         Response response = client.newCall(request).execute();
@@ -1116,7 +1116,7 @@ public class Translate {
                 "[{\"Text\": \"Hello\"}]");
         Request request = new Request.Builder().url(url).post(body)
                 .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
-                .addHeader("Ocp-Apim-Subscription-Key", location)
+                .addHeader("Ocp-Apim-Subscription-Region", location)
                 .addHeader("Content-type", "application/json")
                 .build();
         Response response = client.newCall(request).execute();
@@ -1399,7 +1399,7 @@ public class Transliterate {
                 "[{\"Text\": \"สวัสดี\"}]");
         Request request = new Request.Builder().url(url).post(body)
                 .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
-                .addHeader("Ocp-Apim-Subscription-Key", location)
+                .addHeader("Ocp-Apim-Subscription-Region", location)
                 .addHeader("Content-type", "application/json")
                 .build();
         Response response = client.newCall(request).execute();
@@ -1672,7 +1672,7 @@ public class Translate {
                 "[{\"Text\": \"Can you tell me how to get to Penn Station? Oh, you aren\'t sure? That\'s fine.\"}]");
         Request request = new Request.Builder().url(url).post(body)
                 .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
-                .addHeader("Ocp-Apim-Subscription-Key", location)
+                .addHeader("Ocp-Apim-Subscription-Region", location)
                 .addHeader("Content-type", "application/json")
                 .build();
         Response response = client.newCall(request).execute();
@@ -1954,7 +1954,7 @@ public class BreakSentence {
                 "[{\"Text\": \"Can you tell me how to get to Penn Station? Oh, you aren\'t sure? That\'s fine.\"}]");
         Request request = new Request.Builder().url(url).post(body)
                 .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
-                .addHeader("Ocp-Apim-Subscription-Key", location)
+                .addHeader("Ocp-Apim-Subscription-Region", location)
                 .addHeader("Content-type", "application/json")
                 .build();
         Response response = client.newCall(request).execute();
@@ -2223,7 +2223,7 @@ public class DictionaryLookup {
                 "[{\"Text\": \"Shark\"}]");
         Request request = new Request.Builder().url(url).post(body)
                 .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
-                .addHeader("Ocp-Apim-Subscription-Key", location)
+                .addHeader("Ocp-Apim-Subscription-Region", location)
                 .addHeader("Content-type", "application/json")
                 .build();
         Response response = client.newCall(request).execute();
@@ -2522,7 +2522,9 @@ public class DictionaryExamples {
         RequestBody body = RequestBody.create(mediaType,
                 "[{\"Text\": \"Shark\", \"Translation\": \"tiburón\"}]");
         Request request = new Request.Builder().url(url).post(body)
-                .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey).addHeader("Content-type", "application/json")
+                .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
+                .addHeader("Ocp-Apim-Subscription-Region", location)
+                .addHeader("Content-type", "application/json")
                 .build();
         Response response = client.newCall(request).execute();
         return response.body().string();
@@ -2676,7 +2678,7 @@ print(json.dumps(response, sort_keys=True, ensure_ascii=False, indent=4, separat
 
 * [了解 API 如何对字符计数](character-counts.md)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [Translator v3 API 参考](reference/v3-0-reference.md)
 * [语言支持](language-support.md)

@@ -189,6 +189,21 @@
             - name: 配置 TLS
               href: howto-tls-configurations.md
               displayName: 'TLS, security, development'
+        - name: 静态加密
+          items:
+            - name: 数据加密
+              items:
+                - name: 概念
+                  href: concepts-data-encryption-mysql.md
+                - name: 使用 Azure 门户配置通过客户托管密钥实现的加密
+                  href: howto-data-encryption-portal.md
+                  displayName: 'encryption, security'
+                - name: 使用 Azure CLI 配置通过客户托管密钥实现的加密
+                  href: howto-data-encryption-cli.md
+                  displayName: 'encryption, security'
+                - name: 数据加密验证
+                  href: howto-data-encryption-validation.md
+                  displayName: 'encryption, security'
         - name: 拒绝公用网络访问
           items:
             - name: 使用 Azure 门户
@@ -510,7 +525,7 @@
       href: /cli/mysql
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/mysql'
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       href: 'https://docs.microsoft.com/azure/templates/microsoft.dbformysql/allversions'
     - name: 管理存储过程
       href: reference-stored-procedures.md

@@ -13,15 +13,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 05/02/2017
-ms.date: 02/22/2021
+ms.date: 03/15/2021
 ms.author: v-jay
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f91054521f91175b227864c48da1843d82d00d5b
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: b85ed97882c4ff5a746047df6f3510fee6e10c3a
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697062"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589996"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>在不同的 Azure 区域中配置 SQL Server Always On 可用性组
 
@@ -205,7 +205,7 @@ ms.locfileid: "101697062"
 ## <a name="next-steps"></a>后续步骤
 
 * [Always On 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)
-* [Azure 虚拟机](../../../virtual-machines/windows/index.yml)
+* [Azure 虚拟机](../../../virtual-machines/index.yml)
 * [Azure 负载均衡器](availability-group-manually-configure-tutorial.md#configure-internal-load-balancer)
 * [Azure 可用性集](../../../virtual-machines/manage-availability.md)
 

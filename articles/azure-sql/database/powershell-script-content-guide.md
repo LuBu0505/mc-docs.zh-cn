@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 03/25/2019
-ms.date: 08/17/2020
-ms.openlocfilehash: 7e3d637c11d0ea06b06cbcc963ce1ce67f153c2d
-ms.sourcegitcommit: 84606cd16dd026fd66c1ac4afbc89906de0709ad
+ms.date: 03/15/2021
+ms.openlocfilehash: c706b581ca129ed5b74584f7f5460831489ca4cd
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88222883"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102590018"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database 和 Azure SQL 托管实例的 Azure PowerShell 示例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -68,7 +68,7 @@ Azure SQL 数据库和 Azure SQL 托管实例允许使用 Azure PowerShell 配�
 |---|---|
 |**创建和配置托管实例**||
 | [创建和管理托管实例](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | 此 PowerShell 脚本演示如何使用 Azure PowerShell 创建和管理托管实例。 |
-| [使用 Azure 资源管理器模板创建和管理托管实例](../managed-instance/scripts/create-powershell-azure-resource-manager-template.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 此 PowerShell 脚本演示如何使用 Azure PowerShell 和 Azure 资源管理器模板创建和管理托管实例。|
+| [使用 Azure 资源管理器模板创建和管理托管实例](../managed-instance/create-template-quickstart.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 此 PowerShell 脚本演示如何使用 Azure PowerShell 和 Azure 资源管理器模板创建和管理托管实例。|
 | [将数据库还原到另一个地理区域中的托管实例](../managed-instance/scripts/restore-geo-backup.md) | 此 PowerShell 脚本备份一个数据库并将其还原到另一个区域。 这称为异地还原灾难恢复方案。 |
 | 配置透明数据加密||
 | [使用 Azure Key Vault 中自己的密钥管理托管实例中的透明数据加密](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本使用 Azure Key Vault 中的密钥在 Azure SQL 托管实例的“创建自己的密钥”方案中配置透明数据加密。|

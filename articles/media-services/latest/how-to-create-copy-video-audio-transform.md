@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: multiple
 ms.workload: na
 origin.date: 11/19/2020
-ms.date: 12/14/2020
+ms.date: 03/15/2021
 ms.author: v-jay
-ms.openlocfilehash: 5ed51e951ff7bcec4e503c14eb2c40315d8ca992
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 98d920dfb3df3867e5d5653e94deff06da567c84
+ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004283"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103211848"
 ---
 # <a name="create-a-copyvideo-copyaudio-transform"></a>创建 CopyVideo CopyAudio 转换
 
@@ -38,7 +38,6 @@ ms.locfileid: "97004283"
 
 [!INCLUDE [task-create-copy-video-audio-rest.md](./includes/task-create-copy-video-audio-rest.md)]
 
-
 ## <a name="next-steps"></a>后续步骤
 
-[媒体服务概述](media-services-overview.md)
+[!INCLUDE [transforms next steps](./includes/transforms-next-steps.md)]

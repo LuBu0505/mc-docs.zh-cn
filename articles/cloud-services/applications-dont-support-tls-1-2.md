@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: ''
-ms.date: 10/20/2020
+ms.date: 03/09/2021
 ms.author: v-junlch
-ms.openlocfilehash: 98a112f321696a6f084cb2db1695e0c8b6c5fc58
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+ms.openlocfilehash: a5c6217310218c90929b92e3d8b622ada47c0302
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92471842"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212382"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>对不支持 TLS 1.2 的应用程序进行故障排除
 本文介绍了如何启用旧版 TLS 协议（TLS 1.0 和 1.1），以及如何应用旧密码套件来支持 Windows Server 2019 云服务 Web 和辅助角色上的其他协议。 
@@ -51,7 +51,7 @@ Windows Server 2019 云服务器映像配置为在注册表级别禁用 TLS 1.0 
 
 ## <a name="step-1-create-the-powershell-script-to-enable-tls-10-and-tls-11"></a>步骤 1：创建用于启用 TLS 1.0 和 TLS 1.1 的 PowerShell 脚本 
 
-以下面的代码为例，创建启用旧协议和密码套件的脚本。 在本文档中，此脚本将命名为： **TLSsettings.ps1** 。 将此脚本存储在本地桌面上，以便在后续步骤中轻松访问。 
+以下面的代码为例，创建启用旧协议和密码套件的脚本。 在本文档中，此脚本将命名为：**TLSsettings.ps1**。 将此脚本存储在本地桌面上，以便在后续步骤中轻松访问。 
 
 
 ```Powershell
@@ -312,13 +312,13 @@ EXIT /B %ERRORLEVEL%
 以下是一个同时显示辅助角色和 Web 角色的示例。 
 
 ```
-<?xmlversion="1.0"encoding="utf-8"?> 
-<ServiceDefinitionname="CloudServiceName"xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition"schemaVersion="2015-04.2.6"> 
-    <WebRolename="WebRole1"vmsize="Standard_D1_v2"> 
+<?xmlversion="1.0" encoding="utf-8"?> 
+<ServiceDefinitionname="CloudServiceName" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6"> 
+    <WebRolename="WebRole1" vmsize="Standard_D1_v2"> 
         <Sites> 
             <Sitename="Web"> 
                 <Bindings> 
-                    <Bindingname="Endpoint1"endpointName="Endpoint1"/> 
+                    <Bindingname="Endpoint1" endpointName="Endpoint1"/> 
                 </Bindings> 
             </Site> 
         </Sites> 
@@ -327,10 +327,10 @@ EXIT /B %ERRORLEVEL%
             </Task> 
         </Startup> 
         <Endpoints> 
-            <InputEndpointname="Endpoint1"protocol="http"port="80"/> 
+            <InputEndpointname="Endpoint1" protocol="http" port="80"/> 
         </Endpoints> 
     </WebRole> 
-<WorkerRolename="WorkerRole1"vmsize="Standard_D1_v2"> 
+<WorkerRolename="WorkerRole1" vmsize="Standard_D1_v2"> 
     <Startup> 
         <Task executionContext="elevated" taskType="simple" commandLine="RunTLSSettings.cmd"> 
         </Task> 
@@ -361,5 +361,4 @@ EXIT /B %ERRORLEVEL%
 现在上述步骤已经完成，请将更新发布到现有云服务。 
 
 可以使用 [SSLLabs](https://www.ssllabs.com/) 验证终结点的 TLS 状态 
-
 

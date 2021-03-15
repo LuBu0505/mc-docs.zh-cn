@@ -3,7 +3,6 @@ title: 教程：使用 Azure 门户监视网络通信
 description: 此教程介绍如何使用 Azure 网络观察程序的连接监视器功能监视两个虚拟机之间的网络通信。
 services: network-watcher
 documentationcenter: na
-editor: ''
 tags: azure-resource-manager
 Customer intent: I need to monitor communication between a VM and another VM. If the communication fails, I need to know why, so that I can resolve the problem.
 ms.service: network-watcher
@@ -11,24 +10,27 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 10/25/2018
+origin.date: 01/04/2021
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/15/2021
 ms.testscope: yes
 ms.testdate: 08/03/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 5f2b0265aa6a7d2ac8468aba570c597f324a37b4
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: e19ace1f42b4a5e0d1175fd40b5bbeafc79621ff
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230457"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212581"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>教程：使用 Azure 门户监视两个虚拟机之间的网络通信
 
 > [!NOTE]
 > 本教程介绍连接监视器（经典版）。 试用经过改进的新[连接监视器](connection-monitor-overview.md)，体验增强的连接监视功能
+
+> [!IMPORTANT]
+> 自 2021 年 7 月 1 日起，你将无法在连接监视器（经典版）中添加新的连接监视器，但可以继续使用在 2021 年 7 月 1 日之前创建的现有连接监视器。 为了最大程度地减少当前工作负荷的服务中断，请在 2024 年 2 月 29 日之前，在 Azure 网络观察程序中[从连接监视器（经典版）迁移到新连接监视器](migrate-to-connection-monitor-from-connection-monitor-classic.md)。
 
 在虚拟机 (VM) 和终结点（例如另一 VM）之间成功通信对于组织来说可能很重要。 有时候，引入配置更改可能会导致通信中断。 在本教程中，你将了解如何执行以下操作：
 
@@ -135,7 +137,7 @@ ms.locfileid: "98230457"
 2. 单击“选择目标”  ，然后选择要作为目标的资源。 选择“订阅”，然后设置“资源类型”   ，以便筛选出要使用的连接监视器。
 
     :::image type="content" source="./media/connection-monitor/set-alert-rule.png" alt-text="目标为选中状态的警报屏幕":::
-1. 选中目标资源以后，请选择“添加条件”。  网络观察程序有[创建警报时基于的指标](../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)。 将“可用信号”  设置为指标 ProbesFailedPercent 和 AverageRoundtripMs：
+1. 选中目标资源以后，请选择“添加条件”。  网络观察程序有[创建警报时基于的指标](../azure-monitor/alerts/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)。 将“可用信号”  设置为指标 ProbesFailedPercent 和 AverageRoundtripMs：
 
     :::image type="content" source="./media/connection-monitor/set-alert-signals.png" alt-text="信号处于选中状态的警报页":::
 1. 填写警报详细信息，例如警报规则名称、说明和严重性。 也可向警报添加操作组，以便自动完成和自定义警报响应。
@@ -186,4 +188,4 @@ ms.locfileid: "98230457"
 > [!div class="nextstepaction"]
 > [诊断网络之间的通信问题](diagnose-communication-problem-between-networks.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

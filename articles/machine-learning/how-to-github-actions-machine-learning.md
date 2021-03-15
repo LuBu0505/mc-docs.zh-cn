@@ -10,16 +10,16 @@ ms.author: jukullam
 ms.date: 10/19/2020
 ms.topic: conceptual
 ms.custom: github-actions-azure
-ms.openlocfilehash: 5a6773ef673ab03f3c03767655e2ff68a2996d5c
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: f976e83256ac576208d210d75b9029555289656b
+ms.sourcegitcommit: aa152825420691f705c959682144d14877916aff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023222"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224112"
 ---
 # <a name="use-github-actions-with-azure-machine-learning"></a>将 GitHub Actions 与 Azure 机器学习配合使用
 
-开始使用 [GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions) 以便在 Azure 机器学习上训练模型。 
+开始使用 [GitHub Actions](https://docs.github.com/en/actions) 以便在 Azure 机器学习上训练模型。 
 
 > [!NOTE]
 > 适用于 Azure 机器学习的 GitHub Actions 按原样提供，并不完全受 Microsoft 支持。 如果在执行特定操作时遇到问题，请在相关操作的存储库中提出问题。 例如，如果遇到 aml-deploy 操作问题，请在 [https://github.com/Azure/aml-deploy]( https://github.com/Azure/aml-deploy) 存储库中报告问题。

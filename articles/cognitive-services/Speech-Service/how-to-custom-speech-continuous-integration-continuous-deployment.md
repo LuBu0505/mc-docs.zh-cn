@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 06/09/2020
-ms.date: 01/14/2021
-ms.author: v-tawe
-ms.openlocfilehash: 84c4599c95ff5a044097378d9062f916f34936c9
-ms.sourcegitcommit: 93063f9b8771b8e895c3bcdf218f5e3af14ef537
+ms.date: 03/08/2021
+ms.author: v-johya
+ms.openlocfilehash: c9614e7f73bd17a845392a35eb5cbab94f777741
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98193240"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212524"
 ---
 # <a name="cicd-for-custom-speech"></a>自定义语音识别的 CI/CD
 
@@ -74,7 +74,7 @@ CI/CD 工作流的主要目的是使用定型数据生成一个新模型，并�
 
 对自定义语音识别的 CI/CD 自动化工作流使用以下工具：
 
-- [Azure CLI](https://docs.azure.cn/cli/) 用于创建 Azure 服务主体身份验证、查询 Azure 订阅并将测试结果存储在 Azure Blob 中。
+- [Azure CLI](/cli/) 用于创建 Azure 服务主体身份验证、查询 Azure 订阅并将测试结果存储在 Azure Blob 中。
 - [Azure 语音 CLI](spx-overview.md) 用于从命令行或自动工作流与语音服务交互。
 
 ## <a name="devops-solution-for-custom-speech-using-github-actions"></a>使用 GitHub Actions 的 DevOps 自定义语音识别解决方案
@@ -84,7 +84,7 @@ CI/CD 工作流的主要目的是使用定型数据生成一个新模型，并�
 [语音 DevOps 模板存储库](https://github.com/Azure-Samples/Speech-Service-DevOps-Template)为执行以下操作提供了基础结构和详细指导：
 
 - 将模板存储库复制到 GitHub 帐户，然后为 GitHub Actions CI/CD 工作流创建 Azure 资源和[服务主体](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。
-- 演练[开发内部循环](https://mitchdenny.com/the-inner-loop/)。 从功能分支更新定型数据和测试数据，使用临时开发模型测试更改，并提出拉取请求以提出更改意见并对此进行审查。
+- 演练[开发内部循环](https://docs.microsoft.com/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/docker-apps-inner-loop-workflow)。 从功能分支更新定型数据和测试数据，使用临时开发模型测试更改，并提出拉取请求以提出更改意见并对此进行审查。
 - 在对主分支的拉取请求中更新定型数据后，使用 GitHub Actions CI 工作流定型模型。
 - 执行自动准确性测试，确定模型的 [字词错误率](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (WER)。 将测试结果存储在 Azure Blob 中。
 - 若 WER 得到改进，则执行 CD 工作流以创建一个终结点。
@@ -94,3 +94,4 @@ CI/CD 工作流的主要目的是使用定型数据生成一个新模型，并�
 详细了解具有语音识别的 DevOps：
 
 - 使用[语音 DevOps 模板存储库](https://github.com/Azure-Samples/Speech-Service-DevOps-Template)，通过 GitHub Actions 实现自定义语音识别 DevOps。
+

@@ -6,17 +6,17 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 origin.date: 09/04/2019
 author: rockboyfor
-ms.date: 12/07/2020
+ms.date: 03/15/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: 41c53ad965036e12f6a5107112f234132518057b
-ms.sourcegitcommit: bbe4ee95604608448cf92dec46c5bfe4b4076961
+ms.openlocfilehash: f7e95a40e302205e2a578db41575a6052f223521
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96598706"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996644"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>使用 Azure Cosmos DB 和 Power BI 创建实时仪表板
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -50,7 +50,7 @@ Azure Analysis Services 提供一个完全托管的平台即服务，用于在�
 
 ### <a name="ingest-weather-data-into-azure-cosmos-db"></a>将天气数据引入 Azure Cosmos DB
 
-设置一个引入管道，以将[天气数据](https://catalog.data.gov/dataset/local-weather-archive/resource/c28974a2-fc83-4722-8977-9a701323f729)加载到 Azure Cosmos DB 中。 可以设置一个 [Azure 数据工厂 (ADF)](../data-factory/connector-azure-cosmos-db.md) 作业，以使用 HTTP 源和 Cosmos DB 接收器定期将最新的天气数据载入 Azure Cosmos DB。
+设置一个引入管道，以将[天气数据](https://catalog.data.gov/dataset?groups=climate5434&#topic=climate_navigation)加载到 Azure Cosmos DB 中。 可以设置一个 [Azure 数据工厂 (ADF)](../data-factory/connector-azure-cosmos-db.md) 作业，以使用 HTTP 源和 Cosmos DB 接收器定期将最新的天气数据载入 Azure Cosmos DB。
 
 ### <a name="connect-power-bi-to-azure-cosmos-db"></a>将 Power BI 连接到 Azure Cosmos DB
 
@@ -92,7 +92,7 @@ Azure Analysis Services 提供一个完全托管的平台即服务，用于在�
 
 ### <a name="ingest-weather-data-into-azure-cosmos-db"></a>将天气数据引入 Azure Cosmos DB 
 
-设置一个引入管道，以将[天气数据](https://catalog.data.gov/dataset/local-weather-archive/resource/c28974a2-fc83-4722-8977-9a701323f729)加载到 Azure Cosmos DB 中。 可以设置一个 Azure 数据工厂 (ADF) 作业，以使用 HTTP 源和 Cosmos DB 接收器定期将最新的天气数据载入 Azure Cosmos DB。
+设置一个引入管道，以将[天气数据](https://catalog.data.gov/dataset?groups=climate5434&#topic=climate_navigation)加载到 Azure Cosmos DB 中。 可以设置一个 Azure 数据工厂 (ADF) 作业，以使用 HTTP 源和 Cosmos DB 接收器定期将最新的天气数据载入 Azure Cosmos DB。
 
 ### <a name="connect-azure-analysis-services-to-azure-cosmos-account"></a>将 Azure Analysis Services 连接到 Azure Cosmos 帐户
 
@@ -155,7 +155,7 @@ Azure Analysis Services 提供一个完全托管的平台即服务，用于在�
 
 1. **配置分区刷新与合并** - Azure Analysis Services 允许独立处理分区。 由于我们希望使用最新的数据持续更新“最近月份”分区，因此请将刷新间隔设置为 5 分钟。  可以使用 [REST API](../analysis-services/analysis-services-async-refresh.md) 或[逻辑应用](../analysis-services/analysis-services-refresh-logic-app.md)刷新数据。 不需要刷新历史分区中的数据。 此外，还需要编写一些代码将“最近月份”分区合并到历史分区，并创建一个新的“最近月份”分区。
     
-    <!--Not Available on [Azure automation](../analysis-services/analysis-services-refresh-azure-automation.md)-->
+<!--NOT AVAILABLE ON [Azure automation](../analysis-services/analysis-services-refresh-azure-automation.md)-->
     
 ## <a name="connect-power-bi-to-analysis-services"></a>将 Power BI 连接到 Analysis Services
 
@@ -173,4 +173,4 @@ Azure Analysis Services 提供一个完全托管的平台即服务，用于在�
 
 * [将 Qlik Sense 连接到 Azure Cosmos DB 并可视化数据](visualize-qlik-sense.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

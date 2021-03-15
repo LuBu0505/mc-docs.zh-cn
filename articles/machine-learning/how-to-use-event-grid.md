@@ -10,12 +10,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 31e99cef331463ac147387c1e1b3d11285f41069
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: ce259aa49b76891ac83031fead025db2ae148ddd
+ms.sourcegitcommit: aa152825420691f705c959682144d14877916aff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978259"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224109"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>基于 Azure 机器学习事件触发应用程序、进程或 CI/CD 工作流（预览）
 
@@ -28,9 +28,6 @@ Azure 机器学习管理机器学习进程的整个生命周期，包括模型�
 * 注册模型后使用 Azure 函数
 * 将事件从 Azure 机器学习流式传输到各种终结点
 * 检测到偏移时触发 ML 管道
-
-> [!NOTE] 
-> 目前，只有当运行状态为 **failed** 时才会触发 runStatusChanged 事件
 
 ## <a name="prerequisites"></a>先决条件
 要使用事件网格，需要以参与者或所有者身份访问将为其创建事件的 Azure 机器学习工作区。

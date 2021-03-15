@@ -5,14 +5,14 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 origin.date: 05/19/2020
-ms.date: 12/28/2020
+ms.date: 03/08/2021
 ms.author: v-johya
-ms.openlocfilehash: c40814c2517cc8e60fb290a23a2b2fd071be3cc7
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: e907d555a9a9be54a35e92ad5498992e232a8fa4
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856925"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212672"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>了解哪些良好的话语适用于你的 LUIS 应用
 
@@ -37,7 +37,7 @@ ms.locfileid: "97856925"
 
 它可能是一个句子，比如“为我预订到巴黎的机票”，也可能是句子的片段，比如“预订”或“巴黎航班”。  用户常犯拼写错误。 
 
-应该针对包含拼写错误的陈述训练 LUIS。
+如果你没有对用户陈述进行拼写检查，则应该针对包含拼写错误的陈述训练 LUIS。
 
 ### <a name="use-the-representative-language-of-the-user"></a>使用用户的代表性语言
 

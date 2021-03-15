@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/11/2021
+ms.date: 03/08/2021
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: dafe4cd51221851b4d5919123087e1d7d4663b6c
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: e481febeecf562854c934735fe33d17651cea166
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195098"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212445"
 ---
 # <a name="list-azure-role-assignments-using-azure-cli"></a>使用 Azure CLI 列出 Azure 角色分配
 
@@ -186,5 +186,4 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure CLI 添加或删除 Azure 角色分配](role-assignments-cli.md)
-
+- [使用 Azure CLI 分配 Azure 角色](role-assignments-cli.md)

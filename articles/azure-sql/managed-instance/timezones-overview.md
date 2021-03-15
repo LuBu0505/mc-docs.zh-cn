@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 10/12/2020
-ms.date: 02/01/2021
-ms.openlocfilehash: 7cb61b5223690a5f11032ee5029c7ae90bffe31f
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/15/2021
+ms.openlocfilehash: 91df925c4f93c160cbea3b416d138cc2948a6fc6
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060085"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589896"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Azure SQL 托管实例中的时区
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -52,7 +52,7 @@ ms.locfileid: "99060085"
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
 
-创建实例期间，在[资源管理器模板](./scripts/create-powershell-azure-resource-manager-template.md)中指定 timezoneId 属性来设置时区。
+创建实例期间，在[资源管理器模板](./create-template-quickstart.md)中指定 timezoneId 属性来设置时区。
 
 ```json
 "properties": {

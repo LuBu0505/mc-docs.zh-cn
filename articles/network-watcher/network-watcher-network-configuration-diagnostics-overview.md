@@ -14,12 +14,12 @@ ms.date: 01/18/2021
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
-ms.openlocfilehash: d659ba0ba2fbf69e22c9a9637a5217d20770772f
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 5c32c4363eaca8896d31da43df3a5604118b3203
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231092"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212247"
 ---
 <!--Verified successfully on charactors only-->
 # <a name="introduction-to-network-configuration-diagnostics-in-azure-network-watcher"></a>Azure 网络观察程序中的网络配置诊断简介
@@ -47,4 +47,4 @@ ms.locfileid: "98231092"
  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/invoke-aznetworkwatchernetworkconfigurationdiagnostic?view=azps-4.6.1)
  - [Azure CLI](https://docs.azure.cn/cli/network/watcher#az_network_watcher_run_configuration_diagnostic)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

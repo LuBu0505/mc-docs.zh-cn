@@ -6,17 +6,17 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: include
 origin.date: 01/24/2020
-ms.date: 08/03/2020
+ms.date: 03/15/2021
 ms.testscope: no
 ms.testdate: 04/27/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: da1ef5bd17a4819e37aecebd6ffaa0de46809e6e
-ms.sourcegitcommit: 692b9bad6d8e4d3a8e81c73c49c8cf921e1955e7
+ms.openlocfilehash: 96aef7c0844a3f2f19936cc46fa00980123cd203
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87427551"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996770"
 ---
 <!--Verify sucessfully-->
 1. 在新浏览器窗口中，登录到 [Azure 门户](https://portal.azure.cn/)。
@@ -33,11 +33,12 @@ ms.locfileid: "87427551"
 
     设置|值|说明
     ---|---|---
-    订阅|订阅|选择要用于此 Azure Cosmos DB 帐户的 Azure 订阅。 
+    订阅|你的订阅|选择要用于此 Azure Cosmos DB 帐户的 Azure 订阅。 
     资源组|选择“新建”，然后选择“帐户名称”|选择“新建”。 然后输入帐户的新资源组名称。 为简单起见，请使用与 Azure Cosmos DB 帐户名称相同的名称。 
     帐户名|唯一的名称|输入标识此 Azure Cosmos DB 帐户的唯一名称。<br /><br />帐户名称只能使用小写字母、数字及连字符 (-)，必须为 3 到 31 个字符长。
     API|表|API 确定要创建的帐户的类型。 Azure Cosmos DB 提供五种 API：Core(SQL)（适用于文档数据库）、Gremlin（适用于图数据库）、MongoDB（适用于文档数据库）、Azure 表和 Cassandra。 必须为每种 API 创建单独的帐户。 <br /><br />选择“Azure 表”，因为在本快速入门中，将创建一个使用表 API 的表。 <br /><br />[详细了解表 API](../articles/cosmos-db/table-introduction.md)。|
     位置|离用户最近的区域|选择用于托管 Azure Cosmos DB 帐户的地理位置。 使用离用户最近的位置，使他们能够以最快的速度访问数据。
+    容量模式|预配吞吐量或无服务器|选择“预配吞吐量”以在[预配吞吐量](../articles/cosmos-db/set-throughput.md)模式下创建帐户。 选择“无服务器”以在[无服务器](../articles/cosmos-db/serverless.md)模式下创建帐户。
 
     可以将“异地冗余”和“多区域写入”选项保留为“禁用”，避免产生额外的费用，并跳过“网络”和“标记”部分  。 
 

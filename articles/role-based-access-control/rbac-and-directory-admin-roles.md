@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/11/2021
+ms.date: 03/08/2021
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: b19fdf059fdfc23517a843ca937fb1bb29b18909
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: e11b7576eb7293e2a95cc7e8d44b48e2b1296fb6
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195111"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212709"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>经典订阅管理员角色、Azure 角色和 Azure AD 角色
 
@@ -91,7 +91,7 @@ Azure RBAC 是基于 [Azure 资源管理器](../azure-resource-manager/managemen
 
 ![Azure 门户中的内置角色](./media/rbac-and-directory-admin-roles/roles-list.png)
 
-有关详细信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](role-assignments-portal.md)。
+有关详细信息，请参阅[使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)。
 
 ## <a name="azure-ad-roles"></a>Azure AD 角色
 
@@ -99,7 +99,7 @@ Azure AD 角色用于管理目录中的 Azure AD 资源，例如，创建或编�
 
 | Azure AD 角色 | 权限 | 说明 |
 | --- | --- | --- |
-| [全局管理员](../active-directory/roles/permissions-reference.md#company-administrator-permissions) | <ul><li>管理对 Azure Active Directory 中所有管理功能的访问，以及与 Azure Active Directory 联合的服务</li><li>将管理员角色分配给其他人</li><li>重置任何用户和其他所有管理员的密码</li></ul> | 注册 Azure Active Directory 租户的人员将成为全局管理员。 |
+| [全局管理员](../active-directory/roles/permissions-reference.md#global-administrator) | <ul><li>管理对 Azure Active Directory 中所有管理功能的访问，以及与 Azure Active Directory 联合的服务</li><li>将管理员角色分配给其他人</li><li>重置任何用户和其他所有管理员的密码</li></ul> | 注册 Azure Active Directory 租户的人员将成为全局管理员。 |
 | [用户管理员](../active-directory/roles/permissions-reference.md#user-administrator) | <ul><li>创建和管理用户与组的所有方面</li><li>管理支持票证</li><li>监视服务运行状况</li><li>更改用户、支持管理员和其他用户帐户管理员的密码</li></ul> |  |
 | [计费管理员](../active-directory/roles/permissions-reference.md#billing-administrator) | <ul><li>购买产品</li><li>管理订阅</li><li>管理支持票证</li><li>监视服务运行状况</li></ul> |  |
 
@@ -131,4 +131,3 @@ Azure AD 角色用于管理目录中的 Azure AD 资源，例如，创建或编�
 - [什么是 Azure 基于角色的访问控制 (Azure RBAC)？](overview.md)
 - [Azure Active Directory 中的管理员角色权限](../active-directory/roles/permissions-reference.md)
 - [Azure 经典订阅管理员](classic-administrators.md)
-

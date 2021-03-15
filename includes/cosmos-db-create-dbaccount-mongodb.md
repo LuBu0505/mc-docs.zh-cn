@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: include
 origin.date: 12/26/2018
-ms.date: 02/27/2020
+ms.date: 03/09/2021
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 5ea7dc0601b8e41f281fa4bbac24a857c5dc6472
-ms.sourcegitcommit: f9c242ce5df12e1cd85471adae52530c4de4c7d7
+ms.openlocfilehash: f377bd0b2a826e937cbe131fc915ec418c69d23c
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134861"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996647"
 ---
 1. 在新浏览器窗口中，登录到 [Azure 门户](https://portal.azure.cn/)。
 
@@ -35,6 +35,7 @@ ms.locfileid: "82134861"
     帐户名|输入唯一的名称|输入标识此 Azure Cosmos DB 帐户的唯一名称。 帐户 URI 将是追加到唯一帐户名称的“mongo.cosmos.azure.cn”  。<br /><br />帐户名称只能使用小写字母、数字及连字符 (-)，必须为 3 到 31 个字符长。
     API|Azure Cosmos DB for Mongo DB API|API 确定要创建的帐户的类型。 Azure Cosmos DB 提供五种 API：适用于文档数据库的 Core (SQL)、适用于图形数据库的 Gremlin、适用于文档数据库的 Azure Cosmos DB for Mongo DB API、Azure 表和 Cassandra。 目前，你必须为每种 API 创建单独的帐户。 <br /><br />选择“Azure Cosmos DB for Mongo DB API”，因为本快速入门将创建使用 MongoDB 的集合  。<br /><br />[了解有关 Azure Cosmos DB for MongoDB API 的详细信息](../articles/cosmos-db/mongodb-introduction.md)。|
     位置|选择离用户最近的区域|选择用于托管 Azure Cosmos DB 帐户的地理位置。 使用离用户最近的位置，使他们能够以最快的速度访问数据。|
+    容量模式|预配吞吐量或无服务器|选择“预配吞吐量”以在[预配吞吐量](../articles/cosmos-db/set-throughput.md)模式下创建帐户。 选择“无服务器”以在[无服务器](../articles/cosmos-db/serverless.md)模式下创建帐户。<br><br>**注意**：无服务器帐户仅支持 MongoDB API 版本 3.6。 选择版本 3.2 将强制帐户处于配置的吞吐量模式。
 
     选择“查看 + 创建”  。 可以跳过“网络”  和“标记”  部分。 
 

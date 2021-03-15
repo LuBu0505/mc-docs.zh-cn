@@ -11,14 +11,14 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 12/01/2020
+ms.date: 03/08/2021
 ms.author: v-junlch
-ms.openlocfilehash: b5b79b75428f3f1ea24e7b2d7b885e984020a28c
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: dab488492be2710be06bba0f62fcd24b117e5485
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507967"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212417"
 ---
 # <a name="tutorial-grant-a-group-access-to-azure-resources-using-azure-powershell"></a>教程：使用 Azure PowerShell 授予组对 Azure 资源的访问权限
 
@@ -31,7 +31,7 @@ ms.locfileid: "96507967"
 > * 列出访问权限
 > * 删除访问权限
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -45,7 +45,7 @@ ms.locfileid: "96507967"
 
 在 Azure RBAC 中，若要授予访问权限，请创建角色分配。 角色分配包含三个要素：安全主体、角色订阅和范围。 下面是两个将要在本教程中执行的角色分配：
 
-| 安全主体 | 角色定义 | 作用域 |
+| 安全主体 | 角色定义 | 范围 |
 | --- | --- | --- |
 | 组<br>（RBAC 教程组） | [读者](built-in-roles.md#reader) | 订阅 |
 | 组<br>（RBAC 教程组）| [参与者](built-in-roles.md#contributor) | 资源组<br>(rbac-tutorial-resource-group) |
@@ -295,5 +295,4 @@ ms.locfileid: "96507967"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用 Azure PowerShell 添加或删除 Azure 角色分配](role-assignments-powershell.md)
-
+> [使用 Azure PowerShell 分配 Azure 角色](role-assignments-powershell.md)

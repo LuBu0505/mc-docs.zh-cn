@@ -5,15 +5,15 @@ author: WenJason
 ms.service: signalr
 ms.topic: conceptual
 origin.date: 11/25/2020
-ms.date: 02/22/2021
+ms.date: 03/15/2021
 ms.author: v-jay
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 055c5ca804728575b083acf8cea82fc78b8a8170
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: ad646cf9caffc1855500d6d6957add8f6d49dd85
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697386"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589923"
 ---
 # <a name="azure-security-baseline-for-azure-signalr-service"></a>适用于 Azure SignalR 服务的 Azure 安全基线
 
@@ -25,7 +25,7 @@ ms.locfileid: "101697386"
 
 ## <a name="network-security"></a>网络安全
 
-[有关详细信息，请参阅 *Azure 安全基线：* 网络安全性](/security/benchmarks/security-controls-v2-network-security)。
+[有关详细信息，请参阅 *Azure 安全基线：* 网络安全性](../security/benchmarks/security-controls-v2-network-security.md)。
 
 <!-- ### NS-1: Implement security for internal traffic
 
@@ -95,7 +95,7 @@ Private access is an additional defense in depth measure in addition to authenti
 
 ## <a name="identity-management"></a>标识管理
 
-有关详细信息，请参阅 [Azure 安全基准：标识管理](/security/benchmarks/security-controls-v2-identity-management)。
+有关详细信息，请参阅 [Azure 安全基准：标识管理](../security/benchmarks/security-controls-v2-identity-management.md)。
 
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：将 Azure Active Directory 标准化为中央标识和身份验证系统
 
@@ -215,7 +215,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 ## <a name="privileged-access"></a>特权访问
 
-有关详细信息，请参阅 [Azure 安全基准：特权访问](/security/benchmarks/security-controls-v2-privileged-access)。
+有关详细信息，请参阅 [Azure 安全基准：特权访问](../security/benchmarks/security-controls-v2-privileged-access.md)。
 
 ### <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1：保护和限制具有较高权限的用户
 
@@ -337,7 +337,7 @@ SignalR 服务中的内置角色：
 
 - [什么是 Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)
 
-- [如何在 Azure 中配置 RBAC](../role-based-access-control/role-assignments-portal.md)
+- [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 - [如何使用 Azure AD 标识和访问评审](../active-directory/governance/access-reviews-overview.md)
 
@@ -347,7 +347,7 @@ SignalR 服务中的内置角色：
 
 ## <a name="data-protection"></a>数据保护
 
-[有关详细信息，请参阅 *Azure 安全基线：* 数据保护](/security/benchmarks/security-controls-v2-data-protection)。
+[有关详细信息，请参阅 *Azure 安全基线：* 数据保护](../security/benchmarks/security-controls-v2-data-protection.md)。
 
 ### <a name="dp-2-protect-sensitive-data"></a>DP-2：保护敏感数据
 
@@ -367,7 +367,7 @@ SignalR 服务中的内置角色：
 
 ## <a name="asset-management"></a>资产管理
 
-有关详细信息，请参阅 [Azure 安全基准：资产管理](/security/benchmarks/security-controls-v2-asset-management)。
+有关详细信息，请参阅 [Azure 安全基准：资产管理](../security/benchmarks/security-controls-v2-asset-management.md)。
 
 ### <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1：确保安全团队可以了解与资产相关的风险
 
@@ -482,9 +482,9 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 请为 Azure SignalR 服务启用 Azure 资源日志。 可以使用 Azure 安全中心和 Azure Policy 来启用资源日志和日志数据收集。 这些日志可能对日后调查安全事件和执行取证演练至关重要。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/platform/platform-logs-overview.md)
+- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Azure SignalR 服务的资源日志](signalr-howto-diagnostic-logs.md)
 
@@ -504,7 +504,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 许多组织选择将 Azure Sentinel 用于频繁使用的“热”数据，并将 Azure 存储用于不太频繁使用的“冷”数据。
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
 <!-- - [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md) -->
 
@@ -514,7 +514,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 ## <a name="incident-response"></a>事件响应
 
-[有关详细信息，请参阅 *Azure 安全基线：* 事件响应](/security/benchmarks/security-controls-v2-incident-response)。
+[有关详细信息，请参阅 *Azure 安全基线：* 事件响应](../security/benchmarks/security-controls-v2-incident-response.md)。
 
 <!-- ### IR-1: Preparation – update incident response process for Azure
 
@@ -683,7 +683,7 @@ You can use Azure Blueprints to automate deployment and configuration of service
 
 ## <a name="backup-and-recovery"></a>备份和恢复
 
-有关详细信息，请参阅 [Azure 安全基准：备份和恢复](/security/benchmarks/security-controls-v2-backup-recovery)。
+有关详细信息，请参阅 [Azure 安全基准：备份和恢复](../security/benchmarks/security-controls-v2-backup-recovery.md)。
 
 ### <a name="br-4-mitigate-risk-of-lost-keys"></a>BR-4：减少密钥丢失风险
 
@@ -699,5 +699,5 @@ You can use Azure Blueprints to automate deployment and configuration of service
 
 ## <a name="next-steps"></a>后续步骤
 
-- 参阅 [Azure 安全基准 V2 概述](/security/benchmarks/overview)
-- 详细了解 [Azure 安全基线](/security/benchmarks/security-baselines-overview)
+- 参阅 [Azure 安全基准 V2 概述](../security/benchmarks/overview.md)
+- 详细了解 [Azure 安全基线](../security/benchmarks/security-baselines-overview.md)

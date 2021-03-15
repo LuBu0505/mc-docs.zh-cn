@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sashan,moslake,josack
 origin.date: 02/02/2021
-ms.date: 02/22/2021
-ms.openlocfilehash: b121c361f227c366612d297cdad6749e721baf61
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.date: 03/15/2021
+ms.openlocfilehash: 3bd5503516f202c19f099db06facdea77a5c1da9
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697359"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102590016"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL 数据库和 Azure Synapse Analytics 服务器的资源限制
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -107,11 +107,11 @@ ms.locfileid: "101697359"
 
 ## <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>用户工作负荷和内部进程的资源消耗量
 
-将在 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 和 [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 视图的 `avg_cpu_percent` 和 `avg_memory_usage_percent` 列中报告每个数据库中的用户工作负荷的 CPU 和内存消耗量。 对于弹性池，将在 [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) 视图中报告池级别的资源消耗量。 对于池级别的[单一数据库](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserversdatabases)和[弹性池](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserverselasticpools)，还会通过 Azure Monitor 指标 `cpu_percent` 报告用户工作负荷的 CPU 消耗量。
+将在 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 和 [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 视图的 `avg_cpu_percent` 和 `avg_memory_usage_percent` 列中报告每个数据库中的用户工作负荷的 CPU 和内存消耗量。 对于弹性池，将在 [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) 视图中报告池级别的资源消耗量。 对于池级别的[单一数据库](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserversdatabases)和[弹性池](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserverselasticpools)，还会通过 Azure Monitor 指标 `cpu_percent` 报告用户工作负荷的 CPU 消耗量。
 
 Azure SQL 数据库需要使用计算资源来实现核心服务功能，例如高可用性和灾难恢复、数据库备份和还原、监视、查询存储、自动优化，等等。对于这些内部进程，系统会使用[资源治理](#resource-governance)机制从总体资源中为其留出有限的一部分特定资源，使剩余的资源可供用户工作负载使用。 当内部进程不使用计算资源时，系统会将其提供给用户工作负载使用。
 
-将在 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 和 [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 视图的 `avg_instance_cpu_percent` 和 `avg_instance_memory_percent` 列中报告用户工作负载和内部进程的总 CPU 和内存消耗量。 对于池级别的[单一数据库](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserversdatabases)和[弹性池](../../azure-monitor/platform/metrics-supported.md#microsoftsqlserverselasticpools)，还会通过 Azure Monitor 指标 `sqlserver_process_core_percent` 和 `sqlserver_process_memory_percent` 报告此数据。
+将在 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 和 [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 视图的 `avg_instance_cpu_percent` 和 `avg_instance_memory_percent` 列中报告用户工作负载和内部进程的总 CPU 和内存消耗量。 对于池级别的[单一数据库](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserversdatabases)和[弹性池](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserverselasticpools)，还会通过 Azure Monitor 指标 `sqlserver_process_core_percent` 和 `sqlserver_process_memory_percent` 报告此数据。
 
 [sys.dm_resource_governor_resource_pools_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database) 和 [sys.dm_resource_governor_workload_groups_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-history-ex-azure-sql-database) 视图报告了用户工作负载和内部流程最近资源消耗的更详细信息。 有关这些视图中提及的资源池和工作负载组的详细信息，请参阅[资源治理](#resource-governance)。 这些视图报告了相关资源池和工作负载组中用户工作负载和特定内部流程的资源利用情况。
 

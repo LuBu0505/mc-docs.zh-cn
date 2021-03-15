@@ -5,19 +5,19 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-origin.date: 10/27/2020
+origin.date: 03/01/2021
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/15/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: cbd86310f3cbba76792f44d6657c1e78bc8eb977
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 289015fa3f85a3cede719806284aba9cf14691ec
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231012"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996692"
 ---
 <!--Verified successfully, ONLY CHARACTERS CONTENT-->
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Azure Cosmos DB 中的更改源拉取模型
@@ -26,7 +26,7 @@ ms.locfileid: "98231012"
 使用更改源拉取模型，你可以按自己的节奏使用 Azure Cosmos DB 更改源。 正如你使用[更改源处理器](change-feed-processor.md)所做的那样，你可以使用更改源拉取模型来并行处理多个更改源使用者之间的更改。
 
 > [!NOTE]
-> 更改源拉取模型当前[仅在 Azure Cosmos DB .NET SDK 中提供了预览版](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.15.0-preview)。 该预览版尚不可用于其他 SDK 版本。
+> 更改源拉取模型当前[仅在 Azure Cosmos DB .NET SDK 中提供了预览版](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.17.0-preview)。 该预览版尚不可用于其他 SDK 版本。
 
 ## <a name="comparing-with-change-feed-processor"></a>与更改源处理器进行比较
 
@@ -69,19 +69,19 @@ ms.locfileid: "98231012"
 下面的示例用于获取一个可返回实体对象（在本例中为 `User` 对象）的 `FeedIterator`：
 
 ```csharp
-FeedIterator<User> InteratorWithPOCOS = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning());
+FeedIterator<User> InteratorWithPOCOS = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning());
 ```
 
 下面的示例用于获取一个可返回 `Stream` 的 `FeedIterator`：
 
 ```csharp
-FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator<User>(ChangeFeedStartFrom.Beginning());
+FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning());
 ```
 
 如果没有向 `FeedIterator` 提供 `FeedRange`，则可以按你自己的节奏处理整个容器的更改源。 下面的示例将从当前时间开始读取所有更改：
 
 ```csharp
-FeedIterator iteratorForTheEntireContainer = container.GetChangeFeedStreamIterator<User>(ChangeFeedStartFrom.Now());
+FeedIterator iteratorForTheEntireContainer = container.GetChangeFeedStreamIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Now());
 
 while (iteratorForTheEntireContainer.HasMoreResults)
 {
@@ -95,7 +95,7 @@ while (iteratorForTheEntireContainer.HasMoreResults)
     }
     catch {
         Console.WriteLine($"No new changes");
-        Thread.Sleep(5000);
+        await Task.Delay(TimeSpan.FromSeconds(5));
     }
 }
 ```
@@ -107,7 +107,9 @@ while (iteratorForTheEntireContainer.HasMoreResults)
 在某些情况下，你可能只需要处理特定分区键的更改。 可以获取特定分区键的 `FeedIterator`，并采用处理整个容器的方式来处理更改。
 
 ```csharp
-FeedIterator<User> iteratorForPartitionKey = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(FeedRange.FromPartitionKey(new PartitionKey("PartitionKeyValue"))));
+FeedIterator<User> iteratorForPartitionKey = container.GetChangeFeedIterator<User>(
+    ChangeFeedMode.Incremental, 
+    ChangeFeedStartFrom.Beginning(FeedRange.FromPartitionKey(new PartitionKey("PartitionKeyValue"))));
 
 while (iteratorForThePartitionKey.HasMoreResults)
 {
@@ -122,7 +124,7 @@ while (iteratorForThePartitionKey.HasMoreResults)
     catch (CosmosException exception) when (exception.StatusCode == System.Net.HttpStatusCode.NotModified)
     {
         Console.WriteLine($"No new changes");
-        Thread.Sleep(5000);
+        await Task.Delay(TimeSpan.FromSeconds(5));
     }
 }
 ```
@@ -151,7 +153,7 @@ IReadOnlyList<FeedRange> ranges = await container.GetFeedRangesAsync();
 计算机 1：
 
 ```csharp
-FeedIterator<User> iteratorA = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(ranges[0]));
+FeedIterator<User> iteratorA = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning(ranges[0]));
 while (iteratorA.HasMoreResults)
 {
     try {
@@ -165,7 +167,7 @@ while (iteratorA.HasMoreResults)
     catch (CosmosException exception) when (exception.StatusCode == System.Net.HttpStatusCode.NotModified)
     {
         Console.WriteLine($"No new changes");
-        Thread.Sleep(5000);
+        await Task.Delay(TimeSpan.FromSeconds(5));
     }
 }
 ```
@@ -173,7 +175,7 @@ while (iteratorA.HasMoreResults)
 计算机 2：
 
 ```csharp
-FeedIterator<User> iteratorB = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(ranges[1]));
+FeedIterator<User> iteratorB = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning(ranges[1]));
 while (iteratorB.HasMoreResults)
 {
     try {
@@ -187,7 +189,7 @@ while (iteratorB.HasMoreResults)
     catch (CosmosException exception) when (exception.StatusCode == System.Net.HttpStatusCode.NotModified)
     {
         Console.WriteLine($"No new changes");
-        Thread.Sleep(5000);
+        await Task.Delay(TimeSpan.FromSeconds(5));
     }
 }
 ```
@@ -197,7 +199,7 @@ while (iteratorB.HasMoreResults)
 可以通过创建一个继续标记来保存 `FeedIterator` 的位置。 继续标记是一个字符串值，用于跟踪 FeedIterator 上次处理的更改。 这允许 `FeedIterator` 稍后在此位置继续。 以下代码将读取更改源中自容器创建以来的内容。 当没有更多更改可用时，它会保留一个继续标记，以便以后可以继续使用更改源。
 
 ```csharp
-FeedIterator<User> iterator = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning());
+FeedIterator<User> iterator = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning());
 
 string continuation = null;
 
@@ -215,12 +217,12 @@ while (iterator.HasMoreResults)
     catch (CosmosException exception) when (exception.StatusCode == System.Net.HttpStatusCode.NotModified)
     {
         Console.WriteLine($"No new changes");
-        Thread.Sleep(5000);
+        await Task.Delay(TimeSpan.FromSeconds(5));
     }   
 }
 
 // Some time later
-FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.ContinuationToken(continuation));
+FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.ContinuationToken(continuation));
 ```
 
 只要 Cosmos 容器仍然存在，FeedIterator 的继续标记将永不过期。
@@ -231,4 +233,4 @@ FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIte
 * [使用更改源处理器](change-feed-processor.md)
 * [触发 Azure Functions](change-feed-functions.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

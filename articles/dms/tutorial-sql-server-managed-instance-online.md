@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 origin.date: 08/04/2020
-ms.date: 02/01/2021
-ms.openlocfilehash: 3266cfd292b4a635f7216a43dc8f92c3b822a871
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/15/2021
+ms.openlocfilehash: 1fe320ab3547a7ab813698fbd5ef63b0f19a3ab8
+ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060081"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103211832"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>教程：使用 DMS 将 SQL Server 联机迁移到 Azure SQL 托管实例
 
@@ -71,7 +71,7 @@ ms.locfileid: "99060081"
     > * 选择允许所有网络访问该存储器帐户。
     > * 在 MI 子网中启用[子网委托](../virtual-network/manage-subnet-delegation.md)，并更新存储帐户防火墙规则以允许此子网。
 
-* 请确保虚拟网络网络安全组规则未阻止到 Azure 数据库迁移服务的以下出站通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
+* 请确保虚拟网络的网络安全组规则不阻止 ServiceBus、存储服务和 AzureMonitor 的 ServiceTag 出站端口 443。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
 * 配置[针对源数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 SQL Server（默认情况下为 TCP 端口 1433）。 如果默认实例正在侦听其他端口，请将该端口添加到防火墙。
 * 如果使用动态端口运行多个命名 SQL Server 实例，则可能需要启用 SQL Browser 服务并允许通过防火墙访问 UDP 端口 1434，以便 Azure 数据库迁移服务可连接到源服务器上的命名实例。
@@ -93,7 +93,7 @@ ms.locfileid: "99060081"
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>注册 Microsoft.DataMigration 资源提供程序
 
-1. 登录到 Azure 门户，选择“所有服务”  ，然后选择“订阅”  。
+1. 登录到 Azure 门户，选择“所有服务”，然后选择“订阅”。
 
     ![显示门户订阅](media/tutorial-sql-server-to-managed-instance-online/portal-select-subscriptions.png)
 
@@ -142,7 +142,7 @@ ms.locfileid: "99060081"
 
 创建服务实例后，在 Azure 门户中找到并打开它，然后创建一个新的迁移项目。
 
-1. 在 Azure 门户中，选择“所有服务”  ，搜索 Azure 数据库迁移服务，然后选择“Azure 数据库迁移服务”  。
+1. 在 Azure 门户中，选择“所有服务”，搜索 Azure 数据库迁移服务，然后选择“Azure 数据库迁移服务”。
 
     ![查找 Azure 数据库迁移服务的所有实例](media/tutorial-sql-server-to-managed-instance-online/dms-search.png)
 
@@ -169,7 +169,7 @@ ms.locfileid: "99060081"
 
    ![源详细信息](media/tutorial-sql-server-to-managed-instance-online/dms-source-details2.png)
 
-3. 选择“保存” 。
+3. 选择“保存”  。
 
 4. 在“选择源数据库”屏幕上，选择用于迁移的“Adventureworks2012”数据库 。
 
@@ -178,7 +178,7 @@ ms.locfileid: "99060081"
     > [!IMPORTANT]
     > 如果使用 SQL Server Integration Services (SSIS)，则 DMS 目前不支持将 SSIS 项目/包的目录数据库 (SSISDB) 从 SQL Server 迁移到 SQL 托管实例。 但是，你可以在 Azure 数据工厂 (ADF) 中预配 SSIS 并将 SSIS 项目/包重新部署到由 SQL 托管实例托管的目标 SSISDB。 有关如何迁移 SSIS 包的详细信息，请参阅[将 SQL Server Integration Services 包迁移到 Azure](./how-to-migrate-ssis-packages.md)。
 
-5. 选择“保存” 。
+5. 选择“保存”  。
 
 ## <a name="specify-target-details"></a>指定目标详细信息
 
@@ -194,7 +194,7 @@ ms.locfileid: "99060081"
 
     ![选择目标](media/tutorial-sql-server-to-managed-instance-online/dms-target-details3.png)
 
-4. 选择“保存” 。
+4. 选择“保存”  。
 
 ## <a name="select-source-databases"></a>选择源数据库
 
@@ -202,7 +202,7 @@ ms.locfileid: "99060081"
 
     ![选择源数据库](media/tutorial-sql-server-to-managed-instance-online/dms-select-source-databases2.png)
 
-2. 选择“保存” 。
+2. 选择“保存”  。
 
 ## <a name="configure-migration-settings"></a>配置迁移设置
 
@@ -224,7 +224,7 @@ ms.locfileid: "99060081"
     > [!IMPORTANT]
     > 如果启用了环回检查功能，并且源 SQL Server 和文件共享位于同一台计算机上，则源将无法使用 FQDN 访问文件共享。 若要解决此问题，请按照[此处](https://support.microsoft.com/help/926642/error-message-when-you-try-to-access-a-server-locally-by-using-its-fqd)的说明禁用环回检查功能。
 
-2. 选择“保存” 。
+2. 选择“保存”  。
 
 ## <a name="review-the-migration-summary"></a>查看迁移摘要
 
@@ -236,7 +236,7 @@ ms.locfileid: "99060081"
 
 ## <a name="run-and-monitor-the-migration"></a>运行并监视迁移
 
-1. 选择“运行迁移”  。
+1. 选择“运行迁移”。
 
 2. 在“迁移活动”屏幕上，选择“刷新”以更新显示。
 

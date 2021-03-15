@@ -12,14 +12,14 @@ metadata:
   ms.service: speech-service
   ms.topic: hub-page
   origin.date: 03/24/2020
-  ms.date: 12/10/2020
-  ms.author: v-tawe
-  ms.openlocfilehash: cd7b051257417c4c1eac0aa56c7b77f47153759e
-  ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+  ms.date: 03/08/2021
+  ms.author: v-johya
+  ms.openlocfilehash: 2978b96c45b5385e6413872e342f66224813591f
+  ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/10/2020
-  ms.locfileid: "97004144"
+  ms.lasthandoff: 03/12/2021
+  ms.locfileid: "103212692"
 highlightedContent:
   items:
   - title: 什么是语音服务？
@@ -127,7 +127,7 @@ tools:
   - title: Java
     imageSrc: https://docs.microsoft.com/media/logos/logo_java.svg
     url: https://aka.ms/csspeech/javaref
-  - title: Javascript
+  - title: JavaScript
     imageSrc: https://docs.microsoft.com/media/logos/logo_js.svg
     url: https://aka.ms/csspeech/javascriptref
   - title: Objective-C 和 Swift
@@ -149,8 +149,6 @@ additionalContent:
         url: rest-text-to-speech.md
     - title: 资源
       links:
-      - text: Docs 中的新增内容
-        url: whats-new.md
       - text: 定价
         url: https://www.azure.cn/pricing/details/cognitive-services/
       - text: 区域

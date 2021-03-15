@@ -6,16 +6,16 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 origin.date: 07/29/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/15/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: ba04b971dd25fe628a45b1a5c06413a95b35081c
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 8d5a721caa8c87b3aac45907d7a12ac10792cb53
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230815"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996757"
 ---
 <!--Verified successfully-->
 # <a name="pagination-in-azure-cosmos-db"></a>Azure Cosmos DB 中的分页
@@ -63,9 +63,7 @@ ms.locfileid: "98230815"
 
 在 Azure Cosmos DB 的 REST API 中，可以使用 `x-ms-continuation` 标头管理继续标记。 与使用 .NET 或 Java SDK 进行查询一样，如果 `x-ms-continuation` 响应标头不为空，则表示查询还有其他结果。
 
-只要使用相同的 SDK 版本，继续标记就永远不会过期。 可以选择[限制继续标记的大小](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.feedoptions.responsecontinuationtokenlimitinkb?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Documents_Client_FeedOptions_ResponseContinuationTokenLimitInKb)。 不管容器中的数据量或物理分区数量如何，查询都会返回一个继续标记。
-
-<!--CORRECT ON https://docs.azure.cn/dotnet/api/-->
+只要使用相同的 SDK 版本，继续标记就永远不会过期。 可以选择[限制继续标记的大小](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.feedoptions.responsecontinuationtokenlimitinkb#Microsoft_Azure_Documents_Client_FeedOptions_ResponseContinuationTokenLimitInKb)。 不管容器中的数据量或物理分区数量如何，查询都会返回一个继续标记。
 
 不能对具有 [GROUP BY](sql-query-group-by.md) 或 [DISTINCT](sql-query-keywords.md#distinct) 的查询使用继续标记，因为这些查询需要存储大量状态。 对于具有 `DISTINCT` 的查询，如果将 `ORDER BY` 添加到查询中，则可以使用继续标记。
 
@@ -83,4 +81,4 @@ ORDER BY c.name
 - [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [ORDER BY 子句](sql-query-order-by.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -1,27 +1,23 @@
 ---
 title: 使用 Azure 门户将数据从 SQL Server 复制到 Blob 存储
 description: 了解如何在 Azure 数据工厂中使用自承载 Integration Runtime 将数据从本地数据存储复制到云。
-services: data-factory
 ms.author: v-jay
 author: WenJason
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-origin.date: 11/09/2020
-ms.date: 11/23/2020
-ms.openlocfilehash: c3829ef12198f55c3512bc0aa04f1a30a7519fb8
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+origin.date: 02/18/2021
+ms.date: 03/15/2021
+ms.openlocfilehash: 442656b23af607aa3651f4aeec1a71c0154f97d2
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432499"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589848"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>将数据从 SQL Server 数据库复制到 Azure Blob 存储
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本教程使用 Azure 数据工厂用户界面 (UI) 创建一个数据工厂管道，用于将数据从 SQL Server 数据库复制到 Azure Blob 存储。 同时创建一个自承载 Integration Runtime，用其在本地数据存储和云数据存储之间移动数据。
 
@@ -46,7 +42,7 @@ ms.locfileid: "96432499"
 ### <a name="azure-roles"></a>Azure 角色
 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须分配有“参与者”或“所有者”角色，或者必须是 Azure 订阅的管理员。
 
-若要查看自己在订阅中的权限，请转到 Azure 门户。 在右上角选择自己的用户名，然后选择“权限”。 如果可以访问多个订阅，请选择相应的订阅。 有关如何将用户添加到角色的示例说明，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)。
+若要查看自己在订阅中的权限，请转到 Azure 门户。 在右上角选择自己的用户名，然后选择“权限”。 如果可以访问多个订阅，请选择相应的订阅。 有关如何将用户添加到角色的示例说明，请查看[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014、2016 和 2017
 在本教程中，需将 SQL Server 数据库用作源数据存储。 在本教程中创建的数据工厂中的管道将数据从这个 SQL Server 数据库（源）复制到 Blob 存储（接收器）。 然后，你可以在 SQL Server 数据库中创建名为 **emp** 的表，并向表中插入几个示例条目。
@@ -122,9 +118,9 @@ ms.locfileid: "96432499"
    ![新建数据工厂名称](./media/doc-common-process/name-not-available-error.png)
 
 1. 选择要在其中创建数据工厂的 Azure **订阅**。
-1. 对于“资源组”，请执行以下步骤之一：
+1. 对于“资源组”，请执行以下步骤之一： 
 
-   - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
+   - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
 
    - 选择“新建”，并输入资源组的名称。
         
@@ -199,9 +195,9 @@ ms.locfileid: "96432499"
 
 1. 转到“属性”窗口底部的“接收器”选项卡，选择“+ 新建”。  
 
-1. 在“新建数据集”对话框中，选择“Azure Blob 存储”，  然后选择“继续”。 
+1. 在“新建数据集”对话框中，选择“Azure Blob 存储”，  然后选择“继续”。
 
-1. 在“选择格式”对话框中，选择数据的格式类型。 然后选择“继续”。 
+1. 在“选择格式”对话框中，选择数据的格式类型。 然后选择“继续”。
 
     ![数据格式选择](./media/doc-common-process/select-data-format.png)
 

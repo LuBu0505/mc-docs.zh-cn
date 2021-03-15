@@ -9,31 +9,27 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 09/01/2020
-ms.date: 12/30/2020
-ms.author: v-tawe
+ms.date: 03/08/2021
+ms.author: v-johya
 ms.custom: cog-serv-seo-aug-2020
 keywords: 语音转文本, 语音转文本软件
-ms.openlocfilehash: fa35f6b22ccd9b2d5bb9762b0008f0c806b550a3
-ms.sourcegitcommit: eb742dcade404c9909d01e2570188f0bc4076992
+ms.openlocfilehash: bdfd5c69e95868791538253a5cd084a6c87b09b0
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97820301"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212712"
 ---
 # <a name="what-is-speech-to-text"></a>什么是语音转文本？
 
 本概述介绍语音转文本服务的优势和功能。
-使用语音转文本（也称为语音识别）功能，可将音频流实时听录为文本。 应用程序、工具或设备可以使用、显示和处理此文本即命令输入。 此服务由 Microsoft 对 Cortana 和 Office 产品使用的同一识别技术提供支持。 它可与<a href="./speech-translation.md" target="_blank">翻译<span class="docon docon-navigate-external x-hidden-focus"></span></a>和<a href="./text-to-speech.md" target="_blank">文本转语音<span class="docon docon-navigate-external x-hidden-focus"></span></a>服务产品无缝地协同工作。 有关可用语音转文本语言的完整列表，请参阅[支持的语言](language-support.md#speech-to-text)。
+使用语音转文本（也称为语音识别）功能，可将音频流实时听录为文本。 应用程序、工具或设备可以使用、显示和处理此文本即命令输入。 此服务由 Microsoft 对 Cortana 和 Office 产品使用的同一识别技术提供支持。 它可与<a href="./speech-translation.md" target="_blank">翻译</a>和<a href="./text-to-speech.md" target="_blank">文本转语音</a>服务产品无缝地协同工作。 有关可用语音转文本语言的完整列表，请参阅[支持的语言](language-support.md#speech-to-text)。
 
 语音转文本服务默认使用通用语言模型。 此模型已使用 Microsoft 自有的数据训练，部署在云中。 它非常适合用于对话和听写方案。 使用语音转文本在独特的环境中进行识别和听录时，可以创建并训练自定义的声学、语言和发音模型。 自定义有助于解决环境干扰或特定于行业的词汇的问题。
 
 通过使用其他参考文本作为输入，语音转文本服务还支持[发音评估](rest-speech-to-text.md#pronunciation-assessment-parameters)功能（用于评估语音发音），并向说话人提供有关语音准确性和流畅度的反馈。 通过发音评估，语言学习者可以练习、获得即时反馈并改进其发音，因此能够自信地讲话和演示。 教师可以使用此功能来实时评估多个说话人的发音。 此功能目前支持美国英语，并与专家进行的语音评估高度相关。
 
-<!-- 
-> [!NOTE]
-> Bing Speech was decommissioned on October 15, 2019. If your applications, tools, or products are using the Bing Speech APIs or Custom Speech, we've created guides to help you migrate to the Speech service.
-> - [Migrate from Bing Speech to the Speech service](how-to-migrate-from-bing-speech.md)
--->
+<!--Not available in MC: Bing Speech-->
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
@@ -63,3 +59,4 @@ GitHub 上提供了语音 SDK 的示例代码。 这些示例涵盖了常见方�
 
 - [免费获取语音服务订阅密钥](overview.md#try-the-speech-service-for-free)
 - [获取语音 SDK](speech-sdk.md)
+

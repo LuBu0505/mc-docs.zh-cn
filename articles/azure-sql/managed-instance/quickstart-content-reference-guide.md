@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
 origin.date: 07/11/2019
-ms.date: 07/13/2020
-ms.openlocfilehash: aff91c78a70a7e712056ee774e3fd270fe06f3fc
-ms.sourcegitcommit: fa26665aab1899e35ef7b93ddc3e1631c009dd04
+ms.date: 03/15/2021
+ms.openlocfilehash: 7e5c295095a8cdc2c2304533d39e0047fa785598
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86227321"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589899"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Azure SQL 托管实例入门
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "86227321"
   > - 也可以从本地网络使用 Express Route 或站点到站点连接，但这些方法不在这些快速入门的讨论范围内。
   > - 请注意，如果将保持期从 0（无限制保留）更改为任意其他值，“保留”将仅适用于保留值更改后所写入的日志（仍保留在保留值设置为“无限制”的期间所写入的日志，即使启用了前述保留）。
 
-作为手动创建 SQL 托管实例的替代方法，可使用 [PowerShell](scripts/create-configure-managed-instance-powershell.md)、[带资源管理器模板的 PowerShell](scripts/create-powershell-azure-resource-manager-template.md) 或 [Azure CLI](/cli/sql/mi#az-sql-mi-create) 来编写脚本并自动执行此过程。
+作为手动创建 SQL 托管实例的替代方法，可使用 [PowerShell](scripts/create-configure-managed-instance-powershell.md)、[带资源管理器模板的 PowerShell](./create-template-quickstart.md) 或 [Azure CLI](/cli/sql/mi#az-sql-mi-create) 来编写脚本并自动执行此过程。
 
 ### <a name="migrate-your-databases"></a>迁移数据库
 
@@ -73,7 +73,7 @@ ms.locfileid: "86227321"
 但是，若要迁移生产数据库，甚至迁移用于某些性能测试的开发/测试数据库，则需要考虑使用其他技术，例如：
 
 - 性能测试 - 测量源 SQL Server 实例的基线性能指标，并将其与迁移数据库的目标 SQL 托管实例上的性能指标进行比较。 详细了解[性能比较的最佳做法](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210)。
-- 联机迁移 - 使用本文所述的本机 `RESTORE` 时，必须等待数据库还原完毕（如果该数据库尚未存储在 Azure Blob 存储中，还要等待复制到其中）。 这会导致应用程序出现一段停机时间，尤其是数据库较大时。 若要移动生产数据库，请使用[数据迁移服务 (DMS)](/dms/tutorial-sql-server-to-managed-instance?toc=/sql-database/toc.json)，它可以在尽量缩短停机时间的情况下迁移数据库。 为实现这种迁移，DMS 会以增量方式将源数据库中发生的更改推送到所要还原的 SQL 托管实例数据库。 这样，便可以在尽量缩短停机时间的前提下，快速将应用程序从源数据库切换到目标数据库。
+- 联机迁移 - 使用本文所述的本机 `RESTORE` 时，必须等待数据库还原完毕（如果该数据库尚未存储在 Azure Blob 存储中，还要等待复制到其中）。 这会导致应用程序出现一段停机时间，尤其是数据库较大时。 若要移动生产数据库，请使用[数据迁移服务 (DMS)](../../dms/tutorial-sql-server-to-managed-instance.md?toc=%2fsql-database%2ftoc.json)，它可以在尽量缩短停机时间的情况下迁移数据库。 为实现这种迁移，DMS 会以增量方式将源数据库中发生的更改推送到所要还原的 SQL 托管实例数据库。 这样，便可以在尽量缩短停机时间的前提下，快速将应用程序从源数据库切换到目标数据库。
 
 详细了解[建议的迁移过程](migrate-to-instance-from-sql-server.md)。
 

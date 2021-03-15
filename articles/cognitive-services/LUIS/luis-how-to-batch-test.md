@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.author: v-johya
 ms.topic: how-to
-ms.date: 01/19/2021
+ms.date: 03/08/2021
 origin.date: 10/25/2019
-ms.openlocfilehash: 2c0975ea319b05e37fb3c757e235db747502a23f
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: c16ad56863becd3355ee6709cbeca1c0a78bc4bb
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751074"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212728"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>使用一组示例话语进行批处理测试
 
@@ -120,7 +120,7 @@ ms.locfileid: "98751074"
 
 若要查看批处理测试结果，请选择“查看结果”。 测试结果以图形显示如何针对活动版本预测测试言语。
 
-批处理图表将结果显示在四个象限中。 在图表右侧是一个筛选器。 筛选器包含意向和实体。 选择[图表的一个部分](luis-concept-batch-test.md#batch-test-results)或图表中的一个点时，关联的话语显示在图表下方。
+批处理图表将结果显示在四个象限中。 在图表右侧是一个筛选器。 筛选器包含意向和实体。 选择[图表的一个部分](#review-batch-results-for-intents)或图表中的一个点时，关联的话语显示在图表下方。
 
 鼠标悬停在图表上时，鼠标滚轮可以放大或缩小图表中的显示。 当图表上有许多点紧密地聚集在一起时，这是非常有用的。
 
@@ -187,7 +187,7 @@ ModifyOrder 实体（包含子实体的机器实体）显示顶级实体是否�
 
 ## <a name="batch-testing-using-the-rest-api"></a>使用 REST API 进行批量测试 
 
-LUIS 允许你使用 LUIS 门户和 REST API 进行批量测试。 下面列出了 REST API 的终结点。 有关使用 LUIS 门户进行批量测试的信息，请参阅[教程：批量测试数据集](luis-tutorial-batch-testing.md)。 请使用下面的完整 URL（将占位符值替换为你自己的 LUIS 预测密钥和终结点）。 
+LUIS 允许你使用 LUIS 门户和 REST API 进行批量测试。 下面列出了 REST API 的终结点。 有关使用 LUIS 门户进行批量测试的信息，请参阅[教程：批量测试数据集]()。 请使用下面的完整 URL（将占位符值替换为你自己的 LUIS 预测密钥和终结点）。 
 
 不要忘记将 LUIS 键添加到标头中的 `Ocp-Apim-Subscription-Key` 并将 `Content-Type` 设置为 `application/json`。
 
@@ -286,6 +286,4 @@ LUIS 允许你使用 LUIS 门户和 REST API 进行批量测试。 下面列出�
 
 * [使用 LUIS 标记建议的陈述](luis-how-to-review-endpoint-utterances.md)
 * [使用相关功能来改进 LUIS 应用的性能](luis-how-to-add-features.md)
-* [通过本教程了解批处理测试](luis-tutorial-batch-testing.md)
-* [了解批处理测试概念](luis-concept-batch-test.md)。
 

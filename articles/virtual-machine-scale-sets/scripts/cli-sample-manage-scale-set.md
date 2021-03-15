@@ -3,17 +3,17 @@ title: 用于虚拟机规模集管理的 Azure CLI 示例
 description: 此示例演示如何将磁盘添加到虚拟机规模集。 可以升级磁盘并将虚拟机添加到 Azure AD 身份验证。
 author: mimckitt
 ms.author: v-junlch
-ms.date: 02/19/2021
+ms.date: 03/09/2021
 ms.topic: sample
 ms.service: virtual-machine-scale-sets
 ms.devlang: azurecli
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 56340886876ece3ef50bb3e6fb9bc587e3c2f5e2
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: ae5c426aba0c05557c39051978a0e8549ea348f5
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101751789"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212601"
 ---
 # <a name="create-and-manage-virtual-machine-scale-set"></a>创建和管理虚拟机规模集
 
@@ -66,7 +66,7 @@ az disk update --resource-group MyResourceGroup --name myDataDisk --size-gb 200
 az vmss restart --resource-group MyResourceGroup --name myScaleSet --instance-ids 0
 ```
 
-若要使用扩展的磁盘，请扩展基础分区。 有关详细信息，请参阅[扩展磁盘分区和文件系统](/virtual-machines/linux/expand-disks#expand-a-disk-partition-and-filesystem)。
+若要使用扩展的磁盘，请扩展基础分区。 有关详细信息，请参阅[扩展磁盘分区和文件系统](../../virtual-machines/linux/expand-disks.md#expand-a-disk-partition-and-filesystem)。
 
 此示例调整了数据磁盘的大小。 可以使用此相同的过程来更新 OS 磁盘。 有关 Windows 虚拟机的详细信息，请参阅[如何扩展虚拟机的 OS 驱动器](../../virtual-machines/windows/expand-os-disk.md)。 有关 Linux 虚拟机的详细信息，请参阅[使用 Azure CLI 扩展 Linux VM 上的虚拟硬盘](../../virtual-machines/linux/expand-disks.md)。
 

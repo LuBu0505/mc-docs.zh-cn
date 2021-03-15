@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: multiple
 ms.workload: na
 origin.date: 11/18/2020
-ms.date: 02/01/2021
+ms.date: 03/15/2021
 ms.author: v-jay
-ms.openlocfilehash: 8cec4ae526d6d2b640b383a018b5bac02c320bed
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: e2ec20fbc6111f41889cb3a344cc69c2a05ea228
+ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99061057"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103211849"
 ---
 # <a name="create-a-basic-audio-transform"></a>创建基本音频转换
 
@@ -38,7 +38,6 @@ ms.locfileid: "99061057"
 
 [!INCLUDE [media-services-cli-instructions.md](./includes/task-create-basic-audio-rest.md)]
 
-
 ## <a name="next-steps"></a>后续步骤
 
-[媒体服务概述](media-services-overview.md)
+[!INCLUDE [transforms next steps](./includes/transforms-next-steps.md)]

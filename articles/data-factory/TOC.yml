@@ -22,8 +22,6 @@
     - name: 创建数据工厂 - ARM 模板
       displayName: Resource Manager
       href: quickstart-create-data-factory-resource-manager-template.md
-    - name: 安全性 - 启用客户管理的密钥加密
-      href: enable-customer-managed-key.md
     - name: 创建数据流
       href: data-flow-create.md
 - name: 教程
@@ -32,7 +30,7 @@
       items:
         - name: 从 Azure Blob 存储到 Azure SQL 数据库
           items:
-            - name: 复制数据工具
+            - name: “复制数据”工具
               href: tutorial-copy-data-tool.md
             - name: 用户界面 (UI)
               href: tutorial-copy-data-portal.md
@@ -40,7 +38,7 @@
               href: tutorial-copy-data-dot-net.md
         - name: 从 SQL Server 数据库到 Azure Blob 存储
           items:
-            - name: 复制数据工具
+            - name: “复制数据”工具
               href: tutorial-hybrid-copy-data-tool.md
             - name: 用户界面 (UI)
               href: tutorial-hybrid-copy-portal.md
@@ -99,8 +97,6 @@
               href: tutorial-data-flow-delta-lake.md
             - name: 使用映射数据流转换数据
               href: tutorial-data-flow.md
-            - name: 映射数据流视频教程
-              href: data-flow-tutorials.md
         - name: 使用外部服务
           items:
             - name: HDInsight Spark
@@ -133,10 +129,6 @@
           href: tutorial-deploy-ssis-packages-azure-powershell.md
         - name: 加入虚拟网络
           href: tutorial-deploy-ssis-virtual-network.md
-    - name: 端到端实验室
-      items:
-        - name: 使用数据工厂和数据共享实现数据集成
-          href: lab-data-flow-data-share.md
 - name: 示例
   items:
     - name: Azure PowerShell
@@ -153,10 +145,6 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 集成运行时
       href: concepts-integration-runtime.md
-    - name: 安全性
-      items:
-        - name: 安全基线
-          href: security-baseline.md
     - name: 数据流
       items:
         - name: 使用映射数据流转换数据
@@ -397,13 +385,13 @@
           href: connector-zoho.md
     - name: 移动数据
       items:
-        - name: 通过复制活动复制数据
+        - name: 使用“复制”活动复制数据
           href: copy-activity-overview.md
         - name: 监视复制活动
           href: copy-activity-monitoring.md
-        - name: 使用“删除活动”删除文件
+        - name: 使用“删除”活动删除文件
           href: delete-activity.md
-        - name: 复制数据工具
+        - name: “复制数据”工具
           href: copy-data-tool.md
         - name: 格式和压缩支持
           href: supported-file-formats-and-compression-codecs.md
@@ -466,13 +454,13 @@
           href: control-flow-append-variable-activity.md
         - name: 执行管道活动
           href: control-flow-execute-pipeline-activity.md
-        - name: 筛选器活动
+        - name: 筛选活动
           href: control-flow-filter-activity.md
         - name: For Each 活动
           href: control-flow-for-each-activity.md
         - name: 获取元数据活动
           href: control-flow-get-metadata-activity.md
-        - name: If Condition 活动
+        - name: If 条件活动
           href: control-flow-if-condition-activity.md
         - name: 查找活动
           href: control-flow-lookup-activity.md
@@ -562,8 +550,10 @@
           href: encrypt-credentials-self-hosted-integration-runtime.md
         - name: 数据工厂的托管标识
           href: data-factory-service-identity.md
-        - name: 客户托管密钥加密
+        - name: 使用客户管理的密钥加密数据工厂
           href: enable-customer-managed-key.md
+        - name: Azure 安全基线
+          href: security-baseline.md
     - name: 监视和管理
       items:
         - name: 直观地监视
@@ -644,7 +634,7 @@
           href: azure-ssis-integration-runtime-package-store.md
     - name: 创建触发器
       items:
-        - name: 创建基于事件的触发器
+        - name: 创建存储事件触发器
           href: how-to-create-event-trigger.md
         - name: 创建计划触发器
           href: how-to-create-schedule-trigger.md
@@ -652,6 +642,8 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: 创建翻转窗口触发器依赖项
           href: tumbling-window-trigger-dependency.md
+        - name: 管道中的引用触发器元数据
+          href: how-to-use-trigger-parameterization.md
     - name: 方案
       items:
         - name: Data Lake 与 EDW 的数据迁移
@@ -664,6 +656,10 @@
               href: data-migration-guidance-hdfs-azure-storage.md
             - name: 将数据从本地 Netezza 服务器迁移到 Azure
               href: data-migration-guidance-netezza-azure-sqldw.md
+        - name: Azure 机器学习
+          items:
+            - name: 数据引入
+              href: ../machine-learning/how-to-data-ingest-adf.md?toc=/data-factory/toc.json&bc=/data-factory/breadcrumb/toc.json
         - name: 使用映射数据流进行转换
           items:
             - name: 处理固定宽度的文本文件
@@ -736,7 +732,7 @@
       href: 'https://docs.microsoft.com/powershell/module/az.datafactory/'
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/datafactory'
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       href: 'https://docs.microsoft.com/azure/templates/microsoft.datafactory/allversions'
     - name: Python
       href: 'https://docs.microsoft.com/python/api/overview/azure/datafactory'

@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用 Azure 资源管理器模板添加 Azure 角色分配 - Azure RBAC
+title: 快速入门：使用 Azure 资源管理器模板分配 Azure 角色 - Azure RBAC
 description: 学习如何使用 Azure 资源管理器模板和 Azure 基于角色的访问控制 (Azure RBAC) 授予用户对资源组范围内的 Azure 资源的访问权限。
 services: role-based-access-control,azure-resource-manager
 author: rolyon
@@ -8,16 +8,16 @@ ms.service: role-based-access-control
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.workload: identity
-ms.date: 08/05/2020
+ms.date: 03/08/2021
 ms.author: v-junlch
-ms.openlocfilehash: ba3d06e76a5633c54902c287a1fee423802d5549
-ms.sourcegitcommit: f436acd1e2a0108918a6d2ee9a1aac88827d6e37
+ms.openlocfilehash: ca4c0811cdb99d000d2fa2e67f338fd5e4682f9b
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508773"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212527"
 ---
-# <a name="quickstart-add-an-azure-role-assignment-using-an-arm-template"></a>快速入门：使用 ARM 模板添加 Azure 角色分配
+# <a name="quickstart-assign-an-azure-role-using-an-arm-template"></a>快速入门：使用 ARM 模板分配 Azure 角色
 
 可以通过 [Azure 基于角色的访问控制 (Azure RBAC)](overview.md) 管理对 Azure 资源的访问权限。 在本快速入门中，你将创建资源组并授予用户在资源组中创建和管理虚拟机的访问权限。 本快速入门使用 Azure 资源管理器模板（ARM 模板）授予访问权限。
 
@@ -29,11 +29,11 @@ ms.locfileid: "96508773"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要添加角色分配，必须具有：
+若要分配 Azure 角色和删除角色分配，必须满足以下条件：
 
 - 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 - `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 权限，例如[用户访问管理员](built-in-roles.md#user-access-administrator)或[所有者](built-in-roles.md#owner)
-- 若要添加角色分配，必须指定三个要素：安全主体、角色订阅和范围。 在本快速入门中，安全主体是你或目录中的其他用户，角色定义是[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)，范围是指定的资源组。
+- 若要分配角色，必须指定三个要素：安全主体、角色定义和范围。 在本快速入门中，安全主体是你或目录中的其他用户，角色定义是[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)，范围是指定的资源组。
 
 ## <a name="review-the-template"></a>查看模板
 
@@ -44,30 +44,27 @@ ms.locfileid: "96508773"
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "roleAssignmentName": {
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the name of the role assignment to create. It can be any valid GUID."
-      }      
-    },
     "roleDefinitionID": {
       "type": "string",
       "metadata": {
         "description": "Specifies the role definition ID used in the role assignment."
-      }      
+      }
     },
     "principalId": {
       "type": "string",
       "metadata": {
         "description": "Specifies the principal ID assigned to the role."
-      }      
+      }
     }
+  },
+  "variables": {
+    "roleAssignmentName": "[guid(parameters('principalId'), parameters('roleDefinitionID'), resourceGroup().id)]"
   },
   "resources": [
     {
       "type": "Microsoft.Authorization/roleAssignments",
-      "apiVersion": "2017-09-01",
-      "name": "[parameters('roleAssignmentName')]",
+      "apiVersion": "2020-04-01-preview",
+      "name": "[variables('roleAssignmentName')]",
       "properties": {
         "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",
         "principalId": "[parameters('principalId')]",
@@ -179,4 +176,3 @@ ms.locfileid: "96508773"
 
 > [!div class="nextstepaction"]
 > [教程：使用 Azure PowerShell 授予用户对 Azure 资源的访问权限](tutorial-role-assignments-user-powershell.md)
-

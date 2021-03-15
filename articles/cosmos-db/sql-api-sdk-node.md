@@ -7,17 +7,17 @@ ms.devlang: nodejs
 ms.topic: reference
 origin.date: 08/12/2020
 author: rockboyfor
-ms.date: 11/16/2020
+ms.date: 03/15/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: devx-track-js
-ms.openlocfilehash: 3323c757d114051cc9ba91bc4b5c97b05dedb4e3
-ms.sourcegitcommit: 5f07189f06a559d5617771e586d129c10276539e
+ms.openlocfilehash: 6a3b2e4417c4371c803da439bafa46fb4bdb72d0
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94552840"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996687"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Node.js SDK：发行说明和资源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -44,7 +44,7 @@ ms.locfileid: "94552840"
 |资源  |链接  |
 |---------|---------|
 |下载 SDK  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
-|API 文档  |  [JavaScript SDK 参考文档](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?preserve-view=true&view=azure-node-latest)
+|API 文档  |  [JavaScript SDK 参考文档](https://docs.microsoft.com/javascript/api/%40azure/cosmos/)
 |SDK 安装说明  |  [安装说明](https://github.com/Azure/azure-sdk-for-js)
 |参与 SDK | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
 | 示例 | [Node.js 代码示例](sql-api-nodejs-samples.md)
@@ -98,7 +98,7 @@ ms.locfileid: "94552840"
 ``` js
 // v2
 const client = new CosmosClient({
-    endpoint: "https://your-database.cosmos.azure.com",
+    endpoint: "https://your-database.cosmos.azure.cn",
     auth: {
         masterKey: "your-primary-key"
     }
@@ -106,7 +106,7 @@ const client = new CosmosClient({
 
 // v3
 const client = new CosmosClient({
-    endpoint: "https://your-database.cosmos.azure.com",
+    endpoint: "https://your-database.cosmos.azure.cn",
     key: "your-primary-key"
 })
 ```
@@ -528,10 +528,10 @@ Azure 会在停用 SDK 时至少提前 12 个月发出通知，以便用户顺�
 | [1.0.1](#1.0.1) |2015年 5 月 15日 |2020 年 8 月 30 日 |
 | [1.0.0](#1.0.0) |2015 年 4 月 8 日 |2020 年 8 月 30 日 |
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>另请参阅
-若要了解有关 Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB](https://www.azure.cn/home/features/cosmos-db/) 服务页。
+若要了解有关 Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服务页。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

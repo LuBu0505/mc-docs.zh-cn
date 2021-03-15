@@ -7,17 +7,17 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 origin.date: 06/11/2020
 author: rockboyfor
-ms.date: 02/08/2021
+ms.date: 03/15/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.reviewer: sngun
-ms.openlocfilehash: cc384801892dc9aa9c67351fa19444c78da2256b
-ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
+ms.openlocfilehash: d06f6c5d6e2b277ecb9bec1d2d5144f298892e89
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580506"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996717"
 ---
 <!--Verified successfully-->
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>迁移应用程序以使用 Azure Cosmos DB Java SDK v4
@@ -177,7 +177,7 @@ client.createDatabaseIfNotExists("YourDatabaseName")
         CosmosContainerProperties containerProperties = 
             new CosmosContainerProperties("YourContainerName", "/id");
         // Create container with specified properties & provisioned throughput
-        return database"createContainerIf"otExists(containerProperties, 400);
+        return database.createContainerIfNotExists(containerProperties, 400);
     }).flatMap(containerResponse -> {
         container = containerResponse.container();
         return Mono.empty();

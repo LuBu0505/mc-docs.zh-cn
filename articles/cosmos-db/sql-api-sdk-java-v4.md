@@ -7,17 +7,17 @@ ms.devlang: java
 ms.topic: reference
 origin.date: 08/12/2020
 author: rockboyfor
-ms.date: 11/16/2020
+ms.date: 03/15/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: devx-track-java
-ms.openlocfilehash: 7b7abe31c84dd68eec0c5bbc39a98bcdfa61955c
-ms.sourcegitcommit: 5f07189f06a559d5617771e586d129c10276539e
+ms.openlocfilehash: f8d00793efa1415c029cb4abb1589e9682c4c4b5
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94552843"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996666"
 ---
 <!--Verified successfully-->
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>用于 Core (SQL) API 的 Azure Cosmos DB Java SDK v4：发行说明和资源
@@ -47,7 +47,7 @@ ms.locfileid: "94552843"
 > 这些发行说明仅适用于 Azure Cosmos DB Java SDK v4。 如果你当前使用的是早于 v4 的版本，请参阅[迁移到 Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) 指南，获取升级到 v4 的相关帮助。
 >
 > 以下是快速操作的三个步骤！
-> 1. 安装[最低支持的 Java 运行时版本，JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)，以便可以使用 SDK。
+> 1. 安装[最低支持的 Java 运行时版本，JDK 8](https://docs.azure.cn/java/java-supported-jdk-runtime)，以便可以使用 SDK。
 > 2. 通过 [Azure Cosmos DB Java SDK v4 快速入门指南](./create-sql-api-java.md)，可以访问 Maven 项目并完成基本的 Azure Cosmos DB 请求。
 > 3. 阅读 Azure Cosmos DB Java SDK v4 [性能提示](performance-tips-java-sdk-v4-sql.md)和[疑难解答](troubleshoot-java-sdk-v4-sql.md)指南，以优化应用程序的 SDK。
 >
@@ -59,7 +59,7 @@ ms.locfileid: "94552843"
 | Content | 链接 |
 |---|---|
 |**SDK 下载**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
-|**API 文档** | [Java API 参考文档](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable) |
+|**API 文档** | [Java API 参考文档](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client) |
 |**参与 SDK** | [GitHub 上用于 Java 的 Azure SDK 中央存储库](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos) | 
 |**入门** | [快速入门：生成 Java 应用以管理 Azure Cosmos DB SQL API 数据](./create-sql-api-java.md) <br /> [具有快速入门代码的 GitHub 存储库](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
 |**基本代码示例** | [Azure Cosmos DB：SQL API 的 Java 示例](sql-api-java-sdk-samples.md) <br /> [具有示例代码的 GitHub 存储库](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
@@ -68,10 +68,8 @@ ms.locfileid: "94552843"
 | **性能提示**| [适用于 Java SDK v4 的性能提示](performance-tips-java-sdk-v4-sql.md)| 
 | **故障排除** | [排查 Java SDK v4 问题](troubleshoot-java-sdk-v4-sql.md) |
 | **从旧 SDK 迁移到 v4** | [迁移到 Java V4 SDK](migrate-java-v4-sdk.md) |
-| 受支持的最小运行时|[JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true) | 
+| 受支持的最小运行时|[JDK 8](https://docs.azure.cn/java/java-supported-jdk-runtime) | 
 | **Azure Cosmos DB 研讨会和实验室** |[Cosmos DB 研讨会主页](https://aka.ms/cosmosworkshop)
-
-<!--Correct om the **API documentation** https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable-->
 
 ## <a name="release-history"></a>发布历史记录
 
@@ -273,9 +271,9 @@ ms.locfileid: "94552843"
 * 修复了在 StoreReader 中导致 `ArrayIndexOutOfBound` 异常的争用情况
 
 ## <a name="faq"></a>常见问题
-[!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
+[!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)] 
 
 ## <a name="next-steps"></a>后续步骤
-若要了解有关 Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB](https://www.azure.cn/home/features/cosmos-db/) 服务页。
+若要了解有关 Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服务页。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

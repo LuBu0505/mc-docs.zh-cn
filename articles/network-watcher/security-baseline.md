@@ -5,17 +5,17 @@ ms.service: security
 ms.topic: conceptual
 origin.date: 06/22/2020
 author: rockboyfor
-ms.date: 02/08/2021
+ms.date: 03/15/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 432fa21eaf5b4d73cc582de09677b65882ec45f7
-ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
+ms.openlocfilehash: b52aab9f74ce8d1cc818f76f2a88669220151651
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580502"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212711"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>网络观察程序的 Azure 安全基线
 
@@ -121,9 +121,9 @@ ms.locfileid: "99580502"
 
 **指导**：使用 Azure 活动日志监视对 Azure 网络观察程序所做的更改。 可以在 Azure Monitor 中创建在发生更改时会触发的警报。
 
-* [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -145,7 +145,7 @@ ms.locfileid: "99580502"
 
 **指导**：使用 Azure 活动日志监视 Azure 网络观察程序实例的配置并检测更改。 除了在控制平面（例如 Azure 门户）中以外，网络观察程序本身不会生成与网络流量相关的日志。 网络观察程序提供所需的工具来监视、诊断 Azure 虚拟网络中的资源并查看其指标，以及为其启用或禁用日志。
 
-* [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [了解网络观察程序](./network-watcher-monitoring-overview.md)
 
@@ -157,7 +157,7 @@ ms.locfileid: "99580502"
 
 **指导**：使用 Azure 活动日志监视 Azure 网络观察程序实例的配置并检测更改。 除了在控制平面（例如 Azure 门户）以外，网络观察程序本身不会生成审核日志。 网络观察程序提供所需的工具来监视、诊断 Azure 虚拟网络中的资源并查看其指标，以及为其启用或禁用日志。
 
-* [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [了解网络观察程序](./network-watcher-monitoring-overview.md)
 
@@ -187,7 +187,7 @@ ms.locfileid: "99580502"
 
 **指导**：使用 Azure 活动日志监视 Azure 网络观察程序实例的配置并检测更改。 除了在控制平面（例如 Azure 门户）中以外，网络观察程序本身不会生成与网络流量相关的日志。 网络观察程序提供所需的工具来监视、诊断 Azure 虚拟网络中的资源并查看其指标，以及为其启用或禁用日志。
 
-* [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [了解网络观察程序](./network-watcher-monitoring-overview.md)
 
@@ -312,7 +312,7 @@ ms.locfileid: "99580502"
 
 * [如何部署 Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-<!--NOT AVAILABLE ON * [Understand Azure AD risk detections](../active-directory/identity-protection/overview-identity-protection.md)-->
+<!--NOT AVAILABLE ON [Understand Azure AD risk detections](../active-directory/identity-protection/overview-identity-protection.md)-->
 
 **Azure 安全中心监视**：是
 
@@ -360,18 +360,19 @@ ms.locfileid: "99580502"
 
 * [如何将 Azure 活动日志集成到 Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-<!--NOT AVAILABLE ON * [How to on-board Azure Sentinel](../sentinel/quickstart-onboard.md)-->
+<!--NOT AVAILABLE ON [How to on-board Azure Sentinel](../sentinel/quickstart-onboard.md)-->
+
 **Azure 安全中心监视**：不适用
 
 **责任**：客户
 
 <!--NOT AVAILABLE ON ### 3.12: Alert on account login behavior deviation-->
-<!--NOT AVAILABLE ON * [How to view Azure AD risky sign-in](../active-directory/identity-protection/overview-identity-protection.md)-->
-<!--NOT AVAILABLE ON * [How to configure and enable Identity Protection risk policies](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)-->
-<!--NOT AVAILABLE ON * [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
+<!--NOT AVAILABLE ON [How to view Azure AD risky sign-in](../active-directory/identity-protection/overview-identity-protection.md)-->
+<!--NOT AVAILABLE ON [How to configure and enable Identity Protection risk policies](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)-->
+<!--NOT AVAILABLE ON [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
 <!--NOT AVAILABLE ON ### 3.13: Provide Azure with access to relevant customer data during support scenarios-->
 
-<!--NOT AVAILABLE ON * [List of Customer Lockbox-supported services](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)-->
+<!--NOT AVAILABLE ON [List of Customer Lockbox-supported services](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)-->
 
 ## <a name="data-protection"></a>数据保护
 
@@ -391,7 +392,7 @@ ms.locfileid: "99580502"
 
 **指导**：为开发、测试和生产实现单独的订阅和/或管理组。
 
-<!--NOT AVAILABLE ON * [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)-->
+<!--NOT AVAILABLE ON [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)-->
 
 * [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
@@ -415,7 +416,7 @@ ms.locfileid: "99580502"
 
 * [Azure VPN 网关支持的 IPSec 参数](./network-watcher-diagnose-on-premises-connectivity.md)
 
-* [如何在 Azure 门户中配置站点到站点连接](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [如何在 Azure 门户中配置站点到站点连接](../vpn-gateway/tutorial-site-to-site-portal.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -465,7 +466,7 @@ ms.locfileid: "99580502"
 
 **指导**：将 Azure Monitor 与 Azure 活动日志结合使用，以便在 Azure 网络观察程序以及其他关键的或相关的资源发生更改时创建警报。
 
-* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+* [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -553,7 +554,7 @@ ms.locfileid: "99580502"
 - 不允许的资源类型
 - 允许的资源类型
 
-<!--NOT AVAILABLE ON * [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)-->
+<!--NOT AVAILABLE ON [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)-->
 
 * [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
@@ -909,11 +910,11 @@ ms.locfileid: "99580502"
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
-**指导**：使用连续导出功能导出 Azure 安全中心警报和建议。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Sentinel。
+**指导**：使用连续导出功能导出 Azure 安全中心警报和建议。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Azure Sentinel。
 
 * [如何配置连续导出](../security-center/continuous-export.md)
 
-<!--NOT AVAILABLE ON * [How to stream alerts into Azure Sentinel](../sentinel/connect-azure-security-center.md)-->
+<!--NOT AVAILABLE ON [How to stream alerts into Azure Sentinel](../sentinel/connect-azure-security-center.md)-->
 
 **Azure 安全中心监视**：不适用
 

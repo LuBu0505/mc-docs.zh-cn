@@ -1,27 +1,23 @@
 ---
 title: 使用 Azure 门户以增量方式复制多个表
-description: 在本教程中，你将创建一个 Azure 数据工厂管道，该管道以递增方式将增量数据从 SQL Server 数据库中的多个表复制到 Azure SQL 数据库的数据库中。
-services: data-factory
+description: 在本教程中，你将创建一个带管道的 Azure 数据工厂，该管道将增量数据从 SQL Server 数据库中的多个表加载到 Azure SQL 数据库中的数据库。
 ms.author: v-jay
 author: WenJason
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-origin.date: 06/10/2020
-ms.date: 09/21/2020
-ms.openlocfilehash: 864a743e1322076702130bb6a8ed3e9b619d48d0
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+origin.date: 02/18/2021
+ms.date: 03/15/2021
+ms.openlocfilehash: a8201e3878e7a51a4b3bd5a053f231e29c5806e2
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431942"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589914"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>使用 Azure 门户以递增方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库中的数据库
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在本教程中，你将创建一个带管道的 Azure 数据工厂，该管道将增量数据从 SQL Server 数据库中的多个表加载到 Azure SQL 数据库中的数据库。    
 
@@ -169,8 +165,8 @@ AS
 
 BEGIN
 
-    UPDATE watermarktable
-    SET [WatermarkValue] = @LastModifiedtime 
+UPDATE watermarktable
+SET [WatermarkValue] = @LastModifiedtime 
 WHERE [TableName] = @TableName
 
 END
@@ -250,7 +246,7 @@ END
 4. 选择要在其中创建数据工厂的 Azure **订阅**。 
 5. 对于 **资源组**，请执行以下步骤之一：
      
-    - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
+    - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。  
     - 选择“新建”，并输入资源组的名称。   
     若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 6. 选择“V2”作为“版本”。
@@ -264,7 +260,7 @@ END
 ## <a name="create-self-hosted-integration-runtime"></a>创建自承载的 Integration Runtime
 在将数据从专用网络（本地）中的数据存储移至 Azure 数据存储时，请在本地环境中安装自承载的 Integration Runtime (IR)。 自承载的 IR 可在专用网络和 Azure 之间移动数据。 
 
-1. 在 Azure 数据工厂 UI 的“开始使用”页上，从最左侧的窗格选择[“管理”选项卡](/data-factory/author-management-hub)。
+1. 在 Azure 数据工厂 UI 的“开始使用”页上，从最左侧的窗格选择[“管理”选项卡](./author-management-hub.md)。
 
    ![主页“管理”按钮](media/doc-common-process/get-started-page-manage-button.png)
 
@@ -306,7 +302,7 @@ END
     1. 对于“服务器名称”，请输入装有 SQL Server 数据库的计算机的名称。
     1. 对于“数据库名称”，请输入 SQL Server 中包含源数据的数据库的名称。 已按照先决条件创建一个表并将数据插入到此数据库中。 
     1. 对于“身份验证类型”，请选择需要用于连接到数据库的 **身份验证的类型**。 
-    1. 至于“用户名”，请输入能够访问 SQL Server 数据库的用户的名称。 如需在用户帐户或服务器名称中使用斜杠字符 (`\`)，请使用转义字符 (`\`)。 例如 `mydomain\\myuser`。
+    1. 至于“用户名”，请输入能够访问 SQL Server 数据库的用户的名称。 如需在用户帐户或服务器名称中使用斜杠字符 (`\`)，请使用转义字符 (`\`)。 示例为 `mydomain\\myuser`。
     1. 至于“密码”，请输入用户的 **密码**。 
     1. 若要测试数据工厂是否可以连接到 SQL Server 数据库，请单击“测试连接”。 修复任何错误，直到连接成功。 
     1. 若要保存链接服务，请单击“完成”。
@@ -431,7 +427,7 @@ END
 1. 切换到“设置”选项卡。
 
     1. 为“源数据集”选择“SourceDataset”。  
-    1. 为“使用查询”选择“查询”。 
+    1. 为“使用查询”选择“查询”。
     1. 为“查询”输入以下 SQL 查询。
 
         ```sql    
@@ -447,7 +443,7 @@ END
 1. 选择管道中的“复制”活动。 切换到“属性”窗口中的“源”选项卡。  
 
     1. 为“源数据集”选择“SourceDataset”。  
-    1. 为“使用查询”选择“查询”。  
+    1. 为“使用查询”选择“查询”。 
     1. 为“查询”输入以下 SQL 查询。
 
         ```sql
@@ -478,10 +474,10 @@ END
     1. 选择“导入参数”。 
     1. 指定以下参数值： 
 
-        | 名称 | 类型 | Value | 
+        | 名称 | 类型 | 值 | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
-        | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
+        | TableName | 字符串 | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![存储过程活动 - 存储过程设置](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
 1. 选择“全部发布”，以便将创建的实体发布到数据工厂服务。 
@@ -702,5 +698,3 @@ project_table   2017-10-01 00:00:00.000
 
 > [!div class="nextstepaction"]
 >[使用更改跟踪技术，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储](tutorial-incremental-copy-change-tracking-feature-portal.md)
-
-

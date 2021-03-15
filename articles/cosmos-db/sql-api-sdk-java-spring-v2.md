@@ -7,17 +7,17 @@ ms.devlang: java
 ms.topic: reference
 origin.date: 08/12/2020
 author: rockboyfor
-ms.date: 11/16/2020
+ms.date: 03/15/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: devx-track-java
-ms.openlocfilehash: 08ac908803c422241ca064c267c47b5b8b6abdd7
-ms.sourcegitcommit: 5f07189f06a559d5617771e586d129c10276539e
+ms.openlocfilehash: 71be41c0261a73db0876ba98d376f892e981262b
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94552845"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996662"
 ---
 <!--Verified successfully-->
 # <a name="spring-data-azure-cosmos-db-v2-for-core-sql-api-release-notes-and-resources"></a>适用于 Core (SQL) API 的 Spring Data Azure Cosmos DB v2：发行说明和资源
@@ -63,7 +63,7 @@ ms.locfileid: "94552845"
 > * [将 Spring Data Gremlin 用于 Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 > 希望快速开始？
-> 1. 安装[最低支持的 Java 运行时版本，JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)，以便可以使用 SDK。
+> 1. 安装[最低支持的 Java 运行时版本，JDK 8](https://docs.azure.cn/java/java-supported-jdk-runtime)，以便可以使用 SDK。
 > 2. 使用 [Starter](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) 创建 Spring Data Azure Cosmos DB 应用。 操作起来非常简单！
 > 3. 通过 [Spring Data Azure Cosmos DB 开发人员指南](https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb)了解基本的 Azure Cosmos DB 请求。
 >
@@ -216,7 +216,7 @@ ms.locfileid: "94552845"
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>后续步骤
-了解有关 [Azure Cosmos DB](https://www.azure.cn/home/features/cosmos-db/) 的详细信息。
+了解有关 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 的详细信息。
 
 了解有关 [Spring Framework](https://spring.io/projects/spring-framework) 的详细信息。
 
@@ -224,4 +224,4 @@ ms.locfileid: "94552845"
 
 详细了解有关 [Spring Data](https://spring.io/projects/spring-data) 的详细信息。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

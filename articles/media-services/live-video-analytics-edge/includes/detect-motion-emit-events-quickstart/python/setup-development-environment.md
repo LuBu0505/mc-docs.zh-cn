@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 85779bafdee73ca726e383c634b7c83185dad8e5
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: eb4876a21510cd225ea2220fb5c624d433d3e351
+ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750143"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224044"
 ---
 1. 从此位置克隆存储库： https://github.com/Azure-Samples/live-video-analytics-iot-edge-python 。
 1. 在 Visual Studio Code 中，打开下载的存储库所在的文件夹。
@@ -31,7 +31,7 @@ ms.locfileid: "101750143"
     AAD_TENANT_ID="<AAD Tenant ID>"  
     AAD_SERVICE_PRINCIPAL_ID="<AAD SERVICE_PRINCIPAL ID>"  
     AAD_SERVICE_PRINCIPAL_SECRET="<AAD SERVICE_PRINCIPAL ID>"  
-    VIDEO_INPUT_FOLDER_ON_DEVICE="/home/lvaadmin/samples/input"  
+    VIDEO_INPUT_FOLDER_ON_DEVICE="/home/lvaedgeuser/samples/input"  
     VIDEO_OUTPUT_FOLDER_ON_DEVICE="/var/media"
     APPDATA_FOLDER_ON_DEVICE="/var/local/mediaservices"
     CONTAINER_REGISTRY_USERNAME_myacr="<your container registry username>"  

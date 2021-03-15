@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: conceptual
 origin.date: 02/25/2020
-ms.date: 12/07/2020
-ms.openlocfilehash: 41dcb4de7054175c4a8df8b16af3abe817e99d3b
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.date: 03/15/2021
+ms.openlocfilehash: faf4ff08bc036279d4f6f166b67f695710c50184
+ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746595"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103211827"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>使用 Azure 数据库迁移服务的先决条件概述
 
@@ -30,7 +30,7 @@ ms.locfileid: "96746595"
 在所有支持的迁移方案中通用的 Azure 数据库迁移服务先决条件包括需要：
 
 * 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络，它将使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 为本地源服务器提供站点到站点连接。
-* 确保虚拟网络的网络安全组 (NSG) 规则未阻止以下通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
+* 请确保虚拟网络的网络安全组(NSG) 规则不阻止 ServiceBus、存储服务和 AzureMonitor 的 ServiceTag 出站端口 443。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
 * 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
 * 配置[针对数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 按照[启用或禁用服务器网络协议](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)一文中的说明启用 TCP/IP 协议（在安装 SQL Server Express 时，会默认禁用它）。

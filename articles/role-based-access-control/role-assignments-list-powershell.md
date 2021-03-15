@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/11/2021
+ms.date: 03/08/2021
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 758fc041d50283f491e73fce56a123d327dc12a0
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: bdad973aace1b5a16ce3d315ae8e486653d705b3
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195062"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212443"
 ---
 # <a name="list-azure-role-assignments-using-azure-powershell"></a>使用 Azure PowerShell 列出 Azure 角色分配
 
@@ -185,5 +185,4 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure PowerShell 添加或删除 Azure 角色分配](role-assignments-powershell.md)
-
+- [使用 Azure PowerShell 分配 Azure 角色](role-assignments-powershell.md)

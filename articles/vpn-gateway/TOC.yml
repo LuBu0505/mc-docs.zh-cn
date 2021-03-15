@@ -81,7 +81,7 @@
               href: create-routebased-vpn-gateway-cli.md
         - name: 验证 VPN 网关连接
           href: vpn-gateway-verify-connection-resource-manager.md
-        - name: 重置 VPN 网关
+        - name: 重置 VPN 网关或连接
           href: reset-gateway.md
         - name: 删除 VPN 网关
           items:
@@ -193,6 +193,8 @@
               href: vpn-gateway-bgp-resource-manager-ps.md
             - name: Azure CLI
               href: bgp-how-to-cli.md
+        - name: BGP 诊断
+          href: bgp-diagnostics.md
         - name: 配置强制隧道
           items:
             - name: Azure PowerShell

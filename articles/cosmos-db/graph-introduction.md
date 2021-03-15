@@ -6,16 +6,16 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 origin.date: 11/25/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/15/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1c854a270ed8576c8c5c038ac7b668a34409f222
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 97e9edc9ae535786f31dd1642bfb51873abcf72e
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230937"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996718"
 ---
 <!--Verify sucessfully-->
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 Gremlin API 简介
@@ -169,4 +169,4 @@ Gremlin 控制台是 Apache TinkerPop 提供的交互式终端，此终端用于
 * [Azure Cosmos DB 图形入门教程](create-graph-dotnet.md)。
 * 了解如何[通过使用 Gremlin 在 Azure Cosmos DB 中查询图形](gremlin-support.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

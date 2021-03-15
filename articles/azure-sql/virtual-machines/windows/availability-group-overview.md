@@ -8,19 +8,20 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 601eebb1-fc2c-4f5b-9c05-0e6ffd0e5334
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 10/07/2020
-ms.date: 02/01/2021
+ms.date: 03/15/2021
 ms.author: v-jay
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fda41cfa51d922361254401d3b47ae60c5b6c6f5
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: a63a0b8a6e987e91c324a28ae51eec6ddca6e4ba
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059404"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589988"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Azure VM 上的 SQL Server 的 Always On 可用性组
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -40,8 +41,7 @@ Azure 虚拟机上的 Always On 可用性组类似于[本地的 Always On 可用
 
 若要提高冗余和可用性，SQL Server VM 应位于相同的[可用性集](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview)中。
 
-这可防止在部署推出期间影响组中的多个资源。 
-
+通过将一组 VM 放在同一个可用性集，可保护免受由设备故障导致的数据中心内的中断影响（可用性集中的 VM 不会共享资源），或免受更新导致的影响（可用性集中的 VM 不会同时更新）。 
 
 ## <a name="connectivity"></a>连接 
 
@@ -49,6 +49,7 @@ Azure 虚拟机上的 Always On 可用性组类似于[本地的 Always On 可用
 
 通过 Azure VM 上的 SQL Server，配置一个[负载均衡器](availability-group-vnn-azure-load-balancer-configure.md)来将流量路由到可用性组侦听器。如果你在使用 SQL Server 2019 CU8 及更高版本，可配置一个[分布式网络名称 (DNN) 侦听器](availability-group-distributed-network-name-dnn-listener-configure.md)来取代传统的 VNN 可用性组侦听器。 
 
+有关群集连接选项的更多详细信息，请参阅[将 HADR 连接路由到 Azure VM 上的 SQL Server](hadr-cluster-best-practices.md#connectivity)。 
 
 ### <a name="vnn-listener"></a>VNN 侦听器 
 

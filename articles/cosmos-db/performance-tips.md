@@ -6,17 +6,17 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 origin.date: 10/13/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/15/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: devx-track-dotnet, contperf-fy21q2
-ms.openlocfilehash: df80690a4526cc97f2f4af17af6531d7674ea47d
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: a1559b022ad22aeb0b034f171ab2351b2cadeb45
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230095"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996743"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>适用于 Azure Cosmos DB 和 .NET SDK v2 的性能提示
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -85,8 +85,8 @@ string authKey = "your authKey from the Azure portal";
 DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
 new ConnectionPolicy
 {
-    ConnectionMode = ConnectionMode.Direct, //ConnectionMode.Gateway is the default
-    ConnectionProtocol = Protocol.Tcp
+   ConnectionMode = ConnectionMode.Direct, // ConnectionMode.Gateway is the default
+   ConnectionProtocol = Protocol.Tcp
 });
 ```
 
@@ -117,7 +117,7 @@ new ConnectionPolicy
 
 <!--MOONCAKE: UPDATE but the latency between the East and North region of the China is more than dozens of ms.-->
 
-如果可能，请将任何调用 Azure Cosmos DB 的应用程序放在 Azure Cosmos DB 数据库所在的区域。 下面是大致的比较：在同一区域中对 Azure Cosmos DB 的调用可在 1 到 2 毫秒内完成，而中国东部和中国北部区域之间的延迟则超过了几十毫秒。 根据请求采用的路由，各项请求从客户端传递到 Azure 数据中心边界时的此类延迟可能有所不同。 确保调用应用程序位于预配的 Azure Cosmos DB 终结点所在的 Azure 区域即可尽可能降低延迟。 有关可用区域的列表，请参阅 [Azure 区域](https://azure.microsoft.com/regions/#services)。
+如果可能，请将任何调用 Azure Cosmos DB 的应用程序放在 Azure Cosmos DB 数据库所在的区域。 下面是大致的比较：在同一区域中对 Azure Cosmos DB 的调用可在 1 到 2 毫秒内完成，而中国东部和中国北部区域之间的延迟则超过了几十毫秒。 根据请求采用的路由，各项请求从客户端传递到 Azure 数据中心边界时的此类延迟可能有所不同。 确保调用应用程序位于预配的 Azure Cosmos DB 终结点所在的 Azure 区域即可尽可能降低延迟。 有关可用区域的列表，请参阅 [Azure 区域](https://status.azure.com/status/)。
     
 <!--MOONCAKE: UPDATE but the latency between the East and North region of the China is more than dozens of ms.-->
     
@@ -153,19 +153,19 @@ SQL .NET SDK 1.9.0 及更高版本支持并行查询，使你能够并行查询�
 - `MaxDegreeOfParallelism` 控制可以并行查询的最大分区数。 
 - `MaxBufferedItemCount` 控制预提取的结果数。
 
-**_优化并行度_* _
+优化并行度
 
 并行查询的工作原理是并行查询多个分区。 但就查询本身而言，会按顺序提取单个分区中的数据。 将 [SDK V2](sql-api-sdk-dotnet.md) 中的 `MaxDegreeOfParallelism` 设置为分区数最有可能实现最高性能的查询，前提是所有其他的系统条件保持不变。 如果不知道分区数，可将并行度设置为较大的数字。 系统会选择最小值（分区数、用户提供的输入）作为并行度。
 
 如果查询时数据均衡分布在所有分区之间，则并行查询的优势最大。 如果对已分区的集合进行分区，使查询返回的全部或大部分数据集中于几个分区（最坏的情况为一个分区），则这些分区会使查询性能出现瓶颈。
 
-_*_优化 MaxBufferedItemCount_*_
+优化 MaxBufferedItemCount
 
 并行查询设计为当客户端正在处理当前结果批时预提取结果。 这种预提取可帮助改善查询的总体延迟。 `MaxBufferedItemCount` 参数限制预提取的结果数。 将 `MaxBufferedItemCount` 设置为预期返回的结果数（或更大的数字）可让查询通过预提取获得最大优势。
 
 预提取的工作方式与并行度无关，使用一个单独的缓冲区来存储所有分区的数据。  
 
-_ *按 RetryAfter 间隔实现退让**
+**按 RetryAfter 间隔实现退让**
 
 在性能测试期间，应该增加负载，直到系统对小部分请求进行限制为止。 如果请求受到限制，客户端应用程序应按照服务器指定的重试间隔在限制时退让。 允许退让可确保最大程度地减少等待重试的时间。 
 
@@ -197,7 +197,7 @@ readDocument.RequestDiagnosticsString
 > [!NOTE] 
 > `maxItemCount` 属性不应仅用于分页目的。 它的主要用途是通过减少单个页面中返回的最大项数来提高查询性能。  
 
-也可以使用提供的 Azure Cosmos DB SDK 设置页面大小。 `FeedOptions` 中的 [MaxItemCount](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?preserve-view=true) 属性允许你设置要在枚举操作中返回的最大项数。 当 `maxItemCount` 设置为 -1 时，SDK 会根据文档大小自动查找最佳值。 例如：
+也可以使用提供的 Azure Cosmos DB SDK 设置页面大小。 `FeedOptions` 中的 [MaxItemCount](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount) 属性允许你设置要在枚举操作中返回的最大项数。 当 `maxItemCount` 设置为 -1 时，SDK 会根据文档大小自动查找最佳值。 例如：
 
 ```csharp
 IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
@@ -281,4 +281,4 @@ SDK 全部都会隐式捕获此响应，并遵循服务器指定的 retry-after 
 
 若要深入了解如何设计应用程序以实现缩放和高性能，请参阅 [Azure Cosmos DB 中的分区和缩放](partitioning-overview.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

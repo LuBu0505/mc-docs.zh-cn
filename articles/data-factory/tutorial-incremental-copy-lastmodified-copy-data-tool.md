@@ -1,28 +1,23 @@
 ---
 title: 用于增量复制新文件和已更新文件的数据工具
 description: 创建一个 Azure 数据工厂，然后使用复制数据工具根据 LastModifiedDate 以增量方式加载新文件。
-services: data-factory
 author: WenJason
 ms.author: v-jay
-ms.reviewer: ''
-manager: digimobile
 ms.service: data-factory
-ms.workload: data-services
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-origin.date: 6/10/2019
-ms.date: 06/29/2020
-ms.openlocfilehash: da1581ff5dd061f05f3d19012a830b86879fa127
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+origin.date: 02/18/2021
+ms.date: 03/15/2021
+ms.openlocfilehash: be2925a49b74bef25279096b38ca41c59a44f9ec
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431940"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589911"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>使用复制数据工具根据 LastModifiedDate 以增量方式复制新的和已更改的文件
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在本教程中，你将使用 Azure 门户创建数据工厂。 然后，使用复制数据工具创建一个管道，该管道仅将 Azure Blob 存储中的新文件和已更改的文件以增量方式复制到另一个 Azure Blob 存储。 它使用 `LastModifiedDate` 来确定要复制的文件。
 
@@ -40,7 +35,7 @@ ms.locfileid: "96431940"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅**：如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+* **Azure 订阅**：如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 * **Azure 存储帐户**，将 Blob 存储用作源和接收器数据存储。 如果没有 Azure 存储帐户，请按照[创建存储帐户](../storage/common/storage-account-create.md)中的说明操作。
 
 ## <a name="create-two-containers-in-blob-storage"></a>在 Blob 存储中创建两个容器
@@ -63,7 +58,7 @@ ms.locfileid: "96431940"
 
    ![“名称不可用”错误消息](./media/doc-common-process/name-not-available-error.png)
 
-   如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 例如，使用名称 _**yourname**_ **ADFTutorialDataFactory**。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
+   如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 例如，使用名称 _**yourname**_**ADFTutorialDataFactory**。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
 3. 在“订阅”下，选择要在其中创建新数据工厂的 Azure 订阅  。
 4. 在“资源组”下执行以下步骤之一  ：
 
@@ -73,7 +68,7 @@ ms.locfileid: "96431940"
          
     若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。
 
-5. 在“版本”下选择“V2”。  
+5. 在“版本”下选择“V2”。 
 6. 在“位置”下选择数据工厂的位置。  列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 Azure SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他位置和区域。
 8. 选择“创建”  。
 9. 创建数据工厂后，会显示数据工厂主页。

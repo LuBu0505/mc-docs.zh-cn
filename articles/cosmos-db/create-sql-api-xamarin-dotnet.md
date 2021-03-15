@@ -7,17 +7,17 @@ ms.devlang: dotnet
 ms.topic: quickstart
 origin.date: 10/09/2020
 author: rockboyfor
-ms.date: 11/09/2020
+ms.date: 12/07/2020
 ms.testscope: yes
 ms.testdate: 09/28/2020
 ms.author: v-yeche
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3df17b29790783911cd25195baea5c0d1a75340c
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 67d7131e3bd84bd5010347cfadd2b60af34f1ea4
+ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328626"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "102996573"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>快速入门：通过 Azure Cosmos DB SQL API 帐户使用 Xamarin 生成 ToDo 应用
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -243,7 +243,7 @@ ToDoItems 解决方案中的代码包含：
 
     再次请注意这个在创建后传递给 `DocumentClient.DeleteDocumentAsync` 函数的唯一的文档 URI。
 
-## <a name="run-the-app"></a>运行应用程序
+## <a name="run-the-app"></a>运行应用
 
 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。
 

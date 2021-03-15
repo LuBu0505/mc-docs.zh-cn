@@ -1,33 +1,28 @@
 ---
 title: 使用 Azure 数据工厂从 Office 365 加载数据
 description: 使用 Azure 数据工厂从 Office 365 复制数据
-services: data-factory
-documentationcenter: ''
 author: WenJason
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-origin.date: 10/22/2018
-ms.date: 01/04/2021
+origin.date: 02/18/2021
+ms.date: 03/15/2021
 ms.author: v-jay
-ms.openlocfilehash: 9c75a23b10ce3ccb64eb94a703c310d4ec2cb300
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: fbbb305ed79577f68d57c3ea78d1b63ffe98460c
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830188"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102590017"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Office 365 加载数据
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文介绍如何使用数据工厂将 Office 365 中的数据载入 Azure Blob 存储。  可以遵循类似的步骤将数据复制到 Azure Data Lake Gen2。 请参阅 [Office 365 连接器文章](connector-office-365.md)，了解有关从 Office 365 复制数据的一般信息。
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-1. 在左侧菜单中，选择“创建资源”   > “数据 + 分析”   > “数据工厂”  ： 
+1. 在左侧菜单中，选择“创建资源” > “数据 + 分析” > “数据工厂”： 
    
    ![在“新建”窗格中选择“数据工厂”](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -37,12 +32,12 @@ ms.locfileid: "97830188"
  
     * **名称**：输入 Azure 数据工厂的全局唯一名称。 如果收到错误“数据工厂名称 LoadFromOffice365Demo  不可用”，请输入不同的数据工厂名称。 例如，可以使用名称 _**yourname**_ **LoadFromOffice365Demo**。 请重试创建数据工厂。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
     * **订阅**：选择要在其中创建数据工厂的 Azure 订阅。 
-    * **资源组**：从下拉列表中选择现有资源组，或选择“新建”  选项并输入资源组的名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
-    * **版本**：选择“V2”  。
+    * **资源组**：从下拉列表中选择现有资源组，或选择“新建”选项并输入资源组的名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
+    * **版本**：选择“V2”。
     * **位置**：选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 这些数据存储包括 Azure 存储、Azure SQL 数据库，等等。
 
-3. 选择“创建”  。
-4. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”  主页，如下图所示：
+3. 选择“创建” 。
+4. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”主页，如下图所示：
    
    ![数据工厂主页](./media/load-office-365-data/data-factory-home-page.png)
 

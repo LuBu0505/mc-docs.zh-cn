@@ -14,8 +14,6 @@
       href: 'https://www.azure.cn/pricing/details/cognitive-services/'
     - name: 配额和限制
       href: speech-services-quotas-and-limits.md
-    - name: Docs 中的新增内容
-      href: whats-new.md
 - name: 语音转文本
   items:
     - name: 语音转文本文档
@@ -103,39 +101,24 @@
       items:
         - name: 通过 SSML 改进合成
           href: speech-synthesis-markup.md
-        - name: 使用长音频 API 合成语音
-          href: long-audio-api.md
     - name: 自定义
       items:
-        - name: 合理部署
-          items:
-            - name: 自定义语音的限制
-              href: concepts-gating-overview.md
-            - name: 部署合成技术
-              href: concepts-guidelines-responsible-deployment-synthetic.md
-            - name: 为配音员披露
-              href: 'https://aka.ms/disclosure-voice-talent'
-            - name: 披露设计准则
-              href: concepts-disclosure-guidelines.md
-            - name: 披露设计模式
-              href: concepts-disclosure-patterns.md
-            - name: 行为准则
-              href: 'https://aka.ms/custom-neural-code-of-conduct'
-        - name: 自定义语音门户
-          items:
-            - name: 自定义语音入门
-              displayName: 'custom voice, neural voice'
-              href: how-to-custom-voice.md
-            - name: 准备数据
-              href: how-to-custom-voice-prepare-data.md
-            - name: 创建并使用自定义语音模型
-              href: how-to-custom-voice-create-voice.md
-            - name: 录制语音示例
-              href: record-custom-voice-samples.md
         - name: 音频内容创建
           items:
             - name: 音频内容创建
               href: how-to-audio-content-creation.md
+    - name: 负责使用 AI
+      items:
+        - name: 自定义神经语音
+          items:
+            - name: 集成和负责使用
+              items:
+                - name: 合成语音的可靠部署
+                  href: concepts-guidelines-responsible-deployment-synthetic.md
+                - name: 披露设计准则
+                  href: concepts-disclosure-guidelines.md
+                - name: 披露设计模式
+                  href: concepts-disclosure-patterns.md
     - name: 参考
       items:
         - name: C++
@@ -294,10 +277,10 @@
       displayName: SPX
       items:
         - name: 语音 CLI 概述
-          displayName: What is SPX?
+          displayName: 'What is SPX?, spx, spx overview'
           href: spx-overview.md
-        - name: 语音 CLI 基础知识
-          displayName: SPX basics
+        - name: 语音 CLI 快速入门
+          displayName: 'spx basics, spx quickstart, spx get started, speech cli get started'
           href: spx-basics.md
     - name: Speech Studio
       items:

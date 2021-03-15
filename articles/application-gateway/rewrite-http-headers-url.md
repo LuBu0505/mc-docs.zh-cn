@@ -5,14 +5,14 @@ services: application-gateway
 author: surajmb
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 03/09/2021
 ms.author: v-junlch
-ms.openlocfilehash: a468081defae938bd2e43a1c5dd3ae3b7f39f9ac
-ms.sourcegitcommit: 59810f8eba5e430d85a595e346d3b7fb6e4a0102
+ms.openlocfilehash: 05a3700667b56ae7863fd72da8c80d1512379338
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94501831"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212659"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>使用应用程序网关重写 HTTP 标头和 URL
 
@@ -53,7 +53,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 ![此图描述了使用应用程序网关重写 URL 的过程。](./media/rewrite-http-headers-url/url-rewrite-overview.png)
 
 >[!NOTE]
-> URL 重写功能为预览版，仅适用于 Standard_v2 和 WAF_v2 SKU 版应用程序网关。 建议不要在生产环境中使用。 若要了解关于预览的详细信息，请参阅[此处的使用条款](https://www.azure.cn/support/legal/)。
+> URL 重写功能为预览版，仅适用于 Standard_v2 和 WAF_v2 SKU 版应用程序网关。 不建议在生产环境中使用。 若要了解关于预览的详细信息，请参阅[此处的使用条款](https://www.azure.cn/support/legal/)。
 
 ## <a name="rewrite-actions"></a>重写操作
 
@@ -164,7 +164,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 由于应用服务是多租户服务，因此它会使用请求中的主机标头将请求路由到正确的终结点。 应用服务具有一个默认域名 *.chinacloudsites.cn（例如 contoso.chinacloudsites.cn），该域名不同于应用程序网关的域名（例如 contoso.com）。 由于来自客户端的原始请求使用应用程序网关的域名 (contoso.com) 作为主机名，因此，应用程序网关会将主机名更改为 contoso.chinacloudsites.cn。 做出此更改的目的是使应用服务能够将请求路由到正确的终结点。
 
-当应用服务发送重定向响应时，它会在其响应的位置标头中，使用它从应用程序网关收到的请求中的相同主机名。 因此，客户端将直接向 contoso.chinacloudsites.cn/path2 发出请求，而不是通过应用程序网关 (contoso.com/path2) 发出请求。 不应该绕过应用程序网关。
+当应用服务发送重定向响应时，它会在其响应的位置标头中，使用它从应用程序网关收到的请求中的相同主机名。 因此，客户端将直接向 `contoso.chinacloudsites.cn/path2` 发出请求，而不是通过应用程序网关 (`contoso.com/path2`) 发出请求。 不应该绕过应用程序网关。
 
 将 location 标头中的主机名设置为应用程序网关的域名即可解决此问题。
 
@@ -261,4 +261,3 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 - [了解如何使用 Azure 门户在应用程序网关中重写 HTTP 标头](rewrite-http-headers-portal.md)
 - [了解如何使用 Azure 门户在应用程序网关中重写 URL](rewrite-url-portal.md)
-

@@ -1,24 +1,24 @@
 ### YamlMime:Landing
 title: Azure Cosmos DB 文档
-summary: Azure Cosmos DB - Fast NoSQL 数据库，具有 SLA 支持的速度和可用性、自动和即时扩展性，以及适用于 MongoDB 和 Cassandra 的开源 API。
+summary: Azure Cosmos DB - Fast NoSQL 数据库，它具有 SLA 支持的速度和可用性、自动和即时扩展性，以及适用于 MongoDB 和 Cassandra 的开源 API。
 metadata:
   title: Azure Cosmos DB
-  description: Azure Cosmos DB - Fast NoSQL 数据库，具有 SLA 支持的速度和可用性、自动和即时扩展性，以及适用于 MongoDB 和 Cassandra 的开源 API。
+  description: Azure Cosmos DB - Fast NoSQL 数据库，它具有 SLA 支持的速度和可用性、自动和即时扩展性，以及适用于 MongoDB 和 Cassandra 的开源 API。
   services: service
   ms.service: cosmos-db
   ms.topic: landing-page
   ms.collection: collection
   author: rockboyfor
-  ms.date: 02/08/2021
+  ms.date: 03/15/2021
   ms.testscope: no
   ms.testdate: 09/28/2020
   ms.author: v-yeche
-  ms.openlocfilehash: e564a69a2e83438650212e90d252a80378a7330d
-  ms.sourcegitcommit: fda47fe846d47f30e65a048251402d873e416650
+  ms.openlocfilehash: 830a03b89ee6cc1b1e938514b5ee488c9485e240
+  ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/02/2021
-  ms.locfileid: "99426598"
+  ms.lasthandoff: 03/11/2021
+  ms.locfileid: "102996712"
 landingContent:
 - title: 关于 Azure Cosmos DB
   linkLists:

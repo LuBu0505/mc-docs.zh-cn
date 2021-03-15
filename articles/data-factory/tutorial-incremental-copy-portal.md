@@ -1,27 +1,23 @@
 ---
 title: 使用 Azure 门户以增量方式复制表
 description: 在本教程中，你将创建一个带管道的 Azure 数据工厂，将增量数据从 Azure SQL 数据库中的表加载到 Azure Blob 存储。
-services: data-factory
 author: WenJason
 ms.author: v-jay
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-origin.date: 11/09/2020
-ms.date: 01/04/2021
-ms.openlocfilehash: 2fec3755655fe6b8839024b53b6dacb0ac459579
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+origin.date: 02/18/2021
+ms.date: 03/15/2021
+ms.openlocfilehash: 6a3feb205a07bb7a08ac92fdd7d9f7a6521f214b
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830290"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589903"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>使用 Azure 门户以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在本教程中，你将创建一个带管道的 Azure 数据工厂，将增量数据从 Azure SQL 数据库中的表加载到 Azure Blob 存储。
 
@@ -288,7 +284,7 @@ END
 ## <a name="trigger-a-pipeline-run"></a>触发管道运行
 1. 单击工具栏中的“添加触发器”，然后单击“立即触发”。 
 
-2. 在“管道运行”窗口中选择“完成”。
+2. 在“管道运行”窗口中选择“完成”。 
 
 ## <a name="monitor-the-pipeline-run"></a>监视管道运行
 

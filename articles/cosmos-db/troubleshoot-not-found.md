@@ -5,18 +5,18 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 origin.date: 07/13/2020
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 03/15/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: e24cceb54db5a82741076bbd67959cc50ea56c57
-ms.sourcegitcommit: a8afac9982deafcf0652c63fe1615ba0ef1877be
+ms.openlocfilehash: bded406cdf87762e729de0ff05da02a3f3741bfa
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96850796"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996776"
 ---
 <!--Verified successfully-->
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>诊断和排查 Azure Cosmos DB 的“未找到”异常
@@ -49,7 +49,7 @@ HTTP 状态代码 404 表示资源不再存在。
 修复导致错误组合的应用程序逻辑。 
 
 ### <a name="invalid-character-in-an-item-id"></a>项 ID 中的字符无效
-已将项插入 Azure Cosmos DB，并且项 ID 中带有[无效字符](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.resource.id?preserve-view=true&view=azure-dotnet#remarks)。
+项被插入 Azure Cosmos DB，并且项 ID 中带有[无效字符](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.resource.id#remarks)。
 
 #### <a name="solution"></a>解决方案：
 将 ID 更改为不包含特殊字符的其他值。 如果不能更改 ID，则可以对 ID 进行 Base64 编码以将特殊字符转义。 Base64 仍然会生成一个包含无效字符“/”的名称，该字符需要替换。
@@ -64,7 +64,7 @@ string containerRid = selfLinkSegments[3];
 Container containerByRid = this.cosmosClient.GetContainer(databaseRid, containerRid);
 
 // Invalid characters are listed here.
-//https://docs.azure.cn/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet&preserve-view=true#remarks
+//https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id#remarks
 FeedIterator<JObject> invalidItemsIterator = this.Container.GetItemQueryIterator<JObject>(
     @"select * from t where CONTAINS(t.id, ""/"") or CONTAINS(t.id, ""#"") or CONTAINS(t.id, ""?"") or CONTAINS(t.id, ""\\"") ");
 while (invalidItemsIterator.HasMoreResults)
@@ -106,7 +106,7 @@ while (invalidItemsIterator.HasMoreResults)
 项所在的数据库或容器已删除。
 
 #### <a name="solution"></a>解决方案：
-1. [还原](./online-backup-and-restore.md#request-data-restore-from-a-backup)父资源或重新创建资源。
+1. [还原](./configure-periodic-backup-restore.md#request-restore)父资源或重新创建资源。
 1. 创建新资源来替换已删除的资源。
 
 ### <a name="7-containercollection-names-are-case-sensitive"></a>7.容器/集合名称区分大小写
@@ -121,4 +121,4 @@ while (invalidItemsIterator.HasMoreResults)
 * [诊断和排查](troubleshoot-java-sdk-v4-sql.md)使用 Azure Cosmos DB Java v4 SDK 时遇到的问题。
 * 了解 [Java v4 SDK](performance-tips-java-sdk-v4-sql.md) 的性能准则。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

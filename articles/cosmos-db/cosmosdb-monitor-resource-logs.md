@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: how-to
 origin.date: 01/06/2021
 author: rockboyfor
-ms.date: 02/08/2021
+ms.date: 03/15/2021
 ms.testscope: no
 ms.testdate: 06/22/2020
 ms.author: v-yeche
-ms.openlocfilehash: 52bc1e1f4486befa6e4a6e453f5d854009786d25
-ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
+ms.openlocfilehash: d4738600f224c9778c1dfe7572b04ead81bbcaa6
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580605"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996597"
 ---
 <!--Verified successfully on 06/12/2020-->
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>使用 Azure 中的诊断设置监视 Azure Cosmos DB 数据
@@ -249,7 +249,7 @@ Azure 中的诊断设置用于收集资源日志。 Azure 资源日志由资源�
     ```Kusto
     AzureDiagnostics
     | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics"
-    | where todouble(sizeKb_d) > 800000
+    | where todouble(sizeKb_d) > 8000000
     ```
 
 1. 如何获取操作的 P99 或 P50 复制延迟、请求费用或响应时间？

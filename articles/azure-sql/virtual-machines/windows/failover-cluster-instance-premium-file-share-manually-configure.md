@@ -13,19 +13,19 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 06/18/2020
-ms.date: 01/04/2021
+ms.date: 03/15/2021
 ms.author: v-jay
-ms.openlocfilehash: 7fdeaabd245283456b1c5c0d45c5be41f51ddd28
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 8e3f8461de472ca4c60f04cdee050721816dba9b
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830380"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589974"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>使用高级文件共享创建 FCI（Azure VM 上的 SQL Server）
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-本文介绍了如何使用[高级文件共享](../../../storage/files/storage-how-to-create-premium-fileshare.md)为 Azure 虚拟机 (VM) 上的 SQL Server 创建故障转移群集实例 (FCI)。
+本文介绍了如何使用[高级文件共享](../../../storage/files/storage-how-to-create-file-share.md)为 Azure 虚拟机 (VM) 上的 SQL Server 创建故障转移群集实例 (FCI)。
 
 高级文件共享以存储空间直通 (SSD) 为基础，可以稳定保持较低的延迟，完全支持用于 Windows Server 2012 或更高版本上的 SQL Server 2012 或更高版本的故障转移群集实例。 高级文件共享提供更高的灵活性，使你能在不停机的情况下对文件共享进行大小调整和缩放。
 
@@ -38,7 +38,7 @@ ms.locfileid: "97830380"
 - Azure 订阅。
 - 有权限在 Azure 虚拟机和 Active Directory 中创建对象的帐户。
 - [可用性集](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)中两个或更多个已准备好的 Windows Azure 虚拟机。
-- 要基于数据库中数据文件的存储配额，用作群集驱动器的[高级文件共享](../../../storage/files/storage-how-to-create-premium-fileshare.md)。
+- 要基于数据库中数据文件的存储配额，用作群集驱动器的[高级文件共享](../../../storage/files/storage-how-to-create-file-share.md)。
 - 最新版本的 [PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)。 
 
 ## <a name="mount-premium-file-share"></a>装载高级文件共享
@@ -199,6 +199,8 @@ Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName
 ## <a name="configure-connectivity"></a>配置连接 
 
 若要将流量正确路由到当前主节点，请配置适用于你的环境的连接选项。 你可以创建 [Azure 负载均衡器](failover-cluster-instance-vnn-azure-load-balancer-configure.md)，也可以在使用 SQL Server 2019 CU2（或更高版本）和 Windows Server 2016（或更高版本）的情况下改用[分布式网络名称](failover-cluster-instance-distributed-network-name-dnn-configure.md)功能。 
+
+有关群集连接选项的更多详细信息，请参阅[将 HADR 连接路由到 Azure VM 上的 SQL Server](hadr-cluster-best-practices.md#connectivity)。 
 
 ## <a name="limitations"></a>限制
 

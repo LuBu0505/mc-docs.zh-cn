@@ -7,16 +7,16 @@ ms.devlang: go
 ms.topic: quickstart
 origin.date: 04/24/2020
 author: rockboyfor
-ms.date: 02/08/2021
+ms.date: 03/15/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4d5d183c69f3cbba9f8ec0673e048b7cd0bc7540
-ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
+ms.openlocfilehash: e11c3608697eace4f763ec212afd724b557fca1f
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580613"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996656"
 ---
 <!--Verified successfully-->
 # <a name="quickstart-connect-a-go-application-to-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：将 Go 应用程序连接到 Azure Cosmos DB 的 API for MongoDB
@@ -26,7 +26,7 @@ ms.locfileid: "99580613"
 > * [.NET](create-mongodb-dotnet.md)
 > * [Java](create-mongodb-java.md)
 > * [Node.js](create-mongodb-nodejs.md)
-> * [Python](create-mongodb-flask.md)
+> * [Python](./mongodb-introduction.md)
 > * [Xamarin](create-mongodb-xamarin.md)
 > * [Golang](create-mongodb-go.md)
 >  
@@ -40,7 +40,7 @@ Azure Cosmos DB 是一种多模型数据库服务，可让你通过多区域分�
 ## <a name="prerequisites"></a>先决条件
 - 具有活动订阅的 Azure 帐户。 [创建试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。 你还可以将 [Azure Cosmos DB 模拟器](https://aka.ms/cosmosdb-emulator)与连接字符串 `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true` 配合使用。
     
-    <!--Not Avaialble on [try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)-->
+    <!--NOT AVAILABLE ON [try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)-->
     
 - 在计算机上安装 [Go](https://golang.org/)，并了解 Go 的实践知识。
 - [Git](https://git-scm.com/downloads)。
@@ -65,7 +65,7 @@ Azure Cosmos DB 是一种多模型数据库服务，可让你通过多区域分�
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
+3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
 
     ```bash
     git clone https://github.com/Azure-Samples/cosmosdb-go-mongodb-quickstart
@@ -262,7 +262,7 @@ az login
 
 如果使用已安装的 Azure CLI，请运行 `az` 命令，检查是否已安装 `cosmosdb` 组件。 如果 `cosmosdb` 在基本命令列表中，请继续执行下一个命令。 
 
-如果 `cosmosdb` 不在基本命令列表中，请重装 [Azure CLI](https://docs.azure.cn/cli/install-azure-cli)。
+如果 `cosmosdb` 不在基本命令列表中，请重装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
@@ -292,7 +292,7 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 创建 Azure Cosmos DB 帐户后，Azure CLI 会显示类似于以下示例的信息： 
 
 > [!NOTE]
-> 此示例使用 JSON 作为 Azure CLI 输出格式，此为默认设置。 若要使用其他输出格式，请参阅 [Azure CLI 命令的输出格式](https://docs.azure.cn/cli/format-output-azure-cli)。
+> 此示例使用 JSON 作为 Azure CLI 输出格式，此为默认设置。 若要使用其他输出格式，请参阅 [Azure CLI 命令的输出格式](https://docs.azure.cn/cli/format-output-azure-cli)。 
 
 ```json
 {

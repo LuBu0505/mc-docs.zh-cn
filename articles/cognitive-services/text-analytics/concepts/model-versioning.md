@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 12/30/2020
+ms.date: 03/08/2021
 ms.author: v-johya
-ms.openlocfilehash: c3df18d4dbf6a9c0c1bd37d6546ee2b7a219f17c
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 83bea9480acc30c29d405baab95670249ccc9ef2
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857109"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212365"
 ---
 # <a name="model-versioning-in-the-text-analytics-api"></a>文本分析 API 中的模型版本控制
 
@@ -29,10 +29,10 @@ ms.locfileid: "97857109"
 | 终结点                        | 支持的版本                                     | 最新版本 |
 |---------------------------------|--------------------------------------------------------|----------------|
 | `/sentiment`                    | `2019-10-01`, `2020-04-01`                             | `2020-04-01`   |
-| `/languages`                    | `2019-10-01`, `2020-07-01`, `2020-09-01`               | `2020-09-01`   |
+| `/languages`                    | `2019-10-01`, `2020-07-01`, `2020-09-01`, `2021-01-05` | `2021-01-05`   |
 | `/entities/linking`             | `2019-10-01`, `2020-02-01`                             | `2020-02-01`   |
-| `/entities/recognition/general` | `2019-10-01`, `2020-02-01`, `2020-04-01`,              | `2020-04-01`   |
-| `/entities/recognition/pii`     | `2019-10-01`, `2020-02-01`, `2020-04-01`,`2020-07-01`  | `2020-07-01`   |
+| `/entities/recognition/general` | `2019-10-01`, `2020-02-01`, `2020-04-01`,`2021-01-15`  | `2021-01-15`   |
+| `/entities/recognition/pii`     | `2019-10-01`, `2020-02-01`, `2020-04-01`,`2020-07-01`, `2021-01-15`  | `2021-01-15`   |
 | `/keyphrases`                   | `2019-10-01`, `2020-07-01`                             | `2020-07-01`   |
 
 

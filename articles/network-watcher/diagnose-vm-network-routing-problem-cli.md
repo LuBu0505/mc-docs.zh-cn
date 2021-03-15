@@ -4,7 +4,6 @@ titleSuffix: Azure Network Watcher
 description: 本文介绍如何通过 Azure CLI 使用 Azure 网络观察程序的“下一跃点”功能来诊断虚拟机网络路由问题。
 services: network-watcher
 documentationcenter: network-watcher
-editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose virtual machine (VM) network routing problem that prevents communication to different destinations.
 ms.assetid: ''
@@ -20,12 +19,12 @@ ms.testscope: yes
 ms.testdate: 08/03/2020
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: 6277344d0d30be3f5c0f93ed97d3ad86644c9ff3
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 6e2d2374bcaa2e1793f97a3af07b651a5064b7a1
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230452"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212552"
 ---
 <!--Verify Successfully-->
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>诊断虚拟机网络路由问题 - Azure CLI
@@ -38,7 +37,7 @@ ms.locfileid: "98230452"
 
 - 本文需要 Azure CLI 版本 2.0 或更高版本。
 
-    <!--Not Available on  If using Azure Cloud Shell, the latest version is already installed.-->
+    <!--NOT AVAIALBLE ON If using Azure Cloud Shell, the latest version is already installed.-->
 
 - 本文中的 Azure CLI 命令已格式化，适合在 Bash Shell 中运行。
 

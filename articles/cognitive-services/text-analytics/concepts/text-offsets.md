@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 10/26/2020
+ms.date: 03/08/2021
 origin.date: 03/09/2020
 ms.author: v-johya
 ms.reviewer: jdesousa
-ms.openlocfilehash: 28198f42c9e638cd5d617bd16c761df0a4e58baa
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: a9761d4dd3ba8aeec17efff91bb56504f9519da2
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105625"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212622"
 ---
 # <a name="text-offsets-in-the-text-analytics-api-output"></a>文本分析 API 输出中的文本偏移量
 
@@ -35,9 +35,9 @@ ms.locfileid: "93105625"
 
 ## <a name="extracting-substrings-from-text-with-offsets"></a>从具有偏移量的文本中提取子字符串
 
-使用基于字符的子字符串方法（例如 .NET [substring()](https://docs.microsoft.com/dotnet/api/system.string.substring?view=netframework-4.8) 方法）时，偏移量可能会导致问题。 一个问题是，偏移量可能导致子字符串方法在多字符字形编码的中间而不是结尾处结束。
+使用基于字符的子字符串方法（例如 .NET [substring()](https://docs.microsoft.com/dotnet/api/system.string.substring) 方法）时，偏移量可能会导致问题。 一个问题是，偏移量可能导致子字符串方法在多字符字形编码的中间而不是结尾处结束。
 
-在 .NET 中，考虑使用 [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) 类，该类使你可以将字符串作为一系列文本元素（而不是单个字符对象）来处理。 也可以在首选软件环境中查找字形拆分器库。 
+在 .NET 中，考虑使用 [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo) 类，该类使你可以将字符串作为一系列文本元素（而不是单个字符对象）来处理。 也可以在首选软件环境中查找字形拆分器库。 
 
 为方便起见，文本分析 API 也会返回这些文本元素。
 

@@ -5,18 +5,18 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 origin.date: 02/05/2021
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/15/2021
 ms.testscope: yes
 ms.testdate: 03/01/2021
 ms.author: v-yeche
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 63fe5b686927023f9b47e78539b21b99688484ca
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: d0ff7e955ddf1eec27ae74269bec73c4abdccc0a
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055752"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996774"
 ---
 <!--Verified successfully-->
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-forbidden-exceptions"></a>诊断并排查 Azure Cosmos DB 的“已禁止”异常的问题
@@ -44,5 +44,4 @@ Request is blocked. Please check your authorization token and Cosmos DB account 
 * 配置从[虚拟网络](how-to-configure-vnet-service-endpoint.md)进行的访问。
 * 配置从[专用终结点](how-to-configure-private-endpoints.md)进行的访问。
 
-<!--Update_Description: new article about troubleshoot forbidden-->
-<!--NEW.date: 03/01/2021-->
+<!--Update_Description: update meta properties, wording update, update link-->

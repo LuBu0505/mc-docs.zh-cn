@@ -2,30 +2,28 @@
 title: 教程 - 在 Azure AD 域服务中创建副本集 | Microsoft Docs
 description: 了解如何在 Azure 门户中创建和使用副本集以实现 Azure AD 域服务的服务复原
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/21/2020
+ms.date: 03/09/2021
 ms.author: v-junlch
-ms.openlocfilehash: 4f62a1c5b3b5450ade2cf61e9ec2e277de0de5bc
-ms.sourcegitcommit: f436acd1e2a0108918a6d2ee9a1aac88827d6e37
+ms.openlocfilehash: 37d5cf40c7c8c84663a19160c56200a563bebe43
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508745"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212469"
 ---
-# <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services-preview"></a>教程：在 Azure Active Directory 域服务（预览版）中创建和使用针对复原能力或地理位置的副本集
+# <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services"></a>教程：在 Azure Active Directory 域服务中创建和使用针对复原能力或地理位置的副本集
 
 若要提高 Azure Active Directory 域服务 (Azure AD DS) 托管域的复原能力，或部署到靠近应用程序的其他地理位置，可以使用副本集。 每个 Azure AD DS 托管域命名空间（如 aaddscontoso.com）都包含一个初始副本集。 在其他 Azure 区域中创建附加副本集的功能可为托管域提供地理复原能力。
 
 可以将副本集添加到支持 Azure AD DS 的任何 Azure 区域中的任何对等互连虚拟网络。
 
-副本集是 Azure AD 域服务中的公共预览功能。 请注意对于仍处于预览版的功能所存在的支持差异。 有关预览版的详细信息，请参阅 [Azure Active Directory 预览版 SLA](https://www.azure.cn/support/legal/)。
-
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 了解虚拟网络要求
@@ -78,7 +76,7 @@ ms.locfileid: "96508745"
 
 1. 在 Azure 门户中，搜索并选择“Azure AD 域服务”。
 1. 选择你的托管域，例如 *aaddscontoso.com*。
-1. 在左侧，选择“副本集(预览版)”。 每个托管域在所选区域中都包含一个初始副本集，如以下示例屏幕截图所示：
+1. 在左侧，选择“副本集”。 每个托管域在所选区域中都包含一个初始副本集，如以下示例屏幕截图所示：
 
     ![在 Azure 门户中查看和添加副本集的示例屏幕截图](./media/tutorial-create-replica-set/replica-set-list.png)
 
@@ -113,7 +111,7 @@ ms.locfileid: "96508745"
 
 1. 在 Azure 门户中，搜索并选择“Azure AD 域服务”。
 1. 选择你的托管域，例如 *aaddscontoso.com*。
-1. 在左侧，选择“副本集(预览版)”。 从副本集列表中，选择要删除的副本集旁的“…”上下文菜单。
+1. 在左侧，选择“副本集”。 从副本集列表中，选择要删除的副本集旁的“…”上下文菜单。
 1. 从上下文菜单中选择“删除”，然后确认要删除的副本集。
 
 > [!NOTE]
@@ -142,4 +140,3 @@ ms.locfileid: "96508745"
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [howto-change-sku]: change-sku.md
 [concepts-replica-sets]: concepts-replica-sets.md
-

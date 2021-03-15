@@ -1,13 +1,13 @@
 ---
-ms.openlocfilehash: 6ddd5b8bb3d047d67f0e5a89d686271f81c31310
-ms.sourcegitcommit: 39410f3ed7bdeafa1099ba5e9ec314b4255766df
+ms.openlocfilehash: a492b97b460593b5607eb8966a7f42bb0a1893b9
+ms.sourcegitcommit: 51e46fa770f686e754c2fbcd77697fd73aa18bb0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90679931"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102511028"
 ---
 ## <a name="obtain-an-azure-resource-manager-token"></a>获取 Azure 资源管理器令牌
-Azure Active Directory 必须使用 Azure 资源管理器来验证所有针对资源执行的任务。 此处显示的示例使用密码身份验证。有关其他方法，请参阅[对 Azure 资源管理器请求进行身份验证][lnk-authenticate-arm]。
+Azure Active Directory 必须使用 Azure 资源管理器来验证所有针对资源执行的任务。 此处显示的示例使用密码身份验证，有关其他方法，请参阅[对 Azure 资源管理器请求进行身份验证][lnk-authenticate-arm]。
 
 1. 将以下代码添加到 Program.cs 中的 **Main** 方法，以使用应用程序 ID 和密码从 Azure AD 中检索令牌。
    
@@ -16,7 +16,7 @@ Azure Active Directory 必须使用 Azure 资源管理器来验证所有针对�
       ("https://login.chinacloudapi.cn/{0}", tenantId));
     var credential = new ClientCredential(applicationId, password);
     AuthenticationResult token = authContext.AcquireTokenAsync
-      ("https://management.core.chinacloudapi.cn/", credential).Result;
+      ("https://management.chinacloudapi.cn/", credential).Result;
 
     if (token == null)
     {
@@ -31,6 +31,7 @@ Azure Active Directory 必须使用 Azure 资源管理器来验证所有针对�
     var creds = new TokenCredentials(token.AccessToken);
     var client = new ResourceManagementClient(creds);
     client.SubscriptionId = subscriptionId;
+    client.BaseUri = new Uri("https://management.chinacloudapi.cn/");
     ```
 
 3. 创建或获取对正在使用的资源组的引用：

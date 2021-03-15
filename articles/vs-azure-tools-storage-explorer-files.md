@@ -15,12 +15,12 @@ ms.topic: conceptual
 origin.date: 03/09/2017
 ms.date: 10/19/2020
 ms.author: v-tawe
-ms.openlocfilehash: 78ba093aa3d7b277b1430c3472867702c82b9f5f
-ms.sourcegitcommit: e2e418a13c3139d09a6b18eca6ece3247e13a653
+ms.openlocfilehash: f36ec3f2eb4ee40993bc95da7e784107ab4c17aa
+ms.sourcegitcommit: 51e46fa770f686e754c2fbcd77697fd73aa18bb0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170690"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498158"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>将存储资源管理器与 Azure 文件存储配合使用
 
@@ -118,7 +118,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
 ## <a name="get-the-sas-for-a-file-share"></a>获取文件共享的 SAS
 
-[共享访问签名 (SAS)](/storage/storage-dotnet-shared-access-signature-part-1) 用于对存储帐户中的资源进行委托访问。 这意味着可以授权客户端在指定时间段内，以一组指定权限有限地访问存储帐户中的对象，而不必共享帐户访问密钥。
+[共享访问签名 (SAS)](./storage/common/storage-sas-overview.md) 用于对存储帐户中的资源进行委托访问。 这意味着可以授权客户端在指定时间段内，以一组指定权限有限地访问存储帐户中的对象，而不必共享帐户访问密钥。
 
 以下步骤演示了如何为文件共享创建 SAS：
 

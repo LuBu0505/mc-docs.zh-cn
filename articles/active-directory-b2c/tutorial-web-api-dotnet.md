@@ -6,17 +6,17 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.author: v-junlch
-ms.date: 12/02/2020
+ms.date: 03/12/2021
 ms.custom: devx-track-csharp, mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 953ce7b80ec01ab8ae162a326c348f9c34463c15
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: dfd78ba438cf3a6ce44f544a846416ed91147545
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507243"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212492"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 授予对 ASP.NET Web API 的访问权限
 
@@ -44,7 +44,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过提
 
 #### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/)
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 选择“应用注册”，然后选择“新建注册” 。
@@ -55,7 +55,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过提
 
 #### <a name="applications-legacy"></a>[应用程序（旧版）](#tab/applications-legacy/)
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 2. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 4. 选择“应用程序(旧版)”，然后选择“添加” 。
@@ -70,7 +70,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过提
 
 ## <a name="configure-scopes"></a>配置范围
 
-可通过范围控制对受保护资源的访问。 Web API 使用作用域实施基于作用域的访问控制。 例如，可以让 Web API 用户拥有读取和写入访问权限，或者只拥有读取访问权限。 在本教程中，请使用作用域为 Web API 定义读取和写入权限。
+可通过作用域控制对受保护资源的访问。 Web API 使用作用域实施基于作用域的访问控制。 例如，可以让 Web API 用户拥有读取和写入访问权限，或者只拥有读取访问权限。 在本教程中，请使用作用域为 Web API 定义读取和写入权限。
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
@@ -165,3 +165,5 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过提
 > * 授予 Web API 权限
 > * 将示例配置为使用此应用程序
 
+> [!div class="nextstepaction"]
+> [将标识提供者添加到 Azure Active Directory B2C 中的应用程序](add-identity-provider.md)

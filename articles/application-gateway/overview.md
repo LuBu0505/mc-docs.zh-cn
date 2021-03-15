@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 11/16/2020
+ms.date: 03/09/2021
 ms.author: v-junlch
-ms.openlocfilehash: a4284c37c02c1b530ed7dc499a0293a143760173
-ms.sourcegitcommit: b072689d006cbf9795612acf68e2c4fee0eccfbc
+ms.openlocfilehash: cbd8cc449766cc5311db51dcd53d6d009ec6595d
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94849288"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212598"
 ---
 # <a name="what-is-azure-application-gateway"></a>什么是 Azure 应用程序网关？
 
@@ -26,8 +26,12 @@ Azure 应用程序网关是一种 Web 流量负载均衡器，可用于管理 We
 这种类型的路由称为应用程序层（OSI 层 7）负载均衡。 Azure 应用程序网关可以执行基于 URL 的路由等操作。
 
 >[!NOTE]
-> Azure 为方案提供了一套完全托管的负载均衡解决方案。 如需高性能、低延迟的 4 层负载均衡，请参阅[什么是 Azure 负载均衡器？](../load-balancer/load-balancer-overview.md) 如果正在查找全局 DNS 负载均衡，请查看[什么是流量管理器？](../traffic-manager/traffic-manager-overview.md) 端到端场景可从结合这些解决方案中受益。
->
+> Azure 为方案提供了一套完全托管的负载均衡解决方案。 
+> * 若要进行基于 DNS 的全局路由，并且在传输层安全性 (TLS) 协议终止（“SSL 卸载”）、每 HTTP/HTTPS 请求或应用程序层处理方面没有要求，请查看[流量管理器](../traffic-manager/traffic-manager-overview.md)。 
+> * 若要执行网络层负载均衡，请查看[负载均衡器](../load-balancer/load-balancer-overview.md)。 
+> 
+> 端到端场景可从结合所需的解决方案中受益。
+
 
 ## <a name="features"></a>功能
 
@@ -50,4 +54,3 @@ Azure 应用程序网关是一种 Web 流量负载均衡器，可用于管理 We
 - [快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure 门户](quick-create-portal.md)
 - [快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure PowerShell](quick-create-powershell.md)
 - [快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure CLI](quick-create-cli.md)
-

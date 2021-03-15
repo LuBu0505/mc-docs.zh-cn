@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
 origin.date: 9/21/2020
-ms.date: 01/11/2021
-ms.openlocfilehash: c846a508ecedb3d0ec233d94ed6ee4b48e21ac46
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.date: 03/15/2021
+ms.openlocfilehash: 4a77cce0fff9c4660d1e8784599be82fe90fc49d
+ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023416"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103211738"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>使用 Azure Database for MySQL 灵活服务器中的审核日志跟踪数据库活动
 
@@ -47,11 +47,11 @@ ms.locfileid: "98023416"
 | `DCL` | 类似“GRANT PERMISSION”的查询 |
 | `ADMIN` | 类似“SHOW STATUS”的查询 |
 | `GENERAL` | All in DML_SELECT, DML_NONSELECT, DML, DDL, DCL, and ADMIN |
-| `TABLE_ACCESS` | - 仅适用于 MySQL 5.7 <br> - 表读取语句，例如 SELECT 或 INSERT INTO ...SELECT <br> - 表删除语句，例如 DELETE 或 TRUNCATE TABLE <br> - 表插入语句，例如 INSERT 或 REPLACE <br> - 表更新语句，例如 UPDATE |
+| `TABLE_ACCESS` | - 表读取语句，例如 SELECT 或 INSERT INTO ...SELECT <br> - 表删除语句，例如 DELETE 或 TRUNCATE TABLE <br> - 表插入语句，例如 INSERT 或 REPLACE <br> - 表更新语句，例如 UPDATE |
 
 ## <a name="access-audit-logs"></a>访问审核日志
 
-审核日志与 Azure Monitor 诊断设置相集成。 在 MySQL 灵活服务器上启用审核日志后，可以将它们发送到 Azure Monitor 日志、事件中心或 Azure 存储。 若要详细了解诊断设置，请参阅[诊断日志文档](../../azure-monitor/platform/platform-logs-overview.md)。 若要详细了解如何在 Azure 门户中启用诊断设置，请参阅[审核日志门户文章](how-to-configure-audit-logs-portal.md#set-up-diagnostics)。
+审核日志与 Azure Monitor 诊断设置相集成。 在 MySQL 灵活服务器上启用审核日志后，可以将它们发送到 Azure Monitor 日志、事件中心或 Azure 存储。 若要详细了解诊断设置，请参阅[诊断日志文档](../../azure-monitor/essentials/platform-logs-overview.md)。 若要详细了解如何在 Azure 门户中启用诊断设置，请参阅[审核日志门户文章](how-to-configure-audit-logs-portal.md#set-up-diagnostics)。
 
 以下部分介绍基于事件类型的 MySQL 审核日志的输出。 根据输出方法，包含的字段以及这些字段出现的顺序可能会有所不同。
 
@@ -73,7 +73,7 @@ ms.locfileid: "98023416"
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | 服务器的名称 |
 | `event_class_s` | `connection_log` |
-| `event_subclass_s` | `CONNECT`、`DISCONNECT`、`CHANGE USER`（仅适用于 MySQL 5.7） |
+| `event_subclass_s` | `CONNECT`, `DISCONNECT`, `CHANGE USER` |
 | `connection_id_d` | MySQL 生成的唯一连接 ID |
 | `host_s` | 空白 |
 | `ip_s` | 连接到 MySQL 的客户端的 IP 地址 |
@@ -117,7 +117,7 @@ ms.locfileid: "98023416"
 ### <a name="table-access"></a>表访问权限
 
 > [!NOTE]
-> 只有 MySQL 5.7 输出表访问日志。<br>对于 `sql_text_s`，如果日志超过 2048 个字符，则会截断日志。
+> 对于 `sql_text_s`，如果日志超过 2048 个字符，则会截断日志。
 
 | **属性** | **说明** |
 |---|---|

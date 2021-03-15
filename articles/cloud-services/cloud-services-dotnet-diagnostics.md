@@ -3,19 +3,19 @@ title: 如何将 Azure 诊断 (.NET) 与云服务（经典）配合使用 | Micr
 description: 使用 Azure 诊断从 Azure 云服务收集数据，以用于调试、衡量性能、监视和流量分析等目的。
 ms.topic: article
 ms.service: cloud-services
-ms.date: 01/25/2021
+ms.date: 03/09/2021
 ms.author: v-junlch
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 4c366908564f5af871b08b34d504da5017275e88
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: e90eabd44e6b3e87866d69b299350a6601b00b1a
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059281"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212641"
 ---
-# <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>在 Azure 云服务（经典）中启用 Azure 诊断 
+# <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>在 Azure 云服务（经典）中启用 Azure 诊断
 
 有关 Azure 诊断的背景信息，请参阅 [Azure 诊断概述](../azure-diagnostics.md)。
 
@@ -200,4 +200,3 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -Diagnostic
 [Collect Logging Data by Using Azure Diagnostics]: https://docs.microsoft.com/previous-versions/azure/gg433048(v=azure.100)
 [trial]: https://www.microsoft.com/china/azure/index.html?fromtype=cn/
 [Install and configure Azure PowerShell version 0.8.7 or later]: https://docs.microsoft.com/powershell/azure/
-

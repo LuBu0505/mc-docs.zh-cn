@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 03/11/2021
 ms.custom: project-no-code
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: d2aef2d4087f6e803cded550508e84ff706d5cb2
-ms.sourcegitcommit: 33f2835ec41ca391eb9940edfcbab52888cf8a01
+ms.openlocfilehash: 7941348c3b3419a9464203882970382fa7da14a7
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94326409"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212268"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中请求访问令牌
 
@@ -91,7 +91,7 @@ https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 成功接收授权代码以后，可以将其用于请求访问令牌：
 
 ```http
-POST <tenant-name>.partner.onmschina.cn/<policy-name>/oauth2/v2.0/token HTTP/1.1
+POST <tenant-name>.b2clogin.cn/<tenant-name>.partner.onmschina.cn/<policy-name>/oauth2/v2.0/token HTTP/1.1
 Host: <tenant-name>.b2clogin.cn
 Content-Type: application/x-www-form-urlencoded
 
@@ -144,4 +144,3 @@ grant_type=authorization_code
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[在 Azure AD B2C 中配置令牌](configure-tokens.md)
-

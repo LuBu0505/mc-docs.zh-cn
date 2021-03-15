@@ -4,7 +4,7 @@ description: 使用客户端日志记录等功能和其他第三方工具来确�
 ms.service: cosmos-db
 origin.date: 06/11/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/15/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
@@ -12,12 +12,12 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: 4c3f694893c0c87cdc2491b6dfd4e13630d15ac0
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 737340259930e7b73f80d5fa42eecd57c52c3eb8
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230241"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996775"
 ---
 <!--Verified successfully, ONLY CHARACTORS CONTENT-->
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>排查将 Azure Cosmos DB Java SDK v4 与 SQL API 帐户配合使用时出现的问题
@@ -284,4 +284,4 @@ netstat -abn
 [主机上的连接限制]: #connection-limit-on-host
 [Azure SNAT (PAT) 端口耗尽]: #snat
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

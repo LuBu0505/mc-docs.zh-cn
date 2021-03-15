@@ -10,12 +10,12 @@ origin.date: 03/25/2018
 ms.date: 12/02/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 2c9745335f6909a2eb7bce847a569ae3198b2a01
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.openlocfilehash: 3fc8fb8e0015aa5b802886ef9c86b0f4d0fdd4d3
+ms.sourcegitcommit: aa152825420691f705c959682144d14877916aff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196800"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224122"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>教程：第 2 部分 - 查看路由的消息
 
@@ -153,6 +153,8 @@ ms.locfileid: "102196800"
 
    **表名称**：要在 Power BI 中使用的表的名称。 本教程使用 contosotable  。
 
+  **身份验证模式**：选择要使用的模式。
+
    在剩余字段中使用默认值。
 
 3. 选择“授权”并登录到 Power BI 帐户  。 （这可能需要多次重试。）
@@ -281,7 +283,7 @@ ms.locfileid: "102196800"
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>使用 Azure CLI 清理资源
 
-若要删除资源组，请使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令。 在本教程的开头，`$resourceGroup` 已设置为 **ContosoResources**。
+若要删除资源组，请使用 [az group delete](/cli/group#az-group-delete) 命令。 在本教程的开头，`$resourceGroup` 已设置为 **ContosoResources**。
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

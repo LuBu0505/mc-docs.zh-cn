@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 11/06/2020
 ms.date: 12/30/2020
 ms.author: v-tawe
-ms.openlocfilehash: 33f034c25edab4552b09a230ce565ff40db4ecdb
-ms.sourcegitcommit: eb742dcade404c9909d01e2570188f0bc4076992
+ms.openlocfilehash: 5feb209c72c926b6c30f789e065abfbf86ccae94
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97820291"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212577"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>语音服务：Docs 中的新增内容
 
@@ -41,7 +41,6 @@ ms.locfileid: "97820291"
 * [选择语音识别模式](./get-started-speech-to-text.md) - 向文档添加了 JavaScript 说明。
 * [为语音 SDK 配置 RHEL/CentOS 7](how-to-configure-rhel-centos-7.md) - 改进了安装说明。
 * [语音转文本的短语列表](./get-started-speech-to-text.md) - 向文档添加了 JavaScript 说明。
-* [快速入门：Python 中用于长格式音频的异步合成（预览版）](./long-audio-api.md)- 更新为支持公共神经语音和相关参数。
 * [快速入门：识别音频文件中的语音](./get-started-speech-to-text.md) - 向文档添加了 JavaScript 说明。
 * [快速入门：识别来自麦克风的语音](./get-started-speech-to-text.md) - 向文档添加了 Go 和 JavaScript 说明。
 * [快速入门：识别存储在 Blob 存储中的语音](./batch-transcription.md) - 向文档添加了 JavaScript 说明。

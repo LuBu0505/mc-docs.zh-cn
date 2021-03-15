@@ -4,20 +4,20 @@ description: 使用 Azure 门户、PowerShell 或 Azure CLI 在 Azure SQL 数据
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: quickstart
 author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
-origin.date: 09/03/2020
-ms.date: 10/12/2020
-ms.openlocfilehash: 866af92ca8661ecbdba1fdbb16f6c381d441734a
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+origin.date: 01/27/2021
+ms.date: 03/15/2021
+ms.openlocfilehash: 276fe773694d6de62c4b104b4975eb5b0c26332d
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432531"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589989"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>快速入门：创建 Azure SQL 数据库单一数据库
 
@@ -71,6 +71,7 @@ ms.locfileid: "96432531"
   
 
 1. 在“其他设置”选项卡上的“数据源”部分中，对于“使用现有数据”，请选择“示例”。 这将创建一个 AdventureWorksLT 示例数据库，此数据库包含可查询和试验的一些表和数据，而不是一个空数据库。
+1. （可选）启用 [Azure Defender for SQL](../database/azure-defender-for-sql.md)。
 1. 在页面底部选择“查看 + 创建”：
 
    ![“其他设置”选项卡](./media/single-database-create-quickstart/additional-settings.png)
@@ -102,7 +103,7 @@ $endip=0.0.0.0
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在“chinaeast2”位置创建名为“myResourceGroup”的资源组：
+使用“[az group create](/cli/group)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在“chinaeast2”位置创建名为“myResourceGroup”的资源组：
 
 ```azurecli
 az group create --name $resourceGroupName --location $location
@@ -272,7 +273,7 @@ az sql db create \
 
 用完这些资源后，可以删除创建的资源组，这也会删除该资源组中的服务器和单一数据库。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 若要使用 Azure 门户删除 **myResourceGroup** 及其包含的所有资源：
 

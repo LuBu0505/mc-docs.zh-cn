@@ -7,17 +7,17 @@ ms.devlang: java
 ms.topic: quickstart
 origin.date: 12/26/2018
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/15/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 9d397c764c36b6974ffec5a27a1779a96d370bf4
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: fe7652475f5fd56e2890da9081e503e4f36b87d4
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98229869"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996651"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>快速入门：在 Azure Cosmos DB 中使用 Java 和 MongoDB API 创建控制台应用
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "98229869"
 > * [.NET](create-mongodb-dotnet.md)
 > * [Java](create-mongodb-java.md)
 > * [Node.js](create-mongodb-nodejs.md)
-> * [Python](create-mongodb-flask.md)
+> * [Python](./mongodb-introduction.md)
 > * [Xamarin](create-mongodb-xamarin.md)
 > * [Golang](create-mongodb-go.md)
 >  
@@ -36,7 +36,7 @@ ms.locfileid: "98229869"
 ## <a name="prerequisites"></a>先决条件
 - 具有活动订阅的 Azure 帐户。 [创建试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。  你还可以将 [Azure Cosmos DB 模拟器](https://aka.ms/cosmosdb-emulator)与连接字符串 `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true` 配合使用。
 
-    <!--Not Available on [try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)-->
+    <!--NOT AVAILABLE ON [try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)-->
 
 - [Java 开发工具包 (JDK) 版本 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk)。 
 - [Maven](https://maven.apache.org/download.cgi)。 或者运行 `apt-get install maven` 来安装 Maven。
@@ -68,7 +68,7 @@ ms.locfileid: "98229869"
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-getting-started.git
@@ -145,4 +145,4 @@ ms.locfileid: "98229869"
 > [!div class="nextstepaction"]
 > [将 MongoDB 数据导入 Azure Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fcosmos-db%2ftoc.json%253ftoc%253d%2fcosmos-db%2ftoc.json)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

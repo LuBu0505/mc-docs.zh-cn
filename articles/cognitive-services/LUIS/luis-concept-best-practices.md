@@ -5,14 +5,14 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.author: v-johya
 ms.topic: conceptual
-ms.date: 12/28/2020
+ms.date: 03/08/2021
 origin.date: 10/25/2019
-ms.openlocfilehash: 6964572df2f174ca0b684a14abfe66baa8dba092
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 531ca7f2cc630a8c9828cfb8d59869aaaf3fa83d
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856813"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212698"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>有关生成语言理解 (LUIS) 应用的最佳做法
 使用应用创作过程生成 LUIS 应用：
@@ -143,7 +143,7 @@ ms.locfileid: "97856813"
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>应监视应用的性能
 
-使用[批量测试](luis-concept-batch-test.md)集监视预测准确性。
+使用[批量测试](./luis-how-to-batch-test.md)集监视预测准确性。
 
 保留一个独立的言语集，不将其用作[示例言语](luis-concept-utterance.md)或终结点言语。 针对测试集不断改进应用。 调整测试集以反映真实的用户话语。 使用此测试集来评估每次迭代的或每个版本的应用。
 

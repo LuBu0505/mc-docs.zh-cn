@@ -12,13 +12,13 @@ metadata:
   ms.author: v-jay
   ms.reviewer: carlrab
   origin.date: 05/27/2020
-  ms.date: 09/14/2020
-  ms.openlocfilehash: 9f2d07545960a4b51475df39f87d09f04bc749a7
-  ms.sourcegitcommit: d5cdaec8050631bb59419508d0470cb44868be1a
+  ms.date: 03/15/2021
+  ms.openlocfilehash: 6e5bff86c08d97017b93c796ff7fc76a5a169d96
+  ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/11/2020
-  ms.locfileid: "90014335"
+  ms.lasthandoff: 03/10/2021
+  ms.locfileid: "102589888"
 landingContent:
 - title: Azure SQL 托管实例
   linkLists:
@@ -110,3 +110,15 @@ landingContent:
       url: ../database/recovery-using-backups.md
     - text: 长期备份保留
       url: ../database/long-term-retention-overview.md
+- title: 计划内维护
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 规划 Azure 维护事件
+      url: ../database/planned-maintenance.md
+    - text: 资源运行状况
+      url: ../database/resource-health-to-troubleshoot-connectivity.md
+  - linkListType: how-to-guide
+    links:
+    - text: 维护时段通知
+      url: ../database/advance-notifications.md

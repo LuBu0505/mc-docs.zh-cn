@@ -4,14 +4,14 @@ description: 了解如何跨 Azure 区域复制 Azure Cache for Redis 高级实�
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/09/2021
 ms.author: v-junlch
-ms.openlocfilehash: 4bb6b99bd26ca01a974b3851a1b715076d330df7
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: fe73dff11b829c253205bdb20f8aff351eca7048
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697479"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212254"
 ---
 # <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>为高级 Azure Cache for Redis 实例配置异地复制
 
@@ -170,7 +170,7 @@ ms.locfileid: "101697479"
 
 ### <a name="can-i-use-powershell-or-azure-cli-to-manage-geo-replication"></a>是否可以使用 PowerShell 或 Azure CLI管理异地复制？
 
-是的，可以使用 Azure 门户、PowerShell 或 Azure CLI 管理异地复制。 有关详细信息，请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache)或 [Azure CLI 文档](/cli/redis/server-link?view=azure-cli-latest)。
+是的，可以使用 Azure 门户、PowerShell 或 Azure CLI 管理异地复制。 有关详细信息，请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache)或 [Azure CLI 文档](/cli/redis/server-link)。
 
 ### <a name="how-much-does-it-cost-to-replicate-my-data-across-azure-regions"></a>跨 Azure 区域复制数据的费用是多少？
 
@@ -199,3 +199,4 @@ ms.locfileid: "101697479"
 了解有关 Azure Cache for Redis 功能的详细信息。
 
 * [Azure Cache for Redis 服务层](cache-overview.md#service-tiers)
+* [Azure Cache for Redis 的高可用性](cache-high-availability.md)

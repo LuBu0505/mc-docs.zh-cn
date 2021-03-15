@@ -5,17 +5,17 @@ ms.service: cosmos-db
 ms.topic: how-to
 origin.date: 09/17/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/15/2021
 ms.testscope: yes|no
 ms.testdate: 10/19/2020null
 ms.author: v-yeche
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 7d9a1229e0898c68ac13963e7955ffde64e254ca
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 162cadc74491afea0670cf0049fa53a739a11382
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231007"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996756"
 ---
 <!--Verified successfully on only charactors only-->
 # <a name="command-line-and-powershell-reference-for-azure-cosmos-db-emulator"></a>Azure Cosmos DB 模拟器的命令行和 PowerShell 参考
@@ -80,10 +80,10 @@ Microsoft.Azure.Cosmos.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort]
 Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
 ```
 
-或者，将 `PSModules` 目录放置在 `PSModulesPath` 上，并按如下命令中所示将其导入：
+或者，将 `PSModules` 目录放置在 `PSModulePath` 上，并按如下命令中所示将其导入：
 
 ```powershell
-$env:PSModulesPath += "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules"
+$env:PSModulePath += "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules"
 Import-Module Microsoft.Azure.CosmosDB.Emulator
 ```
 
@@ -157,4 +157,4 @@ Import-Module Microsoft.Azure.CosmosDB.Emulator
 * [导出要用于 Java、Python 和 Node.js 应用的 Azure Cosmos DB 模拟器证书](local-emulator-export-ssl-certificates.md)
 * [使用模拟器调试问题](troubleshoot-local-emulator.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

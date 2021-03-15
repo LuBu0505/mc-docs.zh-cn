@@ -7,16 +7,16 @@ ms.devlang: dotnet
 ms.topic: quickstart
 origin.date: 11/10/2020
 author: rockboyfor
-ms.date: 02/08/2021
+ms.date: 03/15/2021
 ms.testscope: yes
 ms.testdate: 09/28/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5212377ab097fffc322109f2c06a883a97e935cf
-ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
+ms.openlocfilehash: 858e1fe2e7a10bd7b32e9c542632c43ce7ba7e5f
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580617"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996673"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>快速入门：从 Azure 门户创建 Azure Cosmos 帐户、数据库、容器和项
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -48,7 +48,7 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
 转到 [Azure 门户](https://portal.azure.cn/)以创建 Azure Cosmos DB 帐户。 搜索“Azure Cosmos DB”，然后选择它。
 
-  :::image type="content" source="./media/create-cosmosdb-resources-portal/find-nosql-cosmosdb-marketplace.png" alt-text="Azure 门户“数据库”窗格":::
+:::image type="content" source="./media/create-cosmosdb-resources-portal/find-nosql-cosmosdb-marketplace.png" alt-text="Azure 门户“数据库”窗格":::
 
 1. 选择 **添加** 。
 1. 在“创建 Azure Cosmos DB 帐户”页上，输入新 Azure Cosmos 帐户的基本设置。 
@@ -66,7 +66,7 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
     |异地冗余|启用或禁用|通过将你的区域与某个配对区域进行配对来启用或禁用帐户的多区域分发。 稍后可以将更多区域添加到帐户。|
     |多区域写入|启用或禁用|借助多区域写入功能，可以利用全中国的数据库和容器的预配吞吐量。|
     
-    <!--Not Available on |Availability Zones|Enable or Disable|Availability Zones help you further improve availability and resiliency of your application.|-->
+    <!--NOT AVAILABLE on FEATURE Availability Zone-->
 
     > [!NOTE]
     > 每个 Azure 订阅最多可以有一个免费层 Azure Cosmos DB 帐户，并且你必须在创建帐户时选择加入使用。 如果看不到用于应用免费层折扣的选项，这意味着订阅中的另一个帐户已启用免费层。
@@ -77,7 +77,7 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
     > - 异地冗余
     > - 多区域写入
 
-    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png" alt-text="Azure Cosmos DB 的“新建帐户”页面":::
+    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail-2.png" alt-text="Azure Cosmos DB 的“新建帐户”页面":::
 
 1. 选择“查看 + 创建”。 可以跳过“网络”和“标记”部分 。
 
@@ -111,7 +111,7 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
     对于本示例，请不要添加“唯一键”。 使用唯一键可将数据完整性层添加到数据库，因为它能确保每个分区键的一个或多个值的唯一性。 有关详细信息，请参阅 [Azure Cosmos DB 中的唯一键](unique-keys.md)。
 
-1. 选择“确定”。 数据资源管理器将显示新建的数据库和容器。
+1. 选择“确定”  。 数据资源管理器将显示新建的数据库和容器。
 
 ## <a name="add-data-to-your-database"></a>将数据添加到数据库
 

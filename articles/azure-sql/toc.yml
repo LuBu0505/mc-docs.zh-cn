@@ -31,6 +31,10 @@
           href: database/features-comparison.md
         - name: 多模型功能
           href: multi-model-features.md
+        - name: 计划性维护
+          items:
+            - name: 提前通知
+              href: database/advance-notifications.md
         - name: 内存中 OLTP
           href: in-memory-oltp-overview.md
         - name: 临时表
@@ -61,7 +65,7 @@
               href: database/threat-detection-overview.md
             - name: 数据发现和分类
               href: database/data-discovery-and-classification-overview.md
-            - name: 动态数据屏蔽
+            - name: 动态数据掩码
               href: database/dynamic-data-masking-overview.md
             - name: SQL 漏洞评估
               items:
@@ -569,7 +573,7 @@
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
-        - name: Azure 资源管理器
+        - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=single-database
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
@@ -728,7 +732,7 @@
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance
-        - name: Azure 资源管理器
+        - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=managed-instance
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
@@ -877,7 +881,7 @@
               href: ./database/policy-reference.md
         - name: 资源
           items:
-            - name: 常见问题解答
+            - name: 常见问题
               href: virtual-machines/windows/frequently-asked-questions-faq.md
             - name: 定价
               href: virtual-machines/windows/pricing-guidance.md
@@ -905,7 +909,7 @@
               href: virtual-machines/linux/sql-vm-create-portal-quickstart.md
         - name: 资源
           items:
-            - name: 常见问题解答
+            - name: 常见问题
               href: virtual-machines/linux/frequently-asked-questions-faq.md
             - name: “Linux 上的 SQL Server”文档
               href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-overview'

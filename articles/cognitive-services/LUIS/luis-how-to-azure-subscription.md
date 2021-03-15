@@ -6,16 +6,16 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 author: Johnnytechn
-ms.date: 12/28/2020
+ms.date: 03/08/2021
 origin.date: 04/06/2020
 ms.custom: devx-track-azurecli
 ms.author: v-johya
-ms.openlocfilehash: 928baf29e6abcec1c284fffb4a42f96b67e8a42f
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 117c644f3d74ee55406e9277e304b149b42d41f0
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857083"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212731"
 ---
 # <a name="create-luis-resources"></a>创建 LUIS 资源
 
@@ -177,7 +177,7 @@ Azure 资源（例如 LUIS 资源）归包含该资源的订阅所有。
 
 ### <a name="create-resources-in-the-azure-cli"></a>在 Azure CLI 中创建资源
 
-使用 [Azure CLI](/cli/install-azure-cli?view=azure-cli-latest) 单独创建每项资源。
+使用 [Azure CLI](/cli/install-azure-cli) 单独创建每项资源。
 
 资源 `kind`：
 

@@ -1,27 +1,23 @@
 ---
 title: 使用 Azure 复制数据工具复制本地数据
 description: 创建一个 Azure 数据工厂，然后使用“复制数据”工具将数据从 SQL Server 数据库复制到 Azure Blob 存储。
-services: data-factory
 ms.author: v-jay
 author: WenJason
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-origin.date: 06/09/2020
-ms.date: 11/02/2020
-ms.openlocfilehash: b0666f1f056e85ae8ce06f583f107c478387b1ce
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+origin.date: 02/18/2021
+ms.date: 03/15/2021
+ms.openlocfilehash: a75c3afef0d697005d820527db4499185f8890b8
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432497"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102590000"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>使用“复制数据”工具将数据从 SQL Server 数据库复制到 Azure Blob 存储
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在本教程中，我们将使用 Azure 门户创建数据工厂。 然后，使用“复制数据”工具创建一个管道，用于将数据从 SQL Server 数据库复制到 Azure Blob 存储。
 
@@ -42,7 +38,7 @@ ms.locfileid: "96432497"
 ### <a name="azure-roles"></a>Azure 角色
 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须分配有“参与者”或“所有者”角色，或者必须是 Azure 订阅的管理员。
 
-若要查看自己在订阅中的权限，请转到 Azure 门户。 在右上角选择自己的用户名，然后选择“权限”。 如果可以访问多个订阅，请选择相应的订阅。 有关如何将用户添加到角色的示例说明，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)。
+若要查看自己在订阅中的权限，请转到 Azure 门户。 在右上角选择自己的用户名，然后选择“权限”。 如果可以访问多个订阅，请选择相应的订阅。 有关如何将用户添加到角色的示例说明，请查看[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014、2016 和 2017
 在本教程中，需将 SQL Server 数据库用作源数据存储。 在本教程中创建的数据工厂中的管道将数据从这个 SQL Server 数据库（源）复制到 Blob 存储（接收器）。 然后，你可以在 SQL Server 数据库中创建名为 **emp** 的表，并向表中插入几个示例条目。
@@ -117,16 +113,16 @@ ms.locfileid: "96432497"
 
    ![新建数据工厂名称](./media/doc-common-process/name-not-available-error.png)
 1. 选择要在其中创建数据工厂的 Azure **订阅**。
-1. 对于“资源组”，请执行以下步骤之一：
+1. 对于“资源组”，请执行以下步骤之一： 
 
-   - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
+   - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
 
    - 选择“新建”，并输入资源组的名称。 
         
      若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。
 1. 在“版本”下选择“V2”。 
 1. 在“位置”下选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他位置/区域。
-1. 选择“创建” 。
+1. 选择“创建”。
 
 1. 创建完以后，会看到图中所示的“数据工厂”页：
 

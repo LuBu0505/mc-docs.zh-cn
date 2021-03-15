@@ -7,16 +7,16 @@ ms.devlang: dotnet
 ms.topic: reference
 origin.date: 08/12/2020
 author: rockboyfor
-ms.date: 11/16/2020
+ms.date: 03/15/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: e7456e9d259f2e45fd253808d9631fb78c2e199e
-ms.sourcegitcommit: 5f07189f06a559d5617771e586d129c10276539e
+ms.openlocfilehash: 6e94317af59ba975f7e2262b575736a6a9e5d9c7
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94552871"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996730"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -44,7 +44,7 @@ ms.locfileid: "94552871"
 |   |   |
 |---|---|
 |**SDK 下载**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
-|**API 文档**|[更改源处理器库 API 参考文档](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.changefeedprocessor?preserve-view=true)|
+|**API 文档**|[更改源处理器库 API 参考文档](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.changefeedprocessor)|
 |**入门**|[更改源处理器 .NET SDK 入门](change-feed.md)|
 |**当前受支持的框架**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)<br /> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
@@ -246,12 +246,12 @@ Azure 会在停用 SDK 时至少提前 12 个月发出通知，以便用户顺�
 | [1.1.0](#1.1.0) |2017 年 8 月 13 日 |--- |
 | [1.0.0](#1.0.0) |2017 年 7 月 7 日 |--- |
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>另请参阅
 
-若要了解有关 Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB](https://www.azure.cn/home/features/cosmos-db/) 服务页。
+若要了解有关 Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服务页。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -9,12 +9,12 @@ metadata:
   ms.date: 11/09/2020
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: d00974edf853dc41d88758f617d4090758b583b6
-  ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+  ms.openlocfilehash: 1594303e79b10a1f191487233957eaf917e085c9
+  ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/06/2020
-  ms.locfileid: "94328903"
+  ms.lasthandoff: 03/12/2021
+  ms.locfileid: "103211804"
 landingContent:
 - title: 关于单服务器
   linkLists:
@@ -112,7 +112,7 @@ landingContent:
       url: ../howto-data-in-replication.md
     - text: 使用 Azure 门户还原服务器
       url: ../howto-restore-server-portal.md
-    - text: 使用 Azure 门户还原服务器
+    - text: 使用 Azure CLI 还原服务器
       url: ../howto-restore-server-cli.md
 - title: 参考
   linkLists:

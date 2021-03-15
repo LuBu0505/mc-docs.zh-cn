@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.topic: how-to
 origin.date: 10/05/2020
 author: rockboyfor
-ms.date: 12/07/2020
+ms.date: 03/15/2021
 ms.testscope: yes
 ms.testdate: 09/28/2020
 ms.author: v-yeche
-ms.openlocfilehash: c341872485215ca82bc6a82dfbcd67bc665ee983
-ms.sourcegitcommit: bbe4ee95604608448cf92dec46c5bfe4b4076961
+ms.openlocfilehash: 2bd9c5d5a0c9032d8c012e2169b6a3d0687da519
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96598427"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996734"
 ---
 <!--Verified successfully on whole content-->
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>如何审核 Azure Cosmos DB 控制平面操作
@@ -189,15 +189,15 @@ AzureDiagnostics
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersUpdate"
+AzureDiagnostics
+| where Category == "ControlPlaneRequests"
+| where OperationName startswith "SqlContainersUpdate"
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersThroughputUpdate"
+AzureDiagnostics
+| where Category == "ControlPlaneRequests"
+| where OperationName startswith "SqlContainersThroughputUpdate"
 ```
 
 通过查询获取 activityId 和发起容器删除操作的调用方：
@@ -228,7 +228,35 @@ AzureDiagnostics
 **输出：**
 
 ```json
-{id:skewed,indexingPolicy:{automatic:true,indexingMode:consistent,includedPaths:[{path:/*,indexes:[]}],excludedPaths:[{path:/_etag/?}],compositeIndexes:[],spatialIndexes:[]},partitionKey:{paths:[/pk],kind:Hash},defaultTtl:1000000,uniqueKeyPolicy:{uniqueKeys:[]},conflictResolutionPolicy:{mode:LastWriterWins,conflictResolutionPath:/_ts,conflictResolutionProcedure:}
+{
+    "id": "skewed",
+    "indexingPolicy": {
+        "automatic ": "true",
+        "indexingMode": "consistent",
+        "includedPaths": [{
+            "path": "/*",
+            "indexes": []
+        }],
+        "excludedPaths": [{
+            "path": "/_etag/?"
+        }],
+        "compositeIndexes": [],
+        "spatialIndexes": []
+    },
+    "partitionKey": {
+        "paths": ["/pk"],
+        "kind": "Hash"
+    },
+    "defaultTtl": "1000000",
+    "uniqueKeyPolicy": {
+        "uniqueKeys": "[]}",
+        "conflictResolutionPolicy": {
+            "mode": "LastWriterWins",
+            "conflictResolutionPath": "/_ts",
+            "conflictResolutionProcedure": ""
+        }
+    }
+}
 ```
 
 ## <a name="next-steps"></a>后续步骤
@@ -236,4 +264,4 @@ AzureDiagnostics
 * [探究适用于 Azure Cosmos DB 的 Azure Monitor](../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/cosmos-db/toc.json&bc=/cosmos-db/breadcrumb/toc.json)
 * [使用 Azure Cosmos DB 中的指标进行监视和调试](use-metrics.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

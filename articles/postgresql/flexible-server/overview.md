@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.topic: overview
 origin.date: 09/22/2020
 ms.date: 01/11/2021
-ms.openlocfilehash: bbbc1055879502244181ba4df3713816c5e802a9
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: ca1916c8af8f7da718981237a3b51a61ff4b7b8d
+ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023863"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103211707"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器
 
@@ -30,7 +30,7 @@ ms.locfileid: "98023863"
 
 ## <a name="overview"></a>概述
 
-Azure Database for PostgreSQL 灵活服务器是一种完全托管的数据库服务，旨在针对数据库管理功能和配置设置提供更精细的控制和更大的灵活性。 通常，该服务提供更大的灵活性和基于用户要求的服务器配置自定义。 灵活服务器体系结构允许用户将数据库引擎与客户端层并置以降低延迟，选择单个可用性区域内以及跨多个可用性区域的高可用性。 灵活服务器还提供了更好的成本优化控制，具有停止/启动服务器和可突增计算层的功能，非常适合无需持续全计算容量的工作负载。 该服务当前支持 PostgreSQL 11 和 12 的社区版本。 此服务目前以预览版提供，现已在各种 [Azure 区域](https://azure.microsoft.com/en-us/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)中提供。
+Azure Database for PostgreSQL 灵活服务器是一种完全托管的数据库服务，旨在针对数据库管理功能和配置设置提供更精细的控制和更大的灵活性。 通常，该服务提供更大的灵活性和基于用户要求的服务器配置自定义。 灵活服务器体系结构允许用户将数据库引擎与客户端层并置以降低延迟，选择单个可用性区域内以及跨多个可用性区域的高可用性。 灵活服务器还提供了更好的成本优化控制，具有停止/启动服务器和可突增计算层的功能，非常适合无需持续全计算容量的工作负载。 该服务当前支持 PostgreSQL 11 和 12 的社区版本。 此服务目前以预览版提供，现已在各种 [Azure 区域](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)中提供。
 
 ![灵活服务器 - 概述](./media/overview/overview-flexible-server.png)
 

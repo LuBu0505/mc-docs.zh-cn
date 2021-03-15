@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 58920cd53e6ad4c7a23f6da139a8ba813feae0b3
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.openlocfilehash: 2d8cf1625ee660d9bee3589937b2587e130b412c
+ms.sourcegitcommit: aa152825420691f705c959682144d14877916aff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196925"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224110"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>创建 Azure 机器学习计算群集
 
@@ -96,6 +96,7 @@ except ComputeTargetException:
 
 cpu_cluster.wait_for_completion(show_output=True)
 ```
+
 还可以在创建 Azure 机器学习计算时配置多个高级属性。 使用这些属性可以创建固定大小的持久性群集，或者在订阅中的现有 Azure 虚拟网络内创建持久性群集。  有关详细信息，请参阅 [AmlCompute 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?preserve-view=true&view=azure-ml-py)。
 
 
@@ -106,7 +107,7 @@ cpu_cluster.wait_for_completion(show_output=True)
 az ml computetarget create amlcompute -n cpu --min-nodes 1 --max-nodes 1 -s STANDARD_D3_V2
 ```
 
-有关详细信息，请参阅 [az ml computetarget create amlcompute](/cli/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute&preserve-view=true)。
+有关详细信息，请参阅 [az ml computetarget create amlcompute](/cli/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)。
 
 # <a name="studio"></a>[工作室](#tab/azure-studio)
 

@@ -4,18 +4,18 @@ description: 了解如何使用 Azure Cosmos DB，通过 Azure Cosmos DB 的用�
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-origin.date: 11/25/2020
-ms.date: 01/18/2021
+origin.date: 03/02/2021
+ms.date: 03/15/2021
 ms.testscope: no
 ms.testdate: ''
 author: rockboyfor
 ms.author: v-yeche
-ms.openlocfilehash: ea9c40bbb51f6e0aa063dca70fc3fa3f325d68f0
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: f8836d8ae4b71f189f741b00ecfc7e83c5bee371
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230304"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996689"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB 的用于 MongoDB 的 API
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -27,9 +27,9 @@ ms.locfileid: "98230304"
 
 ## <a name="wire-protocol-compatibility"></a>网络协议兼容性
 
-Azure Cosmos DB 实现 MongoDB 的 Wire Protocol。 此实现允许与本机 MongoDB 客户端 SDK、驱动程序和工具进行透明兼容。 Azure Cosmos DB 不托管 MongoDB 数据库引擎。 可在此处找到受 MongoDB 支持的功能的详细信息： 
-- [Azure Cosmos DB API for Mongo DB 引擎 3.6 版](mongodb-feature-support-36.md)
-- [Azure Cosmos DB API for Mongo DB 引擎 3.2 版](mongodb-feature-support.md)
+Azure Cosmos DB 实现 MongoDB 的 Wire Protocol。 此实现允许与本机 MongoDB 客户端 SDK、驱动程序和工具进行透明兼容。 Azure Cosmos DB 托管 MongoDB 数据库引擎。 可在此处找到受 MongoDB 支持的功能的详细信息： 
+- [Mongo DB 的 Azure Cosmos DB API 4.0 版](mongodb-feature-support-40.md)
+- [Mongo DB 的 Azure Cosmos DB API 3.6 版](mongodb-feature-support-36.md)
 
 默认情况下，使用 Azure Cosmos DB 的 API for MongoDB 创建的新帐户与 MongoDB 线路协议 3.6 版兼容。 任何识别此协议版本的 MongoDB 客户端驱动程序应该可以本机连接到 Cosmos DB。
 
@@ -66,4 +66,4 @@ Azure Cosmos DB 实现 MongoDB 的 Wire Protocol。 此实现允许与本机 Mon
 
 <sup>注意：本文介绍了可与 MongoDB 数据库实现线路协议兼容的 Azure Cosmos DB 功能。Azure 不会运行 MongoDB 数据库来提供此服务。Azure Cosmos DB 并不隶属于 MongoDB, inc.</sup>
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -1,29 +1,23 @@
 ---
 title: 基于时间分区文件名增量复制新文件
 description: 创建一个 Azure 数据工厂，然后使用复制数据工具仅根据时间分区文件名以增量方式加载新文件。
-services: data-factory
-documentationcenter: ''
 author: WenJason
 ms.author: v-jay
-ms.reviewer: ''
-manager: digimobile
 ms.service: data-factory
-ms.workload: data-services
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-origin.date: 6/10/2019
-ms.date: 11/02/2020
-ms.openlocfilehash: 28f3ec24fd3d4e52f032c3bbd9291eb454e23c19
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+origin.date: 02/18/2021
+ms.date: 03/15/2021
+ms.openlocfilehash: 40cb31a03807e5eb23e3c3554ee94a34a864a0f4
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431937"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589906"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>使用复制数据工具仅根据时间分区文件名以增量方式复制新文件
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在本教程中，我们将使用 Azure 门户创建数据工厂。 然后，使用复制数据工具创建一个管道，该管道根据时间分区文件名以增量方式将新文件从 Azure Blob 存储复制到 Azure Blob 存储。
 
@@ -39,7 +33,7 @@ ms.locfileid: "96431937"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅**：如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+* **Azure 订阅**：如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 * **Azure 存储帐户**：将 Blob 存储用作源  和接收器  数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)中的说明。
 
 ### <a name="create-two-containers-in-blob-storage"></a>在 Blob 存储中创建两个容器
@@ -57,29 +51,29 @@ ms.locfileid: "96431937"
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-1. 在左侧菜单中，选择“创建资源”   > “数据 + 分析”   > “数据工厂”  ：
+1. 在左侧菜单中，选择“创建资源” > “数据 + 分析” > “数据工厂”：
 
    ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-2. 在“新建数据工厂”  页的“名称”下输入 **ADFTutorialDataFactory**  。
+2. 在“新建数据工厂”页的“名称”下输入 **ADFTutorialDataFactory** 。
 
-    数据工厂的名称必须全局唯一。  可能会收到以下错误消息：
+    数据工厂的名称必须全局唯一。 可能会收到以下错误消息：
 
    ![新的数据工厂错误消息](./media/doc-common-process/name-not-available-error.png)
 
-   如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 例如，使用名称 _**yourname**_ **ADFTutorialDataFactory**。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
+   如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 例如，使用名称 _**yourname**_**ADFTutorialDataFactory**。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
 3. 选择要在其中创建新数据工厂的 Azure **订阅**。
 4. 对于“资源组”，请执行以下步骤之一： 
 
     a. 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
 
-    b. 选择“新建”，并输入资源组的名称。  
+    b. 选择“新建”，并输入资源组的名称。 
          
     若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。
 
-5. 在“版本”下选择“V2”作为版本。  
-6. 在“位置”下选择数据工厂的位置。  下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他位置和区域。
-7. 选择“创建”  。
+5. 在“版本”下选择“V2”作为版本。 
+6. 在“位置”下选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他位置和区域。
+7. 选择“创建”。
 8. 创建完以后，会显示“数据工厂”  主页。
 9. 若要在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)，请选择“创作和监视”磁贴。 
 
@@ -109,7 +103,7 @@ ms.locfileid: "96431937"
     ![“属性”页](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/copy-data-tool-properties-page.png)
 3. 在“源数据存储”  页上，完成以下步骤：
 
-    a. 单击“+ 创建新连接”来添加连接 
+    a. 单击“+ 创建新连接”来添加连接
     
     b. 从库中选择“Azure Blob 存储”，然后选择“继续”。
     

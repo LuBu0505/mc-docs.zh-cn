@@ -11,14 +11,14 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 07/21/2020
+ms.date: 03/08/2021
 ms.author: v-junlch
-ms.openlocfilehash: 1d6fb6f78e7d237d67f48f6b9daad10cd5ccafb6
-ms.sourcegitcommit: f436acd1e2a0108918a6d2ee9a1aac88827d6e37
+ms.openlocfilehash: 4cbc559b6603195ca45f751037792f0ab57d7730
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508795"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212547"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-the-azure-portal"></a>教程：使用 Azure 门户授予用户对 Azure 资源的访问权限
 
@@ -58,7 +58,7 @@ ms.locfileid: "96508795"
 
 ## <a name="grant-access"></a>授予访问权限
 
-在 Azure RBAC 中，若要授予访问权限，请创建角色分配。
+在 Azure RBAC 中，若要授予访问权限，需分配一个 Azure 角色。
 
 1. 在“资源组”列表中，单击新的 rbac-resource-group 资源组。
 
@@ -82,7 +82,7 @@ ms.locfileid: "96508795"
 
 1. 在“选择”列表中，选择你自己或其他用户。
 
-1. 单击“保存”，创建角色分配。
+1. 单击“保存”以分配该角色。
 
    片刻之后，将在 rbac-resource-group 资源组范围内为用户分配“虚拟机参与者”角色。
 
@@ -118,4 +118,3 @@ ms.locfileid: "96508795"
 
 > [!div class="nextstepaction"]
 > [教程：使用 Azure PowerShell 授予用户对 Azure 资源的访问权限](tutorial-role-assignments-user-powershell.md)
-

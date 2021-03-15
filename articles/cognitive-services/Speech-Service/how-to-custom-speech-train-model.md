@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 11/11/2020
-ms.date: 01/14/2021
-ms.author: v-tawe
-ms.openlocfilehash: 919a11c6eab747bbe5a5d088d8e05813d29d36f0
-ms.sourcegitcommit: 93063f9b8771b8e895c3bcdf218f5e3af14ef537
+ms.date: 03/08/2021
+ms.author: v-johya
+ms.openlocfilehash: 156bbcdad5bba377025b8a63c64447bcfa2daddb
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98193230"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212738"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>训练和部署自定义语音识别模型
 
@@ -36,53 +36,62 @@ ms.locfileid: "98193230"
 
 训练模型的第一步是上传训练数据。 请参阅[准备和测试数据](./how-to-custom-speech-test-and-train.md)以获取分步说明，了解如何准备人为标记的听录内容和相关文本（言语和发音）。 上传训练数据以后，请按以下说明开始训练模型：
 
-1. 登录到[自定义语音识别门户](https://speech.azure.cn/customspeech)。
-2. 转到“语音转文本” > “自定义语音识别” >  [项目名称]  > “训练”   。
-3. 选择“训练模型”。
-4. 为训练提供“名称”和“描述” 。
-5. 在“方案和基线模型”列表中，选择最适合你的领域的方案。 如果不确定要选择哪个方案，请选择“通用”。 该基线模型是训练的起点。 最新的模型通常是最佳选择。
-6. 在“选择训练数据”页中，选择一个或多个要用于训练的相关文本数据集或音频和人为标记的听录内容数据集。 在训练新模型时，请从相关文本开始；使用音频和人为标记的听录内容进行训练所需的时间可能会长得多（长达[几天](how-to-custom-speech-evaluate-data.md#improve-model-recognition)）。
-7. 完成训练后，可以对新训练的模型执行准确度测试。 此步骤是可选的。
-8. 选择“创建”，生成自定义模型。
-
-“训练”表将显示对应于新模型的新条目。 该表还会显示以下状态：“正在处理”、“成功”或“失败”  。
-
-请参阅[操作说明](how-to-custom-speech-evaluate-data.md)，了解如何评估和提高自定义语音识别模型准确度。 如果选择测试准确度，则选择的声学数据集必须不同于你对自己的模型使用的数据集，这样才能获得真正有意义的模型性能。
+<!---Not available in MC: dedicated hardware->
+1. Sign in to the [Custom Speech portal](https://speech.azure.cn/customspeech).
+2. Go to **Speech-to-text** > **Custom Speech** > **[name of project]** > **Training**.
+3. Select **Train model**.
+4. Give your training a **Name** and **Description**.
+5. In the **Scenario and Baseline model** list, select the scenario that best fits your domain. If you're not sure which scenario to choose, select **General**. The baseline model is the starting point for training. The latest model is usually the best choice.
+6. On the **Select training data** page, choose one or more related text datasets or audio + human-labeled transcription datasets that you want to use for training.
 
 > [!NOTE]
-> 基础模型和自定义模型最多都只能使用到某个特定日期（请参阅[模型生命周期](custom-speech-overview.md#model-lifecycle)）。 Speech Studio 在每个模型和终结点的“过期时间”列中显示此日期。 在该日期之后，对终结点或对批量听录的请求可能会失败或回退到基础模型。
+> When you train a new model, start with related text; training with audio + human-labeled transcription might take much longer **(up to [several days](how-to-custom-speech-evaluate-data.md#add-audio-with-human-labeled-transcripts)**).
+
+> [!NOTE]
+> Not all base models support training with audio. If a base model does not support it, the Speech service will only use the text from the transcripts and ignore the audio. See [Language support](language-support.md#speech-to-text) for a list of base models that support training with audio data.
+
+7. After training is complete, you can do accuracy testing on the newly trained model. This step is optional.
+8. Select **Create** to build your custom model.
+
+The **Training** table displays a new entry that corresponds to the new model. The table also displays the status: **Processing**, **Succeeded**, or **Failed**.
+
+See the [how-to](how-to-custom-speech-evaluate-data.md) on evaluating and improving Custom Speech model accuracy. If you choose to test accuracy, it's important to select an acoustic dataset that's different from the one you used with your model to get a realistic sense of the model's performance.
+
+> [!NOTE]
+> Both base models and custom  models can be used only up to a certain date (see [Model lifecycle](custom-speech-overview.md#model-lifecycle)). Speech Studio shows this date in the **Expiration** column for each model and endpoint. After that date request to an endpoint or to batch transcription  might fail or fall back to base model.
 >
-> 请使用当时最新的基础模型来重新训练你的模型，以受益于准确度的提高，并避免模型过期。
+> Retrain your model using the then most recent base model to benefit from accuracy improvements and to avoid that your model expires.
 
-## <a name="deploy-a-custom-model"></a>部署自定义模型
+## Deploy a custom model
 
-上传并检查数据、评估准确度以及训练自定义模型以后，即可部署可以与应用、工具和产品配合使用的自定义终结点。 
+After you upload and inspect data, evaluate accuracy, and train a custom model, you can deploy a custom endpoint to use with your apps, tools, and products. 
 
-要创建自定义终结点，请登录到[自定义语音识别门户](https://speech.azure.cn/customspeech)。 在页面顶部的“自定义语音识别”菜单中选择“部署” 。 如果是第一次运行，你会注意到表中未列出任何终结点。 创建一个终结点后，即可使用此页面跟踪每个已部署的终结点。
+To create a custom endpoint, sign in to the [Custom Speech portal](https://speech.azure.cn/customspeech). Select **Deployment** in the **Custom Speech** menu at the top of the page. If this is your first run, you'll notice that there are no endpoints listed in the table. After you create an endpoint, you use this page to track each deployed endpoint.
 
-接下来，选择“添加终结点”，并输入自定义终结点的 **名称** 和 **说明**。  然后选择要与此终结点关联的自定义模型。  也可以通过此页启用日志记录。 可以通过日志记录监视终结点流量。 在禁用日志记录的情况下，不会存储流量。
+Next, select **Add endpoint** and enter a **Name** and **Description** for your custom endpoint. Then select the custom model that you want to associate with the endpoint.  You can also enable logging from this page. Logging allows you to monitor endpoint traffic. If logging is disabled, traffic won't be stored.
 
-![显示“新建终结点”页的屏幕截图。](./media/custom-speech/custom-speech-deploy-model.png)
+![Screenshot that shows the New endpoint page.](./media/custom-speech/custom-speech-deploy-model.png)
 
 > [!NOTE]
-> 请勿忘记接受有关使用和定价详细信息的条款。
+> Don't forget to accept the terms of use and pricing details.
 
-接下来，选择“创建”。  执行此操作后会返回到“部署”  页。 表中现在有自定义终结点的对应条目。 终结点的状态显示其当前状态。 使用自定义模型实例化新终结点最长可能需要 30 分钟才能完成。 当部署状态更改为“完成”  时，终结点便可供使用。
+Next, select **Create**. This action returns you to the **Deployment** page. The table now includes an entry that corresponds to your custom endpoint. The endpoint’s status shows its current state. It can take up to 30 minutes to instantiate a new endpoint using your custom models. When the status of the deployment changes to **Complete**, the endpoint is ready to use.
 
-部署终结点后，其名称将以链接的形式显示。 选择此链接可查看特定于该终结点的信息，例如终结点密钥、终结点 URL 和示例代码。 请记下过期日期，并在该日期之前更新终结点的模型，以确保服务不会中断。
+After your endpoint is deployed, the endpoint name appears as a link. Select the link to see information specific to your endpoint, like the endpoint key, endpoint URL, and sample code. Take a note of the expiration date and update the endpoint's model before that date to ensure uninterrupted service.
 
-## <a name="view-logging-data"></a>查看日志记录数据
+## View logging data
 
-如果转到“部署”下的终结点页，则可以导出日志记录数据。
+Logging data is available for export if you go to the endpoint's page under **Deployments**.
 > [!NOTE]
->日志记录数据在 Microsoft 拥有的存储上可供使用 30 天。 之后会被删除。 如果客户拥有的存储帐户已关联到认知服务订阅，则不会自动删除日志记录数据。
+>Logging data is available for 30 days on Microsoft-owned storage. It will be removed afterwards. If a customer-owned storage account is linked to the Cognitive Services subscription, the logging data won't be automatically deleted.
 
-## <a name="next-steps"></a>后续步骤
+## Next steps
 
-* [了解如何使用自定义模型](how-to-specify-source-language.md)
+* [Learn how to use your custom model](how-to-specify-source-language.md)
 
-## <a name="additional-resources"></a>其他资源
+## Additional resources
 
-- [准备和测试数据](./how-to-custom-speech-test-and-train.md)
-- [检查数据](how-to-custom-speech-inspect-data.md)
-- [评估数据](how-to-custom-speech-evaluate-data.md)
+- [Prepare and test your data](./how-to-custom-speech-test-and-train.md)
+- [Inspect your data](how-to-custom-speech-inspect-data.md)
+- [Evaluate your data](how-to-custom-speech-evaluate-data.md)
+

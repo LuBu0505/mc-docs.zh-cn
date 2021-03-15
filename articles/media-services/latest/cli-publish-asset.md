@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本示例 - 发布资产 | Microsoft Docs
+title: Azure CLI 脚本示例 - 发布资产
 description: 本文演示如何使用 Azure CLI 脚本发布资产。
 services: media-services
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: multiple
 ms.workload: na
 origin.date: 08/31/2020
-ms.date: 09/28/2020
+ms.date: 03/15/2021
 ms.author: v-jay
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 50273cfaaa096aaf5dcec0654a48a1f1e217803e
-ms.sourcegitcommit: 7ad3bfc931ef1be197b8de2c061443be1cf732ef
+ms.openlocfilehash: 53d84cf2346d55351ba067224be5a3583af0d2a6
+ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91244982"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103211794"
 ---
 # <a name="cli-example-publish-an-asset"></a>CLI 示例：发布资产
 
@@ -32,8 +32,6 @@ ms.locfileid: "91244982"
 ## <a name="prerequisites"></a>必备条件 
 
 [创建媒体服务帐户](./create-account-howto.md)。
-
-[!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="example-script"></a>示例脚本
 

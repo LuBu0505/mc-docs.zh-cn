@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
 origin.date: 02/01/2021
-ms.date: 02/22/2021
-ms.openlocfilehash: 7cc41530d93757fc6ee8778dd997ec4a0d9b663b
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.date: 03/15/2021
+ms.openlocfilehash: bf22dc1684ff9c4250beb847df8b0e1d9e9e4d72
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697181"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589825"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>使用客户管理的密钥进行 Azure SQL 透明数据加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -158,7 +158,7 @@ Key Vault 管理员还可以[启用 Key Vault 审核事件的日志记录](../..
 
 - [Azure 资源运行状况](../../service-health/resource-health-overview.md)。 首次与失去 TDE 保护器访问权限的不可访问的数据库建立连接遭到拒绝后，该数据库将显示为“不可用”。
 - [活动日志](../../service-health/alerts-activity-log-service-notifications-portal.md)。访问客户管理的 Key Vault 中的 TDE 保护器失败时，会将相应的条目添加到活动日志。  为这些事件创建警报可以尽快恢复访问权限。
-- 可以定义[操作组](../../azure-monitor/platform/action-groups.md)，以根据自己的偏好（例如电子邮件/短信、逻辑应用、Webhook、ITSM 或自动化 Runbook）发送通知和警报。
+- 可以定义[操作组](../../azure-monitor/alerts/action-groups.md)，以根据自己的偏好（例如电子邮件/短信、逻辑应用、Webhook、ITSM 或自动化 Runbook）发送通知和警报。
 
 ## <a name="database-backup-and-restore-with-customer-managed-tde"></a>使用客户管理的 TDE 进行数据库备份和还原
 

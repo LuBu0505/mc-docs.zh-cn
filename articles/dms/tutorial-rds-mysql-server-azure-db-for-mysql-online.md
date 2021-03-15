@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 origin.date: 06/09/2020
-ms.date: 03/01/2021
-ms.openlocfilehash: 9fa2cace7f44ba3e2c87c9533c2b4449cf5ba01b
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.date: 03/15/2021
+ms.openlocfilehash: bebc03cae5cf75f82a52db6e57dea8d6911089c0
+ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697376"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103211747"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>教程：使用 DMS 将 RDS MySQL 联机迁移到 Azure Database for MySQL
 
@@ -58,8 +58,8 @@ ms.locfileid: "101697376"
 * 下载并安装 [MySQL **Employees** 示例数据库](https://dev.mysql.com/doc/employee/en/employees-installation.html)。
 * 创建 [Azure Database for MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-portal.md) 的实例。
 * 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Azure 虚拟网络，它将使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 为本地源服务器提供站点到站点连接。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](../virtual-network/index.yml)，尤其是提供了分步详细信息的快速入门文章。
-* 请确保虚拟网络网络安全组规则未阻止到 Azure 数据库迁移服务的以下出站通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
-* 配置 [Windows 防火墙](/mysql/concepts-firewall-rules)（或 Linux 防火墙）以允许数据库引擎访问。 对于 MySQL 服务器，允许端口 3306 进行连接。
+* 请确保虚拟网络的网络安全组规则不阻止 ServiceBus、存储服务和 AzureMonitor 的 ServiceTag 出站端口 443。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
+* 配置 [Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)（或 Linux 防火墙）以允许数据库引擎访问。 对于 MySQL 服务器，允许端口 3306 进行连接。
 
 > [!NOTE]
 > Azure Database for MySQL 仅支持 InnoDB 表。 若要将 MyISAM 表转换为 InnoDB，请参阅[将表从 MyISAM 转换为 InnoDB](https://dev.mysql.com/doc/refman/5.7/en/converting-tables-to-innodb.html) 一文。

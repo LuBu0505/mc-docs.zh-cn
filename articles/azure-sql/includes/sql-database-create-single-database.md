@@ -4,15 +4,15 @@ ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
 origin.date: 03/10/2020
-ms.date: 10/29/2020
+ms.date: 03/15/2021
 ms.author: v-jay
 ms.reviewer: vanto
-ms.openlocfilehash: d9270db2f1e77442bbb42988a63d5342f513ff5e
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 93a7dfe27d726fbaf832f7b10858808f4fb11d1d
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830520"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102603212"
 ---
 在此步骤中，你将创建[逻辑 SQL 服务器](../database/logical-servers.md)和使用 AdventureWorksLT 示例数据的[单一数据库](../database/single-database-overview.md)。 可以通过使用 Azure 门户菜单和屏幕，或通过使用 Azure CLI 或 PowerShell 脚本来创建数据库。
 
@@ -37,7 +37,7 @@ ms.locfileid: "97830520"
    - **密码**：输入符合要求的密码，然后在“确认密码”字段中再次输入该密码。
    - **位置**：单击下拉箭头并选择一个位置，例如“中国东部 2”。
 
-   选择“确定” 。
+   选择“确定”  。
 
    ![新建服务器](./media/sql-database-create-single-database/new-server.png)
 
@@ -65,6 +65,7 @@ ms.locfileid: "97830520"
    有关防火墙设置的详细信息，请参阅[允许 Azure 服务和资源访问此服务器](../database/network-access-controls-overview.md)和[添加专用终结点](../database/private-endpoint-overview.md)。
 
 1. 在“其他设置”选项卡上的“数据源”部分中，对于“使用现有数据”，请选择“示例”。
+1. （可选）启用 [Azure Defender for SQL](../database/azure-defender-for-sql.md)。
 1. 在页面底部选择“查看 + 创建”。
 
    ![“其他设置”选项卡](./media/sql-database-create-single-database/additional-settings.png)
@@ -133,7 +134,7 @@ az sql db create \
 
 前面的代码使用以下 Azure CLI 命令：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az account set](/cli/account?view=azure-cli-latest#az-account-set) | 将订阅设置为当前的活动订阅。 |
 | [az group create](/cli/group#az-group-create) | 创建用于存储所有资源的资源组。 |
@@ -211,7 +212,7 @@ az sql db create \
 
 前面的代码使用以下 PowerShell 命令：
 
-| 命令 | 注释 |
+| Command | 注释 |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserver) | 创建托管数据库和弹性池的服务器。 |

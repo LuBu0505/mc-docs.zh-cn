@@ -4,14 +4,14 @@ description: 本文介绍如何配置和管理更新部署的操作前脚本和�
 services: automation
 ms.subservice: update-management
 origin.date: 12/17/2020
-ms.date: 01/04/2021
+ms.date: 03/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: 94ff272679fdd3bf32304d95dcbf0e1ef42eccdd
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 6e93c5b101059d9d960498fc60dc22379d4af489
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696651"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589823"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>管理前脚本和后脚本
 
@@ -60,31 +60,31 @@ ms.locfileid: "101696651"
 下面是传入 **SoftwareUpdateConfigurationRunContext** 参数的 JSON 字符串示例：
 
 ```json
-"SoftwareUpdateConfigurationRunContext":{
-      "SoftwareUpdateConfigurationName":"sampleConfiguration",
-      "SoftwareUpdateConfigurationRunId":"00000000-0000-0000-0000-000000000000",
-      "SoftwareUpdateConfigurationSettings":{
-         "operatingSystem":"Windows",
-         "duration":"PT2H0M",
-         "windows":{
-            "excludedKbNumbers":[
-               "168934",
-               "168973"
-            ],
-            "includedUpdateClassifications":"Critical",
-            "rebootSetting":"IfRequired"
-         },
-         "azureVirtualMachines":[
-            "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-01",
-            "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-02",
-            "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-03"
-         ],
-         "nonAzureComputerNames":[
-            "box1.contoso.com",
-            "box2.contoso.com"
-         ]
-      }
-   }
+"SoftwareUpdateConfigurationRunContext": {
+    "SoftwareUpdateConfigurationName": "sampleConfiguration",
+    "SoftwareUpdateConfigurationRunId": "00000000-0000-0000-0000-000000000000",
+    "SoftwareUpdateConfigurationSettings": {
+      "operatingSystem": "Windows",
+      "duration": "PT2H0M",
+      "windows": {
+        "excludedKbNumbers": [
+          "168934",
+          "168973"
+        ],
+        "includedUpdateClassifications": "Critical",
+        "rebootSetting": "IfRequired"
+      },
+      "azureVirtualMachines": [
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-01",
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-02",
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-03"
+      ],
+      "nonAzureComputerNames": [
+        "box1.contoso.com",
+        "box2.contoso.com"
+      ]
+    }
+  }
 ```
 
 可以在以下位置找到包含所有属性的完整示例：[按名称获取软件更新配置](https://docs.microsoft.com/rest/api/automation/softwareupdateconfigurations/getbyname#examples)。

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 02/01/2021
+ms.date: 03/12/2021
 ms.custom: project-no-code
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 7675e7bb8f05a27af39af3a918292db46576224a
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: 7c13d58f3beda1d58411b9cf1916e9dcf45a7dcb
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540610"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212494"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>使用 Application Insights 收集 Azure Active Directory B2C 日志
 

@@ -11,13 +11,13 @@ metadata:
   ms.collection: na
   author: rolyon
   ms.author: v-junlch
-  ms.date: 05/25/2020
-  ms.openlocfilehash: b37581d572ae3b47f6e0bf39f78691b56784afa9
-  ms.sourcegitcommit: 7429daf26cff014b040f69cdae75bdeaea4f4e93
+  ms.date: 03/08/2021
+  ms.openlocfilehash: 58a4cb5b5d91fe6b15462f31262a67042f086ce9
+  ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/27/2020
-  ms.locfileid: "83991594"
+  ms.lasthandoff: 03/12/2021
+  ms.locfileid: "103212360"
 landingContent:
 - title: 关于 Azure RBAC
   linkLists:
@@ -43,14 +43,14 @@ landingContent:
     links:
     - text: 使用 Azure RBAC 保护 Azure 资源
       url: https://docs.microsoft.com/learn/modules/secure-azure-resources-with-rbac/
-- title: 管理访问权限
+- title: 分配角色
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: 门户
       url: role-assignments-portal.md
-    - text: 门户 - 来宾用户
-      url: role-assignments-external-users.md
+    - text: 门户 - 订阅管理员
+      url: role-assignments-portal-subscription-admin.md
     - text: PowerShell
       url: role-assignments-powershell.md
     - text: Azure CLI

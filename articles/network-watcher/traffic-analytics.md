@@ -10,18 +10,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 01/04/2021
 author: rockboyfor
-ms.date: 02/08/2021
+ms.date: 03/15/2021
 ms.testscope: yes
 ms.testdate: 08/03/2020
 ms.author: v-yeche
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: b27fbfd766bf411830e067711de7cc1a387fdc14
-ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
+ms.openlocfilehash: 4d974a501e12189f3939e5275e87279e660d1777
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580516"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212238"
 ---
 <!--Verify Successfully-->
 <!--TRAFFIC ANALYTICS ONLY AVAILABLE ON "CHINA EAST 2" SITE -->
@@ -51,7 +51,7 @@ Azure 虚拟网络提供 NSG 流日志，其中提供了传入和传出与单个
 
 - **网络安全组 (NSG)** ：包含一系列安全规则，这些规则可以允许或拒绝流向连接到 Azure 虚拟网络的资源的网络流量。 可以将 NSG 关联到子网、单个 VM（经典）或附加到 VM 的单个网络接口 (NIC) (Resource Manager)。 有关详细信息，请参阅[网络安全组概述](../virtual-network/network-security-groups-overview.md?toc=%2fnetwork-watcher%2ftoc.json)。
 - **网络安全组 (NSG) 流日志**：用于查看有关通过网络安全组的传入和传出 IP 流量的信息。 NSG 流日志以 JSON 格式编写，并基于每个规则显示出站和入站流、流所适用的 NIC、有关流的五元组信息（源/目标 IP 地址、源/目标端口和协议），以及是允许还是拒绝流量。 有关 NSG 流日志的详细信息，请参阅 [NSG 流日志](network-watcher-nsg-flow-logging-overview.md)。
-- **Log Analytics**：一个 Azure 服务，可以收集监视数据并将数据存储在中心存储库中。 这些数据可能包括事件、性能数据或通过 Azure API 提供的自定义数据。 收集后，可以分析、导出数据或针对它们发出警报。 网络性能监视器和流量分析等监视应用程序是在 Azure Monitor 日志的基础上构建的。 有关详细信息，请参阅 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md?toc=%2fnetwork-watcher%2ftoc.json)。
+- **Log Analytics**：一个 Azure 服务，可以收集监视数据并将数据存储在中心存储库中。 这些数据可能包括事件、性能数据或通过 Azure API 提供的自定义数据。 收集后，可以分析、导出数据或针对它们发出警报。 网络性能监视器和流量分析等监视应用程序是在 Azure Monitor 日志的基础上构建的。 有关详细信息，请参阅 [Azure Monitor 日志](../azure-monitor/logs/log-query-overview.md?toc=%2fnetwork-watcher%2ftoc.json)。
 - **Log Analytics 工作区**：Azure Monitor 日志的一个实例，用于存储与 Azure 帐户相关的数据。 有关 Log Analytics 工作区的详细信息，请参阅[创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md?toc=%2fnetwork-watcher%2ftoc.json)。
 - **网络观察程序**：一个区域性服务，用于在 Azure 中监视和诊断网络方案级别的状态。 可以使用网络观察程序启用和禁用 NSG 流日志。 有关详细信息，请参阅[网络观察程序](network-watcher-monitoring-overview.md)。
 
@@ -85,7 +85,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 |部署模型   | 角色                   |
 |---------          |---------               |
-|Resource Manager   | 所有者                  |
+|Resource Manager   | “所有者”                  |
 |                   | 参与者            |
 |                   | 读取器                 |
 |                   | 网络参与者    |
@@ -149,12 +149,12 @@ New-AzStorageAccount `
 4. 将“保留期”设置为存储数据的天数。 若要永久存储数据，请将值设置为 *0*。 存储帐户会产生 Azure 存储费用。 
 5. 为“流量分析状态”选择“打开”。
 6. 选择处理时间间隔。 根据你的选择，流量分析将从存储帐户收集流日志并进行处理。 你可以选择每 1 个小时或每 10 分钟的处理间隔。 
-7. 选择现有的 Log Analytics (OMS) 工作区，或选择“创建新工作区”来创建一个新工作区。 流量分析使用 Log Analytics 工作区来存储聚合数据和索引数据，然后，这些数据用于生成分析。 如果选择现有的工作区，该工作区必须位于某个[受支持区域](#supported-regions-log-analytics-workspaces)，并且已升级为新查询语言。 如果不希望升级现有工作区，或者受支持区域中没有工作区，请创建一个新工作区。 有关查询语言的详细信息，请参阅[将 Azure Log Analytics 升级到新的日志搜索](../azure-monitor/log-query/log-query-overview.md?toc=%2fnetwork-watcher%2ftoc.json)。
+7. 选择现有的 Log Analytics (OMS) 工作区，或选择“创建新工作区”来创建一个新工作区。 流量分析使用 Log Analytics 工作区来存储聚合数据和索引数据，然后，这些数据用于生成分析。 如果选择现有的工作区，该工作区必须位于某个[受支持区域](#supported-regions-log-analytics-workspaces)，并且已升级为新查询语言。 如果不希望升级现有工作区，或者受支持区域中没有工作区，请创建一个新工作区。 有关查询语言的详细信息，请参阅[将 Azure Log Analytics 升级到新的日志搜索](../azure-monitor/logs/log-query-overview.md?toc=%2fnetwork-watcher%2ftoc.json)。
 
     <!--CORRECT ON China East 2 region, NSG on China East 2 and China North 2-->
     
     > [!NOTE]
-    >托管流量分析解决方案和 NSG 的 Log Analytics 工作区不一定要位于同一个区域。 例如，可将流量分析部署在 `China East 2` 区域的某个工作区中，而将 NSG 部署在 `China East 2` 和 `China North 2`。 可在同一工作区中配置多个 NSG。
+    > 托管流量分析解决方案和 NSG 的 Log Analytics 工作区不一定要位于同一个区域。 例如，可将流量分析部署在 `China East 2` 区域的某个工作区中，而将 NSG 部署在 `China East 2` 和 `China North 2`。 可在同一工作区中配置多个 NSG。
 
 8. 选择“保存”。
 
@@ -162,7 +162,7 @@ New-AzStorageAccount `
 
 针对想要为其启用流量分析的其他任何 NSG 重复前面的步骤。 流日志中的数据将发送到工作区，因此，请确保所在国家/地区的当地法律和法规允许将数据存储在工作区所在的区域。 如果为不同的 NSG 设置了不同的处理间隔，系统会以不同的时间间隔收集数据。 例如：对于关键 VNET，可以选择启用 10 分钟的处理间隔，对于非关键 VNET，则是 1 小时。
 
-还可以使用 Azure PowerShell 中的 [Set-AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell cmdlet 来配置流量分析。 运行 `Get-Module -ListAvailable Az` 来查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
+还可以使用 Azure PowerShell 中的 [Set-AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell cmdlet 来配置流量分析。 运行 `Get-Module -ListAvailable Az` 来查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。
 
 ## <a name="view-traffic-analytics"></a>查看流量分析
 

@@ -5,19 +5,19 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.devlang: nodejs
 ms.topic: quickstart
-origin.date: 05/18/2020
+origin.date: 02/10/2021
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/15/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
 ms.custom: devx-track-js
-ms.openlocfilehash: df264a90e8ba2cfa2da71debe00b2d9eabf09098
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: eda720c52b07129a5329e79bbb89d1a9cdef2d0f
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230018"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996759"
 ---
 <!--Verify sucessfully-->
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>快速入门：使用 Node.js SDK 和 Azure Cosmos DB 构建 Cassandra 应用
@@ -38,7 +38,7 @@ ms.locfileid: "98230018"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 
-<!-- Not Available on [Try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/) -->
+<!--NOT AVAILABLE ON  [Try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)-->
 
 此外，还需要：
 * [Node.js](https://nodejs.org/dist/v0.10.29/x64/node-v0.10.29-x64.msi) 版本 v0.10.29 或更高版本
@@ -52,7 +52,7 @@ ms.locfileid: "98230018"
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
-现在从 GitHub 克隆 Cassandra API 应用，设置连接字符串，并运行应用。 你会看到以编程方式处理数据是多么容易。 
+现在从 GitHub 克隆 Cassandra API 应用，设置连接字符串，并运行应用。 会看到以编程方式处理数据是多么容易。 
 
 1. 打开命令提示符。 创建名为 `git-samples` 的新文件夹。 然后，关闭命令提示符。
 
@@ -66,113 +66,126 @@ ms.locfileid: "98230018"
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-nodejs-getting-started.git
+    ```
+
+1. 使用 npm 安装 Node.js 依赖项。
+
+    ```bash
+    npm install
     ```
 
 ## <a name="review-the-code"></a>查看代码
 
 此步骤是可选的。 如果有意了解如何通过代码创建数据库资源，可以查看以下代码片段。 这些代码片段全部摘自 `C:\git-samples\azure-cosmos-db-cassandra-nodejs-getting-started` 文件夹中 `uprofile.js` 文件。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。 
 
-* 用户名和密码值是使用 Azure 门户中的连接字符串页设置的。 `path\to\cert` 提供 X509 证书的路径。 
+* 用户名和密码值是使用 Azure 门户中的连接字符串页设置的。 
 
-    ```javascript
-    var ssl_option = {
-        cert : fs.readFileSync("path\to\cert"),
-        rejectUnauthorized : true,
-        secureProtocol: 'TLSv1_2_method'
-        };
-    const authProviderLocalCassandra = new cassandra.auth.PlainTextAuthProvider(config.username, config.password);
-    ```
+   ```javascript
+    let authProvider = new cassandra.auth.PlainTextAuthProvider(
+        config.username,
+        config.password
+    );
+   ```
 
 * 使用 contactPoint 信息初始化 `client`。 从 Azure 门户中检索 contactPoint。
 
     ```javascript
-    const client = new cassandra.Client({contactPoints: [config.contactPoint], authProvider: authProviderLocalCassandra, sslOptions:ssl_option});
+    let client = new cassandra.Client({
+        contactPoints: [`${config.contactPoint}:10350`],
+        authProvider: authProvider,
+        localDataCenter: config.localDataCenter,
+        sslOptions: {
+            secureProtocol: "TLSv1_2_method"
+        },
+    });
     ```
 
 * `client` 连接到 Azure Cosmos DB Cassandra API。
 
     ```javascript
-    client.connect(next);
+    client.connect();
     ```
 
 * 创建新的键空间。
 
     ```javascript
-    function createKeyspace(next) {
-        var query = "CREATE KEYSPACE IF NOT EXISTS uprofile WITH replication = {\'class\': \'NetworkTopologyStrategy\', \'datacenter1\' : \'1\' }";
-        client.execute(query, next);
-        console.log("created keyspace");    
-    }
+    var query =
+        `CREATE KEYSPACE IF NOT EXISTS ${config.keySpace} WITH replication = {'class': 'NetworkTopologyStrategy', 'datacenter' : '1' }`;
+    await client.execute(query);
+  }
     ```
 
 * 创建新表。
 
-    ```javascript
-    function createTable(next) {
-       var query = "CREATE TABLE IF NOT EXISTS uprofile.user (user_id int PRIMARY KEY, user_name text, user_bcity text)";
-        client.execute(query, next);
-        console.log("created table");
-    },
-    ```
+   ```javascript
+    query =
+        `CREATE TABLE IF NOT EXISTS ${config.keySpace}.user (user_id int PRIMARY KEY, user_name text, user_bcity text)`;
+    await client.execute(query);
+   },
+   ```
 
 * 插入键/值实体。
 
     ```javascript
-    function insert(next) {
-        console.log("\insert");
-        const arr = ['INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (1, \'AdrianaS\', \'Seattle\')',
-                    'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (2, \'JiriK\', \'Toronto\')',
-                    'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (3, \'IvanH\', \'Mumbai\')',
-                    'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (4, \'IvanH\', \'Seattle\')',
-                    'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (5, \'IvanaV\', \'Belgaum\')',
-                    'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (6, \'LiliyaB\', \'Seattle\')',
-                    'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (7, \'JindrichH\', \'Buenos Aires\')',
-                    'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (8, \'AdrianaS\', \'Seattle\')',
-                    'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (9, \'JozefM\', \'Seattle\')'];
-        arr.forEach(element => {
-        client.execute(element);
-        });
-        next();
-    },
+    const arr = [
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (1, 'AdrianaS', 'Seattle')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (2, 'JiriK', 'Toronto')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (3, 'IvanH', 'Mumbai')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (4, 'IvanH', 'Seattle')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (5, 'IvanaV', 'Belgaum')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (6, 'LiliyaB', 'Seattle')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (7, 'JindrichH', 'Buenos Aires')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (8, 'AdrianaS', 'Seattle')`,
+        `INSERT INTO  ${config.keySpace}.user (user_id, user_name , user_bcity) VALUES (9, 'JozefM', 'Seattle')`,
+    ];
+    for (const element of arr) {
+        await client.execute(element);
+    }
     ```
 
 * 用于获取所有键值的查询。
 
     ```javascript
-    function selectAll(next) {
-        console.log("\Select ALL");
-        var query = 'SELECT * FROM uprofile.user';
-        client.execute(query, function (err, result) {
-        if (err) return next(err);
-        result.rows.forEach(function(row) {
-            console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
-        }, this);
-        next();
-        });
-    },
+    query = `SELECT * FROM ${config.keySpace}.user`;
+    const resultSelect = await client.execute(query);
+
+    for (const row of resultSelect.rows) {
+        console.log(
+            "Obtained row: %d | %s | %s ",
+            row.user_id,
+            row.user_name,
+            row.user_bcity
+        );
+    }
     ```  
 
 * 用于获取键-值的查询。
 
     ```javascript
-    function selectById(next) {
-        console.log("\Getting by id");
-        var query = 'SELECT * FROM uprofile.user where user_id=1';
-        client.execute(query, function (err, result) {
-        if (err) return next(err);
-        result.rows.forEach(function(row) {
-            console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
-        }, this);
-        next();
-        });
+    query = `SELECT * FROM ${config.keySpace}.user where user_id=1`;
+    const resultSelectWhere = await client.execute(query);
+
+    for (const row of resultSelectWhere.rows) {
+        console.log(
+            "Obtained row: %d | %s | %s ",
+            row.user_id,
+            row.user_name,
+            row.user_bcity
+        );
     }
     ```  
 
-## <a name="update-your-connection-string"></a><a name="update-your-connection-string"></a>更新连接字符串
+* 关闭连接。 
+
+    ```javascript
+    client.shutdown();
+    ```  
+
+## <a name="update-your-connection-string"></a>更新连接字符串
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。 连接字符串使应用能与托管数据库进行通信。
 
@@ -184,63 +197,41 @@ ms.locfileid: "98230018"
 
 1. 打开 `config.js` 文件。 
 
-1. 粘贴门户中的“联系点”值，并覆盖第 4 行中的 `<FillMEIN>`。
+1. 粘贴门户中的 CONTACT POINT 值，并覆盖第 9 行中的 `'CONTACT-POINT`。
 
-    第 4 行现在应如下所示 
+    第 9 行现在应类似于 
 
-    `config.contactPoint = "cosmos-db-quickstarts.cassandra.cosmos.azure.cn:10350"`
+    `contactPoint: "cosmos-db-quickstarts.cassandra.cosmos.azure.cn",`
 
 1. 复制并粘贴门户中的“用户名”值，并覆盖第 2 行中的 `<FillMEIN>`。
 
     第 2 行现在应如下所示 
 
-    `config.username = 'cosmos-db-quickstart';`
+    `username: 'cosmos-db-quickstart',`
 
-1. 复制并粘贴门户中的“密码”值，并覆盖第 3 行中的 `<FillMEIN>`。
+1. 复制并粘贴门户中的“密码”值，并覆盖第 8 行中的 `USERNAME`。
 
-    第 3 行现在应如下所示
+    第 8 行现在应如下所示
 
-    `config.password = '2Ggkr662ifxz2Mg==';`
+    `password: '2Ggkr662ifxz2Mg==',`
+
+1. 将 REGION 替换为在其中创建此资源的 Azure 区域。
 
 1. 保存 `config.js` 文件。
 
-## <a name="use-the-x509-certificate"></a>使用 X509 证书
-
-1. 从 [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt) 在本地下载 Baltimore CyberTrust 根证书。 使用文件扩展名 `.cer` 重命名该文件。
-
-    证书的序列号为 `02:00:00:b9`，SHA1 指纹为 `d4:de:20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74`。
-
-2. 打开 `uprofile.js` 并更改 `path\to\cert` 以指向新证书。
-
-3. 保存 `uprofile.js`。
-
-> [!NOTE]
-> 如果在后面的步骤中遇到与证书相关的错误，并且是在 Windows 计算机上运行，请确保已按照相关过程将 .crt 文件正确转换为以下 Azure .cer 格式。
-> 
-> 双击 .crt 文件，将其打开到证书显示。 
->
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="显示“证书”窗口的屏幕截图。":::
->
-> 在证书向导中按“下一步”。 选择“Base-64 编码 X.509 (.CER)”，然后选择“下一步”。
->
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="显示“Base-64 编码 X.509 (.CER)”选项的屏幕截图。":::
->
-> 选择“浏览”（目的是查找目标），然后键入文件名。
-> 完成后，选择“下一步”。
->
-> 现在的 .cer 文件应该格式正确。 确保 `uprofile.js` 中的路径指向此文件。
-
 ## <a name="run-the-nodejs-app"></a>运行 Node.js 应用
 
-1. 在 git 终端窗口中，确保你位于此前克隆的示例目录中：
+1. 在终端窗口中，确保你位于此前克隆的示例目录中：
 
     ```bash
     cd azure-cosmos-db-cassandra-nodejs-getting-started
     ```
 
-2. 运行 `npm install`，安装所需的 npm 模块。
+1. 运行 Node 应用程序：
 
-3. 运行 `node uprofile.js` 启动 node 应用程序。
+    ```bash
+    npm start
+    ```
 
 4. 通过命令行验证结果是否符合预期。
 
@@ -267,4 +258,4 @@ ms.locfileid: "98230018"
 > [!div class="nextstepaction"]
 > [将 Cassandra 数据导入 Azure Cosmos DB](cassandra-import-data.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

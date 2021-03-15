@@ -11,15 +11,15 @@ metadata:
   ms.service: cognitive-services
   ms.subservice: translator-text
   ms.topic: landing-page
-  ms.date: 12/30/2020
+  ms.date: 03/08/2021
   ms.author: v-johya
   ms.custom: contperf-fy21q2
-  ms.openlocfilehash: 105ea3e9663206fd6963b2f9811b00a0324fad4a
-  ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+  ms.openlocfilehash: 8e57bc362fae5930109fc512d487f8a23467865f
+  ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/04/2021
-  ms.locfileid: "97857044"
+  ms.lasthandoff: 03/12/2021
+  ms.locfileid: "103212397"
 landingContent:
 - title: 转换器
   linkLists:
@@ -30,7 +30,7 @@ landingContent:
     - text: 定价
       url: https://www.azure.cn/pricing/details/cognitive-services/
     - text: 合规性
-      url: https://www.azure.cn/support/legal/
+      url: https://www.azure.cn/support/sla/cognitive-services/index.html
     - text: 创建订阅
       url: ./translator-how-to-signup.md
 - title: 入门

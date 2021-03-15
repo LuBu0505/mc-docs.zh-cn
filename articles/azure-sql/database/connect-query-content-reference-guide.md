@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 05/29/2020
-ms.date: 01/04/2021
-ms.openlocfilehash: 0e3b76276b88668d5ab29781194642508f25d061
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.date: 03/15/2021
+ms.openlocfilehash: 1847a6f7008fe42c7758fc4173a5b5634dbf7906
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830139"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589844"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL 数据库和 Azure SQL 托管实例连接和查询文章
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -58,7 +58,7 @@ ms.locfileid: "97830139"
 
 ## <a name="get-adonet-connection-information-optional---sql-database-only"></a>获取 ADO.NET 连接信息（可选 - 仅限 SQL 数据库）
 
-1. 导航到 Azure 门户中的数据库边栏选项卡，在“设置”下选择“连接字符串” 。
+1. 导航到 Azure 门户中的“数据库”边栏选项卡，在“设置”下选择“连接字符串” 。
 
 2. 查看完整的 ADO.NET 连接字符串。
 
@@ -88,7 +88,7 @@ Azure 提供或支持的所有驱动程序使用传输层安全性 (TLS) 连接�
 | 语言 | 平台 | 其他资源 | 下载 | 入门 |
 | :-- | :-- | :-- | :-- | :-- |
 | C# | Windows、Linux、macOS | [用于 SQL Server 的 Microsoft ADO.NET](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-sql-server) | [下载](https://www.microsoft.com/net/download/) | [入门](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
-| Java | Windows、Linux、macOS | [用于 SQL Server 的 Microsoft JDBC 驱动程序](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [下载](https://go.microsoft.com/fwlink/?linkid=852460) |  [入门](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
+| Java | Windows、Linux、macOS | [用于 SQL Server 的 Microsoft JDBC 驱动程序](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [下载](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server) |  [入门](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
 | PHP | Windows、Linux、macOS| [用于 SQL Server 的 PHP SQL 驱动程序](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server) | [下载](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server) | [入门](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
 | Node.js | Windows、Linux、macOS | [用于 SQL Server 的 Node.js 驱动程序](https://docs.microsoft.com/sql/connect/node-js/node-js-driver-for-sql-server/) | [安装](https://docs.microsoft.com/sql/connect/node-js/step-1-configure-development-environment-for-node-js-development/) |  [入门](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
 | Python | Windows、Linux、macOS | [Python SQL 驱动程序](https://docs.microsoft.com/sql/connect/python/python-driver-for-sql-server/) | 安装选项： <br/> \* [pymssql](https://docs.microsoft.com/sql/connect/python/pymssql/step-1-configure-development-environment-for-pymssql-python-development/) <br/> \* [pyodbc](https://docs.microsoft.com/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development/) |  [入门](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
@@ -99,7 +99,7 @@ Azure 提供或支持的所有驱动程序使用传输层安全性 (TLS) 连接�
 
 | 语言 | 平台 | ORM |
 | :-- | :-- | :-- |
-| C# | Windows、Linux、macOS | [实体框架](https://docs.microsoft.com/ef)<br>[实体框架核心](https://docs.microsoft.com/ef/core/index) |
+| C# | Windows、Linux、macOS | [实体框架](https://docs.microsoft.com/ef)<br>[Entity Framework Core](https://docs.microsoft.com/ef/core/index) |
 | Java | Windows、Linux、macOS |[Hibernate ORM](https://hibernate.org/orm)|
 | PHP | Windows、Linux、macOS | [Laravel (Eloquent)](https://laravel.com/docs/eloquent)<br>[Doctrine](https://www.doctrine-project.org/projects/orm.html) |
 | Node.js | Windows、Linux、macOS | [Sequelize ORM](https://sequelize.org/) |

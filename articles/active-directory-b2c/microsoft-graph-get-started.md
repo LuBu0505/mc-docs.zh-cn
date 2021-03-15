@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 03/11/2021
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 791d2160f2d0234ef0ac283dce2c2c8dc7386546
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: 308b4ae9088b16bbc926b938cf13651bb66bb88c
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540621"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212516"
 ---
 # <a name="register-a-microsoft-graph-application"></a>注册 Microsoft Graph 应用程序
 

@@ -1,27 +1,23 @@
 ---
 title: 用 PowerShell 批量复制数据
 description: 使用 Azure 数据工厂和复制活动将源数据存储中的数据批量复制到目标数据存储。
-services: data-factory
 author: WenJason
 ms.author: v-jay
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-origin.date: 01/22/2018
-ms.date: 01/04/2021
-ms.openlocfilehash: 7b06d2b0f81da0797d1827db97fb83a6bd6668b3
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+origin.date: 02/18/2021
+ms.date: 03/15/2021
+ms.openlocfilehash: aa826ef9e555c6b5731b5588c62b8c4d46db6be0
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830120"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589875"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>使用 PowerShell 通过 Azure 数据工厂批量复制多个表
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本教程演示如何 **将 Azure SQL 数据库中的多个表复制到 Azure Synapse Analytics**。 在其他复制方案中，也可以应用相同的模式。 例如，将 SQL Server/Oracle 中的表复制到 Azure SQL 数据库/数据仓库/Azure Blob，将 Blob 中的不同路径复制到 Azure SQL 数据库表。
 
@@ -147,7 +143,7 @@ ms.locfileid: "97830120"
 
     下面是示例输出：
 
-    ```json
+    ```console
     LinkedServiceName : AzureSqlDatabaseLinkedService
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>

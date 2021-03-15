@@ -5,16 +5,18 @@ ms.author: v-jay
 author: WenJason
 ms.service: data-factory
 ms.topic: tutorial
-origin.date: 05/04/2020
-ms.date: 03/01/2021
-ms.openlocfilehash: b5d2684e18f78c3a9cc966fa9dc5efcaf435a109
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+origin.date: 02/18/2021
+ms.date: 03/15/2021
+ms.openlocfilehash: 3abe1efb779fc076be9ba9cb6d669ebc8ba35740
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697317"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102590029"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>使用变更数据捕获 (CDC)，以增量方式将 Azure SQL 托管实例中的数据加载到 Azure 存储
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在本教程中，请创建一个带管道的 Azure 数据工厂，以便根据源 Azure SQL 托管实例数据库中的 **变更数据捕获 (CDC)** 信息将增量数据加载到 Azure Blob 存储。  
 
@@ -118,7 +120,7 @@ ms.locfileid: "101697317"
          
     若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 5. 选择数据工厂的 **位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
-7. 单击“创建”。
+7. 单击 **创建**。
 8. 部署完成后，单击“转到资源”
 
    ![屏幕截图显示了一条指示部署已完成的消息和一个可以转到资源的选项。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)

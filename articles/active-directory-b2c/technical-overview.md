@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 01/18/2021
+ms.date: 03/11/2021
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: e787a0b4acab0cdd6596267a9f37aeaab88a8f71
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: feee1863a2ce10903d5a02af1a0bbba4bdacafee
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570573"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212512"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技术和功能概述
 
@@ -77,6 +77,8 @@ Azure AD B2C 定义多种类型的用户帐户。 Azure Active Directory、Azure
 
 在注册或登录页上，Azure AD B2C 会提供外部标识提供者的列表，供用户选择用来登录。 用户选择一个外部标识提供者后，将会转到（重定向到）所选提供者的网站，以完成登录过程。 用户成功登录后，将返回到 Azure AD B2C，以便对应用程序中的帐户进行身份验证。
 
+若要了解如何在 Azure AD B2C 中添加标识提供者，请参阅[将标识提供者添加到 Azure Active Directory B2C 中的应用程序](add-identity-provider.md)。
+
 ## <a name="identity-experiences-user-flows-or-custom-policies"></a>标识体验：用户流或自定义策略
 
 Azure AD B2C 的核心优势在于它的可扩展策略框架。 策略描述用户的标识体验，例如注册、登录和配置文件编辑。
@@ -130,7 +132,7 @@ Identity Experience Framework 可让你使用步骤的任意组合来构造用�
 
 ## <a name="protocols-and-tokens"></a>协议和令牌
 
-- 对于应用程序，Azure AD B2C 支持对用户旅程使用 [OAuth 2.0](protocols-overview.md)、[OpenID Connect](openid-connect.md) 和 [SAML 协议](connect-with-saml-service-providers.md)。 应用程序通过向 Azure AD B2C 发出身份验证请求，来启动此用户旅程。 向 Azure AD B2C 发出请求后会获得一个安全令牌，例如 [ID 令牌、访问令牌](tokens-overview.md)或 SAML 令牌。 此安全令牌定义应用程序中用户的标识。
+- 对于应用程序，Azure AD B2C 支持对用户旅程使用 [OAuth 2.0](protocols-overview.md)、[OpenID Connect](openid-connect.md) 和 [SAML 协议](saml-service-provider.md)。 应用程序通过向 Azure AD B2C 发出身份验证请求，来启动此用户旅程。 向 Azure AD B2C 发出请求后会获得一个安全令牌，例如 [ID 令牌、访问令牌](tokens-overview.md)或 SAML 令牌。 此安全令牌定义应用程序中用户的标识。
 
 - 对于外部标识，Azure AD B2C 支持与任何 OAuth 1.0、OAuth 2.0、OpenID Connect、SAML 标识提供者联合。
 
@@ -258,4 +260,3 @@ Azure AD B2C 发出审核日志，其中包含有关其资源、颁发的令牌�
 ## <a name="next-steps"></a>后续步骤
 
 现在你已更深入地了解 Azure Active Directory B2C 的功能和技术方面，可以开始使用[创建 Azure Active Directory B2C 租户教程](tutorial-create-tenant.md)了。
-

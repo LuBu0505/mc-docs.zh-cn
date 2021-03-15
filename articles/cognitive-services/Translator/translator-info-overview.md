@@ -6,27 +6,27 @@ services: cognitive-services
 author: Johnnytechn
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: translator-text
 ms.topic: overview
+ms.subservice: translator-text
 origin.date: 06/26/2020
-ms.date: 12/30/2020
+ms.date: 03/08/2021
 ms.author: v-johya
 ms.custom: cog-serv-seo-aug-2020
 keywords: translator, 文本翻译, 机器翻译, 翻译服务
-ms.openlocfilehash: eed4e2a8e12c6ea729eafc704bb26ffa54d00cb1
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: febc6603c42f00f317eec67ad4a7ae2bb3e5caa2
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856745"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212632"
 ---
 # <a name="what-is-the-translator-service"></a>什么是 Translator 服务？
 
-Translator 是一种基于云的机器翻译服务，是用于构建智能应用的 Azure 认知服务系列认知 API 的一部分。 “翻译”可以轻松地集成到应用程序、网站、工具和解决方案中。 通过它，你可以添加[超过 70 种语言](./language-support.md)的多语言用户体验，并且可以在具有任何操作系统的任何硬件平台上将其应用于文本翻译。
+Translator 是一种基于云的机器翻译服务，是用于构建智能应用的 [Azure 认知服务](../index.yml?panel=ai&pivot=products)系列认知 API 的一部分。 “翻译”可以轻松地集成到应用程序、网站、工具和解决方案中。 通过该服务可添加 [90 种语言和方言](./language-support.md)的多语言用户体验。 可以在任何操作系统的任何硬件平台上使用该服务进行文本转换。
 
 ## <a name="about-microsoft-translator"></a>关于 Microsoft Translator
 
-“翻译”为各种 Microsoft 产品和服务提供支持，并已在全球数千家企业的应用程序和工作流中使用，使其内容可传播到全球的受众。
+“翻译”为许多 Microsoft 产品和服务提供支持，并已在全球数千家企业的应用程序和工作流中使用。
 
 由 Translator 提供支持的语音翻译也可通过 [Azure 语音服务](../speech-service/index.yml)获取。 它将语音翻译 API 和自定义语音服务的功能组合成了一项统一的可完全自定义的服务。 
 
@@ -48,7 +48,7 @@ NMT 模型是该 API 的核心，对最终用户不可见。 唯一明显的区�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [注册](./translator-how-to-signup.md)访问密钥。
+- [创建“翻译”服务](./translator-how-to-signup.md)以获取访问密钥和终结点。
 - 请试用[快速入门](quickstart-translator.md)以快速调用 Translator 服务。
 - [API 参考](./reference/v3-0-reference.md)提供了 API 的技术文档。
 - [定价详细信息](https://www.azure.cn/pricing/details/cognitive-services/)

@@ -30,8 +30,6 @@
           href: prevent-translation.md
         - name: 使用动态字典功能
           href: dynamic-dictionary.md
-        - name: 在防火墙后面翻译
-          href: firewalls.md
     - name: 示例
       items:
         - name: C#

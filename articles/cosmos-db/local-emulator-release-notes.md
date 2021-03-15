@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 09/21/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/15/2021
 ms.testscope: yes
 ms.testdate: 09/28/2020
 ms.author: v-yeche
-ms.openlocfilehash: 81d8fcaec53f191ed160b47d4192e97bd10745c4
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: e4a5342982e26f268c09e9d132acb2811e1de1f0
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230378"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996713"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB 模拟器 - 发行说明和下载信息
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -29,6 +29,10 @@ ms.locfileid: "98230378"
 |**入门**|[使用 Azure Cosmos DB 模拟器在本地开发](local-emulator.md)|
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="21111-22-february-2021"></a>2.11.11（2021 年 2 月 22 日）
+
+- 此版本将本地数据资源管理器的内容更新到 Azure 门户的最新版本。
 
 ### <a name="21110-5-january-2021"></a>2.11.10（2021 年 1 月 5 日）
 
@@ -102,4 +106,4 @@ ms.locfileid: "98230378"
 
 - 修复了当主计算机上存在网络监视应用（如 Pulse Client）时模拟器无法启动的问题。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

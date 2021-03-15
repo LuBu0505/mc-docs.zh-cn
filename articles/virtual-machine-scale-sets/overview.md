@@ -6,15 +6,15 @@ ms.author: v-junlch
 ms.topic: overview
 ms.service: virtual-machine-scale-sets
 ms.subservice: ''
-ms.date: 01/26/2021
+ms.date: 03/09/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 555ea66c42e6ed07ab5f6ed3f65ca7cb8c2371e5
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 622462b8b448e1c0986ab56e58bc553dd6e7fdac
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99058906"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212688"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>什么是虚拟机规模集？
 使用 Azure 虚拟机规模集可以创建并管理一组负载均衡的 VM。 可以根据需求或定义的计划自动增减 VM 实例的数目。 规模集为应用程序提供高可用性，用于集中管理、配置和更新大量 VM。 可以使用虚拟机规模集为计算、大数据和容器工作负荷等领域构建大规模的服务。
@@ -58,9 +58,12 @@ Azure 虚拟机规模集为跨多个 VM 运行的应用程序提供管理功能�
 
 使用 Application Insights 启用对[虚拟机规模集应用程序](../azure-monitor/app/azure-vm-vmss-apps.md)的监视，以收集有关应用程序的详细信息，包括页面视图、应用程序请求和异常。 
 
+## <a name="data-residency"></a>数据驻留
+
+在 Azure 中，将客户数据存储到一个区域的功能目前仅适用于亚太地区的东南亚区域（新加坡）和巴西地区的巴西南部区域（圣保罗州）。 对于其他所有区域，客户数据存储在以下地域。 有关详细信息，请参阅[信任中心](https://azure.microsoft.com/global-infrastructure/data-residency/)。
+
 ## <a name="next-steps"></a>后续步骤
 若要开始，请在 Azure 门户中创建第一个虚拟机规模集。
 
 > [!div class="nextstepaction"]
 > [在 Azure 门户中创建规模集](quick-create-portal.md)
-

@@ -105,6 +105,9 @@
       items:
         - name: Azure CLI
           href: sample-scripts-azure-cli.md
+        - name: Azure Policy 内置策略定义
+          displayName: 'samples, policies, definitions'
+          href: ./policy-reference.md
     - name: 概念
       items:
         - name: 服务器
@@ -133,6 +136,9 @@
             - name: Azure AD 身份验证
               href: concepts-aad-authentication.md
               displayName: 'security, aad, active directory'
+            - name: 数据加密
+              href: concepts-data-encryption-postgresql.md
+              displayName: 'security, data encryption'
             - name: Azure Policy 的安全控件
               displayName: 'regulatory, compliance, standards, domains'
               href: ./security-controls-policy.md
@@ -316,6 +322,9 @@
             - name: 排查连接错误
               href: howto-troubleshoot-common-connection-issues.md
               displayName: 'debug, connection, issues, firewall, ssl, port'
+            - name: 排查数据加密问题
+              href: howto-data-encryption-troubleshoot.md
+              displayName: 'debug, security, encryption'
         - name: 虚拟网络
           items:
             - name: Azure 门户
@@ -332,6 +341,17 @@
             - name: Azure CLI
               href: howto-configure-privatelink-cli.md
               displayName: 'private endpoint, private link'
+        - name: 数据加密
+          items:
+            - name: Azure 门户
+              href: howto-data-encryption-portal.md
+              displayName: 'encryption, security'
+            - name: Azure CLI
+              href: howto-data-encryption-cli.md
+              displayName: 'encryption, security'
+            - name: 数据加密验证
+              href: howto-data-encryption-validation.md
+              displayName: 'encryption, security'
         - name: 拒绝公用网络访问
           items:
             - name: Azure 门户

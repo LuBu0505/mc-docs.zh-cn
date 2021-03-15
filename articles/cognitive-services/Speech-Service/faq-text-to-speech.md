@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 08/20/2020
-ms.date: 12/30/2020
-ms.author: v-tawe
-ms.openlocfilehash: ed069385eeaaa4bbb109e646cfb16d980c50e66e
-ms.sourcegitcommit: eb742dcade404c9909d01e2570188f0bc4076992
+ms.date: 03/12/2021
+ms.author: v-johya
+ms.openlocfilehash: a46ff49141a923ca5a91ba4ebbaca4eb87562105
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97820245"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212246"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>文本转语音常见问题
 
@@ -32,17 +32,13 @@ ms.locfileid: "97820245"
 
 **答**：通过 HTTP 请求可以使用超过 10 种语言的 40 多种标准语音模型。 首先，获取[订阅密钥](https://docs.azure.cn/cognitive-services/speech-service/get-started)。 若要对预部署的语音模型进行 REST 调用，请参阅 [REST API](https://docs.azure.cn/cognitive-services/speech-service/rest-apis)。
 
-**问：如果想使用自定义的语音模型，API 是否与用于标准语音的 API 相同？**
-
-**答**：创建和部署自定义语音模型时，你会获得模型的唯一终结点。 若要使用语音在应用中说话，必须在 HTTP 请求中指定该终结点。 在 REST API 中为文本转语音服务提供的相同功能可用于自定义终结点。 了解如何[创建和使用自定义终结点](./how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint)。
-
 **问：要自行创建自定义语音模型，是否需要准备训练数据？**
 
 **答**：是的，必须自己为自定义语音模型准备训练数据。
 
 创建自定义的语音模型需要一组语音数据。 其中包括一系列语音录制音频文件，以及每个音频文件的听录文本文件。 数字语音的结果主要依赖于定型数据的质量。 若要生成优质文本转语音的语音，必须确保录音是在安静的房间使用高品质立式麦克风完成的。 一致的音量、语速和语调，甚至语言表达方式的一致性对于生成优质数字语音来说至关重要。 强烈建议在录制室中录制语音。
 
-当前我们不提供在线录音支持或任何录音室建议。 有关格式要求，请参阅[如何准备录音和脚本](./how-to-custom-voice-create-voice.md)。
+当前我们不提供在线录音支持或任何录音室建议。
 
 **问：应该使用哪些脚本来录制用于自定义语音训练的语音数据？**
 

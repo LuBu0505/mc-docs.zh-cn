@@ -5,15 +5,15 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
 origin.date: 10/01/2020
-ms.date: 12/07/2020
+ms.date: 03/15/2021
 ms.author: v-jay
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3afbc55d29291636cd4662058c242dde8a8332c8
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 605ff7a2691c1ed04432061eea8c4e150bd4e381
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830213"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212569"
 ---
 # <a name="azure-security-baseline-for-vpn-gateway"></a>VPN 网关的 Azure 安全基线
 
@@ -75,9 +75,9 @@ ms.locfileid: "97830213"
 
 **指导**：使用 Azure 活动日志监视网络资源配置，并检测虚拟网络资源的更改。 在 Azure Monitor 中创建警报，使其在 VPN 网关相关的关键资源发生更改时触发。
 
-- [如何查看和检索 Azure 活动日志事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [如何查看和检索 Azure 活动日志事件](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [如何在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何在 Azure Monitor 中创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -95,7 +95,7 @@ ms.locfileid: "97830213"
 
 - [针对来自 VPN 网关的诊断日志事件设置警报](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [如何开始使用 Azure Monitor 和第三方 SIEM 集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -107,9 +107,9 @@ ms.locfileid: "97830213"
 
 **指导**：在 VPN 网关资源上启用诊断设置，以访问审核日志、安全日志和诊断日志。 活动日志自动可用，包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用元素。 
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md) 
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/platform/platform-logs-overview.md)
+- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure 安全中心监视**：是
 
@@ -119,9 +119,9 @@ ms.locfileid: "97830213"
 
 **指南**：在 Azure Monitor 中，根据组织的合规性规则设置 Log Analytics 工作区保持期。 将 Azure 存储帐户用于长期存储和存档存储。 
 
-- [更改 Log Analytics 中的数据保留期](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) 
+- [更改 Log Analytics 中的数据保留期](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) 
 
-- [如何为 Azure 存储帐户日志配置保留策略](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [如何为 Azure 存储帐户日志配置保留策略](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -133,7 +133,7 @@ ms.locfileid: "97830213"
 
 - [如何在 Azure 安全中心管理警报](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/learn/tutorial-response.md)
+- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure 安全中心监视**：是
 
@@ -307,7 +307,7 @@ ms.locfileid: "97830213"
 
 - [针对来自 VPN 网关的诊断日志事件设置警报](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)
 
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -337,7 +337,7 @@ ms.locfileid: "97830213"
 
 - [如何使用 Azure Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-- [VPN 网关的 Azure CLI](/cli/network/vnet-gateway?view=azure-cli-latest)
+- [VPN 网关的 Azure CLI](/cli/network/vnet-gateway)
 
 - [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 

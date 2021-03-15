@@ -12,14 +12,14 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 08/05/2019
-ms.date: 01/04/2021
+ms.date: 03/15/2021
 ms.author: v-jay
-ms.openlocfilehash: 6415852ec317154c65b011ac4f87d5c14fb2c597
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: 3ea12560f3ae588b83a07a81adf0c1ec646bc240
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829728"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589965"
 ---
 <!--Verified Redirect file-->
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Azure VM 上的 SQL Server 常见问题解答
@@ -39,8 +39,6 @@ ms.locfileid: "97829728"
 
    Azure 为所有 Windows 和 Linux 版本中的所有受支持 SQL Server 主要发行版维护虚拟机映像。 有关详细信息，请参阅 [Windows VM 映像](sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo)和 [Linux VM 映像](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md#create)的完整列表。
 
-    <!--CORRECT ON payinadvance-->
-    
 1. **现有的 SQL Server 虚拟机库映像是否会更新？**
 
    每隔两个月，都会使用最新的 Windows 和 Linux 更新对虚拟机库中的 SQL Server 映像进行更新。 对于 Windows 映像，这包括 Windows 更新中标记为重要的任何更新，以及重要的 SQL Server 安全更新和 Service Pack。 对于 Linux 映像，这包括最新的系统更新。 Linux 和 Windows 的 SQL Server 累积更新以不同的方式进行处理。 对于 Linux，SQL Server 累积更新也包含在刷新中。 但目前，Windows VM 不会连同 SQL Server 或 Windows Server 累积更新一起更新。
@@ -59,7 +57,7 @@ ms.locfileid: "97829728"
 
 1. 如何使 Azure VM 上的 SQL Server 通用化并使用它部署新 VM？
 
-    可以部署 Windows Server VM（不安装 SQL Server），并使用 [SQL sysprep](https://docs.microsoft.com/sql/database-engine/install-windows/install-sql-server-using-sysprep?view=sql-server-ver15) 进程和 SQL Server 安装媒体将 Azure VM (Windows) 上的 SQL Server 通用化。 如果客户有[软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3)，则可以从[批量许可中心](https://www.microsoft.com/Licensing/servicecenter/default.aspx)获取其安装介质。 没有软件保障的客户可以使用具有所需版本的 Azure 市场 SQL Server VM 映像中的安装介质。
+   可以部署 Windows Server VM（不安装 SQL Server），并使用 [SQL sysprep](https://docs.microsoft.com/sql/database-engine/install-windows/install-sql-server-using-sysprep) 进程和 SQL Server 安装媒体将 Azure VM (Windows) 上的 SQL Server 通用化。 如果客户有[软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3)，则可以从[批量许可中心](https://www.microsoft.com/Licensing/servicecenter/default.aspx)获取其安装介质。 没有软件保障的客户可以使用具有所需版本的 Azure 市场 SQL Server VM 映像中的安装介质。
 
    另外，也可使用 Azure 市场中的 SQL Server 映像之一来将 Azure VM 上的 SQL Server 通用化。 请注意，在创建你自己的映像之前，必须在源映像中删除以下注册表项。 如果不这样做，可能会导致 SQL Server 安装程序的启动文件夹扩展以及/或者 SQL IaaS 扩展处于故障状态。
 

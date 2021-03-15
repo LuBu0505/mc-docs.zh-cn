@@ -7,17 +7,17 @@ ms.devlang: nodejs
 ms.topic: quickstart
 origin.date: 05/21/2019
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/15/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 90b607acb7cddd594ed31ab58f007c9d9c68a564
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 4dcbca593c7fa969f89d8292f6137b90359bd4fc
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98229867"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996646"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>快速入门：将现有的 MongoDB Node.js Web 应用迁移到 Azure Cosmos DB 
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "98229867"
 > * [.NET](create-mongodb-dotnet.md)
 > * [Java](create-mongodb-java.md)
 > * [Node.js](create-mongodb-nodejs.md)
-> * [Python](create-mongodb-flask.md)
+> * [Python](./mongodb-introduction.md)
 > * [Xamarin](create-mongodb-xamarin.md)
 > * [Golang](create-mongodb-go.md)
 >  
@@ -37,7 +37,7 @@ ms.locfileid: "98229867"
 
 - 具有活动订阅的 Azure 帐户。 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 你还可以将 [Azure Cosmos DB 模拟器](https://aka.ms/cosmosdb-emulator)与连接字符串配合使用 `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true`。
     
-    <!--Not Available on [try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)-->
+    <!--NOT AVAILABLE ON [try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)-->
 
 - [Node.js](https://nodejs.org/)，应具备 Node.js 的实践知识。
 
@@ -47,7 +47,7 @@ ms.locfileid: "98229867"
 
 - 本文需要 Azure CLI 版本 2.0 或更高版本。
 
-<!--Not Avaialble on If you don't want to use Azure Cloud Shell-->
+    <!--NOT AVAILABLE ON If you don't want to use Azure Cloud Shell-->
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
@@ -65,7 +65,7 @@ ms.locfileid: "98229867"
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
+3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
 
     ```bash
     git clone https://github.com/prashanthmadi/mean
@@ -99,9 +99,9 @@ az login
 
 如果使用已安装的 Azure CLI，请运行 `az` 命令，检查是否已安装 `cosmosdb` 组件。 如果 `cosmosdb` 在基本命令列表中，请继续执行下一个命令。 
 
-<!-- Not Available on Azure Cloud Shell-->
+<!--NOT AVAILABLE ON Azure Cloud Shell-->
 
-如果 `cosmosdb` 不在基本命令列表中，请重装 [Azure CLI](https://docs.azure.cn/cli/install-azure-cli)。
+如果 `cosmosdb` 不在基本命令列表中，请重装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -109,7 +109,7 @@ az login
 
 以下示例在中国北部区域中创建一个资源组。 选择资源组的唯一名称。
 
-<!-- Not Avaialbe on Azure Cloud Shell -->
+<!--NOT AVAILABLE ON Azure Cloud Shell-->
 
 ```azurecli
 az group create --name myResourceGroup --location "China North"
@@ -265,4 +265,4 @@ git commit -m "configured MongoDB connection string"
 > [!div class="nextstepaction"]
 > [将 MongoDB 数据导入 Azure Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fcosmos-db%2ftoc.json%253ftoc%253d%2fcosmos-db%2ftoc.json)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

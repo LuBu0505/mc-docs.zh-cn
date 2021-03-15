@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurecli
 ms.topic: tutorial
 origin.date: 04/11/2020
-ms.date: 03/01/2021
-ms.openlocfilehash: 1dd71e1db7475d379f756c7fffe27847b9e94e66
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.date: 03/15/2021
+ms.openlocfilehash: cb5e3b6b7119b2808abf379dd16946f043cb77a6
+ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697375"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103211740"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>教程：通过 Azure CLI 使用 DMS 将 PostgreSQL 联机迁移到 Azure DB for PostgreSQL
 
@@ -59,16 +59,16 @@ ms.locfileid: "101697375"
     >
     > Azure 数据库迁移服务缺少 Internet 连接，因此必须提供此配置。
 
-* 确保虚拟网络网络安全组 (NSG) 规则未阻止到 Azure 数据库迁移服务的以下出站通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
-* 配置[针对数据库引擎访问的 Windows 防火墙](/postgresql/concepts-firewall-rules)。
+* 请确保虚拟网络的网络安全组(NSG) 规则不阻止 ServiceBus、存储服务和 AzureMonitor 的 ServiceTag 出站端口 443。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
+* 配置[针对数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 PostgreSQL 服务器（默认情况下为 TCP 端口 5432）。
 * 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
-* 为 Azure Database for PostgreSQL 创建服务器级[防火墙规则](/postgresql/concepts-firewall-rules)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的虚拟网络子网范围。
+* 为 Azure Database for PostgreSQL 创建服务器级[防火墙规则](../postgresql/concepts-firewall-rules.md)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的虚拟网络子网范围。
 * 有一种方法可调用 CLI：
 
   * 在本地安装并运行 CLI。 CLI 2.0 是用于管理 Azure 资源的命令行工具。
 
-       若要下载 CLI，请按照[安装 Azure CLI 2.0](/cli/install-azure-cli?view=azure-cli-latest) 一文中的说明操作。 本文还列出了支持 CLI 2.0 的平台。
+       若要下载 CLI，请按照[安装 Azure CLI 2.0](/cli/install-azure-cli) 一文中的说明操作。 本文还列出了支持 CLI 2.0 的平台。
 
        若要设置适用于 Linux 的 Windows 子系统 (WSL)，请按照 [Windows 10 Installation Guide](https://docs.microsoft.com/windows/wsl/install-win10)（Windows 10 安装指南）中的说明操作
 

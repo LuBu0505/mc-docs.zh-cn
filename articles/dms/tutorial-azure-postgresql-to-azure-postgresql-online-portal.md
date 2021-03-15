@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 origin.date: 07/21/2020
-ms.date: 03/01/2021
-ms.openlocfilehash: eac837e12c168ee64b954feffd3c48373b2b8360
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.date: 03/15/2021
+ms.openlocfilehash: 0e61bdf400ec2ad8e789062af6c7ecceea359ce0
+ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697149"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103211770"
 ---
 # <a name="tutorial-migrateupgrade-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>教程：通过 Azure 门户使用 DMS 以联机方式将 Azure DB for PostgreSQL 单一服务器迁移/升级到 Azure DB for PostgreSQL 单一服务器
 
@@ -55,7 +55,7 @@ ms.locfileid: "101697149"
 * [创建一个 Azure Database for PostgreSQL 服务器](../postgresql/quickstart-create-server-database-portal.md)，作为要将数据迁移到的目标数据库服务器。
 * 使用 Azure 资源管理器部署模型为 Azure 数据库迁移服务创建 Azure 虚拟网络。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](../virtual-network/index.yml)，尤其是提供了分步详细信息的快速入门文章。
 
-* 确保虚拟网络的网络安全组 (NSG) 规则未阻止到 Azure 数据库迁移服务的以下出站通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
+* 请确保虚拟网络的网络安全组 (NSG) 规则不阻止 ServiceBus、存储服务和 AzureMonitor 的 ServiceTag 出站端口 443。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
 * 为 Azure Database for PostgreSQL 源创建服务器级[防火墙规则](../azure-sql/database/firewall-configure.md)，以允许 Azure 数据库迁移服务访问源数据库。 提供用于 Azure 数据库迁移服务的虚拟网络子网范围。
 * 为 Azure Database for PostgreSQL 目标创建服务器级[防火墙规则](../azure-sql/database/firewall-configure.md)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的虚拟网络子网范围。
 * 在 Azure DB for PostgreSQL 源中[启用逻辑复制](../postgresql/concepts-logical.md)。 

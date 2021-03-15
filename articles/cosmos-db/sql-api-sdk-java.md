@@ -7,17 +7,17 @@ ms.devlang: java
 ms.topic: reference
 origin.date: 12/18/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/15/2021
 ms.testscope: no
 ms.testdate: 09/28/2020
 ms.author: v-yeche
 ms.custom: devx-track-java
-ms.openlocfilehash: f7c0b2f474371f52b79444c8ddb8312903095810
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 6b40175f3fc47d3095d64e3ffed3e6be21e937c1
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230182"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996667"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Java SDK：发行说明和资源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -54,7 +54,7 @@ ms.locfileid: "98230182"
 |**参与 SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
 |**入门**|[Java SDK 入门](./create-sql-api-java.md)|
 |**Web 应用教程**|[使用 Azure Cosmos DB 开发 Web 应用程序](sql-api-java-application.md)|
-|受支持的最小运行时|[Java 开发工具包 (JDK) 7+](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)|
+|受支持的最小运行时|[Java 开发工具包 (JDK) 7+](https://docs.azure.cn/java/java-supported-jdk-runtime)|
 
 ## <a name="release-notes"></a>发行说明
 
@@ -390,10 +390,10 @@ Azure 会在停用 SDK 时至少提前 12 个月发出通知，以便用户顺�
 | 0.9.1-prelease |2014 年 12 月 19 日 |2016 年 2 月 29 日 |
 | 0.9.0-prelease |2014 年 12 月 10 日 |2016 年 2 月 29 日 |
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>另请参阅
 若要了解有关 Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服务页。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

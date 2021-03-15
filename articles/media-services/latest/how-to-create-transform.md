@@ -13,15 +13,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: multiple
 ms.workload: na
 origin.date: 11/18/2020
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.author: v-jay
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 559441d2b5725ee7ccd82b03e7225b881debcb8f
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: b12ac53e626e0aebd9340f280977420bcec5310e
+ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697307"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103211779"
 ---
 # <a name="create-a-transform"></a>创建转换
 
@@ -35,8 +35,6 @@ ms.locfileid: "101697307"
 
 ## <a name="cli"></a>[CLI](#tab/cli/)
 
-[!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
-
 > [!NOTE]
 > 只能为 [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) 指定自定义标准编码器预设 JSON 文件的路径，请参阅[使用自定义转换进行编码](custom-preset-cli-howto.md)示例。
 >
@@ -48,8 +46,8 @@ ms.locfileid: "101697307"
 #!/bin/bash
 
 # Update the following variables for your own settings:
-$resourceGroup=amsResourceGroup
-$amsAccountName=amsmediaaccountname
+$resourceGroup="amsResourceGroup"
+$amsAccountName="amsmediaaccountname"
 
 # Create a simple Transform for Adaptive Bitrate Encoding
 az ams transform create \
@@ -88,4 +86,4 @@ read continue
 
 ## <a name="next-steps"></a>后续步骤
 
-[详细了解转换和作业](transforms-jobs-concept.md)
+[!INCLUDE [transforms next steps](./includes/transforms-next-steps.md)]

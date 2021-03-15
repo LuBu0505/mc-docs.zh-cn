@@ -1,27 +1,23 @@
 ---
 title: 使用 PowerShell 使用更改跟踪以增量方式复制数据
 description: 在本教程中，你将创建一个 Azure 数据工厂管道，该管道以递增方式将增量数据从 SQL Server 数据库中的多个表复制到 Azure SQL 数据库。
-services: data-factory
 ms.author: v-jay
 author: WenJason
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
-origin.date: 01/22/2018
-ms.date: 01/04/2021
-ms.openlocfilehash: b94bca8d4469845b92609fdaf6e6f23e54488cd3
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+origin.date: 02/18/2021
+ms.date: 03/15/2021
+ms.openlocfilehash: 577789e62071591601bbb1f20974cf9c8441ccec
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830096"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102589910"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-powershell"></a>使用 PowerShell 根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在本教程中，请创建一个带管道的 Azure 数据工厂，该管道根据 Azure SQL 数据库的源数据库中的“更改跟踪”信息将增量数据加载到 Azure Blob 存储。  
 
@@ -195,7 +191,7 @@ ms.locfileid: "97830096"
     The specified Data Factory name 'ADFIncCopyChangeTrackingTestFactory' is already in use. Data Factory names must be globally unique.
     ```
 * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于 **参与者** 或 **所有者** 角色，或者是 Azure 订阅的 **管理员**。
-* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
 
 ## <a name="create-linked-services"></a>创建链接服务

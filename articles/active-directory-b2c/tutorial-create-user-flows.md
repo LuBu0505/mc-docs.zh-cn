@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/18/2021
+ms.date: 03/12/2021
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: a6b01b0ce685c8d4e84c19e65158a48869984f21
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: 783d4ccfab8add3b9185ff1945535d447527de21
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570566"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212499"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中创建用户流
 
@@ -133,4 +133,7 @@ ms.locfileid: "98570566"
 > * 创建配置文件编辑用户流
 > * 创建密码重置用户流
 
-<!-- Update_Description: link update -->
+接下来，了解如何使用 Azure AD B2C 在应用程序中登录和注册用户。 使用下面的 ASP.NET Web 应用程序链接，或在“用户身份验证”下的目录中导航到其他应用程序。
+
+> [!div class="nextstepaction"]
+> [教程：使用 Azure AD B2C 在 Web 应用程序中启用身份验证 >](tutorial-web-app-dotnet.md)

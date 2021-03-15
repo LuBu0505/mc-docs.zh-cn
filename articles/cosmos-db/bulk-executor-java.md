@@ -7,18 +7,18 @@ ms.devlang: java
 ms.topic: how-to
 origin.date: 08/26/2020
 author: rockboyfor
-ms.date: 11/09/2020
+ms.date: 03/15/2021
 ms.testscope: no
 ms.testdate: 09/28/2020
 ms.author: v-yeche
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: 0ea3eef9956edb89f60a8e604f83222d2c5e61c6
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: dddfdc97add588442a745f090d788e56dc23935b
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431832"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996721"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>使用 Bulk Executor Java 库针对 Azure Cosmos DB 数据执行批量操作
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -29,15 +29,15 @@ ms.locfileid: "96431832"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 如果没有 Azure 订阅，请在开始前创建一个[试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。  
+* 如果没有 Azure 订阅，请在开始前创建一个[试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。  
 
 * 可以通过 `https://localhost:8081` 终结点使用 [Azure Cosmos DB 模拟器](./local-emulator.md)。 [对请求进行身份验证](local-emulator.md#authenticate-requests)中提供了主密钥。
 
-    <!-- Not Available on [Try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/) -->
+    <!--NOT AVAILABLE ON  [Try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/) -->
 
-* [Java 开发工具包 (JDK) 1.7+](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
+* [Java 开发工具包 (JDK) 1.7+](https://docs.azure.cn/java/java-supported-jdk-runtime)
     
-    <!--CORRECT ON LINK TOGETHER ?view=azure-java-stable&preserve-view=true-->
+    <!--CORRECT ON https://docs.azure.cn/java/java-supported-jdk-runtime-->
     
     - 在 Ubuntu 上运行 `apt-get install default-jdk`，以便安装 JDK。  
 
@@ -230,4 +230,4 @@ ms.locfileid: "96431832"
 ## <a name="next-steps"></a>后续步骤
 * 若要了解 maven 包的详细信息以及 Bulk Executor Java 库的发行说明，请参阅 [Bulk Executor SDK 详细信息](sql-api-sdk-bulk-executor-java.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

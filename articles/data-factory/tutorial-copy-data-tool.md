@@ -1,28 +1,23 @@
 ---
 title: 使用“复制数据”工具将数据从 Azure Blob 存储复制到 SQL 数据库
 description: 创建一个 Azure 数据工厂，然后使用“复制数据”工具将数据从 Azure Blob 存储复制到 SQL 数据库。
-services: data-factory
-documentationcenter: ''
 author: WenJason
 ms.author: v-jay
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-origin.date: 06/08/2020
-ms.date: 09/21/2020
-ms.openlocfilehash: 5fb6d8065e059a328fadd2e3e0d5230844ced85d
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+origin.date: 02/18/2021
+ms.date: 03/15/2021
+ms.openlocfilehash: 44034397c59ff2c5fca71e1ff4d656b50f0c76cd
+ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432417"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102590032"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>使用“复制数据”工具，将数据从 Azure Blob 存储复制到 SQL 数据库
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在本教程中，我们将使用 Azure 门户创建数据工厂。 然后，使用“复制数据”工具创建一个管道，以便将数据从 Azure Blob 存储复制到 SQL 数据库。
 
@@ -37,7 +32,7 @@ ms.locfileid: "96432417"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅**：如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+* **Azure 订阅**：如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 * **Azure 存储帐户**，使用 Blob 存储作为 _源_ 数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)中的说明。
 * **Azure SQL 数据库**：使用 SQL 数据库作为 _接收器_ 数据存储。 如果没有 SQL 数据库，请参阅[创建 SQL 数据库](../azure-sql/database/single-database-create-quickstart.md)中的说明。
 
@@ -88,9 +83,9 @@ ms.locfileid: "96432417"
 
     如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 例如，使用名称 _**yourname**_**ADFTutorialDataFactory**。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
 1. 选择要在其中创建新数据工厂的 Azure **订阅**。
-1. 对于“资源组”，请执行以下步骤之一：
+1. 对于“资源组”，请执行以下步骤之一： 
 
-    a. 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
+    a. 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
 
     b. 选择“新建”，并输入资源组的名称。
     
@@ -98,7 +93,7 @@ ms.locfileid: "96432417"
 
 1. 在“版本”下选择“V2”作为版本。 
 1. 在“位置”下选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他位置和区域。
-1. 选择“创建” 。
+1. 选择“创建”。
 
 1. 创建完以后，会显示“数据工厂”主页。
 
@@ -131,7 +126,7 @@ ms.locfileid: "96432417"
 
     b. 单击“下一步”转到下一步骤。
 
-1. 在“文件格式设置”页面上，选中“第一行作为标题”复选框。 注意，该工具会自动检测列分隔符与行分隔符。 选择“**下一步**”。 还可以在此页中预览数据，以及查看输入数据的架构。
+1. 在“文件格式设置”页面上，选中“第一行作为标题”复选框。 注意，该工具会自动检测列分隔符与行分隔符。 选择“**下一页**”。 还可以在此页中预览数据，以及查看输入数据的架构。
 
     ![文件格式设置](./media/tutorial-copy-data-tool/file-format-settings-page.png)
 1. 在“目标数据存储”页上，完成以下步骤：

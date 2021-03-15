@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: media-services
 ms.topic: how-to
 origin.date: 08/31/2020
-ms.date: 12/14/2020
-ms.openlocfilehash: 8fee8c5013d51e0c265eac331d340d5e4241fb9d
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.date: 03/15/2021
+ms.openlocfilehash: 16bea7af8af44425f0fd09d09694bcbc5368617f
+ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97003866"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103211782"
 ---
 # <a name="how-to-create-an-overlay-with-media-encoder-standard"></a>如何使用 Media Encoder Standard 创建覆盖
 
@@ -54,4 +54,4 @@ ms.locfileid: "97003866"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用媒体服务编码时对视频进行子剪辑 - .NET](subclip-video-dotnet-howto.md)
+[!INCLUDE [transforms next steps](./includes/transforms-next-steps.md)]

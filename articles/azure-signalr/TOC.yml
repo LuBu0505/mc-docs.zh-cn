@@ -58,6 +58,18 @@
       items:
         - name: 正常关闭应用服务器。
           href: server-graceful-shutdown.md
+    - name: 安全性
+      items:
+        - name: 授权
+          items:
+            - name: 使用 Azure Active Directory 授予访问权限
+              href: authorize-access-azure-active-directory.md
+        - name: 身份验证
+          items:
+            - name: 通过应用程序进行身份验证
+              href: authenticate-application.md
+            - name: 使用托管标识进行身份验证
+              href: authenticate-managed-identity.md
     - name: 高可用性
       items:
         - name: 复原能力和灾难恢复
@@ -134,7 +146,7 @@
     - name: 常见问题解答
       href: signalr-resource-faq.md
     - name: SignalR 服务订阅级别限制
-      href: 'https://docs.azure.cn/azure-subscription-service-limits#signalr-service-limits'
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits
     - name: 定价
       href: 'https://www.azure.cn/pricing/details/signalr-service/'
     - name: StackOverflow

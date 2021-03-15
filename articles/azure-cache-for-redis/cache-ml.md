@@ -5,13 +5,13 @@ author: curib
 ms.author: v-junlch
 ms.service: cache
 ms.topic: conceptual
-ms.date: 12/28/2020
-ms.openlocfilehash: ef28a9ab6f218a0bb9ef6e40a961cabd853a7e22
-ms.sourcegitcommit: a37f80e7abcf3e42859d6ff73abf566efed783da
+ms.date: 03/09/2021
+ms.openlocfilehash: ace16267ce27d1be4bb57ac9be5a5305aceeca3a
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829365"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212687"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>使用 Azure Cache for Redis 将机器学习模型部署到 Azure Functions 
 
@@ -26,7 +26,7 @@ Azure Cache for Redis 具有极高的性能和可伸缩性 - 在与 Azure 机器
 ## <a name="prerequisites"></a>先决条件
 * Azure 订阅 - [创建一个](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区](../machine-learning/how-to-manage-workspace.md)一文。
-* [Azure CLI](/cli/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
+* [Azure CLI](/cli/install-azure-cli)。
 * 工作区中注册的已训练的机器学习模型。 如果没有模型，请使用[图像分类教程：训练模型](../machine-learning/tutorial-train-models-with-aml.md)来训练和注册模型。
 
 > [!IMPORTANT]
@@ -318,4 +318,3 @@ print(model_package.location)
 * 详细了解 [Azure Cache for Redis](./cache-overview.md)
 * [API 参考](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) 
 * 创建[使用 Azure Cache for Redis 的 Python 应用](./cache-python-get-started.md)
-

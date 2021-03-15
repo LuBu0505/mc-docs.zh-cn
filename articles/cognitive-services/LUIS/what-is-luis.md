@@ -7,15 +7,15 @@ ms.subservice: language-understanding
 ms.topic: overview
 author: Johnnytechn
 origin.date: 05/05/2020
-ms.date: 12/28/2020
+ms.date: 03/08/2021
 ms.author: v-johya
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 3607ed231a1ad0426dd6a08a49fd9747ef9e86a1
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: d20e5400b5d006ce0182a6c0b5d6e34a7263600c
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856886"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212249"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
 
@@ -70,7 +70,7 @@ LUIS 应用包含一个特定于域的自然语言模型。 可通过预构建�
 |`When does your store open?`|店铺营业时间和位置|开门|
 |`Schedule a meeting at 1pm with Bob in Distribution`|安排谈话|下午 1 点，何石|
 
-使用 [创作](https://dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f "创作") API 和/或 **LUIS 门户** 生成模型。 了解如何使用[门户](get-started-portal-build-app.md "portal")和 [SDK 客户端库](azure-sdk-quickstart.md "SDK 客户端库")生成内容。
+使用 [创作](https://dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f "创作") API 和/或 **LUIS 门户** 生成模型。 了解如何使用[门户](get-started-portal-build-app.md "portal")和 [SDK 客户端库](./client-libraries-rest-api.md?pivots=rest-api "SDK 客户端库")生成内容。
 
 ## <a name="step-2-get-the-query-prediction"></a>步骤 2：获取查询预测
 
@@ -130,7 +130,7 @@ LUIS 提供文本分析的功能，作为现有 LUIS 资源的一部分。 此�
 
 ## <a name="learn-with-the-quickstarts"></a>通过快速入门学习
 
-使用[门户](get-started-portal-build-app.md "portal")和 [SDK 客户端库](azure-sdk-quickstart.md "SDK 客户端库")的实际操作快速入门来了解 LUIS。
+使用[门户](get-started-portal-build-app.md "portal")和 [SDK 客户端库](./client-libraries-rest-api.md?pivots=rest-api "SDK 客户端库")的实际操作快速入门来了解 LUIS。
 
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>使用 Docker 容器进行本地部署

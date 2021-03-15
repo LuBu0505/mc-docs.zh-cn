@@ -4,15 +4,15 @@ description: 使用语言理解 (LUIS) 持续优化应用程序并改进其语�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/19/2020
+ms.date: 03/08/2021
 origin.date: 06/02/2020
 ms.author: v-johya
-ms.openlocfilehash: 706b4e0f150391cef33e2834ca7e718e9c98e510
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+ms.openlocfilehash: 4e5da51841b166a4311051d7fadb4f30766ea923
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472420"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212744"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>在 LUIS 门户中测试 LUIS 应用
 
@@ -121,7 +121,7 @@ ms.locfileid: "92472420"
 
 
 ## <a name="batch-testing"></a>批处理测试
-请参阅批处理测试[概念](luis-concept-batch-test.md)并了解陈述批量测试的[方法](luis-how-to-batch-test.md)。
+请参阅批处理测试[概念](./luis-how-to-batch-test.md)并了解陈述批量测试的[方法](luis-how-to-batch-test.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

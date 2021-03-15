@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.author: v-junlch
-ms.date: 02/01/2021
+ms.date: 03/11/2021
 ms.custom: mvc
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 7f634b62818a7106f3c4bb25e4acb1f124fb262c
-ms.sourcegitcommit: ef5fa52ac5e0e3881f72bd8b56fc73e49444ccc2
+ms.openlocfilehash: 169d9e3d07dc92886e5e4146463f5094e64c1839
+ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99540641"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103212267"
 ---
 # <a name="add-an-identity-provider-to-your-azure-active-directory-b2c-tenant"></a>向 Azure Active Directory B2C 租户添加标识提供者
 
