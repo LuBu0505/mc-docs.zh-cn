@@ -6,18 +6,18 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 origin.date: 02/08/2021
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/15/2021
 ms.testscope: yes
 ms.testdate: 03/01/2021
 ms.author: v-yeche
 ms.reviewer: sngun
 robots: noindex
-ms.openlocfilehash: 3c70e87fde8e989fcd1e89331d712db5faa4eb78
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 6f0bff017606a10ad3e48dadbd6faf249ec3ac17
+ms.sourcegitcommit: fb2fba1c106406553ed84b8652a915c823d9ab07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055738"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102996599"
 ---
 <!--Verified successfully on prerequisties-->
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>将 MongoDB 应用程序连接到 Azure Cosmos DB
@@ -82,5 +82,4 @@ Azure Cosmos DB 支持标准的 MongoDB 连接字符串 URI 格式，但要满�
 - 了解如何将 [Robo 3T](mongodb-robomongo.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
 - 通过 Azure Cosmos DB 的用于 MongoDB 的 API 来浏览 MongoDB [示例](mongodb-samples.md)。
 
-<!--Update_Description: new article about connect mongodb account experimental-->
-<!--NEW.date: 03/01/2021-->
+<!--Update_Description: update meta properties, wording update, update link-->
