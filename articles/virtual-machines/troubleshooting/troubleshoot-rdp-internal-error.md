@@ -9,16 +9,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 10/22/2018
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6f2741c48d2ca2f67378784b9cf6dbff730ac177
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: d400b9c7818218f639547180c1722beda1b6cf69
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104341"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054320"
 ---
 # <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>尝试通过远程桌面连接到 Azure VM 时发生内部错误
 
@@ -30,7 +30,7 @@ ms.locfileid: "93104341"
 
 - RDP 内部错误
 - 发生了内部错误
-- 此计算机无法连接到远程计算机。 请再次尝试连接。 如果问题持续出现，请与远程计算机的所有者或网络管理员联系。
+- 此计算机无法连接到远程计算机。 请再次尝试连接。 如果问题持续出现，请与远程计算机的所有者或网络管理员联系
 
 ## <a name="cause"></a>原因
 
@@ -43,12 +43,14 @@ ms.locfileid: "93104341"
 
 ## <a name="solution"></a>解决方案
 
-在执行这些步骤之前，请创建受影响 VM 的 OS 磁盘的快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
+若要排查此问题，请完成以下部分中的步骤。 在开始前，请拍摄受影响的 VM 的 OS 磁盘的快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
 
-若要排查此问题，可通过将 VM 的 OS 磁盘附加到恢复 VM 来[修复 VM 脱机](#repair-the-vm-offline)。
+### <a name="check-rdp-security"></a>检查 RDP 安全性
+
+首先，检查 RDP 端口 3389 的网络安全组是否不安全（处于打开状态）。 如果它不安全，并且显示 \* 作为入站的源 IP 地址，则将 RDP 端口限制为特定用户的 IP 地址，然后测试 RDP 访问。 如果此操作失败，请完成下一部分中的步骤。
 
 <!--Not Available on use the Serial Console or-->
-<!-- Not Available on ### Use Serial control-->
+<!--NOT AVAILABLE on ### Use Serial control-->
 ### <a name="repair-the-vm-offline"></a>修复 VM 脱机
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>将 OS 磁盘附加到恢复 VM
@@ -130,7 +132,7 @@ ms.locfileid: "93104341"
     REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWO
     ```
 
-3. 如果该密钥不存在或者其值为 **0** ，请运行以下脚本来启用该协议：
+3. 如果该密钥不存在或者其值为 **0**，请运行以下脚本来启用该协议：
 
     ```console
     REM Enable TLS 1.0, TLS 1.1 and TLS 1.2
@@ -168,4 +170,4 @@ ms.locfileid: "93104341"
 
 5. [拆离 OS 磁盘并重新创建 VM](./troubleshoot-recovery-disks-portal-windows.md)，然后检查问题是否得以解决。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

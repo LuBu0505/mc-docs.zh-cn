@@ -9,16 +9,16 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 origin.date: 11/04/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 01/04/2021
 ms.author: v-yeche
-ms.openlocfilehash: 8d875a4a1296ea15bdf133c59166fc483b4041d0
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 5b29a2b0acc28fcc5b0cc793b181683eb1eb4fd9
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857607"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055164"
 ---
 <!--Verified successfully-->
 # <a name="windows-stop-error---0x0000007e-system-thread-exception-not-handled"></a>Windows 停止错误 - 0x0000007E 系统线程异常未处理
@@ -37,6 +37,9 @@ ms.locfileid: "97857607"
 
 ## <a name="solution"></a>解决方案
 
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
+
 若要解决此问题，需要先收集故障的内存转储文件，然后将文件发送到 Azure 支持。 如需收集转储文件，请遵循后面两个部分中的说明。
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>将 OS 磁盘附加到新的修复 VM
@@ -50,12 +53,11 @@ ms.locfileid: "97857607"
 1. 查找 memory.dmp 文件，然后[提交附加该内存转储文件的支持工单](https://support.azure.cn/support/support-azure/)。
 1. 如果在查找 memory.dmp 文件时遇到问题，请按照指南[使用不可屏蔽的中断 (NMI) 调用来生成故障转储文件](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump)。
 
-<!--Not Available on [NMI calls in Azure Serial Console](./serial-console-windows.md#use-the-serial-console-for-nmi-calls)-->
+<!--NOT AVAILABLE ON [NMI calls in Azure Serial Console](./serial-console-windows.md#use-the-serial-console-for-nmi-calls)-->
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [对 Azure 虚拟机启动错误进行故障排除](./boot-error-troubleshoot.md)
 
-<!-- Update_Description: new article about windows stop error system thread exception not handled -->
-<!--NEW.date: 01/04/2021-->
+<!--Update_Description: update meta properties, wording update, update link-->

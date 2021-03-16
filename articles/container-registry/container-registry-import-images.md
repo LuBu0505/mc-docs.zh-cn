@@ -3,16 +3,16 @@ title: 导入容器映像
 description: 使用 Azure API 将容器映像导入到 Azure 容器注册表中，无需运行 Docker 命令。
 ms.services: container-registry
 ms.topic: article
-origin.date: 09/18/2020
+origin.date: 01/15/2021
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 03/01/2021
 ms.author: v-yeche
-ms.openlocfilehash: 0daeb4bfc98e5017eb2140f5716d2f789ff7ef98
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 81ec6d8056c49aac7b4d7c28f931e7567c4a9222
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004056"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055319"
 ---
 <!--Verify sucessfully except the different subscription-->
 # <a name="import-container-images-to-a-container-registry"></a>向容器注册表导入容器映像
@@ -43,6 +43,11 @@ Azure 容器注册表可灵活应对许多常见方案，以便从现有注册�
 > 如果需要在多个 Azure 区域中分布相同的容器映像，则 Azure 容器注册表还支持[异地复制](container-registry-geo-replication.md)。 通过对注册表（需要高级服务层）进行异地复制，可以使用单个注册表的相同映像和标记名称为多个区域提供服务。
 >
 
+> [!IMPORTANT]
+> 自 2021 年 1 月起，已引入对两个 Azure 容器注册表的映像导入的更改：
+> * 如果要向/从网络受限的 Azure 容器注册表导入内容，需要受限的注册表[允许受信任的服务进行访问](allow-access-trusted-services.md)，以绕过该网络。 默认情况下，此设置处于启用状态，允许导入。 如果刚创建的具有专用终结点或注册表防火墙规则的注册表中未启用该设置，导入将失败。 
+> * 在用作导入源或目标的现有网络受限 Azure 容器注册表中，可以选择且建议选择启用此网络安全功能。
+
 ## <a name="prerequisites"></a>先决条件
 
 如果还没有 Azure 容器注册表，请创建注册表。 有关步骤，请参阅[快速入门：使用 Azure CLI 创建专用容器注册表](container-registry-get-started-azure-cli.md)。
@@ -70,13 +75,15 @@ az acr repository show-manifests \
   --repository hello-world
 ```
 
-下面的示例从 Docker 中心中的 `tensorflow` 存储库导入公共映像：
+如果有 [Docker Hub 帐户](https://www.docker.com/pricing)，则建议从 Docker Hub 导入映像时使用凭据。 将 Docker Hub 用户名和密码，或者[个人访问令牌](https://docs.docker.com/docker-hub/access-tokens/)作为参数传递到 `az acr import`。 以下示例使用 Docker Hub 凭据从 Docker Hub 中的 `tensorflow` 存储库导入公共映像：
 
 ```azurecli
 az acr import \
   --name myregistry \
   --source dockerhub.azk8s.cn/tensorflow/tensorflow:latest-gpu \
   --image tensorflow:latest-gpu
+  --username <Docker Hub user name>
+  --password <Docker Hub token>
 ```
 
 ### <a name="import-from-azure-container-registry"></a>从 Azure 容器注册表导入
@@ -99,6 +106,8 @@ az acr import \
 * 注册表可以位于同一 Active Directory 租户的同一或不同 Azure 订阅中。
 
 * 可能会禁用对源注册表的[公共访问](container-registry-access-selected-networks.md#disable-public-network-access)。 如果禁用了公共访问，请通过资源 ID 而不是注册表登录服务器名称指定源注册表。
+
+* 如果源注册表和/或目标注册表具有专用终结点，或者注册表防火墙规则适用，请确保受限注册表[允许受信任的服务](allow-access-trusted-services.md)访问网络。
 
 ### <a name="import-from-a-registry-in-the-same-subscription"></a>从同一订阅的注册表中导入
 
@@ -190,4 +199,4 @@ az acr import \
 [az-acr-import]: https://docs.azure.cn/cli/acr#az_acr_import
 [azure-cli]: https://docs.azure.cn/cli/install-azure-cli
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

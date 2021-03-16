@@ -6,17 +6,17 @@ ms.topic: tutorial
 ms.workload: infrastructure
 origin.date: 11/29/2018
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 9df9ac29bd9474320c268488403f9ccc7aa748ed
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: 9dedd284630bbf49a6c72f713f12622134b42b7a
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570594"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055274"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>教程 - 使用自定义脚本扩展将应用程序部署到 Azure 中的 Windows 虚拟机
 
@@ -29,9 +29,10 @@ ms.locfileid: "98570594"
 
 ## <a name="launch-azure-local-shell"></a>启动 Azure 本地 Shell
 
-打开 Azure Powershell 控制台，并以管理员权限运行以下脚本。
+打开 Azure Powershell 控制台，并以管理员权限运行下面列出的脚本。
 
 <!--Not Available on Azure Cloud Shell-->
+<!--NOT AVAILABLE ON [https://shell.azure.com/powershell](https://shell.azure.com/powershell)-->
 
 ## <a name="custom-script-extension-overview"></a>自定义脚本扩展概述
 自定义脚本扩展在 Azure VM 上下载和执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或 GitHub 下载脚本，或者在扩展运行时会脚本提供给 Azure 门户。
@@ -41,7 +42,7 @@ ms.locfileid: "98570594"
 自定义脚本扩展适用于 Windows 和 Linux VM。
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
-使用 [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) 设置 VM 的管理员用户名和密码：
+使用 [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential) 设置 VM 的管理员用户名和密码：
 
 <!--Correct on China East 2-->
 
@@ -96,7 +97,7 @@ Get-AzPublicIPAddress `
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你在 VM 上自动执行了 IIS 安装。 你已了解如何：
+在本教程中，你在 VM 上自动执行了 IIS 安装。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用自定义脚本扩展安装 IIS
@@ -108,4 +109,4 @@ Get-AzPublicIPAddress `
 > [!div class="nextstepaction"]
 > [创建自定义 VM 映像](./tutorial-custom-images.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

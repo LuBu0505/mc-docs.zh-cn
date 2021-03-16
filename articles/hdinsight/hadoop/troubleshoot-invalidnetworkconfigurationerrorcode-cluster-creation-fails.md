@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: v-yiso
 origin.date: 01/22/2020
 ms.date: 03/02/2020
-ms.openlocfilehash: be73a76448f51d0b0bc83c6a5dace022d3933d8b
-ms.sourcegitcommit: 3a8a7d65d0791cdb6695fe6c2222a1971a19f745
+ms.openlocfilehash: 20b6c3ba6f807f6440dd9ec93703ee7badcd3c51
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516659"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196465"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>在 Azure HDInsight 中创建群集失败并出现 InvalidNetworkConfigurationErrorCode
 
@@ -60,7 +60,7 @@ Azure 存储和 SQL 没有固定的 IP 地址，因此，我们需要允许与�
 
 * 如果群集使用[网络安全组 (NSG)](../../virtual-network/virtual-network-vnet-plan-design-arm.md)。
 
-    转到 Azure 门户，并找到与其中部署了群集的子网关联的 NSG。 在“出站安全规则”部分，允许不受限制地对 Internet 进行出站访问（请注意，此处的**优先级**编号越小，表示优先级越高）。**** 另外，在“子网”部分确认此 NSG 是否已应用到群集子网。****
+    转到 Azure 门户，并找到与其中部署了群集的子网关联的 NSG。 在“出站安全规则”部分，允许不受限制地对 Internet 进行出站访问（请注意，此处的 **优先级** 编号越小，表示优先级越高）。 另外，在“子网”部分确认此 NSG 是否已应用到群集子网。
 
 * 如果群集使用[用户定义的路由 (UDR)](../../virtual-network/virtual-networks-udr-overview.md)。
 
@@ -134,6 +134,13 @@ hostname -f
 nslookup <headnode_fqdn> (e.g.nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.chinacloudapp.cn)
 dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn0-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.chinacloudapp.cn)
 ```
+### <a name="cause"></a>原因
+
+此 `InvalidNetworkConfigurationErrorCode` 错误代码的另一个原因可能是在 PowerShell 或 Azure Runbook 中使用了已弃用的参数 `EnableVmProtection`。
+
+### <a name="resolution"></a>解决方法
+
+使用 `Get-AzVirtualNetwork` 的有效参数，如 [Az PowerShell SDK](https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvirtualnetwork) 中所述
 
 ---
 
@@ -141,4 +148,4 @@ dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn0-hditest.5h6lujo4
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
-* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.cn/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”****，或打开“帮助 + 支持”**** 中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 在 Microsoft Azure 订阅中可以访问订阅管理和计费支持；通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。
+* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.cn/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”  ，或打开“帮助 + 支持”  中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中带有对订阅管理和计费支持的访问权限，技术支持通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供。

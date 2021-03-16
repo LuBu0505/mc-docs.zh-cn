@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 03/01/2021
 ms.author: v-tawe
-ms.openlocfilehash: b54805ef30a8f423647cbf8dfd6498281ddc12ee
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: d9d59d7bb2563fc89ab91e34a0c38171e39e094c
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579601"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196648"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>安装或卸载 Azure IoT Edge for Linux
 
@@ -32,7 +32,7 @@ ms.locfileid: "99579601"
 
 * Linux 设备
 
-  具有 X64、ARM32 或 ARM64 Linux 设备。 Microsoft 提供了适用于 Ubuntu Server 16.04、Ubuntu Server 18.04 和 Raspberry Pi OS Stretch 操作系统的安装包。
+  具有 X64、ARM32 或 ARM64 Linux 设备。 Microsoft 提供了适用于 Ubuntu Server 18.04 和 Raspberry Pi OS Stretch 操作系统的安装包。
 
   有关生产方案目前支持哪些操作系统的最新信息，请参阅 [Azure IoT Edge 支持的系统](support.md#operating-systems)
 
@@ -42,12 +42,6 @@ ms.locfileid: "99579601"
 * 准备设备以访问 Microsoft 安装包。
 
   安装与设备操作系统匹配的存储库配置。
-
-  * **Ubuntu Server 16.04**：
-
-    ```bash
-    curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
-    ```
 
   * **Ubuntu Server 18.04**：
 

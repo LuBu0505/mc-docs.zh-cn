@@ -9,16 +9,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 origin.date: 10/22/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 01/04/2021
 ms.author: v-yeche
-ms.openlocfilehash: 4e71b702be14b5775d5f8419c3b49d3e324a7efb
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 52812a26b87aeb1ae1e112de8d947c27ec71c6a8
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857596"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055166"
 ---
 <!--Verified successfully-->
 # <a name="vm-is-unresponsive-while-waiting-for-the-local-session-manager-service"></a>VM 在等待本地会话管理器服务时无响应
@@ -37,6 +37,9 @@ ms.locfileid: "97857596"
 
 ## <a name="solution"></a>解决方案
 
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
+
 在某些情况下，只需等待进程完成即可解决问题。 如果 VM 未响应并且停留在等待屏幕上的时间超过一小时，则你应当收集内存转储，并联系 Azure 支持部门。
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>将 OS 磁盘附加到一个新的修复 VM
@@ -46,16 +49,15 @@ ms.locfileid: "97857596"
 
 ### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>找到转储文件并提交支持票证
 
-1. 在修复 VM 上，转到附加的 OS 磁盘中的 Windows 文件夹。 例如，如果分配给附加的 OS 磁盘的驱动器号标记为 F，请转到 `F:\Windows`。
-1. 查找 memory.dmp 文件，然后[提交附加该内存转储文件的支持票证](https://support.azure.cn/support/support-azure/)。
-1. 如果在查找 memory.dmp 文件时遇到问题，请按照指南[使用不可屏蔽中断 (NMI) 调用来生成故障转储文件](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump)。
+1. 在修复 VM 上，转到附加的 OS 磁盘中的 Windows 文件夹。 例如，如果分配给附加的 OS 磁盘的驱动器号为 F，请转到 `F:\Windows`。
+1. 查找 memory.dmp 文件，然后[提交附加该内存转储文件的支持工单](https://support.azure.cn/support/support-azure/)。
+1. 如果在查找 memory.dmp 文件时遇到问题，请按照指南[使用不可屏蔽的中断 (NMI) 调用来生成故障转储文件](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump)。
 
-<!--Not Available on  [NMI calls in Azure Serial Console](./serial-console-windows.md#use-the-serial-console-for-nmi-calls)-->
+    <!--NOT AVAILABLE ON [NMI calls in Azure Serial Console](./serial-console-windows.md#use-the-serial-console-for-nmi-calls)-->
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [排查 Azure 虚拟机启动错误](boot-error-troubleshoot.md)
+> [对 Azure 虚拟机启动错误进行故障排除](boot-error-troubleshoot.md)
 
-<!-- Update_Description: new article about vm unresponsive wait local session manager -->
-<!--NEW.date: 01/04/2021-->
+<!--Update_Description: update meta properties, wording update, update link-->

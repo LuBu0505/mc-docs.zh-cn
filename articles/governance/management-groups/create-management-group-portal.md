@@ -1,16 +1,17 @@
 ---
 title: 使用门户创建管理组
 description: 本快速入门使用 Azure 门户创建管理组，将资源整理到资源层次结构中。
-origin.date: 08/31/2020
-ms.date: 09/15/2020
-ms.author: v-tawe
+origin.date: 02/05/2021
+author: rockboyfor
+ms.date: 03/01/2021
+ms.author: v-yeche
 ms.topic: quickstart
-ms.openlocfilehash: d86e349cbf3ee85721e853af2caa96eae472dc64
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.openlocfilehash: 76437b308738a689c6c22ff6baa35156292e65d2
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431119"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196554"
 ---
 # <a name="quickstart-create-a-management-group"></a>快速入门：创建管理组
 
@@ -22,7 +23,7 @@ ms.locfileid: "96431119"
 
 - 如果没有 Azure 订阅，请在开始前创建一个[试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)帐户。
 
-- 如果未启用[层次结构保护](./how-to/protect-resource-hierarchy.md#setting---require-authorization)，则租户中的任何 Azure AD 用户即使未分配有管理组写入权限，也可创建管理组。 这个新的管理组成为根管理组或[默认管理组](./how-to/protect-resource-hierarchy.md#setting---default-management-group)的子级，并且创建者分配有“所有者”角色。 管理组服务支持此功能，因此不需要在根级别分配角色。 创建根管理组时，用户没有访问权限。 为避免在查找 Azure AD 全局管理员以开始使用管理组方面遇到阻碍，我们允许在根级别创建初始管理组。
+- 如果未启用[层次结构保护](./how-to/protect-resource-hierarchy.md#setting---require-authorization)，则租户中的任何 Azure AD 用户即使未分配有管理组写入权限，也可创建管理组。 这个新的管理组将成为根管理组的子级或[默认管理组](./how-to/protect-resource-hierarchy.md#setting---default-management-group)，并将为创建者分配“所有者”角色。 管理组服务允许此功能，因此不需要在根级别分配角色。 创建根管理组时，用户没有访问权限。 为避免在查找 Azure AD 全局管理员以开始使用管理组方面遇到阻碍，我们允许在根级别创建初始管理组。
 
 ### <a name="create-in-portal"></a>在门户中创建
 
@@ -34,16 +35,16 @@ ms.locfileid: "96431119"
 
 1. 选择“添加管理组”。
 
-   :::image type="content" source="./media/main.png" alt-text="显示子管理组和订阅的“管理组”页的屏幕截图。" border="false":::
+    :::image type="content" source="./media/main.png" alt-text="显示子管理组和订阅的“管理组”页的屏幕截图。" border="false":::
 
 1. 选择“新建”，然后填写管理组 ID 字段。
 
-   - “管理组 ID”是用来在此管理组上提交命令的目录唯一标识符。 此标识符一旦创建便无法再编辑，因为它用来在整个 Azure 系统中标识这个组。 [根管理组](./overview.md#root-management-group-for-each-directory)是自动创建的，其 ID 为 Azure Active Directory ID。 对于所有其他管理组，请分配唯一的 ID。
-   - 显示名称字段是在 Azure 门户中显示的名称。 创建管理组时，单独的显示名称是一个可选字段，并且可以随时更改。
+    - “管理组 ID”是用来在此管理组上提交命令的目录唯一标识符。 此标识符一旦创建便无法再编辑，因为它用来在整个 Azure 系统中标识这个组。 [根管理组](./overview.md#root-management-group-for-each-directory)是自动创建的，其 ID 为 Azure Active Directory ID。 对于所有其他管理组，请分配唯一的 ID。
+    - 显示名称字段是在 Azure 门户中显示的名称。 创建管理组时，单独的显示名称是一个可选字段，并且可以随时更改。
 
-   :::image type="content" source="./media/create_context_menu.png" alt-text="用于创建新管理组的“添加管理组”选项的屏幕截图。":::
+    :::image type="content" source="./media/create_context_menu.png" alt-text="用于创建新管理组的“添加管理组”选项的屏幕截图。":::
 
-1. 选择“保存”。
+1. 选择“保存” 。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -60,7 +61,9 @@ ms.locfileid: "96431119"
 
 在本快速入门中，你创建了一个管理组来整理资源层次结构。 管理组可以包含订阅或其他管理组。
 
-若要详细了解管理组以及如何管理资源层次结构，请继续学习：
+要详细了解管理组以及如何管理资源层次结构，请继续执行以下操作：
 
 > [!div class="nextstepaction"]
-> 使用管理组管理资源
+> [使用管理组管理资源](./manage.md)
+
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -1,16 +1,17 @@
 ---
 title: 如何创建适用于 Windows 的来宾配置策略
 description: 了解如何创建适用于 Windows 的 Azure Policy 来宾配置策略。
-ms.author: v-tawe
 origin.date: 08/17/2020
-ms.date: 01/14/2021
+author: rockboyfor
+ms.date: 03/01/2021
+ms.author: v-yeche
 ms.topic: how-to
-ms.openlocfilehash: cdd0e514265bbca047270b839fe1bdebd92c1f5a
-ms.sourcegitcommit: 93063f9b8771b8e895c3bcdf218f5e3af14ef537
+ms.openlocfilehash: 061f83785072c48ed1cd8d262b38dc9fbc2be888
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98193271"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196638"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>如何创建适用于 Windows 的来宾配置策略
 
@@ -43,6 +44,8 @@ ms.locfileid: "98193271"
 
 该模块可以安装在运行 Windows、macOS 或 Linux 并装有 PowerShell 6.2 或更高版本的计算机本地，或者与 [Azure PowerShell Core Docker 映像](https://hub.docker.com/r/azuresdk/azure-powershell-core)一起安装。
 
+<!--NOT AVAILABLE ON [Azure Cloud Shell](https://shell.azure.com)-->
+
 > [!NOTE]
 > Linux 上尚不支持编译配置。
 
@@ -58,7 +61,8 @@ ms.locfileid: "98193271"
 
 - PowerShell 6.2 或更高版本。 若尚未安装，请遵循[这些说明](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)。
 - Azure PowerShell 1.5.0 或更高版本。 若尚未安装，请遵循[这些说明](https://docs.microsoft.com/powershell/azure/install-az-ps)。
-  - 只有 Az 模块“Az.Accounts”和“Az.Resources”是必需的。
+    
+    - 只有 Az 模块“Az.Accounts”和“Az.Resources”是必需的。
 
 ### <a name="install-the-module"></a>安装模块
 
@@ -66,17 +70,17 @@ ms.locfileid: "98193271"
 
 1. 在 PowerShell 提示符下，运行以下命令：
 
-   ```powershell
-   # Install the Guest Configuration DSC resource module from PowerShell Gallery
-   Install-Module -Name GuestConfiguration
-   ```
+    ```powershell
+    # Install the Guest Configuration DSC resource module from PowerShell Gallery
+    Install-Module -Name GuestConfiguration
+    ```
 
 1. 验证模块是否已导入：
 
-   ```powershell
-   # Get a list of commands for the imported GuestConfiguration module
-   Get-Command -Module 'GuestConfiguration'
-   ```
+    ```powershell
+    # Get a list of commands for the imported GuestConfiguration module
+    Get-Command -Module 'GuestConfiguration'
+    ```
 
 ## <a name="guest-configuration-artifacts-and-policy-for-windows"></a>适用于 Windows 的来宾配置项目和策略
 
@@ -233,7 +237,7 @@ AuditBitLocker ./Config
 
 运行下面的命令，以使用上一步中给出的配置来创建包：
 
-```azurepowershell
+```powershell
 New-GuestConfigurationPackage `
   -Name 'AuditBitlocker' `
   -Configuration './Config/AuditBitlocker.mof'
@@ -251,7 +255,7 @@ New-GuestConfigurationPackage `
 
 运行下面的命令，以测试由上一步创建的包：
 
-```azurepowershell
+```powershell
 Test-GuestConfigurationPackage `
   -Path ./AuditBitlocker.zip
 ```
@@ -263,6 +267,16 @@ New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./Config/Audit
 ```
 
 下一步是将文件发布到 Azure Blob 存储。 命令 `Publish-GuestConfigurationPackage` 需要 `Az.Storage` 模块。
+
+`Publish-GuestConfigurationPackage` cmdlet 的参数：
+
+- **Path**：要发布的包的位置
+- **ResourceGroupName**：存储帐户所在的资源组的名称
+- **StorageAccountName**：应在其中发布包的存储帐户的名称
+- **StorageContainerName**：（默认：guestconfiguration）存储帐户中的存储容器的名称
+- **Force**：覆盖同名存储帐户中的现有包
+
+以下示例将包发布到名为“guestconfiguration”的存储容器。
 
 ```powershell
 Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName myResourceGroupName -StorageAccountName myStorageAccountName
@@ -284,7 +298,7 @@ Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName 
 
 下面的示例在自定义策略包的指定路径中创建策略定义：
 
-```azurepowershell
+```powershell
 New-GuestConfigurationPolicy `
     -ContentUri 'https://storageaccountname.blob.core.chinacloudapi.cn/packages/AuditBitLocker.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' `
     -DisplayName 'Audit BitLocker Service.' `
@@ -305,13 +319,13 @@ cmdlet 输出中会返回一个对象，其中包含策略文件的计划显示�
 
 必须有权在 Azure 中创建策略，才能运行发布命令。 [Azure Policy 概述](../overview.md)页中收录了具体的授权要求。 最合适的内置角色是“资源策略参与者”。
 
-```azurepowershell
+```powershell
 Publish-GuestConfigurationPolicy -Path '.\policyDefinitions'
 ```
 
 `Publish-GuestConfigurationPolicy` cmdlet 接受来自 PowerShell 管道的路径。 此功能意味着可以创建策略文件，并在一组管道命令中发布它们。
 
-```azurepowershell
+```powershell
 New-GuestConfigurationPolicy `
  -ContentUri 'https://storageaccountname.blob.core.chinacloudapi.cn/packages/AuditBitLocker.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' `
   -DisplayName 'Audit BitLocker service.' `
@@ -415,7 +429,7 @@ New-GuestConfigurationPolicy
 
 在开发环境中安装所需模块：
 
-```azurepowershell
+```powershell
 # Update PowerShellGet if needed to allow installing PreRelease versions of modules
 Install-Module PowerShellGet -Force
 
@@ -506,7 +520,7 @@ wmi_service -out ./Config
 
 运行下面的命令，以使用上一步中给出的配置来创建包：
 
-```azurepowershell
+```powershell
 New-GuestConfigurationPackage `
   -Name 'wmi_service' `
   -Configuration './Config/wmi_service.mof' `
@@ -568,3 +582,5 @@ $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 - 了解如何使用[来宾配置](../concepts/guest-configuration.md)审核 VM。
 - 了解如何[以编程方式创建策略](./programmatically-create.md)。
 - 了解如何[获取符合性数据](./get-compliance-data.md)。
+
+<!--Update_Description: update meta properties, wording update, update link-->

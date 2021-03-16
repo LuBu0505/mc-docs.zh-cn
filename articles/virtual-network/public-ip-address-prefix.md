@@ -3,8 +3,7 @@ title: Azure 公共 IP 前缀
 description: 了解 Azure 公共 IP 前缀的涵义以及如何借助该前缀向资源分配可预测的公共 IP 地址。
 services: virtual-network
 documentationcenter: na
-manager: digimobile
-editor: ''
+manager: KumudD
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
@@ -15,45 +14,45 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 07/29/2020
 author: rockboyfor
-ms.date: 10/05/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: 10/05/2020
 ms.author: v-yeche
-ms.openlocfilehash: 28021d1f649ad4a2db3a0ced7487bf16915272e8
-ms.sourcegitcommit: 29a49e95f72f97790431104e837b114912c318b4
+ms.openlocfilehash: 55fe02c536f6af9c7877a528192016caf30c9940
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91564592"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053806"
 ---
-# <a name="public-ip-address-prefix"></a>公共 IP 地址前缀
+# <a name="public-ip-prefix"></a>公共 IP 前缀
 
-公共 IP 地址前缀是 Azure 中预留的 IP 地址范围。 Azure 根据你指定的数量为你的订阅分配一个连续的地址范围。 
+公共 IP 前缀是 Azure 中预留的 IP 地址范围。 Azure 根据你指定的数量为你的订阅分配一个连续的地址范围。 
 
 <!--MOONCAKE: CUSTOMIZE WITH China East region IP-->
 
-如果不熟悉公共地址，请参阅[公共 IP 地址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。
+如果不熟悉公共地址，请参阅[公共 IP 地址](./public-ip-addresses.md#public-ip-addresses)。
 
 公共 IP 地址是从各 Azure 区域的地址池分配的。 可[下载](https://www.microsoft.com/download/confirmation.aspx?id=57062) Azure 在每个区域使用的范围列表。 例如，40.72.128.0/18 是 Azure 在中国东部区域中使用的 100 多个范围之一。 该范围包括从 40.72.128.1 到 40.72.191.254 的可用地址。
 
 <!--MOONCAKE correct on 40.72.128.0/18-->
 <!--MOONCAKE correct on 40.72.128.1 - 40.72.191.254-->
 
-可通过指定一个名称和希望前缀包括的地址数，在 Azure 区域和订阅中创建公共 IP 地址前缀。 
+可通过指定一个名称和希望前缀包括的地址数，在 Azure 区域和订阅中创建公共 IP 前缀。 
 
 公共 IP 地址范围将分配有你选择的前缀。 如果创建了前缀 /28，Azure 将从其范围之一提供16个 IP 地址。
 
 除非创建范围，否则你不会知道 Azure 将分配哪个范围给你，但这些地址是连续的。 
 
-公共 IP 地址前缀会产生费用，有关详细信息，请参阅[公共 IP 地址定价](https://www.azure.cn/pricing/details/reserved-ip-addresses/)。
+公共 IP 前缀会产生费用，有关详细信息，请参阅[公共 IP 地址定价](https://www.azure.cn/pricing/details/ip-addresses/)。
 
-## <a name="why-create-a-public-ip-address-prefix"></a>为什么要创建公共 IP 地址前缀？
+## <a name="why-create-a-public-ip-prefix"></a>为什么创建公共 IP 前缀？
 
 创建公共 IP 地址资源时，Azure 会从该区域中使用的任何一个范围分配可用的公共 IP 地址。 
 
 在 Azure 分配 IP 地址之前，你不会知道确切的 IP。 此过程可能会在你创建允许特定 IP 地址的防火墙规则时造成问题。 对于添加的每个 IP 地址，必须添加相应的防火墙规则。
 
-从公共 IP 地址前缀向资源分配地址时，无需防火墙规则更新。 整个范围将添加到规则。
+从公共 IP 前缀向资源分配地址时，无需更新防火墙规则。 整个范围将添加到规则。
 
 ## <a name="benefits"></a>优点
 
@@ -78,17 +77,14 @@ ms.locfileid: "91564592"
 
 - 不能指定前缀的 IP 地址。 Azure 将根据你指定的大小提供前缀的 IP 地址。
 - 默认情况下，可以创建最多 16 个 IP 地址的前缀或默认前缀 /28。 查看[网络限制增加请求](https://support.azure.cn/support/support-azure/)和 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)以获取详细信息。
-
-    <!--Not Available on azure-portal/supportability/networking-quota-requests-->
-
 - 创建前缀后，无法更改该范围。
-- 仅使用标准 SKU 创建的静态公共 IP 地址可从前缀范围进行分配。 若要详细了解公共 IP 地址 SKU，请参阅[公共 IP 地址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。
+- 仅使用标准 SKU 创建的静态公共 IP 地址可从前缀范围进行分配。 若要详细了解公共 IP 地址 SKU，请参阅[公共 IP 地址](./public-ip-addresses.md#public-ip-addresses)。
 - 范围中的地址只能分配到 Azure 资源管理器资源。 这些地址不能分配到经典部署模型中的资源。
 - 从该前缀创建的所有公共 IP 地址都必须存在于该前缀所在的 Azure 区域和订阅中。 地址必须分配给同一区域和订阅中的资源。
 - 如果前缀中的任何地址被分配到与某个资源关联的公共 IP 地址资源，则无法删除该前缀。 首先应取消关联所有公共 IP 地址资源，这些资源通过前缀分配有 IP 地址。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建](manage-public-ip-address-prefix.md)公共 IP 地址前缀
+- [创建](manage-public-ip-address-prefix.md)公共 IP 前缀
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

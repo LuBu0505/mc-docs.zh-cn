@@ -2,16 +2,16 @@
 title: 模板函数 - 部署
 description: 介绍可在 Azure 资源管理器模板（ARM 模板）中使用的用于检索部署信息的函数。
 ms.topic: conceptual
-origin.date: 11/18/2020
+origin.date: 01/27/2021
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 03/01/2021
 ms.author: v-yeche
-ms.openlocfilehash: bfdc499c922fe1d9386d95e5dd8fe89c56bf1268
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 7c47c1411bcf059516deab015952d148313b1775
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022278"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054338"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM 模板的部署函数
 
@@ -37,6 +37,7 @@ ms.locfileid: "98022278"
 
 此函数返回部署期间传递的对象。 返回的对象中的属性因以下情况而异：
 
+* 部署模板或模板规格。
 * 你部署的模板是本地文件，还是通过 URI 访问的远程文件。
 * 你是部署到资源组，还是部署到其他作用域之一（[Azure 试用版订阅](deploy-to-subscription.md)、[管理组](deploy-to-management-group.md)或[租户](deploy-to-tenant.md)）。
 
@@ -70,6 +71,31 @@ ms.locfileid: "98022278"
   "properties": {
     "templateLink": {
       "uri": ""
+    },
+    "template": {
+      "$schema": "",
+      "contentVersion": "",
+      "parameters": {},
+      "variables": {},
+      "resources": [],
+      "outputs": {}
+    },
+    "templateHash": "",
+    "parameters": {},
+    "mode": "",
+    "provisioningState": ""
+  }
+}
+```
+
+将模板规格部署到资源组时：该函数返回以下格式：
+
+```json
+{
+  "name": "",
+  "properties": {
+    "templateLink": {
+      "id": ""
     },
     "template": {
       "$schema": "",
@@ -305,7 +331,7 @@ output environmentOutput object = environment()
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| parameterName |是 |string |要返回的参数名称。 |
+| parameterName |是 |字符串 |要返回的参数名称。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -435,7 +461,7 @@ output crossOutput string = crossParameter
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | stringOutput | String | 选项 1 |
 | intOutput | int | 1 |
@@ -588,4 +614,4 @@ output exampleOutput4 object = var4
 
 * 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

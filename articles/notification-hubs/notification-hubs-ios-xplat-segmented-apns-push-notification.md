@@ -10,17 +10,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-origin.date: 11/07/2019
-ms.date: 09/02/2020
+ms.date: 02/25/2021
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: 46aff73c6ed6240c6003a682edaceb873f578253
-ms.sourcegitcommit: 4f936264ddb502ff61623892f57067e935ef6e42
+ms.openlocfilehash: 76012810488b80c5da6401382355457056dedf4e
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89316467"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196783"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定 iOS 设备发送推送通知
 
@@ -42,7 +41,7 @@ ms.locfileid: "89316467"
 
 ## <a name="prerequisites"></a>先决条件
 
-本主题基于以下教程中创建的应用：[教程：使用 Azure 通知中心向 iOS 应用推送通知][get-started]。 在开始学习本教程之前，必须已完成[教程：使用 Azure 通知中心向 iOS 应用推送通知][get-started]。
+本主题基于在[教程：使用 Azure 通知中心将通知推送到 iOS 应用][入门指南]中创建的应用。 在开始本教程前，必须已完成[教程：使用 Azure 通知中心将通知推送到 iOS 应用][入门指南]。
 
 ## <a name="add-category-selection-to-the-app"></a>向应用程序中添加类别选择
 
@@ -126,8 +125,6 @@ ms.locfileid: "89316467"
 
     - (void)subscribeWithCategories:(NSSet *)categories completion:(void (^)(NSError *))completion
     {
-        //[hub registerNativeWithDeviceToken:self.deviceToken tags:categories completion: completion];
-
         NSString* templateBodyAPNS = @"{\"aps\":{\"alert\":\"$(messageParam)\"}}";
 
         [hub registerTemplateWithDeviceToken:self.deviceToken name:@"simpleAPNSTemplate" 
@@ -176,7 +173,7 @@ ms.locfileid: "89316467"
 
     此时，`didRegisterForRemoteNotificationsWithDeviceToken` 方法中不应有任何代码。
 
-10. 完成[通知中心入门][get-started]教程后，以下方法应已存在于 `AppDelegate.m` 中。 否则，请添加这些方法。
+10. 完成[通知中心入门][入门指南]教程后，以下方法应已存在于 `AppDelegate.m` 中。 否则，请添加这些方法。
 
     ```objc
     - (void)MessageBox:(NSString *)title message:(NSString *)messageText
@@ -194,7 +191,7 @@ ms.locfileid: "89316467"
      }
     ```
 
-    此方法通过显示简单的 **UIAlert**处理运行应用程序时收到的通知。
+    此方法通过显示简单的 **UIAlert** 处理运行应用程序时收到的通知。
 
 11. 在 `ViewController.m` 中，为 `AppDelegate.h` 添加 `import` 语句，并将以下代码复制到 XCode 生成的 `subscribe` 方法中。 此代码会更新通知注册，使用用户在用户界面中选择的新类别标记。
 
@@ -246,13 +243,13 @@ ms.locfileid: "89316467"
 
 ## <a name="optional-send-tagged-notifications"></a>（可选）发送带标记的通知
 
-如果无权访问 Visual Studio，可以跳到下一部分，并从应用内部发送通知。 还可以在 [Azure 门户] 中使用通知中心的调试选项卡发送适当的模板通知。
+如果无权访问 Visual Studio，可以跳到下一部分，并从应用内部发送通知。 还可以在 [Azure 门户]中使用通知中心的调试选项卡发送适当的模板通知。
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
 ## <a name="optional-send-notifications-from-the-device"></a>（可选）从设备发送通知
 
-通常，通知由后端服务发送，但你也可以直接从应用发送突发新闻通知。 为此，需更新[通知中心入门][get-started]教程中定义的 `SendNotificationRESTAPI` 方法。
+通常，通知由后端服务发送，但你也可以直接从应用发送突发新闻通知。 为此，需更新[通知中心入门指南][入门指南]教程中定义的 `SendNotificationRESTAPI` 方法。
 
 1. 在 `ViewController.m` 中，按如下所示更新 `SendNotificationRESTAPI` 方法，使其接受类别标记的参数并发送适当的[模板](notification-hubs-templates-cross-platform-push-messages.md)通知。
 
@@ -365,9 +362,6 @@ ms.locfileid: "89316467"
 <!-- URLs. -->
 [How To: Service Bus Notification Hubs (iOS Apps)]: https://docs.microsoft.com/previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Use Notification Hubs to broadcast localized breaking news]: notification-hubs-ios-xplat-localized-apns-push-notification.md
-[Mobile Service]: /develop/mobile/tutorials/get-started
-[Notify users with Notification Hubs]: notification-hubs-aspnet-backend-ios-notify-users.md
-[Notification Hubs Guidance]: https://docs.microsoft.com/previous-versions/azure/azure-services/dn530749(v=azure.100)
-[Notification Hubs How-To for iOS]: https://docs.microsoft.com/previous-versions/azure/azure-services/jj927170(v=azure.100)
-[get-started]: ios-sdk-get-started.md
-[Azure 门户]: https://portal.azure.cn
+<!-- [Mobile Service]: /develop/mobile/tutorials/get-started -->
+<!-- [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-ios-notify-users.md -->
+[通知中心指南]： https://docs.microsoft.com/previous-versions/azure/azure-services/dn530749(v=azure.100) [适用于 iOS 的通知中心操作指南]： https://docs.microsoft.com/previous-versions/azure/azure-services/jj927170(v=azure.100) [入门指南]：ios-sdk-get-started.md [Azure 门户]： https://portal.azure.cn

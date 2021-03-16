@@ -4,16 +4,16 @@ description: 登录到 Azure 容器注册表时的常见问题的症状、原因
 ms.topic: article
 origin.date: 08/11/2020
 author: rockboyfor
-ms.date: 11/30/2020
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 09/14/2020
 ms.author: v-yeche
-ms.openlocfilehash: a374a5147f234961c4f20dda11b6f9e0cfaee0d8
-ms.sourcegitcommit: ea52237124974eda84f8cef4bf067ae978d7a87d
+ms.openlocfilehash: 2f034791f348e50c82b671449a3ce59c65a9a4f2
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024632"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055146"
 ---
 <!--Verified Successfully-->
 # <a name="troubleshoot-registry-login"></a>注册表登录故障排除
@@ -45,6 +45,10 @@ ms.locfileid: "96024632"
 运行 [az acr check-health](https://docs.azure.cn/cli/acr#az_acr_check_health) 命令可详细了解注册表环境的运行状况，以及对目标注册表的访问（可选）。 例如，诊断 Docker 配置错误或 Azure Active Directory 登录问题。 
 
 参阅[检查 Azure 容器注册表的运行状况](container-registry-check-health.md)以查看命令示例。 如果报告了错误，请查看[错误参考](container-registry-health-error-reference.md)和以下部分，以了解建议的解决方案。
+
+如果在将注册表与 Azure Kubernetes 服务配合使用时遇到问题，请运行 [az aks check-acr](https://docs.microsoft.com/cli/azure/aks#az_aks_check_acr) 命令，以验证是否可以从 AKS 群集访问该注册表。
+
+<!--CORRECT ON https://docs.microsoft.com/cli/azure/aks#az_aks_check_acr-->
 
 > [!NOTE]
 > 如果存在阻止访问注册表的防火墙或网络配置，也会发生某些身份验证或授权错误。 请参阅[排查与注册表相关的网络问题](container-registry-troubleshoot-access.md)。
@@ -154,4 +158,4 @@ az acr login --name myregistry
 * [Microsoft 问答](https://docs.microsoft.com/answers/products/)
 * [开具支持票证](https://support.azure.cn/support/support-azure/) - 根据你提供的信息，可能会针对注册表中的身份验证失败运行快速诊断
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

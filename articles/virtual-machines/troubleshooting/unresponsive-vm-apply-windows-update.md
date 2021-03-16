@@ -2,8 +2,7 @@
 title: 应用 Windows 更新时 Azure VM 无响应并出现 C01A001D 错误
 description: 本文提供的步骤可以解决 Windows 更新产生错误并且 Azure VM 无响应的问题。
 services: virtual-machines-windows
-author: rockboyfor
-manager: digimobile
+manager: dcscontentpm
 tags: azure-resource-manager
 ms.assetid: a97393c3-351d-4324-867d-9329e31b3528
 ms.service: virtual-machines-windows
@@ -11,16 +10,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 origin.date: 03/31/2020
-ms.date: 08/31/2020
+author: rockboyfor
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 013a656264e90cdcddd250fbfe8fcc3b9a115131
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 92bf1e477d4229e847f20fd157b77612f29cadbd
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93103773"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052884"
 ---
 <!--Verified successfully-->
 # <a name="vm-is-unresponsive-with-c01a001d-error-when-applying-windows-update"></a>应用 Windows 更新时 VM 无响应并出现“C01A001D”错误
@@ -41,6 +41,9 @@ ms.locfileid: "93103773"
 
 ### <a name="process-overview"></a>过程概述
 
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
+
 1. [创建并访问修复 VM](#create-and-access-a-repair-vm)。
 2. [释放硬盘上的空间](#free-up-space-on-the-hard-disk)。
 3. [建议：在重建 VM 之前，启用串行控制台和内存转储收集](#recommended-before-rebuilding-the-vm-enable-serial-console-and-memory-dump-collection)。
@@ -58,7 +61,7 @@ ms.locfileid: "93103773"
 
 如果磁盘空间尚不足 1 TB，必须调整其大小。 磁盘空间达到 1 TB 后，执行磁盘清理和驱动器碎片整理。
 
-1. 检查磁盘是否已满。 如果磁盘空间低于 1 TB，请[使用 PowerShell 将其扩展到最大 1 TB](../windows/expand-os-disk.md?toc=%2Fvirtual-machines%2Fwindows%2Ftoc.json)。
+1. 检查磁盘是否已满。 如果磁盘空间低于 1 TB，请[使用 PowerShell 将其扩展到最大 1 TB](../windows/expand-os-disk.md)。
 2. 磁盘空间达到 1 TB 后，执行磁盘清理。
     - [从损坏的 VM 中分离数据磁盘](../windows/detach-disk.md)。
     - [将数据磁盘附加到正常运行的 VM](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm)。
@@ -119,4 +122,4 @@ ms.locfileid: "93103773"
 
 使用 [VM 修复命令的步骤 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重新装配 VM。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

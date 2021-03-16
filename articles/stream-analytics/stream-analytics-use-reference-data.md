@@ -6,13 +6,13 @@ ms.author: v-johya
 ms.service: stream-analytics
 ms.topic: conceptual
 origin.date: 10/8/2019
-ms.date: 01/25/2021
-ms.openlocfilehash: 40a941f0a2bf3d1f6e897fefeabf1c1eeb4999ef
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/04/2021
+ms.openlocfilehash: 28c9ebc2bb3f77fb2cec5e56806c465444cbc426
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059725"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197603"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>使用参考数据在流分析中查找
 
@@ -33,7 +33,7 @@ WHERE R.Expired = '1'
 
 ## <a name="azure-blob-storage"></a>Azure Blob 存储
 
-引用数据建模为 blob 序列（在输入配置中定义），这些 blob 按blob 名称中指定的日期/时间顺序升序排列。 它 **仅** 支持使用 **大于** 序列中最后一个 blob 指定的日期/时间的日期/时间添加到序列的末尾。
+引用数据建模为 blob 序列（在输入配置中定义），这些 blob 按blob 名称中指定的日期/时间顺序升序排列。 它 **仅** 支持使用 **大于** 序列中最后一个 blob 指定的日期/时间的日期/时间添加到序列的末尾。 有关详细信息，请参阅[使用 Blob 存储中的参考数据进行 Azure 流分析作业](data-protection.md)。
 
 ### <a name="configure-blob-reference-data"></a>配置 blob 参考数据
 

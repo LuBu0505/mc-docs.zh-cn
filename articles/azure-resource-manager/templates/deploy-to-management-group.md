@@ -4,16 +4,16 @@ description: 介绍如何通过 Azure 资源管理器模板在管理组范围部
 ms.topic: conceptual
 origin.date: 01/13/2021
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 08/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: d0608184d65bd84c7021f5a41ce38a6bfc459c07
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 2818b2ecf969d809a04894e0ccbfcaa10d4336b7
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063524"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054019"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>使用 ARM 模板进行管理组部署
 
@@ -89,7 +89,7 @@ ms.locfileid: "99063524"
 ```azurecli
 az deployment mg create \
   --name demoMGDeployment \
-  --location chinanorth \
+  --location ChinaNorth \
   --management-group-id myMG \
   --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/management-level-deployment/azuredeploy.json"
 ```
@@ -122,7 +122,7 @@ New-AzManagementGroupDeployment `
 
 对于管理组级别部署，必须为部署提供位置。 部署位置独立于部署的资源的位置。 部署位置指定何处存储部署数据。 [订阅](deploy-to-subscription.md)和[租户](deploy-to-tenant.md)部署也需要位置。 对于[资源组](deploy-to-resource-group.md)部署，资源组的位置用于存储部署数据。
 
-可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy**。
+可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 _azuredeploy.json_ 的模板将创建默认部署名称 **azuredeploy**。
 
 每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 例如，如果在 chinaeast 中创建名为“deployment1”的管理组部署，则以后不能创建另一个名为“deployment1”但位置为“chinanorth”的部署。 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
 
@@ -264,9 +264,9 @@ New-AzManagementGroupDeployment `
 
 ### <a name="scope-to-tenant"></a>将范围设定为租户
 
-可通过将 `scope` 设置为 `/`，在租户中创建资源。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
+若要在租户中创建资源，请将 `scope` 设置为 `/`。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
 
-可使用设置了 `scope` 和 `location` 的嵌套部署。
+若要使用嵌套部署，请设置 `scope` 和 `location`。
 
 ```json
 {
@@ -528,4 +528,4 @@ New-AzManagementGroupDeployment `
 * 若要通过示例来了解如何为 Azure 安全中心部署工作区设置，请参阅 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。
 * 还可以在[订阅级别](deploy-to-subscription.md)和[租户级别](deploy-to-tenant.md)部署模板。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

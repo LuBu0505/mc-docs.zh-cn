@@ -2,16 +2,14 @@
 title: 使用共享访问签名对 Azure 事件中心访问进行身份验证
 description: 本文介绍如何使用共享访问签名对事件中心资源访问进行身份验证。
 ms.topic: conceptual
-origin.date: 06/23/2020
-ms.date: 01/05/2021
-ms.author: v-tawe
+ms.date: 02/24/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: bd800bc8506dc341945af28f562c807fe718014d
-ms.sourcegitcommit: ff20289adb80a6ab45e15fa5e196ff7af7e1c6b5
+ms.openlocfilehash: 7a8c33294a619519e7017e75e5a670cfa067dd84
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97874846"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196771"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS) 对事件中心资源访问进行身份验证
 使用共享访问签名 (SAS) 可以精细控制向具有共享访问签名的客户端授予的访问权限类型。 下面是可以在 SAS 中设置的一些控制措施： 
@@ -46,10 +44,10 @@ manageRuleNS、sendRuleNS 和 listenRuleNS 授权规则将同时应用到事件�
 ## <a name="generate-a-shared-access-signature-token"></a>生成共享访问签名令牌 
 有权访问授权规则的名称及其某个签名密钥的任何客户端都可以生成 SAS 令牌。 令牌是通过采用以下格式编写一个字符串而生成的：
 
-- `se` – 令牌即时过期时间。 一个整数，反映令牌过期距 1970 年 1 月 1 日 00:00:00 UTC 纪元时间（UNIX 纪元）的秒数。
-- `skn` – 授权规则的名称，即 SAS 密钥名称。
-- `sr` – 正在访问的资源的 URI。
-- `sig` – 签名。
+- `se` - 令牌即时过期时间。 一个整数，反映令牌过期距 1970 年 1 月 1 日 00:00:00 UTC 纪元时间（UNIX 纪元）的秒数
+- `skn` - 授权规则的名称，即 SAS 密钥名称。
+- `sr` - 正在访问的资源的 URI。
+- `sig` - 签名。
 
 signature-string 是基于资源 URI 计算的 SHA-256 哈希（上一部分中所述的范围），以及令牌即时过期时间的字符串表示形式，以 CRLF 分隔。
 

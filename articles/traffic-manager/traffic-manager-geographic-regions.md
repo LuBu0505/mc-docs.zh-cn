@@ -11,20 +11,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 03/22/2017
 author: rockboyfor
-ms.date: 09/28/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 555c143c1bdde61bb1676392744b77f67688be72
-ms.sourcegitcommit: 71953ae66ddfc07c5d3b4eb55ff8639281f39b40
+ms.openlocfilehash: dc12eac2b77f6265bb8f3801178a15d5c0b5a0f8
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91395398"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054037"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Azure 流量管理器将国家/地区层次结构用于地理流量路由方法
 
-本文列出了 Azure 流量管理器中**地理**流量路由方法使用的国家和地区。 还可以通过调用 [Azure 流量管理器 REST API](https://docs.microsoft.com/rest/api/trafficmanager/) 以编程方式获取此信息。 
+本文列出了 Azure 流量管理器中 **地理** 流量路由方法使用的国家和地区。 还可以通过调用 [ Azure 流量管理器 REST API](https://docs.microsoft.com/rest/api/trafficmanager/) 以编程方式获取此信息。 
 
 - WORLD(全球)
 
@@ -411,7 +411,9 @@ ms.locfileid: "91395398"
 
         - GE(格鲁吉亚)
 
-        - HK(香港特别行政区)
+        - HK(中国香港特别行政区)
+        
+            <!--CORRECT ON Hong Kong SAR, China-->
 
         - ID(印度尼西亚)
 
@@ -461,7 +463,9 @@ ms.locfileid: "91395398"
 
         - TM(土库曼斯坦)
 
-        - TW(台湾)
+        - TW(中国台湾)
+        
+            <!--CORRECT ON Taiwan, China-->
 
         - UZ(乌兹别克斯坦)
 
@@ -695,4 +699,4 @@ ms.locfileid: "91395398"
 
 - 深入了解 [Azure 流量管理器中的地理流量路由方法](traffic-manager-routing-methods.md#geographic)。
 
-<!--Update_Description: update meta properties-->
+<!--Update_Description: update meta properties, wording update, update link-->

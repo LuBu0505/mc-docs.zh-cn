@@ -8,12 +8,12 @@ ms.author: v-yiso
 ms.topic: conceptual
 origin.date: 05/28/2020
 ms.date: 07/06/2020
-ms.openlocfilehash: 2aed14bacddaba34e6ba65794cd6bd45ef1c8b99
-ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
+ms.openlocfilehash: a5afa451abff8b3890971c5e460491a5db0621d7
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87917349"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196882"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>在 Azure HDInsight 中将 Apache Spark 和 Apache Hive 与 Hive Warehouse Connector 集成
 
@@ -40,7 +40,11 @@ Hive Warehouse Connector 支持的部分操作包括：
 ## <a name="hive-warehouse-connector-setup"></a>Hive Warehouse Connector 设置
 
 > [!IMPORTANT]
-> 不支持将 Spark 2.4 企业安全性套餐群集上安装的 HiveServer2 Interactive 实例与 Hive Warehouse Connector 一起使用。 相反，必须配置一个独立的 HiveServer2 Interactive 群集来承载 HiveServer2 Interactive 工作负载。 不支持使用单一 Spark 2.4 群集的 Hive Warehouse Connector 配置。
+> - 不支持将 Spark 2.4 企业安全性套餐群集上安装的 HiveServer2 Interactive 实例与 Hive Warehouse Connector 一起使用。 相反，必须配置一个独立的 HiveServer2 Interactive 群集来承载 HiveServer2 Interactive 工作负载。 不支持使用单一 Spark 2.4 群集的 Hive Warehouse Connector 配置。
+> - 不支持将 Hive Warehouse Connector (HWC) 库用于启用了工作负载管理 (WLM) 功能的 Interactive Query 群集。 <br>
+在你仅有 Spark 工作负载并想要使用 HWC 库的情况下，请确保 Interactive Query 群集未启用工作负载管理功能（未在 Hive 配置中设置 `hive.server2.tez.interactive.queue` 配置）。 <br>
+对于同时存在 Spark 工作负载 (HWC) 和 LLAP 原生工作负载的情况，你需要创建使用共享的元存储数据库的两个单独的 Interactive Query 群集。 一个群集用于原生 LLAP 工作负载，可以在其中根据需要启用 WLM 功能；另一个群集用于仅限 HWC 的工作负载，不应当在其中配置 WLM 功能。
+需要注意的是，从两个群集都可以查看 WLM 资源计划，即使只在一个群集中启用了该计划。 请勿在禁用了 WLM 功能的群集中对资源计划进行任何更改，因为这可能会影响另一个群集中的 WLM 功能。
 
 Hive Warehouse Connector 对于 Spark 和 Interactive Query 工作负责需要单独的群集。 按照以下步骤在 Azure HDInsight 中设置这些群集。
 

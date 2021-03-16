@@ -5,16 +5,16 @@ services: container-service
 ms.topic: troubleshooting
 origin.date: 06/20/2020
 author: rockboyfor
-ms.date: 01/25/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 66bf15534a3e3e8b899fd61e36373959a1e11f36
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: a65998457a9609468d57ab5a96abbe7fa61aa539
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751118"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055153"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -25,11 +25,11 @@ ms.locfileid: "98751118"
 请尝试 [Kubernetes 群集故障排除的官方指南](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)。
 还可尝试由 Azure 工程师发布的[故障排除指南](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md)，用于对 Pod、节点、群集和其他功能进行故障排除。
 
-## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>在创建或升级期间遇到“超出配额”的错误。 我该怎么办？ 
+## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>在创建或升级期间遇到 `quota exceeded` 错误。 我该怎么办？ 
 
  [请求更多核心](https://support.azure.cn/support/support-azure/)。
 
-## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>在使用高级网络部署 AKS 群集时收到 insufficientSubnetSize 错误。 我该怎么办？
+## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>在使用高级网络部署 AKS 群集时收到 `insufficientSubnetSize` 错误。 我该怎么办？
 
 此错误表示用于群集的子网在其 CIDR 中不再具有用于成功分配资源的可用 IP。 对于 Kubenet 群集，需要为群集中的每个节点提供足够的 IP 空间。 对于 Azure CNI 群集，需要为群集中的每个节点和 Pod 提供足够的 IP 空间。
 阅读并详细了解如何[设计为 Pod 分配 IP 的 Azure CNI](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)。
@@ -154,11 +154,8 @@ AgentPool `<agentpoolname>` 已将自动缩放设置为启用状态，但它不�
 Azure 平台和 AKS 都实施了命名限制。 如果资源名称或参数违反了这些限制之一，则会返回一个错误，要求你提供不同的输入。 将应用以下通用命名规则：
 
 * 群集名称必须为 1-63 个字符。 仅允许使用字母、数字、短划线和下划线字符。 第一个和最后一个字符必须是字母或数字。
-* AKS 节点/MC_ 资源组名称由资源组名称和资源名称组成。 自动生成的 `MC_resourceGroupName_resourceName_AzureRegion` 语法长度不能超过 80 个字符。 如果需要，请缩短你的资源组名称或 AKS 群集名称的长度。
-
-    <!--NOT AVAILABLE ON [customize your node resource group name](cluster-configuration.md#custom-resource-group-name)-->
-    
-* dnsPrefix 必须以字母数字值开头和结尾，并且必须为 1 到 54 个字符。 有效字符包括字母数字值和连字符 (-)。 dnsPrefix 不能包含特殊字符，例如句点 (.)。
+* AKS 节点/MC_ 资源组名称由资源组名称和资源名称组成。 自动生成的 `MC_resourceGroupName_resourceName_AzureRegion` 语法长度不能超过 80 个字符。 如果需要，请缩短资源组名称或 AKS 群集名称的长度。 也可以[自定义节点资源组名称](cluster-configuration.md#custom-resource-group-name)
+* dnsPrefix 必须以字母数字值开头和结尾，并且必须介于 1-54 个字符之间。 有效字符包括字母数字值和连字符 (-)。 dnsPrefix 不能包含特殊字符，例如句点 (.)。
 * AKS 节点池名称必须全部为小写形式，对于 Linux 节点池，长度为 1-11 个字符；对于 Windows 节点池，长度为 1-6 个字符。 名称必须以字母开头，并且仅允许使用字母和数字字符。
 * admin-username（用于设置 Linux 节点的管理员用户名）必须以字母开头，只能包含字母、数字、连字符和下划线，其最大长度为 64 个字符。
 
@@ -195,7 +192,7 @@ Azure 平台和 AKS 都实施了命名限制。 如果资源名称或参数违�
 
 Kubernetes 资源查看器要求 `--api-server-authorized-ip-ranges` 包含对本地客户端计算机或 IP 地址范围（在此范围内浏览门户）的访问权限。 请参阅[使用经授权的 IP 地址范围保护对 API 服务器的访问](api-server-authorized-ip-ranges.md)中的“如何查找我的 IP”部分。
 
-<!--Not Available on [Kubernetes resource viewer](kubernetes-portal.md)-->
+<!--NOT AVAILABLE ON [Kubernetes resource viewer](kubernetes-portal.md)-->
 
 ## <a name="im-receiving-errors-after-restricting-egress-traffic"></a>在限制出口流量后收到错误消息
 
@@ -467,4 +464,4 @@ AKS 正在研究对节点池上的活动标签进行改变的功能以改进这�
 [view-master-logs]: view-master-logs.md
 [cluster-autoscaler]: cluster-autoscaler.md
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

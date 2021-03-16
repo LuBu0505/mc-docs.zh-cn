@@ -5,19 +5,21 @@ ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 12/07/2020
+ms.date: 02/22/2021
 origin.date: 02/20/2018
-ms.openlocfilehash: 500d4aaa42645c990bcd88fb45aff4cc1c532ee8
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: e1d5065bd0aaeee1d475e875438dc0769ddd696e
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97104405"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197628"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
 ![网络性能监视器符号](./media/network-performance-monitor/npm-symbol.png)
 
+> [!IMPORTANT]
+> 自 2021 年 7 月 1 日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 可以继续使用在 2021 年 7 月 1 日之前创建的测试。 为了最大程度地减少当前工作负荷的服务中断，请在 2024 年 2 月 29 日之前，在 Azure 网络观察程序中[将测试从网络性能监视器迁移到新连接监视器](/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md)。
 
 网络性能监视器是一项基于云的混合网络监视解决方案，可帮助你监视网络基础结构中不同点之间的网络性能。 它还可以监视到服务和应用程序终结点的网络连接，以及 Azure ExpressRoute 的性能。 
 
@@ -45,7 +47,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ### <a name="install-and-configure-agents"></a>安装并配置代理 
 
-使用[将 Windows 计算机连接到 Azure Monitor](../platform/agent-windows.md) 中的基本过程安装代理。
+使用[将 Windows 计算机连接到 Azure Monitor](../agents/agent-windows.md) 中的基本过程安装代理。
 
 ### <a name="where-to-install-the-agents"></a>代理安装位置 
 
@@ -235,13 +237,13 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ## <a name="log-queries-in-azure-monitor"></a>Azure Monitor 中的日志查询
 
-通过网络性能监视器仪表板和向下钻取页面以图形方式显示的所有数据也可以在[日志查询](../log-query/log-query-overview.md)中以本地方式使用。 可对存储库中的数据执行交互式分析，并关联来自不同源的数据。 还可以创建自定义警报和视图，并将数据导出到 Excel、Power BI 或可共享的链接。 仪表板的“常见查询”  区域中有一些查询非常有用，可以基于这些查询创建自己的查询和报表。 
+通过网络性能监视器仪表板和向下钻取页面以图形方式显示的所有数据也可以在[日志查询](../logs/log-query-overview.md)中以本地方式使用。 可对存储库中的数据执行交互式分析，并关联来自不同源的数据。 还可以创建自定义警报和视图，并将数据导出到 Excel、Power BI 或可共享的链接。 仪表板的“常见查询”  区域中有一些查询非常有用，可以基于这些查询创建自己的查询和报表。 
 
 ## <a name="alerts"></a>警报
 
-网络性能监视器使用 [Azure Monitor](../platform/alerts-overview.md) 的警报功能。
+网络性能监视器使用 [Azure Monitor](../alerts/alerts-overview.md) 的警报功能。
 
-这意味着使用[操作组](../platform/action-groups.md)管理所有通知。  
+这意味着使用[操作组](../alerts/action-groups.md)管理所有通知。  
 
 如果你是通过 Log Analytics 创建警报的 NPM 用户： 
 1. 你将看到一个链接，该链接可将你重定向到 Azure 门户。 单击该链接以访问门户。
@@ -252,7 +254,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 如果你是通过 Azure 门户创建警报的 NPM 用户：  
 1. 可以选择直接输入电子邮件，也可以选择通过操作组创建警报。
 2. 如果选择直接输入电子邮件，则将创建名为 **NPM Email ActionGroup** 的操作组，并将电子邮件 ID 添加到该操作组。
-3. 如果选择使用操作组，则需要选择一个以前创建的操作组。 可以在[此处](../platform/action-groups.md#create-an-action-group-by-using-the-azure-portal)了解如何创建操作组。 
+3. 如果选择使用操作组，则需要选择一个以前创建的操作组。 可以在[此处](../alerts/action-groups.md#create-an-action-group-by-using-the-azure-portal)了解如何创建操作组。 
 4. 成功创建警报后，可以使用“管理警报”链接来管理警报。 
 
 每次创建警报时，NPM 会在 Azure Monitor 中创建基于查询的日志警报规则。 默认情况下，每隔 5 分钟就会触发此查询。 Azure Monitor 不会对创建的前 250 条日志警报规则收取费用，超过 250 条日志警报规则限制的任何警报规则都将按照 [Azure Monitor 定价页中的警报定价](https://www.azure.cn/pricing/details/monitor/)计费。
@@ -271,5 +273,4 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ## <a name="next-steps"></a>后续步骤 
 详细了解[性能监视器](network-performance-monitor-performance-monitor.md)、[服务连接性监视器](network-performance-monitor-performance-monitor.md)和 [ExpressRoute 监视器](network-performance-monitor-expressroute.md)。 
-
 

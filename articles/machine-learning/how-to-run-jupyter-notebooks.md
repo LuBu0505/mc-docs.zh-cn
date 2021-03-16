@@ -1,5 +1,5 @@
 ---
-title: 如何在工作区中运行 Jupyter 笔记本
+title: 在工作区中运行 Jupyter 笔记本
 titleSuffix: Azure Machine Learning
 description: 了解如何在 Azure 机器学习工作室中的工作区中运行 Jupyter 笔记本。
 services: machine-learning
@@ -10,92 +10,28 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 06/27/2020
-ms.openlocfilehash: 29c9e03cdac84b7fe40d10234e3863e17df61edb
-ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
+ms.date: 01/19/2021
+ms.openlocfilehash: 4980a66f5def7e480ac67e4e0d824de1cedef2cd
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804349"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196755"
 ---
-# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>如何在工作区中运行 Jupyter 笔记本
+# <a name="run-jupyter-notebooks-in-your-workspace"></a>在工作区中运行 Jupyter 笔记本
 
+了解如何直接在 Azure 机器学习工作室的工作区中运行 Jupyter 笔记本。 用户不但可以在工作区中启动 [Jupyter](https://jupyter.org/) 或 [JupyterLab](https://jupyterlab.readthedocs.io)，还可以直接编辑和运行笔记本。
 
-了解如何直接在 Azure 机器学习工作室中的工作区中运行 Jupyter 笔记本。 用户不但可以在工作区中启动 [Jupyter](https://jupyter.org/) 或 [JupyterLab](https://jupyterlab.readthedocs.io)，还可以直接编辑和运行笔记本。
+有关如何创建和管理文件（包括笔记本）的信息，请参阅[在工作区中创建和管理文件](how-to-manage-files.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 * 机器学习工作区。 请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
-## <a name="create-notebooks"></a><a name="create"></a> 创建笔记本
-
-在 Azure 机器学习工作区中，创建一个新的 Jupyter 笔记本并开始运行。 新创建的笔记本存储在默认的工作区存储中。 有权访问此工作区的任何人都可以共享此笔记本。 
-
-创建新笔记本的步骤： 
-
-1. 在 [Azure 机器学习工作室](https://studio.ml.azure.cn)中打开工作区。
-1. 在左侧选择“笔记本”。 
-1. 在“我的文件”部分的“用户文件”列表上方，选择“新建文件”图标。
-
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="新建文件":::
-
-1. 为文件命名。 
-1. 对于 Jupyter Notebook 文件，请选择“Notebook”作为文件类型。
-1. 选择文件目录。
-1. 选择“创建”。
-
-> [!TIP]
-> 也可以创建文本文件。  选择“文本”作为文件类型，并向名称添加扩展名（例如 myfile.py 或 myfile.txt）  
-
-另外，还可以通过“笔记本”页顶部的工具上传文件夹和文件，包括笔记本。  笔记本和大多数文本文件类型可在“预览”部分显示。  其他大多数文件类型没有预览功能。
-
-> [!IMPORTANT]
-> 笔记本和脚本中的内容可能会从会话中读取数据，并在组织不在 Azure 中的情况下访问数据。  仅从受信任的源加载文件。 有关详细信息，请参阅[安全代码最佳做法](concept-secure-code-best-practice.md#azure-ml-studio-notebooks)。
-
-### <a name="clone-samples"></a>克隆示例
-
-你的工作区包含一个“示例”文件夹，其中的笔记本旨在帮助你探索 SDK，并用作你自己的机器学习项目的示例。  可以将这些笔记本克隆到你自己工作区存储容器上的文件夹中。  
-
-有关示例，请参阅[教程：创建第一个 ML 试验](tutorial-1st-experiment-sdk-setup.md#azure)。
-
-### <a name="use-files-from-git-and-version-my-files"></a><a name="terminal"></a> 使用 Git 中的文件并对我的文件执行版本控制
-
-可以使用终端窗口访问所有 Git 操作。 所有 Git 文件和文件夹都将存储在你的工作区文件系统中。
-
-> [!NOTE]
-> 将文件和文件夹添加到 ~/cloudfiles/code/Users 文件夹下的任意位置，使其在所有 Jupyter 环境中都可见。
-
-访问终端的步骤：
-
-1. 在 [Azure 机器学习工作室](https://studio.ml.azure.cn)中打开工作区。
-1. 在左侧选择“笔记本”。
-1. 选择左侧“用户文件”部分中的任何笔记本。  如果没有笔记本，请先[创建笔记本](#create)
-1. 选择“计算”目标或新建一个目标，然后等待目标运行。
-1. 选择“打开终端”图标。
-
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="打开终端":::
-
-1. 如果看不到该图标，请选择计算目标右侧的“...”，然后选择“打开终端”。
-
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="从“...”打开终端":::
-
-
-详细了解如何[将 Git 存储库克隆到工作区文件系统](concept-train-model-git-integration.md#clone-git-repositories-into-your-workspace-file-system)。
-
-### <a name="copy-and-paste-in-terminal"></a>在终端中复制和粘贴
-
-> * Windows：使用 `Ctrl-Insert` 复制，使用 `Ctrl-Shift-v` 或 `Shift-Insert` 粘贴。
-> * Mac OS：使用 `Cmd-c` 复制，使用 `Cmd-v` 粘贴。
-> * FireFox/IE 可能不会正确支持剪贴板权限。
-
-### <a name="share-notebooks-and-other-files"></a>共享笔记本和其他文件
-
-复制并粘贴 URL 可以共享笔记本或文件。  只有工作区的其他用户才能访问此 URL。  详细了解如何[授权访问工作区](how-to-assign-roles.md)。
-
 ## <a name="edit-a-notebook"></a>编辑笔记本
 
-若要编辑笔记本，请打开位于工作区“用户文件”部分的任何笔记本。 单击要编辑的单元格。 
+若要编辑笔记本，请打开位于工作区“用户文件”部分的任何笔记本。 单击要编辑的单元格。  如果本部分中没有任何笔记本，请参阅[在工作区中创建和管理文件](how-to-manage-files.md)。
 
 你可以在不连接到计算实例的情况下编辑笔记本。  要运行笔记本中的单元格时，请选择或创建一个计算实例。  如果选择一个已停止的计算实例，则在你运行第一个单元时，该计算实例会自动启动。
 
@@ -103,7 +39,7 @@ ms.locfileid: "99804349"
 
 另外，还可以从笔记本工具栏中启动 Jupyter 或 JupyterLab。  Azure 机器学习不提供来自 Jupyter 或 JupyterLab 的更新，也不修复其中的 bug，因为这些开源产品不在 Microsoft 支持的范围内。
 
-### <a name="focus-mode"></a>焦点模式
+## <a name="focus-mode"></a>焦点模式
 
 使用焦点模式展开当前视图，以便将焦点放在活动的选项卡上。 焦点模式将隐藏笔记本文件资源管理器。
 
@@ -112,14 +48,13 @@ ms.locfileid: "99804349"
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="切换焦点模式/标准视图":::
 
-
-### <a name="use-intellisense"></a>使用 IntelliSense
+## <a name="use-intellisense"></a>使用 IntelliSense
 
 [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) 是一个代码完成辅助插件，其中包括许多功能：“列出成员”、“参数信息”、“快速信息”和“完成单词”。 这些功能可帮助你详细了解所使用的代码、跟踪正在键入的参数，只需几次击键即可添加对属性和方法的调用。  
 
 键入代码时，请使用“Ctrl+空格键”来触发 IntelliSense。
 
-### <a name="clean-your-notebook-preview"></a>清理笔记本（预览版）
+## <a name="clean-your-notebook-preview"></a>清理笔记本（预览版）
 
 > [!IMPORTANT]
 > 收集功能目前为公共预览版。
@@ -135,7 +70,7 @@ ms.locfileid: "99804349"
 
 新笔记本只包含代码单元格，所有单元格都需要生成与你选择用于收集的单元格相同的结果。
 
-### <a name="save-and-checkpoint-a-notebook"></a>将笔记本保存并设置检查点
+## <a name="save-and-checkpoint-a-notebook"></a>将笔记本保存并设置检查点
 
 当你创建一个 ipynb 文件时，Azure 机器学习会创建一个检查点文件。
 
@@ -147,24 +82,34 @@ ms.locfileid: "99804349"
  
 在“笔记本”菜单中选择“检查点”以创建命名检查点，并将笔记本还原为已保存的检查点。
 
-## <a name="delete-a-notebook"></a>删除笔记本
+## <a name="export-a-notebook"></a>导出笔记本
 
-不能删除“示例”笔记本。  这些笔记本是工作室的一部分，在每次发布新的 SDK 时，它们都会相应地获得更新。  
+在笔记本工具栏中选择菜单，然后选择“导出为”，以任一受支持类型导出笔记本：
 
-可以通过以下任一方式删除“用户文件”笔记本：
+* 笔记本
+* Python
+* HTML
+* LaTeX
 
-* 在工作室中，选择文件夹或文件末尾的“...”。  请确保使用支持的浏览器（Microsoft Edge、Chrome 或 Firefox）。
-* 在任何笔记本工具栏中，选择”[打开终端](#terminal)”，访问计算实例的终端窗口。
-* 在 Jupyter 或 JupyterLab 中使用自带工具删除。
+:::image type="content" source="media/how-to-run-jupyter-notebooks/export-notebook.png" alt-text="将笔记本导出到计算机":::
+
+导出的文件保存在计算机上。
 
 ## <a name="run-a-notebook-or-python-script"></a>运行笔记本或 Python 脚本
 
-若要运行笔记本或 Python 脚本，请先连接到正在运行的[计算实例](concept-compute-instance.md)。 如果没有计算实例，请使用以下步骤创建一个计算实例： 
+若要运行笔记本或 Python 脚本，请先连接到正在运行的[计算实例](concept-compute-instance.md)。
 
-1. 选择笔记本或脚本工具栏中的 **+** 。 
-2. 为计算命名，并在“虚拟机大小”中选择一个大小。 
-3. 选择“创建”。
-4. 计算实例自动连接到文件。  你现在可以使用计算实例左侧的工具来运行笔记本单元或 Python 脚本
+* 如果没有计算实例，请使用以下步骤创建一个计算实例：
+
+    1. 在笔记本或脚本工具栏中，选择“计算”下拉列表右侧的“+ 新建计算”。 它可能位于“...”菜单下，具体取决于屏幕大小。
+        :::image type="content" source="media/how-to-run-jupyter-notebooks/new-compute.png" alt-text="创建新计算":::
+    1. 为计算命名，并在“虚拟机大小”中选择一个大小。 
+    1. 选择“创建”。
+    1. 计算实例自动连接到文件。  现在可以使用计算实例左侧的工具来运行笔记本单元格或 Python 脚本。
+
+* 如果有已停止的计算实例，请选择“计算”下拉列表右侧的“开始计算”。 它可能位于“...”菜单下，具体取决于屏幕大小。
+
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/start-compute.png" alt-text="启动计算实例":::
 
 只有本人可以查看和使用自己创建的计算实例。  用户文件与 VM 分开存储，并在工作区中的所有计算实例之间共享。
 
@@ -210,38 +155,18 @@ ms.locfileid: "99804349"
 | 停止计算     |    不会运行任何单元格  |
 | 在 Jupyter 或 JupyterLab 中打开笔记本     |    笔记本在新选项卡中打开。  |
 
-### <a name="add-new-kernels"></a>添加新内核
+## <a name="add-new-kernels"></a>添加新内核
 
-笔记本会自动查找连接的计算实例上安装的所有 Jupyter 内核。  若要向计算实例添加内核，请执行以下步骤：
+[使用终端](how-to-access-terminal.md#add-new-kernels)创建新内核，并将其添加到计算实例。 笔记本会自动查找连接的计算实例上安装的所有 Jupyter 内核。
 
-1. 选择笔记本工具栏中的“[打开终端](#terminal)”。
-1. 使用终端窗口创建新环境。  例如，以下代码会创建 `newenv`：
-    ```shell
-    conda create -y --name newenv
-    ```
-1. 激活该环境。  例如，创建 `newenv` 的结果如下：
+使用右侧的“内核”下拉列表更改为任何已安装的内核。  
 
-    ```shell
-    conda activate newenv
-    ```
-1. 在新环境中安装 pip 和 ipykernel 包，并为该 conda 环境创建内核
-
-    ```shell
-    conda install -y pip
-    conda install -y ipykernel
-    python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
-    ```
-
-> [!NOTE]
-> 对于笔记本中的包管理，使用 %pip 或 %conda magic 函数将包自动安装到当前运行中的内核，而不是安装表示所有包（包括当前运行中的内核之外的包）的 !pip 或 !conda    
-
-可以安装任何[可用的 Jupyter 内核](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)。
 
 ### <a name="status-indicators"></a>状态指示器
 
 “计算”下拉列表旁的指示器显示计算的状态。  在计算的下拉列表中也会显示状态。  
 
-|Color |计算状态 |
+|颜色 |计算状态 |
 |---------|---------| 
 | 绿色 | 正在运行计算 |
 | Red |计算失败 | 
@@ -251,93 +176,10 @@ ms.locfileid: "99804349"
 
 “内核”下拉列表旁的指示器显示内核的状态。
 
-|Color |内核状态 |
+|颜色 |内核状态 |
 |---------|---------|
 |  绿色 |内核已连接、空闲、繁忙|
 |  灰色 |内核未连接 |
-
-## <a name="shortcut-keys"></a>快捷键
-与 Jupyter Notebook 类似，Azure 机器学习工作室笔记本有一个模式化用户界面。 键盘根据笔记本单元格的具体模式执行不同的任务。 对于给定的代码单元格，Azure 机器学习工作室笔记本支持以下两种模式：命令模式和编辑模式。
-
-### <a name="command-mode-shortcuts"></a>命令模式快捷方式
-
-当没有文本光标提示你键入时，单元格处于命令模式。 当单元格处于命令模式时，可以将笔记本作为一个整体进行编辑，但不能键入单独的单元格。 按 `ESC` 或使用鼠标选择单元格编辑器区域外部，进入命令模式。  活动单元格的左边框为蓝色且为实线，其“运行”按钮为蓝色。
-
-   :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="命令模式下的笔记本单元格":::
-
-| 快捷键                      | 描述                          |
-| ----------------------------- | ------------------------------------|
-| Enter                         | 进入编辑模式             |        
-| Shift+Enter                 | 运行单元格，选择下方         |     
-| Control/Command + Enter       | 运行单元格                            |
-| Alt + Enter                   | 运行单元格，在下方插入代码单元格    |
-| Control/Command + Alt + Enter | 运行单元格，在下方插入 Markdown 单元格|
-| Alt + R                       | 全部运行      |                       
-| Y                             | 将单元格转换为代码    |                         
-| M                             | 将单元格转换为 Markdown  |                       
-| Up/K                          | 选择上方的单元格    |               
-| Down/J                        | 选择下方的单元格    |               
-| A                             | 在上方插入代码单元格  |            
-| B                             | 在下方插入代码单元格   |           
-| Control/Command + Shift + A   | 在上方插入 Markdown 单元格    |      
-| Control/Command + Shift + B   | 在下方插入 Markdown 单元格   |       
-| X                             | 剪切所选单元格    |               
-| C                             | 复制所选单元格   |               
-| Shift + V                     | 在上方粘贴所选单元格           |
-| V                             | 在下方粘贴所选单元格    |       
-| D D                           | 删除所选单元格|                
-| O                             | 切换输出         |              
-| Shift + O                     | 打开/关闭输出滚动   |          
-| I I                           | 中断内核 |                   
-| 0 0                           | 重启内核 |                     
-| Shift + 空格键                 | 向上滚动  |                         
-| Space                         | 向下滚动|
-| 选项卡                           | 将焦点更改到下一个可聚焦的项（当 Tab 陷阱被禁用时）|
-| Control/Command + S           | 保存笔记本 |                      
-| 1                             | 更改到 h1|                       
-| 2                             | 更改到 h2|                        
-| 3                             | 更改到 h3|                        
-| 4                             | 更改到 h4 |                       
-| 5                             | 更改到 h5 |                       
-| 6                             | 更改到 h6 |                       
-
-### <a name="edit-mode-shortcuts"></a>编辑模式快捷方式
-
-编辑模式由文本光标指示，提示你在编辑器区域中键入内容。 当单元格处于编辑模式时，可以在单元格中键入。 按 `Enter` 或使用鼠标选择单元格的编辑器区域，进入编辑模式。 活动单元格的左边框为绿色且为交错线，其“运行”按钮为绿色。 在“编辑”模式下，还会在单元格中看到光标提示。
-
-   :::image type="content" source="media/how-to-run-jupyter-notebooks/edit-mode.png" alt-text="编辑模式下的笔记本单元格":::
-
-使用以下击键快捷方式，可以在“编辑”模式下更轻松地在 Azure 机器学习笔记本中导航并运行代码。
-
-| 快捷键                      | 描述|                                     
-| ----------------------------- | ----------------------------------------------- |
-| Escape                        | 进入命令模式|  
-| Control/Command + 空格键       | 激活 IntelliSense |
-| Shift+Enter                 | 运行单元格，选择下方 |                         
-| Control/Command + Enter       | 运行单元格  |                                      
-| Alt + Enter                   | 运行单元格，在下方插入代码单元格  |              
-| Control/Command + Alt + Enter | 运行单元格，在下方插入 Markdown 单元格  |          
-| Alt + R                       | 运行所有单元格     |                              
-| 向上                            | 将光标上移或移到上一个单元格    |             
-| 向下                          | 将光标下移或移到下一个单元格 |                  
-| Control/Command + S           | 保存笔记本   |                                
-| Control/Command + 向上箭头键          | 转到单元格开头   |                             
-| Control/Command + 向下箭头键        | 转到单元格末尾 |                                 
-| 选项卡                           | 代码完成或缩进（如果启用了 Tab 陷阱） |
-| Control/Command + M           | 启用/禁用 Tab 陷阱  |                       
-| Control/Command + ]           | 缩进 |                                         
-| Control/Command + [           | 取消缩进  |                                        
-| Control/Command + A           | 全选|                                      
-| Control/Command + Z           | 撤消 |                                           
-| Control/Command + Shift + Z   | 重做 |                                           
-| Control/Command + Y           | 重做 |                                           
-| Control/Command + Home        | 转到单元格开头|                                
-| Control/Command + End         | 转到单元格末尾   |                               
-| Control/Command + 向左箭头键        | 左移一个字 |                               
-| Control/Command + 向右箭头键       | 右移一个字 |                              
-| Control/Command + Backspace   | 删除插入提示之前的字 |                             
-| Control/Command + Delete      | 删除插入提示之后的字 |                              
-| Control/Command + /           | 打开/关闭对 CU 的注释
 
 ## <a name="find-compute-details"></a>查找计算详细信息
 

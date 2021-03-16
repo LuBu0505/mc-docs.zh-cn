@@ -6,18 +6,18 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: how-to
-origin.date: 09/16/2020
-ms.date: 01/18/2021
+origin.date: 02/16/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 057fae8446e3a29cd33f293f7b8f88ad5ae30479
-ms.sourcegitcommit: f086abe8bd2770ed10a4842fa0c78b68dbcdf771
+ms.openlocfilehash: 3ecf7f04220f801fc7bde42deb2a419e9ecb6394
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98163180"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196366"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>使用存储在 Azure Key Vault 中的客户管理的密钥配置加密
 
@@ -173,10 +173,11 @@ Azure 存储可以自动更新客户管理的密钥（用于加密），以使�
 若要在 Azure 门户中配置客户管理的密钥并自动更新密钥版本，请执行以下步骤：
 
 1. 导航到存储帐户。
-1. 在存储帐户的“设置”边栏选项卡上，单击“加密”。 选择“客户托管密钥”选项，如下图所示。
+1. 在存储帐户的“设置”边栏选项卡上，单击“加密”。 默认情况下，密钥管理设置为“Microsoft 管理的密钥”，如下图所示。
 
     ![显示加密选项的门户屏幕截图](./media/customer-managed-keys-configure-key-vault/portal-configure-encryption-keys.png)
 
+1. 选择“客户管理的密钥”选项。
 1. 选择“从 Key Vault 中选择”选项。
 1. 选择“选择密钥保管库和密钥”。
 1. 选择包含要使用的密钥的密钥保管库。

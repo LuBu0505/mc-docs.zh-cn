@@ -1,21 +1,21 @@
 ---
-title: 如何通过 Python 使用 Azure 队列存储 - Azure 存储
+title: 如何通过 Python 使用 Azure 队列存储
 description: 了解如何通过 Python 使用 Azure 队列存储创建和删除队列，以及插入、获取和删除消息。
 author: WenJason
 ms.author: v-jay
 ms.reviewer: dineshm
-origin.date: 08/25/2020
-ms.date: 01/18/2021
+origin.date: 02/06/2021
+ms.date: 03/08/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: seo-javascript-october2019, devx-track-python
-ms.openlocfilehash: dc8885637906706a2084415323810ca51ec0256b
-ms.sourcegitcommit: f086abe8bd2770ed10a4842fa0c78b68dbcdf771
+ms.openlocfilehash: f550f0d170cc6e69553e0f3b064702195ba4747f
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98163179"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196285"
 ---
 # <a name="how-to-use-azure-queue-storage-from-python"></a>如何通过 Python 使用 Azure 队列存储
 
@@ -25,7 +25,7 @@ ms.locfileid: "98163179"
 
 本文演示使用 Azure 队列存储服务的常见方案。 涵盖的方案包括插入、速览、获取和删除队列消息。 还介绍了用于创建和删除队列的代码。
 
-本文中的示例是用 Python 编写的，并且使用了[用于 Python 的 Azure 队列存储客户端库](https://github.com/Azure/Azure-SDK-for-Python/tree/master/sdk/storage/azure-storage-queue)。 有关队列的详细信息，请参阅[后续步骤](#next-steps)部分。
+本文中的示例是用 Python 编写的，并且使用了[用于 Python 的 Azure 队列存储客户端库](https://github.com/azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)。 有关队列的详细信息，请参阅[后续步骤](#next-steps)部分。
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -107,12 +107,12 @@ import os, uuid
 connect_str = os.getenv("AZURE_STORAGE_CONNECTION_STRING")
 
 # Create a unique name for the queue
-queue_name = "queue-" + str(uuid.uuid4())
+q_name = "queue-" + str(uuid.uuid4())
 
 # Instantiate a QueueClient object which will
 # be used to create and manipulate the queue
-print("Creating queue: " + queue_name)
-queue_client = QueueClient.from_connection_string(connect_str, queue_name)
+print("Creating queue: " + q_name)
+queue_client = QueueClient.from_connection_string(connect_str, q_name)
 
 # Create the queue
 queue_client.create_queue()
@@ -141,35 +141,11 @@ queue_service.create_queue(queue_name)
 
 ---
 
-## <a name="insert-a-message-into-a-queue"></a>在队列中插入消息
-
-# <a name="python-v12"></a>[Python v12](#tab/python)
-
-若要在队列中插入消息，请使用 [`send_message`](https://docs.microsoft.com/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) 方法。
-
-```python
-message = u"Hello World"
-print("Adding message: " + message)
-queue_client.send_message(message)
-```
-
-# <a name="python-v2"></a>[Python v2](#tab/python2)
-
-若要在队列中插入消息，请使用 [`put_message`](https://docs.microsoft.com/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#put-message-queue-name--content--visibility-timeout-none--time-to-live-none--timeout-none-) 方法创建一个新消息并将其添加到队列中。
-
-```python
-message = u"Hello, World"
-print("Adding message: " + message)
-queue_service.put_message(queue_name, message)
-```
-
----
-
 Azure 队列消息以文本形式存储。 如果要存储二进制数据，请在将消息放入队列之前设置 Base64 编码和解码函数。
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-在队列客户端对象上配置 Base64 编码和解码函数。
+在创建客户端对象时配置 Base64 编码和解码函数。
 
 ```python
 # Setup Base64 encoding and decoding functions
@@ -185,6 +161,30 @@ queue_client.message_decode_policy = BinaryBase64DecodePolicy()
 # Setup Base64 encoding and decoding functions
 queue_service.encode_function = QueueMessageFormat.binary_base64encode
 queue_service.decode_function = QueueMessageFormat.binary_base64decode
+```
+
+---
+
+## <a name="insert-a-message-into-a-queue"></a>在队列中插入消息
+
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+若要在队列中插入消息，请使用 [`send_message`](https://docs.microsoft.com/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) 方法。
+
+```python
+message = u"Hello World"
+print("Adding message: " + message)
+queue_client.send_message(message)
+```
+
+# <a name="python-v2"></a>[Python v2](#tab/python2)
+
+若要在队列中插入消息，请使用 [`put_message`](https://docs.microsoft.com/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#put-message-queue-name--content--visibility-timeout-none--time-to-live-none--timeout-none-) 方法创建一个新消息并将其添加到队列中。
+
+```python
+message = u"Hello, World"
+print("Adding message: " + message)
+queue_service.put_message(queue_name, message)
 ```
 
 ---

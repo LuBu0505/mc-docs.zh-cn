@@ -9,16 +9,16 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 origin.date: 11/13/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 01/04/2021
 ms.author: v-yeche
-ms.openlocfilehash: 7ea3387fd7719dc5cca1da94f5e3d38745241a49
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: e9ecb5f6f4051267e6d0950adc6408453f4223d2
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857608"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055279"
 ---
 <!--Verified successfully-->
 # <a name="windows-stop-error---hardware-malfunction"></a>Windows 停止错误 - 硬件故障
@@ -49,6 +49,9 @@ ms.locfileid: "97857608"
 ## <a name="solution"></a>解决方案
 
 ### <a name="process-overview"></a>流程概述 
+
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
 
 1. 设置不可屏蔽中断 (NMI) 注册表项 
 2. 创建并访问修复 VM 
@@ -176,5 +179,4 @@ ms.locfileid: "97857608"
 > [!div class="nextstepaction"]
 > [排查 Azure 虚拟机启动错误](./boot-error-troubleshoot.md)
 
-<!-- Update_Description: new article about windows stop error hardware malfunction -->
-<!--NEW.date: 01/04/2021-->
+<!--Update_Description: update meta properties, wording update, update link-->

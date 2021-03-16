@@ -6,16 +6,16 @@ ms.subservice: sizes
 ms.topic: conceptual
 origin.date: 02/03/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 3ca794bbe8633e78cd3e00c92940ee34c21f04c5
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: a880d205f4b5ef15711a665063c2ba91a01d1546
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856728"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054425"
 ---
 <!--Verified successfully-->
 <!--Partical Content from verified-->
@@ -33,6 +33,8 @@ Dv2 系列大小在采用 Intel Turbo Boost Technology 2.0的 Intel® Xeon® Pla
 [实时迁移](maintenance-and-updates.md)：支持<br />
 [内存保留更新](maintenance-and-updates.md)：支持<br />
 [VM 代系支持](generation-2.md)：第 1 代<br />
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br />
+[临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br />
 <br />
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大数据磁盘数 | 吞吐量：IOPS | 最大 NIC 数 | 预期的网络带宽 (Mbps) |
@@ -55,6 +57,8 @@ DSv2 系列大小在采用 Intel Turbo Boost Technology 2.0 的 Intel® Xeon® P
 [实时迁移](maintenance-and-updates.md)：支持<br />
 [内存保留更新](maintenance-and-updates.md)：支持<br />
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br />
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br />
+[ OS 磁盘](ephemeral-os-disks.md)：支持 <br />
 <br />
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数 | 预期的网络带宽 (Mbps) |
@@ -74,11 +78,11 @@ DSv2 系列大小在采用 Intel Turbo Boost Technology 2.0 的 Intel® Xeon® P
 - [常规用途](sizes-general.md)
 - [内存优化](sizes-memory.md)
 
-    <!--Not Available on - [Storage optimized](sizes-storage.md)-->
+    <!--NOT AVAILABLE ON - [Storage optimized](sizes-storage.md)-->
     
 - [GPU 优化](sizes-gpu.md)
 
-    <!--Not Available on - [High performance compute](sizes-hpc.md)-->
+    <!--NOT AVAILABLE ON - [High performance compute](sizes-hpc.md)-->
     
 - [前几代](sizes-previous-gen.md)
 
@@ -86,7 +90,7 @@ DSv2 系列大小在采用 Intel Turbo Boost Technology 2.0 的 Intel® Xeon® P
 
 有关磁盘类型的详细信息：[磁盘类型](./disks-types.md)
 
-<!--Not Available on FEATURE ultra-disk-->
+<!--NOT AVAILABLE on FEATURE ultra-disk-->
 
 ## <a name="next-steps"></a>后续步骤
 

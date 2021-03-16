@@ -3,17 +3,17 @@ title: Azure Application Insights 中的应用程序映射 | Azure 文档
 description: 使用应用程序映射监视复杂的应用程序拓扑
 ms.topic: conceptual
 author: Johnnytechn
-ms.date: 01/12/2021
+ms.date: 02/22/2021
 ms.custom: devx-track-csharp
 ms.author: v-johya
 origin.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 6abb50a2c12e28f619470a2c4221c68189fff688
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: e771ae3975343ede6c409b4fc256235eb0650f06
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230844"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197463"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 
@@ -225,6 +225,21 @@ appInsights.addTelemetryInitializer((envelope) => {
   envelope.tags["ai.cloud.roleInstance"] = "your role instance";
 });
 });
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+对于 Python，可使用 [OpenCensus Python 遥测处理器](api-filtering-sampling.md#opencensus-python-telemetry-processors)。
+
+```python
+def callback_function(envelope):
+   envelope.tags['ai.cloud.role'] = 'new_role_name'
+   
+# AzureLogHandler
+handler.add_telemetry_processor(callback_function)
+
+# AzureExporter
+exporter.add_telemetry_processor(callback_function)
 ```
 ---
 

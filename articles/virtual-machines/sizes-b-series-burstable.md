@@ -7,16 +7,16 @@ ms.service: virtual-machines
 ms.topic: conceptual
 origin.date: 02/03/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: e9da5cbd945bab1d6f1cba4b2f78d90a1fbc67e1
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: cad881429dd49d1c67658cd36247883103998c8d
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856789"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054375"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列可突增虚拟机大小
 
@@ -24,14 +24,19 @@ B 系列 VM 非常适合于并非持续需要 CPU 完全性能的工作负荷，
 
 B 系列有以下 VM 大小：
 
-[Azure 计算单元 (ACU)](./acu.md?bc=%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fvirtual-machines%2flinux%2ftoc.json)：多种多样*<br />
+[Azure 计算单元 (ACU)](./acu.md)：多种多样*<br />
 [高级存储](premium-storage-performance.md)：支持<br />
 [高级存储缓存](premium-storage-performance.md)：不支持<br />
 [实时迁移](maintenance-and-updates.md)：支持<br />
 [内存保留更新](maintenance-and-updates.md)：支持<br />
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br />
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br />
+[临时 OS 磁盘](ephemeral-os-disks.md)：支持 <br />
+
+*B 系列 VM 是可突发的，因此 ACU 数量会因工作负荷和核心使用情况而异。<br />
+加速网络仅支持 Standard_B12ms、Standard_B16ms 和 Standard_B20ms  。
 <br />
-*B 系列 VM 是可突发的，因此 ACU 数量会因工作负荷和核心使用情况而异。
+<br />
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | VM 的基本 CPU 性能 | VM 的最大 CPU 性能 | 初始信用额度 | 累积的额度/小时 | 最大累积积分 | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -92,7 +97,7 @@ B16 特征：
 
 <sup>1</sup> 累积的积分/在一小时中使用的积分等于：`((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes`。  
 
-<!--Not CORRECT ON MOONCAKE B16ms is expensive that D16s_v3 -->
+<!--NOT CORRECT ON MOONCAKE B16ms is expensive that D16s_v3 -->
 <!--D16s_v3: CNY4195.31     B16ms: CNY4678.57-->
 
 ## <a name="q--a"></a>问题解答
@@ -148,20 +153,20 @@ B16 特征：
 - [计算优化](sizes-compute.md)
 - [内存优化](sizes-memory.md)
     
-    <!--Not Available on - [Storage optimized](sizes-storage.md)-->
+    <!--NOT AVAILABLE ON - [Storage optimized](sizes-storage.md)-->
     
 - [GPU 优化](sizes-gpu.md)
 
-    <!--Not Available on - [High performance compute](sizes-hpc.md)-->
+    <!--NOT AVAILABLE ON - [High performance compute](sizes-hpc.md)-->
 
 定价计算器：[定价计算器](https://www.azure.cn/pricing/calculator/)
 
 有关磁盘类型的详细信息：[磁盘类型](./disks-types.md)
 
-<!--Not Available on FEATURE ultra-disk-->
+<!--NOT AVAILABLE on FEATURE ultra-disk-->
 
 ## <a name="next-steps"></a>后续步骤
 
 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

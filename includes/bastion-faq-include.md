@@ -2,32 +2,32 @@
 title: include 文件
 description: include 文件
 services: bastion
-author: rockboyfor
 ms.service: bastion
 ms.topic: include
-origin.date: 05/04/2020
-ms.date: 09/21/2020
+origin.date: 02/05/2021
+author: rockboyfor
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 07/27/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: daa200baca8ed3c387325769e79ad09feee5811e
-ms.sourcegitcommit: 41e986cd4a2879d8767dc6fc815c805e782dc7e6
+ms.openlocfilehash: 38177e33dbd8838aaacbe12614d274c1332ee209
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2020
-ms.locfileid: "90822394"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055257"
 ---
 <!--Verified successfully-->
 <a name="regions"></a>
-### <a name="which-regions-are-available"></a>面向哪些区域提供？
+### <a name="which-regions-are-available-on-azure-china-21vianet"></a>Azure 中国世纪互联提供哪些区域？
 
 [!INCLUDE [region](bastion-regions-include.md)]
 
 <a name="publicip"></a>
-### <a name="do-i-need-a-public-ip-on-my-virtual-machine"></a>我是否需要在虚拟机上有一个公共 IP？
+### <a name="do-i-need-a-public-ip-on-my-virtual-machine-to-connect-via-azure-bastion"></a>我的虚拟机上是否需要公共 IP 才能通过 Azure Bastion 进行连接？
 
-使用 Azure Bastion 连接到 VM 时，不需要在要连接到的 Azure 虚拟机上有一个公共 IP。 Bastion 服务会通过虚拟网络中的虚拟机的专用 IP 打开到虚拟机的 RDP/SSH 会话/连接。
+否。 使用 Azure Bastion 连接到 VM 时，不需要在要连接到的 Azure 虚拟机上具有公共 IP。 Bastion 服务会通过虚拟网络中的虚拟机的专用 IP 打开到虚拟机的 RDP/SSH 会话/连接。
 
 ### <a name="is-ipv6-supported"></a>是否支持 IPv6？
 
@@ -36,12 +36,12 @@ ms.locfileid: "90822394"
 <a name="rdpssh"></a>
 ### <a name="do-i-need-an-rdp-or-ssh-client"></a>是否需要 RDP 或 SSH 客户端？
 
-无需 RDP 或 SSH 客户端即可在 Azure 门户中访问 RDP/SSH 来连接到 Azure 虚拟机。 使用 [Azure 门户](https://portal.azure.cn) 能够直接在浏览器中通过 RDP/SSH 来访问虚拟机。
+否。 无需 RDP 或 SSH 客户端即可在 Azure 门户中访问 RDP/SSH 来连接到 Azure 虚拟机。 使用 [Azure 门户](https://portal.azure.cn) 能够直接在浏览器中通过 RDP/SSH 来访问虚拟机。
 
 <a name="agent"></a>
 ### <a name="do-i-need-an-agent-running-in-the-azure-virtual-machine"></a>是否需要在 Azure 虚拟机中运行代理？
 
-无需在浏览器或 Azure 虚拟机上安装代理或任何软件。 Bastion 服务没有代理，不需要任何其他软件即可使用 RDP/SSH。
+否。 无需在浏览器或 Azure 虚拟机上安装代理或任何软件。 Bastion 服务没有代理，不需要任何其他软件即可使用 RDP/SSH。
 
 <a name="limits"></a>
 ### <a name="how-many-concurrent-rdp-and-ssh-sessions-does-each-azure-bastion-support"></a>每个 Azure Bastion 支持多少个并发 RDP 和 SSH 会话？
@@ -54,6 +54,11 @@ RDP 和 SSH 都是基于使用率的协议。 会话的使用率高将导致堡�
 ### <a name="what-features-are-supported-in-an-rdp-session"></a>RDP 会话支持哪些功能？
 
 目前仅支持文本复制/粘贴。 不支持文件复制等功能。 请随时在 [Azure Bastion 反馈页](https://support.azure.cn/support/contact/)上分享有关新功能的反馈。
+
+<a name="aadj"></a>
+### <a name="does-bastion-hardening-work-with-aadj-vm-extension-joined-vms"></a>Bastion 强化是否适用于 AADJ VM 扩展加入的 VM？
+
+此功能不适用于使用 Azure AD 用户的 AADJ VM 扩展加入的计算机。 有关详细信息，请参阅 [Microsoft Azure VM 和 Azure AD](../articles/active-directory/devices/howto-vm-sign-in-azure-ad-windows.md#requirements)。
 
 <a name="browsers"></a>
 ### <a name="which-browsers-are-supported"></a>支持哪些浏览器？
@@ -81,10 +86,11 @@ Azure Bastion 不会将客户数据移出部署的区域或存储到部署区域
 
 <a name="rdscal"></a>
 ### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a>Azure Bastion 是否需要 RDS CAL 才能在 Azure 托管的 VM 上实现管理目的？
+
 不需要，通过 Azure Bastion 访问 Windows Server VM 时，不需要 [RDS CAL](https://www.microsoft.com/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab)（如果仅用于管理目的）。
 
 <a name="keyboard"></a>
-### <a name="what-keyboard-layouts-are-supported-during-the-bastion-remote-session"></a>Bastion 远程会话期间支持哪些键盘布局？
+### <a name="which-keyboard-layouts-are-supported-during-the-bastion-remote-session"></a>Bastion 远程会话期间支持哪些键盘布局？
 
 Azure Bastion 目前在 VM 内支持 en-us-qwerty 键盘布局。  对其他区域设置的键盘布局的支持尚在开发中。
 
@@ -92,6 +98,7 @@ Azure Bastion 目前在 VM 内支持 en-us-qwerty 键盘布局。  对其他区�
 ### <a name="is-user-defined-routing-udr-supported-on-an-azure-bastion-subnet"></a>Azure Bastion 子网是否支持用户定义的路由 (UDR)？
 
 不是。 Azure Bastion 子网不支持 UDR。
+
 对于在同一虚拟网络中同时包含 Azure Bastion 和 Azure 防火墙/网络虚拟设备 (NVA) 的方案，无需强制流量从 Azure Bastion 子网发往 Azure 防火墙，因为 Azure Bastion 与 VM 之间的通信是专用的。 有关详细信息，请参阅[通过 Bastion 访问 Azure 防火墙后的 VM](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/)。
 
 <a name="session"></a>
@@ -102,6 +109,11 @@ Azure Bastion 目前在 VM 内支持 en-us-qwerty 键盘布局。  对其他区�
 <a name="udr"></a>
 ### <a name="how-do-i-handle-deployment-failures"></a>如何处理部署失败？
 
-查看任何错误消息并根据需要[在 Azure 门户中提出支持请求](https://support.azure.cn/support/support-azure/)。 [Azure 订阅限制、配额和约束](/azure-resource-manager/management/azure-subscription-service-limits)可能会导致部署失败。 具体来说，客户可能会遇到对每个订阅允许的公共 IP 地址数的限制，这会导致 Azure Bastion 部署失败。
+查看任何错误消息并根据需要[在 Azure 门户中提出支持请求](https://support.azure.cn/support/support-azure/)。 [Azure 订阅限制、配额和约束](../articles/azure-resource-manager/management/azure-subscription-service-limits.md)可能会导致部署失败。 具体来说，客户可能会遇到对每个订阅允许的公共 IP 地址数的限制，这会导致 Azure Bastion 部署失败。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<a name="dr"></a>
+### <a name="how-do-i-incorporate-azure-bastion-in-my-disaster-recovery-plan"></a>如何在灾难恢复计划中纳入 Azure Bastion？
+
+Azure Bastion 是在 VNet 或对等的 VNet 中部署的，与 Azure 区域相关联。 由你负责将 Azure Bastion 部署到灾难恢复 (DR) 站点 VNet。 如果出现 Azure 区域故障，请将 VM 故障转移到 DR 区域。 然后，使用 DR 区域中部署的 Azure Bastion 主机连接到现在此处部署的 VM。
+
+<!--Update_Description: update meta properties, wording update, update link-->

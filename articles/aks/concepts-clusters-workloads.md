@@ -3,18 +3,18 @@ title: 概念 - Azure Kubernetes 服务 (AKS) 的 Kubernetes 基础知识
 description: 了解 Kubernetes 的基本群集和工作负荷组件以及它们与 Azure Kubernetes 服务 (AKS) 中各个功能的关系
 services: container-service
 ms.topic: conceptual
-origin.date: 06/03/2019
+origin.date: 12/07/2020
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: e19c279ee2bf0788e4d3e7af73b7edc2753211ca
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 6aa33d07664f29aac0ab4068ad239aabe189e34c
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063598"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054422"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念
 
@@ -36,8 +36,8 @@ Azure Kubernetes 服务 (AKS) 提供托管 Kubernetes 服务，可简化部署�
 
 Kubernetes 群集分为两个组件：
 
-- 控制平面节点提供 Kubernetes 核心服务和应用程序工作负载的业务流程。
-- 节点运行应用程序工作负荷。
+- 控制平面提供 Kubernetes 核心服务和应用程序工作负载的业务流程。
+- 节点用于运行应用程序工作负载。
 
 :::image type="content" source="media/concepts-clusters-workloads/control-plane-and-nodes.png" alt-text="Kubernetes 控制平面和节点组件":::
 
@@ -74,7 +74,7 @@ AKS 提供单租户控制平面、专用 API 服务器、计划程序等。你�
 
 在 AKS 中，群集中节点的 VM 映像当前基于 Ubuntu Linux 或 Windows Server 2019。 创建 AKS 群集或横向扩展节点数时，Azure 平台会创建所请求数量的 VM 并对其进行配置。 无需执行手动配置。
 
-<!--Not Available on [Azure reservations][reservation-discounts]-->
+<!--NOT AVAILABLE on [Azure reservations][reservation-discounts]-->
 
 如果需要使用不同的主机 OS、容器运行时或包含自定义包，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。 上游 `aks-engine` 正式在 AKS 群集中受支持之前会发布功能并提供配置选项。 例如，如果要使用 Moby 以外的容器运行时，可以使用 `aks-engine` 来配置和部署满足当前需求的 Kubernetes 群集。
 
@@ -282,7 +282,7 @@ Kubernetes 资源（如 Pod 和部署）以逻辑方式分组到命名空间中�
 [kubernetes-namespaces]: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
 [helm]: https://helm.sh/
 
-<!--Not Available on [azure-cloud-shell]: https://shell.azure.com-->
+<!--NOT AVAILABLE on [azure-cloud-shell]: https://shell.azure.com-->
 
 <!-- INTERNAL LINKS -->
 
@@ -299,4 +299,4 @@ Kubernetes 资源（如 Pod 和部署）以逻辑方式分组到命名空间中�
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 
 <!--NOT AVAILABLE ON [reservation-discounts]: ../cost-management-billing/reservations/save-compute-costs-reservations.md-->
-<!-- Update_Description: wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

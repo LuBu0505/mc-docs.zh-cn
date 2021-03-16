@@ -7,17 +7,17 @@ ms.workload: infrastructure-services
 ms.topic: tutorial
 origin.date: 11/30/2018
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 07/06/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 37a1125a39c9966a299cbbb364a95314a5ef87ec
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: 210b7f192e14f29dbc064cf6a0e2b41f8ae25a4f
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570593"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053863"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和部署高度可用的虚拟机
 
@@ -41,9 +41,10 @@ ms.locfileid: "98570593"
 
 ## <a name="launch-azure-local-shell"></a>启动 Azure 本地 Shell
 
-打开 Azure Powershell 控制台，并以管理员权限运行以下脚本。
+打开 Azure Powershell 控制台，并以管理员权限运行下面列出的脚本。
 
 <!--Not Available on Azure Cloud Shell-->
+<!--NOT AVAILABLE ON [https://shell.azure.com/powershell](https://shell.azure.com/powershell)-->
 
 ## <a name="create-an-availability-set"></a>创建可用性集
 
@@ -77,7 +78,7 @@ New-AzAvailabilitySet `
 
 通过 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 创建 VM 时，请使用 `-AvailabilitySetName` 参数指定可用性集的名称。
 
-首先，使用 [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) 设置 VM 的管理员用户名和密码：
+首先，使用 [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential) 设置 VM 的管理员用户名和密码：
 
 ```powershell
 $cred = Get-Credential
@@ -138,4 +139,4 @@ Get-AzVMSize `
 > [!div class="nextstepaction"]
 > [创建 VM 规模集](tutorial-create-vmss.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -4,15 +4,15 @@ description: Azure 安全基准 V2 特权访问
 author: Johnnytechn
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 03/04/2021
 ms.author: v-johya
 ms.custom: security-benchmark
-ms.openlocfilehash: 635278a5bf177a79198473ef1ae23e5a5e2efad1
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: 747486352757b9105ecb5e22e152a409800af90f
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579436"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197421"
 ---
 # <a name="security-control-v2-privileged-access"></a>安全控制 V2：特权访问
 
@@ -26,7 +26,7 @@ ms.locfileid: "99579436"
 
 限制具有较高权限的用户帐户的数量，并提升这些帐户的保护级别。 Azure AD 中最重要的内置角色是全局管理员和特权角色管理员，因为分配到这两种角色的用户可以委派管理员角色。 有了这些特权，用户可直接或间接读取和修改 Azure 环境中的每项资源：
 
-- 全局管理员/公司管理员：具有此角色的用户可访问 Azure AD 中的所有管理功能，还可访问使用 Azure AD 标识的服务。
+- 全局管理员：具有此角色的用户可访问 Azure AD 中的所有管理功能，还可访问使用 Azure AD 标识的服务。
 
 - 特权角色管理员：具有此角色的用户可管理 Azure AD 和 Azure AD Privileged Identity Management (PIM) 中的角色分配。 此外，该角色可管理 PIM 和管理单元的各个方面。
 

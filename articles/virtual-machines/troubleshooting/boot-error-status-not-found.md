@@ -11,16 +11,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 origin.date: 05/11/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 846f6583e93d76c82bc912700dd01dd32b42e89c
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: abf18b08f25e0139f3da5f1d72e26bafa7d48941
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857153"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054369"
 ---
 <!--Verified successfully-->
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>排查 Windows 启动管理器错误 - 0xC0000225“找不到状态”
@@ -82,17 +82,20 @@ ms.locfileid: "97857153"
 
 ### <a name="process-overview"></a>流程概述
 
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
+
 1. 创建并访问修复 VM。
 1. 选择解决方案：
-   - [修复系统文件](#repair-the-system-file)
-   - [添加 OSDevice 变量](#add-the-osdevice-variable)
-   - [创建支持票证](#contact-support)
+    - [修复系统文件](#repair-the-system-file)
+    - [添加 OSDevice 变量](#add-the-osdevice-variable)
+    - [创建支持票证](#contact-support)
 1. 启用串行控制台和内存转储收集。
 1. 重新生成 VM。
 
 ### <a name="create-and-access-a-repair-vm"></a>创建并访问修复 VM
 
-1. 使用 [VM 修复命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 的步骤 1-3 准备一个修复 VM。
+1. 使用 [VM 修复命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md)的步骤 1-3 来准备一个修复 VM。
 1. 使用远程桌面连接来连接到修复 VM。
 
 ### <a name="select-a-solution"></a>选择解决方案

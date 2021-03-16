@@ -5,15 +5,15 @@ author: Johnnytechn
 manager: rkarlin
 services: security-center
 ms.author: v-johya
-ms.date: 01/19/2021
+ms.date: 02/25/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 18018a363137afe028759aafd27033aafafa0a99
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: 7067922f1ecb7bb8b4028f1dae8a706a2caf211f
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751344"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197428"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>禁止来自 Azure Defender 的警报
 
@@ -23,7 +23,7 @@ ms.locfileid: "98751344"
 
 |方面|详细信息|
 |----|:----|
-|发布状态：| 正式发布 |
+|发布状态：|正式发布版 (GA)|
 |定价：|免费<br>（大多数安全警报仅适用于 Azure Defender）|
 |所需角色和权限：|“安全管理员”和“所有者”可以创建/删除规则 。<br>“安全读取者”和“读取者”可以查看规则 。|
 |云：|![是](./media/icons/yes-icon.png) 中国云|
@@ -60,9 +60,7 @@ ms.locfileid: "98751344"
 
 1. 从安全中心的“安全警报”页：
 
-    - 找到你不想再查看的特定警报，然后从该警报的省略号菜单 (...) 中，选择“创建抑制规则”：
-
-        [![**创建抑制规则** 选项](./media/alerts-suppression-rules/auto-dismiss-future-option.png)](./media/alerts-suppression-rules/auto-dismiss-future-option.png#lightbox)
+    - 选择你不想再查看的特定警报，然后从详细信息窗格中选择“执行操作”。
 
     - 或者，选择页面顶部的“抑制规则”链接，然后从“抑制规则”页面中选择“创建新的抑制规则” ：
 
@@ -85,7 +83,7 @@ ms.locfileid: "98751344"
 1. 保存规则。 
 
 
-## <a name="edit-a-suppression-rules"></a>编辑抑制规则
+## <a name="edit-a-suppression-rule"></a>编辑抑制规则
 
 若要编辑已创建的规则，请使用“抑制规则”页。
 
@@ -107,17 +105,6 @@ ms.locfileid: "98751344"
 1. 若要删除多个规则，请选中要删除的规则的复选框，然后选择“删除”。
     ![删除一个或多个抑制规则](./media/alerts-suppression-rules/delete-multiple-alerts.png)
 
-## <a name="view-suppressed-alerts"></a>查看抑制的警报
-
-仍将生成与你启用的抑制规则相匹配的警报，但它们的状态将设置为“已取消”。 你可在 Azure 门户中查看状态，也可在安全中心查看安全警报。 
-
-使用安全中心的筛选器查看规则已消除的警报。
-
-* 从安全中心的“安全警报”页中，打开筛选器选项并选择“关闭”。  
-
-   [![查看已消除的警报](./media/alerts-suppression-rules/view-dismissed-alerts.png)](./media/alerts-suppression-rules/view-dismissed-alerts.png#lightbox)
-
-
 ## <a name="create-and-manage-suppression-rules-with-the-api"></a>通过 API 创建和管理抑制规则
 
 可以通过安全中心的 REST API 创建、查看或删除警报抑制规则。 
@@ -137,4 +124,13 @@ REST API 中抑制规则的相关 HTTP 方法是：
 - **DELETE**：删除现有规则（但不会更改它已消除的警报的状态）。
 
 有关完整的详细信息和使用示例，请参阅 [API 文档](https://docs.microsoft.com/rest/api/securitycenter/)。 
+
+
+## <a name="next-steps"></a>后续步骤
+
+本文介绍了 Azure 安全中心中自动取消不需要的警报的抑制规则。
+
+有关 Azure Defender 安全警报的详细信息，请参阅以下页面：
+
+- [安全警报和意向攻击链](alerts-reference.md) - 可能会从 Azure Defender 获取的安全警报的参考指南。
 

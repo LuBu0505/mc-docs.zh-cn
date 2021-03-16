@@ -3,19 +3,19 @@ title: 如何在 Azure 虚拟机中启用嵌套虚拟化
 description: 如何在 Azure 虚拟机中启用嵌套虚拟化
 origin.date: 10/09/2017
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 1fd680e1fe52179d2356ba9d56918049066fd001
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 1332221e063aa5dfd92090b065d7ae7d74c20027
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106297"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055156"
 ---
 <!--Verify Successfully -->
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中启用嵌套虚拟化
@@ -28,11 +28,11 @@ ms.locfileid: "93106297"
 
 创建新的 Windows Server 2016 Azure VM。 有关支持嵌套的虚拟机大小的完整列表，请查看 [Azure 计算单位](../acu.md)一文。
 
-请记住选择足够大的 VM 大小来支持来宾虚拟机的需求。 在此示例中，我们将使用 D3_v3 大小的 Azure VM。 
+请记住选择足够大的 VM 大小来支持来宾虚拟机的需求。 在此示例中，我们将使用 D4_v3 大小的 Azure VM。 
 
-可以在[此处](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)查看 Dv3 或 Ev3 系列虚拟机的区域可用性。
+可以在[此处](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines&regions=china-non-regional,china-east,china-east-2,china-north,china-north-2)查看 Dv3 或 Ev3 系列虚拟机的区域可用性。
 
-<!--CORRECT THE URL OF https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines-->
+<!--CORRECT THE URL OF https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines&regions=china-non-regional,china-east,china-east-2,china-north,china-north-2-->
 
 >[!NOTE]
 >
@@ -54,7 +54,7 @@ ms.locfileid: "93106297"
 你可以手动配置这些设置，或者使用我们提供的 PowerShell 脚本来自动完成配置。
 
 ### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>选项 1：使用 PowerShell 脚本配置嵌套虚拟化
-在 [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) 上提供了用于在 Windows Server 2016 主机上启用嵌套虚拟化的 PowerShell 脚本。 该脚本将首先检查先决条件，然后在 Azure VM 上配置嵌套虚拟化。 必须重启 Azure VM 才能完成配置。 此脚本在其他环境中也可以运行，但不能保证。 有关在 Azure 上运行嵌套虚拟化的现场视频演示，请查看 Azure 博客文章！ https://aka.ms/AzureNVblog 。
+在 [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) 上提供了用于在 Windows Server 2016 主机上启用嵌套虚拟化的 PowerShell 脚本。 该脚本将首先检查先决条件，然后在 Azure VM 上配置嵌套虚拟化。 必须重启 Azure VM 才能完成配置。 此脚本在其他环境中也可以运行，但不能保证。 有关在 Azure 上运行嵌套虚拟化的现场视频演示，请查看 Azure 博客文章！ https://aka.ms/AzureNVblog.
 
 ### <a name="option-2-configure-nested-virtualization-manually"></a>选项 2：手动配置嵌套虚拟化
 
@@ -127,7 +127,7 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 1. 打开 Hyper-V 管理器并创建新的虚拟机。 配置虚拟机以使用你创建的新内部网络。
 
-    :::image type="content" source="./media/virtual-machines-nested-virtualization/configure-networking.png" alt-text="NetAdapter":::
+    :::image type="content" source="./media/virtual-machines-nested-virtualization/configure-networking.png" alt-text="NetworkConfig":::
 
 2. 在来宾虚拟机上安装操作系统。
 
@@ -184,8 +184,8 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 ## <a name="test-connectivity-in-guest-virtual-machine"></a>在来宾虚拟机中测试连接
 
 在来宾虚拟机中，打开浏览器并导航到网页。
-:::image type="content" source="./media/virtual-machines-nested-virtualization/guest-virtual-machine.png" alt-text="NetAdapter":::
+:::image type="content" source="./media/virtual-machines-nested-virtualization/guest-virtual-machine.png" alt-text="GuestVM":::
 
 有关如何在来宾 VM 和 Azure VM 之间启用透明连接的说明，请参阅[此文档](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

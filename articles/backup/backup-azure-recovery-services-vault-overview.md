@@ -4,14 +4,14 @@ description: 恢复服务保管库概述。
 author: Johnnytechn
 origin.date: 08/10/2018
 ms.topic: conceptual
-ms.date: 11/17/2020
+ms.date: 03/01/2021
 ms.author: v-johya
-ms.openlocfilehash: 55a2bcb5bff9a49c8cd9a20ddc96a0c574fb2b02
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 45660b07ba50d3e91f04660cfec9816438007cba
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977955"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197335"
 ---
 # <a name="recovery-services-vaults-overview"></a>恢复服务保管库概述
 
@@ -25,7 +25,8 @@ ms.locfileid: "94977955"
 
 - 软删除：在使用软删除的情况下，即使恶意行动者删除了备份（或用户意外删除了备份数据），备份数据也仍会保留 14 天，因此可以恢复该备份项，而不会丢失数据。 以“软删除”状态将备份数据额外保留 14 天不会向你收取任何费用。 [了解详细信息](backup-azure-security-feature-cloud.md)。
 
-<!--Not available in MC: **Cross Region Restore**-->
+- **跨区域还原**：跨区域还原 (CRR) 允许你在某个次要区域（Azure 配对区域）中还原 Azure VM。 通过在[保管库级别](backup-create-rs-vault.md#set-cross-region-restore)启用此功能，你可以随时选择还原次要区域中的复制数据。 这使你能够在出现中断时还原次要区域数据以实现审核合规性，而无需等待 Azure 声明出现灾难（与保险库的 GRS 设置不同）。 [了解详细信息](backup-azure-arm-restore-vms.md#cross-region-restore)。
+
 ## <a name="storage-settings-in-the-recovery-services-vault"></a>恢复服务保管库中的存储设置
 
 恢复服务保管库是用于存储在不同时间创建的备份和恢复点的实体。 恢复服务保管库还包含与受保护虚拟机关联的备份策略。

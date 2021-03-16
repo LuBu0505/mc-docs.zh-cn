@@ -4,18 +4,18 @@ description: 介绍了 Azure 托管应用程序的发布者如何请求对托管
 ms.topic: conceptual
 origin.date: 09/25/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 03/01/2021
 ms.author: v-yeche
-ms.openlocfilehash: c7a77178fc4cc874f216042e8e797871a18e2fc2
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 61421db8f0988ea3e4e5e875b73c17e33e66319c
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022021"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053956"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>启用和请求对 Azure 托管应用程序的实时访问权限
 
-你的托管应用程序的使用者可能不愿意向你授予对托管资源组的永久访问权限。 作为托管应用程序的发布者，你可能更希望使用者准确了解你何时需要访问托管资源。 为了让使用者在授予对托管资源的访问权限时能够更好地进行控制，Azure 托管应用程序提供了一种称为实时 (JIT) 访问的功能。 此功能目前处于预览状态。
+你的托管应用程序的使用者可能不愿意向你授予对托管资源组的永久访问权限。 作为托管应用程序的发布者，你可能更希望使用者准确了解你何时需要访问受管理资源。 为了让使用者在授予对托管资源的访问权限时能够更好地进行控制，Azure 托管应用程序提供了一种称为实时 (JIT) 访问的功能。 此功能目前处于预览状态。
 
 通过 JIT 访问可以对托管应用程序的资源请求提升的访问权限，以便进行故障排除或维护。 你始终对资源拥有只读访问权限，但在特定时间段内，可以获得更高访问权限。
 
@@ -73,11 +73,11 @@ ms.locfileid: "98022021"
 
 1. 登录到[云合作伙伴发布门户](https://cloudpartner.azure.cn/)。
 
-    <!--Not Available on [Create an Azure application offer](../../marketplace/create-new-azure-apps-offer.md)-->
+    <!--NOT AVAILABLE ON [Create an Azure application offer](../../marketplace/create-new-azure-apps-offer.md)-->
     
 1. 在“技术配置”页上，选中“启用实时(JIT)访问”复选框。
 
-   :::image type="content" source="./media/request-just-in-time-access/enable-just-in-time-access.png" alt-text="启用实时访问":::
+    :::image type="content" source="./media/request-just-in-time-access/enable-just-in-time-access.png" alt-text="启用实时访问":::
 
 你已向 UI 添加了一个 JIT 配置步骤，并在商业市场产品/服务中启用了 JIT 访问。 当使用者部署你的托管应用程序时，他们可以[为其实例启用 JIT 访问](approve-just-in-time-access.md#enable-during-deployment)。
 
@@ -91,21 +91,21 @@ ms.locfileid: "98022021"
 
 1. 选择“符合条件的角色”，然后针对你需要的角色在“操作”列中选择“激活”。
 
-   :::image type="content" source="./media/request-just-in-time-access/send-request.png" alt-text="激活访问请求":::
+    :::image type="content" source="./media/request-just-in-time-access/send-request.png" alt-text="激活访问请求":::
 
 1. 在“激活角色”窗体上，选择要激活的角色的开始时间和持续时间。 选择“激活”以发送请求。
 
-   :::image type="content" source="./media/request-just-in-time-access/activate-access.png" alt-text="激活访问权限"::: 
+    :::image type="content" source="./media/request-just-in-time-access/activate-access.png" alt-text="激活访问权限"::: 
 
 1. 查看通知，以查看是否已成功将新的 JIT 请求发送到使用者。
 
-   :::image type="content" source="./media/request-just-in-time-access/in-progress.png" alt-text="通知":::
+    :::image type="content" source="./media/request-just-in-time-access/in-progress.png" alt-text="通知":::
 
     现在，你必须等待使用者[批准你的请求](approve-just-in-time-access.md#approve-requests)。
 
 1. 若要查看对托管应用程序的所有 JIT 请求的状态，请依次选择“JIT 访问”和“请求历史记录”。
 
-   :::image type="content" source="./media/request-just-in-time-access/view-status.png" alt-text="查看状态":::
+    :::image type="content" source="./media/request-just-in-time-access/view-status.png" alt-text="查看状态":::
 
 ## <a name="known-issues"></a>已知问题
 
@@ -115,4 +115,4 @@ ms.locfileid: "98022021"
 
 若要了解如何批准 JIT 访问请求，请参阅[在 Azure 托管应用程序中批准实时访问](approve-just-in-time-access.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

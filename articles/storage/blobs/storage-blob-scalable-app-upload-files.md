@@ -4,16 +4,16 @@ description: 了解如何使用 Azure 存储客户端库将大量随机数据以
 author: WenJason
 ms.service: storage
 ms.topic: tutorial
-origin.date: 10/08/2019
-ms.date: 12/14/2020
+origin.date: 02/04/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.subservice: blobs
-ms.openlocfilehash: 38a344c19e1bd8a9828105c09eaed82501c2cf12
-ms.sourcegitcommit: a8afac9982deafcf0652c63fe1615ba0ef1877be
+ms.openlocfilehash: abfdf002d9045f7bd62789e5b893a8eb060cbb1d
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96850804"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196243"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>将大量随机数据以并行方式上传到 Azure 存储
 
@@ -39,7 +39,7 @@ Azure Blob 存储提供可缩放的服务来存储数据。 为了尽可能提�
 
 在本地计算机上使用以下命令创建与虚拟机的远程桌面会话。 将 IP 地址替换为虚拟机的 publicIPAddress。 出现提示时，输入创建虚拟机时使用的凭据。
 
-```
+```console
 mstsc /v:<publicIpAddress>
 ```
 
@@ -47,7 +47,7 @@ mstsc /v:<publicIpAddress>
 
 在 Azure 门户中导航到存储帐户。 在存储帐户的“设置”  下选择“访问密钥”  。 从主密钥或辅助密钥复制 **连接字符串**。 登录到上一教程中创建的虚拟机。 以管理员身份打开“命令提示符”，并使用 `/m` 开关运行 `setx` 命令，该命令可保存计算机设置环境变量  。 重载“命令提示符”后，环境变量才可用  。 替换以下示例中的“\<storageConnectionString\>”：
 
-```
+```console
 setx storageconnectionstring "<storageConnectionString>" /m
 ```
 
@@ -59,51 +59,128 @@ setx storageconnectionstring "<storageConnectionString>" /m
 
 键入 `dotnet run` 运行应用程序。 首次运行 `dotnet` 时，它会填充本地程序包高速缓存，以加快恢复速度并实现脱机访问。 完成此命令需要最多一分钟，并且仅完成一次。
 
-```
+```console
 dotnet run
 ```
 
-应用程序创建五个随机命名的容器，并开始将暂存目录中的文件上传到存储帐户。 应用程序将最小线程设置和 [DefaultConnectionLimit](https://docs.microsoft.com/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) 设置为 100，以确保在运行应用程序时允许大量并发连接。
+应用程序创建五个随机命名的容器，并开始将暂存目录中的文件上传到存储帐户。
 
-除设置线程和连接限制设置外，还需将 [UploadFromStreamAsync ](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromstreamasync) 方法的 [BlobRequestOptions](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions) 配置为使用并行，并禁用 MD5 哈希验证。 文件以 100 mb 的块上传，此配置提高了性能，但如果网络性能不佳，可能成本高昂，因为如果出现失败，会重试整个 100 mb 的块。
+下例显示了 `UploadFilesAsync` 方法：
 
-|properties|值|说明|
-|---|---|---|
-|[ParallelOperationThreadCount](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| 上传时，此设置将 blob 分为多个块。 为获得最佳性能，此值应为内核数的 8 倍。 |
-|[DisableContentMD5Validation](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| 该属性禁用对上传内容的 MD5 哈希检查。 禁用 MD5 验证可加快传输速度。 但是不能确认传输文件的有效性或完整性。   |
-|[StoreBlobContentMD5](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| 该属性确定是否计算和存储文件的 MD5 哈希。   |
-| [RetryPolicy](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.retrypolicy)| 2 秒回退，最多重试 10 次 |确定请求的重试策略。 重试连接失败，在此示例中，[ExponentialRetry](/dotnet/api/microsoft.azure.batch.common.exponentialretry) 策略配置为 2 秒回退，最多可重试 10 次。 当应用程序快要达到 Blob 存储的可伸缩性目标时，此设置非常重要。 有关详细信息，请参阅 [Blob 存储的可伸缩性和性能目标](../blobs/scalability-targets.md)。  |
-
-下例显示了 `UploadFilesAsync` 任务：
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 ```csharp
 private static async Task UploadFilesAsync()
 {
-    // Create random 5 characters containers to upload files to.
+    // Create five randomly named containers to store the uploaded files.
+    BlobContainerClient[] containers = await GetRandomContainersAsync();
+
+    // Path to the directory to upload
+    string uploadPath = Directory.GetCurrentDirectory() + "\\upload";
+
+    // Start a timer to measure how long it takes to upload all the files.
+    Stopwatch timer = Stopwatch.StartNew();
+
+    try
+    {
+        Console.WriteLine($"Iterating in directory: {uploadPath}");
+        int count = 0;
+
+        Console.WriteLine($"Found {Directory.GetFiles(uploadPath).Length} file(s)");
+
+        // Specify the StorageTransferOptions
+        BlobUploadOptions options = new BlobUploadOptions
+        {
+            TransferOptions = new StorageTransferOptions
+            {
+                // Set the maximum number of workers that 
+                // may be used in a parallel transfer.
+                MaximumConcurrency = 8,
+
+                // Set the maximum length of a transfer to 50MB.
+                MaximumTransferSize = 50 * 1024 * 1024
+            }
+        };
+
+        // Create a queue of tasks that will each upload one file.
+        var tasks = new Queue<Task<Response<BlobContentInfo>>>();
+
+        // Iterate through the files
+        foreach (string filePath in Directory.GetFiles(uploadPath))
+        {
+            BlobContainerClient container = containers[count % 5];
+            string fileName = Path.GetFileName(filePath);
+            Console.WriteLine($"Uploading {fileName} to container {container.Name}");
+            BlobClient blob = container.GetBlobClient(fileName);
+
+            // Add the upload task to the queue
+            tasks.Enqueue(blob.UploadAsync(filePath, options));
+            count++;
+        }
+
+        // Run all the tasks asynchronously.
+        await Task.WhenAll(tasks);
+
+        timer.Stop();
+        Console.WriteLine($"Uploaded {count} files in {timer.Elapsed.TotalSeconds} seconds");
+    }
+    catch (RequestFailedException ex)
+    {
+        Console.WriteLine($"Azure request failed: {ex.Message}");
+    }
+    catch (DirectoryNotFoundException ex)
+    {
+        Console.WriteLine($"Error parsing files in the directory: {ex.Message}");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Exception: {ex.Message}");
+    }
+}
+```
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+最小线程数和最大线程数设置为 100，以确保允许大量并发连接。
+
+```csharp
+private static async Task UploadFilesAsync()
+{
+    // Create five randomly named containers to store the uploaded files.
     CloudBlobContainer[] containers = await GetRandomContainersAsync();
+
     var currentdir = System.IO.Directory.GetCurrentDirectory();
 
-    // path to the directory to upload
+    // Path to the directory to upload
     string uploadPath = currentdir + "\\upload";
+
+    // Start a timer to measure how long it takes to upload all the files.
     Stopwatch time = Stopwatch.StartNew();
+
     try
     {
         Console.WriteLine("Iterating in directory: {0}", uploadPath);
+
         int count = 0;
         int max_outstanding = 100;
         int completed_count = 0;
 
         // Define the BlobRequestOptions on the upload.
-        // This includes defining an exponential retry policy to ensure that failed connections are retried with a backoff policy. As multiple large files are being uploaded
-        // large block sizes this can cause an issue if an exponential retry policy is not defined.  Additionally parallel operations are enabled with a thread count of 8
-        // This could be should be multiple of the number of cores that the machine has. Lastly MD5 hash validation is disabled for this example, this improves the upload speed.
+        // This includes defining an exponential retry policy to ensure that failed connections
+        // are retried with a back off policy. As multiple large files are being uploaded using
+        // large block sizes, this can cause an issue if an exponential retry policy is not defined.
+        // Additionally, parallel operations are enabled with a thread count of 8.
+        // This should be a multiple of the number of processor cores in the machine.
+        // Lastly, MD5 hash validation is disabled for this example, improving the upload speed.
         BlobRequestOptions options = new BlobRequestOptions
         {
             ParallelOperationThreadCount = 8,
             DisableContentMD5Validation = true,
             StoreBlobContentMD5 = false
         };
-        // Create a new instance of the SemaphoreSlim class to define the number of threads to use in the application.
+
+        // Create a new instance of the SemaphoreSlim class to 
+        // define the number of threads to use in the application.
         SemaphoreSlim sem = new SemaphoreSlim(max_outstanding, max_outstanding);
 
         List<Task> tasks = new List<Task>();
@@ -112,26 +189,28 @@ private static async Task UploadFilesAsync()
         // Iterate through the files
         foreach (string path in Directory.GetFiles(uploadPath))
         {
-            // Create random file names and set the block size that is used for the upload.
             var container = containers[count % 5];
             string fileName = Path.GetFileName(path);
-            Console.WriteLine("Uploading {0} to container {1}.", path, container.Name);
+            Console.WriteLine("Uploading {0} to container {1}", path, container.Name);
             CloudBlockBlob blockBlob = container.GetBlockBlobReference(fileName);
 
-            // Set block size to 100MB.
+            // Set the block size to 100MB.
             blockBlob.StreamWriteSizeInBytes = 100 * 1024 * 1024;
+
             await sem.WaitAsync();
 
-            // Create tasks for each file that is uploaded. This is added to a collection that executes them all asyncronously.  
+            // Create a task for each file to upload. The tasks are
+            // added to a collection and all run asynchronously.
             tasks.Add(blockBlob.UploadFromFileAsync(path, null, options, null).ContinueWith((t) =>
             {
                 sem.Release();
                 Interlocked.Increment(ref completed_count);
             }));
+
             count++;
         }
 
-        // Creates an asynchronous task that completes when all the uploads complete.
+        // Run all the tasks asynchronously.
         await Task.WhenAll(tasks);
 
         time.Stop();
@@ -150,29 +229,38 @@ private static async Task UploadFilesAsync()
     }
 }
 ```
+除设置线程和连接限制设置外，还需将 [UploadFromStreamAsync ](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromstreamasync) 方法的 [BlobRequestOptions](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions) 配置为使用并行，并禁用 MD5 哈希验证。 文件以 100 mb 的块上传，此配置提高了性能，但如果网络性能不佳，可能成本高昂，因为如果出现失败，会重试整个 100 mb 的块。
+
+|properties|值|说明|
+|---|---|---|
+|[ParallelOperationThreadCount](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| 上传时，此设置将 blob 分为多个块。 为获得最佳性能，此值应为内核数的 8 倍。 |
+|[DisableContentMD5Validation](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| 该属性禁用对上传内容的 MD5 哈希检查。 禁用 MD5 验证可加快传输速度。 但是不能确认传输文件的有效性或完整性。   |
+|[StoreBlobContentMD5](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| 该属性确定是否计算和存储文件的 MD5 哈希。   |
+| [RetryPolicy](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.retrypolicy)| 2 秒回退，最多重试 10 次 |确定请求的重试策略。 重试连接失败，在此示例中，[ExponentialRetry](/dotnet/api/microsoft.windowsazure.batch.common.exponentialretry) 策略配置为 2 秒回退，最多可重试 10 次。 当应用程序快要达到 Blob 存储的可伸缩性目标时，此设置非常重要。 有关详细信息，请参阅 [Blob 存储的可伸缩性和性能目标](../blobs/scalability-targets.md)。  |
+
+---
 
 以下示例是截断的应用程序输出，该应用程序在 Windows 系统上运行。
 
-```
-Created container https://mystorageaccount.blob.core.chinacloudapi.cn/9efa7ecb-2b24-49ff-8e5b-1d25e5481076
-Created container https://mystorageaccount.blob.core.chinacloudapi.cn/bbe5f0c8-be9e-4fc3-bcbd-2092433dbf6b
-Created container https://mystorageaccount.blob.core.chinacloudapi.cn/9ac2f71c-6b44-40e7-b7be-8519d3ba4e8f
-Created container https://mystorageaccount.blob.core.chinacloudapi.cn/47646f1a-c498-40cd-9dae-840f46072180
-Created container https://mystorageaccount.blob.core.chinacloudapi.cn/38b2cdab-45fa-4cf9-94e7-d533837365aa
-Iterating in directory: D:\git\storage-dotnet-perf-scale-app\upload
-Found 50 file(s)
-Starting upload of D:\git\storage-dotnet-perf-scale-app\upload\1d596d16-f6de-4c4c-8058-50ebd8141e4d.txt to container 9efa7ecb-2b24-49ff-8e5b-1d25e5481076.
-Starting upload of D:\git\storage-dotnet-perf-scale-app\upload\242ff392-78be-41fb-b9d4-aee8152a6279.txt to container bbe5f0c8-be9e-4fc3-bcbd-2092433dbf6b.
-Starting upload of D:\git\storage-dotnet-perf-scale-app\upload\38d4d7e2-acb4-4efc-ba39-f9611d0d55ef.txt to container 9ac2f71c-6b44-40e7-b7be-8519d3ba4e8f.
-Starting upload of D:\git\storage-dotnet-perf-scale-app\upload\45930d63-b0d0-425f-a766-cda27ff00d32.txt to container 47646f1a-c498-40cd-9dae-840f46072180.
-Starting upload of D:\git\storage-dotnet-perf-scale-app\upload\5129b385-5781-43be-8bac-e2fbb7d2bd82.txt to container 38b2cdab-45fa-4cf9-94e7-d533837365aa.
-...
-Upload has been completed in 142.0429536 seconds. Press any key to continue
+```console
+Created container 2dbb45f4-099e-49eb-880c-5b02ebac135e
+Created container 0d784365-3bdf-4ef2-b2b2-c17b6480792b
+Created container 42ac67f2-a316-49c9-8fdb-860fb32845d7
+Created container f0357772-cb04-45c3-b6ad-ff9b7a5ee467
+Created container 92480da9-f695-4a42-abe8-fb35e71eb887
+Iterating in directory: C:\git\myapp\upload
+Found 5 file(s)
+Uploading 1d596d16-f6de-4c4c-8058-50ebd8141e4d.pdf to container 2dbb45f4-099e-49eb-880c-5b02ebac135e
+Uploading 242ff392-78be-41fb-b9d4-aee8152a6279.pdf to container 0d784365-3bdf-4ef2-b2b2-c17b6480792b
+Uploading 38d4d7e2-acb4-4efc-ba39-f9611d0d55ef.pdf to container 42ac67f2-a316-49c9-8fdb-860fb32845d7
+Uploading 45930d63-b0d0-425f-a766-cda27ff00d32.pdf to container f0357772-cb04-45c3-b6ad-ff9b7a5ee467
+Uploading 5129b385-5781-43be-8bac-e2fbb7d2bd82.pdf to container 92480da9-f695-4a42-abe8-fb35e71eb887
+Uploaded 5 files in 16.9552163 seconds
 ```
 
 ### <a name="validate-the-connections"></a>验证连接
 
-在上载文件的同时，可以验证存储帐户的并发连接数。 打开“命令提示符”  并键入 `netstat -a | find /c "blob:https"`。 此命令显示当前使用 `netstat` 打开的连接数。 下例显示的输出与自己运行该教程时看到的输出类似。 如该示例所示，上传随机文件到存储帐户时，打开了 800 个连接。 此值在整个上传过程中不断更改。 通过以并行块区块的形式进行上传，可显著减少传输内容所需的时间。
+在上载文件的同时，可以验证存储帐户的并发连接数。 打开控制台窗口，然后键入 `netstat -a | find /c "blob:https"`。 此命令显示当前打开的连接数。 如以下示例所示，上传随机文件到存储帐户时，打开了 800 个连接。 此值在整个上传过程中不断更改。 通过以并行块区块的形式进行上传，可显著减少传输内容所需的时间。
 
 ```
 C:\>netstat -a | find /c "blob:https"

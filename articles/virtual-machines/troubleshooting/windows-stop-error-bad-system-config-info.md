@@ -11,16 +11,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 origin.date: 08/24/2020
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 09/07/2020
 ms.author: v-yeche
-ms.openlocfilehash: 36cb9923ca1e02ecca0dcf1a873cac95bd3a5f5f
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 36aab0084b1fa430360332d1e8fa404cf2b9e349
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105470"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055280"
 ---
 <!--Verified successfully-->
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows 停止错误 - 0x00000074 错误系统配置信息
@@ -36,7 +36,7 @@ ms.locfileid: "93105470"
 如果致电支持人员，请向他们提供以下信息：
 停止代码*   *：BAD_SYSTEM_CONFIG_INFO*
 
-  ![Windows 停止代码 0x00000074，也显示为“BAD_SYSTEM_CONFIG_INFO”。 Windows 会通知用户其电脑遇到问题，需要重启。](./media/windows-stop-error-bad-system-config-info/1.png)
+  ![Windows 停止代码 0x00000074，也显示为“BAD_SYSTEM_CONFIG_INFO”。 Windows 会通知用户其电脑遇到问题，需要重启。](./media/windows-stop-error-bad-system-config-info/stop-code-0x00000074.png)
 
 ## <a name="cause"></a>原因
 
@@ -50,13 +50,16 @@ ms.locfileid: "93105470"
 
 ### <a name="process-overview"></a>过程概述：
 
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
+
 1. 创建和访问修复 VM。
 1. 检查配置单元损坏情况。
 1. 启用串行控制台和内存转储收集。
 1. 重新生成 VM。
 
-> [!NOTE]
-> 遇到此错误时，来宾操作系统 (OS) 无法正常运行。 将在脱机模式下进行故障排除才能解决此问题。
+    > [!NOTE]
+    > 遇到此错误时，来宾操作系统 (OS) 无法正常运行。 将在脱机模式下进行故障排除才能解决此问题。
 
 ### <a name="create-and-access-a-repair-vm"></a>创建和访问修复 VM
 
@@ -65,8 +68,8 @@ ms.locfileid: "93105470"
 1. 使用远程桌面连接来连接到修复 VM。
 1. 复制 `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` 文件夹并将其保存在运行正常的磁盘分区或其他安全位置。 请备份此文件夹以防万一，因为你将编辑关键注册表文件。 
 
-> [!NOTE]
-> 复制 `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` 文件夹作为备份，以备你需要回退对注册表所做的任何更改。
+    > [!NOTE]
+    > 复制 `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` 文件夹作为备份，以备你需要回退对注册表所做的任何更改。
 
 ### <a name="check-for-hive-corruption"></a>检查配置单元损坏情况
 
@@ -79,7 +82,7 @@ ms.locfileid: "93105470"
 
     1. 如果配置单元未能打开，或者为空，则说明配置单元已损坏。 如果配置单元已损坏，请[开具支持工单](https://support.azure.cn/support/support-azure/)。
 
-        :::image type="content" source="./media/windows-stop-error-bad-system-config-info/2.png" alt-text="出现错误，指出注册表编辑器无法加载配置单元。":::
+        :::image type="content" source="./media/windows-stop-error-bad-system-config-info/cannot-load-hive-error.png" alt-text="出现错误，指出注册表编辑器无法加载配置单元。":::
 
     1. 如果配置单元正常打开，则说明配置单元未正确关闭。 继续执行步骤 5.
 
@@ -87,14 +90,14 @@ ms.locfileid: "93105470"
 
 ### <a name="enable-the-serial-console-and-memory-dump-collection"></a>启用串行控制台和内存转储收集
 
-**建议** ：在重新生成 VM 之前，通过运行以下脚本来启用串行控制台和内存转储收集：
+**建议**：在重新生成 VM 之前，通过运行以下脚本来启用串行控制台和内存转储收集：
 
 1. 以管理员身份打开权限提升的命令提示符会话。
 1. 运行以下命令：
 
-    **启用串行控制台** ：
+    **启用串行控制台**：
 
-    ```
+    ```ps
     bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON 
     bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
     ```
@@ -107,13 +110,13 @@ ms.locfileid: "93105470"
 
     **从损坏的 OS 磁盘加载注册表配置单元：**
 
-    ```
+    ```ps
     REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM
     ```
 
     **在 ControlSet001 上启用：**
 
-    ```
+    ```ps
     REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
     REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f 
     REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f 
@@ -121,7 +124,7 @@ ms.locfileid: "93105470"
 
     **在 ControlSet002 上启用：**
 
-    ```
+    ```ps
     REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
     REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f 
     REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f 
@@ -129,7 +132,7 @@ ms.locfileid: "93105470"
 
     **卸载损坏的 OS 磁盘：**
 
-    ```
+    ```ps
     REG UNLOAD HKLM\BROKENSYSTEM
     ```
 
@@ -137,4 +140,4 @@ ms.locfileid: "93105470"
 
 使用 [VM 修复命令的步骤 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重新生成 VM。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

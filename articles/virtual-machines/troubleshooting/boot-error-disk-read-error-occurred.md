@@ -11,16 +11,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 origin.date: 06/01/2020
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: f22160ce9a00add0cdab8c620546beb94a449113
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: a5feba8de10be6549cc3e65b58aa2b0203fac781
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104539"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054368"
 ---
 <!--Verified successfully-->
 # <a name="troubleshoot-boot-error---disk-read-error-occurred"></a>排查启动错误 - 发生磁盘读取错误
@@ -40,6 +40,9 @@ ms.locfileid: "93104539"
 ## <a name="solution"></a>解决方案
 
 ### <a name="process-overview"></a>过程概述
+
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
 
 1. 创建和访问修复 VM。
 1. 选择解决方案：
@@ -65,22 +68,22 @@ ms.locfileid: "93104539"
 1. 输入“list disk”以列出系统上的磁盘，并确定附加的 OS 虚拟硬盘 (VHD)。
 1. 在找到附加的 OS VHD 后，输入“sel disk #”以选择相应磁盘。 请参阅下图中的示例，其中磁盘 1 是附加的 OS VHD。
 
-    :::image type="content" source="./media/disk-read-error-occurred/2.png" alt-text="发生磁盘读取错误。请按 Ctrl+Alt+Del 重启。":::
+    :::image type="content" source="./media/disk-read-error-occurred/2.png" alt-text="带有“list disk”命令的输出内容的 diskpart 窗口，其中磁盘 0 和磁盘 1 显示在表中。该窗口还会显示“sel disk 1”命令的输出内容，其中磁盘 1 是所选磁盘":::
 
 1. 选择该磁盘后，输入“list partition”以列出所选磁盘的分区。
 1. 确定启动分区后，输入“sel partition #”以选择相应分区。 启动分区的大小通常约为 350 MB。  请参阅下图中的示例，其中分区 1 是启动分区。
 
-    :::image type="content" source="./media/disk-read-error-occurred/3.png" alt-text="发生磁盘读取错误。请按 Ctrl+Alt+Del 重启。":::
+    :::image type="content" source="./media/disk-read-error-occurred/3.png" alt-text="带有“list partition”命令的输出内容的 diskpart 窗口，其中分区 1 和分区 2 显示在表中。该窗口还会显示“sel partition 1”命令的输出内容，其中分区 1 是所选磁盘。":::
 
 1. 输入“detail partition”以检查分区的状态。 请参阅以下屏幕截图中的示例，其中分区设置为“活动:否”或“活动:是”。
 
     “活动:否
 
-    :::image type="content" source="./media/disk-read-error-occurred/4.png" alt-text="发生磁盘读取错误。请按 Ctrl+Alt+Del 重启。":::
+    :::image type="content" source="./media/disk-read-error-occurred/4.png" alt-text="带有“detail partition”命令的输出内容的 diskpart 窗口，其中分区 1 设置为“活动:否”。":::
 
     “活动:是
 
-    :::image type="content" source="./media/disk-read-error-occurred/5.png" alt-text="发生磁盘读取错误。请按 Ctrl+Alt+Del 重启。":::
+    :::image type="content" source="./media/disk-read-error-occurred/5.png" alt-text="带有“detail partition”命令的输出内容的 diskpart 窗口，其中分区 1 设置为“活动:是”。":::
 
 1. 如果分区未设置为“活动”，请输入“active”以更改“活动”标志。
 1. 输入“detail partition”以检查状态更改是否已正确完成，并确认输出内容中是否包含“活动:是”。 
@@ -97,12 +100,12 @@ ms.locfileid: "93104539"
 
 ### <a name="enable-the-serial-console-and-memory-dump-collection"></a>启用串行控制台和内存转储收集
 
-**建议** ：在重新生成 VM 之前，通过运行以下脚本来启用串行控制台和内存转储收集：
+**建议**：在重新生成 VM 之前，通过运行以下脚本来启用串行控制台和内存转储收集：
 
 1. 以管理员身份打开权限提升的命令提示符会话。
 1. 运行以下命令：
 
-    **启用串行控制台** ：
+    **启用串行控制台**：
     
     ```
     bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON 
@@ -147,4 +150,4 @@ ms.locfileid: "93104539"
 
 使用 [VM 修复命令的步骤 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重新生成 VM。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

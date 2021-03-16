@@ -6,16 +6,16 @@ services: container-service
 ms.topic: article
 origin.date: 10/12/2020
 author: rockboyfor
-ms.date: 10/26/2020
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: d5270d54bbb843682e63bf4bf5eb3b302546dd34
-ms.sourcegitcommit: 7b3c894d9c164d2311b99255f931ebc1803ca5a9
+ms.openlocfilehash: 24043f03e2d7154614c71ac0183587b5f3213174
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470169"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055290"
 ---
 <!--Verified successfully-->
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>AKS 中 Windows Server 节点池的常见问题
@@ -38,7 +38,7 @@ Kubernetes 历来以 Linux 为中心。 上游 [Kubernetes.io][kubernetes] 网�
     - Windows Server 使用更大的二进制安全标识符 (SID)，该标识符存储在 Windows Security Access Manager (SAM) 数据库中。 此数据库不在主机与容器之间或容器之间共享。
 - **文件权限** - Windows Server 使用基于 SID 的访问控制列表，而不是权限和 UID + GID 的位掩码
 - **文件路径** - Windows Server 上的约定是使用 \，而不是 /。
-    - 在装载卷的 Pod 规范中，为 Windows Server 容器正确指定路径。 例如，不要在 Linux 容器中指定装入点 /mnt/volume，而是将要装载的驱动器号和位置（例如 */K/Volume* ）指定为 K: 驱动器。
+    - 在装载卷的 Pod 规范中，为 Windows Server 容器正确指定路径。 例如，不要在 Linux 容器中指定装入点 /mnt/volume，而是将要装载的驱动器号和位置（例如 */K/Volume*）指定为 K: 驱动器。
 
 ## <a name="what-kind-of-disks-are-supported-for-windows"></a>Windows 支持哪种磁盘？
 
@@ -119,8 +119,53 @@ AKS 当前不提供组托管服务帐户 (gMSA) 支持。
 
 具有 Windows 节点的群集可以有大约 500 个服务，超过它就会导致端口耗尽。
 
-<!--Not Available on till 10/21/2020 ## Can I use Azure Hybrid Benefit with Windows nodes?-->
-<!--az: error: unrecognized arguments: --enable-ahub-->
+## <a name="can-i-use-azure-hybrid-benefit-with-windows-nodes"></a>我是否可以将 Azure 混合权益用于 Windows 节点？
+
+是的。 适用于 Windows Server 的 Azure 混合权益可让你将本地 Windows Server 许可证用于 AKS Windows 节点，从而降低运营成本。
+
+可以在整个 AKS 群集或单个节点上使用 Azure 混合权益。 对于单个节点，你需要导航到[节点资源组][resource-groups]，并直接向节点应用 Azure 混合权益。 有关将 Azure 混合权益应用到单个节点的详细信息，请参阅[适用于 Windows Server 的 Azure 混合权益][hybrid-vms]。 
+
+若要在新的 AKS 群集上使用 Azure 混合权益，请使用 `--enable-ahub` 参数。
+
+```azurecli
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-sku Standard \
+    --windows-admin-password 'Password1234$' \
+    --windows-admin-username azure \
+    --network-plugin azure
+    --enable-ahub
+```
+
+若要在现有 AKS 群集上使用 Azure 混合权益，请使用 `--enable-ahub` 参数更新群集。
+
+```azurecli
+az aks update \
+    --resource-group myResourceGroup
+    --name myAKSCluster
+    --enable-ahub
+```
+
+若要检查是否在群集上设置了 Azure 混合权益，请使用以下命令：
+
+```azurecli
+az vmss show --name <vmss_name> --resource-group <MC_CLUSTERNAME>
+```
+
+> [!NOTE]
+> 调用 `az vmss show` cmdlet 前，请将 <vmss_name> 和 <MC_CLUSTERNAME> 替换为实际值。
+>
+
+
+如果群集启用了 Azure 混合权益，则 `az vmss show` 的输出将如下所示：
+
+```console
+"platformFaultDomainCount": 1,
+  "provisioningState": "Succeeded",
+  "proximityPlacementGroup": null,
+  "resourceGroup": "MC_CLUSTERNAME"
+```
 
 ## <a name="can-i-use-the-kubernetes-web-dashboard-with-windows-containers"></a>是否可以将 Kubernetes Web 仪表板用于 Windows 容器？
 
@@ -166,4 +211,4 @@ AKS 当前不提供组托管服务帐户 (gMSA) 支持。
 [hybrid-vms]: ../virtual-machines/windows/hybrid-use-benefit-licensing.md
 [resource-groups]: faq.md#why-are-two-resource-groups-created-with-aks
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

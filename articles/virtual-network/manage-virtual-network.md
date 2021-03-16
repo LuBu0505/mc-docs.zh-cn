@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 01/10/2019
 author: rockboyfor
-ms.date: 10/05/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6f8c9d133a69f5c67d46f00a15165159fa1c2312
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: 74270b080a9eabe1372dc0b30ccbb2407a0a9a9c
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507965"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102108777"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>创建、更改或删除虚拟网络
 
@@ -33,9 +33,9 @@ ms.locfileid: "96507965"
 
 在完成本文任何部分中的步骤之前，请完成以下任务：
 
-- 如果还没有 Azure 帐户，请注册[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+- 如果还没有 Azure 帐户，请注册[试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 - 如果使用门户，请打开 https://portal.azure.cn ，并使用 Azure 帐户登录。
-- 如果使用 PowerShell 命令来完成本文中的任务，请从计算机运行 PowerShell。  本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 来创建与 Azure 的连接。
+- 如果使用 PowerShell 命令来完成本文中的任务，请从计算机运行 PowerShell。  本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 来创建与 Azure 的连接。
 - 如果使用 Azure 命令行界面 (CLI) 命令来完成本文中的任务，请从计算机运行 CLI。 本教程需要 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 - 登录或连接到 Azure 所用的帐户必须分配有[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fvirtual-network%2ftoc.json#network-contributor)角色或者分配有可执行[权限](#permissions)中列出的适当操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fvirtual-network%2ftoc.json)。
 
@@ -48,8 +48,12 @@ ms.locfileid: "96507965"
 2. 为以下设置输入或选择值，然后选择“创建”：
     - **名称**：该名称在选择创建虚拟网络的 [资源组](../azure-glossary-cloud-terminology.md?toc=%2fvirtual-network%2ftoc.json#resource-group)中必须是唯一的。 虚拟网络创建后，无法更改名称。 可随着时间推移创建多个虚拟网络。 遵循命名约定可以更轻松地管理多个虚拟网络。
         
-        <!-- Not Available on [Naming conventions](/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)-->
-
+        <!--NOT AVAILABLE ON [Naming conventions](https://docs.azure.cn/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)-->
+        <!--MOONCAKE CUSOTIMZE TILL 02/20/2021-->
+        
+    - **订阅**：选择一个 [订阅](../azure-glossary-cloud-terminology.md?toc=%2fvirtual-network%2ftoc.json#subscription)。 不能在多个 Azure 订阅中使用同一个虚拟网络。 但是，可通过[虚拟网络对等](virtual-network-peering-overview.md)将一个订阅中的虚拟网络连接到另一个订阅中的虚拟网络。 任何连接到虚拟网络的 Azure 资源都必须与虚拟网络处于同一订阅中。
+    - **资源组**：选择现有的 [资源组](../azure-resource-manager/management/overview.md?toc=%2fvirtual-network%2ftoc.json#resource-groups)，或创建一个新组。 连接到虚拟网络的 Azure 资源可以与虚拟网络处于同一资源组中，也可以处于不同资源组中。
+    - **区域**：选择 Azure [位置](https://status.azure.com/status/)（也称为区域）。 一个虚拟网络只能位于一个 Azure 区域中。 但是，可以使用 VPN 网关将一个位置中的虚拟网络连接到另一个位置中的虚拟网络。 任何连接到虚拟网络的 Azure 资源都必须与虚拟网络位于同一区域中。
     - **地址空间**：虚拟网络的地址空间由以 CIDR 表示法指定的一个或多个非重叠地址范围组成。 定义的地址范围可以是公共或专用 (RFC 1918) 地址。 无论是将地址范围定义为公用还是专用，地址范围都只能从虚拟网络内、从互联的虚拟网络以及从任何已连接到虚拟网络的本地网络进行访问。 无法添加以下的地址范围：
         - 224.0.0.0/4（多播）
         - 255.255.255.255/32（广播）
@@ -63,17 +67,15 @@ ms.locfileid: "96507965"
         > 如果虚拟网络的地址范围与另一个虚拟网络或本地网络重叠，那么这两个网络不能连接。 定义地址范围之前，请考虑将来是否会想要将此虚拟网络连接到其他虚拟网络或本地网络。 Azure 建议使用组织拥有的专用地址空间或公共地址空间配置虚拟网络地址范围。
         >
 
-        - **子网名称**：子网名称在虚拟网络中必须唯一。 子网创建后，无法更改子网名称。 创建虚拟网络时，门户需要定义一个子网，即使虚拟网络不需要包含任何子网。 在创建虚拟网络时，只能在门户中定义一个子网。 虚拟网络创建后，可在将来向虚拟网络添加更多子网。 若要将子网添加到虚拟网络，请参阅[管理子网](virtual-network-manage-subnet.md)。 可以使用 Azure CLI 或 PowerShell 创建具有多个子网的虚拟网络。
+    - **子网名称**：子网名称在虚拟网络中必须唯一。 子网创建后，无法更改子网名称。 创建虚拟网络时，门户需要定义一个子网，即使虚拟网络不需要包含任何子网。 在创建虚拟网络时，只能在门户中定义一个子网。 虚拟网络创建后，可在将来向虚拟网络添加更多子网。 若要将子网添加到虚拟网络，请参阅[管理子网](virtual-network-manage-subnet.md)。 可以使用 Azure CLI 或 PowerShell 创建具有多个子网的虚拟网络。
 
         >[!TIP]
-        >有时，管理员会创建不同的子网来筛选或控制子网之间的流量路由。 在定义子网之前，请考虑一下需要如何筛选和路由子网之间的流量。 若要详细了解如何筛选子网之间的流量，请参阅[网络安全组](security-overview.md)。 Azure 自动在子网之间路由流量，但你可以替代 Azure 的默认路由。 若要详细了解有关 Azures 默认子网流量路由，请参阅[路由概述](virtual-networks-udr-overview.md)。
+        >有时，管理员会创建不同的子网来筛选或控制子网之间的流量路由。 在定义子网之前，请考虑一下需要如何筛选和路由子网之间的流量。 若要详细了解如何筛选子网之间的流量，请参阅[网络安全组](./network-security-groups-overview.md)。 Azure 自动在子网之间路由流量，但你可以替代 Azure 的默认路由。 若要详细了解有关 Azures 默认子网流量路由，请参阅[路由概述](virtual-networks-udr-overview.md)。
         >
 
     - **子网地址范围**：此范围必须处于为虚拟网络输入的地址空间内。 可以指定的最小范围为 /29，为子网提供八个 IP 地址。 Azure 保留每个子网中的第一个地址和最后一个地址，以确保协议一致性。 此外还会保留三个地址供 Azure 服务使用。 因此，子网地址范围为 /29 的虚拟网络仅有三个可用 IP 地址。 如果打算将虚拟网络连接到 VPN 网关，必须创建一个网关子网。 详细了解[网关子网地址范围具体考虑事项](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fvirtual-network%2ftoc.json#gwsub)。 在特定条件下，可以在子网创建后更改地址范围。 若要了解如何更改子网地址范围，请参阅[管理子网](virtual-network-manage-subnet.md)。
-    - **订阅**：选择一个 [订阅](../azure-glossary-cloud-terminology.md?toc=%2fvirtual-network%2ftoc.json#subscription)。 不能在多个 Azure 订阅中使用同一个虚拟网络。 但是，可通过[虚拟网络对等](virtual-network-peering-overview.md)将一个订阅中的虚拟网络连接到另一个订阅中的虚拟网络。 任何连接到虚拟网络的 Azure 资源都必须与虚拟网络处于同一订阅中。
-    - **资源组**：选择现有的 [资源组](../azure-resource-manager/management/overview.md?toc=%2fvirtual-network%2ftoc.json#resource-groups)，或创建一个新组。 连接到虚拟网络的 Azure 资源可以与虚拟网络处于同一资源组中，也可以处于不同资源组中。
-    - **位置**：选择 Azure [位置](https://azure.microsoft.com/regions/)（也称为区域）。 一个虚拟网络只能位于一个 Azure 区域中。 但是，可以使用 VPN 网关将一个位置中的虚拟网络连接到另一个位置中的虚拟网络。 任何连接到虚拟网络的 Azure 资源都必须与虚拟网络位于同一区域中。
 
+<!--MOONCAKE CUSOTIMZE TILL 02/20/2021-->
 命令
 
 - Azure CLI: [az network vnet create](https://docs.azure.cn/cli/network/vnet#az-network-vnet-create)
@@ -98,7 +100,7 @@ ms.locfileid: "96507965"
     - **属性**：显示有关虚拟网络的设置，包括虚拟网络的资源 ID 及其所在的 Azure 订阅。
     - **示意图**：该图提供已连接到虚拟网络的所有设备的可视表示形式。 图示提供一些有关设备的关键信息。 若要在此视图中管理设备，请选择设备。
     - **常用 Azure 设置**：若要详细了解常见的 Azure 设置，请参阅以下信息：
-    - [活动日志](../azure-monitor/platform/platform-logs-overview.md)
+        - [活动日志](../azure-monitor/platform/platform-logs-overview.md)
         - [访问控制 (IAM)](../role-based-access-control/overview.md)
         - [标记](../azure-resource-manager/management/tag-resources.md?toc=%2fvirtual-network%2ftoc.json)
         - [锁](../azure-resource-manager/management/lock-resources.md?toc=%2fvirtual-network%2ftoc.json)
@@ -194,6 +196,6 @@ ms.locfileid: "96507965"
 ## <a name="next-steps"></a>后续步骤
 
 - 使用 [PowerShell](powershell-samples.md) 或 [Azure CLI](cli-samples.md) 示例脚本或使用 Azure [资源管理器模板](template-samples.md)创建虚拟网络
-- 为虚拟网络创建和分配 [Azure Policy 定义](policy-samples.md)
+- 为虚拟网络创建和分配 [Azure Policy 定义](./policy-reference.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

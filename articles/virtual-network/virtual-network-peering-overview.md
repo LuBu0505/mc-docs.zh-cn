@@ -11,22 +11,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 11/15/2019
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 0cca7041e23b897ece0b6a1971243807ea5f03a6
-ms.sourcegitcommit: 1f933e4790b799ceedc685a0cea80b1f1c595f3d
+ms.openlocfilehash: c899223a27d16f0f73b45c9691d409b008aef6f6
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628250"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052556"
 ---
 # <a name="virtual-network-peering"></a>虚拟网络对等互连
 
-使用虚拟网络对等互连可以无缝连接 [Azure 虚拟网络](virtual-networks-overview.md)中的网络。 出于连接目的，两个虚拟网络会显示为一个。 虚拟机之间的流量使用 Azure 主干基础结构。 与同一网络中的虚拟机之间的流量一样，这些流量仅通过 Azure 的专用网络路由。 
-
-<!--CORRECT ON AZURE'S private -->
+使用虚拟网络对等互连可以无缝连接 Azure 中的两个或更多个[虚拟网络](virtual-networks-overview.md)。 出于连接目的，两个虚拟网络会显示为一个。 对等互连虚拟网络中虚拟机之间的流量使用 Azure 主干基础结构。 与同一网络中的虚拟机之间的流量一样，这些流量仅通过 Azure 的专用网络路由。 
 
 Azure 支持以下类型的对等互连：
 
@@ -53,7 +51,7 @@ Azure 支持以下类型的对等互连：
 对等互连虚拟网络中虚拟机之间的流量直接通过 Azure 主干基础结构路由，而不通过网关或公共 Internet 路由。
 
 可以在虚拟网络中应用网络安全组，以阻止访问其他虚拟网络或子网。
-配置虚拟网络对等互连时，可以打开或关闭虚拟网络之间的网络安全组规则。 如果在对等互连的虚拟网络之间建立了完全连接，则可以应用网络安全组来阻止或拒绝特定的访问。 完全连接是默认选项。 若要详细了解网络安全组，请参阅[安全组](security-overview.md)。
+配置虚拟网络对等互连时，可以打开或关闭虚拟网络之间的网络安全组规则。 如果在对等互连的虚拟网络之间建立了完全连接，则可以应用网络安全组来阻止或拒绝特定的访问。 完全连接是默认选项。 若要详细了解网络安全组，请参阅[安全组](./network-security-groups-overview.md)。
 
 ## <a name="service-chaining"></a>服务链
 
@@ -129,4 +127,4 @@ Azure 支持以下类型的对等互连：
 * 若要了解所有虚拟网络对等互连设置，请参阅[创建、更改或删除虚拟网络对等互连](virtual-network-manage-peering.md)。
 * 有关常见虚拟网络对等互连和全局虚拟网络对等互连问题的解答，请参阅 [VNet 对等互连](virtual-networks-faq.md#vnet-peering)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

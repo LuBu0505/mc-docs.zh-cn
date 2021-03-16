@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9da343afe7e77a4c66a5c4119ee2f31e5eb8e6cb
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 90827063144a0ccf97b7b9a7b71565ddec639d63
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230931"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196803"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>使用 TLS 保护通过 Azure 机器学习部署的 Web 服务
 
@@ -29,6 +29,8 @@ ms.locfileid: "98230931"
 > Azure 机器学习 SDK 使用术语“SSL”表示与安全通信相关的属性。 这并不意味着 Web 服务不会使用 TLS。 SSL 只是更广泛公认的术语。
 >
 > 具体来说，通过 Azure 机器学习部署的 Web 服务支持 AKS 和 ACI 的 TLS 版本 1.2。 对于 ACI 部署，如果在用较旧的 TLS 版本，建议重新部署以使用最新 TLS 版本。
+>
+> 不支持用于 Azure 机器学习 - AKS 推理的 TLS 版本1.3。
 
 TLS 和 SSL 均依赖数字证书，这有助于加密和身份验证。 有关数字证书工作原理的详细信息，请参阅维基百科主题[公钥基础结构](https://en.wikipedia.org/wiki/Public_key_infrastructure)。
 

@@ -4,16 +4,16 @@ description: 使用 Azure 资源管理器将虚拟机移到新的资源组或订
 ms.topic: conceptual
 origin.date: 12/01/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 6074e2acb97b1c20300bcbc7f1f30a5c5e5cc0d3
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 05fc2d2f695e06cc22b76228a29b9cda73a7e12e
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023108"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054068"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>针对虚拟机的移动指南
 
@@ -27,8 +27,9 @@ ms.locfileid: "98023108"
 
 * 无法移动具有标准 SKU 负载均衡器或标准 SKU 公共 IP 的虚拟机规模集。
 * 如果没有移动虚拟网络中的所有资源，则无法将现有虚拟网络中的虚拟机移到新订阅。
+* 无法跨订阅移动基于附加了计划的市场资源创建的虚拟机。 有关可能的解决方法，请参阅[具有 Azure 市场计划的虚拟机](#virtual-machines-with-marketplace-plans)。
 
-<!--MOONCAKE: Not Available on Low priority-->
+    <!--MOONCAKE: Not Available on Low priority-->
     
 * 可用性集中的虚拟机不能单独移动。
 
@@ -66,7 +67,7 @@ Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
 
 若要移动配置了 Azure 备份的虚拟机，必须从保管库中删除还原点。
 
-如果为虚拟机启用了[软删除](../../../backup/backup-azure-security-feature-cloud.md)，则在保留这些还原点的情况下，你将无法移动虚拟机。 请[禁用软删除](../../../backup/backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)，或在删除还原点后等待 14 天。
+如果为虚拟机启用了[软删除](../../../backup/soft-delete-virtual-machines.md)，则在保留这些还原点的情况下，你将无法移动虚拟机。 请[禁用软删除](../../../backup/backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)，或在删除还原点后等待 14 天。
 
 ### <a name="portal"></a>门户
 
@@ -150,6 +151,5 @@ Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
 
 * 有关用于移动资源的命令，请参阅[将资源移到新资源组或订阅](../move-resource-group-and-subscription.md)。
 
-<!--Not Available on  [Recovery Services limitations](../../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure-resource-manager/toc.json)-->
-
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--NOT AVAILABLE ON [Recovery Services limitations](../../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure-resource-manager/toc.json)-->
+<!--Update_Description: update meta properties, wording update, update link-->

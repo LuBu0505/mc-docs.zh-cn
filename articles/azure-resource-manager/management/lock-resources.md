@@ -2,23 +2,25 @@
 title: 锁定资源以防止更改
 description: 通过对所有用户和角色应用锁，来防止用户更新或删除 Azure 资源。
 ms.topic: conceptual
-origin.date: 11/11/2020
+origin.date: 02/01/2021
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1d770a03423b2a8b312e111888670fe84478374f
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 5547d4d404babc828c0620a332dc4e622e37670e
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063668"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053306"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源，以防止意外更改
 
-作为管理员，可能需要锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 可以将锁定级别设置为 **CanNotDelete** 或 **ReadOnly**。 在门户中，锁定分别称为 **删除** 和 **只读**。
+作为管理员，你可以锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 该锁优先于用户可能拥有的任何权限。
+
+可以将锁定级别设置为 **CanNotDelete** 或 **ReadOnly**。 在门户中，锁定分别称为 **删除** 和 **只读**。
 
 * **CanNotDelete** 味着经授权的用户仍可读取和修改资源，但不能删除资源。
 * **ReadOnly** 意味着经授权的用户可以读取资源，但不能删除或更新资源。 应用此锁类似于将所有经授权的用户限制于“读者”角色授予的权限。
@@ -35,7 +37,7 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 
 应用锁可能会导致意外结果，因为某些操作看似不会修改资源，但实际上需要执行被锁阻止的操作。 锁会阻止需要向 Azure 资源管理器 API 发出 POST 请求的任何操作。 被锁阻止的一些常见操作的示例包括：
 
-* **存储帐户** 上的只读锁将阻止所有用户列出密钥。 列出密钥操作通过 POST 请求进行处理，因为返回的密钥可用于写入操作。
+* 存储帐户上的只读锁阻止用户列出帐户密钥。 Azure 存储[列出密钥](https://docs.microsoft.com/rest/api/storagerp/storageaccounts/listkeys)操作通过 POST 请求进行处理，以保护对帐户密钥的访问，从而提供对存储帐户中数据的完全访问。 如果为存储帐户配置了只读锁，没有帐户密钥的用户就必须使用 Azure AD 凭据来访问 blob 或队列数据。 只读锁还阻止分配存储帐户或数据容器（blob 容器或队列）范围内的 Azure RBAC 角色。
 
 * **应用服务** 资源上的只读锁将阻止 Visual Studio 服务器资源管理器显示资源的文件，因为该交互需要写入访问权限。
 
@@ -350,4 +352,4 @@ PUT https://management.chinacloudapi.cn/{scope}/providers/Microsoft.Authorizatio
 * 可以使用自定义策略对订阅应用限制和约定。 有关详细信息，请参阅[什么是 Azure Policy？](../../governance/policy/overview.md)。
 
 <!-- Not Available on [Azure enterprise scaffold - prescriptive subscription governance](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/subscription-governance)-->
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: reference
 origin.date: 12/11/2020
-ms.date: 01/18/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 4bb01f192d6ad7ca41b421d64d2f1a3488d29658
-ms.sourcegitcommit: f086abe8bd2770ed10a4842fa0c78b68dbcdf771
+ms.openlocfilehash: 32578bbe4827a84c43e1030fa327dc2d472379cc
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98163212"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196223"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -38,7 +38,7 @@ ms.locfileid: "98163212"
 ## <a name="related-conceptual-articles"></a>相关概念性文章
 
 - [AzCopy 入门](storage-use-azcopy-v10.md)
-- [使用 AzCopy 和 Blob 存储传输数据](storage-use-azcopy-blobs.md)
+- [使用 AzCopy 和 Blob 存储传输数据](./storage-use-azcopy-v10.md#transfer-data)
 - [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
 - [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)
 
@@ -227,7 +227,7 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.chinaclou
 
 **--cache-control** 字符串 - 设置 cache-control 标头。 下载时返回。
 
-**--check-length** - 传输后检查目标上的文件长度。 如果源与目标之间不匹配，则将传输标记为失败。 （默认值为 `true`）。
+**--check-length** - 传输后检查目标上的文件长度。 如果源与目标之间不匹配，则将传输标记为失败。 （默认值为 `true`）
 
 **--check-md5** 字符串 - 指定下载时验证 MD5 哈希的严格程度。 仅在下载时可用。 可用选项：`NoCheck`、`LogOnly`、`FailIfDifferent``FailIfDifferentOrMissing`。 （默认值为 `FailIfDifferent`）。
 
@@ -267,6 +267,8 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.chinaclou
 
 **--include-pattern** 字符串 - 复制时仅包括这些文件。 此选项支持通配符 (*)。 使用 `;` 分隔文件。
 
+**--list-of-versions** 字符串指定一个文件，其中每个版本 ID 都列在单独的一行中。 确保源必须指向单个 Blob，并且使用此标志在文件中指定的所有版本 ID 必须仅属于源 Blob。 AzCopy 会将指定的版本下载到提供的目标文件夹中。 有关详细信息，请参阅[下载以前版本的 blob](./storage-use-azcopy-v10.md#transfer-data)。
+
 **--log-level** 字符串 - 定义日志文件的日志详细程度，可用级别：INFO（所有请求/响应）、WARNING（响应缓慢）、ERROR（仅限失败的请求）和 NONE（无输出日志）。 （默认值为 `INFO`）。 
 
 **--metadata** 字符串 - 将这些键值对作为元数据上传到 Azure 存储。
@@ -279,7 +281,7 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.chinaclou
 
 **--preserve-last-modified-time** - 仅当目标为文件系统时才可用。
 
-**--preserve-owner** - 仅当下载时，且仅当使用 `--preserve-smb-permissions` 时才起作用。 如果为 true（默认值），则下载内容中将保留文件“所有者”和“组”。 如果设置为 false，则 `--preserve-smb-permissions` 仍保留 ACL，但“所有者”和“组”的保留将基于运行 AzCopy 的用户（默认值为 true）。
+**--preserve-owner** - 仅当下载时，且仅当使用 `--preserve-smb-permissions` 时才起作用。 如果为 true（默认值），则下载内容中将保留文件“所有者”和“组”。 如果设置为 false，则 `--preserve-smb-permissions` 仍保留 ACL，但“所有者”和“组”的保留将基于运行 AzCopy 的用户（默认值为 true）
 
 **--preserve-smb-info** - 默认值为 False。 保留 SMB 感知资源（Windows 和 Azure 文件存储）之间的 SMB 属性信息（上次写入时间、创建时间、属性位）。 只会传输 Azure 文件存储支持的属性位；其他的将被忽略。 此标志同时适用于文件和文件夹，除非指定了“仅文件”筛选器（例如包含模式）。 为文件夹传输的信息与为文件传输的信息几乎相同，只是“上次写入时间”除外，不会为文件夹保留该信息。
 

@@ -6,22 +6,23 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 03/04/2021
 ms.author: v-johya
-ms.openlocfilehash: b1a85299fc9c11cf81851103d689ea8f032e2bf6
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: 4f42336db27cc45376e6e3dc20efcfbbd0cb8008
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579525"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197358"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>为 Azure 准备基于 Red Hat 的虚拟机
+
 在本文中，将了解如何准备 Red Hat Enterprise Linux (RHEL) 虚拟机，以供在 Azure 中使用。 本文介绍的 RHEL 版本为 6.7+ 和 7.1+。 本文所述的用于准备工作的虚拟机监控程序为 Hyper-V、基于内核的虚拟机 (KVM) 和 VMware。 有关参与 Red Hat 云访问计划的资格要求的详细信息，请参阅 [Red Hat 的云访问网站](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)和[在 Azure 上运行 RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)。
 <!--Not Available on [Azure Image Builder](/virtual-machines/linux/image-builder-overview)-->
 
 ## <a name="hyper-v-manager"></a>Hyper-V 管理器
 
-本部分说明如何使用 Hyper-V 管理器准备 [RHEL 6](#rhel-6-using-hyper-v-manager) 或 [RHEL 7](#rhel-7-using-hyper-v-manager) 虚拟机。
+本部分说明如何使用 Hyper-V 管理器准备 [RHEL 6](#rhel-6-using-hyper-v-manager)、[RHEL 7](#rhel-7-using-hyper-v-manager) 或 [RHEL 8](#rhel-8-using-hyper-v-manager) 虚拟机。
 
 ### <a name="prerequisites"></a>先决条件
 本部分假定你已经从 Red Hat 网站获取 ISO 文件并将 RHEL 映像安装到虚拟硬盘 (VHD)。 有关如何使用 Hyper-V 管理器来安装操作系统映像的更多详细信息，请参阅[安装 Hyper-V 角色和配置虚拟机](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))。
@@ -31,7 +32,7 @@ ms.locfileid: "99579525"
 * Azure 不支持 VHDX 格式。 Azure 仅支持固定 VHD。 可使用 Hyper-V 管理器将磁盘转换为 VHD 格式，也可以使用 convert-vhd cmdlet。 如果使用 VirtualBox，则选择“固定大小”，而不是在创建磁盘时默认动态分配选项。
 * Azure 支持 Gen1（BIOS 引导）和Gen2（UEFI 引导）虚拟机。
 * VHD 允许的最大大小为 1,023 GB。
-* 支持逻辑卷管理器 (LVM)，该管理器可以在 Azure 虚拟机中的 OS 磁盘或数据磁盘上使用。 但是，通常建议在 OS 磁盘上使用标准分区而不是 LVM。 这种做法可以避免 LVM 名称与克隆的虚拟机冲突，尤其是当需要将操作系统磁盘附加到另一台相同的虚拟机进行故障排除时。 另请参阅 [LVM](configure-lvm.md) 和 [RAID](configure-raid.md) 文档。
+* 支持逻辑卷管理器 (LVM)，该管理器可以在 Azure 虚拟机中的 OS 磁盘或数据磁盘上使用。 但是，通常建议在 OS 磁盘上使用标准分区而不是 LVM。 这种做法可以避免 LVM 名称与克隆的虚拟机冲突，尤其是当需要将操作系统磁盘附加到另一台相同的虚拟机进行故障排除时。 另请参阅 [LVM](https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/configure-lvm) 和 [RAID](https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/configure-raid) 文档。
 * 对装载通用磁盘格式 (UDF) 文件系统的内核支持是必需的。 在 Azure 上首次启动时，附加到来宾的 UDF 格式媒体会将预配配置传递到 Linux 虚拟机。 Azure Linux 代理必须能够装载 UDF 文件系统以读取其配置并预配虚拟机，如果没有此支持，预配将失败！
 * 不要在操作系统磁盘上配置交换分区。 可以在以下步骤中找到有关此内容的详细信息。
 
@@ -274,8 +275,8 @@ ms.locfileid: "99579525"
     cat > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg <<EOF
     datasource_list: [ Azure ]
     datasource:
-    Azure:
-        apply_network_config: False
+        Azure:
+            apply_network_config: False
     EOF
     ```
 
@@ -396,7 +397,7 @@ ms.locfileid: "99579525"
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
     ```
    
-   这还可确保所有控制台消息都发送到第一个串行端口并启用与串行控制台的交互，从而可以协助 Azure 支持人员针对问题进行调试。 此配置还会关闭 NIC 的新 RHEL 7 命名约定。
+   这还可确保所有控制台消息都发送到第一个串行端口并启用与串行控制台的交互，从而可以协助 Azure 支持人员针对问题进行调试。 此配置还会禁用 NIC 的新命名约定。
    
    1. 另外，还建议删除以下参数：
 
@@ -461,8 +462,8 @@ ms.locfileid: "99579525"
     cat > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg <<EOF
     datasource_list: [ Azure ]
     datasource:
-    Azure:
-        apply_network_config: False
+        Azure:
+            apply_network_config: False
     EOF
     ```
 

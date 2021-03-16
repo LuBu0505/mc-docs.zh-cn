@@ -5,16 +5,15 @@ author: WenJason
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-origin.date: 11/12/2020
-ms.date: 01/18/2021
+origin.date: 02/11/2021
+ms.date: 03/08/2021
 ms.author: v-jay
-ms.reviewer: stewu
-ms.openlocfilehash: 38bff2afa711957ea962d8740af5f6371305eea1
-ms.sourcegitcommit: f086abe8bd2770ed10a4842fa0c78b68dbcdf771
+ms.openlocfilehash: 3ae629bff6a5e3d89aec3bd6df4b17bf6be3a382
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98163188"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196257"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中可用的 Blob 存储功能
 
@@ -44,13 +43,17 @@ Blob 存储功能（例如[诊断日志记录](../common/storage-analytics-loggi
 |快照|预览|预览|[blob 快照](snapshots-overview.md)|
 |静态网站|预览|预览|[Azure 存储中的静态网站托管](storage-blob-static-website.md)|
 |不可变存储|预览|预览|[使用不可变的存储来存储业务关键型 Blob 数据](storage-blob-immutable-storage.md)|
-|Blob 软删除|尚不支持|尚不支持|[blob 的软删除](storage-blob-soft-delete.md)|
+|自定义域|预览<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|预览<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[将自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)|
+|Blob 软删除|尚不支持|尚不支持|[blob 的软删除](./soft-delete-blob-overview.md)|
 |匿名公共访问 |正式发布|正式发布| 请参阅[配置对容器和 Blob 的匿名公共读取访问](anonymous-read-access-configure.md)。|
 |客户管理的帐户故障转移|尚不支持|尚不支持|[灾难恢复和帐户故障转移](../common/storage-disaster-recovery-guidance.md?toc=%2fstorage%2fblobs%2ftoc.json)|
 |客户提供的密钥|尚不支持|尚不支持|[在对 Blob 存储的请求中提供加密密钥](encryption-customer-provided-keys.md)|
-|自定义域|尚不支持|尚不支持|[将自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)|
 |加密范围|尚不支持|尚不支持|[创建和管理加密范围（预览）](encryption-scope-manage.md)|
 |更改源|尚不支持|尚不支持|[Azure Blob 存储中的更改源支持](storage-blob-change-feed.md)|
+|对象复制|尚不支持|尚不支持|[为块 blob 配置对象复制](object-replication-configure.md)|
+|Blob 版本控制|尚不支持|尚不支持|[启用和管理 blob 版本控制](versioning-enable.md)|
+
+<div id="preview-form"><sup>1</sup>自定义域名只能映射到 blob 服务或静态网站终结点。 Data Lake Storage 终结点不受支持。</a>  </div>
 
 ## <a name="see-also"></a>另请参阅
 

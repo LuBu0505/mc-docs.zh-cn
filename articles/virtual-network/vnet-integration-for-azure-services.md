@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 origin.date: 12/01/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: 01/18/2021
 ms.author: v-yeche
-ms.openlocfilehash: 302cdaf5b4aa6d93013f875e2d8aa44f0e3dc4eb
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: d188a5e5eeb05ab13c31f2ee1b616f483c670fb9
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063607"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054402"
 ---
 <!--Verified successfully-->
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>将 Azure 服务与虚拟网络集成以实现网络隔离
@@ -31,7 +31,8 @@ VNet 集成可以为 Azure 服务提供网络隔离的优点，可通过以下�
 - [将服务的专用实例部署到虚拟网络中](virtual-network-for-azure-services.md)。 随后即可在虚拟网络内以及从本地网络私密访问这些服务。
 - 使用专用终结点，它可以通过私密且安全的方式将你连接到由 Azure 专用链接提供支持的服务。 专用终结点使用 VNet 中的专用 IP 地址将服务有效地引入虚拟网络中。
 
-    <!--Not Available on [Private Endpoint](../private-link/private-endpoint-overview.md)-->
+    <!--NOT AVAILABLE ON [Private Endpoint](../private-link/private-endpoint-overview.md)-->
+    <!--NOT AVAILABLE ON [Azure Private Link](../private-link/private-link-overview.md)-->
     
 - 通过[服务终结点](virtual-network-service-endpoints-overview.md)将虚拟网络扩展到服务，使用公共终结点访问服务。 服务终结点可使服务资源在虚拟网络中得到保护。
 - 使用[服务标记](service-tags-overview.md)来允许或拒绝 Azure 资源进出公共 IP 终结点的流量。
@@ -48,9 +49,9 @@ VNet 集成可以为 Azure 服务提供网络隔离的优点，可通过以下�
 - 虚拟网络可使用专用 IP 地址进行对等互连，实现虚拟网络中资源之间的彼此通信。
 - 虚拟网络中的服务实例通常由 Azure 服务完全托管。 这包括监视资源的运行状况并根据负载进行缩放。
 - 服务实例部署在虚拟网络的子网中。 根据服务提供的指南，必须通过网络安全组对子网开放入站和出站网络访问。
-- 某些服务还会对它们能够部署到其中的子网施加限制，限制策略、路由的应用，或者要求将 VM 和服务资源组合到同一子网中。 请查看每项服务，了解这些具体限制，因为它们会随时间而变化。 应用服务是此类服务的一个示例。
+- 某些服务还会对它们能够部署到其中的子网施加限制，限制策略、路由的应用，或者要求将 VM 和服务资源组合到同一子网中。 请查看每项服务，了解这些具体限制，因为它们会随时间而变化。 此类服务的示例包括 Azure 容器实例和应用服务。
     
-    <!--Not Available on  Azure NetApp Files, Dedicated HSM, Azure Container Instances-->
+    <!--Not Available on  Azure NetApp Files, Dedicated HSM-->
     
 - （可选）服务可能需要一个委派子网作为显式标识符，用于表示子网可承载特定服务。 服务可以通过委托获得显式权限，可以在委托的子网中创建服务专属资源。
 - 如需 REST API 响应的示例，请参阅包含委托子网的虚拟网络。 可以通过可用委托 API 获得一个内容广泛的列表，其中包含的服务使用委托子网模型。
@@ -76,7 +77,7 @@ VNet 服务终结点通过 Azure 主干网络的优化路由提供与 Azure 服�
 
 ## <a name="service-tags"></a>服务标记
 
-服务标记代表给定 Azure 服务中的一组 IP 地址前缀。 使用服务标记，可以在[网络安全组](https://docs.azure.cn/virtual-network/security-overview#security-rules)或 [Azure 防火墙](https://docs.azure.cn/firewall/service-tags)中定义网络访问控制。 通过在规则的相应源字段或目标字段中指定服务标记名（例如，AzureEventGrid），可以允许或拒绝相应服务的流量。
+服务标记代表给定 Azure 服务中的一组 IP 地址前缀。 使用服务标记，可以在[网络安全组](./network-security-groups-overview.md#security-rules)或 [Azure 防火墙](../firewall/service-tags.md)中定义网络访问控制。 通过在规则的相应源字段或目标字段中指定服务标记名（例如，AzureEventGrid），可以允许或拒绝相应服务的流量。
 
 :::image type="content" source="./media/network-isolation/service-tags.png" alt-text="使用服务标记允许或拒绝流量":::
 
@@ -89,7 +90,5 @@ VNet 服务终结点通过 Azure 主干网络的优化路由提供与 Azure 服�
 - 了解如何[将应用与 Azure 网络集成](../app-service/web-sites-integrate-with-vnet.md)。
 - 了解如何[使用服务标记限制对资源的访问](tutorial-restrict-network-access-to-resources.md)。
 
-<!--Not Available on [connect privately to an Azure Cosmos account using Azure Private Link](../private-link/create-private-endpoint-cosmosdb-portal.md)-->
-
-<!-- Update_Description: new article about vnet integration for azure services -->
-<!--NEW.date: 01/18/2021-->
+<!--NOT AVAILABLE ON [connect privately to an Azure Cosmos account using Azure Private Link](../private-link/tutorial-private-endpoint-cosmosdb-portal.md)-->
+<!--Update_Description: update meta properties, wording update, update link-->

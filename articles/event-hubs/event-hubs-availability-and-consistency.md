@@ -2,45 +2,38 @@
 title: 可用性和一致性 - Azure 事件中心 | Microsoft Docs
 description: 如何使用分区为 Azure 事件中心提供最大程度的可用性和一致性。
 ms.topic: article
-ms.date: 01/29/2021
+ms.date: 02/24/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7bf3ef49441a54c2cb55e43bd03b26d526dd5807
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: 4ac4a9b19659fabbb8d63e2787732839c3fc62eb
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579621"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196747"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>事件中心内的可用性和一致性
-
-## <a name="overview"></a>概述
-Azure 事件中心使用[分区模型](event-hubs-scalability.md#partitions)在单个事件中心内提高可用性和并行化。 例如，如果事件中心具有四个分区，并且其中一个分区要在负载均衡操作中从一台服务器移动到另一台服务器，则仍可以通过其他三个分区进行发送和接收。 此外，具有更多分区可以让更多并发读取器处理数据，从而提高聚合吞吐量。 了解分布式系统中分区和排序的意义是解决方案设计的重要方面。
-
-为了帮助说明排序与可用性之间的权衡，请参阅“CAP 定理”（也称为 Brewer 的定理）。 此定理论述了如何在一致性、可用性和分区容差之间进行选择。 它指出对于由网络分区的系统，始终在一致性与可用性之间作出权衡。
-
-Brewer 的定理按如下所示定义一致性和可用性：
-* 分区容差：系统即使在出现分区故障时也能继续处理数据的数据处理能力。
-* 可用性：非故障节点在合理时间内返回合理响应（没有错误或超时）。
-* 一致性：保证读取针对给定客户端返回最新写入。
-
-## <a name="partition-tolerance"></a>分区容差
-事件中心在分区数据模型的基础上构建。 可以在设置过程中配置事件中心内的分区数，但以后无法更改此值。 由于必须对事件中心使用分区，因此需要在应用程序的可用性和一致性方面进行决策。
+本文提供了有关 Azure 事件中心支持的可用性和一致性的信息。 
 
 ## <a name="availability"></a>可用性
-开始使用事件中心的最简单方法是使用默认行为。 
+Azure 事件中心分散了个别计算机发生灾难性故障的风险，甚至分散了跨数据中心内多个故障域的群集中整个机架发生灾难性故障的风险。 它实现了透明的故障检测和故障转移机制，使服务能够继续在有保证的服务级别运行，并且发生此类故障时，通常不会出现明显的中断。
 
-#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.Messaging.EventHubs（5.0.0 或更高版本）](#tab/latest)
-如果新建 [EventHubProducerClient](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient)  对象并使用 [SendAsync](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync)  方法，则事件将自动分布在事件中心的分区之间。 此行为可实现最大运行时间量。
-
-#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft.Azure.EventHubs（4.1.0 或更早版本）](#tab/old)
-如果创建新的 **[EventHubClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** 对象并使用 **[Send](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** 方法，会自动在事件中心内的各个分区之间分发这些事件。 此行为可实现最大运行时间量。
-
----
-
-对于需要最大运行时间的用例，此模型是首选模型。
+当客户端应用程序将事件发送到事件中心时，事件会自动分布到事件中心内的各个分区中。 如果某个分区由于某种原因而不可用，则会将事件分布到其余分区中。 此行为可实现最大运行时间量。 对于要求保障最大正常运行时间的用例，此模型是首选模型，而不是将事件发送到特定分区。 有关详细信息，请参阅[分区](event-hubs-scalability.md#partitions)。
 
 ## <a name="consistency"></a>一致性
-在某些方案中，事件的排序可能十分重要。 例如，可能希望后端系统先处理更新命令，再处理删除命令。 在这种情况下，可以在事件上设置分区键，也可以使用 `PartitionSender` 对象（如果使用的是旧 Microsoft.Azure.Messaging 库）仅将事件发送到某个分区。 这样做可确保从分区读取这些事件时，按顺序读取它们。 
+在某些方案中，事件的排序可能十分重要。 例如，可能希望后端系统先处理更新命令，再处理删除命令。 在此情况下，客户端应用程序将事件发送到某个特定分区，以便保留排序。 当使用者应用程序从该分区使用这些事件时，将按顺序读取它们。 
+
+使用此配置，请记住，如果发送到的特定分区不可用，则会收到错误响应。 作为对比，如果未与单个分区关联，则事件中心服务会将事件发送到下一个可用分区。
+
+确保排序的一个可能解决方法（同时还最大限度地延长运行时间）是将事件作为事件处理应用程序的一部分进行聚合。 实现此目的的最简单方法是使用自定义序号属性来标记事件。
+
+在此情况下，生成者客户端将事件发送到事件中心内的一个可用分区，并从应用程序设置对应序号。 此解决方案要求处理应用程序保持状态，不过会为发送者提供更可能可用的终结点。
+
+## <a name="appendix"></a>附录
+
+### <a name="net-examples"></a>.NET 示例
+
+#### <a name="send-events-to-a-specific-partition"></a>将事件发送到特定分区
+在事件上设置分区键，或者使用 `PartitionSender` 对象（如果使用的是旧 Microsoft.Azure.Messaging 库）仅将事件发送到某个分区。 这样做可确保从分区读取这些事件时，按顺序读取它们。 
 
 如果使用的是较新的 Azure.Messaging.EventHubs 库，请参阅[将代码从 PartitionSender 迁移到 EventHubProducerClient，以便将事件发布到分区](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition)。
 
@@ -87,9 +80,8 @@ finally
 
 ---
 
-使用此配置，请记住，如果发送到的特定分区不可用，则会收到错误响应。 作为对比，如果未与单个分区关联，则事件中心服务会将事件发送到下一个可用分区。
-
-确保排序的一个可能解决方法（同时还最大限度地延长运行时间）是将事件作为事件处理应用程序的一部分进行聚合。 实现此目的的最简单方法是使用自定义序号属性标记事件。 以下代码展示一个示例：
+### <a name="set-a-sequence-number"></a>设置序号
+下面的示例使用自定义序号属性来标记事件。 
 
 #### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.Messaging.EventHubs（5.0.0 或更高版本）](#tab/latest)
 

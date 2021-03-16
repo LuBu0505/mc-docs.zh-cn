@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 origin.date: 05/07/2020
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 43c61205d89a2946d8793b18983d82317ce3f102
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 86cc6e343272a32825f29999002ef11d410465ec
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106215"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054310"
 ---
 <!--Verified successfully-->
 <!--Renamed/Redirect Verified file-->
@@ -34,7 +34,7 @@ ms.locfileid: "93106215"
 
 :::image type="content" source="media//unresponsive-vm-apply-group-policy/applying-group-policy-1.png" alt-text="显示正在应用和加载组策略本地用户的屏幕截图 (Windows Server 2012 R2)。":::
 
-:::image type="content" source="media/unresponsive-vm-apply-group-policy/applying-group-policy-2.png" alt-text="显示正在应用和加载组策略本地用户的屏幕截图 (Windows Server 2012 R2)。":::
+:::image type="content" source="media/unresponsive-vm-apply-group-policy/applying-group-policy-2.png" alt-text="显示正在应用和加载组策略本地用户的屏幕截图 (Windows Server 2012)。":::
 
 ## <a name="cause"></a>原因
 
@@ -50,6 +50,9 @@ ms.locfileid: "93106215"
 ## <a name="resolution"></a>解决方法
 
 ### <a name="process-overview"></a>过程概述
+
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
 
 1. [创建和访问修复 VM](#step-1-create-and-access-a-repair-vm)
 1. [禁用策略](#step-2-disable-the-policy)
@@ -69,7 +72,23 @@ ms.locfileid: "93106215"
 1. 在修复 VM 上，打开“注册表编辑器”。
 1. 找到“HKEY_LOCAL_MACHINE”项，然后从菜单中选择“文件” > “加载配置单元”  。
 
-    :::image type="content" source="media/unresponsive-vm-apply-group-policy/registry.png" alt-text="显示正在应用和加载组策略本地用户的屏幕截图 (Windows Server 2012 R2)。" ::: /v CleanupProfiles /f
+    :::image type="content" source="media/unresponsive-vm-apply-group-policy/registry.png" alt-text="屏幕截图，显示了突出显示的 HKEY_LOCAL_MACHINE 和包含“加载配置单元”的菜单。":::
+
+    - 可以使用加载配置单元从脱机系统加载注册表项。 在这种情况下，系统是附加到修复 VM 的受损磁盘。
+    - 系统范围内的设置存储在 `HKEY_LOCAL_MACHINE` 上，可以缩写为“HKLM”。
+1. 在附加的磁盘中，转到 `\windows\system32\config\SOFTWARE` 文件并将其打开。
+
+    1. 当系统提示你输入名称时，请输入 BROKENSOFTWARE。
+    1. 若要验证是否已加载 BROKENSOFTWARE，展开“HKEY_LOCAL_MACHINE”并查找已添加的 BROKENSOFTWARE 项。
+1. 转到 BROKENSOFTWARE，并检查加载的配置单元中是否有 CleanupProfile 项。
+
+    1. 如果该项存在，说明已设置 CleanupProfile 策略。 它的值表示以天为单位的保留策略。 继续删除该项。
+    1. 如果该项不存在，说明未设置 CleanupProfile 策略。 [提交支持票证](https://support.azure.cn/support/support-azure/)，包括位于附加的 OS 磁盘的 Windows 目录中的内存 .dmp 文件。
+
+1. 使用以下命令删除 CleanupProfiles 项：
+
+    ```
+    reg delete "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows\System" /v CleanupProfiles /f
     ```
 1. 使用以下命令卸载 BROKENSOFTWARE 配置单元：
 
@@ -139,4 +158,4 @@ ms.locfileid: "93106215"
 
 如果在应用 Windows 更新时遇到问题，请参阅 [VM 在应用 Windows 更新时无响应并收到“C01A001D”错误](./unresponsive-vm-apply-windows-update.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

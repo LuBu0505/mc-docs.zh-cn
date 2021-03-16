@@ -7,13 +7,13 @@ ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
 origin.date: 01/23/2020
-ms.date: 01/27/2021
-ms.openlocfilehash: 2b69aef6f5d7ecf08360be9e883e63b62deb412c
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 02/22/2021
+ms.openlocfilehash: 396364f567cef65c96ec657b885481b4ebbda360
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059511"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197543"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题解答
 
@@ -32,7 +32,7 @@ ms.locfileid: "99059511"
 自动启用的 Azure Monitor 功能（如收集指标和活动日志）免费提供。 存在与其他功能（例如日志查询和警报）相关的费用。 有关详细定价信息，请参阅 [Azure Monitor 定价页](https://www.azure.cn/pricing/details/monitor/)。
 
 ### <a name="how-do-i-enable-azure-monitor"></a>如何启用 Azure Monitor？
-在你创建新的 Azure 订阅时就会启用 Azure Monitor，并自动收集[活动日志](./platform/platform-logs-overview.md)和平台[指标](platform/data-platform-metrics.md)。 创建[诊断设置](platform/diagnostic-settings.md)可收集有关 Azure 资源操作的更多详细信息，添加[监视解决方案](insights/solutions.md)和[见解](./monitor-reference.md)可为特定服务收集的收集数据提供额外的分析。 
+在你创建新的 Azure 订阅时就会启用 Azure Monitor，并自动收集[活动日志](./essentials/platform-logs-overview.md)和平台[指标](essentials/data-platform-metrics.md)。 创建[诊断设置](essentials/diagnostic-settings.md)可收集有关 Azure 资源操作的更多详细信息，添加[监视解决方案](insights/solutions.md)和[见解](./monitor-reference.md)可为特定服务收集的收集数据提供额外的分析。 
 
 ### <a name="how-do-i-access-azure-monitor"></a>如何访问 Azure Monitor？
 可通过 Azure 门户中的“监视”菜单访问各项 Azure Monitor 功能和数据。 通过不同 Azure 服务的菜单的“监视”部分，可访问相同的工具，其中数据经过筛选，指向特定的资源。 也可通过 CLI、PowerShell 和 REST API 针对各种场景来访问 Azure Monitor 数据。
@@ -41,21 +41,21 @@ ms.locfileid: "99059511"
 否。 Azure Monitor 是一种用于处理和存储大量数据的可缩放式云服务，但它可监视本地和其他云中的资源。
 
 ### <a name="can-azure-monitor-monitor-on-premises-resources"></a>Azure Monitor 能否监视本地资源？
-可以，除了从 Azure 资源收集监视数据以外，Azure Monitor 还可从其他云和本地的虚拟机和应用程序中收集数据。 请参阅 [Azure Monitor 的监视数据源](platform/data-sources.md)。
+可以，除了从 Azure 资源收集监视数据以外，Azure Monitor 还可从其他云和本地的虚拟机和应用程序中收集数据。 请参阅 [Azure Monitor 的监视数据源](agents/data-sources.md)。
 
 ## <a name="monitoring-data"></a>监视数据
 
 ### <a name="where-does-azure-monitor-get-its-data"></a>Azure Monitor 从何处获取数据？
-Azure Monitor 从各种源（包括来自 Azure 平台的日志和指标，自定义应用程序和在虚拟机上运行的代理）收集数据。 其他服务（例如 Azure 安全中心和网络观察程序）会将数据收集到 Log Analytics 工作区中，以便能够使用 Azure Monitor 数据进行分析。 你也可使用日志或指标的 REST API 将自定义数据发送到 Azure Monitor。 请参阅 [Azure Monitor 的监视数据源](platform/data-sources.md)。
+Azure Monitor 从各种源（包括来自 Azure 平台的日志和指标，自定义应用程序和在虚拟机上运行的代理）收集数据。 其他服务（例如 Azure 安全中心和网络观察程序）会将数据收集到 Log Analytics 工作区中，以便能够使用 Azure Monitor 数据进行分析。 你也可使用日志或指标的 REST API 将自定义数据发送到 Azure Monitor。 请参阅 [Azure Monitor 的监视数据源](agents/data-sources.md)。
 
 ### <a name="what-data-is-collected-by-azure-monitor"></a>Azure Monitor 会收集哪些数据？ 
-Azure Monitor 将来自各种来源的数据收集到[日志](platform/data-platform-logs.md)或[指标](platform/data-platform-metrics.md)中。 每种数据类型都有自身的相对优点，每种数据都支持 Azure Monitor 中的一组特定功能。 每个 Azure 订阅都有一个指标数据库，可根据需要创建多个 Log Analytics 工作区来收集日志。 请参阅 [Azure Monitor 数据平台](platform/data-platform.md)。
+Azure Monitor 将来自各种来源的数据收集到[日志](logs/data-platform-logs.md)或[指标](essentials/data-platform-metrics.md)中。 每种数据类型都有自身的相对优点，每种数据都支持 Azure Monitor 中的一组特定功能。 每个 Azure 订阅都有一个指标数据库，可根据需要创建多个 Log Analytics 工作区来收集日志。 请参阅 [Azure Monitor 数据平台](/data-platform.md)。
 
 ### <a name="is-there-a-maximum-amount-of-data-that-i-can-collect-in-azure-monitor"></a>可在 Azure Monitor 中收集的数据量是否有上限？
-可收集的指标数据量没有限制，但数据的存储时间最长为 93 天。 请参阅[指标保留期](platform/data-platform-metrics.md#retention-of-metrics)。 可收集的日志数据量没有限制，但可能受到你为 Log Analytics 工作区选择的定价层的影响。 请参阅[定价详细信息](https://www.azure.cn/pricing/details/monitor/)。
+可收集的指标数据量没有限制，但数据的存储时间最长为 93 天。 请参阅[指标保留期](essentials/data-platform-metrics.md#retention-of-metrics)。 可收集的日志数据量没有限制，但可能受到你为 Log Analytics 工作区选择的定价层的影响。 请参阅[定价详细信息](https://www.azure.cn/pricing/details/monitor/)。
 
 ### <a name="how-do-i-access-data-collected-by-azure-monitor"></a>如何访问 Azure Monitor 收集的数据？
-见解和解决方案提供了自定义体验，你可以多种方式使用在 Azure Monitor 中存储的数据。 你可通过以 Kusto 查询语言 (KQL) 编写的日志查询直接使用日志数据。 在 Azure 门户中，你可编写和运行查询，并使用 Log Analytics 以交互方式分析数据。 可使用指标资源管理器分析 Azure 门户中的指标。 请参阅[在 Azure Monitor 中分析日志数据](log-query/log-query-overview.md)和 [Azure 指标资源管理器入门](platform/metrics-getting-started.md)。
+见解和解决方案提供了自定义体验，你可以多种方式使用在 Azure Monitor 中存储的数据。 你可通过以 Kusto 查询语言 (KQL) 编写的日志查询直接使用日志数据。 在 Azure 门户中，你可编写和运行查询，并使用 Log Analytics 以交互方式分析数据。 可使用指标资源管理器分析 Azure 门户中的指标。 请参阅[在 Azure Monitor 中分析日志数据](logs/log-query-overview.md)和 [Azure 指标资源管理器入门](essentials/metrics-getting-started.md)。
 
 ## <a name="solutions-and-insights"></a>解决方案和见解
 
@@ -75,21 +75,23 @@ Azure Monitor 将来自各种来源的数据收集到[日志](platform/data-plat
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure Monitor 日志是基于 Azure 数据资源管理器构建的，使用相同的 Kusto 查询语言 (KQL)，但有一些细微差别。 请参阅 [Azure Monitor 日志查询语言差异](/data-explorer/kusto/query/)。
 
 ### <a name="how-do-i-retrieve-log-data"></a>如何检索日志数据？
-可使用以 Kusto 查询语言 (KQL) 编写的日志查询从 Log Analytics 工作区检索所有数据。 你可编写自己的查询，也可使用包含特定应用程序或服务的日志查询的解决方案和见解。 请参阅 [Azure Monitor 中的日志查询概述](log-query/log-query-overview.md)。
+可使用以 Kusto 查询语言 (KQL) 编写的日志查询从 Log Analytics 工作区检索所有数据。 你可编写自己的查询，也可使用包含特定应用程序或服务的日志查询的解决方案和见解。 请参阅 [Azure Monitor 中的日志查询概述](logs/log-query-overview.md)。
 
 ### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>能否从 Log Analytics 工作区中删除数据？
-系统会根据数据的[保留期](platform/manage-cost-storage.md#change-the-data-retention-period)从工作区中删除数据。 出于隐私或合规性原因，你可以删除特定数据。 有关详细信息，请参阅[如何导出和删除私人数据](platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)。
+系统会根据数据的[保留期](logs/manage-cost-storage.md#change-the-data-retention-period)从工作区中删除数据。 出于隐私或合规性原因，你可以删除特定数据。 有关详细信息，请参阅[如何导出和删除私人数据](logs/personal-data-mgmt.md#how-to-export-and-delete-private-data)。
 
+### <a name="is-log-analytics-storage-immutable"></a>Log Analytics 存储是否不可变？
+数据库存储中的数据在引入后将无法更改，但可以通过[用于删除专用数据的“清除”API 路径](platform/personal-data-mgmt.md#delete)将其删除。 尽管该数据无法更改，但某些认证要求数据保持不可变且不能在存储中更改或删除。 可以通过使用[数据导出](platform/logs-data-export.md)将数据导出到配置为[不可变存储](../storage/blobs/storage-blob-immutability-policies-manage.md)的存储帐户来实现数据不可变性。
 
 ### <a name="what-is-a-log-analytics-workspace"></a>什么是 Log Analytics 工作区？
-Azure Monitor 收集的所有日志数据都存储在 Log Analytics 工作区中。 工作区实质上是从各种来源收集日志数据的容器。 可为所有监视数据使用一个 Log Analytics 工作区，也可要求使用多个工作区。 请参阅[设计 Azure Monitor 日志部署](platform/design-logs-deployment.md)。
+Azure Monitor 收集的所有日志数据都存储在 Log Analytics 工作区中。 工作区实质上是从各种来源收集日志数据的容器。 可为所有监视数据使用一个 Log Analytics 工作区，也可要求使用多个工作区。 请参阅[设计 Azure Monitor 日志部署](logs/design-logs-deployment.md)。
 
 ### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>能否将现有 Log Analytics 工作区移动到另一个 Azure 订阅？
-你可以在资源组或订阅之间移动工作区，但不能移动到其他区域。 请参阅[将 Log Analytics 工作区移动到其他订阅或资源组](platform/move-workspace.md)。
+你可以在资源组或订阅之间移动工作区，但不能移动到其他区域。 请参阅[将 Log Analytics 工作区移动到其他订阅或资源组](logs/move-workspace.md)。
 
 ### <a name="why-cant-i-see-query-explorer-and-save-buttons-in-log-analytics"></a>为什么在 Log Analytics 中看不到“查询资源管理器”按钮和“保存”按钮？
 
-[查询范围](log-query/scope.md)设置为特定资源时，“查询资源管理器”、“保存”和“新建警报规则”按钮不可用  。 若要创建警报并保存或加载查询，Log Analytics 的范围必须设为某个工作区。 若要在工作区上下文中打开 Log Analytics，请选择“Azure Monitor”菜单中的“日志” 。 选择的是上次使用的工作区，但可以选择任何其他的工作区。 请参阅 [Azure Monitor Log Analytics 中的日志查询范围和时间范围](log-query/scope.md)
+[查询范围](logs/scope.md)设置为特定资源时，“查询资源管理器”、“保存”和“新建警报规则”按钮不可用  。 若要创建警报并保存或加载查询，Log Analytics 的范围必须设为某个工作区。 若要在工作区上下文中打开 Log Analytics，请选择“Azure Monitor”菜单中的“日志” 。 选择的是上次使用的工作区，但可以选择任何其他的工作区。 请参阅 [Azure Monitor Log Analytics 中的日志查询范围和时间范围](logs/scope.md)
 
 ### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>从 VM 打开 Log Analytics 时，为什么收到“要使此订阅启用此查询，需注册 Microsoft.Insights”错误？ 
 将自动注册多个资源提供程序，但某些资源提供程序可能需要你手动注册。 注册的作用域始终是订阅。 有关详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。
@@ -100,7 +102,7 @@ Azure Monitor 收集的所有日志数据都存储在 Log Analytics 工作区中
 ## <a name="metrics"></a>指标
 
 ### <a name="why-are-metrics-from-the-guest-os-of-my-azure-virtual-machine-not-showing-up-in-metrics-explorer"></a>指标资源管理器中为什么没有显示 Azure 虚拟机的来宾操作系统中的指标？
-Azure 资源的[平台指标](insights/monitor-azure-resource.md#monitoring-data)是自动收集的。 但是，你必须执行某些配置才能从虚拟机的来宾操作系统收集指标。 对于 Windows VM，请安装诊断扩展。 
+Azure 资源的[平台指标](essentials/monitor-azure-resource.md#monitoring-data)是自动收集的。 但是，你必须执行某些配置才能从虚拟机的来宾操作系统收集指标。 对于 Windows VM，请安装诊断扩展。 
 <!--Not available in MC: Azure monitor sink-->
 
 ## <a name="alerts"></a>警报
@@ -114,24 +116,24 @@ Azure 资源的[平台指标](insights/monitor-azure-resource.md#monitoring-data
 - Web 测试 - 可用性测试的结果与定义的条件相匹配。
 
 
-请查看 [Azure 中的警报概述](platform/alerts-overview.md)。
+请查看 [Azure 中的警报概述](alerts/alerts-overview.md)。
 
 
 ### <a name="what-is-an-action-group"></a>什么是操作组？
-操作组是可以由警报触发的通知和操作的集合。 多个警报可使用一个操作组，这样你就能够使用一组常见的通知和操作。 请参阅[在 Azure 门户中创建和管理器操作组](platform/action-groups.md)。
+操作组是可以由警报触发的通知和操作的集合。 多个警报可使用一个操作组，这样你就能够使用一组常见的通知和操作。 请参阅[在 Azure 门户中创建和管理器操作组](alerts/action-groups.md)。
 
 
 ### <a name="what-is-an-action-rule"></a>什么是操作规则？
-通过操作规则，可修改匹配特定条件的一组警报的行为。 这样，你便可以在维护时段履行禁用警报操作之类的要求。 你还可将操作组应用于一组警报，而不是将其直接应用于警报规则。 请参阅[操作规则](platform/alerts-action-rules.md)。
+通过操作规则，可修改匹配特定条件的一组警报的行为。 这样，你便可以在维护时段履行禁用警报操作之类的要求。 你还可将操作组应用于一组警报，而不是将其直接应用于警报规则。 请参阅[操作规则](alerts/alerts-action-rules.md)。
 
 ## <a name="agents"></a>代理
 
 ### <a name="does-azure-monitor-require-an-agent"></a>Azure Monitor 需要代理吗？
-只在从虚拟机中的操作系统和工作负载收集数据时，才需要代理。 虚拟机可位于 Azure、其他云环境或本地。 请参阅 [Azure Monitor 代理的概述](platform/agents-overview.md)。
+只在从虚拟机中的操作系统和工作负载收集数据时，才需要代理。 虚拟机可位于 Azure、其他云环境或本地。 请参阅 [Azure Monitor 代理的概述](agents/agents-overview.md)。
 
 
 ### <a name="whats-the-difference-between-the-azure-monitor-agents"></a>Azure Monitor 代理之间有何区别？
-Azure 诊断扩展适用于 Azure 虚拟机，它将数据收集到 Azure Monitor 指标、Azure 存储和 Azure 事件中心。 Log Analytics 代理适用于 Azure 中的虚拟机、其他云环境或本地，它将数据收集到 Azure Monitor 日志。 依赖项代理需要 Log Analytics 代理，还需要所收集的进程详细信息和依赖项。 请参阅 [Azure Monitor 代理的概述](platform/agents-overview.md)。
+Azure 诊断扩展适用于 Azure 虚拟机，它将数据收集到 Azure Monitor 指标、Azure 存储和 Azure 事件中心。 Log Analytics 代理适用于 Azure 中的虚拟机、其他云环境或本地，它将数据收集到 Azure Monitor 日志。 依赖项代理需要 Log Analytics 代理，还需要所收集的进程详细信息和依赖项。 请参阅 [Azure Monitor 代理的概述](agents/agents-overview.md)。
 
 
 ### <a name="does-my-agent-traffic-use-my-expressroute-connection"></a>代理流量是否使用 ExpressRoute 连接？
@@ -150,7 +152,7 @@ Azure 诊断扩展适用于 Azure 虚拟机，它将数据收集到 Azure Monito
 * 正在收集的日志和性能计数器的数量
 * 日志中的数据量
 
-有关详细信息，请参阅[使用 Azure Monitor 日志管理使用情况和成本](platform/manage-cost-storage.md)。
+有关详细信息，请参阅[使用 Azure Monitor 日志管理使用情况和成本](logs/manage-cost-storage.md)。
 
 对于能够运行 WireData 代理的计算机，可以使用以下查询了解正在发送的数据量：
 
@@ -167,7 +169,7 @@ WireData
 
 ### <a name="how-can-i-be-notified-when-data-collection-from-the-log-analytics-agent-stops"></a>当 Log Analytics 代理中的数据收集停止时，我如何收到通知？
 
-当数据收集停止时，可以使用[新建日志警报](platform/alerts-metric.md)中所述的步骤收到通知。 将以下设置用于警报规则：
+当数据收集停止时，可以使用[新建日志警报](alerts/alerts-metric.md)中所述的步骤收到通知。 将以下设置用于警报规则：
 
 - **定义警报条件**：将 Log Analytics 工作区指定为资源目标。
 - **警报条件** 
@@ -179,11 +181,11 @@ WireData
    - **名称**：数据收集已停止
    - **严重性**：警告
 
-指定现有或新的[操作组](platform/action-groups.md)，以便当日志警报匹配条件时，如果检测信号丢失超过 15 分钟，你将收到通知。
+指定现有或新的[操作组](alerts/action-groups.md)，以便当日志警报匹配条件时，如果检测信号丢失超过 15 分钟，你将收到通知。
 
 
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Azure Monitor 代理的防火墙要求是什么？
-有关防火墙要求的详细信息，请参阅[网络防火墙要求](platform/log-analytics-agent.md#network-requirements)。
+有关防火墙要求的详细信息，请参阅[网络防火墙要求](agents/log-analytics-agent.md#network-requirements)。
 
 
 ## <a name="visualizations"></a>可视化效果
@@ -199,7 +201,7 @@ WireData
 
 * [.NET 应用](app/asp-net-troubleshoot-no-data.md)
 * [监视已经在运行的应用](app/monitor-performance-live-website-now.md#troubleshoot)
-* [Azure 诊断](platform/diagnostics-extension-to-application-insights.md)
+* [Azure 诊断](agents/diagnostics-extension-to-application-insights.md)
 * [Java Web 应用](app/java-troubleshoot.md)
 
 我无法从服务器获取任何数据：
@@ -300,10 +302,10 @@ WireData
 
 从其他源中（如果有配置）：
 
-* [Azure 诊断](platform/diagnostics-extension-to-application-insights.md)
-* [导入到 Analytics](platform/data-collector-api.md)
-* [Log Analytics](platform/data-collector-api.md)
-* [Logstash](platform/data-collector-api.md)
+* [Azure 诊断](agents/diagnostics-extension-to-application-insights.md)
+* [导入到 Analytics](logs/data-collector-api.md)
+* [Log Analytics](logs/data-collector-api.md)
+* [Logstash](logs/data-collector-api.md)
 
 ### <a name="can-i-filter-out-or-modify-some-telemetry"></a>是否可以筛选或修改某些遥测？
 
@@ -377,6 +379,12 @@ WireData
 * 如果一个真实的用户在不同的浏览器中使用站点，或者使用私密/隐身浏览，或使用不同的计算机，则会进行多次计数。
 * 若要识别跨计算机和浏览器登录的用户，请添加对 [setAuthenticatedUserContext()](app/api-custom-events-metrics.md#authenticated-users) 的调用。
 
+### <a name="how-does-application-insights-generate-device-information-browser-os-language-model"></a>Application Insights 如何生成设备信息（浏览器、操作系统、语言、型号）？
+
+浏览器在请求的 HTTP 标头中传递用户代理字符串，Application Insights 引入服务使用[用户代理分析程序](https://github.com/ua-parser/uap-core)生成你在数据表和体验中看到的字段。 因此，Application Insights 用户无法更改这些字段。
+
+如果用户或企业禁止在浏览器设置中发送用户代理，则此数据偶尔可能会缺失或不准确。 此外，[用户代理分析程序正则表达式](https://github.com/ua-parser/uap-core/blob/master/regexes.yaml)可能未包括所有设备信息，或者 Application Insights 可能未采用最新更新。
+
 ### <a name="have-i-enabled-everything-in-application-insights"></a><a name="q17"></a> 我是否已在 Application Insights 中启用所有内容？
 | 应看到 | 如何获取 | 为何需要它 |
 | --- | --- | --- |
@@ -438,7 +446,7 @@ WireData
 
 #### <a name="querying-the-telemetry"></a>查询遥测
 
-使用 [REST API](https://dev.applicationinsights.io/) 运行 [Analytics](./log-query/log-query-overview.md) 查询。
+使用 [REST API](https://dev.applicationinsights.io/) 运行 [Analytics](./logs/log-query-overview.md) 查询。
 
 ### <a name="how-can-i-set-an-alert-on-an-event"></a>如何设置事件警报？
 
@@ -645,7 +653,7 @@ ContainerLog
 
 为每行容器日志的这些属性重新启用收集功能。
 
-如果第一种方法因涉及到更改查询而不便使用，可通过在代理配置映射中启用设置 ```log_collection_settings.enrich_container_logs``` 来重新开始收集这些字段，如[数据收集配置设置](insights/container-insights-agent-config.md)中所述。
+如果第一种方法因涉及到更改查询而不便使用，可通过在代理配置映射中启用设置 ```log_collection_settings.enrich_container_logs``` 来重新开始收集这些字段，如[数据收集配置设置](containers/container-insights-agent-config.md)中所述。
 
 > [!NOTE]
 > 建议不要对节点数超过 50 个的大型群集使用第二种方法，因为它将从群集中的每个节点生成 API 服务器调用来执行该扩充。 该方法还会增加收集到的每行日志的数据大小。
@@ -660,7 +668,7 @@ ContainerLog
 
 ### <a name="why-dont-i-see-data-in-my-log-analytics-workspace"></a>为什么在 Log Analytics 工作区中看不到数据？
 
-如果每天在特定时间都无法查看 Log Analytics 工作区中的任何数据，则你可能已达到默认的 500 MB 限制或为控制每天要收集的数据量而指定的每日上限。 达到当天的限制后，数据收集将停止且只能在第二天恢复。 若要查看数据使用情况并根据预期的使用模式更新到其他定价层，请参阅[日志数据使用情况和成本](platform/manage-cost-storage.md)。 
+如果每天在特定时间都无法查看 Log Analytics 工作区中的任何数据，则你可能已达到默认的 500 MB 限制或为控制每天要收集的数据量而指定的每日上限。 达到当天的限制后，数据收集将停止且只能在第二天恢复。 若要查看数据使用情况并根据预期的使用模式更新到其他定价层，请参阅[日志数据使用情况和成本](logs/manage-cost-storage.md)。 
 
 ### <a name="what-are-the-container-states-specified-in-the-containerinventory-table"></a>ContainerInventory 表中指定了哪些容器状态？
 
@@ -680,7 +688,7 @@ ContainerInventory 表包含已停止和正在运行的容器的信息。 此表
 
 ### <a name="how-do-i-update-the-omsagent-to-the-latest-released-version"></a>如何将 omsagent 更新为最新发布的版本？
 
-若要了解如何升级代理，请参阅[代理管理](insights/container-insights-manage-agent.md)。
+若要了解如何升级代理，请参阅[代理管理](containers/container-insights-manage-agent.md)。
 
 ### <a name="how-do-i-enable-multi-line-logging"></a>如何启用多行日志记录？
 
@@ -708,7 +716,7 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 
 ### <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>如何解决在启用实时日志时遇到的 Azure AD 错误？ 
 
-你可能会看到以下错误：在请求中指定的回复 URL 与为应用程序“<application ID\>”配置的回复 URL 不匹配。 有关此问题的解决方案，可参阅[如何使用用于容器的 Azure Monitor 实时查看容器数据](insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication)一文。 
+你可能会看到以下错误：在请求中指定的回复 URL 与为应用程序“<application ID\>”配置的回复 URL 不匹配。 有关此问题的解决方案，可参阅[如何使用用于容器的 Azure Monitor 实时查看容器数据](containers/container-insights-livedata-setup.md#configure-ad-integrated-authentication)一文。 
 
 ### <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>在加入后为何无法升级群集？
 
@@ -716,7 +724,7 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 
 ### <a name="which-ports-and-domains-do-i-need-to-openallow-for-the-agent"></a>需要为代理打开/允许哪些端口和域？
 
-有关 Azure 中国云的容器化代理所需的代理和防火墙配置信息，请参阅[网络防火墙要求](insights/container-insights-onboard.md#network-firewall-requirements)。
+有关 Azure 中国云的容器化代理所需的代理和防火墙配置信息，请参阅[网络防火墙要求](containers/container-insights-onboard.md#network-firewall-requirements)。
 
 
 <!--Not available in MC: ## Azure Monitor for VMs-->

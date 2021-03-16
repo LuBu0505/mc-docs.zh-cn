@@ -3,21 +3,21 @@ title: 使用 Azure 服务总线交换消息
 description: 在 Azure 逻辑应用中创建使用 Azure 服务总线发送和接收消息的自动化任务和工作流
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
+ms.reviewer: logicappspm, azla
 ms.topic: conceptual
-origin.date: 10/22/2020
+origin.date: 02/10/2021
 author: rockboyfor
-ms.date: 11/30/2020
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 tags: connectors
-ms.openlocfilehash: f8152c35aaa4b08dc4c794819b5baec02746120e
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: e05011f284c14cfd737f56128dc12811738cf0ed
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431898"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055149"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure 逻辑应用和 Azure 服务总线在云中交换消息
 
@@ -36,7 +36,7 @@ ms.locfileid: "96431898"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 帐户和订阅。 如果没有 Azure 订阅，请[注册试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+* Azure 帐户和订阅。 如果没有 Azure 订阅，请[注册试用版 Azure 订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 * 服务总线命名空间和消息传送实体，例如队列。 这些项和你的逻辑应用需使用同一 Azure 订阅。 如果没有这些项，请了解如何[创建服务总线命名空间和队列](../service-bus-messaging/service-bus-create-namespace-portal.md)。
 
@@ -170,13 +170,13 @@ ms.locfileid: "96431898"
 
 如果需要按特定顺序发送相关消息，则可通过 [Azure 服务总线连接器](../connectors/connectors-create-api-servicebus.md)使用“顺序保护”模式。 相关消息具有一个可定义这些消息之间的关系的属性，例如服务总线中的[会话](../service-bus-messaging/message-sessions.md)的 ID。
 
-<!--Not Available on [*sequential convoy* pattern](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy)-->
+<!--NOT AVAILABLE ON [*sequential convoy* pattern](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy)-->
 
 创建逻辑应用时，可以选择“使用服务总线会话的相关的按序送达”模板，该模板可实现“顺序保护”模式。 有关详细信息，请参阅[按顺序发送相关消息](../logic-apps/send-related-messages-sequential-convoy.md)。
 
 ## <a name="delays-in-updates-to-your-logic-app-taking-effect"></a>逻辑应用的更新延迟生效
 
-如果服务总线触发器的轮询间隔很短（例如 10 秒），则对逻辑应用的更新可能会在长达 10 分钟的时间内不会生效。 若要解决此问题，可以在更新逻辑应用之前，暂时将轮询间隔增加到更大的值，例如 30 秒或 1 分钟。 进行更新后，可以将轮询间隔重置为原始值。 
+如果服务总线触发器的轮询间隔很短（例如 10 秒），则对逻辑应用的更新可能会在长达 10 分钟的时间内不会生效。 若要解决此问题，可禁用逻辑应用，进行更改，然后重新启用逻辑应用。
 
 <a name="connector-reference"></a>
 
@@ -190,4 +190,4 @@ ms.locfileid: "96431898"
 
 * 了解其他[逻辑应用连接器](../connectors/apis-list.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

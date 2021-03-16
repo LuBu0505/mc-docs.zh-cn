@@ -7,17 +7,17 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 origin.date: 09/14/2020
 author: rockboyfor
-ms.date: 10/05/2020
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 06/08/2020
 ms.author: v-yeche
 tags: connectors
-ms.openlocfilehash: 8345557d89a3b61b2208087d91b3c4135eb34775
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: 0849dc0f7b1208464179a4ed1a6f651ea0d370a5
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432387"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055144"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>从 Azure 逻辑应用通过 HTTP 或 HTTPS 调用服务终结点
 
@@ -37,7 +37,7 @@ ms.locfileid: "96432387"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 帐户和订阅。 如果没有 Azure 订阅，请[注册试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+* Azure 帐户和订阅。 如果没有 Azure 订阅，请[注册试用版 Azure 订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 * 要调用的目标终结点的 URL
 
@@ -256,7 +256,7 @@ HTTP 请求有一个[超时限制](../logic-apps/logic-apps-limits-and-config.md
 
 * `Accept-*` 标头（`Accept-version` 除外）
 * `Allow`
-* `Content-*` 中含以下例外：`Content-Disposition`、`Content-Encoding` 和 `Content-Type`
+* `Content-*` 标头（使用 POST 和 PUT 操作时的 `Content-Disposition`、`Content-Encoding` 和 `Content-Type` 除外），但 GET 操作不包括这些标头
 * `Cookie`
 * `Expires`
 * `Host`
@@ -279,4 +279,4 @@ HTTP 请求有一个[超时限制](../logic-apps/logic-apps-limits-and-config.md
 * [保护访问和数据 - 对其他服务和系统的出站调用的访问](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)
 * [适用于逻辑应用的连接器](../connectors/apis-list.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

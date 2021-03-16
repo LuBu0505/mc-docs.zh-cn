@@ -10,20 +10,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 03/16/2017
 author: rockboyfor
-ms.date: 10/26/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: 09/28/2020
 ms.author: v-yeche
-ms.openlocfilehash: 29e5645135b89bb6e01b6036eedd02c626a11e62
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+ms.openlocfilehash: 507215b20dfd0f9de5f9c76b14b9a170bd1e8b59
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472066"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054033"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>流量管理器的性能注意事项
 
-本页介绍使用流量管理器的性能注意事项。 请考虑下列方案：
+本页介绍使用流量管理器的性能注意事项。 请参考以下方案：
 
 在中国北部和中国东部区域分别创建了网站的实例。 其中一个实例未通过流量管理器探测的运行状况检查。 应用程序流量定向到正常的区域。 这种故障转移是意料之中的，但由于流量现在要传送到远方区域，这种延迟会给性能造成问题。
 
@@ -31,9 +31,9 @@ ms.locfileid: "92472066"
 
 ## <a name="performance-considerations-for-traffic-manager"></a>流量管理器的性能注意事项
 
-流量管理器对网站产生的唯一性能影响是初始 DNS 查找。 针对流量管理器配置文件名称发出的 DNS 请求由托管 trafficmanager.cn 区域的 Azure DNS 根服务器处理。 流量管理器根据流量管理器策略和探测结果填充并定期更新世纪互联的 DNS 根服务器。 因此，即使在初始 DNS 查找期间，也不会将 DNS 查询发送到流量管理器。
+流量管理器对网站产生的唯一性能影响是初始 DNS 查找。 针对流量管理器配置文件名称发出的 DNS 请求由托管 trafficmanager.cn 区域的 Azure DNS 根服务器处理。 流量管理器根据流量管理器策略和探测结果填充并定期更新 Azure 的 DNS 根服务器。 因此，即使在初始 DNS 查找期间，也不会将 DNS 查询发送到流量管理器。
 
-<!-- Notice: Currently is Microsoft correct -->
+<!-- Notice: Currently is Azure correct -->
 
 流量管理器由多个组件构成：DNS 名称服务器、API 服务、存储层和终结点监视服务。 如果流量管理器服务组件发生故障，与流量管理器配置文件关联的 DNS 名称不会受到影响。 Azure DNS 服务器中的记录将保持不变。 但是，终结点监视和 DNS 更新不会发生。 因此，当主站点关闭时，流量管理器无法将 DNS 更新为指向故障转移站点。
 
@@ -41,7 +41,7 @@ DNS 名称解析速度会加快，结果会被缓存。 初始 DNS 查找速度�
 
 流量不会通过流量管理器。 完成 DNS 查找后，客户端便获得了网站实例的 IP 地址。 客户端直接连接到该地址，而不通过流量管理器。 选择的流量管理器策略对 DNS 性能没有影响。 但是，“性能”路由方法可能会对应用程序体验产生负面影响。 例如，如果策略将来自中国北部的流量重定向到中国东部托管的实例，这些会话的网络延迟可能会造成性能问题。
 
-<!--CORRECT ON if your policy redirects traffic from China North to an instance hosted in China East -->
+<!--CORRECT ON if your policy redirects traffic from North China to an instance hosted in East China-->
 
 ## <a name="measuring-traffic-manager-performance"></a>测量流量管理器性能
 
@@ -61,11 +61,11 @@ DNS 名称解析速度会加快，结果会被缓存。 初始 DNS 查找速度�
 
     其中最简单的工具就是 WebSitePulse。 输入 URL 即可查看 DNS 解析时间、第一个字节、最后一个字节和其他性能统计信息。 可以从三个不同的测试位置中选择。 在此示例中可以看到，第一次执行显示 DNS 查找花费了 0.204 秒。
 
-    :::image type="content" source="./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png" alt-text="pulse1":::
+    ![屏幕截图显示“WebSitePulse”工具，其中突出显示了“DNS”查找结果。](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
 
     由于结果会缓存，针对同一个流量管理器终结点执行第二次测试时，DNS 查找仅花费了 0.002 秒。
 
-    :::image type="content" source="./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse2.png" alt-text="pulse1":::
+    :::image type="content" source="./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse2.png" alt-text="pulse2":::
 
 * [CA App Synthetic Monitor](https://asm.ca.com/en/checkit.php)
 
@@ -93,8 +93,8 @@ DNS 名称解析速度会加快，结果会被缓存。 初始 DNS 查找速度�
 
 [测试流量管理器设置](traffic-manager-testing-settings.md)
 
-[流量管理器上的操作（REST API 参考）](https://go.microsoft.com/fwlink/?LinkId=313584)
+[流量管理器上的操作（REST API 参考）](https://docs.microsoft.com/previous-versions/azure/reference/hh758255(v=azure.100))
 
-[Azure 流量管理器 cmdlet](https://docs.microsoft.com/powershell/module/az.trafficmanager)
+[Azure 流量管理器 Cmdlet](https://docs.microsoft.com/powershell/module/az.trafficmanager)
 
 <!--Update_Description: update meta properties, wording update, update link-->

@@ -1,21 +1,21 @@
 ---
-title: 在标准和高级 SSD 之间转换托管磁盘存储
-description: 如何使用 Azure PowerShell 将 Azure 托管磁盘从标准类型转换为高级类型，或者从高级类型转换为标准类型。
+title: 使用 Azure PowerShell 在不同的磁盘类型之间转换托管磁盘存储
+description: 如何使用 Azure PowerShell 在不同磁盘类型之间转换 Azure 托管磁盘。
 ms.service: virtual-machines-windows
 ms.topic: how-to
-origin.date: 02/22/2019
+origin.date: 02/13/2021
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: fbabdfc302ea274eef38da17f44283700353afb9
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 64af244d9295aed56e7d5b775e3f374f9b47c7b6
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104693"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054397"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>更新托管磁盘的存储类型
 
@@ -27,14 +27,14 @@ Azure 托管磁盘有三种磁盘类型：高级 SSD、标准 SSD 和标准 HDD�
 <!--Not Available on Azure ultra SSDs (preview)-->
 <!--Not Available on You are not yet able to switch from or to an ultra SSD, you must deploy a new one.-->
 
-## <a name="prerequisites"></a>先决条件
+## <a name="before-you-begin"></a>在开始之前
 
 * 由于转换需要重启虚拟机 (VM)，因此请在预先存在的维护时段内计划磁盘存储迁移。
 * 对于非托管磁盘，请先[将其转换为托管磁盘](convert-unmanaged-to-managed-disks.md)，以便可以在存储选项之间切换。
 
-## <a name="switch-all-managed-disks-of-a-vm-between-premium-and-standard"></a>将 VM 的所有托管磁盘在高级类型与标准类型之间切换
+## <a name="switch-all-managed-disks-of-a-vm-between-from-one-account-to-another"></a>将 VM 的所有托管磁盘从一个帐户切换到另一个帐户
 
-此示例演示如何将 VM 的所有磁盘从标准存储转换为高级存储，或者从高级存储转换为标准存储。 若要使用高级托管磁盘，VM 必须使用支持高级存储的 [VM 大小](../sizes.md)。 此示例还切换到了支持高级存储的大小：
+此示例展示了如何将 VM 的所有磁盘转换为高级存储。 不过，通过在此示例中更改 $storageType 变量，可以将 VM 的磁盘类型转换为标准 SSD 或标准 HDD。 若要使用高级托管磁盘，VM 必须使用支持高级存储的 [VM 大小](../sizes.md)。 此示例还切换到了支持高级存储的大小：
 
 ```powershell
 # Sign in the Azure China Cloud
@@ -46,7 +46,7 @@ $rgName = 'yourResourceGroup'
 # Name of the your virtual machine
 $vmName = 'yourVM'
 
-# Choose between Standard_LRS and Premium_LRS based on your scenario
+# Choose between Standard_LRS, StandardSDD_LRS and Premium_LRS based on your scenario
 $storageType = 'Premium_LRS'
 
 # Premium capable size
@@ -81,7 +81,7 @@ Start-AzVM -ResourceGroupName $rgName -Name $vmName
 
 ## <a name="switch-individual-managed-disks-between-standard-and-premium"></a>在标准类型与高级类型之间切换单个托管磁盘
 
-对于开发/测试工作负荷，可以混合使用标准磁盘和高级磁盘来降低成本。 可以选择仅升级需要更高性能的磁盘。 此示例演示如何将单个 VM 磁盘从标准存储转换为高级存储，或者从高级存储转换为标准存储。 若要使用高级托管磁盘，VM 必须使用支持高级存储的 [VM 大小](../sizes.md)。 此示例还展示了如何切换到支持高级存储的大小：
+对于开发/测试工作负荷，可以混合使用标准磁盘和高级磁盘来降低成本。 可以选择仅升级需要更高性能的磁盘。 此示例展示了如何将单个 VM 磁盘从标准存储转换为高级存储。 不过，通过在此示例中更改 $storageType 变量，可以将 VM 的磁盘类型转换为标准 SSD 或标准 HDD。 若要使用高级托管磁盘，VM 必须使用支持高级存储的 [VM 大小](../sizes.md)。 此示例还展示了如何切换到支持高级存储的大小：
 
 ```powershell
 # Sign in the Azure China Cloud
@@ -90,7 +90,7 @@ Connect-AzAccount -Environment AzureChinaCloud
 $diskName = 'yourDiskName'
 # resource group that contains the managed disk
 $rgName = 'yourResourceGroupName'
-# Choose between Standard_LRS and Premium_LRS based on your scenario
+# Choose between Standard_LRS, StandardSSD_LRS and Premium_LRS based on your scenario
 $storageType = 'Premium_LRS'
 # Premium capable size 
 $size = 'Standard_DS2_v2'
@@ -119,54 +119,23 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 
 <!--Verify successfully-->
 
-## <a name="convert-managed-disks-from-standard-to-premium-in-the-azure-portal"></a>在 Azure 门户中将托管磁盘从标准类型转换为高级类型
+## <a name="switch-managed-disks-from-one-disk-type-to-another"></a>将托管磁盘从一种磁盘类型切换为另一种磁盘类型
 
 执行以下步骤：
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
-2. 在门户上的“虚拟机”列表中选择 VM。
+2. 在“虚拟机”列表中选择 VM。
 3. 如果该 VM 未停止，请在 VM“概述”窗格的顶部选择“停止”，然后等待该 VM 停止。 
-3. 在 VM 对应的窗格中，从菜单中选择“磁盘”。
-4. 选择要转换的磁盘。
-5. 在菜单中选择“配置”。
-6. 将“帐户类型”从“标准 HDD”更改为“高级 SSD”。  
-7. 单击“保存”并关闭磁盘窗格。
+4. 在 VM 对应的窗格中，从菜单中选择“磁盘”。
+5. 选择要转换的磁盘。
+6. 在菜单中选择“配置”。
+7. 将“帐户类型”从原始磁盘类型更改为所需的磁盘类型。
+8. 选择“保存”并关闭磁盘窗格。
 
 磁盘类型转换会瞬间完成。 可以在转换后启动 VM。
-
-## <a name="switch-managed-disks-between-standard-hdd-and-standard-ssd"></a>在标准 HDD 与标准 SSD 之间切换托管磁盘 
-
-此示例演示如何将单个 VM 磁盘从标准 HDD 转换为标准 SSD，或者从标准 SSD 转换为标准 HDD：
-
-```powershell
-# Sign in the Azure China Cloud
-Connect-AzAccount -Environment AzureChinaCloud
-
-$diskName = 'yourDiskName'
-# resource group that contains the managed disk
-$rgName = 'yourResourceGroupName'
-# Choose between Standard_LRS and StandardSSD_LRS based on your scenario
-$storageType = 'StandardSSD_LRS'
-
-$disk = Get-AzDisk -DiskName $diskName -ResourceGroupName $rgName
-
-# Get parent VM resource
-$vmResource = Get-AzResource -ResourceId $disk.ManagedBy
-
-# Stop and deallocate the VM before changing the storage type
-Stop-AzVM -ResourceGroupName $vmResource.ResourceGroupName -Name $vmResource.Name -Force
-
-$vm = Get-AzVM -ResourceGroupName $vmResource.ResourceGroupName -Name $vmResource.Name 
-
-# Update the storage type
-$disk.Sku = [Microsoft.Azure.Management.Compute.Models.DiskSku]::new($storageType)
-$disk | Update-AzDisk
-
-Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
-```
 
 ## <a name="next-steps"></a>后续步骤
 
 使用[快照](snapshot-copy-managed-disk.md)创建 VM 的只读副本。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

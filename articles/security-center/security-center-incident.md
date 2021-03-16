@@ -6,15 +6,15 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 12/04/2020
+ms.date: 02/25/2021
 ms.author: v-johya
 origin.date: 03/15/2020
-ms.openlocfilehash: 2861e784c433f88e902a35e1d4e6ee06a79129b1
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: ca9b581ddc42246a0914f0db340f11b9e724241c
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746651"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197132"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>在 Azure 安全中心管理安全事件
 
@@ -26,15 +26,20 @@ ms.locfileid: "96746651"
 
 ## <a name="what-is-a-security-incident"></a>什么是安全事件？
 
-在安全中心，安全事件是对资源的所有警报汇总，与 网络攻击链 模式保持一致。 事件显示在[安全警报](security-center-managing-and-responding-alerts.md)页中。 选择事件以查看相关警报并获取详细信息。
+在安全中心，安全事件是对资源的所有警报汇总，与 [网络攻击链](alerts-reference.md#intentions) 模式保持一致。 事件显示在[安全警报](security-center-managing-and-responding-alerts.md)页中。 选择事件以查看相关警报并获取详细信息。
 
 ## <a name="managing-security-incidents"></a>管理安全事件
 
-1. 在安全中心“概述”页上，选择“安全警报”磁贴。 此时会列出事件和警报。 请注意，安全事件与安全警报的图标不同。
+1. 在安全中心的“警报”页上，使用“筛选器”按钮进行筛选。 
 
-    ![查看安全事件](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
+    :::image type="content" source="media/security-center-incident/locating-incidents.png" alt-text="在 Azure 安全中心的“警报”页上查找事件":::
 
-1. 若要查看详细信息，请选择某个事件。 “安全事件”页显示更多详细信息。 
+<!--Not available in MC: filter by alert name-->
+1. 若要查看事件的详细信息，请从列表中选择一个事件。 此时会显示一个侧窗格，其中包含有关事件的更多详细信息。
+
+    :::image type="content" source="media/security-center-incident/incident-quick-peek.png" alt-text="显示事件详细信息的侧窗格":::
+
+1. 若要查看更多详细信息，请选择“查看完整详细信息”。
 
     [![在 Azure 安全中心响应安全事件](./media/security-center-incident/incident-details.png)](./media/security-center-incident/incident-details.png#lightbox)
 

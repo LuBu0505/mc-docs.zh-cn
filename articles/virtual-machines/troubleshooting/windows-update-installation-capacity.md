@@ -11,16 +11,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 origin.date: 05/11/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9d9cade2af1c183386dddc767fd1257e29500246
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: d50929bb1c5fdb992e4d0384643cec202e71209a
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856770"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055163"
 ---
 <!--Verified successfully-->
 
@@ -40,7 +40,10 @@ ms.locfileid: "97856770"
 
 ## <a name="solution"></a>解决方案
 
-### <a name="process-overview"></a>流程概述：
+### <a name="process-overview"></a>过程概述：
+
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
 
 1. 创建和访问修复 VM。
 1. 释放磁盘上的空间。
@@ -52,7 +55,7 @@ ms.locfileid: "97856770"
 
 ### <a name="create-and-access-a-repair-vm"></a>创建和访问修复 VM
 
-1. 使用 [VM 修复命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 的步骤 1-3 准备一个修复 VM。
+1. 使用 [VM 修复命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md)的步骤 1-3 来准备一个修复 VM。
 1. 使用远程桌面连接来连接到修复 VM。
 
 ### <a name="free-up-space-on-the-disk"></a>释放磁盘上的空间
@@ -127,4 +130,4 @@ ms.locfileid: "97856770"
 
 使用 [VM 修复命令的步骤 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重新生成 VM。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

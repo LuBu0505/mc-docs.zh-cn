@@ -7,18 +7,95 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 ms.author: jmartens
-author: j-martens
+author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 86055ddc787d25f62b3e9c7168b855bfc1969c73
-ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
+ms.openlocfilehash: 9fe0a8fd176555aa7b14172f25f03e82046ff560
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804386"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196582"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
-本文介绍 Azure 机器学习的版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[适用于 Python 的主要 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 参考页。
+本文介绍 Azure 机器学习的版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[适用于 Python 的主要 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 参考页。
+
+
+## <a name="2021-02-09"></a>2021-02-09
+
+### <a name="azure-machine-learning-sdk-for-python-v1220"></a>用于 Python 的 Azure 机器学习 SDK v1.22.0
++ **Bug 修复与改进**
+  + **azureml-automl-core**
+    + 修复了会向视觉模型的 conda yml 文件添加额外的 pip 依赖项的 bug。
+  + **azureml-automl-runtime**
+    + 修复了一个 bug，其中，经典预测模型（例如 AutoArima）收到的训练数据中的行可能没有插补的目标值。 这违反了这些模型的数据协定。 * 修复了时序滞后运算符中“按发生次数滞后”行为的各种 bug。 以前，“按发生次数滞后”运算不能正确标记所有插补行，因此不能始终生成正确的发生滞后值。 还修复了滞后运算符与“按发生次数滞后”行为的滚动窗口运算符之间的一些兼容性问题。 这些问题以前会导致滚动窗口运算符丢弃训练数据中它本应使用的某些行。
+  + **azureml-core**
+    + 按受众添加了对令牌身份验证的支持。
+    + 向 [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) 添加了 `process_count` 来支持多进程多节点 PyTorch 作业。
+  + **azureml-pipeline-steps**
+    + [CommandStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.commandstep?preserve-view=true&view=azure-ml-py) 现已正式发布，不再是试验性的。
+    + [ParallelRunConfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig?preserve-view=true&view=azure-ml-py)：添加了参数 allowed_failed_count 和 allowed_failed_percent 来检查微型批处理级别上的错误阈值。 错误阈值现在有 3 种风格：
+       + error_threshold - 允许的失败微型批处理项的数量； 
+       + allowed_failed_count - 允许的失败微型批处理的数量； 
+       + allowed_failed_percent - 允许的失败微型批处理所占百分比。 
+       
+       如果超出了其中任意一个阈值，则作业将停止。 error_threshold 是保持向后兼容性所必需的。 将值设置为 -1 将忽略此阈值。
+    + 修复了 AutoMLStep 名称中的空格处理。
+    + ScriptRunConfig 现在受 HyperDriveStep 支持
+  + **azureml-train-core**
+    + 从 ScriptRun 调用的 HyperDrive 运行现在将被视为子运行。
+    + 向 [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) 添加了 `process_count` 来支持多进程多节点 PyTorch 作业。
+  + **azureml-widgets**
+    + 添加了小组件 ParallelRunStepDetails 来将 ParallelRunStep 的状态可视化。
+    + 允许 hyperdrive 用户在平行坐标图上查看一个附加轴，该图表显示每个子运行的每组超参数对应的指标值。
+
+
+ ## <a name="2021-01-31"></a>2021-01-31
+### <a name="azure-machine-learning-studio-notebooks-experience-january-update"></a>Azure 机器学习工作室笔记本体验（1 月更新）
++ **新功能**
+  + AzureML 中的原生 Markdown Editor。 用户现在可以在 AzureML Studio 中以原生方式呈现和编辑 Markdown 文件。
+  + [脚本（.py、.R 和 .sh）的“运行”按钮](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#run-a-notebook-or-python-script)。 用户现在可以轻松地在 AzureML 中运行 Python、R 和 Bash 脚本。
+  + [变量资源管理器](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#explore-variables-in-the-notebook)。 在弹出式面板中探究变量和数据帧的内容。 用户可以轻松检查数据类型、大小和内容。
+  + [目录](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#navigate-with-a-toc)。 导航到笔记本中由 Markdown 标题指示的部分。
+  + 将笔记本导出为 Latex/HTML/Py。 通过导出为 LaTeX、HTML 或 .py，创建易于共享的笔记本文件。
+  + Intellicode。 ML 驱动的结果提供了增强的[智能自动完成体验](https://docs.microsoft.com/visualstudio/intellicode/overview)。
+
++ **Bug 修复与改进**
+  + 改进了页面加载时间
+  + 提高了性能 
+  + 提高了速度和内核可靠性
+  
+
+ ## <a name="2021-01-25"></a>2021-01-25
+
+### <a name="azure-machine-learning-sdk-for-python-v1210"></a>用于 Python 的 Azure 机器学习 SDK v1.21.0
++ **Bug 修复与改进**
+  + **azure-cli-ml**
+    + 修复了使用 AmlCompute 和 UserAssigned 标识时的 CLI 帮助文本
+  + **azureml-contrib-automl-dnn-vision**
+    + 对于 AutoML 视觉运行，“部署”和“下载”按钮将变得可见，并且可以像其他 AutoML 运行一样部署或下载模型。 有两个新文件（scoring_file_v_1_0_0.py 和 conda_env_v_1_0_0.yml），其中包含一个用来运行推理的脚本和一个用来重新创建 conda 环境的 yml 文件。 “model.pth”文件已重命名，它现在使用“.pt”扩展名。
+  + **azureml-core**
+    + 提供了对 azure-cli-ml 的 MSI 支持
+    + 用户分配的托管标识支持。
+    + 进行此项更改后，客户应该能够提供一个用户分配的标识，该标识可用于从客户密钥保管库中提取密钥以用于静态加密。
+    +  针对非常大的文件的配置文件修复了 row_count=0 -针对包含空格填充的带分隔符值，修复了双精度转换中的错误
+    + 为输出数据集正式发布删除了试验性标志
+    + 更新了有关如何获取模型的特定版本的文档
+    + 允许在专用链接的情况下更新混合模式访问的工作区
+    + 进行了修复来为恢复运行功能删除数据存储上的额外注册
+    + 添加了相应的 CLI/SDK 支持来用于更新主要用户分配的工作区标识
+  + **azureml-interpret**
+    + 已将 azureml-interpret 更新为 interpret-community 0.16.0
+    + 针对 azureml-interpret 中的解释客户端进行了内存优化
+  + **azureml-train-automl-runtime**
+    + 为 ADB 运行启用了流式处理
+  + **azureml-train-core**
+    + 进行了修复来为恢复运行功能删除数据存储上的额外注册
+  + **azureml-widgets**
+    + 客户看不到使用小组件对现有运行数据可视化效果所做的更改，现在，如果客户选择使用条件超参数，则可以看到这些更改。
+    + 用户运行小组件现在会详细解释为何某个运行处于排队状态。
+
+
  ## <a name="2021-01-11"></a>2021-01-11
 
 ### <a name="azure-machine-learning-sdk-for-python-v1200"></a>用于 Python 的 Azure 机器学习 SDK v1.20.0

@@ -6,17 +6,17 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: how-to
-origin.date: 12/07/2020
-ms.date: 01/18/2021
+origin.date: 02/10/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 0e25e9c211771c5d9adff9a973db2cfd1e806a6f
-ms.sourcegitcommit: f086abe8bd2770ed10a4842fa0c78b68dbcdf771
+ms.openlocfilehash: 3c5092a24e7f7bdb307e46e891e98273d1b9d278
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98163195"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196354"
 ---
 # <a name="use-the-azure-portal-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>使用 Azure 门户为 blob 和队列数据分配 Azure 角色
 
@@ -44,10 +44,12 @@ Azure Active Directory (Azure AD) 通过 [Azure 基于角色的访问控制 (Azu
 
 以下各部分更详细地说明了其中的每个步骤。
 
-> [!NOTE]
+> [!IMPORTANT]
 > 创建 Azure 存储帐户时，系统不会自动向你分配通过 Azure AD 访问数据的权限。 你必须为自己显式分配一个用于 Azure 存储的 Azure 角色。 可以在订阅、资源组、存储帐户、容器或队列级别分配它。
 >
 > 在为自己分配数据访问角色之前，可以通过 Azure 门户访问存储帐户中的数据，因为 Azure 门户还可以使用帐户密钥进行数据访问。 有关详细信息，请参阅[选择如何在 Azure 门户中授予对 blob 数据的访问权限](../blobs/authorize-data-operations-portal.md)。
+>
+> 如果存储帐户被 Azure 资源管理器只读锁锁定，那么该锁将阻止将范围限定为存储帐户或数据容器（blob 容器或队列）的 Azure RBAC 角色分配。
 
 ### <a name="assign-an-azure-built-in-role"></a>分配 Azure 内置角色
 

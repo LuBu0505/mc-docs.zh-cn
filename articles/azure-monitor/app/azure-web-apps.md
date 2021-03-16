@@ -4,15 +4,15 @@ description: Azure 应用服务的应用程序性能监视。 对加载和响应
 ms.topic: conceptual
 origin.date: 04/26/2019
 author: Johnnytechn
-ms.date: 01/14/2021
+ms.date: 02/22/2021
 ms.author: v-johya
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 3787d6fe65092707efbfd5957b4a74cceb441cfd
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: e763d471fa3fadea25a27e18cc49a37a8ccab14b
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231061"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197198"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
@@ -78,7 +78,8 @@ ms.locfileid: "98231061"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/netcore)
 
-支持以下 ASP.NET Core 版本：ASP.NET Core 2.1、ASP.NET Core 2.2、ASP.NET Core 3.0、ASP.NET Core 3.1
+> [!IMPORTANT]
+> 支持以下 ASP.NET Core 版本：ASP.NET Core 2.1 和 ASP.NET Core 3.1。 版本 2.0、2.2 和 3.0 已停用，不再受支持。 请升级到 .NET Core 的[受支持版本](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)，使自动检测能够正常工作。
 
 基于代理/扩展的监视目前不支持将 ASP.NET Core 提供的完整框架、独立部署和基于 Linux 的应用程序作为目标。 （在上述所有方案中，都可通过代码进行[手动检测](./asp-net-core.md)。）
 
@@ -93,7 +94,7 @@ ms.locfileid: "98231061"
 
      ![检测 Web 应用](./media/azure-web-apps/create-resource-01.png)
 
-2. 指定要使用哪些资源后，可以选择 Application Insights 根据平台为应用程序收集数据的方式。 对于 ASP.NET Core 2.1、2.2、3.0 和 3.1，ASP.NET Core 提供“建议的集合”或“已禁用”。 
+2. 指定要使用哪些资源后，可以选择 Application Insights 根据平台为应用程序收集数据的方式。 对于 ASP.NET Core 2.1 和 3.1，ASP.NET Core 提供“建议的集合”或“已禁用”。 
 
     ![根据平台选择选项](./media/azure-web-apps/choose-options-new-net-core.png)
 
@@ -423,6 +424,12 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 使用无代码监视时，只需要连接字符串。 但是，我们仍然建议设置检测密钥，以便在执行手动检测时保持与旧版 SDK 的后向兼容性。
 
+### <a name="difference-between-standard-metrics-from-application-insights-vs-azure-app-service-metrics"></a>Application Insights 中的标准指标与 Azure 应用服务指标之间有何区别？
+
+Application Insights 为向应用程序发出的那些请求收集遥测数据。 如果在 WebApps/IIS 中发生故障，并且请求未到达用户应用程序，则 Application Insights 将不会有任何有关它的遥测数据。
+
+Application Insights 算出的 `serverresponsetime` 持续时间不一定与 Web 应用观察到的服务器响应时间匹配。 这是因为 Application Insights 仅计算实际到达用户应用程序的持续时间。 如果请求在 IIS 中停滞/排队，则该等待时间将包含在 Web 应用指标中，但不会包含在 Application Insights 指标中。
+
 ## <a name="release-notes"></a>发行说明
 
 有关最新的更新和 bug 修复，请[参阅发行说明](./web-app-extension-release-notes.md)。
@@ -430,8 +437,8 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 ## <a name="next-steps"></a>后续步骤
 * [在实时应用上运行探查器](./profiler.md)。
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) - 使用 Application Insights 监视 Azure Functions
-* [将 Azure 诊断配置为](../platform/diagnostics-extension-to-application-insights.md)向 Application Insights 发送数据。
-* [监视服务运行状况指标](../platform/data-platform.md)以确保服务可用且做出快速响应。
-* [接收警报通知](../platform/alerts-overview.md) 。
+* [将 Azure 诊断配置为](../agents/diagnostics-extension-to-application-insights.md)向 Application Insights 发送数据。
+* [监视服务运行状况指标](../data-platform.md)以确保服务可用且做出快速响应。
+* [接收警报通知](../alerts/alerts-overview.md) 。
 * 若要从访问网页的浏览器获取客户端遥测数据，请使用[适用于 JavaScript 应用和网页的 Application Insights](javascript.md)。
 

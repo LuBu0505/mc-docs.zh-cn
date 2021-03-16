@@ -6,16 +6,16 @@ ms.service: virtual-machines
 ms.topic: conceptual
 origin.date: 02/03/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: b697dbe27305e55743b71cca703513fadf2b9f81
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 611a755dfc027c945d3518ac12a4354207bc5ee4
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856693"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054380"
 ---
 # <a name="ncv3-series"></a>NCv3 系列
 
@@ -29,10 +29,12 @@ NCv3 系列 VM 采用 NVIDIA Tesla V100 GPU。 客户可将这些更新的 GPU �
 [实时迁移](maintenance-and-updates.md)：不支持<br />
 [内存保留更新](maintenance-and-updates.md)：不支持<br />
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br />
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：不支持<br />
+[临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br />
 Nvidia NVLink 互连：不支持<br />
 
 > [!IMPORTANT]
-> 对于此 VM 系列，订阅中的 vCPU（核心）配额最初在每个区域中设置为 0。 在[可用区域](https://azure.microsoft.com/regions/services/)中为此系列[请求 vCPU 配额增加](https://support.azure.cn/support/support-azure/)。 这些 SKU 不可用于试用版或 Visual Studio 订阅服务器 Azure 订阅。 你的订阅级别可能不支持选择或部署这些 SKU。 
+> 对于此 VM 系列，订阅中的 vCPU（核心）配额最初在每个区域中设置为 0。 在[可用区域](https://status.azure.com/status/)中为此系列[请求 vCPU 配额增加](https://support.azure.cn/support/support-azure/)。 这些 SKU 不可用于试用版或 Visual Studio 订阅服务器 Azure 订阅。 你的订阅级别可能不支持选择或部署这些 SKU。 
 >
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数 |
@@ -53,8 +55,8 @@ Nvidia NVLink 互连：不支持<br />
 若要利用 Azure N 系列 VM 的 GPU 功能，必须安装 NVIDIA GPU 驱动程序。
 
 <!--Not Available on The NVIDIA GPU Driver Extension installs appropriate NVIDIA CUDA or GRID drivers on an N-series VM. Install or manage the extension using the Azure portal or tools such as Azure PowerShell or Azure Resource Manager templates. See the NVIDIA GPU Driver Extension documentation for supported operating systems and deployment steps.-->
-<!--Not Available on [NVIDIA GPU Driver Extension](./extensions/hpccompute-gpu-windows.md)-->
-<!--Not Capatile on [Azure virtual machine extensions and features](./extensions/overview.md)-->
+<!--NOT AVAILABLE ON [NVIDIA GPU Driver Extension](./extensions/hpccompute-gpu-windows.md)-->
+<!--NOT AVAILABLE ON [NVIDIA GPU Driver Extension documentation](./extensions/hpccompute-gpu-windows.md)-->
 
 选择手动安装 NVIDIA GPU 驱动程序时，请参阅[适用于 Windows 的 N 系列 GPU 驱动程序安装](./windows/n-series-driver-setup.md)或[适用于 Linux 的 N 系列 GPU 驱动程序安装](./linux/n-series-driver-setup.md)，了解受支持的操作系统、驱动程序以及安装和验证步骤。
 
@@ -63,11 +65,11 @@ Nvidia NVLink 互连：不支持<br />
 - [常规用途](sizes-general.md)
 - [内存优化](sizes-memory.md)
     
-    <!--Not Available on - [Storage optimized](sizes-storage.md)-->
+    <!--NOT AVAILABLE ON - [Storage optimized](sizes-storage.md)-->
     
 - [GPU 优化](sizes-gpu.md)
     
-    <!--Not Available on - [High performance compute](sizes-hpc.md)-->
+    <!--NOT AVAILABLE ON - [High performance compute](sizes-hpc.md)-->
     
 - [前几代](sizes-previous-gen.md)
 
@@ -75,4 +77,4 @@ Nvidia NVLink 互连：不支持<br />
 
 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

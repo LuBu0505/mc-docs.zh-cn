@@ -1,17 +1,17 @@
 ---
 title: 从保管库备份多个 SQL Server VM
-description: 本文介绍如何使用 Azure 备份从恢复服务保管库备份 Azure 虚拟机上的 SQL Server 数据库。
+description: 本文介绍如何使用 Azure 备份从恢复服务保管库备份 Azure 虚拟机上的 SQL Server 数据库
 author: Johnnytechn
 ms.topic: conceptual
 origin.date: 09/11/2019
-ms.date: 01/07/2021
+ms.date: 03/01/2021
 ms.author: v-johya
-ms.openlocfilehash: 3bf277cfd52135145d1ff96419dcd694cd5b0753
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 93692430af9b6605001b26403092d02b50e6fb57
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023191"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197599"
 ---
 # <a name="back-up-multiple-sql-server-vms-from-the-recovery-services-vault"></a>从恢复服务保管库备份多个 SQL Server VM
 
@@ -19,7 +19,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 本文介绍如何将 Azure VM 上运行的 SQL Server 数据库备份到 Azure 备份恢复服务保管库。
 
-本文介绍如何执行以下操作：
+本文将指导如何进行以下操作：
 
 > [!div class="checklist"]
 >
@@ -91,11 +91,11 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 还可以使用以下 FQDN 以允许从服务器访问所需的服务：
 
-| 服务    | 要访问的域名                             |
-| -------------- | ------------------------------------------------------------ |
-| Azure 备份  | `*.backup.azure.cn`                             |
-| Azure 存储 | `*.blob.core.chinacloudapi.cn` <br><br> `*.queue.core.chinacloudapi.cn` |
-| Azure AD      | 根据[这篇文章](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)，允许访问第 56 和 59 节下的 FQDN |
+| 服务    | 要访问的域名                             | 端口
+| -------------- | ------------------------------------------------------------ | ---
+| Azure 备份  | `*.backup.azure.cn`                             | 443
+| Azure 存储 | `*.blob.core.chinacloudapi.cn` <br><br> `*.queue.core.chinacloudapi.cn` | 443
+| Azure AD      | 根据[这篇文章](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)，允许访问第 56 和 59 节下的 FQDN | 如果适用
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>使用 HTTP 代理服务器路由流量
 
@@ -140,7 +140,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
    * 如果某个 VM 未按预期列出，请查看它是否已保管库中备份。
    * 可能有多个 VM 同名，但它们属于不同的资源组。
 
-     ![在搜索 VM 中的数据库期间，备份将会挂起。](./media/backup-azure-sql-database/discovering-sql-databases.png)
+     ![在搜索 VM 中的数据库期间，备份将会挂起](./media/backup-azure-sql-database/discovering-sql-databases.png)
 
 6. 在 VM 列表中，选择运行 SQL Server 数据库的VM，然后选择“发现数据库”。
 

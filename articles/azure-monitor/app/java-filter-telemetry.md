@@ -3,20 +3,22 @@ title: 在 Java Web 应用中筛选 Azure Application Insights 遥测
 description: 筛选出无需监视的事件，减少遥测流量。
 ms.topic: conceptual
 origin.date: 3/14/2019
-ms.date: 01/27/2021
+ms.date: 02/22/2021
 author: Johnnytechn
 ms.custom: devx-track-java
 ms.author: v-johya
-ms.openlocfilehash: 45a745e0dd1514909b87b5f72f83364b39b17b8f
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: fe5e99b07615c820a6221a8af5b009d231d4cf7f
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059914"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197405"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>在 Java Web 应用中筛选遥测
 
 > [!IMPORTANT]
+> 不再建议使用本文档中所述的方法。
+>
 > 监视 Java 应用程序的建议方法是在不更改代码的情况下使用自动检测。 请按照 [Application Insights Java 3.0 代理](./java-in-process-agent.md)指南进行操作。
 
 可通过筛选器选择 [Java Web 应用发送到 Application Insights](java-get-started.md) 的遥测。 可使用现成的筛选器，也可编写自己的自定义筛选器。

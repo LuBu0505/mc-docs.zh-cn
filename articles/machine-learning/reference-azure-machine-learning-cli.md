@@ -10,12 +10,12 @@ ms.author: v-yiso
 author: jpe316
 ms.date: 06/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8d7200ba1f8a14185f78660968bd60639c9543f0
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: a093c808e2918bd072a5e8716620ff0d087ca86e
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023019"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196873"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>安装和使用 Azure 机器学习的 CLI 扩展
 
@@ -199,26 +199,26 @@ az extension remove -n azure-cli-ml
 + 停止 computeinstance。
 
     ```azurecli
-    az ml computetarget stop computeinstance -n cpu -v
+    az ml computetarget computeinstance stop -n cpu -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget stop computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop)。
+    有关详细信息，请参阅 [az ml computetarget computeinstance stop](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop)。
 
 + 启动 computeinstance。
 
     ```azurecli
-    az ml computetarget start computeinstance -n cpu -v
+    az ml computetarget computeinstance start -n cpu -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget start computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start)。
+    有关详细信息，请参阅 [az ml computetarget computeinstance start](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start)。
 
 + 重启 computeinstance。
 
     ```azurecli
-    az ml computetarget restart computeinstance -n cpu -v
+    az ml computetarget computeinstance restart -n cpu -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget restart computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart)。
+    有关详细信息，请参阅 [az ml computetarget computeinstance restart](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart)。
 
 + 删除 computeinstance。
 

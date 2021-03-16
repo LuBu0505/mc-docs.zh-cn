@@ -2,18 +2,18 @@
 title: 使用 PowerShell 和模板部署资源
 description: 使用 Azure Resource Manager 和 Azure PowerShell 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 ms.topic: conceptual
-origin.date: 01/15/2021
+origin.date: 01/26/2021
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 08/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5d52e3098d11f4344da9104b2b87aa5c5f520bab
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 10131a7777358a04a96b52afa5b945ddc0e6842b
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063523"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053338"
 ---
 <!--Verify Successfully-->
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>使用 ARM 模板和 Azure PowerShell 部署资源
@@ -67,50 +67,6 @@ ms.locfileid: "99063523"
 
 对于每一个范围，部署模板的用户必须具有创建资源所必需的权限。
 
-<a name="deploy-a-template-from-your-local-machine"></a>
-## <a name="deploy-local-template"></a>部署本地模板
-
-可以部署本地计算机中的模板，也可以部署存储在外部的模板。 本节介绍如何部署本地模板。
-
-如果要部署到不存在的资源组，请创建该资源组。 资源组名称只能包含字母数字字符、句点、下划线、连字符和括号。 它最多可以包含 90 个字符。 名称不能以句点结尾。
-
-```azurepowershell
-Connect-AZAccount -Environment AzureChinaCloud
-New-AzResourceGroup -Name ExampleGroup -Location "China North"
-```
-
-若要部署本地模板，请在部署命令中使用 `-TemplateFile` 参数。 下面的示例还显示了如何设置来自该模板的参数值。
-
-```azurepowershell
-New-AzResourceGroupDeployment `
-  -Name ExampleDeployment `
-  -ResourceGroupName ExampleGroup `
-  -TemplateFile c:\MyTemplates\azuredeploy.json
-```
-
-部署可能需要几分钟才能完成。
-
-## <a name="deploy-remote-template"></a>部署远程模板
-
-你可能更愿意将 ARM 模板存储在外部位置，而不是存储在本地计算机上。 可以将模板存储在源控件存储库（例如 GitHub）中。 另外，还可以将其存储在 Azure 存储帐户中，以便在组织中共享访问。
-
-如果要部署到不存在的资源组，请创建该资源组。 资源组名称只能包含字母数字字符、句点、下划线、连字符和括号。 它最多可以包含 90 个字符。 名称不能以句点结尾。
-
-```azurepowershell
-New-AzResourceGroup -Name ExampleGroup -Location "China North"
-```
-
-若要部署外部模板，请使用 `-TemplateUri` 参数。
-
-```azurepowershell
-New-AzResourceGroupDeployment `
-  -Name ExampleDeployment `
-  -ResourceGroupName ExampleGroup `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
-```
-
-前面的示例要求模板的 URI 可公开访问，它适用于大多数情况，因为模板应该不会包含敏感数据。 如果需要指定敏感数据（如管理员密码），请以安全参数的形式传递该值。 但是，如果想要管理对模板的访问权限，请考虑使用[模板规格](#deploy-template-spec)。
-
 ## <a name="deployment-name"></a>部署名称
 
 部署 ARM 模板时，可以为部署指定名称。 此名称可以帮助你从部署历史记录中检索该部署。 如果没有为部署提供名称，将使用模板文件的名称。 例如，如果部署一个名为 `azuredeploy.json` 的模板，但未指定部署名称，则该部署将命名为 `azuredeploy`。
@@ -138,6 +94,64 @@ $deploymentName="ExampleDeployment"+"$today"
 为每个部署指定唯一的名称时，可以并发运行它们而不会发生冲突。 如果你运行一个名为 `newStorage1` 的部署，它部署了一个名为 `storage1` 的存储帐户；与此同时，你又运行了另一个名为 `newStorage2` 的部署，它部署了一个名为 `storage2` 的存储帐户，则部署历史记录中将有两个存储帐户和两个条目。
 
 为避免与并发部署冲突并确保部署历史记录中的条目是唯一的，请为每个部署指定唯一的名称。
+
+<a name="deploy-a-template-from-your-local-machine"></a>
+## <a name="deploy-local-template"></a>部署本地模板
+
+可以部署本地计算机中的模板，也可以部署存储在外部的模板。 本节介绍如何部署本地模板。
+
+如果要部署到不存在的资源组，请创建该资源组。 资源组名称只能包含字母数字字符、句点、下划线、连字符和括号。 它最多可以包含 90 个字符。 名称不能以句点结尾。
+
+```azurepowershell
+Connect-AzAccount -Environment AzureChinaCloud
+New-AzResourceGroup -Name ExampleGroup -Location "China North"
+```
+
+若要部署本地模板，请在部署命令中使用 `-TemplateFile` 参数。 下面的示例还显示了如何设置来自该模板的参数值。
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name ExampleDeployment `
+  -ResourceGroupName ExampleGroup `
+  -TemplateFile c:\MyTemplates\azuredeploy.json
+```
+
+部署可能需要几分钟时间才能完成。
+
+## <a name="deploy-remote-template"></a>部署远程模板
+
+你可能更愿意将 ARM 模板存储在外部位置，而不是存储在本地计算机上。 可以将模板存储在源控件存储库（例如 GitHub）中。 另外，还可以将其存储在 Azure 存储帐户中，以便在组织中共享访问。
+
+如果要部署到不存在的资源组，请创建该资源组。 资源组名称只能包含字母数字字符、句点、下划线、连字符和括号。 它最多可以包含 90 个字符。 名称不能以句点结尾。
+
+```azurepowershell
+New-AzResourceGroup -Name ExampleGroup -Location "China North"
+```
+
+若要部署外部模板，请使用 `-TemplateUri` 参数。
+
+[!INCLUDE [azure-resource-manager-update-templateurl-parameter-china](../../../includes/azure-resource-manager-update-templateurl-parameter-china.md)]
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name remoteTemplateDeployment `
+  -ResourceGroupName ExampleGroup `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
+```
+
+前面的示例要求模板的 URI 可公开访问，它适用于大多数情况，因为模板应该不会包含敏感数据。 如果需要指定敏感数据（如管理员密码），请以安全参数的形式传递该值。 但是，如果想要管理对模板的访问权限，请考虑使用[模板规格](#deploy-template-spec)。
+
+要使用存储在存储帐户中的相对路径部署远程链接模板，请使用 `QueryString` 指定 SAS 令牌：
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name linkedTemplateWithRelativePath `
+  -ResourceGroupName "myResourceGroup" `
+  -TemplateUri "https://stage20210126.blob.core.chinacloudapi.cn/template-staging/mainTemplate.json" `
+  -QueryString $sasToken
+```
+
+有关详细信息，请参阅[对链接模板使用相对路径](./linked-templates.md#linked-template)。
 
 ## <a name="deploy-template-spec"></a>部署模板规格
 
@@ -240,4 +254,4 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
 - 若要了解如何在模板中定义参数，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 - 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用 ARM 模板](secure-template-with-sas-token.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

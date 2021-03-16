@@ -9,16 +9,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 10/08/2018
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: b8b317545fe2ba2c9ec60677d673411039f6e5ab
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 5c72c3ebfd71cc0217567dfd9c59675e50af21fe
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104712"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054322"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>启动 Azure VM 时 Windows 在蓝色屏幕上显示“关键服务失败”
 本文介绍在 Azure 中启动 Windows 虚拟机 (VM) 时可能会遇到的“关键服务失败”错误， 并提供用于解决问题的故障排除步骤。 
@@ -39,6 +39,9 @@ Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动�
 
 ## <a name="solution"></a>解决方案 
 
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
+
 若要解决此问题，请[联系支持人员并提交一个转储文件](./troubleshoot-common-blue-screen-error.md#collect-memory-dump-file)（这有助于我们更快地诊断问题），或者尝试以下自助解决方案。
 
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>将 OS 磁盘附加到恢复 VM
@@ -47,44 +50,8 @@ Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动�
 2. [将 OS 磁盘附加到恢复 VM](./troubleshoot-recovery-disks-portal-windows.md)。 
 3. 建立到恢复 VM 的远程桌面连接。
 
-<!--MOONCAKE: this Serial Console means to Windows/Vista enable Serial Console, Not Azure VM Serial Console function in Azure Portal-->
-
-### <a name="enable-dump-logs-and-serial-console"></a>启用转储日志和串行控制台
-
-转储日志可帮助我们进一步进行故障排除。
-
-<!--Not Avaiable on [Serial Console](./serial-console-windows.md)-->
-
-若要启用转储日志和串行控制台，请运行以下脚本。
-
-1. 打开提升的命令提示符会话（以管理员身份运行）。
-2. 运行以下脚本：
-
-    在此脚本中，我们假定分配给附加 OS 磁盘的驱动器号为 F。应将其替换为 VM 的相应值。
-
-    ```powershell
-    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
-
-    REM Enable Serial Console
-    bcdedit /store F:\boot\bcd /set {bootmgr} displaybootmenu yes
-    bcdedit /store F:\boot\bcd /set {bootmgr} timeout 10
-    bcdedit /store F:\boot\bcd /set {bootmgr} bootems yes
-    bcdedit /store F:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON
-    bcdedit /store F:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
-
-    REM Suggested configuration to enable OS Dump
-    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 2 /f
-    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
-    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
-
-    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 2 /f
-    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
-    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
-
-    reg unload HKLM\BROKENSYSTEM
-    ```
-    
-    <!--MOONCAKE: this Serial Console means to Windows/Vista enable Serial Console, Not Azure VM Serial Console function in Azure Portal-->
+<!--NOT AVAIALBLE ON ### Enable dump logs and Serial Console-->
+<!--NOT AVAILABLE ON [Serial Console](./serial-console-windows.md)-->
 
 ### <a name="replace-the-unsigned-drivers"></a>替换未签名的驱动程序
 
@@ -119,7 +86,7 @@ Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动�
 若要自己分析转储日志，请执行以下步骤：
 
 1. 将 OS 磁盘附加到恢复 VM。
-2. 在附加的 OS 磁盘上，浏览到 **\windows\system32\config** 。将所有文件复制为一个备份，以备回退之需。
+2. 在附加的 OS 磁盘上，浏览到 **\windows\system32\config**。将所有文件复制为一个备份，以备回退之需。
 3. 启动 **注册表编辑器** (regedit.exe)。
 4. 选择“HKEY_LOCAL_MACHINE”  项。 在菜单上，选择“文件” > “加载配置单元”。  
 5. 浏览到已附加 OS 磁盘上的 **\windows\system32\config\SYSTEM** 文件夹。 输入“BROKENSYSTEM”  作为配置单元名称。 新的注册表配置单元将显示在“HKEY_LOCAL_MACHINE”  项之下。
@@ -185,4 +152,4 @@ Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动�
     bcdedit /store <OS DISK LETTER>:\boot\bcd /set {default} integrityservicesenable
     ```
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

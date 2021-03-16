@@ -4,16 +4,16 @@ description: 了解分层和生存时间功能、查看支持的 Blob 存储操�
 author: kgremban
 ms.author: v-tawe
 ms.reviewer: arduppal
-ms.date: 02/02/2021
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: eb97e72d56e99a43ebe0416826743701e51b1793
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: 5b1ef838ac36c89e5df1d4265d6e92be1432681d
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579379"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196733"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>使用 IoT Edge 上的 Azure Blob 存储在边缘中存储数据
 
@@ -182,6 +182,7 @@ Azure Blob 存储文档包括多种语言的快速入门示例代码。 可以�
 以下快速入门示例使用 IoT Edge 也同样支持的语言，因此，你可以将它们作为 IoT Edge 模块与 Blob 存储模块一起部署：
 
 * [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
+  * IoT Edge 上的 Azure Blob 存储模块 v1.4.0 及更早版本与 WindowsAzure.Storage 9.3.3 SDK 兼容，v1.4.1 还支持 Azure.Storage.Blobs 12.8.0 SDK。
 * [Python](../storage/blobs/storage-quickstart-blobs-python.md)
   * Python SDK 2.1 之前的版本存在一个已知问题，即模块不返回 blob 创建时间。 由于该问题，某些方法（如 list blobs）无法正常工作。 解决方法是，将 blob 客户端上的 API 版本显式设置为“2017-04-17”。 示例：`block_blob_service._X_MS_VERSION = '2017-04-17'`
   * [追加 Blob 示例](https://github.com/Azure/azure-storage-python/blob/master/samples/blob/append_blob_usage.py)
@@ -209,7 +210,7 @@ Azure Blob 存储文档包括多种语言的快速入门示例代码。 可以�
    > [!NOTE]
    > 此模块不支持页 Blob。
 
-1. 也可以选择在存储资源管理器中连接 Azure 存储帐户。 此配置提供适用于本地存储帐户和 Azure 存储帐户的单一视图。
+1. 也可以选择在存储资源管理器中连接 Azure 存储帐户。 此配置提供适用于本地存储帐户和 Azure 存储帐户的单一视图
 
 ## <a name="supported-storage-operations"></a>受支持的存储操作
 
@@ -286,7 +287,7 @@ IoT Edge 上的 Blob 存储模块使用 Azure 存储 SDK，并与适用于块 Bl
 
 ## <a name="release-notes"></a>发行说明
 
-这是此模块[在 Docker 中心的发行说明](https://hub.docker.com/_/microsoft-azure-blob-storage)
+以下是此模块[在 Docker 中心的发行说明](https://hub.docker.com/_/microsoft-azure-blob-storage)。 你可以在特定版本的发行说明中找到有关 Bug 修复和修正的详细信息。
 
 ## <a name="suggestions"></a>建议
 

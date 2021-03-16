@@ -6,16 +6,16 @@ ms.service: virtual-machines
 ms.topic: conceptual
 origin.date: 11/06/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: d2de44c6c5fff5414b6d20783ddfc36369707f68
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: e8d922fc7e0983c9c4b56cd41f5dedd9fa787ab1
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856801"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055175"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure 启动诊断
 
@@ -24,10 +24,13 @@ ms.locfileid: "97856801"
 ## <a name="boot-diagnostics-storage-account"></a>启动诊断存储帐户
 在 Azure 门户中创建 VM 时，默认情况下会启用“启动诊断”。 建议的启动诊断体验是使用托管存储帐户，因为它可以在创建 Azure VM 时显著提高性能。 这是因为将要使用 Azure 托管存储帐户，从而节省了创建新的用户存储帐户来存储启动诊断数据所需的时间。
 
-另一种启动诊断体验是使用用户管理的存储帐户。 用户可以创建新的存储帐户，也可以使用现有的存储帐户。 
-
 > [!IMPORTANT]
 > 启动诊断数据 blob（包括日志和快照映像）存储在托管存储帐户中。 将仅对 blob 使用的 GiB 向客户收费，而不是根据磁盘的预配大小收费。 快照计量将用于托管存储帐户的计费。 由于托管帐户是在标准 LRS 或标准 ZRS 上创建的，因此，仅针对诊断数据 blob 的大小按每月 $0.05/GB 向客户收费。 有关此定价的详细信息，请参阅[托管磁盘定价](https://www.azure.cn/pricing/details/storage/managed-disks/)。 客户将看到这一费用与其 VM 资源 URI 相关联。 
+
+另一种启动诊断体验是使用用户管理的存储帐户。 用户可以创建新的存储帐户，也可以使用现有的存储帐户。
+
+> [!NOTE]
+> 与启动诊断相关的用户管理的存储帐户要求存储帐户和关联的虚拟机位于同一订阅中。 
 
 ## <a name="boot-diagnostics-view"></a>启动诊断视图
 虚拟机边栏选项卡中的启动诊断选项位于 Azure 门户的“支持和故障排除”部分。 选择启动诊断会显示屏幕截图和串行日志信息。 串行日志包含内核消息，屏幕快照是 VM 当前状态的快照。 Windows 或 Linux 会根据 VM 是否正在运行来确定预期的屏幕快照会是什么样子。 Windows 用户会看到桌面背景，Linux 用户会看到登录提示。
@@ -44,7 +47,7 @@ ms.locfileid: "97856801"
 :::image type="content" source="./media/boot-diagnostics/boot-diagnostics-enable-portal.png" alt-text="屏幕截图显示了如何在创建 VM 期间启用托管启动诊断。":::
 
 ### <a name="enable-managed-boot-diagnostics-using-cli"></a>使用 CLI 启用托管启动诊断
-Azure CLI 2.12.0 及更高版本支持启动诊断使用托管存储帐户。 如果不输入存储帐户的名称或 URI，则会使用托管帐户。 有关详细信息和代码示例，请参阅[适用于启动诊断的 CLI 文档](https://docs.azure.cn/cli/vm/boot-diagnostics?preserve-view=true&view=azure-cli-latest)。
+Azure CLI 2.12.0 及更高版本支持启动诊断使用托管存储帐户。 如果不输入存储帐户的名称或 URI，则会使用托管帐户。 有关详细信息和代码示例，请参阅[适用于启动诊断的 CLI 文档](https://docs.azure.cn/cli/vm/boot-diagnostics)。
 
 ### <a name="enable-managed-boot-diagnostics-using-azure-resource-manager-arm-templates"></a>使用 Azure 资源管理器 (ARM) 模板启用托管启动诊断
 API 版本 2020-06-01 后的所有内容都支持托管启动诊断。 有关详细信息，请参阅[启动诊断实例视图](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#bootdiagnostics)。
@@ -106,7 +109,7 @@ API 版本 2020-06-01 后的所有内容都支持托管启动诊断。 有关详
 - 启动诊断不支持高级存储帐户。如果将高级存储帐户用于启动诊断，则在启动 VM 时，用户会收到 `StorageAccountTypeNotSupported` 错误。 
 - 资源管理器 API 版本“2020-06-01”及更高版本支持托管存储帐户。
 
-    <!--Not Available on - Azure Serial Console is currently incompatible with a managed storage account for Boot Diagnostics. Learn more about [Azure Serial Console](./troubleshooting/serial-console-overview.md)-->
+    <!--NOT AVAILABLE ON [Azure Serial Console](./troubleshooting/serial-console-overview.md)-->
     
 - 对于单实例 VM，门户仅支持将启动诊断与托管存储帐户配合使用。
 
@@ -114,5 +117,5 @@ API 版本 2020-06-01 后的所有内容都支持托管启动诊断。 有关详
 
 详细了解如何使用启动诊断功能来[排查 Azure 中虚拟机的问题](./troubleshooting/boot-diagnostics.md)。
 
-<!--Not Available on the [Azure Serial Console](/virtual-machines/troubleshooting/serial-console-overview)-->
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--NOT AVAILABLE ON [Azure Serial Console](./troubleshooting/serial-console-overview.md)-->
+<!--Update_Description: update meta properties, wording update, update link-->

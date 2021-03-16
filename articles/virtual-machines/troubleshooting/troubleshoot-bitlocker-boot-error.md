@@ -10,17 +10,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 11/20/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: has-adal-ref
-ms.openlocfilehash: e4a47a52a513ba96233a26f4f44e0e9b6caffb01
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: d850a3422de35f4f6e97048b63cddb0ac8a8006b
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570665"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054327"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 上的 BitLocker 启动错误
 
@@ -43,6 +43,9 @@ ms.locfileid: "98570665"
 如果 VM 找不到用于解密加密磁盘的 BitLocker 恢复密钥 (BEK) 文件，则可能会出现此问题。
 
 ## <a name="solution"></a>解决方案
+
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
 
 若要解决此问题，请停止 VM 并将它解除分配，然后再启动它。 此操作将强制 VM 从 Azure Key Vault 中检索 BEK 文件，然后将其放在加密磁盘上。 
 
@@ -315,4 +318,4 @@ ms.locfileid: "98570665"
 |$bekFilePath   |c:\bek\7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D.BEK |用于写入 BEK 文件的路径。|
 |$adTenant  |contoso.partner.onmschina.cn   | 用于托管密钥保管库的 Azure Active Directory 的 FQDN 或 GUID |
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

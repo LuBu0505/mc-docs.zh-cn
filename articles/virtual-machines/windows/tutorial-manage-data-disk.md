@@ -8,17 +8,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 11/29/2018
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: fd75cf4a5750a45d3c0dd6686854e85a3ac99696
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: 8ced117c4f03126cf5a5518723806d708bafb84e
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570663"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055273"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>教程 - 使用 Azure PowerShell 管理 Azure 磁盘
 
@@ -33,7 +33,7 @@ Azure 虚拟机使用磁盘来存储 VM 操作系统、应用程序和数据。 
 
 ## <a name="launch-azure-local-powershell"></a>启动 Azure 本地 PowerShell
 
-打开 Azure Powershell 控制台，以管理员权限运行下面列出的脚本。
+打开 Azure Powershell 控制台，并以管理员权限运行下面列出的脚本。
 
 <!--Not Available on Azure Cloud Shell-->
 
@@ -69,7 +69,7 @@ Azure 提供两种类型的磁盘。
 
 若要完成本教程中的示例，必须现有一个虚拟机。 需要时，使用以下命令创建虚拟机。
 
-使用 [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) 设置虚拟机上管理员帐户所需的用户名和密码：
+使用 [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential) 设置虚拟机上管理员帐户所需的用户名和密码：
 
 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 创建虚拟机。 系统将提示你输入 VM 的管理员帐户的用户名和密码。
 
@@ -176,4 +176,4 @@ VirtualHardDisk :
 > [!div class="nextstepaction"]
 > [自动配置 VM](./tutorial-automate-vm-deployment.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

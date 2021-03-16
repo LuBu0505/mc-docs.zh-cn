@@ -1,20 +1,20 @@
 ---
-title: 灾难恢复方案
+title: Azure 服务中断
 description: 了解发生影响 Azure 虚拟机的 Azure 服务中断事件时该怎么办。
 ms.service: virtual-machines
 ms.topic: conceptual
 origin.date: 05/31/2017
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 5a965e433b303078f2fcf9be7437aabf7b25c592
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 50e4945fd4e14cfe5d7269ecd11e851fc0c24363
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106132"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054308"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>如果 Azure 服务中断影响了 Azure VM，该怎么办
 Azure 中国的同仁兢兢业业，只为确保在任何时候都能提供需要的服务。 但有时候会因为不可抗力的影响，造成服务意外中断。
@@ -25,7 +25,7 @@ Azure 为其服务提供服务级别协议 (SLA)，作为运行时间和连接�
 
 Azure 已在平台中内置多种功能，用于支持高度可用的应用程序。
 
-<!--Not Available on For more about these services, read [Disaster recovery and high availability for Azure applications](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery).-->
+<!--NOT AVAILABLE ON For more about these services, read [Disaster recovery and high availability for Azure applications](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery)-->
 
 本文介绍了当整个区域因重大自然灾难或大规模服务中断而发生中断时的真实灾难恢复方案。 这些都是极其罕见的情况，但你还是必须对整个区域发生中断的可能性有所准备。 如果整个区域的服务中断，会暂时无法使用数据的本地冗余副本。 如果启用了异地复制，则会在其他区域额外存储 Azure 存储 blob 和表的三个副本。 如果发生全面性区域中断或发生主要区域无法恢复的灾难，Azure 会将所有 DNS 条目重新映射到异地复制区域。
 
@@ -44,16 +44,15 @@ Azure 已在平台中内置多种功能，用于支持高度可用的应用程�
 >
 >
 
-<!--Not Available on For more information, see the section on [Data strategies for disaster recovery](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)-->
+<!--NOT AVAILABLE ON For more information, see the section on [Data strategies for disaster recovery](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)-->
 
 ## <a name="next-steps"></a>后续步骤
 
 - 使用 Azure Site Recovery [保护在 Azure 虚拟机上运行的应用程序](../site-recovery/azure-to-azure-quickstart.md)
 
-    <!--Not Available on - To learn more about how to implement a disaster recovery and high availability strategy, see [Disaster recovery and high availability for Azure applications](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery).-->
-
-    <!--Not Available on  [Azure resiliency technical guidance](/data-lake-store/data-lake-store-disaster-recovery-guidance)-->
+    <!--NOT AVAILABLE ON - To learn more about how to implement a disaster recovery and high availability strategy, see [Disaster recovery and high availability for Azure applications](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery)-->
+    <!--NOT AVAILABLE ON [Azure resiliency technical guidance](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)-->
 
 - 如果指示不清楚，或者如果希望 Azure 代你执行操作，请联系[客户支持](https://support.azure.cn/support/support-azure/)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

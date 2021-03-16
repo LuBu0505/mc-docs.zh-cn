@@ -7,17 +7,17 @@ ms.subservice: imaging
 ms.workload: infrastructure
 origin.date: 06/30/2020
 author: rockboyfor
-ms.date: 10/19/2020
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
 ms.reviewer: akjosh
-ms.openlocfilehash: f386b6de1d9f753b3a650743732d2515a00bd08e
-ms.sourcegitcommit: 6f66215d61c6c4ee3f2713a796e074f69934ba98
+ms.openlocfilehash: 7cb9a6f7d4d1f2b84d8da395d6adc7f5847941e1
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92128270"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055254"
 ---
 <!--Verified Successfully-->
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>使用 PowerShell 从共享映像库中的托管磁盘或快照创建映像
@@ -25,8 +25,8 @@ ms.locfileid: "92128270"
 如果想要将现有快照或托管磁盘迁移到共享映像库，可直接从该托管磁盘或快照创建共享映像库映像。 测试新映像后，可删除源托管磁盘或快照。 还可使用 [Azure CLI](image-version-snapshot-cli.md) 从共享映像库中的托管磁盘或快照创建映像。
 
 映像库中的映像具有两个组件，我们将在此示例中创建这两个组件：
-- “映像定义”包含有关映像及其使用要求的信息。 这包括该映像是 Windows 映像还是 Linux 映像、是专用映像还是通用映像，此外还包括发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 
-- 使用共享映像库时，将使用映像版本来创建 VM。 可根据环境的需要创建多个映像版本。 创建 VM 时，将使用该映像版本为 VM 创建新磁盘。 可以多次使用映像版本。
+- “映像定义”包含有关映像及其使用要求的信息。 这包括了该映像是 Windows 还是 Linux 映像、是专用映像还是通用映像、发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 
+- 使用共享映像库时，将使用 **映像版本** 来创建 VM。 可根据环境的需要创建多个映像版本。 创建 VM 时，将使用该映像版本来为 VM 创建新磁盘。 可以多次使用映像版本。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -90,7 +90,7 @@ $gallery = Get-AzGallery `
 
 制作映像定义时，请确保它具有所有正确信息。 在此示例中，我们假设快照或托管磁盘来自正在使用且尚未通用化的 VM。 如果托管磁盘或快照是从通用化的操作系统获取的（在 Windows 上运行 Sysprep 或在 Linux 上运行 [waagent](https://github.com/Azure/WALinuxAgent)、`-deprovision` 或 `-deprovision+user` 后），则将 `-OsState` 更改为 `generalized`。 
 
-有关可为映像定义指定的值的详细信息，请参阅[映像定义](./windows/shared-image-galleries.md#image-definitions)。
+有关可为映像定义指定的值的详细信息，请参阅[映像定义](./shared-image-galleries.md#image-definitions)。
 
 使用 [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) 创建映像定义。 在此示例中，映像定义名为 myImageDefinition，适用于通用化的 Windows OS。 若要使用 Linux OS 创建映像的定义，请使用 `-OsType Linux`。 
 
@@ -146,6 +146,7 @@ $job.State
 > [!NOTE]
 > 需等待映像版本完全生成并复制完毕，然后才能使用同一快照来创建另一映像版本。 
 >
+> 创建映像版本时，还可以通过添加 `-StorageAccountType Premium_LRS` 在高级存储中存储映像版本。
 
 <!--Not Availale on  by adding `--storage-account-type standard_zrs` when you create the image version.-->
 <!--Not Available on , or [Zone Redundant Storage](/storage/common/storage-redundancy-zrs)-->
@@ -160,4 +161,4 @@ $job.State
 
 有关如何提供购买计划信息的信息，请参阅[在创建映像时提供 Azure 市场购买计划信息](marketplace-images.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

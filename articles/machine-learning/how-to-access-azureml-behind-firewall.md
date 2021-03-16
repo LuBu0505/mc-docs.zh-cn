@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 5a93a230b4369986fa2c98ea12778b8b41653ca7
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 93fb75558e36c267ea8a091ce8bb1f8554e353e1
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021998"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196938"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>将防火墙后的工作区用于 Azure 机器学习
 
@@ -33,7 +33,11 @@ ms.locfileid: "98021998"
 
 如果使用“计算实例”或“计算群集”Azure 机器学习，请为包含 Azure 机器学习资源的子网添加[用户定义的路由 (UDR)](../virtual-network/virtual-networks-udr-overview.md) 。 此路由将流量从 `BatchNodeManagement` 和 `AzureMachineLearning` 资源的 IP 地址强制发送到计算实例和计算群集的公共 IP。
 
-借助这些 UDR，Batch 服务可以与计算节点进行通信，以便进行任务计划编制。 还要添加资源所在的 Azure 机器学习服务 IP 地址，因为这是访问计算实例所必需的。 若要获取 Batch 服务和 Azure 机器学习服务的 IP 地址列表，请使用以下方法之一：
+借助这些 UDR，Batch 服务可以与计算节点进行通信，以便进行任务计划编制。 还要添加 Azure 机器学习服务的 IP 地址，因为这是访问计算实例所必需的。 添加 Azure 机器学习服务的 IP 时，必须同时添加主要和次要 Azure 区域的 IP。 主要区域是工作区所在的区域。
+
+若要查找次要区域，请参阅[使用 Azure 配对区域确保业务连续性和灾难恢复](../best-practices-availability-paired-regions.md#azure-regional-pairs)。 
+
+若要获取 Batch 服务和 Azure 机器学习服务的 IP 地址列表，请使用以下方法之一：
 
 * 下载 [Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)，并在文件中搜索 `BatchNodeManagement.<region>` 和 `AzureMachineLearning.<region>`（其中 `<region>` 是你的 Azure 区域）。
 
@@ -41,7 +45,10 @@ ms.locfileid: "98021998"
 
     ```azurecli
     az network list-service-tags -l "China East" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='chinaeast']"
+    # Get primary region IPs
     az network list-service-tags -l "China East" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='chinaeast']"
+    # Get secondary region IPs
+    az network list-service-tags -l "China North" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='chinanorth']"
     ```
 
     > [!TIP]
@@ -85,6 +92,7 @@ ms.locfileid: "98021998"
 
     | **主机名** | **用途** |
     | ---- | ---- |
+    | **graph.windows.net** | 由 Azure 机器学习计算实例/群集使用。 |
     | **anaconda.com**</br>**\*.anaconda.com** | 用于安装默认包。 |
     | \*.anaconda.org | 用于获取存储库数据。 |
     | **pypi.org** | 用于列出默认索引的依赖项（如果有），索引不会被用户设置覆盖。 如果索引被覆盖，则还必须允许“\*.pythonhosted.org”。 |
@@ -114,6 +122,7 @@ ms.locfileid: "98021998"
 | ----- | ----- | ----- | ----- |
 | Azure Active Directory | login.microsoftonline.com | login.microsoftonline.us | login.chinacloudapi.cn |
 | Azure 门户 | management.azure.com | management.azure.us | management.azure.cn |
+| Azure 资源管理器 | management.azure.com | management.usgovcloudapi.net | management.chinacloudapi.cn |
 
 **Azure 机器学习主机**
 
@@ -137,6 +146,7 @@ ms.locfileid: "98021998"
 | **要求** | **Azure 公共** | **Azure Government** | **Azure 中国世纪互联** |
 | ----- | ----- | ----- | ----- |
 | 计算群集/实例 | \*.batchai.core.windows.net | \*.batchai.core.usgovcloudapi.net |\*.batchai.ml.azure.cn |
+| 计算群集/实例 | graph.windows.net | graph.windows.net | graph.chinacloudapi.cn |
 | 计算实例 | \*.instances.azureml.net | \*.instances.azureml.us | \*.instances.azureml.cn |
 | 计算实例 | \*.instances.azureml.ms |  |  |
 

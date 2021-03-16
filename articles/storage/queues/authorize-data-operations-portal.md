@@ -6,18 +6,18 @@ author: WenJason
 services: storage
 ms.author: v-jay
 ms.reviewer: ozguns
-origin.date: 09/08/2020
-ms.date: 01/18/2021
+origin.date: 02/10/2021
+ms.date: 03/08/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 6c219eb097bcf091d10dadbb7845c62eeff08dc2
-ms.sourcegitcommit: f086abe8bd2770ed10a4842fa0c78b68dbcdf771
+ms.openlocfilehash: 61035dda0725f574d4f4b218bac9452828d064fa
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98163217"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196290"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>选择如何在 Azure 门户中授予对队列数据的访问权限
 
@@ -29,16 +29,19 @@ ms.locfileid: "98163217"
 
 ### <a name="use-the-account-access-key"></a>使用帐户访问密钥
 
-若要使用帐户访问密钥访问队列数据，你必须已分配到一个 Azure 角色，此角色包含 Azure RBAC 操作 `Microsoft.Storage/storageAccounts/listkeys/action`。 此 Azure 角色可以是内置角色，也可以是自定义角色。 支持 `Microsoft.Storage/storageAccounts/listkeys/action` 的内置角色包括：
+若要使用帐户访问密钥访问队列数据，你必须已分配到一个 Azure 角色，此角色包含 Azure RBAC 操作 **Microsoft.Storage/storageAccounts/listkeys/action**。 此 Azure 角色可以是内置角色，也可以是自定义角色。 支持 **Microsoft.Storage/storageAccounts/listkeys/action** 的内置角色包括：
 
 - Azure 资源管理器[所有者角色](../../role-based-access-control/built-in-roles.md#owner)
 - Azure 资源管理器[参与者角色](../../role-based-access-control/built-in-roles.md#contributor)
 - [存储帐户参与者角色](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-尝试在 Azure 门户中访问队列数据时，门户首先会检查你是否被分配了一个包含 `Microsoft.Storage/storageAccounts/listkeys/action` 的角色。 如果你被分配了包含此操作的角色，则门户将使用帐户密钥来访问队列数据。 如果你不拥有包含此操作的角色，则门户会尝试使用你的 Azure AD 帐户访问数据。
+尝试在 Azure 门户中访问队列数据时，门户首先会检查你是否被分配了一个包含 **Microsoft.Storage/storageAccounts/listkeys/action** 的角色。 如果你被分配了包含此操作的角色，则门户将使用帐户密钥来访问队列数据。 如果你不拥有包含此操作的角色，则门户会尝试使用你的 Azure AD 帐户访问数据。
+
+> [!IMPORTANT]
+> 在使用 Azure 资源管理器 ReadOnly 锁锁定了某个存储帐户时，不允许为该存储帐户执行[列出密钥](https://docs.microsoft.com/rest/api/storagerp/storageaccounts/listkeys)操作。 “列出密钥”是 POST 操作，并且在为该帐户配置了 ReadOnly 锁时，所有的 POST 操作都会被阻止 。 因此，当帐户被 ReadOnly 锁锁定时，用户必须使用 Azure AD 凭据访问门户中的队列数据。 若要了解如此使用 Azure AD 访问门户中的队列数据，请参阅[使用 Azure AD 帐户](#use-your-azure-ad-account)。
 
 > [!NOTE]
-> 经典订阅管理员角色“服务管理员”和“共同管理员”具有 Azure 资源管理器[`Owner`](../../role-based-access-control/built-in-roles.md#owner)角色的等效权限 。 “所有者”角色包含所有操作，其中包括 Microsoft.Storage/storageAccounts/listkeys/action`Microsoft.Storage/storageAccounts/listkeys/action`，因此，拥有其中一种管理角色的用户也可以使用帐户密钥访问队列数据。 有关详细信息，请参阅[经典订阅管理员角色、Azure 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)。
+> 经典订阅管理员角色“服务管理员”和“共同管理员”具有 Azure 资源管理器[`Owner`](../../role-based-access-control/built-in-roles.md#owner)角色的等效权限 。 “所有者”角色包含所有操作，其中包括 **Microsoft.Storage/storageAccounts/listkeys/action**，因此，拥有其中一种管理角色的用户也可以使用帐户密钥访问队列数据。 有关详细信息，请参阅[经典订阅管理员角色、Azure 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)。
 
 ### <a name="use-your-azure-ad-account"></a>使用 Azure AD 帐户
 
@@ -59,7 +62,7 @@ ms.locfileid: "98163217"
 不支持使用经典订阅管理员角色列出队列。 若要列出队列，用户必须拥有 Azure 资源管理器“读取者”角色、“存储队列数据读取者”角色或“存储队列数据参与者”角色。  
 
 > [!IMPORTANT]
-> Azure 门户中存储资源管理器的预览版不支持使用 Azure AD 凭据来查看和修改队列数据。 Azure 门户中的存储资源管理器始终使用帐户密钥来访问数据。 若要在 Azure 门户中使用存储资源管理器，你必须被分配一个包含 `Microsoft.Storage/storageAccounts/listkeys/action` 的角色。
+> Azure 门户中存储资源管理器的预览版不支持使用 Azure AD 凭据来查看和修改队列数据。 Azure 门户中的存储资源管理器始终使用帐户密钥来访问数据。 若要在 Azure 门户中使用存储资源管理器，你必须被分配一个包含 **Microsoft.Storage/storageAccounts/listkeys/action** 的角色。
 
 ## <a name="navigate-to-queues-in-the-azure-portal"></a>在 Azure 门户中导航到队列
 

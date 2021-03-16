@@ -1,16 +1,16 @@
 ---
 title: 通过门户进行新策略分配
 description: 本快速入门介绍如何使用 Azure 门户创建 Azure Policy 分配以识别不合规的资源。
-ms.author: v-tawe
-origin.date: 10/05/2020
-ms.date: 11/06/2020
+origin.date: 01/29/2021
+author: rockboyfor
+ms.date: 03/01/2021
 ms.topic: quickstart
-ms.openlocfilehash: 3d484fb1454229aab68b675b6e1e4fe959cfb09f
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.openlocfilehash: a554764476a3e7313dc2c4f65f35a0639571fcb8
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431012"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196893"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>创建策略分配以识别不合规资源。
 
@@ -60,9 +60,21 @@ ms.locfileid: "96431012"
 1. “分配名称”中自动填充了所选的策略名称，但可以更改它。 对于此示例，请保留“审核未使用托管磁盘的 VM”。 还可根据需要添加“说明”。 该说明提供有关此策略分配的详细信息。
    将根据登录的用户自动填写“分配者”。 此字段是可选字段，因此可输入自定义值。
 
+1. 让“策略强制”保持在“已启用”状态。 有关详细信息，请参阅[策略分配 - 强制模式](./concepts/assignment-structure.md#enforcement-mode)。
+
+1. 选择页面底部的“下一步”或页面顶部的“参数”选项卡，转到分配向导的下一部分 。
+
+1. 如果在“基本”选项卡上选中的策略定义包含参数，则在此选项卡上对其进行配置。由于“审核不使用托管磁盘的 VM”没有参数，因此请选择页面底部的“下一步”或页面顶部的“修正”选项卡，转到分配向导的下一部分 。
+
 1. 不选中“创建托管标识”。 当策略或计划包含具有 [deployIfNotExists](./concepts/effects.md#deployifnotexists) 或 [modify](./concepts/effects.md#modify) 效果的策略时，必须勾选此框。 由于本快速入门所使用的策略中未包含上述策略，请将其留空。 有关详细信息，请参阅[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)和[修正安全性工作原理](./how-to/remediate-resources.md#how-remediation-security-works)。
 
-1. 选择“分配”。
+1. 选择页面底部的“下一步”或页面顶部的“不合规消息”选项卡，转到分配向导的下一部分 。
+
+1. 将“不合规消息”设置为“虚拟机应使用托管磁盘”。 当拒绝某个资源时或在常规评估期间针对不合规资源会显示此自定义消息。
+
+1. 选择页面底部的“下一步”或页面顶部的“查看 + 创建”选项卡，转到分配向导的下一部分 。
+
+1. 查看选中的选项，然后在页面底部选择“创建”。
 
 你现已准备好识别不合规的资源，了解环境的符合性状态。
 
@@ -72,7 +84,7 @@ ms.locfileid: "96431012"
 
 :::image type="content" source="./media/assign-policy-portal/policy-compliance.png" alt-text="“策略符合性”页上符合性详细信息的屏幕截图。" border="false":::
 
-如果存在与此新分配不相符的任何现有资源，这些资源会在“不符合的资源”下显示。
+如果存在与此新分配不相符的任何现有资源，这些资源会在“不符合的资源”下显示  。
 
 针对现有资源评估某条件时，如果结果为 true，则会将这些资源标记为与策略不符。 下表显示了对于生成的符合性状态，不同的策略效果是如何与条件评估配合使用的。 尽管在 Azure 门户中看不到评估逻辑，但会显示符合性状态结果。 符合性状态结果为符合或不符合。
 
@@ -105,3 +117,5 @@ ms.locfileid: "96431012"
 
 > [!div class="nextstepaction"]
 > [创建和管理策略](./tutorials/create-and-manage.md)
+
+<!--Update_Description: update meta properties, wording update, update link-->

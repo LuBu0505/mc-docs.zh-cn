@@ -2,18 +2,18 @@
 title: 使用 Azure CLI 和模板部署资源
 description: 使用 Azure 资源管理器和 Azure CLI 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 ms.topic: conceptual
-origin.date: 10/22/2020
+origin.date: 01/26/2021
 author: rockboyfor
-ms.date: 11/23/2020
+ms.date: 03/01/2021
 ms.testscope: yes|no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: c90e09b6c6fb5d45021e90154f0d172ade9417d9
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 0ffbbcba3e2d7e269dbe006883fdd86e4f302bee
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "95970790"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054401"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>通过 ARM 模板和 Azure CLI 来部署资源
 
@@ -24,6 +24,7 @@ ms.locfileid: "95970790"
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 <!-- Not Available on Cloud Shell -->
+<!--NOT AVAILABLE ON [Deploy ARM templates from Azure local Shell](deploy-cloud-shell.md)-->
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
@@ -111,10 +112,19 @@ az deployment group create \
   --parameters storageAccountType=Standard_GRS
 ```
 
-前面的示例要求模板的 URI 可公开访问，它适用于大多数情况，因为模板应该不会包含敏感数据。 如果需要指定敏感数据（如管理员密码），请以安全参数的形式传递该值。
+前面的示例要求模板的 URI 可公开访问，它适用于大多数情况，因为模板应该不会包含敏感数据。 如果需要指定敏感数据（如管理员密码），请以安全参数的形式传递该值。 但是，如果想要管理对模板的访问权限，请考虑使用[模板规格](#deploy-template-spec)。
 
-<!--Not Available on  However, if you want to manage access to the template, consider using template specs-->
-<!--Not Available on  [template specs](#deploy-template-spec)-->
+要使用存储在存储帐户中的相对路径部署远程链接模板，请使用 `query-string` 指定 SAS 令牌：
+
+```azurecli
+az deployment group create \
+  --name linkedTemplateWithRelativePath \
+  --resource-group myResourceGroup \
+  --template-uri "https://stage20210126.blob.core.chinacloudapi.cn/template-staging/mainTemplate.json" \
+  --query-string $sasToken
+```
+
+有关详细信息，请参阅[对链接模板使用相对路径](./linked-templates.md#linked-template)。
 
 ## <a name="deployment-name"></a>部署名称
 
@@ -142,8 +152,34 @@ deploymentName='ExampleDeployment'$(date +"%d-%b-%Y")
 
 为避免与并发部署冲突并确保部署历史记录中的条目是唯一的，请为每个部署指定唯一的名称。
 
-<!--Not Available on ## Deploy template spec-->
-<!--Private Preview till on 09/22/2020-->
+## <a name="deploy-template-spec"></a><a name="deploy-template-spec"></a>部署模板规格
+
+你可以创建[模板规格](template-specs.md)，而不是部署本地或远程模板。模板规格是 Azure 订阅中包含 ARM 模板的资源。 这使你可以轻松地与组织中的用户安全地共享模板。 可使用 Azure 基于角色的访问控制 (Azure RBAC) 来授予对模板规格的访问权限。此功能目前以预览版提供。
+
+下面的示例演示如何创建和部署模板规格。
+
+首先，通过提供 ARM 模板创建模板规格。
+
+```azurecli
+az ts create \
+  --name storageSpec \
+  --version "1.0" \
+  --resource-group templateSpecRG \
+  --location "chinanorth2" \
+  --template-file "./mainTemplate.json"
+```
+
+然后，获取模板规格的 ID 并部署它。
+
+```azurecli
+id = $(az ts show --name storageSpec --resource-group templateSpecRG --version "1.0" --query "id")
+
+az deployment group create \
+  --resource-group demoRG \
+  --template-spec $id
+```
+
+有关详细信息，请参阅 [Azure 资源管理器模板规格（预览版）](template-specs.md)。
 
 ## <a name="preview-changes"></a>预览更改
 
@@ -153,7 +189,7 @@ deploymentName='ExampleDeployment'$(date +"%d-%b-%Y")
 
 若要传递参数值，可以使用内联参数或参数文件。
 
-### <a name="inline-parameters"></a>内联参数。
+### <a name="inline-parameters"></a>内联参数
 
 若要传递内联参数，请在 `parameters` 中提供值。 例如，若要在 Bash shell 中将字符串和数组传递给模板，请使用：
 
@@ -253,4 +289,4 @@ az deployment group create \
 - 若要了解如何在模板中定义参数，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 - 有关解决常见部署错误的提示，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](common-deployment-errors.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

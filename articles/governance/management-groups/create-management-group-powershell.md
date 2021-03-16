@@ -1,17 +1,18 @@
 ---
 title: 快速入门：使用 Azure PowerShell 创建管理组
 description: 本快速入门使用 Azure PowerShell 创建管理组，将资源组织到资源层次结构中。
-origin.date: 08/31/2020
-ms.date: 09/15/2020
-ms.author: v-tawe
+origin.date: 02/05/2021
+author: rockboyfor
+ms.date: 03/01/2021
+ms.author: v-yeche
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 98b6e0c97c5f991b117f19d5c2f3ee5b959665ca
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.openlocfilehash: 2f2019fc22f9253a5d1d51d9d32e047429634d5d
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431118"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196757"
 ---
 # <a name="quickstart-create-a-management-group-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建管理组
 
@@ -25,15 +26,15 @@ ms.locfileid: "96431118"
 
 - 在开始之前，请确保安装 Azure PowerShell 的最新版本。 有关详细信息，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
-- 如果未启用[层次结构保护](./how-to/protect-resource-hierarchy.md#setting---require-authorization)，则租户中的任何 Azure AD 用户都可在未分配有管理组写入权限的情况下创建管理组。 这个新的管理组成为根管理组或[默认管理组](./how-to/protect-resource-hierarchy.md#setting---default-management-group)的子级，并且创建者分配有“所有者”角色。 管理组服务支持此功能，因此不需要在根级别分配角色。 创建根管理组时，用户没有访问权限。 为避免在查找 Azure AD 全局管理员以开始使用管理组方面遇到阻碍，我们允许在根级别创建初始管理组。
+- 如果未启用[层次结构保护](./how-to/protect-resource-hierarchy.md#setting---require-authorization)，则租户中的任何 Azure AD 用户都可在未分配有管理组写入权限的情况下创建管理组。 这个新的管理组将成为根管理组的子级或[默认管理组](./how-to/protect-resource-hierarchy.md#setting---default-management-group)，并将为创建者分配“所有者”角色。 管理组服务允许此功能，因此不需要在根级别分配角色。 创建根管理组时，用户没有访问权限。 为避免在查找 Azure AD 全局管理员以开始使用管理组方面遇到阻碍，我们允许在根级别创建初始管理组。
 
-<!-- [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)] -->
+<!--NOT AVAILABLE ON [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)-->
 
 ### <a name="create-in-azure-powershell"></a>在 Azure PowerShell 中创建
 
 在 PowerShell 中，使用 [New-AzManagementGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagementgroup) cmdlet 创建新的管理组。 在本示例中，管理组 GroupName 为 Contoso。
 
-```azurepowershell
+```powershell
 New-AzManagementGroup -GroupName 'Contoso'
 ```
 
@@ -41,13 +42,13 @@ New-AzManagementGroup -GroupName 'Contoso'
 
 如果希望管理组在 Azure 门户中显示一个不同的名称，请添加 **DisplayName** 参数。 例如，若要创建 GroupName 为 Contoso 且显示名称为“Contoso Group”的管理组，请使用以下 cmdlet：
 
-```azurepowershell
+```powershell
 New-AzManagementGroup -GroupName 'Contoso' -DisplayName 'Contoso Group'
 ```
 
 在上述示例中，新的管理组是在根管理组下创建的。 若要指定一个不同的管理组作为父级，请使用 **ParentId** 参数。
 
-```azurepowershell
+```powershell
 $parentGroup = Get-AzManagementGroup -GroupName Contoso
 New-AzManagementGroup -GroupName 'ContosoSubGroup' -ParentId $parentGroup.id
 ```
@@ -56,15 +57,17 @@ New-AzManagementGroup -GroupName 'ContosoSubGroup' -ParentId $parentGroup.id
 
 若要删除上面创建的管理组，请使用 [Remove-AzManagementGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azmanagementgroup) cmdlet：
 
-```azurepowershell
+```powershell
 Remove-AzManagementGroup -GroupName 'Contoso'
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你创建了一个管理组来组织资源层次结构。 管理组可以包含订阅或其他管理组。
+在本快速入门中，你创建了一个管理组来整理资源层次结构。 管理组可以包含订阅或其他管理组。
 
-若要详细了解管理组以及如何管理资源层次结构，请继续学习：
+要详细了解管理组以及如何管理资源层次结构，请继续执行以下操作：
 
 > [!div class="nextstepaction"]
 > [使用管理组管理资源](./manage.md)
+
+<!--Update_Description: update meta properties, wording update, update link-->

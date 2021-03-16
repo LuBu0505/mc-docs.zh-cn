@@ -5,15 +5,15 @@ author: Johnnytechn
 manager: rkarlin
 services: security-center
 ms.author: v-johya
-ms.date: 01/06/2021
+ms.date: 02/25/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: e244a80c514f881bb88e5426fa0bc270ccc1377d
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: f4eec70b1e49ad053bc225fded37ed560b4c2da0
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023062"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197658"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory"></a>使用资产清单浏览和管理资源
 
@@ -37,10 +37,9 @@ Azure 安全中心的资产清单页提供了一个页面，用于查看已连�
 
 
 ## <a name="availability"></a>可用性
-
 |方面|详细信息|
 |----|:----|
-|发布状态：|正式发布 (GA)|
+|发布状态：|正式发布版 (GA)|
 |定价：|免费|
 |所需角色和权限：|所有用户|
 |云：|![是](./media/icons/yes-icon.png) 中国云|
@@ -48,31 +47,36 @@ Azure 安全中心的资产清单页提供了一个页面，用于查看已连�
 
 
 ## <a name="what-are-the-key-features-of-asset-inventory"></a>资产库存的主要功能是什么？
-
 库存页提供以下工具：
 
-- 摘要 - 在定义任何筛选器之前，会显示库存视图顶部突出的值条带：
+:::image type="content" source="media/asset-inventory/highlights-of-inventory.png" alt-text="Azure 安全中心内资产清单页的主要功能" lightbox="media/asset-inventory/highlights-of-inventory.png":::
 
-    - **资源总数**：连接到安全中心的资源总数。
-    - **不正常的资源**：具有有效安全建议的资源。 [详细了解安全建议](security-center-recommendations.md)。
-    - **未受监视的资源**：有代理监视问题的资源 - 已部署 Log Analytics 代理，但代理没有发送数据或有其他运行状况问题。
 
-- 筛选器 - 页面顶部的多个筛选器提供一种根据你尝试回答的问题快速优化资源列表的方法。
-<!--Not available in MC: combine the **Agent monitoring** filter with the **Tags** filter-->
-    应用筛选器后，摘要值就会更新为与查询结果相关的值。 
+### <a name="1---summaries"></a>1 - 摘要
+在定义任何筛选器之前，会显示库存视图顶部突出的值条带：
 
-- 导出选项 - 库存提供了将所选筛选器选项的结果导出到 CSV 文件的选项。 此外，还可以将查询本身导出到 Azure Resource Graph 资源管理器，以进一步优化、保存或修改 Kusto 查询语言 (KQL) 查询。
+- **资源总数**：连接到安全中心的资源总数。
+- **不正常的资源**：具有有效安全建议的资源。 [详细了解安全建议](security-center-recommendations.md)。
+- **未受监视的资源**：有代理监视问题的资源 - 已部署 Log Analytics 代理，但代理没有发送数据或有其他运行状况问题。
+- **未注册的订阅**：所选作用域中尚未连接到 Azure 安全中心的任何订阅。
 
-    :::image type="content" source="./media/asset-inventory/inventory-export-options.png" alt-text="库存的导出选项":::
+### <a name="2---filters"></a>2 - 筛选器
+页面顶部的多个筛选器提供一种根据你尝试回答的问题快速优化资源列表的方法。 例如，如果你想回答问题“我的哪台带有“生产”标记的计算机缺少 Log Analytics 代理？”，可以将“代理监视”筛选器与“标记”筛选器组合在一起。 
 
-    > [!TIP]
+应用筛选器后，摘要值就会更新为与查询结果相关的值。 
+
+### <a name="3---export-and-asset-management-tools"></a>3 - 导出和资产管理工具
+
+**导出选项** - 库存提供了将所选筛选器选项的结果导出到 CSV 文件的选项。 还可以将查询本身导出到 Azure Resource Graph 资源管理器，以进一步优化、保存或修改 Kusto 查询语言 (KQL) 查询。
+
+> [!TIP]
     > KQL 文档为数据库提供一些示例数据以及一些简单的查询，以获取相应语言的体验。 [通过此 KQL 教程了解详细信息](/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer)。
 
-- 资产管理选项 - 通过库存可以执行复杂的发现查询。 找到与查询匹配的资源后，库存将提供诸如以下操作的快捷方式：
+资产管理选项 - 通过库存可以执行复杂的发现查询。 找到与查询匹配的资源后，库存将提供诸如以下操作的快捷方式：
 
-    - 将标签分配给经过筛选的资源 - 选中要标记的资源旁边的复选框。
-    - 在安全中心中加入新服务器 - 使用“添加非 Azure 服务器”工具栏按钮。
-    - 使用 Azure 逻辑应用自动执行工作负载 - 使用“触发逻辑应用”按钮可在一个或多个资源上运行逻辑应用。 逻辑应用必须提前准备好，并接受相关的触发器类型（HTTP 请求）。 [详细了解逻辑应用](../logic-apps/logic-apps-overview.md)。
+- 将标签分配给经过筛选的资源 - 选中要标记的资源旁边的复选框。
+- 在安全中心中加入新服务器 - 使用“添加非 Azure 服务器”工具栏按钮。
+- 使用 Azure 逻辑应用自动执行工作负载 - 使用“触发逻辑应用”按钮可在一个或多个资源上运行逻辑应用。 逻辑应用必须提前准备好，并接受相关的触发器类型（HTTP 请求）。 [详细了解逻辑应用](../logic-apps/logic-apps-overview.md)。
 
 
 ## <a name="how-does-asset-inventory-work"></a>资产库存的工作方式？
@@ -92,14 +96,14 @@ ARG 用于提供高效资源探索，并具有大规模查询的功能。
 
 1. 在筛选器中选择相关选项，以创建要执行的特定查询。
 
-    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="库存筛选选项" lightbox="./media/asset-inventory/inventory-filters.png":::
-
     默认情况下，资源按有效安全建议的数量排序。
 
     > [!IMPORTANT]
     > 每个筛选器中的选项特定于当前选择的订阅中的资源和你在其他筛选器中的选择。
     >
     > 例如，如果你仅选择了一个订阅，并且该订阅没有要修正的具有重要安全建议的资源（0 个运行不正常的资源），则“建议”筛选器将没有选项。 
+
+    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="使用 Azure 安全中心的资产清单中的筛选器选项来筛选不受监视的生产资源":::
 
 1. 若要使用“安全发现包含”筛选器，请通过漏洞发现的 ID、安全检查或 CVE 名称输入自由文本以筛选受影响的资源：
 
@@ -115,9 +119,8 @@ ARG 用于提供高效资源探索，并具有大规模查询的功能。
         :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="通过右键单击将资源升级到 Azure Defender" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
 
     - 开 - 受 Azure Defender 计划保护的资源
-    - 部分 - 此选项应用于禁用了某些（但不是全部）Azure Defender 计划的订阅 。 例如，以下订阅已禁用五个 Azure Defender 计划。 
-
-        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="部分开启 Azure Defender 的订阅":::
+    - 部分 - 此选项应用于禁用了某些（但不是全部）Azure Defender 计划的订阅 。
+<!--Not available in MC: png-->
 
 1. 若要进一步检查查询结果，请选择你感兴趣的资源。
 

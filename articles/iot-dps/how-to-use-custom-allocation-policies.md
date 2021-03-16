@@ -3,18 +3,17 @@ title: Azure IoT 中心设备预配服务中的自定义分配策略
 description: 如何使用 Azure IoT 中心设备预配服务 (DPS) 中的自定义分配策略
 author: wesmc7777
 ms.author: v-tawe
-origin.date: 11/14/2019
-ms.date: 01/05/2021
+ms.date: 02/22/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 49a2a3b4dfb6a48dba25b88fffdb8fb6e3640708
-ms.sourcegitcommit: ff20289adb80a6ab45e15fa5e196ff7af7e1c6b5
+ms.openlocfilehash: c360d4ef3324e72003852eddc93763832c0f825f
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97874913"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196912"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>如何使用自定义分配策略
 
@@ -39,7 +38,7 @@ ms.locfileid: "97874913"
 * 为 Azure IoT C SDK 设置开发环境
 * 模拟设备，以验证其是否根据自定义分配策略的示例代码进行预配。
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,7 +48,7 @@ ms.locfileid: "97874913"
 
 - 已安装最新版本的 [Git](https://git-scm.com/download/)。
 
-<!-- [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] -->
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="create-the-provisioning-service-and-two-divisional-iot-hubs"></a>创建预配服务和两个部门 IoT 中心
 
@@ -81,6 +80,9 @@ ms.locfileid: "97874913"
 
     以下示例在 *chinaeast* 位置创建名为 *contoso-toasters-hub-1098* 的 IoT 中心。 必须使用唯一的中心名称。 在中心名称中的 1098  位置构成你自己的后缀。 自定义分配策略的示例代码要求使用中心名称中的 `-toasters-`。
 
+    > [!CAUTION]
+    > 自定义分配策略的示例 Azure 函数代码需要中心名称中的子字符串 `-toasters-`。 请确保使用包含必需的 toasters 子字符串的名称。
+    
     ```azurecli 
     az iot hub create --name contoso-toasters-hub-1098 --resource-group contoso-us-resource-group --location chinaeast --sku S1
     ```
@@ -91,11 +93,33 @@ ms.locfileid: "97874913"
 
     以下示例在 *chinaeast* 位置创建名为 *contoso-heatpumps-hub-1098* 的 IoT 中心。 必须使用唯一的中心名称。 在中心名称中的 1098  位置构成你自己的后缀。 自定义分配策略的示例代码要求使用中心名称中的 `-heatpumps-`。
 
+    > [!CAUTION]
+    > 自定义分配策略的示例 Azure 函数代码需要中心名称中的子字符串 `-heatpumps-`。 请确保使用包含必需的 heatpumps 子字符串的名称。
+
     ```azurecli 
     az iot hub create --name contoso-heatpumps-hub-1098 --resource-group contoso-us-resource-group --location chinaeast --sku S1
     ```
 
     此命令可能需要花费几分钟时间完成。
+
+5. IoT 中心必须链接到 DPS 资源。 
+
+    运行下面的两个命令来获取你刚才创建的中心的连接字符串。 在每个命令中，将中心资源名称替换为你选择的名称：
+
+    ```azurecli 
+    hubToastersConnectionString=$(az iot hub connection-string show --hub-name contoso-toasters-hub-1098 --key primary --query connectionString -o tsv)
+    hubHeatpumpsConnectionString=$(az iot hub connection-string show --hub-name contoso-heatpumps-hub-1098 --key primary --query connectionString -o tsv)
+    ```
+
+    运行以下命令来将中心链接到 DPS 资源。 在每个命令中，将 DPS 资源名称替换为你选择的名称：
+
+    ```azurecli 
+    az iot dps linked-hub create --dps-name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --connection-string $hubToastersConnectionString --location chinanorth
+    az iot dps linked-hub create --dps-name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --connection-string $hubHeatpumpsConnectionString --location chinanorth
+    ```
+
+
+
 
 ## <a name="create-the-custom-allocation-function"></a>创建自定义分配函数
 
@@ -115,6 +139,8 @@ ms.locfileid: "97874913"
 
     **运行时堆栈**：从下拉列表中选择“.NET Core”。 
 
+    **版本**：从下拉列表中选择“3.1”。
+
     **区域**：选择你的资源组所在的同一区域。 此示例使用“中国东部”  。
 
     > [!NOTE]
@@ -122,21 +148,17 @@ ms.locfileid: "97874913"
 
     ![创建用于托管自定义分配函数的 Azure 函数应用](./media/how-to-use-custom-allocation-policies/create-function-app.png)
 
-4. 在“摘要”页上，选择“创建”以创建函数应用。   部署可能需要花费几分钟时间。 完成后，选择“转到资源”。 
+4. 在“摘要”页上，选择“创建”以创建函数应用。   部署可能需要花费几分钟时间。 完成后，选择“转到资源”。
 
-5. 在函数应用“概述”页的左窗格中，选择“函数”旁边的 **+** 以添加新函数。  
+5. 在函数应用“概述”页的左窗格中，单击“函数”，然后选择“+ 添加”以添加新函数。  
 
-    ![将函数添加到函数应用](./media/how-to-use-custom-allocation-policies/create-function.png)
+6. 在“添加函数”页上，单击“HTTP 触发器”，然后单击“添加”按钮。
 
-6. 在“适用于 .NET 的 Azure Functions - 入门”页上，对于“选择部署环境”步骤，请选择“门户中”磁贴，然后选择“继续”。    
+7. 在下一页中，单击“代码 + 测试”。 这允许你编辑名为 **HttpTrigger1** 的函数的代码。 **run.csx** 代码文件应该会打开供编辑。
 
-    ![选择门户开发环境](./media/how-to-use-custom-allocation-policies/function-choose-environment.png)
+8. 引用所需的 NuGet 包。 为了创建初始设备孪生，自定义分配函数将使用必须载入托管环境的两个 NuGet 包中定义的类。 在 Azure Functions 中，NuGet 包是使用 *function.proj* 文件引用的。 在此步骤中，你将保存并上传所需程序集的 function.proj 文件。  有关详细信息，请参阅[通过 Azure Functions 使用 NuGet 包](../azure-functions/functions-reference-csharp.md#using-nuget-packages)。
 
-7. 在下一页上，对于“创建函数”步骤，请选择“Webhook + API”磁贴，然后选择“创建”。    随即会创建名为 **HttpTrigger1** 的函数，门户将显示 **run.csx** 代码文件的内容。
-
-8. 引用所需的 NuGet 包。 为了创建初始设备孪生，自定义分配函数将使用必须载入托管环境的两个 NuGet 包中定义的类。 在 Azure Functions 中，NuGet 包是使用 *function.host* 文件引用的。 此步骤将保存并上传 *function.host* 文件。
-
-    1. 将以下行复制到你偏好的编辑器中，并将文件作为 *function.host* 保存在计算机上。
+    1. 将以下行复制到你喜欢使用的编辑器中，并在你的计算机上将该文件保存为“function.proj”。
 
         ```xml
         <Project Sdk="Microsoft.NET.Sdk">  
@@ -144,21 +166,15 @@ ms.locfileid: "97874913"
                 <TargetFramework>netstandard2.0</TargetFramework>  
             </PropertyGroup>  
             <ItemGroup>  
-                <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Service" Version="1.5.0" />  
-                <PackageReference Include="Microsoft.Azure.Devices.Shared" Version="1.16.0" />  
+                <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Service" Version="1.16.3" />
+                <PackageReference Include="Microsoft.Azure.Devices.Shared" Version="1.27.0" />
             </ItemGroup>  
         </Project>
         ```
 
-    2. 对于 **HttpTrigger1** 函数，请展开窗口右侧的“查看文件”选项卡。 
+    2. 单击位于代码编辑器上方的“上传”按钮，以上传“function.proj”文件。 上传后，在代码编辑器中使用下拉框选择该文件来验证内容。
 
-        ![打开“查看文件”](./media/how-to-use-custom-allocation-policies/function-open-view-files.png)
-
-    3. 选择“上传”，浏览到 **function.proj** 文件，然后选择“打开”以上传该文件。  
-
-        ![选择“上传文件”](./media/how-to-use-custom-allocation-policies/function-choose-upload-file.png)
-
-9. 将 **HttpTrigger1** 函数的代码替换为以下代码，然后选择“保存”： 
+9. 请确保在代码编辑器中为 **HttpTrigger1** 选择“run.csx”。 将 **HttpTrigger1** 函数的代码替换为以下代码，然后选择“保存”： 
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -315,29 +331,15 @@ ms.locfileid: "97874913"
 
     **选择要如何将设备分配到中心**：选择“自定义(使用 Azure Function)”。 
 
+    **订阅**：选择你在其中创建了 Azure 函数的订阅。
+
+    **函数应用**：通过名称选择你的函数应用。 此示例中使用了 **contoso-function-app-1098**。
+
+    **函数**：选择 **HttpTrigger1** 函数。
+
     ![为对称密钥证明添加自定义分配注册组](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
-4. 在“添加注册组”中，选择“链接新的 IoT 中心”以链接这两个新的部门 IoT 中心。  
-
-    请对两个部门 IoT 中心执行上述步骤。
-
-    **订阅**：如果你有多个订阅，请选择创建分区 IoT 中心的订阅。
-
-    **IoT 中心**：选择你创建的分区中心之一。
-
-    **访问策略**：选择“iothubowner”。 
-
-    ![使用预配服务链接分区 IoT 中心](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
-
-5. 在“添加注册组”  上，一旦链接这两个分区 IoT 中心后，必须将其选择为注册组的 IoT 中心组，如下所示：
-
-    ![为注册创建分区中心组](./media/how-to-use-custom-allocation-policies/enrollment-divisional-hub-group.png)
-
-6. 在“添加注册组”中，向下滚动到“选择 Azure 函数”部分，选择在上一部分创建的函数应用。   选择创建的函数，然后选择“保存”以保存该注册组。
-
-    ![选择函数并保存注册组](./media/how-to-use-custom-allocation-policies/save-enrollment.png)
-
-7. 保存注册后，重新打开它，并记录“主键”  。 必须先保存注册，才能生成密钥。 此密钥稍后将用于为模拟设备生成唯一设备密钥。
+4. 保存注册后，重新打开它，并记录“主键”。 必须先保存注册，才能生成密钥。 此密钥稍后将用于为模拟设备生成唯一设备密钥。
 
 ## <a name="derive-unique-device-keys"></a>派生唯一设备密钥
 
@@ -350,56 +352,59 @@ ms.locfileid: "97874913"
 * breakroom499-contoso-tstrsd-007 
 * mainbuilding167-contoso-hpsd-088 
 
-### <a name="linux-workstations"></a>Linux 工作站
-
-如果使用的是 Linux 工作站，可以使用 openssl 生成派生的设备密钥，如以下示例中所示。
-
-1. 将“键”  值替换为前面记录的“主键”  。
-
-    ```bash
-    KEY=oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA==
-
-    REG_ID1=breakroom499-contoso-tstrsd-007
-    REG_ID2=mainbuilding167-contoso-hpsd-088
-
-    keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
-    devkey1=$(echo -n $REG_ID1 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
-    devkey2=$(echo -n $REG_ID2 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
-
-    echo -e $"\n\n$REG_ID1 : $devkey1\n$REG_ID2 : $devkey2\n\n"
-    ```
-
-    ```bash
-    breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
-    mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
-    ```
 
 ### <a name="windows-based-workstations"></a>基于 Windows 的工作站
 
 如果使用的是基于 Windows 的工作站，可以使用 PowerShell 生成派生的设备密钥，如以下示例中所示。
 
-1. 将“键”  值替换为前面记录的“主键”  。
+将“键”  值替换为前面记录的“主键”  。
 
-    ```powershell
-    $KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
+```powershell
+$KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
 
-    $REG_ID1='breakroom499-contoso-tstrsd-007'
-    $REG_ID2='mainbuilding167-contoso-hpsd-088'
+$REG_ID1='breakroom499-contoso-tstrsd-007'
+$REG_ID2='mainbuilding167-contoso-hpsd-088'
 
-    $hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
-    $hmacsha256.key = [Convert]::FromBase64String($key)
-    $sig1 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID1))
-    $sig2 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID2))
-    $derivedkey1 = [Convert]::ToBase64String($sig1)
-    $derivedkey2 = [Convert]::ToBase64String($sig2)
+$hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
+$hmacsha256.key = [Convert]::FromBase64String($KEY)
+$sig1 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID1))
+$sig2 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID2))
+$derivedkey1 = [Convert]::ToBase64String($sig1)
+$derivedkey2 = [Convert]::ToBase64String($sig2)
 
-    echo "`n`n$REG_ID1 : $derivedkey1`n$REG_ID2 : $derivedkey2`n`n"
-    ```
+echo "`n`n$REG_ID1 : $derivedkey1`n$REG_ID2 : $derivedkey2`n`n"
+```
 
-    ```powershell
-    breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
-    mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
-    ```
+```powershell
+breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
+mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
+```
+
+# <a name="linux"></a>[Linux](#tab/linux)
+
+如果使用的是 Linux 工作站，可以使用 openssl 生成派生的设备密钥，如以下示例中所示。
+
+将“键”  值替换为前面记录的“主键”  。
+
+```bash
+KEY=oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA==
+
+REG_ID1=breakroom499-contoso-tstrsd-007
+REG_ID2=mainbuilding167-contoso-hpsd-088
+
+keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
+devkey1=$(echo -n $REG_ID1 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
+devkey2=$(echo -n $REG_ID2 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
+
+echo -e $"\n\n$REG_ID1 : $devkey1\n$REG_ID2 : $devkey2\n\n"
+```
+
+```bash
+breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
+mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
+```
+
+---
 
 模拟设备将使用含有每个注册 ID 的派生的设备密钥，以执行对称密钥证明。
 

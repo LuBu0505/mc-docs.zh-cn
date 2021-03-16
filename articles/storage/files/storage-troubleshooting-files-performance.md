@@ -5,15 +5,15 @@ author: WenJason
 ms.service: storage
 ms.topic: troubleshooting
 origin.date: 11/16/2020
-ms.date: 02/08/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: d6bea5fd333ce749a3d211c9fb7f05d01e0e3f73
-ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
+ms.openlocfilehash: e40cbe63e6bd962264dba35d1747eb50e69c477a
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99503932"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196245"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>排查 Azure 文件共享性能问题
 
@@ -23,7 +23,7 @@ ms.locfileid: "99503932"
 
 ### <a name="cause-1-share-was-throttled"></a>原因 1：共享受限
 
-当达到文件共享的每秒 I/O 操作数 (IOPS)、流入量或流出量限制时，将会限制请求。 若要了解标准文件共享和高级文件共享的限制，请参阅[文件共享和文件缩放目标](./storage-files-scale-targets.md#file-share-and-file-scale-targets)。
+当达到文件共享的每秒 I/O 操作数 (IOPS)、流入量或流出量限制时，将会限制请求。 若要了解标准文件共享和高级文件共享的限制，请参阅[文件共享和文件缩放目标](./storage-files-scale-targets.md#azure-file-share-scale-targets)。
 
 若要确认共享是否受到限制，可以访问并使用门户中的 Azure 指标。
 
@@ -35,14 +35,28 @@ ms.locfileid: "99503932"
 
 1. 选择“事务”作为指标。
 
-1. 添加一个“响应类型”筛选器，然后检查是否有任何请求具有以下任一响应代码：
-   * **SuccessWithThrottling**：对于服务器消息块 (SMB)
-   * **ClientThrottlingError**：对于 REST
+1. 添加一个“响应类型”筛选器，然后检查是否有任何请求被限制。 
 
-   ![高级文件共享的指标选项的屏幕截图，其中显示了“响应类型”属性筛选器。](media/storage-troubleshooting-premium-fileshares/metrics.png)
+    对于标准文件共享，如果某个请求被限制，则会记录以下响应类型：
 
-   > [!NOTE]
-   > 若要接收警报，请参阅本文后面的[“如何创建文件共享受到限制时的警报”](#how-to-create-an-alert-if-a-file-share-is-throttled)部分。
+    - SuccessWithThrottling
+    - ClientThrottlingError
+
+    对于高级文件共享，如果某个请求被限制，则会记录以下响应类型：
+
+    - SuccessWithShareEgressThrottling
+    - SuccessWithShareIngressThrottling
+    - SuccessWithShareIopsThrottling
+    - ClientShareEgressThrottlingError
+    - ClientShareIngressThrottlingError
+    - ClientShareIopsThrottlingError
+
+    若要详细了解每个响应类型，请参阅[指标维度](/storage/files/storage-files-monitoring-reference#metrics-dimensions)。
+
+    ![高级文件共享的指标选项的屏幕截图，其中显示了“响应类型”属性筛选器。](media/storage-troubleshooting-premium-fileshares/metrics.png)
+
+    > [!NOTE]
+    > 若要接收警报，请参阅本文后面的[“如何创建文件共享受到限制时的警报”](#how-to-create-an-alert-if-a-file-share-is-throttled)部分。
 
 ### <a name="solution"></a>解决方案
 
@@ -174,48 +188,63 @@ CentOS Linux 或 RHEL 不支持大于 1 的 I/O 深度。
 
 ## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>如何创建文件共享受到限制时的警报
 
-1. 在 Azure 门户中转到自己的存储帐户。
-1. 在“监视”部分中选择“警报”，然后选择“新建警报规则”  。
-1. 选择“编辑资源”，为存储帐户选择“文件资源类型”，然后选择“完成”  。 例如，如果存储帐户名称为 contoso，则选择 contoso/文件资源。
-1. 选择“选择条件”以添加条件。
-1. 在存储帐户支持的信号列表中，选择“事务”指标。
-1. 在“配置信号逻辑”窗格的“维度名称”下拉列表中，选择“响应类型”  。
-1. 在“维度值”下拉列表中，选择“SuccessWithThrottling”（对于 SMB）或“ClientThrottlingError”（对于 REST）  。
+1. 在 Azure 门户 中转到自己的存储帐户。
+2. 在“监视”部分中单击“警报”，然后单击“+ 新建警报规则”。  
+3. 单击“编辑资源”，为存储帐户选择“文件资源类型”，然后单击“完成”。 例如，如果存储帐户名称为 `contoso`，请选择 `contoso/file` 资源。
+4. 单击“选择条件”以添加条件。
+5. 你将看到存储帐户支持的信号列表，请选择“事务”指标。
+6. 在“配置信号逻辑”边栏选项卡上，单击“维度名称”下拉列表，然后选择“响应类型”。
+7. 单击“维度值”下拉列表，然后为你的文件共享选择适当的响应类型。
+
+    对于标准文件共享，请选择以下响应类型：
+
+    - SuccessWithThrottling
+    - ClientThrottlingError
+
+    对于高级文件共享，请选择以下响应类型：
+
+    - SuccessWithShareEgressThrottling
+    - SuccessWithShareIngressThrottling
+    - SuccessWithShareIopsThrottling
+    - ClientShareEgressThrottlingError
+    - ClientShareIngressThrottlingError
+    - ClientShareIopsThrottlingError
 
    > [!NOTE]
-   > 如果“SuccessWithThrottling”和“ClientThrottlingError”维度值均未列出，则意味着该资源尚未受到限制 。 若要添加维度值，请选择“维度值”下拉列表旁边的“添加自定义值”，输入“SuccessWithThrottling”或“ClientThrottlingError”，选择“确定”，然后重复步骤 7    。
+   > 如果“维度值”下拉列表中未列出响应类型，这意味着资源未被限制。 若要添加维度值，请在“维度值”下拉列表旁边选择“添加自定义值”，输入响应类型类型（例如 **SuccessWithThrottling**），选择“确定”，然后重复上述步骤，为你的文件共享添加所有适用的响应类型。
 
-1. 在“维度名称”下拉列表中，选择“文件共享” 。
-1. 在“维度值”下拉列表中，选择要对其发出警报的文件共享。
+8. 单击“维度名称”下拉列表并选择“文件共享”。
+9. 单击“维度值”下拉列表，并选择要对其发出警报的文件共享。
+
 
    > [!NOTE]
-   > 如果文件共享是标准文件共享，请选择“所有当前值和将来值”。 “维度值”下拉列表不会列出文件共享，因为每共享指标不可用于标准文件共享。 如果存储帐户中的任何文件共享受到限制，则会触发标准文件共享的限制警报，并且警报不会识别是哪个文件共享受到了限制。 由于每共享指标不可用于标准文件共享，因此建议为每个存储帐户使用一个文件共享。
+   > 如果文件共享是标准文件共享，请选择“所有当前值和将来值”。 “维度值”下拉列表不会列出文件共享，因为每共享指标不可用于标准文件共享。 如果存储帐户中的任何文件共享受到限制，则会触发标准文件共享的限制警报，并且警报不会识别哪个文件共享受到限制。 因为每共享指标不可用于标准文件共享，所以建议为每个存储帐户使用一个文件共享。
 
-1. 通过输入“阈值”、“运算符”、“聚合粒度”和“评估频率”来定义警报参数，然后选择“完成”    。
+10. 定义“警报参数”（阈值、运算符、聚合粒度和评估频率），然后单击“完成”。
 
     > [!TIP]
-    > 如果使用的是静态阈值，并且文件共享当前受到限制，则可通过指标图表来确定合理的阈值。 如果使用的是动态阈值，则指标图表将显示基于最新数据计算出的阈值。
+    > 如果你使用的是静态阈值，并且文件共享当前受到限制，则可通过指标图表来确定合理的阈值。 如果使用的是动态阈值，则指标图表将显示基于最新数据计算出的阈值。
 
-1. 选择“选择操作组”，然后通过选择现有操作组或创建新的操作组，将一个操作组（例如电子邮件或短信）添加到警报中。
-1. 输入警报详细信息，例如“警报规则名称”、“说明”和“严重性”  。
-1. 选择“创建警报规则”可以创建警报  。
+11. 单击“添加操作组”，通过选择现有操作组或创建新的操作组，将一个操作组（电子邮件、短信等）添加到警报中。
+12. 填写 **警报详细信息**，例如 **警报规则名称**、**说明** 和 **严重性**。
+13. 单击“创建警报规则”以创建警报。
 
 若要详细了解如何在 Azure Monitor 中配置警报，请参阅 [Azure 中的警报概述](/azure-monitor/platform/alerts-overview)。
 
 ## <a name="how-to-create-alerts-if-a-premium-file-share-is-trending-toward-being-throttled"></a>如果高级文件共享正在趋向于受限制，如何创建警报
 
 1. 在 Azure 门户中转到自己的存储帐户。
-1. 在“监视”部分中选择“警报”，然后选择“新建警报规则”  。
-1. 选择“编辑资源”，为存储帐户选择“文件资源类型”，然后选择“完成”  。 例如，如果存储帐户名称为 contoso，则选择 contoso/文件资源。
-1. 选择“选择条件”以添加条件。
-1. 在存储帐户支持的信号列表中，选择“流出量”指标。
+2. 在“监视”部分中选择“警报”，然后选择“新建警报规则”  。
+3. 选择“编辑资源”，为存储帐户选择“文件资源类型”，然后选择“完成”  。 例如，如果存储帐户名称为 contoso，则选择 contoso/文件资源。
+4. 选择“选择条件”以添加条件。
+5. 在存储帐户支持的信号列表中，选择“流出量”指标。
 
    > [!NOTE]
    > 必须创建三个单独的警报，以在流入量、流出量或事务值超过所设置的阈值时发出警报。 这是因为仅当满足所有条件时才会触发警报。 例如，如果将所有条件都放入一个警报，则仅当流入量、流出量和事务都超出其阈值量时才会发出警报。
 
-1. 向下滚动。 在“维度名称”下拉列表中，选择“文件共享” 。
-1. 在“维度值”下拉列表中，选择要对其发出警报的文件共享。
-1. 通过选择“运算符”、“阈值”、“聚合粒度”和“评估频率”下拉列表中的值来定义警报参数，然后选择“完成”    。
+6. 向下滚动。 在“维度名称”下拉列表中，选择“文件共享” 。
+7. 在“维度值”下拉列表中，选择要对其发出警报的文件共享。
+8. 通过选择“运算符”、“阈值”、“聚合粒度”和“评估频率”下拉列表中的值来定义警报参数，然后选择“完成”    。
 
    流出量、流入量和事务指标以每分钟表示，但预配的流出量、流入量和 I/O 以每秒表示。 因此，例如，如果预配的流出量为每秒 90&nbsp;兆字节 (MiB/s)，并且你希望阈值为预配流出量的&nbsp;80%，请选择以下警报参数： 
    - 阈值：75497472 
@@ -226,9 +255,9 @@ CentOS Linux 或 RHEL 不支持大于 1 的 I/O 深度。
    - 聚合粒度：*1 小时*
    - 评估频率：*1 小时*
 
-1. 选择“选择操作组”，然后通过选择现有操作组或创建新的操作组，将一个操作组（例如电子邮件或短信）添加到警报中。
-1. 输入警报详细信息，例如“警报规则名称”、“说明”和“严重性”  。
-1. 选择“创建警报规则”可以创建警报  。
+9. 选择“添加操作组”，然后通过选择现有操作组或创建新的操作组，将一个操作组（例如电子邮件或短信）添加到警报中。
+10. 输入警报详细信息，例如“警报规则名称”、“说明”和“严重性”  。
+11. 选择“创建警报规则”可以创建警报  。
 
     > [!NOTE]
     > - 若要接收有关高级文件共享由于预配的流入量而接近限制的通知，请按照前面的说明进行操作，但需要进行以下更改：

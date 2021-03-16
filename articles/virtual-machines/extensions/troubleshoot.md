@@ -12,16 +12,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 03/29/2016
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
-ms.openlocfilehash: 68fd171998a04752665d5de79d9a8083564ddb84
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: c9b7cafb6138d1e4657039e3f4049ddf53d7aefd
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856978"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053173"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM 扩展故障排除
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -85,21 +85,24 @@ Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomS
 - 找到 WindowsAzureGuestAgent.exe 进程
 - 右键单击并选择“结束任务”。 该进程将自动重启
 
-还可以通过执行“空更新”来触发 VM 的新 GoalState：
+还可以通过执行“VM 重新应用”来触发 VM 的新 GoalState。 VM [重新应用](https://docs.microsoft.com/rest/api/compute/virtualmachines/reapply)是在 2020 年引入的一个 API，用于重新应用 VM 的状态。 建议你在可以容忍短暂 VM 停机时间的某个时间执行此操作。 虽然“重新应用”本身不会导致 VM 重启，并且大多数情况下调用“重新应用”不会重启 VM，但当“重新应用”会触发新的目标状态时有非常小的概率会应用对 VM 模型的某个其他待定更新，并且该其他更改可能会要求重启。 
 
-Azure PowerShell：
+Azure 门户：
+
+在门户中选择 VM，在左窗格中，在“支持 + 故障排除”下，选择“重新部署 + 重新应用”，然后选择“重新应用”。
+
+Azure PowerShell *（将 RG 名称和 VM 名称替换为你的值）* ：
 
 ```azurepowershell
-$vm = Get-AzureRMVM -ResourceGroupName <RGName> -Name <VMName>  
-Update-AzureRmVM -ResourceGroupName <RGName> -VM $vm  
+Set-AzVM -ResourceGroupName <RG Name> -Name <VM Name> -Reapply
 ```
 
-Azure CLI：
+Azure CLI *（将 RG 名称和 VM 名称替换为你的值）* ：
 
 ```azurecli
-az vm update -g <rgname> -n <vmname>
+az vm reapply -g <RG Name> -n <VM Name>
 ```
 
-如果“空更新”不起作用，则可以从 Azure 管理门户向 VM 添加新的空数据磁盘，然后在重新添加证书后将其删除。
+如果“VM 重新应用”不起作用，则可以从 Azure 管理门户向 VM 添加新的空数据磁盘，然后在重新添加证书后将其删除。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

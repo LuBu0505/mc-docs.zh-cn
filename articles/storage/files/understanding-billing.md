@@ -4,18 +4,40 @@ description: 了解如何解释针对 Azure 文件共享的预配和即用即付
 author: WenJason
 ms.service: storage
 ms.topic: how-to
-origin.date: 01/20/2021
-ms.date: 02/08/2021
+origin.date: 01/27/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: a33c2c1b0e92aa74effdb10172dea077459ddf41
-ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
+ms.openlocfilehash: 4a567d46deb7cb47e206c80642d32aa75922baee
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99503928"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196365"
 ---
-# <a name="understanding-azure-files-billing"></a>了解 Azure 文件存储计费
+# <a name="understand-azure-files-billing"></a>了解 Azure 文件存储计费
+
+## <a name="storage-units"></a>存储单元    
+Azure 文件存储使用 base-2 度量单位来表示存储容量：KiB、MiB、GiB 和 TiB。 你的操作系统不一定会使用相同的度量单位或计算系统。
+
+### <a name="windows"></a>Windows
+
+Windows 操作系统和 Azure 文件存储都使用 base-2 计算系统来衡量存储容量，但在标记单位时存在差异。 Azure 文件存储使用 base-2 度量单位来标记其存储容量，而 Windows 使用 base-10 度量单位标记其存储容量。 报告存储容量时，Windows 不会将其存储容量的度量单位从 base-2 转换为 base-10。
+
+|首字母缩写词  |定义  |计价单位  |Windows 的显示方式  |
+|---------|---------|---------|---------|
+|KiB     |1,024 字节         |kibibyte         |KB（千字节）         |
+|MiB     |1,024 KiB（1,048,576 字节）         |mebibyte         |MB（兆字节）         |
+|GiB     |1024 MiB（1,073,741,824 字节）         |gibibyte         |GB（十亿字节）         |
+|TiB     |1024 GiB（1,099,511,627,776 字节）         |tebibyte         |TB（万亿字节）         |
+
+### <a name="macos"></a>macOS
+
+请参阅 Apple 网站上的 [iOS 和 macOS 报告存储容量的方式](https://support.apple.com/HT201402)，以确定使用的是哪种计算系统。
+
+### <a name="linux"></a>Linux
+
+每个操作系统或软件部分都可使用不同的计算系统。 请参阅其对应的文档，以确定它们报告存储容量的方式。
 
 ## <a name="provisioned-model"></a>预配模型
 Azure 文件存储将预配模型用于高级文件共享。 在预配业务模型中，可以主动向 Azure 文件存储服务指定存储需求，而不是根据使用的资源进行计费。 这类似于在本地购买硬件，因为当你预配具有一定存储量的 Azure 文件共享时，无论是否使用该存储，都需要为其付费，就像在开始使用空间时，你不会支付本地物理媒体的费用一样。 与在本地购买物理媒体不同，可以根据存储和 IO 性能特征来灵活地纵向扩展或纵向缩放预配的文件共享。

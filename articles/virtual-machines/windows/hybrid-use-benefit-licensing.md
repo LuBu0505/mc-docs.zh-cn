@@ -6,16 +6,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 origin.date: 04/22/2018
 author: rockboyfor
-ms.date: 10/19/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
-ms.openlocfilehash: 725bb2e182c5bde1ba89d63be76a58e7c13924b6
-ms.sourcegitcommit: 6f66215d61c6c4ee3f2713a796e074f69934ba98
+ms.openlocfilehash: efea24ed9e37605f9afb5c6b946f63663a805c57
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92128272"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054391"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 的 Azure 混合权益
 对于有软件保障的客户，Windows Server 的 Azure 混合权益可让你使用本地 Windows Server 许可证，并以较低成本在 Azure 中运行 Windows 虚拟机。 可以使用 Windows Server 的 Azure 混合权益部署 Windows OS 的新虚拟机。 本文介绍如何使用 Windows Server 的 Azure 混合权益部署新的 VM 的步骤，以及如何更新现有正在运行的 VM 的步骤。 有关 Windows Server 的 Azure 混合权益许可和成本节约方面的更多信息，请参阅[“Windows Server 的 Azure 混合权益许可”页](https://www.azure.cn/pricing/hybrid-benefit//)。
@@ -42,7 +42,7 @@ ms.locfileid: "92128272"
 Windows Server 的 Azure 混合权益支持所有基于 Windows Server OS 的映像。 可以使用 Azure 平台支持映像或上传自己的自定义 Windows Server 映像。 
 
 ### <a name="portal"></a>门户
-若要使用 Windows Server 的 Azure 混合权益创建 VM，请使用“节省资金”部分下的切换。
+若要使用适 Windows Server 的 Azure 混合权益创建 VM，请在创建过程中滚动到“基本信息”选项卡的底部，在“许可”下选中此复选框以使用现有的 Windows Server 许可证 。 
 
 ### <a name="powershell"></a>PowerShell
 
@@ -213,9 +213,9 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
     
     <!--Not Available on [Frequently asked questions for Azure Hybrid Benefit](https://www.azure.cn/pricing/hybrid-benefit/faq/)-->
     
-- 详细了解 [Windows Server 的 Azure 混合权益许可详细指南](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)。
+- 详细了解 [Windows Server 的 Azure 混合权益许可详细指南](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)
 - 详细了解 [Windows Server 的 Azure 混合权益和 Azure Site Recovery 让应用迁移到 Azure 更具成本效益](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)
 - 详细了解[如何使用多租户托管权限在 Azure 上部署 Windows 10](./windows-desktop-multitenant-hosting-deployment.md)
 - 详细了解如何[使用资源管理器模板](../../azure-resource-manager/management/overview.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 05/28/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: d1f9415ee686c0be33cd80d3e2194c99fe4351c5
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 0bb0fa0028b1a0fb5975856146401b6dc6c71974
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230758"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053804"
 ---
 # <a name="public-ip-addresses"></a>公共 IP 地址
 
@@ -47,7 +47,7 @@ ms.locfileid: "98230758"
 使用以下 SKU 之一创建公共 IP 地址：
 
 >[!IMPORTANT]
-> 负载均衡器和公共 IP 资源需要匹配的 SKU。 不能混合使用基本 SKU 资源和标准 SKU 资源。 无法将独立的虚拟机、可用性集资源中的虚拟机或虚拟机规模集资源同时附加到两个 SKU。  新的设计应当考虑使用标准 SKU 资源。  有关详细信息，请查看[标准负载均衡器](../load-balancer/load-balancer-standard-overview.md?toc=%2fvirtual-network%2ftoc.json)。
+> 负载均衡器和公共 IP 资源需要匹配的 SKU。 不能混合使用基本 SKU 资源和标准 SKU 资源。 无法将独立的虚拟机、可用性集资源中的虚拟机或虚拟机规模集资源同时附加到两个 SKU。  新的设计应当考虑使用标准 SKU 资源。  有关详细信息，请查看[标准负载均衡器](../load-balancer/load-balancer-overview.md?toc=%2fvirtual-network%2ftoc.json)。
 
 ### <a name="standard"></a>标准
 
@@ -55,17 +55,21 @@ ms.locfileid: "98230758"
 
 - 始终使用静态分配方法。
 - 具有可调整的入站发起流空闲超时，范围为 4-30 分钟，默认值为 4 分钟，出站发起流的空闲超时固定为 4 分钟。
-- 默认情况下为安全的，并且对入站流量关闭。 允许列出[网络安全组](security-overview.md#network-security-groups)的入站流量。
-- 分配给网络接口、标准公共负载均衡器或应用程序网关。 有关标准负载均衡器的详细信息，请参阅 [Azure 标准负载均衡器](../load-balancer/load-balancer-standard-overview.md?toc=%2fvirtual-network%2ftoc.json)。
+- 默认情况下为安全的，并且对入站流量关闭。 允许列出[网络安全组](./network-security-groups-overview.md#network-security-groups)的入站流量。
+- 分配给网络接口、标准公共负载均衡器或应用程序网关。 有关标准负载均衡器的详细信息，请参阅 [Azure 标准负载均衡器](../load-balancer/load-balancer-overview.md?toc=%2fvirtual-network%2ftoc.json)。
 
-<!-- Not Available on [Availability zones overview](../availability-zones/az-overview.md?toc=%2fvirtual-network%2ftoc.json)-->
-<!-- Not Available on [Standard Load Balancer and Availability Zones](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fvirtual-network%2ftoc.json)-->
+<!--NOT AVAILABLE ON [Availability zones overview](../availability-zones/az-overview.md?toc=%2fvirtual-network%2ftoc.json)-->
+<!--NOT AVAILABLE ON [Standard Load Balancer and Availability Zones](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fvirtual-network%2ftoc.json)-->
+<!--NOT AVAILABLE ON [cross-region load balancers](../load-balancer/cross-region-overview.md)-->
 
 > [!NOTE]
-> 在创建并关联[网络安全组](security-overview.md#network-security-groups)且显式允许所需入站流量之前，到标准 SKU 资源的入站通信将会失败。
+> 在创建并关联[网络安全组](./network-security-groups-overview.md#network-security-groups)且显式允许所需入站流量之前，到标准 SKU 资源的入站通信将会失败。
 
 > [!NOTE]
 > 使用[实例元数据服务 IMDS](../virtual-machines/windows/instance-metadata-service.md) 时，只有具有基本 SKU 的公共 IP 地址可用。 不支持标准 SKU。
+
+> [!NOTE]
+> 使用标准 SKU 公共 IP 地址时，诊断设置不会显示在资源边栏选项卡下。 若要启用对标准公共 IP 地址资源的日志记录，请导航到 Azure Monitor 边栏选项卡下的诊断设置，然后选择你的 IP 地址资源。
 
 ### <a name="basic"></a>基本
 
@@ -83,8 +87,10 @@ ms.locfileid: "98230758"
     * VPN 网关
     * 应用程序网关
     * 公共负载均衡器
+- 不支持可用性区域方案。
 
-<!--Not Avaialble on [Availability zones overview](../availability-zones/az-overview.md?toc=%2fvirtual-network%2ftoc.json)-->
+<!--NOT AVAILABLE ON [Availability zones overview](../availability-zones/az-overview.md?toc=%2fvirtual-network%2ftoc.json)-->
+<!--NOT AVAILABLE ON [Standard Load Balancer and Availability Zones](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fvirtual-network%2ftoc.json)-->
 
 ## <a name="allocation-method"></a>分配方法
 
@@ -157,7 +163,7 @@ ms.locfileid: "98230758"
 
 可以向负载均衡器前端分配动态或静态公共 IP 地址。 可将多个公共 IP 地址分配到负载均衡器前端。 此配置可实现[多 VIP](../load-balancer/load-balancer-multivip-overview.md?toc=%2fvirtual-network%2ftoc.json) 方案，如包含基于 TLS 的网站的多租户环境。 
 
-有关 Azure 负载均衡器 SKU 的详细信息，请参阅 [Azure 负载均衡器标准 SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fvirtual-network%2ftoc.json)。
+有关 Azure 负载均衡器 SKU 的详细信息，请参阅 [Azure 负载均衡器标准 SKU](../load-balancer/load-balancer-overview.md?toc=%2fvirtual-network%2ftoc.json)。
 
 ## <a name="vpn-gateways"></a>VPN 网关
 
@@ -170,11 +176,11 @@ ms.locfileid: "98230758"
 
 ## <a name="application-gateways"></a>应用程序网关
 
-将公共 IP 地址分配给网关的 **前端** 配置可以将其与 Azure [应用程序网关](../application-gateway/application-gateway-introduction.md?toc=%2fvirtual-network%2ftoc.json)相关联。 
+将公共 IP 地址分配给网关的 **前端** 配置可以将其与 Azure [应用程序网关](../application-gateway/overview.md?toc=%2fvirtual-network%2ftoc.json)相关联。 
 
 * 将“动态”基本公共 IP 地址分配给应用程序网关 V1 前端配置。 
 
-<!--Not Available on * Assign a **static** standard SKU address to a V2 front-end configuration.-->
+<!--NOT AVAILABLE on * Assign a **static** standard SKU address to a V2 front-end configuration.-->
 
 ## <a name="azure-firewall"></a>Azure 防火墙
 
@@ -208,4 +214,4 @@ Azure 中的[网络限制](../azure-resource-manager/management/azure-subscripti
 * 了解 [Azure 中的专用 IP 地址](private-ip-addresses.md)
 * [使用 Azure 门户通过静态公共 IP 部署 VM](virtual-network-deploy-static-pip-arm-portal.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

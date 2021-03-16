@@ -5,27 +5,31 @@ author: WenJason
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-origin.date: 07/16/2020
-ms.date: 02/08/2021
+origin.date: 02/17/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.reviewer: stewu
-ms.openlocfilehash: 048e2466df22236a0c7e8178b7635613cbf89588
-ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
+ms.openlocfilehash: 1d19352099e4ae864bca4e2c57d1b08d2a3d022b
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99503840"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196308"
 ---
-# <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
+# <a name="use-azure-storage-explorer-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的目录、文件
 
-本文介绍了如何使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)在启用了分层命名空间 (HNS) 的存储帐户中创建和管理目录、文件与权限。
+本文介绍了如何使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)在启用了分层命名空间 (HNS) 的存储帐户中创建和管理目录和文件。
 
 ## <a name="prerequisites"></a>先决条件
 
-> [!div class="checklist"]
-> * Azure 订阅。 请参阅[获取 Azure 试用版](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
-> * 一个已启用分层命名空间 (HNS) 的存储帐户。 按[这些](../common/storage-account-create.md)说明创建一个。
-> * 已在本地计算机上安装了 Azure 存储资源管理器。 若要安装适用于 Windows、Macintosh 或 Linux 的 Azure 存储资源管理器，请参阅 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
+- Azure 订阅。 请参阅[获取 Azure 试用版](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+
+- 一个已启用分层命名空间 (HNS) 的存储帐户。 按[这些](../common/storage-account-create.md)说明创建一个。
+
+- 已在本地计算机上安装了 Azure 存储资源管理器。 若要安装适用于 Windows、Macintosh 或 Linux 的 Azure 存储资源管理器，请参阅 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
+
+> [!NOTE]
+> 在使用 Azure Data Lake Storage Gen2 时，存储资源管理器会使用 Blob (blob) 和 Data Lake Storage Gen2 (dfs) [终结点](../common/storage-private-endpoints.md#private-endpoints-for-azure-storage)。 如果使用专用终结点配置对 Azure Data Lake Storage Gen2 的访问，请确保为存储帐户创建两个专用终结点：一个具有目标子资源 `blob`，另一个具有目标子资源 `dfs`。
 
 ## <a name="sign-in-to-storage-explorer"></a>登录到存储资源管理器
 
@@ -47,7 +51,7 @@ ms.locfileid: "99503840"
 
 ## <a name="create-a-container"></a>创建容器
 
-容器用来存储目录和文件。 若要创建容器，请展开在前面的步骤中创建的存储帐户。 选择并右键单击“Blob 容器”，然后选择“创建 Blob 容器”。   输入容器的名称。 有关对容器进行命名的规则和限制的列表，请参阅[创建容器](storage-quickstart-blobs-dotnet.md#create-a-container)部分。 完成后，请按 **Enter** 创建容器。 成功创建容器后，该容器将显示在所选存储帐户的“Blob 容器”文件夹下。 
+容器用来存储目录和文件。 若要创建容器，请展开在前面的步骤中创建的存储帐户。 选择并右键单击“Blob 容器”，然后选择“创建 Blob 容器”。  输入容器的名称。 有关对容器进行命名的规则和限制的列表，请参阅[创建容器](storage-quickstart-blobs-dotnet.md#create-a-container)部分。 完成后，请按 **Enter** 创建容器。 成功创建容器后，该容器将显示在所选存储帐户的“Blob 容器”文件夹下。 
 
 ![Microsoft Azure 存储资源管理器 - 创建容器](media/data-lake-storage-explorer/creating-a-filesystem.png)
 
@@ -59,7 +63,7 @@ ms.locfileid: "99503840"
 
 ## <a name="upload-blobs-to-the-directory"></a>将 blob 上传到目录
 
-在目录功能区上，选择“上传”  按钮。 此操作提供上传文件夹或文件的选项。
+在目录功能区上，选择“上传”按钮。 此操作提供上传文件夹或文件的选项。
 
 选择要上传的文件或文件夹。
 
@@ -77,43 +81,9 @@ ms.locfileid: "99503840"
 
 若要使用 **Azure 存储资源管理器** 下载文件，请选择所需的文件，然后在功能区中选择“下载”。  此时将打开文件对话框，可在其中输入文件名。 选择“保存”，开始将文件下载到本地位置。 
 
-## <a name="managing-access"></a>管理访问权限
-
-可以在容器的根目录中设置权限。 为此，你必须使用有权执行此操作的个人帐户登录到 Azure 存储资源管理器（而不是使用连接字符串）。 右键单击容器，然后选择“管理权限”，打开“管理权限”对话框   。
-
-![Microsoft Azure 存储资源管理器 - 管理目录访问权限](media/storage-quickstart-blobs-storage-explorer/manageperms.png)
-
-“管理权限”对话框可以管理所有者和所有者组的权限  。 它还可以将新用户和组添加访问控制列表中，然后你可以管理其权限。
-
-要将新用户或组添加到访问控制列表中，请选择“添加用户或组”字段  。
-
-输入要添加到列表中的相应 Azure Active Directory (AAD) 条目，然后选择“添加”  。
-
-用户或组随即出现在“用户和组:”字段中，然后便可开始管理其权限  。
-
-> [!NOTE]
-> 建议的最佳做法是在 AAD 中创建安全组并维护组而不是单个用户的权限。 有关此建议以及其他最佳做法的详细信息，请参阅 [Data Lake Storage Gen2 的最佳做法](data-lake-storage-best-practices.md)。
-
-有两类权限可以分配：访问 ACL 和默认 ACL。
-
-* **访问权限**：访问 ACL 控制对某个对象的访问权限。 文件和目录都具有访问 ACL。
-
-* **默认**：与目录关联的 ACL 模板，用于确定在该目录下创建的任何子项的访问 ACL。 文件没有默认 ACL。
-
-在这两个类别中，你可以对文件或目录分配三种权限：“读取”、“写入”和“执行”    。
-
->[!NOTE]
-> 在此处进行选择不会对目录中任何当前存在的项设置权限。 如果文件已存在，则必须转到每个项并手动设置权限。
-
-由于可以管理各个目录以及各个文件的权限，因此可以实现细化访问控制。 管理目录和文件的权限的过程与上述过程相同。 右键单击要管理权限的文件或目录，然后按照相同的过程进行操作。
-
-## <a name="private-endpoints-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的专用终结点
-
-在使用 Azure Data Lake Storage Gen2 时，存储资源管理器会使用 Blob (blob) 和 Data Lake Storage Gen2 (dfs) [终结点](../common/storage-private-endpoints.md#private-endpoints-for-azure-storage)。 如果使用专用终结点配置对 Azure Data Lake Storage Gen2 的访问，请确保为存储帐户创建两个专用终结点：一个具有目标子资源 `blob`，另一个具有目标子资源 `dfs`。
-
 ## <a name="next-steps"></a>后续步骤
 
-了解 Data Lake Storage Gen2 中的访问控制列表。
+了解如何通过设置访问控制列表 (ACL) 来管理文件和目录权限
 
 > [!div class="nextstepaction"]
-> [Azure Data Lake Storage Gen2 中的访问控制](./data-lake-storage-access-control.md)
+> [使用 Azure 存储资源管理器在 Azure Data Lake Storage Gen2 中管理 ACL](./data-lake-storage-explorer-acl.md)

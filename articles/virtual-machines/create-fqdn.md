@@ -5,19 +5,19 @@ ms.service: virtual-machines
 ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure-services
-origin.date: 11/03/2020
+origin.date: 01/12/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0b9fe216b347084dca167512c9b98f05150ab9ae
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: f3ce1ab8df4b54492d93f8bf86cd3a2097cc657d
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857034"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053134"
 ---
 <!--Verified successfully from rename articles.-->
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>在 Azure 门户中为 Linux VM 创建完全限定的域名
@@ -29,14 +29,15 @@ ms.locfileid: "97857034"
 ## <a name="create-a-fqdn"></a>创建 FQDN
 阅读本文的前提是已创建 VM。 如果需要，可以在门户中创建 [Linux](./linux/quick-create-portal.md) 或 [Windows](./windows/quick-create-portal.md) VM。 在 VM 正常运行后，请按照以下步骤操作：
 
-1. 在门户中选择 VM。 在“DNS 名称”下选择“配置” 。
-2. 输入 DNS 名称，然后在页面顶部选择“保存”。
-3. 若要返回 VM 概述边栏选项卡，请选择右上角的 X 以关闭“配置”边栏选项卡 。 
-4. 验证现在是否正确显示“DNS 名称”。
+1. 在门户中选择 VM。 
+1. 在左侧菜单中选择“配置”
+1. 在“DNS 名称标签”下，输入要使用的前缀。
+1. 在页面顶部选择“保存”。
+1. 在左侧菜单中选择“概述”，返回到“VM 概述”边栏选项卡。 
+1. 验证是否正确显示“DNS 名称”。 
 
 ## <a name="next-steps"></a>后续步骤
-VM 已经有公共 IP 和 DNS 名称，现在可以部署通用应用程序框架或服务，例如 nginx、MongoDB 和 Docker。
 
-也可以深入了解如何[使用 Resource Manager](../azure-resource-manager/management/overview.md)，以获取生成 Azure 部署的相关提示。
+你还可以使用 [Azure DNS 区域](../dns/dns-getstarted-portal.md)来管理 DNS。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

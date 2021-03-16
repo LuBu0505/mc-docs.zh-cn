@@ -4,21 +4,21 @@ description: 了解如何更改 GPv2 或 Blob 存储帐户的默认访问层
 author: WenJason
 ms.author: v-jay
 origin.date: 01/11/2021
-ms.date: 02/08/2021
+ms.date: 03/08/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: klaasl
-ms.openlocfilehash: 32e87efaeb30b6dda4d4172e5ffbab8c45ea6603
-ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
+ms.openlocfilehash: 36b2a34ff5c2ecf1715c04e929945a95eb2017cd
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99504437"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196258"
 ---
 # <a name="manage-the-default-access-tier-of-an-azure-storage-account"></a>管理 Azure 存储帐户的默认访问层
 
-每个 Azure 存储帐户都有默认访问层：热访问层、冷访问层或存档访问层。 在创建存储帐户时分配访问层。 默认访问层为热访问层。
+每个 Azure 存储帐户都有默认访问层：热访问层或冷访问层。 在创建存储帐户时分配访问层。 默认访问层为热访问层。
 
 可以通过设置存储帐户中的“访问层”属性来更改默认帐户层。 更改帐户层适用于存储在帐户中的所有对象，前提是该帐户没有设置一个显式层。 将帐户层从热切换为冷只对 GPv2 帐户中没有设置层的所有 Blob 产生写入操作次数（以 10,000 次为单位）收费，而从冷切换为热则会对 Blob 存储和 GPv2 帐户中的所有 Blob 产生读取操作次数（以 10,000 次为单位）和数据检索量（以 GB 为单位）收费。
 
@@ -32,7 +32,7 @@ ms.locfileid: "99504437"
 
 # <a name="portal"></a>[门户](#tab/portal)
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 
 1. 在 Azure 门户中，搜索并选择“所有资源”。
 

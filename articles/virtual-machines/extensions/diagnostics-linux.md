@@ -1,31 +1,31 @@
 ---
-title: Azure 计算 - Linux 诊断扩展
-description: 如何配置 Azure Linux 诊断扩展 (LAD)，以收集 Azure 中运行的 Linux VM 的指标和日志事件。
+title: Azure 计算 - Linux 诊断扩展 4.0
+description: 如何配置 Azure Linux 诊断扩展 (LAD) 4.0，以收集 Azure 中运行的 Linux VM 的指标和日志事件。
 services: virtual-machines-linux
 manager: gwallace
 ms.service: virtual-machines-linux
 ms.subservice: extensions
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-origin.date: 12/13/2018
+origin.date: 02/05/2021
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2e2d31108bc10b366d65fc945674d81878c43a3d
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 60612b26dc0dd4b278b9d1fc2a0b84a5b3d34348
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857009"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055303"
 ---
-# <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展监视指标和日志
+# <a name="use-linux-diagnostic-extension-40-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展 4.0 监视指标和日志
 
-本文档介绍新的 Linux 诊断扩展 3.0 版。
+本文档介绍了 4.0 版和更新版本的 Linux 诊断扩展。
 
 > [!IMPORTANT]
-> 有关 2.3 版和更早版本，请参阅[此文档](https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)。
+> 有关 3.* 版的信息，请参阅[此文档](https://docs.azure.cn/virtual-machines/extensions/diagnostics-linux-v3)。 有关 2.3 版和更早版本，请参阅[此文档](https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)。
 
 ## <a name="introduction"></a>简介
 
@@ -47,10 +47,11 @@ Linux 诊断扩展可帮助用户监视 Azure 上运行的 Linux VM 的运行状
 >[!NOTE]
 >[Log Analytics VM 扩展](./oms-linux.md)中还随附了诊断 VM 扩展的某些组件。 由于这种体系结构，如果在同一 ARM 模板中对两个扩展进行实例化，则可能会发生冲突。 为避免这些安装时冲突，请使用 [`dependsOn` 指令](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)，确保按顺序安装扩展。 可按任一顺序安装扩展。
 
-这些安装说明和[可下载示例配置](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json)会将 LAD 3.0 配置为：
+这些安装说明和一个[可下载的示例配置](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json)会将 LAD 4.0 配置为：
 
-* 捕获并存储 LAD 2.3 提供的指标；
-* 捕获一组有用的文件系统指标，此为 LAD 3.0 新增功能；
+* 捕获并存储与 LAD 2.3、3* 提供的指标相同的指标；
+* 将指标发送到 Azure Monitor 接收器以及 Azure 存储的平常接收器（这是 Lad 4.0 中的新功能）
+* 捕获一组有用的文件系统指标（与 LAD 3.0 提供的指标相同）；
 * 捕获 LAD 2.3 允许的默认 syslog 收集；
 * 允许 Azure 门户体验，以便对 VM 指标进行制图以及就其发送警报。
 
@@ -114,6 +115,9 @@ Python2 可执行文件必须将别名设置为“python”。 下面是可用�
 
 在这些示例中下载的示例配置将收集一组标准数据，并将其发送到表存储。 示例配置的 URL 及其内容可能会有所更改。 在大多数情况下，你应该下载门户设置 JSON 文件的副本并根据需要对其进行自定义，然后让你构造的任何模板或自动化都使用你自己版本的配置文件，而不是每次都下载该 URL。
 
+> [!NOTE]
+> 若要启用新的 Azure Monitor 接收器，VM 需要为 MSI 身份验证令牌生成启用系统分配的标识。 可在创建 VM 的过程中执行此操作，也可在创建 VM 之后执行此操作。 通过门户、CLI、PowerShell 和资源管理器启用系统分配的标识的步骤  详细地列在[此处](https://docs.azure.cn/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)。 
+
 #### <a name="azure-cli-sample"></a>Azure CLI 示例
 
 <!--MOONCAKE: CORRECT TO ADD my_diagnostic_storage_endpoint=https://core.chinacloudapi.cn/-->
@@ -132,6 +136,9 @@ az login
 # Select the subscription containing the storage account
 az account set --subscription <your_azure_subscription_id>
 
+# Enable System Assigned Identity to the existing VM
+az vm identity assign -g $my_resource_group -n $my_linux_vm
+
 # Download the sample Public settings. (You could also use curl or any web browser)
 wget https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json -O portal_public_settings.json
 
@@ -142,27 +149,32 @@ sed -i "s#__VM_RESOURCE_ID__#$my_vm_resource_id#g" portal_public_settings.json
 
 # Build the protected settings (storage account SAS token)
 my_diagnostic_storage_account_sastoken=$(az storage account generate-sas --account-name $my_diagnostic_storage_account --expiry 2037-12-31T23:59:00Z --permissions wlacu --resource-types co --services bt -o tsv)
-my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_account', 'storageAccountEndPoint': '$my_diagnostic_storage_endpoint', 'storageAccountSasToken': '$my_diagnostic_storage_account_sastoken'}"
+my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_account', 'storageAccountSasToken': '$my_diagnostic_storage_account_sastoken', 'storageAccountEndPoint': '$my_diagnostic_storage_endpoint'}"
 
-# Finallly tell Azure to install and enable the extension
-az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
+# Finally tell Azure to install and enable the extension
+az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 4.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
 
 <!--MOONCAKE: CORRECT ON 'storageAccountEndPoint': '$my_diagnostic_storage_endpoint',-->
 
-#### <a name="azure-cli-sample-for-installing-lad-30-extension-on-the-vmss-instance"></a>在 VMSS 实例上安装 LAD 3.0 扩展的 Azure CLI 示例
+#### <a name="azure-cli-sample-for-installing-lad-40-extension-on-the-virtual-machine-scale-set-instance"></a>用于在虚拟机规模集实例上安装 LAD 4.0 扩展的 Azure CLI 示例
 
 ```azurecli
 #Set your Azure VMSS diagnostic variables correctly below
-$my_resource_group=<your_azure_resource_group_name_containing_your_azure_linux_vm>
-$my_linux_vmss=<your_azure_linux_vmss_name>
-$my_diagnostic_storage_account=<your_azure_storage_account_for_storing_vm_diagnostic_data>
+my_resource_group=<your_azure_resource_group_name_containing_your_azure_linux_vm>
+my_linux_vmss=<your_azure_linux_vmss_name>
+my_diagnostic_storage_account=<your_azure_storage_account_for_storing_vm_diagnostic_data>
+my_diagnostic_storage_endpoint="https://core.chinacloudapi.cn/"
 
 # Should login to Azure first before anything else
+az cloud set -n AzureChinaCloud
 az login
 
 # Select the subscription containing the storage account
 az account set --subscription <your_azure_subscription_id>
+
+# Enable System Assigned Identity to the existing VMSS
+az vmss identity assign -g $my_resource_group -n $my_linux_vmss
 
 # Download the sample Public settings. (You could also use curl or any web browser)
 wget https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json -O portal_public_settings.json
@@ -174,10 +186,10 @@ sed -i "s#__VM_RESOURCE_ID__#$my_vmss_resource_id#g" portal_public_settings.json
 
 # Build the protected settings (storage account SAS token)
 $my_diagnostic_storage_account_sastoken=$(az storage account generate-sas --account-name $my_diagnostic_storage_account --expiry 2037-12-31T23:59:00Z --permissions wlacu --resource-types co --services bt -o tsv)
-$my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_account', 'storageAccountSasToken': '$my_diagnostic_storage_account_sastoken'}"
+$my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_account', 'storageAccountSasToken': '$my_diagnostic_storage_account_sastoken', 'storageAccountEndPoint': '$my_diagnostic_storage_endpoint'}"
 
 # Finally tell Azure to install and enable the extension
-az vmss extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vmss-name $my_linux_vmss --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
+az vmss extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 4.0 --resource-group $my_resource_group --vmss-name $my_linux_vmss --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
 
 #### <a name="powershell-sample"></a>PowerShell 示例
@@ -187,12 +199,15 @@ az vmss extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagno
 ```powershell
 $storageAccountName = "yourStorageAccountName"
 $storageAccountResourceGroup = "yourStorageAccountResourceGroupName"
-$storageAccountEndPoint="https://core.chinacloudapi.cn/"
+$storageAccountEndPoint = "https://core.chinacloudapi.cn/"
 $vmName = "yourVMName"
 $VMresourceGroup = "yourVMResourceGroupName"
 
 # Get the VM object
 $vm = Get-AzVM -Name $vmName -ResourceGroupName $VMresourceGroup
+
+# Enable System Assigned Identity on an existing VM
+Update-AzVM -ResourceGroupName $VMresourceGroup -VM $vm -IdentityType SystemAssigned
 
 # Get the public settings template from GitHub and update the templated values for storage account and resource ID
 $publicSettings = (Invoke-WebRequest -Uri https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json).Content
@@ -205,10 +220,10 @@ $publicSettings = $publicSettings.Replace('__VM_RESOURCE_ID__', $vm.Id)
 $sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Service,Container,Object -Permission "racwdlup" -Context (Get-AzStorageAccount -ResourceGroupName $storageAccountResourceGroup -AccountName $storageAccountName).Context -ExpiryTime $([System.DateTime]::Now.AddYears(10))
 
 # Build the protected settings (storage account SAS token)
-$protectedSettings="{'storageAccountName': '$storageAccountName', 'storageAccountEndPoint': '$storageAccountEndPoint', 'storageAccountSasToken': '$sasToken'}"
+$protectedSettings="{'storageAccountName': '$storageAccountName', 'storageAccountSasToken': '$sasToken', 'storageAccountEndPoint': '$storageAccountEndPoint'}"
 
 # Finally install the extension with the settings built above
-Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location $vm.Location -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 3.0 
+Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location $vm.Location -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 4.0 
 ```
 
 <!--MOONCAKE: CORRECT TO ADD $storageAccountEndPoint=https://core.chinacloudapi.cn/-->
@@ -219,21 +234,17 @@ Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location 
 
 ### <a name="migration-from-previous-versions-of-the-extension"></a>从以前版本的扩展迁移
 
-扩展的最新版本是 3.0。 任何旧版本 (2.x) 都已弃用，可能会在 2018 年 7 月 31 日或之后取消发布。
+此扩展的最新版本为 **4.0，目前为公共预览版**。 **3.x 的旧版本仍受支持，但 2.x 的版本自 2018 年 7 月 31 日以来已被弃用**。
 
 > [!IMPORTANT]
-> 此扩展引入了对扩展配置的重大更改。 其中一项更改是为了提高扩展的安全性；因此，无法维持与 2.x 版本的向后兼容性。 此外，此扩展的扩展发布服务器与 2.x 版本的发布服务器不同。
->
-> 若要从扩展的 2.x 版迁移到此新版本，必须卸载旧扩展（在旧发布服务器名称下），然后安装扩展的 3.0 版。
+> 若要从 3.x 迁移到此新版本的扩展，必须卸载旧扩展，然后安装版本 4 扩展（包含有关系统分配的标识和接收器的更新配置，用于将指标发送到 Azure Monitor 接收器）。
 
 建议：
 
 * 启用自动次要版本升级后再安装扩展。
-    * 在经典的部署模型 VM 上，如果要通过 Azure XPLAT CLI 或 Powershell 安装扩展，请指定“3.*”作为版本。
+    * 在经典的部署模型 VM 上，如果要通过 Azure XPLAT CLI 或 PowerShell 安装扩展，请指定“4.*”作为版本。
     * 在 Azure 资源管理器部署模型 VM 上，在 VM 部署模板中加入“"autoUpgradeMinorVersion": true”。
-* 为 LAD 3.0 使用新的/不同的存储帐户。 LAD 2.3 和 LAD 3.0 之间存在几个小的不兼容性，使得共享帐户变得麻烦：
-    * LAD 3.0 将 syslog 事件存储在不同名称的表中。
-    * LAD 3.0 中 `builtin` 指标的 counterSpecifier 字符串不同。
+* 可以为 LAD 4.0 使用与 LAD 3.* 相同的存储帐户。 
 
 ## <a name="protected-settings"></a>受保护的设置
 
@@ -252,7 +263,7 @@ Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location 
 名称 | 值
 ---- | -----
 storageAccountName | 扩展写入数据的存储帐户的名称。
-storageAccountEndPoint | （可选）标识存储帐户所在云的终结点。 如果缺少此设置，则 LAD 默认为 Azure 公有云 `https://core.windows.net`。 若要使用 Azure 中国中的存储帐户，请使用 `https://core.chinacloudapi.cn` 相应地设置此值。
+storageAccountEndPoint | （可选）标识存储帐户所在云的终结点。 如果缺少此设置，则 LAD 默认为 Azure 公有云 `https://core.windows.net`。 若要使用 Azure 中国的存储帐户，请将此值替换为为 `https://core.chinacloudapi.cn`。
 storageAccountSasToken | Blob 服务和表服务的[帐户 SAS 令牌](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) (`ss='bt'`)，适用于容器和对象 (`srt='co'`)，用于授予添加、创建、列出、更新和写入权限 (`sp='acluw'`)。 请勿使用前导问号 (?)。
 mdsdHttpProxy | （可选）允许扩展连接到指定存储帐户和终结点所需的 HTTP 代理信息。
 sinksConfig | （可选）可将指标和事件传递到的替换目标的详细信息。 扩展所支持的每个数据接收器的具体详细信息将在下面各节中介绍。
@@ -270,7 +281,7 @@ sinksConfig | （可选）可将指标和事件传递到的替换目标的详细
 1. 如上所述设置相应部分
 1. 单击“生成 SAS”按钮。
 
-![屏幕截图显示了带有“生成 SAS”的“共享访问签名”页。](./media/diagnostics-linux/make_sas.png)
+:::image type="content" source="./media/diagnostics-linux/make_sas.png" alt-text="屏幕截图显示了带有“生成 SAS”的“共享访问签名”页。":::
 
 将生成的 SAS 复制到 storageAccountSasToken 字段中；删除前导问号（“?”）。
 
@@ -296,7 +307,7 @@ sinksConfig | （可选）可将指标和事件传递到的替换目标的详细
 name | 在扩展配置中其他位置用于引用此接收器的字符串。
 type | 要定义的接收器的类型。 确定此类型实例中的其他值（如果有）。
 
-Linux 诊断扩展 3.0 版支持两种接收器类型：EventHub 和 JsonBlob。
+Linux 诊断扩展 4.0 版支持两种接收器类型：EventHub 和 JsonBlob。
 
 #### <a name="the-eventhub-sink"></a>EventHub 接收器
 
@@ -341,14 +352,14 @@ https://contosohub.servicebus.chinacloudapi.cn/syslogmsgs?sr=contosohub.serviceb
 
 ## <a name="public-settings"></a>公用设置
 
-此结构包含多个设置块，这些块控制扩展收集的信息。 每个设置都是可选的。 如果指定 `ladCfg`，则还必须指定 `StorageAccount`。
+此结构包含多个设置块，这些块控制扩展收集的信息。 除了 ladCfg 之外的每项设置都是可选的。 如果你在 `ladCfg` 中指定了指标或 syslog 集合，则还必须指定 `StorageAccount`。 需要指定 sinksConfig 元素才能为 LAD 4.0 中的指标启用 Azure Monitor 接收器
 
 ```json
 {
     "ladCfg":  { ... },
-    "perfCfg": { ... },
     "fileLogs": { ... },
     "StorageAccount": "the storage account to receive data",
+    "sinksConfig": { ... },
     "mdsdHttpProxy" : ""
 }
 ```
@@ -374,7 +385,15 @@ mdsdHttpProxy | （可选）与[受保护的设置](#protected-settings)中的�
 }
 ```
 
-此可选结构控制指标和日志的收集，以传递到 Azure Metrics 服务和其他数据接收器。 必须指定 `performanceCounters` 和/或 `syslogEvents`。 必须指定 `metrics` 结构。
+此结构控制要传递到 Azure Metrics 服务和其他数据接收器的指标和日志的收集。 必须指定 `performanceCounters` 和/或 `syslogEvents`。 必须指定 `metrics` 结构。
+
+如果你不想启用 syslog 或指标收集，则可以只为 ladCfg 元素指定一个空结构，如下所示。 
+
+```json
+"ladCfg": {
+    "diagnosticMonitorConfiguration": {}
+    }
+```
 
 元素 | 值
 ------- | -----
@@ -492,31 +511,24 @@ minSeverity | Syslog 严重性级别（例如“LOG\_ERR”或“LOG\_INFO”）
 
 示例包括 `LinuxSyslog20170410` 和 `LinuxSyslog20170609`。
 
-### <a name="perfcfg"></a>perfCfg
+### <a name="sinksconfig"></a>sinksConfig
 
-此可选部分控制任意 [OMI](https://github.com/Microsoft/omi) 查询的执行。
+除了存储帐户和默认的“来宾指标”边栏选项卡之外，此可选部分还控制是否启用将指标发送到 Azure Monitor 接收器。
+
+> [!NOTE]
+> 这需要在 VM/VMSS 上启用系统分配的标识。 可以通过门户、CLI、PowerShell 和资源管理器执行此操作。 [此处](https://docs.azure.cn/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)详细地列出了步骤。 上面适用于 AZ CLI、PowerShell 等等的安装示例中也列出了用于启用此功能的步骤。 
 
 ```json
-"perfCfg": [
-    {
-        "namespace": "root/scx",
-        "query": "SELECT PercentAvailableMemory, PercentUsedSwap FROM SCX_MemoryStatisticalInformation",
-        "table": "LinuxOldMemory",
-        "frequency": 300,
-        "sinks": ""
-    }
-]
+  "sinksConfig": {
+    "sink": [
+      {
+        "name": "AzMonSink",
+        "type": "AzMonSink",
+        "AzureMonitor": {}
+      }
+    ]
+  },
 ```
-
-元素 | 值
-------- | -----
-命名空间 | （可选）应在其中执行查询的 OMI 命名空间。 如果未指定，则默认值为“root/scx”，由 [ System Center 跨平台提供程序](https://github.com/Microsoft/SCXcore)实现。
-query | 要执行的 OMI 查询。
-表 | （可选）指定存储帐户中的 Azure 存储表（请参阅[受保护的设置](#protected-settings)）。
-频率 | （可选）两次执行查询之间的秒数。 默认值为 300 秒（5 分钟）；最小值为 15 秒。
-sinks | （可选）一个逗号分隔列表，包含应将原始样本指标结果发布到其中的附加接收器的名称。 扩展或 Azure Metrics 不计算这些原始样本的聚合。
-
-必须指定“表”和/或“接收器”。
 
 ### <a name="filelogs"></a>fileLogs
 
@@ -537,7 +549,7 @@ sinks | （可选）一个逗号分隔列表，包含应将原始样本指标结
 
 元素 | 值
 ------- | -----
-file | 要监视和捕获的日志文件的完整路径名。 路径名必须命名单个文件；它不能命名目录，也不能包含通配符。 “Omsagent”用户帐户必须具有文件路径的读取访问权限。
+文件 | 要监视和捕获的日志文件的完整路径名。 路径名必须命名单个文件；它不能命名目录，也不能包含通配符。 “Omsagent”用户帐户必须具有文件路径的读取访问权限。
 表 | （可选）指定的存储帐户（在受保护的配置中指定）中的 Azure 存储表，文件“结尾”处的新行将写入此表。
 sinks | （可选）日志行发送到的附加接收器的名称的逗号分隔列表。
 
@@ -545,6 +557,9 @@ sinks | （可选）日志行发送到的附加接收器的名称的逗号分隔
 
 <a name="metrics-supported-by-builtin"></a>
 ## <a name="metrics-supported-by-the-builtin-provider"></a>内置提供程序支持的指标
+
+> [!NOTE]
+> LAD 支持的默认指标跨所有文件系统/磁盘/名称进行聚合。 有关非聚合指标，请参阅新的 Azure Monitor 接收器指标支持。
 
 内置指标提供程序可提供大量用户最感兴趣的指标。 这些指标分为五个大类：
 
@@ -569,8 +584,6 @@ PercentNiceTime | 非空闲时间内，处于降低（良好）优先级的时�
 PercentPrivilegedTime | 非空闲时间内，处于特权（内核）模式的时间所占百分比
 
 前四个计数器结果之和应为 100%。 后三个计数器结果之和也应为 100%，它们对 PercentProcessorTime、PercentIOWaitTime 和 PercentInterruptTime 之和（非空闲时间）进行了细分。
-
-若要获取跨所有处理器聚合的单个指标，请设置 `"condition": "IsAggregate=TRUE"`。 若要获取特定处理器的指标，如四 vCPU VM 的第二个逻辑处理器，请设置 `"condition": "Name=\\"1\\""`。 逻辑处理器编号处于 `[0..n-1]` 范围内。
 
 ### <a name="builtin-metrics-for-the-memory-class"></a>内存类的内置指标
 
@@ -607,8 +620,6 @@ TotalRxErrors | 自启动以来接收的错误数
 TotalTxErrors | 自启动以来发送的错误数
 TotalCollisions | 自启动以来网络端口报告的冲突数
 
- 虽然此类拥有实例，但是 LAD 不支持捕获跨所有网络设备聚合的网络指标。 若要获取特定接口（如 eth0）的指标，请设置 `"condition": "InstanceID=\\"eth0\\""`。
-
 ### <a name="builtin-metrics-for-the-filesystem-class"></a>文件系统类的内置指标
 
 文件系统类指标提供有关文件系统使用情况的信息。 将报告绝对值和百分比值，因为这些指标将向普通用户（而不是 root 用户）显示。
@@ -628,10 +639,6 @@ ReadsPerSecond | 每秒读取操作数
 WritesPerSecond | 每秒写入操作数
 TransfersPerSecond | 每秒读取或写入操作数
 
-可通过设置 `"condition": "IsAggregate=True"`，获取跨所有文件系统的聚合值。 可通过设置 `"condition": 'Name="/mnt"'`，获取已装入的特定文件系统（如“/mnt”）的值。 
-
-**注意**：如果使用 Azure 门户而不是 JSON，则正确的条件字段形式为 Name='/mnt'
-
 ### <a name="builtin-metrics-for-the-disk-class"></a>磁盘类的内置指标
 
 磁盘类指标提供有关磁盘设备使用情况的信息。 这些统计信息适用于整个驱动器。 如果设备上有多个文件系统，则针对该设备的计数器将有效地跨所有文件系统聚合。
@@ -649,16 +656,14 @@ ReadBytesPerSecond | 每秒读取的字节数
 WriteBytesPerSecond | 每秒写入的字节数
 每秒字节数 | 每秒读取或写入的字节数
 
-可通过设置 `"condition": "IsAggregate=True"`，获取跨所有磁盘的聚合值。 若要获取特定设备（例如 /dev/sdf1）的信息，请设置 `"condition": "Name=\\"/dev/sdf1\\""`。
-
-## <a name="installing-and-configuring-lad-30"></a>安装和配置 LAD 3.0
+## <a name="installing-and-configuring-lad-40"></a>安装和配置 LAD 4.0
 
 ### <a name="azure-cli"></a>Azure CLI
 
 假设受保护的设置位于 ProtectedSettings.json 文件中，而公用配置信息位于 PublicSettings.json 中，请运行以下命令：
 
 ```azurecli
-az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
+az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 4.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
 该命令假定你使用 Azure CLI 的 Azure 资源管理模式。 若要为经典部署模型 (ASM) VM 配置 LAD，请切换到“asm”模式 (`azure config mode asm`)，并在命令中省略资源组名称。 有关详细信息，请参阅[跨平台 CLI 文档](https://docs.azure.cn/cli/authenticate-azure-cli)。
@@ -668,12 +673,12 @@ az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnost
 假设受保护的设置位于 `$protectedSettings` 变量中，而公共配置信息位于 `$publicSettings` 变量中，请运行以下命令：
 
 ```powershell
-Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Location <vm_location> -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 3.0
+Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Location <vm_location> -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 4.0
 ```
 
-## <a name="an-example-lad-30-configuration"></a>LAD 3.0 配置示例
+## <a name="an-example-lad-40-configuration"></a>LAD 4.0 配置示例
 
-基于前述定义，下面提供一个包含解释的 LAD 3.0 扩展配置示例。 要将此示例应用于具体情况，应使用自己的存储帐户名称、帐户 SAS 令牌和 EventHubs SAS 令牌。
+基于前述定义，下面提供了一个包含解释的 LAD 4.0 扩展配置示例。 要将此示例应用于具体情况，应使用自己的存储帐户名称、帐户 SAS 令牌和 EventHubs SAS 令牌。
 
 > [!NOTE]
 > 提供公共和受保护设置的方法将有所不同，具体取决于是否使用 Azure CLI 或 PowerShell 安装 LAD。 如果使用 Azure CLI，请将以下设置保存到 ProtectedSettings.json 和 PublicSettings.json，以与上面的示例命令配合使用。 如果使用 PowerShell，请通过运行 `$protectedSettings = '{ ... }'` 将设置保存到 `$protectedSettings` 和 `$publicSettings`。
@@ -739,7 +744,6 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 
 * 将 percent-processor-time 和 used-disk-space 指标上传到 `WADMetrics*` 表
 * 将 syslog 辅助参数“user”和严重性“info”之下的消息上传到 `LinuxSyslog*` 表
-* 将原始 OMI 查询结果（PercentProcessorTime 和 PercentIdleTime）上传到指定的 `LinuxCPU` 表
 * 将文件 `/var/log/myladtestlog` 中的追加行上传到 `MyLadTestLog` 表
 
 无论如何，数据都还会上传到以下位置：
@@ -806,14 +810,15 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
       }
     }
   },
-  "perfCfg": [
-    {
-      "query": "SELECT PercentProcessorTime, PercentIdleTime FROM SCX_ProcessorStatisticalInformation WHERE Name='_TOTAL'",
-      "table": "LinuxCpu",
-      "frequency": 60,
-      "sinks": "LinuxCpuJsonBlob,LinuxCpuEventHub"
-    }
-  ],
+  "sinksConfig": {
+    "sink": [
+      {
+        "name": "AzMonSink",
+        "type": "AzMonSink",
+        "AzureMonitor": {}
+      }
+    ]
+  },
   "fileLogs": [
     {
       "file": "/var/log/myladtestlog",
@@ -834,7 +839,7 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 
 使用 Azure 门户查看性能数据或设置警报：
 
-![屏幕截图显示了 Azure 门户，其中包含已选择的“已用磁盘空间”指标和生成的图表。](./media/diagnostics-linux/graph_metrics.png)
+:::image type="content" source="./media/diagnostics-linux/graph_metrics.png" alt-text="屏幕截图显示了 Azure 门户，其中包含已选择的“已用磁盘空间”指标和生成的图表。":::
 
 `performanceCounters` 数据始终存储在 Azure 存储表中。 Azure 存储 API 适用于多种语言和平台。
 
@@ -845,9 +850,9 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 * Visual Studio 服务器资源管理器。
 * [屏幕截图显示了 Azure 存储资源管理器中的容器和表。](https://azurestorageexplorer.codeplex.com/ "Azure 存储资源管理器")
 
-这是 Azure 存储资源管理器会话的快照，它显示了测试 VM 上正确配置的 LAD 3.0 扩展生成的 Azure 存储表和容器。 此图与[示例 LAD 3.0 配置](#an-example-lad-30-configuration)不完全匹配。
+这是 Azure 存储资源管理器会话的快照，它显示了测试 VM 上正确配置的 LAD 3.0 扩展生成的 Azure 存储表和容器。 此图与[示例 LAD 3.0 配置](#an-example-lad-40-configuration)不完全匹配。
 
-![image](./media/diagnostics-linux/stg_explorer.png)
+:::image type="content" source="./media/diagnostics-linux/stg_explorer.png" alt-text="屏幕截图显示了 Azure 存储资源管理器。":::
 
 请参阅相关 [EventHubs 文档](../../event-hubs/event-hubs-about.md)，了解如何使用发布到 EventHubs 终结点的消息。
 
@@ -857,4 +862,4 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 * 为指标创建[监控图表](../../azure-monitor/platform/data-platform.md)。
 * 了解如何使用指标[创建虚拟机规模集](../linux/tutorial-create-vmss.md)以控制自动缩放。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

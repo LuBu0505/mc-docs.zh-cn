@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 061e4ed6cf3f55ab51c9ca145c44b71d4ad2777c
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 02ab12e6d0479fc77adcbe91d87dfc177b90873f
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977495"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196625"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>创建和管理 Azure 机器学习计算实例
 
@@ -93,7 +93,7 @@ except ComputeTargetException:
 az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 ```
 
-有关详细信息，请查看 [az ml computetarget create computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?preserve-view=true&view=azure-cli-latest#ext_azure_cli_ml_az_ml_computetarget_create_computeinstance) 参考文档。
+有关详细信息，请查看 [az ml computetarget create computeinstance](/cli/ext/azure-cli-ml/ml/computetarget/create?preserve-view=true&view=azure-cli-latest#ext_azure_cli_ml_az_ml_computetarget_create_computeinstance) 参考文档。
 
 # <a name="studio"></a>[工作室](#tab/azure-studio)
 
@@ -178,7 +178,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
     az ml computetarget stop computeinstance -n instance -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget stop computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop)。
+    有关详细信息，请参阅 [az ml computetarget stop computeinstance](/cli/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop)。
 
 * 开始 
 
@@ -186,7 +186,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
     az ml computetarget start computeinstance -n instance -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget start computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start)。
+    有关详细信息，请参阅 [az ml computetarget start computeinstance](/cli/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start)。
 
 * 重启 
 
@@ -194,7 +194,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
     az ml computetarget restart computeinstance -n instance -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget restart computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart)。
+    有关详细信息，请参阅 [az ml computetarget restart computeinstance](/cli/ext/azure-cli-ml/ml/computetarget/computeinstance?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart)。
 
 * Delete
 
@@ -202,7 +202,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
     az ml computetarget delete -n instance -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget delete computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-delete)。
+    有关详细信息，请参阅 [az ml computetarget delete computeinstance](/cli/ext/azure-cli-ml/ml/computetarget?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-delete)。
 
 # <a name="studio"></a>[工作室](#tab/azure-studio)
 
@@ -236,62 +236,8 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 * *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
 
-
-## <a name="access-the-terminal-window"></a>访问终端窗口
-
-通过以下任一方式打开计算实例的终端窗口：
-
-* RStudio：选择左上的“终端”选项卡。
-* Jupyter 实验室：选择“启动器”选项卡中“其他”标题下的“终端”磁贴。
-* Jupyter：在“文件”选项卡的右上方选择“新建>“终端”。
-* 如果在创建计算实例时启用了 SSH 访问，则使用 SSH 连接到计算机。
-
-使用终端窗口来安装包并创建更多内核。
-
-## <a name="install-packages"></a>安装包
-
-可以直接在 Jupyter Notebook 或 RStudio 中安装包：
-
-* RStudio 使用右下的“包”选项卡或左上的“控制台”选项卡。  
-* Python:添加安装代码并在 Jupyter Notebook 单元中执行该代码。
-
-也可从终端窗口进行安装。 将 Python 包安装到“Python 3.6 - AzureML”环境中。  将 R 包安装到 **R** 环境中。
-
-> [!NOTE]
-> 对于笔记本中的包管理，请使用 %pip 或 %conda magic 函数将包自动安装到当前正在运行的内核，而不是安装到引用所有包（包括当前正在运行的内核之外的包）的 !pip 或 !conda    
-
-## <a name="add-new-kernels"></a>添加新内核
-
-> [!WARNING]
->  自定义计算实例时，请确保未删除 Conda 环境“azureml_py36”或“Python 3.6 - AzureML”内核 。 必须具备它们才能使用 Jupyter/JupyterLab 功能
-
-若要向计算实例添加新 Jupyter 内核，请执行以下步骤：
-
-1. 从 Jupyter、JupyterLab 或笔记本窗格创建新终端，或者通过 SSH 登录到计算实例
-2. 使用终端窗口创建新环境。  例如，以下代码会创建 `newenv`：
-
-    ```shell
-    conda create --name newenv
-    ```
-
-3. 激活该环境。  例如，创建 `newenv` 的结果如下：
-
-    ```shell
-    conda activate newenv
-    ```
-
-4. 在新环境中安装 pip 和 ipykernel 包，并为该 conda 环境创建内核
-
-    ```shell
-    conda install pip
-    conda install ipykernel
-    python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
-    ```
-
-可以安装任何[可用的 Jupyter 内核](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)。
-
-
-
 ## <a name="next-steps"></a>后续步骤
 
-* [提交训练运行](how-to-set-up-training-targets.md) 
+* [访问计算实例终端](how-to-access-terminal.md)
+* [创建和管理文件](how-to-manage-files.md)
+* [提交训练运行](how-to-set-up-training-targets.md)

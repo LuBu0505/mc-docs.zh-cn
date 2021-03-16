@@ -2,15 +2,13 @@
 title: 捕获流式处理事件 - Azure 事件中心 | Microsoft Docs
 description: 本文概述了捕获功能，该功能可以捕获通过 Azure 事件中心流式处理的事件。
 ms.topic: article
-origin.date: 06/23/2020
-ms.date: 11/05/2020
-ms.author: v-tawe
-ms.openlocfilehash: cd5019cc3ccb4d8cdca45bb95da6f0a6336a1a32
-ms.sourcegitcommit: b217474b15512b0f40b2eaae66bd3c521383d321
+ms.date: 02/24/2021
+ms.openlocfilehash: 338adba3e9cb00099590ec6b24addab40c8f5984
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93375606"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196526"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>通过 Azure Blob 存储或 Azure Data Lake Storage 中的 Azure 事件中心来捕获事件
 使用 Azure 事件中心，可以按指定的时间间隔或大小差异在所选的 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)或 [Azure Data Lake Store Gen 2](https://azure.microsoft.com/services/data-lake-store/) 帐户中自动捕获事件中心的流式处理数据。 设置捕获极其简单，无需管理费用即可运行它，并且可以使用事件中心[吞吐量单位](event-hubs-scalability.md#throughput-units)自动进行缩放。 事件中心捕获是在 Azure 中加载流式处理数据的最简单方法，并可让用户专注于数据处理，而不是数据捕获。
@@ -58,7 +56,7 @@ https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer/mynamespace/myev
 可以使用 [Azure 门户](https://portal.azure.cn)或使用 Azure 资源管理器模板在创建事件中心时配置捕获。 有关详细信息，请参阅以下文章：
 
 - [通过 Azure 门户启用事件中心捕获](event-hubs-capture-enable-through-portal.md)
-- [使用 Azure 资源管理器模板创建包含事件中心的事件中心命名空间并启用捕获](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
+<!-- - [Create an Event Hubs namespace with an event hub and enable Capture using an Azure Resource Manager template](event-hubs-resource-manager-namespace-event-hub-enable-capture.md) -->
 
 > [!NOTE]
 > 如果对现有的事件中心启用“捕获”功能，该功能将在启用后捕获到达事件中心的事件。 它不会在启用功能之前捕获事件中心中存在的事件。 
@@ -81,13 +79,7 @@ https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer/mynamespace/myev
 
 [Apache Drill：Azure Blob 存储插件][Apache Drill: Azure Blob Storage Plugin]
 
-若要轻松查询捕获的文件，可以通过容器在启用了 Apache Drill 的情况下创建和执行 VM 来访问 Azure Blob 存储：
-
-https://github.com/yorek/apache-drill-azure-blob
-
-“大规模流式处理”存储库中提供了完整的端到端示例：
-
-[大规模流式处理：事件中心捕获]
+若要轻松查询捕获的文件，可以通过容器在启用了 Apache Drill 的情况下创建和执行 VM 来访问 Azure Blob 存储。 请参阅以下示例：[使用事件中心捕获功能进行大规模流式传输](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-capture)。
 
 ### <a name="use-apache-spark"></a>使用 Apache Spark
 
@@ -138,7 +130,7 @@ Apache Avro 针对 [Java][Java] 和 [Python][Python] 提供了完整的快速入
 
 ## <a name="integration-with-event-grid"></a>事件网格集成 
 
-可以创建 Azure 事件网格订阅，其中事件中心命名空间作为其源。 以下教程介绍如何创建事件网格订阅，其中事件中心作为源，Azure Functions 应用作为接收器：[使用事件网格和 Azure Functions 处理捕获的事件中心数据并将其迁移到 Azure Synapse Analytics](store-captured-data-data-warehouse.md)。
+可以创建 Azure 事件网格订阅，其中事件中心命名空间作为其源。 以下教程介绍如何创建事件网格订阅，其中事件中心作为源，Azure Functions 应用作为接收器：使用事件网格和 Azure Functions 处理捕获的事件中心数据并将其迁移到 Azure Synapse Analytics。
 
 ## <a name="next-steps"></a>后续步骤
 事件中心捕获是将数据加载到 Azure 最简单的方法。 使用 Azure Data Lake、Azure 数据工厂和 Azure HDInsight，可以执行批处理操作和其他分析，并且可以选择熟悉的工具和平台，以所需的任何规模执行。
@@ -146,7 +138,7 @@ Apache Avro 针对 [Java][Java] 和 [Python][Python] 提供了完整的快速入
 了解如何使用 Azure 门户和 Azure 资源管理器模板启用此功能：
 
 - [使用 Azure 门户启用事件中心捕获](event-hubs-capture-enable-through-portal.md)
-- [使用 Azure 资源管理器模板启用事件中心捕获](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
+<!-- - [Use an Azure Resource Manager template to enable Event Hubs Capture](event-hubs-resource-manager-namespace-event-hub-enable-capture.md) -->
 
 
 [Apache Avro]: https://avro.apache.org/
@@ -162,4 +154,4 @@ Apache Avro 针对 [Java][Java] 和 [Python][Python] 提供了完整的快速入
 [HDInsight: Address files in Azure storage]:https://docs.azure.cn/hdinsight/hdinsight-hadoop-use-blob-storage#address-files-in-azure-storage
 [Azure Databricks: Azure Blob Storage]:https://docs.databricks.com/spark/latest/data-sources/azure/azure-storage.html
 [Apache Drill: Azure Blob Storage Plugin]:https://drill.apache.org/docs/azure-blob-storage-plugin/
-[大规模流式处理：事件中心捕获]:https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture
+[Streaming at Scale: Event Hubs Capture]:https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture

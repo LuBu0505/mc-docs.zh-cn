@@ -5,26 +5,29 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: e6e392bdaca22a69d0d2f3c0b941c8b0332373ab
-ms.sourcegitcommit: 3de7d92ac955272fd140ec47b3a0a7b1e287ca14
+ms.topic: how-to
+ms.date: 02/01/2021
+ms.openlocfilehash: 40d9883ca2d6ac5e228115a08d95a649e8690a29
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84723836"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196896"
 ---
 # <a name="optimize-apache-hbase-with-apache-ambari-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Apache Ambari 优化 Apache HBase
 
 Apache Ambari 是用于管理和监视 HDInsight 群集的 Web 界面。 有关 Ambari Web UI 的简介，请参阅[使用 Apache Ambari Web UI 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)。
 
-可以通过“HBase 配置”**** 选项卡修改 Apache HBase 配置。以下部分介绍了一些影响 HBase 性能的重要配置设置。
+可以通过“HBase 配置”选项卡修改 Apache HBase 配置。以下部分介绍了一些影响 HBase 性能的重要配置设置。
 
 ## <a name="set-hbase_heapsize"></a>设置 HBASE_HEAPSIZE
 
-HBase 堆大小指定区域服务器和主服务器要使用的最大堆数量（以 MB 为单位）。** ** 默认值为 1,000 MB。 应该为群集工作负荷优化此值。
+> [!NOTE]
+> 本文包含对术语“主”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
-1. 若要修改，请导航到 HBase“配置”选项卡中的“高级 HBase-env”窗格，然后找到 `HBASE_HEAPSIZE` 设置。**** ****
+HBase 堆大小指定区域服务器和主服务器要使用的最大堆数量（以 MB 为单位）。  默认值为 1,000 MB。 应该为群集工作负荷优化此值。
+
+1. 若要修改，请导航到 HBase“配置”选项卡中的“高级 HBase-env”窗格，然后找到 `HBASE_HEAPSIZE` 设置。 
 
 1. 将默认值更改为 5,000 MB。
 
@@ -38,11 +41,11 @@ HBase 堆大小指定区域服务器和主服务器要使用的最大堆数量�
 
 块缓存是读取缓存。 其大小由 `hfile.block.cache.size` 参数控制。 默认值为 0.4，即总区域服务器内存的 40%。 块缓存大小越大，随机读取的速度越快。
 
-1. 若要修改此参数，请导航到 HBase“配置”选项卡中的“设置”选项卡，然后找到“分配到读取缓冲区的 RegionServer 内存百分比”。**** **** ****
+1. 若要修改此参数，请导航到 HBase“配置”选项卡中的“设置”选项卡，然后找到“分配到读取缓冲区的 RegionServer 内存百分比”。  
 
     ![“Apache HBase 内存块缓存大小”](./media/optimize-hbase-ambari/hbase-block-cache-size.png)
 
-1. 若要更改此值，请选择“编辑”图标。****
+1. 若要更改此值，请选择“编辑”图标。
 
 ### <a name="memstore-size"></a>Memstore 大小
 

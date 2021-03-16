@@ -1,17 +1,18 @@
 ---
 title: 快速入门：使用 .NET Core 创建管理组
 description: 在本快速入门中，你将使用 .NET Core 创建管理组，将资源整理到资源层次结构中。
-origin.date: 09/30/2020
-ms.date: 01/05/2021
-ms.author: v-tawe
+origin.date: 02/05/2021
+author: rockboyfor
+ms.date: 03/01/2021
+ms.author: v-yeche
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 151133b79b6f601ce01021a760ef9727dcc643ca
-ms.sourcegitcommit: ff20289adb80a6ab45e15fa5e196ff7af7e1c6b5
+ms.openlocfilehash: 91944d6bc2c1c98a8ab2914c63ad1d729175388c
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97874911"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196866"
 ---
 # <a name="quickstart-create-a-management-group-with-net-core"></a>快速入门：使用 .NET Core 创建管理组
 
@@ -38,33 +39,33 @@ ms.locfileid: "97874911"
 
 1. 初始化名为“mgCreate”的新 .NET Core 控制台应用程序：
 
-   ```dotnetcli
-   dotnet new console --name "mgCreate"
-   ```
+    ```dotnetcli
+    dotnet new console --name "mgCreate"
+    ```
 
 1. 将目录切换到新项目文件夹，并安装 Azure Policy 所需的包：
 
-   ```dotnetcli
-   # Add the Azure Policy package for .NET Core
-   dotnet add package Microsoft.Azure.Management.ManagementGroups --version 1.1.1-preview
+    ```dotnetcli
+    # Add the Azure Policy package for .NET Core
+    dotnet add package Microsoft.Azure.Management.ManagementGroups --version 1.1.1-preview
 
-   # Add the Azure app auth package for .NET Core
-   dotnet add package Microsoft.Azure.Services.AppAuthentication --version 1.5.0
-   ```
+    # Add the Azure app auth package for .NET Core
+    dotnet add package Microsoft.Azure.Services.AppAuthentication --version 1.5.0
+    ```
 
 1. 用以下代码替换默认的 `program.cs`，并保存更新的文件：
 
-   ```csharp
-   using System;
-   using System.Collections.Generic;
-   using System.Threading.Tasks;
-   using Microsoft.IdentityModel.Clients.ActiveDirectory;
-   using Microsoft.Rest;
-   using Microsoft.Azure.Management.ManagementGroups;
-   using Microsoft.Azure.Management.ManagementGroups.Models;
+    ```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Microsoft.IdentityModel.Clients.ActiveDirectory;
+    using Microsoft.Rest;
+    using Microsoft.Azure.Management.ManagementGroups;
+    using Microsoft.Azure.Management.ManagementGroups.Models;
    
-   namespace mgCreate
-   {
+    namespace mgCreate
+    {
        class Program
        {
            static async Task Main(string[] args)
@@ -90,15 +91,15 @@ ms.locfileid: "97874911"
                }
            }
        }
-   }
-   ```
+    }
+    ```
 
 1. 生成并发布 `mgCreate` 控制台应用程序：
 
-   ```dotnetcli
-   dotnet build
-   dotnet publish -o {run-folder}
-   ```
+    ```dotnetcli
+    dotnet build
+    dotnet publish -o {run-folder}
+    ```
 
 ## <a name="create-the-management-group"></a>创建管理组
 
@@ -108,14 +109,14 @@ ms.locfileid: "97874911"
 
 1. 在终端中输入以下命令：
 
-   ```bash
-   mgCreate.exe `
+    ```bash
+    mgCreate.exe `
       "{tenantId}" `
       "{clientId}" `
       "{clientSecret}" `
       "{groupID}" `
       "{displayName}"
-   ```
+    ```
 
 上述命令使用以下信息：
 
@@ -141,3 +142,5 @@ ms.locfileid: "97874911"
 
 > [!div class="nextstepaction"]
 > [使用管理组管理资源](./manage.md)
+
+<!--Update_Description: update meta properties, wording update, update link-->

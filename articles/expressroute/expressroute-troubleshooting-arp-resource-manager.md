@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 origin.date: 01/30/2017
 ms.author: v-yiso
 ms.date: 12/02/2019
-ms.openlocfilehash: aa19b942701474af4898c9cc9c569eff0f444585
-ms.sourcegitcommit: 78c71698daffee3a6b316e794f5bdcf6d160f326
+ms.openlocfilehash: 3e65d77a85a83ff6317dea1bc88c4c7c4dcff734
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90021324"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196643"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>在 Resource Manager 部署模型中获取 ARP 表
 
@@ -29,7 +29,7 @@ ms.locfileid: "90021324"
 > 
 > 
 
-本文指导你完成相关步骤，以便了解 ExpressRoute 线路的 ARP 表。 
+本文指导完成相关步骤，以便了解 ExpressRoute 线路的 ARP 表。 
 
 >[!IMPORTANT]
 > 本文档旨在帮助你诊断和修复简单问题。 它不是为了替代 Microsoft 支持部门。 如果无法通过下述指南解决问题，则必须通过 [Microsoft 支持](https://portal.azure.cn/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)开具支持票证。
@@ -41,7 +41,7 @@ ms.locfileid: "90021324"
 ## <a name="address-resolution-protocol-arp-and-arp-tables"></a>地址解析协议 (ARP) 和 ARP 表
 地址解析协议 (ARP) 是在 [RFC 826](https://tools.ietf.org/html/rfc826) 中定义的第二层协议。 ARP 用于映射以太网地址（MAC 地址）和 IP 地址。
 
-可以通过 ARP 表来映射 IPv4 地址和 MAC 地址，以便实现特定的对等互连。 用于 ExpressRoute 线路对等互连的 ARP 表为每个接口（主接口和辅助接口）提供以下信息
+ARP 表为每种对等互连类型的主要接口和辅助接口提供以下信息：
 
 1. 将本地路由器接口 IP 地址映射到 MAC 地址
 2. 将 ExpressRoute 路由器接口 IP 地址映射到 MAC 地址
@@ -62,11 +62,10 @@ Age InterfaceProperty IpAddress  MacAddress
 以下部分介绍如何查看供 ExpressRoute 边缘路由器查看的 ARP 表。 
 
 ## <a name="prerequisites-for-learning-arp-tables"></a>了解 ARP 表需具备的先决条件
+在继续进行操作之前，请确保以下信息是正确的：
 
-在继续下一步之前，请确保已具备以下条件
-
-* 配置了至少一个对等互连的有效的 ExpressRoute 线路。 该线路必须由连接提供商进行完整的配置。 你（或连接提供商）必须已经在该线路上配置了 Azure 专用、Azure 公共和 Microsoft 这三者中的至少一个对等互连。
-* 用于配置对等互连（Azure 专用、Azure 公共和 Microsoft）的 IP 地址范围。 查看 [ExpressRoute 路由要求页](expressroute-routing.md)中的 IP 地址分配示例，了解如何将 IP 地址映射到所在的一侧和 ExpressRoute 侧的接口。 可通过查看 [ExpressRoute 对等互连配置页](expressroute-howto-routing-arm.md)了解对等互连配置。
+* 有效的 ExpressRoute 线路配置了至少一个对等互连。 该线路必须由连接提供商进行完整的配置。 你或你的连接提供商必须已经在该线路上至少配置了 Azure 专用、Azure 公共或 Microsoft 对等互连。
+* 用于配置对等互连的 IP 地址范围。 查看 [ExpressRoute 路由要求页](expressroute-routing.md)中的 IP 地址分配示例，了解如何将 IP 地址映射到接口。 可通过查看 [ExpressRoute 对等互连配置页](expressroute-howto-routing-arm.md)了解对等互连配置。
 * 网络团队/连接提供商提供的有关接口（用于这些 IP 地址）的 MAC 地址的信息。
 * 必须安装 Azure 的最新 PowerShell 模块（1.50 或更高版本）。
 
@@ -158,11 +157,10 @@ Age InterfaceProperty IpAddress  MacAddress
 对等互连的 ARP 表可用于确定/验证第 2 层配置和连接。 本部分概述了不同方案的 ARP 表的外观。
 
 ### <a name="arp-table-when-a-circuit-is-in-operational-state-expected-state"></a>当线路处于运行状态（预期状态）时的 ARP 表
-
- - ARP 表会有一个针对本地端且带有有效 IP 地址和 MAC 地址的条目，以及一个类似的针对 Microsoft 端的条目。 
- - 本地 IP 地址的最后一个八位字节将始终是奇数。
- - Microsoft IP 地址的最后一个八位字节始终会是偶数。
- - 所有 3 种对等互连（主/辅助）在 Microsoft 端都会显示相同的 MAC 地址。 
+* ARP 表会有一个针对本地端且带有有效 IP 地址和 MAC 地址的条目。 Microsoft 端也是如此。 
+* 本地 IP 地址的最后一个八位字节将始终是奇数。
+* Microsoft IP 地址的最后一个八位字节将始终是偶数。
+* 所有 3 种对等互连（主/辅助）在 Microsoft 端都会显示相同的 MAC 地址。 
 
 ```output
 Age InterfaceProperty IpAddress  MacAddress    
@@ -172,11 +170,12 @@ Age InterfaceProperty IpAddress  MacAddress
 ```
 
 ### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>当本地端/连接提供商端出现问题时的 ARP 表
-如果本地或连接提供商有问题，则可能会看到只有一个条目出现在 ARP 表中，或者本地 MAC 地址会显示不完整。 此时会显示在 Microsoft 端使用的 MAC 地址与 IP 地址之间的映射。 
+如果本地或连接提供商出现问题，ARP 表将显示以下两个情况之一。 你可能会看到显示不完整的本地 MAC 地址，或仅在 ARP 表中看到 Microsoft 条目。
   
 ```output
 Age InterfaceProperty IpAddress  MacAddress    
---- ----------------- ---------  ----------    
+--- ----------------- ---------  ----------   
+  0 On-Prem           65.0.0.1   Incomplete
   0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 ```
 
@@ -184,8 +183,7 @@ Age InterfaceProperty IpAddress  MacAddress
        
 ```output
 Age InterfaceProperty IpAddress  MacAddress    
---- ----------------- ---------  ----------   
-  0 On-Prem           65.0.0.1   Incomplete
+--- ----------------- ---------  ----------    
   0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 ```
 
@@ -208,4 +206,4 @@ Age InterfaceProperty IpAddress  MacAddress
      - 获取路由摘要以确定 BGP 会话的状态 
      - 获取路由表以确定哪些前缀跨 ExpressRoute 播发
  - 通过查看输入/输出中的字节数来验证数据传输
- - 如果仍然存在问题，请通过 [Microsoft 支持部门](https://portal.azure.cn/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 开具一个支持票证。
+ - 如果仍然存在问题，请通过 [Microsoft 支持](https://portal.azure.cn/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)开具一个支持票证。

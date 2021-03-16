@@ -1,40 +1,94 @@
 ---
 title: 模板中的输出
-description: 介绍如何在 Azure 资源管理器模板（ARM 模板）中定义输出值。
+description: 介绍了如何在 Azure 资源管理器模板（ARM 模板）和 Bicep 文件中定义输出值。
 ms.topic: conceptual
-origin.date: 11/24/2020
+origin.date: 02/17/2021
 author: rockboyfor
-ms.date: 01/25/2021
+ms.date: 03/01/2021
 ms.author: v-yeche
-ms.openlocfilehash: e0daaa9c86c303c34e61431bd5b83083bc008360
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: 744165afea06e9579558785a3d4ef616bdf10722
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751311"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053337"
 ---
 # <a name="outputs-in-arm-templates"></a>ARM 模板中的输出
 
-本文介绍如何在 Azure 资源管理器模板（ARM 模板）中定义输出值。 需要从部署的资源返回值时，可以使用 `outputs`。
+本文介绍了如何在 Azure 资源管理器模板（ARM 模板）和 Bicep 文件中定义输出值。 需要从部署的资源返回值时，可以使用输出。
 
-每个输出值的格式必须与[数据类型](template-syntax.md#data-types)中的一种匹配。
+每个输出值的格式必须能够解析为这些[数据类型](template-syntax.md#data-types)中的一种。
+
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 ## <a name="define-output-values"></a>定义输出值
 
-以下示例演示如何返回公共 IP 地址的资源 ID：
+下面的示例展示了如何从已部署的资源返回属性。
+
+# <a name="json"></a>[JSON](#tab/json)
+
+对于 JSON，请向模板添加 `outputs` 节。 输出值获取公共 IP 地址的完全限定的域名。
 
 ```json
 "outputs": {
-  "resourceID": {
-    "type": "string",
-    "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_name'))]"
-  }
+  "hostname": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName'))).dnsSettings.fqdn]"
+    },
 }
 ```
 
+如果你需要输出在名称中包含连字符的属性，请在该名称两侧使用方括号，而不要使用点表示法。 例如，请使用 `['property-name']` 而非 `.property-name`。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "variables": {
+        "user": {
+            "user-name": "Test Person"
+        }
+    },
+    "resources": [
+    ],
+    "outputs": {
+        "nameResult": {
+            "type": "string",
+            "value": "[variables('user')['user-name']]"
+        }
+    }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+对于 Bicep，请使用 `output` 关键字。
+
+在以下示例中，`publicIP` 是在 Bicep 文件中部署的公共 IP 地址的符号名称。 输出值获取公共 IP 地址的完全限定的域名。
+
+```bicep
+output hostname string = publicIP.properties.dnsSettings.fqdn
+```
+
+如果你需要输出在名称中包含连字符的属性，请在该名称两侧使用方括号，而不要使用点表示法。 例如，请使用 `['property-name']` 而非 `.property-name`。
+
+```bicep
+var user = {
+  'user-name': 'Test Person'
+}
+
+output stringOutput string = user['user-name']
+```
+
+---
+
 ## <a name="conditional-output"></a>条件输出
 
-在“`outputs`”部分中，可以有条件地返回值。 通常，[有条件地部署](conditional-resource-deployment.md)资源时，可以在 `outputs` 中使用 `condition`。 以下示例展示了如何根据是否部署了新的公共 IP 地址，有条件地返回公共 IP 地址的资源 ID：
+可以有条件地返回值。 通常，如果你[有条件地部署](conditional-resource-deployment.md)了某个资源，则可以使用条件输出。 以下示例展示了如何根据是否部署了新的公共 IP 地址，有条件地返回公共 IP 地址的资源 ID：
+
+# <a name="json"></a>[JSON](#tab/json)
+
+在 JSON 中，添加 `condition` 元素以定义是否返回输出。
 
 ```json
 "outputs": {
@@ -46,11 +100,44 @@ ms.locfileid: "98751311"
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+条件输出当前不可用于 Bicep。
+
+不过，你可以使用 `?` 运算符根据条件返回两个值中的一个。
+
+```bicep
+param deployStorage bool = true
+param storageName string
+param location string = resourceGroup().location
+
+resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (deployStorage) {
+  name: storageName
+  location: location
+  kind: 'StorageV2'
+  sku:{
+    name:'Standard_LRS'
+    tier: 'Standard'
+  }
+  properties: {
+    accessTier: 'Hot'
+  }
+}
+
+output endpoint string = deployStorage ? sa.properties.primaryEndpoints.blob : ''
+```
+
+---
+
 有关条件输出的简单示例，请参阅[条件输出模板](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json)。
 
 ## <a name="dynamic-number-of-outputs"></a>动态输出数量
 
-在某些情况下，创建模板时你不知道需要返回的值的实例数量。 可以使用 `copy` 元素返回可变的值数。
+在某些情况下，创建模板时你不知道需要返回的值的实例数量。 你可以使用迭代输出返回可变数量的值。
+
+# <a name="json"></a>[JSON](#tab/json)
+
+在 JSON 中，添加 `copy` 元素以循环访问输出。
 
 ```json
 "outputs": {
@@ -64,17 +151,21 @@ ms.locfileid: "98751311"
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+迭代输出当前不可用于 Bicep。
+
+---
+
 有关详细信息，请参阅 [ARM 模板中的输出迭代](copy-outputs.md)。
 
 ## <a name="linked-templates"></a>链接模板
 
-若要从链接模板中检索输出值，请在父模板中使用 [reference](template-functions-resource.md#reference) 函数。 父模板中的语法为：
+在 JSON 模板中，可以使用[链接模板](linked-templates.md)来部署相关模板。 若要从链接模板中检索输出值，请在父模板中使用 [reference](template-functions-resource.md#reference) 函数。 父模板中的语法为：
 
 ```json
 "[reference('<deploymentName>').outputs.<propertyName>.value]"
 ```
-
-从链接模板获取输出属性时，属性名称不能包含短划线。
 
 以下示例演示如何通过从链接模板检索值，在负载均衡器上设置 IP 地址。
 
@@ -84,7 +175,83 @@ ms.locfileid: "98751311"
 }
 ```
 
+如果属性名称包含连字符，请在名称两侧使用方括号，而不要使用点表示法。
+
+```json
+"publicIPAddress": {
+  "id": "[reference('linkedTemplate').outputs['resource-ID'].value]"
+}
+```
+
 不能在[嵌套模板](linked-templates.md#nested-template)的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中部署的资源的值，请将嵌套模板转换为链接模板。
+
+[公共 IP 地址模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json)创建一个公共 IP 地址并输出资源 ID。 [负载均衡器模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json)链接到前面所述的模板。 创建负载平衡器时，它使用输出中的资源 ID。
+
+## <a name="modules"></a>模块
+
+在 Bicep 文件中，可以使用模块部署相关模板。 若要从某个模块检索输出值，请使用以下语法：
+
+```bicep
+<module-name>.outputs.<property-name>
+```
+
+以下示例展示了如何通过从某个模块检索值，在负载均衡器上设置 IP 地址。 该模块的名称是 `publicIP`。
+
+```bicep
+publicIPAddress: {
+  id: publicIP.outputs.resourceID
+}
+```
+
+## <a name="example-template"></a>示例模板
+
+以下模板不部署任何资源。 它显示了返回不同类型的输出的一些方式。
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "stringOutput": {
+            "type": "string",
+            "value": "[deployment().name]"
+        },
+        "integerOutput": {
+            "type": "int",
+            "value": "[length(environment().authentication.audiences)]"
+        },
+        "booleanOutput": {
+            "type": "bool",
+            "value": "[contains(deployment().name, 'demo')]"
+        },
+        "arrayOutput": {
+            "type": "array",
+            "value": "[environment().authentication.audiences]"
+        },
+        "objectOutput": {
+            "type": "object",
+            "value": "[subscription()]"
+        }
+    }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+Bicep 当前不支持循环。
+
+```bicep
+output stringOutput string = deployment().name
+output integerOutput int = length(environment().authentication.audiences)
+output booleanOutput bool = contains(deployment().name, 'demo')
+output arrayOutput array = environment().authentication.audiences
+output objectOutput object = subscription()
+```
+
+---
 
 ## <a name="get-output-values"></a>获取输出值
 
@@ -111,18 +278,8 @@ az deployment group show \
 
 ---
 
-## <a name="example-templates"></a>示例模板
-
-以下示例演示了使用输出的方案。
-
-|模板  |说明  |
-|---------|---------|
-|[复制变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | 创建复杂变量，并输出这些值。 不部署任何资源。 |
-|[公共 IP 地址](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | 创建公共 IP 地址并输出资源 ID。 |
-|[负载均衡器](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | 链接到前面的模板。 创建负载均衡器时，请使用输出中的资源 ID。 |
-
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解输出的可用属性，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

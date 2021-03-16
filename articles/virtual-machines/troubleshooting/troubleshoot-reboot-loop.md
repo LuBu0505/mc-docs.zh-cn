@@ -9,16 +9,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 10/15/2018
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 474bb552c641dac3bcb5d067fcf9c948852f59f5
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 14bcaccca10305f184d8d024be9e7652acda916a
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105772"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054321"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Azure VM 上的 Windows 重启循环
 本文介绍在 Azure 中的 Windows 虚拟机 (VM) 上可能遇到的重启循环。
@@ -50,6 +50,9 @@ ms.locfileid: "93105772"
 文件系统损坏可能导致此问题。 但是，很难诊断并确定导致操作系统损坏的更改。
 
 ## <a name="solution"></a>解决方案
+
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
 
 要解决此问题，请[备份 OS 磁盘](../windows/snapshot-copy-managed-disk.md)，并[将 OS 磁盘附加到安全的 VM](./troubleshoot-recovery-disks-portal-windows.md)，然后按照相应地解决方案选项执行操作或逐个尝试解决方案。
 
@@ -115,4 +118,4 @@ ms.locfileid: "93105772"
 
 5. [从 OS 磁盘创建新的 VM](../windows/create-vm-specialized.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

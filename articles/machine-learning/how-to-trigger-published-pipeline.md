@@ -7,19 +7,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: laobri
 author: lobrien
-ms.date: 12/16/2020
+ms.date: 01/29/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 463009ae6d9931ea16a4b2d7b8c7bda0d8a00e12
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: f9ec40006984eee01ce65b760998adac3c69f3d9
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98229980"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196527"
 ---
-# <a name="trigger-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>通过适用于 Python 的 Azure 机器学习 SDK 来触发机器学习管道
+# <a name="trigger-machine-learning-pipelines"></a>触发机器学习管道
 
-本文介绍如何以编程方式计划管道，使其在 Azure 上运行。 可以选择创建基于运行时间或文件系统更改的计划。 基于时间的计划可用于处理例行任务，如监视数据偏移。 基于更改的计划可用于响应非常规或无法预测的更改，例如上传新数据或编辑旧数据。 了解如何创建计划后，你将了解如何检索和停用它们。 最后，你将了解如何使用 Azure 逻辑应用来创建更复杂的触发逻辑或行为。
+本文介绍如何以编程方式计划管道，使其在 Azure 上运行。 你可以创建基于已用时间或基于文件系统变更的计划。 基于时间的计划可用于处理例行任务，如监视数据偏移。 基于更改的计划可用于响应非常规或无法预测的更改，例如上传新数据或编辑旧数据。 了解如何创建计划后，你将了解如何检索和停用它们。 最后，你将了解如何使用其他 Azure 服务、Azure 逻辑应用和 Azure 数据工厂来运行管道。 Azure 逻辑应用允许使用更复杂的触发逻辑或行为。 使用 Azure 数据工厂管道可以将机器学习管道作为较大的数据业务流程管道的一部分进行调用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,7 +29,7 @@ ms.locfileid: "98229980"
 
 * 包含已发布管道的机器学习工作区。 可以使用[使用 Azure 机器学习 SDK 创建和运行机器学习管道](how-to-create-machine-learning-pipelines.md)中提供的工作区。
 
-## <a name="initialize-the-workspace--get-data"></a>初始化工作区并获取数据
+## <a name="trigger-pipelines-with-azure-machine-learning-sdk-for-python"></a>通过适用于 Python 的 Azure 机器学习 SDK 来触发管道
 
 若要计划管道，需要引用工作区、已发布管道的标识符以及要在其中创建计划的试验的名称。 可通过以下代码获取这些值：
 
@@ -66,7 +66,7 @@ from azureml.pipeline.core.schedule import ScheduleRecurrence, Schedule
 
 ### <a name="create-a-time-based-schedule"></a>创建基于时间的计划
 
-`ScheduleRecurrence` 构造函数具有一个必需的 `frequency` 参数，它必须包含以下字符串之一：“Minute”、“Hour”、“Day”、“Week”或“Month”。 它还需要一个整型 `interval` 参数，用于指定每次启动计划前应经过的 `frequency` 单位数。 可以使用可选参数更具体地规定开始时间，如 [ScheduleRecurrence SDK 文档](https://docs.microsoft.com/python//api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?preserve-view=true&view=azure-ml-py)中所述。
+`ScheduleRecurrence` 构造函数具有一个必需的 `frequency` 参数，它必须包含以下字符串之一：“Minute”、“Hour”、“Day”、“Week”或“Month”。 它还需要一个整型 `interval` 参数，用于指定每次启动计划前应经过的 `frequency` 单位数。 可以使用可选参数更具体地规定开始时间，如 [ScheduleRecurrence SDK 文档](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?preserve-view=true&view=azure-ml-py)中所述。
 
 创建每 15 分钟运行一次的 `Schedule`：
 
@@ -81,13 +81,13 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 ### <a name="create-a-change-based-schedule"></a>创建基于更改的计划
 
-由文件更改触发的管道可能比基于时间的计划更有效。 例如，你可能需要在文件更改时或者在将新文件添加到数据目录时执行预处理步骤。 可以监视对数据存储的任何更改，或监视数据存储中特定目录中的更改。 如果监视特定目录，该目录的子目录中的更改将不会触发运行。
+由文件更改触发的管道可能比基于时间的计划更有效。 如果要在文件被更改前或者在将新文件添加到数据目录时执行某个操作，可以预处理该该文件。 可以监视对数据存储的任何更改，或监视数据存储中特定目录中的更改。 如果监视特定目录，该目录的子目录中的更改将不会触发运行。
 
-若要创建响应文件的 `Schedule`，必须在对 [Schedule.create](https://docs.microsoft.com/python//api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-) 的调用中设置 `datastore` 参数。 若要监视文件夹，请设置 `path_on_datastore` 参数。
+若要创建响应文件的 `Schedule`，必须在对 [Schedule.create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-) 的调用中设置 `datastore` 参数。 若要监视文件夹，请设置 `path_on_datastore` 参数。
 
 `polling_interval` 参数可用于指定检查数据存储更改的频率（分钟）。
 
-如果管道中构造了 [DataPath](https://docs.microsoft.com/python//api/azureml-core/azureml.data.datapath.datapath?preserve-view=true&view=azure-ml-py) [PipelineParameter](https://docs.microsoft.com/python//api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?preserve-view=true&view=azure-ml-py)，则可以通过设置 `data_path_parameter_name` 参数将该变量设置为修改后的文件的名称。
+如果管道中构造了 [DataPath](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?preserve-view=true&view=azure-ml-py) [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?preserve-view=true&view=azure-ml-py)，则可以通过设置 `data_path_parameter_name` 参数将该变量设置为修改后的文件的名称。
 
 ```python
 datastore = Datastore(workspace=ws, name="workspaceblobstore")
@@ -212,6 +212,12 @@ published_pipeline.endpoint
 
 > [!IMPORTANT]
 > 如果使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理对管道的访问，请[设置管道方案的权限（训练或评分）](how-to-assign-roles.md#common-scenarios)。
+
+## <a name="call-machine-learning-pipelines-from-azure-data-factory-pipelines"></a>从 Azure 数据工厂管道调用机器学习管道
+
+在 Azure 数据工厂管道中，“机器学习执行管道”活动运行 Azure 机器学习管道。 可以在数据工厂的创作页中的“机器学习”类别下找到此活动：
+
+:::image type="content" source="media/how-to-trigger-published-pipeline/azure-data-factory-pipeline-activity.png" alt-text="屏幕截图显示了 Azure 数据工厂创作环境中的 ML 管道活动":::
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,15 +4,15 @@ description: 在本教程中，了解如何使用 Azure CLI 管理 Azure VM 上�
 author: Johnnytechn
 ms.topic: tutorial
 origin.date: 11/7/2019
-ms.date: 09/22/2020
+ms.date: 03/01/2021
 ms.author: v-johya
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b28808c0a98f5610be363164c08cc3686d4b8df0
-ms.sourcegitcommit: cdb7228e404809c930b7709bcff44b89d63304ec
+ms.openlocfilehash: 99ebd6c97ddd551b3fed16f5fd4e0f6a53be806f
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91402310"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197506"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教程：使用 Azure CLI 管理 Azure VM 中的 SAP HANA 数据库
 
@@ -42,7 +42,7 @@ Azure CLI 用于从命令行或通过脚本创建和管理 Azure 资源。 本�
 
 ## <a name="monitor-backup-and-restore-jobs"></a>监视备份和还原作业
 
-若要监视已完成或当前正在运行的作业（备份或还原），请使用 [az backup job list](/cli/backup/job?view=azure-cli-latest#az-backup-job-list) cmdlet。 通过 CLI，还可[暂停当前正在运行的作业](/cli/backup/job?view=azure-cli-latest#az-backup-job-stop)或[等待作业完成](/cli/backup/job?view=azure-cli-latest#az-backup-job-wait)。
+若要监视已完成或当前正在运行的作业（备份或还原），请使用 [az backup job list](/cli/backup/job#az-backup-job-list) cmdlet。 通过 CLI，还可[暂停当前正在运行的作业](/cli/backup/job#az-backup-job-stop)或[等待作业完成](/cli/backup/job#az-backup-job-wait)。
 
 ```azurecli
 az backup job list --resource-group saphanaResourceGroup \
@@ -63,7 +63,7 @@ F7c68818-039f-4a0f-8d73-e0747e68a813  Restore (Log)          Completed   hxe [hx
 
 ## <a name="change-policy"></a>更改策略
 
-若要更改 SAP HANA 备份配置基础上的策略，请使用 [az backup policy set](/cli/backup/policy?view=azure-cli-latest#az-backup-policy-set) cmdlet。 此 cmdlet 中的 name 参数是指要更改其策略的备份项。 对于本教程，我们会将 SAP HANA 数据库 saphanadatabase;hxe;hxe 的策略替换为新策略 newsaphanaPolicy   。 可使用 [az backup policy create](/cli/backup/policy?view=azure-cli-latest#az-backup-policy-create) cmdlet 创建新策略。
+若要更改 SAP HANA 备份配置基础上的策略，请使用 [az backup policy set](/cli/backup/policy#az-backup-policy-set) cmdlet。 此 cmdlet 中的 name 参数是指要更改其策略的备份项。 对于本教程，我们会将 SAP HANA 数据库 saphanadatabase;hxe;hxe 的策略替换为新策略 newsaphanaPolicy   。 可使用 [az backup policy create](/cli/backup/policy#az-backup-policy-create) cmdlet 创建新策略。
 
 ```azurecli
 az backup item set policy --resource-group saphanaResourceGroup \
@@ -81,11 +81,230 @@ Name                                  Resource Group
 cb110094-9b15-4c55-ad45-6899200eb8dd  SAPHANA
 ```
 
+## <a name="create-incremental-backup-policy"></a>创建增量备份策略
+
+若要创建增量备份策略，请使用以下参数执行 [az backup policy create](/cli/backup/policy#az_backup_policy_create) 命令：
+
+* **--backup-management-type** - Azure 工作负载
+* **--workload-type** - SAPHana
+* **--name** - 策略的名称
+* **--policy** - JSON 文件，其中包含有关计划和保留的相应详细信息
+* **--resource-group** - 保管库的资源组
+* **--vault-name** - 保管库的名称
+
+例如：
+
+```azurecli
+az backup policy create --resource-group saphanaResourceGroup --vault-name saphanaVault --name sappolicy --backup-management-type AzureWorkload --policy sappolicy.json --workload-type SAPHana
+```
+
+示例 JSON (sappolicy.json)：
+
+```json
+  "eTag": null,
+  "id": "/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/saphanaResourceGroup/providers/Microsoft.RecoveryServices/vaults/saphanaVault/backupPolicies/sappolicy",
+  "location": null,
+  "name": "sappolicy",
+  "properties": {
+    "backupManagementType": "AzureWorkload",
+    "makePolicyConsistent": null,
+    "protectedItemsCount": 0,
+    "settings": {
+      "isCompression": false,
+      "issqlcompression": false,
+      "timeZone": "UTC"
+    },
+    "subProtectionPolicy": [
+      {
+        "policyType": "Full",
+        "retentionPolicy": {
+          "dailySchedule": null,
+          "monthlySchedule": {
+            "retentionDuration": {
+              "count": 60,
+              "durationType": "Months"
+            },
+            "retentionScheduleDaily": null,
+            "retentionScheduleFormatType": "Weekly",
+            "retentionScheduleWeekly": {
+              "daysOfTheWeek": [
+                "Sunday"
+              ],
+              "weeksOfTheMonth": [
+                "First"
+              ]
+            },
+            "retentionTimes": [
+              "2021-01-19T00:30:00+00:00"
+            ]
+          },
+          "retentionPolicyType": "LongTermRetentionPolicy",
+          "weeklySchedule": {
+            "daysOfTheWeek": [
+              "Sunday"
+            ],
+            "retentionDuration": {
+              "count": 104,
+              "durationType": "Weeks"
+            },
+            "retentionTimes": [
+              "2021-01-19T00:30:00+00:00"
+            ]
+          },
+          "yearlySchedule": {
+            "monthsOfYear": [
+              "January"
+            ],
+            "retentionDuration": {
+              "count": 10,
+              "durationType": "Years"
+            },
+            "retentionScheduleDaily": null,
+            "retentionScheduleFormatType": "Weekly",
+            "retentionScheduleWeekly": {
+              "daysOfTheWeek": [
+                "Sunday"
+              ],
+              "weeksOfTheMonth": [
+                "First"
+              ]
+            },
+            "retentionTimes": [
+              "2021-01-19T00:30:00+00:00"
+            ]
+          }
+        },
+        "schedulePolicy": {
+          "schedulePolicyType": "SimpleSchedulePolicy",
+          "scheduleRunDays": [
+            "Sunday"
+          ],
+          "scheduleRunFrequency": "Weekly",
+          "scheduleRunTimes": [
+            "2021-01-19T00:30:00+00:00"
+          ],
+          "scheduleWeeklyFrequency": 0
+        }
+      },
+      {
+        "policyType": "Incremental",
+        "retentionPolicy": {
+          "retentionDuration": {
+            "count": 30,
+            "durationType": "Days"
+          },
+          "retentionPolicyType": "SimpleRetentionPolicy"
+        },
+        "schedulePolicy": {
+          "schedulePolicyType": "SimpleSchedulePolicy",
+          "scheduleRunDays": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "scheduleRunFrequency": "Weekly",
+          "scheduleRunTimes": [
+            "2017-03-07T02:00:00+00:00"
+          ],
+          "scheduleWeeklyFrequency": 0
+        }
+      },
+      {
+        "policyType": "Log",
+        "retentionPolicy": {
+          "retentionDuration": {
+            "count": 15,
+            "durationType": "Days"
+          },
+          "retentionPolicyType": "SimpleRetentionPolicy"
+        },
+        "schedulePolicy": {
+          "scheduleFrequencyInMins": 120,
+          "schedulePolicyType": "LogSchedulePolicy"
+        }
+      }
+    ],
+    "workLoadType": "SAPHanaDatabase"
+  },
+  "resourceGroup": "saphanaResourceGroup",
+  "tags": null,
+  "type": "Microsoft.RecoveryServices/vaults/backupPolicies"
+} 
+```
+成功创建策略后，命令的输出将显示执行命令时作为参数传递的策略 JSON。
+
+可以修改策略的以下部分，以指定所需的备份频率和增量备份的保留时间。
+
+例如：
+
+```json
+{
+  "policyType": "Incremental",
+  "retentionPolicy": {
+    "retentionDuration": {
+      "count": 30,
+      "durationType": "Days"
+    },
+    "retentionPolicyType": "SimpleRetentionPolicy"
+  },
+  "schedulePolicy": {
+    "schedulePolicyType": "SimpleSchedulePolicy",
+    "scheduleRunDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "scheduleRunFrequency": "Weekly",
+    "scheduleRunTimes": [
+      "2017-03-07T02:00:00+00:00"
+    ],
+    "scheduleWeeklyFrequency": 0
+  }
+}
+```
+
+例如：
+
+如果要仅在星期六进行增量备份并将其保留 60 天，请在策略中进行以下更改：
+
+* 将 retentionDuration 计数更新为 60 天
+* 仅将周六指定为 ScheduleRunDays
+
+```json
+ {
+  "policyType": "Incremental",
+  "retentionPolicy": {
+    "retentionDuration": {
+      "count": 60,
+      "durationType": "Days"
+    },
+    "retentionPolicyType": "SimpleRetentionPolicy"
+  },
+  "schedulePolicy": {
+    "schedulePolicyType": "SimpleSchedulePolicy",
+    "scheduleRunDays": [
+      "Saturday"
+    ],
+    "scheduleRunFrequency": "Weekly",
+    "scheduleRunTimes": [
+      "2017-03-07T02:00:00+00:00"
+    ],
+    "scheduleWeeklyFrequency": 0
+  }
+}
+```
+
 ## <a name="protect-new-databases-added-to-an-sap-hana-instance"></a>保护添加到 SAP HANA 实例的新数据库
 
 [使用恢复服务保管库注册 SAP HANA 实例](tutorial-sap-hana-backup-cli.md#register-and-protect-the-sap-hana-instance)会自动发现该实例上的所有数据库。
 
-但是，如果以后将新数据库添加到 SAP HANA 实例，请使用 [az backup protectable-item initialize](https://docs.microsoft.com/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-initialize) cmdlet。 此 cmdlet 会发现添加的新数据库。
+但是，如果以后将新数据库添加到 SAP HANA 实例，请使用 [az backup protectable-item initialize](/cli/backup/protectable-item#az-backup-protectable-item-initialize) cmdlet。 此 cmdlet 会发现添加的新数据库。
 
 ```azurecli
 az backup protectable-item initialize --resource-group saphanaResourceGroup \
@@ -94,7 +313,7 @@ az backup protectable-item initialize --resource-group saphanaResourceGroup \
     --workload-type SAPHANA
 ```
 
-然后，使用 [az backup protectable-item list](https://docs.microsoft.com/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-list) cmdlet 列出已在 SAP HANA 实例上发现的所有数据库。 但是，此列表会排除已配置备份的数据库。 发现要备份的数据库后，请参阅[在 SAP HANA 数据库上启用备份](tutorial-sap-hana-backup-cli.md#enable-backup-on-sap-hana-database)。
+然后，使用 [az backup protectable-item list](/cli/backup/protectable-item#az-backup-protectable-item-list) cmdlet 列出已在 SAP HANA 实例上发现的所有数据库。 但是，此列表会排除已配置备份的数据库。 发现要备份的数据库后，请参阅[在 SAP HANA 数据库上启用备份](tutorial-sap-hana-backup-cli.md#enable-backup-on-sap-hana-database)。
 
 ```azurecli
 az backup protectable-item list --resource-group saphanaResourceGroup \
@@ -130,7 +349,7 @@ saphanadatabase;hxe;newhxe      SAPHanaDatabase          HXE           hxehost  
 
 ### <a name="stop-protection-with-retain-data"></a>停止保护并保留数据
 
-若要停止保护并保留数据，请使用 [az backup protection disable](/cli/backup/protection?view=azure-cli-latest#az-backup-protection-disable) cmdlet。
+若要停止保护并保留数据，请使用 [az backup protection disable](/cli/backup/protection#az-backup-protection-disable) cmdlet。
 
 ```azurecli
 az backup protection disable --resource-group saphanaResourceGroup \
@@ -149,11 +368,11 @@ Name                                  ResourceGroup
 g0f15dae-7cac-4475-d833-f52c50e5b6c3  saphanaResourceGroup
 ```
 
-若要检查此操作的状态，请使用 [az backup job show](/cli/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet。
+若要检查此操作的状态，请使用 [az backup job show](/cli/backup/job#az-backup-job-show) cmdlet。
 
 ### <a name="stop-protection-without-retain-data"></a>停止保护且不保留数据
 
-若要停止保护且不保留数据，请使用 [az backup protection disable](/cli/backup/protection?view=azure-cli-latest#az-backup-protection-disable) cmdlet。
+若要停止保护且不保留数据，请使用 [az backup protection disable](/cli/backup/protection#az-backup-protection-disable) cmdlet。
 
 ```azurecli
 az backup protection disable --resource-group saphanaResourceGroup \
@@ -173,13 +392,13 @@ Name                                  ResourceGroup
 g0f15dae-7cac-4475-d833-f52c50e5b6c3  saphanaResourceGroup
 ```
 
-若要检查此操作的状态，请使用 [az backup job show](/cli/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet。
+若要检查此操作的状态，请使用 [az backup job show](/cli/backup/job#az-backup-job-show) cmdlet。
 
 ## <a name="resume-protection"></a>恢复保护
 
 如果停止对 SAP HANA 数据库的保护且保留数据，可在稍后恢复保护。 如果不保留备份的数据，则无法恢复保护。
 
-若要恢复保护，请使用 [az backup protection resume](/cli/backup/protection?view=azure-cli-latest#az-backup-protection-resume) cmdlet。
+若要恢复保护，请使用 [az backup protection resume](/cli/backup/protection#az-backup-protection-resume) cmdlet。
 
 ```azurecli
 az backup protection resume --resource-group saphanaResourceGroup \
@@ -197,7 +416,7 @@ Name                                  ResourceGroup
 b2a7f108-1020-4529-870f-6c4c43e2bb9e  saphanaResourceGroup
 ```
 
-若要检查此操作的状态，请使用 [az backup job show](/cli/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet。
+若要检查此操作的状态，请使用 [az backup job show](/cli/backup/job#az-backup-job-show) cmdlet。
 
 ## <a name="next-steps"></a>后续步骤
 

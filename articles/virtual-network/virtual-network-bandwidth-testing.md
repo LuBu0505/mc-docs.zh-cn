@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 10/06/2020
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7ad7039f737c419e89760dd7ca8894f702d45fba
-ms.sourcegitcommit: 1f933e4790b799ceedc685a0cea80b1f1c595f3d
+ms.openlocfilehash: 67480197b7c75d7e0ef2783fe6e36e09439cda18
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628252"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053942"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>带宽/吞吐量测试 (NTTTCP)
 
@@ -29,7 +29,7 @@ ms.locfileid: "92628252"
 将此工具复制到大小相同的两个 Azure VM 中。 一个 VM 充当发送方，另一个充当接收方。
 
 #### <a name="deploying-vms-for-testing"></a>部署 VM 以进行测试
-为了达到此测试的目的，两个 VM 应位于同一[邻近放置组](../virtual-machines/windows/co-location.md)或同一可用性集中，这样便可使用其内部 IP 并从测试中排除负载均衡器。 也可以使用 VIP 进行测试，但这类测试不在本文档的讨论范围内。
+为了达到此测试的目的，两个 VM 应位于同一[邻近放置组](../virtual-machines/co-location.md)或同一可用性集中，这样便可使用其内部 IP 并从测试中排除负载均衡器。 也可以使用 VIP 进行测试，但这类测试不在本文档的讨论范围内。
 
 记下接收方的 IP 地址。 暂且将该 IP 称为“a.b.c.r”
 
@@ -55,9 +55,9 @@ ms.locfileid: "92628252"
 
 #### <a name="get-ntttcp-onto-the-vms"></a>在 VM 上安装 NTTTCP。
 
-下载最新版本：<https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
+下载最新版本：https://github.com/microsoft/ntttcp/releases/download/v5.35/NTttcp.exe
 
-或者搜索它（如果已移动）：<https://www.bing.com/search?q=ntttcp+download>\< - 应先点击
+或查看 GitHub 概述页面：<https://github.com/microsoft/ntttcp>\
 
 请考虑将 NTTTCP 放在单独的文件夹中，如 c:\\tools
 
@@ -74,7 +74,7 @@ netsh advfirewall firewall add rule program=c:\\tools\\ntttcp.exe name="ntttcp" 
 
 #### <a name="running-ntttcp-tests"></a>运行 NTTTCP 测试
 
-在接收方上启动 NTTTCP（ **从 CMD 运行** ，而不是从 PowerShell 运行）：
+在接收方上启动 NTTTCP（**从 CMD 运行**，而不是从 PowerShell 运行）：
 
 ntttcp -r -m [2\*\#num\_cores],\*,a.b.c.r -t 300
 
@@ -82,7 +82,7 @@ ntttcp -r -m [2\*\#num\_cores],\*,a.b.c.r -t 300
 
 ntttcp -r -m 8,\*,10.0.0.4 -t 300
 
-在发送方上启动 NTTTCP（ **从 CMD 运行** ，而不是从 PowerShell 运行）：
+在发送方上启动 NTTTCP（**从 CMD 运行**，而不是从 PowerShell 运行）：
 
 ntttcp -s -m 8,\*,10.0.0.4 -t 300 
 
@@ -171,4 +171,4 @@ ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300
 * 阅读有关如何[为虚拟机分配带宽](virtual-machine-network-throughput.md)的信息
 * 通过 [Azure 虚拟网络常见问题解答 (FAQ)](virtual-networks-faq.md) 了解详细信息
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -1,24 +1,24 @@
 ---
-title: 从 VM 创建映像
+title: 使用 Azure CLI 从 VM 创建映像
 description: 了解如何在共享映像库中从 Azure 中的 VM 创建映像。
-author: rockboyfor
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
 origin.date: 05/01/2020
-ms.date: 08/31/2020
+author: rockboyfor
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 139c4b61825eba909cba4364e485451b5cb6016f
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: e10ae2bed1f4307bd95cd07674bf830ac89ccdf8
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104563"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054405"
 ---
 <!--Verified successfully-->
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>使用 Azure CLI 从 Azure 中的 VM 创建映像版本
@@ -39,13 +39,13 @@ ms.locfileid: "93104563"
 
 ## <a name="get-information-about-the-vm"></a>获取有关 VM 的信息
 
-可以使用 [az vm list](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-list) 查看可用 VM 的列表。 
+可以使用 [az vm list](https://docs.azure.cn/cli/vm#az_vm_list) 查看可用 VM 的列表。 
 
 ```azurecli
 az vm list --output table
 ```
 
-知道 VM 的名称及其所在的资源组后，使用 [az vm get-instance-view](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-get-instance-view) 获取 VM 的 ID。 
+知道 VM 的名称及其所在的资源组后，使用 [az vm get-instance-view](https://docs.azure.cn/cli/vm#az_vm_get_instance_view) 获取 VM 的 ID。 
 
 ```azurecli
 az vm get-instance-view -g MyResourceGroup -n MyVm --query id
@@ -59,11 +59,11 @@ az vm get-instance-view -g MyResourceGroup -n MyVm --query id
 
 请确保映像定义的类型正确。 如果已通用化 VM（使用适用于 Windows 的 Sysprep，或适用于 Linux 的 waagent -deprovision），则应使用 `--os-state generalized` 创建通用化映像定义。 若要在不删除现有用户帐户的情况下使用 VM，请使用 `--os-state specialized` 创建专用化映像定义。
 
-若要详细了解可为映像定义指定的值，请参阅[映像定义](./linux/shared-image-galleries.md#image-definitions)。
+若要详细了解可为映像定义指定的值，请参阅[映像定义](./shared-image-galleries.md#image-definitions)。
 
-使用 [az sig image-definition create](https://docs.microsoft.com/cli/azure/sig?view=azure-cli-latest#az-sig-image-definition-create) 在库中创建一个映像定义。
+使用 [az sig image-definition create](https://docs.microsoft.com/cli/azure/sig/image-definition#az_sig_image_definition_create) 在库中创建一个映像定义。
 
-在此示例中，映像定义名为 myImageDefinition，适用于[专用化](./linux/shared-image-galleries.md#generalized-and-specialized-images) Linux OS 映像。 若要使用 Windows OS 创建映像的定义，请使用 `--os-type Windows`。 
+在此示例中，映像定义名为 myImageDefinition，适用于[专用化](./shared-image-galleries.md#generalized-and-specialized-images) Linux OS 映像。 若要使用 Windows OS 创建映像的定义，请使用 `--os-type Windows`。 
 
 ```azurecli 
 az sig image-definition create \
@@ -79,11 +79,11 @@ az sig image-definition create \
 
 ## <a name="create-the-image-version"></a>创建映像版本
 
-使用 [az image gallery create-image-version](https://docs.microsoft.com/cli/azure/sig?view=azure-cli-latest#az-sig-image-version-create) 从 VM 创建映像版本。  
+使用 [az image gallery create-image-version](https://docs.microsoft.com/cli/azure/sig/image-version#az_sig_image_version_create) 从 VM 创建映像版本。  
 
-允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式： *MajorVersion*. *MinorVersion*. *Patch* 。
+允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
-在此示例中，映像的版本为 *1.0.0* ，并且我们打算使用本地冗余存储在“中国北部”区域创建 2 个副本，在“中国东部区域”创建 1 个副本，在“中国东部 2”区域创建 1 个副本。 复制区域必须包含源 VM 所在的区域。
+在此示例中，映像的版本为 *1.0.0*，并且我们打算使用本地冗余存储在“中国北部”区域创建 2 个副本，在“中国东部区域”创建 1 个副本，在“中国东部 2”区域创建 1 个副本。 复制区域必须包含源 VM 所在的区域。
 
 <!--MOONCAKE: CORRECT ON locally-redundant storage-->
 
@@ -105,15 +105,15 @@ az sig image-version create \
 > [!NOTE]
 > 需等待映像版本彻底生成并复制完毕，然后才能使用同一托管映像来创建另一映像版本。
 >
-> 创建映像版本时，还可以通过添加 `--storage-account-type  premium_lrs` 在高级存储中存储映像，或者通过添加 `--storage-account-type  standard_lrs` 在本地冗余存储中存储映像。
+> 创建映像版本时，还可以通过添加 `--storage-account-type  premium_lrs` 在高级存储中存储映像。
 >
 
-<!--CORRECT ON or locally Redundant Storage by adding `--storage-account-type  standard_lrs`-->
+<!--NOT AVAIALBLE ON Zone Redundant Storage by adding `--storage-account-type  standard_zrs`-->
 
 ## <a name="next-steps"></a>后续步骤
 
 使用 Azure CLI 从[通用化映像](vm-generalized-image-version-cli.md)创建 VM。
 
-<!--Not Available on [Supply Azure Marketplace purchase plan information when creating images](marketplace-images.md)-->
+有关如何提供购买计划信息的信息，请参阅[在创建映像时提供 Azure 市场购买计划信息](marketplace-images.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

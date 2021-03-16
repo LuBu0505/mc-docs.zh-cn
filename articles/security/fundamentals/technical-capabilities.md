@@ -8,14 +8,14 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
-ms.date: 12/03/2020
+ms.date: 03/04/2021
 ms.author: v-johya
-ms.openlocfilehash: 0821ecad5f057908d0c54cc6fc2e5379672be0f8
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 7e23ea10662212cb3cdae9131e1d6b2f3537b80f
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747094"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197311"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
 本文介绍了 Azure 中的安全服务，这些服务可帮助保护云中的数据、资源和应用程序，并满足业务的安全需求。
@@ -132,7 +132,6 @@ Azure AD 将本地 Active Directory 扩展到云，让用户不仅能够使用�
 
 - 获取有关访问特权角色的警报
 
-<!--Not available in MC: Identity protection-->
 ## <a name="secure-resource-access"></a>保护资源访问
 
 Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者（可通过访问 [Azure 帐户中心](https://account.windowsazure.cn/subscriptions)进行访问）是帐户管理员 (AA)。 订阅是计费容器，但它们也可充当安全边界：每个订阅都有一个服务管理员 (SA)，此管理员可以使用 Azure 门户在该订阅中添加、删除和修改 Azure 资源。 新订阅的默认 SA 是 AA，但 AA 可以在 Azure 帐户中心更改 SA。
@@ -403,21 +402,7 @@ Azure 操作安全性建立在一个框架上，该框架融合了通过 Microso
 > [!Note]
 > Resource Manager 提供了一种新方法来部署和管理解决方案。 如果使用早期的部署模型并想了解这些更改，请参阅[了解 Resource Manager 部署和经典部署](../../azure-resource-manager/management/deployment-models.md)。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-step"></a>下一步
 
-阅读一些深度安全性主题，了解有关安全性的更多信息：
-
-- [审核和日志记录](https://www.microsoft.com/en-us/trustcenter/security/auditingandlogging)
-
-- [网络犯罪](https://www.microsoft.com/en-us/trustcenter/security/cybercrime)
-
-- [设计和运营安全性](https://www.microsoft.com/en-us/trustcenter/security/designopsecurity)
-
-- [加密](https://www.microsoft.com/en-us/trustcenter/security/encryption)
-
-- [标识和访问管理](https://www.microsoft.com/en-us/trustcenter/security/identity)
-
-- [网络安全](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
-
-- [威胁管理](https://www.microsoft.com/en-us/trustcenter/security/threatmanagement)
+[Azure 安全基准](../benchmarks/introduction.md)程序包含一系列安全建议，可用于帮助保护在 Azure 中使用的服务。
 

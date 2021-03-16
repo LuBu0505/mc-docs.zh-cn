@@ -11,16 +11,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 origin.date: 06/22/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: b7203edc20c39474904bf2ee98e4647773fe56f9
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 7a15eb06446cf03644ce9ce27f562ebde9fdf547
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856681"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054311"
 ---
 # <a name="os-start-up---computer-restarted-unexpectedly-or-encountered-an-unexpected-error"></a>OS 启动 - 计算机意外重启或遇到意外错误
 
@@ -54,6 +54,9 @@ ms.locfileid: "97856681"
 
 ### <a name="do-not-use-unattendxml"></a>请勿使用 Unattend.xml
 
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
+
 要修复此问题，请按照[有关准备/捕获映像的 Azure 指南](../windows/upload-generalized-managed.md)操作，并准备新的通用映像。 在执行 sysprep 的过程中，请勿使用 `/unattend:<your file's name>` 标志。 请改为仅使用下面的标志：
 
 `sysprep /oobe /generalize /shutdown`
@@ -68,4 +71,4 @@ ms.locfileid: "97856681"
 
 :::image type="content" source="./media/unexpected-restart-error-during-vm-boot/3.png" alt-text="“系统准备工具”窗口，其中选中了“OOBE”、“通用化”和“关闭”选项。":::
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

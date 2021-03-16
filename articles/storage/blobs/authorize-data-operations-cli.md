@@ -6,18 +6,18 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: how-to
-origin.date: 11/13/2020
-ms.date: 11/30/2020
+origin.date: 02/10/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 354f25947524ae9799c49ad048efe86af6e634ad
-ms.sourcegitcommit: dabbf66e4507a4a771f149d9f66fbdec6044dfbf
+ms.openlocfilehash: 3a6cf64a33e9394137c0f84b1620d6b926d81174
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96166871"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196328"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-with-azure-cli"></a>选择如何使用 Azure CLI 授权 Blob 数据访问
 
@@ -34,6 +34,9 @@ Azure 存储提供适用于 Azure CLI 的扩展，使你能够指定如何授权
 - 将 `--auth-mode` 参数设置为传统 `key` 值可以尝试检索用于授权的帐户访问密钥。 如果省略 `--auth-mode` 参数，则 Azure CLI 也会尝试检索访问密钥。
 
 若要使用 `--auth-mode` 参数，请确保已安装 Azure CLI 2.0.46 或更高版本。 运行 `az --version` 以查看已安装版本。
+
+> [!NOTE]
+> 在使用 Azure 资源管理器 ReadOnly 锁锁定了某个存储帐户时，不允许对该存储帐户执行[列出密钥](https://docs.microsoft.com/rest/api/storagerp/storageaccounts/listkeys)操作。 “列出密钥”是 POST 操作，并且在为该帐户配置了 ReadOnly 锁时，所有的 POST 操作都会被阻止 。 出于此原因，在使用 ReadOnly 锁锁定了帐户时，还没有帐户密钥的用户必须使用 Azure AD 凭据来访问 Blob 数据。
 
 > [!IMPORTANT]
 > 如果省略 `--auth-mode` 参数或将其设置为 `key`，则 Azure CLI 会尝试使用帐户访问密钥进行授权。 在这种情况下，Azure 建议在命令或 **AZURE_STORAGE_KEY** 环境变量中提供访问密钥。 有关环境变量的详细信息，请参阅标题为[为授权参数设置环境变量](#set-environment-variables-for-authorization-parameters)的部分。
@@ -83,6 +86,9 @@ az storage container create \
     --account-key <key>
     --auth-mode key
 ```
+
+> [!IMPORTANT]
+> 在使用 Azure 资源管理器 ReadOnly 锁锁定了某个存储帐户时，不允许对该存储帐户执行[列出密钥](https://docs.microsoft.com/rest/api/storagerp/storageaccounts/listkeys)操作。 “列出密钥”是 POST 操作，并且在为该帐户配置了 ReadOnly 锁时，所有的 POST 操作都会被阻止 。 出于此原因，在使用 ReadOnly 锁锁定了帐户时，用户必须使用 Azure AD 凭据访问数据。
 
 ## <a name="authorize-with-a-sas-token"></a>使用 SAS 令牌授权
 

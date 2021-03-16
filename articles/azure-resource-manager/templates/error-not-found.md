@@ -3,14 +3,15 @@ title: 找不到资源错误
 description: 介绍如何解决找不到资源时所发生的错误。 部署 Azure 资源管理器模板或执行管理操作时，可能会发生此错误。
 ms.topic: troubleshooting
 origin.date: 06/10/2020
-ms.date: 06/22/2020
+author: rockboyfor
+ms.date: 03/01/2021
 ms.author: v-yeche
-ms.openlocfilehash: 11a0a03520be12ab4d16f49170d4446b1fad6017
-ms.sourcegitcommit: 48b5ae0164f278f2fff626ee60db86802837b0b4
+ms.openlocfilehash: 57b552f0a674d9ed555a52e14852a206f321e0de
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85098417"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053110"
 ---
 <!--Verified successffully on 06/18/2020 by harris-->
 # <a name="resolve-resource-not-found-errors"></a>解决“找不到资源”错误
@@ -19,14 +20,14 @@ ms.locfileid: "85098417"
 
 ## <a name="symptom"></a>症状
 
-存在两个错误代码，指示找不到资源。 “NotFound”错误返回的结果类似于****：
+存在两个错误代码，指示找不到资源。 “NotFound”错误返回的结果类似于：
 
 ```
 Code=NotFound;
 Message=Cannot find ServerFarm with name exampleplan.
 ```
 
-如果对无法解析的资源使用 [reference](template-functions-resource.md#reference) 或 [listKeys](template-functions-resource.md#listkeys) 函数，则会收到以下错误：
+“ResourceNotFound”错误返回的结果类似于：
 
 ```
 Code=ResourceNotFound;
@@ -46,13 +47,13 @@ group {resource group name} was not found.
 * 资源组名称
 * 订阅
 
-如果使用的是 PowerShell 或 Azure CLI，请检查是否在包含该资源的订阅中运行了该命令。 可使用 [Set-AzContext](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext) 或 [az account set](https://docs.azure.cn/cli/account?view=azure-cli-latest#az-account-set) 来更改订阅。 许多命令还提供了一个订阅参数，使用该参数可以指定与当前上下文不同的订阅。
+如果使用的是 PowerShell 或 Azure CLI，请检查是否在包含该资源的订阅中运行了该命令。 可使用 [Set-AzContext](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext) 或 [az account set](https://docs.azure.cn/cli/account#az_account_set) 来更改订阅。 许多命令还提供了一个订阅参数，使用该参数可以指定与当前上下文不同的订阅。
 
 如果在验证属性时遇到问题，可登录[门户](https://portal.azure.cn)。 找到要尝试使用的资源，并检查资源名称、资源组和订阅。
 
 ## <a name="solution-2---set-dependencies"></a>解决方案 2 - 设置依赖项
 
-如果在部署模板时遇到此错误，可能需要添加依赖项。 如果可能，Resource Manager 会通过并行创建资源来优化部署。 如果一个资源必须在另一个资源之后部署，则需在模板中使用 dependsOn 元素****。 例如，在部署 Web 应用时，应用服务计划必须存在。 如果未指定该 Web 应用与应用服务计划的依赖关系，则 Resource Manager 会同时创建这两个资源。 会收到一条错误消息，指出未能找到应用服务计划资源，因为尝试在 Web 应用上设置属性时它尚不存在。 在 Web 应用中设置依赖关系可避免此错误。
+如果在部署模板时遇到此错误，可能需要添加依赖项。 如果可能，Resource Manager 会通过并行创建资源来优化部署。 如果一个资源必须在另一个资源之后部署，则需在模板中使用 dependsOn 元素。 例如，在部署 Web 应用时，应用服务计划必须存在。 如果未指定该 Web 应用与应用服务计划的依赖关系，则 Resource Manager 会同时创建这两个资源。 会收到一条错误消息，指出未能找到应用服务计划资源，因为尝试在 Web 应用上设置属性时它尚不存在。 在 Web 应用中设置依赖关系可避免此错误。
 
 ```json
 {
@@ -71,19 +72,19 @@ group {resource group name} was not found.
 
 1. 选择资源组的部署历史记录。
 
-    ![选择部署历史记录](./media/error-not-found/select-deployment.png)
+    :::image type="content" source="./media/error-not-found/select-deployment.png" alt-text="选择部署历史记录":::
 
-2. 从历史记录中选择一个部署，并选择“事件” ****。
+2. 从历史记录中选择一个部署，并选择“事件” 。
 
-    ![选择部署事件](./media/error-not-found/select-deployment-events.png)
+    :::image type="content" source="./media/error-not-found/select-deployment-events.png" alt-text="选择部署事件":::
 
 3. 检查每项资源的事件的顺序。 注意每个操作的状态。 例如，下图显示了并行部署的三个存储帐户。 请注意，这三个存储帐户是同时启动的。
 
-    ![并行部署](./media/error-not-found/deployment-events-parallel.png)
+    :::image type="content" source="./media/error-not-found/deployment-events-parallel.png" alt-text="并行部署":::
 
     下图显示了非并行部署的三个存储帐户。 第二个存储帐户依赖于第一个存储帐户，第三个存储帐户又依赖于第二个存储帐户。 启动、接受并处理完成第一个存储帐户后才开始对下一个进行操作。
 
-    ![连续部署](./media/error-not-found/deployment-events-sequence.png)
+    :::image type="content" source="./media/error-not-found/deployment-events-sequence.png" alt-text="连续部署":::
 
 ## <a name="solution-3---get-external-resource"></a>解决方案 3 - 获取外部资源
 
@@ -108,7 +109,7 @@ resourceId 函数中的订阅和资源组参数是可选的。 如果不指定�
 
 模式为：
 
-`"[reference(resourceId(<resource-provider-namespace>, <resource-name>, <API-version>, 'Full').Identity.propertyName]"`
+`"[reference(resourceId(<resource-provider-namespace>, <resource-name>), <API-version>, 'Full').Identity.propertyName]"`
 
 > [!IMPORTANT]
 > 不要使用该模式：
@@ -137,4 +138,4 @@ resourceId 函数中的订阅和资源组参数是可选的。 如果不指定�
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
 ```
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

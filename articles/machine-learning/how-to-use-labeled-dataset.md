@@ -7,12 +7,12 @@ ms.author: nibaccam
 ms.service: machine-learning
 ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 7ee355aaa4c57feeb58ee041e3f916b0fc5ca275
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: 6fc63d12a28137a1c6b361a41aeca94b58cba434
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97105273"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196505"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>创建和浏览带标签的 Azure 机器学习数据集
 
@@ -37,6 +37,9 @@ ms.locfileid: "97105273"
 ### <a name="coco"></a>COCO 
 
  COCO 文件是在 Azure 机器学习工作区的默认 Blob 存储中创建的，该存储位于 *export/coco* 内的某个文件夹中。 
+ 
+>[!NOTE]
+>在对象检测项目中，COCO 文件中导出的 "bbox": [x,y,width,height]" 值已规范化。 它们的缩放比例为 1。 示例：在 640x480 像素的图像中，位置为 (10, 10)、宽度为 30 像素、高度为 60 像素的边界框将被标注为 (0.015625. 0.02083, 0.046875, 0.125)。 由于坐标已规范化，因此所有图像的“width”和“height”均显示为“0.0”。 可以使用 Python 库（如 OpenCV 或 Pillow (PIL)）获取实际的宽度和高度。
 
 ### <a name="azure-machine-learning-dataset"></a>Azure 机器学习数据集
 

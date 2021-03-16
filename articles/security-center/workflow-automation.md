@@ -6,27 +6,27 @@ author: Johnnytechn
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 11/12/2020
+ms.date: 02/25/2021
 ms.author: v-johya
-ms.openlocfilehash: 99f7aa049565ba84f2fc7e5f5c09202b2b8de71e
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: 41651b84d6c0152954beafdb19854cb6b2cd8fda
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637798"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197598"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>自动执行对安全中心触发器的响应
 
 每个安全计划都包含事件响应的多个工作流。 这些流程可能包含通知相关利益干系人、启动更改管理进程，以及应用特定的修正步骤。 安全专家建议你尽可能多地将这些流程自动化。 自动化可减少开销， 还可确保根据你预定义的要求快速、一致地执行处理步骤，从而增强安全性。
 
-本文介绍 Azure 安全中心的工作流自动化功能。 此功能可根据安全警报和建议触发逻辑应用。 例如，你可能希望安全中心在出现警报时向特定用户发送电子邮件。 你还将了解如何使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)创建逻辑应用。
+本文介绍 Azure 安全中心的工作流自动化功能。 此功能可根据安全警报、建议和监管合规性触发逻辑应用。 例如，你可能希望安全中心在出现警报时向特定用户发送电子邮件。 你还将了解如何使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)创建逻辑应用。
 
 
 ## <a name="availability"></a>可用性
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|正式发布 (GA)|
+|发布状态：|正式发布版 (GA)|
 |定价：|免费|
 |所需角色和权限：|资源组上的安全管理员角色或所有者角色 <br>还必须具有对目标资源的写入权限<br><br>若要使用 Azure 逻辑应用工作流，还必须具有以下逻辑应用角色/权限：<br> 逻辑应用读取/触发访问需要- [逻辑应用操作员](../role-based-access-control/built-in-roles.md#logic-app-operator)权限（此角色无法创建或编辑逻辑应用，仅可运行现有应用）<br> 创建和修改逻辑应用需要- [逻辑应用参与者](../role-based-access-control/built-in-roles.md#logic-app-contributor)权限<br>如果要使用逻辑应用连接器，可能需要使用额外的凭据登录到各自的服务（例如 Outlook/Teams/Slack 实例）|
 |云：|![是](./media/icons/yes-icon.png) 中国云|
@@ -71,10 +71,12 @@ ms.locfileid: "94637798"
 
     逻辑应用设计器支持以下安全中心触发器：
 
-    * 创建或触发 Azure 安全中心建议时 - 如果逻辑应用依赖于已弃用或已替换的建议，自动化将停止工作，你需更新触发器。 若要跟踪对建议的更改，请参阅 [Azure 安全中心发行说明](release-notes.md)。
+    - 创建或触发 Azure 安全中心建议时 - 如果逻辑应用依赖于已弃用或已替换的建议，自动化将停止工作，你需更新触发器。 若要跟踪对建议的更改，请参阅 [Azure 安全中心发行说明](release-notes.md)。
 
-    * 创建或触发 Azure 安全中心警报时 - 你可自定义触发器，使其仅与你关注的严重性级别的警报关联。
+    - 创建或触发 Azure 安全中心警报时 - 你可自定义触发器，使其仅与你关注的严重性级别的警报关联。
     
+    - **当创建或触发安全中心监管合规性评估时**：根据监管合规性的更新触发自动化。
+
     > [!NOTE]
     > 如果使用名为“触发 Azure 安全中心警报的响应时”的旧触发器，逻辑应用不会通过工作流自动化功能启动。 请改用上述的任一触发器。 
 

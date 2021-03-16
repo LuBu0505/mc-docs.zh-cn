@@ -1,17 +1,18 @@
 ---
 title: 快速入门：使用 Azure CLI 创建管理组
 description: 本快速入门使用 Azure CLI 创建管理组，将资源整理到资源层次结构中。
-origin.date: 08/31/2020
-ms.date: 09/15/2020
-ms.author: v-tawe
+origin.date: 02/05/2021
+author: rockboyfor
+ms.date: 03/01/2021
+ms.author: v-yeche
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a685018466a38de7a817f60664d12bd42b717971
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.openlocfilehash: c75bcdb5e800a33a912a869e1a78a1a6230cfe98
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431120"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196867"
 ---
 # <a name="quickstart-create-a-management-group-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建管理组
 
@@ -21,17 +22,17 @@ ms.locfileid: "96431120"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果没有 Azure 订阅，请在开始前创建一个[试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)帐户。
+- 如果没有 Azure 订阅，请在开始前创建一个[免费试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)帐户。
 
-- 本快速入门需要运行 Azure CLI 版本 2.0.76 或更高版本，以便在本地安装并使用 CLI。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
+- 本快速入门需要运行 Azure CLI 版本 2.0.76 或更高版本，以便在本地安装并使用 CLI。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli)。
 
 - 如果未启用[层次结构保护](./how-to/protect-resource-hierarchy.md#setting---require-authorization)，则租户中的任何 Azure AD 用户即使未分配有管理组写入权限，也可创建管理组。 这个新的管理组将成为根管理组的子级或[默认管理组](./how-to/protect-resource-hierarchy.md#setting---default-management-group)，并将为创建者分配“所有者”角色。 管理组服务允许此功能，因此不需要在根级别分配角色。 创建根管理组时，用户没有访问权限。 为避免在查找 Azure AD 全局管理员以开始使用管理组方面遇到阻碍，我们允许在根级别创建初始管理组。
 
-<!-- [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)] -->
+[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
 ### <a name="create-in-the-azure-cli"></a>在 Azure CLI 中创建
 
-在 Azure CLI 中，使用 [az account management-group create](/cli/account/management-group#az-account-management-group-create) 命令创建新的管理组。 在本例中，管理组名称为 Contoso。
+在 Azure CLI 中，使用 [az account management-group create](https://docs.azure.cn/cli/account/management-group#az_account_management_group_create) 命令创建新的管理组。 在本例中，管理组名称为 Contoso。
 
 ```azurecli
 az account management-group create --name 'Contoso'
@@ -53,7 +54,7 @@ az account management-group create --name 'ContosoSubGroup' --parent 'Contoso'
 
 ## <a name="clean-up-resources"></a>清理资源
 
-若要删除上面创建的管理组，请使用 [az account management-group delete](/cli/account/management-group#az-account-management-group-delete) 命令：
+若要删除上面创建的管理组，请使用 [az account management-group delete](https://docs.azure.cn/cli/account/management-group#az_account_management_group_delete) 命令：
 
 ```azurecli
 az account management-group delete --name 'Contoso'
@@ -67,3 +68,5 @@ az account management-group delete --name 'Contoso'
 
 > [!div class="nextstepaction"]
 > [使用管理组管理资源](./manage.md)
+
+<!--Update_Description: update meta properties, wording update, update link-->

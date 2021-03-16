@@ -1,16 +1,17 @@
 ---
 title: 如何使用管理组 - Azure 治理
 description: 了解如何查看、维护、更新和删除管理组层次结构。
-origin.date: 10/14/2020
-ms.date: 11/06/2020
-ms.author: v-tawe
+origin.date: 01/15/2021
+author: rockboyfor
+ms.date: 03/01/2021
+ms.author: v-yeche
 ms.topic: conceptual
-ms.openlocfilehash: 8eb7bf707508962c8ba601e05041b5d7b0e98c47
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 11298e80335316bcf81953a62c902c79818113ca
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328698"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196817"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
 
@@ -283,6 +284,42 @@ az account management-group subscription add --name 'Contoso' --subscription '12
 az account management-group subscription remove --name 'Contoso' --subscription '12345678-1234-1234-1234-123456789012'
 ```
 
+### <a name="move-subscriptions-in-arm-template"></a>在 ARM 模板中移动订阅
+
+若要在 Azure 资源管理器模板（ARM 模板）中移动订阅，请使用以下模板。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "targetMgId": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the ID of the management group that you want to move the subscription to."
+            }
+        },
+        "subscriptionId": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the ID of the existing subscription to move."
+            }
+        }
+    },
+    "resources": [
+        {
+            "scope": "/", 
+            "type": "Microsoft.Management/managementGroups/subscriptions",
+            "apiVersion": "2020-05-01",
+            "name": "[concat(parameters('targetMgId'), '/', parameters('subscriptionId'))]",
+            "properties": {
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
 ## <a name="move-management-groups"></a>移动管理组 
 
 ### <a name="move-management-groups-in-the-portal"></a>在门户中移动管理组
@@ -355,4 +392,6 @@ GET https://management.chinacloudapi.cn/providers/Microsoft.Management/managemen
 - [如何更改、删除或管理管理组](./manage.md)
 - [在 Azure PowerShell 资源模块中查看管理组](https://docs.microsoft.com/powershell/module/az.resources#resources)
 - [在 REST API 中查看管理组](https://docs.microsoft.com/rest/api/resources/managementgroups)
-- [在 Azure CLI 中查看管理组](/cli/account/management-group)
+- [在 Azure CLI 中查看管理组](https://docs.azure.cn/cli/account/management-group)
+
+<!--Update_Description: update meta properties, wording update, update link-->

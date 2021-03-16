@@ -3,7 +3,6 @@ title: Azure 虚拟机网络吞吐量 | Azure
 description: 了解 Azure 虚拟机网络吞吐量，包括如何向虚拟机分配带宽。
 services: virtual-network
 documentationcenter: na
-editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
@@ -13,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 04/26/2019
 author: rockboyfor
-ms.date: 10/05/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/10/2020
 ms.author: v-yeche
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: 0949fa6248b4e6d193a0db3f717bc0d1afcac6b3
-ms.sourcegitcommit: 29a49e95f72f97790431104e837b114912c318b4
+ms.openlocfilehash: f660ba9c336ecd0fa5f26fb2e18bc42b0c6d908e
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91564516"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053776"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>虚拟机网络带宽
 
@@ -35,11 +34,11 @@ Azure 提供各种 VM 大小和类型，每一种包含的性能各不相同。 
 
 加速网络是一项旨在改进网络性能（包括延迟、吞吐量和 CPU 使用率）的功能。 虽然虚拟机的吞吐量可以通过加速网络来改进，但仍受分配给该虚拟机的带宽的限制。 若要详细了解如何使用加速网络，请查看适用于 [Windows](create-vm-accelerated-networking-powershell.md) 或 [Linux](create-vm-accelerated-networking-cli.md) 虚拟机的加速网络。
 
-Azure 虚拟机必须有一个（但也可能有多个）连接的网络接口。 分配给某个虚拟机的带宽是流经所有网络接口（已连接到该虚拟机）的所有出站流量的总和。 换言之，分配的带宽是针对每个虚拟机的，不管为该虚拟机连接了多少网络接口。 若要了解不同的 Azure VM 大小支持的网络接口数，请查看 Azure [Windows](../virtual-machines/windows/sizes.md?toc=%2fvirtual-network%2ftoc.json) 和 [Linux](../virtual-machines/linux/sizes.md?toc=%2fvirtual-network%2ftoc.json) VM 大小。 
+Azure 虚拟机必须有一个（但也可能有多个）连接的网络接口。 分配给某个虚拟机的带宽是流经所有网络接口（已连接到该虚拟机）的所有出站流量的总和。 换言之，分配的带宽是针对每个虚拟机的，不管为该虚拟机连接了多少网络接口。 若要了解不同的 Azure VM 大小支持的网络接口数，请查看 Azure [Windows](../virtual-machines/sizes.md?toc=%2fvirtual-network%2ftoc.json) 和 [Linux](../virtual-machines/sizes.md?toc=%2fvirtual-network%2ftoc.json) VM 大小。 
 
 ## <a name="expected-network-throughput"></a>预期的网络吞吐量
 
-若要详细了解每种 VM 大小支持的预期出站吞吐量和网络接口数，请查看 Azure [Windows](../virtual-machines/windows/sizes.md?toc=%2fvirtual-network%2ftoc.json) 和 [Linux](../virtual-machines/linux/sizes.md?toc=%2fvirtual-network%2ftoc.json) VM 大小。 选择一个类型（例如“通用”），然后在生成的页面上选择一个大小系列（例如“Dv2 系列”）。 每个系统都有一个表，在最后一列（名为“最大 NIC 数/预期网络性能(Mbps)”）中包含网络规格。  
+若要详细了解每种 VM 大小支持的预期出站吞吐量和网络接口数，请查看 Azure [Windows](../virtual-machines/sizes.md?toc=%2fvirtual-network%2ftoc.json) 和 [Linux](../virtual-machines/sizes.md?toc=%2fvirtual-network%2ftoc.json) VM 大小。 选择一个类型（例如“通用”），然后在生成的页面上选择一个大小系列（例如“Dv2 系列”）。 每个系统都有一个表，在最后一列（名为“最大 NIC 数/预期网络性能(Mbps)”）中包含网络规格。  
 
 吞吐量限制适用于虚拟机。 吞吐量不受以下因素影响：
 - **网络接口数**：带宽限制是源自虚拟机的所有出站流量的累积。
@@ -55,19 +54,17 @@ Azure 虚拟机必须有一个（但也可能有多个）连接的网络接口�
 
 :::image type="content" source="media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png" alt-text="通过转发设备进行的 TCP 对话的流计数":::
 
-## <a name="flow-limits-and-recommendations"></a>流限制和建议
+## <a name="flow-limits-and-active-connections-recommendations"></a>流限制和活动连接数建议
 
-目前，Azure 网络堆栈支持网络流总计为 250K 且为 CPU 核心数大于 8 的 VM 提供良好性能的方案，以及网络流总计为 100k 且为 CPU 核心数小于 8 的 VM 提供良好性能的方案。 超过此限制后，由于超出的流量，网络性能会正常下降，直到达到 500K 总流量（250K 入站流量和 250K 出站流量）的硬限制，然后丢弃超出的流量。
+针对一个 VM，Azure 网络堆栈现支持的流共计 100 万个（50 万个入站、50 万个出站）。 VM 可在不同场景中处理的活动连接总数如下所示。
+- 属于 VNET 的所有大小的虚拟机都可以处理 50 万个活动连接，在每个方向都支持 50 万个活动流。  
+- 具有网关、代理、防火墙等网络虚拟设备 (NVA) 的虚拟机可以处理 25 万个活动连接，在每个方向都支持 50 万个活动流，这是由于在下一个跃点建立新连接时，将进行转发并创建额外的新流，如上图所示。 
 
-| 性能级别 | CPU 核心数 <8 的 VM | CPU 核心数 >8 的 VM |
-| ----------------- | --------------------- | --------------------- |
-|<b>性能良好</b>|100K 流 |250K 流|
-|<b>性能下降</b>|大于 100k 流|大于 250K 流|
-|<b>流限制</b>|500K 流|500K 流|
+达到此限制后，系统就会删除其他连接。 连接建立速度和终止速度也可能影响网络性能，因为连接的建立和终止与包处理例程共享 CPU。 建议针对预期的流量模式对工作负荷进行基准测试，并根据性能需要对工作负荷进行相应的横向扩展。
 
 [Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) 中提供的指标用于跟踪 VM 或 VMSS 实例上的网络流数和流创建速率。
 
-:::image type="content" source="media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png" alt-text="通过转发设备进行的 TCP 对话的流计数":::
+:::image type="content" source="media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png" alt-text="此屏幕截图显示了 Azure Monitor 的“指标”页，其中包含入站流和出站流的折线图和总计。":::
 
 连接建立速度和终止速度也可能影响网络性能，因为连接的建立和终止与包处理例程共享 CPU。 建议针对预期的流量模式对工作负荷进行基准测试，并根据性能需要对工作负荷进行相应的横向扩展。 
 
@@ -76,4 +73,4 @@ Azure 虚拟机必须有一个（但也可能有多个）连接的网络接口�
 - [优化虚拟机操作系统的网络吞吐量](virtual-network-optimize-network-bandwidth.md)
 - 针对虚拟机[测试网络吞吐量](virtual-network-bandwidth-testing.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

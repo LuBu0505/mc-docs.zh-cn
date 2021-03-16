@@ -6,17 +6,17 @@ author: WenJason
 manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 origin.date: 02/02/2019
-ms.date: 05/11/2020
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: e2170852f951f4a2c3110a049b1bd283857ea199
-ms.sourcegitcommit: f8d6fa25642171d406a1a6ad6e72159810187933
+ms.openlocfilehash: fa0a1e900b5a9f6a6cce292c68e32c9916460f41
+ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82198545"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102206363"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>使用维护计划管理服务更新和维护
 
@@ -39,7 +39,7 @@ ms.locfileid: "82198545"
 我们会在所有维护事件之前提前 24 小时通知，DWC400c 和更低层例外。
 
 > [!NOTE]
-> 在我们需要部署时间关键型更新的情况下，提前通知时间可能会显著减少。
+> 在我们需要部署时间关键型更新的情况下，提前通知时间可能会显著减少。 由于更新的主要性质，这种情况可能会在确定的维护时段之外发生。
 
 如果你提前收到了维护通知，但维护无法在通知中指定的时段进行，你会收到取消通知。 随即会在下一个计划的维护期间继续进行维护。
 

@@ -6,16 +6,16 @@ keywords: ''
 author: kgremban
 ms.author: v-tawe
 ms.reviewer: ebertra
-ms.date: 02/02/2021
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: bedf58c1fe5e0db2626b99f690edb2d0d4cd3cb7
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: dd1e38ca9c60c8b2d7a977c05d598c9c4722b4a5
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579600"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196726"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>使用 Azure IoT Edge 发布和订阅
 
@@ -31,12 +31,12 @@ ms.locfileid: "99579600"
 - SKU 的 IoT 中心（F1、S1、S2 或 S3）。
 - 拥有版本 1.2 或更高版本的 IoT Edge 设备。 由于 IoT Edge MQTT 中转站当前处于公共预览状态，请在 edgeHub 容器上将以下环境变量设置为 true 以启用 MQTT 中转站：
 
-   | “属性” | “值” |
+   | “属性” | 值 |
    | - | - |
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__mqttBrokerEnabled` | `true` |
 
-- 已在 IoT Edge 设备上安装 Mosquitto 客户端。 本文使用常用的 Mosquitto 客户端 [MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) 和 [MOSQUITTO_SUB](https://mosquitto.org/man/mosquitto_sub-1.html)。 可以改用其他 MQTT 客户端。 若要在 Ubuntu 设备上安装 Mosquitto 客户端，请运行以下命令：
+- 在 IoT Edge 设备上安装的 Mosquitto 客户端。若要将 Mosquitto 客户端安装在 Ubuntu 设备上，请运行以下命令：
 
     ```cmd
     sudo apt-get update && sudo apt-get install mosquitto-clients
@@ -439,8 +439,6 @@ IoT Edge MQTT 桥通过 JSON 结构进行配置，JSON 结构通过其孪生体�
 ```
 关于 IoT Edge 中心 MQTT 桥的其他说明：
 - 当使用 MQTT 中转站并且 IoT Edge 在嵌套配置（例如指定了 `parent_hostname`）中使用时，MQTT 协议将自动用作上游协议。 若要了解有关上游协议的详细信息，请参阅[云通信](iot-edge-runtime.md#cloud-communication)。
-
-<!-- To learn more about nested configurations, see [Connect a downstream IoT Edge device to an Azure IoT Edge gateway](how-to-connect-downstream-iot-edge-device.md#configure-iot-edge-on-devices). -->
 
 ## <a name="next-steps"></a>后续步骤
 

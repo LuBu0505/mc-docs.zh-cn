@@ -12,14 +12,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 12/23/2019
-ms.date: 02/02/2021
+ms.date: 02/25/2021
 ms.author: v-johya
-ms.openlocfilehash: 329b64ede092c0537c53f1d1c1f858108deb3ff6
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: e2a04eb7e2fca9180dacc55753769d7febe6ff6a
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579485"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197138"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用自适应应用程序控制来减少计算机的攻击面
 
@@ -45,13 +45,13 @@ ms.locfileid: "99579485"
 - 防止使用组织禁止的特定软件
 - 加强对访问敏感数据的应用的监管
 
-
+目前无强制选项可用。 自适应应用程序控制旨在提供安全警报，前提是运行的任何应用程序不是你定义为安全的应用程序。
 
 ## <a name="availability"></a>可用性
 
 |方面|详细信息|
 |----|:----|
-|发布状态：|正式发布 (GA)|
+|发布状态：|正式发布版 (GA)|
 |定价：|需要[用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
 |支持的计算机：|![是](./media/icons/yes-icon.png) 运行 Windows 和 Linux 的 Azure 和非 Azure 计算机|
 |所需角色和权限：|“安全读者”和“读者”角色可以查看组和已知安全应用程序列表 <br>“参与者”和“安全管理员”角色可以查看组和已知安全应用程序的列表 |
@@ -236,7 +236,12 @@ REST API 提供的一些函数：
    > 在 Put 请求中使用 JSON 之前，请删除以下属性：recommendationStatus、configurationStatus、issues、location 和 sourceSystem。
 
 
+## <a name="faq---adaptive-application-controls"></a>常见问题解答 - 自适应应用程序控制
 
+### <a name="are-there-any-options-to-enforce-the-application-controls"></a>是否有任何强制执行应用程序控制的选项？
+目前无强制选项可用。 自适应应用程序控制旨在提供安全警报，前提是运行的任何应用程序不是你定义为安全的应用程序。 如本页所示，它具有一系列的优势（[自适应应用程序控制的优势是什么？](#what-are-the-benefits-of-adaptive-application-controls)）并且具有良好的可定制性。
+
+ 
 
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何在 Azure 安全中心使用自适应应用程序控制来定义 Azure 和非 Azure 计算机中运行的应用程序允许列表。 要详细了解安全中心的一些其他云工作负载保护功能，请参阅：

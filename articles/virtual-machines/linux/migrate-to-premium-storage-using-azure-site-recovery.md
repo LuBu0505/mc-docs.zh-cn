@@ -5,17 +5,17 @@ author: Johnnytechn
 ms.service: virtual-machines-linux
 ms.topic: how-to
 origin.date: 08/15/2017
-ms.date: 11/11/2020
+ms.date: 03/04/2021
 ms.author: v-johya
 ms.subservice: disks
-ms.openlocfilehash: d5cd30ea7e21458f47c184f720e98907d5d25648
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: 17122efe987b38dd3db2cdccc08ed722d1092098
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637966"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197336"
 ---
-# <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 迁移到高级存储
+# <a name="use-site-recovery-to-migrate-to-premium-storage"></a>使用 Site Recovery 迁移到高级存储
 
 [Azure 高级 SSD](../disks-types.md) 为运行 I/O 密集型工作负荷的虚拟机 (VM) 提供高性能、低延迟的磁盘支持。 本指南帮助用户使用 [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) 将其 VM 磁盘从标准存储帐户迁移到高级存储帐户。
 
@@ -111,7 +111,7 @@ Site Recovery 支持多种类型的、停机时间极短或不造成停机的故
 
       ![注册页][7]
 
-   3. 在“环境详细信息”中，选择是否要复制 VMware VM。 对于此迁移方案，请选择“否”。
+   3. 在“环境详细信息”中，选择是否要复制 VMware VM。  对于此迁移方案，请选择“否”。
 
       ![环境详细信息页][8]
 
@@ -128,7 +128,7 @@ Site Recovery 支持多种类型的、停机时间极短或不造成停机的故
 
 ![“目标”窗格][10]
 
-Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和网络。 
+Site Recovery 检查是否有一个或多个兼容的 Azure 存储帐户和网络。 
 
 > [!NOTE]
 > 如果使用高级存储帐户保存复制的数据，则需要设置附加的标准存储帐户来存储复制日志。
@@ -201,9 +201,9 @@ Site Recovery 会创建类型与支持高级存储的 VM 相同或类似的 VM �
 
 3. **清理 Azure Site Recovery 基础结构**。 如果不再需要 Site Recovery，可清理其基础结构。 删除复制的项、配置服务器和恢复策略，然后删除 Azure Site Recovery 保管库。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
-* [监视虚拟机和物理服务器的保护及其故障排除](../../site-recovery/site-recovery-monitoring-and-troubleshooting.md)
+* [监视虚拟机和物理服务器的保护及其故障排除](../../site-recovery/site-recovery-monitor-and-troubleshoot.md)
 * [MSDN Azure 和 CSDN Azure](https://www.azure.cn/support/contact/) 
 
 <!-- Replace [Azure Site Recovery forum] with [MSDN Azure 和 CSDN Azure]-->
@@ -221,7 +221,7 @@ Site Recovery 会创建类型与支持高级存储的 VM 相同或类似的 VM �
 
 * [Azure 存储](/storage/)
 * [Azure 虚拟机](/virtual-machines/)
-* [选择适用于 IaaS VM 的磁盘类型](disks-types.md)
+* [选择适用于 IaaS VM 的磁盘类型](../disks-types.md)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png
 [2]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-2.png

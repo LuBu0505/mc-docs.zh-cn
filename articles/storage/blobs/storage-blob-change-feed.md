@@ -3,18 +3,18 @@ title: Azure Blob 存储中的更改源 | Microsoft Docs
 description: 了解 Azure Blob 存储中的更改源日志以及如何使用这些日志。
 author: WenJason
 ms.author: v-jay
-origin.date: 09/08/2020
-ms.date: 11/16/2020
+origin.date: 02/08/2021
+ms.date: 03/08/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: ced3d6da27f14e71dfaac8ee93326046bec66de4
-ms.sourcegitcommit: 5f07189f06a559d5617771e586d129c10276539e
+ms.openlocfilehash: d1ea80004ab908d052af47ee6147fabde9c81df6
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94552062"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196251"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Azure Blob 存储中的更改源支持
 
@@ -22,9 +22,15 @@ ms.locfileid: "94552062"
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
+## <a name="how-the-change-feed-works"></a>更改源的工作原理
+
 更改源作为 [Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 存储在存储帐户中的特殊容器内，按标准的 [Blob 定价](https://azure.cn/pricing/details/storage/blobs/)计费。 你可以根据要求控制这些文件的保留期（请参阅当前版本的[条件](#conditions)）。 更改事件根据 [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) 格式（一种简洁且快速的二进制格式，通过内联架构提供丰富的数据结构）规范以记录的形式追加到更改源。 这种格式广泛用于 Hadoop 生态系统、流分析和 Azure 数据工厂。
 
 可通过异步、增量或整体方式处理这些日志。 任意数目的客户端应用程序都可以按照自身的步调单独并行读取更改源。 分析应用程序（例如 [Apache Drill](https://drill.apache.org/docs/querying-avro-files/) 或 [Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html)）可以直接将日志用作 Avro 文件，使你能够以较低的成本和较高的带宽处理这些日志，而无需编写自定义应用程序。
+
+下图显示了如何将记录添加到更改源：
+
+:::image type="content" source="media/storage-blob-change-feed/change-feed-diagram.png" alt-text="图中显示更改源如何提供 Blob 更改的有序日志":::
 
 更改源支持非常适合基于已更改的对象处理数据的方案。 例如，应用程序可以执行以下操作：
 
@@ -38,6 +44,8 @@ ms.locfileid: "94552062"
 
   - 生成连接的应用程序管道，以便根据创建的或更改的对象来响应更改事件或计划执行。
   
+更改源是[对象复制](object-replication-overview.md)的必备功能。
+
 > [!NOTE]
 > 更改源提供一个持久且有序的日志模型来记录发生在 Blob 中的更改。 在发生更改后的几分钟内，这些更改就会写入并出现在更改源日志中。 如果应用程序必须以比这快得多的速度对事件做出反应，请考虑改用 [Blob 存储事件](storage-blob-event-overview.md)。 [Blob 存储事件](storage-blob-event-overview.md)提供实时的一次性事件，使 Azure Functions 或应用程序能够快速对 Blob 中发生的更改做出反应。 
 
@@ -152,7 +160,7 @@ ms.locfileid: "94552062"
 
 更改源是按小时段组织的更改日志，但系统每隔几分钟就会在其中追加和更新内容。 仅当在该小时内发生了 Blob 更改事件时，才会创建这些段。 因此，客户端应用程序可以使用在特定时间范围内发生的更改，不必搜索整个日志。 有关详细信息，请参阅[规范](#specifications)。
 
-更改源的可用小时段在清单文件中描述，该文件指定了该段的更改源文件的路径。 `$blobchangefeed/idx/segments/` 虚拟目录的列表按时间顺序显示这些段。 段的路径描述该段所代表的小时时间范围的开始时间。 可以使用该列表来筛选出你感兴趣的日志段。
+更改源的可用小时段在清单文件中描述，该文件指定了该段的更改源文件的路径。 `$blobchangefeed/idx/segments/` 虚拟目录的列表按时间顺序显示这些段。 段的路径描述该段所代表的小时时间范围的开始时间。 可以使用该列表筛选出你感兴趣的日志段。
 
 ```text
 Name                                                                    Blob Type    Blob Tier      Length  Content Type    
@@ -242,7 +250,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 }
 ```
 
-有关每个属性的说明，请参阅 [Blob 存储的 Azure 事件网格事件架构](/event-grid/event-schema-blob-storage?toc=%2fstorage%2fblobs%2ftoc.json#event-properties)。 BlobPropertiesUpdated 和 BlobSnapshotCreated 事件当前是更改源独有的事件，尚不支持用于 Blob 存储事件。
+有关每个属性的说明，请参阅 [Blob 存储的 Azure 事件网格事件架构](../../event-grid/event-schema-blob-storage.md?toc=%2fstorage%2fblobs%2ftoc.json#event-properties)。 BlobPropertiesUpdated 和 BlobSnapshotCreated 事件当前是更改源独有的事件，尚不支持用于 Blob 存储事件。
 
 > [!NOTE]
 > 创建某个段后，该段的更改源文件不会立即显示。 延迟时长处于正常的更改源发布延迟间隔范围内，而该间隔为更改后的几分钟内。

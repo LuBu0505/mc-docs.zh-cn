@@ -5,16 +5,16 @@ services: container-service
 ms.topic: conceptual
 origin.date: 06/16/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 06/16/2020
 ms.author: v-yeche
-ms.openlocfilehash: d4dffa42df704fa0acc3259114ade854b5f2ec9a
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 420b889ba470794315b8647e7c0b58178a84bbc4
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022316"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054073"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 的服务主体
 
@@ -133,7 +133,7 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 - 如果没有在其他 AKS CLI 命令中明确传递服务主体，则将使用位于 `~/.azure/aksServicePrincipal.json` 的默认服务主体。  
 - 也可以选择删除 aksServicePrincipal.json 文件，AKS 将创建新的服务主体。
 - 删除通过 [az aks create][az-aks-create] 创建的 AKS 群集时，不会删除自动创建的服务主体。
-    - 若要删除服务主体，请查询群集 *servicePrincipalProfile.clientId*，然后使用 [az ad app delete][az-ad-app-delete] 进行删除。 将以下资源组和群集名称替换为你自己的值：
+    - 若要删除服务主体，请查询群集 servicePrincipalProfile.clientId，然后使用 [az ad sp delete][az-ad-sp-delete] 进行删除。 将以下资源组和群集名称替换为你自己的值：
 
         ```azurecli
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
@@ -185,4 +185,4 @@ ls -la $HOME/.azure/aksServicePrincipal.json
 [azure-ad-permissions]: ../active-directory/fundamentals/users-default-permissions.md
 [aks-permissions]: concepts-identity.md#aks-service-permissions
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

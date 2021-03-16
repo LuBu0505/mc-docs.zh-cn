@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 7fae651271c106ef0c64c09d38cfc435e3211c39
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 29ca8f43634101e4643f1f4ae510265024750136
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021671"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196569"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习训练环境
 
@@ -60,16 +60,19 @@ ms.locfileid: "98021671"
 > * 如果工作区的一个或多个 Azure 存储帐户也在虚拟网络中受保护，它们必须与 Azure 机器学习计算实例或群集位于同一虚拟网络中。 
 > * 为了让计算实例 Jupyter 功能可以正常运行，请确保没有禁用 Web 套接字通信。 请确保网络允许到 *.instances.azureml.net 和 *.instances.azureml.ms 的 websocket 连接。 
 > * 在专用链接工作区中部署计算实例时，只能从虚拟网络内部访问。 如果使用自定义 DNS 或主机文件，请为 `<instance-name>.<region>.instances.azureml.ms` 添加一个条目，该条目具有工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅[自定义 DNS](./how-to-custom-dns.md) 一文。
+> * 用于部署计算群集/实例的子网不应委托给 ACI 等任何其他服务
+> * 虚拟网络服务终结点策略不适用于计算群集/实例系统存储帐户
+
     
 > [!TIP]
 > 机器学习计算实例或群集自动在包含虚拟网络的资源组中分配更多网络资源。 对于每个计算实例或群集，此服务分配以下资源：
 > 
 > * 一个网络安全组
-> * 一个公共 IP 地址
+> * 一个公共 IP 地址。 如果你的 Azure 策略禁止创建公共 IP，则群集/实例的部署将失败
 > * 一个负载均衡器
 > 
 > 对于群集，每当群集纵向缩减为 0 个节点时，这些资源都会被删除（并重新创建）；但对于实例，这些资源会一直保留到实例完全删除（停止并不会删除资源）。 
-> 这些资源受订阅的[资源配额](/azure-resource-manager/management/azure-subscription-service-limits)限制。
+> 这些资源受订阅的[资源配额](../azure-resource-manager/management/azure-subscription-service-limits.md)限制。 如果虚拟网络资源组被锁定，则删除计算群集/实例将失败。 在删除计算群集/实例之前，无法删除负载均衡器。
 
 
 ### <a name="required-ports"></a><a id="mlcports"></a> 所需端口
@@ -158,7 +161,11 @@ Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (N
 
 * 使用[虚拟网络 NAT](../virtual-network/nat-overview.md)。 NAT 网关为虚拟网络中的一个或多个子网提供出站 Internet 连接。 有关信息，请参阅[设计使用 NAT 网关资源的虚拟网络](../virtual-network/nat-gateway-resource.md)。
 
-* 将[用户定义的路由 (UDR)](/virtual-network/virtual-networks-udr-overview) 添加到包含计算资源的子网。 为资源所在区域中的 Azure Batch 服务使用的每个 IP 地址建立一个 UDR。 借助这些 UDR，Batch 服务可以与计算节点进行通信，以便进行任务计划编制。 还要添加资源所在的 Azure 机器学习服务 IP 地址，因为这是访问计算实例所必需的。 若要获取 Batch 服务和 Azure 机器学习服务的 IP 地址列表，请使用以下方法之一：
+* 将[用户定义的路由 (UDR)](../virtual-network/virtual-networks-udr-overview.md) 添加到包含计算资源的子网。 为资源所在区域中的 Azure Batch 服务使用的每个 IP 地址建立一个 UDR。 借助这些 UDR，Batch 服务可以与计算节点进行通信，以便进行任务计划编制。 还要添加 Azure 机器学习服务的 IP 地址，因为这是访问计算实例所必需的。 添加 Azure 机器学习服务的 IP 时，必须同时添加主要和次要 Azure 区域的 IP。 主要区域是工作区所在的区域。
+
+    若要查找次要区域，请参阅[使用 Azure 配对区域确保业务连续性和灾难恢复](../best-practices-availability-paired-regions.md#azure-regional-pairs)。 
+
+    若要获取 Batch 服务和 Azure 机器学习服务的 IP 地址列表，请使用以下方法之一：
 
     * 下载 [Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)，并在文件中搜索 `BatchNodeManagement.<region>` 和 `AzureMachineLearning.<region>`（其中 `<region>` 是你的 Azure 区域）。
 
@@ -166,7 +173,10 @@ Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (N
 
         ```azurecli
         az network list-service-tags -l "China East 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='chinaeast2']"
+        # Get primary region IPs
         az network list-service-tags -l "China East 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='chinaeast2']"
+        # Get secondary region IPs
+        az network list-service-tags -l "China North" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='chinanorth']"
         ```
 
         > [!TIP]

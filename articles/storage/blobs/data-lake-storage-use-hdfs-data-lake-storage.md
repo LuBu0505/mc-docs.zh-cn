@@ -6,16 +6,16 @@ author: WenJason
 ms.service: storage
 ms.topic: how-to
 origin.date: 12/06/2018
-ms.date: 11/16/2020
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: 160c431b5a4624c6179fe0e4f5e14c0520adf0ff
-ms.sourcegitcommit: 5f07189f06a559d5617771e586d129c10276539e
+ms.openlocfilehash: 07866b906624c0561d83b34878e7994fc112da89
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94552103"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196254"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>将 HDFS CLI 与 Data Lake Storage Gen2 配合使用
 
@@ -25,9 +25,12 @@ HDInsight 可以访问在本地附加到计算节点的分布式容器。 可以
 
 有关 HDFS CLI 的详细信息，请参阅[官方文档](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html)和 [HDFS 权限指南](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
 
+>[!NOTE]
+>如果你使用的是 Azure Databricks 而不是 HDInsight，并且要使用命令行接口与数据进行交互，可使用 Databricks CLI 与 Databricks 文件系统进行交互。 请参阅 [Databricks CLI](/databricks/dev-tools/cli/)。
+
 ## <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>在 Linux 上结合使用 HDFS CLI 和 HDInsight Hadoop 群集
 
-首先建立[对服务的远程访问](/hdinsight/hdinsight-hadoop-linux-information#remote-access-to-services)。 如果选择了 [SSH](/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)，则示例 PowerShell 代码将如下所示：
+首先建立[对服务的远程访问](../../hdinsight/hdinsight-hadoop-linux-information.md#remote-access-to-services)。 如果选择了 [SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)，则示例 PowerShell 代码将如下所示：
 
 ```powershell
 #Connect to the cluster via SSH.
@@ -118,4 +121,4 @@ hdfs dfs -mkdir /samplefolder
 
 * [在 Azure Databricks 中使用支持 Azure Data Lake Storage Gen2 的帐户](./data-lake-storage-quickstart-create-databricks-account.md)
 
-* [了解文件和目录上的访问控制列表](/storage/blobs/data-lake-storage-access-control)
+* [了解文件和目录上的访问控制列表](./data-lake-storage-access-control.md)

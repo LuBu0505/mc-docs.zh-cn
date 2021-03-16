@@ -1,29 +1,29 @@
 ---
-title: 教程 - 创建并测试 NAT 网关 - Azure PowerShell
+title: 创建并测试 NAT 网关 - Azure PowerShell
 titlesuffix: Azure Virtual Network NAT
 description: 本教程介绍如何使用 Azure PowerShell 创建 NAT 网关并测试 NAT 服务
 services: virtual-network
 documentationcenter: na
-author: rockboyfor
-manager: digimobile
+manager: KumudD
 Customer intent: I want to test a NAT gateway for outbound connectivity for my virtual network.
 ms.service: virtual-network
 ms.subservice: nat
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/11/2020
-ms.date: 07/13/2020
+author: rockboyfor
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 07/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 55001c48c2ed61c2a37a31451218bae4f608abf5
-ms.sourcegitcommit: 2bd0be625b21c1422c65f20658fe9f9277f4fd7c
+ms.openlocfilehash: dea0e23f9386cdaf87b721bde9214f87dffa864c
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86441205"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102108768"
 ---
 <!--Verified successfully-->
 # <a name="tutorial-create-a-nat-gateway-using-azure-powershell-and-test-the-nat-service"></a>教程：使用 Azure PowerShell 创建 NAT 网关并测试 NAT 服务
@@ -34,13 +34,13 @@ ms.locfileid: "86441205"
 
 可以使用 Azure PowerShell 完成本教程，应以管理员权限在本地运行相应命令。
 
-<!--Not Available on [sign in now](https://shell.azure.com  )-->
+<!--Not Available on [sign in now](https://shell.azure.com)-->
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+使用 [az group create](https://docs.azure.cn/cli/group#az_group_create) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 以下示例在“chinaeast2”位置创建名为“myResourceGroupNAT”的资源组：
 
@@ -56,7 +56,7 @@ $rg = New-AzResourceGroup -Name $rgname -Location $loc
 
 ### <a name="create-a-public-ip-address"></a>创建公共 IP 地址
 
-若要访问 Internet，需要提供 NAT 网关的一个或多个公共 IP 地址。 使用 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) 在 **myResourceGroupNAT** 中创建名为 **myPublicIPsource** 的公共 IP 地址资源。 此命令的结果将存储在名为 **$publicIPsource** 的变量中，供稍后使用。
+若要访问 Internet，需要提供 NAT 网关的一个或多个公共 IP 地址。 使用 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) 在 **myResourceGroupNAT** 中创建名为 **myPublicIPsource** 的公共 IP 地址资源。 此命令的结果将存储在名为 **$publicIPsource** 的变量中，供稍后使用。
 
 ```powershell
 $pipname = 'myPublicIPsource'
@@ -70,7 +70,7 @@ New-AzPublicIpAddress -Name $pipname -ResourceGroupName $rg.ResourceGroupName -A
 
 ### <a name="create-a-public-ip-prefix"></a>创建公共 IP 前缀
 
- 使用 [New-AzPublicIpPrefix](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipprefix?view=latest) 在 **myResourceGroupNAT** 中创建名为 **myPublicIPprefixsource** 的公共 IP 前缀资源。  此命令的结果将存储在名为 **$publicIPPrefixsource** 的变量中，供稍后使用。
+ 使用 [New-AzPublicIpPrefix](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipprefix) 在 **myResourceGroupNAT** 中创建名为 **myPublicIPprefixsource** 的公共 IP 前缀资源。  此命令的结果将存储在名为 **$publicIPPrefixsource** 的变量中，供稍后使用。
 
 ```powershell
 $prefixname = 'mypublicIPprefixsource'
@@ -107,7 +107,7 @@ New-AzNatGateway -Name $natname -ResourceGroupName $rg.ResourceGroupName -Public
 
 创建虚拟网络，并将子网关联到网关。
 
-使用 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest) 在 **myResourceGroupNAT** 中创建名为 **myVnetsource** 的虚拟网络，并使用 [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) 创建名为 **mySubnetsource** 的子网。 虚拟网络的 IP 地址空间为 **192.168.0.0/16**。 虚拟网络中的子网为 **192.168.0.0/24**。  命令的结果将存储在名为 **$subnetsource** 和 **$vnetsource** 的变量中，供稍后使用。
+使用 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) 在 **myResourceGroupNAT** 中创建名为 **myVnetsource** 的虚拟网络，并使用 [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建名为 **mySubnetsource** 的子网。 虚拟网络的 IP 地址空间为 **192.168.0.0/16**。 虚拟网络中的子网为 **192.168.0.0/24**。  命令的结果将存储在名为 **$subnetsource** 和 **$vnetsource** 的变量中，供稍后使用。
 
 ```powershell
 $subnetname = 'mySubnetsource'
@@ -131,7 +131,7 @@ New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rg.ResourceGroupName -A
 
 ### <a name="create-public-ip-for-source-vm"></a>创建源 VM 的公共 IP
 
-我们将创建一个用于访问 VM 的公共 IP。  使用 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) 在 **myResourceGroupNAT** 中创建名为 **myPublicIPVM** 的公共 IP 地址资源。  此命令的结果将存储在名为 **$publicIpsourceVM** 的变量中，供稍后使用。
+我们将创建一个用于访问 VM 的公共 IP。  使用 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) 在 **myResourceGroupNAT** 中创建名为 **myPublicIPVM** 的公共 IP 地址资源。  此命令的结果将存储在名为 **$publicIpsourceVM** 的变量中，供稍后使用。
 
 ```powershell
 $sku = 'Standard'
@@ -145,7 +145,7 @@ New-AzPublicIpAddress -Name $pipvmname -ResourceGroupName $rg.ResourceGroupName 
 
 ### <a name="create-an-nsg-and-expose-ssh-endpoint-for-vm"></a>创建 NSG 并公开 VM 的 SSH 终结点
 
-由于标准公共 IP 地址是“默认安全的”，因此我们需要创建一个 NSG 来允许 SSH 入站访问。 NAT 服务可以识别流的方向。 在同一子网中配置 NAT 网关后，此 NSG 不会用于出站连接。 使用 [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup?view=latest) 创建名为 **myNSGsource** 的 NSG 资源。 使用 [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest) 在 **myResourceGroupNAT** 中创建名为 **ssh** 的 NSG 规则用于进行 SSH 访问。 此命令的结果将存储在名为 **$nsgsource** 的变量中，供稍后使用。
+由于标准公共 IP 地址是“默认安全的”，因此我们需要创建一个 NSG 来允许 SSH 入站访问。 NAT 服务可以识别流的方向。 在同一子网中配置 NAT 网关后，此 NSG 不会用于出站连接。 使用 [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) 创建名为 **myNSGsource** 的 NSG 资源。 使用 [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) 在 **myResourceGroupNAT** 中创建名为 **ssh** 的 NSG 规则用于进行 SSH 访问。 此命令的结果将存储在名为 **$nsgsource** 的变量中，供稍后使用。
 
 ```powershell
 $rnm = 'ssh'
@@ -165,7 +165,7 @@ New-AzNetworkSecurityGroup -ResourceGroupName $rg.ResourceGroupName -Name $nsnm 
 
 ### <a name="create-nic-for-source-vm"></a>创建源 VM 的 NIC
 
-使用 [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface?view=azps-2.8.0) 创建名为 **myNicsource** 的网络接口。 此命令会将公共 IP 地址与网络安全组相关联。 此命令的结果将存储在名为 **$nicsource** 的变量中，供稍后使用。
+使用 [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) 创建名为 **myNicsource** 的网络接口。 此命令会将公共 IP 地址与网络安全组相关联。 此命令的结果将存储在名为 **$nicsource** 的变量中，供稍后使用。
 
 ```powershell
 $nin = 'myNicsource'
@@ -231,7 +231,7 @@ $sshPublicKey = cat ~/.ssh/id_rsa.pub
 Add-AzVMSshPublicKey -VM $vmConfigsource -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 
 ```
-合并配置定义，使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azps-2.8.0) 在 **myResourceGroupNAT** 中创建名为 **myVMsource** 的 VM。
+合并配置定义，使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 在 **myResourceGroupNAT** 中创建名为 **myVMsource** 的 VM。
 
 ```powershell
 New-AzVM -ResourceGroupName $rg.ResourceGroupName -VM $vmConfigsource -Location $rg.Location
@@ -248,7 +248,7 @@ New-AzVM -ResourceGroupName $rg.ResourceGroupName -VM $vmConfigsource -Location 
 
 我们需要创建一个虚拟网络，目标虚拟机将置于其中。  这些命令执行的步骤与针对源 VM 执行的步骤相同。 我们已做出轻微的更改来公开目标终结点。
 
-使用 [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest) 在 **myResourceGroupNAT** 中创建名为 **myVnetdestination** 的虚拟网络，并使用 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) 创建名为 **mySubnetdestination** 的子网。 虚拟网络的 IP 地址空间为 **192.168.0.0/16**。 虚拟网络中的子网为 **192.168.0.0/24**。  命令的结果将存储在名为 **$subnetdestination** 和 **$vnetdestination** 的变量中，供稍后使用。
+使用 [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) 在 **myResourceGroupNAT** 中创建名为 **myVnetdestination** 的虚拟网络，并使用 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建名为 **mySubnetdestination** 的子网。 虚拟网络的 IP 地址空间为 **192.168.0.0/16**。 虚拟网络中的子网为 **192.168.0.0/24**。  命令的结果将存储在名为 **$subnetdestination** 和 **$vnetdestination** 的变量中，供稍后使用。
 
 ```powershell
 $sbdn = 'mySubnetdestination'
@@ -266,7 +266,7 @@ New-AzVirtualNetwork -Name $vdn -ResourceGroupName $rg.ResourceGroupName -Addres
 
 ### <a name="create-public-ip-for-destination-vm"></a>创建目标 VM 的公共 IP
 
-我们将创建一个用于访问目标 VM 的公共 IP。  使用 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) 在 **myResourceGroupNAT** 中创建名为 **myPublicIPdestinationVM** 的公共 IP 地址资源。  此命令的结果将存储在名为 **$publicIpdestinationVM** 的变量中，供稍后使用。
+我们将创建一个用于访问目标 VM 的公共 IP。  使用 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) 在 **myResourceGroupNAT** 中创建名为 **myPublicIPdestinationVM** 的公共 IP 地址资源。  此命令的结果将存储在名为 **$publicIpdestinationVM** 的变量中，供稍后使用。
 
 ```powershell
 $sku = 'Standard'
@@ -280,7 +280,7 @@ New-AzPublicIpAddress -Name $pipd -ResourceGroupName $rg.ResourceGroupName -Allo
 
 ### <a name="create-an-nsg-and-expose-ssh-and-http-endpoint-for-vm"></a>创建 NSG 并公开 VM 的 SSH 和 HTTP 终结点
 
-标准公共 IP 地址是“默认安全的”，因此我们需要创建一个 NSG 来允许 SSH 入站访问。 使用 [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup?view=latest) 创建名为 **myNSGdestination** 的 NSG 资源。 使用 [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest) 创建名为 **ssh** 的 NSG 规则用于进行 SSH 访问。  使用 [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest) 创建名为 **http** 的 NSG 规则用于进行 HTTP 访问。 这两个规则将在 **myResourceGroupNAT** 中创建。 此命令的结果将存储在名为 **$nsgdestination** 的变量中，供稍后使用。
+标准公共 IP 地址是“默认安全的”，因此我们需要创建一个 NSG 来允许 SSH 入站访问。 使用 [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) 创建名为 **myNSGdestination** 的 NSG 资源。 使用 [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) 创建名为 **ssh** 的 NSG 规则用于进行 SSH 访问。  使用 [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) 创建名为 **http** 的 NSG 规则用于进行 HTTP 访问。 这两个规则将在 **myResourceGroupNAT** 中创建。 此命令的结果将存储在名为 **$nsgdestination** 的变量中，供稍后使用。
 
 ```powershell
 $snm = 'ssh'
@@ -305,7 +305,7 @@ New-AzNetworkSecurityGroup -ResourceGroupName $rg.ResourceGroupName -Name $nsnm 
 
 ### <a name="create-nic-for-destination-vm"></a>创建目标 VM 的 NIC
 
-使用 [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface?view=azps-2.8.0) 创建名为 **myNicdestination** 的网络接口。 此命令会将公共 IP 地址与网络安全组相关联。 此命令的结果将存储在名为 **$nicdestination** 的变量中，供稍后使用。
+使用 [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) 创建名为 **myNicdestination** 的网络接口。 此命令会将公共 IP 地址与网络安全组相关联。 此命令的结果将存储在名为 **$nicdestination** 的变量中，供稍后使用。
 
 ```powershell
 $nnm = 'myNicdestination'
@@ -355,7 +355,7 @@ $sshPublicKey = cat ~/.ssh/id_rsa.pub
 Add-AzVMSshPublicKey -VM $vmConfigdestination -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 
 ```
-合并配置定义，使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azps-2.8.0) 在 **myResourceGroupNAT** 中创建名为 **myVMdestination** 的 VM。
+合并配置定义，使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 在 **myResourceGroupNAT** 中创建名为 **myVMdestination** 的 VM。
 
 ```powershell
 
@@ -367,7 +367,7 @@ New-AzVM -ResourceGroupName $rg.ResourceGroupName -VM $vmConfigdestination -Loca
 
 ## <a name="prepare-a-web-server-and-test-payload-on-destination-vm"></a>在目标 VM 上准备 Web 服务器和测试有效负载
 
-首先需要发现目标 VM 的 IP 地址。  若要获取 VM 的公共 IP 地址，请使用 [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=latest)。 
+首先需要发现目标 VM 的 IP 地址。  若要获取 VM 的公共 IP 地址，请使用 [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress)。 
 
 ```powershell
 $pipname = 'myPublicIPdestinationVM'
@@ -411,7 +411,7 @@ sudo dd if=/dev/zero of=/var/www/html/100k bs=1024 count=100
 
 ## <a name="prepare-test-on-source-vm"></a>在源 VM 上准备测试
 
-首先需要发现源 VM 的 IP 地址。  若要获取 VM 的公共 IP 地址，请使用 [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=latest)。 
+首先需要发现源 VM 的 IP 地址。  若要获取 VM 的公共 IP 地址，请使用 [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress)。 
 
 ```powershell
 $pipname = 'myPublicIPsourceVM'
@@ -475,7 +475,7 @@ hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要上述资源组及其包含的所有资源，可以使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) 命令将其删除。
+如果不再需要上述资源组及其包含的所有资源，可以使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) 命令将其删除。
 
 ```powershell
 Remove-AzResourceGroup -Name $rg.ResourceGroupName
@@ -487,7 +487,7 @@ Remove-AzResourceGroup -Name $rg.ResourceGroupName
 
 可以查看 Azure Monitor 中的指标来了解 NAT 服务的运行情况。 可以诊断可用 SNAT 端口资源耗尽等问题。  通过添加更多公共 IP 地址资源和/或公共 IP 前缀资源，可以轻松解决 SNAT 端口资源耗尽的问题。
 
-- 了解[虚拟网络 NAT](./nat-overview.md)。
+- 了解[虚拟网络 NAT](./nat-overview.md)
 - 了解 [NAT 网关资源](./nat-gateway-resource.md)。
 - 有关[使用 Azure CLI 部署 NAT 网关资源](./quickstart-create-nat-gateway-cli.md)的快速入门。
 - 有关[使用 Azure PowerShell 部署 NAT 网关资源](./quickstart-create-nat-gateway-powershell.md)的快速入门。
@@ -495,5 +495,4 @@ Remove-AzResourceGroup -Name $rg.ResourceGroupName
 
 > [!div class="nextstepaction"]
 
-<!-- Update_Description: new article about tutorial create validate nat gateway powershell -->
-<!--NEW.date: 07/13/2020-->
+<!--Update_Description: update meta properties, wording update, update link-->

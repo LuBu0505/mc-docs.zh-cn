@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: 5382c8f0793cdca6bf49095425a205b9ace8688e
-ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
+ms.openlocfilehash: fff276fa0766afe0ec87ac41117fe2e9a7732b9b
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804375"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196928"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>使用 Python 配置自动化 ML 试验
 
@@ -203,15 +203,53 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 ### <a name="primary-metric"></a>主要指标
 `primary metric` 参数决定了将在模型训练期间用于优化的指标。 你可选择的可用指标取决于所选择的任务类型，下表显示了每种任务类型的有效主要指标。
 
+选择什么主要指标来优化自动机器学习取决于许多因素。 建议首先考虑选择一个最能满足业务需求的指标。 然后考虑指标是否适用于数据集配置文件（数据大小、范围、类、分布等）。
+
 如需了解上述指标的具体定义，请参阅[了解自动化机器学习结果集](how-to-understand-automated-ml.md)。
 
 |分类 | 回归 | 时序预测
 |--|--|--
-|accuracy| spearman_correlation | spearman_correlation
-|AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
-|average_precision_score_weighted | r2_score | r2_score
-|norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
-|precision_score_weighted |
+|`accuracy`| `spearman_correlation` | `spearman_correlation`
+|`AUC_weighted` | `normalized_root_mean_squared_error` | `normalized_root_mean_squared_error`
+|`average_precision_score_weighted` | `r2_score` | `r2_score`
+|`norm_macro_recall` | `normalized_mean_absolute_error` | `normalized_mean_absolute_error`
+|`precision_score_weighted` |
+
+### <a name="primary-metrics-for-classification-scenarios"></a>分类方案的主要指标 
+
+对于非常小、类倾斜（类不平衡）非常大或预期指标值非常接近 0.0 或 1.0 的数据集，可能不会优化阈值后指标（如 `accuracy`、`average_precision_score_weighted`、`norm_macro_recall` 和 `precision_score_weighted`）。 这些情况下，主要指标最好选择 `AUC_weighted`。 自动机器学习完成后，可以根据最适合业务需求的指标选择入选的模型。
+
+| 指标 | 示例用例 |
+| ------ | ------- |
+| `accuracy` | 图像分类，情绪分析，流失预测 |
+| `AUC_weighted` | 欺诈检测，图像分类，异常情况检测/垃圾邮件检测 |
+| `average_precision_score_weighted` | 情绪分析 |
+| `norm_macro_recall` | 流失预测 |
+| `precision_score_weighted` |  |
+
+### <a name="primary-metrics-for-regression-scenarios"></a>回归方案的主要指标
+
+当预测值的范围涵盖许多数量级时，`r2_score` 和 `spearman_correlation` 等指标可以更好地表示模型的质量。 例如对于薪金估算，其中许多人的薪金为 $20k 到 $100k，但对于 $100M 范围内的一些薪金，等级会变得非常高。 
+
+这种情况下，`normalized_mean_absolute_error` 和 `normalized_root_mean_squared_error` 在处理 $20k 的预测错误时，对于薪金为 $30k 工人与薪金为 $20M 的工人的处理方式相同。 尽管现实情况下，预测 $20M 薪金中少了 $20k 结果会非常接近（很小的相对差异 0.1%），而从 $30k 中减去 $20k 结果会差得多（较大的相对差异 67%）。 当预测值的范围差不多时，`normalized_mean_absolute_error` 和 `normalized_root_mean_squared_error` 非常有用。
+
+| 指标 | 示例用例 |
+| ------ | ------- |
+| `spearman_correlation` | |
+| `normalized_root_mean_squared_error` | 价格预测（房子/产品/小费），查看分数预测 |
+| `r2_score` | 航班延迟，薪金估算，Bug 解决时间 |
+| `normalized_mean_absolute_error` |  |
+
+### <a name="primary-metrics-for-time-series-forecasting-scenarios"></a>时序预测方案的主要指标
+
+请参阅上面的回归注释。
+
+| 指标 | 示例用例 |
+| ------ | ------- |
+| `spearman_correlation` | |
+| `normalized_root_mean_squared_error` | 价格预测（趋势预测），库存优化，需求预测 |
+| `r2_score` | 价格预测（趋势预测），库存优化，需求预测 |
+| `normalized_mean_absolute_error` | |
 
 ### <a name="data-featurization"></a>数据特征化
 
@@ -383,7 +421,7 @@ run = experiment.submit(automl_config, show_output=True)
   * 属性错误：例如： `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
   
   若要解决此问题，请执行下面两个步骤之一，具体取决于你的 `AutoML` SDK 训练版本：
-    * 如果 `AutoML` SDK 训练版本高于 1.13.0，则需要 `pandas == 0.25.1` 和 `sckit-learn==0.22.1`。 如果版本不匹配，请将 scikit-learn 和/或 pandas 升级为正确的版本，如下所示：
+    * 如果 `AutoML` SDK 训练版本高于 1.13.0，则需要 `pandas == 0.25.1` 和 `scikit-learn==0.22.1`。 如果版本不匹配，请将 scikit-learn 和/或 pandas 升级为正确的版本，如下所示：
       
       ```bash
          pip install --upgrade pandas==0.25.1

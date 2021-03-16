@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 11/08/2019
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 02/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: 55fcf835886a70350b090308fef97196b8f5fe98
-ms.sourcegitcommit: a9aa7d358cd2bef2e4e35b2b720487cb22b2c461
+ms.openlocfilehash: 87186d966bd44e4c1493f1c1503461b307789cb5
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592790"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053754"
 ---
 # <a name="virtual-network-service-endpoints"></a>虚拟网络服务终结点
 
@@ -33,22 +33,23 @@ ms.locfileid: "97592790"
 
 - **[Azure 存储](../storage/common/storage-network-security.md?toc=%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** (Microsoft.Storage)：在所有 Azure 区域已推出正式版。
 - **[Azure SQL 数据库](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.Sql)：在所有 Azure 区域已推出正式版。
-- [Azure Synapse Analytics](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fvirtual-network%2ftoc.json) (*Microsoft.Sql*)：在所有 Azure 区域已推出正式版。
+- **[Azure Synapse Analytics](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fvirtual-network%2ftoc.json)** ( *Microsoft.Sql*)：通常适用于所有 Azure 区域中的专用 SQL 池（以前称为 SQL DW）。
 - **[Azure Database for PostgreSQL 服务器](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.Sql)：在可以使用数据库服务的 Azure 区域中通常可用。
 - **[Azure Database for MySQL 服务器](../mysql/howto-manage-vnet-using-portal.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.Sql)：在可以使用数据库服务的 Azure 区域中通常可用。
-- **[Azure Database for MariaDB](https://docs.azure.cn/mariadb/concepts-data-access-security-vnet)** (Microsoft.Sql)：在可以使用数据库服务的 Azure 区域中通常可用。
-- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.AzureCosmosDB)：在所有 Azure 区域已推出正式版。
+- **[Azure Database for MariaDB](../mariadb/concepts-data-access-security-vnet.md)** (Microsoft.Sql)：在可以使用数据库服务的 Azure 区域中通常可用。
+- **[Azure Cosmos DB](../cosmos-db/how-to-configure-vnet-service-endpoint.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.AzureCosmosDB)：在所有 Azure 区域已推出正式版。
 - **[Azure Key Vault](../key-vault/general/overview-vnet-service-endpoints.md)** (Microsoft.KeyVault)：在所有 Azure 区域已推出正式版。
 - **[Azure 服务总线](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fvirtual-network%2ftoc.json)** (Microsoft.ServiceBus)：在所有 Azure 区域已推出正式版。
+- **Azure 事件中心** (*Microsoft.EventHub*)：通常适用于所有 Azure 区域。
 
-    <!--Not Available on - **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md)-->
-    <!--Not Available on - **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md)-->
+    <!--NOT AVAILABLE ON [Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fvirtual-network%2ftoc.json)-->
+    <!--NOT AVAILABLE ON ../data-lake-store/data-lake-store-network-security.md?toc=%2fvirtual-network%2ftoc.json-->
+    
+- [Azure 应用服务](../app-service/app-service-ip-restrictions.md) (*Microsoft.Web*)：通常可在应用服务可用的所有 Azure 区域中使用。
+- **[Azure 认知服务](../cognitive-services/cognitive-services-virtual-networks.md?tabs=portal)** (*Microsoft.CognitiveServices*)：通常适用于认知服务适用的所有 Azure 区域。
 
-- [Azure 应用服务](https://docs.azure.cn/app-service/app-service-ip-restrictions) (*Microsoft.Web*)：通常可在应用服务可用的所有 Azure 区域中使用。
-
-    <!--Not Available on - **[Azure Cognitive Services](/cognitive-services/cognitive-services-virtual-networks?tabs=portal)-->
-
-<!--Not Available on (../container-registry/container-registry-vnet.md)-->
+<!--NOT AVAILABLE ON  **Public Preview**-->
+<!--NOT AVAILABLE ON [Azure Container Registry](../container-registry/container-registry-vnet.md)-->
 
 ## <a name="key-benefits"></a>主要优点
 
@@ -80,7 +81,7 @@ ms.locfileid: "97592790"
 
 默认情况下，无法从本地网络访问在虚拟网络中保护的 Azure 服务资源。 要允许来自本地的流量，还必须允许来自本地或 ExpressRoute 的公共（通常为 NAT）IP 地址。 可通过 Azure 服务资源的 IP 防火墙配置添加这些 IP 地址。
 
-ExpressRoute：如果在本地使用 [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fvirtual-network%2ftoc.json) 进行公共对等互连或 Azure 对等互连，则需标识所用的 NAT IP 地址。 进行公共对等互连时，每条 ExpressRoute 线路默认情况下会使用两个 NAT IP 地址。当流量进入 Azure 网络主干时，会向 Azure 服务流量应用这些地址。 进行 Azure 对等互连时，NAT IP 地址由客户或服务提供商提供。  若要允许访问服务资源，必须在资源 IP 防火墙设置中允许这些公共 IP 地址。 若要查找公共对等互连 ExpressRoute 线路 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://support.azure.cn/support/support-azure/)。 若要详细了解 ExpressRoute 公共对等互连和 Azure 对等互连的 NAT，请参阅 [ExpressRoute NAT 要求](../expressroute/expressroute-nat.md?toc=%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering)。
+ExpressRoute：如果在本地使用 [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fvirtual-network%2ftoc.json) 进行公共对等互连或 Azure 对等互连，则需标识所用的 NAT IP 地址。 进行公共对等互连时，每条 ExpressRoute 线路默认情况下会使用两个 NAT IP 地址。当流量进入 Azure 网络主干时，会向 Azure 服务流量应用这些地址。 进行 Azure 对等互连时，NAT IP 地址由客户或服务提供商提供。 若要允许访问服务资源，必须在资源 IP 防火墙设置中允许这些公共 IP 地址。 若要查找公共对等互连 ExpressRoute 线路 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://support.azure.cn/support/support-azure/)。 若要详细了解 ExpressRoute 公共对等互连和 Azure 对等互连的 NAT，请参阅 [ExpressRoute NAT 要求](../expressroute/expressroute-nat.md?toc=%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering)。
 
 ![在虚拟网络中保护 Azure 服务](./media/virtual-network-service-endpoints-overview/VNet_Service_Endpoints_Overview.png)
 
@@ -101,7 +102,7 @@ ExpressRoute：如果在本地使用 [ExpressRoute](../expressroute/expressroute
 
 - 使用服务终结点的网络安全组 (NSG)：
     - 默认情况下，NSG 允许出站 Internet 流量，并允许来自 VNet 的流量发往 Azure 服务。 此流量继续按原有方式使用服务终结点。 
-    - 如果你想要拒绝所有出站 Internet 流量并只允许发往特定 Azure 服务的流量，可以在 NSG 中使用[服务标记](security-overview.md#service-tags)来实现此目的。 可以在 NSG 规则中将受支持的 Azure 服务指定为目标，Azure 还会对每个标记下面的 IP 地址提供维护。 有关详细信息，请参阅 [NSG 的 Azure 服务标记](security-overview.md#service-tags)。 
+    - 如果你想要拒绝所有出站 Internet 流量并只允许发往特定 Azure 服务的流量，可以在 NSG 中使用[服务标记](./network-security-groups-overview.md#service-tags)来实现此目的。 可以在 NSG 规则中将受支持的 Azure 服务指定为目标，Azure 还会对每个标记下面的 IP 地址提供维护。 有关详细信息，请参阅 [NSG 的 Azure 服务标记](./network-security-groups-overview.md#service-tags)。 
 
 ### <a name="scenarios"></a>方案
 
@@ -132,7 +133,7 @@ ExpressRoute：如果在本地使用 [ExpressRoute](../expressroute/expressroute
 
 有关内置角色的详细信息，请参阅 [Azure 内置角色](../role-based-access-control/built-in-roles.md?toc=%2fvirtual-network%2ftoc.json)。 有关将特定权限分配给自定义角色的详细信息，请参阅 [Azure 自定义角色](../role-based-access-control/custom-roles.md?toc=%2fvirtual-network%2ftoc.json)。
 
-虚拟网络和 Azure 服务资源可以位于相同或不同的订阅中。 如果虚拟网络和 Azure 服务资源位于不同的订阅中，资源必须在相同的 Active Directory (AD) 租户下。 
+虚拟网络和 Azure 服务资源可以位于相同或不同的订阅中。 Azure 存储和 Azure Key Vault 等某些 Azure 服务（并非全部）还支持跨不同 Active Directory (AD) 租户的服务终结点，即虚拟网络和 Azure 服务资源可以位于不同的 Active Directory (AD) 租户。 请查看各个服务文档，了解更多信息。  
 
 ## <a name="pricing-and-limits"></a>定价和限制
 
@@ -144,11 +145,11 @@ ExpressRoute：如果在本地使用 [ExpressRoute](../expressroute/expressroute
 
 ## <a name="vnet-service-endpoint-policies"></a>VNet 服务终结点策略 
 
-使用 VNet 服务终结点策略，你可以筛选到 Azure 服务的虚拟网络流量。 此筛选器仅允许在服务终结点上使用特定的 Azure 服务资源。 服务终结点策略针对发往 Azure 服务的虚拟网络流量提供精细的访问控制。 有关详细信息，请参阅[虚拟网络服务终结点策略](https://docs.azure.cn/virtual-network/virtual-network-service-endpoint-policies-overview)。
+使用 VNet 服务终结点策略，你可以筛选到 Azure 服务的虚拟网络流量。 此筛选器仅允许在服务终结点上使用特定的 Azure 服务资源。 服务终结点策略针对发往 Azure 服务的虚拟网络流量提供精细的访问控制。 有关详细信息，请参阅[虚拟网络服务终结点策略](./virtual-network-service-endpoint-policies-overview.md)。
 
 ## <a name="faqs"></a>常见问题
 
-有关常见问题的解答，请参阅[虚拟网络服务终结点常见问题解答](/virtual-network/virtual-networks-faq#virtual-network-service-endpoints)。
+有关常见问题的解答，请参阅[虚拟网络服务终结点常见问题解答](./virtual-networks-faq.md#virtual-network-service-endpoints)。
 
 ## <a name="next-steps"></a><a name="next-steps"></a>后续步骤
 
@@ -157,9 +158,7 @@ ExpressRoute：如果在本地使用 [ExpressRoute](../expressroute/expressroute
 - [在虚拟网络中保护 Azure SQL 数据库](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fvirtual-network%2ftoc.json)
 - [在虚拟网络中保护 Azure Synapse Analytics](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fsql-data-warehouse%2ftoc.json)
 - [虚拟网络中的 Azure 服务集成](virtual-network-for-azure-services.md)
-    
-    <!--Not Available on - [Virtual Network Service Endpoint Policies](/virtual-network/virtual-network-service-endpoint-policies-overview)-->
-
+- [虚拟网络服务终结点策略](./virtual-network-service-endpoint-policies-overview.md)
 - [Azure Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vnet-2subnets-service-endpoints-storage-integration)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

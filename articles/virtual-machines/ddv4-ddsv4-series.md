@@ -12,12 +12,12 @@ ms.date: 11/16/2020
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 2c6b599175082b540d662b027947fb7e7ace71c9
-ms.sourcegitcommit: 39288459139a40195d1b4161dfb0bb96f5b71e8e
+ms.openlocfilehash: 37ad49e33876b7f8f0608fa54ade3b49c6b93704
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94590846"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053128"
 ---
 <!--Verified successfully from PG team confirmation-->
 # <a name="ddv4-and-ddsv4-series"></a>Ddv4 和 Ddsv4 系列
@@ -38,6 +38,8 @@ Ddv4 系列大小采用英特尔&reg; 至强&reg; 铂金 8272CL (Cascade Lake) �
 [实时迁移](maintenance-and-updates.md)：支持<br />
 [内存保留更新](maintenance-and-updates.md)：支持<br />
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br />
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br />
+[临时 OS 磁盘](ephemeral-os-disks.md)：支持 <br />
 <br /> 
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | <sup>**</sup> 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps | 最大 NIC 数|预期的网络带宽 (Mbps) |
@@ -67,6 +69,8 @@ Ddsv4 系列采用英特尔&reg; 至强&reg; 铂金 8272CL (Cascade Lake) 处理
 [实时迁移](maintenance-and-updates.md)：支持<br />
 [内存保留更新](maintenance-and-updates.md)：支持<br />
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br />
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br />
+[临时 OS 磁盘](ephemeral-os-disks.md)：支持 <br />
 <br /> 
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | <sup>**</sup> 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数|预期的网络带宽 (Mbps) |
@@ -88,11 +92,11 @@ Ddsv4 系列采用英特尔&reg; 至强&reg; 铂金 8272CL (Cascade Lake) 处理
 - [常规用途](sizes-general.md)
 - [内存优化](sizes-memory.md)
     
-    <!--Not Avaialble on - [Storage optimized](sizes-storage.md)-->
+    <!--NOT AVAILABLE ON - [Storage optimized](sizes-storage.md)-->
     
 - [GPU 优化](sizes-gpu.md)
     
-    <!--Not Avaialble on - [High performance compute](sizes-hpc.md)-->
+    <!--NOT AVAILABLE ON - [High performance compute](sizes-hpc.md)-->
     
 - [前几代](sizes-previous-gen.md)
 
@@ -100,10 +104,10 @@ Ddsv4 系列采用英特尔&reg; 至强&reg; 铂金 8272CL (Cascade Lake) 处理
 
 有关磁盘类型的详细信息：[磁盘类型](./disks-types.md)
 
-<!--Not Available on FEATURE ultra-disk-->
+<!--NOT AVAILABLE on FEATURE ultra-disk-->
 
 ## <a name="next-steps"></a>后续步骤
 
 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

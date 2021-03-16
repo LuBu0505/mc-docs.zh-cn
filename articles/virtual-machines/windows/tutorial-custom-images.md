@@ -7,22 +7,22 @@ ms.topic: tutorial
 ms.workload: infrastructure
 origin.date: 05/01/2020
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 4ac09d8df5d42a7f94f3a598dbd0275dc72e11f1
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: ab571ec849e788c8acce41342ec2bdee548f69d3
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105732"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055246"
 ---
 <!--Verified Successfully-->
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建 Windows VM 映像
 
-映像可用于启动部署并确保多个 VM 的一致性。 在本教程中，我们使用 PowerShell 创建自己的 Azure 虚拟机专用化映像，并将其存储在共享映像库中。 学习如何：
+映像可用于启动部署并确保多个 VM 的一致性。 在本教程中，我们使用 PowerShell 创建自己的 Azure 虚拟机专用化映像，并将其存储在共享映像库中。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建共享映像库
@@ -39,7 +39,7 @@ ms.locfileid: "93105732"
 
 ## <a name="overview"></a>概述
 
-[共享映像库](shared-image-galleries.md)大大简化了整个组织中的自定义映像共享。 自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动配置，例如预加载应用程序、应用程序配置和其他 OS 配置。 
+[共享映像库](../shared-image-galleries.md)大大简化了整个组织中的自定义映像共享。 自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动配置，例如预加载应用程序、应用程序配置和其他 OS 配置。 
 
 共享映像库可让你与他人共享自定义 VM 映像。 选择要共享哪些映像，要在哪些区域中共享，以及希望与谁共享它们。 
 
@@ -51,7 +51,7 @@ ms.locfileid: "93105732"
 
 <!--Not Available on Azure Cloud Cloud--> 
 
-打开 Azure Powershell 控制台，以管理员权限运行下面列出的脚本。
+打开 Azure Powershell 控制台，并以管理员权限运行下面列出的脚本。
 
 ## <a name="get-the-vm"></a>获取 VM
 
@@ -91,7 +91,7 @@ $gallery = New-AzGallery `
 
 ## <a name="create-an-image-definition"></a>创建映像定义 
 
-映像定义为映像创建一个逻辑分组。 映像定义用于管理在其中创建的映像版本的相关信息。 映像定义名称可能包含大写或小写字母、数字、点、短划线和句点。 若要详细了解可以为映像定义指定的值，请参阅[映像定义](./shared-image-galleries.md#image-definitions)。
+映像定义为映像创建一个逻辑分组。 它们用于管理有关映像版本的信息，这些版本是在其中创建的。 映像定义名称可能包含大写或小写字母、数字、点、短划线和句点。 若要详细了解可以为映像定义指定的值，请参阅[映像定义](../shared-image-galleries.md#image-definitions)。
 
 使用 [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) 创建映像定义。 在此示例中，库映像名为 myGalleryImage，它是为专用化映像创建的。 
 
@@ -112,7 +112,7 @@ $galleryImage = New-AzGalleryImageDefinition `
 
 使用 [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) 从 VM 创建映像版本。 
 
-允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式： *MajorVersion* . *MinorVersion* . *Patch* 。
+允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
 <!--MOONCAKE: EAST US map to China East, South Central US to China North-->
 
@@ -207,8 +207,7 @@ Remove-AzResourceGroup -Name myResoureceGroup
 ```
 
 <!--Not Available on ## Azure Image Builder-->
-
-<!--Not Available on [Azure VM Image Builder](/virtual-machines/windows/image-builder-overview)-->
+<!--NOT AVAILABLE ON [Azure VM Image Builder](../image-builder-overview.md)-->
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -226,4 +225,4 @@ Remove-AzResourceGroup -Name myResoureceGroup
 > [!div class="nextstepaction"]
 > [创建高度可用的 VM](tutorial-availability-sets.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

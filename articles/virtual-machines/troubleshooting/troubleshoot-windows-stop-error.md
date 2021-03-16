@@ -11,16 +11,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 origin.date: 06/26/2020
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 61c3db3ab4d38f73992b669cfc9289fc66222873
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: efef575aee59d0ce7b8ccacff5ae22acf5e0a5d7
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104710"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054313"
 ---
 # <a name="windows-stop-error---status-no-memory"></a>Windows 停止错误 - 状态无内存
 
@@ -30,13 +30,13 @@ ms.locfileid: "93104710"
 
 使用[启动诊断](./boot-diagnostics.md)查看虚拟机 (VM) 的屏幕截图时，你将看到屏幕截图显示错误代码：`0xC0000017`。 根据你正在运行的 Windows 版本，你可能会看到此代码显示在在“Windows 引导管理器”或“恢复”屏幕中 。
 
-   Windows 引导管理器
+Windows 引导管理器
 
-   ![Windows 引导管理器指示“Windows 未能启动。 原因可能是最近更改了硬件或软件”。 向下滚动，你将看到状态代码 0xC0000017 以及指示“无法加载应用程序或操作系统，因为所需的文件丢失或包含错误”的信息。](./media/troubleshoot-windows-stop-error/1.png)
+![Windows 引导管理器指示“Windows 未能启动。 原因可能是最近更改了硬件或软件”。 向下滚动，你将看到状态代码 0xC0000017 以及指示“无法加载应用程序或操作系统，因为所需的文件丢失或包含错误”的信息。](./media/troubleshoot-windows-stop-error/1.png)
 
-   “恢复”屏幕
+“恢复”屏幕
 
-   ![“恢复”屏幕指示“你的电脑/设备需要修复。 没有足够的内存可用于创建 ramdisk 设备”。 你应该还会看到错误代码 0xC0000017。](./media/troubleshoot-windows-stop-error/2.png)
+![“恢复”屏幕指示“你的电脑/设备需要修复。 没有足够的内存可用于创建 ramdisk 设备”。 你应该还会看到错误代码 0xC0000017。](./media/troubleshoot-windows-stop-error/2.png)
 
 ## <a name="cause"></a>原因
 
@@ -44,7 +44,10 @@ ms.locfileid: "93104710"
 
 ## <a name="solution"></a>解决方案
 
-### <a name="process-overview"></a>流程概述：
+### <a name="process-overview"></a>过程概述：
+
+> [!TIP]
+> 如果有 VM 的最新备份，则可以尝试[从备份还原 VM](../../backup/backup-azure-arm-restore-vms.md)，以解决启动问题。
 
 1. 创建并访问修复 VM
 1. 释放磁盘上的空间
@@ -99,9 +102,9 @@ ms.locfileid: "93104710"
 1. 一旦磁盘大小达到 1 TB，你需要执行磁盘清理。 可使用[磁盘清理工具](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup)来释放空间。
 1. 打开提升的命令提示符（以管理员身份运行）实例，并在驱动器上执行碎片整理：
 
-    ``
+    ```
     defrag <LETTER ASSIGNED TO THE OS DISK>: /u /x /g
-    ``
+    ```
 
     - 根据碎片级别，碎片整理可能需要几个小时。
     - 在该命令中，用 OS 磁盘驱动器号（例如驱动器 F:）替换 `<LETTER ASSIGNED TO THE OS DISK>`。
@@ -111,18 +114,18 @@ ms.locfileid: "93104710"
 1. 打开提升的命令提示符（以管理员身份运行）。
 1. 用以下命令在引导配置文件中查询错误内存标志：
 
-    ``
+    ```
     bcdedit /store <LETTER ASSIGNED TO THE OS DISK>:\boot\bcd /enum {badmemory}
-    ``
+    ```
 
     - 在该命令中，用 OS 磁盘驱动器号（例如驱动器 F:）替换 `<LETTER ASSIGNED TO THE OS DISK>`。
 
 1. 如果查询未显示错误的内存块，请跳至下一任务。 否则，请继续执行步骤 4。
 1. 如果系统识别到错误的内存块，你应使用以下命令将其删除，这些块会阻止创建 ramdisk：
 
-    ``
+    ```
     bcdedit /store <LETTER ASSIGNED TO THE OS DISK>:\boot\bcd /deletevalue {badmemory} badmemorylist
-    ``
+    ```
 
     - 在该命令中，用 OS 磁盘驱动器号（例如驱动器 F:）替换 `<LETTER ASSIGNED TO THE OS DISK>`。
 
@@ -135,7 +138,7 @@ ms.locfileid: "93104710"
 1. 在 Windows Search 中，输入 regedit 并打开“注册表编辑器”应用程序。
 1. 在“注册表编辑器”中，突出显示 HKEY_LOCAL_MACHINE 项，然后从菜单中选择“文件\加载配置单元…” 。
 
-    :::image type="content" source="./media/troubleshoot-windows-stop-error/4.png" alt-text="注册表编辑器中的加载配置单元菜单。":::
+    :::image type="content" source="./media/troubleshoot-windows-stop-error/4.png" alt-text="注册表编辑器中的“加载配置单元”菜单。":::
 
 1. 在“加载配置单元”对话框中，选择 \windows\system32\config\SYSTEM 并单击“打开”。
     1. 系统将提示你输入名称，你应输入 BROKENSYSTEM。 在你执行故障排除时，此名称有助于区分受影响的配置单元。
@@ -151,7 +154,7 @@ ms.locfileid: "93104710"
 
 ### <a name="enable-the-serial-console-and-memory-dump-collection"></a>启用串行控制台和内存转储收集
 
-**建议** ：在重新生成 VM 之前，通过运行以下脚本来启用串行控制台和内存转储收集：
+**建议**：在重新生成 VM 之前，通过运行以下脚本来启用串行控制台和内存转储收集：
 
 若要启用内存转储收集和串行控制台，请运行以下脚本：
 
@@ -166,7 +169,54 @@ ms.locfileid: "93104710"
 
     - 在该命令中，将 `<BOOT PARTITON>` 替换为附加磁盘中包含引导文件夹的分区驱动器号。
 
-        :::image type="content" source="./media/troubleshoot-windows-stop-error/5.png" alt-text="注册表编辑器中的加载配置单元菜单。" ::: /v NMICrashDump /t REG_DWORD /d 1 /f 
+        :::image type="content" source="./media/troubleshoot-windows-stop-error/5.png" alt-text="该输出列出了第 1 代 VM 中的 BCD 存储，标识符编号在 Windows 引导加载程序下方列出。":::
+
+    1. 对于第 2 代 VM，请输入以下命令，并记下列出的标识符：
+
+        ```
+        bcdedit /store <LETTER OF THE EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /enum
+        ```
+
+   - 在该命令中，将 `<LETTER OF THE EFI SYSTEM PARTITION>` 替换为 EFI 系统分区的驱动器号。
+   - 这可能有助于启动“磁盘管理”控制台以识别标记为 EFI 系统分区的相应系统分区。
+   - 标识符可以是唯一的 GUID，也可以是默认的 bootmgr。
+
+1. 运行以下命令以启用串行控制台：
+
+    ```
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON 
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
+    ```
+
+    - 在该命令中，将 `<VOLUME LETTER WHERE THE BCD FOLDER IS>` 替换为 BCD 文件夹的驱动器号。
+    - 在该命令中，将 `<BOOT LOADER IDENTIFIER>` 替换为在上一步骤中找到的标识符。
+
+1. 验 OS 磁盘上的可用空间是否大于 VM 上的内存大小 (RAM)。
+
+    如果 OS 磁盘上没有足够的空间，请更改将要创建内存转储文件的位置，并将该位置引用到具有足够可用空间的 VM 上附加的任何数据磁盘。 若要更改位置，请在以下命令中将 %SystemRoot% 替换为数据磁盘的驱动器号（例如，驱动器 F:）。
+
+    用于启用 OS 转储的建议配置：
+
+    **从损坏的 OS 磁盘加载注册表配置单元：**
+
+    ```
+    REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM
+    ```
+
+    **在 ControlSet001 上启用：**
+
+    ```
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f 
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f 
+    ```
+
+    **在 ControlSet002 上启用：**
+
+    ```
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f 
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f 
     ```
 
     **卸载损坏的 OS 磁盘：**
@@ -179,4 +229,4 @@ ms.locfileid: "93104710"
 
 使用 [VM 修复命令的步骤 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重新生成 VM。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

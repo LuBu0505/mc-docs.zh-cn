@@ -1,0 +1,136 @@
+---
+title: 保护独立的托管服务帐户 | Azure Active Directory
+description: 用于保护独立的托管服务帐户的指南。
+services: active-directory
+author: BarbaraSelden
+manager: daveba
+ms.service: active-directory
+ms.workload: identity
+ms.subservice: fundamentals
+ms.topic: conceptual
+ms.date: 02/20/2021
+ms.author: v-junlch
+ms.reviewer: ajburnle
+ms.custom: it-pro, seodec18
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ef27c1ce42d5a20809fb07f37bc994e48c71950a
+ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101751712"
+---
+# <a name="securing-standalone-managed-service-accounts"></a>保护独立的托管服务帐户
+
+独立的托管服务帐户 (sMSA) 是用于保护服务器上运行的一个或多个服务的托管域帐户。 它们不能在多个服务器之间重复使用。 sMSA 提供了自动密码管理、简化的服务主体名称 (SPN) 管理以及将管理权委托给其他管理员的功能。 
+
+在 Active Directory 中，sMSA 与运行服务的特定服务器相关联。 可以在 Microsoft 管理控制台的“Active Directory 用户和计算机”管理单元中查找这些帐户。
+
+![显示托管服务帐户 OU 的“Active Directory 用户和计算机”管理单元的屏幕截图。](./media/securing-service-accounts/secure-standalone-msa-image-1.png)
+
+托管服务帐户随 Windows Server 2008R2 Active Directory 架构引入，并且要求最低 OS 级别为 Windows Server 2008R2。 
+
+## <a name="benefits-of-using-smsas"></a>使用 sMSA 的好处
+
+与用作服务帐户的用户帐户相比，sMSA 提供了更高的安全性，同时又通过以下方式降低了管理开销：
+
+* 设置强密码。 sMSA 使用 240 字节随机生成的复杂密码。 sMSA 密码的复杂性和长度最大程度地降低了服务受到暴力破解或字典攻击的可能性。
+
+* 定期轮换密码。 Windows 每 30 天自动更改一次 sMSA 密码。 服务和域管理员无需计划密码更改或管理相关停机时间。
+
+* 简化 SPN 管理。 如果域功能级别 (DFL) 为 Windows Server 2008 R2，则系统会自动更新服务主体名称。 例如，在以下情况下，将自动更新服务主体名称：
+
+   * 主机帐户已重命名。 
+
+   * 主机的 DNS 名称已更改。
+
+   * 使用 [PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-adserviceaccount?view=win10-ps) 添加或删除其他 sam-accountname 或 dns-hostname 参数时
+
+## <a name="when-to-use-smsas"></a>何时使用 sMSA
+
+sMSA 可简化管理和安全任务。 将一个或多个服务部署到单台服务器时，如果无法使用 gMSA，则可使用 sMSA。 
+
+> [!NOTE] 
+> 虽然可以将 sMSA 用于多个服务，但出于审核目的，建议为每个服务添加自己的标识。 
+
+如果软件创建者无法告知你该软件是否可以使用 MSA，你必须测试应用程序。 为此，需要创建一个测试环境，并确保该环境可以访问所有所需资源。 有关分步说明，请参阅[创建并安装 sMSA](https://docs.microsoft.com/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting)。
+
+### <a name="assess-security-posture-of-smsas"></a>评估 sMSA 的安全状况
+
+sMSA 本质上比标准用户帐户更安全，后者需要持续的密码管理。 但是，考虑将 sMSA 的访问范围视为其整体安全状况的一部分至关重要。
+
+下表显示了如何减少 sMSA 造成的潜在安全问题。
+
+| 安全问题| 缓解措施 |
+| - | - |
+| sMSA 是特权组的成员|从提升的权限组（例如域管理员）中删除 sMSA。 <br> 使用最低特权模型并仅向 sMSA 授予运行其服务所需的权限。 <br> 如果不确定所需的权限，请咨询服务创建者。 |
+| sMSA 具有对敏感资源的读/写权限。|审核对敏感资源的访问。 将审核日志存档到 SIEM（Azure Log Analytics 或 Azure Sentinel）进行分析。 <br> 如果检测到不需要的访问级别，请修正资源权限。 |
+| 默认情况下，sMSA 密码滚动更新频率为 30 天| 可以根据企业安全要求使用组策略来优化持续时间。 <br> *可以使用以下路径设置密码到期期限。 <br>Computer Configuration\Policies\Windows Settings\Security Settings\Security Options\Domain member: Maximum machine account password age |
+
+
+
+### <a name="challenges-with-smsas"></a>sMSA 的挑战
+
+与 sMSA 相关的挑战如下：
+
+| 挑战| 缓解措施 |
+| - | - |
+| 它们可用于单个服务器。| 如果需要跨服务器使用帐户，请使用 gMSA。 |
+| 它们不能跨域使用。| 如果需要跨域使用帐户，请使用 gMSA。 |
+| 并非所有应用程序都支持 sMSA。| 如果可能，请使用 gMSA。 否则，请使用标准用户帐户或应用程序创建者建议的计算机帐户。 |
+
+
+## <a name="find-smsas"></a>查找 sMSA
+
+在任何域控制器上，运行 DSA.msc 并展开托管服务帐户容器以查看所有 sMSA。 
+
+以下 PowerShell 命令将返回 Active Directory 域中的所有 sMSA 和 gMSA。 
+
+`Get-ADServiceAccount -Filter *`
+
+以下命令将仅返回 Active Directory 域中的 sMSA。
+
+`Get-ADServiceAccount -Filter * | where { $_.objectClass -eq "msDS-ManagedServiceAccount" }`
+
+## <a name="manage-smsas"></a>管理 sMSA
+
+可以使用以下 Active Directory PowerShell cmdlet 来管理 sMSA：
+
+`Get-ADServiceAccount`
+
+` Install-ADServiceAccount`
+
+` New-ADServiceAccount`
+
+` Remove-ADServiceAccount`
+
+`Set-ADServiceAccount`
+
+`Test-ADServiceAccount`
+
+`Ininstall-ADServiceAccount`
+
+## <a name="move-to-smsas"></a>移至 sMSA
+
+如果应用程序服务支持 sMSA 但不支持 gMSA，并且当前正在对安全性上下文使用用户帐户或计算机帐户，请在服务器上[创建并安装 sMSA](https://docs.microsoft.com/archive/blogs/askds/managed-service-accounts-understanding-implementing-best-practices-and-troubleshooting)。 
+
+理想情况下，将资源移到 Azure，并使用 Azure 托管标识或服务主体。
+
+ 
+
+## <a name="next-steps"></a>后续步骤
+请参阅以下文章，了解如何保护服务帐户
+
+* [本地服务帐户简介](service-accounts-on-premises.md)
+
+* [保护组托管服务帐户](service-accounts-group-managed.md)
+
+* [保护独立的托管服务帐户](service-accounts-standalone-managed.md)
+
+* [保护计算机帐户](service-accounts-computer.md)
+
+* [保护用户帐户](service-accounts-user-on-premises.md)
+
+* [管理本地服务帐户](service-accounts-govern-on-premises.md)
+
+ 

@@ -2,18 +2,18 @@
 title: 用于部署的链接模板
 description: 介绍如何使用 Azure 资源管理器模板（ARM 模板）中的链接模板创建一个模块化的模板解决方案。 演示如何传递参数值、指定参数文件和动态创建的 URL。
 ms.topic: conceptual
-origin.date: 01/20/2021
+origin.date: 01/26/2021
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 27934516331907b14c47e659b355f62e260c4919
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 5b2c2e533681ae8939df9a1940d284dea0edc543
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063557"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055284"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
@@ -117,6 +117,10 @@ ms.locfileid: "99063557"
   },
   ...
 ```
+
+> [!NOTE]
+>
+> 当作用域设置为 `outer` 时，对于已在嵌套模板中部署的资源，无法在嵌套模板的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中部署的资源的值，请使用 `inner` 作用域或将嵌套模板转换为链接模板。
 
 以下模板演示了如何根据作用域对模板表达式进行求解。 它包含一个名为 `exampleVar` 的变量，父模板和嵌套模板中都定义了此变量。 它返回此变量的值。
 
@@ -406,10 +410,6 @@ ms.locfileid: "99063557"
 }
 ```
 
-> [!NOTE]
->
-> 当作用域设置为 `outer` 时，对于已在嵌套模板中部署的资源，无法在嵌套模板的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中部署的资源的值，请使用 `inner` 作用域或将嵌套模板转换为链接模板。
-
 ## <a name="linked-template"></a>链接的模板
 
 若要链接某个模板，请向主模板中添加一个部署资源。 在 `templateLink` 属性中，指定要包括的模板的 URI。 以下示例链接到存储帐户中的模板。
@@ -493,7 +493,6 @@ ms.locfileid: "99063557"
         "contentVersion": "1.0.0.0"
       },
       "parameters": {
-        "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
         "storageAccountName": {
           "value": "[parameters('storageAccountName')]"
         }
@@ -504,6 +503,91 @@ ms.locfileid: "99063557"
 ```
 
 不能同时使用内联参数和指向参数文件的链接。 同时指定 `parametersLink` 和 `parameters` 时，部署将失败，并出现错误。
+
+### <a name="use-relative-path-for-linked-templates"></a>为链接模板使用相对路径
+
+使用 `Microsoft.Resources/deployments` 的 `relativePath` 属性可以更轻松地创作链接模板。 可以使用此属性在相对于父级的某个位置部署远程链接模板。 此功能要求暂存所有模板文件并使其可通过远程 URI（例如 GitHub 或 Azure 存储帐户）进行访问。 通过 Azure PowerShell 或 Azure CLI 使用 URI 调用主模板时，子部署 URI 是父级和 relativePath 的组合。
+
+> [!NOTE]
+> 当创建 templateSpec 时，`relativePath` 属性引用的任何模板都将通过 Azure PowerShell 或 Azure CLI 打包在 templateSpec 资源中。 它不要求暂存文件。 有关详细信息，请参阅[创建具有链接模板的模板规范](./template-specs.md#create-a-template-spec-with-linked-templates)。
+
+假设文件夹结构如下所示：
+
+:::image type="content" source="./media/linked-templates/resource-manager-linked-templates-relative-path.png" alt-text="资源管理器链接模板相对路径":::
+
+以下模板展示了 mainTemplate.json 如何部署上图中所示的 nestedChild.json。
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "functions": [],
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "childLinked",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "children/nestedChild.json"
+        }
+      }
+    }
+  ],
+  "outputs": {}
+}
+```
+
+在以下部署中，上面的模板中链接模板的 URI 是 **https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/linked-template-relpath/children/nestedChild.json** 。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name linkedTemplateWithRelativePath `
+  -ResourceGroupName "myResourceGroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/linked-template-relpath/mainTemplate.json"
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --name linkedTemplateWithRelativePath \
+  --resource-group myResourceGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/linked-template-relpath/mainTemplate.json"
+```
+
+---
+
+若要使用在 Azure 存储帐户中存储的相对路径来部署链接模板，请使用 `QueryString`/`query-string` 参数指定要与 TemplateUri 参数一起使用的 SAS 令牌。 只有 Azure CLI 2.18 版或更高版本和 Azure PowerShell 5.4 版或更高版本支持此参数。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name linkedTemplateWithRelativePath `
+  -ResourceGroupName "myResourceGroup" `
+  -TemplateUri "https://stage20210126.blob.core.chinacloudapi.cn/template-staging/mainTemplate.json" `
+  -QueryString $sasToken
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --name linkedTemplateWithRelativePath \
+  --resource-group myResourceGroup \
+  --template-uri "https://stage20210126.blob.core.chinacloudapi.cn/template-staging/mainTemplate.json" \
+  --query-string $sasToken
+```
+
+---
+
+请确保 QueryString 中没有前导“？”。 在组装部署的 URI 时，部署会添加一个“？”。
 
 ## <a name="template-specs"></a>模板规格
 

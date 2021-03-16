@@ -3,14 +3,14 @@ title: 使用顾问提高 Azure 应用的性能
 description: 使用 Azure 顾问中的性能建议可提高业务关键型应用程序的速度和响应能力。
 ms.topic: article
 origin.date: 01/29/2019
-ms.date: 02/03/2021
+ms.date: 03/04/2021
 ms.author: v-johya
-ms.openlocfilehash: 420c80df07d37cd3aca7294836a9d3829218e7f6
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: 724daf9321333f62d4eff690905bc41ac8fa8bae
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579610"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197111"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>使用 Azure 顾问提高 Azure 应用程序的性能
 
@@ -90,7 +90,7 @@ Azure 顾问可检测 Azure Synapse Analytics 表是否具有较高的缓存利�
 顾问可识别使用经典部署模型的任何独立存储帐户，并建议迁移到资源管理器部署模型。
 
 > [!NOTE]
-> Azure Monitor 中的经典警报已于 2019 年 8 月停用。 建议升级经典存储帐户以使用资源管理器在新平台中保留警报功能。 
+> Azure Monitor 中的经典警报已于 2019 年 8 月停用。 建议升级经典存储帐户以使用资源管理器在新平台中保留警报功能。 有关详细信息，请参阅[经典警报停用](../azure-monitor/alerts/monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)。
 
 ## <a name="design-your-storage-accounts-to-prevent-reaching-the-maximum-subscription-limit"></a>设计存储帐户，防止达到最大订阅数限制
 

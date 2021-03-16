@@ -4,17 +4,16 @@ description: 使用 Linux VM 上的模拟 TPM 来测试 Azure IoT Edge 的 Azure
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-origin.date: 06/30/2020
-ms.date: 11/13/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 107e32d2a3c4a3d06c244ab139050e54218468e9
-ms.sourcegitcommit: 9438c9db77338cecacf37d2fc178e757df9de83d
+ms.openlocfilehash: 7c49243a2bf45e30d77ce4bdb2f3281476550f4c
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94595200"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196902"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>在 Linux 上使用 TPM 创建和预配 IoT Edge 设备
 
@@ -139,22 +138,22 @@ ms.locfileid: "94595200"
 
 在 Azure 中创建 IoT 中心设备预配服务的新实例，并将其链接到 IoT 中心。 可以遵照[设置 IoT 中心 DPS](../iot-dps/quick-setup-auto-provision.md) 中的说明操作。
 
-运行设备预配服务后，从概述页复制“ID 范围”的值。 配置 IoT Edge 运行时时，需要使用此值。
+运行设备预配服务后，从概述页复制“ID 范围”的值。  配置 IoT Edge 运行时时，需要使用此值。
 
 ## <a name="create-a-dps-enrollment"></a>创建 DPS 注册
 
 从虚拟机中检索预配信息，并使用该信息在设备预配服务中创建个人注册。
 
-在 DPS 中创建注册时，可以声明“初始设备孪生状态”。 在设备孪生中可以设置标记，以便按解决方案中所需的任何指标（例如区域、环境、位置或设备类型）将设备分组。 这些标记用于创建[自动部署](how-to-deploy-at-scale.md)。
+在 DPS 中创建注册时，可以声明“初始设备孪生状态”。  在设备孪生中可以设置标记，以便按解决方案中所需的任何指标（例如区域、环境、位置或设备类型）将设备分组。 这些标记用于创建[自动部署](how-to-deploy-at-scale.md)。
 
 > [!TIP]
 > 在 Azure CLI 中，可以创建[注册](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment)并使用“edge-enabled”标志来指定某个设备是 IoT Edge 设备。
 
 1. 在 [Azure 门户](https://portal.azure.cn)中，导航到 IoT 中心设备预配服务的实例。
 
-2. 在“设置”下，选择“管理注册”。 
+2. 在“设置”下，选择“管理注册”。  
 
-3. 选择“添加个人注册”，然后完成以下步骤以配置注册：  
+3. 选择“添加个人注册”，然后完成以下步骤以配置注册：   
 
    1. 对于“机制”，请选择“TPM”。 
 
@@ -206,7 +205,11 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
      attestation:
        method: "tpm"
        registration_id: "<REGISTRATION_ID>"
+   # always_reprovision_on_startup: true
+   # dynamic_reprovisioning: false
    ```
+
+   （可选）使用 `always_reprovision_on_startup` 或 `dynamic_reprovisioning` 行来配置设备的重新预配行为。 如果设备设置为在启动时重新预配，它将始终尝试先使用 DPS 进行预配，如果失败，则回退到预配备份。 如果设备设置为动态重新预配自身，则 IoT Edge 将重启，并在检测到重新预配事件时重新预配。 有关详细信息，请参阅 [IoT 中心设备重新预配概念](../iot-dps/concepts-device-reprovision.md)。
 
 1. 将 `scope_id` 和 `registration_id` 的值更新为你的 DPS 和设备信息。
 

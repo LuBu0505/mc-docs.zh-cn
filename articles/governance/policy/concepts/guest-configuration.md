@@ -3,15 +3,15 @@ title: 了解如何审核虚拟机的内容
 description: 了解 Azure Policy 如何使用来宾配置客户端审核虚拟机内部的设置。
 origin.date: 01/14/2021
 author: rockboyfor
-ms.date: 02/08/2021
+ms.date: 03/01/2021
 ms.author: v-yeche
 ms.topic: conceptual
-ms.openlocfilehash: 24eb848db96a3a14f17e61453a0bec15c3c84e77
-ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
+ms.openlocfilehash: 38b2182eac99431967f2bd564a6525779cab4e7f
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580461"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196583"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -80,9 +80,9 @@ Azure Policy 可以审核 Azure 中计算机内部的设置。
 
 ## <a name="network-requirements"></a>网络要求
 
-Azure 中的虚拟机可以使用其本地网络适配器与来宾配置服务通信。
+Azure 中的虚拟机可以使用其本地网络适配器或专用链接与来宾配置服务通信。
 
-<!--NOT AVAILABLE ON  Azure Arc-->
+<!--NOT AVAILABLE on FEATURE Azure Arc-->
 
 ### <a name="communicate-over-virtual-networks-in-azure"></a>通过 Azure 中的虚拟网络进行通信
 
@@ -136,11 +136,15 @@ Azure Policy 中的某个计划会按照“基线”审核操作系统设置。 
 
 <!--NOT AVAILABLE ON [Azure Arc for servers](../../../azure-arc/servers/overview.md)-->
 
+## <a name="troubleshooting-guest-configuration"></a>来宾配置故障排除
+
+有关对来宾配置进行故障排除的详细信息，请参阅 [Azure Policy 故障排除](../troubleshoot/general.md)。
+
 ### <a name="multiple-assignments"></a>多个分配
 
 来宾配置策略定义目前仅支持为每台计算机分配相同的来宾分配，即使 Policy 分配使用不同的参数，也是如此。
 
-## <a name="client-log-files"></a>客户端日志文件
+### <a name="client-log-files"></a>客户端日志文件
 
 来宾配置扩展将日志文件写入以下位置：
 
@@ -175,6 +179,15 @@ logPath=/var/lib/GuestConfig/gc_agent_logs/gc_agent.log
 egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCManagedEngine' $logPath | tail
 ```
 
+### <a name="client-files"></a>客户端文件
+
+来宾配置客户端会将内容包下载到计算机中并提取其中内容。
+若要验证已下载和存储的内容，请查看下面给出的文件夹位置。
+
+Windows： `c:\programdata\guestconfig\configurations`
+
+Linux：`/var/lib/guestconfig/configurations`
+
 ## <a name="guest-configuration-samples"></a>来宾配置示例
 
 来宾配置内置策略示例在以下位置提供：
@@ -193,4 +206,5 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 - 了解如何[获取符合性数据](../how-to/get-compliance-data.md)。
 - 了解如何[修正不符合的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。
-  <!--Update_Description: update meta properties, wording update, update link-->
+
+<!--Update_Description: update meta properties, wording update, update link-->

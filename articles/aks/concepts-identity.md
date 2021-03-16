@@ -4,17 +4,17 @@ description: 了解 Azure Kubernetes 服务 (AKS) 中的访问和标识，包括
 services: container-service
 ms.topic: conceptual
 origin.date: 07/07/2020
-ms.date: 01/11/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 author: rockboyfor
 ms.author: v-yeche
-ms.openlocfilehash: 4e208dfa387c68288ab0b28586263219ddfad948
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 60a5e368b11cb2e3c592d68abf593504d54a4fff
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023134"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053049"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的访问和标识选项
 
@@ -151,7 +151,7 @@ Azure RBAC 是在 [Azure 资源管理器](../azure-resource-manager/management/o
 
 完全操作 AKS 群集需要两个级别的访问权限： 
 1. [访问 Azure 订阅中的 AKS 资源](#azure-rbac-to-authorize-access-to-the-aks-resource)。 借助此过程，可以使用 AKS API 来控制群集缩放或升级，还可以拉取 kubeconfig。
-2. 访问 Kubernetes API。 此访问通过 [Kubernetes RBAC](#kubernetes-role-based-access-control-kubernetes-rbac) 进行控制（传统方式），或通过[将 Azure RBAC 与 AKS 集成以实现 Kubernetes 授权](#azure-rbac-for-kubernetes-authorization-preview)来进行控制。
+2. 访问 Kubernetes API。 此访问通过 [Kubernetes RBAC](#kubernetes-role-based-access-control-kubernetes-rbac) 进行控制（传统方式），或通过[将 Azure RBAC 与 AKS 集成以实现 Kubernetes 授权](#azure-rbac-for-kubernetes-authorization-preview)来进行控制
 
 ### <a name="azure-rbac-to-authorize-access-to-the-aks-resource"></a>使用 Azure RBAC 授予对 AKS 资源的访问权限
 
@@ -176,6 +176,8 @@ Azure RBAC 是在 [Azure 资源管理器](../azure-resource-manager/management/o
 
 例如，使用此功能，你不仅可以向用户授予对订阅中的 AKS 资源的权限，而且还可以设置并授予用户在每个群集中将拥有的对 Kubernetes API 的访问进行控制的角色和权限。 例如，你可以在订阅范围内授予 `Azure Kubernetes Service RBAC Viewer` 角色，其接收人将能够列出和获取所有群集中的所有 Kubernetes 对象，但不能修改它们。
 
+<!--NOT AVAILABLE ON [see here](manage-azure-rbac.md)-->
+
 #### <a name="built-in-roles"></a>内置角色
 
 AKS 提供以下四个内置角色。 它们类似于 [Kubernetes 内置角色](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)，但有一些不同之处，例如支持 CRD。 有关每个内置角色允许的操作的完整列表，请参阅[此文](../role-based-access-control/built-in-roles.md)。
@@ -186,8 +188,6 @@ AKS 提供以下四个内置角色。 它们类似于 [Kubernetes 内置角色](
 | Azure Kubernetes 服务 RBAC 写入者 | 允许对命名空间中的大多数对象进行读/写访问。 此角色不允许查看或修改角色或角色绑定。 但是，此角色允许以命名空间中任何 ServiceAccount 的身份访问 `Secrets` 和运行 Pod，因此可用于获取命名空间中任何 ServiceAccount 的 API 访问级别。 |
 | Azure Kubernetes 服务 RBAC 管理员  | 允许要在命名空间内授予的管理员访问权限。 允许对命名空间（或群集范围）中的大多数资源进行读/写访问，包括在命名空间内创建角色和角色绑定。 此角色不允许对资源配额或命名空间本身进行写入访问。 |
 | Azure Kubernetes 服务 RBAC 群集管理员  | 允许超级用户访问权限（对任何资源执行任何操作）。 它提供对群集中每个资源和所有命名空间的完全控制。 |
-
-<!--Not Available on [here](manage-azure-rbac.md)-->
 
 ## <a name="summary"></a>摘要
 
@@ -210,7 +210,7 @@ AKS 提供以下四个内置角色。 它们类似于 [Kubernetes 内置角色](
 - 若要开始使用 Azure AD 和 Kubernetes RBAC，请参阅[将 Azure Active Directory 与 AKS 集成][aks-aad]。
 - 有关相关的最佳做法，请参阅[在 AKS 中进行身份验证和授权的最佳做法][operator-best-practices-identity]。
 
-    <!--Not Available on  [Use Azure RBAC to authorize access within the Azure Kubernetes Service (AKS) Cluster](manage-azure-rbac.md)-->
+    <!--NOT AVAILABLE ON [Use Azure RBAC to authorize access within the Azure Kubernetes Service (AKS) Cluster](manage-azure-rbac.md)-->
     
 - 要开始保护 kubeconfig 文件，请参阅[限制对群集配置文件的访问](control-kubeconfig-access.md)
 
@@ -241,4 +241,5 @@ AKS 提供以下四个内置角色。 它们类似于 [Kubernetes 内置角色](
 [aks-concepts-network]: concepts-network.md
 [operator-best-practices-identity]: operator-best-practices-identity.md
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--NOT AVAILABLE ON [upgrade-per-cluster]: ../azure-monitor/containers/container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli-->
+<!--Update_Description: update meta properties, wording update, update link-->

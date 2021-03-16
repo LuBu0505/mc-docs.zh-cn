@@ -4,14 +4,14 @@ description: '针对以下常见问题的解答：包括恢复服务保管库在
 author: Johnnytechn
 ms.topic: conceptual
 origin.date: 07/07/2019
-ms.date: 01/07/2021
+ms.date: 03/01/2021
 ms.author: v-johya
-ms.openlocfilehash: 1c50cfdeaf63c1bcfa9f32788869f0009ad0cf8e
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 84743391c49778c06ca46c5b8e8bcacb2c6e5611
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021856"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197288"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 
@@ -63,11 +63,15 @@ ms.locfileid: "98021856"
 
 不支持使用 Data Box 直接将数据从恢复服务保管库导出到本地。 必须将数据还原到存储帐户，然后才能通过 Data Box 或[导入/导出](../storage/common/storage-import-export-service.md)将数据移到本地。
 
+### <a name="what-is-the-difference-between-a-geo-redundant-storage-grs-vault-with-and-without-the-cross-region-restore-crr-capability-enabled"></a>启用和不启用跨区域还原 (CRR) 功能的异地冗余存储 (GRS) 保管库之间有何区别？
+
+如果 [GRS](azure-backup-glossary.md#grs) 保管库不启用 [CRR](azure-backup-glossary.md#cross-region-restore-crr) 功能，次要区域中的数据仅当 Azure 声明主要区域发生灾难时才能访问。 在这种情况下，将从次要区域进行还原。 如果启用 CRR，即使主要区域已启动并正在运行，也可在次要区域中触发还原。
+
 ## <a name="azure-backup-agent"></a>Azure 备份代理
 
 ### <a name="where-can-i-find-common-questions-about-the-azure-backup-agent-for-azure-vm-backup"></a>在哪里可以找到有关 Azure VM 备份的 Azure 备份代理的常见问题？
 
-- 有关在 Azure VM 上运行的代理，请阅读此[常见问题解答](backup-azure-vm-backup-faq.md)。
+- 有关在 Azure VM 上运行的代理，请阅读此[常见问题解答](backup-azure-vm-backup-faq.yml)。
 - 如需用于备份 Azure 文件夹的代理，请阅读此[常见问题解答](backup-azure-file-folder-backup-faq.md)。
 
 ## <a name="general-backup"></a>常规备份
@@ -233,6 +237,6 @@ Azure 恢复服务 (MARS) 代理使用的加密密钥派生自密码长度应至
 
 阅读其他常见问题：
 
-- 有关 Azure VM 备份的[常见问题](backup-azure-vm-backup-faq.md)。
+- 有关 Azure VM 备份的[常见问题](backup-azure-vm-backup-faq.yml)。
 - 有关 Azure 备份代理的[常见问题](backup-azure-file-folder-backup-faq.md)
 

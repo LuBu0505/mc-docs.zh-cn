@@ -1,24 +1,24 @@
 ---
-title: 创建和配置用于 Azure 磁盘加密的密钥保管库
+title: 在 Windows VM 上创建和配置用于 Azure 磁盘加密的密钥保管库
 description: 本文介绍创建和配置用于 Windows VM 上的 Azure 磁盘加密的密钥保管库的步骤。
 ms.service: virtual-machines
 ms.subservice: security
 ms.topic: how-to
 origin.date: 08/06/2019
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: db59dcdb87adaf38ba3da5ee99d31fb4646ed518
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 26647ef51f2dbb61c962f4a2bc876950d91b5ea4
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104339"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055248"
 ---
-# <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>创建和配置用于 Azure 磁盘加密的密钥保管库
+# <a name="create-and-configure-a-key-vault-for-azure-disk-encryption"></a>为 Azure 磁盘加密创建和配置密钥保管库
 
 Azure Disk Encryption 使用 Azure Key Vault 来控制和管理磁盘加密密钥和机密。  有关 Key Vault 的详细信息，请参阅 [Azure Key Vault 入门](../../key-vault/general/overview.md)和[保护 Key Vault](../../key-vault/general/secure-your-key-vault.md)。 
 
@@ -52,7 +52,7 @@ Azure Disk Encryption 使用 Azure Key Vault 来控制和管理磁盘加密密�
 
 ### <a name="connect-to-your-azure-account"></a>连接到 Azure 帐户
 
-使用 Azure CLI 或 Azure PowerShell 之前，必须先连接到 Azure 订阅。 为此，可以[使用 Azure CLI 登录](https://docs.azure.cn/cli/authenticate-azure-cli)、[使用 Azure Powershell 登录](https://docs.microsoft.com/powershell/azure/authenticate-azureps?view=azps-2.5.0)，或在出现提示时向 Azure 门户提供凭据。
+使用 Azure CLI 或 Azure PowerShell 之前，必须先连接到 Azure 订阅。 为此，可以[使用 Azure CLI 登录](https://docs.azure.cn/cli/authenticate-azure-cli)、[使用 Azure Powershell 登录](https://docs.microsoft.com/powershell/azure/authenticate-azureps)，或在出现提示时向 Azure 门户提供凭据。
 
 ```azurecli
 az cloud set -n AzureChinaCloud
@@ -73,4 +73,4 @@ Connect-AzAccount -Environment AzureChinaCloud
 - 了解如何[对 Azure 磁盘加密进行故障排除](disk-encryption-troubleshooting.md)
 - 阅读 [Azure 磁盘加密示例脚本](disk-encryption-sample-scripts.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

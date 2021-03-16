@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.workload: infrastructure
 origin.date: 10/14/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: ''
 ms.author: v-yeche
 ms.reviewer: cynthn
-ms.openlocfilehash: d9002eea5b368a17cd64346aab3239cfcb7fa71a
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 5e4cf7ba0adb3f9b72d5a892e2fa0c88e409d087
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230973"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055167"
 ---
 <!--Verified successfully from redirect articles-->
 # <a name="shared-image-galleries-overview"></a>共享映像库概述
@@ -27,8 +27,9 @@ ms.locfileid: "98230973"
 - 支持映像全局复制。
 - 对映像进行版本控制和分组，以便于管理。
 
-    <!--Not Available on - Highly available images with Zone Redundant Storage (ZRS) accounts in regions that support Availability Zones. ZRS offers better resilience against zonal failures.-->
-    <!--Not Avaialble on Zone Redundant Storage (ZRS)-->
+    <!--NOT AVAILABLE on - Highly available images with Zone Redundant Storage (ZRS) accounts in regions that support Availability Zones. ZRS offers better resilience against zonal failures.-->
+    <!--NOT AVAILABLE on Zone Redundant Storage (ZRS)-->
+    <!--NOT AVAILABLE on FEATURE Availability Zone-->
 
 - 高级存储支持 (Premium_LRS)。
 - 使用 RBAC 在订阅之间，甚至在 Active Directory (AD) 租户之间共享。
@@ -79,7 +80,7 @@ ms.locfileid: "98230973"
 - Eula - 可用于指向特定于映像定义的最终用户许可协议。
 - 隐私声明和发行说明 - 将发行说明和隐私声明存储在 Azure 存储中，并提供在映像定义中用于访问它们的 URI。
 - 生命周期结束日期 - 将生命周期结束日期附加到映像定义，以便能够使用自动化功能删除旧的映像定义。
-- 标记 - 可以在创建映像定义时添加标记。 有关标记的详细信息，请参阅[使用标记来组织资源](../azure-resource-manager/management/tag-resources.md)。
+- 标记 - 可以在创建映像定义时添加标记。 有关标记的详细信息，请参阅[使用标记来组织资源](../azure-resource-manager/management/tag-resources.md)
 - 最小和最大 vCPU 与内存建议量 - 如果映像附带 vCPU 和内存建议量，则你可以将该信息附加到映像定义。
 - 不允许的磁盘类型 - 可以提供有关 VM 所需存储的信息。 例如，如果映像不适合标准 HDD 磁盘，请将其添加到禁止列表。
 - 市场映像的购买计划信息 `-PurchasePlanPublisher`、`-PurchasePlanName` 和 `-PurchasePlanProduct`。 若要详细了解购买计划信息，请参阅[在 Azure 市场中查找映像](./windows/cli-ps-findimage.md)和[在创建映像时提供 Azure 市场购买计划信息](marketplace-images.md)。
@@ -108,7 +109,7 @@ ms.locfileid: "98230973"
 
 ## <a name="regional-support"></a>区域支持
 
-下表列出了 Azure 中国世纪互联中的源区域。
+以下区域可以是 Azure 中国世纪互联的目标区域。
 
 <!--Not Available on  All public regions can be target regions, but to replicate to Australia Central and Australia Central 2 you need to have your subscription whitelisted. To request whitelisting, go to: https://www.azure.cn/global-infrastructure/australia/contact/-->
 <!--MOONCAKE: CUSTOMZIE ONLY VALID FOR China East 2 and China North 2 -->
@@ -201,7 +202,7 @@ ms.locfileid: "98230973"
 - [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines)
 - [Go](https://docs.microsoft.com/azure/go/)
 
-    <!--URL correct on https://docs.microsoft.com/azure/go/-->
+    <!--CORRECT ON https://docs.microsoft.com/azure/go/-->
 
 ## <a name="templates"></a>模板
 
@@ -337,9 +338,13 @@ az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
 
 是的，你可以将规模集映像引用从托管映像更新为共享映像库映像，前提是这些映像之间的 OS 类型、Hyper-V 生成和数据磁盘布局均匹配。
 
+## <a name="troubleshoot-shared-image-gallery-issues"></a>排查共享映像库问题
+如果对共享映像库资源执行任何操作时遇到问题，请参阅[故障排除指南](troubleshooting-shared-images.md)中的常见错误列表。
+
+此外，你可以在[问答](https://docs.microsoft.com/answers/topics/azure-virtual-machines-images.html)中发布问题并使用 `azure-virtual-machines-images` 来标记问题。
+
 ## <a name="next-steps"></a>后续步骤
 
 了解如何使用 [Azure CLI](shared-images-cli.md) 或 [PowerShell](shared-images-powershell.md) 部署共享映像。
 
-<!-- Update_Description: new article about shared image galleries -->
-<!--NEW.date: 01/04/2021-->
+<!--Update_Description: update meta properties, wording update, update link-->

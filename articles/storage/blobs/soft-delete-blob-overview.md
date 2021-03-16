@@ -6,20 +6,20 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: conceptual
-origin.date: 07/15/2020
-ms.date: 02/08/2021
+origin.date: 02/09/2021
+ms.date: 03/08/2021
 ms.author: v-jay
 ms.subservice: blobs
-ms.openlocfilehash: 97df43f32cf82a58bebb0cb7d1df310a50e96289
-ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
+ms.openlocfilehash: f17971a239af1eae040e57d55005ba78d6078f94
+ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99503862"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196362"
 ---
 # <a name="soft-delete-for-blobs"></a>blob 的软删除
 
-Blob 的软删除可防止意外地或错误地修改或删除数据。 为存储帐户启用了 Blob 的软删除时，该存储帐户中的 Blob 和快照被删除后可以在指定的保留期内恢复。
+Blob 的软删除可防止意外地或错误地修改或删除数据。 如果为存储帐户启用了 Blob 的软删除，则该存储帐户中的 Blob、Blob 版本和快照被删除后可以在指定的保留期内恢复。
 
 如果你的数据有可能被应用程序或其他存储帐户用户意外修改或删除，Azure 建议启用软删除。 有关启用软删除的详细信息，请参阅[启用和管理 Blob 的软删除](./soft-delete-blob-enable.md)。
 
@@ -28,6 +28,14 @@ Blob 的软删除可防止意外地或错误地修改或删除数据。 为存�
 ## <a name="about-soft-delete-for-blobs"></a>关于 Blob 的软删除
 
 在存储帐户上启用了 Blob 的软删除时，可以在已删除对象之后（在指定的数据保留期内）恢复这些对象。 此保护可扩展到因覆盖而擦除的任何 Blob（块 Blob、追加 Blob 或页 Blob）。
+
+下图显示了在启用 Blob 软删除后，如何还原已删除的 Blob：
+
+:::image type="content" source="media/soft-delete-blob-overview/blob-soft-delete-diagram.png" alt-text="显示如何还原软删除 Blob 的示意图":::
+
+如果在启用 Blob 软删除的情况下删除了现有 Blob 或快照中的数据，但未启用 Blob 版本控制，则会生成软删除快照以保存覆盖的数据的状态。 在指定的保留期到期后，对象将被永久删除。
+
+如果在存储帐户上同时启用 Blob 版本控制和 Blob 软删除，则删除 Blob 会创建一个新版本而不是软删除快照。 系统不会软删除新版本，并且不会在软删除保留期到期时删除该版本。 可以通过调用[撤消删除 Blob](https://docs.microsoft.com/rest/api/storageservices/undelete-blob) 操作在保留期内还原 Blob 的软删除版本。 然后，可以通过调用[复制 Blob](https://docs.microsoft.com/rest/api/storageservices/copy-blob) 操作，从该 Blob 的某个版本还原它。 有关如何结合使用 Blob 版本控制和软删除的详细信息，请参阅 [Blob 版本控制和软删除](versioning-overview.md#blob-versioning-and-soft-delete)。
 
 除非显式列出，否则软删除对象不可见。
 
@@ -191,3 +199,4 @@ Azure 虚拟机通过调用“放置页”来写入非托管磁盘，因此不�
 ## <a name="next-steps"></a>后续步骤
 
 - [为 blob 启用软删除](./soft-delete-blob-enable.md)
+- [Blob 版本控制](versioning-overview.md)

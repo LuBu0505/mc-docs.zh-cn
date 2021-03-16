@@ -5,18 +5,18 @@ ms.service: azure-analysis-services
 ms.topic: overview
 origin.date: 01/20/2021
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 8b3418160e70b9e0750a626312965a6b602c5f3f
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 7aba2af964ba620579858880a43456034e758162
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063693"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055158"
 ---
 # <a name="what-is-azure-analysis-services"></a>什么是 Azure Analysis Services？
 
@@ -26,13 +26,13 @@ Azure Analysis Services 是一个完全托管的平台即服务 (PaaS)，它在�
 
 :::image type="content" source="./media/analysis-services-overview/aas-overview-overall.png" alt-text="数据源":::
 
-<!--Not Available VIDEO on [Azure Analysis Services Overview](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4)-->
+<!--NOT AVAILABLE ON [Azure Analysis Services Overview](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4)-->
 
 ## <a name="get-up-and-running-quickly"></a>快速启动和运行
 
 在 Azure 门户中，数分钟即可[创建服务器](analysis-services-create-server.md)。 借助 Azure 资源管理器[模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)和 PowerShell，可以使用声明性模板来创建服务器。 利用单个模板可以部署服务器资源及其他 Azure 组件，例如存储帐户和 Azure Functions。 
 
-<!-- Not Available VIDEO on [Automating deployment](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation)-->
+<!--NOT AVAILABLE ON [Automating deployment](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation)-->
 
 Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的分析解决方案。 集成 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) 后可以对关键数据进行安全的基于角色的访问。 只需包括一项将数据加载到模型中的活动，即可集成 [Azure 数据工厂](../data-factory/introduction.md)管道。 可通过自定义代码将 [Azure 自动化](../automation/automation-intro.md)和 [Azure Functions](../azure-functions/functions-overview.md) 用于模型的轻型业务流程。 
 
@@ -42,7 +42,7 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 
 可在基本层和标准层中使用 Azure Analysis Services。 每个层中的计划成本因处理能力、查询处理单位 (QPU) 和内存大小而异。 创建服务器时，将在层内选择计划。 可以在同一层内上下更改计划，或者升级到更高的层，但不能从较高的层降级到较低的层。
 
-<!--MOONCAKE Not Available on ### Developer tier-->
+<!--NOT AVAILABLE ON  ### Developer tier-->
 <!--MOONCAKE: CUSTOMIZE ON Not Available on **Developer**-->
 
 ### <a name="basic-tier"></a>基本层
@@ -76,7 +76,7 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 
 ## <a name="availability-by-region"></a>按区域列出的可用性
 
-目前，中国的“中国东部 2”区域和“中国北部”区域支持 Azure Analysis Services。 支持的计划和查询副本可用性取决于所选的区域。 计划和查询副本可用性可能会根据每个区域的需求和可用资源而变化。 
+在中国，`China East 2` 区域和 `China North` 区域目前支持 Azure Analysis Services。 支持的计划和查询副本可用性取决于所选的区域。 计划和查询副本可用性可能会根据每个区域的需求和可用资源而变化。 
 
 <!--MOONCAKE: Available on China East 2 and China North regions-->
 
@@ -165,7 +165,7 @@ Analysis Services 使用[基于角色的授权](https://docs.microsoft.com/analy
 
 通过数据库角色向查询数据的非管理最终用户授予访问权限。 数据库角色作为数据库中的单独对象创建，并且仅适用于创建该角色的数据库。 数据库角色按（数据库）“管理员”、“读取”与“读取和处理”权限来定义。 使用 SSMS 或 PowerShell 添加用户和组帐户。
 
-### <a name="row-level-security"></a>行级别安全性
+### <a name="row-level-security"></a>行级安全性
 
 所有兼容级别的表格模型都支持行级安全性。 行级安全性的定义方式如下：在模型中使用 DAX 表达式，这些表达式可在表中定义行，以及在用户可查询的相关表的许多方向定义任何行。 为“读取”与“读取和处理”权限定义使用 DAX 表达式的行筛选器。 
 
@@ -234,9 +234,9 @@ Azure Analysis Services 还支持使用[动态管理视图 (DMV)](https://docs.m
 
 <!--MOONCAKE: CORRECT ON (https://docs.microsoft.com/contribute/)-->
 <!--FEED MESSAGE NOT BE SUITABLE FOR AZURE CHINA CLIOUD-->
-<!--Not Suitable on [GitHub Issues](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs)-->
-<!-- Not Available on ## Blogs-->
-<!-- Not Available on ## Community-->
+<!--NOT AVAILABLE ON  [GitHub Issues](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs)-->
+<!--NOT AVAILABLE ON  ## Blogs-->
+<!--NOT AVAILABLE ON  ## Community-->
 
 ## <a name="next-steps"></a>后续步骤
 

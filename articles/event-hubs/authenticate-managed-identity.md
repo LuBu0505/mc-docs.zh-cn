@@ -2,16 +2,14 @@
 title: 使用 Azure Active Directory 对托管标识进行身份验证
 description: 本文提供有关对使用 Azure Active Directory 访问 Azure 事件中心资源的托管标识进行身份验证的信息
 ms.topic: conceptual
-origin.date: 06/23/2020
-ms.date: 11/05/2020
-ms.author: v-tawe
+ms.date: 02/24/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5e936a2cb0c92760bd5cd217842842ff62d10802
-ms.sourcegitcommit: b217474b15512b0f40b2eaae66bd3c521383d321
+ms.openlocfilehash: 9a18b2a757dbc2e51345fde879ff5debe12772d2
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93375669"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196837"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 对托管标识的事件中心资源访问进行身份验证
 Azure 事件中心支持使用 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)进行 Azure Active Directory (Azure AD) 身份验证。 Azure 资源的托管标识可以从 Azure 虚拟机 (VM)、函数应用、虚拟机规模集和其他服务中运行的应用程序使用 Azure AD 凭据授权对事件中心资源的访问权限。 将 Azure 资源的托管标识与 Azure AD 身份验证结合使用，可避免将凭据随在云中运行的应用程序一起存储。
@@ -43,11 +41,12 @@ Azure 事件中心支持使用 [Azure 资源的托管标识](../active-directory
 1. 选择“状态”，将其切换到“启用”。 
 1. 选择“保存”，保存设置。 
 
-    ![Web 应用的托管标识](./media/authenticate-managed-identity/identity-web-app.png)
+    :::image type="content" source="./media/authenticate-managed-identity/identity-web-app.png" alt-text="Web 应用的托管标识":::
+4. 在信息消息中选择“是”。 
 
-启用此设置后，会在 Azure Active Directory (Azure AD) 中创建一个新的服务标识并将其配置到应用服务主机中。
+    启用此设置后，会在 Azure Active Directory (Azure AD) 中创建一个新的服务标识并将其配置到应用服务主机中。
 
-现在，请将此服务标识分配给事件中心资源中所需范围中的某个角色。
+    现在，请将此服务标识分配给事件中心资源中所需范围中的某个角色。
 
 ### <a name="to-assign-azure-roles-using-the-azure-portal"></a>使用 Azure 门户分配 Azure 角色
 若要为事件中心资源分配角色，请导航到 Azure 门户中的该资源。 显示资源的“访问控制(标识和访问管理)”设置，并按以下说明管理角色分配：
@@ -58,15 +57,20 @@ Azure 事件中心支持使用 [Azure 资源的托管标识](../active-directory
 1. 在 Azure 门户中导航到事件中心命名空间，显示该命名空间的“概览”。 
 1. 选择左侧菜单上的“访问控制(标识和访问管理)”，显示事件中心的访问控制设置。
 1.  选择“角色分配”选项卡以查看角色分配列表。
-3.  选择“添加”以添加新角色。
-4.  在“添加角色分配”页上，选择要分配的事件中心角色。 然后通过搜索找到已注册的服务标识，以便分配该角色。
+3.  依次选择“添加”、“添加角色分配”*****。
+4.  在“添加角色分配”页上，按照以下步骤操作：
+    1. 对于“角色”，选择要分配的“事件中心”角色。 在此示例中，它是“Azure 事件中心数据所有者”。
+    1. 对于“访问权限分配对象”字段，选择“系统分配的托管标识”下的“应用服务”  。 
+    1. 选择在其中创建了 Web 应用的托管标识的订阅。
+    1. 选择为 Web 应用创建的托管标识。 标识的默认名称与 Web 应用的名称相同。 
+    1. 然后选择“保存”。 
     
-    ![“添加角色分配”页](./media/authenticate-managed-identity/add-role-assignment-page.png)
-5.  选择“保存” 。 分配有该角色的标识列出在该角色下。 例如，下图显示服务标识有事件中心数据所有者。
-    
-    ![分配给角色的标识](./media/authenticate-managed-identity/role-assigned.png)
+        ![“添加角色分配”页](./media/authenticate-managed-identity/add-role-assignment-page.png)
 
-分配此角色后，Web 应用程序即可访问已定义范围内的事件中心资源。 
+    分配此角色后，Web 应用程序即可访问已定义范围内的事件中心资源。 
+
+    > [!NOTE]
+    > 如需支持托管标识的服务列表，请参阅[支持 Azure 资源托管标识的服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)。
 
 ### <a name="test-the-web-application"></a>测试 Web 应用程序
 1. 创建事件中心命名空间和事件中心。 

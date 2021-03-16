@@ -5,24 +5,21 @@ services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: a41897bb-5b4b-48b2-bfd5-2e3c65edc37e
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-origin.date: 01/04/2019
-ms.date: 09/02/2020
+ms.date: 02/25/2021
 ms.author: v-tawe
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: d9f147486783524a58dae884a937da22f747b96f
-ms.sourcegitcommit: 4f936264ddb502ff61623892f57067e935ef6e42
+ms.openlocfilehash: e4ebfaab3bb4c5794710052dfe5622d5c58324d7
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89316447"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196813"
 ---
 # <a name="notification-hubs-templates"></a>通知中心模板
 
@@ -59,9 +56,9 @@ ms.locfileid: "89316447"
 
 此要求将强制应用后端针对每个平台生成不同的负载，并有效地使后端负责应用的表示层部分。 某些考虑因素包括本地化和图形布局（尤其针对 Windows 应用商店应用，其中包含不同磁贴类型的通知）。
 
-使用通知中心模板功能，客户端应用可以创建称为模板注册的特殊注册，其中除了包含标记集外，还包含一个模板。 无论使用安装（首选）还是注册，通知中心模板功能都能使客户端应用将设备与模板相关联。 在前面的负载示例中，唯一的与平台无关的信息就是实际警报消息 (Hello!)。 模板是一组指令，指示通知中心如何针对该特定客户端应用的注册来设置与平台无关的消息的格式。 在前面的示例中，与平台无关的消息是单个属性：`message = Hello!`。
+使用通知中心模板功能，客户端应用可以创建称为模板注册的特殊注册，其中除了包含标记集外，还包含一个模板。 无论是使用安装（首选）还是注册，通知中心模板功能都能使客户端应用将设备与模板相关联。 在前面的有效负载示例中，唯一与平台无关的信息就是实际警报消息 (Hello!)。 模板是一组指令，指示通知中心如何针对该特定客户端应用的注册来设置与平台无关的消息的格式。 在前面的示例中，与平台无关的消息是单个属性：`message = Hello!`。
 
-下图演示了该过程：
+下图说明了该过程：
 
 ![显示跨平台模板使用过程的关系图](./media/notification-hubs-templates/notification-hubs-hello.png)
 
@@ -83,11 +80,11 @@ Windows 应用商店客户端应用的相应模板为：
 </toast>
 ```
 
-请注意，实际消息将替换表达式 $(message)。 每当通知中心向此特定注册发送消息时，此表达式将指示通知中心构建遵循此模板并用常用值替换的消息。
+请注意，实际消息将替换表达式 `$(message)`。 每当通知中心向此特定注册发送消息时，此表达式将指示通知中心构建遵循此模板并插入常用值的消息。
 
-如果使用的是安装模型，则安装“templates”键会保存多个模板的 JSON。 如果使用的是注册模型，则客户端应用程序可以创建多个注册以使用多个模板；例如，例如，用于警报消息的模板和用于磁贴更新的模板。 客户端应用程序还可以混合使用本机注册（不带模板的注册）和模板注册。
+如果使用的是安装模型，则安装“templates”键会保存多个模板的 JSON。 如果使用的是注册模型，则客户端应用程序可以创建多个注册以使用多个模板；例如，用于警报消息的模板和用于磁贴更新的模板。 客户端应用程序还可以混合使用本机注册（不带模板的注册）和模板注册。
 
-通知中心将针对每个注册发送一条通知，而不考虑这些注册是否属于同一客户端应用。 可以使用此行为将与平台无关的通知转换成其他通知。 例如，可将发送到通知中心的同一条与平台无关的消息无缝地转换成 toast 警报和磁贴更新，而无需让后端知道这一情况。 如果在短时间内发送多个通知，某些平台（例如 iOS）可能会将这些通知合并发送到同一台设备。
+通知中心针对每个模板发送一条通知，而不考虑这些模板是否属于同一客户端应用。 可以使用此行为将与平台无关的通知转换成其他通知。 例如，可以将发送到通知中心的同一条与平台无关的消息无缝地转换成 toast 警报和磁贴更新，而无需让后端知道这一情况。 如果在短时间内发送多个通知，某些平台（例如 iOS）可能会将这些通知合并发送到同一台设备。
 
 ## <a name="using-templates-for-personalization"></a>使用模板进行个性化设置
 
@@ -107,18 +104,12 @@ Windows 应用商店客户端应用的相应模板为：
 </tile>
 ```
 
-发送到通知中心的消息包含以下属性：
+发送到通知中心的消息包含以下所有属性：
 
-```html
-<table border="1">
-
-<tr><td>day1_image</td><td>day2_image</td><td>day3_image</td><td>day4_image</td><td>day5_image</td></tr>
-
-<tr><td>day1_tempC</td><td>day2_tempC</td><td>day3_tempC</td><td>day4_tempC</td><td>day5_tempC</td></tr>
-
-<tr><td>day1_tempF</td><td>day2_tempF</td><td>day3_tempF</td><td>day4_tempF</td><td>day5_tempF</td></tr>
-</table><br/>
-```
+| day1_image | day2_image | day3_image | day4_image | day5_image |
+|------------|------------|------------|------------|------------|
+| day1_tempC | day2_tempC | day3_tempC | day4_tempC | day5_tempC |
+| day1_tempF | day2_tempF | day3_tempF | day4_tempF | day5_tempF |
 
 通过使用此模式，后端只需发送一条消息，而不必为应用用户存储特定的个性化选项。 下图演示了此方案：
 
@@ -137,11 +128,11 @@ Windows 应用商店客户端应用的相应模板为：
 | 表达式       | 说明 |
 | ---------------- | --- |
 | $(prop)          | 对具有给定名称的事件属性的引用。 属性名称不区分大小写。 此表达式将解析为属性的文本值，如果该属性不存在，则解析为空字符串。 |
-| $(prop, n)       | 同上，但会在 n 个字符处对文本进行显式剪切，例如，$(title, 20) 会在 20 个字符处对 title 属性的内容进行剪切。 |
-| .(prop, n)       | 同上，但会在剪切后的文本后面添加三个点作为后缀。 剪切后的字符串以及后缀的总大小不超过 n 个字符。 对输入属性“This is the title line”使用 .(title, 20) 会生成 **This is the title...** |
+|$(prop, n)       | 同上，但会在 n 个字符处对文本进行显式剪切，例如，$(title, 20) 会在 20 个字符处对 title 属性的内容进行剪切。 |
+| .(prop, n)      | 同上，但会在剪切后的文本后面添加三个点作为后缀。 剪切后的字符串以及后缀的总大小不超过 n 个字符。对输入属性“This is the title line”使用 (title, 20) 会生成“This is the title...” |
 | %(prop)          | 类似于 $(name)，不过其输出已经过 URI 编码。 |
-| #(prop)          | 在 JSON 模板中使用（例如，用于 iOS 和 Android 模板）。<br><br>此函数的工作方式与前面指定的 $(prop) 完全相同，但在 JSON 模板（例如 Apple 模板）中使用时例外。 在此示例中，如果此函数未由“{”、“}”括起来（例如，‘myJsonProperty’ : ‘#(name)’），并按 Javascript 格式（例如，regexp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*))(\.&#91;0-9&#93;+)?((e&#124;E)(+&#124;-)?&#91;0-9&#93;+)?）求出一个数字值，则输出 JSON 是一个数字。<br><br>例如，‘badge: ‘#(name)’ 将变为 ‘badge’ : 40（而不是 ‘40‘）。 |
-| ‘text’ 或 “text” | 一个文本。 文本包含以单引号或双引号括住的任意文本。 |
+| #(prop)          | 在 JSON 模板中使用（例如，用于 iOS 和 Android 模板）。<br><br>此函数的工作方式与前面指定的“$(prop)”完全相同，但在 JSON 模板（例如 Apple 模板）中使用时例外。 在此示例中，如果此函数未由“{‘、’}”括起来（例如，‘myJsonProperty’ : ‘#(name)’），并按 JavaScript 格式（例如，regexp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*))(\.&#91;0-9&#93;+)?((e&#124;E)(+&#124;-)?&#91;0-9&#93;+)?）求出一个数字值，则输出 JSON 是一个数字。<br><br>例如，‘badge: ‘#(name)’ 将变为 ‘badge’ : 40（而不是 ‘40’）。 |
+| ‘text’ 或“text” | 一个文本。 文本包含以单引号或双引号括住的任意文本。 |
 | expr1 + expr2    | 用于将两个表达式联接成单个字符串的串联运算符。 |
 
 表达式可以采用上述任一格式。

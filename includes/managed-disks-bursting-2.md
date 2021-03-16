@@ -2,21 +2,21 @@
 title: include 文件
 description: include 文件
 services: virtual-machines
-author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 04/27/2020
-ms.date: 08/10/2020
+author: rockboyfor
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 05/18/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: a6dd9e7820010bc62a5bfeb2c4860683b7c49d99
-ms.sourcegitcommit: 39288459139a40195d1b4161dfb0bb96f5b71e8e
+ms.openlocfilehash: d0b365f36298d24c116387cf04262881500b51aa
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94590613"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055224"
 ---
 <!--Verified successfully-->
 <!--CONFIRM THE DEOPLOMENT REGIONS BEFORE RELEASEMENT-->
@@ -40,7 +40,8 @@ ms.locfileid: "94590613"
 - **恒定** - 资源的流量与性能目标完全相同。
 
 ## <a name="examples-of-bursting"></a>有关突发的示例
-以下示例显示了在使用各种虚拟机和磁盘组合时突发的工作情况。 为了使示例易于理解，我们将重点放在 MB/s 上，但相同的逻辑也独立适用于 IOPS。
+
+以下示例显示了在使用各种 VM 和磁盘组合时突发的工作情况。 为了使示例易于理解，我们将重点放在 MB/s 上，但相同的逻辑也独立适用于 IOPS。
 
 ### <a name="non-burstable-virtual-machine-with-burstable-disks"></a>具有可突发磁盘的非可突发虚拟机
 **VM 和磁盘组合：** 
@@ -53,26 +54,23 @@ ms.locfileid: "94590613"
     - 预配的 MB/s：25
     - 最大突发 MB/s：170 
 - 2 个 P10 数据磁盘 
-    - 预配的 MB/s：25
+    - 预配的 MB/s：100
     - 最大突发 MB/s：170
 
- 当 VM 启动时，它将从 OS 磁盘中检索数据。 由于 OS 磁盘是正在启动的 VM 的一部分，因此 OS 磁盘的突发额度将是充分的。 这些额度使 OS 磁盘以 170 MB/s 的速度突发启动，如下所示：
+ 当 VM 启动时，它从 OS 磁盘中检索数据。 由于 OS 磁盘是正在启动的 VM 的一部分，因此 OS 磁盘的突发额度将是充分的。 这些额度使 OS 磁盘以 170 MB/s 的速度突发启动。
 
-![非突发 VM - 突发磁盘启动](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-startup.jpg)
+![VM 将 192 MB/s 的吞吐量请求发送到 OS 磁盘，OS 磁盘以 170 MB/s 数据进行响应。](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-startup.jpg)
 
-启动完成后，应用程序将在 VM 上运行，并且具有非关键工作负荷。 此工作负荷需要 15 MB/S（在所有磁盘上均匀分布）：
+启动完成后，应用程序将在 VM 上运行，并且具有非关键工作负荷。 此工作负荷需要 15 MB/S（在所有磁盘上均匀分布）。
 
-![非突发 VM - 突发磁盘空闲](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-idling.jpg)
+![应用程序向 VM 发送 15 MB/s 的吞吐量请求，VM 接收请求并向其每个磁盘发送 5 MB/s 的请求，每个磁盘返回 5 MB/s，VM 将 15 MB/s 返回到应用程序。](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-idling.jpg)
 
-然后，应用程序需要处理一个批处理作业，该作业需要 192 MB/s。 2 MB/s 由 OS 磁盘使用，其余部分在数据磁盘之间平均划分：
+然后，应用程序需要处理一个批处理作业，该作业需要 192 MB/s。 2 MB/s 由 OS 磁盘使用，其余部分在数据磁盘之间平均划分。
 
-![非突发 VM - 突发磁盘发生突发](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-bursting.jpg)
+![应用程序将 192 MB/s 的吞吐量请求发送到 VM，VM 接收请求，并将其大部分请求发送到数据磁盘（每个 95 MB/s）并将 2 MB/s 发送到 OS 磁盘，数据磁盘突发以满足需求，并且所有磁盘都将请求的吞吐量返回给 VM，后者将其返回给应用程序。](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-bursting.jpg)
 
 <!--Not Avaialble on ### Burstable virtual machine with non-burstable disks-->
 <!--Not Available on Standard_L8s_v2-->
-
 <!--Not Avaialble on ### Burstable virtual machine with burstable Disks-->
 <!--Not Available on Standard_L8s_v2-->
-
-<!-- Update_Description: new article about managed disks bursting 2 -->
-<!--NEW.date: 05/18/2020-->
+<!--Update_Description: update meta properties, wording update, update link-->

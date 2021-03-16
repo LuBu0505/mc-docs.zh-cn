@@ -1,24 +1,28 @@
 ---
 title: Data Science Virtual Machine 的新增功能
 description: Azure Data Science Virtual Machine 的发行说明
-author: gvashishtha
+author: lobrien
 ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.author: gopalv
-ms.date: 10/10/2019
+ms.date: 02/24/2020
 ms.topic: reference
-ms.openlocfilehash: 2291fd7c31f0193131117564e3a009543e70572e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: d07c3dfc83fab637de8f8819caff72472856d49e
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75599419"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196666"
 ---
 # <a name="azure-data-science-virtual-machine-release-notes"></a>Azure Data Science Virtual Machine 发行说明
 
 本文介绍 Azure Data Science Virtual Machine 的发布。 如需获取随附工具的完整列表以及版本号，请查看[此页面](./tools-included.md)。
 
 如需了解已知 bug 和解决方法，请参阅[已知问题列表](reference-known-issues.md)。
+
+## <a name="2020-02-24"></a>2020-02-24
+
+现在提供 [Ubuntu 18.04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804?tab=Overview) 和 [Windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019?tab=Overview) 映像的 Data Science Virtual Machine 映像。
 
 ## <a name="2019-10-08"></a>2019-10-08
 

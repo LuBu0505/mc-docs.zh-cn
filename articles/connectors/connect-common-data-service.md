@@ -5,21 +5,21 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
-origin.date: 12/11/2020
+origin.date: 02/11/2021
 author: rockboyfor
-ms.date: 02/15/2021
+ms.date: 03/01/2021
 ms.testscope: yes|no
 ms.testdate: 01/11/2021
 ms.author: v-yeche
 tags: connectors
-ms.openlocfilehash: ddc7c892047fd70ac74117a0d97cbb8132832472
-ms.sourcegitcommit: eac6a51d5193c8a36e99ea1f824bf62743edea33
+ms.openlocfilehash: 00ff86c4dca811627eb8572fa6dc2a09cdd3ef97
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99817569"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054021"
 ---
-<!--Pending for VM Review-->
+<!--Verified successfully-->
 <!--Common Data Service connect exists on Mooncake-->
 # <a name="create-and-manage-records-in-common-data-service-microsoft-dataverse-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用在 Common Data Service (Microsoft Dataverse) 中创建和管理记录
 
@@ -61,7 +61,7 @@ ms.locfileid: "99817569"
 
     :::image type="content" source="./media/connect-common-data-service/when-record-created-trigger-details.png" alt-text="要监视的环境的触发器信息":::
 
-    | 属性 | 必须 | 说明 |
+    | 属性 | 必选 | 说明 |
     |----------|----------|-------------|
     | **环境** | 是 | 要监视的环境，例如“Fabrikam Sales Production”。 有关详细信息，请参阅 [Power Platform - 环境概述](https://docs.microsoft.com/power-platform/admin/environments-overview)。 |
     | **实体名称** | 是 | 要监视的实体，例如“潜在顾客” |
@@ -82,7 +82,7 @@ ms.locfileid: "99817569"
 
     :::image type="content" source="./media/connect-common-data-service/create-new-record-action-details.png" alt-text="要在其中创建记录的环境的操作信息":::
 
-    | 属性 | 必须 | 说明 |
+    | 属性 | 必选 | 说明 |
     |----------|----------|-------------|
     | **组织名称** | 是 | 要在其中创建记录的环境，不一定是触发器中的同一环境，在本示例中为“Fabrikam Sales Production” |
     | **实体名称** | 是 | 要在其中创建记录的实体，例如“Tasks” |
@@ -180,9 +180,64 @@ ms.locfileid: "99817569"
 
 如需基于连接器的 Swagger 说明的技术信息，例如触发器、操作、限制和其他详细信息，请参阅[连接器的参考页](https://docs.microsoft.com/connectors/commondataservice/)。
 
+## <a name="troubleshooting-problems"></a>解决问题
+
+### <a name="calls-from-multiple-environments"></a>来自多个环境的调用
+
+连接器“Common Data Service”和“Common Data Service(当前环境)”都在 Azure Dataverse 中存储需要实体变更通知并使用 `callbackregistrations` 实体获取这些通知的逻辑应用工作流的相关信息。 如果你复制某个 Dataverse 组织，则还会复制任何 Webhook。 如果你在禁用映射到你的组织的工作流之前复制你的组织，则任何复制的 Webhook 也指向相同的逻辑应用，后者随后会从多个组织获取通知。
+
+若要停止不需要的通知，请按以下步骤操作，从发送这些通知的组织中删除回调注册：
+
+1. 确定要从中删除通知的 Dataverse 组织，并登录到该组织。
+
+1. 在 Chrome 浏览器中，通过以下步骤找到要删除的回调注册：
+
+    1. 在以下 OData URI 上查看所有回调注册的泛型列表，以便你可以查看 `callbackregistrations` 实体内的数据：
+
+        `https://{organization-name}.crm{instance-number}.dynamics.com/api/data/v9.0/callbackregistrations`:
+
+        > [!NOTE]
+        > 如果未返回任何值，则你可能没有权限查看此实体类型，或者你可能未登录到正确的组织。
+
+    1. 请筛选触发实体的逻辑名称 `entityname` 以及与你的逻辑应用工作流（消息）匹配的通知事件。 每个事件类型都映射到消息整数，如下所示：
+
+        | 事件类型 | 消息整数 |
+        |------------|-----------------|
+        | 创建 | 1 |
+        | 删除 | 2 |
+        | 更新 | 3 |
+        | CreateOrUpdate | 4 |
+        | CreateOrDelete | 5 |
+        | UpdateOrDelete | 6 |
+        | CreateOrUpdateOrDelete | 7 |
+        |||
+
+        此示例展示了如何通过为示例组织使用以下 OData URI 来筛选名为 `nov_validation` 的实体上的 `Create` 通知：
+
+        `https://fabrikam-preprod.crm1.dynamics.com/api/data/v9.0/callbackregistrations?$filter=entityname eq 'nov_validation' and message eq 1`
+
+        :::image type="content" source="./media/connect-common-data-service/find-callback-registrations.png" alt-text="屏幕截图显示了浏览器窗口和地址栏中的 OData URI。":::
+
+        > [!TIP]
+        > 如果同一个实体或事件存在多个触发器，则可以使用附加筛选器（例如 `createdon` 和 `_owninguser_value` 属性）来筛选列表。 所有者用户的名称将显示在 `/api/data/v9.0/systemusers({id})` 下。
+
+    1. 找到要删除的回调注册的 ID 后，执行以下步骤：
+
+        1. 在 Chrome 浏览器中，打开“Chrome 开发人员工具”（键盘：F12）。
+
+        1. 在窗口顶部，选择“控制台”选项卡。
+
+        1. 在命令行提示符下，输入此命令，该命令将发送请求以删除指定的回调注册：
+
+            `fetch('http://{organization-name}.crm{instance-number}.dynamics.com/api/data/v9.0/callbackregistrations({ID-to-delete})', { method: 'DELETE'})`
+
+            > [!IMPORTANT]
+            > 请确保从非统一的客户端界面 (UCI) 页面（例如，从 OData 或 API 响应页面本身）发出请求。 否则，app.js 文件中的逻辑可能会干扰此操作。
+
+    1. 若要确认回调注册不再存在，请检查回调注册列表。
+
 ## <a name="next-steps"></a>后续步骤
 
 * 了解其他[适用于 Azure 逻辑应用的连接器](../connectors/apis-list.md)
 
-<!-- Update_Description: new article about connect common data service -->
-<!--NEW.date: 01/11/2021-->
+<!--Update_Description: update meta properties, wording update, update link-->

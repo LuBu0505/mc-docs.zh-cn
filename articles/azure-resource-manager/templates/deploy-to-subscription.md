@@ -2,18 +2,18 @@
 title: 将资源部署到订阅
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 ms.topic: conceptual
-origin.date: 11/24/2020
+origin.date: 01/13/2021
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 08/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: fb3451d39555f6f43364b72bd6de129de142e51b
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 73d38ad8a4df0b1b9c5668dab4cbe0d0304cb934
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97003738"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052771"
 ---
 <!--Verify Successfully-->
 # <a name="subscription-deployments-with-arm-templates"></a>使用 ARM 模板进行订阅部署
@@ -106,8 +106,6 @@ ms.locfileid: "97003738"
 
 对于 Azure CLI，请使用 [az deployment sub create](https://docs.azure.cn/cli/deployment/sub#az_deployment_sub_create)。 以下示例会部署一个模板来创建资源组：
 
-<!--CORRECT ON https://docs.azure.cn/cli/deployment/sub#az_deployment_sub_create-->
-
 ```azurecli
 az deployment sub create \
   --name demoSubDeployment \
@@ -118,7 +116,7 @@ az deployment sub create \
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-对于 PowerShell 部署命令，请使用 [New-AzDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azdeployment) 或 **New-AzSubscriptionDeployment**。 以下示例会部署一个模板来创建资源组：
+对于 PowerShell 部署命令，请使用 [New-AzDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azdeployment) 或其别名 `New-AzSubscriptionDeployment`。 以下示例会部署一个模板来创建资源组：
 
 ```powershell
 New-AzSubscriptionDeployment `
@@ -139,13 +137,13 @@ New-AzSubscriptionDeployment `
 * [使用 ARM 模板和 Azure 资源管理器 REST API 部署资源](deploy-rest.md)
 * [使用部署按钮从 GitHub 存储库部署模板](deploy-to-azure-button.md)
 
-<!--Not Available on * [Deploy ARM templates from local Shell](deploy-cloud-shell.md)-->
+<!--NOT AVAILABLE ON * [Deploy ARM templates from local Shell](deploy-cloud-shell.md)-->
 
 ## <a name="deployment-location-and-name"></a>部署位置和名称
 
 对于订阅级别部署，必须为部署提供位置。 部署位置独立于部署的资源的位置。 部署位置指定何处存储部署数据。 [管理组](deploy-to-management-group.md)和[租户](deploy-to-tenant.md)部署也需要位置。 对于[资源组](deploy-to-resource-group.md)部署，资源组的位置用于存储部署数据。
 
-可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy**。
+可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 _azuredeploy.json_ 的模板将创建默认部署名称 **azuredeploy**。
 
 每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 例如，如果在 chinaeast 中创建名为“deployment1”的订阅部署，则以后不能创建另一个名为“deployment1”但位置为“chinanorth”的部署。 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
 
@@ -157,7 +155,8 @@ New-AzSubscriptionDeployment `
 * 租户中的任何订阅
 * 该订阅或其他订阅中的资源组
 * 订阅的租户
-* [扩展资源](scope-extension-resources.md)可应用于资源
+
+可以将[扩展资源](scope-extension-resources.md)的范围设置为与部署目标不同的范围。
 
 部署模板的用户必须有权访问指定的作用域。
 
@@ -237,9 +236,9 @@ New-AzSubscriptionDeployment `
 
 ### <a name="scope-to-tenant"></a>将范围设定为租户
 
-可以通过将 `scope` 设置为 `/`，在租户中创建资源。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
+若要在租户中创建资源，请将 `scope` 设置为 `/`。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
 
-可以使用设置了 `scope` 和 `location` 的嵌套部署。
+若要使用嵌套部署，请设置 `scope` 和 `location`。
 
 ```json
 {
@@ -264,7 +263,7 @@ New-AzSubscriptionDeployment `
 }
 ```
 
-或者，可以将某些资源类型（如管理组）的 scope 设置为 `/`。
+或者，可将某些资源类型（如管理组）的范围设置为 `/`。
 
 ```json
 {
@@ -294,6 +293,8 @@ New-AzSubscriptionDeployment `
     }
 }
 ```
+
+有关详细信息，请参阅[管理组](deploy-to-management-group.md#management-group)。
 
 ## <a name="resource-groups"></a>资源组
 
@@ -366,7 +367,7 @@ New-AzSubscriptionDeployment `
 }
 ```
 
-有关资源迭代的信息，请参阅[在 Azure 资源管理器模板中部署资源的多个实例](./copy-resources.md)，以及[教程：使用资源管理器模板创建多个资源实例](./template-tutorial-create-multiple-instances.md)。
+有关资源迭代的信息，请参阅 [ARM 模板中的资源迭代](./copy-resources.md)和[教程：使用 ARM 模板创建多个资源实例](./template-tutorial-create-multiple-instances.md)。
 
 ### <a name="create-resource-group-and-resources"></a>创建资源组和资源
 
@@ -576,7 +577,7 @@ New-AzSubscriptionDeployment `
 
 可通过模板创建蓝图定义。
 
-<!--Not Available on [create](../../governance/blueprints/tutorials/create-from-sample.md)-->
+<!--NOT AVAILABLE ON [create](../../governance/blueprints/tutorials/create-from-sample.md)-->
 
 ```json
 {
@@ -762,4 +763,4 @@ New-AzSubscriptionDeployment `
 * 示例模板可在 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments) 找到。
 * 还可在[管理组级别](deploy-to-management-group.md)和[租户级别](deploy-to-tenant.md)部署模板。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

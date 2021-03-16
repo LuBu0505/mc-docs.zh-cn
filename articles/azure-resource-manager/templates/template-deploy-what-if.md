@@ -2,16 +2,16 @@
 title: 模板部署 what-if
 description: 在部署 Azure 资源管理器模板之前确定资源将会发生的更改。
 ms.topic: conceptual
-origin.date: 12/15/2020
+origin.date: 02/05/2021
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 03/01/2021
 ms.author: v-yeche
-ms.openlocfilehash: 7687a98718e51b33a84e1cba7a44672b557fd1e7
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 6a5804013879f3385c1952d30e119d3dae96939e
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022658"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053231"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM 模板部署 What-if 操作
 
@@ -22,10 +22,6 @@ ms.locfileid: "98022658"
 ## <a name="install-azure-powershell-module"></a>安装 Azure PowerShell 模块
 
 若要在 PowerShell 中使用 what-if，则必须安装 Az 模块 4.2 或更高版本。
-
-但在安装所需模块之前，请确保安装了 PowerShell Core（6.x 或 7.x）。 如果安装了 PowerShell 5.x 或更早版本，请[更新 PowerShell 版本](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)。 无法在 PowerShell 5.x 或更早版本上安装所需模块。
-
-### <a name="install-latest-version"></a>安装最新版本
 
 若要安装该模块，请使用：
 
@@ -207,6 +203,8 @@ what-if 操作列出六种不同的更改类型：
 ### <a name="set-up-environment"></a>设置环境
 
 为了了解 what-if 的工作原理，让我们运行一些测试。 首先，部署一个[用于创建虚拟网络的模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-before.json)。 将使用此虚拟网络来测试 what-if 如何报告更改。
+
+[!INCLUDE [azure-resource-manager-update-templateurl-parameter-china](../../../includes/azure-resource-manager-update-templateurl-parameter-china.md)]
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -390,6 +388,9 @@ Are you sure you want to execute the deployment?
 
 * 对于 Python，请使用 [What-if](https://docs.microsoft.com/python/api/azure-mgmt-resource/azure.mgmt.resource.resources.v2019_10_01.operations.deploymentsoperations#what-if-resource-group-name--deployment-name--properties--location-none--custom-headers-none--raw-false--polling-true----operation-config-)。
 
+* 对于 Java，请使用 [DeploymentWhatIf 类](https://docs.microsoft.com/java/api/com.microsoft.azure.management.resources.deploymentwhatif)。
+
+* 对于 .NET，请使用 [DeploymentWhatIf 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -401,4 +402,4 @@ Are you sure you want to execute the deployment?
 - 若要使用 Azure CLI 部署模板，请参阅[使用 ARM 模板和 Azure CLI 部署资源](deploy-cli.md)。
 - 若要使用 REST 来部署模板，请参阅[使用 ARM 模板和资源管理器 REST API 来部署资源](deploy-rest.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

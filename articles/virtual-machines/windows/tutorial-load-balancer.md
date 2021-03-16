@@ -6,17 +6,17 @@ ms.topic: tutorial
 ms.workload: infrastructure
 origin.date: 12/03/2018
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 231ef747713e5215c5c19520076a753519b68fa6
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: 6e8de785f4f936dd16c6e54a35edaec1fb059dbd
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570664"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055272"
 ---
 # <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>教程：在 Azure 中使用 Azure PowerShell 均衡 Windows 虚拟机负载以创建高可用性应用程序
 负载均衡通过将传入请求分布到多个虚拟机来提供更高级别的可用性。 本教程介绍了 Azure 负载均衡器的不同组件，这些组件用于分发流量和提供高可用性。 你将学习如何执行以下操作：
@@ -27,7 +27,7 @@ ms.locfileid: "98570664"
 > * 创建负载均衡器流量规则
 > * 使用自定义脚本扩展创建基本的 IIS 站点
 > * 创建虚拟机并将其附加到负载均衡器
-> * 查看负载均衡器的实际运行情况
+> * 查看运行中的负载均衡器
 > * 在负载均衡器中添加和删除 VM
 
 ## <a name="azure-load-balancer-overview"></a>Azure 负载均衡器概述
@@ -41,7 +41,7 @@ Azure 负载均衡器是位于第 4 层（TCP、UDP）的负载均衡器，通�
 
 ## <a name="launch-azure-local-shell"></a>启动 Azure 本地 Shell
 
-打开 Azure Powershell 控制台，并以管理员权限运行以下脚本。
+打开 Azure Powershell 控制台，并以管理员权限运行下面列出的脚本。
 
 <!--Not Available on Azure Cloud Shell-->
 
@@ -190,7 +190,7 @@ $availabilitySet = New-AzAvailabilitySet `
   -PlatformUpdateDomainCount 2
 ```
 
-使用 [New-AzureRmNetworkInterface](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) 设置 VM 的管理员用户名和密码：
+使用 [New-AzureRmNetworkInterface](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential) 设置 VM 的管理员用户名和密码：
 
 ```powershell
 $cred = Get-Credential
@@ -291,7 +291,7 @@ Set-AzNetworkInterface -NetworkInterface $nic
 > * 创建负载均衡器流量规则
 > * 使用自定义脚本扩展创建基本的 IIS 站点
 > * 创建虚拟机并将其附加到负载均衡器
-> * 查看负载均衡器的实际运行情况
+> * 查看运行中的负载均衡器
 > * 在负载均衡器中添加和删除 VM
 
 请转到下一教程，了解如何管理 VM 网络。
@@ -299,4 +299,4 @@ Set-AzNetworkInterface -NetworkInterface $nic
 > [!div class="nextstepaction"]
 > [管理 VM 和虚拟网络](./tutorial-virtual-network.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

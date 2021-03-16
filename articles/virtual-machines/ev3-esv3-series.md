@@ -6,16 +6,16 @@ ms.subservice: sizes
 ms.topic: conceptual
 origin.date: 09/22/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: d7f432cee09fdb81a4319fc4a34466bdbe51ca07
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 66ecde9ee88b9bd822462ffdc4e5f83829621d1c
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857014"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055171"
 ---
 <!--Verified successfully-->
 <!--Partical Content from verified-->
@@ -37,6 +37,8 @@ Ev3 系列 VM 采用 Intel® 超线程技术。
 [实时迁移](maintenance-and-updates.md)：支持<br />
 [内存保留更新](maintenance-and-updates.md)：支持<br />
 [VM 代系支持](generation-2.md)：第 1 代<br />
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br />
+[临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br />
 <br />
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大网卡数/网络带宽等级 |
@@ -67,6 +69,8 @@ Esv3 系列 VM 采用 Intel® 超线程技术。
 [实时迁移](maintenance-and-updates.md)：支持<br />
 [内存保留更新](maintenance-and-updates.md)：支持<br />
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br />
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br />
+[临时 OS 磁盘](ephemeral-os-disks.md)：支持 <br />
 <br />
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 突发缓存吞吐量和临时存储吞吐量：IOPS/MBps<sup>3</sup> | 最大非缓存磁盘吞吐量：IOPS/MBps |  突发非缓存磁盘吞吐量：IOPS/MBps<sup>3</sup>| 最大 NIC 数/预期网络带宽 (Mbps) |
@@ -94,11 +98,11 @@ Esv3 系列 VM 采用 Intel® 超线程技术。
 - [常规用途](sizes-general.md)
 - [内存优化](sizes-memory.md)
     
-    <!--Not Available on - [Storage optimized](sizes-storage.md)-->
+    <!--NOT AVAILABLE ON - [Storage optimized](sizes-storage.md)-->
     
 - [GPU 优化](sizes-gpu.md)
     
-    <!--Not Available on - [High performance compute](sizes-hpc.md)-->
+    <!--NOT AVAILABLE ON - [High performance compute](sizes-hpc.md)-->
     
 - [前几代](sizes-previous-gen.md)
 - [定价计算器](https://www.azure.cn/pricing/calculator/)
@@ -108,4 +112,4 @@ Esv3 系列 VM 采用 Intel® 超线程技术。
 
 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

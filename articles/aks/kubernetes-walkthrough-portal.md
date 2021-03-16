@@ -6,17 +6,17 @@ services: container-service
 ms.topic: quickstart
 origin.date: 01/13/2021
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/01/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: a31372b6f26ce06df2718faf4ce458fdaea67a2f
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 5b32f66e96be3e9ddf27796f3cf2d174a2440f71
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063678"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102054070"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -38,7 +38,9 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 <!--MOONCAKE: Custmize for MC-->
 
-1. 在 Azure 门户菜单或主页上，选择“创建资源”，键入“Kubernetes 服务”并在“新建”页中选择 Enter 键，然后在“市场”页中选择“Kubernetes 服务”项   。
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源” 。
+
+2.   在“新建”页中键入“Kubernetes 服务”，然后在“市场”页中选择“Kubernetes 服务”项，并选择“创建”。
 
     <!--MOONCAKE: Custmize for MC-->
     
@@ -46,6 +48,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
     - **项目详细信息**：选择 Azure **订阅**，然后选择或创建 Azure **资源组**，例如 *myResourceGroup*。
     - **群集详细信息**：输入 **Kubernetes 群集名称**，例如 *myAKSCluster*。 选择 AKS 群集的“区域”和“Kubernetes 版本” 。
     - **主节点池**：选择 AKS 节点的 VM **节点大小**。 一旦部署 AKS 群集，则不能更改 VM 大小。
+        
         - 选择要部署到群集中的节点数。 对于本快速入门，请将“节点计数”设置为“1”。 部署群集后，可以调整节点计数。
     
     :::image type="content" source="media/kubernetes-walkthrough-portal/create-cluster-basics.png" alt-text="创建 AKS 群集 - 提供基本信息":::
@@ -73,16 +76,16 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。
 
-<!--Not Available on  The `kubectl` client is pre-installed in the Azure Cloud Shell.-->
+<!--NOT AVAILABLE ON  The `kubectl` client is pre-installed in the Azure Cloud Shell.-->
+<!--NOT AVAILABLE ON  Open Azure Cloud Shell using the `>_` button on the top of the Azure portal.-->
+<!--NOT AVAILABLE ON  :::image type="content" source="media/kubernetes-walkthrough-portal/aks-cloud-shell.png" alt-text="Open the Azure Cloud Shell in the portal":::-->
 
-<!--Not Available on Open Azure Cloud Shell using the `>_` button on the top of the Azure portal.-->
-
-<!--Not Available on  :::image type="content" source="media/kubernetes-walkthrough-portal/aks-cloud-shell.png" alt-text="Open the Azure Cloud Shell in the portal":::-->
-
-若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。 以下示例获取名为 *myResourceGroup* 的资源组中群集名称 *myAKSCluster* 的凭据：
+> [!NOTE]
+> 要在本地 shell 安装中执行这些操作，需先验证是否已安装 Azure CLI，然后使用 `az login` 命令连接到 Azure。
 
 [!INCLUDE [azure-cli-2-e-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
+若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。 以下示例获取名为 *myResourceGroup* 的资源组中群集名称 *myAKSCluster* 的凭据：
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -308,4 +311,4 @@ az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 [kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
 [kubernetes-service]: concepts-network.md#services
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -10,12 +10,12 @@ ms.author: sagopal
 ms.date: 12/3/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python
-ms.openlocfilehash: 2dd8a2566ca4776c9f2413c3b4aad728fd954356
-ms.sourcegitcommit: 90e2a3a324eb07df6f7c6516771983e69edd30bf
+ms.openlocfilehash: 6553dcf3431e1ffc7571e3fe0080d2a4f3bb0043
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804366"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196509"
 ---
 # <a name="troubleshoot-environment-image-builds"></a>对环境映像生成进行故障排除
 了解如何排查 Docker 环境映像生成和包安装问题。

@@ -3,14 +3,14 @@ title: 对适用于 Java 的 Azure Monitor Application Insights 进行故障排�
 description: 了解如何对 Azure Monitor Application Insights 的 Java 代理进行故障排除
 ms.topic: conceptual
 ms.author: v-johya
-ms.date: 01/27/2021
+ms.date: 02/22/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 70b57aae65760d5bbcfea6f0b254d0e9e3190249
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 90c9c0fcb4ee491bd6bf0faa399ea8a56e71e247
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059910"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197175"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>故障排除指南：适用于 Java 的 Azure Monitor Application Insights
 
@@ -50,37 +50,67 @@ ms.locfileid: "99059910"
 
 ## <a name="import-ssl-certificates"></a>导入 SSL 证书
 
-如果使用的是默认的 Java 密钥存储，则它已具有所有 CA 根证书。 你应当不需要导入更多的 SSL 证书。
+本部分帮助你在使用 Java 代理时进行故障排除，并可能会修复与 SSL 证书相关的异常。
 
-如果使用的是自定义 Java 密钥存储，则你可能需要将 Application Insights 终结点 SSL 证书导入其中。
+可以通过两个不同的路径来解决此问题。
 
-### <a name="key-terminology"></a>关键术语
-“密钥存储”是证书、公钥和私钥的存储库。 通常，Java 开发工具包发行版具有用于管理它们的可执行文件：`keytool`。
+### <a name="if-using-a-default-java-keystore"></a>如果使用的是默认的 Java 密钥存储：
 
-下面的示例是一个简单的命令，用于将 SSL 证书导入到密钥存储：
+通常情况下，默认的 Java 密钥存储已具有所有 CA 根证书。 但是，可能有一些例外情况，例如，引入终结点证书可能由不同的根证书进行签名。 因此，我们建议使用以下三个步骤来解决此问题：
 
-`keytool -importcert -alias your_ssl_certificate -file "your downloaded SSL certificate name".cer -keystore "Your KeyStore name" -storepass "Your keystore password" -noprompt`
+1.  检查用于对 Application Insights 终结点进行签名的根证书是否已存在于默认密钥存储中。 默认情况下，受信任的 CA 证书存储在 `$JAVA_HOME/jre/lib/security/cacerts` 中。 若要列出 Java 密钥存储中的证书，请使用以下命令：
+    > `keytool -list -v -keystore $PATH_TO_KEYSTORE_FILE`
+ 
+    你可以将输出重定向到这样的一个临时文件（稍后可以轻松搜索）
+    > `keytool -list -v -keystore $JAVA_HOME/jre/lib/security/cacerts > temp.txt`
 
-### <a name="steps-to-download-and-add-an-ssl-certificate"></a>下载和添加 SSL 证书的步骤
+2. 获得证书列表后，按照以下[步骤](#steps-to-download-ssl-certificate)下载用于对 Application Insights 终结点进行签名的根证书。
+
+    下载证书后，使用以下命令基于证书生成 SHA-1 哈希：
+    > `keytool -printcert -v -file "your_downloaded_root_certificate.cer"`
+ 
+    复制 SHA-1 值并检查此值是否存在于你之前保存的“temp.txt”文件中。  如果在临时文件中找不到 SHA-1 值，则表示默认 Java 密钥存储中缺少下载的根证书。
+
+
+3. 使用以下命令将根证书导入到默认 Java 密钥存储：
+    >   `keytool -import -file "the cert file" -alias "some meaningful name" -keystore "path to cacerts file"`
+ 
+    在本例中，该证书是
+ 
+    > `keytool -import -file "your downloaded root cert file" -alias "some meaningful name" $JAVA_HOME/jre/lib/security/cacerts`
+
+
+### <a name="if-using-a-custom-java-keystore"></a>如果使用的是自定义 Java 密钥存储：
+
+如果使用的是自定义 Java 密钥存储，则你可能需要将 Application Insights 终结点根 SSL 证书导入其中。
+建议你执行以下两个步骤来解决此问题：
+1. 按照以下[步骤](#steps-to-download-ssl-certificate)从 Application Insights 终结点下载根证书。
+2. 使用以下命令将根 SSL 证书导入到自定义 Java 密钥存储：
+    > `keytool -importcert -alias your_ssl_certificate -file "your downloaded SSL certificate name.cer" -keystore "Your KeyStore name" -storepass "Your keystore password" -noprompt`
+
+### <a name="steps-to-download-ssl-certificate"></a>下载 SSL 证书的步骤
 
 1.  打开你习惯使用的浏览器，然后转到用于检测应用程序的连接字符串中存在的 `IngestionEndpoint` URL。
 
-    :::image type="content" source="media/java-ipa/troubleshooting/ingestion-endpoint-url.png" alt-text="屏幕截图显示了 Application Insights 连接字符串。":::
+    :::image type="content" source="media/java-ipa/troubleshooting/ingestion-endpoint-snippet.png" alt-text="屏幕截图显示了 Application Insights 连接字符串。" lightbox="media/java-ipa/troubleshooting/ingestion-endpoint-snippet.png":::
 
 2.  选择浏览器中的“查看站点信息”（锁）图标，然后选择“证书”选项。
 
-    :::image type="content" source="media/java-ipa/troubleshooting/certificate-icon-capture.png" alt-text="屏幕截图显示了站点信息中的“证书”选项。":::
+    :::image type="content" source="media/java-ipa/troubleshooting/certificate-icon-capture.png" alt-text="屏幕截图显示了站点信息中的“证书”选项。" lightbox="media/java-ipa/troubleshooting/certificate-icon-capture.png":::
 
-3.  转到“详细信息”选项卡，然后选择“复制到文件”。
-4.  选择“下一步”按钮，选择“Base-64 编码的 X.509 (.CER)”格式，然后再次选择“下一步”。
+3.  你应当下载“根”证书，而不是下载“叶”证书，如下所示。 然后，你必须单击“证书路径”->“选择根证书”-> 单击“查看证书”。 这会弹出一个新的证书菜单，你可以通过此新菜单来下载证书。
 
-    :::image type="content" source="media/java-ipa/troubleshooting/certificate-export-wizard.png" alt-text="证书导出向导的屏幕截图，其中选择了一种格式。":::
+    :::image type="content" source="media/java-ipa/troubleshooting/root-certificate-selection.png" alt-text="屏幕截图显示了如何选择根证书。" lightbox="media/java-ipa/troubleshooting/root-certificate-selection.png":::
 
-5.  指定要在其中保存 SSL 证书的文件。 然后，选择“下一步” > “完成”。  应该会看到“导出成功”消息。
-6.  获得证书后，即可将证书导入到 Java 密钥存储中。 使用[前面的命令](#key-terminology)来导入证书。
+4.  转到“详细信息”选项卡，然后选择“复制到文件”。
+5.  选择“下一步”按钮，选择“Base-64 编码的 X.509 (.CER)”格式，然后再次选择“下一步”。
+
+    :::image type="content" source="media/java-ipa/troubleshooting/certificate-export-wizard.png" alt-text="证书导出向导的屏幕截图，其中选择了一种格式。" lightbox="media/java-ipa/troubleshooting/certificate-export-wizard.png":::
+
+6.  指定要在其中保存 SSL 证书的文件。 然后，选择“下一步” > “完成”。  应该会看到“导出成功”消息。
 
 > [!WARNING]
 > 在当前证书到期之前，你需要重复这些步骤以获取新证书。 可以在“证书”对话框的“详细信息”选项卡上找到到期信息。
 >
-> :::image type="content" source="media/java-ipa/troubleshooting/certificate-details.png" alt-text="屏幕截图显示了 SSL 证书详细信息。":::
+> :::image type="content" source="media/java-ipa/troubleshooting/certificate-details.png" alt-text="屏幕截图显示了 SSL 证书详细信息。" lightbox="media/java-ipa/troubleshooting/certificate-details.png":::
 

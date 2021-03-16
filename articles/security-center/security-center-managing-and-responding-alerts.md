@@ -11,52 +11,57 @@ ms.topic: how-to
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/04/2020
+ms.date: 02/25/2021
 ms.author: v-johya
 origin.date: 03/15/2020
-ms.openlocfilehash: 443b5cadd62d9c1898400f89c7bfb3a25ed7e510
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 143fcccd97e622e288b1a787e3fc2246a5dc9399
+ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746650"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197525"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>在 Azure 安全中心管理和响应安全警报
 
-本主题介绍如何查看和处理收到的警报，以保护资源。 
+本主题介绍了如何查看和处理安全中心的警报并保护你的资源。
 
-* 有关安全中心如何生成警报的概述，请参阅 [Azure 安全中心如何检测和应对威胁](security-center-alerts-overview.md)。
-
-> [!NOTE]
-> 若要启用高级检测，请启用 Azure Defender。 提供试用版。 要升级，请选择 [安全策略](tutorial-security-policy.md)中的“定价层”。 请参阅 [Azure 安全中心定价](security-center-pricing.md)，了解详细信息。
+触发安全警报的高级检测仅适用于 Azure Defender。 提供试用版。 若要升级，请参阅[启用 Azure Defender](security-center-pricing.md#enable-azure-defender)。
 
 ## <a name="what-are-security-alerts"></a>什么是安全警报？
 安全中心会自动收集、分析以及整合 Azure 资源、网络和所连合作伙伴解决方案（如，防火墙和终结点保护解决方案）的日志数据，检测真正的威胁并减少误报。 安全中心显示了一系列安全警报（按严重程度排序），并显示了快速调查问题所需的信息以及修复攻击的建议。
 
-> [!NOTE]
-> 有关安全中心检测功能工作原理的详细信息，请参阅 [Azure 安全中心如何检测和应对威胁](security-center-alerts-overview.md#detect-threats)。
+若要了解各种类型的警报，请参阅[安全警报 - 参考指南](alerts-reference.md)。
+
+有关安全中心如何生成警报的概述，请参阅 [Azure 安全中心如何检测和应对威胁](security-center-alerts-overview.md)。
+
 
 ## <a name="manage-your-security-alerts"></a>管理安全警报
 
-1. 在安全中心仪表板中，参阅“威胁防护”磁贴以查看和概要了解警报。
+1. 从安全中心的概述页上，选择页面顶部的“安全警报”磁贴，或选择侧栏中的链接。
 
-    ![安全中心的“安全警报”磁贴](./media/security-center-managing-and-responding-alerts/security-center-dashboard-alert.png)
+    :::image type="content" source="media/security-center-managing-and-responding-alerts/overview-page-alerts-links.png" alt-text="从 Azure 安全中心的概述页访问安全警报页":::
 
-1. 若要查看有关警报的更多详细信息，请单击该磁贴。
+    此时将打开安全警报页。
 
-   ![安全中心的“安全警报”](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
+    :::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Azure 安全中心的安全警报列表":::
 
-1. 若要筛选显示的警报，请单击“筛选”，然后从打开的“筛选器”边栏选项卡中选择要应用的筛选器选项。 列表会根据所选筛选器进行更新。 筛选功能可能非常有用。 例如，假设正在调查系统中的潜在危害，需要处理过去 24 小时内发生的安全警报。
+1. 若要筛选警报列表，请选择任何相关的筛选器。 你还可以通过“添加筛选器”选项添加进一步的筛选器。
 
-    ![筛选安全中心的警报](./media/security-center-managing-and-responding-alerts/security-center-filter-alerts.png)
+    :::image type="content" source="./media/security-center-managing-and-responding-alerts/alerts-adding-filters-small.png" alt-text="向警报视图添加筛选器" lightbox="./media/security-center-managing-and-responding-alerts/alerts-adding-filters-large.png":::
+
+    列表会根据你选择的筛选选项进行更新。 筛选功能可能非常有用。 例如，假设正在调查系统中的潜在危害，需要处理过去 24 小时内发生的安全警报。
+
 
 ## <a name="respond-to-security-alerts"></a>响应安全警报
 
-1. 在“安全警报”列表中，单击一个安全警报。 此时会显示所涉及的资源以及对抗攻击所需执行的步骤。
+1. 从“安全警报”列表中，选择一个警报。 此时会打开一个侧窗格，其中显示了警报和所有受影响的资源的说明。 
 
-    ![响应安全警报](./media/security-center-managing-and-responding-alerts/security-center-alert.png)
+    :::image type="content" source="./media/security-center-managing-and-responding-alerts/alerts-details-pane.png" alt-text="安全警报的迷你详细信息视图":::
 
-1. 查看此信息后，请单击受攻击的资源。
+    > [!TIP]
+    > 在此侧窗格处于打开状态时，可以通过键盘上的向上和向下箭头键快速查看警报列表。
+
+1. 有关详细信息，请选择“查看完整详细信息”。
 
     安全警报页面的左窗格显示有关安全警报的大致信息：标题、严重性、状态、活动时间、可疑活动的说明以及受影响的资源。 受影响的资源旁边是与资源相关的 Azure 标记。 在调查警报时，可以使用这些标记来推断资源的组织环境。
 
@@ -81,4 +86,5 @@ ms.locfileid: "96746650"
 
 - [配置警报抑制规则](alerts-suppression-rules.md)
 - [自动执行对安全中心触发器的响应](workflow-automation.md)
+- [安全警报 - 参考指南](alerts-reference.md)
 

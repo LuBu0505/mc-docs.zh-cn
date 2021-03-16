@@ -4,24 +4,24 @@ description: 显示支持标记的 Azure资源类型。 提供所有 Azure 服�
 ms.topic: conceptual
 origin.date: 10/21/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 03/01/2021
 ms.testscope: yes
 ms.testdate: 08/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: fb8013d5dd34550927c64ec93f2e699af6476bf3
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: a8c47f645b2983e95c366b77ebb3e8d9e3e4d353
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022306"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102055168"
 ---
 <!--Verify Successfully-->
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
 本文介绍某一资源类型是否支持[标记](tag-resources.md)。 标记为“支持标记”的列指示资源类型是否具有标记的属性。 
 
-<!--Not Avaialble on [Cost Management cost analysis](../../cost-management/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options)-->
-<!--Not Avaialble on [Azure billing invoice and daily usage data](../../billing/billing-download-azure-invoice-daily-usage-date.md)-->
-<!--Not Available on [tag-support.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv)-->
+<!--NOT AVAILABLE ON [Cost Management cost analysis](../../cost-management-billing/costs/group-filter.md)-->
+<!--NOT AVAILABLE ON [Azure billing invoice and daily usage data](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)-->
+<!--NOT AVAILABLE ON [tag-support.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv)-->
 
 跳转到资源提供程序命名空间：
 > [!div class="op_single_selector"]
@@ -31,6 +31,7 @@ ms.locfileid: "98022306"
 > - [Microsoft.AnalysisServices](#microsoftanalysisservices)
 > - [Microsoft.ApiManagement](#microsoftapimanagement)
 > - [Microsoft.AppConfiguration](#microsoftappconfiguration)
+> - [Microsoft.AppPlatform](#microsoftappplatform)
 > - [Microsoft.Authorization](#microsoftauthorization)
 > - [Microsoft.Automation](#microsoftautomation)
 > - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
@@ -96,6 +97,7 @@ ms.locfileid: "98022306"
 > - [Microsoft.SignalRService](#microsoftsignalrservice)
 > - [Microsoft.Solutions](#microsoftsolutions)
 > - [Microsoft.SQL](#microsoftsql)
+> - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft.Storage](#microsoftstorage)
 > - [Microsoft.StreamAnalytics](#microsoftstreamanalytics)
 > - [Microsoft.Synapse](#microsoftsynapse)
@@ -169,7 +171,15 @@ ms.locfileid: "98022306"
 > | configurationStores/eventGridFilters | 否 | 否 |
 > | configurationStores/keyValues | 否 | 否 |
 
-<!--Not Available on ## Microsoft.AppPlatform-->
+## <a name="microsoftappplatform"></a>Microsoft.AppPlatform
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 支持标记 | 在成本报表中标记 |
+> | ------------- | ----------- | ----------- |
+> | Spring | 是 | 是 |
+> | Spring/apps | 否 | 否 |
+> | Spring/apps/deployments | 否 | 否 |
+
 <!--Not Available on ## Microsoft.Attestation-->
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
@@ -244,6 +254,7 @@ ms.locfileid: "98022306"
 > | registrations / products | 否 | 否 |
 
 <!--Not Avaialble on ## Microsoft.AzureStackHCI-->
+<!--Not Avaialble on ## Microsoft.BareMetalInfrastructure-->
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
@@ -858,6 +869,9 @@ ms.locfileid: "98022306"
 > | workspaces/onlineEndpoints | 是 | 是 |
 > | workspaces/onlineEndpoints/deployments | 是 | 是 |
 
+> [!NOTE]
+> 工作区标记不会传播到计算群集和计算实例。 
+
 ## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
 
 > [!div class="mx-tableFixed"]
@@ -1308,6 +1322,7 @@ ms.locfileid: "98022306"
 > | SignalR | 是 | 是 |
 > | SignalR / eventGridFilters | 否 | 否 |
 
+<!--Not Available on ## Microsoft.Singularity-->
 <!--Not Available on ## Microsoft.SoftwarePlan-->
 
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
@@ -1351,7 +1366,14 @@ ms.locfileid: "98022306"
 > [!NOTE]
 > Master 数据库不支持标记，但其他数据库（包括 Azure Synapse Analytics 数据库）支持标记。 Azure Synapse Analytics 数据库必须处于活动（而非暂停）状态。
 
-<!--Not Available on ## Microsoft.SqlVirtualMachine-->
+## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 支持标记 | 在成本报表中标记 |
+> | ------------- | ----------- | ----------- |
+> | SqlVirtualMachineGroups | 是 | 是 |
+> | SqlVirtualMachineGroups/AvailabilityGroupListeners | 否 | 否 |
+> | SqlVirtualMachines | 是 | 是 |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
@@ -1381,6 +1403,7 @@ ms.locfileid: "98022306"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | clusters | 是 | 是 |
+> | clusters/privateEndpoints | 否 | 否 |
 > | streamingjobs | 是（见下方备注） | 是 |
 
 > [!NOTE]
@@ -1477,4 +1500,4 @@ ms.locfileid: "98022306"
 
 若要了解如何将标记应用于资源，请参见[使用标记来组织 Azure 资源](tag-resources.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -3,24 +3,24 @@ title: 测试 Azure 虚拟网络中的 Azure 虚拟机网络延迟 | Azure
 description: 了解如何测试虚拟网络中 Azure 虚拟机之间的网络延迟
 services: virtual-network
 documentationcenter: na
-author: rockboyfor
-manager: digimobile
+manager: Marina Lipshteyn
 editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 10/29/2019
-ms.date: 01/13/2020
+author: rockboyfor
+ms.date: 02/22/2021
 ms.author: v-yeche
-ms.openlocfilehash: e942193855588f58285dfedb074fd9544c2a3af8
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 5697b7cda1e1fbee62dc0c42808b7b615ae6b705
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "75859211"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102053006"
 ---
 # <a name="test-vm-network-latency"></a>测试 VM 网络延迟
 
@@ -39,15 +39,18 @@ ms.locfileid: "75859211"
 - 为部署的 VM 之间的网络延迟建立基准。
 - 在进行下述相关更改后，比较网络延迟变化产生的效果：
     - 操作系统 (OS) 或网络堆栈软件，包括配置更改。
-        <!--Not Available on Availablity Zone and PPG-->
+    - VM 部署方法，例如部署到邻近放置组 (PPG)。
+
+        <!--Not Available on Availablity Zone-->
+
     - VM 属性，例如加速网络或大小更改。
     - 虚拟网络，例如路由或筛选更改。
 
 ### <a name="tools-for-testing"></a>测试工具
 要测量延迟，有两个不同的工具可供你选择：
 
-* 对于基于 Windows 的系统：[latte.exe (Windows)](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
-* 对于基于 Linux 的系统：[SockPerf (Linux)](https://github.com/mellanox/sockperf)
+* 对于基于 Windows 的系统：[latte.exe (Windows)](https://github.com/microsoft/latte/releases/download/v0/latte.exe)
+* 对于基于 Linux 的系统，为 [SockPerf (Linux)](https://github.com/mellanox/sockperf)
 
 使用这些工具有助于确保仅测量 TCP 或 UDP 有效负载传送时间，而不测量应用程序未使用的，且不影响应用程序性能的 ICMP (Ping) 或其他数据包类型。
 
@@ -56,9 +59,7 @@ ms.locfileid: "75859211"
 创建 VM 配置时，请记住以下建议：
 - 使用最新版本的 Windows 或 Linux。
 - 启用加速网络以获得最佳结果。
-    
-    <!--Not Available on (/virtual-machines/linux/co-location)-->
-    
+- 使用 [Azure 邻近放置组](../virtual-machines/co-location.md)部署 VM。
 - 大型 VM 的性能往往优于小型 VM。
 
 ### <a name="tips-for-analysis"></a>有关分析的提示
@@ -79,7 +80,7 @@ ms.locfileid: "75859211"
 
 ### <a name="allow-latteexe-through-windows-defender-firewall"></a>允许 latte.exe 通过 Windows Defender 防火墙
 
-在“接收方”  的 Windows Defender 防火墙中创建“允许”规则，以允许 latte.exe 流量抵达。 最简单的方法是按名称允许整个 latte.exe 程序，而不是允许特定的 TCP 端口入站。
+在“接收方”的 Windows Defender 防火墙中创建“允许”规则，以允许 latte.exe 流量抵达。 最简单的方法是按名称允许整个 latte.exe 程序，而不是允许特定的 TCP 端口入站。
 
 通过运行以下命令，允许 latte.exe 通过 Windows Defender 防火墙：
 
@@ -93,7 +94,7 @@ netsh advfirewall firewall add rule program=<path>\latte.exe name="Latte" protoc
 
 ### <a name="run-latency-tests"></a>运行延迟测试
 
-* 在“接收方”  ，启动 latte.exe（从 CMD 窗口而不是从 PowerShell 运行它）：
+* 在“接收方”，启动 latte.exe（从 CMD 窗口而不是从 PowerShell 运行它）：
 
     ```cmd
     latte -a <Receiver IP address>:<port> -i <iterations>
@@ -107,13 +108,13 @@ netsh advfirewall firewall add rule program=<path>\latte.exe name="Latte" protoc
 
     `latte -a 10.0.0.4:5005 -i 65100`
 
-* 在“发送方”  ，启动 latte.exe（从 CMD 窗口而不是从 PowerShell 运行它）：
+* 在“发送方”，启动 latte.exe（从 CMD 窗口而不是从 PowerShell 运行它）：
 
     ```cmd
     latte -c -a <Receiver IP address>:<port> -i <iterations>
     ```
 
-    生成的命令与在接收方相同，只是添加了 &nbsp; *-c* 来指示这是“客户端”或“发送方”   ：
+    生成的命令与在接收方相同，只是添加了 &nbsp;*-c* 来指示这是“客户端”或“发送方”：
 
     `latte -c -a 10.0.0.4:5005 -i 65100`
 
@@ -125,7 +126,7 @@ netsh advfirewall firewall add rule program=<path>\latte.exe name="Latte" protoc
 
 ### <a name="install-sockperf-on-the-vms"></a>在 VM 上安装 SockPerf
 
-在 Linux VM 上（包括“发送方”和“接收方”   ），运行以下命令以在 VM 上准备 SockPerf。 提供的命令适用于主要分发版。
+在 Linux VM 上（包括“发送方”和“接收方”），运行以下命令以在 VM 上准备 SockPerf。 提供的命令适用于主要分发版。
 
 #### <a name="for-centos"></a>对于 CentOS
 
@@ -180,7 +181,7 @@ sudo make install
 
 SockPerf 安装完成后，便可以在 VM 上运行延迟测试了。 
 
-首先，在“接收方”  启动 SockPerf。
+首先，在“接收方”启动 SockPerf。
 
 可输入任意可用端口号。 在此示例中，我们使用端口 12345：
 
@@ -203,11 +204,9 @@ sockperf ping-pong -i 10.0.0.4 --tcp -m 350 -t 101 -p 12345  --full-rtt
 此 SockPerf 示例使用 350 字节消息大小，这是平均数据包的典型大小。 你可以调大或调小消息大小，使结果能够更准确地代表 VM 上运行的工作负荷。
 
 ## <a name="next-steps"></a>后续步骤
-<!--Not Available on [Azure Proximity Placement Group](/virtual-machines/linux/co-location)-->
-
+* 使用 [Azure 邻近放置组](../virtual-machines/co-location.md)改善延迟。
 * 了解如何根据方案[优化 VM 的网络](../virtual-network/virtual-network-optimize-network-bandwidth.md)。
 * 阅读有关如何[为虚拟机分配带宽](../virtual-network/virtual-machine-network-throughput.md)的信息。
 * 有关详细信息，请参阅 [Azure 虚拟网络常见问题解答](../virtual-network/virtual-networks-faq.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
-<!--Not Avaialble on RHEL-->
+<!--Update_Description: update meta properties, wording update, update link-->

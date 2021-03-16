@@ -4,20 +4,19 @@ description: 使用 Azure IoT Edge 创建一个透明、不透明或代理网关
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-origin.date: 11/10/2020
-ms.date: 12/03/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 97a90d6226227853038db94926053234f2f471c9
-ms.sourcegitcommit: 60e70acb6f9604aeef69d2027f7f96a1d7d5b248
+ms.openlocfilehash: 8aa7eccf68bd3c33c492f681603372ed4311be4a
+ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96541081"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102196732"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>如何将 IoT Edge 设备用作网关
 
@@ -36,9 +35,9 @@ IoT Edge 中心模块的作用类似于 IoT 中心，因此可以处理来自任
 
 所有网关模式提供以下优势：
 
-* **边缘分析** – 在本地使用 AI 服务处理来自下游设备的数据，而无需向云发送完全保真的遥测数据。 本地查找和响应见解，并仅将一部分数据发送到 IoT 中心。
-* 下游设备隔离  – 网关设备可以屏蔽所有下游设备，而不对 Internet 公开。 它可以位于无连接的运营技术 (OT) 网络和提供 Web 访问权限的信息技术 (IT) 网络之间。 同样，无法自行连接到 IoT 中心的设备可以改为连接到网关设备。
-* **连接多路复用** - 通过 IoT Edge 网关连接到 IoT 中心的所有设备使用同一个基础连接。
+* **边缘分析** - 在本地使用 AI 服务处理来自下游设备的数据，而无需向云发送完全保真的遥测数据。 本地查找和响应见解，并仅将一部分数据发送到 IoT 中心。
+* **下游设备隔离** - 网关设备可以屏蔽所有下游设备，而不对 Internet 公开。 它可以位于无连接的运营技术 (OT) 网络和提供 Web 访问权限的信息技术 (IT) 网络之间。 同样，无法自行连接到 IoT 中心的设备可以改为连接到网关设备。
+* **连接多路复用** - 通过 IoT Edge 网关连接到 IoT 中心的所有设备可以使用同一个基础连接。 这种多路复用功能要求 IoT Edge 网关使用 AMQP 作为其上游协议。
 * 流量平滑  - 在本地保存消息的同时，如果 IoT 中心对流量进行限制，IoT Edge 设备将自动执行指数回退。 此优点使解决方案能灵活应对流量高峰。
 * **脱机支持** - 网关设备存储不能传递到 IoT 中心的消息和孪生更新。
 
@@ -46,7 +45,9 @@ IoT Edge 中心模块的作用类似于 IoT 中心，因此可以处理来自任
 
 在透明网关模式下，在理论上可以连接到 IoT 中心的设备可以改为连接到网关设备。 下游设备有其自己的 IoT 中心标识，并使用 MQTT 或 AMQP 协议进行连接。 网关只是在设备与 IoT 中心之间传递通信。 设备和通过 IoT 中心与其交互的用户都不知道网关正在协调它们的通信。 这样缺乏感知意味着网关被认为是“透明”的。
 
-<!-- 1.0.10 -->
+要详细了解 IoT Edge 中心如何管理下游设备与云之间的通信，请参阅[了解 Azure IoT Edge 运行时及其体系结构](iot-edge-runtime.md)。
+
+<!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
 
 IoT Edge 设备不能位于 IoT Edge 网关的下游。
@@ -73,6 +74,11 @@ IoT Edge 设备不能位于 IoT Edge 网关的下游。
 #### <a name="cloud-identities"></a>云标识
 
 透明网关方案中的所有设备都需要云标识，以便能够在 IoT 中心进行身份验证。 创建或更新设备标识时，可以设置设备的父设备或子设备。 此配置授权父网关设备处理其子设备的身份验证。
+
+>[!NOTE]
+>对于使用对称密钥身份验证的下游设备来说，在 IoT 中心中设置父设备曾是一个可选步骤。 但从版本 1.1.0 开始，每个下游设备都必须分配给父设备。
+>
+>可以通过将环境变量 AuthenticationMode 设置为值 CloudAndScope 来将 IoT Edge 中心配置为返回到以前的行为 。
 
 子设备只能有一个父级。 每个父级最多可以有 100 个子级。
 
@@ -107,7 +113,7 @@ IoT Edge 设备在透明网关关系中可以是父级，也可以是子级。 �
 
 使用下表查看设备与网关后的设备对不同 IoT 中心功能的支持情况。
 
-<!-- 1.0.10 -->
+<!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
 
 | 功能 | IoT 设备 | 网关后的 IoT |
