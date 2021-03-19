@@ -31931,19 +31931,24 @@
         "redirect_document_id": false
     },
     {
-      "source_path_from_root": "/articles/dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md",
+      "source_path": "/articles/dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md",
       "redirect_url": "/dms/",
       "redirect_document_id": false
     },
     {
-      "source_path_from_root": "/articles/dms/tutorial-sql-server-azure-sql-online.md",
+      "source_path": "/articles/dms/tutorial-sql-server-azure-sql-online.md",
       "redirect_url": "/dms/tutorial-sql-server-to-azure-sql",
       "redirect_document_id": false
     },
     {
-      "source_path_from_root": "/articles/dms/known-issues-azure-sql-online.md",
+      "source_path": "/articles/dms/known-issues-azure-sql-online.md",
       "redirect_url": "/dms/",
       "redirect_document_id": false
+    },
+    {
+        "source_path": "/articles/key-vault/private-link-service.md",
+        "redirect_url": "/key-vault/general/private-link-service",
+        "redirect_document_id": false
     },
     {
         "source_path": "articles/virtual-machines/linux/cloudinit-prepare-custom-image.md",
@@ -31981,7 +31986,6 @@
         "redirect_document_id": false
     }
     
-
 
     
 
