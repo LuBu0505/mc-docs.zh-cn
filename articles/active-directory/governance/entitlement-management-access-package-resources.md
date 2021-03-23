@@ -12,24 +12,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 02/24/2021
+ms.date: 03/16/2021
 ms.author: v-junlch
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ca8defb545f1d8e56d074f0702e2b475d7cf81f
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: b9fb4e7a83bd0eea2cad799394a0d3b0440c269c
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697735"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765417"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中更改访问包的资源角色
 
 访问包管理者随时可以更改访问包中的资源，而无需考虑如何预配用户对新资源的访问权限，或者从以前的资源中删除用户的访问权限。 本文介绍如何更改现有访问包的资源角色。
 
-此视频概述了如何更改访问包。
-
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE3LD4Z]
 
 ## <a name="check-catalog-for-resources"></a>检查资源的目录
 
@@ -144,13 +141,9 @@ ms.locfileid: "101697735"
 
 1. 在“将资源角色添加到访问包”页上，单击“SharePoint 站点”打开“选择 SharePoint Online 站点”窗格。
 
-    :::image type="content" source="media/entitlement-management-access-package-resources/sharepoint-multigeo-portal.png" alt-text="访问包 - 添加资源角色 - 选择 SharePoint 站点 - 门户视图":::
+    :::image type="content" source="media/entitlement-management-access-package-resources/resource-sharepoint-add.png" alt-text="访问包 - 添加资源角色 - 选择 SharePoint 站点 - 门户视图":::
 
-1. 若已为 SharePoint 启用[多地域](https://docs.microsoft.com/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365?view=o365-worldwide)，请选择想从中选择站点的环境。
-    
-    :::image type="content" source="media/entitlement-management-access-package-resources/sharepoint-multigeo-select.png" alt-text="访问包 - 添加资源角色 - 选择 SharePoint 多地域站点":::
-
-1. 如果未启用多地域，则无需选择环境。 选择要包含在访问包中的 SharePoint Online 站点。
+1. 选择要包含在访问包中的 SharePoint Online 站点。
 
     ![访问包 - 添加资源角色 - 选择 SharePoint Online 站点](./media/entitlement-management-access-package-resources/sharepoint-site-select.png)
 

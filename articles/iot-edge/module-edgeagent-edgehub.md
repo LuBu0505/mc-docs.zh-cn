@@ -3,18 +3,17 @@ title: 代理和中心模块孪生的属性 - Azure IoT Edge
 description: 查看 edgeAgent 和 edgeHub 模块孪生的特定属性及其值
 author: kgremban
 manager: philmea
-ms.author: v-tawe
-origin.date: 08/31/2020
-ms.date: 11/13/2020
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: acb486d28ed5c697429d16e9782ee5c19cf58c36
-ms.sourcegitcommit: 9438c9db77338cecacf37d2fc178e757df9de83d
+ms.openlocfilehash: f48687791fea413561d2578948c5d788a30d91e1
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94595204"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766259"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>IoT Edge 代理和 IoT Edge 中心模块孪生的属性
 

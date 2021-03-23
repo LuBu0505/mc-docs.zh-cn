@@ -2,30 +2,31 @@
 title: 快速入门：将 Power BI 工作区链接到 Synapse 工作区
 description: 遵循本指南中的步骤将 Power BI 工作区链接到 Azure Synapse Analytics 工作区。
 services: synapse-analytics
-author: jocaplan
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: business-intelligence
-ms.date: 10/27/2020
-ms.author: jocaplan
+origin.date: 10/27/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 04c546e337f0d18a53d893af0bddde24c1c56d4c
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 563e329b16bb16ef89bc4d55b9826d70dc4df9be
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207408"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766132"
 ---
 # <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-workspace"></a>快速入门：将 Power BI 工作区链接到 Synapse 工作区
 
 本快速入门介绍如何将 Power BI 工作区连接到 Azure Synapse Analytics 工作区，以便从 Synapse Studio 创建新的 Power BI 报表和数据集。
 
-如果没有 Azure 订阅，请[在开始之前创建一个免费帐户](https://azure.microsoft.com/free/)。
+如果没有 Azure 订阅，[请在开始前创建一个试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 ## <a name="prerequisites"></a>先决条件
 
 - [创建 Azure Synapse 工作区和关联的存储帐户](quickstart-create-workspace.md)。
-- [Power BI Professional 或 Premium 工作区](/power-bi/service-create-the-new-workspaces)
+- [Power BI Professional 或 Premium 工作区](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces)
 
 ## <a name="link-power-bi-workspace-to-your-synapse-workspace"></a>将 Power BI 工作区链接到 Synapse 工作区
 
