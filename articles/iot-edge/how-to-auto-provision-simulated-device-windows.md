@@ -3,18 +3,17 @@ title: 使用 DPS 自动预配 Windows 设备 - Azure IoT Edge | Microsoft Docs
 description: 使用 Windows 计算机上的模拟设备通过设备预配服务测试 Azure IoT Edge 的自动设备预配
 author: kgremban
 manager: philmea
-ms.author: v-tawe
-origin.date: 04/03/2019
-ms.date: 11/13/2020
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 573785dc145305d35ef4c813f152aac00af53f7e
-ms.sourcegitcommit: 9438c9db77338cecacf37d2fc178e757df9de83d
+ms.openlocfilehash: a681a6c03daf643084f5ac241427ab4c6740f813
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94595199"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765809"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>在 Windows 上使用虚拟 TPM 创建和预配模拟 IoT Edge 设备
 

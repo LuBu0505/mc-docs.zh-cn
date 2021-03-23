@@ -2,20 +2,21 @@
 title: 在 Synapse SQL 中使用临时表
 description: 有关在 Synapse SQL 中使用临时表的基本指导。
 services: synapse-analytics
-author: XiaoyuMSFT
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: xiaoyul
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: 5f3b50802b7ed0ebbd7187ef7d3e3b0713c1a98f
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 3b6c0653c2d8862bdfffa2907698dc555ec009a7
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207116"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766460"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Synapse SQL 中的临时表
 

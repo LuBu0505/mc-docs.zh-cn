@@ -2,26 +2,27 @@
 title: 为运行一次的任务重启策略
 description: 了解如何使用 Azure 容器实例来执行一直要运行到完成的任务，例如生成、测试渲染作业或制作其映像。
 ms.topic: article
-origin.date: 04/15/2019
-ms.date: 01/15/2020
+origin.date: 08/11/2020
+author: rockboyfor
+ms.date: 03/22/2021
 ms.author: v-yeche
-ms.openlocfilehash: cb012e2c9aa8a90a4385db6c5386bc617b5f8d15
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: f87a20b8cefba06461eeb17e6e43301c445c044e
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428939"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766502"
 ---
 <!--Verified successfully-->
 # <a name="run-containerized-tasks-with-restart-policies"></a>使用重启策略运行容器化任务
 
 在 Azure 容器实例中部署容器的简便性和速度，使该服务成了可用于执行一次性任务（例如，在容器实例中生成、测试渲染作业并制作其映像）的引人注目的平台。
 
-使用可配置的重启策略，可将容器指定为在完成其进程后停止。 由于容器实例按秒计费，我们只需针对执行任务的容器在运行时所用的计算资源付费。
+借助可配置的重启策略，可指定容器在完成进程后停止。 由于容器实例按秒计费，只需针对执行任务的容器在运行时所用的计算资源付费。
 
 本文演示的示例使用 Azure CLI。 必须[在本地安装][azure-cli-install] Azure CLI 2.0.21 或更高版本。
 
-<!--Not Available on  [Azure Cloud Shell](../cloud-shell/overview.md)-->
+<!--NOT AVAILABLE ON [Azure local Shell](../cloud-shell/overview.md)-->
 
 ## <a name="container-restart-policy"></a>容器重启策略
 
@@ -29,13 +30,15 @@ ms.locfileid: "77428939"
 
 | 重启策略   | 说明 |
 | ---------------- | :---------- |
-| `Always` | 始终重启容器组中的容器。 如果在创建容器时未指定重启策略，则会应用此**默认**设置。 |
+| `Always` | 始终重启容器组中的容器。 如果在创建容器时未指定重启策略，则会应用此默认设置。 |
 | `Never` | 永远不重启容器组中的容器。 容器最多运行一次。 |
-| `OnFailure` | 仅当容器中执行的进程失败（终止且返回非零退出代码）时，才重启容器组中的容器。 容器至少运行一次。 |
+| `OnFailure` | 仅当容器中执行的进程失败（它以非零退出代码终止）时，才重启容器组中的容器。 容器至少运行一次。 |
+
+[!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
 ## <a name="specify-a-restart-policy"></a>指定重启策略
 
-重启策略的指定方式取决于容器实例的创建方式，例如，是使用 Azure CLI、Azure PowerShell cmdlet 还是 Azure 门户。 在 Azure CLI 中，在调用 [az container create][az-container-create] 时指定 `--restart-policy` 参数。
+重启策略的指定方式取决于容器实例的创建方式，例如，是使用 Azure CLI、Azure PowerShell cmdlet 还是 Azure 门户。 在 Azure CLI 中，请在调用 [az container create][az-container-create] 时指定 `--restart-policy` 参数。
 
 ```azurecli
 az container create \
@@ -64,7 +67,10 @@ az container create \
 Azure 容器实例将启动该容器，然后在其应用程序（在本例中为脚本）退出时停止。 当 Azure 容器实例停止重启策略为 `Never` 或 `OnFailure` 的某个容器时，该容器的状态将设置为 **Terminated**。 可以使用 [az container show][az-container-show] 命令检查容器的状态：
 
 ```azurecli
-az container show --resource-group myResourceGroup --name mycontainer --query containers[0].instanceView.currentState.state
+az container show \
+    --resource-group myResourceGroup \
+    --name mycontainer \
+    --query containers[0].instanceView.currentState.state
 ```
 
 示例输出：
@@ -94,17 +100,13 @@ az container logs --resource-group myResourceGroup --name mycontainer
  ('HAMLET', 386)]
 ```
 
-此示例显示了由脚本发送到 STDOUT 的输出。 但是，容器化任务可能会将其输出写入到持久性存储供以后检索。 例如，写入到 [Azure 文件共享](container-instances-volume-azure-files.md)。
-
-<!--CORRECT ON container-instances-volume-azure-files.md-->
+此示例显示了由脚本发送到 STDOUT 的输出。 但是，容器化任务可能会将其输出写入到持久性存储供以后检索。 例如，写入到 [Azure 文件共享](./container-instances-volume-azure-files.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 基于任务的方案（例如，使用多个容器批量处理大型数据集）可以在运行时利用自定义的[环境变量](container-instances-environment-variables.md)或[命令行](container-instances-start-command.md)。
 
-有关如何保存一直运行到完成的容器的输出，请参阅[装载包含 Azure 容器实例的 Azure 文件共享](container-instances-volume-azure-files.md)。
-
-<!--CORRECT ON container-instances-volume-azure-files.md-->
+有关如何保存一直运行到完成的容器的输出，请参阅[装载包含 Azure 容器实例的 Azure 文件共享](./container-instances-volume-azure-files.md)。
 
 <!-- LINKS - External -->
 
@@ -112,10 +114,9 @@ az container logs --resource-group myResourceGroup --name mycontainer
 
 <!-- LINKS - Internal -->
 
-[az-container-create]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-create
-[az-container-logs]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-logs
-[az-container-show]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-show
-[azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
+[az-container-create]: https://docs.microsoft.com/cli/azure/container#az_container_create
+[az-container-logs]: https://docs.microsoft.com/cli/azure/container#az_container_logs
+[az-container-show]: https://docs.microsoft.com/cli/azure/container#az_container_show
+[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli
 
-<!-- Update_Description: new article about container instances restart policy -->
-<!--NEW.date: 01/15/2020-->
+<!--Update_Description: update meta properties, wording update, update link-->

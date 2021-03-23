@@ -3,16 +3,16 @@ title: 用于存储的 Azure Defender - 优点和功能
 description: 了解适用于服务器的 Azure Defender 的优点和功能。
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/25/2021
+ms.date: 03/18/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: f25529a13288bdb5802f1c7a2aa0383e2bcc1dcc
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 11e50ab93f4997710833098c8250cf5c8936a6d2
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197643"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766224"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>适用于服务器的 Azure Defender 简介
 
@@ -31,17 +31,17 @@ ms.locfileid: "102197643"
 <!--Not available in MC: Vulnerability assessment scanning for VMs-->
 - **实时 (JIT) 虚拟机 (VM) 访问** - 威胁制造者会主动搜寻设有开放管理端口（如 RDP 或 SSH）的可访问计算机。 你的所有虚拟机都是潜在的攻击目标。 VM 在被成功入侵后将会用作进一步攻击环境中资源的入口点。
 
-    启用适用于服务器的 Azure Defender 时，可以使用实时 VM 访问功能来锁定发往 VM 的入站流量，降低遭受攻击的可能性，同时在需要时还允许轻松连接到 VM。 [了解详细信息](just-in-time-explained.md)。
+    启用适用于服务器的 Azure Defender 时，可以使用实时 VM 访问功能来锁定发往 VM 的入站流量，降低遭受攻击的可能性，同时在需要时还允许轻松连接到 VM。 有关详细信息，请参阅[了解实时 VM 访问](just-in-time-explained.md)。
 
 - **自适应应用程序控制 (AAC)** - 自适应应用程序控制是一种智能和自动化的解决方案，用于为计算机定义已知安全的应用程序的允许列表。
 
-    当启用并配置了自适应应用程序控件后，如果有任何程序运行，而该程序不是你定义的安全应用程序，你会收到安全警报。 [了解详细信息](security-center-adaptive-application.md)。
+    当启用并配置了自适应应用程序控件后，如果有任何程序运行，而该程序不是你定义的安全应用程序，你会收到安全警报。 有关详细信息，请参阅[使用自适应应用程序控制来减少计算机的攻击面](security-center-adaptive-application.md)。
 
 - **自适应网络强化 (ANH)** - 应用网络安全组 (NSG) 来筛选往返资源的流量，改善网络安全状况。 但是，仍然可能存在一些这样的情况：通过 NSG 流动的实际流量是所定义 NSG 规则的子集。 在这些情况下，可以根据实际流量模式强化 NSG 规则，从而进一步改善安全状况。
 
     自适应网络强化为进一步强化 NSG 规则提供了建议。 它使用机器学习算法，这种算法会将实际流量、已知受信任的配置、威胁情报和其他泄露标志都考虑在内，然后提供仅允许来自特定 IP/端口元组的流量的建议。
 
-- **Docker 主机强化** - Azure 安全中心会标识 IaaS Linux VM 上或运行 Docker 容器的其他 Linux 计算机上承载的非托管容器。 安全中心会持续评估这些容器的配置。 然后，它会将其与 Internet 安全中心 (CIS) 的 Docker 基准进行比较。 安全中心包含 CIS 的 Docker 基准的完整规则集，并会在容器不符合控件标准的情况下发出警报。 [了解详细信息](harden-docker-hosts.md)。
+- **Docker 主机强化** - Azure 安全中心会标识 IaaS Linux VM 上或运行 Docker 容器的其他 Linux 计算机上承载的非托管容器。 安全中心会持续评估这些容器的配置。 然后，它会将其与 Internet 安全中心 (CIS) 的 Docker 基准进行比较。 安全中心包含 CIS 的 Docker 基准的完整规则集，并会在容器不符合控件标准的情况下发出警报。 有关详细信息，请参阅[强化 Docker 主机](harden-docker-hosts.md)。
 
 - **无文件攻击检测（仅限 Windows）** - 无文件攻击会试图通过将恶意有效负载注入内存中来避免被基于磁盘的扫描技术检测到。 之后，攻击者的有效负载会持久保存在遭到入侵的进程的内存中，执行各种恶意活动。
 
@@ -84,5 +84,5 @@ ms.locfileid: "102197643"
 - 无论警报是由安全中心生成，还是由安全中心从其他安全产品接收，你都可以导出该警报。 若要将警报导出到任何第三方 SIEM 或任何其他外部工具，请按照[将警报导出到 SIEM](continuous-export.md) 中的说明操作。
 
 - > [!div class="nextstepaction"]
-    > [启用 Azure Defender](security-center-pricing.md#enable-azure-defender)
+    > [启用 Azure Defender](enable-azure-defender.md)
 

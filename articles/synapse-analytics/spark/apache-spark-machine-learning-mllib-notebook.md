@@ -8,14 +8,14 @@ ms.reviewer: jrasnick
 ms.topic: tutorial
 ms.subservice: machine-learning
 origin.date: 04/15/2020
-ms.date: 03/08/2021
+ms.date: 03/22/2021
 ms.author: v-jay
-ms.openlocfilehash: 6f8337b7ca7e95d1bcba01d234e86dedbf2a0ed9
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: da968baf7995a0d127fabbf8abccca9b5fd331b3
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102206846"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766465"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>教程：使用 Apache Spark MLlib 和 Azure Synapse Analytics 构建机器学习应用
 
@@ -198,7 +198,7 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 > [!Note]
 > 若要保存模型，需要 Azure 角色“存储 Blob 数据参与者”。 在存储帐户下，转到“访问控制(IAM)”，然后选择“添加角色分配” 。 向 Azure SQL Database 服务器分配“存储 Blob 数据参与者”角色。 只有具有所有者权限的成员才能执行此步骤。 
 >
->有关各种 Azure 内置角色，请参阅[本指南](../../role-based-access-control/built-in-roles.md?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+>有关各种 Azure 内置角色，请参阅[本指南](../../role-based-access-control/built-in-roles.md)。
 
 ```python
 ## Create a new logistic regression object for the model
@@ -257,9 +257,9 @@ plt.show()
 
 ## <a name="next-steps"></a>后续步骤
 
-- [.NET for Apache Spark 文档](https://docs.microsoft.com/dotnet/spark?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)
+- [.NET for Apache Spark 文档](https://docs.microsoft.com/dotnet/spark)
 - [Azure Synapse Analytics](../index.yml)
 - [Apache Spark 官方文档](https://spark.apache.org/docs/2.4.5/)
 
 >[!NOTE]
-> 某些 Apache Spark 官方文档依赖于使用 Spark 控制台，但该控制台对于 Azure Synapse Analytics 中的 Apache Spark 不可用。 请改用[笔记本](../quickstart-apache-spark-notebook.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)或 [IntelliJ](../spark/intellij-tool-synapse.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json) 体验。
+> 某些 Apache Spark 官方文档依赖于使用 Spark 控制台，但该控制台对于 Azure Synapse Analytics 中的 Apache Spark 不可用。 请改用[笔记本](../quickstart-apache-spark-notebook.md)或 [IntelliJ](../spark/intellij-tool-synapse.md) 体验。

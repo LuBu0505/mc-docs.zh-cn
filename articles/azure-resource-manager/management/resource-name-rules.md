@@ -4,16 +4,16 @@ description: 说明 Azure 资源的命名规则和限制。
 ms.topic: conceptual
 origin.date: 01/27/2021
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 361a2202be6fc32a1524c3860ef3f017a290376e
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: eba4df76b3f32a85ef6f2c6db774b0e5bbb7b8ee
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102053287"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767007"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure 资源的命名规则和限制
 
@@ -336,6 +336,9 @@ ms.locfileid: "102053287"
 > | --- | --- | --- | --- |
 > | actionGroups | 资源组 | 1-260 | 不得使用：<br />`/&%\?` <br /><br />不得以空格或句点结尾。  |
 > | components | 资源组 | 1-260 | 不得使用：<br />`%&\?/` <br /><br />不得以空格或句点结尾。  |
+> | scheduledQueryRules | 资源组 | 1-260 | 不得使用：<br />`*<>%{}&:\\?/#` <br /><br />不得以空格或句点结尾。  |
+> | metricAlerts | 资源组 | 1-260 | 不得使用：<br />`*#&+:<>?@%{}\/` <br /><br />不得以空格或句点结尾。  |
+> | activityLogAlerts | 资源组 | 1-260 | 不得使用：<br />`<>*%{}&:\\?+/#` <br /><br />不得以空格或句点结尾。  |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
@@ -566,9 +569,9 @@ ms.locfileid: "102053287"
 > | managedInstances | 全局 | 1-63 | 小写字母、数字和连字符。<br /><br />不能以连字符开头或结尾。 <br /><br /> 不能包含任何特殊字符，例如 `@`。 |
 > | servers | 全局 | 1-63 | 小写字母、数字和连字符。<br /><br />不能以连字符开头或结尾。 |
 > | servers / administrators | server |  | 必须是 `ActiveDirectory`。 |
-> | servers/databases | server | 1-128 | 不得使用：<br />`<>*%&:\/?`<br /><br />不能以句点或空格结尾。 |
+> | servers/databases | server | 1-128 | 不得使用：<br />`<>*%&:\/?`<br /><br />不得以句点或空格结尾。 |
 > | servers / databases / syncGroups | database | 1-150 | 字母数字、连字符和下划线。 |
-> | servers / elasticPools | server | 1-128 | 不得使用：<br />`<>*%&:\/?`<br /><br />不能以句点或空格结尾。 |
+> | servers / elasticPools | server | 1-128 | 不得使用：<br />`<>*%&:\/?`<br /><br />不得以句点或空格结尾。 |
 > | servers / failoverGroups | 全局 | 1-63 | 小写字母、数字和连字符。<br /><br />不能以连字符开头或结尾。 |
 > | servers / firewallRules | server | 1-128 | 不得使用：<br />`<>*%&:;\/?`<br /><br />不能以句点结尾。 |
 

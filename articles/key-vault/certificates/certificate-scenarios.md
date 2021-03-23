@@ -7,15 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: conceptual
-origin.date: 06/13/2020
-ms.date: 01/13/2021
-ms.author: v-tawe
-ms.openlocfilehash: c62ca5a167af4412be540260c44e400c183e0591
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: 576a77fe1b76544a365f655a15a47b41f429a88e
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230999"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765690"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 证书入门
 以下方案概述了 Key Vault 的证书管理服务的多种主要使用方式，包括在密钥保管库中创建第一个证书所需的其他步骤。

@@ -2,20 +2,19 @@
 title: 快速入门 - 通过 C# 使用对称密钥将设备预配到 Azure IoT 中心
 description: 本快速入门将使用用于设备预配服务 (DPS) 的 C# 设备 SDK 将对称密钥设备预配到 IoT 中心
 author: wesmc7777
-ms.author: v-tawe
-origin.date: 10/21/2020
-ms.date: 11/13/2020
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc
-ms.openlocfilehash: 1865ff5a510bfe4bf32ef0758df69d3c4e2c851f
-ms.sourcegitcommit: 39288459139a40195d1b4161dfb0bb96f5b71e8e
+ms.openlocfilehash: 04e03c3b69cdf2b66dda98adc916cd22ab87bff6
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94590951"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765329"
 ---
 # <a name="quickstart-provision-a-symmetric-key-device-using-c"></a>快速入门：使用 C# 预配对称密钥设备
 
@@ -30,7 +29,7 @@ ms.locfileid: "94590951"
 本文面向基于 Windows 的工作站。 但是，你也可以在 Linux 上执行过程。 对于 Linux 示例，请参阅[多租户预配](how-to-provision-multitenant.md)。
 
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 
 ## <a name="prerequisites"></a>必备条件
@@ -46,7 +45,7 @@ ms.locfileid: "94590951"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)，选择左侧菜单上的“所有资源”按钮，打开设备预配服务 (DPS) 实例。
 
-2. 选择“管理注册”选项卡，然后选择顶部的“添加个人注册”按钮 。 
+2. 选择“管理注册”选项卡，然后选择顶部的“添加个人注册”按钮   。 
 
 3. 在“添加注册”面板中输入以下信息，然后按“保存”按钮   。
 
@@ -155,7 +154,7 @@ ms.locfileid: "94590951"
     D:\azure-iot-samples-csharp\provisioning\Samples\device\SymmetricKeySample>dotnet run
     RegistrationID = symm-key-csharp-device-01
     ProvisioningClient RegisterAsync . . . Assigned
-    ProvisioningClient AssignedHub: docs-test-iot-hub.azure-devices.net; DeviceID: csharp-device-01
+    ProvisioningClient AssignedHub: docs-test-iot-hub.azure-devices.cn; DeviceID: csharp-device-01
     Creating Symmetric Key DeviceClient authentication
     DeviceClient OpenAsync.
     DeviceClient SendEventAsync.
@@ -168,7 +167,7 @@ ms.locfileid: "94590951"
     ![设备注册到 IoT 中心](./media/quick-create-device-symmetric-key-csharp/hub-registration-csharp.png) 
 
 > [!NOTE]
-> 如果从设备的注册项中的默认值更改了“初始设备孪生状态”  ，则它会从中心拉取所需的孪生状态，并执行相应的操作。 有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)。
+> 如果从设备的注册项中的默认值更改了“初始设备孪生状态”，则它会从中心拉取所需的孪生状态，并执行相应的操作。 有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)。
 >
 
 

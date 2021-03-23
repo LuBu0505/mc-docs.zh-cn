@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 02/23/2021
+ms.date: 03/12/2021
 ms.author: v-junlch
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 7e3dcec5cf764955f5cf1be7899fdc19cf8c7621
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: ff5ab5bb47f36d37fcc0b4785688415a9a55609b
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697884"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765508"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>快速入门：使用授权代码流在 React SPA 中登录并获取访问令牌
 
@@ -26,6 +26,9 @@ ms.locfileid: "101697884"
 有关说明，请参阅[示例工作原理](#how-the-sample-works)。
 
 本快速入门将 MSAL.React 与授权代码流结合使用。 若要查看将 MSAL.js 与隐式流结合使用的类似快速入门，请参阅[快速入门：在 JavaScript 单页应用中登录用户](./quickstart-v2-javascript.md)。
+
+> [!IMPORTANT]
+> MSAL React [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -52,11 +55,11 @@ ms.locfileid: "101697884"
 >
 > 1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
-> 1. 搜索并选择“Azure Active Directory”  。
+> 1. 搜索并选择“Azure Active Directory”。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 > 1. “注册应用程序”页显示后，请输入应用程序的名称。
 > 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户”。 
-> 1. 选择“注册”  。 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
+> 1. 选择“注册”。 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
 > 1. 在“管理”下，选择“身份验证”。 
 > 1. 在“平台配置”下，选择“添加平台” 。 在打开的窗格中，选择“单页应用程序”。
 > 1. 将“重定向 URI”值设置为 `http://localhost:3000/`。 这是将在本地计算机上侦听的默认端口 NodeJS。 在成功对用户进行身份验证后，我们会将身份验证响应返回到此 URl。 

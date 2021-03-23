@@ -2,19 +2,20 @@
 title: 分析包含数组和嵌套结构的架构
 description: 如何使用 Apache Spark 和 SQL 分析数组和嵌套结构
 services: synapse-analytics
-author: ArnoMicrosoft
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: spark
-ms.date: 06/15/2020
-ms.author: acomet
+origin.date: 06/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3dd2a3cdde0026d77acca561185e2f80b4f8f8b2
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 20325e6a47c0887256857ee347dbc29caffb35d2
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207678"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765232"
 ---
 # <a name="analyze-complex-data-types-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中分析复杂数据类型
 
@@ -170,7 +171,7 @@ display 函数应显示 13 个列和 2 个行。
 
 | 批量 | 格式 |
 | ------ | ------ |
-| 'https://ACCOUNTNAME.dfs.core.windows.net/FILESYSTEM/PATH/FINENAME.parquet' |'Parquet' (ADLSg2)|
+| 'https://ACCOUNTNAME.dfs.core.chinacloudapi.cn/FILESYSTEM/PATH/FINENAME.parquet' |'Parquet' (ADLSg2)|
 | N'endpoint=https://ACCOUNTNAME.documents-staging.windows-ppe.net:443/;account=ACCOUNTNAME;database=DATABASENAME;collection=COLLECTIONNAME;region=REGIONTOQUERY', SECRET='YOURSECRET' |'CosmosDB' (Azure Synapse Link)|
 
 

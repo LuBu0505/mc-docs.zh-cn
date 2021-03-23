@@ -2,19 +2,18 @@
 title: 快速入门 - 适用于 .NET 的 Azure Key Vault 证书客户端库（版本 4）
 description: 了解如何使用 .NET 客户端库（版本 4）在 Azure Key Vault 中创建、检索和删除证书
 author: msmbaldwin
-ms.author: v-tawe
-origin.date: 09/23/2020
-ms.date: 01/13/2021
+ms.author: v-chazhou
+ms.date: 03/10/2021
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7230aac4d7fdd1559761ce6e395c644451acfc9f
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: dee5d2a4a96affa18b547b2fcf8262d208241627
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059954"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765598"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-net-sdk-v4"></a>快速入门：适用于 .NET 的 Azure Key Vault 证书客户端库 (SDK v4)
 
@@ -56,6 +55,14 @@ Key Vault 客户端库资源：
 
 2. 在浏览器中使用帐户凭据登录。
 
+#### <a name="grant-access-to-your-key-vault"></a>授予对 Key Vault 的访问权限
+
+针对密钥保管库创建一个访问策略，以便为用户帐户授予证书权限
+
+```console
+az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --certificate-permissions delete get list create purge
+```
+
 ### <a name="create-new-net-console-app"></a>创建新的 .NET 控制台应用
 
 1. 在命令外壳中，运行以下命令以创建名为 `key-vault-console-app` 的项目：
@@ -90,14 +97,6 @@ dotnet add package Azure.Security.KeyVault.Certificates
 
 ```dotnetcli
 dotnet add package Azure.Identity
-```
-
-#### <a name="grant-access-to-your-key-vault"></a>授予对 Key Vault 的访问权限
-
-针对密钥保管库创建一个访问策略，以便为用户帐户授予证书权限
-
-```console
-az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --certificate-permissions delete get list create purge
 ```
 
 #### <a name="set-environment-variables"></a>设置环境变量
@@ -172,20 +171,20 @@ var certificate = await client.GetCertificateAsync("myCertificate");
 最后，让我们使用 [StartDeleteCertificateAsync](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.certificates.certificateclient.startdeletecertificateasync?view=azure-dotnet) 和 [PurgeDeletedCertificateAsync](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.certificates.certificateclient.purgedeletedcertificateasync?view=azure-dotnet) 方法从密钥保管库中删除并清除证书。
 
 ```csharp
-var operation = await client.StartDeleteCertificateAsync("MyCertificate");
+var operation = await client.StartDeleteCertificateAsync("myCertificate");
 
 // You only need to wait for completion if you want to purge or recover the certificate.
 await operation.WaitForCompletionAsync();
 
 var certificate = operation.Value;
-await client.PurgeDeletedCertificateAsync(certificate.Name);
+await client.PurgeDeletedCertificateAsync("myCertificate");
 ```
 
 ## <a name="sample-code"></a>示例代码
 
 通过完成以下步骤，将 .NET Core 控制台应用修改为与 Key Vault 交互：
 
-1. 将 Program.cs 中的代码替换为以下代码：
+- 将 Program.cs 中的代码替换为以下代码：
 
     ```csharp
     using System;
@@ -212,7 +211,7 @@ await client.PurgeDeletedCertificateAsync(certificate.Name);
     
                 Console.WriteLine($"Retrieving your certificate from {keyVaultName}.");
                 var certificate = await client.GetCertificateAsync(certificateName);
-                Console.WriteLine($"Your certificate value is '{certificate.Value.Properties.Version}'.");
+                Console.WriteLine($"Your certificate version is '{certificate.Value.Properties.Version}'.");
     
                 Console.Write($"Deleting your certificate from {keyVaultName} ...");
                 DeleteCertificateOperation deleteOperation = await client.StartDeleteCertificateAsync(certificateName);
@@ -229,61 +228,20 @@ await client.PurgeDeletedCertificateAsync(certificate.Name);
     ```
 ### <a name="test-and-verify"></a>测试和验证
 
-1.  执行以下命令以生成项目
+执行以下命令以生成项目
 
-    ```dotnetcli
-    dotnet build
-    ```
-
-1. 执行以下命令来运行应用。
-
-    ```dotnetcli
-    dotnet run
-    ```
-
-1. 出现提示时，输入一个密码值。 例如，mySecretPassword。
-
-    随即显示以下输出的变体：
-
-    ```console
-    Creating a certificate in mykeyvault called 'myCertificate' ... done.
-    Retrieving your certificate from mykeyvault.
-    Your certificate version is '8532359bced24e4bb2525f2d2050738a'.
-    Deleting your certificate from jl-kv ... done
-    ```
-
-## <a name="clean-up-resources"></a>清理资源
-
-可以使用 Azure CLI 或 Azure PowerShell 来删除不再需要的 Key Vault 和相应的资源组。
-
-### <a name="delete-a-key-vault"></a>删除 Key Vault
-
-```azurecli
-az keyvault delete --name <your-unique-keyvault-name>
+```dotnetcli
+dotnet build
 ```
 
-```azurepowershell
-Remove-AzKeyVault -VaultName <your-unique-keyvault-name>
-```
+随即显示以下输出的变体：
 
-### <a name="purge-a-key-vault"></a>清除 Key Vault
-
-```azurecli
-az keyvault purge --location chinanorth --name <your-unique-keyvault-name>
-```
-
-```azurepowershell
-Remove-AzKeyVault -VaultName <your-unique-keyvault-name> -InRemovedState -Location chinanorth
-```
-
-### <a name="delete-a-resource-group"></a>删除资源组
-
-```azurecli
-az group delete -g "myResourceGroup"
-```
-
-```azurepowershell
-Remove-AzResourceGroup -Name "myResourceGroup"
+```console
+Creating a certificate in mykeyvault called 'myCertificate' ... done.
+Retrieving your certificate from mykeyvault.
+Your certificate version is '8532359bced24e4bb2525f2d2050738a'.
+Deleting your certificate from mykeyvault ... done
+Purging your certificate from mykeyvault ... done
 ```
 
 ## <a name="next-steps"></a>后续步骤
@@ -297,4 +255,4 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 - 请参阅[从应用服务应用程序访问 Key Vault 的教程](../general/tutorial-net-create-vault-azure-web-app.md)
 - 请参阅[从虚拟机访问 Key Vault 的教程](../general/tutorial-net-virtual-machine.md)
 - 参阅 [Azure Key Vault 开发人员指南](../general/developers-guide.md)
-- 查看 [Azure Key Vault 最佳做法](../general/best-practices.md)
+- 请参阅 [Key Vault 安全性概述](../general/security-overview.md)

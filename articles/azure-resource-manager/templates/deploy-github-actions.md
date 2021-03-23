@@ -4,17 +4,17 @@ description: 介绍如何使用 GitHub Actions 部署资源管理器模板（ARM
 ms.topic: conceptual
 origin.date: 10/13/2020
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.testscope: yes
 ms.testdate: 07/13/2020
 ms.author: v-yeche
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 4431b939dbf65ef92e6de9b96b94bad6b70305fc
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 95e75c280c2fba44946f464265436359fcd97f1f
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054396"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765735"
 ---
 <!--Verified successfully on 2020/07/13 by harris-->
 # <a name="deploy-arm-templates-by-using-github-actions"></a>使用 GitHub Actions 部署 ARM 模板
@@ -164,5 +164,5 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
 > [!div class="nextstepaction"]
 > [创建第一个 ARM 模板](./template-tutorial-create-first-template.md)
 
-<!--Not Avaialble on [Learn module: Automate the deployment of ARM templates by using GitHub Actions](https://docs.microsoft.com/learn/modules/deploy-templates-command-line-github-actions/)-->
+<!--NOT AVAILABLE ON [Learn module: Automate the deployment of ARM templates by using GitHub Actions](https://docs.microsoft.com/learn/modules/deploy-templates-command-line-github-actions/)-->
 <!--Update_Description: update meta properties, wording update, update link-->

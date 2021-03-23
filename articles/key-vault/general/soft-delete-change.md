@@ -7,14 +7,14 @@ manager: ravijan
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.author: v-tawe
-ms.openlocfilehash: 93ae243a546c54d2edca174e234eafca3c68cfcf
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: e044cd8c1580c4d53cccdcab6853e022732a02c9
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059364"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766578"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>对所有 Key Vault 启用软删除
 

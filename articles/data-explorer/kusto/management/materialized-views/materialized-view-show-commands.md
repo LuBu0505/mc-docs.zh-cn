@@ -3,18 +3,17 @@ title: show materialized view 命令 - Azure 数据资源管理器
 description: 本文介绍 Azure 数据资源管理器中的 show materialized views 命令。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 08/30/2020
-ms.date: 01/22/2021
-ms.openlocfilehash: 1ffef08a7d1bc5d02445e6f2c47d5d16e9b1dbd3
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 03/18/2021
+ms.openlocfilehash: 21c04cfbecfdda7c154c704c82915d5e94902a9c
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611313"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766619"
 ---
 # <a name="show-materialized-views-commands"></a>.show materialized-views 命令
 
@@ -32,7 +31,7 @@ ms.locfileid: "98611313"
 
 ### <a name="properties"></a>属性
 
-|properties|类型|说明
+|属性|类型|说明
 |----------------|-------|---|
 |MaterializedViewName|字符串|具体化视图的名称。|
 
@@ -85,7 +84,7 @@ ms.locfileid: "98611313"
 
 返回具体化视图的“具体化”部分中的区。 有关“具体化”部分的定义，请参阅[具体化视图的工作原理](materialized-view-overview.md#how-materialized-views-work)。
 
-此命令提供的详细信息与 [show table extents](../show-extents.md#table-level) 命令相同。
+此命令提供的详细信息与 [show table extents](../show-extents.md#table-scope) 命令相同。
 
 ### <a name="syntax"></a>语法
 
@@ -101,7 +100,7 @@ ms.locfileid: "98611313"
 
 ### <a name="properties"></a>属性
 
-|properties|类型|说明
+|属性|类型|说明
 |----------------|-------|---|
 |MaterializedViewName|字符串|具体化视图的名称。|
 

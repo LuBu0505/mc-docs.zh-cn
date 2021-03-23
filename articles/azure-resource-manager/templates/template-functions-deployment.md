@@ -2,16 +2,16 @@
 title: 模板函数 - 部署
 description: 介绍可在 Azure 资源管理器模板（ARM 模板）中使用的用于检索部署信息的函数。
 ms.topic: conceptual
-origin.date: 01/27/2021
+origin.date: 03/02/2021
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.author: v-yeche
-ms.openlocfilehash: 7c47c1411bcf059516deab015952d148313b1775
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 053b097d909c08e270b5a033f0b748bc74b71b9e
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054338"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767083"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM 模板的部署函数
 
@@ -331,7 +331,7 @@ output environmentOutput object = environment()
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| parameterName |是 |字符串 |要返回的参数名称。 |
+| parameterName |是 |string |要返回的参数名称。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -519,7 +519,7 @@ output crossOutput string = crossParameter
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
 ```bicep
-var storageName = concat('storage', uniqueString(resourceGroup().id))
+var storageName = 'storage${uniqueString(resourceGroup().id)}'
 
 resource myStorage 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   name: storageName

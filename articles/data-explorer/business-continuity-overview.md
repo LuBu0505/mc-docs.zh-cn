@@ -2,18 +2,17 @@
 title: Azure 数据资源管理器和业务连续性灾难恢复
 description: 本文介绍了可帮助从中断事件中恢复的 Azure 数据资源管理器功能。
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: ankhanol
 ms.service: data-explorer
 ms.topic: conceptual
-origin.date: 08/05/2020
-ms.date: 01/22/2021
-ms.openlocfilehash: d43d7957f9ee536b6f053eb4baa78ce1540c05d7
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 03/17/2021
+ms.openlocfilehash: df8d7e29c9041cdc0a802285b1b0f311a62d9e33
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611708"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765383"
 ---
 # <a name="business-continuity-and-disaster-recovery-overview"></a>业务连续性和灾难恢复概述
 
@@ -108,7 +107,7 @@ Azure 数据资源管理器不提供针对整个 Azure 区域中断的自动保�
 
 | **配置** | **RPO** | **RTO** | **工作量** | **成本** |
 | --- | --- | --- | --- | --- |
-| **主动-主动** | 无 | 无 | 较低 | 高 |
+| **主动-主动** | 0 小时 | 0 小时 | 较低 | 高 |
 
 ### <a name="active-hot-standby-configuration"></a>主动-热备用服务器配置
 
@@ -135,7 +134,7 @@ Azure 数据资源管理器不提供针对整个 Azure 区域中断的自动保�
 | **配置** | **复原能力** | **RPO** | **RTO** | **工作量** | **成本** |
 | --- | --- | --- | --- | --- | --- |
 | **主动-主动-主动-n** | 最高 | 0 小时 | 0 小时 | 较低 | 最高 |
-| **主动-主动** | 高 | 无 | 无 | 较低 | 高 |
+| **主动-主动** | 高 | 0 小时 | 0 小时 | 较低 | 高 |
 | **主动-热备用服务器** | 中等 | 低 | 低 | 中 | 中 |
 | **按需数据恢复群集** | 最低 | 最高 | 最高 | 最高 | 最低 |
 

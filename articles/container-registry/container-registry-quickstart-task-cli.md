@@ -4,17 +4,17 @@ description: 使用 Azure 容器注册表命令可以在 Azure 云中按需快�
 ms.topic: quickstart
 origin.date: 09/25/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/08/2021
 ms.testscope: no
 ms.testdate: 04/06/2020
 ms.author: v-yeche
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: c356a14cde8c8c2982602c60416339ba1c263065
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 422d4fddec97fd7834bb33f39a5c2c9ba5681b57
+ms.sourcegitcommit: fda47fe846d47f30e65a048251402d873e416650
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230257"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "104767072"
 ---
 <!--Verify sucessfully-->
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>快速入门：使用 Azure 容器注册表任务生成和运行容器映像
@@ -37,10 +37,16 @@ ms.locfileid: "98230257"
 
 如果还没有容器注册表，请先使用 [az group create][az-group-create] 命令创建一个资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-以下示例在“chinanorth”  位置创建名为“myResourceGroup”  的资源组。
+以下示例在“chinaeast2”位置创建名为“myResourceGroup”的资源组。
+
+<!--MOONCAKE CUSTOMIZE-->
+
+[!INCLUDE [container-registry-acr-build-valid-regions-chenye.md](../../includes/container-registry-acr-build-valid-regions-chenye.md)]
+
+<!--MOONCAKE CUSTOMIZE-->
 
 ```azurecli
-az group create --name myResourceGroup --location chinanorth
+az group create --name myResourceGroup --location chinaeast2
 ```
 
 ## <a name="create-a-container-registry"></a>创建容器注册表

@@ -2,16 +2,14 @@
 title: 使用 .NET 向/从 Azure 事件中心发送/接收事件（最新版）
 description: 本文演练如何创建一个可使用最新 Azure.Messaging.EventHubs 包向/从 Azure 事件中心发送/接收事件的 .NET Core 应用程序。
 ms.topic: quickstart
-origin.date: 09/25/2020
-ms.date: 01/05/2021
-ms.author: v-tawe
+ms.date: 03/11/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0c53cf96d0e570dcb7d526357934da6c9ea0fcde
-ms.sourcegitcommit: ff20289adb80a6ab45e15fa5e196ff7af7e1c6b5
+ms.openlocfilehash: e0f7f3802a6344f38f09307e6bd4cfc2ec07bb29
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97874816"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766030"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>向 Azure 事件中心发送事件及从 Azure 事件中心接收事件 - .NET (Azure.Messaging.EventHubs) 
 本快速入门介绍如何使用 Azure.Messaging.EventHubs .NET 库向事件中心发送事件以及从事件中心接收事件。 
@@ -36,7 +34,7 @@ ms.locfileid: "97874816"
 ### <a name="create-a-console-application"></a>创建控制台应用程序
 
 1. 启动 Visual Studio 2019。 
-1. 选择“创建新项目”。  
+1. 选择“创建新项目”。 
 1. 在“创建新项目”对话框中执行以下步骤：如果看不到此对话框，请在菜单中选择“文件”，然后依次选择“新建”、“项目”。   
     1. 选择“C#”作为编程语言。
     1. 选择“控制台”作为应用程序类型。 

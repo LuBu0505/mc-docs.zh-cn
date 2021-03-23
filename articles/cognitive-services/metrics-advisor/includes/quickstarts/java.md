@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: include
-ms.date: 01/04/2021
+ms.date: 03/08/2021
 ms.author: v-johya
-ms.openlocfilehash: 15a145162aa0aa1fdaa1072d5dba83c3c5f4c3ce
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 9c05b6f91438f936e88f83dcd4d3e53c9a11dba3
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024181"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803435"
 ---
 [参考文档](https://dev.cognitive.azure.cn/docs/services/MetricsAdvisor/) | [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/metricsadvisor/azure-ai-metricsadvisor/src) | [项目 (Maven)](https://search.maven.org/artifact/com.azure/azure-ai-metricsadvisor) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/metricsadvisor/azure-ai-metricsadvisor/src/samples)
 
@@ -23,7 +23,7 @@ ms.locfileid: "98024181"
 * Azure 订阅 - [创建试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)
 * 最新版本的 [Java 开发工具包 (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Gradle 生成工具](https://gradle.org/install/)，或其他依赖项管理器。
-* 获得 Azure 订阅后，<a href="https://portal.azure.cn/#create/Microsoft.CognitiveServicesMetricsAdvisor"  title="“创建指标顾问”资源"  target="_blank">在 Azure 门户中创建“指标顾问”资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，以部署“指标顾问”实例。  
+* 获得 Azure 订阅后，<a href="https://portal.azure.cn/#create/Microsoft.CognitiveServicesMetricsAdvisor"  title="“创建指标顾问”资源"  target="_blank">在 Azure 门户中创建“指标顾问”资源 </a>，以部署“指标顾问”实例。  
 * 带有时序数据的 SQL 数据库。
   
   

@@ -3,19 +3,19 @@ title: 查询最佳做法 - Azure 数据资源管理器
 description: 本文介绍了 Azure 数据资源管理器中的查询最佳做法。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 02/03/2020
-ms.date: 01/22/2021
+ms.date: 03/18/2021
 ms.localizationpriority: high
-ms.openlocfilehash: f1561c9780f410896f8a46a6fd41c6146d1c36dc
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+adobe-target: true
+ms.openlocfilehash: 465aca8846c699645a3036456ca09019a6fcbf25
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611474"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765248"
 ---
 # <a name="query-best-practices"></a>查询最佳做法
 
@@ -30,6 +30,7 @@ ms.locfileid: "98611474"
 |  | 使用 `contains_cs`         | 不要使用 `contains`        | 如果可以使用 `has`/`has_cs` 而不使用 `contains`/`contains_cs`，则更好。 |
 | **搜索文本**    |    查找特定列     |    不要使用 `*`    |   `*` 对所有列执行全文搜索。    |
 | **从数百万行的 [动态对象](./scalar-data-types/dynamic.md)中提取字段**    |  如果大多数查询从数百万行的动态对象中提取字段，则会在引入时具体化列。      |         | 这样，只需为列提取付费一次。    |
+| **查找 [动态对象](./scalar-data-types/dynamic.md)中不常见的键/值**    |  使用 `MyTable | where DynamicColumn has "Rare value" | where DynamicColumn.SomeKey == "Rare value"` | 不要使用 `MyTable | where DynamicColumn.SomeKey == "Rare value"` | 这样可以筛选出大多数记录，并只对其余部分进行 JSON 分析。 |
 | **具有多次使用的值的 `let` 语句** | 使用 [materialize() 函数](./materializefunction.md) |  |   有关如何使用 `materialize()` 的详细信息，请参阅 [materialize()](materializefunction.md)。|
 | **对超过 10 亿条记录应用转换**| 调整查询以减少馈送到转换中的数据量。| 如果可以避免，请勿转换大量数据。 | |
 | **新查询** | 在末尾使用 `limit [small number]` 或 `count`。 | |     对未知数据集运行未绑定的查询，可能会产生要返回到客户端的 GB 级结果，从而导致响应缓慢和群集忙碌。|

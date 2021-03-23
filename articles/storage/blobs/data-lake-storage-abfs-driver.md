@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.author: v-jay
 ms.reviewer: jamesbak
 origin.date: 12/06/2018
-ms.date: 11/16/2020
+ms.date: 03/22/2021
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: ff071e67fb7d51b0dcb50bc20b9ae492f37286d6
-ms.sourcegitcommit: 5f07189f06a559d5617771e586d129c10276539e
+ms.openlocfilehash: b8204341f65ac9f5c50de78ab08448e521117eaf
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94552152"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765680"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure Blob Filesystem 驱动程序 (ABFS)：专用于 Hadoop 的 Azure 存储驱动程序
 
@@ -66,5 +66,5 @@ ABFS 驱动程序的所有配置均存储在 <code>core-site.xml</code> 配置�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建 Azure Databricks 群集](./data-lake-storage-quickstart-create-databricks-account.md)
+- [创建 Azure Databricks 群集](./data-lake-storage-use-databricks-spark.md)
 - [使用 Azure Data Lake Storage Gen2 URI](./data-lake-storage-introduction-abfs-uri.md)

@@ -6,16 +6,16 @@ services: container-service
 ms.topic: article
 origin.date: 03/04/2019
 author: rockboyfor
-ms.date: 09/14/2020
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: a3fd565450b8eba6fe64bd1d68b5eb16a9ea2a92
-ms.sourcegitcommit: 78c71698daffee3a6b316e794f5bdcf6d160f326
+ms.openlocfilehash: 1cda90a2581c41c50e8ce1609daaf00efbfbabed
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90021540"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766437"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>将出口流量的静态公共 IP 地址与 Azure Kubernetes 服务 (AKS) 中的基本 SKU 负载均衡器配合使用
 
@@ -29,7 +29,7 @@ ms.locfileid: "90021540"
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
-还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
 > [!IMPORTANT]
 > 本文将基本 SKU 负载均衡器用于单个节点池。 此配置不可用于多节点池，因为多节点池不支持基本 SKU 负载均衡器。 有关使用标准  SKU 负载均衡器的更多详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用公共标准负载均衡器][slb]。
@@ -38,7 +38,7 @@ ms.locfileid: "90021540"
 
 AKS 群集的出站流量遵循 [Azure 负载均衡器约定][outbound-connections]。 在创建 `LoadBalancer` 类型的第一个 Kubernetes 服务之前，AKS 群集中的代理节点不是任何 Azure 负载均衡器池的一部分。 在此配置中，节点没有实例级公共 IP 地址。 Azure 将出站流转换为不可配置的或确定性的公用源 IP 地址。
 
-创建 `LoadBalancer` 类型的 Kubernetes 服务后，会向 Azure 负载均衡器池添加代理节点。 对于出站流，Azure 将其转换为在负载均衡器上配置的第一个公共 IP 地址。 此公共 IP 地址仅对该资源的生命期有效。 如果删除 Kubernetes 负载均衡器服务，则会同时删除关联的负载均衡器和 IP 地址。 如果要分配特定 IP 地址或保留已重新部署的 Kubernetes 服务的 IP 地址，请创建并使用静态公共 IP 地址。
+创建 `LoadBalancer` 类型的 Kubernetes 服务后，会向 Azure 负载均衡器池添加代理节点。 当多个（公共）IP 前端适用于出站流时，负载均衡器基本版将选择单个前端用于出站流。 此项选择不可配置，应将选择算法视为随机。 此公共 IP 地址仅对该资源的生命期有效。 如果删除 Kubernetes 负载均衡器服务，则会同时删除关联的负载均衡器和 IP 地址。 如果要分配特定 IP 地址或保留已重新部署的 Kubernetes 服务的 IP 地址，请创建并使用静态公共 IP 地址。
 
 ## <a name="create-a-static-public-ip"></a>创建静态公共 IP
 
@@ -50,7 +50,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_chinaeast2
 ```
 
-现在，使用 [az network public ip create][az-network-public-ip-create] 命令创建静态公共 IP 地址。 指定上一命令中获取的节点资源组名称，然后指定 IP 地址资源的名称，如 myAKSPublicIP**：
+现在，使用 [az network public ip create][az-network-public-ip-create] 命令创建静态公共 IP 地址。 指定上一命令中获取的节点资源组名称，然后指定 IP 地址资源的名称，如 myAKSPublicIP：
 
 ```azurecli
 az network public-ip create \
@@ -103,7 +103,7 @@ spec:
 kubectl apply -f egress-service.yaml
 ```
 
-此服务将在 Azure 负载均衡器上配置一个新的前端 IP。 如果没有配置任何其他 IP，则**所有**出口流量现在都应当使用此地址。 在 Azure 负载均衡器上配置了多个地址后，所有这些公共 IP 地址都是出站流的候选项，系统会随机选择其中一个。
+此服务将在 Azure 负载均衡器上配置一个新的前端 IP。 如果没有配置任何其他 IP，则 **所有** 出口流量现在都应当使用此地址。 在 Azure 负载均衡器上配置了多个地址后，所有这些公共 IP 地址都是出站流的候选项，系统会随机选择其中一个。
 
 ## <a name="verify-egress-address"></a>验证出口地址
 
@@ -135,16 +135,16 @@ $ curl -s checkip.dyndns.org
 
 <!-- LINKS - internal -->
 
-[az-network-public-ip-create]: https://docs.azure.cn/cli/network/public-ip#az-network-public-ip-create
-[az-network-public-ip-list]: https://docs.azure.cn/cli/network/public-ip#az-network-public-ip-list
-[az-aks-show]: https://docs.microsoft.com/cli/azure/aks#az_aks_show
-[azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli
+[az-network-public-ip-create]: https://docs.azure.cn/cli/network/public-ip#az_network_public_ip_create
+[az-network-public-ip-list]: https://docs.azure.cn/cli/network/public-ip#az_network_public_ip_list
+[az-aks-show]: https://docs.azure.cn/cli/aks#az_aks_show
+[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli
 [ingress-aks-cluster]: ./ingress-basic.md
 [outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md#scenarios
-[public-ip-create]: https://docs.azure.cn/cli/network/public-ip#az-network-public-ip-create
+[public-ip-create]: https://docs.azure.cn/cli/network/public-ip#az_network_public_ip_create
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
-[install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli
+[install-azure-cli]: https://docs.microsoft.com/cli/azure/install-azure-cli
 [slb]: load-balancer-standard.md
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

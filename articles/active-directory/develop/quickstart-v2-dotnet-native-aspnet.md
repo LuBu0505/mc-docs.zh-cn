@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 02/23/2021
+ms.date: 03/12/2021
 ms.author: v-junlch
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 5924e7d11ce61f35ecad6f1169a8394b9cdc9230
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 7bf097eee88533750d475f20a81e3dfe7ca19b78
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697887"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765513"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>快速入门：调用受 Microsoft 标识平台保护的 ASP.NET Web API
 
@@ -55,7 +55,7 @@ ms.locfileid: "101697887"
 
 1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
-1. 搜索并选择“Azure Active Directory”  。
+1. 搜索并选择“Azure Active Directory”。
 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 1. 输入应用程序的名称（例如 `AppModelv2-NativeClient-DotNet-TodoListService`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户” 。
@@ -178,7 +178,7 @@ ms.locfileid: "101697887"
 
 ### <a name="option-2-use-a-custom-method-to-validate-issuers"></a>选项 2：使用自定义方法来验证颁发者
 
-可通过 `IssuerValidator` 参数实现自定义方法来验证颁发者。 有关此参数的详细信息，请参阅 [TokenValidationParameters 类](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters?view=azure-dotnet&preserve-view=true)。
+可通过 `IssuerValidator` 参数实现自定义方法来验证颁发者。 有关此参数的详细信息，请参阅 [TokenValidationParameters 类](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters)。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

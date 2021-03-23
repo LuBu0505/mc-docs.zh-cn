@@ -2,19 +2,20 @@
 title: 快速入门：使用无服务器 SQL 池
 description: 本快速入门介绍如何使用无服务器 SQL 池轻松查询各种类型的文件。
 services: synapse-analytics
-author: azaricstefan
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: stefanazaric
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 48d3a99e9f57b47b0ee328151b108d06fa2f5c66
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: b8325151d9891b30ea15cf45a41ca4fd62151462
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207074"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766466"
 ---
 # <a name="quickstart-use-serverless-sql-pool"></a>快速入门：使用无服务器 SQL 池
 
@@ -75,7 +76,7 @@ WITH IDENTITY='SHARED ACCESS SIGNATURE',
 SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D'
 GO
 CREATE EXTERNAL DATA SOURCE SqlOnDemandDemo WITH (
-    LOCATION = 'https://sqlondemandstorage.blob.core.windows.net',
+    LOCATION = 'https://sqlondemandstorage.blob.core.chinacloudapi.cn',
     CREDENTIAL = sqlondemand
 );
 ```
@@ -153,7 +154,7 @@ FROM OPENROWSET
 
 ### <a name="query-json-files"></a>查询 JSON 文件
 
-以下查询展示了如何使用 [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 在标题为“Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected articles”的书籍中检索标量值（标题、出版商）：
+以下查询展示了如何使用 [JSON_VALUE](https://docs.microsoft.com/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest&preserve-view=true) 在标题为“Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected articles”的书籍中检索标量值（标题、出版商）：
 
 ```sql
 SELECT

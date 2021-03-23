@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 origin.date: 11/05/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/29/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.reviewer: ayshak
-ms.openlocfilehash: 6a78dd66d21f41c3cceece0c5533cabe23e1db4d
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 91e96f07c422cc8acd634dd721b2dddacf1fe881
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857134"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765543"
 ---
 <!--Verified successfully-->
 <!--Rename articles content only-->
@@ -24,4 +24,4 @@ ms.locfileid: "97857134"
 
 [!INCLUDE [virtual-machines-common-isolation](../../includes/virtual-machines-common-isolation.md)]
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

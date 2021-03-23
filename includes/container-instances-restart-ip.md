@@ -2,14 +2,16 @@
 author: rockboyfor
 ms.service: container-instances
 ms.topic: include
-ms.date: 10/05/2020
+ms.date: 03/18/2021
 ms.author: v-yeche
-ms.openlocfilehash: 66c49c5829a653b4a6e18409766c65d15536651e
-ms.sourcegitcommit: 29a49e95f72f97790431104e837b114912c318b4
+ms.openlocfilehash: 64c031c4d7638377bf86d359564c0848706b22be
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91564275"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766500"
 ---
+<!--Verified successfully-->
+
 > [!NOTE]
 > 如果容器组配置了 IP 地址，则在重启容器组时，该 IP 地址可能会更改。

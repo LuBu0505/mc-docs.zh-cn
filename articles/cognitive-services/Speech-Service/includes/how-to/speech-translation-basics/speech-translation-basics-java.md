@@ -3,15 +3,15 @@ author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 04/13/2020
-ms.date: 12/10/2020
+ms.date: 03/08/2021
 ms.custom: devx-track-java
-ms.author: v-tawe
-ms.openlocfilehash: dfecb8550713b8e4f2fec0e490bbcded2669ae7a
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.author: v-johya
+ms.openlocfilehash: 3290c38947a316fd18eb361009c9b34e1604a522
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004472"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803398"
 ---
 语音服务的核心功能之一是能够识别人类语音并将其翻译成其他语言。 本快速入门介绍如何在应用和产品中使用语音 SDK 来执行高质量的语音翻译。 此快速入门介绍以下主题：
 
@@ -29,7 +29,7 @@ ms.locfileid: "97004472"
 
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
-需要先安装语音 SDK，然后才能执行任何操作。 根据你的平台，按照“关于语音 SDK”一文的<a href="https://docs.azure.cn/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">获取语音 SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a> 部分中的说明进行操作。
+你需要先安装语音 SDK，然后才能执行任何操作。 根据平台的不同，按照“关于语音 SDK”一文中<a href="https://docs.azure.cn/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">获取语音 SDK </a> 部分的说明进行操作。
 
 ## <a name="import-dependencies"></a>导入依赖项
 
@@ -109,7 +109,7 @@ static void translateSpeech() {
         SPEECH__SUBSCRIPTION__KEY, SPEECH__SERVICE__REGION);
     
     // Source (input) language
-    translationConfig.setSpeechRecognitionLanguage("ko-KR");
+    translationConfig.setSpeechRecognitionLanguage("it-IT");
 }
 ```
 
@@ -124,7 +124,7 @@ static void translateSpeech() {
     SpeechTranslationConfig translationConfig = SpeechTranslationConfig.fromSubscription(
         SPEECH__SUBSCRIPTION__KEY, SPEECH__SERVICE__REGION);
     
-    translationConfig.setSpeechRecognitionLanguage("ko-KR");
+    translationConfig.setSpeechRecognitionLanguage("it-IT");
 
     // Translate to languages. See, https://aka.ms/speech/sttt-languages
     translationConfig.addTargetLanguage("fr");
@@ -146,7 +146,7 @@ static void translateSpeech() {
         SPEECH__SUBSCRIPTION__KEY, SPEECH__SERVICE__REGION);
     
     String fromLanguage = "en-US";
-    String[] toLanguages = { "ko", "fr", "de" };
+    String[] toLanguages = { "it", "fr", "de" };
     translationConfig.setSpeechRecognitionLanguage(fromLanguage);
     for (String language : toLanguages) {
         translationConfig.addTargetLanguage(language);
@@ -170,7 +170,7 @@ static void translateSpeech() {
         SPEECH__SUBSCRIPTION__KEY, SPEECH__SERVICE__REGION);
     
     String fromLanguage = "en-US";
-    String[] toLanguages = { "ko", "fr", "de" };
+    String[] toLanguages = { "it", "fr", "de" };
     translationConfig.setSpeechRecognitionLanguage(fromLanguage);
     for (String language : toLanguages) {
         translationConfig.addTargetLanguage(language);
@@ -191,7 +191,7 @@ static void translateSpeech() {
         SPEECH__SUBSCRIPTION__KEY, SPEECH__SERVICE__REGION);
     
     String fromLanguage = "en-US";
-    String[] toLanguages = { "ko", "fr", "de" };
+    String[] toLanguages = { "it", "fr", "de" };
     translationConfig.setSpeechRecognitionLanguage(fromLanguage);
     for (String language : toLanguages) {
         translationConfig.addTargetLanguage(language);
@@ -214,7 +214,7 @@ static void translateSpeech() throws ExecutionException, InterruptedException {
         SPEECH__SUBSCRIPTION__KEY, SPEECH__SERVICE__REGION);
     
     String fromLanguage = "en-US";
-    String[] toLanguages = { "ko", "fr", "de" };
+    String[] toLanguages = { "it", "fr", "de" };
     translationConfig.setSpeechRecognitionLanguage(fromLanguage);
     for (String language : toLanguages) {
         translationConfig.addTargetLanguage(language);
@@ -257,7 +257,7 @@ static void translateSpeech() throws ExecutionException, FileNotFoundException, 
     translationConfig.setSpeechRecognitionLanguage(fromLanguage);
     translationConfig.addTargetLanguage(toLanguage);
 
-    // See: https://docs.azure.cn/cognitive-services/speech-service/regions#standard-and-neural-voices
+    // See: https://aka.ms/speech/sdkregion#standard-and-neural-voices
     translationConfig.setVoiceName("de-DE-Hedda");
 
     try (TranslationRecognizer recognizer = new TranslationRecognizer(translationConfig)) {
@@ -300,7 +300,7 @@ static void translateSpeech() throws ExecutionException, InterruptedException {
         SPEECH__SUBSCRIPTION__KEY, SPEECH__SERVICE__REGION);
     
     String fromLanguage = "en-US";
-    String[] toLanguages = { "de", "en", "zh-Hans" };
+    String[] toLanguages = { "de", "en", "it", "pt", "zh-Hans" };
     translationConfig.setSpeechRecognitionLanguage(fromLanguage);
     for (String language : toLanguages) {
         translationConfig.addTargetLanguage(language);
@@ -311,11 +311,13 @@ static void translateSpeech() throws ExecutionException, InterruptedException {
 
         TranslationRecognitionResult result = recognizer.recognizeOnceAsync().get();
         if (result.getReason() == ResultReason.TranslatedSpeech) {
-            // See: https://docs.azure.cn/cognitive-services/speech-service/regions#standard-and-neural-voices
+            // See: https://aka.ms/speech/sdkregion#standard-and-neural-voices
             Map<String, String> languageToVoiceMap = new HashMap<String, String>();
             languageToVoiceMap.put("de", "de-DE-KatjaNeural");
             languageToVoiceMap.put("en", "en-US-AriaNeural");
-            languageToVoiceMap.put("zh-Hans", "zh-CN-XiaoxiaoNeural");
+            languageToVoiceMap.put("it", "it-IT-ElsaNeural");
+            languageToVoiceMap.put("pt", "pt-BR-FranciscaNeural");
+            languageToVoiceMap.put("zh-Hans", "zh-cn-XiaoxiaoNeural");
 
             System.out.printf("Recognized: \"%s\"\n", result.getText());
             for (Map.Entry<String, String> pair : result.getTranslations().entrySet()) {
@@ -347,3 +349,4 @@ static void translateSpeech() throws ExecutionException, InterruptedException {
 [translations]: https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.translation.translationrecognitionresult.gettranslations
 [voicename]: https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.translation.speechtranslationconfig.setvoicename
 [speechsynthesisvoicename]: https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setspeechsynthesisvoicename
+

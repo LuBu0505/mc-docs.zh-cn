@@ -5,17 +5,17 @@ ms.service: api-management
 author: Johnnytechn
 ms.author: v-johya
 ms.topic: tutorial
-ms.date: 01/18/2021
-ms.openlocfilehash: 020ae8c6700baf6c481f3ef9c426de0c0e413bb9
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.date: 03/17/2021
+ms.openlocfilehash: b60315697ed2c4883ff3edb9cf05a2dd0c6c34c5
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751397"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766789"
 ---
 # <a name="tutorial-use-the-api-management-extension-for-visual-studio-code-to-import-and-manage-apis"></a>教程：使用 Visual Studio Code 的 API 管理扩展来导入和管理 API
 
-本教程将介绍如何使用 Visual Studio Code 的 API 管理扩展预览版来实现 API 管理中的常见操作。 使用熟悉的 Visual Studio Code 环境导入、更新、测试和管理 API。
+本教程将介绍如何使用 Visual Studio Code 的 API 管理扩展来实现 API 管理中的常见操作。 使用熟悉的 Visual Studio Code 环境导入、更新、测试和管理 API。
 
 你将学习如何执行以下操作：
 
@@ -32,7 +32,7 @@ ms.locfileid: "98751397"
 
 ## <a name="prerequisites"></a>先决条件
 - 理解 [Azure API 管理的术语](api-management-terminology.md)
-- 确保已安装 [Visual Studio Code](https://code.visualstudio.com/) 以及 [Visual Studio Code 的最新版 Azure API 管理扩展（预览版）](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview)
+- 确保已安装 [Visual Studio Code](https://code.visualstudio.com/) 以及 [Visual Studio Code 的 Azure API 管理扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview)最新版。
 - [创建 API 管理实例](vscode-create-service-instance.md)
 
 ## <a name="import-an-api"></a>导入 API

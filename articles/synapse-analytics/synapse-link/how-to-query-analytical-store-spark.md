@@ -1,27 +1,28 @@
 ---
-title: 使用 Azure Synapse Link 中的 Apache Spark（预览版）与 Azure Cosmos DB 进行交互
+title: 使用 Azure Synapse Link 中的 Apache Spark 与 Azure Cosmos DB 进行交互
 description: 如何使用 Azure Synapse Link 中的 Apache Spark 与 Azure Cosmos DB 进行交互
 services: synapse-analytics
-author: ArnoMicrosoft
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: synapse-link
-ms.date: 09/15/2020
-ms.author: acomet
+origin.date: 09/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 34300f8880dd6ea1843842503aa5b4f74c50b5e5
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 7a61e8dbe719c0ffdb5bf9e561f2959e5be35da7
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207205"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766314"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link"></a>使用 Azure Synapse Link 中的 Apache Spark 与 Azure Cosmos DB 进行交互
 
-本文将介绍如何使用 Synapse Apache Spark 与 Azure Cosmos DB 进行交互。 由于提供全面的 Scala、Python、SparkSQL 和 C# 支持，Synapse Apache Spark 对于 [Azure Synapse Link for Azure Cosmos DB](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 中的分析、数据工程、数据科学和数据探索方案至关重要。
+本文将介绍如何使用 Synapse Apache Spark 与 Azure Cosmos DB 进行交互。 由于提供全面的 Scala、Python、SparkSQL 和 C# 支持，Synapse Apache Spark 对于 [Azure Synapse Link for Azure Cosmos DB](../../cosmos-db/synapse-link.md) 中的分析、数据工程、数据科学和数据探索方案至关重要。
 
 与 Azure Cosmos DB 进行交互时支持以下功能：
-* 利用 Synapse Apache Spark，可以近乎实时地分析通过 Azure Synapse Link 启用的 Azure Cosmos DB 容器中的数据，而不会影响事务工作负载的性能。 以下两个选项可用于查询 Spark 中的 Azure Cosmos DB [分析存储](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)：
+* 利用 Synapse Apache Spark，可以近乎实时地分析通过 Azure Synapse Link 启用的 Azure Cosmos DB 容器中的数据，而不会影响事务工作负载的性能。 以下两个选项可用于查询 Spark 中的 Azure Cosmos DB [分析存储](../../cosmos-db/analytical-store-introduction.md)：
     + 加载到 Spark 数据帧
     + 创建 Spark 表
 * 还可以利用 Synapse Apache Spark 将数据引入 Azure Cosmos DB。 需要注意的是，数据始终通过事务存储引入到 Azure Cosmos DB 容器中。 启用 Synapse Link 后，任何新的插入、更新和删除操作都将自动同步到分析存储。
@@ -164,8 +165,11 @@ val dfStream = spark.readStream.
 在此示例中，会将流式处理数据帧写入 Azure Cosmos DB 容器。 此操作将影响事务工作负载的性能，并消耗 Azure Cosmos DB 容器或共享数据库上预配的请求单位。 如果（在以下示例中）未创建文件夹 /localWriteCheckpointFolder，则将自动创建该文件夹。 
 
 “Python”中的语法如下所示：
+
 ```python
 # To select a preferred list of regions in a multi-region Azure Cosmos DB account, add .option("spark.cosmos.preferredRegions", "<Region1>,<Region2>")
+
+# If you are using managed private endpoints for Azure Cosmos DB analytical store and using batch writes/reads and/or streaming writes/reads to transactional store you should set connectionMode to Gateway. 
 
 streamQuery = dfStream\
         .writeStream\
@@ -183,6 +187,8 @@ streamQuery.awaitTermination()
 “Scala”中的等效语法如下所示：
 ```java
 // To select a preferred list of regions in a multi-region Azure Cosmos DB account, add .option("spark.cosmos.preferredRegions", "<Region1>,<Region2>")
+
+// If you are using managed private endpoints for Azure Cosmos DB analytical store and using batch writes/reads and/or streaming writes/reads to transactional store you should set connectionMode to Gateway. 
 
 val query = dfStream.
             writeStream.
@@ -205,7 +211,7 @@ query.awaitTermination()
 %%configure -f
 {
     "jars": [
-        "abfss://<storage container name>@<data lake account name>.dfs.core.windows.net/<path to jar>"
+        "abfss://<storage container name>@<data lake account name>.dfs.core.chinacloudapi.cn/<path to jar>"
     ]
 }
 ```

@@ -5,17 +5,17 @@ services: container-service
 ms.topic: article
 origin.date: 06/18/2020
 author: rockboyfor
-ms.date: 11/30/2020
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: 07/13/2020
 ms.author: v-yeche
 ms.custom: fasttrack-edit, devx-track-azurecli
-ms.openlocfilehash: 74c3815aaa4d56f2be2140afda41cd4038e6d1a9
-ms.sourcegitcommit: ea52237124974eda84f8cef4bf067ae978d7a87d
+ms.openlocfilehash: 29d3447385d1fbf07379c8832e641b2d5e123e19
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024629"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767098"
 ---
 <!--Verified successfully-->
 <!--Verified on Portal-->
@@ -215,7 +215,7 @@ az group delete --name myResourceGroup --yes --no-wait
 [az-group-delete]: https://docs.azure.cn/cli/group#az_group_delete
 [az-group-deployment-create]: https://docs.azure.cn/cli/group/deployment#az_group_deployment_create
 [gpu-cluster]: gpu-cluster.md
-[install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli
+[install-azure-cli]: https://docs.microsoft.com/cli/azure/install-azure-cli
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [quotas-skus-regions]: quotas-skus-regions.md
 [supported-versions]: supported-kubernetes-versions.md
@@ -225,4 +225,4 @@ az group delete --name myResourceGroup --yes --no-wait
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [maximum-pods]: configure-azure-cni.md#maximum-pods-per-node
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

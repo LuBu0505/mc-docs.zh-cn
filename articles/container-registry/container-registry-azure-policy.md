@@ -2,18 +2,18 @@
 title: 使用 Azure Policy 实现合规性
 description: 分配 Azure Policy 中的内置策略来审核 Azure 容器注册表的合规性
 ms.topic: article
-origin.date: 06/11/2020
+origin.date: 03/01/2021
 author: rockboyfor
-ms.date: 11/30/2020
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: 06/08/2020
 ms.author: v-yeche
-ms.openlocfilehash: cd99c099c0a5a2e25a6e039ffd54e9cbce5f1c18
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 346396fa1060134d237474b7ce4d466034b42b51
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300727"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766978"
 ---
 <!--Verified successfully-->
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>使用 Azure Policy 审核 Azure 容器注册表的合规性
@@ -28,7 +28,7 @@ ms.locfileid: "96300727"
 
 以下内置策略定义特定于 Azure 容器注册表：
 
-[!INCLUDE [azure-policy-reference-policies-container-registry](../../includes/policy/reference/bycat/policies-container-registry.md)]
+[!INCLUDE [azure-policy-reference-rp-containerreg](../../includes/policy/reference/byrp/microsoft.containerregistry.md)]
 
 另请参阅内置网络策略定义：[容器注册表应使用虚拟网络服务终结点](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78)。
 
@@ -59,7 +59,7 @@ ms.locfileid: "96300727"
 
 ### <a name="policy-compliance-in-the-azure-cli"></a>Azure CLI 中的策略合规性
 
-也可使用 Azure CLI 来获取合规性数据。 例如，在 CLI 中使用 [az policy assignment list](https://docs.azure.cn/cli/policy/assignment#az-policy-assignment-list) 命令获取已应用的 Azure 容器注册表策略的策略 ID：
+也可使用 Azure CLI 来获取合规性数据。 例如，在 CLI 中使用 [az policy assignment list](https://docs.azure.cn/cli/policy/assignment#az_policy_assignment_list) 命令获取已应用的 Azure 容器注册表策略的策略 ID：
 
 ```azurecli
 az policy assignment list --query "[?contains(displayName,'Container Registries')].{name:displayName, ID:id}" --output table
@@ -74,14 +74,14 @@ Container Registries should not allow unrestricted network access           /sub
 Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
 ```
 
-然后运行 [az policy state list](https://docs.azure.cn/cli/policy/state#az-policy-state-list)，以便返回特定策略 ID 下所有资源的 JSON 格式合规性状态：
+然后运行 [az policy state list](https://docs.azure.cn/cli/policy/state#az_policy_state_list)，以便返回特定策略 ID 下所有资源的 JSON 格式合规性状态：
 
 ```azurecli
 az policy state list \
   --resource <policyID>
 ```
 
-也可运行 [az policy state list](https://docs.azure.cn/cli/policy/state#az-policy-state-list)，以便返回特定注册表资源（例如 myregistry）的 JSON 格式合规性状态：
+也可运行 [az policy state list](https://docs.azure.cn/cli/policy/state#az_policy_state_list)，以便返回特定注册表资源（例如 myregistry）的 JSON 格式合规性状态：
 
 ```azurecli
 az policy state list \
@@ -99,4 +99,4 @@ az policy state list \
 
 * 详细了解 Azure 中的[治理功能](../governance/index.yml)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

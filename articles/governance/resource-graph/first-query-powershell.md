@@ -1,16 +1,17 @@
 ---
 title: 快速入门：第一个 PowerShell 查询
 description: 本快速入门介绍为 Azure PowerShell 启用 Resource Graph 模块并运行第一个查询的步骤。
-ms.author: v-tawe
-origin.date: 10/14/2020
-ms.date: 11/06/2020
+origin.date: 01/27/2021
+author: rockboyfor
+ms.date: 03/22/2021
+ms.author: v-yeche
 ms.topic: quickstart
-ms.openlocfilehash: 6ddbf05e643d4a56c7099ad6c76dee24ca7a65dc
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.openlocfilehash: 65f374f91fe1c0ce7a12e979db7df6d86ba1434a
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431102"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766738"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 运行首个 Resource Graph 查询
 
@@ -21,6 +22,8 @@ ms.locfileid: "96431102"
 ## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始前创建一个[试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)帐户。
+
+<!--NOT AVAILABLE ON [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]-->
 
 ## <a name="add-the-resource-graph-module"></a>添加 Resource Graph 模块
 
@@ -40,14 +43,14 @@ Azure Resource Graph 模块需要以下软件：
 
 1. 从管理 PowerShell 提示符运行以下命令：
 
-   ```azurepowershell
+   ```powershell
    # Install the Resource Graph module from PowerShell Gallery
    Install-Module -Name Az.ResourceGraph
    ```
 
 1. 验证该模块是否已导入且是否为最新版本 (0.7.5)：
 
-   ```azurepowershell
+   ```powershell
    # Get a list of commands for the imported Az.ResourceGraph module
    Get-Command -Module 'Az.ResourceGraph' -CommandType 'Cmdlet'
    ```
@@ -58,7 +61,7 @@ Azure Resource Graph 模块需要以下软件：
 
 1. 使用 `Search-AzGraph` cmdlet 运行首个 Azure Resource Graph 查询：
 
-   ```azurepowershell
+   ```powershell
    # Login first with Connect-AzAccount
    Connect-AzAccount -Environment AzureChinaCloud
 
@@ -71,7 +74,7 @@ Azure Resource Graph 模块需要以下软件：
 
 1. 将查询更新为 `order by` Name 属性：
 
-   ```azurepowershell
+   ```powershell
    # Run Azure Resource Graph query with 'order by'
    Search-AzGraph -Query 'Resources | project name, type | limit 5 | order by name asc'
    ```
@@ -81,7 +84,7 @@ Azure Resource Graph 模块需要以下软件：
 
 1. 将查询更新为先 `order by` Name 属性，然后再 `limit` 为前五个结果：
 
-   ```azurepowershell
+   ```powershell
    # Run Azure Resource Graph query with `order by` first, then with `limit`
    Search-AzGraph -Query 'Resources | project name, type | order by name asc | limit 5'
    ```
@@ -90,12 +93,12 @@ Azure Resource Graph 模块需要以下软件：
 
 > [!NOTE]
 > 如果查询未从你已有权访问的订阅返回结果，请注意 `Search-AzGraph` cmdlet 默认为默认上下文中的订阅。 若要查看作为默认上下文一部分的订阅 ID 列表，请运行此 `(Get-AzContext).Account.ExtendedProperties.Subscriptions`。如果你希望搜索你有权访问的所有订阅，可以通过运行 `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}` 为 `Search-AzGraph` cmdlet 设置 PSDefaultParameterValues
-   
+
 ## <a name="clean-up-resources"></a>清理资源
 
 若希望从 Azure PowerShell 环境中删除 Resource Graph 模块，可使用以下命令：
 
-```azurepowershell
+```powershell
 # Remove the Resource Graph module from the current session
 Remove-Module -Name 'Az.ResourceGraph'
 
@@ -112,3 +115,5 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 
 > [!div class="nextstepaction"]
 > [获取有关查询语言的详细信息](./concepts/query-language.md)
+
+<!--Update_Description: update meta properties, wording update, update link-->

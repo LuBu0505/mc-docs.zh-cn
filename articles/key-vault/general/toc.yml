@@ -39,9 +39,11 @@
   items:
     - name: 基本概念
       href: basic-concepts.md
+    - name: 最佳实践
+      href: best-practices.md
     - name: 安全性
       items:
-        - name: 安全概述
+        - name: 概述
           href: security-overview.md
         - name: 保护对密钥保管库的访问
           href: secure-your-key-vault.md
@@ -84,10 +86,12 @@
               href: assign-access-policy-powershell.md
             - name: 门户
               href: assign-access-policy-portal.md
-        - name: 使用 Azure RBAC 管理对密钥、机密和证书的访问权限（预览版）
-          href: rbac-guide.md
-        - name: 有关将保管库访问策略迁移到 Azure RBAC 的指南
-          href: rbac-migration.md
+        - name: Azure RBAC 权限模型
+          items:
+            - name: 使用 Azure RBAC 来管理对密钥、机密和证书的访问
+              href: rbac-guide.md
+            - name: 有关将保管库访问策略迁移到 Azure RBAC 的指南
+              href: rbac-migration.md
         - name: 排查访问问题
           href: troubleshooting-access-issues.md
     - name: 开发
@@ -100,6 +104,14 @@
           href: vs-key-vault-add-connected-service.md
     - name: 监视和监管
       items:
+        - name: 事件网格通知
+          items:
+            - name: 通过逻辑应用接收通知
+              href: event-grid-logicapps.md
+            - name: 通过 Azure 自动化接收通知
+              href: event-grid-tutorial.md
+        - name: 启用日志记录
+          href: howto-logging.md
         - name: 使用 Azure Monitor 为 Azure Key Vault 配置监视和警报
           href: alert.md
         - name: 通过软删除和清除保护实现恢复管理
@@ -151,7 +163,7 @@
     - name: Python
       href: 'https://docs.microsoft.com/python/api/overview/azure/key-vault-index?view=azure-python'
     - name: REST
-      href: /rest/api/keyvault
+      href: 'https://docs.microsoft.com/rest/api/keyvault'
     - name: 资源管理器模板
       href: 'https://docs.microsoft.com/azure/templates/microsoft.keyvault/allversions'
       displayName: ARM

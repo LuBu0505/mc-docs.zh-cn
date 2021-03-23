@@ -3,21 +3,20 @@ title: render 运算符 - Azure 数据资源管理器
 description: 本文介绍了 Azure 数据资源管理器中的 render 运算符。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 12/08/2020
-ms.date: 01/22/2021
+ms.date: 03/18/2021
 ms.localizationpriority: high
-zone_pivot_group_filename: zone-pivot-groups.json
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: cd54235792371d362d98c3059b0efc6af9d6d3d7
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.openlocfilehash: a42936da2eff525b8304d3d3cbea24ccc33e627c
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611694"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766972"
 ---
 # <a name="render-operator"></a>render 运算符
 

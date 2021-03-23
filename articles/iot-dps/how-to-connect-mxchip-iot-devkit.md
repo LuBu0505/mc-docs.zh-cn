@@ -2,19 +2,18 @@
 title: 如何使用 Azure IoT 中心设备预配服务的自动预配功能将 MXChip IoT DevKit 注册到 IoT 中心 | Microsoft Docs
 description: 如何使用 Azure IoT 中心设备预配服务 (DPS) 的自动预配功能将 MXChip IoT DevKit 注册到 IoT 中心。
 author: wesmc7777
-ms.author: v-tawe
-origin.date: 06/25/2019
-ms.date: 12/03/2020
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.openlocfilehash: 9490117e3cc3d954968c445c8491688aaa64bd1d
-ms.sourcegitcommit: 60e70acb6f9604aeef69d2027f7f96a1d7d5b248
+ms.openlocfilehash: 57b2ac5e8a481f4adec98254934b3c56aa0dca2c
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96541165"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766970"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>使用 Azure IoT 中心设备预配服务的自动预配功能将 MXChip IoT DevKit 注册到 IoT 中心
 
@@ -25,7 +24,7 @@ ms.locfileid: "96541165"
 * 登记单个设备。
 * 验证设备是否已注册。
 
-[MXChip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/) 是具有多种外设和传感器的集成 Arduino 兼容板。 可以使用 Visual Studio Code 中的 [Azure IoT Device Workbench](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench)（Azure IoT 设备 Workbench）或 [Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)扩展包进行开发。 DevKit 附带一个不断增长的[项目目录](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/)，指导你构建物联网 (IoT) 解决方案的原型，以利用 Azure 服务。
+[MXChip IoT DevKit](https://aka.ms/iot-devkit) 是具有多种外设和传感器的集成 Arduino 兼容板。 可以使用 Visual Studio Code 中的 [Azure IoT Device Workbench](https://aka.ms/iot-workbench)（Azure IoT 设备 Workbench）或 [Azure IoT 工具](https://aka.ms/azure-iot-tools)扩展包进行开发。 DevKit 附带一个不断增长的[项目目录](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/)，指导你构建物联网 (IoT) 解决方案的原型，以利用 Azure 服务。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -42,7 +41,7 @@ ms.locfileid: "96541165"
 1. 单击 `F1` 以打开命令面板，键入并选择“Azure IoT Device Workbench:  Open Examples...”。然后选择“IoT DevKit”作为开发板。 
 
 1. 在 IoT Workbench“示例”页中，找到“使用 DPS 进行设备注册”，然后单击“打开示例”   。 然后选择用于下载示例代码的默认路径。
-    ![打开示例](media/how-to-connect-mxchip-iot-devkit/open-sample.png)
+    ![打开示例](./media/how-to-connect-mxchip-iot-devkit/open-sample.png)
 
 ## <a name="save-a-unique-device-secret-on-device-security-storage"></a>将唯一设备机密保存在设备安全存储上
 
@@ -57,18 +56,18 @@ ms.locfileid: "96541165"
 在 DevKit 上保存 UDS：
 
 1. 在 VS Code 中，单击状态栏以选择 DevKit 的 COM 端口。
-  ![选择 COM 端口](media/how-to-connect-mxchip-iot-devkit/select-com.png)
+  ![选择 COM 端口](./media/how-to-connect-mxchip-iot-devkit/select-com.png)
 
 1. 在 DevKit 上，按住 **按钮 A** 不放，按下再松开 **重置** 按钮，然后松开 **按钮 A**。DevKit 将进入配置模式。
 
 1. 单击 `F1` 以打开命令面板，键入并选择“Azure IoT Device Workbench:**配置设备设置...”>“配置唯一设备字符串 (UDS)”** 。
-  ![配置 UDS](media/how-to-connect-mxchip-iot-devkit/config-uds.png)
+  ![配置 UDS](./media/how-to-connect-mxchip-iot-devkit/config-uds.png)
 
 1. 请记下生成的 UDS 字符串。 将需要该字符串来生成 X.509 证书。 然后按 `Enter`。
-  ![复制 UDS](media/how-to-connect-mxchip-iot-devkit/copy-uds.png)
+  ![复制 UDS](./media/how-to-connect-mxchip-iot-devkit/copy-uds.png)
 
 1. 从通知中确认已在 STSAFE 上成功配置 UDS。
-  ![配置 UDS 成功](media/how-to-connect-mxchip-iot-devkit/config-uds-success.png)
+  ![配置 UDS 成功](./media/how-to-connect-mxchip-iot-devkit/config-uds-success.png)
 
 > [!NOTE]
 > 或者，可以使用 Putty 等实用程序通过串行端口配置 UDS。 请按照[使用配置模式](https://microsoft.github.io/azure-iot-developer-kit/docs/use-configuration-mode/)中的说明执行此操作。
@@ -78,16 +77,16 @@ ms.locfileid: "96541165"
 在设备代码中，需要指定[设备预配终结点](./concepts-service.md#device-provisioning-endpoint)和 ID 范围以确保租户隔离。
 
 1. 在 Azure 门户中，选择设备预配服务的“概述”窗格，记下“全局设备终结点”和“ID 范围”的值    。
-  ![设备预配服务全局终结点和 ID 范围](media/how-to-connect-mxchip-iot-devkit/dps-global-endpoint.png)
+  ![设备预配服务全局终结点和 ID 范围](./media/how-to-connect-mxchip-iot-devkit/dps-global-endpoint.png)
 
 1. 打开 **DevKitDPS.ino**。 找到 `[Global Device Endpoint]` 和 `[ID Scope]` 并将其替换为刚刚记下的值。
-  ![设备预配服务终结点](media/how-to-connect-mxchip-iot-devkit/endpoint.png)
+  ![设备预配服务终结点](./media/how-to-connect-mxchip-iot-devkit/endpoint.png)
 
 1. 在代码中填充 `registrationId` 变量。 仅允许使用最多 128 个字符的字母数字、小写和连字符组合。 同样记下该值。
-  ![注册 ID](media/how-to-connect-mxchip-iot-devkit/registration-id.png)
+  ![注册 ID](./media/how-to-connect-mxchip-iot-devkit/registration-id.png)
 
 1. 单击 `F1`，键入并选择“Azure IoT 设备 Workbench:  Upload Device Code”。 它随后开始编译代码并上传到 DevKit。
-  ![设备上传](media/how-to-connect-mxchip-iot-devkit/device-upload.png)
+  ![设备上传](./media/how-to-connect-mxchip-iot-devkit/device-upload.png)
 
 ## <a name="generate-x509-certificate"></a>生成 X.509 证书
 
@@ -98,18 +97,18 @@ ms.locfileid: "96541165"
 1. 在 `tool` 文件夹中运行 `dps_cert_gen.exe`。
 
 1. 将编译的二进制文件位置指定为 `..\.build\DevKitDPS`。 然后粘贴刚刚记下的 UDS 和 registrationId   。 
-  ![生成 X.509](media/how-to-connect-mxchip-iot-devkit/gen-x509.png)
+  ![生成 X.509](./media/how-to-connect-mxchip-iot-devkit/gen-x509.png)
 
 1. `.pem` X.509 证书在同一文件夹中生成。
-  ![X.509 文件](media/how-to-connect-mxchip-iot-devkit/pem-file.png)
+  ![X.509 文件](./media/how-to-connect-mxchip-iot-devkit/pem-file.png)
 
 ## <a name="create-a-device-enrollment-entry"></a>创建设备注册项
 
 1. 在 Azure 门户中，打开“设备预配服务”，导航到“管理注册”部分，然后单击“添加单个注册”  。
-  ![添加单个注册](media/how-to-connect-mxchip-iot-devkit/add-enrollment.png)
+  ![添加单个注册](./media/how-to-connect-mxchip-iot-devkit/add-enrollment.png)
 
 1. 单击“主要证书 .pem 或 .cer 文件”旁边的文件图标，上传生成的文件 `.pem` 。
-  ![上传 .pem](media/how-to-connect-mxchip-iot-devkit/upload-pem.png)
+  ![上传 .pem](./media/how-to-connect-mxchip-iot-devkit/upload-pem.png)
 
 ## <a name="verify-the-devkit-is-registered-with-azure-iot-hub"></a>验证 DevKit 是否已注册到 Azure IoT 中心
 

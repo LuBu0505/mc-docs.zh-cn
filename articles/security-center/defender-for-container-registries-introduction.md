@@ -3,16 +3,16 @@ title: 适用于容器注册表的 Azure Defender - 优点和功能
 description: 了解容器注册表的 Azure Defender 的优点和功能。
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 01/25/2021
+ms.date: 03/18/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: ade243cc0edcceb58cd45de2183da8fbd16e7eb5
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 355a73a48758131ecb6defbdf27dc87a4545f176
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99061053"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766882"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>适用于容器注册表的 Azure Defender 简介
 
@@ -64,7 +64,7 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 ## <a name="faq-for-azure-container-registry-image-scanning"></a>Azure 容器注册表映像扫描常见问题解答
 
 ### <a name="how-does-security-center-scan-an-image"></a>安全中心如何扫描图像？
-先从注册表中拉取映像。 然后在独立沙盒中运行该映像，沙盒中包含的 Qualys 扫描程序会提取已知漏洞的列表。
+安全中心会从注册表中拉取映像，并使用 Qualys 扫描程序在一个隔离的沙盒中运行它。 扫描程序会提取已知漏洞的列表。
 
 安全中心会对扫描程序的扫描结果进行筛选和分类。 当映像正常运行时，安全中心会将其标为正常。 安全中心仅为存在待解决问题的映像生成安全建议。 安全中心仅在出现问题时发出通知，这样会降低发送不必要的信息警报的可能性。
 
@@ -72,9 +72,9 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 是的。 结果位于[子评估 Rest API](https://docs.microsoft.com/rest/api/securitycenter/subassessments/list/) 下。 此外，还可以对所有资源使用 Azure Resource Graph (ARG)，一个类似于 Kusto 的 API：查询可以提取特定扫描。
 
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>会扫描哪些类型的注册表？ 会对哪些类型计费？
-有关适用于容器注册表的 Azure Defender 支持的容器注册表类型的列表，请参阅[可用性](defender-for-container-registries-usage.md#availability)。
+有关适用于容器注册表的 Azure Defender 支持的容器注册表类型的列表，请参阅[可用性](#availability)。
 
-如果将不支持的注册表连接到 Azure 订阅，不会对其进行扫描，也不会收取扫描费。
+如果将不支持的注册表连接到 Azure 订阅，Azure Defender 不会对其进行扫描，也不会为此向你收取费用。
 
 <!--Not available in MC: defender-for-container-registries-usage.md#disable-specific-findings-preview-->
 ### <a name="why-is-security-center-alerting-me-to-vulnerabilities-about-an-image-that-isnt-in-my-registry"></a>有个映像不在我的注册表中，它存在漏洞。为什么安全中心要就这些漏洞向我发送警报？

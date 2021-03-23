@@ -2,19 +2,20 @@
 title: 在查询中使用文件元数据
 description: OPENROWSET 函数提供有关在查询中使用的每个文件的文件和路径信息，以便根据文件名和/或文件夹路径筛选或分析数据。
 services: synapse-analytics
-author: azaricstefan
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
-ms.date: 05/20/2020
-ms.author: stefanazaric
+origin.date: 05/20/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: e4ca8d4d6600832c3b5f93be4a2a7951f73d8259
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 118cb4a8dbbb887e816c950a965656c513639103
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207358"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766175"
 ---
 # <a name="use-file-metadata-in-serverless-sql-pool-queries"></a>在无服务器 SQL 池查询中使用文件元数据
 

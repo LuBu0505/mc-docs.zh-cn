@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 05/30/2018
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: justini
 ROBOTS: NOINDEX
-ms.openlocfilehash: dad69140059698a8566f01bc3f21c86cd98841f2
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: ce58e0a367deb593520d225599564ef07bbaaaf5
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101751851"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766998"
 ---
 # <a name="azure-stack-1802-update"></a>Azure Stack 1802 更新
 
@@ -130,7 +130,7 @@ Azure Stack 1802 更新内部版本号为 **20180302.1**。
     可以放心地忽略此警报。 
 
 <!-- 2253274 --> 
--  在管理员和用户门户中，vNet 子网的“设置”边栏选项卡无法加载。 解决方法是使用 PowerShell 和 [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0&preserve-view=true) cmdlet 来查看和管理此信息。
+-  在管理员和用户门户中，vNet 子网的“设置”边栏选项卡无法加载。 解决方法是使用 PowerShell 和 [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?preserve-view=true&view=azurermps-5.5.0) cmdlet 来查看和管理此信息。
 
 - 在管理员门户和用户门户中，如果选择通过旧版 API（例如 2015-06-15）创建的存储帐户的“概述”边栏选项卡，则“概述”边栏选项卡无法加载。 这包括系统存储帐户，例如修补和更新过程中使用的 **updateadminaccount**。 
 

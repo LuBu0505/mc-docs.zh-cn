@@ -8,15 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: overview
-origin.date: 07/20/2020
-ms.date: 01/13/2021
-ms.author: v-tawe
-ms.openlocfilehash: c96d9978780f2e1f990d259c0c47066bea3bc4a8
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: 8d1949e1c2107e3837dfb746dbec5c75b0868051
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99058564"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765602"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>续订 Azure Key Vault 证书
 

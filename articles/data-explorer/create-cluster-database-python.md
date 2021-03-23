@@ -2,18 +2,17 @@
 title: 使用 Python 创建 Azure 数据资源管理器群集和数据库
 description: 了解如何使用 Python 创建 Azure 数据资源管理器群集和数据库。
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: how-to
-origin.date: 06/03/2019
-ms.date: 09/30/2020
-ms.openlocfilehash: f2edb0612ee9cadb758c2e45d1c5daf50fbc176f
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 03/17/2021
+ms.openlocfilehash: 955bf239716dd48e171db2c92a67b9c5100dbaa4
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611631"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765378"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>使用 Python 创建 Azure 数据资源管理器群集和数据库
 
@@ -30,11 +29,11 @@ ms.locfileid: "98611631"
 
 ## <a name="prerequisites"></a>必备条件
 
-如果没有 Azure 订阅，请在开始前创建一个[试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+* 具有活动订阅的 Azure 帐户。 [创建一个](https://www.microsoft.com/china/azure/index.html?fromtype=cn/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 * [Python 3.4+](https://www.python.org/downloads/)。
 
-* [可以访问资源的 Azure AD 应用程序和服务主体](https://docs.azure.cn/active-directory/develop/howto-create-service-principal-portal)。 获取 `Directory (tenant) ID`、`Application ID` 和 `Client Secret` 的值。
+* [可以访问资源的 Azure AD 应用程序和服务主体](/active-directory/develop/howto-create-service-principal-portal)。 获取 `Directory (tenant) ID`、`Application ID` 和 `Client Secret` 的值。
 
 ## <a name="install-python-package"></a>安装 Python 包
 

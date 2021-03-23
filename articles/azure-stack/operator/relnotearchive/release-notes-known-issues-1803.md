@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 07/11/2018
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: justini
 ROBOTS: NOINDEX
-ms.openlocfilehash: 43e6eb1a56901e5a5ca1facd5c5591ef5d564b1d
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 13e69fbbfff709bb65677abd2e4c59e4377986c0
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101751704"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766994"
 ---
 # <a name="azure-stack-1803-update"></a>Azure Stack 1803 更新
 
@@ -100,7 +100,7 @@ Azure Stack 1803 更新内部版本号为 **20180329.1**。
 -  虚拟机的使用情况数据现在按“小时”时间间隔进行划分。 这与 Azure 一致。 
 
 <!--  2253274 --> 
--  管理员和用户门户中 vNet 子网的“设置”边栏选项卡无法加载的问题。 解决方法是使用 PowerShell 和 [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0&preserve-view=true) cmdlet 来查看和管理此信息。
+-  管理员和用户门户中 vNet 子网的“设置”边栏选项卡无法加载的问题。 解决方法是使用 PowerShell 和 [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?preserve-view=true&view=azurermps-5.5.0) cmdlet 来查看和管理此信息。
 
 - 在创建虚拟机时，“无法显示定价”消息不再在选择某个大小作为 VM 大小时显示。
 

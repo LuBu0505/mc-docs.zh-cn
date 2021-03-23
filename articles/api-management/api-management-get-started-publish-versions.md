@@ -6,14 +6,14 @@ ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
 origin.date: 11/04/2019
-ms.date: 01/18/2021
+ms.date: 03/17/2021
 ms.author: v-johya
-ms.openlocfilehash: 5edb09553afd56f3964e5c733508ace4814a4388
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: f1cc180e89dfd927130d32fac640268f0916dbc9
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751160"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765984"
 ---
 # <a name="tutorial-publish-multiple-versions-of-your-api"></a>教程：发布 API 的多个版本 
 
@@ -61,7 +61,7 @@ ms.locfileid: "98751160"
 
 
 
-|设置   |值  |说明  |
+|设置   |“值”  |说明  |
 |---------|---------|---------|
 |**Name**     |  *demo-conference-api-v1*       |  API 管理实例中的唯一名称。<br/><br/>因为某个版本实际上是一个基于 API [修订版](api-management-get-started-revise-api.md)的新 API，所以此设置为新 API 的名称。   |
 |**版本控制方案**     |  **路径**       |  调用方指定 API 版本的方式。     |
@@ -88,6 +88,32 @@ ms.locfileid: "98751160"
 1. 单击“选择”。
 
 :::image type="content" source="media/api-management-getstarted-publish-versions/08-add-multiple-versions-03-add-version-product.png" alt-text="向产品添加版本":::
+
+## <a name="use-version-sets"></a>使用版本集
+
+创建多个版本时，Azure 门户会创建一个版本集，它表示单个逻辑 API 的一组版本。 选择具有多个版本的 API 的名称。 Azure 门户会显示其版本集。 你可以自定义虚拟集的名称和说明 。
+
+你可以通过使用 Azure CLI 直接与版本集交互：
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+若要查看所有版本集，请运行 [az apim api versionset list](/cli/apim/api/versionset#az_apim_api_versionset_list) 命令：
+
+```azurecli
+az apim api versionset list --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --output table
+```
+
+当 Azure 门户为你创建一个版本集时，它会分配一个字母数字名称并显示在列表的“名称”列中。 在其他 Azure CLI 命令中使用此名称。
+
+若要查看有关版本集的详细信息，请运行 [az apim api versionset show](/api/versionset#az_apim_api_versionset_show) 命令：
+
+```azurecli
+az apim api versionset show --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --version-set-id 00000000000000000000000
+```
+
+有关版本集的详细信息，请参阅 [Azure API 管理中的版本](api-management-versions.md#how-versions-are-represented)。
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>浏览开发人员门户以查看版本
 

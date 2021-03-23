@@ -5,15 +5,15 @@ author: WenJason
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-origin.date: 11/10/2020
-ms.date: 12/14/2020
+origin.date: 02/17/2021
+ms.date: 03/22/2021
 ms.author: v-jay
-ms.openlocfilehash: 6839fe8a3cf8b6fb86307332a0db8059aa147ce5
-ms.sourcegitcommit: a8afac9982deafcf0652c63fe1615ba0ef1877be
+ms.openlocfilehash: d0c91d1641dca1268aab1309692d11267508680e
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96850820"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765679"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制模型
 
@@ -36,7 +36,7 @@ Azure RBAC 和 ACL 都要求用户（或应用程序）在 Azure AD 中有标识
 
 Azure RBAC 使用角色分配向[安全主体](../../role-based-access-control/overview.md#security-principal)应用权限集。 安全主体是一个对象，表示在 Azure Active Directory (AD) 中定义的用户、组、服务主体或托管标识。 权限集可以向安全主体授予“粗粒度”级别的访问权限，例如，对存储帐户中 **所有** 数据或容器中 **所有** 数据的读取或写入访问权限。 
 
-以下角色允许安全主体访问存储帐户中的数据。 
+以下角色允许安全主体访问存储帐户中的数据。
 
 |角色|描述|
 |--|--|
@@ -76,38 +76,38 @@ Azure RBAC 使用角色分配向[安全主体](../../role-based-access-control/o
 
 |    操作             | 分配的 Azure 角色               |    /        | Oregon/     | Portland/ | Data.txt |             
 |--------------------------|----------------------------------|-------------|-------------|-----------|----------|
-| Read Data.txt            |   存储 Blob 数据所有者        | 不适用      | 不可用      | 不可用       | 不适用    |  
-|                          |   存储 Blob 数据参与者  | 不适用      | 不可用      | 不可用       | 不适用    |
-|                          |   存储 Blob 数据读取者       | 不可用      | 不可用      | 不可用       | 不可用    |
+| Read Data.txt            |   存储 Blob 数据所有者        | 不适用      | 空值      | 空值       | 不适用    |  
+|                          |   存储 Blob 数据参与者  | 不适用      | 空值      | 空值       | 不适用    |
+|                          |   存储 Blob 数据读取者       | 不适用      | 空值      | 空值       | 不可用    |
 |                          |   None                           | `--X`    | `--X`    | `--X`     | `R--`  |
-| Append to Data.txt       |   存储 Blob 数据所有者        | 不适用      | 不可用      | 不可用       | 不适用    |
-|                          |   存储 Blob 数据参与者  | 不适用      | 不可用      | 不可用       | 不适用    |
+| Append to Data.txt       |   存储 Blob 数据所有者        | 不适用      | 空值      | 空值       | 不适用    |
+|                          |   存储 Blob 数据参与者  | 不适用      | 空值      | 空值       | 不适用    |
 |                          |   存储 Blob 数据读取者       | `--X`    | `--X`    | `--X`     | `-W-`  |
 |                          |   None                           | `--X`    | `--X`    | `--X`     | `RW-`  |
-| Delete Data.txt          |   存储 Blob 数据所有者        | 不适用      | 不可用      | 不可用       | 不适用    |
-|                          |   存储 Blob 数据参与者  | 不适用      | 不可用      | 不可用       | 不适用    |
+| Delete Data.txt          |   存储 Blob 数据所有者        | 不适用      | 空值      | 空值       | 不适用    |
+|                          |   存储 Blob 数据参与者  | 不适用      | 空值      | 空值       | 不适用    |
 |                          |   存储 Blob 数据读取者       | `--X`    | `--X`    | `-WX`     | 不可用    |
 |                          |   None                           | `--X`    | `--X`    | `-WX`     | 不适用    |
-| Create Data.txt          |   存储 Blob 数据所有者        | 不适用      | 不可用      | 不可用       | 不适用    |
-|                          |   存储 Blob 数据参与者  | 不适用      | 不可用      | 不可用       | 不适用    |
+| Create Data.txt          |   存储 Blob 数据所有者        | 不适用      | 空值      | 空值       | 不适用    |
+|                          |   存储 Blob 数据参与者  | 不适用      | 空值      | 空值       | 不适用    |
 |                          |   存储 Blob 数据读取者       | `--X`    | `--X`    | `-WX`     | 不可用    |
 |                          |   None                           | `--X`    | `--X`    | `-WX`     | 不适用    |
-| List /                   |   存储 Blob 数据所有者        | 不适用      | 不可用      | 不可用       | 不适用    |
-|                          |   存储 Blob 数据参与者  | 不适用      | 不可用      | 不可用       | 不适用    |
-|                          |   存储 Blob 数据读取者       | 不可用      | 不可用      | 不可用       | 不可用    |
-|                          |   None                           | `R-X`    | 不适用      | 不可用       | 不适用    |
-| List /Oregon/            |   存储 Blob 数据所有者        | 不适用      | 不可用      | 不可用       | 不适用    |
-|                          |   存储 Blob 数据参与者  | 不适用      | 不可用      | 不可用       | 不适用    |
-|                          |   存储 Blob 数据读取者       | 不可用      | 不可用      | 不可用       | 不可用    |
+| List /                   |   存储 Blob 数据所有者        | 不适用      | 空值      | 空值       | 不适用    |
+|                          |   存储 Blob 数据参与者  | 不适用      | 空值      | 空值       | 不适用    |
+|                          |   存储 Blob 数据读取者       | 不适用      | 空值      | 空值       | 不可用    |
+|                          |   None                           | `R-X`    | 不适用      | 空值       | 不适用    |
+| List /Oregon/            |   存储 Blob 数据所有者        | 不适用      | 空值      | 空值       | 不适用    |
+|                          |   存储 Blob 数据参与者  | 不适用      | 空值      | 空值       | 不适用    |
+|                          |   存储 Blob 数据读取者       | 不适用      | 空值      | 空值       | 不可用    |
 |                          |   None                           | `--X`    | `R-X`    | 不适用       | 不适用    |
-| List /Oregon/Portland/   |   存储 Blob 数据所有者        | 不适用      | 不可用      | 不可用       | 不适用    |
-|                          |   存储 Blob 数据参与者  | 不适用      | 不可用      | 不可用       | 不适用    |
-|                          |   存储 Blob 数据读取者       | 不可用      | 不可用      | 不可用       | 不可用    |
+| List /Oregon/Portland/   |   存储 Blob 数据所有者        | 不适用      | 空值      | 空值       | 不适用    |
+|                          |   存储 Blob 数据参与者  | 不适用      | 空值      | 空值       | 不适用    |
+|                          |   存储 Blob 数据读取者       | 不适用      | 空值      | 空值       | 不可用    |
 |                          |   None                           | `--X`    | `--X`    | `R-X`     | 不适用    |
 
 
 > [!NOTE] 
-> 若要在 Azure 存储资源管理器中查看某个容器的内容，安全主体必须[使用 Azure AD 登录到存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#add-a-resource-via-azure-ad)，并且必须（至少）拥有对容器的根文件夹 (`\`) 的读取访问权限 (R--)。 此权限级别允许安全主体列出根文件夹的内容。 如果不希望根文件夹的内容可见，可以向安全主体分配[读取者](../../role-based-access-control/built-in-roles.md#reader)角色。 使用该角色，安全主体将能够列出帐户中的容器，但不能列出容器内容。 然后，你可以使用 ACL 授予对特定目录和文件的访问权限。   
+> 若要在 Azure 存储资源管理器中查看某个容器的内容，安全主体必须[使用 Azure AD 登录到存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#attach-to-an-individual-resource)，并且必须（至少）拥有对容器的根文件夹 (`\`) 的读取访问权限 (R--)。 此权限级别允许安全主体列出根文件夹的内容。 如果不希望根文件夹的内容可见，可以向安全主体分配[读取者](../../role-based-access-control/built-in-roles.md#reader)角色。 使用该角色，安全主体将能够列出帐户中的容器，但不能列出容器内容。 然后，你可以使用 ACL 授予对特定目录和文件的访问权限。   
 
 ## <a name="security-groups"></a>安全组
 

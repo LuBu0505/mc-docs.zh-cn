@@ -3,14 +3,14 @@ author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 03/27/2020
-ms.date: 04/20/2020
-ms.author: v-tawe
-ms.openlocfilehash: 9c9241016d1c936645c0f548e7d2a09fd8091857
-ms.sourcegitcommit: 304d3ef3c9e65c3e85977b3afb9985fbc0f908d6
+ms.date: 03/08/2021
+ms.author: v-johya
+ms.openlocfilehash: 80f182f92304c955cb2de0d1feb4298ffc258a33
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095960"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803293"
 ---
 :::row:::
     :::column span="3":::
@@ -25,7 +25,7 @@ ms.locfileid: "85095960"
 :::row-end:::
 
 > [!TIP]
-> 有关在 Swift 中使用 Objective-C 语音 SDK 的详细信息，请参阅<a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">将 Objective-C 导入 Swift <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+> 有关在 Swift 中使用 Objective-C 语音 SDK 的详细信息，请参阅<a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">将 Objective-C 导入 Swift </a>。
 
 ### <a name="system-requirements"></a>系统要求
 
@@ -36,7 +36,7 @@ ms.locfileid: "85095960"
 
 :::row:::
     :::column span="3":::
-        iOS CocoaPod 包可供下载并在 <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode 9.4.1（或更高版本）<span class="docon docon-navigate-external x-hidden-focus"></span></a>集成开发环境 (IDE) 中使用。 首先，<a href="https://aka.ms/csspeech/iosbinary" target="_blank">下载二进制 CocoaPod <span class="docon docon-navigate-external x-hidden-focus"></span></a>。 将 Pod 提取到同一目录中以供使用，创建一个 Podfile  并将 `pod` 作为 `target` 列出。
+        iOS CocoaPod 包可供下载并在 <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode 9.4.1（或更高版本）</a>集成开发环境 (IDE) 中使用。 首先，<a href="https://aka.ms/csspeech/iosbinary" target="_blank">下载二进制 CocoaPod </a>。 将 Pod 提取到同一目录中以供使用，创建一个 Podfile  并将 `pod` 作为 `target` 列出。
     :::column-end:::
     :::column:::
         <br>
@@ -51,7 +51,7 @@ platform :ios, '9.3'
 use_frameworks!
 
 target 'AppName' do
-  pod 'MicrosoftCognitiveServicesSpeech', '~> 1.11.0'
+  pod 'MicrosoftCognitiveServicesSpeech', '~> 1.10.0'
 end
 ```
 
@@ -59,7 +59,7 @@ end
 
 :::row:::
     :::column span="3":::
-        Xamarin.iOS 向 .NET 开发人员公开了完整的 iOS SDK。 使用 C# 或 F# 在 Visual Studio 中生成完全本机的 iOS 应用。 有关详细信息，请参阅 <a href="https://docs.microsoft.com/xamarin/ios/" target="_blank">Xamarin.iOS <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+        Xamarin.iOS 向 .NET 开发人员公开了完整的 iOS SDK。 使用 C# 或 F# 在 Visual Studio 中生成完全本机的 iOS 应用。 有关详细信息，请参阅 <a href="https://docs.microsoft.com/xamarin/ios/" target="_blank">Xamarin.iOS </a>。
     :::column-end:::
     :::column:::
         <br>
@@ -76,5 +76,6 @@ end
 
 #### <a name="additional-resources"></a>其他资源
 
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/ios" target="_blank">iOS 语音 SDK 快速入门 Objective-C 源代码 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/ios" target="_blank">iOS 语音 SDK 快速入门 Swift 源代码 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/ios" target="_blank">iOS 语音 SDK 快速入门 Objective-C 源代码 </a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/ios" target="_blank">iOS 语音 SDK 快速入门 Swift 源代码 </a>
+

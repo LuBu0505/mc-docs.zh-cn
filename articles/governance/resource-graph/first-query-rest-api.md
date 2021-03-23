@@ -1,16 +1,17 @@
 ---
 title: 快速入门：第一个 REST API 查询
 description: 在此快速入门中，将按照以下步骤调用 REST API 的 Resource Graph 终结点并运行第一个查询。
-origin.date: 10/14/2020
-ms.date: 11/06/2020
-ms.author: v-tawe
+origin.date: 01/27/2021
+author: rockboyfor
+ms.date: 03/22/2021
+ms.author: v-yeche
 ms.topic: quickstart
-ms.openlocfilehash: aa0a0409ff06a5ee390212e1390db9ad0fdf3bcd
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.openlocfilehash: c5fcac8fb545ed1a38302dcc462a0d5683c877f6
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431088"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766732"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-rest-api"></a>快速入门：使用 REST API 运行你的第一个 Resource Graph 查询
 
@@ -22,7 +23,7 @@ ms.locfileid: "96431088"
 
 如果没有 Azure 订阅，请在开始前创建一个[试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)帐户。
 
-<!-- [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)] -->
+<!--NOT AVAILABLE ON [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]-->
 
 ## <a name="getting-started-with-rest-api"></a>REST API 入门
 
@@ -34,7 +35,7 @@ ms.locfileid: "96431088"
 
 如果尚无用于进行 REST API 调用的工具，请考虑使用 PowerShell 获取说明。 以下代码示例获取用于使用 Azure 进行身份验证的标头。 生成身份验证标头，有时称为持有者令牌，然后向要连接到的 REST API URI 提供任何参数或请求正文 ：
 
-```azurepowershell
+```powershell
 # Log in first with Connect-AzAccount
 Connect-AzAccount -Environment AzureChinaCloud
 
@@ -79,7 +80,6 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
              "{subscriptionID}"
          ],
          "query": "Resources | project name, type | limit 5"
-         }
      }
      ```
 
@@ -102,7 +102,6 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
              "{subscriptionID}"
          ],
          "query": "Resources | project name, type | limit 5 | order by name asc"
-         }
      }
      ```
 
@@ -125,7 +124,6 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
              "{subscriptionID}"
          ],
          "query": "Resources | project name, type | order by name asc | limit 5"
-         }
      }
      ```
 
@@ -143,3 +141,5 @@ REST API 没有要卸载的库或模块。 如果你安装了某个工具（例�
 
 > [!div class="nextstepaction"]
 > [获取有关查询语言的详细信息](./concepts/query-language.md)
+
+<!--Update_Description: update meta properties, wording update, update link-->

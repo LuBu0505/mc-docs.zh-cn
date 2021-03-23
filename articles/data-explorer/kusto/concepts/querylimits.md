@@ -7,28 +7,32 @@ ms.author: v-junlch
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/08/2021
+ms.date: 03/18/2021
 ms.localizationpriority: high
-ms.openlocfilehash: 2a02ff6d18f28e3363bcbdd7bcc80e52c73e22cc
-ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
+ms.openlocfilehash: 936e1416d4bca7425798c63e531b4ae51e7cf114
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101087565"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766636"
 ---
 # <a name="query-limits"></a>查询限制
 
 Kusto 是一个即席查询引擎，它承载着大型数据集，并尝试通过在内存中保留所有相关数据来满足查询。
 存在一个固有的风险，即查询会无限地独占服务资源。 Kusto 以默认查询限制的形式提供若干内置保护。 如果要考虑消除这些限制，请首先确定这样做实际上是否会带来任何价值。
 
-## <a name="limit-on-query-concurrency"></a>有关查询并发性的限制
+## <a name="limit-on-request-concurrency"></a>对请求并发的限制
 
-“查询并发”是指群集对同时运行的多个查询施加的限制。
+“请求并发”是指群集对同时运行的若干请求施加的限制。
 
-* 查询并发限制的默认值取决于运行它的 SKU 群集，计算方式如下：`Cores-Per-Node x 10`。
-  * 例如，对于在 D14v2 SKU 上设置的群集（其中每台计算机都有 16 个 vCore），默认查询并发限制为 `16 cores x10 = 160`。
+* 此限制的默认值取决于运行群集的 SKU，并按以下方式计算：`Cores-Per-Node x 10`。
+  * 例如，对于在 D14v2 SKU 上设置的群集（其中每台计算机都有 16 Vcore），默认限制为 `16 cores x10 = 160`。
 * 可通过配置 `default` 工作负荷组的[请求速率限制策略](../management/request-rate-limit-policy.md)来更改默认值。
-  * 可以在群集上并发运行的实际查询数取决于各种因素。 最主要的因素包括群集 SKU、群集的可用资源和查询模式。 可以根据对类似生产的查询模式执行的负载测试来配置查询限制策略。
+  * 可以在群集上并发运行的实际请求数取决于不同的因素。 最主要的因素是群集 SKU、群集的可用资源和使用模式。 可以根据对类生产使用模式执行的负载测试来配置策略。
+
+超过请求并发限制会导致以下行为：
+* 由于请求速率限制策略而被拒绝的命令将引发 `ControlCommandThrottledException`（错误代码 = 429）。
+* 由于请求速率限制策略而被拒绝的查询将引发 `QueryThrottledException`（错误代码 = 429）。
 
 ## <a name="limit-on-result-set-size-result-truncation"></a>有关结果集大小的限制（结果截断）
 
@@ -120,7 +124,9 @@ set maxmemoryconsumptionperiterator=68719476736;
 MyTable | ...
 ```
 
-在许多情况下，可以通过对数据集采样来避免超出此限制。 下面的两个查询展示了如何进行采样。 第一个是统计采样，它使用一个随机数生成器。 第二个是确定性采样，它是通过对数据集中的某个列（通常是某个 ID）进行哈希处理来执行的。
+如果查询使用 `summarize`、`join` 或 `make-series` 运算符，可以使用[随机执行查询](../query/shufflequery.md)策略来减轻单台计算机的内存压力。
+
+在其他情况下，可以对数据集采样，以避免超出此限制。 下面的两个查询展示了如何进行采样。 第一个查询是使用随机数生成器的统计性采样。 第二个查询是确定性采样，通过对数据集中的某些列（通常是某个 ID）进行哈希处理来完成。
 
 ```kusto
 T | where rand() < 0.1 | ...
@@ -142,19 +148,7 @@ MyTable | ...
 
 如果多次设置了 `max_memory_consumption_per_query_per_node`（例如在两个客户端请求属性中使用 `set` 语句设置），将应用较小的值。
 
-## <a name="limit-on-accumulated-string-sets"></a>对累积的字符串集的限制
-
-在各种查询操作中，Kusto 需要“收集”字符串值，并在内部将其置于缓冲区中，然后再开始生成结果。 这些累积的字符串集在大小和可以容纳的项目数方面都受限。 此外，每个单独的字符串不应超出特定的限制。
-超出上述任一限制将导致出现以下错误之一：
-
-```
-Runaway query (E_RUNAWAY_QUERY). (message: 'Accumulated string array getting too large and exceeds the limit of ...GB (see https://aka.ms/kustoquerylimits)')
-
-Runaway query (E_RUNAWAY_QUERY). (message: 'Accumulated string array getting too large and exceeds the maximum count of ..GB items (see http://aka.ms/kustoquerylimits)')
-```
-
-目前没有任何开关可用来增加最大字符串集大小。
-解决方法是重新表述查询以减少必须缓冲的数据量。 可以抛弃不需要的列，不让 join 和 summarize 之类的运算符使用它们。 也可使用[随机执行查询](../query/shufflequery.md)策略。
+如果查询使用 `summarize`、`join` 或 `make-series` 运算符，可以使用[随机执行查询](../query/shufflequery.md)策略来减轻单台计算机的内存压力。
 
 ## <a name="limit-execution-timeout"></a>限制执行超时
 

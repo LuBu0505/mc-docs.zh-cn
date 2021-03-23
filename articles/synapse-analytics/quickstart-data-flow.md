@@ -1,19 +1,20 @@
 ---
 title: 快速入门：使用映射数据流转换数据
 description: 本教程提供有关通过 Azure Synapse Analytics 使用映射数据流转换数据的分步说明。
-author: djpmsft
-ms.author: daperlov
+author: WenJason
+ms.author: v-jay
 ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/03/2020
-ms.openlocfilehash: 9996a03a29e9b2e96fbd06aad4c634cbea0af48c
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+origin.date: 11/03/2020
+ms.date: 03/22/2021
+ms.openlocfilehash: bcd2a081636c1d9bac98ddd16006bfb72a79b186
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207426"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766474"
 ---
 # <a name="quickstart-transform-data-using-mapping-data-flows"></a>快速入门：使用映射数据流转换数据
 
@@ -29,7 +30,7 @@ ms.locfileid: "102207426"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
+* **Azure 订阅**：如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 * Azure Synapse 工作区：按照[快速入门：创建 Synapse 工作区](quickstart-create-workspace.md)中的说明，使用 Azure 门户创建 Synapse 工作区。
 * Azure 存储帐户：将 ADLS 存储用作“源”和“接收器”数据存储 。 如果没有存储帐户，请参阅[创建 Azure 存储帐户](../storage/common/storage-account-create.md)以获取创建步骤。
 
@@ -39,7 +40,7 @@ ms.locfileid: "102207426"
 
 创建 Azure Synapse 工作区后，可以通过两种方式打开 Synapse Studio：
 
-* 在 [Azure 门户](https://ms.portal.azure.com/#home)中打开 Synapse 工作区。 在“开始”下的“打开 Synapse Studio”卡上选择“打开”。
+* 在 [Azure 门户](https://portal.azure.cn/#home)中打开 Synapse 工作区。 在“开始”下的“打开 Synapse Studio”卡上选择“打开”。
 * 打开 [Azure Synapse Analytics](https://web.azuresynapse.net/) 并登录到工作区。
 
 在本快速入门中，我们将使用名为“adftest2020”的工作区作为示例。 它将自动导航到 Synapse Studio 主页。
@@ -68,7 +69,7 @@ ms.locfileid: "102207426"
 
 创建数据流后，会自动将其发送到数据流画布。 在此步骤中，你将构建一个数据流，该数据流采用 ADLS 存储中的 MoviesDB.csv，并聚合从 1910 到 2000 年的平均喜剧评分。 然后，将此文件写回到 ADLS 存储。
 
-1. 在数据流画布上方，将“数据流调试”滑块滑动到打开状态。 调试模式允许针对实时 Spark 群集进行转换逻辑的交互式测试。 数据流群集需要 5-7 分钟才能预热，如果用户计划进行数据流开发，建议先打开调试。 有关详细信息，请参阅[调试模式](../data-factory/concepts-data-flow-debug-mode.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)。
+1. 在数据流画布上方，将“数据流调试”滑块滑动到打开状态。 调试模式允许针对实时 Spark 群集进行转换逻辑的交互式测试。 数据流群集需要 5-7 分钟才能预热，如果用户计划进行数据流开发，建议先打开调试。 有关详细信息，请参阅[调试模式](../data-factory/concepts-data-flow-debug-mode.md?bc=%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fsynapse-analytics%2ftoc.json)。
 
     ![将调试滑动到打开状态](media/quickstart-data-flow/debug-on.png)
 
@@ -104,7 +105,7 @@ ms.locfileid: "102207426"
 
 1. 将筛选器转换命名为 FilterYears。 单击“筛选依据”旁的表达式框以打开表达式生成器。 可在此处指定筛选条件。
 
-1. 数据流表达式生成器允许你以交互方式生成要用于各种转换的表达式。 表达式可以包含内置函数、输入架构中的列和用户定义的参数。 有关如何生成表达式的详细信息，请参阅[数据流表达式生成器](../data-factory/concepts-data-flow-expression-builder.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)。
+1. 数据流表达式生成器允许你以交互方式生成要用于各种转换的表达式。 表达式可以包含内置函数、输入架构中的列和用户定义的参数。 有关如何生成表达式的详细信息，请参阅[数据流表达式生成器](../data-factory/concepts-data-flow-expression-builder.md?bc=%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fsynapse-analytics%2ftoc.json)。
 
     在本快速入门中，你要筛选在 1910 到 2000 年之间上映的喜剧流派电影。 由于年份目前是一个字符串，因此需要使用 ```toInteger()``` 函数将其转换为整数。 使用大于或等于 (>=) 和小于或等于 (<=) 运算符来与文本年份值 1910 和 2000 进行比较。 将这些表达式与 and (&&) 运算符结合在一起。 表达式如下所示：
 
@@ -190,6 +191,6 @@ ms.locfileid: "102207426"
 请转至下列文章，了解 Azure Synapse Analytics 支持：
 
 > [!div class="nextstepaction"]
-> [管道和活动](../data-factory/concepts-pipelines-activities.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)
-> [映射数据流概述](../data-factory/concepts-data-flow-overview.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)
-> [数据流表达式语言](../data-factory/data-flow-expression-functions.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)
+> [管道和活动](../data-factory/concepts-pipelines-activities.md?bc=%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fsynapse-analytics%2ftoc.json)
+> [映射数据流概述](../data-factory/concepts-data-flow-overview.md?bc=%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fsynapse-analytics%2ftoc.json)
+> [数据流表达式语言](../data-factory/data-flow-expression-functions.md?bc=%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fsynapse-analytics%2ftoc.json)

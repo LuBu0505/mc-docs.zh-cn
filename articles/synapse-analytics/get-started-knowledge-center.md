@@ -2,20 +2,21 @@
 title: 教程：开始探索 Synapse 知识中心
 description: 在本教程中，你将了解如何使用 Synapse 知识中心。
 services: synapse-analytics
-author: saveenr
-ms.author: saveenr
-manager: julieMSFT
+author: WenJason
+ms.author: v-jay
+manager: digimobile
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 11/16/2020
-ms.openlocfilehash: 5b0f99c370764d23c91072c9f7012e6198e673aa
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+origin.date: 11/16/2020
+ms.date: 03/22/2021
+ms.openlocfilehash: 405399eb5600cd55b934f88c208f6fbc7da288ec
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207486"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766863"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>探索 Synapse 知识中心
 

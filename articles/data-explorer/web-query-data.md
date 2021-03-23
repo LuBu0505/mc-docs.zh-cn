@@ -6,19 +6,21 @@ ms.author: v-junlch
 ms.reviewer: olgolden
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 02/08/2021
+ms.date: 03/18/2021
 ms.localizationpriority: high
-ms.openlocfilehash: d50804855927ba725a33ca41b8c92bc20072f370
-ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
+ms.openlocfilehash: 251270542e52c68f0e3387e38395bbebfa6f1071
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101087518"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765721"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>快速入门：在 Azure 数据资源管理器 Web UI 中查询数据
 
 Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于对大量数据进行实时分析。 Azure 数据资源管理器提供了一种 Web 体验，使你能够连接到 Azure 数据资源管理器群集并编写、运行和共享 Kusto 查询语言命令和查询。 该 Web 体验可在 Azure 门户中使用，也可作为独立的 Web 应用程序（即 [Azure 数据资源管理器 Web UI](https://dataexplorer.azure.cn)）使用。 Azure 数据资源管理器 Web UI 还可以由 HTML iframe 中的其他 Web 门户托管。 有关如何托管 Web UI 和所用 Monaco 编辑器的详细信息，请参阅 [Monaco IDE 集成](kusto/api/monaco/monaco-kusto.md)。
 本快速入门将在独立的 Azure 数据资源管理器 Web UI 中进行操作。
+
+:::image type="content" source="media/web-query-data/walkthrough.gif" alt-text="Kusto Web 浏览器体验演练":::
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -65,7 +67,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
 ## <a name="run-queries"></a>运行查询
 
-你现在可以在两个群集上运行查询（假定测试群集中包含数据）。 考虑到本文的目的，我们将重点介绍 help 群集。
+你现在可以在两个群集上运行查询（假定测试群集中包含数据）。 在本文中，我们重点介绍 help 群集。
 
 1. 在左窗格中的 help 群集下，选择示例数据库 。
 
@@ -125,9 +127,43 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
 ## <a name="work-with-the-table-grid"></a>使用网格型
 
-现在你已了解了基本查询的工作原理，接下来我们来看看如何使用表网格来自定义结果并进行进一步分析。
+现在你已了解基本查询的工作原理，以后可以使用表网格来自定义结果并进行进一步分析。 
 
-1. 重新运行第一个查询。 将鼠标悬停在“州”列上，选择菜单，然后选择“按州分组” 。
+### <a name="expand-a-cell"></a>展开单元
+
+展开单元有助于查看长字符串或 JSON 等动态字段。 
+
+1. 双击某个单元格以打开展开的视图。 通过此视图可读取长字符串，并为动态数据提供 JSON 格式设置。
+
+    :::image type="content" source="media/web-query-data/expand-cell.png" alt-text="Azure 数据资源管理器 WebUI 展开单元以显示长字符串":::
+
+1. 单击结果网格右上方的图标以切换阅读窗格模式。 可为展开的视图选择以下阅读窗格模式：内联、下窗格和右窗格。
+
+    :::image type="content" source="media/web-query-data/expanded-view-icon.png" alt-text="用于更改展开视图读取窗格模式的图标 - Azure 数据资源管理器 WebUI 查询结果":::
+
+### <a name="expand-a-row"></a>展开行
+
+当处理包含多个列的表时，展开整行可以轻松概览不同列及其内容。 
+
+1. 单击要展开的行左侧的箭头 >。
+
+    :::image type="content" source="media/web-query-data/expand-row.png" alt-text="展开 Azure 数据资源管理器 WebUI 中的行":::
+
+1. 在展开的行中，某些列处于展开状态（向下箭头），某些列处于折叠状态（向右箭头）。 单击这些箭头可以在这两种模式之间切换。
+
+### <a name="group-column-by-results"></a>按结果归组为列
+
+在结果中，可以按任何列对结果进行分组。
+
+1. 运行以下查询：
+     
+    ```kusto
+    StormEvents
+    | sort by StartTime desc
+    | take 10
+    ```
+
+1. 将鼠标悬停在“州”列上，选择菜单，然后选择“按州分组” 。
 
     ![按州分组](./media/web-query-data/group-by.png)
 
@@ -138,6 +174,34 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 1. 将鼠标悬停在“组”列上，然后选择“重置列” 。 此设置将网格返回到其原始状态。
 
     ![重置列](./media/web-query-data/reset-columns.png)
+
+#### <a name="use-value-aggregation"></a>使用值聚合
+
+按列分组后，可以使用值聚合函数计算每个组的简单统计信息。
+
+1. 选择要计算的列的菜单。
+1. 选择“值聚合”，然后选择要对此列执行的函数类型。
+
+    :::image type="content" source="media/web-query-data/aggregate.png" alt-text="按列对结果分组时对结果进行聚合。":::
+
+### <a name="filter-columns"></a>筛选列
+
+可以使用一个或多个运算符来筛选某个列的结果。
+
+1. 若要筛选特定列，请选择该列的菜单。
+1. 选择“筛选”图标。
+1. 在筛选器生成器中，选择所需的运算符。
+1. 键入要用于筛选列的表达式。 键入时就会对结果进行筛选。
+    
+    > [!NOTE] 
+    > 筛选器不区分大小写。
+
+1. 若要创建多条件筛选器，请选择一个布尔运算符来添加另一个条件
+1. 若要删除筛选器，请删除第一个筛选条件中的文本。
+
+    :::image type="content" source="media/web-query-data/filter-column.gif" alt-text="GIF 显示如何对 Azure 数据资源管理器 WebUI 中的列进行筛选":::
+
+### <a name="run-cell-statistics"></a>运行单元格统计信息
 
 1. 运行以下查询。
 
@@ -153,25 +217,42 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
     :::image type="content" source="media/web-query-data/select-stats.png" alt-text="选择函数"::: 
 
-1. 在网格的右侧，选择“列”以查看表工具面板。 此面板的功能类似于 Excel 中的数据透视表字段列表，可在网格中执行更多分析。
+### <a name="filter-to-query-from-grid"></a>从网格向查询添加筛选器
+
+筛选网格的另一种简单方法是直接从网格向查询添加筛选器运算符。
+
+1. 选择其中包含要为其创建查询筛选器的内容的单元格。
+1. 右键单击以打开“单元格操作”菜单。 选择“将选定内容添加为筛选器”。
+    
+    :::image type="content" source="media/web-query-data/add-selection-filter.png" alt-text="将 Azure 数据资源管理器 WebUI 中的网格结果选定内容作为筛选器添加到查询中":::
+
+1. 将在查询编辑器中向查询添加一个查询子句：
+
+    :::image type="content" source="media/web-query-data/add-query-from-filter.png" alt-text="通过 Azure 数据资源管理器 WebUI 中的网格筛选添加查询子句":::
+
+### <a name="pivot"></a>透视
+
+透视模式功能类似于 Excel 的数据透视表，可用于在网格中执行高级分析。
+
+通过透视可以获取列值并将其转换为列。 例如，可以对“州”进行透视，为“佛罗里达州”、“密苏里州”、“阿拉巴马州”等创建列。
+
+1. 在网格的右侧，选择“列”以查看表工具面板。
 
     ![表工具面板](./media/web-query-data/tool-panel.png)
 
-1. 选择“透视模式”，然后按以下方式拖动列：将“状态”拖动到“行组”；将“DamageProperty”拖动到“值”，并将“EventType”拖动到“列标签”     。  
+1. 选择“透视模式”，然后按以下方式拖动列：将“EventType”拖动到“行组”；将“DamageProperty”拖动到“值”，并将“State”拖动到“列标签”     。  
 
     ![透视模式](./media/web-query-data/pivot-mode.png)
 
-    结果应如以下数据透视表所示。
+    结果应如以下数据透视表所示：
 
     ![数据透视表](./media/web-query-data/pivot-table.png)
-
-    请注意佛蒙特州和阿拉巴马州各有两个属于同一类别的事件，而德克萨斯州有两个不同类别的事件。 数据透视表是一种很好的快速分析工具，因为该表使你可以快速发现这些差异。
 
 ## <a name="search-in-the-results-table"></a>在结果表中搜索
 
 你可以在结果表中查找特定表达式。
 
-1.  运行以下查询：
+1. 运行以下查询：
 
     ```Kusto
     StormEvents
@@ -195,7 +276,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
 1. 在查询窗口顶部，选择“共享”。 
 
-:::image type="content" source="media/web-query-data/share-menu.png" alt-text="共享菜单":::
+    :::image type="content" source="media/web-query-data/share-menu.png" alt-text="共享菜单":::
 
 下拉列表中提供了以下选项：
 * 链接到剪贴板
@@ -291,7 +372,7 @@ Kusto 会尝试解释结果面板中每行的严重性或详细级别，并对�
 1. 选择用户名旁边的“设置”图标。
 1. 选择“外观”选项卡，然后将“启用错误级别突出显示”选项切换到右侧。  
 
-:::image type="content" source="media/web-query-data/enable-error-highlighting.gif" alt-text="动画 GIF 显示了如何在设置中启用错误级别突出显示":::
+    :::image type="content" source="media/web-query-data/enable-error-highlighting.gif" alt-text="动画 GIF 显示了如何在设置中启用错误级别突出显示":::
 
 浅色模式下的错误级别配色方案 | 深色模式下的错误级别配色方案
 |---|---|
@@ -299,7 +380,7 @@ Kusto 会尝试解释结果面板中每行的严重性或详细级别，并对�
 
 #### <a name="column-requirements-for-highlighting"></a>突出显示的列要求
 
-对于突出显示的错误级别，列必须是 int、long 或 string 类型。
+对于突出显示的错误级别，列必须是 int、long 或 string 类型。 
 
 * 如果列的类型为 `long` 或 `int`：
    * 列名必须为“Level”

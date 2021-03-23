@@ -1,23 +1,21 @@
 ---
-title: 快速入门：设置和查看 Azure Key Vault 证书 - Azure CLI
+title: 快速入门 - 使用 Azure CLI 设置和查看 Azure Key Vault 证书
 description: 以快速入门的方式介绍如何使用 Azure CLI 在 Azure Key Vault 中设置和检索证书
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
-origin.date: 09/03/2019
-ms.date: 01/13/2021
-ms.author: v-tawe
-ms.openlocfilehash: 6825a8aab31cd15c8fd4307b3636682969062c94
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: 66ab386d3f141612c024259b5fdad2a1a39646d1
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059381"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765601"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure Key Vault 中设置和检索证书
 
@@ -25,7 +23,7 @@ ms.locfileid: "99059381"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
-<!-- [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)] -->
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
  - 本快速入门需要 Azure CLI 版本 2.0.4 或更高版本。
 
@@ -92,4 +90,4 @@ az group delete --name ContosoResourceGroup
 
 - 阅读 [Azure Key Vault 概述](../general/overview.md)
 - 请参阅 [Azure CLI az keyvault 命令](/cli/keyvault)参考
-- 查看 [Azure Key Vault 最佳做法](../general/best-practices.md)
+- 请参阅 [Key Vault 安全性概述](../general/security-overview.md)

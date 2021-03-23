@@ -5,16 +5,16 @@ services: container-service
 ms.topic: article
 origin.date: 06/03/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 03/22/2021
 ms.testscope: yes|no
 ms.testdate: 07/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: dfb8456d4ead082f76fdd4e2b1dc51797262e66e
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 55ec0ea2ddebb734138eefeb548d9ed225792ecf
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023126"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766430"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>访问 Azure Kubernetes 服务 (AKS) 中的 Kubernetes Web 仪表板
 
@@ -184,8 +184,7 @@ Kubernetes 仪表板可以提供基本的监视指标和故障排除信息，例
 [az-account-get-access-token]: https://docs.azure.cn/cli/account#az_account_get_access_token
 [az-aks-browse]: https://docs.azure.cn/cli/aks#az_aks_browse
 [az-aks-get-credentials]: https://docs.azure.cn/cli/aks#az_aks_get_credentials
-[install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli
+[install-azure-cli]: https://docs.microsoft.com/cli/azure/install-azure-cli
 
-<!--Not Available on [kubernetes-portal]: ./kubernetes-portal.md-->
-
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--NOT AVAILABLE ON [kubernetes-portal]: ./kubernetes-portal.md-->
+<!--Update_Description: update meta properties, wording update, update link-->

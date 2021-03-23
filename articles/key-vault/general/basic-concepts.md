@@ -8,15 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-origin.date: 01/18/2019
-ms.date: 01/14/2021
-ms.author: v-tawe
-ms.openlocfilehash: 9282382118a5ebf5fd6a63007aa1f65b8de03f63
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: dd874056eb1c8b83a5783d12c224b452722320cc
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059942"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766592"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault 基本概念
 
@@ -41,8 +40,6 @@ Azure Key Vault 是一个用于安全地存储和访问机密的云服务。 机
 - **Azure 租户 ID**：租户 ID 是用于在 Azure 订阅中标识 Azure AD 实例的唯一方法。
 
 - **托管标识**：虽然 Azure Key Vault 可用于安全存储凭据以及其他密钥和机密，但代码需要通过 Key Vault 的身份验证才能检索它们。 使用托管标识可为 Azure 服务提供 Azure AD 中的自动托管标识，更巧妙地解决了这个问题。 可以使用此标识向支持 Azure AD 身份验证的密钥保管库或任何服务证明身份，而无需在代码中放入任何凭据。 有关详细信息，请参阅下图以及 [Azure 资源的托管标识概述](../../active-directory/managed-identities-azure-resources/overview.md)。
-
-    ![Azure 资源的托管标识的工作原理图](../media/key-vault-whatis/msi.png)
 
 ## <a name="authentication"></a>身份验证
 若要使用密钥保管库执行任何操作，首先需要向其进行身份验证。 可通过三种方式向密钥保管库进行身份验证：

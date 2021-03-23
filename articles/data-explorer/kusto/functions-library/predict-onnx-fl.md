@@ -2,18 +2,17 @@
 title: predict_onnx_fl() - Azure 数据资源管理器
 description: 本文介绍 Azure 数据资源管理器中的用户定义函数 predict_onnx_fl()。
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 09/09/2020
-ms.date: 01/22/2021
-ms.openlocfilehash: 05e469706d7648ce161a47de877da428335091e3
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 03/18/2021
+ms.openlocfilehash: b6e9d690bc2e6044cc56b1f1800bbc9ae828935a
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611275"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766105"
 ---
 # <a name="predict_onnx_fl"></a>predict_onnx_fl()
 
@@ -53,7 +52,6 @@ let predict_onnx_fl=(samples:(*), models_tbl:(name:string, timestamp:datetime, m
     let kwargs = pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
     let code =
     '\n'
-    'import pickle\n'
     'import binascii\n'
     '\n'
     'smodel = kargs["smodel"]\n'
@@ -106,7 +104,6 @@ predict_onnx_fl(samples:(*), models_tbl:(name:string, timestamp:datetime, model:
     let kwargs = pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
     let code =
     '\n'
-    'import pickle\n'
     'import binascii\n'
     '\n'
     'smodel = kargs["smodel"]\n'

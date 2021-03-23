@@ -8,15 +8,15 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
 origin.date: 04/15/2020
-ms.date: 03/08/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: ecac99b22ad7c03ceda71d5035e11d25ddfdbc04
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 7d7c3810c89ad4ab02cce4097b5eb81eec11de0e
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207235"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766833"
 ---
 # <a name="best-practices-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>适用于 Azure Synapse Analytics 中的专用 SQL 池的最佳做法
 
@@ -41,13 +41,13 @@ ms.locfileid: "102207235"
 
 要缩短统计信息维护时间，你需要选择需要做统计的列，或者需要频繁更新的列。 例如，你可能希望更新每天都要添加新值的日期列。 可专注于对涉及联接的列、WHERE 子句中使用的列、在 GROUP BY 中找到的列做统计。
 
-有关统计信息的其他信息，请参阅[管理表统计信息](develop-tables-statistics.md)、[CREATE STATISTICS](https://docs.microsoft.com/sql/t-sql/statements/create-statistics-transact-sql?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 和 [UPDATE STATISTICS](https://docs.microsoft.com/sql/t-sql/statements/update-statistics-transact-sql?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 文章。
+有关统计信息的其他信息，请参阅[管理表统计信息](develop-tables-statistics.md)、[CREATE STATISTICS](https://docs.microsoft.com/sql/t-sql/statements/create-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true) 和 [UPDATE STATISTICS](https://docs.microsoft.com/sql/t-sql/statements/update-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true) 文章。
 
 ## <a name="group-insert-statements-into-batches"></a>将 INSERT 语句分组为批
 
 一次性加载到具有 INSERT 语句（如 `INSERT INTO MyLookup VALUES (1, 'Type 1')`）的小型表可能是最佳方法，具体取决于你的需求。 但是，如果一整天都要加载数千或数百万个行，可能发现单一实例 INSERT 不是最佳选项。
 
-解决此问题的一种方法是开发两个进程，一个用于写入文件，另一个用于定期加载此文件。 有关详细信息，请参阅 [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文。
+解决此问题的一种方法是开发两个进程，一个用于写入文件，另一个用于定期加载此文件。 有关详细信息，请参阅 [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql?view=azure-sqldw-latest&preserve-view=true) 一文。
 
 ## <a name="use-polybase-to-load-and-export-data-quickly"></a>使用 PolyBase 快速加载和导出数据
 
@@ -64,7 +64,7 @@ SQL 池支持通过多种工具（包括 Azure 数据工厂、PolyBase 和 BCP�
 - [PolyBase 使用指南](data-loading-best-practices.md)
 - [Azure SQL 池加载模式和策略](/archive/blogs/sqlcat/azure-sql-data-warehouse-loading-patterns-and-strategies)
 - [使用 Azure 数据工厂加载数据](../../data-factory/load-azure-sql-data-warehouse.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)
-- [CREATE EXTERNAL FILE FORMAT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [CREATE EXTERNAL FILE FORMAT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 - [创建表为选择 (CTAS)](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)
 
 ## <a name="load-then-query-external-tables"></a>加载并查询外部表
@@ -89,8 +89,8 @@ Polybase 不是查询的最佳选项。 专用 SQL 池的 Polybase 表目前只�
 - [表概述](develop-tables-overview.md)
 - [表分布](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)
 - [选择表数据分布](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service)
-- [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [CREATE TABLE AS SELECT](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true)
+- [CREATE TABLE AS SELECT](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true)
 
 ## <a name="do-not-over-partition"></a>不要过度分区
 
@@ -119,8 +119,8 @@ INSERT、UPDATE 和 DELETE 语句在事务中运行。 它们失败时，必须�
 - [了解事务](develop-transactions.md)
 - [优化事务](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)
 - [表分区](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)
-- [TRUNCATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/truncate-table-transact-sql?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [TRUNCATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/truncate-table-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 
 ## <a name="reduce-query-result-sizes"></a>缩减查询结果大小
 
@@ -130,7 +130,7 @@ INSERT、UPDATE 和 DELETE 语句在事务中运行。 它们失败时，必须�
 
 定义 DDL 时，请使用支持数据的最小数据类型以便提高查询性能。  此建议对于 CHAR 和 VARCHAR 列尤其重要。  如果列中最长的值是 25 个字符，请将列定义为 VARCHAR(25)。  避免将所有字符列定义为较大的默认长度。  此外，请将列定义为 VARCHAR（当它只需要这样的大小时）而非使用 NVARCHAR。
 
-有关与上述信息相关的基本概念的详细信息，请参阅[表概述](develop-tables-overview.md)、[表数据类型](develop-tables-data-types.md)和 [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 文章。
+有关与上述信息相关的基本概念的详细信息，请参阅[表概述](develop-tables-overview.md)、[表数据类型](develop-tables-data-types.md)和 [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) 文章。
 
 ## <a name="use-temporary-heap-tables-for-transient-data"></a>对暂时性数据使用临时堆表
 
@@ -138,7 +138,7 @@ INSERT、UPDATE 和 DELETE 语句在事务中运行。 它们失败时，必须�
 
 将数据载入临时表也比将表载入永久存储更快速。  临时表以“#”开头，并且只能由创建它的会话访问。 因此，它们可能仅在有限的情况才起作用。 堆表在 CREATE TABLE 的 WITH 子句中定义。  如果使用临时表，请记得同时在该临时表上创建统计信息。
 
-有关其他指南，请参阅[临时表](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、[CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 和 [CREATE TABLE AS SELECT](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 文章。
+有关其他指南，请参阅[临时表](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql?view=azure-sqldw-latest&preserve-view=true)、[CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) 和 [CREATE TABLE AS SELECT](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) 文章。
 
 ## <a name="optimize-clustered-columnstore-tables"></a>优化聚集列存储表
 
@@ -157,7 +157,7 @@ INSERT、UPDATE 和 DELETE 语句在事务中运行。 它们失败时，必须�
 
 如果表没有 60 亿行，则有两个主要选项。 减少分区数目，或考虑改用堆表。  使用具有辅助索引的堆表而不是列存储表也许能提升性能，值得试验。
 
-查询列存储表时，如果只选择需要的列，查询运行将更快速。  有关表和列存储索引的详细信息，请参阅[表索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)、[列存储索引指南](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)和[重新生成列存储索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#rebuilding-indexes-to-improve-segment-quality)文章。
+查询列存储表时，如果只选择需要的列，查询运行将更快速。  有关表和列存储索引的详细信息，请参阅[表索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)、[列存储索引指南](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview?view=azure-sqldw-latest&preserve-view=true)和[重新生成列存储索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?view=azure-sqldw-latest&preserve-view=true#rebuilding-indexes-to-improve-segment-quality)文章。
 
 ## <a name="use-larger-resource-class-to-improve-query-performance"></a>使用较大的资源类来改善查询性能
 
@@ -171,7 +171,7 @@ SQL 池使用资源组作为将内存分配给查询的一种方式。 最初，
 
 如果你注意到用户查询延迟时间较长，则用户可能在较大的资源类中运行。 这种情况会加速并发槽的消耗，这可能导致其他查询排队。  若要确认用户的查询是否被排入队列，请运行 `SELECT * FROM sys.dm_pdw_waits` 查看是否返回了任何行。
 
-有关详细信息，请参阅[用于工作负载管理的资源类](../sql-data-warehouse/resource-classes-for-workload-management.md)和 [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 文章。
+有关详细信息，请参阅[用于工作负载管理的资源类](../sql-data-warehouse/resource-classes-for-workload-management.md)和 [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?view=azure-sqldw-latest&preserve-view=true) 文章。
 
 ## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>使用 DMV 来监视和优化查询
 
@@ -180,14 +180,14 @@ SQL 池有多个可用于监视查询执行的 DMV。  以下监视相关文章�
 - [使用 DMV 监视工作负荷](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)
 
 - [LABEL](develop-label.md)
-- [OPTION](https://docs.microsoft.com/sql/t-sql/queries/option-clause-transact-sql?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_exec_sessions](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_sql_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_dms_workers](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [DBCC PDW_SHOWEXECUTIONPLAN](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [OPTION](https://docs.microsoft.com/sql/t-sql/queries/option-clause-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_exec_sessions](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_sql_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_dms_workers](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [DBCC PDW_SHOWEXECUTIONPLAN](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,20 +2,19 @@
 title: 快速入门 - 通过 Node.js 使用对称密钥将设备预配到 Azure IoT 中心
 description: 本快速入门将通过设备预配服务 (DPS) 使用适用于 Node.js 的 Azure IoT SDK 将对称密钥设备预配到 IoT 中心
 author: wesmc7777
-ms.author: v-tawe
-origin.date: 10/21/2020
-ms.date: 11/13/2020
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc
-ms.openlocfilehash: d4521e139dc18455967d5f729615c527c888bdbf
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: a013715fdeff0bb1a9c39f4aca33ccd01557d386
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300862"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765881"
 ---
 # <a name="quickstart-provision-a-symmetric-key-device-using-nodejs"></a>快速入门：使用 Node.js 预配对称密钥设备
 
@@ -30,14 +29,14 @@ ms.locfileid: "96300862"
 本文面向基于 Windows 的工作站。 但是，你也可以在 Linux 上执行过程。 对于 Linux 示例，请参阅[多租户预配](how-to-provision-multitenant.md)。
 
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 
 ## <a name="prerequisites"></a>先决条件
 
 - 熟悉[预配](about-iot-dps.md#provisioning-process)概念。
 - 完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)。
-- 具有活动订阅的 Azure 帐户。 [免费创建一个](https://www.microsoft.com/china/azure/index.html?fromtype=cn#azurefreeform?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- 具有活动订阅的 Azure 帐户。 [试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [Node.js v4.0+](https://nodejs.org)。
 - [Git](https://git-scm.com/download/)。
 
@@ -46,7 +45,7 @@ ms.locfileid: "96300862"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)，选择左侧菜单上的“所有资源”按钮，打开设备预配服务 (DPS) 实例。
 
-2. 选择“管理注册”选项卡，然后选择顶部的“添加个人注册”按钮 。 
+2. 选择“管理注册”选项卡，然后选择顶部的“添加个人注册”按钮   。 
 
 3. 在“添加注册”面板中输入以下信息，然后按“保存”按钮   。
 
@@ -148,7 +147,7 @@ ms.locfileid: "96300862"
     ```output
     D:\Docs\test\azure-iot-sdk-node\provisioning\device\samples>node register_symkey.js
     registration succeeded
-    assigned hub=docs-test-iot-hub.azure-devices.net
+    assigned hub=docs-test-iot-hub.azure-devices.cn
     deviceId=nodejs-device-01
     payload=undefined
     Client connected
@@ -160,7 +159,7 @@ ms.locfileid: "96300862"
     ![设备注册到 IoT 中心](./media/quick-create-device-symmetric-key-node/hub-registration-node.png) 
 
 > [!NOTE]
-> 如果从设备的注册项中的默认值更改了“初始设备孪生状态”  ，则它会从中心拉取所需的孪生状态，并执行相应的操作。 有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)。
+> 如果从设备的注册项中的默认值更改了“初始设备孪生状态”，则它会从中心拉取所需的孪生状态，并执行相应的操作。 有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)。
 >
 
 

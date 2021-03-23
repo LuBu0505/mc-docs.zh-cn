@@ -2,19 +2,20 @@
 title: 常见问题解答 - Azure Synapse Analytics
 description: Azure Synapse Analytics 常见问题解答
 services: synapse-analytics
-author: saveenr
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
-ms.date: 10/25/2020
-ms.author: saveenr
+origin.date: 10/25/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: b3d31acdf910f7134b0a4c8d0a76d16add342dbc
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 0b41080fb8608384980145c322656e0369835964
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207467"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765226"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure Synapse Analytics 常见问题解答
 
@@ -45,7 +46,7 @@ Synapse RBAC 角色：
 
 此外，对于专用 SQL 池，你可以使用你熟悉和喜爱的所有安全功能。
 
-### <a name="q-how-do-i-control-cont-dedicated-sql-pools-serverless-sql-pools-and-serverless-spark-pools"></a>问：如何控制专用 SQL 池、无服务器 SQL 池和无服务器 Spark 池？
+### <a name="q-how-do-i-control-dedicated-sql-pools-serverless-sql-pools-and-serverless-spark-pools"></a>问：如何控制专用 SQL 池、无服务器 SQL 池和无服务器 Spark 池？
 
 答：可从将 Azure Synapse 与 Azure 订阅级别提供的内置成本分析和成本警报结合开始使用。
 

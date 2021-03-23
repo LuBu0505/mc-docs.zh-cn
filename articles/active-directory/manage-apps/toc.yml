@@ -9,13 +9,14 @@
       href: add-application-portal-configure.md
     - name: 删除应用
       href: delete-application-portal.md
-- name: 概念
-  expanded: true
+- name: 示例
   items:
-    - name: 应用程序安全性
+    - name: 应用管理 PowerShell 示例
       items:
-        - name: 云应用可见性和控制
-          href: cloud-app-security.md
+        - name: 应用管理示例概述
+          href: app-management-powershell-samples.md
+        - name: 导出所有应用注册、机密和证书
+          href: ./scripts/powershell-export-all-app-registrations-secrets-and-certs.md
 - name: 操作指南
   expanded: false
   items:
@@ -37,6 +38,10 @@
           href: assign-user-or-group-access-portal.md
         - name: 禁用用户登录
           href: disable-user-sign-in-portal.md
+        - name: 通过“主领域发现”策略强制自动加速
+          href: configure-authentication-for-federated-users-portal.md
+        - name: 使用“主领域发现”策略禁止登录自动加速
+          href: prevent-domain-hints-with-home-realm-discovery.md
     - name: 疑难解答
       items:
         - name: 排查添加应用时出现的问题

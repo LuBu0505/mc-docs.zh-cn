@@ -9,12 +9,12 @@ ms.testscope: no
 ms.testdate: 06/08/2020
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: 08bfcde303f681f991de433b2dd9c9e37855a61a
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 1b14b0b72a9944fffbd14a78862b7c34de19a9bc
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054358"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766979"
 ---
 <!--Verified successfully with PORTAL on 06/08/2020-->
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>使用客户管理的密钥加密注册表
@@ -106,7 +106,7 @@ identityID=$(az identity show --resource-group <resource-group-name> --name <man
 identityPrincipalID=$(az identity show --resource-group <resource-group-name> --name <managed-identity-name> --query 'principalId' --output tsv)
 ```
 
-### <a name="create-a-key-vault"></a>创建密钥保管库
+### <a name="create-a-key-vault"></a>创建 key vault
 
 使用 [az keyvault create][az-keyvault-create] 创建一个密钥保管库来存储用于加密注册表的客户管理的密钥。
 
@@ -136,7 +136,7 @@ az keyvault set-policy \
   --key-permissions get unwrapKey wrapKey
 ```
 
-或者，使用[适用于密钥保管库的 Azure RBAC](../key-vault/general/rbac-guide.md) 为标识分配访问密钥保管库的权限。 例如，使用 [az role assignment create](https://docs.azure.cn/cli/role/assignment#az_role_assignment_create) 命令将密钥保管库加密服务加密角色分配给标识：
+或者，使用[用于密钥保管库的 Azure RBAC](../key-vault/general/rbac-guide.md) 为标识分配访问密钥保管库的权限。 例如，使用 [az role assignment create](https://docs.azure.cn/cli/role/assignment#az_role_assignment_create) 命令将密钥保管库加密服务加密角色分配给标识：
 
 ```azurecli 
 az role assignment create --assignee $identityPrincipalID \
@@ -277,7 +277,7 @@ az acr encryption show --name <registry-name>
 
     :::image type="content" source="media/container-registry-customer-managed-keys/add-key-vault-access-policy.png" alt-text="创建密钥保管库访问策略":::
 
-或者，使用[适用于密钥保管库的 Azure RBAC](../key-vault/general/rbac-guide.md) 为标识分配访问密钥保管库的权限。 例如，将密钥保管库加密服务加密角色分配给标识。
+或者，使用[用于密钥保管库的 Azure RBAC](../key-vault/general/rbac-guide.md) 为标识分配访问密钥保管库的权限。 例如，将密钥保管库加密服务加密角色分配给标识。
 
 1. 导航到你的密钥保管库。
 1. 选择“访问控制(IAM)” > “+添加” > “添加角色分配”。
@@ -586,17 +586,17 @@ az keyvault delete-policy \
 
 ### <a name="removing-managed-identity"></a>删除托管标识
 
-如果你尝试从用于配置加密的注册表中删除用户分配的标识或系统分配的标识，可能会看到如下所示的错误消息：
+如果你尝试从用于配置加密的注册表删除用户分配或系统分配的标识，你可能会看到类似于以下内容的错误消息：
 
 ```
-Azure resource '/subscriptions/xxxx/resourcegroups/myGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry' does not have access to identity 'xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx' Try forcibly adding the identity to the registry <registry name>. For more information on bring your own key, please visit 'https://aka.ms/acr/cmk'.
+Azure resource '/subscriptions/xxxx/resourcegroups/myGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry' does not have access to identity 'xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx' Try forcibly adding the identity to the registry <registry name>. For more information on bring your own key, please visit 'https://docs.azure.cn/container-registry/container-registry-customer-managed-keys'.
 ```
 
-你还将无法更改（轮换）加密密钥。 解决步骤取决于用于加密的标识类型。
+你还将无法更改（轮换）加密密钥。 解决步骤取决于用于加密的标识的类型。
 
 **用户分配的标识**
 
-如果用户分配的标识出现此问题，请先使用错误消息中显示的 GUID 重新分配该标识。 例如：
+如果用户分配的标识出现此问题，请先使用错误消息中显示的 GUID 重新分配标识。 例如：
 
 ```azurecli
 az acr identity assign -n myRegistry --identities xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
@@ -606,7 +606,7 @@ az acr identity assign -n myRegistry --identities xxxxxxxxx-xxxx-xxxx-xxxx-xxxxx
 
 **系统分配的标识**
 
-如果系统分配的标识出现此问题，请[创建 Azure 支持票证](https://support.azure.cn/support/support-azure/)，好让我们帮助你还原标识。
+如果系统分配的标识出现此问题，请[创建 Azure 支持票证](https://support.azure.cn/support/support-azure/)以帮助还原标识。
 
 ## <a name="next-steps"></a>后续步骤
 

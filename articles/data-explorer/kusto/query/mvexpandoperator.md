@@ -3,55 +3,70 @@ title: mv-expand 运算符 - Azure 数据资源管理器
 description: 本文介绍了 Azure 数据资源管理器中的 mv-expand 运算符。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 02/24/2019
-ms.date: 01/22/2021
+ms.date: 03/18/2021
 ms.localizationpriority: high
-ms.openlocfilehash: e7481a9a8ed5f1303e146be6a923e5ee8898b138
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.openlocfilehash: baad76cfc0f2cbeb10ca991ca52c53ff786a8d5a
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611637"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766609"
 ---
 # <a name="mv-expand-operator"></a>mv-expand 运算符
 
-展开多值数组或属性包。
+将多值动态数组或属性包扩展为多个记录。
 
-`mv-expand` 应用于 [dynamic](./scalar-data-types/dynamic.md) 类型的数组或属性包，以便集合中的每个值都获得一个单独的行。 将复制扩展行中的所有其他列。 
+`mv-expand` 可以说与聚合运算符相反，聚合运算符是将多个值打包成单个[动态](./scalar-data-types/dynamic.md)类型化数组或属性包，如 `summarize` ... `make-list()` 和 `make-series`。
+（标量）数组或属性包中的每个元素都在运算符的输出中生成一个新记录。 输入中未扩展的所有列都将复制到输出中的所有记录中。
 
 ## <a name="syntax"></a>语法
 
-*T* `| mv-expand ` [`bagexpansion=`(`bag` | `array`)] [`with_itemindex=`*IndexColumnName*] *ColumnName* [`,` *ColumnName* ...] [`limit` *Rowlimit*]
+*T* `| mv-expand ` [`bagexpansion=`(`bag` | `array`)] [`with_itemindex=`*IndexColumnName*] *ColumnName* [`to typeof(` *Typename*`)`] [`,` *ColumnName* ...] [`limit` *Rowlimit*]
 
-*T* `| mv-expand ` [`bagexpansion=`(`bag` | `array`)] [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] [, [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] ...] [`limit` *Rowlimit*]
+*T* `| mv-expand ` [`bagexpansion=`(`bag` | `array`)] *Name* `=` *ArrayExpression* [`to typeof(`*Typename*`)`] [, [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] ...] [`limit` *Rowlimit*]
 
 ## <a name="arguments"></a>参数
 
-* *ColumnName*：在结果中，已命名列中的数组将扩展为多行。 
-* *ArrayExpression*：生成数组的表达式。 如果使用此形式，则会添加新列并保留现有列。
+* *ColumnName*、*ArrayExpression*：一个列引用或一个标量表达式，含 `dynamic` 类型的值，带有数组或属性包。 数组或属性包的各个顶级元素扩展为多个记录。<br>
+  如果使用“ArrayExpression”且“Name”不等于任何输入列名称时，扩展的值将扩展为输出中的新列。
+  否则，将替换现有的 ColumnName。
+
 * *Name*：新列的名称。
-* Typename：指示数组元素的基础类型，该类型将成为 `mv-expand` 运算符生成的列的类型。 应用类型的操作仅限强制转换，不包括分析或类型转换。 不符合声明类型的数组元素将为 `null` 值。
+
+* Typename：指示数组元素的基础类型，该类型将成为 `mv-expand` 运算符生成的列的类型。 应用类型的操作仅限强制转换，不包括分析或类型转换。 不符合声明类型的数组元素将成为 `null` 值。
+
 * *RowLimit*：从每个原始行生成的最大行数。 默认值为 2147483647。 
 
   > [!NOTE]
   > `mvexpand` 是 `mv-expand` 运算符的已过时的旧形式。 旧版本的默认行限制为 128 行。
 
-* IndexColumnName：如果指定了 `with_itemindex`，则输出将包含一个名为 IndexColumnName 的附加列，该列包含原始展开集合中的项的索引（从 0 开始）。 
+* *IndexColumnName：* 如果指定了 `with_itemindex`，输出将包括另一列（名为 IndexColumnName），其中包含最初扩展的集合中的项的索引（从 0 开始）。 
 
 ## <a name="returns"></a>返回
 
-用于已命名列或数组表达式中任何数组的每个值的多个行。
-如果指定了多个列或表达式，则它们会并行展开。 对于每个输入行，将存在与最长展开表达式中的元素数相同的输出行数（较短的列表用 null 填充）。 如果行中的值为空数组，则该行在展开后无内容（不会显示在结果集中）。 但是，如果行中的值不是数组，则该行将按原样保留在结果集中。 
+对于输入中的每个记录，运算符会在输出中返回零个、一个或多个记录，具体通过以下方式确定：
 
-扩展列始终具有动态类型。 如需计算或聚合值，请使用转换，如 `todatetime()` 或 `tolong()`。
+1. 未扩展的输入列在输出中显示其原始值。
+   如果单个输入记录扩展为多个输出记录，会将其值复制到所有记录中。
+
+1. 对于扩展的每个 ColumnName 或 ArrayExpression，则根据[以下](#modes-of-expansion)所述方式确定每个值的输出记录数量。 对于每个输入记录，将计算输出记录的最大数量。 将“并行”扩展所有数组或属性包，以便将缺少的值（如果有）替换为 null 值。
+
+1. 如果动态值为 null，则为该值 (null) 生成单个记录。
+   如果动态值为空数组或属性包，则不会为该值生成任何记录。
+   否则，将生成多个记录，因为动态值中有元素。
+
+扩展的列的类型为 `dynamic`，除非使用 `to typeof()` 子句显式指定其类型。
+
+### <a name="modes-of-expansion"></a>扩展模式
 
 支持两种模式的属性包扩展：
-* `bagexpansion=bag` 或 `kind=bag`：将属性包扩展为单个条目属性包。 此模式是默认扩展。
-* `bagexpansion=array` 或 `kind=array`：将属性包扩展为双元素 `[`key`,`value`]` 数组结构，可允许统一访问键和值（也可以对属性名称运行不同的计数聚合等等） 。 
+
+* `bagexpansion=bag` 或 `kind=bag`：将属性包扩展为单个条目属性包。 此模式是默认模式。
+* `bagexpansion=array` 或 `kind=array`：将属性包扩展为双元素 `[`*key*`,`*value*`]` 数组结构，可允许统一访问键和值。 使用此模式还可以（例如）对属性名称运行非重复计数聚合。 
 
 ## <a name="examples"></a>示例
 
@@ -90,7 +105,7 @@ datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), d
 
 如果要在展开两列时获取笛卡尔乘积，请将其逐个展开：
 
-<!-- csl: https://help.kusto.chinacloudapi.cn:443/Samples -->
+<!-- csl: https://kuskusdfv3.kusto.chinacloudapi.cn/Kuskus -->
 ```kusto
 datatable (a:int, b:dynamic, c:dynamic)
   [
@@ -111,7 +126,7 @@ datatable (a:int, b:dynamic, c:dynamic)
 
 ### <a name="convert-output"></a>转换输出
 
-如果希望将 mv-expand 的输出强制转换为某个类型（默认为 dynamic），请使用 `to typeof`：
+若要将 mv-expand 的输出强制为某个特定类型（默认为动态），请使用 `to typeof`：
 
 <!-- csl: https://help.kusto.chinacloudapi.cn:443/Samples -->
 ```kusto
@@ -126,7 +141,7 @@ a|0|System.String|string
 b|1|System.Object|动态
 c|2|System.Int32|int
 
-请注意，列 `b` 是 `dynamic` 类型的，而 `c` 是 `int` 类型的。
+请注意 `b` 列以 `dynamic` 的形式返回，而 `c` 以 `int` 的形式返回。
 
 ### <a name="using-with_itemindex"></a>使用 with_itemindex
 
@@ -145,7 +160,7 @@ range x from 1 to 4 step 1
 |2|1|
 |3|2|
 |4|3|
- 
+
 ## <a name="see-also"></a>另请参阅
 
 * 如需更多示例，请参阅[为一段时间内的实时活动计数绘制图表](./samples.md#chart-concurrent-sessions-over-time)。

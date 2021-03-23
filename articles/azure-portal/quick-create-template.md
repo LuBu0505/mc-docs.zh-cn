@@ -3,15 +3,13 @@ title: 使用 Azure 资源管理器模板创建 Azure 门户仪表板
 description: 了解如何使用 Azure 资源管理器模板创建 Azure 门户仪表板。
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: v-tawe
-origin.date: 06/15/2020
-ms.date: 01/13/2021
-ms.openlocfilehash: 6a46a5c814acca3a28f5dfb1efd99c2619a99627
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 03/15/2021
+ms.openlocfilehash: ed07b28e9308ab5b0afd2e19fce3325eb34377d1
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230828"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767092"
 ---
 # <a name="quickstart-create-a-dashboard-in-the-azure-portal-by-using-an-arm-template"></a>快速入门：使用 ARM 模板在 Azure 门户中创建仪表板
 
@@ -35,8 +33,6 @@ Azure 门户中的仪表板可以集中且有组织地呈现你的云资源。 �
 <!--1. In the Azure portal, select Cloud Shell.
 
     ![Select Cloud shell from the Azure portal ribbon](media/quick-create-template/cloud-shell.png) -->
-
-1. 在 Azure PowerShell 中。
 
 1. 复制以下命令，然后在命令提示符中输入该命令以创建资源组。
 

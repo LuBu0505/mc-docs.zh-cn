@@ -7,16 +7,16 @@ ms.author: v-junlch
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/08/2021
+ms.date: 03/18/2021
 ms.localizationpriority: high
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 6b1894aaca20edf6b1d4d0a8c16cb3a191473e78
-ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
+ms.openlocfilehash: e3d4850db57877565d857e55fde0d66f08e32fc2
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101087587"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765911"
 ---
 # <a name="tutorial-use-kusto-queries-in-azure-data-explorer-and-azure-monitor"></a>教程：在 Azure 数据资源管理器和 Azure Monitor 中使用 Kusto 查询
 
@@ -527,7 +527,7 @@ InsightsMetrics | count
 
 AzureActivity 表包含 Azure 活动日志中的条目，让你能够深入了解 Azure 中发生的任何订阅级别或管理组级事件。 让我们仅查看特定周内的 `Critical` 条目。
 
-[where](/data-explorer/kusto/query/whereoperator) 运算符在 Kusto 查询语言中是通用的。 `where` 将筛选表中符合特定条件的行。 以下示例命令行使用多个命令。 首先，查询检索表中的所有记录。 然后，它仅针对时间范围内的记录筛选数据。 最后，它仅针对具有 `Critical` 级别的记录筛选这些结果。
+[where](./whereoperator.md) 运算符在 Kusto 查询语言中是通用的。 `where` 将筛选表中符合特定条件的行。 以下示例命令行使用多个命令。 首先，查询检索表中的所有记录。 然后，它仅针对时间范围内的记录筛选数据。 最后，它仅针对具有 `Critical` 级别的记录筛选这些结果。
 
 > [!NOTE]
 > 除了使用 `TimeGenerated` 列在查询中指定筛选器外，还可以在 Log Analytics 中指定时间范围。 有关详细信息，请参阅 [Azure Monitor Log Analytics 中的日志查询范围和时间范围](/azure-monitor/log-query/scope)。
@@ -661,11 +661,11 @@ InsightsMetrics
 
 ## <a name="join-data-from-two-tables"></a>联接两个表中的数据
 
-如果需要在单个查询中检索两个表中的数据该怎么办？ 可使用 [join](/data-explorer/kusto/query/joinoperator?pivots=azuremonitor) 运算符将多个表中的行合并到一个结果集中。 每个表都必须有一个具有匹配值的列，以便 join 识别要匹配的行。
+如果需要在单个查询中检索两个表中的数据该怎么办？ 可使用 [join](./joinoperator.md?pivots=azuremonitor) 运算符将多个表中的行合并到一个结果集中。 每个表都必须有一个具有匹配值的列，以便 join 识别要匹配的行。
 
 VMComputer 是 Azure Monitor 用于 VM 的表，用于存储它所监视的虚拟机的详细信息。 InsightsMetrics 包含从这些虚拟机收集的性能数据。 InsightsMetrics 中收集的一个值是可用内存，但不是可用的内存百分比。 若要计算百分比，需要每个虚拟机的物理内存。 该值位于 `VMComputer`。
 
-下面的示例查询使用联接来执行此计算。 [distinct](/data-explorer/kusto/query/distinctoperator) 运算符与 `VMComputer` 一起使用，因为会定期从每台计算机中收集详细信息。 因此，会为该表中的每台计算机创建多个行。 使用 `Computer` 列联接两个表。 在结果集中创建一个行，其中对于 `InsightsMetrics` 中的每一行，包括两个表中的列，并且 `Computer` 中的值与 `VMComputer` 中 `Computer` 列中的相同值匹配。
+下面的示例查询使用联接来执行此计算。 [distinct](./distinctoperator.md) 运算符与 `VMComputer` 一起使用，因为会定期从每台计算机中收集详细信息。 因此，会为该表中的每台计算机创建多个行。 使用 `Computer` 列联接两个表。 在结果集中创建一个行，其中对于 `InsightsMetrics` 中的每一行，包括两个表中的列，并且 `Computer` 中的值与 `VMComputer` 中 `Computer` 列中的相同值匹配。
 
 ```kusto
 VMComputer
@@ -688,8 +688,7 @@ VMComputer
 ```kusto
 let PhysicalComputer = VMComputer
     | distinct Computer, PhysicalMemoryMB;
-    let AvailableMemory = 
-InsightsMetrics
+let AvailableMemory = InsightsMetrics
     | where Namespace == "Memory" and Name == "AvailableMB"
     | project TimeGenerated, Computer, AvailableMemoryMB = Val;
 PhysicalComputer

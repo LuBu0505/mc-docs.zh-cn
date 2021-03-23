@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 01/04/2021
+ms.date: 03/08/2021
 ms.author: v-johya
-ms.openlocfilehash: ced90a19a2f1d426b306a72dc4137f189f673ab8
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 3d37c37dcc17183e1d301cd16b74b94adc0b4bd9
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023908"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766168"
 ---
 # <a name="build-an-enrollment-app-for-android-with-react"></a>使用 React 构建适用于 Android 的注册应用
 
@@ -37,9 +37,9 @@ ms.locfileid: "98023908"
 ## <a name="set-up-the-development-environment"></a>设置开发环境
 
 1. 克隆[示例注册应用](https://github.com/azure-samples/cognitive-services-FaceAPIEnrollmentSample)的 git 存储库。
-1. 若要设置开发环境，请按照 <a href="https://reactnative.dev/docs/environment-setup"  title="React Native 文档"  target="_blank">React Native 文档<span class="docon docon-navigate-external x-hidden-focus"></span></a>进行操作。 选择“React Native CLI 快速入门”作为开发 OS，并选择“Android”作为目标 OS 。 完成“安装依赖项”和“Android 开发环境”部分 。
+1. 若要设置开发环境，请按照 <a href="https://reactnative.dev/docs/environment-setup"  title="React Native 文档"  target="_blank">React Native 文档</a>进行操作。 选择“React Native CLI 快速入门”作为开发 OS，并选择“Android”作为目标 OS 。 完成“安装依赖项”和“Android 开发环境”部分 。
 1. 在首选的文本编辑器（如 [Visual Studio Code](https://code.visualstudio.com/)）中打开 env.json 文件，并添加终结点和密钥。 可在 Azure 门户中资源的“概述”选项卡下获取终结点和密钥。 此步骤仅用于本地测试目的&mdash;请勿将人脸 API 密钥签入到远程存储库。
-1. 使用 Android Studio 中的 Android 虚拟设备仿真器或你自己的 Android 设备运行应用。 若要在物理设备上测试应用，请按照相关 <a href="https://reactnative.dev/docs/running-on-device"  title="React Native 文档"  target="_blank">React Native 文档<span class="docon docon-navigate-external x-hidden-focus"></span></a>进行操作。  
+1. 使用 Android Studio 中的 Android 虚拟设备仿真器或你自己的 Android 设备运行应用。 若要在物理设备上测试应用，请按照相关 <a href="https://reactnative.dev/docs/running-on-device"  title="React Native 文档"  target="_blank">React Native 文档</a>进行操作。  
 
 
 ## <a name="create-an-enrollment-experience"></a>创建注册体验  
@@ -78,9 +78,9 @@ ms.locfileid: "98023908"
 
 在准备好发布应用以进行生产时，你将生成一个可随时发布的 APK（适用于 Android 应用的包文件格式）文件。 必须使用私钥对此 APK 文件进行签名。 借助此发布版本，你可以开始将应用直接分发到设备。 
 
-查看<a href="https://developer.android.com/studio/publish/preparing#publishing-build"  title="准备发布"  target="_blank">准备发布<span class="docon docon-navigate-external x-hidden-focus"></span></a>文档，了解如何生成私钥、对应用程序进行签名以及生成发布 APK。  
+查看<a href="https://developer.android.com/studio/publish/preparing#publishing-build"  title="准备发布"  target="_blank">准备发布</a>文档，了解如何生成私钥、对应用程序进行签名以及生成发布 APK。  
 
-创建已签名的 APK 后，请参阅<a href="https://developer.android.com/studio/publish"  title="发布应用"  target="_blank">发布应用<span class="docon docon-navigate-external x-hidden-focus"></span></a>文档，详细了解如何发布应用。
+创建已签名的 APK 后，请参阅<a href="https://developer.android.com/studio/publish"  title="发布应用"  target="_blank">发布应用</a>文档，详细了解如何发布应用。
 
 ## <a name="next-steps"></a>后续步骤  
 

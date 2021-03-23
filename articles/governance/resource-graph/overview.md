@@ -1,16 +1,17 @@
 ---
 title: Azure Resource Graph 概述
 description: 了解如何使用 Azure Resource Graph 服务跨订阅和租户对资源进行大规模的复杂查询。
-ms.author: v-tawe
-origin.date: 10/14/2020
-ms.date: 11/06/2020
+origin.date: 01/27/2021
+author: rockboyfor
+ms.date: 03/22/2021
+ms.author: v-yeche
 ms.topic: overview
-ms.openlocfilehash: 420c3f342c6cf4eba61ee135056bdd881f96629b
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: de49a3eff7766720a1ca9d0d7f23df92ce27b7e3
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328791"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766899"
 ---
 # <a name="what-is-azure-resource-graph"></a>什么是 Azure Resource Graph？
 
@@ -23,14 +24,8 @@ Azure Resource Graph 是 Azure 中的一项服务，旨在通过提供高效和�
 
 在本文档中，你将逐一了解各项功能的详细信息。
 
-<!--
-> [!NOTE]
-> Azure Resource Graph powers Azure portal's search bar, the new browse 'All resources' experience,
-> and Azure Policy's [Change history](../policy/how-to/determine-non-compliance.md#change-history)
-> _visual diff_. It's designed to help customers manage large-scale environments.
--->
-
-<!-- [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)] -->
+<!--NOT AVAILABLE ON Azure Policy's [Change history](../policy/how-to/determine-non-compliance.md#change-history)-->
+<!--NOT AVAILABLE ON [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)-->
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Resource Graph 如何补充了 Azure 资源管理器
 
@@ -58,7 +53,7 @@ Resource Graph 然后就会更新其数据库。 Resource Graph 也会定期进�
 
 现在，你已更好地了解了 Azure Resource Graph，我们来深入了解如何构造查询。
 
-务必要了解的一点是，Azure Resource Graph 的查询语言基于 Azure 数据资源管理器使用的 [Kusto 查询语言](/data-explorer/data-explorer-overview)。
+务必要了解的一点是，Azure Resource Graph 的查询语言基于 Azure 数据资源管理器使用的 [Kusto 查询语言](https://docs.azure.cn/data-explorer/data-explorer-overview)。
 
 首先，有关可以在 Azure Resource Graph 中使用的操作和函数，请参阅 [Resource Graph 查询语言](./concepts/query-language.md)。 若要浏览资源，请参阅[浏览资源](./concepts/explore-resources.md)。
 
@@ -103,3 +98,5 @@ Resource Graph 支持 Azure CLI、Azure PowerShell、用于 Python 的 Azure SDK
 - 详细了解[查询语言](./concepts/query-language.md)。
 - 请参阅[初学者查询](./samples/starter.md)中使用的语言。
 - 请参阅[高级查询](./samples/advanced.md)中的高级用法。
+
+<!--Update_Description: update meta properties, wording update, update link-->

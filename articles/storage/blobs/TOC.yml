@@ -417,7 +417,7 @@
               href: storage-blob-change-feed-how-to.md
             - name: 设置和管理不可变性策略
               href: storage-blob-immutability-policies-manage.md
-        - name: 管理灾难恢复
+        - name: 管理冗余和故障转移
           items:
             - name: 更改冗余配置
               href: ../common/redundancy-migration.md?toc=%2fstorage%2fblobs%2ftoc.json
@@ -555,6 +555,8 @@
               href: 'https://github.com/microsoft/AzureStorageExplorer/releases'
             - name: 排查存储资源管理器问题
               href: ../common/storage-explorer-troubleshooting.md?toc=%2fstorage%2fblobs%2ftoc.json
+            - name: 存储资源管理器命令行选项
+              href: ../common/storage-explorer-command-line-options.md
             - name: 存储资源管理器安全性
               href: ../common/storage-explorer-security.md
             - name: 存储资源管理器 blob 版本控制

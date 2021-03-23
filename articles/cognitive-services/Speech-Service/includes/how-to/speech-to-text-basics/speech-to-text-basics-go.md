@@ -3,14 +3,14 @@ author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 09/15/2020
-ms.date: 12/30/2020
-ms.author: v-tawe
-ms.openlocfilehash: d430d410cda230308d6f986cc1b4eef6dc2cdbb9
-ms.sourcegitcommit: eb742dcade404c9909d01e2570188f0bc4076992
+ms.date: 03/08/2021
+ms.author: v-johya
+ms.openlocfilehash: 0a365e8425998090280631fd92c2cee98a34497e
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97820505"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803342"
 ---
 语音服务的核心功能之一是能够识别并转录人类语音（通常称为语音转文本）。 本快速入门介绍如何在应用和产品中使用语音 SDK 来执行高质量的语音转文本转换。
 
@@ -100,7 +100,21 @@ func main() {
 }
 ```
 
-有关 [`SpeechConfig`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechConfig) 和 [`SpeechRecognizer`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechRecognizer) 类的详细信息，请参阅参考文档。
+运行以下命令以创建 go.mod 文件并使其链接到 Github 上托管的组件。
+
+```cmd
+go mod init quickstart
+go get github.com/Microsoft/cognitive-services-speech-sdk-go
+```
+
+现在生成并运行代码。
+
+```cmd
+go build
+go run quickstart
+```
+
+有关 [`SpeechConfig`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.15.0/speech#SpeechConfig) 和 [`SpeechRecognizer`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.15.0/speech#SpeechRecognizer) 类的详细信息，请参阅参考文档。
 
 ## <a name="speech-to-text-from-audio-file"></a>从音频文件将语音转换为文本
 
@@ -166,4 +180,19 @@ func main() {
 }
 ```
 
-有关 [`SpeechConfig`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechConfig) 和 [`SpeechRecognizer`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechRecognizer) 类的详细信息，请参阅参考文档。
+运行以下命令以创建 go.mod 文件并使其链接到 Github 上托管的组件。
+
+```cmd
+go mod init quickstart
+go get github.com/Microsoft/cognitive-services-speech-sdk-go
+```
+
+现在生成并运行代码。
+
+```cmd
+go build
+go run quickstart
+```
+
+有关 [`SpeechConfig`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.15.0/speech#SpeechConfig) 和 [`SpeechRecognizer`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.15.0/speech#SpeechRecognizer) 类的详细信息，请参阅参考文档。
+

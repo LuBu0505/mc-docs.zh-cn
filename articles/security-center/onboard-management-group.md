@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/25/2021
+ms.date: 03/18/2021
 ms.author: v-johya
-ms.openlocfilehash: d1ca19365cb21072b082271fcfa9103c005e0161
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: aaeb579a4b14bbe363b408674e47f863a040a9fa
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197493"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766479"
 ---
 # <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>对管理组中的所有订阅启用安全中心
 
@@ -60,7 +60,7 @@ ms.locfileid: "102197493"
     提供的定义将下面任一“定价”设置定义为合规。 也就是说设置为“标准”或“免费”的订阅均合规。
 
     > [!TIP]
-    > 启用了 Azure Defender 计划时，订阅被描述为“标准”设置。 禁用时，它是“免费”设置。 [详细了解 Azure Defender 计划](security-center-pricing.md)。
+    > 启用 Azure Defender 计划后，将在策略定义中根据“标准”设置对其进行描述。 禁用时，它是“免费”设置。 若要了解这些计划之间的差异，请参阅[安全中心免费版与已启用 Azure Defender](security-center-pricing.md)。 
 
     ```
     "existenceCondition": {
@@ -98,5 +98,5 @@ ms.locfileid: "102197493"
 现已加入了整个管理组，请启用 Azure Defender 的高级保护。 
 
 > [!div class="nextstepaction"]
-> [启用 Azure Defender](security-center-pricing.md#enable-azure-defender)
+> [启用 Azure Defender](enable-azure-defender.md)
 

@@ -1,16 +1,17 @@
 ---
 title: 排查常见错误
 description: 了解如何通过 Azure Resource Graph 在查询 Azure 资源的同时排查各种 SDK 问题。
-ms.author: v-tawe
-origin.date: 10/14/2020
-ms.date: 11/06/2020
+origin.date: 01/27/2021
+author: rockboyfor
+ms.date: 03/22/2021
+ms.author: v-yeche
 ms.topic: troubleshooting
-ms.openlocfilehash: 639705b2dbf8850d8385ec4ca049f4f44bcf1750
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 11893f0d02b49f221174c89c761ee461b376ce74
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328799"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766728"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>使用 Azure Resource Graph 排查错误
 
@@ -22,7 +23,8 @@ ms.locfileid: "94328799"
 
 ## <a name="general-errors"></a>常规错误
 
-### <a name="scenario-throttled-requests"></a><a name="throttled"></a>场景：限制的请求数
+<a name="throttled"></a>
+### <a name="scenario-throttled-requests"></a>场景：限制的请求数
 
 #### <a name="issue"></a>问题
 
@@ -41,7 +43,8 @@ Azure Resource Graph 基于时段为每个用户分配配额数量。 例如，�
 - [并行查询](../concepts/guidance-for-throttled-requests.md#query-in-parallel)
 - [分页](../concepts/guidance-for-throttled-requests.md#pagination)
 
-### <a name="scenario-too-many-subscriptions"></a><a name="toomanysubscription"></a>场景：订阅过多
+<a name="toomanysubscription"></a>
+### <a name="scenario-too-many-subscriptions"></a>场景：订阅过多
 
 #### <a name="issue"></a>问题
 
@@ -55,7 +58,7 @@ Azure CLI 和 PowerShell 仅将前 1000 个订阅转发到 Azure Resource Graph�
 
 将对包含订阅子集的查询的批处理请求保持在 1000 个订阅的限制以下。 解决方法是在 PowerShell 中使用 Subscription 参数。
 
-```azurepowershell
+```powershell
 # Replace this query with your own
 $query = 'Resources | project type'
 
@@ -78,7 +81,8 @@ foreach ($batch in $subscriptionsBatch){ $response += Search-AzGraph -Query $que
 $response
 ```
 
-### <a name="scenario-unsupported-content-type-rest-header"></a><a name="rest-contenttype"></a>场景：不受支持的 Content-type REST 标头
+<a name="rest-contenttype"></a>
+### <a name="scenario-unsupported-content-type-rest-header"></a>场景：不受支持的 Content-type REST 标头
 
 #### <a name="issue"></a>问题
 
@@ -92,7 +96,8 @@ Azure Resource Graph REST API 仅支持“application/json”的 `Content-Type`�
 
 验证用于查询 Azure Resource Graph 的工具或代理是否将 REST API 标头 `Content-Type` 配置为“application/json”。
 
-### <a name="scenario-no-read-permission-to-all-subscriptions-in-list"></a><a name="rest-403"></a>场景：没有对列表中所有订阅的读取权限
+<a name="rest-403"></a>
+### <a name="scenario-no-read-permission-to-all-subscriptions-in-list"></a>场景：没有对列表中所有订阅的读取权限
 
 #### <a name="issue"></a>问题
 
@@ -110,5 +115,7 @@ Azure Resource Graph REST API 仅支持“application/json”的 `Content-Type`�
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
-- 请通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答。
-- 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://support.azure.cn/support/contact)并选择“与我们联系”。
+- 请通过 [Azure 论坛](https://support.azure.cn/support/contact/)获取 Azure 专家的解答。
+- 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://support.azure.cn/support/support-azure/)提交请求。
+
+<!--Update_Description: update meta properties, wording update, update link-->

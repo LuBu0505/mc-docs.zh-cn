@@ -13,16 +13,17 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 origin.date: 06/11/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 07/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 341ceca6171fcd5bfc31751a9a8f19258a061a0d
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 7bf4466d865967dc87947c869d8128cd3d4b27a0
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230950"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "104766311"
 ---
 <!--Verified successfully-->
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>教程：使用 Azure CLI 创建 NAT 网关并测试 NAT 服务
@@ -82,9 +83,9 @@ ms.locfileid: "98230950"
   - 一个公共 IP 池和公共 IP 前缀，供 NAT 网关资源转换的出站流使用。
   - 将空闲超时从默认值 4 分钟更改为 10 分钟。
 
-使用 [az network nat gateway create](https://docs.microsoft.com/cli/azure/network/nat/gateway#az_network_nat_gateway_create) 创建名为 **myNATgateway** 的全局 Azure NAT 网关。 该命令同时使用公共 IP 地址 **myPublicIP** 和公共 IP 前缀 **myPublicIPprefix**。 该命令还将空闲超时更改为 10 分钟。
+使用 [az network nat gateway create](https://docs.azure.cn/cli/network/nat/gateway#az_network_nat_gateway_create) 创建名为 **myNATgateway** 的全局 Azure NAT 网关。 该命令同时使用公共 IP 地址 **myPublicIP** 和公共 IP 前缀 **myPublicIPprefix**。 该命令还将空闲超时更改为 10 分钟。
 
-<!--CORRECT ON https://docs.microsoft.com/cli/azure/network/nat/gateway#az-network-nat-gateway-create-->
+<!--CORRECT ON https://docs.azure.cn/cli/network/nat/gateway#az_network_nat_gateway_create-->
 
 ```azurecli
   az network nat gateway create \
@@ -444,7 +445,7 @@ hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k
 
 可以查看 Azure Monitor 中的指标来了解 NAT 服务的运行情况。 可以诊断可用 SNAT 端口资源耗尽等问题。  通过添加更多公共 IP 地址资源和/或公共 IP 前缀资源，可以轻松解决 SNAT 端口资源耗尽的问题。
 
-- 了解[虚拟网络 NAT](./nat-overview.md)。
+- 了解[虚拟网络 NAT](./nat-overview.md)
 - 了解 [NAT 网关资源](./nat-gateway-resource.md)。
 - 有关[使用 Azure CLI 部署 NAT 网关资源](./quickstart-create-nat-gateway-cli.md)的快速入门。
 - 有关[使用 Azure PowerShell 部署 NAT 网关资源](./quickstart-create-nat-gateway-powershell.md)的快速入门。
@@ -452,4 +453,4 @@ hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k
 
 > [!div class="nextstepaction"]
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

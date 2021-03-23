@@ -2,18 +2,17 @@
 title: 对 Azure Key Vault 进行身份验证
 description: 了解如何对 Azure Key Vault 进行身份验证
 author: ShaneBala-keyvault
-ms.author: v-tawe
-origin.date: 08/27/2020
-ms.date: 01/14/2021
+ms.author: v-chazhou
+ms.date: 03/10/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: d412c285d021139bbab53eaf1fbd12c080fa6ae2
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 7eab802fcd4055b3f9570433871a791b9594f026
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059943"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766594"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>对 Azure Key Vault 进行身份验证
 
@@ -104,6 +103,9 @@ ms.locfileid: "99059943"
 
 ![Azure 密钥保管库身份验证流](../media/authentication/authentication-flow.png)
 
+> [!NOTE]
+> Key Vault SDK 用于机密、证书和密钥的客户端在没有访问令牌的情况下对 Key Vault 进行了额外的调用，这导致 401 响应来检索租户信息。 有关详细信息，请参阅[身份验证、请求和响应](authentication-requests-and-responses.md)
+
 ## <a name="code-examples"></a>代码示例
 
 下表链接到其他文章，这些文章演示如何使用相关语言的 Azure SDK 库在应用程序代码中使用密钥保管库。 为了方便起见，还包括了其他接口，例如 Azure CLI 和 Azure 门户。
@@ -111,11 +113,9 @@ ms.locfileid: "99059943"
 | 密钥保管库机密 | 密钥保管库密钥 | Key Vault 证书 |
 |  --- | --- | --- |
 | [Python](../secrets/quick-create-python.md) | [Python](../keys/quick-create-python.md) | [Python](../certificates/quick-create-python.md) | 
-| [.NET (SDK v4)](../secrets/quick-create-net.md) | -- | -- |
-| [.NET (SDK v3)](https://dotnet.microsoft.com/download/dotnet-core/3.0) | -- | -- |
-| [Java](../secrets/quick-create-java.md) | -- | -- |
-| [JavaScript](../secrets/quick-create-node.md) | -- | -- | 
-| | | |
+| [.NET](../secrets/quick-create-net.md) | [.NET](../keys/quick-create-net.md) | [.NET](../certificates/quick-create-net.md) |
+| [Java](../secrets/quick-create-java.md) | [Java](../keys/quick-create-java.md) | [Java](../certificates/quick-create-java.md) |
+| [JavaScript](../secrets/quick-create-node.md) | [JavaScript](../keys/quick-create-node.md) | [JavaScript](../certificates/quick-create-node.md) | 
 | [Azure 门户](../secrets/quick-create-portal.md) | [Azure 门户](../keys/quick-create-portal.md) | [Azure 门户](../certificates/quick-create-portal.md) |
 | [Azure CLI](../secrets/quick-create-cli.md) | [Azure CLI](../keys/quick-create-cli.md) | [Azure CLI](../certificates/quick-create-cli.md) |
 | [Azure PowerShell](../secrets/quick-create-powershell.md) | [Azure PowerShell](../keys/quick-create-powershell.md) | [Azure PowerShell](../certificates/quick-create-powershell.md) |

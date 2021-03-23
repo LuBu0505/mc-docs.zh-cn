@@ -1,18 +1,19 @@
 ---
 title: 故障排除：SDK 创建的工作区无法启动 Synapse Studio
 description: 解决由 SDK 创建的工作区无法启动 Synapse Studio 的步骤
-author: julieMSFT
-ms.author: jrasnick
+author: WenJason
+ms.author: v-jay
 ms.topic: troubleshooting
 ms.service: synapse-analytics
 ms.subservice: workspace
-ms.date: 11/24/2020
-ms.openlocfilehash: d9a4b648e7736dfcb659bb8df2c379d4cd7b1864
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+origin.date: 11/24/2020
+ms.date: 03/22/2021
+ms.openlocfilehash: d83715d7bbce4102c105282fde23bfd1697800ff
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207325"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766448"
 ---
 # <a name="troubleshoot-azure-synapse-analytics-workspaces-created-using-sdk"></a>对使用 SDK 创建的 Azure Synapse Analytics 工作区进行故障排除
 

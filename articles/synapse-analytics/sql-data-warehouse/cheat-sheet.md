@@ -11,12 +11,12 @@ origin.date: 11/04/2019
 ms.date: 02/01/2021
 ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: 8c2f03b46952fa781eeb9f4bc16a12751200bdc1
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: dc70b873fe2b50d7baf9ef5344404d2bc0c7ee41
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99058508"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765557"
 ---
 # <a name="cheat-sheet-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytic"></a>Azure Synapse Analytics 中的专用 SQL 池（之前称为 SQL DW）的速查表
 
@@ -38,7 +38,7 @@ ms.locfileid: "99058508"
 
 ## <a name="data-migration"></a>数据迁移
 
-首先，将数据加载到 Azure Blob 存储中。 接下来，使用 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)（预览版）将数据加载到临时表中。 使用以下配置：
+首先，将数据加载到 Azure Blob 存储中。 接下来，使用 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)（预览版）将数据加载到临时表中。 使用以下配置：
 
 | 设计 | 建议 |
 |:--- |:--- |

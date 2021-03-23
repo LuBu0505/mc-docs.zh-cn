@@ -3,17 +3,17 @@ title: Azure Stack Hub 上 AKS 引擎的支持策略
 description: 本主题包含 Azure Stack Hub 上 AKS 引擎的支持策略。
 author: WenJason
 ms.topic: article
-origin.date: 09/10/2020
-ms.date: 10/12/2020
+origin.date: 2/1/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: waltero
 ms.lastreviewed: 09/01/2020
-ms.openlocfilehash: 173faa4e9308920588077f58955a61711dcad365
-ms.sourcegitcommit: bc10b8dd34a2de4a38abc0db167664690987488d
+ms.openlocfilehash: 2aa8c18e70d59d30fcabaff202bbece348d087c8
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91437760"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765654"
 ---
 # <a name="support-policies-for-aks-engine-on-azure-stack-hub"></a>Azure Stack Hub 上 AKS 引擎的支持策略
 
@@ -86,7 +86,6 @@ Azure 不提供以下方面的技术支持：
 -  Kubernetes 配置更改保存在 Kubernetes 配置存储 etcd 以外的位置。 例如，在群集节点中运行的静态 Pod。
 -  有关 Kubernetes 用法的问题。 例如，Azure 支持部门不提供有关如何创建自定义入口控制器、使用应用程序工作负荷，或者应用第三方/开源软件包或工具的建议。
 -  不是作为 AKS 引擎部署的 Kubernetes 群集的一部分提供的第三方开源项目。 这些项目可能包括 Kubeadm、Kubespray、Native、Istio、Helm、Envoy 等。
--  在[支持使用 AKS 引擎的方案](azure-stack-kubernetes-aks-engine-overview.md#supported-scenarios-with-the-aks-engine)中指定的用例方案之外的其他用例中使用 AKS 引擎。
 -  第三方软件。 此类软件可能包括安全扫描工具以及网络设备或软件。
 -  有关多云或多供应商扩建的问题。 例如，Azure 不会为运行联合多公共端云供应商解决方案的相关问题提供支持。
 -  [AKS 引擎支持的区域](#aks-engine-supported-areas)部分中未列出的网络自定义。

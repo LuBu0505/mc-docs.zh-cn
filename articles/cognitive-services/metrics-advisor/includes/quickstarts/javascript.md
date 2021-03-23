@@ -7,23 +7,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: include
-ms.date: 01/04/2021
+ms.date: 03/08/2021
 ms.author: v-johya
-ms.openlocfilehash: fb7eb9cc2c5585cbc7e06520b592f65afeb4ca94
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 7cc553c4c36d44f8fa09bbe5a156c1274cf823a3
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024267"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803391"
 ---
-[库源代码](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/metricsadvisor/ai-metrics-advisor/README.md) | [包 (npm)](https://www.npmjs.com/package/@azure/ai-metrics-advisor) | [示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/metricsadvisor/ai-metrics-advisor/samples)
+[参考文档](https://docs.microsoft.com/java/api/overview/azure/ai-metricsadvisor-readme) | [库源代码](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/metricsadvisor/ai-metrics-advisor/README.md) | [包 (npm)](https://www.npmjs.com/package/@azure/ai-metrics-advisor) | [示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/metricsadvisor/ai-metrics-advisor/samples)
 
-<!--404-->
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [创建试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)
 * 最新版本的 [Node.js](https://nodejs.org/)
-* 获得 Azure 订阅后，<a href="https://portal.azure.cn/#create/Microsoft.CognitiveServicesMetricsAdvisor"  title="“创建指标顾问”资源"  target="_blank">在 Azure 门户中创建“指标顾问”资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，以部署“指标顾问”实例。  
+* 获得 Azure 订阅后，<a href="https://portal.azure.cn/#create/Microsoft.CognitiveServicesMetricsAdvisor"  title="“创建指标顾问”资源"  target="_blank">在 Azure 门户中创建“指标顾问”资源 </a>，以部署“指标顾问”实例。  
 * 带有时序数据的 SQL 数据库。
   
 > [!TIP]

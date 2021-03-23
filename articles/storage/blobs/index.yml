@@ -12,13 +12,13 @@ metadata:
   author: WenJason
   ms.author: v-jay
   origin.date: 08/20/2019
-  ms.date: 03/08/2021
-  ms.openlocfilehash: c2da824e409514ecb009670f7e05c8feef4862cc
-  ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
+  ms.date: 03/22/2021
+  ms.openlocfilehash: 6eb3343c2ccee3935d00c2179deceac9d052c5f0
+  ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/05/2021
-  ms.locfileid: "102196281"
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104766467"
 landingContent:
 - title: 关于 Blob 存储
   linkLists:
@@ -65,7 +65,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: 使用 Databricks 分析数据
-      url: data-lake-storage-quickstart-create-databricks-account.md
+      url: ./data-lake-storage-use-databricks-spark.md
   - linkListType: concept
     links:
     - text: 处理大数据

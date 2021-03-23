@@ -2,20 +2,21 @@
 title: 使用存储过程
 description: 有关使用 Azure Synapse Analytics 中的 Synapse SQL 实现存储过程以开发解决方案的技巧。
 services: synapse-analytics
-author: XiaoyuMSFT
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 11/03/2020
-ms.author: xiaoyul
+origin.date: 11/03/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: d210e03aaca05272f414da77b6c45135363ba28f
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 2b74821fe617bad3e44485cc0bfc1adca86fdf30
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207496"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766819"
 ---
 # <a name="stored-procedures-using-synapse-sql-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的 Synapse SQL 实现存储过程
 
@@ -181,7 +182,7 @@ EXEC clean_up 'mytest'  -- This call is nest level 1
 ```
 
 > [!NOTE]
-> Synapse SQL 目前不支持 [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。 需要跟踪嵌套级别。 不太可能超过 8 个嵌套级别的限制，但如果超过了，则需要重新修改代码，以使它符合限制内的嵌套级别。
+> Synapse SQL 目前不支持 [@@NESTLEVEL](https://docs.microsoft.com/sql/t-sql/functions/nestlevel-transact-sql?view=azure-sqldw-latest&preserve-view=true)。 需要跟踪嵌套级别。 不太可能超过 8 个嵌套级别的限制，但如果超过了，则需要重新修改代码，以使它符合限制内的嵌套级别。
 
 ## <a name="insertexecute"></a>INSERT..EXECUTE
 

@@ -3,18 +3,18 @@ title: 通过 Visual Studio Code 部署模块 - Azure IoT Edge
 description: 将 Visual Studio Code 与 Azure IoT Tools 结合使用，以将 IoT Edge 模块从 IoT 中心推送到 IoT Edge 设备（按照部署清单的配置）。
 author: kgremban
 manager: philmea
-ms.author: v-tawe
-ms.date: 03/01/2021
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a55e2530ba2a908a57cdbf6141ebcf897de779f1
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.openlocfilehash: 8ae1fdffff250b03061ad27fa2e136681a4371b1
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196685"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766379"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>通过 Visual Studio Code 部署 Azure IoT Edge 模块
 

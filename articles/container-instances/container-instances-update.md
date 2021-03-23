@@ -3,19 +3,20 @@ title: 更新容器组
 description: 了解如何更新 Azure 容器实例容器组中正在运行的容器。
 ms.topic: article
 origin.date: 04/17/2020
-ms.date: 06/08/2020
+author: rockboyfor
+ms.date: 03/22/2021
 ms.author: v-yeche
-ms.openlocfilehash: 2386c16086841c737d1e2f243a97af81ab23ebaf
-ms.sourcegitcommit: c4fc01b7451951ef7a9616fca494e1baf29db714
+ms.openlocfilehash: 3be09394b80db61c151374cf05a254344d5d73bf
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84564365"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765389"
 ---
 <!--Verified successfully-->
 # <a name="update-containers-in-azure-container-instances"></a>更新 Azure 容器实例中的容器
 
-在正常操作容器实例期间，你可能会发现有必要更新[容器组](container-instances-container-groups.md)中正在运行的容器。 例如，你可能想要更新映像版本、更改 DNS 名称、更新环境变量，或刷新其应用程序已崩溃的容器的状态。
+在正常操作容器实例期间，你可能会发现有必要更新[容器组](./container-instances-container-groups.md)中正在运行的容器。 例如，你可能希望更新一个属性（例如，映像版本、DNS 名称或环境变量），或者刷新其应用程序已崩溃的容器中的属性。
 
 通过使用至少一个已修改的属性重新部署现有组，来更新正在运行的容器组中的容器。 更新某个容器组时，该组中所有正在运行的容器会就地重启（通常在同一基础容器主机上进行）。
 
@@ -81,9 +82,9 @@ az container create --resource-group myResourceGroup --name mycontainer \
 
 ## <a name="next-steps"></a>后续步骤
 
-本文中多次提到了**容器组**。 Azure 容器实例中的每个容器部署在容器组中，容器组可以包含多个容器。
+本文中多次提到了 **容器组**。 Azure 容器实例中的每个容器部署在容器组中，容器组可以包含多个容器。
 
-[Azure 容器实例中的容器组](container-instances-container-groups.md)
+[Azure 容器实例中的容器组](./container-instances-container-groups.md)
 
 [部署多容器组](container-instances-multi-container-group.md)
 
@@ -93,8 +94,8 @@ az container create --resource-group myResourceGroup --name mycontainer \
 
 <!-- LINKS - Internal -->
 
-[az-container-create]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-create
-[azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
-[az-container-export]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-export
+[az-container-create]: https://docs.microsoft.com/cli/azure/container#az_container_create
+[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli
+[az-container-export]: https://docs.microsoft.com/cli/azure/container#az_container_export
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -3,19 +3,18 @@ title: 了解运行时如何管理设备 - Azure IoT Edge |Microsoft Docs
 description: 了解 IoT Edge 运行时如何管理设备上的模块、安全性、通信和报告
 author: kgremban
 manager: philmea
-ms.author: v-tawe
-origin.date: 11/10/2020
-ms.date: 01/05/2021
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, mqtt, devx-track-csharp
-ms.openlocfilehash: 2ba31c7bba823324e55bb88d37d6f676bac14006
-ms.sourcegitcommit: 40db5a4b9ab8b5877e307ff7a567fd930ca81c72
+ms.openlocfilehash: b70a06cdcf41a879cba1a416dce2cf52d14d1862
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894293"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765326"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>了解 Azure IoT Edge 运行时及其体系结构
 

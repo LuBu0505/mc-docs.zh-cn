@@ -3,18 +3,18 @@ title: 在 Azure Stack Hub 中使用 PowerShell 创建 Windows Server VM
 description: 在 Azure Stack Hub 中使用 PowerShell 创建 Windows Server VM。
 author: WenJason
 ms.topic: quickstart
-origin.date: 11/22/2020
-ms.date: 12/07/2020
+origin.date: 02/18/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: kivenkat
-ms.lastreviewed: 11/22/2020
+ms.lastreviewed: 02/18/2021
 ms.custom: conteperfq4
-ms.openlocfilehash: 3bf4701b4ccfb9e0d6b79f52097ef1dd2aa00dcf
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.openlocfilehash: c72d707da8c6cbe8789a953500f7f681d9d7ebbc
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507457"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765958"
 ---
 # <a name="quickstart-create-a-windows-server-vm-by-using-powershell-in-azure-stack-hub"></a>快速入门：在 Azure Stack Hub 中使用 PowerShell 创建 Windows Server VM
 
@@ -314,7 +314,7 @@ $VirtualMachine = Set-AzVMSourceImage `
 $VirtualMachine = Set-AzVMOSDisk `
   -VM $VirtualMachine `
   -CreateOption FromImage | `
-  Set-AzVMBootDiagnostics -ResourceGroupName $ResourceGroupName `
+  Set-AzVMBootDiagnostic -ResourceGroupName $ResourceGroupName `
   -StorageAccountName $StorageAccountName -Enable |`
   Add-AzVMNetworkInterface -Id $nic.Id
 

@@ -2,23 +2,24 @@
 title: 快速入门：使用专用 SQL 池大容量加载数据
 description: 使用 Synapse Studio 将数据大容量加载到 Azure Synapse Analytics 中的专用 SQL 池中。
 services: synapse-analytics
-author: kevinvngo
+author: WenJason
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: quickstart
-ms.date: 12/11/2020
-ms.author: kevin
+origin.date: 12/11/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6af222916f8c3c32d2d5aa2b9c4deed01c45715e
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: a01e4202f517c0607a52f5daf23686e348f87873
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207417"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766852"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-studio"></a>快速入门：使用 Synapse Studio 进行大容量加载
 
-使用 Synapse Studio 中的“大容量加载”向导可轻松加载数据。 Synapse Studio 是 Azure Synapse Analytics 的一项功能。 “大容量加载”向导将引导你使用 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)创建 T-SQL 脚本以将数据大容量加载到专用 SQL 池中。 
+使用 Synapse Studio 中的“大容量加载”向导可轻松加载数据。 Synapse Studio 是 Azure Synapse Analytics 的一项功能。 “大容量加载”向导将引导你使用 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)创建 T-SQL 脚本以将数据大容量加载到专用 SQL 池中。 
 
 ## <a name="entry-points-to-the-bulk-load-wizard"></a>“大容量加载”向导的入口点
 
@@ -30,7 +31,7 @@ ms.locfileid: "102207417"
 
 - 此向导会生成一个COPY 语句，它使用 Azure Active Directory (Azure AD) 直通方式进行身份验证。 [Azure AD 用户必须](./sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples.md#d-azure-active-directory-authentication)至少具有 Azure Data Lake Storage Gen2 帐户的存储 Blob 数据参与者 Azure 角色才能访问工作区。 
 
-- 若要创建一个新表来将数据加载到其中，必须具有 [COPY 语句的使用权限](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#permissions)和“创建表”权限。
+- 若要创建一个新表来将数据加载到其中，必须具有 [COPY 语句的使用权限](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#permissions)和“创建表”权限。
 
 - 与 Data Lake Storage Gen2 帐户关联的链接服务必须能够访问要加载的文件或文件夹。 例如，如果链接服务的身份验证机制为“托管标识”，则工作区托管标识必须至少对存储帐户拥有存储 Blob 数据读取者权限。
 
@@ -62,5 +63,5 @@ ms.locfileid: "102207417"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 COPY 功能的详细信息，请查看 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)一文。
+- 有关 COPY 功能的详细信息，请查看 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)一文。
 - 有关使用提取、转换和加载 (ETL) 过程的信息，请查看[数据加载概述](./sql-data-warehouse/design-elt-data-loading.md#what-is-elt)一文。

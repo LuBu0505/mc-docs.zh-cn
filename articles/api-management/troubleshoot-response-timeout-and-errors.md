@@ -3,15 +3,15 @@ title: 排查 API 管理的客户端响应超时和错误问题
 description: 排查 API 管理中的间歇性连接错误和相关延迟问题
 author: Johnnytechn
 ms.topic: troubleshooting
-ms.date: 01/18/2021
+ms.date: 03/17/2021
 ms.author: v-johya
 ms.service: api-management
-ms.openlocfilehash: 241251dc37892a1a1e082e26d75146db9a8f4c4c
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: 59c350d62aad8b1a2655fe55c511a5bc21feda43
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751399"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766788"
 ---
 # <a name="troubleshooting-client-response-timeouts-and-errors-with-api-management"></a>排查 API 管理的客户端响应超时和错误问题
 
@@ -24,7 +24,7 @@ ms.locfileid: "98751399"
 * 间歇性 HTTP 500 错误
 * 超时错误消息
 
-这些症状在 [Azure Monitor 资源日志](../azure-monitor/platform/resource-logs.md)中作为 `BackendConnectionFailure` 的实例列出。
+这些症状在 [Azure Monitor 资源日志](../azure-monitor/essentials/resource-logs.md)中作为 `BackendConnectionFailure` 的实例列出。
 
 ## <a name="cause"></a>原因
 

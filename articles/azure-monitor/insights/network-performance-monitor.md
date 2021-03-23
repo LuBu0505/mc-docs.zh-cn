@@ -5,14 +5,14 @@ ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/22/2021
+ms.date: 03/18/2021
 origin.date: 02/20/2018
-ms.openlocfilehash: e1d5065bd0aaeee1d475e875438dc0769ddd696e
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 8d8f0f64603b0ff02ac3332d169a5449a95cdc15
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197628"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766046"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -67,7 +67,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 对于 Linux 计算机，需要手动更改要使用的 portNumbers。 
 * 导航到路径：/var/opt/microsoft/omsagent/npm_state。 
 * 打开文件：npmdregistry
-* 更改端口号 ```�PortNumber:<port of your choice>�``` 的值
+* 更改端口号 ```"PortNumber:<port of your choice>"``` 的值
 
  请注意，在工作区使用的所有代理中，所用的端口号都应该相同。 
 

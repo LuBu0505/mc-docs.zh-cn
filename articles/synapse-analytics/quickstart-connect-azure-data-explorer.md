@@ -2,19 +2,20 @@
 title: 快速入门：将 Azure 数据资源管理器连接到 Azure Synapse Analytics 工作区
 description: 使用适用于 Azure Synapse Analytics 的 Apache Spark 将 Azure 数据资源管理器群集连接到 Azure Synapse Analytics 工作区。
 services: synapse-analytics
-author: manojraheja
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: workspace
-ms.date: 10/07/2020
-ms.author: maraheja
+origin.date: 10/07/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 459dda8acf7c688acbfa573d0af345cc58d17e19
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: d69b08d3eb214c8365c312dd0db9a711fdd543f0
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207278"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766468"
 ---
 # <a name="connect-to-azure-data-explorer-using-apache-spark-for-azure-synapse-analytics"></a>使用适用于 Azure Synapse Analytics 的 Apache Spark 连接到 Azure 数据资源管理器
 
@@ -22,11 +23,11 @@ ms.locfileid: "102207278"
 
 ## <a name="prerequisites"></a>先决条件
 
-* [创建 Azure 数据资源管理器群集和数据库](/azure/data-explorer/create-cluster-database-portal)。
+* [创建 Azure 数据资源管理器群集和数据库](/data-explorer/create-cluster-database-portal)。
 * 具有现有的 Azure Synapse Analytics 工作区，或按照[快速入门：创建 Azure Synapse 工作区](./quickstart-create-workspace.md)中的步骤创建新的工作区。
 * 具有现有的 Apache Spark 池，或按照[快速入门：使用 Azure 门户创建 Apache Spark 池](./quickstart-create-apache-spark-pool-portal.md)。
-* [预配 Azure AD 应用程序以创建 Azure Active Directory (Azure AD) 应用](/azure/data-explorer/kusto/management/access-control/how-to-provision-aad-app)中的步骤创建一个新池。
-* 按照[管理 Azure 数据资源管理器数据库权限](/azure/data-explorer/manage-database-permissions)中的步骤授予 Azure AD 应用访问数据库的权限。
+* 预配 Azure AD 应用程序以创建 Azure Active Directory (Azure AD) 应用中的步骤创建一个新池。
+* 按照[管理 Azure 数据资源管理器数据库权限](/data-explorer/manage-database-permissions)中的步骤授予 Azure AD 应用访问数据库的权限。
 
 ## <a name="go-to-synapse-studio"></a>转到 Synapse Studio
 

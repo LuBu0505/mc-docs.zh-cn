@@ -7,15 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
-origin.date: 09/29/2020
-ms.date: 01/14/2021
-ms.author: v-tawe
-ms.openlocfilehash: 41bb088dc78c22b06e3f82f895431144cb43a9a4
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: a642c1014974c31f2312e57d97000ed99f8f7eef
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059939"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766584"
 ---
 # <a name="common-error-codes-for-azure-key-vault"></a>Azure Key Vault 的常见错误代码
 

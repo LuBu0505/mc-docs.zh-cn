@@ -5,15 +5,15 @@ author: WenJason
 ms.service: storage
 ms.topic: troubleshooting
 origin.date: 11/16/2020
-ms.date: 03/08/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: e40cbe63e6bd962264dba35d1747eb50e69c477a
-ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
+ms.openlocfilehash: 81cec16fe2fbd2c0f45172ffb90c85e6fd59d19b
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196245"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766864"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>排查 Azure 文件共享性能问题
 
@@ -51,7 +51,7 @@ ms.locfileid: "102196245"
     - ClientShareIngressThrottlingError
     - ClientShareIopsThrottlingError
 
-    若要详细了解每个响应类型，请参阅[指标维度](/storage/files/storage-files-monitoring-reference#metrics-dimensions)。
+    若要详细了解每个响应类型，请参阅[指标维度](./storage-files-monitoring-reference.md#metrics-dimensions)。
 
     ![高级文件共享的指标选项的屏幕截图，其中显示了“响应类型”属性筛选器。](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
@@ -213,13 +213,12 @@ CentOS Linux 或 RHEL 不支持大于 1 的 I/O 深度。
    > [!NOTE]
    > 如果“维度值”下拉列表中未列出响应类型，这意味着资源未被限制。 若要添加维度值，请在“维度值”下拉列表旁边选择“添加自定义值”，输入响应类型类型（例如 **SuccessWithThrottling**），选择“确定”，然后重复上述步骤，为你的文件共享添加所有适用的响应类型。
 
-8. 单击“维度名称”下拉列表并选择“文件共享”。
-9. 单击“维度值”下拉列表，并选择要对其发出警报的文件共享。
-
+8. 对于“高级文件共享”，请单击“维度名称”下拉列表，然后选择“文件共享”。 对于“标准文件共享”，请跳到“步骤 #10”。
 
    > [!NOTE]
-   > 如果文件共享是标准文件共享，请选择“所有当前值和将来值”。 “维度值”下拉列表不会列出文件共享，因为每共享指标不可用于标准文件共享。 如果存储帐户中的任何文件共享受到限制，则会触发标准文件共享的限制警报，并且警报不会识别哪个文件共享受到限制。 因为每共享指标不可用于标准文件共享，所以建议为每个存储帐户使用一个文件共享。
+   > 如果文件共享是标准文件共享，则“File Share”维度不会列出文件共享，因为每个共享指标对标准文件共享不可用。 如果存储帐户中的任何文件共享受到限制，则会触发标准文件共享的限制警报，并且警报不会识别哪个文件共享受到限制。 因为每共享指标不可用于标准文件共享，所以建议为每个存储帐户使用一个文件共享。
 
+9. 单击“维度值”下拉列表，并选择要对其发出警报的文件共享。
 10. 定义“警报参数”（阈值、运算符、聚合粒度和评估频率），然后单击“完成”。
 
     > [!TIP]

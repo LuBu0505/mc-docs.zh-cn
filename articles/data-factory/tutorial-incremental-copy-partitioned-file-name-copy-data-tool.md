@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 02/18/2021
 ms.date: 03/15/2021
-ms.openlocfilehash: 40cb31a03807e5eb23e3c3554ee94a34a864a0f4
-ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
+ms.openlocfilehash: 12c915685815020b36ff442a6eff5aaffe6173a0
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102589906"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766911"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>使用复制数据工具仅根据时间分区文件名以增量方式复制新文件
 
@@ -71,11 +71,10 @@ ms.locfileid: "102589906"
          
     若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。
 
-5. 在“版本”下选择“V2”作为版本。 
-6. 在“位置”下选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他位置和区域。
-7. 选择“创建”。
-8. 创建完以后，会显示“数据工厂”  主页。
-9. 若要在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)，请选择“创作和监视”磁贴。 
+5. 在“位置”下选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他位置和区域。
+6. 选择“创建”。
+7. 创建完以后，会显示“数据工厂”  主页。
+8. 若要在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)，请选择“创作和监视”磁贴。 
 
     ![数据工厂主页](./media/doc-common-process/data-factory-home-page.png)
 

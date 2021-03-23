@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 01/11/2018
 ms.date: 11/02/2020
-ms.openlocfilehash: 084f8c90f6ef04bb16b57dc042193bc07aeae3af
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: 51914c8135ca61fe162cea926a7b0144bce116e0
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432409"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766507"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>使用 Azure 门户对 Azure 数据工厂管道中的活动进行分支和链接
 
@@ -149,7 +149,6 @@ https://prodxxx.chinaeast.logic.azure.cn:443/workflows/000000/triggers/manual/pa
       - 选择“新建”，并输入资源组的名称。   
          
         若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
-4. 选择“V2”作为“版本”。
 5. 选择数据工厂的 **位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 6. 选择“固定到仪表板”。     
 7. 单击“创建”。      
@@ -199,7 +198,7 @@ https://prodxxx.chinaeast.logic.azure.cn:443/workflows/000000/triggers/manual/pa
 
     1. 输入 **AzureStorageLinkedService** 作为 **名称**。
     2. 选择自己 Azure 存储帐户作为 **存储帐户名称**。
-    3. 单击“ **保存**”。
+    3. 单击“保存”  。
 
    ![新建 Azure 存储链接服务](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. 输入 `@pipeline().parameters.sourceBlobContainer` 作为文件夹，输入 `emp.txt` 作为文件名。 使用 sourceBlobContainer 管道参数设置数据集的文件夹路径。
@@ -315,7 +314,7 @@ https://prodxxx.chinaeast.logic.azure.cn:443/workflows/000000/triggers/manual/pa
     1. 为 **sourceBlobContainer** 参数输入 **adftutorial/dummy/input**。 请确保 adftutorial 容器中不存在 dummy 文件夹。
     2. 为 **sinkBlobContainer** 参数输入 **adftutorial/dummy/output**。
     3. 输入 **接收方** 的 **电子邮件地址**。
-    4. 单击“完成”。
+    4. 单击“完成”  。
 
 ## <a name="monitor-the-failed-pipeline-run"></a>监视失败的管道运行
 

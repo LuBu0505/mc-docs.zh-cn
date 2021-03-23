@@ -3,15 +3,15 @@ author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 04/13/2020
-ms.date: 11/20/2020
-ms.author: v-tawe
+ms.date: 03/08/2021
+ms.author: v-johya
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 58d105d3a254b4cd665ac1b5a8ff29022959c338
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 54400d16f01779aa076e72f922cef8c89e23173c
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301154"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803294"
 ---
 语音服务的核心功能之一是能够识别人类语音并将其翻译成其他语言。 本快速入门介绍如何在应用和产品中使用语音 SDK 来执行高质量的语音翻译。 此快速入门介绍以下主题：
 
@@ -29,7 +29,7 @@ ms.locfileid: "96301154"
 
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
-需要先安装语音 SDK，然后才能执行任何操作。 根据你的平台，按照“关于语音 SDK”一文的<a href="https://docs.azure.cn/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">获取语音 SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a> 部分中的说明进行操作。
+你需要先安装语音 SDK，然后才能执行任何操作。 根据平台的不同，按照“关于语音 SDK”一文中<a href="https://docs.azure.cn/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">获取语音 SDK </a> 部分的说明进行操作。
 
 ## <a name="import-dependencies"></a>导入依赖项
 
@@ -77,7 +77,7 @@ public class Program
 * 使用主机：传入主机地址。 密钥或授权令牌是可选的。
 * 使用授权令牌：传入授权令牌和关联的区域。
 
-让我们看看如何使用密钥和区域创建 [`SpeechTranslationConfig`][config]。 请查看[区域支持](https://docs.azure.cn/cognitive-services/speech-service/regions#speech-sdk)页，找到你的区域标识符。
+让我们看看如何使用密钥和区域创建 [`SpeechTranslationConfig`][config]。 按照[免费试用语音服务](../../../overview.md#try-the-speech-service-for-free)中的步骤获取这些凭据。
 
 ```csharp
 public class Program
@@ -109,7 +109,7 @@ static async Task TranslateSpeechAsync()
         SpeechTranslationConfig.FromSubscription(SPEECH__SUBSCRIPTION__KEY, SPEECH__SERVICE__REGION);
 
     // Source (input) language
-    translationConfig.SpeechRecognitionLanguage = "ko-KR";
+    translationConfig.SpeechRecognitionLanguage = "it-IT";
 }
 ```
 
@@ -125,7 +125,7 @@ static async Task TranslateSpeechAsync()
     var translationConfig =
         SpeechTranslationConfig.FromSubscription(SPEECH__SUBSCRIPTION__KEY, SPEECH__SERVICE__REGION);
 
-    translationConfig.SpeechRecognitionLanguage = "ko-KR";
+    translationConfig.SpeechRecognitionLanguage = "it-IT";
     
     // Translate to languages. See, https://aka.ms/speech/sttt-languages
     translationConfig.AddTargetLanguage("fr");
@@ -148,7 +148,7 @@ static async Task TranslateSpeechAsync()
         SpeechTranslationConfig.FromSubscription(SPEECH__SUBSCRIPTION__KEY, SPEECH__SERVICE__REGION);
 
     var fromLanguage = "en-US";
-    var toLanguages = new List<string> { "ko", "fr", "de" };
+    var toLanguages = new List<string> { "it", "fr", "de" };
     translationConfig.SpeechRecognitionLanguage = fromLanguage;
     toLanguages.ForEach(translationConfig.AddTargetLanguage);
 
@@ -170,7 +170,7 @@ static async Task TranslateSpeechAsync()
         SpeechTranslationConfig.FromSubscription(SPEECH__SUBSCRIPTION__KEY, SPEECH__SERVICE__REGION);
     
     var fromLanguage = "en-US";
-    var toLanguages = new List<string> { "ko", "fr", "de" };
+    var toLanguages = new List<string> { "it", "fr", "de" };
     translationConfig.SpeechRecognitionLanguage = fromLanguage;
     toLanguages.ForEach(translationConfig.AddTargetLanguage);
 
@@ -188,7 +188,7 @@ static async Task TranslateSpeechAsync()
         SpeechTranslationConfig.FromSubscription(SPEECH__SUBSCRIPTION__KEY, SPEECH__SERVICE__REGION);
     
     var fromLanguage = "en-US";
-    var toLanguages = new List<string> { "ko", "fr", "de" };
+    var toLanguages = new List<string> { "it", "fr", "de" };
     translationConfig.SpeechRecognitionLanguage = fromLanguage;
     toLanguages.ForEach(translationConfig.AddTargetLanguage);
 
@@ -208,7 +208,7 @@ static async Task TranslateSpeechAsync()
         SpeechTranslationConfig.FromSubscription(SPEECH__SUBSCRIPTION__KEY, SPEECH__SERVICE__REGION);
     
     var fromLanguage = "en-US";
-    var toLanguages = new List<string> { "ko", "fr", "de" };
+    var toLanguages = new List<string> { "it", "fr", "de" };
     translationConfig.SpeechRecognitionLanguage = fromLanguage;
     toLanguages.ForEach(translationConfig.AddTargetLanguage);
 
@@ -229,7 +229,7 @@ static async Task TranslateSpeechAsync()
 }
 ```
 
-有关语音转文本的详细信息，请参阅[语音识别基础知识](../../../speech-to-text-basics.md)。
+有关语音转文本的详细信息，请参阅[语音识别基础知识](../../../get-started-speech-to-text.md)。
 
 ## <a name="synthesize-translations"></a>合成翻译
 
@@ -253,7 +253,7 @@ static async Task TranslateSpeechAsync()
     translationConfig.SpeechRecognitionLanguage = fromLanguage;
     translationConfig.AddTargetLanguage(toLanguage);
 
-    // See: https://docs.azure.cn/cognitive-services/speech-service/regions#standard-and-neural-voices
+    // See: https://aka.ms/speech/sdkregion#standard-and-neural-voices
     translationConfig.VoiceName = "de-DE-Hedda";
 
     using var recognizer = new TranslationRecognizer(translationConfig);
@@ -292,7 +292,7 @@ static async Task TranslateSpeechAsync()
         SpeechTranslationConfig.FromSubscription(SPEECH__SERVICE__KEY, SPEECH__SERVICE__REGION);
 
     var fromLanguage = "en-US";
-    var toLanguages = new List<string> { "de", "en", "zh-Hans" };
+    var toLanguages = new List<string> { "de", "en", "it", "pt", "zh-Hans" };
     translationConfig.SpeechRecognitionLanguage = fromLanguage;
     toLanguages.ForEach(translationConfig.AddTargetLanguage);
 
@@ -304,12 +304,14 @@ static async Task TranslateSpeechAsync()
     var result = await recognizer.RecognizeOnceAsync();
     if (result.Reason == ResultReason.TranslatedSpeech)
     {
-        // See: https://docs.azure.cn/cognitive-services/speech-service/regions#standard-and-neural-voices
+        // See: https://aka.ms/speech/sdkregion#standard-and-neural-voices
         var languageToVoiceMap = new Dictionary<string, string>
         {
             ["de"] = "de-DE-KatjaNeural",
             ["en"] = "en-US-AriaNeural",
-            ["zh-Hans"] = "zh-CN-XiaoxiaoNeural"
+            ["it"] = "it-IT-ElsaNeural",
+            ["pt"] = "pt-BR-FranciscaNeural",
+            ["zh-Hans"] = "zh-cn-XiaoxiaoNeural"
         };
 
         Console.WriteLine($"Recognized: \"{result.Text}\"");
@@ -342,3 +344,4 @@ static async Task TranslateSpeechAsync()
 [translations]: https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.translation.translationrecognitionresult.translations
 [voicename]: https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechtranslationconfig.voicename
 [speechsynthesisvoicename]: https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.speechsynthesisvoicename
+

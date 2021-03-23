@@ -6,15 +6,15 @@ author: Johnnytechn
 manager: rkarlin
 ms.service: security-center
 ms.topic: tutorial
-ms.date: 02/25/2021
+ms.date: 03/18/2021
 ms.author: v-johya
 origin.date: 09/10/2019
-ms.openlocfilehash: 6ad28c11965ded6fcfba1c79f2a68519f56b80b3
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: c0a572d2279f054db667822e45c0052bd2a2ada8
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197276"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765243"
 ---
 # <a name="planning-and-operations-guide"></a>规划和操作指南
 本指南适用于计划使用 Azure 安全中心的信息技术 (IT) 专业人员、IT 架构师、信息安全分析师和云管理员。
@@ -233,7 +233,6 @@ Azure 安全中心使用 Log Analytics 代理（Azure Monitor 服务同样使用
 本文档介绍如何进行规划，为采用安全中心做准备。 若要了解有关安全中心的详细信息，请参阅以下文章：
 
 * [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md)
-* [Security health monitoring in Azure Security Center](security-center-monitoring.md) （Azure 安全中心的安全运行状况监视）- 了解如何监视 Azure 资源的运行状况。
 * [通过 Azure 安全中心监视合作伙伴解决方案](./security-center-partner-integration.md) - 了解如何监视合作伙伴解决方案的运行状态。
 * [Azure Security Center FAQ](faq-general.md) （Azure 安全中心常见问题）- 查找有关如何使用服务的常见问题。
 * [Azure 安全性博客](https://docs.microsoft.com/archive/blogs/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。

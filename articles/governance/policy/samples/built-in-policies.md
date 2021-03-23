@@ -1,18 +1,18 @@
 ---
 title: 内置策略定义列表
 description: 列出 Azure Policy 的内置策略定义。 类别包括“标记”、“合规性”、“Key Vault”、“Kubernetes”、“来宾配置”等。
-origin.date: 02/09/2021
+origin.date: 03/05/2021
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.author: v-yeche
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 192478a49236c90e0e0142e639dde1375f8dcc42
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.openlocfilehash: 9150e00f534f61336a48d7da52457236c53c24d7
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196742"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766768"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy 内置策略定义
 
@@ -109,10 +109,8 @@ ms.locfileid: "102196742"
 
 <!--NOT AVAILABLE ON 02/08/2021 ## Guest Configuration-->
 <!--NOT AVAILABLE ON [azure-policy-reference-policies-guest-configuration](../../../../includes/policy/reference/bycat/policies-guest-configuration.md)-->
-
-## <a name="hdinsight"></a>HDInsight
-
-[!INCLUDE [azure-policy-reference-policies-hdinsight](../../../../includes/policy/reference/bycat/policies-hdinsight.md)]
+<!--NOT AVAILABLE ON ## HDInsight-->
+<!--NOT AVAILABLE ON [azure-policy-reference-policies-hdinsight](../../../../includes/policy/reference/bycat/policies-hdinsight.md)-->
 
 <!--NOT AVAILABLE ON 02/08/2021 ## Internet of Things-->
 <!--NOT AVAILABLE ON [azure-policy-reference-policies-internet-of-things](../../../../includes/policy/reference/bycat/policies-internet-of-things.md)-->

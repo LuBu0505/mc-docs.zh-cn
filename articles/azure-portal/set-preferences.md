@@ -2,14 +2,14 @@
 title: 管理 Azure 门户设置和首选项
 description: 你可以根据自己的偏好更改 Azure 门户的默认设置。 设置包括非活动会话超时、默认视图、菜单模式、对比度、主题、通知，以及语言和区域格式
 keywords: 设置, 超时, 语言, 区域
-ms.date: 02/20/2021
+ms.date: 03/15/2021
 ms.topic: how-to
-ms.openlocfilehash: 2a7a3fbc4131513148ee835b520b965efc907c34
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.openlocfilehash: b33bd053f0463c43efefb113a3bc3e17c2a4ea2a
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196759"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766045"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>管理 Azure 门户设置和首选项
 
@@ -71,7 +71,7 @@ ms.locfileid: "102196759"
 
 ![显示 Azure 门户全局页头的屏幕截图，其中显示突出了“通知”](./media/set-preferences/read-notifications.png)
 
-若要阅读以前会话中的通知，请查看活动日志中的事件。 有关详细信息，请参阅[查看活动日志](../azure-monitor/essentials/activity-log.md#view-the-activity-log)。 
+若要阅读以前会话中的通知，请查看活动日志中的事件。 有关详细信息，请参阅[查看活动日志](../azure-monitor/platform/activity-log.md#view-the-activity-log)。 
 
 ## <a name="change-the-inactivity-timeout-setting"></a>更改非活动状态超时设置
 

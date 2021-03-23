@@ -2,19 +2,20 @@
 title: 教程：在 Azure Synapse Studio 中使用无服务器 SQL 池分析 Azure 开放数据集
 description: 本教程介绍如何在 Azure Synapse Studio 中使用无服务器 SQL 池来组合不同的 Azure 开放数据集，从而轻松执行探索数据分析，然后将结果可视化。
 services: synapse-analytics
-author: azaricstefan
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: sql
-ms.date: 11/20/2020
-ms.author: stefanazaric
+origin.date: 11/20/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: a8ac4fdc0a9afaea177c46d731b6399fade10a47
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 2bf3c497fd71be450cba88663d9b91fa0548f849
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207693"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766320"
 ---
 # <a name="tutorial-explore-and-analyze-data-lakes-with-serverless-sql-pool"></a>教程：利用无服务器 SQL 池探索和分析数据湖
 
@@ -31,7 +32,7 @@ OPENROWSET(BULK...) 函数可用于访问 Azure 存储中的文件。 [OPENROWSE
 ```sql
 SELECT TOP 100 * FROM
     OPENROWSET(
-        BULK 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
+        BULK 'https://azureopendatastorage.blob.core.chinacloudapi.cn/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
         FORMAT='PARQUET'
     ) AS [nyc]
 ```
@@ -51,7 +52,7 @@ SELECT TOP 100 * FROM
 ```sql
 SELECT TOP 100 * FROM
     OPENROWSET(
-        BULK 'https://azureopendatastorage.blob.core.windows.net/holidaydatacontainer/Processed/*.parquet',
+        BULK 'https://azureopendatastorage.blob.core.chinacloudapi.cn/holidaydatacontainer/Processed/*.parquet',
         FORMAT='PARQUET'
     ) AS [holidays]
 ```
@@ -63,7 +64,7 @@ SELECT
     TOP 100 *
 FROM  
     OPENROWSET(
-        BULK 'https://azureopendatastorage.blob.core.windows.net/isdweatherdatacontainer/ISDWeather/year=*/month=*/*.parquet',
+        BULK 'https://azureopendatastorage.blob.core.chinacloudapi.cn/isdweatherdatacontainer/ISDWeather/year=*/month=*/*.parquet',
         FORMAT='PARQUET'
     ) AS [weather]
 ```
@@ -83,7 +84,7 @@ SELECT
     COUNT(*) AS rides_per_year
 FROM
     OPENROWSET(
-        BULK 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
+        BULK 'https://azureopendatastorage.blob.core.chinacloudapi.cn/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
         FORMAT='PARQUET'
     ) AS [nyc]
 WHERE nyc.filepath(1) >= '2009' AND nyc.filepath(1) <= '2019'
@@ -112,7 +113,7 @@ SELECT
     COUNT(*) as rides_per_day
 FROM
     OPENROWSET(
-        BULK 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
+        BULK 'https://azureopendatastorage.blob.core.chinacloudapi.cn/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
         FORMAT='PARQUET'
     ) AS [nyc]
 WHERE nyc.filepath(1) = '2016'
@@ -140,7 +141,7 @@ WITH taxi_rides AS
         COUNT(*) as rides_per_day
     FROM  
         OPENROWSET(
-            BULK 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
+            BULK 'https://azureopendatastorage.blob.core.chinacloudapi.cn/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
             FORMAT='PARQUET'
         ) AS [nyc]
     WHERE nyc.filepath(1) = '2016'
@@ -153,7 +154,7 @@ public_holidays AS
         date
     FROM
         OPENROWSET(
-            BULK 'https://azureopendatastorage.blob.core.windows.net/holidaydatacontainer/Processed/*.parquet',
+            BULK 'https://azureopendatastorage.blob.core.chinacloudapi.cn/holidaydatacontainer/Processed/*.parquet',
             FORMAT='PARQUET'
         ) AS [holidays]
     WHERE countryorregion = 'United States' AND YEAR(date) = 2016
@@ -192,7 +193,7 @@ SELECT
     MAX(snowdepth) AS max_snowdepth
 FROM
     OPENROWSET(
-        BULK 'https://azureopendatastorage.blob.core.windows.net/isdweatherdatacontainer/ISDWeather/year=*/month=*/*.parquet',
+        BULK 'https://azureopendatastorage.blob.core.chinacloudapi.cn/isdweatherdatacontainer/ISDWeather/year=*/month=*/*.parquet',
         FORMAT='PARQUET'
     ) AS [weather]
 WHERE countryorregion = 'US' AND CAST([datetime] AS DATE) = '2016-01-23' AND stationname = 'JOHN F KENNEDY INTERNATIONAL AIRPORT'

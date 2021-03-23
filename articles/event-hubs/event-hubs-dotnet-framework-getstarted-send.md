@@ -2,16 +2,14 @@
 title: Azure 事件中心 - 使用 .NET Framework 发送/接收事件
 description: 快速入门：本文演练如何创建可将事件发送到 Azure 事件中心的 .NET Framework 应用程序。
 ms.topic: quickstart
-origin.date: 06/23/2020
-ms.date: 11/05/2020
-ms.author: v-tawe
+ms.date: 03/11/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b2569432d342c2a82c3a40f35bc6472ff66f7560
-ms.sourcegitcommit: b217474b15512b0f40b2eaae66bd3c521383d321
+ms.openlocfilehash: 771f4adfe2d5f8c02759d7565c9e9b711b869d4d
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93375671"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766034"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>快速入门：使用 .NET Framework 向/从 Azure 事件中心发送/接收事件
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
@@ -22,14 +20,14 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 若要完成本教程，需要具备以下先决条件：
 
 - [Microsoft Visual Studio 2019](https://visualstudio.com)。
-- **创建事件中心命名空间和事件中心** 。 第一步是使用 [Azure 门户](https://portal.azure.cn)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照以下文章中的说明获取 **事件中心命名空间的连接字符串** ： [获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 本教程后面的步骤将使用此连接字符串。
+- **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.cn)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照以下文章中的说明获取 **事件中心命名空间的连接字符串**：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 本教程后面的步骤将使用此连接字符串。
 
 ## <a name="send-events"></a>发送事件 
 本部分介绍如何创建一个向事件中心发送事件的 .NET Framework 控制台应用程序。 
 
 ### <a name="create-a-console-application"></a>创建控制台应用程序
 
-在 Visual Studio 中，使用 **控制台应用程序** 项目模板创建一个新的 Visual C# 桌面应用项目。 将该项目命名为 **Sender** 。
+在 Visual Studio 中，使用 **控制台应用程序** 项目模板创建一个新的 Visual C# 桌面应用项目。 将该项目命名为 **Sender**。
    
 ![显示“新建项目”窗口的屏幕截图，其中已选择“控制台应用(.NET Framework)”，并且突出显示了项目名称“Sender”和“确定”按钮。](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp1.png)
 
@@ -100,7 +98,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 ### <a name="create-a-console-application"></a>创建控制台应用程序
 
-在 Visual Studio 中，使用 **控制台应用程序** 项目模板创建一个新的 Visual C# 桌面应用项目。 将该项目命名为 **Receiver** 。
+在 Visual Studio 中，使用 **控制台应用程序** 项目模板创建一个新的 Visual C# 桌面应用项目。 将该项目命名为 **Receiver**。
    
 ![创建控制台应用程序](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp1.png)
 
@@ -115,7 +113,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 ### <a name="implement-the-ieventprocessor-interface"></a>实现 IEventProcessor 接口
 
-1. 右键单击 **Receiver** 项目，单击“添加”，并单击“类”   。 将新类命名为 **SimpleEventProcessor** ，然后单击“添加”以创建该类  。
+1. 右键单击 **Receiver** 项目，单击“添加”，并单击“类”   。 将新类命名为 **SimpleEventProcessor**，然后单击“添加”以创建该类  。
    
     ![添加 SimpleEventProcessor 类](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp2.png)
 2. 在 SimpleEventProcessor.cs 文件的顶部添加以下语句：

@@ -8,15 +8,14 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
-ms.workload: identity
-ms.date: 02/20/2021
+ms.date: 03/12/2021
 ms.author: v-junlch
-ms.openlocfilehash: 6aa37c46a77c151e02740cb1ca7ea14b261d6563
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 5c1f46b446fed0b0227a7ea7139c2d7308c402f8
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101751741"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765480"
 ---
 # <a name="tutorial-sign-in-users-in-a-nodejs--express-web-app"></a>Tutorial:在 Node.js 和 Express web 应用中让用户登录
 
@@ -65,9 +64,9 @@ ms.locfileid: "101751741"
 ```JavaScript
     const express = require("express");
     const msal = require('@azure/msal-node');
-    
+
     const SERVER_PORT = process.env.PORT || 3000;
-    
+
     // Create Express App and Routes
     const app = express();
 
@@ -95,7 +94,7 @@ ExpressWebApp/
 在之前创建的 index.js 文件中，添加以下代码：
 
 ```JavaScript
-    // Before running the sample, you will need to replace the values in the config, 
+    // Before running the sample, you will need to replace the values in the config,
     // including the clientSecret
     const config = {
         auth: {
@@ -135,26 +134,26 @@ ExpressWebApp/
 ```JavaScript
     // Create msal application object
     const cca = new msal.ConfidentialClientApplication(config);
-    
+
     app.get('/', (req, res) => {
         const authCodeUrlParameters = {
             scopes: ["https://microsoftgraph.chinacloudapi.cn/user.read"],
             redirectUri: "http://localhost:3000/redirect",
         };
-    
+
         // get url to sign user in and consent to scopes needed for application
         cca.getAuthCodeUrl(authCodeUrlParameters).then((response) => {
             res.redirect(response);
         }).catch((error) => console.log(JSON.stringify(error)));
     });
-    
+
     app.get('/redirect', (req, res) => {
         const tokenRequest = {
             code: req.query.code,
             scopes: ["https://microsoftgraph.chinacloudapi.cn/user.read"],
             redirectUri: "http://localhost:3000/redirect",
         };
-    
+
         cca.acquireTokenByCode(tokenRequest).then((response) => {
             console.log("\nResponse: \n:", response);
             res.sendStatus(200);
@@ -185,7 +184,7 @@ ExpressWebApp/
 
 ## <a name="how-the-application-works"></a>应用程序的工作原理
 
-在本教程中，通过将 MSAL Node [ConfidentialClientApplication](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/initialize-confidential-client-application.md) 对象的配置对象传递给它，将其初始化 (MsalConfig)，其中包含 Azure 门户上 Azure AD 应用注册获得的参数。 你创建的 Web 应用使用 [OAuth 2.0 授权代码授予流](/active-directory/develop/v2-oauth2-auth-code-flow)来登录用户并获取 ID 和访问令牌。
+在本教程中，通过将 MSAL Node [ConfidentialClientApplication](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/initialize-confidential-client-application.md) 对象的配置对象传递给它，将其初始化 (MsalConfig)，其中包含 Azure 门户上 Azure AD 应用注册获得的参数。 你创建的 Web 应用使用 [OAuth 2.0 授权代码授予流](./v2-oauth2-auth-code-flow.md)来登录用户并获取 ID 和访问令牌。
 
 ## <a name="next-steps"></a>后续步骤
 

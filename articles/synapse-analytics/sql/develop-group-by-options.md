@@ -2,21 +2,22 @@
 title: 在 Synapse SQL 中使用 GROUP BY 选项
 description: Synapse SQL 允许通过实现各种 GROUP BY 选项来开发解决方案。
 services: synapse-analytics
-author: filippopovic
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: fipopovi
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 2cad0ec5812f6cd5286fdd70f7a8e30d96263557
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 569bdd48b009d820ff0a49d65315304358b7c1a7
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207498"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766196"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>Synapse SQL 中的 GROUP BY 选项
 
@@ -24,7 +25,7 @@ Synapse SQL 允许通过实现各种 GROUP BY 选项来开发解决方案。
 
 ## <a name="what-group-by-does"></a>GROUP BY 的用处
 
-[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL 子句用于将数据聚合成摘要行集。
+[GROUP BY](https://docs.microsoft.com/sql/t-sql/queries/select-group-by-transact-sql?view=azure-sqldw-latest&preserve-view=true) T-SQL 子句用于将数据聚合成摘要行集。
 
 无服务器 SQL 池支持所有 GROUP BY 选项。 专用 SQL 池支持部分 GROUP BY 选项。
 
@@ -125,7 +126,7 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-下图显示了 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 的结果：
+下图显示了 [CREATE TABLE AS SELECT](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) 的结果：
 
 ![按多维数据集分组](./media/develop-group-by-options/develop-group-by-cube.png)
 

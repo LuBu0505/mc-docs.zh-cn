@@ -8,15 +8,14 @@ metadata:
   ms.service: iot-dps
   services: iot-dps
   ms.topic: landing-page
-  origin.date: 03/03/2020
-  ms.date: 12/03/2020
-  ms.author: v-tawe
-  ms.openlocfilehash: 6f2ec0ffd6d44fbe03923f811d0de863bd3b3173
-  ms.sourcegitcommit: 60e70acb6f9604aeef69d2027f7f96a1d7d5b248
+  ms.date: 03/16/2021
+  ms.author: v-chazhou
+  ms.openlocfilehash: e2f384e42f3dfc2bea9f0643dfba0ec25f3354a8
+  ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/03/2020
-  ms.locfileid: "96541122"
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104765333"
 landingContent:
 - title: 关于 Azure IoT 中心设备预配服务 (DPS)
   linkLists:
@@ -27,7 +26,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: Azure IoT 的自动预配概念
-      url: concepts-roles-operations.md
+      url: ./concepts-roles-operations.md
 - title: 入门
   linkLists:
   - linkListType: quickstart

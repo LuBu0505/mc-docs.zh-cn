@@ -2,19 +2,20 @@
 title: 快速入门：使用 Azure CLI 创建 Synapse 工作区
 description: 按照本指南中的步骤使用 Azure CLI 创建 Synapse 工作区。
 services: synapse-analytics
-author: alehall
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: workspace
-ms.date: 08/25/2020
-ms.author: alehall
+origin.date: 08/25/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: b0031db1f4baf6989d149294a069cb102bf581c7
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 2fc27913c77f6bfaac885cd4123381ca7db19886
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102206933"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765195"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure Synapse 工作区
 
@@ -27,7 +28,7 @@ Azure CLI 是 Azure 的命令行体验，用于管理 Azure 资源。 可以在�
 ## <a name="prerequisites"></a>先决条件
 
 - 下载并安装 [jq](https://stedolan.github.io/jq/download/)，它是一种灵活的轻量级命令行 JSON 处理器
-- [Azure Data Lake Storage Gen2 存储帐户](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Azure Data Lake Storage Gen2 存储帐户](../storage/common/storage-account-create.md)
 
     > [!IMPORTANT]
     > Azure Synapse 工作区需要能够读取所选 ADLS Gen2 帐户以及向其写入内容。 此外，对于作为主存储帐户链接的任何存储帐户，在创建存储帐户时必须已启用“分层命名空间”，如[创建存储帐户](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account)页面上所述。 
@@ -44,7 +45,7 @@ Azure CLI 是 Azure 的命令行体验，用于管理 Azure 资源。 可以在�
     |StorageAccountResourceGroup| 现有 ADLS Gen2 存储帐户资源组的名称。 |
     |FileShareName| 现有存储文件系统的名称。|
     |SynapseResourceGroup| 为 Azure Synapse 资源组选择新名称。 |
-    |区域| 选择其中一个 [Azure 区域](https://azure.microsoft.com/global-infrastructure/geographies/#overview)。 |
+    |区域| 选择其中一个 Azure 区域。 |
     |SynapseWorkspaceName| 为新的 Azure Synapse 工作区选择唯一名称。 |
     |SqlUser| 为新用户名选择一个值。|
     |SqlPassword| 选择安全密码。|

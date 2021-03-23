@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: include
-ms.date: 01/04/2021
+ms.date: 03/08/2021
 ms.author: v-johya
-ms.openlocfilehash: 470118b6a436827aeedef35ff2d344105ff30c9b
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 1971d279f4943a2cb60f1f2579076e456988ee6a
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024281"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803385"
 ---
 [参考文档](https://docs.microsoft.com/dotnet/api/overview/azure/ai.metricsadvisor-readme-pre) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src) | [包 (NuGet)](https://www.nuget.org/packages/Azure.AI.MetricsAdvisor) | [示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/samples/README.md)
 
@@ -23,7 +23,7 @@ ms.locfileid: "98024281"
 
 * Azure 订阅 - [创建试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core) 的当前版本。
-* 获得 Azure 订阅后，<a href="https://portal.azure.cn/#create/Microsoft.CognitiveServicesMetricsAdvisor"  title="“创建指标顾问”资源"  target="_blank">在 Azure 门户中创建“指标顾问”资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，以部署“指标顾问”实例。  
+* 获得 Azure 订阅后，<a href="https://portal.azure.cn/#create/Microsoft.CognitiveServicesMetricsAdvisor"  title="“创建指标顾问”资源"  target="_blank">在 Azure 门户中创建“指标顾问”资源 </a>，以部署“指标顾问”实例。  
 * 带有时序数据的 SQL 数据库。
    
 > [!TIP]

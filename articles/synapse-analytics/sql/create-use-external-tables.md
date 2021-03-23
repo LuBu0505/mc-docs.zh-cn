@@ -2,19 +2,20 @@
 title: 在无服务器 SQL 池中创建和使用外部表
 description: 本部分介绍如何在无服务器 SQL 池中创建和使用外部表。
 services: synapse-analytics
-author: vvasic-msft
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: vvasic
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 280ad35ba49af463b467fea9ecafdbc8390d4dc3
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 80bef19c344e7644619adc69bc388adc7c3c2277
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207234"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766835"
 ---
 # <a name="create-and-use-external-tables-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中通过无服务器 SQL 池创建和使用外部表
 
@@ -25,7 +26,7 @@ ms.locfileid: "102207234"
 ## <a name="prerequisites"></a>先决条件
 
 第一步是创建将在其中创建表的数据库。 然后通过对该数据库执行[安装脚本](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)来初始化这些对象。 此安装脚本将创建此示例中使用的以下对象：
-- DATABASE SCOPED CREDENTIAL `sqlondemand`，可以访问受 SAS 保护的 `https://sqlondemandstorage.blob.core.windows.net` Azure 存储帐户。
+- DATABASE SCOPED CREDENTIAL `sqlondemand`，可以访问受 SAS 保护的 `https://sqlondemandstorage.blob.core.chinacloudapi.cn` Azure 存储帐户。
 
     ```sql
     CREATE DATABASE SCOPED CREDENTIAL [sqlondemand]
@@ -33,16 +34,16 @@ ms.locfileid: "102207234"
     SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D'
     ```
 
-- EXTERNAL DATA SOURCE `sqlondemanddemo`，引用了使用 SAS 密钥保护的演示存储帐户；以及 EXTERNAL DATA SOURCE `YellowTaxi`，引用了位置 `https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/` 上公开可用的 Azure 存储帐户。
+- EXTERNAL DATA SOURCE `sqlondemanddemo`，引用了使用 SAS 密钥保护的演示存储帐户；以及 EXTERNAL DATA SOURCE `YellowTaxi`，引用了位置 `https://azureopendatastorage.blob.core.chinacloudapi.cn/nyctlc/yellow/` 上公开可用的 Azure 存储帐户。
 
     ```sql
     CREATE EXTERNAL DATA SOURCE SqlOnDemandDemo WITH (
-        LOCATION = 'https://sqlondemandstorage.blob.core.windows.net',
+        LOCATION = 'https://sqlondemandstorage.blob.core.chinacloudapi.cn',
         CREDENTIAL = sqlondemand
     );
     GO
     CREATE EXTERNAL DATA SOURCE YellowTaxi
-    WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/')
+    WITH ( LOCATION = 'https://azureopendatastorage.blob.core.chinacloudapi.cn/nyctlc/yellow/')
     ```
 
 - 文件格式 `QuotedCSVWithHeaderFormat` 和 `ParquetFormat`，描述 CSV 和 parquet 文件类型。

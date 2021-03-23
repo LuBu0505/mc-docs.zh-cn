@@ -2,18 +2,18 @@
 title: 与 Azure 专用链接服务集成
 description: 了解如何将 Azure Key Vault 与 Azure 专用链接服务集成
 author: ShaneBala-keyvault
-ms.author: v-tawe
-ms.date: 01/27/2021
+ms.author: v-chazhou
+ms.date: 03/10/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1c955e1d7145a77e3173043ae44626b9f3bb8b4b
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: c5766d09b168541bd2f6b548a5da716308b26248
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060134"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765781"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>将 Key Vault 与 Azure 专用链接集成
 
@@ -38,7 +38,7 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
-## <a name="establish-a-private-link-connection-to-key-vault-using-the-azure-portal"></a>使用 Azure 门户与 Key Vault 建立专用链接连接
+## <a name="establish-a-private-link-connection-to-key-vault-using-the-azure-portal"></a>使用 Azure 门户与 Key Vault 建立专用链接连接 
 
 首先，遵循[使用 Azure 门户创建虚拟网络](../../virtual-network/quick-create-portal.md)中的步骤创建虚拟网络
 
@@ -69,7 +69,7 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 
 如果已有 Key Vault，可以执行以下步骤创建专用链接连接：
 
-1. 登录到 Azure 门户。
+1. 登录到 Azure 门户。 
 1. 在搜索栏中键入“key vault”
 1. 从列表中选择要将专用终结点添加到的 Key Vault。
 1. 选择“设置”下的“网络”选项卡
@@ -79,7 +79,7 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
     ![屏幕截图显示了“网络”页上的“+ 专用终结点”按钮。](../media/private-link-service-3.png)
     ![屏幕截图显示了“创建专用终结点(预览)”页上的“基本信息”选项卡。](../media/private-link-service-4.png)
 
-可以使用此边栏选项卡选择为任何 Azure 资源创建专用终结点。 可以使用下拉菜单选择资源类型并在目录中选择资源，或者使用资源 ID 连接到任何 Azure 资源。 将“与专用区域 DNS 集成”选项保留不变。
+可以使用此边栏选项卡选择为任何 Azure 资源创建专用终结点。 可以使用下拉菜单选择资源类型并在目录中选择资源，或者使用资源 ID 连接到任何 Azure 资源。 将“与专用区域 DNS 集成”选项保留不变。  
 
 ![屏幕截图显示了使用当前边栏选项卡添加专用终结点的情况。](../media/private-link-service-3.png)
 ![屏幕截图显示了“创建专用终结点(预览)”页的示例。](../media/private-link-service-4.png)
@@ -95,18 +95,18 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 | 拒绝                 | 已拒绝                                | 连接已被专用链接资源所有者拒绝。                                                                            |
 | 删除                 | 已断开连接                            | 连接已被专用链接资源所有者删除，专用终结点仅供参考，应将其删除以清理资源。 |
 
-### <a name="how-to-manage-a-private-endpoint-connection-to-key-vault-using-the-azure-portal"></a>如何使用 Azure 门户管理与 Key Vault 建立的专用终结点连接
+### <a name="how-to-manage-a-private-endpoint-connection-to-key-vault-using-the-azure-portal"></a>如何使用 Azure 门户管理与 Key Vault 建立的专用终结点连接 
 
 1. 登录到 Azure 门户。
 1. 在搜索栏中键入“key vault”
 1. 选择要管理的 Key Vault。
 1. 选择“网络”选项卡。
-1. 如果有任何挂起的连接，则会列出预配状态为“挂起”的连接。
+1. 如果有任何挂起的连接，则会列出预配状态为“挂起”的连接。 
 1. 选择要批准的专用终结点
 1. 选择“批准”按钮。
 1. 如果你要拒绝任何专用终结点连接（不管是挂起的请求还是现有的连接），请选择该连接并单击“拒绝”按钮。
 
-   ![映像](../media/private-link-service-7.png)
+    ![映像](../media/private-link-service-7.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
@@ -200,7 +200,7 @@ nslookup <your-key-vault-name>.vault.azure.cn
 c:\ >nslookup <your-key-vault-name>.vault.azure.cn
 
 Non-authoritative answer:
-Name:
+Name:    
 Address:  (public IP address)
 Aliases:  <your-key-vault-name>.vault.azure.cn
 ```
@@ -211,7 +211,7 @@ Aliases:  <your-key-vault-name>.vault.azure.cn
 c:\ >nslookup your_vault_name.vault.azure.cn
 
 Non-authoritative answer:
-Name:
+Name:    
 Address:  10.1.0.5 (private IP address)
 Aliases:  <your-key-vault-name>.vault.azure.cn
           <your-key-vault-name>.privatelink.vaultcore.chinacloudapi.cn

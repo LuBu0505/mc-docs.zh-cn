@@ -2,14 +2,14 @@
 title: 使用事件处理程序主机接收事件 - Azure 事件中心 | Microsoft Docs
 description: 本文介绍 Azure 事件中心中的事件处理程序主机，它简化了检查点操作、租用和读取事件的管理。
 ms.topic: conceptual
-ms.date: 01/29/2021
+ms.date: 03/11/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 41624eb49818a24b2c1125c10417c31716dcc582
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: 5477c8296f8e62763d3ff110185b86fb4303aebc
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579543"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767056"
 ---
 # <a name="event-processor-host"></a>事件处理程序主机
 > [!NOTE]

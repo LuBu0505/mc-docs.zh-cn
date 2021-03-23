@@ -9,12 +9,12 @@ ms.date: 12/14/2020
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 7eb752c116c6a6421ae6f12d3673e300d53f96cb
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 82052acd03c26937b238cb4ecbffc36967a3e89e
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004133"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766005"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序和群集的安全性相关概念
 <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>
@@ -47,6 +47,9 @@ ms.locfileid: "97004133"
 ## <a name="node-security"></a>节点安全性
 
 AKS 节点是由你管理和维护的 Azure 虚拟机。 Linux 节点通过 Moby 容器运行时运行经过优化的 Ubuntu 发行版。 Windows Server 节点运行已优化的 Windows Server 2019 版本，并使用 Moby 容器运行时。 创建或纵向扩展了 AKS 群集时，会自动使用最新的 OS 安全更新和配置来部署节点。
+
+<!--CUSTOMZIED: ContainerD IS NOT Available till on 03/16/2021-->
+
 
 Azure 平台会在夜间自动将 OS 安全修补程序应用于 Linux 节点。 如果 Linux OS 安全更新需要重启主机，系统不会自动执行重启操作。 可以手动重启 Linux 节点，或使用常用的方法，即使用 [Kured][kured]，这是一个适用于 Kubernetes 的开源重启守护程序。 Kured 作为 [DaemonSet][aks-daemonsets] 运行并监视每个节点，用于确定指示需要重启的文件是否存在。 通过使用相同的 [cordon 和 drain 进程](#cordon-and-drain)作为群集升级，来跨群集管理重启。
 
@@ -141,4 +144,4 @@ Kubernetes 机密存储在分布式密钥-值存储 etcd 中。 Etcd 存储由 A
 [private-clusters]: private-clusters.md
 [network-policy]: use-network-policies.md
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

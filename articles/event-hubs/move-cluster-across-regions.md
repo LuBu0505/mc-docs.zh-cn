@@ -2,15 +2,13 @@
 title: 将 Azure 事件中心专用群集移到另一个区域 | Microsoft Docs
 description: 本文介绍如何将 Azure 事件中心专用群集从当前区域移到另一个区域。
 ms.topic: how-to
-oriign.date: 09/01/2020
-ms.date: 01/18/2021
-ms.author: v-tawe
-ms.openlocfilehash: 61c596b1120600a551ab3a1a27dace52384626f4
-ms.sourcegitcommit: e1edc6ef84dbbda1da4e0a42efa3fd62eee033d1
+ms.date: 03/11/2021
+ms.openlocfilehash: 2f3c4cc75e0a7f5533c3bce5d3b87c399fccb3fd
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98544245"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765362"
 ---
 # <a name="move-an-azure-event-hubs-dedicated-cluster-to-another-region"></a>将 Azure 事件中心专用群集移到另一个区域
 本文介绍如何导出现有事件中心专用群集的 Azure 资源管理器模板，然后使用该模板在另一个区域中创建具有相同配置设置的群集。 
@@ -18,7 +16,7 @@ ms.locfileid: "98544245"
 如果在包含事件中心群集的 Azure 资源组中还有命名空间和事件中心等其他资源，则可能需要在资源组级别导出模板，以便可以通过一个步骤将所有相关资源移动到新区域。 本文中的步骤演示如何将事件中心群集导出到模板。 将资源组导出到模板的步骤类似。 
 
 ## <a name="prerequisites"></a>必备条件
-确保可以在目标区域创建专用群集。 最简单的方法是使用 Azure 门户尝试[创建事件中心专用群集](event-hubs-dedicated-cluster-create-portal.md)。 此时会显示创建群集时所支持的区域的列表。 
+确保可以在目标区域创建专用群集。 最简单的方法是使用 Azure 门户尝试创建事件中心专用群集。 此时会显示创建群集时所支持的区域的列表。 
 
 ## <a name="prepare"></a>准备
 若要开始，请导出资源管理器模板。 此模板包含描述事件中心专用群集的设置。

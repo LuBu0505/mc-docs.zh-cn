@@ -2,19 +2,20 @@
 title: 以 Synapse SQL 提供的 CREATE EXTERNAL TABLE AS SELECT (CETAS)
 description: 使用以 Synapse SQL 提供的 CREATE EXTERNAL TABLE AS SELECT (CETAS)
 services: synapse-analytics
-author: filippopovic
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 09/15/2020
-ms.author: fipopovi
+origin.date: 09/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7ac3bee0ee4600bc202063a97c35b68bc3fd1c2c
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: e6bbe4d7a5094526fdb7d2b607484899e16e01ae
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102206910"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766182"
 ---
 # <a name="cetas-with-synapse-sql"></a>Synapse SQL 提供的 CETAS
 
@@ -29,7 +30,7 @@ ms.locfileid: "102206910"
 
 ## <a name="cetas-in-dedicated-sql-pool"></a>专用 SQL 池中的 CETAS
 
-对于专用 SQL 池的 CETAS 用法和语法，请查看 [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文。 此外，有关使用专用 SQL 池的 CTAS 的指导，请参阅 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 一文。
+对于专用 SQL 池的 CETAS 用法和语法，请查看 [CREATE EXTERNAL TABLE AS SELECT](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-as-select-transact-sql?view=azure-sqldw-latest&preserve-view=true) 一文。 此外，有关使用专用 SQL 池的 CTAS 的指导，请参阅 [CREATE TABLE AS SELECT](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) 一文。
 
 ## <a name="cetas-in-serverless-sql-pool"></a>无服务器 SQL 池的 CETAS
 
@@ -72,11 +73,11 @@ FILE_FORMAT = *external_file_format_name*
 
 WITH *<common_table_expression>*
 
-指定临时命名的结果集，这些结果集称为公用表表达式 (CTE)。 有关详细信息，请参阅 [WITH common_table_expression (Transact-SQL)](/sql/t-sql/queries/with-common-table-expression-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+指定临时命名的结果集，这些结果集称为公用表表达式 (CTE)。 有关详细信息，请参阅 [WITH common_table_expression (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/with-common-table-expression-transact-sql?view=azure-sqldw-latest&preserve-view=true)。
 
 SELECT <select_criteria>
 
-使用 SELECT 语句的结果填充新表。 select_criteria 是 SELECT 语句的主体，用于确定将哪些数据复制到新表中。 有关 SELECT 语句的信息，请参阅 [SELECT (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+使用 SELECT 语句的结果填充新表。 select_criteria 是 SELECT 语句的主体，用于确定将哪些数据复制到新表中。 有关 SELECT 语句的信息，请参阅 [SELECT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true)。
 
 > [!NOTE]
 > CETAS 的 SELECT 不支持 ORDER BY 子句。
@@ -107,7 +108,7 @@ WITH (
 AS
 SELECT decennialTime, stateName, SUM(population) AS population
 FROM
-    OPENROWSET(BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=*/*.parquet',
+    OPENROWSET(BULK 'https://azureopendatastorage.blob.core.chinacloudapi.cn/censusdatacontainer/release/us_population_county/year=*/*.parquet',
     FORMAT='PARQUET') AS [r]
 GROUP BY decennialTime, stateName
 GO

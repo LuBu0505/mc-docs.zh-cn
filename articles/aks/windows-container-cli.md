@@ -5,16 +5,16 @@ services: container-service
 ms.topic: article
 origin.date: 07/16/2020
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: 06/15/2020
 ms.author: v-yeche
-ms.openlocfilehash: 26233b4ee50b3404e6cf403b2fcb03de123b2482
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 6b99babcb23faa25463e381bb2b51cd514a57c84
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "98230972"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766058"
 ---
 <!--Verified successfully-->
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Kubernetes 服务 (AKS) 群集上创建 Windows Server 容器
@@ -123,7 +123,7 @@ az aks nodepool add \
 
 若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。 若要在本地安装 `kubectl`，请使用 [az aks install-cli][az-aks-install-cli] 命令：
 
-<!--Not Available on If you use Azure Cloud Shell, `kubectl` is already installed.-->
+<!--NOT AVAILABLE ON If you use Azure Cloud Shell, `kubectl` is already installed.-->
 
 ```azurecli
 az aks install-cli
@@ -155,7 +155,9 @@ Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容
 
 ASP.NET 示例应用程序作为 [.NET Framework 示例][dotnet-samples]的一部分提供并在 Windows Server 容器中运行。 AKS 要求 Windows Server 容器基于 Windows Server 2019 或更高版本的映像。 Kubernetes 清单文件还必须定义[节点选择器][node-selector]，以指示 AKS 群集在可运行 Windows Server 容器的节点上运行 ASP.NET 示例应用程序的 Pod。
 
-创建名为 `sample.yaml` 的文件，并将其复制到以下 YAML 定义中。 如果使用 Azure 本地 Shell，则可以使用 `vi` 或 `nano` 来创建此文件，就像在虚拟或物理系统中操作一样：
+创建名为 `sample.yaml` 的文件，并将其复制到以下 YAML 定义中。
+
+<!--NOT AVAILABLE ON If you use the Azure Cloud Shell, this file can be created using `vi` or `nano` as if working on a virtual or physical system:-->
 
 ```yaml
 apiVersion: apps/v1
@@ -290,7 +292,7 @@ az group delete --name myResourceGroup --yes --no-wait
 [az-group-create]: https://docs.azure.cn/cli/group#az_group_create
 [az-group-delete]: https://docs.azure.cn/cli/group#az_group_delete
 [az-provider-register]: https://docs.azure.cn/cli/provider#az_provider_register
-[azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli
+[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli
 [azure-cni-about]: concepts-network.md#azure-cni-advanced-networking
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
 [azure-portal]: https://portal.azure.cn
@@ -305,4 +307,4 @@ az group delete --name myResourceGroup --yes --no-wait
 [az-extension-update]: https://docs.azure.cn/cli/extension#az_extension_update
 [windows-server-password]: https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

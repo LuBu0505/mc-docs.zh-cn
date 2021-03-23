@@ -2,18 +2,17 @@
 title: 使用 Azure 资源管理器模板创建 Azure 数据资源管理器群集和数据库
 description: 了解如何使用 Azure 资源管理器模板创建 Azure 数据资源管理器群集和数据库
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: how-to
-origin.date: 09/26/2019
-ms.date: 01/22/2021
-ms.openlocfilehash: 0d8fee0c7d02df63ceb503d83a49f3dfb799d302
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 03/17/2021
+ms.openlocfilehash: a8d529d7b3d3d86285ebc2401907ccf4101e6ab4
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611695"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765381"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 Azure 数据资源管理器群集和数据库
 
@@ -30,7 +29,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 在本文中，我们使用 [Azure 资源管理器模板](/azure-resource-manager/management/overview)创建 Azure 数据资源管理器群集和数据库。 本文介绍如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。 有关创建模板的信息，请参阅[创作 Azure 资源管理器模板](/azure-resource-manager/resource-group-authoring-templates)。 有关要在模板中使用的 JSON 语法和属性，请参阅 [Microsoft.Kusto 资源类型](https://docs.microsoft.com/azure/templates/microsoft.kusto/allversions)。
 
-如果没有 Azure 订阅，请在开始前创建一个[试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn/)。
 
 ## <a name="azure-resource-manager-template-for-cluster-and-database-creation"></a>用于创建群集和数据库的 Azure 资源管理器模板
 
@@ -129,7 +128,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 1. 若要创建群集和数据库，请使用以下按钮开始部署。 右键单击并选择“在新窗口中打开”，以便按本文中的剩余步骤操作。
 
-    [![描绘云且标记为“部署到 Azure”的蓝色按钮的屏幕截图。](media/create-cluster-database-resource-manager/deploybutton.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-kusto-cluster-database%2Fazuredeploy.json)
+    [![描绘云且标记为“部署到 Azure”的蓝色按钮的屏幕截图。](./media/create-cluster-database-resource-manager/deploybutton.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-kusto-cluster-database%2Fazuredeploy.json)
 
     “部署到 Azure”按钮将转到 Azure 门户以填写部署窗体。
 
@@ -148,7 +147,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 1. 从以下代码块中选择“试一试”，然后按照说明登录到 Azure PowerShell。
 
-    ```powershell
+    ```azurepowershell
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
     $location = Read-Host -Prompt "Enter the location (i.e. chinaeast2)"
     $resourceGroupName = "${projectName}rg"
@@ -167,9 +166,9 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 #### <a name="verify-the-deployment-using-powershell"></a>使用 PowerShell 验证部署
 
-若要验证部署，请使用以下 Azure PowerShell 脚本。 如果 Azure PowerShell 仍处于打开状态，则无需复制/运行第一行 (Read-Host)。 若要详细了解如何在 PowerShell 中管理 Azure 数据资源管理器资源，请阅读 [Az.Kusto](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-2.7.0)。
+若要验证部署，请使用以下 Azure PowerShell 脚本。  如果 Azure PowerShell 仍处于打开状态，则无需复制/运行第一行 (Read-Host)。 若要详细了解如何在 PowerShell 中管理 Azure 数据资源管理器资源，请阅读 [Az.Kusto](https://docs.microsoft.com/powershell/module/az.kusto/)。 
 
-```powershell
+```azurepowershell
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
 
 Install-Module -Name Az.Kusto

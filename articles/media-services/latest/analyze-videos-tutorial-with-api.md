@@ -14,12 +14,12 @@ origin.date: 08/31/2020
 ms.date: 11/30/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: 53f6e7d9c9ec4f9d996bbdc1ab4bd1c12e3d4cd2
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 93132c0b1230572c2830df8ca35fbe67c0c1f4cf
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300759"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766231"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>教程：使用媒体服务 v3 来分析视频
 
@@ -155,7 +155,7 @@ private static async Task<Asset> CreateInputAssetAsync(
 
 ### <a name="create-an-output-asset-to-store-the-result-of-the-job"></a>创建一个输出资产以存储作业的结果
 
-输出[资产](/rest/api/media/assets)会存储作业结果。 项目定义 DownloadResults 函数，该函数将结果从此输出资产中下载到 **输出** 文件夹中，便于用户查看获取的内容。
+输出[资产](https://docs.microsoft.com/rest/api/media/assets)会存储作业结果。 项目定义 DownloadResults 函数，该函数将结果从此输出资产中下载到 **输出** 文件夹中，便于用户查看获取的内容。
 
 ```csharp
 private static async Task<Asset> CreateOutputAssetAsync(IAzureMediaServicesClient client, string resourceGroupName, string accountName, string assetName)
@@ -187,7 +187,7 @@ private static async Task<Asset> CreateOutputAssetAsync(IAzureMediaServicesClien
 
 #### <a name="transform"></a>转换
 
-创建新[转换](https://docs.microsoft.com/rest/api/media/transforms)实例时，需要指定希望生成的输出内容。 TransformOutput 是必需参数。 每个 TransformOutput 包含一个预设   。 预设介绍视频和/或音频处理操作的各个步骤，这些操作可生成所需 TransformOutput 。 在此示例中，使用了 **VideoAnalyzerPreset** 预设，并且将语言 (“en-US”) 传递给了其构造函数 (`new VideoAnalyzerPreset("en-US")`)。 凭借此预设，可以从视频提取多个音频和视频见解。 如需从视频提取多个音频见解，可以使用 **AudioAnalyzerPreset** 预设。
+创建新[转换](https://docs.microsoft.com/rest/api/media/transforms)实例时，需要指定希望生成的输出内容。 TransformOutput 是必需参数。 每个 TransformOutput 包含一个预设 。 预设介绍视频和/或音频处理操作的各个步骤，这些操作可生成所需 TransformOutput 。 在此示例中，使用了 **VideoAnalyzerPreset** 预设，并且将语言 (“en-US”) 传递给了其构造函数 (`new VideoAnalyzerPreset("en-US")`)。 凭借此预设，可以从视频提取多个音频和视频见解。 如需从视频提取多个音频见解，可以使用 **AudioAnalyzerPreset** 预设。
 
 创建 Transform 时，首先检查是否其中一个已存在使用 Get 方法，如下面的代码中所示 。 在媒体服务 v3 中，如果实体不存在（对名称进行不区分大小写检查），实体上的 **Get** 方法将返回 **null**。
 

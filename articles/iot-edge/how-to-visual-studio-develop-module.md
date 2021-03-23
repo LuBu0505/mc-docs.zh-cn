@@ -4,17 +4,16 @@ description: 使用带有 Azure IoT Tools 的 Visual Studio 开发 C 或 C# IoT 
 services: iot-edge
 author: kgremban
 manager: philmea
-ms.author: v-tawe
-origin.date: 03/27/2020
-ms.date: 01/05/2021
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: f195aea40ac4231e75bd0def49d3a9881c567f8f
-ms.sourcegitcommit: 40db5a4b9ab8b5877e307ff7a567fd930ca81c72
+ms.openlocfilehash: 3db002988b4a6a479c4d4a6139b6ed35b4d66c9e
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894301"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766943"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio 2019 开发和调试适用于 Azure IoT Edge 的模块
 

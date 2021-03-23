@@ -4,15 +4,15 @@ description: 安全中心安全基线为实现 Azure 安全基准中指定的安
 author: Johnnytechn
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 03/18/2021
 ms.author: v-johya
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ac996d2561d4121a222a747f83d2a43874aed538
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 8299a29565fe602bbaee9daef38dd59b2359b71f
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197319"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765238"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>Azure 安全中心安全基线
 
@@ -136,7 +136,7 @@ ms.locfileid: "102197319"
 
 - [更改 Log Analytics 中的数据保留期](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) 
 
-- [如何为 Azure 存储帐户日志配置保留策略](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [如何为 Azure 存储帐户日志配置保留策略](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Azure 安全中心监视**：不适用
 

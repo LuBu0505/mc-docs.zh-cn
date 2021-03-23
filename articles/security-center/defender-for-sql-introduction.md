@@ -3,17 +3,17 @@ title: 适用于 SQL 的 Azure Defender - 优点和功能
 description: 了解适用于 SQL 的 Azure Defender 的优点和功能。
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/25/2021
+ms.date: 03/18/2021
 ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: b09dd166077891ac6423b3a34c367466acdb9c76
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: ebdcfeeaf4e80df66a8f84f8b3599dfade03ec5f
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197286"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766878"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>适用于 SQL 的 Azure Defender 简介
 
@@ -24,7 +24,7 @@ ms.locfileid: "102197286"
 |方面|详细信息|
 |----|:----|
 |发布状态：|**适用于 Azure SQL 数据库服务器的 Azure Defender** - 正式发布 (GA) |
-|定价：|适用于 SQL 的 Azure Defender 包含的两个计划按[定价页](security-center-pricing.md)中的定价计费|
+|定价：|适用于 SQL 的 Azure Defender 包含的两个计划按[安全中心定价](https://www.azure.cn/pricing/details/security-center/)中所示的定价计费|
 |受保护的 SQL 版本：|[Azure 虚拟机上的 SQL](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>Azure SQL [单一数据库](../azure-sql/database/single-database-overview.md)和[弹性池](../azure-sql/database/elastic-pool-overview.md)<br>[Azure SQL 托管实例](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure Synapse Analytics（以前称为 SQL DW）专用 SQL 池](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
 |云：|![是](./media/icons/yes-icon.png) 中国云（部分：SQL Server 的警报和漏洞评估的子集。 行为威胁防护功能不可用。）|
 |||

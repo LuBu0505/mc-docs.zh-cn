@@ -2,18 +2,17 @@
 title: Azure IoT 中心设备预配服务 - 设备概念
 description: 介绍 Azure IoT 中心设备预配服务 (DPS) 的设备重新预配概念
 author: wesmc7777
-ms.author: v-tawe
-origin.date: 04/04/2019
-ms.date: 11/13/2020
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 6c683702836cdb3e5672bf23bf5e0f791c10339f
-ms.sourcegitcommit: 39288459139a40195d1b4161dfb0bb96f5b71e8e
+ms.openlocfilehash: 3a6b0fd2000c8e17c8312d7b182d27e457b9ba33
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94590759"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765355"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>IoT 中心设备重新预配概念
 

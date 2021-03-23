@@ -2,21 +2,22 @@
 title: 在 Synapse SQL 中使用查询标签
 description: 本文介绍在 Synapse SQL 中使用查询标签的基本技巧。
 services: synapse-analytics
-author: filippopovic
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: fipopovi
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: e38ee31b59f7a1a47db3d14af7c940aa2263f880
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: a3d8fd61f287b84fbb727402d78d11b33a6d7a24
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207230"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766827"
 ---
 # <a name="use-query-labels-in-synapse-sql"></a>在 Synapse SQL 中使用查询标签
 

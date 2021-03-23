@@ -9,13 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 10/28/2019
-ms.date: 08/03/2020
-ms.author: v-tawe
-ms.openlocfilehash: 7a5dabfa81d37db6968f274dd6ab7590fea0ddc9
-ms.sourcegitcommit: 3821704fee67315badba49cf628af2aa68d98f28
+ms.date: 03/08/2021
+ms.author: v-johya
+ms.openlocfilehash: 3c23eb0a65fd98a85395bb071b8fccb28180a073
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "89317555"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803307"
 ---
-可以在 GitHub 上查看或下载所有<a href="https://aka.ms/speech/github-javascript">语音 SDK JavaScript 示例</a>。 
+可以在 GitHub 上查看或下载所有<a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/browser/intent-recognition">语音 SDK JavaScript 示例</a>。 
+

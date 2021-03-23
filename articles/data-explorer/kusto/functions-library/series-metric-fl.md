@@ -2,18 +2,17 @@
 title: series_metric_fl() - Azure 数据资源管理器
 description: 本文介绍了 Azure 数据资源管理器中用户定义的函数 series_metric_fl()。
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 12/13/2020
-ms.date: 01/22/2021
-ms.openlocfilehash: b90258a97e906a15e052a52be3c31af8e5abb1a9
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 03/18/2021
+ms.openlocfilehash: 34ff7409a33637e866a793357fe2bbb34978728b
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98614892"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766766"
 ---
 # <a name="series_metric_fl"></a>series_metric_fl()
 
@@ -65,12 +64,7 @@ let series_metric_fl=(metrics_tbl:(*), timestamp_col:string, name_col:string, la
     | where name == metric_name and timestamp between(stime..etime)
     | order by timestamp asc
     | summarize timestamp = make_list(timestamp), value=make_list(value) by name, labels
-    //  KQL has native has_any(), but no native has_all(), the lines below implement has_all()
-    | mv-apply x = selector_d to typeof(string) on (
-      summarize countif(labels has x)
-      | where countif_ == array_length(selector_d)
-    )
-    | project-away countif_
+    | where labels has_all (selector_d)
 }
 ;
 //
@@ -81,7 +75,7 @@ demo_prometheus
 
 # <a name="persistent"></a>[Persistent](#tab/persistent)
 
-如果是永久使用，请使用 [`.create function`](../management/create-function.md)。 创建函数需要有[数据库用户权限](../management/access-control/role-based-authorization.md)。
+如果是永久使用，请使用 [`.create function`](../management/create-function.md)。 创建函数需要[数据库用户权限](../management/access-control/role-based-authorization.md)。
 
 ### <a name="one-time-installation"></a>一次性安装
 
@@ -99,12 +93,7 @@ series_metric_fl(metrics_tbl:(*), timestamp_col:string, name_col:string, labels_
     | where name == metric_name and timestamp between(stime..etime)
     | order by timestamp asc
     | summarize timestamp = make_list(timestamp), value=make_list(value) by name, labels
-    //  KQL has native has_any(), but no native has_all(), the lines below implement has_all()
-    | mv-apply x = selector_d to typeof(string) on (
-      summarize countif(labels has x)
-      | where countif_ == array_length(selector_d)
-    )
-    | project-away countif_
+    | where labels has_all (selector_d)
 }
 ```
 

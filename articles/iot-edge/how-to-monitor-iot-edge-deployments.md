@@ -3,19 +3,19 @@ title: 监视 IoT Edge 部署 - Azure IoT Edge
 description: 高级监视，包括 edgeHub 和 edgeAgent 报告属性及自动部署指标。
 author: kgremban
 manager: philmea
-ms.author: v-tawe
-ms.date: 02/02/2021
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 86c0038f38dc23e2297bd01784faa2f5c33e7da1
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: 80305c2471ac0f8c56c1feaeaeca76ad49364e31
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579625"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766362"
 ---
 # <a name="monitor-iot-edge-deployments"></a>监视 IoT Edge 部署
 
@@ -69,7 +69,7 @@ IoT 中心服务使此数据可供你在 Azure 门户和 Azure CLI 中监视。
 
 使用 [az IoT Edge deployment show](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show) 命令显示单个部署的详细信息：
 
-```cli
+```azurecli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
 ```
 
@@ -87,7 +87,7 @@ deployment show 命令采用以下参数：
 
 可以使用 [az IoT Edge deployment show-metric](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show-metric) 命令显示每个指标的设备 ID 或对象的列表：
 
-```cli
+```azurecli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name]
 ```
 

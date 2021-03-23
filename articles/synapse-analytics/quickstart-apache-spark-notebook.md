@@ -2,19 +2,20 @@
 title: 快速入门：使用 Web 工具创建无服务器 Apache Spark 池
 description: 本快速入门介绍如何使用 Web 工具在 Azure Synapse Analytics 中创建无服务器 Apache Spark 池，以及如何运行 Spark SQL 查询。
 services: synapse-analytics
-author: euangMS
-ms.author: euang
+author: WenJason
+ms.author: v-jay
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
-ms.date: 10/16/2020
-ms.openlocfilehash: 470e8513cb96c1925b26315273998228502ca353
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+origin.date: 10/16/2020
+ms.date: 03/22/2021
+ms.openlocfilehash: 72fb8665989473ab4dbe246c89dc9085e067a3a3
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207286"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766701"
 ---
 # <a name="quickstart-create-a-serverless-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>快速入门：使用 Web 工具在 Azure Synapse Analytics 中创建无服务器 Apache Spark 池
 
@@ -23,19 +24,19 @@ ms.locfileid: "102207286"
 > [!IMPORTANT]
 > 不管是否正在使用 Spark 实例，它们都会按分钟按比例计费。 请务必在用完 Spark 实例后将其关闭，或设置较短的超时。 有关详细信息，请参阅本文的 **清理资源** 部分。
 
-如果没有 Azure 订阅，请[在开始之前创建一个免费帐户](https://azure.microsoft.com/free/)。
+如果没有 Azure 订阅，[请在开始前创建一个试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
+- Azure 订阅 - [创建试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 - [Synapse Analytics 工作区](quickstart-create-workspace.md)
 - [无服务器 Apache Spark 池](quickstart-create-apache-spark-pool-studio.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.cn/)。
 
-如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 ## <a name="create-a-notebook"></a>创建笔记本
 
@@ -77,7 +78,7 @@ ms.locfileid: "102207286"
     ```python
      demo_df.createOrReplaceTempView('demo_df')
      demo_df.write.csv('demo_df', mode='overwrite')
-     demo_df.write.parquet('abfss://<<TheNameOfAStorageAccountFileSystem>>@<<TheNameOfAStorageAccount>>.dfs.core.windows.net/demodata/demo_df', mode='overwrite')
+     demo_df.write.parquet('abfss://<<TheNameOfAStorageAccountFileSystem>>@<<TheNameOfAStorageAccount>>.dfs.core.chinacloudapi.cn/demodata/demo_df', mode='overwrite')
     ```
 
     如果使用存储资源管理器，可以查看上述两种不同的文件编写方式的影响。 如果未指定文件系统，则会使用默认文件系统，在本例中为 `default>user>trusted-service-user>demo_df`。 数据将保存到指定的文件系统的位置。
@@ -148,7 +149,7 @@ Azure Synapse 在 Azure Data Lake Storage 中保存数据。 可以安全关闭�
 本快速入门介绍了如何创建无服务器 Apache Spark 池和运行基本的 Spark SQL 查询。
 
 - [Azure Synapse Analytics](overview-what-is.md)
-- [.NET for Apache Spark 文档](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [.NET for Apache Spark 文档](https://docs.microsoft.com/dotnet/spark)
 
 
 

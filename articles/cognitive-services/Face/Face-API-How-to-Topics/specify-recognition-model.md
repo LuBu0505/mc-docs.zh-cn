@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
 origin.date: 03/28/2019
-ms.date: 11/23/2020
+ms.date: 03/08/2021
 ms.author: v-johya
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0e63ea8ea9ab5a5f7fa0ec2eb776041a2fee28ec
-ms.sourcegitcommit: f1d0f81918b8c6fca25a125c17ddb80c3a7eda7e
+ms.openlocfilehash: 1a207262f20206c68f55139b2f16e9b8c095ecb9
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96306468"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766648"
 ---
 # <a name="specify-a-face-recognition-model"></a>指定人脸识别模型
 
@@ -25,11 +25,11 @@ ms.locfileid: "96306468"
 
 人脸服务使用机器学习模型对图像中的人脸执行运算。 我们将会根据客户反馈以及研究成果不断改进模型的准确度，并作为模型更新交付改进结果。 开发人员可以选择指定想要使用的人脸识别模型版本；他们可以选择最适合其用例的模型。
 
-Azure 人脸服务具有三种可用的识别模型。 我们将继续支持模型 recognition_01（2017 年发布）和 recognition_02（2019 年发布），以确保为使用 FaceList 或 PersonGroup（通过这些模型创建）的客户提供向后兼容性 。 FaceList 或 Persongroup 将始终使用创建它时所用的识别模型，并且将新的人脸添加到其中时，它们将与此模型相关联 。 创建后无法更改此设置，客户需要将相应的识别模型与相应的 FaceList 或 PersonGroup 一起使用 。
+Azure 人脸服务具有四种可用的识别模型。 我们将继续支持模型 recognition_01（2017 年发布）、recognition_02（2019 年发布）和 recognition_03（2020 年发布），以确保为使用通过这些模型创建的 FaceList 或 PersonGroup 的客户提供后向兼容性  。 FaceList 或 Persongroup 将始终使用创建它时所用的识别模型，并且将新的人脸添加到其中时，它们将与此模型相关联 。 创建后无法更改此设置，客户需要将相应的识别模型与相应的 FaceList 或 PersonGroup 一起使用 。
 
 你可以根据自己的需要转到较新的识别模型；但是，你将需要使用所选的识别模型来创建新的 FaceList 和 PersonGroup。
 
-recognition_03 模型（2020 年发布）是当前可用的最准确的模型。 如果你是新客户，建议使用此模型。 Recognition_03 将在相似性比较和人员匹配比较方面提供更高的准确性。 请注意，每个模型都独立于其他模型运行，并且为一个模型设置的置信度阈值不应在其他识别模型之间进行比较。
+recognition_04 模型（2021 年发布）是当前可用的最准确的模型。 如果你是新客户，建议使用此模型。 Recognition_04 将在相似性比较和人员匹配比较方面提供更高的准确性。 Recognition_04 改进了对佩戴面部遮盖物（外科口罩、N95 口罩、布口罩）的已注册用户的识别。 现在，你可以构建安全且无缝的用户体验，以便使用最新的 detection_03 模型来检测已注册的用户是否佩戴了面部遮盖物，然后使用最新的 recognition_04 模型来识别他们的身份 。 请注意，每个模型都独立于其他模型运行，并且为一个模型设置的置信度阈值不应在其他识别模型之间进行比较。
 
 请继续阅读，了解如何在不同的人脸操作中指定选定的模型，同时避免模型冲突。 如果你是高级用户，想要确定是否应该切换到最新的模型，可以转到[评估不同的模型](#evaluate-different-models)部分来评估新模型，并使用当前数据集比较结果。
 
@@ -52,6 +52,7 @@ recognition_03 模型（2020 年发布）是当前可用的最准确的模型。
 * recognition_01
 * recognition_02
 * recognition_03
+* recognition_04
 
 
 或者，可以指定 _returnRecognitionModel_ 参数（默认为 **false**）来指示是否应在响应中返回 _recognitionModel_。 因此，[Face - Detect] REST API 的请求 URL 将如下所示：
@@ -92,10 +93,10 @@ await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", 
 请查看适用于 .NET 客户端库的以下代码示例。
 
 ```csharp
-await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_03");
+await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_04");
 ```
 
-此代码使用用于提取特征的 recognition_03 模型，创建名为 `My face collection` 的人脸列表。 在此人脸列表中搜索与新检测到的人脸类似的人脸时，该人脸必须已使用 recognition_03 模型检测到 ([Face - Detect])。 如上一部分所述，模型需要保持一致。
+此代码使用 recognition_04 模型来提取特征，创建名为 `My face collection` 的人脸列表。 在此人脸列表中搜索与新检测到的人脸类似的人脸时，该人脸一定是使用 recognition_04 模型检测到的（[人脸 - 检测 ]）。 如上一部分所述，模型需要保持一致。
 
 无需在 [Face - Find Similar] API 中进行更改；只需在检测中指定模型版本。
 
@@ -106,10 +107,10 @@ await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognit
 ## <a name="evaluate-different-models"></a>评估不同的模型
 
 如果要基于自己的数据比较不同识别模型的性能，则需要：
-1. 分别使用 recognition_01、recognition_02 和 recognition_03 创建三个 PersonGroup  。
-1. 使用图像数据检测人脸，并将它们注册到这三个 PersonGroup 中的 Person 。 
+1. 分别使用 recognition_01、recognition_02、recognition_03 和 recognition_04 创建四个 PersonGroup   。
+1. 使用图像数据来检测人脸，并将这些人脸注册到这四个 PersonGroup 中的 Person 。 
 1. 使用 PersonGroup - Train API 训练 PersonGroup。
-1. 在这三个 PersonGroup 中使用 Face - Identify 进行测试，然后比较结果。
+1. 使用“人脸 - 识别”对全部四个 PersonGroup 都进行测试，然后比较结果。
 
 
 如果正常指定了置信度阈值（介于 0 与 1 之间的值，确定模型必须有多大的置信度来识别人脸），可能需要对不同的模型使用不同的阈值。 一个模型的阈值不能与另一个模型共享，并且不一定生成相同的结果。

@@ -10,23 +10,20 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/18/2021
+ms.date: 03/17/2021
 ms.author: v-johya
-ms.openlocfilehash: fdce0da4ed84ba93f9fa6fe6a2722170d77fb8aa
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: 698f1293d14597934bbfcd82e868e2b4c2ab7e86
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751204"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766798"
 ---
 # <a name="debug-azure-api-management-policies-in-visual-studio-code"></a>在 Visual Studio Code 中调试 Azure API 管理策略
 
 Azure API 管理中的[策略](api-management-policies.md)提供强大的功能，可帮助 API 发布者解决身份验证、授权、限制、缓存和转换等跨领域问题。 策略是一组语句，在请求或 API 的响应时按顺序执行。 
 
 本文介绍如何使用[适用于 Visual Studio Code 的 Azure API 管理扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement)调试 API 管理策略。 
-
-> [!NOTE]
-> 此功能目前以公共预览版提供。
 
 ## <a name="prerequisites"></a>先决条件
 

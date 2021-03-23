@@ -9,12 +9,12 @@ origin.date: 12/10/2020
 ms.date: 03/08/2021
 ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2a4e715720931a09d91e99fac401f85e86103ce1
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 7d336613efc4651fc2f94da4698e35c635766b44
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207090"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766336"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Azure Synapse Analytics 与 Azure 数据工厂中的数据集成比较
 
@@ -34,7 +34,7 @@ ms.locfileid: "102207090"
 | **管道和活动** | SSIS 包活动 | ✓ | ✗ |
 |                          | 支持 Power Query 活动 | ✓ | ✓ |
 | **模板库和知识中心** | 解决方案模板 | ✓<br><small>Azure 数据工厂模板库 | ✓<br><small>Synapse 工作区知识中心 |
-| **GIT 存储库集成** | GIT 集成 | ✗ | ✓ |
+| **GIT 存储库集成** | GIT 集成 | ✓ | ✓ |
 | **Monitoring**           | 监视 Spark 作业的数据流 | ✗ | ✓<br><small>利用 Synapse Spark 池 |
 |                          | 与 Azure Monitor 集成 | ✓ | ✗ |
 

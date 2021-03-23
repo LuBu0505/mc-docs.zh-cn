@@ -1,16 +1,14 @@
 ---
 title: 在 Azure 门户中恢复删除的仪表板
 description: 如果在 Azure 门户中删除了已发布的仪表板，可以恢复该仪表板。
-ms.author: v-tawe
-origin.date: 01/21/2020
-ms.date: 01/13/2021
+ms.date: 03/15/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 3bbba06eb63c5b9924bba49d1d06c407fe05a56f
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 900650c25d9e3c829329e7fd7a077e70073599a0
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230824"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766291"
 ---
 # <a name="recover-a-deleted-dashboard-in-the-azure-portal"></a>在 Azure 门户中恢复删除的仪表板
 

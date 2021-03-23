@@ -1,23 +1,18 @@
 ---
 title: Azure 安全中心中所有安全警报的引用表
-description: 本文列出可在 Azure 安全中心的 Azure Defender 仪表板中看到的安全警报。
-services: security-center
-documentationcenter: na
+description: 本文列出了可在 Azure 安全中心的 Azure Defender 仪表板中看到的安全警报
 author: Johnnytechn
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
-ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/15/2021
+ms.topic: reference
+ms.date: 03/18/2021
 ms.author: v-johya
-ms.openlocfilehash: a8e6e2e0842688af84df97d5d2c0fd45a1544954
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 654da1fc7a51d5e5b6ff89371c465141bd793d2f
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197476"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766228"
 ---
 <!--Customized in MC-->
 # <a name="security-alerts---a-reference-guide"></a>安全警报 - 参考指南
@@ -43,7 +38,7 @@ ms.locfileid: "102197476"
 |**检测到来自恶意 IP 的登录。[出现多次]**|已成功为帐户 [account] 和进程 [process] 进行远程身份验证，但登录 IP 地址 (x.x.x.x) 之前被报告为恶意或高度异常。 可能已受到攻击。 扩展名为 .scr 的文件是屏幕保护程序文件，通常位于 Windows 系统目录中并从该目录执行。|-|高|
 |**向本地管理员组添加来宾帐户**|主机数据分析已检测到，%{Compromised Host} 上的本地管理员组中添加了内置来宾帐户，这与攻击者活动密切相关。|-|中型|
 |**事件日志被清除**|计算机日志指示存在可疑的事件日志清除操作，操作者是计算机“%{CompromisedEntity}”中的用户“%{user name}”。 %{log channel} 日志被清除。|-|信息|
-|**已执行反恶意软件操作**|适用于 Azure 的 Microsoft Antimalware 已执行操作，以保护此计算机免受恶意软件或其他可能不需要的软件的侵害。|-|中|
+|**已执行反恶意软件操作**|适用于 Azure 的 Microsoft Antimalware 已执行操作，以保护此计算机免受恶意软件或其他可能不需要的软件的侵害。|-|中型|
 |**反恶意软件操作失败**|Microsoft Antimalware 在对恶意软件或其他可能不需要的软件执行操作时遇到错误。|-|中型|
 |**检测到 Petya 勒索软件指标**|%{Compromised Host} 上的主机数据分析检测到与 Petya 勒索软件关联的指标。 有关详细信息，请参阅https://blogs.technet.microsoft.com/mmpc/2017/06/27/new-ransomware-old-techniques-petya-adds-worm-capabilities/。 查看此警报中关联的命令行，并将此警报上报至安全团队。|-|高|
 |**检测到指示禁用和删除 IIS 日志文件的操作**|主机数据分析检测到显示正在禁用和/或删除 IIS 日志文件的操作。|-|中型|
@@ -217,9 +212,9 @@ ms.locfileid: "102197476"
 | **检测到新的高特权角色**                   | Kubernetes 审核日志分析检测到新的高特权角色。 与具有高特权的角色绑定可为用户/组提供群集中的提升特权。 不必要地提升特权可能会导致群集中出现特权提升问题。                                                                                                                                                                                                                            | 持久性                           | 低      |
 | **检测到特权容器**                       | Kubernetes 审核日志分析检测到新的特权容器。 特权容器可以访问节点的资源，并打破容器之间的隔离。 如果遭到入侵，攻击者可以使用特权容器获取对节点的访问权限。                                                                                                                                                                                                                                           | 特权提升                   | 低      |
 | **检测到对群集管理员角色的角色绑定**     | Kubernetes 审核日志分析检测到新的群集管理员角色绑定，这会使其获得管理员特权。 不必要地提供管理员特权可能会导致群集中出现特权提升问题。                                                                                                                                                                                                                                                                           | 持久性                           | 低      |
-| **检测到公开的 Kubeflow 仪表板**                 | Kubernetes 审核日志分析检测到，运行 Kubeflow 的群集中的负载均衡器公开了 Istio 入口。<br>此操作可能会向 Internet 公开 Kubeflow 仪表板。 如果向 Internet 公开了该仪表板，则攻击者可以访问该仪表板，并在群集上运行恶意容器或代码。<br>有关详细信息，请参阅[错误配置的 Kubeflow 工作负荷存在安全风险。](https://www.microsoft.com/security/blog/2020/06/10/misconfigured-kubeflow-workloads-are-a-security-risk) | 初始访问                        | 中   |
-| **检测到 AKS 中存在公开的 Redis 服务**               | Kubernetes 审核日志分析检测到，负载均衡器公开了 Redis 服务。<br>如果该服务不需要身份验证，则向 Internet 公开该服务会带来安全风险。                                                                                                                                                                                                                                                                                                              | 初始访问                        | 中   |
-| **检测到公开的 Kubernetes 服务**                 | Kubernetes 审核日志分析检测到，负载均衡器公开了服务。 此服务与一个敏感应用程序相关，该应用程序允许在群集中执行影响较大的操作，如在节点上运行进程或创建新的容器。<br>在某些情况下，此服务不需要身份验证。 如果该服务不需要身份验证，则向 Internet 公开该服务会带来安全风险。                                                                                 | 初始访问                        | 中   |
+| **检测到公开的 Kubeflow 仪表板**                 | Kubernetes 审核日志分析检测到，运行 Kubeflow 的群集中的负载均衡器公开了 Istio 入口。<br>此操作可能会向 Internet 公开 Kubeflow 仪表板。 如果向 Internet 公开了该仪表板，则攻击者可以访问该仪表板，并在群集上运行恶意容器或代码。<br>有关详细信息，请参阅[错误配置的 Kubeflow 工作负荷存在安全风险。](https://www.microsoft.com/security/blog/2020/06/10/misconfigured-kubeflow-workloads-are-a-security-risk) | 初始访问                        | 中型   |
+| **检测到 AKS 中存在公开的 Redis 服务**               | Kubernetes 审核日志分析检测到，负载均衡器公开了 Redis 服务。<br>如果该服务不需要身份验证，则向 Internet 公开该服务会带来安全风险。                                                                                                                                                                                                                                                                                                              | 初始访问                        | 中型   |
+| **检测到公开的 Kubernetes 服务**                 | Kubernetes 审核日志分析检测到，负载均衡器公开了服务。 此服务与一个敏感应用程序相关，该应用程序允许在群集中执行影响较大的操作，如在节点上运行进程或创建新的容器。<br>在某些情况下，此服务不需要身份验证。 如果该服务不需要身份验证，则向 Internet 公开该服务会带来安全风险。                                                                                 | 初始访问                        | 中型   |
 |                                                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |                                       |          |
 
 ## <a name="alerts-for-containers---host-level"></a><a name="alerts-containerhost"></a>容器警报 - 主机级别
@@ -251,8 +246,7 @@ ms.locfileid: "102197476"
 
 ## <a name="security-incident-alerts"></a><a name="alerts-fusion"></a>安全事件警报
 
-[更多详细信息和说明](security-center-alerts-cloud-smart.md)
-
+[更多详细信息和说明](security-center-alerts-overview.md#cloud-smart-alert-correlation-in-azure-security-center-incidents)
 
 | 警报                                   | 说明                                                          | MITRE 技巧<br>（[了解详细信息](#intentions)） | 严重性 |
 |-----------------------------------------|----------------------------------------------------------------------|:----------------------------------:|----------|
@@ -260,8 +254,7 @@ ms.locfileid: "102197476"
 |**在多个资源上检测到安全事件**|最近在 {Detected Time (UTC)} 检测到的从 {Start Time (UTC)} 开始的事件指示有人在你的云资源 {Host} 上执行了类似的攻击方法|-|中型|
 |**从同一源检测到安全事件**|最近在 {Detected Time (UTC)} 检测到的从 {Start Time (UTC)} 开始的事件指示攻击者已经{Action taken}了你的资源 {Host}|-|高|
 |**在多台计算机上检测到安全事件**|最近在 {Detected Time (UTC)} 检测到的从 {Start Time (UTC)} 开始的事件指示攻击者已经{Action taken}了你的资源 {Host}|-|中型|
-
-
+|                                         |                                                                      |                                    |          |
 
 
 ## <a name="mitre-attck-tactics"></a>MITRE ATT&CK 技巧 <a name="intentions"></a>

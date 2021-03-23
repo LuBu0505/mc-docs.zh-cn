@@ -8,15 +8,14 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: mvc,subject-armqs
-origin.date: 10/14/2020
-ms.date: 01/18/2021
-ms.author: v-tawe
-ms.openlocfilehash: 500ab8a837eb1b7f63f8b4ec1de3210bdf96c1a6
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: c184f510214aaf640908779289b330047e108f95
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99058447"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766159"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template-preview"></a>快速入门：使用 ARM 模板（预览版）创建 Azure 密钥保管库和密钥
 
@@ -27,7 +26,7 @@ ms.locfileid: "99058447"
 若要完成本文，需要做好以下准备：
 
 - 如果没有 Azure 订阅，请在开始之前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
-- 用户需要分配的 RBAC 内置角色，例如 参与者。 [在此处了解详细信息](../../role-based-access-control/role-assignments-portal.md)
+- 用户需要分配有 Azure 内置角色，例如 参与者。 [在此处了解详细信息](../../role-based-access-control/role-assignments-portal.md)
 - 模板需要使用你的 Azure AD 用户对象 ID 来配置权限。 以下过程获取对象 ID (GUID)。
 
     1. 运行以下 Azure PowerShell 或 Azure CLI 命令：选择“试用”，然后在 shell 窗格中粘贴脚本。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”。

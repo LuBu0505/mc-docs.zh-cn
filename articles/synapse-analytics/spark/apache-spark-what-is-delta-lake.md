@@ -10,12 +10,12 @@ origin.date: 04/15/2020
 ms.date: 03/08/2021
 ms.author: v-jay
 ms.reviewer: euang
-ms.openlocfilehash: 433b4c27ec1f23ab1797cfc2cf2b54aaf809c7da
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 6ecec245b329a0590ac071be520de61c534a2d1a
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102206829"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766842"
 ---
 # <a name="what-is-delta-lake"></a>什么是 Delta Lake
 
@@ -44,5 +44,5 @@ Azure Synapse 随附的当前版本的 Delta Lake 支持 Scala、PySpark 和 .NE
 
 ## <a name="next-steps"></a>后续步骤
 
-- [.NET for Apache Spark 文档](https://docs.microsoft.com/dotnet/spark?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)
+- [.NET for Apache Spark 文档](https://docs.microsoft.com/dotnet/spark)
 - [Azure Synapse Analytics](../index.yml)

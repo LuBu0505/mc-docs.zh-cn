@@ -5,17 +5,17 @@ author: WenJason
 ms.service: storage
 ms.topic: troubleshooting
 origin.date: 10/08/2020
-ms.date: 01/18/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 86b3379b0ba3711fc42bf01a4a114fd0132e0b8c
-ms.sourcegitcommit: f086abe8bd2770ed10a4842fa0c78b68dbcdf771
+ms.openlocfilehash: a1391a2961c3126d829248f6c03af99e8973150b
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98163143"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765677"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-azure-storage"></a>对 Azure 存储进行监视、诊断和故障排除
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -95,7 +95,7 @@ ms.locfileid: "98163143"
 ## <a name="monitoring-your-storage-service"></a><a name="monitoring-your-storage-service"></a>监视存储服务
 如果熟悉 Windows 性能监视，则可以将存储度量值视为 Windows 性能监视器计数器的 Azure 存储等效项。 在“存储指标”中，可找到一组综合指标（相当于 Windows 性能监视器术语中的计数器），例如服务可用性、向服务发送的请求总数或向服务发出的成功请求的百分比。 有关可用度量值的完整列表，请参阅[存储分析度量值表架构](https://docs.microsoft.com/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema)。 可以指定希望存储服务每隔一小时还是每隔一分钟收集和聚合一次度量值。 有关如何启用度量值和监视存储帐户的详细信息，请参阅 [Enabling storage metrics and viewing metrics data](monitor-storage.md)（启用存储度量值并查看度量值数据）。
 
-可以选择要将哪些每小时指标显示在 [Azure 门户](https://portal.azure.cn)中，并配置规则以便在每小时指标超过特定阈值时，通过电子邮件通知管理员。 有关详细信息，请参阅[接收警报通知](../../azure-monitor/platform/alerts-overview.md)。
+可以选择要将哪些每小时指标显示在 [Azure 门户](https://portal.azure.cn)中，并配置规则以便在每小时指标超过特定阈值时，通过电子邮件通知管理员。 有关详细信息，请参阅[接收警报通知](../../azure-monitor/alerts/alerts-overview.md)。
 
 建议查看[用于存储的 Azure Monitor](../../azure-monitor/insights/storage-insights-overview.md)（预览版）。 它是 Azure Monitor 的一项功能，通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供对 Azure 存储帐户的全面监视。 它不要求你启用或配置任何内容，你可以立即从预定义的交互式图表和包含的其他可视化效果中查看这些指标。
 
@@ -539,7 +539,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 存储客户端库生成的以下客户端日志说明了客户端找不到它创建的 Blob 的容器时的问题。 此日志包含以下存储操作的详细信息：
 
-| 请求 ID | Operation |
+| 请求 ID | 操作 |
 | --- | --- |
 | 07b26a5d-... |**DeleteIfExists** 方法，用于删除 Blob 容器。 请注意，此操作包括 **HEAD** 请求以检查该容器是否存在。 |
 | e2d06d78-... |**CreateIfNotExists** 方法，用于创建 Blob 容器。 请注意，此操作包括 **HEAD** 请求，用于检查该容器是否存在。 **HEAD** 返回了 404 消息，但将继续执行。 |
@@ -687,7 +687,7 @@ client.SetServiceProperties(sp);
 ### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>客户端正在接收“HTTP 409 (冲突)”消息
 下表显示了服务器端日志中针对两个客户端操作的摘录：**DeleteIfExists** 后面紧接使用相同 Blob 容器名称的 **CreateIfNotExists**。 每个客户端操作会导致将两个请求发送到服务器，先是 **GetContainerProperties** 请求（用于检查容器是否存在），后跟 **DeleteContainer** 或 **CreateContainer** 请求。
 
-| 时间戳 | Operation | 结果 | 容器名称 | 客户端请求 ID |
+| 时间戳 | 操作 | 结果 | 容器名称 | 客户端请求 ID |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-... |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-... |
@@ -837,7 +837,7 @@ WireShark 会在 **packetlist** 窗口中突出显示存在的任何错误。 �
 
 有关 Azure 存储中的分析的详细信息，请参阅以下资源：
 
-* [在 Azure 门户中监视存储帐户](storage-monitor-storage-account.md)
+* [在 Azure 门户中监视存储帐户](./manage-storage-analytics-logs.md)
 * [存储分析](storage-analytics.md)
 * [存储分析指标](storage-analytics-metrics.md)
 * [存储分析指标表架构](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-metrics-table-schema)

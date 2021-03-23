@@ -12,12 +12,12 @@ ms.date: 01/11/2021
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 51801ce12cce43da6af24f51cf93293edf05cc6e
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 26afed86abbe6040655d4a6cde1f7e153df4fe13
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022984"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765555"
 ---
 # <a name="load-contoso-retail-data-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>将 Contoso 零售数据加载到 Azure Synapse Analytics 中的专用 SQL 池中
 
@@ -85,7 +85,7 @@ CREATE EXTERNAL DATA SOURCE AzureStorage_west_public
 WITH
 (  
     TYPE = Hadoop
-,   LOCATION = 'wasbs://contosoretaildw-tables@contosoretaildw.blob.core.windows.net/'
+,   LOCATION = 'wasbs://contosoretaildw-tables@contosoretaildw.blob.core.chinacloudapi.cn/'
 );
 ```
 

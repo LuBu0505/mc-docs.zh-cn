@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 03/31/2020
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 10/05/2020
 ms.author: v-yeche
-ms.openlocfilehash: 427eae8da607c4b162e15ce2d51e22608f49e4a6
-ms.sourcegitcommit: 292892336fc77da4d98d0a78d4627855576922c5
+ms.openlocfilehash: 76c11345c83258150d7d055ab5601aa15e88a44b
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570677"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "104766121"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---cli"></a>部署使用基本负载均衡器的 IPv6 双堆栈应用程序 - CLI
 
@@ -99,7 +99,7 @@ az network public-ip create \
 
 ### <a name="create-load-balancer"></a>创建负载均衡器
 
-使用 [az network lb create](https://docs.azure.cn/cli/network/lb) 创建名为 **dsLB** 的基本负载均衡器，其中包含名为 **dsLbFrontEnd_v4** 的前端池以及名为 **dsLbBackEndPool_v4** 的后端池（与在上一步骤中创建的 IPv4 公共 IP 地址 **dsPublicIP_v4** 相关联）。 
+使用 [az network lb create](https://docs.azure.cn/cli/network/lb#az_network_lb_create) 创建名为 **dsLB** 的基本负载均衡器，其中包含名为 **dsLbFrontEnd_v4** 的前端池以及名为 **dsLbBackEndPool_v4** 的后端池（与在上一步骤中创建的 IPv4 公共 IP 地址 **dsPublicIP_v4** 相关联）。 
 
 ```azurecli
 az network lb create \
@@ -137,7 +137,7 @@ az network lb address-pool create \
 ```
 
 ### <a name="create-a-health-probe"></a>创建运行状况探测器
-使用 [az network lb probe create](https://docs.azure.cn/cli/network/lb/probe) 创建运行状况探测，以监视虚拟机的运行状况。 
+使用 [az network lb probe create](https://docs.azure.cn/cli/network/lb/probe#az_network_lb_probe_create) 创建运行状况探测，以监视虚拟机的运行状况。 
 
 ```azurecli
 az network lb probe create -g DsResourceGroup01  --lb-name dsLB -n dsProbe --protocol tcp --port 3389
@@ -179,7 +179,7 @@ az network lb rule create \
 ### <a name="create-an-availability-set"></a>创建可用性集
 若要提高应用的可用性，请将 VM 放到可用性集中。
 
-使用 [az vm availability-set create](https://docs.azure.cn/cli/vm/availability-set) 创建可用性集。 以下示例创建名为 *dsAVset* 的可用性集：
+使用 [az vm availability-set create](https://docs.azure.cn/cli/vm/availability-set#az_vm_availability_set_create) 创建可用性集。 以下示例创建名为 *dsAVset* 的可用性集：
 
 ```azurecli
 az vm availability-set create \
@@ -378,4 +378,4 @@ az group delete --name DsResourceGroup01
 
 在本文中，你已使用双重前端 IP 配置（IPv4 和 IPv6）创建了一个基本负载均衡器。 你还创建了两个虚拟机，它们包含采用双重 IP 配置（IPV4 + IPv6）的 NIC，并已添加到负载均衡器的后端池。 若要详细了解 Azure 虚拟网络中的 IPv6 支持，请参阅 [Azure 虚拟网络 IPv6 是什么？](ipv6-overview.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

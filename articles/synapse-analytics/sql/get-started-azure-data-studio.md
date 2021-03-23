@@ -2,19 +2,20 @@
 title: 使用 Azure Data Studio 连接到 Synapse SQL
 description: 使用 Azure Data Studio 连接到 Azure Synapse Analytics 中的 Synapse SQL 并对其进行查询。
 services: synapse analytics
-author: azaricstefan
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
-ms.author: stefanazaric
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5d1dd5e91cc17fce4249577e0b93f41ff3c3cf10
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: c01ff417833c6f030302c10eb9af85aacd769bd2
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102206979"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766321"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio"></a>使用 Azure Data Studio 连接到 Synapse SQL
 
@@ -22,11 +23,11 @@ ms.locfileid: "102206979"
 >
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
-> * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+> * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)
 > * [sqlcmd](get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-可使用 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 连接到 Azure Synapse Analytics 中的 Synapse SQL 并对其进行查询。 
+可使用 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio?view=azure-sqldw-latest&preserve-view=true) 连接到 Azure Synapse Analytics 中的 Synapse SQL 并对其进行查询。 
 
 ## <a name="connect"></a>连接
 
@@ -73,7 +74,7 @@ ms.locfileid: "102206979"
 
 ## <a name="query"></a>查询
 
-连接后，可以对实例使用支持的 [Transact-SQL (T-SQL)](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 语句来查询 Synapse SQL。 在仪表板视图中选择“新建查询”  即可开始。
+连接后，可以对实例使用支持的 [Transact-SQL (T-SQL)](https://docs.microsoft.com/sql/t-sql/language-reference?view=azure-sqldw-latest&preserve-view=true) 语句来查询 Synapse SQL。 在仪表板视图中选择“新建查询”  即可开始。
 
 ![新建查询](./media/get-started-azure-data-studio/5-new-query.png)
 
@@ -83,7 +84,7 @@ ms.locfileid: "102206979"
 SELECT COUNT(*)
 FROM  
 OPENROWSET(
-    BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+    BULK 'https://azureopendatastorage.blob.core.chinacloudapi.cn/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
     FORMAT='PARQUET'
 )
 ```
@@ -92,7 +93,7 @@ OPENROWSET(
 
 - [SSMS](get-started-ssms.md)
 - [Power BI](get-started-power-bi-professional.md)
-- [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)
 - [sqlcmd](get-started-connect-sqlcmd.md)
 
-有关详细信息，请访问[使用 Azure Data Studio 在 Azure Synapse Analytics 中借助专用 SQL 池连接和查询数据](/sql/azure-data-studio/quickstart-sql-dw)。
+有关详细信息，请访问[使用 Azure Data Studio 在 Azure Synapse Analytics 中借助专用 SQL 池连接和查询数据](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-dw)。

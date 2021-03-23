@@ -4,14 +4,14 @@ description: 了解如何在 Azure 容器实例中启用可使用其他 Azure �
 ms.topic: article
 origin.date: 07/02/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 03/22/2021
 ms.author: v-yeche
-ms.openlocfilehash: b51bd1c92ce59207f8c3bf0bdb185f9a09268805
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: cbf5d8df08e1575786e3fbbcfb7c697664830758
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022169"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765706"
 ---
 <!--Verified succssfully based on 06/08/2020-->
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>如何将托管标识与 Azure 容器实例结合使用
@@ -308,7 +308,7 @@ az keyvault secret show \
 
 若要使用[资源管理器模板](container-instances-multi-container-group.md)在容器组中启用托管标识，请使用 `ContainerGroupIdentity` 对象设置 `Microsoft.ContainerInstance/containerGroups` 对象的 `identity` 属性。 下面的代码段演示针对不同方案配置的 `identity` 属性。 指定最小的 `apiVersion`，即 `2018-10-01`。
 
-<!--Not Available on [Resource Manager template reference](https://docs.microsoft.com/azure/templates/microsoft.containerinstance/containergroups)-->
+<!--NOT AVAILABLE ON [Resource Manager template reference](https://docs.microsoft.com/azure/templates/microsoft.containerinstance/containergroups)-->
 
 ### <a name="user-assigned-identity"></a>用户分配的标识
 
@@ -404,6 +404,6 @@ identity:
 
 * 详细了解 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/index.yml)。
 
-<!--Not Available on  [Azure Go SDK example](https://medium.com/@samkreter/c98911206328)-->
+<!--NOT AVAILABLE ON  [Azure Go SDK example](https://medium.com/@samkreter/c98911206328)-->
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

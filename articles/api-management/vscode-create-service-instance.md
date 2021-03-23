@@ -6,19 +6,19 @@ ms.workload: integration
 author: Johnnytechn
 ms.author: v-johya
 ms.topic: quickstart
-ms.date: 01/18/2021
-ms.openlocfilehash: cdce77e536ee59340110d6aac60794c8129de5d9
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.date: 03/17/2021
+ms.openlocfilehash: 5d7666e27a424619df8c40b0fa0e37b92d6def28
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751149"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766786"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建新的 Azure API 管理服务实例
 
 Azure API 管理 (APIM) 可帮助组织将 API 发布给外部、合作伙伴和内部开发人员，以充分发挥其数据和服务的潜力。 API 管理通过开发人员参与、商业洞察力、分析、安全性和保护提供了核心竞争力以确保成功的 API 程序。 使用 APIM 可以为在任何位置托管的现有后端服务创建和管理新式 API 网关。 有关详细信息，请参阅[概述](api-management-key-concepts.md)主题。
 
-本快速入门介绍了使用 Visual Studio Code 的 *Azure API 管理扩展预览版* 创建新的 API 管理实例的步骤。 你还可以使用此扩展对 API 管理实例执行常见管理操作。
+本快速入门介绍了使用 Visual Studio Code 的 Azure API 管理扩展创建新 API 管理实例的步骤。 你还可以使用此扩展对 API 管理实例执行常见管理操作。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -28,7 +28,7 @@ Azure API 管理 (APIM) 可帮助组织将 API 发布给外部、合作伙伴和
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 
-- [Visual Studio Code 的 Azure API 管理扩展（预览版）](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview)
+- [Visual Studio Code 的 Azure API 管理扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview)
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

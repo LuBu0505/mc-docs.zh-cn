@@ -4,14 +4,14 @@ description: 通过使用用户分配或系统分配的托管 Azure 标识，提
 ms.topic: article
 origin.date: 01/16/2019
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.author: v-yeche
-ms.openlocfilehash: 8eb44baa79d570b74ff0b72ed284d4ea54a1fbdc
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 706cc0a7a94a2288cfc29203c9fefa9f69acaf6f
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055322"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766976"
 ---
 <!--Verify successfully-->
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>使用 Azure 托管标识向 Azure 容器注册表验证身份 
@@ -57,7 +57,7 @@ Azure 资源的托管标识可在 Azure Active Directory (Azure AD) 中为 Azure
 
 ## <a name="create-a-docker-enabled-vm"></a>创建一个启用了 Docker 的 VM
 
-创建一个启用了 Docker 的 Ubuntu 虚拟机。 还需要在该虚拟机上安装 [Azure CLI](https://docs.azure.cn/cli/install-azure-cli)。 如果已有 Azure 虚拟机，请跳过此虚拟机创建步骤。
+创建一个启用了 Docker 的 Ubuntu 虚拟机。 还需要在该虚拟机上安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 如果已有 Azure 虚拟机，请跳过此虚拟机创建步骤。
 
 使用 [az vm create][az-vm-create] 部署默认的 Ubuntu Azure 虚拟机。 以下示例在名为 *myResourceGroup* 的现有资源组中创建名为 *myDockerVM* 的 VM：
 
@@ -105,7 +105,7 @@ This message shows that your installation appears to be working correctly.
 
 ### <a name="install-the-azure-cli"></a>安装 Azure CLI
 
-按照[使用 apt 安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli-apt) 中的步骤在 Ubuntu 虚拟机上安装 Azure CLI。 在本文中，请确保安装版本 2.0.55 或更高版本。
+按照[使用 apt 安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-apt) 中的步骤在 Ubuntu 虚拟机上安装 Azure CLI。 在本文中，请确保安装版本 2.0.55 或更高版本。
 
 退出 SSH 会话。
 
@@ -272,6 +272,6 @@ docker pull mycontainerregistry.azurecr.cn/aci-helloworld:v1
 [az-role-assignment-create]: https://docs.azure.cn/cli/role/assignment#az_role_assignment_create
 [az-acr-login]: https://docs.azure.cn/cli/acr#az_acr_login
 [az-identity-show]: https://docs.microsoft.com/cli/azure/identity#az_identity_show
-[azure-cli]: https://docs.azure.cn/cli/install-azure-cli
+[azure-cli]: https://docs.microsoft.com/cli/azure/install-azure-cli
 
 <!--Update_Description: update meta properties, wording update, update link-->

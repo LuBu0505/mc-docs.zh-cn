@@ -2,19 +2,20 @@
 title: 使用无服务器 SQL 池查询文件夹和多个文件
 description: 无服务器 SQL 池支持使用通配符（类似于 Windows 操作系统中使用的通配符）读取多个文件/文件夹。
 services: synapse analytics
-author: azaricstefan
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: stefanazaric
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0624f0ae332a6fbbde48a7fe06aa21128346c4fd
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: b3e61d35e6aa8345275f7d75d55d65ad64208c35
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207095"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766180"
 ---
 # <a name="query-folders-and-multiple-files"></a>查询文件夹和多个文件  
 

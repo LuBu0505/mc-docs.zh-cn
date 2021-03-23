@@ -2,18 +2,16 @@
 title: 迁移到用于 Apache Kafka 的 Azure 事件中心
 description: 本文介绍如何将客户端从 Apache Kafka 迁移到 Azure 事件中心。
 ms.topic: article
-ms.author: v-tawe
-origin.date: 06/23/2020
-ms.date: 11/04/2020
-ms.openlocfilehash: b85dc2c4c84ff9ce054f42404fe5ba0da19c1487
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.date: 03/11/2021
+ms.openlocfilehash: 20b2bed1b0563369eef53094e7abf8046340444f
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96430870"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767059"
 ---
 # <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>迁移到用于 Apache Kafka 的 Azure 事件中心生态系统
-Azure 事件中心公开了一个 Apache Kafka 终结点，使你能够使用 Kafka 协议连接到事件中心。 对现有 Kafka 应用程序稍作更改即可连接到 Azure 事件中心并充分利用 Azure 生态系统的优势。 事件中心可与许多现有 Kafka 应用程序（包括 MirrorMaker）配合使用。 有关详细信息，请参阅[适用于 Apache Kafka 的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
+Azure 事件中心公开了一个 Apache Kafka 终结点，使你能够使用 Kafka 协议连接到事件中心。 对现有 Kafka 应用程序稍作更改即可连接到 Azure 事件中心并充分利用 Azure 生态系统的优势。 事件中心可与许多现有 Kafka 应用程序（包括 MirrorMaker）配合使用。
 
 ## <a name="pre-migration"></a>预迁移 
 

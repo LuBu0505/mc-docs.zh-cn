@@ -6,16 +6,16 @@ manager: gwallace
 ms.topic: article
 origin.date: 10/19/2020
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/22/2021
 ms.testscope: yes|no
 ms.testdate: 01/11/2021null
 ms.author: v-yeche
-ms.openlocfilehash: 6405b94440f176f212472da0efc365302fc2a5fa
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 0bb235abb16f365ce2621c9573868b9eaac77901
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063676"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766063"
 ---
 <!--Verified successfully on 01/04/2021-->
 # <a name="reduce-latency-with-proximity-placement-groups"></a>使用邻近放置组降低延迟
@@ -23,9 +23,9 @@ ms.locfileid: "99063676"
 > [!Note]
 > 在 AKS 上使用邻近放置组时，归置仅适用于代理节点。 节点到节点延迟以及相应的托管 Pod 到 Pod 延迟得到改善。 归置不会影响群集的控制平面的放置。
 
-在 Azure 中部署应用程序时，跨区域分布虚拟机 (VM) 实例会造成网络延迟，这可能会影响应用程序的总体性能。 邻近放置组是一种逻辑分组，用于确保 Azure 计算资源的物理位置彼此接近。 有些应用程序（如游戏、工程模拟和高频交易 (HFT)）需要低延迟和快速完成的任务。 对于这样的高性能计算 (HPC) 场景，请考虑为群集的节点池使用[邻近放置组](../virtual-machines/linux/co-location.md#proximity-placement-groups) (PPG)。
+在 Azure 中部署应用程序时，跨区域分布虚拟机 (VM) 实例会造成网络延迟，这可能会影响应用程序的总体性能。 邻近放置组是一种逻辑分组，用于确保 Azure 计算资源的物理位置彼此接近。 有些应用程序（如游戏、工程模拟和高频交易 (HFT)）需要低延迟和快速完成的任务。 对于这样的高性能计算 (HPC) 场景，请考虑为群集的节点池使用[邻近放置组](../virtual-machines/co-location.md#proximity-placement-groups) (PPG)。
 
-<!--REMOVE or availability zones-->
+<!--NOT AVAILABLE on FEATURE availability zone-->
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -34,7 +34,7 @@ ms.locfileid: "99063676"
 ### <a name="limitations"></a>限制
 
 <!--Not Available on * A proximity placement group can map to at most one availability zone.-->
-<!--Not Available on FEATURE availability zone-->
+<!--NOT AVAILABLE on FEATURE availability zone-->
 
 * 节点池必须使用虚拟机规模集来关联邻近放置组。
 * 节点池只能在节点池创建时关联邻近放置组。
@@ -47,6 +47,7 @@ ms.locfileid: "99063676"
 * 一个节点池只能与单个邻近放置组相关联。
 
 <!--Not Available on ### Configure proximity placement groups with availability zones-->
+<!--NOT AVAILABLE on FEATURE availability zone-->
 
 ## <a name="create-a-new-aks-cluster-with-a-proximity-placement-group"></a>使用邻近放置组创建新的 AKS 群集
 
@@ -129,7 +130,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 [azure-ad-rbac]: azure-ad-rbac.md
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
-[azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli
+[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli
 [az-aks-get-upgrades]: https://docs.azure.cn/cli/aks#az_aks_get_upgrades
 [az-aks-upgrade]: https://docs.azure.cn/cli/aks#az_aks_upgrade
 [az-aks-show]: https://docs.azure.cn/cli/aks#az_aks_show

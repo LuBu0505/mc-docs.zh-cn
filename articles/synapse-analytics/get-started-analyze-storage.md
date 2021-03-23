@@ -2,20 +2,21 @@
 title: 教程：开始分析存储帐户中的数据
 description: 本教程介绍如何分析位于存储帐户中的数据。
 services: synapse-analytics
-author: saveenr
-ms.author: saveenr
-manager: julieMSFT
+author: WenJason
+ms.author: v-jay
+manager: digimobile
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: d2c4742a3d8273bb6c994b2f4832c0047bb3ebad
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+origin.date: 12/31/2020
+ms.date: 03/22/2021
+ms.openlocfilehash: beb07f45c44ef9884c0ab9efba44cfd483de8769
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207487"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765223"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>分析存储帐户中的数据
 
@@ -45,14 +46,14 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats_parquetformat")
 可以在工作区默认 ADLS Gen2 帐户中分析数据，也可以通过“管理”>“链接服务”>“新建”  （以下步骤将引用主 ADLS Gen2 帐户）将 ADLS Gen2 或 Blob 存储帐户链接到工作区。
 
 1. 在 Synapse Studio 中，转到“数据”中心，然后选择“已关联” 。
-1. 转到“存储帐户” > “myworkspace (主 - contosolake)” 。
+1. 转到“Azure Data Lake Storage Gen2” > “myworkspace（主 - contosolake）” 。
 1. 选择“用户(主)”。 应会看到 NYCTaxi 文件夹。 在内部应会看到名为 PassengerCountStats_csvformat 和 PassengerCountStats_parquetformat 的两个文件夹 。
 1. 打开 PassengerCountStats_parquetformat 文件夹。 在文件夹内，你将看到名称类似于 `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` 的 Parquet 文件。
 1. 右键单击“.parquet”，选择“新建笔记本”，然后选择“加载到数据帧”  。 将使用如下所示的单元创建新笔记本：
 
     ```py
     %%pyspark
-    df = spark.read.load('abfss://users@contosolake.dfs.core.windows.net/NYCTaxi/PassengerCountStats.parquet/part-00000-1f251a58-d8ac-4972-9215-8d528d490690-c000.snappy.parquet', format='parquet')
+    df = spark.read.load('abfss://users@contosolake.dfs.core.chinacloudapi.cn/NYCTaxi/PassengerCountStats.parquet/part-00000-1f251a58-d8ac-4972-9215-8d528d490690-c000.snappy.parquet', format='parquet')
     display(df.limit(10))
     ```
 
@@ -63,7 +64,7 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats_parquetformat")
     SELECT 
         TOP 100 *
     FROM OPENROWSET(
-        BULK 'https://contosolake.dfs.core.windows.net/users/NYCTaxi/PassengerCountStats.parquet/part-00000-1f251a58-d8ac-4972-9215-8d528d490690-c000.snappy.parquet',
+        BULK 'https://contosolake.dfs.core.chinacloudapi.cn/users/NYCTaxi/PassengerCountStats.parquet/part-00000-1f251a58-d8ac-4972-9215-8d528d490690-c000.snappy.parquet',
         FORMAT='PARQUET'
     ) AS [result]
     ```

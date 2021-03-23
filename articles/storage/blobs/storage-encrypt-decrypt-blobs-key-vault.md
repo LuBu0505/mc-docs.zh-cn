@@ -6,18 +6,18 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: tutorial
-origin.date: 12/04/2019
-ms.date: 12/14/2020
+origin.date: 02/18/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 49dd2aa796031604b462b39d2ed10ef1dc89c643
-ms.sourcegitcommit: a8afac9982deafcf0652c63fe1615ba0ef1877be
+ms.openlocfilehash: 67eaaee2926cb938da47a3ca05cdc1fb0561b246
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96850741"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766140"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>教程 - 使用 Azure 密钥保管库加密和解密 blob
 
@@ -31,7 +31,7 @@ ms.locfileid: "96850741"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本教程，必须具备以下项目：
+要完成本教程，必须满足下列要求：
 
 * Azure 存储帐户
 * Visual Studio 2013 或更高版本
@@ -91,6 +91,12 @@ Install-Package Microsoft.Azure.KeyVault.Extensions
 
 添加以下 `using` 指令并确保将对 System.Configuration 的引用添加到项目中。
 
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.Configuration;
@@ -102,10 +108,17 @@ using Microsoft.Azure.KeyVault;
 using System.Threading;
 using System.IO;
 ```
+---
 
 ## <a name="add-a-method-to-get-a-token-to-your-console-application"></a>添加方法以便为控制台应用程序获取令牌
 
 以下方法由密钥保管库类使用，这些类需要进行身份验证才能访问密钥保管库。
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ```csharp
 private async static Task<string> GetToken(string authority, string resource, string scope)
@@ -122,10 +135,17 @@ private async static Task<string> GetToken(string authority, string resource, st
     return result.AccessToken;
 }
 ```
+---
 
 ## <a name="access-azure-storage-and-key-vault-in-your-program"></a>在程序中访问 Azure 存储和密钥保管库
 
 在 Main() 方法中，添加以下代码。
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ```csharp
 // This is standard code to interact with Blob storage.
@@ -142,6 +162,7 @@ contain.CreateIfNotExists();
 // This is where the GetToken method from above is used.
 KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 ```
+---
 
 > [!NOTE]
 > 密钥保管库对象模型
@@ -157,6 +178,12 @@ KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 ## <a name="encrypt-blob-and-upload"></a>加密 Blob 和上传
 
 添加以下代码以加密 Blob 并将其上传到 Azure 存储帐户。 使用的 **ResolveKeyAsync** 方法会返回 IKey。
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ```csharp
 // Retrieve the key that you created previously.
@@ -176,9 +203,11 @@ CloudBlockBlob blob = contain.GetBlockBlobReference("MyFile.txt");
 using (var stream = System.IO.File.OpenRead(@"C:\Temp\MyFile.txt"))
     blob.UploadFromStream(stream, stream.Length, null, options, null);
 ```
+---
 
 > [!NOTE]
 > 如果查看 BlobEncryptionPolicy 构造函数，会看到它可以接受密钥和/或解析程序。 请注意，现在无法将解析程序用于加密，因为它当前不支持默认密钥。
+
 
 ## <a name="decrypt-blob-and-download"></a>解密 Blob 并下载
 
@@ -187,6 +216,12 @@ using (var stream = System.IO.File.OpenRead(@"C:\Temp\MyFile.txt"))
 RSA 密钥的私钥则保留在密钥保管库中，因此，为了进行解密，来自包含 CEK 的 Blob 元数据的加密密钥会发送到密钥保管库进行解密。
 
 添加以下代码以解密刚刚上传的 Blob。
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ```csharp
 // In this case, we will not pass a key and only pass the resolver because
@@ -197,6 +232,7 @@ BlobRequestOptions options = new BlobRequestOptions() { EncryptionPolicy = polic
 using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
     blob.DownloadToStream(np, null, options, null);
 ```
+---
 
 > [!NOTE]
 > 可以通过几个其他类型的解析程序来简化密钥管理，其中包括：AggregateKeyResolver 和 CachingKeyResolver。
@@ -227,13 +263,18 @@ $secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'TestSecret
 
 在控制台应用程序中，可以使用与之前相同的调用将此密钥作为 SymmetricKey 进行检索。
 
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 ```csharp
 SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
     "https://contosokeyvault.vault.azure.cn/secrets/TestSecret2/", 
     CancellationToken.None).GetAwaiter().GetResult();
 ```
-
-就这么简单。 请尽情享受其中的乐趣！
+---
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -242,5 +283,3 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
 有关 Blob REST API 的详细信息，请参阅 [Blob 服务 REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)。
 
 有关 Azure 存储的最新信息，请转到 [Azure 存储团队博客](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)。
-
-<!--Update_Description: update link-->

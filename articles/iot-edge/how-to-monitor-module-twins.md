@@ -3,18 +3,18 @@ title: 监视模块孪生 - Azure IoT Edge
 description: 如何解释设备孪生和模块孪生，以确定连接性和运行状况。
 author: kgremban
 manager: philmea
-ms.author: v-tawe
-ms.date: 03/01/2021
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 808147d087f860c956b97da7af2c35fe9719863e
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.openlocfilehash: 3672561579a5705988ae9e9c1724445efbe97a75
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196711"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766957"
 ---
 # <a name="monitor-module-twins"></a>监视模块孪生
 
@@ -213,7 +213,7 @@ Azure IoT 中心中的模块孪生可以监视 IoT Edge 部署的连接性和运
 
 若要查看 IoT Edge 是否正在运行，请使用 [az iot hub invoke-module-method](how-to-edgeagent-direct-method.md#ping) 来对 IoT Edge 代理使用 ping 方法。
 
-[az iot hub module-twin](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/module-twin) 结构提供以下命令：
+[az iot hub module-twin](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/module-twin?view=azure-cli-latest) 结构提供以下命令：
 
 * **az iot hub module-twin show** - 显示模块孪生定义。
 * **az iot hub module-twin update** - 更新模块孪生定义。

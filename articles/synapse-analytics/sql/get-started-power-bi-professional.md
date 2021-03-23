@@ -2,19 +2,20 @@
 title: 通过 Power BI Professional 连接到 Synapse SQL
 description: 在本教程中，我们将完成将 Power BI Desktop 连接到无服务器 SQL 池的步骤。
 services: synapse-analytics
-author: azaricstefan
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: stefanazaric
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1e2bdfa720a31aaa94ea837741d7012383e78615
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 7f8f02ad37b938cb58bd859eb814331dc05819b7
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102206970"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765182"
 ---
 # <a name="connect-to-serverless-sql-pool-with-power-bi-professional"></a>通过 Power BI Professional 连接到无服务器 SQL 池
 
@@ -22,7 +23,7 @@ ms.locfileid: "102206970"
 >
 > - [Azure Data Studio](get-started-azure-data-studio.md)
 > - [Power BI](get-started-power-bi-professional.md)
-> - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+> - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)
 > - [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > - [SSMS](get-started-ssms.md)
 
@@ -78,13 +79,13 @@ DROP DATABASE IF EXISTS demo;
 **有关如何为人口普查数据容器创建凭据的代码片段**，请运行：
 
 ```sql
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')
-DROP CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer];
+IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.chinacloudapi.cn/censusdatacontainer')
+DROP CREDENTIAL [https://azureopendatastorage.blob.core.chinacloudapi.cn/censusdatacontainer];
 GO
 
 -- Create credentials for Census Data container which resides in a azure open data storage account
 -- There is no secret. We are using public storage account which doesn't need secret
-CREATE CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer]  
+CREATE CREDENTIAL [https://azureopendatastorage.blob.core.chinacloudapi.cn/censusdatacontainer]  
 WITH IDENTITY='SHARED ACCESS SIGNATURE',  
 SECRET = '';
 GO

@@ -11,14 +11,14 @@ metadata:
   ms.service: cognitive-services
   ms.subservice: metrics-advisor
   ms.topic: landing-page
-  ms.date: 11/06/2020
-  ms.author: mbullwin
-  ms.openlocfilehash: 31b7ca125c4ecf1c8a30d78a3dd35377d491bda3
-  ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+  ms.date: 03/08/2021
+  ms.author: v-johya
+  ms.openlocfilehash: 6e012b783d6fb8e952be7a17dfd1ccb51c744121
+  ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/06/2020
-  ms.locfileid: "94329033"
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104767074"
 landingContent:
 - title: 关于指标顾问
   linkLists:
@@ -28,12 +28,10 @@ landingContent:
       url: overview.md
   - linkListType: quickstart
     links:
-    - text: 浏览演示站点
-      url: quickstarts/explore-demo.md
     - text: 监视你关于 web 的第一个指标
       url: quickstarts/web-portal.md
-    - text: 使用 REST API 自定义解决方案
-      url: quickstarts/rest-api.md
+    - text: 使用 REST API 或客户端库
+      url: quickstarts/rest-api-and-client-library.md
 - title: 操作方法文章
   linkLists:
   - linkListType: how-to-guide

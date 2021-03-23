@@ -9,20 +9,20 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 10/15/2020
-ms.date: 11/20/2020
-ms.author: v-tawe
+ms.date: 03/08/2021
+ms.author: v-johya
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 19a8d49a821823e1970d14f007c034e1f8edcb50
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: cdb39b32e08c9bfa78727409357d229a7486b074
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977651"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803599"
 ---
 本指南介绍如何安装用于 [Unity](https://unity3d.com/) 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。
 
 > [!NOTE]
-> 适用于 Unity 的语音 SDK 支持 Windows 桌面版（x86 和 x64）或通用 Windows 平台（x86、x64、ARM/ARM64）、Android（x86、ARM32/64）或 iOS（x64 模拟器、ARM32 和 ARM64）
+> 适用于 Unity 的语音 SDK 支持 Windows 桌面版（x86 和 x64）或通用 Windows 平台（x86、x64、ARM/ARM64）、Android（x86、ARM32/64）和 iOS（x64 模拟器和 ARM64）
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
@@ -30,10 +30,10 @@ ms.locfileid: "94977651"
 
 本快速入门需要：
 
+- 在 Windows 上，需要安装适用于平台的 [Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0)。 首次安装时，可能需要重启。
 - [Unity 2018.3 或更高版本](https://store.unity.com/)，以及[支持 UWP ARM64 的 Unity 2019.1](https://blogs.unity3d.com/2019/04/16/introducing-unity-2019-1/#universal)。
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)。 也可以使用 Visual Studio 2017 版本 15.9 或更高版本。
 - 为了支持 Windows ARM64，请安装[适用于 ARM64 的可选版本工具，以及适用于 ARM64 的 Windows 10 SDK](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/)
-- 需要语音 SDK 版本 1.11.0 或更高版本。
 
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
@@ -52,3 +52,4 @@ ms.locfileid: "94977651"
 ## <a name="next-steps"></a>后续步骤
 
 [!INCLUDE [windows](../quickstart-list.md)]
+

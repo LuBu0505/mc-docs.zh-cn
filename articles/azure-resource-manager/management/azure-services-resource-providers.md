@@ -4,16 +4,16 @@ description: 列出 Azure 资源管理器的所有资源提供程序命名空间
 ms.topic: conceptual
 origin.date: 12/01/2020
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/22/2021
 ms.testscope: yes
 ms.testdate: 08/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 233aeb1cd22df38b5be860bc1a519a2c0d6e5631
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: e15a61d719471be78d48ba3d710cbb5013053397
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063641"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767088"
 ---
 <!--Verify sucessfully on 2020/08/17 by harris-->
 # <a name="resource-providers-for-azure-services"></a>Azure 服务的资源提供程序

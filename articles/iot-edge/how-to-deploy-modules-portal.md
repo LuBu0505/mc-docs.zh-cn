@@ -3,18 +3,17 @@ title: 从 Azure 门户部署模块 - Azure IoT Edge
 description: 根据部署清单的配置，在 Azure 门户中使用 IoT 中心将 IoT Edge 模块从 IoT 中心推送到 IoT Edge 设备。
 author: kgremban
 manager: philmea
-ms.author: v-tawe
-origin.date: 10/13/2020
-ms.date: 11/13/2020
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f89e24945d39ef80e0e66ceead32227e5ef22ce6
-ms.sourcegitcommit: 9438c9db77338cecacf37d2fc178e757df9de83d
+ms.openlocfilehash: 73a11fed0a522bc78c3b2ec9cc0f2a0a682a7c5c
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94595184"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766378"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>通过 Azure 门户部署 Azure IoT Edge 模块
 

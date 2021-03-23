@@ -2,20 +2,19 @@
 title: 快速入门 - 使用 Java 将 X.509 设备注册到 Azure 设备预配服务
 description: 本快速入门使用组注册和单独注册。 在本快速入门中，需使用 Java 将 X.509 设备注册到 Azure IoT 中心设备预配服务 (DPS)。
 author: wesmc7777
-ms.author: v-tawe
-origin.date: 11/08/2019
-ms.date: 01/05/2021
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: ad0f80c1a3567c8bf532400143e4da144e362aa8
-ms.sourcegitcommit: ff20289adb80a6ab45e15fa5e196ff7af7e1c6b5
+ms.openlocfilehash: 8ac1147fb638cd97d72130c3f16c5cbb9af65d72
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97874811"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765852"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>快速入门：使用 Java 将 X.509 设备注册到设备预配服务
 
@@ -27,7 +26,7 @@ ms.locfileid: "97874811"
 
 - 完成[使用 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)。
 - 具有活动订阅的 Azure 帐户。 [试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
-- [Java SE 开发工具包 8](https://aka.ms/azure-jdks)。 本快速入门将在下面安装 [Java 服务 SDK](https://azure.github.io/azure-iot-sdk-java/service/)。 它可以在 Windows 和 Linux 上运行。 本快速入门使用 Windows。
+- [Java SE 开发工具包 8](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)。 本快速入门将在下面安装 [Java 服务 SDK](https://azure.github.io/azure-iot-sdk-java/master/service/)。 它可以在 Windows 和 Linux 上运行。 本快速入门使用 Windows。
 - [Maven 3](https://maven.apache.org/download.cgi)。
 - [Git](https://git-scm.com/download/)。
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 02/18/2021
 ms.date: 03/15/2021
-ms.openlocfilehash: 442656b23af607aa3651f4aeec1a71c0154f97d2
-ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
+ms.openlocfilehash: 6aa4cb0fd4b62d656d0a4938fe8501b8a0dd5dd0
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102589848"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765902"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>将数据从 SQL Server 数据库复制到 Azure Blob 存储
 
@@ -125,7 +125,6 @@ ms.locfileid: "102589848"
    - 选择“新建”，并输入资源组的名称。
         
      若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。
-1. 在“版本”下选择“V2”。 
 1. 在“位置”下选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他区域。
 1. 选择“创建”。
 
@@ -189,15 +188,15 @@ ms.locfileid: "102589848"
 
     b. 在“表名称”下，选择 **[dbo].[emp]** 。
     
-    c. 选择“确定”  。
+    c. 选择“确定”。
 
 1. 转到包含 SQLServerToBlobPipeline 的选项卡，或在树状视图中选择“SQLServerToBlobPipeline”。 
 
 1. 转到“属性”窗口底部的“接收器”选项卡，选择“+ 新建”。  
 
-1. 在“新建数据集”对话框中，选择“Azure Blob 存储”，  然后选择“继续”。
+1. 在“新建数据集”对话框中，选择“Azure Blob 存储”，  然后选择“继续”。 
 
-1. 在“选择格式”对话框中，选择数据的格式类型。 然后选择“继续”。
+1. 在“选择格式”对话框中，选择数据的格式类型。 然后选择“继续”。 
 
     ![数据格式选择](./media/doc-common-process/select-data-format.png)
 
@@ -205,7 +204,7 @@ ms.locfileid: "102589848"
 
 1. 在“新建链接服务(Azure Blob 存储)”对话框中，输入 **AzureStorageLinkedService** 作为名称，从“存储帐户名称”列表中选择你的存储帐户。  测试连接，然后选择“创建”以部署该链接服务。
 
-1. 创建链接服务后，将返回到“设置属性”页。 选择“确定”  。
+1. 创建链接服务后，将返回到“设置属性”页。 选择“确定”。
 
 1. 打开接收器数据集。 在“连接”选项卡中执行以下步骤：
 
@@ -246,7 +245,7 @@ ms.locfileid: "102589848"
 
 
 ## <a name="next-steps"></a>后续步骤
-此示例中的管道将数据从 Blob 存储中的一个位置复制到另一个位置。 你已了解如何：
+此示例中的管道将数据从 Blob 存储中的一个位置复制到另一个位置。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建数据工厂。

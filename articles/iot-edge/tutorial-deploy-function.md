@@ -3,19 +3,18 @@ title: 教程：将 Azure Functions 部署为模块 - Azure IoT Edge
 description: 在本教程中，将 Azure Functions 开发为 IoT Edge 模块，然后将其部署到边缘设备。
 author: kgremban
 manager: philmea
-ms.author: v-tawe
-origin.date: 07/29/2020
-ms.date: 01/05/2021
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 3f5857ce5a3abf576b92e350082f4a995b425c79
-ms.sourcegitcommit: 40db5a4b9ab8b5877e307ff7a567fd930ca81c72
+ms.openlocfilehash: f345e6d18cf2e68f5256435ff2f60be2591bf91a
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894309"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765327"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>教程：将 Azure Functions 作为 IoT Edge 模块进行部署
 
@@ -35,7 +34,7 @@ ms.locfileid: "97894309"
 
 在本教程中创建的 Azure 函数可以筛选由设备生成的温度数据。 该函数只在温度高于指定阈值的情况下，向 Azure IoT 中心上游发送消息。
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -66,7 +65,7 @@ ms.locfileid: "97894309"
 
 3. 在“命令面板”中，输入并运行 Azure IoT Edge：**New IoT Edge solution** 命令。 按命令面板中的提示创建解决方案。
 
-   | 字段 | Value |
+   | 字段 | 值 |
    | ----- | ----- |
    | 选择文件夹 | 在适用于 VS Code 的开发计算机上选择用于创建解决方案文件的位置。 |
    | 提供解决方案名称 | 输入解决方案的描述性名称（例如 **FunctionSolution**），或者接受默认名称。 |

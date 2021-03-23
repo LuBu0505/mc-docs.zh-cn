@@ -7,25 +7,25 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-origin.date: 01/05/2021
-ms.date: 01/18/2021
-ms.author: v-tawe
-ms.openlocfilehash: 1b360c04ecaca5ba0e90d10a8e60907d336ea2cc
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: 1edb7b5371abd13bc0eecc5e0f659691c8e0b357
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059360"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766577"
 ---
-# <a name="azure-key-vault-security-overview"></a>Azure Key Vault 安全性概述
+# <a name="azure-key-vault-security"></a>Azure Key Vault 安全性
 
 使用 Azure Key Vault 可以保护云中的加密密钥和机密，例如证书、连接字符串和密码。 存储敏感数据和关键业务数据时，需要采取措施来最大限度地提高保管库及其存储的数据的安全性。
 
-本文概述了 Azure Key Vault 的安全功能和最佳做法。 若要获取基于 [Azure 安全基准](../../security/benchmarks/introduction.md)的建议的完整列表，请参阅 [Azure Key Vault 的安全基线](security-baseline.md)。
+本文概述了 Azure Key Vault 的安全功能和最佳做法。 
 
-## <a name="general-guidance"></a>一般指南
-
-我们的建议是对每个环境（开发环境、预生产环境和生产环境）的每个应用程序使用一个保管库。 这可以帮助你避免在不同环境之间共享机密，并可在出现安全漏洞时降低威胁。
+<!--
+> [!NOTE]
+> For a comprehensive list of Azure Key Vault security recommendations see the [Security baseline for Azure Key Vault](security-baseline.md).
+-->
 
 ## <a name="network-security"></a>网络安全性
 
@@ -85,7 +85,6 @@ ms.locfileid: "99059360"
 > [!IMPORTANT]
 > 如果用户具有密钥保管库管理平面的 `Contributor` 权限，则该用户可以通过设置密钥保管库访问策略来授予自己对数据平面的访问权限。 应严格控制对密钥保管库具有 `Contributor` 角色访问权限的用户。 请确保仅授权的人员才能访问和管理 Key Vault、密钥、机密和证书。
 
-
 ### <a name="controlling-access-to-key-vault-data"></a>控制对 Key Vault 数据的访问
 
 Key Vault 访问策略单独授予对密钥、机密或证书的权限。 可以仅授予用户对密钥的访问权限，而不授予对机密的访问权限。 在保管库级别管理密钥、机密或证书的访问权限。
@@ -95,9 +94,7 @@ Key Vault 访问策略单独授予对密钥、机密或证书的权限。 可以
 
 可以使用 [Azure 门户](assign-access-policy-portal.md)、[Azure CLI](assign-access-policy-cli.md)、[Azure PowerShell](assign-access-policy-powershell.md) 或[密钥保管库管理 REST API](https://docs.microsoft.com/rest/api/keyvault/) 为密钥保管库设置访问策略。
 
-
 可以通过使用[适用于 Azure 密钥保管库的虚拟网络服务终结点](overview-vnet-service-endpoints.md)来限制数据平面访问权限）。 可以配置[防火墙和虚拟网络规则](network-security.md)以提供额外的安全层。
-
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
@@ -105,7 +102,6 @@ Key Vault 日志记录会保存保管库中所执行活动的相关信息。 有
 
 
 你可以将 Key Vault 与事件网格集成，以便在密钥保管库中存储的密钥、证书或机密的状态发生更改时收到通知。 
-
 
 还必须监视密钥保管库的运行状况，以确保服务按预期运行。 若要了解如何执行此操作，请参阅 [Azure Key Vault 的监视和警报](alert.md)。
 
@@ -115,21 +111,7 @@ Azure Key Vault 软删除和清除保护允许你恢复已删除的保管库和�
 
 在保管库中更新/删除/创建对象时，你还应定期备份保管库。  
 
-Azure PowerShell 备份命令：
-
-* [备份证书](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultCertificate)
-* [备份密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultKey)
-* [备份机密](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultSecret)
-
-Azure CLI 备份命令
-
-* [备份证书](/cli/keyvault/certificate#az-keyvault-certificate-backup)
-* [备份密钥](/cli/keyvault/key#az-keyvault-key-backup)
-* [备份机密](/cli/keyvault/secret#az-keyvault-secret-backup)
-
-
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure Key Vault 的虚拟网络服务终结点](overview-vnet-service-endpoints.md)
 - [Azure RBAC：内置角色](../../role-based-access-control/built-in-roles.md)
-

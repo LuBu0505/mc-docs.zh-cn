@@ -2,18 +2,18 @@
 title: IoT 中心设备预配服务 - 角色和操作
 description: 本文对使用 IoT 设备预配服务 (DPS) 开发 IoT 解决方案时所涉及的角色和操作进行了概念性概述。
 author: wesmc7777
-ms.author: v-tawe
-ms.date: 02/22/2021
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: eliotga
-ms.openlocfilehash: 26170819312017160e50759632dddd4e42a61afd
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.openlocfilehash: d864ef7fe995ce17767aa1fd2c28ecf2bace3a55
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196585"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765635"
 ---
 # <a name="roles-and-operations"></a>角色和操作
 

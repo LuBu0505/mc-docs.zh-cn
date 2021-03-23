@@ -2,14 +2,13 @@
 title: Azure 仪表板结构
 description: 使用示例仪表板演练 Azure 仪表板的 JSON 结构。 包括对资源属性的引用。
 ms.topic: conceptual
-ms.date: 01/28/2021
-ms.author: v-tawe
-ms.openlocfilehash: 960e057f688e599c13aea122fe8a468221f34332
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.date: 03/15/2021
+ms.openlocfilehash: c625b5be45f9696a29df9d49ec3113400c50e7c6
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579599"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766669"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure 仪表板结构
 本文档将使用以下仪表板作为示例，介绍 Azure 仪表板的结构：

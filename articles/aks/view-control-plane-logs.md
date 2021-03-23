@@ -5,16 +5,16 @@ services: container-service
 ms.topic: article
 origin.date: 01/27/2020
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.testscope: yes
 ms.testdate: 03/01/2021
 ms.author: v-yeche
-ms.openlocfilehash: 0bf49892e318e8b050fa3c4d69a8e6adfbfcb3a3
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: f3bfb7a8d3b21da636728171784cc1dd06016cb9
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055760"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767099"
 ---
 <!--Verified successfully on 02/26/2021-->
 # <a name="enable-and-review-kubernetes-control-plane-logs-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中启用和查看 Kubernetes 控制平面日志
@@ -180,8 +180,8 @@ AKS 记录以下事件：
 
 [cli-quickstart]: kubernetes-walkthrough.md
 [portal-quickstart]: kubernetes-walkthrough-portal.md
-[log-analytics-overview]: ../azure-monitor/log-query/log-query-overview.md
-[analyze-log-analytics]: ../azure-monitor/log-query/log-analytics-tutorial.md
+[log-analytics-overview]: ../azure-monitor/logs/log-query-overview.md
+[analyze-log-analytics]: ../azure-monitor/logs/log-analytics-tutorial.md
 [kubelet-logs]: kubelet-logs.md
 [aks-ssh]: ssh.md
 [az-feature-register]: https://docs.azure.cn/cli/feature#az_feature_register
@@ -205,6 +205,4 @@ AKS 记录以下事件：
 [log-schema-kubeservices]: https://docs.microsoft.com/azure/azure-monitor/reference/tables/kubeservices
 [log-schema-perf]: https://docs.microsoft.com/azure/azure-monitor/reference/tables/perf
 
-
-<!--Update_Description: new article about view control plane logs-->
-<!--NEW.date: 03/01/2021-->
+<!--Update_Description: update meta properties, wording update, update link-->

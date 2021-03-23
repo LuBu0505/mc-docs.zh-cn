@@ -2,15 +2,13 @@
 title: 建议用于 Apache Kafka 客户端的配置 - Azure 事件中心
 description: 本文提供了建议用于与 Apache Kafka 的 Azure 事件中心进行交互的客户端的 Apache Kafka 配置。
 ms.topic: reference
-origin.date: 01/07/2021
-ms.date: 01/14/2021
-ms.author: v-tawe
-ms.openlocfilehash: 5c3039af175739e5e4edf4bd99a4b5c093fc74c9
-ms.sourcegitcommit: 93063f9b8771b8e895c3bcdf218f5e3af14ef537
+ms.date: 03/11/2021
+ms.openlocfilehash: 1ad89fb588529043154606cd2c0ee802cd9c2d57
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98193274"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767060"
 ---
 # <a name="recommended-configurations-for-apache-kafka-clients"></a>建议用于 Apache Kafka 客户端的配置
 下面是从 Apache Kafka 客户端应用程序使用 Azure 事件中心时的建议配置。 
@@ -35,7 +33,6 @@ properties | 建议的值 | 允许的范围 | 备注
 `metadata.max.idle.ms` | 180000 | > 5000 | 控制生成者为空闲的主题缓存元数据的时间长度。 如果自上次生成主题以来过去的时间超过了元数据空闲持续时间，系统会忘记该主题的元数据，在下一次访问它时会强制执行元数据提取请求。
 `linger.ms` | > 0 | | 对于高吞吐量场景，逗留值应该等于最大的可容忍值，以便利用批处理。
 `delivery.timeout.ms` | | | 请根据公式 (`request.timeout.ms` + `linger.ms`) * `retries` 进行设置。
-`enable.idempotence` | false | | 目前不支持幂等。
 `compression.type` | `none` | | 目前不支持压缩。
 
 ### <a name="consumer-configurations-only"></a>仅限使用者配置
@@ -64,7 +61,6 @@ properties | 建议的值 | 允许的范围 | 备注
 `retries` | > 0 | | 默认值为 2。 建议保留此值。 
 `request.timeout.ms` | 30000 .. 60000 | > 20000| EH 会在内部默认设置为最小值，即 20,000 毫秒。  `librdkafka` 默认值为 5000，这可能会产生问题。 虽然系统会接受超时值较低的请求，但不保证客户端行为。
 `partitioner` | `consistent_random` | 请参阅 librdkafka 文档 | `consistent_random` 是默认值，且为最佳值。  大多数情况下，可以理想地处理空键和 null 键。
-`enable.idempotence` | false | | 目前不支持幂等。
 `compression.codec` | `none` || 目前不支持压缩。
 
 ### <a name="consumer-configurations-only"></a>仅限使用者配置

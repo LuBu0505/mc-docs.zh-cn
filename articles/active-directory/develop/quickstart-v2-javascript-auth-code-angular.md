@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 02/23/2021
+ms.date: 03/12/2021
 ms.author: v-junlch
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 1209515612d00f012687036ec77ca634950d07f5
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 39a8122c261992b17b4b7eb6fa00f5f82d0ab678
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697883"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765509"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-an-angular-spa-using-the-auth-code-flow"></a>快速入门：使用授权代码流在 Angular SPA 中登陆并获取访问令牌
 
@@ -26,6 +26,9 @@ ms.locfileid: "101697883"
 有关说明，请参阅[示例工作原理](#how-the-sample-works)。
 
 本快速入门将 MSAL Angular v2 与授权代码流配合使用。 若要查看将 MSAL Angular 1.x 与隐式流结合使用的类似快速入门，请参阅[快速入门：在 JavaScript 单页应用中登录用户](./quickstart-v2-angular.md)。
+
+> [!IMPORTANT]
+> MSAL Angular v2 [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -51,11 +54,11 @@ ms.locfileid: "101697883"
 >
 > 1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
-> 1. 搜索并选择“Azure Active Directory”  。
+> 1. 搜索并选择“Azure Active Directory”。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 > 1. 输入应用程序的 **名称**。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 > 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户”。 
-> 1. 选择“注册”  。 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
+> 1. 选择“注册”。 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
 > 1. 在“管理”下，选择“身份验证”。 
 > 1. 在“平台配置”下，选择“添加平台” 。 在打开的窗格中，选择“单页应用程序”。
 > 1. 将“重定向 URI”值设置为 `http://localhost:4200/`。 这是将在本地计算机上侦听的默认端口 NodeJS。 在成功对用户进行身份验证后，我们会将身份验证响应返回到此 URl。 
@@ -114,7 +117,7 @@ ms.locfileid: "101697883"
 > 修改 `auth` 部分中的值，如下所述：
 >
 > - `Enter_the_Application_Id_Here` 是已注册应用程序的应用程序（客户端）ID。
-> - `Enter_the_Cloud_Instance_Id_Here` 是 Azure 云的实例。  对于 **国家** 云（例如“中国”云），请参阅 [国家云](authentication-national-cloud.md)。
+> - `Enter_the_Cloud_Instance_Id_Here` 是 Azure 云的实例。 对于 **国家** 云（例如“中国”云），请参阅 [国家云](authentication-national-cloud.md)。
 > - `Enter_the_Tenant_info_here` 设置为以下选项之一：
 >   - 如果应用程序支持“此组织目录中的帐户”，请将此值替换为“租户 ID”或“租户名称”。 例如，`contoso.microsoft.com`。
 >   - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为“`organizations`”。

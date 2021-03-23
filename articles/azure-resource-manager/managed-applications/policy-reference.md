@@ -1,20 +1,20 @@
 ---
 title: Azure 托管应用程序的内置策略定义
 description: 列出 Azure 托管应用程序的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-origin.date: 02/09/2021
-ms.date: 03/01/2021
+origin.date: 03/05/2021
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: 09/21/2020
 ms.topic: reference
 author: rockboyfor
 ms.author: v-yeche
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 95b7955dbb2e3b40c5d59c4230446b64967cf272
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 54c87cf0a5ec28ba1149792781f5b8e698378801
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055169"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766290"
 ---
 <!--Verified successfully-->
 <!--CORRECT AS Azure managed applications to meet Scorecard reqirement-->

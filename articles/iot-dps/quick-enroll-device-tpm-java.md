@@ -2,20 +2,19 @@
 title: 快速入门 - 使用 Java 将 TPM 设备注册到 Azure 设备预配服务
 description: 快速入门 - 使用 Java 服务 SDK 将 TPM 设备注册到 Azure IoT 中心设备预配服务 (DPS)。 本快速入门使用单独注册。
 author: wesmc7777
-ms.author: v-tawe
-origin.date: 11/08/2019
-ms.date: 01/05/2021
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 0cb7e593dbab4667df0bd509b1c2b58c5060cd98
-ms.sourcegitcommit: ff20289adb80a6ab45e15fa5e196ff7af7e1c6b5
+ms.openlocfilehash: 078f55e5a49d4dc9676671ffa61ab80f35c8026b
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97874841"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765862"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>快速入门：使用 Java 服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务
 
@@ -28,7 +27,7 @@ ms.locfileid: "97874841"
 - 完成[使用 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)。
 - 完成[从 TPM 设备读取加密密钥](quick-create-simulated-device.md#simulatetpm)。
 - 具有活动订阅的 Azure 帐户。 [试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
-- [Java SE 开发工具包 8](https://aka.ms/azure-jdks)。 本快速入门将在下面安装 [Java 服务 SDK](https://azure.github.io/azure-iot-sdk-java/service/)。 它可以在 Windows 和 Linux 上运行。 本快速入门使用 Windows。
+- [Java SE 开发工具包 8](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)。 本快速入门将在下面安装 [Java 服务 SDK](https://azure.github.io/azure-iot-sdk-java/master/service/)。 它可以在 Windows 和 Linux 上运行。 本快速入门使用 Windows。
 - [Maven 3](https://maven.apache.org/download.cgi)。
 - [Git](https://git-scm.com/download/)。
 
@@ -36,7 +35,7 @@ ms.locfileid: "97874841"
 
 ## <a name="prepare-the-development-environment"></a>准备开发环境 
 
-1. 确保已在计算机上安装 [Java SE 开发工具包 8](https://docs.microsoft.com/java/azure/jdk/)。 
+1. 确保已在计算机上安装 [Java SE 开发工具包 8](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)。 
 
 2. 设置 Java 安装的环境变量。 `PATH` 变量应包括 *jdk1.8.x\bin* 目录的完整路径。 如果这是计算机的首次 Java 安装，则请创建名为 `JAVA_HOME` 的新的环境变量，将其指向 *jdk1.8.x* 目录的完整路径。 在 Windows 计算机上，该目录位于 *C:\\Program Files\\Java\\* 文件夹中。可以通过在 Windows 计算机的“控制面板”上搜索“编辑系统环境变量”来创建或编辑环境变量。   
 

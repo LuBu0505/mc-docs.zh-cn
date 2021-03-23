@@ -9,15 +9,15 @@ metadata:
   ms.service: key-vault
   ms.topic: landing-page
   author: msmbaldwin
-  ms.author: v-tawe
+  ms.author: v-chazhou
   manager: rkarlin
-  ms.date: 01/27/2021
-  ms.openlocfilehash: d4fbf762b17098a21f17f31fb2a01f959ffa49a4
-  ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+  ms.date: 03/10/2021
+  ms.openlocfilehash: 4b0c00f123bc31371df5044d0a5594936558d1ba
+  ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/29/2021
-  ms.locfileid: "99059931"
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104765579"
 landingContent:
 - title: 关于 Azure Key Vault
   linkLists:

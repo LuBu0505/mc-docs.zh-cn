@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
-ms.date: 01/27/2021
-ms.author: v-tawe
-ms.openlocfilehash: 462ca1bf8cc920adbc2b984b9ecb07bff9c8a11b
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: bff41cb931b8b61fe4a740bfdef2e9268f3064fe
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99058456"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766556"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>Azure Key Vault 的新增功能
 
@@ -37,7 +37,7 @@ ms.locfileid: "99058456"
 
 ### <a name="soft-delete-on-by-default"></a>Key Vault 软删除在默认情况下开启
 
-到 2020 年年底，软删除在默认情况下将对所有 Key Vault（新的和预先存在的）处于开启状态。 有关此可能的中断性变更的完整详细信息，以及查找受影响的 Key Vault 并预先更新它们的步骤，请参阅[对所有 Key Vault 启用软删除](soft-delete-change.md)。
+需要为所有密钥保管库（新的和预先存在的）启用软删除。 在接下来的几个月里，即将弃用选择退出软删除的功能。 有关此可能的中断性变更的完整详细信息，以及查找受影响的 Key Vault 并预先更新它们的步骤，请参阅[对所有 Key Vault 启用软删除](soft-delete-change.md)。
 
 ### <a name="azure-tls-certificate-changes"></a>Azure TLS 证书更改
 

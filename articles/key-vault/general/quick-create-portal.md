@@ -9,15 +9,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: quickstart
 ms.custom: mvc
-origin.date: 12/08/2020
-ms.date: 01/14/2021
-ms.author: v-tawe
-ms.openlocfilehash: 1c7d23300ad76ffef9997ac90f7defbc1eb5d294
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: ae563bcc9dcb7f81dce813e87577041039571ff6
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059382"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765777"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建密钥保管库
 
@@ -39,13 +38,13 @@ Azure Key Vault 是一项云服务，它为[密钥](../keys/index.yml)、[机密
 2. 在“搜索”框中输入“Key Vault”。
 3. 从结果列表中选择“Key Vault”。
 4. 在“Key Vault”部分，选择“创建”。
-5. 在“创建密钥保管库”部分，提供以下信息：
+5. 在“创建密钥保管库”部分，提供以下信息： 
     - **Name**：必须提供唯一的名称。 对于本快速入门，我们使用 **Contoso-vault2**。 
     - **订阅**：选择订阅。
     - 在“资源组”下选择“新建”，然后输入资源组名称。
     - 在“位置”下拉菜单中选择一个位置。
     - 让其他选项保留默认值。
-6. 提供上述信息后，选择“创建”。
+6. 提供上述信息后，选择“创建”  。
 
 请记下下面列出的两个属性：
 
@@ -62,7 +61,7 @@ Azure Key Vault 是一项云服务，它为[密钥](../keys/index.yml)、[机密
 如果不再需要资源组，可以将其删除，这将删除 Key Vault 和相关的资源。 要通过门户删除资源组，请执行以下操作：
 
 1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到在本快速入门中使用的资源组后，将其选中。
-2. 选择“删除资源组”。
+2. 选择“删除资源组”  。
 3. 在“键入资源组名称:”框中，键入资源组的名称，然后选择“删除” 。
 
 

@@ -1,22 +1,20 @@
 ---
 title: 针对事件中心的 Apache Kafka 开发人员指南
 description: 本文提供相关文章的链接，这些文章介绍了如何将 Kafka 应用程序与 Azure 事件中心集成。
-ms.author: v-tawe
-origin.date: 06/23/2020
-ms.date: 11/04/2020
+ms.date: 03/11/2021
 ms.topic: article
-ms.openlocfilehash: fee76b7bbe5ceda13d79b22d24c41f9f4547697e
-ms.sourcegitcommit: b217474b15512b0f40b2eaae66bd3c521383d321
+ms.openlocfilehash: f9088893f22637dfb3ebc118ed7093ecdc300d7e
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93375678"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767058"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>针对 Azure 事件中心的 Apache Kafka 开发人员指南
 本文提供相关文章的链接，这些文章介绍了如何将 Apache Kafka 应用程序与 Azure 事件中心集成。 
 
 ## <a name="overview"></a>概述
-事件中心提供 Kafka 终结点，现有的基于 Kafka 的应用程序可将该终结点用作运行你自己的 Kafka 群集的替代方案。 事件中心可与许多现有 Kafka 应用程序配合使用。 有关详细信息，请参阅[适用于 Apache Kafka 的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
+事件中心提供 Kafka 终结点，现有的基于 Kafka 的应用程序可将该终结点用作运行你自己的 Kafka 群集的替代方案。 事件中心可与许多现有 Kafka 应用程序配合使用。
 
 ## <a name="quickstarts"></a>快速入门
 你可以在 GitHub 和此内容集中找到各种快速入门文章，快速熟悉用于 Kafka 的事件中心。
@@ -35,9 +33,10 @@ ms.locfileid: "93375678"
 | [Kafka](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/kafka-cli) | 本快速入门介绍如何使用 Apache Kafka 发行版附带的 CLI 来创建和连接事件中心 Kafka 终结点。| 
 | [Kafkacat](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/kafkacat) | kafkacat 是一个非 JVM 的命令行使用者和创建者。它基于 librdkafka，因其速度快且资源占用量小而广受欢迎。 本快速入门包含一个示例配置和几个简单的示例 kafkacat 命令。 | 
  
-### <a name="quickstarts-in-docs"></a>DOCS 中的快速入门
-请参阅此内容集中的这个快速入门：[使用 Kafka 协议通过事件中心进行数据流式传输](event-hubs-quickstart-kafka-enabled-event-hubs.md)，其中提供的分步说明介绍了如何将数据流式传输到事件中心。 你将了解如何只需更改应用程序配置，即可使用生产者和使用者与事件中心通信。 
-
+ <!--
+### Quickstarts in DOCS
+See the quickstart: [Data streaming with Event Hubs using the Kafka protocol](event-hubs-quickstart-kafka-enabled-event-hubs.md) in this content set, which provides step-by-step instructions on how to stream into Event Hubs. You learn how to use your producers and consumers to talk to Event Hubs with just a configuration change in your applications. 
+-->
 
 ## <a name="tutorials"></a>教程 
 
@@ -59,21 +58,22 @@ ms.locfileid: "93375678"
 | [Confluent 的架构注册表](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/schema-registry) | 本教程详述如何将架构注册表与用于 Kafka 的事件中心集成。 | 
 | [Spark](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/spark) | 本教程将演示如何在不更改你的协议客户端或运行你自己的 Kafka 群集的情况下，将 Spark 应用程序连接到事件中心。 | 
 
-### <a name="tutorials-in-docs"></a>DOCS 中的教程
-请参阅此内容集中的这个教程：[使用流分析处理用于事件中心的 Apache Kafka 事件](event-hubs-kafka-stream-analytics.md)，该教程介绍如何将数据流式传输到事件中心，并使用 Azure 流分析对其进行处理。
+<!--
+### Tutorials in DOCS
+Also, see the tutorial: [Process Apache Kafka for Event Hubs events using Stream analytics](event-hubs-kafka-stream-analytics.md) in this content set, which shows how to stream data into Event Hubs and process it with Azure Stream Analytics.
 
-## <a name="how-to-guides"></a>操作指南
-请参阅文档中的以下操作指南：
+## How-to guides
+See the following How-to guides in our documentation:
 
-| 文章 | 说明 | 
+| Article | Description | 
 | ------- | ----------- | 
-| [在事件中心镜像 Kafka 中转站](event-hubs-kafka-mirror-maker-tutorial.md) | 演示如何使用 Kafka MirrorMaker 在事件中心镜像 Kafka 中转站。 |
-| [将 Apache Spark 连接到事件中心](event-hubs-kafka-spark-tutorial.md) | 详细介绍如何将 Spark 应用程序连接到事件中心进行实时流式处理。 |
-| [将 Apache Flink 连接到事件中心](event-hubs-kafka-flink-tutorial.md) | 演示如何在不更改你的协议客户端或运行你自己的群集的情况下，将 Apache Flink 连接到事件中心。 |
-| [将 Apache Kafka Connect 与事件中心（预览版）集成](event-hubs-kafka-connect-tutorial.md) | 详细介绍如何将 Kafka Connect 与事件中心集成，以及如何部署基本的 FileStreamSource 和 FileStreamSink 连接器。 |
-| [将 Akka Streams 连接到事件中心](event-hubs-kafka-akka-streams-tutorial.md) | 演示如何在不更改你的协议客户端或运行你自己的群集的情况下，将 Akka Streams 连接到事件中心。 |
-| [将适用于 Apache Kafka 的 Spring Boot Starter 与 Azure 事件中心配合使用](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub) | 介绍如何配置基于 Java 的 Spring Cloud Stream Binder，它是使用 Spring Boot Initializer 创建的，目的是将 Apache Kafka 与 Azure 事件中心配合使用。 |
-
+| [Mirror a Kafka broker in an event hub](event-hubs-kafka-mirror-maker-tutorial.md) | Shows how to mirror a Kafka broker in an event hub using Kafka MirrorMaker. |
+| [Connect Apache Spark to an event hub](event-hubs-kafka-spark-tutorial.md) | Walks you through connecting your Spark application to Event Hubs for real-time streaming. |
+| [Connect Apache Flink to an event hub](event-hubs-kafka-flink-tutorial.md) | Shows you how to connect Apache Flink to an event hub without changing your protocol clients or running your own clusters. |
+| [Integrate Apache Kafka Connect with a event hub (Preview)](event-hubs-kafka-connect-tutorial.md) | Walks you through integrating Kafka Connect with an event hub and deploying basic FileStreamSource and FileStreamSink connectors. |
+| [Connect Akka Streams to an event hub](event-hubs-kafka-akka-streams-tutorial.md) | Shows you how to connect Akka Streams to an event hub without changing your protocol clients or running your own clusters. |
+| [Use the Spring Boot Starter for Apache Kafka with Azure Event Hubs](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub) | Demonstrates how to configure a Java-based Spring Cloud Stream Binder created with the Spring Boot Initializer to use Apache Kafka with Azure Event Hubs. |
+-->
 ## <a name="next-steps"></a>后续步骤
 请查看 GitHub 存储库 [azure-event-hubs-for-kafka](https://github.com/Azure/azure-event-hubs-for-kafka) 中 quickstart 和 tutorials 文件夹下的示例。
 

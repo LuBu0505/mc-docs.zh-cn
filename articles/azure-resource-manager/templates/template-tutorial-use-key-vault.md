@@ -1,20 +1,20 @@
 ---
 title: 在模板中使用 Azure Key Vault
 description: 了解如何在 Azure 资源管理器模板部署期间使用 Azure Key Vault 来传递安全参数值
-origin.date: 04/23/2020
+origin.date: 03/01/2021
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.topic: tutorial
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 913eeabffeed1a5469f4b3d26f3ac859874d183f
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: aeca4ac15c67b36f3e528c72cd76eb175f82de1c
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021341"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765273"
 ---
 <!-- Verify successfully-->
 <!-- CORRECT THE LOCATION DEFAULT VALUE TO [parameters('location')]-->
@@ -38,7 +38,7 @@ ms.locfileid: "98021341"
 
 如果没有 Azure 订阅，请在开始前[创建试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
-<!--Not Available on [Manage complex cloud deployments by using advanced ARM template features](https://docs.microsoft.com/learn/modules/manage-deployments-advanced-arm-template-features/)-->
+<!--NOT AVAILABLE ON [Manage complex cloud deployments by using advanced ARM template features](https://docs.microsoft.com/learn/modules/manage-deployments-advanced-arm-template-features/)-->
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -125,7 +125,14 @@ ms.locfileid: "98021341"
 若要对部署进行验证，请在同一 shell 窗格中运行以下 PowerShell 命令，以明文形式检索机密。 此命令只能在同一 shell 会话中使用，因为它使用在先前 PowerShell 脚本中定义的变量 `$keyVaultName`。
 
 ```azurepowershell
-(Get-AzKeyVaultSecret -vaultName $keyVaultName  -name "vmAdminPassword").SecretValueText
+$secret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name "vmAdminPassword"
+$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
+try {
+   $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
+} finally {
+   [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
+}
+Write-Output $secretValueText
 ```
 
 现在已准备好密钥保管库和密钥。 以下部分显示如何自定义现有模板，以便在部署过程中检索机密。
@@ -152,12 +159,6 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
     * `Microsoft.Network/networkInterfaces`.
     * `Microsoft.Compute/virtualMachines`.
 
-        <!-- Not Available on  [template reference](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)-->
-        <!-- Not Available on  [template reference](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)-->
-        <!-- Not Available on  [template reference](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups)-->
-        <!-- Not Available on  [template reference](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)-->
-        <!-- Not Available on  [template reference](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)-->
-        <!-- Not Available on  [template reference](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)-->
 
     在自定义模板之前，不妨对其进行一些基本的了解。
 
@@ -180,7 +181,7 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
     "adminPassword": {
         "reference": {
             "keyVault": {
-            "id": "/subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>"
+                "id": "/subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>"
             },
             "secretName": "vmAdminPassword"
         }
@@ -253,4 +254,4 @@ Write-Host "Press [ENTER] to continue ..."
 > [!div class="nextstepaction"]
 > [部署虚拟机扩展](./template-tutorial-deploy-vm-extensions.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -5,16 +5,16 @@ services: container-service
 ms.topic: article
 origin.date: 03/05/2019
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: bd3489fad8e1b0d62184d7a7024098ae9a0dfb00
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 92f12e2dfc398d1247761f2d1cc260ce4c6470d2
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054075"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766423"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>从 Azure Kubernetes 服务 (AKS) 群集节点获取 kubelet 日志
 
@@ -81,6 +81,6 @@ I0508 12:28:58.344656    8672 kubelet_node_status.go:497] Using Node Hostname fr
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [aks-master-logs]: view-master-logs.md
-[azure-container-logs]: ../azure-monitor/insights/container-insights-overview.md
+[azure-container-logs]: ../azure-monitor/containers/container-insights-overview.md
 
 <!--Update_Description: update meta properties, wording update, update link-->

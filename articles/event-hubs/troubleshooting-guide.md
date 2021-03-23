@@ -2,15 +2,13 @@
 title: 排查连接问题 - Azure 事件中心 | Microsoft Docs
 description: 本文介绍如何排查 Azure 事件中心的连接问题。
 ms.topic: article
-origin.date: 06/23/2020
-ms.date: 12/02/2020
-ms.author: v-tawe
-ms.openlocfilehash: d246c4b356599cfc25aae60bd5d7714b1cb7febe
-ms.sourcegitcommit: f436acd1e2a0108918a6d2ee9a1aac88827d6e37
+ms.date: 03/11/2021
+ms.openlocfilehash: b66c51f6cd6a4924f228157f19479bd4eb943966
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508942"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765361"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>排查连接问题 - Azure 事件中心
 客户端应用程序无法连接到事件中心的原因有很多。 你遇到的连接问题可能是永久性的，也可能是暂时性的。 如果问题一直发生（永久性的），则可能需要检查连接字符串、组织的防火墙设置、IP 防火墙设置、网络安全设置（服务终结点、专用终结点等），等等。 对于暂时性问题，升级到最新版本的 SDK、运行命令来检查丢弃的数据包以及获取网络跟踪可能有助于解决问题。 
@@ -26,7 +24,7 @@ ms.locfileid: "96508942"
 ### <a name="verify-the-connection-string"></a>验证连接字符串 
 验证你使用的连接字符串是否正确。 请参阅[获取连接字符串](event-hubs-get-connection-string.md)，以便使用 Azure 门户、CLI 或 PowerShell 获取连接字符串。 
 
-对于 Kafka 客户端，请验证是否正确配置了 producer.config 或 consumer.config 文件。 有关详细信息，请参阅[在事件中心内使用 Kafka 发送和接收消息](event-hubs-quickstart-kafka-enabled-event-hubs.md#send-and-receive-messages-with-kafka-in-event-hubs)。
+<!-- For Kafka clients, verify that producer.config or consumer.config files are configured properly. For more information, see [Send and receive messages with Kafka in Event Hubs](event-hubs-quickstart-kafka-enabled-event-hubs.md#send-and-receive-messages-with-kafka-in-event-hubs). -->
 
 [!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
 
@@ -36,7 +34,7 @@ ms.locfileid: "96508942"
 ### <a name="check-if-the-application-needs-to-be-running-in-a-specific-subnet-of-a-vnet"></a>检查应用程序是否需要在 vnet 的特定子网中运行
 确认应用程序在有权访问该命名空间的虚拟网络子网中运行。 如果没有，请在有权访问命名空间的子网中运行应用程序或将运行应用程序的计算机的 IP 地址添加到 [IP 防火墙](event-hubs-ip-filtering.md)。 
 
-为事件中心命名空间创建虚拟网络服务终结点时，该命名空间仅接受来自绑定到服务终结点的子网的流量。 此行为有一个例外。 可以在 IP 防火墙中添加特定 IP 地址，以便启用对事件中心公共终结点的访问权限。 有关详细信息，请参阅[网络服务终结点](event-hubs-service-endpoints.md)。
+为事件中心命名空间创建虚拟网络服务终结点时，该命名空间仅接受来自绑定到服务终结点的子网的流量。 此行为有一个例外。 可以在 IP 防火墙中添加特定 IP 地址，以便启用对事件中心公共终结点的访问权限。
 
 ### <a name="check-the-ip-firewall-settings-for-your-namespace"></a>检查命名空间的 IP 防火墙设置
 确认运行应用程序的计算机的公共 IP 地址未被 IP 防火墙阻止。  
@@ -89,7 +87,7 @@ For more information, see [Configure private endpoints](private-link-service.md)
 出现间歇性连接问题时，请运行以下命令，检查是否存在任何丢弃的数据包。 此命令会尝试通过服务每隔 1 秒建立 25 个不同的 TCP 连接。 然后，可以检查其中有多少成功/失败，还可以查看 TCP 连接延迟。 可以从[此处](https://docs.microsoft.com/sysinternals/downloads/psping)下载 `psping` 工具。
 
 ```shell
-.\psping.exe -n 25 -i 1 -q <yournamespacename>.servicebus.chinacloudapi.cn:5671 -nobanner
+.\psping.exe -n 25 -i 1 -q <yournamespacename>.servicebus.chinacloudapi.cn:5671 -nobanner     
 ```
 如果使用的是其他工具（如 `tnc`、`ping` 等），则可以使用等效的命令。 
 

@@ -2,21 +2,22 @@
 title: 在 Synapse SQL 中使用动态 SQL
 description: 在 Synapse SQL 中使用动态 SQL 的技巧。
 services: synapse-analytics
-author: filippopovic
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: fipopovi
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 1efd52a4a4c7d3479b83c04748940ebea20bac04
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: cda23913b86d03eb587b3c5b8bcd3d5946c6a559
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207231"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766829"
 ---
 # <a name="dynamic-sql-in-synapse-sql"></a>Synapse SQL 中的动态 SQL
 
@@ -39,7 +40,7 @@ DECLARE @sql_fragment1 VARCHAR(8000)=' SELECT name '
 EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 ```
 
-如果字符串较短，则可以像平时一样使用 [sp_executesql](/sql/relational-databases/system-stored-procedures/sp-executesql-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+如果字符串较短，则可以像平时一样使用 [sp_executesql](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-executesql-transact-sql?view=azure-sqldw-latest&preserve-view=true)。
 
 > [!NOTE]
 > 作为动态 SQL 执行的语句仍会受所有 T-SQL 验证规则的约束。

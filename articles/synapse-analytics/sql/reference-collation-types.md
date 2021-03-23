@@ -1,19 +1,20 @@
 ---
 title: 排序规则支持
 description: 对 Azure Synapse Analytics 中 Synapse SQL 的排序规则类型支持
-author: filippopovic
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: reference
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: fipopovi
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4c878f99b89dbdc9986c81ed9c3de3b0f14e862c
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 8bd368e2adc9f1fe49567110188351f9f9f46916
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207618"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766815"
 ---
 # <a name="database-collation-support-for-synapse-sql-in-azure-synapse-analytics"></a>对 Azure Synapse Analytics 中 Synapse SQL 的数据库排序规则支持 
 

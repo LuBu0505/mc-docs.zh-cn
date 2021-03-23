@@ -2,20 +2,19 @@
 title: Azure IoT 中心设备预配服务 - 对称密钥证明
 description: 本文以概念的方式概述了使用 IoT 设备预配服务 (DPS) 的对称密钥证明。
 author: wesmc7777
-ms.author: v-tawe
-origin.date: 04/04/2019
-ms.date: 09/30/2020
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 51974e5877397c7f0d151af9ccc53bd30d11a09f
-ms.sourcegitcommit: 29a49e95f72f97790431104e837b114912c318b4
+ms.openlocfilehash: ff27995f3ae7ba10c104a0723ecb6a4810670355
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91564400"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765634"
 ---
 # <a name="symmetric-key-attestation"></a>对称密钥证明
 

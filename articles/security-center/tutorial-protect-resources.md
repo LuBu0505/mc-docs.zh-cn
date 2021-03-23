@@ -13,14 +13,14 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 12/3/2018
-ms.date: 11/12/2020
+ms.date: 03/18/2021
 ms.author: v-johya
-ms.openlocfilehash: a715d84fb93e3c99081e596ed7a5e67e82ea8676
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: b23d1858e847dd56a8299ead49b8f3a88834f425
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637806"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766146"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>教程：使用 Azure 安全中心来保护资源
 安全中心使用访问控制和应用程序控制来阻止恶意活动，限制威胁所造成的危害。 可以通过实时 (JIT) 虚拟机 (VM) 访问拒绝对 VM 的永久性访问，减少自己遭受攻击的可能性。 仅在需要的情况下，才提供对 VM 的受控且经过审核的访问权限。 自适应应用程序控制可以对哪些应用程序能够在 VM 上运行进行控制，从而强化 VM 对抗恶意软件的能力。 安全中心使用机器学习来分析在 VM 中运行的进程，帮助你运用此智能来应用允许列表规则。
@@ -32,7 +32,7 @@ ms.locfileid: "94637806"
 > * 配置应用程序控制策略
 
 ## <a name="prerequisites"></a>先决条件
-若要逐步执行本教程中介绍的功能，需要启用 Azure Defender。 可以免费试用 Azure Defender。 有关详细信息，请参阅[试用 Azure Defender](security-center-pricing.md)。
+若要逐步执行本教程中介绍的功能，需要启用 Azure Defender。 提供试用版。 若要升级，请参阅[启用 Azure Defender](enable-azure-defender.md)。
 
 ## <a name="manage-vm-access"></a>管理 VM 访问权限
 JIT VM 访问可以用来锁定发往 Azure VM 的入站流量，降低遭受攻击的可能性，同时在需要时还允许轻松连接到 VM。

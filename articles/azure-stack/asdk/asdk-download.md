@@ -4,16 +4,16 @@ description: 了解如何下载和提取 Azure Stack 开发工具包 (ASDK)。
 author: WenJason
 ms.topic: article
 origin.date: 05/06/2019
-ms.date: 05/18/2020
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 08/10/2019
-ms.openlocfilehash: bf9d9e908663ce23bca04ff968fce4404e36fd2b
-ms.sourcegitcommit: 134afb420381acd8d6ae56b0eea367e376bae3ef
+ms.openlocfilehash: 3b30824492b70ce00716f47138f0a70b75a20c9a
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83422416"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765397"
 ---
 # <a name="download-and-extract-the-asdk"></a>下载并提取 ASDK
 在确保开发工具包主计算机满足安装 Azure Stack 开发工具包 (ASDK) 的基本要求后，下一步是下载并提取 ASDK 部署包，以获取 Cloudbuilder.vhdx。
@@ -25,7 +25,7 @@ ms.locfileid: "83422416"
    - 必须已安装 [.NET Framework 4.6（或更高版本）](https://dotnet.microsoft.com/download/dotnet-framework-runtime/net46)。
 
 2. [转到“入门”页](https://azure.microsoft.com/overview/azure-stack/try/?v=try)，可以在其中下载 ASDK，提供详细信息，然后单击“提交”  。
-3. 下载并运行[用于 ASDK 的部署检查器](https://go.microsoft.com/fwlink/?LinkId=828735&clcid=0x409)先决条件检查器脚本。 此独立脚本完成由 ASDK 的安装程序执行的先决条件检查。 在下载更大的用于 ASDK 的程序包之前，可以通过它来确认硬件和软件要求是否已得到满足。
+3. 下载并运行[用于 ASDK 的部署检查器](https://github.com/Azure/AzureStack-Tools/blob/master/Deployment/asdk-prechecker.ps1)先决条件检查器脚本。 此独立脚本完成由 ASDK 的安装程序执行的先决条件检查。 在下载更大的用于 ASDK 的程序包之前，可以通过它来确认硬件和软件要求是否已得到满足。
 4. 在“下载软件”下单击“Azure Stack 开发工具包”。  
 
    > [!NOTE]

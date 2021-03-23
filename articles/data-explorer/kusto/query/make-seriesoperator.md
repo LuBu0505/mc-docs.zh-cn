@@ -3,19 +3,18 @@ title: make-series 运算符 - Azure 数据资源管理器
 description: 本文介绍 Azure 数据资源管理器中的 make-series 运算符。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 03/16/2020
-ms.date: 01/22/2021
+ms.date: 03/18/2021
 ms.localizationpriority: high
-ms.openlocfilehash: 32269ffc90c5487a1a2b6a6e06c95743b66e5616
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.openlocfilehash: 1d2d7b6116e4697f87777de7b61b0c8c6ecb8748
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611697"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766612"
 ---
 # <a name="make-series-operator"></a>make-series 运算符
 
@@ -88,6 +87,7 @@ T `| make-series` [Column `=`] Aggregation [`default` `=` DefaultValue] [`,` ...
 |[maxif()](maxif-aggfunction.md)|返回具有组谓词的最大值|
 |[min()](min-aggfunction.md)|返回组内的最小值|
 |[minif()](minif-aggfunction.md)|返回具有组谓词的最小值|
+|[percentile()](percentiles-aggfunction.md)|返回组中的百分位数值|
 |[stdev()](stdev-aggfunction.md)|返回整个组的标准偏差|
 |[sum()](sum-aggfunction.md)|返回组中元素的总和|
 |[sumif()](sumif-aggfunction.md)|返回具有组谓词的元素的总和|
@@ -108,7 +108,9 @@ T `| make-series` [Column `=`] Aggregation [`default` `=` DefaultValue] [`,` ...
 |[series_periods_validate()](series-periods-validatefunction.md)|检查时序是否包含给定长度的定期模式|
 |[series_stats_dynamic()](series-stats-dynamicfunction.md)|返回包含常用统计信息（最小值/最大值/方差/标准偏差/平均值）的多个列|
 |[series_stats()](series-statsfunction.md)|生成包含常用统计信息（最小值/最大值/方差/标准偏差/平均值）的动态值|
-  
+
+有关序列分析功能的完整列表，请参阅：[序列处理函数](scalarfunctions.md#series-processing-functions)
+
 ## <a name="list-of-series-interpolation-functions"></a>序列内插函数列表
 
 |函数|描述|

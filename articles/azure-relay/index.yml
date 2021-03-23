@@ -10,16 +10,16 @@ metadata:
   ms.topic: landing-page
   ms.collection: collection
   author: rockboyfor
-  ms.date: 02/08/2021
+  ms.date: 03/22/2021
   ms.testscope: no
   ms.testdate: 
   ms.author: v-yeche
-  ms.openlocfilehash: 3e0afe5abe3a84b87492c21da9a635a75dd9dcb9
-  ms.sourcegitcommit: fda47fe846d47f30e65a048251402d873e416650
+  ms.openlocfilehash: d431a31bdc76712943ea0d2b03c2b2f279757a2e
+  ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/02/2021
-  ms.locfileid: "99426645"
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104767008"
 landingContent:
 - title: 关于 Azure 中继
   linkLists:

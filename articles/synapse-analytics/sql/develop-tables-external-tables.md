@@ -2,19 +2,20 @@
 title: 通过 Synapse SQL 使用外部表
 description: 使用 Synapse SQL 读取或写入数据文件
 services: synapse-analytics
-author: julieMSFT
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 05/07/2020
-ms.author: jrasnick
+origin.date: 05/07/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 02c229eadd5a741c92b4aaafd57469fe4b8ff188
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 3f8a72e461dfdc3c4642830b315b71ff75a9f29b
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207132"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766692"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>通过 Synapse SQL 使用外部表
 
@@ -29,9 +30,9 @@ ms.locfileid: "102207132"
 - 使用 Transact-SQL 语句查询 Azure Blob 存储和 Azure Data Lake Gen2。
 - 将 Azure Blob 存储与 Azure Data Lake Storage 中的数据导入和存储到专用 SQL 池。
 
-与 [CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 语句结合使用时，从外部表中选择数据可将数据导入到 SQL 池中的表。 除了 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)以外，外部表也可用于加载数据。 
+与 [CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json) 语句结合使用时，从外部表中选择数据可将数据导入到 SQL 池中的表。 除了 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)以外，外部表也可用于加载数据。 
 
-有关加载操作的教程，请参阅[使用 PolyBase 从 Azure Blob 存储加载数据](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)。
+有关加载操作的教程，请参阅[使用 PolyBase 从 Azure Blob 存储加载数据](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fsynapse-analytics%2ftoc.json)。
 
 ### <a name="serverless-sql-pool"></a>[无服务器 SQL 池](#tab/sql-on-demand)
 
@@ -60,7 +61,7 @@ ms.locfileid: "102207132"
 
 ## <a name="create-external-data-source"></a>CREATE EXTERNAL DATA SOURCE
 
-外部数据源用于连接到存储帐户。 [此处](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)提供了完整文档。
+外部数据源用于连接到存储帐户。 [此处](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest&preserve-view=true)提供了完整文档。
 
 ### <a name="syntax-for-create-external-data-source"></a>CREATE EXTERNAL DATA SOURCE 的语法
 
@@ -100,10 +101,9 @@ LOCATION = `'<prefix>://<path>'` - 提供连接协议和外部数据源的路径
 
 | 外部数据源        | 位置前缀 | 位置路径                                         |
 | --------------------------- | --------------- | ----------------------------------------------------- |
-| Azure Blob 存储          | `wasb[s]`       | `<container>@<storage_account>.blob.core.windows.net` |
-| Azure Blob 存储          | `http[s]`       | `<storage_account>.blob.core.windows.net/<container>/subfolders` |
-| Azure Data Lake Store Gen 1 | `http[s]`       | `<storage_account>.azuredatalakestore.net/webhdfs/v1` |
-| Azure Data Lake Store Gen 2 | `http[s]`       | `<storage_account>.dfs.core.windows.net/<container>/subfolders`  |
+| Azure Blob 存储          | `wasb[s]`       | `<container>@<storage_account>.blob.core.chinacloudapi.cn` |
+| Azure Blob 存储          | `http[s]`       | `<storage_account>.blob.core.chinacloudapi.cn/<container>/subfolders` |
+| Azure Data Lake Store Gen 2 | `http[s]`       | `<storage_account>.dfs.core.chinacloudapi.cn/<container>/subfolders`  |
 
 `https:` 前缀允许使用路径中的子文件夹。
 
@@ -124,10 +124,10 @@ TYPE = `HADOOP` 在专用 SQL 池中是强制选项，并指定使用 Polybase �
 以下示例为 Azure Data Lake Gen2 创建一个指向 New York 数据集的外部数据源：
 
 ```sql
-CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
+CREATE EXTERNAL DATA SOURCE AzureDataLakeStorage
 WITH
   -- Please note the abfss endpoint when your account has secure transfer enabled
-  ( LOCATION = 'abfss://data@newyorktaxidataset.dfs.core.windows.net' ,
+  ( LOCATION = 'abfss://data@newyorktaxidataset.dfs.core.chinacloudapi.cn' ,
     CREDENTIAL = ADLS_credential ,
     TYPE = HADOOP
   ) ;
@@ -144,7 +144,7 @@ SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-
 GO
 
 CREATE EXTERNAL DATA SOURCE SqlOnDemandDemo WITH (
-    LOCATION = 'https://sqlondemandstorage.blob.core.windows.net',
+    LOCATION = 'https://sqlondemandstorage.blob.core.chinacloudapi.cn',
     CREDENTIAL = sqlondemand
 );
 ```
@@ -153,13 +153,13 @@ CREATE EXTERNAL DATA SOURCE SqlOnDemandDemo WITH (
 
 ```sql
 CREATE EXTERNAL DATA SOURCE YellowTaxi
-WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/')
+WITH ( LOCATION = 'https://azureopendatastorage.blob.core.chinacloudapi.cn/nyctlc/yellow/')
 ```
 ---
 
 ## <a name="create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT
 
-创建一个外部文件格式对象，用于定义存储在 Azure Blob 存储或 Azure Data Lake Storage 中的外部数据。 创建外部文件格式是创建外部表的先决条件。 [此处](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)提供了完整文档。
+创建一个外部文件格式对象，用于定义存储在 Azure Blob 存储或 Azure Data Lake Storage 中的外部数据。 创建外部文件格式是创建外部表的先决条件。 [此处](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest&preserve-view=true)提供了完整文档。
 
 创建外部文件格式会指定外部表引用的数据的实际布局。
 
@@ -325,7 +325,7 @@ column_name <data_type>
 
 <column_definition>, ...*n* ]
 
-CREATE EXTERNAL TABLE 支持配置列名、数据类型、为 Null 性和排序规则的功能。 不能对外部表使用 DEFAULT CONSTRAINT。
+CREATE EXTERNAL TABLE 支持配置列名、数据类型和排序规则的功能。 不能对外部表使用 DEFAULT CONSTRAINT。
 
 >[!IMPORTANT]
 >列定义（包括数据类型和列数）必须与外部文件中的数据匹配。 如果存在不匹配，则在查询实际数据时会拒绝文件行。
@@ -387,7 +387,7 @@ SELECT TOP 1 * FROM census_external_table
 
 - 必须有权访问工作区，并且至少对 ADLS Gen2 帐户具有存储 Blob 数据参与者 ARM 访问角色
 
-- 必须至少拥有在 SQL 池或 SQL OD 中创建和查询外部表的[权限](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2&preserve-view=true)
+- 必须至少拥有在 SQL 池或 SQL OD 中创建和查询外部表的[权限](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#permissions-2&preserve-view=true)
 
 在“数据”面板中，选择要从其创建外部表的文件：
 > [!div class="mx-imgBorder"]

@@ -7,15 +7,14 @@ manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: reference
-origin.date: 01/07/2019
-ms.date: 01/14/2021
-ms.author: v-tawe
-ms.openlocfilehash: c7f85005a0908a31c95c763fad5a71d02caa20ba
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: 96b48dfe81ed0aa08bfdc892b69b8928ddb5e1e6
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059937"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766585"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault 客户数据功能
 
@@ -55,7 +54,7 @@ Azure Key Vault 诊断日志包含可通过在用户隐私门户中发出导出�
 
 - [Azure 密钥保管库日志记录](logging.md)
 
-- [Azure Key Vault 软删除概述](soft-delete-cli.md)
+- [Azure Key Vault 软删除概述](./key-vault-recovery.md)
 
 - [Azure Key Vault 密钥操作](https://docs.microsoft.com/rest/api/keyvault/key-operations)
 

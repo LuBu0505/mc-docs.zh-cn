@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 02/26/2021
+ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35c87e144ac142f990e54e9f02aaea6d048fd9a2
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 104ace8e0da62bbea5eef07d9a05cf2914f1c5f8
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697091"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766027"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常见问题解答
 
@@ -142,7 +142,7 @@ Azure AD Connect 不支持纯 IPv6 环境。
 
 ## <a name="environment"></a>环境
 **问：安装 Azure AD Connect 之后，是否支持重命名服务器？**  
-否。 更改服务器名称将导致同步引擎无法连接到 SQL 数据库实例，并且服务将无法启动。
+不是。 更改服务器名称将导致同步引擎无法连接到 SQL 数据库实例，并且服务将无法启动。
 
 **问：已启用 FIPS 的计算机是否支持下一代加密 (NGC) 同步规则？**  
 否。  不支持。
@@ -173,7 +173,7 @@ Azure AD Connect 不支持纯 IPv6 环境。
 仅支持客户使用本站点上介绍的 cmdlet，而不支持使用 Azure AD Connect 中的其他 PowerShell cmdlet。
 
 **问：是否可以使用 Synchronization Service Manager 中的“服务器导出/服务器导入”选项在服务器之间移动配置？**  
-否。 此选项不会检索所有配置设置，因此不应使用。 请改用向导在第二台服务器上创建基础配置，并使用同步规则编辑器生成 PowerShell 脚本，如此即可在服务器之间移动任何自定义规则。 有关详细信息，请参阅[交叉迁移](how-to-upgrade-previous-version.md#swing-migration)。
+不是。 此选项不会检索所有配置设置，因此不应使用。 请改用向导在第二台服务器上创建基础配置，并使用同步规则编辑器生成 PowerShell 脚本，如此即可在服务器之间移动任何自定义规则。 有关详细信息，请参阅[交叉迁移](how-to-upgrade-previous-version.md#swing-migration)。
 
 **问：是否可以为 Azure 登录页缓存密码，这是否会因为包含一个具有 *autocomplete = "false"* 属性的密码输入元素而阻止此缓存？**  
 目前不支持修改“密码”字段的 HTML 属性，包括 autocomplete 标记。 我们目前正在开发一种功能，它将允许使用自定义 JavaScript 向“密码”字段添加任何属性。
@@ -182,7 +182,7 @@ Azure AD Connect 不支持纯 IPv6 环境。
 目前不支持修改“密码”输入字段的 HTML 属性，包括 autocomplete 标记。 我们目前正在开发一种功能，它将允许使用自定义 JavaScript 向“密码”字段添加任何属性。
 
 **问：是否有方法来阻止并发会话？**  
-否。
+不是。
 
 ## <a name="auto-upgrade"></a>自动升级
 
@@ -196,7 +196,7 @@ Azure AD Connect 不支持纯 IPv6 环境。
 **问：我收到一封电子邮件，指出我的自动升级失效，需安装新版本。为什么我需要这样做？**  
 我们去年发布了一个 Azure AD Connect 版本，该版本在特定情况下会禁用服务器上的自动升级功能。 Azure AD Connect 1.1.750.0 版中已修复此问题。 如果你受此问题的影响，可通过以下方式进行缓解：运行一个 PowerShell 脚本来修复此问题，或者手动升级到最新版本的 Azure AD Connect。 
 
-若要运行该 PowerShell 脚本，请[下载该脚本](https://aka.ms/repairaadconnect)，并在 PowerShell 管理窗口中的 Azure AD Connect 服务器上运行该脚本。 
+若要运行该 PowerShell 脚本，请[下载该脚本](https://docs.microsoft.com/samples/browse/?redirectedfrom=TechNet-Gallery)，并在 PowerShell 管理窗口中的 Azure AD Connect 服务器上运行该脚本。
 
 若要手动进行升级，必须下载并运行最新版的 AADConnect.msi 文件。
  

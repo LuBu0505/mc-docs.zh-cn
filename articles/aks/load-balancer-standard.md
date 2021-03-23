@@ -5,17 +5,17 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用标准 SKU �
 services: container-service
 ms.topic: article
 origin.date: 11/14/2020
-ms.date: 12/14/2020
+ms.date: 03/22/2021
 ms.testscope: yes|no
 ms.testdate: 07/09/2020
 ms.author: v-yeche
 author: rockboyfor
-ms.openlocfilehash: 04ca461d40b100a19bffe9bbb57d46e1dddc7876
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: 892a257ada8bde5f6f4cd089a9ae0755db13fded
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004083"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766008"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用公共标准负载均衡器
 
@@ -34,7 +34,7 @@ Azure 负载均衡器是开放式系统互连 (OSI) 模型的 L4，支持入站�
 
 Azure 负载均衡器以两种 SKU 提供：“基本”和“标准” 。 默认情况下，创建 AKS 群集时将使用标准 SKU。 使用标准 SKU 访问附加功能，例如大型后端池、[多个节点池](use-multiple-node-pools.md)。 这是推荐的 AKS 的负载均衡器 SKU。
 
-<!--Not Available on , and [**Availability Zones**](availability-zones.md)-->
+<!--NOT AVAILABLE ON [**Availability Zones**](availability-zones.md)-->
 
 有关基本和标准 SKU 的详细信息，请参阅 [Azure 负载均衡器 SKU 的比较][azure-lb-comparison]。 
 
@@ -101,13 +101,13 @@ default       public-svc    LoadBalancer   10.0.39.110    52.156.88.187   80:320
 
 与所有负载均衡器规则一样，出站规则遵循负载均衡和入站 NAT 规则的类似语法：
 
-***前端 IP + 参数 + 后端池**
+***前端 IP + 参数 + 后端池***
 
 出站规则为后端池识别的、要转换为前端的所有虚拟机配置出站 NAT。 参数针对出站 NAT 算法提供更精细的控制。
 
 尽管出站规则只能配合单个公共 IP 地址使用，但出站规则减轻了缩放出站 NAT 的负担。 规划大规模部署场景时可以使用多个 IP 地址，并可以使用出站规则来缓解容易出现 SNAT 耗尽的模式。 前端提供的每个附加 IP 地址可提供 64,000 个临时端口，供负载均衡器用作 SNAT 端口。 
 
-使用具有默认创建的托管出站公共 IP 的标准 SKU 负载均衡器时，可以使用 `load-balancer-managed-ip-count` 参数缩放托管出站公共 IP 的数量。
+结合默认创建的受管理出站公共 IP 使用标准 SKU 负载均衡器时，可以使用 `load-balancer-managed-ip-count` 参数来调整受管理出站公共 IP 的数量。
 
 若要更新现有群集，请运行以下命令。 还可以在创建群集时设置此参数，以获得多个托管出站公共 IP。
 
@@ -229,8 +229,8 @@ az aks update \
 
 此示例假设为群集中的每个节点提供 4000 个分配的出站端口以及 7 个 IP，则你会得到以下结果：每个节点 4000 个端口 * 100 个节点 = 400,000 个总端口 < = 448,000 个总端口 = 7 个 IP * 每个 IP 64,000 端口。 这样你便可安全地缩放到 100 个节点，并执行默认升级操作。 为升级和其他操作所需的其他节点分配足够的端口至关重要。 AKS 默认为一个缓冲区节点用于升级，在此示例中，这要求在任何给定时间点有 4000 个可用端口。
 
-<!--Not Available on  If using maxSurge values, multiply the outbound ports per node by your maxSurge value.-->
-<!--Not Available on [maxSurge values](upgrade-cluster.md#customize-node-surge-upgrade-preview)-->
+<!--NOT AVAILABLE ON If using maxSurge values, multiply the outbound ports per node by your maxSurge value.-->
+<!--NOT AVAILABLE ON [maxSurge values](upgrade-cluster.md#customize-node-surge-upgrade-preview)-->
 
 要安全地超过 100 个节点，必须添加更多 IP。
 
@@ -423,7 +423,7 @@ spec:
 [azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md
 [azure-lb-outbound-preallocatedports]: ../load-balancer/load-balancer-outbound-connections.md#preallocatedports
 [azure-lb-outbound-rules-overview]: ../load-balancer/load-balancer-outbound-connections.md#outboundrules
-[install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli
+[install-azure-cli]: https://docs.microsoft.com/cli/azure/install-azure-cli
 [internal-lb-yaml]: internal-lb.md#create-an-internal-load-balancer
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [use-kubenet]: configure-kubenet.md
@@ -434,4 +434,4 @@ spec:
 [troubleshoot-snat]: #troubleshooting-snat
 [service-tags]: ../virtual-network/network-security-groups-overview.md#service-tags
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

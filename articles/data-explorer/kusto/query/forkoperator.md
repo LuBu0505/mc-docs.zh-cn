@@ -3,26 +3,28 @@ title: fork 运算符 - Azure 数据资源管理器 | Microsoft Docs
 description: 本文介绍 Azure 数据资源管理器中的 fork 运算符。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 02/13/2020
-ms.date: 10/29/2020
-ms.openlocfilehash: 52b11e1706bcd17f9217f05c74b18abf6b4d18a5
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.date: 03/18/2021
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
+ms.openlocfilehash: f4647c33fc9832e5f07cda6d267b9180c3254afa
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104393"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765909"
 ---
 # <a name="fork-operator"></a>fork 运算符
+::: zone pivot="azuredataexplorer"
 
 并行运行多个 consumer 运算符。
-
+ 
 ## <a name="syntax"></a>语法
 
-*T* `|` `fork` [ *name*`=`]`(`*subquery*`)` [ *name*`=`]`(`*subquery*`)` ...
+*T* `|` `fork` [*name*`=`]`(`*subquery*`)` [*name*`=`]`(`*subquery*`)` ...
 
 ## <a name="arguments"></a>参数
 
@@ -73,3 +75,11 @@ KustoLogs
     EventsTexts = ( project Timestamp, EventText | top 1000 by Timestamp desc )
     TimeRangePerActivityID = ( summarize min(Timestamp), max(Timestamp) by ActivityID )
 ```
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+Azure Monitor 不支持此功能
+
+::: zone-end

@@ -1,17 +1,18 @@
 ---
 title: Azure 门户中适用于 Azure Resource Graph 资源管理器的键盘快捷方式
 description: Azure 门户中的 Azure Resource Graph 资源管理器支持键盘快捷方式，可帮助你执行操作和导航。
-origin.date: 10/21/2020
-ms.date: 11/06/2020
-ms.author: v-tawe
+origin.date: 01/27/2021
+author: rockboyfor
+ms.date: 03/22/2021
+ms.author: v-yeche
 ms.topic: reference
 ms.custom: accessibility
-ms.openlocfilehash: 53d453db0dbf50bda774ac583870c10393181e04
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 078b704675afbd6c1860ec559ed2756f83cfee4d
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328790"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766898"
 ---
 # <a name="keyboard-shortcuts-for-azure-resource-graph-explorer"></a>适用于 Azure Resource Graph 资源管理器的键盘快捷方式
 
@@ -68,3 +69,5 @@ ms.locfileid: "94328790"
 
 - [Azure 门户中的键盘快捷方式](../../../azure-portal/azure-portal-keyboard-shortcuts.md)
 - [Resource Graph 的查询语言](../concepts/query-language.md)
+
+<!--Update_Description: update meta properties, wording update, update link-->

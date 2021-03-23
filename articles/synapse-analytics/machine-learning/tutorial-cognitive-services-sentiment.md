@@ -10,12 +10,12 @@ origin.date: 11/20/2020
 ms.date: 03/08/2021
 author: WenJason
 ms.author: v-jay
-ms.openlocfilehash: ae4042f6160f41698d1fee74f71b750ec9a6db1e
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 57ff707e35afe709f30d8a699618f3051de83126
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207482"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766134"
 ---
 # <a name="tutorial-sentiment-analysis-with-cognitive-services-preview"></a>Tutorial:使用认知服务进行情绪分析（预览版）
 
@@ -61,7 +61,7 @@ Azure Synapse 中的用户可以直接选择包含文本列的表，以扩充情
 
    ```python
    %%pyspark
-   df = spark.read.load('abfss://default@azuresynapsesa.dfs.core.windows.net/data/FabrikamComments.csv', format='csv'
+   df = spark.read.load('abfss://default@azuresynapsesa.dfs.core.chinacloudapi.cn/data/FabrikamComments.csv', format='csv'
    ## If a header exists, uncomment the line below
    , header=True
    )

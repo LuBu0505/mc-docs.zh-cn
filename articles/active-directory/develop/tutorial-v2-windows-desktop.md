@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 02/24/2021
+ms.date: 03/12/2021
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 47f58129bc0af640ae89022e108eef1f30675a16
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 9706184d4ca1f784d9f001412ed4ba1426bd25f4
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697138"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765478"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>教程：从 Windows 桌面应用调用 Microsoft Graph API
 
@@ -106,7 +106,7 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
 若要注册应用程序并将应用程序注册信息添加到解决方案，请执行以下操作：
 1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
-1. 搜索并选择“Azure Active Directory”  。
+1. 搜索并选择“Azure Active Directory”。
 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 1. 输入应用程序的名称（例如 `Win-App-calling-MsGraph`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 1. 在“支持的帐户类型”部分中，选择“任何组织目录(任何 Azure AD 目录 - 多租户)中的帐户”。 
@@ -141,6 +141,7 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
         {
             _clientApp = PublicClientApplicationBuilder.Create(ClientId)
                 .WithAuthority(AzureCloudInstance.AzureChina, Tenant)
+                .WithDefaultRedirectUri()
                 .Build();
         }
 

@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 09/26/2018
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: justini
 ROBOTS: NOINDEX
-ms.openlocfilehash: 261babcd70b4757d3527a45bd6aaaf78b6ff0d23
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 7b80c52f6814a22b230b6511fa1013ebc45bf0e8
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101751774"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766993"
 ---
 # <a name="azure-stack-1804-update"></a>Azure Stack 1804 更新
 
@@ -80,7 +80,7 @@ Azure Stack 1804 更新内部版本号为 **20180513.1**。
 
 - **新的 Azure Stack 管理 PowerShell 版本 1.3.0**。  Azure Stack PowerShell 1.3.0 现已可供安装。 此版本针对所有管理资源提供程序提供了用来管理 Azure Stack 的命令。  在此版本中，某些内容将从 Azure Stack 工具 GitHub [存储库](https://github.com/Azure/AzureStack-Tools)中弃用。 
 
-   有关安装的详细信息，请遵循 Azure Stack 模块 1.3.0 的[说明](../azure-stack-powershell-install.md)或[帮助](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0&preserve-view=true)内容。 
+   有关安装的详细信息，请遵循 Azure Stack 模块 1.3.0 的[说明](../azure-stack-powershell-install.md)或[帮助](https://docs.microsoft.com/powershell/azure/azure-stack/overview?preserve-view=true&view=azurestackps-1.3.0)内容。 
 
 - **Azure Stack API Rest 参考的初始版本**。 [所有 Azure Stack 管理资源提供程序的 API 参考](https://docs.microsoft.com/rest/api/azure-stack/)现已发布。 
 
@@ -119,7 +119,7 @@ Azure Stack 1804 更新内部版本号为 **20180513.1**。
 
 <!-- 1272111 - IS --> 
 -  安装或更新到此 Azure Stack 版本后，可能无法在管理门户中查看 Azure Stack 缩放单元。  
-  解决方法：使用 PowerShell 查看有关缩放单元的信息。 有关详细信息，请参阅 Azure Stack 模块 1.3.0 的[帮助](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0&preserve-view=true)内容。 
+  解决方法：使用 PowerShell 查看有关缩放单元的信息。 有关详细信息，请参阅 Azure Stack 模块 1.3.0 的[帮助](https://docs.microsoft.com/powershell/azure/azure-stack/overview?preserve-view=true&view=azurestackps-1.3.0)内容。 
 
 <!-- 2332636 - IS -->  
 - 对 Azure Stack 标识系统使用 AD FS 并更新到此版本的 Azure Stack 时，默认提供程序订阅的默认所有者将重置为内置的 **CloudAdmin** 用户。  
@@ -187,13 +187,13 @@ Azure Stack 1804 更新内部版本号为 **20180513.1**。
                 "vmSize": "Standard_F32s_v2"
         },
     ```  
-  - **Azure CLI：** 可以使用 [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create&preserve-view=true) 命令并将 VM 大小指定为参数，类似于 `--size "Standard_F32s_v2"`。
+  - **Azure CLI：** 可以使用 [az vm create](/cli/vm?preserve-view=true&view=azure-cli-latest#az-vm-create) 命令并将 VM 大小指定为参数，类似于 `--size "Standard_F32s_v2"`。
 
-  - **PowerShell：** 通过 PowerShell，可以将 [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0&preserve-view=true) 与指定了 VM 大小的参数一起使用，类似于 `-VMSize "Standard_F32s_v2"`。
+  - **PowerShell：** 通过 PowerShell，可以将 [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?preserve-view=true&view=azurermps-6.0.0) 与指定了 VM 大小的参数一起使用，类似于 `-VMSize "Standard_F32s_v2"`。
 
 
 <!-- TBD - IS ASDK --> 
-- 无法在门户中使用虚拟机规模集的缩放设置。 解决方法是使用 [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set)。 由于 PowerShell 版本差异，必须使用 `-Name` 参数，而不是 `-VMScaleSetName`。
+- 无法在门户中使用虚拟机规模集的缩放设置。 解决方法是使用 [Azure PowerShell](/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set)。 由于 PowerShell 版本差异，必须使用 `-Name` 参数，而不是 `-VMScaleSetName`。
 
 <!-- TBD - IS --> 
 -  通过转到“新建” > **“计算”** > “可用性集”在门户中创建可用性集时，只能创建 1 个包含 1 个容错域和 1 个更新域的可用性集。 解决方法是在创建新的虚拟机时，通过 PowerShell、CLI 或门户来创建可用性集。

@@ -6,16 +6,15 @@ author: msmbaldwin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-origin.date: 07/20/2020
-ms.date: 11/27/2020
-ms.author: v-tawe
+ms.date: 03/10/2021
+ms.author: v-chazhou
 ms.custom: mvc, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: ed927f9c1e722e414f1efbfb6dae9f4ff50be731
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: ced9c2beaa91a29a8c4b011473e403b27d2bf6f2
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99058961"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766562"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>教程：将 Azure Key Vault 与通过 Python 编写的虚拟机配合使用
 
@@ -46,7 +45,7 @@ Azure Key Vault 可帮助你保护密钥、机密和证书，例如 API 密钥�
 若要使用 Azure CLI 登录到 Azure，请输入：
 
 ```azurecli
-az  cloud  set –n  AzureChinaCloud 
+az  cloud  set �Cn  AzureChinaCloud 
 az login
 ```
 

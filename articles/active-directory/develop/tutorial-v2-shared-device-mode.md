@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 12/07/2020
+ms.date: 03/12/2021
 ms.author: v-junlch
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1b417295c4800aa23e962c1eb1314f879e0fd5f0
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: a8a6811cd2115a2867b8cda0f18e42f897243327
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97003768"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765481"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>教程：在 Android 应用程序中使用共享设备模式
 
@@ -96,7 +96,7 @@ dependencies{
 下面是一个代码片段，展示了可以如何使用 `isSharedDevice()`。  它来自示例应用中的 `SingleAccountModeFragment` 类：
 
 ```Java
-deviceModeTextView.setText(mSingleAccountApp.isSharedDevice() ?"Shared" :"Non-Shared");
+deviceModeTextView.setText(mSingleAccountApp.isSharedDevice() ? "Shared" : "Non-Shared");
 ```
 
 ### <a name="initialize-the-publicclientapplication-object"></a>初始化 PublicClientApplication 对象
@@ -282,4 +282,3 @@ private void onSignOutClicked()
 
 > [!div class="nextstepaction"]
 > [适用于 Android 设备的共享设备模式](msal-android-shared-devices.md)
-

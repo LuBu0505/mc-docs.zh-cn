@@ -1,25 +1,19 @@
 ---
 title: 在 Azure 安全中心内保护你的网络资源
 description: 本文档介绍 Azure 安全中心中的建议，以帮助你保护 Azure 网络资源并保持符合安全策略。
-services: security-center
-documentationcenter: na
-author: Johnnytechn
+author: memildin
 manager: rkarlin
-ms.assetid: 96c55a02-afd6-478b-9c1f-039528f3dea0
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/02/2021
+ms.date: 03/18/2021
 ms.author: v-johya
 origin.date: 04/05/2019
-ms.openlocfilehash: 03d49c80c2b9aebedb19b969292ae972cd2956a5
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: a6294531478eca780037c976192be7bd2f1dd63a
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579587"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766713"
 ---
 # <a name="protect-your-network-resources"></a>保护你的网络资源
 Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安全最佳做法。 在安全中心识别出潜在的安全漏洞时，它会创建一些建议，指导完成配置所需控件以强化和保护资源的过程。

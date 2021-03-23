@@ -2,26 +2,29 @@
 title: 手动停止或启动容器组
 description: 了解如何手动停止或启动 Azure 容器实例中的容器组。
 ms.topic: article
-origin.date: 04/15/2019
-ms.date: 01/15/2020
+origin.date: 08/11/2020
+author: rockboyfor
+ms.date: 03/22/2021
 ms.author: v-yeche
-ms.openlocfilehash: 7b152f79a22d08390171cc76575e6b476567eedc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: e427820e7bfd47c99e64c0831d668b2fdf395506
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428937"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766501"
 ---
 <!--Verified successfully-->
 # <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>手动停止或启动 Azure 容器实例中的容器
 
 容器组的[重启策略](container-instances-restart-policy.md)设置确定默认情况下容器实例如何启动或停止。 可以通过手动停止或启动容器组来替代默认设置。
 
+[!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
+
 ## <a name="stop"></a>停止
 
 通过特定方式（例如，使用 [az container stop][az-container-stop] 命令或 Azure 门户）手动停止正在运行的容器组。 对于某些容器工作负载，可能需要在规定的一段时间后停止长时间运行的容器组，以便节省成本。 
 
-容器组进入“已停止”状态时，会终止并回收组中的所有容器。  它不保留容器状态。
+容器组进入“已停止”状态时，会终止并回收组中的所有容器。它不保留容器状态。
 
 回收容器后，会解除分配[资源](container-instances-container-groups.md#resource-allocation)，并停止容器组的计费。
 
@@ -37,7 +40,7 @@ ms.locfileid: "77428937"
 
 手动启动或重启容器组后，容器组将根据所配置的重启策略运行。
 
-## <a name="restart"></a>重新启动
+## <a name="restart"></a>重启
 
 可以通过特定方式（例如，使用 [az container restart][az-container-restart] 命令）在容器组正在运行时将其重启。 此操作会重启容器组中的所有容器。 如果更新了任何容器的容器映像，则会拉取一个新映像。 
 
@@ -57,9 +60,8 @@ ms.locfileid: "77428937"
 
 <!-- LINKS - Internal -->
 
-[az-container-restart]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-restart
-[az-container-start]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-start
-[az-container-stop]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-stop
+[az-container-restart]: https://docs.microsoft.com/cli/azure/container#az_container_restart
+[az-container-start]: https://docs.microsoft.com/cli/azure/container#az_container_start
+[az-container-stop]: https://docs.microsoft.com/cli/azure/container#az_container_stop
 
-<!-- Update_Description: new article about container instances stop start -->
-<!--NEW.date: 01/15/2020-->
+<!--Update_Description: update meta properties, wording update, update link-->

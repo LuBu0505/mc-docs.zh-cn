@@ -2,19 +2,19 @@
 title: 快速入门 - 使用 Python 将模拟的 X.509 设备预配到 Azure IoT 中心
 description: 快速入门 - 使用适用于 IoT 中心设备预配服务 (DPS) 的 Python 设备 SDK 创建和预配模拟的 X.509 设备。 本快速入门使用单独注册。
 author: wesmc7777
-ms.author: v-tawe
-ms.date: 02/22/2021
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 54d2c6685e1684b5eec3916bbe5c4b01f4117e1f
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.openlocfilehash: 95bfb01fa6b37d5eb274a7ac01570c2183271c6f
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196790"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765631"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 Python 设备 SDK 创建和预配模拟的 X.509 设备
 
@@ -179,7 +179,7 @@ Python 设置示例 [provision_x509.py](https://github.com/Azure/azure-iot-sdk-p
     RegistrationStage(RequestAndResponseOperation): Op will transition into polling after interval 2.  Setting timer.
     The complete registration result is
     Python-device-01
-    TestHub12345.azure-devices.net
+    TestHub12345.azure-devices.cn
     initialAssignment
     null
     Will send telemetry from the provisioned device

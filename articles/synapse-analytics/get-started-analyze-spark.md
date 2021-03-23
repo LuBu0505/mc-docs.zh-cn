@@ -2,20 +2,21 @@
 title: 快速入门：开始使用 Spark 进行分析
 description: 在本教程中，你将了解如何使用 Apache Spark 分析数据。
 services: synapse-analytics
-author: saveenr
-ms.author: saveenr
-manager: julieMSFT
+author: WenJason
+ms.author: v-jay
+manager: digimobile
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: 096ed6f82dfbc436a542d59322f56cc42e53859a
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+origin.date: 12/31/2020
+ms.date: 03/22/2021
+ms.openlocfilehash: a76c6244fb3848d14ad19a9082d5c2ca33d5f13f
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207317"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766334"
 ---
 # <a name="analyze-with-apache-spark"></a>使用 Apache Spark 进行分析
 
@@ -33,16 +34,16 @@ ms.locfileid: "102207317"
     from azureml.opendatasets import NycTlcYellow
 
     data = NycTlcYellow()
-    data_df = data.to_spark_dataframe()
+    df = data.to_spark_dataframe()
     # Display 10 rows
-    display(data_df.limit(10))
+    display(df.limit(10))
     ```
 1. 在笔记本的“附加到”菜单中，选择之前创建的 Spark1 无服务器 Spark 池 。
-1. 选择单元上的“运行”
+1. 选择单元上的“运行”。 如果需要，Synapse 将启动新的 Spark 会话来运行此单元格。 如果需要新的 Spark 会话，最初将需要大约两秒钟的时间来创建。 
 1. 如果只想查看数据帧的架构，请通过以下代码运行单元：
     ```
 
-    data_df.printSchema()
+    df.printSchema()
     ```
 
 ## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>将纽约市出租车数据加载到 Spark nyctaxi 数据库

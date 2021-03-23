@@ -4,15 +4,15 @@ description: 本教程介绍如何配置一个 Azure 容器注册表任务，以
 ms.topic: tutorial
 origin.date: 11/24/2020
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.author: v-yeche
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: e3d495a2f3949cfe66892d976c02b7ac7abd43e8
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 817436492aba2da3ba185e97c82c14ad9314182d
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102108759"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767070"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>教程：提交源代码时，在云中自动化容器映像生成
 

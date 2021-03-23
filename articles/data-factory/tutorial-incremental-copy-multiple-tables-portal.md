@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 02/18/2021
 ms.date: 03/15/2021
-ms.openlocfilehash: a8201e3878e7a51a4b3bd5a053f231e29c5806e2
-ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
+ms.openlocfilehash: a7f60f711c1a06309acc634260742209cb92c56b
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102589914"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766912"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>使用 Azure 门户以递增方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库中的数据库
 
@@ -249,13 +249,12 @@ END
     - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。  
     - 选择“新建”，并输入资源组的名称。   
     若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
-6. 选择“V2”作为“版本”。
-7. 选择数据工厂的 **位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
-8. 单击 **创建**。      
-9. 创建完成后，可以看到图中所示的“数据工厂”页。
+6. 选择数据工厂的 **位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+7. 单击“创建”。      
+8. 创建完成后，可以看到图中所示的“数据工厂”页。
    
    ![数据工厂主页](./media/doc-common-process/data-factory-home-page.png)
-10. 单击“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)。
+9. 单击“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)。
 
 ## <a name="create-self-hosted-integration-runtime"></a>创建自承载的 Integration Runtime
 在将数据从专用网络（本地）中的数据存储移至 Azure 数据存储时，请在本地环境中安装自承载的 Integration Runtime (IR)。 自承载的 IR 可在专用网络和 Azure 之间移动数据。 

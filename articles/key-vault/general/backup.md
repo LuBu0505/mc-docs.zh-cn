@@ -8,15 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-origin.date: 10/22/2020
-ms.date: 01/14/2021
-ms.author: v-tawe
-ms.openlocfilehash: aa1d1bae04ed62b32ad772baaee3d0e2fb30a04d
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: b8860b1955f0f1b95beba1d3c2e16b1302289978
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059945"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766593"
 ---
 # <a name="azure-key-vault-backup"></a>Azure Key Vault 备份
 

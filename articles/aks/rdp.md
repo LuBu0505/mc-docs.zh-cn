@@ -6,16 +6,16 @@ services: container-service
 ms.topic: article
 origin.date: 06/04/2019
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.testscope: yes
 ms.testdate: 07/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4be59285b98f9e808befc3820d0f3dfd9b77309b
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: a715dd4af0ef32f05e6d53ce321111fce1f40121
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055306"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766070"
 ---
 <!--Verified successfully-->
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>使用 RDP 连接到 Azure Kubernetes 服务 (AKS) 群集 Windows Server 节点以进行维护或故障排除
@@ -95,7 +95,7 @@ az network nsg rule create --name tempRDPAccess --resource-group $CLUSTER_RG --n
 
 若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。 若要在本地安装 `kubectl`，请使用 [az aks install-cli][az-aks-install-cli] 命令：
 
-<!--Not Available on If you use Azure Cloud Shell, `kubectl` is already installed. -->
+<!--NOT AVAILABLE ON If you use Azure Cloud Shell, `kubectl` is already installed. -->
 
 ```azurecli
 az aks install-cli
@@ -175,8 +175,8 @@ az network nsg rule delete --resource-group $CLUSTER_RG --nsg-name $NSG_NAME --n
 [az-aks-install-cli]: https://docs.azure.cn/cli/aks#az_aks_install_cli
 [az-aks-get-credentials]: https://docs.azure.cn/cli/aks#az_aks_get_credentials
 [az-vm-delete]: https://docs.azure.cn/cli/vm#az_vm_delete
-[azure-monitor-containers]: ../azure-monitor/insights/container-insights-overview.md
-[install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli
+[azure-monitor-containers]: ../azure-monitor/containers/container-insights-overview.md
+[install-azure-cli]: https://docs.microsoft.com/cli/azure/install-azure-cli
 [ssh-steps]: ssh.md
 [view-master-logs]: view-master-logs.md
 

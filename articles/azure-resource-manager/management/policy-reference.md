@@ -1,20 +1,20 @@
 ---
 title: Azure 资源管理器的内置策略定义
 description: 列出 Azure 资源管理器的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-origin.date: 02/09/2021
+origin.date: 03/05/2021
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.testscope: yes|no
 ms.testdate: ''
 ms.author: v-yeche
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: e9af5fd200a9bc9c07343a08fe57e562c6f5c743
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 3d180d78f17494e03a833bc76dd620091e70538e
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102053883"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765402"
 ---
 <!--Verified successfully-->
 # <a name="azure-policy-built-in-definitions-for-azure-resource-manager"></a>Azure 资源管理器的 Azure Policy 内置定义

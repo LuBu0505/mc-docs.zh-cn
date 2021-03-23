@@ -2,20 +2,21 @@
 title: 通过具体化视图进行性能优化
 description: 使用具体化视图提高查询性能时的建议和注意事项。
 services: synapse-analytics
-author: XiaoyuMSFT
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: xiaoyul
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: f6f1c5b77e5c64825ef900945e7aa11a6e2e07e7
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: b6cd25a07c66a47a01a0da2415ac43301caeae5e
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207641"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766826"
 ---
 # <a name="performance-tuning-with-materialized-views-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的专用 SQL 池通过具体化视图进行性能优化
 
@@ -29,7 +30,7 @@ SQL 池支持标准视图和具体化视图。  两者都是用 SELECT 表达式
 
 像表一样，具体化视图在专用 SQL 池中预先计算、存储和维护其数据。  每次使用具体化视图时都不需要重新计算。  这就是为什么使用具体化视图中全部或部分数据的查询可以获得更快的性能。  更好的是，查询可以使用具体化视图，而无需直接引用它，因此无需更改应用程序代码。  
 
-大多数标准视图要求仍适用于具体化视图。 如需详细了解具体化视图语法和其他要求，请参阅 [CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+大多数标准视图要求仍适用于具体化视图。 如需详细了解具体化视图语法和其他要求，请参阅 [CREATE MATERIALIZED VIEW AS SELECT](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest&preserve-view=true)。
 
 | 比较                     | 查看                                         | 具体化视图
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
@@ -55,8 +56,8 @@ SQL 池支持标准视图和具体化视图。  两者都是用 SELECT 表达式
 与其他数据仓库提供程序相比，在专用 SQL 池中实现的具体化视图还提供了以下附加优势：
 
 - 根据基表中的数据更改，自动、同步刷新数据。 不需要任何用户操作。
-- 广泛的聚合函数支持。 请参阅 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
-- 支持查询特定的具体化视图建议。  请参阅 [EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+- 广泛的聚合函数支持。 请参阅 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest&preserve-view=true)。
+- 支持查询特定的具体化视图建议。  请参阅 [EXPLAIN (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest&preserve-view=true)。
 
 ## <a name="common-scenarios"></a>常见方案  
 
@@ -81,7 +82,7 @@ SQL 池支持标准视图和具体化视图。  两者都是用 SELECT 表达式
 
 Azure 数据仓库是一种大规模并行处理 (MPP) 分布式系统。  
 
-Synapse SQL 是一个分布式查询系统，使企业能够使用数据工程师所熟悉的标准 T-SQL 体验来实现数据仓库和数据虚拟化方案。 它还扩展了 SQL 的功能，可以解决流式处理和机器学习方案的问题。 数据仓库表中的数据使用三种[分布策略](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)（hash、round_robin 或 replicated）中的一种分布到 60 个节点上。  
+Synapse SQL 是一个分布式查询系统，使企业能够使用数据工程师所熟悉的标准 T-SQL 体验来实现数据仓库和数据虚拟化方案。 它还扩展了 SQL 的功能，可以解决流式处理和机器学习方案的问题。 数据仓库表中的数据使用三种[分布策略](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)（hash、round_robin 或 replicated）中的一种分布到 60 个节点上。  
 
 数据分布在表创建时进行指定，并且在删除表之前保持不变。 具体化视图是磁盘上的虚拟表，支持 hash 和 round_robin 数据分布。  用户可以选择符合后列特征的数据分布：与基表不同但对于经常使用视图的查询而言是最优的。  
 
@@ -147,7 +148,7 @@ GROUP BY A, C
 
 具体化视图存储在数据仓库中，就像具有聚集列存储索引 (CCI) 的表一样。  从具体化视图中读取数据的过程包括从增量存储区中扫描索引和应用更改。  当增量存储区中的行数太多时，从具体化视图解析查询可能比直接查询基表花费的时间更长。  
 
-若要避免查询性能降低，最好运行 [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 来监视视图的 overhead_ratio (total_rows / base_view_row)。  如果 overhead_ratio 太高，请考虑重新生成具体化视图，使增量存储区中的所有行都移到列存储索引中。  
+若要避免查询性能降低，最好运行 [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest&preserve-view=true) 来监视视图的 overhead_ratio (total_rows / base_view_row)。  如果 overhead_ratio 太高，请考虑重新生成具体化视图，使增量存储区中的所有行都移到列存储索引中。  
 
 **具体化视图和结果集缓存**
 

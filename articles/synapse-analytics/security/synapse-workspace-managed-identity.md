@@ -6,15 +6,15 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
 origin.date: 10/16/2020
-ms.date: 03/08/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6a8469cf1a4dd585fb11d6198860d531d3d6b68a
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 191af5280f35be76ebfa09743ee362a8545c79a7
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207539"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766218"
 ---
 # <a name="azure-synapse-workspace-managed-identity"></a>Azure Synapse 工作区托管标识
 
@@ -24,7 +24,7 @@ ms.locfileid: "102207539"
 
 Azure 资源的托管标识是 Azure Active Directory 的一项功能。 此功能为 Azure 服务提供了 Azure AD 中的自动托管标识。 可以使用托管标识功能向支持 Azure AD 身份验证的任何服务进行身份验证。
 
-Azure 资源托管标识是以前称为托管服务标识 (MSI) 的服务的新名称。 请参阅[托管标识](../../active-directory/managed-identities-azure-resources/overview.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)来了解详细信息。
+Azure 资源托管标识是以前称为托管服务标识 (MSI) 的服务的新名称。 请参阅[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)来了解详细信息。
 
 ## <a name="azure-synapse-workspace-managed-identity"></a>Azure Synapse 工作区托管标识
 

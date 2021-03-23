@@ -9,15 +9,16 @@ metadata:
   ms.subservice: overview
   ms.topic: landing-page
   ms.collection: collection
-  author: julieMSFT
-  ms.author: jrasnick
-  ms.date: 12/01/2020
-  ms.openlocfilehash: 89fd089106ad50cf00edeb1f3f087e1d35cd5779
-  ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+  author: WenJason
+  ms.author: v-jay
+  origin.date: 12/01/2020
+  ms.date: 03/22/2021
+  ms.openlocfilehash: 8595e0fdcbd780cda291a99c8d9022fae5131a80
+  ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/05/2021
-  ms.locfileid: "102207675"
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104765227"
 landingContent:
 - title: 关于 Azure Synapse Analytics
   linkLists:
@@ -80,7 +81,7 @@ landingContent:
   - linkListType: overview
     links:
     - text: Azure Synapse Link for Azure Cosmos DB
-      url: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+      url: ../cosmos-db/synapse-link.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json
   - linkListType: quickstart
     links:
     - text: 连接到 Azure Synapse Link for Azure Cosmos DB
@@ -104,7 +105,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: 管道和活动
-      url: ../data-factory/concepts-pipelines-activities.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+      url: ../data-factory/concepts-pipelines-activities.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json
   - linkListType: quickstart
     links:
     - text: 转换数据

@@ -1,16 +1,17 @@
 ---
 title: 浏览 Azure 资源
 description: 了解如何使用 Resource Graph 查询语言浏览资源并发现资源的连接方式。
-ms.author: v-tawe
-origin.date: 10/14/2020
-ms.date: 01/14/2021
+origin.date: 01/27/2021
+author: rockboyfor
+ms.date: 03/22/2021
+ms.author: v-yeche
 ms.topic: conceptual
-ms.openlocfilehash: e925573f0f29443b12833f61e8d489cd6531f751
-ms.sourcegitcommit: 93063f9b8771b8e895c3bcdf218f5e3af14ef537
+ms.openlocfilehash: 15e12caf5d01c8c0122d37cf9758aa27337052eb
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98193277"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766750"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>使用 Resource Graph 浏览 Azure 资源
 
@@ -34,7 +35,7 @@ Resources
 az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | limit 1"
 ```
 
-```azurepowershell
+```powershell
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | limit 1" | ConvertTo-Json -Depth 100
 ```
 
@@ -48,7 +49,7 @@ JSON 结果的结构类似于下面的示例：
   {
     "id": "/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/ContosoVM1",
     "kind": "",
-    "location": "chinaeast",
+    "location": "chinanorth2",
     "managedBy": "",
     "name": "ContosoVM1",
     "plan": {},
@@ -122,11 +123,13 @@ Resources
 az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by location"
 ```
 
-```azurepowershell
+```powershell
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by location"
 ```
 
 JSON 结果的结构类似于下面的示例：
+
+<!--CUSTOMIZE ON DISTINCT LOCATIONS-->
 
 ```json
 [
@@ -136,11 +139,11 @@ JSON 结果的结构类似于下面的示例：
   },
   {
     "count_": 215,
-    "location": "chinanorth"
+    "location": "chinaeast2"
   },
   {
     "count_": 59,
-    "location": "chinaeast2"
+    "location": "chinanorth"
   }
 ]
 ```
@@ -161,7 +164,7 @@ Resources
 az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | project name, resourceGroup"
 ```
 
-```azurepowershell
+```powershell
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | project name, resourceGroup"
 ```
 
@@ -181,7 +184,7 @@ Resources
 az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
 ```
 
-```azurepowershell
+```powershell
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
 ```
 
@@ -216,7 +219,7 @@ Resources
 az graph query -q "Resources | where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'"
 ```
 
-```azurepowershell
+```powershell
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'"
 ```
 
@@ -227,7 +230,7 @@ JSON 结果的结构类似于下面的示例：
   {
     "id": "/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166",
     "kind": "",
-    "location": "chinaeast",
+    "location": "chinanorth2",
     "managedBy": "",
     "name": "ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166",
     "plan": {},
@@ -266,7 +269,7 @@ az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines'
 cat nics.txt
 ```
 
-```azurepowershell
+```powershell
 # Use Resource Graph to get all NICs and store in the $nics variable
 $nics = Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | project nic = tostring(properties['networkProfile']['networkInterfaces'][0]['id']) | where isnotempty(nic) | distinct nic | limit 20"
 
@@ -284,7 +287,7 @@ az graph query -q="Resources | where type =~ 'Microsoft.Network/networkInterface
 cat ips.txt
 ```
 
-```azurepowershell
+```powershell
 # Use Resource Graph  with the $nics variable to get all related public IP addresses and store in $ips variable
 $ips = Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/networkInterfaces' | where id in ('$($nics.nic -join "','")') | project publicIp = tostring(properties['ipConfigurations'][0]['properties']['publicIPAddress']['id']) | where isnotempty(publicIp) | distinct publicIp"
 
@@ -299,7 +302,7 @@ $ips.publicIp
 az graph query -q="Resources | where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$(awk -vORS="','" '{print $0}' ips.txt | sed 's/,$//')') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip" --output table
 ```
 
-```azurepowershell
+```powershell
 # Use Resource Graph with the $ips variable to get the IP address of the public IP address resources
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$($ips.publicIp -join "','")') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip"
 ```
@@ -311,3 +314,5 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/publicIPAddr
 - 详细了解[查询语言](query-language.md)。
 - 请参阅[初学者查询](../samples/starter.md)中使用的语言。
 - 请参阅[高级查询](../samples/advanced.md)中的高级用法。
+
+<!--Update_Description: update meta properties, wording update, update link-->

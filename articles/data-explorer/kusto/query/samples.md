@@ -3,21 +3,20 @@ title: Azure 数据资源管理器和 Azure Monitor 中的查询示例
 description: 本文介绍了对 Azure 数据资源管理器和 Azure Monitor 使用 Kusto 查询语言的常见查询和示例。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 10/08/2020
-ms.date: 01/22/2021
+ms.date: 03/18/2021
 ms.localizationpriority: high
-zone_pivot_group_filename: zone-pivot-groups.json
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
-ms.openlocfilehash: 051648ea780be9c2d5388d573803460ebd3d177b
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.openlocfilehash: fe37c30c0005182cf3cb0a8b0916f75c12e0b8de
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611437"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766769"
 ---
 # <a name="samples-for-queries-for-azure-data-explorer-and-azure-monitor"></a>Azure 数据资源管理器和 Azure Monitor 的查询示例
 
@@ -256,7 +255,7 @@ X | mv-expand samples = range(bin(StartTime, 1m), StopTime , 1m)
 ```kusto
 X
 | mv-expand samples = range(bin(StartTime, 1m), StopTime , 1m)
-| summarize count(SessionId) by bin(todatetime(samples),1m)
+| summarize count_SessionId = count() by bin(todatetime(samples),1m)
 ```
 
 * 使用 `todatetime()` 是因为 [mv-expand](./mvexpandoperator.md) 会生成动态类型的列。
@@ -1889,7 +1888,7 @@ week
 
 ### <a name="rolling-monthly-active-users-and-user-stickiness"></a>滚动每月活动用户数和用户粘性
 
-下面的示例将时间序列分析与 [series_fir](/azure/kusto/query/series-firfunction) 函数结合使用。 可使用 `series_fir` 函数进行滑动窗口计算。 受监视的示例应用程序是一个通过自定义事件跟踪用户活动的网上商店。 查询将跟踪两种类型的用户活动：`AddToCart` 和 `Checkout`。 如果某用户在特定日内至少完成一次结帐，该查询会将该用户定义为活动用户。
+下面的示例将时间序列分析与 [series_fir](https://docs.azure.cn/data-explorer/kusto/query/series-firfunction) 函数结合使用。 可使用 `series_fir` 函数进行滑动窗口计算。 受监视的示例应用程序是一个通过自定义事件跟踪用户活动的网上商店。 查询将跟踪两种类型的用户活动：`AddToCart` 和 `Checkout`。 如果某用户在特定日内至少完成一次结帐，该查询会将该用户定义为活动用户。
 
 ```kusto
 let endtime = endofday(datetime(2017-03-01T00:00:00Z));
@@ -1982,8 +1981,8 @@ on Timestamp
 
 使用两种方法来根据跟踪日志数据评估服务状态：
 
-- 使用 [make-series](/azure/kusto/query/make-seriesoperator) 将半结构化文本跟踪日志转换为指标，用于表示正跟踪线与负跟踪线之间的比率。
-- 结合时序分析和双线线性回归，使用 [series_fit_2lines](/azure/kusto/query/series-fit-2linesfunction) 和 [series_fit_line](/azure/kusto/query/series-fit-linefunction) 执行高级跳步检测。
+- 使用 [make-series](https://docs.azure.cn/data-explorer/kusto/query/make-seriesoperator) 将半结构化文本跟踪日志转换为指标，用于表示正跟踪线与负跟踪线之间的比率。
+- 结合时序分析和双线线性回归，使用 [series_fit_2lines](https://docs.azure.cn/data-explorer/kusto/query/series-fit-2linesfunction) 和 [series_fit_line](https://docs.azure.cn/data-explorer/kusto/query/series-fit-linefunction) 执行高级跳步检测。
 
 ```kusto
 let startDate = startofday(datetime("2017-02-01"));

@@ -3,16 +3,16 @@ title: 在 Azure Stack Hub 中使用 PowerShell 创建 Linux VM
 description: 在 Azure Stack Hub 中使用 PowerShell 创建 Linux VM。
 author: WenJason
 ms.topic: quickstart
-origin.date: 11/22/2020
-ms.date: 03/01/2021
+origin.date: 02/18/2021
+ms.date: 03/22/2021
 ms.author: v-jay
-ms.lastreviewed: 11/22/2020
-ms.openlocfilehash: d99c5f3096c53fe6420242b2bceb75543033d24c
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.lastreviewed: 02/18/2021
+ms.openlocfilehash: c3f8564c3ed94ed30275608565ef6e06b5c58cef
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696601"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765959"
 ---
 # <a name="quickstart-create-a-linux-server-vm-by-using-powershell-in-azure-stack-hub"></a>快速入门：在 Azure Stack Hub 中使用 PowerShell 创建 Linux 服务器 VM
 
@@ -278,7 +278,7 @@ $VirtualMachine = Set-AzVMSourceImage `
 $VirtualMachine = Set-AzVMOSDisk `
   -VM $VirtualMachine `
   -CreateOption FromImage | `
-  Set-AzVMBootDiagnostics -ResourceGroupName $ResourceGroupName `
+  Set-AzVMBootDiagnostic -ResourceGroupName $ResourceGroupName `
   -StorageAccountName $StorageAccountName -Enable |`
   Add-AzVMNetworkInterface -Id $nic.Id
 

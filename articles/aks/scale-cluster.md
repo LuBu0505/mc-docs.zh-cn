@@ -5,16 +5,16 @@ services: container-service
 ms.topic: article
 origin.date: 09/16/2020
 author: rockboyfor
-ms.date: 10/12/2020
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: 04/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: fa57fe52be070e7503753549b70c98ba6f94790f
-ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+ms.openlocfilehash: e3ea078e0d8af429fc732a5915c0d9002c6e2334
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2020
-ms.locfileid: "91937403"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766062"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>在 Azure Kubernetes 服务 (AKS) 群集中缩放节点数
 
@@ -22,13 +22,13 @@ ms.locfileid: "91937403"
 
 ## <a name="scale-the-cluster-nodes"></a>缩放群集节点
 
-首先，使用 [az aks show][az-aks-show] 命令获取节点池的名称**。 以下示例获取 myResourceGroup 资源组中名为 myAKSCluster 的群集的节点池名称****：
+首先，使用 [az aks show][az-aks-show] 命令获取节点池的名称。 以下示例获取 myResourceGroup 资源组中名为 myAKSCluster 的群集的节点池名称：
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
 ```
 
-以下示例输出表明名称为 nodepool1****：
+以下示例输出表明名称为 nodepool1：
 
 ```output
 [
@@ -50,7 +50,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPo
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1 --nodepool-name <your node pool name>
 ```
 
-以下示例输出显示群集已成功缩放为一个节点，如 agentPoolProfiles 部分中所示**：
+以下示例输出显示群集已成功缩放为一个节点，如 agentPoolProfiles 部分中所示：
 
 ```json
 {
@@ -95,9 +95,9 @@ az aks nodepool scale --name <your node pool name> --cluster-name myAKSCluster -
 <!-- LINKS - internal -->
 
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
-[az-aks-show]: https://docs.microsoft.com/cli/azure/aks#az_aks_show
-[az-aks-scale]: https://docs.microsoft.com/cli/azure/aks#az_aks_scale
+[az-aks-show]: https://docs.azure.cn/cli/aks#az_aks_show
+[az-aks-scale]: https://docs.azure.cn/cli/aks#az_aks_scale
 [cluster-autoscaler]: cluster-autoscaler.md
 [az-aks-nodepool-scale]: https://docs.azure.cn/cli/aks/nodepool#az_aks_nodepool_scale
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

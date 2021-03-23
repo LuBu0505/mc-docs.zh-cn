@@ -3,18 +3,17 @@ title: 数据映射 - Azure 数据资源管理器 | Microsoft Docs
 description: 本文介绍 Azure 数据资源管理器中的数据映射。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 05/19/2020
-ms.date: 10/29/2020
-ms.openlocfilehash: 211d1a339168691ee47fbe36c77689c1be820413
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.date: 03/18/2021
+ms.openlocfilehash: ba6b9d6209e4317924f079f4d10689276fcbeb25
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104403"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766631"
 ---
 # <a name="data-mappings"></a>数据映射
 
@@ -134,6 +133,7 @@ CSV 映射可以应用于所有分隔符分隔的格式：CSV、TSV、PSV、SCSV
   { "column" : "xtext",       "Properties":{"Path":"$.xtext"}}, 
   { "column" : "location",    "Properties":{"transform":"SourceLocation"}}, 
   { "column" : "lineNumber",  "Properties":{"transform":"SourceLineNumber"}}, 
+  { "column" : "timestamp",   "Properties":{"Path":"$.unix_ms", "transform":"DateTimeFromUnixMilliseconds"}}, 
   { "column" : "full_record", "Properties":{"Path":"$"}}
 ]
 ```
@@ -297,6 +297,7 @@ CSV 映射可以应用于所有分隔符分隔的格式：CSV、TSV、PSV、SCSV
   { "column" : "xtext",       "Properties":{"Path":"$.xtext"}}, 
   { "column" : "location",    "Properties":{"transform":"SourceLocation"}}, 
   { "column" : "lineNumber",  "Properties":{"transform":"SourceLineNumber"}}, 
+  { "column" : "timestamp",   "Properties":{"Path":"$.unix_ms", "transform":"DateTimeFromUnixMilliseconds"}}, 
   { "column" : "full_record", "Properties":{"Path":"$"}}
 ]
 ```      
@@ -353,6 +354,7 @@ CSV 映射可以应用于所有分隔符分隔的格式：CSV、TSV、PSV、SCSV
   { "column" : "xtext",       "Properties":{"Path":"$.xtext"}}, 
   { "column" : "location",    "Properties":{"transform":"SourceLocation"}}, 
   { "column" : "lineNumber",  "Properties":{"transform":"SourceLineNumber"}}, 
+  { "column" : "timestamp",   "Properties":{"Path":"$.unix_ms", "transform":"DateTimeFromUnixMilliseconds"}}, 
   { "column" : "full_record", "Properties":{"Path":"$"}}
 ]
 ```      

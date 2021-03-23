@@ -3,14 +3,14 @@ author: rockboyfor
 ms.service: azure-resource-manager
 ms.topic: include
 origin.date: 02/24/2020
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.author: v-yeche
-ms.openlocfilehash: 3f287b6e441f6618aaf2bcaf78363dba9d0074db
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 0910484cb4af16a302d068399cad20ca8d851da3
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102053332"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767106"
 ---
 | 资源 | 限制 |
 | --- | --- |

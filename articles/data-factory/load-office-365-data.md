@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 02/18/2021
 ms.date: 03/15/2021
 ms.author: v-jay
-ms.openlocfilehash: fbbb305ed79577f68d57c3ea78d1b63ffe98460c
-ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
+ms.openlocfilehash: 387a6be4bc6983a0048f9c04e56d189ffde33ab2
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102590017"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766918"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Office 365 加载数据
 
@@ -33,7 +33,6 @@ ms.locfileid: "102590017"
     * **名称**：输入 Azure 数据工厂的全局唯一名称。 如果收到错误“数据工厂名称 LoadFromOffice365Demo  不可用”，请输入不同的数据工厂名称。 例如，可以使用名称 _**yourname**_ **LoadFromOffice365Demo**。 请重试创建数据工厂。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
     * **订阅**：选择要在其中创建数据工厂的 Azure 订阅。 
     * **资源组**：从下拉列表中选择现有资源组，或选择“新建”选项并输入资源组的名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
-    * **版本**：选择“V2”。
     * **位置**：选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 这些数据存储包括 Azure 存储、Azure SQL 数据库，等等。
 
 3. 选择“创建” 。

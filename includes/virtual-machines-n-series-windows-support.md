@@ -6,17 +6,17 @@ author: rockboyfor
 ms.service: virtual-machines-windows
 ms.topic: include
 origin.date: 02/11/2019
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: 05/18/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: b3e6fe80a81bc0deaa14e69e35f5ba410978b953
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: bab32b5744170f898e1b7256c09291e5193d1a30
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102052800"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765934"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
 

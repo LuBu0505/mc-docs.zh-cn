@@ -1,20 +1,19 @@
 ---
 title: Azure 安全中心故障排除指南
 description: 本指南适用于需要排查 Azure 安全中心相关问题的 IT 专业人员、安全分析人员和云管理员。
-services: security-center
 author: Johnnytechn
-manager: dcscontentpm
+manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 03/18/2021
 ms.author: v-johya
 origin.date: 09/10/2019
-ms.openlocfilehash: c12eb8ba039e8839100272a4095e0c6ad364efea
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: e7be9115dfb7236d6012ce2ddaa74d1e84e95018
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197492"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766150"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 安全中心故障排除指南
 
@@ -136,7 +135,6 @@ ms.locfileid: "102197492"
 在本文档中，已经学习了如何在 Azure 安全中心中配置安全策略。 若要了解更多有关 Azure 安全中心的详细信息，请参阅以下内容：
 
 * [Azure 安全中心规划和操作指南](security-center-planning-and-operations-guide.md) - 了解如何规划和了解设计注意事项，以适应 Azure 安全中心。
-* [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md) - 了解如何监视 Azure 资源的运行状况
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) - 了解如何管理和响应安全警报
 * [了解 Azure 安全中心内的安全警报](./security-center-alerts-overview.md)
 * [教程：响应安全事件](tutorial-security-incident.md)

@@ -3,17 +3,17 @@ title: Azure Key Vault 证书客户端库快速入门 - Java
 description: 通过本快速入门中的步骤，了解适用于 Java 的 Azure Key Vault 证书客户端库。
 author: msmbaldwin
 ms.custom: devx-track-java, devx-track-azurecli
-ms.author: v-tawe
-ms.date: 01/27/2021
+ms.author: v-chazhou
+ms.date: 03/10/2021
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.openlocfilehash: 9033e9a338ac98bea1d8d4ac5017ea6173e54e19
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: ea39cef3a0ec2d262c1aa0c38b1a5aab2c346204
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99061042"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765600"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-java-certificates"></a>快速入门：适用于 Java 的 Azure Key Vault 证书客户端库（证书）
 适用于 Java 的 Azure Key Vault 证书客户端库入门。 请遵循以下步骤安装包并试用基本任务的示例代码。

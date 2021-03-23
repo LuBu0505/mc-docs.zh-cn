@@ -4,18 +4,18 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 02/20/2020
-ms.date: 11/20/2020
-ms.author: v-tawe
-ms.openlocfilehash: 6037afd9f35e2b9a0a462ad078b77121c01993d6
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 03/08/2021
+ms.author: v-johya
+ms.openlocfilehash: 9d870422a416586651ca4c5d38147ce0d53bb1d0
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98612910"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803476"
 ---
 本快速入门介绍如何使用适用于 Android 的语音设备 SDK 来生成支持语音的产品。
 
-本指南需要[试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)以获取订阅密钥。
+本指南需要一个包含语音服务资源的 [Azure 认知服务](../overview.md#try-the-speech-service-for-free)帐户。
 
 示例应用程序的源代码随附在语音设备 SDK 中， 也可在 [GitHub 上获取](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)。
 
@@ -25,20 +25,18 @@ ms.locfileid: "98612910"
 
 - 按[开发工具包](../get-speech-devices-sdk.md)中提供的说明启动设备。
 
-- 下载[语音设备 SDK](https://aka.ms/sdsdk-download) 的最新版本，并将 .zip 提取到工作目录。
+- 下载[语音设备 SDK](../speech-devices-sdk.md) 的最新版本，并将 .zip 提取到工作目录。
 
   > [!NOTE]
   > 本快速入门假设应用已解压缩到 C:\SDSDK\Android-Sample-Release
 
-- 获取[语音服务的 Azure 订阅密钥](../get-started.md)
+- 获取[语音服务的 Azure 订阅密钥](../overview.md#try-the-speech-service-for-free)
+
+- 如果计划使用语音服务来确定用户话语中的意向（或行动），则需[语言理解服务 (LUIS)](../../luis/luis-how-to-azure-subscription.md) 订阅。 若要了解有关 LUIS 和意向识别的详细信息，请参阅[使用 LUIS、C# 识别语音意向](../how-to-recognize-intents-from-speech-csharp.md)。
+
+  可[创建一个简单的 LUIS 模型](../../luis/index.yml)，或使用示例 LUIS 模型 LUIS-example.json。 可从[语音设备 SDK 下载站点](https://aka.ms/sdsdk-luis)获取示例 LUIS 模型。 选择“导入新应用”并选择 JSON 文件，将模型的 JSON 文件上传到 [LUIS 门户](https://luis.azure.cn/home)。
 
 - 在电脑上安装 [Android Studio](https://developer.android.com/studio/) 和 [Vysor](https://vysor.io/download/)。
-
-<!-- - If you plan to use the Conversation Transcription you must use a [circular microphone device](../get-speech-devices-sdk.md) and this feature is currently only available for "en-US" and "zh-CN" in regions, "chinaeast2". You must have a speech key in one of those regions to use Conversation Transcription. -->
-
-- 如果计划使用语音服务来确定用户话语中的意向（或行动），则需[语言理解服务 (LUIS)](https://docs.azure.cn/cognitive-services/luis/azureibizasubscription) 订阅。 若要了解有关 LUIS 和意向识别的详细信息，请参阅[使用 LUIS、C# 识别语音意向](https://docs.azure.cn/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)。
-
-  可[创建一个简单的 LUIS 模型](https://docs.azure.cn/cognitive-services/luis/)，或使用示例 LUIS 模型 LUIS-example.json。 可从[语音设备 SDK 下载站点](https://aka.ms/sdsdk-luis)获取示例 LUIS 模型。 选择“导入新应用”并选择 JSON 文件，将模型的 JSON 文件上传到 [LUIS 门户](https://luis.azure.cn/home)。
 
 ## <a name="set-up-the-device"></a>设置设备
 
@@ -97,10 +95,10 @@ ms.locfileid: "98612910"
     通过将以下行添加到 dependencies 节来更新 **build.gradle(Module:app)** 。 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.13.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.15.0'
     ```
     
-1. 将语音订阅密钥添加到源代码。 如果想要尝试意向识别，还需要添加[语言理解服务](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)订阅密钥和应用程序 ID。
+1. 将语音订阅密钥添加到源代码。 如果想要尝试意向识别，还需要添加[语言理解服务](https://www.azure.cn/home/features/cognitive-services/language-understanding-intelligent-service/)订阅密钥和应用程序 ID。
 
    对于语音和 LUIS，你的信息会进入 MainActivity.java：
 
@@ -113,19 +111,8 @@ ms.locfileid: "98612910"
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-<!--
-   If you are using conversation transcription, your speech key and region information are also needed in conversation.java:
-
-   ```java
-    private static final String CTSKey = "<Conversation Transcription Service Key>";
-    private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "chinaeast2" or "eastasia"
-   ```
--->
 
 1. 默认关键字为“Computer”。 还可以尝试所提供的其他关键字之一，例如“Machine”或“Assistant”。 这些备用关键字的资源文件位于语音设备 SDK 的 keyword 文件夹中。 例如，C:\SDSDK\Android-Sample-Release\keyword\Computer 包含用于关键字“Computer”的文件。
-
-   <!-- > [!TIP]
-   > You can also [create a custom keyword](../speech-devices-sdk-create-kws.md). -->
 
    要使用新的关键字，请更新 `MainActivity.java` 中的下面两行，并将关键字包复制到应用。 例如，若要使用关键字包 kws-machine.zip 中的关键字“Machine”，请执行以下操作：
 
@@ -165,13 +152,9 @@ ms.locfileid: "98612910"
 
    ![示例语音设备 SDK 的示例应用程序和选项](../media/speech-devices-sdk/qsg-8.png)
 
-   <!-- 1. Try the new Conversation Transcription demo. Start transcribing with 'Start Session'. By default everyone is a guest. However, if you have participant's voice signatures they can be put into a file `/video/participants.properties` on the device. To generate the voice signature, look at [Transcribe conversations (SDK)](../how-to-use-conversation-transcription-service.md). -->
-
-   <!-- ![Demo Conversation Transcription application](../media/speech-devices-sdk/qsg-15.png) -->
-
 1. 尽情体验吧！
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果无法连接到语音设备。 在命令提示符窗口中键入以下命令。 这会返回设备列表：
 
@@ -183,3 +166,4 @@ ms.locfileid: "98612910"
 > 此命令使用 Android Debug Bridge `adb.exe`，它是 Android Studio 安装的一部分。 此工具位于 C:\Users\[用户名]\AppData\Local\Android\Sdk\platform-tools 中。 可将该目录添加到你的路径，以便更轻松地调用 `adb`。 否则，必须在调用 `adb` 必须在每个调用 adb 的命令中指定到 adb.exe 的完整安装路径。
 >
 > 如果看到 `no devices/emulators found` 错误，请检查 USB 电缆是否已连接，并确保使用了高品质的电缆。
+

@@ -2,19 +2,20 @@
 title: SQL 身份验证
 description: 了解 Azure Synapse Analytics 中的 SQL 身份验证。
 services: synapse-analytics
-author: vvasic-msft
+author: WenJason
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: overview
-ms.date: 04/15/2020
-ms.author: vvasic
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: a38d8827fdecfa047f2e459ba0602762f6d3f2c0
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 69758e3936b395455eff8fa67a4c128fb6afcd21
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207348"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766813"
 ---
 # <a name="sql-authentication"></a>SQL 身份验证
 
@@ -92,18 +93,18 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 若要创建数据库，用户必须是基于 `master` 数据库中的 SQL Server 登录名的用户，或者是基于 Azure Active Directory 用户的已包含数据库用户。
 
 1. 使用管理员帐户连接到 `master` 数据库。
-2. 使用 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 语句创建 SQL Server 身份验证登录名。 示例语句：
+2. 使用 [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest&preserve-view=true) 语句创建 SQL Server 身份验证登录名。 示例语句：
 
    ```sql
    CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
    ```
 
    > [!NOTE]
-   > 创建登录名或包含数据库用户时使用强密码。 有关详细信息，请参阅 [Strong Passwords](/sql/relational-databases/security/strong-passwords?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+   > 创建登录名或包含数据库用户时使用强密码。 有关详细信息，请参阅 [Strong Passwords](https://docs.microsoft.com/sql/relational-databases/security/strong-passwords?view=azure-sqldw-latest&preserve-view=true)。
 
-   为了提高性能，会暂时在数据库级别缓存登录名（服务器级主体）。 若要刷新身份验证缓存，请参阅 [DBCC FLUSHAUTHCACHE](/sql/t-sql/database-console-commands/dbcc-flushauthcache-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+   为了提高性能，会暂时在数据库级别缓存登录名（服务器级主体）。 若要刷新身份验证缓存，请参阅 [DBCC FLUSHAUTHCACHE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-flushauthcache-transact-sql?view=azure-sqldw-latest&preserve-view=true)。
 
-3. 使用 [CREATE USER](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 语句创建数据库用户。 该用户可以是 Azure Active Directory 身份验证包含的数据库用户（如果已针对 Azure AD 身份验证配置了环境），可以是 SQL Server 身份验证包含的数据库用户，也可以是基于 SQL Server 身份验证登录名（在前一步骤中创建）的 SQL Server 身份验证用户。示例语句：
+3. 使用 [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azure-sqldw-latest&preserve-view=true) 语句创建数据库用户。 该用户可以是 Azure Active Directory 身份验证包含的数据库用户（如果已针对 Azure AD 身份验证配置了环境），可以是 SQL Server 身份验证包含的数据库用户，也可以是基于 SQL Server 身份验证登录名（在前一步骤中创建）的 SQL Server 身份验证用户。示例语句：
 
    ```sql
    CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
@@ -111,7 +112,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
-4. 使用 [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=azure-sqldw-latest&preserve-view=true) 过程将新用户添加到 `master` 中的“dbmanager”数据库角色（请注意，[ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 语句在 SQL 配置中不受支持）。 示例语句：
+4. 使用 [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=azure-sqldw-latest&preserve-view=true) 过程将新用户添加到 `master` 中的“dbmanager”数据库角色（请注意，[ALTER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azure-sqldw-latest&preserve-view=true) 语句在 SQL 配置中不受支持）。 示例语句：
 
    ```sql
    EXEC sp_addrolemember 'dbmanager', 'Mary'; 
@@ -127,13 +128,13 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 
 ### <a name="login-managers"></a>登录名管理器
 
-另一个管理角色是登录管理员角色。 此角色的成员可在 master 数据库中创建新登录名。 如果需要，可以完成相同的步骤（创建登录名和用户，并向 **loginmanager** 角色添加用户），使用户能够在 master 数据库中创建新登录名。 登录名通常不是必需的，因为 Microsoft 建议使用包含的数据库用户（在数据库级别进行身份验证），而不使用基于登录名的用户。 有关详细信息，请参阅 [包含的数据库用户 - 使你的数据库可移植](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+另一个管理角色是登录管理员角色。 此角色的成员可在 master 数据库中创建新登录名。 如果需要，可以完成相同的步骤（创建登录名和用户，并向 **loginmanager** 角色添加用户），使用户能够在 master 数据库中创建新登录名。 登录名通常不是必需的，因为 Microsoft 建议使用包含的数据库用户（在数据库级别进行身份验证），而不使用基于登录名的用户。 有关详细信息，请参阅 [包含的数据库用户 - 使你的数据库可移植](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable?view=azure-sqldw-latest&preserve-view=true)。
 
 ---
 
 ## <a name="non-administrator-users"></a>非管理员用户
 
-非管理员帐户通常无需访问 master 数据库。 使用 [CREATE USER (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql) 语句在数据库级别创建包含数据库用户。 
+非管理员帐户通常无需访问 master 数据库。 使用 [CREATE USER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) 语句在数据库级别创建包含数据库用户。 
 
 该用户可以是 Azure Active Directory 身份验证包含数据库用户（如果已针对 Azure AD 身份验证配置了环境），可以是 SQL Server 身份验证包含数据库用户，也可以是基于 SQL Server 身份验证登录名（在前一步骤中创建）的 SQL Server 身份验证用户。  
 
@@ -158,7 +159,7 @@ GRANT ALTER ANY USER TO Mary;
 ALTER ROLE db_owner ADD MEMBER Mary;
 ```
 
-在专用 SQL 池中，请使用 [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+在专用 SQL 池中，请使用 [EXEC sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=azure-sqldw-latest&preserve-view=true)。
 
 ```sql
 EXEC sp_addrolemember 'db_owner', 'Mary';
@@ -167,11 +168,11 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 > [!NOTE]
 > 创建基于服务器登录名的数据库用户的一个常见原因是用户需要访问多个数据库。 由于包含的数据库的用户都是单独的实体，因此每个数据库都维护其各自的用户及其密码。 这可能会导致开销，因为用户必须记住每个数据库的密码，当必须为许多数据库更改多个密码时，这通常难以做到。 但是，当使用 SQL Server 登录名和高可用性（活动异地复制和故障转移组）时，必须手动在每台服务器上设置 SQL Server 登录名。 否则，数据库用户在发生故障转移后将不再映射到该服务器登录名，并且在故障转移后将无法访问数据库。 
 
-有关为异地复制配置登录名的详细信息，请参阅[针对异地还原或故障转移配置和管理 Azure SQL 数据库的安全性](../../azure-sql/database/active-geo-replication-security-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+有关为异地复制配置登录名的详细信息，请参阅[针对异地还原或故障转移配置和管理 Azure SQL 数据库的安全性](../../azure-sql/database/active-geo-replication-security-configure.md)。
 
 ### <a name="configuring-the-database-level-firewall"></a>配置数据库级防火墙
 
-最好是规定非管理员用户只能通过防火墙来访问所使用的数据库。 可以使用 [sp_set_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 语句来配置数据库级防火墙，而不必通过服务器级防火墙来授权其 IP 地址访问所有数据库。 不能通过门户来配置数据库级防火墙。
+最好是规定非管理员用户只能通过防火墙来访问所使用的数据库。 可以使用 [sp_set_database_firewall_rule](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database?view=azure-sqldw-latest&preserve-view=true) 语句来配置数据库级防火墙，而不必通过服务器级防火墙来授权其 IP 地址访问所有数据库。 不能通过门户来配置数据库级防火墙。
 
 ### <a name="non-administrator-access-path"></a>非管理员访问路径
 
@@ -183,15 +184,15 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 
 有效的访问管理需要将权限分配到组和角色，而不是分配到单个用户。
 
-- 使用 Azure Active Directory 身份验证时，请将 Azure Active Directory 用户放入 Azure Active Directory 组。 为该组创建包含数据库用户。 将一个或多个数据库用户添加到[数据库角色](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)，然后向数据库角色分配[权限](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+- 使用 Azure Active Directory 身份验证时，请将 Azure Active Directory 用户放入 Azure Active Directory 组。 为该组创建包含数据库用户。 将一个或多个数据库用户添加到[数据库角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=azure-sqldw-latest&preserve-view=true)，然后向数据库角色分配[权限](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine?view=azure-sqldw-latest&preserve-view=true)。
 
-- 使用 SQL Server 身份验证时，请在数据库中创建包含的数据库用户。 将一个或多个数据库用户添加到[数据库角色](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)，然后向数据库角色分配[权限](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+- 使用 SQL Server 身份验证时，请在数据库中创建包含的数据库用户。 将一个或多个数据库用户添加到[数据库角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=azure-sqldw-latest&preserve-view=true)，然后向数据库角色分配[权限](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine?view=azure-sqldw-latest&preserve-view=true)。
 
 数据库角色可以是内置的角色，例如 **db_owner**、**db_ddladmin**、**db_datawriter**、**db_datareader**、**db_denydatawriter** 和 **db_denydatareader**。 **db_owner** 通常用于向部分用户授予完全权限。 其他固定数据库角色可用于快速开发简单的数据库，但不建议用于大多数生产数据库。 
 
 例如，**db_datareader** 固定数据库角色授予用户对数据库中每个表的读取访问权限，这通常超出了必要的范畴。 
 
-最好使用 [CREATE ROLE](/sql/t-sql/statements/create-role-transact-sql) 语句创建自己的用户定义数据库角色，并谨慎地为每个角色授予满足业务需要所需的最低权限。 如果用户是多个角色的成员，则会聚合所有这些角色的权限。
+最好使用 [CREATE ROLE](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql) 语句创建自己的用户定义数据库角色，并谨慎地为每个角色授予满足业务需要所需的最低权限。 如果用户是多个角色的成员，则会聚合所有这些角色的权限。
 
 ## <a name="permissions"></a>权限
 
@@ -199,7 +200,7 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 
 考虑到权限的嵌套性质和数目，可能需要进行仔细的研究才能设计出适当的权限系统，以便对数据库进行恰当的保护。 
 
-一开始可以了解[权限（数据库引擎）](/sql/relational-databases/security/permissions-database-engine)中的权限列表，并查看这些权限的[海报大小的图](/sql/relational-databases/security/media/database-engine-permissions.png)。
+一开始可以了解[权限（数据库引擎）](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)中的权限列表，并查看这些权限的[海报大小的图](https://docs.microsoft.com/sql/relational-databases/security/media/database-engine-permissions.png)。
 
 ### <a name="considerations-and-restrictions"></a>注意事项和限制
 
@@ -212,7 +213,7 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 - 执行 `CREATE/ALTER/DROP LOGIN` 语句时，必须连接到 master 数据库。 但不建议使用登录名。 改用包含的数据库用户。
 - 若要连接到用户数据库，必须在连接字符串中提供数据库的名称。
 - 只有服务器级别主体登录名和 **master** 数据库中 **loginmanager** 数据库角色的成员才有权执行 `CREATE LOGIN`、`ALTER LOGIN` 和 `DROP LOGIN` 语句。
-- 在 ADO.NET 应用程序中执行 `CREATE/ALTER/DROP LOGIN` 和 `CREATE/ALTER/DROP DATABASE` 语句时，不允许使用参数化命令。 有关详细信息，请参阅[命令和参数](/dotnet/framework/data/adonet/commands-and-parameters?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+- 在 ADO.NET 应用程序中执行 `CREATE/ALTER/DROP LOGIN` 和 `CREATE/ALTER/DROP DATABASE` 语句时，不允许使用参数化命令。 有关详细信息，请参阅[命令和参数](https://docs.microsoft.com/dotnet/framework/data/adonet/commands-and-parameters)。
 - 在执行 `CREATE/ALTER/DROP DATABASE` 和 `CREATE/ALTER/DROP LOGIN` 语句时，上述每个语句都必须是 Transact-SQL 批处理中的唯一语句。 否则，将会出错。 例如，以下 Transact-SQL 会检查该数据库是否存在。 如果该数据库存在，则调用 `DROP DATABASE` 语句删除该数据库。 因为 `DROP DATABASE` 语句不是该批处理中的唯一语句，所以执行以下 Transact-SQL 将导致错误。
 
   ```sql
@@ -236,4 +237,4 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅 [包含的数据库用户 - 使你的数据库可移植](/sql/relational-databases/security/contained-database-users-making-your-database-portable)。
+有关详细信息，请参阅 [包含的数据库用户 - 使你的数据库可移植](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)。

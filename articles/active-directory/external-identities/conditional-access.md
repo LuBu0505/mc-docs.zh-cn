@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 02/24/2021
+ms.date: 03/16/2021
 ms.author: v-junlch
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3399e0b456b9951317e1046ee54dcbdd7ea6ecf
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: e0c05ea79f85a5c48eb24e1f7520216be066846a
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697553"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765448"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>B2B 协作用户的条件访问
 
@@ -50,22 +50,11 @@ ms.locfileid: "101697553"
 
 5. 此情况适用于任何标识 - Azure AD。 例如，Contoso 中的用户可以使用社交 ID 进行身份验证。
 
-6. Fabrikam 必须提供足够的高级 Azure AD 许可证来支持 Azure AD 多重身份验证。 然后来自 Contoso 的用户才能使用 Fabrikam 提供的此许可证。 有关 B2B 许可的信息，请参阅 [Azure AD 外部标识的计费模型](/active-directory/external-identities/external-identities-pricing)。
+6. Fabrikam 必须提供足够的高级 Azure AD 许可证来支持 Azure AD 多重身份验证。 然后来自 Contoso 的用户才能使用 Fabrikam 提供的此许可证。 有关 B2B 许可的信息，请参阅 [Azure AD 外部标识的计费模型](./external-identities-pricing.md)。
 
 >[!NOTE]
 >Azure AD 多重身份验证在资源租户上完成，以确保可预测性。
 
-### <a name="set-up-azure-ad-multi-factor-authentication-for-b2b-users"></a>针对 B2B 用户设置 Azure AD 多重身份验证
-
-若要为 B2B 协作用户设置 Azure AD 多重身份验证，请观看以下视频：
-
->[!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-conditional-access-setup/Player]
-
-### <a name="b2b-users-azure-ad-multi-factor-authentication-for-offer-redemption"></a>针对兑换产品时要求的 B2B 用户 Azure AD 多重身份验证
-
-若要详细了解兑换产品时的 Azure AD 多重身份验证体验，请观看以下视频：
-
->[!VIDEO https://channel9.msdn.com/Blogs/Azure/MFA-redemption/Player]
 
 ### <a name="azure-ad-multi-factor-authentication-reset-for-b2b-users"></a>针对 B2B 用户的 Azure AD 多重身份验证重置
 
@@ -101,43 +90,42 @@ ms.locfileid: "101697553"
 
 ### <a name="device-based-conditional-access"></a>基于设备的条件访问
 
-在 CA 中，有一个要求用户的[设备合规或已加入混合 Azure AD](/active-directory/conditional-access/concept-conditional-access-conditions#device-state-preview) 的选项。 B2B 来宾用户只有在资源租户能够管理其设备时才能满足合规性。 设备不能一次由多个组织管理。 B2B 来宾用户无法满足混合 Azure AD 加入，因为他们没有本地 AD 帐户。 仅当来宾用户的设备不受管理时，来宾用户才能在资源租户中注册其设备，然后使设备合规。 然后，用户可以满足授权控制要求。
+在 CA 中，有一个要求用户的[设备合规或已加入混合 Azure AD](../conditional-access/concept-conditional-access-conditions.md#device-state-preview) 的选项。 B2B 来宾用户只有在资源租户能够管理其设备时才能满足合规性。 设备不能一次由多个组织管理。 B2B 来宾用户无法满足混合 Azure AD 加入，因为他们没有本地 AD 帐户。 仅当来宾用户的设备不受管理时，来宾用户才能在资源租户中注册其设备，然后使设备合规。 然后，用户可以满足授权控制要求。
 
 >[!Note]
 >不建议对外部用户要求使用受管理设备。
 
 ### <a name="mobile-application-management-policies"></a>移动应用程序管理策略
 
-CA 授权控制（如需要已批准的客户端应用和需要应用保护策略）需要在租户中注册设备 。 这些控制仅应用于 [iOS 和 Android 设备](/active-directory/conditional-access/concept-conditional-access-conditions#device-platforms)。 但是，如果用户的设备已经由其他组织管理，则这两种控制都不能应用于 B2B 来宾用户。 移动设备不能一次在多个租户中注册。 如果移动设备由其他组织管理，则用户将被阻止。 仅当来宾用户的设备不受管理时，来宾用户才能在资源租户中注册其设备。 然后，用户可以满足授权控制要求。  
+CA 授权控制（如需要已批准的客户端应用和需要应用保护策略）需要在租户中注册设备 。 这些控制仅应用于 [iOS 和 Android 设备](../conditional-access/concept-conditional-access-conditions.md#device-platforms)。 但是，如果用户的设备已经由其他组织管理，则这两种控制都不能应用于 B2B 来宾用户。 移动设备不能一次在多个租户中注册。 如果移动设备由其他组织管理，则用户将被阻止。 仅当来宾用户的设备不受管理时，来宾用户才能在资源租户中注册其设备。 然后，用户可以满足授权控制要求。  
 
 >[!NOTE]
 >不建议对外部用户要求应用保护策略。
 
 ### <a name="location-based-conditional-access"></a>基于位置的条件访问
 
-如果邀请组织能够创建定义其合作伙伴组织的受信任 IP 地址范围，则可以执行基于 IP 范围的[基于位置的策略](/active-directory/conditional-access/concept-conditional-access-conditions#locations)。
+如果邀请组织能够创建定义其合作伙伴组织的受信任 IP 地址范围，则可以执行基于 IP 范围的[基于位置的策略](../conditional-access/concept-conditional-access-conditions.md#locations)。
 
 还可以基于地理位置执行策略。
 
 ### <a name="risk-based-conditional-access"></a>基于风险的条件访问
 
-如果 B2B 来宾用户满足授权控制要求，则执行[登录风险策略](/active-directory/conditional-access/concept-conditional-access-conditions#sign-in-risk)。 例如，组织可能需要 Azure AD 多重身份验证，以承担中等或高登录风险。 但是，如果某个用户以前没有在资源租户中注册过 Azure AD 多重身份验证，则该用户将被阻止。 这样做是为了防止恶意用户在泄露合法用户密码时注册其自己的 Azure AD 多重身份验证凭据。
+如果 B2B 来宾用户满足授权控制要求，则执行[登录风险策略](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)。 例如，组织可能需要 Azure AD 多重身份验证，以承担中等或高登录风险。 但是，如果某个用户以前没有在资源租户中注册过 Azure AD 多重身份验证，则该用户将被阻止。 这样做是为了防止恶意用户在泄露合法用户密码时注册其自己的 Azure AD 多重身份验证凭据。
 
-但无法在资源租户中解决[用户风险策略](/active-directory/conditional-access/concept-conditional-access-conditions#user-risk)。 例如，如果你需要为高风险来宾用户更改密码，则由于无法重置资源目录中的密码，他们将被阻止。
+但无法在资源租户中解决[用户风险策略](../conditional-access/concept-conditional-access-conditions.md#user-risk)。 例如，如果你需要为高风险来宾用户更改密码，则由于无法重置资源目录中的密码，他们将被阻止。
 
 ### <a name="conditional-access-client-apps-condition"></a>条件访问客户端应用条件
 
-针对 B2B 来宾用户的[客户端应用条件](/active-directory/conditional-access/concept-conditional-access-conditions#client-apps)的行为与针对其他类型用户的客户端应用条件的行为是一样的。 例如，你可以阻止来宾用户使用旧版身份验证协议。
+针对 B2B 来宾用户的[客户端应用条件](../conditional-access/concept-conditional-access-conditions.md#client-apps)的行为与针对其他类型用户的客户端应用条件的行为是一样的。 例如，你可以阻止来宾用户使用旧版身份验证协议。
 
 ### <a name="conditional-access-session-controls"></a>条件访问会话控制
 
-针对 B2B 来宾用户的[会话控制](/active-directory/conditional-access/concept-conditional-access-session)的行为与针对其他类型用户的会话控制的行为是一样的。
+针对 B2B 来宾用户的[会话控制](../conditional-access/concept-conditional-access-session.md)的行为与针对其他类型用户的会话控制的行为是一样的。
 
 ## <a name="next-steps"></a>后续步骤
 
 有关详细信息，请参阅以下有关 Azure AD B2B 协作的文章：
 
-- [什么是 Azure AD B2B 协作？](/active-directory/external-identities/what-is-b2b)
+- [什么是 Azure AD B2B 协作？](./what-is-b2b.md)
 - [外部标识定价](https://www.azure.cn/pricing/details/active-directory/)
-- [常见问题 (FAQ)](/active-directory/external-identities/faq)
-
+- [常见问题 (FAQ)](./faq.md)

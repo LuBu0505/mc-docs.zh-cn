@@ -2,19 +2,20 @@
 title: 使用无服务器 SQL 池查询 CSV 文件
 description: 本文介绍如何使用无服务器 SQL 池查询不同文件格式的单个 CSV 文件。
 services: synapse analytics
-author: azaricstefan
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
-ms.date: 05/20/2020
-ms.author: stefanazaric
+origin.date: 05/20/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: d0b83db5ebb31fbf8876ebc579fea10121a47c45
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: ff3ad00069a781abb5051746bf2adf76ae78f04a
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207359"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765553"
 ---
 # <a name="query-csv-files"></a>查询 CSV 文件
 
@@ -38,7 +39,7 @@ ms.locfileid: "102207359"
 ```sql
 select top 10 *
 from openrowset(
-    bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    bulk 'https://pandemicdatalake.blob.core.chinacloudapi.cn/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
     format = 'csv',
     parser_version = '2.0',
     firstrow = 2 ) as rows
@@ -57,7 +58,7 @@ from openrowset(
 
 ```sql
 create external data source covid
-with ( location = 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases' );
+with ( location = 'https://pandemicdatalake.blob.core.chinacloudapi.cn/public/curated/covid-19/ecdc_cases' );
 ```
 
 创建数据源后，可以在 `OPENROWSET` 函数中使用该数据源和文件的相对路径：

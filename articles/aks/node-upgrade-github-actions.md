@@ -6,16 +6,16 @@ services: container-service
 ms.topic: article
 origin.date: 11/27/2020
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/16/2021
 ms.testscope: yes
 ms.testdate: 01/11/2021
 ms.author: v-yeche
-ms.openlocfilehash: d7cbb5691124dd5df4abfb7eba09b18a0d8b133d
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: c234ea09c583a57f30884ac110044ff98478b02a
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063704"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767021"
 ---
 <!--Pending PM Review-->
 # <a name="apply-security-updates-to-azure-kubernetes-service-aks-nodes-automatically-using-github-actions"></a>使用 GitHub Actions 自动将安全更新应用于 Azure Kubernetes 服务 (AKS) 节点
@@ -171,7 +171,6 @@ ms.locfileid: "99063704"
     > 可针对 Azure 中国云和 Azure Stack Hub 利用此 Azure 登录操作（使用环境参数）。
     > 
     > * Azure 中国云：`environment: 'AzureChinaCloud'`
-    > * Azure Stack：`environment: 'AzureStack'`
     
     > [!TIP]
     > 可以通过将 `-g` 和 `-n` 参数添加到机密来将其与命令分离，这与前面的步骤类似。 将 `{resourceGroupName}` 和 `{aksClusterName}` 占位符替换为其机密对应项，例如 `${{secrets.RESOURCE_GROUP_NAME}}` 和 `${{secrets.AKS_CLUSTER_NAME}}`
@@ -220,7 +219,7 @@ jobs:
 - 通过阅读[创建和管理多个节点池][use-multiple-node-pools]一文来详细了解多个节点池以及如何升级节点池。
 - 详细了解[系统节点池][system-pools]
 
-<!--Not Available on [add a spot node pool to AKS][spot-pools]-->
+<!--NOT AVAILABLE ON [add a spot node pool to AKS][spot-pools]-->
 
 <!-- LINKS - external -->
 
@@ -232,7 +231,7 @@ jobs:
 
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
-[install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli
+[install-azure-cli]: https://docs.microsoft.com/cli/azure/install-azure-cli
 [managed-node-upgrades-article]: node-image-upgrade.md
 [cluster-upgrades-article]: upgrade-cluster.md
 [system-pools]: use-system-pools.md

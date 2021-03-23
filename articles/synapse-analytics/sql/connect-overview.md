@@ -7,16 +7,16 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
 origin.date: 04/15/2020
-ms.date: 03/08/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1f9489bd36c8cfada5a622dca5d5510f9ad0ef77
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: de870959fe5e5c42e1348ca5d126502bf164ecf7
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102206912"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766200"
 ---
 # <a name="connect-to-synapse-sql"></a>连接到 Synapse SQL
 连接到 Azure Synapse Analytics 中的 Synapse SQL 功能。
@@ -86,10 +86,10 @@ Synapse SQL 在连接和创建对象期间会标准化一些设置。 这些设�
 
 | 数据库设置 | 值 |
 |:--- |:--- |
-| [ANSI_NULLS](https://docs.microsoft.com/sql/t-sql/statements/set-ansi-nulls-transact-sql?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |ON |
-| [QUOTED_IDENTIFIERS](https://docs.microsoft.com/sql/t-sql/statements/set-quoted-identifier-transact-sql?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |ON |
-| [DATEFORMAT](https://docs.microsoft.com/sql/t-sql/statements/set-dateformat-transact-sql?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |mdy |
-| [DATEFIRST](https://docs.microsoft.com/sql/t-sql/statements/set-datefirst-transact-sql?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |7 |
+| [ANSI_NULLS](https://docs.microsoft.com/sql/t-sql/statements/set-ansi-nulls-transact-sql?view=azure-sqldw-latest&preserve-view=true) |ON |
+| [QUOTED_IDENTIFIERS](https://docs.microsoft.com/sql/t-sql/statements/set-quoted-identifier-transact-sql?view=azure-sqldw-latest&preserve-view=true) |ON |
+| [DATEFORMAT](https://docs.microsoft.com/sql/t-sql/statements/set-dateformat-transact-sql?view=azure-sqldw-latest&preserve-view=true) |mdy |
+| [DATEFIRST](https://docs.microsoft.com/sql/t-sql/statements/set-datefirst-transact-sql?view=azure-sqldw-latest&preserve-view=true) |7 |
 
 ## <a name="recommendations"></a>建议
 

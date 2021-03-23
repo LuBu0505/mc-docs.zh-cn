@@ -5,16 +5,16 @@ services: container-service
 ms.topic: article
 origin.date: 07/18/2019
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: 07/27/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3c4a59f02ad6959167a622a2c55e15b1ffd3bbd1
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 638c82267ae6b6992e5897d04cc412386908ac16
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055154"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766010"
 ---
 <!--Verified successfully-->
 <!--PG team have confirm the issue have been fixed-->
@@ -297,7 +297,7 @@ az aks nodepool update \
 [aks-upgrade]: upgrade-cluster.md
 [aks-view-master-logs]: ./view-master-logs.md#enable-resource-logs
 [autoscaler-profile-properties]: #using-the-autoscaler-profile
-[azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli
+[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli
 [az-aks-show]: https://docs.azure.cn/cli/aks#az_aks_show
 [az-extension-add]: https://docs.azure.cn/cli/extension#az_extension_add
 [az-extension-update]: https://docs.azure.cn/cli/extension#az_extension_update

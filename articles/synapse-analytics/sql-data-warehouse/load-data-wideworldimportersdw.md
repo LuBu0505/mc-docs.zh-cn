@@ -12,12 +12,12 @@ ms.date: 02/01/2021
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: 7eb1e93b98bd1d39cbf815b968942858cb288be9
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 18ff502192edc264d2b465ce40dc4e63f16165cb
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059989"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766841"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>教程：将数据加载到 Azure Synapse Analytics SQL 池
 
@@ -119,7 +119,7 @@ ms.locfileid: "99059989"
     WITH
     (
         TYPE = Hadoop,
-        LOCATION = 'wasbs://wideworldimporters@sqldwholdata.blob.core.windows.net'
+        LOCATION = 'wasbs://wideworldimporters@sqldwholdata.blob.core.chinacloudapi.cn'
     );
     ```
 

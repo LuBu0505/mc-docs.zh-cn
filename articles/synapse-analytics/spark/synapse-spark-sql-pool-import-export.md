@@ -7,15 +7,15 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: spark
 origin.date: 11/19/2020
-ms.date: 03/08/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: euang
-ms.openlocfilehash: b926a97b804945973fe6d4b9831016437625bd4d
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: fb8c4d020fcbdf57b5d754a0640e3808d2bc010c
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207650"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765560"
 ---
 # <a name="introduction"></a>简介
 
@@ -112,7 +112,7 @@ df.write.synapsesql("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 
 SQL 池外部表
 
-若要写入专用 SQL 池外部表，该专用 SQL 池上必须存在 EXTERNAL DATA SOURCE 和 EXTERNAL FILE FORMAT。  有关详细信息，请参阅在专用 SQL 池中创建[外部数据源](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)和[外部文件格式](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。  以下是在专用 SQL 池中创建外部数据源和外部文件格式的示例。
+若要写入专用 SQL 池外部表，该专用 SQL 池上必须存在 EXTERNAL DATA SOURCE 和 EXTERNAL FILE FORMAT。  有关详细信息，请参阅在专用 SQL 池中创建[外部数据源](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest&preserve-view=true)和[外部文件格式](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest&preserve-view=true)。  以下是在专用 SQL 池中创建外部数据源和外部文件格式的示例。
 
 ```sql
 --For an external table, you need to pre-create the data source and file format in dedicated SQL pool using SQL queries:
@@ -154,7 +154,7 @@ df.write.
 
 ```scala
 val df = spark.read.
-option(Constants.SERVER, "samplews.database.windows.net").
+option(Constants.SERVER, "samplews.database.chinacloudapi.cn").
 synapsesql("<DBName>.<Schema>.<TableName>")
 ```
 
@@ -162,7 +162,7 @@ synapsesql("<DBName>.<Schema>.<TableName>")
 
 ```scala
 df.write.
-option(Constants.SERVER, "samplews.database.windows.net").
+option(Constants.SERVER, "samplews.database.chinacloudapi.cn").
 synapsesql("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
@@ -174,7 +174,7 @@ synapsesql("<DBName>.<Schema>.<TableName>", <TableType>)
 
 ```scala
 val df = spark.read.
-option(Constants.SERVER, "samplews.database.windows.net").
+option(Constants.SERVER, "samplews.database.chinacloudapi.cn").
 option(Constants.USER, <SQLServer Login UserName>).
 option(Constants.PASSWORD, <SQLServer Login Password>).
 synapsesql("<DBName>.<Schema>.<TableName>")
@@ -184,7 +184,7 @@ synapsesql("<DBName>.<Schema>.<TableName>")
 
 ```scala
 df.write.
-option(Constants.SERVER, "samplews.database.windows.net").
+option(Constants.SERVER, "samplews.database.chinacloudapi.cn").
 option(Constants.USER, <SQLServer Login UserName>).
 option(Constants.PASSWORD, <SQLServer Login Password>).
 synapsesql("<DBName>.<Schema>.<TableName>", <TableType>)

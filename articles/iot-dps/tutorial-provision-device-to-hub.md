@@ -2,19 +2,18 @@
 title: 教程 - 使用 Azure IoT 中心设备预配服务预配设备
 description: 本教程介绍如何使用 Azure IoT 中心设备预配服务 (DPS) 将设备预配到单个 IoT 中心
 author: wesmc7777
-ms.author: v-tawe
-origin.date: 11/12/2019
-ms.date: 12/03/2020
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: eeb073bbed30bf94c3cfffc3e00310fae8c14946
-ms.sourcegitcommit: 60e70acb6f9604aeef69d2027f7f96a1d7d5b248
+ms.openlocfilehash: 18bac9cb453278ce5a194ccab2f4072757615ce1
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96541089"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765831"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>教程：使用 Azure IoT 中心设备预配服务将设备预配到 IoT 中心
 
@@ -37,13 +36,13 @@ ms.locfileid: "96541089"
 此步骤需要将设备的唯一安全项目添加到设备预配服务。 这些安全项目基于设备的[证明机制](concepts-service.md#attestation-mechanism)，如下所示：
 
 - 对于基于 TPM 的设备，你需要提供：
-    - 特定于每个 TPM 芯片或模拟的“认可密钥”  ，可以从 TPM 芯片制造商处获得。  请阅读[了解 TPM 认可密钥](https://technet.microsoft.com/library/cc770443.aspx)获取详细信息。
+    - 特定于每个 TPM 芯片或模拟的“认可密钥”  ，可以从 TPM 芯片制造商处获得。  请阅读[了解 TPM 认可密钥](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770443(v=ws.11))获取详细信息。
     - 注册 ID，用于在命名空间/作用域内唯一标识设备  。 此 ID 可能与设备 ID 相同或不同。 此 ID 是每台设备的必备项。 对于基于 TPM 的设备，可能从 TPM 本身派生注册 ID，例如 TPM 认可密钥的 SHA-256 哈希。
 
       [![门户中有关 TPM 的注册信息](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - 对于基于 X.509 的设备，你需要提供：
-    - [颁发给 X.509（芯片或模拟）的证书](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) 采用 .pem 或 .cer 文件的格式   。 对于单独注册，需要对 X.509 系统使用基于设备的“签名证书”；而对于注册组，则需要使用“根证书”   。 
+    - [颁发给 X.509（芯片或模拟）的证书](https://docs.microsoft.com/windows/win32/seccertenroll/about-x-509-public-key-certificates) 采用 .pem 或 .cer 文件的格式   。 对于单独注册，需要对 X.509 系统使用基于设备的“签名证书”；而对于注册组，则需要使用“根证书”   。 
 
       [![在门户中为 X.509 证明添加单个注册](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 

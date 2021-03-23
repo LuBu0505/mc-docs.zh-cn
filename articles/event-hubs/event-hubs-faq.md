@@ -2,13 +2,13 @@
 title: 常见问题 - Azure 事件中心 | Microsoft Docs
 description: 本文提供了有关 Azure 事件中心的常见问题 (FAQ) 和解答的列表。
 ms.topic: article
-ms.date: 01/29/2021
-ms.openlocfilehash: 5754050b57525f547109095e0405c6d587e96c20
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.date: 03/11/2021
+ms.openlocfilehash: 7b693d74cc621edade22315a31dc6efbceff8ab7
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579416"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766395"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
 
@@ -34,6 +34,7 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 * 其他中转连接，对于超出包含的数量的部分收取超额费用
 * 多于单个[使用者组](event-hubs-features.md#consumer-groups)
 * [捕获](event-hubs-capture-overview.md)
+<!-- * [Kafka integration](event-hubs-for-kafka-ecosystem-overview.md) -->
 
 有关定价层的详细信息（包括专用事件中心），请参阅[事件中心定价详细信息](https://www.azure.cn/pricing/details/event-hubs/)。
 
@@ -142,7 +143,10 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 ### <a name="what-are-event-hubs-dedicated-clusters"></a>什么是事件中心专用群集？
 事件中心专用群集提供单租户部署来满足苛刻的客户要求。 此产品/服务会构建一个不受限于吞吐量单位的基于容量的群集。 这意味着，可以使用该群集，根据群集的 CPU 和内存用量情况来引入和流式传输数据。 有关详细信息，请参阅[事件中心专用群集](event-hubs-dedicated-overview.md)。
 
-
+<!--
+### How do I create an Event Hubs Dedicated cluster?
+For step-by-step instructions and more information on setting up an Event Hubs dedicated cluster, see the [Quickstart: Create a dedicated Event Hubs cluster using Azure portal](event-hubs-dedicated-cluster-create-portal.md). 
+-->
 
 [!INCLUDE [event-hubs-dedicated-clusters-faq](../../includes/event-hubs-dedicated-clusters-faq.md)]
 
@@ -211,7 +215,7 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 
 如需所有事件中心配额的列表，请参阅[配额](event-hubs-quotas.md)。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>为什么在从其他订阅中删除命名空间后无法创建该命名空间？ 
 从订阅中删除命名空间时，请等待 4 个小时，然后才能在另一个订阅中使用相同的名称重新创建它。 否则，可能会收到以下错误消息：`Namespace already exists`。 

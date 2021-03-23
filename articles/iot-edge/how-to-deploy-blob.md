@@ -2,18 +2,17 @@
 title: 将模块上的 Blob 存储部署到设备 - Azure IoT Edge
 description: 将 Azure Blob 存储模块部署到 IoT Edge 设备以在边缘存储数据。
 author: kgremban
-ms.author: v-tawe
-origin.date: 03/10/2020
-ms.date: 11/13/2020
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
-ms.openlocfilehash: c00f10daf808bc01f0d4038adc3524068c907863
-ms.sourcegitcommit: 9438c9db77338cecacf37d2fc178e757df9de83d
+ms.openlocfilehash: 03502c14cbe50ced1e00254829ddbcfb15323cbf
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94595197"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766383"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>将 IoT Edge 上的 Azure Blob 存储模块部署到设备
 

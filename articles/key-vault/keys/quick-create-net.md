@@ -2,19 +2,18 @@
 title: 快速入门 - 适用于 .NET 的 Azure Key Vault 密钥客户端库（版本 4）
 description: 了解如何使用 .NET 客户端库（版本 4）在 Azure 密钥保管库中创建、检索和删除密钥
 author: msmbaldwin
-origin.date: 09/23/2020
-ms.date: 01/21/2021
-ms.author: v-tawe
+ms.author: v-chazhou
+ms.date: 03/10/2021
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 783be983cc2fca252537933fa9cf72dc7e8833ab
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 47d188e5562eff373389de552b1c9c0fd47ce5f9
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060624"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765577"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-net-sdk-v4"></a>快速入门：适用于 .NET 的 Azure Key Vault 密钥客户端库 (SDK v4)
 
@@ -22,7 +21,7 @@ ms.locfileid: "99060624"
 
 Key Vault 密钥客户端库资源：
 
-[API 参考文档](/dotnet/api/azure.security.keyvault.keys) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [包 (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.keys/)
+[API 参考文档](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.keys) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [包 (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.keys/)
 
 有关 Key Vault 和密钥的详细信息，请参阅：
 - [Key Vault 概述](../general/overview.md)
@@ -49,7 +48,6 @@ Key Vault 密钥客户端库资源：
    az cloud set -n AzureChinaCloud
    az login
    ```
-
 
     如果 CLI 可以打开默认浏览器，它将这样做并加载 Azure 登录页。
 

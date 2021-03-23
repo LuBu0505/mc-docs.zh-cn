@@ -3,15 +3,15 @@ author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 03/27/2020
-ms.date: 09/02/2020
-ms.author: v-tawe
+ms.date: 03/08/2021
+ms.author: v-johya
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0d7245c25e16705f6c4925efa09fba2b5e48ae88
-ms.sourcegitcommit: 4db9853370c9d4c7e5d54f1e1cfadf40efcc12a6
+ms.openlocfilehash: 51e9e63f79003f34de8fe6b06e9a20e30a1eea1b
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89317602"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803320"
 ---
 :::row:::
     :::column span="3":::
@@ -27,11 +27,11 @@ ms.locfileid: "89317602"
 
 ### <a name="system-requirements"></a>系统要求
 
-Windows 版语音 SDK 要求系统上安装有 <a href="https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads" target="_blank">Microsoft Visual C++ Redistributable for Visual Studio 2019 <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+Windows 版语音 SDK 要求系统上安装有 <a href="https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads" target="_blank">Microsoft Visual C++ Redistributable for Visual Studio 2019 </a>。
 
-- <a href="https://aka.ms/vs/16/release/vc_redist.x86.exe" target="_blank">为 x86 安装 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/vs/16/release/vc_redist.x64.exe" target="_blank">为 x64 安装 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/vs/16/release/vc_redist.arm64.exe" target="_blank">为 ARMx64 安装 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.x86.exe" target="_blank">为 x86 安装 </a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.x64.exe" target="_blank">为 x64 安装 </a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.arm64.exe" target="_blank">为 ARMx64 安装 </a>
 
 ### <a name="c"></a>C#
 
@@ -63,3 +63,4 @@ Windows 版语音 SDK 要求系统上安装有 <a href="https://support.microsof
 ### <a name="java"></a>Java
 
 [!INCLUDE [Get Java Speech SDK](get-speech-sdk-java.md)]
+

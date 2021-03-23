@@ -4,16 +4,17 @@ description: 查找有关 Azure Kubernetes 服务 (AKS) 的某些常见问题的
 ms.topic: conceptual
 origin.date: 08/06/2020
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: 07/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2293952fc8bde8c505833a8b62c46c6e5e854f8e
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.custom: references_regions
+ms.openlocfilehash: 97f9a75deaf6d4de76935005f793c0722227b21e
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055307"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766438"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -206,13 +207,13 @@ AKS 通过[运行时间 SLA][uptime-sla] 提供 SLA 保障（可选的附加功�
 
 否。使用虚拟机规模集 API 进行的缩放操作不受支持。 可以使用 AKS API 缩放到零个非系统节点池。
 
-<!--NOT AVAILABLE ON [stop your cluster](start-stop-cluster.md)-->
+<!--NOT AVAILABLE ON [stop a running AKS cluster](start-stop-cluster.md)-->
 
 ## <a name="can-i-stop-or-de-allocate-all-my-vms"></a>是否可以停止或解除分配我的所有 VM？
 
 虽然 AKS 有对抗此类配置并从其恢复的复原机制，但这不是受支持的配置。
 
-<!--NOT AVAILABLE ON [Stop your cluster](start-stop-cluster.md)-->
+<!--NOT AVAILABLE ON [stop a running AKS cluster](start-stop-cluster.md)-->
 
 ## <a name="can-i-use-custom-vm-extensions"></a>是否可以使用自定义 VM 扩展？
 

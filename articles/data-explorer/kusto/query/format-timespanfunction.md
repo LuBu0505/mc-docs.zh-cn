@@ -3,18 +3,17 @@ title: format_timespan() - Azure 数据资源管理器
 description: 本文介绍 Azure 数据资源管理器中的 format_timespan()。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 02/13/2020
-ms.date: 10/29/2020
-ms.openlocfilehash: ced1697cd135ca5c8777ad7ca24bd228cebc9783
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.date: 03/18/2021
+ms.openlocfilehash: a88144929de053c656af996dc01753250fd63df4
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104388"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766499"
 ---
 # <a name="format_timespan"></a>format_timespan()
 
@@ -39,7 +38,7 @@ format_timespan(time(14.02:03:04.12345), 'h:m:s.fffffff') == "2:3:4.1234500"
 
 ## <a name="supported-formats"></a>支持的格式
 
-|格式说明符   |描述    |示例
+|格式说明符   |说明    |示例
 |---|---|---
 |`d`-`dddddddd` |时间间隔中的整天数。 如果需要，请用零填充。|   15.13:45:30: d -> 15、dd -> 15、ddd -> 015
 |`f`    |时间间隔中的十分之几秒。 |15.13:45:30.6170000 -> 6、15.13:45:30.05 -> 0
@@ -56,8 +55,6 @@ format_timespan(time(14.02:03:04.12345), 'h:m:s.fffffff') == "2:3:4.1234500"
 |`FFFFF`    |如果非零，则为时间间隔中的十万分之几秒。 |15.13:45:30.6175400 -> 61754、15.13:45:30.0000050 ->（无输出）
 |`FFFFFF`   |如果非零，则为时间间隔中的百万分之几秒。 |15.13:45:30.6175420 -> 617542、15.13:45:30.0000005 ->（无输出）
 |`FFFFFFF`  |如果非零，则为时间间隔中的千万分之几秒。 |15.13:45:30.6175425 -> 6175425、15.13:45:30.0001150 -> 000115
-|`h`    |时间间隔中不计为天数一部分的整小时数。 一位数小时没有前导零。 |15.01:45:30 -> 1、15.13:45:30 -> 1
-|`hh`   |时间间隔中不计为天数一部分的整小时数。 一位数小时具有前导零。 |15.01:45:30 -> 01、15.13:45:30 -> 01
 |`H`    |采用 24 小时制的小时（从 0 到 23）。 |15.01:45:30 -> 1、15.13:45:30 -> 13
 |`HH`   |采用 24 小时制的小时（从 00 到 23）。 |15.01:45:30 -> 01、15.13:45:30 -> 13
 |`m`    |时间间隔中不包含在小时或天数中的整分钟数。 一位数分钟没有前导零。 |15.01:09:30 -> 9、15.13:29:30 -> 29

@@ -4,14 +4,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 05/15/2020
-ms.date: 12/30/2020
-ms.author: v-tawe
-ms.openlocfilehash: 6f603492cfaf47937b8d28c13f074be1a6ee3c0e
-ms.sourcegitcommit: eb742dcade404c9909d01e2570188f0bc4076992
+ms.date: 03/08/2021
+ms.author: v-johya
+ms.openlocfilehash: 9d66278efa4a3a050bb06f232da415dcbd5d9086
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97820724"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803504"
 ---
 ## <a name="download-and-install"></a>下载并安装
 
@@ -20,18 +20,17 @@ ms.locfileid: "97820724"
 按照以下步骤在 Windows 上安装语音 CLI：
 
 1. 在 Windows 上，需要安装适用于平台的 [Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。 首次安装时，可能需要重启。
-2. 下载语音 CLI [zip 存档](https://aka.ms/speech/spx-zips.zip)然后提取它。
-3. 转到提取 `spx-zips` 的目录。 此文件夹包含适用于各种平台上的语音 CLI 的程序文件。 
-4. 为平台提取文件（为 .NET Framework 4.7 提取 `spx-net471`，或为 x64 CPU 上的 .NET Core 3.0 提取 `spx-netcore-win-x64`）。 请记住，将从此目录运行 `spx`。
+1. 安装 [.NET Core 3.1 SDK](https://docs.microsoft.com/dotnet/core/install/linux)。
+2. 通过输入以下命令，使用 NuGet 安装语音 CLI：
 
-### <a name="run-the-speech-cli"></a>运行语音 CLI
-
-1. 打开命令提示符或 PowerShell，然后导航到在其中提取了语音 CLI 的目录。  
-2. 若要查看语音 CLI 的帮助命令，请键入 `spx`。
+   ```console
+   dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0
+   ```
+若要查看语音 CLI 的帮助，请键入 `spx`。
 
 > [!NOTE]
-> 查找命令时，Powershell 不会检查本地目录。 在 Powershell 中，将目录更改为 `spx` 的位置，并通过输入 `.\spx` 调用工具。
-> 如果将此目录添加到路径，则 Powershell 和 Windows 命令提示符会从不包含 `.\` 前缀的任何目录中查找 `spx`。
+> 作为 NuGet 的替代方法，你可以下载并解压缩语音 CLI [zip 存档](https://aka.ms/speech/spx-zips.zip)，从 `spx-zips` 目录中查找并解压缩你的平台，然后将 `spx` 路径添加到 PATH 系统变量。
+
 
 ### <a name="font-limitations"></a>字体限制
 
@@ -42,29 +41,40 @@ ms.locfileid: "97820724"
 
 #### <a name="linux-install"></a>[Linux 安装](#tab/linuxinstall)
 
+使用语音 CLI 的 x64 体系结构支持以下 Linux 分发版：
+
+* CentOS 7/8
+* Debian 9/10 
+* Red Hat Enterprise Linux (RHEL) 7/8
+* Ubuntu 16.04/18.04/20.04
+
+> [!NOTE]
+> 语音 SDK（而不是语音 CLI）支持其他体系结构。 有关详细信息，请参阅[关于语音 SDK](../speech-sdk.md)。
+
 按照以下步骤在 x64 CPU 上安装 Linux 上的语音 CLI：
 
-1. 安装 [.NET Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0)。
-2. 下载语音 CLI [zip 存档](https://aka.ms/speech/spx-zips.zip)然后提取它。
-3. 转到从下载中提取的根目录 `spx-zips`，并将 `spx-netcore-30-linux-x64` 提取到新 `~/spx` 目录。
-4. 在终端中，键入以下命令：
-   1. `cd ~/spx`
-   2. `sudo chmod +r+x spx`
-   3. `PATH=~/spx:$PATH`
+1. 安装 [.NET Core 3.1](https://docs.microsoft.com/dotnet/core/install/linux)。
+2. 通过输入以下命令，使用 NuGet 安装语音 CLI：
+
+    `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0`
 
 若要查看语音 CLI 的帮助，请键入 `spx`。
+
+> [!NOTE]
+> 作为 NuGet 的替代方法，你可以下载 [zip 存档](https://aka.ms/speech/spx-zips.zip)，将 `spx-netcore-30-linux-x64.zip` 解压缩到新的 `~/spx` 目录，在二进制文件上键入 `sudo chmod +r+x spx`，然后将 `~/spx` 路径添加到 PATH 系统变量。
+
 
 #### <a name="docker-install-windows-linux-macos"></a>[Docker 安装（Windows、Linux、macOS）](#tab/dockerinstall)
 
 按照以下步骤在 Docker 容器中安装语音 CLI：
 
-1. 为你的平台<a href="https://www.docker.com/get-started" target="_blank">安装 Docker Desktop<span class="docon docon-navigate-external x-hidden-focus"></span></a>（如果尚未安装）。
+1. 为你的平台<a href="https://www.docker.com/get-started" target="_blank">安装 Docker Desktop</a>（如果尚未安装）。
 2. 在新的命令提示符或终端中，键入以下命令：
-   ```shell   
+   ```console   
    docker pull msftspeech/spx
    ```
 3. 键入此命令。 你应看到语音 CLI 的帮助信息：
-   ```shell 
+   ```console 
    docker run -it --rm msftspeech/spx help
    ```
 
@@ -94,27 +104,27 @@ pwd
 
 在 Windows 上，命令会以下方的方式开始：
 
-```shell
+```console
 docker run -it -v c:\spx-data:/data --rm msftspeech/spx
 ```
 
 在 Linux 或 macOS 中，你的命令将如下例所示。 将 `ABSOLUTE_PATH` 替换为已装载的目录的绝对路径。 上一部分中的 `pwd` 命令返回了此路径。 
 
 如果在设置密钥和区域之前运行此命令，则将收到一条错误消息，提示你设置密钥和区域：
-```shell   
+```console   
 sudo docker run -it -v ABSOLUTE_PATH:/data --rm msftspeech/spx
 ```
 
 若要使用安装在容器中的 `spx` 命令，请始终输入上面所示的完整命令，然后输入请求的参数。
 例如，在 Windows 上，此命令将设置密钥：
 
-```shell
-docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY
+```console
+docker run -it -v c:\spx-data:/data --rm msftspeech/spx config --set @key SUBSCRIPTION-KEY
 ```
 
 若要使用命令行工具进行更扩展的交互，可以通过添加入口点参数启动具有交互式 bash shell 的容器。
 在 Windows 上，输入以下命令以启动一个容器，该容器会公开可输入多个 `spx` 命令的交互式命令行接口：
-```shell
+```console
 docker run -it --entrypoint=/bin/bash -v c:\spx-data:/data --rm msftspeech/spx
 ```
 
@@ -161,9 +171,10 @@ Follow these instructions to create a shortcut:
 若要开始使用语音 CLI，需要输入语音订阅密钥和区域标识符。 按照[免费试用语音服务](../overview.md#try-the-speech-service-for-free)中的步骤获取这些凭据。
 获得订阅密钥和区域标识符后（例如 `chinaeast2`），运行以下命令。
 
-```shell
-spx config @key --set SUBSCRIPTION-KEY
-spx config @region --set REGION
+```console
+spx config --set @key SUBSCRIPTION-KEY
+spx config --set @region REGION
 ```
 
 现在会存储订阅身份验证，用于将来的 SPX 请求。 如果需要删除这些已存储值中的任何一个，请运行 `spx config @region --clear` 或 `spx config @key --clear`。
+

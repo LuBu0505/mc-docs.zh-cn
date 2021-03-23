@@ -7,15 +7,15 @@ ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: monitoring
 origin.date: 11/30/2020
-ms.date: 03/08/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: mahi
-ms.openlocfilehash: c0370b766a29186b3318d6ee66b1167909b9683e
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 572d5640dd0b769d4d4955d2c2934805a7890508
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207468"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765558"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>将 Azure Monitor 与 Azure Synapse Analytics 工作区配合使用
 
@@ -29,7 +29,7 @@ Azure Monitor 针对大多数 Azure 服务提供基本级别的基础结构指�
 
 使用 Monitor 可以洞察 Azure 工作负荷的性能与运行状况。 最重要的 Monitor 数据类型是指标（也称为性能计数器）。 大多数 Azure 资源都会发出指标。 Monitor 提供多种方式来配置和使用这些指标，以便进行监视与故障排除。
 
-若要访问这些指标，请参阅 [Azure Monitor 数据平台](../../azure-monitor/platform/data-platform.md)中的说明。
+若要访问这些指标，请参阅 [Azure Monitor 数据平台](../../azure-monitor/data-platform.md)中的说明。
 
 ### <a name="workspace-level-metrics"></a>工作区级别的指标
 
@@ -122,11 +122,11 @@ Azure Monitor 针对大多数 Azure 服务提供基本级别的基础结构指�
 | SynapseSqlPoolWaits         | 等待        | 在 Azure Synapse 专用 SQL 池中执行 SQL 请求/查询期间遇到的等待（包括传输队列上的锁和等待）状态的相关信息。
 
 有关这些日志的详细信息，请查看以下内容：
-- [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_dms_workers](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
-- [sys.dm_pdw_sql_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_dms_workers](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+- [sys.dm_pdw_sql_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 
 ### <a name="apache-spark-pool-log"></a>Apache Spark 池日志
 
@@ -172,7 +172,7 @@ Azure Monitor 针对大多数 Azure 服务提供基本级别的基础结构指�
 1. 为设置指定名称，选择“发送到 Log Analytics”，然后从“Log Analytics 工作区”中选择一个工作区。
 
     > [!NOTE]
-    > 由于 Azure 日志表的列数不能超过 500，因此强烈建议选择“特定于资源”模式。 有关详细信息，请参阅 [Log Analytics 已知限制](../../azure-monitor/platform/resource-logs.md)。
+    > 由于 Azure 日志表的列数不能超过 500，因此强烈建议选择“特定于资源”模式。 有关详细信息，请参阅 [Log Analytics 已知限制](../../azure-monitor/essentials/resource-logs.md#column-limit-in-azurediagnostics)。
 
 1. 选择“保存”。
 

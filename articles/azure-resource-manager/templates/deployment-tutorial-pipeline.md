@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure Pipelines 进行持续集成
 description: 了解如何持续构建、测试和部署 Azure 资源管理器模板（ARM 模板）。
-origin.date: 02/16/2021
+origin.date: 03/02/2021
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.testscope: yes
 ms.testdate: 06/22/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 8340ae50c84a9614296f6451a9e5fdc795b31e5e
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: d44a4eec0a57f5b3ff4d47930621f5770dcc9abd
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055287"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766517"
 ---
 <!--Verified successfully on 04/30/2020-->
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>教程：使用 Azure Pipelines 持续集成 ARM 模板
@@ -96,8 +96,8 @@ _CreateWebApp_ 文件夹是存储模板的文件夹。 使用 `pwd` 命令可显
 
 如果不创建模板的话，可以下载模板并将其保存到 _CreateWebApp_ 文件夹。
 
-* 主模板： https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/azuredeploy.json
-* 链接模板： https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/pipeline/linkedStorageAccount.json
+* 主模板： https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json
+* 链接模板： https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json
 
 使用的文件夹名称和文件名与管道中的名称相同。 如果更改这些名称，则必须更新管道中使用的名称。
 
@@ -119,7 +119,7 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
     可能会收到一条有关 LF 的警告。 可以忽略该警告。 main 是主分支。  通常，每次更新创建一个分支。 若要简化本教程，请直接使用主分支。
 
 1. 从浏览器浏览到 GitHub 存储库。 该 URL 为 `https://github.com/[YourAccountName]/[YourGitHubRepository]`。 应会看到 _CreateWebApp_ 文件夹以及其中的两个文件。
-1. 选择“linkedStorageAccount.json”打开模板。
+1. 选择“azuredeploy.json”，以打开该模板。
 1. 选择“原始”按钮。 该 URL 以 `https://raw.githubusercontent.com` 开头。
 1. 复制 URL。 稍后在本教程中配置管道时需要提供此值。
 
@@ -216,10 +216,10 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
     * **操作**：选择“创建或更新资源组”操作，执行 2 项操作 - 1. 如果提供了新的资源组名称，则创建资源组；2. 部署指定的模板。
     * **资源组**：输入新的资源组名称。 例如，“AzureRmPipeline-rg”。
     * **位置**：选择资源组的位置，例如“中国北部”。
-    * **模板位置**：选择“链接的项目”，表示任务将直接从连接的存储库中查找模板文件。
-    * **模板**：输入 _CreateWebApp/azuredeploy.json_。 如果更改了文件夹名称和文件名，则需要更改此值。
-    * **模板参数**：将此字段留空。 将在“替代模板参数”中指定参数值。
-    * **替代模板参数**：输入 `-projectName [EnterAProjectName] -linkedTemplateUri [EnterTheLinkedTemplateURL]` 。 替换项目名称和链接模板 URL。 链接模板 URL 是在完成[创建 GitHub 存储库](#create-a-github-repository)部分时记下的 URL。 它以 `https://raw.githubusercontent.com` 开头。
+    * 模板位置：选择“文件的 URL”，这意味着任务会使用该 URL 来查找模板文件 。 由于主模板中使用 relativePath，而 relativePath 只在基于 URI 的部署上受支持，因此这里必须使用 URL 。
+    * 模板链接：输入你在[准备 GitHub 存储库](#prepare-a-github-repository)部分结尾处获取的 URL。 它以 `https://raw.githubusercontent.com` 开头。
+    * 模板参数链接：此字段留空。 将在“替代模板参数”中指定参数值。
+    * **替代模板参数**：输入 `-projectName [EnterAProjectName]` 。
     * **部署模式**：选择“增量”。
     * **部署名称**：输入 **DeployPipelineTemplate**。 选择“高级”，然后可以看到“部署名称”。 
 
@@ -275,7 +275,7 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
 
 不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。
 
-1. 在 Azure 门户上的左侧菜单中选择“资源组”。
+1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
 2. 在“按名称筛选”字段中输入资源组名称。
 3. 选择资源组名称。
 4. 在顶部菜单中选择“删除资源组”。

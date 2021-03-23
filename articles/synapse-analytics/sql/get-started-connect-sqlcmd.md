@@ -2,35 +2,36 @@
 title: 使用 sqlcmd 连接到 Synapse SQL
 description: 使用 sqlcmd 命令行实用程序连接并查询无服务器 SQL 池和专用 SQL 池。
 services: synapse analytics
-author: azaricstefan
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
-ms.author: stefanazaric
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: f044c2141f62b0541cb8c1efebc5307d37c339c6
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: ecbc8d9bd7f95aa71f86969da5d26641b82b2e1b
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102206973"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766816"
 ---
 # <a name="connect-to-synapse-sql-with-sqlcmd"></a>使用 sqlcmd 连接到 Synapse SQL
 
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
-> * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+> * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)
 > * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-在 Synapse SQL 中，可以使用 [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 命令行实用程序连接并查询无服务器 SQL 池和专用 SQL 池。  
+在 Synapse SQL 中，可以使用 [sqlcmd](https://docs.microsoft.com/sql/tools/sqlcmd-utility?view=azure-sqldw-latest&preserve-view=true) 命令行实用程序连接并查询无服务器 SQL 池和专用 SQL 池。  
 
 ## <a name="1-connect"></a>1.连接
-若要开始使用 [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)，请打开命令提示符并输入 **sqlcmd**，后跟 Synapse SQL 数据库的连接字符串。 连接字符串需要以下参数：
+若要开始使用 [sqlcmd](https://docs.microsoft.com/sql/tools/sqlcmd-utility?view=azure-sqldw-latest&preserve-view=true)，请打开命令提示符并输入 **sqlcmd**，后跟 Synapse SQL 数据库的连接字符串。 连接字符串需要以下参数：
 
-* **服务器 (-S)：** 采用 `<`Server Name`>`.database.windows.net 格式的服务器
+* **服务器 (-S)：** 采用 `<`服务器名称`>`.database.chinacloudapi.cn 格式的服务器
 * **数据库 (-d)：** 数据库名称
 * **启用带引号的标识符 (-I)：** 必须启用带引号的标识符才能连接到 Synapse SQL 实例
 
@@ -44,13 +45,13 @@ ms.locfileid: "102206973"
 **无服务器 SQL 池**
 
 ```sql
-C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P Enter_Your_Password_Here -I
+C:\>sqlcmd -S partyeunrt.database.chinacloudapi.cn -d demo -U Enter_Your_Username_Here -P Enter_Your_Password_Here -I
 ```
 
 **专用 SQL 池**
 
 ```
-C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
+C:\>sqlcmd -S MySqlDw.database.chinacloudapi.cn -d Adventure_Works -U myuser -P myP@ssword -I
 ```
 
 若要使用 Azure Active Directory 集成的身份验证，需要添加 Azure Active Directory 参数：
@@ -62,26 +63,26 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@s
 **无服务器 SQL 池**
 
 ```
-C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -G -I
+C:\>sqlcmd -S partyeunrt.database.chinacloudapi.cn -d demo -G -I
 ```
 
 **专用 SQL 池**
 
 ```sql
-C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
+C:\>sqlcmd -S MySqlDw.database.chinacloudapi.cn -d Adventure_Works -G -I
 ```
 
 > [!NOTE]
-> 需要 [启用 Azure Active Directory 身份验证](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 才能使用 Active Directory 进行身份验证。
+> 需要 [启用 Azure Active Directory 身份验证](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json) 才能使用 Active Directory 进行身份验证。
 
 ## <a name="2-query"></a>2.查询
 
 ### <a name="use-dedicated-sql-pool"></a>使用专用 SQL 池
 
-连接后，可以对实例发出任何支持的 [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (T-SQL) 语句。 在此示例中，查询是以交互模式提交的：
+连接后，可以对实例发出任何支持的 [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference?view=azure-sqldw-latest&preserve-view=true) (T-SQL) 语句。 在此示例中，查询是以交互模式提交的：
 
 ```sql
-C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
+C:\>sqlcmd -S MySqlDw.database.chinacloudapi.cn -d Adventure_Works -U myuser -P myP@ssword -I
 1> SELECT name FROM sys.tables;
 2> GO
 3> QUIT
@@ -90,20 +91,20 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@s
 针对专用 SQL 池，以下示例展示了如何使用 -Q 选项或将 SQL 输送到 sqlcmd，以便在批处理模式下运行查询：
 
 ```sql
-sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I -Q "SELECT name FROM sys.tables;"
+sqlcmd -S MySqlDw.database.chinacloudapi.cn -d Adventure_Works -U myuser -P myP@ssword -I -Q "SELECT name FROM sys.tables;"
 ```
 
 ```sql
-"SELECT name FROM sys.tables;" | sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I > .\tables.out
+"SELECT name FROM sys.tables;" | sqlcmd -S MySqlDw.database.chinacloudapi.cn -d Adventure_Works -U myuser -P myP@ssword -I > .\tables.out
 ```
 
 ### <a name="use-serverless-sql-pool"></a>使用无服务器 SQL 池
 
-连接后，可以对实例发出任何受支持的 [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (T-SQL) 语句。  在以下示例中，查询是以交互模式提交的：
+连接后，可以对实例发出任何受支持的 [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference?view=azure-sqldw-latest&preserve-view=true) (T-SQL) 语句。  在以下示例中，查询是以交互模式提交的：
 
 ```sql
-C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P Enter_Your_Password_Here -I
-1> SELECT COUNT(*) FROM  OPENROWSET(BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet', FORMAT='PARQUET')
+C:\>sqlcmd -S partyeunrt.database.chinacloudapi.cn -d demo -U Enter_Your_Username_Here -P Enter_Your_Password_Here -I
+1> SELECT COUNT(*) FROM  OPENROWSET(BULK 'https://azureopendatastorage.blob.core.chinacloudapi.cn/censusdatacontainer/release/us_population_county/year=20*/*.parquet', FORMAT='PARQUET')
 2> GO
 3> QUIT
 ```
@@ -111,13 +112,13 @@ C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Her
 针对无服务器 SQL 池，以下示例展示了如何使用 -Q 选项或将 SQL 输送到 sqlcmd，以便在批处理模式下运行查询：
 
 ```sql
-sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P 'Enter_Your_Password_Here' -I -Q "SELECT COUNT(*) FROM  OPENROWSET(BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet', FORMAT='PARQUET')"
+sqlcmd -S partyeunrt.database.chinacloudapi.cn -d demo -U Enter_Your_Username_Here -P 'Enter_Your_Password_Here' -I -Q "SELECT COUNT(*) FROM  OPENROWSET(BULK 'https://azureopendatastorage.blob.core.chinacloudapi.cn/censusdatacontainer/release/us_population_county/year=20*/*.parquet', FORMAT='PARQUET')"
 ```
 
 ```sql
-"SELECT COUNT(*) FROM  OPENROWSET(BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet', FORMAT='PARQUET')" | sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P 'Enter_Your_Password_Here' -I > ./tables.out
+"SELECT COUNT(*) FROM  OPENROWSET(BULK 'https://azureopendatastorage.blob.core.chinacloudapi.cn/censusdatacontainer/release/us_population_county/year=20*/*.parquet', FORMAT='PARQUET')" | sqlcmd -S partyeunrt.database.chinacloudapi.cn -d demo -U Enter_Your_Username_Here -P 'Enter_Your_Password_Here' -I > ./tables.out
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 sqlcmd 选项的详细信息，请参阅 [sqlcmd 文档](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+有关 sqlcmd 选项的详细信息，请参阅 [sqlcmd 文档](https://docs.microsoft.com/sql/tools/sqlcmd-utility?view=azure-sqldw-latest&preserve-view=true)。

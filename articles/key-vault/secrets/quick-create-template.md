@@ -9,15 +9,14 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: mvc,subject-armqs
-origin.date: 02/27/2020
-ms.date: 11/27/2020
-ms.author: v-tawe
-ms.openlocfilehash: 2570467142fc5550c684c283d407cf2f386e84fa
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: 6d0e3ce7b4ed18eff37aeac4c5ddbd62b79779d7
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431196"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765299"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-an-arm-template"></a>快速入门：使用 ARM 模板在 Azure Key Vault 中设置和检索机密
 
@@ -64,7 +63,7 @@ ms.locfileid: "96431196"
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "keyVaultName": {
@@ -171,8 +170,8 @@ ms.locfileid: "96431196"
   "resources": [
     {
       "type": "Microsoft.KeyVault/vaults",
+      "apiVersion": "2019-09-01",
       "name": "[parameters('keyVaultName')]",
-      "apiVersion": "2018-02-14",
       "location": "[parameters('location')]",
       "properties": {
         "enabledForDeployment": "[parameters('enabledForDeployment')]",
@@ -185,7 +184,7 @@ ms.locfileid: "96431196"
             "tenantId": "[parameters('tenantId')]",
             "permissions": {
               "keys": "[parameters('keysPermissions')]",
-              "secrets": "[parameters('secretsPermissions')]"      
+              "secrets": "[parameters('secretsPermissions')]"
             }
           }
         ],
@@ -194,17 +193,15 @@ ms.locfileid: "96431196"
           "family": "A"
         },
         "networkAcls": {
-          "value": {
-            "defaultAction": "Allow",
-            "bypass": "AzureServices"
-          }
+          "defaultAction": "Allow",
+          "bypass": "AzureServices"
         }
       }
     },
     {
       "type": "Microsoft.KeyVault/vaults/secrets",
+      "apiVersion": "2019-09-01",
       "name": "[concat(parameters('keyVaultName'), '/', parameters('secretName'))]",
-      "apiVersion": "2018-02-14",
       "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.KeyVault/vaults', parameters('keyVaultName'))]"
@@ -316,4 +313,4 @@ Write-Host "Press [ENTER] to continue..."
 
 - 阅读 [Azure Key Vault 概述](../general/overview.md)
 - 了解有关 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)的详细信息
-- 查看 [Azure Key Vault 最佳做法](../general/best-practices.md)
+- 请参阅 [Key Vault 安全性概述](../general/security-overview.md)

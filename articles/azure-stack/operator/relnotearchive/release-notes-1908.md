@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 10/29/2019
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: prchint
 ms.lastreviewed: 10/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: e7e2c52674e3ed31d1a15932cc20741b211df012
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 726e32c47ffc0e61894ff2ff04bd424a854f0423
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101751693"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766999"
 ---
 # <a name="azure-stack-updates-1908-release-notes"></a>Azure Stack 更新：1908 发行说明
 
@@ -47,7 +47,7 @@ ms.locfileid: "101751693"
 - [安全更新](../release-notes-security-updates.md)
 - [应用更新之前和之后的活动清单](../release-notes-checklist.md)
 
-有关对更新和更新过程进行故障排除的帮助，请参阅[对 Azure Stack 的修补和更新问题进行故障排除](../azure-stack-updates-troubleshoot.md)。
+有关对更新和更新过程进行故障排除的帮助，请参阅[对 Azure Stack 的修补和更新问题进行故障排除](../azure-stack-troubleshooting.md)。
 
 ## <a name="1908-build-reference"></a>1908 内部版本参考
 

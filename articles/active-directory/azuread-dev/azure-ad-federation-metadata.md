@@ -4,21 +4,21 @@ description: 本文介绍 Azure Active Directory 针对接受 Azure Active Direc
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: c2d5f80b-aa74-452c-955b-d8eb3ed62652
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 03/16/2021
 ms.author: v-junlch
-ms.reviewer: hirsin, dastrock
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0708399cedb1e09e60c4dfb7a4dc41aca4596117
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ROBOTS: NOINDEX
+ms.openlocfilehash: a9f5bd7a8cc7da281e407d0ce01e29ee9bdcadd1
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77653652"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765541"
 ---
 # <a name="federation-metadata"></a>联合元数据
 
@@ -36,12 +36,12 @@ Azure AD 发布了特定于租户和独立于租户的终结点。
 ## <a name="federation-metadata-endpoints"></a>联合元数据终结点
 Azure AD 会在 `https://login.partner.microsoftonline.cn/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml` 上发布联合元数据。
 
-对于特定于租户的终结点，`TenantDomainName` 可以是以下类型之一：
+对于 **特定于租户的终结点**，`TenantDomainName` 可以是以下类型之一：
 
 * Azure AD 租户的已注册域名，例如：`contoso.partner.onmschina.cn`。
 * 域的不可变租户 ID，例如 `72f988bf-86f1-41af-91ab-2d7cd011db45`。
 
-对于独立于租户的终结点，`TenantDomainName` 为 `common`。 此文档仅列出了托管在 login.partner.microsoftonline.cn 上的所有 Azure AD 租户通用的联合元数据元素。
+对于 **独立于租户的终结点**，`TenantDomainName` 为 `common`。 此文档仅列出了托管在 login.partner.microsoftonline.cn 上的所有 Azure AD 租户通用的联合元数据元素。
 
 例如，特定于租户的终结点可以是 `https://login.partner.microsoftonline.cn/contoso.partner.onmschina.cn/FederationMetadata/2007-06/FederationMetadata.xml`。 独立于租户的终结点为 [https://login.partner.microsoftonline.cn/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.partner.microsoftonline.cn/common/FederationMetadata/2007-06/FederationMetadata.xml)。 可以在浏览器中键入此 URL 以查看联合元数据文档。
 
@@ -96,7 +96,7 @@ MIIDPjCCAiqgAwIBAgIQVWmXY/+9RqFA/OG9kFulHDAJBgUrDgMCHQUAMC0xKzApBgNVBAMTImFjY291
 以下元数据显示了一个 `RoleDescriptor` 元素示例。
 
 ```
-<RoleDescriptor xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:fed="https://docs.oasis-open.org/wsfed/federation/200706" xsi:type="fed:SecurityTokenServiceType"protocolSupportEnumeration="https://docs.oasis-open.org/wsfed/federation/200706">
+<RoleDescriptor xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:fed="https://docs.oasis-open.org/wsfed/federation/200706" xsi:type="fed:SecurityTokenServiceType" protocolSupportEnumeration="https://docs.oasis-open.org/wsfed/federation/200706">
 ```
 
 在特定于 SAML 的部分中，WS 联合身份验证元数据读取器将读取 `IDPSSODescriptor` 元素中的证书。
@@ -158,4 +158,3 @@ https://login.partner.microsoftonline.cn/common/wsfed
     <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://login.partner.microsoftonline.cn/common/saml2" />
   </IDPSSODescriptor>
 ```
-

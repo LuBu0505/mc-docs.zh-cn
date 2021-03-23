@@ -2,20 +2,21 @@
 title: 快速入门：使用复制活动将数据加载到专用 SQL 池中
 description: 使用 Azure Synapse Analytics 中的管道复制活动将数据加载到专用 SQL 池中。
 services: synapse-analytics
-ms.author: jingwang
-author: linda33wj
-manager: shwang
+ms.author: v-jay
+author: WenJason
+manager: digimobile
 ms.reviewer: douglasl
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.custom: seo-lt-2019
-ms.date: 11/02/2020
-ms.openlocfilehash: cab9ccea6471335eaa1e5d45db91f177dfdbab9e
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+origin.date: 11/02/2020
+ms.date: 03/22/2021
+ms.openlocfilehash: 72f8f2d3900a88e3631a61005dbd24f7d72b89c7
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207552"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765204"
 ---
 # <a name="quickstart-load-data-into-dedicated-sql-pool-using-the-copy-activity"></a>快速入门：使用复制活动将数据加载到专用 SQL 池中
 
@@ -25,7 +26,7 @@ Azure Synapse Analytics 提供了各种分析引擎，可帮助你引入、转�
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+* Azure 订阅：如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 * Azure Synapse 工作区：按照[快速入门：创建 Synapse 工作区](quickstart-create-workspace.md)中的说明，使用 Azure 门户创建 Synapse 工作区。
 * Azure SQL 数据库：本教程从 Azure SQL 数据库中的 Adventure Works LT 示例数据集中复制数据。 可以按照[在 Azure SQL 数据库中创建示例数据库](../azure-sql/database/single-database-create-quickstart.md)中的说明在 SQL 数据库中创建此示例数据库。 也可以按类似步骤使用其他数据存储。
 * Azure 存储帐户：Azure 存储用作复制操作中的暂存区域。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)中的说明。
@@ -35,7 +36,7 @@ Azure Synapse Analytics 提供了各种分析引擎，可帮助你引入、转�
 
 创建 Synapse 工作区后，可以通过两种方式打开 Synapse Studio：
 
-* 在 [Azure 门户](https://ms.portal.azure.com/#home)中打开 Synapse 工作区。 在“开始”下的“打开 Synapse Studio”卡上选择“打开”。
+* 在 [Azure 门户](https://portal.azure.cn/#home)中打开 Synapse 工作区。 在“开始”下的“打开 Synapse Studio”卡上选择“打开”。
 * 打开 [Azure Synapse Analytics](https://web.azuresynapse.net/) 并登录到工作区。
 
 在本快速入门中，我们将使用名为“adftest2020”的工作区作为示例。 它将自动导航到 Synapse Studio 主页。
@@ -130,6 +131,6 @@ Azure Synapse Analytics 提供了各种分析引擎，可帮助你引入、转�
 请转至下列文章，了解 Azure Synapse Analytics 支持：
 
 > [!div class="nextstepaction"]
-> [管道和活动](../data-factory/concepts-pipelines-activities.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)
-> [连接器概述](../data-factory/connector-overview.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)
-> [复制活动](../data-factory/copy-activity-overview.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)
+> [管道和活动](../data-factory/concepts-pipelines-activities.md?bc=%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fsynapse-analytics%2ftoc.json)
+> [连接器概述](../data-factory/connector-overview.md?bc=%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fsynapse-analytics%2ftoc.json)
+> [复制活动](../data-factory/copy-activity-overview.md?bc=%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fsynapse-analytics%2ftoc.json)

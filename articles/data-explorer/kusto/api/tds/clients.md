@@ -3,19 +3,18 @@ title: MS-TDS 客户端和 Kusto - Azure 数据资源管理器
 description: 本文介绍了 Azure 数据资源管理器中的 MS-TDS 客户端和 Kusto。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.custom: has-adal-ref
-origin.date: 10/30/2019
-ms.date: 01/22/2021
-ms.openlocfilehash: d3cf2bb23bece3067f8bbf3bafac28b8d1ca12ce
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 03/18/2021
+ms.openlocfilehash: 3a96b9107be8e5b9a4534d72ebbaec8a5f8b8d66
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611594"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765252"
 ---
 # <a name="ms-tds-clients-and-azure-data-explorer"></a>MS-TDS 客户端和 Azure 数据资源管理器
 
@@ -87,7 +86,7 @@ jdbc:sqlserver://<cluster_name.region>.kusto.chinacloudapi.cn:1433;database=<dat
 "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.chinacloudapi.cn;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
 ```
 
-某些 ODBC 应用程序不能很好地与 `NVARCHAR(MAX)` 类型配合使用。 有关详细信息，请参阅 https://docs.microsoft.com/sql/relational-databases/native-client/features/using-large-value-types?view=sql-server-2017#sql-server-native-client-odbc-driver 。
+某些 ODBC 应用程序不能很好地与 `NVARCHAR(MAX)` 类型配合使用。 有关详细信息，请参阅 https://docs.microsoft.com/sql/relational-databases/native-client/features/using-large-value-types#sql-server-native-client-odbc-driver 。
 
 常见的解决方法是将返回的数据强制转换为 *NVARCHAR(n)* ，用某个值替换 n。 例如 NVARCHAR(4000)。 但是，这种解决方法对于 Azure 数据资源管理器将不起作用，因为 Azure 数据资源管理器只有一个字符串类型，并且对于 SQL 客户端，它将编码为 NVARCHAR(MAX)。
 

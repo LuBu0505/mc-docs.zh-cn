@@ -1,18 +1,27 @@
 ---
 title: include 文件
 description: include 文件
-services: logic-apps
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 05/14/2018
-ms.author: estfan
-ms.custom: include file
-ms.openlocfilehash: 7c26d5fd4de9bdcf8e0a60891e4a99229f72771e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+origin.date: 03/08/2021
+author: rockboyfor
+ms.date: 03/29/2021
+ms.author: v-yeche
+ms.openlocfilehash: a75ed8a34920a02949bf4409ec1bfd1e5f6d1311
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63830176"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766106"
 ---
-要使逻辑应用能够访问某个服务，必须在逻辑应用与该服务之间创建连接  。 如果以前未创建此连接，则在向逻辑应用添加该服务的触发器或操作时，系统会提示输入连接信息。 可以使用逻辑应用设计器轻松地直接从逻辑应用创建此连接。
+首次添加连接到服务或系统的触发器或操作时，逻辑应用设计器将提示你通过提供必要的信息（具体取决于连接）来创建连接，例如：
+
+* 要用于新连接的名称
+
+* 系统或服务器的名称
+
+* 用户凭据或帐户凭据
+
+* 要使用的身份验证类型
+
+<!--Update_Description: update meta properties, wording update, update link-->

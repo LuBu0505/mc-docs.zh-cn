@@ -11,21 +11,21 @@ ms.topic: how-to
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/25/2021
+ms.date: 03/18/2021
 ms.author: v-johya
 origin.date: 03/15/2020
-ms.openlocfilehash: 143fcccd97e622e288b1a787e3fc2246a5dc9399
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 29a1e351dff49377b2993348cce2b902063d9276
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197525"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766719"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>在 Azure 安全中心管理和响应安全警报
 
 本主题介绍了如何查看和处理安全中心的警报并保护你的资源。
 
-触发安全警报的高级检测仅适用于 Azure Defender。 提供试用版。 若要升级，请参阅[启用 Azure Defender](security-center-pricing.md#enable-azure-defender)。
+触发安全警报的高级检测仅适用于 Azure Defender。 提供试用版。 若要升级，请参阅[启用 Azure Defender](enable-azure-defender.md)。
 
 ## <a name="what-are-security-alerts"></a>什么是安全警报？
 安全中心会自动收集、分析以及整合 Azure 资源、网络和所连合作伙伴解决方案（如，防火墙和终结点保护解决方案）的日志数据，检测真正的威胁并减少误报。 安全中心显示了一系列安全警报（按严重程度排序），并显示了快速调查问题所需的信息以及修复攻击的建议。

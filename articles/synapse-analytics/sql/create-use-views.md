@@ -2,19 +2,20 @@
 title: 在无服务器 SQL 池中创建和使用视图
 description: 本部分介绍了如何创建和使用视图，以便包装无服务器 SQL 池查询。 可以通过视图重复使用这些查询。 如果希望将 Power BI 之类的工具与无服务器 SQL 池结合使用，也需使用视图。
 services: synapse-analytics
-author: azaricstefan
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 05/20/2020
-ms.author: stefanazaric
+origin.date: 05/20/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: b71f53ea2279d8e9f088672165bdaedaae937a9b
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 1c1e770f979a50742c47476c413319ec73cca7f5
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102206993"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766199"
 ---
 # <a name="create-and-use-views-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中通过无服务器 SQL 池创建和使用视图
 

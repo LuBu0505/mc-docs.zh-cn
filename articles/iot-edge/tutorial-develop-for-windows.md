@@ -3,19 +3,18 @@ title: 教程 - 使用 Azure IoT Edge 开发用于 Windows 设备的模块
 description: 本教程详细介绍如何设置开发计算机和云资源来使用适用于 Windows 设备的 Windows 容器开发 IoT Edge 模块
 author: kgremban
 manager: philmea
-ms.author: v-tawe
-origin.date: 07/30/2020
-ms.date: 01/05/2021
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 457ed4ab06b21ea25343205045a962cdb3c06d3e
-ms.sourcegitcommit: 40db5a4b9ab8b5877e307ff7a567fd930ca81c72
+ms.openlocfilehash: be06a0b062e62ad6a5b2ad7782b272ef29633e35
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894310"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765319"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>教程：开发适用于 Windows 设备的 IoT Edge 模块
 
@@ -52,7 +51,7 @@ Windows 上的 Azure IoT Edge 设备：
 
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 ## <a name="key-concepts"></a>关键概念
 
@@ -257,7 +256,7 @@ IoT Edge 运行时需要注册表凭据才能将容器映像拉取到 IoT Edge �
 
 8. 再次打开 **deployment.windows-amd64.json** 文件。 请注意，再次运行“生成并推送”命令时未创建新文件， 而是更新了同一文件以反映更改。 IotEdgeModule1 映像现指向容器的 0.0.2 版。 部署清单中的此更改告知 IoT Edge 设备有要拉取的新模块版本。
 
-9. 若要进一步验证“生成并推送”命令执行的操作，请转到 [Azure 门户](https://portal.azure.cn)并导航到容器注册表。 
+9. 若要进一步验证“生成并推送”命令执行的操作，请转到 [Azure 门户](https://portal.azure.cn)并导航到容器注册表。
 
 10. 在容器注册表中，依次选择“存储库”和“iotedgemodule1”   。 验证映像的两个版本是否都已推送到注册表。
 

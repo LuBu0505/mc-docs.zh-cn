@@ -4,14 +4,14 @@ description: 本教程将在 Azure API 管理中创建和发布产品。 产品�
 author: Johnnytechn
 ms.service: api-management
 ms.topic: tutorial
-ms.date: 11/18/2020
+ms.date: 03/17/2021
 ms.author: v-johya
-ms.openlocfilehash: ed893bfeb05e92bcf7c6eabf663897af4d146c19
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: c35b3be7003d730c86288e9684eeb6ab77773044
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977130"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765979"
 ---
 # <a name="tutorial-create-and-publish-a-product"></a>教程：创建和发布产品  
 
@@ -29,10 +29,12 @@ ms.locfileid: "94977130"
 ## <a name="prerequisites"></a>先决条件
 
 + 了解 [Azure API 管理术语](api-management-terminology.md)。
-+ 完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
++ 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 + 此外，请完成以下教程：[导入和发布第一个 API](import-and-publish.md)。
 
 ## <a name="create-and-publish-a-product"></a>创建和发布产品
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 登录到 Azure 门户，并导航到 API 管理实例。
 1. 在左侧导航栏中，选择“产品” > “+ 添加” 。
@@ -53,10 +55,53 @@ ms.locfileid: "94977130"
 
 3. 选择“创建”以创建新产品。
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要开始使用 Azure CLI：
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+若要创建产品，请运行 [az apim product create](/cli/apim/product#az_apim_product_create) 命令：
+
+```azurecli
+az apim product create --resource-group apim-hello-word-resource-group \
+    --product-name "Contoso product" --product-id contoso-product \
+    --service-name apim-hello-world --subscription-required true \
+    --state published --description "This is a test."
+```
+
+可针对你的产品修改各个值：
+
+   | 参数 | 说明 |
+   |-----------|-------------|
+   | `--product-name` | 要在[开发人员门户](api-management-howto-developer-portal.md)中显示的名称。 |
+   | `--description`  | 提供有关该产品的信息，如其用途、它提供访问权的 API 和其他详细信息。 |
+   | `--state`        | 如果希望发布该产品，请选择“发布”。 在产品中的 API 可调用前，必须先发布该产品。 默认情况下新产品未发布，并仅对“管理员”组可见。 |
+   | `--subscription-required` | 如果需要用户订阅才能使用该产品，请选中该项。 |
+   | `--approval-required` | 如果希望管理员审查并接受或拒绝此产品的订阅尝试，请选中该项。 如果未选中此项，则会自动批准订阅尝试。 |
+   | `--subscriptions-limit` | （可选）限制多个同步订阅的计数。|
+   | `--legal-terms`         | 可以包含产品的使用条款，订阅者必须接受这些条款才能使用该产品。 |
+
+若要查看你的当前产品，请使用 [az apim product list](/cli/apim/product#az_apim_product_list) 命令：
+
+```azurecli
+az apim product list --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --output table
+```
+
+若要删除产品，可使用 [az apim product delete](/cli/apim/product#az_apim_product_delete) 命令：
+
+```azurecli
+az apim product delete --product-id contoso-product \
+    --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --delete-subscriptions true
+```
+
+---
+
 ### <a name="add-more-configurations"></a>添加更多配置
 
 保存产品后继续对其进行配置。 在 API 管理实例中，从“产品”窗口中选择产品。 添加或更新：
-
 
 |项   |说明  |
 |---------|---------|
@@ -74,6 +119,7 @@ ms.locfileid: "94977130"
 
 ### <a name="add-an-api-to-an-existing-product"></a>将 API 添加到现有产品
 
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 在 API 管理实例的左侧导航栏中，选择“产品”。
 1. 选择一个产品，然后选择“API”。
@@ -81,6 +127,40 @@ ms.locfileid: "94977130"
 1. 选择一个或多个 API，然后点击“选择”。
 
 :::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-02.png" alt-text="将 API 添加到现有产品":::
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. 若要查看托管的 API，请使用 [az apim api list](/cli/apim/api#az_apim_api_list) 命令：
+
+   ```azurecli
+   az apim api list --resource-group apim-hello-word-resource-group \
+       --service-name apim-hello-world --output table
+   ```
+
+1. 若要向产品添加 API，请运行 [az apim product api add](/cli/apim/product/api#az_apim_product_api_add) 命令：
+
+   ```azurecli
+   az apim product api add --resource-group apim-hello-word-resource-group \
+       --api-id demo-conference-api --product-id contoso-product \
+       --service-name apim-hello-world
+   ```
+
+1. 若要验证添加项，请使用 [az apim product api list](/cli/apim/product/api#az_apim_product_api_list) 命令：
+
+   ```azurecli
+   az apim product api list --resource-group apim-hello-word-resource-group \
+       --product-id contoso-product --service-name apim-hello-world --output table
+   ```
+
+若要从产品中删除 API，可使用 [az apim product api delete](/cli/apim/product/api#az_apim_product_api_delete) 命令：
+
+```azurecli
+az apim product api delete --resource-group apim-hello-word-resource-group \
+    --api-id demo-conference-api --product-id contoso-product \
+    --service-name apim-hello-world
+```
+
+---
 
 > [!TIP]
 > 可以通过 [REST API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription/createorupdate) 或 PowerShell 命令使用自定义订阅密钥来创建或更新用户对产品的订阅。

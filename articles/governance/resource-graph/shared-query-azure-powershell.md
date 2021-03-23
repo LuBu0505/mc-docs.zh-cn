@@ -3,18 +3,18 @@ title: 快速入门：使用 Azure PowerShell 创建共享查询
 description: 本快速入门介绍如何使用 Azure PowerShell 创建 Resource Graph 共享查询。
 origin.date: 01/11/2021
 author: rockboyfor
-ms.date: 02/08/2021
-ms.testscope: yes|no
-ms.testdate: 02/01/2021null
+ms.date: 03/22/2021
+ms.testscope: yes
+ms.testdate: 02/01/2021
 ms.author: v-yeche
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7d95facf7efc8966ee3b32667b49ccbdfc5703b2
-ms.sourcegitcommit: 0232a4d5c760d776371cee66b1a116f6a5c850a5
+ms.openlocfilehash: ad1020f5fff8ec7adfbadf0482ad5d2929aadaa8
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580562"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766486"
 ---
 <!--Verified successfully-->
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 Resource Graph 共享查询
@@ -42,7 +42,7 @@ ms.locfileid: "99580562"
 
 ## <a name="create-a-resource-graph-shared-query"></a>创建 Resource Graph 共享查询
 
-将 `Az.ResourceGraph` PowerShell 模块添加到所选环境中后，即可创建一个 Resource Graph 共享查询。 共享查询是一个 Azure 资源管理器对象，你可授予该对象权限或在 Azure Resource Graph Explorer 中运行该对象。 该查询汇总了按“位置”分组的所有资源。
+将 Az.ResourceGraph PowerShell 模块添加到所选环境中后，即可创建一个 Resource Graph 共享查询。 共享查询是一个 Azure 资源管理器对象，你可授予该对象权限或在 Azure Resource Graph Explorer 中运行该对象。 该查询汇总了按“位置”分组的所有资源。
 
 1. 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建资源组，以存储 Azure Resource Graph 共享查询。 此资源组名为 `resource-graph-queries`，并位于 `chinanorth2`。
 
@@ -53,7 +53,7 @@ ms.locfileid: "99580562"
    New-AzResourceGroup -Name resource-graph-queries -Location chinanorth2
    ```
 
-1. 使用 `Az.ResourceGraph` PowerShell 模块和 [New-AzResourceGraphQuery](https://docs.microsoft.com/powershell/module/az.resourcegraph/new-azresourcegraphquery) cmdlet 创建 Azure Resource Graph 共享查询：
+1. 使用 Az.ResourceGraph PowerShell 模块和 [New-AzResourceGraphQuery](https://docs.microsoft.com/powershell/module/az.resourcegraph/new-azresourcegraphquery) cmdlet 创建 Azure Resource Graph 共享查询：
 
    ```powershell
    # Create the Azure Resource Graph shared query
@@ -86,7 +86,7 @@ ms.locfileid: "99580562"
 如果要从 Azure 环境中删除 Resource Graph 共享查询和资源组，可以使用以下命令执行此操作：
 
 - [Remove-AzResourceGraphQuery](https://docs.microsoft.com/powershell/module/az.resourcegraph/remove-azresourcegraphquery)
-- [Remove-AzResourceGroup](https://docs.azure.cn/cli/group#az_group_delete)
+- [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup)
 
 ```powershell
 # Delete the Azure Resource Graph shared query
@@ -104,5 +104,4 @@ Remove-AzResourceGroup -Name resource-graph-queries
 > [!div class="nextstepaction"]
 > [获取有关查询语言的详细信息](./concepts/query-language.md)
 
-<!-- Update_Description: new article about shared query azure powershell -->
-<!--NEW.date: 02/01/2021-->
+<!--Update_Description: update meta properties, wording update, update link-->

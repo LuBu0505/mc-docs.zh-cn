@@ -2,19 +2,20 @@
 title: 在无服务器 SQL 池中访问存储中的文件
 description: 介绍如何在 Azure Synapse Analytics 中使用无服务器 SQL 池查询存储文件。
 services: synapse-analytics
-author: azaricstefan
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 04/19/2020
-ms.author: stefanazaric
+origin.date: 04/19/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: f27fd395526cc22953083eac8d7aaccb7182e59a
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 93c68c780aaa84782adba695659f1c5626b0bb95
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207376"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766188"
 ---
 # <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池访问外部存储
 
@@ -31,7 +32,7 @@ ms.locfileid: "102207376"
 
 ```sql
 SELECT * FROM
- OPENROWSET(BULK 'https://<storage_account>.dfs.core.windows.net/<container>/<path>/*.parquet', format= 'parquet') as rows
+ OPENROWSET(BULK 'https://<storage_account>.dfs.core.chinacloudapi.cn/<container>/<path>/*.parquet', format= 'parquet') as rows
 ```
 
 用户可以使用以下访问规则来访问存储：
@@ -46,10 +47,10 @@ SQL 主体也可以使用 OPENROWSET 直接查询受 SAS 令牌保护的文件�
 ```sql
 EXECUTE AS somepoweruser
 
-CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
+CREATE CREDENTIAL [https://<storage_account>.dfs.core.chinacloudapi.cn/<container>]
  WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sas token';
 
-GRANT REFERENCES CREDENTIAL::[https://<storage_account>.dfs.core.windows.net/<container>] TO sqluser
+GRANT REFERENCES CREDENTIAL::[https://<storage_account>.dfs.core.chinacloudapi.cn/<container>] TO sqluser
 ```
 
 如果没有与 URL 匹配的服务器级凭据，或 SQL 用户没有此凭据的引用权限，则会返回错误。 SQL 主体无法使用某个 Azure AD 标识进行模拟。
@@ -92,7 +93,7 @@ CREATE DATABASE SCOPED CREDENTIAL AccessAzureInvoices
  SECRET = '******srt=sco&amp;sp=rwac&amp;se=2017-02-01T00:55:34Z&amp;st=201********' ;
 
 CREATE EXTERNAL DATA SOURCE MyAzureInvoices
- WITH ( LOCATION = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>/' ,
+ WITH ( LOCATION = 'https://<storage_account>.dfs.core.chinacloudapi.cn/<container>/<path>/' ,
  CREDENTIAL = AccessAzureInvoices) ;
 ```
 
@@ -109,14 +110,14 @@ CREATE EXTERNAL DATA SOURCE MyAzureInvoices
 
 ```sql
 CREATE EXTERNAL DATA SOURCE MyAzureInvoices
- WITH ( LOCATION = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>') ;
+ WITH ( LOCATION = 'https://<storage_account>.dfs.core.chinacloudapi.cn/<container>/<path>') ;
 ```
 ---
 ## <a name="external-table"></a>EXTERNAL TABLE
 
 具有读取表权限的用户可以使用基于一组 Azure 存储文件夹和文件创建的 EXTERNAL TABLE 来访问外部文件。
 
-[具有创建外部表权限](/sql/t-sql/statements/create-external-table-transact-sql?preserve-view=true&view=sql-server-ver15#permissions)（例如 CREATE TABLE 和 ALTER ANY CREDENTIAL 或 REFERENCES DATABASE SCOPED CREDENTIAL）的用户可以使用以下脚本基于 Azure 存储数据源创建表：
+[具有创建外部表权限](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?preserve-view=true&view=sql-server-ver15#permissions)（例如 CREATE TABLE 和 ALTER ANY CREDENTIAL 或 REFERENCES DATABASE SCOPED CREDENTIAL）的用户可以使用以下脚本基于 Azure 存储数据源创建表：
 
 ```sql
 CREATE EXTERNAL TABLE [dbo].[DimProductexternal]
@@ -124,7 +125,7 @@ CREATE EXTERNAL TABLE [dbo].[DimProductexternal]
 WITH
 (
 LOCATION='/DimProduct/year=*/month=*' ,
-DATA_SOURCE = AzureDataLakeStore ,
+DATA_SOURCE = AzureDataLakeStorage ,
 FILE_FORMAT = TextFileFormat
 ) ;
 ```
@@ -146,7 +147,7 @@ CREATE DATABASE SCOPED CREDENTIAL cred
  SECRET = '******srt=sco&sp=rwac&se=2017-02-01T00:55:34Z&st=201********' ;
 
 CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
- WITH ( LOCATION = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>' ,
+ WITH ( LOCATION = 'https://<storage_account>.dfs.core.chinacloudapi.cn/<container>/<path>' ,
  CREDENTIAL = cred
  ) ;
 ```
@@ -157,7 +158,7 @@ CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
 
 ```sql
 CREATE EXTERNAL DATA SOURCE MyAzureInvoices
- WITH ( LOCATION = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>') ;
+ WITH ( LOCATION = 'https://<storage_account>.dfs.core.chinacloudapi.cn/<container>/<path>') ;
 ```
 ---
 

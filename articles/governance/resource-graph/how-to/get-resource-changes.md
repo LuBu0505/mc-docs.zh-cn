@@ -1,17 +1,17 @@
 ---
 title: 获取资源更改
 description: 了解如何查找资源的更改时间，获取已更改属性的列表以及评估差异。
-author: DCtheGeek
-ms.author: v-tawe
-origin.date: 10/14/2020
-ms.date: 11/06/2020
+origin.date: 01/27/2021
+author: rockboyfor
+ms.date: 03/22/2021
+ms.author: v-yeche
 ms.topic: how-to
-ms.openlocfilehash: db16abb6404d85c685684d56e7725ba1a87df548
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 66586c62322841821378fbc8dceb629a2f4998ea
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94328793"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766900"
 ---
 # <a name="get-resource-changes"></a>获取资源更改
 
@@ -28,23 +28,17 @@ ms.locfileid: "94328793"
 - 使配置管理数据库（称为 CMDB）保持最新。 无需按计划的频率刷新所有资源及其完整的属性集，只获取更改的内容。
 - 了解当某个资源更改了符合性状态时可能已更改的其他属性。 评估这些附加属性可以洞察可能需要通过 Azure Policy 定义进行管理的其他属性。
 
-<!-- This article shows how to gather this information through Resource Graph's SDK. To see this
-information in the Azure portal, see Azure Policy's
-[Change history](../../policy/how-to/determine-non-compliance.md#change-history) or Azure Activity
-Log [Change history](../../../azure-monitor/platform/activity-log.md#view-the-activity-log). For
-details about changes to your applications from the infrastructure layer all the way to application
-deployment, see
-[Use Application Change Analysis (preview)](../../../azure-monitor/app/change-analysis.md) in Azure
-Monitor.
+本文介绍如何通过 Resource Graph 的 SDK 收集此信息。 若要在 Azure 门户中查看此信息，请参阅 Azure Policy 的[更改历史记录](../../policy/how-to/determine-non-compliance.md#change-history)或 Azure 活动日志[更改历史记录](../../../azure-monitor/essentials/activity-log.md#view-the-activity-log)。
+
+<!--NOT AVAILABLE ON [Use Application Change Analysis (preview)](../../../azure-monitor/app/change-analysis.md)-->
+
 
 > [!NOTE]
-> Change details in Resource Graph are for Resource Manager properties. For tracking changes inside
-> a virtual machine, see Azure Automation's
-> [Change tracking](../../../automation/change-tracking/overview.md) or Azure Policy's
-> [Guest Configuration for VMs](../../policy/concepts/guest-configuration.md).
+> Resource Graph 中的更改详细信息适用于资源管理器属性。 若要跟踪虚拟机内部的更改，请参阅 Azure Policy 的 [VM 的来宾配置](../../policy/concepts/guest-configuration.md)。
 
-> [!IMPORTANT]
-> Change history in Azure Resource Graph is in Public Preview. -->
+<!--NOT AVAILABLE ON [Change tracking](../../../automation/change-tracking/overview.md)-->
+
+<!--NOT AVAILABLE ON Change history in Azure Resource Graph is in Public Preview.-->
 
 ## <a name="find-detected-change-events-and-view-change-details"></a>查找检测到的更改事件并查看更改详细信息
 
@@ -206,7 +200,7 @@ POST https://management.chinacloudapi.cn/providers/Microsoft.ResourceGraph/resou
             "id": "/subscriptions/{subscriptionId}/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount",
             "name": "mystorageaccount",
             "type": "Microsoft.Storage/storageAccounts",
-            "location": "chinaeast",
+            "location": "chinanorth",
             "tags": {},
             "properties": {
                 "networkAcls": {
@@ -237,7 +231,7 @@ POST https://management.chinacloudapi.cn/providers/Microsoft.ResourceGraph/resou
                     "table": "https://mystorageaccount.table.core.chinacloudapi.cn/",
                     "file": "https://mystorageaccount.file.core.chinacloudapi.cn/"
                 },
-                "primaryLocation": "chinaeast",
+                "primaryLocation": "chinanorth",
                 "statusOfPrimary": "available"
             }
         }
@@ -253,7 +247,7 @@ POST https://management.chinacloudapi.cn/providers/Microsoft.ResourceGraph/resou
             "id": "/subscriptions/{subscriptionId}/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount",
             "name": "mystorageaccount",
             "type": "Microsoft.Storage/storageAccounts",
-            "location": "chinaeast",
+            "location": "chinanorth",
             "tags": {},
             "properties": {
                 "networkAcls": {
@@ -284,7 +278,7 @@ POST https://management.chinacloudapi.cn/providers/Microsoft.ResourceGraph/resou
                     "table": "https://mystorageaccount.table.core.chinacloudapi.cn/",
                     "file": "https://mystorageaccount.file.core.chinacloudapi.cn/"
                 },
-                "primaryLocation": "chinaeast",
+                "primaryLocation": "chinanorth",
                 "statusOfPrimary": "available"
             }
         }
@@ -302,3 +296,5 @@ beforeSnapshot 和 afterSnapshot 分别提供快照创建时间以及当时的�
 - 请参阅[高级查询](../samples/advanced.md)中的高级用法。
 - 详细了解如何[浏览资源](../concepts/explore-resources.md)。
 - 若要了解如何频繁地执行查询，请参阅[针对受限制请求的指南](../concepts/guidance-for-throttled-requests.md)。
+
+<!--Update_Description: update meta properties, wording update, update link-->

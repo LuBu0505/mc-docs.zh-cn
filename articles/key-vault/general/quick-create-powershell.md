@@ -3,20 +3,18 @@ title: 快速入门 - 使用 Azure PowerShell 创建 Azure Key Vault
 description: 介绍如何使用 Azure PowerShell 创建 Azure Key Vault 的快速入门
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: quickstart
-origin.date: 12/08/2020
-ms.date: 01/14/2021
-ms.author: v-tawe
-ms.openlocfilehash: 634cf2f543513d6a5e4fb34c6a6291ff675f1fb6
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: 5fa69680af9a873cf2f8775c976beee59c808d83
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059380"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765773"
 ---
 # <a name="quickstart-create-a-key-vault-using-powershell"></a>快速入门：使用 PowerShell 创建密钥保管库
 
@@ -80,3 +78,4 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 - 阅读 [Azure Key Vault 概述](overview.md)
 - 请参阅 [Azure PowerShell Key Vault cmdlet](https://docs.microsoft.com/powershell/module/az.keyvault/?view=azps-2.6.0#key_vault) 参考
 - 请参阅 [Azure Key Vault 安全性概述](security-overview.md)
+

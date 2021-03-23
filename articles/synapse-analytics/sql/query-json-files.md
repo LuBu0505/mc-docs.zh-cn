@@ -2,19 +2,20 @@
 title: 使用无服务器 SQL 池查询 JSON 文件
 description: 此部分介绍如何使用 Azure Synapse Analytics 中的无服务器 SQL 池读取 JSON 文件。
 services: synapse-analytics
-author: azaricstefan
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
-ms.date: 05/20/2020
-ms.author: stefanazaric
+origin.date: 05/20/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: ee169deaef8433b969aaee922ad3b6882bc0843f
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 3f6a59bce73af6ace5cea7089496b9e4983ad651
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207209"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766179"
 ---
 # <a name="query-json-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的无服务器 SQL 池查询 JSON 文件
 
@@ -42,7 +43,7 @@ ms.locfileid: "102207209"
 ```sql
 select top 10 *
 from openrowset(
-        bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.jsonl',
+        bulk 'https://pandemicdatalake.blob.core.chinacloudapi.cn/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.jsonl',
         format = 'csv',
         fieldterminator ='0x0b',
         fieldquote = '0x0b'
@@ -50,7 +51,7 @@ from openrowset(
 go
 select top 10 *
 from openrowset(
-        bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.json',
+        bulk 'https://pandemicdatalake.blob.core.chinacloudapi.cn/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.json',
         format = 'csv',
         fieldterminator ='0x0b',
         fieldquote = '0x0b',
@@ -66,7 +67,7 @@ from openrowset(
 
 ```sql
 create external data source covid
-with ( location = 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases' );
+with ( location = 'https://pandemicdatalake.blob.core.chinacloudapi.cn/public/curated/covid-19/ecdc_cases' );
 go
 select top 10 *
 from openrowset(
@@ -126,7 +127,7 @@ from openrowset(
 
 ### <a name="query-json-files-using-json_value"></a>使用 JSON_VALUE 查询 JSON 文件
 
-下面的查询展示了如何使用 [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 从 JSON 文档中检索标量值（标题和发布者）：
+下面的查询展示了如何使用 [JSON_VALUE](https://docs.microsoft.com/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest&preserve-view=true) 从 JSON 文档中检索标量值（标题和发布者）：
 
 ```sql
 select
@@ -146,7 +147,7 @@ order by JSON_VALUE(doc, '$.geo_id') desc
 
 ### <a name="query-json-files-using-openjson"></a>使用 OPENJSON 查询 JSON 文件
 
-以下查询使用 [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。 它将检索在塞尔维亚报告的新冠肺炎统计信息：
+以下查询使用 [OPENJSON](https://docs.microsoft.com/sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest&preserve-view=true)。 它将检索在塞尔维亚报告的新冠肺炎统计信息：
 
 ```sql
 select

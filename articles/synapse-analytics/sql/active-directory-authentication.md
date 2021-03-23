@@ -7,15 +7,15 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: overview
 origin.date: 04/15/2020
-ms.date: 03/08/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: c205637c423c92013fd9c9948248001f5443ee42
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 8252a9f7a0b961ee81b12b730db5806f7aea523d
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207155"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766206"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>结合使用 Azure Active Directory 身份验证与 Synapse SQL 进行身份验证
 
@@ -31,7 +31,7 @@ Azure Active Directory 身份验证是一种使用 Azure Active Directory (Azure
 - Azure AD 支持对连接到 Azure Synapse 的应用程序进行基于令牌的身份验证。
 - Azure AD 身份验证支持对本地 Azure Active Directory 进行 ADFS（域联合）或本机用户/密码身份验证，无需进行域同步。
 - Azure AD 支持从 SQL Server Management Studio 进行连接，后者使用 Active Directory 通用身份验证，其中包括多重身份验证 (MFA)。  MFA 包括利用一系列简单的验证选项（包括电话、短信、带有 PIN 码的智能卡或移动应用通知）进行的强身份验证。 有关详细信息，请参阅 [SSMS 支持通过 Synapse SQL 进行 Azure AD 多重身份验证](mfa-authentication.md)。
-- Azure AD 支持来自 SQL Server Data Tools (SSDT) 的使用 Active Directory 交互式身份验证的类似连接。 有关详细信息，请参阅 [SQL Server Data Tools (SSDT) 中的 Azure Active Directory 支持](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+- Azure AD 支持来自 SQL Server Data Tools (SSDT) 的使用 Active Directory 交互式身份验证的类似连接。 有关详细信息，请参阅 [SQL Server Data Tools (SSDT) 中的 Azure Active Directory 支持](https://docs.microsoft.com/sql/ssdt/azure-active-directory?view=azure-sqldw-latest&preserve-view=true)。
 
 配置步骤包括配置和使用 Azure Active Directory 身份验证的以下过程。
 
@@ -82,12 +82,12 @@ Azure AD 管理员登录名可以是 Azure AD 用户，也可以是 Azure AD 组
 
 - 可以在 Synapse SQL 中预配 Azure AD 的以下成员：
 
-  - 本机成员：在托管域或客户域中的 Azure AD 中创建的成员。 有关详细信息，请参阅[将自己的域名添加到 Azure AD](../../active-directory/fundamentals/add-custom-domain.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+  - 本机成员：在托管域或客户域中的 Azure AD 中创建的成员。 有关详细信息，请参阅[将自己的域名添加到 Azure AD](../../active-directory/fundamentals/add-custom-domain.md)。
   - 联合域成员：在联合域的 Azure AD 中创建的成员。 有关详细信息，请参阅 [Microsoft Azure 现在支持与 Windows Server Active Directory 联合](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)。
   - 作为原生域或联合域成员从其他 Azure AD 导入的成员。
   - 以安全组形式创建的 Active Directory 组。
 
-- 如果 Azure AD 用户是具有 `db_owner` 服务器角色的组的成员，则此类用户无法对 Synapse SQL 使用 [CREATE DATABASE SCOPED CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 语法。 将出现以下错误：
+- 如果 Azure AD 用户是具有 `db_owner` 服务器角色的组的成员，则此类用户无法对 Synapse SQL 使用 [CREATE DATABASE SCOPED CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql?view=azure-sqldw-latest&preserve-view=true) 语法。 将出现以下错误：
 
     `SQL Error [2760] [S0001]: The specified schema name 'user@mydomain.com' either does not exist or you do not have permission to use it.`
 
@@ -124,13 +124,13 @@ Azure AD 服务器主体（登录名）支持以下身份验证方法：
 - 只有 Synapse SQL 的 Azure AD 管理员最初可以使用 Azure Active Directory 帐户连接到 Synapse SQL。 Active Directory 管理员可以配置后续的 Azure AD 数据库用户。
 - 我们建议将连接超时值设置为 30 秒。
 - SQL Server 2016 Management Studio 和 SQL Server Data Tools for Visual Studio 2015（版本 14.0.60311.1（2016 年 4 月）或更高版本）支持 Azure Active Directory 身份验证。 （**用于 SqlServer 的 .NET Framework 数据提供程序**（.NET Framework 4.6 或更高版本）支持 Azure AD 身份验证）。 因此，这些工具和数据层应用程序（DAC 和 .BACPAC）的最新版本可以使用 Azure AD 身份验证。
-- 从版本 15.0.1 开始，[sqlcmd 实用工具](https://docs.microsoft.com/sql/tools/sqlcmd-utility?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)和 [bcp 实用工具](https://docs.microsoft.com/sql/tools/bcp-utility?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)支持采用了 MFA 的 Active Directory 交互式身份验证。
-- SQL Server Data Tools for Visual Studio 2015 至少需要 2016 年 4 月版的 Data Tools（版本 14.0.60311.1）。 目前，Azure AD 用户不会显示在 SSDT 对象资源管理器中。 解决方法是在 [sys.database_principals](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 中查看这些用户。
-- [Microsoft JDBC Driver 6.0 for SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) 支持 Azure AD 身份验证。 另外，请参阅[设置连接属性](https://docs.microsoft.com/sql/connect/jdbc/setting-the-connection-properties?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+- 从版本 15.0.1 开始，[sqlcmd 实用工具](https://docs.microsoft.com/sql/tools/sqlcmd-utility?view=azure-sqldw-latest&preserve-view=true)和 [bcp 实用工具](https://docs.microsoft.com/sql/tools/bcp-utility?view=azure-sqldw-latest&preserve-view=true)支持采用了 MFA 的 Active Directory 交互式身份验证。
+- SQL Server Data Tools for Visual Studio 2015 至少需要 2016 年 4 月版的 Data Tools（版本 14.0.60311.1）。 目前，Azure AD 用户不会显示在 SSDT 对象资源管理器中。 解决方法是在 [sys.database_principals](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?view=azure-sqldw-latest&preserve-view=true) 中查看这些用户。
+- [Microsoft JDBC Driver 6.0 for SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) 支持 Azure AD 身份验证。 另外，请参阅[设置连接属性](https://docs.microsoft.com/sql/connect/jdbc/setting-the-connection-properties?view=azure-sqldw-latest&preserve-view=true)。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 有关 Synapse SQL 中的访问和控制的概述，请参阅 [Synapse SQL 访问控制](../security/synapse-workspace-access-control-overview.md)。
-- 有关数据库主体的详细信息，请参阅[主体](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
-- 有关数据库角色的详细信息，请参阅[数据库角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+- 有关数据库主体的详细信息，请参阅[主体](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine?view=azure-sqldw-latest&preserve-view=true)。
+- 有关数据库角色的详细信息，请参阅[数据库角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=azure-sqldw-latest&preserve-view=true)。
 

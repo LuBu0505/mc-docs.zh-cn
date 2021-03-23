@@ -6,16 +6,16 @@ services: container-service
 ms.topic: article
 origin.date: 07/21/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9db1001b0e15941a810798b52a2201f7a86f9a1d
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: de0da83e7fe6873c86804b777822dfd8c44a9e95
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023132"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766006"
 ---
 # <a name="control-access-to-cluster-resources-using-kubernetes-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes 服务中使用 Kubernetes 基于角色的访问控制和 Azure Active Directory 标识来控制对群集资源的访问
 
@@ -411,7 +411,7 @@ az ad group delete --group opssre
 <!-- LINKS - internal -->
 
 [az-aks-get-credentials]: https://docs.azure.cn/cli/aks#az_aks_get_credentials
-[install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli
+[install-azure-cli]: https://docs.microsoft.com/cli/azure/install-azure-cli
 [azure-ad-aks-cli]: azure-ad-integration-cli.md
 [az-aks-show]: https://docs.azure.cn/cli/aks#az_aks_show
 [az-ad-group-create]: https://docs.azure.cn/cli/ad/group#az_ad_group_create
@@ -422,4 +422,4 @@ az ad group delete --group opssre
 [rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -2,19 +2,18 @@
 title: 教程 - 在门户中针对 Azure IoT 中心设备预配服务设置云
 description: 本教程介绍如何通过 IoT 中心设备预配服务 (DPS) 在 [Azure 门户](https://portal.azure.cn)中设置云资源以进行设备预配
 author: wesmc7777
-ms.author: v-tawe
-origin.date: 11/12/2019
-ms.date: 09/30/2020
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 625af84f439f7668bfc61fe77f2e70551b7b48a1
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.openlocfilehash: 39df95c5de3b0115989cad735dc36d35b79fa5d4
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431130"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765834"
 ---
 # <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>教程：通过 IoT 中心设备预配服务配置云资源以进行设备预配
 
@@ -47,8 +46,8 @@ ms.locfileid: "96431130"
    | 设置       | 建议的值 | 说明 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **名称** | 任何唯一名称 | -- | 
-   | **订阅** | 订阅  | 有关订阅的详细信息，请参阅[订阅](https://account.azure.cn/Subscriptions)。 |
-   | **资源组** | myResourceGroup | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
+   | **订阅** | 你的订阅  | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。 |
+   | **资源组** | myResourceGroup |  |
    | **位置** | 任何有效的位置 | 有关区域的信息，请参阅 [Azure 区域](https://www.azure.cn/home/features/products-by-region/)。 |   
 
    ![在门户中输入有关设备预配服务的基本信息](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)

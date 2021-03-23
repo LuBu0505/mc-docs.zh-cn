@@ -2,19 +2,18 @@
 title: 教程 - 使用 Azure IoT 中心设备预配服务跨负载均衡中心预配设备
 description: 本教程演示如何在 Azure 门户中跨负载均衡的 IoT 中心通过设备预配服务 (DPS) 自动预配设备
 author: wesmc7777
-ms.author: v-tawe
-origin.date: 11/12/2019
-ms.date: 09/30/2020
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 2b8c776be916e4a755bb987dbb61fa0403ff36f6
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.openlocfilehash: 66355fb93f90c0c39a713c8dd7b7330b7a4af7ad
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431129"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765829"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>教程：跨负载均衡的 IoT 中心预配设备
 
@@ -23,7 +22,7 @@ ms.locfileid: "96431129"
 > [!div class="checklist"]
 > * 使用 Azure 门户将另一台设备预配到另一个 IoT 中心 
 > * 添加第二台设备的注册列表条目
-> * 将设备预配服务分配策略设置为“均匀分发” 
+> * 将设备预配服务分配策略设置为“均匀分发”
 > * 将新的 IoT 中心链接到设备预配服务
 
 如果没有 Azure 订阅，请在开始前创建一个[试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
@@ -81,5 +80,5 @@ ms.locfileid: "96431129"
 <!-- Advance to the next tutorial to learn how to 
  Replace this .md
 > [!div class="nextstepaction"]
-> [Bind an existing custom SSL certificate to Azure Web Apps](app-service-web-tutorial-custom-ssl.md)
+> [Bind an existing custom SSL certificate to Azure Web Apps]()
 -->

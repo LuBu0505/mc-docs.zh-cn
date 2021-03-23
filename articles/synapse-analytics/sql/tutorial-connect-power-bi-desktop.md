@@ -2,19 +2,20 @@
 title: 教程：将无服务器 SQL 池连接到 Power BI Desktop 并创建报表
 description: 本教程介绍如何在 Azure Synapse Analytics 中将无服务器 SQL 池连接到 Power BI Desktop 并基于视图创建演示报表。
 services: synapse analytics
-author: azaricstefan
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: sql
-ms.date: 05/20/2020
-ms.author: stefanazaric
+origin.date: 05/20/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: a660bfb2f5af6987648b74e3c52edfb87500ea8b
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 17630867cbb1aba28282d1ea796aee68aeee44d1
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207335"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765757"
 ---
 # <a name="tutorial-use-serverless-sql-pool-with-power-bi-desktop--create-a-report"></a>教程：将无服务器 SQL 池用于 Power BI Desktop 并创建报表
 
@@ -36,7 +37,7 @@ ms.locfileid: "102207335"
 
 可选：
 
-- 一个 SQL 查询工具，例如 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) 或 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)。
+- 一个 SQL 查询工具，例如 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio) 或 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
 
 以下参数的值：
 
@@ -72,7 +73,7 @@ GO
 ```sql
 -- There is no credential in data surce. We are using public storage account which doesn't need a secret.
 CREATE EXTERNAL DATA SOURCE AzureOpenData
-WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/')
+WITH ( LOCATION = 'https://azureopendatastorage.blob.core.chinacloudapi.cn/')
 ```
 
 ## <a name="3---prepare-view"></a>3 - 准备视图

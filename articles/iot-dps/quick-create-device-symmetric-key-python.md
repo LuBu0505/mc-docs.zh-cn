@@ -2,20 +2,19 @@
 title: 快速入门 - 通过 Python 使用对称密钥将设备预配到 Azure IoT 中心
 description: 在本快速入门中，你将通过 Azure IoT 中心设备预配服务 (DPS) 使用 Azure IoT Python SDK 将对称密钥设备预配到 IoT 中心
 author: wesmc7777
-ms.author: v-tawe
-origin.date: 06/29/2020
-ms.date: 11/13/2020
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc
-ms.openlocfilehash: a91f3f55593246ad388d09038d5a258f095d50a2
-ms.sourcegitcommit: 39288459139a40195d1b4161dfb0bb96f5b71e8e
+ms.openlocfilehash: 1c54985bd9ad6d9e0cd627ca32367279424ee692
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94590618"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765879"
 ---
 # <a name="quickstart-provision-a-python-device-with-symmetric-keys"></a>快速入门：使用对称密钥预配 Python 设备
 
@@ -30,7 +29,7 @@ ms.locfileid: "94590618"
 本文面向基于 Windows 的工作站。 但是，你也可以在 Linux 上执行过程。 对于 Linux 示例，请参阅[如何进行多租户预配](how-to-provision-multitenant.md)。
 
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -43,7 +42,7 @@ ms.locfileid: "94590618"
 
 ## <a name="prepare-the-python-sdk-environment"></a>准备 Python SDK 环境 
 
-1. 确保在计算机上安装 Git 并将其添加到可供命令窗口访问的环境变量。 请参阅[软件自由保护组织提供的 Git 客户端工具](https://git-scm.com/download/)，了解要安装的最新版 `git` 工具，其中包括  Git Bash，这是一个命令行应用，可以用来与本地 Git 存储库交互。 
+1. 确保在计算机上安装 Git 并将其添加到可供命令窗口访问的环境变量。 请参阅[软件自由保护组织提供的 Git 客户端工具](https://git-scm.com/download/)，了解要安装的最新版 `git` 工具，其中包括 Git Bash，这是一个命令行应用，可以用来与本地 Git 存储库交互。 
 
 2. 打开命令提示符。 克隆 Azure IoT Python SDK 的 GitHub 存储库：
     
@@ -66,7 +65,7 @@ ms.locfileid: "94590618"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)，选择左侧菜单上的“所有资源”按钮，打开设备预配服务 (DPS) 实例。
 
-2. 选择“管理注册”选项卡，然后选择顶部的“添加个人注册”按钮 。 
+2. 选择“管理注册”选项卡，然后选择顶部的“添加个人注册”按钮   。 
 
 3. 在“添加注册”面板中输入以下信息，然后按“保存”按钮   。
 
@@ -108,7 +107,7 @@ ms.locfileid: "94590618"
     以下命令是展示命令语法的示例。 确保使用正确的值。
 
     ```console
-    set PROVISIONING_HOST=test-dps-docs.azure-devices-provisioning.net
+    set PROVISIONING_HOST=test-dps-docs.azure-devices-provisioning.cn
     ```
 
     ```console
@@ -140,7 +139,7 @@ ms.locfileid: "94590618"
     RegistrationStage(RequestAndResponseOperation): Op will transition into polling after interval 2.  Setting timer.
     The complete registration result is
     python-device-008
-    docs-test-iot-hub.azure-devices.net
+    docs-test-iot-hub.azure-devices.cn
     initialAssignment
     null
     Will send telemetry from the provisioned device
@@ -171,7 +170,7 @@ ms.locfileid: "94590618"
     ![设备注册到 IoT 中心](./media/quick-create-device-symm-key-python/hub-registration-python.png) 
 
 > [!NOTE]
-> 如果从设备的注册项中的默认值更改了“初始设备孪生状态”  ，则它会从中心拉取所需的孪生状态，并执行相应的操作。 有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)。
+> 如果从设备的注册项中的默认值更改了“初始设备孪生状态”，则它会从中心拉取所需的孪生状态，并执行相应的操作。 有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)。
 >
 
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f76d9e0d0e5bdfbb3fe61c4d73b64be76db893ed
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 41c8bdb19505ffcf57daf942cc170632607c5efc
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024045"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766893"
 ---
 # <a name="what-is-azure-resource-mover"></a>什么是 Azure 资源转移器？
 
@@ -29,8 +29,6 @@ ms.locfileid: "98024045"
 - **应对部署要求**：移动出错的已部署资源，或者通过移动来应对容量需求。
 - **应对停止使用**：因为某个区域已停止使用而移动资源。
 
-> [!IMPORTANT]
-> Azure 资源转移器目前提供公共预览版。
 
 ## <a name="why-use-resource-mover"></a>为何使用资源转移器？
 
@@ -62,6 +60,7 @@ ms.locfileid: "98024045"
 使用资源转移器，当前可以在区域之间移动以下资源：
 
 - Azure VM 和关联的磁盘
+- 已加密的 Azure VM 及关联磁盘。 这包括启用了 Azure 磁盘加密的 VM 和使用默认服务器端加密的 VM（这两者都使用平台管理的密钥和客户管理的密钥）
 - NIC
 - 可用性集 
 - Azure 虚拟网络 

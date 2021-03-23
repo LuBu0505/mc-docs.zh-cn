@@ -2,13 +2,13 @@
 title: Azure Monitor 中的指标 - Azure 事件中心 | Microsoft Docs
 description: 本文介绍如何使用 Azure 监视功能来监视 Azure 事件中心
 ms.topic: article
-ms.date: 02/24/2021
-ms.openlocfilehash: 7887bfb38a670ac635ca689b074b9e27482556ea
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.date: 03/11/2021
+ms.openlocfilehash: ed0a6c82b569bbb2f1e2c899cd53b49009d56da4
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196587"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765640"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 事件中心指标
 
@@ -39,6 +39,8 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 
 目前，在 Azure Monitor 中可以免费使用指标。 但是，如果使用引入指标数据的其他解决方案，可能就会按这些解决方案收费。 例如，如果将指标数据存档到 Azure 存储帐户，则 Azure 存储会收费。 如果将指标数据流式传输到 Azure Monitor 日志进行高级分析，Azure 也会向你收费。
 
+<!-- Not Available on Log Analytics for advanced analysis -->
+
 以下指标可提供服务运行状况的概述。 
 
 > [!NOTE]
@@ -55,8 +57,7 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 ## <a name="azure-monitor-integration-with-siem-tools"></a>Azure Monitor 与 SIEM 工具集成
 通过使用 Azure Monitor 将监视数据（活动日志、诊断日志等）路由到事件中心，可以轻松地与安全信息和事件管理 (SIEM) 工具集成。 有关详细信息，请参阅以下文章/博客文章：
 
-- [将 Azure 监视数据流式传输到事件中心以便外部工具使用](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)
-- [Azure 日志集成简介](https://docs.microsoft.com/previous-versions/azure/security/fundamentals/azure-log-integration-overview)
+- [将 Azure 监视数据流式传输到事件中心以便外部工具使用](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)<!-- - [Introduction to Azure Log Integration](https://docs.microsoft.com/previous-versions/azure/security/fundamentals/azure-log-integration-overview) -->
 - [使用 Azure Monitor 与 SIEM 工具集成](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
 在 SIEM 工具使用事件中心的日志数据的情况下，如果在指标图中看不到传入消息，或者看到传入消息但看不到传出消息，请按照下列步骤操作：
@@ -76,7 +77,7 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
     - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
     - [Java](event-hubs-java-get-started-send.md)
     - [Python](event-hubs-python-get-started-send.md)
-    - [JavaScript](event-hubs-java-get-started-send.md)
+    - [JavaScript](event-hubs-node-get-started-send.md)
 * [事件中心常见问题解答](event-hubs-faq.md)
 * [使用事件中心的示例应用程序](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 

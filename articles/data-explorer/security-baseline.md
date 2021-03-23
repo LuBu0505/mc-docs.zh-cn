@@ -4,15 +4,15 @@ description: Azure 数据资源管理器安全基线为实现 Azure 安全基准
 author: msmbaldwin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 02/08/2021
+ms.date: 03/18/2021
 ms.author: v-junlch
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 187882e1dfdba141a65d70d101d57de78922f83c
-ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
+ms.openlocfilehash: 3945d27481b3ad3fbf6aa6f50fa60736164357d5
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101087574"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766094"
 ---
 # <a name="azure-security-baseline-for-azure-data-explorer"></a>适用于 Azure 数据资源管理器的 Azure 安全基线
 
@@ -120,9 +120,9 @@ ms.locfileid: "101087574"
 
 **指导**：Azure 数据资源管理器使用诊断日志获取有关引入成功和失败的见解。 可将操作日志导出到 Azure 存储、事件中心或 Log Analytics 以监视引入状态。
 
-- [如何监视 Azure 数据资源管理器引入操作](https://docs.azure.cn/data-explorer/using-diagnostic-logs)
+- [如何监视 Azure 数据资源管理器引入操作](./using-diagnostic-logs.md)
 
-- [如何在 Azure 数据资源管理器中引入和查询监视数据](https://docs.azure.cn/data-explorer/ingest-data-no-code)
+- [如何在 Azure 数据资源管理器中引入和查询监视数据](./ingest-data-no-code.md)
 
 **Azure 安全中心监视**：是
 
@@ -132,7 +132,7 @@ ms.locfileid: "101087574"
 
 **指导**：启用 Azure 数据资源管理器的诊断设置以访问和记录服务专用操作和日志记录。 默认情况下，Azure Monitor 中的 Azure 活动日志（包括有关资源的概要日志记录）处于启用状态。
 
-- [如何监视 Azure 数据资源管理器引入操作](https://docs.azure.cn/data-explorer/using-diagnostic-logs)
+- [如何监视 Azure 数据资源管理器引入操作](./using-diagnostic-logs.md)
 
 - [如何使用 Azure Monitor 收集平台日志和指标](/azure-monitor/platform/diagnostic-settings)
 
@@ -172,7 +172,6 @@ ms.locfileid: "101087574"
 
 **指导**：在 Azure 数据资源管理器中，安全角色定义哪些安全主体（用户和应用程序）有权对受保护的资源（例如数据库或表）进行操作，以及允许进行哪些操作。 可以利用 Kusto 查询列出 Azure 数据资源管理器群集和数据库的具有管理员角色的主体。
 
-- [使用 Kusto 查询在 Azure 数据资源管理器中进行安全角色管理](https://docs.azure.cn/kusto/management/security-roles)
 
 **Azure 安全中心监视**：是
 
@@ -260,11 +259,6 @@ ms.locfileid: "101087574"
 
 - 应用程序身份验证（非交互式登录）：用于对必须在没有人类用户参与的情况下运行或进行身份验证的服务和应用程序进行身份验证。
 
-有关详细信息，请参阅以下资源：
-
-- [Azure 数据资源管理器访问控制概述](https://docs.azure.cn/kusto/management/access-control)
-
-- [使用 Azure Active Directory 进行身份验证](https://docs.azure.cn/kusto/management/access-control/aad)
 
 **Azure 安全中心监视**：是
 
@@ -274,7 +268,6 @@ ms.locfileid: "101087574"
 
 **指导**：Azure Active Directory (Azure AD) 提供日志来帮助发现过时的帐户。 此外，请使用 Azure 标识访问评审来有效管理组成员身份、对企业应用程序的访问和角色分配。 可以定期评审用户的访问权限，确保只有适当的用户才持续拥有访问权限。 
 
-- [如何使用 Azure AD 进行 Azure 数据资源管理器访问身份验证](https://docs.azure.cn/kusto/management/access-control/how-to-authenticate-with-aad)
 
 - [Azure AD 报告](/active-directory/reports-monitoring/)
 
@@ -368,7 +361,7 @@ ms.locfileid: "101087574"
 
 **指导**：通过 Azure 数据资源管理器，可以使用 Azure 基于角色的访问控制 (RBAC) 模型来控制对数据库和表的访问。 在此模型下，主体（用户、组和应用）将映射到角色。 主体可以根据分配的角色访问资源。
 
-- [角色和权限列表以及有关如何为 Azure 数据资源管理器配置 RBAC 的说明](https://docs.azure.cn/data-explorer/manage-database-permissions)
+- [角色和权限列表以及有关如何为 Azure 数据资源管理器配置 RBAC 的说明](./manage-database-permissions.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -378,7 +371,7 @@ ms.locfileid: "101087574"
 
 **指导**：Azure 磁盘加密有助于保护数据，使组织能够信守在安全性与合规性方面作出的承诺。 它为群集虚拟机的 OS 和数据磁盘提供卷加密。 它还与 Azure 密钥保管库集成，让我们可以控制和管理磁盘加密密钥和机密，并确保 VM 磁盘上的所有数据在 Azure 存储中进行静态加密。
 
-- [如何为 Azure 数据资源管理器群集启用静态加密](https://docs.azure.cn/data-explorer/manage-cluster-security)
+- [如何为 Azure 数据资源管理器群集启用静态加密](./cluster-disk-encryption.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -387,8 +380,6 @@ ms.locfileid: "101087574"
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：记录对关键 Azure 资源的更改并对此类更改发出警报
 
 **指导**：将 Azure Monitor 与 Azure 活动日志配合使用，以创建在 Azure 数据资源管理器上发生资源级别更改时发出的警报。
-
-- [如何针对 Azure 活动日志事件创建警报](/azure-monitor/platform/alerts-activity-log)
 
 - [如何针对 Azure 活动日志事件创建警报](/azure-monitor/platform/alerts-activity-log)
 
@@ -422,7 +413,7 @@ ms.locfileid: "101087574"
 
 - [如何使用 Azure Resource Graph 创建查询](/governance/resource-graph/first-query-portal)
 
-- [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [了解 Azure RBAC](/role-based-access-control/overview)
 
@@ -525,7 +516,7 @@ ms.locfileid: "101087574"
 
 还可以使用来自 Azure 安全中心的建议作为 Azure 资源的安全配置基线。
 
-- [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [教程：创建和管理策略以强制实施符合性](/governance/policy/tutorials/create-and-manage)
 
@@ -589,7 +580,7 @@ ms.locfileid: "101087574"
 
 - [如何配置托管标识](/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
 
-- [配置 Azure 数据资源管理器群集的托管标识](https://docs.azure.cn/data-explorer/managed-identities)
+- [配置 Azure 数据资源管理器群集的托管标识](./managed-identities.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -629,7 +620,6 @@ ms.locfileid: "101087574"
 
 - [了解 Azure 存储冗余和服务级别协议](/storage/common/storage-redundancy)
 
-- [将数据导出到存储](https://docs.azure.cn/kusto/management/data-export/export-data-to-storage)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -639,8 +629,7 @@ ms.locfileid: "101087574"
 
 **指导**：Azure 数据资源管理器对静态存储帐户中的所有数据进行加密。 默认情况下，数据使用 Microsoft 管理的密钥进行加密。 为了更进一步控制加密密钥，可以提供客户管理的密钥来用于对数据进行加密。 客户管理的密钥必须存储在 Azure密钥保管库中。
 
-
-- [如何备份 Azure Key Vault 证书](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultcertificate?view=azps-4.8.0&amp;preserve-view=true)
+- [如何备份 Azure Key Vault 证书](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultcertificate?preserve-view=true&view=azps-4.8.0)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -650,7 +639,7 @@ ms.locfileid: "101087574"
 
 **指南**：定期测试 Azure Key Vault 机密的数据还原。
 
-- [如何还原 Azure Key Vault 证书](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultcertificate?view=azps-4.8.0&amp;preserve-view=true)
+- [如何还原 Azure Key Vault 证书](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultcertificate?preserve-view=true&view=azps-4.8.0)
 
 
 

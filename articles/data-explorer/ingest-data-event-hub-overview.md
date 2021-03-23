@@ -3,18 +3,17 @@ title: 从事件中心引入 - Azure 数据资源管理器
 description: 本文介绍 Azure 数据资源管理器中的“从事件中心引入”功能。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: how-to
-origin.date: 08/13/2020
-ms.date: 01/19/2021
-ms.openlocfilehash: 32ad1d3364744cf3454fc86fb8ea6c002ebf017b
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 03/17/2021
+ms.openlocfilehash: 411cf43b7f99a8c3025fdbcb41a548a49eb574cb
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611540"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766914"
 ---
 # <a name="event-hub-data-connection"></a>事件中心数据连接
 
@@ -26,7 +25,7 @@ ms.locfileid: "98611540"
 
 ## <a name="data-format"></a>数据格式
 
-* 将以 [EventData](https://docs.microsoft.com/dotnetapi/microsoft.servicebus.messaging.eventdata?view=azure-dotnet) 对象的形式从事件中心读取数据。
+* 将以 [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) 对象的形式从事件中心读取数据。
 * 请参阅[支持的格式](ingestion-supported-formats.md)。
     > [!NOTE]
     > 事件中心不支持 .raw 格式。
@@ -37,7 +36,7 @@ ms.locfileid: "98611540"
   
 ## <a name="ingestion-properties"></a>引入属性
 
-引入属性会指示引入过程、数据路由到的位置以及数据处理方式。 可以使用 [EventData.Properties](https://docs.microsoft.com/dotnetapi/microsoft.servicebus.messaging.eventdata.properties#Microsoft_ServiceBus_Messaging_EventData_Properties) 指定事件引入的[引入属性](ingestion-properties.md)。 可以设置以下属性：
+引入属性会指示引入过程、数据路由到的位置以及数据处理方式。 可以使用 [EventData.Properties](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties#Microsoft_ServiceBus_Messaging_EventData_Properties) 指定事件引入的[引入属性](ingestion-properties.md)。 可以设置以下属性：
 
 |属性 |说明|
 |---|---|
@@ -54,7 +53,7 @@ ms.locfileid: "98611540"
 ## <a name="events-routing"></a>事件路由
 
 设置到 Azure 数据资源管理器群集的事件中心连接时，请指定目标表属性（表名、数据格式、压缩和映射）。 数据的默认路由也称为 `static routing`。
-还可以使用事件属性指定每个事件的目标表属性。 连接将按照 [EventData.Properties](https://docs.microsoft.com/dotnetapi/microsoft.servicebus.messaging.eventdata.properties#Microsoft_ServiceBus_Messaging_EventData_Properties) 中指定的要求动态路由数据，替代此事件的静态属性。
+还可以使用事件属性指定每个事件的目标表属性。 连接将按照 [EventData.Properties](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata.properties#Microsoft_ServiceBus_Messaging_EventData_Properties) 中指定的要求动态路由数据，替代此事件的静态属性。
 
 在以下示例中设置事件中心详细信息，并将天气指标数据发送到 `WeatherMetrics` 表。
 数据采用 `json` 格式。 `mapping1` 在 `WeatherMetrics` 表中预定义。
@@ -124,7 +123,7 @@ eventHubClient.Close();
 
 ## <a name="set-up-geo-disaster-recovery-solution"></a>设置异地灾难恢复解决方案
 
-事件中心提供[异地灾难恢复](/event-hubs/event-hubs-geo-dr)解决方案。 Azure 数据资源管理器不支持 `Alias` 事件中心命名空间。 若要在解决方案中实现异地灾难恢复，请创建两个事件中心数据连接：一个用于主命名空间，另一个用于辅助命名空间。 Azure 数据资源管理器将侦听这两个事件中心连接。
+事件中心提供异地灾难恢复解决方案。 Azure 数据资源管理器不支持 `Alias` 事件中心命名空间。 若要在解决方案中实现异地灾难恢复，请创建两个事件中心数据连接：一个用于主命名空间，另一个用于辅助命名空间。 Azure 数据资源管理器将侦听这两个事件中心连接。
 
 > [!NOTE]
 > 用户负责实现从主命名空间到辅助命名空间的故障转移。

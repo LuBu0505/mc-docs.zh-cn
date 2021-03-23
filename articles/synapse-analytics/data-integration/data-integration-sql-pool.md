@@ -7,15 +7,15 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
 origin.date: 11/03/2020
-ms.date: 03/08/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 16cafc47404090efa29990f4b2ccecd18dffb0ba
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: bfd3003ad063f73a1353bb45365b2058c2ed14bf
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102206966"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766335"
 ---
 # <a name="ingest-data-into-a-dedicated-sql-pool"></a>将数据引入专用 SQL 池中
 
@@ -23,8 +23,8 @@ ms.locfileid: "102206966"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅：如果没有 Azure 订阅，请在开始前创建一个[试用版 Azure 帐户](https://azure.microsoft.com/free/)。
-* Azure 存储帐户：使用 Azure Data Lake Storage Gen 2 作为源数据存储。 如果没有存储帐户，请参阅[创建 Azure 存储帐户](../../storage/common/storage-account-create.md?bc=%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fsynapse-analytics%2ftoc.json)来了解创建步骤。
+* Azure 订阅：如果没有 Azure 订阅，请在开始前创建一个[试用版 Azure 帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+* Azure 存储帐户：使用 Azure Data Lake Storage Gen 2 作为源数据存储。 如果没有存储帐户，请参阅[创建 Azure 存储帐户](../../storage/common/storage-account-create.md)来了解创建步骤。
 * **Azure Synapse Analytics**：使用专用 SQL 池作为接收器数据存储。 如果你没有 Azure Synapse Analytics 实例，请参阅[创建专用 SQL 池](../../azure-sql/database/single-database-create-quickstart.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)，了解创建该实例的步骤。
 
 ## <a name="create-linked-services"></a>创建链接服务

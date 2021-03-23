@@ -15,8 +15,14 @@
       href: quick-create-powershell.md
     - name: 门户
       href: quick-create-portal.md
+    - name: .NET
+      href: quick-create-net.md
+    - name: Node.js
+      href: quick-create-node.md
     - name: Python
       href: quick-create-python.md
+    - name: Java
+      href: quick-create-java.md
 - name: 示例
   items:
     - name: Key Vault 代码示例
@@ -37,6 +43,8 @@
       href: create-certificate.md
     - name: 创建证书签名请求
       href: create-certificate-signing-request.md
+    - name: 证书访问控制
+      href: certificate-access-control.md
 - name: 操作指南
   items:
     - name: 将 Key Vault 与 DigiCert CA 集成

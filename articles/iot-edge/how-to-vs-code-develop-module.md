@@ -4,18 +4,17 @@ description: 使用 Visual Studio Code 开发、生成和调试使用 C#、Pytho
 services: iot-edge
 keywords: ''
 author: kgremban
-ms.author: v-tawe
-origin.date: 08/07/2019
-ms.date: 11/13/2020
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
-ms.openlocfilehash: 432f61bebd6217ad931f40f5350c03cbd4228c07
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 6a3d82b81514e4934d9eb33f9971696e61f8323e
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300376"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766939"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio Code 开发和调试 Azure IoT Edge 模块
 
@@ -169,7 +168,7 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
      - 打开 `Program.cs` 文件并添加断点。
 
-     - 通过选择“视图”>“调试”导航到 Visual Studio Code“调试视图” _。从下拉列表中选择调试配置“&lt;你的模块名称&gt;本地调试(.NET Core)”_ 。
+     - 通过选择“视图”>“调试”以导航到 Visual Studio Code 调试视图  。 从下拉列表中选择调试配置“&lt;你的模块名称&gt; 本地调试(.NET Core)”  。
 
         > [!NOTE]
         > 如果 .NET Core `TargetFramework` 与 `launch.json` 中的程序路径不一致，则需要手动更新 `launch.json` 中的程序路径以匹配 .csproj 文件中的 `TargetFramework`，以便 Visual Studio Code 可以成功启动此程序。
@@ -183,7 +182,7 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
      - 打开 `app.js` 文件并添加断点。
 
-     - 通过选择“视图”>“调试”导航到 Visual Studio Code“调试视图” _。从下拉列表中选择调试配置“&lt;你的模块名称&gt;本地调试(Node.js)”_ 。
+     - 通过选择“视图”>“调试”以导航到 Visual Studio Code 调试视图  。 从下拉列表中选择调试配置“&lt;你的模块名称&gt; 本地调试(Node.js)”  。
    - **Java**
      - 打开 `App.java` 文件并添加断点。
 
@@ -323,13 +322,13 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
   - 确保计算机上要调试的模块正在运行且可供调试程序附加，并且可从外部访问端口 9229。 可以通过在调试程序计算机上打开 `http://<target-machine-IP>:9229/json` 对此进行验证。 此 URL 应显示有关要调试的 Node.js 模块的信息。
   
-  - 在开发计算机上打开 Visual Studio Code，然后编辑 `launch.json` 文件，以便 **_&lt;模块名称&gt;_ Remote Debug (Node.js)** 配置文件（如果模块作为 Windows 容器运行，则为 **_&lt;模块名称&gt;_ Remote Debug (Node.js in Windows Container)** 配置文件）的地址值是所要调试的计算机的 IP。
+  - 在开发计算机上打开 Visual Studio Code，然后编辑 `launch.json` 文件，以便 ***&lt;模块名称&gt;* Remote Debug (Node.js)** 配置文件（如果模块作为 Windows 容器运行，则为 **_&lt;模块名称&gt;_ Remote Debug (Node.js in Windows Container)** 配置文件）的地址值是所要调试的计算机的 IP。
 
 - **Java**
 
   - 运行 `ssh -f <username>@<target-machine> -L 5005:127.0.0.1:5005 -N`，与要调试的计算机建立 SSH 隧道。
   
-  - 在开发计算机上打开 Visual Studio Code，然后编辑 `launch.json` 中的 **_&lt;模块名称&gt;_ Remote Debug (Java)** 配置文件，以便可以附加到目标计算机。 若要详细了解如何编辑 `launch.json` 以及使用 Visual Studio Code 调试 Java，请参阅有关[配置调试程序](https://code.visualstudio.com/docs/java/java-debugging#_configuration)的部分。
+  - 在开发计算机上打开 Visual Studio Code，然后编辑 `launch.json` 中的 ***&lt;模块名称&gt;* Remote Debug (Java)** 配置文件，以便可以附加到目标计算机。 若要详细了解如何编辑 `launch.json` 以及使用 Visual Studio Code 调试 Java，请参阅有关[配置调试程序](https://code.visualstudio.com/docs/java/java-debugging#_configuration)的部分。
 
 - **Python**
 
@@ -337,7 +336,7 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
   - 在前面已插入到 `main.py` 的代码 `ptvsd.enable_attach(('0.0.0.0', 5678))` 中，将 **0.0.0.0** 更改为要调试的计算机的 IP 地址。 再次生成、推送并部署 IoT Edge 模块。
 
-  - 在开发计算机上打开 Visual Studio Code，然后编辑 `launch.json`，使 **_&lt;模块名称&gt;_ Remote Debug (Python)** 配置文件的 `host` 值使用目标计算机的 IP 地址而不是 `localhost`。
+  - 在开发计算机上打开 Visual Studio Code，然后编辑 `launch.json`，使 ***&lt;模块名称&gt;* Remote Debug (Python)** 配置文件的 `host` 值使用目标计算机的 IP 地址而不是 `localhost`。
 
 ### <a name="debug-your-module"></a>调试模块
 

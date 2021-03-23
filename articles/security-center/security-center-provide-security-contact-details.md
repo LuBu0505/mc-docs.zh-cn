@@ -1,25 +1,19 @@
 ---
 title: 针对 Azure 安全中心警报配置电子邮件通知
 description: 了解如何针对安全警报微调 Azure 安全中心发送的电子邮件类型。
-services: security-center
-documentationcenter: na
 author: Johnnytechn
 manager: rkarlin
-ms.assetid: 26b5dcb4-ce3f-4f22-8d56-d2bf743cfc90
 ms.service: security-center
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/25/2021
+ms.date: 03/18/2021
 ms.author: v-johya
 origin.date: 05/09/2020
-ms.openlocfilehash: 6d2269705ca4f163754d1d12acc82b4ef7d59a6d
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 7496d642f98064d7081fb0cc305578f21fc32f01
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197423"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767039"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>针对安全警报配置电子邮件通知 
 

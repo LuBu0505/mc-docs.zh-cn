@@ -5,21 +5,21 @@ description: 人脸 API 提供了客户端库，使用该库可轻松地执行�
 services: cognitive-services
 author: Johnnytechn
 manager: nitinme
-zone_pivot_groups: programming-languages-set-eighteen
+zone_pivot_groups: programming-languages-set-face
 origin.date: 04/24/2020
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 10/27/2020
+ms.date: 03/08/2021
 ms.author: v-johya
 ms.custom: devx-track-python, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: 按图像人脸搜索, 人脸识别搜索, 人脸识别, 人脸识别应用
-ms.openlocfilehash: 89445b4818ac9bb30272a87665ee25f499039a49
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 61424f71dbefe0da36fd7133da9b74c850d0004f
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105457"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766402"
 ---
 # <a name="quickstart-use-the-face-client-library"></a>快速入门：使用人脸客户端库
 
@@ -29,15 +29,28 @@ ms.locfileid: "93105457"
 
 ::: zone-end
 
+::: zone pivot="programming-language-go"
+
+[!INCLUDE [Go quickstart](../includes/quickstarts/go-sdk.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-javascript"
+
+[!INCLUDE [JavaScript quickstart](../includes/quickstarts/javascript-sdk.md)]
+
+::: zone-end
+
 ::: zone pivot="programming-language-python"
 
 [!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
 
 ::: zone-end
 
-::: zone pivot="programming-language-go"
+::: zone pivot="programming-language-rest-api"
 
-[!INCLUDE [Go quickstart](../includes/quickstarts/go-sdk.md)]
+[!INCLUDE [cURL quickstart](../includes/quickstarts/rest-api.md)]
 
 ::: zone-end
+
 

@@ -5,7 +5,7 @@ services: container-service
 ms.topic: quickstart
 origin.date: 01/12/2021
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
@@ -18,12 +18,12 @@ ms.custom:
 - seo-python-october2019
 - devx-track-azurecli
 - contperf-fy21q1
-ms.openlocfilehash: 99327cd1e0e4db3ecd99df52be498716d9edc3cd
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 6948726477a0d1b2bcd6fc50ad70ae1ffcb6e651
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063686"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766422"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>快速入门：使用 Azure CLI 部署 Azure Kubernetes 服务群集
 
@@ -308,14 +308,14 @@ az group delete --name myResourceGroup --yes --no-wait
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [aks-monitor]: ../azure-monitor/insights/container-insights-onboard.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
-[az-aks-browse]: https://docs.azure.cn/cli/aks?view=azure-cli-latest&preserve-view=true#az_aks_browse
-[az-aks-create]: https://docs.azure.cn/cli/aks?view=azure-cli-latest&preserve-view=true#az_aks_create
-[az-aks-get-credentials]: https://docs.azure.cn/cli/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_credentials
-[az-aks-install-cli]: https://docs.azure.cn/cli/aks?view=azure-cli-latest&preserve-view=true#az_aks_install_cli
+[az-aks-browse]: https://docs.azure.cn/cli/aks#az_aks_browse
+[az-aks-create]: https://docs.azure.cn/cli/aks#az_aks_create
+[az-aks-get-credentials]: https://docs.azure.cn/cli/aks#az_aks_get_credentials
+[az-aks-install-cli]: https://docs.azure.cn/cli/aks#az_aks_install_cli
 [az-group-create]: https://docs.azure.cn/cli/group#az_group_create
 [az-group-delete]: https://docs.azure.cn/cli/group#az_group_delete
-[azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli
-[azure-monitor-containers]: ../azure-monitor/insights/container-insights-overview.md
+[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli
+[azure-monitor-containers]: ../azure-monitor/containers/container-insights-overview.md
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
 [azure-portal]: https://portal.azure.cn
 [kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests

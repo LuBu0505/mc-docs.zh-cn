@@ -8,15 +8,15 @@ metadata:
   ms.service: iot-edge
   ms.topic: landing-page
   author: kgremban
-  ms.author: v-tawe
+  ms.author: v-chazhou
   manager: philmea
-  ms.date: 02/02/2021
-  ms.openlocfilehash: 96e10e40502d4981986b16e43d155fd118a076ae
-  ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+  ms.date: 03/16/2021
+  ms.openlocfilehash: ccf08f35f7d301a367068511507e7423be4cd3c7
+  ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/05/2021
-  ms.locfileid: "99579377"
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104766936"
 landingContent:
 - title: 针对 Linux 设备进行开发
   linkLists:

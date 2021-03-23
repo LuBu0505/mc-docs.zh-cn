@@ -3,14 +3,14 @@ author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 03/27/2020
-ms.date: 04/20/2020
-ms.author: v-tawe
-ms.openlocfilehash: 3087738c6ac42c81d15c03841fc48920d210b0bf
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.date: 03/08/2021
+ms.author: v-johya
+ms.openlocfilehash: d5a84e7d1f45ed48a373f000004a5a34691fdb62
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126951"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803360"
 ---
 :::row:::
     :::column span="3":::
@@ -32,7 +32,7 @@ ms.locfileid: "82126951"
 
 :::row:::
     :::column span="3":::
-        Xamarin.Android 向 .NET 开发人员公开了完整的 Android SDK。 使用 C# 或 F# 在 Visual Studio 中生成完全本机的 Android 应用。 有关详细信息，请参阅 <a href="https://docs.microsoft.com/xamarin/android/" target="_blank">Xamarin.Android <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+        Xamarin.Android 向 .NET 开发人员公开了完整的 Android SDK。 使用 C# 或 F# 在 Visual Studio 中生成完全本机的 Android 应用。 有关详细信息，请参阅 <a href="https://docs.microsoft.com/xamarin/android/" target="_blank">Xamarin.Android </a>
     :::column-end:::
     :::column:::
         <br>
@@ -46,3 +46,4 @@ ms.locfileid: "82126951"
 [!INCLUDE [get-speech-sdk-dotnet](get-speech-sdk-dotnet.md)]
 
 ---
+

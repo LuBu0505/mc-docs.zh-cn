@@ -4,18 +4,17 @@ description: 如何使用部署清单中的 createOptions 在运行时配置模�
 keywords: ''
 author: kgremban
 manager: philmea
-ms.author: v-tawe
-origin.date: 04/01/2020
-ms.date: 04/20/2020
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bda8d7f552f071aa87000507a97910846eae8139
-ms.sourcegitcommit: 89ca2993f5978cd6dd67195db7c4bdd51a677371
+ms.openlocfilehash: 732845afbcace0f5b5aae860e2e236023d68f775
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82588850"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766942"
 ---
 # <a name="how-to-configure-container-create-options-for-iot-edge-modules"></a>如何配置 IoT Edge 模块的容器创建选项
 
@@ -61,7 +60,7 @@ IoT Edge 部署清单接受 JSON 格式的创建选项。 以每个 edgeHub 模�
 
 编写创建选项时，一个技巧是使用 `docker inspect` 命令。 在开发过程中，使用 `docker run <container name>` 在本地运行模块。 在模块按预期方式运行后，运行 `docker inspect <container name>`。 此命令以 JSON 格式输出模块详细信息。 找到配置的参数，并复制 JSON。 例如：
 
-[ ![在 Docker 中检查 edgeHub 后的结果](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png) ](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
+[![在 Docker 中检查 edgeHub 后的结果](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png)](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
 
 ## <a name="common-scenarios"></a>常见方案
 
@@ -132,5 +131,5 @@ IoT Edge 部署清单接受 JSON 格式的创建选项。 以每个 edgeHub 模�
 
 有关创建选项的运作方式的更多示例，请参阅以下 IoT Edge 示例：
 
-* [Raspberry Pi 3 上的自定义视觉和 Azure IoT Edge](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi)
+* [Raspberry Pi 3 上的自定义视觉和 Azure IoT Edge](https://github.com/Azure-Samples/custom-vision-service-iot-edge-raspberry-pi)
 * [Azure IoT Edge Blob 存储示例](https://github.com/Azure-Samples/azure-iotedge-blobstorage-sample)

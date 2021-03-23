@@ -4,16 +4,16 @@ description: 访问位于虚拟网络中或防火墙后面的 Azure 容器注册
 ms.topic: article
 origin.date: 10/01/2020
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: 09/14/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6f7946095fb02b1e706062be9c550abae34db3c2
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: af4392eeb78bd966ddeb0ea19f39c55d4c061d38
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055147"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767067"
 ---
 <!--Verified Successfully-->
 # <a name="troubleshoot-network-issues-with-registry"></a>排查与注册表相关的网络问题
@@ -87,7 +87,7 @@ ContainerRegistryLoginEvents 表中的注册表资源日志可能有助于诊断
 * [配置公共 IP 网络规则](container-registry-access-selected-networks.md)
 * [使用 Azure 专用链接以私密方式连接到 Azure 容器注册表](container-registry-private-link.md)
 
-    <!--NOT AVAILABLE ON * [Restrict access to a container registry using a service endpoint in an Azure virtual network](container-registry-vnet.md)-->
+<!--NOT AVAILABLE ON [Restrict access to a container registry using a service endpoint in an Azure virtual network](container-registry-vnet.md)-->
 
 ### <a name="configure-vnet-access"></a>配置 VNet 访问权限
 
@@ -107,7 +107,8 @@ ContainerRegistryLoginEvents 表中的注册表资源日志可能有助于诊断
 
 * [使用 Azure 专用链接以私密方式连接到 Azure 容器注册表](container-registry-private-link.md)
 
-    <!--NOT AVAILABLE ON * [Restrict access to a container registry using a service endpoint in an Azure virtual network](container-registry-vnet.md)-->
+<!--NOT AVAILABLE ON [Restrict access to a container registry using a service endpoint in an Azure virtual network](container-registry-vnet.md)-->
+
 
 * [AKS 群集所需的出站网络规则和 FQDN](../aks/limit-egress-traffic.md#required-outbound-network-rules-and-fqdns-for-aks-clusters)
 * [Kubernetes：调试 DNS 解析](https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/)
@@ -122,12 +123,13 @@ ContainerRegistryLoginEvents 表中的注册表资源日志可能有助于诊断
 
 如果需要使用容器注册表访问或集成这些 Azure 服务，请去除网络限制。 例如，删除注册表的专用终结点，或者删除或修改注册表的公共访问规则。
 
-从 2021 年 1 月开始，可以将受网络限制的注册表配置为[允许从所选的受信任服务访问](allow-access-trusted-services.md)。
+<!--NOT AVAILABLE ON [allow access](allow-access-trusted-services.md)-->
 相关链接：
 
 * [通过安全中心扫描 Azure 容器注册表映像](../security-center/defender-for-container-registries-introduction.md)
 * 提供[反馈](https://support.azure.cn/support/contact/)
-* [允许受信任的服务安全访问受网络限制的容器注册表](allow-access-trusted-services.md)
+
+<!--NOT AVAILABLE ON [allow access](allow-access-trusted-services.md)-->
 
 ## <a name="advanced-troubleshooting"></a>高级故障排除
 

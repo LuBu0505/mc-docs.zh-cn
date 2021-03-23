@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: d1ea80004ab908d052af47ee6147fabde9c81df6
-ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
+ms.openlocfilehash: 87fd1199d4bb4d1439bb6c0af1c9efbdd84b9d23
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196251"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767029"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Azure Blob 存储中的更改源支持
 
@@ -269,7 +269,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 - `eventType` 值为 `Control` 的更改事件记录是内部系统记录，不反映对帐户中的对象所做的更改。 可以放心地忽略这些记录。
 
-- `storageDiagnonstics` 属性包中的值仅供内部使用，按设计不供应用程序使用。 应用程序不应该对该数据存在协定性依赖关系。 可以放心地忽略这些属性。
+- `storageDiagnostics` 属性包中的值仅供内部使用，按设计不供应用程序使用。 应用程序不应该对该数据存在协定性依赖关系。 可以放心地忽略这些属性。
 
 - 段所代表的时间是近似时间，其时长为 15 分钟。 因此，为了确保能够使用指定时间内的所有记录，请使用连续的前一小时和后一小时段。
 

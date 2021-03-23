@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 01/27/2021
-ms.author: v-tawe
-ms.openlocfilehash: 0dfc4fea5411c58de41c5e7fb3c51286ccaf8930
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: 7d234430ffc3fc3a9a76be0a22c77d62009f217f
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99058953"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766561"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>如何使用资源管理器模板创建 Azure 密钥保管库和保管库访问策略
 
@@ -168,7 +168,7 @@ ms.locfileid: "99058953"
 
 | 机密 | 键 | 证书 |
 |--|--|--|
-|<ul><li>[快速入门](../secrets/quick-create-template.md)<li>[引用](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/secrets)|不可用|不可用|
+|<ul><li>[快速入门](../secrets/quick-create-template.md)<li>[引用](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/secrets)|空值|空值|
 
 可在以下文章中找到更多 Key Vault 模板：[Key Vault 资源管理器参考](https://docs.microsoft.com/azure/templates/microsoft.keyvault/allversions)。
 

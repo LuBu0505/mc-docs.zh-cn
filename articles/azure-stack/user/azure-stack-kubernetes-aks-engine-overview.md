@@ -3,17 +3,17 @@ title: Azure Stack Hub 上的 AKS 引擎是什么？
 description: 了解如何使用 AKS 引擎命令行工具部署和管理 Azure 和 Azure Stack Hub 上的 Kubernetes 群集。
 author: WenJason
 ms.topic: article
-origin.date: 3/19/2020
-ms.date: 06/22/2020
+origin.date: 2/1/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: waltero
-ms.lastreviewed: 3/19/2020
-ms.openlocfilehash: 8e01bbe4919b0b82b23adeae904f0880b8d8d08c
-ms.sourcegitcommit: d86e169edf5affd28a1c1a4476d72b01a7fb421d
+ms.lastreviewed: 09/02/2020
+ms.openlocfilehash: 93366967f4b6bd55e29a5640a1c561fff4c6c0ce
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85096971"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767076"
 ---
 # <a name="what-is-the-aks-engine-on-azure-stack-hub"></a>Azure Stack Hub 上的 AKS 引擎是什么？
 
@@ -28,14 +28,6 @@ ms.locfileid: "85096971"
 在使用 Azure Stack Hub 上的 AKS 引擎之前，必须了解 Azure Stack Hub 与 Azure 之间的差异。 本部分介绍将 Azure Stack Hub 与 AKS 引擎配合使用来管理 Kubernetes 群集时的不同功能和关键注意事项。
 
 若要详细了解 Azure Stack Hub 上的 AKS 引擎的具体内容及其与 Azure 的区别，请参阅 [Azure Stack Hub 上的 AKS 引擎](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md)。
-
-## <a name="supported-scenarios-with-the-aks-engine"></a>AKS 引擎支持的方案
-
-Azure Stack Hub 支持团队为以下方案提供支持：
-
-1.  AKS 引擎根据本文档中的准则使用[此模板](https://github.com/Azure/aks-engine/tree/master/examples/azure-stack)部署所有群集项目。
-2.  AKS 引擎在现有 VNET 上部署群集。 有关详细信息，请参阅 [Using a custom virtual network with AKS engine](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/custom-vnet.md)（通过 AKS 引擎使用自定义虚拟网络）。
-3.  [升级](azure-stack-kubernetes-aks-engine-upgrade.md)和[缩放](azure-stack-kubernetes-aks-engine-scale.md)操作。
 
 若要详细了解 AKS 引擎和 Azure Stack Hub，请参阅 [Azure Stack Hub 上 AKS 引擎的支持策略](azure-stack-kubernetes-aks-engine-support.md)。
 

@@ -7,15 +7,14 @@ metadata:
   ms.service: data-explorer
   ms.topic: landing-page
   author: orspod
-  ms.author: v-tawe
-  origin.date: 03/19/2020
-  ms.date: 07/08/2020
-  ms.openlocfilehash: 927f6f696305d572ddbcd8de88638465a7ffb488
-  ms.sourcegitcommit: f4bd97855236f11020f968cfd5fbb0a4e84f9576
+  ms.author: v-junlch
+  ms.date: 03/18/2021
+  ms.openlocfilehash: 3b0f9d571d7000ce9313b23dadf520ffba9df5ff
+  ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/18/2020
-  ms.locfileid: "88515665"
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104766916"
 landingContent:
 - title: 关于 Azure 数据资源管理器
   linkLists:
@@ -23,6 +22,12 @@ landingContent:
     links:
     - text: 什么是 Azure 数据资源管理器？
       url: data-explorer-overview.md
+- title: 培训
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 免费 Pluralsight 培训：Azure 数据资源管理器
+      url: https://www.pluralsight.com/partners/microsoft/azure-data-explorer
 - title: 创建群集和数据库
   linkLists:
   - linkListType: quickstart
@@ -53,6 +58,8 @@ landingContent:
       url: ingest-sample-data.md
   - linkListType: how-to-guide
     links:
+    - text: 一键式引入
+      url: ingest-data-one-click.md
     - text: 流式引入
       url: ingest-data-streaming.md
     - text: Python
@@ -84,7 +91,7 @@ landingContent:
     - text: KQL 快速参考
       url: kql-quick-reference.md
     - text: Kusto 查询语言
-      url: https://docs.microsoft.com/azure/data-explorer/kusto/query/index
+      url: kusto/query/index.md
 - title: 可视化数据
   linkLists:
   - linkListType: concept
@@ -99,6 +106,8 @@ landingContent:
       url: connect-odbc.md
     - text: Tableau
       url: tableau.md
+    - text: Kibana（K2Bridge 连接器）
+      url: k2bridge.md
     - text: Redash
       url: redash.md
     - text: Sisense
@@ -132,6 +141,6 @@ landingContent:
   - linkListType: reference
     links:
     - text: 管理命令
-      url: https://docs.microsoft.com/azure/data-explorer/kusto/management/index
+      url: kusto/management/index.md
     - text: Azure 数据资源管理器 API
-      url: https://docs.microsoft.com/azure/data-explorer/kusto/api/index
+      url: kusto/api/index.md

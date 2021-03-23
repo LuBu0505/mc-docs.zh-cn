@@ -4,18 +4,17 @@ description: 本教程介绍如何使用 SQL Server 模块将数据存储到本�
 services: iot-edge
 author: kgremban
 manager: philmea
-ms.author: v-tawe
-origin.date: 08/04/2020
-ms.date: 11/13/2020
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 596387f80ffdc1abacf9ff5ef0a7a070a56ffdcc
-ms.sourcegitcommit: 9438c9db77338cecacf37d2fc178e757df9de83d
+ms.openlocfilehash: 250282a9e8fe1184395dd3580703bfa1930a179b
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94595125"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765311"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>教程：使用 SQL Server 数据库存储边缘中的数据
 
@@ -34,7 +33,7 @@ ms.locfileid: "94595125"
 > * 使用 Visual Studio Code 生成模块并将其部署到 IoT Edge 设备
 > * 查看生成的数据
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -66,11 +65,11 @@ ms.locfileid: "94595125"
 
 3. 在命令面板中，键入并运行 **Azure IoT Edge:New IoT Edge solution** 命令。 在命令面板中提供以下信息，以便创建解决方案：
 
-   | 字段 | Value |
+   | 字段 | 值 |
    | ----- | ----- |
    | 选择文件夹 | 在适用于 VS Code 的开发计算机上选择用于创建解决方案文件的位置。 |
    | 提供解决方案名称 | 输入解决方案的描述性名称（例如 **SqlSolution**），或者接受默认名称。 |
-   | 选择模块模板 | 选择“Azure Functions - C#”。 |
+   | 选择模块模板 | 选择“Azure Functions - C#”。  |
    | 提供模块名称 | 将模块命名为 **sqlFunction**。 |
    | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是在上一步预先填充的。 将 localhost:5000 替换为 Azure 容器注册表中的“登录服务器”值 。 可以在 Azure 门户的容器注册表的“概述”页中检索登录服务器。 <br><br>最终字符串类似于 \<registry name\> azurecr.cn/sqlfunction。 |
 

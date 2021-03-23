@@ -3,18 +3,17 @@ title: 合并策略管理 - Azure 数据资源管理器 | Microsoft Docs
 description: 本文介绍 Azure 数据资源管理器中的合并策略管理。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 02/13/2020
-ms.date: 01/22/2021
-ms.openlocfilehash: 388dba19e9d827da526ff3ec911b016c019aeb36
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 03/18/2021
+ms.openlocfilehash: 48b0cf6773db025ed7d326cb6715e17ca6bcc7f5
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611311"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766616"
 ---
 # <a name="merge-policy-command"></a>合并策略命令
 
@@ -76,9 +75,10 @@ ms.locfileid: "98611311"
 '  "Lookback": {'
 '    "Kind": "Default"'
 '  }'
-'}'```
+'}'
+```
 
-#### 3. Setting the *default* merge policy at database level:
+#### <a name="3-setting-the-default-merge-policy-at-database-level"></a>3.在数据库级别设置默认合并策略：
 
 ```kusto
 .alter database [database_name] policy merge '{}'

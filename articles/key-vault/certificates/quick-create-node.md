@@ -2,19 +2,18 @@
 title: 快速入门 - 适用于 JavaScript 的 Azure Key Vault 证书客户端库（版本 4）
 description: 了解如何使用 JavaScript 客户端库在 Azure 密钥保管库中创建、检索和删除证书
 author: msmbaldwin
-origin.date: 12/6/2020
-ms.date: 01/21/2021
-ms.author: v-tawe
+ms.author: v-chazhou
+ms.date: 03/10/2021
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: ef3dba4c9b127b846488631c9ead9c24e207043f
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 9172a528028f9d203928b38e56daf1a03da31fdb
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99061041"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765597"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-javascript-version-4"></a>快速入门：适用于 JavaScript 的 Azure Key Vault 证书客户端库（版本 4）
 
@@ -41,11 +40,9 @@ Key Vault 客户端库资源：
 
 1. 运行 `login` 命令。
 
-   ```azurecli
-   az cloud set -n AzureChinaCloud
-   az login
-   ```
-
+    ```azurecli
+    az login
+    ```
 
     如果 CLI 可以打开默认浏览器，它将这样做并加载 Azure 登录页。
 

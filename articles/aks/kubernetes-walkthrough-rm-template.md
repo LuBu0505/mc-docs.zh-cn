@@ -5,17 +5,17 @@ services: container-service
 ms.topic: quickstart
 origin.date: 01/13/2021
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc,subject-armqs, devx-track-azurecli
-ms.openlocfilehash: ddd63c62dca5f2b1e804c4f127dd56de07a4f379
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: a0d223802b403072ffa8181607725d7f4e32964f
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063566"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766427"
 ---
 <!--Verify successfully-->
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-arm-template"></a>快速入门：使用 ARM 模板部署 Azure Kubernetes 服务 (AKS) 群集
@@ -46,7 +46,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 若要访问 AKS 节点，请使用 SSH 密钥对进行连接。 使用 `ssh-keygen` 命令生成 SSH 公钥和私钥文件。 默认情况下，这些文件在 *~/.ssh* 目录中创建。 如果给定位置存在具有相同名称的 SSH 密钥对，则这些文件将被覆盖。
 
-<!--Not Available on [https://shell.azure.com](https://shell.azure.com)-->
+<!--NOT AVAILABLE ON [https://shell.azure.com](https://shell.azure.com)-->
 
 以下命令使用 RSA 加密和位长度 2048 创建 SSH 密钥对：
 
@@ -233,7 +233,7 @@ az ad sp create-for-rbac --skip-assignment
 
 若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。 若要在本地安装 `kubectl`，请使用 [az aks install-cli][az-aks-install-cli] 命令：
 
-<!--Not Available on If you use Azure Cloud Shell, `kubectl` is already installed. -->
+<!--NOT AVAILABLE ON If you use Azure Cloud Shell, `kubectl` is already installed. -->
 
 ```azurecli
 az aks install-cli
@@ -266,7 +266,7 @@ Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容
 
 创建名为 `azure-vote.yaml` 的文件，并将其复制到以下 YAML 定义中。
 
-<!--Not Available on  If you use the Azure Cloud Shell, this file can be created using `vi` or `nano` as if working on a virtual or physical system:-->
+<!--NOT AVAILABLE ON  If you use the Azure Cloud Shell, this file can be created using `vi` or `nano` as if working on a virtual or physical system:-->
 
 ```yaml
 apiVersion: apps/v1
@@ -431,7 +431,7 @@ az group delete --name myResourceGroup --yes --no-wait
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
-<!--Not Available on [azure-dev-spaces]: ../dev-spaces/index.yml-->
+<!--NOT AVAILABLE ON [azure-dev-spaces]: ../dev-spaces/index.yml-->
 
 [aks-quickstart-templates]: https://github.com/Azure/azure-quickstart-templates/?term=Azure+Kubernetes+Service
 
@@ -446,7 +446,7 @@ az group delete --name myResourceGroup --yes --no-wait
 [az-aks-install-cli]: https://docs.azure.cn/cli/aks#az_aks_install_cli
 [az-group-create]: https://docs.azure.cn/cli/group#az_group_create
 [az-group-delete]: https://docs.azure.cn/cli/group#az_group_delete
-[azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli
+[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
 [azure-portal]: https://portal.azure.cn
 [kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests

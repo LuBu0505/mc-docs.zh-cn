@@ -3,18 +3,18 @@ title: 从 Azure CLI 命令行部署模块 - Azure IoT Edge
 description: 将 Azure CLI 与 Azure IoT 扩展结合使用，以将 IoT Edge 模块从 IoT 中心推送到 IoT Edge 设备（按照部署清单的配置）。
 author: kgremban
 manager: philmea
-ms.author: v-tawe
-ms.date: 03/01/2021
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 03374ba04318b8f2650bbac70d062c331a9c6c4f
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.openlocfilehash: 56b8932d2df6863843e210fada901f6cb9004b81
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196696"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766381"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>使用 Azure CLI 部署 Azure IoT Edge 模块
 

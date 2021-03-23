@@ -66,7 +66,7 @@
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: 'https://aka.ms/csspeech/javaref'
-        - name: JavaScript
+        - name: Javascript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
           href: 'https://aka.ms/csspeech/javascriptref'
         - name: Objective-C
@@ -130,7 +130,7 @@
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: 'https://aka.ms/csspeech/javaref'
-        - name: JavaScript
+        - name: Javascript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
           href: 'https://aka.ms/csspeech/javascriptref'
         - name: Objective-C
@@ -180,7 +180,7 @@
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: 'https://aka.ms/csspeech/javaref'
-        - name: JavaScript
+        - name: Javascript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
           href: 'https://aka.ms/csspeech/javascriptref'
         - name: Objective-C
@@ -225,7 +225,7 @@
             - name: Java
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javaref'
-            - name: JavaScript
+            - name: Javascript
               displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javascriptref'
             - name: Objective-C
@@ -247,6 +247,52 @@
           href: ../luis/luis-language-support.md
         - name: 区域支持
           href: regions.md#intent-recognition
+- name: 场景深入介绍
+  items:
+    - name: 语音助手
+      items:
+        - name: 语音助手文档
+          href: index-voice-assistants.yml
+        - name: 语音助手概述
+          href: voice-assistants.md
+        - name: 自定义命令
+          items:
+            - name: 什么是自定义命令？
+              href: custom-commands.md
+            - name: 快速入门
+              items:
+                - name: 创建自定义命令应用
+                  href: quickstart-custom-commands-application.md
+            - name: 操作指南
+              items:
+                - name: 开发和自定义自定义命令应用
+                  href: how-to-develop-custom-commands-application.md
+                - name: 与客户端应用程序集成
+                  items:
+                    - name: 使用语音 SDK 与客户端应用集成
+                      href: how-to-custom-commands-setup-speech-sdk.md
+                    - name: 向客户端应用程序发送活动
+                      href: how-to-custom-commands-send-activity-to-client.md
+                    - name: 设置 Web 终结点
+                      href: how-to-custom-commands-setup-web-endpoints.md
+                    - name: 从客户端应用更新命令
+                      href: how-to-custom-commands-update-command-from-client.md
+                    - name: 从 web 终结点更新命令
+                      href: how-to-custom-commands-update-command-from-web-endpoint.md
+                - name: 测试自定义命令应用程序
+                  href: how-to-custom-commands-developer-flow-test.md
+                - name: 调试创作应用时出现的错误
+                  href: how-to-custom-commands-debug-build-time.md
+                - name: 调试运行应用时出现的错误
+                  href: how-to-custom-commands-debug-runtime.md
+            - name: 资源
+              items:
+                - name: 自定义命令概念
+                  href: custom-commands-references.md
+                - name: 自定义命令示例 (GitHub)
+                  href: 'https://aka.ms/speech/cc-samples'
+                - name: 语音助手示例 (GitHub)
+                  href: 'http://aka.ms/speech/va-samples'
 - name: 工具
   items:
     - name: 语音 SDK
@@ -265,7 +311,7 @@
               href: 'https://aka.ms/csspeech/csharpref'
             - name: Java
               href: 'https://aka.ms/csspeech/javaref'
-            - name: JavaScript
+            - name: Javascript
               href: 'https://aka.ms/csspeech/javascriptref'
             - name: Objective-C
               href: 'https://aka.ms/csspeech/objectivecref'
@@ -286,6 +332,8 @@
       items:
         - name: Speech Studio 概述
           href: 'https://speech.azure.cn'
+        - name: 使用 Speech Studio 创建自定义命令应用
+          href: ./quickstart-custom-commands-application.md
 - name: 部署
   items:
     - name: 启用日志记录

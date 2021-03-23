@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 11/09/2020
+ms.date: 03/16/2021
 ms.custom: project-no-code
 ms.author: v-junlch
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa6645c76eee1dc712997642124d519644dd7a0c
-ms.sourcegitcommit: 59810f8eba5e430d85a595e346d3b7fb6e4a0102
+ms.openlocfilehash: 5041346c99e6e8bbbd663d19a5f491ed6597159e
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94501909"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765449"
 ---
 # <a name="what-are-external-identities-in-azure-active-directory"></a>Azure Active Directory 中的外部标识是什么？
 
@@ -27,7 +27,7 @@ ms.locfileid: "94501909"
 
 Azure AD 外部标识在用户与组织的关系上关注较少，而更多地关注用户想要如何登录到应用和资源。 在此框架中，Azure AD 支持各种场景，从企业对企业 (B2B) 协作到面向消费者/客户或公民的应用程序（企业对客户或 B2C）的访问管理。
 
-- 与外部用户共享应用和资源（B2B 协作）。 邀请外部用户加入你自己的租户，作为可向其分配权限（用于授权）的“来宾”用户，同时允许他们使用现有凭据（用于身份验证）。 用户使用其工作帐户、学校帐户或其他电子邮件帐户通过简单的邀请和兑换过程登录到共享资源。 可以自定义体验，以允许使用工作、学校或社交标识进行注册。 你还可以在注册过程中收集有关用户的信息。 有关详细信息，请参阅 [Azure AD B2B 文档](index.yml)。
+- 与外部用户共享应用和资源（B2B 协作）。 邀请外部用户加入你自己的租户，作为可向其分配权限（用于授权）的“来宾”用户，同时允许他们使用现有凭据（用于身份验证）。 用户使用其工作帐户、学校帐户或其他电子邮件帐户通过简单的邀请和兑换过程登录到共享资源。 还可以使用 [Azure AD 权利管理](../governance/entitlement-management-overview.md)配置[管理外部用户访问权限](../governance/entitlement-management-external-users.md#how-access-works-for-external-users)的策略。 可以自定义体验，以允许使用工作、学校或社交标识进行注册。 你还可以在注册过程中收集有关用户的信息。 有关详细信息，请参阅 [Azure AD B2B 文档](index.yml)。
 
 - 使用面向消费者和客户的应用 (Azure AD B2C) 的白标标识管理解决方案来构建用户旅程。 如果你是一个创建面向客户的应用的企业或开发人员，则可以使用 Azure AD B2C 扩展到数百万消费者、客户或公民。 开发人员可以将 Azure AD 用作其应用程序的全功能客户标识和访问管理 (CIAM) 系统。 客户可以使用已建立的标识登录。 借助 Azure AD B2C，可以在使用你的应用程序时，完全自定义和控制客户的注册和登录方式以及管理其个人资料。 有关详细信息，请参阅 [Azure AD B2C 文档](../../active-directory-b2c/index.yml)。
 
@@ -57,4 +57,3 @@ Azure AD 外部标识在用户与组织的关系上关注较少，而更多地�
 
 - [什么是 Azure AD B2B 协作？](what-is-b2b.md)
 - [关于 Azure AD B2C](../../active-directory-b2c/overview.md)
-

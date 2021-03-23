@@ -5,17 +5,16 @@ ms.topic: tutorial
 ms.service: key-vault
 ms.subservice: secrets
 author: msmbaldwin
-ms.author: v-tawe
+ms.author: v-chazhou
 manager: rkarlin
-origin.date: 09/10/2019
-ms.date: 11/27/2020
+ms.date: 03/10/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3e487fe9057fd9299f24ab7ed9d30b2cecd1531e
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: f2ccbfe0a1486385ad49dad28db39dc1d9b18a58
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96299999"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765289"
 ---
 # <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>创建 SAS 定义，并通过编写代码提取共享访问签名令牌
 
@@ -31,50 +30,50 @@ ms.locfileid: "96299999"
 在以下示例中，将创建 SAS 模板：
 
 ```csharp
-private static string BuildSasDefinitionTemplate(bool readOnly) =>
-    new StringBuilder("sv=2018-03-28")  // service version
-        .Append("&spr=https")           // HTTPS only
-        .Append("&ss=bf")               // blobs and files only
-        .Append("&srt=o")               // applies to objects only
-        .Append(readOnly ? "&sp=r" : "&sp=rw")  // read-only or read-write
-        .ToString();
+    private static string BuildSasDefinitionTemplate(bool readOnly) =>
+        new StringBuilder("sv=2018-03-28")  // service version
+            .Append("&spr=https")           // HTTPS only
+            .Append("&ss=bf")               // blobs and files only
+            .Append("&srt=o")               // applies to objects only
+            .Append(readOnly ? "&sp=r" : "&sp=rw")  // read-only or read-write
+            .ToString();
 ```
 
 使用此模板，可以通过使用...创建 SAS 定义 
 
 ```csharp
-string sasDefinitionName = BuildSasDefinitionName(Tag, readOnly, duration);
-SasDefinitionAttributes sasDefinitionAttributes = new SasDefinitionAttributes
-{
-    Enabled = true,
-};
+        string sasDefinitionName = BuildSasDefinitionName(Tag, readOnly, duration);
+        SasDefinitionAttributes sasDefinitionAttributes = new SasDefinitionAttributes
+        {
+            Enabled = true,
+        };
 
-Dictionary<string, string> tags = new Dictionary<string, string>
-{
-    [Tag] = "1",
-};
+        Dictionary<string, string> tags = new Dictionary<string, string>
+        {
+            [Tag] = "1",
+        };
 
-SasDefinitionBundle createdSasDefinition = await storageClient.SetSasDefinitionAsync(
-    storageAccountName,
-    sasDefinitionName,
-    sasTemplate,
-    SasTokenType.Account,
-    duration,
-    sasDefinitionAttributes,
-    tags,
-    s_cancellationTokenSource.Token);
+        SasDefinitionBundle createdSasDefinition = await storageClient.SetSasDefinitionAsync(
+            storageAccountName,
+            sasDefinitionName,
+            sasTemplate,
+            SasTokenType.Account,
+            duration,
+            sasDefinitionAttributes,
+            tags,
+            s_cancellationTokenSource.Token);
 ```
 
 创建 SAS 定义后，就可以使用 `SecretClient` 检索 SAS 令牌，比如机密。 需要在机密名称前面加上存储帐户名称，后跟短划线：
 
 ```csharp
-// Build our SAS template, get an existing SAS definition, or create a new one.
-string sasTemplate = BuildSasDefinitionTemplate(readOnly);
-string sasDefinitionName = await GetOrCreateSasDefinitionAsync(storageClient, storageAccountName, sasTemplate, days, readOnly);
+        // Build our SAS template, get an existing SAS definition, or create a new one.
+        string sasTemplate = BuildSasDefinitionTemplate(readOnly);
+        string sasDefinitionName = await GetOrCreateSasDefinitionAsync(storageClient, storageAccountName, sasTemplate, days, readOnly);
 
-// Now we can create a SecretClient and generate a new SAS token from the storage account and SAS definition names.
-SecretClient secretClient = new SecretClient(vaultUri, credential, options);
-KeyVaultSecret sasToken = await secretClient.GetSecretAsync($"{storageAccountName}-{sasDefinitionName}", cancellationToken: s_cancellationTokenSource.Token);
+        // Now we can create a SecretClient and generate a new SAS token from the storage account and SAS definition names.
+        SecretClient secretClient = new SecretClient(vaultUri, credential, options);
+        KeyVaultSecret sasToken = await secretClient.GetSecretAsync($"{storageAccountName}-{sasDefinitionName}", cancellationToken: s_cancellationTokenSource.Token);
 ```
 
 如果共享访问签名令牌即将过期，可以再次获取相同的机密并生成新的令牌。

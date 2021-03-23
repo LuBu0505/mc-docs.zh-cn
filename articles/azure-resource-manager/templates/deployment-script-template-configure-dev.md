@@ -6,16 +6,16 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 origin.date: 12/14/2020
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/22/2021
 ms.testscope: yes
 ms.testdate: 08/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: e1610c0f8d5fb8aaad2a7b9264d4bc3fd57db0c0
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 849cefef01fe632fbdbcd06a34df17bfa3b3424b
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063526"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766518"
 ---
 <!--Verified successfully Mooncake till on 01/22/2021-->
 <!--Available on  deploymentScripts in Microsoft.Resource provider-->
@@ -90,7 +90,6 @@ echo $output | jq -r '.name.displayName'
     }
   },
   "variables": {
-    "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
     "storageAccountName": "[tolower(concat(parameters('projectName'), 'store'))]",
     "fileShareName": "[concat(parameters('projectName'), 'share')]",
     "containerGroupName": "[concat(parameters('projectName'), 'cg')]",
@@ -364,7 +363,7 @@ Set-AzStorageFileContent -Context $context -ShareName $fileShareName -Source $fi
 模板中指定的默认容器映像为 mcr.microsoft.com/azure-cli:2.9.1。 查看[支持的 Azure CLI 版本](https://mcr.microsoft.com/v2/azure-cli/tags/list)的列表。
 
 > [!IMPORTANT]
-> 部署脚本使用 Microsoft 容器注册表 (MCR) 中可用的 CLI 映像。 认证部署脚本的 CLI 映像大约需要一个月的时间。 不要使用 30 天内发布的 CLI 版本。 若要查找映像的发行日期，请参阅 [Azure CLI 发行说明](https://docs.azure.cn/cli/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true)。 如果使用了不受支持的版本，错误消息中会列出受支持的版本。
+> 部署脚本使用 Microsoft 容器注册表 (MCR) 中可用的 CLI 映像。 认证部署脚本的 CLI 映像大约需要一个月的时间。 不要使用 30 天内发布的 CLI 版本。 若要查找映像的发行日期，请参阅 [Azure CLI 发行说明](https://docs.azure.cn/cli/release-notes-azure-cli)。 如果使用了不受支持的版本，错误消息中会列出受支持的版本。
 
 模板在 1,800 秒后暂停容器实例。 在容器实例进入终端状态并且会话结束之前，你有 30 分钟的时间。
 
@@ -376,7 +375,7 @@ $location = Read-Host -Prompt "Enter the location (i.e. chinaeast2)"
 $templateFile = Read-Host -Prompt "Enter the template file path and file name"
 $resourceGroupName = "${projectName}rg"
 
-New-azResourceGroup -Location $location -name $resourceGroupName
+New-AzResourceGroup -Location $location -name $resourceGroupName
 New-AzResourceGroupDeployment -resourceGroupName $resourceGroupName -TemplateFile $templatefile -projectName $projectName
 ```
 

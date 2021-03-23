@@ -7,14 +7,14 @@ ms.author: v-junlch
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/08/2021
+ms.date: 03/18/2021
 ms.localizationpriority: high
-ms.openlocfilehash: 10266c0e8e8171c5ccfa75a52b4fcea305a00d77
-ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
+ms.openlocfilehash: 6e71b837e295345b13fd87318c290045ddbae0ee
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101087580"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766393"
 ---
 # <a name="string-operators"></a>字符串运算符
 
@@ -27,13 +27,16 @@ Kusto 将为所有列（包括 `string` 类型的列）编制索引。 将根据
 ### <a name="what-is-a-term"></a>什么是词语？ 
 
 默认情况下，每个 `string` 值都分解为 ASCII 字母数字字符的最大序列，并将这些序列中的每一个都转换为一个词语。
-例如，在下面的 `string` 中，词语是 `Kusto`、`WilliamGates3rd` 以及以下子字符串：`ad67d136`、`c1db`、`4f9f`、`88ef`、`d94f3b6b0b5a`。
+例如，在下面的 `string` 中，词语是 `Kusto`、`KustoExplorerQueryRun` 以及以下子字符串：`ad67d136`、`c1db`、`4f9f`、`88ef`、`d94f3b6b0b5a`。
 
 ```
-Kusto: ad67d136-c1db-4f9f-88ef-d94f3b6b0b5a;;WilliamGates3rd
+Kusto: ad67d136-c1db-4f9f-88ef-d94f3b6b0b5a;KustoExplorerQueryRun
 ```
 
-Kusto 会构建一个词语索引，其中包含具有四个或更多个字符的所有词语。此索引由 `has`、`!has` 等使用。 如果查询查找小于四个字符的词语，或者使用 `contains` 运算符，则如果 Kusto 无法确定匹配项，它将恢复为扫描列中的值。 此方法比在词语索引中查找词语的速度要慢得多。
+Kusto 会生成一个词语索引，该词语索引中包含的所有词语均为三个或以上字符，并且由 `has`、`!has` 之类的字符串运算符使用。  如果查询查找少于三个字符的词语，或者使用 `contains` 运算符，则该查询将恢复为扫描列中的值。 扫描的速度要比在词语索引中查找词语慢得多。
+
+> [!NOTE]
+> 在 EngineV2 中，一个词语由四个或以上字符组成。
 
 ## <a name="operators-on-strings"></a>针对字符串的运算符
 
@@ -55,6 +58,7 @@ Kusto 会构建一个词语索引，其中包含具有四个或更多个字符�
 `!~`            |不等于                                                        |否            |`"aBc" !~ "xyz"`
 `has`           |右侧 (RHS) 是左侧 (LHS) 的整体     |否            |`"North America" has "america"`
 `!has`          |RHS 不是 LHS 中的完整词语                                     |否            |`"North America" !has "amer"` 
+[`has_all`](has-all-operator.md)       |与 `has` 相同，但适用于所有元素                    |否            |`"North and South America" has_all("south", "north")`
 [`has_any`](has-anyoperator.md)       |与 `has` 相同，但适用于任何元素                    |否            |`"North America" has_any("south", "north")`
 `has_cs`        |RHS 是 LHS 中的完整词语                                        |是           |`"North America" has_cs "America"`
 `!has_cs`       |RHS 不是 LHS 中的完整词语                                     |是           |`"North America" !has_cs "amer"` 

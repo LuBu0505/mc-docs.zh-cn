@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.author: v-tawe
-ms.openlocfilehash: c5012bf0f59d0811e4aff092e7f1b64fe9e4164f
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.date: 03/16/2021
+ms.author: v-chazhou
+ms.openlocfilehash: 74dba69bad1d75b0a9210bc4e0bd8832dc667d07
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579642"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766365"
 ---
 # <a name="install-and-manage-azure-iot-edge-for-windows"></a>安装和管理适用于 Windows 的 Azure IoT Edge
 

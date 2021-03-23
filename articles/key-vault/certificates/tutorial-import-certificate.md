@@ -9,15 +9,14 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
-origin.date: 04/16/2020
-ms.date: 01/14/2021
-ms.author: v-tawe
-ms.openlocfilehash: 155b7a5d8ef18089666ec6dfc74b81a1bf551b12
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: 5f93c988e3d99d0126d076a4565352cb59e568aa
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230214"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765592"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>教程：在 Azure Key Vault 中导入证书
 
@@ -46,13 +45,13 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 2. 在“搜索”框中输入“Key Vault”。
 3. 从结果列表中选择“Key Vault”。
 4. 在“Key Vault”部分，选择“创建”。
-5. 在“创建密钥保管库”部分，提供以下信息：
+5. 在“创建密钥保管库”部分，提供以下信息： 
     - 名称：必须提供唯一的名称。 在本快速入门中，我们使用 Example-Vault。 
     - 订阅：选择订阅。
     - 在“资源组”下选择“新建”，然后输入资源组名称。
     - 在“位置”下拉菜单中选择一个位置。
     - 让其他选项保留默认值。
-6. 提供上述信息后，选择“创建”。
+6. 提供上述信息后，选择“创建”  。
 
 请记下下面列出的两个属性：
 
@@ -105,7 +104,7 @@ az keyvault certificate import --file
                                [--tags]
 ```
 
-详细了解[参数](/cli/keyvault/certificate#az-keyvault-certificate-import)
+详细了解[参数](/cli/keyvault/certificate#az-keyvault-certificate-import)。
 
 导入证书后，可以使用 [certificate show](/cli/keyvault/certificate#az-keyvault-certificate-show) 来查看证书
 
@@ -145,7 +144,7 @@ Import-AzureKeyVaultCertificate
 如果不再需要资源组，可以将其删除，这将删除 Key Vault 和相关的资源。 要通过门户删除资源组，请执行以下操作：
 
 1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到在本快速入门中使用的资源组后，将其选中。
-2. 选择“删除资源组”。
+2. 选择“删除资源组”  。
 3. 在“键入资源组名称:”框中，键入资源组的名称，然后选择“删除” 。
 
 

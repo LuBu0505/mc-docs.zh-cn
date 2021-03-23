@@ -1,31 +1,29 @@
 ---
-title: 快速入门：在 Azure Key Vault 中设置和检索机密
+title: 快速入门 - 在 Azure Key Vault 中设置和检索机密
 description: 快速入门介绍如何使用 Azure CLI 在 Azure Key Vault 中设置和检索机密
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
-origin.date: 09/03/2019
-ms.date: 11/27/2020
-ms.author: v-tawe
-ms.openlocfilehash: 4eb5fd463003375075dc6684e348e59bd9870ab9
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: cdf6ca14c345c9bee38c83725592b50fd1edd95b
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300326"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765575"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure Key Vault 中设置和检索机密
 
 在本快速入门中，你将使用 Azure CLI 在 Azure Key Vault 中创建一个密钥保管库。 Azure Key Vault 是一项云服务，用作安全的机密存储。 可以安全地存储密钥、密码、证书和其他机密。 有关 Key Vault 的详细信息，可以参阅[概述](../general/overview.md)。 Azure CLI 用于通过命令或脚本创建和管理 Azure 资源。 完成该操作后，即可存储机密。
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
-<!-- [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)] -->
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
  - 本快速入门需要 Azure CLI 版本 2.0.4 或更高版本。
 
@@ -91,4 +89,4 @@ az group delete --name ContosoResourceGroup
 
 - 阅读 [Azure Key Vault 概述](../general/overview.md)
 - 请参阅 [Azure CLI az keyvault 命令](/cli/keyvault)参考
-- 查看 [Azure Key Vault 最佳做法](../general/best-practices.md)
+- 请参阅 [Key Vault 安全性概述](../general/security-overview.md)

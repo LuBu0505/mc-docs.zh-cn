@@ -8,15 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: how-to
-origin.date: 06/02/2020
-ms.date: 01/13/2021
-ms.author: v-tawe
-ms.openlocfilehash: 6fe3603d302442e3bdbf9534d3a299dfb4b85e15
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: 7d79e3cb9018559124d9d58cefb4b26d1f999bfb
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99058572"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765616"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>将 Key Vault 与 DigiCert 证书颁发机构集成
 
@@ -106,7 +105,7 @@ New-AzKeyVault -Name 'Contoso-Vaultname' -ResourceGroupName 'ContosoResourceGrou
 ```azurepowershell
 $accountId = "myDigiCertCertCentralAccountID"
 $org = New-AzKeyVaultCertificateOrganizationDetail -Id OrganizationIDfromDigiCertAccount
-$secureApiKey = ConvertTo-SecureString DigiCertCertCentralAPIKey -AsPlainText –Force
+$secureApiKey = ConvertTo-SecureString DigiCertCertCentralAPIKey -AsPlainText -Force
 ```
 
 4. 设置“颁发者”。 这将在密钥保管库中添加 Digicert 作为证书颁发机构。 要了解有关参数的详细信息，请[参阅此处](https://docs.microsoft.com/powershell/module/az.keyvault/Set-AzKeyVaultCertificateIssuer)
@@ -129,13 +128,16 @@ Add-AzKeyVaultCertificate -VaultName "Contoso-Vaultname" -Name "ExampleCertifica
 
  ![证书操作](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
 
+错误消息“请执行合并以完成此证书请求。”
+你需要合并由 CA 签名的 CSR 才能完成此请求。 在[此处](./create-certificate-signing-request.md)了解详细信息
+
 有关详细信息，请参阅 [Key Vault REST API 中的证书操作参考](https://docs.microsoft.com/rest/api/keyvault)。 有关建立权限的信息，请参阅[保管库 - 创建或更新](https://docs.microsoft.com/rest/api/keyvault/vaults/createorupdate)和[保管库 - 更新访问策略](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy)。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
 - 能否通过 KeyVault 生成 digicert 通配符证书？ 
    是的。 这取决于你如何配置了 digicert 帐户。
-- 如何使用 DigiCert 创建 OV-SSL 或 EV-SSL 证书？
+- 如何使用 DigiCert 创建 OV-SSL 或 EV-SSL 证书？ 
    密钥保管库支持创建 OV 和 EV SSL 证书。 创建证书时，单击高级策略配置，然后指定证书类型。 支持的值包括：OV-SSL、EV-SSL
    
    如果 Digicert 帐户允许，可以在密钥保管库中创建这种类型的证书。 对于这种类型的证书，验证是通过 DigiCert 执行的，如果验证失败，则其支持团队能够为你提供最佳解决方案。 可以在创建证书时通过在 subjectName 中定义信息来添加其他信息。

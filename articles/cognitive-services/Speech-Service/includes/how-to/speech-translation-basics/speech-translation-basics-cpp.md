@@ -3,14 +3,14 @@ author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 04/13/2020
-ms.date: 11/20/2020
-ms.author: v-tawe
-ms.openlocfilehash: 6f65f7b21c90f6cda56169c725d1eef40ebe5b0c
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.date: 03/08/2021
+ms.author: v-johya
+ms.openlocfilehash: 6b669526f6532d764a8928cd268ef0227f9663ab
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978829"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803500"
 ---
 语音服务的核心功能之一是能够识别人类语音并将其翻译成其他语言。 本快速入门介绍如何在应用和产品中使用语音 SDK 来执行高质量的语音翻译。 此快速入门介绍以下主题：
 
@@ -28,7 +28,7 @@ ms.locfileid: "94978829"
 
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
-你需要先安装语音 SDK，然后才能执行任何操作。 根据你的平台，按照“关于语音 SDK”一文的<a href="https://docs.azure.cn/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">获取语音 SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a> 部分中的说明进行操作。
+你需要先安装语音 SDK，然后才能执行任何操作。 根据平台的不同，按照“关于语音 SDK”一文中<a href="https://docs.azure.cn/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">获取语音 SDK </a> 部分的说明进行操作。
 
 ## <a name="import-dependencies"></a>导入依赖项
 
@@ -71,7 +71,7 @@ auto SPEECH__SERVICE__REGION = getenv("SPEECH__SERVICE__REGION");
 * 使用主机：传入主机地址。 密钥或授权令牌是可选的。
 * 使用授权令牌：传入授权令牌和关联的区域。
 
-让我们看看如何使用密钥和区域创建 [`SpeechTranslationConfig`][config]。 请查看[区域支持](https://docs.azure.cn/cognitive-services/speech-service/regions#speech-sdk)页，找到你的区域标识符。
+让我们看看如何使用密钥和区域创建 [`SpeechTranslationConfig`][config]。 按照[免费试用语音服务](../../../overview.md#try-the-speech-service-for-free)中的步骤获取这些凭据。
 
 ```cpp
 auto SPEECH__SUBSCRIPTION__KEY = getenv("SPEECH__SUBSCRIPTION__KEY");
@@ -114,7 +114,7 @@ void translateSpeech() {
     auto translationConfig =
         SpeechTranslationConfig::FromSubscription(SPEECH__SUBSCRIPTION__KEY, SPEECH__SERVICE__REGION);
 
-    translationConfig->SetSpeechRecognitionLanguage("ko-KR");
+    translationConfig->SetSpeechRecognitionLanguage("it-IT");
 
     // Translate to languages. See, https://aka.ms/speech/sttt-languages
     translationConfig->AddTargetLanguage("fr");
@@ -136,7 +136,7 @@ void translateSpeech() {
         SpeechTranslationConfig::FromSubscription(SPEECH__SUBSCRIPTION__KEY, SPEECH__SERVICE__REGION);
 
     auto fromLanguage = "en-US";
-    auto toLanguages = { "ko", "fr", "de" };
+    auto toLanguages = { "it", "fr", "de" };
     translationConfig->SetSpeechRecognitionLanguage(fromLanguage);
     for (auto language : toLanguages) {
         translationConfig->AddTargetLanguage(language);
@@ -159,7 +159,7 @@ void translateSpeech() {
         SpeechTranslationConfig::FromSubscription(SPEECH__SUBSCRIPTION__KEY, SPEECH__SERVICE__REGION);
 
     auto fromLanguage = "en-US";
-    auto toLanguages = { "ko", "fr", "de" };
+    auto toLanguages = { "it", "fr", "de" };
     translationConfig->SetSpeechRecognitionLanguage(fromLanguage);
     for (auto language : toLanguages) {
         translationConfig->AddTargetLanguage(language);
@@ -178,7 +178,7 @@ void translateSpeech() {
         SpeechTranslationConfig::FromSubscription(SPEECH__SUBSCRIPTION__KEY, SPEECH__SERVICE__REGION);
 
     auto fromLanguage = "en-US";
-    auto toLanguages = { "ko", "fr", "de" };
+    auto toLanguages = { "it", "fr", "de" };
     translationConfig->SetSpeechRecognitionLanguage(fromLanguage);
     for (auto language : toLanguages) {
         translationConfig->AddTargetLanguage(language);
@@ -199,7 +199,7 @@ void translateSpeech() {
         SpeechTranslationConfig::FromSubscription(SPEECH__SUBSCRIPTION__KEY, SPEECH__SERVICE__REGION);
 
     string fromLanguage = "en-US";
-    string toLanguages[3] = { "ko", "fr", "de" };
+    string toLanguages[3] = { "it", "fr", "de" };
     translationConfig->SetSpeechRecognitionLanguage(fromLanguage);
     for (auto language : toLanguages) {
         translationConfig->AddTargetLanguage(language);
@@ -222,7 +222,7 @@ void translateSpeech() {
 }
 ```
 
-有关语音转文本的详细信息，请参阅[语音识别基础知识](../../../speech-to-text-basics.md)。
+有关语音转文本的详细信息，请参阅[语音识别基础知识](../../../get-started-speech-to-text.md)。
 
 ## <a name="synthesize-translations"></a>合成翻译
 
@@ -245,7 +245,7 @@ void translateSpeech() {
     translationConfig->SetSpeechRecognitionLanguage(fromLanguage);
     translationConfig->AddTargetLanguage(toLanguage);
 
-    // See: https://docs.azure.cn/cognitive-services/speech-service/regions#standard-and-neural-voices
+    // See: https://aka.ms/speech/sdkregion#standard-and-neural-voices
     translationConfig->SetVoiceName("de-DE-Hedda");
 
     auto recognizer = TranslationRecognizer::FromConfig(translationConfig);
@@ -289,7 +289,7 @@ void translateSpeech() {
         SpeechTranslationConfig::FromSubscription(SPEECH__SUBSCRIPTION__KEY, SPEECH__SERVICE__REGION);
 
     auto fromLanguage = "en-US";
-    auto toLanguages = { "de", "en", "zh-Hans" };
+    auto toLanguages = { "de", "en", "it", "pt", "zh-Hans" };
     translationConfig->SetSpeechRecognitionLanguage(fromLanguage);
     for (auto language : toLanguages) {
         translationConfig->AddTargetLanguage(language);
@@ -302,11 +302,13 @@ void translateSpeech() {
     auto result = recognizer->RecognizeOnceAsync().get();
     if (result->Reason == ResultReason::TranslatedSpeech)
     {
-        // See: https://docs.azure.cn/cognitive-services/speech-service/regions#standard-and-neural-voices
+        // See: https://aka.ms/speech/sdkregion#standard-and-neural-voices
         map<string, string> languageToVoiceMap;
         languageToVoiceMap["de"] = "de-DE-KatjaNeural";
         languageToVoiceMap["en"] = "en-US-AriaNeural";
-        languageToVoiceMap["zh-Hans"] = "zh-CN-XiaoxiaoNeural";
+        languageToVoiceMap["it"] = "it-IT-ElsaNeural";
+        languageToVoiceMap["pt"] = "pt-BR-FranciscaNeural";
+        languageToVoiceMap["zh-Hans"] = "zh-cn-XiaoxiaoNeural";
 
         cout << "Recognized: \"" << result->Text << "\"" << std::endl;
         for (auto pair : result->Translations)
@@ -338,3 +340,4 @@ void translateSpeech() {
 [translations]: https://docs.microsoft.com/cpp/cognitive-services/speech/translation-translationrecognitionresult#translations
 [voicename]: https://docs.microsoft.com/cpp/cognitive-services/speech/translation-speechtranslationconfig#setvoicename
 [speechsynthesisvoicename]: https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setspeechsynthesisvoicename
+

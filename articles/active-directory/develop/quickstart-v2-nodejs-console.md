@@ -1,21 +1,21 @@
 ---
 title: 快速入门：从 Node.js 控制台应用调用 Microsoft Graph | Azure
 titleSuffix: Microsoft identity platform
-description: 在本快速入门中，你将了解 Node.js 控制台应用程序如何使用应用自己的标识获取访问令牌并调用受 Microsoft 标识平台终结点保护的 API
+description: 在本快速入门中，你将下载并运行一个代码示例，该代码示例演示 Node.js 控制台应用程序如何使用应用自己的标识获取访问令牌并调用受 Microsoft 标识平台终结点保护的 API
 services: active-directory
 author: derisen
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
-ms.date: 02/20/2021
+ms.date: 03/12/2021
 ms.author: v-junlch
-ms.openlocfilehash: 45b9a823e3a9e1ec4aac0fa3b2db17a1fd35cfc0
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 7b5d6eff93b6d907b3b863bc44684f5543640c40
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101751890"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765506"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-nodejs-console-app-using-apps-identity"></a>快速入门：使用应用的标识获取令牌并从 Node.js 控制台应用中调用 Microsoft Graph API
 
@@ -29,17 +29,17 @@ ms.locfileid: "101751890"
 * [Visual Studio Code](https://code.visualstudio.com/download) 或其他代码编辑器
 
 > [!div renderon="docs"]
-> ## <a name="register-and-download-your-quickstart-application"></a>注册并下载快速入门应用程序
+> ## <a name="register-and-download-the-sample-application"></a>注册并下载示例应用程序
 >
 > 请按照以下步骤开始使用。
 >
 > [!div renderon="docs"]
-> #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
+> #### <a name="step-1-register-the-application"></a>步骤 1：注册应用程序
 > 若要手动注册应用程序并将应用的注册信息添加到解决方案，请执行以下步骤：
 >
 > 1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
-> 1. 搜索并选择“Azure Active Directory”  。
+> 1. 搜索并选择“Azure Active Directory”。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 > 1. 输入应用程序的名称（例如 `msal-node-cli`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 > 1. 选择“注册”  。
@@ -50,9 +50,9 @@ ms.locfileid: "101751890"
 > 1. 在“用户”节点下选择“User.Read.All”，然后选择“添加权限”  。
 
 > [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="download-and-configure-your-quickstart-app"></a>下载并配置快速入门应用
+> ### <a name="download-and-configure-the-sample-app"></a>下载并配置示例应用
 >
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
+> #### <a name="step-1-configure-the-application-in-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
 > 为使本快速入门的代码示例正常运行，需创建客户端机密，并添加 Graph API 的 **User.Read.All** 应用程序权限。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [为我进行这些更改]()
@@ -60,7 +60,7 @@ ms.locfileid: "101751890"
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![已配置](./media/quickstart-v2-netcore-daemon/green-check.png) 应用程序已使用这些属性进行配置。
 
-#### <a name="step-2-download-your-nodejs-project"></a>步骤 2：下载 Node.js 项目
+#### <a name="step-2-download-the-nodejs-sample-project"></a>步骤 2：下载 Node.js 示例项目
 
 > [!div renderon="docs"]
 > [下载代码示例](https://github.com/azure-samples/ms-identity-javascript-nodejs-console/archive/main.zip)
@@ -73,7 +73,7 @@ ms.locfileid: "101751890"
 > > `Enter_the_Supported_Account_Info_Here`
 
 > [!div renderon="docs"]
-> #### <a name="step-3-configure-your-nodejs-project"></a>步骤 3：配置 Node.js 项目
+> #### <a name="step-3-configure-the-nodejs-sample-project"></a>步骤 3：配置 Node.js 示例项目
 >
 > 1. 将 zip 文件提取到靠近磁盘根目录的本地文件夹，例如 C:/Azure-Samples。
 > 1. 编辑 .env，将字段 `TENANT_ID`、`CLIENT_ID`、`CLIENT_SECRET` 的值替换为以下代码片段：
@@ -172,7 +172,7 @@ const msalConfig = {
         clientId: "Enter_the_Application_Id_Here",
         authority: "https://login.partner.microsoftonline.cn/Enter_the_Tenant_Id_Here",
         clientSecret: "Enter_the_Client_Secret_Here",
-   } 
+   }
 };
 const cca = new msal.ConfidentialClientApplication(msalConfig);
 ```

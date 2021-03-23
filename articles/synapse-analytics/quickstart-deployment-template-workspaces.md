@@ -2,18 +2,19 @@
 title: 快速入门：创建 Azure Synapse 工作区 - Azure 资源管理器模板
 description: 了解如何使用 Azure 资源管理器模板（ARM 模板）创建 Synapse 工作区。
 services: azure-resource-manager
-author: julieMSFT
+author: WenJason
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: jrasnick
-ms.date: 08/07/2020
-ms.openlocfilehash: a20b9fc5b7b43bb8f7fce70f20d4647c8fe0418c
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.author: v-jay
+origin.date: 08/07/2020
+ms.date: 03/22/2021
+ms.openlocfilehash: 6680278eda8fa1d1bc92f40e6407d7c289ca42be
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207418"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766133"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure Synapse 工作区
 
@@ -23,17 +24,17 @@ ms.locfileid: "102207418"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure 1](../media/template-deployments/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
+[![部署到 Azure 1](../media/template-deployments/deploy-to-azure.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 ## <a name="review-the-template"></a>查看模板
 
 可通过选择“可视化”链接来查看模板。 然后选择“编辑模板”。
 
-[![可视化](../media/template-deployments/template-visualize-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
+[![可视化](../media/template-deployments/template-visualize-button.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
 
 该模板定义了两个资源：
 
@@ -44,13 +45,13 @@ ms.locfileid: "102207418"
 
 1. 选择下图登录到 Azure 并打开模板。 使用此模板创建 Synapse 工作区。
 
-   [![部署到 Azure 2](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
+   [![部署到 Azure 2](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
 
 1. 输入或更新以下值：
 
    - 订阅：选择 Azure 订阅。
    - 资源组： 选择“新建”，输入资源组的唯一名称，然后选择“确定”。 新的资源组会促进资源清理。
-   - **区域**：选择区域。  例如“美国中部”。
+   - **区域**：选择区域。  例如，“中国东部 2”。
    - 名称：输入工作区的名称。
    - SQL 管理员登录：输入 SQL Server 的管理员用户名。
    - SQL 管理员密码：输入 SQL Server 的管理员密码。

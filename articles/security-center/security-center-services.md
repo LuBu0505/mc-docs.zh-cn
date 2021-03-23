@@ -1,25 +1,19 @@
 ---
 title: 关于 OS、计算机类型和云的 Azure 安全中心的功能
 description: 了解根据其 OS、类型和云部署可以使用哪些 Azure 安全中心功能。
-services: security-center
-documentationcenter: na
 author: Johnnytechn
 manager: rkarlin
-ms.assetid: 870ebc8d-1fad-435b-9bf9-c477f472ab17
 ms.service: security-center
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/25/2021
+ms.date: 03/18/2021
 ms.author: v-johya
 origin.date: 03/01/2020
-ms.openlocfilehash: cd11c93e2bbbbd0bd98e9e25a7642b3faae9ffa1
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: eb6f5a26267451ff1cee2368672f3e9e8e9d2a94
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197284"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766085"
 ---
 # <a name="feature-coverage-for-machines"></a>适用于计算机的功能覆盖范围
 
@@ -109,7 +103,7 @@ ms.locfileid: "102197284"
 |[用于终结点的 Microsoft Defender](harden-docker-hosts.md) (1)|-|
 |连接 AWS 帐户 (1)|-|
 |连接 GCP 帐户 (1)|-| 
-|[连续导出](continuous-export.md)|✔ (2)|
+|[连续导出](continuous-export.md)|✔|
 |[工作流自动化](workflow-automation.md)|✔|
 |建议例外规则|-|
 |[警报抑制规则](alerts-suppression-rules.md)|✔|

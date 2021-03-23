@@ -2,18 +2,18 @@
 title: 将块 Blob 存储在设备上 - Azure IoT Edge |Microsoft Docs
 description: 了解分层和生存时间功能、查看支持的 Blob 存储操作，以及连接到 Blob 存储帐户。
 author: kgremban
-ms.author: v-tawe
+ms.author: v-chazhou
 ms.reviewer: arduppal
-ms.date: 03/01/2021
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5b1ef838ac36c89e5df1d4265d6e92be1432681d
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.openlocfilehash: a88f95877aaf834126aef1ccba18c9ea706a3ce3
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196733"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766944"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>使用 IoT Edge 上的 Azure Blob 存储在边缘中存储数据
 
@@ -282,8 +282,10 @@ IoT Edge 上的 Blob 存储模块使用 Azure 存储 SDK，并与适用于块 Bl
 
 * 来自 URL 的追加块
 
-<!-- ## Event Grid on IoT Edge Integration -->
+## <a name="event-grid-on-iot-edge-integration"></a>IoT Edge 集成上的事件网格
 
+> [!CAUTION]
+> IoT Edge 与事件网格的集成处于预览阶段
 
 ## <a name="release-notes"></a>发行说明
 

@@ -2,19 +2,20 @@
 title: 使用 SQL 池的 T-SQL 视图
 description: 有关通过 Azure Synapse Analytics 中的专用 SQL 池和无服务器 SQL 池使用 T-SQL 视图开发解决方案的技巧。
 services: synapse-analytics
-author: azaricstefan
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: stefanazaric
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: d216d8b6f0694dec2547092544262a03c2f3c005
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 78ebd18b0916e376a285702fb133c4e30cf421cc
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102206984"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766685"
 ---
 # <a name="t-sql-views-with-dedicated-sql-pool-and-serverless-sql-pool-in-azure-synapse-analytics"></a>T-SQL 视图和 Azure Synapse Analytics 中的专用 SQL 池和无服务器 SQL 池
 
@@ -27,11 +28,11 @@ ms.locfileid: "102206984"
 ### <a name="sql-pool---create-view"></a>SQL 池 - 创建视图
 
 > [!NOTE]
-> 本文未讨论 CREATE VIEW 的语法。 有关详细信息，请参阅 [CREATE VIEW](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 文档。
+> 本文未讨论 CREATE VIEW 的语法。 有关详细信息，请参阅 [CREATE VIEW](https://docs.microsoft.com/sql/t-sql/statements/create-view-transact-sql?view=azure-sqldw-latest&preserve-view=true) 文档。
 
 ## <a name="architectural-abstraction"></a>体系结构摘要
 
-一种常见的应用模式是，在加载数据时使用 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (CTAS)，后接对象重命名模式来重建表。
+一种常见的应用模式是，在加载数据时使用 [CREATE TABLE AS SELECT](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) (CTAS)，后接对象重命名模式来重建表。
 
 以下示例向日期维度添加新的日期记录。 请注意，这里先创建了一个新表 DimDate_New，然后将它重命名以替换表的原始版本。
 

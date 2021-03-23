@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 02/20/2021
+ms.date: 03/16/2021
 ms.author: v-junlch
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fb2ff3637c1dd25dc01e258b255f358540e06be
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 849b7490a826ba57fe353e207c337860ef58425c
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101751766"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765436"
 ---
 # <a name="monitoring-application-sign-in-health-for-resilience"></a>监视应用程序登录运行状况以提高复原能力
 
@@ -94,7 +94,7 @@ ms.locfileid: "101751766"
 
  若要配置基础查询并设置警报，请完成以下步骤。 你将使用示例查询作为配置的基础。 本部分的末尾对查询结构进行了说明。
 
-有关如何使用 Azure Monitor 创建、查看和管理日志警报的详细信息，请参阅[管理日志警报](/azure-monitor/platform/alerts-log)。
+有关如何使用 Azure Monitor 创建、查看和管理日志警报的详细信息，请参阅[管理日志警报](../../azure-monitor/alerts/alerts-log.md)。
 
  
 1. 在工作簿中，选择“编辑”，然后选择图形右侧上方的查询图标。   
@@ -280,10 +280,9 @@ thisWeek
 
 ## <a name="next-steps"></a>后续步骤
 
-[详细了解工作簿](/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks)
+[详细了解工作簿](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
  
 
  
 
- 

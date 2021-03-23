@@ -1,21 +1,20 @@
 ---
-title: 用户定义的函数 - Azure 数据资源管理器 | Microsoft Docs
-description: 本文介绍 Azure 数据资源管理器中用户定义的函数。
+title: 用户定义的函数 - Azure 数据资源管理器
+description: 本文介绍 Azure 数据资源管理器中用户定义的函数（标量和视图）。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 03/12/2020
-ms.date: 01/22/2021
+ms.date: 03/18/2021
 ms.localizationpriority: high
-ms.openlocfilehash: 3f6b11a3ba1f1fe41b8fe26ddd37f237004a0d2b
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.openlocfilehash: 1ff57ea6f8e0155ec9d4e03c0236125feba49dfb
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611642"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765907"
 ---
 # <a name="user-defined-functions"></a>用户定义的函数
 
@@ -24,7 +23,7 @@ ms.locfileid: "98611642"
 用户定义的函数属于以下两个类别之一：
 
 * 标量函数 
-* 表格函数 
+* 表格函数，也称为视图
 
 函数的输入参数和输出决定它是标量还是表格，进而确定其使用方式。 
 

@@ -2,15 +2,13 @@
 title: 自动增加吞吐量单位 - Azure 事件中心 |Microsoft Docs
 description: 在命名空间上启用自动膨胀，以自动按比例增加吞吐量单位。
 ms.topic: article
-origin.date: 06/23/2020
-ms.date: 08/21/2020
-ms.author: v-tawe
-ms.openlocfilehash: cd818e6e0109944ad4c90e66755c96f977c554f2
-ms.sourcegitcommit: 2e9b16f155455cd5f0641234cfcb304a568765a9
+ms.date: 03/11/2021
+ms.openlocfilehash: 75d16c0b6ff96f2f9dbda259e2abb106cf9fd362
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88715318"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766270"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>自动增加 Azure 事件中心吞吐量单位
 Azure 事件中心是高度可缩放的数据流式处理平台。 因此，开始使用该服务后事件中心使用量通常会增加。 这样的使用量需要增加预先确定的[吞吐量单位](event-hubs-scalability.md#throughput-units)，以扩展事件中心和处理更大的传输速率。 事件中心的自动膨胀功能通过增加吞吐量单位数进行自动纵向扩展，以便满足使用量需求  。 增加吞吐量单位数可防止出现限制情况，在这些情况下：
@@ -57,8 +55,8 @@ Azure 事件中心是高度可缩放的数据流式处理平台。 因此，开�
 2. 在“缩放设置”  页上，选中“启用”复选框  （如果未启用自动缩放功能）。
 
     ![选择“启用”](./media/event-hubs-auto-inflate/scale-settings.png)
-3. 输入吞吐量单位的**最大**数目或使用滚动条设置该值。 
-4. （可选）在此页顶部更新吞吐量单位的**最小**数目。 
+3. 输入吞吐量单位的 **最大** 数目或使用滚动条设置该值。 
+4. （可选）在此页顶部更新吞吐量单位的 **最小** 数目。 
 
 <!--not availible in event-hubs-diagnostic-logs -->
 

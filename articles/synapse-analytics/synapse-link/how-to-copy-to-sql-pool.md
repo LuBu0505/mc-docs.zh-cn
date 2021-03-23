@@ -2,19 +2,20 @@
 title: 使用 Apache Spark 将 Synapse Link for Azure Cosmos DB 数据复制到专用 SQL 池
 description: 将数据加载到 Spark 数据帧中、策展数据并将其加载到专用 SQL 池表中
 services: synapse-analytics
-author: ArnoMicrosoft
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: synapse-link
-ms.date: 08/10/2020
-ms.author: acomet
+origin.date: 08/10/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: dcbea1f88c7ba4fc410cfa52b4ca8b3f78d7553d
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: d74b8d1b6fa8e292724899b29f5ffda884a279e1
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207688"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766317"
 ---
 # <a name="copy-data-from-azure-cosmos-db-into-a-dedicated-sql-pool-using-apache-spark"></a>使用 Apache Spark 将数据从 Azure Cosmos DB 复制到专用 SQL 池
 

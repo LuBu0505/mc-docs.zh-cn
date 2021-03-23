@@ -8,16 +8,16 @@ metadata:
   ms.subservice: B2B
   ms.workload: identity
   ms.topic: landing-page
-  ms.date: 10/09/2020
+  ms.date: 03/16/2021
   author: msmimart
   ms.author: v-junlch
   manager: celested
-  ms.openlocfilehash: eeb72ddaa68ffdeeb7dee854bd13d08d2e13a1da
-  ms.sourcegitcommit: 63b9abc3d062616b35af24ddf79679381043eec1
+  ms.openlocfilehash: cc149dc28ca77db76957a91ed99fa5fee105030f
+  ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/10/2020
-  ms.locfileid: "91937564"
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104765446"
 landingContent:
 - title: 关于外部标识
   linkLists:
@@ -28,7 +28,7 @@ landingContent:
     - text: 什么是 Azure AD B2B 协作？
       url: what-is-b2b.md
     - text: 什么是 Azure AD B2C（企业到消费者）标识？
-      url: /active-directory-b2c/overview
+      url: ../../active-directory-b2c/overview.md
 - title: 与组织外部的用户协作（B2B 协作）
   linkLists:
   - linkListType: concept
@@ -50,18 +50,18 @@ landingContent:
   - linkListType: overview
     links:
     - text: 关于 Azure AD B2C
-      url: /active-directory-b2c/overview
+      url: ../../active-directory-b2c/overview.md
     - text: 技术和功能概述
-      url: /active-directory-b2c/technical-overview
+      url: ../../active-directory-b2c/technical-overview.md
     - text: 查看所有 Azure AD B2C 文档
-      url: /active-directory-b2c/
+      url: ../../active-directory-b2c/index.yml
   - linkListType: concept
     links:
     - text: Azure AD B2C 用户流
-      url: /active-directory-b2c/user-flow-overview
+      url: ../../active-directory-b2c/user-flow-overview.md
     - text: Azure AD B2C 自定义策略
-      url: /active-directory-b2c/custom-policy-overview
+      url: ../../active-directory-b2c/custom-policy-overview.md
   - linkListType: tutorial
     links:
     - text: 在 Azure AD B2C 中创建用户流
-      url: /active-directory-b2c/tutorial-create-user-flows
+      url: ../../active-directory-b2c/tutorial-create-user-flows.md

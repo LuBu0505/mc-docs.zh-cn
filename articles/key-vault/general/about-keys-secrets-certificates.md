@@ -8,15 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: overview
-origin.date: 04/17/2020
-ms.date: 01/14/2021
-ms.author: v-tawe
-ms.openlocfilehash: 8ad39f4d796f4adabc3a88aefac1494853e02c05
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: 1e9c7504cf7ce4d91af25b5559d856be9c49e810
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059951"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766600"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Azure Key Vault 密钥、机密和证书概述
 
@@ -50,6 +49,7 @@ ms.locfileid: "99059951"
 
 可以通过指定版本对 Key Vault 中的对象进行寻址，或者通过忽略版本对对象的当前版本进行操作。 例如，给定名称为 `MasterKey` 的密钥，执行操作而不指定版本会导致系统使用最新的可用版本。 使用特定于版本的标识符执行操作会导致系统使用该特定版本的对象。  
 
+### <a name="vault-name-and-object-name"></a>保管库名和对象名
 Key Vault 中的对象通过 URL 唯一标识。 不管地理位置如何，系统中都不存在两个具有相同 URL 的对象。 对象的完整 URL 称为对象标识符。 URL 由标识 Key Vault 的前缀、对象类型、用户提供的对象名称和对象版本组成。 对象名称不区分大小写且不可变。 不包括对象版本的标识符称为基本标识符。  
 
 有关详细信息，请参阅[身份验证、请求和响应](authentication-requests-and-responses.md)

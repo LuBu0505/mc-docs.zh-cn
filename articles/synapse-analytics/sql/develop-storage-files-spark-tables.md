@@ -2,19 +2,20 @@
 title: 在无服务器 SQL 池中同步 Apache Spark 外部表定义
 description: 概述如何使用无服务器 SQL 池查询 Spark 表
 services: synapse-analytics
-author: julieMSFT
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: jrasnick
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: df06a1b78cac2646d3ce00052f2b5cef67ed0431
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 96fc9736c9f42ff8cb4d4b0e3ccc0440a538e261
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207640"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766821"
 ---
 # <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-serverless-sql-pool"></a>在无服务器 SQL 池中同步 Apache Spark for Azure Synapse 外部表定义
 

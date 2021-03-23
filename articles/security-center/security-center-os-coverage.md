@@ -1,25 +1,19 @@
 ---
 title: Azure 安全中心支持的平台 | Azure
 description: 本文档列出了 Azure 安全中心支持的平台。
-services: security-center
-documentationcenter: na
-author: Johnnytechn
+author: memildin
 manager: rkarlin
-ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/25/2021
+ms.date: 03/18/2021
 ms.author: v-johya
 origin.date: 08/29/2019
-ms.openlocfilehash: 8b0f28bd68226daffefa85f3898114b2a8558b19
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: efed0bb013b0cf6bf0f4a71aca40aca7a57b5653
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197518"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766710"
 ---
 # <a name="supported-platforms"></a>支持的平台 
 

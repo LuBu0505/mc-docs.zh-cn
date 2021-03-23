@@ -4,17 +4,17 @@ description: 使用 Azure Kubernetes 服务 (AKS) 创建并运行 Apache Spark �
 ms.topic: conceptual
 origin.date: 10/18/2019
 author: rockboyfor
-ms.date: 11/30/2020
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 6981c7dff26b43a35429667cacbc71374a6ba867
-ms.sourcegitcommit: ea52237124974eda84f8cef4bf067ae978d7a87d
+ms.openlocfilehash: 3a915670bbdd00a2f521f45b9badc3043d048ce3
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024525"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766057"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>在 AKS 中运行 Apache Spark 作业
 
@@ -345,6 +345,7 @@ ENTRYPOINT [ "/opt/entrypoint.sh" ]
 [apache-spark]: https://spark.apache.org/
 [docker-hub]: https://docs.docker.com/docker-hub/
 [java-install]: https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support
+
 [maven-install]: https://maven.apache.org/install.html
 [sbt-install]: https://www.scala-sbt.org/1.0/docs/Setup.html
 [spark-docs]: https://spark.apache.org/docs/latest/running-on-kubernetes.html
@@ -359,4 +360,4 @@ ENTRYPOINT [ "/opt/entrypoint.sh" ]
 [azure-cli]: https://docs.azure.cn/cli/
 [storage-account]: ../storage/blobs/storage-quickstart-blobs-cli.md
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -9,9 +9,9 @@
   items:
     - name: 使用 Web 门户
       href: quickstarts/web-portal.md
-    - name: 使用 REST API
-      href: quickstarts/rest-api.md
-- name: 操作方法
+    - name: 使用 REST API 或客户端库
+      href: quickstarts/rest-api-and-client-library.md
+- name: 操作指南
   items:
     - name: 载入数据
       href: how-tos/onboard-your-data.md
@@ -33,7 +33,7 @@
   items:
     - name: 术语表
       href: glossary.md
-    - name: 常见问题
+    - name: 常见问题解答
       href: faq.md
     - name: 指标顾问 API
       href: 'https://dev.cognitive.azure.cn/docs/services/MetricsAdvisor/operations/createDataFeed'
@@ -51,5 +51,5 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: 合规性
       href: 'https://www.azure.cn/support/sla/cognitive-services/index.html'
-    - name: Encryption
+    - name: 加密
       href: encryption.md

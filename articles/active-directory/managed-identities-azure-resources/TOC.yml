@@ -128,10 +128,12 @@
       href: 'https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme?view=azure-dotnet'
     - name: Java
       href: 'https://docs.microsoft.com/java/api/overview/azure/identity-readme?view=azure-java-stable'
-    - name: JavaScript
-      href: 'https://docs.microsoft.com/javascript/api/overview/azure/identity-readme?view=azure-node-latest'
+    - name: Javascript
+      href: 'https://docs.microsoft.com/javascript/api/overview/azure/identity-readme'
     - name: Python
       href: 'https://docs.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python'
+    - name: Go
+      href: 'https://golang.org/doc/'
 - name: 资源
   items:
     - name: 反馈和已知问题

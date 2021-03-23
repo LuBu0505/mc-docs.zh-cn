@@ -1,18 +1,19 @@
 ---
 title: 故障排查：使用无服务器 SQL 池从 CSV 或 PARQUET 文件读取 UTF-8 文本
 description: 在 Azure Synapse Analytics 中使用无服务器 SQL 池从 CSV 或 PARQUET 文件读取 UTF-8 文本
-author: julieMSFT
-ms.author: jrasnick
+author: WenJason
+ms.author: v-jay
 ms.topic: troubleshooting
 ms.service: synapse-analytics
 ms.subservice: sql
-ms.date: 12/03/2020
-ms.openlocfilehash: fc84c5b99a9d133e0ebe2c0f6379f65d6d0fc21b
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+origin.date: 12/03/2020
+ms.date: 03/22/2021
+ms.openlocfilehash: 8198ef34d2fa713b0baeab98742d6edc2772e7d6
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207326"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766806"
 ---
 # <a name="troubleshoot-reading-utf-8-text-from-csv-or-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>故障排查：在 Azure Synapse Analytics 中使用无服务器 SQL 池从 CSV 或 Parquet 文件读取 UTF-8 文本
 

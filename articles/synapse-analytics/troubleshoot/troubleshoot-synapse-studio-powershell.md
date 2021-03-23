@@ -1,18 +1,19 @@
 ---
 title: 排查 Synapse Studio 连接问题
 description: 使用 PowerShell 排查 Azure Synapse Studio 连接问题
-author: saveenr
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 10/30/2020
-ms.author: saveenr
+origin.date: 10/30/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 08d0a42d07d4d54b602fbd2eb2dbcfca852a2f7f
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 2a53aad92b06ef082e731558e81211bba75e3953
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207197"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766449"
 ---
 # <a name="troubleshoot-synapse-studio-connectivity-with-powershell"></a>使用 PowerShell 排查 Synapse Studio 连接问题
 

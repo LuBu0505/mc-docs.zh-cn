@@ -1,21 +1,21 @@
 ---
 title: 将 Windows 虚拟机从非托管磁盘转换为托管磁盘
 description: 如何在资源管理器部署模型中使用 PowerShell 将 Windows VM 从非托管磁盘转换为托管磁盘
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: disks
 ms.topic: how-to
 origin.date: 07/12/2018
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 10787cb3929818aed856fbc8930055d5dc0e1116
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: d0308c9d0d68b87148720f6d06c98f16bb4067e1
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104692"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766551"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>将 Windows 虚拟机从非托管磁盘转换为托管磁盘
 
@@ -105,4 +105,4 @@ VM 将会停止并在完成迁移后重新启动。
 
 使用[快照](snapshot-copy-managed-disk.md)获取 VM 的只读副本。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -2,19 +2,19 @@
 title: 快速入门 - 使用 C# 将模拟的 X.509 设备预配到 Azure IoT 中心
 description: 快速入门 - 使用适用于 Azure IoT 中心设备预配服务 (DPS) 的 C# 设备 SDK 创建和预配 X.509 设备。 本快速入门使用单独注册。
 author: wesmc7777
-ms.author: v-tawe
-ms.date: 02/22/2021
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 21ca0ba5c378255540a93cd8d7268b184e3b6f91
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.openlocfilehash: fca8ddae63379d64961a9dc130acca10352e1b42
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196688"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765868"
 ---
 # <a name="quickstart-create-and-provision-an-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 C 设备 SDK 创建和预配 X.509 设备
 
@@ -22,7 +22,9 @@ ms.locfileid: "102196688"
 
 这些步骤显示了如何使用 [C# 的 Azure IoT 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp)中的设备代码来预配 X.509 设备。 在本文中，你将在开发计算机上运行设备示例代码，以使用设备预配服务连接到 IoT 中心。
 
-如果不熟悉自动预配过程，请查看[预配](about-iot-dps.md#provisioning-process)概述。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
+## <a name="prerequisites"></a>先决条件
+
+如果不熟悉自动预配过程，请查看[预配](about-iot-dps.md#provisioning-process)概述。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。
 
 Azure IoT 设备预配服务支持两类注册：
 - [注册组](concepts-service.md#enrollment-group)：用于注册多个相关设备。
@@ -48,8 +50,6 @@ Azure IoT 设备预配服务支持两类注册：
     ```bash
     dotnet --info
     ```
-
-
 
 ## <a name="create-a-self-signed-x509-device-certificate"></a>创建自签名的 X.509 设备证书
 
@@ -150,7 +150,7 @@ Azure IoT 设备预配服务支持两类注册：
     Initialized for registration Id iothubx509device1.
     Registering with the device provisioning service...
     Registration status: Assigned.
-    Device iothubx509device2 registered to sample-iot-hub1.azure-devices.net.
+    Device iothubx509device2 registered to sample-iot-hub1.azure-devices.cn.
     Creating X509 authentication for IoT Hub...
     Testing the provisioned device with IoT Hub...
     Sending a telemetry message...

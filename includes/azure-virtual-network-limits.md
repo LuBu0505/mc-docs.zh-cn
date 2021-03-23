@@ -6,15 +6,15 @@ ms.service: networking
 ms.topic: include
 origin.date: 01/14/2020
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 8ad4e0779851359693be6529db85f82d43a90186
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: d3ac65056cb69378f81af67602dcb301182423f1
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102053330"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767108"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>
 ### <a name="networking-limits---azure-resource-manager"></a>网络限制 - Azure 资源管理器
@@ -74,7 +74,7 @@ ms.locfileid: "102053330"
 | 资源                                | 限制         |
 |-----------------------------------------|-------------------------------|
 | 负载均衡器                          | 1,000                         |
-| 每个资源的规则数                      | 1,500                         |
+| 每个资源的规则数（负载均衡器 + 入站 NAT）                      | 1,500                         |
 | 每个 NIC 的规则数（在 NIC 上的所有 IP 上） | 300                           |
 | 前端 IP 配置数              | 600                           |
 | 后端池大小                       | 单个虚拟网络 1000 个 IP 配置 |
@@ -83,7 +83,7 @@ ms.locfileid: "102053330"
 | 每个负载均衡器的出站规则        | 600                           |
 | 每个 VM 的负载均衡器数                   | 2（1 个公共，1 个内部）   |
 
-<sup>1</sup>限制是最多 150 种资源，采用独立虚拟机资源、可用性集资源和虚拟机规模集放置组的任意组合。
+<sup>1</sup> 限制是最多 150 个资源（独立虚拟机资源、可用性集资源和虚拟机规模集放置组的任意组合）。
 
 **基本负载均衡器**
 
@@ -92,10 +92,12 @@ ms.locfileid: "102053330"
 | 负载均衡器                          | 1,000                        |
 | 每个资源的规则数                      | 250                          |
 | 每个 NIC 的规则数（在 NIC 上的所有 IP 上） | 300                          |
-| 前端 IP 配置数              | 200                          |
+| 前端 IP 配置 <sup>2<sup>  | 200                          |
 | 后端池大小                       | 单个可用性集 300 个 IP 配置 |
 | 每个负载均衡器的可用性集数     | 1                            |
 | 每个 VM 的负载均衡器数                   | 2（1 个公共，1 个内部）  |
+
+<sup>2</sup> 后端池（独立虚拟机、可用性集或虚拟机规模集放置组）中单个离散资源的限制是，在单个基本公共负载均衡器和基本内部负载均衡器上最多有 250 个前端 IP 配置。
 
 <a name="virtual-networking-limits-classic"></a>以下限制仅适用于每个订阅通过经典部署模型托管的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 

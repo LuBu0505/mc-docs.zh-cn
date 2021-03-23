@@ -3,14 +3,14 @@ author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 04/13/2020
-ms.date: 11/20/2020
-ms.author: v-tawe
-ms.openlocfilehash: eb36b4c431534ae6d7b65b85294ead6f10175618
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.date: 03/08/2021
+ms.author: v-johya
+ms.openlocfilehash: 896ef4ca12b224ffe468094980c4ad52cc842db6
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301153"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803486"
 ---
 语音服务的核心功能之一是能够识别人类语音并将其翻译成其他语言。 本快速入门介绍如何在应用和产品中使用语音 SDK 来执行高质量的语音翻译。 此快速入门介绍以下主题：
 
@@ -28,7 +28,7 @@ ms.locfileid: "96301153"
 
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
-你需要先安装语音 SDK，然后才能执行任何操作。 根据你的平台，按照“关于语音 SDK”一文的<a href="https://docs.azure.cn/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">获取语音 SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a> 部分中的说明进行操作。
+你需要先安装语音 SDK，然后才能执行任何操作。 根据平台的不同，按照“关于语音 SDK”一文中<a href="/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">获取语音 SDK </a> 部分的说明进行操作。
 
 ## <a name="import-dependencies"></a>导入依赖项
 
@@ -61,7 +61,7 @@ speech_key, service_region = os.environ['SPEECH__SUBSCRIPTION__KEY'], os.environ
 * 使用主机：传入主机地址。 密钥或授权令牌是可选的。
 * 使用授权令牌：传入授权令牌和关联的区域。
 
-让我们看看如何使用密钥和区域创建 [`SpeechTranslationConfig`][config]。 请查看[区域支持](https://docs.azure.cn/cognitive-services/speech-service/regions#speech-sdk)页，找到你的区域标识符。
+让我们看看如何使用密钥和区域创建 [`SpeechTranslationConfig`][config]。 按照[免费试用语音服务](../../../overview.md#try-the-speech-service-for-free)中的步骤获取这些凭据。
 
 ```python
 from_language, to_language = 'en-US', 'de'
@@ -95,7 +95,7 @@ def translate_speech_to_text():
     translation_config = speechsdk.translation.SpeechTranslationConfig(
             subscription=speech_key, region=service_region)
 
-    translation_config.speech_recognition_language = "ko-KR"
+    translation_config.speech_recognition_language = "it-IT"
 
     # Translate to languages. See, https://aka.ms/speech/sttt-languages
     translation_config.add_target_language("fr")
@@ -225,7 +225,7 @@ def translate_speech_to_text():
     translation_config.speech_recognition_language = from_language
     translation_config.add_target_language(to_language)
 
-    # See: https://docs.azure.cn/cognitive-services/speech-service/regions#standard-and-neural-voices
+    # See: https://aka.ms/speech/sdkregion#standard-and-neural-voices
     translation_config.voice_name = "de-DE-Hedda"
 
     recognizer = speechsdk.translation.TranslationRecognizer(
@@ -270,7 +270,7 @@ import os
 import azure.cognitiveservices.speech as speechsdk
 
 speech_key, service_region = os.environ['SPEECH__SERVICE__KEY'], os.environ['SPEECH__SERVICE__REGION']
-from_language, to_languages = 'en-US', [ 'de', 'en', 'zh-Hans' ]
+from_language, to_languages = 'en-US', [ 'de', 'en', 'it', 'pt', 'zh-Hans' ]
 
 def translate_speech_to_text():
     translation_config = speechsdk.translation.SpeechTranslationConfig(
@@ -291,7 +291,9 @@ def synthesize_translations(result):
     language_to_voice_map = {
         "de": "de-DE-KatjaNeural",
         "en": "en-US-AriaNeural",
-        "zh-Hans": "zh-CN-XiaoxiaoNeural"
+        "it": "it-IT-ElsaNeural",
+        "pt": "pt-BR-FranciscaNeural",
+        "zh-Hans": "zh-cn-XiaoxiaoNeural"
     }
     print(f'Recognized: "{result.text}"')
 
@@ -315,7 +317,8 @@ translate_speech_to_text()
 [audioconfig]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig
 [recognizer]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.translationrecognizer
 [recognitionlang]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig
-[addlang]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.speechtranslationconfig?add-target-language-language--str-
-[translations]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.translationrecognitionresult?translations
-[voicename]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.speechtranslationconfig?voice-name
-[speechsynthesisvoicename]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?speech-synthesis-voice-name
+[addlang]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.speechtranslationconfig#add-target-language-language--str-
+[translations]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.translationrecognitionresult#translations
+[voicename]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.speechtranslationconfig#voice-name
+[speechsynthesisvoicename]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig#speech-synthesis-voice-name
+

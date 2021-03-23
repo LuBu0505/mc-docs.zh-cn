@@ -3,18 +3,17 @@ title: 快速入门 - 适用于 Java 的 Azure Key Vault 密钥客户端库
 description: 提供适用于 Java 的 Azure Key Vault 密钥客户端库的快速入门。
 author: msmbaldwin
 ms.custom: devx-track-java, devx-track-azurecli
-origin.date: 08/27/2020
-ms.date: 01/21/2021
-ms.author: v-tawe
+ms.author: v-chazhou
+ms.date: 03/10/2021
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.openlocfilehash: 38c4ef76052fb5f28d7f1517a7dccde5f4c9a306
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: e72e3db15bbff95a503810fcd42bb57a4cee1650
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060625"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765765"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-java"></a>快速入门：适用于 Java 的 Azure Key Vault 密钥客户端库
 适用于 Java 的 Azure Key Vault 密钥客户端库入门。 请遵循以下步骤安装包并试用基本任务的示例代码。
@@ -43,7 +42,6 @@ s
    az cloud set -n AzureChinaCloud
    az login
    ```
-
 
    如果 CLI 可以打开默认浏览器，它将这样做并加载 Azure 登录页。
 

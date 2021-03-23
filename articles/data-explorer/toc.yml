@@ -53,6 +53,8 @@
           href: security.md
         - name: 安全基线
           href: security-baseline.md
+        - name: Azure Policy 的安全控件
+          href: ./security-controls-policy.md
     - name: 业务连续性
       items:
         - name: 概述
@@ -81,6 +83,16 @@
       href: one-click-table.md
     - name: 引入数据
       items:
+        - name: 一键式引入
+          items:
+            - name: 一键式引入概述
+              href: ingest-data-one-click.md
+            - name: 从容器引入到新表的 CSV 数据
+              displayName: 'Event Grid, ingest data, ingestion, one click'
+              href: one-click-ingestion-new-table.md
+            - name: 从本地文件引入到现有表的 JSON 数据
+              displayName: 'ingest data, ingestion, one click'
+              href: one-click-ingestion-existing-table.md
         - name: 流式引入
           items:
             - name: Azure 门户
@@ -100,6 +112,9 @@
             - name: Azure 门户
               displayName: 'Event Hub, ingest, data connection'
               href: ingest-data-event-hub.md
+            - name: 一键式
+              displayName: 'Event Hub, ingest, data connection'
+              href: one-click-event-hub.md
             - name: C#
               displayName: 'Event Hub, ingest, data connection'
               href: data-connection-event-hub-csharp.md
@@ -166,12 +181,16 @@
       items:
         - name: 在 Azure Data Lake 中查询数据
           href: data-lake-query-data.md
+        - name: 在 Azure Monitor 中查询数据
+          href: query-monitor-data.md
         - name: 调试 KQL 内联 Python
           href: debug-inline-python.md
         - name: 使用 SDK
           items:
             - name: Python
               href: python-query-data.md
+        - name: 优化以实现高并发性
+          href: high-concurrency.md
         - name: 时序分析和机器学习
           items:
             - name: 时序分析
@@ -214,7 +233,13 @@
         - name: Kibana（K2Bridge 连接器）
           href: k2bridge.md
     - name: 安全
-      items: null
+      items:
+        - name: 加密
+          items:
+            - name: 群集磁盘加密 - 门户
+              href: cluster-disk-encryption.md
+        - name: 配置托管标识
+          href: managed-identities.md
     - name: 管理
       items:
         - name: 群集
@@ -283,6 +308,18 @@
       items:
         - name: 后继数据库
           href: follower.md
+    - name: 与其他工具集成
+      items:
+        - name: Cosmos DB
+          href: 'https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration'
+        - name: Apache Spark 连接器
+          href: spark-connector.md
+        - name: 笔记本
+          items:
+            - name: 在 Jupyter Notebook 和 Kqlmagic 中分析数据
+              href: kqlmagic.md
+        - name: 同步 Kusto
+          href: ./kusto/tools/synckusto.md
     - name: 疑难解答
       items:
         - name: 创建群集
@@ -367,6 +404,7 @@
         - name: 函数类型
           href: ./kusto/query/functions/index.md
         - name: 用户定义的函数
+          displayName: 'Kusto view, views, Kusto function'
           href: ./kusto/query/functions/user-defined-functions.md
     - name: 查询语句
       items:
@@ -569,6 +607,8 @@
               href: ./kusto/query/datatypes-string-operators.md
             - name: in 和 !in 运算符
               href: ./kusto/query/inoperator.md
+            - name: has_all 运算符
+              href: ./kusto/query/has-all-operator.md
             - name: has_any 运算符
               href: ./kusto/query/has-anyoperator.md
         - name: between 运算符
@@ -779,10 +819,14 @@
           href: ./kusto/query/ingestiontimefunction.md
         - name: ipv4_compare()
           href: ./kusto/query/ipv4-comparefunction.md
+        - name: ipv4_is_in_range()
+          href: ./kusto/query/ipv4-is-in-range-function.md
         - name: ipv4_is_match()
           href: ./kusto/query/ipv4-is-matchfunction.md
         - name: ipv4_is_private()
           href: ./kusto/query/ipv4-is-privatefunction.md
+        - name: ipv4_netmask_suffix()
+          href: ./kusto/query/ipv4-netmask-suffix-function.md
         - name: ipv6_compare()
           href: ./kusto/query/ipv6-comparefunction.md
         - name: ipv6_is_match()
@@ -851,8 +895,6 @@
           href: ./kusto/query/parse-ipv6function.md
         - name: parse_ipv6_mask()
           href: ./kusto/query/parse-ipv6-maskfunction.md
-        - name: parse_json()
-          href: ./kusto/query/parsejsonfunction.md
         - name: parse_path()
           href: ./kusto/query/parsepathfunction.md
         - name: parse_url()
@@ -943,8 +985,9 @@
           href: ./kusto/query/todecimalfunction.md
         - name: 'todouble(), toreal()'
           href: ./kusto/query/todoublefunction.md
-        - name: 'todynamic(), toobject()'
-          href: ./kusto/query/todynamicfunction.md
+        - name: 'todynamic(), parse_json()'
+          displayName: 'toobject(), parsejson()'
+          href: ./kusto/query/parsejsonfunction.md
         - name: toguid()
           href: ./kusto/query/toguidfunction.md
         - name: tohex()
@@ -1085,6 +1128,8 @@
           href: ./kusto/query/rowcumsumfunction.md
         - name: row_number()
           href: ./kusto/query/rownumberfunction.md
+        - name: row_rank()
+          href: ./kusto/query/rowrankfunction.md
         - name: row_window_session()
           href: ./kusto/query/row-window-session-function.md
     - name: 时序分析
@@ -1280,13 +1325,11 @@
                 - name: 请求分类策略命令
                   href: ./kusto/management/request-classification-policy-commands.md
             - name: 请求限制策略
-              items:
-                - name: 请求限制策略
-                  href: ./kusto/management/request-limits-policy.md
+              href: ./kusto/management/request-limits-policy.md
             - name: 请求速率限制策略
-              items:
-                - name: 请求速率限制策略
-                  href: ./kusto/management/request-rate-limit-policy.md
+              href: ./kusto/management/request-rate-limit-policy.md
+            - name: 请求队列策略
+              href: ./kusto/management/request-queuing-policy.md
         - name: 架构
           items:
             - name: 架构管理的最佳做法
@@ -1366,12 +1409,26 @@
                   href: ./kusto/management/materialized-views/materialized-view-create.md
                 - name: .alter materialized-view
                   href: ./kusto/management/materialized-views/materialized-view-alter.md
+                - name: .create-or-alter materialized-view
+                  href: ./kusto/management/materialized-views/materialized-view-create-or-alter.md
+                - name: .alter materialized-view docstring
+                  href: ./kusto/management/materialized-views/materialized-view-alter-docstring.md
+                - name: .alter materialized-view folder
+                  href: ./kusto/management/materialized-views/materialized-view-alter-folder.md
+                - name: .alter materialized-view lookback
+                  href: ./kusto/management/materialized-views/materialized-view-alter-lookback.md
+                - name: .alter materialized-view autoUpdateSchema
+                  href: ./kusto/management/materialized-views/materialized-view-alter-autoUpdateSchema.md
                 - name: .show materialized-view commands
                   href: ./kusto/management/materialized-views/materialized-view-show-commands.md
                 - name: .drop materialized-view
                   href: ./kusto/management/materialized-views/materialized-view-drop.md
                 - name: .disable | .enable materialized-view
                   href: ./kusto/management/materialized-views/materialized-view-enable-disable.md
+                - name: 具体化视图策略
+                  href: ./kusto/management/materialized-views/materialized-view-policies.md
+                - name: 具体化视图数据清除
+                  href: ./kusto/management/materialized-views/materialized-view-purge.md
             - name: 存储的查询结果
               displayName: '.set stored query, .show stored query, .drop stored query'
               href: ./kusto/management/stored-query-results.md
@@ -1755,6 +1812,9 @@
         - name: quantize_fl()
           displayName: functions library
           href: kusto/functions-library/quantize-fl.md
+        - name: series_dbl_exp_smoothing_fl()
+          displayName: functions library
+          href: kusto/functions-library/series-dbl-exp-smoothing-fl.md
         - name: series_dot_product_fl()
           displayName: functions library
           href: kusto/functions-library/series-dot-product-fl.md
@@ -1804,4 +1864,4 @@
         - name: 定价页面
           href: 'https://www.azure.cn/pricing/details/data-explorer/'
     - name: 服务更新
-      href: 'https://www.azure.cn/what-is-new'
+      href: 'https://azure.microsoft.com/updates/?product=data-explorer'

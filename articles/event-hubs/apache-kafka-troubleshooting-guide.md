@@ -2,15 +2,13 @@
 title: 排查适用于 Apache Kafka 的 Azure 事件中心的问题
 description: 本文介绍如何排查适用于 Apache Kafka 的 Azure 事件中心的问题
 ms.topic: article
-ms.author: v-tawe
-origin.date: 06/23/2020
-ms.date: 11/04/2020
-ms.openlocfilehash: 9ed63a3c2f6819ec26b2dd373158e3794b3eee9f
-ms.sourcegitcommit: b217474b15512b0f40b2eaae66bd3c521383d321
+ms.date: 03/11/2021
+ms.openlocfilehash: 02cbe900a13479d8b8ea6d2200476525678f6d08
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93375670"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765647"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>针对事件中心的 Apache Kafka 故障排除指南
 本文提供的故障排除技巧适用于你在使用适用于 Apache Kafka 的事件中心时可能会遇到的问题。 

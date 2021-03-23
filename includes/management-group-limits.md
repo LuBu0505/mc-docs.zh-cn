@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: governance
 ms.topic: include
 origin.date: 03/26/2020
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 0b4d191a54a1d206ab53e4b42a1f37645967b022
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: aa5588383bc4e4bb1568e71ff2526c31bc4be1bf
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102053329"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767109"
 ---
 | 资源 | 限制 |
 | --- | --- |

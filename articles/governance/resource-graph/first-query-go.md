@@ -1,16 +1,17 @@
 ---
 title: 快速入门：你的第一个 Go 查询
 description: 本快速入门介绍为 Go 启用 Resource Graph 包并运行第一个查询的步骤。
-origin.date: 10/14/2020
-ms.date: 01/05/2021
-ms.author: v-tawe
+origin.date: 01/27/2021
+author: rockboyfor
+ms.date: 03/22/2021
+ms.author: v-yeche
 ms.topic: quickstart
-ms.openlocfilehash: 048de63c96605bb2cd2a164ef877f46ca073a8df
-ms.sourcegitcommit: ff20289adb80a6ab45e15fa5e196ff7af7e1c6b5
+ms.openlocfilehash: 525c18e07fd2ab7f37b249c8059aa8ed0dcd5013
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97874848"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766742"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-go"></a>快速入门：使用 Go 运行你的第一个 Resource Graph 查询
 
@@ -28,7 +29,7 @@ ms.locfileid: "97874848"
 
 1. 请确保安装最新的 Go（至少为 1.14）。 如果尚未安装，请在 [Golang.org](https://golang.org/dl/) 下载。
 
-1. 请确保安装最新的 Azure CLI（至少为 2.5.1）。 如果尚未安装，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
+1. 请确保安装最新的 Azure CLI（至少为 2.5.1）。 如果尚未安装，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
    > [!NOTE]
    > 在以下示例中，需要 Azure CLI 来启用 Go 以使用 `auth.NewAuthorizerFromCLI()` 方法。 有关其他选项的信息，请参阅 [Azure SDK for Go - 更多身份验证详细信息](https://github.com/Azure/azure-sdk-for-go#more-authentication-details)。
@@ -57,7 +58,7 @@ ms.locfileid: "97874848"
 
    ```Go
    package main
-   
+
    import (
       "fmt"
       "os"
@@ -66,12 +67,12 @@ ms.locfileid: "97874848"
       arg "github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph"
       "github.com/Azure/go-autorest/autorest/azure/auth"
    )
-   
+
    func main() {
        // Get variables from command line arguments
        var query = os.Args[1]
        var subList = os.Args[2:]
-   
+
        // Create and authorize a ResourceGraph client
        argClient := arg.New()
        authorizer, err := auth.NewAuthorizerFromCLI()
@@ -80,19 +81,19 @@ ms.locfileid: "97874848"
        } else {
            fmt.Printf(err.Error())
        }
-     
+
        // Set options
        RequestOptions := arg.QueryRequestOptions {
            ResultFormat: "objectArray",
        }
-     
+
        // Create the query request
        Request := arg.QueryRequest {
            Subscriptions: &subList,
            Query: &query,
            Options: &RequestOptions,
        }
-     
+
        // Run the query and get the results
        var results, queryErr = argClient.Resources(context.Background(), Request)
        if queryErr == nil {
@@ -152,3 +153,5 @@ go clean -i github.com/Azure/go-autorest/autorest/azure/auth
 
 > [!div class="nextstepaction"]
 > [获取有关查询语言的详细信息](./concepts/query-language.md)
+
+<!--Update_Description: update meta properties, wording update, update link-->

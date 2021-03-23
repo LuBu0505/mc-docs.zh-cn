@@ -3,17 +3,17 @@ title: Azure Stack Hub VM 功能
 description: 了解使用 Azure Stack Hub 中的 VM 时的不同功能和注意事项。
 author: WenJason
 ms.topic: article
-origin.date: 11/22/2020
-ms.date: 01/11/2021
+origin.date: 03/02/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/22/2020
-ms.openlocfilehash: d1c10870d1e22f74e3bee01a4eb9a8309500e319
-ms.sourcegitcommit: 3f54ab515b784c9973eb00a5c9b4afbf28a930a9
+ms.openlocfilehash: ee650aff4df974f0a9efa6cebdfdd66fcd6af05b
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894394"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765650"
 ---
 # <a name="azure-stack-hub-vm-features"></a>Azure Stack Hub VM 功能
 
@@ -131,7 +131,7 @@ Get-AzureRMResourceProvider | `
 
 ## <a name="windows-activation"></a>Windows 激活
 
-必须根据产品使用权利和 Microsoft 许可条款使用 Windows 产品。 Azure Stack Hub 使用[自动 VM 激活](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) (AVMA) 来激活 Windows Server VM。
+必须根据产品使用权利和 Microsoft 许可条款使用 Windows 产品。 Azure Stack Hub 使用[自动 VM 激活](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn303421(v%3dws.11)) (AVMA) 来激活 Windows Server VM。
 
 - Azure Stack Hub 主机使用 Windows Server 2016 的 AVMA 密钥激活 Windows。 运行 Windows Server 2012 R2 或更高版本的所有 VM 都将自动激活。
 - 运行 Windows Server 2012 或更早版本的 VM 不会自动激活，必须使用 [MAK 激活](https://docs.microsoft.com/previous-versions/tn-archive/ff793438(v=technet.10))进行激活。 若要使用 MAK 激活，必须提供自己的产品密钥。

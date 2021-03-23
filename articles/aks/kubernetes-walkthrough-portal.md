@@ -6,17 +6,17 @@ services: container-service
 ms.topic: quickstart
 origin.date: 01/13/2021
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 5b32f66e96be3e9ddf27796f3cf2d174a2440f71
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.custom: mvc, seo-javascript-october2019, contperfq3
+ms.openlocfilehash: 6da7db0ad17329dd5ecfd7db0969fb84127418dd
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054070"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766429"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -58,7 +58,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 4. 在“节点池”页上，保留默认选项。 单击屏幕底部的“下一步:身份验证”。
     
     > [!CAUTION]
-    > 创建新的 AAD 服务主体可能需要几分钟的时间才能传播并变得可用，这样会导致 Azure 门户中出现“找不到服务主体”错误和验证失败。 如果遇到这种情况，请访问[此处](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster)进行缓解。
+    > 创建新的 AAD 服务主体可能需要几分钟的时间才能传播并变得可用，这样会导致 Azure 门户中出现“找不到服务主体”错误和验证失败。 如果遇到此问题，请访问[排查常见的 Azure Kubernetes 服务问题](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster)以进行缓解。
 
 5. 在“身份验证”页上，配置以下选项：
     - 将“服务主体”字段保留为“(新)默认服务主体”以创建新的服务主体。 或者，可以选择“配置服务主体”以使用现有的服务主体。 如果使用现有的服务主体，则需要提供 SPN 客户端 ID 和机密。
@@ -91,7 +91,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点列表。
+若要验证到群集的连接，请使用 `kubectl get` 命令返回群集节点列表。
 
 ```console
 kubectl get nodes
@@ -106,7 +106,7 @@ aks-agentpool-14693408-0   Ready     agent     15m       v1.11.5
 
 ## <a name="run-the-application"></a>运行应用程序
 
-Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容器映像。 在本快速入门中，清单用于创建运行 Azure Vote 应用程序所需的所有对象。 此清单包括两个 [Kubernetes 部署][kubernetes-deployment] - 一个用于 Azure Vote Python 示例应用程序，另一个用于 Redis 实例。 此外，还会创建两个 [Kubernetes 服务][kubernetes-service] - 一个内部服务用于 Redis 实例，一个外部服务用于从 Internet 访问 Azure Vote 应用程序。
+Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容器映像。 在本快速入门中，清单用于创建运行 Azure Vote 应用程序所需的所有对象。 此清单包括两个 Kubernetes 部署 - 一个用于 Azure Vote Python 示例应用程序，另一个用于 Redis 实例。 此外，还会创建两个 Kubernetes 服务 - 一个内部服务用于 Redis 实例，一个外部服务用于从 Internet 访问 Azure Vote 应用程序。
 
 在本地 Shell 中，使用编辑器创建一个名为 `azure-vote.yaml` 的文件，如 `code azure-vote.yaml`、`nano azure-vote.yaml` 或 `vi azure-vote.yaml`。 然后复制以下 YAML 定义：
 
@@ -198,7 +198,7 @@ spec:
     app: azure-vote-front
 ```
 
-使用 [kubectl apply][kubectl-apply] 命令部署应用程序，并指定 YAML 清单的名称：
+使用 `kubectl apply` 命令部署应用程序，并指定 YAML 清单的名称：
 
 ```console
 kubectl apply -f azure-vote.yaml
@@ -217,7 +217,7 @@ service "azure-vote-front" created
 
 应用程序运行时，Kubernetes 服务将向 Internet 公开应用程序前端。 此过程可能需要几分钟才能完成。
 
-若要监视进度，请将 [kubectl get service][kubectl-get] 命令与 `--watch` 参数配合使用。
+若要监视进度，请将 `kubectl get service` 命令与 `--watch` 参数配合使用。
 
 ```console
 kubectl get service azure-vote-front --watch
@@ -280,7 +280,7 @@ az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 
 在本快速入门中，部署了 Kubernetes 群集，并向该群集部署了多容器应用程序。
 
-若要详细了解 AKS 并演练部署示例的完整代码，请继续阅读“Kubernetes 群集”教程。
+若要通过浏览完整的示例（包括构建应用程序、从 Azure 容器注册表进行部署、更新正在运行的应用程序，以及缩放和升级群集）来了解有关 AKS 的更多信息，请继续阅读 Kubernetes 群集教程。
 
 > [!div class="nextstepaction"]
 > [AKS 教程][aks-tutorial]
@@ -296,19 +296,14 @@ az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 <!-- LINKS - internal -->
 
 [kubernetes-concepts]: concepts-clusters-workloads.md
-[az-aks-get-credentials]: https://docs.azure.cn/cli/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_credentials
+[az-aks-get-credentials]: https://docs.azure.cn/cli/aks#az_aks_get_credentials
 [az-aks-delete]: https://docs.azure.cn/cli/aks#az_aks_delete
-[aks-monitor]: ../azure-monitor/insights/container-insights-overview.md
+[aks-monitor]: ../azure-monitor/containers/container-insights-overview.md
 [aks-network]: ./concepts-network.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 
 <!--NOT AVAILABLE ON [http-routing]: ./http-application-routing.md-->
 
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
-
-<!--NOT AVAILABLE ON [azure-dev-spaces]: ../dev-spaces/index.yml-->
-
-[kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
-[kubernetes-service]: concepts-network.md#services
 
 <!--Update_Description: update meta properties, wording update, update link-->

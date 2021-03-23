@@ -3,18 +3,17 @@ title: Azure IoT Edge 开发环境 | Microsoft Docs
 description: 了解可帮助你创建 IoT Edge 模块的支持系统和第一方开发工具
 author: kgremban
 manager: philmea
-ms.author: v-tawe
-origin.date: 01/04/2019
-ms.date: 11/13/2020
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0a0611e59a9bbc250300759ac9d40fbc6a6b8bf7
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: 3919a33380194d758b2b239d31ba46e3f58391ab
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300777"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765818"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>为 IoT Edge 准备开发和测试环境
 

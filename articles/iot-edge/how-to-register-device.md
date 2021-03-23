@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.author: v-tawe
-ms.openlocfilehash: ec3da7dd8b86e7a2ec9b0bd7020a9dd8e14eb572
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.date: 03/16/2021
+ms.author: v-chazhou
+ms.openlocfilehash: a66b520b6e2db04db266b26fe7b7b9d2af26081b
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579641"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766954"
 ---
 # <a name="register-an-iot-edge-device-in-iot-hub"></a>在 IoT 中心注册 IoT Edge 设备
 

@@ -1,21 +1,22 @@
 ---
 title: 快速入门：第一个 Azure CLI 查询
 description: 本快速入门介绍为 Azure CLI 启用 Resource Graph 扩展并运行第一个查询的步骤。
-ms.author: v-tawe
-origin.date: 10/14/2020
-ms.date: 11/06/2020
+origin.date: 01/27/2021
+author: rockboyfor
+ms.date: 03/22/2021
+ms.author: v-yeche
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1925f8db877cab1454b4fbd60ad817256f744420
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.openlocfilehash: db13db174ca324b00fc48c8c209d16ca3e77898b
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431097"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766745"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>快速入门：使用 Azure CLI 运行你的第一个 Resource Graph 查询
 
-使用 Azure Resource Graph 的第一步是确保为 [Azure CLI](/cli/) 安装了该扩展。 本快速入门将指导你完成将该扩展添加到 Azure CLI 安装的过程。 可以通过安装在本地的 Azure CLI 使用该扩展。
+使用 Azure Resource Graph 的第一步是确保为 [Azure CLI](https://docs.azure.cn/cli/) 安装了该扩展。 本快速入门将指导你完成将该扩展添加到 Azure CLI 安装的过程。 可以通过安装在本地的 Azure CLI 使用该扩展。
 
 在此过程结束时，你已将该扩展添加到所选的 Azure CLI 安装中，并将运行你的第一个 Resource Graph 查询。
 
@@ -23,28 +24,30 @@ ms.locfileid: "96431097"
 
 如果没有 Azure 订阅，请在开始前创建一个[试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)帐户。
 
+[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
+
 ## <a name="add-the-resource-graph-extension"></a>添加 Resource Graph 扩展
 
 若要使 Azure CLI 能够查询 Azure Resource Graph，则必须添加该扩展。 此扩展适用于可以使用 Azure CLI 的任何位置，包括 [Windows 10 上的 bash](https://docs.microsoft.com/windows/wsl/install-win10)、[Azure CLI Docker 映像](https://hub.docker.com/_/microsoft-azure-cli)或在本地安装。
 
-1. 请确保安装最新的 Azure CLI（至少为 2.0.76）。 若尚未安装，请遵循[这些说明](/cli/install-azure-cli-windows)。
+1. 请确保安装最新的 Azure CLI（至少为 2.0.76）。 若尚未安装，请遵循[这些说明](https://docs.microsoft.com/cli/azure/install-azure-cli-windows)。
 
 1. 在所选的 Azure CLI 环境中，使用以下命令导入该扩展：
 
-   ```azurecli
-   # Add the Resource Graph extension to the Azure CLI environment
-   az extension add --name resource-graph
-   ```
+    ```azurecli
+    # Add the Resource Graph extension to the Azure CLI environment
+    az extension add --name resource-graph
+    ```
 
 1. 验证该扩展是否已安装以及是否为预期的版本（至少为 **1.0.0**）：
 
-   ```azurecli
-   # Check the extension list (note that you may have other extensions installed)
-   az extension list
+    ```azurecli
+    # Check the extension list (note that you may have other extensions installed)
+    az extension list
 
-   # Run help for graph query options
-   az graph query -h
-   ```
+    # Run help for graph query options
+    az graph query -h
+    ```
 
 ## <a name="run-your-first-resource-graph-query"></a>运行首个 Resource Graph 查询
 
@@ -52,34 +55,34 @@ ms.locfileid: "96431097"
 
 1. 使用 `graph` 扩展和 `query` 命令运行你的第一个 Azure Resource Graph 查询：
 
-   ```azurecli
-   # Login first with az login
-   az cloud set -n AzureChinaCloud
-   az login
+    ```azurecli
+    # Login first with az login
+    az cloud set -n AzureChinaCloud
+    az login
 
-   # Run Azure Resource Graph query
-   az graph query -q 'Resources | project name, type | limit 5'
-   ```
+    # Run Azure Resource Graph query
+    az graph query -q 'Resources | project name, type | limit 5'
+    ```
 
-   > [!NOTE]
-   > 由于此查询示例未提供排序修饰符（例如 `order by`），因此多次运行此查询可能会为每个请求生成一组不同的资源。
+    > [!NOTE]
+    > 由于此查询示例未提供排序修饰符（例如 `order by`），因此多次运行此查询可能会为每个请求生成一组不同的资源。
 
 1. 将查询更新为 `order by` Name 属性：
 
-   ```azurecli
-   # Run Azure Resource Graph query with 'order by'
-   az graph query -q 'Resources | project name, type | limit 5 | order by name asc'
-   ```
+    ```azurecli
+    # Run Azure Resource Graph query with 'order by'
+    az graph query -q 'Resources | project name, type | limit 5 | order by name asc'
+    ```
 
-   > [!NOTE]
-   > 与第一个查询一样，多次运行此查询可能会为每个请求生成一组不同的资源。 查询命令的顺序非常重要。 在本例中，`order by` 位于 `limit` 之后。 命令按此顺序执行，首先会限制查询结果，然后对它们进行排序。
+    > [!NOTE]
+    > 与第一个查询一样，多次运行此查询可能会为每个请求生成一组不同的资源。 查询命令的顺序非常重要。 在本例中，`order by` 位于 `limit` 之后。 命令按此顺序执行，首先会限制查询结果，然后对它们进行排序。
 
 1. 将查询更新为先 `order by` Name 属性，然后再 `limit` 为前五个结果：
 
-   ```azurecli
-   # Run Azure Resource Graph query with `order by` first, then with `limit`
-   az graph query -q 'Resources | project name, type | order by name asc | limit 5'
-   ```
+    ```azurecli
+    # Run Azure Resource Graph query with `order by` first, then with `limit`
+    az graph query -q 'Resources | project name, type | order by name asc | limit 5'
+    ```
 
 假设环境中没有任何变化，则多次运行最后一个查询时，返回的结果将是一致的且按 Name 属性排序，但仍限制为前五个结果。
 
@@ -98,3 +101,5 @@ az extension remove -n resource-graph
 
 > [!div class="nextstepaction"]
 > [获取有关查询语言的详细信息](./concepts/query-language.md)
+
+<!--Update_Description: update meta properties, wording update, update link-->

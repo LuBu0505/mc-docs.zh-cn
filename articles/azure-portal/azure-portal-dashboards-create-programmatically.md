@@ -2,13 +2,13 @@
 title: 以编程方式创建 Azure 仪表板
 description: 使用 Azure 门户中的仪表板作为模板以编程方式创建 Azure 仪表板。 包括 JSON 引用。
 ms.topic: how-to
-ms.date: 02/20/2021
-ms.openlocfilehash: b315c0180a318878b70e1b4b8a0b3f472c493f90
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.date: 03/15/2021
+ms.openlocfilehash: c903327105597f064b291cef33197b4a63030fa4
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196756"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766673"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以编程方式创建 Azure 仪表板
 
@@ -18,7 +18,7 @@ ms.locfileid: "102196756"
 
 ## <a name="overview"></a>概述
 
-[Azure 门户](https://portal.azure.cn)中的共享仪表板与虚拟机和存储帐户一样，是一种[资源](../azure-resource-manager/management/overview.md)。 可以使用 [Azure 资源管理器 REST API](https://docs.microsoft.com/rest/api/)、[Azure CLI](/cli/) 和 [Azure PowerShell 命令](https://docs.microsoft.com/powershell/azure/get-started-azureps)以编程方式管理这些资源。  
+[Azure 门户](https://portal.azure.cn)中的共享仪表板与虚拟机和存储帐户一样，是一种[资源](../azure-resource-manager/management/overview.md)。 可以使用 [Azure 资源管理器 REST API](https://docs.microsoft.com/rest/api/)、[Azure CLI](/cli) 和 [Azure PowerShell 命令](https://docs.microsoft.com/powershell/azure/get-started-azureps)以编程方式管理这些资源。
 
 许多功能都建立这些 API 的基础之上，可以简化资源的管理。 所有这些 API 和工具都提供了创建、罗列、检索、修改和删除资源的方法。 由于仪表板是资源，因此可以选择使用你偏好的 API 或工具。
 
@@ -648,7 +648,7 @@ id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/v
 }
 ```
 
-通过示例了解如何使用参数化模板来部署仪表板后，就可以尝试使用 [Azure 资源管理器 REST API](https://docs.microsoft.com//rest/api/)、[Azure CLI](/cli) 或 [Azure PowerShell 命令](https://docs.microsoft.com//powershell/azure/get-started-azureps)来部署模板。
+通过示例了解如何使用参数化模板来部署仪表板后，就可以尝试使用 [Azure 资源管理器 REST API](https://docs.microsoft.com/rest/api/)、[Azure CLI](/cli) 或 [Azure PowerShell 命令](https://docs.microsoft.com/powershell/azure/get-started-azureps)来部署模板。
 
 ## <a name="programmatically-create-a-dashboard-by-using-azure-cli"></a>使用 Azure CLI 以编程方式创建仪表板
 

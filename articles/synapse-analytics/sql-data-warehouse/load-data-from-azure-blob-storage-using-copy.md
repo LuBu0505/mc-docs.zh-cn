@@ -12,12 +12,12 @@ ms.date: 12/07/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 1dd47cc590cc0c468d219a24b95853942c9b0cd4
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 924887a6ca6f115a21d2d262e2e442bca5863291
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747156"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766328"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>教程：加载纽约出租车数据集
 
@@ -261,7 +261,7 @@ ms.locfileid: "96747156"
 
     ```sql
     COPY INTO [dbo].[Date]
-    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Date'
+    FROM 'https://nytaxiblob.blob.core.chinacloudapi.cn/2013/Date'
     WITH
     (
         FILE_TYPE = 'CSV',
@@ -272,7 +272,7 @@ ms.locfileid: "96747156"
     
     
     COPY INTO [dbo].[Geography]
-    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Geography'
+    FROM 'https://nytaxiblob.blob.core.chinacloudapi.cn/2013/Geography'
     WITH
     (
         FILE_TYPE = 'CSV',
@@ -282,7 +282,7 @@ ms.locfileid: "96747156"
     OPTION (LABEL = 'COPY : Load [dbo].[Geography] - Taxi dataset');
     
     COPY INTO [dbo].[HackneyLicense]
-    FROM 'https://nytaxiblob.blob.core.windows.net/2013/HackneyLicense'
+    FROM 'https://nytaxiblob.blob.core.chinacloudapi.cn/2013/HackneyLicense'
     WITH
     (
         FILE_TYPE = 'CSV',
@@ -292,7 +292,7 @@ ms.locfileid: "96747156"
     OPTION (LABEL = 'COPY : Load [dbo].[HackneyLicense] - Taxi dataset');
     
     COPY INTO [dbo].[Medallion]
-    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Medallion'
+    FROM 'https://nytaxiblob.blob.core.chinacloudapi.cn/2013/Medallion'
     WITH
     (
         FILE_TYPE = 'CSV',
@@ -302,7 +302,7 @@ ms.locfileid: "96747156"
     OPTION (LABEL = 'COPY : Load [dbo].[Medallion] - Taxi dataset');
     
     COPY INTO [dbo].[Time]
-    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Time'
+    FROM 'https://nytaxiblob.blob.core.chinacloudapi.cn/2013/Time'
     WITH
     (
         FILE_TYPE = 'CSV',
@@ -312,7 +312,7 @@ ms.locfileid: "96747156"
     OPTION (LABEL = 'COPY : Load [dbo].[Time] - Taxi dataset');
     
     COPY INTO [dbo].[Weather]
-    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Weather'
+    FROM 'https://nytaxiblob.blob.core.chinacloudapi.cn/2013/Weather'
     WITH
     (
         FILE_TYPE = 'CSV',
@@ -323,7 +323,7 @@ ms.locfileid: "96747156"
     OPTION (LABEL = 'COPY : Load [dbo].[Weather] - Taxi dataset');
     
     COPY INTO [dbo].[Trip]
-    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Trip2013'
+    FROM 'https://nytaxiblob.blob.core.chinacloudapi.cn/2013/Trip2013'
     WITH
     (
         FILE_TYPE = 'CSV',

@@ -3,9 +3,8 @@ title: 配置 API 代理模块 - Azure IoT Edge | Microsoft Docs
 description: 了解如何针对 IoT Edge 网关层次结构自定义 API 代理模块。
 author: kgremban
 manager: philmea
-ms.author: v-tawe
-origin.date: 11/10/2020
-ms.date: 12/03/2020
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
@@ -13,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 9478550182bc882981f006697b2843d4ee27cc23
-ms.sourcegitcommit: 60e70acb6f9604aeef69d2027f7f96a1d7d5b248
+ms.openlocfilehash: 212fbeae2e82eb1cc992c738fd89e80acf68a1db
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96541207"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765805"
 ---
 # <a name="configure-the-api-proxy-module-for-your-gateway-hierarchy-scenario-preview"></a>配置适用于网关层次结构方案的 API 代理模块（预览版）
 

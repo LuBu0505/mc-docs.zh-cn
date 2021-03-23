@@ -3,17 +3,17 @@ title: 在 Linux VM 上使用虚拟 TPM 预配设备 - Azure IoT Edge
 description: 使用 Linux VM 上的模拟 TPM 来测试 Azure IoT Edge 的 Azure 设备预配服务
 author: kgremban
 manager: philmea
-ms.author: v-tawe
-ms.date: 03/01/2021
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7c49243a2bf45e30d77ce4bdb2f3281476550f4c
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.openlocfilehash: 873e5e63cd7c0bb12e75a8182177d5ee1b68f43d
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196902"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765810"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>在 Linux 上使用 TPM 创建和预配 IoT Edge 设备
 

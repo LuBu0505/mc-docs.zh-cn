@@ -2,18 +2,17 @@
 title: 在 Azure IoT 中心设备预配服务中滚动更新 X.509 证书
 description: 如何使用设备预配服务 (DPS) 实例滚动更新 X.509 证书
 author: wesmc7777
-ms.author: v-tawe
-origin.date: 08/06/2018
-ms.date: 12/03/2020
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 728495c4e7aa86a579e976a521c07701b131f630
-ms.sourcegitcommit: 60e70acb6f9604aeef69d2027f7f96a1d7d5b248
+ms.openlocfilehash: f4a16502b3c1df4d2002e599250dbd6833fe57f7
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96541138"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765350"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>如何滚动更新 X.509 设备证书
 

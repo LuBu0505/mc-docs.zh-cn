@@ -2,19 +2,20 @@
 title: 快速入门：使用 Synapse Studio 创建无服务器 Apache Spark 池
 description: 遵循本指南中的步骤，使用 Synapse Studio 创建一个无服务器 Apache Spark 池。
 services: synapse-analytics
-author: saveenr
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: spark
-ms.date: 10/16/2020
-ms.author: saveenr
+origin.date: 10/16/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 636233d0dac60587694efe31749bae417815f782
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 0b45e2062ed59ee081a1decc5f1df74f45a0e67e
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207439"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766855"
 ---
 # <a name="quickstart-create-a-serverless-apache-spark-pool-using-synapse-studio"></a>快速入门：使用 Synapse Studio 创建无服务器 Apache Spark 池
 
@@ -25,16 +26,16 @@ Azure Synapse Analytics 提供了各种分析引擎，可帮助你引入、转�
 > [!IMPORTANT]
 > 不管是否正在使用 Spark 实例，它们都会按分钟按比例计费。 请务必在用完 Spark 实例后将其关闭，或设置较短的超时。 有关详细信息，请参阅本文的 **清理资源** 部分。
 
-如果没有 Azure 订阅，请[在开始之前创建一个免费帐户](https://azure.microsoft.com/free/)。
+如果没有 Azure 订阅，[请在开始前创建一个试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
+- Azure 订阅 - [创建试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 - [Synapse 工作区](./quickstart-create-workspace.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)
+登录到 [Azure 门户](https://portal.azure.cn/)
 
 ## <a name="navigate-to-the-synapse-workspace"></a>导航到 Synapse 工作区
 

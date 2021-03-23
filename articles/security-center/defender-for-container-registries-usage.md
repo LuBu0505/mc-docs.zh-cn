@@ -3,16 +3,16 @@ title: 如何使用适用于容器注册表的 Azure Defender
 description: 了解如何使用适用于容器注册表的 Azure Defender 扫描 Linux 托管注册表中的 Linux 映像
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 01/25/2021
+ms.date: 03/18/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 1578ffc5f7d7b8d2fcbf19913dd3a7f793e66d16
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 28143bde37123565650ad4016835fd9a7ba984d5
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060688"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766355"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>使用适用于容器注册表的 Azure Defender 来扫描映像是否存在漏洞
 
@@ -21,8 +21,6 @@ ms.locfileid: "99060688"
 启用适用于容器注册表的 Azure Defender 时，会立即扫描推送到注册表的任何映像。 此外，还将扫描最近 30 天内拉取的所有映像。 
 
 当扫描程序向安全中心报告漏洞时，安全中心会提供结果和相关信息作为建议。 此外，这些结果还包括相关信息，如修正步骤、相关 CVE、CVSS 评分等。 你可以查看为一个或多个订阅或者为特定注册表识别出的漏洞。
-
-[!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
 
 
 ## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>标识 Azure 容器注册表映像中的漏洞 

@@ -1,17 +1,18 @@
 ---
 title: 快速入门：你的第一个 Python 查询
 description: 本快速入门介绍为 Python 启用 Resource Graph 库并运行第一个查询的步骤。
-origin.date: 10/14/2020
-ms.date: 01/14/2021
-ms.author: v-tawe
+origin.date: 01/27/2021
+author: rockboyfor
+ms.date: 03/22/2021
+ms.author: v-yeche
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: c8c5db9749998d4be79e4d0614e67c4afa85883c
-ms.sourcegitcommit: 93063f9b8771b8e895c3bcdf218f5e3af14ef537
+ms.openlocfilehash: c038534ea77bf8483ca8da944c9378327693cc4a
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98193267"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766734"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>快速入门：使用 Python 运行你的第一个 Resource Graph 查询
 
@@ -23,7 +24,7 @@ ms.locfileid: "98193267"
 
 如果没有 Azure 订阅，请在开始前创建一个[试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)帐户。
 
-<!-- [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)] -->
+<!--NOT AVAILABLE ON [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]-->
 
 ## <a name="add-the-resource-graph-library"></a>添加 Resource Graph 库
 
@@ -31,7 +32,7 @@ ms.locfileid: "98193267"
 
 1. 请确保安装最新的 Python（至少为 3.8）。 如果尚未安装，请在 [Python.org](https://www.python.org/downloads/) 下载。
 
-1. 请确保安装最新的 Azure CLI（至少为 2.5.1）。 如果尚未安装，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
+1. 请确保安装最新的 Azure CLI（至少为 2.5.1）。 如果尚未安装，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
    > [!NOTE]
    > 在下面的示例中需要使用 Azure CLI，这样 Python 才能使用基于 CLI 的身份验证。 有关其他选项的信息，请参阅[使用适用于 Python 的 Azure 管理库进行身份验证](https://docs.microsoft.com/azure/developer/python/azure-sdk-authenticate)。
@@ -74,12 +75,12 @@ ms.locfileid: "98193267"
    ```python
    # Import Azure Resource Graph library
    import azure.mgmt.resourcegraph as arg
-   
+
    # Import specific methods and models from other libraries
    from azure.common.credentials import get_azure_cli_credentials
    from azure.common.client_factory import get_client_from_cli_profile
    from azure.mgmt.resource import SubscriptionClient
-   
+
    # Wrap all the work in a function
    def getresources( strQuery ):
        # Get your credentials from Azure CLI (development only!) and get your subscription list
@@ -90,20 +91,20 @@ ms.locfileid: "98193267"
        subsList = []
        for sub in subsRaw:
            subsList.append(sub.get('subscription_id'))
-       
+
        # Create Azure Resource Graph client and set options
        argClient = get_client_from_cli_profile(arg.ResourceGraphClient)
        argQueryOptions = arg.models.QueryRequestOptions(result_format="objectArray")
-       
+
        # Create query
        argQuery = arg.models.QueryRequest(subscriptions=subsList, query=strQuery, options=argQueryOptions)
-       
+
        # Run query
        argResults = argClient.resources(argQuery)
-   
+
        # Show Python object
        print(argResults)
-   
+
    getresources("Resources | project name, type | limit 5")
    ```
 
@@ -142,3 +143,5 @@ pip uninstall azure-mgmt-resourcegraph azure-mgmt-resource azure-cli-core
 
 > [!div class="nextstepaction"]
 > [获取有关查询语言的详细信息](./concepts/query-language.md)
+
+<!--Update_Description: update meta properties, wording update, update link-->

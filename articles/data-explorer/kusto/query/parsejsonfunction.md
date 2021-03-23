@@ -1,35 +1,36 @@
 ---
-title: parse_json() - Azure 数据资源管理器
-description: 本文介绍 Azure 数据资源管理器中的 parse_json()。
+title: todynamic() 和 parse_json() 函数 - Azure 数据资源管理器
+description: 本文介绍 Azure 数据资源管理器中的 todynamic() 和 parse_json() 函数。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 02/13/2020
-ms.date: 01/22/2021
+ms.date: 03/18/2021
 ms.localizationpriority: high
-ms.openlocfilehash: e9037ac662b0cac02a65a1171af2e2a55ee3dd8a
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.openlocfilehash: fde7c15c7812956e796cbd9a5acf266415e09bb7
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611608"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766497"
 ---
-# <a name="parse_json"></a>parse_json()
+# <a name="todynamic-parse_json"></a>todynamic(), parse_json()
 
-将 `string` 解释为 JSON 值并以 `dynamic` 形式返回值。
+将 `string` 解释为 JSON 值并以 `dynamic` 形式返回值。 
 
-当需要提取 JSON 复合对象的多个元素时，使用此函数比使用 [extractjson() function](./extractjsonfunction.md) 函数更好。
+> [!NOTE]
+> `todynamic()` 和 `parse_json()` 函数以等效方式进行解释。
+
+当需要提取 JSON 复合对象的多个元素时，使用此函数比使用 [extractjson() function](./extractjsonfunction.md) 函数更好。 尽可能首选使用 [dynamic()](./scalar-data-types/dynamic.md)。
 
 ## <a name="syntax"></a>语法
 
 `parse_json(`*json*`)`
+`todynamic(`*json*`)`
 
-别名：
-- [todynamic()](./todynamicfunction.md)
-- [toobject()](./todynamicfunction.md)
+<!-- deprecated aliases: `toobject()` and parsejson() -->
 
 ## <a name="arguments"></a>参数
 

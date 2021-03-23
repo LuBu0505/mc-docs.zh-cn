@@ -2,13 +2,13 @@
 title: 捕获流式处理事件 - Azure 事件中心 | Microsoft Docs
 description: 本文概述了捕获功能，该功能可以捕获通过 Azure 事件中心流式处理的事件。
 ms.topic: article
-ms.date: 02/24/2021
-ms.openlocfilehash: 338adba3e9cb00099590ec6b24addab40c8f5984
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.date: 03/11/2021
+ms.openlocfilehash: bf929937808e2c2274a9e39dd21ff3e579be7f5e
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196526"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766903"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>通过 Azure Blob 存储或 Azure Data Lake Storage 中的 Azure 事件中心来捕获事件
 使用 Azure 事件中心，可以按指定的时间间隔或大小差异在所选的 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)或 [Azure Data Lake Store Gen 2](https://azure.microsoft.com/services/data-lake-store/) 帐户中自动捕获事件中心的流式处理数据。 设置捕获极其简单，无需管理费用即可运行它，并且可以使用事件中心[吞吐量单位](event-hubs-scalability.md#throughput-units)自动进行缩放。 事件中心捕获是在 Azure 中加载流式处理数据的最简单方法，并可让用户专注于数据处理，而不是数据捕获。
@@ -56,7 +56,7 @@ https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer/mynamespace/myev
 可以使用 [Azure 门户](https://portal.azure.cn)或使用 Azure 资源管理器模板在创建事件中心时配置捕获。 有关详细信息，请参阅以下文章：
 
 - [通过 Azure 门户启用事件中心捕获](event-hubs-capture-enable-through-portal.md)
-<!-- - [Create an Event Hubs namespace with an event hub and enable Capture using an Azure Resource Manager template](event-hubs-resource-manager-namespace-event-hub-enable-capture.md) -->
+<!-- - [Create an Event Hubs namespace with an event hub and enable Capture using an Azure Resource Manager template](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)-->
 
 > [!NOTE]
 > 如果对现有的事件中心启用“捕获”功能，该功能将在启用后捕获到达事件中心的事件。 它不会在启用功能之前捕获事件中心中存在的事件。 
@@ -79,7 +79,7 @@ https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer/mynamespace/myev
 
 [Apache Drill：Azure Blob 存储插件][Apache Drill: Azure Blob Storage Plugin]
 
-若要轻松查询捕获的文件，可以通过容器在启用了 Apache Drill 的情况下创建和执行 VM 来访问 Azure Blob 存储。 请参阅以下示例：[使用事件中心捕获功能进行大规模流式传输](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-capture)。
+若要轻松查询捕获的文件，可以通过容器在启用了 Apache Drill 的情况下创建和执行 VM 来访问 Azure Blob 存储：
 
 ### <a name="use-apache-spark"></a>使用 Apache Spark
 
@@ -128,10 +128,11 @@ Apache Avro 针对 [Java][Java] 和 [Python][Python] 提供了完整的快速入
 
 捕获不会使用流出量配额，因为它是单独计费的。 
 
-## <a name="integration-with-event-grid"></a>事件网格集成 
+<!--
+## Integration with Event Grid 
 
-可以创建 Azure 事件网格订阅，其中事件中心命名空间作为其源。 以下教程介绍如何创建事件网格订阅，其中事件中心作为源，Azure Functions 应用作为接收器：使用事件网格和 Azure Functions 处理捕获的事件中心数据并将其迁移到 Azure Synapse Analytics。
-
+You can create an Azure Event Grid subscription with an Event Hubs namespace as its source. The following tutorial shows you how to create an Event Grid subscription with an event hub as a source and an Azure Functions app as a sink: [Process and migrate captured Event Hubs data to a Azure Synapse Analytics using Event Grid and Azure Functions](store-captured-data-data-warehouse.md).
+-->
 ## <a name="next-steps"></a>后续步骤
 事件中心捕获是将数据加载到 Azure 最简单的方法。 使用 Azure Data Lake、Azure 数据工厂和 Azure HDInsight，可以执行批处理操作和其他分析，并且可以选择熟悉的工具和平台，以所需的任何规模执行。
 
@@ -139,7 +140,6 @@ Apache Avro 针对 [Java][Java] 和 [Python][Python] 提供了完整的快速入
 
 - [使用 Azure 门户启用事件中心捕获](event-hubs-capture-enable-through-portal.md)
 <!-- - [Use an Azure Resource Manager template to enable Event Hubs Capture](event-hubs-resource-manager-namespace-event-hub-enable-capture.md) -->
-
 
 [Apache Avro]: https://avro.apache.org/
 [Apache Drill]: https://drill.apache.org/

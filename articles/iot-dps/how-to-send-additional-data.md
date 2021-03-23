@@ -2,17 +2,17 @@
 title: 如何在设备与 Azure 设备预配服务之间传输有效负载
 description: 本文档介绍如何在设备与设备预配服务 (DPS) 之间传输有效负载。
 author: menchi
-ms.author: v-tawe
-ms.date: 02/22/2021
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: f58553e70c543769931faad9dee1c788184b022c
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.openlocfilehash: 7263c2e86b2b028d5bf3d5ae99f8cc55452ba06d
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196818"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765340"
 ---
 # <a name="how-to-transfer-payloads-between-devices-and-dps"></a>如何在设备和 DPS 之间传输有效负载
 有时，DPS 需要设备中的更多数据才能正常地将设备预配到适当的 IoT 中心，而这些数据需由设备提供。 反之，DPS 可将数据返回给设备，以便为客户端逻辑提供辅助。 

@@ -1,16 +1,17 @@
 ---
 title: 确定导致非符合性的原因
 description: 如果资源不符合，可能有很多原因。 找出导致非符合性的原因。
-ms.author: v-tawe
 origin.date: 09/30/2020
-ms.date: 11/06/2020
+author: rockboyfor
+ms.date: 03/22/2021
+ms.author: v-yeche
 ms.topic: how-to
-ms.openlocfilehash: c76bcf548c2703cb4d7a2dcc000b7081f60b63a8
-ms.sourcegitcommit: 6b499ff4361491965d02bd8bf8dde9c87c54a9f5
+ms.openlocfilehash: 47f3bb4a4b2de90c39b1ae8536e16a9d51bbe105
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94327896"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766605"
 ---
 # <a name="determine-causes-of-non-compliance"></a>确定导致非符合性的原因
 
@@ -18,8 +19,7 @@ ms.locfileid: "94327896"
 
 - [符合性详细系信息](#compliance-details)
 
-<!-- no change history in mc portal -->
-<!-- > - [Change history (Preview)](#change-history) -->
+<!--NOT AVAILABLE ON [Change history (Preview)](#change-history)-->
 
 ## <a name="compliance-details"></a>合规性详细信息
 
@@ -80,6 +80,8 @@ ms.locfileid: "94327896"
 
 这些详细信息将解释资源当前不合规的原因，但不显示何时对该资源做出了更改，导致它不合规。
 
+<!--NOT AVAILABLE ON [Change history (Preview)](#change-history)-->
+
 ### <a name="compliance-reasons"></a>合规性原因
 
 以下矩阵将每个可能原因映射到策略定义中的负责[条件](../concepts/definition-structure.md#conditions)：
@@ -132,73 +134,7 @@ ms.locfileid: "94327896"
 
 :::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="来宾分配符合性详细信息的屏幕截图。" border="false":::
 
-### <a name="azure-powershell"></a>Azure PowerShell
-
-还可以在 Azure PowerShell 上查看符合性详细信息。 首先，请确保已安装来宾配置模块。
-
-```powershell
-Install-Module Az.GuestConfiguration
-```
-
-可以使用以下命令查看 VM 所有来宾分配的当前状态：
-
-```powershell
-Get-AzVMGuestPolicyStatus -ResourceGroupName <resourcegroupname> -VMName <vmname>
-```
-
-```output
-PolicyDisplayName                                                         ComplianceReasons
------------------                                                         -----------------
-Audit that an application is installed inside Windows VMs                 {[InstalledApplication]bwhitelistedapp}
-Audit that an application is not installed inside Windows VMs.            {[InstalledApplication]NotInstalledApplica...
-```
-
-若要仅查看描述 VM 不符合原因的原因短语，只需返回原因子属性。
-
-```powershell
-Get-AzVMGuestPolicyStatus -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason
-```
-
-```output
-The following applications are not installed: '<name>'.
-```
-
-还可以输出计算机范围内来宾分配的符合性历史记录。 此命令的输出包含 VM 的每个报告的详细信息。
-
-> [!NOTE]
-> 输出可能会返回大量数据。 建议将输出存储在变量中。
-
-```powershell
-$guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname>
-$guestHistory
-```
-
-```output
-PolicyDisplayName                                                         ComplianceStatus ComplianceReasons StartTime              EndTime                VMName LatestRepor
-                                                                                                                                                                  tId
------------------                                                         ---------------- ----------------- ---------              -------                ------ -----------
-[Preview]: Audit that an application is installed inside Windows VMs      NonCompliant                       02/10/2019 12:00:38 PM 02/10/2019 12:00:41 PM VM01  ../17fg0...
-<truncated>
-```
-
-若要简化视图，请使用“ShowChanged”参数。 此命令的输出仅包括报告，后接合规性状态的变化。
-
-```powershell
-$guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname> -ShowChanged
-$guestHistory
-```
-
-```output
-PolicyDisplayName                                                         ComplianceStatus ComplianceReasons StartTime              EndTime                VMName LatestRepor
-                                                                                                                                                                  tId
------------------                                                         ---------------- ----------------- ---------              -------                ------ -----------
-Audit that an application is installed inside Windows VMs                 NonCompliant                       02/10/2019 10:00:38 PM 02/10/2019 10:00:41 PM VM01  ../12ab0...
-Audit that an application is installed inside Windows VMs.                Compliant                          02/09/2019 11:00:38 AM 02/09/2019 11:00:39 AM VM01  ../e3665...
-Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
-```
-
-<!-- no change history tag -->
-<!-- ## <a name="change-history"/>Change history (Preview) -->
+<!--NOT AVAILABLE ON  ## Change history (Preview)-->
 ## <a name="next-steps"></a>后续步骤
 
 - 在 [Azure Policy 示例](../samples/index.md)中查看示例。
@@ -208,3 +144,5 @@ Audit that an application is installed inside Windows VMs                 NonCom
 - 了解如何[获取符合性数据](get-compliance-data.md)。
 - 了解如何[修正不符合的资源](remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。
+
+<!--Update_Description: update meta properties, wording update, update link-->

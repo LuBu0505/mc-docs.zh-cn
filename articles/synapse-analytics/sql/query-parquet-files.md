@@ -2,19 +2,20 @@
 title: 使用无服务器 SQL 池查询 Parquet 文件
 description: 本文介绍了如何使用无服务器 SQL 池查询 Parquet 文件。
 services: synapse analytics
-author: azaricstefan
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
-ms.date: 05/20/2020
-ms.author: stefanazaric
+origin.date: 05/20/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: ccb3b8eb17abd5a3d586843ed0d3a2d0723667d4
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: a3251bcba3de9c364953d57927ba6f429e477457
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207208"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766178"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池查询 Parquet 文件
 
@@ -31,7 +32,7 @@ ms.locfileid: "102207208"
 ```sql
 select top 10 *
 from openrowset(
-    bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.parquet',
+    bulk 'https://pandemicdatalake.blob.core.chinacloudapi.cn/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.parquet',
     format = 'parquet') as rows
 ```
 
@@ -48,7 +49,7 @@ from openrowset(
 
 ```sql
 create external data source covid
-with ( location = 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases' );
+with ( location = 'https://pandemicdatalake.blob.core.chinacloudapi.cn/public/curated/covid-19/ecdc_cases' );
 go
 select top 10 *
 from openrowset(

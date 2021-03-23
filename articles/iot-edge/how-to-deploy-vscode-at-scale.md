@@ -4,17 +4,17 @@ description: 使用 Visual Studio Code 的 IoT 扩展为 IoT Edge 设备组创�
 keywords: ''
 author: kgremban
 manager: philmea
-ms.author: v-tawe
-ms.date: 03/01/2021
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f433965f3f97da4acf2588fdaedcf13c2ae5e769
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.openlocfilehash: 25ba7a970fe1785db6de9585c108ab1d1983169a
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196684"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766374"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>使用 Visual Studio Code 大规模部署 IoT Edge 模块
 

@@ -6,13 +6,13 @@ ms.author: v-junlch
 ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 02/08/2021
-ms.openlocfilehash: 0dbd1264c9eace9bcf5a65f1787d48cdd5ad2ab6
-ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
+ms.date: 03/17/2021
+ms.openlocfilehash: e43b025cf32d6efbe014eef16b58880943223f5f
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101087614"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765372"
 ---
 # <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>将 JSON 格式的示例数据引入 Azure 数据资源管理器
 
@@ -79,7 +79,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 1. 将数据引入 `RawEvents` 表中。
 
     ```kusto
-    .ingest into table RawEvents ('https://kustosamplefiles.blob.core.chinacloudapi.cn/jsonsamplefiles/simple.json') with '{"format":json, "ingestionMappingReference":"DiagnosticRawRecordsMapping"}'
+    .ingest into table RawEvents ('https://kustosamplefiles.blob.core.chinacloudapi.cn/jsonsamplefiles/simple.json') with '{"format":"json", "ingestionMappingReference":"RawEventMapping"}'
     ```
 
 # <a name="c"></a>[C#](#tab/c-sharp)
@@ -413,7 +413,7 @@ INGESTION_CLIENT.ingest_from_blob(
     ```kusto
     .create function EventRecordsExpand() {
         RawEvents
-        | mv-expand records = Event
+        | mv-expand records = Event.records
         | project
             Time = todatetime(records["timestamp"]),
             Device = tostring(records["deviceId"]),

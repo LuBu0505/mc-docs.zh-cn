@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 10/15/2020
-ms.date: 11/20/2020
+ms.date: 03/08/2021
 ms.custom: devx-track-java
-ms.author: v-tawe
-ms.openlocfilehash: 840593006204a8b03231df2bcdaea678ab8d4fa0
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.author: v-johya
+ms.openlocfilehash: 518a3940e464282788c7b4d336d44aee35b005af
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977654"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803247"
 ---
 本指南介绍如何安装用于 64 位 Java 8 JRE 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。 如果只是需要包名称以便自行开始，那么请知悉在 Maven 中央存储库中未提供 Java SDK。 无论是使用 Gradle 还是 `pom.xml` 依赖项文件，都需要添加指向 `https://csspeechstorage.blob.core.windows.net/maven/` 的自定义存储库（请参阅下文了解包名称）。
 
@@ -35,15 +35,14 @@ ms.locfileid: "94977654"
 
 ## <a name="prerequisites"></a>先决条件
 
+- 在 Windows 上，需要安装适用于平台的 [Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0)。 首次安装时，可能需要重启。
+
 - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) 或 [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
 - [Eclipse Java IDE](https://www.eclipse.org/downloads/)（要求已安装 Java）
-
-- 需要语音 SDK 版本 1.11.0 或更高版本。
-
 - 支持的 Linux 平台会要求安装某些库（要求安装 `libssl` 以获取安全套接字层支持；要求安装 `libasound2` 以获取声音支持）。 请参阅下面的发行版，了解安装这些库的正确版本所需的命令。
 
-  - 在 Ubuntu 上，请运行以下命令来安装所需的包：
+  - 在 Ubuntu/Debian 上，请运行以下命令来安装所需的包：
 
     ```sh
     sudo apt-get update
@@ -72,3 +71,4 @@ ms.locfileid: "94977654"
 ## <a name="next-steps"></a>后续步骤
 
 [!INCLUDE [windows](../quickstart-list.md)]
+

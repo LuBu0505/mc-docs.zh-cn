@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 02/23/2021
+ms.date: 03/12/2021
 ms.author: v-junlch
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: fa7762c24e0f652aeeb429bce416b49c618950b7
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 685e4ecae2e838de6a42ab8ca7778cbe440e5035
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697962"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765518"
 ---
 # <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>如何删除注册到 Microsoft 标识平台的应用程序
 
-已在 Microsoft 标识平台注册应用程序的企业开发人员可能需要删除应用程序的注册。
+已经向 Microsoft 标识平台注册了应用程序的企业开发人员和软件即服务 (SaaS) 提供商可能需要删除应用程序的注册。
 
 在以下各小节中，你将了解如何实现以下操作：
 
@@ -36,6 +36,9 @@ ms.locfileid: "101697962"
 ## <a name="remove-an-application-authored-by-you-or-your-organization"></a>删除你或你的组织编写的应用程序
 
 由你或你的组织注册的应用程序是由租户中的应用程序对象与服务主体对象表示的。 有关详细信息，请参阅[应用程序对象和服务主体对象](./app-objects-and-service-principals.md)。
+
+> [!NOTE]
+> 删除某个应用程序，也会将其服务主体对象从该应用程序的主目录中删除。 对于多租户应用程序，将不会删除其他目录中的服务主体对象。
 
 若要删除应用程序，你需被列为应用程序的所有者或者具有管理员权限。
 

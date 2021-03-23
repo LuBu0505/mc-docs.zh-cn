@@ -2,19 +2,20 @@
 title: 什么是 Azure Synapse Analytics？
 description: Azure Synapse Analytics 概述
 services: synapse-analytics
-author: saveenr
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
-ms.date: 10/28/2020
-ms.author: saveenr
+origin.date: 10/28/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5d6e032c22feac5ceebf86385acfffa043db5754
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 1670b0d2c5b0b98b6f54d3e372c418e8d2fa50c8
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207465"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765228"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>什么是 Azure Synapse Analytics？
 
@@ -29,7 +30,7 @@ Azure Synapse 是一项集成式分析服务，可以缩短在数据仓库和大
 * Synapse SQL 是 T-SQL 的分布式查询系统，它实现了数据仓库和数据虚拟化方案，还扩展了 T-SQL 来应对流式处理和计算机学习方案。
 * Synapse SQL 提供无服务器和专用资源模型，并根据需求提供消耗和计费选项。  若要使性能和成本可预测，可以创建专用 SQL 池，以保留对 SQL 表中存储的数据进行处理的能力。 对于计划外或突发性的工作负荷，请使用始终可用的无服务器 SQL 终结点。
 * 使用内置的流式处理功能可将数据从云数据源载入到 SQL 表中
-* 通过使用机器学习模型并使用 [T-SQL PREDICT 函数](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)对数据进行评分，将 AI 与 SQL 集成
+* 通过使用机器学习模型并使用 [T-SQL PREDICT 函数](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)对数据进行评分，将 AI 与 SQL 集成
 
 ### <a name="industry-standard-apache-spark"></a>行业标准 Apache Spark
 
@@ -64,18 +65,13 @@ Azure Synapse 为企业提供单一方式来管理分析资源、监视使用情
 * 对数据和代码进行精细的访问控制
 * 可在单个仪表板中监视 SQL 与 Spark 中的资源、使用情况和用户
 
-### <a name="synapse-studio"></a>Synapse Studio
+### <a name="unified-experience"></a>统一体验
 
-Synapse Studio 是一个 Web 原生的体验，它将数据工程师所需的全部信息整合在一起，使他们能够在一个位置执行生成完整解决方案所需完成的每项任务。
+对于数据工程师来说，Synapse Studio 是一种将一切联系在一起的用户体验。 它使他们能够完成构建完整的分析解决方案所需的每项任务。
 
-* 在一个位置生成端到端的分析解决方案：引入、浏览、准备、协调、可视化
-* 让编写 SQL 或 Spark 代码的数据工程师保持行业领先的工作效率：创作、调试和性能优化
+* 关键数据工程师任务集中在一个位置：引入、浏览、准备、协调、可视化
+* 行业领先的编写 SQL 或 Spark 代码的工作效率：创作、调试和性能优化
 * 与企业 CI/CD 过程集成
-
-## <a name="engage-with-the-synapse-engineering-team"></a>与 Synapse 工程团队合作
-
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse)：询问开发问题。
-- [Microsoft 问答页](/answers/topics/azure-synapse-analytics.html)：询问技术问题。
 
 ## <a name="next-steps"></a>后续步骤
 

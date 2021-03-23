@@ -2,17 +2,17 @@
 title: Azure IoT DPS IP 连接筛选器 | Microsoft Docs
 description: 如何使用 IP 筛选阻止从特定 IP 地址到 Azure IoT DPS 实例的连接。 可阻止来自单独 IP 地址或 IP 地址范围的连接。
 author: wesmc7777
-ms.author: v-tawe
+ms.author: v-chazhou
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-ms.date: 02/22/2021
-ms.openlocfilehash: e5bd1fd533d6f66efdac083391720c8a6e326c10
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.date: 03/16/2021
+ms.openlocfilehash: 02751e907cb13a742f66fcd0f320d56ffb4b94a4
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196780"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765335"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>使用 Azure IoT DPS IP 连接筛选器
 

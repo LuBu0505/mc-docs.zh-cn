@@ -5,17 +5,17 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 01/29/2021
-ms.date: 03/08/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 7465461dfa651f0ac9973972e0a6060b820b4087
-ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
+ms.openlocfilehash: 91306f63c0b3c737cf50fe4daff8cc4df8255eef
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196410"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766139"
 ---
 # <a name="enable-and-manage-azure-storage-analytics-logs-classic"></a>启用和管理 Azure 存储分析日志（经典）
 
@@ -333,7 +333,6 @@ azcopy copy 'https://mystorageaccount.blob.core.chinacloudapi.cn/$logs/queue' 'C
 ## <a name="next-steps"></a>后续步骤
 
 * 若要详细了解存储分析，请参阅[存储分析](storage-analytics.md)。
-* [配置存储分析指标](storage-monitor-storage-account.md)。
 * 有关使用 .NET 语言配置存储日志记录的详细信息，请参阅[存储客户端库参考](https://docs.azure.cn/dotnet/api/overview/storage/client?view=azure-dotnet)。 
 * 有关使用 REST API 配置存储日志记录的一般信息，请参阅[启用和配置存储分析](https://docs.microsoft.com/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics)。
 * 详细了解存储分析日志的格式。 请参阅[存储分析日志格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。

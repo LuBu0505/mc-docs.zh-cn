@@ -2,21 +2,22 @@
 title: 提高列存储索引性能
 description: 减少内存需求或增加可用内存，使列存储索引压缩到每个行组中的行数最大化。
 services: synapse-analytics
-author: kevinvngo
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: kevin
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 95ab58e0b2692d45122e4da99b8db1506494b40e
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: d54080646dc96535057248e082c3b1b4794f097f
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102206911"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766834"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>最大化行组质量，提高列存储索引性能
 
@@ -26,7 +27,7 @@ ms.locfileid: "102206911"
 
 由于列存储索引会通过扫描单个行组的列段来扫描表，所以，使每个行组的行数最大化可增强查询性能。 如果行组具有的行数较多，则会增强数据压缩，这意味着需要从磁盘读取的数据变少。
 
-有关行组的详细信息，请参阅[列存储索引指南](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+有关行组的详细信息，请参阅[列存储索引指南](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview?view=azure-sqldw-latest&preserve-view=true)。
 
 ## <a name="target-size-for-rowgroups"></a>行组的目标大小
 
@@ -38,11 +39,11 @@ ms.locfileid: "102206911"
 
 如果内存不足，无法将至少 10,000 个行压缩到每个行组中，就会生成错误。
 
-有关批量加载的详细信息，请参阅 [Bulk load into a clustered columnstore index](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#Bulk&preserve-view=true )（批量加载到聚集列存储索引中）。
+有关批量加载的详细信息，请参阅 [Bulk load into a clustered columnstore index](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?view=azure-sqldw-latest#bulk&preserve-view=true )（批量加载到聚集列存储索引中）。
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>如何监视行组质量
 
-DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats（[sys.dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 包含与 SQL DB 匹配的视图定义），用于公开一些有用信息，例如行组中的行数，以及剪裁原因（如果有过剪裁）。 可创建下列视图来轻松查询此 DMV，以便获得关于行组修整的信息。
+DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats（[sys.dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?view=azure-sqldw-latest&preserve-view=true) 包含与 SQL DB 匹配的视图定义），用于公开一些有用信息，例如行组中的行数，以及剪裁原因（如果有过剪裁）。 可创建下列视图来轻松查询此 DMV，以便获得关于行组修整的信息。
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -140,5 +141,5 @@ DWU 大小和用户资源类共同确定用户查询可用的内存量。 若要
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解提升 Synapse SQL 性能的更多方法，请参阅[性能概述](../overview-terminology.md?bc=%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fsynapse-analytics%2ftoc.json)。
+若要了解提升 Synapse SQL 性能的更多方法，请参阅[性能概述](../overview-terminology.md)。
 

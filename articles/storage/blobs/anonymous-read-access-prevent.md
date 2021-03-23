@@ -6,17 +6,17 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: how-to
-origin.date: 10/09/2020
-ms.date: 01/18/2021
+origin.date: 12/09/2020
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 3209fad75130ccd57cd1554f3ed88c60ce0095a5
-ms.sourcegitcommit: f086abe8bd2770ed10a4842fa0c78b68dbcdf771
+ms.openlocfilehash: 9ccbdb50936e7a6068b40d111e1030c073ce428b
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98163223"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767030"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>阻止对容器和 Blob 的匿名公共读取访问
 
@@ -36,7 +36,7 @@ ms.locfileid: "98163223"
 
 ### <a name="monitor-anonymous-requests-with-metrics-explorer"></a>使用指标资源管理器监视匿名请求
 
-若要跟踪对存储帐户的匿名请求，请在 Azure 门户中使用 Azure 指标资源管理器。 若要详细了解 Azure 指标资源管理器，请参阅 [Azure 指标资源管理器入门](../../azure-monitor/platform/metrics-getting-started.md)。
+若要跟踪对存储帐户的匿名请求，请在 Azure 门户中使用 Azure 指标资源管理器。 若要详细了解 Azure 指标资源管理器，请参阅 [Azure 指标资源管理器入门](../../azure-monitor/essentials/metrics-getting-started.md)。
 
 按照以下步骤创建跟踪匿名请求的指标：
 
@@ -62,7 +62,7 @@ ms.locfileid: "98163223"
 
 :::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="屏幕截图显示了对 Blob 存储的聚合匿名请求":::
 
-你还可以配置警报规则，让系统在针对你的存储帐户发出的匿名请求达到一定数量时通知你。 有关详细信息，请参阅[使用 Azure Monitor 创建、查看和管理指标警报](../../azure-monitor/platform/alerts-metric.md)。
+你还可以配置警报规则，让系统在针对你的存储帐户发出的匿名请求达到一定数量时通知你。 有关详细信息，请参阅[使用 Azure Monitor 创建、查看和管理指标警报](../../azure-monitor/alerts/alerts-metric.md)。
 
 ## <a name="remediate-anonymous-public-access"></a>修正匿名公共访问
 
@@ -246,20 +246,20 @@ Azure Policy 可以确保 Azure 资源符合要求和标准，从而为云治理
 
 ## <a name="permissions-for-allowing-or-disallowing-public-access"></a>允许或禁止公共访问的权限
 
-若要为存储帐户设置 AllowBlobPublicAccess 属性，用户必须有权创建和管理存储帐户。 提供这些权限的 Azure 基于角色的访问控制 (Azure RBAC) 角色包含 Microsoft.Storage/storageAccounts/write 或 Microsoft.Storage/storageAccounts/\* 操作。*_ 具有此操作的内置角色包括：
+若要为存储帐户设置 AllowBlobPublicAccess 属性，用户必须有权创建和管理存储帐户。 提供这些权限的 Azure 基于角色的访问控制 (Azure RBAC) 角色包含 Microsoft.Storage/storageAccounts/write 或 Microsoft.Storage/storageAccounts/\* 操作 。 具有此操作的内置角色包括：
 
 - Azure 资源管理器[所有者](../../role-based-access-control/built-in-roles.md#owner)角色
 - Azure 资源管理器[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色
 - [存储帐户参与者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)角色
 
-这些角色未提供通过 Azure Active Directory (Azure AD) 访问存储帐户中数据的访问权限。 但是，它们包含 Microsoft.Storage/storageAccounts/listkeys/action，后者授予对帐户访问密钥的访问权限。_*** 借助此权限，用户可以使用帐户访问密钥访问存储帐户中的所有数据。
+这些角色不提供通过 Azure Active Directory (Azure AD) 对存储帐户中数据的访问权限。 但是，它们包含 Microsoft.Storage/storageAccounts/listkeys/action，可以授予对帐户访问密钥的访问权限。 借助此权限，用户可以使用帐户访问密钥访问存储帐户中的所有数据。
 
 角色分配的范围必须设定为存储帐户级别或更高级别，以允许用户启用或禁用存储帐户的公共访问。 有关角色作用域的详细信息，请参阅[了解 Azure RBAC 的作用域](../../role-based-access-control/scope-overview.md)。
 
-注意，请仅向需要创建存储帐户或更新其属性的权限的用户分配这些角色。 请使用最小特权原则来确保用户拥有完成任务所需的最少权限。 若要详细了解如何使用 Azure RBAC 来管理访问权限，请参阅 [Azure RBAC 最佳做法](../../role-based-access-control/best-practices.md)。
+请注意，仅向需要能够创建存储帐户或更新其属性的用户分配这些角色。 使用最小特权原则确保用户拥有完成任务所需的最少权限。 有关使用 Azure RBAC 管理访问权限的详细信息，请参阅 [Azure RBAC 最佳做法](../../role-based-access-control/best-practices.md)。
 
 > [!NOTE]
-> 经典订阅管理员角色“服务管理员”和“共同管理员”具有 Azure 资源管理器[所有者](../../role-based-access-control/built-in-roles.md#owner)角色的等效权限。 “所有者”角色包含所有操作，因此具有这些管理角色之一的用户也可以创建和管理存储帐户。 有关详细信息，请参阅[经典订阅管理员角色、Azure 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)。
+> 经典订阅管理员角色“服务管理员”和“共同管理员”具有 Azure 资源管理器[所有者](../../role-based-access-control/built-in-roles.md#owner)角色的等效权限。 所有者角色包括所有操作，因此具有这些管理角色之一的用户也可以创建和管理存储帐户。 有关详细信息，请参阅[经典订阅管理员角色、Azure 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)。
 
 ## <a name="next-steps"></a>后续步骤
 

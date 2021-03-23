@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 02/20/2020
-ms.date: 12/10/2020
-ms.author: v-tawe
-ms.openlocfilehash: 35c4c8cfb12c2f5277fb884533094801a8fe1883
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.date: 03/08/2021
+ms.author: v-johya
+ms.openlocfilehash: b315f08f249b6c2afc040cf18786e708e0cbeaee
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004597"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803494"
 ---
 本快速入门介绍如何使用适用于 Linux 的语音设备 SDK 来生成支持语音的产品。
 
@@ -61,9 +61,8 @@ ms.locfileid: "97004597"
   > - 在 RHEL/CentOS 7 上，按照[如何为语音 SDK 配置 RHEL/CentOS 7](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md) 上的说明进行操作。
 > - 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
 
-<!-- Conversation Transcription is currently only available for "en-US" and "zh-CN", in the "chinaeast2" regions. You must have a speech key in one of those regions to use Conversation Transcription. -->
 
-如果计划使用意向，则将需要[语音理解服务 (LUIS)](https://docs.azure.cn/cognitive-services/luis/azureibizasubscription) 订阅。 若要了解有关 LUIS 和意向识别的详细信息，请参阅[使用 LUIS、C# 识别语音意向](https://docs.azure.cn/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)。 [示例 LUIS 模型](https://aka.ms/sdsdk-luis)适用于此应用。
+如果计划使用意向，则将需要[语音理解服务 (LUIS)](../../luis/luis-how-to-azure-subscription.md) 订阅。 若要了解有关 LUIS 和意向识别的详细信息，请参阅[使用 LUIS、C# 识别语音意向](../how-to-recognize-intents-from-speech-csharp.md)。 [示例 LUIS 模型](https://aka.ms/sdsdk-luis)适用于此应用。
 
 ## <a name="create-and-configure-the-project"></a>创建和配置项目
 
@@ -101,7 +100,7 @@ ms.locfileid: "97004597"
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.14.0</version>
+             <version>1.15.0</version>
         </dependency>
     </dependencies>
    ```
@@ -134,17 +133,7 @@ ms.locfileid: "97004597"
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-    <!-- If you are using conversation transcription, your speech key and region information are also needed in `Cts.java`:
-
-   ```java
-    private static final String CTSKey = "<Conversation Transcription Service Key>";
-    private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "chinaeast2"
-    ``` -->
-
 1. 默认关键字为“Computer”。 还可以尝试所提供的其他关键字之一，例如“Machine”或“Assistant”。 这些备用关键字的资源文件位于语音设备 SDK 的 keyword 文件夹中。 例如，`/home/wcaltest/JRE-Sample-Release/keyword/Computer` 包含用于关键字“Computer”的文件。
-
-   <!-- > [!TIP]
-   > You can also [create a custom keyword](../speech-devices-sdk-create-kws.md). -->
 
     要使用新的关键字，请更新 `FunctionsList.java` 中的下面一行，并将关键字复制到应用。 例如，要使用关键字包 `machine.zip` 中的关键字“Machine”，请执行以下操作：
 
@@ -164,31 +153,28 @@ ms.locfileid: "97004597"
 
    ![显示语音设备 SDK 示例应用程序和选项的屏幕截图。](../media/speech-devices-sdk/java-sample-app-linux.png)
 
-   <!-- 1. Try the new **Conversation Transcription** demo. Start transcribing with **Session** > **Start**. By default everyone is a guest. However, if you have participant's voice signatures they can be put into `participants.properties` in the project folder **target/classes**. To generate the voice signature, look at [Transcribe conversations (SDK)](../how-to-use-conversation-transcription-service.md).
+## <a name="create-and-run-standalone-the-application"></a>创建并运行独立应用程序
 
-   ![Screenshot that shows a demo Conversation Transcription application.](../media/speech-devices-sdk/cts-sample-app-linux.png)
+1. 在“包资源管理器”中，右键单击你的项目。 选择“导出”。 
+1. 此时将显示“导出”窗口。 展开“Java”，选择“可运行的 JAR 文件”，然后选择“下一步”。
 
-## Create and run standalone the application
+   ![显示“导出”窗口的屏幕截图。](../media/speech-devices-sdk/eclipse-export-linux.png) 
 
-1. In the **Package explorer**, right-click your project. Choose **Export**. 
-1. The **Export** window appears. Expand **Java** and select **Runnable JAR file** and then select **Next**.
-
-   ![Screenshot that shows the Export window.](../media/speech-devices-sdk/eclipse-export-linux.png) 
-
-1. The **Runnable JAR File Export** window appears. Choose an **Export destination** for the application, and then select **Finish**.
+1. 此时将显示“可运行的 JAR 文件导出”窗口。 为应用程序选择“导出目标”，然后选择“完成”。
  
-   ![Screenshot that shows the Runnable JAR File Export window.](../media/speech-devices-sdk/eclipse-export-jar-linux.png)
+   ![显示“可运行的 JAR 文件导出”窗口的屏幕截图。](../media/speech-devices-sdk/eclipse-export-jar-linux.png)
 
-1. Please put `kws.table` and `participants.properties` in the destination folder chosen above as these files are needed by the application.
+1. 请将 `kws.table` 和 `participants.properties` 放入上面选择的目标文件夹中，因为该应用程序需要这些文件。
 
-1. Set the LD_LIBRARY_LIB to the folder containing the *.so files
+1. 将 LD_LIBRARY_LIB 设置为包含 *.so 文件的文件夹
 
      ```bash
      export LD_LIBRARY_PATH=/home/wcaltest/JRE-Sample-Release
      ```
 
-1. To run the standalone application
+1. 运行独立的应用程序
 
      ```bash
      java -jar SpeechDemo.jar
      ```
+

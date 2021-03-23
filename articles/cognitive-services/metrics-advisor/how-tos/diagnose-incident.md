@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 10/22/2020
+ms.date: 03/08/2021
 ms.author: v-johya
-ms.openlocfilehash: 78fc2b193301b8c2ac0b0b26bcb0b8e241435bb2
-ms.sourcegitcommit: 537d52cb783892b14eb9b33cf29874ffedebbfe3
+ms.openlocfilehash: 89387d4da84c22c3c0bf7836659cfdc593a6e658
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92472922"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765957"
 ---
 # <a name="how-to-diagnose-an-incident-using-metrics-advisor"></a>操作说明：使用指标顾问诊断事件
 
@@ -37,17 +37,17 @@ ms.locfileid: "92472922"
 
 事件列表中列出了在所选指标和时间范围内检测到的事件。 一些选项可用于筛选事件和对其进行排序。 例如，按严重性。 单击其中某个事件以转到“事件”页面，以进行进一步诊断。
 
-:::image type="content" source="../media/diagnostics/incident-list.png" alt-text="事件中心" lightbox="../media/diagnostics/incident-list.png":::
+:::image type="content" source="../media/diagnostics/incident-list.png" alt-text="事件列表" lightbox="../media/diagnostics/incident-list.png":::
 
 通过“诊断”部分，可对事件进行深入分析，并使用工具来确定根本原因。
 
-:::image type="content" source="../media/diagnostics/diagnose-incident.png" alt-text="事件中心" lightbox="../media/diagnostics/diagnose-incident.png" :::
+:::image type="content" source="../media/diagnostics/diagnose-incident.png" alt-text="诊断事件" lightbox="../media/diagnostics/diagnose-incident.png" :::
 
 ## <a name="root-cause-advice"></a>根本原因建议
 
 当指标中检测到一组异常并导致事件时，指标顾问将尝试分析该事件的根本原因。 根本原因建议为事件的可能原因提供自动建议。 此功能仅在维度中存在聚合值时可用。 如果指标没有维度，则根本原因在于指标。 根本原因列在右侧面板中，并且可能列出了多种原因。 如果表中没有数据，则表示维度不满足执行分析的要求。
 
-:::image type="content" source="../media/diagnostics/root-cause-advice.png" lightbox="../media/diagnostics/root-cause-advice.png" alt-text="事件中心":::
+:::image type="content" source="../media/diagnostics/root-cause-advice.png" lightbox="../media/diagnostics/root-cause-advice.png" alt-text="根本原因建议":::
 
 
 为根本原因指标提供了特定维度时，可以单击“转到指标”，查看该指标的更多详细信息。
@@ -60,7 +60,7 @@ ms.locfileid: "92472922"
 
 通过交互式树，可诊断当前事件、旧事件以及相关事件。 使用交互式树时，右键单击节点以打开操作菜单，你可以在该菜单中选择要在根节点中向上钻取的维度，以及要为每个节点向下钻取的维度。 通过单击顶部维度列表的“取消”按钮，可以从该维度删除向上钻取或向下钻取。 左键单击某个节点，将其选中，并在图表中显示其序列以及当前事件序列。
 
-:::image type="content" source="../media/diagnostics/incident-tree.png" alt-text="事件中心" lightbox="../media/diagnostics/incident-tree.png" :::
+:::image type="content" source="../media/diagnostics/incident-tree.png" alt-text="事件树" lightbox="../media/diagnostics/incident-tree.png" :::
 
 ## <a name="anomaly-drill-down"></a>异常向下钻取
 
@@ -68,7 +68,7 @@ ms.locfileid: "92472922"
 
 若要使用向下钻取功能，请单击“事件中心”中的“指标钻取”选项卡 。 
 
-:::image type="content" source="../media/diagnostics/metric-drilling.png" lightbox="../media/diagnostics/metric-drilling.png" alt-text="事件中心":::
+:::image type="content" source="../media/diagnostics/metric-drilling.png" lightbox="../media/diagnostics/metric-drilling.png" alt-text="指标钻取":::
 
 “维度”设置是事件的维度列表，你可以为每个事件选择其他可用的维度值。 维度值更改后。 通过“时间戳”设置即可在不同时间段查看当前事件。
 
@@ -80,25 +80,25 @@ ms.locfileid: "92472922"
 > 1. 对于向下钻取，可以从不同的维度值（当前所选维度除外）浏览数据。 
 > 2. 对于水平比较，可以从不同的维度值（所有向上的维度除外）浏览数据。
 
-:::image type="content" source="../media/diagnostics/drill-down-dimension.png"  lightbox="../media/diagnostics/drill-down-dimension.png" alt-text="事件中心":::
+:::image type="content" source="../media/diagnostics/drill-down-dimension.png" lightbox="../media/diagnostics/drill-down-dimension.png" alt-text="向下钻取维度":::
 
 ### <a name="value-comparison-for-different-dimension-values"></a>不同维度值的值比较
 
 “向下钻取”选项卡的第二部分是一个表格，其中包含不同维度值的比较情况。 其中包括值、基线值、差值、增量值以及这是否为异常。
  
-:::image type="content" source="../media/diagnostics/drill-down-comparison.png" alt-text="事件中心" lightbox="../media/diagnostics/drill-down-comparison.png":::
+:::image type="content" source="../media/diagnostics/drill-down-comparison.png" alt-text="向下钻取比较" lightbox="../media/diagnostics/drill-down-comparison.png":::
 
 
 ### <a name="value-and-expected-value-comparisons-for-different-dimension-value"></a>不同维度值的值和期望值比较
 
 “向下钻取”选项卡的第三部分是一个直方图，其中包含不同维度值的值和期望值。 直方图按值与期望值之差排序。 可以轻松找到影响最大的意外值。 例如，在上图中，我们可以发现，除了所有向上的值之外，US7 对异常的影响最大。
 
-:::image type="content" source="../media/diagnostics/drill-down-table.png" alt-text="事件中心" lightbox="../media/diagnostics/drill-down-table.png":::
+:::image type="content" source="../media/diagnostics/drill-down-table.png" alt-text="向下钻取表" lightbox="../media/diagnostics/drill-down-table.png":::
 
 ### <a name="raw-value-visualization"></a>原始值可视化效果
 “向下钻取”选项卡的最后一部分是原始值的折线图。 提供此图表后，无需导航到指标页面即可查看详细信息。
 
-:::image type="content" source="../media/diagnostics/drill-down-line-chart.png" alt-text="事件中心" lightbox="../media/diagnostics/drill-down-line-chart.png":::
+:::image type="content" source="../media/diagnostics/drill-down-line-chart.png" alt-text="向下钻取折线图" lightbox="../media/diagnostics/drill-down-line-chart.png":::
 
 ## <a name="view-similar-anomalies-using-time-series-clustering"></a>使用时序聚类分析查看类似异常
 
@@ -109,13 +109,13 @@ ms.locfileid: "92472922"
 
 选项卡顶部列出了可用维度，你可以从中选择一个来指定序列。
 
-:::image type="content" source="../media/diagnostics/series-group.png" lightbox="../media/diagnostics/series-group.png"alt-text="事件中心":::
+:::image type="content" source="../media/diagnostics/series-group.png" lightbox="../media/diagnostics/series-group.png" alt-text="序列组":::
 
 ## <a name="compare-time-series"></a>比较时序
 
 有时，在特定时序上检测到异常时，可将其与单个可视化效果中的多个其他序列进行比较，这十分有帮助。 单击“比较工具”选项卡，再单击蓝色的“+ 添加”按钮 。 
 
-:::image type="content" source="../media/diagnostics/add-series.png" alt-text="事件中心" lightbox="../media/diagnostics/add-series.png":::
+:::image type="content" source="../media/diagnostics/add-series.png" alt-text="添加要比较的序列" lightbox="../media/diagnostics/add-series.png":::
 
 从数据馈送中选择一个序列。 可以选择同一种粒度，也可以选择其他粒度。 选择目标维度并加载序列趋势，然后单击“确定”，将其与以前的序列进行比较。 此序列将一起放在一个可视化效果中。 可以继续添加更多序列以进行比较，并获得更多见解。 单击“比较工具”选项卡顶部的下拉菜单，比较一段时间内的时序数据。  
 
@@ -133,7 +133,7 @@ ms.locfileid: "92472922"
 
 有时可能需要同时检查不同指标的事件或其他指标中的相关事件。 可以在“跨指标分析”部分中找到相关事件的列表。 
 
-:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="事件中心":::
+:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="指标之间的相关事件":::
 
 需要在指标之间添加关系，然后才能查看当前指标的相关事件。 单击“指标图设置”添加关系。 只有维度名称相同的指标才能关联。 使用以下参数。
 

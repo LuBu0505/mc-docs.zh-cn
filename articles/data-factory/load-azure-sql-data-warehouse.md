@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 01/29/2020
 ms.date: 03/01/2021
-ms.openlocfilehash: 50e1226cd54b0a2cd07ac37dbdbcb4c9ef80f9f2
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: b0e788815368dd22dc12abc78ca585877370672c
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696599"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766917"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据加载到 Azure Synapse Analytics 中
 
@@ -51,10 +51,9 @@ ms.locfileid: "101696599"
     * **名称**：输入“LoadSQLDWDemo”作为名称。 数据工厂的名称必须全局独一无二。 如果收到错误“数据工厂名称‘LoadSQLDWDemo’不可用”，请为数据工厂输入其他名称。 例如，可以使用名称 _**yourname**_**ADFTutorialDataFactory**。 请重试创建数据工厂。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
     * **订阅**：选择要在其中创建数据工厂的 Azure 订阅。 
     * **资源组**：从下拉列表中选择现有资源组，或选择“新建”选项并输入资源组的名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
-    * **版本**：选择“V2”。
     * **位置**：选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 这些数据存储包括 Azure 存储、Azure SQL 数据库，等等。
 
-3. 选择“创建”  。
+3. 选择“创建” 。
 4. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”主页，如下图所示：
 
    ![数据工厂主页](./media/doc-common-process/data-factory-home-page.png)

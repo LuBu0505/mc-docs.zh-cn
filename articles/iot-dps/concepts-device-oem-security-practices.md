@@ -2,19 +2,18 @@
 title: 适用于制造商的安全做法 - Azure IoT 设备预配服务
 description: 概述了适用于准备在 Azure IoT 设备预配服务 (DPS) 中注册设备的 OEM 和设备制造商的常见安全做法。
 author: timlt
-ms.author: v-tawe
-origin.date: 03/02/2020
-ms.date: 09/30/2020
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: iot-p0-scenario, iot-devices-deviceOEM
 ms.reviewer: nberdy
-ms.openlocfilehash: ddee9f413f70aa1c74195d3b97a82c6768c71a68
-ms.sourcegitcommit: 29a49e95f72f97790431104e837b114912c318b4
+ms.openlocfilehash: f6921cad9e8ec5234961b7e449aa2e86ab9da186
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91564489"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765636"
 ---
 # <a name="security-practices-for-azure-iot-device-manufacturers"></a>适用于 Azure IoT 设备制造商的安全做法
 随着越来越多的制造商发行 IoT 设备，了解常见做法指导会很有帮助。 本文汇总了在制造与 Azure IoT 设备预配服务 (DPS) 配合使用的设备时要考虑的建议安全做法。  
@@ -188,9 +187,8 @@ TPM 的缺点：
 
 ## <a name="resources"></a>资源
 
-除了本文中建议的安全做法以外，Azure IoT 还提供了一些资源来帮助用户选择安全硬件和创建安全 IoT 部署： 
-- [Azure 安全中心](https://azure.microsoft.com/services/security-center/)提供了一个服务来帮助创建安全 IoT 部署。 
+除了本文中建议的安全做法以外，Azure IoT 还提供了一些资源来帮助用户选择安全硬件和创建安全 IoT 部署：
+<!-- - Azure IoT [security recommendations](../iot-fundamentals/security-recommendations.md) to guide the deployment process. -->
+- [Azure 安全中心](https://www.azure.cn/home/features/security-center/)提供了一个服务来帮助创建安全 IoT 部署。 
 - 有关评估硬件环境的帮助，请参阅白皮书[评估 IoT 安全性](https://download.microsoft.com/download/D/3/9/D3948E3C-D5DC-474E-B22F-81BA8ED7A446/Evaluating_Your_IOT_Security_whitepaper_EN_US.pdf)。 
 - 如需有关选择安全硬件的帮助，请参阅[适用于 IoT 部署的安全硬件](https://download.microsoft.com/download/C/0/5/C05276D6-E602-4BB1-98A4-C29C88E57566/The_right_secure_hardware_for_your_IoT_deployment_EN_US.pdf)。 
-
-<!-- - Azure IoT [security recommendations](../iot-fundamentals/security-recommendations.md) to guide the deployment process.  -->

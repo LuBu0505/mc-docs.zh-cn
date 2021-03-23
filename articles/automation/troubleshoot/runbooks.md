@@ -6,12 +6,12 @@ origin.date: 02/11/2021
 ms.date: 02/22/2021
 ms.topic: troubleshooting
 ms.custom: has-adal-ref
-ms.openlocfilehash: bcbcf66dc5b59f016fdf6a472e07d1bfacc62b23
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 87eb5972744dbadbf5919dfd45f1fc45a1d76a3d
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696923"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766301"
 ---
 # <a name="troubleshoot-runbook-issues"></a>排查 Runbook 问题
 
@@ -241,7 +241,7 @@ Get-AzVM : The client '<automation-runas-account-guid>' with object id '<automat
 
 * 为避免引用错误的订阅，请在每个 runbook 的开头使用以下代码来禁用自动化 runbook 中的上下文保存。
 
-   ```azurepowershell-interactive
+   ```azurepowershell
    Disable-AzContextAutosave –Scope Process
    ```
 
@@ -250,7 +250,7 @@ Get-AzVM : The client '<automation-runas-account-guid>' with object id '<automat
    > [!NOTE]
    > 即使在使用 [Set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/Set-AzContext) 或 [Select-AzSubscription](https://docs.microsoft.com/powershell/module/servicemanagement/azure.service/set-azuresubscription) 之类的 cmdlet 直接操作上下文时，也应该传递上下文对象。
 
-   ```azurepowershell-interactive
+   ```azurepowershell
    $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName 
    $context = Add-AzAccount `
              -Environment AzureChinaCloud `

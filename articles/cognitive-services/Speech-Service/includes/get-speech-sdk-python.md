@@ -3,18 +3,18 @@ author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 03/27/2020
-ms.date: 04/20/2020
-ms.author: v-tawe
-ms.openlocfilehash: 6dc40317fece9b166543740428c179e8d48b23a6
-ms.sourcegitcommit: a4a2521da9b29714aa6b511fc6ba48279b5777c8
+ms.date: 03/08/2021
+ms.author: v-johya
+ms.openlocfilehash: e01c6a49d63e24bf57cf57c3e140d3dacd5cc893
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82126953"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803366"
 ---
 :::row:::
     :::column span="3":::
-        Python 语音 SDK 以 Python 包索引 (PyPI) 模块的形式提供。有关详细信息，请参阅 <a href="https://pypi.org/project/azure-cognitiveservices-speech/" target="_blank">azure-cognitiveservices-speech <span class="docon docon-navigate-external x-hidden-focus"></span></a>。 Python 语音 SDK 与 Windows、Linux 和 macOS 兼容。
+        Python 语音 SDK 以 Python 包索引 (PyPI) 模块的形式提供。有关详细信息，请参阅 <a href="https://pypi.org/project/azure-cognitiveservices-speech/" target="_blank">azure-cognitiveservices-speech </a>。 Python 语音 SDK 与 Windows、Linux 和 macOS 兼容。
     :::column-end:::
     :::column:::
         <br>
@@ -36,4 +36,5 @@ pip install azure-cognitiveservices-speech
 
 #### <a name="additional-resources"></a>其他资源
 
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/python" target="_blank">Python 语音 SDK 快速入门源代码 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/python" target="_blank">Python 语音 SDK 快速入门源代码 </a>
+

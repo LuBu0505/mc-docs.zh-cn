@@ -2,19 +2,18 @@
 title: 快速入门 - Azure Key Vault Python 客户端库 - 管理证书
 description: 了解如何使用 Python 客户端库在 Azure Key Vault 中创建、检索和删除证书
 author: msmbaldwin
-ms.author: v-tawe
-origin.date: 09/03/2020
-ms.date: 01/14/2021
+ms.author: v-chazhou
+ms.date: 03/10/2021
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 81e528466586859cbbf5e38d688955ea62d6bd2f
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 61b816d9d00a629fa98256542770d752e0b8fe46
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059953"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765594"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-python"></a>快速入门：适用于 Python 的 Azure Key Vault 证书客户端库
 
@@ -185,7 +184,7 @@ certificate = poller.result()
 retrieved_certificate = client.get_certificate(certificateName)
  ```
 
-还可以使用 Azure CLI 命令 [az keyvault certificate show](/cli/keyvault/certificate#az-keyvault-certificate-show) 来验证是否设置了证书。
+还可以使用 Azure CLI 命令 [az keyvault certificate show](/cli/keyvault/certificate?#az-keyvault-certificate-show) 来验证是否设置了证书。
 
 ### <a name="delete-a-certificate"></a>删除证书
 

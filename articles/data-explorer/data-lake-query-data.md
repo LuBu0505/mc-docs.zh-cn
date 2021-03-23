@@ -2,19 +2,18 @@
 title: 使用 Azure 数据资源管理器查询 Azure Data Lake 中的数据
 description: 了解如何使用 Azure 数据资源管理器查询 Azure Data Lake 中的数据。
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: how-to
-origin.date: 06/17/2020
-ms.date: 01/22/2021
+ms.date: 03/17/2021
 ms.localizationpriority: high
-ms.openlocfilehash: f84ead64c082d4e6888b91df0cb4d82063541be1
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.openlocfilehash: 092c61f6de005d4cce47adc92f6ebe0202219275
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611699"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766649"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer"></a>使用 Azure 数据资源管理器查询 Azure Data Lake 中的数据
 
@@ -202,7 +201,7 @@ external_table('ApiCalls') | take 10
   dropoff_puma: string
 )
 kind=blob 
-partition by bin(pickup_datetime, 1d)
+partition by (Date:datetime = bin(pickup_datetime, 1d))   
 dataformat=csv
 ( 
     h@'https://storageaccount.blob.core.chinacloudapi.cn/container1;secretKey'

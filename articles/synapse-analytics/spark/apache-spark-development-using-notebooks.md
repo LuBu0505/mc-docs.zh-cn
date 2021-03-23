@@ -7,16 +7,16 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 origin.date: 10/19/2020
-ms.date: 03/08/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 9ebf8f347322d09acd839daf874cb0abcbe078d3
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 7c3f52523e007b2ecf0d0831bc815a189611fd0f
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207251"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766337"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中创建、开发和维护 Synapse Studio 笔记本
 
@@ -555,5 +555,5 @@ Azure 数据工厂查找参数单元格，并将此单元格作为执行时传�
 - [快速入门：使用 Web 工具在 Azure Synapse Analytics 中创建 Apache Spark 池](../quickstart-apache-spark-notebook.md)
 - [Azure Synapse Analytics 中的 Apache Spark 是什么](apache-spark-overview.md)
 - [将 .NET for Apache Spark 与 Azure Synapse Analytics 配合使用](spark-dotnet.md)
-- [.NET for Apache Spark 文档](https://docs.microsoft.com/dotnet/spark?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)
+- [.NET for Apache Spark 文档](https://docs.microsoft.com/dotnet/spark)
 - [Azure Synapse Analytics](../index.yml)

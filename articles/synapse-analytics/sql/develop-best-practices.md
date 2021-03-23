@@ -2,20 +2,21 @@
 title: Synapse SQL 开发最佳做法
 description: 针对 Synapse SQL 进行开发时应知道的建议和最佳做法。
 services: synapse-analytics
-author: XiaoyuMSFT
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: xiaoyul
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: 4e4ad1f1ecd3f20c692180deca43e6f902e6c4bb
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 7312c9a9484fbe087a60ad79276b62f9838cab86
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102206823"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766198"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Synapse SQL 开发最佳做法
 
@@ -25,7 +26,7 @@ ms.locfileid: "102206823"
 
 ### <a name="reduce-cost-with-pause-and-scale"></a>使用暂停和缩放来降低成本
 
-若要了解如何通过暂停和缩放来降低成本，请参阅[管理计算](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+若要了解如何通过暂停和缩放来降低成本，请参阅[管理计算](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)。
 
 ### <a name="maintain-statistics"></a>维护统计信息
 
@@ -36,7 +37,7 @@ ms.locfileid: "102206823"
 > [!NOTE]
 > 对涉及联接的列、WHERE 子句中使用的列、在 GROUP BY 中找到的列进行信息统计，可以获得最大效益。
 
-另请参阅[管理表统计信息](develop-tables-statistics.md)、[CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、[UPDATE STATISTICS](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+另请参阅[管理表统计信息](develop-tables-statistics.md)、[CREATE STATISTICS](https://docs.microsoft.com/sql/t-sql/statements/create-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true)、[UPDATE STATISTICS](https://docs.microsoft.com/sql/t-sql/statements/update-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true)。
 
 ### <a name="hash-distribute-large-tables"></a>哈希分布大型表
 
@@ -53,7 +54,7 @@ ms.locfileid: "102206823"
 
 请参阅以下链接，了解有关选择分布列如何能提升性能，以及如何在 CREATE TABLES 语句的 WITH 子句中定义分布式表的额外详细信息。
 
-另请参阅[表概述](develop-tables-overview.md)、[表分布](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)、[选择表分布](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service)、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 以及 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+另请参阅[表概述](develop-tables-overview.md)、[表分布](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)、[选择表分布](https://docs.microsoft.com/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service)、[CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) 以及 [CREATE TABLE AS SELECT](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true)。
 
 ### <a name="do-not-over-partition"></a>不要过度分区
 尽管数据分区对于维护数据（通过分区切换）或优化扫描（通过分区排除）很有效，但分区过多会减慢查询速度。  通常，在 SQL Server 上运行良好的高粒度分区策略可能无法在专用 SQL 池中正常工作。  
@@ -67,7 +68,7 @@ ms.locfileid: "102206823"
 
 可以考虑的一种选择是，使用比 SQL Server 中适当粒度更粗的粒度。  例如，考虑使用每周或每月分区，而不是每日分区。
 
-另请参阅[表分区](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+另请参阅[表分区](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)。
 
 ### <a name="minimize-transaction-sizes"></a>最小化事务大小
 
@@ -84,7 +85,7 @@ ms.locfileid: "102206823"
 
 对于未分区的表，请考虑使用 CTAS 将想要保留的数据写入表中，而不是使用 DELETE。  如果 CTAS 花费的时间相同，则运行起来要安全得多，因为它的事务日志记录最少，并且可以根据需要快速取消。
 
-另请参阅[了解事务](develop-transactions.md)、[优化事务](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)、[表分区](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)、[TRUNCATE TABLE](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、[ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 和 [Create table as select (CTAS)](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+另请参阅[了解事务](develop-transactions.md)、[优化事务](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)、[表分区](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)、[TRUNCATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/truncate-table-transact-sql?view=azure-sqldw-latest&preserve-view=true)、[ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql?view=azure-sqldw-latest&preserve-view=true) 和 [Create table as select (CTAS)](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)。
 
 ### <a name="use-the-smallest-possible-column-size"></a>使用最小可能的列大小
 
@@ -92,7 +93,7 @@ ms.locfileid: "102206823"
 
 如果列中最长的值是 25 个字符，请将列定义为 VARCHAR(25)。  避免将所有字符列定义为较大的默认长度。  此外，请将列定义为 VARCHAR（当它只需要这样的大小时）而非 NVARCHAR。
 
-另请参阅[表概述](develop-tables-overview.md)、[表数据类型](develop-tables-data-types.md)和 [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+另请参阅[表概述](develop-tables-overview.md)、[表数据类型](develop-tables-data-types.md)和 [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true)。
 
 ### <a name="optimize-clustered-columnstore-tables"></a>优化聚集列存储表
 
@@ -100,7 +101,7 @@ ms.locfileid: "102206823"
 
 为了让列存储表的查询获得最佳性能，良好的分段质量很重要。  当行在内存不足的状态下写入列存储表时，列存储分段质量可能降低。  
 
-压缩行组中的行数可以测量分段质量。  有关检测和改善聚集列存储表分段质量的分步说明，请参阅[列存储索引质量不佳的原因](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#causes-of-poor-columnstore-index-quality)和[表索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)一文。  
+压缩行组中的行数可以测量分段质量。  有关检测和改善聚集列存储表分段质量的分步说明，请参阅[列存储索引质量不佳的原因](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json#causes-of-poor-columnstore-index-quality)和[表索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)一文。  
 
 由于高质量列存储段很重要，因此可以考虑使用中型或大型资源类中的用户 ID 来加载数据。 使用较低的[数据仓库单位](resource-consumption-models.md)值意味着需要向加载用户分配较大的资源类。
 
@@ -115,7 +116,7 @@ ms.locfileid: "102206823"
 
 查询列存储表时，如果只选择需要的列，查询运行将更快速。  
 
-另请参阅[表索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)、[列存储索引指南](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、[重新生成列存储索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#rebuilding-indexes-to-improve-segment-quality)。
+另请参阅[表索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)、[列存储索引指南](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview?view=azure-sqldw-latest&preserve-view=true)、[重新生成列存储索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json#rebuilding-indexes-to-improve-segment-quality)。
 
 ## <a name="serverless-sql-pool-development-best-practices"></a>无服务器 SQL 池开发最佳做法
 
@@ -165,8 +166,3 @@ ms.locfileid: "102206823"
 
 随着 CETAS 生成 Parquet 文件，统计信息将会在第一个查询以此外部表为目标时自动创建，从而提升性能。
 
-### <a name="next-steps"></a>后续步骤
-
-如果需要本文中未提供的信息，请使用本页左侧的“搜索文档”功能来搜索所有 SQL 池文档。  可以在[有关 Azure Synapse Analytics 的 Microsoft 问答页面](/answers/topics/azure-synapse-analytics.html)上向其他用户和 Azure Synapse Analytics 产品组发布问题。 我们会主动观察此论坛，确保用户的问题获得其他用户或我们的回答。  
-
-如果你更喜欢在 Stack Overflow 上提问，还可以访问 [Azure Synapse Analytics Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-sqldw)。

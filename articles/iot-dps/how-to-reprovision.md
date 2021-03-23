@@ -2,17 +2,17 @@
 title: 在 Azure IoT 中心设备预配服务中重新预配设备
 description: 了解如何使用设备预配服务 (DPS) 实例重新预配设备，以及可能需要执行此操作的原因。
 author: wesmc7777
-ms.author: v-tawe
-ms.date: 02/22/2021
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 2443916f1722727aa4b0a3c8917d9d5fc774e2f9
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.openlocfilehash: cdd000f7356c45a7d28cd24b9d46053d21002682
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196833"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765351"
 ---
 # <a name="how-to-reprovision-devices"></a>如何重新预配设备
 

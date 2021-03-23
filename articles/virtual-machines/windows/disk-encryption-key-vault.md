@@ -2,23 +2,24 @@
 title: 在 Windows VM 上创建和配置用于 Azure 磁盘加密的密钥保管库
 description: 本文介绍创建和配置用于 Windows VM 上的 Azure 磁盘加密的密钥保管库的步骤。
 ms.service: virtual-machines
-ms.subservice: security
+ms.subservice: disks
+ms.collection: windows
 ms.topic: how-to
 origin.date: 08/06/2019
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 26647ef51f2dbb61c962f4a2bc876950d91b5ea4
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: b66184341f31c24bcdcef78b7e1a5f25b9239c74
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055248"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766446"
 ---
-# <a name="create-and-configure-a-key-vault-for-azure-disk-encryption"></a>为 Azure 磁盘加密创建和配置密钥保管库
+# <a name="create-and-configure-a-key-vault-for-azure-disk-encryption-on-a-windows-vm"></a>在 Windows VM 上创建和配置用于 Azure 磁盘加密的密钥保管库
 
 Azure Disk Encryption 使用 Azure Key Vault 来控制和管理磁盘加密密钥和机密。  有关 Key Vault 的详细信息，请参阅 [Azure Key Vault 入门](../../key-vault/general/overview.md)和[保护 Key Vault](../../key-vault/general/secure-your-key-vault.md)。 
 

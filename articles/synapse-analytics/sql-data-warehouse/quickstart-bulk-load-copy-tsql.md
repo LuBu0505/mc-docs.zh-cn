@@ -12,12 +12,12 @@ ms.date: 12/07/2020
 ms.author: v-jay
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 03eb1ef2f09e0c4f95f59a01d443acede182c0d3
-ms.sourcegitcommit: ac1cb9a6531f2c843002914023757ab3f306dc3e
+ms.openlocfilehash: 1680a31d5fb2eeb21e0c668c04660664374a7f01
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746862"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765184"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>快速入门：使用 COPY 语句批量加载数据
 
@@ -108,7 +108,7 @@ WITH
 运行以下 COPY 语句，将数据从 Azure blob 存储帐户加载到 Trip 表中。
 
 ```sql
-COPY INTO [dbo].[Trip] FROM 'https://nytaxiblob.blob.core.windows.net/2013/Trip2013/'
+COPY INTO [dbo].[Trip] FROM 'https://nytaxiblob.blob.core.chinacloudapi.cn/2013/Trip2013/'
 WITH (
    FIELDTERMINATOR='|',
    ROWTERMINATOR='0x0A'

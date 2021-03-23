@@ -2,23 +2,23 @@
 author: trevorbye
 ms.service: cognitive-services
 ms.subservice: speech-service
+ms.date: 04/04/2020
 ms.topic: include
 origin.date: 04/04/2020
-ms.date: 01/14/2021
-ms.author: v-tawe
+ms.author: v-johya
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: a39d60c1f0b32d7038ea12c3a4fe06795b1b6172
-ms.sourcegitcommit: 93063f9b8771b8e895c3bcdf218f5e3af14ef537
+ms.openlocfilehash: 941c26097ee0c200fe405970d77ec5a5a89168fc
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195356"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803550"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 准备工作：
 
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp" target="_blank">安装适用于开发环境的语音 SDK，并创建一个空示例项目<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp" target="_blank">安装适用于开发环境的语音 SDK，并创建一个空示例项目</a>。
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>创建 LUIS 应用以进行意向识别
 
@@ -107,8 +107,9 @@ recognizer->AddIntent(model, "HomeAutomation.TurnOff");
 此示例使用 `AddIntent()` 函数单独添加意向。 如果要从模型中添加所有意向，请使用 `AddAllIntents(model)` 并传递模型。
 
 > [!NOTE]
-> 可以通过将终结点 URL 传递到 FromEndpoint 方法来创建 LanguageUnderstandingModel。
-> 语音 SDK 仅支持 LUIS v2.0 终结点，后者始终遵循以下两种模式之一：
+> 语音 SDK 仅支持 LUIS v2.0 终结点。
+> 必须手动修改位于示例查询字段中的 v3.0 终结点 URL 才能使用 v2.0 URL 模式。
+> LUIS v2.0 终结点始终采用以下两种模式之一：
 > * `https://{AzureResourceName}.cognitiveservices.azure.cn/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 > * `https://{Region}.api.cognitive.azure.cn/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 

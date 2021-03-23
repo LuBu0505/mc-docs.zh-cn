@@ -2,15 +2,13 @@
 title: 快速入门：使用 Go 发送和接收事件 - Azure 事件中心
 description: 快速入门：本文演示了创建 Go 应用程序的过程，可使用该应用程序从 Azure 事件中心发送事件。
 ms.topic: quickstart
-origin.date: 06/23/2020
-ms.date: 08/21/2020
-ms.author: v-tawe
-ms.openlocfilehash: 274cf4bd29abbf8f1e101d0eac6c668f68a98210
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.date: 03/11/2021
+ms.openlocfilehash: 48f21165b7ffbd9b2d512d2d4d30d78b81e62300
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431011"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765944"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>快速入门：使用 Go 将事件发送到事件中心或从其接收事件
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。

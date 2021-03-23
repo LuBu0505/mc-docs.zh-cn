@@ -2,20 +2,21 @@
 title: 使用 T-SQL 循环
 description: 有关通过 Azure Synapse Analytics 中的 Synapse SQL 使用 T-SQL 循环、替换游标和开发相关解决方案的技巧。
 services: synapse-analytics
-author: filippopovic
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: fipopovi
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e87515b0facc0832be05f95ec01d3a82829dd96
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: f59b1d90081730916c292df2dd2221ebbe72caa6
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207497"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766194"
 ---
 # <a name="use-t-sql-loops-with-synapse-sql-in-azure-synapse-analytics"></a>通过 Azure Synapse Analytics 中的 Synapse SQL 使用 T-SQL 循环
 
@@ -23,7 +24,7 @@ ms.locfileid: "102207497"
 
 ## <a name="purpose-of-while-loops"></a>WHILE 循环的用途
 
-Synapse SQL 支持对重复执行的语句块使用 [WHILE](/sql/t-sql/language-elements/while-transact-sql?preserve-view=true&view=sql-server-ver15) 循环。 只要指定的条件都成立，或者在代码专门使用 BREAK 关键字终止循环之前，此 WHILE 循环将一直继续。 
+Synapse SQL 支持对重复执行的语句块使用 [WHILE](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?preserve-view=true&view=sql-server-ver15) 循环。 只要指定的条件都成立，或者在代码专门使用 BREAK 关键字终止循环之前，此 WHILE 循环将一直继续。 
 
 Synapse SQL 中的循环适合用于替换 SQL 代码中定义的游标。 幸运的是，几乎所有以 SQL 代码编写的游标都是快进的只读变体。 因此，WHILE 循环是用于替换游标的绝佳替代方案。
 

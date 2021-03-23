@@ -6,14 +6,14 @@ ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
 origin.date: 06/15/2018
-ms.date: 11/18/2020
+ms.date: 03/17/2021
 ms.author: v-johya
-ms.openlocfilehash: f325bc03de6384d86ac5900734ee9d40c401783e
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 71391c533018177b85b1fad485a4a2c6d049a3b1
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977386"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765932"
 ---
 # <a name="tutorial-mock-api-responses"></a>教程：模拟 API 响应
 
@@ -61,11 +61,13 @@ ms.locfileid: "94977386"
 
 API 公开一个或多个操作。 在本部分中，将操作添加到你创建的空白 API。 完成本部分中的步骤之后调用该操作会生成错误。 完成后面[启用响应模拟](#enable-response-mocking)部分中的步骤后，不会出现任何错误。
 
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
 1. 选择上一步中创建的 API。
 1. 选择“+ 添加操作”。
 1. 在“前端”窗口中，输入以下值。
 
-     | 设置             | 值                             | 说明                                                                                                                                                                                   |
+     | 设置             | “值”                             | 说明                                                                                                                                                                                   |
     |---------------------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | **显示名称**    | 测试调用                        | 显示在[开发人员门户](api-management-howto-developer-portal.md)中的名称。                                                                                                                                       |
     | **URL**（HTTP 谓词） | GET                               | 选择预定义的 HTTP 谓词之一。                                                                                                                                         |
@@ -88,6 +90,39 @@ API 公开一个或多个操作。 在本部分中，将操作添加到你创建
 |---------|---------|
 |**查询**     |  添加查询参数。 除了提供名称和说明以外，还可以提供可分配给查询参数的值。 其中一个值可被标记为默认（可选）。        |
 |**请求**     |  定义请求内容类型、示例和架构。       |
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+开始使用 Azure CLI：
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+若要将操作添加到测试 API，请运行 [az apim api operation create](/cli/apim/api/operation#az_apim_api_operation_create) 命令：
+
+```azurecli
+az apim api operation create --resource-group apim-hello-word-resource-group \
+    --display-name "Test call" --api-id test-api --method GET \
+    --url-template /test --service-name apim-hello-world 
+```
+
+运行 [az apim api operation list](/cli/apim/api/operation#az_apim_api_operation_list) 命令来查看有关 API 的所有操作：
+
+```azurecli
+az apim api operation list --resource-group apim-hello-word-resource-group \
+    --api-id test-api --service-name apim-hello-world --output table
+```
+
+若要删除操作，请使用 [az apim api operation delete](/cli/apim/api/operation#az_apim_api_operation_delete) 命令。 获取上一个命令的操作 ID。
+
+```azurecli
+az apim api operation delete --resource-group apim-hello-word-resource-group \
+    --api-id test-api --operation-id 00000000000000000000000000000000 \
+    --service-name apim-hello-world
+```
+
+保留此操作，以便在文章的剩余部分中使用。
+
+---
 
 ## <a name="enable-response-mocking"></a>启用响应模拟
 

@@ -2,20 +2,21 @@
 title: 教程：Azure Synapse Analytics 入门
 description: 本教程将介绍设置和使用 Azure Synapse Analytics 的基本步骤。
 services: synapse-analytics
-author: saveenr
-ms.author: saveenr
-manager: julieMSFT
+author: WenJason
+ms.author: v-jay
+manager: digimobile
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 11/17/2020
-ms.openlocfilehash: 98fc7561a8312e168250a37cfd7f0dc8ed7585ed
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+origin.date: 11/17/2020
+ms.date: 03/22/2021
+ms.openlocfilehash: 5d57e5a4e573709e7a4dedcb8e56fbc2d4ddda52
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207195"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766856"
 ---
 # <a name="get-started-with-azure-synapse-analytics"></a>Azure Synapse Analytics 入门
 

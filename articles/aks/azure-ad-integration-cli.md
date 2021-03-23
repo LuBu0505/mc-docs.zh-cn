@@ -5,16 +5,16 @@ services: container-service
 ms.topic: article
 origin.date: 07/20/2020
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: e95558b04164a017e3d5e450bd8b083b8573e8ed
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: b8612759e550d9d03afd269ec4924dfa88c3200d
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023136"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766014"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>使用 Azure CLI 将 Azure Active Directory 与 Azure Kubernetes 服务集成（旧版）
 
@@ -36,7 +36,7 @@ ms.locfileid: "98023136"
 
 需要安装并配置 Azure CLI 2.0.61 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
-<!--Not Available on [https://shell.azure.com](https://shell.azure.com)-->
+<!--NOT AVAILABLE ON [https://shell.azure.com](https://shell.azure.com)-->
 
 为了保持一致并帮助运行本文中的命令，请为所需的 AKS 群集名称创建一个变量。 以下示例使用名称 *myakscluster*：
 
@@ -219,8 +219,6 @@ subjects:
   name: userPrincipalName_or_objectId
 ```
 
-<!--CORRECT ON yaml format  kind: User-->
-
 使用 [kubectl apply][kubectl-apply] 命令创建群集角色绑定，并指定 YAML 清单的文件名：
 
 ```console
@@ -308,7 +306,7 @@ error: You must be logged in to the server (Unauthorized)
 [az-group-create]: https://docs.azure.cn/cli/group#az_group_create
 [az-account-show]: https://docs.azure.cn/cli/account#az_account_show
 [az-ad-signed-in-user-show]: https://docs.azure.cn/cli/ad/signed-in-user#az_ad_signed_in_user_show
-[install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli
+[install-azure-cli]: https://docs.microsoft.com/cli/azure/install-azure-cli
 [az-ad-sp-credential-reset]: https://docs.azure.cn/cli/ad/sp/credential#az_ad_sp_credential_reset
 [rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
@@ -316,4 +314,4 @@ error: You must be logged in to the server (Unauthorized)
 [managed-aad]: managed-aad.md
 [managed-aad-migrate]: managed-aad.md#upgrading-to-aks-managed-azure-ad-integration
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

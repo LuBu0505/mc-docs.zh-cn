@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 01/27/2021
-ms.author: v-tawe
-ms.openlocfilehash: 1baa842466e86a8b1fbcc0d2fb19201e96139e7f
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: fe5dc8e38071f071039adf9eafed8d1ed4fe358e
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059933"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765580"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>如何启用 Key Vault 日志记录
 
@@ -28,6 +28,7 @@ ms.locfileid: "99059933"
 * Azure CLI 或 Azure PowerShell。
 * 足够的 Azure 存储用于保存密钥保管库日志。
 
+<!-- This guide commands are formatted for [Cloud Shell](https://shell.azure.com) with Bash as an environment. -->
 
 ## <a name="connect-to-your-key-vault-subscription"></a>连接到 Key Vault 订阅
 

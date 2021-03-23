@@ -8,15 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: overview
-origin.date: 09/15/2020
-ms.date: 01/18/2021
-ms.author: v-tawe
-ms.openlocfilehash: e3fbd337f8f746fa88dae23d73e3333187119503
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: 70b40310de821f411128b7ba482ad3cb2acad879
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99058454"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765305"
 ---
 # <a name="about-keys"></a>关于密钥
 

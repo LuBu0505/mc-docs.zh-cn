@@ -2,19 +2,20 @@
 title: 快速入门：使用 Synapse Studio 创建专用 SQL 池
 description: 遵循本指南中的步骤，使用 Synapse Studio 创建专用 SQL 池。
 services: synapse-analytics
-author: julieMSFT
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql
-ms.date: 10/16/2020
-ms.author: jrasnick
+origin.date: 10/16/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6f83e66ead29f1619b8098b06f5252958f4558ad
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 6ccc9c64984e90205ea0df69b244c0abf8e82b7c
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207260"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765201"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-using-synapse-studio"></a>快速入门：使用 Synapse Studio 创建专用 SQL 池
 
@@ -22,17 +23,17 @@ Azure Synapse Analytics 提供了各种分析引擎，可帮助你引入、转�
 
 本快速入门介绍了使用 Synapse Studio 在 Synapse 工作区中创建专用 SQL 池的步骤。
 
-如果没有 Azure 订阅，请[在开始之前创建一个免费帐户](https://azure.microsoft.com/free/)。
+如果没有 Azure 订阅，[请在开始前创建一个试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
+- Azure 订阅 - [创建试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 - [Synapse 工作区](quickstart-create-workspace.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)
+登录到 [Azure 门户](https://portal.azure.cn/)
 
 ## <a name="navigate-to-the-synapse-workspace"></a>导航到 Synapse 工作区
 

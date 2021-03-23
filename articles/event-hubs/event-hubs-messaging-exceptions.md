@@ -2,13 +2,13 @@
 title: Azure 事件中心 - 异常（旧版）
 description: 本文提供 Azure 事件中心消息传送异常和建议的操作列表。
 ms.topic: article
-ms.date: 02/24/2021
-ms.openlocfilehash: 4b7722aed83d2995c93b1829202613939c16fca7
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.date: 03/11/2021
+ms.openlocfilehash: dd1e827964fe07e883f7e77b231106886e0d1657
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196584"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765643"
 ---
 # <a name="event-hubs-messaging-exceptions---net-legacy"></a>事件中心消息传送异常 - .NET（旧版）
 本部分列出了 .NET Framework API 生成的 .NET 异常。 

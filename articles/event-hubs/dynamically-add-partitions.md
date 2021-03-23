@@ -2,13 +2,13 @@
 title: 将分区动态添加到 Azure 事件中心的某个事件中心
 description: 本文介绍如何将分区动态添加到 Azure 事件中心的某个事件中心。
 ms.topic: how-to
-ms.date: 01/29/2021
-ms.openlocfilehash: 03acba98af5a130ce4afe6c4dddc514b74105702
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.date: 03/11/2021
+ms.openlocfilehash: 66de37aa6d53787cd68bbfcdd88fce378705c1fd
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579622"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766274"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>动态将分区添加到 Azure 事件中心的事件中心（Apache Kafka 主题）
 事件中心通过分区使用者模式提供消息流式处理功能，在此模式下，每个使用者只读取消息流的特定子集或分区。 此模式支持事件处理的水平缩放，同时提供队列和主题中不可用的其他面向流的功能。 分区是事件中心内保留的有序事件。 当较新的事件到达时，它们将添加到此序列的末尾。 有关一般分区的详细信息，请参阅[分区](event-hubs-scalability.md#partitions)
@@ -18,7 +18,10 @@ ms.locfileid: "99579622"
 > [!IMPORTANT]
 > 动态添加分区仅适用于专用事件中心群集。
 
-
+<!--
+> [!NOTE]
+> For Apache Kafka clients, an **event hub** maps to a **Kafka topic**. For more mappings between Azure Event Hubs and Apache Kafka, see [Kafka and Event Hubs conceptual mapping](event-hubs-for-kafka-ecosystem-overview.md#kafka-and-event-hub-conceptual-mapping)
+-->
 
 ## <a name="update-the-partition-count"></a>更新分区计数
 本部分说明如何以不同的方式（PowerShell、CLI 等）更新事件中心的分区计数。

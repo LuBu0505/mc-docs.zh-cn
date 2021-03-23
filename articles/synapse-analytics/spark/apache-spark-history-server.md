@@ -10,12 +10,12 @@ origin.date: 10/15/2020
 ms.date: 03/08/2021
 ms.author: v-jay
 ms.reviewer: euang
-ms.openlocfilehash: 54e0c520daaf64480f054e7d14669b4aa988a676
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 49fc21ff2ba8e03649af58fe8962586b6b3877b4
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207524"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766705"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>使用扩展的 Apache Spark History Server 调试和诊断 Apache Spark 应用程序
 
@@ -240,5 +240,5 @@ Apache Spark History Server 是已完成的和正在运行的 Spark 应用程序
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure Synapse Analytics](../overview-what-is.md)
-- [.NET for Apache Spark 文档](https://docs.microsoft.com/dotnet/spark?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)
+- [.NET for Apache Spark 文档](https://docs.microsoft.com/dotnet/spark)
 

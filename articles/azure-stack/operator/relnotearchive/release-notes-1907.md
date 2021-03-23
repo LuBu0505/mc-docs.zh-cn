@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 10/29/2019
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 10/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: d3ab264af2ef289f788851cae28b8243a35a10af
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 5a9a00cb1bf7e74159f1b5c739ca289cfd021321
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101751853"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766996"
 ---
 # <a name="azure-stack-updates-1907-release-notes"></a>Azure Stack 更新：1907 发行说明
 
@@ -45,7 +45,7 @@ ms.locfileid: "101751853"
 - [安全更新](../release-notes-security-updates.md)
 - [应用更新之前和之后的活动清单](../release-notes-checklist.md)
 
-有关对更新和更新过程进行故障排除的帮助，请参阅[对 Azure Stack 的修补和更新问题进行故障排除](../azure-stack-updates-troubleshoot.md)。
+有关对更新和更新过程进行故障排除的帮助，请参阅[对 Azure Stack 的修补和更新问题进行故障排除](../azure-stack-troubleshooting.md)。
 
 ## <a name="1907-build-reference"></a>1907 内部版本参考
 
@@ -67,7 +67,7 @@ Azure Stack 1907 更新内部版本类型为“快速”。 有关更新内部�
 
 <!-- What's new, also net new experiences and features. -->
 
-- 正式推出 Azure Stack 诊断日志收集服务，以加速和改善诊断日志的收集。 Azure Stack 诊断日志收集服务可让你轻松地通过 Microsoft 客户支持服务 (CSS) 收集和共享诊断日志。 此诊断日志收集服务可在 Azure Stack 管理员门户中提供新的用户体验，让操作员设置在引发特定的关键警报时自动将诊断日志上传到存储 Blob，或按需执行相同的操作。 有关详细信息，请参阅[诊断日志收集](../azure-stack-diagnostic-log-collection-overview.md)一文。
+- 正式推出 Azure Stack 诊断日志收集服务，以加速和改善诊断日志的收集。 Azure Stack 诊断日志收集服务可让你轻松地通过 Microsoft 客户支持服务 (CSS) 收集和共享诊断日志。 此诊断日志收集服务可在 Azure Stack 管理员门户中提供新的用户体验，让操作员设置在引发特定的关键警报时自动将诊断日志上传到存储 Blob，或按需执行相同的操作。 有关详细信息，请参阅[诊断日志收集](../diagnostic-log-collection.md)一文。
 
 - 正式推出 Azure Stack 网络基础结构验证作为 Azure Stack 验证工具 **Test-AzureStack** 的一部分。 Azure Stack 网络基础结构将成为 **Test-AzureStack** 的一部分，可识别 Azure Stack 的网络基础结构是否发生故障。 此测试绕过 Azure Stack 软件定义的网络来检查网络基础结构的连接。 它会演示如何从公共 VIP 连接到配置的 DNS 转发器、NTP 服务器和标识终结点。 此外，在使用 Azure AD 作为标识提供者时，它会检查与 Azure 的连接；使用 ADFS 时，它会检查与联合服务器的连接。 有关详细信息，请参阅 [Azure Stack 验证工具](../azure-stack-diagnostic-test.md)一文。
 

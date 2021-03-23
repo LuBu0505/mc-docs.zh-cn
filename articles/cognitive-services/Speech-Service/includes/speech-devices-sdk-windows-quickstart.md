@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 02/20/2020
-ms.date: 12/10/2020
-ms.author: v-tawe
-ms.openlocfilehash: 0a002a549ceadd27000463244ee40d43c7a839fd
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.date: 03/08/2021
+ms.author: v-johya
+ms.openlocfilehash: ef1cf638a961e48505bd65d3d32ef1c05fad5e72
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004578"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803254"
 ---
 本快速入门介绍如何使用适用于 Windows 的语音设备 SDK 来生成支持语音的产品。
 
@@ -35,9 +35,7 @@ ms.locfileid: "97004578"
    > [!NOTE]
    > 本快速入门假设应用已解压缩到 C:\SDSDK\JRE-Sample-Release
 
-<!-- Conversation Transcription is currently only available for "en-US" and "zh-CN", in the "chinaeast2" regions. You must have a speech key in one of those regions to use Conversation Transcription. -->
-
-如果计划使用意向，则将需要[语音理解服务 (LUIS)](https://docs.azure.cn/cognitive-services/luis/azureibizasubscription) 订阅。 若要了解有关 LUIS 和意向识别的详细信息，请参阅[使用 LUIS、C# 识别语音意向](https://docs.azure.cn/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)。 [示例 LUIS 模型](https://aka.ms/sdsdk-luis)适用于此应用。
+如果计划使用意向，则将需要[语音理解服务 (LUIS)](../../luis/luis-how-to-azure-subscription.md) 订阅。 若要了解有关 LUIS 和意向识别的详细信息，请参阅[使用 LUIS、C# 识别语音意向](../how-to-recognize-intents-from-speech-csharp.md)。 [示例 LUIS 模型](https://aka.ms/sdsdk-luis)适用于此应用。
 
 ## <a name="create-and-configure-the-project"></a>创建和配置项目
 
@@ -55,7 +53,7 @@ ms.locfileid: "97004578"
 
    ![显示“新建 Java 项目”向导的屏幕截图。](../media/speech-devices-sdk/eclipse-new-java-project.png)
 
-1. 在“包资源管理器”中，右键单击你的项目。 从上下文菜单中选择“配置” > “转换为 Maven 项目”。 选择“完成”  。
+1. 在“包资源管理器”中，右键单击你的项目。 从上下文菜单中选择“配置” > “转换为 Maven 项目”。 选择“完成”。
 
    ![包资源管理器的屏幕截图](../media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
@@ -75,7 +73,7 @@ ms.locfileid: "97004578"
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.14.0</version>
+             <version>1.15.0</version>
         </dependency>
     </dependencies>
    ```
@@ -99,17 +97,8 @@ ms.locfileid: "97004578"
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-   <!-- If you are using conversation transcription, your speech key and region information are also needed in `Cts.java`:
-
-   ```java
-    private static final String CTSKey = "<Conversation Transcription Service Key>";
-    private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "chinaeast2"
-   ``` -->
 
 1. 默认关键字为“Computer”。 还可以尝试所提供的其他关键字之一，例如“Machine”或“Assistant”。 这些备用关键字的资源文件位于语音设备 SDK 的 keyword 文件夹中。 例如，`C:\SDSDK\JRE-Sample-Release\keyword\Computer` 包含用于关键字“Computer”的文件。
-
-    <!-- > [!TIP]
-    > You can also [create a custom keyword](../speech-devices-sdk-create-kws.md). -->
 
     要使用新的关键字，请更新 `FunctionsList.java` 中的下面一行，并将关键字复制到应用。 例如，要使用关键字包 `machine.zip` 中的关键字“Machine”，请执行以下操作：
 
@@ -130,26 +119,23 @@ ms.locfileid: "97004578"
 
    ![显示语音设备 SDK 示例应用程序和选项的屏幕截图。](../media/speech-devices-sdk/java-sample-app-windows.png)
 
-   <!-- 1. Try the new **Conversation Transcription** demo. Start transcribing with **Session** > **Start**. By default everyone is a guest. However, if you have participant's voice signatures they can be put into a file `participants.properties` in the project folder **target/classes**. To generate the voice signature, look at [Transcribe conversations (SDK)](../how-to-use-conversation-transcription-service.md).
+## <a name="create-and-run-a-standalone-application"></a>创建并运行独立应用程序
 
-   ![Screenshot of a demo Conversation Transcription application.](../media/speech-devices-sdk/cts-sample-app-windows.png)
+1. 在“包资源管理器”中，右键单击你的项目。 选择“导出”。
 
-## Create and run a standalone application
+1. 此时将显示“导出”窗口。 展开“Java”，选择“可运行的 JAR 文件”，然后选择“下一步”。
 
-1. In the **Package explorer**, right-click your project. Choose **Export**.
+   ![显示“导出”窗口的屏幕截图，你可在其中选择“可运行的 JAR 文件”。](../media/speech-devices-sdk/eclipse-export-windows.png)
 
-1. The **Export** window appears. Expand **Java** and select **Runnable JAR file** and then select **Next**.
+1. 此时将显示“可运行的 JAR 文件导出”窗口。 为应用程序选择“导出目标”，然后选择“完成”。
 
-   ![Screenshot that shows the Export window where you select Runnable JAR file.](../media/speech-devices-sdk/eclipse-export-windows.png)
+   ![显示“可运行的 JAR 文件导出”窗口的屏幕截图，你可在其中选择导出目标。](../media/speech-devices-sdk/eclipse-export-jar-windows.png)
 
-1. The **Runnable JAR File Export** window appears. Choose an **Export destination** for the application, and then select **Finish**.
+1. 请将 `kws.table`、`participants.properties`、`unimic_runtime.dll`、`pma.dll` 和 `Microsoft.CognitiveServices.Speech.extension.pma.dll` 放入上面选择的目标文件夹中，因为该应用程序需要这些文件。
 
-   ![Screenshot that shows the Runnable JAR File Export window where you choose the export destination.](../media/speech-devices-sdk/eclipse-export-jar-windows.png)
-
-1. Please put `kws.table`, `participants.properties`, `unimic_runtime.dll`, `pma.dll` and `Microsoft.CognitiveServices.Speech.extension.pma.dll` in the destination folder chosen above as these files are needed by the application.
-
-1. To run the standalone application
+1. 运行独立的应用程序
 
    ```powershell
    java -jar SpeechDemo.jar
    ```
+

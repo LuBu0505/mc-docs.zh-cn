@@ -1,19 +1,19 @@
 ---
 ms.topic: include
 origin.date: 09/10/2020
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.testscope: yes
 ms.testdate: 02/22/2021
 author: rockboyfor
 ms.author: v-yeche
 manager: barbkess
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 78f6b0ea845e2baeced2e2fc2948feb9d42db021
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 03ff7586a979dc640de58919bc3bb86e6b91f4c3
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102052456"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765196"
 ---
 <!--Verified successfully-->
 <!--NOT AVAILABLE ON [Azure local Shell](../articles/cloud-shell/quickstart.md)-->

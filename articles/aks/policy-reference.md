@@ -1,20 +1,20 @@
 ---
 title: Azure Kubernetes 服务的内置策略定义
 description: 列出 Azure Kubernetes 服务的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-origin.date: 02/09/2021
+origin.date: 03/05/2021
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: 09/21/2020
 ms.author: v-yeche
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 0ff93672bbd82df39450a9f221939a848e4a1edb
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 2f0a7587bcbf13c247aa7454b275cf1a58d25e22
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054344"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766077"
 ---
 <!--Verified successfully on 09/21/2020-->
 # <a name="azure-policy-built-in-definitions-for-azure-kubernetes-service"></a>Azure Kubernetes 服务的 Azure Policy 内置定义
@@ -23,13 +23,17 @@ ms.locfileid: "102054344"
 
 每个内置策略定义链接（指向 Azure 门户中的策略定义）的名称。 使用“版本”列中的链接查看 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)上的源。
 
-## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
+<!--NOT AVAILABLE ON ## Initiatives IN AZURE POLICY SERVICE-->
+
+## <a name="policy-definitions"></a>策略定义
+
+### <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
 
 [!INCLUDE [azure-policy-reference-rp-aks-containerservice](../../includes/policy/reference/byrp/microsoft.containerservice.md)]
 
-<!--Not Available on ## AKS Engine-->
+### <a name="aks-engine"></a>AKS 引擎
 
-<!--NOT AVAILABLE ON [azure-policy-reference-rp-aks-aksengine](../../includes/policy/reference/byrp/aks-engine.md)-->
+[!INCLUDE [azure-policy-reference-rp-aks-aksengine](../../includes/policy/reference/byrp/aks-engine.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

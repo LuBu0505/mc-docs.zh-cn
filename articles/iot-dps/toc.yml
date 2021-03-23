@@ -146,12 +146,12 @@
         - name: Windows
           href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
           maintainContext: true
-    - name: 疑难解答
+    - name: 故障排除
       href: how-to-troubleshoot-dps.md
 - name: 参考
   items:
     - name: REST API
-      href: /rest/api/iot-dps
+      href: 'https://docs.microsoft.com/rest/api/iot-dps'
     - name: 资源管理器模板
       href: 'https://docs.microsoft.com/azure/templates/microsoft.devices/deviceprovisioning-allversions'
     - name: 适用于 C 的 Azure IoT SDK
@@ -177,7 +177,7 @@
         - name: IoT Edge
           href: ../iot-edge/index.yml
         - name: 时序见解
-          href: /time-series-insights
+          href: ../time-series-insights/index.yml
     - name: Azure IoT SDK
       items:
         - name: IoT 服务 SDK

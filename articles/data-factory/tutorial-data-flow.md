@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 11/09/2019
 ms.date: 02/01/2021
-ms.openlocfilehash: f7712a04ac11efad8170498a177e9a9c512fa693
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: e1ce19539599cbf624e64f0fe16f898a53427a8e
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060852"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765912"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>使用映射数据流转换数据
 
@@ -54,18 +54,17 @@ ms.locfileid: "99060852"
 
      ![新建数据工厂](./media/doc-common-process/name-not-available-error.png)
 4. 选择要在其中创建数据工厂的 Azure **订阅**。
-5. 对于“资源组”，请执行以下步骤之一：
+5. 对于“资源组”，请执行以下步骤之一： 
 
     a. 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
 
     b. 选择“新建”，并输入资源组的名称。 
          
     若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。 
-6. 在“版本”下选择“V2”。 
-7. 在“位置”下选择数据工厂所在的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如 Azure 存储和 SQL 数据库）和计算资源（例如 Azure HDInsight）可以位于其他区域。
-8. 选择“创建”  。
-9. 创建完成后，通知中心内会显示通知。 选择“转到资源”导航到“数据工厂”页。
-10. 选择“创作和监视”，在单独的选项卡中启动数据工厂 UI。
+6. 在“位置”下选择数据工厂所在的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如 Azure 存储和 SQL 数据库）和计算资源（例如 Azure HDInsight）可以位于其他区域。
+7. 选择“创建”  。
+8. 创建完成后，通知中心内会显示通知。 选择“转到资源”导航到“数据工厂”页。
+9. 选择“创作和监视”，在单独的选项卡中启动数据工厂 UI。
 
 ## <a name="create-a-pipeline-with-a-data-flow-activity"></a>创建包含数据流活动的管道
 

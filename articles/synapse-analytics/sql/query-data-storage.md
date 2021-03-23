@@ -2,25 +2,26 @@
 title: 使用无服务器 SQL 池查询数据存储
 description: 本文描述了如何使用无服务器 SQL 池资源在 Azure Synapse Analytics 中查询 Azure 存储。
 services: synapse analytics
-author: azaricstefan
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: stefanazaric
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: beca45c5c894dc151ab083daa92c144941b7bb1b
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: fab3ea802986519058dd88eecc0480b728410ae2
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207210"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766683"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池查询存储文件
 
 使用无服务器 SQL 池可以查询数据湖中的数据。 SQL 按需版本提供一个可以适应半结构化和非结构化数据查询的 T-SQL 查询外围应用。 对于查询，T-SQL 的以下方面受支持：
 
-- 完整的 [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 外围应用，包括大部分 [SQL 函数和运算符](overview-features.md)。
+- 完整的 [SELECT](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) 外围应用，包括大部分 [SQL 函数和运算符](overview-features.md)。
 - CREATE EXTERNAL TABLE AS SELECT ([CETAS](develop-tables-cetas.md)) 会创建一个[外部表](develop-tables-external-tables.md)，然后将 Transact-SQL SELECT 语句的结果并行导出到 Azure 存储。
 
 有关当前支持和不支持的功能的详细信息，请参阅[无服务器 SQL 池概述](on-demand-workspace-overview.md)一文或以下文章：
@@ -46,7 +47,7 @@ ms.locfileid: "102207210"
 
 ```syntaxsql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net//mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
+OPENROWSET( BULK N'https://myaccount.dfs.core.chinacloudapi.cn//mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
 WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
 ```
 
@@ -58,7 +59,7 @@ WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
 
 ```sql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.csv', FORMAT = 'CSV', PARSER_VERSION='2.0') 
+OPENROWSET( BULK N'https://myaccount.dfs.core.chinacloudapi.cn/mycontainer/mysubfolder/data.csv', FORMAT = 'CSV', PARSER_VERSION='2.0') 
 WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
 ```
 
@@ -81,7 +82,7 @@ Synapse SQL 中的 SQL 语言允许你将文件的模式定义为 `OPENROWSET` �
 
 ```sql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
+OPENROWSET( BULK N'https://myaccount.dfs.core.chinacloudapi.cn/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
 WITH (
       C1 int, 
       C2 varchar(20),
@@ -101,7 +102,7 @@ WITH (
 
 ```sql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
+OPENROWSET( BULK N'https://myaccount.dfs.core.chinacloudapi.cn/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
 ```
 
 请确保使用[适当的推断数据类型](best-practices-sql-on-demand.md#check-inferred-data-types)以获得最佳性能。 
@@ -118,7 +119,7 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolde
 
 ```sql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*.parquet', FORMAT = 'PARQUET' ) as rows
+OPENROWSET( BULK N'https://myaccount.dfs.core.chinacloudapi.cn/myroot/*/mysubfolder/*.parquet', FORMAT = 'PARQUET' ) as rows
 ```
 
 有关用法示例，请参阅[查询文件夹和多个文件](query-folders-multiple-csv-files.md)。
@@ -184,21 +185,21 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*
 - 对于不在“嵌套类型”组中的所有 Parquet 类型，函数将返回指定元素以及指定路径中的某个标量值，例如 int、decimal 和 varchar。
 - 如果该路径指向嵌套类型的元素，则函数将返回指定路径中从顶部元素开始的 JSON 片段。 JSON 片段的类型为 varchar (8000)。
 - 如果在指定的 column_name 中找不到该属性，则函数将返回错误。
-- 如果在指定的 column_path 中找不到该属性，则函数将根据[路径模式](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#PATHMODE)返回结果：在严格模式下返回错误，在宽松模式下返回 null。
+- 如果在指定的 column_path 中找不到该属性，则函数将根据[路径模式](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true#PATHMODE)返回结果：在严格模式下返回错误，在宽松模式下返回 null。
 
 有关查询示例，请查看[查询 Parquet 嵌套类型](query-parquet-nested-types.md#read-properties-from-nested-object-columns)一文中的“访问嵌套列中的元素”部分。
 
 #### <a name="access-elements-from-repeated-columns"></a>访问重复列中的元素
 
-若要访问重复列中的元素（例如数组或映射的元素），请对需要投影的每个标量元素使用 [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 函数，并提供：
+若要访问重复列中的元素（例如数组或映射的元素），请对需要投影的每个标量元素使用 [JSON_VALUE](https://docs.microsoft.com/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest&preserve-view=true) 函数，并提供：
 
 - 嵌套列或重复列（作为第一个参数）
-- 用于指定要访问的元素或属性的 [JSON 路径](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)（作为第二个参数）
+- 用于指定要访问的元素或属性的 [JSON 路径](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true)（作为第二个参数）
 
-若要访问重复列中的非标量元素，请对需要投影的每个非标量元素使用 [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 函数，并提供：
+若要访问重复列中的非标量元素，请对需要投影的每个非标量元素使用 [JSON_QUERY](https://docs.microsoft.com/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest&preserve-view=true) 函数，并提供：
 
 - 嵌套列或重复列（作为第一个参数）
-- 用于指定要访问的元素或属性的 [JSON 路径](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)（作为第二个参数）
+- 用于指定要访问的元素或属性的 [JSON 路径](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=azure-sqldw-latest&preserve-view=true)（作为第二个参数）
 
 请参阅以下语法片段：
 

@@ -3,21 +3,22 @@ title: 在 Azure Kubernetes 服务 (AKS) 中使用 Pod 安全策略
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 PodSecurityPolicy 控制 Pod 许可
 services: container-service
 ms.topic: article
-origin.date: 07/21/2020
+origin.date: 02/12/2021
 author: rockboyfor
-ms.date: 12/14/2020
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: 08/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: dacbbb9aa8b4db5f2522a3e83a07334f5f1c801b
-ms.sourcegitcommit: 8f438bc90075645d175d6a7f43765b20287b503b
+ms.openlocfilehash: be3e5a3b1b03344b26c1e6a54da8027fe4d093fb
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97004117"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767100"
 ---
-<!--Not Available on Mooncake till 11/24/2020-->
+<!--NOT AVAILABLE ON Mooncake till 03/18/2021-->
 <!--REASON:BadRequestError: No registered resource provider found for location 'chinaeast2' and API version '2020-11-01' for type 'managedClusters'.-->
+<!--NOT AVAILABLE ON az feature register --name PodSecurityPolicyPreview --namespace Microsoft.ContainerService-->
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>预览 - 在 Azure Kubernetes 服务 (AKS) 中使用 Pod 安全策略保护群集
 
 <!--Not Available on [Azure Policy for AKS](use-pod-security-on-azure-policy.md)-->

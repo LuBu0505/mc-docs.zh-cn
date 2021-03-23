@@ -1,17 +1,15 @@
 ---
 title: Azure 门户概述
 description: Azure 门户是一个图形用户界面，可用于管理 Azure 服务。 了解如何在 Azure 门户中导航和查找资源。
-keywords: 门户
-ms.author: v-tawe
-origin.date: 12/20/2019
-ms.date: 01/13/2021
+keywords: portal
+ms.date: 03/15/2021
 ms.topic: overview
-ms.openlocfilehash: 2ffa83f3b9a8f9411dd233a29d1bf576a863495b
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 9cffff208976b35d3f93887788068c06034e9674
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230785"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766668"
 ---
 # <a name="azure-portal-overview"></a>Azure 门户概述
 
@@ -61,7 +59,7 @@ Azure 门户菜单和页头是始终都会显示的全局元素。 这些持久�
 
 ![显示扩展门户菜单的屏幕截图](./media/azure-portal-overview/azure-portal-overview-portal-menu-callouts.png)
 
-|键|说明
+|密钥|说明
 |:---:|---|
 |1|页头。 显示在每个门户页面的顶部，包含全局元素。|
 |2| 全局搜索。 使用搜索栏可以快速查找特定的资源、服务或文档。|
@@ -72,7 +70,7 @@ Azure 门户菜单和页头是始终都会显示的全局元素。 这些持久�
 |7|命令栏。 命令栏上的控件与当前的焦点相关。|
 |8|工作窗格。  显示有关当前焦点所在资源的详细信息。|
 |9|痕迹导航。 可以使用痕迹导航链接在工作流中返回一个级别。|
-|10 个|用于在当前订阅中创建新资源的主控件。 展开或打开门户菜单，找到“+ 创建资源”。 搜索或浏览 Azure 市场以获取要创建的资源类型。|
+|10|用于在当前订阅中创建新资源的主控件。 展开或打开门户菜单，找到“+ 创建资源”。 搜索或浏览 Azure 市场以获取要创建的资源类型。|
 |11|收藏夹列表。 请参阅[添加、删除和排序收藏项目](../azure-portal/azure-portal-add-remove-sort-favorites.md)，了解如何自定义该列表。|
 
 ## <a name="get-started-with-services"></a>服务入门
@@ -86,9 +84,14 @@ Azure 门户菜单和页头是始终都会显示的全局元素。 这些持久�
 >
 <!-- Watch this video for a demo on how to use global search in the Azure portal. -->
 
+<!--
+> [!VIDEO https://www.youtube.com/embed/nZ7WwTZcQbo]
+
+[How to use global search in the Azure portal](https://www.youtube.com/watch?v=nZ7WwTZcQbo)
+-->
 ## <a name="next-steps"></a>后续步骤
 
 * 在[支持的浏览器和设备](../azure-portal/azure-portal-supported-browsers-devices.md)中详细了解可在哪些位置运行 Azure 门户
-* 使用 [Azure 移动应用](https://www.azure.cn/home/features/azure-portal/mobile-app/)随时随地保持连接
+<!-- * Stay connected on the go with [Azure mobile app](https://www.azure.cn/home/features/azure-portal/mobile-app/) -->
 
 <!-- * Onboard and set up your cloud environment with the [Azure Quickstart Center](../azure-portal/azure-portal-quickstart-center.md) -->

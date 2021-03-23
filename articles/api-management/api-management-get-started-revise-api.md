@@ -8,15 +8,15 @@ author: Johnnytechn
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/18/2020
+ms.date: 03/17/2021
 ms.author: v-johya
 origin.date: 11/04/2019
-ms.openlocfilehash: 07a5631bb4ff89292977e054e7607c44cb3acb91
-ms.sourcegitcommit: c2c9dc65b886542d220ae17afcb1d1ab0a941932
+ms.openlocfilehash: 5c21e804986af62cf0ddc0325e6f2900061c2f25
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94977871"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765982"
 ---
 # <a name="tutorial-use-revisions-to-make-non-breaking-api-changes-safely"></a>教程：使用修订安全地进行非中断性 API 变更
 当 API 准备就绪并即将供开发人员使用时，你最终需要对该 API 进行更改，同时避免干扰 API 的调用方。 另一种有效的做法是让开发人员知道所做的更改。 
@@ -38,7 +38,7 @@ ms.locfileid: "94977871"
 ## <a name="prerequisites"></a>先决条件
 
 + 了解 [Azure API 管理术语](api-management-terminology.md)。
-+ 请完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
++ 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 + 此外，请完成以下教程：[导入和发布第一个 API](import-and-publish.md)。
 
 ## <a name="add-a-new-revision"></a>添加新的修订版
@@ -87,6 +87,7 @@ ms.locfileid: "94977871"
 
     :::image type="content" source="media/api-management-getstarted-revise-api/revisions-menu.png" alt-text="“修订”窗口中的“修订”菜单":::
 
+<!--Not available in MC: CLI-->
 
 ## <a name="browse-the-developer-portal-to-see-changes-and-change-log"></a>浏览开发人员门户以查看更改与更改日志
 

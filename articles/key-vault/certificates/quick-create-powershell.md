@@ -1,5 +1,5 @@
 ---
-title: 快速入门：设置和查看 Azure Key Vault 证书 - Azure PowerShell
+title: 快速入门 - 使用 Azure PowerShell 设置和查看 Azure Key Vault 证书
 description: 本快速入门展示了如何使用 Azure PowerShell 在 Azure Key Vault 中设置和检索证书
 services: key-vault
 author: msmbaldwin
@@ -9,15 +9,14 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-origin.date: 09/03/2019
-ms.date: 01/14/2021
-ms.author: v-tawe
-ms.openlocfilehash: f92317b768353aa936f8dba3907bdc1c84a1b002
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: 174f053bdcd2fce1a7d3612a23e048d05bd9b511
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059952"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765595"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 在 Azure Key Vault 中设置和检索证书
 
@@ -26,9 +25,9 @@ ms.locfileid: "99059952"
 如果没有 Azure 订阅，请在开始前创建一个[试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 
+<!-- [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)] -->
 
-
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 键入 `$PSVersionTable.PSVersion` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount -EnvironmentName AzureChinaCloud` 来创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 键入 `$PSVersionTable.PSVersion` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 来创建与 Azure 的连接。
 
 ```azurepowershell
 Login-AzAccount -EnvironmentName AzureChinaCloud
@@ -42,7 +41,7 @@ Login-AzAccount -EnvironmentName AzureChinaCloud
 New-AzResourceGroup -Name ContosoResourceGroup -Location ChinaNorth
 ```
 
-## <a name="create-a-key-vault"></a>创建密钥保管库
+## <a name="create-a-key-vault"></a>创建 key vault
 
 接下来创建 Key Vault。 执行此步骤时，需要一些信息：
 

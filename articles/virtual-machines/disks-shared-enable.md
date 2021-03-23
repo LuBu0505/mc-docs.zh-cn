@@ -5,18 +5,18 @@ ms.service: virtual-machines
 ms.topic: how-to
 origin.date: 09/30/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 11/09/2020
 ms.author: v-yeche
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 2efec6e9314067ff484238172f3a5055d6fde21c
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 7fba79ada206d99dc0231a4cbb68a9af16dd8610
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857030"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765671"
 ---
 <!--Verified successfully for PG notification-->
 # <a name="enable-shared-disk"></a>启用共享磁盘
@@ -68,14 +68,14 @@ New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $
 
 ---
 
-<!--Not Avaialble on ### Deploy an ultra disk as a shared disk-->
+<!--NOT AVAILABLE ON ### Deploy an ultra disk as a shared disk-->
 
 
 ## <a name="using-azure-shared-disks-with-your-vms"></a>将 Azure 共享磁盘与 VM 配合使用
 
 使用 `maxShares>1` 部署共享磁盘后，可以将该磁盘装载到一个或多个 VM。
 
-<!--Not Available on FEATURE ultra disk-->
+<!--NOT AVAILABLE on FEATURE ultra disk-->
 
 ```powershell
 
@@ -133,12 +133,12 @@ PR_EXCLUSIVE_ACCESS_ALL_REGISTRANTS
 
 使用 PR_RESERVE、PR_REGISTER_AND_IGNORE、PR_REGISTER_KEY、PR_PREEMPT_RESERVATION、PR_CLEAR_RESERVATION 或 PR_RELEASE-RESERVATION 时，还需要提供 persistent-reservation-key。
 
-
 ## <a name="next-steps"></a>后续步骤
 
 如果希望使用 Azure 资源管理器模板来部署磁盘，可使用以下示例模板：
 - [高级·SSD](https://aka.ms/SharedPremiumDiskARMtemplate)
 
-<!--Not Avaialble on [Regional ultra disks](https://aka.ms/SharedUltraDiskARMtemplateRegional)-->
-<!--Not Avaialble on [Zonal ultra disks](https://aka.ms/SharedUltraDiskARMtemplateZonal)-->
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--NOT AVAILABLE on FEATURE ultra disks-->
+<!--NOT AVAILABLE on [Regional ultra disks](https://aka.ms/SharedUltraDiskARMtemplateRegional)-->
+<!--NOT AVAILABLE on [Zonal ultra disks](https://aka.ms/SharedUltraDiskARMtemplateZonal)-->
+<!--Update_Description: update meta properties, wording update, update link-->

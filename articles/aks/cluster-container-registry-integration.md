@@ -6,16 +6,16 @@ manager: gwallace
 ms.topic: article
 origin.date: 01/08/2021
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8512fbd1ac1eb210470cf04c4925d9ea1682f002
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 4a18d7ffe8181995f840f158ba12dada31ad87b6
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055308"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766009"
 ---
 <!--Verify successfully-->
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
@@ -157,7 +157,7 @@ nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 ```
 
 ### <a name="troubleshooting"></a>故障排除
-* 运行 [az aks check-acr](https://docs.azure.cn/cli/aks#az_aks_check_acr) 命令，以验证是否可以从 AKS 群集访问注册表。
+* 运行 [az aks check-acr](https://docs.azure.cn/cli/aks#az_aks_check_acr) 命令，验证是否可以从 AKS 群集访问注册表。
 * 详细了解 [ACR 诊断](../container-registry/container-registry-diagnostics-audit-logs.md)
 * 详细了解 [ACR 运行状况](../container-registry/container-registry-check-health.md)
 

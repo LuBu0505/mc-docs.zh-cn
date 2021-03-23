@@ -2,19 +2,20 @@
 title: 术语 - Azure Synapse Analytics
 description: 引导用户了解 Azure Synapse Analytics 的参考指南
 services: synapse-analytics
-author: saveenr
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
-ms.date: 11/18/2020
-ms.author: saveenr
+origin.date: 11/18/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2d0206ecf1e5f927208db3d47ed0fbcfbf0b8be6
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 418ad8463c91f5c38ac52b3484f5b60c0a2634d6
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207293"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765225"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Azure Synapse Analytics 术语
 

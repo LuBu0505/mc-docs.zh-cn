@@ -5,17 +5,17 @@ services: container-service
 ms.topic: overview
 origin.date: 02/09/2021
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 63719dfbdf6f6acdfa81d0608860eade2440cbbe
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 67e5da26d3f98282888017977cc43ac35a3ddb1b
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054076"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766428"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS)
 
@@ -78,8 +78,9 @@ AKS 支持创建启用了 GPU 的节点池。 Azure 目前提供单个或多个�
 有关详细信息，请参阅[使用 AKS 上的 GPU][aks-gpu]。
 
 <!--NOT AVAILABLE ON ### Confidential computing nodes (public preview)-->
-<!--NOT AVAILABLE ON Intel SGX-->
-<!--NOT AVAILABLE ON DCSv2 VMs-->
+<!--NOT AVAILABLE on FEATURE Intel SGX-->
+<!--NOT AVAILABLE ON [Confidential computing nodes on AKS][conf-com-node]-->
+
 ### <a name="storage-volume-support"></a>存储卷支持
 
 若要支持应用程序工作负荷，可以为持久保存的数据装载存储卷。 可以使用静态卷和动态卷。 根据要共享存储卷的已连接 Pod 的数目，可以使用 Azure 磁盘支持的存储进行单个 Pod 的访问，也可以使用 Azure 文件存储支持的存储进行多个并发 Pod 的访问。
@@ -108,7 +109,7 @@ Kubernetes 提供丰富的开发和管理工具生态系统，可与 AKS 无缝�
 
 <!--Not Available on The Azure DevOps project provides a simple solution for bringing existing code and Git repository into Azure. The DevOps project automatically creates Azure resources such as AKS, a release pipeline in Azure DevOps Services that includes a build pipeline for CI, sets up a release pipeline for CD, and then creates an Azure Application Insights resource for monitoring.-->
 
-<!--Not Available on For more information, see [Azure DevOps project][azure-devops]-->
+<!--Not Available on For more information, see [DevOps Starter][azure-devops]-->
 
 ## <a name="docker-image-support-and-private-container-registry"></a>Docker 映像支持和专用容器注册表
 
@@ -156,7 +157,7 @@ AKS 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。 有关详细信息，请参�
 
 [azure-disk]: ./azure-disks-dynamic-pv.md
 [azure-files]: ./azure-files-dynamic-pv.md
-[container-health]: ../azure-monitor/insights/container-insights-overview.md
+[container-health]: ../azure-monitor/containers/container-insights-overview.md
 [aks-master-logs]: view-master-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
 [concepts-clusters-workloads]: concepts-clusters-workloads.md

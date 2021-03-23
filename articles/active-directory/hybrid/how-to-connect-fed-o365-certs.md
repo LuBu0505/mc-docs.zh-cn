@@ -12,20 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f5396ba0e895d97cbc026f16f463ad7aa80819e
-ms.sourcegitcommit: 7ad3bfc931ef1be197b8de2c061443be1cf732ef
+ms.openlocfilehash: 7378f08950474fb5ac6091b55d3657547dc825a2
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91245519"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765412"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>续签 Microsoft 365 和 Azure Active Directory 的联合身份验证证书
 ## <a name="overview"></a>概述
-为使 Azure Active Directory (Azure AD) 与 Active Directory 联合身份验证服务 (AD FS) 之间能够成功联合，AD FS 用来为 Azure AD 签名安全令牌的证书应该与在 Azure AD 中所配置的证书相匹配。 任何不匹配情况都可能导致信任破坏。 Azure AD 确保在部署 AD FS 时，此信息保持同步。
+为使 Azure Active Directory (Azure AD) 与 Active Directory 联合身份验证服务 (AD FS) 之间能够成功联合，AD FS 用来为 Azure AD 签名安全令牌的证书应该与在 Azure AD 中所配置的证书相匹配。 任何不匹配情况都可能导致信任破坏。 Azure AD 可确保此信息在部署 AD FS 和 Web 应用程序代理（用于 Extranet 访问）时保持同步。
 
 本文提供了一些附加信息，帮助在以下情况下管理令牌签名证书，并使证书与 Azure AD 保持同步：
 
@@ -34,7 +34,7 @@ ms.locfileid: "91245519"
 * 正在使用第三方标识提供者。
 
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>令牌签名证书的默认 AD FS 配置
-令牌签名证书和令牌解密证书通常是自签名证书，有效期为一年。 默认情况下，AD FS 包含名为 **AutoCertificateRollover**的自动续订进程。 如果使用的是 AD FS 2.0 或更高版本，Microsoft 365 和 Azure AD 会在证书过期之前自动对其进行更新。
+令牌签名证书和令牌解密证书通常是自签名证书，有效期为一年。 默认情况下，AD FS 包含名为 **AutoCertificateRollover** 的自动续订进程。 如果使用的是 AD FS 2.0 或更高版本，Microsoft 365 和 Azure AD 会在证书过期之前自动对其进行更新。
 
 ### <a name="renewal-notification-from-the-microsoft-365-admin-center-or-an-email"></a>来自 Microsoft 365 管理中心或电子邮件的续订通知
 > [!NOTE]
@@ -157,7 +157,7 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
    >
 3. 查看命令输出中是否存在任何已列出的证书。 如果 AD FS 已生成新证书，则会在输出中看到两个证书：一个证书的 **IsPrimary** 值为 **True**，**NotAfter** 日期为 5 天内；另一个证书的 **IsPrimary** 为 **False**，**NotAfter** 大约为未来的 1 年。
 4. 如果只看到一个证书，且 **NotAfter** 日期在 5 天内，则需要生成新的证书。
-5. 若要生成新的证书，请在 PowerShell 命令提示符下执行以下命令： `PS C:\>Update-ADFSCertificate -CertificateType token-signing`。
+5. 若要生成新的证书，请在 PowerShell 命令提示符下执行以下命令： `PS C:\Update-ADFSCertificate -CertificateType token-signing`。
 6. 通过再次运行以下命令来验证更新：PS C:\>Get-ADFSCertificate -CertificateType token-signing
 
 此时会列出两个证书，其中一个的 **NotAfter** 日期大约为未来的 1 年，其 **IsPrimary** 值为 **False**。
@@ -189,4 +189,3 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 在当前证书到期 30 天前，Azure AD 会尝试从联合身份验证服务元数据中检索新证书。 如果新证书在该时间不可用，Azure AD 会继续每日定期监视元数据。 在元数据中获得新证书后，将立即使用新的证书信息更新域的联合身份验证设置。 如果在 NextSigningCertificate/SigningCertificate 中看到新证书，可以使用 `Get-MsolDomainFederationSettings` 进行验证。
 
 有关 AD FS 中令牌签名证书的详细信息，请参阅[获取和配置 AD FS 令牌签名证书和令牌解密证书](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ts-td-certs-ad-fs)
-

@@ -10,7 +10,7 @@
       href: what-is-a-data-warehouse-unit-dwu-cdwu.md
     - name: 备忘单
       href: cheat-sheet.md
-    - name: 最佳做法
+    - name: 最佳实践
       href: sql-data-warehouse-best-practices.md
     - name: 容量限制
       href: sql-data-warehouse-service-capacity-limits.md
@@ -84,7 +84,7 @@
               href: ../../azure-sql/database/threat-detection-overview.md
         - name: 审核
           href: ../../azure-sql/database/auditing-overview.md
-        - name: 网络安全
+        - name: 网络安全性
           items:
             - name: 防火墙规则
               href: ../../azure-sql/database/firewall-configure.md
@@ -112,7 +112,7 @@
               href: 'https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=/synapse-analytics/sql-data-warehouse/toc.json&bc=/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json'
         - name: 数据保护
           items:
-            - name: 动态数据屏蔽
+            - name: 动态数据掩码
               href: ../../azure-sql/database/dynamic-data-masking-overview.md
             - name: 透明数据加密 (TDE) 概述
               href: ../../azure-sql/database/transparent-data-encryption-tde-overview.md
@@ -122,7 +122,7 @@
       items:
         - name: 概述
           href: design-elt-data-loading.md
-        - name: 最佳做法
+        - name: 最佳实践
           href: guidance-for-loading-data.md
         - name: 列存储压缩
           href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
@@ -130,7 +130,7 @@
       items:
         - name: 概述
           href: sql-data-warehouse-overview-develop.md
-        - name: 最佳做法
+        - name: 最佳实践
           href: sql-data-warehouse-best-practices-development.md
         - name: JSON
           items:
@@ -276,6 +276,8 @@
           href: sql-data-warehouse-encryption-tde-tsql.md
     - name: 加载和准备数据
       items:
+        - name: 使用 Azure Databricks (ADB)
+          href: /databricks/scenarios/databricks-extract-load-sql-data-warehouse?bc=%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
         - name: 使用 Azure 数据工厂 (ADF)
           href: ../../data-factory/load-azure-sql-data-warehouse.md
         - name: 使用 SQL Server Integration Services (SSIS)

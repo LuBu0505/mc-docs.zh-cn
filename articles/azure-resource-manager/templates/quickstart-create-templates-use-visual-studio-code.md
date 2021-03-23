@@ -3,17 +3,17 @@ title: 创建模板 - Visual Studio Code
 description: 使用 Visual Studio Code 和可在 Azure 资源管理器模板（ARM 模板）上运行的 Azure 资源管理器工具扩展。
 origin.date: 08/09/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.topic: quickstart
 ms.author: v-yeche
-ms.openlocfilehash: e9d6b16c5a747d61fc4fddbeb1b9e5aaad421e43
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 344f1b1e02c044718ce0656e975fa713fe2b208c
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021351"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767002"
 ---
 # <a name="quickstart-create-arm-templates-with-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 ARM 模板
 
@@ -160,4 +160,4 @@ Remove-AzResourceGroup -Name arm-vscode
 > [!div class="nextstepaction"]
 > [初学者教程](./template-tutorial-create-first-template.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

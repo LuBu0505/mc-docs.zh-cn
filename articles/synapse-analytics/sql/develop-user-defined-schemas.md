@@ -2,19 +2,20 @@
 title: Synapse SQL 中的用户定义的架构
 description: 以下各节介绍如何通过 T-SQL 用户定义的架构使用 Azure Synapse Analytics 的 Synapse SQL 功能来开发解决方案的各种相关技巧。
 services: synapse-analytics
-author: azaricstefan
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: stefanazaric
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 483c9bdae60d1bf6e6fd9dac506fc1861ebdc348
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 4938db8c8ec0908a13da9b1cdae0d9264293ee47
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207639"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766458"
 ---
 # <a name="user-defined-schemas-within-synapse-sql"></a>Synapse SQL 中的用户定义的架构
 

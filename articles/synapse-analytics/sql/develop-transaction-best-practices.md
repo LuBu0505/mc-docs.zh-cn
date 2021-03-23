@@ -2,20 +2,21 @@
 title: 优化专用 SQL 池的事务
 description: 了解如何优化专用 SQL 池中事务性代码的性能。
 services: synapse-analytics
-author: XiaoyuMSFT
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: xiaoyul
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: c935a12fdd61f9947492a9e78929d4ca3f49b5dd
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 44fbf65c4418af5ffa60829f6c190e8c36861bf5
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102206817"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766459"
 ---
 # <a name="optimize-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中优化专用 SQL 池中的事务 
 
@@ -44,7 +45,7 @@ ms.locfileid: "102206817"
 
 以下操作可以实现最少记录：
 
-* CREATE TABLE AS SELECT ([CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json))
+* CREATE TABLE AS SELECT ([CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json))
 * INSERT..SELECT
 * CREATE INDEX
 * ALTER INDEX REBUILD
@@ -84,7 +85,7 @@ CTAS 和 INSERT...SELECT 都是批量加载操作。 但两者都受目标表定
 
 ## <a name="optimize-deletes"></a>优化删除操作
 
-DELETE 是一个完整记录的操作。  如果需要删除表或分区中的大量数据， `SELECT` 要保留的数据通常更有意义，其可作为最少记录的操作来运行。  若要选择数据，可使用 [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 创建新表。  创建后，可通过 [RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 操作使用新创建的表将旧表交换出来。
+DELETE 是一个完整记录的操作。  如果需要删除表或分区中的大量数据， `SELECT` 要保留的数据通常更有意义，其可作为最少记录的操作来运行。  若要选择数据，可使用 [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json) 创建新表。  创建后，可通过 [RENAME](https://docs.microsoft.com/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest&preserve-view=true) 操作使用新创建的表将旧表交换出来。
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -116,7 +117,7 @@ RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 
 ## <a name="optimize-updates"></a>优化更新操作
 
-UPDATE 是一个完整记录的操作。  如果需要更新表或分区中的大量行，通常更有效的方法是使用最少记录的操作（如 [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)）来实现。
+UPDATE 是一个完整记录的操作。  如果需要更新表或分区中的大量行，通常更有效的方法是使用最少记录的操作（如 [CTAS](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)）来实现。
 
 在下面的示例中，完整的表更新已转换为 CTAS，以便使最少日志记录成为可能。
 
@@ -177,11 +178,11 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> 重新创建大型表时，使用专用 SQL 池工作负荷管理功能可带来很多好处。 有关详细信息，请参阅[用于工作负荷管理的资源类](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+> 重新创建大型表时，使用专用 SQL 池工作负荷管理功能可带来很多好处。 有关详细信息，请参阅[用于工作负荷管理的资源类](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)。
 
 ## <a name="optimize-with-partition-switching"></a>优化分区切换操作
 
-面对[表分区](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)内较大规模修改时，分区切换模式非常有用。 如果数据修改非常重要且跨越多个分区，则遍历分区可获得相同的结果。
+面对[表分区](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)内较大规模修改时，分区切换模式非常有用。 如果数据修改非常重要且跨越多个分区，则遍历分区可获得相同的结果。
 
 执行分区切换的步骤如下所示：
 
@@ -406,7 +407,7 @@ END
 
 ## <a name="pause-and-scaling-guidance"></a>暂停和缩放指南
 
-借助 Azure Synapse Analytics，可以根据需要[暂停、恢复和缩放](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)专用 SQL 池。 
+借助 Azure Synapse Analytics，可以根据需要[暂停、恢复和缩放](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)专用 SQL 池。 
 
 暂停或缩放专用 SQL 池时，必须明白，任何正在运行的事务都会立即终止，导致打开的事务回退。 
 
@@ -417,7 +418,7 @@ END
 
 最佳方案是在暂停或缩放专用 SQL 池之前完成正在执行的数据修改事务。 但是，此方案不一定始终可行。 若要降低长时间回退的风险，请考虑以下选项之一：
 
-* 使用 [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) 重新编写长时间运行的操作
+* 使用 [CTAS](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) 重新编写长时间运行的操作
 * 将该操作分解为多个块；针对行的子集进行操作
 
 ## <a name="next-steps"></a>后续步骤

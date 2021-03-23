@@ -1,17 +1,18 @@
 ---
 title: 快速入门：第一个 .NET Core 查询
 description: 本快速入门介绍为 .NET Core 启用 Resource Graph NuGet 包并运行第一个查询的步骤。
-origin.date: 10/14/2020
-ms.date: 11/06/2020
-ms.author: v-tawe
+origin.date: 01/27/2021
+author: rockboyfor
+ms.date: 03/22/2021
+ms.author: v-yeche
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ce132042caa3fcf27b482d7b6226823084384bf0
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.openlocfilehash: 674fb6fc0a70c79f72f110cd470efd9ebf9aaa63
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431092"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766743"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-net-core"></a>快速入门：使用 .NET Core 运行你的第一个 Resource Graph 查询
 
@@ -70,7 +71,7 @@ ms.locfileid: "96431092"
                string strSubscriptionId = args[3];
                string strQuery = args[4];
 
-               AuthenticationContext authContext = new AuthenticationContext("https://login.partner.microsoftonline.cn" + strTenant);
+               AuthenticationContext authContext = new AuthenticationContext("https://login.chinacloudapi.cn/" + strTenant);
                AuthenticationResult authResult = await authContext.AcquireTokenAsync("https://management.core.chinacloudapi.cn", new ClientCredential(strClientId, strClientSecret));
                ServiceClientCredentials serviceClientCreds = new TokenCredentials(authResult.AccessToken);
 
@@ -143,3 +144,5 @@ ms.locfileid: "96431092"
 
 > [!div class="nextstepaction"]
 > [获取有关查询语言的详细信息](./concepts/query-language.md)
+
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -5,16 +5,16 @@ services: container-service
 ms.topic: article
 origin.date: 06/29/2020
 author: rockboyfor
-ms.date: 11/30/2020
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 7deed19f80e3580345d891cac72c4dd7c92ccac2
-ms.sourcegitcommit: ea52237124974eda84f8cef4bf067ae978d7a87d
+ms.openlocfilehash: b8146416877f6a8d6568afaba655ce25b88bcf9d
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024578"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766440"
 ---
 <!--Verified on Prerequisites successfully-->
 <!--Verified to dig function-->
@@ -91,4 +91,4 @@ Azure 负载均衡器[在设置规则之后才会产生费用](https://www.azure
 [az-aks-get-credentials]: https://docs.azure.cn/cli/aks#az_aks_get_credentials
 [byo-route-table]: configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

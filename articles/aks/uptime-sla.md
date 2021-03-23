@@ -5,17 +5,17 @@ services: container-service
 ms.topic: conceptual
 origin.date: 01/08/2021
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/22/2021
 ms.testscope: yes
 ms.testdate: 11/20/2020
 ms.author: v-yeche
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: aed5dc3671a280830e4c3474dc44737613eaaa91
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: f09ed6feed8fad402aa1e5f99729a07557d8efdf
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063659"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766418"
 ---
 <!--Verified successfully-->
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes 服务 (AKS) 运行时间 SLA
@@ -23,12 +23,12 @@ ms.locfileid: "99063659"
 运行时间 SLA 是一个可选功能，用于为群集启用具有财务支持的更高 SLA。 对于不使用可用性区域的群集，运行时间 SLA 可保证 Kubernetes API 服务器终结点 99.9% 的可用性。 AKS 跨更新域和容错域使用主节点副本，以确保满足 SLA 要求。
 
 <!--CORRECT ON 99.9% availability for clusters that don't use Availability Zones-->
-<!--Not Available on [Availability Zones][availability-zones]-->
+<!--NOT AVAILABLE ON FEATURE Availability Zone-->
 
 客户如果需要 SLA 以满足合规性要求或需要将 SLA 扩展到其最终用户，则应启用此功能。 具有将从更高的运行时间 SLA 中受益的关键工作负载的客户也可能受益。
 
-<!--Not Available on  Using the Uptime SLA feature with Availability Zones enables a higher availability for the uptime of the Kubernetes API server.-->
-<!--Not Available on FEATURE Availability Zone-->
+<!--NOT AVAILABLE ON  Using the Uptime SLA feature with Availability Zones enables a higher availability for the uptime of the Kubernetes API server.-->
+<!--NOT AVAILABLE ON FEATURE Availability Zone-->
 
 客户仍可以创建服务级别目标 (SLO) 为 99.5% 的无限制免费群集，并根据需要选择首选 SLO 或 SLA 运行时间。
 
@@ -46,7 +46,7 @@ ms.locfileid: "99063659"
 
 ## <a name="before-you-begin"></a>开始之前
 
-* 安装 [Azure CLI](https://docs.azure.cn/cli/install-azure-cli) 版本 2.8.0 或更高版本
+* 安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 版本 2.8.0 或更高版本
 
 ## <a name="creating-a-new-cluster-with-uptime-sla"></a>创建具有运行时间 SLA 的新群集
 
@@ -129,7 +129,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>后续步骤
 
-<!--NOT AVAILABLE ON [Availability Zones][availability-zones]-->
+<!--NOT AVAILABLE on FEATURE Availability Zone-->
 
 将群集配置为[限制出口流量](limit-egress-traffic.md)。
 
@@ -150,7 +150,7 @@ az group delete --name myResourceGroup --yes --no-wait
 [limit-egress-traffic]: ./limit-egress-traffic.md
 [az-extension-add]: https://docs.azure.cn/cli/extension#az_extension_add
 [az-extension-update]: https://docs.azure.cn/cli/extension#az_extension_update
-[az-aks-update]: https://docs.azure.cn/cli/aks?view=azure-cli-latest&preserve-view=true#az_aks_update
+[az-aks-update]: https://docs.azure.cn/cli/aks#az_aks_update
 [az-group-delete]: https://docs.azure.cn/cli/group#az_group_delete
 [private-clusters]: private-clusters.md
 

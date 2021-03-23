@@ -5,16 +5,16 @@ services: container-service
 ms.topic: article
 origin.date: 12/16/2020
 author: rockboyfor
-ms.date: 02/01/2021
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: 07/13/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8b86bab2bd6ba47dba8ad4c14699bc666f76870d
-ms.sourcegitcommit: 1107b0d16ac8b1ad66365d504c925735eb079d93
+ms.openlocfilehash: 73a4ae47b7aed5b4fc2206f267eaec277b12a2c7
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063658"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766417"
 ---
 <!--Verified successfully-->
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes 服务中使用托管标识
@@ -120,7 +120,8 @@ az aks show -g myResourceGroup -n myManagedCluster --query "identity"
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
 
-<!--Not Available on ## Update an AKS cluster to managed identities (Preview)-->
+<!--NOT AVAILABLE ON ## Update an AKS cluster to managed identities (Preview)-->
+<!--NOT AVAILABLE ON az feature register --namespace Microsoft.ContainerService -n MigrateToMSIClusterPreview-->
 <!--Not Available on Bring your own control plane MI-->
 <!--Not Available on ## Next steps-->
 <!--Not Available on [Azure Resource Manager (ARM) templates ][aks-arm-template]-->

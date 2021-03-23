@@ -3,17 +3,17 @@ title: 可用于 Azure Stack Hub 的 Azure 市场项
 description: 了解哪些 Azure 市场项可以在 Azure Stack Hub 中使用。
 author: WenJason
 ms.topic: article
-origin.date: 12/9/2020
-ms.date: 01/11/2021
+origin.date: 01/04/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: gara
 ms.lastreviewed: 12/9/2020
-ms.openlocfilehash: dbba15e1725becaeff8278dae598ef546b63f857
-ms.sourcegitcommit: 3f54ab515b784c9973eb00a5c9b4afbf28a930a9
+ms.openlocfilehash: 38f0546b8d0c450817a6a25d74b3792f7c3d67f9
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97894447"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766776"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack-hub"></a>可用于 Azure Stack Hub 的 Azure 市场项
 
@@ -57,7 +57,6 @@ Azure Stack Hub 支持下述 Azure 市场 VM 和解决方案模板。 请根据�
 | ![基于 CentO 的 HPC](media/azure-stack-marketplace-azure-items/roguewave.png) | [基于 CentOS 的 HPC](https://market.azure.cn/zh-cn/marketplace/apps/openlogic.centos-hpc?tab=Overview) | 此 Linux 发行版基于 CentOS ，由 Rogue Wave Software 提供。 | Rogue Wave Software（之前为 OpenLogic）  |
 | ![SLES 11 SP4 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 11 SP4 (BYOS)](https://market.azure.cn/zh-cn/marketplace/apps/suse.sles-byos?tab=Overview) | SUSE Linux Enterprise Server 11 SP4。 | SUSE |
 | ![SLES 12 SP3 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 12 SP4 (BYOS)](https://market.azure.cn/zh-cn/marketplace/apps/suse.sles-byos?tab=Overview) | SUSE Linux Enterprise Server 12 SP4。 | SUSE |
-| ![SLES 15 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 15 (BYOS)](https://market.azure.cn/zh-cn/marketplace/apps/suse.sles-byos?tab=Overview) | SUSE Linux Enterprise Server 15。 | SUSE |
 
 ## <a name="third-party-byol-free-trial-images-and-solution-templates"></a>第三方 BYOL 版、免费版和试用版映像以及解决方案模板
 

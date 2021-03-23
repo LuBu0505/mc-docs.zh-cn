@@ -3,18 +3,18 @@ title: 教程 - 将输出添加到模板
 description: 将输出添加到 Azure 资源管理器模板以简化语法。
 origin.date: 03/27/2020
 author: rockboyfor
-ms.date: 01/11/2021
+ms.date: 03/22/2021
 ms.testscope: yes
 ms.testdate: 08/24/2020
 ms.topic: tutorial
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: c160ee8f29befca2d5aec9c2c57f9046d3e1913a
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: 8334d63ca35ca0b7f3ccdd19db31e8cf94e713e6
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98021223"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765275"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>教程：将输出添加到 ARM 模板
 
@@ -142,7 +142,7 @@ ms.locfileid: "98021223"
 
 它使用 [reference](template-functions-resource.md#reference) 函数获取存储帐户的运行时状态。 若要获取资源的运行时状态，请传入资源的名称或 ID。 在此示例中，使用的变量与创建存储帐户名称时使用的变量相同。
 
-最后，它从存储帐户返回 `primaryEndpoints` 属性
+最后，它从存储帐户返回 `primaryEndpoints` 属性。
 
 ## <a name="deploy-template"></a>部署模板
 
@@ -163,7 +163,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要运行此部署命令，必须具有 Azure CLI 的 [最新版本](https://docs.azure.cn/cli/install-azure-cli)。
+若要运行此部署命令，必须具有 Azure CLI 的 [最新版本](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ```azurecli
 az deployment group create \
@@ -228,9 +228,9 @@ az deployment group create \
 如果你不打算继续学习，请删除该资源组以清理部署的资源。
 
 1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
-2. 在“按名称筛选”字段中输入资源组名称。 
+2. 在“按名称筛选”字段中输入资源组名称。
 3. 选择资源组名称。
-4. 在顶部菜单中选择“删除资源组”。 
+4. 在顶部菜单中选择“删除资源组”。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -239,4 +239,4 @@ az deployment group create \
 > [!div class="nextstepaction"]
 > [使用导出的模板](template-tutorial-export-template.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

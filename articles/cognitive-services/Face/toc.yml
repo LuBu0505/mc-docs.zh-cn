@@ -68,6 +68,8 @@
       href: APIReference.md
     - name: SDK
       items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi'
         - name: Python
           href: 'https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python'
         - name: Java
@@ -86,13 +88,7 @@
           href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=face'
     - name: 定价和限制
       href: 'https://www.azure.cn/pricing/details/cognitive-services/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/430315-face-api'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: 合规性
       href: 'https://www.azure.cn/support/sla/cognitive-services'
-    - name: 加密
-      href: face-encryption-of-data-at-rest.md

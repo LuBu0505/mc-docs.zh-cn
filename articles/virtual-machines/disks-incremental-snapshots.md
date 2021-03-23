@@ -5,17 +5,17 @@ ms.service: virtual-machines
 ms.topic: how-to
 origin.date: 01/15/2021
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.testscope: yes
 ms.testdate: 02/01/2021
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: de9a10251b9b9e49b111c5d07c1f519ca75b09ea
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 60f7144c4e994224a596513efe399b711f117d0a
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055174"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766125"
 ---
 <!--Verified successfully by PG team-->
 # <a name="create-an-incremental-snapshot-for-managed-disks"></a>为托管磁盘创建增量快照

@@ -2,20 +2,21 @@
 title: 教程：开始使用无服务器 SQL 池分析数据
 description: 在本教程中，你将了解如何通过无服务器 SQL 池使用 Spark 数据库中的数据对数据进行分析。
 services: synapse-analytics
-author: saveenr
-ms.author: saveenr
-manager: julieMSFT
+author: WenJason
+ms.author: v-jay
+manager: digimobile
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: cf55a98f4348358cdf036539613f8ddc7c621733
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+origin.date: 12/31/2020
+ms.date: 03/22/2021
+ms.openlocfilehash: a8014adbf05e395272c3ee4c08436eb15d8efca0
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102206909"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766216"
 ---
 # <a name="analyze-data-with-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池分析数据
 
@@ -32,7 +33,7 @@ ms.locfileid: "102206909"
         TOP 100 *
     FROM
         OPENROWSET(
-            BULK     'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
+            BULK     'https://azureopendatastorage.blob.core.chinacloudapi.cn/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
             FORMAT = 'parquet'
         ) AS [result];
     ```

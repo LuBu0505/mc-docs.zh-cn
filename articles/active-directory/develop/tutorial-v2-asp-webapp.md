@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 02/23/2021
+ms.date: 03/12/2021
 ms.author: v-junlch
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: dbafbf13a797a397fead6385dc9e8c4f023c1d46
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: dead9bb810c3e8f429435c813e62a95e3bc8a99a
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697207"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765488"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>教程：向 ASP.NET Web 应用添加 Microsoft 登录功能
 
@@ -141,8 +141,8 @@ ms.locfileid: "101697207"
                     // PostLogoutRedirectUri is the page that users will be redirected to after sign-out. In this case, it is using the home page
                     PostLogoutRedirectUri = redirectUri,
                     Scope = OpenIdConnectScope.OpenIdProfile,
-                    // ResponseType is set to request the id_token - which contains basic information about the signed-in user
-                    ResponseType = OpenIdConnectResponseType.IdToken,
+                    // ResponseType is set to request the code id_token - which contains basic information about the signed-in user
+                    ResponseType = OpenIdConnectResponseType.CodeIdToken,
                     // ValidateIssuer set to false to allow work accounts from any organization to sign in to your application
                     // To only allow users from a single organizations, set ValidateIssuer to true and 'tenant' setting in web.config to the tenant name
                     // To allow users from only a list of specific organizations, set ValidateIssuer to true and use ValidIssuers parameter
@@ -377,7 +377,7 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
    
 1. 登录 <a href="https://portal.azure.cn/" target="_blank">Azure 门户</a>。
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
-1. 搜索并选择“Azure Active Directory”  。
+1. 搜索并选择“Azure Active Directory”。
 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 1. 输入应用程序的名称（例如 `ASPNET-Tutorial`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 1. 将在步骤 1 中从 Visual Studio 复制的 SSL URL（例如 `https://localhost:44368/`）添加到“重定向 URI”。
@@ -458,7 +458,7 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 ### <a name="restrict-who-can-sign-in-to-your-application"></a>限制谁可以登录到应用程序
 
-默认情况下，当生成本指南创建的应用程序时，应用程序会接受使用与 Microsoft 标识平台集成的任何公司或组织的工作和学校帐户进行登录。 
+默认情况下，当生成本指南创建的应用程序时，应用程序会接受使用与 Microsoft 标识平台集成的任何公司或组织的工作和学校帐户进行登录。 这是针对 SaaS 应用程序推荐使用的选项。
 
 为了限制应用程序的用户登录访问权限，提供了以下多个选项。
 

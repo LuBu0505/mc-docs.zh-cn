@@ -2,15 +2,13 @@
 title: 查看和筛选 Azure 资源信息
 description: 筛选信息并使用不同的视图来更好地了解你的 Azure 资源。
 ms.topic: how-to
-ms.author: v-tawe
-origin.date: 09/11/2020
-ms.date: 01/13/2021
-ms.openlocfilehash: 36647a104b42aa92de04e7ee764a929deee1e1da
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 03/15/2021
+ms.openlocfilehash: a3e78b54aafd76586d636b97f6fc32cb80fb7d0e
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230970"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766667"
 ---
 # <a name="view-and-filter-azure-resource-information"></a>查看和筛选 Azure 资源信息
 
@@ -51,6 +49,18 @@ ms.locfileid: "98230970"
 1. 选择“管理视图”，然后选择“浏览所有视图”。
 
 1. 在 **“所有资源”的已保存视图** 窗格中，选择该视图，然后选择“删除”图标 ![“删除视图”图标](media/manage-filter-resource-views/icon-delete.png)。
+
+## <a name="export-information-from-a-view"></a>从视图导出信息
+
+可以从视图中导出资源信息。 若要以 CSV 格式导出信息，请执行以下操作：
+
+1. 选择“导出到 CSV”。
+
+    :::image type="content" source="media/manage-filter-resource-views/export-csv.png" alt-text="导出到 CSV 格式的屏幕截图":::
+
+1. 将该文件保存在本地，然后在 Excel 或其他支持 CSV 格式的应用程序中打开它。 
+
+在门户中浏览时，你会看到可以导出信息的其他区域，如单个的资源组。
 
 ## <a name="summarize-resources-with-visuals"></a>汇总具有视觉对象的资源
 

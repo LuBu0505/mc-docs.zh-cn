@@ -2,19 +2,20 @@
 title: 使用 Visual Studio 和 SSDT 连接 Synapse SQL 并进行查询
 description: 通过 Visual Studio 使用 Azure Synapse Analytics 查询专用 SQL 池。
 services: synapse analytics
-author: azaricstefan
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: stefanazaric
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: e369a9a55c4aa338ed68729a5870abb9c681bc7c
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 41b478421b9a8e269b07445360b23408f2a116b6
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207625"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765186"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>使用 Visual Studio 和 SSDT 连接到 Synapse SQL
 
@@ -36,8 +37,8 @@ ms.locfileid: "102207625"
 
 若要使用本教程，需要具备以下组件：
 
-* 现有专用 SQL 池。 如果没有，请参阅[创建专用 SQL 池](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)以完成此先决条件要求的操作。
-* 适用于 Visual Studio 的 SSDT。 如果安装了 Visual Studio，则可能已有了此组件。 有关安装指说明和选项，请参阅 [安装 Visual Studio 和 SSDT](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+* 现有专用 SQL 池。 如果没有，请参阅[创建专用 SQL 池](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)以完成此先决条件要求的操作。
+* 适用于 Visual Studio 的 SSDT。 如果安装了 Visual Studio，则可能已有了此组件。 有关安装指说明和选项，请参阅 [安装 Visual Studio 和 SSDT](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)。
 * 完全限定的 SQL Server 名称。 若要查找此服务器名称，请参阅[连接到专用 SQL 池](connect-overview.md)。
 
 ## <a name="1-connect-to-a-dedicated-sql-pool"></a>1.连接到专用 SQL 池
@@ -55,7 +56,7 @@ ms.locfileid: "102207625"
    * **服务器名称**：输入前面标识的 **服务器名称** 。
    * **身份验证**：选择“SQL Server 身份验证”或“Active Directory 集成身份验证”：
    * **用户名** 和 **密码**：如果在上面选择了“SQL Server 身份验证”，请输入用户名和密码。
-   * 单击“连接”。
+   * 单击“连接”  。
 5. 要浏览，请展开 Azure SQL 服务器。 可以查看与服务器关联的数据库。 展开 AdventureWorksDW 以查看示例数据库中的表。
    
     ![浏览 AdventureWorksDW](./media/get-started-visual-studio/explore-sample.png)
@@ -81,5 +82,5 @@ ms.locfileid: "102207625"
 
 ## <a name="next-steps"></a>后续步骤
 可以进行连接和查询后，接下来请尝试[使用 Power BI 可视化数据](get-started-power-bi-professional.md)。
-若要为你的环境配置 Azure Active Directory 身份验证，请参阅[向专用 SQL 池进行身份验证](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+若要为你的环境配置 Azure Active Directory 身份验证，请参阅[向专用 SQL 池进行身份验证](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)。
  

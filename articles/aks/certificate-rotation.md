@@ -5,16 +5,16 @@ services: container-service
 ms.topic: article
 origin.date: 11/15/2019
 author: rockboyfor
-ms.date: 09/14/2020
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: 05/25/2020
 ms.author: v-yeche
-ms.openlocfilehash: 39fc3914d96c83fa36e2b363bc5bdf2cbbb7507d
-ms.sourcegitcommit: 78c71698daffee3a6b316e794f5bdcf6d160f326
+ms.openlocfilehash: a42d4f5bf279c6a94ff9d07b6049b66e8a4473fa
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90020857"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766007"
 ---
 <!--CONFIRME WITH DONG LIU SUCCESSFULLY-->
 <!--NEW FEATURES HAS BEEN RELEASED ON AZURE CHINA CLOUD-->
@@ -42,7 +42,7 @@ AKS 生成并使用以下证书、证书颁发机构和服务帐户：
 * `kubectl` 客户端具有用于与 AKS 群集通信的证书。
 
 > [!NOTE]
-> 对于 2019 年 3 月之前创建的 AKS 群集，其证书将在两年后到期。 任何在 2019 年 3 月之后创建的群集或其证书已轮换的群集都具有 30 年后过期的群集 CA 证书。 其他所有证书均两年后过期。 若要验证群集的创建时间，请使用 `kubectl get nodes` 查看节点池的*存在时间*。
+> 对于 2019 年 3 月之前创建的 AKS 群集，其证书将在两年后到期。 任何在 2019 年 3 月之后创建的群集或其证书已轮换的群集都具有 30 年后过期的群集 CA 证书。 其他所有证书均两年后过期。 若要验证群集的创建时间，请使用 `kubectl get nodes` 查看节点池的 *存在时间*。
 > 
 > 此外，还可以检查群集证书的到期日期。 例如，以下 Bash 命令会显示 myAKSCluster 群集的证书详细信息。
 > ```console
@@ -88,20 +88,20 @@ az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-exis
 kubectl get no
 ```
 
-<!--Not Available on [Azure Dev Spaces][dev-spaces]-->
-<!--Not Available on [update certificates related to those services][dev-spaces-rotate]-->
+<!--NOT AVAIABLE ON [Azure Dev Spaces][dev-spaces]-->
+<!--NOT AVAIABLE ON [update certificates related to those services][dev-spaces-rotate]-->
 
 ## <a name="next-steps"></a>后续步骤
 
 本文介绍了如何自动轮换群集的证书、CA 和 SA。 有关 AKS 安全最佳做法的详细信息，请参阅[有关 Azure Kubernetes 服务 (AKS) 中的群集安全性和升级的最佳做法][aks-best-practices-security-upgrades]。
 
-[azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli
-[az-aks-get-credentials]: https://docs.microsoft.com/cli/azure/aks#az_aks_get_credentials
-[az-extension-add]: https://docs.azure.cn/cli/extension#az-extension-add
-[az-extension-update]: https://docs.azure.cn/cli/extension#az-extension-update
+[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli
+[az-aks-get-credentials]: https://docs.azure.cn/cli/aks#az_aks_get_credentials
+[az-extension-add]: https://docs.azure.cn/cli/extension#az_extension_add
+[az-extension-update]: https://docs.azure.cn/cli/extension#az_extension_update
 [aks-best-practices-security-upgrades]: operator-best-practices-cluster-security.md
 
-<!--Not Available on [dev-spaces]: /dev-spaces/-->
-<!--Not Available on [dev-spaces-rotate]: ../dev-spaces/troubleshooting.md#error-using-dev-spaces-after-rotating-aks-certificates-->
+<!--NOT AVAIABLE ON [dev-spaces]: /dev-spaces/-->
+<!--NOT AVAIABLE ON [dev-spaces-rotate]: ../dev-spaces/troubleshooting.md#error-using-dev-spaces-after-rotating-aks-certificates-->
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

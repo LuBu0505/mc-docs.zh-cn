@@ -1,16 +1,17 @@
 ---
 title: 快速入门：你的第一个 Ruby 查询
 description: 本快速入门介绍为 Ruby 启用 Resource Graph gem 并运行第一个查询的步骤。
-origin.date: 10/14/2020
-ms.date: 11/06/2020
-ms.author: v-tawe
+origin.date: 01/27/2021
+author: rockboyfor
+ms.date: 03/22/2021
+ms.author: v-yeche
 ms.topic: quickstart
-ms.openlocfilehash: 0bb42d6c2463e6a5563e4848efa8acf9d5ff4230
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.openlocfilehash: e68542821d890832c617ce814f3e2fc22e43ccdb
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431084"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766729"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-ruby"></a>快速入门：使用 Ruby 运行你的第一个 Resource Graph 查询
 
@@ -23,7 +24,7 @@ ms.locfileid: "96431084"
 - 如果没有 Azure 订阅，请在开始前创建一个[试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)帐户。
 - Azure 服务主体，包括 clientId 和 clientSecret 。
 
-<!-- [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)] -->
+<!--NOT AVAILABLE ON [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]-->
 
 ## <a name="create-the-resource-graph-project"></a>创建 Resource Graph 项目
 
@@ -142,3 +143,5 @@ gem uninstall azure_mgmt_resourcegraph
 
 > [!div class="nextstepaction"]
 > [获取有关查询语言的详细信息](./concepts/query-language.md)
+
+<!--Update_Description: update meta properties, wording update, update link-->

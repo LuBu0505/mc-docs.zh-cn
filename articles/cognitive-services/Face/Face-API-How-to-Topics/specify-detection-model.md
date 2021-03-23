@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
 origin.date: 05/16/2019
-ms.date: 11/23/2020
+ms.date: 03/08/2021
 ms.author: v-johya
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 87f3ebfe9ab57a1a58b06a9969c8d8394f162c95
-ms.sourcegitcommit: f1d0f81918b8c6fca25a125c17ddb80c3a7eda7e
+ms.openlocfilehash: 98a2b2070e6adebb96b790c1c94e18e0783a820f
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96306324"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766650"
 ---
 # <a name="specify-a-face-detection-model"></a>指定人脸检测模型
 
@@ -44,6 +44,7 @@ ms.locfileid: "96306324"
 
 * `detection_01`
 * `detection_02`
+* `detection_03`
 
 [Face - Detect] REST API 的请求 URL 将如下所示：
 
@@ -53,7 +54,7 @@ ms.locfileid: "96306324"
 
 ```csharp
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, recognitionModel: "recognition_03", detectionModel: "detection_02");
+var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, recognitionModel: "recognition_04", detectionModel: "detection_03");
 ```
 
 ## <a name="add-face-to-person-with-specified-model"></a>使用指定的模型将人脸添加到 Person
@@ -63,17 +64,17 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, rec
 请查看适用于 .NET 客户端库的以下代码示例。
 
 ```csharp
-// Create a PersonGroup and add a person with face detected by "detection_02" model
+// Create a PersonGroup and add a person with face detected by "detection_03" model
 string personGroupId = "mypersongroupid";
-await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_03");
+await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_04");
 
 string personId = (await faceClient.PersonGroupPerson.CreateAsync(personGroupId, "My Person Name")).PersonId;
 
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imageUrl, detectionModel: "detection_02");
+await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imageUrl, detectionModel: "detection_03");
 ```
 
-此代码将创建 ID 为 `mypersongroupid` 的 **PersonGroup**，并将一个 **Person** 对象添加到其中。 然后，它使用 `detection_02` 模型将一个 Face 对象添加到此 **Person** 对象。 如果未指定 *detectionModel* 参数，API 将使用默认模型 `detection_01`。
+此代码将创建 ID 为 `mypersongroupid` 的 **PersonGroup**，并将一个 **Person** 对象添加到其中。 然后，它使用 `detection_03` 模型将一个 Face 对象添加到此 **Person** 对象。 如果未指定 *detectionModel* 参数，API 将使用默认模型 `detection_01`。
 
 > [!NOTE]
 > 无需对 **Person** 对象中的所有人脸使用相同的检测模型，并且在检测新人脸时，无需使用相同的检测模型来与 **Person** 对象进行比较（例如，在 [Face - Identify] API 中）。
@@ -83,13 +84,13 @@ await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imag
 将人脸添加到现有的 **FaceList** 对象时，也可以指定检测模型。 请查看适用于 .NET 客户端库的以下代码示例。
 
 ```csharp
-await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_03");
+await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_04");
 
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: "detection_02");
+await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: "detection_03");
 ```
 
-此代码将创建名为 `My face collection` 的 **FaceList**，并使用 `detection_02` 模型将一个 Face 对象添加到其中。 如果未指定 *detectionModel* 参数，API 将使用默认模型 `detection_01`。
+此代码将创建名为 `My face collection` 的 **FaceList**，并使用 `detection_03` 模型将一个 Face 对象添加到其中。 如果未指定 *detectionModel* 参数，API 将使用默认模型 `detection_01`。
 
 > [!NOTE]
 > 无需对 **FaceList** 对象中的所有人脸使用相同的检测模型，并且在检测新人脸时，无需使用相同的检测模型来与 **FaceList** 对象进行比较
@@ -98,14 +99,14 @@ await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: 
 
 不同的人脸检测模型已针对不同的任务进行优化。 有关差异概述，请参阅下表。
 
-|**detection_01**  |**detection_02**  |
-|---------|---------|
-|所有人脸检测操作的默认选项。 | 已于 2019 年 5 月发布，可以选择性地在所有人脸检测操作中使用。
-|未针对小尺寸人脸、侧视人脸或模糊人脸进行优化。  | 已针对小尺寸人脸、侧视人脸或模糊人脸提高了准确度。 |
-|如果在检测调用中指定了人脸属性（头部姿势、年龄、表情等），则返回这些属性。 |  不返回人脸属性。     |
-|如果在检测调用中指定了人脸特征点，则返回这些特征点。   | 不返回人脸特征点。  |
+|**detection_01**  |**detection_02**  |detection_03 
+|---------|---------|---|
+|所有人脸检测操作的默认选项。 | 已于 2019 年 5 月发布，可以选择性地在所有人脸检测操作中使用。 |  已于 2021 年 2 月发布，可以选择性地在所有人脸检测操作中使用。
+|未针对小尺寸人脸、侧视人脸或模糊人脸进行优化。  | 已针对小尺寸人脸、侧视人脸或模糊人脸提高了准确度。 | 进一步提升了准确度，包括针对人脸较小（64x64 像素）和人脸方向发生了转动等情况。
+|如果在检测调用中指定了主要的人脸属性（头部姿势、年龄、表情，等等），则返回这些属性。 |  不返回人脸属性。     | 如果在检测调用中指定了“faceMask”和“noseAndMouthCovered”属性，则返回这些属性。
+|如果在检测调用中指定了人脸特征点，则返回这些特征点。   | 不返回人脸特征点。  | 不返回人脸特征点。
 
-比较 `detection_01` 和 `detection_02` 模型性能的最佳方法是针对示例数据集使用它们。 我们建议使用每个检测模型针对各种图像（尤其是许多人脸的图像，或者难以辨认的人脸的图像）调用 [Face - Detect] API。 请注意每个模型返回的人脸数。
+比较检测模型性能的最佳方式是针对示例数据集使用这些模型。 我们建议使用每个检测模型针对各种图像（尤其是许多人脸的图像，或者难以辨认的人脸的图像）调用 [Face - Detect] API。 请注意每个模型返回的人脸数。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,15 +7,15 @@ ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.author: v-tawe
+ms.date: 03/16/2021
+ms.author: v-chazhou
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9f66c202fe39444170b6772e5db1bbc2694ee8c1
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: 61b91d766ac4b354c0539876dbcf3d71dfe23f2b
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579628"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766368"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>在 Ubuntu 虚拟机上运行 Azure IoT Edge
 
@@ -50,7 +50,7 @@ ms.locfileid: "99579628"
 
     **管理员用户名**：一个用户名，将为其提供对部署的 root 特权。
 
-    **设备连接字符串**：在所需 [IoT 中心](../iot-hub/about-iot-hub.md)内创建的设备的[设备连接字符串](./how-to-register-device.md)。
+    **设备连接字符串**：在所需 [IoT 中心](../iot-hub/about-iot-hub.md)内创建的设备的 [设备连接字符串](./how-to-register-device.md)。
 
     **VM 大小**：要部署的虚拟机的 [大小](../cloud-services/cloud-services-sizes-specs.md)
 

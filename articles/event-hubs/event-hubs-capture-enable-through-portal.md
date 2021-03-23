@@ -1,16 +1,14 @@
 ---
 title: 事件中心 - 使用 Azure 门户捕获流式处理事件
 description: 本文介绍如何使用 Azure 门户捕获通过 Azure 事件中心流式处理的事件。
-ms.topic: conceptual
-origin.date: 06/23/2020
-ms.date: 11/05/2020
-ms.author: v-tawe
-ms.openlocfilehash: a1abb2b160e241b9ee91233fb331d34a3ed985f3
-ms.sourcegitcommit: b217474b15512b0f40b2eaae66bd3c521383d321
+ms.topic: quickstart
+ms.date: 03/11/2021
+ms.openlocfilehash: ee58888bf92a7018a5577354886ce8ad8597da42
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93375664"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765648"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>启用捕获通过 Azure 事件中心流式处理的事件
 
@@ -103,8 +101,8 @@ To capture data to Azure Data Lake Storage Gen 1, you create a Data Lake Storage
 ## <a name="next-steps"></a>后续步骤
 
 - 阅读[事件中心捕获概述][capture-overview]，详细了解事件中心捕获。
-- 还可以通过 Azure Resource Manager 模板配置事件中心捕获。 有关详细信息，请参阅[通过 Azure 资源管理器模板启用捕获](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)。
-- [了解如何创建使用事件中心命名空间作为源的 Azure 事件网格订阅](store-captured-data-data-warehouse.md)
+<!-- - You can also configure Event Hubs Capture using Azure Resource Manager templates. For more information, see [Enable Capture using an Azure Resource Manager template](event-hubs-resource-manager-namespace-event-hub-enable-capture.md). -->
+<!-- - [Learn how to create an Azure Event Grid subscription with an Event Hubs namespace as its source](store-captured-data-data-warehouse.md) -->
 
 <!--Not available - [Get started with Azure Data Lake Store using the Azure portal](../data-lake-store/data-lake-store-get-started-portal.md)-->
 

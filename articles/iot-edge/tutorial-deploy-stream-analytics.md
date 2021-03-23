@@ -2,18 +2,17 @@
 title: 教程 - 使用 Azure IoT Edge 在边缘部署流分析
 description: 在本教程中，请将 Azure 流分析作为模块部署到 IoT Edge 设备
 author: kgremban
-ms.author: v-tawe
-origin.date: 07/29/2020
-ms.date: 11/13/2020
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 71a3dd0617f037e42297fb605629d9c16f7e6dcd
-ms.sourcegitcommit: 9438c9db77338cecacf37d2fc178e757df9de83d
+ms.openlocfilehash: 02432c14baf7a3e9973a8c0db3f55ac5b3b16543
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94595137"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765322"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>教程：将 Azure 流分析作为 IoT Edge 模块进行部署
 
@@ -37,7 +36,7 @@ Azure 流分析提供一种丰富结构化的查询语法，可用于在云和 I
 ![关系图 - 教程体系结构：阶段和部署 ASA 作业](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
 </center>
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 ## <a name="prerequisites"></a>先决条件
 

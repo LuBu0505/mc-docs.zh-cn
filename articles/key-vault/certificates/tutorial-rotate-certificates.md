@@ -9,15 +9,14 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: tutorial
 ms.custom: mvc
-origin.date: 04/16/2020
-ms.date: 01/13/2021
-ms.author: v-tawe
-ms.openlocfilehash: a3216c6b26ca066f3e362f0adec81f21ea1154cd
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: 62d467cf6f1e57afc82bf956c0c83e733734083a
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059955"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765585"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>教程：配置 Key Vault 中的证书自动轮换
 

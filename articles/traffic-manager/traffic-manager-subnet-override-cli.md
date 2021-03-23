@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.service: traffic-manager
 origin.date: 09/18/2019
 author: rockboyfor
-ms.date: 11/30/2020
+ms.date: 02/22/2021
 ms.testscope: yes
 ms.testdate: 09/28/2020
 ms.author: v-yeche
-ms.openlocfilehash: c0e861bfd6112b575f62de697ad176946f4bfc85
-ms.sourcegitcommit: b6fead1466f486289333952e6fa0c6f9c82a804a
+ms.openlocfilehash: ab4584d7e46b291189fde8158538705551029124
+ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96300769"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "104766176"
 ---
 <!--Verified successfully-->
 # <a name="traffic-manager-subnet-override-using-azure-cli"></a>使用 Azure CLI 的流量管理器子网替代
@@ -80,6 +80,6 @@ az network traffic-manager endpoint update \
 
 详细了解流量管理器[流量路由方法](traffic-manager-routing-methods.md)。
 
-了解[子网流量路由方法](https://docs.azure.cn/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)
+了解[子网流量路由方法](./traffic-manager-routing-methods.md#subnet-traffic-routing-method)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

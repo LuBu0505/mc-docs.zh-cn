@@ -2,19 +2,20 @@
 title: 使用无服务器 SQL 池查询 Parquet 嵌套类型
 description: 本文介绍如何使用无服务器 SQL 池查询 Parquet 嵌套类型。
 services: synapse-analytics
-author: azaricstefan
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
-ms.date: 05/20/2020
-ms.author: stefanazaric
+origin.date: 05/20/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 25d5b068b8532912c211bf69f298e6941023616b
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 3aee547e6e15dcaed33d54e5ced2933308a6d640
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207206"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766177"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池查询 Parquet 和 JSON 文件中的嵌套类型
 
@@ -24,7 +25,7 @@ ms.locfileid: "102207206"
 - 分层 [JSON 文件](query-json-files.md)，可以在其中将复杂的 JSON 文档作为单列读取。
 - Azure Cosmos DB 集合（目前处于封闭的公共预览阶段），其中每个文档都可以包含复杂的嵌套属性。
 
-无服务器 SQL 池可将所有嵌套类型格式化为 JSON 对象和数组。 因此，你可以[使用 JSON 函数提取或修改复杂对象](/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server)，或者[使用 OPENJSON 函数分析 JSON 数据](/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server)。 
+无服务器 SQL 池可将所有嵌套类型格式化为 JSON 对象和数组。 因此，你可以[使用 JSON 函数提取或修改复杂对象](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server)，或者[使用 OPENJSON 函数分析 JSON 数据](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server)。 
 
 下面是一个查询示例，该查询从包含嵌套对象的 [COVID-19 开放式研究数据集](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) JSON 文件中提取标量和对象值： 
 
@@ -36,7 +37,7 @@ SELECT
     complex_object = doc
 FROM
     OPENROWSET(
-        BULK 'https://azureopendatastorage.blob.core.windows.net/covid19temp/comm_use_subset/pdf_json/000b7d1517ceebb34e1e3e817695b6de03e2fa78.json',
+        BULK 'https://azureopendatastorage.blob.core.chinacloudapi.cn/covid19temp/comm_use_subset/pdf_json/000b7d1517ceebb34e1e3e817695b6de03e2fa78.json',
         FORMAT='CSV', FIELDTERMINATOR ='0x0b', FIELDQUOTE = '0x0b', ROWTERMINATOR = '0x0b'
     )
     WITH ( doc varchar(MAX) ) AS docs;
@@ -111,7 +112,7 @@ SELECT
     body_text = JSON_VALUE(complex_column, '$.body_text.text'),
     complex_column
 FROM
-    OPENROWSET( BULK 'https://azureopendatastorage.blob.core.windows.net/covid19temp/comm_use_subset/pdf_json/000b7d1517ceebb34e1e3e817695b6de03e2fa78.json',
+    OPENROWSET( BULK 'https://azureopendatastorage.blob.core.chinacloudapi.cn/covid19temp/comm_use_subset/pdf_json/000b7d1517ceebb34e1e3e817695b6de03e2fa78.json',
                 FORMAT='CSV', FIELDTERMINATOR ='0x0b', FIELDQUOTE = '0x0b', ROWTERMINATOR = '0x0b' ) WITH ( complex_column varchar(MAX) ) AS docs;
 ```
 
@@ -121,7 +122,7 @@ FROM
 | --- | --- | --- | --- |
 | Supplementary Information An eco-epidemiolo... | Julien   | - Figure S1 : Phylogeny of... | `{    "paper_id": "000b7d1517ceebb34e1e3e817695b6de03e2fa78",    "metadata": {        "title": "Supplementary Information An eco-epidemiological study of Morbilli-related paramyxovirus infection in Madagascar bats reveals host-switching as the dominant macro-evolutionary mechanism",        "authors": [            {                "first": "Julien"` |
 
-与 JSON 文件（大多数情况下返回包含复杂 JSON 对象的单个列）不同，Parquet 文件可以具有多个复杂列。 你可以通过对每个列使用 `JSON_VALUE` 函数来读取嵌套列的属性。 `OPENROWSET` 允许直接在 `WITH` 子句中指定嵌套属性的路径。 你可以将路径设置为列的名称，也可以在列类型后面添加 [JSON 路径表达式](/sql/relational-databases/json/json-path-expressions-sql-server)。
+与 JSON 文件（大多数情况下返回包含复杂 JSON 对象的单个列）不同，Parquet 文件可以具有多个复杂列。 你可以通过对每个列使用 `JSON_VALUE` 函数来读取嵌套列的属性。 `OPENROWSET` 允许直接在 `WITH` 子句中指定嵌套属性的路径。 你可以将路径设置为列的名称，也可以在列类型后面添加 [JSON 路径表达式](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server)。
 
 下面的查询将读取 structExample.parquet 文件，并演示如何呈现嵌套列的元素。 可通过两种方式引用嵌套值：
 - 在类型规范后面指定嵌套值路径表达式。
@@ -147,7 +148,7 @@ FROM
 
 ## <a name="access-elements-from-repeated-columns"></a>访问重复列中的元素
 
-下面的查询将读取 justSimpleArray.parquet 文件，并使用 [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 从重复列（如数组或映射）中检索标量元素：
+下面的查询将读取 justSimpleArray.parquet 文件，并使用 [JSON_VALUE](https://docs.microsoft.com/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest&preserve-view=true) 从重复列（如数组或映射）中检索标量元素：
 
 ```sql
 SELECT
@@ -172,7 +173,7 @@ FROM
 
 ## <a name="access-sub-objects-from-complex-columns"></a>访问复杂列中的子对象
 
-下面的查询将读取 mapExample.parquet 文件，并使用 [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 从重复列（如数组或映射）中检索非标量元素：
+下面的查询将读取 mapExample.parquet 文件，并使用 [JSON_QUERY](https://docs.microsoft.com/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest&preserve-view=true) 从重复列（如数组或映射）中检索非标量元素：
 
 ```sql
 SELECT

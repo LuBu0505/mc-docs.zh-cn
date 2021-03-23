@@ -3,18 +3,17 @@ title: .show ingestion mappings - Azure 数据资源管理器
 description: 本文介绍 Azure 数据资源管理器中的 .show ingestion mappings。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 02/04/2020
-ms.date: 08/18/2020
-ms.openlocfilehash: 6ebc7e76d6b119a4eacc331766399ddbd5b6d614
-ms.sourcegitcommit: f4bd97855236f11020f968cfd5fbb0a4e84f9576
+ms.date: 03/18/2021
+ms.openlocfilehash: 4bf57cea969bef308fbf7dd1c16c25f7a1945ba7
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88516117"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766397"
 ---
 # <a name="show-ingestion-mapping"></a>.show ingestion mapping
 
@@ -26,7 +25,7 @@ ms.locfileid: "88516117"
 
 显示所有映射类型的所有引入映射：
 
-* `.show` `table` *TableName* `ingestion`  `mapping`
+* `.show` `table` *TableName* `ingestion`  `mappings`
  
 **示例** 
  

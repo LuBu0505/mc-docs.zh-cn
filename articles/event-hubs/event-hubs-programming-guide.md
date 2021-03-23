@@ -2,14 +2,14 @@
 title: .NET 编程指南 - Azure 事件中心（旧版）| Microsoft Docs
 description: 本文介绍如何使用 Azure .NET SDK 为 Azure 事件中心编写代码。
 ms.topic: article
-ms.date: 01/29/2021
+ms.date: 03/11/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c2f3c738360a609754002dbe9c018d5c96e73199
-ms.sourcegitcommit: dc0d10e365c7598d25e7939b2c5bb7e09ae2835c
+ms.openlocfilehash: 5c98694ed20c2e64ca06d2515cbfe0bf62c41a1c
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579607"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767055"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure 事件中心的 .NET 编程指南（旧版 Microsoft.Azure.EventHubs 包）
 本文介绍使用 Azure 事件中心编写代码时的一些常见情况。 它假设你对事件中心已有初步的了解。 有关事件中心的概念概述，请参阅 [事件中心概述](./event-hubs-about.md)。
@@ -74,20 +74,6 @@ for (var i = 0; i < numMessagesToSend; i++)
 > 如果你不熟悉分区，请参阅[此文](event-hubs-features.md#partitions)。 
 
 发送事件数据时，可以指定一个在经哈希处理后生成分区分配的值。 请使用 [PartitionSender.PartitionID](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.partitionsender.partitionid) 属性指定分区。 但是，决定使用分区意味着在可用性和一致性之间进行选择。 
-
-### <a name="availability-considerations"></a>可用性注意事项
-
-可以选择使用分区键，应仔细考虑是否使用分区键。 如果在发布事件时未指定分区键，则事件中心会在分区之间均衡负载。 在许多情况下，如果事件排序较为重要，使用分区键将是一个不错的选择。 使用分区键时，这些分区需要单个节点上的可用性，并且可能会随时间推移发生故障；例如，在计算节点重启和修补时。 因此，如果设置了分区 ID，并且由于某种原因该分区变得不可用，则对该分区中的数据的访问尝试会失败。 如果高可用性是最重要的，请不要指定分区键。 在这种情况下，会使用内部负载均衡算法将事件发送到分区。 在这种情况下，需在可用性（无分区 ID）和一致性（将事件固定到分区 ID）之间做出明确选择。
-
-另一个注意事项是处理事件处理中的延迟。 在某些情况下，丢弃数据并重试可能比尝试跟上处理要更好，后者可能会进而导致下游处理延迟。 例如，在拥有股票行情自动收报机的情况下，最好等待接收到完整的最新数据，但在实时聊天或 VOIP 的情况下，则更希望能快速获得数据，即使数据不完整。
-
-考虑到这些可用性需求，在这些情况下，可以选择以下错误处理策略之一：
-
-- 停止（在修复之前停止从事件中心读取）
-- 删除（消息不重要，将其删除）
-- 重试（根据需要重试消息）
-
-有关详细信息以及可用性与一致性之间权衡的讨论，请参阅[事件中心中的可用性和一致性](event-hubs-availability-and-consistency.md)。 
 
 ## <a name="batch-event-send-operations"></a>批处理事件发送操作
 

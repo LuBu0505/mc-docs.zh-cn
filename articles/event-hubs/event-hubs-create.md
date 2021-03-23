@@ -2,22 +2,20 @@
 title: Azure 快速入门 - 使用 Azure 门户创建事件中心
 description: 本快速入门介绍如何使用 Azure 门户创建 Azure 事件中心。
 ms.topic: quickstart
-origin.date: 06/23/2020
-ms.date: 01/05/2021
-ms.author: v-tawe
-ms.openlocfilehash: fbb6e44b6fa6ecad4f8f54ad56352f15d40049e0
-ms.sourcegitcommit: ff20289adb80a6ab45e15fa5e196ff7af7e1c6b5
+ms.date: 03/11/2021
+ms.openlocfilehash: 256dad438e55b726cd7e7924b8c82a20c6de11c6
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97874825"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765251"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>快速入门：使用 Azure 门户创建事件中心
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
 
 在本快速入门中，请使用 [Azure 门户](https://portal.azure.cn)创建事件中心。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本快速入门，请确保具备以下项：
 
@@ -45,7 +43,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 事件中心命名空间提供唯一的范围容器，可以在该容器中创建一个或多个事件中心。 若要使用门户在资源组中创建命名空间，请执行以下操作：
 
 1. 在 Azure 门户中，选择屏幕左上角的“创建资源”。
-1. 在左侧菜单中选择“所有服务”，然后在“分析”类别中的“事件中心”旁边选择 **星号 (`*`)**。 确认“事件中心”已添加到左侧导航菜单中的“收藏夹”。  
+1. 在左侧菜单中选择“所有服务”，然后在“分析”类别中的“事件中心”旁边选择 **星号 (`*`)** 。   确认“事件中心”已添加到左侧导航菜单中的“收藏夹”。  
     
    ![搜索事件中心](./media/event-hubs-quickstart-portal/select-event-hubs-menu.png)
 1. 选择左侧导航菜单中“收藏夹”下的“事件中心”，然后选择工具栏上的“添加”。  
@@ -71,10 +69,10 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
    1. 确认显示的“事件中心命名空间”  页与以下示例类似：   
       
       ![命名空间的主页](./media/event-hubs-quickstart-portal/namespace-home-page.png)       
-
+      <!--
       > [!NOTE]
-      > Azure 事件中心提供了一个 Kafka 终结点。 此终结点允许事件中心命名空间以本机方式了解 [Apache Kafka](https://kafka.apache.org/intro) 消息协议和 API。 使用此功能，可以像与 Kafka 主题通信那样与事件中心通信，而无需更改协议客户端或运行自己的群集。 事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html) 及更高版本。 有关详细信息，请参阅[通过 Apache Kafka 应用程序使用事件中心](event-hubs-for-kafka-ecosystem-overview.md)。
-    
+      > Azure Event Hubs provides you with a Kafka endpoint. This endpoint enables your Event Hubs namespace to natively understand [Apache Kafka](https://kafka.apache.org/intro) message protocol and APIs. With this capability, you can communicate with your event hubs as you would with Kafka topics without changing your protocol clients or running your own clusters. Event Hubs supports [Apache Kafka versions 1.0](https://kafka.apache.org/10/documentation.html) and later. For more information, see [Use Event Hubs from Apache Kafka applications](event-hubs-for-kafka-ecosystem-overview.md).
+      -->  
 ## <a name="create-an-event-hub"></a>创建事件中心
 
 若要在该命名空间中创建事件中心，请执行以下操作：
@@ -89,7 +87,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
     通过“分区计数”设置可以在多个使用者之间并行使用。 有关详细信息，请参阅[分区](event-hubs-scalability.md#partitions)。
 
-    “消息保留”设置指定事件中心服务保留数据的时长。 有关此设置的最大限制，请参阅[配额和限制](event-hubs-quotas.md)。
+    “消息保留”设置指定事件中心服务保留数据的时长。 有关详细信息，请参阅[事件保留](event-hubs-features.md#event-retention)。
 1. 可以在警报中检查事件中心的创建状态。 创建事件中心后，事件中心列表中会显示该事件中心。
 
     ![已创建事件中心](./media/event-hubs-quickstart-portal/event-hub-created.png)

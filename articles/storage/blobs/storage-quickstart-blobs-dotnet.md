@@ -3,18 +3,18 @@ title: 快速入门：Azure Blob 存储库 v12 - .NET
 description: 本快速入门介绍如何使用适用于 .NET 的 Azure Blob 存储客户端库版本 12 在 Blob（对象）存储中创建容器和 Blob。 接下来，将介绍如何将 blob 下载到本地计算机，以及如何在容器中列出所有 blob。
 author: WenJason
 ms.author: v-jay
-origin.date: 07/24/2020
-ms.date: 03/08/2021
+origin.date: 03/03/2021
+ms.date: 03/22/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7f3cb3e9c031ae116a0b616aed469795f67f09bb
-ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
+ms.openlocfilehash: 0ff786f6d03419817833ca0b610552daa902b064
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196275"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765676"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v12
 
@@ -81,12 +81,12 @@ dotnet add package Azure.Storage.Blobs
 
 从项目目录中执行以下操作：
 
-1. 在编辑器中打开 Program.cs 文件
-1. 删除 `Console.WriteLine("Hello World!");` 语句
-1. 添加 `using` 指令
-1. 更新 `Main` 方法声明以支持异步代码
+1. 在编辑器中打开 Program.cs 文件。
+1. 删除 `Console.WriteLine("Hello World!");` 语句。
+1. 添加 `using` 指令。
+1. 更新 `Main` 方法声明以支持异步。
 
-代码如下：
+    代码如下：
 
 ```csharp
 using Azure.Storage.Blobs;
@@ -250,7 +250,7 @@ using (FileStream downloadFileStream = File.OpenWrite(downloadFilePath))
 
 ### <a name="delete-a-container"></a>删除容器
 
-以下代码使用 [DeleteAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.deleteasync) 来删除整个容器，从而清除该应用所创建的资源。 它还会删除由应用创建的本地文件。
+以下代码使用 [DeleteAsync](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobcontainerclient.deleteasync) 来删除整个容器，从而清除该应用所创建的资源。 它还会删除由应用创建的本地文件。
 
 在删除 blob、容器和本地文件之前，应用会调用 `Console.ReadLine` 以暂停并等待用户输入。 可以通过这种方式验证是否已正确创建资源，然后再删除该资源。
 

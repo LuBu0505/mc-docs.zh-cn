@@ -2,20 +2,19 @@
 title: 快速入门 - 使用 C# 将 TPM 设备注册到 Azure 设备预配服务
 description: 快速入门 - 使用 C# 服务 SDK 将 TPM 设备注册到 Azure IoT 中心设备预配服务 (DPS)。 本快速入门使用单独注册。
 author: wesmc7777
-ms.author: v-tawe
-origin.date: 09/28/2020
-ms.date: 12/03/2020
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: b5a2f9b40319bd4612f96d6b945137597c6aecae
-ms.sourcegitcommit: 60e70acb6f9604aeef69d2027f7f96a1d7d5b248
+ms.openlocfilehash: b414925f5092c03208179060c2e89db23d23a146
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96541102"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765630"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>快速入门：使用 C# 服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务
 
@@ -44,23 +43,23 @@ ms.locfileid: "96541102"
 
 1. 选择“共享访问策略”，然后选择需要用来打开其属性的访问策略。  在“访问策略”中，复制并保存主密钥连接字符串。 
 
-    ![从门户获取预配服务连接字符串](media/quick-enroll-device-tpm-csharp/get-service-connection-string-vs2019.png)
+    ![从门户获取预配服务连接字符串](./media/quick-enroll-device-tpm-csharp/get-service-connection-string-vs2019.png)
 
 ## <a name="create-the-individual-enrollment-sample"></a>创建单个注册示例
 
-本部分介绍如何创建一个 .NET Core 控制台应用，以便向预配服务添加 TPM 设备的单个注册。 进行一些修改后，还可以按这些步骤创建 [Windows IoT Core](https://developer.microsoft.com/windows/iot) 控制台应用，以便添加单个注册。 若要详细了解如何使用 IoT Core 进行开发，请参阅 [Windows IoT Core 开发人员文档](https://docs.microsoft.com/windows/iot-core/)。
+本部分介绍如何创建一个 .NET Core 控制台应用，以便向预配服务添加 TPM 设备的单个注册。 进行一些修改后，还可以按这些步骤创建 [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) 控制台应用，以便添加单个注册。 若要详细了解如何使用 IoT Core 进行开发，请参阅 [Windows IoT Core 开发人员文档](https://docs.microsoft.com/windows/iot-core/)。
 
 1. 打开 Visual Studio 并选择“创建新项目”  。 在“创建新项目”中，为 C# 项目模板选择“控制台应用(.NET Core)”，然后选择“下一步”。   
 
 1. 将项目命名为“CreateTpmEnrollment”，然后按“创建”   。
 
-    ![配置 Visual C# Windows 经典桌面项目](media/quick-enroll-device-tpm-csharp/configure-tpm-app-vs2019.png)
+    ![配置 Visual C# Windows 经典桌面项目](./media/quick-enroll-device-tpm-csharp/configure-tpm-app-vs2019.png)
 
 1. 在 Visual Studio 中打开该解决方案后，在“解决方案资源管理器”窗格中右键单击“CreateTpmEnrollment”项目   。 选择“管理 NuGet 包”。 
 
 1. 在“NuGet 包管理器”中选择“浏览”，搜索并选择“Microsoft.Azure.Devices.Provisioning.Service”，然后按“安装”     。
 
-   ![“NuGet 包管理器”窗口](media//quick-enroll-device-tpm-csharp/add-nuget.png)
+   ![“NuGet 包管理器”窗口](./media//quick-enroll-device-tpm-csharp/add-nuget.png)
 
    此步骤会下载、安装 [Azure IoT 预配服务客户端 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet 包及其依赖项并添加对它的引用。
 
@@ -150,7 +149,7 @@ ms.locfileid: "96541102"
 
 可以验证是否已创建单个注册。 转到设备预配服务的摘要，依次选择“管理注册”、“单个注册”。   此时会看到一个新的注册条目，对应于示例中使用的注册 ID。
 
-![门户中的注册属性](media/quick-enroll-device-tpm-csharp/verify-enrollment-portal-vs2019.png)
+![门户中的注册属性](./media/quick-enroll-device-tpm-csharp/verify-enrollment-portal-vs2019.png)
 
 选择该条目即可验证认可密钥以及该条目的其他属性。
 

@@ -2,20 +2,21 @@
 title: 快速入门：使用 Azure PowerShell 创建 Synapse 工作区
 description: 按照本指南中的步骤使用 Azure PowerShell 创建 Azure Synapse 工作区。
 services: synapse-analytics
-author: alehall
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: overview
-ms.date: 10/19/2020
-ms.author: alehall
+origin.date: 10/19/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 91f47615faf287c9809f6fe083c9254682946c94
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 562777609a78177a612fe1b707e7fd03698067f6
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207654"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765191"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 Azure Synapse 工作区
 
@@ -23,27 +24,27 @@ Azure PowerShell 是一组 cmdlet，用于直接从 PowerShell 管理 Azure 资�
 
 本快速入门介绍如何使用 Azure PowerShell 创建 Synapse 工作区。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
 ## <a name="prerequisites"></a>先决条件
 
-- [Azure Data Lake Storage Gen2 存储帐户](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Azure Data Lake Storage Gen2 存储帐户](../storage/common/storage-account-create.md)
 
     > [!IMPORTANT]
     > Azure Synapse 工作区需要能够读取所选 ADLS Gen2 帐户以及向其写入内容。 对于作为主存储帐户链接的任何存储帐户，在创建存储帐户时必须启用“分层命名空间”，如[创建存储帐户](../storage/common/storage-account-create.md?tabs=azure-powershell#create-a-storage-account)中所述。
 
 ### <a name="install-the-azure-powershell-module-locally"></a>在本地安装 Azure Powershell 模块
 
-如果选择在本地使用 PowerShell，则本文要求安装 Az PowerShell 模块，并使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure 帐户。 有关安装 Az PowerShell 模块的详细信息，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。
+如果选择在本地使用 PowerShell，则本文要求安装 Az PowerShell 模块，并使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure 帐户。 有关安装 Az PowerShell 模块的详细信息，请参阅[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
-有关使用 Azure PowerShell 进行身份验证的详细信息，请参阅[使用 Azure PowerShell 登录](/powershell/azure/authenticate-azureps)。
+有关使用 Azure PowerShell 进行身份验证的详细信息，请参阅[使用 Azure PowerShell 登录](https://docs.microsoft.com/powershell/azure/authenticate-azureps)。
 
 ### <a name="install-the-azure-synapse-powershell-module"></a>安装 Azure Synapse PowerShell 模块
 
 > [!IMPORTANT]
 > 尽管 Az.Synapse PowerShell 模块为预览版，但你需要使用 `Install-Module` cmdlet 单独安装它。 此 PowerShell 模块正式发布后，它会包含在将来的 Az PowerShell 模块发行版中，并在 Azure Cloud Shell 中默认提供。
 
-```azurepowershell-interactive
+```azurepowershell
 Install-Module -Name Az.Synapse
 ```
 
@@ -57,7 +58,7 @@ Install-Module -Name Az.Synapse
    | StorageAccountResourceGroup | 现有 ADLS Gen2 存储帐户资源组的名称。                                             |
    | FileShareName               | 现有存储文件系统的名称。                                                                  |
    | SynapseResourceGroup        | 为 Azure Synapse 资源组选择新名称。                                                    |
-   | 区域                      | 选择其中一个 [Azure 区域](https://azure.microsoft.com/global-infrastructure/geographies/#overview)。 |
+   | 区域                      | 选择其中一个 Azure 区域。 |
    | SynapseWorkspaceName        | 为新的 Azure Synapse 工作区选择唯一名称。                                                  |
    | SqlUser                     | 为新用户名选择一个值。                                                                          |
    | SqlPassword                 | 选择安全密码。                                                                                   |
@@ -66,13 +67,13 @@ Install-Module -Name Az.Synapse
 
 1. 创建资源组作为 Azure Synapse 工作区的容器：
 
-   ```azurepowershell-interactive
+   ```azurepowershell
    New-AzResourceGroup -Name $SynapseResourceGroup -Location $Region
    ```
 
 1. 创建 Azure Synapse 工作区：
 
-   ```azurepowershell-interactive
+   ```azurepowershell
    $Cred = New-Object -TypeName System.Management.Automation.PSCredential ($SqlUser, (ConvertTo-SecureString $SqlPassword -AsPlainText -Force))
 
    $WorkspaceParams = @{
@@ -88,14 +89,14 @@ Install-Module -Name Az.Synapse
 
 1. 获取 Azure Synapse 工作区的 Web 和开发 URL：
 
-   ```azurepowershell-interactive
+   ```azurepowershell
    $WorkspaceWeb = (Get-AzSynapseWorkspace -Name $SynapseWorkspaceName -ResourceGroupName $StorageAccountResourceGroup).ConnectivityEndpoints.Web
    $WorkspaceDev = (Get-AzSynapseWorkspace -Name $SynapseWorkspaceName -ResourceGroupName $StorageAccountResourceGroup).ConnectivityEndpoints.Dev
    ```
 
 1. 创建防火墙规则以允许你从自己的计算机访问 Azure Synapse 工作区：
 
-   ```azurepowershell-interactive
+   ```azurepowershell
    $FirewallParams = @{
      WorkspaceName = $SynapseWorkspaceName
      Name = 'Allow Client IP'
@@ -108,7 +109,7 @@ Install-Module -Name Az.Synapse
 
 1. 打开环境变量 `WorkspaceWeb` 中存储的 Azure Synapse 工作区 Web URL 地址以访问工作区：
 
-   ```azurepowershell-interactive
+   ```azurepowershell
    Start-Process $WorkspaceWeb
    ```
 
@@ -123,7 +124,7 @@ Install-Module -Name Az.Synapse
 
 如果不需要本文中创建的 Azure Synapse 工作区，可以通过运行以下示例将其删除。
 
-```azurepowershell-interactive
+```azurepowershell
 Remove-AzSynapseWorkspace -Name $SynapseWorkspaceNam -ResourceGroupName $SynapseResourceGroup
 ```
 

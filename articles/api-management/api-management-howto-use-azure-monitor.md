@@ -7,14 +7,14 @@ ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
 origin.date: 06/15/2018
-ms.date: 01/18/2021
+ms.date: 03/17/2021
 ms.author: v-johya
-ms.openlocfilehash: b8859bce71a5525b12c03db1bb13fe9d3c3689fc
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: c4d881bee26761bae5013323a22f63f7a33e89a5
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751090"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766310"
 ---
 # <a name="tutorial-monitor-published-apis"></a>教程：监视已发布的 API
 
@@ -33,14 +33,14 @@ ms.locfileid: "98751090"
 ## <a name="prerequisites"></a>先决条件
 
 + 了解 [Azure API 管理术语](api-management-terminology.md)。
-+ 请完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
++ 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 + 此外，请完成以下教程：[导入和发布第一个 API](import-and-publish.md)。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="view-metrics-of-your-apis"></a>查看 API 的指标
 
-API 管理每分钟发出一次[指标](../azure-monitor/platform/data-platform-metrics.md)，几乎可让你实时了解 API 的状态和运行状况。 以下是两个最常用的指标。 有关所有可用指标的列表，请参阅[支持的指标](../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice)。
+API 管理每分钟发出一次[指标](../azure-monitor/essentials/data-platform-metrics.md)，几乎可让你实时了解 API 的状态和运行状况。 以下是两个最常用的指标。 有关所有可用指标的列表，请参阅[支持的指标](../azure-monitor/essentials/metrics-supported.md#microsoftapimanagementservice)。
 
 * **容量** - 帮助做出有关升级/降级 APIM 服务的决策。 指标每分钟发出，在报告时反映网关容量。 指标范围为 0-100，是根据 CPU 和内存利用率等网关资源计算的。
 * **请求** - 帮助分析通过 API 管理服务的 API 流量。 指标每分钟发出一次，并报告网关请求数，其维度包括响应代码、位置、主机名和错误。 
@@ -63,7 +63,7 @@ API 管理每分钟发出一次[指标](../azure-monitor/platform/data-platform-
 
 ## <a name="set-up-an-alert-rule"></a>设置警报规则 
 
-可以基于指标和活动日志接收[警报](../azure-monitor/platform/alerts-metric-overview.md)。 通过 Azure Monitor 可[配置警报](../azure-monitor/platform/alerts-metric.md)，使警报触发时执行以下操作：
+可以基于指标和活动日志接收[警报](../azure-monitor/alerts/alerts-metric-overview.md)。 通过 Azure Monitor 可[配置警报](../azure-monitor/alerts/alerts-metric.md)，使警报触发时执行以下操作：
 
 * 发送电子邮件通知
 * 调用 Webhook
@@ -141,7 +141,7 @@ API 管理每分钟发出一次[指标](../azure-monitor/platform/data-platform-
 
    可以将资源日志与指标一起存档到存储帐户，将其流式传输到事件中心，或者将其发送到 Log Analytics 工作区。 
 
-有关详细信息，请参阅[创建诊断设置以将平台日志和指标发送到不同的目标](../azure-monitor/platform/diagnostic-settings.md)。
+有关详细信息，请参阅[创建诊断设置以将平台日志和指标发送到不同的目标](../azure-monitor/essentials/diagnostic-settings.md)。
 
 ## <a name="view-diagnostic-data-in-azure-monitor"></a>在 Azure Monitor 中查看诊断数据
 
@@ -152,7 +152,7 @@ API 管理每分钟发出一次[指标](../azure-monitor/platform/data-platform-
 
     :::image type="content" source="media/api-management-howto-use-azure-monitor/logs-menu-item.png" alt-text="“监视”菜单中“日志”项的屏幕截图":::
 
-运行查询以查看数据。 可以运行提供的多个[示例查询](../azure-monitor/log-query/example-queries.md)，也可以运行自己的查询。 例如，以下查询检索 GatewayLogs 表中最近 24 小时的数据：
+运行查询以查看数据。 可以运行提供的多个[示例查询](../azure-monitor/logs/example-queries.md)，也可以运行自己的查询。 例如，以下查询检索 GatewayLogs 表中最近 24 小时的数据：
 
 ```kusto
 ApiManagementGatewayLogs
@@ -161,9 +161,9 @@ ApiManagementGatewayLogs
 
 有关使用资源日志进行 API 管理的详细信息，请参阅：
 
-* [Azure Monitor Log Analytics 入门](../azure-monitor/log-query/log-analytics-tutorial.md)，或试用 [Log Analytics 演示环境](https://portal.loganalytics.io/demo)。
+* [Azure Monitor Log Analytics 入门](../azure-monitor/logs/log-analytics-tutorial.md)，或试用 [Log Analytics 演示环境](https://portal.loganalytics.io/demo)。
 
-* [Azure Monitor 中的日志查询概述](../azure-monitor/log-query/log-query-overview.md)。
+* [Azure Monitor 中的日志查询概述](../azure-monitor/logs/log-query-overview.md)。
 
 以下 JSON 表示 GatewayLogs 中成功的 API 请求的示例条目。 有关详细信息，请参阅[架构参考](gateway-log-schema-reference.md)。 
 

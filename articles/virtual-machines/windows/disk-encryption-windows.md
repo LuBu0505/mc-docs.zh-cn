@@ -1,22 +1,23 @@
 ---
 title: Windows VM 上的 Azure 磁盘加密方案
 description: 本文介绍如何在各种方案中启用适用于 Windows VM 的 Azure 磁盘加密。
-ms.service: virtual-machines-windows
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: windows
 ms.topic: how-to
 origin.date: 08/06/2019
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 60aa83f31c59df38b392942e76eb73b2028d8160
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: a842f4a35f39b108da592d9d9ecfc5bb32b9628d
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857119"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766808"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM 上的 Azure 磁盘加密方案
 
@@ -240,11 +241,9 @@ Azure 磁盘加密不支持以下方案、功能和技术：
 - 加密共享/分布式文件系统，包括但不限于 DFS、GFS、DRDB 和 CephFS。
 - 将加密的 VM 移到其他订阅或区域。
 - 创建已加密 VM 的映像或快照，并使用它来部署其他 VM。
-- Gen2 VM（请参阅：[Azure 对第 2 代 VM 的支持](../generation-2.md#generation-1-vs-generation-2-capabilities)）
 - 具有写入加速器磁盘的 M 系列 VM。
 - 将 ADE 应用到一个 VM，此 VM 使用[服务器端加密和客户管理的密钥](../disk-encryption.md) (SSE + CMK) 加密磁盘。 将 SSE+CMK 应用于使用 ADE 加密的 VM 上的数据磁盘，这种方案也不受支持。
 - 将使用 ADE 加密的 VM，或者曾经使用 ADE 加密的 VM 迁移到[使用客户管理的密钥的服务器端加密](../disk-encryption.md)。
-- [无本地临时磁盘（具体而言即 Dv4、Dsv4、Ev4 和 Esv4）的 Azure VM 大小](../azure-vms-no-temp-disk.md)。
 - 加密故障转移群集中的 VM。
 
 ## <a name="next-steps"></a>后续步骤
@@ -253,4 +252,4 @@ Azure 磁盘加密不支持以下方案、功能和技术：
 - [Azure 磁盘加密示例脚本](disk-encryption-sample-scripts.md)
 - [Azure 磁盘加密疑难解答](disk-encryption-troubleshooting.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

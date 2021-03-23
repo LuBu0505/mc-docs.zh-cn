@@ -7,16 +7,15 @@ manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-origin.date: 08/12/2019
-ms.date: 01/14/2021
-ms.author: v-tawe
+ms.date: 03/10/2021
+ms.author: v-chazhou
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6d22a39729d233d39ef1e7f60341e014db8fdbb1
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 9930923ff6fc463aefe84e7ed2a9ab4ac397e63f
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059928"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765794"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>使用 Azure CLI 管理密钥保管库 
 
@@ -226,7 +225,7 @@ az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec
 
 ## <a name="setting-key-vault-advanced-access-policies"></a><a name="bkmk_KVperCLI"></a> 设置密钥保管库高级访问策略
 
-使用 [az keyvault update](/cli/keyvault#az-keyvault-update) 为 Key Vault 启用高级策略。 
+使用 [az keyvault update](/cli/keyvault#az-keyvault-update) 为 Key Vault 启用高级策略。
 
  为部署启用 Key Vault：允许虚拟机从保管库中检索作为机密存储的证书。
 

@@ -2,19 +2,20 @@
 title: 无服务器 SQL 池的成本管理
 description: 本文档介绍如何管理无服务器 SQL 池的成本，以及在 Azure 存储中查询数据时如何计算处理的数据。
 services: synapse analytics
-author: filippopovic
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 11/05/2020
-ms.author: fipopovi
+origin.date: 11/05/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 94e5cce8d2fb4d2aa5de883a8529b22b34ab2524
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 70bf9f67af0f19e7753534a52bf8c732569365eb
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102206990"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766831"
 ---
 # <a name="cost-management-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中无服务器 SQL 池的成本管理
 
@@ -22,7 +23,7 @@ ms.locfileid: "102206990"
 - 在发出查询之前估计处理的数据量
 - 使用成本控制功能设置预算
 
-请知悉，Azure Synapse Analytics 中的无服务器 SQL 池的成本只是 Azure 账单中每月成本的一部分。 如果你在使用其他 Azure 服务，则需要为 Azure 订阅中使用的所有 Azure 服务和资源（包括第三方服务）付费。 本文介绍如何在 Azure Synapse Analytics 中规划和管理无服务器 SQL 池的成本。
+请知悉，Azure Synapse Analytics 中的无服务器 SQL 池的成本只是 Azure 账单中每月成本的一部分。 如果在使用其他 Azure 服务，需要为 Azure 订阅中使用的所有 Azure 服务和资源（包括第三方服务）付费。 本文介绍如何在 Azure Synapse Analytics 中规划和管理无服务器 SQL 池的成本。
 
 ## <a name="data-processed"></a>已处理的数据
 

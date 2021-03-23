@@ -3,14 +3,14 @@ author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 10/15/2020
-ms.date: 12/30/2020
-ms.author: v-tawe
-ms.openlocfilehash: f0e91b07f8f4041920d3908d567d123551f2fb84
-ms.sourcegitcommit: eb742dcade404c9909d01e2570188f0bc4076992
+ms.date: 03/08/2021
+ms.author: v-johya
+ms.openlocfilehash: 47d4d1aac57f729c65d3c8ab67a3cbd5d8df0f6d
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97820343"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803537"
 ---
 本指南介绍如何安装用于 Python 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。 如果只是需要包名称以便自行开始，请运行 `pip install azure-cognitiveservices-speech`。
 
@@ -25,7 +25,7 @@ ms.locfileid: "97820343"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 需要语音 SDK 版本 1.11.0 或更高版本。
+- 在 Windows 上，需要安装适用于平台的 [Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0)。 首次安装时，可能需要重启。
 
 - 支持的 Linux 平台会要求安装某些库（要求安装 `libssl` 以获取安全套接字层支持；要求安装 `libasound2` 以获取声音支持）。 请参阅下面的发行版，了解安装这些库的正确版本所需的命令。
 
@@ -93,8 +93,9 @@ import azure.cognitiveservices.speech as speechsdk
 如果有新版本可用，可以使用 `pip install --upgrade azure-cognitiveservices-speech` 命令进行更新。
 通过查看 `azure.cognitiveservices.speech.__version__` 变量来检查当前安装的版本。
 
-如果遇到问题或者缺少某项功能，请查看[支持和帮助选项](../../../../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext)。
+如果遇到问题或者缺少某项功能，请查看[支持和帮助选项](../../../../cognitive-services-support-options.md?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext%253fcontext%253d%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)。
 
 ## <a name="next-steps"></a>后续步骤
 
 [!INCLUDE [windows](../quickstart-list.md)]
+

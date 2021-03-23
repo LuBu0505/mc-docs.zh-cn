@@ -3,19 +3,19 @@ title: 关于在 Windows 上创建 Azure IoT Edge 设备的快速入门 | Micros
 description: 本快速入门介绍如何创建 IoT Edge 设备，然后从 Azure 门户远程部署预生成的代码。
 author: rsameser
 manager: kgremban
-ms.author: v-tawe
-ms.date: 03/01/2021
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: bfb4cc801ab0e5565a5cd1238c9bf3639fdcfd06
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.openlocfilehash: 7de7c6285646c1838872c03d8673757616ccaa52
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196674"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766264"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device-preview"></a>快速入门：将第一个 IoT Edge 模块部署到 Windows 设备（预览版）
 
@@ -43,9 +43,7 @@ ms.locfileid: "102196674"
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-云资源：
-
-* 一个资源组，用于管理在本快速入门中使用的所有资源。
+创建云资源组，用于管理在本快速入门中使用的所有资源。
 
    ```azurecli
    az group create --name IoTEdgeResources --location chinaeast
@@ -64,7 +62,7 @@ ms.locfileid: "102196674"
 
 首先，使用 Azure CLI 创建 IoT 中心。
 
-![关系图 - 在云中创建 IoT 中心](./media/quickstart/create-iot-hub.png)
+![此图显示创建 IoT 中心的步骤。](./media/quickstart/create-iot-hub.png)
 
 免费级 Azure IoT 中心适用于此快速入门。 如果曾经用过 IoT 中心并且创建了一个中心，则可使用该 IoT 中心。
 

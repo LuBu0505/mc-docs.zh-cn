@@ -9,15 +9,14 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: mvc
-origin.date: 03/24/2020
-ms.date: 01/13/2021
-ms.author: v-tawe
-ms.openlocfilehash: db6daf3d3666e3bf304e2aa381f3eca244c5b088
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: 3e302b6b755c6394c2cb3319d36fccd59c6dad3c
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230955"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765599"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Key Vault 中设置和检索证书
 
@@ -35,13 +34,13 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 2. 在“搜索”框中输入“Key Vault”。
 3. 从结果列表中选择“Key Vault”。
 4. 在“Key Vault”部分，选择“创建”。
-5. 在“创建密钥保管库”部分，提供以下信息：
-    - **Name**：必须提供唯一的名称。 在本快速入门中，我们使用 Example-Vault。 
-    - **订阅**：选择订阅。
+5. 在“创建密钥保管库”部分，提供以下信息： 
+    - 名称：必须提供唯一的名称。 在本快速入门中，我们使用 Example-Vault。 
+    - 订阅：选择订阅。
     - 在“资源组”下选择“新建”，然后输入资源组名称。
     - 在“位置”下拉菜单中选择一个位置。
     - 让其他选项保留默认值。
-6. 提供上述信息后，选择“创建”。
+6. 提供上述信息后，选择“创建”  。
 
 请记下下面列出的两个属性：
 
@@ -57,7 +56,7 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 若要向保管库中添加证书，只需再执行几个步骤即可。 在此示例中，我们添加可供应用程序使用的自签名证书。 此证书称为 ExampleCertificate。
 
 1. 在密钥保管库属性页中，选择“证书”。
-2. 单击“生成/导入”  。
+2. 单击“生成/导入”。
 3. 在“创建证书”屏幕上，选择以下值：
     - **证书创建方法**：生成。
     - **证书名称**：ExampleCertificate。
@@ -79,7 +78,7 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 如果不再需要资源组，可以将其删除，这将删除 Key Vault 和相关的资源。 要通过门户删除资源组，请执行以下操作：
 
 1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到在本快速入门中使用的资源组后，将其选中。
-2. 选择“删除资源组”。
+2. 选择“删除资源组”  。
 3. 在“键入资源组名称:”框中，键入资源组的名称，然后选择“删除” 。
 
 
@@ -89,4 +88,4 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 
 - 阅读 [Azure Key Vault 概述](../general/overview.md)
 - 参阅 [Azure Key Vault 开发人员指南](../general/developers-guide.md)
-- 请参阅 [Key Vault 安全性概述](../general/security overview.md)
+- 请参阅 [Key Vault 安全性概述](../general/security-overview.md)

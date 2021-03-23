@@ -1,25 +1,19 @@
 ---
 title: Azure 安全中心的权限
 description: 本文介绍 Azure 安全中心如何使用基于角色的访问控制将权限分配给用户，并辨别每个角色允许的操作。
-services: security-center
-cloud: na
-documentationcenter: na
-author: Johnnytechn
+author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
-ms.date: 01/06/2021
+ms.date: 03/18/2021
 ms.author: v-johya
 origin.date: 10/28/2018
-ms.openlocfilehash: 04373d6fbbbe49a3b6f2ac1cd03c6fc460c97fad
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: d6ada5017825ffb3ef357601e1e9361cdcf98731
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98023291"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766709"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure 安全中心的权限
 
@@ -40,15 +34,15 @@ Azure 安全中心使用 [Azure 基于角色的访问控制 (Azure RBAC)](../rol
 
 下表显示安全中心的角色和允许的操作。
 
-|操作|安全读取者/ <br> 读取器 |安全管理员  |资源组参与者/ <br> 资源组所有者  |订阅参与者  |订阅所有者  |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-|编辑安全策略|-|✔|-|-|✔|
-|添加/分配计划（包括合规性标准）|-|-|-|-|✔|
-|启用/禁用 Azure Defender|-|✔|-|-|✔|
-|启用/禁用自动预配|-|✔|-|✔|✔|
-|应用资源的安全建议</br> （并使用[快速修复！](security-center-remediate-recommendations.md#quick-fix-remediation)）|-|-|✔|✔|✔|
-|消除警报|-|✔|-|✔|✔|
-|查看警报和建议|✔|✔|✔|✔|✔|
+| 操作                                                                                                                                        | 安全读取者/ <br> 读取器 | 安全管理员 | 资源组参与者/ <br> 资源组所有者 | 订阅参与者 | 订阅所有者 |
+|:----------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------:|:--------------:|:------------------------------------------------------:|:------------------------:|:------------------:|
+| 编辑安全策略                                                                                                                          | -                             | ✔             | -                                                      | -                        | ✔                 |
+| 添加/分配计划（包括合规性标准）                                                                           | -                             | -              | -                                                      | -                        | ✔                 |
+| 启用/禁用 Azure Defender                                                                                                               | -                             | ✔             | -                                                      | -                        | ✔                 |
+| 启用/禁用自动预配                                                                                                            | -                             | ✔             | -                                                      | ✔                       | ✔                  |
+| 应用资源的安全建议</br> （并使用[快速修复！](security-center-remediate-recommendations.md#quick-fix-remediation)） | -                             | -              | ✔                                                     | ✔                        | ✔                 |
+| 消除警报                                                                                                                                | -                             | ✔             | -                                                      | ✔                       | ✔                  |
+| 查看警报和建议                                                                                                               | ✔                            | ✔              | ✔                                                     | ✔                        | ✔                 |
 
 > [!NOTE]
 > 对于需要完成任务的用户，建议尽可能为其分配权限最小的角色。 例如，将“读者”角色分配到只需查看有关资源的安全运行状况而不执行操作（例如应用建议或编辑策略）的用户。
@@ -60,7 +54,6 @@ Azure 安全中心使用 [Azure 基于角色的访问控制 (Azure RBAC)](../rol
 
 - [在安全中心设置安全策略](tutorial-security-policy.md)
 - [管理安全中心的安全建议](security-center-recommendations.md)
-- [监视 Azure 资源的安全运行状况](security-center-monitoring.md)
 - [管理和响应安全中心的安全警报](security-center-managing-and-responding-alerts.md)
 - [监视合作伙伴安全解决方案](./security-center-partner-integration.md)
 

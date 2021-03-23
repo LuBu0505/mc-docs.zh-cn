@@ -2,18 +2,17 @@
 title: 排查 Azure 密钥保管库访问策略问题
 description: 排查 Azure 密钥保管库访问策略问题
 author: sebansal
-ms.author: v-tawe
-origin.date: 08/10/2020
-ms.date: 01/18/2021
+ms.author: v-chazhou
+ms.date: 03/10/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: c28da24c9cdcf7f9210c8fe117a95b4751a1c36e
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 9b88cd7fdaaa172994b789f0cee03c3ba2a84dd5
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99058959"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766573"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>排查 Azure 密钥保管库访问策略问题
 

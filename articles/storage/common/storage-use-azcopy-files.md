@@ -8,12 +8,12 @@ origin.date: 12/08/2020
 ms.date: 03/08/2021
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 9671895718ef5a7a1e0c94728cb0497b19b2b977
-ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
+ms.openlocfilehash: f76f4c8ad4167e1c690d878f15f0f5715ab05dc4
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196343"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765224"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>使用 AzCopy 和文件存储传输数据 
 
@@ -126,7 +126,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制文件
 
 还可以使用 `--exclude-pattern` 选项来排除文件。 有关详细信息，请参阅 [azcopy copy](storage-ref-azcopy-copy.md) 参考文档。
 
-`--include-pattern` 和 `--exclude-pattern` 选项仅适用于文件名，而不适用于路径。  若要复制目录树中存在的所有文本文件，请使用 `–recursive` 选项获取整个目录树，然后使用 `–include-pattern` 并指定 `*.txt` 来获取所有文本文件。
+`--include-pattern` 和 `--exclude-pattern` 选项仅适用于文件名，而不适用于路径。  若要复制目录树中存在的所有文本文件，请使用 `--recursive` 选项获取整个目录树，然后使用 `--include-pattern` 并指定 `*.txt` 来获取所有文本文件。
 
 #### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>上传在某个日期和时间之后修改的文件 
 
@@ -221,7 +221,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制文件
 
 还可以使用 `--exclude-pattern` 选项来排除文件。 有关详细信息，请参阅 [azcopy copy](storage-ref-azcopy-copy.md) 参考文档。
 
-`--include-pattern` 和 `--exclude-pattern` 选项仅适用于文件名，而不适用于路径。  若要复制目录树中存在的所有文本文件，请使用 `–recursive` 选项获取整个目录树，然后使用 `–include-pattern` 并指定 `*.txt` 来获取所有文本文件。
+`--include-pattern` 和 `--exclude-pattern` 选项仅适用于文件名，而不适用于路径。  若要复制目录树中存在的所有文本文件，请使用 `--recursive` 选项获取整个目录树，然后使用 `--include-pattern` 并指定 `*.txt` 来获取所有文本文件。
 
 #### <a name="download-files-that-were-modified-after-a-date-and-time"></a>下载在某个日期和时间之后修改的文件 
 

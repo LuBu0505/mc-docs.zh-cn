@@ -2,20 +2,21 @@
 title: 教程：开始使用专用 SQL 池分析数据
 description: 在本教程中，你将使用纽约市出租车示例数据来探索 SQL 池的分析功能。
 services: synapse-analytics
-author: saveenr
-ms.author: saveenr
-manager: julieMSFT
+author: WenJason
+ms.author: v-jay
+manager: digimobile
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: 545138a7c2cb442410c9f007bb65b3355199623b
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+origin.date: 12/31/2020
+ms.date: 03/22/2021
+ms.openlocfilehash: 581748a364f44fffa4fd49f3087e10092b396bbc
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207681"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765566"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>使用专用 SQL 池分析数据
 
@@ -60,7 +61,7 @@ Azure Synapse Analytics 为你提供使用专用 SQL 池分析数据的功能。
     );
 
     COPY INTO [dbo].[Trip]
-    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Trip2013/QID6392_20171107_05910_0.txt.gz'
+    FROM 'https://nytaxiblob.blob.core.chinacloudapi.cn/2013/Trip2013/QID6392_20171107_05910_0.txt.gz'
     WITH
     (
         FILE_TYPE = 'CSV',
@@ -77,6 +78,7 @@ Azure Synapse Analytics 为你提供使用专用 SQL 池分析数据的功能。
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>浏览专用 SQL 池中的纽约市出租车数据
 
 1. 在 Synapse Studio 中，转到“数据”中心。
+1. 应看到名为 SQLPOOL1 的数据库。 如果没有看到，请单击“刷新”。
 1. 转到“SQLPOOL1” > “表” 。 
 1. 右键单击 dbo.Trip 表，然后选择“新建 SQL 脚本” > “选择前 100 行”  。
 1. 等待新的 SQL 脚本创建并运行。

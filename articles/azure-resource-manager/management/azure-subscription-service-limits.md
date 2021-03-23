@@ -2,18 +2,18 @@
 title: Azure 订阅限制和配额
 description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 本文包括有关如何增加限制以及最大值的信息。
 ms.topic: conceptual
-origin.date: 09/02/2020
+origin.date: 03/15/2021
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/29/2021
 ms.testscope: no
 ms.testdate: 08/03/2020
 ms.author: v-yeche
-ms.openlocfilehash: 55e422f5b1b7b50564003a84384e6b45a5e05a2f
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 8ba6ba6875ed44e915a28d2884d828430e191627
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102053331"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767105"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -139,8 +139,6 @@ ms.locfileid: "102053331"
 
 有关详细信息，请参阅 [Functions 托管计划比较](../../azure-functions/functions-scale.md)。
 
-<!--Not Avaialble on #hosting-plans-comparison-->
-
 ## <a name="azure-kubernetes-service-limits"></a>Azure Kubernetes 服务限制
 
 [!INCLUDE [container-service-limits](../../../includes/container-service-limits.md)]
@@ -149,7 +147,7 @@ ms.locfileid: "102053331"
 
 可在[“Azure 机器学习配额”页](../../machine-learning/how-to-manage-quotas.md)中找到 Azure 机器学习计算配额的最新值
 
-<!--Not Available on ## Azure Maps limits-->
+<!--NOT AVAILABLE ON ## Azure Maps limits-->
 <!--NOT AVAILABLE ON [maps-limits](../../../includes/maps-limits.md)-->
 
 
@@ -177,7 +175,7 @@ ms.locfileid: "102053331"
 
 ### <a name="application-insights"></a>Application Insights
 
-[!INCLUDE [monitoring-limits](../../../includes/azure-monitor-limits-app-insights.md)]
+[!INCLUDE [monitoring-limits](../../../includes/application-insights-limits.md)]
 
 ## <a name="azure-policy-limits"></a>Azure Policy 限制
 
@@ -191,6 +189,9 @@ ms.locfileid: "102053331"
 ## <a name="azure-signalr-service-limits"></a>Azure SignalR 服务限制
 
 [!INCLUDE [signalr-service-limits](../../../includes/signalr-service-limits.md)]
+
+<!--NOT AVAILABLE ON ## Azure VMware Solution limits-->
+<!--NOT AVAILABLE ON [azure-vmware-solutions-limits](../../azure-vmware/includes/azure-vmware-solutions-limits.md)-->
 
 ## <a name="backup-limits"></a>备份限制
 
@@ -224,11 +225,10 @@ ms.locfileid: "102053331"
 
 [!INCLUDE [azure-data-factory-limits](../../../includes/azure-data-factory-limits.md)]
 
-<!--Not Available on ## Data Lake Analytics limits-->
+<!--NOT AVAILABLE ON ## Data Lake Analytics limits-->
 <!--NOT AVAILABLE ON [azure-data-lake-analytics-limits](../../../includes/azure-data-lake-analytics-limits.md)-->
-<!--Not Available on ## Data Lake Storage limits-->
+<!--NOT AVAILABLE ON ## Data Lake Storage limits-->
 <!--NOT AVAILABLE ON [azure-data-lake-store-limits](../../../includes/azure-data-lake-store-limits.md)-->
-<!--Not Available on ## Data Share limits-->
 <!--NOT AVAILABLE ON ## Data Share limits-->
 <!--NOT AVAILABLE ON [azure-data-share-limits](../../../includes/azure-data-share-limits.md)-->
 
@@ -236,7 +236,7 @@ ms.locfileid: "102053331"
 
 [!INCLUDE [database-migration-service-limits](../../../includes/database-migration-service-limits.md)]
 
-<!--Not Available on## Digital Twins limits-->
+<!--NOT AVAILABLE ON ## Digital Twins limits-->
 <!--NOT AVAILABLE ON [digital-twins-limits](../../../includes/digital-twins-limits.md)-->
 
 ## <a name="event-grid-limits"></a>事件网格限制
@@ -313,12 +313,10 @@ ms.locfileid: "102053331"
 
 <a name="private-link-limits"></a>
 
-<!--Not Available on ### Private Link limits-->
+<!--NOT AVAILABLE ON ### Private Link limits-->
 <!--NOT AVAILABLE ON [private-link-limits](../../../includes/private-link-limits.md)-->
 <!--NOT AVAILABLE ON ## Purview limits-->
 <!--NOT AVAILABLE ON [Azure Purview quota page](../../purview/how-to-manage-quotas.md)-->
-
-
 
 ### <a name="traffic-manager-limits"></a>流量管理器限制
 
@@ -336,7 +334,7 @@ ms.locfileid: "102053331"
 
 [!INCLUDE [azure-firewall-limits](../../../includes/firewall-limits.md)]
 
-<!--NOT AVAILABLE ON  ### Azure Front Door Service limits-->
+<!--NOT AVAILABLE ON till on 03/18/2021 ### Azure Front Door Service limits -->
 <!--NOT AVAILABLE ON [!INCLUDE [azure-front-door-service-limits](../../../includes/front-door-limits.md)-->
 
 ## <a name="notification-hubs-limits"></a>通知中心限制
@@ -409,7 +407,7 @@ ms.locfileid: "102053331"
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../../../includes/azure-storage-limits-vm-disks-premium.md)]
 
-<!--NOT AVAILABLE ON ## StorSimple System limits-->
+<!--NOT AVAILABLE ON till on 03/18/2021 ## StorSimple System limits-->
 <!--NOT AVAILABLE ON [!INCLUDE [storsimple-limits-table](../../../includes/storsimple-limits-table.md)-->
 
 ## <a name="stream-analytics-limits"></a>流分析限制

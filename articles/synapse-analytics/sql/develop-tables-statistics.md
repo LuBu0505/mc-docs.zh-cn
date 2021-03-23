@@ -2,21 +2,22 @@
 title: 使用 Azure Synapse SQL 资源创建和更新统计信息
 description: 关于创建和更新 Synapse SQL 中查询优化统计信息的建议和示例。
 services: synapse-analytics
-author: filippopovic
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/19/2020
-ms.author: fipopovi
+origin.date: 04/19/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: c7575abfd05cadddbba20e4b4f79beabc63b3b9d
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: ea10d99d2411f85b3a336d26c9a12b05fcd2943d
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207127"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766687"
 ---
 # <a name="statistics-in-synapse-sql"></a>Synapse SQL 中的统计信息
 
@@ -72,9 +73,9 @@ SET AUTO_CREATE_STATISTICS ON
 为了避免可测量的性能降低，应确保在分析系统之前先通过执行基准检验工作负载来创建统计信息。
 
 > [!NOTE]
-> 统计信息的创建会记录在其他用户上下文中的 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 中。
+> 统计信息的创建会记录在其他用户上下文中的 [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest&preserve-view=true) 中。
 
-创建自动统计信息时，它们将采用以下格式：_WA_Sys_<以十六进制表示的 8 位列 ID>_<以十六进制表示的 8 位表 ID>。 可以通过运行 [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 命令，查看已创建的统计信息：
+创建自动统计信息时，它们将采用以下格式：_WA_Sys_<以十六进制表示的 8 位列 ID>_<以十六进制表示的 8 位表 ID>。 可以通过运行 [DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true) 命令，查看已创建的统计信息：
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -143,7 +144,7 @@ WHERE
 
 如果数据仓库只包含一种性别，而新的要求导致多种性别，则需要更新性别列的统计信息。 
 
-有关详细信息，请查看[统计信息](/sql/relational-databases/statistics/statistics)一文。
+有关详细信息，请查看[统计信息](https://docs.microsoft.com/sql/relational-databases/statistics/statistics)一文。
 
 ### <a name="implement-statistics-management"></a>实施统计信息管理
 
@@ -157,7 +158,7 @@ WHERE
 - 考虑较不经常更新静态分布列。
 - 请记住，每个统计信息对象是按顺序更新的。 仅实现 `UPDATE STATISTICS <TABLE_NAME>` 不一定总很理想 - 尤其是对包含许多统计信息对象的宽型表而言。
 
-有关详细信息，请参阅[基数估计](/sql/relational-databases/performance/cardinality-estimation-sql-server)。
+有关详细信息，请参阅[基数估计](https://docs.microsoft.com/sql/relational-databases/performance/cardinality-estimation-sql-server)。
 
 ### <a name="examples-create-statistics"></a>示例：创建统计信息
 
@@ -236,7 +237,7 @@ CREATE STATISTICS stats_col1
     WITH SAMPLE = 50 PERCENT;
 ```
 
-有关完整参考，请参阅 [CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+有关完整参考，请参阅 [CREATE STATISTICS](https://docs.microsoft.com/sql/t-sql/statements/create-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true)。
 
 #### <a name="create-multi-column-statistics"></a>创建多列统计信息
 
@@ -433,7 +434,7 @@ UPDATE STATISTICS 语句的使用很简单。 只需要记住，它会更新表�
 > 更新表中的所有统计信息时，专用 SQL 池会执行扫描，以便针对每个统计信息对象进行表采样。 如果表很大、包含许多列和许多统计信息，则根据需要更新各项统计信息可能比较有效率。
 
 有关 `UPDATE STATISTICS` 过程的实现，请参阅[临时表](develop-tables-temporary.md)。 实现方法与上述 `CREATE STATISTICS` 过程略有不同，但最终结果相同。
-有关完整语法，请参阅[更新统计信息](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+有关完整语法，请参阅[更新统计信息](https://docs.microsoft.com/sql/t-sql/statements/update-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true)。
 
 ### <a name="statistics-metadata"></a>统计信息元数据
 
@@ -445,13 +446,13 @@ UPDATE STATISTICS 语句的使用很简单。 只需要记住，它会更新表�
 
 | 目录视图 | 说明 |
 |:--- |:--- |
-| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |针对每个列提供一行。 |
-| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |针对数据库中的每个对象提供一行。 |
-| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |针对数据库中的每个架构提供一行。 |
-| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |针对每个统计信息对象提供一行。 |
-| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |针对统计信息对象中的每个列提供一行。 链接回到 sys.columns。 |
-| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |针对每个表（包括外部表）提供一行。 |
-| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |针对每个数据类型提供一行。 |
+| [sys.columns](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?view=azure-sqldw-latest&preserve-view=true) |针对每个列提供一行。 |
+| [sys.objects](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?view=azure-sqldw-latest&preserve-view=true) |针对数据库中的每个对象提供一行。 |
+| [sys.schemas](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?view=azure-sqldw-latest&preserve-view=true) |针对数据库中的每个架构提供一行。 |
+| [sys.stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?view=azure-sqldw-latest&preserve-view=true) |针对每个统计信息对象提供一行。 |
+| [sys.stats_columns](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?view=azure-sqldw-latest&preserve-view=true) |针对统计信息对象中的每个列提供一行。 链接回到 sys.columns。 |
+| [sys.tables](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?view=azure-sqldw-latest&preserve-view=true) |针对每个表（包括外部表）提供一行。 |
+| [sys.table_types](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?view=azure-sqldw-latest&preserve-view=true) |针对每个数据类型提供一行。 |
 
 #### <a name="system-functions-for-statistics"></a>统计信息的系统函数
 
@@ -459,8 +460,8 @@ UPDATE STATISTICS 语句的使用很简单。 只需要记住，它会更新表�
 
 | 系统函数 | 说明 |
 |:--- |:--- |
-| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |上次更新统计信息对象的日期。 |
-| [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |有关统计信息对象识别的值分布的摘要级别和详细信息。 |
+| [STATS_DATE](https://docs.microsoft.com/sql/t-sql/functions/stats-date-transact-sql?view=azure-sqldw-latest&preserve-view=true) |上次更新统计信息对象的日期。 |
+| [DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true) |有关统计信息对象识别的值分布的摘要级别和详细信息。 |
 
 #### <a name="combine-statistics-columns-and-functions-into-one-view"></a>将统计信息列和函数合并成一个视图
 
@@ -620,7 +621,7 @@ SELECT 语句将触发“自动创建统计信息”。
 - 更频繁地更新“递增键”列（例如事务日期），因为这些值不包含在统计信息直方图中。
 - 相对不那么频繁地更新静态分布列。
 
-有关详细信息，请参阅[基数估计](/sql/relational-databases/performance/cardinality-estimation-sql-server)。
+有关详细信息，请参阅[基数估计](https://docs.microsoft.com/sql/relational-databases/performance/cardinality-estimation-sql-server)。
 
 ### <a name="examples-create-statistics-for-column-in-openrowset-path"></a>示例：为 OPENROWSET 路径中的列创建统计信息
 
@@ -656,11 +657,11 @@ sys.sp_create_openrowset_statistics [ @stmt = ] N'statement_text'
 
 ```sql
 /* make sure you have credentials for storage account access created
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')
-DROP CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer]
+IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.chinacloudapi.cn/censusdatacontainer')
+DROP CREDENTIAL [https://azureopendatastorage.blob.core.chinacloudapi.cn/censusdatacontainer]
 GO
 
-CREATE CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer]  
+CREATE CREDENTIAL [https://azureopendatastorage.blob.core.chinacloudapi.cn/censusdatacontainer]  
 WITH IDENTITY='SHARED ACCESS SIGNATURE',  
 SECRET = ''
 GO
@@ -668,7 +669,7 @@ GO
 
 EXEC sys.sp_create_openrowset_statistics N'SELECT year
 FROM OPENROWSET(
-        BULK ''https://sqlondemandstorage.blob.core.windows.net/csv/population/population.csv'',
+        BULK ''https://sqlondemandstorage.blob.core.chinacloudapi.cn/csv/population/population.csv'',
         FORMAT = ''CSV'',
         FIELDTERMINATOR ='','',
         ROWTERMINATOR = ''\n''
@@ -688,11 +689,11 @@ WITH (
 
 ```sql
 /* make sure you have credentials for storage account access created
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')
-DROP CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer]
+IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.chinacloudapi.cn/censusdatacontainer')
+DROP CREDENTIAL [https://azureopendatastorage.blob.core.chinacloudapi.cn/censusdatacontainer]
 GO
 
-CREATE CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer]  
+CREATE CREDENTIAL [https://azureopendatastorage.blob.core.chinacloudapi.cn/censusdatacontainer]  
 WITH IDENTITY='SHARED ACCESS SIGNATURE',  
 SECRET = ''
 GO
@@ -700,7 +701,7 @@ GO
 
 EXEC sys.sp_create_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
-        BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
+        BULK ''https://sqlondemandstorage.blob.core.chinacloudapi.cn/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''
     ) AS [nyc]
     TABLESAMPLE(5 PERCENT)
@@ -725,7 +726,7 @@ sys.sp_drop_openrowset_statistics [ @stmt = ] N'statement_text'
 ```sql
 EXEC sys.sp_drop_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
-        BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
+        BULK ''https://sqlondemandstorage.blob.core.chinacloudapi.cn/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''
     ) AS [nyc]
     TABLESAMPLE(5 PERCENT)
@@ -733,11 +734,11 @@ FROM OPENROWSET(
 GO
 
 /* make sure you have credentials for storage account access created
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')
-DROP CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer]
+IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.chinacloudapi.cn/censusdatacontainer')
+DROP CREDENTIAL [https://azureopendatastorage.blob.core.chinacloudapi.cn/censusdatacontainer]
 GO
 
-CREATE CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer]  
+CREATE CREDENTIAL [https://azureopendatastorage.blob.core.chinacloudapi.cn/censusdatacontainer]  
 WITH IDENTITY='SHARED ACCESS SIGNATURE',  
 SECRET = ''
 GO
@@ -745,7 +746,7 @@ GO
 
 EXEC sys.sp_create_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
-        BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
+        BULK ''https://sqlondemandstorage.blob.core.chinacloudapi.cn/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''
     ) AS [nyc]
     TABLESAMPLE(5 PERCENT)
@@ -827,13 +828,13 @@ CREATE STATISTICS sState
 
 | 目录视图                                                 | 说明                                                  |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 针对每个列提供一行。                                     |
-| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 针对数据库中的每个对象提供一行。                     |
-| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 针对数据库中的每个架构提供一行。                     |
-| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 针对每个统计信息对象提供一行。                          |
-| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 针对统计信息对象中的每个列提供一行。 链接回到 sys.columns。 |
-| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 针对每个表（包括外部表）提供一行。           |
-| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 针对每个数据类型提供一行。                                  |
+| [sys.columns](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?view=azure-sqldw-latest&preserve-view=true) | 针对每个列提供一行。                                     |
+| [sys.objects](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?view=azure-sqldw-latest&preserve-view=true) | 针对数据库中的每个对象提供一行。                     |
+| [sys.schemas](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?view=azure-sqldw-latest&preserve-view=true) | 针对数据库中的每个架构提供一行。                     |
+| [sys.stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?view=azure-sqldw-latest&preserve-view=true) | 针对每个统计信息对象提供一行。                          |
+| [sys.stats_columns](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?view=azure-sqldw-latest&preserve-view=true) | 针对统计信息对象中的每个列提供一行。 链接回到 sys.columns。 |
+| [sys.tables](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?view=azure-sqldw-latest&preserve-view=true) | 针对每个表（包括外部表）提供一行。           |
+| [sys.table_types](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?view=azure-sqldw-latest&preserve-view=true) | 针对每个数据类型提供一行。                                  |
 
 #### <a name="system-functions-for-statistics"></a>统计信息的系统函数
 
@@ -841,7 +842,7 @@ CREATE STATISTICS sState
 
 | 系统函数                                              | 说明                                  |
 | :----------------------------------------------------------- | :------------------------------------------- |
-| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 上次更新统计信息对象的日期。 |
+| [STATS_DATE](https://docs.microsoft.com/sql/t-sql/functions/stats-date-transact-sql?view=azure-sqldw-latest&preserve-view=true) | 上次更新统计信息对象的日期。 |
 
 #### <a name="combine-statistics-columns-and-functions-into-one-view"></a>将统计信息列和函数合并成一个视图
 
@@ -884,6 +885,6 @@ WHERE   st.[user_created] = 1
 
 ## <a name="next-steps"></a>后续步骤
 
-若要进一步改进专用 SQL 池的查询性能，请参阅[监视工作负载](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)和[适用于专用 SQL 池的最佳做法](best-practices-sql-pool.md#maintain-statistics)。
+若要进一步改进专用 SQL 池的查询性能，请参阅[监视工作负载](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/synapse-analytics/toc.json&bc=/synapse-analytics/breadcrumb/toc.json)和[适用于专用 SQL 池的最佳做法](best-practices-sql-pool.md#maintain-statistics)。
 
 若要进一步改进无服务器 SQL 池的查询性能，请参阅[适用于无服务器 SQL 池的最佳做法](best-practices-sql-on-demand.md)

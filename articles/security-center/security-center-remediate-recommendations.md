@@ -1,25 +1,19 @@
 ---
 title: 在 Azure 安全中心修正建议 | Azure
 description: 本文介绍如何在 Azure 安全中心响应建议，以保护资源并符合安全策略。
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 8be947cc-cc86-421d-87a6-b1e23077fd50
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/20/2021
+ms.date: 03/18/2021
 ms.author: v-johya
 origin.date: 11/04/2019
-ms.openlocfilehash: 3245b46ef3bdbb08280a26c534806c0d20023d75
-ms.sourcegitcommit: 102a21dc30622e4827cc005bdf71ade772c1b8de
+ms.openlocfilehash: d1d04db84a99740f959d3a1c6eb73c46cbb9f332
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751320"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766703"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>在 Azure 安全中心修正建议
 
@@ -82,6 +76,6 @@ ms.locfileid: "98751320"
 
 在本文档中，已向你介绍了如何在安全中心修正建议。 若要了解有关安全中心的详细信息，请参阅以下页面：
 
-* [在 Azure 安全中心设置安全策略](tutorial-security-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
-* [Azure 安全中心的安全运行状况监视](security-center-monitoring.md) - 了解如何监视 Azure 资源的运行状况。
+* [在 Azure 安全中心内设置安全策略](tutorial-security-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略
+* [什么是安全策略、计划和建议？](security-policy-concept.md)
 

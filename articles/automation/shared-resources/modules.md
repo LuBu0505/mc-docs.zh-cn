@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 origin.date: 02/01/2021
 ms.date: 02/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: db57efe65aad88b15cd3466ba95da000706ceadb
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: d9e87125810c23ee275b64b03b2ac73ff99fa807
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697426"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765926"
 ---
 # <a name="manage-modules-in-azure-automation"></a>管理 Azure 自动化中的模块
 
@@ -35,7 +35,7 @@ Azure 自动化使用许多 PowerShell 模块在 runbook DSC 配置中启用 run
 
 云沙盒最多支持 48 个系统调用，并出于安全原因限制所有其他调用。 云沙盒不支持其他功能，例如凭据管理和某些网络连接。
 
-由于包含的模块和 cmdlet 数量众多，因此很难事先知道哪个 cmdlet 会进行不受支持的调用。 通常，对于需要提升的访问权限以及需要凭据作为参数的 cmdlet，或者对于与网络相关的 cmdlet，我们都知道其问题所在。 沙盒不支持执行完全堆栈网络操作的任何 cmdlet，包括 AIPService PowerShell 模块中的 [Connect-AipService](/powershell/module/aipservice/connect-aipservice) 和 DNSClient 模块中的 [Resolve-DnsName](/powershell/module/dnsclient/resolve-dnsname)。
+由于包含的模块和 cmdlet 数量众多，因此很难事先知道哪个 cmdlet 会进行不受支持的调用。 通常，对于需要提升的访问权限以及需要凭据作为参数的 cmdlet，或者对于与网络相关的 cmdlet，我们都知道其问题所在。 沙盒不支持执行完全堆栈网络操作的任何 cmdlet，包括 AIPService PowerShell 模块中的 [Connect-AipService](https://docs.microsoft.com/powershell/module/aipservice/connect-aipservice) 和 DNSClient 模块中的 [Resolve-DnsName](https://docs.microsoft.com/powershell/module/dnsclient/resolve-dnsname)。
 
 这些是沙盒的已知限制。 建议的解决方法是部署[混合 Runbook 辅助角色](../automation-hybrid-runbook-worker.md)或使用 [Azure Functions](../../azure-functions/functions-overview.md)。
 

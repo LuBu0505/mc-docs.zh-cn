@@ -5,18 +5,17 @@ author: rajeevmv
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-origin.date: 10/16/2019
-ms.date: 12/03/2020
-ms.author: v-tawe
+ms.date: 03/16/2021
+ms.author: v-chazhou
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: de5171a8465900dd9b308f41c5924c1a6db777bb
-ms.sourcegitcommit: 60e70acb6f9604aeef69d2027f7f96a1d7d5b248
+ms.openlocfilehash: 4a5319e2152f49bac8e5c23a3fbd006188e9d5a2
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96541108"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765324"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>使用 MQTT 协议与 DPS 通信
 

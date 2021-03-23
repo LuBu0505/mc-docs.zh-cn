@@ -2,18 +2,17 @@
 title: 使用 Powershell 创建 Azure 数据资源管理器群集和数据库
 description: 了解如何使用 PowerShell 创建 Azure 数据资源管理器群集和数据库
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: how-to
-origin.date: 06/03/2019
-ms.date: 01/22/2021
-ms.openlocfilehash: 71c0def754697caf962b5f695cf904f420ef8a50
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 03/17/2021
+ms.openlocfilehash: f5728acd68a3b84eb1e84a1a4c4738028694f933
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611669"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765379"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>使用 PowerShell 创建 Azure 数据资源管理器群集和数据库
 
@@ -32,9 +31,8 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
 [!INCLUDE [updated-for-az](includes/updated-for-az.md)]
 
-如果没有 Azure 订阅，请在开始前创建一个[试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn/)。
 
-<!-- [!INCLUDE [cloud-shell-try-it.md](includes/cloud-shell-try-it.md)] -->
 
 如果选择在本地安装并使用 Azure CLI，本文需要 Azure CLI 2.0.4 或更高版本。 请运行 `az --version` 检查版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
 
@@ -118,5 +116,5 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [其他 Az.Kusto 命令](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.7.0#kusto)
+* [其他 Az.Kusto 命令](https://docs.microsoft.com/powershell/module/az.kusto/#kusto)
 * [使用 Azure 数据资源管理器 .NET Standard SDK（预览版）引入数据](./net-sdk-ingest-data.md)

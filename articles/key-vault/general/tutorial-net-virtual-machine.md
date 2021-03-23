@@ -1,21 +1,20 @@
 ---
 title: 教程 - 将 Azure Key Vault 与通过 .NET 编写的虚拟机配合使用 | Microsoft Docs
-description: 本教程介绍如何将 ASP.NET Core 应用程序配置为从 Key Vault 读取机密。
+description: 本教程介绍如何为虚拟机配置 ASP.NET Core 应用程序，以便从密钥保管库读取机密。
 services: key-vault
 author: msmbaldwin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-origin.date: 07/20/2020
-ms.date: 01/18/2021
-ms.author: v-tawe
-ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: b4d90ad04d1adef964b44b1682fdcc097edf0a87
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.custom: mvc, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: d2451ea5e040e18ef781730e5e6403f65a5c9628
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059471"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766564"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>教程：将 Azure Key Vault 与通过 .NET 编写的虚拟机配合使用
 
@@ -54,7 +53,7 @@ Azure Key Vault 可以帮助保护机密，例如访问应用程序、服务和 
 若要使用 Azure CLI 登录到 Azure，请输入：
 
 ```azurecli
-az cloud set –n  AzureChinaCloud 
+az cloud set �Cn  AzureChinaCloud 
 az login
 ```
 
@@ -142,6 +141,7 @@ dotnet add package Azure.Identity
 
 ```csharp
 using System;
+using Azure.Core;
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 ```

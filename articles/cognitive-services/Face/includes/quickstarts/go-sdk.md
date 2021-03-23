@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: include
-ms.date: 10/28/2020
+ms.date: 03/08/2021
 ms.author: v-johya
-ms.openlocfilehash: 6346c9b34de5b1b62492a7b845bd4d1d73468bdd
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 65d9a04da3ec93df57480bebb6ccb87657377acb
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105459"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766400"
 ---
 开始使用适用于 Go 的人脸客户端库进行人脸识别。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过人脸服务，可以访问用于检测和识别图像中的人脸的高级算法。
 
@@ -31,10 +31,10 @@ ms.locfileid: "93105459"
 
 * 最新版本的 [Go](https://golang.org/dl/)
 * Azure 订阅 - [创建试用订阅](https://www.azure.cn/pricing/details/cognitive-services/)
-* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.cn/#create/Microsoft.CognitiveServicesFace"  title="创建人脸资源"  target="_blank">创建人脸资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.cn/#create/Microsoft.CognitiveServicesFace"  title="创建人脸资源"  target="_blank">创建人脸资源 </a>，获取密钥和终结点。 部署后，单击“转到资源”。
     * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到人脸 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
     * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
-* 获取密钥和终结点后，请为该密钥和终结点[创建环境变量](/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别命名为 `FACE_SUBSCRIPTION_KEY` 和 `FACE_ENDPOINT`。
+* 获取密钥和终结点后，请为该密钥和终结点[创建环境变量](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)，分别命名为 `FACE_SUBSCRIPTION_KEY` 和 `FACE_ENDPOINT`。
 
 ## <a name="setting-up"></a>设置
 
@@ -814,7 +814,7 @@ func main() {
 ## <a name="authenticate-the-client"></a>验证客户端
 
 > [!NOTE] 
-> 本快速入门假设已经为人脸密钥和终结点（分别名为 `FACE_SUBSCRIPTION_KEY` 和 `FACE_ENDPOINT`）[创建了环境变量](/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
+> 本快速入门假设已经为人脸密钥和终结点（分别名为 `FACE_SUBSCRIPTION_KEY` 和 `FACE_ENDPOINT`）[创建了环境变量](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)。
 
 创建 **main** 函数，并在其中添加以下代码，以使用终结点和密钥实例化客户端。 使用密钥创建 **[CognitiveServicesAuthorizer](https://godoc.org/github.com/Azure/go-autorest/autorest#CognitiveServicesAuthorizer)** 对象，然后在终结点上使用该对象创建 **[Client](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client)** 对象。 此代码还将实例化一个上下文对象，创建客户端对象时需要该上下文对象。 它还会定义一个远程位置，可在其中找到本快速入门中的一些示例图像。
 
@@ -2230,6 +2230,9 @@ func main() {
     fmt.Println("End sample.")
 }   
 ```
+
+> [!TIP]
+> 还可以检测本地图像中的人脸。 请参阅 [Client](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client) 方法，如 DetectWithStream。
 
 ### <a name="display-detected-face-data"></a>显示检测到的人脸数据
 
@@ -5782,7 +5785,7 @@ func main() {
 
 ### <a name="create-persongroup"></a>创建 PersonGroup
 
-下载图像后，请将以下代码添加到 **main** 方法的底部。 此代码对 **[PersonGroupClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient)** 对象进行身份验证，然后使用它来定义新的 **PersonGroup** 。
+下载图像后，请将以下代码添加到 **main** 方法的底部。 此代码对 **[PersonGroupClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient)** 对象进行身份验证，然后使用它来定义新的 **PersonGroup**。
 
 ```go
 // <snippet_imports>
@@ -7904,9 +7907,12 @@ func main() {
 }   
 ```
 
+> [!TIP]
+> 还可以从 URL 引用的远程图像创建 PersonGroup。 请参阅 [ PersonGroupPersonClient ](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupPersonClient) 方法，例如 AddFaceFromURL。
+
 ### <a name="train-persongroup"></a>训练 PersonGroup
 
-分配人脸后，请训练 **PersonGroup** ，使其能够识别与其每个 **Person** 对象关联的视觉特征。 以下代码调用异步 **train** 方法并轮询结果，然后将状态输出到控制台。
+分配人脸后，请训练 **PersonGroup**，使其能够识别与其每个 **Person** 对象关联的视觉特征。 以下代码调用异步 **train** 方法并轮询结果，然后将状态输出到控制台。
 
 ```go
 // <snippet_imports>
@@ -8612,16 +8618,19 @@ func main() {
 }   
 ```
 
+> [!TIP]
+> 人脸 API 在一组预构建的模型呢上运行，这些模型在本质上是静态的（模型的性能不会因为运行服务而提高或降低）。 如果 Microsoft 更新模型的后端，但不迁移整个新模型版本，那么模型生成的结果可能会变化。 若要使用更新的模型版本，可重新训练 PersonGroup，将更新的模型指定为具有相同注册映像的参数。
+
 ## <a name="identify-a-face"></a>识别人脸
 
-识别操作采用一个（或多个）人员的图像，并在图像中查找每个人脸的标识（人脸识别搜索）。 它将每个检测到的人脸与某个 **PersonGroup** （面部特征已知的不同 **Person** 对象的数据库）进行比较。
+识别操作采用一个（或多个）人员的图像，并在图像中查找每个人脸的标识（人脸识别搜索）。 它将每个检测到的人脸与某个 **PersonGroup**（面部特征已知的不同 **Person** 对象的数据库）进行比较。
 
 > [!IMPORTANT]
 > 若要运行此示例，必须先运行[创建和训练人员组](#create-and-train-a-person-group)中的代码。
 
 ### <a name="get-a-test-image"></a>获取测试图像
 
-以下代码在项目根目录中查找图像 _test-image-person-group.jpg_ ，并将其载入程序内存。 可以在[创建和训练人员组](#create-and-train-a-person-group)中使用的图像所在的同一个存储库中找到此图像： https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images 。
+以下代码在项目根目录中查找图像 _test-image-person-group.jpg_，并将其载入程序内存。 可以在[创建和训练人员组](#create-and-train-a-person-group)中使用的图像所在的同一个存储库中找到此图像： https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images 。
 
 ```go
 // <snippet_imports>
@@ -10037,7 +10046,7 @@ func main() {
 
 ### <a name="identify-faces"></a>标识人脸
 
-**[Identify](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client.Identify)** 方法采用检测到的人脸的数组，并将其与给定的 **PersonGroup** （已在前一部分定义并训练）进行比较。 如果检测到的某个人脸与组中的某个人相匹配，则它会保存结果。
+**[Identify](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client.Identify)** 方法采用检测到的人脸的数组，并将其与给定的 **PersonGroup**（已在前一部分定义并训练）进行比较。 如果检测到的某个人脸与组中的某个人相匹配，则它会保存结果。
 
 ```go
 // <snippet_imports>

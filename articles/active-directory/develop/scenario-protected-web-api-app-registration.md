@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/23/2021
+ms.date: 03/12/2021
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: a6000fd082db1b0145ca30f5b2f51c38d3bc9bb0
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 26b9636e7b8e3887e76eb4cbb9a8de4d7fce0911
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696665"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765496"
 ---
 # <a name="protected-web-api-app-registration"></a>受保护的 Web API：应用注册
 
@@ -112,7 +112,7 @@ Web API 不需注册重定向 URI，因为没有任何用户以交互方式登�
 
 ```json
 "appRoles": [
-    {
+  {
     "allowedMemberTypes": [ "Application" ],
     "description": "Accesses the TodoListService-Cert as an application.",
     "displayName": "access_as_application",
@@ -121,7 +121,7 @@ Web API 不需注册重定向 URI，因为没有任何用户以交互方式登�
     "lang": null,
     "origin": "Application",
     "value": "access_as_application"
-    }
+  }
 ],
 ```
 

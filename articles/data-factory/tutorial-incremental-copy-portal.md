@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 origin.date: 02/18/2021
 ms.date: 03/15/2021
-ms.openlocfilehash: 6a3feb205a07bb7a08ac92fdd7d9f7a6521f214b
-ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
+ms.openlocfilehash: 2a7531b0c850131ca7c88cabdfd86d2c6b95d78e
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102589903"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766910"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>使用 Azure 门户以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
@@ -166,13 +166,12 @@ END
       - 选择“新建”，并输入资源组的名称。   
          
         若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
-6. 选择“V2”作为“版本”。
-7. 选择数据工厂的 **位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库、Azure SQL 托管实例等）和计算资源（HDInsight 等）可位于其他区域中。
-8. 单击“创建”。      
-9. 创建完成后，可以看到图中所示的“数据工厂”页。
+6. 选择数据工厂的 **位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库、Azure SQL 托管实例等）和计算资源（HDInsight 等）可位于其他区域中。
+7. 单击“创建”。      
+8. 创建完成后，可以看到图中所示的“数据工厂”页。
 
    ![数据工厂主页](./media/doc-common-process/data-factory-home-page.png)
-10. 单击“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)。
+9. 单击“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)。
 
 ## <a name="create-a-pipeline"></a>创建管道
 本教程创建包含两个 Lookup 活动、一个 Copy 活动和一个 StoredProcedure 活动的管道，这些活动链接在一个管道中。

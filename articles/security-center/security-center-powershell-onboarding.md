@@ -1,25 +1,19 @@
 ---
 title: 通过 PowerShell 加入 Azure 安全中心
 description: 本文档将指导你完成通过 PowerShell cmdlet 启用 Azure 安全中心的过程。
-services: security-center
-documentationcenter: na
-author: Johnnytechn
+author: memildin
 manager: rkarlin
-ms.assetid: e400fcbf-f0a8-4e10-b571-5a0d0c3d0c67
 ms.service: security-center
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/25/2021
+ms.date: 03/18/2021
 ms.author: v-johya
 origin.date: 10/02/2018
-ms.openlocfilehash: 0114a2b78d8fa9cdb8b931892a762af90fc5c56e
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: b4c8e9668f3864b45770ba683af87dccfb3f554b
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197123"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766346"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>使用 PowerShell 自动载入 Azure 安全中心
 

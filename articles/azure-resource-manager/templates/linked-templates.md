@@ -4,16 +4,16 @@ description: 介绍如何使用 Azure 资源管理器模板（ARM 模板）中�
 ms.topic: conceptual
 origin.date: 01/26/2021
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 5b2c2e533681ae8939df9a1940d284dea0edc543
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 9afbe0bcdd19ff09a8dd8fd7894b04513c3e3dd1
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055284"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765734"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
@@ -112,9 +112,9 @@ ms.locfileid: "102055284"
   "apiVersion": "2019-10-01",
   "name": "nestedTemplate1",
   "properties": {
-  "expressionEvaluationOptions": {
-    "scope": "inner"
-  },
+    "expressionEvaluationOptions": {
+      "scope": "inner"
+    },
   ...
 ```
 
@@ -414,7 +414,7 @@ ms.locfileid: "102055284"
 
 若要链接某个模板，请向主模板中添加一个部署资源。 在 `templateLink` 属性中，指定要包括的模板的 URI。 以下示例链接到存储帐户中的模板。
 
-<!--Not Available on [deployments resource](https://docs.microsoft.com/azure/templates/microsoft.resources/deployments)-->
+<!--NOT AVAILABLE ON [deployments resource](https://docs.microsoft.com/azure/templates/microsoft.resources/deployments)-->
 
 ```json
 {
@@ -712,10 +712,10 @@ az deployment group create \
             "kind": "StorageV2"
             // Copy works here when scope is inner
             // But, when scope is default or outer, you get an error
-            //"copy":{
-            //  "name": "storagecopy",
-            //  "count": 2
-            //}
+            // "copy": {
+            //   "name": "storagecopy",
+            //   "count": 2
+            // }
           }
         ]
       }

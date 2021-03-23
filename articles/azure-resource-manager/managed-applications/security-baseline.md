@@ -5,17 +5,17 @@ ms.service: managed-applications
 ms.topic: conceptual
 origin.date: 12/01/2020
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.testscope: yes
 ms.testdate: 01/11/2021
 ms.author: v-yeche
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 65330cbb8496c1ca145ec8186bb16adc1f54df67
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 013440879b9d5f3556b927a10c84939f5d1c761e
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055289"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767090"
 ---
 <!--Verified successfully-->
 # <a name="azure-security-baseline-for-azure-managed-applications"></a>适用于 Azure 托管应用程序的 Azure 安全基线
@@ -92,15 +92,8 @@ Azure 托管应用程序支持向应用程序授予两种类型的标识：
 
 **责任**：客户
 
-### <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3：使用 Azure AD 单一登录 (SSO) 进行应用程序访问
-
-**指导**：Azure 托管应用程序使用 Azure Active Directory 来提供对 Azure 资源、云应用程序和本地应用程序的标识和访问管理。 此内容包括企业标识（例如员工）以及外部标识（如合作伙伴和供应商）。 这样便可通过单一登录 (SSO) 管理本地和云中的组织数据和资源并对其进行安全访问。 将所有用户、应用程序和设备连接到 Azure AD，实现无缝的安全访问和更好的可见性和控制。
-
-<!--NOT AVAILABLE ON - [Understand Application SSO with Azure AD](../../active-directory/manage-apps/what-is-single-sign-on.md)-->
-
-**Azure 安全中心监视**：不适用
-
-**责任**：客户
+<!--NOT AVAILABLE ON ### IM-3: Use Azure AD single sign-on (SSO) for application access-->
+<!--NOT AVAILABLE ON [Understand Application SSO with Azure AD](../../active-directory/manage-apps/what-is-single-sign-on.md)-->
 
 ### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4：对所有基于 Azure Active Directory 的访问使用强身份验证控制
 
@@ -112,7 +105,7 @@ Azure 托管应用程序支持向应用程序授予两种类型的标识：
 
 - [如何在 Azure 中启用多重身份验证](../../active-directory/authentication/howto-mfa-getstarted.md) 
 
-<!--NOT AVAILABLE ON - [Introduction to passwordless authentication options for Azure Active Directory](../../active-directory/authentication/concept-authentication-passwordless.md)-->
+<!--NOT AVAILABLE ON [Introduction to passwordless authentication options for Azure Active Directory](../../active-directory/authentication/concept-authentication-passwordless.md)-->
 
 **Azure 安全中心监视**：目前不可用
 
@@ -134,7 +127,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 - [Azure Active Directory 中的“审核活动”报表](../../active-directory/reports-monitoring/concept-audit-logs.md)
 
-<!--NOT AVAILABLE ON - [How to view Azure AD risky sign-ins](../../active-directory/identity-protection/overview-identity-protection.md)-->
+<!--NOT AVAILABLE ON [How to view Azure AD risky sign-ins](../../active-directory/identity-protection/overview-identity-protection.md)-->
 
 - [如何在 Azure 安全中心内监视用户的标识和访问活动](../../security-center/security-center-identity-access.md)
 
@@ -152,7 +145,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 - [常见的条件访问策略](../../active-directory/conditional-access/concept-conditional-access-policy-common.md) 
 
-<!--NOT AVAILABLE ON - [Configure authentication session management with conditional access](../../active-directory/conditional-access/howto-conditional-access-session-lifetime.md)-->
+<!--NOT AVAILABLE ON [Configure authentication session management with conditional access](../../active-directory/conditional-access/howto-conditional-access-session-lifetime.md)-->
 
 **Azure 安全中心监视**：是
 
@@ -194,7 +187,7 @@ Azure 高级威胁防护 (ATP) 是一种安全解决方案，它可使用 Active
 
 - [访问管理组](../../governance/management-groups/overview.md#management-group-access)
 
-<!--NOT AVAILABLE ON - [Azure subscription administrators](../../cost-management-billing/manage/add-change-subscription-administrator.md)-->
+<!--NOT AVAILABLE ON [Azure subscription administrators](../../cost-management-billing/manage/add-change-subscription-administrator.md)-->
 
 **Azure 安全中心监视**：是
 
@@ -352,7 +345,7 @@ Azure 提供了以下 Azure 内置角色，用于通过 Azure AD 和 OAuth 授�
 
 - [如何使用 Azure Resource Graph 浏览器创建查询](../../governance/resource-graph/first-query-portal.md) 
 
-<!--NOT AVAILABLE ON https://docs.azure.cn/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure-resource-manager%2fmanagement%2ftoc.json)-->
+<!--NOT AVAILABLE ON [For more information about tagging assets, see the resource naming and tagging decision guide](https://docs.azure.cn/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure-resource-manager%2fmanagement%2ftoc.json)-->
 
 **Azure 安全中心监视**：是
 
@@ -376,7 +369,8 @@ Azure 提供了以下 Azure 内置角色，用于通过 Azure AD 和 OAuth 授�
 
 **指导**：通过删除托管应用程序资源，可以删除托管应用程序资源及其连接的托管资源组。 删除托管应用程序资源时，还会删除托管资源组及其内容。 其他生命周期功能由应用程序的发布者指定，这些功能可通过允许的操作向使用者授予对基础托管资源生命周期的其他权限。 如需了解什么资源由使用者管理，请咨询托管应用程序的发布者。
 
-<!--NOT AVAILABLE ON - [Clean up Managed Application resources](./tutorial-create-managed-app-with-custom-provider.md?tabs=azurecli-interactive#clean-up-resources)-->
+<!--NOT AVAILABLE ON [Clean up Managed Application resources](./tutorial-create-managed-app-with-custom-provider.md?tabs=azurecli-interactive#clean-up-resources)-->
+
 **Azure 安全中心监视**：不适用
 
 **责任**：客户
@@ -406,7 +400,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 - [Azure Active Directory 中的“审核活动”报表](../../active-directory/reports-monitoring/concept-audit-logs.md)
 
-<!--NOT AVAILABLE ON - [Enable Azure Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md)-->
+<!--NOT AVAILABLE ON [How to view Azure AD risky sign-ins](../../active-directory/identity-protection/overview-identity-protection.md)-->
 
 - [Azure 安全中心的威胁防护](../../security-center/azure-defender.md)
 
@@ -420,7 +414,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/platform/diagnostic-settings.md) 
 
-- [了解 Azure 中的日志记录和不同的日志类型](../../azure-monitor/platform/platform-logs-overview.md)
+- [了解 Azure 中的日志记录和不同的日志类型](../../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure 安全中心监视**：是
 
@@ -437,7 +431,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 - [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/platform/diagnostic-settings.md)
 
-<!--NOT AVAILABLE ON - [How to onboard Azure Sentinel](../../sentinel/quickstart-onboard.md)-->
+<!--NOT AVAILABLE ON [How to onboard Azure Sentinel](../../sentinel/quickstart-onboard.md)-->
 
 **Azure 安全中心监视**：是
 
@@ -450,7 +444,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 - [如何配置 Log Analytics 工作区保留期](../../azure-monitor/platform/manage-cost-storage.md)
 
-- [在 Azure 存储帐户中存储资源日志](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [在 Azure 存储帐户中存储资源日志](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure 安全中心监视**：是
 
@@ -464,7 +458,7 @@ Azure 安全中心还可针对某些可疑活动发出警报，例如，失败�
 
 **指导**：确保组织具有响应安全事件的流程，已为 Azure 更新这些流程，并定期运用这些流程来确保就绪性。
 
-<!--NOT AVAILABLE ON - [Implement security across the enterprise environment](https://docs.azure.cn/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)-->
+<!--NOT AVAILABLE ON [Implement security across the enterprise environment](https://docs.azure.cn/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)-->
 
 - [事件响应参考指南](https://docs.microsoft.com/microsoft-365/downloads/IR-Reference-Guide.pdf)
 
@@ -494,7 +488,7 @@ Azure 安全中心可跨许多 Azure 资产提供高质量的警报。 可以使
 
 - [如何配置导出](../../security-center/continuous-export.md)
 
-<!--NOT AVAILABLE ON - [How to stream alerts into Azure Sentinel](../../sentinel/connect-azure-security-center.md)-->
+<!--NOT AVAILABLE ON [How to stream alerts into Azure Sentinel](../../sentinel/connect-azure-security-center.md)-->
 
 **Azure 安全中心监视**：目前不可用
 
@@ -524,7 +518,8 @@ Azure Sentinel 提供几乎针对任何日志源的广泛数据分析，并提�
 
 - [Azure 支持诊断信息和内存转储收集](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) 
 
-<!--NOT AVAILABLE ON - [Investigate incidents with Azure Sentinel](../../sentinel/tutorial-investigate-cases.md)-->
+<!--CORRECT ON https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/-->
+<!--NOT AVAILABLE ON [Investigate incidents with Azure Sentinel](../../sentinel/tutorial-investigate-cases.md)-->
 
 **Azure 安全中心监视**：不适用
 
@@ -556,7 +551,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 - [在 Azure 安全中心设置自动威胁响应](../../security-center/tutorial-security-incident.md#triage-security-alerts)
 
-<!--NOT AVAILABLE ON - [Set up automated threat responses in Azure Sentinel](../../sentinel/tutorial-respond-threats-playbook.md)-->
+<!--NOT AVAILABLE ON [Set up automated threat responses in Azure Sentinel](../../sentinel/tutorial-respond-threats-playbook.md)-->
 
 **Azure 安全中心监视**：目前不可用
 
@@ -575,11 +570,11 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 你可以使用 Azure 蓝图，在单个蓝图定义中自动部署和配置服务和应用程序环境，包括 Azure 资源管理器模板、Azure RBAC 分配和 Azure Policy 分配。
 
 <!--NOT AVAILABLE ON https://docs.azure.cn/cloud-adoption-framework/ready/enterprise-scale/architecture-->
-<!--NOT AVAILABLE ON - [Cloud Adoption Framework enterprise-scale landing zone](https://docs.azure.cn/cloud-adoption-framework/ready/enterprise-scale/architecture#landing-zone-expanded-definition)-->
+<!--NOT AVAILABLE ON [Enterprise network architecture strategy](https://docs.azure.cn/cloud-adoption-framework/ready/enterprise-scale/architecture#landing-zone-expanded-definition)-->
 
 - [创建和管理策略以强制实施符合性](../../governance/policy/tutorials/create-and-manage.md)
 
-<!--NOT AVAILABLE ON - [Azure Blueprints](../../governance/blueprints/overview.md)-->
+<!--NOT AVAILABLE ON [Azure Blueprints](../../governance/blueprints/overview.md)-->
 
 **Azure 安全中心监视**：不适用
 
@@ -592,7 +587,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 - [创建和管理策略以强制实施符合性](../../governance/policy/tutorials/create-and-manage.md)
 
-<!--NOT AVAILABLE ON - [Azure Blueprints](../../governance/blueprints/overview.md)-->
+<!--NOT AVAILABLE ON [Azure Blueprints](../../governance/blueprints/overview.md)-->
 
 **Azure 安全中心监视**：不适用
 
@@ -712,10 +707,10 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 **责任**：客户
 
-<!--Not Available on ### GS-4: Align organization roles, responsibilities, and accountabilities-->
-<!--Not Available on - [Azure Security Best Practice 1 - People: Educate Teams on Cloud Security Journey](https://docs.azure.cn/cloud-adoption-framework/security/security-top-10#1-people-educate-teams-about-the-cloud-security-journey)-->
-<!--Not Available on - [Azure Security Best Practice 2 - People: Educate Teams on Cloud Security Technology](https://docs.azure.cn/cloud-adoption-framework/security/security-top-10#2-people-educate-teams-on-cloud-security-technology)-->
-<!--Not Available on - [Azure Security Best Practice 3 - Process: Assign Accountability for Cloud Security Decisions](https://docs.azure.cn/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)-->
+<!--NOT AVAILABLE ON ### GS-4: Align organization roles, responsibilities, and accountabilities-->
+<!--NOT AVAILABLE ON [Azure Security Best Practice 1 - People: Educate Teams on Cloud Security Journey](https://docs.azure.cn/cloud-adoption-framework/security/security-top-10#1-people-educate-teams-about-the-cloud-security-journey)-->
+<!--NOT AVAILABLE ON [Azure Security Best Practice 2 - People: Educate Teams on Cloud Security Technology](https://docs.azure.cn/cloud-adoption-framework/security/security-top-10#2-people-educate-teams-on-cloud-security-technology)-->
+<!--NOT AVAILABLE ON [Implement security across the enterprise environment](https://docs.azure.cn/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)-->
 
 ### <a name="gs-5-define-network-security-strategy"></a>GS-5：定义网络安全策略
 
@@ -737,13 +732,13 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 有关详细信息，请参阅以下资源：
 
-<!--NOT AVAILABLE ON https://docs.azure.cn/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy-->
+<!--NOT AVAILABLE ON [Azure Security Best Practice 11 - Architecture. Single unified security strategy](https://docs.azure.cn/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)-->
 
 - [Azure 安全基准 - 网络安全](../../security/benchmarks/security-controls-v2-network-security.md)
 
 - [Azure 网络安全概述](../../security/fundamentals/network-overview.md)
 
-<!--NOT AVAILABLE ON - [Enterprise network architecture strategy](https://docs.azure.cn/cloud-adoption-framework/ready/enterprise-scale/architecture)-->
+<!--NOT AVAILABLE ON [Enterprise network architecture strategy](https://docs.azure.cn/cloud-adoption-framework/ready/enterprise-scale/architecture)-->
 
 **Azure 安全中心监视**：不适用
 
@@ -771,7 +766,7 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 - [Azure 安全基准 - 特权访问](../../security/benchmarks/security-controls-v2-privileged-access.md)
 
-<!--NOT AVAILABLE ON https://docs.azure.cn/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy-->
+<!--NOT AVAILABLE ON [Azure Security Best Practice 11 - Architecture. Single unified security strategy](https://docs.azure.cn/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)-->
 
 - [Azure 标识管理安全概述](../../security/fundamentals/identity-management-overview.md)
 
@@ -805,9 +800,9 @@ Azure 安全中心为每条警报分配严重性，方便你根据优先级来�
 
 - [Azure 安全基准 - 事件响应](../../security/benchmarks/security-controls-v2-incident-response.md)
 
-<!--NOT AVAILABLE ON https://docs.azure.cn/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud-->
-<!--NOT AVAILABLE ON https://docs.azure.cn/cloud-adoption-framework/decision-guides/logging-and-reporting/-->
-<!--NOT AVAILABLE ON https://docs.azure.cn/cloud-adoption-framework/ready/enterprise-scale/management-and-monitoring-->
+<!--NOT AVAILABLE ON [Implement security across the enterprise environment](https://docs.azure.cn/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)-->
+<!--NOT AVAILABLE ON [Azure Adoption Framework, logging, and reporting decision guide](https://docs.azure.cn/cloud-adoption-framework/decision-guides/logging-and-reporting/)-->
+<!--NOT AVAILABLE ON [Azure enterprise scale, management, and monitoring](https://docs.azure.cn/cloud-adoption-framework/ready/enterprise-scale/management-and-monitoring)-->
 
 **Azure 安全中心监视**：不适用
 

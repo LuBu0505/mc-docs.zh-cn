@@ -2,20 +2,19 @@
 title: 快速入门 - 使用 Java 将模拟的 TPM 设备预配到 Azure IoT 中心
 description: 快速入门 - 使用适用于 Azure IoT 中心设备预配服务 (DPS) 的 Java 设备 SDK 创建和预配模拟的 TPM 设备。 本快速入门使用单独注册。
 author: wesmc7777
-ms.author: v-tawe
-origin.date: 11/08/2018
-ms.date: 09/30/2020
+ms.author: v-chazhou
+ms.date: 03/16/2021
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: f3c126df0d429a34d07bd60eaa7aaebfbe9b60f3
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.openlocfilehash: dceff99d596480d741b132b4ff091354f394d06d
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431146"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765873"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-azure-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 Azure IoT 中心设备预配服务的 Java 设备 SDK 创建和预配模拟的 TPM 设备
 
@@ -28,7 +27,7 @@ ms.locfileid: "96431146"
 - 熟悉[预配](about-iot-dps.md#provisioning-process)概念。
 - 完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)。
 - 具有活动订阅的 Azure 帐户。 [试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
-- [Java SE 开发工具包 8](https://aka.ms/azure-jdks)。
+- [Java SE 开发工具包 8](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)。
 - [Maven](https://maven.apache.org/install.html)。
 - [Git](https://git-scm.com/download/)。
 
@@ -36,11 +35,11 @@ ms.locfileid: "96431146"
 
 ## <a name="prepare-the-environment"></a>准备环境 
 
-1. 确保已在计算机上安装 [Java SE 开发工具包 8](https://docs.microsoft.com/java/azure/jdk/)。
+1. 确保已在计算机上安装 [Java SE 开发工具包 8](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)。
 
 1. 下载并安装 [Maven](https://maven.apache.org/install.html)。
 
-1. 确保在计算机上安装 `git` 并将其添加到可供命令窗口访问的环境变量。 请参阅[软件自由保护组织提供的 Git 客户端工具](https://git-scm.com/download/)，了解要安装的最新版 `git` 工具，其中包括  Git Bash，这是一个命令行应用，可以用来与本地 Git 存储库交互。 
+1. 确保在计算机上安装 `git` 并将其添加到可供命令窗口访问的环境变量。 请参阅[软件自由保护组织提供的 Git 客户端工具](https://git-scm.com/download/)，了解要安装的最新版 `git` 工具，其中包括 Git Bash，这是一个命令行应用，可以用来与本地 Git 存储库交互。 
 
 1. 打开命令提示符。 为设备模拟代码示例克隆 GitHub 存储库。
     
@@ -106,16 +105,16 @@ Azure IoT 设备预配服务支持两类注册：
 
 1. 登录到 Azure 门户，选择左侧菜单上的“所有资源”按钮，打开设备预配服务  。
 
-1. 在“设备预配服务”菜单中，选择“管理注册”  。 选择“个人注册”选项卡，然后选择顶部的“添加个人注册”按钮   。 
+1. 在“设备预配服务”菜单中，选择“管理注册”。 选择“个人注册”选项卡，然后选择顶部的“添加个人注册”按钮 。 
 
-1. 在“添加注册”面板中，输入以下信息  ：
+1. 在“添加注册”面板中，输入以下信息：
    - 选择“TPM”  作为标识证明 *机制*。
    - 使用你之前记下的值输入 TPM 设备的“注册 ID”和“认可密钥”   。
    - 选择与预配服务链接的 IoT 中心。
    - （可选）可以提供以下信息：
        - 输入唯一“设备 ID”  。 为设备命名时，请确保避免使用敏感数据。 如果选择不提供此项，则系统将改用注册 ID 来标识设备。
        - 使用设备所需的初始配置更新“初始设备孪生状态”  。
-   - 完成后，按“保存”按钮  。 
+   - 完成后，按“保存”按钮。 
 
      ![在门户边栏选项卡中输入设备注册信息](./media/java-quick-create-simulated-device/enterdevice-enrollment.png)  
 
@@ -132,7 +131,7 @@ Azure IoT 设备预配服务支持两类注册：
 
     ![设备注册到 IoT 中心](./media/java-quick-create-simulated-device/hubregistration.png) 
 
-    如果从设备的注册项中的默认值更改了“初始设备孪生状态”  ，则它会从中心拉取所需的孪生状态，并执行相应的操作。 有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)。
+    如果从设备的注册项中的默认值更改了“初始设备孪生状态”，则它会从中心拉取所需的孪生状态，并执行相应的操作。 有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)。
 
 
 ## <a name="clean-up-resources"></a>清理资源
@@ -141,8 +140,8 @@ Azure IoT 设备预配服务支持两类注册：
 
 1. 关闭计算机上的设备客户端示例输出窗口。
 1. 关闭计算机上的 TPM 模拟器窗口。
-1. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择设备预配服务  。 打开服务的“管理注册”边栏选项卡，然后选择“单个注册”选项卡   。选中在本快速入门中注册的设备的“注册 ID”旁边的复选框，然后按窗格顶部的“删除”按钮   。 
-1. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择 IoT 中心  。 打开中心的“IoT 设备”边栏选项卡，选中在本快速入门中注册的设备的“设备 ID”旁边的复选框，然后按窗格顶部的“删除”按钮    。
+1. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择设备预配服务。 打开服务的“管理注册”边栏选项卡，然后选择“单个注册”选项卡 。选中在本快速入门中注册的设备的“注册 ID”旁边的复选框，然后按窗格顶部的“删除”按钮。 
+1. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择 IoT 中心  。 打开中心的“IoT 设备”边栏选项卡，选中在本快速入门中注册的设备的“设备 ID”旁边的复选框，然后按窗格顶部的“删除”按钮。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,20 +2,21 @@
 title: 教程：开始与管道集成
 description: 在本教程中，你将了解如何使用 Synapse Studio 集成管道和活动。
 services: synapse-analytics
-author: saveenr
-ms.author: saveenr
-manager: julieMSFT
+author: WenJason
+ms.author: v-jay
+manager: digimobile
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: pipeline
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: b58613479d30dbbf50ff502467fd2ff194aaabc5
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+origin.date: 12/31/2020
+ms.date: 03/22/2021
+ms.openlocfilehash: 9863c26e5aee4c924db3eb736ddc3ae2497d8067
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102206908"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766861"
 ---
 # <a name="integrate-with-pipelines"></a>与管道集成
 

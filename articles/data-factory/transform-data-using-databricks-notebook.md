@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 origin.date: 03/12/2018
 ms.date: 11/23/2020
-ms.openlocfilehash: 279b1c51ec5ef47c9e9b959d5e40d5db264b63dd
-ms.sourcegitcommit: 5df3a4ca29d3cb43b37f89cf03c1aa74d2cd4ef9
+ms.openlocfilehash: 8bc6214f10866aa95a1a33c2cc9c1463113ca99f
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431861"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766498"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Databricks Notebook 活动运行 Databricks Notebook
 
@@ -65,8 +65,6 @@ ms.locfileid: "96431861"
 
     本快速入门中的一些步骤假定对资源组使用 **ADFTutorialResourceGroup** 名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。
 
-1.  对于“版本”，选择“V2”。 
-
 1.  对于“位置”，请选择数据工厂所在的位置。 
 
     若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（例如 Azure 存储和 Azure SQL 数据库）和计算资源（例如 HDInsight）可以位于其他区域。
@@ -97,9 +95,9 @@ ms.locfileid: "96431861"
 
 1.  在“新建链接服务”  窗口中完成以下步骤：
     
-    1.  对于“名称”，请输入“AzureDatabricks\_LinkedService”_
+    1.  对于“名称”，请输入“AzureDatabricks\_LinkedService” 
     
-    1.  选择你将在其中运行笔记本的相应 _Databricks* 工作区
+    1.  选择你将在其中运行 notebook 的相应 **Databricks 工作区**
 
     1.  对于“选择群集”  ，请选择“新建作业群集” 
     

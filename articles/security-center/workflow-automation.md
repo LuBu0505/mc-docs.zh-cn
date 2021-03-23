@@ -6,14 +6,14 @@ author: Johnnytechn
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/25/2021
+ms.date: 03/18/2021
 ms.author: v-johya
-ms.openlocfilehash: 41651b84d6c0152954beafdb19854cb6b2cd8fda
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 7242eacbd4b0f46cff8b2fd4e95b9eed00b457ff
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197598"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766084"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>自动执行对安全中心触发器的响应
 
@@ -157,7 +157,7 @@ ms.locfileid: "102197598"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你学习了如何创建逻辑应用、如何在安全中心自动执行这些应用以及如何手动运行它们。 
+在本文中，你学习了如何创建逻辑应用、如何在安全中心自动执行这些应用以及如何手动运行它们。
 
 如需查看相关材料，请参阅： 
 

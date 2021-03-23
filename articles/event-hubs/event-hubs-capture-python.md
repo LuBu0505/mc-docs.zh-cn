@@ -2,15 +2,13 @@
 title: 从 Python 应用读取 Azure 事件中心捕获的数据（最新版）
 description: 本文介绍如何编写 Python 代码，以捕获发送到事件中心的数据，并从 Azure 存储帐户读取捕获的事件数据。
 ms.topic: quickstart
-origin.date: 01/04/2021
-ms.date: 01/14/2021
-ms.author: v-tawe
-ms.openlocfilehash: b651f24f641f5865cbd6b5dd1f15d57359646b3e
-ms.sourcegitcommit: 93063f9b8771b8e895c3bcdf218f5e3af14ef537
+ms.date: 03/11/2021
+ms.openlocfilehash: 66c2d0aa47ced6ccb47fa74d9e32f44b2eca1c29
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98193276"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766032"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub"></a>使用 Python 在 Azure 存储中捕获事件中心数据并读取该数据 (azure-eventhub)
 

@@ -1,17 +1,18 @@
 ---
 title: 快速入门：使用模板创建共享查询
 description: 在本快速入门中，我们使用 Azure 资源管理器模板（ARM 模板）来创建 Resource Graph 共享查询，以便按 OS 对虚拟机计数。
-origin.date: 10/14/2020
-ms.date: 11/06/2020
-ms.author: v-tawe
+origin.date: 02/05/2021
+author: rockboyfor
+ms.date: 03/22/2021
+ms.author: v-yeche
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: eeb94ae2c9fbdfa4c465e2fa5ca4c9b3f044c27e
-ms.sourcegitcommit: 87b6bb293f39c5cfc2db6f38547220a13816d78f
+ms.openlocfilehash: 216791c3186d7163aff1d2f3831cc6d2bc32b63a
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96431076"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766485"
 ---
 # <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建共享查询
 
@@ -31,47 +32,47 @@ ms.locfileid: "96431076"
 
 在本快速入门中，我们创建一个名为“按 OS 进行 VM 计数”的共享查询。 若要使用 Resource Graph 资源管理器在 SDK 或门户中尝试此查询，请参阅[示例 - 按 OS 类型对虚拟机进行计数](./samples/starter.md#count-os)。
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/resourcegraph-sharedquery-countos/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://github.com/Azure/azure-quickstart-templates/tree/master/resourcegraph-sharedquery-countos/)。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "queryName": {
-            "defaultValue": "Count VMs by OS",
-            "type": "String",
-            "metadata": {
-                "description": "The name of the shared query."
-            }
-        },
-        "queryCode": {
-            "defaultValue": "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)",
-            "type": "String",
-            "metadata": {
-                "description": "The Azure Resource Graph query to be saved to the shared query."
-            }
-        },
-        "queryDescription": {
-            "defaultValue": "This shared query counts all virtual machine resources and summarizes by the OS type.",
-            "type": "String",
-            "metadata": {
-                "description": "The description of the saved Azure Resource Graph query."
-            }
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "queryName": {
+      "defaultValue": "Count VMs by OS",
+      "type": "String",
+      "metadata": {
+        "description": "The name of the shared query."
+      }
     },
-    "resources": [
-        {
-            "type": "microsoft.resourcegraph/queries",
-            "apiVersion": "2018-09-01-preview",
-            "name": "[parameters('queryName')]",
-            "location": "global",
-            "properties": {
-                "query": "[parameters('queryCode')]",
-                "description": "[parameters('queryDescription')]"
-            }
-        }
-    ]
+    "queryCode": {
+      "defaultValue": "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)",
+      "type": "String",
+      "metadata": {
+        "description": "The Azure Resource Graph query to be saved to the shared query."
+      }
+    },
+    "queryDescription": {
+      "defaultValue": "This shared query counts all virtual machine resources and summarizes by the OS type.",
+      "type": "String",
+      "metadata": {
+        "description": "The description of the saved Azure Resource Graph query."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.ResourceGraph/queries",
+      "apiVersion": "2018-09-01-preview",
+      "name": "[parameters('queryName')]",
+      "location": "global",
+      "properties": {
+        "query": "[parameters('queryCode')]",
+        "description": "[parameters('queryDescription')]"
+      }
+    }
+  ]
 }
 ```
 
@@ -90,11 +91,11 @@ ms.locfileid: "96431076"
 
 1. 选择或输入以下值：
 
-   | 名称 | 值 |
+   | 名称 | “值” |
    |------|-------|
    | 订阅 | 选择 Azure 订阅。 |
    | 资源组 | 选择“新建”，指定名称，然后选择“确定”。  |
-   | 位置 | 选择区域。 例如“中国东部”。 |
+   | 位置 | 选择区域。 例如，**中国北部**。 |
    | 查询名称 | 保留默认值：“按 OS 对 VM 计数”。 |
    | 查询代码 | 保留默认值：`Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)` |
    | 查询说明 | 保留默认值：“此共享查询对所有虚拟机资源计数，并按 OS 类型进行汇总。” |
@@ -145,3 +146,5 @@ ms.locfileid: "96431076"
 
 > [!div class="nextstepaction"]
 > [在 Azure 门户中管理查询](./tutorials/create-share-query.md)
+
+<!--Update_Description: update meta properties, wording update, update link-->

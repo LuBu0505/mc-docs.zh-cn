@@ -3,16 +3,16 @@ title: Azure Defender 和可用计划概述
 description: 了解 Azure Defender 的计划、保护和警报。 然后在订阅上针对高级安全启用 Azure Defender 。
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/25/2021
+ms.date: 03/18/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 5c09044293af019f6ff907f4cab080ede7fa006f
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: bf2d231fb553c7a16c35c626737068ce4b6ba112
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197087"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765288"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender 简介
 
@@ -77,5 +77,5 @@ Azure Defender 为你的虚拟机和容器注册表提供漏洞扫描，且无�
 本文介绍了 Azure Defender 的优点。 
 
 > [!div class="nextstepaction"]
-> [启用 Azure Defender](security-center-pricing.md#enable-azure-defender)
+> [启用 Azure Defender](enable-azure-defender.md)
 

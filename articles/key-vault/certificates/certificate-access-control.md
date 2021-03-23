@@ -8,15 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: overview
-origin.date: 10/12/2020
-ms.date: 01/13/2021
-ms.author: v-tawe
-ms.openlocfilehash: 579903e31dc9f139359d14a930b92a92a68a441d
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.openlocfilehash: 4f2e689dc3db0f07b23e14c8fabceb16be924779
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98230872"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765687"
 ---
 # <a name="certificate-access-control"></a>证书访问控制
 

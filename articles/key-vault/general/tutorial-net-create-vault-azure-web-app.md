@@ -7,15 +7,15 @@ manager: rajvijan
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-origin.date: 05/06/2020
-ms.date: 01/19/2021
-ms.author: v-tawe
-ms.openlocfilehash: eec1b106216daa820d256f711a678fa263206ba4
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/10/2021
+ms.author: v-chazhou
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: bb8eb2e2aafa8d5fc1f44d7579fbee0265ba8e96
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99058958"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766567"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>教程：使用托管标识将 Key Vault 连接到 .NET 中的 Azure Web 应用
 
@@ -35,7 +35,7 @@ ms.locfileid: "99058958"
 * Azure 订阅 - [试用版订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 * [.NET Core 3.1 SDK（或更高版本）](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
 * [Git](https://www.git-scm.com/downloads) 安装。
-* [Azure CLI](/cli/install-azure-cli) 或 [Azure PowerShell](https://docs.microsoft.com//powershell/azure/)。
+* [Azure CLI](/cli/install-azure-cli) 或 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)。
 * [Azure Key Vault](./overview.md)。 可以使用 [Azure 门户](quick-create-portal.md)、[Azure CLI](quick-create-cli.md) 或 [Azure PowerShell](quick-create-powershell.md) 来创建密钥保管库。
 * Key Vault [机密](../secrets/about-secrets.md)。 可以使用 [Azure 门户](../secrets/quick-create-portal.md)、[PowerShell](../secrets/quick-create-powershell.md) 或 [Azure CLI](../secrets/quick-create-cli.md) 来创建机密。
 
@@ -85,7 +85,7 @@ git commit -m "first commit"
 
 可以通过 FTP 和本地 Git 使用 deployment user 来部署 Azure Web 应用。 配置部署用户之后，可对所有 Azure 部署使用此用户。 帐户级部署用户名和密码不同于 Azure 订阅凭据。 
 
-若要配置部署用户，请运行 [az webapp deployment user set](/cli/webapp/deployment/user#az-webapp-deployment-user-set) 命令。 选择符合以下准则的用户名和密码： 
+若要配置部署用户，请运行 [az webapp deployment user set](/cli/webapp/deployment/user?#az-webapp-deployment-user-set) 命令。 选择符合以下准则的用户名和密码： 
 
 - 用户名在 Azure 中必须唯一。 对于本地 Git 推送，它不能包含 at 符号 (@)。 
 - 密码必须至少为 8 个字符，且包含字母、数字和符号这三种元素中的两种。 
@@ -168,7 +168,7 @@ Local git is configured with url of 'https://&lt;username&gt;@&lt;your-webapp-na
 </pre>
 
 
-Git 远程的 URL 将显示在 `deploymentLocalGitUrl` 属性中，其格式为 `https://<username>@<your-webapp-name>.scm.chinacloudsites.cn/<your-webapp-name>.git`。 保存此 URL。稍后将需要它。
+Git 远程的 URL 将显示在 `deploymentLocalGitUrl` 属性中，其格式为 `https://<username>@<your-webapp-name>.scm.chinacloudsites.cn/<your-webapp-name>.git`。 保存此 URL。 稍后需要用到此信息。
 
 使用以下命令转到新应用。 将 `<your-webapp-name>` 替换为你的应用名称。
 
@@ -254,7 +254,7 @@ az webapp identity assign --name "<your-webapp-name>" --resource-group "myResour
 }
 ```
 
-若要为 Web 应用授予在密钥保管库上执行 **get** 和 **list** 的权限，请将 principalID 传递到 Azure CLI [az keyvault set-policy](/cli/keyvault?#az-keyvault-set-policy) 命令：
+若要为 Web 应用授予在密钥保管库上执行 get 和 list 的权限，请将 `principalId` 传递到 Azure CLI [az keyvault set-policy](/cli/keyvault?#az-keyvault-set-policy) 命令 ：
 
 ```azurecli
 az keyvault set-policy --name "<your-keyvault-name>" --object-id "<principalId>" --secret-permissions get list

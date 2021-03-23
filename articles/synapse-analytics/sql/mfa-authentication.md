@@ -2,20 +2,21 @@
 title: 使用多重 AAD 身份验证
 description: Synapse SQL 支持使用 Active Directory 通用身份验证从 SQL Server Management Studio (SSMS) 进行连接。
 services: synapse-analytics
-author: vvasic-msft
+author: WenJason
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: overview
-ms.date: 04/15/2020
-ms.author: vvasic
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6a2c017af3bd38b86d75d8f788c525bca02b7640
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 5cba54a6bc1e2d1e85ba5e46bbe1880c7051cfdd
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207368"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765185"
 ---
 # <a name="use-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>将多重 AAD 身份验证与 Synapse SQL（针对 MFA 的 SSMS 支持）配合使用
 
@@ -23,7 +24,7 @@ Synapse SQL 支持使用 Active Directory 通用身份验证从 SQL Server Manag
 
 本文讨论各种身份验证选项之间的差异，以及与使用通用身份验证相关的限制。 
 
-**下载最新 SSMS** - 在客户端计算机上，从 [下载 SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 下载最新版本的 SSMS。
+**下载最新 SSMS** - 在客户端计算机上，从 [下载 SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=azure-sqldw-latest&preserve-view=true) 下载最新版本的 SSMS。
 
 对于本文中讨论的所有功能，请至少使用 2017 年 7 月的版本 17.2。  最新连接对话框的外观应类似于下图：
 
@@ -46,23 +47,23 @@ Active Directory 通用身份验证支持两种非交互式身份验证方法：
 
 Azure AD MFA 可保护对数据和应用程序的访问，同时满足用户对简单登录过程的需求。 它利用一系列简单的验证选项（电话、短信、含有 PIN 码的智能卡或移动应用通知）提供强身份验证，用户可以根据自己的偏好选择所用的方法。 配合使用 Azure AD 和交互式 MFA 时会出现用于验证的弹出式对话框。
 
-有关多重身份验证的说明，请参阅[多重身份验证](../../active-directory/authentication//concept-mfa-howitworks.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+有关多重身份验证的说明，请参阅[多重身份验证](../../active-directory/authentication//concept-mfa-howitworks.md)。
 
 ### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Azure AD 域名称或租户 ID 参数
 
-从 [SSMS 版本 17](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 开始，以来宾用户身份从其他 Azure Active Directory 导入到当前 Active Directory 的用户在连接时可提供 Azure AD 域名或租户 ID。 
+从 [SSMS 版本 17](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=azure-sqldw-latest&preserve-view=true) 开始，以来宾用户身份从其他 Azure Active Directory 导入到当前 Active Directory 的用户在连接时可提供 Azure AD 域名或租户 ID。 
 
 来宾用户包括从其他 Azure AD、Microsoft 帐户（如 outlook.com、hotmail.com、live.com）或其他帐户（如 gmail.com）邀请的用户。 此信息使“Active Directory - 通用且具有 MFA 身份验证”  可以识别正确的身份验证机构。 此选项也是支持 outlook.com、hotmail.com、live.com 等 Microsoft 帐户 (MSA) 或非 MSA 帐户的必需选项。 
 
 所有要使用通用身份验证进行身份验证的用户必须输入其 Azure AD 域名或租户 ID。 此参数表示 Azure 服务器当前链接的 Azure AD 域名/租户ID。 
 
-例如，如果 Azure Server 与 Azure AD 域 `contosotest.onmicrosoft.com`（其中用户 `joe@contosodev.onmicrosoft.com` 托管为从 Azure AD 域 `contosodev.onmicrosoft.com` 导入的用户）相关联，则需用于对此用户进行身份验证的域名为 `contosotest.onmicrosoft.com`。 
+例如，如果 Azure Server 与 Azure AD 域 `contosotest.partner.onmschina.cn`（其中用户 `joe@contosodev.partner.onmschina.cn` 托管为从 Azure AD 域 `contosodev.partner.onmschina.cn` 导入的用户）相关联，则需用于对此用户进行身份验证的域名为 `contosotest.partner.onmschina.cn`。 
 
 如果用户是链接到 Azure 服务器的 Azure AD 的本机用户，并且不是 MSA 帐户，则无需提供域名或租户 ID。 
 
 若要输入参数（从 SSMS 版本 17.2 开始），请在“连接到数据库”对话框中，完成该对话框，选择“Active Directory - 通用且具有 MFA 支持”身份验证，选择“选项”，完成“用户名”框，然后选择“连接属性”选项卡。 
 
-选中“AD 域名或租户 ID”  框，然后提供身份验证机构，如域名 (**contosotest.onmicrosoft.com**) 或租户 ID 的 GUID。  
+选中“AD 域名或租户 ID”框，并提供身份验证机构，如域名 (contosotest.partner.onmschina.cn) 或租户 ID 的 GUID。  
 
    ![屏幕截图显示了“连接属性”选项卡中的“连接到服务器”，其中已输入了值。](./media/mfa-authentication/mfa-tenant-ssms.png)
 
@@ -71,15 +72,15 @@ Azure AD MFA 可保护对数据和应用程序的访问，同时满足用户对�
    ![mfa-tenant-ssms](./media/mfa-authentication/mfa-no-tenant-ssms.png)
 
 ### <a name="azure-ad-business-to-business-support"></a>Azure AD 企业到企业支持   
-可以作为来宾用户用于 Azure AD B2B 方案的 Azure AD 用户（请参阅[什么是 Azure B2B 协作](../../active-directory/external-identities/what-is-b2b.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)）只能作为符合以下条件的组的成员连接到 Synapse SQL：在当前 Azure AD 中创建，并使用 Transact-SQL `CREATE USER` 语句在给定数据库中手动进行映射。 
+可以作为来宾用户用于 Azure AD B2B 方案的 Azure AD 用户（请参阅[什么是 Azure B2B 协作](../../active-directory/external-identities/what-is-b2b.md?bc=%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fsynapse-analytics%2ftoc.json)）只能作为符合以下条件的组的成员连接到 Synapse SQL：在当前 Azure AD 中创建，并使用 Transact-SQL `CREATE USER` 语句在给定数据库中手动进行映射。 
 
-例如，如果 `steve@gmail.com` 受邀加入 Azure AD `contosotest`（具有 Azure Ad 域 `contosotest.onmicrosoft.com`），则必须在 Azure AD 中创建包含 `steve@gmail.com` 成员的 Azure AD 组（如 `usergroup`）。 然后，必须由 Azure AD SQL 管理员或 Azure AD DBO 执行 Transact-SQL `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` 语句，为特定数据库（即 MyDatabase）创建此组。 
+例如，如果 `steve@gmail.com` 受邀加入 Azure AD `contosotest`（具有 Azure Ad 域 `contosotest.partner.onmschina.cn`），则必须在 Azure AD 中创建包含 `steve@gmail.com` 成员的 Azure AD 组（如 `usergroup`）。 然后，必须由 Azure AD SQL 管理员或 Azure AD DBO 执行 Transact-SQL `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` 语句，为特定数据库（即 MyDatabase）创建此组。 
 
 创建数据库用户之后，用户 `steve@gmail.com` 随后可以使用 SSMS 身份验证选项 `Active Directory – Universal with MFA support` 登录 `MyDatabase`。 
 
 默认情况下，用户只拥有连接权限以及需要采用正常方式授予的任何其他数据访问权限。 
 
-作为来宾用户的用户 `steve@gmail.com` 必须在 SSMS“连接属性”对话框中选中该框，并添加 AD 域名 `contosotest.onmicrosoft.com`。 仅对“通用且具有 MFA 连接”选项支持“AD 域名或租户 ID”  ，否则它处于灰显状态。
+作为来宾用户的用户 `steve@gmail.com` 必须在 SSMS“连接属性”对话框中选中该框，并添加 AD 域名 `contosotest.partner.onmschina.cn`。 仅对“通用且具有 MFA 连接”选项支持“AD 域名或租户 ID”  ，否则它处于灰显状态。
 
 ## <a name="universal-authentication-limitations-for-synapse-sql"></a>Synapse SQL 的通用身份验证限制
 

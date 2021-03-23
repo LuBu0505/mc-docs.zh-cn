@@ -6,18 +6,18 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: tutorial
-origin.date: 04/16/2020
-ms.date: 02/08/2021
+origin.date: 02/18/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: artek
 ms.custom: mvc, devx-track-python, devx-track-js, devx-track-csharp
 ms.subservice: blobs
-ms.openlocfilehash: a49eee94954ef9cb877beb24569cebb12d41973c
-ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
+ms.openlocfilehash: 4d50f26e2074f24237d41bcb99c254dff39406f0
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99503991"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765678"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>教程：使用 Blob 存储构建高度可用的应用程序
 
@@ -29,7 +29,7 @@ Azure 存储中的异地冗余会将事务从主要区域异步复制到数百�
 
 如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
-在该系列的第一部分中，你将学习如何：
+在该系列的第一部分中，你会学习如何：
 
 > [!div class="checklist"]
 > * 创建存储帐户
@@ -40,18 +40,30 @@ Azure 存储中的异地冗余会将事务从主要区域异步复制到数百�
 
 完成本教程：
 
-# <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 * 安装 [Visual Studio 2019](https://www.visualstudio.com/downloads/)（包含 **Azure 开发** 工作负荷）。
 
   ![Azure 开发（位于“Web 和云”下）](media/storage-create-geo-redundant-storage/workloads.png)
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="python-v21"></a>[Python v2.1](#tab/python2)
 
 * [安装 Python](https://www.python.org/downloads/)
 * 下载并安装[用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python)
 
-# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js v12](#tab/nodejs)
+
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 * 安装 [Node.js](https://nodejs.org)。
 
@@ -59,7 +71,7 @@ Azure 存储中的异地冗余会将事务从主要区域异步复制到数百�
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.cn/)。
+登录 [Azure 门户](https://portal.azure.cn/)。
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
@@ -74,7 +86,7 @@ Azure 存储中的异地冗余会将事务从主要区域异步复制到数百�
    | 设置       | 示例值 | 说明 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **订阅** | 我的订阅 | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.cn/Subscriptions)。 |
-   | **ResourceGroup** | *myResourceGroup* | 有关有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
+   | **ResourceGroup** | *myResourceGroup* | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
    | **名称** | mystorageaccount | 存储帐户的唯一名称。 |
    | **位置** | *中国东部 2* | 选择一个位置。 |
    | **“性能”** | *标准* | 对于示例方案，“标准”性能是一个不错的选项。 |
@@ -86,7 +98,11 @@ Azure 存储中的异地冗余会将事务从主要区域异步复制到数百�
 
 ## <a name="download-the-sample"></a>下载示例
 
-# <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 [下载示例项目](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip)并解压缩 storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.zip 文件。 也可使用 [git](https://git-scm.com/) 将应用程序的副本下载到开发环境。 示例项目包含一个控制台应用程序。
 
@@ -94,7 +110,11 @@ Azure 存储中的异地冗余会将事务从主要区域异步复制到数百�
 git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="python-v21"></a>[Python v2.1](#tab/python2)
 
 [下载示例项目](https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip)并解压缩 storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.zip 文件。 也可使用 [git](https://git-scm.com/) 将应用程序的副本下载到开发环境。 示例项目包含一个基本的 Python 应用程序。
 
@@ -102,7 +122,11 @@ git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js v12](#tab/nodejs)
+
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 [下载示例项目](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs)并解压缩文件。 也可使用 [git](https://git-scm.com/) 将应用程序的副本下载到开发环境。 示例项目包含一个基本的 Node.js 应用程序。
 
@@ -114,7 +138,11 @@ git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
 
 ## <a name="configure-the-sample"></a>配置示例
 
-# <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 在应用程序中，必须为存储帐户提供连接字符串。 可以将此连接字符串存储在运行应用程序的本地计算机的环境变量中。 根据你的操作系统，按照下面的某个示例创建环境变量。
 
@@ -132,7 +160,11 @@ export storageconnectionstring=<yourconnectionstring>
 setx storageconnectionstring "<yourconnectionstring>"
 ```
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="python-v21"></a>[Python v2.1](#tab/python2)
 
 在应用程序中，必须提供存储帐户凭据。 可以将此信息存储在运行应用程序的本地计算机的环境变量中。 根据操作系统，按照下面的某个示例创建环境变量。
 
@@ -152,7 +184,11 @@ setx accountname "<youraccountname>"
 setx accountkey "<youraccountkey>"
 ```
 
-# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js v12](#tab/nodejs)
+
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 若要运行此示例，必须将存储帐户凭据添加到 `.env.example` 文件，然后将其重命名为 `.env`。
 
@@ -169,19 +205,27 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 ## <a name="run-the-console-application"></a>运行控制台应用程序
 
-# <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 在 Visual Studio 中，按 F5 或选择“启动”，开始调试应用程序。 Visual Studio 会自动还原缺少的 NuGet 包（若已配置）。若要了解详情，请参阅[通过包还原安装和重新安装包](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview)。
 
-此时会启动一个控制台窗口，应用程序开始运行。 应用程序将 HelloWorld.png 图像从解决方案上传到存储帐户。 应用程序会进行检查，确保图像已复制到辅助 RA-GRS 终结点， 然后开始下载图像（最多 999 次）。 每次读取由 **P** 或 **S** 表示。其中，P 表示主终结点，S 表示辅助终结点。
+此时会启动一个控制台窗口，应用程序开始运行。 应用程序将 HelloWorld.png 图像从解决方案上传到存储帐户。 应用程序会进行检查，确保图像已复制到辅助 RA-GRS 终结点， 然后，它开始下载映像，最多可下载 999 次。 每次读取由 **P** 或 **S** 表示。其中，P 表示主终结点，S 表示辅助终结点。
 
 ![正在运行的控制台应用](media/storage-create-geo-redundant-storage/figure3.png)
 
 在示例代码中，`Program.cs` 文件中的 `RunCircuitBreakerAsync` 任务用于通过 [DownloadToFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadtofileasync) 方法下载存储帐户中的图像。 下载前，将会先定义 [OperationContext](/dotnet/api/microsoft.windowsazure.storage.operationcontext)。 操作上下文定义事件处理程序，此类程序在下载成功完成时或者下载失败并重试时触发。
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python v12](#tab/python)
 
-若要在终端或命令提示符处运行应用程序，请转到 **circuitbreaker.py** 目录，然后输入 `python circuitbreaker.py`。 应用程序将 HelloWorld.png 图像从解决方案上传到存储帐户。 应用程序会进行检查，确保图像已复制到辅助 RA-GRS 终结点， 然后开始下载图像（最多 999 次）。 每次读取由 **P** 或 **S** 表示。其中，P 表示主终结点，S 表示辅助终结点。
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="python-v21"></a>[Python v2.1](#tab/python2)
+
+若要在终端或命令提示符处运行应用程序，请转到 **circuitbreaker.py** 目录，然后输入 `python circuitbreaker.py`。 应用程序将 HelloWorld.png 图像从解决方案上传到存储帐户。 应用程序会进行检查，确保图像已复制到辅助 RA-GRS 终结点， 然后，它开始下载映像，最多可下载 999 次。 每次读取由 **P** 或 **S** 表示。其中，P 表示主终结点，S 表示辅助终结点。
 
 ![正在运行的控制台应用](media/storage-create-geo-redundant-storage/figure3.png)
 
@@ -191,7 +235,11 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 在下载之前，定义了服务对象的 [retry_callback](https://docs.microsoft.com/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient) 和 [response_callback](https://docs.microsoft.com/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient) 函数。 这些函数定义了在下载成功完成或下载失败并重试时触发的事件处理程序。
 
-# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js v12](#tab/nodejs)
+
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 若要运行示例，请打开命令提示符，导航到示例文件夹，然后输入 `node index.js`。
 
@@ -222,7 +270,11 @@ Deleted container newcontainer1550799840726
 
 ## <a name="understand-the-sample-code"></a>了解示例代码
 
-### <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ### <a name="retry-event-handler"></a>Retry 事件处理程序
 
@@ -273,7 +325,11 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 }
 ```
 
-### <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="python-v21"></a>[Python v2.1](#tab/python2)
 
 ### <a name="retry-event-handler"></a>Retry 事件处理程序
 
@@ -316,7 +372,11 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
-### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js v12](#tab/nodejs)
+
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 使用 Node.js V10 SDK 时，不需回调处理程序。 示例会创建一个配置了重试选项和辅助终结点的管道。 这样，如果应用程序无法通过主管道访问数据，则会自动切换到辅助管道。
 
