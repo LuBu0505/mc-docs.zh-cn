@@ -2,20 +2,21 @@
 title: Synapse SQL 体系结构
 description: 了解 Azure Synapse SQL 如何将分布式查询处理功能与 Azure 存储结合使用，以实现高性能和可伸缩性。
 services: synapse-analytics
-author: mlee3gsd
-manager: rothja
+author: WenJason
+manager: digimobile
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 04/15/2020
-ms.author: martinle
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: igorstan
-ms.openlocfilehash: ba0b3fefb4c26885e89ce06ef24af8dc90121b9f
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: e540eef4e1884efc4ab73a25110291dfd80dd601
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207225"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765180"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure Synapse SQL 体系结构 
 
@@ -29,7 +30,7 @@ Synapse SQL 利用横向扩展体系结构在多个节点间分布数据的计�
 
 对于无服务器 SQL 池，将根据查询资源需求自动进行缩放。 拓扑会随时间而变化（添加、删除节点或进行故障转移），SQL 按需版本可以适应变化，确保查询具有足够的资源并成功完成。 例如，下图显示了利用 4 个计算节点执行查询的无服务器 SQL 池。
 
-![Synapse SQL 体系结构](./media//overview-architecture/sql-architecture.png)
+![Synapse SQL 体系结构](./media/overview-architecture/sql-architecture.png)
 
 Synapse SQL 使用基于节点的体系结构。 应用程序将 T-SQL 命令连接到、发布给控制节点，该节点是 Synapse SQL 的单一入口点。 
 
@@ -49,7 +50,7 @@ Azure Synapse SQL 的控制节点利用分布式查询引擎来优化查询以�
 
 Synapse SQL 使用 Azure 存储保护用户数据。 由于数据通过 Azure 存储进行存储和管理，因此会对存储消耗单独收费。 
 
-无服务器 SQL 池允许你以只读方式查询数据湖中的文件，而 SQL 池还允许你引入数据。 将数据引入专用 SQL 池中时，数据将分片到分布区中，以优化系统性能。 可选择在定义表时用于分布数据的分片模式。 支持以下分片模式：
+无服务器 SQL 池允许查询 data lake 文件，而专用 SQL 池允许从 data lake 文件中查询和引入数据。 将数据引入专用 SQL 池中时，数据将分片到分布区中，以优化系统性能。 可选择在定义表时用于分布数据的分片模式。 支持以下分片模式：
 
 * 哈希
 * 轮循机制
@@ -67,15 +68,13 @@ Synapse SQL 使用 Azure 存储保护用户数据。 由于数据通过 Azure �
 
 计算节点提供计算能力。 
 
-在专用 SQL 池中，分布区映射到计算节点以进行处理。 如果支付更多计算资源费用，SQL 池会将分布区重新映射到可用的计算节点。 计算节点数的范围是 1 到 60，它由专用 SQL 池的服务级别确定。 每个计算节点均有一个节点 ID，该 ID 会显示在系统视图中。 在名称以 sys.pdw_nodes 开头的系统视图中找到 node_id 列即可查看计算节点 ID。 有关这些系统视图的列表，请参阅 [Synapse SQL 系统视图](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest&preserve-view=true)。
+在专用 SQL 池中，分布区映射到计算节点以进行处理。 如果支付更多计算资源费用，SQL 池会将分布区重新映射到可用的计算节点。 计算节点数的范围是 1 到 60，它由专用 SQL 池的服务级别确定。 每个计算节点均有一个节点 ID，该 ID 会显示在系统视图中。 在名称以 sys.pdw_nodes 开头的系统视图中找到 node_id 列即可查看计算节点 ID。 有关这些系统视图的列表，请参阅 [Synapse SQL 系统视图](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest&preserve-view=true)。
 
 在无服务器 SQL 池中，将为每个计算节点分配任务以及要对其执行任务的文件集。 任务是指分布式查询执行单元，实际上是用户提交的查询的一部分。 可进行自动缩放，以确保利用足够多的计算节点来执行用户查询。
 
 ## <a name="data-movement-service"></a>数据移动服务
 
 数据移动服务 (DMS) 是专用 SQL 池中的一项数据传输技术，它可协调计算节点间的数据移动。 某些查询需要移动数据以确保并行查询返回准确的结果。 需要移动数据时，DMS 可确保正确的数据到达正确的位置。
-
-> [!VIDEO https://www.youtube.com/embed/PlyQ8yOb8kc]
 
 ## <a name="distributions"></a>分发
 
@@ -90,7 +89,7 @@ Synapse SQL 使用 Azure 存储保护用户数据。 由于数据通过 Azure �
 
 下图说明了如何将完整的非分布式表存储为哈希分布表。 
 
-![分布式表](media//overview-architecture/hash-distributed-table.png "分布式表") 
+![分布式表](media/overview-architecture/hash-distributed-table.png "分布式表") 
 
 * 一个行属于一个分布区。 
 * 通过确定性哈希算法将一个行分配到一个分布区。 

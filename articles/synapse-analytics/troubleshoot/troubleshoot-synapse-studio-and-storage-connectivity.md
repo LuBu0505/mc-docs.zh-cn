@@ -1,18 +1,19 @@
 ---
 title: 排查 Synapse Studio 与存储之间的连接问题
 description: 排查 Synapse Studio 与存储之间的连接问题
-author: saveenr
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 11/11/2020
-ms.author: xujiang1
+origin.date: 11/11/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 945a17e7cfb9ff3c90c58e2c526b21515602c0a2
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 0d541572a467d2cbcba32d6d05573f5058468e6e
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207201"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765188"
 ---
 # <a name="troubleshoot-connectivity-between-azure-synapse-analytics-synapse-studio-and-storage"></a>排查 Azure Synapse Analytics Synapse Studio 与存储之间的连接问题
 
@@ -30,7 +31,7 @@ ms.locfileid: "102207201"
 在存储容器节点中：  
 ![存储连接问题 1a](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-1a.png)
 
-**解决方案**：若要将帐户分配到适当的角色，请参阅[使用 Azure 门户分配用于访问 blob 和队列数据的 Azure 角色](../../storage/common/storage-auth-aad-rbac-portal.md)
+**解决方案**：若要将帐户分配到适当的角色，请参阅 [使用 Azure 门户分配用于访问 blob 和队列数据的 Azure 角色](../../storage/common/storage-auth-aad-rbac-portal.md)
 
 
 ## <a name="case-2-failed-to-send-the-request-to-storage-server"></a>案例 #2：无法将请求发送到存储服务器
