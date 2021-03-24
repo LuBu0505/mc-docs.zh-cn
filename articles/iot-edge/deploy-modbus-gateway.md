@@ -1,20 +1,19 @@
 ---
-title: 使用网关转换 modbus 协议 - Azure IoT Edge
+title: 使用网关转换 modbus 协议 - Azure IoT Edge | Microsoft Docs
 description: 通过创建 IoT Edge 网关设备，允许设备使用 Modbus TCP 与 Azure IoT 中心通信
 author: kgremban
 manager: philmea
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-origin.date: 11/19/2019
-ms.date: 11/13/2020
-ms.author: v-tawe
-ms.openlocfilehash: b42f712bac17afc6b4e20ccfb703cebc0620fc6c
-ms.sourcegitcommit: 9438c9db77338cecacf37d2fc178e757df9de83d
+ms.date: 03/16/2021
+ms.author: v-chazhou
+ms.openlocfilehash: 35b6049f7e303eb0f5c558ef24aac0024f93e799
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94595206"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765820"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>通过 IoT Edge 设备网关连接 Modbus TCP 设备
 
@@ -44,26 +43,26 @@ ms.locfileid: "94595206"
 
 1. 在 [Azure 门户](https://portal.azure.cn/)中转到 IoT 中心。
 
-2. 转到“IoT Edge”  ，然后单击 IoT Edge 设备。
+2. 转到“IoT Edge”，然后单击 IoT Edge 设备。
 
-3. 选择“设置模块”  。
+3. 选择“设置模块”。
 
-4. 在“IoT Edge 模块”部分中，添加 Modbus 模块  ：
+4. 在“IoT Edge 模块”部分中，添加 Modbus 模块：
 
-   1. 单击“添加”下拉列表，然后选择“市场模块”   。
-   2. 搜索 `Modbus`，并选择 Microsoft 的“Modbus TCP 模块”  。
-   3. IoT 中心的模块会自动进行配置，并显示在 IoT Edge 模块列表中。 路由也会自动进行配置。 选择“查看 + 创建”  。
-   4. 查看部署清单并选择“创建”  。
+   1. 单击“添加”下拉列表，然后选择“市场模块”。
+   2. 搜索 `Modbus`，并选择 Microsoft 的“Modbus TCP 模块”。
+   3. IoT 中心的模块会自动进行配置，并显示在 IoT Edge 模块列表中。 路由也会自动进行配置。 选择“查看 + 创建”。
+   4. 查看部署清单并选择“创建”。
 
-5. 在列表中选择 Modbus 模块 `ModbusTCPModule`，然后选择“模块孪生设置”选项卡  。自动填充模块孪生所需属性的必需 JSON。
+5. 在列表中选择 Modbus 模块 `ModbusTCPModule`，然后选择“模块孪生设置”选项卡。自动填充模块孪生所需属性的必需 JSON。
 
-6. 查找 JSON 中的 SlaveConnection 属性，并将其值设置为 Modbus 设备的 IPv4 地址  。
+6. 查找 JSON 中的 SlaveConnection 属性，并将其值设置为 Modbus 设备的 IPv4 地址。
 
-7. 选择“更新”  。
+7. 选择“更新”。
 
-8. 选择“查看 + 创建”，检查部署，然后选择“创建”   。
+8. 选择“查看 + 创建”，检查部署，然后选择“创建”。
 
-9. 返回到“设备详细信息”页，并选择“刷新”  。 此时会看到新的 `ModbusTCPModule` 模块与 IoT Edge 运行时一起运行。
+9. 返回到“设备详细信息”页，并选择“刷新”。 此时会看到新的 `ModbusTCPModule` 模块与 IoT Edge 运行时一起运行。
 
 ## <a name="view-data"></a>查看数据
 

@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 02/20/2021
+ms.date: 03/16/2021
 ms.author: v-junlch
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a71ba863ccec93dd3e15579703f81d1c1641eb7
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 569b30ccca3138d3afc2c132d6c2777461c083aa
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101751784"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765427"
 ---
 # <a name="governing-on-premises-service-accounts"></a>治理本地服务帐户
 
@@ -155,7 +155,7 @@ Windows Active Directory 中有四种类型的本地服务帐户：
 
 * 登录到 ([LogonWorkstation](https://docs.microsoft.com/powershell/module/addsadministration/set-aduser?view=win10-ps))
 
-* [密码策略](/active-directory-domain-services/password-policy)要求
+* [密码策略](../../active-directory-domain-services/password-policy.md)要求
 
 * 在 [OU 位置](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/delegating-administration-of-account-ous-and-resource-ous)创建，可确保仅针对特权用户进行管理
 
