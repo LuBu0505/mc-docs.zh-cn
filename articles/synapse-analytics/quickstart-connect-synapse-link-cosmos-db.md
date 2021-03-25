@@ -2,19 +2,20 @@
 title: 快速入门：连接到 Azure Synapse Link for Azure Cosmos DB
 description: 如何通过 Synapse Link 将 Azure Cosmos DB 连接到 Synapse 工作区
 services: synapse-analytics
-author: ArnoMicrosoft
+author: WenJason
 ms.service: synapse-analytics
 ms.subservice: synapse-link
 ms.topic: quickstart
-ms.date: 04/21/2020
-ms.author: acomet
+origin.date: 04/21/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5aa271162063637e0b662a5602d5cb2753059be5
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: f6fecee2848d60aabb83d6bf1cb2ebb572749f52
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207463"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765202"
 ---
 # <a name="quickstart-connect-to-azure-synapse-link-for-azure-cosmos-db"></a>快速入门：连接到 Azure Synapse Link for Azure Cosmos DB
 
@@ -47,7 +48,7 @@ ms.locfileid: "102207463"
 4. 选择“继续”
 5. 命名链接服务。 该名称将显示在对象资源管理器中，并由 Synapse 运行时用于连接到数据库和容器。 建议使用友好名称。
 6. 选择“Cosmos DB 帐户名称”和“数据库名称”
-7. （可选）如果没有指定区域，Synapse 运行时操作将被路由到启用分析存储的最近的区域。 但可以手动设置希望用户访问 Cosmos DB 分析存储的区域。 选择“其他连接属性”，然后选择“新建”。 在“属性名称”下，写入“PreferredRegions”，并将“值”设置为所需区域（例如 ：WestUS2，单词和数字之间没有空格）
+7. （可选）如果没有指定区域，Synapse 运行时操作将被路由到启用分析存储的最近的区域。 但可以手动设置希望用户访问 Cosmos DB 分析存储的区域。 选择“其他连接属性”，然后选择“新建”。 在“属性名称”下，写入 **_PreferredRegions_ *_，并将“值”设置为所需区域（例如：ChinaEast2，单词和数字之间没有空格）***
 8. 选择“创建”
 
 Azure Cosmos DB 数据库会显示在 Azure Cosmos DB 部分中的“链接”选项卡下。 可以通过以下图标区分启用 HTAP 的 Azure Cosmos DB 容器和仅 OLTP 容器：

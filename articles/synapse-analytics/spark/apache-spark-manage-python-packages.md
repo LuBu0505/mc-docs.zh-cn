@@ -1,0 +1,188 @@
+---
+title: 管理适用于 Apache Spark 的 Python 库
+description: 了解如何在 Azure Synapse Analytics 中添加和管理 Apache Spark 使用的 Python 库。
+services: synapse-analytics
+author: WenJason
+ms.service: synapse-analytics
+ms.topic: conceptual
+origin.date: 02/26/2020
+ms.date: 03/22/2021
+ms.author: v-jay
+ms.reviewer: jrasnick
+ms.subservice: spark
+ms.openlocfilehash: 6728e1dc3f03d7a14cfe24edd9cc4544b232e73a
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104767818"
+---
+# <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中管理适用于 Apache Spark 的 Python 库
+
+这些库提供了可重用的代码，你可能想要在程序或项目中包含这些代码。 
+
+出于各种原因，你可能需要更新无服务器 Apache Spark 池环境。 例如，你可能发现：
+- 某个核心依赖项刚刚发布了新版本。
+- 你需要使用额外的包来训练机器学习模型或准备数据。
+- 你找到了一个更好的包，因此不再需要旧包。
+
+要使第三方代码或本地生成的代码可在你的应用程序中使用，可在某个无服务器 Apache Spark 池或笔记本会话中安装一个库。 本文介绍如何管理整个无服务器 Apache Spark 池中的 Python 库。
+
+## <a name="default-installation"></a>默认安装
+Azure Synapse Analytics 中的 Apache Spark 为常见的数据工程、数据准备、机器学习和数据可视化任务提供了一整套的库。 你可在 [Apache Spark 版本支持](apache-spark-version-support.md)中找到完整的库列表。 
+
+当 Spark 实例启动时，将自动包含这些库。 可在 Spark 池和会话级别添加额外的 Python 包与定制包。
+
+## <a name="pool-libraries"></a>池库
+确定要用于 Spark 应用程序的 Python 库后，可将其安装到 Spark 池中。 池级别的库可用于池中运行的所有笔记本和作业。
+
+可以通过两种主要方式在群集上安装库：
+-  安装已作为工作区包上传的工作区库。
+-  提供 *requirements.txt* 或 *Conda environment.yml* 环境规范，以用于安装 PyPI、Conda-Forge 等存储库中的包。
+
+> [!IMPORTANT]
+> - 如果要安装的包很大，或者需要很长时间才能完成安装，则会影响 Spark 实例的启动时间。
+> - 不支持更改 PySpark、Python、Scala/Java、.NET 或 Spark 版本。
+> - 不支持在已启用 DEP 的工作区中安装来自 PyPI、Conda-Forge 等外部存储库或默认 Conda 通道的包。
+
+### <a name="install-python-packages"></a>安装 Python 包
+可提供环境规范文件来安装 PyPI 和 Conda-Forge 等外部存储库中的 Python 包。 
+
+#### <a name="environment-specification-formats"></a>环境规范格式
+
+##### <a name="pip-requirementstxt"></a>PIP requirements.txt
+可以使用 *requirements.txt* 文件（`pip freeze` 命令的输出）来升级环境。 更新池时，将从 PyPI 下载此文件中列出的包。 然后，将缓存并保存全部依赖项，以便以后可重复使用池。 
+
+以下代码片段显示了要求文件的格式。 PyPI 包名称将与确切的版本一起列出。 此文件遵循 [pip freeze](https://pip.pypa.io/en/stable/reference/pip_freeze/) 参考文档中所述的格式。 
+
+此示例固定使用一个特定版本。 
+```
+absl-py==0.7.0
+adal==1.2.1
+alabaster==0.7.10
+```
+##### <a name="yml-format-preview"></a>YML 格式（预览）
+此外，还可以提供 *environment.yml* 文件来更新池环境。 此文件中列出的包是从默认 Conda 通道、Conda-Forge 和 PyPI 下载的。 可以使用配置选项指定其他通道或删除默认通道。
+
+此示例指定通道和 Conda/PyPI 依赖项。 
+
+```
+name: stats2
+channels:
+  - defaults
+dependencies:
+  - bokeh=0.9.2
+  - numpy=1.9.*
+  - flask
+  - pip:
+    - matplotlib
+```
+有关从此 environment.yml 文件创建环境的详细信息，请参阅[从 environment.yml 文件创建环境](https://docs.conda.io/projects/conda/latest/user-guide/tasks/manage-environments.html#creating-an-environment-file-manually)。
+
+#### <a name="update-python-packages"></a>更新 Python 包
+确定要在 Spark 池中安装的环境规范文件或库集后，可以导航到 Azure Synapse Studio 或 Azure 门户来更新 Spark 池库。 在 Azure Synapse Studio 或 Azure 门户中可以提供环境规范并选择要安装的工作区库。 
+
+保存更改后，某个 Spark 作业将运行安装并缓存生成的环境供以后重复使用。 该作业完成后，新的 Spark 作业或笔记本会话将使用更新的池库。 
+
+##### <a name="manage-packages-from-azure-synapse-studio-or-azure-portal"></a>通过 Azure Synapse Studio 或 Azure 门户管理包
+可以通过 Azure Synapse Studio 或 Azure 门户管理 Spark 池库。 
+
+若要更新 Spark 池或在其中添加库：
+1. 从 Azure 门户导航到 Azure Synapse Analytics 工作区。
+
+    如果要通过 **Azure 门户** 更新：
+
+    - 在“Synapse 资源”部分下，选择“Apache Spark 池”选项卡，然后从列表中选择一个 Spark 池 。
+     
+    - 在 Spark 池的“设置”部分选择“包”。 
+  
+    ![突出显示“上传环境配置文件”按钮的屏幕截图。](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "添加 Python 库")
+   
+    如果要通过 **Synapse Studio** 更新：
+    - 从主导航面板中选择“管理”，然后选择“Apache Spark 池” 。
+
+    - 选择特定 Spark 池的“包”部分。
+    ![突出显示 Studio 中“上传环境配置”选项的屏幕截图。](./media/apache-spark-azure-portal-add-libraries/studio-update-libraries.png "通过 Studio 添加 Python 库")
+   
+2. 使用该页的“包”部分中的文件选择器上传环境配置文件。
+3. 还可以选择要添加到池的其他 **工作区包**。 
+4. 保存更改后，将触发一个系统作业来安装并缓存指定的库。 此过程有助于缩短总体会话启动时间。 
+5. 成功完成该作业后，所有新会话将选取更新的池库。
+
+> [!IMPORTANT]
+> 通过选择“强制使用新设置”选项，将结束所选 Spark 池的所有当前会话。 会话结束后，需要等待池重启。 
+>
+> 如果未选中此设置，则需要等待当前 Spark 会话结束或手动将其停止。 会话结束后，需要重启池。
+
+
+##### <a name="track-installation-progress-preview"></a>跟踪安装进度（预览）
+每当使用一组新库更新池后，都会启动系统保留的 Spark 作业。 此 Spark 作业有助于监视库的安装状态。 如果由于发生库冲突或其他问题而导致安装失败，Spark 池将还原到其以前的状态或默认状态。 
+
+此外，用户还可以检查安装日志以识别依赖项冲突，或了解在更新池期间安装了哪些库。
+
+若要查看这些日志：
+1. 在“监视”选项卡中导航到 Spark 应用程序列表。 
+2. 选择与池更新相对应的系统 Spark 应用程序作业。 这些系统作业列在 *SystemReservedJob-LibraryManagement* 标题下。
+   ![突出显示系统保留的库作业的屏幕截图。](./media/apache-spark-azure-portal-add-libraries/system-reserved-library-job.png "查看系统库作业")
+3. 切换以查看 **驱动程序** 和 **stdout** 日志。 
+4. 在结果中，将会看到与依赖项安装相关的日志。
+    ![突出显示系统保留的库作业结果的屏幕截图。](./media/apache-spark-azure-portal-add-libraries/system-reserved-library-job-results.png "查看系统库作业进度")
+
+## <a name="install-wheel-files"></a>安装 wheel 文件
+Python wheel 文件是用于打包 Python 库的一种常用方式。 在 Azure Synapse Analytics 中，用户可将其 wheel 文件上传到 Azure Data Lake Storage 帐户中的已知位置，或使用 Azure Synapse 工作区包界面来上传。
+
+### <a name="workspace-packages-preview"></a>工作区包（预览）
+工作区包可以是自定义的或专用的 wheel 文件。 可将这些包上传到工作区，然后再将其分配到特定的 Spark 池。
+
+若要添加工作区包：
+1. 导航到“管理” > “工作区包”选项卡。 
+2. 使用文件选择器上传 wheel 文件。
+3. 将文件上传到 Azure Synapse 工作区后，可将这些包添加到给定的 Apache Spark 池。
+
+![突出显示“工作区包”的屏幕截图。](./media/apache-spark-azure-portal-add-libraries/studio-add-workspace-package.png "查看工作区包")
+
+### <a name="storage-account"></a>存储帐户
+通过将所有 wheel 文件上传到与 Synapse 工作区关联的 Azure Data Lake Storage (Gen2) 帐户，可以在 Apache Spark 池上安装自定义 wheel 包。 
+
+应将这些文件上传到存储帐户默认容器中的以下路径： 
+
+```
+abfss://<file_system>@<account_name>.dfs.core.chinacloudapi.cn/synapse/workspaces/<workspace_name>/sparkpools/<pool_name>/libraries/python/
+```
+
+最好在 ```python``` 文件夹中添加文件夹 ```libraries```（如果该文件夹不存在）。
+
+> [!IMPORTANT]
+> 若要使用 Azure DataLake Storage 方法安装自定义库，必须在已链接到 Azure Synapse Analytics 工作区的主 Gen2 存储帐户中拥有“存储 Blob 数据参与者”或“存储 Blob 数据所有者”权限。 
+
+>[!WARNING]
+> 提供自定义 wheel 文件时，用户不能在存储帐户和工作区库界面这两个位置都提供 wheel 文件。 如果在两个位置提供，只会安装工作区包列表中指定的 wheel 文件。 
+
+## <a name="session-scoped-packages-preview"></a>会话范围的包（预览）
+除了池级别的包以外，还可以在笔记本会话开始时指定会话范围的库。  会话范围的库可让你在笔记本会话中指定并使用自定义的 Python 环境。 
+
+使用会话范围的库时，请务必牢记以下几点：
+   - 安装会话范围的库时，只有当前笔记本可以访问指定的库。 
+   - 这些库不影响使用同一 Spark 池的其他会话或作业。 
+   - 这些库是以基础运行时和池级别库为基础安装的。 
+   - 笔记本库的优先级最高。
+
+若要指定会话范围的包：
+1. 导航到所选的 Spark 池，确保已启用会话级别的库。  可以导航到“管理” > “Apache Spark 池” > “包”选项卡来启用此设置。  ![启用会话包。](./media/apache-spark-azure-portal-add-libraries/enable-session-packages.png "启用会话包")
+2. 应用设置后，可以打开笔记本并选择“配置会话”> “包”。 
+  ![指定会话包。](./media/apache-spark-azure-portal-add-libraries/update-session-notebook.png "更新会话配置")
+3. 在此处可以上传 Conda *environment.yml* 文件，以在会话中安装或升级包。 启动会话后，将安装指定的库。 会话结束后，这些库将不再可用，因为它们特定于你的会话。
+
+## <a name="verify-installed-libraries"></a>验证已安装的库
+若要验证是否安装了 PyPI 中的正确库版本，请运行以下代码：
+```python
+import pkg_resources
+for d in pkg_resources.working_set:
+     print(d)
+```
+在某些情况下，若要查看 Conda 中的包版本，可能需要单独检查包版本。
+
+## <a name="next-steps"></a>后续步骤
+- 查看默认库：[Apache Spark 版本支持](apache-spark-version-support.md)
+- 排查库安装错误：[排查库错误](apache-spark-troubleshoot-library-errors.md)
+- 使用 Azure Data Lake Storage 帐户创建专用的 Conda 通道：[Conda 专用通道](./apache-spark-custom-conda-channel.md)

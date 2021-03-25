@@ -8,15 +8,15 @@ ms.reviewer: euang
 ms.topic: overview
 ms.subservice: spark
 origin.date: 07/28/2020
-ms.date: 03/08/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 538646751c56dcbd05a1a1a28d69a34c01cd3ca8
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 2e92b554ed41b1626968979435430ca42c4799c3
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207001"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766699"
 ---
 # <a name="linux-foundation-delta-lake-overview"></a>Linux Foundation Delta Lake 概述
 
@@ -296,7 +296,7 @@ spark.sql("DESCRIBE EXTENDED ManagedDeltaTable").show(truncate=false)
 |提供程序                    |delta                                                                                                        |       |
 |表属性            |[transient_lastDdlTime=1587774934]                                                                           |       |
 |统计信息                  |2407 个字节                                                                                                   |       |
-|位置                    |abfss://data@<data lake>.dfs.core.windows.net/synapse/workspaces/<workspace name>/warehouse/manageddeltatable|       |
+|位置                    |abfss://data@<data lake>.dfs.core.chinacloudapi.cn/synapse/workspaces/<workspace name>/warehouse/manageddeltatable|       |
 |Serde 库               |org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe                                                           |       |
 |InputFormat                 |org.apache.hadoop.mapred.SequenceFileInputFormat                                                             |       |
 |OutputFormat                |org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat                                                    |       |
@@ -342,7 +342,7 @@ spark.sql("DESCRIBE EXTENDED ExternalDeltaTable").show(truncate=false)
 |类型                        |EXTERNAL                                                              |       |
 |提供程序                    |DELTA                                                                 |       |
 |表属性            |[transient_lastDdlTime=1587774938]                                    |       |
-|位置                    |abfss://data@<data lake>.dfs.core.windows.net/delta/delta-table-587152|       |
+|位置                    |abfss://data@<data lake>.dfs.core.chinacloudapi.cn/delta/delta-table-587152|       |
 |Serde 库               |org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe                    |       |
 |InputFormat                 |org.apache.hadoop.mapred.SequenceFileInputFormat                      |       |
 |OutputFormat                |org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat             |       |
@@ -566,11 +566,11 @@ deltaTable.history.show(false)
 
 |版本|          timestamp|userId|userName|operation|                                                operationParameters| 作业 (job)|笔记本|clusterId|readVersion|isolationLevel|isBlindAppend|
 |-------|-------------------|------|--------|---------|-------------------------------------------------------------------|----|--------|---------|-----------|--------------|-------------|
-|      4|2020-04-25 00:36:27|  null|    null|    MERGE|                       [predicate -> (oldData.`ID` = newData.`ID`)]|null|    null|     null|          3|          null|        false|
-|      3|2020-04-25 00:36:08|  null|    null|   DELETE|[predicate -> ["((`ID` % CAST(2 AS BIGINT)) = CAST(0 AS BIGINT))"]]|null|    null|     null|          2|          null|        false|
-|      2|2020-04-25 00:35:51|  null|    null|   UPDATE| [predicate -> ((ID#744L % cast(2 as bigint)) = cast(0 as bigint))]|null|    null|     Null|          1|          null|        false|
-|      1|2020-04-25 00:35:05|  null|    null|    WRITE|                             [mode -> Overwrite, partitionBy -> []]|null|    null|     null|          0|          Null|        false|
-|      0|2020-04-25 00:34:34|  null|    null|    WRITE|                         [mode -> ErrorIfExists, partitionBy -> []]|null|    null|     null|       null|          null|         true|
+|      4|2020-04-25 00:36:27|  null|    null|    MERGE|                       [predicate -> (oldData.`ID` = newData.`ID`)]|null|    Null|     null|          3|          null|        false|
+|      3|2020-04-25 00:36:08|  null|    null|   DELETE|[predicate -> ["((`ID` % CAST(2 AS BIGINT)) = CAST(0 AS BIGINT))"]]|null|    Null|     null|          2|          null|        false|
+|      2|2020-04-25 00:35:51|  null|    null|   UPDATE| [predicate -> ((ID#744L % cast(2 as bigint)) = cast(0 as bigint))]|null|    Null|     Null|          1|          null|        false|
+|      1|2020-04-25 00:35:05|  null|    null|    WRITE|                             [mode -> Overwrite, partitionBy -> []]|null|    Null|     null|          0|          Null|        false|
+|      0|2020-04-25 00:34:34|  null|    null|    WRITE|                         [mode -> ErrorIfExists, partitionBy -> []]|Null|    Null|     Null|       Null|          null|         true|
 
 在这里，你可看到对上述代码片段所作的全部修改。
 
@@ -905,12 +905,12 @@ spark.sql(s"DESCRIBE HISTORY delta.`$deltaTablePath`").show()
 
 |版本|          timestamp|userId|userName|       operation| operationParameters| 作业 (job)|笔记本|clusterId|readVersion|isolationLevel|isBlindAppend|
 |-------|-------------------|------|--------|----------------|--------------------|----|--------|---------|-----------|--------------|-------------|
-|      5|2020-04-25 00:37:09|  null|    null|STREAMING UPDATE|[outputMode -> Ap...|null|    null|     null|          4|          null|         true|
-|      4|2020-04-25 00:36:27|  null|    null|           MERGE|[predicate -> (ol...|null|    null|     null|          3|          null|        false|
-|      3|2020-04-25 00:36:08|  null|    null|          DELETE|[predicate -> ["(...|null|    null|     null|          2|          null|        false|
-|      2|2020-04-25 00:35:51|  null|    null|          UPDATE|[predicate -> ((i...|null|    null|     Null|          1|          null|        false|
-|      1|2020-04-25 00:35:05|  null|    null|           WRITE|[mode -> Overwrit...|null|    null|     null|          0|          Null|        false|
-|      0|2020-04-25 00:34:34|  null|    null|           WRITE|[mode -> ErrorIfE...|null|    null|     null|       null|          null|         true|
+|      5|2020-04-25 00:37:09|  null|    null|STREAMING UPDATE|[outputMode -> Ap...|null|    Null|     null|          4|          null|         true|
+|      4|2020-04-25 00:36:27|  null|    null|           MERGE|[predicate -> (ol...|null|    Null|     null|          3|          null|        false|
+|      3|2020-04-25 00:36:08|  null|    null|          DELETE|[predicate -> ["(...|null|    Null|     null|          2|          null|        false|
+|      2|2020-04-25 00:35:51|  null|    null|          UPDATE|[predicate -> ((i...|null|    Null|     Null|          1|          null|        false|
+|      1|2020-04-25 00:35:05|  null|    null|           WRITE|[mode -> Overwrit...|null|    Null|     null|          0|          Null|        false|
+|      0|2020-04-25 00:34:34|  null|    null|           WRITE|[mode -> ErrorIfE...|null|    Null|     Null|       Null|          null|         true|
 
 # <a name="python"></a>[Python](#tab/programming-language-python)
 
@@ -996,5 +996,5 @@ DeltaTable.isDeltaTable(parquetPath)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [.NET for Apache Spark 文档](https://docs.microsoft.com/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+* [.NET for Apache Spark 文档](https://docs.microsoft.com/dotnet/spark)
 * [Azure Synapse Analytics](../index.yml)

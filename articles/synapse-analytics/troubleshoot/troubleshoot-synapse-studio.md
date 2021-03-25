@@ -1,19 +1,20 @@
 ---
 title: 排查 Synapse Studio 的问题
 description: 排查 Azure Synapse Studio 的问题
-author: julieMSFT
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: jrasnick
+origin.date: 04/15/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 75d3cad12bc7932df442dd167f8cce6ab035a1c9
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 22b8305adc4822c630439e3e05cb52c5d1a9c976
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207610"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104765183"
 ---
 # <a name="azure-synapse-studio-troubleshooting"></a>Azure Synapse Studio 故障排除
 
@@ -59,7 +60,7 @@ ms.locfileid: "102207610"
 
 查找其 URL 列与以下模式匹配的项：
 
-`https://[*A*]-ondemand.database.windows.net:1443/databases/[*B*]/query?api-version=2018-08-01-preview&application=ArcadiaSqlOnDemandExplorer`
+`https://[*A*]-ondemand.database.chinacloudapi.cn:1443/databases/[*B*]/query?api-version=2018-08-01-preview&application=ArcadiaSqlOnDemandExplorer`
 
 其中 [A] 是你的工作区名称，“-ondemand”可以是“-sqlod”，而 [B] 应该是数据库名称，例如“master” 。 应最多有两个项目具有相同的 URL 值，但方法值不同；OPTIONS 和 POST。 检查这两项在状态列下是否有“200”或“20x”，其中“x”可以是任何一个位的数字。
 
@@ -72,7 +73,7 @@ ms.locfileid: "102207610"
     - 如果看到 ERR_NAME_NOT_RESOLVED，并且在 10 分钟内创建了工作区，请等待 10 分钟，然后重试以查看问题是否仍然存在。
     - 如果看到 ERR_INTERNET_DISCONNECTED 或 ERR_NETWORK_CHANGED，则表明电脑网络连接有问题。 请检查你的网络连接，然后重试该操作。
     - 如果看到 ERR_CONNECTION_RESET，ERR_SSL_PROTOCOL_ERROR 或其他包含“SSL”的错误代码，则表明你的本地 SSL 配置有问题，或者你的网络管理员已阻止对无服务器 SQL 池服务器的访问。 开具支持票证并在描述中附上错误代码。
-    - 如果看到 ERR_NETWORK_ACCESS_DENIED，则可能需要与管理员联系，以检查你的本地防火墙策略是否阻止了对 *.database.windows.net 域或远程端口 1443 的访问。
+    - 如果看到 ERR_NETWORK_ACCESS_DENIED，则可能需要与管理员联系，以检查你的本地防火墙策略是否阻止了对 *.database.chinacloudapi.cn 域或远程端口 1443 的访问。
     - （可选）立即在另一台计算机和/或不同网络环境上尝试相同的操作，以排除电脑上的网络配置问题。
 
 - 状态为“40x”、“50x”或其他数字，选择相应项可查看详细信息。 应会在右侧看到项详细信息。 找到“响应头”部分；然后检查是否存在名为“access-control-allow-origin”的项目。 如果存在，请检查它是否具有以下值之一：

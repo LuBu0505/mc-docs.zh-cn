@@ -50,7 +50,7 @@ ms.locfileid: "104765188"
 
 **解决方案**：在这种情况下，需要为存储帐户配置存储专用终结点。 对于如何为 vNet 配置存储专用终结点，请参阅[使用 Azure 门户分配用于访问 blob 和队列数据的 Azure 角色](../security/how-to-connect-to-workspace-from-restricted-network.md)。
 
-配置存储专用终结点之后，可以使用命令“nslookup \<storage-account-name\>.dfs.core.windows.net”来检查连接性。 它应返回类似于“\<storage-account-name\>.privatelink.dfs.core.windows.net”的字符串。
+配置存储专用终结点之后，可以使用命令“nslookup \<storage-account-name\>.dfs.core.chinacloudapi.cn”来检查连接。 它应返回类似于“\<storage-account-name\>.privatelink.dfs.core.chinacloudapi.cn”的字符串。
 
 ### <a name="the-storage-resource-is-not-behind-a-vnet-but-the-blob-service-azure-ad-endpoint-is-not-accessible-due-to-firewall-configured"></a>存储资源不在 vNet 后面，但由于已配置防火墙，导致无法访问 BLOB 服务 (Azure AD) 终结点
 

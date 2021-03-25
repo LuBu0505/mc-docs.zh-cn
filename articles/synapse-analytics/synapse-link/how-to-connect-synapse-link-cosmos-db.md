@@ -1,20 +1,21 @@
 ---
-title: 连接到 Azure Synapse Link for Azure Cosmos DB（预览版）
+title: 连接到 Azure Synapse Link for Azure Cosmos DB
 description: 了解如何通过 Azure Synapse Link 将 Azure Cosmos DB 数据库连接到 Azure Synapse 工作区。
 services: synapse-analytics
-author: ArnoMicrosoft
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: synapse-link
-ms.date: 04/21/2020
-ms.author: acomet
+origin.date: 03/02/2021
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: d5bd2564e1761b24268e9df4a64ba21d435bdec2
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: bb1cbfcf42773d614d54461db70ada804db609cc
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207691"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766810"
 ---
 # <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>连接到 Azure Synapse Link for Azure Cosmos DB
 
@@ -26,9 +27,6 @@ ms.locfileid: "102207691"
 
 * 现有的 Azure Cosmos DB 数据库或按照[快速入门：管理 Azure Cosmos DB 帐户](../../cosmos-db/how-to-manage-database-account.md)中的步骤创建一个新帐户。
 * 现有的 Azure Synapse 工作区，或按照[快速入门：创建 Synapse 工作区](../quickstart-create-workspace.md)中的步骤创建一个新工作区。
-
-> [!IMPORTANT]
-> 未启用托管虚拟网络的工作区当前支持 Azure Synapse Link for Azure Cosmos DB。
 
 ## <a name="enable-synapse-link-on-an-azure-cosmos-db-database-account"></a>在 Azure Cosmos DB 数据库帐户上启用 Synapse Link
 
@@ -50,7 +48,7 @@ ms.locfileid: "102207691"
 1. 选择“继续”。
 1. 使用易记名称命名链接服务。 该名称将显示在数据对象资源管理器中，并由 Azure Synapse 运行时用于连接到数据库和容器。
 1. 选择“Azure Cosmos DB 帐户名称”和“数据库名称” 。
-1. （可选）如果没有指定区域，Azure Synapse 运行时操作将被路由到启用分析存储的最近的区域。 还可以手动设置希望用户用于访问 Azure Cosmos DB 分析存储的区域。 选择“其他连接属性”，然后选择“新建” 。 在“属性名称”下，输入“PreferredRegions” 。 将“值”设置为所需的区域，如 WestUS2 。 （单词和数字之间没有空格。）
+1. （可选）如果没有指定区域，Azure Synapse 运行时操作将被路由到启用分析存储的最近的区域。 还可以手动设置希望用户用于访问 Azure Cosmos DB 分析存储的区域。 选择“其他连接属性”，然后选择“新建” 。 在“属性名称”下，输入“PreferredRegions” 。 将“值”设置为所需的区域，如“ChinaEast2” 。 （单词和数字之间没有空格。）
 1. 选择“创建”。
 
 Azure Cosmos DB 数据库会显示在 Azure Cosmos DB 部分下的“链接”选项卡中 。 借助 Azure Cosmos DB，可以通过以下图标区分启用 HTAP 的容器和仅 OLTP 容器：

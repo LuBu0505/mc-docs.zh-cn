@@ -6,15 +6,15 @@ ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 origin.date: 12/01/2020
-ms.date: 03/08/2021
+ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 02739dd8b806c9588bceef553d20b9706a63603c
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 6825f7a8ec580f70b45ae324b3989da69d21bd82
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207030"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766700"
 ---
 # <a name="create-a-workspace-with-data-exfiltration-protection-enabled"></a>创建启用了数据外泄保护功能的工作区
 本文介绍如何创建启用了数据外泄保护功能的工作区，以及如何管理该工作区的经过批准的 Azure AD 租户。
@@ -52,6 +52,8 @@ ms.locfileid: "102207030"
 
 ## <a name="known-limitations"></a>已知的限制
 用户可以提供环境配置文件，从 PyPI 等公共存储库安装 Python 包。 在具有数据外泄保护功能的工作区中，将阻止与出站存储库的连接。 因此，不支持从 PyPI 等公共存储库安装的 Python 库。 
+
+作为替代方法，用户可以上传工作区包，或者在其主要 Azure Data Lake Storage 帐户中创建一个专用通道。 有关详细信息，请访问 [Azure Synapse Analytics 中的包管理](../spark/apache-spark-azure-portal-add-libraries.md) 
   
 ## <a name="next-steps"></a>后续步骤
 

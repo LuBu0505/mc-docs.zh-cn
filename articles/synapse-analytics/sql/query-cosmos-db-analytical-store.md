@@ -1,35 +1,29 @@
 ---
-title: 在 Azure Synapse Link 预览版中使用无服务器 SQL 池查询 Azure Cosmos DB 数据
-description: 本文介绍如何在 Azure Synapse Link 预览版中使用无服务器 SQL 池查询 Azure Cosmos DB。
+title: 在 Azure Synapse Link 中使用无服务器 SQL 池查询 Azure Cosmos DB 数据
+description: 本文介绍如何在 Azure Synapse Link 中使用无服务器 SQL 池查询 Azure Cosmos DB。
 services: synapse analytics
-author: jovanpop-msft
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
-ms.date: 12/04/2020
-ms.author: jovanpop
+origin.date: 03/02/2021
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3e6cac3adb2e172beae7be90ca8950f31e10e374
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: eb3d63dceef4273bc6db034f95c8d81e2b46589c
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207211"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766319"
 ---
-# <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>在 Azure Synapse Link 预览版中使用无服务器 SQL 池查询 Azure Cosmos DB 数据
+# <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link"></a>在 Azure Synapse Link 中使用无服务器 SQL 池查询 Azure Cosmos DB 数据
 
-> [!IMPORTANT]
-> 对 Azure Synapse Link for Azure Cosmos DB 的无服务器 SQL 池支持目前以预览版提供。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+利用无服务器 SQL 池，可以近乎实时地分析通过 [Azure Synapse Link](../../cosmos-db/synapse-link.md) 启用的 Azure Cosmos DB 容器中的数据，而不会影响事务工作负荷的性能。 它提供熟悉的 T-SQL 语法，用于查询[分析存储](../../cosmos-db/analytical-store-introduction.md)中的数据，并提供通过 T-SQL 接口建立的集成连接，用于连接到各种商业智能 (BI) 和即席查询工具。
 
+查询 Azure Cosmos DB 时，可通过 [OPENROWSET](develop-openrowset.md) 函数支持完整的 [SELECT](https://docs.microsoft.com/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) 外围应用，其中包括大多数 [SQL 函数和运算符](overview-features.md)。 你还可以使用 [create external table as select](develop-tables-cetas.md#cetas-in-serverless-sql-pool) (CETAS) 将从 Azure Cosmos DB 读取数据的查询的结果和数据存储在 Azure Blob 存储或 Azure Data Lake Storage 中。 目前无法使用 CETAS 将无服务器 SQL 池查询结果存储到 Azure Cosmos DB。
 
-利用无服务器 SQL 池，可以近乎实时地分析通过 [Azure Synapse Link](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 启用的 Azure Cosmos DB 容器中的数据，而不会影响事务工作负荷的性能。 它提供熟悉的 T-SQL 语法，用于查询[分析存储](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)中的数据，并提供通过 T-SQL 接口建立的集成连接，用于连接到各种商业智能 (BI) 和即席查询工具。
-
-查询 Azure Cosmos DB 时，可通过 [OPENROWSET](develop-openrowset.md) 函数支持完整的 [SELECT](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) 外围应用，其中包括大多数 [SQL 函数和运算符](overview-features.md)。 你还可以使用 [create external table as select](develop-tables-cetas.md#cetas-in-serverless-sql-pool) (CETAS) 将从 Azure Cosmos DB 读取数据的查询的结果和数据存储在 Azure Blob 存储或 Azure Data Lake Storage 中。 目前无法使用 CETAS 将无服务器 SQL 池查询结果存储到 Azure Cosmos DB。
-
-在本文中，你将了解如何编写一个与无服务器 SQL 池配合使用的查询，该查询将从通过 Azure Synapse Link 启用的 Azure Cosmos DB 容器中查询数据。 然后，你可以在[此教程](./tutorial-data-analyst.md)中详细了解如何构建基于 Azure Cosmos DB 容器的无服务器 SQL 池视图并将其连接到 Power BI 模型。
-
-> [!IMPORTANT]
-> 此教程使用一个具有[定义完善的 Azure Cosmos DB 架构](../../cosmos-db/analytical-store-introduction.md#schema-representation)的容器。 无服务器 SQL 池为 [Azure Cosmos DB 全保真架构](#full-fidelity-schema)提供的查询体验是临时性的行为，该行为会根据预览版反馈而变化。 不要依赖于没有 `WITH` 子句的 `OPENROWSET` 函数（用于从具有全保真架构的容器读取数据）的结果集架构，因为查询体验可能取决于定义完善的架构并随之变化。 你可以在 [Azure Synapse Analytics 反馈论坛](https://feedback.azure.com/forums/307516-azure-synapse-analytics)中发布反馈。 你还可以联系 [Azure Synapse Link 产品团队](mailto:cosmosdbsynapselink@microsoft.com)来提供反馈。
+在本文中，你将了解如何编写一个与无服务器 SQL 池配合使用的查询，该查询将从通过 Azure Synapse Link 启用的 Azure Cosmos DB 容器中查询数据。 然后，可以在[此教程](./tutorial-data-analyst.md)中详细了解如何通过 Azure Cosmos DB 容器生成无服务器 SQL 池视图，并将其连接到 Power BI 模型。本教程使用的容器采用 [Azure Cosmos DB 妥善定义的架构](../../cosmos-db/analytical-store-introduction.md#schema-representation)。
 
 ## <a name="overview"></a>概述
 
@@ -134,7 +128,7 @@ FROM OPENROWSET(
 
 ---
 
-在上一示例中，我们已指示无服务器 SQL 池连接到通过 Azure Cosmos DB 密钥（上一示例中的虚拟密钥）进行身份验证的 Azure Cosmos DB 帐户 `MyCosmosDbAccount` 中的 `covid` 数据库。 然后，我们访问了 `West US 2` 区域中 `Ecdc` 容器的分析存储。 由于没有特定属性的投影，因此 `OPENROWSET` 函数会返回 Azure Cosmos DB 项中的所有属性。
+在上一示例中，我们已指示无服务器 SQL 池连接到通过 Azure Cosmos DB 密钥（上一示例中的虚拟密钥）进行身份验证的 Azure Cosmos DB 帐户 `MyCosmosDbAccount` 中的 `covid` 数据库。 然后，我们访问了 `China East 2` 区域中 `Ecdc` 容器的分析存储。 由于没有特定属性的投影，因此 `OPENROWSET` 函数会返回 Azure Cosmos DB 项中的所有属性。
 
 下表显示了此查询的结果（假定 Azure Cosmos DB 容器中的项具有 `date_rep`、`cases` 和 `geo_id` 属性）：
 
@@ -270,8 +264,8 @@ WITH (  paper_id    varchar(8000),
 详细了解如何分析 [Azure Synapse Link 中的复杂数据类型](../how-to-analyze-complex-schema.md)和[无服务器 SQL 池中的嵌套结构](query-parquet-nested-types.md)。
 
 > [!IMPORTANT]
-> 如果在文本中看到意外字符（例如 `MÃƒÂ©lade`，本应为 `Mélade`），则表明数据库排序规则未设置为 [UTF-8](/sql/relational-databases/collations/collation-and-unicode-support#utf8) 排序规则。
-> 使用 SQL 语句（例如 `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8`）[将数据库的排序规则更改](/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation)为 UTF-8 排序规则。
+> 如果在文本中看到意外字符（例如 `MÃƒÂ©lade`，本应为 `Mélade`），则表明数据库排序规则未设置为 [UTF-8](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) 排序规则。
+> 使用 SQL 语句（例如 `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8`）[将数据库的排序规则更改](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation)为 UTF-8 排序规则。
 
 ## <a name="flatten-nested-arrays"></a>平展嵌套数组
 
@@ -327,7 +321,7 @@ Supplementary Information An eco-epidemi… | `[{"first":"Nicolas","last":"4#","
 | Supplementary Information An eco-epidemi… |   `[{"first":"Olivier","last":"Flores","suffix":"","affiliation":{"laboratory":"UMR C53 CIRAD, …` | Olivier | Flores |`{"laboratory":"UMR C53 CIRAD, …` |     
 
 > [!IMPORTANT]
-> 如果在文本中看到意外字符（例如 `MÃƒÂ©lade`，本应为 `Mélade`），则表明数据库排序规则未设置为 [UTF-8](/sql/relational-databases/collations/collation-and-unicode-support#utf8) 排序规则。 使用 SQL 语句（例如 `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8`）[将数据库的排序规则更改](/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation)为 UTF-8 排序规则。
+> 如果在文本中看到意外字符（例如 `MÃƒÂ©lade`，本应为 `Mélade`），则表明数据库排序规则未设置为 [UTF-8](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) 排序规则。 使用 SQL 语句（例如 `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8`）[将数据库的排序规则更改](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation)为 UTF-8 排序规则。
 
 ## <a name="azure-cosmos-db-to-sql-type-mappings"></a>Azure Cosmos DB 到 SQL 类型的映射
 
@@ -354,7 +348,7 @@ Azure Cosmos DB 全保真架构记录容器中每个属性的值及其最佳匹�
 SELECT *
 FROM OPENROWSET(
       'CosmosDB',
-      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+      'account=MyCosmosDbAccount;database=covid;region=chinaeast2;key=C0Sm0sDbKey==',
        Ecdc
     ) as rows
 ```
@@ -377,11 +371,11 @@ FROM OPENROWSET(
 > [!IMPORTANT]
 > 没有 `WITH` 子句的 `OPENROWSET` 函数同时公开了具有预期类型的值和输入的类型错误的值。 此函数旨在用于数据浏览，而不用于报告。 请勿分析此函数返回的 JSON 值来生成报表。 请使用显式 [WITH 子句](#query-items-with-full-fidelity-schema)来创建报表。 应该清除 Azure Cosmos DB 容器中具有错误类型的值，以在全保真分析存储中应用更正。
 
-如果需要查询 Mongo DB API 类型的 Azure Cosmos DB 帐户，可以在分析存储中详细了解全保真架构表示形式，以及要在 [Azure Cosmos DB 分析存储（预览版）是什么？](../../cosmos-db/analytical-store-introduction.md#analytical-schema)中使用的扩展属性名称。
+如果需要查询 Mongo DB API 类型的 Azure Cosmos DB 帐户，可以在分析存储中详细了解全保真架构表示形式，以及要在 [Azure Cosmos DB 分析存储是什么？](../../cosmos-db/analytical-store-introduction.md#analytical-schema)中使用的扩展属性名称。
 
 ### <a name="query-items-with-full-fidelity-schema"></a>查询具有全保真架构的项
 
-查询全保真架构时，需要在 `WITH` 子句中显式指定 SQL 类型和预期的 Azure Cosmos DB 属性类型。 请不要在报表中使用不带 `WITH` 子句的 `OPENROWSET`，因为预览版中结果集的格式可能会根据反馈进行更改。
+查询全保真架构时，需要在 `WITH` 子句中显式指定 SQL 类型和预期的 Azure Cosmos DB 属性类型。
 
 在下面的示例中，我们假设 `string` 是 `geo_id` 属性的正确类型，`int32` 是 `cases` 属性的正确类型：
 
@@ -389,7 +383,7 @@ FROM OPENROWSET(
 SELECT geo_id, cases = SUM(cases)
 FROM OPENROWSET(
       'CosmosDB'
-      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+      'account=MyCosmosDbAccount;database=covid;region=chinaeast2;key=C0Sm0sDbKey==',
        Ecdc
     ) WITH ( geo_id VARCHAR(50) '$.geo_id.string',
              cases INT '$.cases.int32'
@@ -405,7 +399,7 @@ GROUP BY geo_id
 SELECT geo_id, cases = SUM(cases_int) + SUM(cases_bigint) + SUM(cases_float)
 FROM OPENROWSET(
       'CosmosDB',
-      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+      'account=MyCosmosDbAccount;database=covid;region=chinaeast2;key=C0Sm0sDbKey==',
        Ecdc
     ) WITH ( geo_id VARCHAR(50) '$.geo_id.string', 
              cases_int INT '$.cases.int32',
@@ -419,7 +413,6 @@ GROUP BY geo_id
 
 ## <a name="known-issues"></a>已知问题
 
-- 无服务器 SQL 池为 [Azure Cosmos DB 全保真架构](#full-fidelity-schema)提供的查询体验是临时性的行为，该行为会根据预览版反馈而变化。 不要依赖于没有 `WITH` 子句的 `OPENROWSET` 函数在公共预览期间提供的架构，因为查询体验可能取决于基于客户反馈的、定义完善的架构。 若要提供反馈，请联系 [Azure Synapse Link 产品团队](mailto:cosmosdbsynapselink@microsoft.com)。
 - 如果 `OPENROWSET` 列排序规则没有 UTF-8 编码，则无服务器 SQL 池会返回编译时警告。 可以使用 T-SQL 语句 `alter database current collate Latin1_General_100_CI_AS_SC_UTF8` 轻松更改当前数据库中运行的所有 `OPENROWSET` 函数的默认排序规则。
 
 下表列出了可能的错误和故障排除操作。

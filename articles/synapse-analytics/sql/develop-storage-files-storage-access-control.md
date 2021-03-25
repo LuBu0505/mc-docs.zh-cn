@@ -2,19 +2,20 @@
 title: 控制无服务器 SQL 池对存储帐户的访问
 description: 介绍无服务器 SQL 池如何访问 Azure 存储，以及如何在 Azure Synapse Analytics 中控制无服务器 SQL 池对存储的访问。
 services: synapse-analytics
-author: filippopovic
+author: WenJason
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 06/11/2020
-ms.author: fipopovi
+origin.date: 06/11/2020
+ms.date: 03/22/2021
+ms.author: v-jay
 ms.reviewer: jrasnick
-ms.openlocfilehash: f3595a4a767a98cb4b093ef5f17b2d8aeac343a3
-ms.sourcegitcommit: 5707919d0754df9dd9543a6d8e6525774af738a9
+ms.openlocfilehash: 7cb80642411c156440e163eb92dfa50dd1776752
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102207228"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766186"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制无服务器 SQL 池对存储帐户的访问
 
@@ -104,14 +105,14 @@ ms.locfileid: "102207228"
 
 按照以下步骤配置存储帐户防火墙，并为 Synapse 工作区添加例外。
 
-1. 打开 PowerShell 或[安装 PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows?preserve-view=true&view=powershell-7.1)
-2. 安装 Az.Storage 3.0.1 模块和 Az.Synapse 0.7.0： 
+1. 打开 PowerShell 或[安装 PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?preserve-view=true&view=powershell-7.1)
+2. 安装 Az.Storage 3.4.0 模块和 Az.Synapse 0.7.0： 
     ```powershell
-    Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
+    Install-Module -Name Az.Storage -RequiredVersion 3.4.0
     Install-Module -Name Az.Synapse -RequiredVersion 0.7.0
     ```
     > [!IMPORTANT]
-    > 确保使用 3.0.1 版。 可以通过运行以下命令来检查 Az.Storage 版本：  
+    > 确保使用 3.4.0 版。 可以通过运行以下命令来检查 Az.Storage 版本：  
     > ```powershell 
     > Get-Module -ListAvailable -Name  Az.Storage | select Version
     > ```
@@ -122,7 +123,7 @@ ms.locfileid: "102207228"
     Connect-AzAccount
     ```
 4. 在 PowerShell 中定义变量： 
-    - 资源组名称 - 可以在 Azure 门户中的“Synapse 工作区概述”中找到此内容。
+    - 资源组名称 - 可以在 Azure 门户中的存储帐户概述中找到此内容。
     - 帐户名称 - 受防火墙规则保护的存储帐户的名称。
     - 租户 ID - 可在 Azure 门户中的“租户中的 Azure Active Directory 信息”中找到此内容。
     - 工作区名称 - Synapse 工作区的名称。
@@ -192,22 +193,19 @@ GRANT ALTER ANY CREDENTIAL TO [user_name];
 GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
 ```
 
-为了确保顺畅的 Azure AD 直通体验，默认情况下，所有用户都拥有使用 `UserIdentity` 凭据的权限。
-
 ## <a name="server-scoped-credential"></a>服务器范围的凭据
 
-当 SQL 登录名在未指定 `DATA_SOURCE` 的情况下调用 `OPENROWSET` 函数来读取某个存储帐户上的文件时，将使用服务器范围的凭据。 服务器范围的凭据的名称必须与 Azure 存储的 URL 匹配。 可通过运行 [CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 来添加凭据。 需要提供 CREDENTIAL NAME 参数。 该参数必须匹配存储中数据的一部分路径或完整路径（参阅下文）。
+当 SQL 登录名在未指定 `DATA_SOURCE` 的情况下调用 `OPENROWSET` 函数来读取某个存储帐户上的文件时，将使用服务器范围的凭据。 服务器范围的凭据的名称必须与 Azure 存储的基 URL 相匹配（可以选择后跟容器名称）。 可通过运行 [CREATE CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql?view=azure-sqldw-latest&preserve-view=true) 来添加凭据。 需要提供 CREDENTIAL NAME 参数。
 
 > [!NOTE]
 > 不支持参数 `FOR CRYPTOGRAPHIC PROVIDER`。
 
-服务器级 CREDENTIAL 名称必须与存储帐户（以及可选容器）的完整路径匹配，格式如下：`<prefix>://<storage_account_path>/<storage_path>`。 下表描述了存储帐户路径：
+服务器级 CREDENTIAL 名称必须与存储帐户（以及可选容器）的完整路径匹配，格式如下：`<prefix>://<storage_account_path>[/<container_name>]`。 下表描述了存储帐户路径：
 
 | 外部数据源       | 前缀 | 存储帐户路径                                |
 | -------------------------- | ------ | --------------------------------------------------- |
-| Azure Blob 存储         | https  | <storage_account>.blob.core.windows.net             |
-| Azure Data Lake Storage Gen1 | https  | <storage_account>.azuredatalakestore.net/webhdfs/v1 |
-| Azure Data Lake Storage Gen2 | https  | <storage_account>.dfs.core.windows.net              |
+| Azure Blob 存储         | https  | <storage_account>.blob.core.chinacloudapi.cn             |
+| Azure Data Lake Storage Gen2 | https  | <storage_account>.dfs.core.chinacloudapi.cn              |
 
 服务器范围的凭据允许使用以下身份验证类型来访问 Azure 存储：
 
@@ -224,20 +222,24 @@ SQL 用户无法使用 Azure AD 身份验证来访问存储。
 请将 <mystorageaccountname> 替换为实际存储帐户名称，并将 <mystorageaccountcontainername> 替换为实际容器名称：
 
 ```sql
-CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
+CREATE CREDENTIAL [https://<mystorageaccountname>.dfs.core.chinacloudapi.cn/<mystorageaccountcontainername>]
 WITH IDENTITY='SHARED ACCESS SIGNATURE'
 , SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
 GO
 ```
+
+或者，可以只使用存储帐户的基 URL，而不使用容器名称。
 
 ### <a name="managed-identity"></a>[托管标识](#tab/managed-identity)
 
 以下脚本将创建一个服务器级凭据，`OPENROWSET` 函数可以使用该凭据通过工作区托管标识访问 Azure 存储上的任何文件。
 
 ```sql
-CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
+CREATE CREDENTIAL [https://<storage_account>.dfs.core.chinacloudapi.cn/<container>]
 WITH IDENTITY='Managed Identity'
 ```
+
+或者，可以只使用存储帐户的基 URL，而不使用容器名称。
 
 ### <a name="public-access"></a>[公共访问权限](#tab/public-access)
 
@@ -257,7 +259,7 @@ WITH IDENTITY='Managed Identity'
 
 ```sql
 CREATE EXTERNAL DATA SOURCE mysample
-WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>'
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.chinacloudapi.cn/<container>/<path>'
 )
 ```
 
@@ -276,7 +278,7 @@ WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
      SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
 GO
 CREATE EXTERNAL DATA SOURCE mysample
-WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.chinacloudapi.cn/<container>/<path>',
           CREDENTIAL = SasToken
 )
 ```
@@ -292,7 +294,7 @@ CREATE DATABASE SCOPED CREDENTIAL SynapseIdentity
 WITH IDENTITY = 'Managed Identity';
 GO
 CREATE EXTERNAL DATA SOURCE mysample
-WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.chinacloudapi.cn/<container>/<path>',
           CREDENTIAL = SynapseIdentity
 )
 ```
@@ -305,7 +307,7 @@ WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<containe
 
 ```sql
 CREATE EXTERNAL DATA SOURCE mysample
-WITH (    LOCATION   = 'https://<storage_account>.blob.core.windows.net/<container>/<path>'
+WITH (    LOCATION   = 'https://<storage_account>.blob.core.chinacloudapi.cn/<container>/<path>'
 )
 ```
 ---
@@ -314,7 +316,7 @@ WITH (    LOCATION   = 'https://<storage_account>.blob.core.windows.net/<contain
 
 ```sql
 CREATE EXTERNAL DATA SOURCE mysample
-WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.chinacloudapi.cn/<container>/<path>',
           CREDENTIAL = <name of database scoped credential> 
 )
 ```
@@ -330,7 +332,7 @@ CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat]
        WITH ( FORMAT_TYPE = PARQUET)
 GO
 CREATE EXTERNAL DATA SOURCE publicData
-WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<public_container>/<path>' )
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.chinacloudapi.cn/<public_container>/<path>' )
 GO
 
 CREATE EXTERNAL TABLE dbo.userPublicData ( [id] int, [first_name] varchar(8000), [last_name] varchar(8000) )
@@ -373,7 +375,7 @@ CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] WITH ( FORMAT_TYPE = PARQUET)
 GO
 
 CREATE EXTERNAL DATA SOURCE mysample
-WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>'
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.chinacloudapi.cn/<container>/<path>'
 -- Uncomment one of these options depending on authentication method that you want to use to access data source:
 --,CREDENTIAL = WorkspaceIdentity 
 --,CREDENTIAL = SasCredential 
