@@ -1,18 +1,18 @@
 ---
 title: 支持的 Azure 资源管理器资源类型
 description: 提供 Azure Resource Graph 和更改历史记录支持的 Azure 资源管理器资源类型的列表。
-origin.date: 01/06/2021
+origin.date: 02/04/2021
 author: rockboyfor
-ms.date: 02/08/2021
+ms.date: 03/22/2021
 ms.author: v-yeche
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 8afc1af9012b19c659ad70ce4c42243d7863217f
-ms.sourcegitcommit: 6fdfb2421e0a0db6d1f1bf0e0b0e1702c23ae6ce
+ms.openlocfilehash: a27e46d177b360a5999cc80d86f0754b86a651d4
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101087531"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104766897"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 表格和资源类型参考
 
@@ -85,15 +85,15 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 <!--NOT AVAILBLE ON - gridpro.evops/accounts/eventrules-->
 <!--NOT AVAILBLE ON - gridpro.evops/accounts/requesttemplates-->
 <!--NOT AVAILBLE ON - gridpro.evops/accounts/views-->
-<!--NOT AVAILBLE ON - hive.streaming/services-->
+<!--NOT AVAILBLE ON - Hive.Streaming/services (Hive Streaming)-->
 <!--NOT AVAILBLE ON - incapsula.waf/accounts-->
-<!--NOT AVAILBLE ON - livearena.broadcast/services-->
-<!--NOT AVAILBLE ON - mailjet.email/services-->
+<!--NOT AVAILBLE ON - LiveArena.Broadcast/services-->
+<!--NOT AVAILBLE ON - Mailjet.Email/services-->
 
 - Microsoft.AAD/domainServices（Azure AD 域服务）
 - microsoft.aadiam/azureadmetrics
     
-    <!--NOT AVAILBLE ON - microsoft.aadiam/privatelinkforazuread-->
+    <!--NOT AVAILBLE ON - microsoft.aadiam/privateLinkForAzureAD (Private Link for Azure AD)-->
     
 - microsoft.aadiam/tenants
 
@@ -117,7 +117,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.AppPlatform/Spring (Azure Spring Cloud)
     
     <!--NOT AVAILBLE ON - microsoft.archive/collections-->
-    <!--NOT AVAILBLE ON - microsoft.attestation/attestationproviders-->
+    <!--NOT AVAILBLE ON - Microsoft.Attestation/attestationProviders (Attestation providers)-->
     
 - Microsoft.Authorization/resourceManagementPrivateLinks（资源管理专用链接）
     
@@ -153,7 +153,10 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.azurestack/linkedsubscriptions
 - Microsoft.Azurestack/registrations (Azure Stack Hub)
 - Microsoft.AzureStackHCI/clusters (Azure Stack HCI)
-    
+- microsoft.azurestackhci/galleryimages
+- microsoft.azurestackhci/networkinterfaces
+- microsoft.azurestackhci/virtualnetworks
+
     <!--NOT AVAILBLE ON - microsoft.baremetal/consoleconnections-->
     <!--NOT AVAILBLE ON - Microsoft.BareMetal/crayServers (Cray Servers)-->
     <!--NOT AVAILBLE ON - Microsoft.BareMetal/monitoringServers (Monitoring Servers)-->
@@ -385,6 +388,9 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 
     <!--NOT AVAILBLE ON - Microsoft.IntelligentITDigitalTwin/digitalTwins (Minervas)-->
     <!--NOT AVAILBLE ON - microsoft.intelligentitdigitaltwin/digitaltwins/assets-->
+    <!--NOT AVAILBLE ON - - microsoft.intelligentitdigitaltwin/digitaltwins/executionplans-->
+    <!--NOT AVAILBLE ON - - microsoft.intelligentitdigitaltwin/digitaltwins/testplans-->
+    <!--NOT AVAILBLE ON - - microsoft.intelligentitdigitaltwin/digitaltwins/tests-->
     
 - Microsoft.IoTCentral/IoTApps（IoT Central 应用程序）
 - Microsoft.IoTSpaces/Graph（数字孪生[已弃用]）
@@ -572,6 +578,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.resources/templatespecs/versions
 
     <!--NOT AVAILBLE ON - Microsoft.SaaS/applications (Software as a Service (classic))-->
+    <!--NOT AVAILBLE ON - Microsoft.SaaS/resources (CPX-Placeholder)-->
     
 - Microsoft.Scheduler/jobCollections（计划程序作业集合）
 
@@ -686,6 +693,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 
     <!--NOT AVAILBLE ON - Microsoft.WindowsESU/multipleActivationKeys (Windows Multiple Activation Keys)-->
     <!--NOT AVAILBLE ON - Microsoft.WindowsIoT/DeviceServices (Windows 10 IoT Core Services)-->
+    <!--NOT AVAILBLE ON - microsoft.workloadbuilder/migrationagents-->
     <!--NOT AVAILBLE ON - microsoft.workloadbuilder/workloads-->
     <!--NOT AVAILBLE ON - MyGet.PackageManagement/services (MyGet - Hosted NuGet, NPM, Bower and Vsix)-->
     <!--NOT AVAILBLE ON - Paraleap.CloudMonix/services (CloudMonix)-->
