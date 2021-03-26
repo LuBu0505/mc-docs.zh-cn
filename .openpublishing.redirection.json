@@ -31984,7 +31984,37 @@
         "source_path": "articles/virtual-machines/linux/tutorial-monitor.md",
         "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/tutorial-monitor",
         "redirect_document_id": false
-    }
+    },
+    {
+        "source_path": "articles/security-center/configure-security-policy-azure-policy.md",
+        "redirect_url": "/security-center/custom-security-policies?pivot=rest-api",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/security-center/security-center-investigation-user-data.md",
+        "redirect_url": "/security-center/security-center-introduction",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/security-center/security-center-monitoring.md",
+        "redirect_url": "/security-center/security-center-remediate-recommendations",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/security-center/security-center-using-recommendations.md",
+        "redirect_url": "/security-center/security-center-remediate-recommendations",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/cognitive-services/Speech-Service/concepts-gating-overview.md",
+        "redirect_url": "https://docs.microsoft.com/legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/cognitive-services/Speech-Service/whats-new.md",
+        "redirect_url": "/cognitive-services/speech-service/overview",
+        "redirect_document_id": false
+    }    
     
 
     
