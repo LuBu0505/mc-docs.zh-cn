@@ -122,6 +122,7 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
         - uses: azure/login@v1
           with:
             creds: ${{ secrets.AZURE_CREDENTIALS }}
+            environment: AzureChinaCloud #中国区需要带上environment参数
 
           # Deploy ARM template
         - name: Run ARM deploy
