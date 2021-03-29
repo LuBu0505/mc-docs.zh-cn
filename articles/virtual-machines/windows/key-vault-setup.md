@@ -1,23 +1,22 @@
 ---
 title: 使用 PowerShell 设置 Key Vault
 description: 如何使用 PowerShell 设置用于虚拟机的 Key Vault。
-manager: vashan
 ms.service: virtual-machines
 ms.subservice: security
 ms.workload: infrastructure-services
 ms.topic: how-to
 origin.date: 01/24/2017
 author: rockboyfor
-ms.date: 11/16/2020
+ms.date: 03/29/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 0c7ae1ae8bafae1d619b1685380e555f86b06b34
-ms.sourcegitcommit: 39288459139a40195d1b4161dfb0bb96f5b71e8e
+ms.openlocfilehash: ef380e6432afe15cd8cb126d1cb0224d894aad53
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94590638"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603279"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-using-azure-powershell"></a>使用 Azure PowerShell 为虚拟机设置 Key Vault
 
@@ -66,15 +65,15 @@ az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGro
 
 ```config
 {
-    "type": "Microsoft.KeyVault/vaults",
-    "name": "ContosoKeyVault",
-    "apiVersion": "2015-06-01",
-    "location": "<location-of-key-vault>",
-    "properties": {
-        "enabledForDeployment": "true",
-        ....
-        ....
-    }
+  "type": "Microsoft.KeyVault/vaults",
+  "name": "ContosoKeyVault",
+  "apiVersion": "2015-06-01",
+  "location": "<location-of-key-vault>",
+  "properties": {
+    "enabledForDeployment": "true",
+    ....
+    ....
+  }
 }
 ```
 
@@ -86,4 +85,4 @@ az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGro
 > 必须修改从 GitHub 存储库“azure-quickstart-templates”下载或参考的模板，以适应 Azure 中国云环境。 例如，替换某些终结点（将“blob.core.windows.net”替换为“blob.core.chinacloudapi.cn”，将“cloudapp.azure.com”替换为“chinacloudapp.cn”）；必要时更改某些不受支持的位置、VM 映像、VM 大小、SKU 以及资源提供程序的 API 版本。
 
 <!--MOONCAKE CUSTOMIZATION ON KEEPING THE NOTES-->
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

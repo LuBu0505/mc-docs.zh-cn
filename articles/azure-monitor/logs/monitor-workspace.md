@@ -1,17 +1,16 @@
 ---
 title: 监视 Azure Monitor 中 Log Analytics 工作区的运行状况
 description: 介绍如何使用“操作”表中的数据监视 Log Analytics 工作区的运行状况。
-ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
-ms.openlocfilehash: 32c8a36c5899e405e9bf740061c82a00bd727cbb
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/23/2021
+ms.openlocfilehash: 6861e6b6a8a9098eb5ac4d39c51270da2aedb8d7
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205276"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603231"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>监视 Azure Monitor 中 Log Analytics 工作区的运行状况
 若要维持 Azure Monitor 中 Log Analytics 工作区的性能和可用性，你需要能够主动检测出现的任何问题。 本文介绍如何使用[操作](https://docs.microsoft.com/azure-monitor/reference/tables/operation)表中的数据监视 Log Analytics 工作区的运行状况。 此表存在于每个 Log Analytics 工作区中，并且包含工作区中发生的错误和警告。 你应定期查看这些数据，并创建警报，以便在工作区中发生任何重要事件时主动收到通知。
@@ -58,10 +57,10 @@ _LogOperation 函数返回下表中的列。
 | 自定义日志 | 错误   | 已达到自定义字段列限制。 | [Azure Monitor 服务限制](../service-limits.md#log-analytics-workspaces) |
 | 自定义日志 | 错误   | 自定义日志引入失败。 | |
 | 元数据 | 错误 | 检测到配置错误。 | |
-| 数据收集 | 错误   | 数据已删除，因为请求的创建时间早于设置的天数。 | [使用 Azure Monitor 日志管理使用情况和成本](../platform/manage-cost-storage.md#alert-when-daily-cap-reached)
+| 数据收集 | 错误   | 数据已删除，因为请求的创建时间早于设置的天数。 | [使用 Azure Monitor 日志管理使用情况和成本](./manage-cost-storage.md#alert-when-daily-cap-reached)
 | 数据收集 | 信息    | 检测到收集计算机配置。| |
-| 数据收集 | 信息    | 数据收集由于新的一天而开始。 | [使用 Azure Monitor 日志管理使用情况和成本](../platform/manage-cost-storage.md#alert-when-daily-cap-reached) |
-| 数据收集 | 警告 | 由于达到每日限制，数据收集已停止。| [使用 Azure Monitor 日志管理使用情况和成本](../platform/manage-cost-storage.md#alert-when-daily-cap-reached) |
+| 数据收集 | 信息    | 数据收集由于新的一天而开始。 | [使用 Azure Monitor 日志管理使用情况和成本](./manage-cost-storage.md#alert-when-daily-cap-reached) |
+| 数据收集 | 警告 | 由于达到每日限制，数据收集已停止。| [使用 Azure Monitor 日志管理使用情况和成本](./manage-cost-storage.md#alert-when-daily-cap-reached) |
 | 数据处理 | 错误   | JSON 格式无效。 | [使用 HTTP 数据收集器 API（公共预览版）将日志数据发送到 Azure Monitor](../logs/data-collector-api.md#request-body) | 
 | 数据处理 | 警告 | 值已剪裁为允许的最大大小。 | [Azure Monitor 服务限制](../service-limits.md#log-analytics-workspaces) |
 | 数据处理 | 警告 | 由于达到大小限制，字段值已被剪裁。 | [Azure Monitor 服务限制](../service-limits.md#log-analytics-workspaces) | 
@@ -125,5 +124,5 @@ _LogOperation 函数返回下表中的列。
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解[日志警报](../alerts/alerts-log.md)。
-- 收集工作区的[查询审核数据](../log-query/query-audit.md)。
+<!--Not available in MC: query-audit.md-->
 

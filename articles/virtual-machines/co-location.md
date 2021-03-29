@@ -1,34 +1,29 @@
 ---
-title: 归置 VM
-description: 了解归置 Azure VM 资源如何改善延迟。
+title: 邻近放置组
+description: 了解如何在 Azure 中使用邻近放置组。
 ms.service: virtual-machines
+ms.subservice: proximity-placement-groups
 ms.topic: conceptual
-origin.date: 12/07/2020
+origin.date: 03/07/2021
 author: rockboyfor
-ms.date: 01/18/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: ''
 ms.author: v-yeche
 ms.reviewer: zivr
-ms.openlocfilehash: 765664e23f879011b94596571b568963c851c5e7
-ms.sourcegitcommit: c8ec440978b4acdf1dd5b7fda30866872069e005
+ms.openlocfilehash: 7de30e9387d76e360eed539e7d2961b7969b533e
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231087"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603452"
 ---
 <!--Verified successfully from renamed articles-->
-# <a name="co-locate-resources-for-improved-latency"></a>并置资源以改善延迟
-
-在 Azure 中部署应用程序时，跨区域分布实例会造成网络延迟，这可能会影响应用程序的总体性能。 
-
-<!--Not Available on or availability zones-->
-
-## <a name="proximity-placement-groups"></a>邻近放置组
+# <a name="proximity-placement-groups"></a>邻近放置组
 
 将 VM 置于单个区域可以减少实例之间的物理距离。
 
-<!--Not Available on single availability zone-->
+<!--NOT AVAILABLE on FEATURE availability zone-->
 
 若要让 VM 尽可能靠近，将延迟尽可能降至最低，应将 VM 部署到一个邻近放置组中。
 
@@ -96,7 +91,7 @@ ms.locfileid: "98231087"
 - 如果使用 PowerShell、CLI 或 SDK 来编写部署脚本，则可能会出现分配错误 `OverconstrainedAllocationRequest`。 在这种情况下，应停止/解除分配所有现有的 VM，并更改部署脚本中的顺序，从失败的 VM SKU/大小开始。 
 - 重复使用现有的放置组时，如果系统正在删除其中的 VM，请等待删除操作全部完成再向该组添加 VM。
 
-<!--Not Available on Availability zone-->
+<!--NOT AVAILABLE on FEATURE availability zone-->
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -106,6 +101,5 @@ ms.locfileid: "98231087"
 
 了解如何[优化网络吞吐量](../virtual-network/virtual-network-optimize-network-bandwidth.md)。  
 
-<!--Not Available on [use proximity placement groups with SAP applications](./workloads/sap/sap-proximity-placement-scenarios.md)-->
-<!-- Update_Description: new article about co location -->
-<!--NEW.date: 01/04/2021-->
+<!--NOT AVAILABLE ON [use proximity placement groups with SAP applications](./workloads/sap/sap-proximity-placement-scenarios.md)-->
+<!--Update_Description: update meta properties, wording update, update link-->

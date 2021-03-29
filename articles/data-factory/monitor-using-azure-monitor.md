@@ -1,23 +1,19 @@
 ---
 title: 使用 Azure Monitor 监视数据工厂
 description: 了解如何在 Azure Monitor 中，使用数据工厂中的信息通过启用诊断日志来监视 Azure 数据工厂管道。
-services: data-factory
-documentationcenter: ''
 author: WenJason
 ms.author: v-jay
-manager: digimobile
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 origin.date: 07/13/2020
-ms.date: 02/01/2021
-ms.openlocfilehash: 5cc5794a0c681e8222fcee4d9a9c4a668ab2e8d4
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.date: 03/29/2021
+ms.openlocfilehash: beb3968a676b054207cd9058ab891969637327c8
+ms.sourcegitcommit: 308ca551066252e68198391c3e4d4b1de348deb9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059827"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105601919"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>使用 Azure Monitor 监视数据工厂和发警报
 
@@ -45,15 +41,36 @@ Azure Monitor 针对大多数 Azure 服务提供基本级别的基础结构指�
 
 为数据工厂创建或添加诊断设置。
 
-1. 在门户中，转到“数据工厂”。 选择“诊断设置”。
+1. 在门户中，转到“监视”。 选择“设置” > “诊断设置”。
 
-1. 选择“添加诊断设置”。
+1. 选择要为其设置诊断设置的数据工厂。
+
+1. 如果所选数据工厂不存在任何设置，则系统会提示你创建设置。 选择“启用诊断”。
+
+   ![如果不存在任何设置，请创建一个诊断设置](media/data-factory-monitor-oms/monitor-oms-image1.png)
+
+   如果数据工厂中存在现有设置，你将看到数据工厂中已配置的设置列表。 选择“添加诊断设置”。
 
    ![如果存在设置，则添加诊断设置](media/data-factory-monitor-oms/add-diagnostic-setting.png)
 
 1. 为设置指定名称，选择“发送到 Log Analytics”，然后从 **Log Analytics 工作区** 中选择一个工作区。
 
-如果选择 AllMetrics，则可使用多种 ADF 指标来进行监视或发出警报，包括针对 ADF 活动、管道和触发器运行的指标以及针对 SSIS IR 操作和 SSIS 包执行的指标。
+    * 在“Azure 诊断”模式下，诊断日志将流入 _AzureDiagnostics_ 表。
+
+    * 在“资源特定”模式下，来自 Azure 数据工厂的诊断日志将流入下面的表：
+      - _ADFActivityRun_
+      - _ADFPipelineRun_
+      - _ADFTriggerRun_
+      - _ADFSSISIntegrationRuntimeLogs_
+      - _ADFSSISPackageEventMessageContext_
+      - _ADFSSISPackageEventMessages_
+      - _ADFSSISPackageExecutableStatistics_
+      - _ADFSSISPackageExecutionComponentPhases_
+      - _ADFSSISPackageExecutionDataStatistics_
+
+      可以选择与工作负载相关的要发送到 Log Analytics 表的各种日志。 例如，如果你根本不使用 SQL Server Integration Services (SSIS)，则无需选择任何 SSIS 日志。 如果你要记录 SSIS Integration Runtime (IR) 启动/停止/维护操作，则可以选择 SSIS IR 日志。 如果在 SQL Server Management Studio (SSMS)、SQL Server 代理或其他指定工具中通过 T-SQL 调用 SSIS 包执行，则可以选择 SSIS 包日志。 如果通过 ADF 管道中的“执行 SSIS 包”活动调用 SSIS 包执行，则可以选择所有日志。
+
+    * 如果选择 AllMetrics，则可使用多种 ADF 指标来进行监视或发出警报，包括针对 ADF 活动、管道和触发器运行的指标以及针对 SSIS IR 操作和 SSIS 包执行的指标。
 
    ![命名设置并选择 log-analytics 工作区](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
@@ -87,7 +104,7 @@ Azure Monitor 针对大多数 Azure 服务提供基本级别的基础结构指�
 | SSISPackageExecutionFailed           | 失败的 SSIS 包执行指标    | 计数    | 总计                | 在一分钟时段内失败的 SSIS 包执行总数。 |
 | SSISPackageExecutionSucceeded        | 已成功的 SSIS 包执行指标 | 计数    | 总计                | 在一分钟时段内成功的 SSIS 包执行总数。 |
 
-若要访问指标，请参阅 [Azure Monitor 数据平台](../azure-monitor/platform/data-platform.md)中的说明。
+若要访问指标，请参阅 [Azure Monitor 数据平台](../azure-monitor/data-platform.md)中的说明。
 
 > [!NOTE]
 > 仅发出已完成和已触发的活动以及管道运行事件。 不会发出正在进行的运行和调试运行。 另一方面，将发出所有 SSIS 包执行事件，包括已完成和正在进行的事件，而无论使用何种调用方法。 例如，可以在 SSMS、SQL Server 代理或其他指定工具上通过 T-SQL 调用包执行，也可以作为 ADF 管道中“执行 SSIS 包”的已触发运行或调试运行进行调用。
@@ -590,7 +607,7 @@ https://management.chinacloudapi.cn/{resource-id}/providers/microsoft.insights/d
 }
 ```
 
-| properties                   | 类型   | 说明                                                        | 示例                        |
+| properties                   | 类型   | 描述                                                        | 示例                        |
 | -------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
 | **time**                   | String | 事件的时间，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | 此项设置为 `YourSSISIRName-SSISPackageEventMessages`           | `mysqlmissisir-SSISPackageEventMessages` |
@@ -639,7 +656,7 @@ https://management.chinacloudapi.cn/{resource-id}/providers/microsoft.insights/d
 }
 ```
 
-| properties                   | 类型   | 说明                                                      | 示例                        |
+| properties                   | 类型   | 描述                                                      | 示例                        |
 | -------------------------- | ------ | ---------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | 事件的时间，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | 此项设置为 `YourSSISIRName-SSISPackageExecutableStatistics`  | `mysqlmissisir-SSISPackageExecutableStatistics` |
@@ -684,7 +701,7 @@ https://management.chinacloudapi.cn/{resource-id}/providers/microsoft.insights/d
 }
 ```
 
-| properties                   | 类型   | 说明                                                         | 示例                        |
+| properties                   | 类型   | 描述                                                         | 示例                        |
 | -------------------------- | ------ | ------------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | 事件的时间，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | 此项设置为 `YourSSISIRName-SSISPackageExecutionComponentPhases` | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
@@ -732,7 +749,7 @@ https://management.chinacloudapi.cn/{resource-id}/providers/microsoft.insights/d
 }
 ```
 
-| properties                     | 类型   | 说明                                                        | 示例                        |
+| properties                     | 类型   | 描述                                                        | 示例                        |
 | ---------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
 | **time**                     | String | 事件的时间，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**            | String | 此项设置为 `YourSSISIRName-SSISPackageExecutionDataStatistics` | `mysqlmissisir-SSISPackageExecutionDataStatistics` |
@@ -784,7 +801,7 @@ Log Analytics 从 Monitor 继承架构，但存在以下例外情况：
 
 预配后，可以[通过 Azure PowerShell 或 ADF 门户的“监视器”中心检查 SSIS IR 操作状态](./monitor-integration-runtime.md#azure-ssis-integration-runtime)。 使用项目部署模型时，SSIS 包执行日志存储在 SSISDB 内部表或视图中，因此可以使用 SSMS 之类的指定工具对其进行查询、分析和直观显示。 使用包部署模型时，可以将 SSIS 包执行日志作为 CSV 文件存储在文件系统或 Azure 文件存储中，仍需要使用其他指定工具对这些文件进行分析和处理，然后才能对其进行查询、分析和直观显示。
 
-现在，通过 [Azure Monitor](../azure-monitor/platform/data-platform.md) 集成，可在 Azure 门户上查询、分析和直观显示从 SSIS IR 操作和 SSIS 包执行生成的所有指标和日志。 此外，还可发出相关警报。
+现在，通过 [Azure Monitor](../azure-monitor/data-platform.md) 集成，可在 Azure 门户上查询、分析和直观显示从 SSIS IR 操作和 SSIS 包执行生成的所有指标和日志。 此外，还可发出相关警报。
 
 ### <a name="configure-diagnostic-settings-and-workspace-for-ssis-operations"></a>为 SSIS 操作配置诊断设置和工作区
 
@@ -792,9 +809,9 @@ Log Analytics 从 Monitor 继承架构，但存在以下例外情况：
 
 ### <a name="ssis-operational-metrics"></a>SSIS 操作指标
 
-SSIS 操作[指标](../azure-monitor/platform/data-platform-metrics.md)是性能计数器或数字值，用于描述特定时间点的 SSIS IR 启动和停止操作以及 SSIS 包执行的状态。 它们是 [Azure Monitor 中 ADF 指标](#data-factory-metrics)的一部分。
+SSIS 操作[指标](../azure-monitor/essentials/data-platform-metrics.md)是性能计数器或数字值，用于描述特定时间点的 SSIS IR 启动和停止操作以及 SSIS 包执行的状态。 它们是 [Azure Monitor 中 ADF 指标](#data-factory-metrics)的一部分。
 
-在 Azure Monitor 上为 ADF 配置诊断设置和工作区时，选中“AllMetrics”复选框将使 SSIS 操作指标可用于[使用 Azure 指标资源管理器进行的交互分析](../azure-monitor/platform/metrics-getting-started.md)、[在 Azure 仪表板上呈现](../azure-monitor/learn/tutorial-app-dashboards.md)以及[近实时警报](../azure-monitor/platform/alerts-metric.md)。
+在 Azure Monitor 上为 ADF 配置诊断设置和工作区时，选中“AllMetrics”复选框将使 SSIS 操作指标可用于[使用 Azure 指标资源管理器进行的交互分析](../azure-monitor/essentials/metrics-getting-started.md)、[在 Azure 仪表板上呈现](../azure-monitor/app/tutorial-app-dashboards.md)以及[近实时警报](../azure-monitor/alerts/alerts-metric.md)。
 
 ![命名设置并选择 log-analytics 工作区](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
@@ -810,9 +827,9 @@ SSIS 操作[指标](../azure-monitor/platform/data-platform-metrics.md)是性能
 
 ### <a name="ssis-operational-logs"></a>SSIS 操作日志
 
-SSIS 操作[日志](../azure-monitor/platform/data-platform-logs.md)是由 SSIS IR 操作和 SSIS 包执行生成的事件，这些事件提供了有关已识别问题的充足上下文，对根本原因分析很有用。 
+SSIS 操作[日志](../azure-monitor/logs/data-platform-logs.md)是由 SSIS IR 操作和 SSIS 包执行生成的事件，这些事件提供了有关已识别问题的充足上下文，对根本原因分析很有用。 
 
-在 Azure Monitor 上为 ADF 配置诊断设置和工作区时，可以选择相关 SSIS 操作日志，并将其发送到基于 Azure 数据资源管理器的 Log Analytics。 在这里，它们可用于[使用丰富的查询语言进行的分析](../azure-monitor/log-query/log-query-overview.md)、[在 Azure 仪表板上呈现](../azure-monitor/learn/tutorial-app-dashboards.md)以及[近实时警报](../azure-monitor/platform/alerts-log.md)。
+在 Azure Monitor 上为 ADF 配置诊断设置和工作区时，可以选择相关 SSIS 操作日志，并将其发送到基于 Azure 数据资源管理器的 Log Analytics。 在这里，它们可用于[使用丰富的查询语言进行的分析](../azure-monitor/logs/log-query-overview.md)、[在 Azure 仪表板上呈现](../azure-monitor/app/tutorial-app-dashboards.md)以及[近实时警报](../azure-monitor/alerts/alerts-log.md)。
 
 ![命名设置并选择 log-analytics 工作区](media/data-factory-monitor-oms/monitor-oms-image2.png)
 

@@ -1,17 +1,16 @@
 ---
 title: 用于 Log Analytics 工作区的资源管理器模板示例
 description: 用于在 Azure Monitor 中部署 Log Analytics 工作区和配置数据源的 Azure 资源管理器模板示例。
-ms.subservice: logs
 ms.topic: sample
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
-ms.openlocfilehash: 107251e4ea445752a0f8b27cd257007d8c6dedbf
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/23/2021
+ms.openlocfilehash: b84d7e79fe72a509b501f7b5df79a9f2411e8f91
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205421"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603702"
 ---
 # <a name="resource-manager-template-samples-for-log-analytics-workspaces-in-azure-monitor"></a>用于 Azure Monitor 中的 Log Analytics 工作区的资源管理器模板示例
 本文包含用于在 Azure Monitor 中创建和配置 Log Analytics 工作区的 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)示例。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
@@ -798,7 +797,7 @@ ms.locfileid: "102205421"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [获取 Azure Monitor 的其他示例模板](../samples/resource-manager-samples.md)。
-* [了解有关 Log Analytics 工作区的详细信息](../learn/quick-create-workspace.md)。
+* [获取 Azure Monitor 的其他示例模板](../resource-manager-samples.md)。
+* [了解有关 Log Analytics 工作区的详细信息](./quick-create-workspace.md)。
 * [了解有关代理数据源的详细信息](../agents/agent-data-sources.md)。
 

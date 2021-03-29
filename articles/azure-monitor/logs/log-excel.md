@@ -1,17 +1,16 @@
 ---
 title: 集成 Log Analytics 和 Excel
 description: 将 Log Analytics 查询获取到 Excel 中并在 Excel 中刷新结果。
-ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 01/12/2021
-ms.openlocfilehash: 5cbbf4f3ca2295a16c3db69610b243f54ec08b81
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/23/2021
+ms.openlocfilehash: 48d2317376090f194727aef91962ce670022e0de
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205796"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603774"
 ---
 # <a name="integrate-log-analytics-and-excel"></a>集成 Log Analytics 和 Excel
 

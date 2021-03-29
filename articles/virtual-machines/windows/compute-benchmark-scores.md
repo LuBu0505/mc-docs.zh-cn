@@ -1,23 +1,23 @@
 ---
 title: Azure Windows VM 的计算基准测试分数
 description: 比较运行 Windows Server 的 Azure VM 的 SPECint 计算基准测试分数。
-ms.service: virtual-machines-windows
-ms.subservice: sizes
+ms.service: virtual-machines
+ms.subservice: azure-compute-unit
 ms.topic: conceptual
 ms.workload: infrastructure-services
 origin.date: 04/29/2020
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.reviewer: davberg
-ms.openlocfilehash: 88754d493b5f2793a171109fda4c6e3f3263f408
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: de3d90738cc2af2e4cda4255158d8267361d4f38
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054398"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603657"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows VM 的计算基准测试分数
 以下 SPECInt 基准测试分数显示运行 Windows Server 的特定 Azure VM 的计算性能。 此外，还提供了 [Linux VM](../linux/compute-benchmark-scores.md) 的计算基准测试分数。

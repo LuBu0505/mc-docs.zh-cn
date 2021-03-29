@@ -2,14 +2,14 @@
 title: Durable Functions 的绑定 - Azure
 description: 如何使用 Azure Functions 的 Durable Functions 扩展的触发器和绑定。
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 03/22/2021
 ms.author: v-junlch
-ms.openlocfilehash: b0ae68f7fe565975c20707e67cb6a4e2513d638d
-ms.sourcegitcommit: cdb7228e404809c930b7709bcff44b89d63304ec
+ms.openlocfilehash: e40e46dabe4af1a2da28280f60b66a506702e0e6
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91402387"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602720"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 的绑定
 
@@ -19,7 +19,7 @@ ms.locfileid: "91402387"
 
 业务流程触发器可用于创作[持久业务流程协调程序函数](durable-functions-types-features-overview.md#orchestrator-functions)。 此触发器支持启动新的业务流程协调程序函数实例和恢复“等待”任务的现有业务流程协调程序函数实例。
 
-使用适用于 Azure Functions 的 Visual Studio 工具时，使用 [OrchestrationTriggerAttribute](https://docs.microsoft.com/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.orchestrationtriggerattribute?view=azure-dotnet) .NET 属性配置业务流程触发器。
+使用适用于 Azure Functions 的 Visual Studio 工具时，使用 [OrchestrationTriggerAttribute](https://docs.microsoft.com/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.orchestrationtriggerattribute) .NET 属性配置业务流程触发器。
 
 使用脚本语言（例如 JavaScript 或 C# scripting）编写业务流程协调程序函数时，由 *function.json* 文件中 `bindings` 数组的以下 JSON 对象定义业务流程协调程序触发器：
 
@@ -451,7 +451,7 @@ public class Counter
 }
 ```
 
-此实体的状态是 `Counter` 类型的对象，该对象包含存储计数器当前值的字段。 为了将此对象持久保存在存储中，`Json.NET` 库会将其序列化和反序列化。 
+此实体的状态是 `Counter` 类型的对象，该对象包含存储计数器当前值的字段。 为了将此对象持久保存在存储中，[Json.NET](https://www.newtonsoft.com/json) 库会将其序列化和反序列化。 
 
 有关基于类的语法及其用法的详细信息，请参阅[定义实体类](durable-functions-dotnet-entities.md#defining-entity-classes)。
 
@@ -540,7 +540,7 @@ module.exports = df.entity(function(context) {
 不需在发送信号之前创建目标实体 - 实体状态可以在处理信号的实体函数内部创建。
 
 > [!NOTE]
-> 必须知道，从客户端发送的“信号”会直接排队，稍后以异步方式对其进行处理。 具体说来，`SignalEntityAsync` 通常会在实体开始操作之前返回，因此不可能获取返回值或观察异常。 如果需要更强的保证（例如，在使用工作流的情况下），则应使用*业务流程协调程序函数*，此类函数会等待实体操作完成，可以处理返回值并观察异常。
+> 必须知道，从客户端发送的“信号”会直接排队，稍后以异步方式对其进行处理。 具体说来，`SignalEntityAsync` 通常会在实体开始操作之前返回，因此不可能获取返回值或观察异常。 如果需要更强的保证（例如，在使用工作流的情况下），则应使用 *业务流程协调程序函数*，此类函数会等待实体操作完成，可以处理返回值并观察异常。
 
 ### <a name="example-client-signals-entity-directly---c"></a>示例：客户端直接向实体发出信号 - C#
 
@@ -645,4 +645,3 @@ module.exports = async function (context) {
 
 > [!div class="nextstepaction"]
 > [用于实例管理的内置 HTTP API 参考](durable-functions-http-api.md)
-

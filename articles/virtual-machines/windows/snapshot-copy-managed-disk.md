@@ -2,22 +2,22 @@
 title: 使用门户或 PowerShell 创建虚拟硬盘驱动器的快照
 description: 了解如何使用门户或 PowerShell 创建 Azure VM 的副本来将其用作备份或用于排查问题。
 manager: twooley
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
 origin.date: 10/08/2018
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
-ms.subservice: disks
-ms.openlocfilehash: 2307c236490ed85f970babafb067953b0b394582
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 100ffcf2c78b00fb87e1cd9ffb467139749c5a11
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102053959"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603691"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-powershell"></a>使用门户或 PowerShell 创建快照
 
@@ -68,7 +68,7 @@ ms.locfileid: "102053959"
         -CreateOption copy
     ```
 
-    <!--NOT AVAILABLE on [availability zones](../../availability-zones/az-overview.md)-->
+    <!--NOT AVAILABLE ON [availability zones](../../availability-zones/az-overview.md)-->
     <!--NOT AVAILABLE on FEATURE Standard_ZRS-->
 
 4. 拍摄快照：

@@ -2,17 +2,16 @@
 title: 使用 Azure Monitor 跨资源进行查询 | Azure Docs
 description: 本文介绍了如何在订阅中跨多个工作区以及从特定的 App Insights 应用查询资源。
 origin.date: 06/05/2019
-ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
-ms.openlocfilehash: 622833caa14157e7d63454429c2783852c6b9380
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/23/2021
+ms.openlocfilehash: e4ebd87c9b715fb7dc356a20975e6c1f969d61af
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205480"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603561"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>在 Azure Monitor 中执行跨工作区和应用的日志查询
 
@@ -20,7 +19,7 @@ Azure Monitor 日志支持跨同一资源组、另一资源组或另一订阅中
 
 可以通过两种方法来查询存储在多个工作区和应用中的数据：
 1. 通过指定工作区和应用详细信息来显式查询。 本文详细介绍了这一方法。
-2. 隐式使用[资源上下文查询](../platform/design-logs-deployment.md#access-mode)。 当你在特定资源、资源组或订阅的上下文中查询时，将从包含这些资源的数据的所有工作区中提取相关数据。 将不会提取存储在应用中的 Application Insights 数据。
+2. 隐式使用[资源上下文查询](./design-logs-deployment.md#access-mode)。 当你在特定资源、资源组或订阅的上下文中查询时，将从包含这些资源的数据的所有工作区中提取相关数据。 将不会提取存储在应用中的 Application Insights 数据。
 
 > [!IMPORTANT]
 > 如果使用的是[基于工作区的 Application Insights 资源](../app/create-workspace-resource.md)，则遥测与其他所有日志数据一起存储在 Log Analytics 工作区中。 使用 workspace() 表达式编写一个查询，使其在多个工作区中包含应用。 对于同一个工作区中的多个应用，则无需跨工作区查询。
@@ -29,12 +28,12 @@ Azure Monitor 日志支持跨同一资源组、另一资源组或另一订阅中
 ## <a name="cross-resource-query-limits"></a>跨资源查询限制 
 
 * 可以在单个查询中包含的 Application Insights 资源和 Log Analytics 工作区的数量限制为 100。
-* 视图设计器不支持跨资源查询。 可以在 Log Analytics 中创作一个查询，将其固定到 Azure 仪表板，以[将日志查询可视化](../learn/tutorial-logs-dashboards.md)。 
+* 视图设计器不支持跨资源查询。 可以在 Log Analytics 中创作一个查询，将其固定到 Azure 仪表板，以[将日志查询可视化](../visualize/tutorial-logs-dashboards.md)。 
 * 仅当前 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 支持日志警报中的跨资源查询。
 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>跨 Log Analytics 工作区以及从 Application Insights 进行查询
-若要在查询中引用另一个工作区，请使用 [*workspace*](../logs/workspace-expression.md) 标识符，对于 Application Insights 中的应用，请使用 [*app*](../log-query/app-expression.md) 标识符。  
+若要在查询中引用另一个工作区，请使用 [*workspace*](../logs/workspace-expression.md) 标识符，对于 Application Insights 中的应用，请使用 [*app*](./app-expression.md) 标识符。  
 
 ### <a name="identifying-workspace-resources"></a>标识工作区资源
 以下示例演示了跨 Log Analytics 工作区进行查询以从名为 *contosoretail-it* 的工作区的 Update 表中返回记录的汇总计数。 
@@ -108,9 +107,9 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 ```
 
 ## <a name="using-cross-resource-query-for-multiple-resources"></a>针对多个资源使用跨资源查询
-使用跨资源查询来关联来自多个 Log Analytics 工作区和 Application Insights 资源的数据时，查询可能变得复杂且难以维护。 应利用 [Azure Monitor 日志查询中的函数](../log-query/functions.md)将查询逻辑与查询资源的范围分开，这样可以简化查询结构。 以下示例演示了如何监视多个 Application Insights 资源，并按应用程序名称显示失败请求的计数。 
+使用跨资源查询来关联来自多个 Log Analytics 工作区和 Application Insights 资源的数据时，查询可能变得复杂且难以维护。 应利用 [Azure Monitor 日志查询中的函数](./functions.md)将查询逻辑与查询资源的范围分开，这样可以简化查询结构。 以下示例演示了如何监视多个 Application Insights 资源，并按应用程序名称显示失败请求的计数。 
 
-创建如下所示的引用 Application Insights 资源范围的查询。 `withsource= SourceApp` 命令可添加用于指定发送日志的应用程序名称的列。 使用别名 applicationsScoping[ 将查询另存为函数 ](../log-query/functions.md#create-a-function)。
+创建如下所示的引用 Application Insights 资源范围的查询。 `withsource= SourceApp` 命令可添加用于指定发送日志的应用程序名称的列。 使用别名 applicationsScoping[ 将查询另存为函数 ](./functions.md#create-a-function)。
 
 ```Kusto
 // crossResource function that scopes my Application Insights resources
@@ -124,7 +123,7 @@ app('Contoso-app5').requests
 
 
 
-现可在跨资源查询中[使用此函数](../log-query/functions.md#use-a-function)，如下所示。 函数别名 applicationsScoping 返回来自所有已定义应用程序的请求表的并集。 然后，查询筛选失败的请求，并按应用程序显示趋势。 在此示例中，分析运算符是可选的。 该运算符从 SourceApp 属性中提取应用程序名称。
+现可在跨资源查询中[使用此函数](./functions.md#use-a-function)，如下所示。 函数别名 applicationsScoping 返回来自所有已定义应用程序的请求表的并集。 然后，查询筛选失败的请求，并按应用程序显示趋势。 在此示例中，分析运算符是可选的。 该运算符从 SourceApp 属性中提取应用程序名称。
 
 ```Kusto
 applicationsScoping 
@@ -143,6 +142,5 @@ applicationsScoping
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看[在 Azure Monitor 中分析日志数据](../log-query/log-query-overview.md)来大致了解日志查询以及 Azure Monitor 日志数据是如何构造的。
-
+- 查看[在 Azure Monitor 中分析日志数据](./log-query-overview.md)来大致了解日志查询以及 Azure Monitor 日志数据是如何构造的。
 

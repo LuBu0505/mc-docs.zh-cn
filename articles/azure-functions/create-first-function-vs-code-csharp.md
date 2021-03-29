@@ -2,14 +2,14 @@
 title: 使用 Visual Studio Code 创建 C# 函数 - Azure Functions
 description: 了解如何创建 C# 函数，然后使用 Visual Studio Code 中的 Azure Functions 扩展将本地项目发布到 Azure Functions 中的无服务器托管。
 ms.topic: quickstart
-ms.date: 01/12/2021
+ms.date: 02/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3b1e6953d3a16aa03b408ec5a87d48dde6492dc9
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 751fe66376c93ab17b908eec02498b37bc677cef
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195164"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105106210"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-using-visual-studio-code"></a>快速入门：在 Azure 中使用 Visual Studio Code 创建 C# 函数
 
@@ -78,11 +78,10 @@ ms.locfileid: "98195164"
 
 ## <a name="next-steps"></a>后续步骤
 
-你已使用 Visual Studio Code 通过简单的 HTTP 触发函数创建了函数应用。 在下一篇文章中，将通过添加输出绑定来扩展该函数。 此绑定将 HTTP 请求中的字符串写入 Azure 队列存储队列中的消息。 
+你已使用 [Visual Studio Code](functions-develop-vs-code.md?tabs=csharp) 通过简单的 HTTP 触发函数创建了函数应用。 在下一篇文章中，你将通过连接到 Azure 存储来扩展该函数。 若要详细了解如何连接到其他 Azure 服务，请参阅[将捆绑项添加到 Azure Functions 中的现有函数](add-bindings-existing-function.md?tabs=csharp)。 
 
 > [!div class="nextstepaction"]
 > [连接到 Azure 存储队列](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-csharp)
 
 [Azure Functions Core Tools]: functions-run-local.md
 [Azure Functions extension for Visual Studio Code]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions
-

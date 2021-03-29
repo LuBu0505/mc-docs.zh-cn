@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor 客户管理的密钥
 description: 使用 Azure Key Vault 密钥配置客户管理的密钥以加密 Log Analytics 工作区中的数据的信息和步骤。
-ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
-ms.openlocfilehash: 214f53929ce1ce013594fbe042f96f12c68f173e
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/23/2021
+ms.openlocfilehash: 0a6fa162d8be7a7ed0f2a97e168ce925b1f22fbc
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205374"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603473"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 
@@ -25,11 +24,11 @@ ms.locfileid: "102205374"
 
 Azure Monitor 确保使用 Microsoft 管理的密钥 (MMK) 静态加密所有数据和保存的查询。 Azure Monitor 还可以使用你自己的密钥进行加密（该密钥存储在 [Azure Key Vault](../../key-vault/general/overview.md) 中），这会赋予你控制权，允许你随时撤销对你的数据的访问权限。 Azure Monitor 进行加密的操作与[Azure 存储加密](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption)的操作相同。
 
-客户管理的密钥在[专用的群集](../log-query/logs-dedicated-clusters.md)上提供，可提供更高的保护级别和控制。 引入到专用群集的数据进行两次加密 — 一次在服务级别使用 Microsoft 管理的密钥或客户管理的密钥，一次在基础结构级别使用两种不同的加密算法和两个不同的密钥。 
+客户管理的密钥在[专用的群集](./logs-dedicated-clusters.md)上提供，可提供更高的保护级别和控制。 引入到专用群集的数据进行两次加密 — 一次在服务级别使用 Microsoft 管理的密钥或客户管理的密钥，一次在基础结构级别使用两种不同的加密算法和两个不同的密钥。 
 
 过去 14 天内引入的数据也保存在热缓存（受 SSD 支持）中，以实现高效的查询引擎操作。 此数据保持使用 Microsoft 密钥进行加密，而不管客户管理的密钥的配置如何，但你对 SSD 数据的控制将遵循[密钥吊销](#key-revocation)规定。 我们正致力于在 2021 年的上半年使用客户管理的密钥加密 SSD 数据。
 
-Log Analytics 专用群集使用产能预留[定价模型](../log-query/logs-dedicated-clusters.md#cluster-pricing-model)，起始价格为 1000 GB/天。
+Log Analytics 专用群集使用产能预留[定价模型](./logs-dedicated-clusters.md#cluster-pricing-model)，起始价格为 1000 GB/天。
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>客户管理的密钥在 Azure Monitor 中的操作方式
 
@@ -145,7 +144,7 @@ Authorization: Bearer <token>
 > [!IMPORTANT]
 > 如果 Key Vault 位于专用链接 (vNet) 中，则不能使用用户分配的托管标识。 在这种情况下，可以使用系统分配的托管标识。
 
-请遵循[“专用群集”一文](../log-query/logs-dedicated-clusters.md#creating-a-cluster)中说明的过程。 
+请遵循[“专用群集”一文](./logs-dedicated-clusters.md#creating-a-cluster)中说明的过程。 
 
 ## <a name="grant-key-vault-permissions"></a>授予 Key Vault 权限
 
@@ -253,7 +252,7 @@ Content-type: application/json
 
 需要具有对工作区和群集的“写入”权限才能执行此操作，其中包括 `Microsoft.OperationalInsights/workspaces/write` 和 `Microsoft.OperationalInsights/clusters/write`。
 
-请遵循[“专用群集”一文](../log-query/logs-dedicated-clusters.md#link-a-workspace-to-cluster)中说明的过程。
+请遵循[“专用群集”一文](./logs-dedicated-clusters.md#link-a-workspace-to-cluster)中说明的过程。
 
 ## <a name="key-revocation"></a>密钥吊销
 
@@ -380,7 +379,7 @@ Content-type: application/json
 <!--Not available in MC: Customer Lockbox (preview)-->
 ## <a name="customer-managed-key-operations"></a>客户管理的密钥的操作
 
-客户管理的密钥在专用群集上提供，并且[专用群集文章](../log-query/logs-dedicated-clusters.md#change-cluster-properties)中引用了这些操作
+客户管理的密钥在专用群集上提供，并且[专用群集文章](./logs-dedicated-clusters.md#change-cluster-properties)中引用了这些操作
 
 - 获取资源组中的所有群集  
 - 获取订阅中的所有群集
@@ -454,8 +453,8 @@ Content-type: application/json
 
   **群集更新**
   -  400 -- 群集处于正在删除状态。 正在执行异步操作。 群集必须完成其操作，才能执行任意更新操作。
-  -  400 -- KeyVaultProperties 不为空，但格式错误。 请参阅[密钥标识符更新](../platform/customer-managed-keys.md#update-cluster-with-key-identifier-details)。
-  -  400 -- 无法验证 Key Vault 中的密钥。 可能是由于权限不足或密钥不存在。 验证是否在 Key Vault 中[设置密钥和访问策略](../platform/customer-managed-keys.md#grant-key-vault-permissions)。
+  -  400 -- KeyVaultProperties 不为空，但格式错误。 请参阅[密钥标识符更新](#update-cluster-with-key-identifier-details)。
+  -  400 -- 无法验证 Key Vault 中的密钥。 可能是由于权限不足或密钥不存在。 验证是否在 Key Vault 中[设置密钥和访问策略](#grant-key-vault-permissions)。
   -  400 -- 密钥不可恢复。 Key Vault 必须设置为“软删除”和“清除保护”。 请参阅 [Key Vault 文档](../../key-vault/general/soft-delete-overview.md)
   -  400 -- 现在无法执行操作。 等待异步操作完成，然后重试。
   -  400 -- 群集处于正在删除状态。 等待异步操作完成，然后重试。
@@ -476,6 +475,6 @@ Content-type: application/json
   -  409 -- 正在执行工作区链接或取消链接操作。
 ## <a name="next-steps"></a>后续步骤
 
-- 了解 [Log Analytics 专用群集计费](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
-- 了解 [Log Analytics 工作区的正确设计](../platform/design-logs-deployment.md)
+- 了解 [Log Analytics 专用群集计费](./manage-cost-storage.md#log-analytics-dedicated-clusters)
+- 了解 [Log Analytics 工作区的正确设计](./design-logs-deployment.md)
 

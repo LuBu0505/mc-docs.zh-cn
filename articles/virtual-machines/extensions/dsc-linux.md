@@ -1,25 +1,22 @@
 ---
 title: 适用于 Linux 的 Azure DSC 扩展
 description: 安装 OMI 和 DSC 包，以便能够使用 Desired State Configuration 来配置 Azure Linux VM。
-services: virtual-machines-linux
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.collection: linux
 origin.date: 06/12/2018
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: e6833615508e63400f57b375f8dc12911792399a
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 69e77c887e3068377d5ce262f69d66997a4282a0
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055301"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603158"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>适用于 Linux 的 DSC 扩展 (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -29,8 +26,6 @@ Desired State Configuration (DSC) 是一个管理平台，可让你使用“配�
 > 适用于 Linux 的 DSC 扩展和[适用于 Linux 的 Log Analytics 虚拟机扩展](./oms-linux.md)当前存在冲突，并在并列配置中不受支持。 不要在同一 VM 上同时使用这两个解决方案。
 
 DSCForLinux 扩展由 Azure 发布并提供支持。 该扩展在 Azure 虚拟机上安装 OMI 和 DSC 代理。 DSC 扩展还能执行以下操作：
-
-<!--CORRECT ON supported by Azure-->
 
 - 将 Linux VM 注册到 Azure 自动化帐户，以便从 Azure 自动化服务提取配置 (Register ExtensionAction)
 - 将 MOF 配置推送到 Linux VM (Push ExtensionAction)。
@@ -443,7 +438,7 @@ Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure CLI 运行以下命令。
 

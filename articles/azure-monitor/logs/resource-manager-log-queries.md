@@ -1,17 +1,16 @@
 ---
 title: 用于日志查询的资源管理器模板示例
 description: 用于部署 Azure Monitor 日志查询的 Azure 资源管理器模板示例。
-ms.subservice: logs
 ms.topic: sample
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
-ms.openlocfilehash: 1199f1a00e8668300c340ac025e09b0be0330e09
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/23/2021
+ms.openlocfilehash: 336359e238f90a84dfa4f591b0ba580f318429bb
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205082"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603703"
 ---
 # <a name="resource-manager-template-samples-for-log-queries-in-azure-monitor"></a>用于 Azure Monitor 日志查询的资源管理器模板示例
 本文包含用于在 Azure Monitor 中创建和配置日志查询的 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)示例。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。

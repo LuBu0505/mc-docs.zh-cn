@@ -6,15 +6,15 @@ ms.author: v-johya
 ms.topic: conceptual
 origin.date: 02/22/2016
 ms.subservice: autoscale
-ms.date: 11/02/2020
+ms.date: 03/25/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: bbd17ad1ded8d795e5eeb93c7c0f4c9acd228c9d
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 9c2453cf360605fc25e1dfde09e3d7c344cfbe44
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204896"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603660"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>使用 VM 规模集的 Resource Manager 模板的高级自动缩放配置
 可以根据性能指标阈值，按循环计划或按特定日期扩展和缩减虚拟机规模集。 还可以为缩放操作配置电子邮件和 webhook 通知。 本文演示了在 VM 规模集上使用 Resource Manager 模板配置以上所有对象的示例。
@@ -243,9 +243,9 @@ ms.locfileid: "102204896"
 
 [Azure 自动缩放的最佳实践](autoscale-best-practices.md)
 
-[使用 PowerShell 管理自动缩放](../samples/powershell-samples.md#create-and-manage-autoscale-settings)
+[使用 PowerShell 管理自动缩放](../powershell-samples.md#create-and-manage-autoscale-settings)
 
-[使用 CLI 管理自动缩放](../samples/cli-samples.md#autoscale)
+[使用 CLI 管理自动缩放](../cli-samples.md#autoscale)
 
 [对自动缩放配置 Webhook 和电子邮件通知](autoscale-webhook-email.md)
 

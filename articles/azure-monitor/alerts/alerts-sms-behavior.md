@@ -5,15 +5,14 @@ author: Johnnytechn
 ms.author: v-johya
 services: monitoring
 ms.topic: conceptual
-ms.date: 02/20/2021
-ms.subservice: alerts
+ms.date: 03/22/2021
 origin.date: 02/16/2018
-ms.openlocfilehash: 2c73a46761c09ebbb2d51ac91c912de853273f08
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 6c813d96773f2222687139b0be56bb8f000a0af5
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205006"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603431"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>操作组中的短信通知行为
 
@@ -43,8 +42,7 @@ ms.locfileid: "102205006"
 >如果用户已取消订阅短信警报，但随后被添加到新的操作组，将接收新操作组的短信警报，但对于所有以前的操作组均保持取消订阅状态。
 
 ## <a name="next-steps"></a>后续步骤
-获取[活动日志警报概述](../platform/alerts-overview.md)，了解如何接收警报  
+获取[活动日志警报概述](./alerts-overview.md)，了解如何接收警报  
 了解有关[短信速率限制](alerts-rate-limiting.md)的详细信息  
-详细了解[操作组](../platform/action-groups.md)
-
+详细了解[操作组](./action-groups.md)
 

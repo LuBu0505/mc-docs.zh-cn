@@ -2,13 +2,13 @@
 title: Azure Functions 1.x 的 host.json 参考
 description: 使用 v1 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
-ms.date: 11/30/2020
-ms.openlocfilehash: dc113521460902bef8b2b79ae7c328698958d6f5
-ms.sourcegitcommit: a1f565fd202c1b9fd8c74f814baa499bbb4ed4a6
+ms.date: 03/22/2021
+ms.openlocfilehash: 5094f593a587d0fd08fd5b700dbb3ec682cfb0de
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96507407"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602818"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Functions 1.x 的 host.json 参考
 
@@ -149,7 +149,7 @@ ms.locfileid: "96507407"
 
 ## <a name="eventhub"></a>eventHub
 
-[事件中心触发器和绑定](functions-bindings-event-hubs-trigger.md#functions-1x)的配置设置。
+[事件中心触发器和绑定](functions-bindings-event-hubs.md#functions-1x)的配置设置。
 
 ## <a name="functions"></a>functions
 
@@ -332,7 +332,7 @@ ms.locfileid: "96507407"
 }
 ```
 
-|properties  |默认 | 说明 |
+|属性  |默认 | 说明 |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|占用函数级锁的时间段。 锁自动续订。| 
 |listenerLockPeriod|00:01:00|占用侦听器锁的时间段。| 
@@ -377,4 +377,3 @@ ms.locfileid: "96507407"
 
 > [!div class="nextstepaction"]
 > [查看环境变量中的全局设置](functions-app-settings.md)
-

@@ -2,14 +2,14 @@
 title: 工作项集成（预览版）- Application Insights
 description: 了解如何在 GitHub 或 Azure DevOps 中创建工作项，并在其中嵌入 Application Insights 数据。
 ms.topic: conceptual
-ms.date: 02/24/2021
+ms.date: 03/25/2021
 ms.author: v-johya
-ms.openlocfilehash: 18e1bdc1de1fba833a05ad227383393e6524ae61
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: ba8d26f5b0a1168505992cf6fe7c734ee9e7e008
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205868"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603546"
 ---
 # <a name="work-item-integration-preview"></a>工作项集成（预览版）
 
@@ -54,7 +54,7 @@ ms.locfileid: "102205868"
 
 :::image type="content" source="./media/work-item-integration/edit-template.png" alt-text="“工作项”选项卡的屏幕截图，其中选择了“编辑”铅笔图标。":::
 
-选择顶部的“编辑”![“编辑”图标](./media/work-item-integration/edit-icon.png)，开始编辑模板。 工作项模板基于 [Azure Monitor 工作簿](../platform/workbooks-overview.md)。 工作项信息是使用关键字查询语言生成的。 你可以修改查询来添加对你的团队至关重要的更多上下文。 完成编辑后，通过选择顶部工具栏中的“保存”图标![“保存”图标](./media/work-item-integration/save-icon.png)来保存工作簿。
+选择顶部的“编辑”![“编辑”图标](./media/work-item-integration/edit-icon.png)，开始编辑模板。 工作项模板基于 [Azure Monitor 工作簿](../visualize/workbooks-overview.md)。 工作项信息是使用关键字查询语言生成的。 你可以修改查询来添加对你的团队至关重要的更多上下文。 完成编辑后，通过选择顶部工具栏中的“保存”图标![“保存”图标](./media/work-item-integration/save-icon.png)来保存工作簿。
 
 :::image type="content" source="./media/work-item-integration/edit-workbook.png" alt-text="编辑模式下的工作项模板工作簿的屏幕截图。" lightbox="./media/work-item-integration/edit-workbook.png":::
 

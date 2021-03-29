@@ -5,21 +5,21 @@ author: MikeDodaro
 ms.author: v-junlch
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 12/28/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: d10d0a2d3d2067afcc96f4e85ee41c7485727d1f
-ms.sourcegitcommit: a37f80e7abcf3e42859d6ff73abf566efed783da
+ms.date: 03/23/2021
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 357e0b8c0c14d5433f11931e51be6ab1d605c18a
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829449"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602642"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure Spring Cloud CI/CD 与 GitHub Actions
 
 GitHub Actions 支持自动化的软件开发生命周期工作流。 通过适用于 Azure Spring Cloud 的 GitHub Actions，可以在存储库中创建工作流来生成、测试、打包、发布并部署到 Azure。 
 
 ## <a name="prerequisites"></a>先决条件
-此示例需要 [Azure CLI](/cli/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
+此示例需要 [Azure CLI](/cli/install-azure-cli)。
 
 ## <a name="set-up-github-repository-and-authenticate"></a>设置 GitHub 存储库并进行身份验证
 需要使用 Azure 服务主体凭据来为 Azure 登录操作授权。 若要获取 Azure 凭据，请在本地计算机上执行以下命令：
@@ -213,6 +213,5 @@ jobs:
 ## <a name="next-steps"></a>后续步骤
 
 * [用于 Spring Cloud GitHub Actions 的 Key Vault](./spring-cloud-github-actions-key-vault.md)
-* [Azure Active Directory 服务主体](/cli/ad/sp?preserve-view=true&view=azure-cli-latest#az-ad-sp-create-for-rbac)
+* [Azure Active Directory 服务主体](/cli/ad/sp#az-ad-sp-create-for-rbac)
 * [适用于 Azure 的 GitHub Actions](https://github.com/Azure/actions/)
-

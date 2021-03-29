@@ -1,21 +1,23 @@
 ---
 title: 适用于 Linux 虚拟机和 Windows 虚拟机的 Azure 安全基线
 description: Windows 虚拟机安全基线为实现 Azure 安全基准中指定的安全建议提供了过程指南和资源。
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: security
+ms.collection: linux
 ms.topic: conceptual
 origin.date: 07/13/2020
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e9a30932dab865703c894107b72b50b485e24dfc
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 936bab56ffdf0a6b459fb71a19c530abddf0c0fd
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055275"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603141"
 ---
 <!--All Links Verified Successfully-->
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>适用于 Windows 虚拟机的 Azure 安全基线
@@ -80,12 +82,13 @@ ms.locfileid: "102055275"
 
 可以使用 Azure 安全中心的实时网络访问，将 Windows 虚拟机限制为在有限时间内向批准的 IP 地址公开。 此外，请使用 Azure 安全中心的自适应网络强化功能，建议基于实际流量和威胁情报限制端口和源 IP 的 NSG 配置。
 
-<!--NOT AVAILABLE ON * [How to configure DDoS protection](../../ddos-protection/manage-ddos-protection.md)-->
+<!--NOT AVAILABLE ON [How to configure DDoS protection](../../ddos-protection/manage-ddos-protection.md)-->
+
 * [如何部署 Azure 防火墙](../../firewall/tutorial-firewall-deploy-portal.md)
 
 * [了解 Azure 安全中心集成的威胁情报](../../security-center/azure-defender.md)
 
-<!--NOT AVAILABLE ON * [Understand Azure Security Center Adaptive Network Hardening](../../security-center/security-center-adaptive-network-hardening.md)-->
+<!--NOT AVAILABLE ON [Understand Azure Security Center Adaptive Network Hardening](../../security-center/security-center-adaptive-network-hardening.md)-->
 
 * [了解 Azure 安全中心实时网络访问控制](../../security-center/security-center-just-in-time.md)
 
@@ -151,7 +154,7 @@ ms.locfileid: "102055275"
 
 * [用于网络的 Azure Policy 示例](../../governance/policy/samples/built-in-policies.md#network)
 
-<!--NOT AVAILABLE ON * [How to create an Azure Blueprint](../../governance/blueprints/create-blueprint-portal.md)-->
+<!--NOT AVAILABLE ON [How to create an Azure Blueprint](../../governance/blueprints/create-blueprint-portal.md)-->
 
 **Azure 安全中心监视**：不适用
 
@@ -177,9 +180,9 @@ ms.locfileid: "102055275"
 
 使用 Azure Policy 来验证（和/或修正）与 Windows 虚拟机相关的网络资源的配置。
 
-* [如何查看和检索 Azure 活动日志事件](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [如何查看和检索 Azure 活动日志事件](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [如何在 Azure Monitor 中创建警报](../../azure-monitor/platform/alerts-activity-log.md)
+* [如何在 Azure Monitor 中创建警报](../../azure-monitor/alerts/alerts-activity-log.md)
 
 * [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -223,13 +226,13 @@ ms.locfileid: "102055275"
 
 此外，请允许 Azure Monitor 访问你的审核和活动日志，其中包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用的元素。
 
-* [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/platform/diagnostic-settings.md)
+* [如何使用 Azure Monitor 收集平台日志和指标](../../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Log Analytics 代理概述](../../azure-monitor/platform/log-analytics-agent.md)
+* [Log Analytics 代理概述](../../azure-monitor/agents/log-analytics-agent.md)
 
 * [适用于 Windows 的 Log Analytics 虚拟机扩展](../extensions/oms-windows.md)
 
-* [查看和检索 Azure 活动日志事件](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [查看和检索 Azure 活动日志事件](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [Application Insights 概述](../../azure-monitor/app/app-insights-overview.md)
 
@@ -245,7 +248,7 @@ ms.locfileid: "102055275"
 
 * [Azure 安全中心中的数据收集](../../security-center/security-center-enable-data-collection.md)
 
-* [若要捕获用于监视的 Syslog 数据，需启用 Log Analytics 扩展](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
+* [若要捕获用于监视的 Syslog 数据，需启用 Log Analytics 扩展](../../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
 
 **Azure 安全中心监视**：是
 
@@ -255,8 +258,9 @@ ms.locfileid: "102055275"
 
 **指导**：确保用于存储虚拟机日志的任何存储帐户或 Log Analytics 工作区都具有根据组织的符合性规定设置的日志保留期。
 
-<!--NOT AVAILABLE ON * [How to monitor virtual machines in Azure](../../azure-monitor/vm/monitor-vm-azure.md)-->
-* [如何配置 Log Analytics 工作区保留期](../../azure-monitor/platform/manage-cost-storage.md)
+<!--NOT AVAILABLE ON [How to monitor virtual machines in Azure](../../azure-monitor/vm/monitor-vm-azure.md)-->
+
+* [如何配置 Log Analytics 工作区保留期](../../azure-monitor/logs/manage-cost-storage.md)
 
 **Azure 安全中心监视**：不可用
 
@@ -264,20 +268,21 @@ ms.locfileid: "102055275"
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和查看日志
 
-**指导**：启用 Log Analytics 代理（也称 Azure Monitoring Agent (MMA)），并将其配置为将日志发送到 Log Analytics 工作区。 Windows 代理会将从各种源收集的数据发送到 Azure Monitor 中的 Log Analytics 工作区，并发送在监视解决方案中定义的任何特有的日志或指标。
+**指导**：启用 Log Analytics 代理（也称 Microsoft Monitoring Agent (MMA)），并将其配置为将日志发送到 Log Analytics 工作区。 Windows 代理会将从各种源收集的数据发送到 Azure Monitor 中的 Log Analytics 工作区，并发送在监视解决方案中定义的任何特有的日志或指标。
 
 分析和监视日志中的异常行为，并定期查看结果。 使用 Azure Monitor 查看日志并对日志数据执行查询。
 
 或者，可以启用数据并将其载入 Azure Sentinel 或第三方 SIEM，以监视和查看日志。
 
-* [Log Analytics 代理概述](../../azure-monitor/platform/log-analytics-agent.md)
+* [Log Analytics 代理概述](../../azure-monitor/agents/log-analytics-agent.md)
 
 * [适用于 Windows 的 Log Analytics 虚拟机扩展](../extensions/oms-windows.md)
 
-<!--NOT AVAILABLE ON * [How to onboard Azure Sentinel](../../sentinel/quickstart-onboard.md)-->
-* [了解 Log Analytics 工作区](../../azure-monitor/log-query/log-analytics-tutorial.md)
+<!--NOT AVAILABLE ON [How to onboard Azure Sentinel](../../sentinel/quickstart-onboard.md)-->
 
-* [如何在 Azure Monitor 中执行自定义查询](../../azure-monitor/log-query/get-started-queries.md)
+* [了解 Log Analytics 工作区](../../azure-monitor/logs/log-analytics-tutorial.md)
+
+* [如何在 Azure Monitor 中执行自定义查询](../../azure-monitor/logs/get-started-queries.md)
 
 **Azure 安全中心监视**：不可用
 
@@ -289,11 +294,11 @@ ms.locfileid: "102055275"
 
 或者，可以启用数据并将其载入 Azure Sentinel 或第三方 SIEM，以针对异常活动设置警报。
 
-<!--NOT AVAILABLE ON * [How to onboard Azure Sentinel](../../sentinel/quickstart-onboard.md)-->
+<!--NOT AVAILABLE ON [How to onboard Azure Sentinel](../../sentinel/quickstart-onboard.md)-->
 
 * [如何在 Azure 安全中心管理警报](../../security-center/security-center-managing-and-responding-alerts.md)
 
-* [如何针对 Log Analytics 日志数据发出警报](../../azure-monitor/learn/tutorial-response.md)
+* [如何针对 Log Analytics 日志数据发出警报](../../azure-monitor/alerts/tutorial-response.md)
 
 **Azure 安全中心监视**：不可用
 
@@ -305,7 +310,7 @@ ms.locfileid: "102055275"
 
 * [如何为云服务和虚拟机配置 Microsoft Antimalware](../../security/fundamentals/antimalware.md)
 
-<!--NOT AVAILABLE ON * [How to Enable guest-level monitoring for Virtual Machines](../../cost-management-billing/cloudyn/azure-vm-extended-metrics.md)-->
+<!--NOT AVAILABLE ON [How to Enable guest-level monitoring for Virtual Machines](../../cost-management-billing/cloudyn/azure-vm-extended-metrics.md)-->
 
 **Azure 安全中心监视**：是
 
@@ -321,7 +326,7 @@ ms.locfileid: "102055275"
 
 ### <a name="210-enable-command-line-audit-logging"></a>2.10：启用命令行审核日志记录
 
-**指导**：Azure 安全中心为 Azure 虚拟机 (VM) 提供安全事件日志监视。 如果启用了自动预配或允许手动安装代理，则安全中心可在所有受支持的 Azure VM 以及任何新建的 Azure VM 中预配 Azure Monitoring Agent。 该代理可启用进程创建事件 4688 和事件 4688 内的 CommandLine 字段。 VM 上创建的新进程由事件日志记录，并由安全中心检测服务监视。
+**指导**：Azure 安全中心为 Azure 虚拟机 (VM) 提供安全事件日志监视。 如果启用了自动预配或可以手动安装代理，则安全中心可在所有受支持的 Azure VM 以及任何新建的 Azure VM 中预配 Microsoft Monitoring Agent。 该代理可启用进程创建事件 4688 和事件 4688 内的 CommandLine 字段。 VM 上创建的新进程由事件日志记录，并由安全中心检测服务监视。
 
 * [Azure 安全中心中的数据收集](../../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
@@ -369,7 +374,7 @@ Azure 安全中心监视：不可用
 
 **指导**：客户应尽可能使用 Azure Active Directory SSO，而不是为每个服务配置单个独立凭据。 请使用 Azure 安全中心标识和访问管理建议。
 
-<!--NOT AVAILABLE ON * [Single sign-on to applications in Azure Active Directory](../../active-directory/manage-apps/what-is-single-sign-on.md)-->
+<!--NOT AVAILABLE ON [Single sign-on to applications in Azure Active Directory](../../active-directory/manage-apps/what-is-single-sign-on.md)-->
 
 * [如何在 Azure 安全中心监视标识和访问](../../security-center/security-center-identity-access.md)
 
@@ -407,10 +412,10 @@ Azure 安全中心监视：不可用
 
 * [如何部署 Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-<!--NOT AVAILABLE ON * [Understanding Azure Security Center risk detections (suspicious activity)](../../active-directory/identity-protection/overview-identity-protection.md)-->
+<!--NOT AVAILABLE ON [Understanding Azure Security Center risk detections (suspicious activity)](../../active-directory/identity-protection/overview-identity-protection.md)-->
 * [如何将 Azure 活动日志集成到 Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [如何为自定义警报和通知配置操作组](../../azure-monitor/platform/action-groups.md)
+* [如何为自定义警报和通知配置操作组](../../azure-monitor/alerts/action-groups.md)
 
 **Azure 安全中心监视**：是
 
@@ -452,13 +457,13 @@ Azure 安全中心监视：不可用
 
 **指导**：配置 Azure Active Directory 的诊断设置，以将审核日志和登录日志发送到 Log Analytics 工作区。 此外，使用 Azure Monitor 查看日志并对来自 Azure 虚拟机的日志数据执行查询。
 
-* [了解 Log Analytics 工作区](../../azure-monitor/log-query/log-analytics-tutorial.md)
+* [了解 Log Analytics 工作区](../../azure-monitor/logs/log-analytics-tutorial.md)
 
 * [如何将 Azure 活动日志集成到 Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [如何在 Azure Monitor 中执行自定义查询](../../azure-monitor/log-query/get-started-queries.md)
+* [如何在 Azure Monitor 中执行自定义查询](../../azure-monitor/logs/get-started-queries.md)
 
-<!--Not Available on 01/19 * [How to monitor virtual machines in Azure](../../azure-monitor/insights/monitor-vm-azure.md)-->
+<!--NOT AVAILABLE ON [How to monitor virtual machines in Azure](../../azure-monitor/vm/monitor-vm-azure.md)-->
 
 **Azure 安全中心监视**：不可用
 
@@ -468,9 +473,9 @@ Azure 安全中心监视：不可用
 
 **指导**：使用 Azure Active Directory 的风险和标识保护功能配置对检测到的与存储帐户资源相关的可疑操作的自动响应。 应通过 Azure Sentinel 启用自动响应，以实现组织的安全响应。
 
-<!--NOT AVAILABLE ON * [How to view Azure AD risky sign-ins](../../active-directory/identity-protection/overview-identity-protection.md)-->
-<!--NOT AVAILABLE ON * [How to configure and enable Identity Protection risk policies](../../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)-->
-<!--NOT AVAILABLE ON * [How to onboard Azure Sentinel](../../sentinel/quickstart-onboard.md)-->
+<!--NOT AVAILABLE ON [Understanding Azure Security Center risk detections (suspicious activity)](../../active-directory/identity-protection/overview-identity-protection.md)-->
+<!--NOT AVAILABLE ON [How to configure and enable Identity Protection risk policies](../../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)-->
+<!--NOT AVAILABLE ON [How to onboard Azure Sentinel](../../sentinel/quickstart-onboard.md)-->
 
 **Azure 安全中心监视**：不可用
 
@@ -480,7 +485,7 @@ Azure 安全中心监视：不可用
 
 **指导**：如果第三方需要访问客户数据（例如在响应支持请求期间这样做），请使用 Azure 虚拟机客户密码箱来审核和批准/拒绝客户数据访问请求。
 
-<!--NOT AVAILABLE ON * [Understanding Customer Lockbox](../../security/fundamentals/customer-lockbox-overview.md)-->
+<!--NOT AVAILABLE ON [Understanding Customer Lockbox](../../security/fundamentals/customer-lockbox-overview.md)-->
 
 **Azure 安全中心监视**：不适用
 
@@ -504,7 +509,7 @@ Azure 安全中心监视：不可用
 
 **指导**：为开发、测试和生产实现单独的订阅和/或管理组。 资源应当按虚拟网络/子网进行分隔，相应地进行标记，并由网络安全组 (NSG) 或 Azure 防火墙提供保护。 对于存储或处理敏感数据的虚拟机，请实施相应的策略和过程，以在不使用这些虚拟机时将其关闭。
 
-<!--NOT AVAILABLE ON * [How to create additional Azure subscriptions](../../cost-management-billing/manage/create-subscription.md)-->
+<!--NOT AVAILABLE ON [How to create additional Azure subscriptions](../../cost-management-billing/manage/create-subscription.md)-->
 
 * [如何创建管理组](../../governance/management-groups/create-management-group-portal.md)
 
@@ -590,9 +595,9 @@ Azure 使用传输层安全性 (TLS) 协议，在云服务和客户之间传输�
 
 **指导**：将 Azure Monitor 与 Azure 活动日志配合使用，以创建在虚拟机和相关资源发生更改时发出的警报。
 
-* [如何针对 Azure 活动日志事件创建警报](../../azure-monitor/platform/alerts-activity-log.md)
+* [如何针对 Azure 活动日志事件创建警报](../../azure-monitor/alerts/alerts-activity-log.md)
 
-* [如何针对 Azure 活动日志事件创建警报](../../azure-monitor/platform/alerts-activity-log.md)
+* [如何针对 Azure 活动日志事件创建警报](../../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Azure 存储分析日志记录](../../storage/common/storage-analytics-logging.md)
 
@@ -608,7 +613,7 @@ Azure 使用传输层安全性 (TLS) 协议，在云服务和客户之间传输�
 
 **指导**：遵循 Azure 安全中心关于在 Azure 虚拟机上执行漏洞评估的建议。 使用建议的 Azure 安全或第三方解决方案对虚拟机执行漏洞评估。
 
-<!--Not Available on 01/19 * [How to implement Azure Security Center vulnerability assessment recommendations](../../security-center/deploy-vulnerability-assessment-vm.md)-->
+<!--NOT AVAILABLE ON [How to implement Azure Security Center vulnerability assessment recommendations](../../security-center/deploy-vulnerability-assessment-vm.md)-->
 
 **Azure 安全中心监视**：是
 
@@ -688,7 +693,7 @@ Azure 使用传输层安全性 (TLS) 协议，在云服务和客户之间传输�
 
 **指导**：使用标记、管理组和单独订阅（如果适用）来组织和跟踪虚拟机和相关资源。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
-<!--NOT AVAILABLE ON * [How to create additional Azure subscriptions](../../cost-management-billing/manage/create-subscription.md)-->
+<!--NOT AVAILABLE ON [How to create additional Azure subscriptions](../../cost-management-billing/manage/create-subscription.md)-->
 
 * [如何创建管理组](../../governance/management-groups/create-management-group-portal.md)
 
@@ -732,7 +737,7 @@ Azure 使用传输层安全性 (TLS) 协议，在云服务和客户之间传输�
 
 * [Azure 自动化简介](../../automation/automation-intro.md)
 
-<!--NOT AVAILABLE ON * [How to enable Azure VM Inventory](../../automation/automation-tutorial-installed-software.md)-->
+<!--NOT AVAILABLE ON [How to enable Azure VM Inventory](../../automation/automation-tutorial-installed-software.md)-->
 * [了解自适应应用程序控制](../../security-center/security-center-adaptive-application.md)
 
 **Azure 安全中心监视**：不适用
@@ -745,7 +750,7 @@ Azure 使用传输层安全性 (TLS) 协议，在云服务和客户之间传输�
 
 * [Azure 自动化简介](../../automation/automation-intro.md)
 
-<!--NOT AVAILABLE ON * [Track changes in your environment with the Change Tracking solution](../../automation/change-tracking/overview.md)-->
+<!--NOT AVAILABLE ON [Track changes in your environment with the Change Tracking solution](../../automation/change-tracking/overview.md)-->
 
 * [Azure 自动化 State Configuration 概述](../../automation/automation-dsc-overview.md)
 
@@ -816,14 +821,14 @@ Azure 使用传输层安全性 (TLS) 协议，在云服务和客户之间传输�
 
 * [Azure 防火墙概述](../../firewall/overview.md)
 
-<!--NOT AVAILABLE ON * [Web Application Firewall overview](../../web-application-firewall/overview.md)-->
+<!--NOT AVAILABLE ON [Web Application Firewall overview](../../web-application-firewall/overview.md)-->
 * [网络安全概述](../../virtual-network/network-security-groups-overview.md)
 
 * [Azure 虚拟网络概述](../../virtual-network/virtual-networks-overview.md)
 
 * [使用 Azure 管理组来组织资源](../../governance/management-groups/overview.md)
 
-<!--NOT AVAILABLE ON * [Subscription decision guide](https://docs.azure.cn/cloud-adoption-framework/decision-guides/subscriptions/)-->
+<!--NOT AVAILABLE ON [Subscription decision guide](https://docs.azure.cn/cloud-adoption-framework/decision-guides/subscriptions/)-->
 
 **Azure 安全中心监视**：不适用
 
@@ -887,7 +892,7 @@ Azure 使用传输层安全性 (TLS) 协议，在云服务和客户之间传输�
 
 * [有关创建 ARM 模板的信息](./ps-template.md)
 
-<!--NOT AVAILABLE ON * [How to upload a custom VM VHD to Azure](https://docs.azure.cn/operator/azure-stack-add-vm-image?view=azs-1910&preserve-view=true)-->
+<!--NOT AVAILABLE ON [How to upload a custom VM VHD to Azure](https://docs.azure.cn/operator/azure-stack-add-vm-image?view=azs-1910&preserve-view=true)-->
 
 **Azure 安全中心监视**：是
 
@@ -1113,7 +1118,7 @@ Azure 使用传输层安全性 (TLS) 协议，在云服务和客户之间传输�
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
+**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
 此外，请明确标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
@@ -1151,7 +1156,7 @@ Azure 使用传输层安全性 (TLS) 协议，在云服务和客户之间传输�
 
 * [如何配置连续导出](../../security-center/continuous-export.md)
 
-<!--NOT AVAILABLE ON * [How to stream alerts into Azure Sentinel](../../sentinel/connect-azure-security-center.md)-->
+<!--NOT AVAILABLE ON [How to stream alerts into Azure Sentinel](../../sentinel/connect-azure-security-center.md)-->
 
 **Azure 安全中心监视**：不可用
 

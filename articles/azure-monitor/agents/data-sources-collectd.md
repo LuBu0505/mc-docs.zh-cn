@@ -2,17 +2,16 @@
 title: 在 Azure Monitor 中通过 CollectD 收集数据 | Azure Docs
 description: CollectD 是一个开源 Linux 守护程序，它定期从应用程序级和系统级信息中收集数据。  本文介绍了如何在 Azure Monitor 中通过 CollectD 收集数据。
 origin.date: 11/27/2018
-ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
-ms.openlocfilehash: a3bfd93c3a154a82fecfe14ab755a39fc9b4c5cd
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/22/2021
+ms.openlocfilehash: d526a3189d85da8221641a841f0054e1784cbdaa
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205708"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603315"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Monitor 中的 Linux 代理上通过 CollectD 收集数据
 [CollectD](https://collectd.org/) 是一个开源 Linux 守护程序，它定期从应用程序级和系统级信息中收集性能指标。 示例应用程序包括 Java 虚拟机 (JVM)、MySQL Server 和 Nginx。 本文介绍了如何在 Azure Monitor 中通过 CollectD 收集性能数据。
@@ -133,6 +132,6 @@ CollectD 配置使用默认的 `write_http` 插件通过端口 26000 将性能�
 | `values[]` | CounterValue |
 
 ## <a name="next-steps"></a>后续步骤
-* 了解[日志查询](../log-query/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。 
-* 使用[自定义字段](../platform/custom-fields.md)将来自 syslog 记录的数据解析为单个字段。
+* 了解[日志查询](../logs/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。 
+* 使用[自定义字段](../logs/custom-fields.md)将来自 syslog 记录的数据解析为单个字段。
 

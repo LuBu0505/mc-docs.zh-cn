@@ -1,27 +1,22 @@
 ---
 title: 适用于 Windows 的 Azure 网络观察程序代理虚拟机扩展
 description: 使用虚拟机扩展在 Windows 虚拟机上部署网络观察程序代理。
-services: virtual-machines-windows
-manager: vashan
-tags: azure-resource-manager
-ms.assetid: 27e46af7-2150-45e8-b084-ba33de8c5e3f
-ms.service: virtual-machines-windows
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.collection: windows
 origin.date: 02/14/2017
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3129becc3e911e5e3d29c0c253f6bb7f26f6cd95
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: f087ab757df147ed888cf014541ba410a4625750
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857138"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603178"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>适用于 Windows 的网络观察程序代理虚拟机扩展
 
@@ -111,4 +106,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentW
 
 如果对本文中的任何内容不了解，可以参阅网络观察程序用户指南文档或联系 [Azure 支持](https://support.azure.cn/support/contact/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://support.azure.cn/support/support-azure/)提交请求。 有关使用 Azure 支持的信息，请阅读 [Azure 支持常见问题](https://www.azure.cn/support/faq/)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

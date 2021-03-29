@@ -4,20 +4,19 @@ description: 了解如何使用资源管理器模板创建日志警报
 author: Johnnytechn
 ms.author: v-johya
 ms.topic: conceptual
-ms.date: 02/20/2021
-ms.subservice: alerts
-ms.openlocfilehash: f54db52197b4822eb4d49308d31413e14a0bd1c2
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/22/2021
+ms.openlocfilehash: 0ce5f628f0145f128396430398c442c1738a7d79
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205327"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603462"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建日志警报
 
-通过日志警报，用户可以使用 [Log Analytics](../log-query/log-analytics-tutorial.md) 查询按每个设置的频率评估资源日志，并根据结果触发警报。 规则可以使用[操作组](../platform/action-groups.md)触发运行一个或多个操作。 [详细了解日志警报的功能和术语](../platform/alerts-unified-log.md)。
+通过日志警报，用户可以使用 [Log Analytics](../logs/log-analytics-tutorial.md) 查询按每个设置的频率评估资源日志，并根据结果触发警报。 规则可以使用[操作组](./action-groups.md)触发运行一个或多个操作。 [详细了解日志警报的功能和术语](./alerts-unified-log.md)。
 
-本文介绍如何在 Azure Monitor 中使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)配置[日志警报](../platform/alerts-unified-log.md)。 使用资源管理器模板可以通过编程方式在多个环境中设置一致且可重现的警报。 日志警报是在 `Microsoft.Insights/scheduledQueryRules` 资源提供程序中创建的。 请参阅[计划查询规则 API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) 的 API 参考。
+本文介绍如何在 Azure Monitor 中使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)配置[日志警报](./alerts-unified-log.md)。 使用资源管理器模板可以通过编程方式在多个环境中设置一致且可重现的警报。 日志警报是在 `Microsoft.Insights/scheduledQueryRules` 资源提供程序中创建的。 请参阅[计划查询规则 API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) 的 API 参考。
 
 基本步骤如下所示：
 
@@ -26,15 +25,15 @@ ms.locfileid: "102205327"
 4. 使用任意部署方法部署模板。
 
 > [!NOTE]
-> 可以将 [Log Analytics 工作区](../log-query/log-analytics-tutorial.md)中的日志数据发送到 Azure Monitor 指标存储。 指标警报具有[不同的行为](../platform/alerts-metric-overview.md)，该行为可能更可取，具体取决于你要使用的数据。 要了解如何将日志路由到指标，请参阅[日志的指标警报](../platform/alerts-metric-logs.md)。
+> 可以将 [Log Analytics 工作区](../logs/log-analytics-tutorial.md)中的日志数据发送到 Azure Monitor 指标存储。 指标警报具有[不同的行为](./alerts-metric-overview.md)，该行为可能更可取，具体取决于你要使用的数据。 要了解如何将日志路由到指标，请参阅[日志的指标警报](./alerts-metric-logs.md)。
 
 > [!NOTE]
-> 过去使用旧式 [Log Analytics 警报 API](../platform/api-alerts.md) 以及 [Log Analytics 保存的搜索和警报](../insights/solutions.md)的旧式模板管理 Log Analytics 的日志警报。
+> 过去使用旧式 [Log Analytics 警报 API](./api-alerts.md) 以及 [Log Analytics 保存的搜索和警报](../insights/solutions.md)的旧式模板管理 Log Analytics 的日志警报。
 
 
 ## <a name="simple-template-up-to-api-version-2018-04-16"></a>简单模板（最高 API 版本为 2018-04-16）
 
-[计划查询规则（创建）](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate)模板，基于[结果日志警报数量](../platform/alerts-unified-log.md#count-of-the-results-table-rows)（示例数据设置为变量）：
+[计划查询规则（创建）](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate)模板，基于[结果日志警报数量](./alerts-unified-log.md#count-of-the-results-table-rows)（示例数据设置为变量）：
 
 ```json
 {
@@ -109,7 +108,7 @@ ms.locfileid: "102205327"
 
 ## <a name="template-with-cross-resource-query-up-to-api-version-2018-04-16"></a>带有跨资源查询的模板（最高 API 版本为 2018-04-16）
 
-[计划查询规则（创建）](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate)模板，基于可[跨资源](../log-query/cross-workspace-query.md)查询的[指标度量](../platform/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value)（示例数据设置为变量）：
+[计划查询规则（创建）](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate)模板，基于可[跨资源](../logs/cross-workspace-query.md)查询的[指标度量](./alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value)（示例数据设置为变量）：
 
 ```json
 {
@@ -432,8 +431,8 @@ ms.locfileid: "102205327"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解[日志警报](../platform/alerts-unified-log.md)
-* 了解如何[管理日志警报](../platform/alerts-log.md)
-* 了解[用于日志警报的 Webhook 操作](../platform/alerts-log-webhook.md)
-* 了解有关[日志查询](../log-query/log-query-overview.md)的详细信息。
+* 了解[日志警报](./alerts-unified-log.md)
+* 了解如何[管理日志警报](./alerts-log.md)
+* 了解[用于日志警报的 Webhook 操作](./alerts-log-webhook.md)
+* 了解有关[日志查询](../logs/log-query-overview.md)的详细信息。
 

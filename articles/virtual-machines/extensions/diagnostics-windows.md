@@ -1,26 +1,22 @@
 ---
 title: 在 Windows VM 上使用 Azure PowerShell 启用诊断
-services: virtual-machines-windows
 description: 了解如何使用 PowerShell 在运行 Windows 的虚拟机中启用 Azure 诊断
-manager: gwallace
-ms.assetid: 2e6d88f2-1980-4a24-827e-a81616a0d247
-ms.service: virtual-machines-windows
-ms.subservice: extensions
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.collection: windows
 origin.date: 12/15/2015
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: d1b6a6ee7c3b3fd22600b40b9a0c569ee6cb936b
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: a7860b24ac29f7bdb0e8488c6d7c1a0cfc8b3102
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055302"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603066"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>使用 PowerShell 在运行 Windows 的虚拟机中启用 Azure 诊断
 
@@ -211,6 +207,6 @@ Update-AzureVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Update.VM
 
 ## <a name="next-steps"></a>后续步骤
 * 有关使用 Azure 诊断功能和其他方法排查问题的详细说明，请参阅 [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](../../cloud-services/cloud-services-dotnet-diagnostics.md)（在 Azure 云服务和虚拟机中启用诊断）。
-* [Diagnostics configurations schema](../../azure-monitor/platform/diagnostics-extension-versions.md)（诊断配置架构）解释了诊断扩展的各种 XML 配置选项。
+* [Diagnostics configurations schema](../../azure-monitor/agents/diagnostics-extension-versions.md)（诊断配置架构）解释了诊断扩展的各种 XML 配置选项。
 
 <!--Update_Description: update meta properties, wording update, update link-->

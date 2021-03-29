@@ -1,28 +1,22 @@
 ---
 title: 适用于 Windows 的 Azure VM 扩展和功能
 description: 了解可为 Azure 虚拟机提供的扩展，这些虚拟机扩展按它们提供或改进的功能进行分组。
-services: virtual-machines-windows
-manager: gwallace
-tags: azure-service-management,azure-resource-manager
-ms.assetid: 999d63ee-890e-432e-9391-25b3fc6cde28
-ms.service: virtual-machines-windows
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.collection: windows
 origin.date: 03/30/2018
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eeb6be32f8df503a672dca86003788ded0090c42
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: d0f65bd1609f2324cfa37d85da638faa0bc66fe7
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055298"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603132"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>适用于 Windows 的虚拟机扩展和功能
 
@@ -35,7 +29,7 @@ Azure 虚拟机 (VM) 扩展是小型应用程序，可在 Azure VM 上提供部�
 有许多不同的 Azure VM 扩展可用，每个都有特定用例。 示例包括：
 
 - 使用适用于 Windows 的 DSC 扩展将 PowerShell 所需状态配置应用到 VM。 有关详细信息，请参阅 [Azure Desired State configuration extension](dsc-overview.md)（Azure Desired State Configuration 扩展）。
-- 使用 Log Analytics 代理 VM 扩展配置 VM 监视功能。 有关详细信息，请参阅[将 Azure VM 连接到 Azure Monitor 日志](../../azure-monitor/learn/quick-collect-azurevm.md)。
+- 使用 Log Analytics 代理 VM 扩展配置 VM 监视功能。 有关详细信息，请参阅[将 Azure VM 连接到 Azure Monitor 日志](../../azure-monitor/vm/quick-collect-azurevm.md)。
     
     <!--NOT AVAILABLE ON [Automating Azure VM deployment with Chef](https://docs.azure.cn/developer/chef/windows-vm-configure)-->
     
@@ -131,7 +125,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
     -Run "Create-File.ps1" -Location "China North"
 ```
 
-在以下示例中，VM 访问扩展用于将 Windows VM 的管理密码重置为临时密码。 有关 VM 访问扩展的详细信息，请参阅[重置 Windows VM 中的远程桌面服务](../troubleshooting/reset-rdp.md)。 运行此扩展后，应重置首次登录密码：
+在以下示例中，VM 访问扩展用于将 Windows VM 的管理密码重置为临时密码。 有关 VM 访问扩展的详细信息，请参阅[重置 Windows VM 中的远程桌面服务](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp)。 运行此扩展后，应重置首次登录密码：
 
 ```powershell
 $cred=Get-Credential
@@ -437,4 +431,4 @@ Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "
 
 有关 VM 扩展的详细信息，请参阅 [Azure 虚拟机扩展和功能概述](overview.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

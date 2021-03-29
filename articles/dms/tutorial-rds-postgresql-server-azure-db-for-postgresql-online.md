@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 origin.date: 04/11/2020
-ms.date: 03/15/2021
-ms.openlocfilehash: 82ee2a5b331dbe5eb03bcd9d8eafda54988a0f04
-ms.sourcegitcommit: 5f85f27bd5d62ffb4913b9b9bd86cc41b3dfbf06
+ms.date: 03/29/2021
+ms.openlocfilehash: d8d72825d97285c38ae35c74b4e0d75d459bf8a9
+ms.sourcegitcommit: 308ca551066252e68198391c3e4d4b1de348deb9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103211741"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105601728"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>教程：使用 DMS 将 RDS PostgreSQL 联机迁移到 Azure DB for PostgreSQL
 
@@ -142,7 +142,7 @@ ms.locfileid: "103211741"
     在目标数据库中禁用触发器：
 
     ```
-    SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
+    SELECT Concat('DROP TRIGGER ', Trigger_Name,' ON ', event_object_table, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
     ```
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>注册 Microsoft.DataMigration 资源提供程序
@@ -205,7 +205,7 @@ ms.locfileid: "103211741"
     > [!NOTE]
     > 也可以现在就选择“仅创建项目”来创建迁移项目，在以后再执行迁移。
 
-5. 选择“保存”  。
+5. 选择“保存” 。
 
 6. 选择“创建并运行活动”，以便创建项目并运行迁移活动。 
 

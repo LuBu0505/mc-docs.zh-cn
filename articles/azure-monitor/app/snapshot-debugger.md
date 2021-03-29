@@ -4,15 +4,16 @@ description: 生产 .NET 应用中出现异常时会自动收集调试快照
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 origin.date: 08/06/2019
-ms.date: 12/07/2020
+ms.date: 03/25/2021
+author: cweining
 ms.author: v-johya
 ms.reviewer: cweining
-ms.openlocfilehash: 7395786ae928b9270beeb8d047d6aecc3bdeeb09
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: 67ff1965907b014fc0a8a22f7ba4d24b4df2805f
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97104448"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603238"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 应用中发生异常时的调试快照
 发生异常时，可自动从实时 Web 应用程序收集调试快照。 快照显示发生异常时源代码和变量的状态。 [Azure Application Insights](./app-insights-overview.md) 中的 Snapshot Debugger 可以监视来自 Web 应用的异常遥测。 它可收集常出现的异常的调试快照，为诊断生产中的问题提供所需信息。 请将[快照收集器 NuGet 包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)添加到应用程序，并按需在 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 中配置收集参数。快照显示在 Application Insights 门户中的[异常](./asp-net-exceptions.md)区域中。
@@ -29,6 +30,7 @@ ms.locfileid: "97104448"
 支持以下环境：
 
 * [Azure 应用服务](snapshot-debugger-appservice.md?toc=/azure-monitor/toc.json)
+* [Azure Function](snapshot-debugger-function-app.md?toc=/azure-monitor/toc.json)
 * 运行 OS 系列 4 或更高版本的 [Azure 云服务](snapshot-debugger-vm.md?toc=/azure-monitor/toc.json)
 * Windows Server 2012 R2 或更高版本上运行的 [Azure Service Fabric 服务](snapshot-debugger-vm.md?toc=/azure-monitor/toc.json)
 * 运行 Windows Server 2012 R2 或更高版本的 [Azure 虚拟机和虚拟机规模集](snapshot-debugger-vm.md?toc=/azure-monitor/toc.json)
@@ -134,6 +136,7 @@ ms.locfileid: "97104448"
 为你的应用程序启用 Application Insights 快照调试器：
 
 * [Azure 应用服务](snapshot-debugger-appservice.md?toc=/azure-monitor/toc.json)
+* [Azure Function](snapshot-debugger-function-app.md?toc=/azure-monitor/toc.json)
 * [Azure 云服务](snapshot-debugger-vm.md?toc=/azure-monitor/toc.json)
 * [Azure Service Fabric 服务](snapshot-debugger-vm.md?toc=/azure-monitor/toc.json)
 * [Azure 虚拟机和虚拟机规模集](snapshot-debugger-vm.md?toc=/azure-monitor/toc.json)

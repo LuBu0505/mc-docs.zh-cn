@@ -1,18 +1,17 @@
 ---
 title: 将 Configuration Manager 连接到 Azure Monitor | Azure Docs
 description: 本文介绍将 Configuration Manager 连接到 Azure Monitor 中的工作区以及开始分析数据的步骤。
-ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
+ms.date: 03/23/2021
 origin.date: 08/28/2019
-ms.openlocfilehash: 5725b4b769deacb940c055bd5a6249e4de6b0075
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: e83df11d937b133baad466b16280d5ba0f8ec492
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205586"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603413"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>将 Configuration Manager 连接到 Azure Monitor
 可将 Microsoft Endpoint Configuration Manager 环境连接到 Azure Monitor 以同步设备集合数据，并在 Azure Monitor 和 Azure 自动化中引用这些集合。  
@@ -45,7 +44,7 @@ Azure Monitor 支持 Configuration Manager 当前分支（版本 1606 及更高�
 
 ## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>为 Configuration Manager 授予访问 Log Analytics 的权限
 
-在以下过程中，你将在 Log Analytics 工作区中，向前面为 Configuration Manager 创建的 AD 应用程序和服务主体授予“参与者”角色。 如果尚未创建工作区，请参阅[在 Azure Monitor 中创建工作区](../learn/quick-create-workspace.md)，然后继续。 这样，Configuration Manager 便可以执行身份验证并连接到 Log Analytics 工作区。  
+在以下过程中，你将在 Log Analytics 工作区中，向前面为 Configuration Manager 创建的 AD 应用程序和服务主体授予“参与者”角色。 如果尚未创建工作区，请参阅[在 Azure Monitor 中创建工作区](./quick-create-workspace.md)，然后继续。 这样，Configuration Manager 便可以执行身份验证并连接到 Log Analytics 工作区。  
 
 > [!NOTE]
 > 必须为 Configuration Manager 指定 Log Analytics 工作区中的权限。 否则，在配置管理器中使用配置向导时会收到一条错误消息。
@@ -149,10 +148,9 @@ Azure Monitor 支持 Configuration Manager 当前分支（版本 1606 及更高�
 
 ![计算机组高级 SCCM 设置的屏幕截图，显示已选择的“导入 Configuration Manager 集合成员身份”的选项。](./media/collect-sccm/sccm-computer-groups02.png)
 
-单击上面任意一项，都会打开日志查询编辑器，相应显示所有已导入的组，或者属于每个组的所有计算机。 使用[日志搜索](../log-query/log-query-overview.md)，可以针对集合成员身份数据执行进一步的深度分析。
+单击上面任意一项，都会打开日志查询编辑器，相应显示所有已导入的组，或者属于每个组的所有计算机。 使用[日志搜索](./log-query-overview.md)，可以针对集合成员身份数据执行进一步的深度分析。
 
 ## <a name="next-steps"></a>后续步骤
 
-使用[日志搜索](../log-query/log-query-overview.md)查看有关配置管理器数据的详细信息。
-
+使用[日志搜索](./log-query-overview.md)查看有关配置管理器数据的详细信息。
 

@@ -3,15 +3,15 @@ title: Azure Functions 入门
 description: 实现使用 Azure Functions 的前几个步骤。
 author: craigshoemaker
 ms.topic: overview
-ms.date: 03/02/2021
+ms.date: 03/22/2021
 ms.author: v-junlch
 zone_pivot_groups: programming-languages-set-functions-lang-workers
-ms.openlocfilehash: 005a478b8f6ea5772a5128af9ce97243c964d2d8
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 9bd6c7cb170f412f4acacbd5325ada31d322c48b
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697000"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602819"
 ---
 # <a name="getting-started-with-azure-functions"></a>Azure Functions 入门
 
@@ -46,7 +46,7 @@ ms.locfileid: "101697000"
 ::: zone pivot="programming-language-javascript"
 | 操作 | 资源 |
 | --- | --- |
-| **创建第一个函数** | 使用以下工具之一：<br><br><li>[Visual Studio Code](./create-first-function-vs-code-node.md)<li>[Node.js 终端/命令提示符](./create-first-function-cli-java.md) |
+| **创建第一个函数** | 使用以下工具之一：<br><br><li>[Visual Studio Code](./create-first-function-vs-code-node.md)<li>[Node.js 终端/命令提示符](./create-first-function-cli-node.md) |
 | **查看正在运行的函数** | <li>[Azure 示例浏览器](https://docs.microsoft.com/samples/browse/?expanded=azure&languages=javascript%2ctypescript&products=azure-functions)<li>[Azure 社区库](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=JavaScript%2CTypeScript) |
 | **了解交互式教程** | <li>[为业务场景选择最佳的 Azure 无服务器技术](https://docs.microsoft.com/learn/modules/serverless-fundamentals/)<li>[结构良好的框架 - 性能效率](https://docs.microsoft.com/learn/modules/azure-well-architected-performance-efficiency/)<li>[使用 Azure Functions 构建无服务器 API](https://docs.microsoft.com/learn/modules/build-api-azure-functions/)<li>[使用 Azure Functions 创建无服务器逻辑](https://docs.microsoft.com/learn/modules/create-serverless-logic-with-azure-functions/)<li>[使用 Azure Functions 将 Node.js 和 Express API 重构到无服务器 API](https://docs.microsoft.com/learn/modules/shift-nodejs-express-apis-serverless/) <br><br>请参阅 Microsoft Learn，查看[一系列完整的交互式教程](https://docs.microsoft.com/learn/browse/?expanded=azure&products=azure-functions)。|
 | **查看最佳实践** |<li>[性能和可靠性](./functions-best-practices.md)<li>[管理连接](./manage-connections.md)<li>[错误处理和函数重试](./functions-bindings-error-pages.md?tabs=javascript)<li>[安全性](./security-concepts.md)|

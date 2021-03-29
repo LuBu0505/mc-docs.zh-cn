@@ -8,12 +8,12 @@ origin.date: 10/19/2019
 ms.date: 02/08/2021
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: 4c10683c92f7a9ff06ae33fc5a72ae92eae25e8f
-ms.sourcegitcommit: 20bc732a6d267b44aafd953516fb2f5edb619454
+ms.openlocfilehash: b30131c5e2cc6c4b983d7477ff8875dd3cb51119
+ms.sourcegitcommit: 308ca551066252e68198391c3e4d4b1de348deb9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99503982"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105601716"
 ---
 # <a name="use-azure-files-with-linux"></a>通过 Linux 使用 Azure 文件
 [Azure 文件](storage-files-introduction.md)是易于使用的云文件系统。 可以使用 [SMB 内核客户端](https://wiki.samba.org/index.php/LinuxCIFS)在 Linux 分发版中装载 Azure 文件共享。 本文介绍装载 Azure 文件共享的两种方法：使用 `mount` 命令按需装载，以及通过在 `/etc/fstab` 中创建一个条目在启动时装载。
@@ -72,8 +72,8 @@ uname -r
 
 * **确保端口 445 处于打开状态**：SMB 通过 TCP 端口 445 通信 - 请查看防火墙是否未阻止 TCP 端口 445 与客户端计算机通信。  替换 `<your-resource-group>` 和 `<your-storage-account>`，然后运行以下脚本：
     ```bash
-    $resourceGroupName="<your-resource-group>"
-    $storageAccountName="<your-storage-account>"
+    resourceGroupName="<your-resource-group>"
+    storageAccountName="<your-storage-account>"
     
     # This command assumes you have logged in with az login
     httpEndpoint=$(az storage account show \
@@ -103,11 +103,11 @@ uname -r
 1. **为装入点创建一个文件夹**：请将 `<your-resource-group>`、`<your-storage-account>` 和 `<your-file-share>` 替换为适合你的环境的信息。
 
     ```bash
-    $resourceGroupName="<your-resource-group>"
-    $storageAccountName="<your-storage-account>"
-    $fileShareName="<your-file-share>"
+    resourceGroupName="<your-resource-group>"
+    storageAccountName="<your-storage-account>"
+    fileShareName="<your-file-share>"
 
-    $mntPath="/mnt/$storageAccountName/$fileShareName"
+    mntPath="/mnt/$storageAccountName/$fileShareName"
 
     sudo mkdir -p $mntPath
     ```
@@ -116,7 +116,7 @@ uname -r
 
     ```bash
     # This command assumes you have logged in with az login
-    $httpEndpoint=(az storage account show \
+    httpEndpoint=$(az storage account show \
         --resource-group $resourceGroupName \
         --name $storageAccountName \
         --query "primaryEndpoints.file" | tr -d '"')
@@ -139,9 +139,9 @@ uname -r
 1. **为装入点创建一个文件夹**：可以在文件系统上的任何位置创建装入点的文件夹，但是通用约定是在 /mnt 文件夹下创建此文件夹。 例如，以下命令（请将 `<your-resource-group>`、`<your-storage-account>` 和 `<your-file-share>` 替换为适用于你的环境的信息）会创建一个新目录：
 
     ```bash
-    $resourceGroupName="<your-resource-group>"
-    $storageAccountName="<your-storage-account>"
-    $fileShareName="<your-file-share>"
+    resourceGroupName="<your-resource-group>"
+    storageAccountName="<your-storage-account>"
+    fileShareName="<your-file-share>"
 
     mntPath="/mnt/$storageAccountName/$fileShareName"
 
@@ -155,12 +155,12 @@ uname -r
         sudo mkdir "/etc/smbcredentials"
     fi
 
-    $storageAccountKey=(az storage account keys list \
+    storageAccountKey=$(az storage account keys list \
         --resource-group $resourceGroupName \
         --account-name $storageAccountName \
         --query "[0].value" | tr -d '"')
     
-    $smbCredentialFile="/etc/smbcredentials/$storageAccountName.cred"
+    smbCredentialFile="/etc/smbcredentials/$storageAccountName.cred"
     if [ ! -f $smbCredentialFile ]; then
         echo "username=$storageAccountName" | sudo tee $smbCredentialFile > /dev/null
         echo "password=$storageAccountKey" | sudo tee -a $smbCredentialFile > /dev/null
@@ -179,7 +179,7 @@ uname -r
 
     ```bash
     # This command assumes you have logged in with az login
-    $httpEndpoint=(az storage account show \
+    httpEndpoint=$(az storage account show \
         --resource-group $resourceGroupName \
         --name $storageAccountName \
         --query "primaryEndpoints.file" | tr -d '"')

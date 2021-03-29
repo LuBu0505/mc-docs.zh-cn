@@ -3,18 +3,17 @@ title: 安装并配置 Microsoft Azure 诊断扩展 (WAD)
 description: 了解如何安装和配置 Windows 诊断扩展。 另外，了解如何存储数据的说明以及 Azure 存储帐户。
 services: azure-monitor
 author: Johnnytechn
-ms.subservice: diagnostic-extension
 ms.topic: conceptual
 origin.date: 02/17/2020
-ms.date: 02/20/2021
+ms.date: 03/22/2021
 ms.author: v-johya
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 7aa64d906e40d08bb5ab97e64bc04f55a9e01b41
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: ab7f13bbb3f079363ea817e5c4b1a64a6d69d022
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205158"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603534"
 ---
 # <a name="install-and-configure-azure-diagnostics-extension-wad"></a>安装并配置 Azure 诊断扩展 (WAD)
 [Azure 诊断扩展](diagnostics-extension-overview.md)是 Azure Monitor 中的一个代理，可从 Azure 虚拟机的来宾操作系统和工作负载以及其他计算资源中收集监视数据。 本文详细介绍如何安装并配置 Windows 诊断扩展，以及如何将数据存储在 Azure 存储帐户中。
@@ -64,11 +63,11 @@ ms.locfileid: "102205158"
 > [!NOTE]
 > 尽管诊断扩展的配置可以采用 JSON 或 XML 格式，但在 Azure 门户中完成的任何配置始终以 JSON 格式存储。 如果将 XML 与其他配置方法配合使用，然后使用 Azure 门户更改配置，则设置将更改为 JSON 格式。
 
-## <a name="resource-manager-template"></a>资源管理器模板
+## <a name="resource-manager-template"></a>Resource Manager 模板
 有关如何使用 Azure 资源管理器模板部署诊断扩展的信息，请参阅[将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用](../../virtual-machines/extensions/diagnostics-template.md)。 
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
-可以在 Azure CLI 中使用 [az vm extension set](/cli/vm/extension?view=azure-cli-latest#az-vm-extension-set) 将 Azure 诊断扩展部署到现有的虚拟机，如以下示例所示。 
+可以在 Azure CLI 中使用 [az vm extension set](/cli/vm/extension#az-vm-extension-set) 将 Azure 诊断扩展部署到现有的虚拟机，如以下示例所示。 
 
 ```azurecli
 az vm extension set \

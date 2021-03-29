@@ -1,18 +1,17 @@
 ---
 title: 从 Azure 资源收集资源日志并使用 Azure Monitor 进行分析
 description: 本教程介绍如何将诊断设置配置为将 Azure 资源中的资源日志收集到 Log Analytics 工作区中，以通过日志查询对这些这些日志进行分析。
-ms.subservice: ''
 ms.topic: tutorial
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
+ms.date: 03/25/2021
 origin.date: 12/15/2019
-ms.openlocfilehash: 2926fb0a57f5db9005f8e270859c43ce9b0ee540
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 1f402af312d48560c665ad4766c4956d0df0d421
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204823"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603477"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>教程：从 Azure 资源收集和分析资源日志
 
@@ -94,7 +93,7 @@ Azure Monitor 中的 Log Analytics 工作区可从各种源收集和索引日志
 
 
 5. 键入查询，然后单击“运行”以检查结果  。 
-6. 有关编写日志查询的教程，请参阅 [Azure Monitor 中的日志查询入门](../log-query/get-started-queries.md)。
+6. 有关编写日志查询的教程，请参阅 [Azure Monitor 中的日志查询入门](../logs/get-started-queries.md)。
 
     ![日志查询](./media/tutorial-resource-logs/log-query-1.png)
 
@@ -105,5 +104,5 @@ Azure Monitor 中的 Log Analytics 工作区可从各种源收集和索引日志
 你已了解如何将资源日志收集到 Log Analytics 工作区中，现在请完成有关编写日志查询的教程以分析此数据。
 
 > [!div class="nextstepaction"]
-> [Azure Monitor 中的日志查询入门](../log-query/get-started-queries.md)
+> [Azure Monitor 中的日志查询入门](../logs/get-started-queries.md)
 

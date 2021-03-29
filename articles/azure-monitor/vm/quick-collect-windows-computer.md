@@ -11,15 +11,15 @@ origin.date: 08/22/2019
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 02/20/2021
+ms.date: 03/23/2021
 ms.author: v-johya
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: f5df35563bc27cb41dc5c2179e016d43b05f8dd2
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: f1eba3fa23e8b139eab18e5b4c050622f5b61573
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205342"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603522"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>使用 Azure Monitor 从混合环境中的 Windows 计算机收集数据
 
@@ -166,5 +166,5 @@ Azure Monitor 可从 Windows 事件日志以及性能计数器中收集指定的
 若要了解如何查看和分析数据，请继续学习以下教程：
 
 > [!div class="nextstepaction"]
-> [在 Log Analytics 中查看或分析数据](../log-query/log-analytics-tutorial.md)
+> [在 Log Analytics 中查看或分析数据](../logs/log-analytics-tutorial.md)
 

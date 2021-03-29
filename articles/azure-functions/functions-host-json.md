@@ -2,13 +2,13 @@
 title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 60abdaaf2e5645d551fc6945200b7422655dacdf
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.date: 03/22/2021
+ms.openlocfilehash: 560c7cf65e6cff03c62ef315b8431265746a7d4e
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697332"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602754"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host.json 参考 
 
@@ -253,7 +253,7 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 
 ## <a name="eventhub"></a>eventHub
 
-可在[事件中心触发器和绑定](functions-bindings-event-hubs-trigger.md#host-json)中查找配置设置。 
+可在[事件中心触发器和绑定](functions-bindings-event-hubs.md#host-json)中查找配置设置。 
 
 ## <a name="extensions"></a>扩展
 
@@ -345,7 +345,7 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 |属性  |默认 | 说明 |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|定义启用哪种级别的文件日志记录。  选项包括 `never`、`always` 和 `debugOnly`。 |
-|logLevel|不适用|一个对象，它定义了用于筛选应用中的函数的日志类别。 2\.x 及更高版本遵循 ASP.NET Core 布局进行日志类别筛选。 此设置允许你筛选特定函数的日志记录。 有关详细信息，请参阅 ASP.NET Core 文档中的[日志筛选](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&preserve-view=true#log-filtering)。 |
+|logLevel|不适用|一个对象，它定义了用于筛选应用中的函数的日志类别。 此设置允许你筛选特定函数的日志记录。 有关详细信息，请参阅[配置日志级别](configure-monitoring.md#configure-log-levels)。 |
 |控制台|不适用| [控制台](#console)日志记录设置。 |
 |applicationInsights|不适用| [applicationInsights](#applicationinsights) 设置。 |
 

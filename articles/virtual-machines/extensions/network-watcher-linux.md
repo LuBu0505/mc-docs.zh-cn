@@ -1,27 +1,22 @@
 ---
 title: 适用于 Linux 的 Azure 网络观察程序代理虚拟机扩展
 description: 使用虚拟机扩展在 Linux 虚拟机上部署网络观察程序代理。
-services: virtual-machines-linux
-manager: vashan
-tags: azure-resource-manager
-ms.assetid: 5c81e94c-e127-4dd2-ae83-a236c4512345
-ms.service: virtual-machines-linux
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.collection: linux
 origin.date: 02/14/2017
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8ba3480ff415cf6031bc2f0efa85a559996dc440
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: f9ba79fb0fe22ee1dc798a2de2b9f8fe5ea7d2df
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857093"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603189"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>适用于 Linux 的网络观察程序代理虚拟机扩展
 
@@ -46,8 +41,8 @@ ms.locfileid: "97857093"
 | CentOS | 6.5+ 和 7 |
 | CoreOS | 899.17.0+ |
 
-<!-- Not Available on | Oracle Linux | 6.8+ and 7 |-->
-<!-- Not Available on | RedHat | 6 and 7 |-->
+<!--NOT AVAILABLE ON | RedHat | 6 and 7 |-->
+<!--NOT AVAILABLE ON | Oracle Linux | 6.8+ and 7 |-->
 
 ### <a name="internet-connectivity"></a>Internet 连接
 
@@ -123,4 +118,4 @@ az vm extension show --name NetworkWatcherAgentLinux --resource-group myResource
 
 如果对本文中的任何内容不了解，可以参阅[网络观察程序文档](../../network-watcher/index.yml)或联系 [Azure 支持](https://support.azure.cn/support/contact/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://support.azure.cn/support/support-azure/)提交请求。 有关使用 Azure 支持的信息，请参阅 [Azure 支持常见问题](https://www.azure.cn/support/faq/)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

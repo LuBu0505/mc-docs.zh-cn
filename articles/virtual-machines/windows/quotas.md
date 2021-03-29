@@ -2,21 +2,21 @@
 title: Azure 的 vCPU 配额
 description: 了解 Azure 虚拟机的 vCPU 配额。
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: quota
 ms.workload: infrastructure-services
 ms.topic: conceptual
 origin.date: 05/31/2018
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 03/29/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 1aed660eb8cb3663ec01169b6b7b627ca65bb46d
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: aabd8a1537102cb7e37c90016302568d09c458bb
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105837"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603741"
 ---
 # <a name="check-vcpu-quotas-using-azure-powershell"></a>使用 Azure PowerShell 检查 vCPU 配额
 
@@ -25,7 +25,7 @@ ms.locfileid: "93105837"
 > [!NOTE]
 > 配额基于所使用的核心总数（已分配和已解除分配）进行计算。 如果需要额外核心，则[请求增加配额](https://support.azure.cn/support/support-azure/)或删除不再需要的 VM。 
 
-## <a name="check-usage"></a>检查使用情况
+## <a name="check-usage"></a>查看使用情况
 
 可以使用 [Get-AzVMUsage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmusage) cmdlet 来检查配额的使用情况。
 
@@ -64,17 +64,17 @@ Standard Storage Managed Disks               2 10000 Count
 Premium Storage Managed Disks                1 10000 Count
 ```
 
-<!-- Not Available on Standard A8-A11 -->
-<!-- Not Available on Standard G, GS -->
-<!-- Not Available on Standard NV, NC -->
-<!-- Not Available on Standard H, MS -->
-<!-- Not Available on Standard LS, LSv2 -->
-<!-- Not Available on Standard ND, NCV2 -->
+<!--NOT AVAILABLE ON Standard A8-A11 -->
+<!--NOT AVAILABLE ON Standard G, GS -->
+<!--NOT AVAILABLE ON Standard NV, NC -->
+<!--NOT AVAILABLE ON Standard H, MS -->
+<!--NOT AVAILABLE ON Standard LS, LSv2 -->
+<!--NOT AVAILABLE ON Standard ND, NCV2 -->
 
-<!--Not Available on ## Reserved VM Instances-->
+<!--NOT AVAILABLE ON ## Reserved VM Instances-->
 
 ## <a name="next-steps"></a>后续步骤
 
 有关计费和配额的详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](../../azure-resource-manager/management/azure-subscription-service-limits.md?toc=/billing/TOC.json)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

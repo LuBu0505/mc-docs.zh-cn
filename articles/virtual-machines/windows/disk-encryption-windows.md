@@ -12,12 +12,12 @@ ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: a842f4a35f39b108da592d9d9ecfc5bb32b9628d
-ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
+ms.openlocfilehash: 79e9233d9c84213cee87cef5e192327726b5b91a
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104766808"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603848"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM 上的 Azure 磁盘加密方案
 
@@ -149,7 +149,8 @@ Azure 磁盘加密[与 Azure Key Vault 集成](disk-encryption-key-vault.md)，�
     | forceUpdateTag | 每次操作需要强制运行时，传入一个像 GUID 这样的唯一值。 |
     | resizeOSDisk | 在拆分系统卷之前，是否应调整 OS 分区大小以占用整个 OS VHD。 |
     | location | 所有资源的位置。 |
-<!--Not Available on ## Enable encryption on NVMe disks for Lsv2 VMs-->
+
+<!--NOT AVAILABLE ON ## Enable encryption on NVMe disks for Lsv2 VMs-->
 
 ## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a>通过客户加密的 VHD 和加密密钥新建的 IaaS VM
 

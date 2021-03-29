@@ -1,22 +1,23 @@
 ---
 title: 教程 - 在 Azure 中管理 Windows 虚拟机配置
 description: 在本教程中，你将学习如何在 Windows 虚拟机上识别更改和管理包更新版
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: tutorial
 ms.workload: infrastructure
 origin.date: 12/05/2018
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 80af6e8c865c901564ba06b338ee435f7954fce1
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: d35155990cdabfb0a4e6582ad2c672982709c1aa
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055276"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603597"
 ---
 <!--Verified successfully-->
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>教程：监视更改和更新 Azure 中的 Windows 虚拟机
@@ -36,7 +37,7 @@ ms.locfileid: "102055276"
 打开 Azure Powershell 控制台，并以管理员权限运行下面列出的脚本。
 
 <!--Not Available on Azure Cloud Shell-->
-<!--Not Available on [https://shell.azure.com/powershell](https://shell.azure.com/powershell)-->
+<!--NOT AVAILABLE ON https://shell.azure.com-->
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 
@@ -81,19 +82,17 @@ New-AzVm `
 
 执行验证以确定是否为该 VM 启用了更新管理。 验证包括检查 Log Analytics 工作区和链接的自动化帐户，以及解决方案是否在工作区中。
 
-应使用 [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) 工作区收集由功能和服务（如更新管理）生成的数据。 工作区提供了一个位置来查看和分析来自多个数据源的数据。
+应使用 [Log Analytics](../../azure-monitor/logs/log-query-overview.md) 工作区收集由功能和服务（如更新管理）生成的数据。 工作区提供了一个位置来查看和分析来自多个数据源的数据。
 
 若要在需要更新的 VM 上执行其他操作，可使用 Azure 自动化针对 VM 运行 Runbook。 此类操作包括下载或应用更新。
 
 验证过程还会检查 VM 是否预配了 Microsoft Monitoring Agent (MMA) 和自动化混合 Runbook 辅助角色。 使用此代理与虚拟机通信并获取关于更新状态的信息。
 
-<!--CORRECT ON Microsoft Monitoring Agent (MMA)-->
-
 在“启用更新管理”窗口中，选择 Log Analytics 工作区和自动化帐户，然后选择“启用” 。 启用此解决方案最长需要 15 分钟的时间。
 
 加入过程中缺少的下列任何先决条件会自动添加：
 
-* [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) 工作区
+* [Log Analytics](../../azure-monitor/logs/log-query-overview.md) 工作区
 * [自动化](../../automation/index.yml)
 * [混合 runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)，VM 上已启用此辅助角色
 
@@ -115,12 +114,12 @@ New-AzVm `
 
 若要为 VM 计划新的更新部署，请选择“更新管理”窗口顶部的“计划更新部署”。 在“新建更新部署”窗口中，指定以下信息：
 
-| 选项 | 说明 |
+| 选项 | 描述 |
 | --- | --- |
 | **名称** |输入用于标识更新部署的唯一名称。 |
 |**操作系统**| 选择 Linux 或 Windows 。|
 | **要更新的组** |对于在 Azure 上托管的 VM，应基于订阅、资源组、位置和标记的组合定义查询。 此查询将生成要包含在你的部署中的 Azure 托管 VM 的动态组。 <br /><br />对于未托管在 Azure 上的 VM，请选择现有的已保存搜索。 使用此搜索，可以选择要包括在部署中的一组 VM。 <br /><br /> 有关详细信息，请参阅[动态组](../../automation/update-management/configure-groups.md)。|
-| **要更新的计算机** |请选择“已保存的搜索”、“已导入的组”或“计算机”  。<br/><br/>如果选择“计算机”，则可以从下拉列表中选择单个计算机。 每台计算机的准备情况将显示在表的“更新代理准备情况”列中。<br /><br /> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../../azure-monitor/platform/computer-groups.md) |
+| **要更新的计算机** |请选择“已保存的搜索”、“已导入的组”或“计算机”  。<br/><br/>如果选择“计算机”，则可以从下拉列表中选择单个计算机。 每台计算机的准备情况将显示在表的“更新代理准备情况”列中。<br /><br /> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../../azure-monitor/logs/computer-groups.md) |
 |**更新分类**|选择所有必需的更新分类。|
 |**包括/排除更新**|选择此选项可打开“包括/排除”窗格。 要包含或排除的更新位于单独的选项卡上。 有关如何处理包含的详细信息，请参阅[计划更新部署](../../automation/update-management/deploy-updates.md#schedule-an-update-deployment)。 |
 |**计划设置**|选择启动时间，然后选择“一次”或“定期” 。|
@@ -158,9 +157,9 @@ New-AzVm `
 
 可以收集和查看清单，了解计算机上的软件、文件、Linux 守护程序、Windows 服务和 Windows 注册表项。 跟踪计算机的配置有助于查明环境中的操作问题，更好地了解计算机的状态。
 
-<!--Not Available on ### Enable change and inventory management-->
-<!--Not Available on ### Track changes-->
-<!--Not Available on ### View inventory-->
+<!--NOT AVAILABLE ON ### Enable change and inventory management-->
+<!--NOT AVAILABLE ON ### Track changes-->
+<!--NOT AVAILABLE ON ### View inventory-->
 <!--Not Available on ### Monitor activity logs and changes-->
 
 ## <a name="next-steps"></a>后续步骤

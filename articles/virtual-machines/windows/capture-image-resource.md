@@ -1,23 +1,23 @@
 ---
 title: 在 Azure 中创建托管映像
 description: 在 Azure 中创建通用 VM 或 VHD 的托管映像。 映像可用于创建多个使用托管磁盘的 VM。
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
 origin.date: 09/27/2018
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: legacy
-ms.openlocfilehash: 3c3200ffc3502af2e25d81978d40b664fd74e2cd
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 4161e100ca95d806bfe1e008a199e19995d0998e
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054303"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603453"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中创建通用 VM 的托管映像
 
@@ -86,7 +86,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
 6. 如果想要在创建映像后删除源 VM，选择“创建映像后自动删除此虚拟机”。
 
-<!--NOT AVAILABLE ON [availability zone](../../availability-zones/az-overview.md)-->
+    <!--NOT AVAILABLE ON [availability zone](../../availability-zones/az-overview.md)-->
     
 8. 选择“创建”以创建映像。
 
@@ -98,7 +98,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
 在开始之前，请确保有最新版本的 Azure PowerShell 模块。 若要查找版本，请在 PowerShell 中运行 `Get-Module -ListAvailable Az`。 如需升级，请参阅[使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则运行 `Connect-AzAccount -Environment AzureChinaCloud` 以创建与 Azure 的连接。
 
-<!--NOT AVAILABLE ON [availability zone(THIS FEATURE IS NOT AVAILABLE ON AZURE CHINA CLOUD)s](../../availability-zones/az-overview.md)-->
+<!--NOT AVAILABLE ON [availability zone](../../availability-zones/az-overview.md)-->
 
 若要创建 VM 映像，请遵循下列步骤：
 

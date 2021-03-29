@@ -6,21 +6,21 @@ ms.topic: tutorial
 ms.workload: infrastructure
 origin.date: 06/06/2019
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: a8e31e647fc9a8736e660e19a77b5f44573fef51
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 140666636f790eb462356e26b069e3ad648c9617
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93103562"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603587"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和管理 Windows VM
 
-Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azure 虚拟机 (VM) 的基本部署任务，例如选择 VM 大小、选择 VM 映像和部署 VM。 你将学习如何执行以下操作：
+Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azure 虚拟机 (VM) 的基本部署任务，例如选择 VM 大小、选择 VM 映像和部署 VM。 学习如何：
 
 > [!div class="checklist"]
 > * 创建并连接到 VM
@@ -31,9 +31,9 @@ Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azu
 
 ## <a name="launch-azure-local-powershell"></a>启动 Azure 本地 PowerShell
 
-打开 Azure Powershell 控制台，并以管理员权限运行以下脚本。
+打开 Azure Powershell 控制台，并以管理员权限运行下面列出的脚本。
 
-<!--Not Available on Azure Cloud Shell-->
+<!--NOT AVAILABLE ON Azure Cloud Shell-->
 
 ## <a name="create-resource-group"></a>创建资源组
 
@@ -56,7 +56,7 @@ New-AzResourceGroup `
 
 创建 VM 时，可使用多个选项，例如操作系统映像、网络配置和管理凭据。 此示例创建名为 *myVM* 的 VM，运行默认版本的 Windows Server 2016 Datacenter。
 
-使用 [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-6) 设置 VM 上管理员帐户所需的用户名和密码：
+使用 [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential) 设置 VM 上管理员帐户所需的用户名和密码：
 
 ```powershell
 $cred = Get-Credential
@@ -87,13 +87,13 @@ Get-AzPublicIpAddress `
    -ResourceGroupName "myResourceGroupVM"  | Select IpAddress
 ```
 
-在本地计算机上使用以下命令创建与 VM 的远程桌面会话。 将 IP 地址替换为你的 VM 的 *publicIPAddress* 。 出现提示时，输入创建 VM 时使用的凭据。
+在本地计算机上使用以下命令创建与 VM 的远程桌面会话。 将 IP 地址替换为你的 VM 的 *publicIPAddress*。 出现提示时，输入创建 VM 时使用的凭据。
 
 ```powershell
 mstsc /v:<publicIpAddress>
 ```
 
-在“Windows 安全性”  窗口中，依次选择“更多选择”  、“使用其他帐户”  。 键入针对 VM 创建的用户名和密码，然后单击“确定”。
+在“Windows 安全性”窗口中，依次选择“更多选择”、“使用其他帐户”。 键入针对 VM 创建的用户名和密码，然后单击“确定”。
 
 ## <a name="understand-marketplace-images"></a>了解市场映像
 
@@ -186,11 +186,11 @@ VM 大小决定 VM 可用计算资源（如 CPU、GPU 和内存）的数量。 �
 | [内存优化](../sizes-memory.md)    | Esv3、Ev3、M、DSv2、Dv2  | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存中分析。                 |
 | [GPU](../sizes-gpu.md)          |  NCv3        | 专门针对大量图形绘制和视频编辑的 VM。       |
 
-<!-- Not Available on DC Series -->
-<!-- Not Available on Lsv2, Ls   -->
-<!-- Not Available on [GPU](sizes-gpu.md)-->
-<!-- Not Available on [High performance](sizes-hpc.md)-->
-
+<!--NOT AVAILABLE ON DC Series -->
+<!--NOT AVAILABLE ON Lsv2, Ls   -->
+<!--NOT AVAILABLE ON [GPU](sizes-gpu.md)-->
+<!--NOT AVAILABLE ON [High performance](sizes-hpc.md)-->
+<!--NOT AVAILABLE ON H Series  -->
 
 ### <a name="find-available-vm-sizes"></a>查找可用的 VM 大小
 
@@ -246,7 +246,7 @@ Azure VM 可能会处于多种电源状态之一。
 | 电源状态 | 说明
 |----|----|
 | 正在启动 | 正在启动虚拟机。 |
-| 正在运行 | 虚拟机正在运行。 |
+| 运行 | 虚拟机正在运行。 |
 | 正在停止 | 正在停止虚拟机。 |
 | 已停止 | VM 已停止。 虚拟机处于停止状态时仍会产生计算费用。  |
 | 正在解除分配 | VM 正解除分配。 |

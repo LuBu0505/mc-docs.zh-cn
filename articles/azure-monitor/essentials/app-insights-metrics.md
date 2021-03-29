@@ -5,15 +5,14 @@ author: Johnnytechn
 services: azure-monitor
 origin.date: 07/03/2019
 ms.topic: reference
-ms.date: 02/20/2021
+ms.date: 03/25/2021
 ms.author: v-johya
-ms.subservice: application-insights
-ms.openlocfilehash: b641905b9231aa3f1dcc6d1e2c74a825172565f4
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 4ed6717471db2b48d5c22e0188ab8f4687665aea
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205775"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603524"
 ---
 # <a name="application-insights-log-based-metrics"></a>基于 Application Insights 日志的指标
 
@@ -22,13 +21,13 @@ ms.locfileid: "102205775"
 * [基于日志的指标](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)在幕后转换为存储的事件中的 [Kusto 查询](https://docs.microsoft.com/azure/kusto/query/)。
 * [标准指标](../app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)存储为预先聚合的时序。
 
-由于标准指标在收集期间会预先聚合，因此它们在查询时具有更好的性能。 因此它们更适合在仪表板和实时警报中显示。 基于日志的指标具有更多的维度，因此，它们特别适合用于数据分析和即席诊断。 在[指标资源管理器](../platform/metrics-getting-started.md)中使用[命名空间选择器](../platform/metrics-getting-started.md#create-your-first-metric-chart)可以在基于日志的指标与标准指标之间切换。
+由于标准指标在收集期间会预先聚合，因此它们在查询时具有更好的性能。 因此它们更适合在仪表板和实时警报中显示。 基于日志的指标具有更多的维度，因此，它们特别适合用于数据分析和即席诊断。 在[指标资源管理器](./metrics-getting-started.md)中使用[命名空间选择器](./metrics-getting-started.md#create-your-first-metric-chart)可以在基于日志的指标与标准指标之间切换。
 
 ## <a name="interpret-and-use-queries-from-this-article"></a>本文中的查询的解释和用法
 
 本文列出了指标以及支持的聚合与维度。 基于日志的指标的详细信息包括底层 Kusto 查询语句。 为方便起见，每个查询对时间粒度、图表类型使用默认值，有时还会拆分维度，这简化了查询在 Log Analytics 中的使用，而无需进行任何修改。
 
-在[指标资源管理器](../platform/metrics-getting-started.md)中绘制同一指标的图表时，不会使用默认值 - 查询会根据图表设置动态调整：
+在[指标资源管理器](./metrics-getting-started.md)中绘制同一指标的图表时，不会使用默认值 - 查询会根据图表设置动态调整：
 
 - 所选的“时间范围”将转换为额外的 *where timestamp ...* 子句，以便仅选取所选时间范围内的事件。 例如，对于显示最近 24 小时数据的图表，查询将包含 *| where timestamp > ago(24 h)*。
 
@@ -39,7 +38,7 @@ ms.locfileid: "102205775"
 - 所选的“拆分图表”维度将转换为额外的 summarize 属性。 例如，如果你按位置拆分图表，并使用 5 分钟时间粒度绘制图表，则 *summarize* 子句将由 *... by bin(timestamp, 5 m), location* 汇总。
 
 > [!NOTE]
-> 如果你不熟悉 Kusto 查询语言，请先复制 Kusto 语句并将其粘贴到 Log Analytics 查询窗格，而无需进行任何修改。 单击“运行”查看基本图表。 对查询语言的语法有一定的了解后，可以开始进行少量的修改，并查看更改造成的影响。 探索自己的数据是开始实现 [Log Analytics](../log-query/log-analytics-tutorial.md) 和 [Azure Monitor](../overview.md) 的全部功能的好办法。
+> 如果你不熟悉 Kusto 查询语言，请先复制 Kusto 语句并将其粘贴到 Log Analytics 查询窗格，而无需进行任何修改。 单击“运行”查看基本图表。 对查询语言的语法有一定的了解后，可以开始进行少量的修改，并查看更改造成的影响。 探索自己的数据是开始实现 [Log Analytics](../logs/log-analytics-tutorial.md) 和 [Azure Monitor](../overview.md) 的全部功能的好办法。
 
 ## <a name="availability-metrics"></a>可用性指标
 
@@ -97,6 +96,8 @@ availabilityResults
 
 ### <a name="browser-page-load-time-browsertimingstotalduration"></a>浏览器页面加载时间 (browserTimings/totalDuration)
 
+从用户请求一直到 DOM、样式表、脚本和映像加载完之间的时间。
+
 |度量单位|支持的聚合|预先聚合的维度|
 |---|---|---|
 |毫秒|Average、Min、Max|无|
@@ -112,6 +113,8 @@ browserTimings
 ```
 
 ### <a name="client-processing-time-browsertimingprocessingduration"></a>客户端处理时间 (browserTiming/processingDuration)
+
+从接收文档的最后一个字节到 DOM 加载完之间的时间。 可能仍在处理异步请求。
 
 |度量单位|支持的聚合|预先聚合的维度|
 |---|---|---|
@@ -129,6 +132,8 @@ browserTimings
 
 ### <a name="page-load-network-connect-time-browsertimingsnetworkduration"></a>页面加载网络连接时间 (browserTimings/networkDuration)
 
+用户请求和网络连接之间的时间。 包括 DNS 查找和传输连接。
+
 |度量单位|支持的聚合|预先聚合的维度|
 |---|---|---|
 |毫秒|Average、Min、Max|无|
@@ -145,6 +150,8 @@ browserTimings
 
 ### <a name="receiving-response-time-browsertimingsreceiveduration"></a>接收响应时间 (browserTimings/receiveDuration)
 
+第一个和最后一个字节之间的时间，或直至断开连接的时间。
+
 |度量单位|支持的聚合|预先聚合的维度|
 |---|---|---|
 |毫秒|Average、Min、Max|无|
@@ -160,6 +167,8 @@ browserTimings
 ```
 
 ### <a name="send-request-time-browsertimingssendduration"></a>发送请求时间 (browserTimings/sendDuration)
+
+网络连接和接收第一个字节之间的时间。
 
 |度量单位|支持的聚合|预先聚合的维度|
 |---|---|---|
@@ -183,7 +192,7 @@ browserTimings
 
 此指标反映浏览器中运行的应用程序代码引发的异常数。 该指标仅包含使用 ```trackException()``` Application Insights API 调用跟踪的异常。
 
-|度量单位|支持的聚合|预先聚合的维度|说明|
+|度量单位|支持的聚合|预先聚合的维度|备注|
 |---|---|---|---|
 |计数|计数|无|基于日志的版本使用 **Sum** 聚合|
 
@@ -198,7 +207,7 @@ exceptions
 
 失败的依赖项调用数。
 
-|度量单位|支持的聚合|预先聚合的维度|说明|
+|度量单位|支持的聚合|预先聚合的维度|备注|
 |---|---|---|---|
 |计数|计数|无|基于日志的版本使用 **Sum** 聚合|
 
@@ -213,7 +222,7 @@ dependencies
 
 每当你将异常记录到 Application Insights 时，都会调用 SDK 的 [trackException() 方法](../app/api-custom-events-metrics.md#trackexception)。 “异常数”指标显示记录的异常数。
 
-|度量单位|支持的聚合|预先聚合的维度|说明|
+|度量单位|支持的聚合|预先聚合的维度|备注|
 |---|---|---|---|
 |计数|计数|云角色名称、云角色实例、设备类型|基于日志的版本使用 **Sum** 聚合|
 
@@ -227,7 +236,7 @@ exceptions
 
 标记为失败的受跟踪服务器请求计数。 默认情况下，Application Insights SDK 会自动将返回 HTTP 响应代码 5xx 或 4xx 的每个服务器请求标记为失败的请求。 可以通过在 [自定义遥测初始化表达式](../app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)中修改请求遥测项的 *success* 属性来自定义此逻辑。
 
-|度量单位|支持的聚合|预先聚合的维度|说明|
+|度量单位|支持的聚合|预先聚合的维度|备注|
 |---|---|---|---|
 |计数|计数|云角色实例、云角色名称、实际或综合流量、请求性能、响应代码|基于日志的版本使用 **Sum** 聚合|
 
@@ -242,7 +251,7 @@ requests
 
 此指标显示服务器异常数。
 
-|度量单位|支持的聚合|预先聚合的维度|说明|
+|度量单位|支持的聚合|预先聚合的维度|备注|
 |---|---|---|---|
 |计数|计数|云角色名称、云角色实例|基于日志的版本使用 **Sum** 聚合|
 

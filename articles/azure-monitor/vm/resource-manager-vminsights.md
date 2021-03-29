@@ -1,26 +1,25 @@
 ---
-title: 用于 VM 的 Azure Monitor 的资源管理器模板示例
-description: 用来部署和配置用于 VM 的 Azure Monitor 的 Azure 资源管理器模板示例。
-ms.subservice: logs
+title: 用于 VM 见解的资源管理器模板示例
+description: 用于部署和配置 VM 见解的 Azure 资源管理器模板示例。
 ms.topic: sample
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
-ms.openlocfilehash: a7dcd3149e877e81080243f91516567a7354d0ee
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/23/2021
+ms.openlocfilehash: 5e93ccff3a03edb042ca3eade03a27c878e2e92a
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205475"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603519"
 ---
-# <a name="resource-manager-template-samples-for-azure-monitor-for-vms"></a>用于 VM 的 Azure Monitor 的资源管理器模板示例
-本文包含用于在虚拟机上启用用于 VM 的 Azure Monitor 的 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)示例。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
+# <a name="resource-manager-template-samples-for-vm-insights"></a>用于 VM 见解的资源管理器模板示例
+本文包含用于在虚拟机上启用 VM 见解的 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)示例。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
 
 ## <a name="configure-workspace"></a>配置工作区
-以下示例将为 Log Analytics 工作区启用用于 VM 的 Azure Monitor。
+以下示例为 Log Analytics 工作区启用 VM 见解。
 
 
 ### <a name="template-file"></a>模板文件
@@ -98,7 +97,7 @@ ms.locfileid: "102205475"
 
 
 ## <a name="onboard-an-azure-virtual-machine"></a>加入 Azure 虚拟机
-以下示例会将 Azure 虚拟机添加到用于 VM 的 Azure Monitor。
+以下示例将 Azure 虚拟机添加到 VM 见解。
 
 
 ### <a name="template-file"></a>模板文件
@@ -219,7 +218,7 @@ ms.locfileid: "102205475"
 
 
 ## <a name="onboard-an-azure-virtual-machine-scale-set"></a>加入 Azure 虚拟机规模集
-以下示例会将 Azure 虚拟机规模集添加到用于 VM 的 Azure Monitor。
+以下示例将 Azure 虚拟机规模集添加到 VM 见解。
 
 
 ### <a name="template-file"></a>模板文件
@@ -340,5 +339,5 @@ ms.locfileid: "102205475"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [获取 Azure Monitor 的其他示例模板](../samples/resource-manager-samples.md)。
+* [获取 Azure Monitor 的其他示例模板](../resource-manager-samples.md)。
 

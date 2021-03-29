@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.service: traffic-manager
 origin.date: 09/18/2019
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 09/28/2020
 ms.author: v-yeche
-ms.openlocfilehash: fb6b6da69ddeb9facbc6c5cf3afc0327b5ac70db
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 1f1b89bfbf8e07f20d727907d92aa7da1e79db10
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054048"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603214"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>使用 Azure PowerShell 的流量管理器子网替代
 
@@ -43,13 +43,13 @@ ms.locfileid: "102054048"
 
 可以通过从本地计算机运行 PowerShell 来运行命令。  
 
-<!--Not Available on Azure Cloud Shell-->
+<!--NOT AVAILABLE ON https://shell.azure.com-->
 
 如果在计算机上运行 PowerShell，则需要 Azure PowerShell 模块 1.0.0 或更高版本。 可以运行 `Get-Module -ListAvailable Az` 来查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 以登录到 Azure。
 
 1. **检索流量管理器终结点：**
 
-    若要启用子网替代，请使用 [Get-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0) 检索要将替代添加到的终结点，并将其存储在变量中。
+    若要启用子网替代，请使用 [Get-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint) 检索要将替代添加到的终结点，并将其存储在变量中。
 
     请将 Name、ProfileName 和 ResourceGroupName 替换为要更改的终结点的值。
 
@@ -60,7 +60,7 @@ ms.locfileid: "102054048"
     ```
 2. **将 IP 地址范围添加到终结点：**
 
-    若要将 IP 地址范围添加到终结点，请使用 [Add-AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange?view=azps-2.5.0&viewFallbackFrom=azps-2.4.0) 添加范围。
+    若要将 IP 地址范围添加到终结点，请使用 [Add-AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange) 添加范围。
 
     ```powershell
 
@@ -74,18 +74,18 @@ ms.locfileid: "102054048"
     Add-AzTrafficManagerIPAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
 
     ```
-    添加范围后，使用 [Set-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) 更新终结点。
+    添加范围后，使用 [Set-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint) 更新终结点。
 
     ```powershell
 
     Set-AzTrafficManagerEndpoint -TrafficManagerEndpoint $TrafficManagerEndpoint
 
     ```
-可以使用 [Remove-AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange?view=azps-2.5.0) 删除 IP 地址范围。
+可以使用 [Remove-AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange) 删除 IP 地址范围。
 
 1. **检索流量管理器终结点：**
 
-    若要启用子网替代，请使用 [Get-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0) 检索要将替代添加到的终结点，并将其存储在变量中。
+    若要启用子网替代，请使用 [Get-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint) 检索要将替代添加到的终结点，并将其存储在变量中。
 
     请将 Name、ProfileName 和 ResourceGroupName 替换为要更改的终结点的值。
 
@@ -108,7 +108,7 @@ ms.locfileid: "102054048"
     Remove-AzTrafficManagerIpAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
 
     ```
-     删除范围后，使用 [Set-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) 更新终结点。
+     删除范围后，使用 [Set-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint) 更新终结点。
 
     ```powershell
 

@@ -5,19 +5,18 @@ author: Johnnytechn
 services: azure-monitor
 origin.date: 01/29/2019
 ms.topic: conceptual
-ms.date: 02/20/2021
+ms.date: 03/25/2021
 ms.author: v-johya
-ms.subservice: metrics
-ms.openlocfilehash: 3c946ba094c723bcbd2fd4c1199431fa158ac614
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 2aaa906753af7491850c65c12396a9d9af384460
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205629"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603215"
 ---
 # <a name="metric-chart-examples"></a>指标图表示例 
 
-Azure 平台提供了[一千多个指标](../platform/metrics-supported.md)，其中许多指标具有维度。 通过使用[维度筛选器](./metrics-charts.md)、应用[拆分](./metrics-charts.md)、控制图表类型和调整图表设置，可以创建功能强大的诊断视图和仪表板，以深入了解基础结构和应用程序的运行状况。 本文介绍了一些可以使用[指标资源管理器](./metrics-charts.md)生成的图表示例，并说明了配置每个图表的必要步骤。
+Azure 平台提供了[一千多个指标](./metrics-supported.md)，其中许多指标具有维度。 通过使用[维度筛选器](./metrics-charts.md)、应用[拆分](./metrics-charts.md)、控制图表类型和调整图表设置，可以创建功能强大的诊断视图和仪表板，以深入了解基础结构和应用程序的运行状况。 本文介绍了一些可以使用[指标资源管理器](./metrics-charts.md)生成的图表示例，并说明了配置每个图表的必要步骤。
 
 想和全世界分享你出色的图表示例吗？ 在 GitHub 上参与撰写此页面，并在此处分享你自己的图表示例！
 
@@ -46,5 +45,4 @@ Azure 平台提供了[一千多个指标](../platform/metrics-supported.md)，�
 
 * 了解有关 Azure Monitor [工作簿](../visualize/workbooks-overview.md)的信息
 * 详细了解[指标资源管理器](metrics-charts.md)
-
 

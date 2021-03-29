@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 04/26/2020
+ms.date: 03/24/2021
 ms.author: v-junlch
-ms.openlocfilehash: da587452ec79dc001053714443a34cfafe4f92ce
-ms.sourcegitcommit: 5f07189f06a559d5617771e586d129c10276539e
+ms.openlocfilehash: 56759f61dc7a70d64f76147d5b6ce9133d4b43b5
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553010"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602599"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Azure 应用程序网关上 Web 应用程序防火墙 v2 的自定义规则
 
@@ -26,7 +26,7 @@ Azure 应用程序网关 Web 应用程序防火墙 (WAF) v2 附带了一个预�
 
 同一规则中的不同匹配条件始终使用 **and** 来组合。 例如，仅当发送方使用特定浏览器时，才阻止来自特定 IP 地址的流量。
 
-若要对两个不同的条件使用 **or** 运算符，这两个条件必须在不同的规则中。 例如，阻止来自特定 IP 地址的流量，或阻止使用特定浏览器的发送方的流量。
+若要在两个不同的条件之间使用 or，这两个条件必须在不同的规则中。 例如，阻止来自特定 IP 地址的流量，或阻止使用特定浏览器的发送方的流量。
 
 > [!NOTE]
 > WAF 自定义规则的最大数目为 100。 有关应用程序网关限制的详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits)。
@@ -73,7 +73,7 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
               }
             ],
             "operator": "Contains",
-            "negationConditon": false,
+            "negationCondition": false,
             "matchValues": [
               "evilbot"
             ],
@@ -167,6 +167,6 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="next-steps"></a>后续步骤
 
-了解自定义规则后，可[创建自己的自定义规则](create-custom-waf-rules.md)。
+了解自定义规则后，[创建自己的自定义规则](create-custom-waf-rules.md)。
 
 <!-- Update_Description: wording update -->

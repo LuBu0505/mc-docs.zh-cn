@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/26/2021
+ms.date: 03/24/2021
 ms.author: v-junlch
-ms.openlocfilehash: f4a83560d341f07f2e51abf5f5212bbef5ec25f8
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: de0e38126d16e3a3249dc4afd7e8a800f4e772be
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696865"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602668"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>教程：为 Azure Active Directory 域服务托管域配置安全 LDAP
 
@@ -110,7 +110,7 @@ Thumbprint                                Subject
 * 私钥将应用于托管域。
     * 此私钥用于解密安全 LDAP 通信。 只能将私钥应用到托管域，而不应将其广泛分发到客户端计算机。
     * 包含私钥的证书使用 *.PFX* 文件格式。
-    * 证书的加密算法必须是 TripleDES-SHA1。
+    * 导出证书时，必须指定 TripleDES-SHA1 加密算法。 这仅适用于 .pfx 文件，不会影响证书本身使用的算法。 请注意，TripleDES-SHA1 选项仅从 Windows Server 2016 起可用。
 * **公钥** 将应用到客户端计算机。
     * 此公钥用于加密安全 LDAP 通信。 公钥可分发到客户端计算机。
     * 不包含私钥的证书使用 *.CER* 文件格式。
@@ -151,6 +151,11 @@ Thumbprint                                Subject
 1. 由于此证书用于解密数据，因此应小心控制访问权限。 可以通过一个密码来保护证书的使用。 如果未设置正确的密码，则该证书不可应用到服务。
 
     在“安全性”页上，选择“密码”对应的选项来保护 *.PFX* 证书文件。 加密算法必须是 TripleDES-SHA1。 输入并确认密码，然后选择“下一步”。 下一部分将使用此密码来为托管域启用安全 LDAP。
+
+    如果使用 [PowerShell export-pfxcertificate cmdlet](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) 进行导出，则需要使用 TripleDES_SHA1 传递 -CryptoAlgorithmOption 标志。
+
+    ![如何对密码进行加密的屏幕截图](./media/tutorial-configure-ldaps/encrypt.png)
+
 1. 在“要导出的文件”页上，指定要将证书导出到的文件名和位置，例如 *C:\Users\accountname\azure-ad-ds.pfx*。 请记下 .PFX 文件的密码和位置，因为在后续步骤中将需要此信息。
 1. 在复查页上，选择“完成”以将证书导出到 *.PFX* 证书文件。 成功导出证书后，会显示确认对话框。
 1. 请将 MMC 保持打开状态，以便在下一部分使用。
@@ -230,7 +235,7 @@ Thumbprint                                Subject
 1. 此时会显示现有的入站和出站安全规则列表。 在网络安全组窗口的左侧，选择“设置”>“入站安全规则”。
 1. 选择“添加”，然后创建一个允许 *TCP* 端口 *636* 的规则。 为提高安全性，请选择“IP 地址”作为源，然后为组织指定自己的有效 IP 地址或范围。
 
-    | 设置                           | Value        |
+    | 设置                           | 值        |
     |-----------------------------------|--------------|
     | 源                            | IP 地址 |
     | 源 IP 地址/CIDR 范围 | 环境的有效 IP 地址或范围 |
@@ -238,7 +243,7 @@ Thumbprint                                Subject
     | 目标                       | 任意          |
     | 目标端口范围           | 636          |
     | 协议                          | TCP          |
-    | 操作                            | 允许        |
+    | 操作                            | Allow        |
     | 优先度                          | 401          |
     | 名称                              | AllowLDAPS   |
 

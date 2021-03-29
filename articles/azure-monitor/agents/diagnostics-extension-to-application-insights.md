@@ -1,18 +1,17 @@
 ---
 title: 将 Azure 诊断数据发送到 Application Insights
 description: 更新 Azure 诊断公共配置，以将数据发送到 Application Insights。
-ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 08/20/2020
+ms.date: 03/22/2021
 origin.date: 03/19/2016
-ms.openlocfilehash: 1db91471e47eff92574ac21a94145e62a4a33f6c
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 6496cba7854cc483cc38195116e5c82e04d5a1d7
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205765"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603536"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>将云服务、虚拟机或 Service Fabric 诊断数据发送到 Application Insights
 云服务、虚拟机、虚拟机规模集和 Service Fabric 都使用 Azure 诊断扩展来收集数据。  Azure 诊断将数据发送到 Azure 存储表。  但是，也可以 Azure 诊断扩展 1.5 或更高版本，通过管道将所有或一部分数据发送到其他位置。
@@ -173,10 +172,11 @@ Application Insights 接收器的示例配置：
 
 ### <a name="send-all-the-data-that-is-being-collected-by-azure-diagnostics"></a>发送 Azure 诊断收集的所有数据
 
-```XML
+```xml
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights">
 ```
-```JSON
+
+```json
 "DiagnosticMonitorConfiguration": {
     "overallQuotaInMB": 4096,
     "sinks": "ApplicationInsights",
@@ -185,10 +185,11 @@ Application Insights 接收器的示例配置：
 
 ### <a name="send-only-error-logs-to-the-application-insights-sink"></a>只将错误日志发送到 Application Insights 接收器
 
-```XML
+```xml
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights.MyTopDiagdata">
 ```
-```JSON
+
+```json
 "DiagnosticMonitorConfiguration": {
     "overallQuotaInMB": 4096,
     "sinks": "ApplicationInsights.MyTopDiagData",

@@ -6,15 +6,15 @@ ms.author: v-junlch
 ms.topic: tutorial
 ms.service: virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 08/06/2020
+ms.date: 03/24/2021
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 0a497056d5ba18b27207d8a0277771e7a56e5b2d
-ms.sourcegitcommit: f436acd1e2a0108918a6d2ee9a1aac88827d6e37
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: a46ed48963a56a40fd77c34998c3a411286ff148
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508589"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602690"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和管理虚拟机规模集
 
@@ -43,7 +43,7 @@ New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "ChinaNorth"
 
 
 ## <a name="create-a-scale-set"></a>创建规模集
-首先，使用 [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) 设置 VM 实例的管理员用户名和密码：
+首先，使用 [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential) 设置 VM 实例的管理员用户名和密码：
 
 ```azurepowershell
 $cred = Get-Credential
@@ -308,7 +308,7 @@ Restart-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 
 
 ## <a name="clean-up-resources"></a>清理资源
-删除资源组时，也会删除其中包含的所有资源，例如 VM 实例、虚拟网络和磁盘。 `-Force` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。 `-AsJob` 参数会使光标返回提示符处，不会等待操作完成。
+删除资源组时，也会删除其中包含的所有资源，例如 VM 实例、虚拟网络和磁盘。 `-Force` 参数将确认是否希望删除资源，而不会有额外提示。 `-AsJob` 参数会使光标返回提示符处，无需等待操作完成。
 
 ```azurepowershell
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
@@ -329,4 +329,3 @@ Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 
 > [!div class="nextstepaction"]
 > [通过规模集使用数据磁盘](tutorial-use-disks-powershell.md)
-

@@ -2,20 +2,21 @@
 title: 使用 Azure 门户打开 VM 的端口
 description: 了解如何使用 Azure 门户为 VM 打开端口/创建终结点
 ms.service: virtual-machines
+ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure-services
 origin.date: 05/27/2020
 author: rockboyfor
-ms.date: 11/16/2020
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 11/02/2020
 ms.author: v-yeche
-ms.openlocfilehash: 15d4c61de202eac45b9aa69056857ff68967d84a
-ms.sourcegitcommit: 39288459139a40195d1b4161dfb0bb96f5b71e8e
+ms.openlocfilehash: b02c2f06c578cae48aaa91393ff15b0468496f05
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94590605"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603794"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>如何使用 Azure 门户打开虚拟机端口
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -27,7 +28,7 @@ ms.locfileid: "94590605"
 
 1. 搜索并选择 VM 的资源组，选择“添加”，然后搜索并选择“网络安全组”。
 
-1. 选择“创建” 。
+1. 选择“创建”。
 
     此时将打开“创建网络安全组”窗口。
 
@@ -82,4 +83,4 @@ ms.locfileid: "94590605"
 - [Azure Resource Manager 概述](../../azure-resource-manager/management/overview.md)
 - [安全组](../../virtual-network/network-security-groups-overview.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

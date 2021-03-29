@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure SQL 文档
-summary: '查找有关云中 Azure SQL 系列的 SQL Server 数据库引擎产品的文档：Azure VM 上的 Azure SQL 数据库、Azure SQL 托管实例和 SQL Server。 '
+summary: 查找有关云中 Azure SQL 系列的 SQL Server 数据库引擎产品的文档：Azure VM 上的 Azure SQL 数据库、Azure SQL 托管实例和 SQL Server。
 metadata:
   title: Azure SQL 文档
   description: Azure SQL 是云中的一系列 SQL Server 数据库引擎产品，从 Azure SQL 数据库中的完全托管数据库、Azure SQL 托管实例中的完全托管实例到安装在 Azure 中虚拟机上的 SQL Server。
@@ -14,20 +14,22 @@ metadata:
   ms.author: v-jay
   ms.reviewer: 
   origin.date: 10/30/2019
-  ms.date: 01/04/2021
-  ms.openlocfilehash: 6d039547bb1ee95dd466a54d4611a7abf9e9726f
-  ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+  ms.date: 03/29/2021
+  ms.openlocfilehash: ca1189f1c33cc817ac5533da84c93b9c89751f39
+  ms.sourcegitcommit: 308ca551066252e68198391c3e4d4b1de348deb9
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/31/2020
-  ms.locfileid: "97829661"
+  ms.lasthandoff: 03/26/2021
+  ms.locfileid: "105601805"
 landingContent:
 - title: Azure SQL Database
   linkLists:
-  - linkListType: overview
+  - linkListType: whats-new
     links:
     - text: 新增功能
       url: database/doc-changes-updates-release-notes.md?tabs=single-database
+  - linkListType: overview
+    links:
     - text: 什么是 SQL 数据库？
       url: database/sql-database-paas-overview.md
     - text: 什么是弹性池？
@@ -52,6 +54,10 @@ landingContent:
       url: database/transact-sql-tsql-differences-sql-server.md
 - title: Azure SQL 托管实例
   linkLists:
+  - linkListType: whats-new
+    links:
+    - text: 新增功能
+      url: database/doc-changes-updates-release-notes.md?tabs=managed-instance
   - linkListType: overview
     links:
     - text: 新增功能
@@ -108,7 +114,7 @@ landingContent:
   linkLists:
   - linkListType: deploy
     links:
-    - text: Azure SQL 数据库
+    - text: Azure SQL Database
       url: migration-guides/database/sql-server-to-sql-database-overview.md
     - text: Azure SQL 托管实例
       url: migration-guides/managed-instance/sql-server-to-managed-instance-overview.md

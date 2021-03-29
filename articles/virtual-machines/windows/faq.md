@@ -1,21 +1,22 @@
 ---
 title: 有关 Azure 中 Windows VM 的常见问题解答
 description: 解答通过 Resource Manager 模型创建 Windows 虚拟机的一些常见问题。
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.workload: infrastructure-services
 ms.topic: conceptual
 origin.date: 05/08/2019
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 6ff7819bf1c9e786fa3e18a25fd9ba2929e64bf1
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: a98951bf11aebbd7c8aa71fff4675df76f6efd26
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102053961"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603831"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>有关 Windows 虚拟机的常见问题
 本文讨论了在 Azure 中使用 Resource Manager 部署模型创建的 Windows 虚拟机的一些常见问题。 有关本主题的 Linux 版本，请参阅[有关 Linux 虚拟机的常见问题](../linux/faq.md)。
@@ -23,12 +24,12 @@ ms.locfileid: "102053961"
 ## <a name="what-can-i-run-on-an-azure-vm"></a>我可以在 Azure VM 上运行什么程序？
 所有订户都可以在 Azure 虚拟机上运行服务器软件。 有关在 Azure 中运行 Microsoft 服务器软件的支持策略的信息，请参阅 [Microsoft 服务器软件对 Azure 虚拟机的支持](https://support.microsoft.com/kb/2721672)。
 
-<!-- MOONCAKE: CORRECT ON Microsoft server software in Azure-->
+<!--MOONCAKE: CORRECT ON Microsoft server software in Azure-->
 
 某些版本的 Windows 7 和 Windows 10 可供 MSDN Azure 权益订阅者以及 MSDN 开发和测试标准预付费套餐订阅者用于开发和测试任务。 有关详细信息（包括说明和限制），请参阅[适用于 MSDN 订户的 Windows 客户端映像](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/)。 
 
-<!-- Not Available on Windows 8.1-->
-<!-- Not Available on MSDN Azure benefit subscribers and MSDN Dev -->
+<!--NOT AVAILABLE ON Windows 8.1-->
+<!--NOT AVAILABLE ON MSDN Azure benefit subscribers and MSDN Dev -->
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>使用虚拟机时，我可以使用多少存储？
 每个数据磁盘的容量高达 32,767 GiB。 可以使用的数据磁盘数取决于虚拟机大小。 有关详细信息，请参阅[虚拟机大小](../sizes.md)。
@@ -82,7 +83,7 @@ Azure 存储帐户还可为操作系统磁盘和任何数据磁盘提供存储�
 ## <a name="are-there-any-resource-group-name-requirements"></a>是否存在资源组名称要求？
 是的。 资源组名称的最大长度为 90 个字符。
 
-<!--NOT AVAILABLE ON https://docs.azure.cn/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging-->
+<!--NOT AVAILABLE ON [Naming conventions rules and restrictions](https://docs.azure.cn/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)-->
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>创建 VM 时，用户名有什么要求？
 

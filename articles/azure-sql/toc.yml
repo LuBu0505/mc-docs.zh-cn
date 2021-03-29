@@ -141,6 +141,22 @@
           href: database/job-automation-overview.md
         - name: 使用 SQL 代理的作业自动化
           href: database/job-automation-managed-instances.md
+        - name: 从应用进行连接和查询
+          items:
+            - name: 将 .NET 与 Visual Studio 配合使用
+              href: database/connect-query-dotnet-visual-studio.md
+            - name: .NET Core
+              href: database/connect-query-dotnet-core.md
+            - name: Go
+              href: database/connect-query-go.md
+            - name: Node.js
+              href: database/connect-query-nodejs.md
+            - name: PHP
+              href: database/connect-query-php.md
+            - name: Python
+              href: database/connect-query-python.md
+            - name: Ruby
+              href: database/connect-query-ruby.md
         - name: 业务连续性
           items:
             - name: 配置故障转移组
@@ -214,7 +230,7 @@
             - name: 使用 Azure 认知搜索编制索引
               href: ../search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md?toc=%252fazure-sql%252ftoc.json
             - name: 服务器端 CLR/.NET 集成
-              href: 'https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-integration-overview?toc=%252fazure-sql%252ftoc.json'
+              href: 'https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-integration-overview?toc=%2fazure-sql%2ftoc.json'
             - name: Java
               items:
                 - name: 使用 Java 和 JDBC
@@ -305,8 +321,16 @@
               href: database/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial.md
     - name: 迁移指南
       items:
+        - name: 从 Access
+          href: migration-guides/database/access-to-sql-database-guide.md
         - name: 从 DB2
           href: migration-guides/database/db2-to-sql-database-guide.md
+        - name: 从 Oracle
+          href: migration-guides/database/oracle-to-sql-database-guide.md
+        - name: 从 MySQL
+          href: migration-guides/database/mysql-to-sql-database-guide.md
+        - name: 从 SAP ASE
+          href: migration-guides/database/sap-ase-to-sql-database.md
         - name: 从 SQL Server
           items:
             - name: 概述
@@ -415,14 +439,8 @@
                   href: database/connect-query-vscode.md
             - name: 从应用进行连接和查询
               items:
-                - name: 将 .NET 与 Visual Studio 配合使用
-                  href: database/connect-query-dotnet-visual-studio.md
-                - name: .NET Core
-                  href: database/connect-query-dotnet-core.md
                 - name: 将 .NET 与 Active Directory MFA 配合使用
                   href: database/active-directory-interactive-connect-azure-sql-db.md
-                - name: Go
-                  href: database/connect-query-go.md
                 - name: Java
                   href: database/connect-query-java.md
                 - name: 将 Java 与 Spring Data JDBC 配合使用
@@ -431,14 +449,6 @@
                   href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json'
                 - name: 将 Java 与 Spring Data R2DBC 配合使用
                   href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json'
-                - name: Node.js
-                  href: database/connect-query-nodejs.md
-                - name: PHP
-                  href: database/connect-query-php.md
-                - name: Python
-                  href: database/connect-query-python.md
-                - name: Ruby
-                  href: database/connect-query-ruby.md
         - name: 管理
           items:
             - name: 管理 API 参考
@@ -573,7 +583,7 @@
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
-        - name: Azure Resource Manager
+        - name: Azure 资源管理器
           href: database/arm-templates-content-guide.md?tabs=single-database
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
@@ -732,7 +742,7 @@
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance
-        - name: Azure Resource Manager
+        - name: Azure 资源管理器
           href: database/arm-templates-content-guide.md?tabs=managed-instance
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
@@ -881,7 +891,7 @@
               href: ./database/policy-reference.md
         - name: 资源
           items:
-            - name: 常见问题
+            - name: 常见问题解答
               href: virtual-machines/windows/frequently-asked-questions-faq.md
             - name: 定价
               href: virtual-machines/windows/pricing-guidance.md
@@ -909,7 +919,7 @@
               href: virtual-machines/linux/sql-vm-create-portal-quickstart.md
         - name: 资源
           items:
-            - name: 常见问题
+            - name: 常见问题解答
               href: virtual-machines/linux/frequently-asked-questions-faq.md
             - name: “Linux 上的 SQL Server”文档
               href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-overview'
@@ -923,6 +933,8 @@
       items:
         - name: 从 DB2
           href: migration-guides/virtual-machines/db2-to-sql-on-azure-vm-guide.md
+        - name: 从 Oracle
+          href: migration-guides/virtual-machines/oracle-to-sql-on-azure-vm-guide.md
 - name: 参考
   items:
     - name: T-SQL 语言参考
@@ -986,7 +998,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/zh-CN/home'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 连接错误
           href: database/troubleshoot-common-errors-issues.md

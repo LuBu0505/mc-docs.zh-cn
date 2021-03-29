@@ -1,21 +1,22 @@
 ---
 title: 使用 PowerShell 将数据磁盘附加到 Azure 中的 Windows VM
 description: 如何配合使用 PowerShell 和 Resource Manager 部署模型将新磁盘或现有数据磁盘附加到 Windows VM。
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: how-to
 origin.date: 10/16/2018
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: 27b037e79c3d8da083c45433e55aecbae165059c
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: cbeaca051c7ee96594e3f0b44a0b14c9141abe67
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055162"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603140"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>使用 PowerShell 将数据磁盘附加到 Windows VM
 
@@ -26,9 +27,9 @@ ms.locfileid: "102055162"
 * 虚拟机的大小决定了可以附加多少个磁盘。 有关详细信息，请参阅[虚拟机的大小](../sizes.md)。
 * 若要使用高级 SSD，需要[支持高级存储的 VM 类型](../sizes-memory.md)，如 DS 系列虚拟机。
 
-<!-- Not Available on GS-series -->
+<!--NOT AVAILABLE ON GS-series-->
 
-<!--Not Available on [Azure Cloud Shell](../../cloud-shell/overview.md)-->
+<!--NOT AVAILABLE ON [Azure Cloud Shell](../../cloud-shell/overview.md)-->
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>将空数据磁盘添加到虚拟机
 
@@ -52,7 +53,7 @@ $vm = Add-AzVMDataDisk -VM $vm -Name $dataDiskName -CreateOption Attach -Managed
 Update-AzVM -VM $vm -ResourceGroupName $rgName
 ```
 
-<!-- Not Available on ### Using managed disks in an Availability Zone-->
+<!--NOT AVAILABLE ON ### Using managed disks in an Availability Zone-->
 
 ### <a name="initialize-the-disk"></a>初始化磁盘
 

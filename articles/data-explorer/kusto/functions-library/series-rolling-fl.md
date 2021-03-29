@@ -2,18 +2,17 @@
 title: series_rolling_fl() - Azure 数据资源管理器
 description: 本文介绍了 Azure 数据资源管理器中用户定义的函数 series_rolling_fl()。
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 09/08/2020
-ms.date: 01/22/2021
-ms.openlocfilehash: c7d2acc6fa4330e8157bedf3c8b361821e2c9e90
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 03/23/2021
+ms.openlocfilehash: b99bdb86c8a7a1e38b6ce57ac50d7867fa13d879
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611584"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602879"
 ---
 # <a name="series_rolling_fl"></a>series_rolling_fl()
 
@@ -21,8 +20,8 @@ ms.locfileid: "98611584"
 函数 `series_rolling_fl()` 对序列应用滚动聚合。 它采用包含多个序列（动态数值数组）的表，并对每个序列应用滚动聚合函数。
 
 > [!NOTE]
-> * `series_rolling_fl()` 是 [UDF（用户定义的函数）](../query/functions/user-defined-functions.md)。
-> * 此函数包含内联 Python，需要在群集上[启用 python() 插件](../query/pythonplugin.md#enable-the-plugin)。 有关详细信息，请参阅[用法](#usage)。
+> * `series_rolling_fl()` 是 [UDF（用户定义的函数）](../query/functions/user-defined-functions.md)。 有关详细信息，请参阅[用法](#usage)。
+> * 此函数包含内联 Python，需要在群集上[启用 python() 插件](../query/pythonplugin.md#enable-the-plugin)。
 
 ## <a name="syntax"></a>语法
 
@@ -65,7 +64,7 @@ ms.locfileid: "98611584"
 
 ## <a name="usage"></a>使用情况
 
-`series_rolling_fl()` 是用户定义的[表格函数](../query/functions/user-defined-functions.md#tabular-function)，需使用 [invoke 运算符](../query/invokeoperator.md)进行应用。 可以在查询中嵌入其代码，或将其安装在数据库中。 用法选项有两种：临时使用和永久使用。 请参阅下面选项卡上的示例。
+`series_rolling_fl()` 是用户定义的[表格函数](../query/functions/user-defined-functions.md#tabular-function)，需使用 [invoke 运算符](../query/invokeoperator.md)进行应用。 可以在查询中嵌入其代码，或将其安装在数据库中。 用法选项有两种：临时使用和永久使用。 有关示例，请参阅下面的选项卡。
 
 # <a name="ad-hoc"></a>[临时](#tab/adhoc)
 
@@ -109,7 +108,7 @@ demo_make_series1
 
 # <a name="persistent"></a>[Persistent](#tab/persistent)
 
-如果是永久使用，请使用 [`.create function`](../management/create-function.md)。 创建函数需要有[数据库用户权限](../management/access-control/role-based-authorization.md)。
+如果是永久使用，请使用 [`.create function`](../management/create-function.md)。 创建函数需要[数据库用户权限](../management/access-control/role-based-authorization.md)。
 
 ### <a name="one-time-installation"></a>一次性安装
 

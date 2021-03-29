@@ -1,24 +1,20 @@
 ---
 title: Azure Desired State Configuration 扩展处理程序
 description: 使用 DSC 扩展在 Azure VM 中上传和应用 PowerShell DSC 配置
-services: virtual-machines-windows
-manager: carmonm
-ms.assetid: ''
-ms.service: virtual-machines-windows
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: windows
-ms.workload: ''
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.collection: windows
 origin.date: 03/26/2018
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/29/2021
 ms.author: v-yeche
-ms.openlocfilehash: d05868fd7571042834e17f513bb2b66033b8e81c
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: bc4a9fc20d272a34a45d0ed38ba852fa3b089257
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856702"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603156"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 扩展
 
@@ -112,8 +108,8 @@ Windows Server 2019、Windows Server 2016、Windows Server 2012R2、Windows Serv
 | ---- | ---- | ---- |
 | settings.wmfVersion | 字符串 | 指定应在 VM 上安装的 Windows Management Framework 版本。 将此属性设置为“latest”可安装最新版本的 WMF。 目前，此属性的可能值只有“4.0”、“5.0”和“latest”。 这些可能值将来可能会更新。 默认值为“latest”。 |
 | settings.configuration.url | 字符串 | 指定要从中下载 DSC 配置 zip 文件的 URL 位置。 如果提供的 URL 需要 SAS 令牌才能访问，必须将 protectedSettings.configurationUrlSasToken 属性设置为 SAS 令牌的值。 如果已定义 settings.configuration.script 和/或 settings.configuration.function，则需要此属性。
-| settings.configuration.script | 字符串 | 指定包含 DSC 配置定义的脚本的文件名。 此脚本必须位于从 configuration.url 属性所指定的 URL 下载的 zip 文件的根文件夹中。 如果已定义 settings.configuration.url 和/或 settings.configuration.script，则需要此属性。
-| settings.configuration.function | 字符串 | 指定 DSC 配置的名称。 命名的配置必须包含在 configuration.script 定义的脚本中。 如果已定义 settings.configuration.url 和/或 settings.configuration.function，则需要此属性。
+| settings.configuration.script | string | 指定包含 DSC 配置定义的脚本的文件名。 此脚本必须位于从 configuration.url 属性所指定的 URL 下载的 zip 文件的根文件夹中。 如果已定义 settings.configuration.url 和/或 settings.configuration.script，则需要此属性。
+| settings.configuration.function | string | 指定 DSC 配置的名称。 命名的配置必须包含在 configuration.script 定义的脚本中。 如果已定义 settings.configuration.url 和/或 settings.configuration.function，则需要此属性。
 | settings.configurationArguments | 集合 | 定义想要传递到 DSC 配置的任何参数。 不会加密此属性。
 | settings.configurationData.url | 字符串 | 指定 URL，将从中下载配置数据 (.pds1) 文件用作 DSC 配置的输入。 如果提供的 URL 需要 SAS 令牌才能访问，必须将 protectedSettings.configurationDataUrlSasToken 属性设置为 SAS 令牌的值。
 | settings.privacy.dataEnabled | 字符串 | 启用或禁用遥测数据收集。 此属性的可能值只有“Enable”、“Disable”、" 或 $null。 将此属性留空，否则 null 将启用遥测
@@ -130,13 +126,13 @@ Windows Server 2019、Windows Server 2016、Windows Server 2012R2、Windows Serv
 
 ## <a name="template-deployment"></a>模板部署
 
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。
+可使用 Azure Resource Manager 模板部署 Azure VM 扩展。
 部署需要部署后配置的一个或多个虚拟机时，模板是理想选择。
 包含 Windows 的 DSC 扩展的示例资源管理器模板可以在 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/blob/master/101-automation-configuration/nested/provisionServer.json#L91)中找到。
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure CLI 运行以下命令。
 
@@ -174,4 +170,4 @@ C:\WindowsAzure\Logs\Plugins\{Extension_Name}\{Extension_Version}
 
 如果对本文中的任何观点存在疑问，可以联系 [Azure 支持](https://support.azure.cn/support/contact/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://support.azure.cn/support/support-azure/)提交请求。 有关使用 Azure 支持的信息，请阅读 [Azure 支持常见问题](https://www.azure.cn/support/faq/)。
 
-<!-- Update_Description: update meta properties, wording update -->
+<!--Update_Description: update meta properties, wording update, update link-->

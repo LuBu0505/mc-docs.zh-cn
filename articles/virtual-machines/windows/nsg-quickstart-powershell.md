@@ -2,21 +2,22 @@
 title: 使用 Azure PowerShell 打开指向 VM 的端口
 description: 了解如何使用 Azure PowerShell 为 VM 打开端口/创建终结点
 ms.service: virtual-machines
+ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure-services
 origin.date: 12/13/2017
 author: rockboyfor
-ms.date: 11/16/2020
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f3ee5e3a1029294666919a1f7ae9ad1600e24037
-ms.sourcegitcommit: 39288459139a40195d1b4161dfb0bb96f5b71e8e
+ms.openlocfilehash: 553aca1d585618f4fc5ec11ed9fae44b366c208e
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94590599"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603790"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-using-powershell"></a>如何使用 PowerShell 打开 VM 的端口和终结点
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -96,4 +97,4 @@ Set-AzVirtualNetwork -VirtualNetwork $vnet
 * [什么是网络安全组？](../../virtual-network/network-security-groups-overview.md)
 * [Azure 负载均衡器概述](../../load-balancer/load-balancer-overview.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

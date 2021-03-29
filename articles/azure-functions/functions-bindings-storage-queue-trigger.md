@@ -3,15 +3,15 @@ title: 适用于 Azure Functions 的 Azure 队列存储触发器
 description: 了解如何在 Azure 队列存储数据更改时运行 Azure Function。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.author: v-junlch
 ms.custom: devx-track-csharp, cc996988-fb4f-47
-ms.openlocfilehash: b42b1bb4281140cf4ab04b5d0593bc86c0864ca6
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 78bb02577be06ee335ea0c3a8d1dddccd3136524
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697002"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602828"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>适用于 Azure Functions 的 Azure 队列存储触发器
 
@@ -357,7 +357,7 @@ PowerShell 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-使用 [QueueTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable&preserve-view=true) 注释可以访问触发函数的队列消息。
+使用 [QueueTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queuetrigger) 注释可以访问触发函数的队列消息。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -424,4 +424,3 @@ PowerShell 不支持特性。
 <!-- LINKS -->
 
 [CloudQueueMessage]: https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage
-

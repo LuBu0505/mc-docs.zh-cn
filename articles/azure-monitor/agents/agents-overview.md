@@ -3,17 +3,16 @@ title: Azure 监视代理概述| Azure Docs
 description: 本文提供可用于在 Azure 或混合环境中支持监视虚拟机的 Azure 代理的详细概述。
 services: azure-monitor
 origin.date: 02/14/2020
-ms.subservice: ''
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
-ms.openlocfilehash: 2549f94c76aac6254512b07efd2e153921b13e2f
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/22/2021
+ms.openlocfilehash: ba9bb30bfc3180a22491ca3023ae0f4f9f24d2db
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205709"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603313"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor 代理概述
 
@@ -55,7 +54,7 @@ ms.locfileid: "102205709"
 <!--Not available in MC-->
 ## <a name="log-analytics-agent"></a>Log Analytics 代理
 
-[Log Analytics 代理](../platform/log-analytics-agent.md)从 Azure 中的虚拟机、其他云提供商和本地计算机的来宾操作系统与工作负载收集监视数据。 它会将数据发送到 Log Analytics 工作区。 Log Analytics 代理是 System Center Operations Manager 使用的代理，你可以通过多宿主代理计算机同时与管理组和 Azure Monitor 通信。 Azure Monitor 和 Azure 中的其他服务中的某些见解也需要此代理。
+[Log Analytics 代理](./log-analytics-agent.md)从 Azure 中的虚拟机、其他云提供商和本地计算机的来宾操作系统与工作负载收集监视数据。 它会将数据发送到 Log Analytics 工作区。 Log Analytics 代理是 System Center Operations Manager 使用的代理，你可以通过多宿主代理计算机同时与管理组和 Azure Monitor 通信。 Azure Monitor 和 Azure 中的其他服务中的某些见解也需要此代理。
 
 > [!NOTE]
 > 适用于 Windows 的 Log Analytics 代理通常称作 Microsoft Monitoring Agent (MMA)。 适用于 Linux 的 Log Analytics 代理通常称作 OMS 代理。
@@ -63,7 +62,7 @@ ms.locfileid: "102205709"
 如果需要执行以下操作，请使用 Log Analytics 代理：
 
 * 从 Azure 外部托管的 Azure 虚拟机或混合计算机收集日志和性能数据。
-* 将数据发送到 Log Analytics 工作区，以利用 [Azure Monitor 日志](../platform/data-platform-logs.md)支持的功能，例如[日志查询](../log-query/log-query-overview.md)。
+* 将数据发送到 Log Analytics 工作区，以利用 [Azure Monitor 日志](../logs/data-platform-logs.md)支持的功能，例如[日志查询](../logs/log-query-overview.md)。
 * 使用 [Azure 安全中心](../../security-center/security-center-introduction.md)管理计算机安全性。
 * 使用 [Azure 自动化更新管理](../../automation/update-management/overview.md)或 [Azure 自动化 State Configuration](../../automation/automation-dsc-overview.md) 提供对 Azure 和非 Azure 计算机的全面管理。
 * 使用不同的[解决方案](../monitor-reference.md#insights-and-core-solutions)监视特定服务或者应用程序。
@@ -76,13 +75,13 @@ Log Analytics 代理的限制包括：
 
 ## <a name="azure-diagnostics-extension"></a>Azure 诊断扩展
 
-[Azure 诊断扩展](../platform/diagnostics-extension-overview.md)从 Azure 虚拟机和其他计算资源的来宾操作系统和工作负载收集监视数据。 它主要将数据收集到 Azure 存储中，但也允许你通过定义数据接收器将数据同时发送到其他目标（例如 Azure Monitor 指标和 Azure 事件中心）。
+[Azure 诊断扩展](./diagnostics-extension-overview.md)从 Azure 虚拟机和其他计算资源的来宾操作系统和工作负载收集监视数据。 它主要将数据收集到 Azure 存储中，但也允许你通过定义数据接收器将数据同时发送到其他目标（例如 Azure Monitor 指标和 Azure 事件中心）。
 
 如果需要执行以下操作，请使用 Azure 诊断扩展：
 
 - 将数据发送到 Azure 存储进行存档，或使用 [Azure 存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md)之类的工具对其进行分析。
-- 将数据发送到 [Azure Monitor 指标](../platform/data-platform-metrics.md)，以便使用[指标资源管理器](../platform/metrics-getting-started.md)对其进行分析，并利用准实时[指标警报](./../platform/alerts-metric-overview.md)和[自动缩放](../platform/autoscale-overview.md)之类的功能（仅限 Windows）。
-- 使用 [Azure 事件中心](../platform/diagnostics-extension-stream-event-hubs.md)将数据发送到第三方工具。
+- 将数据发送到 [Azure Monitor 指标](../essentials/data-platform-metrics.md)，以便使用[指标资源管理器](../essentials/metrics-getting-started.md)对其进行分析，并利用准实时[指标警报](../alerts/alerts-metric-overview.md)和[自动缩放](../autoscale/autoscale-overview.md)之类的功能（仅限 Windows）。
+- 使用 [Azure 事件中心](./diagnostics-extension-stream-event-hubs.md)将数据发送到第三方工具。
 - 收集[启动诊断](../../virtual-machines/troubleshooting/boot-diagnostics.md)数据，调查 VM 启动问题。
 
 Azure 诊断扩展的限制包括：
@@ -96,7 +95,7 @@ InfluxData Telegraf 代理用于将性能数据从 Linux 计算机收集到 Azur
 
 如果需要执行以下操作，请使用 Telegraf 代理：
 
-* 将数据发送到 [Azure Monitor 指标](../platform/data-platform-metrics.md)，以便使用[指标资源管理器](../platform/metrics-getting-started.md)对其进行分析，并利用准实时[指标警报](./../platform/alerts-metric-overview.md)和[自动缩放](../platform/autoscale-overview.md)之类的功能（仅限 Linux）。
+* 将数据发送到 [Azure Monitor 指标](../essentials/data-platform-metrics.md)，以便使用[指标资源管理器](../essentials/metrics-getting-started.md)对其进行分析，并利用准实时[指标警报](../alerts/alerts-metric-overview.md)和[自动缩放](../autoscale/autoscale-overview.md)之类的功能（仅限 Linux）。
 
 <!--Not available in MC: ../insights/vminsights-overview.md; ../insights/service-map.md-->
 ## <a name="virtual-machine-extensions"></a>虚拟机扩展
@@ -125,10 +124,10 @@ InfluxData Telegraf 代理用于将性能数据从 Linux 计算机收集到 Azur
 
 ### <a name="linux"></a>Linux
 
-| 操作系统 | Azure Monitor 代理 | Log Analytics 代理 | 依赖关系代理 | 诊断扩展 | 
+| 操作系统 | Azure Monitor 代理 <sup>1</sup> | Log Analytics 代理 <sup>1</sup> | 依赖关系代理 | 诊断扩展 <sup>2</sup>| 
 |:---|:---:|:---:|:---:|:---:
 | Amazon Linux 2017.09                                        |   | X |   |   |
-| CentOS Linux 8 <sup>1</sup> <sup>2</sup>                    | X | X | X |   |
+| CentOS Linux 8                                              | X <sup>3</sup> | X | X |   |
 | CentOS Linux 7                                              | X | X | X | X |
 | CentOS Linux 6                                              |   | X |   |   |
 | CentOS Linux 6.5+                                           |   | X | X | X |
@@ -137,26 +136,28 @@ InfluxData Telegraf 代理用于将性能数据从 Linux 计算机收集到 Azur
 | Debian 8                                                    |   | X | X |   |
 | Debian 7                                                    |   |   |   | X |
 | OpenSUSE 13.1+                                              |   |   |   | X |
-| Oracle Linux 8 <sup>1</sup> <sup>2</sup>                    | X | X |   |   |
+| Oracle Linux 8                                              | X <sup>3</sup> | X |   |   |
 | Oracle Linux 7                                              | X | X |   | X |
 | Oracle Linux 6                                              |   | X |   |   |
 | Oracle Linux 6.4+                                           |   | X |   | X |
-| Red Hat Enterprise Linux Server 8 <sup>1</sup> <sup>2</sup> | X | X | X |   |
+| Red Hat Enterprise Linux Server 8                           | X <sup>3</sup> | X | X |   |
 | Red Hat Enterprise Linux Server 7                           | X | X | X | X |
 | Red Hat Enterprise Linux Server 6                           |   | X | X |   |
 | Red Hat Enterprise Linux Server 6.7+                        |   | X | X | X |
-| SUSE Linux Enterprise Server 15.2 <sup>1</sup> <sup>2</sup> | X |   |   |   |
-| SUSE Linux Enterprise Server 15.1 <sup>1</sup> <sup>2</sup> | X | X |   |   |
+| SUSE Linux Enterprise Server 15.2                           | X <sup>3</sup> |   |   |   |
+| SUSE Linux Enterprise Server 15.1                           | X <sup>3</sup> | X |   |   |
 | SUSE Linux Enterprise Server 15                             | X | X | X |   |
 | SUSE Linux Enterprise Server 12                             | X | X | X | X |
-| Ubuntu 20.04 LTS <sup>1</sup>                               | X | X | X |   |
+| Ubuntu 20.04 LTS                                            | X | X | X |   |
 | Ubuntu 18.04 LTS                                            | X | X | X | X |
 | Ubuntu 16.04 LTS                                            | X | X | X | X |
 | Ubuntu 14.04 LTS                                            |   | X |   | X |
 
-<sup>1</sup> 需要在计算机上安装 Python 3。
+<sup>1</sup> 需要在计算机安装 Python（2 或 3）。
 
-<sup>2</sup> 收集 Syslog 事件的已知问题。 当前仅支持性能数据。
+<sup>2</sup> 需要在计算机上安装 Python 2。
+
+<sup>3</sup> 有关收集 Syslog 事件的已知问题。 当前仅支持性能数据。
 #### <a name="dependency-agent-linux-kernel-support"></a>Dependency Agent Linux 内核支持
 
 由于 Dependency Agent 在内核级别工作，因此支持也依赖于内核版本。 下表列出了 Dependency Agent 的主要和次要 Linux OS 版本以及支持的内核版本。
@@ -196,5 +197,5 @@ InfluxData Telegraf 代理用于将性能数据从 Linux 计算机收集到 Azur
 
 在以下站点获取每个代理的更多详细信息：
 
-- [Log Analytics 代理概述](../platform/log-analytics-agent.md)
-- [Azure 诊断扩展概述](../platform/diagnostics-extension-overview.md)
+- [Log Analytics 代理概述](./log-analytics-agent.md)
+- [Azure 诊断扩展概述](./diagnostics-extension-overview.md)

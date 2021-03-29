@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor 日志查询中的 workspace() 表达式 | Azure Docs
 description: workspace 表达式用于 Azure Monitor 日志查询中，以从同一资源组、另一个资源组或另一个订阅的特定工作区中检索数据。
-ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
 origin.date: 09/10/2018
-ms.date: 02/20/2021
-ms.openlocfilehash: d1e4d61413ad200318054cfbb64ae4fa33e3ca95
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/23/2021
+ms.openlocfilehash: fa4814368e72392fc99a9109cc7c0b7043665f67
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205411"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603080"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>Azure Monitor 日志查询中的 workspace() 表达式
 
@@ -35,7 +34,7 @@ ms.locfileid: "102205411"
 | Azure 资源 ID | Azure 资源的标识符 | workspace("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
 
 
-## <a name="notes"></a>说明
+## <a name="notes"></a>备注
 
 * 你必须具有该工作区的读取权限。
 * 相关的表达式是 `app`，可以在 Application Insights 应用程序上进行查询。
@@ -65,7 +64,7 @@ union
 
 ## <a name="next-steps"></a>后续步骤
 
-- 参阅[应用表达式](../log-query/app-expression.md)来引用 Application Insights 应用。
-- 了解 [Azure Monitor 数据是如何存储的](../log-query/log-query-overview.md)。
+- 参阅[应用表达式](./app-expression.md)来引用 Application Insights 应用。
+- 了解 [Azure Monitor 数据是如何存储的](./log-query-overview.md)。
 - 访问有关 [Kusto 查询语言](https://docs.microsoft.com/azure/kusto/query/)的完整文档。
 

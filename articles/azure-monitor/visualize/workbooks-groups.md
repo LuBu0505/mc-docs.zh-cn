@@ -7,14 +7,14 @@ manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/20/2021
+ms.date: 03/25/2021
 ms.author: v-johya
-ms.openlocfilehash: 0627b9708b8fd5481c6f25799499d724c1dcc033
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: b5b55bf21ff3fb204b9ac474d77fddf2c2ca13f5
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205513"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603383"
 ---
 # <a name="how-to-use-groups-in-workbooks"></a>如何使用工作簿中的组
 
@@ -143,6 +143,6 @@ ms.locfileid: "102205513"
 6. 然后，可将组步骤更改为从模板加载，并将模板 ID 字段设置为在步骤 5 中创建的工作簿/模板。 若要使用工作簿 ID，源必须是共享工作簿资源 ID。 按“加载”，随即会从该子模板加载此组的内容，而不是加载这个外部工作簿中保存的内容。
 
 ## <a name="next-steps"></a>后续步骤
-- [工作簿概述](../platform/workbooks-overview.md)
+- [工作簿概述](./workbooks-overview.md)
 - [将 JSONPath 与工作簿配合使用](workbooks-jsonpath.md)
 

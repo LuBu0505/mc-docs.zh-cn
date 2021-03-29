@@ -3,15 +3,15 @@ title: 使用 Java 和 Eclipse 创建 Azure 函数应用
 description: 介绍如何使用 Java 和 Eclipse 创建简单的 HTTP 触发式无服务器应用并将其发布到 Azure Functions 的操作说明指南。
 author: jeffhollan
 ms.topic: how-to
-ms.date: 08/11/2020
+ms.date: 03/22/2021
 ms.author: v-junlch
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: 7e2c23b37e925fe6726f3aa2a6eec128286fc8ed
-ms.sourcegitcommit: f436acd1e2a0108918a6d2ee9a1aac88827d6e37
+ms.openlocfilehash: d6be718cbb92a8bd85b27f50b709abd2516cd433
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508777"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602753"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>使用 Java 和 Eclipse 创建第一个函数 
 
@@ -68,7 +68,7 @@ Maven 在新文件夹中创建名为 artifactId 的项目文件。 项目中生�
 
 ## <a name="deploy-the-function-to-azure"></a>将函数部署到 Azure
 
-部署到 Azure Functions 的过程中会使用 Azure CLI 中的帐户凭据。 在继续使用计算机的命令提示符之前，请[使用 Azure CLI 进行登录](/cli/authenticate-azure-cli?view=azure-cli-latest)。
+部署到 Azure Functions 的过程中会使用 Azure CLI 中的帐户凭据。 在继续使用计算机的命令提示符之前，请[使用 Azure CLI 进行登录](/cli/authenticate-azure-cli)。
 
 ```azurecli
 az login
@@ -90,5 +90,3 @@ az login
 
 - 有关开发 Java 函数的详细信息，请查看 [Java 函数开发人员指南](functions-reference-java.md)。
 - 使用 `azure-functions:add` Maven 目标将具有不同触发器的其他函数添加到你的项目。
-
-<!-- Update_Description: wording update -->

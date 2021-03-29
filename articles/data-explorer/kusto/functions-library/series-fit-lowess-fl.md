@@ -2,27 +2,26 @@
 title: series_fit_lowess_fl() - Azure 数据资源管理器
 description: 本文介绍 Azure 数据资源管理器中的用户定义函数 series_fit_lowess_fl()。
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 11/29/2020
-ms.date: 01/22/2021
+ms.date: 03/23/2021
 no-loc: LOWESS
-ms.openlocfilehash: c3ff9fdf8f492193af69b1aae6af725c975c2eae
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.openlocfilehash: e93e183b69f6e02f6c4682c6b2220be3e1ecb573
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98614875"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602609"
 ---
 # <a name="series_fit_lowess_fl"></a>series_fit_lowess_fl()
 
 函数 `series_fit_lowess_fl()` 对序列应用 LOWESS 回归。 此函数采用包含多个序列（动态数值阵列）的表，并生成一条 LOWESS 曲线，它是原始序列的平滑化版本。
 
 > [!NOTE]
-> * `series_fit_lowess_fl()` 是 [UDF（用户定义的函数）](../query/functions/user-defined-functions.md)。
-> * 此函数包含内联 Python，需要在群集上[启用 python() 插件](../query/pythonplugin.md#enable-the-plugin)。 有关详细信息，请参阅[用法](#usage)。
+> * `series_fit_lowess_fl()` 是 [UDF（用户定义的函数）](../query/functions/user-defined-functions.md)。 有关详细信息，请参阅[用法](#usage)。
+> * 此函数包含内联 Python，需要在群集上[启用 python() 插件](../query/pythonplugin.md#enable-the-plugin)。
 
 ## <a name="syntax"></a>语法
 

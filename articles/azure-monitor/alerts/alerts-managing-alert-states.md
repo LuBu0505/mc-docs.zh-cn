@@ -1,22 +1,21 @@
 ---
 title: 管理警报和智能组状态
 description: 管理警报和智能组实例的状态
-ms.subservice: alerts
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 05/30/2019
-ms.date: 02/20/2021
+ms.date: 03/22/2021
 ms.author: v-johya
-ms.openlocfilehash: f756764e8171c15c17bf301355fd7b1feea7320b
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: fbdd5e3691716d9065c348dcb88caff33b334230
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205310"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603614"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>管理警报和智能组状态
 
-Azure Monitor 中的警报现在具有[警报状态和监视条件](../platform/alerts-overview.md)，与此类似，智能组具有[智能组状态](../platform/alerts-smartgroups-overview.md?toc=%2fazure-monitor%2ftoc.json)。 现在，在与相应警报或智能组相关联的历史记录中捕获对状态的更改。 本文将指导完成更改状态（包括警报和智能组）的过程。
+Azure Monitor 中的警报现在具有[警报状态和监视条件](./alerts-overview.md)，与此类似，智能组具有[智能组状态](./alerts-smartgroups-overview.md?toc=%2fazure-monitor%2ftoc.json)。 现在，在与相应警报或智能组相关联的历史记录中捕获对状态的更改。 本文将指导完成更改状态（包括警报和智能组）的过程。
 
 ## <a name="change-the-state-of-an-alert"></a>更改警报状态
 
@@ -46,6 +45,4 @@ Azure Monitor 中的警报现在具有[警报状态和监视条件](../platform/
    > [!NOTE]
    >  更改智能组状态不会更改各个成员警报的状态。
 
-1. 完成此操作后，状态更改将记录在相应智能组的历史记录中。 打开相应的“详细信息”页面并查看历史记录部分即可查看此记录。     
-![屏幕截图显示了智能组的更改历史记录。](./media/alerts-managing-alert-states/state-sg-history.jpg)
-
+<!--Not available in MC: the state change is recorded in the history -->

@@ -1,21 +1,22 @@
 ---
 title: Azure 中 Windows VM 的时间同步
 description: Windows 虚拟机的时间同步。
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: conceptual
 ms.workload: infrastructure-services
 origin.date: 09/17/2018
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 03/29/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 591cdfaeaee5db449c8dc09f8f9f00c3dd690eae
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: ec1f48590dfa906466c72f9534448dc25b614edd
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105745"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603594"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Azure 中 Windows VM 的时间同步
 
@@ -27,7 +28,7 @@ Azure 现在受运行 Windows Server 2016 的基础设施的支持。 Windows Se
 >
 > 有关详细信息，请参阅 [Windows Server 2016 的准确时间](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)。 
 
-<!--Not Avaialble on [high-level overview video](https://aka.ms/WS2016TimeVideo)-->
+<!--NOT AVAILABLE ON [high-level overview video](https://aka.ms/WS2016TimeVideo)-->
 
 ## <a name="overview"></a>概述
 
@@ -121,7 +122,7 @@ w32tm /query /source
 
 ## <a name="opt-in-for-host-only-time-sync"></a>选择启用“仅主机”时间同步
 
-Azure 始终致力于改进主机上的时间同步，确保所有时间同步基础设施并置在 Azure 拥有的数据中心。 如果首选使用 time.windows.com 作为主时间源的默认设置有时间同步问题，可通过以下命令来选择启用“仅主机”时间同步。
+Azure 不断致力于改善主机上的时间同步，并且可以保证所有时间同步基础结构都在 Microsoft 拥有的数据中心中并置。 如果首选使用 time.windows.com 作为主时间源的默认设置有时间同步问题，可通过以下命令来选择启用“仅主机”时间同步。
 
 将 VMIC 提供程序标记为“已启用”。 
 
@@ -173,4 +174,4 @@ w32tm /dumpreg /subkey:Parameters | findstr /i "ntpserver"
 - [Windows Server 2016 的准确时间](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
 - [Support boundary to configure the Windows Time service for high-accuracy environments](https://docs.microsoft.com/windows-server/networking/windows-time-service/support-boundary)（为高准确性环境配置 Windows 时间服务所需的支持边界）
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

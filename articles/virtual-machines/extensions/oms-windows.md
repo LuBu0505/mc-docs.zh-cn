@@ -1,40 +1,33 @@
 ---
 title: 适用于 Windows 的 Log Analytics 虚拟机扩展
 description: 使用虚拟机扩展在 Windows 虚拟机上部署 Log Analytics 代理。
-services: virtual-machines-windows
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: feae6176-2373-4034-b5d9-a32c6b4e1f10
-ms.service: virtual-machines-windows
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.collection: windows
 origin.date: 06/26/2020
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5b8f8b96bce7a7d864cc6582b6b470980a478c0d
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: e3763e5afbc6ac42ec26626bd99f0386cd2cd13e
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055219"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603173"
 ---
 <!--Verified successfully the Extension Type-->
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Log Analytics 虚拟机扩展
 
 Azure Monitor 日志提供跨云和本地资产的监视功能。 适用于 Windows 的 Log Analytics 代理虚拟机扩展由 Azure 发布和提供支持。 该扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Log Analytics 工作区中。 本文档详细介绍适用于 Windows 的 Log Analytics 虚拟机扩展支持的平台、配置和部署选项。
 
-<!--MOONCAKE: CORRECT ON supported by Azure-->
-
 ## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 
-有关支持的 Windows 操作系统的详细信息，请参阅 [Azure Monitor 代理的概述](../../azure-monitor/platform/agents-overview.md#supported-operating-systems)一文。
+有关支持的 Windows 操作系统的详细信息，请参阅 [Azure Monitor 代理的概述](../../azure-monitor/agents/agents-overview.md#supported-operating-systems)一文。
 
 ### <a name="agent-and-vm-extension-version"></a>代理和 VM 扩展版本
 下表提供了每次发布的 Windows Log Analytics VM 扩展和 Log Analytics 代理捆绑包的版本映射。 
@@ -108,14 +101,14 @@ Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订�
 \* workspaceId 在 Log Analytics API 中称为 consumerId。
 
 > [!NOTE]
-> 有关其他属性，请参阅 Azure 的[将 Windows 计算机连接到 Azure Monitor](../../azure-monitor/platform/agent-windows.md) 一文。
+> 有关其他属性，请参阅 Azure 的[将 Windows 计算机连接到 Azure Monitor](../../azure-monitor/agents/agent-windows.md) 一文。
 
 ## <a name="template-deployment"></a>模板部署
 
 可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在 Azure 资源管理器模板部署过程中运行 Log Analytics 代理扩展。 包含 Log Analytics 代理 VM 扩展的示例模板可以在 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm)中找到。 
 
 >[!NOTE]
->需要将代理配置为向多个工作区报告时，此模板不支持指定多个工作区 ID 和工作区密钥。 若要将代理配置为向多个工作区报告，请参阅[添加或删除工作区](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace)。  
+>需要将代理配置为向多个工作区报告时，此模板不支持指定多个工作区 ID 和工作区密钥。 若要将代理配置为向多个工作区报告，请参阅[添加或删除工作区](../../azure-monitor/agents/agent-manage.md#adding-or-removing-a-workspace)。  
 
 虚拟机扩展的 JSON 可以嵌套在虚拟机资源内，或放置在 Resource Manager JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/templates/child-resource-name-type.md)。 
 
@@ -192,7 +185,7 @@ Set-AzVMExtension -ExtensionName "MicrosoftMonitoringAgent" `
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure PowerShell 模块进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure PowerShell 模块运行以下命令。
 

@@ -3,15 +3,15 @@ title: 适用于 ASP.NET Core 应用程序的 Azure Application Insights | Azure
 description: 监视 ASP.NET Core Web 应用程序的可用性、性能和使用情况。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 02/22/2021
+ms.date: 03/25/2021
 ms.author: v-johya
 origin.date: 05/22/2019
-ms.openlocfilehash: e540af9922e66c8ad5a3946858e3a61975a71cd7
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 7c61c8de34792d4980635d7eb32edd5e19396bd1
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197456"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603555"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights
 
@@ -32,9 +32,6 @@ ms.locfileid: "102197456"
 
 > [!NOTE]
 > ASP.NET Core 3.1 需要 [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) 或更高版本。
-
-> [!IMPORTANT]
-> 支持以下 ASP.NET Core 版本：ASP.NET Core 2.1 和 ASP.NET Core 3.1。 版本 2.0、2.2 和 3.0 已停用，不再受支持。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -218,7 +215,7 @@ public void ConfigureServices(IServiceCollection services)
 
 `ApplicationInsightsServiceOptions` 中的完整设置列表
 
-|设置 | 说明 | 默认
+|设置 | 描述 | 默认
 |---------------|-------|-------
 |EnablePerformanceCounterCollectionModule  | 启用/禁用 `PerformanceCounterCollectionModule` | 是
 |EnableRequestTrackingTelemetryModule   | 启用/禁用 `RequestTrackingTelemetryModule` | 是

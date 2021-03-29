@@ -1,18 +1,17 @@
 ---
 title: 在 Azure Monitor 中收集 Linux 应用程序性能数据 | Azure Docs
 description: 本文提供了有关对 Log Analytics Linux 代理进行配置以收集 MySQL 和 Apache HTTP Server 的性能计数器的详细信息。
-ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 11/02/2020
+ms.date: 03/22/2021
 origin.date: 05/04/2017
-ms.openlocfilehash: 127bb7e1b5701c38e0ec3ad9896d9d9d2dc94dcf
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 332e19038da5a6cbf2f5ddf8975f0ed39cc4e274
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205697"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603198"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>在 Azure Monitor 中收集 Linux 应用程序的性能计数器 
 
@@ -168,5 +167,5 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 ## <a name="next-steps"></a>后续步骤
 * 从 Linux 代理[收集性能计数器](data-sources-performance-counters.md)。
-* 了解[日志查询](../log-query/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。 
+* 了解[日志查询](../logs/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。
 

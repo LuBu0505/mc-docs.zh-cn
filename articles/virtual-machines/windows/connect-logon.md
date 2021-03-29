@@ -1,22 +1,22 @@
 ---
 title: 连接到 Windows Server VM
 description: 了解如何使用 Azure 门户和 Resource Manager 部署模型连接并登录到 Windows VM。
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
 origin.date: 11/26/2018
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b57d64c59af18cb10b85579ded695c2715638df6
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: e906b4c478bd5a980c2b838298dbe52e4ab26cd6
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054399"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603101"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>如何连接并登录到运行 Windows 的 Azure 虚拟机
 可以从 Windows 桌面使用 Azure 门户中的“连接”按钮来启动远程桌面 (RDP) 会话。 首先连接到虚拟机，然后登录。
@@ -43,7 +43,7 @@ ms.locfileid: "102054399"
     :::image type="content" source="./media/connect-logon/cert-warning.png" alt-text="显示有关验证 VM 标识的消息的屏幕截图。":::
 
     > [!TIP]
-    > 如果门户中的“连接”按钮灰显，并且你未通过 [Express Route](../../expressroute/expressroute-introduction.md) 或[站点到站点 VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) 连接来连接到 Azure，则必须先为 VM 创建并分配一个公共 IP 地址，然后才能使用 RDP。 有关详细信息，请参阅 [Azure 中的公共 IP 地址](../../virtual-network/public-ip-addresses.md)。
+    > 如果门户中的“连接”按钮灰显，并且你未通过 [Express Route](../../expressroute/expressroute-introduction.md) 或[站点到站点 VPN](../../vpn-gateway/tutorial-site-to-site-portal.md) 连接来连接到 Azure，则必须先为 VM 创建并分配一个公共 IP 地址，然后才能使用 RDP。 有关详细信息，请参阅 [Azure 中的公共 IP 地址](../../virtual-network/public-ip-addresses.md)。
     > 
     > 
 
@@ -64,6 +64,6 @@ Get-AzRemoteDesktopFile -ResourceGroupName "RgName" -Name "VmName" -LocalPath "C
 ```
 
 ## <a name="next-steps"></a>后续步骤
-如果连接有困难，请参阅[远程桌面连接故障排除](../troubleshooting/troubleshoot-rdp-connection.md?toc=/virtual-machines/windows/toc.json)。
+如果连接有困难，请参阅[远程桌面连接故障排除](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 <!--Update_Description: update meta properties, wording update, update link-->

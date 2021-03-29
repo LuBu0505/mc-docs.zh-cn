@@ -5,13 +5,13 @@ author: MarkGardner
 ms.author: v-junlch
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.date: 11/02/2020
-ms.openlocfilehash: afad719875229e87f5874b9269f8675f9bd6a548
-ms.sourcegitcommit: f436acd1e2a0108918a6d2ee9a1aac88827d6e37
+ms.date: 03/23/2021
+ms.openlocfilehash: 05b906fe84173398d12fe580f0964a6475678efb
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96509097"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602686"
 ---
 # <a name="tutorial-use-a-managed-identity-to-invoke-azure-functions-from-an-azure-spring-cloud-app"></a>教程：使用托管标识从 Azure Spring Cloud 应用调用 Azure Functions
 
@@ -22,7 +22,7 @@ Azure Functions 和应用服务都内置了对 Azure Active Directory (Azure AD)
 
 ## <a name="prerequisites"></a>先决条件
 
-* [注册 Azure 订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)
+* [注册 Azure 订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn/)
 * [安装 Azure CLI 2.0.67 或更高版本](/cli/install-azure-cli)
 * [安装 Maven 3.0 或更高版本](https://maven.apache.org/download.cgi)
 * [安装 Azure Functions Core Tools 版本 3.0.2009 或更高版本](../azure-functions/functions-run-local.md#install-the-azure-functions-core-tools)
@@ -32,7 +32,7 @@ Azure Functions 和应用服务都内置了对 Azure Active Directory (Azure AD)
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/group#az-group-create) 命令创建一个资源组，以同时包含函数应用和 Spring Cloud：
 
 ```azurecli
-az group create --name myResourceGroup --location chinanorth
+az group create --name myResourceGroup --location chinaeast2
 ```
 
 
@@ -43,13 +43,13 @@ az group create --name myResourceGroup --location chinanorth
 > 每个函数应用和存储帐户都必须具有唯一名称。 在下面的示例中，将 <your-functionapp-name> 替换为函数应用的名称，将 <your-storageaccount-name> 替换为存储帐户的名称。
 
 ```azurecli
-az storage account create --name <your-storageaccount-name> --resource-group myResourceGroup --location chinanorth --sku Standard_LRS
+az storage account create --name <your-storageaccount-name> --resource-group myResourceGroup --location chinaeast2 --sku Standard_LRS
 ```
 
 创建存储帐户后，可创建函数应用。
 
 ```azurecli
-az functionapp create --name <your-functionapp-name> --resource-group myResourceGroup --consumption-plan-location chinanorth --os-type windows --runtime node --storage-account <your-storageaccount-name> --functions-version 3
+az functionapp create --name <your-functionapp-name> --resource-group myResourceGroup --consumption-plan-location chinaeast2 --os-type windows --runtime node --storage-account <your-storageaccount-name> --functions-version 3
 ```
 
 记下返回的 hostNames（其格式将为“https://<your-functionapp-name>.chinacloudsites.cn”）。 将在之后的步骤中用到它。
@@ -113,13 +113,13 @@ Functions in <your-functionapp-name>:
 
 ```azurecli
 az extension add --name spring-cloud
-az spring-cloud create --name mymsispringcloud --resource-group myResourceGroup --location chinanorth
+az spring-cloud create --name mymsispringcloud --resource-group myResourceGroup --location chinaeast2
 ```
 
 以下示例按 `--assign-identity` 参数的请求，创建名为 `msiapp` 且已启用系统分配托管标识的应用。
 
 ```azurecli
-az spring-cloud app create --name "msiapp" --service "mymsispringcloud" --resource-group "myResourceGroup" --is-public true --assign-identity
+az spring-cloud app create --name "msiapp" --service "mymsispringcloud" --resource-group "myResourceGroup" --assign-endpoint true --assign-identity
 ```
 
 ## <a name="build-sample-spring-boot-app-to-invoke-the-function"></a>构建示例 Spring Boot 应用以调用函数
@@ -161,7 +161,7 @@ az spring-cloud app create --name "msiapp" --service "mymsispringcloud" --resour
 5. 访问公共终结点或测试终结点以测试应用。 
 
     ```console
-    curl https://mymsispringcloud-msiapp.azuremicroservices.io/func/springcloud
+    curl https://mymsispringcloud-msiapp.microservices.azure.cn/func/springcloud
     ```
 
     你将在响应正文中看到以下消息。
@@ -175,5 +175,4 @@ az spring-cloud app create --name "msiapp" --service "mymsispringcloud" --resour
 
 * [如何为 Azure Spring Cloud 应用程序启用系统分配的托管标识](./spring-cloud-howto-enable-system-assigned-managed-identity.md)
 * [了解有关 Azure 资源的托管标识的详细信息](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
-* [为服务到服务调用配置后台程序客户端应用程序](../app-service/configure-authentication-provider-aad.md#configure-a-daemon-client-application-for-service-to-service-calls)
-
+* [配置客户端应用以访问应用服务](../app-service/configure-authentication-provider-aad.md#configure-client-apps-to-access-your-app-service)

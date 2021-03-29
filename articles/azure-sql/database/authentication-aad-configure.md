@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto, sstein
 origin.date: 08/17/2020
-ms.date: 02/22/2021
-ms.openlocfilehash: 9eaaa45ba96e383b20462f56b9584e6625af9e24
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.date: 03/29/2021
+ms.openlocfilehash: fd2b4e58b527555aa91eb6cee2fb142b463c410c
+ms.sourcegitcommit: 308ca551066252e68198391c3e4d4b1de348deb9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696688"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105601789"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>使用 Azure SQL 配置和管理 Azure AD 身份验证
 
@@ -210,10 +210,10 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 | 命令 | 说明 |
 | --- | --- |
-|[az sql mi ad-admin create](https://docs.microsoft.com/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | 预配 SQL 托管实例（必须来自当前订阅）的 Azure Active Directory 管理员。 |
-|[az sql mi ad-admin delete](https://docs.microsoft.com/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | 删除 SQL 托管实例的 Azure Active Directory 管理员。 |
-|[az sql mi ad-admin list](https://docs.microsoft.com/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-list) | 返回当前为 SQL 托管实例配置的 Azure Active Directory 管理员的相关信息。 |
-|[az sql mi ad-admin update](https://docs.microsoft.com/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-update) | 更新 SQL 托管实例的 Active Directory 管理员。 |
+|[az sql mi ad-admin create](/cli/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | 预配 SQL 托管实例（必须来自当前订阅）的 Azure Active Directory 管理员。 |
+|[az sql mi ad-admin delete](/cli/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | 删除 SQL 托管实例的 Azure Active Directory 管理员。 |
+|[az sql mi ad-admin list](/cli/sql/mi/ad-admin#az-sql-mi-ad-admin-list) | 返回当前为 SQL 托管实例配置的 Azure Active Directory 管理员的相关信息。 |
+|[az sql mi ad-admin update](/cli/sql/mi/ad-admin#az-sql-mi-ad-admin-update) | 更新 SQL 托管实例的 Active Directory 管理员。 |
 
 有关 CLI 命令的详细信息，请参阅 [az sql mi](/cli/sql/mi)。
 
@@ -335,8 +335,8 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 - .NET Framework 4.6 或更高版本（在 [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://docs.microsoft.com/dotnet/framework/install/guide-for-developers) 上提供）。
 - 适用于 SQL Server 的 Azure Active Directory 身份验证库 (*ADAL.DLL*)。 下面是下载链接，用于安装包含 *ADAL.DLL* 库的最新 SSMS、ODBC 和 OLE DB 驱动程序。
   - [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
-  - [ODBC Driver 17 for SQL Server](https://www.microsoft.com/download/details.aspx?id=56567)
-  - [OLE DB Driver 18 for SQL Server](https://www.microsoft.com/download/details.aspx?id=56730)
+  - [ODBC Driver 17 for SQL Server](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15)
+  - [OLE DB Driver 18 for SQL Server](https://docs.microsoft.com/sql/connect/oledb/download-oledb-driver-for-sql-server?view=sql-server-ver15)
 
 可以通过以下操作来满足这些要求：
 

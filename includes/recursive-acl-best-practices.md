@@ -1,6 +1,6 @@
 ---
-title: include 文件
-description: include 文件
+title: 包含文件
+description: 包含文件
 services: storage
 author: WenJason
 ms.service: storage
@@ -10,13 +10,13 @@ ms.date: 03/08/2021
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 3a9117870ff497bac37f530ecee4a9796c65ac3e
-ms.sourcegitcommit: 0b49bd1b3b05955371d1154552f4730182c7f0a2
+ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/25/2021
 ms.locfileid: "104766143"
 ---
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 本部分提供了有关以递归方式设置 ACL 的一些最佳做法指南。 
 

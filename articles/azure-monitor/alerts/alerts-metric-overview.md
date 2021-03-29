@@ -4,15 +4,14 @@ description: 获取指标警报功能的概述，以及它们在 Azure Monitor �
 author: Johnnytechn
 ms.author: v-johya
 origin.date: 12/5/2019
-ms.date: 02/20/2021
+ms.date: 03/22/2021
 ms.topic: conceptual
-ms.subservice: alerts
-ms.openlocfilehash: f2facb2954a4c9302803bcd72be6ce329155d4ec
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: b1b423b37a1c03f47801f7d8bf157038b7530857
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205666"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603191"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
 
@@ -29,7 +28,7 @@ Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些�
 - 目标资源（要监视的 Azure 资源）：myVM
 - 指标：CPU 百分比
 - 条件类型：静态
-- 聚合类型（基于原始指标值运行的统计信息。 [支持的聚合类型](../platform/metrics-aggregation-explained.md#aggregation-types)为最小值、最大值、平均值、总值、计数）：平均值
+- 聚合类型（基于原始指标值运行的统计信息。 [支持的聚合类型](../essentials/metrics-aggregation-explained.md#aggregation-types)为最小值、最大值、平均值、总值、计数）：平均值
 - 期限（检查指标值时所依据的回溯时段）：过去 5 分钟
 - 频率（指标警报检查是否符合条件的频率）：1 分钟
 - 运算符：大于
@@ -46,7 +45,7 @@ Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些�
 - 目标资源（要监视的 Azure 资源）：myVM
 - 指标：CPU 百分比
 - 条件类型：动态
-- 聚合类型（基于原始指标值运行的统计信息。 [支持的聚合类型](../platform/metrics-aggregation-explained.md#aggregation-types)为最小值、最大值、平均值、总值、计数）：平均值
+- 聚合类型（基于原始指标值运行的统计信息。 [支持的聚合类型](../essentials/metrics-aggregation-explained.md#aggregation-types)为最小值、最大值、平均值、总值、计数）：平均值
 - 期限（检查指标值时所依据的回溯时段）：过去 5 分钟
 - 频率（指标警报检查是否符合条件的频率）：1 分钟
 - 运算符：大于
@@ -144,7 +143,7 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 
 | 服务 | 中国 |
 |:--------|:--------|
-| 虚拟机  | 否 |
+| 虚拟机  | **是** |
 | SQL 服务器数据库 | **是** |
 | SQL 服务器弹性池 | **是** |
 | NetApp 文件容量池 | **是** |
@@ -183,10 +182,9 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 ## <a name="next-steps"></a>后续步骤
 
 - [了解如何在 Azure 中创建、查看和管理指标警报](../alerts/alerts-metric.md)
-- [了解如何在 Azure 监视器指标资源管理器中创建警报](../platform/metrics-charts.md#alert-rules)
+- [了解如何在 Azure 监视器指标资源管理器中创建警报](../essentials/metrics-charts.md#alert-rules)
 - [了解如何使用 Azure 资源管理器模板部署指标警报](./alerts-metric-create-templates.md)
-- [详细了解操作组](../platform/action-groups.md)
+- [详细了解操作组](./action-groups.md)
 - [详细了解动态阈值条件类型](../alerts/alerts-dynamic-thresholds.md)
 - [详细了解指标警报中的故障排查问题](alerts-troubleshoot-metric.md)
-
 

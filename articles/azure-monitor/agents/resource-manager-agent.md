@@ -1,20 +1,19 @@
 ---
 title: 用于代理的资源管理器模板示例
 description: 用于在 Azure Monitor 中部署和配置虚拟机代理的 Azure 资源管理器模板示例。
-ms.subservice: logs
 ms.topic: sample
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
-ms.openlocfilehash: 6f1042bff355ebaf988d34a18bc45f4643ad1fa2
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/22/2021
+ms.openlocfilehash: c93be8f8ae07c5eaf6b8b1f5ec28bdf1b438eb1e
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205669"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603197"
 ---
 # <a name="resource-manager-template-samples-for-agents-in-azure-monitor"></a>用于 Azure Monitor 代理的资源管理器模板示例
-本文包含用于在 Azure Monitor 中为虚拟机部署和配置 [Log Analytics 代理](../platform/log-analytics-agent.md)和[诊断扩展](../platform/diagnostics-extension-overview.md)的 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)示例。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
+本文包含用于在 Azure Monitor 中为虚拟机部署和配置 [Log Analytics 代理](./log-analytics-agent.md)和[诊断扩展](./diagnostics-extension-overview.md)的 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)示例。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
@@ -217,7 +216,7 @@ ms.locfileid: "102205669"
 本节中的示例在 Azure 中的 Windows 和 Linux 虚拟机上安装诊断扩展，并对其进行配置以实现数据收集。
 
 ### <a name="windows"></a>Windows
-以下示例将在 Azure 虚拟机上启用和配置诊断扩展。 有关该配置的详细信息，请参阅 [Windows 诊断扩展架构](../platform/diagnostics-extension-schema-windows.md)。
+以下示例将在 Azure 虚拟机上启用和配置诊断扩展。 有关该配置的详细信息，请参阅 [Windows 诊断扩展架构](./diagnostics-extension-schema-windows.md)。
 
 #### <a name="template-file"></a>模板文件
 
@@ -603,7 +602,7 @@ ms.locfileid: "102205669"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [获取 Azure Monitor 的其他示例模板](../samples/resource-manager-samples.md)。
-* [详细了解 Log Analytics 代理](../platform/log-analytics-agent.md)。
-* [详细了解诊断扩展](../platform/diagnostics-extension-overview.md)。
+* [获取 Azure Monitor 的其他示例模板](../resource-manager-samples.md)。
+* [详细了解 Log Analytics 代理](./log-analytics-agent.md)。
+* [详细了解诊断扩展](./diagnostics-extension-overview.md)。
 

@@ -5,13 +5,13 @@ author: curib
 ms.author: v-junlch
 ms.service: cache
 ms.topic: conceptual
-ms.date: 03/09/2021
-ms.openlocfilehash: ace16267ce27d1be4bb57ac9be5a5305aceeca3a
-ms.sourcegitcommit: ec127596b5c56f8ba4d452c39a7b44510b140ed4
+ms.date: 03/24/2021
+ms.openlocfilehash: 31eb003c0b178235de6147d098420399333ca129
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103212687"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602744"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>使用 Azure Cache for Redis 将机器学习模型部署到 Azure Functions 
 
@@ -128,7 +128,7 @@ def run(data):
 这些实体被封装到推理配置中。 推理配置引用入口脚本和其他依赖项。
 
 > [!IMPORTANT]
-> 创建用于 Azure Functions 的推理配置时，需要使用 [Environment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py) 对象。 请注意，如果要定义自定义环境，必须将版本不低于 1.0.45 的 azureml-defaults 添加为 pip 依赖项。 此包包含将模型作为 Web 服务托管时所需的功能。 下面的示例演示如何创建环境对象并将其用于推理配置：
+> 创建用于 Azure Functions 的推理配置时，需要使用 [Environment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29) 对象。 请注意，如果要定义自定义环境，必须将版本不低于 1.0.45 的 azureml-defaults 添加为 pip 依赖项。 此包包含将模型作为 Web 服务托管时所需的功能。 下面的示例演示如何创建环境对象并将其用于推理配置：
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -161,7 +161,7 @@ pip install azureml-contrib-functions
 
 ## <a name="create-the-image"></a>创建映像
 
-若想创建要部署到 Azure Functions 的 Docker 映像，请为想应用的触发器使用 [azureml.contrib.functions.package](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) 或特定包函数。 下面的代码片段演示如何通过模型和推理配置创建包含 HTTP 触发器的新包：
+若想创建要部署到 Azure Functions 的 Docker 映像，请为想应用的触发器使用 [azureml.contrib.functions.package](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions) 或特定包函数。 下面的代码片段演示如何通过模型和推理配置创建包含 HTTP 触发器的新包：
 
 > [!NOTE]
 > 该代码片段假定 `model` 包含已注册的模型，并且 `inference_config` 包含推理环境的配置。 有关详细信息，请参阅[使用 Azure 机器学习部署模型](../machine-learning/how-to-deploy-and-where.md)。
@@ -316,5 +316,5 @@ print(model_package.location)
 ## <a name="next-steps"></a>后续步骤 
 
 * 详细了解 [Azure Cache for Redis](./cache-overview.md)
-* [API 参考](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) 
+* [API 参考](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions) 
 * 创建[使用 Azure Cache for Redis 的 Python 应用](./cache-python-get-started.md)

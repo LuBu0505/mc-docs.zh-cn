@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 04/21/2020
 ms.date: 06/22/2020
 ms.author: v-yiso
-ms.openlocfilehash: 8bd02b443311defe92bf99477255d30d0891f495
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: e562db40c1080d083228e8ee4a6b121a113ef1e6
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830244"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602700"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>使用脚本操作自定义 Azure HDInsight 群集
 
@@ -73,7 +73,7 @@ Azure HDInsight 提供名为脚本操作的配置方法，该方法可以调用�
 获取有关使用访问权限管理的详细信息：
 
 - [Azure 门户中的访问管理入门](../role-based-access-control/overview.md)
-- [使用角色分配管理对 Azure 订阅资源的访问权限](../role-based-access-control/role-assignments-portal.md)
+- [分配 Azure 角色以管理对 Azure 订阅资源的访问](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="methods-for-using-script-actions"></a>使用脚本操作的方法
 

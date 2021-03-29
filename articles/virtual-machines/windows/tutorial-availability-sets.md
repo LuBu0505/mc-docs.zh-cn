@@ -1,25 +1,24 @@
 ---
-title: 教程 - Azure 中 Windows VM 的高可用性
-description: 本教程介绍如何使用 Azure PowerShell 在可用性集中部署高度可用的虚拟机
-services: virtual-machines-windows
-ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.topic: tutorial
-origin.date: 11/30/2018
+title: 使用 Azure PowerShell 在可用性集中部署 VM
+description: 了解如何使用 Azure PowerShell 在可用性集中部署高可用性虚拟机
+services: virtual-machines
+ms.service: virtual-machines
+ms.topic: how-to
+origin.date: 03/08/2021
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 07/06/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 210b7f192e14f29dbc064cf6a0e2b41f8ae25a4f
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 9152a040a87b6d6f9424f676912d3c737d36871b
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102053863"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603596"
 ---
-# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和部署高度可用的虚拟机
+# <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-powershell"></a>使用 Azure PowerShell 在可用性集中创建和部署虚拟机
 
 本教程介绍如何使用可用性集提高虚拟机 (VM) 的可用性和可靠性。 可用性集确保在 Azure 上部署的 VM 能够跨群集中多个隔离的硬件节点分布。 
 
@@ -31,20 +30,12 @@ ms.locfileid: "102053863"
 > * 检查可用的 VM 大小
 > * 检查 Azure 顾问
 
-## <a name="availability-set-overview"></a>可用性集概述
-
-可用性集是一种逻辑分组功能，可将部署的 VM 资源相互隔离。 Azure 确保可用性集中部署的 VM 能够跨多个物理服务器、计算机架、存储单元和网络交换机运行。 如果发生硬件或软件故障，只有一部分 VM 会受到影响，整体解决方案仍会保持正常运行。 可用性集对于构建可靠的云解决方案至关重要。
-
-假设某个基于 VM 的典型解决方案包含四个前端 Web 服务器，以及 2 个后端 VM。 在 Azure 中，若想在部署 VM 之前先定义两个可用性集：一个用于 Web 层，另一个用于后端层。 创建新 VM 时，请将可用性集指定为参数。 Azure 确保 VM 在多个物理硬件资源之间保持隔离。 如果运行服务器的物理硬件有问题，可以确信服务器的其他实例保持运行，因为它们位于不同的硬件上。
-
-在 Azure 中部署基于 VM 的可靠解决方案时，使用可用性集。
-
 ## <a name="launch-azure-local-shell"></a>启动 Azure 本地 Shell
 
 打开 Azure Powershell 控制台，并以管理员权限运行下面列出的脚本。
 
-<!--Not Available on Azure Cloud Shell-->
-<!--NOT AVAILABLE ON [https://shell.azure.com/powershell](https://shell.azure.com/powershell)-->
+<!--NOT AVAILABLE ON https://shell.azure.com-->
+<!--NOT AVAILABLE ON Azure Cloud Shell-->
 
 ## <a name="create-an-availability-set"></a>创建可用性集
 

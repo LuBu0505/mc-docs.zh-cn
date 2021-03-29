@@ -6,16 +6,16 @@ ms.service: virtual-machines
 ms.topic: conceptual
 origin.date: 11/06/2020
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/29/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: e8d922fc7e0983c9c4b56cd41f5dedd9fa787ab1
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: d8f7d19716979773d2f2c919df83837bf59f0f1a
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055175"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603455"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure 启动诊断
 
@@ -115,7 +115,7 @@ API 版本 2020-06-01 后的所有内容都支持托管启动诊断。 有关详
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解如何使用启动诊断功能来[排查 Azure 中虚拟机的问题](./troubleshooting/boot-diagnostics.md)。
+详细了解如何使用启动诊断功能来[排查 Azure 中虚拟机的问题](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/boot-diagnostics)。
 
 <!--NOT AVAILABLE ON [Azure Serial Console](./troubleshooting/serial-console-overview.md)-->
 <!--Update_Description: update meta properties, wording update, update link-->

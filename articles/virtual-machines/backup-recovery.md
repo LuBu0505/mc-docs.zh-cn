@@ -2,19 +2,20 @@
 title: VM 备份选项概述
 description: 概述 Azure 虚拟机的备份选项。
 ms.service: virtual-machines
+ms.subservice: recovery
 ms.topic: conceptual
 origin.date: 08/03/2020
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/29/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: c2e50f26144df9743aa97558f1028803ead55bf0
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 1cc56d76446b780d5c5530da6e1b8009a8367bde
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055176"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603454"
 ---
 <!--Verified Successfully-->
 # <a name="backup-and-restore-options-for-virtual-machines-in-azure"></a>Azure 中虚拟机的备份和还原选项
@@ -47,6 +48,6 @@ ms.locfileid: "102055176"
 * [使用 Linux 中的快照创建作为托管磁盘存储的 VHD 的副本](./linux/snapshot-copy-managed-disk.md)
 
 ## <a name="next-steps"></a>后续步骤
-可以按照 [Azure 备份快速入门](../backup/quick-backup-vm-portal.md)试用 Azure 备份。
+可以按照 [Azure 备份快速入门](../backup/quick-backup-vm-portal.md)来试用 Azure 备份。
 
 <!--Update_Description: update meta properties, wording update, update link-->

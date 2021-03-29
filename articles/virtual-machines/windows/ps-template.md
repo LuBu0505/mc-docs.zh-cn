@@ -1,21 +1,21 @@
 ---
 title: 在 Azure 中使用模板创建 Windows VM
 description: 将 Resource Manager 模板与 PowerShell 配合使用，轻松创建新的 Windows VM。
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: how-to
 origin.date: 03/22/2019
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd874fe14c333e08c644361f3d3882518f278a2b
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 91a973351572076791f8fcf414724a5ac04529ca
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102052797"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603750"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>通过 Resource Manager 模板创建 Windows 虚拟机
 
@@ -315,7 +315,7 @@ ms.locfileid: "102052797"
 
 若要在 Azure 本地 PowerShell 控制台上以管理员权限运行以下 PowerShell 脚本，请执行以下操作。
 
-<!--Not Avaialble on instead of from the Azure Cloud shell-->
+<!--NOT AVAILABLE ON instead of from the Azure Cloud shell-->
 
 [!INCLUDE [azure-resource-manager-update-templateurl-parameter-china](../../../includes/azure-resource-manager-update-templateurl-parameter-china.md)]
 
@@ -341,7 +341,7 @@ New-AzResourceGroupDeployment `
 
 如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 以创建与 Azure 的连接。
 
-<!--Not Available on instead of from the Azure local Shell-->
+<!--NOT AVAILABLE ON instead of from the Azure local Shell-->
 
 在前面的示例中，指定了 GitHub 中存储的一个模板。 还可以下载或创建模板并使用 `--template-file` 参数指定本地路径。
 
@@ -349,7 +349,7 @@ New-AzResourceGroupDeployment `
 
 - 若要了解如何开发资源管理器模板，请参阅 [Azure 资源管理器文档](../../azure-resource-manager/index.yml)。
     
-    <!--Not Available on  [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.compute/allversions)-->
+    <!--NOT AVAILABLE ON [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.compute/allversions)-->
 
 - 若要查看更多的虚拟机模板示例，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular)。
 

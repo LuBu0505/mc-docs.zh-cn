@@ -5,14 +5,14 @@ author: MikeDodaro
 ms.author: v-junlch
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 02/19/2021
+ms.date: 03/23/2021
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 49aa7cd3737c0cfb2d7c5f35ea3d320c46c49c7c
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 12c25085b0108d0cd2a419e58b6ae8ef2c61d05d
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101751751"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602839"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>在 VNET 中运行 Azure Spring Cloud 的客户责任
 本文档包括有关在虚拟网络中使用 Azure Spring Cloud 时的规范。
@@ -34,13 +34,13 @@ ms.locfileid: "101751751"
 
   | 目标终结点 | 端口 | 用途 | 注意 |
   |------|------|------|
-  | *:1194 *或* [ServiceTag](/virtual-network/service-tags-overview#available-service-tags) - AzureCloud:1194 | UDP:1194 | 基础 Kubernetes 群集管理。 | |
-  | *:443 *或* [ServiceTag](/virtual-network/service-tags-overview#available-service-tags) - AzureCloud:443 | TCP:443 | Azure Spring Cloud 服务管理。 | 在“networkProfile”部分下的资源有效负载中，可以了解服务实例“requiredTraffics”的信息。 |
-  | *:9000 *或* [ServiceTag](/virtual-network/service-tags-overview#available-service-tags) - AzureCloud:9000 | TCP:9000 | 基础 Kubernetes 群集管理。 |
+  | *:1194 *或* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - AzureCloud:1194 | UDP:1194 | 基础 Kubernetes 群集管理。 | |
+  | *:443 *或* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - AzureCloud:443 | TCP:443 | Azure Spring Cloud 服务管理。 | 在“networkProfile”部分下的资源有效负载中，可以了解服务实例“requiredTraffics”的信息。 |
+  | *:9000 *或* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - AzureCloud:9000 | TCP:9000 | 基础 Kubernetes 群集管理。 |
   | *:123 *或* ntp.ubuntu.com:123 | UDP:123 | Linux 节点上的 NTP 时间同步。 | |
-  | *.azure.io:443 *或* [ServiceTag](/virtual-network/service-tags-overview#available-service-tags) - AzureContainerRegistry:443 | TCP:443 | Azure 容器注册表。 | 可以通过[在虚拟网络中启用 Azure 容器注册表服务终结点](/virtual-network/virtual-network-service-endpoints-overview)来进行替换。 |
-  | *.core.chinacloudapi.cn:443 和 *.core.chinacloudapi.cn:445 *或* [ServiceTag](/virtual-network/service-tags-overview#available-service-tags) - Storage:443 和 Storage:445 | TCP:443、TCP:445 | Azure 文件存储 | 可以通过[在虚拟网络中启用 Azure 存储服务终结点](/virtual-network/virtual-network-service-endpoints-overview)来进行替换。 |
-  | *.servicebus.chinacloudapi.cn:443 *或* [ServiceTag](/virtual-network/service-tags-overview#available-service-tags) - EventHub:443 | TCP:443 | Azure 事件中心。 | 可以通过[在虚拟网络中启用 Azure 事件中心服务终结点](/virtual-network/virtual-network-service-endpoints-overview)来进行替换。 |
+  | *.azure.io:443 *或* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - AzureContainerRegistry:443 | TCP:443 | Azure 容器注册表。 | 可以通过[在虚拟网络中启用 Azure 容器注册表服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)来进行替换。 |
+  | *.core.chinacloudapi.cn:443 和 *.core.chinacloudapi.cn:445 *或* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - Storage:443 和 Storage:445 | TCP:443、TCP:445 | Azure 文件存储 | 可以通过[在虚拟网络中启用 Azure 存储服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)来进行替换。 |
+  | *.servicebus.chinacloudapi.cn:443 *或* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - EventHub:443 | TCP:443 | Azure 事件中心。 | 可以通过[在虚拟网络中启用 Azure 事件中心服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)来进行替换。 |
   
 
 ## <a name="azure-spring-cloud-fqdn-requirements--application-rules"></a>Azure Spring Cloud FQDN 要求 / 应用程序规则

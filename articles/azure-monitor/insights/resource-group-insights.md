@@ -1,19 +1,18 @@
 ---
 title: Azure Monitor 资源组见解 |Microsoft Docs
 description: 通过 Azure Monitor 了解资源组级别的分布式应用程序和服务的运行状况和性能
-ms.subservice: ''
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
 origin.date: 09/19/2018
-ms.date: 02/22/2021
+ms.date: 03/24/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 057c948bf59d8b6f4c26f53ed5a94b624d421dfc
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: d736ea96f07e569de5c7227cdff25009dd7291c8
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197624"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603099"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>使用 Azure Monitor（预览版）监视资源组
 
@@ -41,71 +40,7 @@ ms.locfileid: "102197624"
 
 默认情况下，按照应用层和资源类型对资源进行分组。 应用层是资源类型的简单分类，仅存在于资源组见解概述页的上下文中。 存在与应用程序代码、计算基础结构、网络、存储 + 数据库相关的资源类型。 管理工具具有自己的应用层，每个其他资源都归类为属于“其他”应用层。 此分组可以帮助快速查看应用程序的哪些子系统运行正常，哪些子系统运行不正常。
 
-## <a name="diagnose-issues-in-your-resource-group"></a>诊断资源组中的问题
-
-资源组见解页提供一些可帮助诊断问题的其他工具
-
-   |         |          |
-   | ---------------- |:-----|
-   | [**警报**](../alerts/alerts-overview.md)      |  查看、创建和管理警报。 |
-   | [**指标**](../data-platform.md) | 可视化并浏览基于指标的数据。    |
-   | [**活动日志**](../essentials/platform-logs-overview.md) | Azure 中已发生的订阅级别事件。  |
-   | [**应用程序映射**](../app/app-map.md) | 浏览分布式应用程序的拓扑，以识别性能瓶颈或故障作用点。 |
-
-## <a name="failures-and-performance"></a>故障和性能
-
-如果发现应用程序运行缓慢或用户报告了错误，该怎么办？ 搜索所有资源以隔离问题是非常耗时的。
-
-“性能”和“故障”选项卡通过结合使用许多常见资源类型的性能和故障诊断视图，简化了此过程 。
-
-大多数资源类型将打开 Azure Monitor 工作簿模板库。 可以自定义、保存、与团队共享创建的每个工作簿，并在将来重新用于诊断类似问题。
-
-### <a name="investigate-failures"></a>调查故障
-
-若要测试“故障”选项卡，选择左侧菜单中“调查”下的“故障” 。
-
-选择完成后，左侧菜单栏会发生更改，提供新选项。
-
-![故障概述窗格的屏幕截图](./media/resource-group-insights/00004-failures.png)
-
-选择应用服务时，会看到 Azure Monitor 工作簿模板库。
-
-![应用程序工作簿库的屏幕截图](./media/resource-group-insights/0005-failure-insights-workbook.png)
-
-选择故障见解的模板会打开工作簿。
-
-![故障报告的屏幕截图](./media/resource-group-insights/0006-failure-visual.png)
-
-可以选择任意行。 然后所选内容显示在图形的详细信息视图中。
-
-![故障详细信息的屏幕截图](./media/resource-group-insights/0007-failure-details.png)
-
-工作簿将创建自定义报告和可视化效果的困难工作抽象化为易于使用的格式。 虽然一些用户可能只想调整预生成的参数，但工作簿是完全可自定义的。
-
-若要了解此工作簿是如何在内部运作的，选择顶栏的“编辑”。
-
-![其他编辑选项的屏幕截图](./media/resource-group-insights/0008-failure-edit.png)
-
-许多“编辑”框将显示在工作簿的各种元素周围。 选择操作表下方的“编辑”框。
-
-![编辑框的屏幕截图](./media/resource-group-insights/0009-failure-edit-graph.png)
-
-这显示了生成表的可视化效果的底层日志查询。
-
- ![日志查询窗口的屏幕截图](./media/resource-group-insights/0010-failure-edit-query.png)
-
-可以直接修改查询。 还可以将其作为参考，并在设计自己的自定义参数化工作簿时从中借用。
-
-### <a name="investigate-performance"></a>调查性能
-
-性能提供其自己的工作簿库。 对于应用服务，预生成的应用程序性能工作簿提供以下视图：
-
- ![性能视图的屏幕截图](./media/resource-group-insights/0011-performance.png)
-
-在这种情况下，如果选择编辑，将看到这组可视化效果由 Azure Monitor Metrics 提供支持。
-
- ![Azure Metrics 的性能视图的屏幕截图](./media/resource-group-insights/0012-performance-metrics.png)
-
+<!--Not available in MC: resource group insights page-->
 ## <a name="troubleshooting"></a>疑难解答
 
 ### <a name="enabling-access-to-alerts"></a>启用对警报的访问

@@ -2,28 +2,28 @@
 title: 在 Azure 虚拟机上使用 Visual Studio
 description: 在 Azure 虚拟机上使用 Visual Studio。
 manager: cathys
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
 origin.date: 11/17/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 keywords: visualstudio
-ms.openlocfilehash: b79c891d5de5ea035e195845421d14333a82a2f9
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: fcfe05e6ec44f7906123f886dcec1386490e134b
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856902"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603668"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上的 Visual Studio 映像
 <a name="top"></a> 使用预配置的 Azure 虚拟机 (VM) 中的 Visual Studio 是从无到启动并运行的开发环境的简单快捷方法。 具有不同 Visual Studio 配置的系统映像位于 [Azure 市场](https://market.azure.cn/marketplace/apps/filter?search=Visual%20Studio)。
 
-<!-- Notice: URL is correct on https://market.azure.cn/marketplace/apps/filter?search=Visual%20Studio-->
+<!--CUSTOMIZE CORRECT on https://market.azure.cn/marketplace/apps/filter?search=Visual%20Studio-->
 
 不熟悉 Azure？ [创建一个 Azure 试用帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
 
@@ -36,7 +36,7 @@ ms.locfileid: "97856902"
 | 发行版本                                                                                                                                                | 版本              | 产品版本   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
 | [Visual Studio 2019：最新（版本 16.8）](https://market.azure.cn/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise、Community | 版本 16.8.0    |
-| Visual Studio 2019：RTW                         | Enterprise | 版本 16.0.20    |
+| Visual Studio 2019：RTW                         | 企业 | 版本 16.0.20    |
 | Visual Studio 2017：最新（版本 15.9）           | Enterprise、Community | 版本 15.9.29   |
 | Visual Studio 2017：RTW                             | Enterprise、Community | 版本 15.0.28  |
 | Visual Studio 2015：最新 (Update 3)               | Enterprise、Community | 版本 14.0.25431.01 |
@@ -113,7 +113,7 @@ Visual Studio 遵循 Azure 中的“自带许可”模式。 与专有硬件上�
 
 此外，开发任务或技术可能需要更大的规模，如各种开发配置和多种计算机配置。 可使用 Azure 开发测试实验室，创建可自动构造“黄金映像”的配方。 还可以使用开发测试实验室管理团队正在运行的 VM 策略。 
 
-<!-- Not Available on [Using Azure DevTest Labs for developers](/devtest-lab/devtest-lab-developer-lab) -->
+<!--NOT AVAILABLE ON [Using Azure DevTest Labs for developers](../../devtest-labs/devtest-lab-developer-lab.md)-->
 
 ## <a name="next-steps"></a>后续步骤
 了解预配置的 Visual Studio 映像后，下一步是创建新 VM：
@@ -121,4 +121,4 @@ Visual Studio 遵循 Azure 中的“自带许可”模式。 与专有硬件上�
 * [通过 Azure 门户创建 VM](quick-create-portal.md)
 * [Windows 虚拟机概述](overview.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -81,9 +81,9 @@
     - name: HTTP API
       href: durable-functions-http-api.md
     - name: .NET API
-      href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.webjobs.extensions.durabletask?view=azure-dotnet'
+      href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.webjobs.extensions.durabletask'
     - name: Node.js API
-      href: 'https://docs.microsoft.com/javascript/api/durable-functions/?view=azure-node-latest'
+      href: 'https://docs.microsoft.com/javascript/api/durable-functions/'
 - name: 操作指南
   items:
     - name: 开发
@@ -111,11 +111,13 @@
         - name: 诊断
           href: durable-functions-diagnostics.md
         - name: 监视
-          href: ../functions-monitoring.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+          href: ../functions-monitoring.md
         - name: 定价
           href: durable-functions-billing.md
 - name: 资源
   items:
+    - name: 利用 Microsoft Learn 掌握技能
+      href: 'https://docs.microsoft.com/learn/browse/?products=azure-functions'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: 定价

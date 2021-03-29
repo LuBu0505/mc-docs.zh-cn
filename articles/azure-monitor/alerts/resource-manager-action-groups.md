@@ -1,17 +1,16 @@
 ---
 title: 用于操作组的资源管理器模板示例
 description: 用于部署 Azure Monitor 操作组的 Azure 资源管理器模板示例。
-ms.subservice: logs
 ms.topic: sample
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
-ms.openlocfilehash: 0c13dc00c6bd64e9a3930672003c4a8db2078cc1
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/22/2021
+ms.openlocfilehash: 061de529a3df0e132c92ec7a30200e9cf095e25f
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205774"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603121"
 ---
 # <a name="resource-manager-template-samples-for-action-groups-in-azure-monitor"></a>用于 Azure Monitor 中的操作组的资源管理器模板示例
 本文包含用于在 Azure Monitor 中创建[操作组](../alerts/action-groups.md)的 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)示例。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。

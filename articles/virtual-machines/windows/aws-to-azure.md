@@ -1,21 +1,22 @@
 ---
 title: 将 Windows AWS EC2 实例移动到 Azure
 description: 将 Amazon Web Services (AWS) EC2 Windows 实例移到 Azure 虚拟机。
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.workload: infrastructure-services
 ms.topic: how-to
 origin.date: 06/01/2018
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 85288fe72a8883e51f4865c82637be12bd1aa2ee
-ms.sourcegitcommit: 39288459139a40195d1b4161dfb0bb96f5b71e8e
+ms.openlocfilehash: abb0abe80991006cbf7e496cddf7d0e5aa219b76
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94590734"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603353"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>将 Windows VM 从 Amazon Web Services (AWS) 移到 Azure 虚拟机
 
@@ -43,14 +44,14 @@ ms.locfileid: "94590734"
 
 导出的 VHD 文件将保存在指定的 Amazon S3 存储桶中。 导出 VHD 的基本语法如下所示，只需将 \<brackets> 中的占位符文本替换为自己的信息。
 
-<!--MOONCAKE: --target-environment invlove vmware|citrix|microsoft-->
+<!--CUSTOMIZE: --target-environment invlove vmware|citrix|microsoft-->
 
 ```
 aws ec2 create-instance-export-task --instance-id <instanceID> --target-environment microsoft \
   --export-to-s3-task DiskImageFormat=VHD,ContainerFormat=ova,S3Bucket=<bucket>,S3Prefix=<prefix>
 ```
 
-<!--MOONCAKE: --target-environment invlove vmware|citrix|microsoft-->
+<!--CUSTOMIZE: --target-environment invlove vmware|citrix|microsoft-->
 
 导出 VHD 后，按照[如何从 S3 存储桶下载对象？](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html)中的说明从 S3 存储桶下载 VHD 文件。 
 
@@ -64,4 +65,4 @@ aws ec2 create-instance-export-task --instance-id <instanceID> --target-environm
 - 如果导出之前在源上运行了 Sysprep 来将它 **通用化**，请参阅 [上传已通用化的 VHD 并在 Azure 中使用它来创建新的 VM](upload-generalized-managed.md)
 - 如果导出之前未运行 Sysprep，VHD 将被视为 **已专用化**。请参阅 [将已专用的 VHD 上传到 Azure 并创建新的 VM](create-vm-specialized.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

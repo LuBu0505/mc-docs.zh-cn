@@ -5,13 +5,13 @@ author: Johnnytechn
 ms.topic: conceptual
 origin.date: 06/14/2019
 ms.author: v-johya
-ms.date: 02/20/2021
-ms.openlocfilehash: bba2f0e2934d5065b5bc3fb51db7a3f45da39f6c
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/22/2021
+ms.openlocfilehash: f5cff22136c58ab612fdb2cec1a2cef597a5d239
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205723"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603317"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>管理并维护 Windows 和 Linux 的 Log Analytics 代理
 
@@ -166,7 +166,7 @@ $mma.ReloadConfiguration()
 无需重启代理服务即可使更改生效。
 
 ## <a name="update-proxy-settings"></a>更新代理设置
-若要将代理配置为在部署后通过代理服务器或 [Log Analytics 网关](../platform/gateway.md)与服务通信，请使用以下任一方法来完成此任务。
+若要将代理配置为在部署后通过代理服务器或 [Log Analytics 网关](./gateway.md)与服务通信，请使用以下任一方法来完成此任务。
 
 ### <a name="windows-agent"></a>Windows 代理
 

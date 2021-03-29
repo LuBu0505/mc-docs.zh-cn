@@ -2,21 +2,22 @@
 title: 使用门户创建邻近放置组
 description: 了解如何使用 Azure 门户创建邻近放置组。
 ms.service: virtual-machines
+ms.subservice: proximity-placement-groups
 ms.topic: how-to
 ms.workload: infrastructure-services
-origin.date: 04/24/2020
+origin.date: 03/08/2021
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.author: v-yeche
-ms.openlocfilehash: be86a3652e1af0b7a9f11c67e5d7a6d559acb2fd
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 81b85a2416f2d29a3172f7209628689903774277
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054017"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603150"
 ---
 <!--Verified successfully-->
-# <a name="create-a-proximity-placement-group-using-the-portal"></a>使用门户创建邻近放置组
+# <a name="create-a-proximity-placement-group-using-the-azure-portal"></a>使用 Azure 门户创建邻近放置组
 
 若要让 VM 尽可能靠近，将延迟尽可能降至最低，应将 VM 部署到一个[邻近放置组](../co-location.md#proximity-placement-groups)中。
 
@@ -26,7 +27,7 @@ ms.locfileid: "102054017"
 > 邻近放置组不能与专用主机一起使用。
 >
 
-<!--Not Available on FEATURE availability zone-->
+<!--NOT AVAILABLE on FEATURE availability zone-->
 
 ## <a name="create-the-proximity-placement-group"></a>创建邻近放置组
 

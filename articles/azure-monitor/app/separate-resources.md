@@ -4,14 +4,14 @@ description: 为开发、测试和生产戳记直接遥测不同的资源。
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 05/15/2017
-ms.date: 02/22/2021
+ms.date: 03/25/2021
 ms.author: v-johya
-ms.openlocfilehash: df8e7a512e8c260e4157d967ca602447703ee35b
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 1d0a32e1cc375d3ceea1165d5f895ab8796d4a69
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197440"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603079"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>应该部署多少个 Application Insights 资源
 
@@ -35,6 +35,9 @@ ms.locfileid: "102197440"
 -   如果不需要在组件之间以不同的方式管理帐单/配额。
 -   如果可以让 API 密钥对所有组件中的数据具有相同的访问权限。 10 个 API 密钥足以满足所有组件的需求。
 -   如果可以在所有角色中具有相同的智能检测和工作项集成设置。
+
+> [!NOTE]
+> 如果要整合多个 Application Insights 资源，可以将现有的应用程序组件指向新的、合并的 Application Insights 资源。 存储在旧资源中的遥测数据不会转移到新资源，因此仅当新资源中有了足够的遥测数据时才会删除旧资源，以实现业务连续性。
 
 ### <a name="other-things-to-keep-in-mind"></a>其他注意事项
 

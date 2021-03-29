@@ -1,18 +1,17 @@
 ---
 title: 分析 Azure Monitor 日志中的文本数据 | Azure Docs
 description: 介绍了用于在引入数据时以及在查询中检索时分析 Azure Monitor 记录中的日志数据的不同选项，比较了每个选项的相对优点。
-ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
+ms.date: 03/23/2021
 origin.date: 12/04/2018
-ms.openlocfilehash: a24955274cffe5e7fc1570693472172c667c1c89
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 767c3c12c13d49f537478c72f3e07ada0f76684b
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205266"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603280"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>分析 Azure Monitor 日志中的文本数据
 Azure Monitor 收集的某些日志数据会在单个属性中包括多条信息。 将此数据分析为多个属性可以更轻松地在查询中进行使用。 一个常见示例是收集在单个属性中包含多个值的整个日志项目的[自定义日志](../agents/data-sources-custom-logs.md)。 通过为不同值创建单独属性，可以对每个值进行搜索和聚合。
@@ -189,5 +188,5 @@ MyCustomCSVLog
 
 
 ## <a name="next-steps"></a>后续步骤
-* 了解[日志查询](../log-query/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。
+* 了解[日志查询](./log-query-overview.md)以便分析从数据源和解决方案中收集的数据。
 

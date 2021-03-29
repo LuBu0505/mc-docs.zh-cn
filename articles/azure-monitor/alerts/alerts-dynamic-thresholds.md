@@ -5,13 +5,13 @@ author: Johnnytechn
 ms.author: v-johya
 ms.topic: conceptual
 origin.date: 02/16/2020
-ms.date: 02/20/2021
-ms.openlocfilehash: e770f2af789cc9e70cdaa87c953ff0def887d5be
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/22/2021
+ms.openlocfilehash: a92814344ee20b481f8381f7627f11fd369f1162
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205329"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603484"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Azure Monitor 中具有动态阈值的指标警报
 
@@ -23,7 +23,7 @@ ms.locfileid: "102205329"
 
 ## <a name="why-and-when-is-using-dynamic-condition-type-recommended"></a>使用建议的动态条件类型的原因和时机
 
-1. **可缩放的警报** - 动态阈值警报规则一次可为数百个指标系列创建定制的阈值，同时也可以轻松地在单个指标上定义警报规则。 它们可让你创建和管理更少的警报。 可以使用 Azure 门户或 Azure 资源管理器 API 来创建它们。 处理指标维度或者应用到多个资源（例如所有订阅资源）时，可缩放的方法特别有用。  [详细了解如何使用模板配置具有动态阈值的指标警报](../platform/alerts-metric-create-templates.md)。
+1. **可缩放的警报** - 动态阈值警报规则一次可为数百个指标系列创建定制的阈值，同时也可以轻松地在单个指标上定义警报规则。 它们可让你创建和管理更少的警报。 可以使用 Azure 门户或 Azure 资源管理器 API 来创建它们。 处理指标维度或者应用到多个资源（例如所有订阅资源）时，可缩放的方法特别有用。  [详细了解如何使用模板配置具有动态阈值的指标警报](./alerts-metric-create-templates.md)。
 
 1. **智能识别指标模式** - 使用我们的 ML 技术可以自动检测指标模式，并不断适应指标的变化（通常包括每小时/每天/每周等季节性变化）。 不断适应指标的行为，并根据指标与模式之间的偏差发出警报可以缓解识别每个指标的“适当”阈值的压力。 动态阈值中使用的机器学习算法旨在防止出现不能提供预期模式的干扰性（低精度）阈值或宽泛性（低召回率）阈值。
 
@@ -76,7 +76,7 @@ ms.locfileid: "102205329"
 
 ## <a name="how-do-you-find-out-why-a-dynamic-thresholds-alert-was-triggered"></a>如何找出触发动态阈值警报的原因？
 
-可以在警报视图中浏览触发的警报实例，方法是单击电子邮件或短信中的链接，或者通过浏览器在 Azure 门户中查看警报视图。 [详细了解警报视图](../platform/alerts-overview.md#alerts-experience)。
+可以在警报视图中浏览触发的警报实例，方法是单击电子邮件或短信中的链接，或者通过浏览器在 Azure 门户中查看警报视图。 [详细了解警报视图](./alerts-overview.md#alerts-experience)。
 
 警报视图显示：
 
@@ -189,5 +189,5 @@ ms.locfileid: "102205329"
 - **带有黑色圆圈的红点** - 显示超出允许范围的第一个指标值。 这是触发指标警报并将该警报置于活动状态的值。
 - **红点** - 指示超出允许范围的其他度量值。 它们不会触发其他指标警报，但该警报会保持活动状态。
 - **红色区域** - 显示指标值超出允许范围的时间。 只要随后的测量值超出允许范围，该警报就会保持活动状态，但不会触发新警报。
-- **红色区域结束** - 当蓝线回到允许值内时，红色区域停止，度量值线变蓝。 在带有黑色轮廓的红点设置为“已解决”时触发的指标警报的状态。 
+- **红色区域结束** - 当蓝线回到允许值内时，红色区域停止，度量值线变蓝。 在带有黑色轮廓的红点设置为“已解决”时触发的指标警报的状态。
 

@@ -1,22 +1,23 @@
 ---
 title: 使用 Azure CLI 创建和加密 Windows VM
 description: 本快速入门介绍如何使用 Azure CLI 创建和加密 Windows 虚拟机
-ms.service: virtual-machines-windows
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: windows
 ms.topic: quickstart
 origin.date: 05/17/2019
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8d9239cb16bc81891a01ba4dd293bcdcecefa390
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 555311d120da547862535bb82bc293d6407bd066
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857122"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603861"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-vm-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建和加密 Windows VM
 
@@ -32,7 +33,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速�
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](https://docs.azure.cn/cli/group#az_group_create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在“chinaeast”位置创建名为“myResourceGroup”的资源组：
+使用“[az group create](https://docs.azure.cn/cli/group#az_group_create)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在“chinaeast”位置创建名为“myResourceGroup”的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location chinaeast
@@ -78,7 +79,7 @@ az keyvault create --name "myKV" --resource-group "myResourceGroup" --location c
 
 ## <a name="encrypt-the-virtual-machine"></a>加密虚拟机
 
-使用 [az vm encryption](https://docs.azure.cn/cli/vm/encryption) 加密 VM，为 --disk-encryption-keyvault 参数提供唯一的密钥保管库名称。
+使用 [az vm encryption](https://docs.azure.cn/cli/vm/encryption#az_vm_encryption) 加密 VM，为 --disk-encryption-keyvault 参数提供唯一的密钥保管库名称。
 
 ```azurecli
 az vm encryption enable -g MyResourceGroup --name MyVM --disk-encryption-keyvault myKV
@@ -111,4 +112,4 @@ az group delete --name myResourceGroup
 > [!div class="nextstepaction"]
 > [Azure 磁盘加密概述](disk-encryption-overview.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

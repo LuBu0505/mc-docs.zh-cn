@@ -147,6 +147,10 @@
               href: alert-service-principal.md
             - name: 安全 LDAP 警报
               href: alert-ldaps.md
+- name: 参考
+  items:
+    - name: Azure PowerShell
+      href: 'https://docs.microsoft.com/powershell/module/az.addomainservices/'
 - name: 资源
   items:
     - name: 常见问题解答

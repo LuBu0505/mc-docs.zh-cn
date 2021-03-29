@@ -1,18 +1,17 @@
 ---
 title: Windows 诊断扩展架构
 description: Azure Monitor 中 Windows 诊断扩展 (WAD) 的配置架构参考。
-ms.subservice: diagnostic-extension
 ms.topic: reference
 author: Johnnytechn
 ms.author: v-johya
 origin.date: 01/20/2020
-ms.date: 02/20/2021
-ms.openlocfilehash: 7d8642ab3c5e6e32988d78961783287a95af2552
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/22/2021
+ms.openlocfilehash: a277ff64aa076954c43b11f7d6730767bbb6bc04
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205956"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603445"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows 诊断扩展架构
 Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算资源的来宾操作系统和工作负荷中收集监视数据。 本文详细介绍了用于在 Windows 虚拟机和其他计算资源上配置诊断扩展的架构。
@@ -267,9 +266,9 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 
  定义向其中发送诊断数据的位置。 例如，Application Insights 服务。  
 
-|属性|类型|说明|  
+|属性|类型|描述|  
 |---------------|----------|-----------------|  
-|name |string|标识 sinkname 的字符串。|  
+|**name**|string|标识 sinkname 的字符串。|  
 
 |元素|类型|说明|  
 |-------------|----------|-----------------|  
@@ -558,7 +557,7 @@ PublicConfig 和 PrivateConfig 是分开的，因为在大多数 JSON 用例中�
     <WadCfg>  
       <DiagnosticMonitorConfiguration overallQuotaInMB="10000">  
 
-        <PerformanceCounters scheduledTransferPeriod="PT1M", sinks="AzureMonitorSink">  
+        <PerformanceCounters scheduledTransferPeriod="PT1M" sinks="AzureMonitorSink">  
           <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT1M" unit="percent" />  
         </PerformanceCounters>  
 

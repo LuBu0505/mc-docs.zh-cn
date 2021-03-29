@@ -1,29 +1,30 @@
 ---
 title: 从 Windows VM 中分离数据磁盘
 description: 在 Azure 中从使用资源管理器部署模型的虚拟机分离磁盘。
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: disks
+ms.collection: windows
 ms.workload: infrastructure-services
 ms.topic: how-to
-origin.date: 01/26/2021
+origin.date: 03/03/2021
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 12b8324822d5915e96e7f1e1cde01c3441a95d5e
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 9e069a797e6cf9cbf2608e9d27ad3536b9d2e66d
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055249"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603862"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>如何从 Windows 虚拟机分离数据磁盘
 
-当不再需要附加到虚拟机的数据磁盘时，可以轻松地分离它。 这会从虚拟机中删除该磁盘，但不会从存储中删除它。
+不再需要附加到虚拟机的数据磁盘时，可以轻松地分离它。 这会从虚拟机中删除磁盘，但不会从存储中删除它。
 
 > [!WARNING]
-> 如果用户分离磁盘，它不会自动删除。 如果用户订阅了高级存储，则将继续承担该磁盘的存储费用。 有关详细信息，请参阅[使用高级存储时的定价和计费方式](../disks-types.md#billing)。
+> 如果分离磁盘，它将不会自动删除。 如果用户订阅了高级存储，则将继续承担该磁盘的存储费用。 有关详细信息，请参阅[使用高级存储时的定价和计费方式](../disks-types.md#billing)。
 
 如果希望再次使用磁盘上的现有数据，可以将其重新附加到相同的虚拟机或另一个虚拟机。
 
@@ -55,10 +56,10 @@ Update-AzVM `
 1. 在左侧菜单中，选择“虚拟机”。
 1. 选择具有要分离的数据磁盘的虚拟机。
 1. 在“设置”下，选择“磁盘” 。
-1. 在“磁盘”窗格中，在要拆离的数据磁盘的最右侧，单击“X”拆离按钮。
+1. 在“磁盘”窗格中，转到要拆离的数据磁盘最右侧，选择“X”按钮以拆离 。
 1. 选择页面顶部的“保存”以保存更改。
 
-磁盘保留在存储中，但不再附加到虚拟机。
+磁盘保留在存储中，但不再附加到虚拟机。 磁盘未被删除。
 
 ## <a name="next-steps"></a>后续步骤
 

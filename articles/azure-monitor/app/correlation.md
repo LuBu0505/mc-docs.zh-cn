@@ -5,15 +5,15 @@ ms.topic: conceptual
 author: Johnnytechn
 origin.date: 06/07/2019
 ms.author: v-johya
-ms.date: 01/27/2021
+ms.date: 03/25/2021
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 8ac92793dfbf79b3beab512901b7ce10fa1a9480
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 8f775cb0b793950e9bebb58b3bd44ce6e5155dc0
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060172"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603610"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -49,7 +49,7 @@ Application Insights 定义了用于分配遥测关联的[数据模型](../../az
 
 | itemType   | name                      | ID           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
-| pageView   | Stock page                |              | STYz               | STYz         |
+| pageView   | Stock page                | STYz         |                    | STYz         |
 | dependency | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
 | request    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
 | dependency | GET /api/stock/value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |

@@ -6,14 +6,14 @@ author: Johnnytechn
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/20/2021
+ms.date: 03/25/2021
 ms.author: v-johya
-ms.openlocfilehash: 80c577d21bbaacdfb6555c9c1959bddde331231a
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: f7c4f96020c520d46e308de43b2c26f8dd1e4750
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205505"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603376"
 ---
 # <a name="honey-comb-visualizations"></a>蜂巢可视化效果
 
@@ -95,5 +95,5 @@ ms.locfileid: "102205505"
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[在工作簿中创建复合条呈现器](workbooks-composite-bar.md)。
-- 了解如何[将 Azure Monitor 日志数据导入到 Power BI 中](../platform/powerbi.md)。
+- 了解如何[将 Azure Monitor 日志数据导入到 Power BI 中](./powerbi.md)。
 

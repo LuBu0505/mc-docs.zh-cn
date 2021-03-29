@@ -1,18 +1,17 @@
 ---
 title: Azure 诊断扩展概述
 description: 使用 Azure 诊断在云服务、虚拟机和 Service Fabric 中进行调试、性能度量、监视和流量分析
-ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
+ms.date: 03/22/2021
 origin.date: 02/13/2019
-ms.openlocfilehash: 965b4229d61796233279b7a03acced0b5be5a4dd
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 4de299bfbc1f9543fee66cf11acb33cca7f9af0c
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205679"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603537"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure 诊断扩展概述
 Azure 诊断扩展是 [Azure Monitor 中的代理](../agents/agents-overview.md)，可从 Azure 计算资源（包括虚拟机）的来宾操作系统中收集监视数据。 本文概述了 Azure 诊断扩展，其中包括它支持的具体功能以及用于安装和配置的选项。 
@@ -34,7 +33,7 @@ Azure Monitor 中的 Log Analytics 代理还可以用来从虚拟机的来宾操
 需要考虑的主要区别是：
 
 - Azure 诊断扩展只能在 Azure 中的虚拟机中使用。 Log Analytics 代理可在 Azure、其他云和本地中的虚拟机中使用。
-- Azure 诊断扩展将数据发送到 Azure 存储、[Azure Monitor 指标](../platform/data-platform-metrics.md)（仅限 Windows）和事件中心。 Log Analytics 代理将数据收集到 [Azure Monitor 日志](../platform/data-platform-logs.md)中。
+- Azure 诊断扩展将数据发送到 Azure 存储、[Azure Monitor 指标](../essentials/data-platform-metrics.md)（仅限 Windows）和事件中心。 Log Analytics 代理将数据收集到 [Azure Monitor 日志](../logs/data-platform-logs.md)中。
 - [解决方案](../monitor-reference.md#insights-and-core-solutions)和其他服务（如 [Azure 安全中心](/security-center/index.yml)）需要 Log Analytics 代理。
 
 ## <a name="costs"></a>成本
@@ -79,7 +78,7 @@ Windows 和 Linux 的 Azure 诊断扩展始终将数据收集到 Azure 存储帐
 | Azure 存储 Blob | 除了表以外，还会将数据写入 Azure 存储中的 blob。 |
 | Application Insights | 将数据从 VM 中运行的应用程序收集到可以与其他应用程序监视功能集成的 Application Insights。 请参阅[将诊断数据发送到 Application Insights](diagnostics-extension-to-application-insights.md)。 |
 
-还可以将存储中的 WAD 数据收集到 Log Analytics 工作区，以便使用 Azure Monitor 日志对其进行分析，尽管通常使用 Log Analytics 代理来执行此功能。 它可以将数据直接发送到 Log Analytics 工作区，并支持那些提供附加功能的解决方案和见解。  请参阅[从 Azure 存储收集 Azure 诊断日志](../essentials/diagnostics-extension-logs.md)。 
+还可以将存储中的 WAD 数据收集到 Log Analytics 工作区，以便使用 Azure Monitor 日志对其进行分析，尽管通常使用 Log Analytics 代理来执行此功能。 它可以将数据直接发送到 Log Analytics 工作区，并支持那些提供附加功能的解决方案和见解。  请参阅[从 Azure 存储收集 Azure 诊断日志](../agents/diagnostics-extension-logs.md)。 
 
 
 ### <a name="linux-diagnostics-extension-lad"></a>Linux 诊断扩展 (LAD)

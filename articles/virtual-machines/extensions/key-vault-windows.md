@@ -1,23 +1,24 @@
 ---
 title: 适用于 Windows 的 Azure Key Vault VM 扩展
 description: 部署一个代理，该代理使用虚拟机扩展在虚拟机上执行 Key Vault 密钥自动刷新操作。
-services: virtual-machines-windows
+services: virtual-machines
 tags: keyvault
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: extensions
+ms.collection: windows
 ms.topic: article
 origin.date: 12/02/2019
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: d0f6c1725da904216cca82e179ea42113cf2dfb2
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: efbcb4f5ea1941033d7aff129571c350490f4ea0
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055297"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603130"
 ---
 <!--Verified successfully on the extension name exists-->
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Key Vault 虚拟机扩展
@@ -114,11 +115,11 @@ ms.locfileid: "102055297"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft.Azure.KeyVault | 字符串 |
+| publisher | Microsoft.Azure.KeyVault | string |
 | type | KeyVaultForWindows | string |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | 字符串 |
-| certificateStoreName | MY | 字符串 |
+| pollingIntervalInS | 3600 | string |
+| certificateStoreName | MY | string |
 | linkOnRenewal | false | boolean |
 | certificateStoreLocation  | LocalMachine 或 CurrentUser（区分大小写） | string |
 | requireInitialSync | 是 | boolean |

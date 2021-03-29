@@ -8,13 +8,13 @@ metadata:
   ms.service: application-insights
   ms.topic: hub-page
   manager: carmonm
-  ms.date: 01/14/2021
-  ms.openlocfilehash: cf06cb0c213e6594d982714e23dccb511b5be85c
-  ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+  ms.date: 03/26/2021
+  ms.openlocfilehash: 1bd618e0e3d6f133e8a3a18174407d007048f4a2
+  ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/29/2021
-  ms.locfileid: "99058887"
+  ms.lasthandoff: 03/26/2021
+  ms.locfileid: "105603249"
 highlightedContent:
   items:
   - title: 什么是 Application Insights？
@@ -85,25 +85,25 @@ conceptualContent:
       text: Azure VM 和 Azure 虚拟机规模集
   - title: 快速入门和教程
     links:
-    - url: ./learn/nodejs-quick-start.md
+    - url: ./app/nodejs-quick-start.md
       itemType: how-to-guide
       text: Node.js
-    - url: ./learn/mobile-center-quickstart.md
+    - url: ./app/mobile-center-quickstart.md
       itemType: how-to-guide
       text: 移动应用
     - url: ./app/website-monitoring.md
       itemType: how-to-guide
       text: 网站监视
-    - url: ./learn/tutorial-runtime-exceptions.md
+    - url: ./app/tutorial-runtime-exceptions.md
       itemType: how-to-guide
       text: 查找和诊断运行时异常
-    - url: ./learn/tutorial-performance.md
+    - url: ./app/tutorial-performance.md
       itemType: how-to-guide
       text: 查找和诊断性能问题
-    - url: ./learn/tutorial-users.md
+    - url: ./app/tutorial-users.md
       itemType: how-to-guide
       text: 理解用户行为
-    - url: ./learn/tutorial-app-dashboards.md
+    - url: ./app/tutorial-app-dashboards.md
       itemType: how-to-guide
       text: 创建自定义仪表板
   - title: 分布式跟踪、依赖项跟踪和关联
@@ -148,7 +148,7 @@ conceptualContent:
     - url: ./app/pre-aggregated-metrics-log-metrics.md
       itemType: how-to-guide
       text: 基于日志的指标和预聚合的指标
-    - url: ./platform/app-insights-metrics.md
+    - url: ./essentials/app-insights-metrics.md
       itemType: how-to-guide
       text: 基于日志的指标定义
     - url: ./app/ilogger.md
@@ -255,7 +255,7 @@ conceptualContent:
       text: 用户流
   - title: 隐私、安全性、使用情况和成本
     links:
-    - url: ./platform/personal-data-mgmt.md
+    - url: ./logs/personal-data-mgmt.md
       itemType: how-to-guide
       text: 个人数据处理
     - url: ./app/data-retention-privacy.md
@@ -333,7 +333,7 @@ conceptualContent:
     - url: ./app/code-sample-export-sql-stream-analytics.md
       itemType: how-to-guide
       text: 导出数据模型
-    - url: ./platform/logicapp-flow-connector.md
+    - url: ./logs/logicapp-flow-connector.md
       itemType: how-to-guide
       text: Flow 集成
   - title: 可视化和分析
@@ -344,10 +344,10 @@ conceptualContent:
     - url: ./app/export-power-bi.md
       itemType: how-to-guide
       text: PowerBI 集成
-    - url: ./platform/metrics-charts.md
+    - url: ./essentials/metrics-charts.md
       itemType: how-to-guide
       text: 指标图表
-    - url: ./platform/workbooks-overview.md
+    - url: ./visualize/workbooks-overview.md
       itemType: how-to-guide
       text: 工作簿（交互式报告）
   - title: Visual Studio
@@ -389,7 +389,7 @@ conceptualContent:
     - url: ./app/azure-functions-supported-features.md
       itemType: reference
       text: Azure Functions 集成
-    - url: /dotnet/api/overview//insights?view=azure-dotnet
+    - url: /dotnet/api/overview/insights
       itemType: reference
       text: .NET SDK
     - url: https://docs.microsoft.com/java/api/overview/azure/appinsights?view=azure-java-stable
@@ -412,7 +412,7 @@ additionalContent:
       url: ./app/api-custom-events-metrics.md
     - title: Application Insights PowerShell
       summary: 了解如何安装和使用 Application Insights PowerShell cmdlet。
-      url: https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.7.0&viewFallbackFrom=azps-2.5.0
+      url: https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights
     - title: 适用于 Application Insights 的 Azure CLI
       summary: Application Insights CLI 扩展命令 (az extension add -n application-insights)。
-      url: /cli/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest
+      url: /cli/ext/application-insights/monitor/app-insights/component

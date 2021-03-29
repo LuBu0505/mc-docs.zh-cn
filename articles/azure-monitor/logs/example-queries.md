@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor 中的 Log Analytics 提供了示例查询集，你可以运行这些查询本身，或根据它们运行你自己的查询。
 description: 你可以从其着手并根据需要进行修改的查询
-ms.subservice: logs
 ms.topic: article
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
-ms.openlocfilehash: 5d44b123d94dc780fb193993c8c33ba2a4803296
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/23/2021
+ms.openlocfilehash: 15e1f6c49a0afce5e21ea85e453955c4d1f5ad53
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205825"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603510"
 ---
 # <a name="example-queries-in-azure-monitor-log-analytics"></a>Azure Monitor Log Analytics 中的示例查询
 Log Analytics 提供了示例查询集，你可以运行这些查询本身，或将其用作你自己的查询的起点。 本文介绍了示例查询以及如何使用它们。
@@ -109,6 +108,5 @@ Log Analytics 提供了示例查询集，你可以运行这些查询本身，或
 
 ## <a name="next-steps"></a>后续步骤
 
-[KQL 查询入门](../log-query/get-started-queries.md)
-
+[KQL 查询入门](./get-started-queries.md)
 

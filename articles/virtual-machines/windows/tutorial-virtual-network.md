@@ -1,24 +1,25 @@
 ---
 title: 教程 - 为 Windows VM 创建和管理 Azure 虚拟网络
 description: 本教程介绍如何使用 Azure PowerShell 为 Windows 虚拟机创建和管理 Azure 虚拟网络
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: networking
+ms.collection: windows
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 08/04/2020
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 84922c9686ce54a289f63a0fd06ae9436f5422fd
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 3186ca8bffe1c2129ba4b807321201fc1cac7858
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055161"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603666"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>教程：使用 Azure PowerShell 为 Windows 虚拟机创建和管理 Azure 虚拟网络
 
@@ -49,11 +50,12 @@ Azure 虚拟网络在虚拟机、Internet 与其他 Azure 服务（例如 Azure 
 - *myBackendNic* - *myBackendVM* 用于与 *myFrontendVM* 进行通信的网络接口。
 - *myBackendVM* - 使用端口 1433 与 *myFrontendVM* 通信的 VM。
 
-## <a name="launch-azure-local-shell"></a>启动 Azure 本地 Shell
+## <a name="launch-azure-local-powershell"></a>启动 Azure 本地 PowerShell
 
 打开 Azure Powershell 控制台，并以管理员权限运行下面列出的脚本。
 
-<!--Not Available on Azure Cloud Shell-->
+<!--NOT AVAILABLE ON https://shell.azure.com-->
+<!--NOT AVAILABLE ON Azure Cloud Shell-->
 
 ## <a name="create-subnet"></a>创建子网 
 
@@ -281,6 +283,6 @@ New-AzVM `
 > * 安全的网络流量
 > * 创建后端 VM
 
-若要了解如何保护 VM 磁盘，请参阅[磁盘的备份和灾难恢复](backup-and-disaster-recovery-for-azure-iaas-disks.md)。
+若要了解如何保护 VM 磁盘，请参阅[磁盘的备份和灾难恢复](../backup-and-disaster-recovery-for-azure-iaas-disks.md)。
 
 <!--Update_Description: update meta properties, wording update, update link-->

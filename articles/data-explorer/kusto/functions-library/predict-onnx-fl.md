@@ -6,21 +6,21 @@ ms.author: v-junlch
 ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/18/2021
-ms.openlocfilehash: b6e9d690bc2e6044cc56b1f1800bbc9ae828935a
-ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
+ms.date: 03/23/2021
+ms.openlocfilehash: 680970537857bb2d618b6ddf50b87d252f666d12
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104766105"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602615"
 ---
 # <a name="predict_onnx_fl"></a>predict_onnx_fl()
 
 函数 `predict_onnx_fl()` 使用现有的已定型机器学习模型进行预测。 此模型已转换为 [ONNX](https://onnx.ai/) 格式，已序列化为字符串，并已保存在标准的 Azure 数据资源管理器表中。
 
 > [!NOTE]
-> * `predict_onnx_fl()` 是 [UDF（用户定义的函数）](../query/functions/user-defined-functions.md)。
-> * 此函数包含内联 Python，需要在群集上[启用 python() 插件](../query/pythonplugin.md#enable-the-plugin)。 有关详细信息，请参阅[用法](#usage)。
+> * `predict_onnx_fl()` 是 [UDF（用户定义的函数）](../query/functions/user-defined-functions.md)。 有关详细信息，请参阅[用法](#usage)。
+> * 此函数包含内联 Python，需要在群集上[启用 python() 插件](../query/pythonplugin.md#enable-the-plugin)。
 
 ## <a name="syntax"></a>语法
 

@@ -37,8 +37,18 @@
           href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
     - name: 概念
       items:
-        - name: HDInsight 版本
-          href: ./hdinsight-component-versioning.md
+        - name: 版本控制
+          items:
+            - name: 版本控制简介
+              href: ./hdinsight-overview-versioning.md
+            - name: HDInsight 版本
+              href: ./hdinsight-component-versioning.md
+            - name: HDInsight 版本 4.0
+              href: ./hdinsight-40-component-versioning.md
+            - name: HDInsight 版本 3.6
+              href: ./hdinsight-36-component-versioning.md
+            - name: 已停用的 HDInsight 版本
+              href: ./hdinsight-retired-versions.md
         - name: 企业安全性套餐
           href: ./enterprise-security-package.md
         - name: Hortonworks 发行说明
@@ -124,7 +134,7 @@
                 - name: 安装自定义应用
                   href: hdinsight-apps-install-custom-applications.md
                 - name: 使用 REST 安装应用
-                  href: 'https://msdn.microsoft.com/library/mt706515.aspx'
+                  href: 'https://docs.microsoft.com/rest/api/hdinsight/hdinsight-application'
         - name: 安全
           items:
             - name: 将 SSH 与 HDInsight 配合使用
@@ -225,7 +235,7 @@
               href: ./hdinsight-cluster-availability.md
             - name: 群集可用性 - Azure Monitor 日志
               href: ./cluster-availability-monitor-logs.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: CPU 核心配额增加请求
               href: ./quota-increase-request.md
@@ -336,6 +346,8 @@
               href: ./spark/optimize-cluster-configuration.md
         - name: 迁移到 Spark 2.3 或 2.4
           href: ./spark/migrate-versions.md
+        - name: 将 .NET for Apache Spark 更新到 1.0
+          href: ./spark/spark-dotnet-version-update.md
     - name: 操作指南
       items:
         - name: 使用工具
@@ -414,7 +426,7 @@
                   href: ./spark/apache-spark-connect-to-sql-database.md
                 - name: 使用 AutoML 运行 Azure ML 工作负荷
                   href: ./spark/apache-spark-run-machine-learning-automl.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 无法创建 Jupyter 笔记本
               href: ./spark/troubleshoot-jupyter-notebook-convert.md
@@ -642,7 +654,7 @@
               href: ./kafka/apache-kafka-log-analytics-operations-management.md
             - name: SSL 加密和身份验证
               href: ./kafka/apache-kafka-ssl-encryption-authentication.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 容错域不足
               href: ./kafka/kafka-troubleshoot-insufficient-domains.md
@@ -665,6 +677,10 @@
       items:
         - name: 使用 HDInsight 中的 Apache HBase
           href: ./hbase/apache-hbase-tutorial-get-started-linux.md
+    - name: 概念
+      items:
+        - name: 优化顾问建议
+          href: ./hbase/apache-hbase-advisor.md
     - name: 操作指南
       items:
         - name: 开发
@@ -695,7 +711,7 @@
               href: ./hbase/apache-hbase-phoenix-performance.md
             - name: 在 Azure VNet 中创建 Apache HBase 群集
               href: ./hbase/apache-hbase-provision-vnet.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 排查 Apache HBase 性能问题
               href: ./hbase/troubleshoot-hbase-performance-issues.md
@@ -794,7 +810,7 @@
               href: ./interactive-query/apache-hive-migrate-workloads.md
             - name: 优化 Apache Hive 查询
               href: ./hdinsight-hadoop-optimize-hive-query.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 通过 Apache Hive 设置解决内存不足错误
               href: ./hdinsight-hadoop-hive-out-of-memory-error-oom.md
@@ -866,7 +882,7 @@
           items:
             - name: 监视拓扑
               href: ./storm/apache-storm-deploy-monitor-topology-linux.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: Apache STORM 故障排除
               href: ./storm/apache-troubleshoot-storm.md

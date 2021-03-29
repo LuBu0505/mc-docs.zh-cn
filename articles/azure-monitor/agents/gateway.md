@@ -1,18 +1,17 @@
 ---
 title: 使用 Log Analytics 网关连接计算机 | Azure Docs
 description: 使用 Log Analytics 网关连接设备和 Operations Manager 监视的计算机，以便在无法访问 Internet 时将数据发送到 Azure 自动化和 Log Analytics 服务。
-ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
+ms.date: 03/22/2021
 origin.date: 12/24/2019
-ms.openlocfilehash: 3e57022c0aea106e8b79b1102d5c41d4fe19fa9a
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: b0ce1c0d45b1285d37cfdb6672142172a9e810cb
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205091"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603535"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>在 Azure Monitor 中使用 Log Analytics 网关连接无法访问 Internet 的计算机
 
@@ -79,7 +78,7 @@ Log Analytics 网关支持以下语言：
 - 匈牙利语
 - 意大利语
 - 日语
-- 朝鲜语
+- 韩语
 - 波兰语
 - 葡萄牙语（巴西）
 - 葡萄牙语（葡萄牙）
@@ -90,7 +89,7 @@ Log Analytics 网关支持以下语言：
 
 Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它不支持安全套接字层 (SSL)。  为了确保传输到 Log Analytics 的数据的安全性，请将网关配置为至少使用 TLS 1.2。 旧版 TLS 或 SSL 容易受到攻击。 尽管这些协议目前允许后向兼容，但请勿使用。  
 
-有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](../platform/data-security.md#sending-data-securely-using-tls-12)。 
+有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](../logs/data-security.md#sending-data-securely-using-tls-12)。 
 
 ### <a name="supported-number-of-agent-connections"></a>支持的代理连接数
 
@@ -209,7 +208,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 若要了解如何设计和部署 Azure 负载均衡器，请参阅[什么是 Azure 负载均衡器？](../../load-balancer/load-balancer-overview.md)。 若要部署基本负载均衡器，请遵循此[快速入门](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)中所述的步骤，但不要遵循“创建后端服务器”部分所述的步骤。   
 
 > [!NOTE]
-> 使用 **基本 SKU** 配置 Azure 负载均衡器需要 Azure 虚拟机属于某个可用性集。 若要详细了解可用性集，请参阅[在 Azure 中管理 Windows 虚拟机的可用性](../../virtual-machines/manage-availability.md)。 若要将现有的虚拟机添加到可用性集，请参阅[设置 Azure 资源管理器 VM 可用性集](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)。
+> 使用 **基本 SKU** 配置 Azure 负载均衡器需要 Azure 虚拟机属于某个可用性集。 若要详细了解可用性集，请参阅[在 Azure 中管理 Windows 虚拟机的可用性](../../virtual-machines/availability.md)。 若要将现有的虚拟机添加到可用性集，请参阅[设置 Azure 资源管理器 VM 可用性集](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)。
 > 
 
 创建负载均衡器后，需要创建一个后端池，以便将流量分发到一个或多个网关服务器。 请遵循该快速入门文章的[为负载均衡器创建资源](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)部分所述的步骤。  

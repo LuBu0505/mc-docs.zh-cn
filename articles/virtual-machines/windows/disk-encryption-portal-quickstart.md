@@ -1,21 +1,22 @@
 ---
 title: 使用 Azure 门户创建和加密 Windows VM
 description: 本快速入门介绍了如何使用 Azure 门户创建并加密 Windows 虚拟机
-ms.service: virtual-machines-windows
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: windows
 ms.topic: quickstart
 origin.date: 10/02/2019
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 10/29/2020
 ms.author: v-yeche
-ms.openlocfilehash: 36d6557a440080b04d935a091db241f5fab91304
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 9f69040f019fa743ec2f60b5628ee95267df3701
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054394"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603853"
 ---
 <!--Verified successfully on 02/25/2021-->
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>快速入门：使用 Azure 门户创建和加密 Windows 虚拟机
@@ -76,7 +77,7 @@ ms.locfileid: "102054394"
 
     :::image type="content" source="../media/disk-encryption/portal-quickstart-keyvault-enable.png" alt-text="磁盘和加密选择":::
 
-1. 选择“查看 + 创建”。  
+1. 选择“查看 + 创建”  。  
 1. 在密钥保管库通过验证后，选择“创建”。 这将让你返回“从 Azure Key Vault 选择密钥”屏幕。
 1. 将“密钥”字段留空，然后选择“选择” 。
 1. 在加密屏幕顶部，单击“保存”。 此时会出现一个弹出窗口，警告你 VM 会重启。 单击 **“是”** 。

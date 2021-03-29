@@ -4,15 +4,15 @@ description: 了解如何在 Azure Spring Cloud 中分析诊断数据
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 12/28/2020
+ms.date: 03/23/2021
 ms.author: v-junlch
 ms.custom: devx-track-java
-ms.openlocfilehash: 3c39d99ffa60e74054b9d5b66ed9189c4c4ea75f
-ms.sourcegitcommit: a37f80e7abcf3e42859d6ff73abf566efed783da
+ms.openlocfilehash: c89de0296b759ae448e77454694d5142fd67d23e
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829451"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602704"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>通过诊断设置分析日志和指标
 
@@ -27,7 +27,7 @@ ms.locfileid: "97829451"
 选择要监视的日志类别和指标类别。
 
 > [!TIP]
-> 只想要流式传输日志？ 看看这个 [Azure CLI 命令](/cli/ext/spring-cloud/spring-cloud/app?preserve-view=true&view=azure-cli-latest#ext-spring-cloud-az-spring-cloud-app-logs)吧！
+> 只想要流式传输日志？ 看看这个 [Azure CLI 命令](/cli/ext/spring-cloud/spring-cloud/app#ext-spring-cloud-az-spring-cloud-app-logs)吧！
 
 ## <a name="logs"></a>日志
 
@@ -40,7 +40,7 @@ ms.locfileid: "97829451"
 
 有关指标的完整列表，请参阅 [Spring Cloud 指标](./spring-cloud-concept-metrics.md#user-metrics-options)。
 
-若要开始，请启用其中一项服务来接收数据。 若要了解如何配置 Log Analytics，请参阅[开始在 Azure Monitor 中使用 Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)。
+若要开始，请启用其中一项服务来接收数据。 若要了解如何配置 Log Analytics，请参阅[开始在 Azure Monitor 中使用 Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)。
 
 ## <a name="configure-diagnostics-settings"></a>配置诊断设置
 
@@ -131,11 +131,11 @@ ms.locfileid: "97829451"
 1. 若要查看应用程序日志，请搜索名为 insights-logs-applicationconsole 的事件中心。
 1. 若要查看应用程序指标，请搜索名为 insights-metrics-pt1m 的事件中心。
 
-若要了解有关将诊断信息发送到事件中心的详细信息，请参阅[使用事件中心流式处理热路径中的 Azure 诊断数据](../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md)。
+若要了解有关将诊断信息发送到事件中心的详细信息，请参阅[使用事件中心流式处理热路径中的 Azure 诊断数据](../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md)。
 
 ## <a name="analyze-the-logs"></a>分析日志
 
-Azure Log Analytics 与 Kusto 引擎一起运行，因此，你可以查询日志以进行分析。 有关使用 Kusto 查询日志的快速简介，请查看 [Log Analytics 教程](../azure-monitor/log-query/log-analytics-tutorial.md)。
+Azure Log Analytics 与 Kusto 引擎一起运行，因此，你可以查询日志以进行分析。 有关使用 Kusto 查询日志的快速简介，请查看 [Log Analytics 教程](../azure-monitor/logs/log-analytics-tutorial.md)。
 
 应用程序日志提供有关应用程序的运行状况、性能等的关键信息和详细日志。 下一节将介绍一些简单的查询，帮助你理解应用程序的当前和过去状态。
 
@@ -176,7 +176,7 @@ AppPlatformLogsforSpring
 
 ### <a name="learn-more-about-querying-application-logs"></a>详细了解查询应用程序日志
 
-Azure Monitor 通过使用 Log Analytics 为查询应用程序日志提供了广泛的支持。 若要了解有关此服务的详细信息，请参阅 [Azure Monitor 中的日志查询入门](../azure-monitor/log-query/get-started-queries.md)。 若要详细了解如何生成查询以分析应用程序日志，请参阅 [Azure Monitor 中的日志查询概述](../azure-monitor/log-query/log-query-overview.md)。
+Azure Monitor 通过使用 Log Analytics 为查询应用程序日志提供了广泛的支持。 若要了解有关此服务的详细信息，请参阅 [Azure Monitor 中的日志查询入门](../azure-monitor/logs/get-started-queries.md)。 若要详细了解如何生成查询以分析应用程序日志，请参阅 [Azure Monitor 中的日志查询概述](../azure-monitor/logs/log-query-overview.md)。
 
 ## <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
 
@@ -209,4 +209,3 @@ AppPlatformLogsforSpring
 ## <a name="next-steps"></a>后续步骤
 
 * [快速入门：部署第一个 Azure Spring Cloud 应用程序](spring-cloud-quickstart.md)
-

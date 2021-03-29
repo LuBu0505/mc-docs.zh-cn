@@ -1,21 +1,21 @@
 ---
 title: Azure Resource Manager 模板中的虚拟机 | Azure
 description: 详细了解如何在 Azure Resource Manager 模板中定义虚拟机资源。
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure
 ms.topic: how-to
 origin.date: 01/03/2019
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: b198073808512f5d07b4e6d7c924c2f757d89564
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 9ec80d5f663c8ce93a7bcaa5595f7aad5069018c
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054012"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603676"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager 模板中的虚拟机
 
@@ -109,7 +109,7 @@ ms.locfileid: "102054012"
             "storageAccountName": "[variables('storageName')]", 
             "storageAccountKey": "[listkeys(variables('accountid'), 
               '2015-06-15').key1]", 
-            "storageAccountEndPoint": "https://core.chinacloudapi.cn/" 
+            "storageAccountEndPoint": "https://core.chinacloudapi.cn" 
           } 
         } 
       },
@@ -157,7 +157,8 @@ ms.locfileid: "102054012"
 
 可通过以下方式获取最新的 API 版本：
 
-- REST API - [列出所有资源提供程序](https://docs.microsoft.com/rest/api/resources/providers)
+<!--NOT AVAILABLE ON [List all resource providers](https://docs.microsoft.com/rest/api/resources/providers)-->
+
 - PowerShell - [Get-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider)
 - Azure CLI - [az provider show](https://docs.azure.cn/cli/provider#az-provider-show)
 
@@ -276,7 +277,7 @@ ms.locfileid: "102054012"
 
 - [大小](../sizes.md)
 
-    <!--Not Available on -- [name](https://docs.microsoft.com/azure/architecture/best-practices/resource-naming)-->
+    <!--NOT AVAILABLE ON - [name](https://docs.microsoft.com/azure/architecture/best-practices/resource-naming)-->
     
 - 磁盘和[操作系统设置](cli-ps-findimage.md)
 - [网络接口](https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-network-deploy-multinic-classic-ps) 
@@ -395,10 +396,10 @@ ms.locfileid: "102054012"
       "storageAccount": "[variables('storageName')]" 
     }, 
     "protectedSettings": { 
-      "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
       "storageAccountName": "[variables('storageName')]", 
       "storageAccountKey": "[listkeys(variables('accountid'), 
-        '2015-06-15').key1]"
+        '2015-06-15').key1]", 
+      "storageAccountEndPoint": "https://core.chinacloudapi.cn" 
     } 
   } 
 },

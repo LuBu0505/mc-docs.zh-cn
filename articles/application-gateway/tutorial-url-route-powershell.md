@@ -5,15 +5,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 03/24/2021
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: e88047f8c956514affcbcbcf08dfde4fbbc17603
-ms.sourcegitcommit: f436acd1e2a0108918a6d2ee9a1aac88827d6e37
+ms.openlocfilehash: 7db09caf65cb2151edbeb91d083ef0d6b91d6fd8
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508980"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602882"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>使用 Azure PowerShell 基于 URL 对 Web 流量进行路由
 
@@ -35,7 +35,7 @@ ms.locfileid: "96508980"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 若要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 若要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 以创建与 Azure 的连接。
 
 因为创建资源需要时间，所以可能需要最多 90 分钟才能完成本过程。
 
@@ -53,7 +53,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location chinanorth2
 
 无论是具有现有虚拟网络还是创建新的虚拟网络，都需要确保它包含一个仅用于应用程序网关的子网。 在本文中，你将为应用程序网关创建一个子网，为规模集创建一个子网。 将创建一个公共 IP 地址以便访问应用程序网关中的资源。
 
-使用 [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建子网配置 *myAGSubnet* 和 *myBackendSubnet*。 使用 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) 和子网配置创建名为 myVNet 的虚拟网络。 最后使用 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) 创建名为 myAGPublicIPAddress 的公共 IP 地址。 这些资源用于提供与应用程序网关及其关联资源的网络连接。
+使用 [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建子网配置 *myAGSubnet* 和 *myBackendSubnet*。 使用 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) 和子网配置创建名为 *myVNet* 的虚拟网络。 最后使用 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。 这些资源用于提供与应用程序网关及其关联资源的网络连接。
 
 ```azurepowershell
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -136,7 +136,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSetting `
 
 配合使用 [New-AzApplicationGatewayHttpListener](https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayhttplistener) 和前端配置及之前创建的前端端口创建名为 myDefaultListener 的默认侦听器。 
 
-侦听器需要使用规则来了解哪个后端池使用传入流量。 使用 [New-AzApplicationGatewayRequestRoutingRule](https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) 创建一个名为 rule1 的基本规则。
+侦听器需要使用规则来了解哪个后端池使用传入流量。 使用 [New-AzApplicationGatewayRequestRoutingRule](https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) 创建一个名为 *rule1* 的基本规则。
 
 ```azurepowershell
 $defaultlistener = New-AzApplicationGatewayHttpListener `
@@ -155,7 +155,7 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway"></a>创建应用程序网关
 
-现在已创建所需的支持资源，请使用 [New-AzApplicationGatewaySku](https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewaysku) 为名为 myAppGateway 的应用程序网关指定参数，然后再使用 [New-AzApplicationGateway](https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgateway) 创建它。
+现在已创建所需的支持资源，请使用 [New-AzApplicationGatewaySku](https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewaysku) 为名为 *myAppGateway* 的应用程序网关指定参数，然后再使用 [New-AzApplicationGateway](https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgateway) 创建它。
 
 ```azurepowershell
 $sku = New-AzApplicationGatewaySku `
@@ -183,7 +183,7 @@ $appgw = New-AzApplicationGateway `
 
 ### <a name="add-image-and-video-backend-pools-and-port"></a>添加映像及视频后端池和端口
 
-向应用程序网关 [Add-AzApplicationGatewayBackendAddressPool](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool) 添加名为 imagesBackendPool 和 videoBackendPool 的后端池。 使用 [Add-AzApplicationGatewayFrontendPort](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewayfrontendport) 添加池的前端端口。 使用 [Set-AzApplicationGateway](https://docs.microsoft.com/powershell/module/az.network/set-azapplicationgateway) 提交对应用程序网关所做的更改。
+向应用程序网关 [Add-AzApplicationGatewayBackendAddressPool](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool) 添加名为 imagesBackendPool 和 videoBackendPool 的后端池。 使用 [Add-AzApplicationGatewayFrontendPort](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewayfrontendport) 添加池的前端端口。 使用 [Set-AzApplicationGateway](https://docs.microsoft.com/powershell/module/az.network/set-azapplicationgateway) 将更改提交到应用程序网关。
 
 ```azurepowershell
 $appgw = Get-AzApplicationGateway `
@@ -356,7 +356,7 @@ for ($i=1; $i -le 3; $i++)
   $vmssConfig = New-AzVmssConfig `
     -Location chinanorth2 `
     -SkuCapacity 2 `
-    -SkuName Standard_DS2 `
+    -SkuName Standard_DS2_v2 `
     -UpgradePolicyMode Automatic
 
   Set-AzVmssStorageProfile $vmssConfig `
@@ -438,4 +438,3 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 ## <a name="next-steps"></a>后续步骤
 
 [基于 URL 重定向 Web 流量](./tutorial-url-redirect-powershell.md)
-

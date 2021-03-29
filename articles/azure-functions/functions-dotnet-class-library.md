@@ -1,41 +1,62 @@
 ---
-title: Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
-description: '了解如何开发使用 C # 的 Azure 功能。'
+title: 使用 Azure Functions 开发 C# 类库函数
+description: 了解如何使用 C# 开发代码，并将其发布为在进程内与 Azure Functions 运行时配合运行的类库。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 01/13/2021
-ms.openlocfilehash: e63b697ba3cf07d5b256a94219a377f4f5bee786
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.date: 03/22/2021
+ms.openlocfilehash: 35be2d7108f30f01cc37d0922627b68a47772ab4
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195239"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602820"
 ---
-# <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
+# <a name="develop-c-class-library-functions-using-azure-functions"></a>使用 Azure Functions 开发 C# 类库函数
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-reference-csharp.md -->
 
 本文介绍了如何在 .NET 类库中使用 C# 开发 Azure Functions。
 
+>[!IMPORTANT]
+>本文支持在进程内与运行时配合运行的 .NET 类库函数。 Functions 还通过在进程外独立于运行时运行 C# 函数，来支持 .NET 1.5。 有关详细信息，请参阅 [.NET 隔离进程函数](dotnet-isolated-process-guide.md)。
+
 作为 C# 开发人员，你可能还会对以下文章之一感兴趣：
 
 | 入门 | 概念| 引导式学习/示例 |
-| -- | -- | -- | 
+|--| -- |--| 
 | <ul><li>[使用 Visual Studio](functions-create-your-first-function-visual-studio.md)</li><li>[使用 Visual Studio Code](create-first-function-vs-code-csharp.md)</li><li>[使用命令行工具](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[托管选项](functions-scale.md)</li><li>[性能注意事项](functions-best-practices.md)</li><li>[Visual Studio 开发](functions-develop-vs.md)</li><li>[依赖关系注入](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[创建无服务器应用程序](https://docs.microsoft.com/learn/paths/create-serverless-applications/)</li><li>[C# 示例](https://docs.microsoft.com/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
 
 Azure Functions 支持 C# 和 C# 脚本编程语言。 如果要寻找有关[在 Azure 门户中使用 C#](functions-create-function-app-portal.md) 的指南，请参阅 [C# 脚本 (.csx) 开发人员参考](functions-reference-csharp.md)。
 
 ## <a name="supported-versions"></a>支持的版本
 
-Functions 运行时版本使用特定版本的 .NET。 下表显示了可与项目中特定版本的 Functions 一起使用的 .NET Core、.NET Framework 和 .NET Core 的最高级别。 
+Functions 运行时版本使用特定版本的 .NET。 若要详细了解 Functions 版本，请参阅 [Azure Functions 运行时版本概述](functions-versions.md)
+
+下表显示了可与特定版本的 Functions 配合使用的 .NET Core 或 .NET Framework 的最高级别。 
 
 | Functions 运行时版本 | 最大 .NET 版本 |
 | ---- | ---- |
-| Functions 3.x | .NET Core 3.1 |
-| Functions 2.x | .NET Core 2.2 |
+| Functions 3.x | .NET Core 3.1<br/>.NET 5.0<sup>1</sup> |
+| Functions 2.x | .NET Core 2.2<sup>2</sup> |
 | Functions 1.x | .NET Framework 4.7 |
 
-若要了解详细信息，请参阅 [Azure Functions 运行时版本概述](functions-versions.md)
+<sup>1</sup> 必须在[进程外](dotnet-isolated-process-guide.md)运行。  
+<sup>2</sup> 有关详细信息，请参阅 [Functions v2.x 注意事项](#functions-v2x-considerations)。   
+
+有关 Azure Functions 版本的最新消息，包括删除较旧的特定次要版本，请关注 [Azure 应用服务公告](https://github.com/Azure/app-service-announcements/issues)。
+
+### <a name="functions-v2x-considerations"></a>Functions v2.x 注意事项
+
+面向最新 2.x 版 (`~2`) 的函数应用将自动升级，以在 .NET Core 3.1 上运行。 由于 .NET Core 版本之间存在中断性变更，因此，针对 .NET Core 2.2 开发和编译的所有应用并非都可以安全升级到 .NET Core 3.1。 可以通过将函数应用固定为 `~2.0` 来选择退出此升级。 Functions 还会检测不兼容的 API，并可将应用固定为 `~2.0`，以防止在 .NET Core 3.1 上错误执行。 
+
+>[!NOTE]
+>如果函数应用已固定为 `~2.0`，而你将此版本目标更改为 `~2`，则函数应用可能会中断工作。 如果使用 ARM 模板进行部署，请检查模板中的版本。 如果发生这种情况，请改回版本以面向 `~2.0`，并解决兼容性问题。 
+
+面向 `~2.0` 的函数应用将继续在 .NET Core 2.2 上运行。 此 .NET Core 版本不再接收安全更新和其他维护更新。 有关详细信息，请参阅[此公告页](https://github.com/Azure/app-service-announcements/issues/266)。 
+
+应该尽快使函数与 .NET Core 3.1 兼容。 解决这些问题后，将版本改回到 `~2` 或升级到 `~3`。 若要详细了解如何选择 Functions 运行时的目标版本，请参阅[如何选择 Azure Functions 运行时的目标版本](set-runtime-version.md)。
+
+在 Linux 上的高级或专用（应用服务）计划中运行时，请通过将 `linuxFxVersion` 站点配置设置指定为 `DOCKER|mcr.microsoft.com/azure-functions/dotnet:2.0.14786-appservice` 来固定版本，而不要选择特定的映像作为目标。若要了解如何设置 `linuxFxVersion`，请参阅 [Linux 上的手动版本更新](set-runtime-version.md#manual-version-updates-on-linux)。
 
 ## <a name="functions-class-library-project"></a>Functions 类库项目
 
@@ -85,7 +106,7 @@ public static class SimpleExample
 
 ## <a name="method-signature-parameters"></a>方法签名参数
 
-方法签名可能包含不与触发器属性一起使用的参数。 下面是可以包括的一些其他参数：
+方法签名可能包含不与触发器属性一起使用的参数。 下面是可以包含的其他一些参数：
 
 * [输入和输出绑定](functions-triggers-bindings.md)通过使用属性修饰来进行此类标记。  
 * 用于[日志](#logging)的 `ILogger` 或 `TraceWriter`（仅限[版本 1.x](functions-versions.md#creating-1x-apps)）参数。
@@ -94,9 +115,11 @@ public static class SimpleExample
 
 函数签名中的参数顺序并不重要。 例如，可以在其他绑定之前或之后放置触发器参数，也可以在触发器或绑定参数之前或之后添加记录器参数。
 
-### <a name="output-binding-example"></a>输出绑定示例
+### <a name="output-bindings"></a>输出绑定
 
-以下示例对上一个示例进行了修改，它添加了一个输出队列绑定。 该函数将触发函数的队列消息写入到另一个队列中的一条新队列消息。
+一个函数可以有零个或一个使用输出参数定义的输出绑定。 
+
+以下示例对上一个示例进行了修改，其中添加了一个名为 `myQueueItemCopy` 的输出队列绑定。 该函数将触发函数的消息内容写入到另一个队列中的新消息。
 
 ```csharp
 public static class SimpleExampleWithOutput
@@ -112,6 +135,8 @@ public static class SimpleExampleWithOutput
     }
 }
 ```
+
+该函数退出时，将写入分配给输出绑定的值。 只需将值分配给多个输出参数，即可在一个函数中使用多个输出绑定。 
 
 绑定参考文章（例如，[存储队列](functions-bindings-storage-queue.md)）说明了可用于触发器、输入或输出绑定特性的参数类型。
 
@@ -138,7 +163,7 @@ public static class BindingExpressionsExample
 
 生成过程会在生成文件中的一个函数文件夹中创建一个 *function.json* 文件。 如前所述，此文件不应直接编辑。 无法通过编辑此文件来更改绑定配置或禁用函数。 
 
-此文件的用途是向缩放控制器提供用于[对消耗计划做出缩放决策](event-driven-scaling.md)的信息。 因此，此文件仅包含触发器信息，不包含输入或输出绑定。
+此文件的用途是向缩放控制器提供用于[对消耗计划做出缩放决策](event-driven-scaling.md)的信息。 因此，该文件仅包含触发器信息，而不包含输入/输出绑定。
 
 生成的 *function.json* 文件包括一个 `configurationSource` 属性，该属性告诉运行时使用 .NET 属性进行绑定，而不是使用 *function.json* 配置。 下面是一个示例：
 
@@ -163,7 +188,7 @@ public static class BindingExpressionsExample
 
 *function.json* 文件生成是由 NuGet 包 [Microsoft\.NET\.Sdk\.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions) 生成的。 
 
-Functions 运行时的 1.x 版本和 2.x 版本使用相同的包。 1\.x 项目和 2.x 项目的不同之处在于目标框架。 以下是 csproj  文件的相关部分，其中显示了不同的目标框架和相同的 `Sdk` 包：
+Functions 运行时的 1.x 版本和 2.x 版本使用相同的包。 1\.x 项目和 2.x 项目的不同之处在于目标框架。 下面是 *.csproj* 文件的相关部分，其中显示了包含相同 `Sdk` 包的不同目标框架：
 
 # <a name="v2x"></a>[v2.x+](#tab/v2)
 
@@ -361,7 +386,7 @@ logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionK
 }
 ```
 
-## <a name="log-custom-telemetry-in-c-functions"></a>在 C# 函数中记录自定义遥测
+### <a name="log-custom-telemetry"></a><a name="log-custom-telemetry-in-c-functions"></a>记录自定义遥测数据
 
 Functions 特定版本的 Application Insights SDK 可用于将自定义遥测数据从函数发送到 Application Insights：[Microsoft.Azure.WebJobs.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights)。 在命令提示符中使用以下命令来安装此包：
 
@@ -616,7 +641,7 @@ public static class IBinderExample
 
 [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs) 定义[存储 blob](functions-bindings-storage-blob.md) 输入或输出绑定，[TextWriter](https://docs.microsoft.com/dotnet/api/system.io.textwriter) 是支持的输出绑定类型。
 
-### <a name="multiple-attribute-example"></a>多属性示例
+### <a name="multiple-attributes-example"></a>多属性示例
 
 上一个示例获取函数应用的主存储帐户连接字符串（即 `AzureWebJobsStorage`）的应用设置。 通过添加 [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) 和将属性数组传入 `BindAsync<T>()`，可指定要用于存储帐户的自定义应用设置。 使用一个 `Binder` 参数而非 `IBinder`。  例如：
 
@@ -654,4 +679,3 @@ public static class IBinderExampleMultipleAttributes
 
 > [!div class="nextstepaction"]
 > [详细了解有关 Azure Functions 的最佳做法](functions-best-practices.md)
-

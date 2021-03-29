@@ -1,26 +1,20 @@
 ---
 title: 使用所需状态配置将凭据传递给 Azure
 description: 了解如何使用 PowerShell 所需状态配置 (DSC) 安全地将凭据传递给 Azure 虚拟机。
-services: virtual-machines-windows
-manager: carmonm
-tags: azure-resource-manager
-keywords: dsc
-ms.assetid: ea76b7e8-b576-445a-8107-88ea2f3876b9
-ms.service: virtual-machines-windows
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: na
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.collection: windows
 origin.date: 05/02/2018
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/29/2021
 ms.author: v-yeche
-ms.openlocfilehash: d65ee7b16f15232f537cc3ddf3d5e3e683effabb
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 5f44076e597b4cc4e045cb4d1a8bb48c3b1a2e24
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856706"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603253"
 ---
 # <a name="pass-credentials-to-the-azure-dscextension-handler"></a>将凭据传递给 Azure DSC 扩展处理程序
 
@@ -58,7 +52,7 @@ configuration Main
 }
 ```
 
-必须将 **node localhost** 包含为配置的一部分。 扩展处理程序会特意查找 **node localhost** 语句。 如果缺少此语句，则以下步骤不起作用。 还必须包含类型强制转换 **[PsCredential]** 。 此特定类型触发扩展对凭据进行加密。
+必须将 **node localhost** 包含为配置的一部分。 扩展处理程序会特意查找 **node localhost** 语句。 如果缺少此语句，则以下步骤不起作用。 还必须包含类型强制转换 **[PsCredential]**。 此特定类型触发扩展对凭据进行加密。
 
 将此脚本发布到 Azure Blob 存储：
 
@@ -77,7 +71,7 @@ $vm = Set-AzVMDscExtension -VMName $vm -ConfigurationArchive $configurationArchi
 $vm | Update-AzVM
 ```
 
-<!-- Notice parameter should be $configurationArguments-->
+<!--CUSTOMIZE PARAMETER should be $configurationArguments-->
 
 ## <a name="how-a-credential-is-secured"></a>如何保护凭据
 
@@ -92,4 +86,4 @@ $vm | Update-AzVM
 - 有关 PowerShell DSC 的详细信息，请转到 [PowerShell 文档中心](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview)。
 - 若要了解可以使用 PowerShell DSC 管理的其他功能并获取更多 DSC 资源，请浏览 [PowerShell 库](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)。
 
-<!-- Update_Description: update meta properties, wording update  -->
+<!--Update_Description: update meta properties, wording update, update link-->

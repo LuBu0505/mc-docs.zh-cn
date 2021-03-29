@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 07/11/2019
-ms.date: 12/21/2020
-ms.openlocfilehash: 7e3c0df0005d1b1b4c68de10b8c5baaaae856d55
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.date: 03/29/2021
+ms.openlocfilehash: 10e30d0738fd7d4cc76a89243378cb47d43e6069
+ms.sourcegitcommit: 308ca551066252e68198391c3e4d4b1de348deb9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830107"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105601871"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>将 SQL Server 实例迁移到 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -60,6 +60,26 @@ ms.locfileid: "97830107"
 - 使用的新功能（例如透明数据库加密 (TDE) 或自动故障转移组）可能会影响 CPU 和 IO 使用率。
 
 即使发生严重的情况，SQL 托管实例也能保证 99.99% 的可用性，因此，无法禁用这些功能造成的开销。 有关详细信息，请参阅[可能导致 SQL Server 和 Azure SQL 托管实例上出现不同性能的根本原因](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)。
+
+#### <a name="in-memory-oltp-memory-optimized-tables"></a>内存中 OLTP（内存优化表）
+
+SQL Server 提供内存中 OLTP 功能，允许使用内存优化表、内存优化表类型和本地编译的 SQL 模块来运行具有高吞吐量和低延迟事务处理要求的工作负载。 
+
+> [!IMPORTANT]
+> 内存中 OLTP 仅在 Azure SQL 托管实例中的业务关键层中受支持（在常规用途层中不受支持）。
+
+如果本地 SQL Server 中存在内存优化表或内存优化表类型，并且你想要迁移到 Azure SQL 托管实例，则你应该：
+
+- 为支持内存中 OLTP 的目标 Azure SQL 托管实例选择业务关键层，或
+- 如果你想迁移到 Azure SQL 托管实例中的常规用途层，请删除内存优化表、内存优化表类型和本地编译的 SQL 模块，它们在迁移数据库之前与内存优化对象交互。 以下 T-SQL 查询可用于识别迁移到常规用途层之前需要删除的所有对象：
+
+```tsql
+SELECT * FROM sys.tables WHERE is_memory_optimized=1
+SELECT * FROM sys.table_types WHERE is_memory_optimized=1
+SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
+```
+
+若要详细了解内存中技术，请参阅[通过使用 Azure SQL 数据库和 Azure SQL 托管实例的内存中技术来优化性能](/azure-sql/in-memory-oltp-overview)
 
 ### <a name="create-a-performance-baseline"></a>创建性能基线
 

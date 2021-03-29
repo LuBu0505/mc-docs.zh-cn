@@ -4,14 +4,14 @@ description: 使用 Azure Application Insights 设置多步骤 Web 测试，以�
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 10/23/2019
-ms.date: 02/22/2021
+ms.date: 03/25/2021
 ms.author: v-johya
-ms.openlocfilehash: af7063d6a75f44ed019fd6c802cd099a06f8dc94
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 1d7191987661abae7b38b2bdc36979faf139617e
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197237"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603553"
 ---
 # <a name="multi-step-web-tests"></a>多步骤 Web 测试
 
@@ -66,7 +66,6 @@ ms.locfileid: "102197237"
 |设置| 说明
 |----|----|----|
 |**近实时（预览）** | 我们建议使用近实时警报。 在创建可用性测试后会配置此类警报。  |
-|**经典** | 我们不再建议对新的可用性测试使用经典警报。|
 |**警报位置阈值**|建议最少 3/5 个位置。 警报位置阈值和测试位置数目之间的最佳关系是，警报位置阈值  =  测试位置数 - 2，至少有 5 个测试位置 。|
 
 ## <a name="configuration"></a>配置

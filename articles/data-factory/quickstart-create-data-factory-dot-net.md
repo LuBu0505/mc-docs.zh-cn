@@ -1,25 +1,19 @@
 ---
 title: 使用 .NET SDK 创建 Azure 数据工厂
 description: 使用 .NET SDK 创建 Azure 数据工厂和管道，以便将数据从 Azure Blob 存储中的一个位置复制到另一个位置。
-services: data-factory
-documentationcenter: ''
 author: WenJason
-manager: digimobile
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: dotnet
 ms.topic: quickstart
-origin.date: 12/18/2020
-ms.date: 01/04/2021
+origin.date: 03/16/2021
+ms.date: 03/29/2021
 ms.author: v-jay
-ms.openlocfilehash: 69ba529a15d106879e76017ad79bfeac572180c3
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.openlocfilehash: c2a69dfe186c9f183f1e37c61a008398b1eb6f25
+ms.sourcegitcommit: 308ca551066252e68198391c3e4d4b1de348deb9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830296"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105601904"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>快速入门：使用 .NET SDK 创建数据工厂和管道
 
@@ -35,10 +29,6 @@ ms.locfileid: "97830296"
 ### <a name="visual-studio"></a>Visual Studio
 
 本文中的演练使用 Visual Studio 2019。 Visual Studio 2013、2015 或 2017 的过程略有不同。
-
-### <a name="azure-net-sdk"></a>Azure .NET SDK
-
-在计算机上下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)。
 
 ## <a name="create-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中创建应用程序
 

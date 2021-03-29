@@ -1,23 +1,24 @@
 ---
 title: 教程 - 在 Azure 中使用 TLS/SSL 证书保护 Windows Web 服务器
 description: 本教程介绍如何通过 Azure PowerShell 使用 Azure Key Vault 中存储的 TLS/SSL 证书来保护运行 IIS Web 服务器的 Windows 虚拟机。
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.subservice: security
 ms.topic: tutorial
 ms.workload: infrastructure
 origin.date: 02/09/2018
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 0aa3cd9a6788c94bf7abf9452f7fae0b5e65fb58
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: b5b93e58bd59c200b406aa5e608404c7de261aec
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055270"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603586"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>教程：在 Azure 中使用 Key Vault 中存储的 TLS/SSL 证书保护 Windows 虚拟机上的 Web 服务器
 
@@ -32,11 +33,12 @@ ms.locfileid: "102055270"
 > * 创建 VM 并安装 IIS Web 服务器
 > * 将证书注入 VM 中并为 IIS 配置 TLS 绑定
 
-## <a name="launch-azure-local-shell"></a>启动 Azure 本地 Shell
+## <a name="launch-azure-local-powershell"></a>启动 Azure 本地 PowerShell
 
 打开 Azure Powershell 控制台，并以管理员权限运行下面列出的脚本。
 
-<!--Not Available on Azure China Cloud-->
+<!--NOT AVAILABLE ON https://shell.azure.com-->
+<!--NOT AVAILABLE ON Azure China Cloud-->
 
 ## <a name="overview"></a>概述
 Azure Key Vault 保护加密密钥和机密、此类证书或密码。 Key Vault 有助于简化证书管理过程，让我们持续掌控用于访问这些证书的密钥。 可以在 Key Vault 中创建自签名证书，或者上传已拥有的现有受信任证书。

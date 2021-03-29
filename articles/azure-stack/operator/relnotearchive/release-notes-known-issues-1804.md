@@ -17,12 +17,12 @@ ms.date: 03/22/2021
 ms.author: v-jay
 ms.reviewer: justini
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7b80c52f6814a22b230b6511fa1013ebc45bf0e8
-ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
+ms.openlocfilehash: 46857781842b0cf1dad7d441fc963a6c0c69e63c
+ms.sourcegitcommit: 308ca551066252e68198391c3e4d4b1de348deb9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104766993"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105601797"
 ---
 # <a name="azure-stack-1804-update"></a>Azure Stack 1804 更新
 
@@ -258,7 +258,7 @@ Azure Stack 1804 更新内部版本号为 **20180513.1**。
       
       $RuleConfig_Inbound_Rdp_3389 =  $nsg | Get-AzureRmNetworkSecurityRuleConfig -Name "Inbound_Rdp_3389"
       
-      ##This doesn�t work. Need to set properties again even in case of edit
+      ##This doesn't work. Need to set properties again even in case of edit
       
       #Set-AzureRmNetworkSecurityRuleConfig -Name "Inbound_Rdp_3389" -NetworkSecurityGroup $nsg -Access Allow  
       

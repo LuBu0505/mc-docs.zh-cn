@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 05/25/2020
 ms.author: v-yiso
 ms.date: 07/20/2020
-ms.openlocfilehash: 264e4a0b8d9808013b9477c82f1bb06175fc57ca
-ms.sourcegitcommit: 136164cd330eb9323fe21fd1856d5671b2f001de
+ms.openlocfilehash: 196fcefc157b3660d3276d4138a29bbb18eaedfd
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102196529"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602708"
 ---
 # <a name="use-ip-filters"></a>使用 IP 筛选器
 
@@ -175,6 +175,6 @@ $iothubResource | Set-AzResource -Force
 
 若要进一步探索 IoT 中心的功能，请参阅：
 
-* [IoT 中心指标](iot-hub-metrics.md)
+* [IoT 中心指标](./monitor-iot-hub.md)
 * [管理 IoT 中心的公用网络访问](iot-hub-public-network-access.md)
 * [监视 IoT 中心](monitor-iot-hub.md)

@@ -5,15 +5,14 @@ author: Johnnytechn
 services: azure-monitor
 origin.date: 04/23/2019
 ms.topic: conceptual
-ms.date: 02/20/2021
+ms.date: 03/25/2021
 ms.author: v-johya
-ms.subservice: metrics
-ms.openlocfilehash: 8809476fbc970a82a5a609c7ee8e58d9925003ad
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 74fdef8a2e0e1e5e3635efdc57d20c31765a17e7
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204865"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603297"
 ---
 # <a name="troubleshooting-metrics-charts"></a>排查指标图表问题
 
@@ -63,7 +62,7 @@ ms.locfileid: "102204865"
 
 如果仪表板是使用后来已弃用并已从 Azure 中删除的某个指标创建的，则可能会发生此问题。 若要确认是否存在这种情况，请打开资源的“指标”选项卡，然后检查指标选取器中的可用指标。  如果该指标未显示，则表示它已从 Azure 中删除。 一般情况下，如果某个指标已弃用，会有一个更好的新指标可以提供有关资源运行状况的类似透视图。
 
-**解决方案：** 在仪表板上选取图表的备选指标来更新出错的磁贴。 可以[查看 Azure 服务的可用指标列表](../platform/metrics-supported.md)。
+**解决方案：** 在仪表板上选取图表的备选指标来更新出错的磁贴。 可以[查看 Azure 服务的可用指标列表](./metrics-supported.md)。
 
 ## <a name="chart-shows-dashed-line"></a>图表显示虚线
 
@@ -105,6 +104,6 @@ Azure 指标图表使用虚线样式来指示两个已知时间粒度数据点�
 
 * [了解如何开始使用指标资源管理器](metrics-getting-started.md)
 * [了解指标资源管理器的高级功能](../essentials/metrics-charts.md)
-* [查看 Azure 服务的可用指标列表](../platform/metrics-supported.md)
+* [查看 Azure 服务的可用指标列表](./metrics-supported.md)
 * [查看已配置图表的示例](../essentials/metric-chart-samples.md)
 

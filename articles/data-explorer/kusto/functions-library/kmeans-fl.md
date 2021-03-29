@@ -2,26 +2,25 @@
 title: kmeans_fl() - Azure 数据资源管理器
 description: 本文介绍 Azure 数据资源管理器中用户定义的函数 kmeans_fl()。
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 10/18/2020
-ms.date: 01/22/2021
-ms.openlocfilehash: 59b13bbed6c61f594016b2ad941e09764f5cb4bb
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.date: 03/23/2021
+ms.openlocfilehash: c3c3110ea0cd57ba22ac34f493b725323698aac4
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611276"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602703"
 ---
 # <a name="kmeans_fl"></a>kmeans_fl()
 
 `kmeans_fl()` 函数使用 k-means 算法对数据库进行聚类。
 
 > [!NOTE]
-> * `kmeans_fl()` 是 [UDF（用户定义的函数）](../query/functions/user-defined-functions.md)。
-> * 此函数包含内联 Python，需要在群集上[启用 python() 插件](../query/pythonplugin.md#enable-the-plugin)。 有关详细信息，请参阅[用法](#usage)。
+> * `kmeans_fl()` 是 [UDF（用户定义的函数）](../query/functions/user-defined-functions.md)。 有关详细信息，请参阅[用法](#usage)。
+> * 此函数包含内联 Python，需要在群集上[启用 python() 插件](../query/pythonplugin.md#enable-the-plugin)。
 
 ## <a name="syntax"></a>语法
 
@@ -35,7 +34,7 @@ ms.locfileid: "98611276"
 
 ## <a name="usage"></a>使用情况
 
-`kmeans_fl()` 是用户定义的[表格函数](../query/functions/user-defined-functions.md#tabular-function)，将使用 [invoke 运算符](../query/invokeoperator.md)来应用。 可以在查询中嵌入该函数的代码，或者在数据库中安装该函数。 用法选项有两种：临时使用和永久使用。 有关示例，请参阅下面的选项卡。
+`kmeans_fl()` 是用户定义的[表格函数](../query/functions/user-defined-functions.md#tabular-function)，将使用 [invoke 运算符](../query/invokeoperator.md)来应用。 可以在查询中嵌入其代码，或将其安装在数据库中。 用法选项有两种：临时使用和永久使用。 有关示例，请参阅下面的选项卡。
 
 # <a name="ad-hoc"></a>[临时](#tab/adhoc)
 
@@ -77,7 +76,7 @@ OccupancyDetection
 
 # <a name="persistent"></a>[Persistent](#tab/persistent)
 
-如果是永久使用，请使用 [`.create function`](../management/create-function.md)。 创建函数需要有[数据库用户权限](../management/access-control/role-based-authorization.md)。
+如果是永久使用，请使用 [`.create function`](../management/create-function.md)。 创建函数需要[数据库用户权限](../management/access-control/role-based-authorization.md)。
 
 ### <a name="one-time-installation"></a>一次性安装
 

@@ -1,18 +1,17 @@
 ---
 title: 在 Windows 计算机上安装 Log Analytics 代理
 description: 本文介绍如何使用适用于 Windows 的 Log Analytics 代理将在其他云中或本地托管的 Windows 计算机连接到 Azure Monitor。
-ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
+ms.date: 03/22/2021
 origin.date: 10/07/2019
-ms.openlocfilehash: a8faaab2fa950150e3b93140f42663f86d371bab
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 83145cd3e8bb26b66a6d44037f68af1a709c9bfe
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205787"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603318"
 ---
 # <a name="install-log-analytics-agent-on-windows-computers"></a>在 Windows 计算机上安装 Log Analytics 代理
 本文详细介绍如何使用以下方法在 Windows 计算机上安装 Log Analytics 代理：
@@ -21,7 +20,7 @@ ms.locfileid: "102205787"
 * [Azure 自动化 Desired State Configuration (DSC)](#install-agent-using-dsc-in-azure-automation)。 
 
 >[!IMPORTANT]
-> 本文所述的安装方法通常用于本地或其他云中的虚拟机。 有关可用于 Azure 虚拟机的更高效选项，请参阅[安装选项](../platform/log-analytics-agent.md#installation-options)。
+> 本文所述的安装方法通常用于本地或其他云中的虚拟机。 有关可用于 Azure 虚拟机的更高效选项，请参阅[安装选项](./log-analytics-agent.md#installation-options)。
 
 > [!NOTE]
 > 如果需要将代理配置为向多个工作区报告，则不能在初始设置期间执行此操作，而只能在之后通过从控制面板或 PowerShell 更新设置执行，如[添加或删除工作区](agent-manage.md#adding-or-removing-a-workspace)中所述。  
@@ -43,7 +42,7 @@ Windows 代理将于 2020 年 8 月 17 日开始以独占方式使用 SHA-2 签�
 4. 建议将代理配置为[使用 TLS 1.2](agent-windows.md#configure-agent-to-use-tls-12)。 
 
 ## <a name="network-requirements"></a>网络要求
-有关 Windows 代理的网络要求，请参阅 [Log Analytics 代理概述](../platform/log-analytics-agent.md#network-requirements)。
+有关 Windows 代理的网络要求，请参阅 [Log Analytics 代理概述](./log-analytics-agent.md#network-requirements)。
 
 
    
@@ -92,7 +91,7 @@ Windows 代理将于 2020 年 8 月 17 日开始以独占方式使用 SHA-2 签�
 
 下表突出显示了代理的安装程序支持的特定参数，包括使用 Automation DSC 进行部署的时间。
 
-|特定于 MMA 的选项                   |说明         |
+|特定于 MMA 的选项                   |注释         |
 |---------------------------------------|--------------|
 | NOAPM=1                               | 可选参数。 安装不带 .NET 应用程序性能监视的代理。|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = 将代理配置为向工作区报告                |

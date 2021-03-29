@@ -1,22 +1,23 @@
 ---
 title: 使用 Azure PowerShell 部署 Azure 专用主机
 description: 使用 Azure PowerShell 将 VM 部署到专用主机。
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: dedicated-hosts
 ms.topic: how-to
 ms.workload: infrastructure
 origin.date: 11/12/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
 ms.reviewer: zivr
-ms.openlocfilehash: 812fa9d793afa3d2ea7f0c8f8936ea966f108926
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 7c4e02b2390da10f8a262dee67652aa56fe0b0f1
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857123"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603864"
 ---
 <!--Verified successfully-->
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>使用 Azure PowerShell 将 VM 部署到专用主机
@@ -27,15 +28,15 @@ ms.locfileid: "97857123"
 
 ## <a name="limitations"></a>限制
 
-- 专用主机上目前不支持虚拟机规模集。
 - 专用主机可用的大小和硬件类型因区域而异。 请参阅主机[定价页](https://www.azure.cn/pricing/details/virtual-machines/)来了解详细信息。
 
 ## <a name="create-a-host-group"></a>创建主机组
 
 主机组是表示专用主机集合的资源。 你在某个区域中创建主机组，并向其中添加主机。 规划高可用性时，有其他选项可供选择。 你可以将以下一个或两个选项与专用主机一起使用： 
 
-<!--Not Avaialble on availability zone-->
-<!--Not Available on - Span across multiple availability zones. In this case, you are required to have a host group in each of the zones you wish to use.-->
+<!--NOT AVAILABLE on FEATURE availability zone-->
+
+<!--NOT AVAILABLE on - Span across multiple availability zones. In this case, you are required to have a host group in each of the zones you wish to use.-->
 
 - 跨映射到物理机架的多个容错域。 
 
@@ -43,11 +44,11 @@ ms.locfileid: "97857123"
 
 在这种情况下，你需要为主机组提供容错域计数。 如果你不希望跨组中的容错域，请使用容错域计数 1。 
 
-<!--Not Available on  availability zones and fault domains.-->
+<!--NOT AVAILABLE on FEATURE availability zone-->
 
 此示例将创建具有 2 个容错域的主机组。 
 
-<!--Not Available on in zone 1,-->
+<!--NOT AVAILABLE on in zone 1,-->
 
 ```powershell
 $rgName = "myDHResourceGroup"
@@ -87,8 +88,8 @@ $dHost = New-AzHost `
 
 在专用主机上创建虚拟机。 
 
-<!--Not Available on availability zone-->
-<!--Not Available on If you specified an availability zone when creating your host group, you are required to use the same zone when creating the virtual machine. For this example, because our host group is in zone 1, we need to create the VM in zone 1. -->
+<!--NOT AVAILABLE on If you specified an availability zone when creating your host group, you are required to use the same zone when creating the virtual machine. For this example, because our host group is in zone 1, we need to create the VM in zone 1. -->
+<!--NOT AVAILABLE on FEATURE availability zone-->
 
 ```powershell
 $cred = Get-Credential
@@ -208,7 +209,8 @@ New-AzVmss `
 - VM 不能是邻近放置组的一部分。 在将 VM 移动到专用主机之前，请先从邻近放置组中删除该 VM。 有关详细信息，请参阅[将 VM 移出邻近放置组](./proximity-placement-groups.md#move-an-existing-vm-out-of-a-proximity-placement-group)
 - VM 不能位于可用性集中。
 
-<!--Not Available on - If the VM is in an availability zone, it must be the same availability zone as the host group. The availability zone settings for the VM and the host group must match.-->
+<!--NOT AVAILABLE on - If the VM is in an availability zone, it must be the same availability zone as the host group. The availability zone settings for the VM and the host group must match.-->
+<!--NOT AVAILABLE on FEATURE availability zone-->
 
 将变量值替换为你自己的信息。
 
@@ -279,4 +281,4 @@ Remove-AzResourceGroup -Name $rgName
 
 - 也可以使用 [Azure 门户](../dedicated-hosts-portal.md)专用主机。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

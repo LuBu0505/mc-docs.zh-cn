@@ -1,22 +1,23 @@
 ---
-title: Azure 磁盘加密示例脚本
+title: 适用于 Windows VM 的 Azure 磁盘加密示例脚本
 description: 本文是适用于 Windows VM 的 Azure 磁盘加密的附录。
-ms.service: virtual-machines-windows
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: windows
 ms.topic: how-to
 origin.date: 08/06/2019
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: fa7839f8112829170ea681f2b093a5e0ffd3f856
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: fe6128330a1f9bcd094f8004336f31141565617b
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055157"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603850"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure 磁盘加密示例脚本 
 

@@ -6,14 +6,14 @@ author: Johnnytechn
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/20/2021
+ms.date: 03/25/2021
 ms.author: v-johya
-ms.openlocfilehash: acf2cfd04585df5e58984aaf8449a33c6981022d
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 675d44465a4010c5fdb4b05cda8736f115d83fb4
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205926"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603395"
 ---
 # <a name="composite-bar-renderer"></a>复合条呈现器
 
@@ -193,5 +193,5 @@ None 聚合表示对于组行，该列不显示任何结果。
 ## <a name="next-steps"></a>后续步骤
 
 * 使用 Azure 资源管理器[部署](../visualize/workbooks-automate.md)工作簿。
-* [控制](../platform/workbooks-access-control.md)和共享对工作簿资源的访问权限。
+* [控制](./workbooks-access-control.md)和共享对工作簿资源的访问权限。
 

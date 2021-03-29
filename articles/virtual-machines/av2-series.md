@@ -2,20 +2,20 @@
 title: Av2 系列
 description: Av2 系列 VM 的规范。
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-general
 ms.topic: conceptual
 origin.date: 02/03/2020
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/29/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 8254e3f05577aa906f8a970fda46a9dd863f7cdc
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 476bee04c5dc5830780e42274410650aed4085b8
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102053148"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603754"
 ---
 <!--Verified successfully-->
 # <a name="av2-series"></a>Av2 系列
@@ -49,11 +49,11 @@ Av2 系列 VM 可以部署在各种不同的硬件类型和处理器上。 Av2 �
 - [常规用途](sizes-general.md)
 - [内存优化](sizes-memory.md)
 
-    <!--NOT AVAILABLE ON - [Storage optimized](sizes-storage.md)-->
+    <!--NOT AVAILABLE ON [Storage optimized](sizes-storage.md)-->
 
 - [GPU 优化](sizes-gpu.md)
 
-    <!--NOT AVAILABLE ON - [High performance compute](sizes-hpc.md)-->
+    <!--NOT AVAILABLE ON [High performance compute](sizes-hpc.md)-->
 
 - [前几代](sizes-previous-gen.md)
 

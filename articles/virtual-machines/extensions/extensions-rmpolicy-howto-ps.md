@@ -1,26 +1,22 @@
 ---
 title: 使用 Azure Policy 限制 VM 扩展安装 (Windows)
 description: 使用 Azure Policy 限制扩展部署。
-services: virtual-machines-linux
-manager: gwallace
-ms.service: virtual-machines-linux
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.collection: windows
 origin.date: 03/23/2018
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.reviewer: cynthn
-ms.openlocfilehash: f349d8989d8cd7a266d69f064a488aab666d02ca
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 8b22e506495cbe0daa6a29982d4e266743ede04c
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856989"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603155"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>使用 Azure Policy 限制 Windows VM 上的扩展安装
 
@@ -34,9 +30,8 @@ ms.locfileid: "97856989"
 
 本示例演示如何通过在 Azure 本地 Shell 中创建规则文件来拒绝“Microsoft.Compute”发布的扩展，但如果在本地 PowerShell 中操作，也可以创建一个本地文件并将路径 ($home/clouddrive) 替换为计算机上本地文件的路径。
 
-<!-- Not Available on in Azure Cloud Shell-->
-<!-- Not Available on [Cloud Shell](https://shell.azure.com/powershell)-->
-
+<!--NOT AVAILABLE ON in Azure Cloud Shell-->
+<!--NOT AVAILABLE ON https://shell.azure.com-->
 <!--CORRECT ON REMOVE $home/clouddrive/ ON CLOUD SHELL-->
 
 ```powershell
@@ -77,8 +72,8 @@ nano $home/clouddrive/rules.json
 
 此示例演示如何在本地 PowerShell 中为 VM 创建参数文件。 如果在本地使用 PowerShell，也可以创建一个本地文件并将路径 ($home/clouddrive) 替换为计算机上本地文件的路径。
 
-<!-- Not Available on in Cloud Shell-->
-<!-- Not Available on [Cloud Shell](https://shell.azure.com/powershell)-->
+<!--NOT AVAILABLE ON in Cloud Shell-->
+<!--NOT AVAILABLE ON https://shell.azure.com-->
 
 ```powershell
 nano $home/clouddrive/parameters.json
@@ -167,4 +162,4 @@ Remove-AzPolicyDefinition -Name not-allowed-vmextension-windows
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅 [Azure Policy](../../governance/policy/overview.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -4,15 +4,15 @@ description: 本文介绍了如何在 Azure Spring Cloud 中生成和收集结�
 author: MikeDodaro
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 02/19/2021
+ms.date: 03/23/2021
 ms.author: v-junlch
 ms.custom: devx-track-java
-ms.openlocfilehash: 81bed894b0f8946673aef038591fb287f2ff466f
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 9114d193f02597a51240c6d23f2e3c44dcb5c579
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101751691"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602812"
 ---
 # <a name="structured-application-log-for-azure-spring-cloud"></a>Azure Spring Cloud 的结构化应用程序日志
 
@@ -238,4 +238,4 @@ AppPlatformLogsforSpring
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 若要详细了解日志查询，请参阅 [Azure Monitor 中的日志查询入门](/azure-monitor/log-query/get-started-queries)。
+* 若要详细了解日志查询，请参阅 [Azure Monitor 中的日志查询入门](../azure-monitor/logs/get-started-queries.md)。

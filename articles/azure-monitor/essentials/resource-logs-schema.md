@@ -1,17 +1,16 @@
 ---
 title: Azure 资源日志支持的服务和架构
 description: 了解 Azure 资源日志支持的服务和事件架构。
-ms.subservice: logs
 author: Johnnytechn
 ms.topic: reference
-ms.date: 02/20/2021
+ms.date: 03/25/2021
 ms.author: v-johya
-ms.openlocfilehash: 8e48c94a13ab75762a41333ca2b92f033728ce54
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 58287b70f0104c2aa420994beb41c66b82001419
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204841"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603296"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure 资源日志的通用架构和特定于服务的架构
 
@@ -71,7 +70,7 @@ ms.locfileid: "102204841"
 | Azure 防火墙 | 架构不可用。 |
 | IoT 中心 | [IoT 中心操作](../../iot-hub/monitor-iot-hub-reference.md#resource-logs) |
 | 密钥保管库 |[Azure 密钥保管库日志记录](../../key-vault/general/logging.md) |
-| Kubernetes 服务 |[Azure Kubernetes 日志记录](../../aks/view-master-logs.md#log-event-schema) |
+| Kubernetes 服务 |[Azure Kubernetes 日志记录](../../aks/view-control-plane-logs.md#log-event-schema) |
 | 负载均衡器 |[Azure 负载均衡器的 Log Analytics](../../load-balancer/load-balancer-monitor-log.md) |
 | 逻辑应用 |[逻辑应用 B2B 自定义跟踪架构](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | 网络安全组 |[网络安全组 (NSG) 的 Log Analytics](../../virtual-network/virtual-network-nsg-manage-log.md) |

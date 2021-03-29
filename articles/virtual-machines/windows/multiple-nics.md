@@ -1,28 +1,29 @@
 ---
 title: 在 Azure 中创建并管理使用多个 NIC 的 Windows VM
 description: 了解如何使用 Azure PowerShell 或资源管理器模板创建并管理附有多个 NIC 的 Windows VM。
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: how-to
 ms.workload: infrastructure
 origin.date: 09/26/2017
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: ef3b04f9cf5e7d252a8404bb2f2dd80bd7e82774
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: dd21468b726dc35500f0ebf8da2c54f82a61f050
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106295"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603803"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>创建并管理具有多个 NIC 的 Windows 虚拟机
 Azure 中的虚拟机 (VM) 可附有多个虚拟网络接口卡 (NIC)。 一种常见方案是为前端和后端连接设置不同的子网。 可以将 VM 上的多个 NIC 关联到多个子网，但这些子网必须全都位于同一个虚拟网络 (vNet) 中。 本文详述了如何创建附有多个 NIC 的 VM。 还可以了解如何从现有 VM 中添加或删除 NIC。 不同的 [VM 大小](../sizes.md)支持不同数目的 NIC，因此请相应地调整 VM 的大小。
 
 ## <a name="prerequisites"></a>先决条件
 
-在以下示例中，请将示例参数名称替换成自己的值。 示例参数名称包括 *myResourceGroup* 、 *myVnet* 和 *myVM* 。
+在以下示例中，请将示例参数名称替换成自己的值。 示例参数名称包括 *myResourceGroup*、*myVnet* 和 *myVM*。
 
 ## <a name="create-a-vm-with-multiple-nics"></a>创建具有多个 NIC 的 VM
 首先创建一个资源组。 以下示例在“chinaeast”位置创建名为“myResourceGroup”的资源组：
@@ -81,7 +82,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     $cred = Get-Credential
     ```
 
-2. 通过 [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) 定义你的 VM。 以下示例定义名为 *myVM* 的 VM，并使用支持两个以上 NIC 的 VM 大小( *Standard_DS3_v2* )：
+2. 通过 [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) 定义你的 VM。 以下示例定义名为 *myVM* 的 VM，并使用支持两个以上 NIC 的 VM 大小(*Standard_DS3_v2*)：
 
     ```powershell
     $vmConfig = New-AzVMConfig -VMName "myVM" -VMSize "Standard_DS3_v2"
@@ -290,4 +291,4 @@ Azure 会将默认网关分配给附加到虚拟机的第一个（主）网络�
 ## <a name="next-steps"></a>后续步骤
 尝试创建具有多个 NIC 的 VM 时，请查看 [Windows VM 大小](../sizes.md)。 注意每个 VM 大小支持的 NIC 数目上限。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

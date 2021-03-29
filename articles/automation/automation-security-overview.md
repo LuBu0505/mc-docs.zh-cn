@@ -7,12 +7,12 @@ ms.subservice: process-automation
 origin.date: 02/01/2021
 ms.date: 02/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7e7fb4e7903c5d977bea9ce637b84487316c271c
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 46cda8c01c5f437fc3d47f14a512e5ea3fce061a
+ms.sourcegitcommit: 308ca551066252e68198391c3e4d4b1de348deb9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697693"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105601790"
 ---
 # <a name="automation-account-authentication-overview"></a>自动化帐户身份验证概述
 
@@ -90,7 +90,7 @@ Azure 自动化中的运行方式帐户提供的身份验证适用于管理 Azur
 
 <sup>1</sup> Azure AD 租户中的非管理员用户可以[注册 AD 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)，前提是 Azure AD 租户的“用户设置”页中的“用户可以注册应用程序”选项已设置为“是”  。 如果应用程序注册设置为“否”，则执行此操作的用户必须具有此表中定义的角色。
 
-如果你在被添加到订阅的全局管理员角色之前不是订阅的 Active Directory 实例的成员，则会将你添加为来宾。 在这种情况下，“添加自动化帐户”页上会显示 `You do not have permissions to create�` 警告。
+如果你在被添加到订阅的全局管理员角色之前不是订阅的 Active Directory 实例的成员，则会将你添加为来宾。 在这种情况下，“添加自动化帐户”页上会显示 `You do not have permissions to create...` 警告。
 
 若要验证生成错误消息的情况是否已解决：
 

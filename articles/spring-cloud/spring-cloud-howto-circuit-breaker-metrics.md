@@ -5,14 +5,14 @@ author: MikeDodaro
 ms.author: v-junlch
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 02/19/2021
+ms.date: 03/23/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: bfb4929be9137fe3e0513c1dbe75a638f583e4f4
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: e10a34b9b3a2c17b705a188f481d6beb70f24ea1
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697080"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602713"
 ---
 # <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-preview"></a>收集 Spring Cloud Resilience4J 断路器指标（预览版）
 
@@ -42,9 +42,9 @@ cd spring-cloud-circuitbreaker-demo && mvn clean package -DskipTests
 2. 创建包含终结点的应用程序
 
 ```azurecli
-az spring-cloud app create --name resilience4j --is-public \
+az spring-cloud app create --name resilience4j --assign-endpoint \
     -s ${asc-service-name} -g ${asc-resource-group}
-az spring-cloud app create --name reactive-resilience4j --is-public \
+az spring-cloud app create --name reactive-resilience4j --assign-endpoint \
     -s ${asc-service-name} -g ${asc-resource-group}
 ```
 

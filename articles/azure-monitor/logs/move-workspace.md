@@ -1,17 +1,16 @@
 ---
 title: 在 Azure Monitor 中移动 Log Analytics 工作区 | Azure Docs
 description: 了解如何将 Log Analytics 工作区移到另一个订阅或资源组。
-ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
-ms.openlocfilehash: db20fe230a9d068e58c9b81df952682786a74b9a
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/23/2021
+ms.openlocfilehash: 22947ca2ce36d65427d79d20c4c6f8a586af57c7
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205269"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603693"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>将 Log Analytics 工作区移到其他订阅或资源组
 

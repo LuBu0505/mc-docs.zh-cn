@@ -131,6 +131,8 @@
           href: spring-cloud-github-actions-key-vault.md
     - name: 疑难解答
       items:
+        - name: 在 VNET 中运行的自诊断
+          href: spring-cloud-howto-self-diagnose-running-in-vnet.md
         - name: 故障排除指南
           href: spring-cloud-troubleshoot.md
     - name: Migrate

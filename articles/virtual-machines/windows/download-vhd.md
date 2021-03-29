@@ -2,22 +2,22 @@
 title: 从 Azure 下载 Windows VHD
 description: 使用 Azure 门户下载 Windows VHD。
 manager: gwallace
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
 origin.date: 01/13/2019
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 36e1ad44ccbade2ed86df9a67642f28d53b46f79
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 09d332bfcfd993d4b61580c999642e28779f5759
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102053040"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603837"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>从 Azure 下载 Windows VHD
 

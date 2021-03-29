@@ -1,22 +1,22 @@
 ---
 title: 调整 Azure 中 Windows VM 的大小
 description: 更改用于 Azure 虚拟机的 VM 大小。
-ms.service: virtual-machines-windows
-ms.subservice: sizes
+ms.service: virtual-machines
+ms.collection: windows
 ms.workload: infrastructure
 ms.topic: how-to
 origin.date: 01/13/2020
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9d97a57c6a53b19368ae879bf0a64eaa240064e4
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 426c7fc6a1a077e3e6f355c085f120419eba8c0a
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93106283"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603737"
 ---
 # <a name="resize-a-windows-vm"></a>调整 Windows VM 的大小
 
@@ -123,4 +123,4 @@ $virtualMachines | Start-AzVM
 
 若要提高可伸缩性，请运行多个 VM 实例并进行横向扩展。有关详细信息，请参阅 [自动缩放虚拟机规模集中的 Windows 计算机](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

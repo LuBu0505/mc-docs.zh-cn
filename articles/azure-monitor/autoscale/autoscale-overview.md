@@ -5,14 +5,14 @@ ms.subservice: autoscale
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 09/24/2018
-ms.date: 12/08/2020
+ms.date: 03/25/2021
 ms.author: v-johya
-ms.openlocfilehash: 3ffdba9a39244b719950a04cdaa7d79362369b12
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 090dc1e4da8a3bc0d2e94959ff0188443ca48dec
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205233"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603298"
 ---
 # <a name="overview-of-autoscale-in-azure"></a>Azure 中的自动缩放概述
 本文介绍了 Azure 自动缩放是什么、其对用户的好处，以及如何开始使用它。  
@@ -93,8 +93,8 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://www.azure.cn/
 可以通过以下方式设置自动缩放：
 
 * [Azure 门户](autoscale-get-started.md)
-* [PowerShell](../samples/powershell-samples.md#create-and-manage-autoscale-settings)
-* [跨平台的命令行接口 (CLI)](../samples/cli-samples.md#autoscale)
+* [PowerShell](../powershell-samples.md#create-and-manage-autoscale-settings)
+* [跨平台的命令行接口 (CLI)](../cli-samples.md#autoscale)
 * [Azure 监视器 REST API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings)
 
 ## <a name="supported-services-for-autoscale"></a>支持进行自动缩放的服务

@@ -6,14 +6,14 @@ author: Johnnytechn
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/20/2021
+ms.date: 03/25/2021
 ms.author: v-johya
-ms.openlocfilehash: 167f427b93221f51197f2fd323932aefe062bbc0
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 75ab2df430a0cbaf85145b73b768cd5177d044df
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205042"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603225"
 ---
 # <a name="access-control"></a>访问控制
 
@@ -40,5 +40,5 @@ ms.locfileid: "102205042"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [开始](../platform/workbooks-overview.md#visualizations)详细了解工作簿丰富的可视化效果选项。
+* [开始](./workbooks-overview.md#visualizations)详细了解工作簿丰富的可视化效果选项。
 

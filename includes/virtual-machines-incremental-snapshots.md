@@ -1,5 +1,5 @@
 ---
-title: include 文件
+title: 包含文件
 description: include 文件
 services: storage
 author: rockboyfor
@@ -11,16 +11,16 @@ ms.testscope: no
 ms.testdate: 06/15/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 4ec428e812069a606c10c75f44bd14b7501eab2f
-ms.sourcegitcommit: ac70b12de243a9949bf86b81b2576e595e55b2a6
+ms.openlocfilehash: 9c8710484a9a6d28bb185dbc8951447f499d8aef
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87919373"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603827"
 ---
 <!--Verified successfully by PG team-->
 ## <a name="overview"></a>概述
-Azure 存储提供创建 Blob 快照的功能。 快照将捕获该时间点的 Blob 状态。 本文介绍有关如何使用快照维护虚拟机磁盘备份的方案。 如果选择不使用 Azure 备份和恢复服务，但想要为虚拟机磁盘创建自定义备份策略，则可以使用此方法。 对于运行业务或任务关键型工作负载的虚拟机，建议使用 [Azure 备份](/backup/backup-azure-vms-introduction)作为备份策略的一部分。  
+Azure 存储提供创建 Blob 快照的功能。 快照将捕获该时间点的 Blob 状态。 本文介绍有关如何使用快照维护虚拟机磁盘备份的方案。 如果选择不使用 Azure 备份和恢复服务，但想要为虚拟机磁盘创建自定义备份策略，则可以使用此方法。 对于运行业务或任务关键型工作负载的虚拟机，建议使用 [Azure 备份](../articles/backup/backup-azure-vms-introduction.md)作为备份策略的一部分。  
 
 Azure 虚拟机磁盘在 Azure 存储中存储为页 Blob。 本文介绍的是虚拟机磁盘的备份策略，因此，我们指的是页 Blob 上下文中的快照。 若要详细了解快照，请参阅 [创建 Blob 的快照](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)。
 
@@ -36,7 +36,7 @@ Blob 快照是在某个时间点捕获的 Blob 只读版本。 在创建快照�
 > 
 
 ### <a name="back-up-disks-using-snapshots"></a>使用快照备份磁盘
-作为虚拟机磁盘的备份策略，可以创建磁盘或页 Blob 的定期快照，并使用[复制 Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) 操作或 [AzCopy](../articles/storage/common/storage-use-azcopy.md) 之类的工具将其复制到另一个存储帐户。 可将快照复制到具有不同名称的目标页 Blob。 生成的目标页 Blob 是可编写的页 Blob，而不是快照。 本文稍后介绍使用快照创建虚拟机磁盘备份的步骤。
+作为虚拟机磁盘的备份策略，可以创建磁盘或页 Blob 的定期快照，并使用[复制 Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) 操作或 [AzCopy](../articles/storage/common/storage-use-azcopy-v10.md) 之类的工具将其复制到另一个存储帐户。 可将快照复制到具有不同名称的目标页 Blob。 生成的目标页 Blob 是可编写的页 Blob，而不是快照。 本文稍后介绍使用快照创建虚拟机磁盘备份的步骤。
 
 ### <a name="restore-disks-using-snapshots"></a>使用快照还原磁盘
 需要将磁盘还原到以前在某个备份快照中捕获的稳定版本时，可以复制一个快照来覆盖基本页 Blob。 将快照升级到基本页 Blob 之后，快照会保留，但会使用可读写的副本覆盖其源。 本文稍后介绍从快照还原旧版磁盘的步骤。
@@ -83,7 +83,7 @@ Blob 快照是在某个时间点捕获的 Blob 只读版本。 在创建快照�
 
 假设在某个 DS 系列 Azure VM 上附加了一个高级存储 P30 磁盘。 名为 *mypremiumdisk* 的 P30 磁盘存储在名为 *mypremiumaccount* 的高级存储帐户中。 名为 mybackupstdaccount  的标准存储帐户用于存储 mypremiumdisk  的备份。 我们希望每隔 12 小时保留 *mypremiumdisk* 的一个快照。
 
-要了解如何创建存储帐户，请参阅[创建存储帐户](/storage/common/storage-quickstart-create-account)。
+要了解如何创建存储帐户，请参阅[创建存储帐户](../articles/storage/common/storage-account-create.md)。
 
 若要了解如何备份 Azure VM，请参阅[规划 Azure VM 备份](../articles/backup/backup-azure-vms-introduction.md)。
 
@@ -92,7 +92,7 @@ Blob 快照是在某个时间点捕获的 Blob 只读版本。 在创建快照�
 
 1. 为高级存储磁盘创建备份页 blob，方法是拍摄名为 mypremiumdisk_ss1 的  mypremiumdisk 的快照。 
 2. 将此快照复制到 mybackupstdaccount，用作名为 *mybackupstdpageblob* 的页 Blob。
-3. 使用[创建 Blob 快照](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob)为 *mybackupstdpageblob* 创建名为 *mybackupstdpageblob_ss1* 的快照，并将其存储在 *mybackupstdaccount* 中。
+3. 使用 [创建 Blob 快照](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob)为 *mybackupstdpageblob* 创建名为 *mybackupstdpageblob_ss1* 的快照，并将其存储在 *mybackupstdaccount* 中。
 4. 在备份时段内，创建 *mypremiumdisk* 的另一个快照（即 *mypremiumdisk_ss2*），并将其存储在 *mypremiumaccount* 中。
 5. 在 **prevsnapshot** 参数设置为 mypremiumdisk_ss1  时间戳的情况下，在 mypremiumdisk_ss2  使用 [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges) 获取两个快照（mypremiumdisk_ss2  与 mypremiumdisk_ss1  ）之间的增量更改。 将这些增量更改写入到 *mybackupstdaccount* 中的备份页 Blob *mybackupstdpageblob*。 如果增量更改中有已删除的范围，则必须从备份页 Blob 中清除这些范围。 使用 [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) 将增量更改写入备份页 Blob。
 6. 为备份页 blob *mybackupstdpageblob* 创建名为 *mybackupstdpageblob_ss2* 的快照。 从高级存储帐户删除以前的快照 *mypremiumdisk_ss1*。
@@ -119,4 +119,4 @@ Blob 快照是在某个时间点捕获的 Blob 只读版本。 在创建快照�
 * [创建 Blob 的快照](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)
 * [规划 VM 备份基础结构](../articles/backup/backup-azure-vms-introduction.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link -->

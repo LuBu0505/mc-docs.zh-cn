@@ -13,17 +13,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 03/29/2018
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.author: v-jay
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 922d5db258d99b5437742e99854a6311ed198675
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 87e194947384043f0bf923cea02b5a0a75e771f4
+ms.sourcegitcommit: 308ca551066252e68198391c3e4d4b1de348deb9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697064"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105601869"
 ---
-<!--Verified the Redirect articles successfully-->
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>教程：在 Azure 虚拟机中的 SQL Server 上创建可用性组的先决条件
 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -89,7 +88,7 @@ Azure 会创建资源组，并在门户中固定资源组的快捷方式。
 
     下表显示了虚拟网络的设置：
 
-   | **字段** | Value |
+   | **字段** | 值 |
    | --- | --- |
    | **名称** |autoHAVNET |
    | **地址空间** |10.0.0.0/24 |
@@ -132,7 +131,7 @@ Azure 返回到门户仪表板，并在创建好新网络时发出通知。
 
 下表汇总了网络配置设置：
 
-| **字段** | Value |
+| **字段** | 值 |
 | --- | --- |
 | **名称** |**autoHAVNET** |
 | **地址空间** |此值取决于订阅中可用的地址空间。 典型值为 10.0.0.0/16。 |
@@ -146,7 +145,7 @@ Azure 返回到门户仪表板，并在创建好新网络时发出通知。
 
 ## <a name="create-availability-sets"></a>创建可用性集
 
-创建虚拟机前，需创建可用性集。 可用性集可减少计划内或计划外维护事件的停机时间。 Azure 可用性集是 Azure 置于物理容错域和更新域上的逻辑资源组。 容错域可确保可用性集的成员具有单独的电源和网络资源。 更新域确保可用性集的成员不会同时停机进行维护。 有关详细信息，请参阅[管理虚拟机的可用性](../../../virtual-machines/manage-availability.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
+创建虚拟机前，需创建可用性集。 可用性集可减少计划内或计划外维护事件的停机时间。 Azure 可用性集是 Azure 置于物理容错域和更新域上的逻辑资源组。 容错域可确保可用性集的成员具有单独的电源和网络资源。 更新域确保可用性集的成员不会同时停机进行维护。 有关详细信息，请参阅[管理虚拟机的可用性](../../../virtual-machines/availability.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 需要两个可用性集。 一个用于域控制器。 另一个用于 SQL Server VM。
 
@@ -186,7 +185,7 @@ Azure 返回到门户仪表板，并在创建好新网络时发出通知。
 
 下表显示了这两个虚拟机的设置：
 
-| **字段** | Value |
+| **字段** | 值 |
 | --- | --- |
 | **名称** |第一个域控制器：*ad-primary-dc*。</br>第二个域控制器 *ad-secondary-dc*。 |
 | **VM 磁盘类型** |SSD |
@@ -206,7 +205,7 @@ Azure 返回到门户仪表板，并在创建好新网络时发出通知。
 | **诊断存储帐户** |*自动创建* |
 
    >[!IMPORTANT]
-   >只能在创建 VM 时将 VM 放入可用性集。 创建 VM 后，无法更改可用性集。 请参阅[管理虚拟机的可用性](../../../virtual-machines/manage-availability.md)。
+   >只能在创建 VM 时将 VM 放入可用性集。 创建 VM 后，无法更改可用性集。 请参阅[管理虚拟机的可用性](../../../virtual-machines/availability.md)。
 
 Azure 会创建虚拟机。
 
@@ -384,7 +383,7 @@ Azure 会创建虚拟机。
 
 * **存储：Azure 托管磁盘**
 
-   将 Azure 托管磁盘用作虚拟机存储。 Microsoft 建议为 SQL Server 虚拟机使用托管磁盘。 托管磁盘在后台处理存储。 此外，当使用托管磁盘的虚拟机位于同一可用性集中时，Azure 会分发存储资源以提供适当冗余。 有关其他信息，请参阅 [Azure 托管磁盘概述](../../../virtual-machines/managed-disks-overview.md)。 有关可用性集中托管磁盘的具体信息，请参阅[为可用性集中的 VM 使用托管磁盘](../../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)。
+   将 Azure 托管磁盘用作虚拟机存储。 Microsoft 建议为 SQL Server 虚拟机使用托管磁盘。 托管磁盘在后台处理存储。 此外，当使用托管磁盘的虚拟机位于同一可用性集中时，Azure 会分发存储资源以提供适当冗余。 有关其他信息，请参阅 [Azure 托管磁盘概述](../../../virtual-machines/managed-disks-overview.md)。 有关可用性集中托管磁盘的具体信息，请参阅[为可用性集中的 VM 使用托管磁盘](../../../virtual-machines/availability.md)。
 
 * **网络：生产环境中的专用 IP 地址**
 

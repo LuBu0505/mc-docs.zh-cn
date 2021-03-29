@@ -1,17 +1,17 @@
 ---
 title: 快速入门：使用 PowerShell 将 Azure Cache for Redis 事件路由到 Web 终结点
 description: 使用 Azure 事件网格订阅 Azure Cache for Redis 事件、将事件发送到 Webhook，并处理 Web 应用中的事件。
-ms.date: 02/18/2021
+ms.date: 03/24/2021
 author: curib
 ms.author: v-junlch
 ms.topic: quickstart
 ms.service: cache
-ms.openlocfilehash: 9ea52ac0a669904477c2819d22382754484619a2
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: a50c576d9a0299586ae8abf0376b3aa042bafa91
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101751836"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602784"
 ---
 # <a name="quickstart-route-azure-cache-for-redis-events-to-web-endpoint-with-powershell"></a>快速入门：使用 PowerShell 将 Azure Cache for Redis 事件路由到 Web 终结点
 
@@ -73,7 +73,7 @@ New-AzRedisCache
    [-Confirm]
    [<CommonParameters>]
 ```
-若要详细了解如何在 PowerShell 中创建缓存实例，请查看 [Azure PowerShell 参考](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache?view=azps-5.2.0)。 
+若要详细了解如何在 PowerShell 中创建缓存实例，请查看 [Azure PowerShell 参考](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache)。 
 
 ## <a name="create-a-message-endpoint"></a>创建消息终结点
 
@@ -132,7 +132,7 @@ Import-AzRedisCache
       [-Confirm]
       [<CommonParameters>]
 ```
-若要详细了解如何在 PowerShell 中导入内容，请查看 [Azure PowerShell 参考](https://docs.microsoft.com/powershell/module/az.rediscache/import-azrediscache?view=azps-5.2.0)。 
+若要详细了解如何在 PowerShell 中导入内容，请查看 [Azure PowerShell 参考](https://docs.microsoft.com/powershell/module/az.rediscache/import-azrediscache)。 
 
 现已触发事件，并且事件网格已将消息发送到订阅时配置的终结点。 查看 Web 应用以查看刚刚发送的事件。
 

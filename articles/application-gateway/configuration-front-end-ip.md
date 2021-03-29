@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 01/11/2021
+ms.date: 03/24/2021
 ms.author: v-junlch
-ms.openlocfilehash: 34545cf47e3f548101eab683bb4dfca4023d8622
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: 7a5147c939135a71859b0cab10bd9818fc824813
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195188"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602602"
 ---
 # <a name="application-gateway-front-end-ip-address-configuration"></a>应用程序网关前端 IP 地址配置
 
@@ -30,7 +30,7 @@ ms.locfileid: "98195188"
 
 不向 Internet 公开的内部终结点不需要公共 IP 地址。 该终结点称为内部负载均衡器 (ILB) 终结点或专用前端 IP。 应用程序网关 ILB 适合用于不向 Internet 公开的内部业务线应用程序。 对于位于不向 Internet 公开的安全边界内的多层级应用程序中的服务和层级，ILB 也很有用，但需要启用轮循机制负载分配、会话粘性或 TLS 终止。
 
-仅支持一个公共 IP 地址或一个专用 IP 地址。 在创建应用程序网关时选择前端 IP。
+仅支持一个公共 IP 地址和一个专用 IP 地址。 在创建应用程序网关时选择前端 IP。
 
 - 对于公共 IP 地址，可以在应用程序网关所在的位置创建新的公共 IP 地址或使用现有的公共 IP。 有关详细信息，请参阅[静态与动态公共 IP 地址](./application-gateway-components.md#static-versus-dynamic-public-ip-address)。
 
@@ -41,4 +41,3 @@ ms.locfileid: "98195188"
 ## <a name="next-steps"></a>后续步骤
 
 - [了解侦听器配置](configuration-listeners.md)
-

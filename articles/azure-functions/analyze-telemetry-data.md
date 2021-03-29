@@ -2,14 +2,14 @@
 title: 在 Application Insights 中分析 Azure Functions 遥测数据
 description: 本文介绍了如何查看和查询由 Azure Application Insights 收集并存储在其中的 Azure Functions 遥测数据。
 ms.topic: how-to
-ms.date: 02/26/2021
+ms.date: 03/22/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: aac3124ba800f9db7bcd82b13e5b8580f254ac92
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 585fcc04186caaf245de739328bc0a18a645b639
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697707"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602807"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>在 Application Insights 中分析 Azure Functions 遥测数据 
 
@@ -64,12 +64,12 @@ Azure Functions 与 Application Insights 集成，以用于更好地监视函数
 | ---- | ----------- |
 | **[失败](../azure-monitor/app/asp-net-exceptions.md)** |  基于函数失败和服务器异常来创建图表和警报。 操作名称是函数名称。 不显示依赖项中的失败，除非为依赖项实现了自定义遥测。 |
 | **[性能](../azure-monitor/app/performance-counters.md)** | 通过查看每个 Cloud 角色实例的资源利用率和吞吐量来分析性能问题。 如果要针对函数阻碍基础资源正常工作的情况进行调试，此性能数据会很有用。 |
-| **[指标](../azure-monitor/platform/metrics-charts.md)** | 创建基于指标的图表和警报。 指标包括函数调用次数、执行时间和成功率。 |
+| **[指标](../azure-monitor/essentials/metrics-charts.md)** | 创建基于指标的图表和警报。 指标包括函数调用次数、执行时间和成功率。 |
 | **[实时指标：](../azure-monitor/app/live-stream.md)** | 随着指标数据的创建，近实时地查看指标数据。 |
 
 ## <a name="query-telemetry-data"></a>查询遥测数据
 
-借助 [Application Insights Analytics](../azure-monitor/log-query/log-query-overview.md)，便可以访问数据库中以表形式存储的所有遥测数据。 Analytics 提供了一种用于提取、处理和可视化数据的查询语言。 
+借助 [Application Insights Analytics](../azure-monitor/logs/log-query-overview.md)，便可以访问数据库中以表形式存储的所有遥测数据。 Analytics 提供了一种用于提取、处理和可视化数据的查询语言。 
 
 选择“日志”以浏览或查询记录的事件。
 
@@ -142,14 +142,14 @@ traces
 
 ## <a name="azure-monitor-metrics"></a>Azure Monitor 指标
 
-除了 Application Insights 收集的遥测数据外，还可以从 [Azure Monitor 指标](../azure-monitor/platform/data-platform-metrics.md)获取有关函数应用运行方式的数据。 除了通常[可用于 App 服务应用](../app-service/web-sites-monitor.md#understand-metrics)的指标外，还有两个特定于相关函数的指标：
+除了 Application Insights 收集的遥测数据外，还可以从 [Azure Monitor 指标](../azure-monitor/essentials/data-platform-metrics.md)获取有关函数应用运行方式的数据。 除了通常[可用于 App 服务应用](../app-service/web-sites-monitor.md#understand-metrics)的指标外，还有两个特定于相关函数的指标：
 
 | 指标 | 说明 |
 | ---- | ---- |
 | **FunctionExecutionCount** | 函数执行计数表示函数应用已执行的次数。 这与函数在应用中运行的次数相关。 此指标目前不支持在 Linux 上运行的高级和专用（App 服务）计划。 |
 | **FunctionExecutionUnits** | 函数执行单位由执行次数和内存使用组成。  目前无法通过 Azure Monitor 获取内存数据这一指标。 但是，如果要优化应用的内存用量，可以使用 Application Insights 收集的性能计数器数据。 此指标目前不支持在 Linux 上运行的高级和专用（App 服务）计划。|
 
-若要详细了解如何使用 Application Insights 数据计算消耗计划的成本，请参阅[估计消耗计划成本](functions-consumption-costs.md)。 若要详细了解如何使用监视器资源管理器查看指标，请参阅 [Azure 指标资源管理器入门](../azure-monitor/platform/metrics-getting-started.md)。
+若要详细了解如何使用 Application Insights 数据计算消耗计划的成本，请参阅[估计消耗计划成本](functions-consumption-costs.md)。 若要详细了解如何使用监视器资源管理器查看指标，请参阅 [Azure 指标资源管理器入门](../azure-monitor/essentials/metrics-getting-started.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -158,4 +158,3 @@ traces
 
 + [监视 Azure Functions](functions-monitoring.md)
 + [如何配置对 Azure Functions 的监视](configure-monitoring.md)
-

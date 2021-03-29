@@ -1,21 +1,21 @@
 ---
 title: Azure PowerShell - 使用 SSE 启用客户管理的密钥 - 托管磁盘
 description: 使用 Azure PowerShell 在托管磁盘上通过客户管理的密钥启用服务器端加密。
-origin.date: 08/24/2020
+origin.date: 03/02/2021
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/29/2021
 ms.testscope: no
 ms.testdate: ''
 ms.topic: how-to
 ms.author: v-yeche
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 10e0ab8c6bd104b301b9dee3a441eac602725de7
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: eca955c85e4f28e6b804e9fb17342b5e747275cc
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857120"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603841"
 ---
 <!--Verified successfully-->
 <!--Partial content from verified article-->
@@ -33,11 +33,55 @@ Azure 磁盘存储使你能在对托管磁盘使用服务器端加密 (SSE) 时�
 
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../../../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
 
-## <a name="set-up-your-azure-key-vault-and-diskencryptionset"></a>设置 Azure Key Vault 和 DiskEncryptionSet 资源
+## <a name="set-up-an-azure-key-vault-and-diskencryptionset-without-automatic-key-rotation"></a>在没有自动密钥轮换的情况下设置 Azure Key Vault DiskEncryptionSet
 
 若要使用客户管理的密钥进行 SSE，必须设置 Azure Key Vault 和 DiskEncryptionSet 资源。
 
 [!INCLUDE [virtual-machines-disks-encryption-create-key-vault-powershell](../../../includes/virtual-machines-disks-encryption-create-key-vault-powershell.md)]
+
+<!--Verified successfully on 03/25/2021 about Preview feature-->
+
+## <a name="set-up-an-azure-key-vault-and-diskencryptionset-with-automatic-key-rotation-preview"></a>在有自动密钥轮换的情况下设置 Azure Key Vault DiskEncryptionSet（预览）
+
+1. 请确保已安装最新的 [Azure PowerShell 版本](https://docs.microsoft.com/powershell/azure/install-az-ps)，并已使用 `Connect-AzAccount -Environment AzureChinaCloud` 登录到 Azure 帐户。
+1. 创建 Azure Key Vault 和加密密钥的实例。
+
+    创建 Key Vault 实例时，必须启用清除保护。 清除保护可确保在保留期结束之前，无法永久删除已删除的密钥。 此设置可保护你免于因意外删除而丢失数据，并且对于加密托管磁盘是必需的。
+
+    ```powershell
+    $ResourceGroupName="yourResourceGroupName"
+    $LocationName="chinaeast"
+    $keyVaultName="yourKeyVaultName"
+    $keyName="yourKeyName"
+    $keyDestination="Software"
+    $diskEncryptionSetName="yourDiskEncryptionSetName"
+
+    $keyVault = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $ResourceGroupName -Location $LocationName -EnablePurgeProtection
+
+    $key = Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName -Destination $keyDestination  
+    ```
+
+1. 使用 API 版本 `2020-12-01` 和通过 Azure 资源管理器模板 [CreateDiskEncryptionSetWithAutoKeyRotation.json](https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/AutoKeyRotation/CreateDiskEncryptionSetWithAutoKeyRotation.json) 将属性 `rotationToLatestKeyVersionEnabled` 设置为 true，来创建 DiskEncryptionSet
+
+    ```powershell
+    New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName `
+    -TemplateUri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/AutoKeyRotation/CreateDiskEncryptionSetWithAutoKeyRotation.json" `
+    -diskEncryptionSetName $diskEncryptionSetName `
+    -keyVaultId $($keyVault.ResourceId) `
+    -keyVaultKeyUrl $($key.Key.Kid) `
+    -encryptionType "EncryptionAtRestWithCustomerKey" `
+    -region $LocationName
+    ```
+
+1. 授予对密钥保管库的 DiskEncryptionSet 资源访问权限。
+
+    > [!NOTE]
+    > Azure 可能需要几分钟时间才能在 Azure Active Directory 中创建 DiskEncryptionSet 的标识。 如果在运行以下命令时收到类似于“找不到 Active Directory 对象”的错误，请等待几分钟，然后重试。
+
+    ```powershell
+    $des=Get-AzDiskEncryptionSet -Name $diskEncryptionSetName -ResourceGroupName $ResourceGroupName
+    Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $des.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
+    ```
 
 ## <a name="examples"></a>示例
 
@@ -198,4 +242,4 @@ Update-AzDiskEncryptionSet -Name $diskEncryptionSetName -ResourceGroupName $Reso
 - [使用 PowerShell 设置 VMware VM 到 Azure 的灾难恢复](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
 - [使用 PowerShell 和 Azure 资源管理器为 Hyper-V VM 设置到 Azure 的灾难恢复](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

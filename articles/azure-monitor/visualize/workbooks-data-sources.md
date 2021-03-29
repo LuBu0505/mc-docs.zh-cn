@@ -8,14 +8,14 @@ manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/20/2021
+ms.date: 03/25/2021
 ms.author: v-johya
-ms.openlocfilehash: c1a338eb8e4e4a980a27320557cff7fc2a039a0e
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 83c9c248ba62da4d5f018731cddaeedd7d6a815b
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205910"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603394"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitor 工作簿数据源
 
@@ -36,7 +36,7 @@ ms.locfileid: "102205910"
 
 ## <a name="metrics"></a>指标
 
-Azure 资源发出可以通过工作簿访问的[指标](../platform/data-platform-metrics.md)。 可以在工作簿中通过一个专用控件访问指标，该控件可让你指定目标资源、所需指标和聚合。 然后，可以在图表或网格中绘制这些数据。
+Azure 资源发出可以通过工作簿访问的[指标](../essentials/data-platform-metrics.md)。 可以在工作簿中通过一个专用控件访问指标，该控件可让你指定目标资源、所需指标和聚合。 然后，可以在图表或网格中绘制这些数据。
 
 ![CPU 利用率工作簿指标图表的屏幕截图](./media/workbooks-data-sources/metrics-graph.png)
 
@@ -116,7 +116,7 @@ Azure Monitor 提供主动监视 Windows 或 Linux 来宾操作系统可用性�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [开始](../platform/workbooks-overview.md#visualizations)详细了解工作簿丰富的可视化效果选项。
-* [控制](../platform/workbooks-access-control.md)并共享对工作簿资源的访问权限。
-* [Log Analytics 查询优化提示](../log-query/query-optimization.md)
+* [开始](./workbooks-overview.md#visualizations)详细了解工作簿丰富的可视化效果选项。
+* [控制](./workbooks-access-control.md)并共享对工作簿资源的访问权限。
+* [Log Analytics 查询优化提示](../logs/query-optimization.md)
 

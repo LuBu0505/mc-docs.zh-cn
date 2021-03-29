@@ -2,14 +2,14 @@
 title: 停机时间、SLA 和中断工作簿 - Application Insights
 description: 通过 Application Insights 资源和 Azure 订阅中的单一管理平台计算和报告 Web 测试的 SLA。
 ms.topic: conceptual
-ms.date: 02/24/2021
+ms.date: 03/25/2021
 ms.author: v-johya
-ms.openlocfilehash: 443f1a1636d4744c076b587316c7e50dd03cff1a
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 49947407cc1686b69e95e0c19f651f5fefa3be80
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205537"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603078"
 ---
 # <a name="downtime-sla-and-outages-workbook"></a>停机时间、SLA 和中断工作簿
 
@@ -50,12 +50,12 @@ ms.locfileid: "102205537"
 
 ## <a name="edit-the-report"></a>编辑报表
 
-可以像任何其他 [Azure Monitor 工作簿](../platform/workbooks-overview.md)一样编辑报告。 可以根据团队需求自定义查询或可视化效果。
+可以像任何其他 [Azure Monitor 工作簿](../visualize/workbooks-overview.md)一样编辑报告。 可以根据团队需求自定义查询或可视化效果。
 
 <!--Not available in MC: gif-->
 ### <a name="log-analytics"></a>Log Analytics
 
-可以在 [Log Analytics](../log-query/log-analytics-overview.md) 中运行所有查询，并在其他报表或仪表板中使用这些查询。 删除参数限制并重用核心查询。
+可以在 [Log Analytics](../logs/log-analytics-overview.md) 中运行所有查询，并在其他报表或仪表板中使用这些查询。 删除参数限制并重用核心查询。
 
 <!--Not available in MC: gif-->
 ## <a name="access-and-sharing"></a>访问和共享
@@ -66,6 +66,6 @@ ms.locfileid: "102205537"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Log Analytics 查询优化提示](../log-query/query-optimization.md)。
-- 了解如何[在工作簿中创建图表](../platform/workbooks-chart-visualizations.md)。
+- [Log Analytics 查询优化提示](../logs/query-optimization.md)。
+- 了解如何[在工作簿中创建图表](../visualize/workbooks-chart-visualizations.md)。
 

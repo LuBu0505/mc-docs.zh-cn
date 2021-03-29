@@ -1,27 +1,22 @@
 ---
 title: 适用于 Linux 的 Log Analytics 虚拟机扩展
 description: 使用虚拟机扩展在 Linux 虚拟机上部署 Log Analytics 代理。
-services: virtual-machines-linux
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: c7bbf210-7d71-4a37-ba47-9c74567a9ea6
-ms.service: virtual-machines-linux
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.collection: linux
 origin.date: 02/18/2020
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 12a5242215893b6c33d552e0598de89bec9a9992
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 16559e1b2166740a5da6169de5d1e0efb7316e46
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055296"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603179"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Log Analytics 虚拟机扩展
 
@@ -29,12 +24,8 @@ ms.locfileid: "102055296"
 
 Azure Monitor 日志提供跨云和本地资产的监视、警报和警报修正功能。 适用于 Linux 的 Log Analytics 虚拟机扩展由 Azure 发布并提供支持。 该扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Log Analytics 工作区中。 本文档详细介绍适用于 Linux 的 Log Analytics 虚拟机扩展支持的平台、配置和部署选项。
 
-<!--MOONCAKE: CORRECT ON supported by Azure-->
-
->[!NOTE]
->从 Microsoft Operations Management Suite (OMS) 过渡到 Azure Monitor 期间，Windows 或 Linux 的 OMS 代理称为 Windows 或 Linux 的 Log Analytics 代理。
-
-<!--MOONCAKE: CORRECT ON Microsoft Operations Management Suite-->
+> [!NOTE]
+> 从 Microsoft Operations Management Suite (OMS) 过渡到 Azure Monitor 期间，Windows 或 Linux 的 OMS 代理称为 Windows 或 Linux 的 Log Analytics 代理。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -42,10 +33,10 @@ Azure Monitor 日志提供跨云和本地资产的监视、警报和警报修正
 
 ### <a name="operating-system"></a>操作系统
 
-有关支持的 Linux 发行版的详细信息，请参阅 [Azure Monitor 代理的概述](../../azure-monitor/platform/agents-overview.md#supported-operating-systems)一文。
+有关支持的 Linux 发行版的详细信息，请参阅 [Azure Monitor 代理的概述](../../azure-monitor/agents/agents-overview.md#supported-operating-systems)一文。
 
-<!--Not Available on version 5 of Red Hat Enterprise Linux-->
-<!--Not Avaialble on , and Oracle Linux version-->
+<!--NOT AVAILABLE ON version 5 of Red Hat Enterprise Linux-->
+<!--NOT AVAILABLE ON , and Oracle Linux version-->
 
 ### <a name="agent-and-vm-extension-version"></a>代理和 VM 扩展版本
 下表提供每次发布的 Log Analytics VM 扩展和 Log Analytics 代理捆绑包的版本映射。 并附有 Log Analytics 代理捆绑包版本的发行说明链接。 发行说明包括有关可用于给定代理版本的 bug 修补程序和新功能的详细信息。  
@@ -84,7 +75,7 @@ Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订�
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示 Log Analytics 代理扩展的架构。 此扩展需要目标 Log Analytics 工作区的工作区 ID 和工作区密钥，这些值可在 Azure 门户中的 [Log Analytics](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key) 工作区中找到。 由于工作区密钥应视为敏感数据，因此将它存储在受保护的设置配置中。 Azure VM 扩展的受保护设置数据已加密，并且只能在目标虚拟机上解密。 请注意，**workspaceId** 和 **workspaceKey** 区分大小写。
+以下 JSON 显示 Log Analytics 代理扩展的架构。 此扩展需要目标 Log Analytics 工作区的工作区 ID 和工作区密钥，这些值可在 Azure 门户中的 [Log Analytics](../../azure-monitor/vm/quick-collect-linux-computer.md#obtain-workspace-id-and-key) 工作区中找到。 由于工作区密钥应视为敏感数据，因此将它存储在受保护的设置配置中。 Azure VM 扩展的受保护设置数据已加密，并且只能在目标虚拟机上解密。 请注意，**workspaceId** 和 **workspaceKey** 区分大小写。
 
 ```json
 {
@@ -210,7 +201,7 @@ az vm extension set \
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure CLI 运行以下命令。
 
@@ -239,7 +230,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 | 53 | 由于配置参数缺失或错误，此扩展失败 | 若要详细了解错误原因，请查看输出和日志。 此外，检查工作区 ID 的正确性，并验证计算机是否连接到 Internet。 |
 | 55 | 无法连接到 Azure Monitor 服务或缺少所需的包或 dpkg 包管理器已锁定| 确保系统具有 Internet 访问权限，或已提供有效 HTTP 代理。 此外，检查工作区 ID 的正确性，并验证是否已安装 curl 和 tar 实用程序。 |
 
-有关其他故障排除信息，可查看 [Log Analytics-Agent-for-Linux 故障排除指南](../../azure-monitor/platform/vmext-troubleshoot.md)。
+有关其他故障排除信息，可查看 [Log Analytics-Agent-for-Linux 故障排除指南](../../azure-monitor/visualize/vmext-troubleshoot.md)。
 
 ### <a name="support"></a>支持
 

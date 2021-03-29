@@ -1,19 +1,18 @@
 ---
 title: Azure Monitor 中的监视解决方案 | Azure Docs
 description: Azure Monitor 中的监视解决方案是逻辑、可视化效果和数据采集规则的集合，提供围绕特定问题领域制定的指标。  本文提供了有关安装和使用监视解决方案的信息。
-ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
 origin.date: 08/13/2019
-ms.date: 02/22/2021
+ms.date: 03/24/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: c00d0cec31e251820592767ad03849f47b6f2be5
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: c2bde4c93c7f04f933aac03e46a5b175e7cca651
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197236"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603299"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的监视解决方案
 

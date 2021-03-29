@@ -5,14 +5,14 @@ author: MikeDodaro
 ms.author: v-junlch
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 12/28/2020
+ms.date: 03/23/2021
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: e048be1f11454feb56a94edd64b39a15b4caca23
-ms.sourcegitcommit: a37f80e7abcf3e42859d6ff73abf566efed783da
+ms.openlocfilehash: f91a152f63a3176338de5c78917e09535ffc0a8a
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829436"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602841"
 ---
 # <a name="set-up-autoscale-for-microservice-applications"></a>为微服务应用程序设置自动缩放功能
 
@@ -70,6 +70,5 @@ ms.locfileid: "97829436"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure 中的自动缩放概述](../azure-monitor/platform/autoscale-overview.md)
-* [Azure CLI 监视自动缩放](/cli/monitor/autoscale?preserve-view=true&view=azure-cli-latest)
-
+* [Azure 中的自动缩放概述](../azure-monitor/autoscale/autoscale-overview.md)
+* [Azure CLI 监视自动缩放](/cli/monitor/autoscale)

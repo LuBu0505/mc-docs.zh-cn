@@ -1,21 +1,20 @@
 ---
 title: Azure Monitor 日志查询中的计算机组 | Azure Docs
 description: 使用 Azure Monitor 中的计算机组可为一组特定的计算机设定日志查询的范围。  本文介绍用于创建计算机组的不同方法以及如何在日志查询中使用这些方法。
-ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 12/08/2020
+ms.date: 03/23/2021
 origin.date: 02/05/2019
-ms.openlocfilehash: 9f636033234487a0edc568c47efade50b20a8c05
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: e7172a6028c7b644891657350f4e78357aa2651f
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205279"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603634"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的计算机组
-使用 Azure Monitor 中的计算机组可为一组特定的计算机设定[日志查询](../log-query/log-query-overview.md)的范围。  每个组使用定义的查询或通过从不同源导入组填充计算机。  当日志查询中包括组时，结果仅限于与组中的计算机匹配的记录。
+使用 Azure Monitor 中的计算机组可为一组特定的计算机设定[日志查询](./log-query-overview.md)的范围。  每个组使用定义的查询或通过从不同源导入组填充计算机。  当日志查询中包括组时，结果仅限于与组中的计算机匹配的记录。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -49,7 +48,7 @@ Heartbeat | where Computer contains "srv" | distinct Computer
 
 下表介绍了用于定义计算机组的属性。
 
-| properties | 说明 |
+| properties | 描述 |
 |:---|:---|
 | 名称   | 要在门户中显示的查询名称。 |
 | 函数别名 | 查询中用于标识计算机组的唯一别名。 |
@@ -136,6 +135,5 @@ let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Gro
 | `TimeGenerated` |创建或更新计算机组的日期和时间。 |
 
 ## <a name="next-steps"></a>后续步骤
-* 了解[日志查询](../log-query/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。  
-
+* 了解[日志查询](./log-query-overview.md)以便分析从数据源和解决方案中收集的数据。
 

@@ -1,28 +1,28 @@
 ---
 title: 教程 - 使用 Azure PowerShell 创建自定义 VM 映像
 description: 本教程介绍如何使用 Azure PowerShell 创建一个存储在 Azure 共享映像库中的 Windows 自定义虚拟机映像。
-ms.service: virtual-machines-windows
-ms.subservice: imaging
+ms.service: virtual-machines
+ms.subservice: shared-image-gallery
 ms.topic: tutorial
 ms.workload: infrastructure
 origin.date: 05/01/2020
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: ab571ec849e788c8acce41342ec2bdee548f69d3
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: e3245bc7a2d3e2df556bfcf4a1e60d34b1f73b8c
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055246"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603590"
 ---
 <!--Verified Successfully-->
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建 Windows VM 映像
 
-映像可用于启动部署并确保多个 VM 的一致性。 在本教程中，我们使用 PowerShell 创建自己的 Azure 虚拟机专用化映像，并将其存储在共享映像库中。 你将学习如何执行以下操作：
+映像可用于启动部署并确保多个 VM 的一致性。 在本教程中，我们使用 PowerShell 创建自己的 Azure 虚拟机专用化映像，并将其存储在共享映像库中。 学习如何：
 
 > [!div class="checklist"]
 > * 创建共享映像库
@@ -49,7 +49,7 @@ ms.locfileid: "102055246"
 
 ## <a name="launch-azure-local-shell"></a>启动 Azure 本地 Shell
 
-<!--Not Available on Azure Cloud Cloud--> 
+<!--NOT AVAILABLE ON Azure Cloud Cloud--> 
 
 打开 Azure Powershell 控制台，并以管理员权限运行下面列出的脚本。
 
@@ -206,7 +206,7 @@ Remove-AzResourceGroup -Name myGalleryRG
 Remove-AzResourceGroup -Name myResoureceGroup
 ```
 
-<!--Not Available on ## Azure Image Builder-->
+<!--NOT AVAILABLE ON ## Azure Image Builder-->
 <!--NOT AVAILABLE ON [Azure VM Image Builder](../image-builder-overview.md)-->
 
 ## <a name="next-steps"></a>后续步骤

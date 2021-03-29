@@ -1,21 +1,23 @@
 ---
 title: Windows Server 的 Azure 混合权益
 description: 了解如何充分利用 Windows 软件保障权益将本地许可证引入到 Azure 中。
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: azure-hybrid-benefit
+ms.collection: windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 origin.date: 04/22/2018
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
-ms.openlocfilehash: efea24ed9e37605f9afb5c6b946f63663a805c57
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: d5e5be03912781c57549cd40f83060c7bc7aed12
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054391"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603826"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 的 Azure 混合权益
 对于有软件保障的客户，Windows Server 的 Azure 混合权益可让你使用本地 Windows Server 许可证，并以较低成本在 Azure 中运行 Windows 虚拟机。 可以使用 Windows Server 的 Azure 混合权益部署 Windows OS 的新虚拟机。 本文介绍如何使用 Windows Server 的 Azure 混合权益部署新的 VM 的步骤，以及如何更新现有正在运行的 VM 的步骤。 有关 Windows Server 的 Azure 混合权益许可和成本节约方面的更多信息，请参阅[“Windows Server 的 Azure 混合权益许可”页](https://www.azure.cn/pricing/hybrid-benefit//)。
@@ -65,7 +67,7 @@ az vm create \
     --license-type Windows_Server
 ```
 
-<!-- Add --image Win2016Datacenter -->
+<!--CORRECT ON Add --image Win2016Datacenter -->
 
 ### <a name="template"></a>模板
 在资源管理器模板中，必须指定附加参数 `licenseType`。 可以阅读有关[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)的详细信息
@@ -104,8 +106,8 @@ az vm create \
     Update-AzVM -ResourceGroupName rg-name -VM $vm
     ```
     
-    <!-- Verify successfully-->
-    <!-- pay-in-advance with None, hybrid benefit with Windows_Server-->
+    <!--Verify successfully-->
+    <!--pay-in-advance with None, hybrid benefit with Windows_Server-->
 
 ### <a name="cli"></a>CLI
 - 将现有 Windows Server VM 转换为 Windows Server 的 Azure 混合权益
@@ -142,16 +144,16 @@ LicenseType              :
 
 ### <a name="cli"></a>CLI
 
-<!-- Should be --query licenseType-->
-<!-- MOONCAKE: CUSTOMIZED ON MUST BE --query licenseType-->
-<!-- MUST BE az vm get-instance-view -g MyResourceGroup -n MyVM --query licenseType -o table-->
+<!--Mandatory --query licenseType-->
+<!--MOONCAKE: CUSTOMIZED ON MUST BE --query licenseType-->
+<!--MUST BE az vm get-instance-view -g MyResourceGroup -n MyVM --query licenseType -o table-->
 
 ```azurecli
 az vm get-instance-view -g MyResourceGroup -n MyVM --query licenseType -o table
 ```
 
-<!-- MUST BE az vm get-instance-view -g MyResourceGroup -n MyVM --query licenseType -o table-->
-<!-- MOONCAKE: CUSTOMIZED ON MUST BE --query licenseType-->
+<!--MUST BE az vm get-instance-view -g MyResourceGroup -n MyVM --query licenseType -o table-->
+<!--MOONCAKE: CUSTOMIZED ON MUST BE --query licenseType-->
 
 > [!NOTE]
 > 更改 VM 上的许可证类型不会导致系统重新启动，也不会导致服务中断。 它仅是元数据许可标志。
@@ -171,16 +173,16 @@ $vms | ?{$_.LicenseType -like "Windows_Server"} | select ResourceGroupName, Name
 
 ### <a name="cli"></a>CLI
 
-<!-- MOONCAKE: CUSTOMIZED ON MUST BE --query licenseType-->
-<!-- Must be "[?licenseType=='Windows_Server']"-->
-<!-- Must be az vm list --query "[?licenseType=='Windows_Server']" -o table-->
+<!--Mandatory: CUSTOMIZED ON MUST BE --query licenseType-->
+<!--Must be "[?licenseType=='Windows_Server']"-->
+<!--Must be az vm list --query "[?licenseType=='Windows_Server']" -o table-->
 
 ```azurecli
 az vm list --query "[?licenseType=='Windows_Server']" -o table
 ```
 
 <!-- Must be "[?licenseType=='Windows_Server']"-->
-<!-- MOONCAKE: CUSTOMIZED ON MUST BE --query licenseType-->
+<!--Mandatory: CUSTOMIZED ON MUST BE --query licenseType-->
 
 ## <a name="deploy-a-virtual-machine-scale-set-with-azure-hybrid-benefit-for-windows-server"></a>使用 Windows Server 的 Azure 混合权益部署虚拟机规模集
 在虚拟机规模集资源管理器模板内，必须在 VirtualMachineProfile 属性中指定额外参数 `licenseType`。 可以通过 ARM 模板、PowerShell、Azure CLI 或 REST，在为规模集创建或更新期间执行此操作。

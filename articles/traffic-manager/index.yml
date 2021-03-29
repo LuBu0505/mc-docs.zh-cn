@@ -10,16 +10,16 @@ metadata:
   ms.collection: collection
   origin.date: 08/19/2019
   author: rockboyfor
-  ms.date: 02/22/2021
+  ms.date: 03/29/2021
   ms.testscope: yes
   ms.testdate: 09/28/2020
   ms.author: v-yeche
-  ms.openlocfilehash: 0100ab8d3c025f404552fa04313238123a8edb0c
-  ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+  ms.openlocfilehash: ab3d6bf61e36404a7bdd4e4443b5430f1793dc99
+  ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102055225"
+  ms.lasthandoff: 03/26/2021
+  ms.locfileid: "105603212"
 landingContent:
 - title: 关于流量管理器
   linkLists:

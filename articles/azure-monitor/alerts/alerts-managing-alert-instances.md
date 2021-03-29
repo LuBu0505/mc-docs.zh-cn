@@ -1,22 +1,21 @@
 ---
 title: 在 Azure Monitor 中管理警报实例
 description: 管理整个 Azure 中的警报实例
-ms.subservice: alerts
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 05/30/2019
-ms.date: 02/20/2021
+ms.date: 03/22/2021
 ms.author: v-johya
-ms.openlocfilehash: 01afefc1676a231de4e79381fb1c23b7cdc68231
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: d265f2970946f6da1242c6ab3473f1718cc8e68d
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205103"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603616"
 ---
 # <a name="manage-alert-instances-with-unified-alerts"></a>使用统一警报管理警报实例
 
-使用 Azure Monitor 中的[统一警报体验](../platform/alerts-overview.md)，可以看到 Azure 中的所有不同类型的警报。 这些警报来自多个订阅，显示在单个窗格中。 本文介绍了如何查看警报实例以及如何查找特定的警报实例以进行故障排除。
+使用 Azure Monitor 中的[统一警报体验](./alerts-overview.md)，可以看到 Azure 中的所有不同类型的警报。 这些警报来自多个订阅，显示在单个窗格中。 本文介绍了如何查看警报实例以及如何查找特定的警报实例以进行故障排除。
 
 > [!NOTE]
 > 只能访问过去 30 天内生成的警报。

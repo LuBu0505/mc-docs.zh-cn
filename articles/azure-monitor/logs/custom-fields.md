@@ -2,25 +2,24 @@
 title: Azure Monitor（预览版）中的自定义字段 | Microsoft Docs
 description: Azure Monitor 的“自定义字段”功能，使你可以基于添加到已收集记录的属性的 Log Analytics 工作区中的记录创建自己的可搜索字段。  本文介绍了创建自定义字段的过程，并通过示例事件提供详细的演练。
 origin.date: 08/23/2019
-ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
-ms.openlocfilehash: 821b1b7ba52f9829d6ba1ada9857e85f65d3d84e
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/23/2021
+ms.openlocfilehash: 727867e4fad8817bab7b76a1ba4d7c7a5caad460
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205301"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603645"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>在 Azure Monitor（预览版）的 Log Analytics 工作区中创建自定义字段
 
 > [!NOTE]
-> 本文介绍如何在收集 Log Analytics 工作区时解析文本数据。 我们建议按照[在 Azure Monitor 中分析文本数据](../log-query/parse-text.md)中所述的指南，收集数据后在查询筛选器中分析文本数据。 与使用自定义字段相比，它提供了几个优点。
+> 本文介绍如何在收集 Log Analytics 工作区时解析文本数据。 我们建议按照[在 Azure Monitor 中分析文本数据](./parse-text.md)中所述的指南，收集数据后在查询筛选器中分析文本数据。 与使用自定义字段相比，它提供了几个优点。
 
 > [!IMPORTANT]
-> 自定义字段增加了 Log Analytics 工作区中收集的数据量，这可能会增加成本。 有关详细信息，请参阅[通过 Azure Monitor 日志管理使用情况和成本](../platform/manage-cost-storage.md#pricing-model)。
+> 自定义字段增加了 Log Analytics 工作区中收集的数据量，这可能会增加成本。 有关详细信息，请参阅[通过 Azure Monitor 日志管理使用情况和成本](./manage-cost-storage.md#pricing-model)。
 
 Azure Monitor 的 **自定义字段** 功能使你可以通过添加自己的可搜索字段来扩展 Log Analytics 工作区中的现有记录。  自定义字段会自动填充，填充的数据从同一记录的其他属性中提取。
 
@@ -43,9 +42,9 @@ Azure Monitor 的 **自定义字段** 功能使你可以通过添加自己的可
 > 
 
 ### <a name="step-1---identify-records-that-will-have-the-custom-field"></a>步骤 1 – 确定将具有自定义字段的记录
-第一步是确定会获得自定义字段的记录。  首先执行[标准日志查询](../log-query/log-query-overview.md)，然后选择要充当模型的记录，Azure Monitor 将通过该模型进行学习。  当指定要将数据提取到自定义字段中时，“字段提取向导”会打开，可以在其中验证和优化条件。
+第一步是确定会获得自定义字段的记录。  首先执行[标准日志查询](./log-query-overview.md)，然后选择要充当模型的记录，Azure Monitor 将通过该模型进行学习。  当指定要将数据提取到自定义字段中时，“字段提取向导”会打开，可以在其中验证和优化条件。
 
-1. 转到“日志”，然后使用[查询来检索记录](../log-query/log-query-overview.md)（将具有自定义字段的记录）。
+1. 转到“日志”，然后使用[查询来检索记录](./log-query-overview.md)（将具有自定义字段的记录）。
 2. 选择 Log Analytics 将用作模型的记录，以便 Log Analytics 学习如何提取要填充到自定义字段中的数据。  确定要从该记录中提取的数据，然后 Log Analytics 将使用此信息为所有类似记录确定自定义字段的填充逻辑。
 3. 展开记录属性，单击该记录的顶部属性左侧的省略号，然后选择“字段提取自”。
 4. 将打开“字段提取向导”，所选记录会显示在“主示例”列中。  将为所选属性中具有相同值的记录定义自定义字段。  
@@ -129,7 +128,6 @@ Azure Monitor 的 **自定义字段** 功能使你可以通过添加自己的可
 ![按查询分组](./media/custom-fields/query-group.png)
 
 ## <a name="next-steps"></a>后续步骤
-* 了解[日志查询](../log-query/log-query-overview.md)，使用自定义字段作为条件生成查询。
+* 了解[日志查询](./log-query-overview.md)，使用自定义字段作为条件生成查询。
 * 监视使用自定义字段分析的[自定义日志文件](../agents/data-sources-custom-logs.md)。
-
 

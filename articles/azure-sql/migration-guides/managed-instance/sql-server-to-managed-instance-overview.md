@@ -9,14 +9,14 @@ ms.topic: how-to
 author: WenJason
 ms.author: v-jay
 ms.reviewer: MashaMSFT
-origin.date: 11/06/2020
-ms.date: 02/22/2021
-ms.openlocfilehash: f3f81a47d23d921035c37bc2ef74d58c738f95bf
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+origin.date: 02/18/2020
+ms.date: 03/29/2021
+ms.openlocfilehash: cd725a6652a37b3c144faa072adca3762be8e83f
+ms.sourcegitcommit: 308ca551066252e68198391c3e4d4b1de348deb9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696867"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105601766"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>迁移概述：将 SQL Server 到 SQL 托管实例
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -64,7 +64,7 @@ ms.locfileid: "101696867"
 可在部署期间选择计算和存储资源，然后在使用 [Azure 门户](../../database/scale-resources.md)之后对其进行更改，而不会导致应用程序停机。 
 
 > [!IMPORTANT]
-> 任何不符合[托管实例虚拟网络要求](../../managed-instance/connectivity-architecture-overview.md#network-requirements)的情况都可能导致无法创建新实例或使用现有实例。 详细了解如何 [创建新的](../../managed-instance/virtual-network-subnet-create-arm-template.md) 和  [配置现有的](../../managed-instance/vnet-existing-add-subnet.md?branch=release-ignite-arc-data) 网络。 
+> 任何不符合[托管实例虚拟网络要求](../../managed-instance/connectivity-architecture-overview.md#network-requirements)的情况都可能导致无法创建新实例或使用现有实例。 详细了解如何 [创建新的](../../managed-instance/virtual-network-subnet-create-arm-template.md) 和  [配置现有的](../../managed-instance/vnet-existing-add-subnet.md) 网络。 
 
 ### <a name="sql-server-vm-alternative"></a>SQL Server VM 替代项
 
@@ -91,6 +91,7 @@ ms.locfileid: "101696867"
 |---------|---------|
 |[Azure 数据库迁移服务 (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md)  | 支持在脱机模式下迁移的第一方 Azure 服务，适合能够在迁移过程中适应停机的应用程序。 与联机模式下的连续迁移不同，脱机模式下的迁移将一次性完成从源到目标的完整数据库备份的还原。 | 
 |[本地备份和还原](../../managed-instance/restore-sample-database-quickstart.md) | SQL 托管实例支持本机 SQL Server 数据库备份（.bak 文件）的还原 (RESTORE)，对于能够提供到 Azure 存储的完整数据库备份的客户而言，它是最简单的迁移选项。 还支持完整备份和差异备份，本文后面的[迁移资产部分](#migration-assets)中进行了介绍。| 
+|[日志重播服务 (LRS)](../../managed-instance/log-replay-service-migrate.md) | 这是一项基于 SQL Server 日志传送技术为托管实例启用的云服务，它是适用于可向 Azure 存储提供完整、差异和日志数据库备份的客户的迁移选项。 LRS 用于将备份文件从 Azure Blob 存储还原到 SQL 托管实例。| 
 | | |
 
 ### <a name="alternative-tools"></a>替代工具
@@ -115,8 +116,9 @@ ms.locfileid: "101696867"
 
 |迁移选项  |何时使用  |注意事项  |
 |---------|---------|---------|
-|[Azure 数据库迁移服务 (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | - 大规模迁移单个数据库或多个数据库。 </br> - 可在迁移过程中适应停机时间。 </br> </br> 支持的源： </br> - SQL Server (2005 - 2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM |  - 可以通过 [PowerShell](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md) 自动进行大规模迁移。 </br> - 完成迁移的时间取决于数据库的大小，并受备份和还原时间的影响。 </br> - 可能需要足够的停机时间。 |
+|[Azure 数据库迁移服务 (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | - 大规模迁移单个数据库或多个数据库。 </br> - 可在迁移过程中适应停机时间。 </br> </br> 支持的源： </br> - SQL Server (2005 - 2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM |  - 可以通过 [PowerShell](../../../dms/howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md) 自动进行大规模迁移。 </br> - 完成迁移的时间取决于数据库的大小，并受备份和还原时间的影响。 </br> - 可能需要足够的停机时间。 |
 |[本机备份和还原](../../managed-instance/restore-sample-database-quickstart.md) | - 迁移单个业务线应用程序数据库。  </br> - 无需单独的迁移服务或工具即可快速轻松地进行迁移。  </br> </br> 支持的源： </br> - SQL Server (2005 - 2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM | - 数据库备份使用多个线程来优化指向 Azure Blob 存储的数据传输，但是 ISV 带宽和数据库大小会影响传输速率。 </br> - 停机时间应包含执行完整备份和还原所需的时间（这是数据操作的大小）。| 
+|[日志重播服务 (LRS)](../../managed-instance/log-replay-service-migrate.md) | - 迁移单个业务线应用程序数据库。  </br> - 需要对数据库迁移进行更多的控制。  </br> </br> 支持的源： </br> - SQL Server (2008 - 2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM | - 迁移需要在 SQL Server 上进行完整的数据库备份，并将备份文件复制到 Azure Blob 存储。 LRS 用于将备份文件从 Azure Blob 存储还原到 SQL 托管实例。 </br> - 在迁移过程中还原的数据库将处于还原模式，并且在该过程完成之前不能用于读取或写入。| 
 | | | |
 
 ### <a name="alternative-options"></a>替代选项
@@ -162,7 +164,7 @@ SQL Server Reporting Services (SSRS) 报表可迁移到 Power BI 中的分页报
 
 #### <a name="sql-agent-jobs"></a>SQL 代理作业
 
-使用脱机 Azure 数据库迁移服务 (DMS) 选项来迁移 [SQL Agent 作业](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md#offline-migrations)。 其他情况下，使用 SQL Server Management Studio 在 Transact-SQL (T-SQL) 中编写脚本，然后在目标 SQL 托管实例上手动重新创建它们。 
+使用脱机 Azure 数据库迁移服务 (DMS) 选项来迁移 [SQL Agent 作业](../../../dms/howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md)。 其他情况下，使用 SQL Server Management Studio 在 Transact-SQL (T-SQL) 中编写脚本，然后在目标 SQL 托管实例上手动重新创建它们。 
 
 > [!IMPORTANT]
 > 目前，Azure DMS 仅支持涉及 T-SQL 子系统步骤的作业。 涉及 SSIS 打包步骤的作业需要手动迁移。 
@@ -189,6 +191,26 @@ SQL Server Reporting Services (SSRS) 报表可迁移到 Power BI 中的分页报
 #### <a name="system-databases"></a>系统数据库
 
 不支持还原系统数据库。 若要迁移实例级对象（存储在 master 或 msdb 数据库中），请使用 Transact-SQL (T-SQL) 对它们进行脚本编写，然后在目标托管实例上重新创建它们。 
+
+#### <a name="in-memory-oltp-memory-optimized-tables"></a>内存中 OLTP（内存优化表）
+
+SQL Server 提供内存中 OLTP 功能，允许使用内存优化表、内存优化表类型和本地编译的 SQL 模块来运行具有高吞吐量和低延迟事务处理要求的工作负载。 
+
+> [!IMPORTANT]
+> 内存中 OLTP 仅在 Azure SQL 托管实例中的业务关键层中受支持（在常规用途层中不受支持）。
+
+如果本地 SQL Server 中存在内存优化表或内存优化表类型，并且你想要迁移到 Azure SQL 托管实例，则你应该：
+
+- 为支持内存中 OLTP 的目标 Azure SQL 托管实例选择业务关键层，或
+- 如果你想迁移到 Azure SQL 托管实例中的常规用途层，请删除内存优化表、内存优化表类型和本地编译的 SQL 模块，它们在迁移数据库之前与内存优化对象交互。 以下 T-SQL 查询可用于识别迁移到常规用途层之前需要删除的所有对象：
+
+```tsql
+SELECT * FROM sys.tables WHERE is_memory_optimized=1
+SELECT * FROM sys.table_types WHERE is_memory_optimized=1
+SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
+```
+
+若要详细了解内存中技术，请参阅[通过使用 Azure SQL 数据库和 Azure SQL 托管实例的内存中技术来优化性能](/azure-sql/in-memory-oltp-overview)
 
 ## <a name="leverage-advanced-features"></a>利用高级功能 
 
@@ -221,7 +243,7 @@ SQL Server Reporting Services (SSRS) 报表可迁移到 Power BI 中的分页报
 
 - 有关在执行各种数据库和数据迁移方案及专门任务时可为你提供帮助的 Azure 与第三方服务和工具的矩阵，请参阅[数据迁移服务和工具](../../../dms/dms-tools-matrix.md)。
 
-- 详细了解 Azure SQL 托管实例，请参阅：
+- 若要详细了解 Azure SQL 托管实例，请参阅：
    - [Azure SQL 托管实例中的服务层级](../../managed-instance/sql-managed-instance-paas-overview.md#service-tiers)
    - [SQL Server 与 Azure SQL 托管实例之间的差异](../../managed-instance/transact-sql-tsql-differences-sql-server.md)
    - [Azure 总拥有成本计算器](https://azure.cn/pricing/calculator/) 

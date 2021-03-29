@@ -3,20 +3,20 @@ title: Azure PowerShell - 启用静态双重加密 - 托管磁盘
 description: 使用 Azure PowerShell 为托管磁盘数据启用静态双重加密。
 origin.date: 08/24/2020
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 01/04/2021
 ms.topic: how-to
 ms.author: v-yeche
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: b46e5d2044d2de9b4de8948322b0a0ccfee9f782
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 2471bf2e98a7b0ea01c1757933e09fb7d553b916
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102053966"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603838"
 ---
 <!--Verified successfully-->
 # <a name="use-the-azure-powershell-module-to-enable-double-encryption-at-rest-for-managed-disks"></a>使用 Azure PowerShell 模块为托管磁盘启用静态双重加密
@@ -33,7 +33,7 @@ Azure 磁盘存储支持对托管磁盘的静态双重加密。 有关静态双�
 
     创建 Key Vault 实例时，必须启用软删除和清除保护。 软删除可确保 Key Vault 在给定的保留期（默认为 90 天）内保留已删除的密钥。 清除保护可确保在保留期结束之前，无法永久删除已删除的密钥。 这些设置可防止由于意外删除而丢失数据。 使用 Key Vault 加密托管磁盘时，这些设置是必需的。
 
-    <!--CORRECT DEFAULT VALUE IS -EnableSoftDelete -->
+    <!--CORRECT DEFAULT VALUE IS -EnableSoftDelete, append this parameter occure error-->
     
     ```powershell
     $ResourceGroupName="yourResourceGroupName"

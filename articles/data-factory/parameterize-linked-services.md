@@ -3,16 +3,16 @@ title: 参数化 Azure 数据工厂中的链接服务
 description: 了解如何参数化 Azure 数据工厂中的链接服务，并在运行时传递动态值。
 ms.service: data-factory
 ms.topic: conceptual
-origin.date: 01/15/2021
-ms.date: 03/01/2021
+origin.date: 03/18/2021
+ms.date: 03/29/2021
 author: WenJason
 ms.author: v-jay
-ms.openlocfilehash: 22d83c2fe2f2dbd5449f661069d64300f90bd04e
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 3159efeb56a9c501a30dc7cb1bcb200abf6a288a
+ms.sourcegitcommit: 308ca551066252e68198391c3e4d4b1de348deb9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697573"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105601906"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>参数化 Azure 数据工厂中的链接服务
 
@@ -35,18 +35,21 @@ ms.locfileid: "101697573"
 
 - Amazon Redshift
 - Amazon S3
+- Azure Blob 存储
 - Azure Cosmos DB (SQL API)
+- Azure Data Lake Storage Gen2
 - Azure Database for MySQL
 - Azure Databricks
 - Azure Key Vault
 - Azure SQL 数据库
 - Azure SQL 托管实例
 - Azure Synapse Analytics 
+- Azure 表存储
+- 泛型 HTTP
+- 泛型 REST
 - MySQL
 - Oracle
 - SQL Server
-- 泛型 HTTP
-- 泛型 REST
 
 对于不在上述列表中的其他链接服务类型，可以通过在 UI 上编辑 JSON 来参数化该链接服务：
 

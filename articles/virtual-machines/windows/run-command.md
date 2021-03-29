@@ -3,21 +3,22 @@ title: 在 Azure 中的 Windows VM 中运行 PowerShell 脚本
 description: 本主题介绍了如何使用“运行命令”功能在 Azure Windows 虚拟机中运行 PowerShell 脚本
 services: automation
 ms.service: virtual-machines
+ms.collection: windows
 origin.date: 04/26/2019
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: carmonm
-ms.openlocfilehash: 676fc78255b53058218106eeafa717b4000a82f9
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 2f2e696bc0c4d1c1519e10a737760ef3ee61ee2c
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054015"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603734"
 ---
 <!--Verfiy succesfully-->
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>使用“运行命令”在 Windows VM 中运行 PowerShell 脚本
@@ -45,9 +46,9 @@ ms.locfileid: "102054015"
 * 建议不要运行将导致 VM 代理停止或更新的脚本。 这会使扩展处于转换状态，从而导致超时。
 
 > [!NOTE]
-> 若要正常工作，“运行命令”需要连接（通过端口 443）到 Azure 公共 IP 地址。 如果扩展无法访问这些终结点，则脚本可能会成功运行，但不会返回结果。 如果要阻止虚拟机上的流量，可以使用[服务标记](../../virtual-network/network-security-groups-overview.md#service-tags)以通过 `AzureChinaCloud` 标记允许流量发往 Azure 公共 IP 地址。
+> 若要正常工作，“运行命令”需要连接（通过端口 443）到 Azure 公共 IP 地址。 如果扩展无法访问这些终结点，则脚本可能会成功运行，但不会返回结果。 如果要阻止虚拟机上的流量，可以使用[服务标记](../../virtual-network/network-security-groups-overview.md#service-tags)以通过 `AzureCloud` 标记允许流量发往 Azure 公共 IP 地址。
 
-<!--MOONCAKE CUSTOMIZATION ON using the `AzureChinaCloud` tag.-->
+<!--MOONCAKE CUSTOMIZATION ON using the `AzureCloud` tag.-->
 
 ## <a name="available-commands"></a>可用的命令
 

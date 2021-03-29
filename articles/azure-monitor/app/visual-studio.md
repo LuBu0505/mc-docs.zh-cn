@@ -3,15 +3,15 @@ title: 在 Visual Studio 中使用 Azure Application Insights 进行调试
 description: 调试期间和生产环境中的 Web 应用性能分析和诊断。
 ms.topic: conceptual
 origin.date: 08/22/2019
-ms.date: 12/07/2020
+ms.date: 03/25/2021
 ms.author: v-johya
 ms.custom: vs-azure
-ms.openlocfilehash: b707ec5ff50b72a667169792a4424aedd861ad6e
-ms.sourcegitcommit: d8dad9c7487e90c2c88ad116fff32d1be2f2a65d
+ms.openlocfilehash: a4647d527356fb303c3074f1e40020792aa182b5
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97105162"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603811"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>在 Visual Studio 中使用 Azure Application Insights 调试应用程序
 在 Visual Studio（2015 和更高版本）中，可以使用来自 [Azure Application Insights](./app-insights-overview.md) 的遥测，在调试和生产环境中分析 ASP.NET Web 应用中的性能和诊断问题。
@@ -68,17 +68,6 @@ Application Insights 的“搜索”窗口显示已记录的事件。 （如果�
 >
 
 [Code Lens 中的 Application Insights 的详细信息](./visual-studio-codelens.md)
-
-## <a name="trends"></a>趋势
-趋势是用于可视化一段时间内的应用行为的工具。 
-
-从 Application Insights 工具栏按钮或 Application Insights“搜索”窗口选择“浏览遥测趋势”  。 选择五种常见查询中的一个，以便开始使用。 可以根据遥测类型、时间范围和其他属性分析不同的数据集。 
-
-若要查找数据中的异常情况，请选择“视图类型”下拉列表下的其中一个异常情况选项。 使用窗口底部的筛选选项，可轻松地全力探索遥测的特定子集。
-
-![趋势](./media/visual-studio/51.png)
-
-[详细了解趋势](./visual-studio-trends.md)。
 
 ## <a name="local-monitoring"></a>本地监视
 （从 Visual Studio 2015 Update 2 开始）如果未将 SDK 配置为将遥测发送到 Application Insights 门户（从而 ApplicationInsights.config 中没有检测密钥），“诊断”窗口会显示来自最新调试会话的遥测。 

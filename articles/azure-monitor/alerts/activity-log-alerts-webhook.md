@@ -3,23 +3,22 @@ title: 了解活动日志警报中使用的 Webhook 架构
 description: 了解有关活动日志警报激活时发布到 webhook URL 的 JSON 架构。
 ms.topic: conceptual
 author: Johnnytechn
-ms.date: 02/20/2021
+ms.date: 03/22/2021
 ms.author: v-johya
 origin.date: 03/31/2017
-ms.subservice: alerts
-ms.openlocfilehash: fb1fac7980e2cb74edab4f6b04a26983afe0f8b5
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: dc91f19d7a73735aa528b0f3140158ccd5a8016b
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205020"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603450"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活动日志警报的 Webhook
 作为操作组定义的一部分，可以配置 webhook 终结点以接收活动日志警报通知。 通过 webhook 可以将这些通知路由到其他系统，以便进行后续处理或自定义操作。 本文介绍针对 webhook 发出的 HTTP POST 的有效负载的大致形式。
 
-有关活动日志警报的详细信息，请参阅如何[创建 Azure 活动日志警报](../platform/activity-log-alerts.md)。
+有关活动日志警报的详细信息，请参阅如何[创建 Azure 活动日志警报](./activity-log-alerts.md)。
 
-有关操作组的信息，请参阅如何[创建操作组](../platform/action-groups.md)。
+有关操作组的信息，请参阅如何[创建操作组](./action-groups.md)。
 
 > [!NOTE]
 > 还可以使用[常见警报架构](./alerts-common-schema.md)，它的优点是可以跨 Azure Monitor 中的所有警报服务提供单个可扩展且统一的警报有效负载，用于 Webhook 集成。 [了解常见的警报架构定义。](./alerts-common-schema-definitions.md)
@@ -301,10 +300,10 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 | status |字符串。 操作的状态。 常见值包括“Started”、“In Progress”、“Succeeded”、“Failed”、“Active”和“Resolved”。 |
 | subStatus |通常包含对应 REST 调用的 HTTP 状态代码。 它还可能包含描述子状态的其他字符串。 常见子状态值包括 OK（HTTP 状态代码：200）、Created（HTTP 状态代码：201）、Accepted（HTTP 状态代码：202）、No Content（HTTP 状态代码：204）、Bad Request（HTTP 状态代码：400）、Not Found（HTTP 状态代码：404）、Conflict（HTTP 状态代码：409）、Internal Server Error（HTTP 状态代码：500）、Service Unavailable（HTTP 状态代码：503）和 Gateway Timeout（HTTP 状态代码：504）。 |
 
-有关所有其他活动日志警报的特定架构的详细信息，请参阅 [Azure 活动日志概述](../platform/platform-logs-overview.md)。
+有关所有其他活动日志警报的特定架构的详细信息，请参阅 [Azure 活动日志概述](../essentials/platform-logs-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
-* [了解有关活动日志的更多信息](../platform/platform-logs-overview.md)。
+* [了解有关活动日志的更多信息](../essentials/platform-logs-overview.md)。
 * [对 Azure 警报执行 Azure 自动化脚本 (Runbook)](https://go.microsoft.com/fwlink/?LinkId=627081)。
 * [使用逻辑应用通过 Twilio 从 Azure 警报发送短信](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)。 本示例适用于度量值警报，但经过修改后可用于活动日志警报。
 * [使用逻辑应用从 Azure 警报发送 Slack 消息](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)。 本示例适用于度量值警报，但经过修改后可用于活动日志警报。

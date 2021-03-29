@@ -4,14 +4,14 @@ description: 追查到 Service Fabric、虚拟机、Web 应用和云服务中使
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
+ms.date: 03/25/2021
 ms.subservice: autoscale
-ms.openlocfilehash: 3a80caf8b55147837893d2834a440586a060b1c4
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 04368f5d581020ee829f0a8b7f883800d894cc5e
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204895"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603252"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>排查 Azure 自动缩放问题
  
@@ -26,14 +26,14 @@ Azure Monitor 自动缩放可帮助你运行适当数量的资源来处理应用
   
 ## <a name="autoscale-metrics"></a>自动缩放指标
 
-自动缩放提供了[四个指标](../platform/metrics-supported.md#microsoftinsightsautoscalesettings)以便你了解其操作。 
+自动缩放提供了[四个指标](../essentials/metrics-supported.md#microsoftinsightsautoscalesettings)以便你了解其操作。 
 
 - **观察到的指标值** - 你选择针对其执行缩放操作的指标的值，由自动缩放引擎查看或计算。 由于一个自动缩放设置可以包含多个规则（因而也包含多个指标源），你可以使用“指标源”作为维度进行筛选。
 - **指标阈值** - 设置的阈值，达到该阈值即会执行缩放操作。 由于一个自动缩放设置可以包含多个规则（因而也包含多个指标源），你可以使用“指标规则”作为维度进行筛选。
 - **观察到的容量** - 自动缩放引擎看到的目标资源活动实例数。
 - **启动的缩放操作** - 自动缩放引擎启动的横向扩展操作和横向缩小操作的数目。 可按横向扩展与横向缩减操作进行筛选。
 
-可以使用[指标资源管理器](../platform/metrics-getting-started.md)在一个位置绘制上述所有指标的图表。 该图表应显示：
+可以使用[指标资源管理器](../essentials/metrics-getting-started.md)在一个位置绘制上述所有指标的图表。 该图表应显示：
 
   - 实际指标
   - 自动缩放引擎看到/计算的指标
@@ -89,7 +89,7 @@ Azure Monitor 自动缩放可帮助你运行适当数量的资源来处理应用
  - “观察到的容量”（紫色）显示自动缩放引擎看到的实例计数。 
  - “指标阈值”（浅绿色）设置为 10。 
 
-如果有多个缩放操作规则，则可以使用指标资源管理器图表中的“拆分”或“添加筛选器”选项，按特定的源或规则查看指标。 有关拆分指标图表的详细信息，请参阅[指标图表的高级功能 - 拆分](../platform/metrics-charts.md#apply-splitting)
+如果有多个缩放操作规则，则可以使用指标资源管理器图表中的“拆分”或“添加筛选器”选项，按特定的源或规则查看指标。 有关拆分指标图表的详细信息，请参阅[指标图表的高级功能 - 拆分](../essentials/metrics-charts.md#apply-splitting)
 
 ## <a name="example-3---understanding-autoscale-events"></a>示例 3 - 了解自动缩放事件
 
@@ -99,13 +99,13 @@ Azure Monitor 自动缩放可帮助你运行适当数量的资源来处理应用
 
 ## <a name="autoscale-resource-logs"></a>自动缩放资源日志
 
-与任何其他 Azure 资源相同，自动缩放服务提供[资源日志](../platform/platform-logs-overview.md)。 有两种类别的日志。
+与任何其他 Azure 资源相同，自动缩放服务提供[资源日志](../essentials/platform-logs-overview.md)。 有两种类别的日志。
 
 - **自动缩放评估** - 自动缩放引擎每次执行检查时，都会针对每一条件评估记录相应的日志条目。  该条目包含有关所观察到的指标值、评估的规则以及该评估是否导致发生缩放操作的详细信息。
 
 - **“自动缩放”缩放操作** - 引擎将会记录自动缩放服务发起的缩放操作事件，以及这些缩放操作的结果（成功、失败，以及自动缩放服务看到的缩放量）。
 
-与在 Azure Monitor 支持的任何服务中一样，你可以使用[诊断设置](../platform/diagnostic-settings.md)将这些日志：
+与在 Azure Monitor 支持的任何服务中一样，你可以使用[诊断设置](../essentials/diagnostic-settings.md)将这些日志：
 
 - 路由到 Log Analytics 工作区进行详细分析
 - 依次路由到事件中心和非 Azure 工具
@@ -208,5 +208,5 @@ AutoscaleScaleActionsLog
 有关详细信息，请参阅[自动缩放资源日志](autoscale-resource-log-schema.md)
 
 ## <a name="next-steps"></a>后续步骤
-阅读有关[自动缩放最佳做法](autoscale-best-practices.md)的信息。 
+阅读有关[自动缩放最佳做法](autoscale-best-practices.md)的信息。
 

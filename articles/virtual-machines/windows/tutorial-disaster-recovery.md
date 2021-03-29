@@ -1,22 +1,23 @@
 ---
 title: 教程 - 使用 Azure Site Recovery 为 Windows VM 设置灾难恢复
 description: 了解如何使用 Microsoft Site Recovery 服务为 Windows VM 启用到其他 Azure 区域的灾难恢复。
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.subservice: recovery
 ms.topic: tutorial
 origin.date: 11/05/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 01/04/2021
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 57b26509b3c8a47dea7eca7946e0e1abc13d4e81
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: f742021bec890fd74e64d43e98b9f67705c927ff
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857622"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603672"
 ---
 <!--Verified successfully-->
 # <a name="tutorial-enable-disaster-recovery-for-windows-vms"></a>教程：为 Windows VM 启用灾难恢复
@@ -46,10 +47,10 @@ ms.locfileid: "97857622"
     
     <!--REMOVE Government Cloud-->
     
-    **Name** | **Azure 中国云** | **详细信息**
+    **Name** | Azure 中国云 | **详细信息**
     --- | --- | --- | ---
     存储 | `*.blob.core.chinacloudapi.cn` | 将数据从 VM 写入源区域中的缓存存储帐户。 
-    Azure AD  | `login.partner.microsoftonline.cn` | 授权并验证 Site Recovery 服务 URL。 
+    Azure AD  | `login.chinacloudapi.cn` | 授权并验证 Site Recovery 服务 URL。 
     复制 | `*.hypervrecoverymanager.windowsazure.cn` | VM 与 Site Recovery 服务进行通信。 
     服务总线 | `*.servicebus.chinacloudapi.cn` | VM 写入 Site Recovery 以监视和诊断数据。 
 
@@ -167,5 +168,4 @@ ms.locfileid: "97857622"
 > [!div class="nextstepaction"]
 > [将 VM 故障转移到另一个区域](../../site-recovery/azure-to-azure-tutorial-dr-drill.md)
 
-<!-- Update_Description: new article about tutorial disaster recovery -->
-<!--NEW.date: 01/04/2021-->
+<!--Update_Description: update meta properties, wording update, update link-->

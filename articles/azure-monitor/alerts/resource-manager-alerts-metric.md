@@ -5,14 +5,13 @@ author: Johnnytechn
 ms.author: v-johya
 services: azure-monitor
 ms.topic: sample
-ms.date: 02/20/2021
-ms.subservice: alerts
-ms.openlocfilehash: dabe51fea3e84354e00a129f140a570990ddef5e
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/22/2021
+ms.openlocfilehash: bed758e0442375afa9a87b1dc14077496634d561
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205665"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603116"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>用于 Azure Monitor 指标警报规则的资源管理器模板示例
 
@@ -1093,10 +1092,10 @@ ms.locfileid: "102205665"
 <!--Not available in MC: ## Custom metric, static threshold-->
 <!--Not available in MC: ## Multiple resources in VM-->
 <!--Not available in MC: ## Availability test with metric alert-->
+
 ## <a name="next-steps"></a>后续步骤
 
 - [获取 Azure Monitor 的其他示例模板](../resource-manager-samples.md)。
-- [详细了解警报](../platform/alerts-overview.md)。
+- [详细了解警报](./alerts-overview.md)。
 - [获取使用资源管理器模板创建操作组的示例](resource-manager-action-groups.md)
-
 

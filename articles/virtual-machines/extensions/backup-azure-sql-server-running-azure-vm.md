@@ -1,22 +1,22 @@
 ---
 title: 在 Azure VM 中运行的 SQL Server 的 Azure 备份
 description: 本文介绍如何将 Azure 备份注册到在 Azure 虚拟机中运行的 SQL Server。
-manager: carmonm
+ms.topic: article
 ms.service: virtual-machines
 ms.subservice: extensions
-ms.topic: conceptual
+ms.collection: windows
 origin.date: 07/05/2019
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 4da0cd0d54a02e2eccd7a92a8ecac990a1581949
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 9e0c5aa574d0351274f31a5836468063b4339a5e
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055221"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603748"
 ---
 <!--Verify successfully-->
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>在 Azure VM 中运行的 SQL Server 的 Azure 备份

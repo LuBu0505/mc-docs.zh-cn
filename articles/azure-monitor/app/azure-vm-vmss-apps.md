@@ -4,14 +4,14 @@ description: 针对 Azure VM 和 Azure 虚拟机规模集进行应用程序性�
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 08/26/2019
-ms.date: 02/22/2021
+ms.date: 03/25/2021
 ms.author: v-johya
-ms.openlocfilehash: 0c70a283d2b906046a773a92f70d312dd0144d41
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: dc27b03f986d4c0c9de0dc4329fca6d718e38ebd
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197272"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603549"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>在 Azure 虚拟机和 Azure 虚拟机规模集上部署 Azure Monitor Application Insights 代理
 
@@ -19,7 +19,7 @@ ms.locfileid: "102197272"
 
 本文逐步讲解如何通过 Application Insights 代理启用 Application Insights 监视，并提供有关如何自动完成大规模部署过程的初步指导。
 > [!IMPORTANT]
-> 在 Azure VM 和 VMSS 上运行的基于 **Java** 的应用程序是通过 **[Application Insights Java 3.0 代理](/azure-monitor/app/java-in-process-agent)** 监视的，该代理已正式发布。
+> 在 Azure VM 和 VMSS 上运行的基于 **Java** 的应用程序是通过 **[Application Insights Java 3.0 代理](./java-in-process-agent.md)** 监视的，该代理已正式发布。
 
 > [!IMPORTANT]
 > 在 Azure VM 和 VMSS 上运行的 ASP.NET 应用程序的 Azure Application Insights 代理当前为公共预览版。 若要监视本地运行的 ASP.Net 应用程序，请使用[用于本地服务器的 Azure Application Insights 代理](./status-monitor-v2-overview.md)。该代理已正式发布，是完全受支持的。
@@ -45,7 +45,7 @@ ms.locfileid: "102197272"
   * Application Insights 代理自动收集与 .NET SDK 相同的、现成的依赖项信号。 若要了解详细信息，请参阅[依赖项自动收集](./auto-collect-dependencies.md#net)。
         
 #### <a name="java"></a>Java
-  * 对于 Java，建议使用的方法是 **[Application Insights Java 3.0 代理](/azure-monitor/app/java-in-process-agent)** 。 最常用的库和框架，以及日志和依赖项是[自动收集](/azure-monitor/app/java-in-process-agent#auto-collected-requests-dependencies-logs-and-metrics)的，并且采用许多[额外配置](/azure-monitor/app/java-standalone-config)
+  * 对于 Java，建议使用的方法是 **[Application Insights Java 3.0 代理](./java-in-process-agent.md)** 。 最常用的库和框架，以及日志和依赖项是[自动收集](./java-in-process-agent.md#auto-collected-requests-dependencies-logs-and-metrics)的，并且采用许多[额外配置](./java-standalone-config.md)
 
 ### <a name="code-based-via-sdk"></a> 通过 SDK 执行的“基于代码”方法
     
@@ -58,19 +58,19 @@ ms.locfileid: "102197272"
     > 仅限 .NET 应用 - 如果同时检测到了基于代理的监视和基于手动 SDK 的检测，则只会采用手动检测设置， 这是为了防止发送重复数据。 有关详细信息，请查看下面的[故障排除部分](#troubleshooting)。
 
 #### <a name="net-core"></a>.NET Core
-若要监视 .NET Core 应用程序，请使用 [SDK](/azure-monitor/app/asp-net-core)。 
+若要监视 .NET Core 应用程序，请使用 [SDK](./asp-net-core.md)。 
 
 #### <a name="java"></a>Java 
 
-如果需要对 Java 应用程序进行其他自定义遥测，请查看[有什么可用](/azure-monitor/app/java-in-process-agent#send-custom-telemetry-from-your-application)，添加[自定义维度](/azure-monitor/app/java-standalone-config#custom-dimensions)，或使用[遥测处理器](/azure-monitor/app/java-standalone-telemetry-processors)。 
+如果需要对 Java 应用程序进行其他自定义遥测，请查看[有什么可用](./java-in-process-agent.md#send-custom-telemetry-from-your-application)，添加[自定义维度](./java-standalone-config.md#custom-dimensions)，或使用[遥测处理器](./java-standalone-telemetry-processors.md)。 
 
 #### <a name="nodejs"></a>Node.js
 
-若要检测 Node.js 应用程序，请使用 [SDK](/azure-monitor/app/nodejs)。
+若要检测 Node.js 应用程序，请使用 [SDK](./nodejs.md)。
 
 #### <a name="python"></a>Python
 
-若要监视 Python 应用，请使用 [SDK](/azure-monitor/app/opencensus-python)。
+若要监视 Python 应用，请使用 [SDK](./opencensus-python.md)。
 
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>使用 PowerShell 在 Azure 虚拟机上管理用于 .NET 应用程序的 Application Insights 代理
 

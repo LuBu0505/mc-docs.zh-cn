@@ -3,19 +3,18 @@ title: Kusto 查询引入（set、append、replace）- Azure 数据资源管理�
 description: 本文介绍了 Azure 数据资源管理器中的从查询引入（.set、.append、.set-or-append、.set-or-replace）。
 services: data-explorer
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-origin.date: 03/30/2020
-ms.date: 01/22/2021
+ms.date: 03/23/2021
 ms.localizationpriority: high
-ms.openlocfilehash: d914d6a1e3b47dc61ac26a0530162c4fc0c018ce
-ms.sourcegitcommit: 7be0e8a387d09d0ee07bbb57f05362a6a3c7b7bc
+ms.openlocfilehash: 930ec032b86f56bf9d8b70fc54b7c94e09c645eb
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611340"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602752"
 ---
 # <a name="ingest-from-query-set-append-set-or-append-set-or-replace"></a>从查询引入（.set、.append、.set-or-append、.set-or-replace）
 
@@ -49,7 +48,7 @@ ms.locfileid: "98611340"
 
 |属性        |说明|
 |----------------|-----------------------------------------------------------------------------------------------------------------------------|
-|`creationTime`   | 日期时间值，格式为 ISO8601 字符串，在创建引入的数据盘区时使用。 如果未指定，将使用当前值 (`now()`)|
+|`creationTime`   | 日期时间值，格式为 ISO8601 字符串，在创建引入的数据盘区时使用。 在未指定的情况下会使用当前值 (`now()`)。 指定时，请确保目标表的有效[盘区合并策略](../mergepolicy.md)中的 `Lookback` 属性与指定的值一致|
 |`extend_schema`  | 一个布尔值，如果指定了此项，将指示命令扩展表的架构。 默认值为“false”。 此选项仅适用于 `.append`、`.set-or-append` 和 `set-or-replace` 命令。 进行架构扩展时，只允许在表的末尾添加其他列|
 |`recreate_schema`  | 一个布尔值， 如果指定了此项，它将指示此命令是否可以重新创建表的架构。 默认值为“false”。 此选项仅适用于 set-or-replace 命令。 在同时设置的情况下，此选项优先于 extend_schema 属性|
 |`folder`         | 要分配给表的文件夹。 如果表已存在，则此属性会替代表的文件夹。|
@@ -144,4 +143,4 @@ ms.locfileid: "98611340"
 
 |ExtentId |OriginalSize |ExtentSize |CompressedSize |IndexSize |RowCount | 
 |--|--|--|--|--|--|
-|23a05ed6-376d-4119-b1fc-6493bcb05563 |1291 |5882 |1568 |4314 |10 个 |
+|23a05ed6-376d-4119-b1fc-6493bcb05563 |1291 |5882 |1568 |4314 |10 |

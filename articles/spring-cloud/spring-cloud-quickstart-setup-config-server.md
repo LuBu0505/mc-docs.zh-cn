@@ -5,14 +5,14 @@ author: MikeDodaro
 ms.author: v-junlch
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 02/19/2021
+ms.date: 03/23/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 2dcffeb7f4eff108cffab26bf4e770690f7408e5
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: a4b7ba766de47531cdff2d253d43d494d7a05588
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697786"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602843"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>快速入门：设置 Azure Spring Cloud Config Server
 
@@ -22,9 +22,9 @@ Azure Spring Cloud Config Server 是分布式系统的集中式配置服务。 �
 
 ## <a name="prerequisites"></a>先决条件
 
-* [安装 JDK 8](https://docs.microsoft.com/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
-* [注册 Azure 订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)
-* （可选）[安装 Azure CLI 版本 2.0.67 或更高版本](/cli/install-azure-cli?preserve-view=true&view=azure-cli-latest)，并使用以下命令安装 Azure Spring Cloud 扩展：`az extension add --name spring-cloud`
+* [安装 JDK 8](https://docs.microsoft.com/java/azure/jdk/)
+* [注册 Azure 订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn/)
+* （可选）[安装 Azure CLI 版本 2.0.67 或更高版本](/cli/install-azure-cli)，并使用以下命令安装 Azure Spring Cloud 扩展：`az extension add --name spring-cloud`
 * （可选）[安装 Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) 并[登录](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="azure-spring-cloud-config-server-procedures"></a>Azure Spring Cloud Config Server 过程

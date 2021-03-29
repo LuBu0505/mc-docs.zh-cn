@@ -9,14 +9,14 @@ ms.topic: how-to
 author: WenJason
 ms.author: v-jay
 ms.reviewer: MashaMSFT
-origin.date: 11/06/2020
-ms.date: 01/04/2021
-ms.openlocfilehash: 577949e5092ff5c46f3e36c770a7aa61d3fbceb2
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+origin.date: 03/19/2021
+ms.date: 03/29/2021
+ms.openlocfilehash: 60fcea97bc9e6d55ee19a6723784ed926f988f8b
+ms.sourcegitcommit: 308ca551066252e68198391c3e4d4b1de348deb9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696702"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105601965"
 ---
 # <a name="migration-guide-sql-server-to-sql-database"></a>迁移指南：将 SQL Server 到 SQL 数据库
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -152,10 +152,10 @@ ms.locfileid: "101696702"
 |  | 资源争用 | 建议 |
 |--|--|--|
 | **源（通常在本地）** |迁移期间源中的主要瓶颈是 DATA 文件的延迟和 DATA I/O，需要仔细监视。  |根据 DATA 文件的延迟时间和 DATA IO，以及它是虚拟机还是物理服务器，你必须与存储管理员联系，并探索各种选项来缓解瓶颈。 |
-|**目标（Azure SQL 数据库）**|最大的限制因素是日志生成速率和日志文件的延迟。 使用 Azure SQL 数据库时，日志生成速率最高可达 96 MB/秒。 | 若要加快迁移速度，请将目标 SQL DB 纵向扩展到业务关键 Gen5 8 vcore，以获取 96 MB/秒的最大日志生成速率，并实现日志文件的低延迟。 无论选择哪种服务级别，[超大规模](/azure-sql/database/service-tier-hyperscale)服务层都提供 100 MB/秒的日志速率 |
-|**Network** |所需网络带宽等于最大日志引入速率 96 MB/秒（768 Mb/秒） |根据本地数据中心到 Azure 的网络连接情况，检查网络带宽（通常是 [Azure ExpressRoute](/expressroute/expressroute-introduction#bandwidth-options)），使其适应最大日志引入速率。 |
+|**目标（Azure SQL 数据库）**|最大的限制因素是日志生成速率和日志文件的延迟。 使用 Azure SQL 数据库时，日志生成速率最高可达 96-MB/秒。 | 若要加快迁移速度，请将目标 SQL DB 纵向扩展到业务关键 Gen5 8 vCore，以获取 96 MB/秒的最大日志生成速率，并实现日志文件的低延迟。 无论选择哪种服务级别，[超大规模](../../database/service-tier-hyperscale.md)服务层都提供 100-MB/秒的日志速率 |
+|**Network** |所需网络带宽等于最大日志引入速率 96 MB/秒（768 Mb/秒） |根据本地数据中心到 Azure 的网络连接情况，检查网络带宽（通常是 [Azure ExpressRoute](../../../expressroute/expressroute-introduction.md#bandwidth-options)），使其适应最大日志引入速率。 |
 |**用于数据迁移助手 (DMA) 的虚拟机** |对于运行 DMA 的虚拟机来说，主要的瓶颈是 CPU |通过以下项来加速数据迁移时的注意事项 </br>- Azure 计算密集型 VM </br>- 使用至少 F8s_v2 (8 vcore) VM 运行 DMA </br>- 确保 VM 在与目标相同的 Azure 区域中运行 |
-|**Azure 数据库迁移服务 (DMS)** |DMS 的计算资源争用和数据库对象注意事项 |使用高级 4 vCore。 DMS 会自动处理数据库对象（如外键、触发器、约束和非聚集索引），无需任何手动干预。  |
+|**Azure 数据库迁移服务 (DMS)** |DMS 的计算资源争用和数据库对象注意事项 |使用高级 4 vCore。 DMS 会自动处理数据库对象（如外键、触发器、约束和非聚集索引），无需手动干预。  |
 
 
 ## <a name="post-migration"></a>迁移后
@@ -176,9 +176,6 @@ ms.locfileid: "101696702"
 1. 设置测试环境：测试环境应包含源数据库和目标数据库的副本。 请确保隔离测试环境。
 1. 运行验证测试：针对源和目标运行验证测试，然后分析结果。
 1. 运行性能测试：针对源和目标运行性能测试，然后分析和比较结果。
-
-   > [!NOTE]
-   > 为帮助开发和运行迁移后验证测试，请考虑使用合作伙伴 [QuerySurge](https://www.querysurge.com/company/partners/microsoft) 提供的数据质量解决方案。 
 
 
 ## <a name="leverage-advanced-features"></a>利用高级功能 

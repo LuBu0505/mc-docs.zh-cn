@@ -1,25 +1,27 @@
 ---
 title: 将网络观察程序扩展更新到最新版本
 description: 了解如何将 Azure 网络观察程序扩展更新到最新版本。
-services: virtual-machines-windows
+services: virtual-machines
+documentationcenter: ''
 manager: balar
 tags: azure-resource-manager
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: extensions
+ms.collection: windows
 ms.topic: article
 ms.workload: infrastructure-services
 origin.date: 09/23/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 11/02/2020
 ms.author: v-yeche
-ms.openlocfilehash: bbac4765355db354826703664364f6e9bee0411c
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 83fd93475928ad47bafa44c159613a46ffb2b4e3
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856991"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603181"
 ---
 <!--Verified Successfully-->
 # <a name="update-the-network-watcher-extension-to-the-latest-version"></a>将网络观察程序扩展更新到最新版本
@@ -248,4 +250,4 @@ az vm extension set --resource-group "DALANDEMO" --vm-name "Linux-01" --name "Ne
 
 如果在本文的任何位置需要更多帮助，请参阅 [Linux](./network-watcher-linux.md) 或 [Windows](./network-watcher-windows.md) 的网络观察程序扩展文档。 还可通过 [Azure 支持](https://support.azure.cn/support/contact/)联系 Azure 专家。 或者，提交 Azure 支持事件。 请转到 [Azure 支持站点](https://support.azure.cn/support/support-azure/)提交请求。 有关使用 Azure 支持的信息，请阅读 [Azure 支持常见问题](https://www.azure.cn/support/faq/)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

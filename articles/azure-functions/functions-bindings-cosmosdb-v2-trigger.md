@@ -3,15 +3,15 @@ title: 适用于 Functions 2.x 及更高版本的 Azure Cosmos DB 触发器
 description: 了解如何在 Azure Functions 中使用 Azure Cosmos DB 触发器。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 01/27/2021
+ms.date: 03/22/2021
 ms.author: v-junlch
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b42ccbca4b4141304748d65a48159256a00c8a5a
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 155e384c04346deae56d0ab3c3e528a9de290508
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059042"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602833"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>适用于 Azure Functions 2.x 及更高版本的 Azure Cosmos DB 触发器
 
@@ -163,7 +163,7 @@ JavaScript 代码如下所示：
 ```powershell
 param($Documents, $TriggerMetadata) 
 
-Write-Host "First document Id modified : $($Documents[0].id)" 
+Write-Host "First document Id modified : $($Documents[0].id)" 
 ```
 
 
@@ -214,16 +214,16 @@ PowerShell 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type  | 不适用 | 必须设置为 `cosmosDBTrigger`。 |
+|type | 不适用 | 必须设置为 `cosmosDBTrigger`。 |
 |**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置该参数。 |
-|name  | 不适用 | 函数代码中使用的变量名称，表示发生更改的文档列表。 |
+|**name** | 不适用 | 函数代码中使用的变量名称，表示发生更改的文档列表。 |
 |**connectionStringSetting**|**ConnectionStringSetting** | 应用设置的名称，该应用设置包含用于连接到受监视的 Azure Cosmos DB 帐户的连接字符串。 |
 |**databaseName**|**DatabaseName**  | 带有受监视的集合的 Azure Cosmos DB 数据库的名称。 |
 |**collectionName** |**CollectionName** | 受监视的集合的名称。 |
 |**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | （可选）应用设置的名称，该设置包含保存租用集合的 Azure Cosmos DB 帐户的连接字符串。 未设置时，使用 `connectionStringSetting` 值。 在门户中创建绑定时，将自动设置该参数。 用于租用集合的连接字符串必须具有写入权限。|
 |**leaseDatabaseName** |**LeaseDatabaseName** | （可选）数据库的名称，该数据库包含用于存储租用的集合。 未设置时，使用 `databaseName` 设置的值。 在门户中创建绑定时，将自动设置该参数。 |
 |**leaseCollectionName** | **LeaseCollectionName** | （可选）用于存储租用的集合的名称。 未设置时，使用值 `leases`。 |
-|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | （可选）设置为 `true` 时，如果租用集合并不存在，将自动创建该集合。 默认值是 `false`。 |
+|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | （可选）设置为 `true` 时，如果租用集合并不存在，将自动创建该集合。 默认值为 `false`。 |
 |**leasesCollectionThroughput**| **LeasesCollectionThroughput**| （可选）在创建租用集合时，定义要分配的请求单位的数量。 仅当 `createLeaseCollectionIfNotExists` 设置为 `true` 时，才会使用此设置。 使用门户创建绑定时，将自动设置该参数。
 |**leaseCollectionPrefix**| **LeaseCollectionPrefix**| （可选）设置后，该值将作为前缀添加到在此函数的租约集合中创建的租约。 使用前缀可让两个不同的 Azure 函数通过不同的前缀来共享同一个租约集合。
 |**feedPollDelay**| **FeedPollDelay**| （可选）在所有当前更改清空后，每两次在分区中轮询源上的新更改的延迟时间（以毫秒为单位）。 默认值为 5,000 毫秒（5 秒）。

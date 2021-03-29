@@ -1,24 +1,24 @@
 ---
 title: 教程 - 使用 Azure PowerShell 管理 Azure 磁盘
 description: 本教程介绍如何使用 Azure PowerShel 为虚拟机创建和管理 Azure 磁盘
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: disks
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 origin.date: 11/29/2018
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 8ced117c4f03126cf5a5518723806d708bafb84e
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 405697c9c65815592d93cd2fbe506dfecf28b942
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055273"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603670"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>教程 - 使用 Azure PowerShell 管理 Azure 磁盘
 
@@ -35,7 +35,7 @@ Azure 虚拟机使用磁盘来存储 VM 操作系统、应用程序和数据。 
 
 打开 Azure Powershell 控制台，并以管理员权限运行下面列出的脚本。
 
-<!--Not Available on Azure Cloud Shell-->
+<!--NOT AVAILABLE ON Azure Cloud Shell-->
 
 ## <a name="default-azure-disks"></a>默认 Azure 磁盘
 
@@ -57,7 +57,7 @@ Azure 提供两种类型的磁盘。
 
 **高级磁盘** - 由基于 SSD 的高性能、低延迟磁盘提供支持。 完美适用于运行生产工作负荷的 VM。 [大小名称](../vm-naming-conventions.md)中带有“S”的 VM 大小通常支持高级存储。 例如，DS 系列、DSv2 系列和 FS 系列 VM 都支持高级存储。 选择磁盘大小时，大小值将向上舍入到下一类型。 例如，如果磁盘大小大于 64 GB，但小于 128 GB，则磁盘类型为 P10。 
 
-<!-- Not Available on GS Series -->
+<!--NOT AVAILABLE ON GS Series -->
 
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../../includes/disk-storage-premium-ssd-sizes.md)]
 

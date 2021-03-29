@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.service: traffic-manager
 origin.date: 09/18/2019
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 09/28/2020
 ms.author: v-yeche
-ms.openlocfilehash: ab4584d7e46b291189fde8158538705551029124
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 49b3443b794e324dc577795724c0b442ce3b24c8
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "104766176"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603356"
 ---
 <!--Verified successfully-->
 # <a name="traffic-manager-subnet-override-using-azure-cli"></a>使用 Azure CLI 的流量管理器子网替代

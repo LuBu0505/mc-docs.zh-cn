@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 10/29/2020
-ms.date: 12/14/2020
-ms.openlocfilehash: b9f2f4a1ea54baa6c5326135e31e57f75fb939e3
-ms.sourcegitcommit: cf3d8d87096ae96388fe273551216b1cb7bf92c0
+ms.date: 03/29/2021
+ms.openlocfilehash: 6399e54d2f459bb175053cfd3ff52d4b6ecca977
+ms.sourcegitcommit: 308ca551066252e68198391c3e4d4b1de348deb9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829708"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105601851"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>快速入门：将 BACPAC 文件导入 Azure SQL 数据库或 Azure SQL 托管实例中的数据库
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -141,6 +141,15 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 
 > [!TIP]
 > 有关另一个脚本示例，请参阅[从 BACPAC 文件导入数据库](scripts/import-from-bacpac-powershell.md)。
+
+## <a name="cancel-the-import-request"></a>取消导入请求
+
+使用[数据库操作 - 取消 API](https://docs.microsoft.com/rest/api/sql/databaseoperations/cancel) 或 Powershell [Stop-AzSqlDatabaseActivity 命令](https://docs.microsoft.com/powershell/module/az.sql/Stop-AzSqlDatabaseActivity)，此处是 Powershell 命令的示例。
+
+```cmd
+Stop-AzSqlDatabaseActivity -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName -OperationId $Operation.OperationId
+```
+
 
 ## <a name="limitations"></a>限制
 

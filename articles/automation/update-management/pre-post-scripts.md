@@ -3,15 +3,15 @@ title: 在 Azure 的更新管理部署中管理操作前脚本和操作后脚本
 description: 本文介绍如何配置和管理更新部署的操作前脚本和操作后脚本。
 services: automation
 ms.subservice: update-management
-origin.date: 12/17/2020
-ms.date: 03/15/2021
+origin.date: 03/08/2021
+ms.date: 03/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6e93c5b101059d9d960498fc60dc22379d4af489
-ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
+ms.openlocfilehash: 2f795d42fbc36ca898bd3acb05ab7fbeb0e1e717
+ms.sourcegitcommit: 308ca551066252e68198391c3e4d4b1de348deb9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102589823"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105601826"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>管理前脚本和后脚本
 
@@ -20,6 +20,8 @@ ms.locfileid: "102589823"
 ## <a name="pre-script-and-post-script-requirements"></a>操作前脚本和操作后脚本要求
 
 若要将某个 runbook 用作操作前脚本或操作后脚本，必须将其导入到自动化帐户中并[发布 runbook](../manage-runbooks.md#publish-a-runbook)。
+
+目前仅支持将 PowerShell 和 Python 2 runbook 作为前期/后期脚本。 目前不支持将其他 runbook 类型（如 Python 3、图形、PowerShell 工作流和图形 PowerShell 工作流）作为前期/后期脚本。
 
 ## <a name="pre-script-and-post-script-parameters"></a>操作前脚本和操作后脚本参数
 
@@ -92,9 +94,6 @@ ms.locfileid: "102589823"
 > [!NOTE]
 > `SoftwareUpdateConfigurationRunContext` 对象可以包含计算机的重复项。 这可能导致操作前脚本和操作后脚本在同一计算机上多次运行。 若要解决此问题，请使用 `Sort-Object -Unique` 仅选择唯一 VM 名称。
 
-> [!NOTE]
-> 目前仅支持 PowerShell runbook 作为前期/后期脚本。 目前不支持将其他 runbook 类型（如 Python、图形、PowerShell 工作流和图形 PowerShell 工作流）作为前期/后期脚本。
-
 ## <a name="use-a-pre-script-or-post-script-in-a-deployment"></a>在部署中使用操作前脚本或操作后脚本
 
 若要在更新部署中使用操作前脚本或操作后脚本，请先创建一个更新部署。 选择“操作前脚本 + 操作后脚本”。 此操作会打开“选择前脚本 + 后脚本”页面。
@@ -121,7 +120,7 @@ ms.locfileid: "102589823"
 
 ## <a name="stop-a-deployment"></a>停止部署
 
-如果要停止基于操作前脚本的部署，则必须[引发](../automation-runbook-execution.md#throw)异常。 否则，仍将运行部署和操作后脚本。 以下代码片段演示如何引发异常。
+如果要停止基于操作前脚本的部署，则必须[引发](../automation-runbook-execution.md#throw)异常。 否则，仍将运行部署和操作后脚本。 以下代码片段演示如何使用 PowerShell 引发异常。
 
 ```powershell
 #In this case, we want to terminate the patch job if any run fails.
@@ -135,6 +134,8 @@ foreach($summary in $finalStatus)
     }
 }
 ```
+
+在 Python 2 中，异常处理是在 [try](https://www.python-course.eu/exception_handling.php) 块中进行管理的。
 
 ## <a name="interact-with-machines"></a>与计算机交互
 
@@ -170,6 +171,13 @@ if (<My custom error logic>)
     #Throw an error to fail the patch deployment.
     throw "There was an error, abort deployment"
 }
+```
+
+在 Python 2 中，如果要在发生特定状况时引发错误，请使用 [raise](https://docs.python.org/2.7/reference/simple_stmts.html#the-raise-statement) 语句。
+
+```python
+If (<My custom error logic>)
+   raise Exception('Something happened.')
 ```
 
 ## <a name="samples"></a>示例

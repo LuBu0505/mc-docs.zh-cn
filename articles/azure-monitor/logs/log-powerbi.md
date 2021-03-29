@@ -1,17 +1,16 @@
 ---
 title: Log Analytics 与 Power BI 和 Excel 的集成
 description: 如何将结果从 Log Analytics 发送到 Power BI
-ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
-ms.openlocfilehash: f3fef94ee59dfc72214fe43a5e281975e7fc0fc8
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/23/2021
+ms.openlocfilehash: 334b83bad8c295be7533d323995d6a069d8f8933
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205760"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603772"
 ---
 # <a name="log-analytics-integration-with-power-bi"></a>Log Analytics 与 Power BI 的集成
 
@@ -19,7 +18,7 @@ ms.locfileid: "102205760"
 
 ## <a name="background"></a>背景 
 
-Azure Monitor 日志是为日志引入提供端到端解决方案的平台。 [Azure Monitor Log Analytics](../platform/data-platform.md#) 是用于查询这些日志的界面。 若要详细了解包括 Log Analytics 在内的整个 Azure Monitor 数据平台，请参阅 [Azure Monitor 数据平台](../platform/data-platform.md)。 
+Azure Monitor 日志是为日志引入提供端到端解决方案的平台。 [Azure Monitor Log Analytics](../platform/data-platform.md#) 是用于查询这些日志的界面。 若要详细了解包括 Log Analytics 在内的整个 Azure Monitor 数据平台，请参阅 [Azure Monitor 数据平台](../data-platform.md)。 
 
 Power BI 是 Microsoft 的数据可视化平台。 有关如何入门的详细信息，请参阅 [Power BI 的主页](https://powerbi.microsoft.com/)。 
 
@@ -82,5 +81,5 @@ Power BI 增量刷新依赖于结果集中存在的日期/时间字段。 在配
 
 ## <a name="next-steps"></a>后续步骤
 
-开始使用 [Log Analytics 查询](../log-query/log-query-overview.md)。
+开始使用 [Log Analytics 查询](./log-query-overview.md)。
 

@@ -1,22 +1,23 @@
 ---
 title: 教程 - 在 Azure 中的 Windows VM 上安装应用程序
 description: 本教程介绍如何使用自定义脚本扩展运行脚本并将应用程序部署到 Azure 中的 Windows 虚拟机
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: tutorial
 ms.workload: infrastructure
 origin.date: 11/29/2018
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 9dedd284630bbf49a6c72f713f12622134b42b7a
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: a7fcf32e64b8f6dd01b0b97c76ada0e7c47a9fde
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055274"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603673"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>教程 - 使用自定义脚本扩展将应用程序部署到 Azure 中的 Windows 虚拟机
 
@@ -31,8 +32,8 @@ ms.locfileid: "102055274"
 
 打开 Azure Powershell 控制台，并以管理员权限运行下面列出的脚本。
 
+<!--NOT AVAILABLE ON https://shell.azure.com-->
 <!--Not Available on Azure Cloud Shell-->
-<!--NOT AVAILABLE ON [https://shell.azure.com/powershell](https://shell.azure.com/powershell)-->
 
 ## <a name="custom-script-extension-overview"></a>自定义脚本扩展概述
 自定义脚本扩展在 Azure VM 上下载和执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或 GitHub 下载脚本，或者在扩展运行时会脚本提供给 Azure 门户。

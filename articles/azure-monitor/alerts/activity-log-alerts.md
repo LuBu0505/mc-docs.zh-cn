@@ -1,24 +1,23 @@
 ---
 title: Azure Monitor 中的活动日志警报
 description: 当活动日志中出现某些事件时，通过 SMS、Webhook、短信、电子邮件等方式进行通知。
-ms.subservice: alerts
 ms.topic: conceptual
 author: Johnnytechn
 origin.date: 09/17/2018
-ms.date: 02/20/2021
+ms.date: 03/22/2021
 ms.author: v-johya
-ms.openlocfilehash: 8960f1ad478ae2ade083b5932e43f7fa9fde24bc
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 770a00e66713ee33eebe328083d5806079196ad4
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205777"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603411"
 ---
 # <a name="alerts-on-activity-log"></a>根据活动日志发出警报
 
 ## <a name="overview"></a>概述
 
-活动日志警报是新发生的[活动日志事件](../essentials/activity-log-schema.md) 与警报中指定的条件匹配时激活的警报。 根据 [Azure 活动日志](../platform/platform-logs-overview.md)中记录的事件的顺序和数量，将触发警报规则。 活动日志警报规则是 Azure 资源，因此，可使用 Azure 资源管理器模板来创建。 此外，还可以在 Azure 门户中创建、更新或删除它们。 本文介绍活动日志警报背后的概念。 有关创建或使用活动日志警报规则的详细信息，请参阅[创建和管理活动日志警报](alerts-activity-log.md)。
+活动日志警报是新发生的[活动日志事件](../essentials/activity-log-schema.md) 与警报中指定的条件匹配时激活的警报。 根据 [Azure 活动日志](../essentials/platform-logs-overview.md)中记录的事件的顺序和数量，将触发警报规则。 活动日志警报规则是 Azure 资源，因此，可使用 Azure 资源管理器模板来创建。 此外，还可以在 Azure 门户中创建、更新或删除它们。 本文介绍活动日志警报背后的概念。 有关创建或使用活动日志警报规则的详细信息，请参阅[创建和管理活动日志警报](alerts-activity-log.md)。
 
 > [!NOTE]
 > * **无法** 为活动日志的“警报”类别中的事件创建警报。
@@ -57,12 +56,12 @@ ms.locfileid: "102205777"
 * 在活动日志警报中使用现有操作组。
 * 创建新的操作组。
 
-若要了解有关操作组的详细信息，请参阅[在 Azure 门户中创建和管理操作组](../platform/action-groups.md)。
+若要了解有关操作组的详细信息，请参阅[在 Azure 门户中创建和管理操作组](./action-groups.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 获取[警报概述](../platform/alerts-overview.md)。
+- 获取[警报概述](./alerts-overview.md)。
 - 了解如何[创建和修改活动日志警报](alerts-activity-log.md)。
 - 查看[活动日志警报 webhook 架构](../alerts/activity-log-alerts-webhook.md)。
 - 了解[服务运行状况通知](../../service-health/service-notifications.md)。

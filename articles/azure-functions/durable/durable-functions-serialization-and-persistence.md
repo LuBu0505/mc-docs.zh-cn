@@ -3,14 +3,14 @@ title: Durable Functions 中的数据保留和序列化 - Azure
 description: 了解 Azure Functions 的 Durable Functions 扩展如何保留数据
 author: ConnorMcMahon
 ms.topic: conceptual
-ms.date: 02/26/2021
+ms.date: 03/22/2021
 ms.author: v-junlch
-ms.openlocfilehash: 9efab32b53d8a2cf0f4cc774089dfe2f90384625
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: e8e88a56989e44705f6cf945c33045cf67bc104e
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101751698"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602735"
 ---
 # <a name="data-persistence-and-serialization-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 中的数据保留和序列化
 
@@ -111,7 +111,7 @@ namespace MyApplication
     {
         public override void Configure(IFunctionsHostBuilder builder)
         {
-            builder.Services.AddSingleton<IMessageSerializerSettingsFactory, CustomMessageSerializerSettingFactory>();
+            builder.Services.AddSingleton<IMessageSerializerSettingsFactory, CustomMessageSerializerSettingsFactory>();
             builder.Services.AddSingleton<IErrorSerializerSettingsFactory, CustomErrorSerializerSettingsFactory>();
         }
 

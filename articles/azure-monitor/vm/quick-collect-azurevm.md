@@ -1,19 +1,18 @@
 ---
 title: 使用 Azure Monitor 从 Azure 虚拟机收集数据 | Microsoft Docs
 description: 了解如何启用 Log Analytics 代理 VM 扩展，以及启用通过 Log Analytics 从 Azure VM 收集数据的功能。
-ms.subservice: logs
 ms.topic: quickstart
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 12/07/2020
+ms.date: 03/23/2021
 origin.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: 59c2850a2646fd157be149fb84681d1105f023c2
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: ce7f27588cbe1589e677b7031c499a1b57b2db47
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205556"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603527"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>使用 Azure Monitor 从 Azure 虚拟机收集数据
 
@@ -142,5 +141,5 @@ Azure Monitor 可以从你为长期分析和报告指定的 Windows 事件日志
 若要了解如何查看和分析数据，请继续本教程。
 
 > [!div class="nextstepaction"]
-> [在 Log Analytics 中查看或分析数据](../log-query/log-analytics-tutorial.md)
+> [在 Log Analytics 中查看或分析数据](../logs/log-analytics-tutorial.md)
 

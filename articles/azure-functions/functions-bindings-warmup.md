@@ -8,14 +8,14 @@ keywords: azure functions, functions, 事件处理, 预热, 冷启动, 高级, �
 ms.service: azure-functions
 ms.topic: reference
 ms.custom: devx-track-csharp
-ms.date: 01/04/2021
+ms.date: 03/22/2021
 ms.author: v-junlch
-ms.openlocfilehash: a804cc22530423bef0d3c23337ac390813c07e1e
-ms.sourcegitcommit: 79a5fbf0995801e4d1dea7f293da2f413787a7b9
+ms.openlocfilehash: ef075f236dc73fd562ec3683b8908a2fe7e57a52
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98022310"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602788"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions 预热触发器
 
@@ -28,7 +28,7 @@ ms.locfileid: "98022310"
 
 ## <a name="packages---functions-2x-and-higher"></a>包 - Functions 2.x 及更高版本
 
-需要 [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet 包版本 **3.0.5 或更高版本**。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub 存储库中提供了此包的源代码。 
+需要 [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet 包版本 **3.0.5 或更高版本**。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/main/src/WebJobs.Extensions/Extensions/Warmup) GitHub 存储库中提供了此包的源代码。 
 
 [!INCLUDE [functions-package](../../includes/functions-package-auto.md)]
 
@@ -195,7 +195,7 @@ Java 中不支持将预热触发器用作属性。
 |---------|---------|----------------------|
 | type | 不适用| 必需 - 必须设置为 `warmupTrigger`。 |
 | **direction** | 不适用| 必需 - 必须设置为 `in`。 |
-| name | 不适用| 必需 - 函数代码中使用的变量名称。|
+| **name** | 不适用| 必需 - 函数代码中使用的变量名称。|
 
 ## <a name="trigger---usage"></a>触发器 - 用法
 
@@ -211,4 +211,3 @@ Java 中不支持将预热触发器用作属性。
 ## <a name="next-steps"></a>后续步骤
 
 [详细了解 Azure Functions 触发器和绑定](functions-triggers-bindings.md)
-

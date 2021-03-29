@@ -2,22 +2,22 @@
 title: 在 Azure 的租户之间共享库映像
 description: 了解如何使用共享映像库和 PowerShell 跨 Azure 租户共享 VM 映像。
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
 ms.topic: how-to
 origin.date: 07/15/2019
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
 ms.reviewer: cynthn
-ms.openlocfilehash: cc2ab8fa7de8cae92e203d6b134fb6a31dc553b0
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 6746c4dfefe60bbbcf535f2349de09fc1afe2c18
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857077"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603251"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants-using-powershell"></a>使用 PowerShell 在 Azure 租户之间共享库 VM 映像
 
@@ -87,4 +87,4 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 
 也可使用 [Azure 门户](shared-images-portal.md)创建共享映像库资源。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

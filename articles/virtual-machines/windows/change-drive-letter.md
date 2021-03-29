@@ -1,23 +1,24 @@
 ---
 title: 将 VM 的 D 盘设为数据磁盘
 description: 介绍如何更改 Windows VM 的驱动器号，以将 D 盘用作数据驱动器。
-services: virtual-machines-windows
-ms.service: virtual-machines-windows
+services: virtual-machines
+ms.service: virtual-machines
+ms.collection: windows
 ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
 origin.date: 01/02/2018
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: e7aa31345c4dfaeb76c803549942188b539515fa
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 7bda2cc8746f997d66d1b9a98f46b6cfe8bac0c4
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104838"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603692"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>使用 D: 盘作为 Windows VM 上的数据驱动器
 如果应用程序需要使用 D 盘存储数据，请按照以下说明使用其他驱动器号作为临时磁盘。 切勿使用临时磁盘来存储需要保存的数据。
@@ -43,11 +44,11 @@ ms.locfileid: "93104838"
 
 ## <a name="change-the-drive-letters"></a>更改驱动器号
 1. VM 重新启动后，重新登录到 VM。
-2. 单击“开始”菜单，键入 **diskmgmt.msc** ，并按 Enter。 此时会启动“磁盘管理”。
-3. 右键单击 **D** （临时存储驱动器），并选择“更改驱动器号和路径”。
-4. 在“驱动器号”下，选择一个新驱动器，如 **T** ，并单击“确定”。 
+2. 单击“开始”菜单，键入 **diskmgmt.msc**，并按 Enter。 此时会启动“磁盘管理”。
+3. 右键单击 **D**（临时存储驱动器），并选择“更改驱动器号和路径”。
+4. 在“驱动器号”下，选择一个新驱动器，如 **T**，并单击“确定”。 
 5. 右键单击数据磁盘，并选择“更改驱动器号和路径”。
-6. 在“驱动器号”下，选择驱动器 **D** ，并单击“确定”。 
+6. 在“驱动器号”下，选择驱动器 **D**，并单击“确定”。 
 
 ## <a name="move-pagefilesys-back-to-the-temporary-storage-drive"></a>将 pagefile.sys 移回临时存储驱动器
 1. 右键单击“开始”菜单，并选择“系统”。
@@ -55,12 +56,12 @@ ms.locfileid: "93104838"
 3. 在“性能”部分中，选择“设置” 。
 4. 选择“高级”选项卡。
 5. 在“虚拟内存”部分中，选择“更改” 。
-6. 选择 OS 驱动器 **C** ，并依次单击“无分页文件”、“设置” 。
-7. 选择临时存储驱动器 **T** ，并依次单击“系统管理的大小”、“设置”。
+6. 选择 OS 驱动器 **C**，并依次单击“无分页文件”、“设置” 。
+7. 选择临时存储驱动器 **T**，并依次单击“系统管理的大小”、“设置”。
 8. 单击“应用” 。 你会收到警告，指出计算机需要重新启动才能使更改生效。
 9. 重启虚拟机。
 
 ## <a name="next-steps"></a>后续步骤
 * 可以通过[附加更多数据磁盘](attach-managed-disk-portal.md)来增加虚拟机的可用存储空间。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -2,17 +2,16 @@
 title: 智能组
 description: 智能组是警报的聚合，可帮助你降低警报噪音
 ms.topic: conceptual
-ms.subservice: alerts
 author: Johnnytechn
 origin.date: 01/28/2018
-ms.date: 12/08/2020
+ms.date: 03/22/2021
 ms.author: v-johya
-ms.openlocfilehash: fa887df9f7c3e70e184d874b1a213cb5f5ea90f2
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: a7a41184070f6fbd88456c084f1e47b24ca1dba6
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205009"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603433"
 ---
 # <a name="smart-groups"></a>智能组
 

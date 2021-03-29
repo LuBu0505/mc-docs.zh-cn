@@ -2,17 +2,16 @@
 title: 删除和恢复 Azure Log Analytics 工作区 | Microsoft Docs
 description: 了解在个人订阅中创建 Log Analytics 工作区后如何删除它，以及如何重构工作区模型。
 origin.date: 01/14/2020
-ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
-ms.openlocfilehash: 59ab7fd494e8035ba1426ff7aff44465d4bd467b
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/23/2021
+ms.openlocfilehash: 1b21e37f6f07fc28d3dac79a5095344e465c250a
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205845"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603786"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>删除和恢复 Azure Log Analytics 工作区
 
@@ -45,7 +44,7 @@ ms.locfileid: "102205845"
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 登录 [Azure 门户](https://portal.azure.cn)。 
+1. 登录到 [Azure 门户](https://portal.azure.cn)。 
 2. 在 Azure 门户中，选择“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”。
 3. 在 Log Analytics 工作区的列表中，选择一个工作区，然后从中间窗格的顶端单击“删除”。
 4. 确认页面随即出现，显示过去一周内工作区的数据引入。 
@@ -88,7 +87,7 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 登录 [Azure 门户](https://portal.azure.cn)。 
+1. 登录到 [Azure 门户](https://portal.azure.cn)。 
 2. 在 Azure 门户中，选择“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”。 你将看到所选范围内的工作区列表。
 3. 单击左上侧菜单中的“恢复”，打开包含处于软删除状态且可恢复的工作区页面。
 

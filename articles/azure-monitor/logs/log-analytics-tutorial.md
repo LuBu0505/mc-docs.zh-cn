@@ -1,17 +1,16 @@
 ---
 title: Log Analytics 教程
 description: 本教程介绍如何使用 Azure Monitor 中 Log Analytics 的功能生成运行日志查询并在 Azure 门户中分析其结果。
-ms.subservice: logs
 ms.topic: tutorial
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
-ms.openlocfilehash: f004f5571486da1d88c8cfd020f0e86d34b56463
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/23/2021
+ms.openlocfilehash: 7693077aac88dd61b8a89141551b7bcacefaac8b
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205808"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603514"
 ---
 # <a name="log-analytics-tutorial"></a>Log Analytics 教程
 Log Analytics 是 Azure 门户中的工具，用于根据 Azure Monitor 日志收集的数据编辑和运行日志查询，并交互式分析其结果。 可以使用 Log Analytics 查询来检索符合特定条件的记录、确定趋势、分析模式，并提供对数据的各种见解。 
@@ -34,7 +33,7 @@ Log Analytics 是 Azure 门户中的工具，用于根据 Azure Monitor 日志�
 
 <!--Not available in MC: https://portal.azure.cn/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade-->
 ## <a name="open-log-analytics"></a>打开 Log Analytics
-从订阅的 Azure Monitor 菜单中选择“日志”。 这会将初始范围设置为 Log Analytics 工作区，这意味着查询将从该工作区中的所有数据中进行选择。 如果从 Azure 资源的菜单中选择“日志”，则范围将设置为仅来自该资源的记录。 有关范围的详细信息，请参阅[日志查询范围](../log-query/scope.md)。
+从订阅的 Azure Monitor 菜单中选择“日志”。 这会将初始范围设置为 Log Analytics 工作区，这意味着查询将从该工作区中的所有数据中进行选择。 如果从 Azure 资源的菜单中选择“日志”，则范围将设置为仅来自该资源的记录。 有关范围的详细信息，请参阅[日志查询范围](./scope.md)。
 
 可以在屏幕左上角查看范围。 如果使用自己的环境，则会看到一个用于选择其他范围的选项，但此选项在演示环境中不可用。
 

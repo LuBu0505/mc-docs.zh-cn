@@ -1,22 +1,23 @@
 ---
 title: 如何将 Azure 磁盘映射到 Windows VM 来宾磁盘
 description: 如何确定构成 Windows VM 来宾磁盘基础的 Azure 磁盘。
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: disks
+ms.collection: windows
 ms.workload: infrastructure-services
 ms.topic: how-to
 origin.date: 11/17/2020
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 01/04/2021
 ms.author: v-yeche
-ms.openlocfilehash: 65440992203e6c6e98a7431e898e662a0015c240
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 5a1d871821eeb4f4bd884d407f1c53de9d484103
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102052852"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603350"
 ---
 <!--Verified successfully-->
 # <a name="how-to-map-azure-disks-to-windows-vm-guest-disks"></a>如何将 Azure 磁盘映射到 Windows VM 来宾磁盘

@@ -2,22 +2,24 @@
 title: 适用于 Windows 的 Azure 诊断扩展
 description: 使用 Azure 诊断扩展监视 Azure Windows VM
 manager: ashwink
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.collection: windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 origin.date: 04/06/2018
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b3fe2954ccacab922fb4915f2f197a320bb5b5d6
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 651b112f2a86837c6494596d3994294b1f2e3f03
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054390"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603829"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>适用于 Windows VM 的 Azure 诊断扩展
 
@@ -37,7 +39,7 @@ Azure 诊断扩展要求目标虚拟机已连接到 Internet。
 
 ## <a name="extension-schema"></a>扩展架构
 
-[本文档介绍了 Azure 诊断扩展架构和属性值。](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
+[本文档介绍了 Azure 诊断扩展架构和属性值。](../../azure-monitor/agents/diagnostics-extension-schema-windows.md)
 
 ## <a name="template-deployment"></a>模板部署
 
@@ -73,7 +75,7 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup `
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure CLI 运行以下命令。
 
@@ -81,14 +83,14 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup `
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-有关 Azure 诊断扩展的更全面的故障排除指南，请[参阅此文章](../../azure-monitor/platform/diagnostics-extension-troubleshooting.md)。
+有关 Azure 诊断扩展的更全面的故障排除指南，请[参阅此文章](../../azure-monitor/agents/diagnostics-extension-troubleshooting.md)。
 
 ### <a name="support"></a>支持
 
 如果对本文中的任何观点存在疑问，可以联系 [Azure 支持](https://support.azure.cn/support/contact/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://support.azure.cn/support/support-azure/)提交请求。 有关使用 Azure 支持的信息，请阅读 [Azure 支持常见问题](https://www.azure.cn/support/faq/)。
 
 ## <a name="next-steps"></a>后续步骤
-* [详细了解 Azure 诊断扩展](../../azure-monitor/platform/diagnostics-extension-overview.md)
-* [查看扩展架构和版本](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
+* [详细了解 Azure 诊断扩展](../../azure-monitor/agents/diagnostics-extension-overview.md)
+* [查看扩展架构和版本](../../azure-monitor/agents/diagnostics-extension-schema-windows.md)
 
 <!--Update_Description: update meta properties, wording update, update link-->

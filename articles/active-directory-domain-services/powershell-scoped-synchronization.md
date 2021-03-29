@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 03/24/2021
 ms.author: v-junlch
-ms.openlocfilehash: 35985b9e3493581a3ee204c3ff70755b000e813a
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: a37e9a84fea9ff9802f738f5f11f8f8d3dfc884d
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99058613"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602666"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-azure-ad-powershell"></a>使用 Azure AD PowerShell 配置从 Azure AD 到 Azure Active Directory 域服务的作用域同步
 
@@ -144,16 +144,16 @@ Write-Output "******************************************************************
     出现提示时，使用 [Connect-AzureAD][Connect-AzureAD] cmdlet 为全局管理员指定用于登录到 Azure AD 租户的凭据：
 
     ```powershell
-    // Connect to your Azure AD tenant
+    # Connect to your Azure AD tenant
     Connect-AzureAD -AzureEnvironmentName AzureChinaCloud
 
-    // Retrieve the Azure AD DS resource.
+    # Retrieve the Azure AD DS resource.
     $DomainServicesResource = Get-AzResource -ResourceType "Microsoft.AAD/DomainServices"
 
-    // Enable group-based scoped synchronization.
+    # Enable group-based scoped synchronization.
     $enableScopedSync = @{"filteredSync" = "Enabled"}
 
-    // Update the Azure AD DS resource
+    # Update the Azure AD DS resource
     Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $enableScopedSync
     ```
 
@@ -194,16 +194,16 @@ Write-Output "******************************************************************
 出现提示时，使用 [Connect-AzureAD][Connect-AzureAD] cmdlet 为全局管理员指定用于登录到 Azure AD 租户的凭据：
 
 ```powershell
-// Connect to your Azure AD tenant
+# Connect to your Azure AD tenant
 Connect-AzureAD -AzureEnvironmentName AzureChinaCloud
 
-// Retrieve the Azure AD DS resource.
+# Retrieve the Azure AD DS resource.
 $DomainServicesResource = Get-AzResource -ResourceType "Microsoft.AAD/DomainServices"
 
-// Disable group-based scoped synchronization.
+# Disable group-based scoped synchronization.
 $disableScopedSync = @{"filteredSync" = "Disabled"}
 
-// Update the Azure AD DS resource
+# Update the Azure AD DS resource
 Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $disableScopedSync
 ```
 
@@ -222,4 +222,3 @@ Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $disableScoped
 
 <!-- EXTERNAL LINKS -->
 [Connect-AzureAD]: https://docs.microsoft.com/powershell/module/azuread/connect-azuread
-

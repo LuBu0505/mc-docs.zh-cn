@@ -4,25 +4,24 @@ description: Azure Monitor 警报的常见问题和可能的解决方法。
 author: Johnnytechn
 ms.author: v-johya
 ms.topic: reference
-ms.date: 02/20/2021
-ms.subservice: alerts
-ms.openlocfilehash: beadd6327b463b0189121d293cfce88c989c7535
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/22/2021
+ms.openlocfilehash: 8ae25ea9fa28042dd33638c5c85f1eecb32cd35e
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205003"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603427"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>排查 Azure Monitor 警报的问题
 
 本文讨论 Azure Monitor 警报和通知的常见问题。
 
-在监视数据中发现重要情况时，Azure Monitor 警报会主动通知你。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 有关警报的详细信息，请参阅 [Azure 中的警报概述](../platform/alerts-overview.md)。
+在监视数据中发现重要情况时，Azure Monitor 警报会主动通知你。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 有关警报的详细信息，请参阅 [Azure 中的警报概述](./alerts-overview.md)。
 
 如果你遇到警报触发问题或警报未按预期触发问题，请参阅下面的文章。 可以在 Azure 门户中查看已触发的警报。
 
 - [排查 Azure 中的 Azure Monitor 指标警报问题](alerts-troubleshoot-metric.md)  
-- [排查 Azure 中的 Azure Monitor 日志警报问题](alerts-troubleshoot-metric.md)
+- [排查 Azure 中的 Azure Monitor 日志警报问题](alerts-troubleshoot-log.md)
 
 如果警报根据 Azure 门户按预期触发，但未出现正确的通知，请使用本文其余部分中的信息来解决该问题。
 
@@ -36,7 +35,7 @@ ms.locfileid: "102205003"
 
 1. **是否某个 [操作规则](../alerts/alerts-action-rules.md)阻止了该电子邮件**？
 
-    在门户中单击触发的警报进行检查，查看“历史记录”选项卡中是否有已阻止的[操作组](../platform/action-groups.md)：
+    在门户中单击触发的警报进行检查，查看“历史记录”选项卡中是否有已阻止的[操作组](./action-groups.md)：
 
     ![警报操作规则 -“阻止”历史记录](./media/alerts-troubleshoot/history-action-rule.png)
 
@@ -92,7 +91,7 @@ ms.locfileid: "102205003"
 
 1. **是否某个 [操作规则](../alerts/alerts-action-rules.md)阻止了该操作？**
 
-    在门户中单击触发的警报进行检查，查看“历史记录”选项卡中是否有已阻止的[操作组](../platform/action-groups.md)： 
+    在门户中单击触发的警报进行检查，查看“历史记录”选项卡中是否有已阻止的[操作组](./action-groups.md)： 
 
     ![警报操作规则 -“阻止”历史记录](./media/alerts-troubleshoot/history-action-rule.png)
 
@@ -125,7 +124,7 @@ ms.locfileid: "102205003"
 
 1. **是否某个操作规则阻止了该操作？**
 
-    在门户中单击触发的警报进行检查，查看“历史记录”选项卡中是否有已阻止的[操作组](../platform/action-groups.md)：
+    在门户中单击触发的警报进行检查，查看“历史记录”选项卡中是否有已阻止的[操作组](./action-groups.md)：
 
     ![警报操作规则 -“阻止”历史记录](./media/alerts-troubleshoot/history-action-rule.png)
  
@@ -135,7 +134,7 @@ ms.locfileid: "102205003"
 
     1. **是否已阻止源 IP 地址？**
     
-       将需从其调用 Webhook 的 [IP 地址](../platform/action-groups.md#action-specific-information)加入允许列表。
+       将需从其调用 Webhook 的 [IP 地址](./action-groups.md#action-specific-information)加入允许列表。
 
     1. **你的 Webhook 终结点是否正常工作？**
 
@@ -177,12 +176,12 @@ ms.locfileid: "102205003"
 
     检查在操作级别指定的格式是否是你需要的格式。 例如，你可能已开发响应警报的代码（Webhook、函数、逻辑应用等），这些代码需要一种格式，但是稍后你或其他人在操作中指定了另一种格式。  
 
-    另外，检查[活动日志警报](../alerts/activity-log-alerts-webhook.md)、[日志搜索警报](../alerts/alerts-log-webhook.md)（Application Insights 和日志分析）、[指标警报](alerts-metric-near-real-time.md#payload-schema)、[通用警报架构](../alerts/alerts-common-schema-definitions.md)以及已弃用的[经典指标警报](../platform/alerts-webhooks.md)的有效负载格式 (JSON)。
+    另外，检查[活动日志警报](../alerts/activity-log-alerts-webhook.md)、[日志搜索警报](../alerts/alerts-log-webhook.md)（Application Insights 和日志分析）、[指标警报](alerts-metric-near-real-time.md#payload-schema)、[通用警报架构](../alerts/alerts-common-schema-definitions.md)以及已弃用的[经典指标警报](./alerts-webhooks.md)的有效负载格式 (JSON)。
 
  
 1. **活动日志警报：活动日志中是否有该信息？** 
 
-    [活动日志警报](../platform/activity-log-alerts.md)是基于写入到 Azure 活动日志的事件（例如，有关创建、更新或删除 Azure 资源的事件、服务运行状况和资源运行状况事件，或者 Azure 顾问和 Azure Policy 发现的情况）的警报。 如果你收到了基于活动日志的警报，但所需的某些字段丢失或不正确，请首先检查活动日志本身中的事件。 如果 Azure 资源未在其活动日志事件中写入所需字段，则这些字段将不会包含在相应的警报中。 
+    [活动日志警报](./activity-log-alerts.md)是基于写入到 Azure 活动日志的事件（例如，有关创建、更新或删除 Azure 资源的事件、服务运行状况和资源运行状况事件，或者 Azure 顾问和 Azure Policy 发现的情况）的警报。 如果你收到了基于活动日志的警报，但所需的某些字段丢失或不正确，请首先检查活动日志本身中的事件。 如果 Azure 资源未在其活动日志事件中写入所需字段，则这些字段将不会包含在相应的警报中。 
 
 ## <a name="action-rule-is-not-working-as-expected"></a>操作规则未按预期发挥作用 
 
@@ -242,10 +241,10 @@ ms.locfileid: "102205003"
 
 1. **是否已验证操作规则参数？**  
 
-    查看[操作规则文档](../alerts/alerts-action-rules.md)或[操作规则 PowerShell Set-AzActionRule](https://docs.microsoft.com/powershell/module/az.alertsmanagement/set-azactionrule?view=azps-3.5.0) 命令。 
+    查看[操作规则文档](../alerts/alerts-action-rules.md)或[操作规则 PowerShell Set-AzActionRule](https://docs.microsoft.com/powershell/module/az.alertsmanagement/set-azactionrule) 命令。 
 
 
 ## <a name="next-steps"></a>后续步骤
 - 如果使用的是日志警报，另请参阅[排查日志警报问题](./alerts-troubleshoot-log.md)。
-- 返回 [Azure 门户](https://portal.azure.cn)，检查是否已遵循上述指导解决了问题 
+- 返回 [Azure 门户](https://portal.azure.cn)，检查是否已遵循上述指导解决了问题
 

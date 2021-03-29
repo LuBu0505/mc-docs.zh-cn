@@ -10,16 +10,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 01/19/2021
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: no
 ms.testdate: 09/28/2020
 ms.author: v-yeche
-ms.openlocfilehash: 73599d1bc581ae8b573f44c68286b1274f88d10d
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 54b859ab6a59b47765f771ad500153c66b5513b9
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054034"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603138"
 ---
 # <a name="what-is-traffic-manager"></a>什么是流量管理器？
 Azure 流量管理器是基于 DNS 的流量负载均衡器。 此服务让你可以在全球 Azure 区域将流量分布到面向公众的应用程序。 流量管理器还提供具有高可用性和快速响应能力的公共终结点。
@@ -27,10 +27,13 @@ Azure 流量管理器是基于 DNS 的流量负载均衡器。 此服务让你�
 流量管理器根据流量路由方法，使用 DNS 将客户端请求定向到合适的服务终结点。 流量管理器还为每个终结点提供运行状况监视功能。 终结点可以是托管在 Azure 内部或外部的任何面向 Internet 的服务。 流量管理器提供多种[流量路由方法](traffic-manager-routing-methods.md)和[终结点监视选项](traffic-manager-monitoring.md)来满足不同的应用程序需求和自动故障转移模型。 流量管理器能够灵活应对故障，包括整个 Azure 区域的故障。
 
 >[!NOTE]
-> Azure 为方案提供了一套完全托管的负载均衡解决方案。 若要寻求传输层安全性 (TLS) 协议终止（“SSL 卸载”）或每个 HTTP/HTTPS 请求的应用层处理，请查看[应用程序网关](../application-gateway/overview.md)。 如果想要实现区域负载均衡，请查看[负载均衡器](../load-balancer/load-balancer-overview.md)。 端到端场景可从结合所需的解决方案中受益。
+> Azure 为方案提供了一套完全托管的负载均衡解决方案。 
+> * 若要在应用程序层某个区域中的服务器之间实现负载均衡，请查看[应用程序网关](../application-gateway/overview.md)。
+> * 若要执行网络层负载均衡，请查看[负载均衡器](../load-balancer/load-balancer-overview.md)。 
 >
 
-<!--NOT AVAIABLE ON [Overview of load-balancing options in Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)-->
+<!--NOT AVAILABLE ON [Front Door](../frontdoor/front-door-overview.md)-->
+<!--NOT AVAILABLE ON [Overview of load-balancing options in Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)-->
 
 流量管理器提供了以下功能：
 

@@ -5,17 +5,17 @@ ms.service: virtual-machines
 ms.topic: conceptual
 origin.date: 07/19/2017
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 03/29/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: d7299ad2dbaeeeb24481a5190103fe7f263d8885
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: a5c503da74d006537cdcd30c50a99188f8749dad
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105131"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603459"
 ---
 <!--Verified Successfully from rename articles-->
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS 磁盘的备份和灾难恢复
@@ -50,11 +50,11 @@ Azure 平台旨在从这些故障中复原。 重大灾难可能会导致大量�
 
 鉴于此体系结构，Azure 为 IaaS 磁盘不间断提供企业级数据持续性，年化故障率为 0%，达到行业领先水平。
 
-<!--Not Available on [annualized failure rate](https://en.wikipedia.org/wiki/Annualized_failure_rate)-->
+<!--NOT AVAILABLE ON wikipedia.org-->
 
 计算主机或存储平台上的本地硬件故障有时可能会导致 VM 暂时不可用，有关 VM 可用性的 [Azure SLA](https://www.azure.cn/support/sla/virtual-machines/) 对此做了介绍。 Azure 还提供了有关使用 Azure 高级 SSD 的单 VM 实例的行业领先 SLA。
 
-为了保护应用程序工作负荷不受磁盘或 VM 暂时不可用带来的故障时间影响，客户可以使用[可用性集](./manage-availability.md)。 可用性集中的两个或多个虚拟机为应用程序提供冗余。 然后，Azure 在电源、网络和服务器组件不同的单独容错域中创建这些 VM 和磁盘。
+为了保护应用程序工作负荷不受磁盘或 VM 暂时不可用带来的故障时间影响，客户可以使用[可用性集](./availability.md)。 可用性集中的两个或多个虚拟机为应用程序提供冗余。 然后，Azure 在电源、网络和服务器组件不同的单独容错域中创建这些 VM 和磁盘。
 
 由于这些单独的容错域，本地硬件故障通常不会同时影响可用性集中的多个 VM。 单独的容错域为应用程序提供了高可用性。 如果需要高可用性，最好使用可用性集。 下一部分介绍灾难恢复方面。
 
@@ -105,24 +105,24 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 
 ## <a name="disaster-recovery-solution-azure-backup"></a>灾难恢复解决方案：Azure 备份 
 
-[Azure 备份服务](https://www.azure.cn/home/features/backup/)用于备份和 DR，适用于[托管磁盘](managed-disks-overview.md)和非托管磁盘。 可以创建备份作业，其中包含基于时间的备份、VM 轻松还原和备份保留策略。
+[Azure 备份服务](https://azure.microsoft.com/services/backup/)用于备份和 DR，适用于[托管磁盘](managed-disks-overview.md)和非托管磁盘。 可以创建备份作业，其中包含基于时间的备份、VM 轻松还原和备份保留策略。
 
 如果将[高级 SSD](disks-types.md)、[托管磁盘](managed-disks-overview.md)或其他类型磁盘与[本地冗余存储](../storage/common/storage-redundancy.md#locally-redundant-storage)选项结合使用，请务必创建定期 DR 备份。 Azure 备份将数据存储到恢复服务保管库中，以供长期保留。 对备份恢复服务保管库选择[异地冗余存储](../storage/common/storage-redundancy.md#geo-redundant-storage)选项。 该选项可确保将备份复制到其他 Azure 区域，以免受到区域灾难影响。
 
 对于非托管磁盘，可将本地冗余存储类型用于 IaaS 磁盘，但要确保为 Azure 备份恢复服务保管库启用异地冗余存储选项。
 
 > [!NOTE]
-> 如果将[异地冗余存储](../storage/common/storage-redundancy.md#geo-redundant-storage)或[读取访问权限异地冗余存储](../storage/common/storage-redundancy.md#read-access-to-data-in-the-secondary-region)选项用于非托管磁盘，仍需要为备份和 DR 生成一致性快照。 使用 [Azure 备份](https://www.azure.cn/home/features/backup/)或[一致性快照](#alternative-solution-consistent-snapshots)。
+> 如果将[异地冗余存储](../storage/common/storage-redundancy.md#geo-redundant-storage)或[读取访问权限异地冗余存储](../storage/common/storage-redundancy.md#read-access-to-data-in-the-secondary-region)选项用于非托管磁盘，仍需要为备份和 DR 生成一致性快照。 使用 [Azure 备份](https://azure.microsoft.com/services/backup/)或[一致性快照](#alternative-solution-consistent-snapshots)。
 
  下表汇总了可用于 DR 的解决方案。
 
 | 方案 | 自动复制 | DR 解决方案 |
 | --- | --- | --- |
-| 高级·SSD 磁盘 | 本地（[本地冗余存储](../storage/common/storage-redundancy.md#locally-redundant-storage)） | [Azure 备份](https://www.azure.cn/home/features/backup/) |
-| 托管磁盘 | 本地（[本地冗余存储](../storage/common/storage-redundancy.md#locally-redundant-storage)） | [Azure 备份](https://www.azure.cn/home/features/backup/) |
-| 非托管本地冗余存储磁盘 | 本地（[本地冗余存储](../storage/common/storage-redundancy.md#locally-redundant-storage)） | [Azure 备份](https://www.azure.cn/home/features/backup/) |
-| 非托管异地冗余存储磁盘 | 跨区域（[异地冗余存储](../storage/common/storage-redundancy.md#geo-redundant-storage)） | [Azure 备份](https://www.azure.cn/home/features/backup/)<br/>[一致性快照](#alternative-solution-consistent-snapshots) |
-| 非托管读取访问权限异地冗余存储磁盘 | 跨区域（[读取访问权限异地冗余存储](../storage/common/storage-redundancy.md#read-access-to-data-in-the-secondary-region)） | [Azure 备份](https://www.azure.cn/home/features/backup/)<br/>[一致性快照](#alternative-solution-consistent-snapshots) |
+| 高级·SSD 磁盘 | 本地（[本地冗余存储](../storage/common/storage-redundancy.md#locally-redundant-storage)） | [Azure 备份](https://azure.microsoft.com/services/backup/) |
+| 托管磁盘 | 本地（[本地冗余存储](../storage/common/storage-redundancy.md#locally-redundant-storage)） | [Azure 备份](https://azure.microsoft.com/services/backup/) |
+| 非托管本地冗余存储磁盘 | 本地（[本地冗余存储](../storage/common/storage-redundancy.md#locally-redundant-storage)） | [Azure 备份](https://azure.microsoft.com/services/backup/) |
+| 非托管异地冗余存储磁盘 | 跨区域（[异地冗余存储](../storage/common/storage-redundancy.md#geo-redundant-storage)） | [Azure 备份](https://azure.microsoft.com/services/backup/)<br/>[一致性快照](#alternative-solution-consistent-snapshots) |
+| 非托管读取访问权限异地冗余存储磁盘 | 跨区域（[读取访问权限异地冗余存储](../storage/common/storage-redundancy.md#read-access-to-data-in-the-secondary-region)） | [Azure 备份](https://azure.microsoft.com/services/backup/)<br/>[一致性快照](#alternative-solution-consistent-snapshots) |
 
 在可用性集和 Azure 备份中使用托管磁盘是实现高可用性的最佳方式。 如果使用非托管磁盘，仍可以使用 Azure 备份进行 DR。 如果无法使用 Azure 备份，请采用后面部分所述的[一致性快照](#alternative-solution-consistent-snapshots)，作为备用的备份和 DR 解决方案。
 
@@ -274,4 +274,4 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 [1]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-1.png
 [2]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-2.png
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

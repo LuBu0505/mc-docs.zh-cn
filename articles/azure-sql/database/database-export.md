@@ -10,14 +10,14 @@ ms.custom: sqldbrb=2
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 01/11/2021
-ms.date: 02/01/2021
+ms.date: 03/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 8a65b7ce8243a7efb1654223713f659db05fa889
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 6dd4839381daed4248d8c9f2aaa249bd5b90936f
+ms.sourcegitcommit: 308ca551066252e68198391c3e4d4b1de348deb9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99060170"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105601782"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>导出到 BACPAC 文件 - Azure SQL 数据库和 Azure SQL 托管实例
 
@@ -104,6 +104,13 @@ while ($exportStatus.Status -eq "InProgress")
 }
 [Console]::WriteLine("")
 $exportStatus
+```
+## <a name="cancel-the-export-request"></a>取消导出请求
+
+使用[数据库操作 - 取消 API](https://docs.microsoft.com/rest/api/sql/databaseoperations/cancel) 或 Powershell [Stop-AzSqlDatabaseActivity 命令](https://docs.microsoft.com/powershell/module/az.sql/Stop-AzSqlDatabaseActivity)，此处是 Powershell 命令的示例。
+
+```cmd
+Stop-AzSqlDatabaseActivity -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName -OperationId $Operation.OperationId
 ```
 
 ## <a name="next-steps"></a>后续步骤

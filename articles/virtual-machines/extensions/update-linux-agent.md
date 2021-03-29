@@ -1,27 +1,22 @@
 ---
 title: 从 GitHub 更新 Azure Linux 代理
 description: 了解如何为 Azure 中的 Linux VM 更新 Azure Linux 代理
-services: virtual-machines-linux
-manager: gwallace
-tags: azure-resource-manager,azure-service-management
-ms.assetid: f1f19300-987d-4f29-9393-9aba866f049c
-ms.service: virtual-machines-linux
-ms.subservice: extensions
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.collection: linux
 origin.date: 08/02/2017
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 11/02/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2387263e71e3fb593d9597a8769ac5524e0402cf
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: d12e561c09e07474ba10e0f4659d0fd0953df177
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856974"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603174"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>如何更新 VM 上的 Azure Linux 代理
 
@@ -88,9 +83,10 @@ initctl restart walinuxagent
 systemctl restart walinuxagent.service
 ```
 
-## <a name="red-hat--centos"></a>Red Hat / CentOS
+<!--REMOVE Red Hat-->
+## <a name="centos"></a>CentOS
 
-### <a name="rhelcentos-6"></a>RHEL/CentOS 6
+### <a name="centos-6"></a>CentOS 6
 
 检查当前程序包的版本
 
@@ -137,7 +133,7 @@ sudo sed -i 's/\# AutoUpdate.Enabled=y/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 sudo service waagent restart
 ```
 
-## <a name="rhelcentos-7"></a>RHEL/CentOS 7
+## <a name="centos-7"></a>CentOS 7
 
 检查当前程序包的版本
 
@@ -337,14 +333,14 @@ Restart the waagent service
 sudo systemctl restart walinuxagent.service
 ```
 
-<!-- Not Available on ## Oracle Linux 6 and Oracle Linux 7 -->
+<!--NOT AVAILABLE ON ## Oracle Linux 6 and Oracle Linux 7-->
 
 ## <a name="update-the-linux-agent-when-no-agent-package-exists-for-distribution"></a>分发不存在代理程序包时，请更新 Linux 代理
 
 通过在命令行上键入 `sudo yum install wget` 来安装 wget（某些发行版，例如 CentOS，未在默认情况下安装它，）。
 
 <!--MOONCAKE CUSTOMIZATION ON THE ABOVE SEVTENCE-->
-<!-- Not Available on Red Hat, and Oracle -->
+<!--NOT AVAILABLE ON Red Hat, and Oracle -->
 
 ### <a name="1-download-the-latest-version"></a>1.下载最新版本
 在网页中打开 [GitHub 中的 Azure Linux 代理版本](https://github.com/Azure/WALinuxAgent/releases)，并找到最新的版本号。 （可以通过键入 `waagent --version` 查明当前版本。）
@@ -422,4 +418,4 @@ waagent -version
 
 有关 Azure Linux 代理的详细信息，请参阅 [Azure Linux 代理自述文件](https://github.com/Azure/WALinuxAgent)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

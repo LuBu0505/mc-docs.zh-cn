@@ -1,23 +1,23 @@
 ---
 title: Azure Monitor 中的日志查询入门 | Azure Docs
 description: 本文提供了有关在 Azure Monitor 中编写日志查询的入门教程。
-ms.subservice: logs
 ms.topic: tutorial
 origin.date: 10/24/2019
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
-ms.openlocfilehash: 3ddb718e3e34f479dea4034d094087d7066abbca
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/23/2021
+ms.openlocfilehash: b4e6272657dba8def14fcb9027399c497cad912f
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205810"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603777"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Monitor 中的日志查询入门
 
 > [!NOTE]
-> 如果要从至少一台虚拟机收集数据，则可以在自己的环境中完成此练习。 如果没有，请使用[演示环境](https://portal.azure.cn/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)，其中包含大量示例数据。  如果你知道如何采用 KQL 进行查询，只是需要基于资源类型快速创建有用的查询，请参阅[保存的示例查询窗格](../logs/example-queries.md)。
+> 如果要从至少一台虚拟机收集数据，则可以在自己的环境中完成此练习。 如果你知道如何采用 KQL 进行查询，只是需要基于资源类型快速创建有用的查询，请参阅[保存的示例查询窗格](../logs/example-queries.md)。
+<!--Not available in MC: https://portal.azure.cn/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade-->
 
 在本教程中，你将学习在 Azure Monitor 中编写日志查询。 具体内容包括：
 

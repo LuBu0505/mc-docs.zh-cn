@@ -2,17 +2,18 @@
 title: 管理 Azure Application Insights 的使用情况和成本 | Azure Docs
 description: 在 Application Insights 中管理遥测量并监视成本。
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 author: Johnnytechn
 origin.date: 11/27/2019
 ms.author: v-johya
-ms.date: 02/22/2021
+ms.date: 03/25/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: cfba0b0d8021433c1ed9fc1afeb0946e1eb8b05d
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: fa89b1656da1a702af6ede2fdc43de94cec291ac
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197446"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603496"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -67,6 +68,7 @@ E. 设置每日数据量上限。
 
 若要更深入地调查 Application Insights 使用情况，请打开“指标”页，添加名为“数据点容量”的指标，然后选择“应用拆分”选项以按“遥测项类型”拆分数据。
 
+<!--Not available in MC-->
 
 ### <a name="using-data-volume-metrics"></a>使用数据量指标
 <a id="understanding-ingested-data-volume"></a>
@@ -286,7 +288,7 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 ### <a name="understanding-billed-usage-on-the-legacy-enterprise-per-node-tier"></a>了解旧式企业（按节点）层的计费用量 
 
-如下面详述，旧式企业（按节点）层合并了订阅中所有 Application Insights 资源的用量，以计算节点数和数据超额量。 由于这种合并过程，**对于订阅中的所有 Application Insights 资源，只会报告一个资源的用量**。  这样，让[计费用量](/azure-monitor/app/pricing#viewing-application-insights-usage-on-your-azure-bill)与所观察到的每个 Application Insights 资源的用量相符合就变得非常复杂。 
+如下面详述，旧式企业（按节点）层合并了订阅中所有 Application Insights 资源的用量，以计算节点数和数据超额量。 由于这种合并过程，**对于订阅中的所有 Application Insights 资源，只会报告一个资源的用量**。  这样，让[计费用量](#viewing-application-insights-usage-on-your-azure-bill)与所观察到的每个 Application Insights 资源的用量相符合就变得非常复杂。 
 
 > [!WARNING]
 > 由于在旧式企业（按节点）层中跟踪和了解 Application Insights 资源用量非常复杂，因此我们强烈建议使用当前的“即用即付”定价层。 

@@ -1,28 +1,22 @@
 ---
 title: 重置对 Azure Linux VM 的访问权限
 description: 如何使用 VMAccess 扩展和 Azure CLI 在 Linux VM 上管理管理员用户和重置访问权限
-services: virtual-machines-linux
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: 261a9646-1f93-407e-951e-0be7226b3064
-ms.service: virtual-machines-linux
-ms.subservice: extensions
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.collection: linux
 origin.date: 05/10/2018
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7303787656bc0d139fe3fd74a2fc667495b6e75e
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: c0fa2b8f9b8c5ae4b256a500c3e293de5b2f9a20
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856973"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603171"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>配合使用 VMAccess 扩展和 Azure CLI 管理管理用户、SSH，并检查或修复 Linux VM 上的磁盘
 ## <a name="overview"></a>概述
@@ -47,8 +41,8 @@ VM 访问扩展可以针对这些 Linux 分发运行：
 | CentOS | CentOS 6.3+、7.0+ |
 | CoreOS | 494.4.0+ |
 
-<!-- Not Available on | Oracle Linux | 6.4+、7.0+ |-->
-<!--Not Available on | RedHat | RHEL 6.7+, 7.1+ |--->
+<!--NOT AVAILABLE ON | RedHat | RHEL 6.7+, 7.1+ |-->
+<!--NOT AVAILABLE ON | Oracle Linux | 6.4+、7.0+ |-->
 
 ## <a name="ways-to-use-the-vmaccess-extension"></a>使用 VMAccess 扩展的方法
 可通过两种方法在 Linux VM 上使用 VMAccess 扩展：
@@ -250,7 +244,7 @@ az vm extension set \
 ```
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure CLI 运行以下命令。
 
@@ -262,4 +256,4 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 如果对本文中的任何观点存在疑问，可以联系 [Azure 支持](https://support.azure.cn/support/contact/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://support.azure.cn/support/support-azure/)提交请求。 有关使用 Azure 支持的信息，请阅读 [Azure 支持常见问题](https://www.azure.cn/support/faq/)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

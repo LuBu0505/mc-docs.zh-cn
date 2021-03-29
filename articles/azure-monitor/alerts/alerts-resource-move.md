@@ -5,18 +5,17 @@ author: Johnnytechn
 ms.author: v-johya
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 02/20/2021
-ms.subservice: alerts
-ms.openlocfilehash: b5037f8273741928d92d1063b7af3c10bb8bfba2
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/22/2021
+ms.openlocfilehash: 78d076d4737aa9330079a87fe02fec87a805b6eb
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205016"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603434"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>如何在警报规则或操作规则的目标资源移动到其他 Azure 区域时对这些规则进行更新
 
-本文介绍了当你在区域之间移动其他 Azure 资源时，为何现有的[警报规则](../platform/alerts-overview.md)和[操作规则](./alerts-action-rules.md)会受影响，以及如何识别和解决这些问题。 请查看主要的[资源移动文档](../../azure-resource-manager/management/move-region.md)，详细了解何时需要在区域之间移动资源，以及用于设计移动过程的清单。
+本文介绍了当你在区域之间移动其他 Azure 资源时，为何现有的[警报规则](./alerts-overview.md)和[操作规则](./alerts-action-rules.md)会受影响，以及如何识别和解决这些问题。 请查看主要的[资源移动文档](../../azure-resource-manager/management/move-region.md)，详细了解何时需要在区域之间移动资源，以及用于设计移动过程的清单。
 
 ## <a name="why-the-problem-exists"></a>存在此问题的原因
 
@@ -48,7 +47,6 @@ ms.locfileid: "102205016"
 
 - 活动日志警报规则
 - 操作规则
-- 经典警报
 - 指标警报 - 有关详细信息，请参阅下一部分：[基于指标的警报规则](#alert-rules-based-on-metrics)。
 
 > [!NOTE]
@@ -106,11 +104,11 @@ Azure 资源发出的指标是区域性的。 每次将资源移到新区域时�
 
 ### <a name="change-the-scope-of-a-rule-using-azure-cli"></a>使用 Azure CLI 更改规则的范围
 
-1.  获取现有规则（[指标警报](/cli/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-show)、[活动日志警报](/cli/monitor/activity-log/alert#az-monitor-activity-log-alert-list)）。
+1.  获取现有规则（[指标警报](/cli/monitor/metrics/alert#az-monitor-metrics-alert-show)、[活动日志警报](/cli/monitor/activity-log/alert#az-monitor-activity-log-alert-list)）。
 2.  直接更新规则范围（[指标警报](/cli/monitor/metrics/alert#az-monitor-metrics-alert-update)、[活动日志警报](/cli/monitor/activity-log/alert/scope)）
 3.  如果需要，请将其拆分为两个规则（这适用于指标警报的某些案例，如上文所述）。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何解决[警报通知](alerts-troubleshoot.md)、[指标警报](alerts-troubleshoot-metric.md)和[日志警报](alerts-troubleshoot-log.md)的其他问题。 
+了解如何解决[警报通知](alerts-troubleshoot.md)、[指标警报](alerts-troubleshoot-metric.md)和[日志警报](alerts-troubleshoot-log.md)的其他问题。
 

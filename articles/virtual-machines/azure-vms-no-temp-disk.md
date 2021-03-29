@@ -3,19 +3,20 @@ title: 无本地临时磁盘的 Azure VM 规格的常见问题解答
 description: 本文提供有关没有本地临时磁盘的 Azure VM 规格的常见问题解答 (FAQ)。
 ms.service: virtual-machines
 ms.topic: conceptual
+ms.subservice: sizes
 ms.reviewer: mimckitt
 origin.date: 06/15/2020
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 03/29/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
-ms.openlocfilehash: 257fcf70fdf838f43e6f2e7acbb4ec7ee4660794
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 1d056f4c434ff6bed02e6e8f3c5e0febded4478a
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104357"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603275"
 ---
 <!--Verified Successfully-->
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>无本地临时磁盘的 Azure VM 规格 
@@ -44,8 +45,22 @@ ms.locfileid: "93104357"
 1. VM（具有本地临时磁盘）-> VM（具有本地临时磁盘）；以及 
 2. VM（无本地临时磁盘）-> VM（无本地临时磁盘）。 
 
+如果你想知道解决方法，请查看下一个问题。
+
 > [!NOTE]
 > 如果映像依赖于资源磁盘，或者本地临时磁盘上存在页面文件或交换文件，则无磁盘映像将不起作用，而需改用“具有磁盘”替代项。 
+
+## <a name="how-do-i-migrate-from-a-vm-size-with-local-temp-disk-to-a-vm-size-with-no-local-temp-disk"></a>如何从具有本地临时磁盘的 VM 规格迁移到无本地临时磁盘的 VM 规格？  
+可按以下步骤迁移： 
+
+1. 以本地管理员身份连接到具有本地临时磁盘（例如 D: 驱动器）的虚拟机。
+2. 按照[使用 D: 驱动器作为 Windows VM 上的数据驱动器](./windows/change-drive-letter.md)的“将 pagefile.sys 临时移到 C 驱动器”部分中所述的指导原则，将本地临时磁盘（D: 驱动器）中的页面文件移到 C: 驱动器。
+
+   > [!NOTE]
+   > 按照“使用 D: 驱动器作为 Windows VM 上的数据驱动器”的“将 pagefile.sys 临时移到 C 驱动器”部分中所述的指导原则，将本地临时磁盘（D: 驱动器）中的页面文件移到 C: 驱动器。 **不严格按照所述步骤操作可能导致出现错误消息 -“无法调整 VM 大小，因为不允许将资源磁盘 VM 规格更改为非资源磁盘 VM 规格，反之亦然。”**
+
+3. 按照[使用门户或 Azure CLI 创建快照](./linux/snapshot-copy-managed-disk.md)中所述的步骤创建 VM 的快照。 
+4. 按照[使用 CLI 从快照创建虚拟机](https://docs.microsoft.com/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot)中所述的步骤，使用快照创建新的无磁盘 VM（例如 Dv4、Dsv4、Ev4、Esv4 系列）。 
 
 ## <a name="do-these-vm-sizes-support-both-linux-and-windows-operating-systems-os"></a>这些 VM 规格是否支持 Linux 和 Windows 操作系统 (OS)？
 是的。
@@ -62,4 +77,4 @@ ms.locfileid: "93104357"
 - [Dv4 和 Dsv4 系列规格（常规用途工作负载）](dv4-dsv4-series.md)
 - [Ev4 和 Esv4 系列规范（内存优化工作负载）](ev4-esv4-series.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -4,15 +4,15 @@ description: 在本快速入门中，我们需要将 Spring Cloud 应用程序�
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 02/19/2021
+ms.date: 03/23/2021
 ms.author: v-junlch
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 0dbea656e5c6f9d975a5e0e8137a9d0c99686afe
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.openlocfilehash: 9240e1cb7997d7c2aa8109a9080a66dc8e12c17d
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697925"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602815"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>快速入门：部署第一个 Azure Spring Cloud 应用程序
 
@@ -32,9 +32,9 @@ ms.locfileid: "101697925"
 
 完成本快速入门教程需要：
 
-* [安装 JDK 8](https://docs.microsoft.com/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
+* [安装 JDK 8](https://docs.microsoft.com/java/azure/jdk/)
 * [注册 Azure 订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn/)
-* （可选）[安装 Azure CLI 版本 2.0.67 或更高版本](/cli/install-azure-cli?preserve-view=true&view=azure-cli-latest)，并使用以下命令安装 Azure Spring Cloud 扩展：`az extension add --name spring-cloud`
+* （可选）[安装 Azure CLI 版本 2.0.67 或更高版本](/cli/install-azure-cli)，并使用以下命令安装 Azure Spring Cloud 扩展：`az extension add --name spring-cloud`
 * （可选）[安装 Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) 并[登录](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="generate-a-spring-cloud-project"></a>生成 Spring Cloud 项目
@@ -110,7 +110,7 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4
 1. 创建已分配公共终结点的应用：
 
     ```azurecli
-    az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --is-public true
+    az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --assign-endpoint true
     ```
 
 1. 为应用部署 Jar 文件（在 Windows 上为 `target\hellospring-0.0.1-SNAPSHOT.jar`）：

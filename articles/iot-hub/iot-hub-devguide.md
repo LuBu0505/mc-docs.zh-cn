@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 01/29/2018
 ms.date: 05/07/2018
 ms.author: v-yiso
-ms.openlocfilehash: 0c4392af820f3add20aae118da9f0af59909046c
-ms.sourcegitcommit: 0130a709d934d89db5cccb3b4997b9237b357803
+ms.openlocfilehash: 66d36b643d6b0d6365f7054ee1a1cf8b13f800f6
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84186820"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602724"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Azure IoT 中心开发人员指南
 Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备和单个解决方案后端之间实现安全可靠的双向通信。
@@ -58,7 +58,7 @@ Azure IoT 中心提供：
 
 * [控制对 IoT 中心的访问](iot-hub-devguide-security.md)说明用于向设备和云组件授予 IoT 中心功能访问权限的安全模型。 此文章包括有关使用令牌和 X.509 证书的信息，以及可以授予的权限的详细信息。
 
-* [使用设备孪生来同步状态和配置](iot-hub-devguide-device-twins.md)介绍*设备孪生*概念。 本文还介绍了设备孪生具备的功能，例如使用设备孪生来同步设备。 此文章包括有关设备孪生中存储的数据的信息。
+* [使用设备孪生来同步状态和配置](iot-hub-devguide-device-twins.md)介绍 *设备孪生* 概念。 本文还介绍了设备孪生具备的功能，例如使用设备孪生来同步设备。 此文章包括有关设备孪生中存储的数据的信息。
 
 * [在设备上调用直接方法](iot-hub-devguide-direct-methods.md)介绍直接方法的生命周期。 本文介绍如何通过后端应用在设备上调用方法，以及如何在设备上处理直接方法。
 
@@ -77,5 +77,3 @@ Azure IoT 中心提供：
 * [参考 - 设备和服务 SDK](iot-hub-devguide-sdks.md) 列出了用于开发与 IoT 中心交互的设备和服务应用的 Azure IoT SDK。 此文章包括指向联机 API 文档的链接。
 
 * [参考 - IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)详细介绍了 IoT 中心如何支持 MQTT 协议。 此文章介绍了到 Azure IoT SDK 的 MQTT 协议内置支持，并阐述了如何直接使用 MQTT 协议。
-
-* [词汇表](iot-hub-devguide-glossary.md)与 IoT 中心相关的常见术语的列表。

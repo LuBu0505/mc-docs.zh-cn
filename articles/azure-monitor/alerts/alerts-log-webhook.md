@@ -6,18 +6,17 @@ ms.author: v-johya
 services: monitoring
 ms.topic: conceptual
 origin.date: 05/30/2019
-ms.date: 02/20/2021
-ms.subservice: alerts
-ms.openlocfilehash: 96b730cdbfe2b7913d2eccd8a494874603a115d7
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/22/2021
+ms.openlocfilehash: 560710e21ec6b46161b0f52c5d3a7e21817c4f03
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205324"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603615"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>用于日志警报规则的 Webhook 操作
 
-[日志警报](alerts-log.md)支持[配置 Webhook 操作组](../platform/action-groups.md#webhook)。 本文介绍了哪些属性可用和如何配置自定义 JSON Webhook。
+[日志警报](alerts-log.md)支持[配置 Webhook 操作组](./action-groups.md#webhook)。 本文介绍了哪些属性可用和如何配置自定义 JSON Webhook。
 
 > [!NOTE]
 > API 版本 `2020-05-01-preview` 当前不支持基于 JSON 的自定义 Webhook
@@ -48,7 +47,7 @@ ms.locfileid: "102205324"
 | *SearchQuery* |#searchquery |警报规则所使用的日志搜索查询。 |
 | *SearchResults* |"IncludeSearchResults": true|查询以 JSON 表形式返回的记录，仅限于前 1,000 条记录。 在自定义 JSON Webhook 定义中添加 "IncludeSearchResults": true 作为顶级属性。 |
 | *Dimensions* |"IncludeDimensions": true|将该警报作为 JSON 部分触发的维度值组合。 在自定义 JSON Webhook 定义中添加 "IncludeDimensions": true 作为顶级属性。 |
-| 警报类型| #alerttype | 配置为[指标度量 或 结果数](../platform/alerts-unified-log.md#measure)的日志警报规则的类型。|
+| 警报类型| #alerttype | 配置为[指标度量 或 结果数](./alerts-unified-log.md#measure)的日志警报规则的类型。|
 | *WorkspaceID* |#workspaceid |Log Analytics 工作区的 ID。 |
 | *应用程序 ID* |#applicationid |Application Insights 应用的 ID。 |
 | *订阅 ID* |#subscriptionid |使用的 Azure 订阅的 ID。 |
@@ -317,9 +316,9 @@ ms.locfileid: "102205324"
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 了解 [Azure 警报中的日志警报](../platform/alerts-unified-log.md)。
+- 了解 [Azure 警报中的日志警报](./alerts-unified-log.md)。
 - 了解如何[管理 Azure 中的日志警报](alerts-log.md)。
-- 创建和管理 [Azure 中的操作组](../platform/action-groups.md)。
-- 详细了解 [Application Insights](../log-query/log-query-overview.md)。
-- 了解有关[日志查询](../log-query/log-query-overview.md)的详细信息。 
+- 创建和管理 [Azure 中的操作组](./action-groups.md)。
+- 详细了解 [Application Insights](../logs/log-query-overview.md)。
+- 了解有关[日志查询](../logs/log-query-overview.md)的详细信息。
 

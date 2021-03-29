@@ -5,23 +5,23 @@ author: MikeDodaro
 ms.author: v-junlch
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 11/02/2020
+ms.date: 03/23/2021
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d4f7c9e506af800ba449d6340ad1255d50b703f9
-ms.sourcegitcommit: f436acd1e2a0108918a6d2ee9a1aac88827d6e37
+ms.openlocfilehash: 9bea18beac9ee81a276b38b2d8492dbccf305cfe
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96509077"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602637"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-service"></a>快速入门：预配 Azure Spring Cloud 服务
 
 可以使用 Azure 门户或 Azure CLI 实例化 Azure Spring Cloud。  以下过程介绍了这两种方法。
 ## <a name="prerequisites"></a>先决条件
 
-* [安装 JDK 8](https://docs.microsoft.com/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
-* [注册 Azure 订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)
-* （可选）[安装 Azure CLI 版本 2.0.67 或更高版本](/cli/install-azure-cli?preserve-view=true&view=azure-cli-latest)，并使用以下命令安装 Azure Spring Cloud 扩展：`az extension add --name spring-cloud`
+* [安装 JDK 8](https://docs.microsoft.com/java/azure/jdk/)
+* [注册 Azure 订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn/)
+* （可选）[安装 Azure CLI 版本 2.0.67 或更高版本](/cli/install-azure-cli)，并使用以下命令安装 Azure Spring Cloud 扩展：`az extension add --name spring-cloud`
 * （可选）[安装 Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) 并[登录](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="provision-an-instance-of-azure-spring-cloud"></a>预配 Azure Spring Cloud 的实例
@@ -72,7 +72,7 @@ ms.locfileid: "96509077"
 1. 创建用于包含 Azure Spring Cloud 服务的资源组。
 
     ```azurecli
-    az group create --location chinanorth --name <resource group name>
+    az group create --location chinaeast2 --name <resource group name>
     ```
 
     详细了解 [Azure 资源组](../azure-resource-manager/management/overview.md)。
@@ -92,4 +92,3 @@ ms.locfileid: "96509077"
 
 > [!div class="nextstepaction"]
 > [设置配置服务器](spring-cloud-quickstart-setup-config-server.md)
-

@@ -1,22 +1,22 @@
 ---
 title: 使用 Azure AD 进行 Azure 磁盘加密（以前版本）
 description: 本文提供了对 IaaS VM 使用 Azure 磁盘加密所要满足的先决条件。
-ms.service: virtual-machines-windows
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
 ms.topic: conceptual
 origin.date: 03/15/2019
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 03/29/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: dc8c56e0847b7dcac004b760c850d79aa57ecae0
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: e9ba1ac2590a337784eb2d7c34edf8e4f2501d8b
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93104330"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603858"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>使用 Azure AD 进行 Azure 磁盘加密（以前版本）
 
@@ -61,4 +61,4 @@ Azure 磁盘加密需要 Azure Key Vault 来控制和管理磁盘加密密钥和
 - [Azure 磁盘加密先决条件 CLI 脚本](https://github.com/ejarvi/ade-cli-getting-started)
 - [Azure 磁盘加密先决条件 PowerShell 脚本](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

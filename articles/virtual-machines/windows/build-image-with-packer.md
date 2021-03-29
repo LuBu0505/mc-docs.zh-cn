@@ -3,20 +3,21 @@ title: PowerShell - 如何使用 Packer 创建 VM 映像
 description: 了解如何使用 Packer 和 PowerShell 在 Azure 中创建虚拟机映像
 ms.service: virtual-machines
 ms.subservice: imaging
+ms.collection: windows
 ms.topic: how-to
 ms.workload: infrastructure
 origin.date: 08/05/2020
 author: rockboyfor
-ms.date: 10/19/2020
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
-ms.openlocfilehash: 49201f9c51aa0e712271bec0ec38d33a676cd98f
-ms.sourcegitcommit: 6f66215d61c6c4ee3f2713a796e074f69934ba98
+ms.openlocfilehash: 74b82ce72acbb9300c099653d35be8bbf7a6d54a
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127863"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603060"
 ---
 <!--Verify Successfully with location set to 'China East 2'--> 
 # <a name="powershell-how-to-use-packer-to-create-virtual-machine-images-in-azure"></a>PowerShell：如何使用 Packer 在 Azure 中创建虚拟机映像
@@ -24,7 +25,7 @@ Azure 中的每个虚拟机 (VM) 都是基于定义 Windows 分发和操作系�
 
 本文最后一次使用 [Packer](https://www.packer.io/docs/install) 版本 1.6.1 于 2020 年 8 月 5 日进行了测试。
 
-<!--Not Available on [Create a Windows VM with Azure Image Builder](image-builder.md)-->
+<!--NOT AVAILABLE ON [Create a Windows VM with Azure Image Builder](image-builder.md)-->
 
 ## <a name="create-azure-resource-group"></a>创建 Azure 资源组
 生成过程中，Packer 将在生成源 VM 时创建临时 Azure 资源。 要捕获该源 VM 用作映像，必须定义资源组。 Packer 生成过程的输出存储在此资源组中。
@@ -78,9 +79,8 @@ Get-AzSubscription
 | *managed_image_name* | 创建的托管磁盘映像的名称 |
 | cloud_environment_name | 部署目标 Azure 云的名称。 有效选项在 `Public, China, Germany, or USGovernment` 列表中  |
 
-<!-- Parameter is correct to add "cloud_environment_name": "Public, China, Germany, or USGovernment" -->
-
-<!--Correct on the "managed_image_resource_group_name": "myPackerGroup",-->
+<!--CUSTOMIZE to add "cloud_environment_name": "Public, China, Germany, or USGovernment"-->
+<!--CORRECT ON the "managed_image_resource_group_name": "myPackerGroup",-->
 
 ```json
 {
@@ -128,7 +128,7 @@ Get-AzSubscription
 }
 ```
 
-<!-- Parameter is correct to add "cloud_environment_name": "Public, China, Germany, or USGovernment" -->
+<!--CUSTOMIZE to add "cloud_environment_name": "Public, China, Germany, or USGovernment"-->
 
 此模板生成 Windows Server 2016 Datacenter 并安装 IIS，然后使用 Sysprep 来通用化该 VM。 IIS 安装展示了如何使用 PowerShell 预配程序来运行其他命令。 最终的 Packer 映像包括必需的软件安装和配置。
 
@@ -256,4 +256,4 @@ Get-AzPublicIPAddress `
 <!--Not Available on ## Next steps-->
 <!--Not Available on [Azure Image Builder](image-builder.md)-->
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

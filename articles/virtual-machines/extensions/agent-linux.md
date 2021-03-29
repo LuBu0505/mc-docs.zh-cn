@@ -1,23 +1,22 @@
 ---
 title: Azure Linux VM 代理概述
 description: 了解如何安装和配置 Linux 代理 (waagent) 以管理虚拟机与 Azure 结构控制器的交互。
-ms.service: virtual-machines-linux
-ms.subservice: extensions
-ms.workload: infrastructure-services
 ms.topic: article
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.collection: linux
 origin.date: 10/17/2016
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b08795451fdab48df408be36d61e506ee7b9ec5b
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: c407e2c83ce0091a5a2fa570438bf29a2a2ab5e7
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857010"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603604"
 ---
 <!--Verify Successfully-->
 # <a name="understanding-and-using-the-azure-linux-agent"></a>了解和使用 Azure Linux 代理
@@ -83,9 +82,6 @@ Azure Linux 代理 (waagent) 可以管理 Linux 与 FreeBSD 预配，以及 VM �
 * SLES 11 SP3+
 * Oracle Linux 6.4+
 
-<!-- Not Available on * Red Hat Enterprise Linux 6.7+-->
-<!-- Not Available on * Oracle Linux 6.4+-->
-
 其他支持的系统：
 
 * FreeBSD 10+（Azure Linux 代理 v2.0.10+）
@@ -130,9 +126,7 @@ Linux 代理的正常运行依赖一些系统程序包：
 
 * deprovision+user：执行 -deprovision（上述）中的所有操作，同时删除最后预配的用户帐户（从 /var/lib/waagent 中获得）和关联数据。 此参数是取消对以前在 Azure 中设置的映像的设置以便捕获并重新使用该映像时的参数。
 * version：显示 waagent 的版本
-
-    <!--Not Available on * serialconsole:-->
-
+* serialconsole：配置 GRUB 以将 ttyS0（第一个串行端口）标记为启动控制台。 这可确保将内核启动日志发送到串行端口并适用于调试。
 * daemon：将 waagent 作为 daemon 运行以管理与平台的交互。 在 waagent init 脚本中为 waagent 指定此参数。
 * 开始：将 waagent 作为后台进程运行
 
@@ -349,4 +343,4 @@ Ubuntu 云映像利用 [cloud-init](https://launchpad.net/ubuntu/+source/cloud-i
     * [Ubuntu Wiki：配置交换分区](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
     * [将自定义数据注入到 Azure 虚拟机中](../windows/tutorial-automate-vm-deployment.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -4,15 +4,15 @@ description: 本快速入门介绍如何直接从源代码启动 Azure Spring Cl
 author: MikeDodaro
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 11/02/2020
+ms.date: 03/23/2021
 ms.author: v-junlch
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 813fd06b705c964c110a53ad6c66b4e407f93aa6
-ms.sourcegitcommit: f436acd1e2a0108918a6d2ee9a1aac88827d6e37
+ms.openlocfilehash: 44b48426bf0b25869978e6416298ada0ad5a8da4
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96509090"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602639"
 ---
 # <a name="how-to-launch-your-spring-cloud-application-from-source-code"></a>如何从源代码启动 Spring Cloud 应用程序
 
@@ -35,8 +35,8 @@ Azure Spring Cloud 在 Azure 上启用了基于 Spring Cloud 的微服务应用�
 1. [安装 Git](https://git-scm.com/)
 2. [安装 JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 3. [安装 Maven 3.0 或更高版本](https://maven.apache.org/download.cgi)
-4. [安装 Azure CLI](/cli/install-azure-cli?view=azure-cli-latest)
-5. [注册 Azure 订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)
+4. [安装 Azure CLI](/cli/install-azure-cli)
+5. [注册 Azure 订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn/)
 
 
 ## <a name="install-the-azure-cli-extension"></a>安装 Azure CLI 扩展
@@ -60,7 +60,7 @@ az account set --subscription
 创建用于包含 Azure Spring Cloud 服务的资源组。 你可以详细了解 [Azure 资源组](../azure-resource-manager/management/overview.md)。
 
 ```azurecli
-az group create --location chinanorth --name <resource group name>
+az group create --location chinaeast2 --name <resource group name>
 ```
 
 运行以下命令以预配 Azure Spring Cloud 的实例。 准备 Azure Spring Cloud 服务的名称。 该名称必须为 4 到 32 个字符，只能包含小写字母、数字及连字符。 服务名称的第一个字符必须是字母，最后一个字符必须是字母或数字。
@@ -164,4 +164,3 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 > [Spring Cloud 日志、指标、跟踪](spring-cloud-quickstart-logs-metrics-tracing.md)
 
 GitHub 中提供了更多示例：[Azure Spring Cloud 示例](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql)。
-

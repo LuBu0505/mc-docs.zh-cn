@@ -2,18 +2,17 @@
 title: 使用 Azure 数据资源管理器 Node 库引入数据
 description: 本文介绍如何使用 Node.js 将数据引入（加载）到 Azure 数据资源管理器中。
 author: orspod
-ms.author: v-tawe
+ms.author: v-junlch
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: how-to
-origin.date: 06/03/2019
-ms.date: 09/30/2020
-ms.openlocfilehash: 2fa72eca2980dc28c241954b3d333249272a9d47
-ms.sourcegitcommit: ff20289adb80a6ab45e15fa5e196ff7af7e1c6b5
+ms.date: 03/23/2021
+ms.openlocfilehash: 40a18c09ab02d16060b138dbb85b2e2d04d2cbf2
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97874905"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602655"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-node-library"></a>使用 Azure 数据资源管理器 Node 库引入数据
 
@@ -26,7 +25,7 @@ ms.locfileid: "97874905"
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器为 Node 提供了两个客户端库：[引入库](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest)和[数据库](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data)。 可以使用这些库在群集中引入（加载）数据并从代码中查询数据。 本文首先在测试群集中创建一个表和数据映射。 然后将引入排列到群集并验证结果。
 
-如果没有 Azure 订阅，请在开始前创建一个[试用订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)。
+如果还没有 Azure 订阅，可以在开始前创建一个 [Azure 帐户](https://www.microsoft.com/china/azure/index.html?fromtype=cn/)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -50,12 +49,16 @@ npm i azure-kusto-ingest azure-kusto-data
 
 ```javascript
 
-const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
-const KustoClient = require("azure-kusto-data").Client;
-const KustoIngestClient = require("azure-kusto-ingest").IngestClient;
-const IngestionProperties = require("azure-kusto-ingest").IngestionProperties;
-const { DataFormat } = require("azure-kusto-ingest").IngestionPropertiesEnums;
-const { BlobDescriptor } = require("azure-kusto-ingest").IngestionDescriptors;
+import { Client as KustoClient, KustoConnectionStringBuilder } from 'azure-kusto-data';
+import {
+    IngestClient as KustoIngestClient,
+    IngestionProperties,
+    IngestionDescriptors,
+    IngestionPropertiesEnums
+} from "azure-kusto-ingest";
+
+const { BlobDescriptor } = IngestionDescriptors;
+const { DataFormat } = IngestionPropertiesEnums;
 
 ```
 Azure 数据资源管理器使用 Azure Active Directory 租户 ID，以对应用程序进行身份验证。 若要查找租户 ID，请按[查找 Microsoft 365 租户 ID](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id) 中的说明操作。
@@ -102,9 +105,8 @@ const blobPath = `https://${account}.blob.core.chinacloudapi.cn/${container}/${f
 const kustoClient = new KustoClient(kcsbData);
 const createTableCommand = `.create table ${destTable} (StartTime: datetime, EndTime: datetime, EpisodeId: int, EventId: int, State: string, EventType: string, InjuriesDirect: int, InjuriesIndirect: int, DeathsDirect: int, DeathsIndirect: int, DamageProperty: int, DamageCrops: int, Source: string, BeginLocation: string, EndLocation: string, BeginLat: real, BeginLon: real, EndLat: real, EndLon: real, EpisodeNarrative: string, EventNarrative: string, StormSummary: dynamic)`;
 
-kustoClient.executeMgmt(kustoDatabase, createTableCommand, (err, results) => {
-    console.log(results.primaryResults[0][0].toString());
-});
+const createTableResults = await kustoClient.executeMgmt(kustoDatabase, createTableCommand);
+console.log(createTableResults.primaryResults[0][0].toString());
 ```
 
 ## <a name="define-ingestion-mapping"></a>定义引入映射
@@ -114,9 +116,8 @@ kustoClient.executeMgmt(kustoDatabase, createTableCommand, (err, results) => {
 ```javascript
 const createMappingCommand = `.create table ${destTable} ingestion csv mapping '${destTableMapping}' '[{"Name":"StartTime","datatype":"datetime","Ordinal":0}, {"Name":"EndTime","datatype":"datetime","Ordinal":1},{"Name":"EpisodeId","datatype":"int","Ordinal":2},{"Name":"EventId","datatype":"int","Ordinal":3},{"Name":"State","datatype":"string","Ordinal":4},{"Name":"EventType","datatype":"string","Ordinal":5},{"Name":"InjuriesDirect","datatype":"int","Ordinal":6},{"Name":"InjuriesIndirect","datatype":"int","Ordinal":7},{"Name":"DeathsDirect","datatype":"int","Ordinal":8},{"Name":"DeathsIndirect","datatype":"int","Ordinal":9},{"Name":"DamageProperty","datatype":"int","Ordinal":10},{"Name":"DamageCrops","datatype":"int","Ordinal":11},{"Name":"Source","datatype":"string","Ordinal":12},{"Name":"BeginLocation","datatype":"string","Ordinal":13},{"Name":"EndLocation","datatype":"string","Ordinal":14},{"Name":"BeginLat","datatype":"real","Ordinal":16},{"Name":"BeginLon","datatype":"real","Ordinal":17},{"Name":"EndLat","datatype":"real","Ordinal":18},{"Name":"EndLon","datatype":"real","Ordinal":19},{"Name":"EpisodeNarrative","datatype":"string","Ordinal":20},{"Name":"EventNarrative","datatype":"string","Ordinal":21},{"Name":"StormSummary","datatype":"dynamic","Ordinal":22}]'`;
 
-kustoClient.executeMgmt(kustoDatabase, createMappingCommand, (err, results) => {
-    console.log(results.primaryResults[0][0].toString());
-});
+const mappingCommandResults = await kustoClient.executeMgmt(kustoDatabase, createMappingCommand);
+console.log(mappingCommandResults.primaryResults[0][0].toString());
 ```
 
 ## <a name="queue-a-message-for-ingestion"></a>列入一条引入消息
@@ -129,9 +130,11 @@ const ingestClient = new KustoIngestClient(kcsbIngest, defaultProps);
 // All ingestion properties are documented here: https://docs.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
 
 const blobDesc = new BlobDescriptor(blobPath, 10);
-ingestClient.ingestFromBlob(blobDesc,null, (err) => {
-    if (err) throw new Error(err);
-});
+try {
+    const ingestionResult = await ingestClient.ingestFromBlob(blobDesc, null);
+} catch (err) {
+    // Handle errors
+}
 ```
 
 ## <a name="validate-that-table-contains-data"></a>验证表是否包含数据
@@ -141,10 +144,9 @@ ingestClient.ingestFromBlob(blobDesc,null, (err) => {
 ```javascript
 const query = `${destTable} | count`;
 
-kustoClient.execute(kustoDatabase, query, (err, results) => {
-    if (err) throw new Error(err);  
-    console.log(results.primaryResults[0][0].toString());
-});
+var tableResults = await kustoClient.execute(kustoDatabase, query);
+console.log(tableResults.primaryResults[0][0].toString());
+
 ```
 
 ## <a name="run-troubleshooting-queries"></a>运行故障排除查询

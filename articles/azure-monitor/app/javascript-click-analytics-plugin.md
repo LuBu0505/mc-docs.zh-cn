@@ -6,14 +6,14 @@ author: lgayhardt
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 03/25/2021
 ms.author: v-johya
-ms.openlocfilehash: 22cb8eabf90b03d3c720fddeecdeed6b284acab0
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 6cd3ae8ae9602061d9b643115871408ae1985fc8
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197168"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603767"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>适用于 Application Insights JavaScript SDK 的“单击分析自动收集”插件
 
@@ -315,5 +315,5 @@ appInsights.loadAppInsights();
 - 查看“单击分析自动收集”插件的 [GitHub 存储库](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-clickanalytics-js)和 [NPM 包](https://www.npmjs.com/package/@microsoft/applicationinsights-clickanalytics-js)。
 - 利用[使用体验中的事件分析](usage-segmentation.md)，按可用维度分析热门单击和切片。
 - 在 [Log Analytics](../logs/log-analytics-tutorial.md#write-a-query) CustomEvents 表的 customDimensions 中，查找内容字段下的单击数据。 如需查看其他指南，请参阅[示例应用](https://go.microsoft.com/fwlink/?linkid=2152871)。
-- 构建一个[工作簿](../visualize/workbooks-overview.md)，以创建单击数据的自定义可视化效果。
+- 生成[工作簿](../visualize/workbooks-overview.md)或[导出到 Power BI](../logs/log-powerbi.md#integrating-queries)，以创建单击数据的自定义可视化效果。
 

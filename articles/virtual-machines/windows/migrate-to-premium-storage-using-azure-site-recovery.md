@@ -1,21 +1,22 @@
 ---
 title: 使用 Azure Site Recovery 将 Windows VM 迁移到 Azure 高级存储
 description: 了解如何使用 Azure Site Recovery 将 VM 磁盘从标准存储帐户迁移到高级存储帐户。
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: how-to
 origin.date: 08/15/2017
 author: rockboyfor
-ms.date: 11/02/2020
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
 ms.subservice: disks
-ms.openlocfilehash: c6e1303aefaa0dd23d53a50f12ef9def9612152c
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 571e0b01bdef49c45a95546a2a211f11136b0c63
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105877"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603815"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 迁移到高级存储
 
@@ -29,7 +30,7 @@ Site Recovery 提供测试故障转移，既能支持灾难恢复练习，又不
 
 Site Recovery 支持多种类型的、停机时间极短或不造成停机的故障转移。 若要规划停机时间和评估数据丢失情况，请参阅 [Site Recovery 中的故障转移类型](../../site-recovery/site-recovery-failover.md)。 如果[已准备好在故障转移后连接到 Azure VM](../../site-recovery/vmware-azure-tutorial.md)，应该能够在故障转移后使用 RDP 连接到 Azure VM。
 
-<!--MOONVAKE CORRECT ON:prepare to connect to Azure VMs after failover-->
+<!--MOONCAKE CORRECT ON:prepare to connect to Azure VMs after failover-->
 
 ![灾难恢复关系图][1]
 
@@ -118,7 +119,7 @@ Site Recovery 支持多种类型的、停机时间极短或不造成停机的故
 
         ![注册页][7]
 
-    3. 在“环境详细信息”中，选择是否要复制 VMware VM。 对于此迁移方案，请选择“否”。
+    3. 在“环境详细信息”中，选择是否要复制 VMware VM。  对于此迁移方案，请选择“否”。
 
         ![环境详细信息页][8]
 
@@ -135,7 +136,7 @@ Site Recovery 支持多种类型的、停机时间极短或不造成停机的故
 
 ![“目标”窗格][10]
 
-Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和网络。 
+Site Recovery 检查是否有一个或多个兼容的 Azure 存储帐户和网络。 
 
 > [!NOTE]
 > 如果使用高级存储帐户保存复制的数据，则需要设置附加的标准存储帐户来存储复制日志。
@@ -173,7 +174,7 @@ Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和�
 
     ![选定了“源”的“启用复制”窗格][13]
 
-设计 Azure 存储环境时，我们建议针对可用性集中的每个 VM 使用不同的存储帐户。 我们建议按照存储层中的最佳做法[为每个可用性集使用多个存储帐户](../manage-availability.md)。 将 VM 磁盘分配到多个存储帐户有助于改善存储可用性，以及在整个 Azure 存储基础结构中分配 I/O。
+设计 Azure 存储环境时，我们建议针对可用性集中的每个 VM 使用不同的存储帐户。 我们建议按照存储层中的最佳做法[为每个可用性集使用多个存储帐户](../availability.md)。 将 VM 磁盘分配到多个存储帐户有助于改善存储可用性，以及在整个 Azure 存储基础结构中分配 I/O。
 
 如果 VM 位于可用性集中，我们强烈建议分多次迁移多个 VM，而不要将所有 VM 的磁盘都复制到一个存储帐户。 这是为了避免同一个可用性集中的 VM 共享单个存储帐户。 使用“启用复制”窗格为每个 VM 设置目标存储帐户，一次设置一个。
 
@@ -204,11 +205,11 @@ Site Recovery 会创建类型与支持高级存储的 VM 相同或类似的 VM �
     * 对于通过经典部署模型创建的 VM：将 VM 添加到 Azure 门户中的可用性集。 有关详细步骤，请参阅[将现有虚拟机添加到可用性集](https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/classic/configure-availability-classic)。
     * 对于通过资源管理器部署模型创建的 VM：保存 VM 的配置，并在可用性集中删除并再重新创建 VM。 为此，请使用 [Set Azure Resource Manager VM Availability Set](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)（设置 Azure Resource Manager VM 可用性集）中所述的脚本。 运行此脚本之前，请检查其自身的限制并规划停机时间。
 
-2. **删除旧 VM 和磁盘** 。 请确保高级磁盘与源磁盘一致，并且新 VM 执行的功能与源 VM 相同。 通过 Azure 门户删除源存储帐户中的 VM 和磁盘。 如果出现了即使删除 VM 也无法删除磁盘的问题，请参阅[排查存储资源删除错误](../troubleshooting/storage-resource-deletion-errors.md)。
+2. **删除旧 VM 和磁盘**。 请确保高级磁盘与源磁盘一致，并且新 VM 执行的功能与源 VM 相同。 通过 Azure 门户删除源存储帐户中的 VM 和磁盘。 如果出现了即使删除 VM 也无法删除磁盘的问题，请参阅[排查存储资源删除错误](../troubleshooting/storage-resource-deletion-errors.md)。
 
-3. **清理 Azure Site Recovery 基础结构** 。 如果不再需要 Site Recovery，可清理其基础结构。 删除复制的项、配置服务器和恢复策略，然后删除 Azure Site Recovery 保管库。
+3. **清理 Azure Site Recovery 基础结构**。 如果不再需要 Site Recovery，可清理其基础结构。 删除复制的项、配置服务器和恢复策略，然后删除 Azure Site Recovery 保管库。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 * [监视虚拟机和物理服务器的保护及其故障排除](../../site-recovery/site-recovery-monitor-and-troubleshoot.md)
 * [有关 Azure Site Recovery 的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)
@@ -220,12 +221,11 @@ Site Recovery 会创建类型与支持高级存储的 VM 相同或类似的 VM �
 * [Migrate Azure Virtual Machines between Storage Accounts（在存储帐户之间迁移 Azure 虚拟机）](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
 * [创建 Windows Server VHD 并将其上传到 Azure](upload-generalized-managed.md)
     
-    <!--Not Available on* [Migrating Virtual Machines from Amazon AWS to Azure](https://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)-->
-
+    <!--NOT AVAILABLE ON channel9.msdn.com-->
 另请参阅以下资源，深入了解 Azure 存储和 Azure 虚拟机：
 
-* [Azure 存储](/storage/)
-* [Azure 虚拟机](/virtual-machines/)
+* [Azure 存储](https://docs.azure.cn/storage/)
+* [Azure 虚拟机](https://docs.azure.cn/virtual-machines/)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png
 [2]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-2.png
@@ -241,8 +241,8 @@ Site Recovery 会创建类型与支持高级存储的 VM 相同或类似的 VM �
 [12]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-12.PNG
 [13]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-13.png
 
-<!-- Not Available on [14]:../site-recovery/media/site-recovery-vmware-to-azure/v2a-architecture-henry.png -->
+<!--NOT AVAILABLE ON [14]:../site-recovery/media/site-recovery-vmware-to-azure/v2a-architecture-henry.png-->
 
 [15]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-14.png
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -1,23 +1,22 @@
 ---
 title: Azure 虚拟机扩展和功能
 description: 详细了解 Azure VM 扩展
-services: virtual-machines
+ms.topic: article
 ms.service: virtual-machines
 ms.subservice: extensions
-ms.topic: article
 ms.workload: infrastructure-services
 origin.date: 08/03/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: c06925659012db62e51a0bcbe2f5540360f919f9
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 07b12e78da29b8de2ef26240a3772cf5f5b6345f
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856986"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603175"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Azure 虚拟机扩展和功能
 扩展是小型应用程序，用于在 Azure VM 上提供部署后配置和自动化。 Azure 平台可承载许多扩展，涵盖 VM 配置、监视、安全性和实用工具应用程序。 发布服务器采用某个应用程序，将其包装到扩展中，对安装进行简化。 你只需提供必需的参数。 

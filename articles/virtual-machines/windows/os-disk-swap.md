@@ -1,21 +1,22 @@
 ---
 title: 使用 PowerShell 更换 Azure VM 的 OS 磁盘
 description: 使用 PowerShell 更改 Azure 虚拟机使用的操作系统磁盘。
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
 origin.date: 04/24/2018
 author: rockboyfor
-ms.date: 09/07/2020
+ms.date: 03/29/2021
 ms.testscope: no
 ms.testdate: 08/31/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6295f329d3a9a60214c630cab927cb60b2bc52c3
-ms.sourcegitcommit: 93309cd649b17b3312b3b52cd9ad1de6f3542beb
+ms.openlocfilehash: 19499e636baf8ae60a4b88446a15e406198b81a5
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93105852"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603649"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>使用 PowerShell 更改 Azure VM 使用的 OS 磁盘
 
@@ -59,4 +60,4 @@ Start-AzVM -Name $vm.Name -ResourceGroupName myResourceGroup
 
 要创建磁盘副本，请参阅[拍摄磁盘快照](snapshot-copy-managed-disk.md)。
 
-<!-- Update_Description: wording update -->
+<!--Update_Description: update meta properties, wording update, update link-->

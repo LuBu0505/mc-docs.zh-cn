@@ -7,14 +7,14 @@ ms.author: v-junlch
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/18/2021
+ms.date: 03/23/2021
 ms.localizationpriority: high
-ms.openlocfilehash: 936e1416d4bca7425798c63e531b4ae51e7cf114
-ms.sourcegitcommit: 8b3a588ef0949efc5b0cfb5285c8191ce5b05651
+ms.openlocfilehash: c46bef0b2c94f8d1d685d74e61f5d4f1da6d829e
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104766636"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602649"
 ---
 # <a name="query-limits"></a>查询限制
 
@@ -29,10 +29,6 @@ Kusto 是一个即席查询引擎，它承载着大型数据集，并尝试通�
   * 例如，对于在 D14v2 SKU 上设置的群集（其中每台计算机都有 16 Vcore），默认限制为 `16 cores x10 = 160`。
 * 可通过配置 `default` 工作负荷组的[请求速率限制策略](../management/request-rate-limit-policy.md)来更改默认值。
   * 可以在群集上并发运行的实际请求数取决于不同的因素。 最主要的因素是群集 SKU、群集的可用资源和使用模式。 可以根据对类生产使用模式执行的负载测试来配置策略。
-
-超过请求并发限制会导致以下行为：
-* 由于请求速率限制策略而被拒绝的命令将引发 `ControlCommandThrottledException`（错误代码 = 429）。
-* 由于请求速率限制策略而被拒绝的查询将引发 `QueryThrottledException`（错误代码 = 429）。
 
 ## <a name="limit-on-result-set-size-result-truncation"></a>有关结果集大小的限制（结果截断）
 

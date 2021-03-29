@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor 中视图设计器部件的参考指南 | Azure Docs
 description: 可以通过 Azure Monitor 中的视图设计器创建自定义视图，此类视图在 Azure 门户中显示，包含 Log Analytics 工作区中的多种基于数据的可视化效果。 本文针对自定义视图中可用的可视化部件，提供设置方面的参考指南。
-ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 11/02/2020
+ms.date: 03/25/2021
 origin.date: 03/12/2018
-ms.openlocfilehash: a3f307e39c017746df036bca68947d51a7ccc0c8
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: a9068dfe6bb34d7cf512c761e683700ea30b2246
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205070"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603234"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Azure Monitor 中视图设计器可视化部件的参考指南
 在 Azure Monitor 中使用视图设计器即可在 Azure 门户中创建各种自定义视图，使 Log Analytics 工作区中的数据可视化。 本文针对自定义视图中可用的可视化部件，提供设置方面的参考指南。
@@ -40,7 +39,7 @@ ms.locfileid: "102205070"
 后续部分将详细介绍磁贴类型及其属性。
 
 > [!NOTE]
-> 视图中的部件基于 Log Analytics 工作区中的[日志查询](../log-query/log-query-overview.md)。 它们目前不支持使用[跨资源查询](../log-query/cross-workspace-query.md)从 Application Insights 检索数据。
+> 视图中的部件基于 Log Analytics 工作区中的[日志查询](../logs/log-query-overview.md)。 它们目前不支持使用[跨资源查询](../logs/cross-workspace-query.md)从 Application Insights 检索数据。
 
 ## <a name="list-of-queries-part"></a>查询列表部分
 查询列表部件显示日志查询的列表。 可以选择每个查询以显示其结果。 默认情况下，视图将包括单个查询，可以选择“+ 查询”添加其他查询  。
@@ -362,5 +361,5 @@ ms.locfileid: "102205070"
 | Color |指示阈值的颜色。 |
 
 ## <a name="next-steps"></a>后续步骤
-* 了解支持在可视化部件中进行查询的[日志查询](../log-query/log-query-overview.md)。
+* 了解支持在可视化部件中进行查询的[日志查询](../logs/log-query-overview.md)。
 

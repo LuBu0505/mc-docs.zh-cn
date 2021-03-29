@@ -5,24 +5,23 @@ author: Johnnytechn
 services: azure-monitor
 ms.topic: reference
 origin.date: 12/04/2019
-ms.date: 02/20/2021
+ms.date: 03/25/2021
 ms.author: v-johya
-ms.subservice: logs
-ms.openlocfilehash: a0723603dc0b523f61842a2be90ff1a38c708b6e
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: cc05973fb93294aa42c81ccbca1a9dea72f75248
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205762"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603722"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活动日志事件架构
-[Azure 活动日志](../platform/platform-logs-overview.md)可以方便用户深入了解 Azure 中发生的任何订阅级别事件。 本文介绍活动日志类别以及每个类别的架构。 
+[Azure 活动日志](./platform-logs-overview.md)可以方便用户深入了解 Azure 中发生的任何订阅级别事件。 本文介绍活动日志类别以及每个类别的架构。 
 
 根据访问日志的方式，架构会有所不同：
  
 - 本文中所述的架构基于从 [REST API](https://docs.microsoft.com/rest/api/monitor/activitylogs) 访问活动日志。 这也是在 Azure 门户中查看事件时，选择“JSON”选项时使用的架构。
-- 对于使用[诊断设置](../platform/diagnostic-settings.md)将活动日志发送到 Azure 存储或 Azure 事件中心时的架构，请参阅最后一节[来自存储帐户和事件中心的架构](#schema-from-storage-account-and-event-hubs)。
-- 对于使用[诊断设置](../platform/diagnostic-settings.md)将活动日志发送到 Log Analytics 工作区时的架构，请参阅[Azure Monitor 数据参考](https://docs.microsoft.com/azure/azure-monitor/reference/)。
+- 对于使用[诊断设置](./diagnostic-settings.md)将活动日志发送到 Azure 存储或 Azure 事件中心时的架构，请参阅最后一节[来自存储帐户和事件中心的架构](#schema-from-storage-account-and-event-hubs)。
+- 对于使用[诊断设置](./diagnostic-settings.md)将活动日志发送到 Log Analytics 工作区时的架构，请参阅[Azure Monitor 数据参考](https://docs.microsoft.com/azure/azure-monitor/reference/)。
 
 ## <a name="severity-level"></a>严重级别
 活动日志中的每个条目都有严重性级别。 严重性级别可以具有以下值之一：  
@@ -37,7 +36,7 @@ ms.locfileid: "102205762"
 每个资源提供程序的开发人员都会选择其资源条目的严重性级别。 因此，根据应用程序的生成方式，实际的严重性可能会有所不同。 例如，对于单独获取的特定资源来说，“关键”项可能不如对 Azure 应用程序极为重要的资源类型中的“错误”那么重要。 确定要针对其发出警报的事件时，请务必考虑这一事实。  
 
 ## <a name="categories"></a>Categories
-活动日志中的每个事件都有特定的类别，该类别在下表中进行了描述。 请参阅以下各部分，了解从门户、PowerShell、CLI 和 REST API 访问活动日志时，每个类别及其架构的详细信息。 [将活动日志流式传输到存储或事件中心](../platform/resource-logs.md#send-to-azure-event-hubs)时，架构是不同的。 本文最后一个部分提供了这些属性到[资源日志架构](../platform/resource-logs-schema.md)的映射。
+活动日志中的每个事件都有特定的类别，该类别在下表中进行了描述。 请参阅以下各部分，了解从门户、PowerShell、CLI 和 REST API 访问活动日志时，每个类别及其架构的详细信息。 [将活动日志流式传输到存储或事件中心](./resource-logs.md#send-to-azure-event-hubs)时，架构是不同的。 本文最后一个部分提供了这些属性到[资源日志架构](./resource-logs-schema.md)的映射。
 
 | 类别 | 说明 |
 |:---|:---|
@@ -805,7 +804,7 @@ ms.locfileid: "102205762"
 
 
 ## <a name="schema-from-storage-account-and-event-hubs"></a>来自存储帐户和事件中心的架构
-将 Azure 活动日志流式传输到存储帐户或事件中心时，数据遵循[资源日志架构](../platform/resource-logs-schema.md)。 下表提供从上述架构到资源日志架构的属性映射。
+将 Azure 活动日志流式传输到存储帐户或事件中心时，数据遵循[资源日志架构](./resource-logs-schema.md)。 下表提供从上述架构到资源日志架构的属性映射。
 
 
 | 资源日志架构属性 | 活动日志 REST API 架构属性 | 注释 |
@@ -892,6 +891,6 @@ ms.locfileid: "102205762"
 
 
 ## <a name="next-steps"></a>后续步骤
-* [了解有关活动日志的更多信息](../platform/platform-logs-overview.md)
-* [创建诊断设置，以便将活动日志发送到 Log Analytics 工作区、Azure 存储或事件中心](../platform/diagnostic-settings.md)
+* [了解有关活动日志的更多信息](./platform-logs-overview.md)
+* [创建诊断设置，以便将活动日志发送到 Log Analytics 工作区、Azure 存储或事件中心](./diagnostic-settings.md)
 

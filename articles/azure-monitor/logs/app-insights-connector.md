@@ -1,18 +1,17 @@
 ---
 title: 查看 Azure Application Insights 应用数据 | Azure Docs
 description: 可以使用 Application Insights 连接器解决方案来诊断性能问题，以及了解用户在使用 Application Insights 监视的应用中执行的操作。
-ms.subservice: logs
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/20/2021
+ms.date: 03/23/2021
 origin.date: 02/13/2019
-ms.openlocfilehash: bdbe19c3ede2b9583af7fabccc223213645d092e
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 00c79093662652bb562955c55340bce974c9aa08
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102205484"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603425"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights 连接器管理解决方案（已弃用）
 
@@ -23,7 +22,7 @@ ms.locfileid: "102205484"
 >
 >现有连接将继续运行到 2019 年 6 月 30 日为止。  随着 OMS 门户被弃用，将无法从门户中配置和删除现有的连接。 有关使用 PowerShell 删除现有连接的脚本，请参阅下面的[使用 PowerShell 删除连接器](#removing-the-connector-with-powershell)。
 >
->有关查询多个应用程序的 Application Insights 日志数据的指导，请参阅[统一多个 Azure Monitor Application Insights 资源](../log-query/unify-app-resource-data.md)。 
+>有关查询多个应用程序的 Application Insights 日志数据的指导，请参阅[统一多个 Azure Monitor Application Insights 资源](./unify-app-resource-data.md)。 
 >
 > 
 
@@ -174,7 +173,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="generic-fields"></a>泛型字段
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 | --- | --- |
 | 类型 | ApplicationInsights |
 | ClientIP |   |
@@ -242,7 +241,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="request-specific-fields"></a>请求特定的字段
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 | --- | --- |
 | 类型 | ApplicationInsights |
 | TelemetryType | 请求 |
@@ -318,6 +317,5 @@ ApplicationInsights | summarize by ApplicationName
 
 ## <a name="next-steps"></a>后续步骤
 
-- 使用[日志搜索](../log-query/log-query-overview.md)可以查看 Application Insights 应用的详细信息。
-
+- 使用[日志搜索](./log-query-overview.md)可以查看 Application Insights 应用的详细信息。
 

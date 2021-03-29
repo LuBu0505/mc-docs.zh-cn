@@ -2,21 +2,23 @@
 title: 准备好要上传到 Azure 的 Windows VHD
 description: 了解如何准备要上传到 Azure 的 Windows VHD 或 VHDX
 manager: dcscontentpm
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: windows
 ms.workload: infrastructure-services
 ms.topic: troubleshooting
 origin.date: 09/02/2020
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 10/19/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5207be1b07cb798c91e5667efa5cf7e8e2129909
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: de100de7b7f3adb19fca3e4c3e0618bed570956b
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102053865"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603152"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 
@@ -499,9 +501,9 @@ Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
 
 在此示例中，请将路径的值替换为要调整大小的虚拟硬盘的路径。 将 SizeBytes 的值替换为磁盘的新大小（以字节为单位）。
 
-<!--Not Available on ### Convert from VMware VMDK disk format-->
-<!--Not Available on [VMDK file format](https://en.wikipedia.org/wiki/VMDK)-->
+<!--NOT AVAILABLE ON ### Convert from VMware VMDK disk format-->
 <!--NOT AVAILABLE ON [Azure Migrate](../../migrate/server-migrate-overview.md)-->
+<!--NOT AVAILABLE ON wikipedia.org-->
 
 ## <a name="complete-the-recommended-configurations"></a>完成建议的配置
 

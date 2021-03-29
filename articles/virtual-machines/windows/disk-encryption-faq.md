@@ -1,22 +1,23 @@
 ---
 title: FAQ - 适用于 Windows VM 的 Azure 磁盘加密
 description: 本文提供有关适用于 Windows IaaS VM 的 Azure 磁盘加密的常见问题解答。
-ms.service: virtual-machines-windows
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: windows
 ms.topic: conceptual
 origin.date: 11/01/2019
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/29/2021
 ms.testscope: no
 ms.testdate: ''
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: c450268b5926b1deaa636e24dd4fb0e6d3a7fb4e
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: bdc9a8f7a3dbecb54edd487be9d0068294ea849c
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857149"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603793"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>适用于 Windows 虚拟机的 Azure 磁盘加密常见问题解答
 
@@ -28,7 +29,7 @@ ms.locfileid: "97857149"
 
 请参阅[支持的 VM 和操作系统](disk-encryption-overview.md#supported-vms-and-operating-systems)。
 
-<!--Not Available on ## Where is Azure Disk Encryption in general availability (GA)?-->
+<!--NOT AVAILABLE ON ## Where is Azure Disk Encryption in general availability (GA)?-->
 
 ## <a name="what-user-experiences-are-available-with-azure-disk-encryption"></a>Azure 磁盘加密提供哪些用户体验？
 
@@ -86,9 +87,10 @@ Azure 磁盘加密使用客户托管的密钥提供对 OS 磁盘、数据磁盘�
 
 是的，可以使用 Azure Key Vault 来生成密钥加密密钥供 Azure 磁盘加密使用。 这些密钥在 Azure Key Vault（Azure 磁盘加密的密钥存储）中受保护。 有关密钥加密密钥的详细信息，请参阅[创建和配置用于 Azure 磁盘加密的 Key Vault](disk-encryption-key-vault.md)。
 
-<!--Not Available on ## Can I use an on-premises key management service or HSM to safeguard the encryption keys?-->
-
-<!--Not Available on You can't use the on-premises key management service or HSM to safeguard the encryption keys with Azure Disk Encryption. You can only use the Azure Key Vault service to safeguard the encryption keys. For more information on the key encryption key support scenarios, see [Creating and configuring a key vault for Azure Disk Encryption](disk-encryption-key-vault.md).-->
+<!--NOT AVAILABLE on ## Can I use an on-premises key management service or HSM to safeguard the encryption keys?-->
+<!--NOT AVAILABLE on FEATURE HSM-->
+<!--NOT AVAILABLE on You can't use the on-premises key management service or HSM to safeguard the encryption keys with Azure Disk Encryption. You can only use the Azure Key Vault service to safeguard the encryption keys. For more information on the key encryption key support scenarios, see [Creating and configuring a key vault for Azure Disk Encryption](disk-encryption-key-vault.md).-->
+<!--NOT AVAILABLE on FEATURE HSM-->
 
 ## <a name="what-are-the-prerequisites-to-configure-azure-disk-encryption"></a>配置 Azure 磁盘加密的先决条件是什么？
 
@@ -144,4 +146,4 @@ Azure 备份提供一个机制，可以用来备份和还原同一订阅与区�
 - [在 Azure 安全中心应用磁盘加密](../../security-center/asset-inventory.md)
 - [Azure 静态数据加密](../../security/fundamentals/encryption-atrest.md)
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

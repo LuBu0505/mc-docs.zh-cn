@@ -1,23 +1,25 @@
 ---
 title: Azure 中适用于 Windows VM 的计划事件
 description: Windows 虚拟机上使用 Azure 元数据服务的计划事件。
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: scheduled-events
+ms.collection: windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 origin.date: 06/01/2020
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.reviwer: mimckitt
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dc12a5da95c4e51d07b3fb621980246c3f9313d5
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 10ccba0820039ecc25b06d37f0c4f047539a68b0
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055155"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603824"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 元数据服务：适用于 Windows VM 的计划事件
 
@@ -47,8 +49,7 @@ ms.locfileid: "102055155"
 - 虚拟机正在根据预测很快会出现故障的[降级主机硬件](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)上运行
 - 用户启动的维护（例如，用户重启或重新部署 VM）
 
-<!--NOT AVAILABLE ON - [Spot VM](../spot-vms.md)-->
-<!--Not Available on - [Spot scale set](../../virtual-machine-scale-sets/use-spot.md)-->
+<!--NOT AVAILABLE ON [Spot VM](../spot-vms.md)-->
 <!--NOT AVAILABLE ON [Spot scale set](../../virtual-machine-scale-sets/use-spot.md)-->
 
 ## <a name="the-basics"></a>基础知识  
@@ -61,12 +62,15 @@ ms.locfileid: "102055155"
 - 独立虚拟机。
 - 云服务中的所有 VM。
 - 可用性集中的所有 VM。
+
+    <!--NOT AVAILABLE on FEATURE availability zone-->
+    
 - 规模集位置组中的所有 VM。 
 
 > [!NOTE]
 > 某个结构控制器 (FC) 租户中所有虚拟机 (VM) 的 Scheduled Events 传送到另一个 FC 租户中的所有 VM。 FC 租户等同于一个独立的 VM、一个完整的云服务、一个完整的可用性集和一个 VM 规模集 (VMSS) 的放置组。
 
-<!--Not Available on regardless of Availability Zone usage. -->
+<!--NOT AVAILABLE on FEATURE Availability Zone-->
 
 因此，检查事件中的 `Resources` 字段可确定哪些 VM 受到了影响。
 
@@ -146,7 +150,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 
 <!--MOONCAKE: Not Available on EventType <li>`Preempt`: The Low-priority Virtual Machine is being deleted (ephemeral disks are lost).-->
 
-|属性  |  说明 |
+|Property  |  说明 |
 | - | - |
 | EventId | 此事件的全局唯一标识符。 <br /><br /> 示例： <br /><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType | 此事件造成的影响。 <br /><br /> 值： <br /><ul><li> `Freeze`：虚拟机计划暂停数秒。 CPU 和网络连接可能会暂停，但对内存或打开的文件没有影响。<li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘将丢失）。 <li> `Terminate`：计划将删除虚拟机。 |
@@ -250,7 +254,7 @@ if __name__ == '__main__':
 
 ## <a name="next-steps"></a>后续步骤 
 
-<!--NOT AVAIABLLE on https://channel9.msdn.com/-->
+<!--NOT AVAILABLE ON channel9.msdn.com-->
 
 - 在 [Azure 实例元数据计划事件 GitHub 存储库](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)中查看计划事件代码示例。
 - 详细了解[实例元数据服务](instance-metadata-service.md)中提供的 API。

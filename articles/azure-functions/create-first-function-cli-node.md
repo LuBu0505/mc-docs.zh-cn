@@ -1,15 +1,15 @@
 ---
 title: 从命令行创建 JavaScript 函数 - Azure Functions
 description: 了解如何从命令行创建 JavaScript 函数，然后将本地 Node.js 项目发布到 Azure Functions 中托管的无服务器实例。
-ms.date: 01/12/2021
+ms.date: 03/22/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4f23d4b9ab425546b25bfc4248be3d74af7fecbe
-ms.sourcegitcommit: 88173d1dae28f89331de5f877c5b3777927d67e4
+ms.openlocfilehash: ea8ddcb0d6a7201e4dc1b1ac1f5ed0a6aa44e182
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195263"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602765"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-from-the-command-line"></a>快速入门：在 Azure 中从命令行创建 JavaScript 函数
 
@@ -110,7 +110,7 @@ module.exports = async function (context, req) {
 }
 ```
 
-对于 HTTP 触发器，该函数将接收 *function.json* 中定义的变量 `req` 中的请求数据。 在 *function.json* 中定义为 `$return` 的返回对象是响应。 要了解详细信息，请参阅 [Azure Functions HTTP 触发器和绑定](./functions-bindings-http-webhook.md?tabs=javascript)。
+对于 HTTP 触发器，该函数将接收 *function.json* 中定义的变量 `req` 中的请求数据。 响应在 function.json 中定义为 `res`，可以使用 `context.res` 对其进行访问。 要了解详细信息，请参阅 [Azure Functions HTTP 触发器和绑定](./functions-bindings-http-webhook.md?tabs=javascript)。
 
 #### <a name="functionjson"></a>function.json
 
@@ -180,4 +180,3 @@ module.exports = async function (context, req) {
 
 > [!div class="nextstepaction"]
 > [连接到 Azure 存储队列](functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-javascript)
-

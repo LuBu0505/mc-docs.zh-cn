@@ -4,14 +4,14 @@ description: 通过智能检测更改为默认通知收件人。 使用 Azure Ap
 ms.topic: conceptual
 author: Johnnytechn
 ms.author: v-johya
-ms.date: 02/22/2021
+ms.date: 03/25/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: e0614d759cd792a588e727ce043f88ddf2ffa5f0
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 931d376f43fe1680425073b8f53313cb85559281
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197442"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603110"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>智能检测电子邮件通知更改
 
@@ -27,7 +27,7 @@ ms.locfileid: "102197442"
 
 * 标记为预览版的智能检测规则。 这些智能检测规则目前不支持电子邮件通知。
 
-* 故障异常规则。 如果新的默认角色从经典警报迁移到统一警报平台，此规则将开始针对新的默认角色（[此处](../alerts/monitoring-classic-retirement.md)提供了详细信息）。
+* 故障异常规则。
 
 ## <a name="how-to-prepare-for-this-change"></a>如何为此更改做准备？
 

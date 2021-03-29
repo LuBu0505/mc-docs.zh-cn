@@ -5,17 +5,17 @@ ms.service: traffic-manager
 ms.topic: conceptual
 origin.date: 10/01/2020
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: no
 ms.testdate: 10/26/2020
 ms.author: v-yeche
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f81928d0ad64e8d797c0f5023646ca1a2dc783f5
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 77b61dc76569eecdd0c5eaa6e6ad67ca10624a22
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054383"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603568"
 ---
 <!--Verified Successfully-->
 # <a name="azure-security-baseline-for-azure-traffic-manager"></a>适用于 Azure 流量管理器的 Azure 安全基线
@@ -34,9 +34,9 @@ ms.locfileid: "102054383"
 
 通过 Azure Monitor 引入日志，以聚合终结点设备、网络资源和其他安全系统生成的安全数据。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方 SIEM。
 
-<!--NOT AVAILABLE ON - [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
+<!--NOT AVAILABLE ON [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Azure 安全中心监视**：是
 
@@ -48,13 +48,13 @@ ms.locfileid: "102054383"
 
 在 Azure Monitor 内启用诊断设置，以访问审核日志、安全日志和诊断日志。 活动日志自动可用，包括事件源、日期、用户、时间戳、源地址、目标地址和其他有用元素。
 
-<!--NOT AVAILABLE ON - [How to enable resource logging](traffic-manager-diagnostic-logs.md)-->
+<!--NOT AVAILABLE ON [How to enable resource logging](traffic-manager-diagnostic-logs.md)-->
 
 - [流量管理器指标和警报](traffic-manager-metrics-alerts.md)
 
-- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/platform/diagnostic-settings.md)
+- [如何使用 Azure Monitor 收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/platform/platform-logs-overview.md)
+- [了解 Azure 中的日志记录和不同的日志类型](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure 安全中心监视**：是
 
@@ -64,7 +64,7 @@ ms.locfileid: "102054383"
 
 **指南**：在 Azure Monitor 中，根据组织的合规性规则设置 Log Analytics 工作区保持期。 将 Azure 存储帐户用于长期存储和存档存储。
 
-- [更改 Log Analytics 中的数据保留期](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [更改 Log Analytics 中的数据保留期](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 - [如何为 Azure 存储帐户日志配置保留策略](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
@@ -78,11 +78,11 @@ ms.locfileid: "102054383"
 
 或者，可以启用数据并将其加入 Azure Sentinel 或第三方 SIEM。 
 
-<!--NOT AVAILABLE ON - [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
+<!--NOT AVAILABLE ON [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
 
-- [Log Analytics 查询入门](../azure-monitor/log-query/get-started-portal.md)
+- [Log Analytics 查询入门](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/log-query/get-started-queries.md)
+- [如何在 Azure Monitor 中执行自定义查询](../azure-monitor/logs/get-started-queries.md)
 
 **Azure 安全中心监视**：是
 
@@ -100,9 +100,9 @@ ms.locfileid: "102054383"
 
 - [如何在 Azure 安全中心管理警报](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/learn/tutorial-response.md)
+- [如何针对 Log Analytics 日志数据发出警报](../azure-monitor/alerts/tutorial-response.md)
 
-<!--NOT AVAILABLE ON - [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
+<!--NOT AVAILABLE ON [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
 
 **Azure 安全中心监视**：是
 
@@ -118,7 +118,7 @@ ms.locfileid: "102054383"
 
 在 Resource Manager 中，只要配置流量管理器配置文件的人员具有终结点的读取访问权限，任何订阅的终结点就都可添加到流量管理器中。
 
-- [使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)
+- [使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)
 
 - [如何使用 PowerShell 获取 Azure AD 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -152,7 +152,7 @@ ms.locfileid: "102054383"
 
 **指导**：Azure 流量管理器支持使用 Azure Active Directory 进行 SSO 身份验证。 通过使用组织的预先存在的标识为服务启用 SSO，减少用户必须管理的标识和凭据的数量。
 
-<!--NOT AVAILABLE ON - [Understand SSO with Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)-->
+<!--NOT AVAILABLE ON [Understand SSO with Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)-->
 
 **Azure 安全中心监视**：不适用
 
@@ -190,7 +190,7 @@ ms.locfileid: "102054383"
 
 - [如何部署 Privileged Identity Management](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-<!--NOT AVAILABLE ON - [Understand Azure AD risk detection](../active-directory/identity-protection/overview-identity-protection.md)-->
+<!--NOT AVAILABLE ON [Understand Azure AD risk detection](../active-directory/identity-protection/overview-identity-protection.md)-->
 
 **Azure 安全中心监视**：是
 
@@ -240,10 +240,10 @@ ms.locfileid: "102054383"
 
 **责任**：客户
 
-<!--Not Available on ### 3.12: Alert on account login behavior deviation-->
-<!--NOT AVAILABLE ON - [How to view Azure AD risky sign-ins](../active-directory/identity-protection/overview-identity-protection.md)-->
-<!--NOT AVAILABLE ON - [How to configure and enable Identity Protection risk policies](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)-->
-<!--NOT AVAILABLE ON - [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
+<!--NOT AVAILABLE ON ### 3.12: Alert on account login behavior deviation-->
+<!--NOT AVAILABLE ON [Understand Azure AD risk detection](../active-directory/identity-protection/overview-identity-protection.md)-->
+<!--NOT AVAILABLE ON [How to configure and enable Identity Protection risk policies](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)-->
+<!--NOT AVAILABLE ON [How to onboard Azure Sentinel](../sentinel/quickstart-onboard.md)-->
 
 ## <a name="data-protection"></a>数据保护
 
@@ -267,7 +267,7 @@ ms.locfileid: "102054383"
 
 Azure 流量管理器具有一个名为“流量管理器参与者”的预定义 Azure 角色，该角色可以分配给用户。
 
-- [使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)
+- [使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)
 
 - [流量管理器参与者角色](../role-based-access-control/built-in-roles.md#traffic-manager-contributor)
 
@@ -283,7 +283,7 @@ Azure 流量管理器具有一个名为“流量管理器参与者”的预定�
 
 **指导**：将 Azure Monitor 与 Azure 活动日志结合使用，以便创建要在 Azure 流量管理器以及其他关键或相关资源发生更改时触发的警报。
 
-- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/platform/alerts-activity-log.md)
+- [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure 安全中心监视**：是
 
@@ -310,7 +310,7 @@ Azure 流量管理器具有一个名为“流量管理器参与者”的预定�
 **责任**：客户
 
 <!--NOT AVAILABLE ON ### 6.2: Maintain asset metadata-->
-<!--NOT AVAILABLE ON https://docs.azure.cn/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure-resource-manager%2fmanagement%2ftoc.json-->
+<!--NOT AVAILABLE ON [For more information about tagging assets, see Resource naming and tagging decision guide](https://docs.azure.cn/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure-resource-manager%2fmanagement%2ftoc.json)-->
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
@@ -323,7 +323,7 @@ Azure 流量管理器具有一个名为“流量管理器参与者”的预定�
 
 还可以创建自定义 Azure Policy 定义，以限制更精细的资源设置。
 
-<!--NOT AVAILABLE ON - [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)-->
+<!--NOT AVAILABLE ON [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)-->
 
 - [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
@@ -410,9 +410,9 @@ Azure 流量管理器具有一个名为“流量管理器参与者”的预定�
 
 **责任**：客户
 
-<!--Not Available on - ### 7.5: Securely store configuration of Azure resources-->
-<!--Not Available on - [How to store code in Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)-->
-<!--Not Available on - [Azure Repos Documentation](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)-->
+<!--NOT AVAILABLE ON - ### 7.5: Securely store configuration of Azure resources-->
+<!--NOT AVAILABLE ON - [How to store code in Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)-->
+<!--NOT AVAILABLE ON - [Azure Repos Documentation](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)-->
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署 Azure 资源的配置管理工具
 
@@ -506,7 +506,7 @@ Azure 流量管理器具有一个名为“流量管理器参与者”的预定�
 
 - [如何配置连续导出](../security-center/continuous-export.md)
 
-<!--NOT AVAILABLE ON - [How to stream alerts into Azure Sentinel](../sentinel/connect-azure-security-center.md)-->
+<!--NOT AVAILABLE ON [How to stream alerts into Azure Sentinel](../sentinel/connect-azure-security-center.md)-->
 
 **Azure 安全中心监视**：不适用
 

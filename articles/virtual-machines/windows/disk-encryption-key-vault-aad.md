@@ -1,22 +1,22 @@
 ---
 title: 使用 Azure AD 创建和配置用于 Azure 磁盘加密的密钥保管库（以前版本）
 description: 本文介绍如何使用 Azure AD 为 Azure 磁盘加密创建和配置密钥保管库。
-ms.service: virtual-machines-windows
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
 ms.topic: how-to
 origin.date: 03/15/2019
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: ad4254217ed4d3b3a994d13f8721d5b2ca1210bf
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: 4faff6dbbb29e36b3b62616d205bfc6f324043b5
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055250"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603860"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>使用 Azure AD 创建和配置用于 Azure 磁盘加密的密钥保管库（以前版本）
 
@@ -107,7 +107,7 @@ Azure 磁盘加密与 [Azure Key Vault](https://docs.azure.cn/key-vault/) 集成
 
 ### <a name="set-up-an-azure-ad-app-and-service-principal-with-azure-cli"></a>使用 Azure CLI 设置 Azure AD 应用和服务主体
 
-可以在 Azure CLI 中使用 [az ad sp](https://docs.azure.cn/cli/ad/sp#az-ad-sp) 命令来管理服务主体。 有关详细信息，请参阅[创建 Azure 服务主体](https://docs.azure.cn/cli/create-an-azure-service-principal-azure-cli)。
+可以在 Azure CLI 中使用 [az ad sp](https://docs.azure.cn/cli/ad/sp) 命令来管理服务主体。 有关详细信息，请参阅[创建 Azure 服务主体](https://docs.azure.cn/cli/create-an-azure-service-principal-azure-cli)。
 
 1. 创建新服务主体。
 
@@ -164,9 +164,9 @@ az keyvault set-policy --name "MySecureVault" --spn "<spn created with CLI/the A
 5. 对于“机密权限”，请选中“机密管理操作”下的“设置”。   
 6. 单击“确定”保存访问策略。  
 
-:::image type="content" source="../media/disk-encryption/keyvault-portal-fig3.png" alt-text="Azure Key Vault 加密操作 - 包装密钥":::
+    :::image type="content" source="../media/disk-encryption/keyvault-portal-fig3.png" alt-text="Azure Key Vault 加密操作 - 包装密钥":::
 
-:::image type="content" source="../media/disk-encryption/keyvault-portal-fig3b.png" alt-text="Azure Key Vault 机密权限 - 设置":::
+    :::image type="content" source="../media/disk-encryption/keyvault-portal-fig3b.png" alt-text="Azure Key Vault 机密权限 - 设置":::
 
 ## <a name="set-key-vault-advanced-access-policies"></a>设置密钥保管库高级访问策略
 Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些密钥和机密可供 VM 用来启动和解密卷。 对 Key Vault 启用磁盘加密，否则部署将会失败。  
@@ -218,7 +218,7 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
 3. 根据需要选择“启用对 Azure 虚拟机的访问以进行部署”和/或“启用对 Azure 资源管理器的访问以进行模板部署”。   
 4. 单击“保存”  。
 
-:::image type="content" source="../media/disk-encryption/keyvault-portal-fig4.png" alt-text="Azure Key Vault 高级访问策略":::
+    :::image type="content" source="../media/disk-encryption/keyvault-portal-fig4.png" alt-text="Azure Key Vault 高级访问策略":::
 
 ## <a name="set-up-a-key-encryption-key-optional"></a>设置密钥加密密钥（可选）
 若要使用密钥加密密钥 (KEK) 来为加密密钥提供附加的安全层，请将 KEK 添加到 Key Vault。 使用 [Add-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet 在 Key Vault 中创建密钥加密密钥。 指定密钥加密密钥后，Azure 磁盘加密会使用该密钥包装加密机密，然后将机密写入 Key Vault。 

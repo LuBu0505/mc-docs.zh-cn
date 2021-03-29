@@ -1,25 +1,26 @@
 ---
 title: 在启用 Python 3 的 Linux Azure 虚拟机系统中使用 VM 扩展时遇到的问题
 description: 了解如何在启用 Python 3 的 Linux 系统中使用 VM 扩展
-services: virtual-machines-windows
+services: virtual-machines
 manager: dcscontentpm
 tags: top-support-issue,azure-resource-manager
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: extensions
+ms.collection: windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 origin.date: 08/25/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/29/2021
 ms.author: v-yeche
 ms.assetid: 3cd520fd-eaf7-4ef9-b4d3-4827057e5028
-ms.openlocfilehash: 0090e9a40d71328a9025a84c3d2547ce7da720c2
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: a467f3ff225c8be5ecb25e5dbe1e908aeb37989f
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857099"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603153"
 ---
 <!--Verified successfully-->
 # <a name="issues-using-vm-extensions-in-python-3-enabled-linux-azure-virtual-machines-systems"></a>在启用 Python 3 的 Linux Azure 虚拟机系统中使用 VM 扩展时遇到的问题
@@ -85,14 +86,14 @@ ms.locfileid: "97857099"
 
         在可以使用此属性部署 VM 时禁用和启用扩展：
 
-         ```python
-           "osProfile": {
-             "allowExtensionOperations": false
-           },
-         ```
+        ```python
+        "osProfile": {
+           "allowExtensionOperations": false
+        },
+        ```
 
 ## <a name="next-steps"></a>后续步骤
 
 请参阅[默认情况下自 18.04 LTS - Python 3 起其他基础的系统更改](https://wiki.ubuntu.com/FocalFossa/ReleaseNotes#Python3_by_default)获取更多信息。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

@@ -5,14 +5,14 @@ author: MikeDodaro
 ms.author: v-junlch
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 11/02/2020
+ms.date: 03/23/2021
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 22511db13c2029f4cb47b4faad93a806e38fe285
-ms.sourcegitcommit: f436acd1e2a0108918a6d2ee9a1aac88827d6e37
+ms.openlocfilehash: 59a062f650952b4a14512731c93931e1b23fce46
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96508943"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602638"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>快速入门：生成应用并将其部署到 Azure Spring Cloud
 
@@ -25,9 +25,9 @@ ms.locfileid: "96508943"
 
 ## <a name="prerequisites"></a>先决条件
 
-* [安装 JDK 8](https://docs.microsoft.com/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
-* [注册 Azure 订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn)
-* （可选）[安装 Azure CLI 版本 2.0.67 或更高版本](/cli/install-azure-cli?preserve-view=true&view=azure-cli-latest)，并使用以下命令安装 Azure Spring Cloud 扩展：`az extension add --name spring-cloud`
+* [安装 JDK 8](https://docs.microsoft.com/java/azure/jdk/)
+* [注册 Azure 订阅](https://www.microsoft.com/china/azure/index.html?fromtype=cn/)
+* （可选）[安装 Azure CLI 版本 2.0.67 或更高版本](/cli/install-azure-cli)，并使用以下命令安装 Azure Spring Cloud 扩展：`az extension add --name spring-cloud`
 * （可选）[安装 Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) 并[登录](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="deployment-procedures"></a>部署过程
@@ -83,7 +83,7 @@ ms.locfileid: "96508943"
 1. 使用以下命令分配终结点：
 
     ```azurecli
-    az spring-cloud app update -n gateway --is-public true
+    az spring-cloud app update -n gateway --assign-endpoint true
     ```
 
 2. 查询 **网关** 应用程序的公共 IP，这样就可以验证该应用程序是否正在运行：
@@ -174,7 +174,7 @@ ms.locfileid: "96508943"
 1. 重复上述步骤来配置和部署 `account-service`。
 ---
 
-导航到前面步骤的输出中提供的 URL，以访问 PiggyMetrics 应用程序。 例如： `https://<service instance name>-gateway.azuremicroservices.io`
+导航到前面步骤的输出中提供的 URL，以访问 PiggyMetrics 应用程序。 例如： `https://<service instance name>-gateway.microservices.azure.cn`
 
 ![访问 PiggyMetrics](./media/spring-cloud-quickstart-launch-app-cli/launch-app.png)
 
@@ -195,4 +195,3 @@ ms.locfileid: "96508943"
 
 > [!div class="nextstepaction"]
 > [日志、指标和跟踪](spring-cloud-quickstart-logs-metrics-tracing.md)
-

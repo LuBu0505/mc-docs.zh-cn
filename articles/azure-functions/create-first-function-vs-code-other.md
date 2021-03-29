@@ -2,13 +2,13 @@
 title: 使用 Visual Studio Code 创建 Go 或 Rust 函数 - Azure Functions
 description: 了解如何创建 Go 函数作为 Azure Functions 自定义处理程序，然后使用 Visual Studio Code 中的 Azure Functions 扩展将本地项目发布到 Azure Functions 中的无服务器托管。
 ms.topic: quickstart
-ms.date: 02/26/2021
-ms.openlocfilehash: 586245f300d74a69bf308dcdcad5675c359acf11
-ms.sourcegitcommit: 3f32b8672146cb08fdd94bf6af015cb08c80c390
+ms.date: 03/22/2021
+ms.openlocfilehash: ea61dd57c5bcef8464342f014137760043afd4a2
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101697519"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602614"
 ---
 # <a name="quickstart-create-a-go-or-rust-function-in-azure-using-visual-studio-code"></a>快速入门：在 Azure 中使用 Visual Studio Code 创建 Go 或 Rust 函数
 
@@ -89,14 +89,14 @@ HttpExample 文件夹中的 function.json 文件声明 HTTP 触发器函数 。 
 
     ```go
     package main
-
+    
     import (
         "fmt"
         "log"
         "net/http"
         "os"
     )
-
+    
     func helloHandler(w http.ResponseWriter, r *http.Request) {
         message := "This HTTP triggered function executed successfully. Pass a name in the query string for a personalized response.\n"
         name := r.URL.Query().Get("name")
@@ -105,7 +105,7 @@ HttpExample 文件夹中的 function.json 文件声明 HTTP 触发器函数 。 
         }
         fmt.Fprint(w, message)
     }
-
+    
     func main() {
         listenAddr := ":8080"
         if val, ok := os.LookupEnv("FUNCTIONS_CUSTOMHANDLER_PORT"); ok {
@@ -141,8 +141,8 @@ HttpExample 文件夹中的 function.json 文件声明 HTTP 触发器函数 。 
 
     ```toml
     [dependencies]
-    warp = "0.2"
-    tokio = { version = "0.2", features = ["full"] }
+    warp = "0.3"
+    tokio = { version = "1", features = ["rt", "macros", "rt-multi-thread"] }
     ```
 
 1. 在 src/main.rs 中，添加以下代码并保存文件。 这就是 Rust 自定义处理程序。

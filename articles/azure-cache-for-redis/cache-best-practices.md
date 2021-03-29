@@ -4,14 +4,14 @@ description: 遵循这些最佳做法了解如何有效使用 Azure Redis 缓存
 author: joncole
 ms.service: cache
 ms.topic: conceptual
-ms.date: 12/28/2020
+ms.date: 03/24/2021
 ms.author: v-junlch
-ms.openlocfilehash: 4036fe01fae83143d8b1055c774c2175b504e01e
-ms.sourcegitcommit: a37f80e7abcf3e42859d6ff73abf566efed783da
+ms.openlocfilehash: 249b84d5eab2fff698af7c2aeaf84306cf311070
+ms.sourcegitcommit: bed93097171aab01e1b61eb8e1cec8adf9394873
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829434"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105602783"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Azure Redis 缓存的最佳做法 
 遵循这些最佳做法可帮助最大化性能并在 Azure 中经济、高效地利用 Azure Redis 缓存实例。
@@ -30,6 +30,8 @@ ms.locfileid: "97829434"
  * **将缓存实例和应用程序定位在同一区域中。**  连接到不同区域中的缓存可能会明显增大延迟并降低可靠性。  尽管可以从 Azure 外部进行连接，但不建议这样做，尤其是使用 Redis 作为缓存时。  如果只是使用 Redis 作为键/值存储，则延迟可能不是主要考虑因素。 
 
  * **重复使用连接。**  创建新连接是高开销的操作，会增大延迟，因此请尽量重复使用连接。 如果你选择创建新连接，请确保在释放旧连接之前先将其关闭（即使是在 .NET 或 Java 等托管内存语言中）。
+
+* **使用管道。**  尝试选择支持 [Redis 管道](https://redis.io/topics/pipelining)的 Redis 客户端，以便最有效地利用网络来获得尽量最佳的吞吐量。
 
  * **将客户端库配置为使用至少 15 秒的连接超时**，以便即使是在 CPU 负载较高的情况下，系统也有时间建立连接。  使用较小的连接超时值无法保证在该时间范围内能够建立连接。  如果出现问题（客户端 CPU 负载偏高、服务器 CPU 负载偏高等），则使用较短的连接超时值会导致连接尝试失败。 此行为通常会使问题变得更糟。  使用较短的超时不仅无助于解决问题，而且会加剧问题，这会强制系统重启尝试重新连接的进程，从而可能导致出现“连接 -> 失败 -> 重试”循环。 我们通常建议将连接超时保留为 15 秒或更长。 让连接尝试在 15 或 20 秒后成功，比失败后立即重试更有利。 与最初让系统花费更长时间尝试连接相比，这种重试循环可能会导致服务中断的持续时间变长。  
      > [!NOTE]
@@ -51,7 +53,7 @@ ms.locfileid: "97829434"
 ## <a name="client-library-specific-guidance"></a>特定于客户端库的指南
  * [StackExchange.Redis (.NET)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
  * [Java - 应使用哪种客户端？](https://gist.github.com/warrenzhu25/1beb02a09b6afd41dff2c27c53918ce7#file-azure-redis-java-best-practices-md)
- * [Lettuce (Java)](https://gist.github.com/warrenzhu25/181ccac7fa70411f7eb72aff23aa8a6a#file-azure-redis-lettuce-best-practices-md)
+ * [Lettuce (Java)](https://github.com/Azure/AzureCacheForRedis/blob/main/Lettuce%20Best%20Practices.md)
  * [Jedis (Java)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-java-jedis-md)
  * [Node.js](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-node-js-md)
  * [PHP](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-php-md)
@@ -73,6 +75,8 @@ ms.locfileid: "97829434"
  * 用于测试的客户端 VM 应与 Redis 缓存实例位于 **同一区域**。
  * **建议为客户端使用 Dv2 VM 系列**，因为它们具有更好的硬件，会提供最佳的结果。
  * 确保所用客户端 VM 的计算和带宽资源 *至少与要测试的缓存相同。 
+ * 在缓存中 **按照故障转移条件进行测试**。 必须确保不只是在稳定状态条件下对缓存进行性能测试。 还需要按照故障转移条件进行测试，并在测试期间测量缓存中的 CPU/服务器负载。 可以通过[重新启动主节点](cache-administration.md#reboot)来启动故障转移。 这样，便可以看到在根据条件进行故障转移的过程中（可以在更新期间进行，也可以在计划外事件期间进行），应用程序在吞吐量和延迟方面的行为。 理想情况下，即使是在故障转移期间，CPU/服务器负载峰值也应该不会很高（例如超过 80%），因为这可能会影响性能。
+ * **某些大小的缓存** 托管在具有 4 个或更多核心的 VM 上。 这有助于将 TLS 加密/解密以及 TLS 连接/断开连接工作负载分散到多个核心，使缓存 VM 上的总体 CPU 使用率降低。  [参阅此文了解有关 VM 大小和核心的详细信息](cache-planning-faq.md#azure-cache-for-redis-performance)
  * 如果是在 Windows 设备上操作，请在客户端计算机上 **启用 VRSS**。  [请参阅此处了解详细信息](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11))。  PowerShell 脚本示例：
      >PowerShell -ExecutionPolicy Unrestricted Enable-NetAdapterRSS -Name (    Get-NetAdapter).Name 
 
@@ -90,4 +94,3 @@ ms.locfileid: "97829434"
 
 **测试吞吐量：** 管道化的 GET 请求，其有效负载为 1k。
 > redis-benchmark -h yourcache.redis.cache.chinacloudapi.cn -a yourAccesskey -t  GET -n 1000000 -d 1024 -P 50  -c 50
-

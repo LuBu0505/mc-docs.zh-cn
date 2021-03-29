@@ -2,23 +2,24 @@
 title: 从 AWS 和其他平台迁移到 Azure 中的托管磁盘
 description: 在 Azure 中使用从其他云（如 AWS 或其他虚拟化平台）上传的 VHD 并利用 Azure 托管磁盘创建 VM。
 manager: twooley
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subervice: disks
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: conceptual
 origin.date: 10/07/2017
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: no
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 60b98c22f8ab03c364a7215b70d8ff1c75e07027
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: a46131eb184a2b1d261b641fa9639d9bc1b1162e
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054016"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603653"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>从 Amazon Web Services (AWS) 和其他平台迁移到 Azure 中的托管磁盘
 
@@ -44,7 +45,7 @@ ms.locfileid: "102054016"
 Azure 托管磁盘无需管理存储帐户，从而简化了 VM 管理。 托管磁盘还受益于可用性集中 VM 的更佳可靠性。 这可确保将可用性集中不同 VM 的磁盘最大限度地彼此独立，以避免单点故障。 它会自动将可用性集中不同 VM 的磁盘置于不同的存储缩放单元（戳），限制由于硬件和软件故障引起的单个存储缩放单元故障影响。
 根据需求，可以从三种类型的存储选项中进行选择。 若要了解可用的磁盘类型，请参阅[选择磁盘类型](../disks-types.md)一文。
 
-<!--Not Available on Ulter SSD till 02/22/2021-->
+<!--NOT AVAILABLE ON Ulter SSD till 02/22/2021-->
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>计划迁移到托管磁盘
 
@@ -55,6 +56,8 @@ Azure 托管磁盘无需管理存储帐户，从而简化了 VM 管理。 托管
 ### <a name="location"></a>位置
 
 选取 Azure 托管磁盘可用位置。 如果要迁移到高级托管磁盘，还应确保高级存储在计划迁移到的区域中可用。 有关可用位置的最新信息，请参阅 [Azure 服务（按区域）](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=managed-disks&regions=china-non-regional,china-east,china-east-2,china-north,china-north-2) 。
+
+<!--CORRECT ON https://azure.microsoft.com/en-us/global-infrastructure/services/?products=managed-disks&regions=china-non-regional,china-east,china-east-2,china-north,china-north-2-->
 
 ### <a name="vm-sizes"></a>VM 大小
 

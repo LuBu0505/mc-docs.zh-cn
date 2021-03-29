@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 10/09/2020
 author: rockboyfor
-ms.date: 02/22/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 09/28/2020
 ms.author: v-yeche
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7bd3a87b2ccc17144a7d5210e8ee6b1418bdf909
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: a7be9cd89ee003f62085f0cdb71fb47b1e1f7457
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "104766553"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603632"
 ---
 <!--Verify sucessfully-->
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>快速入门：使用 Azure CLI 创建流量管理器配置文件以实现 Web 应用程序的高可用性
@@ -207,14 +207,12 @@ az network traffic-manager profile show \
 2. 若要查看流量管理器故障转移如何进行，请使用 [az network traffic-manager endpoint update](https://docs.azure.cn/cli/network/traffic-manager/endpoint#az_network_traffic_manager_endpoint_update) 禁用主要站点。
 
     ```azurecli
-
     az network traffic-manager endpoint update \
         --name <app1name_chinaeast> \
         --resource-group myResourceGroup \
         --profile-name <profile_name> \
         --type azureEndpoints \
         --endpoint-status Disabled
-
     ```
 
 3. 复制流量管理器配置文件的 DNS 名称 (*http://<* relativednsname *>.trafficmanager.cn*)，以在新的 Web 浏览器会话中查看该网站。

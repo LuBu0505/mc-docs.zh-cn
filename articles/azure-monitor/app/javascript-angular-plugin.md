@@ -6,21 +6,20 @@ author: Johnnytechn
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 03/25/2021
 ms.author: v-johya
-ms.openlocfilehash: ec6d4006553600952295e502aaff449e49f3964e
-ms.sourcegitcommit: d30cf549af09446944d98e4bd274f52219e90583
+ms.openlocfilehash: 5ee297b131df2e6382ddd1885f31f550c77cd8c0
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94638312"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603282"
 ---
 # <a name="angular-plugin-for-application-insights-javascript-sdk"></a>适用于 Application Insights JavaScript SDK 的 Angular 插件
 
 适用于 Application Insights JavaScript SDK 的 Angular 插件支持：
 
 - 跟踪路由器更改
-- Angular 组件使用情况统计信息
 
 > [!WARNING]
 > Angular 插件与 ECMAScript 3 (ES3) 不兼容。
@@ -38,9 +37,9 @@ npm install @microsoft/applicationinsights-angularplugin-js
 在应用的条目组件中设置 Application Insights 实例：
 
 ```js
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
-import { AngularPlugin, AngularPluginService } from '@microsoft/applicationinsights-angularplugin-js';
+import { AngularPlugin } from '@microsoft/applicationinsights-angularplugin-js';
 import { Router } from '@angular/router';
 
 @Component({
@@ -48,61 +47,20 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-    private appInsights;
+export class AppComponent {
     constructor(
-        private router: Router,
-        private angularPluginService: AngularPluginService 
+        private router: Router
     ){
         var angularPlugin = new AngularPlugin();
-        this.angularPluginService.init(angularPlugin, this.router);
-        this.appInsights = new ApplicationInsights({ config: {
+        const appInsights = new ApplicationInsights({ config: {
         instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE',
         extensions: [angularPlugin],
         extensionConfig: {
             [angularPlugin.identifier]: { router: this.router }
         }
         } });
+        appInsights.loadAppInsights();
     }
-
-    ngOnInit() {
-        this.appInsights.loadAppInsights();
-    }
-}
-
-```
-
-若要使用 `trackMetric` 方法跟踪 Angular 组件使用情况，请将 `AngularPluginService` 作为提供程序添加到 `app.module.ts` 文件中的提供程序列表中。
-
-```js
-import { AngularPluginService } from '@microsoft/applicationinsights-angularplugin-js';
-
-@NgModule({
-    ...
-  providers: [ AngularPluginService ],
-})
-export class AppModule { }
-```
-
-若要跟踪组件的生存期，请在该组件的 `ngOnDestroy` 方法中调用 `trackMetric`。 组件被销毁时，它将触发一个 `trackMetric` 事件，该事件将发送用户停留在页面上的时间和组件名称。
-
-```js
-import { Component, OnDestroy, HostListener } from '@angular/core';
-import { AngularPluginService } from '@microsoft/applicationinsights-angularplugin-js';
-
-@Component({
-  selector: 'app-test',
-  templateUrl: './test.component.html',
-  styleUrls: ['./test.component.css']
-})
-export class TestComponent implements OnDestroy {
-
-  constructor(private angularPluginService: AngularPluginService) {}
-
-  @HostListener('window:beforeunload')
-  ngOnDestroy() {
-    this.angularPluginService.trackMetric();
-  }
 }
 ```
 

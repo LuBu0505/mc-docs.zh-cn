@@ -1,26 +1,22 @@
 ---
 title: 适用于 Linux 的 Azure 磁盘加密
 description: 使用虚拟机扩展将适用于 Linux 的 Azure 磁盘加密部署到虚拟机。
-services: virtual-machines-linux
-manager: gwallace
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: disks
 origin.date: 03/19/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/29/2021
 ms.testscope: no
 ms.testdate: 11/02/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1227087291fae8593ba0db6b3a3b872b5885e72f
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.collection: linux
+ms.openlocfilehash: a2addafe6eae79c6609c101a4ba31744a89f4a07
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857008"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603751"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>适用于 Linux 的 Azure 磁盘加密 (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -192,4 +188,4 @@ Azure 磁盘加密 (ADE) 的扩展架构有两个版本：
 * 有关 VM 扩展的详细信息，请参阅[适用于 Linux 的虚拟机扩展和功能](features-linux.md)。
 * 有关适用于 Linux 的 Azure 磁盘加密的详细信息，请参阅 [Linux 虚拟机](../../security/fundamentals/azure-disk-encryption-vms-vmss.md#linux-virtual-machines)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

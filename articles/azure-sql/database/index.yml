@@ -12,16 +12,20 @@ metadata:
   ms.author: v-jay
   ms.reviewer: 
   origin.date: 01/25/2021
-  ms.date: 03/15/2021
-  ms.openlocfilehash: 87b9e00a820d58ee4b8a37c9be1d129c7d7224e6
-  ms.sourcegitcommit: 62410a4f24e5412edd9e8a06e897658b89036b16
+  ms.date: 03/29/2021
+  ms.openlocfilehash: 689694a8f2e35b5fe004a489e6ce8d1c83cfce9c
+  ms.sourcegitcommit: 308ca551066252e68198391c3e4d4b1de348deb9
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/10/2021
-  ms.locfileid: "102589856"
+  ms.lasthandoff: 03/26/2021
+  ms.locfileid: "105601845"
 landingContent:
 - title: Azure SQL 数据库
   linkLists:
+  - linkListType: whats-new
+    links:
+    - text: 新增功能
+      url: doc-changes-updates-release-notes.md?tabs=single-database
   - linkListType: quickstart
     links:
     - text: 创建 SQL 数据库
@@ -30,8 +34,6 @@ landingContent:
       url: firewall-create-server-level-portal-quickstart.md
   - linkListType: concept
     links:
-    - text: 新增功能
-      url: doc-changes-updates-release-notes.md?tabs=single-database
     - text: 什么是 SQL 数据库？
       url: sql-database-paas-overview.md
     - text: 购买选项

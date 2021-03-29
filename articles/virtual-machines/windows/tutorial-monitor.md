@@ -2,23 +2,23 @@
 title: 教程 - 监视 Azure 中的 Windows 虚拟机
 description: 本教程介绍如何监视 Windows 虚拟机上运行的性能和发现的应用程序组件。
 manager: carmonm
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: monitoring
 ms.topic: tutorial
 ms.workload: infrastructure
 origin.date: 09/27/2018
 author: rockboyfor
-ms.date: 03/01/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 87951297cd65fa22708cbccdaba287a031b5371a
-ms.sourcegitcommit: e435672bdc9400ab51297134574802e9a851c60e
+ms.openlocfilehash: f7d8e4f884e66a59eeae08ae9301fcb139c3324c
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055271"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603667"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>教程：监视 Azure 中的 Windows 虚拟机
 
@@ -35,10 +35,11 @@ Azure 监视使用代理从 Azure VM 收集启动和性能数据，将此数据�
 <!--NOT AVAILABLE ON > * Enable Azure Monitor for VMs-->
 <!--NOT AVAILABLE ON > * View VM performance metrics-->
 
-## <a name="launch-azure-local-shell"></a>启动 Azure 本地 Shell
+## <a name="launch-azure-local-powershell"></a>启动 Azure 本地 PowerShell
 
 打开 Azure Powershell 控制台，并以管理员权限运行下面列出的脚本。
 
+<!--NOT AVAILABLE ON https://shell.azure.com-->
 <!--Not Available on Azure Cloud Shell-->
 
 ## <a name="create-virtual-machine"></a>创建虚拟机

@@ -5,14 +5,13 @@ author: Johnnytechn
 ms.author: v-johya
 services: azure-monitor
 ms.topic: sample
-ms.date: 02/20/2021
-ms.subservice: ''
-ms.openlocfilehash: 0c2a6a2ceabff87ef06c079a2ac8e582d973e31a
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.date: 03/26/2021
+ms.openlocfilehash: d23052918c6921cda2fc880390d042a6563fae24
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204910"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603421"
 ---
 # <a name="resource-manager-template-samples-for-azure-monitor"></a>用于 Azure Monitor 的资源管理器模板示例
 
@@ -54,7 +53,7 @@ az deployment group create \
 - [日志查询](logs/resource-manager-log-queries.md) - 在 Log Analytics 工作区中创建保存的日志查询。
 - [Log Analytics 工作区](logs/resource-manager-workspace.md) - 创建 Log Analytics 工作区，并配置来自 Log Analytics 代理的不同数据源的集合。
 - [工作簿](visualize/resource-manager-workbooks.md) - 创建工作簿。
-- [用于容器的 Azure Monitor](containers/resource-manager-container-insights.md) - 将群集加入用于容器的 Azure Monitor。
+- [容器见解](containers/resource-manager-container-insights.md) - 将群集加入容器见解。
 - [用于 VM 的 Azure Monitor](vm/resource-manager-vminsights.md) - 将虚拟机加入用于 VM 的 Azure Monitor。
 
 

@@ -8,18 +8,19 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 origin.date: 06/27/2017
-ms.date: 02/01/2021
+ms.date: 03/29/2021
 ms.author: v-jay
-ms.openlocfilehash: 3ffed5d63c101b8b8339757260c6fe3b136c1f79
-ms.sourcegitcommit: 5c4ed6b098726c9a6439cfa6fc61b32e062198d0
+ms.openlocfilehash: 171ba24aeb85b7d10279bfd1b7b2a0004a18cd06
+ms.sourcegitcommit: 308ca551066252e68198391c3e4d4b1de348deb9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99059412"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105601954"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>适用于 Azure 虚拟机上的 SQL Server 的业务连续性和 HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -57,6 +58,7 @@ Azure 支持以下 SQL Server 技术以实现业务连续性：
 | --- | --- |
 | **可用性组** |在同一区域的 Azure VM 中运行的可用性副本提供高可用性。 需要配置域控制器 VM，因为 Windows 故障转移群集需要 Active Directory 域。<br/><br/> ![示意图中在“WSFC 群集”（由“主要副本”、“次要副本”和“文件共享见证”组成）上方显示了“域控制器”。](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-ha-always-on.png)<br/> |
 | **故障转移群集实例** |SQL Server VM 支持故障转移群集实例。 由于 FCI 功能需要共享存储，因此，可以在 Azure VM 上的 SQL Server 中使用五个解决方案： <br/><br/> - 对于 Windows Server 2019，使用 [Azure 共享磁盘](failover-cluster-instance-azure-shared-disks-manually-configure.md)。 共享托管磁盘是一种允许同时将托管磁盘附加到多个虚拟机的 Azure 产品。 群集中的 VM 可以根据群集应用程序通过 SCSI 永久预留 (SCSI PR) 选择的预留在附加的磁盘中进行读取或写入。 SCSI PR 是一种行业标准的存储解决方案，可供在本地存储区域网络 (SAN) 上运行的应用程序使用。 在托管磁盘上启用 SCSI PR，可以将这些应用程序按原样迁移到 Azure。 <br/><br/>- 对于 Windows Server 2016 及更高版本，使用[存储空间直通\( S2D\)](failover-cluster-instance-storage-spaces-direct-manually-configure.md) 提供基于软件的虚拟 SAN。<br/><br/>- 对于 Windows Server 2012 及更高版本，使用[高级文件共享](failover-cluster-instance-premium-file-share-manually-configure.md)。 高级文件共享由 SSD 提供支持，延迟稳定且较低，完全支持用于 FCI。<br/><br/>- 对于群集功能，使用合作伙伴解决方案支持的存储。 有关使用 SIOS DataKeeper 的具体示例，请参阅博客文章：[故障转移群集和 SIOS DataKeeper](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/)。<br/><br/>- 对于经由 Azure ExpressRoute 的远程 iSCSI 目标，使用共享块存储。 例如，NetApp 专用存储 (NPS) 使用 Equinix 通过 ExpressRoute 向 Azuer VM 公开 iSCSI 目标。<br/><br/>对于 Azure 合作伙伴提供的共享存储和数据复制解决方案，请与供应商联系来了解与故障转移时访问数据相关的任何问题。<br/><br/>||
+
 <!--Not Available on [availability zones](../../../availability-zones/az-overview.md)-->
 <!-- Not Avaiable on [Configure Availability Groups in Azure (GUI)](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)-->
 
@@ -90,7 +92,7 @@ Azure VM、存储和网络的运行特征与本地非虚拟化的 IT 基础结�
 ### <a name="high-availability-nodes-in-an-availability-set"></a>可用性集中的高可用性节点
 使用 Azure 中的可用性集，可以将高可用性节点放置在单独的容错域和更新域中。 Azure 平台为可用性集中的每个虚拟机分配一个更新域和一个容错域。 数据中心内的这种配置可以确保在发生计划内或计划外维护事件时，至少有一个虚拟机可用，并满足 99.95% 的 Azure SLA 要求。 
 
-若要配置高可用性设置，请将所有参与的 SQL Server 虚拟机放在同一可用性集中，以避免在维护事件期间丢失应用程序或数据。 只有同一云服务中的节点可加入同一可用性集。 有关详细信息，请参阅[管理虚拟机的可用性](../../../virtual-machines/manage-availability.md?toc=%252fvirtual-machines%252fwindows%252ftoc.json)。
+若要配置高可用性设置，请将所有参与的 SQL Server 虚拟机放在同一可用性集中，以避免在维护事件期间丢失应用程序或数据。 只有同一云服务中的节点可加入同一可用性集。 有关详细信息，请参阅[管理虚拟机的可用性](../../../virtual-machines/availability.md?toc=%22fvirtual-machines%2fwindows%2ftoc.json)。
 
 <!--Not Available on ### High availability nodes in an availability zone-->
 

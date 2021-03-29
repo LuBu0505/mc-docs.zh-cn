@@ -1,29 +1,30 @@
 ---
 title: 适用于 Azure 的 Desired State Configuration 概述
 description: 了解如何使用 PowerShell Desired State Configuration (DSC) 的 Azure 扩展处理程序。 本文包括先决条件、体系结构和 cmdlet。
-services: virtual-machines-windows
+services: virtual-machines
 manager: evansma
 tags: azure-resource-manager
 keywords: dsc
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: extensions
+ms.collection: windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 origin.date: 07/13/2020
 author: rockboyfor
-ms.date: 01/04/2021
+ms.date: 03/29/2021
 ms.testscope: yes
 ms.testdate: 08/31/2020
 ms.author: v-yeche
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: acf4d71c238e29ddbbcdb1ad359ee45c6f564102
-ms.sourcegitcommit: b4fd26098461cb779b973c7592f951aad77351f2
+ms.openlocfilehash: 8f12a0464ee04273ed90812e27ea31cfbb869d23
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97856703"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603061"
 ---
 <!--Verify successfully on the portal DSC configuration-->
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 扩展处理程序简介
@@ -182,7 +183,7 @@ az vm extension set \
 在门户中设置 DSC：
 
 1. 转到某个 VM。
-2. 在“设置”下选择“扩展”。
+2. 在“设置”  下选择“扩展”  。
 3. 在创建的新页面中，依次选择“添加”、“PowerShell Desired State Configuration” 。
 4. 在扩展信息页面底部，单击“创建”。
 
@@ -215,4 +216,4 @@ az vm extension set \
 - 若要了解可以使用 PowerShell DSC 管理的其他功能并获取更多 DSC 资源，请浏览 [PowerShell 库](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)。
 - 有关将敏感参数传入配置的详细信息，请参阅[使用 DSC 扩展处理程序安全管理凭据](dsc-credentials.md)。
 
-<!-- Update_Description: update meta properties, wording update, update link -->
+<!--Update_Description: update meta properties, wording update, update link-->

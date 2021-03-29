@@ -5,15 +5,14 @@ author: Johnnytechn
 services: azure-monitor
 ms.topic: conceptual
 origin.date: 12/19/2019
-ms.date: 02/20/2021
+ms.date: 03/25/2021
 ms.author: v-johya
-ms.subservice: logs
-ms.openlocfilehash: d05ec8ca3a2a5d9e502e1ae9468753e44352e386
-ms.sourcegitcommit: b2daa3a26319be676c8e563a62c66e1d5e698558
+ms.openlocfilehash: 070fce86ee98918854d84adb239f03e042c040e7
+ms.sourcegitcommit: 1a64114f25dd71acba843bd7f1cd00c4df737ba4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204863"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105603360"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Azure 平台日志概述
 平台日志提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。 它们是自动生成的，虽然你需要配置某些平台日志，以便将其转发到一个或多个目标进行保留。 本文概述了平台日志，其中包括它们提供什么信息，以及如何配置它们以方便收集和分析。
@@ -23,7 +22,7 @@ ms.locfileid: "102204863"
 
 | 日志 | 层 | 说明 |
 |:---|:---|:---|
-| [资源日志](../platform/resource-logs.md) | Azure 资源 | 深入了解在 Azure 资源（数据平面）内执行的操作，例如，从 Key Vault 获取机密，或向数据库发出请求。  资源日志的内容因 Azure 服务和资源类型而异。<br><br>资源日志以前称为诊断日志。   |
+| [资源日志](./resource-logs.md) | Azure 资源 | 深入了解在 Azure 资源（数据平面）内执行的操作，例如，从 Key Vault 获取机密，或向数据库发出请求。  资源日志的内容因 Azure 服务和资源类型而异。<br><br>资源日志以前称为诊断日志。   |
 | [活动日志](../essentials/activity-log.md) | Azure 订阅 | 了解从外部（管理平台）  对订阅中的每个 Azure 资源执行的操作，以及对服务运行状况事件进行的更新。 通过活动日志，可确定订阅中资源上进行的任何写入操作 (PUT, POST, DELETE) 的“什么操作、谁操作和操作时间”等信息。    每个 Azure 订阅都有一个活动日志。 |
 | [Azure Active Directory 日志](../../active-directory/reports-monitoring/overview-reports.md) | Azure 租户 |  包含特定租户的 Azure Active Directory 中的登录活动和更改审核日志的历史记录。   |
 
@@ -47,7 +46,7 @@ ms.locfileid: "102204863"
 
 | 目标 | 说明 |
 |:---|:---|
-| Log Analytics 工作区 | 一起分析所有 Azure 资源的日志，并利用提供给 [Azure Monitor 日志](../platform/data-platform-logs.md)的所有功能，包括[日志查询](../log-query/log-query-overview.md)和[日志警报](../alerts/alerts-log.md)。 将日志查询的结果固定到 Azure 仪表板，或将其作为交互式报表的一部分包含在工作簿中。 |  |
+| Log Analytics 工作区 | 一起分析所有 Azure 资源的日志，并利用提供给 [Azure Monitor 日志](../logs/data-platform-logs.md)的所有功能，包括[日志查询](../logs/log-query-overview.md)和[日志警报](../alerts/alerts-log.md)。 将日志查询的结果固定到 Azure 仪表板，或将其作为交互式报表的一部分包含在工作簿中。 |  |
 | 事件中心 | 向 Azure 外部发送平台日志数据，例如，向第三方 SIEM 或自定义遥测平台发送。
 | Azure 存储 | 将日志存档供审核或备份。 |
 
@@ -62,6 +61,5 @@ ms.locfileid: "102204863"
 ## <a name="next-steps"></a>后续步骤
 
 * [阅读有关活动日志的详细信息](../essentials/activity-log.md)
-* [阅读有关资源日志的详细信息](../platform/resource-logs.md)
-
+* [阅读有关资源日志的详细信息](./resource-logs.md)
 
